@@ -1,0 +1,16 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/csharp/Backup
+/csharp/KalturaClient/obj/Debug
+/csharp/KalturaClientTester/obj/Debug
+*.suo
+/csharp/KalturaClient.sln.GhostDoc.xml
+/csharp/UpgradeLog.htm
+/csharp/KalturaClient/bin/Debug
+/csharp/KalturaClientTester/bin/Debug
+/csharp/KalturaClient/bin/Release
+/csharp/KalturaClient/obj/Release
+/csharp/KalturaClientTester/bin/Release
+/csharp/KalturaClientTester/obj/Release

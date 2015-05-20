@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -51,6 +51,7 @@ namespace Kaltura
 		private KalturaNullableBoolean _IsDefault = (KalturaNullableBoolean)Int32.MinValue;
 		private int _ParentId = Int32.MinValue;
 		private string _MediaProtocols = null;
+		private int _Priority = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -207,6 +208,15 @@ namespace Kaltura
 				OnPropertyChanged("MediaProtocols");
 			}
 		}
+		public int Priority
+		{
+			get { return _Priority; }
+			set 
+			{ 
+				_Priority = value;
+				OnPropertyChanged("Priority");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -272,6 +282,9 @@ namespace Kaltura
 					case "mediaProtocols":
 						this.MediaProtocols = txt;
 						continue;
+					case "priority":
+						this.Priority = ParseInt(txt);
+						continue;
 				}
 			}
 		}
@@ -301,6 +314,7 @@ namespace Kaltura
 			kparams.AddEnumIfNotNull("isDefault", this.IsDefault);
 			kparams.AddIntIfNotNull("parentId", this.ParentId);
 			kparams.AddStringIfNotNull("mediaProtocols", this.MediaProtocols);
+			kparams.AddIntIfNotNull("priority", this.Priority);
 			return kparams;
 		}
 		#endregion

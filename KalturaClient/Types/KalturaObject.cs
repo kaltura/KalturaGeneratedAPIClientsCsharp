@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -34,9 +34,19 @@ namespace Kaltura
 	public class KalturaObject : KalturaObjectBase
 	{
 		#region Private Fields
+		private Dictionary<string, KalturaListResponse> _RelatedObjects;
 		#endregion
 
 		#region Properties
+		public Dictionary<string, KalturaListResponse> RelatedObjects
+		{
+			get { return _RelatedObjects; }
+			set 
+			{ 
+				_RelatedObjects = value;
+				OnPropertyChanged("RelatedObjects");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -46,6 +56,24 @@ namespace Kaltura
 
 		public KalturaObject(XmlElement node)
 		{
+			foreach (XmlElement propertyNode in node.ChildNodes)
+			{
+				string txt = propertyNode.InnerText;
+				switch (propertyNode.Name)
+				{
+					case "relatedObjects":
+						{
+							int index = 0;
+							this.RelatedObjects = new Dictionary<string, KalturaListResponse>();
+							foreach(XmlElement arrayNode in propertyNode.ChildNodes)
+							{
+								this.RelatedObjects[index.ToString()] = (KalturaListResponse)KalturaObjectFactory.Create(arrayNode, "KalturaListResponse");
+								index++;
+							}
+						}
+						continue;
+				}
+			}
 		}
 		#endregion
 
@@ -54,6 +82,20 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaObject");
+			if (this.RelatedObjects != null)
+			{
+				if (this.RelatedObjects.Count == 0)
+				{
+					kparams.Add("relatedObjects:-", "");
+				}
+				else
+				{
+					foreach (KeyValuePair<string, KalturaListResponse> curEntry in this.RelatedObjects)
+					{
+						kparams.Add("relatedObjects:" + curEntry.Key, curEntry.Value.ToParams());
+					}
+				}
+			}
 			return kparams;
 		}
 		#endregion

@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -29,7 +29,7 @@ namespace Kaltura
 {
 	public sealed class KalturaDropFolderType : KalturaStringEnum
 	{
-		public static readonly KalturaDropFolderType WEBEX = new KalturaDropFolderType("WebexDropFolder.WEBEX");
+		public static readonly KalturaDropFolderType FEED = new KalturaDropFolderType("FeedDropFolder.FEED");
 		public static readonly KalturaDropFolderType LOCAL = new KalturaDropFolderType("1");
 		public static readonly KalturaDropFolderType FTP = new KalturaDropFolderType("2");
 		public static readonly KalturaDropFolderType SCP = new KalturaDropFolderType("3");

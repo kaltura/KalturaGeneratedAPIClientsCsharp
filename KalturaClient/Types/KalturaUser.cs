@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -36,6 +36,7 @@ namespace Kaltura
 		#region Private Fields
 		private string _Id = null;
 		private int _PartnerId = Int32.MinValue;
+		private KalturaUserType _Type = (KalturaUserType)Int32.MinValue;
 		private string _ScreenName = null;
 		private string _FullName = null;
 		private string _Email = null;
@@ -89,6 +90,15 @@ namespace Kaltura
 			{ 
 				_PartnerId = value;
 				OnPropertyChanged("PartnerId");
+			}
+		}
+		public KalturaUserType Type
+		{
+			get { return _Type; }
+			set 
+			{ 
+				_Type = value;
+				OnPropertyChanged("Type");
 			}
 		}
 		public string ScreenName
@@ -417,6 +427,9 @@ namespace Kaltura
 					case "partnerId":
 						this.PartnerId = ParseInt(txt);
 						continue;
+					case "type":
+						this.Type = (KalturaUserType)ParseEnum(typeof(KalturaUserType), txt);
+						continue;
 					case "screenName":
 						this.ScreenName = txt;
 						continue;
@@ -531,6 +544,7 @@ namespace Kaltura
 			kparams.AddReplace("objectType", "KalturaUser");
 			kparams.AddStringIfNotNull("id", this.Id);
 			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
+			kparams.AddEnumIfNotNull("type", this.Type);
 			kparams.AddStringIfNotNull("screenName", this.ScreenName);
 			kparams.AddStringIfNotNull("fullName", this.FullName);
 			kparams.AddStringIfNotNull("email", this.Email);

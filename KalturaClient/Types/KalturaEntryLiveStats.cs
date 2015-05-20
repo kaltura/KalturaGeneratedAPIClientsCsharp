@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -36,6 +36,7 @@ namespace Kaltura
 		#region Private Fields
 		private string _EntryId = null;
 		private int _PeakAudience = Int32.MinValue;
+		private int _PeakDvrAudience = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -55,6 +56,15 @@ namespace Kaltura
 			{ 
 				_PeakAudience = value;
 				OnPropertyChanged("PeakAudience");
+			}
+		}
+		public int PeakDvrAudience
+		{
+			get { return _PeakDvrAudience; }
+			set 
+			{ 
+				_PeakDvrAudience = value;
+				OnPropertyChanged("PeakDvrAudience");
 			}
 		}
 		#endregion
@@ -77,6 +87,9 @@ namespace Kaltura
 					case "peakAudience":
 						this.PeakAudience = ParseInt(txt);
 						continue;
+					case "peakDvrAudience":
+						this.PeakDvrAudience = ParseInt(txt);
+						continue;
 				}
 			}
 		}
@@ -89,6 +102,7 @@ namespace Kaltura
 			kparams.AddReplace("objectType", "KalturaEntryLiveStats");
 			kparams.AddStringIfNotNull("entryId", this.EntryId);
 			kparams.AddIntIfNotNull("peakAudience", this.PeakAudience);
+			kparams.AddIntIfNotNull("peakDvrAudience", this.PeakDvrAudience);
 			return kparams;
 		}
 		#endregion

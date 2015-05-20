@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -32,11 +32,11 @@ namespace Kaltura
 		public static readonly KalturaMetadataObjectType AD_CUE_POINT = new KalturaMetadataObjectType("adCuePointMetadata.AdCuePoint");
 		public static readonly KalturaMetadataObjectType ANNOTATION = new KalturaMetadataObjectType("annotationMetadata.Annotation");
 		public static readonly KalturaMetadataObjectType CODE_CUE_POINT = new KalturaMetadataObjectType("codeCuePointMetadata.CodeCuePoint");
-		public static readonly KalturaMetadataObjectType THUMB_CUE_POINT = new KalturaMetadataObjectType("thumbCuePointMetadata.thumbCuePoint");
 		public static readonly KalturaMetadataObjectType ENTRY = new KalturaMetadataObjectType("1");
 		public static readonly KalturaMetadataObjectType CATEGORY = new KalturaMetadataObjectType("2");
 		public static readonly KalturaMetadataObjectType USER = new KalturaMetadataObjectType("3");
 		public static readonly KalturaMetadataObjectType PARTNER = new KalturaMetadataObjectType("4");
+		public static readonly KalturaMetadataObjectType DYNAMIC_OBJECT = new KalturaMetadataObjectType("5");
 
 		private KalturaMetadataObjectType(string name) : base(name) { }
 	}

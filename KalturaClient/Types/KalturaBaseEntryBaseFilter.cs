@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -31,7 +31,7 @@ using System.Collections.Generic;
 
 namespace Kaltura
 {
-	public class KalturaBaseEntryBaseFilter : KalturaFilter
+	public class KalturaBaseEntryBaseFilter : KalturaRelatedFilter
 	{
 		#region Private Fields
 		private string _IdEqual = null;
@@ -101,6 +101,8 @@ namespace Kaltura
 		private string _RootEntryIdEqual = null;
 		private string _RootEntryIdIn = null;
 		private string _ParentEntryIdEqual = null;
+		private string _EntitledUsersEditMatchAnd = null;
+		private string _EntitledUsersPublishMatchAnd = null;
 		private string _TagsNameMultiLikeOr = null;
 		private string _TagsAdminTagsMultiLikeOr = null;
 		private string _TagsAdminTagsNameMultiLikeOr = null;
@@ -713,6 +715,24 @@ namespace Kaltura
 				OnPropertyChanged("ParentEntryIdEqual");
 			}
 		}
+		public string EntitledUsersEditMatchAnd
+		{
+			get { return _EntitledUsersEditMatchAnd; }
+			set 
+			{ 
+				_EntitledUsersEditMatchAnd = value;
+				OnPropertyChanged("EntitledUsersEditMatchAnd");
+			}
+		}
+		public string EntitledUsersPublishMatchAnd
+		{
+			get { return _EntitledUsersPublishMatchAnd; }
+			set 
+			{ 
+				_EntitledUsersPublishMatchAnd = value;
+				OnPropertyChanged("EntitledUsersPublishMatchAnd");
+			}
+		}
 		public string TagsNameMultiLikeOr
 		{
 			get { return _TagsNameMultiLikeOr; }
@@ -982,6 +1002,12 @@ namespace Kaltura
 					case "parentEntryIdEqual":
 						this.ParentEntryIdEqual = txt;
 						continue;
+					case "entitledUsersEditMatchAnd":
+						this.EntitledUsersEditMatchAnd = txt;
+						continue;
+					case "entitledUsersPublishMatchAnd":
+						this.EntitledUsersPublishMatchAnd = txt;
+						continue;
 					case "tagsNameMultiLikeOr":
 						this.TagsNameMultiLikeOr = txt;
 						continue;
@@ -1077,6 +1103,8 @@ namespace Kaltura
 			kparams.AddStringIfNotNull("rootEntryIdEqual", this.RootEntryIdEqual);
 			kparams.AddStringIfNotNull("rootEntryIdIn", this.RootEntryIdIn);
 			kparams.AddStringIfNotNull("parentEntryIdEqual", this.ParentEntryIdEqual);
+			kparams.AddStringIfNotNull("entitledUsersEditMatchAnd", this.EntitledUsersEditMatchAnd);
+			kparams.AddStringIfNotNull("entitledUsersPublishMatchAnd", this.EntitledUsersPublishMatchAnd);
 			kparams.AddStringIfNotNull("tagsNameMultiLikeOr", this.TagsNameMultiLikeOr);
 			kparams.AddStringIfNotNull("tagsAdminTagsMultiLikeOr", this.TagsAdminTagsMultiLikeOr);
 			kparams.AddStringIfNotNull("tagsAdminTagsNameMultiLikeOr", this.TagsAdminTagsNameMultiLikeOr);

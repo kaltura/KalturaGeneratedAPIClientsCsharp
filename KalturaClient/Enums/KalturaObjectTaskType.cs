@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -29,6 +29,7 @@ namespace Kaltura
 {
 	public sealed class KalturaObjectTaskType : KalturaStringEnum
 	{
+		public static readonly KalturaObjectTaskType DISTRIBUTE = new KalturaObjectTaskType("scheduledTaskContentDistribution.Distribute");
 		public static readonly KalturaObjectTaskType DISPATCH_EVENT_NOTIFICATION = new KalturaObjectTaskType("scheduledTaskEventNotification.DispatchEventNotification");
 		public static readonly KalturaObjectTaskType EXECUTE_METADATA_XSLT = new KalturaObjectTaskType("scheduledTaskMetadata.ExecuteMetadataXslt");
 		public static readonly KalturaObjectTaskType DELETE_ENTRY = new KalturaObjectTaskType("1");
@@ -36,6 +37,7 @@ namespace Kaltura
 		public static readonly KalturaObjectTaskType DELETE_ENTRY_FLAVORS = new KalturaObjectTaskType("3");
 		public static readonly KalturaObjectTaskType CONVERT_ENTRY_FLAVORS = new KalturaObjectTaskType("4");
 		public static readonly KalturaObjectTaskType DELETE_LOCAL_CONTENT = new KalturaObjectTaskType("5");
+		public static readonly KalturaObjectTaskType STORAGE_EXPORT = new KalturaObjectTaskType("6");
 
 		private KalturaObjectTaskType(string name) : base(name) { }
 	}

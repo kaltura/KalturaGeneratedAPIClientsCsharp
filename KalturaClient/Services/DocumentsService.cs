@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -95,17 +95,17 @@ namespace Kaltura
 			return (KalturaDocumentEntry)KalturaObjectFactory.Create(result, "KalturaDocumentEntry");
 		}
 
-		public int Convert(string entryId)
+		public long Convert(string entryId)
 		{
 			return this.Convert(entryId, Int32.MinValue);
 		}
 
-		public int Convert(string entryId, int conversionProfileId)
+		public long Convert(string entryId, int conversionProfileId)
 		{
 			return this.Convert(entryId, conversionProfileId, null);
 		}
 
-		public int Convert(string entryId, int conversionProfileId, IList<KalturaConversionAttribute> dynamicConversionAttributes)
+		public long Convert(string entryId, int conversionProfileId, IList<KalturaConversionAttribute> dynamicConversionAttributes)
 		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddStringIfNotNull("entryId", entryId);
@@ -118,7 +118,7 @@ namespace Kaltura
 			if (this._Client.IsMultiRequest)
 				return 0;
 			XmlElement result = _Client.DoQueue();
-			return int.Parse(result.InnerText);
+			return long.Parse(result.InnerText);
 		}
 
 		public KalturaDocumentEntry Get(string entryId)

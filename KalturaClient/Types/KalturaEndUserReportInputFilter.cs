@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -37,6 +37,7 @@ namespace Kaltura
 		private string _Application = null;
 		private string _UserIds = null;
 		private string _PlaybackContext = null;
+		private string _AncestorPlaybackContext = null;
 		#endregion
 
 		#region Properties
@@ -67,6 +68,15 @@ namespace Kaltura
 				OnPropertyChanged("PlaybackContext");
 			}
 		}
+		public string AncestorPlaybackContext
+		{
+			get { return _AncestorPlaybackContext; }
+			set 
+			{ 
+				_AncestorPlaybackContext = value;
+				OnPropertyChanged("AncestorPlaybackContext");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -90,6 +100,9 @@ namespace Kaltura
 					case "playbackContext":
 						this.PlaybackContext = txt;
 						continue;
+					case "ancestorPlaybackContext":
+						this.AncestorPlaybackContext = txt;
+						continue;
 				}
 			}
 		}
@@ -103,6 +116,7 @@ namespace Kaltura
 			kparams.AddStringIfNotNull("application", this.Application);
 			kparams.AddStringIfNotNull("userIds", this.UserIds);
 			kparams.AddStringIfNotNull("playbackContext", this.PlaybackContext);
+			kparams.AddStringIfNotNull("ancestorPlaybackContext", this.AncestorPlaybackContext);
 			return kparams;
 		}
 		#endregion

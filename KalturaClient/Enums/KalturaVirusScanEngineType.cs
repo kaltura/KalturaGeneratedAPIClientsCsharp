@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -30,9 +30,6 @@ namespace Kaltura
 	public sealed class KalturaVirusScanEngineType : KalturaStringEnum
 	{
 		public static readonly KalturaVirusScanEngineType CLAMAV_SCAN_ENGINE = new KalturaVirusScanEngineType("clamAVScanEngine.ClamAV");
-		public static readonly KalturaVirusScanEngineType SYMANTEC_SCAN_DIRECT_ENGINE = new KalturaVirusScanEngineType("symantecScanEngine.SymantecScanDirectEngine");
-		public static readonly KalturaVirusScanEngineType SYMANTEC_SCAN_ENGINE = new KalturaVirusScanEngineType("symantecScanEngine.SymantecScanEngine");
-		public static readonly KalturaVirusScanEngineType SYMANTEC_SCAN_JAVA_ENGINE = new KalturaVirusScanEngineType("symantecScanEngine.SymantecScanJavaEngine");
 
 		private KalturaVirusScanEngineType(string name) : base(name) { }
 	}

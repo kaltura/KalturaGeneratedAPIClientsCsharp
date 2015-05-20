@@ -34,10 +34,10 @@ namespace Kaltura
 {
     class KalturaClientTester
     {
-        private const int PARTNER_ID = 54321; //enter your partner id
-        private const string SECRET = "YOUR_USER_SECRET"; //enter your user secret
-        private const string ADMIN_SECRET = "YOUR_ADMIN_SECRET"; //enter your admin secret
-        private const string SERVICE_URL = "http://www.kaltura.com";
+	private const int PARTNER_ID = 1931861; //enter your partner id
+	private const string SECRET = "c66b9aed76e28c91455cb69fec6f2f7d"; //enter your user secret
+	private const string ADMIN_SECRET = "83c3d4449a3abbe92ca5966f5f010eb4"; //enter your admin secret
+	private const string SERVICE_URL = "http://www.kaltura.com";
         private const string USER_ID = "testUser";
 
         static void Main(string[] args)

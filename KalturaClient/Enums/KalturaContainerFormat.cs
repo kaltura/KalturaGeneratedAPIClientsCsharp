@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -38,6 +38,7 @@ namespace Kaltura
 		public static readonly KalturaContainerFormat HLS = new KalturaContainerFormat("hls");
 		public static readonly KalturaContainerFormat ISMV = new KalturaContainerFormat("ismv");
 		public static readonly KalturaContainerFormat JPG = new KalturaContainerFormat("jpg");
+		public static readonly KalturaContainerFormat M2TS = new KalturaContainerFormat("m2ts");
 		public static readonly KalturaContainerFormat M4V = new KalturaContainerFormat("m4v");
 		public static readonly KalturaContainerFormat MKV = new KalturaContainerFormat("mkv");
 		public static readonly KalturaContainerFormat MOV = new KalturaContainerFormat("mov");
@@ -45,6 +46,7 @@ namespace Kaltura
 		public static readonly KalturaContainerFormat MP4 = new KalturaContainerFormat("mp4");
 		public static readonly KalturaContainerFormat MPEG = new KalturaContainerFormat("mpeg");
 		public static readonly KalturaContainerFormat MPEGTS = new KalturaContainerFormat("mpegts");
+		public static readonly KalturaContainerFormat MXF = new KalturaContainerFormat("mxf");
 		public static readonly KalturaContainerFormat OGG = new KalturaContainerFormat("ogg");
 		public static readonly KalturaContainerFormat OGV = new KalturaContainerFormat("ogv");
 		public static readonly KalturaContainerFormat PDF = new KalturaContainerFormat("pdf");

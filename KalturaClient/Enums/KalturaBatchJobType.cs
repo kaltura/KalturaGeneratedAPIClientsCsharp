@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -29,9 +29,9 @@ namespace Kaltura
 {
 	public sealed class KalturaBatchJobType : KalturaStringEnum
 	{
+		public static readonly KalturaBatchJobType CONVERT = new KalturaBatchJobType("0");
 		public static readonly KalturaBatchJobType PARSE_CAPTION_ASSET = new KalturaBatchJobType("captionSearch.parseCaptionAsset");
 		public static readonly KalturaBatchJobType DISTRIBUTION_DELETE = new KalturaBatchJobType("contentDistribution.DistributionDelete");
-		public static readonly KalturaBatchJobType CONVERT = new KalturaBatchJobType("0");
 		public static readonly KalturaBatchJobType DISTRIBUTION_DISABLE = new KalturaBatchJobType("contentDistribution.DistributionDisable");
 		public static readonly KalturaBatchJobType DISTRIBUTION_ENABLE = new KalturaBatchJobType("contentDistribution.DistributionEnable");
 		public static readonly KalturaBatchJobType DISTRIBUTION_FETCH_REPORT = new KalturaBatchJobType("contentDistribution.DistributionFetchReport");
@@ -45,7 +45,6 @@ namespace Kaltura
 		public static readonly KalturaBatchJobType INDEX_TAGS = new KalturaBatchJobType("tagSearch.IndexTagsByPrivacyContext");
 		public static readonly KalturaBatchJobType TAG_RESOLVE = new KalturaBatchJobType("tagSearch.TagResolve");
 		public static readonly KalturaBatchJobType VIRUS_SCAN = new KalturaBatchJobType("virusScan.VirusScan");
-		public static readonly KalturaBatchJobType WIDEVINE_REPOSITORY_SYNC = new KalturaBatchJobType("widevine.WidevineRepositorySync");
 		public static readonly KalturaBatchJobType IMPORT = new KalturaBatchJobType("1");
 		public static readonly KalturaBatchJobType DELETE = new KalturaBatchJobType("2");
 		public static readonly KalturaBatchJobType FLATTEN = new KalturaBatchJobType("3");

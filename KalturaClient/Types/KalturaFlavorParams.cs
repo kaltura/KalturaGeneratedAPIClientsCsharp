@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -61,6 +61,8 @@ namespace Kaltura
 		private string _MultiStream = null;
 		private float _AnamorphicPixels = Single.MinValue;
 		private int _IsAvoidForcedKeyFrames = Int32.MinValue;
+		private int _IsCropIMX = Int32.MinValue;
+		private int _OptimizationPolicy = Int32.MinValue;
 		private int _MaxFrameRate = Int32.MinValue;
 		private int _VideoConstantBitrate = Int32.MinValue;
 		private int _VideoBitrateTolerance = Int32.MinValue;
@@ -313,6 +315,24 @@ namespace Kaltura
 				OnPropertyChanged("IsAvoidForcedKeyFrames");
 			}
 		}
+		public int IsCropIMX
+		{
+			get { return _IsCropIMX; }
+			set 
+			{ 
+				_IsCropIMX = value;
+				OnPropertyChanged("IsCropIMX");
+			}
+		}
+		public int OptimizationPolicy
+		{
+			get { return _OptimizationPolicy; }
+			set 
+			{ 
+				_OptimizationPolicy = value;
+				OnPropertyChanged("OptimizationPolicy");
+			}
+		}
 		public int MaxFrameRate
 		{
 			get { return _MaxFrameRate; }
@@ -462,6 +482,12 @@ namespace Kaltura
 					case "isAvoidForcedKeyFrames":
 						this.IsAvoidForcedKeyFrames = ParseInt(txt);
 						continue;
+					case "isCropIMX":
+						this.IsCropIMX = ParseInt(txt);
+						continue;
+					case "optimizationPolicy":
+						this.OptimizationPolicy = ParseInt(txt);
+						continue;
 					case "maxFrameRate":
 						this.MaxFrameRate = ParseInt(txt);
 						continue;
@@ -517,6 +543,8 @@ namespace Kaltura
 			kparams.AddStringIfNotNull("multiStream", this.MultiStream);
 			kparams.AddFloatIfNotNull("anamorphicPixels", this.AnamorphicPixels);
 			kparams.AddIntIfNotNull("isAvoidForcedKeyFrames", this.IsAvoidForcedKeyFrames);
+			kparams.AddIntIfNotNull("isCropIMX", this.IsCropIMX);
+			kparams.AddIntIfNotNull("optimizationPolicy", this.OptimizationPolicy);
 			kparams.AddIntIfNotNull("maxFrameRate", this.MaxFrameRate);
 			kparams.AddIntIfNotNull("videoConstantBitrate", this.VideoConstantBitrate);
 			kparams.AddIntIfNotNull("videoBitrateTolerance", this.VideoBitrateTolerance);

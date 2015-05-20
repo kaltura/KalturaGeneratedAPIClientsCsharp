@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -32,8 +32,6 @@ namespace Kaltura
 		public static readonly KalturaDeliveryProfileType EDGE_CAST_HTTP = new KalturaDeliveryProfileType("edgeCast.EDGE_CAST_HTTP");
 		public static readonly KalturaDeliveryProfileType EDGE_CAST_RTMP = new KalturaDeliveryProfileType("edgeCast.EDGE_CAST_RTMP");
 		public static readonly KalturaDeliveryProfileType KONTIKI_HTTP = new KalturaDeliveryProfileType("kontiki.KONTIKI_HTTP");
-		public static readonly KalturaDeliveryProfileType UPLYNK_HTTP = new KalturaDeliveryProfileType("uplynk.UPLYNK_HTTP");
-		public static readonly KalturaDeliveryProfileType UPLYNK_RTMP = new KalturaDeliveryProfileType("uplynk.UPLYNK_RTMP");
 		public static readonly KalturaDeliveryProfileType VELOCIX_HDS = new KalturaDeliveryProfileType("velocix.VELOCIX_HDS");
 		public static readonly KalturaDeliveryProfileType VELOCIX_HLS = new KalturaDeliveryProfileType("velocix.VELOCIX_HLS");
 		public static readonly KalturaDeliveryProfileType APPLE_HTTP = new KalturaDeliveryProfileType("1");
@@ -63,6 +61,7 @@ namespace Kaltura
 		public static readonly KalturaDeliveryProfileType LIMELIGHT_HTTP = new KalturaDeliveryProfileType("44");
 		public static readonly KalturaDeliveryProfileType LIMELIGHT_RTMP = new KalturaDeliveryProfileType("45");
 		public static readonly KalturaDeliveryProfileType LOCAL_PATH_APPLE_HTTP = new KalturaDeliveryProfileType("51");
+		public static readonly KalturaDeliveryProfileType LOCAL_PATH_HDS = new KalturaDeliveryProfileType("53");
 		public static readonly KalturaDeliveryProfileType LOCAL_PATH_HTTP = new KalturaDeliveryProfileType("54");
 		public static readonly KalturaDeliveryProfileType LOCAL_PATH_RTMP = new KalturaDeliveryProfileType("55");
 		public static readonly KalturaDeliveryProfileType VOD_PACKAGER_HLS = new KalturaDeliveryProfileType("61");
@@ -71,6 +70,7 @@ namespace Kaltura
 		public static readonly KalturaDeliveryProfileType VOD_PACKAGER_DASH = new KalturaDeliveryProfileType("68");
 		public static readonly KalturaDeliveryProfileType LIVE_HLS = new KalturaDeliveryProfileType("1001");
 		public static readonly KalturaDeliveryProfileType LIVE_HDS = new KalturaDeliveryProfileType("1002");
+		public static readonly KalturaDeliveryProfileType LIVE_DASH = new KalturaDeliveryProfileType("1003");
 		public static readonly KalturaDeliveryProfileType LIVE_RTMP = new KalturaDeliveryProfileType("1005");
 		public static readonly KalturaDeliveryProfileType LIVE_AKAMAI_HDS = new KalturaDeliveryProfileType("1013");
 

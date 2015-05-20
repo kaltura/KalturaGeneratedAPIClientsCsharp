@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -37,6 +37,9 @@ namespace Kaltura
 		private string _ServerUrl = null;
 		private string _ServerUsername = null;
 		private string _ServerPassword = null;
+		private string _ServerPrivateKey = null;
+		private string _ServerPublicKey = null;
+		private string _ServerPassPhrase = null;
 		private bool? _FtpPassiveMode = false;
 		private string _SrcFileSyncLocalPath = null;
 		private string _SrcFileSyncId = null;
@@ -69,6 +72,33 @@ namespace Kaltura
 			{ 
 				_ServerPassword = value;
 				OnPropertyChanged("ServerPassword");
+			}
+		}
+		public string ServerPrivateKey
+		{
+			get { return _ServerPrivateKey; }
+			set 
+			{ 
+				_ServerPrivateKey = value;
+				OnPropertyChanged("ServerPrivateKey");
+			}
+		}
+		public string ServerPublicKey
+		{
+			get { return _ServerPublicKey; }
+			set 
+			{ 
+				_ServerPublicKey = value;
+				OnPropertyChanged("ServerPublicKey");
+			}
+		}
+		public string ServerPassPhrase
+		{
+			get { return _ServerPassPhrase; }
+			set 
+			{ 
+				_ServerPassPhrase = value;
+				OnPropertyChanged("ServerPassPhrase");
 			}
 		}
 		public bool? FtpPassiveMode
@@ -130,6 +160,15 @@ namespace Kaltura
 					case "serverPassword":
 						this.ServerPassword = txt;
 						continue;
+					case "serverPrivateKey":
+						this.ServerPrivateKey = txt;
+						continue;
+					case "serverPublicKey":
+						this.ServerPublicKey = txt;
+						continue;
+					case "serverPassPhrase":
+						this.ServerPassPhrase = txt;
+						continue;
 					case "ftpPassiveMode":
 						this.FtpPassiveMode = ParseBool(txt);
 						continue;
@@ -155,6 +194,9 @@ namespace Kaltura
 			kparams.AddStringIfNotNull("serverUrl", this.ServerUrl);
 			kparams.AddStringIfNotNull("serverUsername", this.ServerUsername);
 			kparams.AddStringIfNotNull("serverPassword", this.ServerPassword);
+			kparams.AddStringIfNotNull("serverPrivateKey", this.ServerPrivateKey);
+			kparams.AddStringIfNotNull("serverPublicKey", this.ServerPublicKey);
+			kparams.AddStringIfNotNull("serverPassPhrase", this.ServerPassPhrase);
 			kparams.AddBoolIfNotNull("ftpPassiveMode", this.FtpPassiveMode);
 			kparams.AddStringIfNotNull("srcFileSyncLocalPath", this.SrcFileSyncLocalPath);
 			kparams.AddStringIfNotNull("srcFileSyncId", this.SrcFileSyncId);

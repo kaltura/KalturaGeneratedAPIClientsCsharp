@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -29,7 +29,6 @@ namespace Kaltura
 {
 	public sealed class KalturaSourceType : KalturaStringEnum
 	{
-		public static readonly KalturaSourceType LIMELIGHT_LIVE = new KalturaSourceType("limeLight.LIVE_STREAM");
 		public static readonly KalturaSourceType VELOCIX_LIVE = new KalturaSourceType("velocix.VELOCIX_LIVE");
 		public static readonly KalturaSourceType FILE = new KalturaSourceType("1");
 		public static readonly KalturaSourceType WEBCAM = new KalturaSourceType("2");

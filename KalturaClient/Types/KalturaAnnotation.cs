@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -41,6 +41,8 @@ namespace Kaltura
 		private int _Depth = Int32.MinValue;
 		private int _ChildrenCount = Int32.MinValue;
 		private int _DirectChildrenCount = Int32.MinValue;
+		private KalturaNullableBoolean _IsPublic = (KalturaNullableBoolean)Int32.MinValue;
+		private KalturaNullableBoolean _SearchableOnEntry = (KalturaNullableBoolean)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -107,6 +109,24 @@ namespace Kaltura
 				OnPropertyChanged("DirectChildrenCount");
 			}
 		}
+		public KalturaNullableBoolean IsPublic
+		{
+			get { return _IsPublic; }
+			set 
+			{ 
+				_IsPublic = value;
+				OnPropertyChanged("IsPublic");
+			}
+		}
+		public KalturaNullableBoolean SearchableOnEntry
+		{
+			get { return _SearchableOnEntry; }
+			set 
+			{ 
+				_SearchableOnEntry = value;
+				OnPropertyChanged("SearchableOnEntry");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -142,6 +162,12 @@ namespace Kaltura
 					case "directChildrenCount":
 						this.DirectChildrenCount = ParseInt(txt);
 						continue;
+					case "isPublic":
+						this.IsPublic = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						continue;
+					case "searchableOnEntry":
+						this.SearchableOnEntry = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						continue;
 				}
 			}
 		}
@@ -159,6 +185,8 @@ namespace Kaltura
 			kparams.AddIntIfNotNull("depth", this.Depth);
 			kparams.AddIntIfNotNull("childrenCount", this.ChildrenCount);
 			kparams.AddIntIfNotNull("directChildrenCount", this.DirectChildrenCount);
+			kparams.AddEnumIfNotNull("isPublic", this.IsPublic);
+			kparams.AddEnumIfNotNull("searchableOnEntry", this.SearchableOnEntry);
 			return kparams;
 		}
 		#endregion

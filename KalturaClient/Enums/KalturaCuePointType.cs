@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -33,7 +33,6 @@ namespace Kaltura
 		public static readonly KalturaCuePointType ANNOTATION = new KalturaCuePointType("annotation.Annotation");
 		public static readonly KalturaCuePointType CODE = new KalturaCuePointType("codeCuePoint.Code");
 		public static readonly KalturaCuePointType EVENT = new KalturaCuePointType("eventCuePoint.Event");
-		public static readonly KalturaCuePointType THUMB = new KalturaCuePointType("thumbCuePoint.Thumb");
 
 		private KalturaCuePointType(string name) : base(name) { }
 	}

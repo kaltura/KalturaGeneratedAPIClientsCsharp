@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -30,7 +30,6 @@ namespace Kaltura
 	public sealed class KalturaMediaParserType : KalturaStringEnum
 	{
 		public static readonly KalturaMediaParserType MEDIAINFO = new KalturaMediaParserType("0");
-		public static readonly KalturaMediaParserType REMOTE_MEDIAINFO = new KalturaMediaParserType("remoteMediaInfo.RemoteMediaInfo");
 		public static readonly KalturaMediaParserType FFMPEG = new KalturaMediaParserType("1");
 
 		private KalturaMediaParserType(string name) : base(name) { }

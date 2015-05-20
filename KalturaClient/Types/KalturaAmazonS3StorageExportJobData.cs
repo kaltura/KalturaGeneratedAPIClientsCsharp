@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -35,6 +35,7 @@ namespace Kaltura
 	{
 		#region Private Fields
 		private KalturaAmazonS3StorageProfileFilesPermissionLevel _FilesPermissionInS3 = null;
+		private string _S3Region = null;
 		#endregion
 
 		#region Properties
@@ -45,6 +46,15 @@ namespace Kaltura
 			{ 
 				_FilesPermissionInS3 = value;
 				OnPropertyChanged("FilesPermissionInS3");
+			}
+		}
+		public string S3Region
+		{
+			get { return _S3Region; }
+			set 
+			{ 
+				_S3Region = value;
+				OnPropertyChanged("S3Region");
 			}
 		}
 		#endregion
@@ -64,6 +74,9 @@ namespace Kaltura
 					case "filesPermissionInS3":
 						this.FilesPermissionInS3 = (KalturaAmazonS3StorageProfileFilesPermissionLevel)KalturaStringEnum.Parse(typeof(KalturaAmazonS3StorageProfileFilesPermissionLevel), txt);
 						continue;
+					case "s3Region":
+						this.S3Region = txt;
+						continue;
 				}
 			}
 		}
@@ -75,6 +88,7 @@ namespace Kaltura
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAmazonS3StorageExportJobData");
 			kparams.AddStringEnumIfNotNull("filesPermissionInS3", this.FilesPermissionInS3);
+			kparams.AddStringIfNotNull("s3Region", this.S3Region);
 			return kparams;
 		}
 		#endregion

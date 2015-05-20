@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -197,6 +197,18 @@ namespace Kaltura
 			if (this._Client.IsMultiRequest)
 				return;
 			XmlElement result = _Client.DoQueue();
+		}
+
+		public int Index(string id, bool shouldUpdate)
+		{
+			KalturaParams kparams = new KalturaParams();
+			kparams.AddStringIfNotNull("id", id);
+			kparams.AddBoolIfNotNull("shouldUpdate", shouldUpdate);
+			_Client.QueueServiceCall("metadata_metadata", "index", null, kparams);
+			if (this._Client.IsMultiRequest)
+				return 0;
+			XmlElement result = _Client.DoQueue();
+			return int.Parse(result.InnerText);
 		}
 
 		public KalturaMetadata UpdateFromXSL(int id, FileStream xslFile)

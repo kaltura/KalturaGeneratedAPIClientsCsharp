@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -30,6 +30,7 @@ namespace Kaltura
 	public enum KalturaRecordStatus
 	{
 		DISABLED = 0,
-		ENABLED = 1,
+		APPENDED = 1,
+		PER_SESSION = 2,
 	}
 }

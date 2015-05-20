@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -163,6 +163,11 @@ namespace Kaltura
 
 		public IList<KalturaBaseEntry> Execute(string id, string detailed, KalturaContext playlistContext, KalturaMediaEntryFilterForPlaylist filter)
 		{
+			return this.Execute(id, detailed, playlistContext, filter, null);
+		}
+
+		public IList<KalturaBaseEntry> Execute(string id, string detailed, KalturaContext playlistContext, KalturaMediaEntryFilterForPlaylist filter, KalturaFilterPager pager)
+		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddStringIfNotNull("id", id);
 			kparams.AddStringIfNotNull("detailed", detailed);
@@ -170,6 +175,8 @@ namespace Kaltura
 				kparams.Add("playlistContext", playlistContext.ToParams());
 			if (filter != null)
 				kparams.Add("filter", filter.ToParams());
+			if (pager != null)
+				kparams.Add("pager", pager.ToParams());
 			_Client.QueueServiceCall("playlist", "execute", "KalturaBaseEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -189,10 +196,17 @@ namespace Kaltura
 
 		public IList<KalturaBaseEntry> ExecuteFromContent(KalturaPlaylistType playlistType, string playlistContent, string detailed)
 		{
+			return this.ExecuteFromContent(playlistType, playlistContent, detailed, null);
+		}
+
+		public IList<KalturaBaseEntry> ExecuteFromContent(KalturaPlaylistType playlistType, string playlistContent, string detailed, KalturaFilterPager pager)
+		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddEnumIfNotNull("playlistType", playlistType);
 			kparams.AddStringIfNotNull("playlistContent", playlistContent);
 			kparams.AddStringIfNotNull("detailed", detailed);
+			if (pager != null)
+				kparams.Add("pager", pager.ToParams());
 			_Client.QueueServiceCall("playlist", "executeFromContent", "KalturaBaseEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -207,10 +221,15 @@ namespace Kaltura
 
 		public IList<KalturaBaseEntry> ExecuteFromFilters(IList<KalturaMediaEntryFilterForPlaylist> filters, int totalResults)
 		{
-			return this.ExecuteFromFilters(filters, totalResults, "");
+			return this.ExecuteFromFilters(filters, totalResults, "1");
 		}
 
 		public IList<KalturaBaseEntry> ExecuteFromFilters(IList<KalturaMediaEntryFilterForPlaylist> filters, int totalResults, string detailed)
+		{
+			return this.ExecuteFromFilters(filters, totalResults, detailed, null);
+		}
+
+		public IList<KalturaBaseEntry> ExecuteFromFilters(IList<KalturaMediaEntryFilterForPlaylist> filters, int totalResults, string detailed, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
 			foreach(KalturaMediaEntryFilterForPlaylist obj in filters)
@@ -219,6 +238,8 @@ namespace Kaltura
 			}
 			kparams.AddIntIfNotNull("totalResults", totalResults);
 			kparams.AddStringIfNotNull("detailed", detailed);
+			if (pager != null)
+				kparams.Add("pager", pager.ToParams());
 			_Client.QueueServiceCall("playlist", "executeFromFilters", "KalturaBaseEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

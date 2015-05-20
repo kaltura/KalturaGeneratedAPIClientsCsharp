@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -36,6 +36,7 @@ namespace Kaltura
 		#region Private Fields
 		private bool? _CategoryDirectMembers = false;
 		private string _FreeText = null;
+		private string _RelatedGroupsByUserId = null;
 		private KalturaCategoryUserOrderBy _OrderBy = null;
 		#endregion
 
@@ -56,6 +57,15 @@ namespace Kaltura
 			{ 
 				_FreeText = value;
 				OnPropertyChanged("FreeText");
+			}
+		}
+		public string RelatedGroupsByUserId
+		{
+			get { return _RelatedGroupsByUserId; }
+			set 
+			{ 
+				_RelatedGroupsByUserId = value;
+				OnPropertyChanged("RelatedGroupsByUserId");
 			}
 		}
 		public new KalturaCategoryUserOrderBy OrderBy
@@ -87,6 +97,9 @@ namespace Kaltura
 					case "freeText":
 						this.FreeText = txt;
 						continue;
+					case "relatedGroupsByUserId":
+						this.RelatedGroupsByUserId = txt;
+						continue;
 					case "orderBy":
 						this.OrderBy = (KalturaCategoryUserOrderBy)KalturaStringEnum.Parse(typeof(KalturaCategoryUserOrderBy), txt);
 						continue;
@@ -102,6 +115,7 @@ namespace Kaltura
 			kparams.AddReplace("objectType", "KalturaCategoryUserFilter");
 			kparams.AddBoolIfNotNull("categoryDirectMembers", this.CategoryDirectMembers);
 			kparams.AddStringIfNotNull("freeText", this.FreeText);
+			kparams.AddStringIfNotNull("relatedGroupsByUserId", this.RelatedGroupsByUserId);
 			kparams.AddStringEnumIfNotNull("orderBy", this.OrderBy);
 			return kparams;
 		}

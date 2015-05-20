@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -38,6 +38,7 @@ namespace Kaltura
 		private int _FromTime = Int32.MinValue;
 		private int _ToTime = Int32.MinValue;
 		private KalturaNullableBoolean _Live = (KalturaNullableBoolean)Int32.MinValue;
+		private KalturaLiveReportOrderBy _OrderBy = null;
 		#endregion
 
 		#region Properties
@@ -77,6 +78,15 @@ namespace Kaltura
 				OnPropertyChanged("Live");
 			}
 		}
+		public KalturaLiveReportOrderBy OrderBy
+		{
+			get { return _OrderBy; }
+			set 
+			{ 
+				_OrderBy = value;
+				OnPropertyChanged("OrderBy");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -103,6 +113,9 @@ namespace Kaltura
 					case "live":
 						this.Live = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
+					case "orderBy":
+						this.OrderBy = (KalturaLiveReportOrderBy)KalturaStringEnum.Parse(typeof(KalturaLiveReportOrderBy), txt);
+						continue;
 				}
 			}
 		}
@@ -117,6 +130,7 @@ namespace Kaltura
 			kparams.AddIntIfNotNull("fromTime", this.FromTime);
 			kparams.AddIntIfNotNull("toTime", this.ToTime);
 			kparams.AddEnumIfNotNull("live", this.Live);
+			kparams.AddStringEnumIfNotNull("orderBy", this.OrderBy);
 			return kparams;
 		}
 		#endregion

@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -29,7 +29,6 @@ namespace Kaltura
 {
 	public sealed class KalturaConditionType : KalturaStringEnum
 	{
-		public static readonly KalturaConditionType ABC_WATERMARK = new KalturaConditionType("abcScreenersWatermarkAccessControl.abcWatermark");
 		public static readonly KalturaConditionType EVENT_NOTIFICATION_FIELD = new KalturaConditionType("eventNotification.BooleanField");
 		public static readonly KalturaConditionType EVENT_NOTIFICATION_OBJECT_CHANGED = new KalturaConditionType("eventNotification.ObjectChanged");
 		public static readonly KalturaConditionType METADATA_FIELD_CHANGED = new KalturaConditionType("metadata.FieldChanged");
@@ -45,6 +44,7 @@ namespace Kaltura
 		public static readonly KalturaConditionType ASSET_PROPERTIES_COMPARE = new KalturaConditionType("8");
 		public static readonly KalturaConditionType USER_ROLE = new KalturaConditionType("9");
 		public static readonly KalturaConditionType GEO_DISTANCE = new KalturaConditionType("10");
+		public static readonly KalturaConditionType OR_OPERATOR = new KalturaConditionType("11");
 
 		private KalturaConditionType(string name) : base(name) { }
 	}

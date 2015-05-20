@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -35,6 +35,7 @@ namespace Kaltura
 	{
 		#region Private Fields
 		private KalturaObjectTaskType _Type = null;
+		private bool? _StopProcessingOnError = false;
 		#endregion
 
 		#region Properties
@@ -45,6 +46,15 @@ namespace Kaltura
 			{ 
 				_Type = value;
 				OnPropertyChanged("Type");
+			}
+		}
+		public bool? StopProcessingOnError
+		{
+			get { return _StopProcessingOnError; }
+			set 
+			{ 
+				_StopProcessingOnError = value;
+				OnPropertyChanged("StopProcessingOnError");
 			}
 		}
 		#endregion
@@ -64,6 +74,9 @@ namespace Kaltura
 					case "type":
 						this.Type = (KalturaObjectTaskType)KalturaStringEnum.Parse(typeof(KalturaObjectTaskType), txt);
 						continue;
+					case "stopProcessingOnError":
+						this.StopProcessingOnError = ParseBool(txt);
+						continue;
 				}
 			}
 		}
@@ -75,6 +88,7 @@ namespace Kaltura
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaObjectTask");
 			kparams.AddStringEnumIfNotNull("type", this.Type);
+			kparams.AddBoolIfNotNull("stopProcessingOnError", this.StopProcessingOnError);
 			return kparams;
 		}
 		#endregion

@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -35,6 +35,7 @@ namespace Kaltura
 	{
 		#region Private Fields
 		private int _Audience = Int32.MinValue;
+		private int _DvrAudience = Int32.MinValue;
 		private float _AvgBitrate = Single.MinValue;
 		private int _BufferTime = Int32.MinValue;
 		private int _Plays = Int32.MinValue;
@@ -51,6 +52,15 @@ namespace Kaltura
 			{ 
 				_Audience = value;
 				OnPropertyChanged("Audience");
+			}
+		}
+		public int DvrAudience
+		{
+			get { return _DvrAudience; }
+			set 
+			{ 
+				_DvrAudience = value;
+				OnPropertyChanged("DvrAudience");
 			}
 		}
 		public float AvgBitrate
@@ -124,6 +134,9 @@ namespace Kaltura
 					case "audience":
 						this.Audience = ParseInt(txt);
 						continue;
+					case "dvrAudience":
+						this.DvrAudience = ParseInt(txt);
+						continue;
 					case "avgBitrate":
 						this.AvgBitrate = ParseFloat(txt);
 						continue;
@@ -153,6 +166,7 @@ namespace Kaltura
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveStats");
 			kparams.AddIntIfNotNull("audience", this.Audience);
+			kparams.AddIntIfNotNull("dvrAudience", this.DvrAudience);
 			kparams.AddFloatIfNotNull("avgBitrate", this.AvgBitrate);
 			kparams.AddIntIfNotNull("bufferTime", this.BufferTime);
 			kparams.AddIntIfNotNull("plays", this.Plays);

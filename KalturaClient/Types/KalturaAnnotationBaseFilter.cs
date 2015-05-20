@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -43,6 +43,7 @@ namespace Kaltura
 		private int _EndTimeLessThanOrEqual = Int32.MinValue;
 		private int _DurationGreaterThanOrEqual = Int32.MinValue;
 		private int _DurationLessThanOrEqual = Int32.MinValue;
+		private KalturaNullableBoolean _IsPublicEqual = (KalturaNullableBoolean)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -127,6 +128,15 @@ namespace Kaltura
 				OnPropertyChanged("DurationLessThanOrEqual");
 			}
 		}
+		public KalturaNullableBoolean IsPublicEqual
+		{
+			get { return _IsPublicEqual; }
+			set 
+			{ 
+				_IsPublicEqual = value;
+				OnPropertyChanged("IsPublicEqual");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -168,6 +178,9 @@ namespace Kaltura
 					case "durationLessThanOrEqual":
 						this.DurationLessThanOrEqual = ParseInt(txt);
 						continue;
+					case "isPublicEqual":
+						this.IsPublicEqual = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						continue;
 				}
 			}
 		}
@@ -187,6 +200,7 @@ namespace Kaltura
 			kparams.AddIntIfNotNull("endTimeLessThanOrEqual", this.EndTimeLessThanOrEqual);
 			kparams.AddIntIfNotNull("durationGreaterThanOrEqual", this.DurationGreaterThanOrEqual);
 			kparams.AddIntIfNotNull("durationLessThanOrEqual", this.DurationLessThanOrEqual);
+			kparams.AddEnumIfNotNull("isPublicEqual", this.IsPublicEqual);
 			return kparams;
 		}
 		#endregion

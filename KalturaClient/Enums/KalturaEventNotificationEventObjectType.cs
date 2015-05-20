@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -36,6 +36,8 @@ namespace Kaltura
 		public static readonly KalturaEventNotificationEventObjectType DISTRIBUTION_PROFILE = new KalturaEventNotificationEventObjectType("contentDistributionEventNotifications.DistributionProfile");
 		public static readonly KalturaEventNotificationEventObjectType ENTRY_DISTRIBUTION = new KalturaEventNotificationEventObjectType("contentDistributionEventNotifications.EntryDistribution");
 		public static readonly KalturaEventNotificationEventObjectType CUE_POINT = new KalturaEventNotificationEventObjectType("cuePointEventNotifications.CuePoint");
+		public static readonly KalturaEventNotificationEventObjectType DROP_FOLDER = new KalturaEventNotificationEventObjectType("dropFolderEventNotifications.DropFolder");
+		public static readonly KalturaEventNotificationEventObjectType DROP_FOLDER_FILE = new KalturaEventNotificationEventObjectType("dropFolderEventNotifications.DropFolderFile");
 		public static readonly KalturaEventNotificationEventObjectType METADATA = new KalturaEventNotificationEventObjectType("metadataEventNotifications.Metadata");
 		public static readonly KalturaEventNotificationEventObjectType ENTRY = new KalturaEventNotificationEventObjectType("1");
 		public static readonly KalturaEventNotificationEventObjectType CATEGORY = new KalturaEventNotificationEventObjectType("2");

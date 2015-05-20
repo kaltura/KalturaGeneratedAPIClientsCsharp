@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -34,7 +34,7 @@ namespace Kaltura
 		public KalturaClient(KalturaConfiguration config)
 			: base(config)
 		{
-				_ApiVersion = "3.1.6";
+				_ApiVersion = "3.2.0";
 		}
 
 		KalturaAccessControlProfileService _AccessControlProfileService;
@@ -253,6 +253,18 @@ namespace Kaltura
 			}
 		}
 
+		KalturaGroupUserService _GroupUserService;
+		public KalturaGroupUserService GroupUserService
+		{
+			get
+			{
+				if (_GroupUserService == null)
+					_GroupUserService = new KalturaGroupUserService(this);
+
+				return _GroupUserService;
+			}
+		}
+
 		KalturaLiveChannelSegmentService _LiveChannelSegmentService;
 		public KalturaLiveChannelSegmentService LiveChannelSegmentService
 		{
@@ -289,15 +301,15 @@ namespace Kaltura
 			}
 		}
 
-		KalturaStatsService _StatsService;
-		public KalturaStatsService StatsService
+		KalturaLiveStatsService _LiveStatsService;
+		public KalturaLiveStatsService LiveStatsService
 		{
 			get
 			{
-				if (_StatsService == null)
-					_StatsService = new KalturaStatsService(this);
+				if (_LiveStatsService == null)
+					_LiveStatsService = new KalturaLiveStatsService(this);
 
-				return _StatsService;
+				return _LiveStatsService;
 			}
 		}
 
@@ -433,6 +445,18 @@ namespace Kaltura
 			}
 		}
 
+		KalturaResponseProfileService _ResponseProfileService;
+		public KalturaResponseProfileService ResponseProfileService
+		{
+			get
+			{
+				if (_ResponseProfileService == null)
+					_ResponseProfileService = new KalturaResponseProfileService(this);
+
+				return _ResponseProfileService;
+			}
+		}
+
 		KalturaSchemaService _SchemaService;
 		public KalturaSchemaService SchemaService
 		{
@@ -466,6 +490,18 @@ namespace Kaltura
 					_SessionService = new KalturaSessionService(this);
 
 				return _SessionService;
+			}
+		}
+
+		KalturaStatsService _StatsService;
+		public KalturaStatsService StatsService
+		{
+			get
+			{
+				if (_StatsService == null)
+					_StatsService = new KalturaStatsService(this);
+
+				return _StatsService;
 			}
 		}
 
@@ -661,99 +697,75 @@ namespace Kaltura
 			}
 		}
 
-		KalturaAnnotationService _AnnotationService;
-		public KalturaAnnotationService AnnotationService
+		KalturaSystemPartnerService _SystemPartnerService;
+		public KalturaSystemPartnerService SystemPartnerService
 		{
 			get
 			{
-				if (_AnnotationService == null)
-					_AnnotationService = new KalturaAnnotationService(this);
+				if (_SystemPartnerService == null)
+					_SystemPartnerService = new KalturaSystemPartnerService(this);
 
-				return _AnnotationService;
+				return _SystemPartnerService;
 			}
 		}
 
-		KalturaAsperaService _AsperaService;
-		public KalturaAsperaService AsperaService
+		KalturaEntryAdminService _EntryAdminService;
+		public KalturaEntryAdminService EntryAdminService
 		{
 			get
 			{
-				if (_AsperaService == null)
-					_AsperaService = new KalturaAsperaService(this);
+				if (_EntryAdminService == null)
+					_EntryAdminService = new KalturaEntryAdminService(this);
 
-				return _AsperaService;
+				return _EntryAdminService;
 			}
 		}
 
-		KalturaAttachmentAssetService _AttachmentAssetService;
-		public KalturaAttachmentAssetService AttachmentAssetService
+		KalturaUiConfAdminService _UiConfAdminService;
+		public KalturaUiConfAdminService UiConfAdminService
 		{
 			get
 			{
-				if (_AttachmentAssetService == null)
-					_AttachmentAssetService = new KalturaAttachmentAssetService(this);
+				if (_UiConfAdminService == null)
+					_UiConfAdminService = new KalturaUiConfAdminService(this);
 
-				return _AttachmentAssetService;
+				return _UiConfAdminService;
 			}
 		}
 
-		KalturaAuditTrailService _AuditTrailService;
-		public KalturaAuditTrailService AuditTrailService
+		KalturaReportAdminService _ReportAdminService;
+		public KalturaReportAdminService ReportAdminService
 		{
 			get
 			{
-				if (_AuditTrailService == null)
-					_AuditTrailService = new KalturaAuditTrailService(this);
+				if (_ReportAdminService == null)
+					_ReportAdminService = new KalturaReportAdminService(this);
 
-				return _AuditTrailService;
+				return _ReportAdminService;
 			}
 		}
 
-		KalturaBulkService _BulkService;
-		public KalturaBulkService BulkService
+		KalturaKalturaInternalToolsSystemHelperService _KalturaInternalToolsSystemHelperService;
+		public KalturaKalturaInternalToolsSystemHelperService KalturaInternalToolsSystemHelperService
 		{
 			get
 			{
-				if (_BulkService == null)
-					_BulkService = new KalturaBulkService(this);
+				if (_KalturaInternalToolsSystemHelperService == null)
+					_KalturaInternalToolsSystemHelperService = new KalturaKalturaInternalToolsSystemHelperService(this);
 
-				return _BulkService;
+				return _KalturaInternalToolsSystemHelperService;
 			}
 		}
 
-		KalturaCaptionAssetService _CaptionAssetService;
-		public KalturaCaptionAssetService CaptionAssetService
+		KalturaVirusScanProfileService _VirusScanProfileService;
+		public KalturaVirusScanProfileService VirusScanProfileService
 		{
 			get
 			{
-				if (_CaptionAssetService == null)
-					_CaptionAssetService = new KalturaCaptionAssetService(this);
+				if (_VirusScanProfileService == null)
+					_VirusScanProfileService = new KalturaVirusScanProfileService(this);
 
-				return _CaptionAssetService;
-			}
-		}
-
-		KalturaCaptionParamsService _CaptionParamsService;
-		public KalturaCaptionParamsService CaptionParamsService
-		{
-			get
-			{
-				if (_CaptionParamsService == null)
-					_CaptionParamsService = new KalturaCaptionParamsService(this);
-
-				return _CaptionParamsService;
-			}
-		}
-
-		KalturaCaptionAssetItemService _CaptionAssetItemService;
-		public KalturaCaptionAssetItemService CaptionAssetItemService
-		{
-			get
-			{
-				if (_CaptionAssetItemService == null)
-					_CaptionAssetItemService = new KalturaCaptionAssetItemService(this);
-
-				return _CaptionAssetItemService;
+				return _VirusScanProfileService;
 			}
 		}
 
@@ -829,6 +841,42 @@ namespace Kaltura
 			}
 		}
 
+		KalturaAnnotationService _AnnotationService;
+		public KalturaAnnotationService AnnotationService
+		{
+			get
+			{
+				if (_AnnotationService == null)
+					_AnnotationService = new KalturaAnnotationService(this);
+
+				return _AnnotationService;
+			}
+		}
+
+		KalturaShortLinkService _ShortLinkService;
+		public KalturaShortLinkService ShortLinkService
+		{
+			get
+			{
+				if (_ShortLinkService == null)
+					_ShortLinkService = new KalturaShortLinkService(this);
+
+				return _ShortLinkService;
+			}
+		}
+
+		KalturaBulkService _BulkService;
+		public KalturaBulkService BulkService
+		{
+			get
+			{
+				if (_BulkService == null)
+					_BulkService = new KalturaBulkService(this);
+
+				return _BulkService;
+			}
+		}
+
 		KalturaDropFolderService _DropFolderService;
 		public KalturaDropFolderService DropFolderService
 		{
@@ -853,39 +901,51 @@ namespace Kaltura
 			}
 		}
 
-		KalturaEventNotificationTemplateService _EventNotificationTemplateService;
-		public KalturaEventNotificationTemplateService EventNotificationTemplateService
+		KalturaCaptionAssetService _CaptionAssetService;
+		public KalturaCaptionAssetService CaptionAssetService
 		{
 			get
 			{
-				if (_EventNotificationTemplateService == null)
-					_EventNotificationTemplateService = new KalturaEventNotificationTemplateService(this);
+				if (_CaptionAssetService == null)
+					_CaptionAssetService = new KalturaCaptionAssetService(this);
 
-				return _EventNotificationTemplateService;
+				return _CaptionAssetService;
 			}
 		}
 
-		KalturaLikeService _LikeService;
-		public KalturaLikeService LikeService
+		KalturaCaptionParamsService _CaptionParamsService;
+		public KalturaCaptionParamsService CaptionParamsService
 		{
 			get
 			{
-				if (_LikeService == null)
-					_LikeService = new KalturaLikeService(this);
+				if (_CaptionParamsService == null)
+					_CaptionParamsService = new KalturaCaptionParamsService(this);
 
-				return _LikeService;
+				return _CaptionParamsService;
 			}
 		}
 
-		KalturaShortLinkService _ShortLinkService;
-		public KalturaShortLinkService ShortLinkService
+		KalturaCaptionAssetItemService _CaptionAssetItemService;
+		public KalturaCaptionAssetItemService CaptionAssetItemService
 		{
 			get
 			{
-				if (_ShortLinkService == null)
-					_ShortLinkService = new KalturaShortLinkService(this);
+				if (_CaptionAssetItemService == null)
+					_CaptionAssetItemService = new KalturaCaptionAssetItemService(this);
 
-				return _ShortLinkService;
+				return _CaptionAssetItemService;
+			}
+		}
+
+		KalturaAttachmentAssetService _AttachmentAssetService;
+		public KalturaAttachmentAssetService AttachmentAssetService
+		{
+			get
+			{
+				if (_AttachmentAssetService == null)
+					_AttachmentAssetService = new KalturaAttachmentAssetService(this);
+
+				return _AttachmentAssetService;
 			}
 		}
 
@@ -901,6 +961,18 @@ namespace Kaltura
 			}
 		}
 
+		KalturaLikeService _LikeService;
+		public KalturaLikeService LikeService
+		{
+			get
+			{
+				if (_LikeService == null)
+					_LikeService = new KalturaLikeService(this);
+
+				return _LikeService;
+			}
+		}
+
 		KalturaVarConsoleService _VarConsoleService;
 		public KalturaVarConsoleService VarConsoleService
 		{
@@ -913,15 +985,15 @@ namespace Kaltura
 			}
 		}
 
-		KalturaVirusScanProfileService _VirusScanProfileService;
-		public KalturaVirusScanProfileService VirusScanProfileService
+		KalturaEventNotificationTemplateService _EventNotificationTemplateService;
+		public KalturaEventNotificationTemplateService EventNotificationTemplateService
 		{
 			get
 			{
-				if (_VirusScanProfileService == null)
-					_VirusScanProfileService = new KalturaVirusScanProfileService(this);
+				if (_EventNotificationTemplateService == null)
+					_EventNotificationTemplateService = new KalturaEventNotificationTemplateService(this);
 
-				return _VirusScanProfileService;
+				return _EventNotificationTemplateService;
 			}
 		}
 
@@ -937,42 +1009,6 @@ namespace Kaltura
 			}
 		}
 
-		KalturaDrmPolicyService _DrmPolicyService;
-		public KalturaDrmPolicyService DrmPolicyService
-		{
-			get
-			{
-				if (_DrmPolicyService == null)
-					_DrmPolicyService = new KalturaDrmPolicyService(this);
-
-				return _DrmPolicyService;
-			}
-		}
-
-		KalturaDrmProfileService _DrmProfileService;
-		public KalturaDrmProfileService DrmProfileService
-		{
-			get
-			{
-				if (_DrmProfileService == null)
-					_DrmProfileService = new KalturaDrmProfileService(this);
-
-				return _DrmProfileService;
-			}
-		}
-
-		KalturaWidevineDrmService _WidevineDrmService;
-		public KalturaWidevineDrmService WidevineDrmService
-		{
-			get
-			{
-				if (_WidevineDrmService == null)
-					_WidevineDrmService = new KalturaWidevineDrmService(this);
-
-				return _WidevineDrmService;
-			}
-		}
-
 		KalturaScheduledTaskProfileService _ScheduledTaskProfileService;
 		public KalturaScheduledTaskProfileService ScheduledTaskProfileService
 		{
@@ -982,18 +1018,6 @@ namespace Kaltura
 					_ScheduledTaskProfileService = new KalturaScheduledTaskProfileService(this);
 
 				return _ScheduledTaskProfileService;
-			}
-		}
-
-		KalturaPlayReadyDrmService _PlayReadyDrmService;
-		public KalturaPlayReadyDrmService PlayReadyDrmService
-		{
-			get
-			{
-				if (_PlayReadyDrmService == null)
-					_PlayReadyDrmService = new KalturaPlayReadyDrmService(this);
-
-				return _PlayReadyDrmService;
 			}
 		}
 	}

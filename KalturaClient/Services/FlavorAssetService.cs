@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -195,10 +195,17 @@ namespace Kaltura
 
 		public string GetUrl(string id, int storageId, bool forceProxy)
 		{
+			return this.GetUrl(id, storageId, forceProxy, null);
+		}
+
+		public string GetUrl(string id, int storageId, bool forceProxy, KalturaFlavorAssetUrlOptions options)
+		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddStringIfNotNull("id", id);
 			kparams.AddIntIfNotNull("storageId", storageId);
 			kparams.AddBoolIfNotNull("forceProxy", forceProxy);
+			if (options != null)
+				kparams.Add("options", options.ToParams());
 			_Client.QueueServiceCall("flavorasset", "getUrl", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

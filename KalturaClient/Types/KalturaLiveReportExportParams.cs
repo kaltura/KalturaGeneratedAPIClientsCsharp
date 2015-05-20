@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -37,6 +37,7 @@ namespace Kaltura
 		private string _EntryIds = null;
 		private string _RecpientEmail = null;
 		private int _TimeZoneOffset = Int32.MinValue;
+		private string _ApplicationUrlTemplate = null;
 		#endregion
 
 		#region Properties
@@ -67,6 +68,15 @@ namespace Kaltura
 				OnPropertyChanged("TimeZoneOffset");
 			}
 		}
+		public string ApplicationUrlTemplate
+		{
+			get { return _ApplicationUrlTemplate; }
+			set 
+			{ 
+				_ApplicationUrlTemplate = value;
+				OnPropertyChanged("ApplicationUrlTemplate");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -90,6 +100,9 @@ namespace Kaltura
 					case "timeZoneOffset":
 						this.TimeZoneOffset = ParseInt(txt);
 						continue;
+					case "applicationUrlTemplate":
+						this.ApplicationUrlTemplate = txt;
+						continue;
 				}
 			}
 		}
@@ -103,6 +116,7 @@ namespace Kaltura
 			kparams.AddStringIfNotNull("entryIds", this.EntryIds);
 			kparams.AddStringIfNotNull("recpientEmail", this.RecpientEmail);
 			kparams.AddIntIfNotNull("timeZoneOffset", this.TimeZoneOffset);
+			kparams.AddStringIfNotNull("applicationUrlTemplate", this.ApplicationUrlTemplate);
 			return kparams;
 		}
 		#endregion

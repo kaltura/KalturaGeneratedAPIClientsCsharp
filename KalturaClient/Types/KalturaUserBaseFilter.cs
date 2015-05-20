@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -31,10 +31,12 @@ using System.Collections.Generic;
 
 namespace Kaltura
 {
-	public class KalturaUserBaseFilter : KalturaFilter
+	public class KalturaUserBaseFilter : KalturaRelatedFilter
 	{
 		#region Private Fields
 		private int _PartnerIdEqual = Int32.MinValue;
+		private KalturaUserType _TypeEqual = (KalturaUserType)Int32.MinValue;
+		private string _TypeIn = null;
 		private string _ScreenNameLike = null;
 		private string _ScreenNameStartsWith = null;
 		private string _EmailLike = null;
@@ -58,6 +60,24 @@ namespace Kaltura
 			{ 
 				_PartnerIdEqual = value;
 				OnPropertyChanged("PartnerIdEqual");
+			}
+		}
+		public KalturaUserType TypeEqual
+		{
+			get { return _TypeEqual; }
+			set 
+			{ 
+				_TypeEqual = value;
+				OnPropertyChanged("TypeEqual");
+			}
+		}
+		public string TypeIn
+		{
+			get { return _TypeIn; }
+			set 
+			{ 
+				_TypeIn = value;
+				OnPropertyChanged("TypeIn");
 			}
 		}
 		public string ScreenNameLike
@@ -194,6 +214,12 @@ namespace Kaltura
 					case "partnerIdEqual":
 						this.PartnerIdEqual = ParseInt(txt);
 						continue;
+					case "typeEqual":
+						this.TypeEqual = (KalturaUserType)ParseEnum(typeof(KalturaUserType), txt);
+						continue;
+					case "typeIn":
+						this.TypeIn = txt;
+						continue;
 					case "screenNameLike":
 						this.ScreenNameLike = txt;
 						continue;
@@ -244,6 +270,8 @@ namespace Kaltura
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUserBaseFilter");
 			kparams.AddIntIfNotNull("partnerIdEqual", this.PartnerIdEqual);
+			kparams.AddEnumIfNotNull("typeEqual", this.TypeEqual);
+			kparams.AddStringIfNotNull("typeIn", this.TypeIn);
 			kparams.AddStringIfNotNull("screenNameLike", this.ScreenNameLike);
 			kparams.AddStringIfNotNull("screenNameStartsWith", this.ScreenNameStartsWith);
 			kparams.AddStringIfNotNull("emailLike", this.EmailLike);

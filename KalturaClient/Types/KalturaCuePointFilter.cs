@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -34,10 +34,20 @@ namespace Kaltura
 	public class KalturaCuePointFilter : KalturaCuePointBaseFilter
 	{
 		#region Private Fields
+		private string _FreeText = null;
 		private KalturaCuePointOrderBy _OrderBy = null;
 		#endregion
 
 		#region Properties
+		public string FreeText
+		{
+			get { return _FreeText; }
+			set 
+			{ 
+				_FreeText = value;
+				OnPropertyChanged("FreeText");
+			}
+		}
 		public new KalturaCuePointOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -61,6 +71,9 @@ namespace Kaltura
 				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
+					case "freeText":
+						this.FreeText = txt;
+						continue;
 					case "orderBy":
 						this.OrderBy = (KalturaCuePointOrderBy)KalturaStringEnum.Parse(typeof(KalturaCuePointOrderBy), txt);
 						continue;
@@ -74,6 +87,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCuePointFilter");
+			kparams.AddStringIfNotNull("freeText", this.FreeText);
 			kparams.AddStringEnumIfNotNull("orderBy", this.OrderBy);
 			return kparams;
 		}

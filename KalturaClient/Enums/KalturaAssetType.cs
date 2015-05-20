@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -35,8 +35,6 @@ namespace Kaltura
 		public static readonly KalturaAssetType IMAGE = new KalturaAssetType("document.Image");
 		public static readonly KalturaAssetType PDF = new KalturaAssetType("document.PDF");
 		public static readonly KalturaAssetType SWF = new KalturaAssetType("document.SWF");
-		public static readonly KalturaAssetType TIMED_THUMB_ASSET = new KalturaAssetType("thumbCuePoint.timedThumb");
-		public static readonly KalturaAssetType WIDEVINE_FLAVOR = new KalturaAssetType("widevine.WidevineFlavor");
 		public static readonly KalturaAssetType FLAVOR = new KalturaAssetType("1");
 		public static readonly KalturaAssetType THUMBNAIL = new KalturaAssetType("2");
 		public static readonly KalturaAssetType LIVE = new KalturaAssetType("3");

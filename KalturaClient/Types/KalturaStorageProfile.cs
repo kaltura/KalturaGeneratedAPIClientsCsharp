@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -62,6 +62,9 @@ namespace Kaltura
 		private bool? _CreateFileLink = false;
 		private IList<KalturaRule> _Rules;
 		private IList<KalturaKeyValue> _DeliveryProfileIds;
+		private string _PrivateKey = null;
+		private string _PublicKey = null;
+		private string _PassPhrase = null;
 		#endregion
 
 		#region Properties
@@ -317,6 +320,33 @@ namespace Kaltura
 				OnPropertyChanged("DeliveryProfileIds");
 			}
 		}
+		public string PrivateKey
+		{
+			get { return _PrivateKey; }
+			set 
+			{ 
+				_PrivateKey = value;
+				OnPropertyChanged("PrivateKey");
+			}
+		}
+		public string PublicKey
+		{
+			get { return _PublicKey; }
+			set 
+			{ 
+				_PublicKey = value;
+				OnPropertyChanged("PublicKey");
+			}
+		}
+		public string PassPhrase
+		{
+			get { return _PassPhrase; }
+			set 
+			{ 
+				_PassPhrase = value;
+				OnPropertyChanged("PassPhrase");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -427,6 +457,15 @@ namespace Kaltura
 							this.DeliveryProfileIds.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
 						}
 						continue;
+					case "privateKey":
+						this.PrivateKey = txt;
+						continue;
+					case "publicKey":
+						this.PublicKey = txt;
+						continue;
+					case "passPhrase":
+						this.PassPhrase = txt;
+						continue;
 				}
 			}
 		}
@@ -510,6 +549,9 @@ namespace Kaltura
 					}
 				}
 			}
+			kparams.AddStringIfNotNull("privateKey", this.PrivateKey);
+			kparams.AddStringIfNotNull("publicKey", this.PublicKey);
+			kparams.AddStringIfNotNull("passPhrase", this.PassPhrase);
 			return kparams;
 		}
 		#endregion

@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -31,11 +31,10 @@ using System.Collections.Generic;
 
 namespace Kaltura
 {
-	public class KalturaLiveStatsListResponse : KalturaObjectBase
+	public class KalturaLiveStatsListResponse : KalturaListResponse
 	{
 		#region Private Fields
 		private KalturaLiveStats _Objects;
-		private int _TotalCount = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -48,15 +47,6 @@ namespace Kaltura
 				OnPropertyChanged("Objects");
 			}
 		}
-		public int TotalCount
-		{
-			get { return _TotalCount; }
-			set 
-			{ 
-				_TotalCount = value;
-				OnPropertyChanged("TotalCount");
-			}
-		}
 		#endregion
 
 		#region CTor
@@ -64,7 +54,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaLiveStatsListResponse(XmlElement node)
+		public KalturaLiveStatsListResponse(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -73,9 +63,6 @@ namespace Kaltura
 				{
 					case "objects":
 						this.Objects = (KalturaLiveStats)KalturaObjectFactory.Create(propertyNode, "KalturaLiveStats");
-						continue;
-					case "totalCount":
-						this.TotalCount = ParseInt(txt);
 						continue;
 				}
 			}
@@ -89,7 +76,6 @@ namespace Kaltura
 			kparams.AddReplace("objectType", "KalturaLiveStatsListResponse");
 			if (this.Objects != null)
 				kparams.Add("objects", this.Objects.ToParams());
-			kparams.AddIntIfNotNull("totalCount", this.TotalCount);
 			return kparams;
 		}
 		#endregion

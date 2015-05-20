@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -46,6 +46,7 @@ namespace Kaltura
 		private int _FirstBroadcast = Int32.MinValue;
 		private int _LastBroadcast = Int32.MinValue;
 		private float _CurrentBroadcastStartTime = Single.MinValue;
+		private KalturaLiveEntryRecordingOptions _RecordingOptions;
 		#endregion
 
 		#region Properties
@@ -157,6 +158,15 @@ namespace Kaltura
 				OnPropertyChanged("CurrentBroadcastStartTime");
 			}
 		}
+		public KalturaLiveEntryRecordingOptions RecordingOptions
+		{
+			get { return _RecordingOptions; }
+			set 
+			{ 
+				_RecordingOptions = value;
+				OnPropertyChanged("RecordingOptions");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -215,6 +225,9 @@ namespace Kaltura
 					case "currentBroadcastStartTime":
 						this.CurrentBroadcastStartTime = ParseFloat(txt);
 						continue;
+					case "recordingOptions":
+						this.RecordingOptions = (KalturaLiveEntryRecordingOptions)KalturaObjectFactory.Create(propertyNode, "KalturaLiveEntryRecordingOptions");
+						continue;
 				}
 			}
 		}
@@ -267,6 +280,8 @@ namespace Kaltura
 			kparams.AddIntIfNotNull("firstBroadcast", this.FirstBroadcast);
 			kparams.AddIntIfNotNull("lastBroadcast", this.LastBroadcast);
 			kparams.AddFloatIfNotNull("currentBroadcastStartTime", this.CurrentBroadcastStartTime);
+			if (this.RecordingOptions != null)
+				kparams.Add("recordingOptions", this.RecordingOptions.ToParams());
 			return kparams;
 		}
 		#endregion

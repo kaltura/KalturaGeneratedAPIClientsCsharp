@@ -1,6 +1,6 @@
-language: csharp
+language: c
 #solution: KalturaClient.sln
 install:
-    - sudo apt-get install -y mono-xbuild mono-complete
+    - sudo apt-get -y install mono-devel mono-gmc
 script: 
-    - ./build.sh
+    - cd ./KalturaClientTester/bin/Debug/ &&  mono KalturaClientTester.exe

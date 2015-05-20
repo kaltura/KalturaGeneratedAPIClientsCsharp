@@ -1,6 +1,6 @@
 language: csharp
-solution: KalturaClient.sln
-#install:
-#    - sudo apt-get install -y mono-xbuild
+#solution: KalturaClient.sln
+install:
+    - sudo apt-get install -y mono-xbuild
 script: 
     - ./build.sh

@@ -14,5 +14,6 @@
 #===============================================================================
 
 #set -o nounset                              # Treat unset variables as an error
+xbuild KalturaClient.sln
 cd ./KalturaClientTester/bin/Debug/ &&  mono KalturaClientTester.exe
 

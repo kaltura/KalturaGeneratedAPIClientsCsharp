@@ -14,7 +14,6 @@
 #===============================================================================
 
 #set -o nounset                              # Treat unset variables as an error
-sed -i "s#1931861#1931861#g" -e "s#c66b9aed76e28c91455cb69fec6f2f7d#c66b9aed76e28c91455cb69fec6f2f7d#" -e "s#83c3d4449a3abbe92ca5966f5f010eb4#83c3d4449a3abbe92ca5966f5f010eb4#g" -e "s#http://www.kaltura.com#http://www.kaltura.com#" -i KalturaClientTester/KalturaClientTester.cs
 xbuild KalturaClient.sln
 cd ./KalturaClientTester/bin/Debug/ &&  mono KalturaClientTester.exe
 

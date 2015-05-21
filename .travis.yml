@@ -1,6 +1,6 @@
 language: c
 #solution: KalturaClient.sln
 install:
-    - sudo apt-get -y install mono-complete
+    - sudo apt-get update && apt-get -y install mono-complete
 script: 
     - xbuild KalturaClient.sln && cd ./KalturaClientTester/bin/Debug/ &&  mono KalturaClientTester.exe

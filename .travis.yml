@@ -3,4 +3,4 @@ language: c
 install:
     - sudo apt-get -y install mono-devel mono-gmc
 script: 
-    - cd ./KalturaClientTester/bin/Debug/ &&  mono KalturaClientTester.exe
+    - xbuild KalturaClient.sln && cd ./KalturaClientTester/bin/Debug/ &&  mono KalturaClientTester.exe

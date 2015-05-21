@@ -48,6 +48,7 @@ namespace Kaltura
 		private IList<KalturaString> _AccessControlMessages;
 		private IList<KalturaRuleAction> _AccessControlActions;
 		private IList<KalturaFlavorAsset> _FlavorAssets;
+		private Dictionary<string, KalturaPluginData> _PluginData;
 		#endregion
 
 		#region Properties
@@ -177,6 +178,15 @@ namespace Kaltura
 				OnPropertyChanged("FlavorAssets");
 			}
 		}
+		public Dictionary<string, KalturaPluginData> PluginData
+		{
+			get { return _PluginData; }
+			set 
+			{ 
+				_PluginData = value;
+				OnPropertyChanged("PluginData");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -245,6 +255,17 @@ namespace Kaltura
 							this.FlavorAssets.Add((KalturaFlavorAsset)KalturaObjectFactory.Create(arrayNode, "KalturaFlavorAsset"));
 						}
 						continue;
+					case "pluginData":
+						{
+							int index = 0;
+							this.PluginData = new Dictionary<string, KalturaPluginData>();
+							foreach(XmlElement arrayNode in propertyNode.ChildNodes)
+							{
+								this.PluginData[index.ToString()] = (KalturaPluginData)KalturaObjectFactory.Create(arrayNode, "KalturaPluginData");
+								index++;
+							}
+						}
+						continue;
 				}
 			}
 		}
@@ -311,6 +332,20 @@ namespace Kaltura
 					{
 						kparams.Add("flavorAssets:" + i, item.ToParams());
 						i++;
+					}
+				}
+			}
+			if (this.PluginData != null)
+			{
+				if (this.PluginData.Count == 0)
+				{
+					kparams.Add("pluginData:-", "");
+				}
+				else
+				{
+					foreach (KeyValuePair<string, KalturaPluginData> curEntry in this.PluginData)
+					{
+						kparams.Add("pluginData:" + curEntry.Key, curEntry.Value.ToParams());
 					}
 				}
 			}

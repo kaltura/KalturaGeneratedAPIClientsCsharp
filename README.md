@@ -5,4 +5,4 @@
 https://github.com/kaltura/server/
 code is under generator/sources/csharp
 
-[![Build Status](https://travis-ci.org/kaltura/KalturaGeneratedAPIClientsCsharp.svg?branch=master)](https://travis-ci.org/kaltura/KalturaGeneratedAPIClientsCsharp)
+[![Build Status](https://travis-ci.org/kaltura/KalturaGeneratedAPIClientsCsharp.svg?branch=10.12.0)](https://travis-ci.org/kaltura/KalturaGeneratedAPIClientsCsharp)

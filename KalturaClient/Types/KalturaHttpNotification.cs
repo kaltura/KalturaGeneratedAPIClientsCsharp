@@ -36,7 +36,7 @@ namespace Kaltura
 		#region Private Fields
 		private KalturaObjectBase _Object;
 		private KalturaEventNotificationEventObjectType _EventObjectType = null;
-		private int _EventNotificationJobId = Int32.MinValue;
+		private long _EventNotificationJobId = long.MinValue;
 		private int _TemplateId = Int32.MinValue;
 		private string _TemplateName = null;
 		private string _TemplateSystemName = null;
@@ -62,7 +62,7 @@ namespace Kaltura
 				OnPropertyChanged("EventObjectType");
 			}
 		}
-		public int EventNotificationJobId
+		public long EventNotificationJobId
 		{
 			get { return _EventNotificationJobId; }
 			set 
@@ -128,7 +128,7 @@ namespace Kaltura
 						this.EventObjectType = (KalturaEventNotificationEventObjectType)KalturaStringEnum.Parse(typeof(KalturaEventNotificationEventObjectType), txt);
 						continue;
 					case "eventNotificationJobId":
-						this.EventNotificationJobId = ParseInt(txt);
+						this.EventNotificationJobId = ParseLong(txt);
 						continue;
 					case "templateId":
 						this.TemplateId = ParseInt(txt);
@@ -155,7 +155,7 @@ namespace Kaltura
 			if (this.Object != null)
 				kparams.Add("object", this.Object.ToParams());
 			kparams.AddStringEnumIfNotNull("eventObjectType", this.EventObjectType);
-			kparams.AddIntIfNotNull("eventNotificationJobId", this.EventNotificationJobId);
+			kparams.AddLongIfNotNull("eventNotificationJobId", this.EventNotificationJobId);
 			kparams.AddIntIfNotNull("templateId", this.TemplateId);
 			kparams.AddStringIfNotNull("templateName", this.TemplateName);
 			kparams.AddStringIfNotNull("templateSystemName", this.TemplateSystemName);

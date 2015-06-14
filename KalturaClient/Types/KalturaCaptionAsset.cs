@@ -41,6 +41,7 @@ namespace Kaltura
 		private string _Label = null;
 		private KalturaCaptionType _Format = null;
 		private KalturaCaptionAssetStatus _Status = (KalturaCaptionAssetStatus)Int32.MinValue;
+		private string _ParentId = null;
 		#endregion
 
 		#region Properties
@@ -107,6 +108,15 @@ namespace Kaltura
 				OnPropertyChanged("Status");
 			}
 		}
+		public string ParentId
+		{
+			get { return _ParentId; }
+			set 
+			{ 
+				_ParentId = value;
+				OnPropertyChanged("ParentId");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -142,6 +152,9 @@ namespace Kaltura
 					case "status":
 						this.Status = (KalturaCaptionAssetStatus)ParseEnum(typeof(KalturaCaptionAssetStatus), txt);
 						continue;
+					case "parentId":
+						this.ParentId = txt;
+						continue;
 				}
 			}
 		}
@@ -159,6 +172,7 @@ namespace Kaltura
 			kparams.AddStringIfNotNull("label", this.Label);
 			kparams.AddStringEnumIfNotNull("format", this.Format);
 			kparams.AddEnumIfNotNull("status", this.Status);
+			kparams.AddStringIfNotNull("parentId", this.ParentId);
 			return kparams;
 		}
 		#endregion

@@ -45,6 +45,7 @@ namespace Kaltura
 		public static readonly KalturaConditionType USER_ROLE = new KalturaConditionType("9");
 		public static readonly KalturaConditionType GEO_DISTANCE = new KalturaConditionType("10");
 		public static readonly KalturaConditionType OR_OPERATOR = new KalturaConditionType("11");
+		public static readonly KalturaConditionType HASH = new KalturaConditionType("12");
 
 		private KalturaConditionType(string name) : base(name) { }
 	}

@@ -193,6 +193,18 @@ namespace Kaltura
 			}
 		}
 
+		KalturaEdgeServerService _EdgeServerService;
+		public KalturaEdgeServerService EdgeServerService
+		{
+			get
+			{
+				if (_EdgeServerService == null)
+					_EdgeServerService = new KalturaEdgeServerService(this);
+
+				return _EdgeServerService;
+			}
+		}
+
 		KalturaEmailIngestionProfileService _EmailIngestionProfileService;
 		public KalturaEmailIngestionProfileService EmailIngestionProfileService
 		{

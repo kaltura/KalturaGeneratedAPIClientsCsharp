@@ -36,6 +36,7 @@ namespace Kaltura
 		public static readonly KalturaContainerFormat COPY = new KalturaContainerFormat("copy");
 		public static readonly KalturaContainerFormat FLV = new KalturaContainerFormat("flv");
 		public static readonly KalturaContainerFormat HLS = new KalturaContainerFormat("hls");
+		public static readonly KalturaContainerFormat ISMA = new KalturaContainerFormat("isma");
 		public static readonly KalturaContainerFormat ISMV = new KalturaContainerFormat("ismv");
 		public static readonly KalturaContainerFormat JPG = new KalturaContainerFormat("jpg");
 		public static readonly KalturaContainerFormat M2TS = new KalturaContainerFormat("m2ts");

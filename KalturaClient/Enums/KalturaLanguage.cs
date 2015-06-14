@@ -114,6 +114,7 @@ namespace Kaltura
 		public static readonly KalturaLanguage MR = new KalturaLanguage("Marathi");
 		public static readonly KalturaLanguage MO = new KalturaLanguage("Moldavian");
 		public static readonly KalturaLanguage MN = new KalturaLanguage("Mongolian");
+		public static readonly KalturaLanguage MU = new KalturaLanguage("Multilingual");
 		public static readonly KalturaLanguage NA = new KalturaLanguage("Nauru");
 		public static readonly KalturaLanguage NE = new KalturaLanguage("Nepali");
 		public static readonly KalturaLanguage NO = new KalturaLanguage("Norwegian");
@@ -168,8 +169,8 @@ namespace Kaltura
 		public static readonly KalturaLanguage CY = new KalturaLanguage("Welsh");
 		public static readonly KalturaLanguage WO = new KalturaLanguage("Wolof");
 		public static readonly KalturaLanguage XH = new KalturaLanguage("Xhosa");
-		public static readonly KalturaLanguage YI = new KalturaLanguage("Yiddish");
 		public static readonly KalturaLanguage JI = new KalturaLanguage("Yiddish");
+		public static readonly KalturaLanguage YI = new KalturaLanguage("Yiddish");
 		public static readonly KalturaLanguage YO = new KalturaLanguage("Yoruba");
 		public static readonly KalturaLanguage ZU = new KalturaLanguage("Zulu");
 

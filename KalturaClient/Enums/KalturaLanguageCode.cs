@@ -112,6 +112,7 @@ namespace Kaltura
 		public static readonly KalturaLanguageCode MR = new KalturaLanguageCode("mr");
 		public static readonly KalturaLanguageCode MS = new KalturaLanguageCode("ms");
 		public static readonly KalturaLanguageCode MT = new KalturaLanguageCode("mt");
+		public static readonly KalturaLanguageCode MU = new KalturaLanguageCode("multilingual");
 		public static readonly KalturaLanguageCode MY = new KalturaLanguageCode("my");
 		public static readonly KalturaLanguageCode NA = new KalturaLanguageCode("na");
 		public static readonly KalturaLanguageCode NE = new KalturaLanguageCode("ne");

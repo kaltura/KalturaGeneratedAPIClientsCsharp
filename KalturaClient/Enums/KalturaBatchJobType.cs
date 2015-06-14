@@ -30,6 +30,7 @@ namespace Kaltura
 	public sealed class KalturaBatchJobType : KalturaStringEnum
 	{
 		public static readonly KalturaBatchJobType CONVERT = new KalturaBatchJobType("0");
+		public static readonly KalturaBatchJobType PARSE_MULTI_LANGUAGE_CAPTION_ASSET = new KalturaBatchJobType("caption.parsemultilanguagecaptionasset");
 		public static readonly KalturaBatchJobType PARSE_CAPTION_ASSET = new KalturaBatchJobType("captionSearch.parseCaptionAsset");
 		public static readonly KalturaBatchJobType DISTRIBUTION_DELETE = new KalturaBatchJobType("contentDistribution.DistributionDelete");
 		public static readonly KalturaBatchJobType DISTRIBUTION_DISABLE = new KalturaBatchJobType("contentDistribution.DistributionDisable");

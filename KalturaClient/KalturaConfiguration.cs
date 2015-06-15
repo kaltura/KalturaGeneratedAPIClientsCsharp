@@ -40,7 +40,7 @@ namespace Kaltura
         private int _PartnerId;
         private IKalturaLogger _Logger;
         private int _Timeout = 120000;
-        private string _ClientTag = "dotnet:15-06-14";
+        private string _ClientTag = "dotnet:15-06-15";
 		private string _ProxyAddress = "";
 		private string _ProxyUser = null;
         private string _ProxyPassword = null;

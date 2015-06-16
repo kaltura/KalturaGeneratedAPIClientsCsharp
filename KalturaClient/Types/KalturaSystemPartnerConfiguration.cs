@@ -41,6 +41,7 @@ namespace Kaltura
 		private string _AdminEmail = null;
 		private string _Host = null;
 		private string _CdnHost = null;
+		private string _CdnHostWhiteList = null;
 		private string _ThumbnailHost = null;
 		private int _PartnerPackage = Int32.MinValue;
 		private int _MonitorUsage = Int32.MinValue;
@@ -159,6 +160,15 @@ namespace Kaltura
 			{ 
 				_CdnHost = value;
 				OnPropertyChanged("CdnHost");
+			}
+		}
+		public string CdnHostWhiteList
+		{
+			get { return _CdnHostWhiteList; }
+			set 
+			{ 
+				_CdnHostWhiteList = value;
+				OnPropertyChanged("CdnHostWhiteList");
 			}
 		}
 		public string ThumbnailHost
@@ -682,6 +692,9 @@ namespace Kaltura
 					case "cdnHost":
 						this.CdnHost = txt;
 						continue;
+					case "cdnHostWhiteList":
+						this.CdnHostWhiteList = txt;
+						continue;
 					case "thumbnailHost":
 						this.ThumbnailHost = txt;
 						continue;
@@ -873,6 +886,7 @@ namespace Kaltura
 			kparams.AddStringIfNotNull("adminEmail", this.AdminEmail);
 			kparams.AddStringIfNotNull("host", this.Host);
 			kparams.AddStringIfNotNull("cdnHost", this.CdnHost);
+			kparams.AddStringIfNotNull("cdnHostWhiteList", this.CdnHostWhiteList);
 			kparams.AddStringIfNotNull("thumbnailHost", this.ThumbnailHost);
 			kparams.AddIntIfNotNull("partnerPackage", this.PartnerPackage);
 			kparams.AddIntIfNotNull("monitorUsage", this.MonitorUsage);

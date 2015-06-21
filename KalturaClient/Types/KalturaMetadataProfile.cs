@@ -48,6 +48,7 @@ namespace Kaltura
 		private string _Views = null;
 		private string _Xslt = null;
 		private KalturaMetadataProfileCreateMode _CreateMode = (KalturaMetadataProfileCreateMode)Int32.MinValue;
+		private bool? _DisableReIndexing = false;
 		#endregion
 
 		#region Properties
@@ -177,6 +178,15 @@ namespace Kaltura
 				OnPropertyChanged("CreateMode");
 			}
 		}
+		public bool? DisableReIndexing
+		{
+			get { return _DisableReIndexing; }
+			set 
+			{ 
+				_DisableReIndexing = value;
+				OnPropertyChanged("DisableReIndexing");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -233,6 +243,9 @@ namespace Kaltura
 					case "createMode":
 						this.CreateMode = (KalturaMetadataProfileCreateMode)ParseEnum(typeof(KalturaMetadataProfileCreateMode), txt);
 						continue;
+					case "disableReIndexing":
+						this.DisableReIndexing = ParseBool(txt);
+						continue;
 				}
 			}
 		}
@@ -257,6 +270,7 @@ namespace Kaltura
 			kparams.AddStringIfNotNull("views", this.Views);
 			kparams.AddStringIfNotNull("xslt", this.Xslt);
 			kparams.AddEnumIfNotNull("createMode", this.CreateMode);
+			kparams.AddBoolIfNotNull("disableReIndexing", this.DisableReIndexing);
 			return kparams;
 		}
 		#endregion

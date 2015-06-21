@@ -44,6 +44,7 @@ namespace Kaltura
 		private int _MediaDate = Int32.MinValue;
 		private string _DataUrl = null;
 		private string _FlavorParamsIds = null;
+		private KalturaNullableBoolean _IsTrimDisabled = (KalturaNullableBoolean)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -137,6 +138,15 @@ namespace Kaltura
 				OnPropertyChanged("FlavorParamsIds");
 			}
 		}
+		public KalturaNullableBoolean IsTrimDisabled
+		{
+			get { return _IsTrimDisabled; }
+			set 
+			{ 
+				_IsTrimDisabled = value;
+				OnPropertyChanged("IsTrimDisabled");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -181,6 +191,9 @@ namespace Kaltura
 					case "flavorParamsIds":
 						this.FlavorParamsIds = txt;
 						continue;
+					case "isTrimDisabled":
+						this.IsTrimDisabled = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						continue;
 				}
 			}
 		}
@@ -201,6 +214,7 @@ namespace Kaltura
 			kparams.AddIntIfNotNull("mediaDate", this.MediaDate);
 			kparams.AddStringIfNotNull("dataUrl", this.DataUrl);
 			kparams.AddStringIfNotNull("flavorParamsIds", this.FlavorParamsIds);
+			kparams.AddEnumIfNotNull("isTrimDisabled", this.IsTrimDisabled);
 			return kparams;
 		}
 		#endregion

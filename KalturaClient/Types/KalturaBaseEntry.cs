@@ -75,6 +75,7 @@ namespace Kaltura
 		private IList<KalturaOperationAttributes> _OperationAttributes;
 		private string _EntitledUsersEdit = null;
 		private string _EntitledUsersPublish = null;
+		private string _Capabilities = null;
 		#endregion
 
 		#region Properties
@@ -447,6 +448,15 @@ namespace Kaltura
 				OnPropertyChanged("EntitledUsersPublish");
 			}
 		}
+		public string Capabilities
+		{
+			get { return _Capabilities; }
+			set 
+			{ 
+				_Capabilities = value;
+				OnPropertyChanged("Capabilities");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -588,6 +598,9 @@ namespace Kaltura
 					case "entitledUsersPublish":
 						this.EntitledUsersPublish = txt;
 						continue;
+					case "capabilities":
+						this.Capabilities = txt;
+						continue;
 				}
 			}
 		}
@@ -654,6 +667,7 @@ namespace Kaltura
 			}
 			kparams.AddStringIfNotNull("entitledUsersEdit", this.EntitledUsersEdit);
 			kparams.AddStringIfNotNull("entitledUsersPublish", this.EntitledUsersPublish);
+			kparams.AddStringIfNotNull("capabilities", this.Capabilities);
 			return kparams;
 		}
 		#endregion

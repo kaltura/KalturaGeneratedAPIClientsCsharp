@@ -625,6 +625,18 @@ namespace Kaltura
 			}
 		}
 
+		KalturaUserEntryService _UserEntryService;
+		public KalturaUserEntryService UserEntryService
+		{
+			get
+			{
+				if (_UserEntryService == null)
+					_UserEntryService = new KalturaUserEntryService(this);
+
+				return _UserEntryService;
+			}
+		}
+
 		KalturaUserRoleService _UserRoleService;
 		public KalturaUserRoleService UserRoleService
 		{

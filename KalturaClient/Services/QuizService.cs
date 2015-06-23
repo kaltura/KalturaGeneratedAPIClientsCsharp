@@ -33,87 +33,72 @@ using System.IO;
 namespace Kaltura
 {
 
-	public class KalturaUserEntryService : KalturaServiceBase
+	public class KalturaQuizService : KalturaServiceBase
 	{
-	public KalturaUserEntryService(KalturaClient client)
+	public KalturaQuizService(KalturaClient client)
 			: base(client)
 		{
 		}
 
-		public KalturaUserEntry Add(KalturaUserEntry userEntry)
+		public KalturaQuiz Add(string entryId, KalturaQuiz quiz)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (userEntry != null)
-				kparams.Add("userEntry", userEntry.ToParams());
-			_Client.QueueServiceCall("userentry", "add", "KalturaUserEntry", kparams);
+			kparams.AddStringIfNotNull("entryId", entryId);
+			if (quiz != null)
+				kparams.Add("quiz", quiz.ToParams());
+			_Client.QueueServiceCall("quiz_quiz", "add", "KalturaQuiz", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
 			XmlElement result = _Client.DoQueue();
-			return (KalturaUserEntry)KalturaObjectFactory.Create(result, "KalturaUserEntry");
+			return (KalturaQuiz)KalturaObjectFactory.Create(result, "KalturaQuiz");
 		}
 
-		public void Update(int id, KalturaUserEntry userEntry)
+		public KalturaQuiz Update(string entryId, KalturaQuiz quiz)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			if (userEntry != null)
-				kparams.Add("userEntry", userEntry.ToParams());
-			_Client.QueueServiceCall("userentry", "update", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
-		}
-
-		public KalturaUserEntry Delete(int id)
-		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			_Client.QueueServiceCall("userentry", "delete", "KalturaUserEntry", kparams);
+			kparams.AddStringIfNotNull("entryId", entryId);
+			if (quiz != null)
+				kparams.Add("quiz", quiz.ToParams());
+			_Client.QueueServiceCall("quiz_quiz", "update", "KalturaQuiz", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
 			XmlElement result = _Client.DoQueue();
-			return (KalturaUserEntry)KalturaObjectFactory.Create(result, "KalturaUserEntry");
+			return (KalturaQuiz)KalturaObjectFactory.Create(result, "KalturaQuiz");
 		}
 
-		public KalturaUserEntryListResponse List(KalturaUserEntryFilter filter)
+		public KalturaQuiz Get(string entryId)
+		{
+			KalturaParams kparams = new KalturaParams();
+			kparams.AddStringIfNotNull("entryId", entryId);
+			_Client.QueueServiceCall("quiz_quiz", "get", "KalturaQuiz", kparams);
+			if (this._Client.IsMultiRequest)
+				return null;
+			XmlElement result = _Client.DoQueue();
+			return (KalturaQuiz)KalturaObjectFactory.Create(result, "KalturaQuiz");
+		}
+
+		public KalturaQuizListResponse List()
+		{
+			return this.List(null);
+		}
+
+		public KalturaQuizListResponse List(KalturaQuizFilter filter)
 		{
 			return this.List(filter, null);
 		}
 
-		public KalturaUserEntryListResponse List(KalturaUserEntryFilter filter, KalturaFilterPager pager)
+		public KalturaQuizListResponse List(KalturaQuizFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
 			if (filter != null)
 				kparams.Add("filter", filter.ToParams());
 			if (pager != null)
 				kparams.Add("pager", pager.ToParams());
-			_Client.QueueServiceCall("userentry", "list", "KalturaUserEntryListResponse", kparams);
+			_Client.QueueServiceCall("quiz_quiz", "list", "KalturaQuizListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
 			XmlElement result = _Client.DoQueue();
-			return (KalturaUserEntryListResponse)KalturaObjectFactory.Create(result, "KalturaUserEntryListResponse");
-		}
-
-		public KalturaUserEntry Get(string id)
-		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			_Client.QueueServiceCall("userentry", "get", "KalturaUserEntry", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaUserEntry)KalturaObjectFactory.Create(result, "KalturaUserEntry");
-		}
-
-		public KalturaQuizUserEntry SubmitQuiz(int id)
-		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			_Client.QueueServiceCall("userentry", "submitQuiz", "KalturaQuizUserEntry", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaQuizUserEntry)KalturaObjectFactory.Create(result, "KalturaQuizUserEntry");
+			return (KalturaQuizListResponse)KalturaObjectFactory.Create(result, "KalturaQuizListResponse");
 		}
 	}
 }

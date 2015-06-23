@@ -25,14 +25,59 @@
 //
 // @ignore
 // ===================================================================================================
+using System;
+using System.Xml;
+using System.Collections.Generic;
+
 namespace Kaltura
 {
-	public sealed class KalturaUserEntryStatus : KalturaStringEnum
+	public class KalturaAccessControlServeRemoteEdgeServerAction : KalturaRuleAction
 	{
-		public static readonly KalturaUserEntryStatus QUIZ_SUBMITTED = new KalturaUserEntryStatus("quiz.3");
-		public static readonly KalturaUserEntryStatus ACTIVE = new KalturaUserEntryStatus("1");
-		public static readonly KalturaUserEntryStatus DELETED = new KalturaUserEntryStatus("2");
+		#region Private Fields
+		private string _EdgeServerIds = null;
+		#endregion
 
-		private KalturaUserEntryStatus(string name) : base(name) { }
+		#region Properties
+		public string EdgeServerIds
+		{
+			get { return _EdgeServerIds; }
+			set 
+			{ 
+				_EdgeServerIds = value;
+				OnPropertyChanged("EdgeServerIds");
+			}
+		}
+		#endregion
+
+		#region CTor
+		public KalturaAccessControlServeRemoteEdgeServerAction()
+		{
+		}
+
+		public KalturaAccessControlServeRemoteEdgeServerAction(XmlElement node) : base(node)
+		{
+			foreach (XmlElement propertyNode in node.ChildNodes)
+			{
+				string txt = propertyNode.InnerText;
+				switch (propertyNode.Name)
+				{
+					case "edgeServerIds":
+						this.EdgeServerIds = txt;
+						continue;
+				}
+			}
+		}
+		#endregion
+
+		#region Methods
+		public override KalturaParams ToParams()
+		{
+			KalturaParams kparams = base.ToParams();
+			kparams.AddReplace("objectType", "KalturaAccessControlServeRemoteEdgeServerAction");
+			kparams.AddStringIfNotNull("edgeServerIds", this.EdgeServerIds);
+			return kparams;
+		}
+		#endregion
 	}
 }
+

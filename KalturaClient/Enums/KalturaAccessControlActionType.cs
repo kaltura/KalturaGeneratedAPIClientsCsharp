@@ -34,6 +34,7 @@ namespace Kaltura
 		public static readonly KalturaAccessControlActionType LIMIT_FLAVORS = new KalturaAccessControlActionType("3");
 		public static readonly KalturaAccessControlActionType ADD_TO_STORAGE = new KalturaAccessControlActionType("4");
 		public static readonly KalturaAccessControlActionType LIMIT_DELIVERY_PROFILES = new KalturaAccessControlActionType("5");
+		public static readonly KalturaAccessControlActionType SERVE_FROM_REMOTE_SERVER = new KalturaAccessControlActionType("6");
 
 		private KalturaAccessControlActionType(string name) : base(name) { }
 	}

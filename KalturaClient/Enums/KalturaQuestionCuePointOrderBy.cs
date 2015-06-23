@@ -31,13 +31,11 @@ namespace Kaltura
 	{
 		public static readonly KalturaQuestionCuePointOrderBy CREATED_AT_ASC = new KalturaQuestionCuePointOrderBy("+createdAt");
 		public static readonly KalturaQuestionCuePointOrderBy PARTNER_SORT_VALUE_ASC = new KalturaQuestionCuePointOrderBy("+partnerSortValue");
-		public static readonly KalturaQuestionCuePointOrderBy QUESTION_ASC = new KalturaQuestionCuePointOrderBy("+question");
 		public static readonly KalturaQuestionCuePointOrderBy START_TIME_ASC = new KalturaQuestionCuePointOrderBy("+startTime");
 		public static readonly KalturaQuestionCuePointOrderBy TRIGGERED_AT_ASC = new KalturaQuestionCuePointOrderBy("+triggeredAt");
 		public static readonly KalturaQuestionCuePointOrderBy UPDATED_AT_ASC = new KalturaQuestionCuePointOrderBy("+updatedAt");
 		public static readonly KalturaQuestionCuePointOrderBy CREATED_AT_DESC = new KalturaQuestionCuePointOrderBy("-createdAt");
 		public static readonly KalturaQuestionCuePointOrderBy PARTNER_SORT_VALUE_DESC = new KalturaQuestionCuePointOrderBy("-partnerSortValue");
-		public static readonly KalturaQuestionCuePointOrderBy QUESTION_DESC = new KalturaQuestionCuePointOrderBy("-question");
 		public static readonly KalturaQuestionCuePointOrderBy START_TIME_DESC = new KalturaQuestionCuePointOrderBy("-startTime");
 		public static readonly KalturaQuestionCuePointOrderBy TRIGGERED_AT_DESC = new KalturaQuestionCuePointOrderBy("-triggeredAt");
 		public static readonly KalturaQuestionCuePointOrderBy UPDATED_AT_DESC = new KalturaQuestionCuePointOrderBy("-updatedAt");

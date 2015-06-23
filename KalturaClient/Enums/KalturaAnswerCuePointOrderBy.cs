@@ -30,13 +30,11 @@ namespace Kaltura
 	public sealed class KalturaAnswerCuePointOrderBy : KalturaStringEnum
 	{
 		public static readonly KalturaAnswerCuePointOrderBy CREATED_AT_ASC = new KalturaAnswerCuePointOrderBy("+createdAt");
-		public static readonly KalturaAnswerCuePointOrderBy IS_CORRECT_ASC = new KalturaAnswerCuePointOrderBy("+isCorrect");
 		public static readonly KalturaAnswerCuePointOrderBy PARTNER_SORT_VALUE_ASC = new KalturaAnswerCuePointOrderBy("+partnerSortValue");
 		public static readonly KalturaAnswerCuePointOrderBy START_TIME_ASC = new KalturaAnswerCuePointOrderBy("+startTime");
 		public static readonly KalturaAnswerCuePointOrderBy TRIGGERED_AT_ASC = new KalturaAnswerCuePointOrderBy("+triggeredAt");
 		public static readonly KalturaAnswerCuePointOrderBy UPDATED_AT_ASC = new KalturaAnswerCuePointOrderBy("+updatedAt");
 		public static readonly KalturaAnswerCuePointOrderBy CREATED_AT_DESC = new KalturaAnswerCuePointOrderBy("-createdAt");
-		public static readonly KalturaAnswerCuePointOrderBy IS_CORRECT_DESC = new KalturaAnswerCuePointOrderBy("-isCorrect");
 		public static readonly KalturaAnswerCuePointOrderBy PARTNER_SORT_VALUE_DESC = new KalturaAnswerCuePointOrderBy("-partnerSortValue");
 		public static readonly KalturaAnswerCuePointOrderBy START_TIME_DESC = new KalturaAnswerCuePointOrderBy("-startTime");
 		public static readonly KalturaAnswerCuePointOrderBy TRIGGERED_AT_DESC = new KalturaAnswerCuePointOrderBy("-triggeredAt");

@@ -877,6 +877,18 @@ namespace Kaltura
 			}
 		}
 
+		KalturaQuizService _QuizService;
+		public KalturaQuizService QuizService
+		{
+			get
+			{
+				if (_QuizService == null)
+					_QuizService = new KalturaQuizService(this);
+
+				return _QuizService;
+			}
+		}
+
 		KalturaShortLinkService _ShortLinkService;
 		public KalturaShortLinkService ShortLinkService
 		{

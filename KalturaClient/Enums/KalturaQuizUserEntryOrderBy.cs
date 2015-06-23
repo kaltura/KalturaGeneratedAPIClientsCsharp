@@ -30,10 +30,8 @@ namespace Kaltura
 	public sealed class KalturaQuizUserEntryOrderBy : KalturaStringEnum
 	{
 		public static readonly KalturaQuizUserEntryOrderBy CREATED_AT_ASC = new KalturaQuizUserEntryOrderBy("+createdAt");
-		public static readonly KalturaQuizUserEntryOrderBy SCORE_ASC = new KalturaQuizUserEntryOrderBy("+score");
 		public static readonly KalturaQuizUserEntryOrderBy UPDATED_AT_ASC = new KalturaQuizUserEntryOrderBy("+updatedAt");
 		public static readonly KalturaQuizUserEntryOrderBy CREATED_AT_DESC = new KalturaQuizUserEntryOrderBy("-createdAt");
-		public static readonly KalturaQuizUserEntryOrderBy SCORE_DESC = new KalturaQuizUserEntryOrderBy("-score");
 		public static readonly KalturaQuizUserEntryOrderBy UPDATED_AT_DESC = new KalturaQuizUserEntryOrderBy("-updatedAt");
 
 		private KalturaQuizUserEntryOrderBy(string name) : base(name) { }

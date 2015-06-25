@@ -34,9 +34,29 @@ namespace Kaltura
 	public class KalturaIpAddressCondition : KalturaMatchCondition
 	{
 		#region Private Fields
+		private bool? _AcceptInternalIps = false;
+		private string _HttpHeader = null;
 		#endregion
 
 		#region Properties
+		public bool? AcceptInternalIps
+		{
+			get { return _AcceptInternalIps; }
+			set 
+			{ 
+				_AcceptInternalIps = value;
+				OnPropertyChanged("AcceptInternalIps");
+			}
+		}
+		public string HttpHeader
+		{
+			get { return _HttpHeader; }
+			set 
+			{ 
+				_HttpHeader = value;
+				OnPropertyChanged("HttpHeader");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -46,6 +66,19 @@ namespace Kaltura
 
 		public KalturaIpAddressCondition(XmlElement node) : base(node)
 		{
+			foreach (XmlElement propertyNode in node.ChildNodes)
+			{
+				string txt = propertyNode.InnerText;
+				switch (propertyNode.Name)
+				{
+					case "acceptInternalIps":
+						this.AcceptInternalIps = ParseBool(txt);
+						continue;
+					case "httpHeader":
+						this.HttpHeader = txt;
+						continue;
+				}
+			}
 		}
 		#endregion
 
@@ -54,6 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaIpAddressCondition");
+			kparams.AddBoolIfNotNull("acceptInternalIps", this.AcceptInternalIps);
+			kparams.AddStringIfNotNull("httpHeader", this.HttpHeader);
 			return kparams;
 		}
 		#endregion

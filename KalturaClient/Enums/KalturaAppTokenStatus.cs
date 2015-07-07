@@ -27,15 +27,10 @@
 // ===================================================================================================
 namespace Kaltura
 {
-	public sealed class KalturaContextType : KalturaStringEnum
+	public enum KalturaAppTokenStatus
 	{
-		public static readonly KalturaContextType PLAY = new KalturaContextType("1");
-		public static readonly KalturaContextType DOWNLOAD = new KalturaContextType("2");
-		public static readonly KalturaContextType THUMBNAIL = new KalturaContextType("3");
-		public static readonly KalturaContextType METADATA = new KalturaContextType("4");
-		public static readonly KalturaContextType EXPORT = new KalturaContextType("5");
-		public static readonly KalturaContextType SERVE = new KalturaContextType("6");
-
-		private KalturaContextType(string name) : base(name) { }
+		DISABLED = 1,
+		ACTIVE = 2,
+		DELETED = 3,
 	}
 }

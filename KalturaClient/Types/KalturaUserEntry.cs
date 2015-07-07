@@ -36,11 +36,12 @@ namespace Kaltura
 		#region Private Fields
 		private int _Id = Int32.MinValue;
 		private string _EntryId = null;
-		private int _UserId = Int32.MinValue;
+		private string _UserId = null;
 		private int _PartnerId = Int32.MinValue;
 		private KalturaUserEntryStatus _Status = null;
 		private int _CreatedAt = Int32.MinValue;
 		private int _UpdatedAt = Int32.MinValue;
+		private KalturaUserEntryType _Type = null;
 		#endregion
 
 		#region Properties
@@ -62,7 +63,7 @@ namespace Kaltura
 				OnPropertyChanged("EntryId");
 			}
 		}
-		public int UserId
+		public string UserId
 		{
 			get { return _UserId; }
 			set 
@@ -107,6 +108,15 @@ namespace Kaltura
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
+		public KalturaUserEntryType Type
+		{
+			get { return _Type; }
+			set 
+			{ 
+				_Type = value;
+				OnPropertyChanged("Type");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -128,7 +138,7 @@ namespace Kaltura
 						this.EntryId = txt;
 						continue;
 					case "userId":
-						this.UserId = ParseInt(txt);
+						this.UserId = txt;
 						continue;
 					case "partnerId":
 						this.PartnerId = ParseInt(txt);
@@ -142,6 +152,9 @@ namespace Kaltura
 					case "updatedAt":
 						this.UpdatedAt = ParseInt(txt);
 						continue;
+					case "type":
+						this.Type = (KalturaUserEntryType)KalturaStringEnum.Parse(typeof(KalturaUserEntryType), txt);
+						continue;
 				}
 			}
 		}
@@ -154,11 +167,12 @@ namespace Kaltura
 			kparams.AddReplace("objectType", "KalturaUserEntry");
 			kparams.AddIntIfNotNull("id", this.Id);
 			kparams.AddStringIfNotNull("entryId", this.EntryId);
-			kparams.AddIntIfNotNull("userId", this.UserId);
+			kparams.AddStringIfNotNull("userId", this.UserId);
 			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
 			kparams.AddStringEnumIfNotNull("status", this.Status);
 			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
 			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddStringEnumIfNotNull("type", this.Type);
 			return kparams;
 		}
 		#endregion

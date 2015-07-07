@@ -27,15 +27,13 @@
 // ===================================================================================================
 namespace Kaltura
 {
-	public sealed class KalturaContextType : KalturaStringEnum
+	public sealed class KalturaAppTokenOrderBy : KalturaStringEnum
 	{
-		public static readonly KalturaContextType PLAY = new KalturaContextType("1");
-		public static readonly KalturaContextType DOWNLOAD = new KalturaContextType("2");
-		public static readonly KalturaContextType THUMBNAIL = new KalturaContextType("3");
-		public static readonly KalturaContextType METADATA = new KalturaContextType("4");
-		public static readonly KalturaContextType EXPORT = new KalturaContextType("5");
-		public static readonly KalturaContextType SERVE = new KalturaContextType("6");
+		public static readonly KalturaAppTokenOrderBy CREATED_AT_ASC = new KalturaAppTokenOrderBy("+createdAt");
+		public static readonly KalturaAppTokenOrderBy UPDATED_AT_ASC = new KalturaAppTokenOrderBy("+updatedAt");
+		public static readonly KalturaAppTokenOrderBy CREATED_AT_DESC = new KalturaAppTokenOrderBy("-createdAt");
+		public static readonly KalturaAppTokenOrderBy UPDATED_AT_DESC = new KalturaAppTokenOrderBy("-updatedAt");
 
-		private KalturaContextType(string name) : base(name) { }
+		private KalturaAppTokenOrderBy(string name) : base(name) { }
 	}
 }

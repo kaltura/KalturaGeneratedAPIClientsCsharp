@@ -25,17 +25,59 @@
 //
 // @ignore
 // ===================================================================================================
+using System;
+using System.Xml;
+using System.Collections.Generic;
+
 namespace Kaltura
 {
-	public sealed class KalturaContextType : KalturaStringEnum
+	public class KalturaAppTokenFilter : KalturaAppTokenBaseFilter
 	{
-		public static readonly KalturaContextType PLAY = new KalturaContextType("1");
-		public static readonly KalturaContextType DOWNLOAD = new KalturaContextType("2");
-		public static readonly KalturaContextType THUMBNAIL = new KalturaContextType("3");
-		public static readonly KalturaContextType METADATA = new KalturaContextType("4");
-		public static readonly KalturaContextType EXPORT = new KalturaContextType("5");
-		public static readonly KalturaContextType SERVE = new KalturaContextType("6");
+		#region Private Fields
+		private KalturaAppTokenOrderBy _OrderBy = null;
+		#endregion
 
-		private KalturaContextType(string name) : base(name) { }
+		#region Properties
+		public new KalturaAppTokenOrderBy OrderBy
+		{
+			get { return _OrderBy; }
+			set 
+			{ 
+				_OrderBy = value;
+				OnPropertyChanged("OrderBy");
+			}
+		}
+		#endregion
+
+		#region CTor
+		public KalturaAppTokenFilter()
+		{
+		}
+
+		public KalturaAppTokenFilter(XmlElement node) : base(node)
+		{
+			foreach (XmlElement propertyNode in node.ChildNodes)
+			{
+				string txt = propertyNode.InnerText;
+				switch (propertyNode.Name)
+				{
+					case "orderBy":
+						this.OrderBy = (KalturaAppTokenOrderBy)KalturaStringEnum.Parse(typeof(KalturaAppTokenOrderBy), txt);
+						continue;
+				}
+			}
+		}
+		#endregion
+
+		#region Methods
+		public override KalturaParams ToParams()
+		{
+			KalturaParams kparams = base.ToParams();
+			kparams.AddReplace("objectType", "KalturaAppTokenFilter");
+			kparams.AddStringEnumIfNotNull("orderBy", this.OrderBy);
+			return kparams;
+		}
+		#endregion
 	}
 }
+

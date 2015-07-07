@@ -73,6 +73,18 @@ namespace Kaltura
 			}
 		}
 
+		KalturaAppTokenService _AppTokenService;
+		public KalturaAppTokenService AppTokenService
+		{
+			get
+			{
+				if (_AppTokenService == null)
+					_AppTokenService = new KalturaAppTokenService(this);
+
+				return _AppTokenService;
+			}
+		}
+
 		KalturaBaseEntryService _BaseEntryService;
 		public KalturaBaseEntryService BaseEntryService
 		{

@@ -43,10 +43,12 @@ namespace Kaltura
 		private int _UserIdEqual = Int32.MinValue;
 		private string _UserIdIn = null;
 		private string _UserIdNotIn = null;
+		private KalturaUserEntryStatus _StatusEqual = null;
 		private int _CreatedAtLessThanOrEqual = Int32.MinValue;
 		private int _CreatedAtGreaterThanOrEqual = Int32.MinValue;
 		private int _UpdatedAtLessThanOrEqual = Int32.MinValue;
 		private int _UpdatedAtGreaterThanOrEqual = Int32.MinValue;
+		private KalturaUserEntryType _TypeEqual = null;
 		#endregion
 
 		#region Properties
@@ -131,6 +133,15 @@ namespace Kaltura
 				OnPropertyChanged("UserIdNotIn");
 			}
 		}
+		public KalturaUserEntryStatus StatusEqual
+		{
+			get { return _StatusEqual; }
+			set 
+			{ 
+				_StatusEqual = value;
+				OnPropertyChanged("StatusEqual");
+			}
+		}
 		public int CreatedAtLessThanOrEqual
 		{
 			get { return _CreatedAtLessThanOrEqual; }
@@ -165,6 +176,15 @@ namespace Kaltura
 			{ 
 				_UpdatedAtGreaterThanOrEqual = value;
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
+			}
+		}
+		public KalturaUserEntryType TypeEqual
+		{
+			get { return _TypeEqual; }
+			set 
+			{ 
+				_TypeEqual = value;
+				OnPropertyChanged("TypeEqual");
 			}
 		}
 		#endregion
@@ -208,6 +228,9 @@ namespace Kaltura
 					case "userIdNotIn":
 						this.UserIdNotIn = txt;
 						continue;
+					case "statusEqual":
+						this.StatusEqual = (KalturaUserEntryStatus)KalturaStringEnum.Parse(typeof(KalturaUserEntryStatus), txt);
+						continue;
 					case "createdAtLessThanOrEqual":
 						this.CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
@@ -219,6 +242,9 @@ namespace Kaltura
 						continue;
 					case "updatedAtGreaterThanOrEqual":
 						this.UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						continue;
+					case "typeEqual":
+						this.TypeEqual = (KalturaUserEntryType)KalturaStringEnum.Parse(typeof(KalturaUserEntryType), txt);
 						continue;
 				}
 			}
@@ -239,10 +265,12 @@ namespace Kaltura
 			kparams.AddIntIfNotNull("userIdEqual", this.UserIdEqual);
 			kparams.AddStringIfNotNull("userIdIn", this.UserIdIn);
 			kparams.AddStringIfNotNull("userIdNotIn", this.UserIdNotIn);
+			kparams.AddStringEnumIfNotNull("statusEqual", this.StatusEqual);
 			kparams.AddIntIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
 			kparams.AddIntIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
 			kparams.AddIntIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
 			kparams.AddIntIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
+			kparams.AddStringEnumIfNotNull("typeEqual", this.TypeEqual);
 			return kparams;
 		}
 		#endregion

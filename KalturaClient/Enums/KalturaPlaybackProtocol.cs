@@ -30,6 +30,7 @@ namespace Kaltura
 	public sealed class KalturaPlaybackProtocol : KalturaStringEnum
 	{
 		public static readonly KalturaPlaybackProtocol APPLE_HTTP = new KalturaPlaybackProtocol("applehttp");
+		public static readonly KalturaPlaybackProtocol APPLE_HTTP_TO_MC = new KalturaPlaybackProtocol("applehttp_to_mc");
 		public static readonly KalturaPlaybackProtocol AUTO = new KalturaPlaybackProtocol("auto");
 		public static readonly KalturaPlaybackProtocol AKAMAI_HD = new KalturaPlaybackProtocol("hdnetwork");
 		public static readonly KalturaPlaybackProtocol AKAMAI_HDS = new KalturaPlaybackProtocol("hdnetworkmanifest");

@@ -72,6 +72,7 @@ namespace Kaltura
 		public static readonly KalturaDeliveryProfileType LIVE_HDS = new KalturaDeliveryProfileType("1002");
 		public static readonly KalturaDeliveryProfileType LIVE_DASH = new KalturaDeliveryProfileType("1003");
 		public static readonly KalturaDeliveryProfileType LIVE_RTMP = new KalturaDeliveryProfileType("1005");
+		public static readonly KalturaDeliveryProfileType LIVE_HLS_TO_MULTICAST = new KalturaDeliveryProfileType("1006");
 		public static readonly KalturaDeliveryProfileType LIVE_AKAMAI_HDS = new KalturaDeliveryProfileType("1013");
 
 		private KalturaDeliveryProfileType(string name) : base(name) { }

@@ -57,6 +57,8 @@ namespace Kaltura
 		private string _FileContent = null;
 		private float _FileDiscSize = Single.MinValue;
 		private bool? _IsCurrentDc = false;
+		private bool? _IsDir = false;
+		private int _OriginalId = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -267,6 +269,24 @@ namespace Kaltura
 				OnPropertyChanged("IsCurrentDc");
 			}
 		}
+		public bool? IsDir
+		{
+			get { return _IsDir; }
+			set 
+			{ 
+				_IsDir = value;
+				OnPropertyChanged("IsDir");
+			}
+		}
+		public int OriginalId
+		{
+			get { return _OriginalId; }
+			set 
+			{ 
+				_OriginalId = value;
+				OnPropertyChanged("OriginalId");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -350,6 +370,12 @@ namespace Kaltura
 					case "isCurrentDc":
 						this.IsCurrentDc = ParseBool(txt);
 						continue;
+					case "isDir":
+						this.IsDir = ParseBool(txt);
+						continue;
+					case "originalId":
+						this.OriginalId = ParseInt(txt);
+						continue;
 				}
 			}
 		}
@@ -383,6 +409,8 @@ namespace Kaltura
 			kparams.AddStringIfNotNull("fileContent", this.FileContent);
 			kparams.AddFloatIfNotNull("fileDiscSize", this.FileDiscSize);
 			kparams.AddBoolIfNotNull("isCurrentDc", this.IsCurrentDc);
+			kparams.AddBoolIfNotNull("isDir", this.IsDir);
+			kparams.AddIntIfNotNull("originalId", this.OriginalId);
 			return kparams;
 		}
 		#endregion

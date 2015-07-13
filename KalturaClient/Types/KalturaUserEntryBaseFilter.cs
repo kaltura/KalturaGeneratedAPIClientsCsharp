@@ -40,7 +40,7 @@ namespace Kaltura
 		private string _EntryIdEqual = null;
 		private string _EntryIdIn = null;
 		private string _EntryIdNotIn = null;
-		private int _UserIdEqual = Int32.MinValue;
+		private string _UserIdEqual = null;
 		private string _UserIdIn = null;
 		private string _UserIdNotIn = null;
 		private KalturaUserEntryStatus _StatusEqual = null;
@@ -106,7 +106,7 @@ namespace Kaltura
 				OnPropertyChanged("EntryIdNotIn");
 			}
 		}
-		public int UserIdEqual
+		public string UserIdEqual
 		{
 			get { return _UserIdEqual; }
 			set 
@@ -220,7 +220,7 @@ namespace Kaltura
 						this.EntryIdNotIn = txt;
 						continue;
 					case "userIdEqual":
-						this.UserIdEqual = ParseInt(txt);
+						this.UserIdEqual = txt;
 						continue;
 					case "userIdIn":
 						this.UserIdIn = txt;
@@ -262,7 +262,7 @@ namespace Kaltura
 			kparams.AddStringIfNotNull("entryIdEqual", this.EntryIdEqual);
 			kparams.AddStringIfNotNull("entryIdIn", this.EntryIdIn);
 			kparams.AddStringIfNotNull("entryIdNotIn", this.EntryIdNotIn);
-			kparams.AddIntIfNotNull("userIdEqual", this.UserIdEqual);
+			kparams.AddStringIfNotNull("userIdEqual", this.UserIdEqual);
 			kparams.AddStringIfNotNull("userIdIn", this.UserIdIn);
 			kparams.AddStringIfNotNull("userIdNotIn", this.UserIdNotIn);
 			kparams.AddStringEnumIfNotNull("statusEqual", this.StatusEqual);

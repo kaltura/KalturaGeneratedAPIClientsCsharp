@@ -32,6 +32,7 @@ namespace Kaltura
 		public static readonly KalturaMetadataObjectType AD_CUE_POINT = new KalturaMetadataObjectType("adCuePointMetadata.AdCuePoint");
 		public static readonly KalturaMetadataObjectType ANNOTATION = new KalturaMetadataObjectType("annotationMetadata.Annotation");
 		public static readonly KalturaMetadataObjectType CODE_CUE_POINT = new KalturaMetadataObjectType("codeCuePointMetadata.CodeCuePoint");
+		public static readonly KalturaMetadataObjectType THUMB_CUE_POINT = new KalturaMetadataObjectType("thumbCuePointMetadata.thumbCuePoint");
 		public static readonly KalturaMetadataObjectType ENTRY = new KalturaMetadataObjectType("1");
 		public static readonly KalturaMetadataObjectType CATEGORY = new KalturaMetadataObjectType("2");
 		public static readonly KalturaMetadataObjectType USER = new KalturaMetadataObjectType("3");

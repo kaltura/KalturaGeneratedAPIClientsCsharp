@@ -121,5 +121,17 @@ namespace Kaltura
 			XmlElement result = _Client.DoQueue();
 			return (KalturaResponseProfileListResponse)KalturaObjectFactory.Create(result, "KalturaResponseProfileListResponse");
 		}
+
+		public KalturaResponseProfileCacheRecalculateResults Recalculate(KalturaResponseProfileCacheRecalculateOptions options)
+		{
+			KalturaParams kparams = new KalturaParams();
+			if (options != null)
+				kparams.Add("options", options.ToParams());
+			_Client.QueueServiceCall("responseprofile", "recalculate", "KalturaResponseProfileCacheRecalculateResults", kparams);
+			if (this._Client.IsMultiRequest)
+				return null;
+			XmlElement result = _Client.DoQueue();
+			return (KalturaResponseProfileCacheRecalculateResults)KalturaObjectFactory.Create(result, "KalturaResponseProfileCacheRecalculateResults");
+		}
 	}
 }

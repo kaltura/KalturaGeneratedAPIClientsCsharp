@@ -34,10 +34,20 @@ namespace Kaltura
 	public class KalturaUserEntryFilter : KalturaUserEntryBaseFilter
 	{
 		#region Private Fields
+		private KalturaNullableBoolean _UserIdEqualCurrent = (KalturaNullableBoolean)Int32.MinValue;
 		private KalturaUserEntryOrderBy _OrderBy = null;
 		#endregion
 
 		#region Properties
+		public KalturaNullableBoolean UserIdEqualCurrent
+		{
+			get { return _UserIdEqualCurrent; }
+			set 
+			{ 
+				_UserIdEqualCurrent = value;
+				OnPropertyChanged("UserIdEqualCurrent");
+			}
+		}
 		public new KalturaUserEntryOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -61,6 +71,9 @@ namespace Kaltura
 				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
+					case "userIdEqualCurrent":
+						this.UserIdEqualCurrent = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						continue;
 					case "orderBy":
 						this.OrderBy = (KalturaUserEntryOrderBy)KalturaStringEnum.Parse(typeof(KalturaUserEntryOrderBy), txt);
 						continue;
@@ -74,6 +87,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUserEntryFilter");
+			kparams.AddEnumIfNotNull("userIdEqualCurrent", this.UserIdEqualCurrent);
 			kparams.AddStringEnumIfNotNull("orderBy", this.OrderBy);
 			return kparams;
 		}

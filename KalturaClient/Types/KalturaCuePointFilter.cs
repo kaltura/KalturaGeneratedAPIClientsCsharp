@@ -35,6 +35,8 @@ namespace Kaltura
 	{
 		#region Private Fields
 		private string _FreeText = null;
+		private KalturaNullableBoolean _UserIdEqualCurrent = (KalturaNullableBoolean)Int32.MinValue;
+		private KalturaNullableBoolean _UserIdCurrent = (KalturaNullableBoolean)Int32.MinValue;
 		private KalturaCuePointOrderBy _OrderBy = null;
 		#endregion
 
@@ -46,6 +48,24 @@ namespace Kaltura
 			{ 
 				_FreeText = value;
 				OnPropertyChanged("FreeText");
+			}
+		}
+		public KalturaNullableBoolean UserIdEqualCurrent
+		{
+			get { return _UserIdEqualCurrent; }
+			set 
+			{ 
+				_UserIdEqualCurrent = value;
+				OnPropertyChanged("UserIdEqualCurrent");
+			}
+		}
+		public KalturaNullableBoolean UserIdCurrent
+		{
+			get { return _UserIdCurrent; }
+			set 
+			{ 
+				_UserIdCurrent = value;
+				OnPropertyChanged("UserIdCurrent");
 			}
 		}
 		public new KalturaCuePointOrderBy OrderBy
@@ -74,6 +94,12 @@ namespace Kaltura
 					case "freeText":
 						this.FreeText = txt;
 						continue;
+					case "userIdEqualCurrent":
+						this.UserIdEqualCurrent = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						continue;
+					case "userIdCurrent":
+						this.UserIdCurrent = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						continue;
 					case "orderBy":
 						this.OrderBy = (KalturaCuePointOrderBy)KalturaStringEnum.Parse(typeof(KalturaCuePointOrderBy), txt);
 						continue;
@@ -88,6 +114,8 @@ namespace Kaltura
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCuePointFilter");
 			kparams.AddStringIfNotNull("freeText", this.FreeText);
+			kparams.AddEnumIfNotNull("userIdEqualCurrent", this.UserIdEqualCurrent);
+			kparams.AddEnumIfNotNull("userIdCurrent", this.UserIdCurrent);
 			kparams.AddStringEnumIfNotNull("orderBy", this.OrderBy);
 			return kparams;
 		}

@@ -53,7 +53,7 @@ namespace Kaltura
 		public IList<KalturaReportGraph> GetGraphs(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, string dimension, string objectIds)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddEnumIfNotNull("reportType", reportType);
+			kparams.AddStringEnumIfNotNull("reportType", reportType);
 			if (reportInputFilter != null)
 				kparams.Add("reportInputFilter", reportInputFilter.ToParams());
 			kparams.AddStringIfNotNull("dimension", dimension);
@@ -78,7 +78,7 @@ namespace Kaltura
 		public KalturaReportTotal GetTotal(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, string objectIds)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddEnumIfNotNull("reportType", reportType);
+			kparams.AddStringEnumIfNotNull("reportType", reportType);
 			if (reportInputFilter != null)
 				kparams.Add("reportInputFilter", reportInputFilter.ToParams());
 			kparams.AddStringIfNotNull("objectIds", objectIds);
@@ -97,7 +97,7 @@ namespace Kaltura
 		public IList<KalturaReportBaseTotal> GetBaseTotal(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, string objectIds)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddEnumIfNotNull("reportType", reportType);
+			kparams.AddStringEnumIfNotNull("reportType", reportType);
 			if (reportInputFilter != null)
 				kparams.Add("reportInputFilter", reportInputFilter.ToParams());
 			kparams.AddStringIfNotNull("objectIds", objectIds);
@@ -126,7 +126,7 @@ namespace Kaltura
 		public KalturaReportTable GetTable(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, KalturaFilterPager pager, string order, string objectIds)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddEnumIfNotNull("reportType", reportType);
+			kparams.AddStringEnumIfNotNull("reportType", reportType);
 			if (reportInputFilter != null)
 				kparams.Add("reportInputFilter", reportInputFilter.ToParams());
 			if (pager != null)
@@ -166,7 +166,7 @@ namespace Kaltura
 			kparams.AddStringIfNotNull("reportTitle", reportTitle);
 			kparams.AddStringIfNotNull("reportText", reportText);
 			kparams.AddStringIfNotNull("headers", headers);
-			kparams.AddEnumIfNotNull("reportType", reportType);
+			kparams.AddStringEnumIfNotNull("reportType", reportType);
 			if (reportInputFilter != null)
 				kparams.Add("reportInputFilter", reportInputFilter.ToParams());
 			kparams.AddStringIfNotNull("dimension", dimension);

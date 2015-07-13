@@ -35,6 +35,7 @@ namespace Kaltura
 		public static readonly KalturaCuePointType EVENT = new KalturaCuePointType("eventCuePoint.Event");
 		public static readonly KalturaCuePointType QUIZ_ANSWER = new KalturaCuePointType("quiz.QUIZ_ANSWER");
 		public static readonly KalturaCuePointType QUIZ_QUESTION = new KalturaCuePointType("quiz.QUIZ_QUESTION");
+		public static readonly KalturaCuePointType THUMB = new KalturaCuePointType("thumbCuePoint.Thumb");
 
 		private KalturaCuePointType(string name) : base(name) { }
 	}

@@ -31,21 +31,54 @@ using System.Collections.Generic;
 
 namespace Kaltura
 {
-	public class KalturaTimedThumbAssetBaseFilter : KalturaThumbAssetFilter
+	public class KalturaResponseProfileCacheRecalculateResults : KalturaObjectBase
 	{
 		#region Private Fields
+		private string _LastObjectKey = null;
+		private int _Recalculated = Int32.MinValue;
 		#endregion
 
 		#region Properties
+		public string LastObjectKey
+		{
+			get { return _LastObjectKey; }
+			set 
+			{ 
+				_LastObjectKey = value;
+				OnPropertyChanged("LastObjectKey");
+			}
+		}
+		public int Recalculated
+		{
+			get { return _Recalculated; }
+			set 
+			{ 
+				_Recalculated = value;
+				OnPropertyChanged("Recalculated");
+			}
+		}
 		#endregion
 
 		#region CTor
-		public KalturaTimedThumbAssetBaseFilter()
+		public KalturaResponseProfileCacheRecalculateResults()
 		{
 		}
 
-		public KalturaTimedThumbAssetBaseFilter(XmlElement node) : base(node)
+		public KalturaResponseProfileCacheRecalculateResults(XmlElement node)
 		{
+			foreach (XmlElement propertyNode in node.ChildNodes)
+			{
+				string txt = propertyNode.InnerText;
+				switch (propertyNode.Name)
+				{
+					case "lastObjectKey":
+						this.LastObjectKey = txt;
+						continue;
+					case "recalculated":
+						this.Recalculated = ParseInt(txt);
+						continue;
+				}
+			}
 		}
 		#endregion
 
@@ -53,7 +86,9 @@ namespace Kaltura
 		public override KalturaParams ToParams()
 		{
 			KalturaParams kparams = base.ToParams();
-			kparams.AddReplace("objectType", "KalturaTimedThumbAssetBaseFilter");
+			kparams.AddReplace("objectType", "KalturaResponseProfileCacheRecalculateResults");
+			kparams.AddStringIfNotNull("lastObjectKey", this.LastObjectKey);
+			kparams.AddIntIfNotNull("recalculated", this.Recalculated);
 			return kparams;
 		}
 		#endregion

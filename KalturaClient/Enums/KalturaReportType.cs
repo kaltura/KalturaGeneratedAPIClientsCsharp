@@ -27,30 +27,34 @@
 // ===================================================================================================
 namespace Kaltura
 {
-	public enum KalturaReportType
+	public sealed class KalturaReportType : KalturaStringEnum
 	{
-		TOP_CONTENT = 1,
-		CONTENT_DROPOFF = 2,
-		CONTENT_INTERACTIONS = 3,
-		MAP_OVERLAY = 4,
-		TOP_CONTRIBUTORS = 5,
-		TOP_SYNDICATION = 6,
-		CONTENT_CONTRIBUTIONS = 7,
-		USER_ENGAGEMENT = 11,
-		SPEFICIC_USER_ENGAGEMENT = 12,
-		USER_TOP_CONTENT = 13,
-		USER_CONTENT_DROPOFF = 14,
-		USER_CONTENT_INTERACTIONS = 15,
-		APPLICATIONS = 16,
-		USER_USAGE = 17,
-		SPECIFIC_USER_USAGE = 18,
-		VAR_USAGE = 19,
-		TOP_CREATORS = 20,
-		PLATFORMS = 21,
-		OPERATION_SYSTEM = 22,
-		BROWSERS = 23,
-		LIVE = 24,
-		TOP_PLAYBACK_CONTEXT = 25,
-		PARTNER_USAGE = 201,
+		public static readonly KalturaReportType QUIZ = new KalturaReportType("quiz.QUIZ");
+		public static readonly KalturaReportType QUIZ_USER_PERCENTAGE = new KalturaReportType("quiz.self::QUIZ_USER_PERCENTAGE");
+		public static readonly KalturaReportType TOP_CONTENT = new KalturaReportType("1");
+		public static readonly KalturaReportType CONTENT_DROPOFF = new KalturaReportType("2");
+		public static readonly KalturaReportType CONTENT_INTERACTIONS = new KalturaReportType("3");
+		public static readonly KalturaReportType MAP_OVERLAY = new KalturaReportType("4");
+		public static readonly KalturaReportType TOP_CONTRIBUTORS = new KalturaReportType("5");
+		public static readonly KalturaReportType TOP_SYNDICATION = new KalturaReportType("6");
+		public static readonly KalturaReportType CONTENT_CONTRIBUTIONS = new KalturaReportType("7");
+		public static readonly KalturaReportType USER_ENGAGEMENT = new KalturaReportType("11");
+		public static readonly KalturaReportType SPEFICIC_USER_ENGAGEMENT = new KalturaReportType("12");
+		public static readonly KalturaReportType USER_TOP_CONTENT = new KalturaReportType("13");
+		public static readonly KalturaReportType USER_CONTENT_DROPOFF = new KalturaReportType("14");
+		public static readonly KalturaReportType USER_CONTENT_INTERACTIONS = new KalturaReportType("15");
+		public static readonly KalturaReportType APPLICATIONS = new KalturaReportType("16");
+		public static readonly KalturaReportType USER_USAGE = new KalturaReportType("17");
+		public static readonly KalturaReportType SPECIFIC_USER_USAGE = new KalturaReportType("18");
+		public static readonly KalturaReportType VAR_USAGE = new KalturaReportType("19");
+		public static readonly KalturaReportType TOP_CREATORS = new KalturaReportType("20");
+		public static readonly KalturaReportType PLATFORMS = new KalturaReportType("21");
+		public static readonly KalturaReportType OPERATION_SYSTEM = new KalturaReportType("22");
+		public static readonly KalturaReportType BROWSERS = new KalturaReportType("23");
+		public static readonly KalturaReportType LIVE = new KalturaReportType("24");
+		public static readonly KalturaReportType TOP_PLAYBACK_CONTEXT = new KalturaReportType("25");
+		public static readonly KalturaReportType PARTNER_USAGE = new KalturaReportType("201");
+
+		private KalturaReportType(string name) : base(name) { }
 	}
 }

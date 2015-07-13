@@ -31,7 +31,7 @@ using System.Collections.Generic;
 
 namespace Kaltura
 {
-	public class KalturaTimedThumbAssetBaseFilter : KalturaThumbAssetFilter
+	public class KalturaRecalculateCacheJobData : KalturaJobData
 	{
 		#region Private Fields
 		#endregion
@@ -40,11 +40,11 @@ namespace Kaltura
 		#endregion
 
 		#region CTor
-		public KalturaTimedThumbAssetBaseFilter()
+		public KalturaRecalculateCacheJobData()
 		{
 		}
 
-		public KalturaTimedThumbAssetBaseFilter(XmlElement node) : base(node)
+		public KalturaRecalculateCacheJobData(XmlElement node) : base(node)
 		{
 		}
 		#endregion
@@ -53,7 +53,7 @@ namespace Kaltura
 		public override KalturaParams ToParams()
 		{
 			KalturaParams kparams = base.ToParams();
-			kparams.AddReplace("objectType", "KalturaTimedThumbAssetBaseFilter");
+			kparams.AddReplace("objectType", "KalturaRecalculateCacheJobData");
 			return kparams;
 		}
 		#endregion

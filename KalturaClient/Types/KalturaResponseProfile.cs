@@ -40,6 +40,7 @@ namespace Kaltura
 		private int _CreatedAt = Int32.MinValue;
 		private int _UpdatedAt = Int32.MinValue;
 		private KalturaResponseProfileStatus _Status = (KalturaResponseProfileStatus)Int32.MinValue;
+		private int _Version = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -97,6 +98,15 @@ namespace Kaltura
 				OnPropertyChanged("Status");
 			}
 		}
+		public int Version
+		{
+			get { return _Version; }
+			set 
+			{ 
+				_Version = value;
+				OnPropertyChanged("Version");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -129,6 +139,9 @@ namespace Kaltura
 					case "status":
 						this.Status = (KalturaResponseProfileStatus)ParseEnum(typeof(KalturaResponseProfileStatus), txt);
 						continue;
+					case "version":
+						this.Version = ParseInt(txt);
+						continue;
 				}
 			}
 		}
@@ -145,6 +158,7 @@ namespace Kaltura
 			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
 			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
 			kparams.AddEnumIfNotNull("status", this.Status);
+			kparams.AddIntIfNotNull("version", this.Version);
 			return kparams;
 		}
 		#endregion

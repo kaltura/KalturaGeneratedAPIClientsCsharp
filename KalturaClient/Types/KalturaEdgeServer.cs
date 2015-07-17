@@ -40,7 +40,7 @@ namespace Kaltura
 		private int _PartnerId = Int32.MinValue;
 		private string _Name = null;
 		private string _SystemName = null;
-		private string _Desciption = null;
+		private string _Description = null;
 		private KalturaEdgeServerStatus _Status = (KalturaEdgeServerStatus)Int32.MinValue;
 		private string _Tags = null;
 		private string _HostName = null;
@@ -104,13 +104,13 @@ namespace Kaltura
 				OnPropertyChanged("SystemName");
 			}
 		}
-		public string Desciption
+		public string Description
 		{
-			get { return _Desciption; }
+			get { return _Description; }
 			set 
 			{ 
-				_Desciption = value;
-				OnPropertyChanged("Desciption");
+				_Description = value;
+				OnPropertyChanged("Description");
 			}
 		}
 		public KalturaEdgeServerStatus Status
@@ -199,8 +199,8 @@ namespace Kaltura
 					case "systemName":
 						this.SystemName = txt;
 						continue;
-					case "desciption":
-						this.Desciption = txt;
+					case "description":
+						this.Description = txt;
 						continue;
 					case "status":
 						this.Status = (KalturaEdgeServerStatus)ParseEnum(typeof(KalturaEdgeServerStatus), txt);
@@ -236,7 +236,7 @@ namespace Kaltura
 			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
 			kparams.AddStringIfNotNull("name", this.Name);
 			kparams.AddStringIfNotNull("systemName", this.SystemName);
-			kparams.AddStringIfNotNull("desciption", this.Desciption);
+			kparams.AddStringIfNotNull("description", this.Description);
 			kparams.AddEnumIfNotNull("status", this.Status);
 			kparams.AddStringIfNotNull("tags", this.Tags);
 			kparams.AddStringIfNotNull("hostName", this.HostName);

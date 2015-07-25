@@ -54,6 +54,8 @@ namespace Kaltura
 		public static readonly KalturaLanguageCode DZ = new KalturaLanguageCode("dz");
 		public static readonly KalturaLanguageCode EL = new KalturaLanguageCode("el");
 		public static readonly KalturaLanguageCode EN = new KalturaLanguageCode("en");
+		public static readonly KalturaLanguageCode EN_GB = new KalturaLanguageCode("en_gb");
+		public static readonly KalturaLanguageCode EN_US = new KalturaLanguageCode("en_us");
 		public static readonly KalturaLanguageCode EO = new KalturaLanguageCode("eo");
 		public static readonly KalturaLanguageCode ES = new KalturaLanguageCode("es");
 		public static readonly KalturaLanguageCode ET = new KalturaLanguageCode("et");

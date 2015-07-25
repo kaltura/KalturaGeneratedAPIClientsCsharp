@@ -58,6 +58,8 @@ namespace Kaltura
 		public static readonly KalturaLanguage DA = new KalturaLanguage("Danish");
 		public static readonly KalturaLanguage NL = new KalturaLanguage("Dutch");
 		public static readonly KalturaLanguage EN = new KalturaLanguage("English");
+		public static readonly KalturaLanguage EN_US = new KalturaLanguage("English (American)");
+		public static readonly KalturaLanguage EN_GB = new KalturaLanguage("English (British)");
 		public static readonly KalturaLanguage EO = new KalturaLanguage("Esperanto");
 		public static readonly KalturaLanguage ET = new KalturaLanguage("Estonian");
 		public static readonly KalturaLanguage FO = new KalturaLanguage("Faeroese");
@@ -76,13 +78,13 @@ namespace Kaltura
 		public static readonly KalturaLanguage GN = new KalturaLanguage("Guarani");
 		public static readonly KalturaLanguage GU = new KalturaLanguage("Gujarati");
 		public static readonly KalturaLanguage HA = new KalturaLanguage("Hausa");
-		public static readonly KalturaLanguage IW = new KalturaLanguage("Hebrew");
 		public static readonly KalturaLanguage HE = new KalturaLanguage("Hebrew");
+		public static readonly KalturaLanguage IW = new KalturaLanguage("Hebrew");
 		public static readonly KalturaLanguage HI = new KalturaLanguage("Hindi");
 		public static readonly KalturaLanguage HU = new KalturaLanguage("Hungarian");
 		public static readonly KalturaLanguage IS = new KalturaLanguage("Icelandic");
-		public static readonly KalturaLanguage IN = new KalturaLanguage("Indonesian");
 		public static readonly KalturaLanguage ID = new KalturaLanguage("Indonesian");
+		public static readonly KalturaLanguage IN = new KalturaLanguage("Indonesian");
 		public static readonly KalturaLanguage IA = new KalturaLanguage("Interlingua");
 		public static readonly KalturaLanguage IE = new KalturaLanguage("Interlingue");
 		public static readonly KalturaLanguage IU = new KalturaLanguage("Inuktitut");

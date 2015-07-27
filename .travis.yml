@@ -4,3 +4,10 @@ install:
     - sudo apt-get update && sudo apt-get -y install mono-complete
 script: 
     - xbuild KalturaClient.sln && cd ./KalturaClientTester/bin/Debug/ &&  mono KalturaClientTester.exe
+notifications:
+  email:
+    recipients:
+      - moshe.maor@kaltura.com
+      - jess.portnoy@kaltura.com
+    on_success: change
+    on_failure: always

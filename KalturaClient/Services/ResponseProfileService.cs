@@ -133,5 +133,18 @@ namespace Kaltura
 			XmlElement result = _Client.DoQueue();
 			return (KalturaResponseProfileCacheRecalculateResults)KalturaObjectFactory.Create(result, "KalturaResponseProfileCacheRecalculateResults");
 		}
+
+		public KalturaResponseProfile Clone(int id, KalturaResponseProfile profile)
+		{
+			KalturaParams kparams = new KalturaParams();
+			kparams.AddIntIfNotNull("id", id);
+			if (profile != null)
+				kparams.Add("profile", profile.ToParams());
+			_Client.QueueServiceCall("responseprofile", "clone", "KalturaResponseProfile", kparams);
+			if (this._Client.IsMultiRequest)
+				return null;
+			XmlElement result = _Client.DoQueue();
+			return (KalturaResponseProfile)KalturaObjectFactory.Create(result, "KalturaResponseProfile");
+		}
 	}
 }

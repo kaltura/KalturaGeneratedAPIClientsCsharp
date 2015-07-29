@@ -34,9 +34,29 @@ namespace Kaltura
 	public class KalturaAnswerCuePointBaseFilter : KalturaCuePointFilter
 	{
 		#region Private Fields
+		private string _ParentIdEqual = null;
+		private string _ParentIdIn = null;
 		#endregion
 
 		#region Properties
+		public string ParentIdEqual
+		{
+			get { return _ParentIdEqual; }
+			set 
+			{ 
+				_ParentIdEqual = value;
+				OnPropertyChanged("ParentIdEqual");
+			}
+		}
+		public string ParentIdIn
+		{
+			get { return _ParentIdIn; }
+			set 
+			{ 
+				_ParentIdIn = value;
+				OnPropertyChanged("ParentIdIn");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -46,6 +66,19 @@ namespace Kaltura
 
 		public KalturaAnswerCuePointBaseFilter(XmlElement node) : base(node)
 		{
+			foreach (XmlElement propertyNode in node.ChildNodes)
+			{
+				string txt = propertyNode.InnerText;
+				switch (propertyNode.Name)
+				{
+					case "parentIdEqual":
+						this.ParentIdEqual = txt;
+						continue;
+					case "parentIdIn":
+						this.ParentIdIn = txt;
+						continue;
+				}
+			}
 		}
 		#endregion
 
@@ -54,6 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAnswerCuePointBaseFilter");
+			kparams.AddStringIfNotNull("parentIdEqual", this.ParentIdEqual);
+			kparams.AddStringIfNotNull("parentIdIn", this.ParentIdIn);
 			return kparams;
 		}
 		#endregion

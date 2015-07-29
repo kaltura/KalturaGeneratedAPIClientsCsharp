@@ -38,7 +38,7 @@ namespace Kaltura
 		private string _QuizUserEntryId = null;
 		private string _AnswerKey = null;
 		private KalturaNullableBoolean _IsCorrect = (KalturaNullableBoolean)Int32.MinValue;
-		private KalturaTypedArray _CorrectAnswerKeys;
+		private IList<KalturaString> _CorrectAnswerKeys;
 		private string _Explanation = null;
 		#endregion
 
@@ -79,7 +79,7 @@ namespace Kaltura
 				OnPropertyChanged("IsCorrect");
 			}
 		}
-		public KalturaTypedArray CorrectAnswerKeys
+		public IList<KalturaString> CorrectAnswerKeys
 		{
 			get { return _CorrectAnswerKeys; }
 			set 
@@ -124,7 +124,11 @@ namespace Kaltura
 						this.IsCorrect = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "correctAnswerKeys":
-						this.CorrectAnswerKeys = (KalturaTypedArray)KalturaObjectFactory.Create(propertyNode, "KalturaTypedArray");
+						this.CorrectAnswerKeys = new List<KalturaString>();
+						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
+						{
+							this.CorrectAnswerKeys.Add((KalturaString)KalturaObjectFactory.Create(arrayNode, "KalturaString"));
+						}
 						continue;
 					case "explanation":
 						this.Explanation = txt;
@@ -144,7 +148,21 @@ namespace Kaltura
 			kparams.AddStringIfNotNull("answerKey", this.AnswerKey);
 			kparams.AddEnumIfNotNull("isCorrect", this.IsCorrect);
 			if (this.CorrectAnswerKeys != null)
-				kparams.Add("correctAnswerKeys", this.CorrectAnswerKeys.ToParams());
+			{
+				if (this.CorrectAnswerKeys.Count == 0)
+				{
+					kparams.Add("correctAnswerKeys:-", "");
+				}
+				else
+				{
+					int i = 0;
+					foreach (KalturaString item in this.CorrectAnswerKeys)
+					{
+						kparams.Add("correctAnswerKeys:" + i, item.ToParams());
+						i++;
+					}
+				}
+			}
 			kparams.AddStringIfNotNull("explanation", this.Explanation);
 			return kparams;
 		}

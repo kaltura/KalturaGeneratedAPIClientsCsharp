@@ -42,6 +42,7 @@ namespace Kaltura
 		private KalturaCaptionType _Format = null;
 		private KalturaCaptionAssetStatus _Status = (KalturaCaptionAssetStatus)Int32.MinValue;
 		private string _ParentId = null;
+		private int _Accuracy = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -117,6 +118,15 @@ namespace Kaltura
 				OnPropertyChanged("ParentId");
 			}
 		}
+		public int Accuracy
+		{
+			get { return _Accuracy; }
+			set 
+			{ 
+				_Accuracy = value;
+				OnPropertyChanged("Accuracy");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -155,6 +165,9 @@ namespace Kaltura
 					case "parentId":
 						this.ParentId = txt;
 						continue;
+					case "accuracy":
+						this.Accuracy = ParseInt(txt);
+						continue;
 				}
 			}
 		}
@@ -173,6 +186,7 @@ namespace Kaltura
 			kparams.AddStringEnumIfNotNull("format", this.Format);
 			kparams.AddEnumIfNotNull("status", this.Status);
 			kparams.AddStringIfNotNull("parentId", this.ParentId);
+			kparams.AddIntIfNotNull("accuracy", this.Accuracy);
 			return kparams;
 		}
 		#endregion

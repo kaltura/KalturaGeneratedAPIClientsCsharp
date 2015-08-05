@@ -30,6 +30,8 @@ namespace Kaltura
 	public sealed class KalturaReportType : KalturaStringEnum
 	{
 		public static readonly KalturaReportType QUIZ = new KalturaReportType("quiz.QUIZ");
+		public static readonly KalturaReportType QUIZ_AGGREGATE_BY_QUESTION = new KalturaReportType("quiz.QUIZ_AGGREGATE_BY_QUESTION");
+		public static readonly KalturaReportType QUIZ_USER_AGGREGATE_BY_QUESTION = new KalturaReportType("quiz.QUIZ_USER_AGGREGATE_BY_QUESTION");
 		public static readonly KalturaReportType QUIZ_USER_PERCENTAGE = new KalturaReportType("quiz.QUIZ_USER_PERCENTAGE");
 		public static readonly KalturaReportType TOP_CONTENT = new KalturaReportType("1");
 		public static readonly KalturaReportType CONTENT_DROPOFF = new KalturaReportType("2");

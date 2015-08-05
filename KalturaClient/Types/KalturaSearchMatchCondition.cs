@@ -25,17 +25,59 @@
 //
 // @ignore
 // ===================================================================================================
+using System;
+using System.Xml;
+using System.Collections.Generic;
+
 namespace Kaltura
 {
-	public sealed class KalturaSearchConditionComparison : KalturaStringEnum
+	public class KalturaSearchMatchCondition : KalturaSearchCondition
 	{
-		public static readonly KalturaSearchConditionComparison EQUAL = new KalturaSearchConditionComparison("1");
-		public static readonly KalturaSearchConditionComparison GREATER_THAN = new KalturaSearchConditionComparison("2");
-		public static readonly KalturaSearchConditionComparison GREATER_THAN_OR_EQUAL = new KalturaSearchConditionComparison("3");
-		public static readonly KalturaSearchConditionComparison LESS_THAN = new KalturaSearchConditionComparison("4");
-		public static readonly KalturaSearchConditionComparison LESS_THAN_OR_EQUAL = new KalturaSearchConditionComparison("5");
-		public static readonly KalturaSearchConditionComparison NOT_EQUAL = new KalturaSearchConditionComparison("6");
+		#region Private Fields
+		private bool? _Not = false;
+		#endregion
 
-		private KalturaSearchConditionComparison(string name) : base(name) { }
+		#region Properties
+		public bool? Not
+		{
+			get { return _Not; }
+			set 
+			{ 
+				_Not = value;
+				OnPropertyChanged("Not");
+			}
+		}
+		#endregion
+
+		#region CTor
+		public KalturaSearchMatchCondition()
+		{
+		}
+
+		public KalturaSearchMatchCondition(XmlElement node) : base(node)
+		{
+			foreach (XmlElement propertyNode in node.ChildNodes)
+			{
+				string txt = propertyNode.InnerText;
+				switch (propertyNode.Name)
+				{
+					case "not":
+						this.Not = ParseBool(txt);
+						continue;
+				}
+			}
+		}
+		#endregion
+
+		#region Methods
+		public override KalturaParams ToParams()
+		{
+			KalturaParams kparams = base.ToParams();
+			kparams.AddReplace("objectType", "KalturaSearchMatchCondition");
+			kparams.AddBoolIfNotNull("not", this.Not);
+			return kparams;
+		}
+		#endregion
 	}
 }
+

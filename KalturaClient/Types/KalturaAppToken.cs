@@ -45,7 +45,6 @@ namespace Kaltura
 		private string _SessionUserId = null;
 		private int _SessionDuration = Int32.MinValue;
 		private string _SessionPrivileges = null;
-		private KalturaAppTokenHashType _HashType = null;
 		#endregion
 
 		#region Properties
@@ -148,15 +147,6 @@ namespace Kaltura
 				OnPropertyChanged("SessionPrivileges");
 			}
 		}
-		public KalturaAppTokenHashType HashType
-		{
-			get { return _HashType; }
-			set 
-			{ 
-				_HashType = value;
-				OnPropertyChanged("HashType");
-			}
-		}
 		#endregion
 
 		#region CTor
@@ -204,9 +194,6 @@ namespace Kaltura
 					case "sessionPrivileges":
 						this.SessionPrivileges = txt;
 						continue;
-					case "hashType":
-						this.HashType = (KalturaAppTokenHashType)KalturaStringEnum.Parse(typeof(KalturaAppTokenHashType), txt);
-						continue;
 				}
 			}
 		}
@@ -228,7 +215,6 @@ namespace Kaltura
 			kparams.AddStringIfNotNull("sessionUserId", this.SessionUserId);
 			kparams.AddIntIfNotNull("sessionDuration", this.SessionDuration);
 			kparams.AddStringIfNotNull("sessionPrivileges", this.SessionPrivileges);
-			kparams.AddStringEnumIfNotNull("hashType", this.HashType);
 			return kparams;
 		}
 		#endregion

@@ -1068,5 +1068,17 @@ namespace Kaltura
 				return _ScheduledTaskProfileService;
 			}
 		}
+
+		KalturaIntegrationService _IntegrationService;
+		public KalturaIntegrationService IntegrationService
+		{
+			get
+			{
+				if (_IntegrationService == null)
+					_IntegrationService = new KalturaIntegrationService(this);
+
+				return _IntegrationService;
+			}
+		}
 	}
 }

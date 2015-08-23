@@ -42,6 +42,7 @@ namespace Kaltura
 		public static readonly KalturaBatchJobType DROP_FOLDER_CONTENT_PROCESSOR = new KalturaBatchJobType("dropFolder.DropFolderContentProcessor");
 		public static readonly KalturaBatchJobType DROP_FOLDER_WATCHER = new KalturaBatchJobType("dropFolder.DropFolderWatcher");
 		public static readonly KalturaBatchJobType EVENT_NOTIFICATION_HANDLER = new KalturaBatchJobType("eventNotification.EventNotificationHandler");
+		public static readonly KalturaBatchJobType INTEGRATION = new KalturaBatchJobType("integration.Integration");
 		public static readonly KalturaBatchJobType SCHEDULED_TASK = new KalturaBatchJobType("scheduledTask.ScheduledTask");
 		public static readonly KalturaBatchJobType INDEX_TAGS = new KalturaBatchJobType("tagSearch.IndexTagsByPrivacyContext");
 		public static readonly KalturaBatchJobType TAG_RESOLVE = new KalturaBatchJobType("tagSearch.TagResolve");

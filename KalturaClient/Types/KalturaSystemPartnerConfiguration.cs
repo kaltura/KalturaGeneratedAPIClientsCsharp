@@ -96,6 +96,7 @@ namespace Kaltura
 		private KalturaLanguageCode _Language = null;
 		private string _AudioThumbEntryId = null;
 		private string _LiveThumbEntryId = null;
+		private bool? _TimeAlignedRenditions = false;
 		#endregion
 
 		#region Properties
@@ -657,6 +658,15 @@ namespace Kaltura
 				OnPropertyChanged("LiveThumbEntryId");
 			}
 		}
+		public bool? TimeAlignedRenditions
+		{
+			get { return _TimeAlignedRenditions; }
+			set 
+			{ 
+				_TimeAlignedRenditions = value;
+				OnPropertyChanged("TimeAlignedRenditions");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -869,6 +879,9 @@ namespace Kaltura
 					case "liveThumbEntryId":
 						this.LiveThumbEntryId = txt;
 						continue;
+					case "timeAlignedRenditions":
+						this.TimeAlignedRenditions = ParseBool(txt);
+						continue;
 				}
 			}
 		}
@@ -987,6 +1000,7 @@ namespace Kaltura
 			kparams.AddStringEnumIfNotNull("language", this.Language);
 			kparams.AddStringIfNotNull("audioThumbEntryId", this.AudioThumbEntryId);
 			kparams.AddStringIfNotNull("liveThumbEntryId", this.LiveThumbEntryId);
+			kparams.AddBoolIfNotNull("timeAlignedRenditions", this.TimeAlignedRenditions);
 			return kparams;
 		}
 		#endregion

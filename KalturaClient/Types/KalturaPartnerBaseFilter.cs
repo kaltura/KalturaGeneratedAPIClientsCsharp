@@ -46,6 +46,7 @@ namespace Kaltura
 		private int _PartnerPackageEqual = Int32.MinValue;
 		private int _PartnerPackageGreaterThanOrEqual = Int32.MinValue;
 		private int _PartnerPackageLessThanOrEqual = Int32.MinValue;
+		private string _PartnerPackageIn = null;
 		private KalturaPartnerGroupType _PartnerGroupTypeEqual = (KalturaPartnerGroupType)Int32.MinValue;
 		private string _PartnerNameDescriptionWebsiteAdminNameAdminEmailLike = null;
 		#endregion
@@ -159,6 +160,15 @@ namespace Kaltura
 				OnPropertyChanged("PartnerPackageLessThanOrEqual");
 			}
 		}
+		public string PartnerPackageIn
+		{
+			get { return _PartnerPackageIn; }
+			set 
+			{ 
+				_PartnerPackageIn = value;
+				OnPropertyChanged("PartnerPackageIn");
+			}
+		}
 		public KalturaPartnerGroupType PartnerGroupTypeEqual
 		{
 			get { return _PartnerGroupTypeEqual; }
@@ -227,6 +237,9 @@ namespace Kaltura
 					case "partnerPackageLessThanOrEqual":
 						this.PartnerPackageLessThanOrEqual = ParseInt(txt);
 						continue;
+					case "partnerPackageIn":
+						this.PartnerPackageIn = txt;
+						continue;
 					case "partnerGroupTypeEqual":
 						this.PartnerGroupTypeEqual = (KalturaPartnerGroupType)ParseEnum(typeof(KalturaPartnerGroupType), txt);
 						continue;
@@ -255,6 +268,7 @@ namespace Kaltura
 			kparams.AddIntIfNotNull("partnerPackageEqual", this.PartnerPackageEqual);
 			kparams.AddIntIfNotNull("partnerPackageGreaterThanOrEqual", this.PartnerPackageGreaterThanOrEqual);
 			kparams.AddIntIfNotNull("partnerPackageLessThanOrEqual", this.PartnerPackageLessThanOrEqual);
+			kparams.AddStringIfNotNull("partnerPackageIn", this.PartnerPackageIn);
 			kparams.AddEnumIfNotNull("partnerGroupTypeEqual", this.PartnerGroupTypeEqual);
 			kparams.AddStringIfNotNull("partnerNameDescriptionWebsiteAdminNameAdminEmailLike", this.PartnerNameDescriptionWebsiteAdminNameAdminEmailLike);
 			return kparams;

@@ -86,6 +86,7 @@ namespace Kaltura
 		private int _PartnerParentId = Int32.MinValue;
 		private string _CrmId = null;
 		private string _ReferenceId = null;
+		private bool? _TimeAlignedRenditions = false;
 		#endregion
 
 		#region Properties
@@ -557,6 +558,15 @@ namespace Kaltura
 				OnPropertyChanged("ReferenceId");
 			}
 		}
+		public bool? TimeAlignedRenditions
+		{
+			get { return _TimeAlignedRenditions; }
+			set 
+			{ 
+				_TimeAlignedRenditions = value;
+				OnPropertyChanged("TimeAlignedRenditions");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -739,6 +749,9 @@ namespace Kaltura
 					case "referenceId":
 						this.ReferenceId = txt;
 						continue;
+					case "timeAlignedRenditions":
+						this.TimeAlignedRenditions = ParseBool(txt);
+						continue;
 				}
 			}
 		}
@@ -846,6 +859,7 @@ namespace Kaltura
 			kparams.AddIntIfNotNull("partnerParentId", this.PartnerParentId);
 			kparams.AddStringIfNotNull("crmId", this.CrmId);
 			kparams.AddStringIfNotNull("referenceId", this.ReferenceId);
+			kparams.AddBoolIfNotNull("timeAlignedRenditions", this.TimeAlignedRenditions);
 			return kparams;
 		}
 		#endregion

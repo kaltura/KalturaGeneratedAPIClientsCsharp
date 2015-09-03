@@ -35,6 +35,7 @@ namespace Kaltura
 		public static readonly KalturaRuleActionType ADD_TO_STORAGE = new KalturaRuleActionType("4");
 		public static readonly KalturaRuleActionType LIMIT_DELIVERY_PROFILES = new KalturaRuleActionType("5");
 		public static readonly KalturaRuleActionType SERVE_FROM_REMOTE_SERVER = new KalturaRuleActionType("6");
+		public static readonly KalturaRuleActionType REQUEST_HOST_REGEX = new KalturaRuleActionType("7");
 
 		private KalturaRuleActionType(string name) : base(name) { }
 	}

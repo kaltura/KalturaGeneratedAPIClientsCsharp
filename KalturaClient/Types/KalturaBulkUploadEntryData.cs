@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaBulkUploadEntryData");
-			kparams.AddIntIfNotNull("conversionProfileId", this.ConversionProfileId);
+			kparams.AddIfNotNull("conversionProfileId", this.ConversionProfileId);
 			return kparams;
 		}
 		#endregion

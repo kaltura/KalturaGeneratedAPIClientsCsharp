@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAttachmentAsset");
-			kparams.AddStringIfNotNull("filename", this.Filename);
-			kparams.AddStringIfNotNull("title", this.Title);
-			kparams.AddStringEnumIfNotNull("format", this.Format);
-			kparams.AddEnumIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("filename", this.Filename);
+			kparams.AddIfNotNull("title", this.Title);
+			kparams.AddIfNotNull("format", this.Format);
+			kparams.AddIfNotNull("status", this.Status);
 			return kparams;
 		}
 		#endregion

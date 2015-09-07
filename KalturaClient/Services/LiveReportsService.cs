@@ -53,11 +53,9 @@ namespace Kaltura
 		public IList<KalturaReportGraph> GetEvents(KalturaLiveReportType reportType, KalturaLiveReportInputFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringEnumIfNotNull("reportType", reportType);
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("reportType", reportType);
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("livereports", "getEvents", "KalturaReportGraph", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -83,11 +81,9 @@ namespace Kaltura
 		public KalturaLiveStatsListResponse GetReport(KalturaLiveReportType reportType, KalturaLiveReportInputFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringEnumIfNotNull("reportType", reportType);
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("reportType", reportType);
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("livereports", "getReport", "KalturaLiveStatsListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -98,9 +94,8 @@ namespace Kaltura
 		public KalturaLiveReportExportResponse ExportToCsv(KalturaLiveReportExportType reportType, KalturaLiveReportExportParams params_)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddEnumIfNotNull("reportType", reportType);
-			if (params_ != null)
-				kparams.Add("params", params_.ToParams());
+			kparams.AddIfNotNull("reportType", reportType);
+			kparams.AddIfNotNull("params", params_);
 			_Client.QueueServiceCall("livereports", "exportToCsv", "KalturaLiveReportExportResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -111,7 +106,7 @@ namespace Kaltura
 		public string ServeReport(string id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("livereports", "serveReport", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

@@ -43,9 +43,8 @@ namespace Kaltura
 		public KalturaFlavorAsset Add(string entryId, KalturaFlavorAsset flavorAsset)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			if (flavorAsset != null)
-				kparams.Add("flavorAsset", flavorAsset.ToParams());
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("flavorAsset", flavorAsset);
 			_Client.QueueServiceCall("flavorasset", "add", "KalturaFlavorAsset", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -56,9 +55,8 @@ namespace Kaltura
 		public KalturaFlavorAsset Update(string id, KalturaFlavorAsset flavorAsset)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			if (flavorAsset != null)
-				kparams.Add("flavorAsset", flavorAsset.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("flavorAsset", flavorAsset);
 			_Client.QueueServiceCall("flavorasset", "update", "KalturaFlavorAsset", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -69,9 +67,8 @@ namespace Kaltura
 		public KalturaFlavorAsset SetContent(string id, KalturaContentResource contentResource)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			if (contentResource != null)
-				kparams.Add("contentResource", contentResource.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("contentResource", contentResource);
 			_Client.QueueServiceCall("flavorasset", "setContent", "KalturaFlavorAsset", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -82,7 +79,7 @@ namespace Kaltura
 		public KalturaFlavorAsset Get(string id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("flavorasset", "get", "KalturaFlavorAsset", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -93,7 +90,7 @@ namespace Kaltura
 		public IList<KalturaFlavorAsset> GetByEntryId(string entryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("entryId", entryId);
 			_Client.QueueServiceCall("flavorasset", "getByEntryId", "KalturaFlavorAsset", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -119,10 +116,8 @@ namespace Kaltura
 		public KalturaFlavorAssetListResponse List(KalturaAssetFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("flavorasset", "list", "KalturaFlavorAssetListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -133,7 +128,7 @@ namespace Kaltura
 		public IList<KalturaFlavorAsset> GetWebPlayableByEntryId(string entryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("entryId", entryId);
 			_Client.QueueServiceCall("flavorasset", "getWebPlayableByEntryId", "KalturaFlavorAsset", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -154,9 +149,9 @@ namespace Kaltura
 		public void Convert(string entryId, int flavorParamsId, int priority)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddIntIfNotNull("flavorParamsId", flavorParamsId);
-			kparams.AddIntIfNotNull("priority", priority);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("flavorParamsId", flavorParamsId);
+			kparams.AddIfNotNull("priority", priority);
 			_Client.QueueServiceCall("flavorasset", "convert", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -166,7 +161,7 @@ namespace Kaltura
 		public void Reconvert(string id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("flavorasset", "reconvert", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -176,7 +171,7 @@ namespace Kaltura
 		public void Delete(string id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("flavorasset", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -201,11 +196,10 @@ namespace Kaltura
 		public string GetUrl(string id, int storageId, bool forceProxy, KalturaFlavorAssetUrlOptions options)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			kparams.AddIntIfNotNull("storageId", storageId);
-			kparams.AddBoolIfNotNull("forceProxy", forceProxy);
-			if (options != null)
-				kparams.Add("options", options.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("storageId", storageId);
+			kparams.AddIfNotNull("forceProxy", forceProxy);
+			kparams.AddIfNotNull("options", options);
 			_Client.QueueServiceCall("flavorasset", "getUrl", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -216,7 +210,7 @@ namespace Kaltura
 		public KalturaRemotePathListResponse GetRemotePaths(string id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("flavorasset", "getRemotePaths", "KalturaRemotePathListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -232,8 +226,8 @@ namespace Kaltura
 		public string GetDownloadUrl(string id, bool useCdn)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			kparams.AddBoolIfNotNull("useCdn", useCdn);
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("useCdn", useCdn);
 			_Client.QueueServiceCall("flavorasset", "getDownloadUrl", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -244,7 +238,7 @@ namespace Kaltura
 		public IList<KalturaFlavorAssetWithParams> GetFlavorAssetsWithParams(string entryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("entryId", entryId);
 			_Client.QueueServiceCall("flavorasset", "getFlavorAssetsWithParams", "KalturaFlavorAssetWithParams", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -260,8 +254,8 @@ namespace Kaltura
 		public KalturaFlavorAsset Export(string assetId, int storageProfileId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("assetId", assetId);
-			kparams.AddIntIfNotNull("storageProfileId", storageProfileId);
+			kparams.AddIfNotNull("assetId", assetId);
+			kparams.AddIfNotNull("storageProfileId", storageProfileId);
 			_Client.QueueServiceCall("flavorasset", "export", "KalturaFlavorAsset", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -272,7 +266,7 @@ namespace Kaltura
 		public void SetAsSource(string assetId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("assetId", assetId);
+			kparams.AddIfNotNull("assetId", assetId);
 			_Client.QueueServiceCall("flavorasset", "setAsSource", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -282,7 +276,7 @@ namespace Kaltura
 		public void DeleteLocalContent(string assetId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("assetId", assetId);
+			kparams.AddIfNotNull("assetId", assetId);
 			_Client.QueueServiceCall("flavorasset", "deleteLocalContent", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;

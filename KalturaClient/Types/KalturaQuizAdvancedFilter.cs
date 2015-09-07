@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaQuizAdvancedFilter");
-			kparams.AddEnumIfNotNull("isQuiz", this.IsQuiz);
+			kparams.AddIfNotNull("isQuiz", this.IsQuiz);
 			return kparams;
 		}
 		#endregion

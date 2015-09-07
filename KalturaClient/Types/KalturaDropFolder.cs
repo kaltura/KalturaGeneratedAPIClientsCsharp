@@ -324,7 +324,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaDropFolder(XmlElement node)
+		public KalturaDropFolder(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -425,35 +425,34 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDropFolder");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringIfNotNull("name", this.Name);
-			kparams.AddStringIfNotNull("description", this.Description);
-			kparams.AddStringEnumIfNotNull("type", this.Type);
-			kparams.AddEnumIfNotNull("status", this.Status);
-			kparams.AddIntIfNotNull("conversionProfileId", this.ConversionProfileId);
-			kparams.AddIntIfNotNull("dc", this.Dc);
-			kparams.AddStringIfNotNull("path", this.Path);
-			kparams.AddIntIfNotNull("fileSizeCheckInterval", this.FileSizeCheckInterval);
-			kparams.AddEnumIfNotNull("fileDeletePolicy", this.FileDeletePolicy);
-			kparams.AddIntIfNotNull("autoFileDeleteDays", this.AutoFileDeleteDays);
-			kparams.AddStringEnumIfNotNull("fileHandlerType", this.FileHandlerType);
-			kparams.AddStringIfNotNull("fileNamePatterns", this.FileNamePatterns);
-			if (this.FileHandlerConfig != null)
-				kparams.Add("fileHandlerConfig", this.FileHandlerConfig.ToParams());
-			kparams.AddStringIfNotNull("tags", this.Tags);
-			kparams.AddStringEnumIfNotNull("errorCode", this.ErrorCode);
-			kparams.AddStringIfNotNull("errorDescription", this.ErrorDescription);
-			kparams.AddStringIfNotNull("ignoreFileNamePatterns", this.IgnoreFileNamePatterns);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIntIfNotNull("lastAccessedAt", this.LastAccessedAt);
-			kparams.AddBoolIfNotNull("incremental", this.Incremental);
-			kparams.AddIntIfNotNull("lastFileTimestamp", this.LastFileTimestamp);
-			kparams.AddIntIfNotNull("metadataProfileId", this.MetadataProfileId);
-			kparams.AddStringIfNotNull("categoriesMetadataFieldName", this.CategoriesMetadataFieldName);
-			kparams.AddBoolIfNotNull("enforceEntitlement", this.EnforceEntitlement);
-			kparams.AddBoolIfNotNull("shouldValidateKS", this.ShouldValidateKS);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("type", this.Type);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("conversionProfileId", this.ConversionProfileId);
+			kparams.AddIfNotNull("dc", this.Dc);
+			kparams.AddIfNotNull("path", this.Path);
+			kparams.AddIfNotNull("fileSizeCheckInterval", this.FileSizeCheckInterval);
+			kparams.AddIfNotNull("fileDeletePolicy", this.FileDeletePolicy);
+			kparams.AddIfNotNull("autoFileDeleteDays", this.AutoFileDeleteDays);
+			kparams.AddIfNotNull("fileHandlerType", this.FileHandlerType);
+			kparams.AddIfNotNull("fileNamePatterns", this.FileNamePatterns);
+			kparams.AddIfNotNull("fileHandlerConfig", this.FileHandlerConfig);
+			kparams.AddIfNotNull("tags", this.Tags);
+			kparams.AddIfNotNull("errorCode", this.ErrorCode);
+			kparams.AddIfNotNull("errorDescription", this.ErrorDescription);
+			kparams.AddIfNotNull("ignoreFileNamePatterns", this.IgnoreFileNamePatterns);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("lastAccessedAt", this.LastAccessedAt);
+			kparams.AddIfNotNull("incremental", this.Incremental);
+			kparams.AddIfNotNull("lastFileTimestamp", this.LastFileTimestamp);
+			kparams.AddIfNotNull("metadataProfileId", this.MetadataProfileId);
+			kparams.AddIfNotNull("categoriesMetadataFieldName", this.CategoriesMetadataFieldName);
+			kparams.AddIfNotNull("enforceEntitlement", this.EnforceEntitlement);
+			kparams.AddIfNotNull("shouldValidateKS", this.ShouldValidateKS);
 			return kparams;
 		}
 		#endregion

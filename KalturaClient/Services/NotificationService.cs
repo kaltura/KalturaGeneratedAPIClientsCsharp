@@ -43,8 +43,8 @@ namespace Kaltura
 		public KalturaClientNotification GetClientNotification(string entryId, KalturaNotificationType type)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddEnumIfNotNull("type", type);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("type", type);
 			_Client.QueueServiceCall("notification", "getClientNotification", "KalturaClientNotification", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaSearchAuthData(XmlElement node)
+		public KalturaSearchAuthData(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSearchAuthData");
-			kparams.AddStringIfNotNull("authData", this.AuthData);
-			kparams.AddStringIfNotNull("loginUrl", this.LoginUrl);
-			kparams.AddStringIfNotNull("message", this.Message);
+			kparams.AddIfNotNull("authData", this.AuthData);
+			kparams.AddIfNotNull("loginUrl", this.LoginUrl);
+			kparams.AddIfNotNull("message", this.Message);
 			return kparams;
 		}
 		#endregion

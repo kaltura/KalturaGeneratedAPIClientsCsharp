@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSearchComparableCondition");
-			kparams.AddStringEnumIfNotNull("comparison", this.Comparison);
+			kparams.AddIfNotNull("comparison", this.Comparison);
 			return kparams;
 		}
 		#endregion

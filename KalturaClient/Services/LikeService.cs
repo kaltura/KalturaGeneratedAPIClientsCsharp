@@ -43,7 +43,7 @@ namespace Kaltura
 		public bool Like(string entryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("entryId", entryId);
 			_Client.QueueServiceCall("like_like", "like", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return false;
@@ -56,7 +56,7 @@ namespace Kaltura
 		public bool Unlike(string entryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("entryId", entryId);
 			_Client.QueueServiceCall("like_like", "unlike", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return false;
@@ -74,8 +74,8 @@ namespace Kaltura
 		public bool CheckLikeExists(string entryId, string userId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddStringIfNotNull("userId", userId);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("userId", userId);
 			_Client.QueueServiceCall("like_like", "checkLikeExists", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return false;

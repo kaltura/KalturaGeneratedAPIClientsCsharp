@@ -244,7 +244,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaBaseSyndicationFeed(XmlElement node)
+		public KalturaBaseSyndicationFeed(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -321,26 +321,26 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaBaseSyndicationFeed");
-			kparams.AddStringIfNotNull("id", this.Id);
-			kparams.AddStringIfNotNull("feedUrl", this.FeedUrl);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringIfNotNull("playlistId", this.PlaylistId);
-			kparams.AddStringIfNotNull("name", this.Name);
-			kparams.AddEnumIfNotNull("status", this.Status);
-			kparams.AddEnumIfNotNull("type", this.Type);
-			kparams.AddStringIfNotNull("landingPage", this.LandingPage);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddBoolIfNotNull("allowEmbed", this.AllowEmbed);
-			kparams.AddIntIfNotNull("playerUiconfId", this.PlayerUiconfId);
-			kparams.AddIntIfNotNull("flavorParamId", this.FlavorParamId);
-			kparams.AddBoolIfNotNull("transcodeExistingContent", this.TranscodeExistingContent);
-			kparams.AddBoolIfNotNull("addToDefaultConversionProfile", this.AddToDefaultConversionProfile);
-			kparams.AddStringIfNotNull("categories", this.Categories);
-			kparams.AddIntIfNotNull("storageId", this.StorageId);
-			kparams.AddStringEnumIfNotNull("entriesOrderBy", this.EntriesOrderBy);
-			kparams.AddBoolIfNotNull("enforceEntitlement", this.EnforceEntitlement);
-			kparams.AddStringIfNotNull("privacyContext", this.PrivacyContext);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("feedUrl", this.FeedUrl);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("playlistId", this.PlaylistId);
+			kparams.AddIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("type", this.Type);
+			kparams.AddIfNotNull("landingPage", this.LandingPage);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("allowEmbed", this.AllowEmbed);
+			kparams.AddIfNotNull("playerUiconfId", this.PlayerUiconfId);
+			kparams.AddIfNotNull("flavorParamId", this.FlavorParamId);
+			kparams.AddIfNotNull("transcodeExistingContent", this.TranscodeExistingContent);
+			kparams.AddIfNotNull("addToDefaultConversionProfile", this.AddToDefaultConversionProfile);
+			kparams.AddIfNotNull("categories", this.Categories);
+			kparams.AddIfNotNull("storageId", this.StorageId);
+			kparams.AddIfNotNull("entriesOrderBy", this.EntriesOrderBy);
+			kparams.AddIfNotNull("enforceEntitlement", this.EnforceEntitlement);
+			kparams.AddIfNotNull("privacyContext", this.PrivacyContext);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
 			return kparams;
 		}
 		#endregion

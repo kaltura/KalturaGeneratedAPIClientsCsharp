@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaCategory Add(KalturaCategory category)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (category != null)
-				kparams.Add("category", category.ToParams());
+			kparams.AddIfNotNull("category", category);
 			_Client.QueueServiceCall("category", "add", "KalturaCategory", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,7 +54,7 @@ namespace Kaltura
 		public KalturaCategory Get(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("category", "get", "KalturaCategory", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -66,9 +65,8 @@ namespace Kaltura
 		public KalturaCategory Update(int id, KalturaCategory category)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			if (category != null)
-				kparams.Add("category", category.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("category", category);
 			_Client.QueueServiceCall("category", "update", "KalturaCategory", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -84,8 +82,8 @@ namespace Kaltura
 		public void Delete(int id, KalturaNullableBoolean moveEntriesToParentCategory)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			kparams.AddEnumIfNotNull("moveEntriesToParentCategory", moveEntriesToParentCategory);
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("moveEntriesToParentCategory", moveEntriesToParentCategory);
 			_Client.QueueServiceCall("category", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -105,10 +103,8 @@ namespace Kaltura
 		public KalturaCategoryListResponse List(KalturaCategoryFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("category", "list", "KalturaCategoryListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -124,8 +120,8 @@ namespace Kaltura
 		public int Index(int id, bool shouldUpdate)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			kparams.AddBoolIfNotNull("shouldUpdate", shouldUpdate);
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("shouldUpdate", shouldUpdate);
 			_Client.QueueServiceCall("category", "index", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return 0;
@@ -136,8 +132,8 @@ namespace Kaltura
 		public KalturaCategoryListResponse Move(string categoryIds, int targetCategoryParentId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("categoryIds", categoryIds);
-			kparams.AddIntIfNotNull("targetCategoryParentId", targetCategoryParentId);
+			kparams.AddIfNotNull("categoryIds", categoryIds);
+			kparams.AddIfNotNull("targetCategoryParentId", targetCategoryParentId);
 			_Client.QueueServiceCall("category", "move", "KalturaCategoryListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -169,10 +165,8 @@ namespace Kaltura
 			KalturaParams kparams = new KalturaParams();
 			KalturaFiles kfiles = new KalturaFiles();
 			kfiles.Add("fileData", fileData);
-			if (bulkUploadData != null)
-				kparams.Add("bulkUploadData", bulkUploadData.ToParams());
-			if (bulkUploadCategoryData != null)
-				kparams.Add("bulkUploadCategoryData", bulkUploadCategoryData.ToParams());
+			kparams.AddIfNotNull("bulkUploadData", bulkUploadData);
+			kparams.AddIfNotNull("bulkUploadCategoryData", bulkUploadCategoryData);
 			_Client.QueueServiceCall("category", "addFromBulkUpload", "KalturaBulkUpload", kparams, kfiles);
 			if (this._Client.IsMultiRequest)
 				return null;

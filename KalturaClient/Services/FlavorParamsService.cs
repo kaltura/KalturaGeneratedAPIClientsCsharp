@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaFlavorParams Add(KalturaFlavorParams flavorParams)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (flavorParams != null)
-				kparams.Add("flavorParams", flavorParams.ToParams());
+			kparams.AddIfNotNull("flavorParams", flavorParams);
 			_Client.QueueServiceCall("flavorparams", "add", "KalturaFlavorParams", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,7 +54,7 @@ namespace Kaltura
 		public KalturaFlavorParams Get(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("flavorparams", "get", "KalturaFlavorParams", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -66,9 +65,8 @@ namespace Kaltura
 		public KalturaFlavorParams Update(int id, KalturaFlavorParams flavorParams)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			if (flavorParams != null)
-				kparams.Add("flavorParams", flavorParams.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("flavorParams", flavorParams);
 			_Client.QueueServiceCall("flavorparams", "update", "KalturaFlavorParams", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -79,7 +77,7 @@ namespace Kaltura
 		public void Delete(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("flavorparams", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -99,10 +97,8 @@ namespace Kaltura
 		public KalturaFlavorParamsListResponse List(KalturaFlavorParamsFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("flavorparams", "list", "KalturaFlavorParamsListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -113,7 +109,7 @@ namespace Kaltura
 		public IList<KalturaFlavorParams> GetByConversionProfileId(int conversionProfileId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("conversionProfileId", conversionProfileId);
+			kparams.AddIfNotNull("conversionProfileId", conversionProfileId);
 			_Client.QueueServiceCall("flavorparams", "getByConversionProfileId", "KalturaFlavorParams", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

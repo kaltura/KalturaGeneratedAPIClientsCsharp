@@ -31,10 +31,10 @@ namespace Kaltura
 {
 	public class KalturaClient : KalturaClientBase
 	{
-		public KalturaClient(KalturaConfiguration config)
-			: base(config)
+		public KalturaClient(KalturaConfiguration config) : base(config)
 		{
-				_ApiVersion = "3.2.0";
+				ApiVersion = "3.2.0";
+				ClientTag = "dotnet:15-09-07";
 		}
 
 		KalturaAccessControlProfileService _AccessControlProfileService;
@@ -1079,6 +1079,111 @@ namespace Kaltura
 
 				return _IntegrationService;
 			}
+		}
+	
+		#region Properties
+ 	public string ClientTag
+ 	{
+ 		get
+ 		{
+ 			if (requestConfiguration.ContainsKey("clientTag"))
+ 				return (string) clientConfiguration["clientTag"];
+ 			return null;
+ 		}
+ 		set
+ 		{
+ 			if (requestConfiguration.ContainsKey("clientTag"))
+ 				clientConfiguration.Remove("clientTag");
+ 			clientConfiguration.Add("clientTag", value);
+ 		}
+ 	}
+	
+ 	public string ApiVersion
+ 	{
+ 		get
+ 		{
+ 			if (requestConfiguration.ContainsKey("apiVersion"))
+ 				return (string) clientConfiguration["apiVersion"];
+ 			return null;
+ 		}
+ 		set
+ 		{
+ 			if (requestConfiguration.ContainsKey("apiVersion"))
+ 				clientConfiguration.Remove("apiVersion");
+ 			clientConfiguration.Add("apiVersion", value);
+ 		}
+ 	}
+	
+ 	public int PartnerId
+ 	{
+ 		get
+ 		{
+ 			if (requestConfiguration.ContainsKey("partnerId"))
+ 				return (int) requestConfiguration["partnerId"];
+ 			return int.MinValue;
+ 		}
+ 		set
+ 		{
+ 			if (requestConfiguration.ContainsKey("partnerId"))
+ 				requestConfiguration.Remove("partnerId");
+ 			requestConfiguration.Add("partnerId", value);
+ 		}
+ 	}
+	
+ 	public string KS
+ 	{
+ 		get
+ 		{
+ 			if (requestConfiguration.ContainsKey("ks"))
+ 				return (string) requestConfiguration["ks"];
+ 			return null;
+ 		}
+ 		set
+ 		{
+ 			if (requestConfiguration.ContainsKey("ks"))
+ 				requestConfiguration.Remove("ks");
+ 			requestConfiguration.Add("ks", value);
+ 		}
+ 	}
+	
+ 	public string SessionId
+ 	{
+ 		get
+ 		{
+ 			if (requestConfiguration.ContainsKey("ks"))
+ 				return (string) requestConfiguration["ks"];
+ 			return null;
+ 		}
+ 		set
+ 		{
+ 			if (requestConfiguration.ContainsKey("ks"))
+ 				requestConfiguration.Remove("ks");
+ 			requestConfiguration.Add("ks", value);
+ 		}
+ 	}
+	
+ 	public KalturaBaseResponseProfile ResponseProfile
+ 	{
+ 		get
+ 		{
+ 			if (requestConfiguration.ContainsKey("responseProfile"))
+ 				return (KalturaBaseResponseProfile) requestConfiguration["responseProfile"];
+ 			return null;
+ 		}
+ 		set
+ 		{
+ 			if (requestConfiguration.ContainsKey("responseProfile"))
+ 				requestConfiguration.Remove("responseProfile");
+ 			requestConfiguration.Add("responseProfile", value);
+ 		}
+ 	}
+	
+		#endregion
+		
+		new protected void resetRequest()
+		{
+			base.resetRequest();
+			this.requestConfiguration.Remove("responseProfile");
 		}
 	}
 }

@@ -204,7 +204,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaEmailIngestionProfile(XmlElement node)
+		public KalturaEmailIngestionProfile(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -269,22 +269,22 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEmailIngestionProfile");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddStringIfNotNull("name", this.Name);
-			kparams.AddStringIfNotNull("description", this.Description);
-			kparams.AddStringIfNotNull("emailAddress", this.EmailAddress);
-			kparams.AddStringIfNotNull("mailboxId", this.MailboxId);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIntIfNotNull("conversionProfile2Id", this.ConversionProfile2Id);
-			kparams.AddEnumIfNotNull("moderationStatus", this.ModerationStatus);
-			kparams.AddEnumIfNotNull("status", this.Status);
-			kparams.AddStringIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddStringIfNotNull("defaultCategory", this.DefaultCategory);
-			kparams.AddStringIfNotNull("defaultUserId", this.DefaultUserId);
-			kparams.AddStringIfNotNull("defaultTags", this.DefaultTags);
-			kparams.AddStringIfNotNull("defaultAdminTags", this.DefaultAdminTags);
-			kparams.AddIntIfNotNull("maxAttachmentSizeKbytes", this.MaxAttachmentSizeKbytes);
-			kparams.AddIntIfNotNull("maxAttachmentsPerMail", this.MaxAttachmentsPerMail);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("emailAddress", this.EmailAddress);
+			kparams.AddIfNotNull("mailboxId", this.MailboxId);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("conversionProfile2Id", this.ConversionProfile2Id);
+			kparams.AddIfNotNull("moderationStatus", this.ModerationStatus);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("defaultCategory", this.DefaultCategory);
+			kparams.AddIfNotNull("defaultUserId", this.DefaultUserId);
+			kparams.AddIfNotNull("defaultTags", this.DefaultTags);
+			kparams.AddIfNotNull("defaultAdminTags", this.DefaultAdminTags);
+			kparams.AddIfNotNull("maxAttachmentSizeKbytes", this.MaxAttachmentSizeKbytes);
+			kparams.AddIfNotNull("maxAttachmentsPerMail", this.MaxAttachmentsPerMail);
 			return kparams;
 		}
 		#endregion

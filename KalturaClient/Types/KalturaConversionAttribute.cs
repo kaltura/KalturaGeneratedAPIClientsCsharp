@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaConversionAttribute(XmlElement node)
+		public KalturaConversionAttribute(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaConversionAttribute");
-			kparams.AddIntIfNotNull("flavorParamsId", this.FlavorParamsId);
-			kparams.AddStringIfNotNull("name", this.Name);
-			kparams.AddStringIfNotNull("value", this.Value);
+			kparams.AddIfNotNull("flavorParamsId", this.FlavorParamsId);
+			kparams.AddIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("value", this.Value);
 			return kparams;
 		}
 		#endregion

@@ -152,13 +152,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUploadTokenBaseFilter");
-			kparams.AddStringIfNotNull("idEqual", this.IdEqual);
-			kparams.AddStringIfNotNull("idIn", this.IdIn);
-			kparams.AddStringIfNotNull("userIdEqual", this.UserIdEqual);
-			kparams.AddEnumIfNotNull("statusEqual", this.StatusEqual);
-			kparams.AddStringIfNotNull("statusIn", this.StatusIn);
-			kparams.AddStringIfNotNull("fileNameEqual", this.FileNameEqual);
-			kparams.AddFloatIfNotNull("fileSizeEqual", this.FileSizeEqual);
+			kparams.AddIfNotNull("idEqual", this.IdEqual);
+			kparams.AddIfNotNull("idIn", this.IdIn);
+			kparams.AddIfNotNull("userIdEqual", this.UserIdEqual);
+			kparams.AddIfNotNull("statusEqual", this.StatusEqual);
+			kparams.AddIfNotNull("statusIn", this.StatusIn);
+			kparams.AddIfNotNull("fileNameEqual", this.FileNameEqual);
+			kparams.AddIfNotNull("fileSizeEqual", this.FileSizeEqual);
 			return kparams;
 		}
 		#endregion

@@ -334,27 +334,27 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaBulkUploadResultEntry");
-			kparams.AddStringIfNotNull("entryId", this.EntryId);
-			kparams.AddStringIfNotNull("title", this.Title);
-			kparams.AddStringIfNotNull("description", this.Description);
-			kparams.AddStringIfNotNull("tags", this.Tags);
-			kparams.AddStringIfNotNull("url", this.Url);
-			kparams.AddStringIfNotNull("contentType", this.ContentType);
-			kparams.AddIntIfNotNull("conversionProfileId", this.ConversionProfileId);
-			kparams.AddIntIfNotNull("accessControlProfileId", this.AccessControlProfileId);
-			kparams.AddStringIfNotNull("category", this.Category);
-			kparams.AddIntIfNotNull("scheduleStartDate", this.ScheduleStartDate);
-			kparams.AddIntIfNotNull("scheduleEndDate", this.ScheduleEndDate);
-			kparams.AddIntIfNotNull("entryStatus", this.EntryStatus);
-			kparams.AddStringIfNotNull("thumbnailUrl", this.ThumbnailUrl);
-			kparams.AddBoolIfNotNull("thumbnailSaved", this.ThumbnailSaved);
-			kparams.AddStringIfNotNull("sshPrivateKey", this.SshPrivateKey);
-			kparams.AddStringIfNotNull("sshPublicKey", this.SshPublicKey);
-			kparams.AddStringIfNotNull("sshKeyPassphrase", this.SshKeyPassphrase);
-			kparams.AddStringIfNotNull("creatorId", this.CreatorId);
-			kparams.AddStringIfNotNull("entitledUsersEdit", this.EntitledUsersEdit);
-			kparams.AddStringIfNotNull("entitledUsersPublish", this.EntitledUsersPublish);
-			kparams.AddStringIfNotNull("ownerId", this.OwnerId);
+			kparams.AddIfNotNull("entryId", this.EntryId);
+			kparams.AddIfNotNull("title", this.Title);
+			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("tags", this.Tags);
+			kparams.AddIfNotNull("url", this.Url);
+			kparams.AddIfNotNull("contentType", this.ContentType);
+			kparams.AddIfNotNull("conversionProfileId", this.ConversionProfileId);
+			kparams.AddIfNotNull("accessControlProfileId", this.AccessControlProfileId);
+			kparams.AddIfNotNull("category", this.Category);
+			kparams.AddIfNotNull("scheduleStartDate", this.ScheduleStartDate);
+			kparams.AddIfNotNull("scheduleEndDate", this.ScheduleEndDate);
+			kparams.AddIfNotNull("entryStatus", this.EntryStatus);
+			kparams.AddIfNotNull("thumbnailUrl", this.ThumbnailUrl);
+			kparams.AddIfNotNull("thumbnailSaved", this.ThumbnailSaved);
+			kparams.AddIfNotNull("sshPrivateKey", this.SshPrivateKey);
+			kparams.AddIfNotNull("sshPublicKey", this.SshPublicKey);
+			kparams.AddIfNotNull("sshKeyPassphrase", this.SshKeyPassphrase);
+			kparams.AddIfNotNull("creatorId", this.CreatorId);
+			kparams.AddIfNotNull("entitledUsersEdit", this.EntitledUsersEdit);
+			kparams.AddIfNotNull("entitledUsersPublish", this.EntitledUsersPublish);
+			kparams.AddIfNotNull("ownerId", this.OwnerId);
 			return kparams;
 		}
 		#endregion

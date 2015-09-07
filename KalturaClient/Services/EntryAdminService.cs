@@ -48,8 +48,8 @@ namespace Kaltura
 		public KalturaBaseEntry Get(string entryId, int version)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddIntIfNotNull("version", version);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("version", version);
 			_Client.QueueServiceCall("adminconsole_entryadmin", "get", "KalturaBaseEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -65,8 +65,8 @@ namespace Kaltura
 		public KalturaBaseEntry GetByFlavorId(string flavorId, int version)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("flavorId", flavorId);
-			kparams.AddIntIfNotNull("version", version);
+			kparams.AddIfNotNull("flavorId", flavorId);
+			kparams.AddIfNotNull("version", version);
 			_Client.QueueServiceCall("adminconsole_entryadmin", "getByFlavorId", "KalturaBaseEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -77,7 +77,7 @@ namespace Kaltura
 		public KalturaTrackEntryListResponse GetTracks(string entryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("entryId", entryId);
 			_Client.QueueServiceCall("adminconsole_entryadmin", "getTracks", "KalturaTrackEntryListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

@@ -139,12 +139,12 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaBaseEntryFilter");
-			kparams.AddStringIfNotNull("freeText", this.FreeText);
-			kparams.AddEnumIfNotNull("isRoot", this.IsRoot);
-			kparams.AddStringIfNotNull("categoriesFullNameIn", this.CategoriesFullNameIn);
-			kparams.AddStringIfNotNull("categoryAncestorIdIn", this.CategoryAncestorIdIn);
-			kparams.AddStringIfNotNull("redirectFromEntryId", this.RedirectFromEntryId);
-			kparams.AddStringEnumIfNotNull("orderBy", this.OrderBy);
+			kparams.AddIfNotNull("freeText", this.FreeText);
+			kparams.AddIfNotNull("isRoot", this.IsRoot);
+			kparams.AddIfNotNull("categoriesFullNameIn", this.CategoriesFullNameIn);
+			kparams.AddIfNotNull("categoryAncestorIdIn", this.CategoryAncestorIdIn);
+			kparams.AddIfNotNull("redirectFromEntryId", this.RedirectFromEntryId);
+			kparams.AddIfNotNull("orderBy", this.OrderBy);
 			return kparams;
 		}
 		#endregion

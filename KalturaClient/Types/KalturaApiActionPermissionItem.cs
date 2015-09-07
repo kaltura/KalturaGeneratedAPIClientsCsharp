@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaApiActionPermissionItem");
-			kparams.AddStringIfNotNull("service", this.Service);
-			kparams.AddStringIfNotNull("action", this.Action);
+			kparams.AddIfNotNull("service", this.Service);
+			kparams.AddIfNotNull("action", this.Action);
 			return kparams;
 		}
 		#endregion

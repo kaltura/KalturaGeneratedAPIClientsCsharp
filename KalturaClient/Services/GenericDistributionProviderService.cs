@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaGenericDistributionProvider Add(KalturaGenericDistributionProvider genericDistributionProvider)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (genericDistributionProvider != null)
-				kparams.Add("genericDistributionProvider", genericDistributionProvider.ToParams());
+			kparams.AddIfNotNull("genericDistributionProvider", genericDistributionProvider);
 			_Client.QueueServiceCall("contentdistribution_genericdistributionprovider", "add", "KalturaGenericDistributionProvider", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,7 +54,7 @@ namespace Kaltura
 		public KalturaGenericDistributionProvider Get(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("contentdistribution_genericdistributionprovider", "get", "KalturaGenericDistributionProvider", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -66,9 +65,8 @@ namespace Kaltura
 		public KalturaGenericDistributionProvider Update(int id, KalturaGenericDistributionProvider genericDistributionProvider)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			if (genericDistributionProvider != null)
-				kparams.Add("genericDistributionProvider", genericDistributionProvider.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("genericDistributionProvider", genericDistributionProvider);
 			_Client.QueueServiceCall("contentdistribution_genericdistributionprovider", "update", "KalturaGenericDistributionProvider", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -79,7 +77,7 @@ namespace Kaltura
 		public void Delete(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("contentdistribution_genericdistributionprovider", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -99,10 +97,8 @@ namespace Kaltura
 		public KalturaGenericDistributionProviderListResponse List(KalturaGenericDistributionProviderFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("contentdistribution_genericdistributionprovider", "list", "KalturaGenericDistributionProviderListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaEventNotificationTemplate Add(KalturaEventNotificationTemplate eventNotificationTemplate)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (eventNotificationTemplate != null)
-				kparams.Add("eventNotificationTemplate", eventNotificationTemplate.ToParams());
+			kparams.AddIfNotNull("eventNotificationTemplate", eventNotificationTemplate);
 			_Client.QueueServiceCall("eventnotification_eventnotificationtemplate", "add", "KalturaEventNotificationTemplate", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -60,9 +59,8 @@ namespace Kaltura
 		public KalturaEventNotificationTemplate Clone(int id, KalturaEventNotificationTemplate eventNotificationTemplate)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			if (eventNotificationTemplate != null)
-				kparams.Add("eventNotificationTemplate", eventNotificationTemplate.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("eventNotificationTemplate", eventNotificationTemplate);
 			_Client.QueueServiceCall("eventnotification_eventnotificationtemplate", "clone", "KalturaEventNotificationTemplate", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -73,7 +71,7 @@ namespace Kaltura
 		public KalturaEventNotificationTemplate Get(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("eventnotification_eventnotificationtemplate", "get", "KalturaEventNotificationTemplate", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -84,9 +82,8 @@ namespace Kaltura
 		public KalturaEventNotificationTemplate Update(int id, KalturaEventNotificationTemplate eventNotificationTemplate)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			if (eventNotificationTemplate != null)
-				kparams.Add("eventNotificationTemplate", eventNotificationTemplate.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("eventNotificationTemplate", eventNotificationTemplate);
 			_Client.QueueServiceCall("eventnotification_eventnotificationtemplate", "update", "KalturaEventNotificationTemplate", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -97,8 +94,8 @@ namespace Kaltura
 		public KalturaEventNotificationTemplate UpdateStatus(int id, KalturaEventNotificationTemplateStatus status)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			kparams.AddEnumIfNotNull("status", status);
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("status", status);
 			_Client.QueueServiceCall("eventnotification_eventnotificationtemplate", "updateStatus", "KalturaEventNotificationTemplate", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -109,7 +106,7 @@ namespace Kaltura
 		public void Delete(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("eventnotification_eventnotificationtemplate", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -129,10 +126,8 @@ namespace Kaltura
 		public KalturaEventNotificationTemplateListResponse List(KalturaEventNotificationTemplateFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("eventnotification_eventnotificationtemplate", "list", "KalturaEventNotificationTemplateListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -153,10 +148,8 @@ namespace Kaltura
 		public KalturaEventNotificationTemplateListResponse ListByPartner(KalturaPartnerFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("eventnotification_eventnotificationtemplate", "listByPartner", "KalturaEventNotificationTemplateListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -167,9 +160,8 @@ namespace Kaltura
 		public int Dispatch(int id, KalturaEventNotificationScope scope)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			if (scope != null)
-				kparams.Add("scope", scope.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("scope", scope);
 			_Client.QueueServiceCall("eventnotification_eventnotificationtemplate", "dispatch", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return 0;
@@ -190,10 +182,8 @@ namespace Kaltura
 		public KalturaEventNotificationTemplateListResponse ListTemplates(KalturaEventNotificationTemplateFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("eventnotification_eventnotificationtemplate", "listTemplates", "KalturaEventNotificationTemplateListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

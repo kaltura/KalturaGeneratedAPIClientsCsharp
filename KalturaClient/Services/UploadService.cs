@@ -55,7 +55,7 @@ namespace Kaltura
 		public KalturaUploadResponse GetUploadedFileTokenByFileName(string fileName)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("fileName", fileName);
+			kparams.AddIfNotNull("fileName", fileName);
 			_Client.QueueServiceCall("upload", "getUploadedFileTokenByFileName", "KalturaUploadResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

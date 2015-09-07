@@ -124,7 +124,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaSchedulerStatus(XmlElement node)
+		public KalturaSchedulerStatus(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -165,14 +165,14 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSchedulerStatus");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("schedulerConfiguredId", this.SchedulerConfiguredId);
-			kparams.AddIntIfNotNull("workerConfiguredId", this.WorkerConfiguredId);
-			kparams.AddStringEnumIfNotNull("workerType", this.WorkerType);
-			kparams.AddEnumIfNotNull("type", this.Type);
-			kparams.AddIntIfNotNull("value", this.Value);
-			kparams.AddIntIfNotNull("schedulerId", this.SchedulerId);
-			kparams.AddIntIfNotNull("workerId", this.WorkerId);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("schedulerConfiguredId", this.SchedulerConfiguredId);
+			kparams.AddIfNotNull("workerConfiguredId", this.WorkerConfiguredId);
+			kparams.AddIfNotNull("workerType", this.WorkerType);
+			kparams.AddIfNotNull("type", this.Type);
+			kparams.AddIfNotNull("value", this.Value);
+			kparams.AddIfNotNull("schedulerId", this.SchedulerId);
+			kparams.AddIfNotNull("workerId", this.WorkerId);
 			return kparams;
 		}
 		#endregion

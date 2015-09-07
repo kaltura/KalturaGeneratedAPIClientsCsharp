@@ -114,7 +114,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaResponseProfileCacheRecalculateOptions(XmlElement node)
+		public KalturaResponseProfileCacheRecalculateOptions(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -152,13 +152,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaResponseProfileCacheRecalculateOptions");
-			kparams.AddIntIfNotNull("limit", this.Limit);
-			kparams.AddStringIfNotNull("cachedObjectType", this.CachedObjectType);
-			kparams.AddStringIfNotNull("objectId", this.ObjectId);
-			kparams.AddStringIfNotNull("startObjectKey", this.StartObjectKey);
-			kparams.AddStringIfNotNull("endObjectKey", this.EndObjectKey);
-			kparams.AddIntIfNotNull("jobCreatedAt", this.JobCreatedAt);
-			kparams.AddBoolIfNotNull("isFirstLoop", this.IsFirstLoop);
+			kparams.AddIfNotNull("limit", this.Limit);
+			kparams.AddIfNotNull("cachedObjectType", this.CachedObjectType);
+			kparams.AddIfNotNull("objectId", this.ObjectId);
+			kparams.AddIfNotNull("startObjectKey", this.StartObjectKey);
+			kparams.AddIfNotNull("endObjectKey", this.EndObjectKey);
+			kparams.AddIfNotNull("jobCreatedAt", this.JobCreatedAt);
+			kparams.AddIfNotNull("isFirstLoop", this.IsFirstLoop);
 			return kparams;
 		}
 		#endregion

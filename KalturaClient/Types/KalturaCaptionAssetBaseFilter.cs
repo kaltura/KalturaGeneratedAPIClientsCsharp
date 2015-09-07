@@ -152,13 +152,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCaptionAssetBaseFilter");
-			kparams.AddIntIfNotNull("captionParamsIdEqual", this.CaptionParamsIdEqual);
-			kparams.AddStringIfNotNull("captionParamsIdIn", this.CaptionParamsIdIn);
-			kparams.AddStringEnumIfNotNull("formatEqual", this.FormatEqual);
-			kparams.AddStringIfNotNull("formatIn", this.FormatIn);
-			kparams.AddEnumIfNotNull("statusEqual", this.StatusEqual);
-			kparams.AddStringIfNotNull("statusIn", this.StatusIn);
-			kparams.AddStringIfNotNull("statusNotIn", this.StatusNotIn);
+			kparams.AddIfNotNull("captionParamsIdEqual", this.CaptionParamsIdEqual);
+			kparams.AddIfNotNull("captionParamsIdIn", this.CaptionParamsIdIn);
+			kparams.AddIfNotNull("formatEqual", this.FormatEqual);
+			kparams.AddIfNotNull("formatIn", this.FormatIn);
+			kparams.AddIfNotNull("statusEqual", this.StatusEqual);
+			kparams.AddIfNotNull("statusIn", this.StatusIn);
+			kparams.AddIfNotNull("statusNotIn", this.StatusNotIn);
 			return kparams;
 		}
 		#endregion

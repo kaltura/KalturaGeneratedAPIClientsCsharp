@@ -43,8 +43,7 @@ namespace Kaltura
 		public bool Collect(KalturaLiveStatsEvent kevent)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (kevent != null)
-				kparams.Add("event", kevent.ToParams());
+			kparams.AddIfNotNull("event", kevent);
 			_Client.QueueServiceCall("livestats", "collect", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return false;

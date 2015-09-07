@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDeleteFileJobData");
-			kparams.AddStringIfNotNull("localFileSyncPath", this.LocalFileSyncPath);
+			kparams.AddIfNotNull("localFileSyncPath", this.LocalFileSyncPath);
 			return kparams;
 		}
 		#endregion

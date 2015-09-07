@@ -43,9 +43,8 @@ namespace Kaltura
 		public KalturaCaptionAsset Add(string entryId, KalturaCaptionAsset captionAsset)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			if (captionAsset != null)
-				kparams.Add("captionAsset", captionAsset.ToParams());
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("captionAsset", captionAsset);
 			_Client.QueueServiceCall("caption_captionasset", "add", "KalturaCaptionAsset", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -56,9 +55,8 @@ namespace Kaltura
 		public KalturaCaptionAsset SetContent(string id, KalturaContentResource contentResource)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			if (contentResource != null)
-				kparams.Add("contentResource", contentResource.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("contentResource", contentResource);
 			_Client.QueueServiceCall("caption_captionasset", "setContent", "KalturaCaptionAsset", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -69,9 +67,8 @@ namespace Kaltura
 		public KalturaCaptionAsset Update(string id, KalturaCaptionAsset captionAsset)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			if (captionAsset != null)
-				kparams.Add("captionAsset", captionAsset.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("captionAsset", captionAsset);
 			_Client.QueueServiceCall("caption_captionasset", "update", "KalturaCaptionAsset", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -87,8 +84,8 @@ namespace Kaltura
 		public string GetUrl(string id, int storageId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			kparams.AddIntIfNotNull("storageId", storageId);
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("storageId", storageId);
 			_Client.QueueServiceCall("caption_captionasset", "getUrl", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -99,7 +96,7 @@ namespace Kaltura
 		public KalturaRemotePathListResponse GetRemotePaths(string id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("caption_captionasset", "getRemotePaths", "KalturaRemotePathListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -110,7 +107,7 @@ namespace Kaltura
 		public void SetAsDefault(string captionAssetId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("captionAssetId", captionAssetId);
+			kparams.AddIfNotNull("captionAssetId", captionAssetId);
 			_Client.QueueServiceCall("caption_captionasset", "setAsDefault", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -120,7 +117,7 @@ namespace Kaltura
 		public KalturaCaptionAsset Get(string captionAssetId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("captionAssetId", captionAssetId);
+			kparams.AddIfNotNull("captionAssetId", captionAssetId);
 			_Client.QueueServiceCall("caption_captionasset", "get", "KalturaCaptionAsset", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -141,10 +138,8 @@ namespace Kaltura
 		public KalturaCaptionAssetListResponse List(KalturaAssetFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("caption_captionasset", "list", "KalturaCaptionAssetListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -155,7 +150,7 @@ namespace Kaltura
 		public void Delete(string captionAssetId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("captionAssetId", captionAssetId);
+			kparams.AddIfNotNull("captionAssetId", captionAssetId);
 			_Client.QueueServiceCall("caption_captionasset", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;

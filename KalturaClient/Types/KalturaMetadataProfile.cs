@@ -194,7 +194,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaMetadataProfile(XmlElement node)
+		public KalturaMetadataProfile(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -256,21 +256,21 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaMetadataProfile");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringEnumIfNotNull("metadataObjectType", this.MetadataObjectType);
-			kparams.AddIntIfNotNull("version", this.Version);
-			kparams.AddStringIfNotNull("name", this.Name);
-			kparams.AddStringIfNotNull("systemName", this.SystemName);
-			kparams.AddStringIfNotNull("description", this.Description);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddEnumIfNotNull("status", this.Status);
-			kparams.AddStringIfNotNull("xsd", this.Xsd);
-			kparams.AddStringIfNotNull("views", this.Views);
-			kparams.AddStringIfNotNull("xslt", this.Xslt);
-			kparams.AddEnumIfNotNull("createMode", this.CreateMode);
-			kparams.AddBoolIfNotNull("disableReIndexing", this.DisableReIndexing);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("metadataObjectType", this.MetadataObjectType);
+			kparams.AddIfNotNull("version", this.Version);
+			kparams.AddIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("systemName", this.SystemName);
+			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("xsd", this.Xsd);
+			kparams.AddIfNotNull("views", this.Views);
+			kparams.AddIfNotNull("xslt", this.Xslt);
+			kparams.AddIfNotNull("createMode", this.CreateMode);
+			kparams.AddIfNotNull("disableReIndexing", this.DisableReIndexing);
 			return kparams;
 		}
 		#endregion

@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaCoordinate(XmlElement node)
+		public KalturaCoordinate(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCoordinate");
-			kparams.AddFloatIfNotNull("latitude", this.Latitude);
-			kparams.AddFloatIfNotNull("longitude", this.Longitude);
-			kparams.AddStringIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("latitude", this.Latitude);
+			kparams.AddIfNotNull("longitude", this.Longitude);
+			kparams.AddIfNotNull("name", this.Name);
 			return kparams;
 		}
 		#endregion

@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUserAgentRestriction");
-			kparams.AddEnumIfNotNull("userAgentRestrictionType", this.UserAgentRestrictionType);
-			kparams.AddStringIfNotNull("userAgentRegexList", this.UserAgentRegexList);
+			kparams.AddIfNotNull("userAgentRestrictionType", this.UserAgentRestrictionType);
+			kparams.AddIfNotNull("userAgentRegexList", this.UserAgentRegexList);
 			return kparams;
 		}
 		#endregion

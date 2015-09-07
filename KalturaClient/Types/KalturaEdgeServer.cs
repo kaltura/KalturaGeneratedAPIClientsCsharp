@@ -174,7 +174,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaEdgeServer(XmlElement node)
+		public KalturaEdgeServer(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -230,19 +230,19 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEdgeServer");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringIfNotNull("name", this.Name);
-			kparams.AddStringIfNotNull("systemName", this.SystemName);
-			kparams.AddStringIfNotNull("description", this.Description);
-			kparams.AddEnumIfNotNull("status", this.Status);
-			kparams.AddStringIfNotNull("tags", this.Tags);
-			kparams.AddStringIfNotNull("hostName", this.HostName);
-			kparams.AddStringIfNotNull("playbackHostName", this.PlaybackHostName);
-			kparams.AddStringIfNotNull("deliveryProfileIds", this.DeliveryProfileIds);
-			kparams.AddIntIfNotNull("parentId", this.ParentId);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("systemName", this.SystemName);
+			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("tags", this.Tags);
+			kparams.AddIfNotNull("hostName", this.HostName);
+			kparams.AddIfNotNull("playbackHostName", this.PlaybackHostName);
+			kparams.AddIfNotNull("deliveryProfileIds", this.DeliveryProfileIds);
+			kparams.AddIfNotNull("parentId", this.ParentId);
 			return kparams;
 		}
 		#endregion

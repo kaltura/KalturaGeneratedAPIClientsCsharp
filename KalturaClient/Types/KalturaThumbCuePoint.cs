@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaThumbCuePoint");
-			kparams.AddStringIfNotNull("assetId", this.AssetId);
-			kparams.AddStringIfNotNull("description", this.Description);
-			kparams.AddStringIfNotNull("title", this.Title);
-			kparams.AddEnumIfNotNull("subType", this.SubType);
+			kparams.AddIfNotNull("assetId", this.AssetId);
+			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("title", this.Title);
+			kparams.AddIfNotNull("subType", this.SubType);
 			return kparams;
 		}
 		#endregion

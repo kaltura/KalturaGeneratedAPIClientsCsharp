@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDeliveryProfileRtmp");
-			kparams.AddBoolIfNotNull("enforceRtmpe", this.EnforceRtmpe);
-			kparams.AddStringIfNotNull("prefix", this.Prefix);
+			kparams.AddIfNotNull("enforceRtmpe", this.EnforceRtmpe);
+			kparams.AddIfNotNull("prefix", this.Prefix);
 			return kparams;
 		}
 		#endregion

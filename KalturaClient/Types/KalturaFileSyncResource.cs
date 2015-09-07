@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaFileSyncResource");
-			kparams.AddIntIfNotNull("fileSyncObjectType", this.FileSyncObjectType);
-			kparams.AddIntIfNotNull("objectSubType", this.ObjectSubType);
-			kparams.AddStringIfNotNull("objectId", this.ObjectId);
-			kparams.AddStringIfNotNull("version", this.Version);
+			kparams.AddIfNotNull("fileSyncObjectType", this.FileSyncObjectType);
+			kparams.AddIfNotNull("objectSubType", this.ObjectSubType);
+			kparams.AddIfNotNull("objectId", this.ObjectId);
+			kparams.AddIfNotNull("version", this.Version);
 			return kparams;
 		}
 		#endregion

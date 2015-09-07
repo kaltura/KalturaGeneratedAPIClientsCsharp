@@ -91,23 +91,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaModifyCategoriesObjectTask");
-			kparams.AddEnumIfNotNull("addRemoveType", this.AddRemoveType);
-			if (this.CategoryIds != null)
-			{
-				if (this.CategoryIds.Count == 0)
-				{
-					kparams.Add("categoryIds:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaIntegerValue item in this.CategoryIds)
-					{
-						kparams.Add("categoryIds:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
+			kparams.AddIfNotNull("addRemoveType", this.AddRemoveType);
+			kparams.AddIfNotNull("categoryIds", this.CategoryIds);
 			return kparams;
 		}
 		#endregion

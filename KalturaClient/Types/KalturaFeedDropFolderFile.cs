@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaFeedDropFolderFile");
-			kparams.AddStringIfNotNull("hash", this.Hash);
-			kparams.AddStringIfNotNull("feedXmlPath", this.FeedXmlPath);
+			kparams.AddIfNotNull("hash", this.Hash);
+			kparams.AddIfNotNull("feedXmlPath", this.FeedXmlPath);
 			return kparams;
 		}
 		#endregion

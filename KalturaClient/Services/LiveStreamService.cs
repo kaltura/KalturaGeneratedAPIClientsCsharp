@@ -48,9 +48,8 @@ namespace Kaltura
 		public KalturaLiveStreamEntry Add(KalturaLiveStreamEntry liveStreamEntry, KalturaSourceType sourceType)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (liveStreamEntry != null)
-				kparams.Add("liveStreamEntry", liveStreamEntry.ToParams());
-			kparams.AddStringEnumIfNotNull("sourceType", sourceType);
+			kparams.AddIfNotNull("liveStreamEntry", liveStreamEntry);
+			kparams.AddIfNotNull("sourceType", sourceType);
 			_Client.QueueServiceCall("livestream", "add", "KalturaLiveStreamEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -66,8 +65,8 @@ namespace Kaltura
 		public KalturaLiveStreamEntry Get(string entryId, int version)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddIntIfNotNull("version", version);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("version", version);
 			_Client.QueueServiceCall("livestream", "get", "KalturaLiveStreamEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -78,8 +77,8 @@ namespace Kaltura
 		public KalturaLiveStreamEntry Authenticate(string entryId, string token)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddStringIfNotNull("token", token);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("token", token);
 			_Client.QueueServiceCall("livestream", "authenticate", "KalturaLiveStreamEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -90,9 +89,8 @@ namespace Kaltura
 		public KalturaLiveStreamEntry Update(string entryId, KalturaLiveStreamEntry liveStreamEntry)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			if (liveStreamEntry != null)
-				kparams.Add("liveStreamEntry", liveStreamEntry.ToParams());
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("liveStreamEntry", liveStreamEntry);
 			_Client.QueueServiceCall("livestream", "update", "KalturaLiveStreamEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -103,7 +101,7 @@ namespace Kaltura
 		public void Delete(string entryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("entryId", entryId);
 			_Client.QueueServiceCall("livestream", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -123,10 +121,8 @@ namespace Kaltura
 		public KalturaLiveStreamListResponse List(KalturaLiveStreamEntryFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("livestream", "list", "KalturaLiveStreamListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -137,7 +133,7 @@ namespace Kaltura
 		public KalturaLiveStreamEntry UpdateOfflineThumbnailJpeg(string entryId, FileStream fileData)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("entryId", entryId);
 			KalturaFiles kfiles = new KalturaFiles();
 			kfiles.Add("fileData", fileData);
 			_Client.QueueServiceCall("livestream", "updateOfflineThumbnailJpeg", "KalturaLiveStreamEntry", kparams, kfiles);
@@ -150,8 +146,8 @@ namespace Kaltura
 		public KalturaLiveStreamEntry UpdateOfflineThumbnailFromUrl(string entryId, string url)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddStringIfNotNull("url", url);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("url", url);
 			_Client.QueueServiceCall("livestream", "updateOfflineThumbnailFromUrl", "KalturaLiveStreamEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -162,8 +158,8 @@ namespace Kaltura
 		public bool IsLive(string id, KalturaPlaybackProtocol protocol)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			kparams.AddStringEnumIfNotNull("protocol", protocol);
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("protocol", protocol);
 			_Client.QueueServiceCall("livestream", "isLive", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return false;
@@ -186,11 +182,10 @@ namespace Kaltura
 		public KalturaLiveStreamEntry AddLiveStreamPushPublishConfiguration(string entryId, KalturaPlaybackProtocol protocol, string url, KalturaLiveStreamConfiguration liveStreamConfiguration)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddStringEnumIfNotNull("protocol", protocol);
-			kparams.AddStringIfNotNull("url", url);
-			if (liveStreamConfiguration != null)
-				kparams.Add("liveStreamConfiguration", liveStreamConfiguration.ToParams());
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("protocol", protocol);
+			kparams.AddIfNotNull("url", url);
+			kparams.AddIfNotNull("liveStreamConfiguration", liveStreamConfiguration);
 			_Client.QueueServiceCall("livestream", "addLiveStreamPushPublishConfiguration", "KalturaLiveStreamEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -201,8 +196,8 @@ namespace Kaltura
 		public KalturaLiveStreamEntry RemoveLiveStreamPushPublishConfiguration(string entryId, KalturaPlaybackProtocol protocol)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddStringEnumIfNotNull("protocol", protocol);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("protocol", protocol);
 			_Client.QueueServiceCall("livestream", "removeLiveStreamPushPublishConfiguration", "KalturaLiveStreamEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -218,13 +213,12 @@ namespace Kaltura
 		public KalturaLiveEntry AppendRecording(string entryId, string assetId, KalturaMediaServerIndex mediaServerIndex, KalturaDataCenterContentResource resource, float duration, bool isLastChunk)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddStringIfNotNull("assetId", assetId);
-			kparams.AddEnumIfNotNull("mediaServerIndex", mediaServerIndex);
-			if (resource != null)
-				kparams.Add("resource", resource.ToParams());
-			kparams.AddFloatIfNotNull("duration", duration);
-			kparams.AddBoolIfNotNull("isLastChunk", isLastChunk);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("assetId", assetId);
+			kparams.AddIfNotNull("mediaServerIndex", mediaServerIndex);
+			kparams.AddIfNotNull("resource", resource);
+			kparams.AddIfNotNull("duration", duration);
+			kparams.AddIfNotNull("isLastChunk", isLastChunk);
 			_Client.QueueServiceCall("livestream", "appendRecording", "KalturaLiveEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -240,10 +234,10 @@ namespace Kaltura
 		public KalturaLiveEntry RegisterMediaServer(string entryId, string hostname, KalturaMediaServerIndex mediaServerIndex, string applicationName)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddStringIfNotNull("hostname", hostname);
-			kparams.AddEnumIfNotNull("mediaServerIndex", mediaServerIndex);
-			kparams.AddStringIfNotNull("applicationName", applicationName);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("hostname", hostname);
+			kparams.AddIfNotNull("mediaServerIndex", mediaServerIndex);
+			kparams.AddIfNotNull("applicationName", applicationName);
 			_Client.QueueServiceCall("livestream", "registerMediaServer", "KalturaLiveEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -254,9 +248,9 @@ namespace Kaltura
 		public KalturaLiveEntry UnregisterMediaServer(string entryId, string hostname, KalturaMediaServerIndex mediaServerIndex)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddStringIfNotNull("hostname", hostname);
-			kparams.AddEnumIfNotNull("mediaServerIndex", mediaServerIndex);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("hostname", hostname);
+			kparams.AddIfNotNull("mediaServerIndex", mediaServerIndex);
 			_Client.QueueServiceCall("livestream", "unregisterMediaServer", "KalturaLiveEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -267,7 +261,7 @@ namespace Kaltura
 		public void ValidateRegisteredMediaServers(string entryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("entryId", entryId);
 			_Client.QueueServiceCall("livestream", "validateRegisteredMediaServers", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -277,9 +271,9 @@ namespace Kaltura
 		public void CreatePeriodicSyncPoints(string entryId, int interval, int duration)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddIntIfNotNull("interval", interval);
-			kparams.AddIntIfNotNull("duration", duration);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("interval", interval);
+			kparams.AddIfNotNull("duration", duration);
 			_Client.QueueServiceCall("livestream", "createPeriodicSyncPoints", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;

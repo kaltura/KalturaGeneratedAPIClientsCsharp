@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUrlTokenizerCloudFront");
-			kparams.AddStringIfNotNull("keyPairId", this.KeyPairId);
-			kparams.AddStringIfNotNull("rootDir", this.RootDir);
+			kparams.AddIfNotNull("keyPairId", this.KeyPairId);
+			kparams.AddIfNotNull("rootDir", this.RootDir);
 			return kparams;
 		}
 		#endregion

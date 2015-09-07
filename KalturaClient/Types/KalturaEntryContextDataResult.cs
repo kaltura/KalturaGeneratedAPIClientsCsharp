@@ -48,7 +48,7 @@ namespace Kaltura
 		private IList<KalturaString> _AccessControlMessages;
 		private IList<KalturaRuleAction> _AccessControlActions;
 		private IList<KalturaFlavorAsset> _FlavorAssets;
-		private Dictionary<string, KalturaPluginData> _PluginData;
+		private IDictionary<string, KalturaPluginData> _PluginData;
 		#endregion
 
 		#region Properties
@@ -178,7 +178,7 @@ namespace Kaltura
 				OnPropertyChanged("FlavorAssets");
 			}
 		}
-		public Dictionary<string, KalturaPluginData> PluginData
+		public IDictionary<string, KalturaPluginData> PluginData
 		{
 			get { return _PluginData; }
 			set 
@@ -257,12 +257,12 @@ namespace Kaltura
 						continue;
 					case "pluginData":
 						{
-							int index = 0;
+							string key;
 							this.PluginData = new Dictionary<string, KalturaPluginData>();
 							foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 							{
-								this.PluginData[index.ToString()] = (KalturaPluginData)KalturaObjectFactory.Create(arrayNode, "KalturaPluginData");
-								index++;
+								key = arrayNode["itemKey"].InnerText;;
+								this.PluginData[key] = (KalturaPluginData)KalturaObjectFactory.Create(arrayNode, "KalturaPluginData");
 							}
 						}
 						continue;
@@ -276,79 +276,21 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEntryContextDataResult");
-			kparams.AddBoolIfNotNull("isSiteRestricted", this.IsSiteRestricted);
-			kparams.AddBoolIfNotNull("isCountryRestricted", this.IsCountryRestricted);
-			kparams.AddBoolIfNotNull("isSessionRestricted", this.IsSessionRestricted);
-			kparams.AddBoolIfNotNull("isIpAddressRestricted", this.IsIpAddressRestricted);
-			kparams.AddBoolIfNotNull("isUserAgentRestricted", this.IsUserAgentRestricted);
-			kparams.AddIntIfNotNull("previewLength", this.PreviewLength);
-			kparams.AddBoolIfNotNull("isScheduledNow", this.IsScheduledNow);
-			kparams.AddBoolIfNotNull("isAdmin", this.IsAdmin);
-			kparams.AddStringIfNotNull("streamerType", this.StreamerType);
-			kparams.AddStringIfNotNull("mediaProtocol", this.MediaProtocol);
-			kparams.AddStringIfNotNull("storageProfilesXML", this.StorageProfilesXML);
-			if (this.AccessControlMessages != null)
-			{
-				if (this.AccessControlMessages.Count == 0)
-				{
-					kparams.Add("accessControlMessages:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaString item in this.AccessControlMessages)
-					{
-						kparams.Add("accessControlMessages:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			if (this.AccessControlActions != null)
-			{
-				if (this.AccessControlActions.Count == 0)
-				{
-					kparams.Add("accessControlActions:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaRuleAction item in this.AccessControlActions)
-					{
-						kparams.Add("accessControlActions:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			if (this.FlavorAssets != null)
-			{
-				if (this.FlavorAssets.Count == 0)
-				{
-					kparams.Add("flavorAssets:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaFlavorAsset item in this.FlavorAssets)
-					{
-						kparams.Add("flavorAssets:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			if (this.PluginData != null)
-			{
-				if (this.PluginData.Count == 0)
-				{
-					kparams.Add("pluginData:-", "");
-				}
-				else
-				{
-					foreach (KeyValuePair<string, KalturaPluginData> curEntry in this.PluginData)
-					{
-						kparams.Add("pluginData:" + curEntry.Key, curEntry.Value.ToParams());
-					}
-				}
-			}
+			kparams.AddIfNotNull("isSiteRestricted", this.IsSiteRestricted);
+			kparams.AddIfNotNull("isCountryRestricted", this.IsCountryRestricted);
+			kparams.AddIfNotNull("isSessionRestricted", this.IsSessionRestricted);
+			kparams.AddIfNotNull("isIpAddressRestricted", this.IsIpAddressRestricted);
+			kparams.AddIfNotNull("isUserAgentRestricted", this.IsUserAgentRestricted);
+			kparams.AddIfNotNull("previewLength", this.PreviewLength);
+			kparams.AddIfNotNull("isScheduledNow", this.IsScheduledNow);
+			kparams.AddIfNotNull("isAdmin", this.IsAdmin);
+			kparams.AddIfNotNull("streamerType", this.StreamerType);
+			kparams.AddIfNotNull("mediaProtocol", this.MediaProtocol);
+			kparams.AddIfNotNull("storageProfilesXML", this.StorageProfilesXML);
+			kparams.AddIfNotNull("accessControlMessages", this.AccessControlMessages);
+			kparams.AddIfNotNull("accessControlActions", this.AccessControlActions);
+			kparams.AddIfNotNull("flavorAssets", this.FlavorAssets);
+			kparams.AddIfNotNull("pluginData", this.PluginData);
 			return kparams;
 		}
 		#endregion

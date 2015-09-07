@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCuePointFilter");
-			kparams.AddStringIfNotNull("freeText", this.FreeText);
-			kparams.AddEnumIfNotNull("userIdEqualCurrent", this.UserIdEqualCurrent);
-			kparams.AddEnumIfNotNull("userIdCurrent", this.UserIdCurrent);
-			kparams.AddStringEnumIfNotNull("orderBy", this.OrderBy);
+			kparams.AddIfNotNull("freeText", this.FreeText);
+			kparams.AddIfNotNull("userIdEqualCurrent", this.UserIdEqualCurrent);
+			kparams.AddIfNotNull("userIdCurrent", this.UserIdCurrent);
+			kparams.AddIfNotNull("orderBy", this.OrderBy);
 			return kparams;
 		}
 		#endregion

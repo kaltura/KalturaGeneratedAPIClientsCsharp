@@ -114,7 +114,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaConvertCollectionFlavorData(XmlElement node)
+		public KalturaConvertCollectionFlavorData(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -152,13 +152,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaConvertCollectionFlavorData");
-			kparams.AddStringIfNotNull("flavorAssetId", this.FlavorAssetId);
-			kparams.AddIntIfNotNull("flavorParamsOutputId", this.FlavorParamsOutputId);
-			kparams.AddIntIfNotNull("readyBehavior", this.ReadyBehavior);
-			kparams.AddIntIfNotNull("videoBitrate", this.VideoBitrate);
-			kparams.AddIntIfNotNull("audioBitrate", this.AudioBitrate);
-			kparams.AddStringIfNotNull("destFileSyncLocalPath", this.DestFileSyncLocalPath);
-			kparams.AddStringIfNotNull("destFileSyncRemoteUrl", this.DestFileSyncRemoteUrl);
+			kparams.AddIfNotNull("flavorAssetId", this.FlavorAssetId);
+			kparams.AddIfNotNull("flavorParamsOutputId", this.FlavorParamsOutputId);
+			kparams.AddIfNotNull("readyBehavior", this.ReadyBehavior);
+			kparams.AddIfNotNull("videoBitrate", this.VideoBitrate);
+			kparams.AddIfNotNull("audioBitrate", this.AudioBitrate);
+			kparams.AddIfNotNull("destFileSyncLocalPath", this.DestFileSyncLocalPath);
+			kparams.AddIfNotNull("destFileSyncRemoteUrl", this.DestFileSyncRemoteUrl);
 			return kparams;
 		}
 		#endregion

@@ -54,7 +54,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaThumbnailServeOptions(XmlElement node)
+		public KalturaThumbnailServeOptions(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaThumbnailServeOptions");
-			kparams.AddBoolIfNotNull("download", this.Download);
+			kparams.AddIfNotNull("download", this.Download);
 			return kparams;
 		}
 		#endregion

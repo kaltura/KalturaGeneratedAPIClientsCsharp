@@ -64,7 +64,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaDistributionThumbDimensions(XmlElement node)
+		public KalturaDistributionThumbDimensions(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDistributionThumbDimensions");
-			kparams.AddIntIfNotNull("width", this.Width);
-			kparams.AddIntIfNotNull("height", this.Height);
+			kparams.AddIfNotNull("width", this.Width);
+			kparams.AddIfNotNull("height", this.Height);
 			return kparams;
 		}
 		#endregion

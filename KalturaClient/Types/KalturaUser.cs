@@ -414,7 +414,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaUser(XmlElement node)
+		public KalturaUser(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -542,43 +542,43 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUser");
-			kparams.AddStringIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddEnumIfNotNull("type", this.Type);
-			kparams.AddStringIfNotNull("screenName", this.ScreenName);
-			kparams.AddStringIfNotNull("fullName", this.FullName);
-			kparams.AddStringIfNotNull("email", this.Email);
-			kparams.AddIntIfNotNull("dateOfBirth", this.DateOfBirth);
-			kparams.AddStringIfNotNull("country", this.Country);
-			kparams.AddStringIfNotNull("state", this.State);
-			kparams.AddStringIfNotNull("city", this.City);
-			kparams.AddStringIfNotNull("zip", this.Zip);
-			kparams.AddStringIfNotNull("thumbnailUrl", this.ThumbnailUrl);
-			kparams.AddStringIfNotNull("description", this.Description);
-			kparams.AddStringIfNotNull("tags", this.Tags);
-			kparams.AddStringIfNotNull("adminTags", this.AdminTags);
-			kparams.AddEnumIfNotNull("gender", this.Gender);
-			kparams.AddEnumIfNotNull("status", this.Status);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddStringIfNotNull("partnerData", this.PartnerData);
-			kparams.AddIntIfNotNull("indexedPartnerDataInt", this.IndexedPartnerDataInt);
-			kparams.AddStringIfNotNull("indexedPartnerDataString", this.IndexedPartnerDataString);
-			kparams.AddIntIfNotNull("storageSize", this.StorageSize);
-			kparams.AddStringIfNotNull("password", this.Password);
-			kparams.AddStringIfNotNull("firstName", this.FirstName);
-			kparams.AddStringIfNotNull("lastName", this.LastName);
-			kparams.AddBoolIfNotNull("isAdmin", this.IsAdmin);
-			kparams.AddStringEnumIfNotNull("language", this.Language);
-			kparams.AddIntIfNotNull("lastLoginTime", this.LastLoginTime);
-			kparams.AddIntIfNotNull("statusUpdatedAt", this.StatusUpdatedAt);
-			kparams.AddIntIfNotNull("deletedAt", this.DeletedAt);
-			kparams.AddBoolIfNotNull("loginEnabled", this.LoginEnabled);
-			kparams.AddStringIfNotNull("roleIds", this.RoleIds);
-			kparams.AddStringIfNotNull("roleNames", this.RoleNames);
-			kparams.AddBoolIfNotNull("isAccountOwner", this.IsAccountOwner);
-			kparams.AddStringIfNotNull("allowedPartnerIds", this.AllowedPartnerIds);
-			kparams.AddStringIfNotNull("allowedPartnerPackages", this.AllowedPartnerPackages);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("type", this.Type);
+			kparams.AddIfNotNull("screenName", this.ScreenName);
+			kparams.AddIfNotNull("fullName", this.FullName);
+			kparams.AddIfNotNull("email", this.Email);
+			kparams.AddIfNotNull("dateOfBirth", this.DateOfBirth);
+			kparams.AddIfNotNull("country", this.Country);
+			kparams.AddIfNotNull("state", this.State);
+			kparams.AddIfNotNull("city", this.City);
+			kparams.AddIfNotNull("zip", this.Zip);
+			kparams.AddIfNotNull("thumbnailUrl", this.ThumbnailUrl);
+			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("tags", this.Tags);
+			kparams.AddIfNotNull("adminTags", this.AdminTags);
+			kparams.AddIfNotNull("gender", this.Gender);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("partnerData", this.PartnerData);
+			kparams.AddIfNotNull("indexedPartnerDataInt", this.IndexedPartnerDataInt);
+			kparams.AddIfNotNull("indexedPartnerDataString", this.IndexedPartnerDataString);
+			kparams.AddIfNotNull("storageSize", this.StorageSize);
+			kparams.AddIfNotNull("password", this.Password);
+			kparams.AddIfNotNull("firstName", this.FirstName);
+			kparams.AddIfNotNull("lastName", this.LastName);
+			kparams.AddIfNotNull("isAdmin", this.IsAdmin);
+			kparams.AddIfNotNull("language", this.Language);
+			kparams.AddIfNotNull("lastLoginTime", this.LastLoginTime);
+			kparams.AddIfNotNull("statusUpdatedAt", this.StatusUpdatedAt);
+			kparams.AddIfNotNull("deletedAt", this.DeletedAt);
+			kparams.AddIfNotNull("loginEnabled", this.LoginEnabled);
+			kparams.AddIfNotNull("roleIds", this.RoleIds);
+			kparams.AddIfNotNull("roleNames", this.RoleNames);
+			kparams.AddIfNotNull("isAccountOwner", this.IsAccountOwner);
+			kparams.AddIfNotNull("allowedPartnerIds", this.AllowedPartnerIds);
+			kparams.AddIfNotNull("allowedPartnerPackages", this.AllowedPartnerPackages);
 			return kparams;
 		}
 		#endregion

@@ -174,7 +174,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaAssetParams(XmlElement node)
+		public KalturaAssetParams(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -234,34 +234,19 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAssetParams");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringIfNotNull("name", this.Name);
-			kparams.AddStringIfNotNull("systemName", this.SystemName);
-			kparams.AddStringIfNotNull("description", this.Description);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddEnumIfNotNull("isSystemDefault", this.IsSystemDefault);
-			kparams.AddStringIfNotNull("tags", this.Tags);
-			if (this.RequiredPermissions != null)
-			{
-				if (this.RequiredPermissions.Count == 0)
-				{
-					kparams.Add("requiredPermissions:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaString item in this.RequiredPermissions)
-					{
-						kparams.Add("requiredPermissions:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddIntIfNotNull("sourceRemoteStorageProfileId", this.SourceRemoteStorageProfileId);
-			kparams.AddIntIfNotNull("remoteStorageProfileIds", this.RemoteStorageProfileIds);
-			kparams.AddStringEnumIfNotNull("mediaParserType", this.MediaParserType);
-			kparams.AddStringIfNotNull("sourceAssetParamsIds", this.SourceAssetParamsIds);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("systemName", this.SystemName);
+			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("isSystemDefault", this.IsSystemDefault);
+			kparams.AddIfNotNull("tags", this.Tags);
+			kparams.AddIfNotNull("requiredPermissions", this.RequiredPermissions);
+			kparams.AddIfNotNull("sourceRemoteStorageProfileId", this.SourceRemoteStorageProfileId);
+			kparams.AddIfNotNull("remoteStorageProfileIds", this.RemoteStorageProfileIds);
+			kparams.AddIfNotNull("mediaParserType", this.MediaParserType);
+			kparams.AddIfNotNull("sourceAssetParamsIds", this.SourceAssetParamsIds);
 			return kparams;
 		}
 		#endregion

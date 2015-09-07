@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaDataEntry Add(KalturaDataEntry dataEntry)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (dataEntry != null)
-				kparams.Add("dataEntry", dataEntry.ToParams());
+			kparams.AddIfNotNull("dataEntry", dataEntry);
 			_Client.QueueServiceCall("data", "add", "KalturaDataEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -60,8 +59,8 @@ namespace Kaltura
 		public KalturaDataEntry Get(string entryId, int version)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddIntIfNotNull("version", version);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("version", version);
 			_Client.QueueServiceCall("data", "get", "KalturaDataEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -72,9 +71,8 @@ namespace Kaltura
 		public KalturaDataEntry Update(string entryId, KalturaDataEntry documentEntry)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			if (documentEntry != null)
-				kparams.Add("documentEntry", documentEntry.ToParams());
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("documentEntry", documentEntry);
 			_Client.QueueServiceCall("data", "update", "KalturaDataEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -85,7 +83,7 @@ namespace Kaltura
 		public void Delete(string entryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("entryId", entryId);
 			_Client.QueueServiceCall("data", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -105,10 +103,8 @@ namespace Kaltura
 		public KalturaDataListResponse List(KalturaDataEntryFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("data", "list", "KalturaDataListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

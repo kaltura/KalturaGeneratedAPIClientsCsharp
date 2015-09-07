@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaBulkDownloadJobData");
-			kparams.AddStringIfNotNull("entryIds", this.EntryIds);
-			kparams.AddIntIfNotNull("flavorParamsId", this.FlavorParamsId);
-			kparams.AddStringIfNotNull("puserId", this.PuserId);
+			kparams.AddIfNotNull("entryIds", this.EntryIds);
+			kparams.AddIfNotNull("flavorParamsId", this.FlavorParamsId);
+			kparams.AddIfNotNull("puserId", this.PuserId);
 			return kparams;
 		}
 		#endregion

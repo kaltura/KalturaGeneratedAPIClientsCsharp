@@ -169,29 +169,14 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaPlaylist");
-			kparams.AddStringIfNotNull("playlistContent", this.PlaylistContent);
-			if (this.Filters != null)
-			{
-				if (this.Filters.Count == 0)
-				{
-					kparams.Add("filters:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaMediaEntryFilterForPlaylist item in this.Filters)
-					{
-						kparams.Add("filters:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddIntIfNotNull("totalResults", this.TotalResults);
-			kparams.AddEnumIfNotNull("playlistType", this.PlaylistType);
-			kparams.AddIntIfNotNull("plays", this.Plays);
-			kparams.AddIntIfNotNull("views", this.Views);
-			kparams.AddIntIfNotNull("duration", this.Duration);
-			kparams.AddStringIfNotNull("executeUrl", this.ExecuteUrl);
+			kparams.AddIfNotNull("playlistContent", this.PlaylistContent);
+			kparams.AddIfNotNull("filters", this.Filters);
+			kparams.AddIfNotNull("totalResults", this.TotalResults);
+			kparams.AddIfNotNull("playlistType", this.PlaylistType);
+			kparams.AddIfNotNull("plays", this.Plays);
+			kparams.AddIfNotNull("views", this.Views);
+			kparams.AddIfNotNull("duration", this.Duration);
+			kparams.AddIfNotNull("executeUrl", this.ExecuteUrl);
 			return kparams;
 		}
 		#endregion

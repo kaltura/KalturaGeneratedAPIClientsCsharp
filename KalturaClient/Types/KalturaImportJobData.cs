@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaImportJobData");
-			kparams.AddStringIfNotNull("srcFileUrl", this.SrcFileUrl);
-			kparams.AddStringIfNotNull("destFileLocalPath", this.DestFileLocalPath);
-			kparams.AddStringIfNotNull("flavorAssetId", this.FlavorAssetId);
-			kparams.AddIntIfNotNull("fileSize", this.FileSize);
+			kparams.AddIfNotNull("srcFileUrl", this.SrcFileUrl);
+			kparams.AddIfNotNull("destFileLocalPath", this.DestFileLocalPath);
+			kparams.AddIfNotNull("flavorAssetId", this.FlavorAssetId);
+			kparams.AddIfNotNull("fileSize", this.FileSize);
 			return kparams;
 		}
 		#endregion

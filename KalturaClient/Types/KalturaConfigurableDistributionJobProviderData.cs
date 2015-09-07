@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaConfigurableDistributionJobProviderData");
-			kparams.AddStringIfNotNull("fieldValues", this.FieldValues);
+			kparams.AddIfNotNull("fieldValues", this.FieldValues);
 			return kparams;
 		}
 		#endregion

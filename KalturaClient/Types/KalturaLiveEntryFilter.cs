@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveEntryFilter");
-			kparams.AddEnumIfNotNull("isLive", this.IsLive);
-			kparams.AddEnumIfNotNull("isRecordedEntryIdEmpty", this.IsRecordedEntryIdEmpty);
-			kparams.AddStringEnumIfNotNull("orderBy", this.OrderBy);
+			kparams.AddIfNotNull("isLive", this.IsLive);
+			kparams.AddIfNotNull("isRecordedEntryIdEmpty", this.IsRecordedEntryIdEmpty);
+			kparams.AddIfNotNull("orderBy", this.OrderBy);
 			return kparams;
 		}
 		#endregion

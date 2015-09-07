@@ -269,22 +269,22 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaShortLinkBaseFilter");
-			kparams.AddIntIfNotNull("idEqual", this.IdEqual);
-			kparams.AddStringIfNotNull("idIn", this.IdIn);
-			kparams.AddIntIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
-			kparams.AddIntIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
-			kparams.AddIntIfNotNull("expiresAtGreaterThanOrEqual", this.ExpiresAtGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("expiresAtLessThanOrEqual", this.ExpiresAtLessThanOrEqual);
-			kparams.AddIntIfNotNull("partnerIdEqual", this.PartnerIdEqual);
-			kparams.AddStringIfNotNull("partnerIdIn", this.PartnerIdIn);
-			kparams.AddStringIfNotNull("userIdEqual", this.UserIdEqual);
-			kparams.AddStringIfNotNull("userIdIn", this.UserIdIn);
-			kparams.AddStringIfNotNull("systemNameEqual", this.SystemNameEqual);
-			kparams.AddStringIfNotNull("systemNameIn", this.SystemNameIn);
-			kparams.AddEnumIfNotNull("statusEqual", this.StatusEqual);
-			kparams.AddStringIfNotNull("statusIn", this.StatusIn);
+			kparams.AddIfNotNull("idEqual", this.IdEqual);
+			kparams.AddIfNotNull("idIn", this.IdIn);
+			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("expiresAtGreaterThanOrEqual", this.ExpiresAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("expiresAtLessThanOrEqual", this.ExpiresAtLessThanOrEqual);
+			kparams.AddIfNotNull("partnerIdEqual", this.PartnerIdEqual);
+			kparams.AddIfNotNull("partnerIdIn", this.PartnerIdIn);
+			kparams.AddIfNotNull("userIdEqual", this.UserIdEqual);
+			kparams.AddIfNotNull("userIdIn", this.UserIdIn);
+			kparams.AddIfNotNull("systemNameEqual", this.SystemNameEqual);
+			kparams.AddIfNotNull("systemNameIn", this.SystemNameIn);
+			kparams.AddIfNotNull("statusEqual", this.StatusEqual);
+			kparams.AddIfNotNull("statusIn", this.StatusIn);
 			return kparams;
 		}
 		#endregion

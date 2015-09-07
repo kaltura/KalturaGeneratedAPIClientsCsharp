@@ -58,12 +58,9 @@ namespace Kaltura
 		public KalturaCaptionAssetItemListResponse Search(KalturaBaseEntryFilter entryFilter, KalturaCaptionAssetItemFilter captionAssetItemFilter, KalturaFilterPager captionAssetItemPager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (entryFilter != null)
-				kparams.Add("entryFilter", entryFilter.ToParams());
-			if (captionAssetItemFilter != null)
-				kparams.Add("captionAssetItemFilter", captionAssetItemFilter.ToParams());
-			if (captionAssetItemPager != null)
-				kparams.Add("captionAssetItemPager", captionAssetItemPager.ToParams());
+			kparams.AddIfNotNull("entryFilter", entryFilter);
+			kparams.AddIfNotNull("captionAssetItemFilter", captionAssetItemFilter);
+			kparams.AddIfNotNull("captionAssetItemPager", captionAssetItemPager);
 			_Client.QueueServiceCall("captionsearch_captionassetitem", "search", "KalturaCaptionAssetItemListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -89,12 +86,9 @@ namespace Kaltura
 		public KalturaBaseEntryListResponse SearchEntries(KalturaBaseEntryFilter entryFilter, KalturaCaptionAssetItemFilter captionAssetItemFilter, KalturaFilterPager captionAssetItemPager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (entryFilter != null)
-				kparams.Add("entryFilter", entryFilter.ToParams());
-			if (captionAssetItemFilter != null)
-				kparams.Add("captionAssetItemFilter", captionAssetItemFilter.ToParams());
-			if (captionAssetItemPager != null)
-				kparams.Add("captionAssetItemPager", captionAssetItemPager.ToParams());
+			kparams.AddIfNotNull("entryFilter", entryFilter);
+			kparams.AddIfNotNull("captionAssetItemFilter", captionAssetItemFilter);
+			kparams.AddIfNotNull("captionAssetItemPager", captionAssetItemPager);
 			_Client.QueueServiceCall("captionsearch_captionassetitem", "searchEntries", "KalturaBaseEntryListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

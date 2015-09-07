@@ -139,12 +139,12 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaBulkUploadResultCategoryUser");
-			kparams.AddIntIfNotNull("categoryId", this.CategoryId);
-			kparams.AddStringIfNotNull("categoryReferenceId", this.CategoryReferenceId);
-			kparams.AddStringIfNotNull("userId", this.UserId);
-			kparams.AddIntIfNotNull("permissionLevel", this.PermissionLevel);
-			kparams.AddIntIfNotNull("updateMethod", this.UpdateMethod);
-			kparams.AddIntIfNotNull("requiredObjectStatus", this.RequiredObjectStatus);
+			kparams.AddIfNotNull("categoryId", this.CategoryId);
+			kparams.AddIfNotNull("categoryReferenceId", this.CategoryReferenceId);
+			kparams.AddIfNotNull("userId", this.UserId);
+			kparams.AddIfNotNull("permissionLevel", this.PermissionLevel);
+			kparams.AddIfNotNull("updateMethod", this.UpdateMethod);
+			kparams.AddIfNotNull("requiredObjectStatus", this.RequiredObjectStatus);
 			return kparams;
 		}
 		#endregion

@@ -124,7 +124,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaLiveStats(XmlElement node)
+		public KalturaLiveStats(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -165,14 +165,14 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveStats");
-			kparams.AddIntIfNotNull("audience", this.Audience);
-			kparams.AddIntIfNotNull("dvrAudience", this.DvrAudience);
-			kparams.AddFloatIfNotNull("avgBitrate", this.AvgBitrate);
-			kparams.AddIntIfNotNull("bufferTime", this.BufferTime);
-			kparams.AddIntIfNotNull("plays", this.Plays);
-			kparams.AddIntIfNotNull("secondsViewed", this.SecondsViewed);
-			kparams.AddLongIfNotNull("startEvent", this.StartEvent);
-			kparams.AddIntIfNotNull("timestamp", this.Timestamp);
+			kparams.AddIfNotNull("audience", this.Audience);
+			kparams.AddIfNotNull("dvrAudience", this.DvrAudience);
+			kparams.AddIfNotNull("avgBitrate", this.AvgBitrate);
+			kparams.AddIfNotNull("bufferTime", this.BufferTime);
+			kparams.AddIfNotNull("plays", this.Plays);
+			kparams.AddIfNotNull("secondsViewed", this.SecondsViewed);
+			kparams.AddIfNotNull("startEvent", this.StartEvent);
+			kparams.AddIfNotNull("timestamp", this.Timestamp);
 			return kparams;
 		}
 		#endregion

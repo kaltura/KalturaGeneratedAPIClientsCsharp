@@ -299,40 +299,24 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaHttpNotificationTemplate");
-			kparams.AddStringIfNotNull("url", this.Url);
-			kparams.AddEnumIfNotNull("method", this.Method);
-			if (this.Data != null)
-				kparams.Add("data", this.Data.ToParams());
-			kparams.AddIntIfNotNull("timeout", this.Timeout);
-			kparams.AddIntIfNotNull("connectTimeout", this.ConnectTimeout);
-			kparams.AddStringIfNotNull("username", this.Username);
-			kparams.AddStringIfNotNull("password", this.Password);
-			kparams.AddEnumIfNotNull("authenticationMethod", this.AuthenticationMethod);
-			kparams.AddEnumIfNotNull("sslVersion", this.SslVersion);
-			kparams.AddStringIfNotNull("sslCertificate", this.SslCertificate);
-			kparams.AddStringEnumIfNotNull("sslCertificateType", this.SslCertificateType);
-			kparams.AddStringIfNotNull("sslCertificatePassword", this.SslCertificatePassword);
-			kparams.AddStringIfNotNull("sslEngine", this.SslEngine);
-			kparams.AddStringIfNotNull("sslEngineDefault", this.SslEngineDefault);
-			kparams.AddStringEnumIfNotNull("sslKeyType", this.SslKeyType);
-			kparams.AddStringIfNotNull("sslKey", this.SslKey);
-			kparams.AddStringIfNotNull("sslKeyPassword", this.SslKeyPassword);
-			if (this.CustomHeaders != null)
-			{
-				if (this.CustomHeaders.Count == 0)
-				{
-					kparams.Add("customHeaders:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaKeyValue item in this.CustomHeaders)
-					{
-						kparams.Add("customHeaders:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
+			kparams.AddIfNotNull("url", this.Url);
+			kparams.AddIfNotNull("method", this.Method);
+			kparams.AddIfNotNull("data", this.Data);
+			kparams.AddIfNotNull("timeout", this.Timeout);
+			kparams.AddIfNotNull("connectTimeout", this.ConnectTimeout);
+			kparams.AddIfNotNull("username", this.Username);
+			kparams.AddIfNotNull("password", this.Password);
+			kparams.AddIfNotNull("authenticationMethod", this.AuthenticationMethod);
+			kparams.AddIfNotNull("sslVersion", this.SslVersion);
+			kparams.AddIfNotNull("sslCertificate", this.SslCertificate);
+			kparams.AddIfNotNull("sslCertificateType", this.SslCertificateType);
+			kparams.AddIfNotNull("sslCertificatePassword", this.SslCertificatePassword);
+			kparams.AddIfNotNull("sslEngine", this.SslEngine);
+			kparams.AddIfNotNull("sslEngineDefault", this.SslEngineDefault);
+			kparams.AddIfNotNull("sslKeyType", this.SslKeyType);
+			kparams.AddIfNotNull("sslKey", this.SslKey);
+			kparams.AddIfNotNull("sslKeyPassword", this.SslKeyPassword);
+			kparams.AddIfNotNull("customHeaders", this.CustomHeaders);
 			return kparams;
 		}
 		#endregion

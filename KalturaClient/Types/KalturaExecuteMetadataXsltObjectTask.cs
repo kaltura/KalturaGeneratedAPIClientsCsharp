@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaExecuteMetadataXsltObjectTask");
-			kparams.AddIntIfNotNull("metadataProfileId", this.MetadataProfileId);
-			kparams.AddStringEnumIfNotNull("metadataObjectType", this.MetadataObjectType);
-			kparams.AddStringIfNotNull("xslt", this.Xslt);
+			kparams.AddIfNotNull("metadataProfileId", this.MetadataProfileId);
+			kparams.AddIfNotNull("metadataObjectType", this.MetadataObjectType);
+			kparams.AddIfNotNull("xslt", this.Xslt);
 			return kparams;
 		}
 		#endregion

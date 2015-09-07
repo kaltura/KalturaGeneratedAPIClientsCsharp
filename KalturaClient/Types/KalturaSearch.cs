@@ -94,7 +94,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaSearch(XmlElement node)
+		public KalturaSearch(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -126,11 +126,11 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSearch");
-			kparams.AddStringIfNotNull("keyWords", this.KeyWords);
-			kparams.AddEnumIfNotNull("searchSource", this.SearchSource);
-			kparams.AddEnumIfNotNull("mediaType", this.MediaType);
-			kparams.AddStringIfNotNull("extraData", this.ExtraData);
-			kparams.AddStringIfNotNull("authData", this.AuthData);
+			kparams.AddIfNotNull("keyWords", this.KeyWords);
+			kparams.AddIfNotNull("searchSource", this.SearchSource);
+			kparams.AddIfNotNull("mediaType", this.MediaType);
+			kparams.AddIfNotNull("extraData", this.ExtraData);
+			kparams.AddIfNotNull("authData", this.AuthData);
 			return kparams;
 		}
 		#endregion

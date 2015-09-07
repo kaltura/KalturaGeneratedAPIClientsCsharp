@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEventCuePointBaseFilter");
-			kparams.AddStringEnumIfNotNull("eventTypeEqual", this.EventTypeEqual);
-			kparams.AddStringIfNotNull("eventTypeIn", this.EventTypeIn);
+			kparams.AddIfNotNull("eventTypeEqual", this.EventTypeEqual);
+			kparams.AddIfNotNull("eventTypeIn", this.EventTypeIn);
 			return kparams;
 		}
 		#endregion

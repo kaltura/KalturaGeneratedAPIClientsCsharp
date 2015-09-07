@@ -44,7 +44,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaEmailNotificationRecipientProvider(XmlElement node)
+		public KalturaEmailNotificationRecipientProvider(XmlElement node) : base(node)
 		{
 		}
 		#endregion

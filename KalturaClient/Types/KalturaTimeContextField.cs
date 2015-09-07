@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaTimeContextField");
-			kparams.AddIntIfNotNull("offset", this.Offset);
+			kparams.AddIfNotNull("offset", this.Offset);
 			return kparams;
 		}
 		#endregion

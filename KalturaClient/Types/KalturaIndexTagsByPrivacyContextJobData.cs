@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaIndexTagsByPrivacyContextJobData");
-			kparams.AddIntIfNotNull("changedCategoryId", this.ChangedCategoryId);
-			kparams.AddStringIfNotNull("deletedPrivacyContexts", this.DeletedPrivacyContexts);
-			kparams.AddStringIfNotNull("addedPrivacyContexts", this.AddedPrivacyContexts);
+			kparams.AddIfNotNull("changedCategoryId", this.ChangedCategoryId);
+			kparams.AddIfNotNull("deletedPrivacyContexts", this.DeletedPrivacyContexts);
+			kparams.AddIfNotNull("addedPrivacyContexts", this.AddedPrivacyContexts);
 			return kparams;
 		}
 		#endregion

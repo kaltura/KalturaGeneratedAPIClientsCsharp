@@ -58,12 +58,12 @@ namespace Kaltura
 		public KalturaBulkUpload Add(int conversionProfileId, FileStream csvFileData, KalturaBulkUploadType bulkUploadType, string uploadedBy, string fileName)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("conversionProfileId", conversionProfileId);
+			kparams.AddIfNotNull("conversionProfileId", conversionProfileId);
 			KalturaFiles kfiles = new KalturaFiles();
 			kfiles.Add("csvFileData", csvFileData);
-			kparams.AddStringEnumIfNotNull("bulkUploadType", bulkUploadType);
-			kparams.AddStringIfNotNull("uploadedBy", uploadedBy);
-			kparams.AddStringIfNotNull("fileName", fileName);
+			kparams.AddIfNotNull("bulkUploadType", bulkUploadType);
+			kparams.AddIfNotNull("uploadedBy", uploadedBy);
+			kparams.AddIfNotNull("fileName", fileName);
 			_Client.QueueServiceCall("bulkupload", "add", "KalturaBulkUpload", kparams, kfiles);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -74,7 +74,7 @@ namespace Kaltura
 		public KalturaBulkUpload Get(long id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddLongIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("bulkupload", "get", "KalturaBulkUpload", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -90,8 +90,7 @@ namespace Kaltura
 		public KalturaBulkUploadListResponse List(KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("bulkupload", "list", "KalturaBulkUploadListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -102,7 +101,7 @@ namespace Kaltura
 		public KalturaBulkUpload Abort(long id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddLongIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("bulkupload", "abort", "KalturaBulkUpload", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

@@ -54,7 +54,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaEmailNotificationRecipientJobData(XmlElement node)
+		public KalturaEmailNotificationRecipientJobData(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEmailNotificationRecipientJobData");
-			kparams.AddStringEnumIfNotNull("providerType", this.ProviderType);
+			kparams.AddIfNotNull("providerType", this.ProviderType);
 			return kparams;
 		}
 		#endregion

@@ -139,12 +139,12 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAdCuePoint");
-			kparams.AddStringEnumIfNotNull("protocolType", this.ProtocolType);
-			kparams.AddStringIfNotNull("sourceUrl", this.SourceUrl);
-			kparams.AddStringEnumIfNotNull("adType", this.AdType);
-			kparams.AddStringIfNotNull("title", this.Title);
-			kparams.AddIntIfNotNull("endTime", this.EndTime);
-			kparams.AddIntIfNotNull("duration", this.Duration);
+			kparams.AddIfNotNull("protocolType", this.ProtocolType);
+			kparams.AddIfNotNull("sourceUrl", this.SourceUrl);
+			kparams.AddIfNotNull("adType", this.AdType);
+			kparams.AddIfNotNull("title", this.Title);
+			kparams.AddIfNotNull("endTime", this.EndTime);
+			kparams.AddIfNotNull("duration", this.Duration);
 			return kparams;
 		}
 		#endregion

@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDistributionValidationErrorConditionNotMet");
-			kparams.AddStringIfNotNull("conditionName", this.ConditionName);
+			kparams.AddIfNotNull("conditionName", this.ConditionName);
 			return kparams;
 		}
 		#endregion

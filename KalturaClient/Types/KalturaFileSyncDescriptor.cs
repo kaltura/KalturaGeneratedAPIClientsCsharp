@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaFileSyncDescriptor(XmlElement node)
+		public KalturaFileSyncDescriptor(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaFileSyncDescriptor");
-			kparams.AddStringIfNotNull("fileSyncLocalPath", this.FileSyncLocalPath);
-			kparams.AddStringIfNotNull("fileSyncRemoteUrl", this.FileSyncRemoteUrl);
-			kparams.AddIntIfNotNull("fileSyncObjectSubType", this.FileSyncObjectSubType);
+			kparams.AddIfNotNull("fileSyncLocalPath", this.FileSyncLocalPath);
+			kparams.AddIfNotNull("fileSyncRemoteUrl", this.FileSyncRemoteUrl);
+			kparams.AddIfNotNull("fileSyncObjectSubType", this.FileSyncObjectSubType);
 			return kparams;
 		}
 		#endregion

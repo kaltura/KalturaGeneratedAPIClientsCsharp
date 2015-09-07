@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDistributionProviderBaseFilter");
-			kparams.AddStringEnumIfNotNull("typeEqual", this.TypeEqual);
-			kparams.AddStringIfNotNull("typeIn", this.TypeIn);
+			kparams.AddIfNotNull("typeEqual", this.TypeEqual);
+			kparams.AddIfNotNull("typeIn", this.TypeIn);
 			return kparams;
 		}
 		#endregion

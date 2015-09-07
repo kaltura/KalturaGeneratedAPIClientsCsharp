@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaDistributionRemoteMediaFile(XmlElement node)
+		public KalturaDistributionRemoteMediaFile(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDistributionRemoteMediaFile");
-			kparams.AddStringIfNotNull("version", this.Version);
-			kparams.AddStringIfNotNull("assetId", this.AssetId);
-			kparams.AddStringIfNotNull("remoteId", this.RemoteId);
+			kparams.AddIfNotNull("version", this.Version);
+			kparams.AddIfNotNull("assetId", this.AssetId);
+			kparams.AddIfNotNull("remoteId", this.RemoteId);
 			return kparams;
 		}
 		#endregion

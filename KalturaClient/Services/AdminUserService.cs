@@ -53,10 +53,10 @@ namespace Kaltura
 		public KalturaAdminUser UpdatePassword(string email, string password, string newEmail, string newPassword)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("email", email);
-			kparams.AddStringIfNotNull("password", password);
-			kparams.AddStringIfNotNull("newEmail", newEmail);
-			kparams.AddStringIfNotNull("newPassword", newPassword);
+			kparams.AddIfNotNull("email", email);
+			kparams.AddIfNotNull("password", password);
+			kparams.AddIfNotNull("newEmail", newEmail);
+			kparams.AddIfNotNull("newPassword", newPassword);
 			_Client.QueueServiceCall("adminuser", "updatePassword", "KalturaAdminUser", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -67,7 +67,7 @@ namespace Kaltura
 		public void ResetPassword(string email)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("email", email);
+			kparams.AddIfNotNull("email", email);
 			_Client.QueueServiceCall("adminuser", "resetPassword", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -82,9 +82,9 @@ namespace Kaltura
 		public string Login(string email, string password, int partnerId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("email", email);
-			kparams.AddStringIfNotNull("password", password);
-			kparams.AddIntIfNotNull("partnerId", partnerId);
+			kparams.AddIfNotNull("email", email);
+			kparams.AddIfNotNull("password", password);
+			kparams.AddIfNotNull("partnerId", partnerId);
 			_Client.QueueServiceCall("adminuser", "login", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -95,8 +95,8 @@ namespace Kaltura
 		public void SetInitialPassword(string hashKey, string newPassword)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("hashKey", hashKey);
-			kparams.AddStringIfNotNull("newPassword", newPassword);
+			kparams.AddIfNotNull("hashKey", hashKey);
+			kparams.AddIfNotNull("newPassword", newPassword);
 			_Client.QueueServiceCall("adminuser", "setInitialPassword", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;

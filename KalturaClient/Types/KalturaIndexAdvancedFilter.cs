@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaIndexAdvancedFilter");
-			kparams.AddIntIfNotNull("indexIdGreaterThan", this.IndexIdGreaterThan);
+			kparams.AddIfNotNull("indexIdGreaterThan", this.IndexIdGreaterThan);
 			return kparams;
 		}
 		#endregion

@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDynamicObjectSearchItem");
-			kparams.AddStringIfNotNull("field", this.Field);
+			kparams.AddIfNotNull("field", this.Field);
 			return kparams;
 		}
 		#endregion

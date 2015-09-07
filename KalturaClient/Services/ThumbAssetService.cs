@@ -43,9 +43,8 @@ namespace Kaltura
 		public KalturaThumbAsset Add(string entryId, KalturaThumbAsset thumbAsset)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			if (thumbAsset != null)
-				kparams.Add("thumbAsset", thumbAsset.ToParams());
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("thumbAsset", thumbAsset);
 			_Client.QueueServiceCall("thumbasset", "add", "KalturaThumbAsset", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -56,9 +55,8 @@ namespace Kaltura
 		public KalturaThumbAsset SetContent(string id, KalturaContentResource contentResource)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			if (contentResource != null)
-				kparams.Add("contentResource", contentResource.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("contentResource", contentResource);
 			_Client.QueueServiceCall("thumbasset", "setContent", "KalturaThumbAsset", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -69,9 +67,8 @@ namespace Kaltura
 		public KalturaThumbAsset Update(string id, KalturaThumbAsset thumbAsset)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			if (thumbAsset != null)
-				kparams.Add("thumbAsset", thumbAsset.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("thumbAsset", thumbAsset);
 			_Client.QueueServiceCall("thumbasset", "update", "KalturaThumbAsset", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -82,7 +79,7 @@ namespace Kaltura
 		public void SetAsDefault(string thumbAssetId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("thumbAssetId", thumbAssetId);
+			kparams.AddIfNotNull("thumbAssetId", thumbAssetId);
 			_Client.QueueServiceCall("thumbasset", "setAsDefault", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -92,8 +89,8 @@ namespace Kaltura
 		public KalturaThumbAsset GenerateByEntryId(string entryId, int destThumbParamsId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddIntIfNotNull("destThumbParamsId", destThumbParamsId);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("destThumbParamsId", destThumbParamsId);
 			_Client.QueueServiceCall("thumbasset", "generateByEntryId", "KalturaThumbAsset", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -109,10 +106,9 @@ namespace Kaltura
 		public KalturaThumbAsset Generate(string entryId, KalturaThumbParams thumbParams, string sourceAssetId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			if (thumbParams != null)
-				kparams.Add("thumbParams", thumbParams.ToParams());
-			kparams.AddStringIfNotNull("sourceAssetId", sourceAssetId);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("thumbParams", thumbParams);
+			kparams.AddIfNotNull("sourceAssetId", sourceAssetId);
 			_Client.QueueServiceCall("thumbasset", "generate", "KalturaThumbAsset", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -123,7 +119,7 @@ namespace Kaltura
 		public KalturaThumbAsset Regenerate(string thumbAssetId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("thumbAssetId", thumbAssetId);
+			kparams.AddIfNotNull("thumbAssetId", thumbAssetId);
 			_Client.QueueServiceCall("thumbasset", "regenerate", "KalturaThumbAsset", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -134,7 +130,7 @@ namespace Kaltura
 		public KalturaThumbAsset Get(string thumbAssetId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("thumbAssetId", thumbAssetId);
+			kparams.AddIfNotNull("thumbAssetId", thumbAssetId);
 			_Client.QueueServiceCall("thumbasset", "get", "KalturaThumbAsset", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -145,7 +141,7 @@ namespace Kaltura
 		public IList<KalturaThumbAsset> GetByEntryId(string entryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("entryId", entryId);
 			_Client.QueueServiceCall("thumbasset", "getByEntryId", "KalturaThumbAsset", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -171,10 +167,8 @@ namespace Kaltura
 		public KalturaThumbAssetListResponse List(KalturaAssetFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("thumbasset", "list", "KalturaThumbAssetListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -185,8 +179,8 @@ namespace Kaltura
 		public KalturaThumbAsset AddFromUrl(string entryId, string url)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddStringIfNotNull("url", url);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("url", url);
 			_Client.QueueServiceCall("thumbasset", "addFromUrl", "KalturaThumbAsset", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -197,7 +191,7 @@ namespace Kaltura
 		public KalturaThumbAsset AddFromImage(string entryId, FileStream fileData)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("entryId", entryId);
 			KalturaFiles kfiles = new KalturaFiles();
 			kfiles.Add("fileData", fileData);
 			_Client.QueueServiceCall("thumbasset", "addFromImage", "KalturaThumbAsset", kparams, kfiles);
@@ -210,7 +204,7 @@ namespace Kaltura
 		public void Delete(string thumbAssetId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("thumbAssetId", thumbAssetId);
+			kparams.AddIfNotNull("thumbAssetId", thumbAssetId);
 			_Client.QueueServiceCall("thumbasset", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -230,10 +224,9 @@ namespace Kaltura
 		public string GetUrl(string id, int storageId, KalturaThumbParams thumbParams)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			kparams.AddIntIfNotNull("storageId", storageId);
-			if (thumbParams != null)
-				kparams.Add("thumbParams", thumbParams.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("storageId", storageId);
+			kparams.AddIfNotNull("thumbParams", thumbParams);
 			_Client.QueueServiceCall("thumbasset", "getUrl", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -244,7 +237,7 @@ namespace Kaltura
 		public KalturaRemotePathListResponse GetRemotePaths(string id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("thumbasset", "getRemotePaths", "KalturaRemotePathListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

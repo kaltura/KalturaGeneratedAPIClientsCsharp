@@ -212,48 +212,17 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaConvartableJobData");
-			kparams.AddStringIfNotNull("srcFileSyncLocalPath", this.SrcFileSyncLocalPath);
-			kparams.AddStringIfNotNull("actualSrcFileSyncLocalPath", this.ActualSrcFileSyncLocalPath);
-			kparams.AddStringIfNotNull("srcFileSyncRemoteUrl", this.SrcFileSyncRemoteUrl);
-			if (this.SrcFileSyncs != null)
-			{
-				if (this.SrcFileSyncs.Count == 0)
-				{
-					kparams.Add("srcFileSyncs:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaSourceFileSyncDescriptor item in this.SrcFileSyncs)
-					{
-						kparams.Add("srcFileSyncs:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddIntIfNotNull("engineVersion", this.EngineVersion);
-			kparams.AddIntIfNotNull("flavorParamsOutputId", this.FlavorParamsOutputId);
-			if (this.FlavorParamsOutput != null)
-				kparams.Add("flavorParamsOutput", this.FlavorParamsOutput.ToParams());
-			kparams.AddIntIfNotNull("mediaInfoId", this.MediaInfoId);
-			kparams.AddIntIfNotNull("currentOperationSet", this.CurrentOperationSet);
-			kparams.AddIntIfNotNull("currentOperationIndex", this.CurrentOperationIndex);
-			if (this.PluginData != null)
-			{
-				if (this.PluginData.Count == 0)
-				{
-					kparams.Add("pluginData:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaKeyValue item in this.PluginData)
-					{
-						kparams.Add("pluginData:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
+			kparams.AddIfNotNull("srcFileSyncLocalPath", this.SrcFileSyncLocalPath);
+			kparams.AddIfNotNull("actualSrcFileSyncLocalPath", this.ActualSrcFileSyncLocalPath);
+			kparams.AddIfNotNull("srcFileSyncRemoteUrl", this.SrcFileSyncRemoteUrl);
+			kparams.AddIfNotNull("srcFileSyncs", this.SrcFileSyncs);
+			kparams.AddIfNotNull("engineVersion", this.EngineVersion);
+			kparams.AddIfNotNull("flavorParamsOutputId", this.FlavorParamsOutputId);
+			kparams.AddIfNotNull("flavorParamsOutput", this.FlavorParamsOutput);
+			kparams.AddIfNotNull("mediaInfoId", this.MediaInfoId);
+			kparams.AddIfNotNull("currentOperationSet", this.CurrentOperationSet);
+			kparams.AddIfNotNull("currentOperationIndex", this.CurrentOperationIndex);
+			kparams.AddIfNotNull("pluginData", this.PluginData);
 			return kparams;
 		}
 		#endregion

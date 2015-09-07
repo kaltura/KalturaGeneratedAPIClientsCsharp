@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaDeliveryProfile Add(KalturaDeliveryProfile delivery)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (delivery != null)
-				kparams.Add("delivery", delivery.ToParams());
+			kparams.AddIfNotNull("delivery", delivery);
 			_Client.QueueServiceCall("deliveryprofile", "add", "KalturaDeliveryProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,9 +54,8 @@ namespace Kaltura
 		public KalturaDeliveryProfile Update(string id, KalturaDeliveryProfile delivery)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			if (delivery != null)
-				kparams.Add("delivery", delivery.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("delivery", delivery);
 			_Client.QueueServiceCall("deliveryprofile", "update", "KalturaDeliveryProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -68,7 +66,7 @@ namespace Kaltura
 		public KalturaDeliveryProfile Get(string id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("deliveryprofile", "get", "KalturaDeliveryProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -79,7 +77,7 @@ namespace Kaltura
 		public KalturaDeliveryProfile Clone(int deliveryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("deliveryId", deliveryId);
+			kparams.AddIfNotNull("deliveryId", deliveryId);
 			_Client.QueueServiceCall("deliveryprofile", "clone", "KalturaDeliveryProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -100,10 +98,8 @@ namespace Kaltura
 		public KalturaDeliveryProfileListResponse List(KalturaDeliveryProfileFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("deliveryprofile", "list", "KalturaDeliveryProfileListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

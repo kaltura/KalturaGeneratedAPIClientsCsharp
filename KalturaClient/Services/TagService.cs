@@ -48,10 +48,8 @@ namespace Kaltura
 		public KalturaTagListResponse Search(KalturaTagFilter tagFilter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (tagFilter != null)
-				kparams.Add("tagFilter", tagFilter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("tagFilter", tagFilter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("tagsearch_tag", "search", "KalturaTagListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -72,9 +70,9 @@ namespace Kaltura
 		public void IndexCategoryEntryTags(int categoryId, string pcToDecrement, string pcToIncrement)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("categoryId", categoryId);
-			kparams.AddStringIfNotNull("pcToDecrement", pcToDecrement);
-			kparams.AddStringIfNotNull("pcToIncrement", pcToIncrement);
+			kparams.AddIfNotNull("categoryId", categoryId);
+			kparams.AddIfNotNull("pcToDecrement", pcToDecrement);
+			kparams.AddIfNotNull("pcToIncrement", pcToIncrement);
 			_Client.QueueServiceCall("tagsearch_tag", "indexCategoryEntryTags", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;

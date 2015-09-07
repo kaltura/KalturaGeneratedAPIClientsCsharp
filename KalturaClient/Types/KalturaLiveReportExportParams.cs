@@ -84,7 +84,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaLiveReportExportParams(XmlElement node)
+		public KalturaLiveReportExportParams(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveReportExportParams");
-			kparams.AddStringIfNotNull("entryIds", this.EntryIds);
-			kparams.AddStringIfNotNull("recpientEmail", this.RecpientEmail);
-			kparams.AddIntIfNotNull("timeZoneOffset", this.TimeZoneOffset);
-			kparams.AddStringIfNotNull("applicationUrlTemplate", this.ApplicationUrlTemplate);
+			kparams.AddIfNotNull("entryIds", this.EntryIds);
+			kparams.AddIfNotNull("recpientEmail", this.RecpientEmail);
+			kparams.AddIfNotNull("timeZoneOffset", this.TimeZoneOffset);
+			kparams.AddIfNotNull("applicationUrlTemplate", this.ApplicationUrlTemplate);
 			return kparams;
 		}
 		#endregion

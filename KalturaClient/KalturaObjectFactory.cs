@@ -34,7 +34,7 @@ namespace Kaltura
 {
 	public static class KalturaObjectFactory
 	{
-		public static object Create(XmlElement xmlElement, string fallbackClass = null)
+		public static object Create(XmlElement xmlElement, string fallbackClass)
 		{
 			if (xmlElement["objectType"] == null)
 			{

@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaServerFileResource");
-			kparams.AddStringIfNotNull("localFilePath", this.LocalFilePath);
+			kparams.AddIfNotNull("localFilePath", this.LocalFilePath);
 			return kparams;
 		}
 		#endregion

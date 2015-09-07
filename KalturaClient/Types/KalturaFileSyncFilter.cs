@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaFileSyncFilter");
-			kparams.AddEnumIfNotNull("currentDc", this.CurrentDc);
-			kparams.AddStringEnumIfNotNull("orderBy", this.OrderBy);
+			kparams.AddIfNotNull("currentDc", this.CurrentDc);
+			kparams.AddIfNotNull("orderBy", this.OrderBy);
 			return kparams;
 		}
 		#endregion

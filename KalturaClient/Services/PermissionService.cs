@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaPermission Add(KalturaPermission permission)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (permission != null)
-				kparams.Add("permission", permission.ToParams());
+			kparams.AddIfNotNull("permission", permission);
 			_Client.QueueServiceCall("permission", "add", "KalturaPermission", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,7 +54,7 @@ namespace Kaltura
 		public KalturaPermission Get(string permissionName)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("permissionName", permissionName);
+			kparams.AddIfNotNull("permissionName", permissionName);
 			_Client.QueueServiceCall("permission", "get", "KalturaPermission", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -66,9 +65,8 @@ namespace Kaltura
 		public KalturaPermission Update(string permissionName, KalturaPermission permission)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("permissionName", permissionName);
-			if (permission != null)
-				kparams.Add("permission", permission.ToParams());
+			kparams.AddIfNotNull("permissionName", permissionName);
+			kparams.AddIfNotNull("permission", permission);
 			_Client.QueueServiceCall("permission", "update", "KalturaPermission", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -79,7 +77,7 @@ namespace Kaltura
 		public KalturaPermission Delete(string permissionName)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("permissionName", permissionName);
+			kparams.AddIfNotNull("permissionName", permissionName);
 			_Client.QueueServiceCall("permission", "delete", "KalturaPermission", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -100,10 +98,8 @@ namespace Kaltura
 		public KalturaPermissionListResponse List(KalturaPermissionFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("permission", "list", "KalturaPermissionListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

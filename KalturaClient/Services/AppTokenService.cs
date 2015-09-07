@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaAppToken Add(KalturaAppToken appToken)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (appToken != null)
-				kparams.Add("appToken", appToken.ToParams());
+			kparams.AddIfNotNull("appToken", appToken);
 			_Client.QueueServiceCall("apptoken", "add", "KalturaAppToken", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,7 +54,7 @@ namespace Kaltura
 		public KalturaAppToken Get(string id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("apptoken", "get", "KalturaAppToken", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -66,9 +65,8 @@ namespace Kaltura
 		public KalturaAppToken Update(string id, KalturaAppToken appToken)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			if (appToken != null)
-				kparams.Add("appToken", appToken.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("appToken", appToken);
 			_Client.QueueServiceCall("apptoken", "update", "KalturaAppToken", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -79,7 +77,7 @@ namespace Kaltura
 		public void Delete(string id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("apptoken", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -99,10 +97,8 @@ namespace Kaltura
 		public KalturaAppTokenListResponse List(KalturaAppTokenFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("apptoken", "list", "KalturaAppTokenListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -128,11 +124,11 @@ namespace Kaltura
 		public KalturaSessionInfo StartSession(string id, string tokenHash, string userId, KalturaSessionType type, int expiry)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			kparams.AddStringIfNotNull("tokenHash", tokenHash);
-			kparams.AddStringIfNotNull("userId", userId);
-			kparams.AddEnumIfNotNull("type", type);
-			kparams.AddIntIfNotNull("expiry", expiry);
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("tokenHash", tokenHash);
+			kparams.AddIfNotNull("userId", userId);
+			kparams.AddIfNotNull("type", type);
+			kparams.AddIfNotNull("expiry", expiry);
 			_Client.QueueServiceCall("apptoken", "startSession", "KalturaSessionInfo", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

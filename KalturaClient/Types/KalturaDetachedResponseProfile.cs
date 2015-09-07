@@ -160,45 +160,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDetachedResponseProfile");
-			kparams.AddStringIfNotNull("name", this.Name);
-			kparams.AddEnumIfNotNull("type", this.Type);
-			kparams.AddStringIfNotNull("fields", this.Fields);
-			if (this.Filter != null)
-				kparams.Add("filter", this.Filter.ToParams());
-			if (this.Pager != null)
-				kparams.Add("pager", this.Pager.ToParams());
-			if (this.RelatedProfiles != null)
-			{
-				if (this.RelatedProfiles.Count == 0)
-				{
-					kparams.Add("relatedProfiles:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaDetachedResponseProfile item in this.RelatedProfiles)
-					{
-						kparams.Add("relatedProfiles:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			if (this.Mappings != null)
-			{
-				if (this.Mappings.Count == 0)
-				{
-					kparams.Add("mappings:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaResponseProfileMapping item in this.Mappings)
-					{
-						kparams.Add("mappings:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
+			kparams.AddIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("type", this.Type);
+			kparams.AddIfNotNull("fields", this.Fields);
+			kparams.AddIfNotNull("filter", this.Filter);
+			kparams.AddIfNotNull("pager", this.Pager);
+			kparams.AddIfNotNull("relatedProfiles", this.RelatedProfiles);
+			kparams.AddIfNotNull("mappings", this.Mappings);
 			return kparams;
 		}
 		#endregion

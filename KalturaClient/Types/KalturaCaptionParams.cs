@@ -126,11 +126,11 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCaptionParams");
-			kparams.AddStringEnumIfNotNull("language", this.Language);
-			kparams.AddEnumIfNotNull("isDefault", this.IsDefault);
-			kparams.AddStringIfNotNull("label", this.Label);
-			kparams.AddStringEnumIfNotNull("format", this.Format);
-			kparams.AddIntIfNotNull("sourceParamsId", this.SourceParamsId);
+			kparams.AddIfNotNull("language", this.Language);
+			kparams.AddIfNotNull("isDefault", this.IsDefault);
+			kparams.AddIfNotNull("label", this.Label);
+			kparams.AddIfNotNull("format", this.Format);
+			kparams.AddIfNotNull("sourceParamsId", this.SourceParamsId);
 			return kparams;
 		}
 		#endregion

@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaAccessControlProfile Add(KalturaAccessControlProfile accessControlProfile)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (accessControlProfile != null)
-				kparams.Add("accessControlProfile", accessControlProfile.ToParams());
+			kparams.AddIfNotNull("accessControlProfile", accessControlProfile);
 			_Client.QueueServiceCall("accesscontrolprofile", "add", "KalturaAccessControlProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,7 +54,7 @@ namespace Kaltura
 		public KalturaAccessControlProfile Get(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("accesscontrolprofile", "get", "KalturaAccessControlProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -66,9 +65,8 @@ namespace Kaltura
 		public KalturaAccessControlProfile Update(int id, KalturaAccessControlProfile accessControlProfile)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			if (accessControlProfile != null)
-				kparams.Add("accessControlProfile", accessControlProfile.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("accessControlProfile", accessControlProfile);
 			_Client.QueueServiceCall("accesscontrolprofile", "update", "KalturaAccessControlProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -79,7 +77,7 @@ namespace Kaltura
 		public void Delete(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("accesscontrolprofile", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -99,10 +97,8 @@ namespace Kaltura
 		public KalturaAccessControlProfileListResponse List(KalturaAccessControlProfileFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("accesscontrolprofile", "list", "KalturaAccessControlProfileListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

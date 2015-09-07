@@ -44,7 +44,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaDistributionJobProviderData(XmlElement node)
+		public KalturaDistributionJobProviderData(XmlElement node) : base(node)
 		{
 		}
 		#endregion

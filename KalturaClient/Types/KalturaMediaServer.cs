@@ -94,7 +94,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaMediaServer(XmlElement node)
+		public KalturaMediaServer(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -126,11 +126,11 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaMediaServer");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("dc", this.Dc);
-			kparams.AddStringIfNotNull("hostname", this.Hostname);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("dc", this.Dc);
+			kparams.AddIfNotNull("hostname", this.Hostname);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
 			return kparams;
 		}
 		#endregion

@@ -44,7 +44,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaIntegrationJobTriggerData(XmlElement node)
+		public KalturaIntegrationJobTriggerData(XmlElement node) : base(node)
 		{
 		}
 		#endregion

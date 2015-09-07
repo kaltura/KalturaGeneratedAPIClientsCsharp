@@ -321,26 +321,26 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEntryDistributionBaseFilter");
-			kparams.AddIntIfNotNull("idEqual", this.IdEqual);
-			kparams.AddStringIfNotNull("idIn", this.IdIn);
-			kparams.AddIntIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
-			kparams.AddIntIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
-			kparams.AddIntIfNotNull("submittedAtGreaterThanOrEqual", this.SubmittedAtGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("submittedAtLessThanOrEqual", this.SubmittedAtLessThanOrEqual);
-			kparams.AddStringIfNotNull("entryIdEqual", this.EntryIdEqual);
-			kparams.AddStringIfNotNull("entryIdIn", this.EntryIdIn);
-			kparams.AddIntIfNotNull("distributionProfileIdEqual", this.DistributionProfileIdEqual);
-			kparams.AddStringIfNotNull("distributionProfileIdIn", this.DistributionProfileIdIn);
-			kparams.AddEnumIfNotNull("statusEqual", this.StatusEqual);
-			kparams.AddStringIfNotNull("statusIn", this.StatusIn);
-			kparams.AddEnumIfNotNull("dirtyStatusEqual", this.DirtyStatusEqual);
-			kparams.AddStringIfNotNull("dirtyStatusIn", this.DirtyStatusIn);
-			kparams.AddIntIfNotNull("sunriseGreaterThanOrEqual", this.SunriseGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("sunriseLessThanOrEqual", this.SunriseLessThanOrEqual);
-			kparams.AddIntIfNotNull("sunsetGreaterThanOrEqual", this.SunsetGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("sunsetLessThanOrEqual", this.SunsetLessThanOrEqual);
+			kparams.AddIfNotNull("idEqual", this.IdEqual);
+			kparams.AddIfNotNull("idIn", this.IdIn);
+			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("submittedAtGreaterThanOrEqual", this.SubmittedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("submittedAtLessThanOrEqual", this.SubmittedAtLessThanOrEqual);
+			kparams.AddIfNotNull("entryIdEqual", this.EntryIdEqual);
+			kparams.AddIfNotNull("entryIdIn", this.EntryIdIn);
+			kparams.AddIfNotNull("distributionProfileIdEqual", this.DistributionProfileIdEqual);
+			kparams.AddIfNotNull("distributionProfileIdIn", this.DistributionProfileIdIn);
+			kparams.AddIfNotNull("statusEqual", this.StatusEqual);
+			kparams.AddIfNotNull("statusIn", this.StatusIn);
+			kparams.AddIfNotNull("dirtyStatusEqual", this.DirtyStatusEqual);
+			kparams.AddIfNotNull("dirtyStatusIn", this.DirtyStatusIn);
+			kparams.AddIfNotNull("sunriseGreaterThanOrEqual", this.SunriseGreaterThanOrEqual);
+			kparams.AddIfNotNull("sunriseLessThanOrEqual", this.SunriseLessThanOrEqual);
+			kparams.AddIfNotNull("sunsetGreaterThanOrEqual", this.SunsetGreaterThanOrEqual);
+			kparams.AddIfNotNull("sunsetLessThanOrEqual", this.SunsetLessThanOrEqual);
 			return kparams;
 		}
 		#endregion

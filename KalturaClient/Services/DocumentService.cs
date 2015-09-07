@@ -43,9 +43,8 @@ namespace Kaltura
 		public KalturaDocumentEntry AddFromUploadedFile(KalturaDocumentEntry documentEntry, string uploadTokenId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (documentEntry != null)
-				kparams.Add("documentEntry", documentEntry.ToParams());
-			kparams.AddStringIfNotNull("uploadTokenId", uploadTokenId);
+			kparams.AddIfNotNull("documentEntry", documentEntry);
+			kparams.AddIfNotNull("uploadTokenId", uploadTokenId);
 			_Client.QueueServiceCall("document", "addFromUploadedFile", "KalturaDocumentEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -66,10 +65,9 @@ namespace Kaltura
 		public KalturaDocumentEntry AddFromEntry(string sourceEntryId, KalturaDocumentEntry documentEntry, int sourceFlavorParamsId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("sourceEntryId", sourceEntryId);
-			if (documentEntry != null)
-				kparams.Add("documentEntry", documentEntry.ToParams());
-			kparams.AddIntIfNotNull("sourceFlavorParamsId", sourceFlavorParamsId);
+			kparams.AddIfNotNull("sourceEntryId", sourceEntryId);
+			kparams.AddIfNotNull("documentEntry", documentEntry);
+			kparams.AddIfNotNull("sourceFlavorParamsId", sourceFlavorParamsId);
 			_Client.QueueServiceCall("document", "addFromEntry", "KalturaDocumentEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -85,9 +83,8 @@ namespace Kaltura
 		public KalturaDocumentEntry AddFromFlavorAsset(string sourceFlavorAssetId, KalturaDocumentEntry documentEntry)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("sourceFlavorAssetId", sourceFlavorAssetId);
-			if (documentEntry != null)
-				kparams.Add("documentEntry", documentEntry.ToParams());
+			kparams.AddIfNotNull("sourceFlavorAssetId", sourceFlavorAssetId);
+			kparams.AddIfNotNull("documentEntry", documentEntry);
 			_Client.QueueServiceCall("document", "addFromFlavorAsset", "KalturaDocumentEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -108,12 +105,9 @@ namespace Kaltura
 		public long Convert(string entryId, int conversionProfileId, IList<KalturaConversionAttribute> dynamicConversionAttributes)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddIntIfNotNull("conversionProfileId", conversionProfileId);
-			foreach(KalturaConversionAttribute obj in dynamicConversionAttributes)
-			{
-				kparams.Add("dynamicConversionAttributes", obj.ToParams());
-			}
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("conversionProfileId", conversionProfileId);
+			kparams.AddIfNotNull("dynamicConversionAttributes", dynamicConversionAttributes);
 			_Client.QueueServiceCall("document", "convert", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return 0;
@@ -129,8 +123,8 @@ namespace Kaltura
 		public KalturaDocumentEntry Get(string entryId, int version)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddIntIfNotNull("version", version);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("version", version);
 			_Client.QueueServiceCall("document", "get", "KalturaDocumentEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -141,9 +135,8 @@ namespace Kaltura
 		public KalturaDocumentEntry Update(string entryId, KalturaDocumentEntry documentEntry)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			if (documentEntry != null)
-				kparams.Add("documentEntry", documentEntry.ToParams());
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("documentEntry", documentEntry);
 			_Client.QueueServiceCall("document", "update", "KalturaDocumentEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -154,7 +147,7 @@ namespace Kaltura
 		public void Delete(string entryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("entryId", entryId);
 			_Client.QueueServiceCall("document", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -174,10 +167,8 @@ namespace Kaltura
 		public KalturaDocumentListResponse List(KalturaDocumentEntryFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("document", "list", "KalturaDocumentListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -200,7 +191,7 @@ namespace Kaltura
 		public string ConvertPptToSwf(string entryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("entryId", entryId);
 			_Client.QueueServiceCall("document", "convertPptToSwf", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -216,10 +207,9 @@ namespace Kaltura
 		public KalturaDocumentEntry UpdateContent(string entryId, KalturaResource resource, int conversionProfileId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			if (resource != null)
-				kparams.Add("resource", resource.ToParams());
-			kparams.AddIntIfNotNull("conversionProfileId", conversionProfileId);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("resource", resource);
+			kparams.AddIfNotNull("conversionProfileId", conversionProfileId);
 			_Client.QueueServiceCall("document", "updateContent", "KalturaDocumentEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -230,7 +220,7 @@ namespace Kaltura
 		public KalturaDocumentEntry ApproveReplace(string entryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("entryId", entryId);
 			_Client.QueueServiceCall("document", "approveReplace", "KalturaDocumentEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -241,7 +231,7 @@ namespace Kaltura
 		public KalturaDocumentEntry CancelReplace(string entryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("entryId", entryId);
 			_Client.QueueServiceCall("document", "cancelReplace", "KalturaDocumentEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

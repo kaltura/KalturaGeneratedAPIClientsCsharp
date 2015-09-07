@@ -43,10 +43,9 @@ namespace Kaltura
 		public int Dispatch(KalturaIntegrationJobData data, KalturaBatchJobObjectType objectType, string objectId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (data != null)
-				kparams.Add("data", data.ToParams());
-			kparams.AddStringEnumIfNotNull("objectType", objectType);
-			kparams.AddStringIfNotNull("objectId", objectId);
+			kparams.AddIfNotNull("data", data);
+			kparams.AddIfNotNull("objectType", objectType);
+			kparams.AddIfNotNull("objectId", objectId);
 			_Client.QueueServiceCall("integration_integration", "dispatch", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return 0;
@@ -57,7 +56,7 @@ namespace Kaltura
 		public void Notify(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("integration_integration", "notify", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;

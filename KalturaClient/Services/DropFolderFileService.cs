@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaDropFolderFile Add(KalturaDropFolderFile dropFolderFile)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (dropFolderFile != null)
-				kparams.Add("dropFolderFile", dropFolderFile.ToParams());
+			kparams.AddIfNotNull("dropFolderFile", dropFolderFile);
 			_Client.QueueServiceCall("dropfolder_dropfolderfile", "add", "KalturaDropFolderFile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,7 +54,7 @@ namespace Kaltura
 		public KalturaDropFolderFile Get(int dropFolderFileId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("dropFolderFileId", dropFolderFileId);
+			kparams.AddIfNotNull("dropFolderFileId", dropFolderFileId);
 			_Client.QueueServiceCall("dropfolder_dropfolderfile", "get", "KalturaDropFolderFile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -66,9 +65,8 @@ namespace Kaltura
 		public KalturaDropFolderFile Update(int dropFolderFileId, KalturaDropFolderFile dropFolderFile)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("dropFolderFileId", dropFolderFileId);
-			if (dropFolderFile != null)
-				kparams.Add("dropFolderFile", dropFolderFile.ToParams());
+			kparams.AddIfNotNull("dropFolderFileId", dropFolderFileId);
+			kparams.AddIfNotNull("dropFolderFile", dropFolderFile);
 			_Client.QueueServiceCall("dropfolder_dropfolderfile", "update", "KalturaDropFolderFile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -79,8 +77,8 @@ namespace Kaltura
 		public KalturaDropFolderFile UpdateStatus(int dropFolderFileId, KalturaDropFolderFileStatus status)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("dropFolderFileId", dropFolderFileId);
-			kparams.AddEnumIfNotNull("status", status);
+			kparams.AddIfNotNull("dropFolderFileId", dropFolderFileId);
+			kparams.AddIfNotNull("status", status);
 			_Client.QueueServiceCall("dropfolder_dropfolderfile", "updateStatus", "KalturaDropFolderFile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -91,7 +89,7 @@ namespace Kaltura
 		public KalturaDropFolderFile Delete(int dropFolderFileId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("dropFolderFileId", dropFolderFileId);
+			kparams.AddIfNotNull("dropFolderFileId", dropFolderFileId);
 			_Client.QueueServiceCall("dropfolder_dropfolderfile", "delete", "KalturaDropFolderFile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -112,10 +110,8 @@ namespace Kaltura
 		public KalturaDropFolderFileListResponse List(KalturaDropFolderFileFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("dropfolder_dropfolderfile", "list", "KalturaDropFolderFileListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -126,7 +122,7 @@ namespace Kaltura
 		public KalturaDropFolderFile Ignore(int dropFolderFileId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("dropFolderFileId", dropFolderFileId);
+			kparams.AddIfNotNull("dropFolderFileId", dropFolderFileId);
 			_Client.QueueServiceCall("dropfolder_dropfolderfile", "ignore", "KalturaDropFolderFile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

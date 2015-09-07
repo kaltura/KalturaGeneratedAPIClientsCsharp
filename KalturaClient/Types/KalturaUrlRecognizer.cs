@@ -64,7 +64,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaUrlRecognizer(XmlElement node)
+		public KalturaUrlRecognizer(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUrlRecognizer");
-			kparams.AddStringIfNotNull("hosts", this.Hosts);
-			kparams.AddStringIfNotNull("uriPrefix", this.UriPrefix);
+			kparams.AddIfNotNull("hosts", this.Hosts);
+			kparams.AddIfNotNull("uriPrefix", this.UriPrefix);
 			return kparams;
 		}
 		#endregion

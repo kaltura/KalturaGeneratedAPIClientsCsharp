@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAnswerCuePointBaseFilter");
-			kparams.AddStringIfNotNull("parentIdEqual", this.ParentIdEqual);
-			kparams.AddStringIfNotNull("parentIdIn", this.ParentIdIn);
+			kparams.AddIfNotNull("parentIdEqual", this.ParentIdEqual);
+			kparams.AddIfNotNull("parentIdIn", this.ParentIdIn);
 			return kparams;
 		}
 		#endregion

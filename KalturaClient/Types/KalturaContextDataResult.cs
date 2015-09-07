@@ -64,7 +64,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaContextDataResult(XmlElement node)
+		public KalturaContextDataResult(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -95,38 +95,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaContextDataResult");
-			if (this.Messages != null)
-			{
-				if (this.Messages.Count == 0)
-				{
-					kparams.Add("messages:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaString item in this.Messages)
-					{
-						kparams.Add("messages:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			if (this.Actions != null)
-			{
-				if (this.Actions.Count == 0)
-				{
-					kparams.Add("actions:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaRuleAction item in this.Actions)
-					{
-						kparams.Add("actions:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
+			kparams.AddIfNotNull("messages", this.Messages);
+			kparams.AddIfNotNull("actions", this.Actions);
 			return kparams;
 		}
 		#endregion

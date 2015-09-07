@@ -64,7 +64,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaBulkUploadPluginData(XmlElement node)
+		public KalturaBulkUploadPluginData(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaBulkUploadPluginData");
-			kparams.AddStringIfNotNull("field", this.Field);
-			kparams.AddStringIfNotNull("value", this.Value);
+			kparams.AddIfNotNull("field", this.Field);
+			kparams.AddIfNotNull("value", this.Value);
 			return kparams;
 		}
 		#endregion

@@ -247,39 +247,20 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEmailNotificationTemplate");
-			kparams.AddStringEnumIfNotNull("format", this.Format);
-			kparams.AddStringIfNotNull("subject", this.Subject);
-			kparams.AddStringIfNotNull("body", this.Body);
-			kparams.AddStringIfNotNull("fromEmail", this.FromEmail);
-			kparams.AddStringIfNotNull("fromName", this.FromName);
-			if (this.To != null)
-				kparams.Add("to", this.To.ToParams());
-			if (this.Cc != null)
-				kparams.Add("cc", this.Cc.ToParams());
-			if (this.Bcc != null)
-				kparams.Add("bcc", this.Bcc.ToParams());
-			if (this.ReplyTo != null)
-				kparams.Add("replyTo", this.ReplyTo.ToParams());
-			kparams.AddEnumIfNotNull("priority", this.Priority);
-			kparams.AddStringIfNotNull("confirmReadingTo", this.ConfirmReadingTo);
-			kparams.AddStringIfNotNull("hostname", this.Hostname);
-			kparams.AddStringIfNotNull("messageID", this.MessageID);
-			if (this.CustomHeaders != null)
-			{
-				if (this.CustomHeaders.Count == 0)
-				{
-					kparams.Add("customHeaders:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaKeyValue item in this.CustomHeaders)
-					{
-						kparams.Add("customHeaders:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
+			kparams.AddIfNotNull("format", this.Format);
+			kparams.AddIfNotNull("subject", this.Subject);
+			kparams.AddIfNotNull("body", this.Body);
+			kparams.AddIfNotNull("fromEmail", this.FromEmail);
+			kparams.AddIfNotNull("fromName", this.FromName);
+			kparams.AddIfNotNull("to", this.To);
+			kparams.AddIfNotNull("cc", this.Cc);
+			kparams.AddIfNotNull("bcc", this.Bcc);
+			kparams.AddIfNotNull("replyTo", this.ReplyTo);
+			kparams.AddIfNotNull("priority", this.Priority);
+			kparams.AddIfNotNull("confirmReadingTo", this.ConfirmReadingTo);
+			kparams.AddIfNotNull("hostname", this.Hostname);
+			kparams.AddIfNotNull("messageID", this.MessageID);
+			kparams.AddIfNotNull("customHeaders", this.CustomHeaders);
 			return kparams;
 		}
 		#endregion

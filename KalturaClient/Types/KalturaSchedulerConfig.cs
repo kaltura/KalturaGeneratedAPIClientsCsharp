@@ -184,7 +184,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaSchedulerConfig(XmlElement node)
+		public KalturaSchedulerConfig(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -243,20 +243,20 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSchedulerConfig");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddStringIfNotNull("createdBy", this.CreatedBy);
-			kparams.AddStringIfNotNull("updatedBy", this.UpdatedBy);
-			kparams.AddStringIfNotNull("commandId", this.CommandId);
-			kparams.AddStringIfNotNull("commandStatus", this.CommandStatus);
-			kparams.AddIntIfNotNull("schedulerId", this.SchedulerId);
-			kparams.AddIntIfNotNull("schedulerConfiguredId", this.SchedulerConfiguredId);
-			kparams.AddStringIfNotNull("schedulerName", this.SchedulerName);
-			kparams.AddIntIfNotNull("workerId", this.WorkerId);
-			kparams.AddIntIfNotNull("workerConfiguredId", this.WorkerConfiguredId);
-			kparams.AddStringIfNotNull("workerName", this.WorkerName);
-			kparams.AddStringIfNotNull("variable", this.Variable);
-			kparams.AddStringIfNotNull("variablePart", this.VariablePart);
-			kparams.AddStringIfNotNull("value", this.Value);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("createdBy", this.CreatedBy);
+			kparams.AddIfNotNull("updatedBy", this.UpdatedBy);
+			kparams.AddIfNotNull("commandId", this.CommandId);
+			kparams.AddIfNotNull("commandStatus", this.CommandStatus);
+			kparams.AddIfNotNull("schedulerId", this.SchedulerId);
+			kparams.AddIfNotNull("schedulerConfiguredId", this.SchedulerConfiguredId);
+			kparams.AddIfNotNull("schedulerName", this.SchedulerName);
+			kparams.AddIfNotNull("workerId", this.WorkerId);
+			kparams.AddIfNotNull("workerConfiguredId", this.WorkerConfiguredId);
+			kparams.AddIfNotNull("workerName", this.WorkerName);
+			kparams.AddIfNotNull("variable", this.Variable);
+			kparams.AddIfNotNull("variablePart", this.VariablePart);
+			kparams.AddIfNotNull("value", this.Value);
 			return kparams;
 		}
 		#endregion

@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaStartWidgetSessionResponse(XmlElement node)
+		public KalturaStartWidgetSessionResponse(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaStartWidgetSessionResponse");
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringIfNotNull("ks", this.Ks);
-			kparams.AddStringIfNotNull("userId", this.UserId);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("ks", this.Ks);
+			kparams.AddIfNotNull("userId", this.UserId);
 			return kparams;
 		}
 		#endregion

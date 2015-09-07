@@ -217,18 +217,18 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaWidgetBaseFilter");
-			kparams.AddStringIfNotNull("idEqual", this.IdEqual);
-			kparams.AddStringIfNotNull("idIn", this.IdIn);
-			kparams.AddStringIfNotNull("sourceWidgetIdEqual", this.SourceWidgetIdEqual);
-			kparams.AddStringIfNotNull("rootWidgetIdEqual", this.RootWidgetIdEqual);
-			kparams.AddIntIfNotNull("partnerIdEqual", this.PartnerIdEqual);
-			kparams.AddStringIfNotNull("entryIdEqual", this.EntryIdEqual);
-			kparams.AddIntIfNotNull("uiConfIdEqual", this.UiConfIdEqual);
-			kparams.AddIntIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
-			kparams.AddIntIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
-			kparams.AddStringIfNotNull("partnerDataLike", this.PartnerDataLike);
+			kparams.AddIfNotNull("idEqual", this.IdEqual);
+			kparams.AddIfNotNull("idIn", this.IdIn);
+			kparams.AddIfNotNull("sourceWidgetIdEqual", this.SourceWidgetIdEqual);
+			kparams.AddIfNotNull("rootWidgetIdEqual", this.RootWidgetIdEqual);
+			kparams.AddIfNotNull("partnerIdEqual", this.PartnerIdEqual);
+			kparams.AddIfNotNull("entryIdEqual", this.EntryIdEqual);
+			kparams.AddIfNotNull("uiConfIdEqual", this.UiConfIdEqual);
+			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("partnerDataLike", this.PartnerDataLike);
 			return kparams;
 		}
 		#endregion

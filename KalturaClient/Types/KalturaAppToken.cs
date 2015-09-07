@@ -164,7 +164,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaAppToken(XmlElement node)
+		public KalturaAppToken(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -217,18 +217,18 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAppToken");
-			kparams.AddStringIfNotNull("id", this.Id);
-			kparams.AddStringIfNotNull("token", this.Token);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddEnumIfNotNull("status", this.Status);
-			kparams.AddIntIfNotNull("expiry", this.Expiry);
-			kparams.AddEnumIfNotNull("sessionType", this.SessionType);
-			kparams.AddStringIfNotNull("sessionUserId", this.SessionUserId);
-			kparams.AddIntIfNotNull("sessionDuration", this.SessionDuration);
-			kparams.AddStringIfNotNull("sessionPrivileges", this.SessionPrivileges);
-			kparams.AddStringEnumIfNotNull("hashType", this.HashType);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("token", this.Token);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("expiry", this.Expiry);
+			kparams.AddIfNotNull("sessionType", this.SessionType);
+			kparams.AddIfNotNull("sessionUserId", this.SessionUserId);
+			kparams.AddIfNotNull("sessionDuration", this.SessionDuration);
+			kparams.AddIfNotNull("sessionPrivileges", this.SessionPrivileges);
+			kparams.AddIfNotNull("hashType", this.HashType);
 			return kparams;
 		}
 		#endregion

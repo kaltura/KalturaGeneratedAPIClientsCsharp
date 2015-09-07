@@ -204,7 +204,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaCuePoint(XmlElement node)
+		public KalturaCuePoint(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -269,22 +269,22 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCuePoint");
-			kparams.AddStringIfNotNull("id", this.Id);
-			kparams.AddStringEnumIfNotNull("cuePointType", this.CuePointType);
-			kparams.AddEnumIfNotNull("status", this.Status);
-			kparams.AddStringIfNotNull("entryId", this.EntryId);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIntIfNotNull("triggeredAt", this.TriggeredAt);
-			kparams.AddStringIfNotNull("tags", this.Tags);
-			kparams.AddIntIfNotNull("startTime", this.StartTime);
-			kparams.AddStringIfNotNull("userId", this.UserId);
-			kparams.AddStringIfNotNull("partnerData", this.PartnerData);
-			kparams.AddIntIfNotNull("partnerSortValue", this.PartnerSortValue);
-			kparams.AddEnumIfNotNull("forceStop", this.ForceStop);
-			kparams.AddIntIfNotNull("thumbOffset", this.ThumbOffset);
-			kparams.AddStringIfNotNull("systemName", this.SystemName);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("cuePointType", this.CuePointType);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("entryId", this.EntryId);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("triggeredAt", this.TriggeredAt);
+			kparams.AddIfNotNull("tags", this.Tags);
+			kparams.AddIfNotNull("startTime", this.StartTime);
+			kparams.AddIfNotNull("userId", this.UserId);
+			kparams.AddIfNotNull("partnerData", this.PartnerData);
+			kparams.AddIfNotNull("partnerSortValue", this.PartnerSortValue);
+			kparams.AddIfNotNull("forceStop", this.ForceStop);
+			kparams.AddIfNotNull("thumbOffset", this.ThumbOffset);
+			kparams.AddIfNotNull("systemName", this.SystemName);
 			return kparams;
 		}
 		#endregion

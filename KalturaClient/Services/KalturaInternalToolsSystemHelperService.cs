@@ -43,7 +43,7 @@ namespace Kaltura
 		public KalturaInternalToolsSession FromSecureString(string str)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("str", str);
+			kparams.AddIfNotNull("str", str);
 			_Client.QueueServiceCall("kalturainternaltools_kalturainternaltoolssystemhelper", "fromSecureString", "KalturaInternalToolsSession", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -54,7 +54,7 @@ namespace Kaltura
 		public string Iptocountry(string remote_addr)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("remote_addr", remote_addr);
+			kparams.AddIfNotNull("remote_addr", remote_addr);
 			_Client.QueueServiceCall("kalturainternaltools_kalturainternaltoolssystemhelper", "iptocountry", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

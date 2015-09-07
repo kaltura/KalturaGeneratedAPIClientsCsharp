@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaMediaEntry Add(KalturaMediaEntry entry)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (entry != null)
-				kparams.Add("entry", entry.ToParams());
+			kparams.AddIfNotNull("entry", entry);
 			_Client.QueueServiceCall("media", "add", "KalturaMediaEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -60,9 +59,8 @@ namespace Kaltura
 		public KalturaMediaEntry AddContent(string entryId, KalturaResource resource)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			if (resource != null)
-				kparams.Add("resource", resource.ToParams());
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("resource", resource);
 			_Client.QueueServiceCall("media", "addContent", "KalturaMediaEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -73,9 +71,8 @@ namespace Kaltura
 		public KalturaMediaEntry AddFromUrl(KalturaMediaEntry mediaEntry, string url)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (mediaEntry != null)
-				kparams.Add("mediaEntry", mediaEntry.ToParams());
-			kparams.AddStringIfNotNull("url", url);
+			kparams.AddIfNotNull("mediaEntry", mediaEntry);
+			kparams.AddIfNotNull("url", url);
 			_Client.QueueServiceCall("media", "addFromUrl", "KalturaMediaEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -96,10 +93,8 @@ namespace Kaltura
 		public KalturaMediaEntry AddFromSearchResult(KalturaMediaEntry mediaEntry, KalturaSearchResult searchResult)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (mediaEntry != null)
-				kparams.Add("mediaEntry", mediaEntry.ToParams());
-			if (searchResult != null)
-				kparams.Add("searchResult", searchResult.ToParams());
+			kparams.AddIfNotNull("mediaEntry", mediaEntry);
+			kparams.AddIfNotNull("searchResult", searchResult);
 			_Client.QueueServiceCall("media", "addFromSearchResult", "KalturaMediaEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -110,9 +105,8 @@ namespace Kaltura
 		public KalturaMediaEntry AddFromUploadedFile(KalturaMediaEntry mediaEntry, string uploadTokenId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (mediaEntry != null)
-				kparams.Add("mediaEntry", mediaEntry.ToParams());
-			kparams.AddStringIfNotNull("uploadTokenId", uploadTokenId);
+			kparams.AddIfNotNull("mediaEntry", mediaEntry);
+			kparams.AddIfNotNull("uploadTokenId", uploadTokenId);
 			_Client.QueueServiceCall("media", "addFromUploadedFile", "KalturaMediaEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -123,9 +117,8 @@ namespace Kaltura
 		public KalturaMediaEntry AddFromRecordedWebcam(KalturaMediaEntry mediaEntry, string webcamTokenId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (mediaEntry != null)
-				kparams.Add("mediaEntry", mediaEntry.ToParams());
-			kparams.AddStringIfNotNull("webcamTokenId", webcamTokenId);
+			kparams.AddIfNotNull("mediaEntry", mediaEntry);
+			kparams.AddIfNotNull("webcamTokenId", webcamTokenId);
 			_Client.QueueServiceCall("media", "addFromRecordedWebcam", "KalturaMediaEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -146,10 +139,9 @@ namespace Kaltura
 		public KalturaMediaEntry AddFromEntry(string sourceEntryId, KalturaMediaEntry mediaEntry, int sourceFlavorParamsId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("sourceEntryId", sourceEntryId);
-			if (mediaEntry != null)
-				kparams.Add("mediaEntry", mediaEntry.ToParams());
-			kparams.AddIntIfNotNull("sourceFlavorParamsId", sourceFlavorParamsId);
+			kparams.AddIfNotNull("sourceEntryId", sourceEntryId);
+			kparams.AddIfNotNull("mediaEntry", mediaEntry);
+			kparams.AddIfNotNull("sourceFlavorParamsId", sourceFlavorParamsId);
 			_Client.QueueServiceCall("media", "addFromEntry", "KalturaMediaEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -165,9 +157,8 @@ namespace Kaltura
 		public KalturaMediaEntry AddFromFlavorAsset(string sourceFlavorAssetId, KalturaMediaEntry mediaEntry)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("sourceFlavorAssetId", sourceFlavorAssetId);
-			if (mediaEntry != null)
-				kparams.Add("mediaEntry", mediaEntry.ToParams());
+			kparams.AddIfNotNull("sourceFlavorAssetId", sourceFlavorAssetId);
+			kparams.AddIfNotNull("mediaEntry", mediaEntry);
 			_Client.QueueServiceCall("media", "addFromFlavorAsset", "KalturaMediaEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -188,12 +179,9 @@ namespace Kaltura
 		public long Convert(string entryId, int conversionProfileId, IList<KalturaConversionAttribute> dynamicConversionAttributes)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddIntIfNotNull("conversionProfileId", conversionProfileId);
-			foreach(KalturaConversionAttribute obj in dynamicConversionAttributes)
-			{
-				kparams.Add("dynamicConversionAttributes", obj.ToParams());
-			}
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("conversionProfileId", conversionProfileId);
+			kparams.AddIfNotNull("dynamicConversionAttributes", dynamicConversionAttributes);
 			_Client.QueueServiceCall("media", "convert", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return 0;
@@ -209,8 +197,8 @@ namespace Kaltura
 		public KalturaMediaEntry Get(string entryId, int version)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddIntIfNotNull("version", version);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("version", version);
 			_Client.QueueServiceCall("media", "get", "KalturaMediaEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -226,11 +214,8 @@ namespace Kaltura
 		public string GetMrss(string entryId, IList<KalturaExtendingItemMrssParameter> extendingItemsArray)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			foreach(KalturaExtendingItemMrssParameter obj in extendingItemsArray)
-			{
-				kparams.Add("extendingItemsArray", obj.ToParams());
-			}
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("extendingItemsArray", extendingItemsArray);
 			_Client.QueueServiceCall("media", "getMrss", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -241,9 +226,8 @@ namespace Kaltura
 		public KalturaMediaEntry Update(string entryId, KalturaMediaEntry mediaEntry)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			if (mediaEntry != null)
-				kparams.Add("mediaEntry", mediaEntry.ToParams());
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("mediaEntry", mediaEntry);
 			_Client.QueueServiceCall("media", "update", "KalturaMediaEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -264,12 +248,10 @@ namespace Kaltura
 		public KalturaMediaEntry UpdateContent(string entryId, KalturaResource resource, int conversionProfileId, KalturaEntryReplacementOptions advancedOptions)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			if (resource != null)
-				kparams.Add("resource", resource.ToParams());
-			kparams.AddIntIfNotNull("conversionProfileId", conversionProfileId);
-			if (advancedOptions != null)
-				kparams.Add("advancedOptions", advancedOptions.ToParams());
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("resource", resource);
+			kparams.AddIfNotNull("conversionProfileId", conversionProfileId);
+			kparams.AddIfNotNull("advancedOptions", advancedOptions);
 			_Client.QueueServiceCall("media", "updateContent", "KalturaMediaEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -280,7 +262,7 @@ namespace Kaltura
 		public void Delete(string entryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("entryId", entryId);
 			_Client.QueueServiceCall("media", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -290,7 +272,7 @@ namespace Kaltura
 		public KalturaMediaEntry ApproveReplace(string entryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("entryId", entryId);
 			_Client.QueueServiceCall("media", "approveReplace", "KalturaMediaEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -301,7 +283,7 @@ namespace Kaltura
 		public KalturaMediaEntry CancelReplace(string entryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("entryId", entryId);
 			_Client.QueueServiceCall("media", "cancelReplace", "KalturaMediaEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -322,10 +304,8 @@ namespace Kaltura
 		public KalturaMediaListResponse List(KalturaMediaEntryFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("media", "list", "KalturaMediaListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -341,8 +321,7 @@ namespace Kaltura
 		public int Count(KalturaMediaEntryFilter filter)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
+			kparams.AddIfNotNull("filter", filter);
 			_Client.QueueServiceCall("media", "count", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return 0;
@@ -370,9 +349,9 @@ namespace Kaltura
 		public KalturaMediaEntry UpdateThumbnail(string entryId, int timeOffset, int flavorParamsId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddIntIfNotNull("timeOffset", timeOffset);
-			kparams.AddIntIfNotNull("flavorParamsId", flavorParamsId);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("timeOffset", timeOffset);
+			kparams.AddIfNotNull("flavorParamsId", flavorParamsId);
 			_Client.QueueServiceCall("media", "updateThumbnail", "KalturaMediaEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -388,10 +367,10 @@ namespace Kaltura
 		public KalturaMediaEntry UpdateThumbnailFromSourceEntry(string entryId, string sourceEntryId, int timeOffset, int flavorParamsId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddStringIfNotNull("sourceEntryId", sourceEntryId);
-			kparams.AddIntIfNotNull("timeOffset", timeOffset);
-			kparams.AddIntIfNotNull("flavorParamsId", flavorParamsId);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("sourceEntryId", sourceEntryId);
+			kparams.AddIfNotNull("timeOffset", timeOffset);
+			kparams.AddIfNotNull("flavorParamsId", flavorParamsId);
 			_Client.QueueServiceCall("media", "updateThumbnailFromSourceEntry", "KalturaMediaEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -402,7 +381,7 @@ namespace Kaltura
 		public KalturaMediaEntry UpdateThumbnailJpeg(string entryId, FileStream fileData)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("entryId", entryId);
 			KalturaFiles kfiles = new KalturaFiles();
 			kfiles.Add("fileData", fileData);
 			_Client.QueueServiceCall("media", "updateThumbnailJpeg", "KalturaMediaEntry", kparams, kfiles);
@@ -415,8 +394,8 @@ namespace Kaltura
 		public KalturaBaseEntry UpdateThumbnailFromUrl(string entryId, string url)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddStringIfNotNull("url", url);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("url", url);
 			_Client.QueueServiceCall("media", "updateThumbnailFromUrl", "KalturaBaseEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -427,8 +406,8 @@ namespace Kaltura
 		public int RequestConversion(string entryId, string fileFormat)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddStringIfNotNull("fileFormat", fileFormat);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("fileFormat", fileFormat);
 			_Client.QueueServiceCall("media", "requestConversion", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return 0;
@@ -439,8 +418,7 @@ namespace Kaltura
 		public void Flag(KalturaModerationFlag moderationFlag)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (moderationFlag != null)
-				kparams.Add("moderationFlag", moderationFlag.ToParams());
+			kparams.AddIfNotNull("moderationFlag", moderationFlag);
 			_Client.QueueServiceCall("media", "flag", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -450,7 +428,7 @@ namespace Kaltura
 		public void Reject(string entryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("entryId", entryId);
 			_Client.QueueServiceCall("media", "reject", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -460,7 +438,7 @@ namespace Kaltura
 		public void Approve(string entryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("entryId", entryId);
 			_Client.QueueServiceCall("media", "approve", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -475,9 +453,8 @@ namespace Kaltura
 		public KalturaModerationFlagListResponse ListFlags(string entryId, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("media", "listFlags", "KalturaModerationFlagListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -488,8 +465,8 @@ namespace Kaltura
 		public void AnonymousRank(string entryId, int rank)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddIntIfNotNull("rank", rank);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("rank", rank);
 			_Client.QueueServiceCall("media", "anonymousRank", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -511,10 +488,8 @@ namespace Kaltura
 			KalturaParams kparams = new KalturaParams();
 			KalturaFiles kfiles = new KalturaFiles();
 			kfiles.Add("fileData", fileData);
-			if (bulkUploadData != null)
-				kparams.Add("bulkUploadData", bulkUploadData.ToParams());
-			if (bulkUploadEntryData != null)
-				kparams.Add("bulkUploadEntryData", bulkUploadEntryData.ToParams());
+			kparams.AddIfNotNull("bulkUploadData", bulkUploadData);
+			kparams.AddIfNotNull("bulkUploadEntryData", bulkUploadEntryData);
 			_Client.QueueServiceCall("media", "bulkUploadAdd", "KalturaBulkUpload", kparams, kfiles);
 			if (this._Client.IsMultiRequest)
 				return null;

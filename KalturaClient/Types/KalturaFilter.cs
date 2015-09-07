@@ -64,7 +64,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaFilter(XmlElement node)
+		public KalturaFilter(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -87,9 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaFilter");
-			kparams.AddStringIfNotNull("orderBy", this.OrderBy);
-			if (this.AdvancedSearch != null)
-				kparams.Add("advancedSearch", this.AdvancedSearch.ToParams());
+			kparams.AddIfNotNull("orderBy", this.OrderBy);
+			kparams.AddIfNotNull("advancedSearch", this.AdvancedSearch);
 			return kparams;
 		}
 		#endregion

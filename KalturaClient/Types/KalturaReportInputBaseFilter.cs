@@ -84,7 +84,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaReportInputBaseFilter(XmlElement node)
+		public KalturaReportInputBaseFilter(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaReportInputBaseFilter");
-			kparams.AddIntIfNotNull("fromDate", this.FromDate);
-			kparams.AddIntIfNotNull("toDate", this.ToDate);
-			kparams.AddStringIfNotNull("fromDay", this.FromDay);
-			kparams.AddStringIfNotNull("toDay", this.ToDay);
+			kparams.AddIfNotNull("fromDate", this.FromDate);
+			kparams.AddIfNotNull("toDate", this.ToDate);
+			kparams.AddIfNotNull("fromDay", this.FromDay);
+			kparams.AddIfNotNull("toDay", this.ToDay);
 			return kparams;
 		}
 		#endregion

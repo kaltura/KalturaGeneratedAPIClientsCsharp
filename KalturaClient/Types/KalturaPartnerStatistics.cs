@@ -104,7 +104,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaPartnerStatistics(XmlElement node)
+		public KalturaPartnerStatistics(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -139,12 +139,12 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaPartnerStatistics");
-			kparams.AddIntIfNotNull("packageBandwidthAndStorage", this.PackageBandwidthAndStorage);
-			kparams.AddFloatIfNotNull("hosting", this.Hosting);
-			kparams.AddFloatIfNotNull("bandwidth", this.Bandwidth);
-			kparams.AddIntIfNotNull("usage", this.Usage);
-			kparams.AddFloatIfNotNull("usagePercent", this.UsagePercent);
-			kparams.AddIntIfNotNull("reachedLimitDate", this.ReachedLimitDate);
+			kparams.AddIfNotNull("packageBandwidthAndStorage", this.PackageBandwidthAndStorage);
+			kparams.AddIfNotNull("hosting", this.Hosting);
+			kparams.AddIfNotNull("bandwidth", this.Bandwidth);
+			kparams.AddIfNotNull("usage", this.Usage);
+			kparams.AddIfNotNull("usagePercent", this.UsagePercent);
+			kparams.AddIfNotNull("reachedLimitDate", this.ReachedLimitDate);
 			return kparams;
 		}
 		#endregion

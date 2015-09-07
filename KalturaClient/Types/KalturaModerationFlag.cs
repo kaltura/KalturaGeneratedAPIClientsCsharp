@@ -154,7 +154,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaModerationFlag(XmlElement node)
+		public KalturaModerationFlag(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -204,17 +204,17 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaModerationFlag");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringIfNotNull("userId", this.UserId);
-			kparams.AddStringEnumIfNotNull("moderationObjectType", this.ModerationObjectType);
-			kparams.AddStringIfNotNull("flaggedEntryId", this.FlaggedEntryId);
-			kparams.AddStringIfNotNull("flaggedUserId", this.FlaggedUserId);
-			kparams.AddStringEnumIfNotNull("status", this.Status);
-			kparams.AddStringIfNotNull("comments", this.Comments);
-			kparams.AddEnumIfNotNull("flagType", this.FlagType);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("userId", this.UserId);
+			kparams.AddIfNotNull("moderationObjectType", this.ModerationObjectType);
+			kparams.AddIfNotNull("flaggedEntryId", this.FlaggedEntryId);
+			kparams.AddIfNotNull("flaggedUserId", this.FlaggedUserId);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("comments", this.Comments);
+			kparams.AddIfNotNull("flagType", this.FlagType);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
 			return kparams;
 		}
 		#endregion

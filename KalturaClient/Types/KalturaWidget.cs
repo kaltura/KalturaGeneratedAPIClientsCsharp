@@ -194,7 +194,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaWidget(XmlElement node)
+		public KalturaWidget(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -256,21 +256,21 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaWidget");
-			kparams.AddStringIfNotNull("id", this.Id);
-			kparams.AddStringIfNotNull("sourceWidgetId", this.SourceWidgetId);
-			kparams.AddStringIfNotNull("rootWidgetId", this.RootWidgetId);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringIfNotNull("entryId", this.EntryId);
-			kparams.AddIntIfNotNull("uiConfId", this.UiConfId);
-			kparams.AddEnumIfNotNull("securityType", this.SecurityType);
-			kparams.AddIntIfNotNull("securityPolicy", this.SecurityPolicy);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddStringIfNotNull("partnerData", this.PartnerData);
-			kparams.AddStringIfNotNull("widgetHTML", this.WidgetHTML);
-			kparams.AddBoolIfNotNull("enforceEntitlement", this.EnforceEntitlement);
-			kparams.AddStringIfNotNull("privacyContext", this.PrivacyContext);
-			kparams.AddBoolIfNotNull("addEmbedHtml5Support", this.AddEmbedHtml5Support);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("sourceWidgetId", this.SourceWidgetId);
+			kparams.AddIfNotNull("rootWidgetId", this.RootWidgetId);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("entryId", this.EntryId);
+			kparams.AddIfNotNull("uiConfId", this.UiConfId);
+			kparams.AddIfNotNull("securityType", this.SecurityType);
+			kparams.AddIfNotNull("securityPolicy", this.SecurityPolicy);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("partnerData", this.PartnerData);
+			kparams.AddIfNotNull("widgetHTML", this.WidgetHTML);
+			kparams.AddIfNotNull("enforceEntitlement", this.EnforceEntitlement);
+			kparams.AddIfNotNull("privacyContext", this.PrivacyContext);
+			kparams.AddIfNotNull("addEmbedHtml5Support", this.AddEmbedHtml5Support);
 			return kparams;
 		}
 		#endregion

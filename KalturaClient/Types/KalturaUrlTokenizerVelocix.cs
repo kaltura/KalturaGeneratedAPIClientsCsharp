@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUrlTokenizerVelocix");
-			kparams.AddStringIfNotNull("hdsPaths", this.HdsPaths);
-			kparams.AddStringIfNotNull("paramName", this.ParamName);
-			kparams.AddStringIfNotNull("authPrefix", this.AuthPrefix);
+			kparams.AddIfNotNull("hdsPaths", this.HdsPaths);
+			kparams.AddIfNotNull("paramName", this.ParamName);
+			kparams.AddIfNotNull("authPrefix", this.AuthPrefix);
 			return kparams;
 		}
 		#endregion

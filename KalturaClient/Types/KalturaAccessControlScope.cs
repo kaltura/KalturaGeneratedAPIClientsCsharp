@@ -114,7 +114,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaAccessControlScope(XmlElement node)
+		public KalturaAccessControlScope(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -160,43 +160,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAccessControlScope");
-			kparams.AddStringIfNotNull("referrer", this.Referrer);
-			kparams.AddStringIfNotNull("ip", this.Ip);
-			kparams.AddStringIfNotNull("ks", this.Ks);
-			kparams.AddStringIfNotNull("userAgent", this.UserAgent);
-			kparams.AddIntIfNotNull("time", this.Time);
-			if (this.Contexts != null)
-			{
-				if (this.Contexts.Count == 0)
-				{
-					kparams.Add("contexts:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaAccessControlContextTypeHolder item in this.Contexts)
-					{
-						kparams.Add("contexts:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			if (this.Hashes != null)
-			{
-				if (this.Hashes.Count == 0)
-				{
-					kparams.Add("hashes:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaKeyValue item in this.Hashes)
-					{
-						kparams.Add("hashes:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
+			kparams.AddIfNotNull("referrer", this.Referrer);
+			kparams.AddIfNotNull("ip", this.Ip);
+			kparams.AddIfNotNull("ks", this.Ks);
+			kparams.AddIfNotNull("userAgent", this.UserAgent);
+			kparams.AddIfNotNull("time", this.Time);
+			kparams.AddIfNotNull("contexts", this.Contexts);
+			kparams.AddIfNotNull("hashes", this.Hashes);
 			return kparams;
 		}
 		#endregion

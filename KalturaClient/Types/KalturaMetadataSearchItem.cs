@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaMetadataSearchItem");
-			kparams.AddIntIfNotNull("metadataProfileId", this.MetadataProfileId);
-			kparams.AddStringIfNotNull("orderBy", this.OrderBy);
+			kparams.AddIfNotNull("metadataProfileId", this.MetadataProfileId);
+			kparams.AddIfNotNull("orderBy", this.OrderBy);
 			return kparams;
 		}
 		#endregion

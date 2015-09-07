@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaFileAsset Add(KalturaFileAsset fileAsset)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (fileAsset != null)
-				kparams.Add("fileAsset", fileAsset.ToParams());
+			kparams.AddIfNotNull("fileAsset", fileAsset);
 			_Client.QueueServiceCall("fileasset", "add", "KalturaFileAsset", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,7 +54,7 @@ namespace Kaltura
 		public KalturaFileAsset Get(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("fileasset", "get", "KalturaFileAsset", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -66,9 +65,8 @@ namespace Kaltura
 		public KalturaFileAsset Update(int id, KalturaFileAsset fileAsset)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			if (fileAsset != null)
-				kparams.Add("fileAsset", fileAsset.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("fileAsset", fileAsset);
 			_Client.QueueServiceCall("fileasset", "update", "KalturaFileAsset", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -79,7 +77,7 @@ namespace Kaltura
 		public void Delete(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("fileasset", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -89,9 +87,8 @@ namespace Kaltura
 		public KalturaFileAsset SetContent(string id, KalturaContentResource contentResource)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			if (contentResource != null)
-				kparams.Add("contentResource", contentResource.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("contentResource", contentResource);
 			_Client.QueueServiceCall("fileasset", "setContent", "KalturaFileAsset", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -107,10 +104,8 @@ namespace Kaltura
 		public KalturaFileAssetListResponse List(KalturaFileAssetFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("fileasset", "list", "KalturaFileAssetListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

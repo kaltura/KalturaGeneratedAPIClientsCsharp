@@ -217,18 +217,18 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaFileAssetBaseFilter");
-			kparams.AddIntIfNotNull("idEqual", this.IdEqual);
-			kparams.AddStringIfNotNull("idIn", this.IdIn);
-			kparams.AddIntIfNotNull("partnerIdEqual", this.PartnerIdEqual);
-			kparams.AddStringEnumIfNotNull("fileAssetObjectTypeEqual", this.FileAssetObjectTypeEqual);
-			kparams.AddStringIfNotNull("objectIdEqual", this.ObjectIdEqual);
-			kparams.AddStringIfNotNull("objectIdIn", this.ObjectIdIn);
-			kparams.AddIntIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
-			kparams.AddIntIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
-			kparams.AddStringEnumIfNotNull("statusEqual", this.StatusEqual);
-			kparams.AddStringIfNotNull("statusIn", this.StatusIn);
+			kparams.AddIfNotNull("idEqual", this.IdEqual);
+			kparams.AddIfNotNull("idIn", this.IdIn);
+			kparams.AddIfNotNull("partnerIdEqual", this.PartnerIdEqual);
+			kparams.AddIfNotNull("fileAssetObjectTypeEqual", this.FileAssetObjectTypeEqual);
+			kparams.AddIfNotNull("objectIdEqual", this.ObjectIdEqual);
+			kparams.AddIfNotNull("objectIdIn", this.ObjectIdIn);
+			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("statusEqual", this.StatusEqual);
+			kparams.AddIfNotNull("statusIn", this.StatusIn);
 			return kparams;
 		}
 		#endregion

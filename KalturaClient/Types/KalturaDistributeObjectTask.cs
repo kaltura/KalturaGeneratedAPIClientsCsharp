@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDistributeObjectTask");
-			kparams.AddStringIfNotNull("distributionProfileId", this.DistributionProfileId);
+			kparams.AddIfNotNull("distributionProfileId", this.DistributionProfileId);
 			return kparams;
 		}
 		#endregion

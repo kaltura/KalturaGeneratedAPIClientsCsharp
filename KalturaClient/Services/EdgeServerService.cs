@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaEdgeServer Add(KalturaEdgeServer edgeServer)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (edgeServer != null)
-				kparams.Add("edgeServer", edgeServer.ToParams());
+			kparams.AddIfNotNull("edgeServer", edgeServer);
 			_Client.QueueServiceCall("edgeserver", "add", "KalturaEdgeServer", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,7 +54,7 @@ namespace Kaltura
 		public KalturaEdgeServer Get(int edgeServerId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("edgeServerId", edgeServerId);
+			kparams.AddIfNotNull("edgeServerId", edgeServerId);
 			_Client.QueueServiceCall("edgeserver", "get", "KalturaEdgeServer", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -66,9 +65,8 @@ namespace Kaltura
 		public KalturaEdgeServer Update(int edgeServerId, KalturaEdgeServer edgeServer)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("edgeServerId", edgeServerId);
-			if (edgeServer != null)
-				kparams.Add("edgeServer", edgeServer.ToParams());
+			kparams.AddIfNotNull("edgeServerId", edgeServerId);
+			kparams.AddIfNotNull("edgeServer", edgeServer);
 			_Client.QueueServiceCall("edgeserver", "update", "KalturaEdgeServer", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -79,7 +77,7 @@ namespace Kaltura
 		public void Delete(string edgeServerId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("edgeServerId", edgeServerId);
+			kparams.AddIfNotNull("edgeServerId", edgeServerId);
 			_Client.QueueServiceCall("edgeserver", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -99,10 +97,8 @@ namespace Kaltura
 		public KalturaEdgeServerListResponse List(KalturaEdgeServerFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("edgeserver", "list", "KalturaEdgeServerListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

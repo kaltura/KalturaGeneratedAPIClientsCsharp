@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaScheduledTaskProfile Add(KalturaScheduledTaskProfile scheduledTaskProfile)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (scheduledTaskProfile != null)
-				kparams.Add("scheduledTaskProfile", scheduledTaskProfile.ToParams());
+			kparams.AddIfNotNull("scheduledTaskProfile", scheduledTaskProfile);
 			_Client.QueueServiceCall("scheduledtask_scheduledtaskprofile", "add", "KalturaScheduledTaskProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,7 +54,7 @@ namespace Kaltura
 		public KalturaScheduledTaskProfile Get(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("scheduledtask_scheduledtaskprofile", "get", "KalturaScheduledTaskProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -66,9 +65,8 @@ namespace Kaltura
 		public KalturaScheduledTaskProfile Update(int id, KalturaScheduledTaskProfile scheduledTaskProfile)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			if (scheduledTaskProfile != null)
-				kparams.Add("scheduledTaskProfile", scheduledTaskProfile.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("scheduledTaskProfile", scheduledTaskProfile);
 			_Client.QueueServiceCall("scheduledtask_scheduledtaskprofile", "update", "KalturaScheduledTaskProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -79,7 +77,7 @@ namespace Kaltura
 		public void Delete(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("scheduledtask_scheduledtaskprofile", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -99,10 +97,8 @@ namespace Kaltura
 		public KalturaScheduledTaskProfileListResponse List(KalturaScheduledTaskProfileFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("scheduledtask_scheduledtaskprofile", "list", "KalturaScheduledTaskProfileListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -118,8 +114,8 @@ namespace Kaltura
 		public int RequestDryRun(int scheduledTaskProfileId, int maxResults)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("scheduledTaskProfileId", scheduledTaskProfileId);
-			kparams.AddIntIfNotNull("maxResults", maxResults);
+			kparams.AddIfNotNull("scheduledTaskProfileId", scheduledTaskProfileId);
+			kparams.AddIfNotNull("maxResults", maxResults);
 			_Client.QueueServiceCall("scheduledtask_scheduledtaskprofile", "requestDryRun", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return 0;
@@ -130,7 +126,7 @@ namespace Kaltura
 		public KalturaObjectListResponse GetDryRunResults(int requestId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("requestId", requestId);
+			kparams.AddIfNotNull("requestId", requestId);
 			_Client.QueueServiceCall("scheduledtask_scheduledtaskprofile", "getDryRunResults", "KalturaObjectListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

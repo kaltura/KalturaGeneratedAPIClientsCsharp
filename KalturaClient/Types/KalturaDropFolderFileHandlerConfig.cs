@@ -54,7 +54,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaDropFolderFileHandlerConfig(XmlElement node)
+		public KalturaDropFolderFileHandlerConfig(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDropFolderFileHandlerConfig");
-			kparams.AddStringEnumIfNotNull("handlerType", this.HandlerType);
+			kparams.AddIfNotNull("handlerType", this.HandlerType);
 			return kparams;
 		}
 		#endregion

@@ -126,11 +126,11 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaImageFlavorParamsOutput");
-			kparams.AddIntIfNotNull("densityWidth", this.DensityWidth);
-			kparams.AddIntIfNotNull("densityHeight", this.DensityHeight);
-			kparams.AddIntIfNotNull("sizeWidth", this.SizeWidth);
-			kparams.AddIntIfNotNull("sizeHeight", this.SizeHeight);
-			kparams.AddIntIfNotNull("depth", this.Depth);
+			kparams.AddIfNotNull("densityWidth", this.DensityWidth);
+			kparams.AddIfNotNull("densityHeight", this.DensityHeight);
+			kparams.AddIfNotNull("sizeWidth", this.SizeWidth);
+			kparams.AddIfNotNull("sizeHeight", this.SizeHeight);
+			kparams.AddIfNotNull("depth", this.Depth);
 			return kparams;
 		}
 		#endregion

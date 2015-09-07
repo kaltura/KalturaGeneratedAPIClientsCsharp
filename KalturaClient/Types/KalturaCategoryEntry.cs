@@ -94,7 +94,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaCategoryEntry(XmlElement node)
+		public KalturaCategoryEntry(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -126,11 +126,11 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCategoryEntry");
-			kparams.AddIntIfNotNull("categoryId", this.CategoryId);
-			kparams.AddStringIfNotNull("entryId", this.EntryId);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddStringIfNotNull("categoryFullIds", this.CategoryFullIds);
-			kparams.AddEnumIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("categoryId", this.CategoryId);
+			kparams.AddIfNotNull("entryId", this.EntryId);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("categoryFullIds", this.CategoryFullIds);
+			kparams.AddIfNotNull("status", this.Status);
 			return kparams;
 		}
 		#endregion

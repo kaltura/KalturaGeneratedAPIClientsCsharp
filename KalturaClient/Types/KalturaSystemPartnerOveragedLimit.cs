@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSystemPartnerOveragedLimit");
-			kparams.AddFloatIfNotNull("overagePrice", this.OveragePrice);
-			kparams.AddFloatIfNotNull("overageUnit", this.OverageUnit);
+			kparams.AddIfNotNull("overagePrice", this.OveragePrice);
+			kparams.AddIfNotNull("overageUnit", this.OverageUnit);
 			return kparams;
 		}
 		#endregion

@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEventCuePoint");
-			kparams.AddStringEnumIfNotNull("eventType", this.EventType);
+			kparams.AddIfNotNull("eventType", this.EventType);
 			return kparams;
 		}
 		#endregion

@@ -154,7 +154,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaLiveStatsEvent(XmlElement node)
+		public KalturaLiveStatsEvent(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -204,17 +204,17 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveStatsEvent");
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringIfNotNull("entryId", this.EntryId);
-			kparams.AddEnumIfNotNull("eventType", this.EventType);
-			kparams.AddStringIfNotNull("sessionId", this.SessionId);
-			kparams.AddIntIfNotNull("eventIndex", this.EventIndex);
-			kparams.AddIntIfNotNull("bufferTime", this.BufferTime);
-			kparams.AddIntIfNotNull("bitrate", this.Bitrate);
-			kparams.AddStringIfNotNull("referrer", this.Referrer);
-			kparams.AddBoolIfNotNull("isLive", this.IsLive);
-			kparams.AddStringIfNotNull("startTime", this.StartTime);
-			kparams.AddStringEnumIfNotNull("deliveryType", this.DeliveryType);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("entryId", this.EntryId);
+			kparams.AddIfNotNull("eventType", this.EventType);
+			kparams.AddIfNotNull("sessionId", this.SessionId);
+			kparams.AddIfNotNull("eventIndex", this.EventIndex);
+			kparams.AddIfNotNull("bufferTime", this.BufferTime);
+			kparams.AddIfNotNull("bitrate", this.Bitrate);
+			kparams.AddIfNotNull("referrer", this.Referrer);
+			kparams.AddIfNotNull("isLive", this.IsLive);
+			kparams.AddIfNotNull("startTime", this.StartTime);
+			kparams.AddIfNotNull("deliveryType", this.DeliveryType);
 			return kparams;
 		}
 		#endregion

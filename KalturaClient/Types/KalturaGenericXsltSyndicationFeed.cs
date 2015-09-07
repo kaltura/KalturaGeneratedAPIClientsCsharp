@@ -91,23 +91,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaGenericXsltSyndicationFeed");
-			kparams.AddStringIfNotNull("xslt", this.Xslt);
-			if (this.ItemXpathsToExtend != null)
-			{
-				if (this.ItemXpathsToExtend.Count == 0)
-				{
-					kparams.Add("itemXpathsToExtend:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaExtendingItemMrssParameter item in this.ItemXpathsToExtend)
-					{
-						kparams.Add("itemXpathsToExtend:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
+			kparams.AddIfNotNull("xslt", this.Xslt);
+			kparams.AddIfNotNull("itemXpathsToExtend", this.ItemXpathsToExtend);
 			return kparams;
 		}
 		#endregion

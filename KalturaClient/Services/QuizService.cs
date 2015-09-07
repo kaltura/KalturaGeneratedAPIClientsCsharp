@@ -43,9 +43,8 @@ namespace Kaltura
 		public KalturaQuiz Add(string entryId, KalturaQuiz quiz)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			if (quiz != null)
-				kparams.Add("quiz", quiz.ToParams());
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("quiz", quiz);
 			_Client.QueueServiceCall("quiz_quiz", "add", "KalturaQuiz", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -56,9 +55,8 @@ namespace Kaltura
 		public KalturaQuiz Update(string entryId, KalturaQuiz quiz)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			if (quiz != null)
-				kparams.Add("quiz", quiz.ToParams());
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("quiz", quiz);
 			_Client.QueueServiceCall("quiz_quiz", "update", "KalturaQuiz", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -69,7 +67,7 @@ namespace Kaltura
 		public KalturaQuiz Get(string entryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("entryId", entryId);
 			_Client.QueueServiceCall("quiz_quiz", "get", "KalturaQuiz", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -90,10 +88,8 @@ namespace Kaltura
 		public KalturaQuizListResponse List(KalturaQuizFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("quiz_quiz", "list", "KalturaQuizListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

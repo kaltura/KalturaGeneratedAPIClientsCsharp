@@ -43,7 +43,7 @@ namespace Kaltura
 		public KalturaConversionProfile SetAsDefault(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("conversionprofile", "setAsDefault", "KalturaConversionProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -59,7 +59,7 @@ namespace Kaltura
 		public KalturaConversionProfile GetDefault(KalturaConversionProfileType type)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringEnumIfNotNull("type", type);
+			kparams.AddIfNotNull("type", type);
 			_Client.QueueServiceCall("conversionprofile", "getDefault", "KalturaConversionProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -70,8 +70,7 @@ namespace Kaltura
 		public KalturaConversionProfile Add(KalturaConversionProfile conversionProfile)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (conversionProfile != null)
-				kparams.Add("conversionProfile", conversionProfile.ToParams());
+			kparams.AddIfNotNull("conversionProfile", conversionProfile);
 			_Client.QueueServiceCall("conversionprofile", "add", "KalturaConversionProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -82,7 +81,7 @@ namespace Kaltura
 		public KalturaConversionProfile Get(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("conversionprofile", "get", "KalturaConversionProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -93,9 +92,8 @@ namespace Kaltura
 		public KalturaConversionProfile Update(int id, KalturaConversionProfile conversionProfile)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			if (conversionProfile != null)
-				kparams.Add("conversionProfile", conversionProfile.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("conversionProfile", conversionProfile);
 			_Client.QueueServiceCall("conversionprofile", "update", "KalturaConversionProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -106,7 +104,7 @@ namespace Kaltura
 		public void Delete(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("conversionprofile", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -126,10 +124,8 @@ namespace Kaltura
 		public KalturaConversionProfileListResponse List(KalturaConversionProfileFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("conversionprofile", "list", "KalturaConversionProfileListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

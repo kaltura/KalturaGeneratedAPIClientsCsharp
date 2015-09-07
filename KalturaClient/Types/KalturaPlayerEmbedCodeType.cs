@@ -84,7 +84,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaPlayerEmbedCodeType(XmlElement node)
+		public KalturaPlayerEmbedCodeType(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaPlayerEmbedCodeType");
-			kparams.AddStringIfNotNull("id", this.Id);
-			kparams.AddStringIfNotNull("label", this.Label);
-			kparams.AddBoolIfNotNull("entryOnly", this.EntryOnly);
-			kparams.AddStringIfNotNull("minVersion", this.MinVersion);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("label", this.Label);
+			kparams.AddIfNotNull("entryOnly", this.EntryOnly);
+			kparams.AddIfNotNull("minVersion", this.MinVersion);
 			return kparams;
 		}
 		#endregion

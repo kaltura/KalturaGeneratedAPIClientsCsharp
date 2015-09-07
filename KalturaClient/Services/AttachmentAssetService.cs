@@ -43,9 +43,8 @@ namespace Kaltura
 		public KalturaAttachmentAsset Add(string entryId, KalturaAttachmentAsset attachmentAsset)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			if (attachmentAsset != null)
-				kparams.Add("attachmentAsset", attachmentAsset.ToParams());
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("attachmentAsset", attachmentAsset);
 			_Client.QueueServiceCall("attachment_attachmentasset", "add", "KalturaAttachmentAsset", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -56,9 +55,8 @@ namespace Kaltura
 		public KalturaAttachmentAsset SetContent(string id, KalturaContentResource contentResource)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			if (contentResource != null)
-				kparams.Add("contentResource", contentResource.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("contentResource", contentResource);
 			_Client.QueueServiceCall("attachment_attachmentasset", "setContent", "KalturaAttachmentAsset", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -69,9 +67,8 @@ namespace Kaltura
 		public KalturaAttachmentAsset Update(string id, KalturaAttachmentAsset attachmentAsset)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			if (attachmentAsset != null)
-				kparams.Add("attachmentAsset", attachmentAsset.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("attachmentAsset", attachmentAsset);
 			_Client.QueueServiceCall("attachment_attachmentasset", "update", "KalturaAttachmentAsset", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -87,8 +84,8 @@ namespace Kaltura
 		public string GetUrl(string id, int storageId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			kparams.AddIntIfNotNull("storageId", storageId);
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("storageId", storageId);
 			_Client.QueueServiceCall("attachment_attachmentasset", "getUrl", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -99,7 +96,7 @@ namespace Kaltura
 		public KalturaRemotePathListResponse GetRemotePaths(string id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("attachment_attachmentasset", "getRemotePaths", "KalturaRemotePathListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -110,7 +107,7 @@ namespace Kaltura
 		public KalturaAttachmentAsset Get(string attachmentAssetId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("attachmentAssetId", attachmentAssetId);
+			kparams.AddIfNotNull("attachmentAssetId", attachmentAssetId);
 			_Client.QueueServiceCall("attachment_attachmentasset", "get", "KalturaAttachmentAsset", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -131,10 +128,8 @@ namespace Kaltura
 		public KalturaAttachmentAssetListResponse List(KalturaAssetFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("attachment_attachmentasset", "list", "KalturaAttachmentAssetListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -145,7 +140,7 @@ namespace Kaltura
 		public void Delete(string attachmentAssetId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("attachmentAssetId", attachmentAssetId);
+			kparams.AddIfNotNull("attachmentAssetId", attachmentAssetId);
 			_Client.QueueServiceCall("attachment_attachmentasset", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;

@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaQuizFilter");
-			kparams.AddStringIfNotNull("entryIdEqual", this.EntryIdEqual);
-			kparams.AddStringIfNotNull("entryIdIn", this.EntryIdIn);
+			kparams.AddIfNotNull("entryIdEqual", this.EntryIdEqual);
+			kparams.AddIfNotNull("entryIdIn", this.EntryIdIn);
 			return kparams;
 		}
 		#endregion

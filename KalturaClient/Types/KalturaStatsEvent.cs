@@ -264,7 +264,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaStatsEvent(XmlElement node)
+		public KalturaStatsEvent(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -347,28 +347,28 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaStatsEvent");
-			kparams.AddStringIfNotNull("clientVer", this.ClientVer);
-			kparams.AddEnumIfNotNull("eventType", this.EventType);
-			kparams.AddFloatIfNotNull("eventTimestamp", this.EventTimestamp);
-			kparams.AddStringIfNotNull("sessionId", this.SessionId);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringIfNotNull("entryId", this.EntryId);
-			kparams.AddStringIfNotNull("uniqueViewer", this.UniqueViewer);
-			kparams.AddStringIfNotNull("widgetId", this.WidgetId);
-			kparams.AddIntIfNotNull("uiconfId", this.UiconfId);
-			kparams.AddStringIfNotNull("userId", this.UserId);
-			kparams.AddIntIfNotNull("currentPoint", this.CurrentPoint);
-			kparams.AddIntIfNotNull("duration", this.Duration);
-			kparams.AddStringIfNotNull("userIp", this.UserIp);
-			kparams.AddIntIfNotNull("processDuration", this.ProcessDuration);
-			kparams.AddStringIfNotNull("controlId", this.ControlId);
-			kparams.AddBoolIfNotNull("seek", this.Seek);
-			kparams.AddIntIfNotNull("newPoint", this.NewPoint);
-			kparams.AddStringIfNotNull("referrer", this.Referrer);
-			kparams.AddBoolIfNotNull("isFirstInSession", this.IsFirstInSession);
-			kparams.AddStringIfNotNull("applicationId", this.ApplicationId);
-			kparams.AddIntIfNotNull("contextId", this.ContextId);
-			kparams.AddEnumIfNotNull("featureType", this.FeatureType);
+			kparams.AddIfNotNull("clientVer", this.ClientVer);
+			kparams.AddIfNotNull("eventType", this.EventType);
+			kparams.AddIfNotNull("eventTimestamp", this.EventTimestamp);
+			kparams.AddIfNotNull("sessionId", this.SessionId);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("entryId", this.EntryId);
+			kparams.AddIfNotNull("uniqueViewer", this.UniqueViewer);
+			kparams.AddIfNotNull("widgetId", this.WidgetId);
+			kparams.AddIfNotNull("uiconfId", this.UiconfId);
+			kparams.AddIfNotNull("userId", this.UserId);
+			kparams.AddIfNotNull("currentPoint", this.CurrentPoint);
+			kparams.AddIfNotNull("duration", this.Duration);
+			kparams.AddIfNotNull("userIp", this.UserIp);
+			kparams.AddIfNotNull("processDuration", this.ProcessDuration);
+			kparams.AddIfNotNull("controlId", this.ControlId);
+			kparams.AddIfNotNull("seek", this.Seek);
+			kparams.AddIfNotNull("newPoint", this.NewPoint);
+			kparams.AddIfNotNull("referrer", this.Referrer);
+			kparams.AddIfNotNull("isFirstInSession", this.IsFirstInSession);
+			kparams.AddIfNotNull("applicationId", this.ApplicationId);
+			kparams.AddIfNotNull("contextId", this.ContextId);
+			kparams.AddIfNotNull("featureType", this.FeatureType);
 			return kparams;
 		}
 		#endregion

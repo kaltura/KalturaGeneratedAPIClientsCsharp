@@ -284,7 +284,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaDropFolderFile(XmlElement node)
+		public KalturaDropFolderFile(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -373,30 +373,30 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDropFolderFile");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIntIfNotNull("dropFolderId", this.DropFolderId);
-			kparams.AddStringIfNotNull("fileName", this.FileName);
-			kparams.AddFloatIfNotNull("fileSize", this.FileSize);
-			kparams.AddIntIfNotNull("fileSizeLastSetAt", this.FileSizeLastSetAt);
-			kparams.AddEnumIfNotNull("status", this.Status);
-			kparams.AddStringEnumIfNotNull("type", this.Type);
-			kparams.AddStringIfNotNull("parsedSlug", this.ParsedSlug);
-			kparams.AddStringIfNotNull("parsedFlavor", this.ParsedFlavor);
-			kparams.AddStringIfNotNull("parsedUserId", this.ParsedUserId);
-			kparams.AddIntIfNotNull("leadDropFolderFileId", this.LeadDropFolderFileId);
-			kparams.AddIntIfNotNull("deletedDropFolderFileId", this.DeletedDropFolderFileId);
-			kparams.AddStringIfNotNull("entryId", this.EntryId);
-			kparams.AddStringEnumIfNotNull("errorCode", this.ErrorCode);
-			kparams.AddStringIfNotNull("errorDescription", this.ErrorDescription);
-			kparams.AddStringIfNotNull("lastModificationTime", this.LastModificationTime);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIntIfNotNull("uploadStartDetectedAt", this.UploadStartDetectedAt);
-			kparams.AddIntIfNotNull("uploadEndDetectedAt", this.UploadEndDetectedAt);
-			kparams.AddIntIfNotNull("importStartedAt", this.ImportStartedAt);
-			kparams.AddIntIfNotNull("importEndedAt", this.ImportEndedAt);
-			kparams.AddIntIfNotNull("batchJobId", this.BatchJobId);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("dropFolderId", this.DropFolderId);
+			kparams.AddIfNotNull("fileName", this.FileName);
+			kparams.AddIfNotNull("fileSize", this.FileSize);
+			kparams.AddIfNotNull("fileSizeLastSetAt", this.FileSizeLastSetAt);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("type", this.Type);
+			kparams.AddIfNotNull("parsedSlug", this.ParsedSlug);
+			kparams.AddIfNotNull("parsedFlavor", this.ParsedFlavor);
+			kparams.AddIfNotNull("parsedUserId", this.ParsedUserId);
+			kparams.AddIfNotNull("leadDropFolderFileId", this.LeadDropFolderFileId);
+			kparams.AddIfNotNull("deletedDropFolderFileId", this.DeletedDropFolderFileId);
+			kparams.AddIfNotNull("entryId", this.EntryId);
+			kparams.AddIfNotNull("errorCode", this.ErrorCode);
+			kparams.AddIfNotNull("errorDescription", this.ErrorDescription);
+			kparams.AddIfNotNull("lastModificationTime", this.LastModificationTime);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("uploadStartDetectedAt", this.UploadStartDetectedAt);
+			kparams.AddIfNotNull("uploadEndDetectedAt", this.UploadEndDetectedAt);
+			kparams.AddIfNotNull("importStartedAt", this.ImportStartedAt);
+			kparams.AddIfNotNull("importEndedAt", this.ImportEndedAt);
+			kparams.AddIfNotNull("batchJobId", this.BatchJobId);
 			return kparams;
 		}
 		#endregion

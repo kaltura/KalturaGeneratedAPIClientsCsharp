@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaExtractMediaJobData");
-			kparams.AddStringIfNotNull("flavorAssetId", this.FlavorAssetId);
+			kparams.AddIfNotNull("flavorAssetId", this.FlavorAssetId);
 			return kparams;
 		}
 		#endregion

@@ -217,18 +217,18 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCategoryUserProviderFilter");
-			kparams.AddStringIfNotNull("userIdEqual", this.UserIdEqual);
-			kparams.AddStringIfNotNull("userIdIn", this.UserIdIn);
-			kparams.AddEnumIfNotNull("statusEqual", this.StatusEqual);
-			kparams.AddStringIfNotNull("statusIn", this.StatusIn);
-			kparams.AddIntIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
-			kparams.AddIntIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
-			kparams.AddEnumIfNotNull("updateMethodEqual", this.UpdateMethodEqual);
-			kparams.AddStringIfNotNull("updateMethodIn", this.UpdateMethodIn);
-			kparams.AddStringIfNotNull("permissionNamesMatchAnd", this.PermissionNamesMatchAnd);
-			kparams.AddStringIfNotNull("permissionNamesMatchOr", this.PermissionNamesMatchOr);
+			kparams.AddIfNotNull("userIdEqual", this.UserIdEqual);
+			kparams.AddIfNotNull("userIdIn", this.UserIdIn);
+			kparams.AddIfNotNull("statusEqual", this.StatusEqual);
+			kparams.AddIfNotNull("statusIn", this.StatusIn);
+			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("updateMethodEqual", this.UpdateMethodEqual);
+			kparams.AddIfNotNull("updateMethodIn", this.UpdateMethodIn);
+			kparams.AddIfNotNull("permissionNamesMatchAnd", this.PermissionNamesMatchAnd);
+			kparams.AddIfNotNull("permissionNamesMatchOr", this.PermissionNamesMatchOr);
 			return kparams;
 		}
 		#endregion

@@ -114,7 +114,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaTag(XmlElement node)
+		public KalturaTag(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -152,13 +152,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaTag");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddStringIfNotNull("tag", this.Tag);
-			kparams.AddStringEnumIfNotNull("taggedObjectType", this.TaggedObjectType);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIntIfNotNull("instanceCount", this.InstanceCount);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("tag", this.Tag);
+			kparams.AddIfNotNull("taggedObjectType", this.TaggedObjectType);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("instanceCount", this.InstanceCount);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
 			return kparams;
 		}
 		#endregion

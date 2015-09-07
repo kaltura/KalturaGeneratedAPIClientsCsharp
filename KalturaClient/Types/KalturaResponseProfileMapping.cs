@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaResponseProfileMapping(XmlElement node)
+		public KalturaResponseProfileMapping(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaResponseProfileMapping");
-			kparams.AddStringIfNotNull("parentProperty", this.ParentProperty);
-			kparams.AddStringIfNotNull("filterProperty", this.FilterProperty);
-			kparams.AddBoolIfNotNull("allowNull", this.AllowNull);
+			kparams.AddIfNotNull("parentProperty", this.ParentProperty);
+			kparams.AddIfNotNull("filterProperty", this.FilterProperty);
+			kparams.AddIfNotNull("allowNull", this.AllowNull);
 			return kparams;
 		}
 		#endregion

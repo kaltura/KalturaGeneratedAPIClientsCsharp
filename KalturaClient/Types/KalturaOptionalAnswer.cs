@@ -84,7 +84,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaOptionalAnswer(XmlElement node)
+		public KalturaOptionalAnswer(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaOptionalAnswer");
-			kparams.AddStringIfNotNull("key", this.Key);
-			kparams.AddStringIfNotNull("text", this.Text);
-			kparams.AddFloatIfNotNull("weight", this.Weight);
-			kparams.AddEnumIfNotNull("isCorrect", this.IsCorrect);
+			kparams.AddIfNotNull("key", this.Key);
+			kparams.AddIfNotNull("text", this.Text);
+			kparams.AddIfNotNull("weight", this.Weight);
+			kparams.AddIfNotNull("isCorrect", this.IsCorrect);
 			return kparams;
 		}
 		#endregion

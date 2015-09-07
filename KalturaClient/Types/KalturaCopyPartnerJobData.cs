@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCopyPartnerJobData");
-			kparams.AddIntIfNotNull("fromPartnerId", this.FromPartnerId);
-			kparams.AddIntIfNotNull("toPartnerId", this.ToPartnerId);
+			kparams.AddIfNotNull("fromPartnerId", this.FromPartnerId);
+			kparams.AddIfNotNull("toPartnerId", this.ToPartnerId);
 			return kparams;
 		}
 		#endregion

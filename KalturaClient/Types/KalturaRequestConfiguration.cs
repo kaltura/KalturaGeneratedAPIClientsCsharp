@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaRequestConfiguration(XmlElement node)
+		public KalturaRequestConfiguration(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -100,10 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaRequestConfiguration");
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringIfNotNull("ks", this.Ks);
-			if (this.ResponseProfile != null)
-				kparams.Add("responseProfile", this.ResponseProfile.ToParams());
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("ks", this.Ks);
+			kparams.AddIfNotNull("responseProfile", this.ResponseProfile);
 			return kparams;
 		}
 		#endregion

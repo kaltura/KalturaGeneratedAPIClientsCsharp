@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaStorageProfile Add(KalturaStorageProfile storageProfile)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (storageProfile != null)
-				kparams.Add("storageProfile", storageProfile.ToParams());
+			kparams.AddIfNotNull("storageProfile", storageProfile);
 			_Client.QueueServiceCall("storageprofile", "add", "KalturaStorageProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,8 +54,8 @@ namespace Kaltura
 		public void UpdateStatus(int storageId, KalturaStorageProfileStatus status)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("storageId", storageId);
-			kparams.AddEnumIfNotNull("status", status);
+			kparams.AddIfNotNull("storageId", storageId);
+			kparams.AddIfNotNull("status", status);
 			_Client.QueueServiceCall("storageprofile", "updateStatus", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -66,7 +65,7 @@ namespace Kaltura
 		public KalturaStorageProfile Get(int storageProfileId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("storageProfileId", storageProfileId);
+			kparams.AddIfNotNull("storageProfileId", storageProfileId);
 			_Client.QueueServiceCall("storageprofile", "get", "KalturaStorageProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -77,9 +76,8 @@ namespace Kaltura
 		public KalturaStorageProfile Update(int storageProfileId, KalturaStorageProfile storageProfile)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("storageProfileId", storageProfileId);
-			if (storageProfile != null)
-				kparams.Add("storageProfile", storageProfile.ToParams());
+			kparams.AddIfNotNull("storageProfileId", storageProfileId);
+			kparams.AddIfNotNull("storageProfile", storageProfile);
 			_Client.QueueServiceCall("storageprofile", "update", "KalturaStorageProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -100,10 +98,8 @@ namespace Kaltura
 		public KalturaStorageProfileListResponse List(KalturaStorageProfileFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("storageprofile", "list", "KalturaStorageProfileListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

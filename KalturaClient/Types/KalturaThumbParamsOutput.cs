@@ -126,11 +126,11 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaThumbParamsOutput");
-			kparams.AddIntIfNotNull("thumbParamsId", this.ThumbParamsId);
-			kparams.AddStringIfNotNull("thumbParamsVersion", this.ThumbParamsVersion);
-			kparams.AddStringIfNotNull("thumbAssetId", this.ThumbAssetId);
-			kparams.AddStringIfNotNull("thumbAssetVersion", this.ThumbAssetVersion);
-			kparams.AddIntIfNotNull("rotate", this.Rotate);
+			kparams.AddIfNotNull("thumbParamsId", this.ThumbParamsId);
+			kparams.AddIfNotNull("thumbParamsVersion", this.ThumbParamsVersion);
+			kparams.AddIfNotNull("thumbAssetId", this.ThumbAssetId);
+			kparams.AddIfNotNull("thumbAssetVersion", this.ThumbAssetVersion);
+			kparams.AddIfNotNull("rotate", this.Rotate);
 			return kparams;
 		}
 		#endregion

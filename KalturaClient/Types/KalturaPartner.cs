@@ -574,7 +574,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaPartner(XmlElement node)
+		public KalturaPartner(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -762,104 +762,59 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaPartner");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddStringIfNotNull("name", this.Name);
-			kparams.AddStringIfNotNull("website", this.Website);
-			kparams.AddStringIfNotNull("notificationUrl", this.NotificationUrl);
-			kparams.AddIntIfNotNull("appearInSearch", this.AppearInSearch);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddStringIfNotNull("adminName", this.AdminName);
-			kparams.AddStringIfNotNull("adminEmail", this.AdminEmail);
-			kparams.AddStringIfNotNull("description", this.Description);
-			kparams.AddEnumIfNotNull("commercialUse", this.CommercialUse);
-			kparams.AddStringIfNotNull("landingPage", this.LandingPage);
-			kparams.AddStringIfNotNull("userLandingPage", this.UserLandingPage);
-			kparams.AddStringIfNotNull("contentCategories", this.ContentCategories);
-			kparams.AddEnumIfNotNull("type", this.Type);
-			kparams.AddStringIfNotNull("phone", this.Phone);
-			kparams.AddStringIfNotNull("describeYourself", this.DescribeYourself);
-			kparams.AddBoolIfNotNull("adultContent", this.AdultContent);
-			kparams.AddStringIfNotNull("defConversionProfileType", this.DefConversionProfileType);
-			kparams.AddIntIfNotNull("notify", this.Notify);
-			kparams.AddEnumIfNotNull("status", this.Status);
-			kparams.AddIntIfNotNull("allowQuickEdit", this.AllowQuickEdit);
-			kparams.AddIntIfNotNull("mergeEntryLists", this.MergeEntryLists);
-			kparams.AddStringIfNotNull("notificationsConfig", this.NotificationsConfig);
-			kparams.AddIntIfNotNull("maxUploadSize", this.MaxUploadSize);
-			kparams.AddIntIfNotNull("partnerPackage", this.PartnerPackage);
-			kparams.AddStringIfNotNull("secret", this.Secret);
-			kparams.AddStringIfNotNull("adminSecret", this.AdminSecret);
-			kparams.AddStringIfNotNull("cmsPassword", this.CmsPassword);
-			kparams.AddIntIfNotNull("allowMultiNotification", this.AllowMultiNotification);
-			kparams.AddIntIfNotNull("adminLoginUsersQuota", this.AdminLoginUsersQuota);
-			kparams.AddStringIfNotNull("adminUserId", this.AdminUserId);
-			kparams.AddStringIfNotNull("firstName", this.FirstName);
-			kparams.AddStringIfNotNull("lastName", this.LastName);
-			kparams.AddStringIfNotNull("country", this.Country);
-			kparams.AddStringIfNotNull("state", this.State);
-			if (this.AdditionalParams != null)
-			{
-				if (this.AdditionalParams.Count == 0)
-				{
-					kparams.Add("additionalParams:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaKeyValue item in this.AdditionalParams)
-					{
-						kparams.Add("additionalParams:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddIntIfNotNull("publishersQuota", this.PublishersQuota);
-			kparams.AddEnumIfNotNull("partnerGroupType", this.PartnerGroupType);
-			kparams.AddBoolIfNotNull("defaultEntitlementEnforcement", this.DefaultEntitlementEnforcement);
-			kparams.AddStringIfNotNull("defaultDeliveryType", this.DefaultDeliveryType);
-			kparams.AddStringIfNotNull("defaultEmbedCodeType", this.DefaultEmbedCodeType);
-			if (this.DeliveryTypes != null)
-			{
-				if (this.DeliveryTypes.Count == 0)
-				{
-					kparams.Add("deliveryTypes:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaPlayerDeliveryType item in this.DeliveryTypes)
-					{
-						kparams.Add("deliveryTypes:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			if (this.EmbedCodeTypes != null)
-			{
-				if (this.EmbedCodeTypes.Count == 0)
-				{
-					kparams.Add("embedCodeTypes:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaPlayerEmbedCodeType item in this.EmbedCodeTypes)
-					{
-						kparams.Add("embedCodeTypes:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddIntIfNotNull("templatePartnerId", this.TemplatePartnerId);
-			kparams.AddBoolIfNotNull("ignoreSeoLinks", this.IgnoreSeoLinks);
-			kparams.AddStringIfNotNull("host", this.Host);
-			kparams.AddStringIfNotNull("cdnHost", this.CdnHost);
-			kparams.AddBoolIfNotNull("isFirstLogin", this.IsFirstLogin);
-			kparams.AddStringIfNotNull("logoutUrl", this.LogoutUrl);
-			kparams.AddIntIfNotNull("partnerParentId", this.PartnerParentId);
-			kparams.AddStringIfNotNull("crmId", this.CrmId);
-			kparams.AddStringIfNotNull("referenceId", this.ReferenceId);
-			kparams.AddBoolIfNotNull("timeAlignedRenditions", this.TimeAlignedRenditions);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("website", this.Website);
+			kparams.AddIfNotNull("notificationUrl", this.NotificationUrl);
+			kparams.AddIfNotNull("appearInSearch", this.AppearInSearch);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("adminName", this.AdminName);
+			kparams.AddIfNotNull("adminEmail", this.AdminEmail);
+			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("commercialUse", this.CommercialUse);
+			kparams.AddIfNotNull("landingPage", this.LandingPage);
+			kparams.AddIfNotNull("userLandingPage", this.UserLandingPage);
+			kparams.AddIfNotNull("contentCategories", this.ContentCategories);
+			kparams.AddIfNotNull("type", this.Type);
+			kparams.AddIfNotNull("phone", this.Phone);
+			kparams.AddIfNotNull("describeYourself", this.DescribeYourself);
+			kparams.AddIfNotNull("adultContent", this.AdultContent);
+			kparams.AddIfNotNull("defConversionProfileType", this.DefConversionProfileType);
+			kparams.AddIfNotNull("notify", this.Notify);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("allowQuickEdit", this.AllowQuickEdit);
+			kparams.AddIfNotNull("mergeEntryLists", this.MergeEntryLists);
+			kparams.AddIfNotNull("notificationsConfig", this.NotificationsConfig);
+			kparams.AddIfNotNull("maxUploadSize", this.MaxUploadSize);
+			kparams.AddIfNotNull("partnerPackage", this.PartnerPackage);
+			kparams.AddIfNotNull("secret", this.Secret);
+			kparams.AddIfNotNull("adminSecret", this.AdminSecret);
+			kparams.AddIfNotNull("cmsPassword", this.CmsPassword);
+			kparams.AddIfNotNull("allowMultiNotification", this.AllowMultiNotification);
+			kparams.AddIfNotNull("adminLoginUsersQuota", this.AdminLoginUsersQuota);
+			kparams.AddIfNotNull("adminUserId", this.AdminUserId);
+			kparams.AddIfNotNull("firstName", this.FirstName);
+			kparams.AddIfNotNull("lastName", this.LastName);
+			kparams.AddIfNotNull("country", this.Country);
+			kparams.AddIfNotNull("state", this.State);
+			kparams.AddIfNotNull("additionalParams", this.AdditionalParams);
+			kparams.AddIfNotNull("publishersQuota", this.PublishersQuota);
+			kparams.AddIfNotNull("partnerGroupType", this.PartnerGroupType);
+			kparams.AddIfNotNull("defaultEntitlementEnforcement", this.DefaultEntitlementEnforcement);
+			kparams.AddIfNotNull("defaultDeliveryType", this.DefaultDeliveryType);
+			kparams.AddIfNotNull("defaultEmbedCodeType", this.DefaultEmbedCodeType);
+			kparams.AddIfNotNull("deliveryTypes", this.DeliveryTypes);
+			kparams.AddIfNotNull("embedCodeTypes", this.EmbedCodeTypes);
+			kparams.AddIfNotNull("templatePartnerId", this.TemplatePartnerId);
+			kparams.AddIfNotNull("ignoreSeoLinks", this.IgnoreSeoLinks);
+			kparams.AddIfNotNull("host", this.Host);
+			kparams.AddIfNotNull("cdnHost", this.CdnHost);
+			kparams.AddIfNotNull("isFirstLogin", this.IsFirstLogin);
+			kparams.AddIfNotNull("logoutUrl", this.LogoutUrl);
+			kparams.AddIfNotNull("partnerParentId", this.PartnerParentId);
+			kparams.AddIfNotNull("crmId", this.CrmId);
+			kparams.AddIfNotNull("referenceId", this.ReferenceId);
+			kparams.AddIfNotNull("timeAlignedRenditions", this.TimeAlignedRenditions);
 			return kparams;
 		}
 		#endregion

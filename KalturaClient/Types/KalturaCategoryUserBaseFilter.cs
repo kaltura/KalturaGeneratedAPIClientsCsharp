@@ -308,25 +308,25 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCategoryUserBaseFilter");
-			kparams.AddIntIfNotNull("categoryIdEqual", this.CategoryIdEqual);
-			kparams.AddStringIfNotNull("categoryIdIn", this.CategoryIdIn);
-			kparams.AddStringIfNotNull("userIdEqual", this.UserIdEqual);
-			kparams.AddStringIfNotNull("userIdIn", this.UserIdIn);
-			kparams.AddEnumIfNotNull("permissionLevelEqual", this.PermissionLevelEqual);
-			kparams.AddStringIfNotNull("permissionLevelIn", this.PermissionLevelIn);
-			kparams.AddEnumIfNotNull("statusEqual", this.StatusEqual);
-			kparams.AddStringIfNotNull("statusIn", this.StatusIn);
-			kparams.AddIntIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
-			kparams.AddIntIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
-			kparams.AddEnumIfNotNull("updateMethodEqual", this.UpdateMethodEqual);
-			kparams.AddStringIfNotNull("updateMethodIn", this.UpdateMethodIn);
-			kparams.AddStringIfNotNull("categoryFullIdsStartsWith", this.CategoryFullIdsStartsWith);
-			kparams.AddStringIfNotNull("categoryFullIdsEqual", this.CategoryFullIdsEqual);
-			kparams.AddStringIfNotNull("permissionNamesMatchAnd", this.PermissionNamesMatchAnd);
-			kparams.AddStringIfNotNull("permissionNamesMatchOr", this.PermissionNamesMatchOr);
-			kparams.AddStringIfNotNull("permissionNamesNotContains", this.PermissionNamesNotContains);
+			kparams.AddIfNotNull("categoryIdEqual", this.CategoryIdEqual);
+			kparams.AddIfNotNull("categoryIdIn", this.CategoryIdIn);
+			kparams.AddIfNotNull("userIdEqual", this.UserIdEqual);
+			kparams.AddIfNotNull("userIdIn", this.UserIdIn);
+			kparams.AddIfNotNull("permissionLevelEqual", this.PermissionLevelEqual);
+			kparams.AddIfNotNull("permissionLevelIn", this.PermissionLevelIn);
+			kparams.AddIfNotNull("statusEqual", this.StatusEqual);
+			kparams.AddIfNotNull("statusIn", this.StatusIn);
+			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("updateMethodEqual", this.UpdateMethodEqual);
+			kparams.AddIfNotNull("updateMethodIn", this.UpdateMethodIn);
+			kparams.AddIfNotNull("categoryFullIdsStartsWith", this.CategoryFullIdsStartsWith);
+			kparams.AddIfNotNull("categoryFullIdsEqual", this.CategoryFullIdsEqual);
+			kparams.AddIfNotNull("permissionNamesMatchAnd", this.PermissionNamesMatchAnd);
+			kparams.AddIfNotNull("permissionNamesMatchOr", this.PermissionNamesMatchOr);
+			kparams.AddIfNotNull("permissionNamesNotContains", this.PermissionNamesNotContains);
 			return kparams;
 		}
 		#endregion

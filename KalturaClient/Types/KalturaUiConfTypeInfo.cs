@@ -84,7 +84,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaUiConfTypeInfo(XmlElement node)
+		public KalturaUiConfTypeInfo(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -117,25 +117,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUiConfTypeInfo");
-			kparams.AddEnumIfNotNull("type", this.Type);
-			if (this.Versions != null)
-			{
-				if (this.Versions.Count == 0)
-				{
-					kparams.Add("versions:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaString item in this.Versions)
-					{
-						kparams.Add("versions:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddStringIfNotNull("directory", this.Directory);
-			kparams.AddStringIfNotNull("filename", this.Filename);
+			kparams.AddIfNotNull("type", this.Type);
+			kparams.AddIfNotNull("versions", this.Versions);
+			kparams.AddIfNotNull("directory", this.Directory);
+			kparams.AddIfNotNull("filename", this.Filename);
 			return kparams;
 		}
 		#endregion

@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaCuePoint Add(KalturaCuePoint cuePoint)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (cuePoint != null)
-				kparams.Add("cuePoint", cuePoint.ToParams());
+			kparams.AddIfNotNull("cuePoint", cuePoint);
 			_Client.QueueServiceCall("cuepoint_cuepoint", "add", "KalturaCuePoint", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -67,7 +66,7 @@ namespace Kaltura
 		public KalturaCuePoint Get(string id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("cuepoint_cuepoint", "get", "KalturaCuePoint", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -88,10 +87,8 @@ namespace Kaltura
 		public KalturaCuePointListResponse List(KalturaCuePointFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("cuepoint_cuepoint", "list", "KalturaCuePointListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -107,8 +104,7 @@ namespace Kaltura
 		public int Count(KalturaCuePointFilter filter)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
+			kparams.AddIfNotNull("filter", filter);
 			_Client.QueueServiceCall("cuepoint_cuepoint", "count", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return 0;
@@ -119,9 +115,8 @@ namespace Kaltura
 		public KalturaCuePoint Update(string id, KalturaCuePoint cuePoint)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			if (cuePoint != null)
-				kparams.Add("cuePoint", cuePoint.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("cuePoint", cuePoint);
 			_Client.QueueServiceCall("cuepoint_cuepoint", "update", "KalturaCuePoint", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -132,7 +127,7 @@ namespace Kaltura
 		public void Delete(string id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("cuepoint_cuepoint", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;

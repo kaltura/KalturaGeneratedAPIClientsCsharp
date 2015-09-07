@@ -134,7 +134,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaBatchHistoryData(XmlElement node)
+		public KalturaBatchHistoryData(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -178,15 +178,15 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaBatchHistoryData");
-			kparams.AddIntIfNotNull("schedulerId", this.SchedulerId);
-			kparams.AddIntIfNotNull("workerId", this.WorkerId);
-			kparams.AddIntIfNotNull("batchIndex", this.BatchIndex);
-			kparams.AddIntIfNotNull("timeStamp", this.TimeStamp);
-			kparams.AddStringIfNotNull("message", this.Message);
-			kparams.AddIntIfNotNull("errType", this.ErrType);
-			kparams.AddIntIfNotNull("errNumber", this.ErrNumber);
-			kparams.AddStringIfNotNull("hostName", this.HostName);
-			kparams.AddStringIfNotNull("sessionId", this.SessionId);
+			kparams.AddIfNotNull("schedulerId", this.SchedulerId);
+			kparams.AddIfNotNull("workerId", this.WorkerId);
+			kparams.AddIfNotNull("batchIndex", this.BatchIndex);
+			kparams.AddIfNotNull("timeStamp", this.TimeStamp);
+			kparams.AddIfNotNull("message", this.Message);
+			kparams.AddIfNotNull("errType", this.ErrType);
+			kparams.AddIfNotNull("errNumber", this.ErrNumber);
+			kparams.AddIfNotNull("hostName", this.HostName);
+			kparams.AddIfNotNull("sessionId", this.SessionId);
 			return kparams;
 		}
 		#endregion

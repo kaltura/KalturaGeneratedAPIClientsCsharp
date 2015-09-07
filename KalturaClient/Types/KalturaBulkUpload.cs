@@ -224,7 +224,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaBulkUpload(XmlElement node)
+		public KalturaBulkUpload(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -299,39 +299,24 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaBulkUpload");
-			kparams.AddLongIfNotNull("id", this.Id);
-			kparams.AddStringIfNotNull("uploadedBy", this.UploadedBy);
-			kparams.AddStringIfNotNull("uploadedByUserId", this.UploadedByUserId);
-			kparams.AddIntIfNotNull("uploadedOn", this.UploadedOn);
-			kparams.AddIntIfNotNull("numOfEntries", this.NumOfEntries);
-			kparams.AddEnumIfNotNull("status", this.Status);
-			kparams.AddStringIfNotNull("logFileUrl", this.LogFileUrl);
-			kparams.AddStringIfNotNull("csvFileUrl", this.CsvFileUrl);
-			kparams.AddStringIfNotNull("bulkFileUrl", this.BulkFileUrl);
-			kparams.AddStringEnumIfNotNull("bulkUploadType", this.BulkUploadType);
-			if (this.Results != null)
-			{
-				if (this.Results.Count == 0)
-				{
-					kparams.Add("results:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaBulkUploadResult item in this.Results)
-					{
-						kparams.Add("results:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddStringIfNotNull("error", this.Error);
-			kparams.AddEnumIfNotNull("errorType", this.ErrorType);
-			kparams.AddIntIfNotNull("errorNumber", this.ErrorNumber);
-			kparams.AddStringIfNotNull("fileName", this.FileName);
-			kparams.AddStringIfNotNull("description", this.Description);
-			kparams.AddIntIfNotNull("numOfObjects", this.NumOfObjects);
-			kparams.AddStringEnumIfNotNull("bulkUploadObjectType", this.BulkUploadObjectType);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("uploadedBy", this.UploadedBy);
+			kparams.AddIfNotNull("uploadedByUserId", this.UploadedByUserId);
+			kparams.AddIfNotNull("uploadedOn", this.UploadedOn);
+			kparams.AddIfNotNull("numOfEntries", this.NumOfEntries);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("logFileUrl", this.LogFileUrl);
+			kparams.AddIfNotNull("csvFileUrl", this.CsvFileUrl);
+			kparams.AddIfNotNull("bulkFileUrl", this.BulkFileUrl);
+			kparams.AddIfNotNull("bulkUploadType", this.BulkUploadType);
+			kparams.AddIfNotNull("results", this.Results);
+			kparams.AddIfNotNull("error", this.Error);
+			kparams.AddIfNotNull("errorType", this.ErrorType);
+			kparams.AddIfNotNull("errorNumber", this.ErrorNumber);
+			kparams.AddIfNotNull("fileName", this.FileName);
+			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("numOfObjects", this.NumOfObjects);
+			kparams.AddIfNotNull("bulkUploadObjectType", this.BulkUploadObjectType);
 			return kparams;
 		}
 		#endregion

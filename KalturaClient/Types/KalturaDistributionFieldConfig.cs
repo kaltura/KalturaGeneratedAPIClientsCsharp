@@ -114,7 +114,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaDistributionFieldConfig(XmlElement node)
+		public KalturaDistributionFieldConfig(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -156,28 +156,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDistributionFieldConfig");
-			kparams.AddStringIfNotNull("fieldName", this.FieldName);
-			kparams.AddStringIfNotNull("userFriendlyFieldName", this.UserFriendlyFieldName);
-			kparams.AddStringIfNotNull("entryMrssXslt", this.EntryMrssXslt);
-			kparams.AddEnumIfNotNull("isRequired", this.IsRequired);
-			kparams.AddBoolIfNotNull("updateOnChange", this.UpdateOnChange);
-			if (this.UpdateParams != null)
-			{
-				if (this.UpdateParams.Count == 0)
-				{
-					kparams.Add("updateParams:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaString item in this.UpdateParams)
-					{
-						kparams.Add("updateParams:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddBoolIfNotNull("isDefault", this.IsDefault);
+			kparams.AddIfNotNull("fieldName", this.FieldName);
+			kparams.AddIfNotNull("userFriendlyFieldName", this.UserFriendlyFieldName);
+			kparams.AddIfNotNull("entryMrssXslt", this.EntryMrssXslt);
+			kparams.AddIfNotNull("isRequired", this.IsRequired);
+			kparams.AddIfNotNull("updateOnChange", this.UpdateOnChange);
+			kparams.AddIfNotNull("updateParams", this.UpdateParams);
+			kparams.AddIfNotNull("isDefault", this.IsDefault);
 			return kparams;
 		}
 		#endregion

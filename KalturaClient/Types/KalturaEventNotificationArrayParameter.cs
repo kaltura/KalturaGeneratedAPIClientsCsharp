@@ -95,38 +95,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEventNotificationArrayParameter");
-			if (this.Values != null)
-			{
-				if (this.Values.Count == 0)
-				{
-					kparams.Add("values:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaString item in this.Values)
-					{
-						kparams.Add("values:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			if (this.AllowedValues != null)
-			{
-				if (this.AllowedValues.Count == 0)
-				{
-					kparams.Add("allowedValues:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaStringValue item in this.AllowedValues)
-					{
-						kparams.Add("allowedValues:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
+			kparams.AddIfNotNull("values", this.Values);
+			kparams.AddIfNotNull("allowedValues", this.AllowedValues);
 			return kparams;
 		}
 		#endregion

@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEntryReferrerLiveStats");
-			kparams.AddStringIfNotNull("referrer", this.Referrer);
+			kparams.AddIfNotNull("referrer", this.Referrer);
 			return kparams;
 		}
 		#endregion

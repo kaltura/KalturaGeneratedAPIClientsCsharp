@@ -144,7 +144,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaCEError(XmlElement node)
+		public KalturaCEError(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -191,16 +191,16 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCEError");
-			kparams.AddStringIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringIfNotNull("browser", this.Browser);
-			kparams.AddStringIfNotNull("serverIp", this.ServerIp);
-			kparams.AddStringIfNotNull("serverOs", this.ServerOs);
-			kparams.AddStringIfNotNull("phpVersion", this.PhpVersion);
-			kparams.AddStringIfNotNull("ceAdminEmail", this.CeAdminEmail);
-			kparams.AddStringIfNotNull("type", this.Type);
-			kparams.AddStringIfNotNull("description", this.Description);
-			kparams.AddStringIfNotNull("data", this.Data);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("browser", this.Browser);
+			kparams.AddIfNotNull("serverIp", this.ServerIp);
+			kparams.AddIfNotNull("serverOs", this.ServerOs);
+			kparams.AddIfNotNull("phpVersion", this.PhpVersion);
+			kparams.AddIfNotNull("ceAdminEmail", this.CeAdminEmail);
+			kparams.AddIfNotNull("type", this.Type);
+			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("data", this.Data);
 			return kparams;
 		}
 		#endregion

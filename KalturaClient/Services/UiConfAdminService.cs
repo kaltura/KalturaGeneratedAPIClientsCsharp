@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaUiConfAdmin Add(KalturaUiConfAdmin uiConf)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (uiConf != null)
-				kparams.Add("uiConf", uiConf.ToParams());
+			kparams.AddIfNotNull("uiConf", uiConf);
 			_Client.QueueServiceCall("adminconsole_uiconfadmin", "add", "KalturaUiConfAdmin", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,9 +54,8 @@ namespace Kaltura
 		public KalturaUiConfAdmin Update(int id, KalturaUiConfAdmin uiConf)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			if (uiConf != null)
-				kparams.Add("uiConf", uiConf.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("uiConf", uiConf);
 			_Client.QueueServiceCall("adminconsole_uiconfadmin", "update", "KalturaUiConfAdmin", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -68,7 +66,7 @@ namespace Kaltura
 		public KalturaUiConfAdmin Get(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("adminconsole_uiconfadmin", "get", "KalturaUiConfAdmin", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -79,7 +77,7 @@ namespace Kaltura
 		public void Delete(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("adminconsole_uiconfadmin", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -99,10 +97,8 @@ namespace Kaltura
 		public KalturaUiConfAdminListResponse List(KalturaUiConfFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("adminconsole_uiconfadmin", "list", "KalturaUiConfAdminListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

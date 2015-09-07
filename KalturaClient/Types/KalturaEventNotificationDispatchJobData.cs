@@ -91,23 +91,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEventNotificationDispatchJobData");
-			kparams.AddIntIfNotNull("templateId", this.TemplateId);
-			if (this.ContentParameters != null)
-			{
-				if (this.ContentParameters.Count == 0)
-				{
-					kparams.Add("contentParameters:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaKeyValue item in this.ContentParameters)
-					{
-						kparams.Add("contentParameters:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
+			kparams.AddIfNotNull("templateId", this.TemplateId);
+			kparams.AddIfNotNull("contentParameters", this.ContentParameters);
 			return kparams;
 		}
 		#endregion

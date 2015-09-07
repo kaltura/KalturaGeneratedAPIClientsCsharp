@@ -104,7 +104,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaSessionInfo(XmlElement node)
+		public KalturaSessionInfo(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -139,12 +139,12 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSessionInfo");
-			kparams.AddStringIfNotNull("ks", this.Ks);
-			kparams.AddEnumIfNotNull("sessionType", this.SessionType);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringIfNotNull("userId", this.UserId);
-			kparams.AddIntIfNotNull("expiry", this.Expiry);
-			kparams.AddStringIfNotNull("privileges", this.Privileges);
+			kparams.AddIfNotNull("ks", this.Ks);
+			kparams.AddIfNotNull("sessionType", this.SessionType);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("userId", this.UserId);
+			kparams.AddIfNotNull("expiry", this.Expiry);
+			kparams.AddIfNotNull("privileges", this.Privileges);
 			return kparams;
 		}
 		#endregion

@@ -243,20 +243,20 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEventNotificationTemplateBaseFilter");
-			kparams.AddIntIfNotNull("idEqual", this.IdEqual);
-			kparams.AddStringIfNotNull("idIn", this.IdIn);
-			kparams.AddIntIfNotNull("partnerIdEqual", this.PartnerIdEqual);
-			kparams.AddStringIfNotNull("partnerIdIn", this.PartnerIdIn);
-			kparams.AddStringIfNotNull("systemNameEqual", this.SystemNameEqual);
-			kparams.AddStringIfNotNull("systemNameIn", this.SystemNameIn);
-			kparams.AddStringEnumIfNotNull("typeEqual", this.TypeEqual);
-			kparams.AddStringIfNotNull("typeIn", this.TypeIn);
-			kparams.AddEnumIfNotNull("statusEqual", this.StatusEqual);
-			kparams.AddStringIfNotNull("statusIn", this.StatusIn);
-			kparams.AddIntIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
-			kparams.AddIntIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("idEqual", this.IdEqual);
+			kparams.AddIfNotNull("idIn", this.IdIn);
+			kparams.AddIfNotNull("partnerIdEqual", this.PartnerIdEqual);
+			kparams.AddIfNotNull("partnerIdIn", this.PartnerIdIn);
+			kparams.AddIfNotNull("systemNameEqual", this.SystemNameEqual);
+			kparams.AddIfNotNull("systemNameIn", this.SystemNameIn);
+			kparams.AddIfNotNull("typeEqual", this.TypeEqual);
+			kparams.AddIfNotNull("typeIn", this.TypeIn);
+			kparams.AddIfNotNull("statusEqual", this.StatusEqual);
+			kparams.AddIfNotNull("statusIn", this.StatusIn);
+			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
 			return kparams;
 		}
 		#endregion

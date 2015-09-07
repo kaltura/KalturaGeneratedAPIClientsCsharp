@@ -144,7 +144,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaScheduler(XmlElement node)
+		public KalturaScheduler(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -203,61 +203,16 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaScheduler");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("configuredId", this.ConfiguredId);
-			kparams.AddStringIfNotNull("name", this.Name);
-			kparams.AddStringIfNotNull("host", this.Host);
-			if (this.Statuses != null)
-			{
-				if (this.Statuses.Count == 0)
-				{
-					kparams.Add("statuses:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaSchedulerStatus item in this.Statuses)
-					{
-						kparams.Add("statuses:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			if (this.Configs != null)
-			{
-				if (this.Configs.Count == 0)
-				{
-					kparams.Add("configs:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaSchedulerConfig item in this.Configs)
-					{
-						kparams.Add("configs:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			if (this.Workers != null)
-			{
-				if (this.Workers.Count == 0)
-				{
-					kparams.Add("workers:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaSchedulerWorker item in this.Workers)
-					{
-						kparams.Add("workers:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("lastStatus", this.LastStatus);
-			kparams.AddStringIfNotNull("lastStatusStr", this.LastStatusStr);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("configuredId", this.ConfiguredId);
+			kparams.AddIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("host", this.Host);
+			kparams.AddIfNotNull("statuses", this.Statuses);
+			kparams.AddIfNotNull("configs", this.Configs);
+			kparams.AddIfNotNull("workers", this.Workers);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("lastStatus", this.LastStatus);
+			kparams.AddIfNotNull("lastStatusStr", this.LastStatusStr);
 			return kparams;
 		}
 		#endregion

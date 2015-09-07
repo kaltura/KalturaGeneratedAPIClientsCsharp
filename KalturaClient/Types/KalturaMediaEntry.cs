@@ -204,17 +204,17 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaMediaEntry");
-			kparams.AddEnumIfNotNull("mediaType", this.MediaType);
-			kparams.AddStringIfNotNull("conversionQuality", this.ConversionQuality);
-			kparams.AddStringEnumIfNotNull("sourceType", this.SourceType);
-			kparams.AddEnumIfNotNull("searchProviderType", this.SearchProviderType);
-			kparams.AddStringIfNotNull("searchProviderId", this.SearchProviderId);
-			kparams.AddStringIfNotNull("creditUserName", this.CreditUserName);
-			kparams.AddStringIfNotNull("creditUrl", this.CreditUrl);
-			kparams.AddIntIfNotNull("mediaDate", this.MediaDate);
-			kparams.AddStringIfNotNull("dataUrl", this.DataUrl);
-			kparams.AddStringIfNotNull("flavorParamsIds", this.FlavorParamsIds);
-			kparams.AddEnumIfNotNull("isTrimDisabled", this.IsTrimDisabled);
+			kparams.AddIfNotNull("mediaType", this.MediaType);
+			kparams.AddIfNotNull("conversionQuality", this.ConversionQuality);
+			kparams.AddIfNotNull("sourceType", this.SourceType);
+			kparams.AddIfNotNull("searchProviderType", this.SearchProviderType);
+			kparams.AddIfNotNull("searchProviderId", this.SearchProviderId);
+			kparams.AddIfNotNull("creditUserName", this.CreditUserName);
+			kparams.AddIfNotNull("creditUrl", this.CreditUrl);
+			kparams.AddIfNotNull("mediaDate", this.MediaDate);
+			kparams.AddIfNotNull("dataUrl", this.DataUrl);
+			kparams.AddIfNotNull("flavorParamsIds", this.FlavorParamsIds);
+			kparams.AddIfNotNull("isTrimDisabled", this.IsTrimDisabled);
 			return kparams;
 		}
 		#endregion

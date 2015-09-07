@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaReport Add(KalturaReport report)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (report != null)
-				kparams.Add("report", report.ToParams());
+			kparams.AddIfNotNull("report", report);
 			_Client.QueueServiceCall("adminconsole_reportadmin", "add", "KalturaReport", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,7 +54,7 @@ namespace Kaltura
 		public KalturaReport Get(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("adminconsole_reportadmin", "get", "KalturaReport", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -76,10 +75,8 @@ namespace Kaltura
 		public KalturaReportListResponse List(KalturaReportFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("adminconsole_reportadmin", "list", "KalturaReportListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -90,9 +87,8 @@ namespace Kaltura
 		public KalturaReport Update(int id, KalturaReport report)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			if (report != null)
-				kparams.Add("report", report.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("report", report);
 			_Client.QueueServiceCall("adminconsole_reportadmin", "update", "KalturaReport", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -103,7 +99,7 @@ namespace Kaltura
 		public void Delete(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("adminconsole_reportadmin", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -118,11 +114,8 @@ namespace Kaltura
 		public KalturaReportResponse ExecuteDebug(int id, IList<KalturaKeyValue> params_)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			foreach(KalturaKeyValue obj in params_)
-			{
-				kparams.Add("params", obj.ToParams());
-			}
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("params", params_);
 			_Client.QueueServiceCall("adminconsole_reportadmin", "executeDebug", "KalturaReportResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -133,7 +126,7 @@ namespace Kaltura
 		public IList<KalturaString> GetParameters(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("adminconsole_reportadmin", "getParameters", "KalturaString", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -149,8 +142,8 @@ namespace Kaltura
 		public string GetCsvUrl(int id, int reportPartnerId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			kparams.AddIntIfNotNull("reportPartnerId", reportPartnerId);
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("reportPartnerId", reportPartnerId);
 			_Client.QueueServiceCall("adminconsole_reportadmin", "getCsvUrl", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

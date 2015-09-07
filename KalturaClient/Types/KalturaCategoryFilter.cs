@@ -178,15 +178,15 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCategoryFilter");
-			kparams.AddStringIfNotNull("freeText", this.FreeText);
-			kparams.AddStringIfNotNull("membersIn", this.MembersIn);
-			kparams.AddStringIfNotNull("nameOrReferenceIdStartsWith", this.NameOrReferenceIdStartsWith);
-			kparams.AddStringIfNotNull("managerEqual", this.ManagerEqual);
-			kparams.AddStringIfNotNull("memberEqual", this.MemberEqual);
-			kparams.AddStringIfNotNull("fullNameStartsWithIn", this.FullNameStartsWithIn);
-			kparams.AddStringIfNotNull("ancestorIdIn", this.AncestorIdIn);
-			kparams.AddStringIfNotNull("idOrInheritedParentIdIn", this.IdOrInheritedParentIdIn);
-			kparams.AddStringEnumIfNotNull("orderBy", this.OrderBy);
+			kparams.AddIfNotNull("freeText", this.FreeText);
+			kparams.AddIfNotNull("membersIn", this.MembersIn);
+			kparams.AddIfNotNull("nameOrReferenceIdStartsWith", this.NameOrReferenceIdStartsWith);
+			kparams.AddIfNotNull("managerEqual", this.ManagerEqual);
+			kparams.AddIfNotNull("memberEqual", this.MemberEqual);
+			kparams.AddIfNotNull("fullNameStartsWithIn", this.FullNameStartsWithIn);
+			kparams.AddIfNotNull("ancestorIdIn", this.AncestorIdIn);
+			kparams.AddIfNotNull("idOrInheritedParentIdIn", this.IdOrInheritedParentIdIn);
+			kparams.AddIfNotNull("orderBy", this.OrderBy);
 			return kparams;
 		}
 		#endregion

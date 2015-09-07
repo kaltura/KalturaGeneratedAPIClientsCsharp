@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUiConfAdmin");
-			kparams.AddBoolIfNotNull("isPublic", this.IsPublic);
+			kparams.AddIfNotNull("isPublic", this.IsPublic);
 			return kparams;
 		}
 		#endregion

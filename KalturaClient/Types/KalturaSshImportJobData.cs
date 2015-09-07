@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSshImportJobData");
-			kparams.AddStringIfNotNull("privateKey", this.PrivateKey);
-			kparams.AddStringIfNotNull("publicKey", this.PublicKey);
-			kparams.AddStringIfNotNull("passPhrase", this.PassPhrase);
+			kparams.AddIfNotNull("privateKey", this.PrivateKey);
+			kparams.AddIfNotNull("publicKey", this.PublicKey);
+			kparams.AddIfNotNull("passPhrase", this.PassPhrase);
 			return kparams;
 		}
 		#endregion

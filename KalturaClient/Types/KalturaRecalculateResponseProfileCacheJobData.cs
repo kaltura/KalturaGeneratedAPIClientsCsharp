@@ -156,28 +156,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaRecalculateResponseProfileCacheJobData");
-			kparams.AddStringIfNotNull("protocol", this.Protocol);
-			kparams.AddEnumIfNotNull("ksType", this.KsType);
-			if (this.UserRoles != null)
-			{
-				if (this.UserRoles.Count == 0)
-				{
-					kparams.Add("userRoles:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaIntegerValue item in this.UserRoles)
-					{
-						kparams.Add("userRoles:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddStringIfNotNull("cachedObjectType", this.CachedObjectType);
-			kparams.AddStringIfNotNull("objectId", this.ObjectId);
-			kparams.AddStringIfNotNull("startObjectKey", this.StartObjectKey);
-			kparams.AddStringIfNotNull("endObjectKey", this.EndObjectKey);
+			kparams.AddIfNotNull("protocol", this.Protocol);
+			kparams.AddIfNotNull("ksType", this.KsType);
+			kparams.AddIfNotNull("userRoles", this.UserRoles);
+			kparams.AddIfNotNull("cachedObjectType", this.CachedObjectType);
+			kparams.AddIfNotNull("objectId", this.ObjectId);
+			kparams.AddIfNotNull("startObjectKey", this.StartObjectKey);
+			kparams.AddIfNotNull("endObjectKey", this.EndObjectKey);
 			return kparams;
 		}
 		#endregion

@@ -238,50 +238,19 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveEntry");
-			kparams.AddStringIfNotNull("offlineMessage", this.OfflineMessage);
-			kparams.AddEnumIfNotNull("recordStatus", this.RecordStatus);
-			kparams.AddEnumIfNotNull("dvrStatus", this.DvrStatus);
-			kparams.AddIntIfNotNull("dvrWindow", this.DvrWindow);
-			kparams.AddIntIfNotNull("lastElapsedRecordingTime", this.LastElapsedRecordingTime);
-			if (this.LiveStreamConfigurations != null)
-			{
-				if (this.LiveStreamConfigurations.Count == 0)
-				{
-					kparams.Add("liveStreamConfigurations:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaLiveStreamConfiguration item in this.LiveStreamConfigurations)
-					{
-						kparams.Add("liveStreamConfigurations:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddStringIfNotNull("recordedEntryId", this.RecordedEntryId);
-			kparams.AddEnumIfNotNull("pushPublishEnabled", this.PushPublishEnabled);
-			if (this.PublishConfigurations != null)
-			{
-				if (this.PublishConfigurations.Count == 0)
-				{
-					kparams.Add("publishConfigurations:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaLiveStreamPushPublishConfiguration item in this.PublishConfigurations)
-					{
-						kparams.Add("publishConfigurations:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddIntIfNotNull("firstBroadcast", this.FirstBroadcast);
-			kparams.AddIntIfNotNull("lastBroadcast", this.LastBroadcast);
-			kparams.AddFloatIfNotNull("currentBroadcastStartTime", this.CurrentBroadcastStartTime);
-			if (this.RecordingOptions != null)
-				kparams.Add("recordingOptions", this.RecordingOptions.ToParams());
+			kparams.AddIfNotNull("offlineMessage", this.OfflineMessage);
+			kparams.AddIfNotNull("recordStatus", this.RecordStatus);
+			kparams.AddIfNotNull("dvrStatus", this.DvrStatus);
+			kparams.AddIfNotNull("dvrWindow", this.DvrWindow);
+			kparams.AddIfNotNull("lastElapsedRecordingTime", this.LastElapsedRecordingTime);
+			kparams.AddIfNotNull("liveStreamConfigurations", this.LiveStreamConfigurations);
+			kparams.AddIfNotNull("recordedEntryId", this.RecordedEntryId);
+			kparams.AddIfNotNull("pushPublishEnabled", this.PushPublishEnabled);
+			kparams.AddIfNotNull("publishConfigurations", this.PublishConfigurations);
+			kparams.AddIfNotNull("firstBroadcast", this.FirstBroadcast);
+			kparams.AddIfNotNull("lastBroadcast", this.LastBroadcast);
+			kparams.AddIfNotNull("currentBroadcastStartTime", this.CurrentBroadcastStartTime);
+			kparams.AddIfNotNull("recordingOptions", this.RecordingOptions);
 			return kparams;
 		}
 		#endregion

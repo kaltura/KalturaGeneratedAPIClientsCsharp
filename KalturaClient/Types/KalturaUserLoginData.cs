@@ -64,7 +64,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaUserLoginData(XmlElement node)
+		public KalturaUserLoginData(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUserLoginData");
-			kparams.AddStringIfNotNull("id", this.Id);
-			kparams.AddStringIfNotNull("loginEmail", this.LoginEmail);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("loginEmail", this.LoginEmail);
 			return kparams;
 		}
 		#endregion

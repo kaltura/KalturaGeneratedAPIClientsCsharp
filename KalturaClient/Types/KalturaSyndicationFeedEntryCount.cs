@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaSyndicationFeedEntryCount(XmlElement node)
+		public KalturaSyndicationFeedEntryCount(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSyndicationFeedEntryCount");
-			kparams.AddIntIfNotNull("totalEntryCount", this.TotalEntryCount);
-			kparams.AddIntIfNotNull("actualEntryCount", this.ActualEntryCount);
-			kparams.AddIntIfNotNull("requireTranscodingCount", this.RequireTranscodingCount);
+			kparams.AddIfNotNull("totalEntryCount", this.TotalEntryCount);
+			kparams.AddIfNotNull("actualEntryCount", this.ActualEntryCount);
+			kparams.AddIfNotNull("requireTranscodingCount", this.RequireTranscodingCount);
 			return kparams;
 		}
 		#endregion

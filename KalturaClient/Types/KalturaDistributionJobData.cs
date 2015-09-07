@@ -195,34 +195,16 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDistributionJobData");
-			kparams.AddIntIfNotNull("distributionProfileId", this.DistributionProfileId);
-			if (this.DistributionProfile != null)
-				kparams.Add("distributionProfile", this.DistributionProfile.ToParams());
-			kparams.AddIntIfNotNull("entryDistributionId", this.EntryDistributionId);
-			if (this.EntryDistribution != null)
-				kparams.Add("entryDistribution", this.EntryDistribution.ToParams());
-			kparams.AddStringIfNotNull("remoteId", this.RemoteId);
-			kparams.AddStringEnumIfNotNull("providerType", this.ProviderType);
-			if (this.ProviderData != null)
-				kparams.Add("providerData", this.ProviderData.ToParams());
-			kparams.AddStringIfNotNull("results", this.Results);
-			kparams.AddStringIfNotNull("sentData", this.SentData);
-			if (this.MediaFiles != null)
-			{
-				if (this.MediaFiles.Count == 0)
-				{
-					kparams.Add("mediaFiles:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaDistributionRemoteMediaFile item in this.MediaFiles)
-					{
-						kparams.Add("mediaFiles:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
+			kparams.AddIfNotNull("distributionProfileId", this.DistributionProfileId);
+			kparams.AddIfNotNull("distributionProfile", this.DistributionProfile);
+			kparams.AddIfNotNull("entryDistributionId", this.EntryDistributionId);
+			kparams.AddIfNotNull("entryDistribution", this.EntryDistribution);
+			kparams.AddIfNotNull("remoteId", this.RemoteId);
+			kparams.AddIfNotNull("providerType", this.ProviderType);
+			kparams.AddIfNotNull("providerData", this.ProviderData);
+			kparams.AddIfNotNull("results", this.Results);
+			kparams.AddIfNotNull("sentData", this.SentData);
+			kparams.AddIfNotNull("mediaFiles", this.MediaFiles);
 			return kparams;
 		}
 		#endregion

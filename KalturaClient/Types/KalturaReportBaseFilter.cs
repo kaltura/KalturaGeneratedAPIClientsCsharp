@@ -139,12 +139,12 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaReportBaseFilter");
-			kparams.AddIntIfNotNull("idEqual", this.IdEqual);
-			kparams.AddStringIfNotNull("idIn", this.IdIn);
-			kparams.AddIntIfNotNull("partnerIdEqual", this.PartnerIdEqual);
-			kparams.AddStringIfNotNull("partnerIdIn", this.PartnerIdIn);
-			kparams.AddStringIfNotNull("systemNameEqual", this.SystemNameEqual);
-			kparams.AddStringIfNotNull("systemNameIn", this.SystemNameIn);
+			kparams.AddIfNotNull("idEqual", this.IdEqual);
+			kparams.AddIfNotNull("idIn", this.IdIn);
+			kparams.AddIfNotNull("partnerIdEqual", this.PartnerIdEqual);
+			kparams.AddIfNotNull("partnerIdIn", this.PartnerIdIn);
+			kparams.AddIfNotNull("systemNameEqual", this.SystemNameEqual);
+			kparams.AddIfNotNull("systemNameIn", this.SystemNameIn);
 			return kparams;
 		}
 		#endregion

@@ -134,7 +134,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaDistributionProvider(XmlElement node)
+		public KalturaDistributionProvider(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -178,15 +178,15 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDistributionProvider");
-			kparams.AddStringEnumIfNotNull("type", this.Type);
-			kparams.AddStringIfNotNull("name", this.Name);
-			kparams.AddBoolIfNotNull("scheduleUpdateEnabled", this.ScheduleUpdateEnabled);
-			kparams.AddBoolIfNotNull("availabilityUpdateEnabled", this.AvailabilityUpdateEnabled);
-			kparams.AddBoolIfNotNull("deleteInsteadUpdate", this.DeleteInsteadUpdate);
-			kparams.AddIntIfNotNull("intervalBeforeSunrise", this.IntervalBeforeSunrise);
-			kparams.AddIntIfNotNull("intervalBeforeSunset", this.IntervalBeforeSunset);
-			kparams.AddStringIfNotNull("updateRequiredEntryFields", this.UpdateRequiredEntryFields);
-			kparams.AddStringIfNotNull("updateRequiredMetadataXPaths", this.UpdateRequiredMetadataXPaths);
+			kparams.AddIfNotNull("type", this.Type);
+			kparams.AddIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("scheduleUpdateEnabled", this.ScheduleUpdateEnabled);
+			kparams.AddIfNotNull("availabilityUpdateEnabled", this.AvailabilityUpdateEnabled);
+			kparams.AddIfNotNull("deleteInsteadUpdate", this.DeleteInsteadUpdate);
+			kparams.AddIfNotNull("intervalBeforeSunrise", this.IntervalBeforeSunrise);
+			kparams.AddIfNotNull("intervalBeforeSunset", this.IntervalBeforeSunset);
+			kparams.AddIfNotNull("updateRequiredEntryFields", this.UpdateRequiredEntryFields);
+			kparams.AddIfNotNull("updateRequiredMetadataXPaths", this.UpdateRequiredMetadataXPaths);
 			return kparams;
 		}
 		#endregion

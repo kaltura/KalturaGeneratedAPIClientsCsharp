@@ -64,7 +64,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaApiExceptionArg(XmlElement node)
+		public KalturaApiExceptionArg(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaApiExceptionArg");
-			kparams.AddStringIfNotNull("name", this.Name);
-			kparams.AddStringIfNotNull("value", this.Value);
+			kparams.AddIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("value", this.Value);
 			return kparams;
 		}
 		#endregion

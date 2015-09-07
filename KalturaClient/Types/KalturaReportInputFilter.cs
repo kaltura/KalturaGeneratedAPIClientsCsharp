@@ -139,12 +139,12 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaReportInputFilter");
-			kparams.AddStringIfNotNull("keywords", this.Keywords);
-			kparams.AddBoolIfNotNull("searchInTags", this.SearchInTags);
-			kparams.AddBoolIfNotNull("searchInAdminTags", this.SearchInAdminTags);
-			kparams.AddStringIfNotNull("categories", this.Categories);
-			kparams.AddIntIfNotNull("timeZoneOffset", this.TimeZoneOffset);
-			kparams.AddStringEnumIfNotNull("interval", this.Interval);
+			kparams.AddIfNotNull("keywords", this.Keywords);
+			kparams.AddIfNotNull("searchInTags", this.SearchInTags);
+			kparams.AddIfNotNull("searchInAdminTags", this.SearchInAdminTags);
+			kparams.AddIfNotNull("categories", this.Categories);
+			kparams.AddIfNotNull("timeZoneOffset", this.TimeZoneOffset);
+			kparams.AddIfNotNull("interval", this.Interval);
 			return kparams;
 		}
 		#endregion

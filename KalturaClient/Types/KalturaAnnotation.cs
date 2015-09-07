@@ -178,15 +178,15 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAnnotation");
-			kparams.AddStringIfNotNull("parentId", this.ParentId);
-			kparams.AddStringIfNotNull("text", this.Text);
-			kparams.AddIntIfNotNull("endTime", this.EndTime);
-			kparams.AddIntIfNotNull("duration", this.Duration);
-			kparams.AddIntIfNotNull("depth", this.Depth);
-			kparams.AddIntIfNotNull("childrenCount", this.ChildrenCount);
-			kparams.AddIntIfNotNull("directChildrenCount", this.DirectChildrenCount);
-			kparams.AddEnumIfNotNull("isPublic", this.IsPublic);
-			kparams.AddEnumIfNotNull("searchableOnEntry", this.SearchableOnEntry);
+			kparams.AddIfNotNull("parentId", this.ParentId);
+			kparams.AddIfNotNull("text", this.Text);
+			kparams.AddIfNotNull("endTime", this.EndTime);
+			kparams.AddIfNotNull("duration", this.Duration);
+			kparams.AddIfNotNull("depth", this.Depth);
+			kparams.AddIfNotNull("childrenCount", this.ChildrenCount);
+			kparams.AddIfNotNull("directChildrenCount", this.DirectChildrenCount);
+			kparams.AddIfNotNull("isPublic", this.IsPublic);
+			kparams.AddIfNotNull("searchableOnEntry", this.SearchableOnEntry);
 			return kparams;
 		}
 		#endregion

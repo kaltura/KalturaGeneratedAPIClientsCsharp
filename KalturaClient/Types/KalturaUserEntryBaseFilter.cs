@@ -256,21 +256,21 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUserEntryBaseFilter");
-			kparams.AddIntIfNotNull("idEqual", this.IdEqual);
-			kparams.AddStringIfNotNull("idIn", this.IdIn);
-			kparams.AddStringIfNotNull("idNotIn", this.IdNotIn);
-			kparams.AddStringIfNotNull("entryIdEqual", this.EntryIdEqual);
-			kparams.AddStringIfNotNull("entryIdIn", this.EntryIdIn);
-			kparams.AddStringIfNotNull("entryIdNotIn", this.EntryIdNotIn);
-			kparams.AddStringIfNotNull("userIdEqual", this.UserIdEqual);
-			kparams.AddStringIfNotNull("userIdIn", this.UserIdIn);
-			kparams.AddStringIfNotNull("userIdNotIn", this.UserIdNotIn);
-			kparams.AddStringEnumIfNotNull("statusEqual", this.StatusEqual);
-			kparams.AddIntIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
-			kparams.AddIntIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
-			kparams.AddIntIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
-			kparams.AddStringEnumIfNotNull("typeEqual", this.TypeEqual);
+			kparams.AddIfNotNull("idEqual", this.IdEqual);
+			kparams.AddIfNotNull("idIn", this.IdIn);
+			kparams.AddIfNotNull("idNotIn", this.IdNotIn);
+			kparams.AddIfNotNull("entryIdEqual", this.EntryIdEqual);
+			kparams.AddIfNotNull("entryIdIn", this.EntryIdIn);
+			kparams.AddIfNotNull("entryIdNotIn", this.EntryIdNotIn);
+			kparams.AddIfNotNull("userIdEqual", this.UserIdEqual);
+			kparams.AddIfNotNull("userIdIn", this.UserIdIn);
+			kparams.AddIfNotNull("userIdNotIn", this.UserIdNotIn);
+			kparams.AddIfNotNull("statusEqual", this.StatusEqual);
+			kparams.AddIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("typeEqual", this.TypeEqual);
 			return kparams;
 		}
 		#endregion

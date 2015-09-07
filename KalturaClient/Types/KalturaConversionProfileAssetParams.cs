@@ -114,7 +114,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaConversionProfileAssetParams(XmlElement node)
+		public KalturaConversionProfileAssetParams(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -152,13 +152,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaConversionProfileAssetParams");
-			kparams.AddIntIfNotNull("conversionProfileId", this.ConversionProfileId);
-			kparams.AddIntIfNotNull("assetParamsId", this.AssetParamsId);
-			kparams.AddEnumIfNotNull("readyBehavior", this.ReadyBehavior);
-			kparams.AddEnumIfNotNull("origin", this.Origin);
-			kparams.AddStringIfNotNull("systemName", this.SystemName);
-			kparams.AddEnumIfNotNull("forceNoneComplied", this.ForceNoneComplied);
-			kparams.AddEnumIfNotNull("deletePolicy", this.DeletePolicy);
+			kparams.AddIfNotNull("conversionProfileId", this.ConversionProfileId);
+			kparams.AddIfNotNull("assetParamsId", this.AssetParamsId);
+			kparams.AddIfNotNull("readyBehavior", this.ReadyBehavior);
+			kparams.AddIfNotNull("origin", this.Origin);
+			kparams.AddIfNotNull("systemName", this.SystemName);
+			kparams.AddIfNotNull("forceNoneComplied", this.ForceNoneComplied);
+			kparams.AddIfNotNull("deletePolicy", this.DeletePolicy);
 			return kparams;
 		}
 		#endregion

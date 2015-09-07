@@ -284,7 +284,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaUiConf(XmlElement node)
+		public KalturaUiConf(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -373,30 +373,30 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUiConf");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddStringIfNotNull("name", this.Name);
-			kparams.AddStringIfNotNull("description", this.Description);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddEnumIfNotNull("objType", this.ObjType);
-			kparams.AddStringIfNotNull("objTypeAsString", this.ObjTypeAsString);
-			kparams.AddIntIfNotNull("width", this.Width);
-			kparams.AddIntIfNotNull("height", this.Height);
-			kparams.AddStringIfNotNull("htmlParams", this.HtmlParams);
-			kparams.AddStringIfNotNull("swfUrl", this.SwfUrl);
-			kparams.AddStringIfNotNull("confFilePath", this.ConfFilePath);
-			kparams.AddStringIfNotNull("confFile", this.ConfFile);
-			kparams.AddStringIfNotNull("confFileFeatures", this.ConfFileFeatures);
-			kparams.AddStringIfNotNull("config", this.Config);
-			kparams.AddStringIfNotNull("confVars", this.ConfVars);
-			kparams.AddBoolIfNotNull("useCdn", this.UseCdn);
-			kparams.AddStringIfNotNull("tags", this.Tags);
-			kparams.AddStringIfNotNull("swfUrlVersion", this.SwfUrlVersion);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddEnumIfNotNull("creationMode", this.CreationMode);
-			kparams.AddStringIfNotNull("html5Url", this.Html5Url);
-			kparams.AddStringIfNotNull("version", this.Version);
-			kparams.AddStringIfNotNull("partnerTags", this.PartnerTags);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("objType", this.ObjType);
+			kparams.AddIfNotNull("objTypeAsString", this.ObjTypeAsString);
+			kparams.AddIfNotNull("width", this.Width);
+			kparams.AddIfNotNull("height", this.Height);
+			kparams.AddIfNotNull("htmlParams", this.HtmlParams);
+			kparams.AddIfNotNull("swfUrl", this.SwfUrl);
+			kparams.AddIfNotNull("confFilePath", this.ConfFilePath);
+			kparams.AddIfNotNull("confFile", this.ConfFile);
+			kparams.AddIfNotNull("confFileFeatures", this.ConfFileFeatures);
+			kparams.AddIfNotNull("config", this.Config);
+			kparams.AddIfNotNull("confVars", this.ConfVars);
+			kparams.AddIfNotNull("useCdn", this.UseCdn);
+			kparams.AddIfNotNull("tags", this.Tags);
+			kparams.AddIfNotNull("swfUrlVersion", this.SwfUrlVersion);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("creationMode", this.CreationMode);
+			kparams.AddIfNotNull("html5Url", this.Html5Url);
+			kparams.AddIfNotNull("version", this.Version);
+			kparams.AddIfNotNull("partnerTags", this.PartnerTags);
 			return kparams;
 		}
 		#endregion

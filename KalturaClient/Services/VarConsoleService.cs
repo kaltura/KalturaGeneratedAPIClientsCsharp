@@ -58,12 +58,9 @@ namespace Kaltura
 		public KalturaPartnerUsageListResponse GetPartnerUsage(KalturaPartnerFilter partnerFilter, KalturaReportInputFilter usageFilter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (partnerFilter != null)
-				kparams.Add("partnerFilter", partnerFilter.ToParams());
-			if (usageFilter != null)
-				kparams.Add("usageFilter", usageFilter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("partnerFilter", partnerFilter);
+			kparams.AddIfNotNull("usageFilter", usageFilter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("varconsole_varconsole", "getPartnerUsage", "KalturaPartnerUsageListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -74,8 +71,8 @@ namespace Kaltura
 		public void UpdateStatus(int id, KalturaPartnerStatus status)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			kparams.AddEnumIfNotNull("status", status);
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("status", status);
 			_Client.QueueServiceCall("varconsole_varconsole", "updateStatus", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;

@@ -214,7 +214,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaControlPanelCommand(XmlElement node)
+		public KalturaControlPanelCommand(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -282,23 +282,23 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaControlPanelCommand");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddStringIfNotNull("createdBy", this.CreatedBy);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddStringIfNotNull("updatedBy", this.UpdatedBy);
-			kparams.AddIntIfNotNull("createdById", this.CreatedById);
-			kparams.AddIntIfNotNull("schedulerId", this.SchedulerId);
-			kparams.AddIntIfNotNull("workerId", this.WorkerId);
-			kparams.AddIntIfNotNull("workerConfiguredId", this.WorkerConfiguredId);
-			kparams.AddIntIfNotNull("workerName", this.WorkerName);
-			kparams.AddIntIfNotNull("batchIndex", this.BatchIndex);
-			kparams.AddEnumIfNotNull("type", this.Type);
-			kparams.AddEnumIfNotNull("targetType", this.TargetType);
-			kparams.AddEnumIfNotNull("status", this.Status);
-			kparams.AddStringIfNotNull("cause", this.Cause);
-			kparams.AddStringIfNotNull("description", this.Description);
-			kparams.AddStringIfNotNull("errorDescription", this.ErrorDescription);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("createdBy", this.CreatedBy);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("updatedBy", this.UpdatedBy);
+			kparams.AddIfNotNull("createdById", this.CreatedById);
+			kparams.AddIfNotNull("schedulerId", this.SchedulerId);
+			kparams.AddIfNotNull("workerId", this.WorkerId);
+			kparams.AddIfNotNull("workerConfiguredId", this.WorkerConfiguredId);
+			kparams.AddIfNotNull("workerName", this.WorkerName);
+			kparams.AddIfNotNull("batchIndex", this.BatchIndex);
+			kparams.AddIfNotNull("type", this.Type);
+			kparams.AddIfNotNull("targetType", this.TargetType);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("cause", this.Cause);
+			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("errorDescription", this.ErrorDescription);
 			return kparams;
 		}
 		#endregion

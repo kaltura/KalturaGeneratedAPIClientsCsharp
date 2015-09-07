@@ -154,7 +154,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaFileAsset(XmlElement node)
+		public KalturaFileAsset(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -204,17 +204,17 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaFileAsset");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringEnumIfNotNull("fileAssetObjectType", this.FileAssetObjectType);
-			kparams.AddStringIfNotNull("objectId", this.ObjectId);
-			kparams.AddStringIfNotNull("name", this.Name);
-			kparams.AddStringIfNotNull("systemName", this.SystemName);
-			kparams.AddStringIfNotNull("fileExt", this.FileExt);
-			kparams.AddIntIfNotNull("version", this.Version);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddStringEnumIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("fileAssetObjectType", this.FileAssetObjectType);
+			kparams.AddIfNotNull("objectId", this.ObjectId);
+			kparams.AddIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("systemName", this.SystemName);
+			kparams.AddIfNotNull("fileExt", this.FileExt);
+			kparams.AddIfNotNull("version", this.Version);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("status", this.Status);
 			return kparams;
 		}
 		#endregion

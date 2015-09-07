@@ -464,7 +464,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaBaseEntry(XmlElement node)
+		public KalturaBaseEntry(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -611,63 +611,48 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaBaseEntry");
-			kparams.AddStringIfNotNull("id", this.Id);
-			kparams.AddStringIfNotNull("name", this.Name);
-			kparams.AddStringIfNotNull("description", this.Description);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringIfNotNull("userId", this.UserId);
-			kparams.AddStringIfNotNull("creatorId", this.CreatorId);
-			kparams.AddStringIfNotNull("tags", this.Tags);
-			kparams.AddStringIfNotNull("adminTags", this.AdminTags);
-			kparams.AddStringIfNotNull("categories", this.Categories);
-			kparams.AddStringIfNotNull("categoriesIds", this.CategoriesIds);
-			kparams.AddStringEnumIfNotNull("status", this.Status);
-			kparams.AddEnumIfNotNull("moderationStatus", this.ModerationStatus);
-			kparams.AddIntIfNotNull("moderationCount", this.ModerationCount);
-			kparams.AddStringEnumIfNotNull("type", this.Type);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddFloatIfNotNull("rank", this.Rank);
-			kparams.AddIntIfNotNull("totalRank", this.TotalRank);
-			kparams.AddIntIfNotNull("votes", this.Votes);
-			kparams.AddIntIfNotNull("groupId", this.GroupId);
-			kparams.AddStringIfNotNull("partnerData", this.PartnerData);
-			kparams.AddStringIfNotNull("downloadUrl", this.DownloadUrl);
-			kparams.AddStringIfNotNull("searchText", this.SearchText);
-			kparams.AddEnumIfNotNull("licenseType", this.LicenseType);
-			kparams.AddIntIfNotNull("version", this.Version);
-			kparams.AddStringIfNotNull("thumbnailUrl", this.ThumbnailUrl);
-			kparams.AddIntIfNotNull("accessControlId", this.AccessControlId);
-			kparams.AddIntIfNotNull("startDate", this.StartDate);
-			kparams.AddIntIfNotNull("endDate", this.EndDate);
-			kparams.AddStringIfNotNull("referenceId", this.ReferenceId);
-			kparams.AddStringIfNotNull("replacingEntryId", this.ReplacingEntryId);
-			kparams.AddStringIfNotNull("replacedEntryId", this.ReplacedEntryId);
-			kparams.AddStringEnumIfNotNull("replacementStatus", this.ReplacementStatus);
-			kparams.AddIntIfNotNull("partnerSortValue", this.PartnerSortValue);
-			kparams.AddIntIfNotNull("conversionProfileId", this.ConversionProfileId);
-			kparams.AddStringIfNotNull("redirectEntryId", this.RedirectEntryId);
-			kparams.AddStringIfNotNull("rootEntryId", this.RootEntryId);
-			kparams.AddStringIfNotNull("parentEntryId", this.ParentEntryId);
-			if (this.OperationAttributes != null)
-			{
-				if (this.OperationAttributes.Count == 0)
-				{
-					kparams.Add("operationAttributes:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaOperationAttributes item in this.OperationAttributes)
-					{
-						kparams.Add("operationAttributes:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddStringIfNotNull("entitledUsersEdit", this.EntitledUsersEdit);
-			kparams.AddStringIfNotNull("entitledUsersPublish", this.EntitledUsersPublish);
-			kparams.AddStringIfNotNull("capabilities", this.Capabilities);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("userId", this.UserId);
+			kparams.AddIfNotNull("creatorId", this.CreatorId);
+			kparams.AddIfNotNull("tags", this.Tags);
+			kparams.AddIfNotNull("adminTags", this.AdminTags);
+			kparams.AddIfNotNull("categories", this.Categories);
+			kparams.AddIfNotNull("categoriesIds", this.CategoriesIds);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("moderationStatus", this.ModerationStatus);
+			kparams.AddIfNotNull("moderationCount", this.ModerationCount);
+			kparams.AddIfNotNull("type", this.Type);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("rank", this.Rank);
+			kparams.AddIfNotNull("totalRank", this.TotalRank);
+			kparams.AddIfNotNull("votes", this.Votes);
+			kparams.AddIfNotNull("groupId", this.GroupId);
+			kparams.AddIfNotNull("partnerData", this.PartnerData);
+			kparams.AddIfNotNull("downloadUrl", this.DownloadUrl);
+			kparams.AddIfNotNull("searchText", this.SearchText);
+			kparams.AddIfNotNull("licenseType", this.LicenseType);
+			kparams.AddIfNotNull("version", this.Version);
+			kparams.AddIfNotNull("thumbnailUrl", this.ThumbnailUrl);
+			kparams.AddIfNotNull("accessControlId", this.AccessControlId);
+			kparams.AddIfNotNull("startDate", this.StartDate);
+			kparams.AddIfNotNull("endDate", this.EndDate);
+			kparams.AddIfNotNull("referenceId", this.ReferenceId);
+			kparams.AddIfNotNull("replacingEntryId", this.ReplacingEntryId);
+			kparams.AddIfNotNull("replacedEntryId", this.ReplacedEntryId);
+			kparams.AddIfNotNull("replacementStatus", this.ReplacementStatus);
+			kparams.AddIfNotNull("partnerSortValue", this.PartnerSortValue);
+			kparams.AddIfNotNull("conversionProfileId", this.ConversionProfileId);
+			kparams.AddIfNotNull("redirectEntryId", this.RedirectEntryId);
+			kparams.AddIfNotNull("rootEntryId", this.RootEntryId);
+			kparams.AddIfNotNull("parentEntryId", this.ParentEntryId);
+			kparams.AddIfNotNull("operationAttributes", this.OperationAttributes);
+			kparams.AddIfNotNull("entitledUsersEdit", this.EntitledUsersEdit);
+			kparams.AddIfNotNull("entitledUsersPublish", this.EntitledUsersPublish);
+			kparams.AddIfNotNull("capabilities", this.Capabilities);
 			return kparams;
 		}
 		#endregion

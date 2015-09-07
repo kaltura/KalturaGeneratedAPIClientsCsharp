@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaConvertProfileJobData");
-			kparams.AddStringIfNotNull("inputFileSyncLocalPath", this.InputFileSyncLocalPath);
-			kparams.AddIntIfNotNull("thumbHeight", this.ThumbHeight);
-			kparams.AddIntIfNotNull("thumbBitrate", this.ThumbBitrate);
+			kparams.AddIfNotNull("inputFileSyncLocalPath", this.InputFileSyncLocalPath);
+			kparams.AddIfNotNull("thumbHeight", this.ThumbHeight);
+			kparams.AddIfNotNull("thumbBitrate", this.ThumbBitrate);
 			return kparams;
 		}
 		#endregion

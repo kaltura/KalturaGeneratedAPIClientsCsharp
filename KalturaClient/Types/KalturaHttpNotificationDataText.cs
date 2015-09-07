@@ -74,8 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaHttpNotificationDataText");
-			if (this.Content != null)
-				kparams.Add("content", this.Content.ToParams());
+			kparams.AddIfNotNull("content", this.Content);
 			return kparams;
 		}
 		#endregion

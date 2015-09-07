@@ -64,7 +64,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaEmailNotificationRecipient(XmlElement node)
+		public KalturaEmailNotificationRecipient(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -87,10 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEmailNotificationRecipient");
-			if (this.Email != null)
-				kparams.Add("email", this.Email.ToParams());
-			if (this.Name != null)
-				kparams.Add("name", this.Name.ToParams());
+			kparams.AddIfNotNull("email", this.Email);
+			kparams.AddIfNotNull("name", this.Name);
 			return kparams;
 		}
 		#endregion

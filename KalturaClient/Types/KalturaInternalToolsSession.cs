@@ -124,7 +124,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaInternalToolsSession(XmlElement node)
+		public KalturaInternalToolsSession(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -165,14 +165,14 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaInternalToolsSession");
-			kparams.AddIntIfNotNull("partner_id", this.Partner_id);
-			kparams.AddIntIfNotNull("valid_until", this.Valid_until);
-			kparams.AddStringIfNotNull("partner_pattern", this.Partner_pattern);
-			kparams.AddEnumIfNotNull("type", this.Type);
-			kparams.AddStringIfNotNull("error", this.Error);
-			kparams.AddIntIfNotNull("rand", this.Rand);
-			kparams.AddStringIfNotNull("user", this.User);
-			kparams.AddStringIfNotNull("privileges", this.Privileges);
+			kparams.AddIfNotNull("partner_id", this.Partner_id);
+			kparams.AddIfNotNull("valid_until", this.Valid_until);
+			kparams.AddIfNotNull("partner_pattern", this.Partner_pattern);
+			kparams.AddIfNotNull("type", this.Type);
+			kparams.AddIfNotNull("error", this.Error);
+			kparams.AddIfNotNull("rand", this.Rand);
+			kparams.AddIfNotNull("user", this.User);
+			kparams.AddIfNotNull("privileges", this.Privileges);
 			return kparams;
 		}
 		#endregion

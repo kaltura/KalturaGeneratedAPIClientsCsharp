@@ -84,7 +84,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaMetadataProfileField(XmlElement node)
+		public KalturaMetadataProfileField(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaMetadataProfileField");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddStringIfNotNull("xPath", this.XPath);
-			kparams.AddStringIfNotNull("key", this.Key);
-			kparams.AddStringIfNotNull("label", this.Label);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("xPath", this.XPath);
+			kparams.AddIfNotNull("key", this.Key);
+			kparams.AddIfNotNull("label", this.Label);
 			return kparams;
 		}
 		#endregion

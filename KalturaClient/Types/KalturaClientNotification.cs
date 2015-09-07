@@ -64,7 +64,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaClientNotification(XmlElement node)
+		public KalturaClientNotification(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaClientNotification");
-			kparams.AddStringIfNotNull("url", this.Url);
-			kparams.AddStringIfNotNull("data", this.Data);
+			kparams.AddIfNotNull("url", this.Url);
+			kparams.AddIfNotNull("data", this.Data);
 			return kparams;
 		}
 		#endregion

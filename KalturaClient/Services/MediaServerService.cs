@@ -43,7 +43,7 @@ namespace Kaltura
 		public KalturaMediaServer Get(string hostname)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("hostname", hostname);
+			kparams.AddIfNotNull("hostname", hostname);
 			_Client.QueueServiceCall("mediaserver", "get", "KalturaMediaServer", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -54,9 +54,8 @@ namespace Kaltura
 		public KalturaMediaServer ReportStatus(string hostname, KalturaMediaServerStatus mediaServerStatus)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("hostname", hostname);
-			if (mediaServerStatus != null)
-				kparams.Add("mediaServerStatus", mediaServerStatus.ToParams());
+			kparams.AddIfNotNull("hostname", hostname);
+			kparams.AddIfNotNull("mediaServerStatus", mediaServerStatus);
 			_Client.QueueServiceCall("mediaserver", "reportStatus", "KalturaMediaServer", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

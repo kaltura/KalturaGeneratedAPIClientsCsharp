@@ -43,8 +43,7 @@ namespace Kaltura
 		public bool Collect(KalturaStatsEvent kevent)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (kevent != null)
-				kparams.Add("event", kevent.ToParams());
+			kparams.AddIfNotNull("event", kevent);
 			_Client.QueueServiceCall("stats", "collect", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return false;
@@ -57,8 +56,7 @@ namespace Kaltura
 		public void KmcCollect(KalturaStatsKmcEvent kmcEvent)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (kmcEvent != null)
-				kparams.Add("kmcEvent", kmcEvent.ToParams());
+			kparams.AddIfNotNull("kmcEvent", kmcEvent);
 			_Client.QueueServiceCall("stats", "kmcCollect", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -68,8 +66,7 @@ namespace Kaltura
 		public KalturaCEError ReportKceError(KalturaCEError kalturaCEError)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (kalturaCEError != null)
-				kparams.Add("kalturaCEError", kalturaCEError.ToParams());
+			kparams.AddIfNotNull("kalturaCEError", kalturaCEError);
 			_Client.QueueServiceCall("stats", "reportKceError", "KalturaCEError", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -80,8 +77,8 @@ namespace Kaltura
 		public void ReportError(string errorCode, string errorMessage)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("errorCode", errorCode);
-			kparams.AddStringIfNotNull("errorMessage", errorMessage);
+			kparams.AddIfNotNull("errorCode", errorCode);
+			kparams.AddIfNotNull("errorMessage", errorMessage);
 			_Client.QueueServiceCall("stats", "reportError", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;

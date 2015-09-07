@@ -156,28 +156,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaConvertCollectionJobData");
-			kparams.AddStringIfNotNull("destDirLocalPath", this.DestDirLocalPath);
-			kparams.AddStringIfNotNull("destDirRemoteUrl", this.DestDirRemoteUrl);
-			kparams.AddStringIfNotNull("destFileName", this.DestFileName);
-			kparams.AddStringIfNotNull("inputXmlLocalPath", this.InputXmlLocalPath);
-			kparams.AddStringIfNotNull("inputXmlRemoteUrl", this.InputXmlRemoteUrl);
-			kparams.AddStringIfNotNull("commandLinesStr", this.CommandLinesStr);
-			if (this.Flavors != null)
-			{
-				if (this.Flavors.Count == 0)
-				{
-					kparams.Add("flavors:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaConvertCollectionFlavorData item in this.Flavors)
-					{
-						kparams.Add("flavors:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
+			kparams.AddIfNotNull("destDirLocalPath", this.DestDirLocalPath);
+			kparams.AddIfNotNull("destDirRemoteUrl", this.DestDirRemoteUrl);
+			kparams.AddIfNotNull("destFileName", this.DestFileName);
+			kparams.AddIfNotNull("inputXmlLocalPath", this.InputXmlLocalPath);
+			kparams.AddIfNotNull("inputXmlRemoteUrl", this.InputXmlRemoteUrl);
+			kparams.AddIfNotNull("commandLinesStr", this.CommandLinesStr);
+			kparams.AddIfNotNull("flavors", this.Flavors);
 			return kparams;
 		}
 		#endregion

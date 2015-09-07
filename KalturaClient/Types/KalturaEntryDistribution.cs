@@ -324,7 +324,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaEntryDistribution(XmlElement node)
+		public KalturaEntryDistribution(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -429,49 +429,34 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEntryDistribution");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIntIfNotNull("submittedAt", this.SubmittedAt);
-			kparams.AddStringIfNotNull("entryId", this.EntryId);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIntIfNotNull("distributionProfileId", this.DistributionProfileId);
-			kparams.AddEnumIfNotNull("status", this.Status);
-			kparams.AddEnumIfNotNull("sunStatus", this.SunStatus);
-			kparams.AddEnumIfNotNull("dirtyStatus", this.DirtyStatus);
-			kparams.AddStringIfNotNull("thumbAssetIds", this.ThumbAssetIds);
-			kparams.AddStringIfNotNull("flavorAssetIds", this.FlavorAssetIds);
-			kparams.AddStringIfNotNull("assetIds", this.AssetIds);
-			kparams.AddIntIfNotNull("sunrise", this.Sunrise);
-			kparams.AddIntIfNotNull("sunset", this.Sunset);
-			kparams.AddStringIfNotNull("remoteId", this.RemoteId);
-			kparams.AddIntIfNotNull("plays", this.Plays);
-			kparams.AddIntIfNotNull("views", this.Views);
-			if (this.ValidationErrors != null)
-			{
-				if (this.ValidationErrors.Count == 0)
-				{
-					kparams.Add("validationErrors:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaDistributionValidationError item in this.ValidationErrors)
-					{
-						kparams.Add("validationErrors:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddEnumIfNotNull("errorType", this.ErrorType);
-			kparams.AddIntIfNotNull("errorNumber", this.ErrorNumber);
-			kparams.AddStringIfNotNull("errorDescription", this.ErrorDescription);
-			kparams.AddEnumIfNotNull("hasSubmitResultsLog", this.HasSubmitResultsLog);
-			kparams.AddEnumIfNotNull("hasSubmitSentDataLog", this.HasSubmitSentDataLog);
-			kparams.AddEnumIfNotNull("hasUpdateResultsLog", this.HasUpdateResultsLog);
-			kparams.AddEnumIfNotNull("hasUpdateSentDataLog", this.HasUpdateSentDataLog);
-			kparams.AddEnumIfNotNull("hasDeleteResultsLog", this.HasDeleteResultsLog);
-			kparams.AddEnumIfNotNull("hasDeleteSentDataLog", this.HasDeleteSentDataLog);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("submittedAt", this.SubmittedAt);
+			kparams.AddIfNotNull("entryId", this.EntryId);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("distributionProfileId", this.DistributionProfileId);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("sunStatus", this.SunStatus);
+			kparams.AddIfNotNull("dirtyStatus", this.DirtyStatus);
+			kparams.AddIfNotNull("thumbAssetIds", this.ThumbAssetIds);
+			kparams.AddIfNotNull("flavorAssetIds", this.FlavorAssetIds);
+			kparams.AddIfNotNull("assetIds", this.AssetIds);
+			kparams.AddIfNotNull("sunrise", this.Sunrise);
+			kparams.AddIfNotNull("sunset", this.Sunset);
+			kparams.AddIfNotNull("remoteId", this.RemoteId);
+			kparams.AddIfNotNull("plays", this.Plays);
+			kparams.AddIfNotNull("views", this.Views);
+			kparams.AddIfNotNull("validationErrors", this.ValidationErrors);
+			kparams.AddIfNotNull("errorType", this.ErrorType);
+			kparams.AddIfNotNull("errorNumber", this.ErrorNumber);
+			kparams.AddIfNotNull("errorDescription", this.ErrorDescription);
+			kparams.AddIfNotNull("hasSubmitResultsLog", this.HasSubmitResultsLog);
+			kparams.AddIfNotNull("hasSubmitSentDataLog", this.HasSubmitSentDataLog);
+			kparams.AddIfNotNull("hasUpdateResultsLog", this.HasUpdateResultsLog);
+			kparams.AddIfNotNull("hasUpdateSentDataLog", this.HasUpdateSentDataLog);
+			kparams.AddIfNotNull("hasDeleteResultsLog", this.HasDeleteResultsLog);
+			kparams.AddIfNotNull("hasDeleteSentDataLog", this.HasDeleteSentDataLog);
 			return kparams;
 		}
 		#endregion

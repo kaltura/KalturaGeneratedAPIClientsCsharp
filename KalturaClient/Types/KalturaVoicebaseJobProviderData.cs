@@ -178,15 +178,15 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaVoicebaseJobProviderData");
-			kparams.AddStringIfNotNull("entryId", this.EntryId);
-			kparams.AddStringIfNotNull("flavorAssetId", this.FlavorAssetId);
-			kparams.AddStringIfNotNull("transcriptId", this.TranscriptId);
-			kparams.AddStringIfNotNull("captionAssetFormats", this.CaptionAssetFormats);
-			kparams.AddStringIfNotNull("apiKey", this.ApiKey);
-			kparams.AddStringIfNotNull("apiPassword", this.ApiPassword);
-			kparams.AddStringEnumIfNotNull("spokenLanguage", this.SpokenLanguage);
-			kparams.AddStringIfNotNull("fileLocation", this.FileLocation);
-			kparams.AddBoolIfNotNull("replaceMediaContent", this.ReplaceMediaContent);
+			kparams.AddIfNotNull("entryId", this.EntryId);
+			kparams.AddIfNotNull("flavorAssetId", this.FlavorAssetId);
+			kparams.AddIfNotNull("transcriptId", this.TranscriptId);
+			kparams.AddIfNotNull("captionAssetFormats", this.CaptionAssetFormats);
+			kparams.AddIfNotNull("apiKey", this.ApiKey);
+			kparams.AddIfNotNull("apiPassword", this.ApiPassword);
+			kparams.AddIfNotNull("spokenLanguage", this.SpokenLanguage);
+			kparams.AddIfNotNull("fileLocation", this.FileLocation);
+			kparams.AddIfNotNull("replaceMediaContent", this.ReplaceMediaContent);
 			return kparams;
 		}
 		#endregion

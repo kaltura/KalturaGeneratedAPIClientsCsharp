@@ -100,11 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaConversionProfileAssetParamsFilter");
-			if (this.ConversionProfileIdFilter != null)
-				kparams.Add("conversionProfileIdFilter", this.ConversionProfileIdFilter.ToParams());
-			if (this.AssetParamsIdFilter != null)
-				kparams.Add("assetParamsIdFilter", this.AssetParamsIdFilter.ToParams());
-			kparams.AddStringEnumIfNotNull("orderBy", this.OrderBy);
+			kparams.AddIfNotNull("conversionProfileIdFilter", this.ConversionProfileIdFilter);
+			kparams.AddIfNotNull("assetParamsIdFilter", this.AssetParamsIdFilter);
+			kparams.AddIfNotNull("orderBy", this.OrderBy);
 			return kparams;
 		}
 		#endregion

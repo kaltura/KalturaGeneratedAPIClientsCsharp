@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaUiConf Add(KalturaUiConf uiConf)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (uiConf != null)
-				kparams.Add("uiConf", uiConf.ToParams());
+			kparams.AddIfNotNull("uiConf", uiConf);
 			_Client.QueueServiceCall("uiconf", "add", "KalturaUiConf", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,9 +54,8 @@ namespace Kaltura
 		public KalturaUiConf Update(int id, KalturaUiConf uiConf)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			if (uiConf != null)
-				kparams.Add("uiConf", uiConf.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("uiConf", uiConf);
 			_Client.QueueServiceCall("uiconf", "update", "KalturaUiConf", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -68,7 +66,7 @@ namespace Kaltura
 		public KalturaUiConf Get(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("uiconf", "get", "KalturaUiConf", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -79,7 +77,7 @@ namespace Kaltura
 		public void Delete(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("uiconf", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -89,7 +87,7 @@ namespace Kaltura
 		public KalturaUiConf Clone(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("uiconf", "clone", "KalturaUiConf", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -110,10 +108,8 @@ namespace Kaltura
 		public KalturaUiConfListResponse ListTemplates(KalturaUiConfFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("uiconf", "listTemplates", "KalturaUiConfListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -134,10 +130,8 @@ namespace Kaltura
 		public KalturaUiConfListResponse List(KalturaUiConfFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("uiconf", "list", "KalturaUiConfListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

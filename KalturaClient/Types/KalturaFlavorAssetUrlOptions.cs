@@ -54,7 +54,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaFlavorAssetUrlOptions(XmlElement node)
+		public KalturaFlavorAssetUrlOptions(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaFlavorAssetUrlOptions");
-			kparams.AddStringIfNotNull("fileName", this.FileName);
+			kparams.AddIfNotNull("fileName", this.FileName);
 			return kparams;
 		}
 		#endregion

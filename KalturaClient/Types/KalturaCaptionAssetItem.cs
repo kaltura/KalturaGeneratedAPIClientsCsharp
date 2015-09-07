@@ -94,7 +94,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaCaptionAssetItem(XmlElement node)
+		public KalturaCaptionAssetItem(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -126,13 +126,11 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCaptionAssetItem");
-			if (this.Asset != null)
-				kparams.Add("asset", this.Asset.ToParams());
-			if (this.Entry != null)
-				kparams.Add("entry", this.Entry.ToParams());
-			kparams.AddIntIfNotNull("startTime", this.StartTime);
-			kparams.AddIntIfNotNull("endTime", this.EndTime);
-			kparams.AddStringIfNotNull("content", this.Content);
+			kparams.AddIfNotNull("asset", this.Asset);
+			kparams.AddIfNotNull("entry", this.Entry);
+			kparams.AddIfNotNull("startTime", this.StartTime);
+			kparams.AddIfNotNull("endTime", this.EndTime);
+			kparams.AddIfNotNull("content", this.Content);
 			return kparams;
 		}
 		#endregion

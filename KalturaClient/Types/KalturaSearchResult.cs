@@ -204,17 +204,17 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSearchResult");
-			kparams.AddStringIfNotNull("id", this.Id);
-			kparams.AddStringIfNotNull("title", this.Title);
-			kparams.AddStringIfNotNull("thumbUrl", this.ThumbUrl);
-			kparams.AddStringIfNotNull("description", this.Description);
-			kparams.AddStringIfNotNull("tags", this.Tags);
-			kparams.AddStringIfNotNull("url", this.Url);
-			kparams.AddStringIfNotNull("sourceLink", this.SourceLink);
-			kparams.AddStringIfNotNull("credit", this.Credit);
-			kparams.AddEnumIfNotNull("licenseType", this.LicenseType);
-			kparams.AddStringIfNotNull("flashPlaybackType", this.FlashPlaybackType);
-			kparams.AddStringIfNotNull("fileExt", this.FileExt);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("title", this.Title);
+			kparams.AddIfNotNull("thumbUrl", this.ThumbUrl);
+			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("tags", this.Tags);
+			kparams.AddIfNotNull("url", this.Url);
+			kparams.AddIfNotNull("sourceLink", this.SourceLink);
+			kparams.AddIfNotNull("credit", this.Credit);
+			kparams.AddIfNotNull("licenseType", this.LicenseType);
+			kparams.AddIfNotNull("flashPlaybackType", this.FlashPlaybackType);
+			kparams.AddIfNotNull("fileExt", this.FileExt);
 			return kparams;
 		}
 		#endregion

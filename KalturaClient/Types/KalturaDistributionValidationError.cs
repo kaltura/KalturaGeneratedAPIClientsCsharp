@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaDistributionValidationError(XmlElement node)
+		public KalturaDistributionValidationError(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDistributionValidationError");
-			kparams.AddEnumIfNotNull("action", this.Action);
-			kparams.AddEnumIfNotNull("errorType", this.ErrorType);
-			kparams.AddStringIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("action", this.Action);
+			kparams.AddIfNotNull("errorType", this.ErrorType);
+			kparams.AddIfNotNull("description", this.Description);
 			return kparams;
 		}
 		#endregion

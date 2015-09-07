@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaUserRole Add(KalturaUserRole userRole)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (userRole != null)
-				kparams.Add("userRole", userRole.ToParams());
+			kparams.AddIfNotNull("userRole", userRole);
 			_Client.QueueServiceCall("userrole", "add", "KalturaUserRole", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,7 +54,7 @@ namespace Kaltura
 		public KalturaUserRole Get(int userRoleId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("userRoleId", userRoleId);
+			kparams.AddIfNotNull("userRoleId", userRoleId);
 			_Client.QueueServiceCall("userrole", "get", "KalturaUserRole", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -66,9 +65,8 @@ namespace Kaltura
 		public KalturaUserRole Update(int userRoleId, KalturaUserRole userRole)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("userRoleId", userRoleId);
-			if (userRole != null)
-				kparams.Add("userRole", userRole.ToParams());
+			kparams.AddIfNotNull("userRoleId", userRoleId);
+			kparams.AddIfNotNull("userRole", userRole);
 			_Client.QueueServiceCall("userrole", "update", "KalturaUserRole", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -79,7 +77,7 @@ namespace Kaltura
 		public KalturaUserRole Delete(int userRoleId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("userRoleId", userRoleId);
+			kparams.AddIfNotNull("userRoleId", userRoleId);
 			_Client.QueueServiceCall("userrole", "delete", "KalturaUserRole", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -100,10 +98,8 @@ namespace Kaltura
 		public KalturaUserRoleListResponse List(KalturaUserRoleFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("userrole", "list", "KalturaUserRoleListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -114,7 +110,7 @@ namespace Kaltura
 		public KalturaUserRole Clone(int userRoleId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("userRoleId", userRoleId);
+			kparams.AddIfNotNull("userRoleId", userRoleId);
 			_Client.QueueServiceCall("userrole", "clone", "KalturaUserRole", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDistributionValidationErrorInvalidMetadata");
-			kparams.AddIntIfNotNull("metadataProfileId", this.MetadataProfileId);
+			kparams.AddIfNotNull("metadataProfileId", this.MetadataProfileId);
 			return kparams;
 		}
 		#endregion

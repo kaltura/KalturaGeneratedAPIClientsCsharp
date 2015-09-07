@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAccessControlModifyRequestHostRegexAction");
-			kparams.AddStringIfNotNull("pattern", this.Pattern);
-			kparams.AddStringIfNotNull("replacement", this.Replacement);
+			kparams.AddIfNotNull("pattern", this.Pattern);
+			kparams.AddIfNotNull("replacement", this.Replacement);
 			return kparams;
 		}
 		#endregion

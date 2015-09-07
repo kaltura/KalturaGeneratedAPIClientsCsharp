@@ -54,7 +54,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaObjectIdentifier(XmlElement node)
+		public KalturaObjectIdentifier(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaObjectIdentifier");
-			kparams.AddStringIfNotNull("extendedFeatures", this.ExtendedFeatures);
+			kparams.AddIfNotNull("extendedFeatures", this.ExtendedFeatures);
 			return kparams;
 		}
 		#endregion

@@ -43,7 +43,7 @@ namespace Kaltura
 		public KalturaBulkUpload Get(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("bulkupload_bulk", "get", "KalturaBulkUpload", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -64,10 +64,8 @@ namespace Kaltura
 		public KalturaBulkUploadListResponse List(KalturaBulkUploadFilter bulkUploadFilter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (bulkUploadFilter != null)
-				kparams.Add("bulkUploadFilter", bulkUploadFilter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("bulkUploadFilter", bulkUploadFilter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("bulkupload_bulk", "list", "KalturaBulkUploadListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -78,7 +76,7 @@ namespace Kaltura
 		public KalturaBulkUpload Abort(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("bulkupload_bulk", "abort", "KalturaBulkUpload", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

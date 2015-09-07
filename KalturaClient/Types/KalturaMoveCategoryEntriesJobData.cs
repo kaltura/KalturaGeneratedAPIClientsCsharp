@@ -165,14 +165,14 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaMoveCategoryEntriesJobData");
-			kparams.AddIntIfNotNull("srcCategoryId", this.SrcCategoryId);
-			kparams.AddIntIfNotNull("destCategoryId", this.DestCategoryId);
-			kparams.AddIntIfNotNull("lastMovedCategoryId", this.LastMovedCategoryId);
-			kparams.AddIntIfNotNull("lastMovedCategoryPageIndex", this.LastMovedCategoryPageIndex);
-			kparams.AddIntIfNotNull("lastMovedCategoryEntryPageIndex", this.LastMovedCategoryEntryPageIndex);
-			kparams.AddBoolIfNotNull("moveFromChildren", this.MoveFromChildren);
-			kparams.AddBoolIfNotNull("copyOnly", this.CopyOnly);
-			kparams.AddStringIfNotNull("destCategoryFullIds", this.DestCategoryFullIds);
+			kparams.AddIfNotNull("srcCategoryId", this.SrcCategoryId);
+			kparams.AddIfNotNull("destCategoryId", this.DestCategoryId);
+			kparams.AddIfNotNull("lastMovedCategoryId", this.LastMovedCategoryId);
+			kparams.AddIfNotNull("lastMovedCategoryPageIndex", this.LastMovedCategoryPageIndex);
+			kparams.AddIfNotNull("lastMovedCategoryEntryPageIndex", this.LastMovedCategoryEntryPageIndex);
+			kparams.AddIfNotNull("moveFromChildren", this.MoveFromChildren);
+			kparams.AddIfNotNull("copyOnly", this.CopyOnly);
+			kparams.AddIfNotNull("destCategoryFullIds", this.DestCategoryFullIds);
 			return kparams;
 		}
 		#endregion

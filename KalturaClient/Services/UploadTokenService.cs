@@ -48,8 +48,7 @@ namespace Kaltura
 		public KalturaUploadToken Add(KalturaUploadToken uploadToken)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (uploadToken != null)
-				kparams.Add("uploadToken", uploadToken.ToParams());
+			kparams.AddIfNotNull("uploadToken", uploadToken);
 			_Client.QueueServiceCall("uploadtoken", "add", "KalturaUploadToken", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -60,7 +59,7 @@ namespace Kaltura
 		public KalturaUploadToken Get(string uploadTokenId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("uploadTokenId", uploadTokenId);
+			kparams.AddIfNotNull("uploadTokenId", uploadTokenId);
 			_Client.QueueServiceCall("uploadtoken", "get", "KalturaUploadToken", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -86,12 +85,12 @@ namespace Kaltura
 		public KalturaUploadToken Upload(string uploadTokenId, FileStream fileData, bool resume, bool finalChunk, float resumeAt)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("uploadTokenId", uploadTokenId);
+			kparams.AddIfNotNull("uploadTokenId", uploadTokenId);
 			KalturaFiles kfiles = new KalturaFiles();
 			kfiles.Add("fileData", fileData);
-			kparams.AddBoolIfNotNull("resume", resume);
-			kparams.AddBoolIfNotNull("finalChunk", finalChunk);
-			kparams.AddFloatIfNotNull("resumeAt", resumeAt);
+			kparams.AddIfNotNull("resume", resume);
+			kparams.AddIfNotNull("finalChunk", finalChunk);
+			kparams.AddIfNotNull("resumeAt", resumeAt);
 			_Client.QueueServiceCall("uploadtoken", "upload", "KalturaUploadToken", kparams, kfiles);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -102,7 +101,7 @@ namespace Kaltura
 		public void Delete(string uploadTokenId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("uploadTokenId", uploadTokenId);
+			kparams.AddIfNotNull("uploadTokenId", uploadTokenId);
 			_Client.QueueServiceCall("uploadtoken", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -122,10 +121,8 @@ namespace Kaltura
 		public KalturaUploadTokenListResponse List(KalturaUploadTokenFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("uploadtoken", "list", "KalturaUploadTokenListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

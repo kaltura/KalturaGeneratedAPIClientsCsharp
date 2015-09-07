@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAssetDistributionPropertyCondition");
-			kparams.AddStringIfNotNull("propertyName", this.PropertyName);
-			kparams.AddStringIfNotNull("propertyValue", this.PropertyValue);
+			kparams.AddIfNotNull("propertyName", this.PropertyName);
+			kparams.AddIfNotNull("propertyValue", this.PropertyValue);
 			return kparams;
 		}
 		#endregion

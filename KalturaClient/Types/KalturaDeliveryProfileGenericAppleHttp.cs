@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDeliveryProfileGenericAppleHttp");
-			kparams.AddStringIfNotNull("pattern", this.Pattern);
-			kparams.AddStringIfNotNull("rendererClass", this.RendererClass);
-			kparams.AddEnumIfNotNull("manifestRedirect", this.ManifestRedirect);
+			kparams.AddIfNotNull("pattern", this.Pattern);
+			kparams.AddIfNotNull("rendererClass", this.RendererClass);
+			kparams.AddIfNotNull("manifestRedirect", this.ManifestRedirect);
 			return kparams;
 		}
 		#endregion

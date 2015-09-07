@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaClipAttributes");
-			kparams.AddIntIfNotNull("offset", this.Offset);
-			kparams.AddIntIfNotNull("duration", this.Duration);
+			kparams.AddIfNotNull("offset", this.Offset);
+			kparams.AddIfNotNull("duration", this.Duration);
 			return kparams;
 		}
 		#endregion

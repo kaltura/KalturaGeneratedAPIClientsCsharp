@@ -114,7 +114,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaHttpNotification(XmlElement node)
+		public KalturaHttpNotification(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -152,14 +152,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaHttpNotification");
-			if (this.Object != null)
-				kparams.Add("object", this.Object.ToParams());
-			kparams.AddStringEnumIfNotNull("eventObjectType", this.EventObjectType);
-			kparams.AddLongIfNotNull("eventNotificationJobId", this.EventNotificationJobId);
-			kparams.AddIntIfNotNull("templateId", this.TemplateId);
-			kparams.AddStringIfNotNull("templateName", this.TemplateName);
-			kparams.AddStringIfNotNull("templateSystemName", this.TemplateSystemName);
-			kparams.AddStringEnumIfNotNull("eventType", this.EventType);
+			kparams.AddIfNotNull("object", this.Object);
+			kparams.AddIfNotNull("eventObjectType", this.EventObjectType);
+			kparams.AddIfNotNull("eventNotificationJobId", this.EventNotificationJobId);
+			kparams.AddIfNotNull("templateId", this.TemplateId);
+			kparams.AddIfNotNull("templateName", this.TemplateName);
+			kparams.AddIfNotNull("templateSystemName", this.TemplateSystemName);
+			kparams.AddIfNotNull("eventType", this.EventType);
 			return kparams;
 		}
 		#endregion

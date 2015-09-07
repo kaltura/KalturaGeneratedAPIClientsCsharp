@@ -152,17 +152,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaGenericDistributionProfile");
-			kparams.AddIntIfNotNull("genericProviderId", this.GenericProviderId);
-			if (this.SubmitAction != null)
-				kparams.Add("submitAction", this.SubmitAction.ToParams());
-			if (this.UpdateAction != null)
-				kparams.Add("updateAction", this.UpdateAction.ToParams());
-			if (this.DeleteAction != null)
-				kparams.Add("deleteAction", this.DeleteAction.ToParams());
-			if (this.FetchReportAction != null)
-				kparams.Add("fetchReportAction", this.FetchReportAction.ToParams());
-			kparams.AddStringIfNotNull("updateRequiredEntryFields", this.UpdateRequiredEntryFields);
-			kparams.AddStringIfNotNull("updateRequiredMetadataXPaths", this.UpdateRequiredMetadataXPaths);
+			kparams.AddIfNotNull("genericProviderId", this.GenericProviderId);
+			kparams.AddIfNotNull("submitAction", this.SubmitAction);
+			kparams.AddIfNotNull("updateAction", this.UpdateAction);
+			kparams.AddIfNotNull("deleteAction", this.DeleteAction);
+			kparams.AddIfNotNull("fetchReportAction", this.FetchReportAction);
+			kparams.AddIfNotNull("updateRequiredEntryFields", this.UpdateRequiredEntryFields);
+			kparams.AddIfNotNull("updateRequiredMetadataXPaths", this.UpdateRequiredMetadataXPaths);
 			return kparams;
 		}
 		#endregion

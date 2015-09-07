@@ -43,7 +43,7 @@ namespace Kaltura
 		public KalturaFlavorParamsOutput Get(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("flavorparamsoutput", "get", "KalturaFlavorParamsOutput", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -64,10 +64,8 @@ namespace Kaltura
 		public KalturaFlavorParamsOutputListResponse List(KalturaFlavorParamsOutputFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("flavorparamsoutput", "list", "KalturaFlavorParamsOutputListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

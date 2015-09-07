@@ -53,10 +53,8 @@ namespace Kaltura
 		public KalturaConversionProfileAssetParamsListResponse List(KalturaConversionProfileAssetParamsFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("conversionprofileassetparams", "list", "KalturaConversionProfileAssetParamsListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -67,10 +65,9 @@ namespace Kaltura
 		public KalturaConversionProfileAssetParams Update(int conversionProfileId, int assetParamsId, KalturaConversionProfileAssetParams conversionProfileAssetParams)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("conversionProfileId", conversionProfileId);
-			kparams.AddIntIfNotNull("assetParamsId", assetParamsId);
-			if (conversionProfileAssetParams != null)
-				kparams.Add("conversionProfileAssetParams", conversionProfileAssetParams.ToParams());
+			kparams.AddIfNotNull("conversionProfileId", conversionProfileId);
+			kparams.AddIfNotNull("assetParamsId", assetParamsId);
+			kparams.AddIfNotNull("conversionProfileAssetParams", conversionProfileAssetParams);
 			_Client.QueueServiceCall("conversionprofileassetparams", "update", "KalturaConversionProfileAssetParams", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

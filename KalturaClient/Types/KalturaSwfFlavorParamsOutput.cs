@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSwfFlavorParamsOutput");
-			kparams.AddIntIfNotNull("flashVersion", this.FlashVersion);
-			kparams.AddBoolIfNotNull("poly2Bitmap", this.Poly2Bitmap);
+			kparams.AddIfNotNull("flashVersion", this.FlashVersion);
+			kparams.AddIfNotNull("poly2Bitmap", this.Poly2Bitmap);
 			return kparams;
 		}
 		#endregion

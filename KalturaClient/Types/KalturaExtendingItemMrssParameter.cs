@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaExtendingItemMrssParameter(XmlElement node)
+		public KalturaExtendingItemMrssParameter(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -100,10 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaExtendingItemMrssParameter");
-			kparams.AddStringIfNotNull("xpath", this.Xpath);
-			if (this.Identifier != null)
-				kparams.Add("identifier", this.Identifier.ToParams());
-			kparams.AddEnumIfNotNull("extensionMode", this.ExtensionMode);
+			kparams.AddIfNotNull("xpath", this.Xpath);
+			kparams.AddIfNotNull("identifier", this.Identifier);
+			kparams.AddIfNotNull("extensionMode", this.ExtensionMode);
 			return kparams;
 		}
 		#endregion

@@ -44,7 +44,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaMediaServerStatus(XmlElement node)
+		public KalturaMediaServerStatus(XmlElement node) : base(node)
 		{
 		}
 		#endregion

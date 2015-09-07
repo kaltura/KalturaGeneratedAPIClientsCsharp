@@ -64,7 +64,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaRemotePath(XmlElement node)
+		public KalturaRemotePath(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaRemotePath");
-			kparams.AddIntIfNotNull("storageProfileId", this.StorageProfileId);
-			kparams.AddStringIfNotNull("uri", this.Uri);
+			kparams.AddIfNotNull("storageProfileId", this.StorageProfileId);
+			kparams.AddIfNotNull("uri", this.Uri);
 			return kparams;
 		}
 		#endregion

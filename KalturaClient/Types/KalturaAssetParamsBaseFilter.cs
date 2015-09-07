@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAssetParamsBaseFilter");
-			kparams.AddStringIfNotNull("systemNameEqual", this.SystemNameEqual);
-			kparams.AddStringIfNotNull("systemNameIn", this.SystemNameIn);
-			kparams.AddEnumIfNotNull("isSystemDefaultEqual", this.IsSystemDefaultEqual);
-			kparams.AddStringIfNotNull("tagsEqual", this.TagsEqual);
+			kparams.AddIfNotNull("systemNameEqual", this.SystemNameEqual);
+			kparams.AddIfNotNull("systemNameIn", this.SystemNameIn);
+			kparams.AddIfNotNull("isSystemDefaultEqual", this.IsSystemDefaultEqual);
+			kparams.AddIfNotNull("tagsEqual", this.TagsEqual);
 			return kparams;
 		}
 		#endregion

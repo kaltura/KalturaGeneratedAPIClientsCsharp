@@ -34,11 +34,11 @@ namespace Kaltura
 	public class KalturaObjectListResponse : KalturaListResponse
 	{
 		#region Private Fields
-		private IList<KalturaObject> _Objects;
+		private IList<KalturaObjectBase> _Objects;
 		#endregion
 
 		#region Properties
-		public IList<KalturaObject> Objects
+		public IList<KalturaObjectBase> Objects
 		{
 			get { return _Objects; }
 			set 
@@ -62,10 +62,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "objects":
-						this.Objects = new List<KalturaObject>();
+						this.Objects = new List<KalturaObjectBase>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Objects.Add((KalturaObject)KalturaObjectFactory.Create(arrayNode, "KalturaObject"));
+							this.Objects.Add((KalturaObjectBase)KalturaObjectFactory.Create(arrayNode, "KalturaObjectBase"));
 						}
 						continue;
 				}
@@ -78,22 +78,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaObjectListResponse");
-			if (this.Objects != null)
-			{
-				if (this.Objects.Count == 0)
-				{
-					kparams.Add("objects:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaObject item in this.Objects)
-					{
-						kparams.Add("objects:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
+			kparams.AddIfNotNull("objects", this.Objects);
 			return kparams;
 		}
 		#endregion

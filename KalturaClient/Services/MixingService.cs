@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaMixEntry Add(KalturaMixEntry mixEntry)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (mixEntry != null)
-				kparams.Add("mixEntry", mixEntry.ToParams());
+			kparams.AddIfNotNull("mixEntry", mixEntry);
 			_Client.QueueServiceCall("mixing", "add", "KalturaMixEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -60,8 +59,8 @@ namespace Kaltura
 		public KalturaMixEntry Get(string entryId, int version)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddIntIfNotNull("version", version);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("version", version);
 			_Client.QueueServiceCall("mixing", "get", "KalturaMixEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -72,9 +71,8 @@ namespace Kaltura
 		public KalturaMixEntry Update(string entryId, KalturaMixEntry mixEntry)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			if (mixEntry != null)
-				kparams.Add("mixEntry", mixEntry.ToParams());
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("mixEntry", mixEntry);
 			_Client.QueueServiceCall("mixing", "update", "KalturaMixEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -85,7 +83,7 @@ namespace Kaltura
 		public void Delete(string entryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("entryId", entryId);
 			_Client.QueueServiceCall("mixing", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -105,10 +103,8 @@ namespace Kaltura
 		public KalturaMixListResponse List(KalturaMixEntryFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("mixing", "list", "KalturaMixListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -124,8 +120,7 @@ namespace Kaltura
 		public int Count(KalturaMediaEntryFilter filter)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
+			kparams.AddIfNotNull("filter", filter);
 			_Client.QueueServiceCall("mixing", "count", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return 0;
@@ -136,7 +131,7 @@ namespace Kaltura
 		public KalturaMixEntry Clone(string entryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("entryId", entryId);
 			_Client.QueueServiceCall("mixing", "clone", "KalturaMixEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -147,8 +142,8 @@ namespace Kaltura
 		public KalturaMixEntry AppendMediaEntry(string mixEntryId, string mediaEntryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("mixEntryId", mixEntryId);
-			kparams.AddStringIfNotNull("mediaEntryId", mediaEntryId);
+			kparams.AddIfNotNull("mixEntryId", mixEntryId);
+			kparams.AddIfNotNull("mediaEntryId", mediaEntryId);
 			_Client.QueueServiceCall("mixing", "appendMediaEntry", "KalturaMixEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -159,7 +154,7 @@ namespace Kaltura
 		public IList<KalturaMixEntry> GetMixesByMediaId(string mediaEntryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("mediaEntryId", mediaEntryId);
+			kparams.AddIfNotNull("mediaEntryId", mediaEntryId);
 			_Client.QueueServiceCall("mixing", "getMixesByMediaId", "KalturaMixEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -180,8 +175,8 @@ namespace Kaltura
 		public IList<KalturaMediaEntry> GetReadyMediaEntries(string mixId, int version)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("mixId", mixId);
-			kparams.AddIntIfNotNull("version", version);
+			kparams.AddIfNotNull("mixId", mixId);
+			kparams.AddIfNotNull("version", version);
 			_Client.QueueServiceCall("mixing", "getReadyMediaEntries", "KalturaMediaEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -197,8 +192,8 @@ namespace Kaltura
 		public void AnonymousRank(string entryId, int rank)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddIntIfNotNull("rank", rank);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("rank", rank);
 			_Client.QueueServiceCall("mixing", "anonymousRank", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;

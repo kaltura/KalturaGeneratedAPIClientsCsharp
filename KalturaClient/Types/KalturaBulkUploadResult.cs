@@ -204,7 +204,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaBulkUploadResult(XmlElement node)
+		public KalturaBulkUploadResult(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -273,37 +273,22 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaBulkUploadResult");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddLongIfNotNull("bulkUploadJobId", this.BulkUploadJobId);
-			kparams.AddIntIfNotNull("lineIndex", this.LineIndex);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringEnumIfNotNull("status", this.Status);
-			kparams.AddStringEnumIfNotNull("action", this.Action);
-			kparams.AddStringIfNotNull("objectId", this.ObjectId);
-			kparams.AddIntIfNotNull("objectStatus", this.ObjectStatus);
-			kparams.AddStringEnumIfNotNull("bulkUploadResultObjectType", this.BulkUploadResultObjectType);
-			kparams.AddStringIfNotNull("rowData", this.RowData);
-			kparams.AddStringIfNotNull("partnerData", this.PartnerData);
-			kparams.AddStringIfNotNull("objectErrorDescription", this.ObjectErrorDescription);
-			if (this.PluginsData != null)
-			{
-				if (this.PluginsData.Count == 0)
-				{
-					kparams.Add("pluginsData:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaBulkUploadPluginData item in this.PluginsData)
-					{
-						kparams.Add("pluginsData:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddStringIfNotNull("errorDescription", this.ErrorDescription);
-			kparams.AddStringIfNotNull("errorCode", this.ErrorCode);
-			kparams.AddIntIfNotNull("errorType", this.ErrorType);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("bulkUploadJobId", this.BulkUploadJobId);
+			kparams.AddIfNotNull("lineIndex", this.LineIndex);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("action", this.Action);
+			kparams.AddIfNotNull("objectId", this.ObjectId);
+			kparams.AddIfNotNull("objectStatus", this.ObjectStatus);
+			kparams.AddIfNotNull("bulkUploadResultObjectType", this.BulkUploadResultObjectType);
+			kparams.AddIfNotNull("rowData", this.RowData);
+			kparams.AddIfNotNull("partnerData", this.PartnerData);
+			kparams.AddIfNotNull("objectErrorDescription", this.ObjectErrorDescription);
+			kparams.AddIfNotNull("pluginsData", this.PluginsData);
+			kparams.AddIfNotNull("errorDescription", this.ErrorDescription);
+			kparams.AddIfNotNull("errorCode", this.ErrorCode);
+			kparams.AddIfNotNull("errorType", this.ErrorType);
 			return kparams;
 		}
 		#endregion

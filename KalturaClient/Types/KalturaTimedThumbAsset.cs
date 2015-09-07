@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaTimedThumbAsset");
-			kparams.AddStringIfNotNull("cuePointId", this.CuePointId);
+			kparams.AddIfNotNull("cuePointId", this.CuePointId);
 			return kparams;
 		}
 		#endregion

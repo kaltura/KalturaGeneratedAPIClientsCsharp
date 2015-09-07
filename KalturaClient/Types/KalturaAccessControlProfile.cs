@@ -134,7 +134,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaAccessControlProfile(XmlElement node)
+		public KalturaAccessControlProfile(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -182,30 +182,15 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAccessControlProfile");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringIfNotNull("name", this.Name);
-			kparams.AddStringIfNotNull("systemName", this.SystemName);
-			kparams.AddStringIfNotNull("description", this.Description);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddEnumIfNotNull("isDefault", this.IsDefault);
-			if (this.Rules != null)
-			{
-				if (this.Rules.Count == 0)
-				{
-					kparams.Add("rules:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaRule item in this.Rules)
-					{
-						kparams.Add("rules:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("systemName", this.SystemName);
+			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("isDefault", this.IsDefault);
+			kparams.AddIfNotNull("rules", this.Rules);
 			return kparams;
 		}
 		#endregion

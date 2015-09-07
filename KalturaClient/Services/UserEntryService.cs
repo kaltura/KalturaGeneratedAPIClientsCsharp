@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaUserEntry Add(KalturaUserEntry userEntry)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (userEntry != null)
-				kparams.Add("userEntry", userEntry.ToParams());
+			kparams.AddIfNotNull("userEntry", userEntry);
 			_Client.QueueServiceCall("userentry", "add", "KalturaUserEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,9 +54,8 @@ namespace Kaltura
 		public void Update(int id, KalturaUserEntry userEntry)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			if (userEntry != null)
-				kparams.Add("userEntry", userEntry.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("userEntry", userEntry);
 			_Client.QueueServiceCall("userentry", "update", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -67,7 +65,7 @@ namespace Kaltura
 		public KalturaUserEntry Delete(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("userentry", "delete", "KalturaUserEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -83,10 +81,8 @@ namespace Kaltura
 		public KalturaUserEntryListResponse List(KalturaUserEntryFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("userentry", "list", "KalturaUserEntryListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -97,7 +93,7 @@ namespace Kaltura
 		public KalturaUserEntry Get(string id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("userentry", "get", "KalturaUserEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -108,7 +104,7 @@ namespace Kaltura
 		public KalturaQuizUserEntry SubmitQuiz(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("userentry", "submitQuiz", "KalturaQuizUserEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

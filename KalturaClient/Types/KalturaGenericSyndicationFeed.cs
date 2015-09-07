@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaGenericSyndicationFeed");
-			kparams.AddStringIfNotNull("feedDescription", this.FeedDescription);
-			kparams.AddStringIfNotNull("feedLandingPage", this.FeedLandingPage);
+			kparams.AddIfNotNull("feedDescription", this.FeedDescription);
+			kparams.AddIfNotNull("feedLandingPage", this.FeedLandingPage);
 			return kparams;
 		}
 		#endregion

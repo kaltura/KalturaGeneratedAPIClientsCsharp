@@ -234,7 +234,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaConversionProfile(XmlElement node)
+		public KalturaConversionProfile(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -308,26 +308,25 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaConversionProfile");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringEnumIfNotNull("status", this.Status);
-			kparams.AddStringEnumIfNotNull("type", this.Type);
-			kparams.AddStringIfNotNull("name", this.Name);
-			kparams.AddStringIfNotNull("systemName", this.SystemName);
-			kparams.AddStringIfNotNull("tags", this.Tags);
-			kparams.AddStringIfNotNull("description", this.Description);
-			kparams.AddStringIfNotNull("defaultEntryId", this.DefaultEntryId);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddStringIfNotNull("flavorParamsIds", this.FlavorParamsIds);
-			kparams.AddEnumIfNotNull("isDefault", this.IsDefault);
-			kparams.AddBoolIfNotNull("isPartnerDefault", this.IsPartnerDefault);
-			if (this.CropDimensions != null)
-				kparams.Add("cropDimensions", this.CropDimensions.ToParams());
-			kparams.AddIntIfNotNull("clipStart", this.ClipStart);
-			kparams.AddIntIfNotNull("clipDuration", this.ClipDuration);
-			kparams.AddStringIfNotNull("xslTransformation", this.XslTransformation);
-			kparams.AddIntIfNotNull("storageProfileId", this.StorageProfileId);
-			kparams.AddStringEnumIfNotNull("mediaParserType", this.MediaParserType);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("type", this.Type);
+			kparams.AddIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("systemName", this.SystemName);
+			kparams.AddIfNotNull("tags", this.Tags);
+			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("defaultEntryId", this.DefaultEntryId);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("flavorParamsIds", this.FlavorParamsIds);
+			kparams.AddIfNotNull("isDefault", this.IsDefault);
+			kparams.AddIfNotNull("isPartnerDefault", this.IsPartnerDefault);
+			kparams.AddIfNotNull("cropDimensions", this.CropDimensions);
+			kparams.AddIfNotNull("clipStart", this.ClipStart);
+			kparams.AddIfNotNull("clipDuration", this.ClipDuration);
+			kparams.AddIfNotNull("xslTransformation", this.XslTransformation);
+			kparams.AddIfNotNull("storageProfileId", this.StorageProfileId);
+			kparams.AddIfNotNull("mediaParserType", this.MediaParserType);
 			return kparams;
 		}
 		#endregion

@@ -78,22 +78,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEmailNotificationStaticRecipientJobData");
-			if (this.EmailRecipients != null)
-			{
-				if (this.EmailRecipients.Count == 0)
-				{
-					kparams.Add("emailRecipients:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaKeyValue item in this.EmailRecipients)
-					{
-						kparams.Add("emailRecipients:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
+			kparams.AddIfNotNull("emailRecipients", this.EmailRecipients);
 			return kparams;
 		}
 		#endregion

@@ -64,7 +64,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaResponseProfileCacheRecalculateResults(XmlElement node)
+		public KalturaResponseProfileCacheRecalculateResults(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaResponseProfileCacheRecalculateResults");
-			kparams.AddStringIfNotNull("lastObjectKey", this.LastObjectKey);
-			kparams.AddIntIfNotNull("recalculated", this.Recalculated);
+			kparams.AddIfNotNull("lastObjectKey", this.LastObjectKey);
+			kparams.AddIfNotNull("recalculated", this.Recalculated);
 			return kparams;
 		}
 		#endregion

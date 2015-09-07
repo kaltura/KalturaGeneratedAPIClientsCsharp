@@ -243,21 +243,20 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaBulkUploadJobData");
-			kparams.AddStringIfNotNull("userId", this.UserId);
-			kparams.AddStringIfNotNull("uploadedBy", this.UploadedBy);
-			kparams.AddIntIfNotNull("conversionProfileId", this.ConversionProfileId);
-			kparams.AddStringIfNotNull("resultsFileLocalPath", this.ResultsFileLocalPath);
-			kparams.AddStringIfNotNull("resultsFileUrl", this.ResultsFileUrl);
-			kparams.AddIntIfNotNull("numOfEntries", this.NumOfEntries);
-			kparams.AddIntIfNotNull("numOfObjects", this.NumOfObjects);
-			kparams.AddStringIfNotNull("filePath", this.FilePath);
-			kparams.AddStringEnumIfNotNull("bulkUploadObjectType", this.BulkUploadObjectType);
-			kparams.AddStringIfNotNull("fileName", this.FileName);
-			if (this.ObjectData != null)
-				kparams.Add("objectData", this.ObjectData.ToParams());
-			kparams.AddStringEnumIfNotNull("type", this.Type);
-			kparams.AddStringIfNotNull("emailRecipients", this.EmailRecipients);
-			kparams.AddIntIfNotNull("numOfErrorObjects", this.NumOfErrorObjects);
+			kparams.AddIfNotNull("userId", this.UserId);
+			kparams.AddIfNotNull("uploadedBy", this.UploadedBy);
+			kparams.AddIfNotNull("conversionProfileId", this.ConversionProfileId);
+			kparams.AddIfNotNull("resultsFileLocalPath", this.ResultsFileLocalPath);
+			kparams.AddIfNotNull("resultsFileUrl", this.ResultsFileUrl);
+			kparams.AddIfNotNull("numOfEntries", this.NumOfEntries);
+			kparams.AddIfNotNull("numOfObjects", this.NumOfObjects);
+			kparams.AddIfNotNull("filePath", this.FilePath);
+			kparams.AddIfNotNull("bulkUploadObjectType", this.BulkUploadObjectType);
+			kparams.AddIfNotNull("fileName", this.FileName);
+			kparams.AddIfNotNull("objectData", this.ObjectData);
+			kparams.AddIfNotNull("type", this.Type);
+			kparams.AddIfNotNull("emailRecipients", this.EmailRecipients);
+			kparams.AddIfNotNull("numOfErrorObjects", this.NumOfErrorObjects);
 			return kparams;
 		}
 		#endregion

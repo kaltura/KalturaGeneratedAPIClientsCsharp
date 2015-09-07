@@ -48,8 +48,8 @@ namespace Kaltura
 		public string XAddBulkDownload(string entryIds, string flavorParamsId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryIds", entryIds);
-			kparams.AddStringIfNotNull("flavorParamsId", flavorParamsId);
+			kparams.AddIfNotNull("entryIds", entryIds);
+			kparams.AddIfNotNull("flavorParamsId", flavorParamsId);
 			_Client.QueueServiceCall("xinternal", "xAddBulkDownload", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

@@ -34,14 +34,14 @@ namespace Kaltura
 	public class KalturaQuestionCuePoint : KalturaCuePoint
 	{
 		#region Private Fields
-		private Dictionary<string, KalturaOptionalAnswer> _OptionalAnswers;
+		private IDictionary<string, KalturaOptionalAnswer> _OptionalAnswers;
 		private string _Hint = null;
 		private string _Question = null;
 		private string _Explanation = null;
 		#endregion
 
 		#region Properties
-		public Dictionary<string, KalturaOptionalAnswer> OptionalAnswers
+		public IDictionary<string, KalturaOptionalAnswer> OptionalAnswers
 		{
 			get { return _OptionalAnswers; }
 			set 
@@ -93,12 +93,12 @@ namespace Kaltura
 				{
 					case "optionalAnswers":
 						{
-							int index = 0;
+							string key;
 							this.OptionalAnswers = new Dictionary<string, KalturaOptionalAnswer>();
 							foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 							{
-								this.OptionalAnswers[index.ToString()] = (KalturaOptionalAnswer)KalturaObjectFactory.Create(arrayNode, "KalturaOptionalAnswer");
-								index++;
+								key = arrayNode["itemKey"].InnerText;;
+								this.OptionalAnswers[key] = (KalturaOptionalAnswer)KalturaObjectFactory.Create(arrayNode, "KalturaOptionalAnswer");
 							}
 						}
 						continue;
@@ -121,23 +121,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaQuestionCuePoint");
-			if (this.OptionalAnswers != null)
-			{
-				if (this.OptionalAnswers.Count == 0)
-				{
-					kparams.Add("optionalAnswers:-", "");
-				}
-				else
-				{
-					foreach (KeyValuePair<string, KalturaOptionalAnswer> curEntry in this.OptionalAnswers)
-					{
-						kparams.Add("optionalAnswers:" + curEntry.Key, curEntry.Value.ToParams());
-					}
-				}
-			}
-			kparams.AddStringIfNotNull("hint", this.Hint);
-			kparams.AddStringIfNotNull("question", this.Question);
-			kparams.AddStringIfNotNull("explanation", this.Explanation);
+			kparams.AddIfNotNull("optionalAnswers", this.OptionalAnswers);
+			kparams.AddIfNotNull("hint", this.Hint);
+			kparams.AddIfNotNull("question", this.Question);
+			kparams.AddIfNotNull("explanation", this.Explanation);
 			return kparams;
 		}
 		#endregion

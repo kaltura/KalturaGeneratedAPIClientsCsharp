@@ -191,16 +191,16 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveChannelSegmentBaseFilter");
-			kparams.AddIntIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
-			kparams.AddIntIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
-			kparams.AddStringEnumIfNotNull("statusEqual", this.StatusEqual);
-			kparams.AddStringIfNotNull("statusIn", this.StatusIn);
-			kparams.AddStringIfNotNull("channelIdEqual", this.ChannelIdEqual);
-			kparams.AddStringIfNotNull("channelIdIn", this.ChannelIdIn);
-			kparams.AddFloatIfNotNull("startTimeGreaterThanOrEqual", this.StartTimeGreaterThanOrEqual);
-			kparams.AddFloatIfNotNull("startTimeLessThanOrEqual", this.StartTimeLessThanOrEqual);
+			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("statusEqual", this.StatusEqual);
+			kparams.AddIfNotNull("statusIn", this.StatusIn);
+			kparams.AddIfNotNull("channelIdEqual", this.ChannelIdEqual);
+			kparams.AddIfNotNull("channelIdIn", this.ChannelIdIn);
+			kparams.AddIfNotNull("startTimeGreaterThanOrEqual", this.StartTimeGreaterThanOrEqual);
+			kparams.AddIfNotNull("startTimeLessThanOrEqual", this.StartTimeLessThanOrEqual);
 			return kparams;
 		}
 		#endregion

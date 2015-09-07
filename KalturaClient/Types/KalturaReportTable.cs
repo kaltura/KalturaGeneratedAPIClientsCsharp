@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaReportTable(XmlElement node)
+		public KalturaReportTable(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaReportTable");
-			kparams.AddStringIfNotNull("header", this.Header);
-			kparams.AddStringIfNotNull("data", this.Data);
-			kparams.AddIntIfNotNull("totalCount", this.TotalCount);
+			kparams.AddIfNotNull("header", this.Header);
+			kparams.AddIfNotNull("data", this.Data);
+			kparams.AddIfNotNull("totalCount", this.TotalCount);
 			return kparams;
 		}
 		#endregion

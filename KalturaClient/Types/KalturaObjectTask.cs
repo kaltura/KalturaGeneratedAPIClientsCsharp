@@ -64,7 +64,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaObjectTask(XmlElement node)
+		public KalturaObjectTask(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaObjectTask");
-			kparams.AddStringEnumIfNotNull("type", this.Type);
-			kparams.AddBoolIfNotNull("stopProcessingOnError", this.StopProcessingOnError);
+			kparams.AddIfNotNull("type", this.Type);
+			kparams.AddIfNotNull("stopProcessingOnError", this.StopProcessingOnError);
 			return kparams;
 		}
 		#endregion

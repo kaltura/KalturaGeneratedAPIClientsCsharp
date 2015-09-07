@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaConvertEntryFlavorsObjectTask");
-			kparams.AddStringIfNotNull("flavorParamsIds", this.FlavorParamsIds);
-			kparams.AddBoolIfNotNull("reconvert", this.Reconvert);
+			kparams.AddIfNotNull("flavorParamsIds", this.FlavorParamsIds);
+			kparams.AddIfNotNull("reconvert", this.Reconvert);
 			return kparams;
 		}
 		#endregion

@@ -154,7 +154,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaStatsKmcEvent(XmlElement node)
+		public KalturaStatsKmcEvent(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -204,17 +204,17 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaStatsKmcEvent");
-			kparams.AddStringIfNotNull("clientVer", this.ClientVer);
-			kparams.AddStringIfNotNull("kmcEventActionPath", this.KmcEventActionPath);
-			kparams.AddEnumIfNotNull("kmcEventType", this.KmcEventType);
-			kparams.AddFloatIfNotNull("eventTimestamp", this.EventTimestamp);
-			kparams.AddStringIfNotNull("sessionId", this.SessionId);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringIfNotNull("entryId", this.EntryId);
-			kparams.AddStringIfNotNull("widgetId", this.WidgetId);
-			kparams.AddIntIfNotNull("uiconfId", this.UiconfId);
-			kparams.AddStringIfNotNull("userId", this.UserId);
-			kparams.AddStringIfNotNull("userIp", this.UserIp);
+			kparams.AddIfNotNull("clientVer", this.ClientVer);
+			kparams.AddIfNotNull("kmcEventActionPath", this.KmcEventActionPath);
+			kparams.AddIfNotNull("kmcEventType", this.KmcEventType);
+			kparams.AddIfNotNull("eventTimestamp", this.EventTimestamp);
+			kparams.AddIfNotNull("sessionId", this.SessionId);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("entryId", this.EntryId);
+			kparams.AddIfNotNull("widgetId", this.WidgetId);
+			kparams.AddIfNotNull("uiconfId", this.UiconfId);
+			kparams.AddIfNotNull("userId", this.UserId);
+			kparams.AddIfNotNull("userIp", this.UserIp);
 			return kparams;
 		}
 		#endregion

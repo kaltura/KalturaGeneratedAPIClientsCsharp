@@ -64,7 +64,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaKeyBooleanValue(XmlElement node)
+		public KalturaKeyBooleanValue(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaKeyBooleanValue");
-			kparams.AddStringIfNotNull("key", this.Key);
-			kparams.AddBoolIfNotNull("value", this.Value);
+			kparams.AddIfNotNull("key", this.Key);
+			kparams.AddIfNotNull("value", this.Value);
 			return kparams;
 		}
 		#endregion

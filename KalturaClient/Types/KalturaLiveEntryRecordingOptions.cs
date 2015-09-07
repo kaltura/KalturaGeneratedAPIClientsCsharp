@@ -54,7 +54,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaLiveEntryRecordingOptions(XmlElement node)
+		public KalturaLiveEntryRecordingOptions(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveEntryRecordingOptions");
-			kparams.AddEnumIfNotNull("shouldCopyEntitlement", this.ShouldCopyEntitlement);
+			kparams.AddIfNotNull("shouldCopyEntitlement", this.ShouldCopyEntitlement);
 			return kparams;
 		}
 		#endregion

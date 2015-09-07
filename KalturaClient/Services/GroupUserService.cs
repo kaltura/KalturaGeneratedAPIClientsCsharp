@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaGroupUser Add(KalturaGroupUser groupUser)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (groupUser != null)
-				kparams.Add("groupUser", groupUser.ToParams());
+			kparams.AddIfNotNull("groupUser", groupUser);
 			_Client.QueueServiceCall("groupuser", "add", "KalturaGroupUser", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,8 +54,8 @@ namespace Kaltura
 		public void Delete(string userId, string groupId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("userId", userId);
-			kparams.AddStringIfNotNull("groupId", groupId);
+			kparams.AddIfNotNull("userId", userId);
+			kparams.AddIfNotNull("groupId", groupId);
 			_Client.QueueServiceCall("groupuser", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -76,10 +75,8 @@ namespace Kaltura
 		public KalturaGroupUserListResponse List(KalturaGroupUserFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("groupuser", "list", "KalturaGroupUserListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

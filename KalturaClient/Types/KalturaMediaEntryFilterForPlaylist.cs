@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaMediaEntryFilterForPlaylist");
-			kparams.AddIntIfNotNull("limit", this.Limit);
+			kparams.AddIfNotNull("limit", this.Limit);
 			return kparams;
 		}
 		#endregion

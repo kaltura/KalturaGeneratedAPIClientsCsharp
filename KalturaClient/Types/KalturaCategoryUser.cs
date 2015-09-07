@@ -144,7 +144,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaCategoryUser(XmlElement node)
+		public KalturaCategoryUser(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -191,16 +191,16 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCategoryUser");
-			kparams.AddIntIfNotNull("categoryId", this.CategoryId);
-			kparams.AddStringIfNotNull("userId", this.UserId);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddEnumIfNotNull("permissionLevel", this.PermissionLevel);
-			kparams.AddEnumIfNotNull("status", this.Status);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddEnumIfNotNull("updateMethod", this.UpdateMethod);
-			kparams.AddStringIfNotNull("categoryFullIds", this.CategoryFullIds);
-			kparams.AddStringIfNotNull("permissionNames", this.PermissionNames);
+			kparams.AddIfNotNull("categoryId", this.CategoryId);
+			kparams.AddIfNotNull("userId", this.UserId);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("permissionLevel", this.PermissionLevel);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("updateMethod", this.UpdateMethod);
+			kparams.AddIfNotNull("categoryFullIds", this.CategoryFullIds);
+			kparams.AddIfNotNull("permissionNames", this.PermissionNames);
 			return kparams;
 		}
 		#endregion

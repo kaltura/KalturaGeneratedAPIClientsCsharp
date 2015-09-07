@@ -44,7 +44,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaHttpNotificationData(XmlElement node)
+		public KalturaHttpNotificationData(XmlElement node) : base(node)
 		{
 		}
 		#endregion

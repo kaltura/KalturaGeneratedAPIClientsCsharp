@@ -53,10 +53,8 @@ namespace Kaltura
 		public KalturaVirusScanProfileListResponse List(KalturaVirusScanProfileFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("virusscan_virusscanprofile", "list", "KalturaVirusScanProfileListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -67,8 +65,7 @@ namespace Kaltura
 		public KalturaVirusScanProfile Add(KalturaVirusScanProfile virusScanProfile)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (virusScanProfile != null)
-				kparams.Add("virusScanProfile", virusScanProfile.ToParams());
+			kparams.AddIfNotNull("virusScanProfile", virusScanProfile);
 			_Client.QueueServiceCall("virusscan_virusscanprofile", "add", "KalturaVirusScanProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -79,7 +76,7 @@ namespace Kaltura
 		public KalturaVirusScanProfile Get(int virusScanProfileId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("virusScanProfileId", virusScanProfileId);
+			kparams.AddIfNotNull("virusScanProfileId", virusScanProfileId);
 			_Client.QueueServiceCall("virusscan_virusscanprofile", "get", "KalturaVirusScanProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -90,9 +87,8 @@ namespace Kaltura
 		public KalturaVirusScanProfile Update(int virusScanProfileId, KalturaVirusScanProfile virusScanProfile)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("virusScanProfileId", virusScanProfileId);
-			if (virusScanProfile != null)
-				kparams.Add("virusScanProfile", virusScanProfile.ToParams());
+			kparams.AddIfNotNull("virusScanProfileId", virusScanProfileId);
+			kparams.AddIfNotNull("virusScanProfile", virusScanProfile);
 			_Client.QueueServiceCall("virusscan_virusscanprofile", "update", "KalturaVirusScanProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -103,7 +99,7 @@ namespace Kaltura
 		public KalturaVirusScanProfile Delete(int virusScanProfileId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("virusScanProfileId", virusScanProfileId);
+			kparams.AddIfNotNull("virusScanProfileId", virusScanProfileId);
 			_Client.QueueServiceCall("virusscan_virusscanprofile", "delete", "KalturaVirusScanProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -119,8 +115,8 @@ namespace Kaltura
 		public int Scan(string flavorAssetId, int virusScanProfileId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("flavorAssetId", flavorAssetId);
-			kparams.AddIntIfNotNull("virusScanProfileId", virusScanProfileId);
+			kparams.AddIfNotNull("flavorAssetId", flavorAssetId);
+			kparams.AddIfNotNull("virusScanProfileId", virusScanProfileId);
 			_Client.QueueServiceCall("virusscan_virusscanprofile", "scan", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return 0;

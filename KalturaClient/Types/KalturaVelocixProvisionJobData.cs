@@ -104,24 +104,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaVelocixProvisionJobData");
-			if (this.ProvisioningParams != null)
-			{
-				if (this.ProvisioningParams.Count == 0)
-				{
-					kparams.Add("provisioningParams:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaKeyValue item in this.ProvisioningParams)
-					{
-						kparams.Add("provisioningParams:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddStringIfNotNull("userName", this.UserName);
-			kparams.AddStringIfNotNull("password", this.Password);
+			kparams.AddIfNotNull("provisioningParams", this.ProvisioningParams);
+			kparams.AddIfNotNull("userName", this.UserName);
+			kparams.AddIfNotNull("password", this.Password);
 			return kparams;
 		}
 		#endregion

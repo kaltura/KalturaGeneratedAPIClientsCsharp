@@ -204,7 +204,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaEventNotificationTemplate(XmlElement node)
+		public KalturaEventNotificationTemplate(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -281,67 +281,22 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEventNotificationTemplate");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringIfNotNull("name", this.Name);
-			kparams.AddStringIfNotNull("systemName", this.SystemName);
-			kparams.AddStringIfNotNull("description", this.Description);
-			kparams.AddStringEnumIfNotNull("type", this.Type);
-			kparams.AddEnumIfNotNull("status", this.Status);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddBoolIfNotNull("manualDispatchEnabled", this.ManualDispatchEnabled);
-			kparams.AddBoolIfNotNull("automaticDispatchEnabled", this.AutomaticDispatchEnabled);
-			kparams.AddStringEnumIfNotNull("eventType", this.EventType);
-			kparams.AddStringEnumIfNotNull("eventObjectType", this.EventObjectType);
-			if (this.EventConditions != null)
-			{
-				if (this.EventConditions.Count == 0)
-				{
-					kparams.Add("eventConditions:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaCondition item in this.EventConditions)
-					{
-						kparams.Add("eventConditions:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			if (this.ContentParameters != null)
-			{
-				if (this.ContentParameters.Count == 0)
-				{
-					kparams.Add("contentParameters:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaEventNotificationParameter item in this.ContentParameters)
-					{
-						kparams.Add("contentParameters:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			if (this.UserParameters != null)
-			{
-				if (this.UserParameters.Count == 0)
-				{
-					kparams.Add("userParameters:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaEventNotificationParameter item in this.UserParameters)
-					{
-						kparams.Add("userParameters:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("systemName", this.SystemName);
+			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("type", this.Type);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("manualDispatchEnabled", this.ManualDispatchEnabled);
+			kparams.AddIfNotNull("automaticDispatchEnabled", this.AutomaticDispatchEnabled);
+			kparams.AddIfNotNull("eventType", this.EventType);
+			kparams.AddIfNotNull("eventObjectType", this.EventObjectType);
+			kparams.AddIfNotNull("eventConditions", this.EventConditions);
+			kparams.AddIfNotNull("contentParameters", this.ContentParameters);
+			kparams.AddIfNotNull("userParameters", this.UserParameters);
 			return kparams;
 		}
 		#endregion

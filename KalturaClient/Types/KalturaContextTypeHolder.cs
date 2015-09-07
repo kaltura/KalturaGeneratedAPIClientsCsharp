@@ -54,7 +54,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaContextTypeHolder(XmlElement node)
+		public KalturaContextTypeHolder(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaContextTypeHolder");
-			kparams.AddStringEnumIfNotNull("type", this.Type);
+			kparams.AddIfNotNull("type", this.Type);
 			return kparams;
 		}
 		#endregion

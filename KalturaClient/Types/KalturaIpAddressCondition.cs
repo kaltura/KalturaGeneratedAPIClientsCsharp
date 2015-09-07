@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaIpAddressCondition");
-			kparams.AddBoolIfNotNull("acceptInternalIps", this.AcceptInternalIps);
-			kparams.AddStringIfNotNull("httpHeader", this.HttpHeader);
+			kparams.AddIfNotNull("acceptInternalIps", this.AcceptInternalIps);
+			kparams.AddIfNotNull("httpHeader", this.HttpHeader);
 			return kparams;
 		}
 		#endregion

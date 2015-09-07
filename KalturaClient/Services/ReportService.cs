@@ -53,11 +53,10 @@ namespace Kaltura
 		public IList<KalturaReportGraph> GetGraphs(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, string dimension, string objectIds)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringEnumIfNotNull("reportType", reportType);
-			if (reportInputFilter != null)
-				kparams.Add("reportInputFilter", reportInputFilter.ToParams());
-			kparams.AddStringIfNotNull("dimension", dimension);
-			kparams.AddStringIfNotNull("objectIds", objectIds);
+			kparams.AddIfNotNull("reportType", reportType);
+			kparams.AddIfNotNull("reportInputFilter", reportInputFilter);
+			kparams.AddIfNotNull("dimension", dimension);
+			kparams.AddIfNotNull("objectIds", objectIds);
 			_Client.QueueServiceCall("report", "getGraphs", "KalturaReportGraph", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -78,10 +77,9 @@ namespace Kaltura
 		public KalturaReportTotal GetTotal(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, string objectIds)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringEnumIfNotNull("reportType", reportType);
-			if (reportInputFilter != null)
-				kparams.Add("reportInputFilter", reportInputFilter.ToParams());
-			kparams.AddStringIfNotNull("objectIds", objectIds);
+			kparams.AddIfNotNull("reportType", reportType);
+			kparams.AddIfNotNull("reportInputFilter", reportInputFilter);
+			kparams.AddIfNotNull("objectIds", objectIds);
 			_Client.QueueServiceCall("report", "getTotal", "KalturaReportTotal", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -97,10 +95,9 @@ namespace Kaltura
 		public IList<KalturaReportBaseTotal> GetBaseTotal(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, string objectIds)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringEnumIfNotNull("reportType", reportType);
-			if (reportInputFilter != null)
-				kparams.Add("reportInputFilter", reportInputFilter.ToParams());
-			kparams.AddStringIfNotNull("objectIds", objectIds);
+			kparams.AddIfNotNull("reportType", reportType);
+			kparams.AddIfNotNull("reportInputFilter", reportInputFilter);
+			kparams.AddIfNotNull("objectIds", objectIds);
 			_Client.QueueServiceCall("report", "getBaseTotal", "KalturaReportBaseTotal", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -126,13 +123,11 @@ namespace Kaltura
 		public KalturaReportTable GetTable(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, KalturaFilterPager pager, string order, string objectIds)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringEnumIfNotNull("reportType", reportType);
-			if (reportInputFilter != null)
-				kparams.Add("reportInputFilter", reportInputFilter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
-			kparams.AddStringIfNotNull("order", order);
-			kparams.AddStringIfNotNull("objectIds", objectIds);
+			kparams.AddIfNotNull("reportType", reportType);
+			kparams.AddIfNotNull("reportInputFilter", reportInputFilter);
+			kparams.AddIfNotNull("pager", pager);
+			kparams.AddIfNotNull("order", order);
+			kparams.AddIfNotNull("objectIds", objectIds);
 			_Client.QueueServiceCall("report", "getTable", "KalturaReportTable", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -163,17 +158,15 @@ namespace Kaltura
 		public string GetUrlForReportAsCsv(string reportTitle, string reportText, string headers, KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, string dimension, KalturaFilterPager pager, string order, string objectIds)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("reportTitle", reportTitle);
-			kparams.AddStringIfNotNull("reportText", reportText);
-			kparams.AddStringIfNotNull("headers", headers);
-			kparams.AddStringEnumIfNotNull("reportType", reportType);
-			if (reportInputFilter != null)
-				kparams.Add("reportInputFilter", reportInputFilter.ToParams());
-			kparams.AddStringIfNotNull("dimension", dimension);
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
-			kparams.AddStringIfNotNull("order", order);
-			kparams.AddStringIfNotNull("objectIds", objectIds);
+			kparams.AddIfNotNull("reportTitle", reportTitle);
+			kparams.AddIfNotNull("reportText", reportText);
+			kparams.AddIfNotNull("headers", headers);
+			kparams.AddIfNotNull("reportType", reportType);
+			kparams.AddIfNotNull("reportInputFilter", reportInputFilter);
+			kparams.AddIfNotNull("dimension", dimension);
+			kparams.AddIfNotNull("pager", pager);
+			kparams.AddIfNotNull("order", order);
+			kparams.AddIfNotNull("objectIds", objectIds);
 			_Client.QueueServiceCall("report", "getUrlForReportAsCsv", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -184,7 +177,7 @@ namespace Kaltura
 		public string Serve(string id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("report", "serve", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -200,11 +193,8 @@ namespace Kaltura
 		public KalturaReportResponse Execute(int id, IList<KalturaKeyValue> params_)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			foreach(KalturaKeyValue obj in params_)
-			{
-				kparams.Add("params", obj.ToParams());
-			}
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("params", params_);
 			_Client.QueueServiceCall("report", "execute", "KalturaReportResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

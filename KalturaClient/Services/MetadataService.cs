@@ -43,10 +43,10 @@ namespace Kaltura
 		public KalturaMetadata Add(int metadataProfileId, KalturaMetadataObjectType objectType, string objectId, string xmlData)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("metadataProfileId", metadataProfileId);
-			kparams.AddStringEnumIfNotNull("objectType", objectType);
-			kparams.AddStringIfNotNull("objectId", objectId);
-			kparams.AddStringIfNotNull("xmlData", xmlData);
+			kparams.AddIfNotNull("metadataProfileId", metadataProfileId);
+			kparams.AddIfNotNull("objectType", objectType);
+			kparams.AddIfNotNull("objectId", objectId);
+			kparams.AddIfNotNull("xmlData", xmlData);
 			_Client.QueueServiceCall("metadata_metadata", "add", "KalturaMetadata", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -57,9 +57,9 @@ namespace Kaltura
 		public KalturaMetadata AddFromFile(int metadataProfileId, KalturaMetadataObjectType objectType, string objectId, FileStream xmlFile)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("metadataProfileId", metadataProfileId);
-			kparams.AddStringEnumIfNotNull("objectType", objectType);
-			kparams.AddStringIfNotNull("objectId", objectId);
+			kparams.AddIfNotNull("metadataProfileId", metadataProfileId);
+			kparams.AddIfNotNull("objectType", objectType);
+			kparams.AddIfNotNull("objectId", objectId);
 			KalturaFiles kfiles = new KalturaFiles();
 			kfiles.Add("xmlFile", xmlFile);
 			_Client.QueueServiceCall("metadata_metadata", "addFromFile", "KalturaMetadata", kparams, kfiles);
@@ -72,10 +72,10 @@ namespace Kaltura
 		public KalturaMetadata AddFromUrl(int metadataProfileId, KalturaMetadataObjectType objectType, string objectId, string url)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("metadataProfileId", metadataProfileId);
-			kparams.AddStringEnumIfNotNull("objectType", objectType);
-			kparams.AddStringIfNotNull("objectId", objectId);
-			kparams.AddStringIfNotNull("url", url);
+			kparams.AddIfNotNull("metadataProfileId", metadataProfileId);
+			kparams.AddIfNotNull("objectType", objectType);
+			kparams.AddIfNotNull("objectId", objectId);
+			kparams.AddIfNotNull("url", url);
 			_Client.QueueServiceCall("metadata_metadata", "addFromUrl", "KalturaMetadata", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -86,10 +86,10 @@ namespace Kaltura
 		public KalturaMetadata AddFromBulk(int metadataProfileId, KalturaMetadataObjectType objectType, string objectId, string url)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("metadataProfileId", metadataProfileId);
-			kparams.AddStringEnumIfNotNull("objectType", objectType);
-			kparams.AddStringIfNotNull("objectId", objectId);
-			kparams.AddStringIfNotNull("url", url);
+			kparams.AddIfNotNull("metadataProfileId", metadataProfileId);
+			kparams.AddIfNotNull("objectType", objectType);
+			kparams.AddIfNotNull("objectId", objectId);
+			kparams.AddIfNotNull("url", url);
 			_Client.QueueServiceCall("metadata_metadata", "addFromBulk", "KalturaMetadata", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -100,7 +100,7 @@ namespace Kaltura
 		public KalturaMetadata Get(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("metadata_metadata", "get", "KalturaMetadata", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -121,9 +121,9 @@ namespace Kaltura
 		public KalturaMetadata Update(int id, string xmlData, int version)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			kparams.AddStringIfNotNull("xmlData", xmlData);
-			kparams.AddIntIfNotNull("version", version);
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("xmlData", xmlData);
+			kparams.AddIfNotNull("version", version);
 			_Client.QueueServiceCall("metadata_metadata", "update", "KalturaMetadata", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -139,7 +139,7 @@ namespace Kaltura
 		public KalturaMetadata UpdateFromFile(int id, FileStream xmlFile)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			KalturaFiles kfiles = new KalturaFiles();
 			kfiles.Add("xmlFile", xmlFile);
 			_Client.QueueServiceCall("metadata_metadata", "updateFromFile", "KalturaMetadata", kparams, kfiles);
@@ -162,10 +162,8 @@ namespace Kaltura
 		public KalturaMetadataListResponse List(KalturaMetadataFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("metadata_metadata", "list", "KalturaMetadataListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -176,7 +174,7 @@ namespace Kaltura
 		public void Delete(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("metadata_metadata", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -191,8 +189,8 @@ namespace Kaltura
 		public void Invalidate(int id, int version)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			kparams.AddIntIfNotNull("version", version);
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("version", version);
 			_Client.QueueServiceCall("metadata_metadata", "invalidate", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -202,8 +200,8 @@ namespace Kaltura
 		public int Index(string id, bool shouldUpdate)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			kparams.AddBoolIfNotNull("shouldUpdate", shouldUpdate);
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("shouldUpdate", shouldUpdate);
 			_Client.QueueServiceCall("metadata_metadata", "index", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return 0;
@@ -214,7 +212,7 @@ namespace Kaltura
 		public KalturaMetadata UpdateFromXSL(int id, FileStream xslFile)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			KalturaFiles kfiles = new KalturaFiles();
 			kfiles.Add("xslFile", xslFile);
 			_Client.QueueServiceCall("metadata_metadata", "updateFromXSL", "KalturaMetadata", kparams, kfiles);

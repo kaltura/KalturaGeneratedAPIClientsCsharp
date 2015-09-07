@@ -260,36 +260,21 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveStreamEntry");
-			kparams.AddStringIfNotNull("streamRemoteId", this.StreamRemoteId);
-			kparams.AddStringIfNotNull("streamRemoteBackupId", this.StreamRemoteBackupId);
-			if (this.Bitrates != null)
-			{
-				if (this.Bitrates.Count == 0)
-				{
-					kparams.Add("bitrates:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaLiveStreamBitrate item in this.Bitrates)
-					{
-						kparams.Add("bitrates:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddStringIfNotNull("primaryBroadcastingUrl", this.PrimaryBroadcastingUrl);
-			kparams.AddStringIfNotNull("secondaryBroadcastingUrl", this.SecondaryBroadcastingUrl);
-			kparams.AddStringIfNotNull("primaryRtspBroadcastingUrl", this.PrimaryRtspBroadcastingUrl);
-			kparams.AddStringIfNotNull("secondaryRtspBroadcastingUrl", this.SecondaryRtspBroadcastingUrl);
-			kparams.AddStringIfNotNull("streamName", this.StreamName);
-			kparams.AddStringIfNotNull("streamUrl", this.StreamUrl);
-			kparams.AddStringIfNotNull("hlsStreamUrl", this.HlsStreamUrl);
-			kparams.AddStringIfNotNull("urlManager", this.UrlManager);
-			kparams.AddStringIfNotNull("encodingIP1", this.EncodingIP1);
-			kparams.AddStringIfNotNull("encodingIP2", this.EncodingIP2);
-			kparams.AddStringIfNotNull("streamPassword", this.StreamPassword);
-			kparams.AddStringIfNotNull("streamUsername", this.StreamUsername);
+			kparams.AddIfNotNull("streamRemoteId", this.StreamRemoteId);
+			kparams.AddIfNotNull("streamRemoteBackupId", this.StreamRemoteBackupId);
+			kparams.AddIfNotNull("bitrates", this.Bitrates);
+			kparams.AddIfNotNull("primaryBroadcastingUrl", this.PrimaryBroadcastingUrl);
+			kparams.AddIfNotNull("secondaryBroadcastingUrl", this.SecondaryBroadcastingUrl);
+			kparams.AddIfNotNull("primaryRtspBroadcastingUrl", this.PrimaryRtspBroadcastingUrl);
+			kparams.AddIfNotNull("secondaryRtspBroadcastingUrl", this.SecondaryRtspBroadcastingUrl);
+			kparams.AddIfNotNull("streamName", this.StreamName);
+			kparams.AddIfNotNull("streamUrl", this.StreamUrl);
+			kparams.AddIfNotNull("hlsStreamUrl", this.HlsStreamUrl);
+			kparams.AddIfNotNull("urlManager", this.UrlManager);
+			kparams.AddIfNotNull("encodingIP1", this.EncodingIP1);
+			kparams.AddIfNotNull("encodingIP2", this.EncodingIP2);
+			kparams.AddIfNotNull("streamPassword", this.StreamPassword);
+			kparams.AddIfNotNull("streamUsername", this.StreamUsername);
 			return kparams;
 		}
 		#endregion

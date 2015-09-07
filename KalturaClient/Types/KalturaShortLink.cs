@@ -144,7 +144,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaShortLink(XmlElement node)
+		public KalturaShortLink(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -191,16 +191,16 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaShortLink");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIntIfNotNull("expiresAt", this.ExpiresAt);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringIfNotNull("userId", this.UserId);
-			kparams.AddStringIfNotNull("name", this.Name);
-			kparams.AddStringIfNotNull("systemName", this.SystemName);
-			kparams.AddStringIfNotNull("fullUrl", this.FullUrl);
-			kparams.AddEnumIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("expiresAt", this.ExpiresAt);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("userId", this.UserId);
+			kparams.AddIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("systemName", this.SystemName);
+			kparams.AddIfNotNull("fullUrl", this.FullUrl);
+			kparams.AddIfNotNull("status", this.Status);
 			return kparams;
 		}
 		#endregion

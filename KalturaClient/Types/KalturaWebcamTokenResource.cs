@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaWebcamTokenResource");
-			kparams.AddStringIfNotNull("token", this.Token);
+			kparams.AddIfNotNull("token", this.Token);
 			return kparams;
 		}
 		#endregion

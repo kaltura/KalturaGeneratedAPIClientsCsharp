@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAccessControlLimitFlavorsAction");
-			kparams.AddStringIfNotNull("flavorParamsIds", this.FlavorParamsIds);
-			kparams.AddBoolIfNotNull("isBlockedList", this.IsBlockedList);
+			kparams.AddIfNotNull("flavorParamsIds", this.FlavorParamsIds);
+			kparams.AddIfNotNull("isBlockedList", this.IsBlockedList);
 			return kparams;
 		}
 		#endregion

@@ -126,11 +126,11 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaTransformMetadataJobData");
-			kparams.AddStringIfNotNull("srcXslPath", this.SrcXslPath);
-			kparams.AddIntIfNotNull("srcVersion", this.SrcVersion);
-			kparams.AddIntIfNotNull("destVersion", this.DestVersion);
-			kparams.AddStringIfNotNull("destXsdPath", this.DestXsdPath);
-			kparams.AddIntIfNotNull("metadataProfileId", this.MetadataProfileId);
+			kparams.AddIfNotNull("srcXslPath", this.SrcXslPath);
+			kparams.AddIfNotNull("srcVersion", this.SrcVersion);
+			kparams.AddIfNotNull("destVersion", this.DestVersion);
+			kparams.AddIfNotNull("destXsdPath", this.DestXsdPath);
+			kparams.AddIfNotNull("metadataProfileId", this.MetadataProfileId);
 			return kparams;
 		}
 		#endregion

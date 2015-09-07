@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEntryContextDataParams");
-			kparams.AddStringIfNotNull("flavorAssetId", this.FlavorAssetId);
-			kparams.AddStringIfNotNull("flavorTags", this.FlavorTags);
-			kparams.AddStringIfNotNull("streamerType", this.StreamerType);
-			kparams.AddStringIfNotNull("mediaProtocol", this.MediaProtocol);
+			kparams.AddIfNotNull("flavorAssetId", this.FlavorAssetId);
+			kparams.AddIfNotNull("flavorTags", this.FlavorTags);
+			kparams.AddIfNotNull("streamerType", this.StreamerType);
+			kparams.AddIfNotNull("mediaProtocol", this.MediaProtocol);
 			return kparams;
 		}
 		#endregion

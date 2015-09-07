@@ -124,7 +124,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaUserEntry(XmlElement node)
+		public KalturaUserEntry(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -165,14 +165,14 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUserEntry");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddStringIfNotNull("entryId", this.EntryId);
-			kparams.AddStringIfNotNull("userId", this.UserId);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringEnumIfNotNull("status", this.Status);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddStringEnumIfNotNull("type", this.Type);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("entryId", this.EntryId);
+			kparams.AddIfNotNull("userId", this.UserId);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("type", this.Type);
 			return kparams;
 		}
 		#endregion

@@ -53,10 +53,8 @@ namespace Kaltura
 		public KalturaDistributionProviderListResponse List(KalturaDistributionProviderFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("contentdistribution_distributionprovider", "list", "KalturaDistributionProviderListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

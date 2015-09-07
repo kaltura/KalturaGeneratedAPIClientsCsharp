@@ -48,10 +48,9 @@ namespace Kaltura
 		public KalturaMetadataProfile Add(KalturaMetadataProfile metadataProfile, string xsdData, string viewsData)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (metadataProfile != null)
-				kparams.Add("metadataProfile", metadataProfile.ToParams());
-			kparams.AddStringIfNotNull("xsdData", xsdData);
-			kparams.AddStringIfNotNull("viewsData", viewsData);
+			kparams.AddIfNotNull("metadataProfile", metadataProfile);
+			kparams.AddIfNotNull("xsdData", xsdData);
+			kparams.AddIfNotNull("viewsData", viewsData);
 			_Client.QueueServiceCall("metadata_metadataprofile", "add", "KalturaMetadataProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -67,8 +66,7 @@ namespace Kaltura
 		public KalturaMetadataProfile AddFromFile(KalturaMetadataProfile metadataProfile, FileStream xsdFile, FileStream viewsFile)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (metadataProfile != null)
-				kparams.Add("metadataProfile", metadataProfile.ToParams());
+			kparams.AddIfNotNull("metadataProfile", metadataProfile);
 			KalturaFiles kfiles = new KalturaFiles();
 			kfiles.Add("xsdFile", xsdFile);
 			kfiles.Add("viewsFile", viewsFile);
@@ -82,7 +80,7 @@ namespace Kaltura
 		public KalturaMetadataProfile Get(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("metadata_metadataprofile", "get", "KalturaMetadataProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -103,11 +101,10 @@ namespace Kaltura
 		public KalturaMetadataProfile Update(int id, KalturaMetadataProfile metadataProfile, string xsdData, string viewsData)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			if (metadataProfile != null)
-				kparams.Add("metadataProfile", metadataProfile.ToParams());
-			kparams.AddStringIfNotNull("xsdData", xsdData);
-			kparams.AddStringIfNotNull("viewsData", viewsData);
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("metadataProfile", metadataProfile);
+			kparams.AddIfNotNull("xsdData", xsdData);
+			kparams.AddIfNotNull("viewsData", viewsData);
 			_Client.QueueServiceCall("metadata_metadataprofile", "update", "KalturaMetadataProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -128,10 +125,8 @@ namespace Kaltura
 		public KalturaMetadataProfileListResponse List(KalturaMetadataProfileFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("metadata_metadataprofile", "list", "KalturaMetadataProfileListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -142,7 +137,7 @@ namespace Kaltura
 		public KalturaMetadataProfileFieldListResponse ListFields(int metadataProfileId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("metadataProfileId", metadataProfileId);
+			kparams.AddIfNotNull("metadataProfileId", metadataProfileId);
 			_Client.QueueServiceCall("metadata_metadataprofile", "listFields", "KalturaMetadataProfileFieldListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -153,7 +148,7 @@ namespace Kaltura
 		public void Delete(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("metadata_metadataprofile", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -163,8 +158,8 @@ namespace Kaltura
 		public KalturaMetadataProfile Revert(int id, int toVersion)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			kparams.AddIntIfNotNull("toVersion", toVersion);
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("toVersion", toVersion);
 			_Client.QueueServiceCall("metadata_metadataprofile", "revert", "KalturaMetadataProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -175,7 +170,7 @@ namespace Kaltura
 		public KalturaMetadataProfile UpdateDefinitionFromFile(int id, FileStream xsdFile)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			KalturaFiles kfiles = new KalturaFiles();
 			kfiles.Add("xsdFile", xsdFile);
 			_Client.QueueServiceCall("metadata_metadataprofile", "updateDefinitionFromFile", "KalturaMetadataProfile", kparams, kfiles);
@@ -188,7 +183,7 @@ namespace Kaltura
 		public KalturaMetadataProfile UpdateViewsFromFile(int id, FileStream viewsFile)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			KalturaFiles kfiles = new KalturaFiles();
 			kfiles.Add("viewsFile", viewsFile);
 			_Client.QueueServiceCall("metadata_metadataprofile", "updateViewsFromFile", "KalturaMetadataProfile", kparams, kfiles);
@@ -201,7 +196,7 @@ namespace Kaltura
 		public KalturaMetadataProfile UpdateTransformationFromFile(int id, FileStream xsltFile)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			KalturaFiles kfiles = new KalturaFiles();
 			kfiles.Add("xsltFile", xsltFile);
 			_Client.QueueServiceCall("metadata_metadataprofile", "updateTransformationFromFile", "KalturaMetadataProfile", kparams, kfiles);

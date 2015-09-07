@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCodeCuePoint");
-			kparams.AddStringIfNotNull("code", this.Code);
-			kparams.AddStringIfNotNull("description", this.Description);
-			kparams.AddIntIfNotNull("endTime", this.EndTime);
-			kparams.AddIntIfNotNull("duration", this.Duration);
+			kparams.AddIfNotNull("code", this.Code);
+			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("endTime", this.EndTime);
+			kparams.AddIfNotNull("duration", this.Duration);
 			return kparams;
 		}
 		#endregion

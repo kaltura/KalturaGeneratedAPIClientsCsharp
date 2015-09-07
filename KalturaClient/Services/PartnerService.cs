@@ -58,11 +58,10 @@ namespace Kaltura
 		public KalturaPartner Register(KalturaPartner partner, string cmsPassword, int templatePartnerId, bool silent)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (partner != null)
-				kparams.Add("partner", partner.ToParams());
-			kparams.AddStringIfNotNull("cmsPassword", cmsPassword);
-			kparams.AddIntIfNotNull("templatePartnerId", templatePartnerId);
-			kparams.AddBoolIfNotNull("silent", silent);
+			kparams.AddIfNotNull("partner", partner);
+			kparams.AddIfNotNull("cmsPassword", cmsPassword);
+			kparams.AddIfNotNull("templatePartnerId", templatePartnerId);
+			kparams.AddIfNotNull("silent", silent);
 			_Client.QueueServiceCall("partner", "register", "KalturaPartner", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -78,9 +77,8 @@ namespace Kaltura
 		public KalturaPartner Update(KalturaPartner partner, bool allowEmpty)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (partner != null)
-				kparams.Add("partner", partner.ToParams());
-			kparams.AddBoolIfNotNull("allowEmpty", allowEmpty);
+			kparams.AddIfNotNull("partner", partner);
+			kparams.AddIfNotNull("allowEmpty", allowEmpty);
 			_Client.QueueServiceCall("partner", "update", "KalturaPartner", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -96,7 +94,7 @@ namespace Kaltura
 		public KalturaPartner Get(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("partner", "get", "KalturaPartner", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -107,9 +105,9 @@ namespace Kaltura
 		public KalturaPartner GetSecrets(int partnerId, string adminEmail, string cmsPassword)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("partnerId", partnerId);
-			kparams.AddStringIfNotNull("adminEmail", adminEmail);
-			kparams.AddStringIfNotNull("cmsPassword", cmsPassword);
+			kparams.AddIfNotNull("partnerId", partnerId);
+			kparams.AddIfNotNull("adminEmail", adminEmail);
+			kparams.AddIfNotNull("cmsPassword", cmsPassword);
 			_Client.QueueServiceCall("partner", "getSecrets", "KalturaPartner", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -145,9 +143,9 @@ namespace Kaltura
 		public KalturaPartnerUsage GetUsage(int year, int month, KalturaReportInterval resolution)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("year", year);
-			kparams.AddIntIfNotNull("month", month);
-			kparams.AddStringEnumIfNotNull("resolution", resolution);
+			kparams.AddIfNotNull("year", year);
+			kparams.AddIfNotNull("month", month);
+			kparams.AddIfNotNull("resolution", resolution);
 			_Client.QueueServiceCall("partner", "getUsage", "KalturaPartnerUsage", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -178,10 +176,8 @@ namespace Kaltura
 		public KalturaPartnerListResponse ListPartnersForUser(KalturaPartnerFilter partnerFilter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (partnerFilter != null)
-				kparams.Add("partnerFilter", partnerFilter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("partnerFilter", partnerFilter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("partner", "listPartnersForUser", "KalturaPartnerListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -202,10 +198,8 @@ namespace Kaltura
 		public KalturaPartnerListResponse List(KalturaPartnerFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("partner", "list", "KalturaPartnerListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -231,8 +225,7 @@ namespace Kaltura
 		public int Count(KalturaPartnerFilter filter)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
+			kparams.AddIfNotNull("filter", filter);
 			_Client.QueueServiceCall("partner", "count", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return 0;

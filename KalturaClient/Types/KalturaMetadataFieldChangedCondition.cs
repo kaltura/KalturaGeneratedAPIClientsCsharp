@@ -126,11 +126,11 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaMetadataFieldChangedCondition");
-			kparams.AddStringIfNotNull("xPath", this.XPath);
-			kparams.AddIntIfNotNull("profileId", this.ProfileId);
-			kparams.AddStringIfNotNull("profileSystemName", this.ProfileSystemName);
-			kparams.AddStringIfNotNull("versionA", this.VersionA);
-			kparams.AddStringIfNotNull("versionB", this.VersionB);
+			kparams.AddIfNotNull("xPath", this.XPath);
+			kparams.AddIfNotNull("profileId", this.ProfileId);
+			kparams.AddIfNotNull("profileSystemName", this.ProfileSystemName);
+			kparams.AddIfNotNull("versionA", this.VersionA);
+			kparams.AddIfNotNull("versionB", this.VersionB);
 			return kparams;
 		}
 		#endregion

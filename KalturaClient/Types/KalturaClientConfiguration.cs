@@ -64,7 +64,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaClientConfiguration(XmlElement node)
+		public KalturaClientConfiguration(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaClientConfiguration");
-			kparams.AddStringIfNotNull("clientTag", this.ClientTag);
-			kparams.AddStringIfNotNull("apiVersion", this.ApiVersion);
+			kparams.AddIfNotNull("clientTag", this.ClientTag);
+			kparams.AddIfNotNull("apiVersion", this.ApiVersion);
 			return kparams;
 		}
 		#endregion

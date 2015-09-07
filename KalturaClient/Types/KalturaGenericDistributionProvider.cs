@@ -225,48 +225,18 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaGenericDistributionProvider");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddBoolIfNotNull("isDefault", this.IsDefault);
-			kparams.AddEnumIfNotNull("status", this.Status);
-			kparams.AddStringIfNotNull("optionalFlavorParamsIds", this.OptionalFlavorParamsIds);
-			kparams.AddStringIfNotNull("requiredFlavorParamsIds", this.RequiredFlavorParamsIds);
-			if (this.OptionalThumbDimensions != null)
-			{
-				if (this.OptionalThumbDimensions.Count == 0)
-				{
-					kparams.Add("optionalThumbDimensions:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaDistributionThumbDimensions item in this.OptionalThumbDimensions)
-					{
-						kparams.Add("optionalThumbDimensions:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			if (this.RequiredThumbDimensions != null)
-			{
-				if (this.RequiredThumbDimensions.Count == 0)
-				{
-					kparams.Add("requiredThumbDimensions:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaDistributionThumbDimensions item in this.RequiredThumbDimensions)
-					{
-						kparams.Add("requiredThumbDimensions:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddStringIfNotNull("editableFields", this.EditableFields);
-			kparams.AddStringIfNotNull("mandatoryFields", this.MandatoryFields);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("isDefault", this.IsDefault);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("optionalFlavorParamsIds", this.OptionalFlavorParamsIds);
+			kparams.AddIfNotNull("requiredFlavorParamsIds", this.RequiredFlavorParamsIds);
+			kparams.AddIfNotNull("optionalThumbDimensions", this.OptionalThumbDimensions);
+			kparams.AddIfNotNull("requiredThumbDimensions", this.RequiredThumbDimensions);
+			kparams.AddIfNotNull("editableFields", this.EditableFields);
+			kparams.AddIfNotNull("mandatoryFields", this.MandatoryFields);
 			return kparams;
 		}
 		#endregion

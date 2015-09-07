@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaAnnotation Add(KalturaCuePoint annotation)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (annotation != null)
-				kparams.Add("annotation", annotation.ToParams());
+			kparams.AddIfNotNull("annotation", annotation);
 			_Client.QueueServiceCall("annotation_annotation", "add", "KalturaAnnotation", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,9 +54,8 @@ namespace Kaltura
 		public KalturaAnnotation Update(string id, KalturaCuePoint annotation)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			if (annotation != null)
-				kparams.Add("annotation", annotation.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("annotation", annotation);
 			_Client.QueueServiceCall("annotation_annotation", "update", "KalturaAnnotation", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -78,10 +76,8 @@ namespace Kaltura
 		public KalturaAnnotationListResponse List(KalturaCuePointFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("annotation_annotation", "list", "KalturaAnnotationListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -104,7 +100,7 @@ namespace Kaltura
 		public KalturaCuePoint Get(string id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("annotation_annotation", "get", "KalturaCuePoint", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -120,8 +116,7 @@ namespace Kaltura
 		public int Count(KalturaCuePointFilter filter)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
+			kparams.AddIfNotNull("filter", filter);
 			_Client.QueueServiceCall("annotation_annotation", "count", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return 0;
@@ -132,7 +127,7 @@ namespace Kaltura
 		public void Delete(string id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("annotation_annotation", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;

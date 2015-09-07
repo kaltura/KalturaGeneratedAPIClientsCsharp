@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDocumentEntry");
-			kparams.AddEnumIfNotNull("documentType", this.DocumentType);
-			kparams.AddStringIfNotNull("assetParamsIds", this.AssetParamsIds);
+			kparams.AddIfNotNull("documentType", this.DocumentType);
+			kparams.AddIfNotNull("assetParamsIds", this.AssetParamsIds);
 			return kparams;
 		}
 		#endregion

@@ -64,7 +64,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaSystemPartnerPackage(XmlElement node)
+		public KalturaSystemPartnerPackage(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSystemPartnerPackage");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddStringIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("name", this.Name);
 			return kparams;
 		}
 		#endregion

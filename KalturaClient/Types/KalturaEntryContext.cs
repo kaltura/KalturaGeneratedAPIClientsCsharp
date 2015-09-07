@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEntryContext");
-			kparams.AddStringIfNotNull("entryId", this.EntryId);
-			kparams.AddEnumIfNotNull("followEntryRedirect", this.FollowEntryRedirect);
+			kparams.AddIfNotNull("entryId", this.EntryId);
+			kparams.AddIfNotNull("followEntryRedirect", this.FollowEntryRedirect);
 			return kparams;
 		}
 		#endregion

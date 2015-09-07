@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaMediaInfoBaseFilter");
-			kparams.AddStringIfNotNull("flavorAssetIdEqual", this.FlavorAssetIdEqual);
+			kparams.AddIfNotNull("flavorAssetIdEqual", this.FlavorAssetIdEqual);
 			return kparams;
 		}
 		#endregion

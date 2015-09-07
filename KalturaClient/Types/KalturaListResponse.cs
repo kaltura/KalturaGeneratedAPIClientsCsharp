@@ -54,7 +54,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaListResponse(XmlElement node)
+		public KalturaListResponse(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaListResponse");
-			kparams.AddIntIfNotNull("totalCount", this.TotalCount);
+			kparams.AddIfNotNull("totalCount", this.TotalCount);
 			return kparams;
 		}
 		#endregion

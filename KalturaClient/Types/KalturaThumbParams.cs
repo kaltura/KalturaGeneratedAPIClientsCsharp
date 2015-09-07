@@ -282,23 +282,23 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaThumbParams");
-			kparams.AddEnumIfNotNull("cropType", this.CropType);
-			kparams.AddIntIfNotNull("quality", this.Quality);
-			kparams.AddIntIfNotNull("cropX", this.CropX);
-			kparams.AddIntIfNotNull("cropY", this.CropY);
-			kparams.AddIntIfNotNull("cropWidth", this.CropWidth);
-			kparams.AddIntIfNotNull("cropHeight", this.CropHeight);
-			kparams.AddFloatIfNotNull("videoOffset", this.VideoOffset);
-			kparams.AddIntIfNotNull("width", this.Width);
-			kparams.AddIntIfNotNull("height", this.Height);
-			kparams.AddFloatIfNotNull("scaleWidth", this.ScaleWidth);
-			kparams.AddFloatIfNotNull("scaleHeight", this.ScaleHeight);
-			kparams.AddStringIfNotNull("backgroundColor", this.BackgroundColor);
-			kparams.AddIntIfNotNull("sourceParamsId", this.SourceParamsId);
-			kparams.AddStringEnumIfNotNull("format", this.Format);
-			kparams.AddIntIfNotNull("density", this.Density);
-			kparams.AddBoolIfNotNull("stripProfiles", this.StripProfiles);
-			kparams.AddIntIfNotNull("videoOffsetInPercentage", this.VideoOffsetInPercentage);
+			kparams.AddIfNotNull("cropType", this.CropType);
+			kparams.AddIfNotNull("quality", this.Quality);
+			kparams.AddIfNotNull("cropX", this.CropX);
+			kparams.AddIfNotNull("cropY", this.CropY);
+			kparams.AddIfNotNull("cropWidth", this.CropWidth);
+			kparams.AddIfNotNull("cropHeight", this.CropHeight);
+			kparams.AddIfNotNull("videoOffset", this.VideoOffset);
+			kparams.AddIfNotNull("width", this.Width);
+			kparams.AddIfNotNull("height", this.Height);
+			kparams.AddIfNotNull("scaleWidth", this.ScaleWidth);
+			kparams.AddIfNotNull("scaleHeight", this.ScaleHeight);
+			kparams.AddIfNotNull("backgroundColor", this.BackgroundColor);
+			kparams.AddIfNotNull("sourceParamsId", this.SourceParamsId);
+			kparams.AddIfNotNull("format", this.Format);
+			kparams.AddIfNotNull("density", this.Density);
+			kparams.AddIfNotNull("stripProfiles", this.StripProfiles);
+			kparams.AddIfNotNull("videoOffsetInPercentage", this.VideoOffsetInPercentage);
 			return kparams;
 		}
 		#endregion

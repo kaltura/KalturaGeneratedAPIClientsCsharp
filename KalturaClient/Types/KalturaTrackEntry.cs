@@ -214,7 +214,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaTrackEntry(XmlElement node)
+		public KalturaTrackEntry(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -282,23 +282,23 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaTrackEntry");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddEnumIfNotNull("trackEventType", this.TrackEventType);
-			kparams.AddStringIfNotNull("psVersion", this.PsVersion);
-			kparams.AddStringIfNotNull("context", this.Context);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringIfNotNull("entryId", this.EntryId);
-			kparams.AddStringIfNotNull("hostName", this.HostName);
-			kparams.AddStringIfNotNull("userId", this.UserId);
-			kparams.AddStringIfNotNull("changedProperties", this.ChangedProperties);
-			kparams.AddStringIfNotNull("paramStr1", this.ParamStr1);
-			kparams.AddStringIfNotNull("paramStr2", this.ParamStr2);
-			kparams.AddStringIfNotNull("paramStr3", this.ParamStr3);
-			kparams.AddStringIfNotNull("ks", this.Ks);
-			kparams.AddStringIfNotNull("description", this.Description);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddStringIfNotNull("userIp", this.UserIp);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("trackEventType", this.TrackEventType);
+			kparams.AddIfNotNull("psVersion", this.PsVersion);
+			kparams.AddIfNotNull("context", this.Context);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("entryId", this.EntryId);
+			kparams.AddIfNotNull("hostName", this.HostName);
+			kparams.AddIfNotNull("userId", this.UserId);
+			kparams.AddIfNotNull("changedProperties", this.ChangedProperties);
+			kparams.AddIfNotNull("paramStr1", this.ParamStr1);
+			kparams.AddIfNotNull("paramStr2", this.ParamStr2);
+			kparams.AddIfNotNull("paramStr3", this.ParamStr3);
+			kparams.AddIfNotNull("ks", this.Ks);
+			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("userIp", this.UserIp);
 			return kparams;
 		}
 		#endregion

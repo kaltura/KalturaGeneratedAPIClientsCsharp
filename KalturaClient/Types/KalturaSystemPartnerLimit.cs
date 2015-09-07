@@ -64,7 +64,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaSystemPartnerLimit(XmlElement node)
+		public KalturaSystemPartnerLimit(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSystemPartnerLimit");
-			kparams.AddStringEnumIfNotNull("type", this.Type);
-			kparams.AddFloatIfNotNull("max", this.Max);
+			kparams.AddIfNotNull("type", this.Type);
+			kparams.AddIfNotNull("max", this.Max);
 			return kparams;
 		}
 		#endregion

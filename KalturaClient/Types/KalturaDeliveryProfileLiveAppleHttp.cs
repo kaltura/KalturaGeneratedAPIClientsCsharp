@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDeliveryProfileLiveAppleHttp");
-			kparams.AddBoolIfNotNull("disableExtraAttributes", this.DisableExtraAttributes);
-			kparams.AddBoolIfNotNull("forceProxy", this.ForceProxy);
+			kparams.AddIfNotNull("disableExtraAttributes", this.DisableExtraAttributes);
+			kparams.AddIfNotNull("forceProxy", this.ForceProxy);
 			return kparams;
 		}
 		#endregion

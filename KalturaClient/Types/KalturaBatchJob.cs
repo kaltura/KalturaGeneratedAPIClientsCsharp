@@ -424,7 +424,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaBatchJob(XmlElement node)
+		public KalturaBatchJob(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -559,60 +559,44 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaBatchJob");
-			kparams.AddLongIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIntIfNotNull("deletedAt", this.DeletedAt);
-			kparams.AddIntIfNotNull("lockExpiration", this.LockExpiration);
-			kparams.AddIntIfNotNull("executionAttempts", this.ExecutionAttempts);
-			kparams.AddIntIfNotNull("lockVersion", this.LockVersion);
-			kparams.AddStringIfNotNull("entryId", this.EntryId);
-			kparams.AddStringIfNotNull("entryName", this.EntryName);
-			kparams.AddStringEnumIfNotNull("jobType", this.JobType);
-			kparams.AddIntIfNotNull("jobSubType", this.JobSubType);
-			if (this.Data != null)
-				kparams.Add("data", this.Data.ToParams());
-			kparams.AddEnumIfNotNull("status", this.Status);
-			kparams.AddIntIfNotNull("abort", this.Abort);
-			kparams.AddIntIfNotNull("checkAgainTimeout", this.CheckAgainTimeout);
-			kparams.AddStringIfNotNull("message", this.Message);
-			kparams.AddStringIfNotNull("description", this.Description);
-			kparams.AddIntIfNotNull("priority", this.Priority);
-			if (this.History != null)
-			{
-				if (this.History.Count == 0)
-				{
-					kparams.Add("history:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaBatchHistoryData item in this.History)
-					{
-						kparams.Add("history:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddIntIfNotNull("bulkJobId", this.BulkJobId);
-			kparams.AddIntIfNotNull("batchVersion", this.BatchVersion);
-			kparams.AddIntIfNotNull("parentJobId", this.ParentJobId);
-			kparams.AddIntIfNotNull("rootJobId", this.RootJobId);
-			kparams.AddIntIfNotNull("queueTime", this.QueueTime);
-			kparams.AddIntIfNotNull("finishTime", this.FinishTime);
-			kparams.AddEnumIfNotNull("errType", this.ErrType);
-			kparams.AddIntIfNotNull("errNumber", this.ErrNumber);
-			kparams.AddIntIfNotNull("estimatedEffort", this.EstimatedEffort);
-			kparams.AddIntIfNotNull("urgency", this.Urgency);
-			kparams.AddIntIfNotNull("schedulerId", this.SchedulerId);
-			kparams.AddIntIfNotNull("workerId", this.WorkerId);
-			kparams.AddIntIfNotNull("batchIndex", this.BatchIndex);
-			kparams.AddIntIfNotNull("lastSchedulerId", this.LastSchedulerId);
-			kparams.AddIntIfNotNull("lastWorkerId", this.LastWorkerId);
-			kparams.AddIntIfNotNull("dc", this.Dc);
-			kparams.AddStringIfNotNull("jobObjectId", this.JobObjectId);
-			kparams.AddIntIfNotNull("jobObjectType", this.JobObjectType);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("deletedAt", this.DeletedAt);
+			kparams.AddIfNotNull("lockExpiration", this.LockExpiration);
+			kparams.AddIfNotNull("executionAttempts", this.ExecutionAttempts);
+			kparams.AddIfNotNull("lockVersion", this.LockVersion);
+			kparams.AddIfNotNull("entryId", this.EntryId);
+			kparams.AddIfNotNull("entryName", this.EntryName);
+			kparams.AddIfNotNull("jobType", this.JobType);
+			kparams.AddIfNotNull("jobSubType", this.JobSubType);
+			kparams.AddIfNotNull("data", this.Data);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("abort", this.Abort);
+			kparams.AddIfNotNull("checkAgainTimeout", this.CheckAgainTimeout);
+			kparams.AddIfNotNull("message", this.Message);
+			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("priority", this.Priority);
+			kparams.AddIfNotNull("history", this.History);
+			kparams.AddIfNotNull("bulkJobId", this.BulkJobId);
+			kparams.AddIfNotNull("batchVersion", this.BatchVersion);
+			kparams.AddIfNotNull("parentJobId", this.ParentJobId);
+			kparams.AddIfNotNull("rootJobId", this.RootJobId);
+			kparams.AddIfNotNull("queueTime", this.QueueTime);
+			kparams.AddIfNotNull("finishTime", this.FinishTime);
+			kparams.AddIfNotNull("errType", this.ErrType);
+			kparams.AddIfNotNull("errNumber", this.ErrNumber);
+			kparams.AddIfNotNull("estimatedEffort", this.EstimatedEffort);
+			kparams.AddIfNotNull("urgency", this.Urgency);
+			kparams.AddIfNotNull("schedulerId", this.SchedulerId);
+			kparams.AddIfNotNull("workerId", this.WorkerId);
+			kparams.AddIfNotNull("batchIndex", this.BatchIndex);
+			kparams.AddIfNotNull("lastSchedulerId", this.LastSchedulerId);
+			kparams.AddIfNotNull("lastWorkerId", this.LastWorkerId);
+			kparams.AddIfNotNull("dc", this.Dc);
+			kparams.AddIfNotNull("jobObjectId", this.JobObjectId);
+			kparams.AddIfNotNull("jobObjectType", this.JobObjectType);
 			return kparams;
 		}
 		#endregion

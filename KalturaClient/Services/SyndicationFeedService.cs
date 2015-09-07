@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaBaseSyndicationFeed Add(KalturaBaseSyndicationFeed syndicationFeed)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (syndicationFeed != null)
-				kparams.Add("syndicationFeed", syndicationFeed.ToParams());
+			kparams.AddIfNotNull("syndicationFeed", syndicationFeed);
 			_Client.QueueServiceCall("syndicationfeed", "add", "KalturaBaseSyndicationFeed", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,7 +54,7 @@ namespace Kaltura
 		public KalturaBaseSyndicationFeed Get(string id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("syndicationfeed", "get", "KalturaBaseSyndicationFeed", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -66,9 +65,8 @@ namespace Kaltura
 		public KalturaBaseSyndicationFeed Update(string id, KalturaBaseSyndicationFeed syndicationFeed)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			if (syndicationFeed != null)
-				kparams.Add("syndicationFeed", syndicationFeed.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("syndicationFeed", syndicationFeed);
 			_Client.QueueServiceCall("syndicationfeed", "update", "KalturaBaseSyndicationFeed", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -79,7 +77,7 @@ namespace Kaltura
 		public void Delete(string id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("syndicationfeed", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -99,10 +97,8 @@ namespace Kaltura
 		public KalturaBaseSyndicationFeedListResponse List(KalturaBaseSyndicationFeedFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("syndicationfeed", "list", "KalturaBaseSyndicationFeedListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -113,7 +109,7 @@ namespace Kaltura
 		public KalturaSyndicationFeedEntryCount GetEntryCount(string feedId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("feedId", feedId);
+			kparams.AddIfNotNull("feedId", feedId);
 			_Client.QueueServiceCall("syndicationfeed", "getEntryCount", "KalturaSyndicationFeedEntryCount", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -124,7 +120,7 @@ namespace Kaltura
 		public string RequestConversion(string feedId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("feedId", feedId);
+			kparams.AddIfNotNull("feedId", feedId);
 			_Client.QueueServiceCall("syndicationfeed", "requestConversion", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

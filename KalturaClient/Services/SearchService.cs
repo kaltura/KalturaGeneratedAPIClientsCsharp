@@ -48,10 +48,8 @@ namespace Kaltura
 		public KalturaSearchResultResponse Search(KalturaSearch search, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (search != null)
-				kparams.Add("search", search.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("search", search);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("search", "search", "KalturaSearchResultResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -62,8 +60,7 @@ namespace Kaltura
 		public KalturaSearchResult GetMediaInfo(KalturaSearchResult searchResult)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (searchResult != null)
-				kparams.Add("searchResult", searchResult.ToParams());
+			kparams.AddIfNotNull("searchResult", searchResult);
 			_Client.QueueServiceCall("search", "getMediaInfo", "KalturaSearchResult", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -74,8 +71,8 @@ namespace Kaltura
 		public KalturaSearchResult SearchUrl(KalturaMediaType mediaType, string url)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddEnumIfNotNull("mediaType", mediaType);
-			kparams.AddStringIfNotNull("url", url);
+			kparams.AddIfNotNull("mediaType", mediaType);
+			kparams.AddIfNotNull("url", url);
 			_Client.QueueServiceCall("search", "searchUrl", "KalturaSearchResult", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -86,9 +83,9 @@ namespace Kaltura
 		public KalturaSearchAuthData ExternalLogin(KalturaSearchProviderType searchSource, string userName, string password)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddEnumIfNotNull("searchSource", searchSource);
-			kparams.AddStringIfNotNull("userName", userName);
-			kparams.AddStringIfNotNull("password", password);
+			kparams.AddIfNotNull("searchSource", searchSource);
+			kparams.AddIfNotNull("userName", userName);
+			kparams.AddIfNotNull("password", password);
 			_Client.QueueServiceCall("search", "externalLogin", "KalturaSearchAuthData", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

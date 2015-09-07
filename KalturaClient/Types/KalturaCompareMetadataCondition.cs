@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCompareMetadataCondition");
-			kparams.AddStringIfNotNull("xPath", this.XPath);
-			kparams.AddIntIfNotNull("profileId", this.ProfileId);
-			kparams.AddStringIfNotNull("profileSystemName", this.ProfileSystemName);
+			kparams.AddIfNotNull("xPath", this.XPath);
+			kparams.AddIfNotNull("profileId", this.ProfileId);
+			kparams.AddIfNotNull("profileSystemName", this.ProfileSystemName);
 			return kparams;
 		}
 		#endregion

@@ -94,7 +94,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaPlayerDeliveryType(XmlElement node)
+		public KalturaPlayerDeliveryType(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -130,26 +130,11 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaPlayerDeliveryType");
-			kparams.AddStringIfNotNull("id", this.Id);
-			kparams.AddStringIfNotNull("label", this.Label);
-			if (this.Flashvars != null)
-			{
-				if (this.Flashvars.Count == 0)
-				{
-					kparams.Add("flashvars:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaKeyValue item in this.Flashvars)
-					{
-						kparams.Add("flashvars:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddStringIfNotNull("minVersion", this.MinVersion);
-			kparams.AddBoolIfNotNull("enabledByDefault", this.EnabledByDefault);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("label", this.Label);
+			kparams.AddIfNotNull("flashvars", this.Flashvars);
+			kparams.AddIfNotNull("minVersion", this.MinVersion);
+			kparams.AddIfNotNull("enabledByDefault", this.EnabledByDefault);
 			return kparams;
 		}
 		#endregion

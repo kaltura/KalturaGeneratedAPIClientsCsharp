@@ -64,7 +64,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaAssetDistributionRule(XmlElement node)
+		public KalturaAssetDistributionRule(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -91,23 +91,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAssetDistributionRule");
-			kparams.AddStringIfNotNull("validationError", this.ValidationError);
-			if (this.AssetDistributionConditions != null)
-			{
-				if (this.AssetDistributionConditions.Count == 0)
-				{
-					kparams.Add("assetDistributionConditions:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaAssetDistributionCondition item in this.AssetDistributionConditions)
-					{
-						kparams.Add("assetDistributionConditions:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
+			kparams.AddIfNotNull("validationError", this.ValidationError);
+			kparams.AddIfNotNull("assetDistributionConditions", this.AssetDistributionConditions);
 			return kparams;
 		}
 		#endregion

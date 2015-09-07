@@ -165,14 +165,14 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaThumbCuePointBaseFilter");
-			kparams.AddStringIfNotNull("descriptionLike", this.DescriptionLike);
-			kparams.AddStringIfNotNull("descriptionMultiLikeOr", this.DescriptionMultiLikeOr);
-			kparams.AddStringIfNotNull("descriptionMultiLikeAnd", this.DescriptionMultiLikeAnd);
-			kparams.AddStringIfNotNull("titleLike", this.TitleLike);
-			kparams.AddStringIfNotNull("titleMultiLikeOr", this.TitleMultiLikeOr);
-			kparams.AddStringIfNotNull("titleMultiLikeAnd", this.TitleMultiLikeAnd);
-			kparams.AddEnumIfNotNull("subTypeEqual", this.SubTypeEqual);
-			kparams.AddStringIfNotNull("subTypeIn", this.SubTypeIn);
+			kparams.AddIfNotNull("descriptionLike", this.DescriptionLike);
+			kparams.AddIfNotNull("descriptionMultiLikeOr", this.DescriptionMultiLikeOr);
+			kparams.AddIfNotNull("descriptionMultiLikeAnd", this.DescriptionMultiLikeAnd);
+			kparams.AddIfNotNull("titleLike", this.TitleLike);
+			kparams.AddIfNotNull("titleMultiLikeOr", this.TitleMultiLikeOr);
+			kparams.AddIfNotNull("titleMultiLikeAnd", this.TitleMultiLikeAnd);
+			kparams.AddIfNotNull("subTypeEqual", this.SubTypeEqual);
+			kparams.AddIfNotNull("subTypeIn", this.SubTypeIn);
 			return kparams;
 		}
 		#endregion

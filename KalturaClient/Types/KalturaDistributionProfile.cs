@@ -284,7 +284,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaDistributionProfile(XmlElement node)
+		public KalturaDistributionProfile(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -389,90 +389,30 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDistributionProfile");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringEnumIfNotNull("providerType", this.ProviderType);
-			kparams.AddStringIfNotNull("name", this.Name);
-			kparams.AddEnumIfNotNull("status", this.Status);
-			kparams.AddEnumIfNotNull("submitEnabled", this.SubmitEnabled);
-			kparams.AddEnumIfNotNull("updateEnabled", this.UpdateEnabled);
-			kparams.AddEnumIfNotNull("deleteEnabled", this.DeleteEnabled);
-			kparams.AddEnumIfNotNull("reportEnabled", this.ReportEnabled);
-			kparams.AddStringIfNotNull("autoCreateFlavors", this.AutoCreateFlavors);
-			kparams.AddStringIfNotNull("autoCreateThumb", this.AutoCreateThumb);
-			kparams.AddStringIfNotNull("optionalFlavorParamsIds", this.OptionalFlavorParamsIds);
-			kparams.AddStringIfNotNull("requiredFlavorParamsIds", this.RequiredFlavorParamsIds);
-			if (this.OptionalThumbDimensions != null)
-			{
-				if (this.OptionalThumbDimensions.Count == 0)
-				{
-					kparams.Add("optionalThumbDimensions:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaDistributionThumbDimensions item in this.OptionalThumbDimensions)
-					{
-						kparams.Add("optionalThumbDimensions:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			if (this.RequiredThumbDimensions != null)
-			{
-				if (this.RequiredThumbDimensions.Count == 0)
-				{
-					kparams.Add("requiredThumbDimensions:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaDistributionThumbDimensions item in this.RequiredThumbDimensions)
-					{
-						kparams.Add("requiredThumbDimensions:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			if (this.OptionalAssetDistributionRules != null)
-			{
-				if (this.OptionalAssetDistributionRules.Count == 0)
-				{
-					kparams.Add("optionalAssetDistributionRules:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaAssetDistributionRule item in this.OptionalAssetDistributionRules)
-					{
-						kparams.Add("optionalAssetDistributionRules:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			if (this.RequiredAssetDistributionRules != null)
-			{
-				if (this.RequiredAssetDistributionRules.Count == 0)
-				{
-					kparams.Add("requiredAssetDistributionRules:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaAssetDistributionRule item in this.RequiredAssetDistributionRules)
-					{
-						kparams.Add("requiredAssetDistributionRules:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddIntIfNotNull("sunriseDefaultOffset", this.SunriseDefaultOffset);
-			kparams.AddIntIfNotNull("sunsetDefaultOffset", this.SunsetDefaultOffset);
-			kparams.AddIntIfNotNull("recommendedStorageProfileForDownload", this.RecommendedStorageProfileForDownload);
-			kparams.AddIntIfNotNull("recommendedDcForDownload", this.RecommendedDcForDownload);
-			kparams.AddIntIfNotNull("recommendedDcForExecute", this.RecommendedDcForExecute);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("providerType", this.ProviderType);
+			kparams.AddIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("submitEnabled", this.SubmitEnabled);
+			kparams.AddIfNotNull("updateEnabled", this.UpdateEnabled);
+			kparams.AddIfNotNull("deleteEnabled", this.DeleteEnabled);
+			kparams.AddIfNotNull("reportEnabled", this.ReportEnabled);
+			kparams.AddIfNotNull("autoCreateFlavors", this.AutoCreateFlavors);
+			kparams.AddIfNotNull("autoCreateThumb", this.AutoCreateThumb);
+			kparams.AddIfNotNull("optionalFlavorParamsIds", this.OptionalFlavorParamsIds);
+			kparams.AddIfNotNull("requiredFlavorParamsIds", this.RequiredFlavorParamsIds);
+			kparams.AddIfNotNull("optionalThumbDimensions", this.OptionalThumbDimensions);
+			kparams.AddIfNotNull("requiredThumbDimensions", this.RequiredThumbDimensions);
+			kparams.AddIfNotNull("optionalAssetDistributionRules", this.OptionalAssetDistributionRules);
+			kparams.AddIfNotNull("requiredAssetDistributionRules", this.RequiredAssetDistributionRules);
+			kparams.AddIfNotNull("sunriseDefaultOffset", this.SunriseDefaultOffset);
+			kparams.AddIfNotNull("sunsetDefaultOffset", this.SunsetDefaultOffset);
+			kparams.AddIfNotNull("recommendedStorageProfileForDownload", this.RecommendedStorageProfileForDownload);
+			kparams.AddIfNotNull("recommendedDcForDownload", this.RecommendedDcForDownload);
+			kparams.AddIfNotNull("recommendedDcForExecute", this.RecommendedDcForExecute);
 			return kparams;
 		}
 		#endregion

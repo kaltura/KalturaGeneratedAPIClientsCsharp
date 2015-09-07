@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaEventNotificationParameter(XmlElement node)
+		public KalturaEventNotificationParameter(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -100,10 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEventNotificationParameter");
-			kparams.AddStringIfNotNull("key", this.Key);
-			kparams.AddStringIfNotNull("description", this.Description);
-			if (this.Value != null)
-				kparams.Add("value", this.Value.ToParams());
+			kparams.AddIfNotNull("key", this.Key);
+			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("value", this.Value);
 			return kparams;
 		}
 		#endregion

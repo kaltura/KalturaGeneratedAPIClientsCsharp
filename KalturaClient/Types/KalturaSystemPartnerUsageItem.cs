@@ -254,7 +254,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaSystemPartnerUsageItem(XmlElement node)
+		public KalturaSystemPartnerUsageItem(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -334,27 +334,27 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSystemPartnerUsageItem");
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringIfNotNull("partnerName", this.PartnerName);
-			kparams.AddEnumIfNotNull("partnerStatus", this.PartnerStatus);
-			kparams.AddIntIfNotNull("partnerPackage", this.PartnerPackage);
-			kparams.AddIntIfNotNull("partnerCreatedAt", this.PartnerCreatedAt);
-			kparams.AddIntIfNotNull("views", this.Views);
-			kparams.AddIntIfNotNull("plays", this.Plays);
-			kparams.AddIntIfNotNull("entriesCount", this.EntriesCount);
-			kparams.AddIntIfNotNull("totalEntriesCount", this.TotalEntriesCount);
-			kparams.AddIntIfNotNull("videoEntriesCount", this.VideoEntriesCount);
-			kparams.AddIntIfNotNull("imageEntriesCount", this.ImageEntriesCount);
-			kparams.AddIntIfNotNull("audioEntriesCount", this.AudioEntriesCount);
-			kparams.AddIntIfNotNull("mixEntriesCount", this.MixEntriesCount);
-			kparams.AddFloatIfNotNull("bandwidth", this.Bandwidth);
-			kparams.AddFloatIfNotNull("totalStorage", this.TotalStorage);
-			kparams.AddFloatIfNotNull("storage", this.Storage);
-			kparams.AddFloatIfNotNull("peakStorage", this.PeakStorage);
-			kparams.AddFloatIfNotNull("avgStorage", this.AvgStorage);
-			kparams.AddFloatIfNotNull("combinedBandwidthStorage", this.CombinedBandwidthStorage);
-			kparams.AddFloatIfNotNull("deletedStorage", this.DeletedStorage);
-			kparams.AddFloatIfNotNull("transcodingUsage", this.TranscodingUsage);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("partnerName", this.PartnerName);
+			kparams.AddIfNotNull("partnerStatus", this.PartnerStatus);
+			kparams.AddIfNotNull("partnerPackage", this.PartnerPackage);
+			kparams.AddIfNotNull("partnerCreatedAt", this.PartnerCreatedAt);
+			kparams.AddIfNotNull("views", this.Views);
+			kparams.AddIfNotNull("plays", this.Plays);
+			kparams.AddIfNotNull("entriesCount", this.EntriesCount);
+			kparams.AddIfNotNull("totalEntriesCount", this.TotalEntriesCount);
+			kparams.AddIfNotNull("videoEntriesCount", this.VideoEntriesCount);
+			kparams.AddIfNotNull("imageEntriesCount", this.ImageEntriesCount);
+			kparams.AddIfNotNull("audioEntriesCount", this.AudioEntriesCount);
+			kparams.AddIfNotNull("mixEntriesCount", this.MixEntriesCount);
+			kparams.AddIfNotNull("bandwidth", this.Bandwidth);
+			kparams.AddIfNotNull("totalStorage", this.TotalStorage);
+			kparams.AddIfNotNull("storage", this.Storage);
+			kparams.AddIfNotNull("peakStorage", this.PeakStorage);
+			kparams.AddIfNotNull("avgStorage", this.AvgStorage);
+			kparams.AddIfNotNull("combinedBandwidthStorage", this.CombinedBandwidthStorage);
+			kparams.AddIfNotNull("deletedStorage", this.DeletedStorage);
+			kparams.AddIfNotNull("transcodingUsage", this.TranscodingUsage);
 			return kparams;
 		}
 		#endregion

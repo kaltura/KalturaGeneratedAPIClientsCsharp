@@ -282,23 +282,23 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaMetadataBaseFilter");
-			kparams.AddIntIfNotNull("partnerIdEqual", this.PartnerIdEqual);
-			kparams.AddIntIfNotNull("metadataProfileIdEqual", this.MetadataProfileIdEqual);
-			kparams.AddIntIfNotNull("metadataProfileVersionEqual", this.MetadataProfileVersionEqual);
-			kparams.AddIntIfNotNull("metadataProfileVersionGreaterThanOrEqual", this.MetadataProfileVersionGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("metadataProfileVersionLessThanOrEqual", this.MetadataProfileVersionLessThanOrEqual);
-			kparams.AddStringEnumIfNotNull("metadataObjectTypeEqual", this.MetadataObjectTypeEqual);
-			kparams.AddStringIfNotNull("objectIdEqual", this.ObjectIdEqual);
-			kparams.AddStringIfNotNull("objectIdIn", this.ObjectIdIn);
-			kparams.AddIntIfNotNull("versionEqual", this.VersionEqual);
-			kparams.AddIntIfNotNull("versionGreaterThanOrEqual", this.VersionGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("versionLessThanOrEqual", this.VersionLessThanOrEqual);
-			kparams.AddIntIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
-			kparams.AddIntIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
-			kparams.AddEnumIfNotNull("statusEqual", this.StatusEqual);
-			kparams.AddStringIfNotNull("statusIn", this.StatusIn);
+			kparams.AddIfNotNull("partnerIdEqual", this.PartnerIdEqual);
+			kparams.AddIfNotNull("metadataProfileIdEqual", this.MetadataProfileIdEqual);
+			kparams.AddIfNotNull("metadataProfileVersionEqual", this.MetadataProfileVersionEqual);
+			kparams.AddIfNotNull("metadataProfileVersionGreaterThanOrEqual", this.MetadataProfileVersionGreaterThanOrEqual);
+			kparams.AddIfNotNull("metadataProfileVersionLessThanOrEqual", this.MetadataProfileVersionLessThanOrEqual);
+			kparams.AddIfNotNull("metadataObjectTypeEqual", this.MetadataObjectTypeEqual);
+			kparams.AddIfNotNull("objectIdEqual", this.ObjectIdEqual);
+			kparams.AddIfNotNull("objectIdIn", this.ObjectIdIn);
+			kparams.AddIfNotNull("versionEqual", this.VersionEqual);
+			kparams.AddIfNotNull("versionGreaterThanOrEqual", this.VersionGreaterThanOrEqual);
+			kparams.AddIfNotNull("versionLessThanOrEqual", this.VersionLessThanOrEqual);
+			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("statusEqual", this.StatusEqual);
+			kparams.AddIfNotNull("statusIn", this.StatusIn);
 			return kparams;
 		}
 		#endregion

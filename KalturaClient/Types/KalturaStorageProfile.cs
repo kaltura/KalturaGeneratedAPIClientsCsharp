@@ -354,7 +354,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaStorageProfile(XmlElement node)
+		public KalturaStorageProfile(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -476,82 +476,37 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaStorageProfile");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringIfNotNull("name", this.Name);
-			kparams.AddStringIfNotNull("systemName", this.SystemName);
-			kparams.AddStringIfNotNull("desciption", this.Desciption);
-			kparams.AddEnumIfNotNull("status", this.Status);
-			kparams.AddStringEnumIfNotNull("protocol", this.Protocol);
-			kparams.AddStringIfNotNull("storageUrl", this.StorageUrl);
-			kparams.AddStringIfNotNull("storageBaseDir", this.StorageBaseDir);
-			kparams.AddStringIfNotNull("storageUsername", this.StorageUsername);
-			kparams.AddStringIfNotNull("storagePassword", this.StoragePassword);
-			kparams.AddBoolIfNotNull("storageFtpPassiveMode", this.StorageFtpPassiveMode);
-			kparams.AddIntIfNotNull("minFileSize", this.MinFileSize);
-			kparams.AddIntIfNotNull("maxFileSize", this.MaxFileSize);
-			kparams.AddStringIfNotNull("flavorParamsIds", this.FlavorParamsIds);
-			kparams.AddIntIfNotNull("maxConcurrentConnections", this.MaxConcurrentConnections);
-			kparams.AddStringIfNotNull("pathManagerClass", this.PathManagerClass);
-			if (this.PathManagerParams != null)
-			{
-				if (this.PathManagerParams.Count == 0)
-				{
-					kparams.Add("pathManagerParams:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaKeyValue item in this.PathManagerParams)
-					{
-						kparams.Add("pathManagerParams:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddIntIfNotNull("trigger", this.Trigger);
-			kparams.AddIntIfNotNull("deliveryPriority", this.DeliveryPriority);
-			kparams.AddEnumIfNotNull("deliveryStatus", this.DeliveryStatus);
-			kparams.AddEnumIfNotNull("readyBehavior", this.ReadyBehavior);
-			kparams.AddIntIfNotNull("allowAutoDelete", this.AllowAutoDelete);
-			kparams.AddBoolIfNotNull("createFileLink", this.CreateFileLink);
-			if (this.Rules != null)
-			{
-				if (this.Rules.Count == 0)
-				{
-					kparams.Add("rules:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaRule item in this.Rules)
-					{
-						kparams.Add("rules:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			if (this.DeliveryProfileIds != null)
-			{
-				if (this.DeliveryProfileIds.Count == 0)
-				{
-					kparams.Add("deliveryProfileIds:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaKeyValue item in this.DeliveryProfileIds)
-					{
-						kparams.Add("deliveryProfileIds:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddStringIfNotNull("privateKey", this.PrivateKey);
-			kparams.AddStringIfNotNull("publicKey", this.PublicKey);
-			kparams.AddStringIfNotNull("passPhrase", this.PassPhrase);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("systemName", this.SystemName);
+			kparams.AddIfNotNull("desciption", this.Desciption);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("protocol", this.Protocol);
+			kparams.AddIfNotNull("storageUrl", this.StorageUrl);
+			kparams.AddIfNotNull("storageBaseDir", this.StorageBaseDir);
+			kparams.AddIfNotNull("storageUsername", this.StorageUsername);
+			kparams.AddIfNotNull("storagePassword", this.StoragePassword);
+			kparams.AddIfNotNull("storageFtpPassiveMode", this.StorageFtpPassiveMode);
+			kparams.AddIfNotNull("minFileSize", this.MinFileSize);
+			kparams.AddIfNotNull("maxFileSize", this.MaxFileSize);
+			kparams.AddIfNotNull("flavorParamsIds", this.FlavorParamsIds);
+			kparams.AddIfNotNull("maxConcurrentConnections", this.MaxConcurrentConnections);
+			kparams.AddIfNotNull("pathManagerClass", this.PathManagerClass);
+			kparams.AddIfNotNull("pathManagerParams", this.PathManagerParams);
+			kparams.AddIfNotNull("trigger", this.Trigger);
+			kparams.AddIfNotNull("deliveryPriority", this.DeliveryPriority);
+			kparams.AddIfNotNull("deliveryStatus", this.DeliveryStatus);
+			kparams.AddIfNotNull("readyBehavior", this.ReadyBehavior);
+			kparams.AddIfNotNull("allowAutoDelete", this.AllowAutoDelete);
+			kparams.AddIfNotNull("createFileLink", this.CreateFileLink);
+			kparams.AddIfNotNull("rules", this.Rules);
+			kparams.AddIfNotNull("deliveryProfileIds", this.DeliveryProfileIds);
+			kparams.AddIfNotNull("privateKey", this.PrivateKey);
+			kparams.AddIfNotNull("publicKey", this.PublicKey);
+			kparams.AddIfNotNull("passPhrase", this.PassPhrase);
 			return kparams;
 		}
 		#endregion

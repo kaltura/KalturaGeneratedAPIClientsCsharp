@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUrlTokenizerAkamaiRtsp");
-			kparams.AddStringIfNotNull("host", this.Host);
-			kparams.AddIntIfNotNull("cpcode", this.Cpcode);
+			kparams.AddIfNotNull("host", this.Host);
+			kparams.AddIfNotNull("cpcode", this.Cpcode);
 			return kparams;
 		}
 		#endregion

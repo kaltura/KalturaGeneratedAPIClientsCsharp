@@ -87,10 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaBulkServiceFilterData");
-			if (this.Filter != null)
-				kparams.Add("filter", this.Filter.ToParams());
-			if (this.TemplateObject != null)
-				kparams.Add("templateObject", this.TemplateObject.ToParams());
+			kparams.AddIfNotNull("filter", this.Filter);
+			kparams.AddIfNotNull("templateObject", this.TemplateObject);
 			return kparams;
 		}
 		#endregion

@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaVarConsolePartnerFilter");
-			kparams.AddEnumIfNotNull("groupTypeEq", this.GroupTypeEq);
-			kparams.AddStringIfNotNull("groupTypeIn", this.GroupTypeIn);
-			kparams.AddStringIfNotNull("partnerPermissionsExist", this.PartnerPermissionsExist);
+			kparams.AddIfNotNull("groupTypeEq", this.GroupTypeEq);
+			kparams.AddIfNotNull("groupTypeIn", this.GroupTypeIn);
+			kparams.AddIfNotNull("partnerPermissionsExist", this.PartnerPermissionsExist);
 			return kparams;
 		}
 		#endregion

@@ -64,7 +64,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaSearchResultResponse(XmlElement node)
+		public KalturaSearchResultResponse(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -91,23 +91,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSearchResultResponse");
-			if (this.Objects != null)
-			{
-				if (this.Objects.Count == 0)
-				{
-					kparams.Add("objects:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaSearchResult item in this.Objects)
-					{
-						kparams.Add("objects:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddBoolIfNotNull("needMediaInfo", this.NeedMediaInfo);
+			kparams.AddIfNotNull("objects", this.Objects);
+			kparams.AddIfNotNull("needMediaInfo", this.NeedMediaInfo);
 			return kparams;
 		}
 		#endregion

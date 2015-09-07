@@ -94,7 +94,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaLiveStreamConfiguration(XmlElement node)
+		public KalturaLiveStreamConfiguration(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -126,11 +126,11 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveStreamConfiguration");
-			kparams.AddStringEnumIfNotNull("protocol", this.Protocol);
-			kparams.AddStringIfNotNull("url", this.Url);
-			kparams.AddStringIfNotNull("publishUrl", this.PublishUrl);
-			kparams.AddStringIfNotNull("backupUrl", this.BackupUrl);
-			kparams.AddStringIfNotNull("streamName", this.StreamName);
+			kparams.AddIfNotNull("protocol", this.Protocol);
+			kparams.AddIfNotNull("url", this.Url);
+			kparams.AddIfNotNull("publishUrl", this.PublishUrl);
+			kparams.AddIfNotNull("backupUrl", this.BackupUrl);
+			kparams.AddIfNotNull("streamName", this.StreamName);
 			return kparams;
 		}
 		#endregion

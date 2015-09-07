@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUrlResource");
-			kparams.AddStringIfNotNull("url", this.Url);
-			kparams.AddBoolIfNotNull("forceAsyncDownload", this.ForceAsyncDownload);
+			kparams.AddIfNotNull("url", this.Url);
+			kparams.AddIfNotNull("forceAsyncDownload", this.ForceAsyncDownload);
 			return kparams;
 		}
 		#endregion

@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaExternalMediaEntry Add(KalturaExternalMediaEntry entry)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (entry != null)
-				kparams.Add("entry", entry.ToParams());
+			kparams.AddIfNotNull("entry", entry);
 			_Client.QueueServiceCall("externalmedia_externalmedia", "add", "KalturaExternalMediaEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,7 +54,7 @@ namespace Kaltura
 		public KalturaExternalMediaEntry Get(string id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("externalmedia_externalmedia", "get", "KalturaExternalMediaEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -66,9 +65,8 @@ namespace Kaltura
 		public KalturaExternalMediaEntry Update(string id, KalturaExternalMediaEntry entry)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			if (entry != null)
-				kparams.Add("entry", entry.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("entry", entry);
 			_Client.QueueServiceCall("externalmedia_externalmedia", "update", "KalturaExternalMediaEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -79,7 +77,7 @@ namespace Kaltura
 		public void Delete(string id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("externalmedia_externalmedia", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -99,10 +97,8 @@ namespace Kaltura
 		public KalturaExternalMediaEntryListResponse List(KalturaExternalMediaEntryFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("externalmedia_externalmedia", "list", "KalturaExternalMediaEntryListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -118,8 +114,7 @@ namespace Kaltura
 		public int Count(KalturaExternalMediaEntryFilter filter)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
+			kparams.AddIfNotNull("filter", filter);
 			_Client.QueueServiceCall("externalmedia_externalmedia", "count", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return 0;

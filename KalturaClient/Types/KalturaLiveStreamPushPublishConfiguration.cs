@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaLiveStreamPushPublishConfiguration(XmlElement node)
+		public KalturaLiveStreamPushPublishConfiguration(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveStreamPushPublishConfiguration");
-			kparams.AddStringIfNotNull("publishUrl", this.PublishUrl);
-			kparams.AddStringIfNotNull("backupPublishUrl", this.BackupPublishUrl);
-			kparams.AddStringIfNotNull("port", this.Port);
+			kparams.AddIfNotNull("publishUrl", this.PublishUrl);
+			kparams.AddIfNotNull("backupPublishUrl", this.BackupPublishUrl);
+			kparams.AddIfNotNull("port", this.Port);
 			return kparams;
 		}
 		#endregion

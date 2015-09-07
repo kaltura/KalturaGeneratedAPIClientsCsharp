@@ -54,7 +54,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaEntryReplacementOptions(XmlElement node)
+		public KalturaEntryReplacementOptions(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEntryReplacementOptions");
-			kparams.AddIntIfNotNull("keepManualThumbnails", this.KeepManualThumbnails);
+			kparams.AddIfNotNull("keepManualThumbnails", this.KeepManualThumbnails);
 			return kparams;
 		}
 		#endregion

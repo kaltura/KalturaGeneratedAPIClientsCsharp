@@ -53,10 +53,8 @@ namespace Kaltura
 		public KalturaShortLinkListResponse List(KalturaShortLinkFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("shortlink_shortlink", "list", "KalturaShortLinkListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -67,8 +65,7 @@ namespace Kaltura
 		public KalturaShortLink Add(KalturaShortLink shortLink)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (shortLink != null)
-				kparams.Add("shortLink", shortLink.ToParams());
+			kparams.AddIfNotNull("shortLink", shortLink);
 			_Client.QueueServiceCall("shortlink_shortlink", "add", "KalturaShortLink", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -79,7 +76,7 @@ namespace Kaltura
 		public KalturaShortLink Get(string id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("shortlink_shortlink", "get", "KalturaShortLink", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -90,9 +87,8 @@ namespace Kaltura
 		public KalturaShortLink Update(string id, KalturaShortLink shortLink)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			if (shortLink != null)
-				kparams.Add("shortLink", shortLink.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("shortLink", shortLink);
 			_Client.QueueServiceCall("shortlink_shortlink", "update", "KalturaShortLink", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -103,7 +99,7 @@ namespace Kaltura
 		public KalturaShortLink Delete(string id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("shortlink_shortlink", "delete", "KalturaShortLink", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

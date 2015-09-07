@@ -178,15 +178,15 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCategoryEntryBaseFilter");
-			kparams.AddIntIfNotNull("categoryIdEqual", this.CategoryIdEqual);
-			kparams.AddStringIfNotNull("categoryIdIn", this.CategoryIdIn);
-			kparams.AddStringIfNotNull("entryIdEqual", this.EntryIdEqual);
-			kparams.AddStringIfNotNull("entryIdIn", this.EntryIdIn);
-			kparams.AddIntIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
-			kparams.AddStringIfNotNull("categoryFullIdsStartsWith", this.CategoryFullIdsStartsWith);
-			kparams.AddEnumIfNotNull("statusEqual", this.StatusEqual);
-			kparams.AddStringIfNotNull("statusIn", this.StatusIn);
+			kparams.AddIfNotNull("categoryIdEqual", this.CategoryIdEqual);
+			kparams.AddIfNotNull("categoryIdIn", this.CategoryIdIn);
+			kparams.AddIfNotNull("entryIdEqual", this.EntryIdEqual);
+			kparams.AddIfNotNull("entryIdIn", this.EntryIdIn);
+			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("categoryFullIdsStartsWith", this.CategoryFullIdsStartsWith);
+			kparams.AddIfNotNull("statusEqual", this.StatusEqual);
+			kparams.AddIfNotNull("statusIn", this.StatusIn);
 			return kparams;
 		}
 		#endregion

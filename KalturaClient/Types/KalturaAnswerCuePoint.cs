@@ -143,27 +143,12 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAnswerCuePoint");
-			kparams.AddStringIfNotNull("parentId", this.ParentId);
-			kparams.AddStringIfNotNull("quizUserEntryId", this.QuizUserEntryId);
-			kparams.AddStringIfNotNull("answerKey", this.AnswerKey);
-			kparams.AddEnumIfNotNull("isCorrect", this.IsCorrect);
-			if (this.CorrectAnswerKeys != null)
-			{
-				if (this.CorrectAnswerKeys.Count == 0)
-				{
-					kparams.Add("correctAnswerKeys:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaString item in this.CorrectAnswerKeys)
-					{
-						kparams.Add("correctAnswerKeys:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddStringIfNotNull("explanation", this.Explanation);
+			kparams.AddIfNotNull("parentId", this.ParentId);
+			kparams.AddIfNotNull("quizUserEntryId", this.QuizUserEntryId);
+			kparams.AddIfNotNull("answerKey", this.AnswerKey);
+			kparams.AddIfNotNull("isCorrect", this.IsCorrect);
+			kparams.AddIfNotNull("correctAnswerKeys", this.CorrectAnswerKeys);
+			kparams.AddIfNotNull("explanation", this.Explanation);
 			return kparams;
 		}
 		#endregion

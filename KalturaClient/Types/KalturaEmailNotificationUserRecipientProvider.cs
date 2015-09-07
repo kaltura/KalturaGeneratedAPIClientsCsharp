@@ -74,8 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEmailNotificationUserRecipientProvider");
-			if (this.Filter != null)
-				kparams.Add("filter", this.Filter.ToParams());
+			kparams.AddIfNotNull("filter", this.Filter);
 			return kparams;
 		}
 		#endregion

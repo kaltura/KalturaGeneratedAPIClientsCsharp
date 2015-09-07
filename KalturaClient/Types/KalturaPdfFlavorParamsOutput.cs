@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaPdfFlavorParamsOutput");
-			kparams.AddBoolIfNotNull("readonly", this.Readonly);
+			kparams.AddIfNotNull("readonly", this.Readonly);
 			return kparams;
 		}
 		#endregion

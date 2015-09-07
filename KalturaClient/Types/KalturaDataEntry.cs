@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDataEntry");
-			kparams.AddStringIfNotNull("dataContent", this.DataContent);
-			kparams.AddBoolIfNotNull("retrieveDataContentByGet", this.RetrieveDataContentByGet);
+			kparams.AddIfNotNull("dataContent", this.DataContent);
+			kparams.AddIfNotNull("retrieveDataContentByGet", this.RetrieveDataContentByGet);
 			return kparams;
 		}
 		#endregion

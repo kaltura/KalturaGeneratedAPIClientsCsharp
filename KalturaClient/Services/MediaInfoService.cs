@@ -53,10 +53,8 @@ namespace Kaltura
 		public KalturaMediaInfoListResponse List(KalturaMediaInfoFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("mediainfo", "list", "KalturaMediaInfoListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

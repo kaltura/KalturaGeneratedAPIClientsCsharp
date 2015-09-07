@@ -64,7 +64,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaUrlTokenizer(XmlElement node)
+		public KalturaUrlTokenizer(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUrlTokenizer");
-			kparams.AddIntIfNotNull("window", this.Window);
-			kparams.AddStringIfNotNull("key", this.Key);
+			kparams.AddIfNotNull("window", this.Window);
+			kparams.AddIfNotNull("key", this.Key);
 			return kparams;
 		}
 		#endregion

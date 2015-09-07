@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaCaptionParams Add(KalturaCaptionParams captionParams)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (captionParams != null)
-				kparams.Add("captionParams", captionParams.ToParams());
+			kparams.AddIfNotNull("captionParams", captionParams);
 			_Client.QueueServiceCall("caption_captionparams", "add", "KalturaCaptionParams", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,7 +54,7 @@ namespace Kaltura
 		public KalturaCaptionParams Get(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("caption_captionparams", "get", "KalturaCaptionParams", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -66,9 +65,8 @@ namespace Kaltura
 		public KalturaCaptionParams Update(int id, KalturaCaptionParams captionParams)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			if (captionParams != null)
-				kparams.Add("captionParams", captionParams.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("captionParams", captionParams);
 			_Client.QueueServiceCall("caption_captionparams", "update", "KalturaCaptionParams", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -79,7 +77,7 @@ namespace Kaltura
 		public void Delete(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("caption_captionparams", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -99,10 +97,8 @@ namespace Kaltura
 		public KalturaCaptionParamsListResponse List(KalturaCaptionParamsFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("caption_captionparams", "list", "KalturaCaptionParamsListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

@@ -321,26 +321,26 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUiConfBaseFilter");
-			kparams.AddIntIfNotNull("idEqual", this.IdEqual);
-			kparams.AddStringIfNotNull("idIn", this.IdIn);
-			kparams.AddStringIfNotNull("nameLike", this.NameLike);
-			kparams.AddIntIfNotNull("partnerIdEqual", this.PartnerIdEqual);
-			kparams.AddStringIfNotNull("partnerIdIn", this.PartnerIdIn);
-			kparams.AddEnumIfNotNull("objTypeEqual", this.ObjTypeEqual);
-			kparams.AddStringIfNotNull("objTypeIn", this.ObjTypeIn);
-			kparams.AddStringIfNotNull("tagsMultiLikeOr", this.TagsMultiLikeOr);
-			kparams.AddStringIfNotNull("tagsMultiLikeAnd", this.TagsMultiLikeAnd);
-			kparams.AddIntIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
-			kparams.AddIntIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
-			kparams.AddEnumIfNotNull("creationModeEqual", this.CreationModeEqual);
-			kparams.AddStringIfNotNull("creationModeIn", this.CreationModeIn);
-			kparams.AddStringIfNotNull("versionEqual", this.VersionEqual);
-			kparams.AddStringIfNotNull("versionMultiLikeOr", this.VersionMultiLikeOr);
-			kparams.AddStringIfNotNull("versionMultiLikeAnd", this.VersionMultiLikeAnd);
-			kparams.AddStringIfNotNull("partnerTagsMultiLikeOr", this.PartnerTagsMultiLikeOr);
-			kparams.AddStringIfNotNull("partnerTagsMultiLikeAnd", this.PartnerTagsMultiLikeAnd);
+			kparams.AddIfNotNull("idEqual", this.IdEqual);
+			kparams.AddIfNotNull("idIn", this.IdIn);
+			kparams.AddIfNotNull("nameLike", this.NameLike);
+			kparams.AddIfNotNull("partnerIdEqual", this.PartnerIdEqual);
+			kparams.AddIfNotNull("partnerIdIn", this.PartnerIdIn);
+			kparams.AddIfNotNull("objTypeEqual", this.ObjTypeEqual);
+			kparams.AddIfNotNull("objTypeIn", this.ObjTypeIn);
+			kparams.AddIfNotNull("tagsMultiLikeOr", this.TagsMultiLikeOr);
+			kparams.AddIfNotNull("tagsMultiLikeAnd", this.TagsMultiLikeAnd);
+			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("creationModeEqual", this.CreationModeEqual);
+			kparams.AddIfNotNull("creationModeIn", this.CreationModeIn);
+			kparams.AddIfNotNull("versionEqual", this.VersionEqual);
+			kparams.AddIfNotNull("versionMultiLikeOr", this.VersionMultiLikeOr);
+			kparams.AddIfNotNull("versionMultiLikeAnd", this.VersionMultiLikeAnd);
+			kparams.AddIfNotNull("partnerTagsMultiLikeOr", this.PartnerTagsMultiLikeOr);
+			kparams.AddIfNotNull("partnerTagsMultiLikeAnd", this.PartnerTagsMultiLikeAnd);
 			return kparams;
 		}
 		#endregion

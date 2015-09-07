@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaDropFolder Add(KalturaDropFolder dropFolder)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (dropFolder != null)
-				kparams.Add("dropFolder", dropFolder.ToParams());
+			kparams.AddIfNotNull("dropFolder", dropFolder);
 			_Client.QueueServiceCall("dropfolder_dropfolder", "add", "KalturaDropFolder", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,7 +54,7 @@ namespace Kaltura
 		public KalturaDropFolder Get(int dropFolderId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("dropFolderId", dropFolderId);
+			kparams.AddIfNotNull("dropFolderId", dropFolderId);
 			_Client.QueueServiceCall("dropfolder_dropfolder", "get", "KalturaDropFolder", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -66,9 +65,8 @@ namespace Kaltura
 		public KalturaDropFolder Update(int dropFolderId, KalturaDropFolder dropFolder)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("dropFolderId", dropFolderId);
-			if (dropFolder != null)
-				kparams.Add("dropFolder", dropFolder.ToParams());
+			kparams.AddIfNotNull("dropFolderId", dropFolderId);
+			kparams.AddIfNotNull("dropFolder", dropFolder);
 			_Client.QueueServiceCall("dropfolder_dropfolder", "update", "KalturaDropFolder", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -79,7 +77,7 @@ namespace Kaltura
 		public KalturaDropFolder Delete(int dropFolderId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("dropFolderId", dropFolderId);
+			kparams.AddIfNotNull("dropFolderId", dropFolderId);
 			_Client.QueueServiceCall("dropfolder_dropfolder", "delete", "KalturaDropFolder", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -100,10 +98,8 @@ namespace Kaltura
 		public KalturaDropFolderListResponse List(KalturaDropFolderFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("dropfolder_dropfolder", "list", "KalturaDropFolderListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

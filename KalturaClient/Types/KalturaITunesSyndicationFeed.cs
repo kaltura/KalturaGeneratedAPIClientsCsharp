@@ -191,16 +191,16 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaITunesSyndicationFeed");
-			kparams.AddStringIfNotNull("feedDescription", this.FeedDescription);
-			kparams.AddStringIfNotNull("language", this.Language);
-			kparams.AddStringIfNotNull("feedLandingPage", this.FeedLandingPage);
-			kparams.AddStringIfNotNull("ownerName", this.OwnerName);
-			kparams.AddStringIfNotNull("ownerEmail", this.OwnerEmail);
-			kparams.AddStringIfNotNull("feedImageUrl", this.FeedImageUrl);
-			kparams.AddStringEnumIfNotNull("category", this.Category);
-			kparams.AddStringEnumIfNotNull("adultContent", this.AdultContent);
-			kparams.AddStringIfNotNull("feedAuthor", this.FeedAuthor);
-			kparams.AddEnumIfNotNull("enforceOrder", this.EnforceOrder);
+			kparams.AddIfNotNull("feedDescription", this.FeedDescription);
+			kparams.AddIfNotNull("language", this.Language);
+			kparams.AddIfNotNull("feedLandingPage", this.FeedLandingPage);
+			kparams.AddIfNotNull("ownerName", this.OwnerName);
+			kparams.AddIfNotNull("ownerEmail", this.OwnerEmail);
+			kparams.AddIfNotNull("feedImageUrl", this.FeedImageUrl);
+			kparams.AddIfNotNull("category", this.Category);
+			kparams.AddIfNotNull("adultContent", this.AdultContent);
+			kparams.AddIfNotNull("feedAuthor", this.FeedAuthor);
+			kparams.AddIfNotNull("enforceOrder", this.EnforceOrder);
 			return kparams;
 		}
 		#endregion

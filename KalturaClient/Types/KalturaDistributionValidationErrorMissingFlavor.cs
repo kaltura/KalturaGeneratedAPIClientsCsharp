@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDistributionValidationErrorMissingFlavor");
-			kparams.AddStringIfNotNull("flavorParamsId", this.FlavorParamsId);
+			kparams.AddIfNotNull("flavorParamsId", this.FlavorParamsId);
 			return kparams;
 		}
 		#endregion

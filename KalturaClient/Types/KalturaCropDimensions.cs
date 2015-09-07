@@ -84,7 +84,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaCropDimensions(XmlElement node)
+		public KalturaCropDimensions(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCropDimensions");
-			kparams.AddIntIfNotNull("left", this.Left);
-			kparams.AddIntIfNotNull("top", this.Top);
-			kparams.AddIntIfNotNull("width", this.Width);
-			kparams.AddIntIfNotNull("height", this.Height);
+			kparams.AddIfNotNull("left", this.Left);
+			kparams.AddIfNotNull("top", this.Top);
+			kparams.AddIfNotNull("width", this.Width);
+			kparams.AddIfNotNull("height", this.Height);
 			return kparams;
 		}
 		#endregion

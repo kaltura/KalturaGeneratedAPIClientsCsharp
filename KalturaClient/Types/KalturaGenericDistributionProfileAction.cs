@@ -124,7 +124,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaGenericDistributionProfileAction(XmlElement node)
+		public KalturaGenericDistributionProfileAction(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -165,14 +165,14 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaGenericDistributionProfileAction");
-			kparams.AddEnumIfNotNull("protocol", this.Protocol);
-			kparams.AddStringIfNotNull("serverUrl", this.ServerUrl);
-			kparams.AddStringIfNotNull("serverPath", this.ServerPath);
-			kparams.AddStringIfNotNull("username", this.Username);
-			kparams.AddStringIfNotNull("password", this.Password);
-			kparams.AddBoolIfNotNull("ftpPassiveMode", this.FtpPassiveMode);
-			kparams.AddStringIfNotNull("httpFieldName", this.HttpFieldName);
-			kparams.AddStringIfNotNull("httpFileName", this.HttpFileName);
+			kparams.AddIfNotNull("protocol", this.Protocol);
+			kparams.AddIfNotNull("serverUrl", this.ServerUrl);
+			kparams.AddIfNotNull("serverPath", this.ServerPath);
+			kparams.AddIfNotNull("username", this.Username);
+			kparams.AddIfNotNull("password", this.Password);
+			kparams.AddIfNotNull("ftpPassiveMode", this.FtpPassiveMode);
+			kparams.AddIfNotNull("httpFieldName", this.HttpFieldName);
+			kparams.AddIfNotNull("httpFileName", this.HttpFileName);
 			return kparams;
 		}
 		#endregion

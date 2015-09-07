@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDispatchEventNotificationObjectTask");
-			kparams.AddIntIfNotNull("eventNotificationTemplateId", this.EventNotificationTemplateId);
+			kparams.AddIfNotNull("eventNotificationTemplateId", this.EventNotificationTemplateId);
 			return kparams;
 		}
 		#endregion

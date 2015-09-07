@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaCondition(XmlElement node)
+		public KalturaCondition(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCondition");
-			kparams.AddStringEnumIfNotNull("type", this.Type);
-			kparams.AddStringIfNotNull("description", this.Description);
-			kparams.AddBoolIfNotNull("not", this.Not);
+			kparams.AddIfNotNull("type", this.Type);
+			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("not", this.Not);
 			return kparams;
 		}
 		#endregion

@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaTubeMogulSyndicationFeed");
-			kparams.AddStringEnumIfNotNull("category", this.Category);
+			kparams.AddIfNotNull("category", this.Category);
 			return kparams;
 		}
 		#endregion

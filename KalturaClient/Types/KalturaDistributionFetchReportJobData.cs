@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDistributionFetchReportJobData");
-			kparams.AddIntIfNotNull("plays", this.Plays);
-			kparams.AddIntIfNotNull("views", this.Views);
+			kparams.AddIfNotNull("plays", this.Plays);
+			kparams.AddIfNotNull("views", this.Views);
 			return kparams;
 		}
 		#endregion

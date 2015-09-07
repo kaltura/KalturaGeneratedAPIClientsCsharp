@@ -48,9 +48,8 @@ namespace Kaltura
 		public KalturaPlaylist Add(KalturaPlaylist playlist, bool updateStats)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (playlist != null)
-				kparams.Add("playlist", playlist.ToParams());
-			kparams.AddBoolIfNotNull("updateStats", updateStats);
+			kparams.AddIfNotNull("playlist", playlist);
+			kparams.AddIfNotNull("updateStats", updateStats);
 			_Client.QueueServiceCall("playlist", "add", "KalturaPlaylist", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -66,8 +65,8 @@ namespace Kaltura
 		public KalturaPlaylist Get(string id, int version)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			kparams.AddIntIfNotNull("version", version);
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("version", version);
 			_Client.QueueServiceCall("playlist", "get", "KalturaPlaylist", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -83,10 +82,9 @@ namespace Kaltura
 		public KalturaPlaylist Update(string id, KalturaPlaylist playlist, bool updateStats)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			if (playlist != null)
-				kparams.Add("playlist", playlist.ToParams());
-			kparams.AddBoolIfNotNull("updateStats", updateStats);
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("playlist", playlist);
+			kparams.AddIfNotNull("updateStats", updateStats);
 			_Client.QueueServiceCall("playlist", "update", "KalturaPlaylist", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -97,7 +95,7 @@ namespace Kaltura
 		public void Delete(string id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("playlist", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -112,9 +110,8 @@ namespace Kaltura
 		public KalturaPlaylist Clone(string id, KalturaPlaylist newPlaylist)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			if (newPlaylist != null)
-				kparams.Add("newPlaylist", newPlaylist.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("newPlaylist", newPlaylist);
 			_Client.QueueServiceCall("playlist", "clone", "KalturaPlaylist", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -135,10 +132,8 @@ namespace Kaltura
 		public KalturaPlaylistListResponse List(KalturaPlaylistFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("playlist", "list", "KalturaPlaylistListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -169,14 +164,11 @@ namespace Kaltura
 		public IList<KalturaBaseEntry> Execute(string id, string detailed, KalturaContext playlistContext, KalturaMediaEntryFilterForPlaylist filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			kparams.AddStringIfNotNull("detailed", detailed);
-			if (playlistContext != null)
-				kparams.Add("playlistContext", playlistContext.ToParams());
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("detailed", detailed);
+			kparams.AddIfNotNull("playlistContext", playlistContext);
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("playlist", "execute", "KalturaBaseEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -202,11 +194,10 @@ namespace Kaltura
 		public IList<KalturaBaseEntry> ExecuteFromContent(KalturaPlaylistType playlistType, string playlistContent, string detailed, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddEnumIfNotNull("playlistType", playlistType);
-			kparams.AddStringIfNotNull("playlistContent", playlistContent);
-			kparams.AddStringIfNotNull("detailed", detailed);
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("playlistType", playlistType);
+			kparams.AddIfNotNull("playlistContent", playlistContent);
+			kparams.AddIfNotNull("detailed", detailed);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("playlist", "executeFromContent", "KalturaBaseEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -232,14 +223,10 @@ namespace Kaltura
 		public IList<KalturaBaseEntry> ExecuteFromFilters(IList<KalturaMediaEntryFilterForPlaylist> filters, int totalResults, string detailed, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			foreach(KalturaMediaEntryFilterForPlaylist obj in filters)
-			{
-				kparams.Add("filters", obj.ToParams());
-			}
-			kparams.AddIntIfNotNull("totalResults", totalResults);
-			kparams.AddStringIfNotNull("detailed", detailed);
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filters", filters);
+			kparams.AddIfNotNull("totalResults", totalResults);
+			kparams.AddIfNotNull("detailed", detailed);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("playlist", "executeFromFilters", "KalturaBaseEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -255,8 +242,8 @@ namespace Kaltura
 		public KalturaPlaylist GetStatsFromContent(KalturaPlaylistType playlistType, string playlistContent)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddEnumIfNotNull("playlistType", playlistType);
-			kparams.AddStringIfNotNull("playlistContent", playlistContent);
+			kparams.AddIfNotNull("playlistType", playlistType);
+			kparams.AddIfNotNull("playlistContent", playlistContent);
 			_Client.QueueServiceCall("playlist", "getStatsFromContent", "KalturaPlaylist", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

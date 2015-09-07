@@ -134,7 +134,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaAccessControl(XmlElement node)
+		public KalturaAccessControl(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -182,30 +182,15 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAccessControl");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringIfNotNull("name", this.Name);
-			kparams.AddStringIfNotNull("systemName", this.SystemName);
-			kparams.AddStringIfNotNull("description", this.Description);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddEnumIfNotNull("isDefault", this.IsDefault);
-			if (this.Restrictions != null)
-			{
-				if (this.Restrictions.Count == 0)
-				{
-					kparams.Add("restrictions:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaBaseRestriction item in this.Restrictions)
-					{
-						kparams.Add("restrictions:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddBoolIfNotNull("containsUnsuportedRestrictions", this.ContainsUnsuportedRestrictions);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("systemName", this.SystemName);
+			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("isDefault", this.IsDefault);
+			kparams.AddIfNotNull("restrictions", this.Restrictions);
+			kparams.AddIfNotNull("containsUnsuportedRestrictions", this.ContainsUnsuportedRestrictions);
 			return kparams;
 		}
 		#endregion

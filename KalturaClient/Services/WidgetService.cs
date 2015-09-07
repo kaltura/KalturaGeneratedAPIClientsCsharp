@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaWidget Add(KalturaWidget widget)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (widget != null)
-				kparams.Add("widget", widget.ToParams());
+			kparams.AddIfNotNull("widget", widget);
 			_Client.QueueServiceCall("widget", "add", "KalturaWidget", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,9 +54,8 @@ namespace Kaltura
 		public KalturaWidget Update(string id, KalturaWidget widget)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			if (widget != null)
-				kparams.Add("widget", widget.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("widget", widget);
 			_Client.QueueServiceCall("widget", "update", "KalturaWidget", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -68,7 +66,7 @@ namespace Kaltura
 		public KalturaWidget Get(string id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("widget", "get", "KalturaWidget", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -79,8 +77,7 @@ namespace Kaltura
 		public KalturaWidget Clone(KalturaWidget widget)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (widget != null)
-				kparams.Add("widget", widget.ToParams());
+			kparams.AddIfNotNull("widget", widget);
 			_Client.QueueServiceCall("widget", "clone", "KalturaWidget", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -101,10 +98,8 @@ namespace Kaltura
 		public KalturaWidgetListResponse List(KalturaWidgetFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("widget", "list", "KalturaWidgetListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaResponseProfile Add(KalturaResponseProfile addResponseProfile)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (addResponseProfile != null)
-				kparams.Add("addResponseProfile", addResponseProfile.ToParams());
+			kparams.AddIfNotNull("addResponseProfile", addResponseProfile);
 			_Client.QueueServiceCall("responseprofile", "add", "KalturaResponseProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,7 +54,7 @@ namespace Kaltura
 		public KalturaResponseProfile Get(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("responseprofile", "get", "KalturaResponseProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -66,9 +65,8 @@ namespace Kaltura
 		public KalturaResponseProfile Update(int id, KalturaResponseProfile updateResponseProfile)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			if (updateResponseProfile != null)
-				kparams.Add("updateResponseProfile", updateResponseProfile.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("updateResponseProfile", updateResponseProfile);
 			_Client.QueueServiceCall("responseprofile", "update", "KalturaResponseProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -79,8 +77,8 @@ namespace Kaltura
 		public KalturaResponseProfile UpdateStatus(int id, KalturaResponseProfileStatus status)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			kparams.AddEnumIfNotNull("status", status);
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("status", status);
 			_Client.QueueServiceCall("responseprofile", "updateStatus", "KalturaResponseProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -91,7 +89,7 @@ namespace Kaltura
 		public void Delete(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("responseprofile", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -111,10 +109,8 @@ namespace Kaltura
 		public KalturaResponseProfileListResponse List(KalturaResponseProfileFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("responseprofile", "list", "KalturaResponseProfileListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -125,8 +121,7 @@ namespace Kaltura
 		public KalturaResponseProfileCacheRecalculateResults Recalculate(KalturaResponseProfileCacheRecalculateOptions options)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (options != null)
-				kparams.Add("options", options.ToParams());
+			kparams.AddIfNotNull("options", options);
 			_Client.QueueServiceCall("responseprofile", "recalculate", "KalturaResponseProfileCacheRecalculateResults", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -137,9 +132,8 @@ namespace Kaltura
 		public KalturaResponseProfile Clone(int id, KalturaResponseProfile profile)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			if (profile != null)
-				kparams.Add("profile", profile.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("profile", profile);
 			_Client.QueueServiceCall("responseprofile", "clone", "KalturaResponseProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

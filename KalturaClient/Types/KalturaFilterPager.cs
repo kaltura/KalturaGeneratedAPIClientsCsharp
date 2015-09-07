@@ -64,7 +64,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaFilterPager(XmlElement node)
+		public KalturaFilterPager(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaFilterPager");
-			kparams.AddIntIfNotNull("pageSize", this.PageSize);
-			kparams.AddIntIfNotNull("pageIndex", this.PageIndex);
+			kparams.AddIfNotNull("pageSize", this.PageSize);
+			kparams.AddIfNotNull("pageIndex", this.PageIndex);
 			return kparams;
 		}
 		#endregion

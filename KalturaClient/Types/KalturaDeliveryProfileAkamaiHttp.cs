@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDeliveryProfileAkamaiHttp");
-			kparams.AddBoolIfNotNull("useIntelliseek", this.UseIntelliseek);
+			kparams.AddIfNotNull("useIntelliseek", this.UseIntelliseek);
 			return kparams;
 		}
 		#endregion

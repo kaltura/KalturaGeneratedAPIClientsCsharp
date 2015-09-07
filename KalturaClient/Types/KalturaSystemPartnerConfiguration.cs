@@ -674,7 +674,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaSystemPartnerConfiguration(XmlElement node)
+		public KalturaSystemPartnerConfiguration(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -892,115 +892,69 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSystemPartnerConfiguration");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddStringIfNotNull("partnerName", this.PartnerName);
-			kparams.AddStringIfNotNull("description", this.Description);
-			kparams.AddStringIfNotNull("adminName", this.AdminName);
-			kparams.AddStringIfNotNull("adminEmail", this.AdminEmail);
-			kparams.AddStringIfNotNull("host", this.Host);
-			kparams.AddStringIfNotNull("cdnHost", this.CdnHost);
-			kparams.AddStringIfNotNull("cdnHostWhiteList", this.CdnHostWhiteList);
-			kparams.AddStringIfNotNull("thumbnailHost", this.ThumbnailHost);
-			kparams.AddIntIfNotNull("partnerPackage", this.PartnerPackage);
-			kparams.AddIntIfNotNull("monitorUsage", this.MonitorUsage);
-			kparams.AddBoolIfNotNull("moderateContent", this.ModerateContent);
-			kparams.AddBoolIfNotNull("storageDeleteFromKaltura", this.StorageDeleteFromKaltura);
-			kparams.AddEnumIfNotNull("storageServePriority", this.StorageServePriority);
-			kparams.AddIntIfNotNull("kmcVersion", this.KmcVersion);
-			kparams.AddIntIfNotNull("restrictThumbnailByKs", this.RestrictThumbnailByKs);
-			kparams.AddBoolIfNotNull("supportAnimatedThumbnails", this.SupportAnimatedThumbnails);
-			kparams.AddIntIfNotNull("defThumbOffset", this.DefThumbOffset);
-			kparams.AddIntIfNotNull("defThumbDensity", this.DefThumbDensity);
-			kparams.AddIntIfNotNull("userSessionRoleId", this.UserSessionRoleId);
-			kparams.AddIntIfNotNull("adminSessionRoleId", this.AdminSessionRoleId);
-			kparams.AddStringIfNotNull("alwaysAllowedPermissionNames", this.AlwaysAllowedPermissionNames);
-			kparams.AddBoolIfNotNull("importRemoteSourceForConvert", this.ImportRemoteSourceForConvert);
-			if (this.Permissions != null)
-			{
-				if (this.Permissions.Count == 0)
-				{
-					kparams.Add("permissions:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaPermission item in this.Permissions)
-					{
-						kparams.Add("permissions:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddStringIfNotNull("notificationsConfig", this.NotificationsConfig);
-			kparams.AddBoolIfNotNull("allowMultiNotification", this.AllowMultiNotification);
-			kparams.AddIntIfNotNull("loginBlockPeriod", this.LoginBlockPeriod);
-			kparams.AddIntIfNotNull("numPrevPassToKeep", this.NumPrevPassToKeep);
-			kparams.AddIntIfNotNull("passReplaceFreq", this.PassReplaceFreq);
-			kparams.AddBoolIfNotNull("isFirstLogin", this.IsFirstLogin);
-			kparams.AddEnumIfNotNull("partnerGroupType", this.PartnerGroupType);
-			kparams.AddIntIfNotNull("partnerParentId", this.PartnerParentId);
-			if (this.Limits != null)
-			{
-				if (this.Limits.Count == 0)
-				{
-					kparams.Add("limits:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaSystemPartnerLimit item in this.Limits)
-					{
-						kparams.Add("limits:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddStringIfNotNull("streamerType", this.StreamerType);
-			kparams.AddStringIfNotNull("mediaProtocol", this.MediaProtocol);
-			kparams.AddStringIfNotNull("extendedFreeTrailExpiryReason", this.ExtendedFreeTrailExpiryReason);
-			kparams.AddIntIfNotNull("extendedFreeTrailExpiryDate", this.ExtendedFreeTrailExpiryDate);
-			kparams.AddIntIfNotNull("extendedFreeTrail", this.ExtendedFreeTrail);
-			kparams.AddStringIfNotNull("crmId", this.CrmId);
-			kparams.AddStringIfNotNull("referenceId", this.ReferenceId);
-			kparams.AddStringIfNotNull("crmLink", this.CrmLink);
-			kparams.AddStringIfNotNull("verticalClasiffication", this.VerticalClasiffication);
-			kparams.AddStringIfNotNull("partnerPackageClassOfService", this.PartnerPackageClassOfService);
-			kparams.AddBoolIfNotNull("enableBulkUploadNotificationsEmails", this.EnableBulkUploadNotificationsEmails);
-			kparams.AddStringIfNotNull("deliveryProfileIds", this.DeliveryProfileIds);
-			kparams.AddBoolIfNotNull("enforceDelivery", this.EnforceDelivery);
-			kparams.AddStringIfNotNull("bulkUploadNotificationsEmail", this.BulkUploadNotificationsEmail);
-			kparams.AddBoolIfNotNull("internalUse", this.InternalUse);
-			kparams.AddStringEnumIfNotNull("defaultLiveStreamEntrySourceType", this.DefaultLiveStreamEntrySourceType);
-			kparams.AddStringIfNotNull("liveStreamProvisionParams", this.LiveStreamProvisionParams);
-			if (this.AutoModerateEntryFilter != null)
-				kparams.Add("autoModerateEntryFilter", this.AutoModerateEntryFilter.ToParams());
-			kparams.AddStringIfNotNull("logoutUrl", this.LogoutUrl);
-			kparams.AddBoolIfNotNull("defaultEntitlementEnforcement", this.DefaultEntitlementEnforcement);
-			kparams.AddIntIfNotNull("cacheFlavorVersion", this.CacheFlavorVersion);
-			kparams.AddIntIfNotNull("apiAccessControlId", this.ApiAccessControlId);
-			kparams.AddStringIfNotNull("defaultDeliveryType", this.DefaultDeliveryType);
-			kparams.AddStringIfNotNull("defaultEmbedCodeType", this.DefaultEmbedCodeType);
-			if (this.CustomDeliveryTypes != null)
-			{
-				if (this.CustomDeliveryTypes.Count == 0)
-				{
-					kparams.Add("customDeliveryTypes:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaKeyBooleanValue item in this.CustomDeliveryTypes)
-					{
-						kparams.Add("customDeliveryTypes:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddBoolIfNotNull("restrictEntryByMetadata", this.RestrictEntryByMetadata);
-			kparams.AddStringEnumIfNotNull("language", this.Language);
-			kparams.AddStringIfNotNull("audioThumbEntryId", this.AudioThumbEntryId);
-			kparams.AddStringIfNotNull("liveThumbEntryId", this.LiveThumbEntryId);
-			kparams.AddBoolIfNotNull("timeAlignedRenditions", this.TimeAlignedRenditions);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("partnerName", this.PartnerName);
+			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("adminName", this.AdminName);
+			kparams.AddIfNotNull("adminEmail", this.AdminEmail);
+			kparams.AddIfNotNull("host", this.Host);
+			kparams.AddIfNotNull("cdnHost", this.CdnHost);
+			kparams.AddIfNotNull("cdnHostWhiteList", this.CdnHostWhiteList);
+			kparams.AddIfNotNull("thumbnailHost", this.ThumbnailHost);
+			kparams.AddIfNotNull("partnerPackage", this.PartnerPackage);
+			kparams.AddIfNotNull("monitorUsage", this.MonitorUsage);
+			kparams.AddIfNotNull("moderateContent", this.ModerateContent);
+			kparams.AddIfNotNull("storageDeleteFromKaltura", this.StorageDeleteFromKaltura);
+			kparams.AddIfNotNull("storageServePriority", this.StorageServePriority);
+			kparams.AddIfNotNull("kmcVersion", this.KmcVersion);
+			kparams.AddIfNotNull("restrictThumbnailByKs", this.RestrictThumbnailByKs);
+			kparams.AddIfNotNull("supportAnimatedThumbnails", this.SupportAnimatedThumbnails);
+			kparams.AddIfNotNull("defThumbOffset", this.DefThumbOffset);
+			kparams.AddIfNotNull("defThumbDensity", this.DefThumbDensity);
+			kparams.AddIfNotNull("userSessionRoleId", this.UserSessionRoleId);
+			kparams.AddIfNotNull("adminSessionRoleId", this.AdminSessionRoleId);
+			kparams.AddIfNotNull("alwaysAllowedPermissionNames", this.AlwaysAllowedPermissionNames);
+			kparams.AddIfNotNull("importRemoteSourceForConvert", this.ImportRemoteSourceForConvert);
+			kparams.AddIfNotNull("permissions", this.Permissions);
+			kparams.AddIfNotNull("notificationsConfig", this.NotificationsConfig);
+			kparams.AddIfNotNull("allowMultiNotification", this.AllowMultiNotification);
+			kparams.AddIfNotNull("loginBlockPeriod", this.LoginBlockPeriod);
+			kparams.AddIfNotNull("numPrevPassToKeep", this.NumPrevPassToKeep);
+			kparams.AddIfNotNull("passReplaceFreq", this.PassReplaceFreq);
+			kparams.AddIfNotNull("isFirstLogin", this.IsFirstLogin);
+			kparams.AddIfNotNull("partnerGroupType", this.PartnerGroupType);
+			kparams.AddIfNotNull("partnerParentId", this.PartnerParentId);
+			kparams.AddIfNotNull("limits", this.Limits);
+			kparams.AddIfNotNull("streamerType", this.StreamerType);
+			kparams.AddIfNotNull("mediaProtocol", this.MediaProtocol);
+			kparams.AddIfNotNull("extendedFreeTrailExpiryReason", this.ExtendedFreeTrailExpiryReason);
+			kparams.AddIfNotNull("extendedFreeTrailExpiryDate", this.ExtendedFreeTrailExpiryDate);
+			kparams.AddIfNotNull("extendedFreeTrail", this.ExtendedFreeTrail);
+			kparams.AddIfNotNull("crmId", this.CrmId);
+			kparams.AddIfNotNull("referenceId", this.ReferenceId);
+			kparams.AddIfNotNull("crmLink", this.CrmLink);
+			kparams.AddIfNotNull("verticalClasiffication", this.VerticalClasiffication);
+			kparams.AddIfNotNull("partnerPackageClassOfService", this.PartnerPackageClassOfService);
+			kparams.AddIfNotNull("enableBulkUploadNotificationsEmails", this.EnableBulkUploadNotificationsEmails);
+			kparams.AddIfNotNull("deliveryProfileIds", this.DeliveryProfileIds);
+			kparams.AddIfNotNull("enforceDelivery", this.EnforceDelivery);
+			kparams.AddIfNotNull("bulkUploadNotificationsEmail", this.BulkUploadNotificationsEmail);
+			kparams.AddIfNotNull("internalUse", this.InternalUse);
+			kparams.AddIfNotNull("defaultLiveStreamEntrySourceType", this.DefaultLiveStreamEntrySourceType);
+			kparams.AddIfNotNull("liveStreamProvisionParams", this.LiveStreamProvisionParams);
+			kparams.AddIfNotNull("autoModerateEntryFilter", this.AutoModerateEntryFilter);
+			kparams.AddIfNotNull("logoutUrl", this.LogoutUrl);
+			kparams.AddIfNotNull("defaultEntitlementEnforcement", this.DefaultEntitlementEnforcement);
+			kparams.AddIfNotNull("cacheFlavorVersion", this.CacheFlavorVersion);
+			kparams.AddIfNotNull("apiAccessControlId", this.ApiAccessControlId);
+			kparams.AddIfNotNull("defaultDeliveryType", this.DefaultDeliveryType);
+			kparams.AddIfNotNull("defaultEmbedCodeType", this.DefaultEmbedCodeType);
+			kparams.AddIfNotNull("customDeliveryTypes", this.CustomDeliveryTypes);
+			kparams.AddIfNotNull("restrictEntryByMetadata", this.RestrictEntryByMetadata);
+			kparams.AddIfNotNull("language", this.Language);
+			kparams.AddIfNotNull("audioThumbEntryId", this.AudioThumbEntryId);
+			kparams.AddIfNotNull("liveThumbEntryId", this.LiveThumbEntryId);
+			kparams.AddIfNotNull("timeAlignedRenditions", this.TimeAlignedRenditions);
 			return kparams;
 		}
 		#endregion

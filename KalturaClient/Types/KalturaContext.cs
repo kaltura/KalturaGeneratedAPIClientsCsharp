@@ -44,7 +44,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaContext(XmlElement node)
+		public KalturaContext(XmlElement node) : base(node)
 		{
 		}
 		#endregion

@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAmazonS3StorageExportJobData");
-			kparams.AddStringEnumIfNotNull("filesPermissionInS3", this.FilesPermissionInS3);
-			kparams.AddStringIfNotNull("s3Region", this.S3Region);
+			kparams.AddIfNotNull("filesPermissionInS3", this.FilesPermissionInS3);
+			kparams.AddIfNotNull("s3Region", this.S3Region);
 			return kparams;
 		}
 		#endregion

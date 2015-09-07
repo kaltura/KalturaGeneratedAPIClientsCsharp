@@ -134,7 +134,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaUploadToken(XmlElement node)
+		public KalturaUploadToken(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -178,15 +178,15 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUploadToken");
-			kparams.AddStringIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringIfNotNull("userId", this.UserId);
-			kparams.AddEnumIfNotNull("status", this.Status);
-			kparams.AddStringIfNotNull("fileName", this.FileName);
-			kparams.AddFloatIfNotNull("fileSize", this.FileSize);
-			kparams.AddFloatIfNotNull("uploadedFileSize", this.UploadedFileSize);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("userId", this.UserId);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("fileName", this.FileName);
+			kparams.AddIfNotNull("fileSize", this.FileSize);
+			kparams.AddIfNotNull("uploadedFileSize", this.UploadedFileSize);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
 			return kparams;
 		}
 		#endregion

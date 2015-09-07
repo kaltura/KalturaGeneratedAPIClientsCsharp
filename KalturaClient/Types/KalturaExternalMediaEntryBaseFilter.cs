@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaExternalMediaEntryBaseFilter");
-			kparams.AddStringEnumIfNotNull("externalSourceTypeEqual", this.ExternalSourceTypeEqual);
-			kparams.AddStringIfNotNull("externalSourceTypeIn", this.ExternalSourceTypeIn);
-			kparams.AddStringIfNotNull("assetParamsIdsMatchOr", this.AssetParamsIdsMatchOr);
-			kparams.AddStringIfNotNull("assetParamsIdsMatchAnd", this.AssetParamsIdsMatchAnd);
+			kparams.AddIfNotNull("externalSourceTypeEqual", this.ExternalSourceTypeEqual);
+			kparams.AddIfNotNull("externalSourceTypeIn", this.ExternalSourceTypeIn);
+			kparams.AddIfNotNull("assetParamsIdsMatchOr", this.AssetParamsIdsMatchOr);
+			kparams.AddIfNotNull("assetParamsIdsMatchAnd", this.AssetParamsIdsMatchAnd);
 			return kparams;
 		}
 		#endregion

@@ -44,7 +44,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaAssetDistributionCondition(XmlElement node)
+		public KalturaAssetDistributionCondition(XmlElement node) : base(node)
 		{
 		}
 		#endregion

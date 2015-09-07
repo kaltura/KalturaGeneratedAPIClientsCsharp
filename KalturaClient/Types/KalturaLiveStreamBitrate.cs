@@ -84,7 +84,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaLiveStreamBitrate(XmlElement node)
+		public KalturaLiveStreamBitrate(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveStreamBitrate");
-			kparams.AddIntIfNotNull("bitrate", this.Bitrate);
-			kparams.AddIntIfNotNull("width", this.Width);
-			kparams.AddIntIfNotNull("height", this.Height);
-			kparams.AddStringIfNotNull("tags", this.Tags);
+			kparams.AddIfNotNull("bitrate", this.Bitrate);
+			kparams.AddIfNotNull("width", this.Width);
+			kparams.AddIfNotNull("height", this.Height);
+			kparams.AddIfNotNull("tags", this.Tags);
 			return kparams;
 		}
 		#endregion

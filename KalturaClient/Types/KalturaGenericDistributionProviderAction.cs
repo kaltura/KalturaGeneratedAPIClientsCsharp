@@ -214,7 +214,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaGenericDistributionProviderAction(XmlElement node)
+		public KalturaGenericDistributionProviderAction(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -282,23 +282,23 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaGenericDistributionProviderAction");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIntIfNotNull("genericDistributionProviderId", this.GenericDistributionProviderId);
-			kparams.AddEnumIfNotNull("action", this.Action);
-			kparams.AddEnumIfNotNull("status", this.Status);
-			kparams.AddEnumIfNotNull("resultsParser", this.ResultsParser);
-			kparams.AddEnumIfNotNull("protocol", this.Protocol);
-			kparams.AddStringIfNotNull("serverAddress", this.ServerAddress);
-			kparams.AddStringIfNotNull("remotePath", this.RemotePath);
-			kparams.AddStringIfNotNull("remoteUsername", this.RemoteUsername);
-			kparams.AddStringIfNotNull("remotePassword", this.RemotePassword);
-			kparams.AddStringIfNotNull("editableFields", this.EditableFields);
-			kparams.AddStringIfNotNull("mandatoryFields", this.MandatoryFields);
-			kparams.AddStringIfNotNull("mrssTransformer", this.MrssTransformer);
-			kparams.AddStringIfNotNull("mrssValidator", this.MrssValidator);
-			kparams.AddStringIfNotNull("resultsTransformer", this.ResultsTransformer);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("genericDistributionProviderId", this.GenericDistributionProviderId);
+			kparams.AddIfNotNull("action", this.Action);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("resultsParser", this.ResultsParser);
+			kparams.AddIfNotNull("protocol", this.Protocol);
+			kparams.AddIfNotNull("serverAddress", this.ServerAddress);
+			kparams.AddIfNotNull("remotePath", this.RemotePath);
+			kparams.AddIfNotNull("remoteUsername", this.RemoteUsername);
+			kparams.AddIfNotNull("remotePassword", this.RemotePassword);
+			kparams.AddIfNotNull("editableFields", this.EditableFields);
+			kparams.AddIfNotNull("mandatoryFields", this.MandatoryFields);
+			kparams.AddIfNotNull("mrssTransformer", this.MrssTransformer);
+			kparams.AddIfNotNull("mrssValidator", this.MrssValidator);
+			kparams.AddIfNotNull("resultsTransformer", this.ResultsTransformer);
 			return kparams;
 		}
 		#endregion

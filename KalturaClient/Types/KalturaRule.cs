@@ -94,7 +94,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaRule(XmlElement node)
+		public KalturaRule(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -138,56 +138,11 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaRule");
-			kparams.AddStringIfNotNull("message", this.Message);
-			if (this.Actions != null)
-			{
-				if (this.Actions.Count == 0)
-				{
-					kparams.Add("actions:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaRuleAction item in this.Actions)
-					{
-						kparams.Add("actions:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			if (this.Conditions != null)
-			{
-				if (this.Conditions.Count == 0)
-				{
-					kparams.Add("conditions:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaCondition item in this.Conditions)
-					{
-						kparams.Add("conditions:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			if (this.Contexts != null)
-			{
-				if (this.Contexts.Count == 0)
-				{
-					kparams.Add("contexts:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaContextTypeHolder item in this.Contexts)
-					{
-						kparams.Add("contexts:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddBoolIfNotNull("stopProcessing", this.StopProcessing);
+			kparams.AddIfNotNull("message", this.Message);
+			kparams.AddIfNotNull("actions", this.Actions);
+			kparams.AddIfNotNull("conditions", this.Conditions);
+			kparams.AddIfNotNull("contexts", this.Contexts);
+			kparams.AddIfNotNull("stopProcessing", this.StopProcessing);
 			return kparams;
 		}
 		#endregion

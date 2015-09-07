@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaThumbParams Add(KalturaThumbParams thumbParams)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (thumbParams != null)
-				kparams.Add("thumbParams", thumbParams.ToParams());
+			kparams.AddIfNotNull("thumbParams", thumbParams);
 			_Client.QueueServiceCall("thumbparams", "add", "KalturaThumbParams", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,7 +54,7 @@ namespace Kaltura
 		public KalturaThumbParams Get(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("thumbparams", "get", "KalturaThumbParams", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -66,9 +65,8 @@ namespace Kaltura
 		public KalturaThumbParams Update(int id, KalturaThumbParams thumbParams)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			if (thumbParams != null)
-				kparams.Add("thumbParams", thumbParams.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("thumbParams", thumbParams);
 			_Client.QueueServiceCall("thumbparams", "update", "KalturaThumbParams", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -79,7 +77,7 @@ namespace Kaltura
 		public void Delete(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("thumbparams", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -99,10 +97,8 @@ namespace Kaltura
 		public KalturaThumbParamsListResponse List(KalturaThumbParamsFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("thumbparams", "list", "KalturaThumbParamsListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -113,7 +109,7 @@ namespace Kaltura
 		public IList<KalturaThumbParams> GetByConversionProfileId(int conversionProfileId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("conversionProfileId", conversionProfileId);
+			kparams.AddIfNotNull("conversionProfileId", conversionProfileId);
 			_Client.QueueServiceCall("thumbparams", "getByConversionProfileId", "KalturaThumbParams", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

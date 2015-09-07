@@ -184,7 +184,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaSchedulerWorker(XmlElement node)
+		public KalturaSchedulerWorker(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -255,65 +255,20 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSchedulerWorker");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("configuredId", this.ConfiguredId);
-			kparams.AddIntIfNotNull("schedulerId", this.SchedulerId);
-			kparams.AddIntIfNotNull("schedulerConfiguredId", this.SchedulerConfiguredId);
-			kparams.AddStringEnumIfNotNull("type", this.Type);
-			kparams.AddStringIfNotNull("typeName", this.TypeName);
-			kparams.AddStringIfNotNull("name", this.Name);
-			if (this.Statuses != null)
-			{
-				if (this.Statuses.Count == 0)
-				{
-					kparams.Add("statuses:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaSchedulerStatus item in this.Statuses)
-					{
-						kparams.Add("statuses:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			if (this.Configs != null)
-			{
-				if (this.Configs.Count == 0)
-				{
-					kparams.Add("configs:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaSchedulerConfig item in this.Configs)
-					{
-						kparams.Add("configs:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			if (this.LockedJobs != null)
-			{
-				if (this.LockedJobs.Count == 0)
-				{
-					kparams.Add("lockedJobs:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaBatchJob item in this.LockedJobs)
-					{
-						kparams.Add("lockedJobs:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddIntIfNotNull("avgWait", this.AvgWait);
-			kparams.AddIntIfNotNull("avgWork", this.AvgWork);
-			kparams.AddIntIfNotNull("lastStatus", this.LastStatus);
-			kparams.AddStringIfNotNull("lastStatusStr", this.LastStatusStr);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("configuredId", this.ConfiguredId);
+			kparams.AddIfNotNull("schedulerId", this.SchedulerId);
+			kparams.AddIfNotNull("schedulerConfiguredId", this.SchedulerConfiguredId);
+			kparams.AddIfNotNull("type", this.Type);
+			kparams.AddIfNotNull("typeName", this.TypeName);
+			kparams.AddIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("statuses", this.Statuses);
+			kparams.AddIfNotNull("configs", this.Configs);
+			kparams.AddIfNotNull("lockedJobs", this.LockedJobs);
+			kparams.AddIfNotNull("avgWait", this.AvgWait);
+			kparams.AddIfNotNull("avgWork", this.AvgWork);
+			kparams.AddIfNotNull("lastStatus", this.LastStatus);
+			kparams.AddIfNotNull("lastStatusStr", this.LastStatusStr);
 			return kparams;
 		}
 		#endregion

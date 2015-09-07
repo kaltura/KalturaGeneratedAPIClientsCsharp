@@ -64,7 +64,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaLiveReportExportResponse(XmlElement node)
+		public KalturaLiveReportExportResponse(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveReportExportResponse");
-			kparams.AddLongIfNotNull("referenceJobId", this.ReferenceJobId);
-			kparams.AddStringIfNotNull("reportEmail", this.ReportEmail);
+			kparams.AddIfNotNull("referenceJobId", this.ReferenceJobId);
+			kparams.AddIfNotNull("reportEmail", this.ReportEmail);
 			return kparams;
 		}
 		#endregion

@@ -191,16 +191,16 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAkamaiUniversalProvisionJobData");
-			kparams.AddIntIfNotNull("streamId", this.StreamId);
-			kparams.AddStringIfNotNull("systemUserName", this.SystemUserName);
-			kparams.AddStringIfNotNull("systemPassword", this.SystemPassword);
-			kparams.AddStringIfNotNull("domainName", this.DomainName);
-			kparams.AddEnumIfNotNull("dvrEnabled", this.DvrEnabled);
-			kparams.AddIntIfNotNull("dvrWindow", this.DvrWindow);
-			kparams.AddStringIfNotNull("primaryContact", this.PrimaryContact);
-			kparams.AddStringIfNotNull("secondaryContact", this.SecondaryContact);
-			kparams.AddStringEnumIfNotNull("streamType", this.StreamType);
-			kparams.AddStringIfNotNull("notificationEmail", this.NotificationEmail);
+			kparams.AddIfNotNull("streamId", this.StreamId);
+			kparams.AddIfNotNull("systemUserName", this.SystemUserName);
+			kparams.AddIfNotNull("systemPassword", this.SystemPassword);
+			kparams.AddIfNotNull("domainName", this.DomainName);
+			kparams.AddIfNotNull("dvrEnabled", this.DvrEnabled);
+			kparams.AddIfNotNull("dvrWindow", this.DvrWindow);
+			kparams.AddIfNotNull("primaryContact", this.PrimaryContact);
+			kparams.AddIfNotNull("secondaryContact", this.SecondaryContact);
+			kparams.AddIfNotNull("streamType", this.StreamType);
+			kparams.AddIfNotNull("notificationEmail", this.NotificationEmail);
 			return kparams;
 		}
 		#endregion

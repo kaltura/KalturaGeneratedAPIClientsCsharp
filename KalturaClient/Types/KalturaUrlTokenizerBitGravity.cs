@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUrlTokenizerBitGravity");
-			kparams.AddStringIfNotNull("hashPatternRegex", this.HashPatternRegex);
+			kparams.AddIfNotNull("hashPatternRegex", this.HashPatternRegex);
 			return kparams;
 		}
 		#endregion

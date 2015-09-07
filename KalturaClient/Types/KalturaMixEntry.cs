@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaMixEntry");
-			kparams.AddBoolIfNotNull("hasRealThumbnail", this.HasRealThumbnail);
-			kparams.AddEnumIfNotNull("editorType", this.EditorType);
-			kparams.AddStringIfNotNull("dataContent", this.DataContent);
+			kparams.AddIfNotNull("hasRealThumbnail", this.HasRealThumbnail);
+			kparams.AddIfNotNull("editorType", this.EditorType);
+			kparams.AddIfNotNull("dataContent", this.DataContent);
 			return kparams;
 		}
 		#endregion

@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaParseCaptionAssetJobData");
-			kparams.AddStringIfNotNull("captionAssetId", this.CaptionAssetId);
+			kparams.AddIfNotNull("captionAssetId", this.CaptionAssetId);
 			return kparams;
 		}
 		#endregion

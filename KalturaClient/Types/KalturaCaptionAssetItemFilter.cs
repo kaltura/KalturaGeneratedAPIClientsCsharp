@@ -243,20 +243,20 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCaptionAssetItemFilter");
-			kparams.AddStringIfNotNull("contentLike", this.ContentLike);
-			kparams.AddStringIfNotNull("contentMultiLikeOr", this.ContentMultiLikeOr);
-			kparams.AddStringIfNotNull("contentMultiLikeAnd", this.ContentMultiLikeAnd);
-			kparams.AddStringIfNotNull("partnerDescriptionLike", this.PartnerDescriptionLike);
-			kparams.AddStringIfNotNull("partnerDescriptionMultiLikeOr", this.PartnerDescriptionMultiLikeOr);
-			kparams.AddStringIfNotNull("partnerDescriptionMultiLikeAnd", this.PartnerDescriptionMultiLikeAnd);
-			kparams.AddStringEnumIfNotNull("languageEqual", this.LanguageEqual);
-			kparams.AddStringIfNotNull("languageIn", this.LanguageIn);
-			kparams.AddStringIfNotNull("labelEqual", this.LabelEqual);
-			kparams.AddStringIfNotNull("labelIn", this.LabelIn);
-			kparams.AddIntIfNotNull("startTimeGreaterThanOrEqual", this.StartTimeGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("startTimeLessThanOrEqual", this.StartTimeLessThanOrEqual);
-			kparams.AddIntIfNotNull("endTimeGreaterThanOrEqual", this.EndTimeGreaterThanOrEqual);
-			kparams.AddIntIfNotNull("endTimeLessThanOrEqual", this.EndTimeLessThanOrEqual);
+			kparams.AddIfNotNull("contentLike", this.ContentLike);
+			kparams.AddIfNotNull("contentMultiLikeOr", this.ContentMultiLikeOr);
+			kparams.AddIfNotNull("contentMultiLikeAnd", this.ContentMultiLikeAnd);
+			kparams.AddIfNotNull("partnerDescriptionLike", this.PartnerDescriptionLike);
+			kparams.AddIfNotNull("partnerDescriptionMultiLikeOr", this.PartnerDescriptionMultiLikeOr);
+			kparams.AddIfNotNull("partnerDescriptionMultiLikeAnd", this.PartnerDescriptionMultiLikeAnd);
+			kparams.AddIfNotNull("languageEqual", this.LanguageEqual);
+			kparams.AddIfNotNull("languageIn", this.LanguageIn);
+			kparams.AddIfNotNull("labelEqual", this.LabelEqual);
+			kparams.AddIfNotNull("labelIn", this.LabelIn);
+			kparams.AddIfNotNull("startTimeGreaterThanOrEqual", this.StartTimeGreaterThanOrEqual);
+			kparams.AddIfNotNull("startTimeLessThanOrEqual", this.StartTimeLessThanOrEqual);
+			kparams.AddIfNotNull("endTimeGreaterThanOrEqual", this.EndTimeGreaterThanOrEqual);
+			kparams.AddIfNotNull("endTimeLessThanOrEqual", this.EndTimeLessThanOrEqual);
 			return kparams;
 		}
 		#endregion

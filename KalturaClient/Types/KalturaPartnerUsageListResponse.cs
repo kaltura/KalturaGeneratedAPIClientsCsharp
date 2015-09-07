@@ -91,24 +91,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaPartnerUsageListResponse");
-			if (this.Total != null)
-				kparams.Add("total", this.Total.ToParams());
-			if (this.Objects != null)
-			{
-				if (this.Objects.Count == 0)
-				{
-					kparams.Add("objects:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaVarPartnerUsageItem item in this.Objects)
-					{
-						kparams.Add("objects:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
+			kparams.AddIfNotNull("total", this.Total);
+			kparams.AddIfNotNull("objects", this.Objects);
 			return kparams;
 		}
 		#endregion

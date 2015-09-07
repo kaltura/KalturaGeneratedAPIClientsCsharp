@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaRemoteStorageResource");
-			kparams.AddIntIfNotNull("storageProfileId", this.StorageProfileId);
+			kparams.AddIfNotNull("storageProfileId", this.StorageProfileId);
 			return kparams;
 		}
 		#endregion

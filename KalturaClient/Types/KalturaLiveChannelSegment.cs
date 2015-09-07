@@ -194,7 +194,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaLiveChannelSegment(XmlElement node)
+		public KalturaLiveChannelSegment(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -256,21 +256,21 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveChannelSegment");
-			kparams.AddStringIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddStringIfNotNull("name", this.Name);
-			kparams.AddStringIfNotNull("description", this.Description);
-			kparams.AddStringIfNotNull("tags", this.Tags);
-			kparams.AddStringEnumIfNotNull("type", this.Type);
-			kparams.AddStringEnumIfNotNull("status", this.Status);
-			kparams.AddStringIfNotNull("channelId", this.ChannelId);
-			kparams.AddStringIfNotNull("entryId", this.EntryId);
-			kparams.AddStringEnumIfNotNull("triggerType", this.TriggerType);
-			kparams.AddStringIfNotNull("triggerSegmentId", this.TriggerSegmentId);
-			kparams.AddFloatIfNotNull("startTime", this.StartTime);
-			kparams.AddFloatIfNotNull("duration", this.Duration);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("tags", this.Tags);
+			kparams.AddIfNotNull("type", this.Type);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("channelId", this.ChannelId);
+			kparams.AddIfNotNull("entryId", this.EntryId);
+			kparams.AddIfNotNull("triggerType", this.TriggerType);
+			kparams.AddIfNotNull("triggerSegmentId", this.TriggerSegmentId);
+			kparams.AddIfNotNull("startTime", this.StartTime);
+			kparams.AddIfNotNull("duration", this.Duration);
 			return kparams;
 		}
 		#endregion

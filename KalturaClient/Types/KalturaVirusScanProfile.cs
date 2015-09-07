@@ -134,7 +134,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaVirusScanProfile(XmlElement node)
+		public KalturaVirusScanProfile(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -178,16 +178,15 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaVirusScanProfile");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringIfNotNull("name", this.Name);
-			kparams.AddEnumIfNotNull("status", this.Status);
-			kparams.AddStringEnumIfNotNull("engineType", this.EngineType);
-			if (this.EntryFilter != null)
-				kparams.Add("entryFilter", this.EntryFilter.ToParams());
-			kparams.AddEnumIfNotNull("actionIfInfected", this.ActionIfInfected);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("engineType", this.EngineType);
+			kparams.AddIfNotNull("entryFilter", this.EntryFilter);
+			kparams.AddIfNotNull("actionIfInfected", this.ActionIfInfected);
 			return kparams;
 		}
 		#endregion

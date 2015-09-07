@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDropFolderImportJobData");
-			kparams.AddIntIfNotNull("dropFolderFileId", this.DropFolderFileId);
+			kparams.AddIfNotNull("dropFolderFileId", this.DropFolderFileId);
 			return kparams;
 		}
 		#endregion

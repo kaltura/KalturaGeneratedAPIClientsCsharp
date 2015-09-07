@@ -269,22 +269,22 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaMailJobData");
-			kparams.AddStringEnumIfNotNull("mailType", this.MailType);
-			kparams.AddIntIfNotNull("mailPriority", this.MailPriority);
-			kparams.AddEnumIfNotNull("status", this.Status);
-			kparams.AddStringIfNotNull("recipientName", this.RecipientName);
-			kparams.AddStringIfNotNull("recipientEmail", this.RecipientEmail);
-			kparams.AddIntIfNotNull("recipientId", this.RecipientId);
-			kparams.AddStringIfNotNull("fromName", this.FromName);
-			kparams.AddStringIfNotNull("fromEmail", this.FromEmail);
-			kparams.AddStringIfNotNull("bodyParams", this.BodyParams);
-			kparams.AddStringIfNotNull("subjectParams", this.SubjectParams);
-			kparams.AddStringIfNotNull("templatePath", this.TemplatePath);
-			kparams.AddStringEnumIfNotNull("language", this.Language);
-			kparams.AddIntIfNotNull("campaignId", this.CampaignId);
-			kparams.AddIntIfNotNull("minSendDate", this.MinSendDate);
-			kparams.AddBoolIfNotNull("isHtml", this.IsHtml);
-			kparams.AddStringIfNotNull("separator", this.Separator);
+			kparams.AddIfNotNull("mailType", this.MailType);
+			kparams.AddIfNotNull("mailPriority", this.MailPriority);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("recipientName", this.RecipientName);
+			kparams.AddIfNotNull("recipientEmail", this.RecipientEmail);
+			kparams.AddIfNotNull("recipientId", this.RecipientId);
+			kparams.AddIfNotNull("fromName", this.FromName);
+			kparams.AddIfNotNull("fromEmail", this.FromEmail);
+			kparams.AddIfNotNull("bodyParams", this.BodyParams);
+			kparams.AddIfNotNull("subjectParams", this.SubjectParams);
+			kparams.AddIfNotNull("templatePath", this.TemplatePath);
+			kparams.AddIfNotNull("language", this.Language);
+			kparams.AddIfNotNull("campaignId", this.CampaignId);
+			kparams.AddIfNotNull("minSendDate", this.MinSendDate);
+			kparams.AddIfNotNull("isHtml", this.IsHtml);
+			kparams.AddIfNotNull("separator", this.Separator);
 			return kparams;
 		}
 		#endregion

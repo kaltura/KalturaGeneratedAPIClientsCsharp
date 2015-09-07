@@ -134,7 +134,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaFeedItemInfo(XmlElement node)
+		public KalturaFeedItemInfo(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -178,15 +178,15 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaFeedItemInfo");
-			kparams.AddStringIfNotNull("itemXPath", this.ItemXPath);
-			kparams.AddStringIfNotNull("itemPublishDateXPath", this.ItemPublishDateXPath);
-			kparams.AddStringIfNotNull("itemUniqueIdentifierXPath", this.ItemUniqueIdentifierXPath);
-			kparams.AddStringIfNotNull("itemContentFileSizeXPath", this.ItemContentFileSizeXPath);
-			kparams.AddStringIfNotNull("itemContentUrlXPath", this.ItemContentUrlXPath);
-			kparams.AddStringIfNotNull("itemContentBitrateXPath", this.ItemContentBitrateXPath);
-			kparams.AddStringIfNotNull("itemHashXPath", this.ItemHashXPath);
-			kparams.AddStringIfNotNull("itemContentXpath", this.ItemContentXpath);
-			kparams.AddStringIfNotNull("contentBitrateAttributeName", this.ContentBitrateAttributeName);
+			kparams.AddIfNotNull("itemXPath", this.ItemXPath);
+			kparams.AddIfNotNull("itemPublishDateXPath", this.ItemPublishDateXPath);
+			kparams.AddIfNotNull("itemUniqueIdentifierXPath", this.ItemUniqueIdentifierXPath);
+			kparams.AddIfNotNull("itemContentFileSizeXPath", this.ItemContentFileSizeXPath);
+			kparams.AddIfNotNull("itemContentUrlXPath", this.ItemContentUrlXPath);
+			kparams.AddIfNotNull("itemContentBitrateXPath", this.ItemContentBitrateXPath);
+			kparams.AddIfNotNull("itemHashXPath", this.ItemHashXPath);
+			kparams.AddIfNotNull("itemContentXpath", this.ItemContentXpath);
+			kparams.AddIfNotNull("contentBitrateAttributeName", this.ContentBitrateAttributeName);
 			return kparams;
 		}
 		#endregion

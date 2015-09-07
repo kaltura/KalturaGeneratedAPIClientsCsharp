@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaUser Add(KalturaUser user)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (user != null)
-				kparams.Add("user", user.ToParams());
+			kparams.AddIfNotNull("user", user);
 			_Client.QueueServiceCall("user", "add", "KalturaUser", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,9 +54,8 @@ namespace Kaltura
 		public KalturaUser Update(string userId, KalturaUser user)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("userId", userId);
-			if (user != null)
-				kparams.Add("user", user.ToParams());
+			kparams.AddIfNotNull("userId", userId);
+			kparams.AddIfNotNull("user", user);
 			_Client.QueueServiceCall("user", "update", "KalturaUser", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -73,7 +71,7 @@ namespace Kaltura
 		public KalturaUser Get(string userId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("userId", userId);
+			kparams.AddIfNotNull("userId", userId);
 			_Client.QueueServiceCall("user", "get", "KalturaUser", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -84,7 +82,7 @@ namespace Kaltura
 		public KalturaUser GetByLoginId(string loginId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("loginId", loginId);
+			kparams.AddIfNotNull("loginId", loginId);
 			_Client.QueueServiceCall("user", "getByLoginId", "KalturaUser", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -95,7 +93,7 @@ namespace Kaltura
 		public KalturaUser Delete(string userId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("userId", userId);
+			kparams.AddIfNotNull("userId", userId);
 			_Client.QueueServiceCall("user", "delete", "KalturaUser", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -116,10 +114,8 @@ namespace Kaltura
 		public KalturaUserListResponse List(KalturaUserFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("user", "list", "KalturaUserListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -130,7 +126,7 @@ namespace Kaltura
 		public void NotifyBan(string userId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("userId", userId);
+			kparams.AddIfNotNull("userId", userId);
 			_Client.QueueServiceCall("user", "notifyBan", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -150,11 +146,11 @@ namespace Kaltura
 		public string Login(int partnerId, string userId, string password, int expiry, string privileges)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("partnerId", partnerId);
-			kparams.AddStringIfNotNull("userId", userId);
-			kparams.AddStringIfNotNull("password", password);
-			kparams.AddIntIfNotNull("expiry", expiry);
-			kparams.AddStringIfNotNull("privileges", privileges);
+			kparams.AddIfNotNull("partnerId", partnerId);
+			kparams.AddIfNotNull("userId", userId);
+			kparams.AddIfNotNull("password", password);
+			kparams.AddIfNotNull("expiry", expiry);
+			kparams.AddIfNotNull("privileges", privileges);
 			_Client.QueueServiceCall("user", "login", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -180,11 +176,11 @@ namespace Kaltura
 		public string LoginByLoginId(string loginId, string password, int partnerId, int expiry, string privileges)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("loginId", loginId);
-			kparams.AddStringIfNotNull("password", password);
-			kparams.AddIntIfNotNull("partnerId", partnerId);
-			kparams.AddIntIfNotNull("expiry", expiry);
-			kparams.AddStringIfNotNull("privileges", privileges);
+			kparams.AddIfNotNull("loginId", loginId);
+			kparams.AddIfNotNull("password", password);
+			kparams.AddIfNotNull("partnerId", partnerId);
+			kparams.AddIfNotNull("expiry", expiry);
+			kparams.AddIfNotNull("privileges", privileges);
 			_Client.QueueServiceCall("user", "loginByLoginId", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -215,12 +211,12 @@ namespace Kaltura
 		public void UpdateLoginData(string oldLoginId, string password, string newLoginId, string newPassword, string newFirstName, string newLastName)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("oldLoginId", oldLoginId);
-			kparams.AddStringIfNotNull("password", password);
-			kparams.AddStringIfNotNull("newLoginId", newLoginId);
-			kparams.AddStringIfNotNull("newPassword", newPassword);
-			kparams.AddStringIfNotNull("newFirstName", newFirstName);
-			kparams.AddStringIfNotNull("newLastName", newLastName);
+			kparams.AddIfNotNull("oldLoginId", oldLoginId);
+			kparams.AddIfNotNull("password", password);
+			kparams.AddIfNotNull("newLoginId", newLoginId);
+			kparams.AddIfNotNull("newPassword", newPassword);
+			kparams.AddIfNotNull("newFirstName", newFirstName);
+			kparams.AddIfNotNull("newLastName", newLastName);
 			_Client.QueueServiceCall("user", "updateLoginData", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -230,7 +226,7 @@ namespace Kaltura
 		public void ResetPassword(string email)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("email", email);
+			kparams.AddIfNotNull("email", email);
 			_Client.QueueServiceCall("user", "resetPassword", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -240,8 +236,8 @@ namespace Kaltura
 		public void SetInitialPassword(string hashKey, string newPassword)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("hashKey", hashKey);
-			kparams.AddStringIfNotNull("newPassword", newPassword);
+			kparams.AddIfNotNull("hashKey", hashKey);
+			kparams.AddIfNotNull("newPassword", newPassword);
 			_Client.QueueServiceCall("user", "setInitialPassword", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -256,9 +252,9 @@ namespace Kaltura
 		public KalturaUser EnableLogin(string userId, string loginId, string password)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("userId", userId);
-			kparams.AddStringIfNotNull("loginId", loginId);
-			kparams.AddStringIfNotNull("password", password);
+			kparams.AddIfNotNull("userId", userId);
+			kparams.AddIfNotNull("loginId", loginId);
+			kparams.AddIfNotNull("password", password);
 			_Client.QueueServiceCall("user", "enableLogin", "KalturaUser", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -279,8 +275,8 @@ namespace Kaltura
 		public KalturaUser DisableLogin(string userId, string loginId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("userId", userId);
-			kparams.AddStringIfNotNull("loginId", loginId);
+			kparams.AddIfNotNull("userId", userId);
+			kparams.AddIfNotNull("loginId", loginId);
 			_Client.QueueServiceCall("user", "disableLogin", "KalturaUser", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -296,8 +292,8 @@ namespace Kaltura
 		public string Index(string id, bool shouldUpdate)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("id", id);
-			kparams.AddBoolIfNotNull("shouldUpdate", shouldUpdate);
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("shouldUpdate", shouldUpdate);
 			_Client.QueueServiceCall("user", "index", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -320,10 +316,8 @@ namespace Kaltura
 			KalturaParams kparams = new KalturaParams();
 			KalturaFiles kfiles = new KalturaFiles();
 			kfiles.Add("fileData", fileData);
-			if (bulkUploadData != null)
-				kparams.Add("bulkUploadData", bulkUploadData.ToParams());
-			if (bulkUploadUserData != null)
-				kparams.Add("bulkUploadUserData", bulkUploadUserData.ToParams());
+			kparams.AddIfNotNull("bulkUploadData", bulkUploadData);
+			kparams.AddIfNotNull("bulkUploadUserData", bulkUploadUserData);
 			_Client.QueueServiceCall("user", "addFromBulkUpload", "KalturaBulkUpload", kparams, kfiles);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -334,8 +328,7 @@ namespace Kaltura
 		public bool CheckLoginDataExists(KalturaUserLoginDataFilter filter)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
+			kparams.AddIfNotNull("filter", filter);
 			_Client.QueueServiceCall("user", "checkLoginDataExists", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return false;

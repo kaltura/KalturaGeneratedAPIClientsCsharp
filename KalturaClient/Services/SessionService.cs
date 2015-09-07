@@ -68,12 +68,12 @@ namespace Kaltura
 		public string Start(string secret, string userId, KalturaSessionType type, int partnerId, int expiry, string privileges)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("secret", secret);
-			kparams.AddStringIfNotNull("userId", userId);
-			kparams.AddEnumIfNotNull("type", type);
-			kparams.AddIntIfNotNull("partnerId", partnerId);
-			kparams.AddIntIfNotNull("expiry", expiry);
-			kparams.AddStringIfNotNull("privileges", privileges);
+			kparams.AddIfNotNull("secret", secret);
+			kparams.AddIfNotNull("userId", userId);
+			kparams.AddIfNotNull("type", type);
+			kparams.AddIfNotNull("partnerId", partnerId);
+			kparams.AddIfNotNull("expiry", expiry);
+			kparams.AddIfNotNull("privileges", privileges);
 			_Client.QueueServiceCall("session", "start", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -118,13 +118,13 @@ namespace Kaltura
 		public string Impersonate(string secret, int impersonatedPartnerId, string userId, KalturaSessionType type, int partnerId, int expiry, string privileges)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("secret", secret);
-			kparams.AddIntIfNotNull("impersonatedPartnerId", impersonatedPartnerId);
-			kparams.AddStringIfNotNull("userId", userId);
-			kparams.AddEnumIfNotNull("type", type);
-			kparams.AddIntIfNotNull("partnerId", partnerId);
-			kparams.AddIntIfNotNull("expiry", expiry);
-			kparams.AddStringIfNotNull("privileges", privileges);
+			kparams.AddIfNotNull("secret", secret);
+			kparams.AddIfNotNull("impersonatedPartnerId", impersonatedPartnerId);
+			kparams.AddIfNotNull("userId", userId);
+			kparams.AddIfNotNull("type", type);
+			kparams.AddIfNotNull("partnerId", partnerId);
+			kparams.AddIfNotNull("expiry", expiry);
+			kparams.AddIfNotNull("privileges", privileges);
 			_Client.QueueServiceCall("session", "impersonate", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -150,10 +150,10 @@ namespace Kaltura
 		public KalturaSessionInfo ImpersonateByKs(string session, KalturaSessionType type, int expiry, string privileges)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("session", session);
-			kparams.AddEnumIfNotNull("type", type);
-			kparams.AddIntIfNotNull("expiry", expiry);
-			kparams.AddStringIfNotNull("privileges", privileges);
+			kparams.AddIfNotNull("session", session);
+			kparams.AddIfNotNull("type", type);
+			kparams.AddIfNotNull("expiry", expiry);
+			kparams.AddIfNotNull("privileges", privileges);
 			_Client.QueueServiceCall("session", "impersonateByKs", "KalturaSessionInfo", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -169,7 +169,7 @@ namespace Kaltura
 		public KalturaSessionInfo Get(string session)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("session", session);
+			kparams.AddIfNotNull("session", session);
 			_Client.QueueServiceCall("session", "get", "KalturaSessionInfo", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -185,8 +185,8 @@ namespace Kaltura
 		public KalturaStartWidgetSessionResponse StartWidgetSession(string widgetId, int expiry)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("widgetId", widgetId);
-			kparams.AddIntIfNotNull("expiry", expiry);
+			kparams.AddIfNotNull("widgetId", widgetId);
+			kparams.AddIfNotNull("expiry", expiry);
 			_Client.QueueServiceCall("session", "startWidgetSession", "KalturaStartWidgetSessionResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

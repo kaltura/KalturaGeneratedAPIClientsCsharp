@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaEntryDistribution Add(KalturaEntryDistribution entryDistribution)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (entryDistribution != null)
-				kparams.Add("entryDistribution", entryDistribution.ToParams());
+			kparams.AddIfNotNull("entryDistribution", entryDistribution);
 			_Client.QueueServiceCall("contentdistribution_entrydistribution", "add", "KalturaEntryDistribution", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,7 +54,7 @@ namespace Kaltura
 		public KalturaEntryDistribution Get(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("contentdistribution_entrydistribution", "get", "KalturaEntryDistribution", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -66,7 +65,7 @@ namespace Kaltura
 		public KalturaEntryDistribution Validate(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("contentdistribution_entrydistribution", "validate", "KalturaEntryDistribution", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -77,9 +76,8 @@ namespace Kaltura
 		public KalturaEntryDistribution Update(int id, KalturaEntryDistribution entryDistribution)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			if (entryDistribution != null)
-				kparams.Add("entryDistribution", entryDistribution.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("entryDistribution", entryDistribution);
 			_Client.QueueServiceCall("contentdistribution_entrydistribution", "update", "KalturaEntryDistribution", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -90,7 +88,7 @@ namespace Kaltura
 		public void Delete(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("contentdistribution_entrydistribution", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -110,10 +108,8 @@ namespace Kaltura
 		public KalturaEntryDistributionListResponse List(KalturaEntryDistributionFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("contentdistribution_entrydistribution", "list", "KalturaEntryDistributionListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -129,8 +125,8 @@ namespace Kaltura
 		public KalturaEntryDistribution SubmitAdd(int id, bool submitWhenReady)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			kparams.AddBoolIfNotNull("submitWhenReady", submitWhenReady);
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("submitWhenReady", submitWhenReady);
 			_Client.QueueServiceCall("contentdistribution_entrydistribution", "submitAdd", "KalturaEntryDistribution", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -141,7 +137,7 @@ namespace Kaltura
 		public KalturaEntryDistribution SubmitUpdate(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("contentdistribution_entrydistribution", "submitUpdate", "KalturaEntryDistribution", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -152,7 +148,7 @@ namespace Kaltura
 		public KalturaEntryDistribution SubmitFetchReport(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("contentdistribution_entrydistribution", "submitFetchReport", "KalturaEntryDistribution", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -163,7 +159,7 @@ namespace Kaltura
 		public KalturaEntryDistribution SubmitDelete(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("contentdistribution_entrydistribution", "submitDelete", "KalturaEntryDistribution", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -174,7 +170,7 @@ namespace Kaltura
 		public KalturaEntryDistribution RetrySubmit(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("contentdistribution_entrydistribution", "retrySubmit", "KalturaEntryDistribution", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

@@ -78,22 +78,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaRemoteStorageResources");
-			if (this.Resources != null)
-			{
-				if (this.Resources.Count == 0)
-				{
-					kparams.Add("resources:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaRemoteStorageResource item in this.Resources)
-					{
-						kparams.Add("resources:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
+			kparams.AddIfNotNull("resources", this.Resources);
 			return kparams;
 		}
 		#endregion

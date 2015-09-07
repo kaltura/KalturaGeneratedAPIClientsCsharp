@@ -294,7 +294,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaFileSync(XmlElement node)
+		public KalturaFileSync(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -386,31 +386,31 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaFileSync");
-			kparams.AddLongIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringEnumIfNotNull("fileObjectType", this.FileObjectType);
-			kparams.AddStringIfNotNull("objectId", this.ObjectId);
-			kparams.AddStringIfNotNull("version", this.Version);
-			kparams.AddIntIfNotNull("objectSubType", this.ObjectSubType);
-			kparams.AddStringIfNotNull("dc", this.Dc);
-			kparams.AddIntIfNotNull("original", this.Original);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIntIfNotNull("readyAt", this.ReadyAt);
-			kparams.AddIntIfNotNull("syncTime", this.SyncTime);
-			kparams.AddEnumIfNotNull("status", this.Status);
-			kparams.AddEnumIfNotNull("fileType", this.FileType);
-			kparams.AddIntIfNotNull("linkedId", this.LinkedId);
-			kparams.AddIntIfNotNull("linkCount", this.LinkCount);
-			kparams.AddStringIfNotNull("fileRoot", this.FileRoot);
-			kparams.AddStringIfNotNull("filePath", this.FilePath);
-			kparams.AddFloatIfNotNull("fileSize", this.FileSize);
-			kparams.AddStringIfNotNull("fileUrl", this.FileUrl);
-			kparams.AddStringIfNotNull("fileContent", this.FileContent);
-			kparams.AddFloatIfNotNull("fileDiscSize", this.FileDiscSize);
-			kparams.AddBoolIfNotNull("isCurrentDc", this.IsCurrentDc);
-			kparams.AddBoolIfNotNull("isDir", this.IsDir);
-			kparams.AddIntIfNotNull("originalId", this.OriginalId);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("fileObjectType", this.FileObjectType);
+			kparams.AddIfNotNull("objectId", this.ObjectId);
+			kparams.AddIfNotNull("version", this.Version);
+			kparams.AddIfNotNull("objectSubType", this.ObjectSubType);
+			kparams.AddIfNotNull("dc", this.Dc);
+			kparams.AddIfNotNull("original", this.Original);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("readyAt", this.ReadyAt);
+			kparams.AddIfNotNull("syncTime", this.SyncTime);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("fileType", this.FileType);
+			kparams.AddIfNotNull("linkedId", this.LinkedId);
+			kparams.AddIfNotNull("linkCount", this.LinkCount);
+			kparams.AddIfNotNull("fileRoot", this.FileRoot);
+			kparams.AddIfNotNull("filePath", this.FilePath);
+			kparams.AddIfNotNull("fileSize", this.FileSize);
+			kparams.AddIfNotNull("fileUrl", this.FileUrl);
+			kparams.AddIfNotNull("fileContent", this.FileContent);
+			kparams.AddIfNotNull("fileDiscSize", this.FileDiscSize);
+			kparams.AddIfNotNull("isCurrentDc", this.IsCurrentDc);
+			kparams.AddIfNotNull("isDir", this.IsDir);
+			kparams.AddIfNotNull("originalId", this.OriginalId);
 			return kparams;
 		}
 		#endregion

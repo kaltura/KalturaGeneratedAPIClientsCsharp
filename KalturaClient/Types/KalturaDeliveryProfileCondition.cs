@@ -78,22 +78,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDeliveryProfileCondition");
-			if (this.DeliveryProfileIds != null)
-			{
-				if (this.DeliveryProfileIds.Count == 0)
-				{
-					kparams.Add("deliveryProfileIds:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaIntegerValue item in this.DeliveryProfileIds)
-					{
-						kparams.Add("deliveryProfileIds:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
+			kparams.AddIfNotNull("deliveryProfileIds", this.DeliveryProfileIds);
 			return kparams;
 		}
 		#endregion

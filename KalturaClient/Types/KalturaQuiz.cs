@@ -104,7 +104,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaQuiz(XmlElement node)
+		public KalturaQuiz(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -143,27 +143,12 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaQuiz");
-			kparams.AddIntIfNotNull("version", this.Version);
-			if (this.UiAttributes != null)
-			{
-				if (this.UiAttributes.Count == 0)
-				{
-					kparams.Add("uiAttributes:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaKeyValue item in this.UiAttributes)
-					{
-						kparams.Add("uiAttributes:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddEnumIfNotNull("showResultOnAnswer", this.ShowResultOnAnswer);
-			kparams.AddEnumIfNotNull("showCorrectKeyOnAnswer", this.ShowCorrectKeyOnAnswer);
-			kparams.AddEnumIfNotNull("allowAnswerUpdate", this.AllowAnswerUpdate);
-			kparams.AddEnumIfNotNull("showCorrectAfterSubmission", this.ShowCorrectAfterSubmission);
+			kparams.AddIfNotNull("version", this.Version);
+			kparams.AddIfNotNull("uiAttributes", this.UiAttributes);
+			kparams.AddIfNotNull("showResultOnAnswer", this.ShowResultOnAnswer);
+			kparams.AddIfNotNull("showCorrectKeyOnAnswer", this.ShowCorrectKeyOnAnswer);
+			kparams.AddIfNotNull("allowAnswerUpdate", this.AllowAnswerUpdate);
+			kparams.AddIfNotNull("showCorrectAfterSubmission", this.ShowCorrectAfterSubmission);
 			return kparams;
 		}
 		#endregion

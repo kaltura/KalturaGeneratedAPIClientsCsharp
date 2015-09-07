@@ -374,7 +374,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaCategory(XmlElement node)
+		public KalturaCategory(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -490,39 +490,39 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCategory");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddIntIfNotNull("parentId", this.ParentId);
-			kparams.AddIntIfNotNull("depth", this.Depth);
-			kparams.AddIntIfNotNull("partnerId", this.PartnerId);
-			kparams.AddStringIfNotNull("name", this.Name);
-			kparams.AddStringIfNotNull("fullName", this.FullName);
-			kparams.AddStringIfNotNull("fullIds", this.FullIds);
-			kparams.AddIntIfNotNull("entriesCount", this.EntriesCount);
-			kparams.AddIntIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIntIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddStringIfNotNull("description", this.Description);
-			kparams.AddStringIfNotNull("tags", this.Tags);
-			kparams.AddEnumIfNotNull("appearInList", this.AppearInList);
-			kparams.AddEnumIfNotNull("privacy", this.Privacy);
-			kparams.AddEnumIfNotNull("inheritanceType", this.InheritanceType);
-			kparams.AddEnumIfNotNull("userJoinPolicy", this.UserJoinPolicy);
-			kparams.AddEnumIfNotNull("defaultPermissionLevel", this.DefaultPermissionLevel);
-			kparams.AddStringIfNotNull("owner", this.Owner);
-			kparams.AddIntIfNotNull("directEntriesCount", this.DirectEntriesCount);
-			kparams.AddStringIfNotNull("referenceId", this.ReferenceId);
-			kparams.AddEnumIfNotNull("contributionPolicy", this.ContributionPolicy);
-			kparams.AddIntIfNotNull("membersCount", this.MembersCount);
-			kparams.AddIntIfNotNull("pendingMembersCount", this.PendingMembersCount);
-			kparams.AddStringIfNotNull("privacyContext", this.PrivacyContext);
-			kparams.AddStringIfNotNull("privacyContexts", this.PrivacyContexts);
-			kparams.AddEnumIfNotNull("status", this.Status);
-			kparams.AddIntIfNotNull("inheritedParentId", this.InheritedParentId);
-			kparams.AddIntIfNotNull("partnerSortValue", this.PartnerSortValue);
-			kparams.AddStringIfNotNull("partnerData", this.PartnerData);
-			kparams.AddStringEnumIfNotNull("defaultOrderBy", this.DefaultOrderBy);
-			kparams.AddIntIfNotNull("directSubCategoriesCount", this.DirectSubCategoriesCount);
-			kparams.AddEnumIfNotNull("moderation", this.Moderation);
-			kparams.AddIntIfNotNull("pendingEntriesCount", this.PendingEntriesCount);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("parentId", this.ParentId);
+			kparams.AddIfNotNull("depth", this.Depth);
+			kparams.AddIfNotNull("partnerId", this.PartnerId);
+			kparams.AddIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("fullName", this.FullName);
+			kparams.AddIfNotNull("fullIds", this.FullIds);
+			kparams.AddIfNotNull("entriesCount", this.EntriesCount);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("tags", this.Tags);
+			kparams.AddIfNotNull("appearInList", this.AppearInList);
+			kparams.AddIfNotNull("privacy", this.Privacy);
+			kparams.AddIfNotNull("inheritanceType", this.InheritanceType);
+			kparams.AddIfNotNull("userJoinPolicy", this.UserJoinPolicy);
+			kparams.AddIfNotNull("defaultPermissionLevel", this.DefaultPermissionLevel);
+			kparams.AddIfNotNull("owner", this.Owner);
+			kparams.AddIfNotNull("directEntriesCount", this.DirectEntriesCount);
+			kparams.AddIfNotNull("referenceId", this.ReferenceId);
+			kparams.AddIfNotNull("contributionPolicy", this.ContributionPolicy);
+			kparams.AddIfNotNull("membersCount", this.MembersCount);
+			kparams.AddIfNotNull("pendingMembersCount", this.PendingMembersCount);
+			kparams.AddIfNotNull("privacyContext", this.PrivacyContext);
+			kparams.AddIfNotNull("privacyContexts", this.PrivacyContexts);
+			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("inheritedParentId", this.InheritedParentId);
+			kparams.AddIfNotNull("partnerSortValue", this.PartnerSortValue);
+			kparams.AddIfNotNull("partnerData", this.PartnerData);
+			kparams.AddIfNotNull("defaultOrderBy", this.DefaultOrderBy);
+			kparams.AddIfNotNull("directSubCategoriesCount", this.DirectSubCategoriesCount);
+			kparams.AddIfNotNull("moderation", this.Moderation);
+			kparams.AddIfNotNull("pendingEntriesCount", this.PendingEntriesCount);
 			return kparams;
 		}
 		#endregion

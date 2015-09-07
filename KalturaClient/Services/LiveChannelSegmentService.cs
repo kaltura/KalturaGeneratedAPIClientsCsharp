@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaLiveChannelSegment Add(KalturaLiveChannelSegment liveChannelSegment)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (liveChannelSegment != null)
-				kparams.Add("liveChannelSegment", liveChannelSegment.ToParams());
+			kparams.AddIfNotNull("liveChannelSegment", liveChannelSegment);
 			_Client.QueueServiceCall("livechannelsegment", "add", "KalturaLiveChannelSegment", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,7 +54,7 @@ namespace Kaltura
 		public KalturaLiveChannelSegment Get(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("livechannelsegment", "get", "KalturaLiveChannelSegment", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -66,9 +65,8 @@ namespace Kaltura
 		public KalturaLiveChannelSegment Update(int id, KalturaLiveChannelSegment liveChannelSegment)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			if (liveChannelSegment != null)
-				kparams.Add("liveChannelSegment", liveChannelSegment.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("liveChannelSegment", liveChannelSegment);
 			_Client.QueueServiceCall("livechannelsegment", "update", "KalturaLiveChannelSegment", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -79,7 +77,7 @@ namespace Kaltura
 		public void Delete(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("livechannelsegment", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -99,10 +97,8 @@ namespace Kaltura
 		public KalturaLiveChannelSegmentListResponse List(KalturaLiveChannelSegmentFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("livechannelsegment", "list", "KalturaLiveChannelSegmentListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

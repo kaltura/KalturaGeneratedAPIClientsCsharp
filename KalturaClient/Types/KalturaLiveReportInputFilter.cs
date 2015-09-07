@@ -94,7 +94,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaLiveReportInputFilter(XmlElement node)
+		public KalturaLiveReportInputFilter(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -126,11 +126,11 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveReportInputFilter");
-			kparams.AddStringIfNotNull("entryIds", this.EntryIds);
-			kparams.AddIntIfNotNull("fromTime", this.FromTime);
-			kparams.AddIntIfNotNull("toTime", this.ToTime);
-			kparams.AddEnumIfNotNull("live", this.Live);
-			kparams.AddStringEnumIfNotNull("orderBy", this.OrderBy);
+			kparams.AddIfNotNull("entryIds", this.EntryIds);
+			kparams.AddIfNotNull("fromTime", this.FromTime);
+			kparams.AddIfNotNull("toTime", this.ToTime);
+			kparams.AddIfNotNull("live", this.Live);
+			kparams.AddIfNotNull("orderBy", this.OrderBy);
 			return kparams;
 		}
 		#endregion

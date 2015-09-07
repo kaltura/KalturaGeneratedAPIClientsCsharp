@@ -95,38 +95,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaConfigurableDistributionProfile");
-			if (this.FieldConfigArray != null)
-			{
-				if (this.FieldConfigArray.Count == 0)
-				{
-					kparams.Add("fieldConfigArray:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaDistributionFieldConfig item in this.FieldConfigArray)
-					{
-						kparams.Add("fieldConfigArray:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			if (this.ItemXpathsToExtend != null)
-			{
-				if (this.ItemXpathsToExtend.Count == 0)
-				{
-					kparams.Add("itemXpathsToExtend:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaExtendingItemMrssParameter item in this.ItemXpathsToExtend)
-					{
-						kparams.Add("itemXpathsToExtend:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
+			kparams.AddIfNotNull("fieldConfigArray", this.FieldConfigArray);
+			kparams.AddIfNotNull("itemXpathsToExtend", this.ItemXpathsToExtend);
 			return kparams;
 		}
 		#endregion

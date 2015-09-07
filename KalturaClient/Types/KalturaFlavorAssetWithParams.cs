@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaFlavorAssetWithParams(XmlElement node)
+		public KalturaFlavorAssetWithParams(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -100,11 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaFlavorAssetWithParams");
-			if (this.FlavorAsset != null)
-				kparams.Add("flavorAsset", this.FlavorAsset.ToParams());
-			if (this.FlavorParams != null)
-				kparams.Add("flavorParams", this.FlavorParams.ToParams());
-			kparams.AddStringIfNotNull("entryId", this.EntryId);
+			kparams.AddIfNotNull("flavorAsset", this.FlavorAsset);
+			kparams.AddIfNotNull("flavorParams", this.FlavorParams);
+			kparams.AddIfNotNull("entryId", this.EntryId);
 			return kparams;
 		}
 		#endregion

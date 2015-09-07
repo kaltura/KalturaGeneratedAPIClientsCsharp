@@ -84,7 +84,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaUploadResponse(XmlElement node)
+		public KalturaUploadResponse(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUploadResponse");
-			kparams.AddStringIfNotNull("uploadTokenId", this.UploadTokenId);
-			kparams.AddIntIfNotNull("fileSize", this.FileSize);
-			kparams.AddEnumIfNotNull("errorCode", this.ErrorCode);
-			kparams.AddStringIfNotNull("errorDescription", this.ErrorDescription);
+			kparams.AddIfNotNull("uploadTokenId", this.UploadTokenId);
+			kparams.AddIfNotNull("fileSize", this.FileSize);
+			kparams.AddIfNotNull("errorCode", this.ErrorCode);
+			kparams.AddIfNotNull("errorDescription", this.ErrorDescription);
 			return kparams;
 		}
 		#endregion

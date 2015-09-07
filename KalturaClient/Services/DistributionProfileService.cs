@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaDistributionProfile Add(KalturaDistributionProfile distributionProfile)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (distributionProfile != null)
-				kparams.Add("distributionProfile", distributionProfile.ToParams());
+			kparams.AddIfNotNull("distributionProfile", distributionProfile);
 			_Client.QueueServiceCall("contentdistribution_distributionprofile", "add", "KalturaDistributionProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,7 +54,7 @@ namespace Kaltura
 		public KalturaDistributionProfile Get(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("contentdistribution_distributionprofile", "get", "KalturaDistributionProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -66,9 +65,8 @@ namespace Kaltura
 		public KalturaDistributionProfile Update(int id, KalturaDistributionProfile distributionProfile)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			if (distributionProfile != null)
-				kparams.Add("distributionProfile", distributionProfile.ToParams());
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("distributionProfile", distributionProfile);
 			_Client.QueueServiceCall("contentdistribution_distributionprofile", "update", "KalturaDistributionProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -79,8 +77,8 @@ namespace Kaltura
 		public KalturaDistributionProfile UpdateStatus(int id, KalturaDistributionProfileStatus status)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
-			kparams.AddEnumIfNotNull("status", status);
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("status", status);
 			_Client.QueueServiceCall("contentdistribution_distributionprofile", "updateStatus", "KalturaDistributionProfile", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -91,7 +89,7 @@ namespace Kaltura
 		public void Delete(int id)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIntIfNotNull("id", id);
+			kparams.AddIfNotNull("id", id);
 			_Client.QueueServiceCall("contentdistribution_distributionprofile", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -111,10 +109,8 @@ namespace Kaltura
 		public KalturaDistributionProfileListResponse List(KalturaDistributionProfileFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("contentdistribution_distributionprofile", "list", "KalturaDistributionProfileListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -135,10 +131,8 @@ namespace Kaltura
 		public KalturaDistributionProfileListResponse ListByPartner(KalturaPartnerFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("contentdistribution_distributionprofile", "listByPartner", "KalturaDistributionProfileListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

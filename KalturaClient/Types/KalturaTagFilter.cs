@@ -126,11 +126,11 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaTagFilter");
-			kparams.AddStringEnumIfNotNull("objectTypeEqual", this.ObjectTypeEqual);
-			kparams.AddStringIfNotNull("tagEqual", this.TagEqual);
-			kparams.AddStringIfNotNull("tagStartsWith", this.TagStartsWith);
-			kparams.AddIntIfNotNull("instanceCountEqual", this.InstanceCountEqual);
-			kparams.AddIntIfNotNull("instanceCountIn", this.InstanceCountIn);
+			kparams.AddIfNotNull("objectTypeEqual", this.ObjectTypeEqual);
+			kparams.AddIfNotNull("tagEqual", this.TagEqual);
+			kparams.AddIfNotNull("tagStartsWith", this.TagStartsWith);
+			kparams.AddIfNotNull("instanceCountEqual", this.InstanceCountEqual);
+			kparams.AddIfNotNull("instanceCountIn", this.InstanceCountIn);
 			return kparams;
 		}
 		#endregion

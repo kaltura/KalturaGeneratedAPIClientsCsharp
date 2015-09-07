@@ -374,7 +374,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaMediaInfo(XmlElement node)
+		public KalturaMediaInfo(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
@@ -490,39 +490,39 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaMediaInfo");
-			kparams.AddIntIfNotNull("id", this.Id);
-			kparams.AddStringIfNotNull("flavorAssetId", this.FlavorAssetId);
-			kparams.AddIntIfNotNull("fileSize", this.FileSize);
-			kparams.AddStringIfNotNull("containerFormat", this.ContainerFormat);
-			kparams.AddStringIfNotNull("containerId", this.ContainerId);
-			kparams.AddStringIfNotNull("containerProfile", this.ContainerProfile);
-			kparams.AddIntIfNotNull("containerDuration", this.ContainerDuration);
-			kparams.AddIntIfNotNull("containerBitRate", this.ContainerBitRate);
-			kparams.AddStringIfNotNull("videoFormat", this.VideoFormat);
-			kparams.AddStringIfNotNull("videoCodecId", this.VideoCodecId);
-			kparams.AddIntIfNotNull("videoDuration", this.VideoDuration);
-			kparams.AddIntIfNotNull("videoBitRate", this.VideoBitRate);
-			kparams.AddEnumIfNotNull("videoBitRateMode", this.VideoBitRateMode);
-			kparams.AddIntIfNotNull("videoWidth", this.VideoWidth);
-			kparams.AddIntIfNotNull("videoHeight", this.VideoHeight);
-			kparams.AddFloatIfNotNull("videoFrameRate", this.VideoFrameRate);
-			kparams.AddFloatIfNotNull("videoDar", this.VideoDar);
-			kparams.AddIntIfNotNull("videoRotation", this.VideoRotation);
-			kparams.AddStringIfNotNull("audioFormat", this.AudioFormat);
-			kparams.AddStringIfNotNull("audioCodecId", this.AudioCodecId);
-			kparams.AddIntIfNotNull("audioDuration", this.AudioDuration);
-			kparams.AddIntIfNotNull("audioBitRate", this.AudioBitRate);
-			kparams.AddEnumIfNotNull("audioBitRateMode", this.AudioBitRateMode);
-			kparams.AddIntIfNotNull("audioChannels", this.AudioChannels);
-			kparams.AddIntIfNotNull("audioSamplingRate", this.AudioSamplingRate);
-			kparams.AddIntIfNotNull("audioResolution", this.AudioResolution);
-			kparams.AddStringIfNotNull("writingLib", this.WritingLib);
-			kparams.AddStringIfNotNull("rawData", this.RawData);
-			kparams.AddStringIfNotNull("multiStreamInfo", this.MultiStreamInfo);
-			kparams.AddIntIfNotNull("scanType", this.ScanType);
-			kparams.AddStringIfNotNull("multiStream", this.MultiStream);
-			kparams.AddIntIfNotNull("isFastStart", this.IsFastStart);
-			kparams.AddStringIfNotNull("contentStreams", this.ContentStreams);
+			kparams.AddIfNotNull("id", this.Id);
+			kparams.AddIfNotNull("flavorAssetId", this.FlavorAssetId);
+			kparams.AddIfNotNull("fileSize", this.FileSize);
+			kparams.AddIfNotNull("containerFormat", this.ContainerFormat);
+			kparams.AddIfNotNull("containerId", this.ContainerId);
+			kparams.AddIfNotNull("containerProfile", this.ContainerProfile);
+			kparams.AddIfNotNull("containerDuration", this.ContainerDuration);
+			kparams.AddIfNotNull("containerBitRate", this.ContainerBitRate);
+			kparams.AddIfNotNull("videoFormat", this.VideoFormat);
+			kparams.AddIfNotNull("videoCodecId", this.VideoCodecId);
+			kparams.AddIfNotNull("videoDuration", this.VideoDuration);
+			kparams.AddIfNotNull("videoBitRate", this.VideoBitRate);
+			kparams.AddIfNotNull("videoBitRateMode", this.VideoBitRateMode);
+			kparams.AddIfNotNull("videoWidth", this.VideoWidth);
+			kparams.AddIfNotNull("videoHeight", this.VideoHeight);
+			kparams.AddIfNotNull("videoFrameRate", this.VideoFrameRate);
+			kparams.AddIfNotNull("videoDar", this.VideoDar);
+			kparams.AddIfNotNull("videoRotation", this.VideoRotation);
+			kparams.AddIfNotNull("audioFormat", this.AudioFormat);
+			kparams.AddIfNotNull("audioCodecId", this.AudioCodecId);
+			kparams.AddIfNotNull("audioDuration", this.AudioDuration);
+			kparams.AddIfNotNull("audioBitRate", this.AudioBitRate);
+			kparams.AddIfNotNull("audioBitRateMode", this.AudioBitRateMode);
+			kparams.AddIfNotNull("audioChannels", this.AudioChannels);
+			kparams.AddIfNotNull("audioSamplingRate", this.AudioSamplingRate);
+			kparams.AddIfNotNull("audioResolution", this.AudioResolution);
+			kparams.AddIfNotNull("writingLib", this.WritingLib);
+			kparams.AddIfNotNull("rawData", this.RawData);
+			kparams.AddIfNotNull("multiStreamInfo", this.MultiStreamInfo);
+			kparams.AddIfNotNull("scanType", this.ScanType);
+			kparams.AddIfNotNull("multiStream", this.MultiStream);
+			kparams.AddIfNotNull("isFastStart", this.IsFastStart);
+			kparams.AddIfNotNull("contentStreams", this.ContentStreams);
 			return kparams;
 		}
 		#endregion

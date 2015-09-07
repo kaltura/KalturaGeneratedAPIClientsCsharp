@@ -130,26 +130,11 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaConcatJobData");
-			if (this.SrcFiles != null)
-			{
-				if (this.SrcFiles.Count == 0)
-				{
-					kparams.Add("srcFiles:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaString item in this.SrcFiles)
-					{
-						kparams.Add("srcFiles:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
-			kparams.AddStringIfNotNull("destFilePath", this.DestFilePath);
-			kparams.AddStringIfNotNull("flavorAssetId", this.FlavorAssetId);
-			kparams.AddFloatIfNotNull("offset", this.Offset);
-			kparams.AddFloatIfNotNull("duration", this.Duration);
+			kparams.AddIfNotNull("srcFiles", this.SrcFiles);
+			kparams.AddIfNotNull("destFilePath", this.DestFilePath);
+			kparams.AddIfNotNull("flavorAssetId", this.FlavorAssetId);
+			kparams.AddIfNotNull("offset", this.Offset);
+			kparams.AddIfNotNull("duration", this.Duration);
 			return kparams;
 		}
 		#endregion

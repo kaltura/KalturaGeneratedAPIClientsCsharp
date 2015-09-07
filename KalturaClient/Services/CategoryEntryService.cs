@@ -43,8 +43,7 @@ namespace Kaltura
 		public KalturaCategoryEntry Add(KalturaCategoryEntry categoryEntry)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (categoryEntry != null)
-				kparams.Add("categoryEntry", categoryEntry.ToParams());
+			kparams.AddIfNotNull("categoryEntry", categoryEntry);
 			_Client.QueueServiceCall("categoryentry", "add", "KalturaCategoryEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -55,8 +54,8 @@ namespace Kaltura
 		public void Delete(string entryId, int categoryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddIntIfNotNull("categoryId", categoryId);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("categoryId", categoryId);
 			_Client.QueueServiceCall("categoryentry", "delete", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -76,10 +75,8 @@ namespace Kaltura
 		public KalturaCategoryEntryListResponse List(KalturaCategoryEntryFilter filter, KalturaFilterPager pager)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (filter != null)
-				kparams.Add("filter", filter.ToParams());
-			if (pager != null)
-				kparams.Add("pager", pager.ToParams());
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("categoryentry", "list", "KalturaCategoryEntryListResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
@@ -95,9 +92,9 @@ namespace Kaltura
 		public int Index(string entryId, int categoryId, bool shouldUpdate)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddIntIfNotNull("categoryId", categoryId);
-			kparams.AddBoolIfNotNull("shouldUpdate", shouldUpdate);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("categoryId", categoryId);
+			kparams.AddIfNotNull("shouldUpdate", shouldUpdate);
 			_Client.QueueServiceCall("categoryentry", "index", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return 0;
@@ -108,8 +105,8 @@ namespace Kaltura
 		public void Activate(string entryId, int categoryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddIntIfNotNull("categoryId", categoryId);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("categoryId", categoryId);
 			_Client.QueueServiceCall("categoryentry", "activate", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -119,8 +116,8 @@ namespace Kaltura
 		public void Reject(string entryId, int categoryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddIntIfNotNull("categoryId", categoryId);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("categoryId", categoryId);
 			_Client.QueueServiceCall("categoryentry", "reject", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -130,8 +127,8 @@ namespace Kaltura
 		public void SyncPrivacyContext(string entryId, int categoryId)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddStringIfNotNull("entryId", entryId);
-			kparams.AddIntIfNotNull("categoryId", categoryId);
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("categoryId", categoryId);
 			_Client.QueueServiceCall("categoryentry", "syncPrivacyContext", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
@@ -146,10 +143,8 @@ namespace Kaltura
 		public KalturaBulkUpload AddFromBulkUpload(KalturaBulkServiceData bulkUploadData, KalturaBulkUploadCategoryEntryData bulkUploadCategoryEntryData)
 		{
 			KalturaParams kparams = new KalturaParams();
-			if (bulkUploadData != null)
-				kparams.Add("bulkUploadData", bulkUploadData.ToParams());
-			if (bulkUploadCategoryEntryData != null)
-				kparams.Add("bulkUploadCategoryEntryData", bulkUploadCategoryEntryData.ToParams());
+			kparams.AddIfNotNull("bulkUploadData", bulkUploadData);
+			kparams.AddIfNotNull("bulkUploadCategoryEntryData", bulkUploadCategoryEntryData);
 			_Client.QueueServiceCall("categoryentry", "addFromBulkUpload", "KalturaBulkUpload", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

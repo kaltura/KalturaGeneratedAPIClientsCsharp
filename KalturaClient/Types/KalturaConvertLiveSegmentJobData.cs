@@ -152,13 +152,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaConvertLiveSegmentJobData");
-			kparams.AddStringIfNotNull("entryId", this.EntryId);
-			kparams.AddStringIfNotNull("assetId", this.AssetId);
-			kparams.AddEnumIfNotNull("mediaServerIndex", this.MediaServerIndex);
-			kparams.AddIntIfNotNull("fileIndex", this.FileIndex);
-			kparams.AddStringIfNotNull("srcFilePath", this.SrcFilePath);
-			kparams.AddStringIfNotNull("destFilePath", this.DestFilePath);
-			kparams.AddFloatIfNotNull("endTime", this.EndTime);
+			kparams.AddIfNotNull("entryId", this.EntryId);
+			kparams.AddIfNotNull("assetId", this.AssetId);
+			kparams.AddIfNotNull("mediaServerIndex", this.MediaServerIndex);
+			kparams.AddIfNotNull("fileIndex", this.FileIndex);
+			kparams.AddIfNotNull("srcFilePath", this.SrcFilePath);
+			kparams.AddIfNotNull("destFilePath", this.DestFilePath);
+			kparams.AddIfNotNull("endTime", this.EndTime);
 			return kparams;
 		}
 		#endregion

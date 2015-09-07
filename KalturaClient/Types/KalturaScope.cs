@@ -44,7 +44,7 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaScope(XmlElement node)
+		public KalturaScope(XmlElement node) : base(node)
 		{
 		}
 		#endregion

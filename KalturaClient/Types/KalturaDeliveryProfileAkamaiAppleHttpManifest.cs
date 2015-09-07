@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDeliveryProfileAkamaiAppleHttpManifest");
-			kparams.AddBoolIfNotNull("supportClipping", this.SupportClipping);
+			kparams.AddIfNotNull("supportClipping", this.SupportClipping);
 			return kparams;
 		}
 		#endregion

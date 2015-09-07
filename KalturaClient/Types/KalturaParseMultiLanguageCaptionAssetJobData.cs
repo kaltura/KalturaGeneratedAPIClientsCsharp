@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaParseMultiLanguageCaptionAssetJobData");
-			kparams.AddStringIfNotNull("multiLanaguageCaptionAssetId", this.MultiLanaguageCaptionAssetId);
-			kparams.AddStringIfNotNull("entryId", this.EntryId);
-			kparams.AddStringIfNotNull("fileLocation", this.FileLocation);
+			kparams.AddIfNotNull("multiLanaguageCaptionAssetId", this.MultiLanaguageCaptionAssetId);
+			kparams.AddIfNotNull("entryId", this.EntryId);
+			kparams.AddIfNotNull("fileLocation", this.FileLocation);
 			return kparams;
 		}
 		#endregion

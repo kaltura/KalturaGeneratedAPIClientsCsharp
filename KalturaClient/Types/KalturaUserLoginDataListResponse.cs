@@ -78,22 +78,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUserLoginDataListResponse");
-			if (this.Objects != null)
-			{
-				if (this.Objects.Count == 0)
-				{
-					kparams.Add("objects:-", "");
-				}
-				else
-				{
-					int i = 0;
-					foreach (KalturaUserLoginData item in this.Objects)
-					{
-						kparams.Add("objects:" + i, item.ToParams());
-						i++;
-					}
-				}
-			}
+			kparams.AddIfNotNull("objects", this.Objects);
 			return kparams;
 		}
 		#endregion

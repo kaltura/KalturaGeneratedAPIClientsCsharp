@@ -36,6 +36,7 @@ namespace Kaltura
 		#region Private Fields
 		private KalturaNullableBoolean _IsLive = (KalturaNullableBoolean)Int32.MinValue;
 		private KalturaNullableBoolean _IsRecordedEntryIdEmpty = (KalturaNullableBoolean)Int32.MinValue;
+		private string _HasMediaServerHostname = null;
 		private KalturaLiveEntryOrderBy _OrderBy = null;
 		#endregion
 
@@ -56,6 +57,15 @@ namespace Kaltura
 			{ 
 				_IsRecordedEntryIdEmpty = value;
 				OnPropertyChanged("IsRecordedEntryIdEmpty");
+			}
+		}
+		public string HasMediaServerHostname
+		{
+			get { return _HasMediaServerHostname; }
+			set 
+			{ 
+				_HasMediaServerHostname = value;
+				OnPropertyChanged("HasMediaServerHostname");
 			}
 		}
 		public new KalturaLiveEntryOrderBy OrderBy
@@ -87,6 +97,9 @@ namespace Kaltura
 					case "isRecordedEntryIdEmpty":
 						this.IsRecordedEntryIdEmpty = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
+					case "hasMediaServerHostname":
+						this.HasMediaServerHostname = txt;
+						continue;
 					case "orderBy":
 						this.OrderBy = (KalturaLiveEntryOrderBy)KalturaStringEnum.Parse(typeof(KalturaLiveEntryOrderBy), txt);
 						continue;
@@ -102,6 +115,7 @@ namespace Kaltura
 			kparams.AddReplace("objectType", "KalturaLiveEntryFilter");
 			kparams.AddIfNotNull("isLive", this.IsLive);
 			kparams.AddIfNotNull("isRecordedEntryIdEmpty", this.IsRecordedEntryIdEmpty);
+			kparams.AddIfNotNull("hasMediaServerHostname", this.HasMediaServerHostname);
 			kparams.AddIfNotNull("orderBy", this.OrderBy);
 			return kparams;
 		}

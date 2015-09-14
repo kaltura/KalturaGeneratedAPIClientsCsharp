@@ -29,7 +29,6 @@ namespace Kaltura
 {
 	public sealed class KalturaIntegrationProviderType : KalturaStringEnum
 	{
-		public static readonly KalturaIntegrationProviderType CIELO24 = new KalturaIntegrationProviderType("cielo24.Cielo24");
 		public static readonly KalturaIntegrationProviderType VOICEBASE = new KalturaIntegrationProviderType("voicebase.Voicebase");
 
 		private KalturaIntegrationProviderType(string name) : base(name) { }

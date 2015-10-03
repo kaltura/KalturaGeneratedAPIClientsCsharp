@@ -36,6 +36,8 @@ namespace Kaltura
 		#region Private Fields
 		private string _ParentIdEqual = null;
 		private string _ParentIdIn = null;
+		private string _QuizUserEntryIdEqual = null;
+		private string _QuizUserEntryIdIn = null;
 		#endregion
 
 		#region Properties
@@ -55,6 +57,24 @@ namespace Kaltura
 			{ 
 				_ParentIdIn = value;
 				OnPropertyChanged("ParentIdIn");
+			}
+		}
+		public string QuizUserEntryIdEqual
+		{
+			get { return _QuizUserEntryIdEqual; }
+			set 
+			{ 
+				_QuizUserEntryIdEqual = value;
+				OnPropertyChanged("QuizUserEntryIdEqual");
+			}
+		}
+		public string QuizUserEntryIdIn
+		{
+			get { return _QuizUserEntryIdIn; }
+			set 
+			{ 
+				_QuizUserEntryIdIn = value;
+				OnPropertyChanged("QuizUserEntryIdIn");
 			}
 		}
 		#endregion
@@ -77,6 +97,12 @@ namespace Kaltura
 					case "parentIdIn":
 						this.ParentIdIn = txt;
 						continue;
+					case "quizUserEntryIdEqual":
+						this.QuizUserEntryIdEqual = txt;
+						continue;
+					case "quizUserEntryIdIn":
+						this.QuizUserEntryIdIn = txt;
+						continue;
 				}
 			}
 		}
@@ -89,6 +115,8 @@ namespace Kaltura
 			kparams.AddReplace("objectType", "KalturaAnswerCuePointBaseFilter");
 			kparams.AddIfNotNull("parentIdEqual", this.ParentIdEqual);
 			kparams.AddIfNotNull("parentIdIn", this.ParentIdIn);
+			kparams.AddIfNotNull("quizUserEntryIdEqual", this.QuizUserEntryIdEqual);
+			kparams.AddIfNotNull("quizUserEntryIdIn", this.QuizUserEntryIdIn);
 			return kparams;
 		}
 		#endregion

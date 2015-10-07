@@ -40,6 +40,7 @@ namespace Kaltura
 		private KalturaNullableBoolean _ShowCorrectKeyOnAnswer = (KalturaNullableBoolean)Int32.MinValue;
 		private KalturaNullableBoolean _AllowAnswerUpdate = (KalturaNullableBoolean)Int32.MinValue;
 		private KalturaNullableBoolean _ShowCorrectAfterSubmission = (KalturaNullableBoolean)Int32.MinValue;
+		private KalturaNullableBoolean _AllowDownload = (KalturaNullableBoolean)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -97,6 +98,15 @@ namespace Kaltura
 				OnPropertyChanged("ShowCorrectAfterSubmission");
 			}
 		}
+		public KalturaNullableBoolean AllowDownload
+		{
+			get { return _AllowDownload; }
+			set 
+			{ 
+				_AllowDownload = value;
+				OnPropertyChanged("AllowDownload");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -133,6 +143,9 @@ namespace Kaltura
 					case "showCorrectAfterSubmission":
 						this.ShowCorrectAfterSubmission = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
+					case "allowDownload":
+						this.AllowDownload = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						continue;
 				}
 			}
 		}
@@ -149,6 +162,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("showCorrectKeyOnAnswer", this.ShowCorrectKeyOnAnswer);
 			kparams.AddIfNotNull("allowAnswerUpdate", this.AllowAnswerUpdate);
 			kparams.AddIfNotNull("showCorrectAfterSubmission", this.ShowCorrectAfterSubmission);
+			kparams.AddIfNotNull("allowDownload", this.AllowDownload);
 			return kparams;
 		}
 		#endregion

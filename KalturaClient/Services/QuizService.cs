@@ -96,16 +96,5 @@ namespace Kaltura
 			XmlElement result = _Client.DoQueue();
 			return (KalturaQuizListResponse)KalturaObjectFactory.Create(result, "KalturaQuizListResponse");
 		}
-
-		public KalturaQuiz ServePdf(string entryId)
-		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("entryId", entryId);
-			_Client.QueueServiceCall("quiz_quiz", "servePdf", "KalturaQuiz", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaQuiz)KalturaObjectFactory.Create(result, "KalturaQuiz");
-		}
 	}
 }

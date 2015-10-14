@@ -36,6 +36,7 @@ namespace Kaltura
 		#region Private Fields
 		private IList<KalturaDistributionFieldConfig> _FieldConfigArray;
 		private IList<KalturaExtendingItemMrssParameter> _ItemXpathsToExtend;
+		private bool? _UseCategoryEntries = false;
 		#endregion
 
 		#region Properties
@@ -55,6 +56,15 @@ namespace Kaltura
 			{ 
 				_ItemXpathsToExtend = value;
 				OnPropertyChanged("ItemXpathsToExtend");
+			}
+		}
+		public bool? UseCategoryEntries
+		{
+			get { return _UseCategoryEntries; }
+			set 
+			{ 
+				_UseCategoryEntries = value;
+				OnPropertyChanged("UseCategoryEntries");
 			}
 		}
 		#endregion
@@ -85,6 +95,9 @@ namespace Kaltura
 							this.ItemXpathsToExtend.Add((KalturaExtendingItemMrssParameter)KalturaObjectFactory.Create(arrayNode, "KalturaExtendingItemMrssParameter"));
 						}
 						continue;
+					case "useCategoryEntries":
+						this.UseCategoryEntries = ParseBool(txt);
+						continue;
 				}
 			}
 		}
@@ -97,6 +110,7 @@ namespace Kaltura
 			kparams.AddReplace("objectType", "KalturaConfigurableDistributionProfile");
 			kparams.AddIfNotNull("fieldConfigArray", this.FieldConfigArray);
 			kparams.AddIfNotNull("itemXpathsToExtend", this.ItemXpathsToExtend);
+			kparams.AddIfNotNull("useCategoryEntries", this.UseCategoryEntries);
 			return kparams;
 		}
 		#endregion

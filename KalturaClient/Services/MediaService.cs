@@ -213,9 +213,15 @@ namespace Kaltura
 
 		public string GetMrss(string entryId, IList<KalturaExtendingItemMrssParameter> extendingItemsArray)
 		{
+			return this.GetMrss(entryId, extendingItemsArray, null);
+		}
+
+		public string GetMrss(string entryId, IList<KalturaExtendingItemMrssParameter> extendingItemsArray, string features)
+		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddIfNotNull("entryId", entryId);
 			kparams.AddIfNotNull("extendingItemsArray", extendingItemsArray);
+			kparams.AddIfNotNull("features", features);
 			_Client.QueueServiceCall("media", "getMrss", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

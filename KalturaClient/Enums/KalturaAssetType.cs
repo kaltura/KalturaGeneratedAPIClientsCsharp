@@ -36,6 +36,7 @@ namespace Kaltura
 		public static readonly KalturaAssetType PDF = new KalturaAssetType("document.PDF");
 		public static readonly KalturaAssetType SWF = new KalturaAssetType("document.SWF");
 		public static readonly KalturaAssetType TIMED_THUMB_ASSET = new KalturaAssetType("thumbCuePoint.timedThumb");
+		public static readonly KalturaAssetType TRANSCRIPT = new KalturaAssetType("transcript.Transcript");
 		public static readonly KalturaAssetType FLAVOR = new KalturaAssetType("1");
 		public static readonly KalturaAssetType THUMBNAIL = new KalturaAssetType("2");
 		public static readonly KalturaAssetType LIVE = new KalturaAssetType("3");

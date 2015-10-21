@@ -84,5 +84,27 @@ namespace Kaltura
 				return true;
 			return false;
 		}
+
+		public KalturaLikeListResponse List()
+		{
+			return this.List(null);
+		}
+
+		public KalturaLikeListResponse List(KalturaLikeFilter filter)
+		{
+			return this.List(filter, null);
+		}
+
+		public KalturaLikeListResponse List(KalturaLikeFilter filter, KalturaFilterPager pager)
+		{
+			KalturaParams kparams = new KalturaParams();
+			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
+			_Client.QueueServiceCall("like_like", "list", "KalturaLikeListResponse", kparams);
+			if (this._Client.IsMultiRequest)
+				return null;
+			XmlElement result = _Client.DoQueue();
+			return (KalturaLikeListResponse)KalturaObjectFactory.Create(result, "KalturaLikeListResponse");
+		}
 	}
 }

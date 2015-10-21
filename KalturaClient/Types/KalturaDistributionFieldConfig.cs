@@ -41,6 +41,7 @@ namespace Kaltura
 		private bool? _UpdateOnChange = false;
 		private IList<KalturaString> _UpdateParams;
 		private bool? _IsDefault = false;
+		private bool? _TriggerDeleteOnError = false;
 		#endregion
 
 		#region Properties
@@ -107,6 +108,15 @@ namespace Kaltura
 				OnPropertyChanged("IsDefault");
 			}
 		}
+		public bool? TriggerDeleteOnError
+		{
+			get { return _TriggerDeleteOnError; }
+			set 
+			{ 
+				_TriggerDeleteOnError = value;
+				OnPropertyChanged("TriggerDeleteOnError");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -146,6 +156,9 @@ namespace Kaltura
 					case "isDefault":
 						this.IsDefault = ParseBool(txt);
 						continue;
+					case "triggerDeleteOnError":
+						this.TriggerDeleteOnError = ParseBool(txt);
+						continue;
 				}
 			}
 		}
@@ -163,6 +176,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("updateOnChange", this.UpdateOnChange);
 			kparams.AddIfNotNull("updateParams", this.UpdateParams);
 			kparams.AddIfNotNull("isDefault", this.IsDefault);
+			kparams.AddIfNotNull("triggerDeleteOnError", this.TriggerDeleteOnError);
 			return kparams;
 		}
 		#endregion

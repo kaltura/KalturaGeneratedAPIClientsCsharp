@@ -42,7 +42,7 @@ namespace Kaltura
 		private int _AudioSampleRate = Int32.MinValue;
 		private int _Width = Int32.MinValue;
 		private int _Height = Int32.MinValue;
-		private int _FrameRate = Int32.MinValue;
+		private float _FrameRate = Single.MinValue;
 		private int _GopSize = Int32.MinValue;
 		private string _ConversionEngines = null;
 		private string _ConversionEnginesExtraParams = null;
@@ -144,7 +144,7 @@ namespace Kaltura
 				OnPropertyChanged("Height");
 			}
 		}
-		public int FrameRate
+		public float FrameRate
 		{
 			get { return _FrameRate; }
 			set 
@@ -426,7 +426,7 @@ namespace Kaltura
 						this.Height = ParseInt(txt);
 						continue;
 					case "frameRate":
-						this.FrameRate = ParseInt(txt);
+						this.FrameRate = ParseFloat(txt);
 						continue;
 					case "gopSize":
 						this.GopSize = ParseInt(txt);

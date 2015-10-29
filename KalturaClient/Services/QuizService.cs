@@ -97,11 +97,11 @@ namespace Kaltura
 			return (KalturaQuizListResponse)KalturaObjectFactory.Create(result, "KalturaQuizListResponse");
 		}
 
-		public string GetUrl(string entryId, KalturaQuizFileType quizFileType)
+		public string GetUrl(string entryId, KalturaQuizOutputType quizOutputType)
 		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddIfNotNull("entryId", entryId);
-			kparams.AddIfNotNull("quizFileType", quizFileType);
+			kparams.AddIfNotNull("quizOutputType", quizOutputType);
 			_Client.QueueServiceCall("quiz_quiz", "getUrl", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

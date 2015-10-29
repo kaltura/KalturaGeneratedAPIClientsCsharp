@@ -34,7 +34,7 @@ namespace Kaltura
 		public KalturaClient(KalturaConfiguration config) : base(config)
 		{
 				ApiVersion = "3.3.0";
-				ClientTag = "dotnet:15-10-28";
+				ClientTag = "dotnet:15-10-29";
 		}
 
 		KalturaAccessControlProfileService _AccessControlProfileService;
@@ -205,18 +205,6 @@ namespace Kaltura
 			}
 		}
 
-		KalturaEdgeServerService _EdgeServerService;
-		public KalturaEdgeServerService EdgeServerService
-		{
-			get
-			{
-				if (_EdgeServerService == null)
-					_EdgeServerService = new KalturaEdgeServerService(this);
-
-				return _EdgeServerService;
-			}
-		}
-
 		KalturaEmailIngestionProfileService _EmailIngestionProfileService;
 		public KalturaEmailIngestionProfileService EmailIngestionProfileService
 		{
@@ -361,18 +349,6 @@ namespace Kaltura
 			}
 		}
 
-		KalturaMediaServerService _MediaServerService;
-		public KalturaMediaServerService MediaServerService
-		{
-			get
-			{
-				if (_MediaServerService == null)
-					_MediaServerService = new KalturaMediaServerService(this);
-
-				return _MediaServerService;
-			}
-		}
-
 		KalturaMediaService _MediaService;
 		public KalturaMediaService MediaService
 		{
@@ -502,6 +478,18 @@ namespace Kaltura
 					_SearchService = new KalturaSearchService(this);
 
 				return _SearchService;
+			}
+		}
+
+		KalturaServerNodeService _ServerNodeService;
+		public KalturaServerNodeService ServerNodeService
+		{
+			get
+			{
+				if (_ServerNodeService == null)
+					_ServerNodeService = new KalturaServerNodeService(this);
+
+				return _ServerNodeService;
 			}
 		}
 

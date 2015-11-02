@@ -36,6 +36,7 @@ namespace Kaltura
 		#region Private Fields
 		private string _EntryId = null;
 		private string _UserId = null;
+		private int _CreatedAt = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -55,6 +56,15 @@ namespace Kaltura
 			{ 
 				_UserId = value;
 				OnPropertyChanged("UserId");
+			}
+		}
+		public int CreatedAt
+		{
+			get { return _CreatedAt; }
+			set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
 			}
 		}
 		#endregion
@@ -77,6 +87,9 @@ namespace Kaltura
 					case "userId":
 						this.UserId = txt;
 						continue;
+					case "createdAt":
+						this.CreatedAt = ParseInt(txt);
+						continue;
 				}
 			}
 		}
@@ -89,6 +102,7 @@ namespace Kaltura
 			kparams.AddReplace("objectType", "KalturaLike");
 			kparams.AddIfNotNull("entryId", this.EntryId);
 			kparams.AddIfNotNull("userId", this.UserId);
+			kparams.AddIfNotNull("createdAt", this.CreatedAt);
 			return kparams;
 		}
 		#endregion

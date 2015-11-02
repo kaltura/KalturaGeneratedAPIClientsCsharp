@@ -29,7 +29,6 @@ namespace Kaltura
 {
 	public sealed class KalturaBatchJobType : KalturaStringEnum
 	{
-		public static readonly KalturaBatchJobType CONVERT = new KalturaBatchJobType("0");
 		public static readonly KalturaBatchJobType PARSE_MULTI_LANGUAGE_CAPTION_ASSET = new KalturaBatchJobType("caption.parsemultilanguagecaptionasset");
 		public static readonly KalturaBatchJobType PARSE_CAPTION_ASSET = new KalturaBatchJobType("captionSearch.parseCaptionAsset");
 		public static readonly KalturaBatchJobType DISTRIBUTION_DELETE = new KalturaBatchJobType("contentDistribution.DistributionDelete");
@@ -39,6 +38,7 @@ namespace Kaltura
 		public static readonly KalturaBatchJobType DISTRIBUTION_SUBMIT = new KalturaBatchJobType("contentDistribution.DistributionSubmit");
 		public static readonly KalturaBatchJobType DISTRIBUTION_SYNC = new KalturaBatchJobType("contentDistribution.DistributionSync");
 		public static readonly KalturaBatchJobType DISTRIBUTION_UPDATE = new KalturaBatchJobType("contentDistribution.DistributionUpdate");
+		public static readonly KalturaBatchJobType CONVERT = new KalturaBatchJobType("0");
 		public static readonly KalturaBatchJobType DROP_FOLDER_CONTENT_PROCESSOR = new KalturaBatchJobType("dropFolder.DropFolderContentProcessor");
 		public static readonly KalturaBatchJobType DROP_FOLDER_WATCHER = new KalturaBatchJobType("dropFolder.DropFolderWatcher");
 		public static readonly KalturaBatchJobType EVENT_NOTIFICATION_HANDLER = new KalturaBatchJobType("eventNotification.EventNotificationHandler");

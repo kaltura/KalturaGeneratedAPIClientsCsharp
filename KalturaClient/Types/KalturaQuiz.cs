@@ -41,6 +41,7 @@ namespace Kaltura
 		private KalturaNullableBoolean _AllowAnswerUpdate = (KalturaNullableBoolean)Int32.MinValue;
 		private KalturaNullableBoolean _ShowCorrectAfterSubmission = (KalturaNullableBoolean)Int32.MinValue;
 		private KalturaNullableBoolean _AllowDownload = (KalturaNullableBoolean)Int32.MinValue;
+		private KalturaNullableBoolean _ShowGradeAfterSubmission = (KalturaNullableBoolean)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -107,6 +108,15 @@ namespace Kaltura
 				OnPropertyChanged("AllowDownload");
 			}
 		}
+		public KalturaNullableBoolean ShowGradeAfterSubmission
+		{
+			get { return _ShowGradeAfterSubmission; }
+			set 
+			{ 
+				_ShowGradeAfterSubmission = value;
+				OnPropertyChanged("ShowGradeAfterSubmission");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -146,6 +156,9 @@ namespace Kaltura
 					case "allowDownload":
 						this.AllowDownload = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
+					case "showGradeAfterSubmission":
+						this.ShowGradeAfterSubmission = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						continue;
 				}
 			}
 		}
@@ -163,6 +176,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("allowAnswerUpdate", this.AllowAnswerUpdate);
 			kparams.AddIfNotNull("showCorrectAfterSubmission", this.ShowCorrectAfterSubmission);
 			kparams.AddIfNotNull("allowDownload", this.AllowDownload);
+			kparams.AddIfNotNull("showGradeAfterSubmission", this.ShowGradeAfterSubmission);
 			return kparams;
 		}
 		#endregion

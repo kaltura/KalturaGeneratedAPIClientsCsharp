@@ -381,10 +381,11 @@ namespace Kaltura
 			return int.Parse(result.InnerText);
 		}
 
-		public KalturaBaseEntry Clone(string entryId)
+		public KalturaBaseEntry Clone(string entryId, KalturaBaseEntryCloneOptions cloneOptions)
 		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("cloneOptions", cloneOptions);
 			_Client.QueueServiceCall("baseentry", "clone", "KalturaBaseEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

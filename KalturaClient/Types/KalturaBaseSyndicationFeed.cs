@@ -54,6 +54,7 @@ namespace Kaltura
 		private bool? _EnforceEntitlement = false;
 		private string _PrivacyContext = null;
 		private int _UpdatedAt = Int32.MinValue;
+		private bool? _UseCategoryEntries = false;
 		#endregion
 
 		#region Properties
@@ -237,6 +238,15 @@ namespace Kaltura
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
+		public bool? UseCategoryEntries
+		{
+			get { return _UseCategoryEntries; }
+			set 
+			{ 
+				_UseCategoryEntries = value;
+				OnPropertyChanged("UseCategoryEntries");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -311,6 +321,9 @@ namespace Kaltura
 					case "updatedAt":
 						this.UpdatedAt = ParseInt(txt);
 						continue;
+					case "useCategoryEntries":
+						this.UseCategoryEntries = ParseBool(txt);
+						continue;
 				}
 			}
 		}
@@ -341,6 +354,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("enforceEntitlement", this.EnforceEntitlement);
 			kparams.AddIfNotNull("privacyContext", this.PrivacyContext);
 			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("useCategoryEntries", this.UseCategoryEntries);
 			return kparams;
 		}
 		#endregion

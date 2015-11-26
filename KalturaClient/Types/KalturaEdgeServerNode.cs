@@ -34,9 +34,19 @@ namespace Kaltura
 	public class KalturaEdgeServerNode : KalturaDeliveryServerNode
 	{
 		#region Private Fields
+		private IList<KalturaKeyValue> _DeliveryProfileIds;
 		#endregion
 
 		#region Properties
+		public IList<KalturaKeyValue> DeliveryProfileIds
+		{
+			get { return _DeliveryProfileIds; }
+			set 
+			{ 
+				_DeliveryProfileIds = value;
+				OnPropertyChanged("DeliveryProfileIds");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -46,6 +56,20 @@ namespace Kaltura
 
 		public KalturaEdgeServerNode(XmlElement node) : base(node)
 		{
+			foreach (XmlElement propertyNode in node.ChildNodes)
+			{
+				string txt = propertyNode.InnerText;
+				switch (propertyNode.Name)
+				{
+					case "deliveryProfileIds":
+						this.DeliveryProfileIds = new List<KalturaKeyValue>();
+						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
+						{
+							this.DeliveryProfileIds.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
+						}
+						continue;
+				}
+			}
 		}
 		#endregion
 
@@ -54,6 +78,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEdgeServerNode");
+			kparams.AddIfNotNull("deliveryProfileIds", this.DeliveryProfileIds);
 			return kparams;
 		}
 		#endregion

@@ -55,6 +55,7 @@ namespace Kaltura
 		public static readonly KalturaReportType BROWSERS = new KalturaReportType("23");
 		public static readonly KalturaReportType LIVE = new KalturaReportType("24");
 		public static readonly KalturaReportType TOP_PLAYBACK_CONTEXT = new KalturaReportType("25");
+		public static readonly KalturaReportType VPAAS_USAGE = new KalturaReportType("26");
 		public static readonly KalturaReportType PARTNER_USAGE = new KalturaReportType("201");
 
 		private KalturaReportType(string name) : base(name) { }

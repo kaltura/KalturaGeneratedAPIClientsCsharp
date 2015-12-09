@@ -35,6 +35,7 @@ namespace Kaltura
 	{
 		#region Private Fields
 		private IList<KalturaKeyValue> _DeliveryProfileIds;
+		private string _Config = null;
 		#endregion
 
 		#region Properties
@@ -45,6 +46,15 @@ namespace Kaltura
 			{ 
 				_DeliveryProfileIds = value;
 				OnPropertyChanged("DeliveryProfileIds");
+			}
+		}
+		public string Config
+		{
+			get { return _Config; }
+			set 
+			{ 
+				_Config = value;
+				OnPropertyChanged("Config");
 			}
 		}
 		#endregion
@@ -68,6 +78,9 @@ namespace Kaltura
 							this.DeliveryProfileIds.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
 						}
 						continue;
+					case "config":
+						this.Config = txt;
+						continue;
 				}
 			}
 		}
@@ -79,6 +92,7 @@ namespace Kaltura
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEdgeServerNode");
 			kparams.AddIfNotNull("deliveryProfileIds", this.DeliveryProfileIds);
+			kparams.AddIfNotNull("config", this.Config);
 			return kparams;
 		}
 		#endregion

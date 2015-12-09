@@ -39,6 +39,7 @@ namespace Kaltura
 		private string _FlavorAssetId = null;
 		private float _Offset = Single.MinValue;
 		private float _Duration = Single.MinValue;
+		private IList<KalturaKeyValue> _AmfArray;
 		#endregion
 
 		#region Properties
@@ -87,6 +88,15 @@ namespace Kaltura
 				OnPropertyChanged("Duration");
 			}
 		}
+		public IList<KalturaKeyValue> AmfArray
+		{
+			get { return _AmfArray; }
+			set 
+			{ 
+				_AmfArray = value;
+				OnPropertyChanged("AmfArray");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -120,6 +130,13 @@ namespace Kaltura
 					case "duration":
 						this.Duration = ParseFloat(txt);
 						continue;
+					case "amfArray":
+						this.AmfArray = new List<KalturaKeyValue>();
+						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
+						{
+							this.AmfArray.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
+						}
+						continue;
 				}
 			}
 		}
@@ -135,6 +152,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("flavorAssetId", this.FlavorAssetId);
 			kparams.AddIfNotNull("offset", this.Offset);
 			kparams.AddIfNotNull("duration", this.Duration);
+			kparams.AddIfNotNull("amfArray", this.AmfArray);
 			return kparams;
 		}
 		#endregion

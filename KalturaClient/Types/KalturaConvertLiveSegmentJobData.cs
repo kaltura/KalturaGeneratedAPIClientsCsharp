@@ -42,6 +42,7 @@ namespace Kaltura
 		private string _DestFilePath = null;
 		private float _EndTime = Single.MinValue;
 		private IList<KalturaKeyValue> _AmfArray;
+		private float _Duration = Single.MinValue;
 		#endregion
 
 		#region Properties
@@ -117,6 +118,15 @@ namespace Kaltura
 				OnPropertyChanged("AmfArray");
 			}
 		}
+		public float Duration
+		{
+			get { return _Duration; }
+			set 
+			{ 
+				_Duration = value;
+				OnPropertyChanged("Duration");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -159,6 +169,9 @@ namespace Kaltura
 							this.AmfArray.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
 						}
 						continue;
+					case "duration":
+						this.Duration = ParseFloat(txt);
+						continue;
 				}
 			}
 		}
@@ -177,6 +190,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("destFilePath", this.DestFilePath);
 			kparams.AddIfNotNull("endTime", this.EndTime);
 			kparams.AddIfNotNull("amfArray", this.AmfArray);
+			kparams.AddIfNotNull("duration", this.Duration);
 			return kparams;
 		}
 		#endregion

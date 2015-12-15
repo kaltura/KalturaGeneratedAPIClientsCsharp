@@ -39,7 +39,7 @@ namespace Kaltura
 		private string _FlavorAssetId = null;
 		private float _Offset = Single.MinValue;
 		private float _Duration = Single.MinValue;
-		private IList<KalturaKeyValue> _AmfArray;
+		private float _ConcatenatedDuration = Single.MinValue;
 		#endregion
 
 		#region Properties
@@ -88,13 +88,13 @@ namespace Kaltura
 				OnPropertyChanged("Duration");
 			}
 		}
-		public IList<KalturaKeyValue> AmfArray
+		public float ConcatenatedDuration
 		{
-			get { return _AmfArray; }
+			get { return _ConcatenatedDuration; }
 			set 
 			{ 
-				_AmfArray = value;
-				OnPropertyChanged("AmfArray");
+				_ConcatenatedDuration = value;
+				OnPropertyChanged("ConcatenatedDuration");
 			}
 		}
 		#endregion
@@ -130,12 +130,8 @@ namespace Kaltura
 					case "duration":
 						this.Duration = ParseFloat(txt);
 						continue;
-					case "amfArray":
-						this.AmfArray = new List<KalturaKeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this.AmfArray.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
-						}
+					case "concatenatedDuration":
+						this.ConcatenatedDuration = ParseFloat(txt);
 						continue;
 				}
 			}
@@ -152,7 +148,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("flavorAssetId", this.FlavorAssetId);
 			kparams.AddIfNotNull("offset", this.Offset);
 			kparams.AddIfNotNull("duration", this.Duration);
-			kparams.AddIfNotNull("amfArray", this.AmfArray);
+			kparams.AddIfNotNull("concatenatedDuration", this.ConcatenatedDuration);
 			return kparams;
 		}
 		#endregion

@@ -52,6 +52,7 @@ namespace Kaltura
 		private int _ParentId = Int32.MinValue;
 		private string _MediaProtocols = null;
 		private int _Priority = Int32.MinValue;
+		private string _ExtraParams = null;
 		#endregion
 
 		#region Properties
@@ -217,6 +218,15 @@ namespace Kaltura
 				OnPropertyChanged("Priority");
 			}
 		}
+		public string ExtraParams
+		{
+			get { return _ExtraParams; }
+			set 
+			{ 
+				_ExtraParams = value;
+				OnPropertyChanged("ExtraParams");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -285,6 +295,9 @@ namespace Kaltura
 					case "priority":
 						this.Priority = ParseInt(txt);
 						continue;
+					case "extraParams":
+						this.ExtraParams = txt;
+						continue;
 				}
 			}
 		}
@@ -313,6 +326,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("parentId", this.ParentId);
 			kparams.AddIfNotNull("mediaProtocols", this.MediaProtocols);
 			kparams.AddIfNotNull("priority", this.Priority);
+			kparams.AddIfNotNull("extraParams", this.ExtraParams);
 			return kparams;
 		}
 		#endregion

@@ -29,6 +29,7 @@ namespace Kaltura
 {
 	public sealed class KalturaDistributionProviderType : KalturaStringEnum
 	{
+		public static readonly KalturaDistributionProviderType FACEBOOK = new KalturaDistributionProviderType("facebookDistribution.FACEBOOK");
 		public static readonly KalturaDistributionProviderType IDETIC = new KalturaDistributionProviderType("ideticDistribution.IDETIC");
 		public static readonly KalturaDistributionProviderType YOUTUBE_API = new KalturaDistributionProviderType("youtubeApiDistribution.YOUTUBE_API");
 		public static readonly KalturaDistributionProviderType GENERIC = new KalturaDistributionProviderType("1");

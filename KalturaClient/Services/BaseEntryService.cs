@@ -383,8 +383,14 @@ namespace Kaltura
 
 		public KalturaBaseEntry Clone(string entryId)
 		{
+			return this.Clone(entryId, null);
+		}
+
+		public KalturaBaseEntry Clone(string entryId, IList<KalturaBaseEntryCloneOptionItem> cloneOptions)
+		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("cloneOptions", cloneOptions);
 			_Client.QueueServiceCall("baseentry", "clone", "KalturaBaseEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

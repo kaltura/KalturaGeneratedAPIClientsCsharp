@@ -233,11 +233,17 @@ namespace Kaltura
 
 		public KalturaLiveEntry RegisterMediaServer(string entryId, string hostname, KalturaMediaServerIndex mediaServerIndex, string applicationName)
 		{
+			return this.RegisterMediaServer(entryId, hostname, mediaServerIndex, applicationName, (KalturaLiveEntryStatus)(1));
+		}
+
+		public KalturaLiveEntry RegisterMediaServer(string entryId, string hostname, KalturaMediaServerIndex mediaServerIndex, string applicationName, KalturaLiveEntryStatus liveEntryStatus)
+		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddIfNotNull("entryId", entryId);
 			kparams.AddIfNotNull("hostname", hostname);
 			kparams.AddIfNotNull("mediaServerIndex", mediaServerIndex);
 			kparams.AddIfNotNull("applicationName", applicationName);
+			kparams.AddIfNotNull("liveEntryStatus", liveEntryStatus);
 			_Client.QueueServiceCall("livestream", "registerMediaServer", "KalturaLiveEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

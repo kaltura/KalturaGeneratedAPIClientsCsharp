@@ -47,6 +47,7 @@ namespace Kaltura
 		private int _LastBroadcast = Int32.MinValue;
 		private float _CurrentBroadcastStartTime = Single.MinValue;
 		private KalturaLiveEntryRecordingOptions _RecordingOptions;
+		private KalturaLiveEntryStatus _LiveStatus = (KalturaLiveEntryStatus)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -167,6 +168,15 @@ namespace Kaltura
 				OnPropertyChanged("RecordingOptions");
 			}
 		}
+		public KalturaLiveEntryStatus LiveStatus
+		{
+			get { return _LiveStatus; }
+			set 
+			{ 
+				_LiveStatus = value;
+				OnPropertyChanged("LiveStatus");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -228,6 +238,9 @@ namespace Kaltura
 					case "recordingOptions":
 						this.RecordingOptions = (KalturaLiveEntryRecordingOptions)KalturaObjectFactory.Create(propertyNode, "KalturaLiveEntryRecordingOptions");
 						continue;
+					case "liveStatus":
+						this.LiveStatus = (KalturaLiveEntryStatus)ParseEnum(typeof(KalturaLiveEntryStatus), txt);
+						continue;
 				}
 			}
 		}
@@ -251,6 +264,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("lastBroadcast", this.LastBroadcast);
 			kparams.AddIfNotNull("currentBroadcastStartTime", this.CurrentBroadcastStartTime);
 			kparams.AddIfNotNull("recordingOptions", this.RecordingOptions);
+			kparams.AddIfNotNull("liveStatus", this.LiveStatus);
 			return kparams;
 		}
 		#endregion

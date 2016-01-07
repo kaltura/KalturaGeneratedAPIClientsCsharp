@@ -34,6 +34,8 @@ namespace Kaltura
 	public class KalturaRule : KalturaObjectBase
 	{
 		#region Private Fields
+		private string _Description = null;
+		private string _RuleData = null;
 		private string _Message = null;
 		private IList<KalturaRuleAction> _Actions;
 		private IList<KalturaCondition> _Conditions;
@@ -42,6 +44,24 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
+		public string Description
+		{
+			get { return _Description; }
+			set 
+			{ 
+				_Description = value;
+				OnPropertyChanged("Description");
+			}
+		}
+		public string RuleData
+		{
+			get { return _RuleData; }
+			set 
+			{ 
+				_RuleData = value;
+				OnPropertyChanged("RuleData");
+			}
+		}
 		public string Message
 		{
 			get { return _Message; }
@@ -101,6 +121,12 @@ namespace Kaltura
 				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
+					case "description":
+						this.Description = txt;
+						continue;
+					case "ruleData":
+						this.RuleData = txt;
+						continue;
 					case "message":
 						this.Message = txt;
 						continue;
@@ -138,6 +164,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaRule");
+			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("ruleData", this.RuleData);
 			kparams.AddIfNotNull("message", this.Message);
 			kparams.AddIfNotNull("actions", this.Actions);
 			kparams.AddIfNotNull("conditions", this.Conditions);

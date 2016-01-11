@@ -84,5 +84,16 @@ namespace Kaltura
 			XmlElement result = _Client.DoQueue();
 			return (KalturaTrackEntryListResponse)KalturaObjectFactory.Create(result, "KalturaTrackEntryListResponse");
 		}
+
+		public KalturaBaseEntry RestoreDeletedEntry(string entryId)
+		{
+			KalturaParams kparams = new KalturaParams();
+			kparams.AddIfNotNull("entryId", entryId);
+			_Client.QueueServiceCall("adminconsole_entryadmin", "restoreDeletedEntry", "KalturaBaseEntry", kparams);
+			if (this._Client.IsMultiRequest)
+				return null;
+			XmlElement result = _Client.DoQueue();
+			return (KalturaBaseEntry)KalturaObjectFactory.Create(result, "KalturaBaseEntry");
+		}
 	}
 }

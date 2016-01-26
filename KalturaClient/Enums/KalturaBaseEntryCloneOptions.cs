@@ -29,6 +29,10 @@ namespace Kaltura
 {
 	public sealed class KalturaBaseEntryCloneOptions : KalturaStringEnum
 	{
+		public static readonly KalturaBaseEntryCloneOptions AD_CUE_POINTS = new KalturaBaseEntryCloneOptions("adCuePoint.AD_CUE_POINTS");
+		public static readonly KalturaBaseEntryCloneOptions ANNOTATION_CUE_POINTS = new KalturaBaseEntryCloneOptions("annotation.ANNOTATION_CUE_POINTS");
+		public static readonly KalturaBaseEntryCloneOptions CODE_CUE_POINTS = new KalturaBaseEntryCloneOptions("codeCuePoint.CODE_CUE_POINTS");
+		public static readonly KalturaBaseEntryCloneOptions THUMB_CUE_POINTS = new KalturaBaseEntryCloneOptions("thumbCuePoint.THUMB_CUE_POINTS");
 		public static readonly KalturaBaseEntryCloneOptions USERS = new KalturaBaseEntryCloneOptions("1");
 		public static readonly KalturaBaseEntryCloneOptions CATEGORIES = new KalturaBaseEntryCloneOptions("2");
 

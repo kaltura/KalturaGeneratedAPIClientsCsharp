@@ -48,6 +48,7 @@ namespace Kaltura
 		private IList<KalturaString> _AccessControlMessages;
 		private IList<KalturaRuleAction> _AccessControlActions;
 		private IList<KalturaFlavorAsset> _FlavorAssets;
+		private int _MsDuration = Int32.MinValue;
 		private IDictionary<string, KalturaPluginData> _PluginData;
 		#endregion
 
@@ -178,6 +179,15 @@ namespace Kaltura
 				OnPropertyChanged("FlavorAssets");
 			}
 		}
+		public int MsDuration
+		{
+			get { return _MsDuration; }
+			set 
+			{ 
+				_MsDuration = value;
+				OnPropertyChanged("MsDuration");
+			}
+		}
 		public IDictionary<string, KalturaPluginData> PluginData
 		{
 			get { return _PluginData; }
@@ -255,6 +265,9 @@ namespace Kaltura
 							this.FlavorAssets.Add((KalturaFlavorAsset)KalturaObjectFactory.Create(arrayNode, "KalturaFlavorAsset"));
 						}
 						continue;
+					case "msDuration":
+						this.MsDuration = ParseInt(txt);
+						continue;
 					case "pluginData":
 						{
 							string key;
@@ -290,6 +303,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("accessControlMessages", this.AccessControlMessages);
 			kparams.AddIfNotNull("accessControlActions", this.AccessControlActions);
 			kparams.AddIfNotNull("flavorAssets", this.FlavorAssets);
+			kparams.AddIfNotNull("msDuration", this.MsDuration);
 			kparams.AddIfNotNull("pluginData", this.PluginData);
 			return kparams;
 		}

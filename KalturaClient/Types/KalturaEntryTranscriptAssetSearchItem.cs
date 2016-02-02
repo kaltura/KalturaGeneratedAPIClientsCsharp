@@ -31,38 +31,64 @@ using System.Collections.Generic;
 
 namespace Kaltura
 {
-	public class KalturaQuizUserEntry : KalturaUserEntry
+	public class KalturaEntryTranscriptAssetSearchItem : KalturaSearchItem
 	{
 		#region Private Fields
-		private float _Score = Single.MinValue;
+		private string _ContentLike = null;
+		private string _ContentMultiLikeOr = null;
+		private string _ContentMultiLikeAnd = null;
 		#endregion
 
 		#region Properties
-		public float Score
+		public string ContentLike
 		{
-			get { return _Score; }
+			get { return _ContentLike; }
 			set 
 			{ 
-				_Score = value;
-				OnPropertyChanged("Score");
+				_ContentLike = value;
+				OnPropertyChanged("ContentLike");
+			}
+		}
+		public string ContentMultiLikeOr
+		{
+			get { return _ContentMultiLikeOr; }
+			set 
+			{ 
+				_ContentMultiLikeOr = value;
+				OnPropertyChanged("ContentMultiLikeOr");
+			}
+		}
+		public string ContentMultiLikeAnd
+		{
+			get { return _ContentMultiLikeAnd; }
+			set 
+			{ 
+				_ContentMultiLikeAnd = value;
+				OnPropertyChanged("ContentMultiLikeAnd");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public KalturaQuizUserEntry()
+		public KalturaEntryTranscriptAssetSearchItem()
 		{
 		}
 
-		public KalturaQuizUserEntry(XmlElement node) : base(node)
+		public KalturaEntryTranscriptAssetSearchItem(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
 				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
-					case "score":
-						this.Score = ParseFloat(txt);
+					case "contentLike":
+						this.ContentLike = txt;
+						continue;
+					case "contentMultiLikeOr":
+						this.ContentMultiLikeOr = txt;
+						continue;
+					case "contentMultiLikeAnd":
+						this.ContentMultiLikeAnd = txt;
 						continue;
 				}
 			}
@@ -73,8 +99,10 @@ namespace Kaltura
 		public override KalturaParams ToParams()
 		{
 			KalturaParams kparams = base.ToParams();
-			kparams.AddReplace("objectType", "KalturaQuizUserEntry");
-			kparams.AddIfNotNull("score", this.Score);
+			kparams.AddReplace("objectType", "KalturaEntryTranscriptAssetSearchItem");
+			kparams.AddIfNotNull("contentLike", this.ContentLike);
+			kparams.AddIfNotNull("contentMultiLikeOr", this.ContentMultiLikeOr);
+			kparams.AddIfNotNull("contentMultiLikeAnd", this.ContentMultiLikeAnd);
 			return kparams;
 		}
 		#endregion

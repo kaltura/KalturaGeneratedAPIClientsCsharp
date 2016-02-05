@@ -34,20 +34,10 @@ namespace Kaltura
 	public class KalturaQuizUserEntryFilter : KalturaQuizUserEntryBaseFilter
 	{
 		#region Private Fields
-		private KalturaNullableBoolean _IsAnonymous = (KalturaNullableBoolean)Int32.MinValue;
 		private KalturaQuizUserEntryOrderBy _OrderBy = null;
 		#endregion
 
 		#region Properties
-		public KalturaNullableBoolean IsAnonymous
-		{
-			get { return _IsAnonymous; }
-			set 
-			{ 
-				_IsAnonymous = value;
-				OnPropertyChanged("IsAnonymous");
-			}
-		}
 		public new KalturaQuizUserEntryOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -71,9 +61,6 @@ namespace Kaltura
 				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
-					case "isAnonymous":
-						this.IsAnonymous = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
-						continue;
 					case "orderBy":
 						this.OrderBy = (KalturaQuizUserEntryOrderBy)KalturaStringEnum.Parse(typeof(KalturaQuizUserEntryOrderBy), txt);
 						continue;
@@ -87,7 +74,6 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaQuizUserEntryFilter");
-			kparams.AddIfNotNull("isAnonymous", this.IsAnonymous);
 			kparams.AddIfNotNull("orderBy", this.OrderBy);
 			return kparams;
 		}

@@ -102,7 +102,9 @@ namespace Kaltura
 		private string _RootEntryIdIn = null;
 		private string _ParentEntryIdEqual = null;
 		private string _EntitledUsersEditMatchAnd = null;
+		private string _EntitledUsersEditMatchOr = null;
 		private string _EntitledUsersPublishMatchAnd = null;
+		private string _EntitledUsersPublishMatchOr = null;
 		private string _TagsNameMultiLikeOr = null;
 		private string _TagsAdminTagsMultiLikeOr = null;
 		private string _TagsAdminTagsNameMultiLikeOr = null;
@@ -724,6 +726,15 @@ namespace Kaltura
 				OnPropertyChanged("EntitledUsersEditMatchAnd");
 			}
 		}
+		public string EntitledUsersEditMatchOr
+		{
+			get { return _EntitledUsersEditMatchOr; }
+			set 
+			{ 
+				_EntitledUsersEditMatchOr = value;
+				OnPropertyChanged("EntitledUsersEditMatchOr");
+			}
+		}
 		public string EntitledUsersPublishMatchAnd
 		{
 			get { return _EntitledUsersPublishMatchAnd; }
@@ -731,6 +742,15 @@ namespace Kaltura
 			{ 
 				_EntitledUsersPublishMatchAnd = value;
 				OnPropertyChanged("EntitledUsersPublishMatchAnd");
+			}
+		}
+		public string EntitledUsersPublishMatchOr
+		{
+			get { return _EntitledUsersPublishMatchOr; }
+			set 
+			{ 
+				_EntitledUsersPublishMatchOr = value;
+				OnPropertyChanged("EntitledUsersPublishMatchOr");
 			}
 		}
 		public string TagsNameMultiLikeOr
@@ -1005,8 +1025,14 @@ namespace Kaltura
 					case "entitledUsersEditMatchAnd":
 						this.EntitledUsersEditMatchAnd = txt;
 						continue;
+					case "entitledUsersEditMatchOr":
+						this.EntitledUsersEditMatchOr = txt;
+						continue;
 					case "entitledUsersPublishMatchAnd":
 						this.EntitledUsersPublishMatchAnd = txt;
+						continue;
+					case "entitledUsersPublishMatchOr":
+						this.EntitledUsersPublishMatchOr = txt;
 						continue;
 					case "tagsNameMultiLikeOr":
 						this.TagsNameMultiLikeOr = txt;
@@ -1104,7 +1130,9 @@ namespace Kaltura
 			kparams.AddIfNotNull("rootEntryIdIn", this.RootEntryIdIn);
 			kparams.AddIfNotNull("parentEntryIdEqual", this.ParentEntryIdEqual);
 			kparams.AddIfNotNull("entitledUsersEditMatchAnd", this.EntitledUsersEditMatchAnd);
+			kparams.AddIfNotNull("entitledUsersEditMatchOr", this.EntitledUsersEditMatchOr);
 			kparams.AddIfNotNull("entitledUsersPublishMatchAnd", this.EntitledUsersPublishMatchAnd);
+			kparams.AddIfNotNull("entitledUsersPublishMatchOr", this.EntitledUsersPublishMatchOr);
 			kparams.AddIfNotNull("tagsNameMultiLikeOr", this.TagsNameMultiLikeOr);
 			kparams.AddIfNotNull("tagsAdminTagsMultiLikeOr", this.TagsAdminTagsMultiLikeOr);
 			kparams.AddIfNotNull("tagsAdminTagsNameMultiLikeOr", this.TagsAdminTagsNameMultiLikeOr);

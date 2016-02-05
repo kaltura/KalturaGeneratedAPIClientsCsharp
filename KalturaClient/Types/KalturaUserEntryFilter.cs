@@ -35,6 +35,7 @@ namespace Kaltura
 	{
 		#region Private Fields
 		private KalturaNullableBoolean _UserIdEqualCurrent = (KalturaNullableBoolean)Int32.MinValue;
+		private KalturaNullableBoolean _IsAnonymous = (KalturaNullableBoolean)Int32.MinValue;
 		private KalturaUserEntryOrderBy _OrderBy = null;
 		#endregion
 
@@ -46,6 +47,15 @@ namespace Kaltura
 			{ 
 				_UserIdEqualCurrent = value;
 				OnPropertyChanged("UserIdEqualCurrent");
+			}
+		}
+		public KalturaNullableBoolean IsAnonymous
+		{
+			get { return _IsAnonymous; }
+			set 
+			{ 
+				_IsAnonymous = value;
+				OnPropertyChanged("IsAnonymous");
 			}
 		}
 		public new KalturaUserEntryOrderBy OrderBy
@@ -74,6 +84,9 @@ namespace Kaltura
 					case "userIdEqualCurrent":
 						this.UserIdEqualCurrent = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
+					case "isAnonymous":
+						this.IsAnonymous = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						continue;
 					case "orderBy":
 						this.OrderBy = (KalturaUserEntryOrderBy)KalturaStringEnum.Parse(typeof(KalturaUserEntryOrderBy), txt);
 						continue;
@@ -88,6 +101,7 @@ namespace Kaltura
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUserEntryFilter");
 			kparams.AddIfNotNull("userIdEqualCurrent", this.UserIdEqualCurrent);
+			kparams.AddIfNotNull("isAnonymous", this.IsAnonymous);
 			kparams.AddIfNotNull("orderBy", this.OrderBy);
 			return kparams;
 		}

@@ -31,6 +31,7 @@ namespace Kaltura
 	{
 		public static readonly KalturaEventNotificationEventObjectType AD_CUE_POINT = new KalturaEventNotificationEventObjectType("adCuePointEventNotifications.AdCuePoint");
 		public static readonly KalturaEventNotificationEventObjectType ANNOTATION = new KalturaEventNotificationEventObjectType("annotationEventNotifications.Annotation");
+		public static readonly KalturaEventNotificationEventObjectType ATTACHMENT_ASSET = new KalturaEventNotificationEventObjectType("attachmentAssetEventNotifications.AttachmentAsset");
 		public static readonly KalturaEventNotificationEventObjectType CAPTION_ASSET = new KalturaEventNotificationEventObjectType("captionAssetEventNotifications.CaptionAsset");
 		public static readonly KalturaEventNotificationEventObjectType CODE_CUE_POINT = new KalturaEventNotificationEventObjectType("codeCuePointEventNotifications.CodeCuePoint");
 		public static readonly KalturaEventNotificationEventObjectType DISTRIBUTION_PROFILE = new KalturaEventNotificationEventObjectType("contentDistributionEventNotifications.DistributionProfile");
@@ -39,6 +40,7 @@ namespace Kaltura
 		public static readonly KalturaEventNotificationEventObjectType DROP_FOLDER = new KalturaEventNotificationEventObjectType("dropFolderEventNotifications.DropFolder");
 		public static readonly KalturaEventNotificationEventObjectType DROP_FOLDER_FILE = new KalturaEventNotificationEventObjectType("dropFolderEventNotifications.DropFolderFile");
 		public static readonly KalturaEventNotificationEventObjectType METADATA = new KalturaEventNotificationEventObjectType("metadataEventNotifications.Metadata");
+		public static readonly KalturaEventNotificationEventObjectType TRANSCRIPT_ASSET = new KalturaEventNotificationEventObjectType("transcriptAssetEventNotifications.TranscriptAsset");
 		public static readonly KalturaEventNotificationEventObjectType ENTRY = new KalturaEventNotificationEventObjectType("1");
 		public static readonly KalturaEventNotificationEventObjectType CATEGORY = new KalturaEventNotificationEventObjectType("2");
 		public static readonly KalturaEventNotificationEventObjectType ASSET = new KalturaEventNotificationEventObjectType("3");

@@ -49,6 +49,7 @@ namespace Kaltura
 		private bool? _EnforceEntitlement = false;
 		private string _PrivacyContext = null;
 		private bool? _AddEmbedHtml5Support = false;
+		private string _Roles = null;
 		#endregion
 
 		#region Properties
@@ -187,6 +188,15 @@ namespace Kaltura
 				OnPropertyChanged("AddEmbedHtml5Support");
 			}
 		}
+		public string Roles
+		{
+			get { return _Roles; }
+			set 
+			{ 
+				_Roles = value;
+				OnPropertyChanged("Roles");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -246,6 +256,9 @@ namespace Kaltura
 					case "addEmbedHtml5Support":
 						this.AddEmbedHtml5Support = ParseBool(txt);
 						continue;
+					case "roles":
+						this.Roles = txt;
+						continue;
 				}
 			}
 		}
@@ -271,6 +284,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("enforceEntitlement", this.EnforceEntitlement);
 			kparams.AddIfNotNull("privacyContext", this.PrivacyContext);
 			kparams.AddIfNotNull("addEmbedHtml5Support", this.AddEmbedHtml5Support);
+			kparams.AddIfNotNull("roles", this.Roles);
 			return kparams;
 		}
 		#endregion

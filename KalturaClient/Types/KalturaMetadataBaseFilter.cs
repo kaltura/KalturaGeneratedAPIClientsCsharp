@@ -36,6 +36,7 @@ namespace Kaltura
 		#region Private Fields
 		private int _PartnerIdEqual = Int32.MinValue;
 		private int _MetadataProfileIdEqual = Int32.MinValue;
+		private string _MetadataProfileIdIn = null;
 		private int _MetadataProfileVersionEqual = Int32.MinValue;
 		private int _MetadataProfileVersionGreaterThanOrEqual = Int32.MinValue;
 		private int _MetadataProfileVersionLessThanOrEqual = Int32.MinValue;
@@ -70,6 +71,15 @@ namespace Kaltura
 			{ 
 				_MetadataProfileIdEqual = value;
 				OnPropertyChanged("MetadataProfileIdEqual");
+			}
+		}
+		public string MetadataProfileIdIn
+		{
+			get { return _MetadataProfileIdIn; }
+			set 
+			{ 
+				_MetadataProfileIdIn = value;
+				OnPropertyChanged("MetadataProfileIdIn");
 			}
 		}
 		public int MetadataProfileVersionEqual
@@ -227,6 +237,9 @@ namespace Kaltura
 					case "metadataProfileIdEqual":
 						this.MetadataProfileIdEqual = ParseInt(txt);
 						continue;
+					case "metadataProfileIdIn":
+						this.MetadataProfileIdIn = txt;
+						continue;
 					case "metadataProfileVersionEqual":
 						this.MetadataProfileVersionEqual = ParseInt(txt);
 						continue;
@@ -284,6 +297,7 @@ namespace Kaltura
 			kparams.AddReplace("objectType", "KalturaMetadataBaseFilter");
 			kparams.AddIfNotNull("partnerIdEqual", this.PartnerIdEqual);
 			kparams.AddIfNotNull("metadataProfileIdEqual", this.MetadataProfileIdEqual);
+			kparams.AddIfNotNull("metadataProfileIdIn", this.MetadataProfileIdIn);
 			kparams.AddIfNotNull("metadataProfileVersionEqual", this.MetadataProfileVersionEqual);
 			kparams.AddIfNotNull("metadataProfileVersionGreaterThanOrEqual", this.MetadataProfileVersionGreaterThanOrEqual);
 			kparams.AddIfNotNull("metadataProfileVersionLessThanOrEqual", this.MetadataProfileVersionLessThanOrEqual);

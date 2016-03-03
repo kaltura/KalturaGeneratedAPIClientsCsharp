@@ -34,9 +34,19 @@ namespace Kaltura
 	public class KalturaDistributionDeleteJobData : KalturaDistributionJobData
 	{
 		#region Private Fields
+		private bool? _KeepDistributionItem = false;
 		#endregion
 
 		#region Properties
+		public bool? KeepDistributionItem
+		{
+			get { return _KeepDistributionItem; }
+			set 
+			{ 
+				_KeepDistributionItem = value;
+				OnPropertyChanged("KeepDistributionItem");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -46,6 +56,16 @@ namespace Kaltura
 
 		public KalturaDistributionDeleteJobData(XmlElement node) : base(node)
 		{
+			foreach (XmlElement propertyNode in node.ChildNodes)
+			{
+				string txt = propertyNode.InnerText;
+				switch (propertyNode.Name)
+				{
+					case "keepDistributionItem":
+						this.KeepDistributionItem = ParseBool(txt);
+						continue;
+				}
+			}
 		}
 		#endregion
 
@@ -54,6 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDistributionDeleteJobData");
+			kparams.AddIfNotNull("keepDistributionItem", this.KeepDistributionItem);
 			return kparams;
 		}
 		#endregion

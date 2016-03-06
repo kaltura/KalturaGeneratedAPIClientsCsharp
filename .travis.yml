@@ -3,7 +3,7 @@ language: c
 install:
     - sudo apt-get update && sudo apt-get -y install mono-complete && mozroots --import --ask-remove 
 script: 
-    - mozroots --import --ask-remove && xbuild KalturaClient.sln && cd ./KalturaClientTester/bin/Debug/ &&  mono KalturaClientTester.exe
+    - mozroots --import --ask-remove && xbuild KalturaClient.sln && cd ./KalturaClientTester/bin/Debug/ &&  echo | mono KalturaClientTester.exe
 notifications:
  email:
     recipients:

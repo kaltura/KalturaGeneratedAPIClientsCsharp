@@ -55,7 +55,11 @@ namespace Kaltura
             uniqueTag = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 20);
             try
             {
-                SampleThreadedChunkUpload();
+//                SampleThreadedChunkUpload();
+                if(args.Length > 0 && args[0].Equals("--with-threads"))
+                {
+                    SampleThreadedChunkUpload();
+                }
             }
             catch (KalturaAPIException e0)
             {

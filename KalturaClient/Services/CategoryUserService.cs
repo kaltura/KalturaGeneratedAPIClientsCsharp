@@ -167,17 +167,17 @@ namespace Kaltura
 			return int.Parse(result.InnerText);
 		}
 
-		public KalturaBulkUpload AddFromBulkUpload(FileStream fileData)
+		public KalturaBulkUpload AddFromBulkUpload(Stream fileData)
 		{
 			return this.AddFromBulkUpload(fileData, null);
 		}
 
-		public KalturaBulkUpload AddFromBulkUpload(FileStream fileData, KalturaBulkUploadJobData bulkUploadData)
+		public KalturaBulkUpload AddFromBulkUpload(Stream fileData, KalturaBulkUploadJobData bulkUploadData)
 		{
 			return this.AddFromBulkUpload(fileData, bulkUploadData, null);
 		}
 
-		public KalturaBulkUpload AddFromBulkUpload(FileStream fileData, KalturaBulkUploadJobData bulkUploadData, KalturaBulkUploadCategoryUserData bulkUploadCategoryUserData)
+		public KalturaBulkUpload AddFromBulkUpload(Stream fileData, KalturaBulkUploadJobData bulkUploadData, KalturaBulkUploadCategoryUserData bulkUploadCategoryUserData)
 		{
 			KalturaParams kparams = new KalturaParams();
 			KalturaFiles kfiles = new KalturaFiles();

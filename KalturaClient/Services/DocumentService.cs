@@ -176,7 +176,7 @@ namespace Kaltura
 			return (KalturaDocumentListResponse)KalturaObjectFactory.Create(result, "KalturaDocumentListResponse");
 		}
 
-		public string Upload(FileStream fileData)
+		public string Upload(Stream fileData)
 		{
 			KalturaParams kparams = new KalturaParams();
 			KalturaFiles kfiles = new KalturaFiles();

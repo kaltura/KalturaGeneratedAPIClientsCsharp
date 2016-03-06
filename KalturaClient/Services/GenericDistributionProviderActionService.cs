@@ -63,7 +63,7 @@ namespace Kaltura
 			return (KalturaGenericDistributionProviderAction)KalturaObjectFactory.Create(result, "KalturaGenericDistributionProviderAction");
 		}
 
-		public KalturaGenericDistributionProviderAction AddMrssTransformFromFile(int id, FileStream xslFile)
+		public KalturaGenericDistributionProviderAction AddMrssTransformFromFile(int id, Stream xslFile)
 		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddIfNotNull("id", id);
@@ -88,7 +88,7 @@ namespace Kaltura
 			return (KalturaGenericDistributionProviderAction)KalturaObjectFactory.Create(result, "KalturaGenericDistributionProviderAction");
 		}
 
-		public KalturaGenericDistributionProviderAction AddMrssValidateFromFile(int id, FileStream xsdFile)
+		public KalturaGenericDistributionProviderAction AddMrssValidateFromFile(int id, Stream xsdFile)
 		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddIfNotNull("id", id);
@@ -113,7 +113,7 @@ namespace Kaltura
 			return (KalturaGenericDistributionProviderAction)KalturaObjectFactory.Create(result, "KalturaGenericDistributionProviderAction");
 		}
 
-		public KalturaGenericDistributionProviderAction AddResultsTransformFromFile(int id, FileStream transformFile)
+		public KalturaGenericDistributionProviderAction AddResultsTransformFromFile(int id, Stream transformFile)
 		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddIfNotNull("id", id);

@@ -188,7 +188,7 @@ namespace Kaltura
 			return (KalturaThumbAsset)KalturaObjectFactory.Create(result, "KalturaThumbAsset");
 		}
 
-		public KalturaThumbAsset AddFromImage(string entryId, FileStream fileData)
+		public KalturaThumbAsset AddFromImage(string entryId, Stream fileData)
 		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddIfNotNull("entryId", entryId);

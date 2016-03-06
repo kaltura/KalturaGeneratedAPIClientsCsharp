@@ -130,7 +130,7 @@ namespace Kaltura
 			return (KalturaLiveStreamListResponse)KalturaObjectFactory.Create(result, "KalturaLiveStreamListResponse");
 		}
 
-		public KalturaLiveStreamEntry UpdateOfflineThumbnailJpeg(string entryId, FileStream fileData)
+		public KalturaLiveStreamEntry UpdateOfflineThumbnailJpeg(string entryId, Stream fileData)
 		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddIfNotNull("entryId", entryId);

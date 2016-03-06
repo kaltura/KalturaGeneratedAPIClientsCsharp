@@ -150,17 +150,17 @@ namespace Kaltura
 			XmlElement result = _Client.DoQueue();
 		}
 
-		public KalturaBulkUpload AddFromBulkUpload(FileStream fileData)
+		public KalturaBulkUpload AddFromBulkUpload(Stream fileData)
 		{
 			return this.AddFromBulkUpload(fileData, null);
 		}
 
-		public KalturaBulkUpload AddFromBulkUpload(FileStream fileData, KalturaBulkUploadJobData bulkUploadData)
+		public KalturaBulkUpload AddFromBulkUpload(Stream fileData, KalturaBulkUploadJobData bulkUploadData)
 		{
 			return this.AddFromBulkUpload(fileData, bulkUploadData, null);
 		}
 
-		public KalturaBulkUpload AddFromBulkUpload(FileStream fileData, KalturaBulkUploadJobData bulkUploadData, KalturaBulkUploadCategoryData bulkUploadCategoryData)
+		public KalturaBulkUpload AddFromBulkUpload(Stream fileData, KalturaBulkUploadJobData bulkUploadData, KalturaBulkUploadCategoryData bulkUploadCategoryData)
 		{
 			KalturaParams kparams = new KalturaParams();
 			KalturaFiles kfiles = new KalturaFiles();

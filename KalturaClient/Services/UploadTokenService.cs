@@ -67,22 +67,22 @@ namespace Kaltura
 			return (KalturaUploadToken)KalturaObjectFactory.Create(result, "KalturaUploadToken");
 		}
 
-		public KalturaUploadToken Upload(string uploadTokenId, FileStream fileData)
+		public KalturaUploadToken Upload(string uploadTokenId, Stream fileData)
 		{
 			return this.Upload(uploadTokenId, fileData, false);
 		}
 
-		public KalturaUploadToken Upload(string uploadTokenId, FileStream fileData, bool resume)
+		public KalturaUploadToken Upload(string uploadTokenId, Stream fileData, bool resume)
 		{
 			return this.Upload(uploadTokenId, fileData, resume, true);
 		}
 
-		public KalturaUploadToken Upload(string uploadTokenId, FileStream fileData, bool resume, bool finalChunk)
+		public KalturaUploadToken Upload(string uploadTokenId, Stream fileData, bool resume, bool finalChunk)
 		{
 			return this.Upload(uploadTokenId, fileData, resume, finalChunk, -1);
 		}
 
-		public KalturaUploadToken Upload(string uploadTokenId, FileStream fileData, bool resume, bool finalChunk, float resumeAt)
+		public KalturaUploadToken Upload(string uploadTokenId, Stream fileData, bool resume, bool finalChunk, float resumeAt)
 		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddIfNotNull("uploadTokenId", uploadTokenId);

@@ -85,7 +85,7 @@ namespace Kaltura
 			return (KalturaAnnotationListResponse)KalturaObjectFactory.Create(result, "KalturaAnnotationListResponse");
 		}
 
-		public KalturaCuePointListResponse AddFromBulk(FileStream fileData)
+		public KalturaCuePointListResponse AddFromBulk(Stream fileData)
 		{
 			KalturaParams kparams = new KalturaParams();
 			KalturaFiles kfiles = new KalturaFiles();

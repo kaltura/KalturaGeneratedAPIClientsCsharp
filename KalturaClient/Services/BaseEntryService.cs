@@ -232,7 +232,7 @@ namespace Kaltura
 			return int.Parse(result.InnerText);
 		}
 
-		public string Upload(FileStream fileData)
+		public string Upload(Stream fileData)
 		{
 			KalturaParams kparams = new KalturaParams();
 			KalturaFiles kfiles = new KalturaFiles();
@@ -244,7 +244,7 @@ namespace Kaltura
 			return result.InnerText;
 		}
 
-		public KalturaBaseEntry UpdateThumbnailJpeg(string entryId, FileStream fileData)
+		public KalturaBaseEntry UpdateThumbnailJpeg(string entryId, Stream fileData)
 		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddIfNotNull("entryId", entryId);

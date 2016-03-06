@@ -40,22 +40,22 @@ namespace Kaltura
 		{
 		}
 
-		public KalturaBulkUpload Add(int conversionProfileId, FileStream csvFileData)
+		public KalturaBulkUpload Add(int conversionProfileId, Stream csvFileData)
 		{
 			return this.Add(conversionProfileId, csvFileData, null);
 		}
 
-		public KalturaBulkUpload Add(int conversionProfileId, FileStream csvFileData, KalturaBulkUploadType bulkUploadType)
+		public KalturaBulkUpload Add(int conversionProfileId, Stream csvFileData, KalturaBulkUploadType bulkUploadType)
 		{
 			return this.Add(conversionProfileId, csvFileData, bulkUploadType, null);
 		}
 
-		public KalturaBulkUpload Add(int conversionProfileId, FileStream csvFileData, KalturaBulkUploadType bulkUploadType, string uploadedBy)
+		public KalturaBulkUpload Add(int conversionProfileId, Stream csvFileData, KalturaBulkUploadType bulkUploadType, string uploadedBy)
 		{
 			return this.Add(conversionProfileId, csvFileData, bulkUploadType, uploadedBy, null);
 		}
 
-		public KalturaBulkUpload Add(int conversionProfileId, FileStream csvFileData, KalturaBulkUploadType bulkUploadType, string uploadedBy, string fileName)
+		public KalturaBulkUpload Add(int conversionProfileId, Stream csvFileData, KalturaBulkUploadType bulkUploadType, string uploadedBy, string fileName)
 		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddIfNotNull("conversionProfileId", conversionProfileId);

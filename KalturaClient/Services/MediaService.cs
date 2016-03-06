@@ -335,7 +335,7 @@ namespace Kaltura
 			return int.Parse(result.InnerText);
 		}
 
-		public string Upload(FileStream fileData)
+		public string Upload(Stream fileData)
 		{
 			KalturaParams kparams = new KalturaParams();
 			KalturaFiles kfiles = new KalturaFiles();
@@ -384,7 +384,7 @@ namespace Kaltura
 			return (KalturaMediaEntry)KalturaObjectFactory.Create(result, "KalturaMediaEntry");
 		}
 
-		public KalturaMediaEntry UpdateThumbnailJpeg(string entryId, FileStream fileData)
+		public KalturaMediaEntry UpdateThumbnailJpeg(string entryId, Stream fileData)
 		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddIfNotNull("entryId", entryId);
@@ -479,17 +479,17 @@ namespace Kaltura
 			XmlElement result = _Client.DoQueue();
 		}
 
-		public KalturaBulkUpload BulkUploadAdd(FileStream fileData)
+		public KalturaBulkUpload BulkUploadAdd(Stream fileData)
 		{
 			return this.BulkUploadAdd(fileData, null);
 		}
 
-		public KalturaBulkUpload BulkUploadAdd(FileStream fileData, KalturaBulkUploadJobData bulkUploadData)
+		public KalturaBulkUpload BulkUploadAdd(Stream fileData, KalturaBulkUploadJobData bulkUploadData)
 		{
 			return this.BulkUploadAdd(fileData, bulkUploadData, null);
 		}
 
-		public KalturaBulkUpload BulkUploadAdd(FileStream fileData, KalturaBulkUploadJobData bulkUploadData, KalturaBulkUploadEntryData bulkUploadEntryData)
+		public KalturaBulkUpload BulkUploadAdd(Stream fileData, KalturaBulkUploadJobData bulkUploadData, KalturaBulkUploadEntryData bulkUploadEntryData)
 		{
 			KalturaParams kparams = new KalturaParams();
 			KalturaFiles kfiles = new KalturaFiles();

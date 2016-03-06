@@ -58,12 +58,12 @@ namespace Kaltura
 			return (KalturaMetadataProfile)KalturaObjectFactory.Create(result, "KalturaMetadataProfile");
 		}
 
-		public KalturaMetadataProfile AddFromFile(KalturaMetadataProfile metadataProfile, FileStream xsdFile)
+		public KalturaMetadataProfile AddFromFile(KalturaMetadataProfile metadataProfile, Stream xsdFile)
 		{
 			return this.AddFromFile(metadataProfile, xsdFile, null);
 		}
 
-		public KalturaMetadataProfile AddFromFile(KalturaMetadataProfile metadataProfile, FileStream xsdFile, FileStream viewsFile)
+		public KalturaMetadataProfile AddFromFile(KalturaMetadataProfile metadataProfile, Stream xsdFile, Stream viewsFile)
 		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddIfNotNull("metadataProfile", metadataProfile);
@@ -167,7 +167,7 @@ namespace Kaltura
 			return (KalturaMetadataProfile)KalturaObjectFactory.Create(result, "KalturaMetadataProfile");
 		}
 
-		public KalturaMetadataProfile UpdateDefinitionFromFile(int id, FileStream xsdFile)
+		public KalturaMetadataProfile UpdateDefinitionFromFile(int id, Stream xsdFile)
 		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddIfNotNull("id", id);
@@ -180,7 +180,7 @@ namespace Kaltura
 			return (KalturaMetadataProfile)KalturaObjectFactory.Create(result, "KalturaMetadataProfile");
 		}
 
-		public KalturaMetadataProfile UpdateViewsFromFile(int id, FileStream viewsFile)
+		public KalturaMetadataProfile UpdateViewsFromFile(int id, Stream viewsFile)
 		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddIfNotNull("id", id);
@@ -193,7 +193,7 @@ namespace Kaltura
 			return (KalturaMetadataProfile)KalturaObjectFactory.Create(result, "KalturaMetadataProfile");
 		}
 
-		public KalturaMetadataProfile UpdateTransformationFromFile(int id, FileStream xsltFile)
+		public KalturaMetadataProfile UpdateTransformationFromFile(int id, Stream xsltFile)
 		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddIfNotNull("id", id);

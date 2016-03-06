@@ -35,6 +35,7 @@ namespace Kaltura
 	{
 		#region Private Fields
 		private bool? _Download = false;
+		private string _Referrer = null;
 		#endregion
 
 		#region Properties
@@ -45,6 +46,15 @@ namespace Kaltura
 			{ 
 				_Download = value;
 				OnPropertyChanged("Download");
+			}
+		}
+		public string Referrer
+		{
+			get { return _Referrer; }
+			set 
+			{ 
+				_Referrer = value;
+				OnPropertyChanged("Referrer");
 			}
 		}
 		#endregion
@@ -64,6 +74,9 @@ namespace Kaltura
 					case "download":
 						this.Download = ParseBool(txt);
 						continue;
+					case "referrer":
+						this.Referrer = txt;
+						continue;
 				}
 			}
 		}
@@ -75,6 +88,7 @@ namespace Kaltura
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaThumbnailServeOptions");
 			kparams.AddIfNotNull("download", this.Download);
+			kparams.AddIfNotNull("referrer", this.Referrer);
 			return kparams;
 		}
 		#endregion

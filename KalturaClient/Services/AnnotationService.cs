@@ -133,5 +133,16 @@ namespace Kaltura
 				return;
 			XmlElement result = _Client.DoQueue();
 		}
+
+		public void UpdateStatus(string id, KalturaCuePointStatus status)
+		{
+			KalturaParams kparams = new KalturaParams();
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("status", status);
+			_Client.QueueServiceCall("annotation_annotation", "updateStatus", null, kparams);
+			if (this._Client.IsMultiRequest)
+				return;
+			XmlElement result = _Client.DoQueue();
+		}
 	}
 }

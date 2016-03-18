@@ -47,7 +47,7 @@ namespace Kaltura
 		private int _LastBroadcast = Int32.MinValue;
 		private float _CurrentBroadcastStartTime = Single.MinValue;
 		private KalturaLiveEntryRecordingOptions _RecordingOptions;
-		private KalturaLiveEntryStatus _LiveStatus = (KalturaLiveEntryStatus)Int32.MinValue;
+		private KalturaEntryServerNodeStatus _LiveStatus = (KalturaEntryServerNodeStatus)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -168,7 +168,7 @@ namespace Kaltura
 				OnPropertyChanged("RecordingOptions");
 			}
 		}
-		public KalturaLiveEntryStatus LiveStatus
+		public KalturaEntryServerNodeStatus LiveStatus
 		{
 			get { return _LiveStatus; }
 			set 
@@ -239,7 +239,7 @@ namespace Kaltura
 						this.RecordingOptions = (KalturaLiveEntryRecordingOptions)KalturaObjectFactory.Create(propertyNode, "KalturaLiveEntryRecordingOptions");
 						continue;
 					case "liveStatus":
-						this.LiveStatus = (KalturaLiveEntryStatus)ParseEnum(typeof(KalturaLiveEntryStatus), txt);
+						this.LiveStatus = (KalturaEntryServerNodeStatus)ParseEnum(typeof(KalturaEntryServerNodeStatus), txt);
 						continue;
 				}
 			}

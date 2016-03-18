@@ -119,12 +119,12 @@ namespace Kaltura
 			return false;
 		}
 
-		public KalturaLiveEntry AppendRecording(string entryId, string assetId, KalturaMediaServerIndex mediaServerIndex, KalturaDataCenterContentResource resource, float duration)
+		public KalturaLiveEntry AppendRecording(string entryId, string assetId, KalturaEntryServerNodeType mediaServerIndex, KalturaDataCenterContentResource resource, float duration)
 		{
 			return this.AppendRecording(entryId, assetId, mediaServerIndex, resource, duration, false);
 		}
 
-		public KalturaLiveEntry AppendRecording(string entryId, string assetId, KalturaMediaServerIndex mediaServerIndex, KalturaDataCenterContentResource resource, float duration, bool isLastChunk)
+		public KalturaLiveEntry AppendRecording(string entryId, string assetId, KalturaEntryServerNodeType mediaServerIndex, KalturaDataCenterContentResource resource, float duration, bool isLastChunk)
 		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddIfNotNull("entryId", entryId);
@@ -140,17 +140,17 @@ namespace Kaltura
 			return (KalturaLiveEntry)KalturaObjectFactory.Create(result, "KalturaLiveEntry");
 		}
 
-		public KalturaLiveEntry RegisterMediaServer(string entryId, string hostname, KalturaMediaServerIndex mediaServerIndex)
+		public KalturaLiveEntry RegisterMediaServer(string entryId, string hostname, KalturaEntryServerNodeType mediaServerIndex)
 		{
 			return this.RegisterMediaServer(entryId, hostname, mediaServerIndex, null);
 		}
 
-		public KalturaLiveEntry RegisterMediaServer(string entryId, string hostname, KalturaMediaServerIndex mediaServerIndex, string applicationName)
+		public KalturaLiveEntry RegisterMediaServer(string entryId, string hostname, KalturaEntryServerNodeType mediaServerIndex, string applicationName)
 		{
-			return this.RegisterMediaServer(entryId, hostname, mediaServerIndex, applicationName, (KalturaLiveEntryStatus)(1));
+			return this.RegisterMediaServer(entryId, hostname, mediaServerIndex, applicationName, (KalturaEntryServerNodeStatus)(1));
 		}
 
-		public KalturaLiveEntry RegisterMediaServer(string entryId, string hostname, KalturaMediaServerIndex mediaServerIndex, string applicationName, KalturaLiveEntryStatus liveEntryStatus)
+		public KalturaLiveEntry RegisterMediaServer(string entryId, string hostname, KalturaEntryServerNodeType mediaServerIndex, string applicationName, KalturaEntryServerNodeStatus liveEntryStatus)
 		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddIfNotNull("entryId", entryId);
@@ -165,7 +165,7 @@ namespace Kaltura
 			return (KalturaLiveEntry)KalturaObjectFactory.Create(result, "KalturaLiveEntry");
 		}
 
-		public KalturaLiveEntry UnregisterMediaServer(string entryId, string hostname, KalturaMediaServerIndex mediaServerIndex)
+		public KalturaLiveEntry UnregisterMediaServer(string entryId, string hostname, KalturaEntryServerNodeType mediaServerIndex)
 		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddIfNotNull("entryId", entryId);

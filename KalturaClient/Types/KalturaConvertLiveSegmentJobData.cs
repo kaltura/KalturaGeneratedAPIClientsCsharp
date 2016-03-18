@@ -36,7 +36,7 @@ namespace Kaltura
 		#region Private Fields
 		private string _EntryId = null;
 		private string _AssetId = null;
-		private KalturaMediaServerIndex _MediaServerIndex = (KalturaMediaServerIndex)Int32.MinValue;
+		private KalturaEntryServerNodeType _MediaServerIndex = null;
 		private int _FileIndex = Int32.MinValue;
 		private string _SrcFilePath = null;
 		private string _DestFilePath = null;
@@ -63,7 +63,7 @@ namespace Kaltura
 				OnPropertyChanged("AssetId");
 			}
 		}
-		public KalturaMediaServerIndex MediaServerIndex
+		public KalturaEntryServerNodeType MediaServerIndex
 		{
 			get { return _MediaServerIndex; }
 			set 
@@ -138,7 +138,7 @@ namespace Kaltura
 						this.AssetId = txt;
 						continue;
 					case "mediaServerIndex":
-						this.MediaServerIndex = (KalturaMediaServerIndex)ParseEnum(typeof(KalturaMediaServerIndex), txt);
+						this.MediaServerIndex = (KalturaEntryServerNodeType)KalturaStringEnum.Parse(typeof(KalturaEntryServerNodeType), txt);
 						continue;
 					case "fileIndex":
 						this.FileIndex = ParseInt(txt);

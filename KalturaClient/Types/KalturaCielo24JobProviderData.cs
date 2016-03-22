@@ -41,6 +41,7 @@ namespace Kaltura
 		private KalturaCielo24Fidelity _Fidelity = null;
 		private string _Username = null;
 		private string _Password = null;
+		private string _BaseUrl = null;
 		private KalturaLanguage _SpokenLanguage = null;
 		private bool? _ReplaceMediaContent = false;
 		#endregion
@@ -109,6 +110,15 @@ namespace Kaltura
 				OnPropertyChanged("Password");
 			}
 		}
+		public string BaseUrl
+		{
+			get { return _BaseUrl; }
+			set 
+			{ 
+				_BaseUrl = value;
+				OnPropertyChanged("BaseUrl");
+			}
+		}
 		public KalturaLanguage SpokenLanguage
 		{
 			get { return _SpokenLanguage; }
@@ -162,6 +172,9 @@ namespace Kaltura
 					case "password":
 						this.Password = txt;
 						continue;
+					case "baseUrl":
+						this.BaseUrl = txt;
+						continue;
 					case "spokenLanguage":
 						this.SpokenLanguage = (KalturaLanguage)KalturaStringEnum.Parse(typeof(KalturaLanguage), txt);
 						continue;
@@ -185,6 +198,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("fidelity", this.Fidelity);
 			kparams.AddIfNotNull("username", this.Username);
 			kparams.AddIfNotNull("password", this.Password);
+			kparams.AddIfNotNull("baseUrl", this.BaseUrl);
 			kparams.AddIfNotNull("spokenLanguage", this.SpokenLanguage);
 			kparams.AddIfNotNull("replaceMediaContent", this.ReplaceMediaContent);
 			return kparams;

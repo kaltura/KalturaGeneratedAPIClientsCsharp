@@ -40,7 +40,6 @@ namespace Kaltura
 		private int _LastMovedCategoryPageIndex = Int32.MinValue;
 		private int _LastMovedCategoryEntryPageIndex = Int32.MinValue;
 		private bool? _MoveFromChildren = false;
-		private bool? _CopyOnly = false;
 		private string _DestCategoryFullIds = null;
 		#endregion
 
@@ -99,15 +98,6 @@ namespace Kaltura
 				OnPropertyChanged("MoveFromChildren");
 			}
 		}
-		public bool? CopyOnly
-		{
-			get { return _CopyOnly; }
-			set 
-			{ 
-				_CopyOnly = value;
-				OnPropertyChanged("CopyOnly");
-			}
-		}
 		public string DestCategoryFullIds
 		{
 			get { return _DestCategoryFullIds; }
@@ -149,9 +139,6 @@ namespace Kaltura
 					case "moveFromChildren":
 						this.MoveFromChildren = ParseBool(txt);
 						continue;
-					case "copyOnly":
-						this.CopyOnly = ParseBool(txt);
-						continue;
 					case "destCategoryFullIds":
 						this.DestCategoryFullIds = txt;
 						continue;
@@ -171,7 +158,6 @@ namespace Kaltura
 			kparams.AddIfNotNull("lastMovedCategoryPageIndex", this.LastMovedCategoryPageIndex);
 			kparams.AddIfNotNull("lastMovedCategoryEntryPageIndex", this.LastMovedCategoryEntryPageIndex);
 			kparams.AddIfNotNull("moveFromChildren", this.MoveFromChildren);
-			kparams.AddIfNotNull("copyOnly", this.CopyOnly);
 			kparams.AddIfNotNull("destCategoryFullIds", this.DestCategoryFullIds);
 			return kparams;
 		}

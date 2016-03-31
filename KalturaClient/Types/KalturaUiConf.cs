@@ -49,7 +49,7 @@ namespace Kaltura
 		private string _ConfFileFeatures = null;
 		private string _Config = null;
 		private string _ConfVars = null;
-		private bool? _UseCdn = false;
+		private bool? _UseCdn = null;
 		private string _Tags = null;
 		private string _SwfUrlVersion = null;
 		private int _CreatedAt = Int32.MinValue;

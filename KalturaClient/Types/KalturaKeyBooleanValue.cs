@@ -35,7 +35,7 @@ namespace Kaltura
 	{
 		#region Private Fields
 		private string _Key = null;
-		private bool? _Value = false;
+		private bool? _Value = null;
 		#endregion
 
 		#region Properties

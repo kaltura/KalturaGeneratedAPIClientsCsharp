@@ -35,6 +35,7 @@ namespace Kaltura
 	{
 		#region Private Fields
 		private string _FileName = null;
+		private string _Referrer = null;
 		#endregion
 
 		#region Properties
@@ -45,6 +46,15 @@ namespace Kaltura
 			{ 
 				_FileName = value;
 				OnPropertyChanged("FileName");
+			}
+		}
+		public string Referrer
+		{
+			get { return _Referrer; }
+			set 
+			{ 
+				_Referrer = value;
+				OnPropertyChanged("Referrer");
 			}
 		}
 		#endregion
@@ -64,6 +74,9 @@ namespace Kaltura
 					case "fileName":
 						this.FileName = txt;
 						continue;
+					case "referrer":
+						this.Referrer = txt;
+						continue;
 				}
 			}
 		}
@@ -75,6 +88,7 @@ namespace Kaltura
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaFlavorAssetUrlOptions");
 			kparams.AddIfNotNull("fileName", this.FileName);
+			kparams.AddIfNotNull("referrer", this.Referrer);
 			return kparams;
 		}
 		#endregion

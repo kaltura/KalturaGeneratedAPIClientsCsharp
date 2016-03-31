@@ -36,7 +36,7 @@ namespace Kaltura
 		#region Private Fields
 		private string _ApiObjectType = null;
 		private KalturaResponseType _Format = (KalturaResponseType)Int32.MinValue;
-		private bool? _IgnoreNull = false;
+		private bool? _IgnoreNull = null;
 		private string _Code = null;
 		#endregion
 

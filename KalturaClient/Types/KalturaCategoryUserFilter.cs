@@ -34,7 +34,7 @@ namespace Kaltura
 	public class KalturaCategoryUserFilter : KalturaCategoryUserBaseFilter
 	{
 		#region Private Fields
-		private bool? _CategoryDirectMembers = false;
+		private bool? _CategoryDirectMembers = null;
 		private string _FreeText = null;
 		private string _RelatedGroupsByUserId = null;
 		private KalturaCategoryUserOrderBy _OrderBy = null;

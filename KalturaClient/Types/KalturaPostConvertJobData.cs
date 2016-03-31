@@ -35,7 +35,7 @@ namespace Kaltura
 	{
 		#region Private Fields
 		private string _FlavorAssetId = null;
-		private bool? _CreateThumb = false;
+		private bool? _CreateThumb = null;
 		private string _ThumbPath = null;
 		private int _ThumbOffset = Int32.MinValue;
 		private int _ThumbHeight = Int32.MinValue;

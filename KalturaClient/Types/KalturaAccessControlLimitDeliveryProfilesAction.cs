@@ -35,7 +35,7 @@ namespace Kaltura
 	{
 		#region Private Fields
 		private string _DeliveryProfileIds = null;
-		private bool? _IsBlockedList = false;
+		private bool? _IsBlockedList = null;
 		#endregion
 
 		#region Properties

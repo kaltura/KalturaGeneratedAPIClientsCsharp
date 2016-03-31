@@ -39,7 +39,7 @@ namespace Kaltura
 		private string _ServerPath = null;
 		private string _Username = null;
 		private string _Password = null;
-		private bool? _FtpPassiveMode = false;
+		private bool? _FtpPassiveMode = null;
 		private string _HttpFieldName = null;
 		private string _HttpFileName = null;
 		#endregion

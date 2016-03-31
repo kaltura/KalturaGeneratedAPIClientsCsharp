@@ -34,7 +34,7 @@ namespace Kaltura
 	public class KalturaSearchMatchAttributeCondition : KalturaAttributeCondition
 	{
 		#region Private Fields
-		private bool? _Not = false;
+		private bool? _Not = null;
 		#endregion
 
 		#region Properties

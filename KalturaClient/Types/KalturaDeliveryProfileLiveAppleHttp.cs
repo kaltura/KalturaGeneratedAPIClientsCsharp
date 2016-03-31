@@ -34,8 +34,8 @@ namespace Kaltura
 	public class KalturaDeliveryProfileLiveAppleHttp : KalturaDeliveryProfile
 	{
 		#region Private Fields
-		private bool? _DisableExtraAttributes = false;
-		private bool? _ForceProxy = false;
+		private bool? _DisableExtraAttributes = null;
+		private bool? _ForceProxy = null;
 		#endregion
 
 		#region Properties

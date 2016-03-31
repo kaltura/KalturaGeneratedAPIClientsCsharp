@@ -34,12 +34,12 @@ namespace Kaltura
 	public class KalturaContentDistributionSearchItem : KalturaSearchItem
 	{
 		#region Private Fields
-		private bool? _NoDistributionProfiles = false;
+		private bool? _NoDistributionProfiles = null;
 		private int _DistributionProfileId = Int32.MinValue;
 		private KalturaEntryDistributionSunStatus _DistributionSunStatus = (KalturaEntryDistributionSunStatus)Int32.MinValue;
 		private KalturaEntryDistributionFlag _EntryDistributionFlag = (KalturaEntryDistributionFlag)Int32.MinValue;
 		private KalturaEntryDistributionStatus _EntryDistributionStatus = (KalturaEntryDistributionStatus)Int32.MinValue;
-		private bool? _HasEntryDistributionValidationErrors = false;
+		private bool? _HasEntryDistributionValidationErrors = null;
 		private string _EntryDistributionValidationErrors = null;
 		#endregion
 

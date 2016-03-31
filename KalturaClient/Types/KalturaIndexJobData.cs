@@ -36,7 +36,7 @@ namespace Kaltura
 		#region Private Fields
 		private KalturaFilter _Filter;
 		private int _LastIndexId = Int32.MinValue;
-		private bool? _ShouldUpdate = false;
+		private bool? _ShouldUpdate = null;
 		#endregion
 
 		#region Properties

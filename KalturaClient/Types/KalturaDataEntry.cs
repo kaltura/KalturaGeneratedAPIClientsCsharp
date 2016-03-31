@@ -35,7 +35,7 @@ namespace Kaltura
 	{
 		#region Private Fields
 		private string _DataContent = null;
-		private bool? _RetrieveDataContentByGet = false;
+		private bool? _RetrieveDataContentByGet = null;
 		#endregion
 
 		#region Properties

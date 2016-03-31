@@ -48,7 +48,7 @@ namespace Kaltura
 		private KalturaLanguageCode _Language = null;
 		private int _CampaignId = Int32.MinValue;
 		private int _MinSendDate = Int32.MinValue;
-		private bool? _IsHtml = false;
+		private bool? _IsHtml = null;
 		private string _Separator = null;
 		#endregion
 

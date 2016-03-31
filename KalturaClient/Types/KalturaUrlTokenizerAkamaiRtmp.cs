@@ -37,7 +37,7 @@ namespace Kaltura
 		private string _Profile = null;
 		private string _Type = null;
 		private string _Aifp = null;
-		private bool? _UsePrefix = false;
+		private bool? _UsePrefix = null;
 		#endregion
 
 		#region Properties

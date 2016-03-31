@@ -46,7 +46,7 @@ namespace Kaltura
 		private int _GopSize = Int32.MinValue;
 		private string _ConversionEngines = null;
 		private string _ConversionEnginesExtraParams = null;
-		private bool? _TwoPass = false;
+		private bool? _TwoPass = null;
 		private int _Deinterlice = Int32.MinValue;
 		private int _Rotate = Int32.MinValue;
 		private string _Operators = null;

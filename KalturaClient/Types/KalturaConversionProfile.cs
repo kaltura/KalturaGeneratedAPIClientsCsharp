@@ -46,7 +46,7 @@ namespace Kaltura
 		private int _CreatedAt = Int32.MinValue;
 		private string _FlavorParamsIds = null;
 		private KalturaNullableBoolean _IsDefault = (KalturaNullableBoolean)Int32.MinValue;
-		private bool? _IsPartnerDefault = false;
+		private bool? _IsPartnerDefault = null;
 		private KalturaCropDimensions _CropDimensions;
 		private int _ClipStart = Int32.MinValue;
 		private int _ClipDuration = Int32.MinValue;

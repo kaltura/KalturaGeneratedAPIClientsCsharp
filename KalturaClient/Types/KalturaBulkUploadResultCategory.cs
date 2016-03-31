@@ -47,7 +47,7 @@ namespace Kaltura
 		private string _Owner = null;
 		private int _ContributionPolicy = Int32.MinValue;
 		private int _PartnerSortValue = Int32.MinValue;
-		private bool? _Moderation = false;
+		private bool? _Moderation = null;
 		#endregion
 
 		#region Properties

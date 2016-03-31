@@ -35,7 +35,7 @@ namespace Kaltura
 	{
 		#region Private Fields
 		private string _Url = null;
-		private bool? _ForceAsyncDownload = false;
+		private bool? _ForceAsyncDownload = null;
 		#endregion
 
 		#region Properties

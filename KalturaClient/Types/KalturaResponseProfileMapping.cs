@@ -36,7 +36,7 @@ namespace Kaltura
 		#region Private Fields
 		private string _ParentProperty = null;
 		private string _FilterProperty = null;
-		private bool? _AllowNull = false;
+		private bool? _AllowNull = null;
 		#endregion
 
 		#region Properties

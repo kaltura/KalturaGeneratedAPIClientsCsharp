@@ -35,7 +35,7 @@ namespace Kaltura
 	{
 		#region Private Fields
 		private int _FlashVersion = Int32.MinValue;
-		private bool? _Poly2Bitmap = false;
+		private bool? _Poly2Bitmap = null;
 		#endregion
 
 		#region Properties

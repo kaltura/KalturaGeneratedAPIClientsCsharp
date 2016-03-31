@@ -36,7 +36,7 @@ namespace Kaltura
 		#region Private Fields
 		private string _Id = null;
 		private string _Label = null;
-		private bool? _EntryOnly = false;
+		private bool? _EntryOnly = null;
 		private string _MinVersion = null;
 		#endregion
 

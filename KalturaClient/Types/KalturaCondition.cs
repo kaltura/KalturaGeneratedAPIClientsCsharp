@@ -36,7 +36,7 @@ namespace Kaltura
 		#region Private Fields
 		private KalturaConditionType _Type = null;
 		private string _Description = null;
-		private bool? _Not = false;
+		private bool? _Not = null;
 		#endregion
 
 		#region Properties

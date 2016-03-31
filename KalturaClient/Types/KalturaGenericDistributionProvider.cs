@@ -38,7 +38,7 @@ namespace Kaltura
 		private int _CreatedAt = Int32.MinValue;
 		private int _UpdatedAt = Int32.MinValue;
 		private int _PartnerId = Int32.MinValue;
-		private bool? _IsDefault = false;
+		private bool? _IsDefault = null;
 		private KalturaGenericDistributionProviderStatus _Status = (KalturaGenericDistributionProviderStatus)Int32.MinValue;
 		private string _OptionalFlavorParamsIds = null;
 		private string _RequiredFlavorParamsIds = null;

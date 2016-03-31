@@ -34,7 +34,7 @@ namespace Kaltura
 	public class KalturaDeliveryProfileRtmp : KalturaDeliveryProfile
 	{
 		#region Private Fields
-		private bool? _EnforceRtmpe = false;
+		private bool? _EnforceRtmpe = null;
 		private string _Prefix = null;
 		#endregion
 

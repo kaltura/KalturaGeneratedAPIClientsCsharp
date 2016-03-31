@@ -36,9 +36,9 @@ namespace Kaltura
 		#region Private Fields
 		private KalturaDistributionProviderType _Type = null;
 		private string _Name = null;
-		private bool? _ScheduleUpdateEnabled = false;
-		private bool? _AvailabilityUpdateEnabled = false;
-		private bool? _DeleteInsteadUpdate = false;
+		private bool? _ScheduleUpdateEnabled = null;
+		private bool? _AvailabilityUpdateEnabled = null;
+		private bool? _DeleteInsteadUpdate = null;
 		private int _IntervalBeforeSunrise = Int32.MinValue;
 		private int _IntervalBeforeSunset = Int32.MinValue;
 		private string _UpdateRequiredEntryFields = null;

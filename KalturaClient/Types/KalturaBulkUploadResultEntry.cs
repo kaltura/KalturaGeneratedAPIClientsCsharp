@@ -47,7 +47,7 @@ namespace Kaltura
 		private int _ScheduleEndDate = Int32.MinValue;
 		private int _EntryStatus = Int32.MinValue;
 		private string _ThumbnailUrl = null;
-		private bool? _ThumbnailSaved = false;
+		private bool? _ThumbnailSaved = null;
 		private string _SshPrivateKey = null;
 		private string _SshPublicKey = null;
 		private string _SshKeyPassphrase = null;

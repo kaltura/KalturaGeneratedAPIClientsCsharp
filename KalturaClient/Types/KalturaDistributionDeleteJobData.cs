@@ -34,7 +34,7 @@ namespace Kaltura
 	public class KalturaDistributionDeleteJobData : KalturaDistributionJobData
 	{
 		#region Private Fields
-		private bool? _KeepDistributionItem = false;
+		private bool? _KeepDistributionItem = null;
 		#endregion
 
 		#region Properties

@@ -39,7 +39,7 @@ namespace Kaltura
 		private int _LastMovedCategoryId = Int32.MinValue;
 		private int _LastMovedCategoryPageIndex = Int32.MinValue;
 		private int _LastMovedCategoryEntryPageIndex = Int32.MinValue;
-		private bool? _MoveFromChildren = false;
+		private bool? _MoveFromChildren = null;
 		private string _DestCategoryFullIds = null;
 		#endregion
 

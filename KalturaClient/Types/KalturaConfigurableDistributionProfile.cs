@@ -36,7 +36,7 @@ namespace Kaltura
 		#region Private Fields
 		private IList<KalturaDistributionFieldConfig> _FieldConfigArray;
 		private IList<KalturaExtendingItemMrssParameter> _ItemXpathsToExtend;
-		private bool? _UseCategoryEntries = false;
+		private bool? _UseCategoryEntries = null;
 		#endregion
 
 		#region Properties

@@ -43,7 +43,7 @@ namespace Kaltura
 		private string _Password = null;
 		private string _BaseUrl = null;
 		private KalturaLanguage _SpokenLanguage = null;
-		private bool? _ReplaceMediaContent = false;
+		private bool? _ReplaceMediaContent = null;
 		#endregion
 
 		#region Properties

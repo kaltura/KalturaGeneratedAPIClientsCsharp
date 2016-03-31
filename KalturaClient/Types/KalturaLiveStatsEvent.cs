@@ -42,7 +42,7 @@ namespace Kaltura
 		private int _BufferTime = Int32.MinValue;
 		private int _Bitrate = Int32.MinValue;
 		private string _Referrer = null;
-		private bool? _IsLive = false;
+		private bool? _IsLive = null;
 		private string _StartTime = null;
 		private KalturaPlaybackProtocol _DeliveryType = null;
 		#endregion

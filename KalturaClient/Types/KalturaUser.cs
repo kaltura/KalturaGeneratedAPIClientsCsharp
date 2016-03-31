@@ -60,15 +60,15 @@ namespace Kaltura
 		private string _Password = null;
 		private string _FirstName = null;
 		private string _LastName = null;
-		private bool? _IsAdmin = false;
+		private bool? _IsAdmin = null;
 		private KalturaLanguageCode _Language = null;
 		private int _LastLoginTime = Int32.MinValue;
 		private int _StatusUpdatedAt = Int32.MinValue;
 		private int _DeletedAt = Int32.MinValue;
-		private bool? _LoginEnabled = false;
+		private bool? _LoginEnabled = null;
 		private string _RoleIds = null;
 		private string _RoleNames = null;
-		private bool? _IsAccountOwner = false;
+		private bool? _IsAccountOwner = null;
 		private string _AllowedPartnerIds = null;
 		private string _AllowedPartnerPackages = null;
 		#endregion

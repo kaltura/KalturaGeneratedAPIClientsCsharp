@@ -48,7 +48,7 @@ namespace Kaltura
 		private string _Views = null;
 		private string _Xslt = null;
 		private KalturaMetadataProfileCreateMode _CreateMode = (KalturaMetadataProfileCreateMode)Int32.MinValue;
-		private bool? _DisableReIndexing = false;
+		private bool? _DisableReIndexing = null;
 		#endregion
 
 		#region Properties

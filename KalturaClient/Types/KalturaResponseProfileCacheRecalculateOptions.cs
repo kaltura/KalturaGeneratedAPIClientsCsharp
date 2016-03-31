@@ -40,7 +40,7 @@ namespace Kaltura
 		private string _StartObjectKey = null;
 		private string _EndObjectKey = null;
 		private int _JobCreatedAt = Int32.MinValue;
-		private bool? _IsFirstLoop = false;
+		private bool? _IsFirstLoop = null;
 		#endregion
 
 		#region Properties

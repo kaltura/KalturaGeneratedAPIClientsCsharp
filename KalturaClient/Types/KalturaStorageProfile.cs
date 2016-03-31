@@ -47,7 +47,7 @@ namespace Kaltura
 		private string _StorageBaseDir = null;
 		private string _StorageUsername = null;
 		private string _StoragePassword = null;
-		private bool? _StorageFtpPassiveMode = false;
+		private bool? _StorageFtpPassiveMode = null;
 		private int _MinFileSize = Int32.MinValue;
 		private int _MaxFileSize = Int32.MinValue;
 		private string _FlavorParamsIds = null;
@@ -59,7 +59,7 @@ namespace Kaltura
 		private KalturaStorageProfileDeliveryStatus _DeliveryStatus = (KalturaStorageProfileDeliveryStatus)Int32.MinValue;
 		private KalturaStorageProfileReadyBehavior _ReadyBehavior = (KalturaStorageProfileReadyBehavior)Int32.MinValue;
 		private int _AllowAutoDelete = Int32.MinValue;
-		private bool? _CreateFileLink = false;
+		private bool? _CreateFileLink = null;
 		private IList<KalturaRule> _Rules;
 		private IList<KalturaKeyValue> _DeliveryProfileIds;
 		private string _PrivateKey = null;

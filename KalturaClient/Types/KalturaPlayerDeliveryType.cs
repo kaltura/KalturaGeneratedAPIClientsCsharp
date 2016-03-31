@@ -38,7 +38,7 @@ namespace Kaltura
 		private string _Label = null;
 		private IList<KalturaKeyValue> _Flashvars;
 		private string _MinVersion = null;
-		private bool? _EnabledByDefault = false;
+		private bool? _EnabledByDefault = null;
 		#endregion
 
 		#region Properties

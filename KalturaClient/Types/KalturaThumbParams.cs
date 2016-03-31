@@ -49,7 +49,7 @@ namespace Kaltura
 		private int _SourceParamsId = Int32.MinValue;
 		private KalturaContainerFormat _Format = null;
 		private int _Density = Int32.MinValue;
-		private bool? _StripProfiles = false;
+		private bool? _StripProfiles = null;
 		private int _VideoOffsetInPercentage = Int32.MinValue;
 		#endregion
 

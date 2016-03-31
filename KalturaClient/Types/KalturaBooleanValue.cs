@@ -34,7 +34,7 @@ namespace Kaltura
 	public class KalturaBooleanValue : KalturaValue
 	{
 		#region Private Fields
-		private bool? _Value = false;
+		private bool? _Value = null;
 		#endregion
 
 		#region Properties

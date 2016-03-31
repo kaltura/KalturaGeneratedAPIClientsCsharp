@@ -34,7 +34,7 @@ namespace Kaltura
 	public class KalturaDeliveryProfileAkamaiHds : KalturaDeliveryProfile
 	{
 		#region Private Fields
-		private bool? _SupportClipping = false;
+		private bool? _SupportClipping = null;
 		#endregion
 
 		#region Properties

@@ -34,7 +34,7 @@ namespace Kaltura
 	public class KalturaIpAddressCondition : KalturaMatchCondition
 	{
 		#region Private Fields
-		private bool? _AcceptInternalIps = false;
+		private bool? _AcceptInternalIps = null;
 		private string _HttpHeader = null;
 		#endregion
 

@@ -34,7 +34,7 @@ namespace Kaltura
 	public class KalturaUiConfAdmin : KalturaUiConf
 	{
 		#region Private Fields
-		private bool? _IsPublic = false;
+		private bool? _IsPublic = null;
 		#endregion
 
 		#region Properties

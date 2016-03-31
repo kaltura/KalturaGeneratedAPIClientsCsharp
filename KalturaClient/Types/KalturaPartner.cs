@@ -50,7 +50,7 @@ namespace Kaltura
 		private KalturaPartnerType _Type = (KalturaPartnerType)Int32.MinValue;
 		private string _Phone = null;
 		private string _DescribeYourself = null;
-		private bool? _AdultContent = false;
+		private bool? _AdultContent = null;
 		private string _DefConversionProfileType = null;
 		private int _Notify = Int32.MinValue;
 		private KalturaPartnerStatus _Status = (KalturaPartnerStatus)Int32.MinValue;
@@ -72,21 +72,21 @@ namespace Kaltura
 		private IList<KalturaKeyValue> _AdditionalParams;
 		private int _PublishersQuota = Int32.MinValue;
 		private KalturaPartnerGroupType _PartnerGroupType = (KalturaPartnerGroupType)Int32.MinValue;
-		private bool? _DefaultEntitlementEnforcement = false;
+		private bool? _DefaultEntitlementEnforcement = null;
 		private string _DefaultDeliveryType = null;
 		private string _DefaultEmbedCodeType = null;
 		private IList<KalturaPlayerDeliveryType> _DeliveryTypes;
 		private IList<KalturaPlayerEmbedCodeType> _EmbedCodeTypes;
 		private int _TemplatePartnerId = Int32.MinValue;
-		private bool? _IgnoreSeoLinks = false;
+		private bool? _IgnoreSeoLinks = null;
 		private string _Host = null;
 		private string _CdnHost = null;
-		private bool? _IsFirstLogin = false;
+		private bool? _IsFirstLogin = null;
 		private string _LogoutUrl = null;
 		private int _PartnerParentId = Int32.MinValue;
 		private string _CrmId = null;
 		private string _ReferenceId = null;
-		private bool? _TimeAlignedRenditions = false;
+		private bool? _TimeAlignedRenditions = null;
 		#endregion
 
 		#region Properties

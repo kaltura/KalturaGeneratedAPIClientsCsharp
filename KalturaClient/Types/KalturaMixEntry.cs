@@ -34,7 +34,7 @@ namespace Kaltura
 	public class KalturaMixEntry : KalturaPlayableEntry
 	{
 		#region Private Fields
-		private bool? _HasRealThumbnail = false;
+		private bool? _HasRealThumbnail = null;
 		private KalturaEditorType _EditorType = (KalturaEditorType)Int32.MinValue;
 		private string _DataContent = null;
 		#endregion

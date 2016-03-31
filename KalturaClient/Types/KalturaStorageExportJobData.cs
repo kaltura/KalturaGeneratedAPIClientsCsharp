@@ -34,8 +34,8 @@ namespace Kaltura
 	public class KalturaStorageExportJobData : KalturaStorageJobData
 	{
 		#region Private Fields
-		private bool? _Force = false;
-		private bool? _CreateLink = false;
+		private bool? _Force = null;
+		private bool? _CreateLink = null;
 		#endregion
 
 		#region Properties

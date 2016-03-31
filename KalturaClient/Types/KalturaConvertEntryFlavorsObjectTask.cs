@@ -35,7 +35,7 @@ namespace Kaltura
 	{
 		#region Private Fields
 		private string _FlavorParamsIds = null;
-		private bool? _Reconvert = false;
+		private bool? _Reconvert = null;
 		#endregion
 
 		#region Properties

@@ -43,8 +43,8 @@ namespace Kaltura
 		private KalturaEventNotificationTemplateStatus _Status = (KalturaEventNotificationTemplateStatus)Int32.MinValue;
 		private int _CreatedAt = Int32.MinValue;
 		private int _UpdatedAt = Int32.MinValue;
-		private bool? _ManualDispatchEnabled = false;
-		private bool? _AutomaticDispatchEnabled = false;
+		private bool? _ManualDispatchEnabled = null;
+		private bool? _AutomaticDispatchEnabled = null;
 		private KalturaEventNotificationEventType _EventType = null;
 		private KalturaEventNotificationEventObjectType _EventObjectType = null;
 		private IList<KalturaCondition> _EventConditions;

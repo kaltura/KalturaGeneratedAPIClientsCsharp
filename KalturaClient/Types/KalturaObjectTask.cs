@@ -35,7 +35,7 @@ namespace Kaltura
 	{
 		#region Private Fields
 		private KalturaObjectTaskType _Type = null;
-		private bool? _StopProcessingOnError = false;
+		private bool? _StopProcessingOnError = null;
 		#endregion
 
 		#region Properties

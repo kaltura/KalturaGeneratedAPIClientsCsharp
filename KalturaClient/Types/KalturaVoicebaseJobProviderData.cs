@@ -42,7 +42,7 @@ namespace Kaltura
 		private string _ApiPassword = null;
 		private KalturaLanguage _SpokenLanguage = null;
 		private string _FileLocation = null;
-		private bool? _ReplaceMediaContent = false;
+		private bool? _ReplaceMediaContent = null;
 		#endregion
 
 		#region Properties

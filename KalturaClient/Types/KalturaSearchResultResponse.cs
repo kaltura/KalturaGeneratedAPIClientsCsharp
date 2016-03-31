@@ -35,7 +35,7 @@ namespace Kaltura
 	{
 		#region Private Fields
 		private IList<KalturaSearchResult> _Objects;
-		private bool? _NeedMediaInfo = false;
+		private bool? _NeedMediaInfo = null;
 		#endregion
 
 		#region Properties

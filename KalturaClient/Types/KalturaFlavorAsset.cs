@@ -39,8 +39,8 @@ namespace Kaltura
 		private int _Height = Int32.MinValue;
 		private int _Bitrate = Int32.MinValue;
 		private float _FrameRate = Single.MinValue;
-		private bool? _IsOriginal = false;
-		private bool? _IsWeb = false;
+		private bool? _IsOriginal = null;
+		private bool? _IsWeb = null;
 		private string _ContainerFormat = null;
 		private string _VideoCodecId = null;
 		private KalturaFlavorAssetStatus _Status = (KalturaFlavorAssetStatus)Int32.MinValue;

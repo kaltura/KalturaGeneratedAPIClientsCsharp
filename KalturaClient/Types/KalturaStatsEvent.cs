@@ -49,10 +49,10 @@ namespace Kaltura
 		private string _UserIp = null;
 		private int _ProcessDuration = Int32.MinValue;
 		private string _ControlId = null;
-		private bool? _Seek = false;
+		private bool? _Seek = null;
 		private int _NewPoint = Int32.MinValue;
 		private string _Referrer = null;
-		private bool? _IsFirstInSession = false;
+		private bool? _IsFirstInSession = null;
 		private string _ApplicationId = null;
 		private int _ContextId = Int32.MinValue;
 		private KalturaStatsFeatureType _FeatureType = (KalturaStatsFeatureType)Int32.MinValue;

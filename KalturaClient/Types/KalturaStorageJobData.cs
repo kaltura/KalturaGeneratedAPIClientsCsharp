@@ -40,7 +40,7 @@ namespace Kaltura
 		private string _ServerPrivateKey = null;
 		private string _ServerPublicKey = null;
 		private string _ServerPassPhrase = null;
-		private bool? _FtpPassiveMode = false;
+		private bool? _FtpPassiveMode = null;
 		private string _SrcFileSyncLocalPath = null;
 		private string _SrcFileSyncId = null;
 		private string _DestFileSyncStoredPath = null;

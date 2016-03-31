@@ -34,7 +34,7 @@ namespace Kaltura
 	public class KalturaDeliveryProfileAkamaiHttp : KalturaDeliveryProfile
 	{
 		#region Private Fields
-		private bool? _UseIntelliseek = false;
+		private bool? _UseIntelliseek = null;
 		#endregion
 
 		#region Properties

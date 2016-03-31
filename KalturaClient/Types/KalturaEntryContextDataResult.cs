@@ -34,14 +34,14 @@ namespace Kaltura
 	public class KalturaEntryContextDataResult : KalturaContextDataResult
 	{
 		#region Private Fields
-		private bool? _IsSiteRestricted = false;
-		private bool? _IsCountryRestricted = false;
-		private bool? _IsSessionRestricted = false;
-		private bool? _IsIpAddressRestricted = false;
-		private bool? _IsUserAgentRestricted = false;
+		private bool? _IsSiteRestricted = null;
+		private bool? _IsCountryRestricted = null;
+		private bool? _IsSessionRestricted = null;
+		private bool? _IsIpAddressRestricted = null;
+		private bool? _IsUserAgentRestricted = null;
 		private int _PreviewLength = Int32.MinValue;
-		private bool? _IsScheduledNow = false;
-		private bool? _IsAdmin = false;
+		private bool? _IsScheduledNow = null;
+		private bool? _IsAdmin = null;
 		private string _StreamerType = null;
 		private string _MediaProtocol = null;
 		private string _StorageProfilesXML = null;

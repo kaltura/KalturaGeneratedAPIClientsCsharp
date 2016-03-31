@@ -42,7 +42,7 @@ namespace Kaltura
 		private int _CreatedAt = Int32.MinValue;
 		private KalturaNullableBoolean _IsDefault = (KalturaNullableBoolean)Int32.MinValue;
 		private IList<KalturaBaseRestriction> _Restrictions;
-		private bool? _ContainsUnsuportedRestrictions = false;
+		private bool? _ContainsUnsuportedRestrictions = null;
 		#endregion
 
 		#region Properties

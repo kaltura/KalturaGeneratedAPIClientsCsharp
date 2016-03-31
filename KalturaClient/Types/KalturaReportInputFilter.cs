@@ -35,8 +35,8 @@ namespace Kaltura
 	{
 		#region Private Fields
 		private string _Keywords = null;
-		private bool? _SearchInTags = false;
-		private bool? _SearchInAdminTags = false;
+		private bool? _SearchInTags = null;
+		private bool? _SearchInAdminTags = null;
 		private string _Categories = null;
 		private int _TimeZoneOffset = Int32.MinValue;
 		private KalturaReportInterval _Interval = null;

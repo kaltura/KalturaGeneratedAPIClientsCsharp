@@ -43,18 +43,18 @@ namespace Kaltura
 		private KalturaSyndicationFeedType _Type = (KalturaSyndicationFeedType)Int32.MinValue;
 		private string _LandingPage = null;
 		private int _CreatedAt = Int32.MinValue;
-		private bool? _AllowEmbed = false;
+		private bool? _AllowEmbed = null;
 		private int _PlayerUiconfId = Int32.MinValue;
 		private int _FlavorParamId = Int32.MinValue;
-		private bool? _TranscodeExistingContent = false;
-		private bool? _AddToDefaultConversionProfile = false;
+		private bool? _TranscodeExistingContent = null;
+		private bool? _AddToDefaultConversionProfile = null;
 		private string _Categories = null;
 		private int _StorageId = Int32.MinValue;
 		private KalturaSyndicationFeedEntriesOrderBy _EntriesOrderBy = null;
-		private bool? _EnforceEntitlement = false;
+		private bool? _EnforceEntitlement = null;
 		private string _PrivacyContext = null;
 		private int _UpdatedAt = Int32.MinValue;
-		private bool? _UseCategoryEntries = false;
+		private bool? _UseCategoryEntries = null;
 		#endregion
 
 		#region Properties

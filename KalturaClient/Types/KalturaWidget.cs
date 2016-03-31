@@ -46,9 +46,9 @@ namespace Kaltura
 		private int _UpdatedAt = Int32.MinValue;
 		private string _PartnerData = null;
 		private string _WidgetHTML = null;
-		private bool? _EnforceEntitlement = false;
+		private bool? _EnforceEntitlement = null;
 		private string _PrivacyContext = null;
-		private bool? _AddEmbedHtml5Support = false;
+		private bool? _AddEmbedHtml5Support = null;
 		private string _Roles = null;
 		#endregion
 

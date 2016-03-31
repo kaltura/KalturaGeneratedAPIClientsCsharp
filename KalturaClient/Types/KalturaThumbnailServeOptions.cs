@@ -34,7 +34,7 @@ namespace Kaltura
 	public class KalturaThumbnailServeOptions : KalturaObjectBase
 	{
 		#region Private Fields
-		private bool? _Download = false;
+		private bool? _Download = null;
 		private string _Referrer = null;
 		#endregion
 

@@ -38,10 +38,10 @@ namespace Kaltura
 		private string _UserFriendlyFieldName = null;
 		private string _EntryMrssXslt = null;
 		private KalturaDistributionFieldRequiredStatus _IsRequired = (KalturaDistributionFieldRequiredStatus)Int32.MinValue;
-		private bool? _UpdateOnChange = false;
+		private bool? _UpdateOnChange = null;
 		private IList<KalturaString> _UpdateParams;
-		private bool? _IsDefault = false;
-		private bool? _TriggerDeleteOnError = false;
+		private bool? _IsDefault = null;
+		private bool? _TriggerDeleteOnError = null;
 		#endregion
 
 		#region Properties

@@ -56,8 +56,8 @@ namespace Kaltura
 		private string _FileUrl = null;
 		private string _FileContent = null;
 		private float _FileDiscSize = Single.MinValue;
-		private bool? _IsCurrentDc = false;
-		private bool? _IsDir = false;
+		private bool? _IsCurrentDc = null;
+		private bool? _IsDir = null;
 		private int _OriginalId = Int32.MinValue;
 		#endregion
 

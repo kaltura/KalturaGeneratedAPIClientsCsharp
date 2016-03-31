@@ -40,7 +40,7 @@ namespace Kaltura
 		private IList<KalturaRuleAction> _Actions;
 		private IList<KalturaCondition> _Conditions;
 		private IList<KalturaContextTypeHolder> _Contexts;
-		private bool? _StopProcessing = false;
+		private bool? _StopProcessing = null;
 		#endregion
 
 		#region Properties

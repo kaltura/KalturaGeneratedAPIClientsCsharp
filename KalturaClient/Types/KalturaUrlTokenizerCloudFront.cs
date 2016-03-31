@@ -36,7 +36,7 @@ namespace Kaltura
 		#region Private Fields
 		private string _KeyPairId = null;
 		private string _RootDir = null;
-		private bool? _LimitIpAddress = false;
+		private bool? _LimitIpAddress = null;
 		#endregion
 
 		#region Properties

@@ -34,7 +34,7 @@ namespace Kaltura
 	public class KalturaPdfFlavorParamsOutput : KalturaFlavorParamsOutput
 	{
 		#region Private Fields
-		private bool? _Readonly = false;
+		private bool? _Readonly = null;
 		#endregion
 
 		#region Properties

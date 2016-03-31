@@ -56,12 +56,12 @@ namespace Kaltura
 		private int _CreatedAt = Int32.MinValue;
 		private int _UpdatedAt = Int32.MinValue;
 		private int _LastAccessedAt = Int32.MinValue;
-		private bool? _Incremental = false;
+		private bool? _Incremental = null;
 		private int _LastFileTimestamp = Int32.MinValue;
 		private int _MetadataProfileId = Int32.MinValue;
 		private string _CategoriesMetadataFieldName = null;
-		private bool? _EnforceEntitlement = false;
-		private bool? _ShouldValidateKS = false;
+		private bool? _EnforceEntitlement = null;
+		private bool? _ShouldValidateKS = null;
 		#endregion
 
 		#region Properties

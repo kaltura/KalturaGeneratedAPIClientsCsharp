@@ -101,10 +101,10 @@ namespace Kaltura
 			return (KalturaPartnerListResponse)KalturaObjectFactory.Create(result, "KalturaPartnerListResponse");
 		}
 
-		public void UpdateStatus(int partnerId, KalturaPartnerStatus status, string reason)
+		public void UpdateStatus(int id, KalturaPartnerStatus status, string reason)
 		{
 			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("partnerId", partnerId);
+			kparams.AddIfNotNull("id", id);
 			kparams.AddIfNotNull("status", status);
 			kparams.AddIfNotNull("reason", reason);
 			_Client.QueueServiceCall("systempartner_systempartner", "updateStatus", null, kparams);

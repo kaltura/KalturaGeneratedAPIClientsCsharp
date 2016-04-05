@@ -48,6 +48,7 @@ namespace Kaltura
 		private int _UpdatedAtLessThanOrEqual = Int32.MinValue;
 		private int _UpdatedAtGreaterThanOrEqual = Int32.MinValue;
 		private KalturaEntryServerNodeStatus _StatusEqual = (KalturaEntryServerNodeStatus)Int32.MinValue;
+		private KalturaEntryServerNodeStatus _StatusIn = (KalturaEntryServerNodeStatus)Int32.MinValue;
 		private KalturaEntryServerNodeType _ServerTypeEqual = null;
 		#endregion
 
@@ -178,6 +179,15 @@ namespace Kaltura
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		public KalturaEntryServerNodeStatus StatusIn
+		{
+			get { return _StatusIn; }
+			set 
+			{ 
+				_StatusIn = value;
+				OnPropertyChanged("StatusIn");
+			}
+		}
 		public KalturaEntryServerNodeType ServerTypeEqual
 		{
 			get { return _ServerTypeEqual; }
@@ -243,6 +253,9 @@ namespace Kaltura
 					case "statusEqual":
 						this.StatusEqual = (KalturaEntryServerNodeStatus)ParseEnum(typeof(KalturaEntryServerNodeStatus), txt);
 						continue;
+					case "statusIn":
+						this.StatusIn = (KalturaEntryServerNodeStatus)ParseEnum(typeof(KalturaEntryServerNodeStatus), txt);
+						continue;
 					case "serverTypeEqual":
 						this.ServerTypeEqual = (KalturaEntryServerNodeType)KalturaStringEnum.Parse(typeof(KalturaEntryServerNodeType), txt);
 						continue;
@@ -270,6 +283,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
 			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
 			kparams.AddIfNotNull("statusEqual", this.StatusEqual);
+			kparams.AddIfNotNull("statusIn", this.StatusIn);
 			kparams.AddIfNotNull("serverTypeEqual", this.ServerTypeEqual);
 			return kparams;
 		}

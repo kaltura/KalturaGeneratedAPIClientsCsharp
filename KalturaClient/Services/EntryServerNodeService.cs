@@ -40,6 +40,11 @@ namespace Kaltura
 		{
 		}
 
+		public KalturaEntryServerNodeListResponse List()
+		{
+			return this.List(null);
+		}
+
 		public KalturaEntryServerNodeListResponse List(KalturaEntryServerNodeFilter filter)
 		{
 			return this.List(filter, null);

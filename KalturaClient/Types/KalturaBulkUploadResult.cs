@@ -42,7 +42,7 @@ namespace Kaltura
 		private KalturaBulkUploadAction _Action = null;
 		private string _ObjectId = null;
 		private int _ObjectStatus = Int32.MinValue;
-		private KalturaBulkUploadResultObjectType _BulkUploadResultObjectType = null;
+		private KalturaBulkUploadObjectType _BulkUploadResultObjectType = null;
 		private string _RowData = null;
 		private string _PartnerData = null;
 		private string _ObjectErrorDescription = null;
@@ -125,7 +125,7 @@ namespace Kaltura
 				OnPropertyChanged("ObjectStatus");
 			}
 		}
-		public KalturaBulkUploadResultObjectType BulkUploadResultObjectType
+		public KalturaBulkUploadObjectType BulkUploadResultObjectType
 		{
 			get { return _BulkUploadResultObjectType; }
 			set 
@@ -236,7 +236,7 @@ namespace Kaltura
 						this.ObjectStatus = ParseInt(txt);
 						continue;
 					case "bulkUploadResultObjectType":
-						this.BulkUploadResultObjectType = (KalturaBulkUploadResultObjectType)KalturaStringEnum.Parse(typeof(KalturaBulkUploadResultObjectType), txt);
+						this.BulkUploadResultObjectType = (KalturaBulkUploadObjectType)KalturaStringEnum.Parse(typeof(KalturaBulkUploadObjectType), txt);
 						continue;
 					case "rowData":
 						this.RowData = txt;

@@ -76,6 +76,7 @@ namespace Kaltura
 		private string _EntitledUsersEdit = null;
 		private string _EntitledUsersPublish = null;
 		private string _Capabilities = null;
+		private string _TemplateEntryId = null;
 		#endregion
 
 		#region Properties
@@ -457,6 +458,15 @@ namespace Kaltura
 				OnPropertyChanged("Capabilities");
 			}
 		}
+		public string TemplateEntryId
+		{
+			get { return _TemplateEntryId; }
+			set 
+			{ 
+				_TemplateEntryId = value;
+				OnPropertyChanged("TemplateEntryId");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -601,6 +611,9 @@ namespace Kaltura
 					case "capabilities":
 						this.Capabilities = txt;
 						continue;
+					case "templateEntryId":
+						this.TemplateEntryId = txt;
+						continue;
 				}
 			}
 		}
@@ -653,6 +666,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("entitledUsersEdit", this.EntitledUsersEdit);
 			kparams.AddIfNotNull("entitledUsersPublish", this.EntitledUsersPublish);
 			kparams.AddIfNotNull("capabilities", this.Capabilities);
+			kparams.AddIfNotNull("templateEntryId", this.TemplateEntryId);
 			return kparams;
 		}
 		#endregion

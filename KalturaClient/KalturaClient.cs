@@ -34,7 +34,7 @@ namespace Kaltura
 		public KalturaClient(KalturaConfiguration config) : base(config)
 		{
 				ApiVersion = "3.3.0";
-				ClientTag = "dotnet:16-04-12";
+				ClientTag = "dotnet:16-04-14";
 		}
 
 		KalturaAccessControlProfileService _AccessControlProfileService;
@@ -1078,6 +1078,42 @@ namespace Kaltura
 					_IntegrationService = new KalturaIntegrationService(this);
 
 				return _IntegrationService;
+			}
+		}
+
+		KalturaScheduleEventService _ScheduleEventService;
+		public KalturaScheduleEventService ScheduleEventService
+		{
+			get
+			{
+				if (_ScheduleEventService == null)
+					_ScheduleEventService = new KalturaScheduleEventService(this);
+
+				return _ScheduleEventService;
+			}
+		}
+
+		KalturaScheduleResourceService _ScheduleResourceService;
+		public KalturaScheduleResourceService ScheduleResourceService
+		{
+			get
+			{
+				if (_ScheduleResourceService == null)
+					_ScheduleResourceService = new KalturaScheduleResourceService(this);
+
+				return _ScheduleResourceService;
+			}
+		}
+
+		KalturaScheduleEventResourceService _ScheduleEventResourceService;
+		public KalturaScheduleEventResourceService ScheduleEventResourceService
+		{
+			get
+			{
+				if (_ScheduleEventResourceService == null)
+					_ScheduleEventResourceService = new KalturaScheduleEventResourceService(this);
+
+				return _ScheduleEventResourceService;
 			}
 		}
 	

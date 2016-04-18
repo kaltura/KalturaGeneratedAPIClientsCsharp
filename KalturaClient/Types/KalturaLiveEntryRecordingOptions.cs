@@ -35,6 +35,8 @@ namespace Kaltura
 	{
 		#region Private Fields
 		private KalturaNullableBoolean _ShouldCopyEntitlement = (KalturaNullableBoolean)Int32.MinValue;
+		private KalturaNullableBoolean _ShouldCopyScheduling = (KalturaNullableBoolean)Int32.MinValue;
+		private KalturaNullableBoolean _ShouldCopyThumbnail = (KalturaNullableBoolean)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -45,6 +47,24 @@ namespace Kaltura
 			{ 
 				_ShouldCopyEntitlement = value;
 				OnPropertyChanged("ShouldCopyEntitlement");
+			}
+		}
+		public KalturaNullableBoolean ShouldCopyScheduling
+		{
+			get { return _ShouldCopyScheduling; }
+			set 
+			{ 
+				_ShouldCopyScheduling = value;
+				OnPropertyChanged("ShouldCopyScheduling");
+			}
+		}
+		public KalturaNullableBoolean ShouldCopyThumbnail
+		{
+			get { return _ShouldCopyThumbnail; }
+			set 
+			{ 
+				_ShouldCopyThumbnail = value;
+				OnPropertyChanged("ShouldCopyThumbnail");
 			}
 		}
 		#endregion
@@ -64,6 +84,12 @@ namespace Kaltura
 					case "shouldCopyEntitlement":
 						this.ShouldCopyEntitlement = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
+					case "shouldCopyScheduling":
+						this.ShouldCopyScheduling = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						continue;
+					case "shouldCopyThumbnail":
+						this.ShouldCopyThumbnail = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						continue;
 				}
 			}
 		}
@@ -75,6 +101,8 @@ namespace Kaltura
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveEntryRecordingOptions");
 			kparams.AddIfNotNull("shouldCopyEntitlement", this.ShouldCopyEntitlement);
+			kparams.AddIfNotNull("shouldCopyScheduling", this.ShouldCopyScheduling);
+			kparams.AddIfNotNull("shouldCopyThumbnail", this.ShouldCopyThumbnail);
 			return kparams;
 		}
 		#endregion

@@ -76,9 +76,27 @@ namespace Kaltura
 
 		public KalturaLiveStreamEntry Authenticate(string entryId, string token)
 		{
+			return this.Authenticate(entryId, token, null);
+		}
+
+		public KalturaLiveStreamEntry Authenticate(string entryId, string token, string hostname)
+		{
+			return this.Authenticate(entryId, token, hostname, null);
+		}
+
+		public KalturaLiveStreamEntry Authenticate(string entryId, string token, string hostname, KalturaEntryServerNodeType mediaServerIndex)
+		{
+			return this.Authenticate(entryId, token, hostname, mediaServerIndex, null);
+		}
+
+		public KalturaLiveStreamEntry Authenticate(string entryId, string token, string hostname, KalturaEntryServerNodeType mediaServerIndex, string applicationName)
+		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddIfNotNull("entryId", entryId);
 			kparams.AddIfNotNull("token", token);
+			kparams.AddIfNotNull("hostname", hostname);
+			kparams.AddIfNotNull("mediaServerIndex", mediaServerIndex);
+			kparams.AddIfNotNull("applicationName", applicationName);
 			_Client.QueueServiceCall("livestream", "authenticate", "KalturaLiveStreamEntry", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

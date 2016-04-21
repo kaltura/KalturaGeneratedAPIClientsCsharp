@@ -49,6 +49,7 @@ namespace Kaltura
 		private string _EncodingIP2 = null;
 		private string _StreamPassword = null;
 		private string _StreamUsername = null;
+		private int _PrimaryServerNodeId = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -187,6 +188,15 @@ namespace Kaltura
 				OnPropertyChanged("StreamUsername");
 			}
 		}
+		public int PrimaryServerNodeId
+		{
+			get { return _PrimaryServerNodeId; }
+			set 
+			{ 
+				_PrimaryServerNodeId = value;
+				OnPropertyChanged("PrimaryServerNodeId");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -250,6 +260,9 @@ namespace Kaltura
 					case "streamUsername":
 						this.StreamUsername = txt;
 						continue;
+					case "primaryServerNodeId":
+						this.PrimaryServerNodeId = ParseInt(txt);
+						continue;
 				}
 			}
 		}
@@ -275,6 +288,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("encodingIP2", this.EncodingIP2);
 			kparams.AddIfNotNull("streamPassword", this.StreamPassword);
 			kparams.AddIfNotNull("streamUsername", this.StreamUsername);
+			kparams.AddIfNotNull("primaryServerNodeId", this.PrimaryServerNodeId);
 			return kparams;
 		}
 		#endregion

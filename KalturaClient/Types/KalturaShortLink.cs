@@ -34,7 +34,7 @@ namespace Kaltura
 	public class KalturaShortLink : KalturaObjectBase
 	{
 		#region Private Fields
-		private int _Id = Int32.MinValue;
+		private string _Id = null;
 		private int _CreatedAt = Int32.MinValue;
 		private int _UpdatedAt = Int32.MinValue;
 		private int _ExpiresAt = Int32.MinValue;
@@ -47,7 +47,7 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
-		public int Id
+		public string Id
 		{
 			get { return _Id; }
 			set 
@@ -152,7 +152,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this.Id = txt;
 						continue;
 					case "createdAt":
 						this.CreatedAt = ParseInt(txt);

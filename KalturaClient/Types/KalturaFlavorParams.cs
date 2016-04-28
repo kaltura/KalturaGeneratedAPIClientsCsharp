@@ -67,6 +67,7 @@ namespace Kaltura
 		private int _VideoConstantBitrate = Int32.MinValue;
 		private int _VideoBitrateTolerance = Int32.MinValue;
 		private string _WatermarkData = null;
+		private string _SubtitlesData = null;
 		private int _IsEncrypted = Int32.MinValue;
 		private int _ClipOffset = Int32.MinValue;
 		private int _ClipDuration = Int32.MinValue;
@@ -370,6 +371,15 @@ namespace Kaltura
 				OnPropertyChanged("WatermarkData");
 			}
 		}
+		public string SubtitlesData
+		{
+			get { return _SubtitlesData; }
+			set 
+			{ 
+				_SubtitlesData = value;
+				OnPropertyChanged("SubtitlesData");
+			}
+		}
 		public int IsEncrypted
 		{
 			get { return _IsEncrypted; }
@@ -510,6 +520,9 @@ namespace Kaltura
 					case "watermarkData":
 						this.WatermarkData = txt;
 						continue;
+					case "subtitlesData":
+						this.SubtitlesData = txt;
+						continue;
 					case "isEncrypted":
 						this.IsEncrypted = ParseInt(txt);
 						continue;
@@ -562,6 +575,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("videoConstantBitrate", this.VideoConstantBitrate);
 			kparams.AddIfNotNull("videoBitrateTolerance", this.VideoBitrateTolerance);
 			kparams.AddIfNotNull("watermarkData", this.WatermarkData);
+			kparams.AddIfNotNull("subtitlesData", this.SubtitlesData);
 			kparams.AddIfNotNull("isEncrypted", this.IsEncrypted);
 			kparams.AddIfNotNull("clipOffset", this.ClipOffset);
 			kparams.AddIfNotNull("clipDuration", this.ClipDuration);

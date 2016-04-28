@@ -35,6 +35,7 @@ namespace Kaltura
 	{
 		#region Private Fields
 		private string _EntryIdEqual = null;
+		private string _EntryIdIn = null;
 		private string _UserIdEqual = null;
 		private int _CreatedAtGreaterThanOrEqual = Int32.MinValue;
 		private int _CreatedAtLessThanOrEqual = Int32.MinValue;
@@ -48,6 +49,15 @@ namespace Kaltura
 			{ 
 				_EntryIdEqual = value;
 				OnPropertyChanged("EntryIdEqual");
+			}
+		}
+		public string EntryIdIn
+		{
+			get { return _EntryIdIn; }
+			set 
+			{ 
+				_EntryIdIn = value;
+				OnPropertyChanged("EntryIdIn");
 			}
 		}
 		public string UserIdEqual
@@ -94,6 +104,9 @@ namespace Kaltura
 					case "entryIdEqual":
 						this.EntryIdEqual = txt;
 						continue;
+					case "entryIdIn":
+						this.EntryIdIn = txt;
+						continue;
 					case "userIdEqual":
 						this.UserIdEqual = txt;
 						continue;
@@ -114,6 +127,7 @@ namespace Kaltura
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLikeBaseFilter");
 			kparams.AddIfNotNull("entryIdEqual", this.EntryIdEqual);
+			kparams.AddIfNotNull("entryIdIn", this.EntryIdIn);
 			kparams.AddIfNotNull("userIdEqual", this.UserIdEqual);
 			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
 			kparams.AddIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);

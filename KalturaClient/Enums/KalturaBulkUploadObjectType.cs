@@ -29,6 +29,8 @@ namespace Kaltura
 {
 	public sealed class KalturaBulkUploadObjectType : KalturaStringEnum
 	{
+		public static readonly KalturaBulkUploadObjectType SCHEDULE_EVENT = new KalturaBulkUploadObjectType("scheduleBulkUpload.SCHEDULE_EVENT");
+		public static readonly KalturaBulkUploadObjectType SCHEDULE_RESOURCE = new KalturaBulkUploadObjectType("scheduleBulkUpload.SCHEDULE_RESOURCE");
 		public static readonly KalturaBulkUploadObjectType ENTRY = new KalturaBulkUploadObjectType("1");
 		public static readonly KalturaBulkUploadObjectType CATEGORY = new KalturaBulkUploadObjectType("2");
 		public static readonly KalturaBulkUploadObjectType USER = new KalturaBulkUploadObjectType("3");

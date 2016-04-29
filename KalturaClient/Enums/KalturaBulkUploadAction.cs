@@ -29,6 +29,7 @@ namespace Kaltura
 {
 	public sealed class KalturaBulkUploadAction : KalturaStringEnum
 	{
+		public static readonly KalturaBulkUploadAction CANCEL = new KalturaBulkUploadAction("scheduleBulkUpload.CANCEL");
 		public static readonly KalturaBulkUploadAction ADD = new KalturaBulkUploadAction("1");
 		public static readonly KalturaBulkUploadAction UPDATE = new KalturaBulkUploadAction("2");
 		public static readonly KalturaBulkUploadAction DELETE = new KalturaBulkUploadAction("3");

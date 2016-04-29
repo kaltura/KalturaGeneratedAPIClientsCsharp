@@ -30,6 +30,7 @@ namespace Kaltura
 	public sealed class KalturaDropFolderFileHandlerType : KalturaStringEnum
 	{
 		public static readonly KalturaDropFolderFileHandlerType XML = new KalturaDropFolderFileHandlerType("dropFolderXmlBulkUpload.XML");
+		public static readonly KalturaDropFolderFileHandlerType ICAL = new KalturaDropFolderFileHandlerType("scheduleDropFolder.ICAL");
 		public static readonly KalturaDropFolderFileHandlerType CONTENT = new KalturaDropFolderFileHandlerType("1");
 
 		private KalturaDropFolderFileHandlerType(string name) : base(name) { }

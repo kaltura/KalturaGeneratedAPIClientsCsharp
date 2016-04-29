@@ -34,7 +34,7 @@ namespace Kaltura
 		public KalturaClient(KalturaConfiguration config) : base(config)
 		{
 				ApiVersion = "3.3.0";
-				ClientTag = "dotnet:16-04-28";
+				ClientTag = "dotnet:16-04-29";
 		}
 
 		KalturaAccessControlProfileService _AccessControlProfileService;
@@ -1057,30 +1057,6 @@ namespace Kaltura
 			}
 		}
 
-		KalturaScheduledTaskProfileService _ScheduledTaskProfileService;
-		public KalturaScheduledTaskProfileService ScheduledTaskProfileService
-		{
-			get
-			{
-				if (_ScheduledTaskProfileService == null)
-					_ScheduledTaskProfileService = new KalturaScheduledTaskProfileService(this);
-
-				return _ScheduledTaskProfileService;
-			}
-		}
-
-		KalturaIntegrationService _IntegrationService;
-		public KalturaIntegrationService IntegrationService
-		{
-			get
-			{
-				if (_IntegrationService == null)
-					_IntegrationService = new KalturaIntegrationService(this);
-
-				return _IntegrationService;
-			}
-		}
-
 		KalturaScheduleEventService _ScheduleEventService;
 		public KalturaScheduleEventService ScheduleEventService
 		{
@@ -1114,6 +1090,30 @@ namespace Kaltura
 					_ScheduleEventResourceService = new KalturaScheduleEventResourceService(this);
 
 				return _ScheduleEventResourceService;
+			}
+		}
+
+		KalturaScheduledTaskProfileService _ScheduledTaskProfileService;
+		public KalturaScheduledTaskProfileService ScheduledTaskProfileService
+		{
+			get
+			{
+				if (_ScheduledTaskProfileService == null)
+					_ScheduledTaskProfileService = new KalturaScheduledTaskProfileService(this);
+
+				return _ScheduledTaskProfileService;
+			}
+		}
+
+		KalturaIntegrationService _IntegrationService;
+		public KalturaIntegrationService IntegrationService
+		{
+			get
+			{
+				if (_IntegrationService == null)
+					_IntegrationService = new KalturaIntegrationService(this);
+
+				return _IntegrationService;
 			}
 		}
 	

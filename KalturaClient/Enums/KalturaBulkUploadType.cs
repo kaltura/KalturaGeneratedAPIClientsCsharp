@@ -33,6 +33,8 @@ namespace Kaltura
 		public static readonly KalturaBulkUploadType FILTER = new KalturaBulkUploadType("bulkUploadFilter.FILTER");
 		public static readonly KalturaBulkUploadType XML = new KalturaBulkUploadType("bulkUploadXml.XML");
 		public static readonly KalturaBulkUploadType DROP_FOLDER_XML = new KalturaBulkUploadType("dropFolderXmlBulkUpload.DROP_FOLDER_XML");
+		public static readonly KalturaBulkUploadType ICAL = new KalturaBulkUploadType("scheduleBulkUpload.ICAL");
+		public static readonly KalturaBulkUploadType DROP_FOLDER_ICAL = new KalturaBulkUploadType("scheduleDropFolder.DROP_FOLDER_ICAL");
 
 		private KalturaBulkUploadType(string name) : base(name) { }
 	}

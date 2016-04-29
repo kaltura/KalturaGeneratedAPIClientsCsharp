@@ -106,5 +106,23 @@ namespace Kaltura
 			XmlElement result = _Client.DoQueue();
 			return (KalturaScheduleResourceListResponse)KalturaObjectFactory.Create(result, "KalturaScheduleResourceListResponse");
 		}
+
+		public KalturaBulkUpload AddFromBulkUpload(Stream fileData)
+		{
+			return this.AddFromBulkUpload(fileData, null);
+		}
+
+		public KalturaBulkUpload AddFromBulkUpload(Stream fileData, KalturaBulkUploadCsvJobData bulkUploadData)
+		{
+			KalturaParams kparams = new KalturaParams();
+			KalturaFiles kfiles = new KalturaFiles();
+			kfiles.Add("fileData", fileData);
+			kparams.AddIfNotNull("bulkUploadData", bulkUploadData);
+			_Client.QueueServiceCall("schedule_scheduleresource", "addFromBulkUpload", "KalturaBulkUpload", kparams, kfiles);
+			if (this._Client.IsMultiRequest)
+				return null;
+			XmlElement result = _Client.DoQueue();
+			return (KalturaBulkUpload)KalturaObjectFactory.Create(result, "KalturaBulkUpload");
+		}
 	}
 }

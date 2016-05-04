@@ -41,6 +41,7 @@ namespace Kaltura
 		private IList<KalturaCondition> _Conditions;
 		private IList<KalturaContextTypeHolder> _Contexts;
 		private bool? _StopProcessing = null;
+		private KalturaNullableBoolean _ForceAdminValidation = (KalturaNullableBoolean)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -107,6 +108,15 @@ namespace Kaltura
 				OnPropertyChanged("StopProcessing");
 			}
 		}
+		public KalturaNullableBoolean ForceAdminValidation
+		{
+			get { return _ForceAdminValidation; }
+			set 
+			{ 
+				_ForceAdminValidation = value;
+				OnPropertyChanged("ForceAdminValidation");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -154,6 +164,9 @@ namespace Kaltura
 					case "stopProcessing":
 						this.StopProcessing = ParseBool(txt);
 						continue;
+					case "forceAdminValidation":
+						this.ForceAdminValidation = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						continue;
 				}
 			}
 		}
@@ -171,6 +184,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("conditions", this.Conditions);
 			kparams.AddIfNotNull("contexts", this.Contexts);
 			kparams.AddIfNotNull("stopProcessing", this.StopProcessing);
+			kparams.AddIfNotNull("forceAdminValidation", this.ForceAdminValidation);
 			return kparams;
 		}
 		#endregion

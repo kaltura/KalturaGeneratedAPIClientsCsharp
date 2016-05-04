@@ -34,52 +34,19 @@ namespace Kaltura
 	public class KalturaEntryServerNodeBaseFilter : KalturaRelatedFilter
 	{
 		#region Private Fields
-		private int _IdEqual = Int32.MinValue;
-		private string _IdIn = null;
-		private string _IdNotIn = null;
 		private string _EntryIdEqual = null;
 		private string _EntryIdIn = null;
-		private string _EntryIdNotIn = null;
 		private int _ServerNodeIdEqual = Int32.MinValue;
-		private string _ServerNodeIdIn = null;
-		private string _ServerNodeIdNotIn = null;
-		private int _CreatedAtLessThanOrEqual = Int32.MinValue;
 		private int _CreatedAtGreaterThanOrEqual = Int32.MinValue;
-		private int _UpdatedAtLessThanOrEqual = Int32.MinValue;
+		private int _CreatedAtLessThanOrEqual = Int32.MinValue;
 		private int _UpdatedAtGreaterThanOrEqual = Int32.MinValue;
+		private int _UpdatedAtLessThanOrEqual = Int32.MinValue;
 		private KalturaEntryServerNodeStatus _StatusEqual = (KalturaEntryServerNodeStatus)Int32.MinValue;
-		private KalturaEntryServerNodeStatus _StatusIn = (KalturaEntryServerNodeStatus)Int32.MinValue;
+		private string _StatusIn = null;
 		private KalturaEntryServerNodeType _ServerTypeEqual = null;
 		#endregion
 
 		#region Properties
-		public int IdEqual
-		{
-			get { return _IdEqual; }
-			set 
-			{ 
-				_IdEqual = value;
-				OnPropertyChanged("IdEqual");
-			}
-		}
-		public string IdIn
-		{
-			get { return _IdIn; }
-			set 
-			{ 
-				_IdIn = value;
-				OnPropertyChanged("IdIn");
-			}
-		}
-		public string IdNotIn
-		{
-			get { return _IdNotIn; }
-			set 
-			{ 
-				_IdNotIn = value;
-				OnPropertyChanged("IdNotIn");
-			}
-		}
 		public string EntryIdEqual
 		{
 			get { return _EntryIdEqual; }
@@ -98,15 +65,6 @@ namespace Kaltura
 				OnPropertyChanged("EntryIdIn");
 			}
 		}
-		public string EntryIdNotIn
-		{
-			get { return _EntryIdNotIn; }
-			set 
-			{ 
-				_EntryIdNotIn = value;
-				OnPropertyChanged("EntryIdNotIn");
-			}
-		}
 		public int ServerNodeIdEqual
 		{
 			get { return _ServerNodeIdEqual; }
@@ -114,33 +72,6 @@ namespace Kaltura
 			{ 
 				_ServerNodeIdEqual = value;
 				OnPropertyChanged("ServerNodeIdEqual");
-			}
-		}
-		public string ServerNodeIdIn
-		{
-			get { return _ServerNodeIdIn; }
-			set 
-			{ 
-				_ServerNodeIdIn = value;
-				OnPropertyChanged("ServerNodeIdIn");
-			}
-		}
-		public string ServerNodeIdNotIn
-		{
-			get { return _ServerNodeIdNotIn; }
-			set 
-			{ 
-				_ServerNodeIdNotIn = value;
-				OnPropertyChanged("ServerNodeIdNotIn");
-			}
-		}
-		public int CreatedAtLessThanOrEqual
-		{
-			get { return _CreatedAtLessThanOrEqual; }
-			set 
-			{ 
-				_CreatedAtLessThanOrEqual = value;
-				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
 		public int CreatedAtGreaterThanOrEqual
@@ -152,13 +83,13 @@ namespace Kaltura
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
-		public int UpdatedAtLessThanOrEqual
+		public int CreatedAtLessThanOrEqual
 		{
-			get { return _UpdatedAtLessThanOrEqual; }
+			get { return _CreatedAtLessThanOrEqual; }
 			set 
 			{ 
-				_UpdatedAtLessThanOrEqual = value;
-				OnPropertyChanged("UpdatedAtLessThanOrEqual");
+				_CreatedAtLessThanOrEqual = value;
+				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
 		public int UpdatedAtGreaterThanOrEqual
@@ -170,6 +101,15 @@ namespace Kaltura
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		public int UpdatedAtLessThanOrEqual
+		{
+			get { return _UpdatedAtLessThanOrEqual; }
+			set 
+			{ 
+				_UpdatedAtLessThanOrEqual = value;
+				OnPropertyChanged("UpdatedAtLessThanOrEqual");
+			}
+		}
 		public KalturaEntryServerNodeStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -179,7 +119,7 @@ namespace Kaltura
 				OnPropertyChanged("StatusEqual");
 			}
 		}
-		public KalturaEntryServerNodeStatus StatusIn
+		public string StatusIn
 		{
 			get { return _StatusIn; }
 			set 
@@ -211,50 +151,32 @@ namespace Kaltura
 				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
-					case "idEqual":
-						this.IdEqual = ParseInt(txt);
-						continue;
-					case "idIn":
-						this.IdIn = txt;
-						continue;
-					case "idNotIn":
-						this.IdNotIn = txt;
-						continue;
 					case "entryIdEqual":
 						this.EntryIdEqual = txt;
 						continue;
 					case "entryIdIn":
 						this.EntryIdIn = txt;
 						continue;
-					case "entryIdNotIn":
-						this.EntryIdNotIn = txt;
-						continue;
 					case "serverNodeIdEqual":
 						this.ServerNodeIdEqual = ParseInt(txt);
-						continue;
-					case "serverNodeIdIn":
-						this.ServerNodeIdIn = txt;
-						continue;
-					case "serverNodeIdNotIn":
-						this.ServerNodeIdNotIn = txt;
-						continue;
-					case "createdAtLessThanOrEqual":
-						this.CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdAtGreaterThanOrEqual":
 						this.CreatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
-					case "updatedAtLessThanOrEqual":
-						this.UpdatedAtLessThanOrEqual = ParseInt(txt);
+					case "createdAtLessThanOrEqual":
+						this.CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
 						this.UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						continue;
+					case "updatedAtLessThanOrEqual":
+						this.UpdatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "statusEqual":
 						this.StatusEqual = (KalturaEntryServerNodeStatus)ParseEnum(typeof(KalturaEntryServerNodeStatus), txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = (KalturaEntryServerNodeStatus)ParseEnum(typeof(KalturaEntryServerNodeStatus), txt);
+						this.StatusIn = txt;
 						continue;
 					case "serverTypeEqual":
 						this.ServerTypeEqual = (KalturaEntryServerNodeType)KalturaStringEnum.Parse(typeof(KalturaEntryServerNodeType), txt);
@@ -269,19 +191,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEntryServerNodeBaseFilter");
-			kparams.AddIfNotNull("idEqual", this.IdEqual);
-			kparams.AddIfNotNull("idIn", this.IdIn);
-			kparams.AddIfNotNull("idNotIn", this.IdNotIn);
 			kparams.AddIfNotNull("entryIdEqual", this.EntryIdEqual);
 			kparams.AddIfNotNull("entryIdIn", this.EntryIdIn);
-			kparams.AddIfNotNull("entryIdNotIn", this.EntryIdNotIn);
 			kparams.AddIfNotNull("serverNodeIdEqual", this.ServerNodeIdEqual);
-			kparams.AddIfNotNull("serverNodeIdIn", this.ServerNodeIdIn);
-			kparams.AddIfNotNull("serverNodeIdNotIn", this.ServerNodeIdNotIn);
-			kparams.AddIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
 			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
-			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
 			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
 			kparams.AddIfNotNull("statusEqual", this.StatusEqual);
 			kparams.AddIfNotNull("statusIn", this.StatusIn);
 			kparams.AddIfNotNull("serverTypeEqual", this.ServerTypeEqual);

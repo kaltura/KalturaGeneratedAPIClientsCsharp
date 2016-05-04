@@ -28,70 +28,27 @@
 using System;
 using System.Xml;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Kaltura
 {
-	public class KalturaReportFilter : KalturaObjectBase
+
+	public class KalturaAnalyticsService : KalturaServiceBase
 	{
-		#region Private Fields
-		private string _Dimension = null;
-		private string _Values = null;
-		#endregion
-
-		#region Properties
-		public string Dimension
-		{
-			get { return _Dimension; }
-			set 
-			{ 
-				_Dimension = value;
-				OnPropertyChanged("Dimension");
-			}
-		}
-		public string Values
-		{
-			get { return _Values; }
-			set 
-			{ 
-				_Values = value;
-				OnPropertyChanged("Values");
-			}
-		}
-		#endregion
-
-		#region CTor
-		public KalturaReportFilter()
+	public KalturaAnalyticsService(KalturaClient client)
+			: base(client)
 		{
 		}
 
-		public KalturaReportFilter(XmlElement node) : base(node)
+		public KalturaReportResponse Query(KalturaAnalyticsFilter filter)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
-			{
-				string txt = propertyNode.InnerText;
-				switch (propertyNode.Name)
-				{
-					case "dimension":
-						this.Dimension = txt;
-						continue;
-					case "values":
-						this.Values = txt;
-						continue;
-				}
-			}
+			KalturaParams kparams = new KalturaParams();
+			kparams.AddIfNotNull("filter", filter);
+			_Client.QueueServiceCall("analytics", "query", "KalturaReportResponse", kparams);
+			if (this._Client.IsMultiRequest)
+				return null;
+			XmlElement result = _Client.DoQueue();
+			return (KalturaReportResponse)KalturaObjectFactory.Create(result, "KalturaReportResponse");
 		}
-		#endregion
-
-		#region Methods
-		public override KalturaParams ToParams()
-		{
-			KalturaParams kparams = base.ToParams();
-			kparams.AddReplace("objectType", "KalturaReportFilter");
-			kparams.AddIfNotNull("dimension", this.Dimension);
-			kparams.AddIfNotNull("values", this.Values);
-			return kparams;
-		}
-		#endregion
 	}
 }
-

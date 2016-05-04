@@ -31,51 +31,38 @@ using System.Collections.Generic;
 
 namespace Kaltura
 {
-	public class KalturaReportFilter : KalturaObjectBase
+	public class KalturaUrlTokenizerVnpt : KalturaUrlTokenizer
 	{
 		#region Private Fields
-		private string _Dimension = null;
-		private string _Values = null;
+		private int _TokenizationFormat = Int32.MinValue;
 		#endregion
 
 		#region Properties
-		public string Dimension
+		public int TokenizationFormat
 		{
-			get { return _Dimension; }
+			get { return _TokenizationFormat; }
 			set 
 			{ 
-				_Dimension = value;
-				OnPropertyChanged("Dimension");
-			}
-		}
-		public string Values
-		{
-			get { return _Values; }
-			set 
-			{ 
-				_Values = value;
-				OnPropertyChanged("Values");
+				_TokenizationFormat = value;
+				OnPropertyChanged("TokenizationFormat");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public KalturaReportFilter()
+		public KalturaUrlTokenizerVnpt()
 		{
 		}
 
-		public KalturaReportFilter(XmlElement node) : base(node)
+		public KalturaUrlTokenizerVnpt(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
 				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
-					case "dimension":
-						this.Dimension = txt;
-						continue;
-					case "values":
-						this.Values = txt;
+					case "tokenizationFormat":
+						this.TokenizationFormat = ParseInt(txt);
 						continue;
 				}
 			}
@@ -86,9 +73,8 @@ namespace Kaltura
 		public override KalturaParams ToParams()
 		{
 			KalturaParams kparams = base.ToParams();
-			kparams.AddReplace("objectType", "KalturaReportFilter");
-			kparams.AddIfNotNull("dimension", this.Dimension);
-			kparams.AddIfNotNull("values", this.Values);
+			kparams.AddReplace("objectType", "KalturaUrlTokenizerVnpt");
+			kparams.AddIfNotNull("tokenizationFormat", this.TokenizationFormat);
 			return kparams;
 		}
 		#endregion

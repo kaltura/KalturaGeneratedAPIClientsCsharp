@@ -68,6 +68,19 @@ namespace Kaltura
 			return (KalturaMediaEntry)KalturaObjectFactory.Create(result, "KalturaMediaEntry");
 		}
 
+		public KalturaMediaEntry AddFromBulk(KalturaMediaEntry mediaEntry, string url, int bulkUploadId)
+		{
+			KalturaParams kparams = new KalturaParams();
+			kparams.AddIfNotNull("mediaEntry", mediaEntry);
+			kparams.AddIfNotNull("url", url);
+			kparams.AddIfNotNull("bulkUploadId", bulkUploadId);
+			_Client.QueueServiceCall("media", "addFromBulk", "KalturaMediaEntry", kparams);
+			if (this._Client.IsMultiRequest)
+				return null;
+			XmlElement result = _Client.DoQueue();
+			return (KalturaMediaEntry)KalturaObjectFactory.Create(result, "KalturaMediaEntry");
+		}
+
 		public KalturaMediaEntry AddFromUrl(KalturaMediaEntry mediaEntry, string url)
 		{
 			KalturaParams kparams = new KalturaParams();

@@ -44,6 +44,7 @@ namespace Kaltura
 		private string _ContainerFormat = null;
 		private string _VideoCodecId = null;
 		private KalturaFlavorAssetStatus _Status = (KalturaFlavorAssetStatus)Int32.MinValue;
+		private KalturaLanguage _Language = null;
 		#endregion
 
 		#region Properties
@@ -137,6 +138,15 @@ namespace Kaltura
 				OnPropertyChanged("Status");
 			}
 		}
+		public KalturaLanguage Language
+		{
+			get { return _Language; }
+			set 
+			{ 
+				_Language = value;
+				OnPropertyChanged("Language");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -181,6 +191,9 @@ namespace Kaltura
 					case "status":
 						this.Status = (KalturaFlavorAssetStatus)ParseEnum(typeof(KalturaFlavorAssetStatus), txt);
 						continue;
+					case "language":
+						this.Language = (KalturaLanguage)KalturaStringEnum.Parse(typeof(KalturaLanguage), txt);
+						continue;
 				}
 			}
 		}
@@ -201,6 +214,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("containerFormat", this.ContainerFormat);
 			kparams.AddIfNotNull("videoCodecId", this.VideoCodecId);
 			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("language", this.Language);
 			return kparams;
 		}
 		#endregion

@@ -34,7 +34,7 @@ namespace Kaltura
 		public KalturaClient(KalturaConfiguration config) : base(config)
 		{
 				ApiVersion = "3.3.0";
-				ClientTag = "dotnet:16-05-11";
+				ClientTag = "dotnet:16-05-20";
 		}
 
 		KalturaAccessControlProfileService _AccessControlProfileService;
@@ -202,18 +202,6 @@ namespace Kaltura
 					_DeliveryProfileService = new KalturaDeliveryProfileService(this);
 
 				return _DeliveryProfileService;
-			}
-		}
-
-		KalturaDocumentService _DocumentService;
-		public KalturaDocumentService DocumentService
-		{
-			get
-			{
-				if (_DocumentService == null)
-					_DocumentService = new KalturaDocumentService(this);
-
-				return _DocumentService;
 			}
 		}
 
@@ -745,66 +733,6 @@ namespace Kaltura
 			}
 		}
 
-		KalturaSystemPartnerService _SystemPartnerService;
-		public KalturaSystemPartnerService SystemPartnerService
-		{
-			get
-			{
-				if (_SystemPartnerService == null)
-					_SystemPartnerService = new KalturaSystemPartnerService(this);
-
-				return _SystemPartnerService;
-			}
-		}
-
-		KalturaEntryAdminService _EntryAdminService;
-		public KalturaEntryAdminService EntryAdminService
-		{
-			get
-			{
-				if (_EntryAdminService == null)
-					_EntryAdminService = new KalturaEntryAdminService(this);
-
-				return _EntryAdminService;
-			}
-		}
-
-		KalturaUiConfAdminService _UiConfAdminService;
-		public KalturaUiConfAdminService UiConfAdminService
-		{
-			get
-			{
-				if (_UiConfAdminService == null)
-					_UiConfAdminService = new KalturaUiConfAdminService(this);
-
-				return _UiConfAdminService;
-			}
-		}
-
-		KalturaReportAdminService _ReportAdminService;
-		public KalturaReportAdminService ReportAdminService
-		{
-			get
-			{
-				if (_ReportAdminService == null)
-					_ReportAdminService = new KalturaReportAdminService(this);
-
-				return _ReportAdminService;
-			}
-		}
-
-		KalturaKalturaInternalToolsSystemHelperService _KalturaInternalToolsSystemHelperService;
-		public KalturaKalturaInternalToolsSystemHelperService KalturaInternalToolsSystemHelperService
-		{
-			get
-			{
-				if (_KalturaInternalToolsSystemHelperService == null)
-					_KalturaInternalToolsSystemHelperService = new KalturaKalturaInternalToolsSystemHelperService(this);
-
-				return _KalturaInternalToolsSystemHelperService;
-			}
-		}
-
 		KalturaVirusScanProfileService _VirusScanProfileService;
 		public KalturaVirusScanProfileService VirusScanProfileService
 		{
@@ -982,18 +910,6 @@ namespace Kaltura
 					_CaptionParamsService = new KalturaCaptionParamsService(this);
 
 				return _CaptionParamsService;
-			}
-		}
-
-		KalturaCaptionAssetItemService _CaptionAssetItemService;
-		public KalturaCaptionAssetItemService CaptionAssetItemService
-		{
-			get
-			{
-				if (_CaptionAssetItemService == null)
-					_CaptionAssetItemService = new KalturaCaptionAssetItemService(this);
-
-				return _CaptionAssetItemService;
 			}
 		}
 

@@ -71,8 +71,6 @@ namespace Kaltura
 		private string _InheritedParentIdIn = null;
 		private int _PartnerSortValueGreaterThanOrEqual = Int32.MinValue;
 		private int _PartnerSortValueLessThanOrEqual = Int32.MinValue;
-		private string _AggregationCategoriesMultiLikeOr = null;
-		private string _AggregationCategoriesMultiLikeAnd = null;
 		#endregion
 
 		#region Properties
@@ -409,24 +407,6 @@ namespace Kaltura
 				OnPropertyChanged("PartnerSortValueLessThanOrEqual");
 			}
 		}
-		public string AggregationCategoriesMultiLikeOr
-		{
-			get { return _AggregationCategoriesMultiLikeOr; }
-			set 
-			{ 
-				_AggregationCategoriesMultiLikeOr = value;
-				OnPropertyChanged("AggregationCategoriesMultiLikeOr");
-			}
-		}
-		public string AggregationCategoriesMultiLikeAnd
-		{
-			get { return _AggregationCategoriesMultiLikeAnd; }
-			set 
-			{ 
-				_AggregationCategoriesMultiLikeAnd = value;
-				OnPropertyChanged("AggregationCategoriesMultiLikeAnd");
-			}
-		}
 		#endregion
 
 		#region CTor
@@ -552,12 +532,6 @@ namespace Kaltura
 					case "partnerSortValueLessThanOrEqual":
 						this.PartnerSortValueLessThanOrEqual = ParseInt(txt);
 						continue;
-					case "aggregationCategoriesMultiLikeOr":
-						this.AggregationCategoriesMultiLikeOr = txt;
-						continue;
-					case "aggregationCategoriesMultiLikeAnd":
-						this.AggregationCategoriesMultiLikeAnd = txt;
-						continue;
 				}
 			}
 		}
@@ -605,8 +579,6 @@ namespace Kaltura
 			kparams.AddIfNotNull("inheritedParentIdIn", this.InheritedParentIdIn);
 			kparams.AddIfNotNull("partnerSortValueGreaterThanOrEqual", this.PartnerSortValueGreaterThanOrEqual);
 			kparams.AddIfNotNull("partnerSortValueLessThanOrEqual", this.PartnerSortValueLessThanOrEqual);
-			kparams.AddIfNotNull("aggregationCategoriesMultiLikeOr", this.AggregationCategoriesMultiLikeOr);
-			kparams.AddIfNotNull("aggregationCategoriesMultiLikeAnd", this.AggregationCategoriesMultiLikeAnd);
 			return kparams;
 		}
 		#endregion

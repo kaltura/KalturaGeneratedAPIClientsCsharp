@@ -40,6 +40,18 @@ namespace Kaltura
 		{
 		}
 
+		public KalturaEntryServerNode Update(int id, KalturaEntryServerNode entryServerNode)
+		{
+			KalturaParams kparams = new KalturaParams();
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("entryServerNode", entryServerNode);
+			_Client.QueueServiceCall("entryservernode", "update", "KalturaEntryServerNode", kparams);
+			if (this._Client.IsMultiRequest)
+				return null;
+			XmlElement result = _Client.DoQueue();
+			return (KalturaEntryServerNode)KalturaObjectFactory.Create(result, "KalturaEntryServerNode");
+		}
+
 		public KalturaEntryServerNodeListResponse List()
 		{
 			return this.List(null);

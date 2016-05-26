@@ -34,7 +34,7 @@ namespace Kaltura
 		public KalturaClient(KalturaConfiguration config) : base(config)
 		{
 				ApiVersion = "3.3.0";
-				ClientTag = "dotnet:16-05-24";
+				ClientTag = "dotnet:16-05-26";
 		}
 
 		KalturaAccessControlProfileService _AccessControlProfileService;
@@ -910,6 +910,18 @@ namespace Kaltura
 					_CaptionParamsService = new KalturaCaptionParamsService(this);
 
 				return _CaptionParamsService;
+			}
+		}
+
+		KalturaCaptionAssetItemService _CaptionAssetItemService;
+		public KalturaCaptionAssetItemService CaptionAssetItemService
+		{
+			get
+			{
+				if (_CaptionAssetItemService == null)
+					_CaptionAssetItemService = new KalturaCaptionAssetItemService(this);
+
+				return _CaptionAssetItemService;
 			}
 		}
 

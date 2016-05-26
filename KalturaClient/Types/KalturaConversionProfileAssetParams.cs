@@ -41,6 +41,7 @@ namespace Kaltura
 		private string _SystemName = null;
 		private KalturaNullableBoolean _ForceNoneComplied = (KalturaNullableBoolean)Int32.MinValue;
 		private KalturaAssetParamsDeletePolicy _DeletePolicy = (KalturaAssetParamsDeletePolicy)Int32.MinValue;
+		private KalturaNullableBoolean _IsEncrypted = (KalturaNullableBoolean)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -107,6 +108,15 @@ namespace Kaltura
 				OnPropertyChanged("DeletePolicy");
 			}
 		}
+		public KalturaNullableBoolean IsEncrypted
+		{
+			get { return _IsEncrypted; }
+			set 
+			{ 
+				_IsEncrypted = value;
+				OnPropertyChanged("IsEncrypted");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -142,6 +152,9 @@ namespace Kaltura
 					case "deletePolicy":
 						this.DeletePolicy = (KalturaAssetParamsDeletePolicy)ParseEnum(typeof(KalturaAssetParamsDeletePolicy), txt);
 						continue;
+					case "isEncrypted":
+						this.IsEncrypted = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						continue;
 				}
 			}
 		}
@@ -159,6 +172,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("systemName", this.SystemName);
 			kparams.AddIfNotNull("forceNoneComplied", this.ForceNoneComplied);
 			kparams.AddIfNotNull("deletePolicy", this.DeletePolicy);
+			kparams.AddIfNotNull("isEncrypted", this.IsEncrypted);
 			return kparams;
 		}
 		#endregion

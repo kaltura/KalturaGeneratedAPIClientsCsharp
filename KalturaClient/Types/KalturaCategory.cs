@@ -67,8 +67,6 @@ namespace Kaltura
 		private int _DirectSubCategoriesCount = Int32.MinValue;
 		private KalturaNullableBoolean _Moderation = (KalturaNullableBoolean)Int32.MinValue;
 		private int _PendingEntriesCount = Int32.MinValue;
-		private KalturaNullableBoolean _IsAggregationCategory = (KalturaNullableBoolean)Int32.MinValue;
-		private string _AggregationCategories = null;
 		#endregion
 
 		#region Properties
@@ -369,24 +367,6 @@ namespace Kaltura
 				OnPropertyChanged("PendingEntriesCount");
 			}
 		}
-		public KalturaNullableBoolean IsAggregationCategory
-		{
-			get { return _IsAggregationCategory; }
-			set 
-			{ 
-				_IsAggregationCategory = value;
-				OnPropertyChanged("IsAggregationCategory");
-			}
-		}
-		public string AggregationCategories
-		{
-			get { return _AggregationCategories; }
-			set 
-			{ 
-				_AggregationCategories = value;
-				OnPropertyChanged("AggregationCategories");
-			}
-		}
 		#endregion
 
 		#region CTor
@@ -500,12 +480,6 @@ namespace Kaltura
 					case "pendingEntriesCount":
 						this.PendingEntriesCount = ParseInt(txt);
 						continue;
-					case "isAggregationCategory":
-						this.IsAggregationCategory = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
-						continue;
-					case "aggregationCategories":
-						this.AggregationCategories = txt;
-						continue;
 				}
 			}
 		}
@@ -549,8 +523,6 @@ namespace Kaltura
 			kparams.AddIfNotNull("directSubCategoriesCount", this.DirectSubCategoriesCount);
 			kparams.AddIfNotNull("moderation", this.Moderation);
 			kparams.AddIfNotNull("pendingEntriesCount", this.PendingEntriesCount);
-			kparams.AddIfNotNull("isAggregationCategory", this.IsAggregationCategory);
-			kparams.AddIfNotNull("aggregationCategories", this.AggregationCategories);
 			return kparams;
 		}
 		#endregion

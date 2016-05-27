@@ -31,7 +31,7 @@ using System.Collections.Generic;
 
 namespace Kaltura
 {
-	public class KalturaScheduleResourceBaseFilter : KalturaFilter
+	public class KalturaScheduleResourceBaseFilter : KalturaRelatedFilter
 	{
 		#region Private Fields
 		private int _IdEqual = Int32.MinValue;

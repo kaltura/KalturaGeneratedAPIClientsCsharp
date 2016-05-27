@@ -34,16 +34,18 @@ namespace Kaltura
 	public class KalturaAppTokenBaseFilter : KalturaFilter
 	{
 		#region Private Fields
-		private int _IdEqual = Int32.MinValue;
+		private string _IdEqual = null;
 		private string _IdIn = null;
 		private int _CreatedAtGreaterThanOrEqual = Int32.MinValue;
 		private int _CreatedAtLessThanOrEqual = Int32.MinValue;
 		private int _UpdatedAtGreaterThanOrEqual = Int32.MinValue;
 		private int _UpdatedAtLessThanOrEqual = Int32.MinValue;
+		private KalturaAppTokenStatus _StatusEqual = (KalturaAppTokenStatus)Int32.MinValue;
+		private string _StatusIn = null;
 		#endregion
 
 		#region Properties
-		public int IdEqual
+		public string IdEqual
 		{
 			get { return _IdEqual; }
 			set 
@@ -97,6 +99,24 @@ namespace Kaltura
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
+		public KalturaAppTokenStatus StatusEqual
+		{
+			get { return _StatusEqual; }
+			set 
+			{ 
+				_StatusEqual = value;
+				OnPropertyChanged("StatusEqual");
+			}
+		}
+		public string StatusIn
+		{
+			get { return _StatusIn; }
+			set 
+			{ 
+				_StatusIn = value;
+				OnPropertyChanged("StatusIn");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -112,7 +132,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this.IdEqual = ParseInt(txt);
+						this.IdEqual = txt;
 						continue;
 					case "idIn":
 						this.IdIn = txt;
@@ -128,6 +148,12 @@ namespace Kaltura
 						continue;
 					case "updatedAtLessThanOrEqual":
 						this.UpdatedAtLessThanOrEqual = ParseInt(txt);
+						continue;
+					case "statusEqual":
+						this.StatusEqual = (KalturaAppTokenStatus)ParseEnum(typeof(KalturaAppTokenStatus), txt);
+						continue;
+					case "statusIn":
+						this.StatusIn = txt;
 						continue;
 				}
 			}
@@ -145,6 +171,8 @@ namespace Kaltura
 			kparams.AddIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
 			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
 			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("statusEqual", this.StatusEqual);
+			kparams.AddIfNotNull("statusIn", this.StatusIn);
 			return kparams;
 		}
 		#endregion

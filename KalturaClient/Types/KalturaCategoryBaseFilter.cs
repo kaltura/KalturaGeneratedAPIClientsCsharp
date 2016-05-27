@@ -36,6 +36,7 @@ namespace Kaltura
 		#region Private Fields
 		private int _IdEqual = Int32.MinValue;
 		private string _IdIn = null;
+		private string _IdNotIn = null;
 		private int _ParentIdEqual = Int32.MinValue;
 		private string _ParentIdIn = null;
 		private int _DepthEqual = Int32.MinValue;
@@ -71,6 +72,8 @@ namespace Kaltura
 		private string _InheritedParentIdIn = null;
 		private int _PartnerSortValueGreaterThanOrEqual = Int32.MinValue;
 		private int _PartnerSortValueLessThanOrEqual = Int32.MinValue;
+		private string _AggregationCategoriesMultiLikeOr = null;
+		private string _AggregationCategoriesMultiLikeAnd = null;
 		#endregion
 
 		#region Properties
@@ -90,6 +93,15 @@ namespace Kaltura
 			{ 
 				_IdIn = value;
 				OnPropertyChanged("IdIn");
+			}
+		}
+		public string IdNotIn
+		{
+			get { return _IdNotIn; }
+			set 
+			{ 
+				_IdNotIn = value;
+				OnPropertyChanged("IdNotIn");
 			}
 		}
 		public int ParentIdEqual
@@ -407,6 +419,24 @@ namespace Kaltura
 				OnPropertyChanged("PartnerSortValueLessThanOrEqual");
 			}
 		}
+		public string AggregationCategoriesMultiLikeOr
+		{
+			get { return _AggregationCategoriesMultiLikeOr; }
+			set 
+			{ 
+				_AggregationCategoriesMultiLikeOr = value;
+				OnPropertyChanged("AggregationCategoriesMultiLikeOr");
+			}
+		}
+		public string AggregationCategoriesMultiLikeAnd
+		{
+			get { return _AggregationCategoriesMultiLikeAnd; }
+			set 
+			{ 
+				_AggregationCategoriesMultiLikeAnd = value;
+				OnPropertyChanged("AggregationCategoriesMultiLikeAnd");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -426,6 +456,9 @@ namespace Kaltura
 						continue;
 					case "idIn":
 						this.IdIn = txt;
+						continue;
+					case "idNotIn":
+						this.IdNotIn = txt;
 						continue;
 					case "parentIdEqual":
 						this.ParentIdEqual = ParseInt(txt);
@@ -532,6 +565,12 @@ namespace Kaltura
 					case "partnerSortValueLessThanOrEqual":
 						this.PartnerSortValueLessThanOrEqual = ParseInt(txt);
 						continue;
+					case "aggregationCategoriesMultiLikeOr":
+						this.AggregationCategoriesMultiLikeOr = txt;
+						continue;
+					case "aggregationCategoriesMultiLikeAnd":
+						this.AggregationCategoriesMultiLikeAnd = txt;
+						continue;
 				}
 			}
 		}
@@ -544,6 +583,7 @@ namespace Kaltura
 			kparams.AddReplace("objectType", "KalturaCategoryBaseFilter");
 			kparams.AddIfNotNull("idEqual", this.IdEqual);
 			kparams.AddIfNotNull("idIn", this.IdIn);
+			kparams.AddIfNotNull("idNotIn", this.IdNotIn);
 			kparams.AddIfNotNull("parentIdEqual", this.ParentIdEqual);
 			kparams.AddIfNotNull("parentIdIn", this.ParentIdIn);
 			kparams.AddIfNotNull("depthEqual", this.DepthEqual);
@@ -579,6 +619,8 @@ namespace Kaltura
 			kparams.AddIfNotNull("inheritedParentIdIn", this.InheritedParentIdIn);
 			kparams.AddIfNotNull("partnerSortValueGreaterThanOrEqual", this.PartnerSortValueGreaterThanOrEqual);
 			kparams.AddIfNotNull("partnerSortValueLessThanOrEqual", this.PartnerSortValueLessThanOrEqual);
+			kparams.AddIfNotNull("aggregationCategoriesMultiLikeOr", this.AggregationCategoriesMultiLikeOr);
+			kparams.AddIfNotNull("aggregationCategoriesMultiLikeAnd", this.AggregationCategoriesMultiLikeAnd);
 			return kparams;
 		}
 		#endregion

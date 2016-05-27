@@ -31,7 +31,7 @@ using System.Collections.Generic;
 
 namespace Kaltura
 {
-	public class KalturaUserEntryBaseFilter : KalturaFilter
+	public class KalturaUserEntryBaseFilter : KalturaRelatedFilter
 	{
 		#region Private Fields
 		private int _IdEqual = Int32.MinValue;

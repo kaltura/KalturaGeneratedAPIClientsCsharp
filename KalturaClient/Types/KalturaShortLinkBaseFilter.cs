@@ -34,7 +34,7 @@ namespace Kaltura
 	public class KalturaShortLinkBaseFilter : KalturaFilter
 	{
 		#region Private Fields
-		private int _IdEqual = Int32.MinValue;
+		private string _IdEqual = null;
 		private string _IdIn = null;
 		private int _CreatedAtGreaterThanOrEqual = Int32.MinValue;
 		private int _CreatedAtLessThanOrEqual = Int32.MinValue;
@@ -53,7 +53,7 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
-		public int IdEqual
+		public string IdEqual
 		{
 			get { return _IdEqual; }
 			set 
@@ -212,7 +212,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this.IdEqual = ParseInt(txt);
+						this.IdEqual = txt;
 						continue;
 					case "idIn":
 						this.IdIn = txt;

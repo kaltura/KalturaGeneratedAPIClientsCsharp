@@ -35,6 +35,7 @@ namespace Kaltura
 	{
 		#region Private Fields
 		private int _TokenizationFormat = Int32.MinValue;
+		private bool? _ShouldIncludeClientIp = null;
 		#endregion
 
 		#region Properties
@@ -45,6 +46,15 @@ namespace Kaltura
 			{ 
 				_TokenizationFormat = value;
 				OnPropertyChanged("TokenizationFormat");
+			}
+		}
+		public bool? ShouldIncludeClientIp
+		{
+			get { return _ShouldIncludeClientIp; }
+			set 
+			{ 
+				_ShouldIncludeClientIp = value;
+				OnPropertyChanged("ShouldIncludeClientIp");
 			}
 		}
 		#endregion
@@ -64,6 +74,9 @@ namespace Kaltura
 					case "tokenizationFormat":
 						this.TokenizationFormat = ParseInt(txt);
 						continue;
+					case "shouldIncludeClientIp":
+						this.ShouldIncludeClientIp = ParseBool(txt);
+						continue;
 				}
 			}
 		}
@@ -75,6 +88,7 @@ namespace Kaltura
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUrlTokenizerVnpt");
 			kparams.AddIfNotNull("tokenizationFormat", this.TokenizationFormat);
+			kparams.AddIfNotNull("shouldIncludeClientIp", this.ShouldIncludeClientIp);
 			return kparams;
 		}
 		#endregion

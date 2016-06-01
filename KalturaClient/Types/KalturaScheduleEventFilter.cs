@@ -40,6 +40,12 @@ namespace Kaltura
 		private string _ParentResourceIdsLike = null;
 		private string _ParentResourceIdsMultiLikeOr = null;
 		private string _ParentResourceIdsMultiLikeAnd = null;
+		private string _TemplateEntryCategoriesIdsMultiLikeAnd = null;
+		private string _TemplateEntryCategoriesIdsMultiLikeOr = null;
+		private string _TemplateEntryCategoriesIdsLike = null;
+		private string _SystemNamesMultiLikeOr = null;
+		private string _SystemNamesMultiLikeAnd = null;
+		private string _SystemNamesLike = null;
 		private KalturaScheduleEventOrderBy _OrderBy = null;
 		#endregion
 
@@ -98,6 +104,60 @@ namespace Kaltura
 				OnPropertyChanged("ParentResourceIdsMultiLikeAnd");
 			}
 		}
+		public string TemplateEntryCategoriesIdsMultiLikeAnd
+		{
+			get { return _TemplateEntryCategoriesIdsMultiLikeAnd; }
+			set 
+			{ 
+				_TemplateEntryCategoriesIdsMultiLikeAnd = value;
+				OnPropertyChanged("TemplateEntryCategoriesIdsMultiLikeAnd");
+			}
+		}
+		public string TemplateEntryCategoriesIdsMultiLikeOr
+		{
+			get { return _TemplateEntryCategoriesIdsMultiLikeOr; }
+			set 
+			{ 
+				_TemplateEntryCategoriesIdsMultiLikeOr = value;
+				OnPropertyChanged("TemplateEntryCategoriesIdsMultiLikeOr");
+			}
+		}
+		public string TemplateEntryCategoriesIdsLike
+		{
+			get { return _TemplateEntryCategoriesIdsLike; }
+			set 
+			{ 
+				_TemplateEntryCategoriesIdsLike = value;
+				OnPropertyChanged("TemplateEntryCategoriesIdsLike");
+			}
+		}
+		public string SystemNamesMultiLikeOr
+		{
+			get { return _SystemNamesMultiLikeOr; }
+			set 
+			{ 
+				_SystemNamesMultiLikeOr = value;
+				OnPropertyChanged("SystemNamesMultiLikeOr");
+			}
+		}
+		public string SystemNamesMultiLikeAnd
+		{
+			get { return _SystemNamesMultiLikeAnd; }
+			set 
+			{ 
+				_SystemNamesMultiLikeAnd = value;
+				OnPropertyChanged("SystemNamesMultiLikeAnd");
+			}
+		}
+		public string SystemNamesLike
+		{
+			get { return _SystemNamesLike; }
+			set 
+			{ 
+				_SystemNamesLike = value;
+				OnPropertyChanged("SystemNamesLike");
+			}
+		}
 		public new KalturaScheduleEventOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -139,6 +199,24 @@ namespace Kaltura
 					case "parentResourceIdsMultiLikeAnd":
 						this.ParentResourceIdsMultiLikeAnd = txt;
 						continue;
+					case "templateEntryCategoriesIdsMultiLikeAnd":
+						this.TemplateEntryCategoriesIdsMultiLikeAnd = txt;
+						continue;
+					case "templateEntryCategoriesIdsMultiLikeOr":
+						this.TemplateEntryCategoriesIdsMultiLikeOr = txt;
+						continue;
+					case "templateEntryCategoriesIdsLike":
+						this.TemplateEntryCategoriesIdsLike = txt;
+						continue;
+					case "systemNamesMultiLikeOr":
+						this.SystemNamesMultiLikeOr = txt;
+						continue;
+					case "systemNamesMultiLikeAnd":
+						this.SystemNamesMultiLikeAnd = txt;
+						continue;
+					case "systemNamesLike":
+						this.SystemNamesLike = txt;
+						continue;
 					case "orderBy":
 						this.OrderBy = (KalturaScheduleEventOrderBy)KalturaStringEnum.Parse(typeof(KalturaScheduleEventOrderBy), txt);
 						continue;
@@ -158,6 +236,12 @@ namespace Kaltura
 			kparams.AddIfNotNull("parentResourceIdsLike", this.ParentResourceIdsLike);
 			kparams.AddIfNotNull("parentResourceIdsMultiLikeOr", this.ParentResourceIdsMultiLikeOr);
 			kparams.AddIfNotNull("parentResourceIdsMultiLikeAnd", this.ParentResourceIdsMultiLikeAnd);
+			kparams.AddIfNotNull("templateEntryCategoriesIdsMultiLikeAnd", this.TemplateEntryCategoriesIdsMultiLikeAnd);
+			kparams.AddIfNotNull("templateEntryCategoriesIdsMultiLikeOr", this.TemplateEntryCategoriesIdsMultiLikeOr);
+			kparams.AddIfNotNull("templateEntryCategoriesIdsLike", this.TemplateEntryCategoriesIdsLike);
+			kparams.AddIfNotNull("systemNamesMultiLikeOr", this.SystemNamesMultiLikeOr);
+			kparams.AddIfNotNull("systemNamesMultiLikeAnd", this.SystemNamesMultiLikeAnd);
+			kparams.AddIfNotNull("systemNamesLike", this.SystemNamesLike);
 			kparams.AddIfNotNull("orderBy", this.OrderBy);
 			return kparams;
 		}

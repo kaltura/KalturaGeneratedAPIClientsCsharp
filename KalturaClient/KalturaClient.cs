@@ -34,7 +34,7 @@ namespace Kaltura
 		public KalturaClient(KalturaConfiguration config) : base(config)
 		{
 				ApiVersion = "3.3.0";
-				ClientTag = "dotnet:16-05-31";
+				ClientTag = "dotnet:16-06-01";
 		}
 
 		KalturaAccessControlProfileService _AccessControlProfileService;
@@ -682,18 +682,6 @@ namespace Kaltura
 					_WidgetService = new KalturaWidgetService(this);
 
 				return _WidgetService;
-			}
-		}
-
-		KalturaXInternalService _XInternalService;
-		public KalturaXInternalService XInternalService
-		{
-			get
-			{
-				if (_XInternalService == null)
-					_XInternalService = new KalturaXInternalService(this);
-
-				return _XInternalService;
 			}
 		}
 

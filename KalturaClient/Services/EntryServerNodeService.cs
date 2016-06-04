@@ -84,5 +84,15 @@ namespace Kaltura
 			XmlElement result = _Client.DoQueue();
 			return (KalturaEntryServerNode)KalturaObjectFactory.Create(result, "KalturaEntryServerNode");
 		}
+
+		public void ValidateRegisteredEntryServerNode(int id)
+		{
+			KalturaParams kparams = new KalturaParams();
+			kparams.AddIfNotNull("id", id);
+			_Client.QueueServiceCall("entryservernode", "validateRegisteredEntryServerNode", null, kparams);
+			if (this._Client.IsMultiRequest)
+				return;
+			XmlElement result = _Client.DoQueue();
+		}
 	}
 }

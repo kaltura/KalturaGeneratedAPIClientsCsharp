@@ -42,10 +42,11 @@ namespace Kaltura
 		private string _ParentResourceIdsMultiLikeAnd = null;
 		private string _TemplateEntryCategoriesIdsMultiLikeAnd = null;
 		private string _TemplateEntryCategoriesIdsMultiLikeOr = null;
+		private string _ResourceSystemNamesMultiLikeOr = null;
 		private string _TemplateEntryCategoriesIdsLike = null;
-		private string _SystemNamesMultiLikeOr = null;
-		private string _SystemNamesMultiLikeAnd = null;
-		private string _SystemNamesLike = null;
+		private string _ResourceSystemNamesMultiLikeAnd = null;
+		private string _ResourceSystemNamesLike = null;
+		private string _TemplateEntryIdEqual = null;
 		private KalturaScheduleEventOrderBy _OrderBy = null;
 		#endregion
 
@@ -122,6 +123,15 @@ namespace Kaltura
 				OnPropertyChanged("TemplateEntryCategoriesIdsMultiLikeOr");
 			}
 		}
+		public string ResourceSystemNamesMultiLikeOr
+		{
+			get { return _ResourceSystemNamesMultiLikeOr; }
+			set 
+			{ 
+				_ResourceSystemNamesMultiLikeOr = value;
+				OnPropertyChanged("ResourceSystemNamesMultiLikeOr");
+			}
+		}
 		public string TemplateEntryCategoriesIdsLike
 		{
 			get { return _TemplateEntryCategoriesIdsLike; }
@@ -131,31 +141,31 @@ namespace Kaltura
 				OnPropertyChanged("TemplateEntryCategoriesIdsLike");
 			}
 		}
-		public string SystemNamesMultiLikeOr
+		public string ResourceSystemNamesMultiLikeAnd
 		{
-			get { return _SystemNamesMultiLikeOr; }
+			get { return _ResourceSystemNamesMultiLikeAnd; }
 			set 
 			{ 
-				_SystemNamesMultiLikeOr = value;
-				OnPropertyChanged("SystemNamesMultiLikeOr");
+				_ResourceSystemNamesMultiLikeAnd = value;
+				OnPropertyChanged("ResourceSystemNamesMultiLikeAnd");
 			}
 		}
-		public string SystemNamesMultiLikeAnd
+		public string ResourceSystemNamesLike
 		{
-			get { return _SystemNamesMultiLikeAnd; }
+			get { return _ResourceSystemNamesLike; }
 			set 
 			{ 
-				_SystemNamesMultiLikeAnd = value;
-				OnPropertyChanged("SystemNamesMultiLikeAnd");
+				_ResourceSystemNamesLike = value;
+				OnPropertyChanged("ResourceSystemNamesLike");
 			}
 		}
-		public string SystemNamesLike
+		public string TemplateEntryIdEqual
 		{
-			get { return _SystemNamesLike; }
+			get { return _TemplateEntryIdEqual; }
 			set 
 			{ 
-				_SystemNamesLike = value;
-				OnPropertyChanged("SystemNamesLike");
+				_TemplateEntryIdEqual = value;
+				OnPropertyChanged("TemplateEntryIdEqual");
 			}
 		}
 		public new KalturaScheduleEventOrderBy OrderBy
@@ -205,17 +215,20 @@ namespace Kaltura
 					case "templateEntryCategoriesIdsMultiLikeOr":
 						this.TemplateEntryCategoriesIdsMultiLikeOr = txt;
 						continue;
+					case "resourceSystemNamesMultiLikeOr":
+						this.ResourceSystemNamesMultiLikeOr = txt;
+						continue;
 					case "templateEntryCategoriesIdsLike":
 						this.TemplateEntryCategoriesIdsLike = txt;
 						continue;
-					case "systemNamesMultiLikeOr":
-						this.SystemNamesMultiLikeOr = txt;
+					case "resourceSystemNamesMultiLikeAnd":
+						this.ResourceSystemNamesMultiLikeAnd = txt;
 						continue;
-					case "systemNamesMultiLikeAnd":
-						this.SystemNamesMultiLikeAnd = txt;
+					case "resourceSystemNamesLike":
+						this.ResourceSystemNamesLike = txt;
 						continue;
-					case "systemNamesLike":
-						this.SystemNamesLike = txt;
+					case "templateEntryIdEqual":
+						this.TemplateEntryIdEqual = txt;
 						continue;
 					case "orderBy":
 						this.OrderBy = (KalturaScheduleEventOrderBy)KalturaStringEnum.Parse(typeof(KalturaScheduleEventOrderBy), txt);
@@ -238,10 +251,11 @@ namespace Kaltura
 			kparams.AddIfNotNull("parentResourceIdsMultiLikeAnd", this.ParentResourceIdsMultiLikeAnd);
 			kparams.AddIfNotNull("templateEntryCategoriesIdsMultiLikeAnd", this.TemplateEntryCategoriesIdsMultiLikeAnd);
 			kparams.AddIfNotNull("templateEntryCategoriesIdsMultiLikeOr", this.TemplateEntryCategoriesIdsMultiLikeOr);
+			kparams.AddIfNotNull("resourceSystemNamesMultiLikeOr", this.ResourceSystemNamesMultiLikeOr);
 			kparams.AddIfNotNull("templateEntryCategoriesIdsLike", this.TemplateEntryCategoriesIdsLike);
-			kparams.AddIfNotNull("systemNamesMultiLikeOr", this.SystemNamesMultiLikeOr);
-			kparams.AddIfNotNull("systemNamesMultiLikeAnd", this.SystemNamesMultiLikeAnd);
-			kparams.AddIfNotNull("systemNamesLike", this.SystemNamesLike);
+			kparams.AddIfNotNull("resourceSystemNamesMultiLikeAnd", this.ResourceSystemNamesMultiLikeAnd);
+			kparams.AddIfNotNull("resourceSystemNamesLike", this.ResourceSystemNamesLike);
+			kparams.AddIfNotNull("templateEntryIdEqual", this.TemplateEntryIdEqual);
 			kparams.AddIfNotNull("orderBy", this.OrderBy);
 			return kparams;
 		}

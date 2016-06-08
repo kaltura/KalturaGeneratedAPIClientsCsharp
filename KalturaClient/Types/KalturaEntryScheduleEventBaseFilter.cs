@@ -34,6 +34,7 @@ namespace Kaltura
 	public class KalturaEntryScheduleEventBaseFilter : KalturaScheduleEventFilter
 	{
 		#region Private Fields
+		private string _TemplateEntryIdEqual = null;
 		private string _EntryIdsLike = null;
 		private string _EntryIdsMultiLikeOr = null;
 		private string _EntryIdsMultiLikeAnd = null;
@@ -43,6 +44,15 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
+		public string TemplateEntryIdEqual
+		{
+			get { return _TemplateEntryIdEqual; }
+			set 
+			{ 
+				_TemplateEntryIdEqual = value;
+				OnPropertyChanged("TemplateEntryIdEqual");
+			}
+		}
 		public string EntryIdsLike
 		{
 			get { return _EntryIdsLike; }
@@ -111,6 +121,9 @@ namespace Kaltura
 				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
+					case "templateEntryIdEqual":
+						this.TemplateEntryIdEqual = txt;
+						continue;
 					case "entryIdsLike":
 						this.EntryIdsLike = txt;
 						continue;
@@ -139,6 +152,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEntryScheduleEventBaseFilter");
+			kparams.AddIfNotNull("templateEntryIdEqual", this.TemplateEntryIdEqual);
 			kparams.AddIfNotNull("entryIdsLike", this.EntryIdsLike);
 			kparams.AddIfNotNull("entryIdsMultiLikeOr", this.EntryIdsMultiLikeOr);
 			kparams.AddIfNotNull("entryIdsMultiLikeAnd", this.EntryIdsMultiLikeAnd);

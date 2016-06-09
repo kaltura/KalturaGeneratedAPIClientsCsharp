@@ -36,6 +36,8 @@ namespace Kaltura
 		#region Private Fields
 		private KalturaAmazonS3StorageProfileFilesPermissionLevel _FilesPermissionInS3 = null;
 		private string _S3Region = null;
+		private string _SseType = null;
+		private string _SseKmsKeyId = null;
 		#endregion
 
 		#region Properties
@@ -55,6 +57,24 @@ namespace Kaltura
 			{ 
 				_S3Region = value;
 				OnPropertyChanged("S3Region");
+			}
+		}
+		public string SseType
+		{
+			get { return _SseType; }
+			set 
+			{ 
+				_SseType = value;
+				OnPropertyChanged("SseType");
+			}
+		}
+		public string SseKmsKeyId
+		{
+			get { return _SseKmsKeyId; }
+			set 
+			{ 
+				_SseKmsKeyId = value;
+				OnPropertyChanged("SseKmsKeyId");
 			}
 		}
 		#endregion
@@ -77,6 +97,12 @@ namespace Kaltura
 					case "s3Region":
 						this.S3Region = txt;
 						continue;
+					case "sseType":
+						this.SseType = txt;
+						continue;
+					case "sseKmsKeyId":
+						this.SseKmsKeyId = txt;
+						continue;
 				}
 			}
 		}
@@ -89,6 +115,8 @@ namespace Kaltura
 			kparams.AddReplace("objectType", "KalturaAmazonS3StorageExportJobData");
 			kparams.AddIfNotNull("filesPermissionInS3", this.FilesPermissionInS3);
 			kparams.AddIfNotNull("s3Region", this.S3Region);
+			kparams.AddIfNotNull("sseType", this.SseType);
+			kparams.AddIfNotNull("sseKmsKeyId", this.SseKmsKeyId);
 			return kparams;
 		}
 		#endregion

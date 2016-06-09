@@ -244,5 +244,17 @@ namespace Kaltura
 			XmlElement result = _Client.DoQueue();
 			return (KalturaRemotePathListResponse)KalturaObjectFactory.Create(result, "KalturaRemotePathListResponse");
 		}
+
+		public KalturaFlavorAsset Export(string assetId, int storageProfileId)
+		{
+			KalturaParams kparams = new KalturaParams();
+			kparams.AddIfNotNull("assetId", assetId);
+			kparams.AddIfNotNull("storageProfileId", storageProfileId);
+			_Client.QueueServiceCall("thumbasset", "export", "KalturaFlavorAsset", kparams);
+			if (this._Client.IsMultiRequest)
+				return null;
+			XmlElement result = _Client.DoQueue();
+			return (KalturaFlavorAsset)KalturaObjectFactory.Create(result, "KalturaFlavorAsset");
+		}
 	}
 }

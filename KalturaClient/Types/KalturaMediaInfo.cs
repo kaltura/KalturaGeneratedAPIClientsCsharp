@@ -67,6 +67,7 @@ namespace Kaltura
 		private string _MultiStream = null;
 		private int _IsFastStart = Int32.MinValue;
 		private string _ContentStreams = null;
+		private int _ComplexityValue = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -367,6 +368,15 @@ namespace Kaltura
 				OnPropertyChanged("ContentStreams");
 			}
 		}
+		public int ComplexityValue
+		{
+			get { return _ComplexityValue; }
+			set 
+			{ 
+				_ComplexityValue = value;
+				OnPropertyChanged("ComplexityValue");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -480,6 +490,9 @@ namespace Kaltura
 					case "contentStreams":
 						this.ContentStreams = txt;
 						continue;
+					case "complexityValue":
+						this.ComplexityValue = ParseInt(txt);
+						continue;
 				}
 			}
 		}
@@ -523,6 +536,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("multiStream", this.MultiStream);
 			kparams.AddIfNotNull("isFastStart", this.IsFastStart);
 			kparams.AddIfNotNull("contentStreams", this.ContentStreams);
+			kparams.AddIfNotNull("complexityValue", this.ComplexityValue);
 			return kparams;
 		}
 		#endregion

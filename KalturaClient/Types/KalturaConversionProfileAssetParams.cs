@@ -42,6 +42,8 @@ namespace Kaltura
 		private KalturaNullableBoolean _ForceNoneComplied = (KalturaNullableBoolean)Int32.MinValue;
 		private KalturaAssetParamsDeletePolicy _DeletePolicy = (KalturaAssetParamsDeletePolicy)Int32.MinValue;
 		private KalturaNullableBoolean _IsEncrypted = (KalturaNullableBoolean)Int32.MinValue;
+		private float _ContentAwareness = Single.MinValue;
+		private KalturaNullableBoolean _TwoPass = (KalturaNullableBoolean)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -117,6 +119,24 @@ namespace Kaltura
 				OnPropertyChanged("IsEncrypted");
 			}
 		}
+		public float ContentAwareness
+		{
+			get { return _ContentAwareness; }
+			set 
+			{ 
+				_ContentAwareness = value;
+				OnPropertyChanged("ContentAwareness");
+			}
+		}
+		public KalturaNullableBoolean TwoPass
+		{
+			get { return _TwoPass; }
+			set 
+			{ 
+				_TwoPass = value;
+				OnPropertyChanged("TwoPass");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -155,6 +175,12 @@ namespace Kaltura
 					case "isEncrypted":
 						this.IsEncrypted = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
+					case "contentAwareness":
+						this.ContentAwareness = ParseFloat(txt);
+						continue;
+					case "twoPass":
+						this.TwoPass = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						continue;
 				}
 			}
 		}
@@ -173,6 +199,8 @@ namespace Kaltura
 			kparams.AddIfNotNull("forceNoneComplied", this.ForceNoneComplied);
 			kparams.AddIfNotNull("deletePolicy", this.DeletePolicy);
 			kparams.AddIfNotNull("isEncrypted", this.IsEncrypted);
+			kparams.AddIfNotNull("contentAwareness", this.ContentAwareness);
+			kparams.AddIfNotNull("twoPass", this.TwoPass);
 			return kparams;
 		}
 		#endregion

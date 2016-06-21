@@ -35,6 +35,7 @@ namespace Kaltura
 	{
 		#region Private Fields
 		private int _IndexIdGreaterThan = Int32.MinValue;
+		private int _DepthGreaterThanEqual = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -45,6 +46,15 @@ namespace Kaltura
 			{ 
 				_IndexIdGreaterThan = value;
 				OnPropertyChanged("IndexIdGreaterThan");
+			}
+		}
+		public int DepthGreaterThanEqual
+		{
+			get { return _DepthGreaterThanEqual; }
+			set 
+			{ 
+				_DepthGreaterThanEqual = value;
+				OnPropertyChanged("DepthGreaterThanEqual");
 			}
 		}
 		#endregion
@@ -64,6 +74,9 @@ namespace Kaltura
 					case "indexIdGreaterThan":
 						this.IndexIdGreaterThan = ParseInt(txt);
 						continue;
+					case "depthGreaterThanEqual":
+						this.DepthGreaterThanEqual = ParseInt(txt);
+						continue;
 				}
 			}
 		}
@@ -75,6 +88,7 @@ namespace Kaltura
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaIndexAdvancedFilter");
 			kparams.AddIfNotNull("indexIdGreaterThan", this.IndexIdGreaterThan);
+			kparams.AddIfNotNull("depthGreaterThanEqual", this.DepthGreaterThanEqual);
 			return kparams;
 		}
 		#endregion

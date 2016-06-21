@@ -36,6 +36,7 @@ namespace Kaltura
 		#region Private Fields
 		private KalturaFilter _Filter;
 		private int _LastIndexId = Int32.MinValue;
+		private int _LastIndexDepth = Int32.MinValue;
 		private bool? _ShouldUpdate = null;
 		#endregion
 
@@ -56,6 +57,15 @@ namespace Kaltura
 			{ 
 				_LastIndexId = value;
 				OnPropertyChanged("LastIndexId");
+			}
+		}
+		public int LastIndexDepth
+		{
+			get { return _LastIndexDepth; }
+			set 
+			{ 
+				_LastIndexDepth = value;
+				OnPropertyChanged("LastIndexDepth");
 			}
 		}
 		public bool? ShouldUpdate
@@ -87,6 +97,9 @@ namespace Kaltura
 					case "lastIndexId":
 						this.LastIndexId = ParseInt(txt);
 						continue;
+					case "lastIndexDepth":
+						this.LastIndexDepth = ParseInt(txt);
+						continue;
 					case "shouldUpdate":
 						this.ShouldUpdate = ParseBool(txt);
 						continue;
@@ -102,6 +115,7 @@ namespace Kaltura
 			kparams.AddReplace("objectType", "KalturaIndexJobData");
 			kparams.AddIfNotNull("filter", this.Filter);
 			kparams.AddIfNotNull("lastIndexId", this.LastIndexId);
+			kparams.AddIfNotNull("lastIndexDepth", this.LastIndexDepth);
 			kparams.AddIfNotNull("shouldUpdate", this.ShouldUpdate);
 			return kparams;
 		}

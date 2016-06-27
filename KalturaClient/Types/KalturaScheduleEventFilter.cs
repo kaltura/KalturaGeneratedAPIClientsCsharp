@@ -46,7 +46,6 @@ namespace Kaltura
 		private string _TemplateEntryCategoriesIdsLike = null;
 		private string _ResourceSystemNamesMultiLikeAnd = null;
 		private string _ResourceSystemNamesLike = null;
-		private string _TemplateEntryIdEqual = null;
 		private KalturaScheduleEventOrderBy _OrderBy = null;
 		#endregion
 
@@ -159,15 +158,6 @@ namespace Kaltura
 				OnPropertyChanged("ResourceSystemNamesLike");
 			}
 		}
-		public string TemplateEntryIdEqual
-		{
-			get { return _TemplateEntryIdEqual; }
-			set 
-			{ 
-				_TemplateEntryIdEqual = value;
-				OnPropertyChanged("TemplateEntryIdEqual");
-			}
-		}
 		public new KalturaScheduleEventOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -227,9 +217,6 @@ namespace Kaltura
 					case "resourceSystemNamesLike":
 						this.ResourceSystemNamesLike = txt;
 						continue;
-					case "templateEntryIdEqual":
-						this.TemplateEntryIdEqual = txt;
-						continue;
 					case "orderBy":
 						this.OrderBy = (KalturaScheduleEventOrderBy)KalturaStringEnum.Parse(typeof(KalturaScheduleEventOrderBy), txt);
 						continue;
@@ -255,7 +242,6 @@ namespace Kaltura
 			kparams.AddIfNotNull("templateEntryCategoriesIdsLike", this.TemplateEntryCategoriesIdsLike);
 			kparams.AddIfNotNull("resourceSystemNamesMultiLikeAnd", this.ResourceSystemNamesMultiLikeAnd);
 			kparams.AddIfNotNull("resourceSystemNamesLike", this.ResourceSystemNamesLike);
-			kparams.AddIfNotNull("templateEntryIdEqual", this.TemplateEntryIdEqual);
 			kparams.AddIfNotNull("orderBy", this.OrderBy);
 			return kparams;
 		}

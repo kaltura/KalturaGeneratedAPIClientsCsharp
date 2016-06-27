@@ -25,19 +25,38 @@
 //
 // @ignore
 // ===================================================================================================
+using System;
+using System.Xml;
+using System.Collections.Generic;
+
 namespace Kaltura
 {
-	public sealed class KalturaRuleActionType : KalturaStringEnum
+	public class KalturaAccessControlLimitThumbnailCaptureAction : KalturaRuleAction
 	{
-		public static readonly KalturaRuleActionType BLOCK = new KalturaRuleActionType("1");
-		public static readonly KalturaRuleActionType PREVIEW = new KalturaRuleActionType("2");
-		public static readonly KalturaRuleActionType LIMIT_FLAVORS = new KalturaRuleActionType("3");
-		public static readonly KalturaRuleActionType ADD_TO_STORAGE = new KalturaRuleActionType("4");
-		public static readonly KalturaRuleActionType LIMIT_DELIVERY_PROFILES = new KalturaRuleActionType("5");
-		public static readonly KalturaRuleActionType SERVE_FROM_REMOTE_SERVER = new KalturaRuleActionType("6");
-		public static readonly KalturaRuleActionType REQUEST_HOST_REGEX = new KalturaRuleActionType("7");
-		public static readonly KalturaRuleActionType LIMIT_THUMBNAIL_CAPTURE = new KalturaRuleActionType("8");
+		#region Private Fields
+		#endregion
 
-		private KalturaRuleActionType(string name) : base(name) { }
+		#region Properties
+		#endregion
+
+		#region CTor
+		public KalturaAccessControlLimitThumbnailCaptureAction()
+		{
+		}
+
+		public KalturaAccessControlLimitThumbnailCaptureAction(XmlElement node) : base(node)
+		{
+		}
+		#endregion
+
+		#region Methods
+		public override KalturaParams ToParams()
+		{
+			KalturaParams kparams = base.ToParams();
+			kparams.AddReplace("objectType", "KalturaAccessControlLimitThumbnailCaptureAction");
+			return kparams;
+		}
+		#endregion
 	}
 }
+

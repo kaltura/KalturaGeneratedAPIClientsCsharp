@@ -31,64 +31,38 @@ using System.Collections.Generic;
 
 namespace Kaltura
 {
-	public class KalturaAccessControlModifyRequestHostRegexAction : KalturaRuleAction
+	public class KalturaFeedDropFolderFilter : KalturaFeedDropFolderBaseFilter
 	{
 		#region Private Fields
-		private string _Pattern = null;
-		private string _Replacement = null;
-		private int _ReplacmenServerNodeId = Int32.MinValue;
+		private KalturaFeedDropFolderOrderBy _OrderBy = null;
 		#endregion
 
 		#region Properties
-		public string Pattern
+		public new KalturaFeedDropFolderOrderBy OrderBy
 		{
-			get { return _Pattern; }
+			get { return _OrderBy; }
 			set 
 			{ 
-				_Pattern = value;
-				OnPropertyChanged("Pattern");
-			}
-		}
-		public string Replacement
-		{
-			get { return _Replacement; }
-			set 
-			{ 
-				_Replacement = value;
-				OnPropertyChanged("Replacement");
-			}
-		}
-		public int ReplacmenServerNodeId
-		{
-			get { return _ReplacmenServerNodeId; }
-			set 
-			{ 
-				_ReplacmenServerNodeId = value;
-				OnPropertyChanged("ReplacmenServerNodeId");
+				_OrderBy = value;
+				OnPropertyChanged("OrderBy");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public KalturaAccessControlModifyRequestHostRegexAction()
+		public KalturaFeedDropFolderFilter()
 		{
 		}
 
-		public KalturaAccessControlModifyRequestHostRegexAction(XmlElement node) : base(node)
+		public KalturaFeedDropFolderFilter(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
 				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
-					case "pattern":
-						this.Pattern = txt;
-						continue;
-					case "replacement":
-						this.Replacement = txt;
-						continue;
-					case "replacmenServerNodeId":
-						this.ReplacmenServerNodeId = ParseInt(txt);
+					case "orderBy":
+						this.OrderBy = (KalturaFeedDropFolderOrderBy)KalturaStringEnum.Parse(typeof(KalturaFeedDropFolderOrderBy), txt);
 						continue;
 				}
 			}
@@ -99,10 +73,8 @@ namespace Kaltura
 		public override KalturaParams ToParams()
 		{
 			KalturaParams kparams = base.ToParams();
-			kparams.AddReplace("objectType", "KalturaAccessControlModifyRequestHostRegexAction");
-			kparams.AddIfNotNull("pattern", this.Pattern);
-			kparams.AddIfNotNull("replacement", this.Replacement);
-			kparams.AddIfNotNull("replacmenServerNodeId", this.ReplacmenServerNodeId);
+			kparams.AddReplace("objectType", "KalturaFeedDropFolderFilter");
+			kparams.AddIfNotNull("orderBy", this.OrderBy);
 			return kparams;
 		}
 		#endregion

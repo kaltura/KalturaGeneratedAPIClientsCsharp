@@ -31,64 +31,38 @@ using System.Collections.Generic;
 
 namespace Kaltura
 {
-	public class KalturaAccessControlModifyRequestHostRegexAction : KalturaRuleAction
+	public class KalturaSyndicationDistributionProviderFilter : KalturaSyndicationDistributionProviderBaseFilter
 	{
 		#region Private Fields
-		private string _Pattern = null;
-		private string _Replacement = null;
-		private int _ReplacmenServerNodeId = Int32.MinValue;
+		private KalturaSyndicationDistributionProviderOrderBy _OrderBy = null;
 		#endregion
 
 		#region Properties
-		public string Pattern
+		public new KalturaSyndicationDistributionProviderOrderBy OrderBy
 		{
-			get { return _Pattern; }
+			get { return _OrderBy; }
 			set 
 			{ 
-				_Pattern = value;
-				OnPropertyChanged("Pattern");
-			}
-		}
-		public string Replacement
-		{
-			get { return _Replacement; }
-			set 
-			{ 
-				_Replacement = value;
-				OnPropertyChanged("Replacement");
-			}
-		}
-		public int ReplacmenServerNodeId
-		{
-			get { return _ReplacmenServerNodeId; }
-			set 
-			{ 
-				_ReplacmenServerNodeId = value;
-				OnPropertyChanged("ReplacmenServerNodeId");
+				_OrderBy = value;
+				OnPropertyChanged("OrderBy");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public KalturaAccessControlModifyRequestHostRegexAction()
+		public KalturaSyndicationDistributionProviderFilter()
 		{
 		}
 
-		public KalturaAccessControlModifyRequestHostRegexAction(XmlElement node) : base(node)
+		public KalturaSyndicationDistributionProviderFilter(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
 				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
-					case "pattern":
-						this.Pattern = txt;
-						continue;
-					case "replacement":
-						this.Replacement = txt;
-						continue;
-					case "replacmenServerNodeId":
-						this.ReplacmenServerNodeId = ParseInt(txt);
+					case "orderBy":
+						this.OrderBy = (KalturaSyndicationDistributionProviderOrderBy)KalturaStringEnum.Parse(typeof(KalturaSyndicationDistributionProviderOrderBy), txt);
 						continue;
 				}
 			}
@@ -99,10 +73,8 @@ namespace Kaltura
 		public override KalturaParams ToParams()
 		{
 			KalturaParams kparams = base.ToParams();
-			kparams.AddReplace("objectType", "KalturaAccessControlModifyRequestHostRegexAction");
-			kparams.AddIfNotNull("pattern", this.Pattern);
-			kparams.AddIfNotNull("replacement", this.Replacement);
-			kparams.AddIfNotNull("replacmenServerNodeId", this.ReplacmenServerNodeId);
+			kparams.AddReplace("objectType", "KalturaSyndicationDistributionProviderFilter");
+			kparams.AddIfNotNull("orderBy", this.OrderBy);
 			return kparams;
 		}
 		#endregion

@@ -38,6 +38,8 @@ namespace Kaltura
 		private string _S3Region = null;
 		private string _SseType = null;
 		private string _SseKmsKeyId = null;
+		private string _SignatureType = null;
+		private string _EndPoint = null;
 		#endregion
 
 		#region Properties
@@ -77,6 +79,24 @@ namespace Kaltura
 				OnPropertyChanged("SseKmsKeyId");
 			}
 		}
+		public string SignatureType
+		{
+			get { return _SignatureType; }
+			set 
+			{ 
+				_SignatureType = value;
+				OnPropertyChanged("SignatureType");
+			}
+		}
+		public string EndPoint
+		{
+			get { return _EndPoint; }
+			set 
+			{ 
+				_EndPoint = value;
+				OnPropertyChanged("EndPoint");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -103,6 +123,12 @@ namespace Kaltura
 					case "sseKmsKeyId":
 						this.SseKmsKeyId = txt;
 						continue;
+					case "signatureType":
+						this.SignatureType = txt;
+						continue;
+					case "endPoint":
+						this.EndPoint = txt;
+						continue;
 				}
 			}
 		}
@@ -117,6 +143,8 @@ namespace Kaltura
 			kparams.AddIfNotNull("s3Region", this.S3Region);
 			kparams.AddIfNotNull("sseType", this.SseType);
 			kparams.AddIfNotNull("sseKmsKeyId", this.SseKmsKeyId);
+			kparams.AddIfNotNull("signatureType", this.SignatureType);
+			kparams.AddIfNotNull("endPoint", this.EndPoint);
 			return kparams;
 		}
 		#endregion

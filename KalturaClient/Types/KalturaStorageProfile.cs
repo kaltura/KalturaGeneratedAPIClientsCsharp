@@ -65,6 +65,7 @@ namespace Kaltura
 		private string _PrivateKey = null;
 		private string _PublicKey = null;
 		private string _PassPhrase = null;
+		private bool? _ShouldExportThumbs = null;
 		#endregion
 
 		#region Properties
@@ -347,6 +348,15 @@ namespace Kaltura
 				OnPropertyChanged("PassPhrase");
 			}
 		}
+		public bool? ShouldExportThumbs
+		{
+			get { return _ShouldExportThumbs; }
+			set 
+			{ 
+				_ShouldExportThumbs = value;
+				OnPropertyChanged("ShouldExportThumbs");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -466,6 +476,9 @@ namespace Kaltura
 					case "passPhrase":
 						this.PassPhrase = txt;
 						continue;
+					case "shouldExportThumbs":
+						this.ShouldExportThumbs = ParseBool(txt);
+						continue;
 				}
 			}
 		}
@@ -507,6 +520,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("privateKey", this.PrivateKey);
 			kparams.AddIfNotNull("publicKey", this.PublicKey);
 			kparams.AddIfNotNull("passPhrase", this.PassPhrase);
+			kparams.AddIfNotNull("shouldExportThumbs", this.ShouldExportThumbs);
 			return kparams;
 		}
 		#endregion

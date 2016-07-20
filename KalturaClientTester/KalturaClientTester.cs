@@ -37,7 +37,7 @@ namespace Kaltura
     {
         private const int PARTNER_ID = 1931861; //enter your partner id
         private const string ADMIN_SECRET = "83c3d4449a3abbe92ca5966f5f010eb4"; //enter your admin secret
-        private const string SERVICE_URL = "https://www.kaltura.com";
+        private const string SERVICE_URL = "http://www.kaltura.com";
         private const string USER_ID = "testUser";
 
         

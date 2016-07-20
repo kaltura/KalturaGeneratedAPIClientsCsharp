@@ -1,12 +1,12 @@
-language: csharp
+language: c
 
 #solution: KalturaClient.sln
-#install:
-#    - sudo apt-get update && sudo apt-get -y install mono-complete wget
-#    - sudo apt-get update && sudo apt-get -y install mono-complete wget 
+install:
+    - sudo apt-get update && sudo apt-get -y install mono-complete wget
 script: 
     #- wget -q 'http://mxr.mozilla.org/seamonkey/source/security/nss/lib/ckfw/builtins/certdata.txt?raw=1' -O "/tmp/certdata.txt" 
     #- mozroots --import --file /tmp/certdata.txt
+    - sed -i "s@https://www.kaltura.com@http://www.kaltura.com@g" KalturaClientTester/KalturaClientTester.cs    
     - xbuild KalturaClient.sln && cd ./KalturaClientTester/bin/Debug/ &&  echo | mono KalturaClientTester.exe
 notifications:
  email:

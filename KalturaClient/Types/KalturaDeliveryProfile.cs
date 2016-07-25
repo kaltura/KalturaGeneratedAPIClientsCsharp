@@ -53,6 +53,7 @@ namespace Kaltura
 		private string _MediaProtocols = null;
 		private int _Priority = Int32.MinValue;
 		private string _ExtraParams = null;
+		private KalturaAssetFilter _SupplementaryAssetsFilter;
 		#endregion
 
 		#region Properties
@@ -227,6 +228,15 @@ namespace Kaltura
 				OnPropertyChanged("ExtraParams");
 			}
 		}
+		public KalturaAssetFilter SupplementaryAssetsFilter
+		{
+			get { return _SupplementaryAssetsFilter; }
+			set 
+			{ 
+				_SupplementaryAssetsFilter = value;
+				OnPropertyChanged("SupplementaryAssetsFilter");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -298,6 +308,9 @@ namespace Kaltura
 					case "extraParams":
 						this.ExtraParams = txt;
 						continue;
+					case "supplementaryAssetsFilter":
+						this.SupplementaryAssetsFilter = (KalturaAssetFilter)KalturaObjectFactory.Create(propertyNode, "KalturaAssetFilter");
+						continue;
 				}
 			}
 		}
@@ -327,6 +340,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("mediaProtocols", this.MediaProtocols);
 			kparams.AddIfNotNull("priority", this.Priority);
 			kparams.AddIfNotNull("extraParams", this.ExtraParams);
+			kparams.AddIfNotNull("supplementaryAssetsFilter", this.SupplementaryAssetsFilter);
 			return kparams;
 		}
 		#endregion

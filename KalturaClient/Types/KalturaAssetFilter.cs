@@ -34,10 +34,20 @@ namespace Kaltura
 	public class KalturaAssetFilter : KalturaAssetBaseFilter
 	{
 		#region Private Fields
+		private string _TypeIn = null;
 		private KalturaAssetOrderBy _OrderBy = null;
 		#endregion
 
 		#region Properties
+		public string TypeIn
+		{
+			get { return _TypeIn; }
+			set 
+			{ 
+				_TypeIn = value;
+				OnPropertyChanged("TypeIn");
+			}
+		}
 		public new KalturaAssetOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -61,6 +71,9 @@ namespace Kaltura
 				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
+					case "typeIn":
+						this.TypeIn = txt;
+						continue;
 					case "orderBy":
 						this.OrderBy = (KalturaAssetOrderBy)KalturaStringEnum.Parse(typeof(KalturaAssetOrderBy), txt);
 						continue;
@@ -74,6 +87,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAssetFilter");
+			kparams.AddIfNotNull("typeIn", this.TypeIn);
 			kparams.AddIfNotNull("orderBy", this.OrderBy);
 			return kparams;
 		}

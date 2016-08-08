@@ -84,6 +84,7 @@ namespace Kaltura
 		public static readonly KalturaBatchJobType SYNC_CATEGORY_PRIVACY_CONTEXT = new KalturaBatchJobType("39");
 		public static readonly KalturaBatchJobType LIVE_REPORT_EXPORT = new KalturaBatchJobType("40");
 		public static readonly KalturaBatchJobType RECALCULATE_CACHE = new KalturaBatchJobType("41");
+		public static readonly KalturaBatchJobType LIVE_TO_VOD = new KalturaBatchJobType("42");
 
 		private KalturaBatchJobType(string name) : base(name) { }
 	}

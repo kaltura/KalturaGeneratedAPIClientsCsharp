@@ -31,38 +31,38 @@ using System.Collections.Generic;
 
 namespace Kaltura
 {
-	public class KalturaThumbAssetFilter : KalturaThumbAssetBaseFilter
+	public class KalturaMetadataReplacementOptionsItem : KalturaPluginReplacementOptionsItem
 	{
 		#region Private Fields
-		private KalturaThumbAssetOrderBy _OrderBy = null;
+		private bool? _ShouldCopyMetadata = null;
 		#endregion
 
 		#region Properties
-		public new KalturaThumbAssetOrderBy OrderBy
+		public bool? ShouldCopyMetadata
 		{
-			get { return _OrderBy; }
+			get { return _ShouldCopyMetadata; }
 			set 
 			{ 
-				_OrderBy = value;
-				OnPropertyChanged("OrderBy");
+				_ShouldCopyMetadata = value;
+				OnPropertyChanged("ShouldCopyMetadata");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public KalturaThumbAssetFilter()
+		public KalturaMetadataReplacementOptionsItem()
 		{
 		}
 
-		public KalturaThumbAssetFilter(XmlElement node) : base(node)
+		public KalturaMetadataReplacementOptionsItem(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
 				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
-					case "orderBy":
-						this.OrderBy = (KalturaThumbAssetOrderBy)KalturaStringEnum.Parse(typeof(KalturaThumbAssetOrderBy), txt);
+					case "shouldCopyMetadata":
+						this.ShouldCopyMetadata = ParseBool(txt);
 						continue;
 				}
 			}
@@ -73,8 +73,8 @@ namespace Kaltura
 		public override KalturaParams ToParams()
 		{
 			KalturaParams kparams = base.ToParams();
-			kparams.AddReplace("objectType", "KalturaThumbAssetFilter");
-			kparams.AddIfNotNull("orderBy", this.OrderBy);
+			kparams.AddReplace("objectType", "KalturaMetadataReplacementOptionsItem");
+			kparams.AddIfNotNull("shouldCopyMetadata", this.ShouldCopyMetadata);
 			return kparams;
 		}
 		#endregion

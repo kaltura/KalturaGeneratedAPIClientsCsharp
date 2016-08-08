@@ -35,6 +35,7 @@ namespace Kaltura
 	{
 		#region Private Fields
 		private int _KeepManualThumbnails = Int32.MinValue;
+		private IList<KalturaPluginReplacementOptionsItem> _PluginOptionItems;
 		#endregion
 
 		#region Properties
@@ -45,6 +46,15 @@ namespace Kaltura
 			{ 
 				_KeepManualThumbnails = value;
 				OnPropertyChanged("KeepManualThumbnails");
+			}
+		}
+		public IList<KalturaPluginReplacementOptionsItem> PluginOptionItems
+		{
+			get { return _PluginOptionItems; }
+			set 
+			{ 
+				_PluginOptionItems = value;
+				OnPropertyChanged("PluginOptionItems");
 			}
 		}
 		#endregion
@@ -64,6 +74,13 @@ namespace Kaltura
 					case "keepManualThumbnails":
 						this.KeepManualThumbnails = ParseInt(txt);
 						continue;
+					case "pluginOptionItems":
+						this.PluginOptionItems = new List<KalturaPluginReplacementOptionsItem>();
+						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
+						{
+							this.PluginOptionItems.Add((KalturaPluginReplacementOptionsItem)KalturaObjectFactory.Create(arrayNode, "KalturaPluginReplacementOptionsItem"));
+						}
+						continue;
 				}
 			}
 		}
@@ -75,6 +92,7 @@ namespace Kaltura
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEntryReplacementOptions");
 			kparams.AddIfNotNull("keepManualThumbnails", this.KeepManualThumbnails);
+			kparams.AddIfNotNull("pluginOptionItems", this.PluginOptionItems);
 			return kparams;
 		}
 		#endregion

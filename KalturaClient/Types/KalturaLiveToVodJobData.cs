@@ -31,38 +31,90 @@ using System.Collections.Generic;
 
 namespace Kaltura
 {
-	public class KalturaThumbAssetFilter : KalturaThumbAssetBaseFilter
+	public class KalturaLiveToVodJobData : KalturaJobData
 	{
 		#region Private Fields
-		private KalturaThumbAssetOrderBy _OrderBy = null;
+		private string _VodEntryId = null;
+		private string _LiveEntryId = null;
+		private float _TotalVodDuration = Single.MinValue;
+		private float _LastSegmentDuration = Single.MinValue;
+		private string _AmfArray = null;
 		#endregion
 
 		#region Properties
-		public new KalturaThumbAssetOrderBy OrderBy
+		public string VodEntryId
 		{
-			get { return _OrderBy; }
+			get { return _VodEntryId; }
 			set 
 			{ 
-				_OrderBy = value;
-				OnPropertyChanged("OrderBy");
+				_VodEntryId = value;
+				OnPropertyChanged("VodEntryId");
+			}
+		}
+		public string LiveEntryId
+		{
+			get { return _LiveEntryId; }
+			set 
+			{ 
+				_LiveEntryId = value;
+				OnPropertyChanged("LiveEntryId");
+			}
+		}
+		public float TotalVodDuration
+		{
+			get { return _TotalVodDuration; }
+			set 
+			{ 
+				_TotalVodDuration = value;
+				OnPropertyChanged("TotalVodDuration");
+			}
+		}
+		public float LastSegmentDuration
+		{
+			get { return _LastSegmentDuration; }
+			set 
+			{ 
+				_LastSegmentDuration = value;
+				OnPropertyChanged("LastSegmentDuration");
+			}
+		}
+		public string AmfArray
+		{
+			get { return _AmfArray; }
+			set 
+			{ 
+				_AmfArray = value;
+				OnPropertyChanged("AmfArray");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public KalturaThumbAssetFilter()
+		public KalturaLiveToVodJobData()
 		{
 		}
 
-		public KalturaThumbAssetFilter(XmlElement node) : base(node)
+		public KalturaLiveToVodJobData(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
 				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
-					case "orderBy":
-						this.OrderBy = (KalturaThumbAssetOrderBy)KalturaStringEnum.Parse(typeof(KalturaThumbAssetOrderBy), txt);
+					case "vodEntryId":
+						this.VodEntryId = txt;
+						continue;
+					case "liveEntryId":
+						this.LiveEntryId = txt;
+						continue;
+					case "totalVodDuration":
+						this.TotalVodDuration = ParseFloat(txt);
+						continue;
+					case "lastSegmentDuration":
+						this.LastSegmentDuration = ParseFloat(txt);
+						continue;
+					case "amfArray":
+						this.AmfArray = txt;
 						continue;
 				}
 			}
@@ -73,8 +125,12 @@ namespace Kaltura
 		public override KalturaParams ToParams()
 		{
 			KalturaParams kparams = base.ToParams();
-			kparams.AddReplace("objectType", "KalturaThumbAssetFilter");
-			kparams.AddIfNotNull("orderBy", this.OrderBy);
+			kparams.AddReplace("objectType", "KalturaLiveToVodJobData");
+			kparams.AddIfNotNull("vodEntryId", this.VodEntryId);
+			kparams.AddIfNotNull("liveEntryId", this.LiveEntryId);
+			kparams.AddIfNotNull("totalVodDuration", this.TotalVodDuration);
+			kparams.AddIfNotNull("lastSegmentDuration", this.LastSegmentDuration);
+			kparams.AddIfNotNull("amfArray", this.AmfArray);
 			return kparams;
 		}
 		#endregion

@@ -31,41 +31,21 @@ using System.Collections.Generic;
 
 namespace Kaltura
 {
-	public class KalturaThumbAssetFilter : KalturaThumbAssetBaseFilter
+	public class KalturaPluginReplacementOptionsItem : KalturaObjectBase
 	{
 		#region Private Fields
-		private KalturaThumbAssetOrderBy _OrderBy = null;
 		#endregion
 
 		#region Properties
-		public new KalturaThumbAssetOrderBy OrderBy
-		{
-			get { return _OrderBy; }
-			set 
-			{ 
-				_OrderBy = value;
-				OnPropertyChanged("OrderBy");
-			}
-		}
 		#endregion
 
 		#region CTor
-		public KalturaThumbAssetFilter()
+		public KalturaPluginReplacementOptionsItem()
 		{
 		}
 
-		public KalturaThumbAssetFilter(XmlElement node) : base(node)
+		public KalturaPluginReplacementOptionsItem(XmlElement node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
-			{
-				string txt = propertyNode.InnerText;
-				switch (propertyNode.Name)
-				{
-					case "orderBy":
-						this.OrderBy = (KalturaThumbAssetOrderBy)KalturaStringEnum.Parse(typeof(KalturaThumbAssetOrderBy), txt);
-						continue;
-				}
-			}
 		}
 		#endregion
 
@@ -73,8 +53,7 @@ namespace Kaltura
 		public override KalturaParams ToParams()
 		{
 			KalturaParams kparams = base.ToParams();
-			kparams.AddReplace("objectType", "KalturaThumbAssetFilter");
-			kparams.AddIfNotNull("orderBy", this.OrderBy);
+			kparams.AddReplace("objectType", "KalturaPluginReplacementOptionsItem");
 			return kparams;
 		}
 		#endregion

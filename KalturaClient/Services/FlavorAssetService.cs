@@ -283,11 +283,22 @@ namespace Kaltura
 			XmlElement result = _Client.DoQueue();
 		}
 
-		public void ServeAdStitchCmd(string assetId, string mediaInfoJson)
+		public void ServeAdStitchCmd(string assetId)
+		{
+			this.ServeAdStitchCmd(assetId, null);
+		}
+
+		public void ServeAdStitchCmd(string assetId, string ffprobeJson)
+		{
+			this.ServeAdStitchCmd(assetId, ffprobeJson, null);
+		}
+
+		public void ServeAdStitchCmd(string assetId, string ffprobeJson, string duration)
 		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddIfNotNull("assetId", assetId);
-			kparams.AddIfNotNull("mediaInfoJson", mediaInfoJson);
+			kparams.AddIfNotNull("ffprobeJson", ffprobeJson);
+			kparams.AddIfNotNull("duration", duration);
 			_Client.QueueServiceCall("flavorasset", "serveAdStitchCmd", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;

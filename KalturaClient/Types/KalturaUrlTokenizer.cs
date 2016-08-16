@@ -36,6 +36,7 @@ namespace Kaltura
 		#region Private Fields
 		private int _Window = Int32.MinValue;
 		private string _Key = null;
+		private bool? _LimitIpAddress = null;
 		#endregion
 
 		#region Properties
@@ -55,6 +56,15 @@ namespace Kaltura
 			{ 
 				_Key = value;
 				OnPropertyChanged("Key");
+			}
+		}
+		public bool? LimitIpAddress
+		{
+			get { return _LimitIpAddress; }
+			set 
+			{ 
+				_LimitIpAddress = value;
+				OnPropertyChanged("LimitIpAddress");
 			}
 		}
 		#endregion
@@ -77,6 +87,9 @@ namespace Kaltura
 					case "key":
 						this.Key = txt;
 						continue;
+					case "limitIpAddress":
+						this.LimitIpAddress = ParseBool(txt);
+						continue;
 				}
 			}
 		}
@@ -89,6 +102,7 @@ namespace Kaltura
 			kparams.AddReplace("objectType", "KalturaUrlTokenizer");
 			kparams.AddIfNotNull("window", this.Window);
 			kparams.AddIfNotNull("key", this.Key);
+			kparams.AddIfNotNull("limitIpAddress", this.LimitIpAddress);
 			return kparams;
 		}
 		#endregion

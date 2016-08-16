@@ -36,7 +36,6 @@ namespace Kaltura
 		#region Private Fields
 		private string _KeyPairId = null;
 		private string _RootDir = null;
-		private bool? _LimitIpAddress = null;
 		#endregion
 
 		#region Properties
@@ -56,15 +55,6 @@ namespace Kaltura
 			{ 
 				_RootDir = value;
 				OnPropertyChanged("RootDir");
-			}
-		}
-		public bool? LimitIpAddress
-		{
-			get { return _LimitIpAddress; }
-			set 
-			{ 
-				_LimitIpAddress = value;
-				OnPropertyChanged("LimitIpAddress");
 			}
 		}
 		#endregion
@@ -87,9 +77,6 @@ namespace Kaltura
 					case "rootDir":
 						this.RootDir = txt;
 						continue;
-					case "limitIpAddress":
-						this.LimitIpAddress = ParseBool(txt);
-						continue;
 				}
 			}
 		}
@@ -102,7 +89,6 @@ namespace Kaltura
 			kparams.AddReplace("objectType", "KalturaUrlTokenizerCloudFront");
 			kparams.AddIfNotNull("keyPairId", this.KeyPairId);
 			kparams.AddIfNotNull("rootDir", this.RootDir);
-			kparams.AddIfNotNull("limitIpAddress", this.LimitIpAddress);
 			return kparams;
 		}
 		#endregion

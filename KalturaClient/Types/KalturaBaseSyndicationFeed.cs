@@ -55,6 +55,7 @@ namespace Kaltura
 		private string _PrivacyContext = null;
 		private int _UpdatedAt = Int32.MinValue;
 		private bool? _UseCategoryEntries = null;
+		private string _FeedContentTypeHeader = null;
 		#endregion
 
 		#region Properties
@@ -247,6 +248,15 @@ namespace Kaltura
 				OnPropertyChanged("UseCategoryEntries");
 			}
 		}
+		public string FeedContentTypeHeader
+		{
+			get { return _FeedContentTypeHeader; }
+			set 
+			{ 
+				_FeedContentTypeHeader = value;
+				OnPropertyChanged("FeedContentTypeHeader");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -324,6 +334,9 @@ namespace Kaltura
 					case "useCategoryEntries":
 						this.UseCategoryEntries = ParseBool(txt);
 						continue;
+					case "feedContentTypeHeader":
+						this.FeedContentTypeHeader = txt;
+						continue;
 				}
 			}
 		}
@@ -355,6 +368,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("privacyContext", this.PrivacyContext);
 			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
 			kparams.AddIfNotNull("useCategoryEntries", this.UseCategoryEntries);
+			kparams.AddIfNotNull("feedContentTypeHeader", this.FeedContentTypeHeader);
 			return kparams;
 		}
 		#endregion

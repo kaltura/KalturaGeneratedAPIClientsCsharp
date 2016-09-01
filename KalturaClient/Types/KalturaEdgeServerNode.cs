@@ -34,18 +34,18 @@ namespace Kaltura
 	public class KalturaEdgeServerNode : KalturaDeliveryServerNode
 	{
 		#region Private Fields
-		private IList<KalturaKeyValue> _DeliveryProfileIds;
+		private string _PlaybackDomain = null;
 		private string _Config = null;
 		#endregion
 
 		#region Properties
-		public IList<KalturaKeyValue> DeliveryProfileIds
+		public string PlaybackDomain
 		{
-			get { return _DeliveryProfileIds; }
+			get { return _PlaybackDomain; }
 			set 
 			{ 
-				_DeliveryProfileIds = value;
-				OnPropertyChanged("DeliveryProfileIds");
+				_PlaybackDomain = value;
+				OnPropertyChanged("PlaybackDomain");
 			}
 		}
 		public string Config
@@ -71,12 +71,8 @@ namespace Kaltura
 				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
-					case "deliveryProfileIds":
-						this.DeliveryProfileIds = new List<KalturaKeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this.DeliveryProfileIds.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
-						}
+					case "playbackDomain":
+						this.PlaybackDomain = txt;
 						continue;
 					case "config":
 						this.Config = txt;
@@ -91,7 +87,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEdgeServerNode");
-			kparams.AddIfNotNull("deliveryProfileIds", this.DeliveryProfileIds);
+			kparams.AddIfNotNull("playbackDomain", this.PlaybackDomain);
 			kparams.AddIfNotNull("config", this.Config);
 			return kparams;
 		}

@@ -34,17 +34,17 @@ namespace Kaltura
 	public class KalturaDeliveryServerNode : KalturaServerNode
 	{
 		#region Private Fields
-		private string _PlaybackDomain = null;
+		private IList<KalturaKeyValue> _DeliveryProfileIds;
 		#endregion
 
 		#region Properties
-		public string PlaybackDomain
+		public IList<KalturaKeyValue> DeliveryProfileIds
 		{
-			get { return _PlaybackDomain; }
+			get { return _DeliveryProfileIds; }
 			set 
 			{ 
-				_PlaybackDomain = value;
-				OnPropertyChanged("PlaybackDomain");
+				_DeliveryProfileIds = value;
+				OnPropertyChanged("DeliveryProfileIds");
 			}
 		}
 		#endregion
@@ -61,8 +61,12 @@ namespace Kaltura
 				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
-					case "playbackDomain":
-						this.PlaybackDomain = txt;
+					case "deliveryProfileIds":
+						this.DeliveryProfileIds = new List<KalturaKeyValue>();
+						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
+						{
+							this.DeliveryProfileIds.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
+						}
 						continue;
 				}
 			}
@@ -74,7 +78,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDeliveryServerNode");
-			kparams.AddIfNotNull("playbackDomain", this.PlaybackDomain);
+			kparams.AddIfNotNull("deliveryProfileIds", this.DeliveryProfileIds);
 			return kparams;
 		}
 		#endregion

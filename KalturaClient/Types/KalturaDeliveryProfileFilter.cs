@@ -34,10 +34,20 @@ namespace Kaltura
 	public class KalturaDeliveryProfileFilter : KalturaDeliveryProfileBaseFilter
 	{
 		#region Private Fields
+		private KalturaNullableBoolean _IsLive = (KalturaNullableBoolean)Int32.MinValue;
 		private KalturaDeliveryProfileOrderBy _OrderBy = null;
 		#endregion
 
 		#region Properties
+		public KalturaNullableBoolean IsLive
+		{
+			get { return _IsLive; }
+			set 
+			{ 
+				_IsLive = value;
+				OnPropertyChanged("IsLive");
+			}
+		}
 		public new KalturaDeliveryProfileOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -61,6 +71,9 @@ namespace Kaltura
 				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
+					case "isLive":
+						this.IsLive = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						continue;
 					case "orderBy":
 						this.OrderBy = (KalturaDeliveryProfileOrderBy)KalturaStringEnum.Parse(typeof(KalturaDeliveryProfileOrderBy), txt);
 						continue;
@@ -74,6 +87,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDeliveryProfileFilter");
+			kparams.AddIfNotNull("isLive", this.IsLive);
 			kparams.AddIfNotNull("orderBy", this.OrderBy);
 			return kparams;
 		}

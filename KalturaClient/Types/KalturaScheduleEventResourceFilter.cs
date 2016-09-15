@@ -34,10 +34,20 @@ namespace Kaltura
 	public class KalturaScheduleEventResourceFilter : KalturaScheduleEventResourceBaseFilter
 	{
 		#region Private Fields
+		private int _EventIdOrItsParentIdEqual = Int32.MinValue;
 		private KalturaScheduleEventResourceOrderBy _OrderBy = null;
 		#endregion
 
 		#region Properties
+		public int EventIdOrItsParentIdEqual
+		{
+			get { return _EventIdOrItsParentIdEqual; }
+			set 
+			{ 
+				_EventIdOrItsParentIdEqual = value;
+				OnPropertyChanged("EventIdOrItsParentIdEqual");
+			}
+		}
 		public new KalturaScheduleEventResourceOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -61,6 +71,9 @@ namespace Kaltura
 				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
+					case "eventIdOrItsParentIdEqual":
+						this.EventIdOrItsParentIdEqual = ParseInt(txt);
+						continue;
 					case "orderBy":
 						this.OrderBy = (KalturaScheduleEventResourceOrderBy)KalturaStringEnum.Parse(typeof(KalturaScheduleEventResourceOrderBy), txt);
 						continue;
@@ -74,6 +87,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaScheduleEventResourceFilter");
+			kparams.AddIfNotNull("eventIdOrItsParentIdEqual", this.EventIdOrItsParentIdEqual);
 			kparams.AddIfNotNull("orderBy", this.OrderBy);
 			return kparams;
 		}

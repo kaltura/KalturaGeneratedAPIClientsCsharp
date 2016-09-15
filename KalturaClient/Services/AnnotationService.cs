@@ -144,5 +144,17 @@ namespace Kaltura
 				return;
 			XmlElement result = _Client.DoQueue();
 		}
+
+		public KalturaCuePoint Clone(string id, string entryId)
+		{
+			KalturaParams kparams = new KalturaParams();
+			kparams.AddIfNotNull("id", id);
+			kparams.AddIfNotNull("entryId", entryId);
+			_Client.QueueServiceCall("annotation_annotation", "clone", "KalturaCuePoint", kparams);
+			if (this._Client.IsMultiRequest)
+				return null;
+			XmlElement result = _Client.DoQueue();
+			return (KalturaCuePoint)KalturaObjectFactory.Create(result, "KalturaCuePoint");
+		}
 	}
 }

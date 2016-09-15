@@ -77,6 +77,7 @@ namespace Kaltura
 		private string _EntitledUsersPublish = null;
 		private string _Capabilities = null;
 		private string _TemplateEntryId = null;
+		private KalturaEntryDisplayInSearchType _DisplayInSearch = (KalturaEntryDisplayInSearchType)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -467,6 +468,15 @@ namespace Kaltura
 				OnPropertyChanged("TemplateEntryId");
 			}
 		}
+		public KalturaEntryDisplayInSearchType DisplayInSearch
+		{
+			get { return _DisplayInSearch; }
+			set 
+			{ 
+				_DisplayInSearch = value;
+				OnPropertyChanged("DisplayInSearch");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -614,6 +624,9 @@ namespace Kaltura
 					case "templateEntryId":
 						this.TemplateEntryId = txt;
 						continue;
+					case "displayInSearch":
+						this.DisplayInSearch = (KalturaEntryDisplayInSearchType)ParseEnum(typeof(KalturaEntryDisplayInSearchType), txt);
+						continue;
 				}
 			}
 		}
@@ -667,6 +680,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("entitledUsersPublish", this.EntitledUsersPublish);
 			kparams.AddIfNotNull("capabilities", this.Capabilities);
 			kparams.AddIfNotNull("templateEntryId", this.TemplateEntryId);
+			kparams.AddIfNotNull("displayInSearch", this.DisplayInSearch);
 			return kparams;
 		}
 		#endregion

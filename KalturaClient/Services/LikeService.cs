@@ -48,7 +48,7 @@ namespace Kaltura
 			if (this._Client.IsMultiRequest)
 				return false;
 			XmlElement result = _Client.DoQueue();
-			if (result.InnerText == "1")
+			if (result.InnerText.Equals("1") || result.InnerText.ToLower().Equals("true"))
 				return true;
 			return false;
 		}
@@ -61,7 +61,7 @@ namespace Kaltura
 			if (this._Client.IsMultiRequest)
 				return false;
 			XmlElement result = _Client.DoQueue();
-			if (result.InnerText == "1")
+			if (result.InnerText.Equals("1") || result.InnerText.ToLower().Equals("true"))
 				return true;
 			return false;
 		}
@@ -80,7 +80,7 @@ namespace Kaltura
 			if (this._Client.IsMultiRequest)
 				return false;
 			XmlElement result = _Client.DoQueue();
-			if (result.InnerText == "1")
+			if (result.InnerText.Equals("1") || result.InnerText.ToLower().Equals("true"))
 				return true;
 			return false;
 		}

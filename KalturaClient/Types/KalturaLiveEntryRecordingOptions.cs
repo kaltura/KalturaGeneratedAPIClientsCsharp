@@ -37,6 +37,7 @@ namespace Kaltura
 		private KalturaNullableBoolean _ShouldCopyEntitlement = (KalturaNullableBoolean)Int32.MinValue;
 		private KalturaNullableBoolean _ShouldCopyScheduling = (KalturaNullableBoolean)Int32.MinValue;
 		private KalturaNullableBoolean _ShouldCopyThumbnail = (KalturaNullableBoolean)Int32.MinValue;
+		private KalturaNullableBoolean _ShouldMakeHidden = (KalturaNullableBoolean)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -67,6 +68,15 @@ namespace Kaltura
 				OnPropertyChanged("ShouldCopyThumbnail");
 			}
 		}
+		public KalturaNullableBoolean ShouldMakeHidden
+		{
+			get { return _ShouldMakeHidden; }
+			set 
+			{ 
+				_ShouldMakeHidden = value;
+				OnPropertyChanged("ShouldMakeHidden");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -90,6 +100,9 @@ namespace Kaltura
 					case "shouldCopyThumbnail":
 						this.ShouldCopyThumbnail = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
+					case "shouldMakeHidden":
+						this.ShouldMakeHidden = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						continue;
 				}
 			}
 		}
@@ -103,6 +116,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("shouldCopyEntitlement", this.ShouldCopyEntitlement);
 			kparams.AddIfNotNull("shouldCopyScheduling", this.ShouldCopyScheduling);
 			kparams.AddIfNotNull("shouldCopyThumbnail", this.ShouldCopyThumbnail);
+			kparams.AddIfNotNull("shouldMakeHidden", this.ShouldMakeHidden);
 			return kparams;
 		}
 		#endregion

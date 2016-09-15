@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2016  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -25,32 +25,13 @@
 //
 // @ignore
 // ===================================================================================================
-using System;
-using System.Text;
-using System.Xml;
-using System.Runtime.Serialization;
-
 namespace Kaltura
 {
-	public static class KalturaObjectFactory
+	public enum KalturaEntryDisplayInSearchType
 	{
-		public static object Create(XmlElement xmlElement, string fallbackClass)
-		{
-			if (xmlElement["objectType"] == null)
-			{
-				return null;
-			}
-			string className = xmlElement["objectType"].InnerText;
-			Type type = Type.GetType("Kaltura." + className);
-			if (type == null)
-			{
-				if (fallbackClass != null)
-                    type = Type.GetType("Kaltura." + fallbackClass);
-			}
-			
-			if(type == null)
-				throw new SerializationException("Invalid object type");
-			return System.Activator.CreateInstance(type, xmlElement);
-		}
+		SYSTEM = -1,
+		NONE = 0,
+		PARTNER_ONLY = 1,
+		KALTURA_NETWORK = 2,
 	}
 }

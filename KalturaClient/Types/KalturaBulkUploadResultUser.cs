@@ -47,6 +47,7 @@ namespace Kaltura
 		private int _Gender = Int32.MinValue;
 		private string _FirstName = null;
 		private string _LastName = null;
+		private string _Group = null;
 		#endregion
 
 		#region Properties
@@ -167,6 +168,15 @@ namespace Kaltura
 				OnPropertyChanged("LastName");
 			}
 		}
+		public string Group
+		{
+			get { return _Group; }
+			set 
+			{ 
+				_Group = value;
+				OnPropertyChanged("Group");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -220,6 +230,9 @@ namespace Kaltura
 					case "lastName":
 						this.LastName = txt;
 						continue;
+					case "group":
+						this.Group = txt;
+						continue;
 				}
 			}
 		}
@@ -243,6 +256,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("gender", this.Gender);
 			kparams.AddIfNotNull("firstName", this.FirstName);
 			kparams.AddIfNotNull("lastName", this.LastName);
+			kparams.AddIfNotNull("group", this.Group);
 			return kparams;
 		}
 		#endregion

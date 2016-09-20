@@ -49,20 +49,10 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public string Name
 		{
@@ -94,11 +84,6 @@ namespace Kaltura
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public KalturaNullableBoolean IsDefault
 		{
@@ -109,7 +94,7 @@ namespace Kaltura
 				OnPropertyChanged("IsDefault");
 			}
 		}
-		public IList<KalturaBaseRestriction> Restrictions
+		public new IList<KalturaBaseRestriction> Restrictions
 		{
 			get { return _Restrictions; }
 			set 
@@ -121,11 +106,6 @@ namespace Kaltura
 		public bool? ContainsUnsuportedRestrictions
 		{
 			get { return _ContainsUnsuportedRestrictions; }
-			set 
-			{ 
-				_ContainsUnsuportedRestrictions = value;
-				OnPropertyChanged("ContainsUnsuportedRestrictions");
-			}
 		}
 		#endregion
 
@@ -142,35 +122,35 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 					case "systemName":
-						this.SystemName = txt;
+						this._SystemName = txt;
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "isDefault":
-						this.IsDefault = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._IsDefault = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "restrictions":
-						this.Restrictions = new List<KalturaBaseRestriction>();
+						this._Restrictions = new List<KalturaBaseRestriction>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Restrictions.Add((KalturaBaseRestriction)KalturaObjectFactory.Create(arrayNode, "KalturaBaseRestriction"));
+							this._Restrictions.Add((KalturaBaseRestriction)KalturaObjectFactory.Create(arrayNode, "KalturaBaseRestriction"));
 						}
 						continue;
 					case "containsUnsuportedRestrictions":
-						this.ContainsUnsuportedRestrictions = ParseBool(txt);
+						this._ContainsUnsuportedRestrictions = ParseBool(txt);
 						continue;
 				}
 			}

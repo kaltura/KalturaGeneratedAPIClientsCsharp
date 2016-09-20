@@ -89,7 +89,7 @@ namespace Kaltura
 				OnPropertyChanged("Pager");
 			}
 		}
-		public IList<KalturaDetachedResponseProfile> RelatedProfiles
+		public new IList<KalturaDetachedResponseProfile> RelatedProfiles
 		{
 			get { return _RelatedProfiles; }
 			set 
@@ -98,7 +98,7 @@ namespace Kaltura
 				OnPropertyChanged("RelatedProfiles");
 			}
 		}
-		public IList<KalturaResponseProfileMapping> Mappings
+		public new IList<KalturaResponseProfileMapping> Mappings
 		{
 			get { return _Mappings; }
 			set 
@@ -122,32 +122,32 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 					case "type":
-						this.Type = (KalturaResponseProfileType)ParseEnum(typeof(KalturaResponseProfileType), txt);
+						this._Type = (KalturaResponseProfileType)ParseEnum(typeof(KalturaResponseProfileType), txt);
 						continue;
 					case "fields":
-						this.Fields = txt;
+						this._Fields = txt;
 						continue;
 					case "filter":
-						this.Filter = (KalturaRelatedFilter)KalturaObjectFactory.Create(propertyNode, "KalturaRelatedFilter");
+						this._Filter = (KalturaRelatedFilter)KalturaObjectFactory.Create(propertyNode, "KalturaRelatedFilter");
 						continue;
 					case "pager":
-						this.Pager = (KalturaFilterPager)KalturaObjectFactory.Create(propertyNode, "KalturaFilterPager");
+						this._Pager = (KalturaFilterPager)KalturaObjectFactory.Create(propertyNode, "KalturaFilterPager");
 						continue;
 					case "relatedProfiles":
-						this.RelatedProfiles = new List<KalturaDetachedResponseProfile>();
+						this._RelatedProfiles = new List<KalturaDetachedResponseProfile>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.RelatedProfiles.Add((KalturaDetachedResponseProfile)KalturaObjectFactory.Create(arrayNode, "KalturaDetachedResponseProfile"));
+							this._RelatedProfiles.Add((KalturaDetachedResponseProfile)KalturaObjectFactory.Create(arrayNode, "KalturaDetachedResponseProfile"));
 						}
 						continue;
 					case "mappings":
-						this.Mappings = new List<KalturaResponseProfileMapping>();
+						this._Mappings = new List<KalturaResponseProfileMapping>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Mappings.Add((KalturaResponseProfileMapping)KalturaObjectFactory.Create(arrayNode, "KalturaResponseProfileMapping"));
+							this._Mappings.Add((KalturaResponseProfileMapping)KalturaObjectFactory.Create(arrayNode, "KalturaResponseProfileMapping"));
 						}
 						continue;
 				}

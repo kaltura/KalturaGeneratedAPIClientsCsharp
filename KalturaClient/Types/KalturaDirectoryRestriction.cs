@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "directoryRestrictionType":
-						this.DirectoryRestrictionType = (KalturaDirectoryRestrictionType)ParseEnum(typeof(KalturaDirectoryRestrictionType), txt);
+						this._DirectoryRestrictionType = (KalturaDirectoryRestrictionType)ParseEnum(typeof(KalturaDirectoryRestrictionType), txt);
 						continue;
 				}
 			}

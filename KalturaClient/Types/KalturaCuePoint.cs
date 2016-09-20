@@ -56,29 +56,14 @@ namespace Kaltura
 		public string Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public KalturaCuePointType CuePointType
 		{
 			get { return _CuePointType; }
-			set 
-			{ 
-				_CuePointType = value;
-				OnPropertyChanged("CuePointType");
-			}
 		}
 		public KalturaCuePointStatus Status
 		{
 			get { return _Status; }
-			set 
-			{ 
-				_Status = value;
-				OnPropertyChanged("Status");
-			}
 		}
 		public string EntryId
 		{
@@ -92,29 +77,14 @@ namespace Kaltura
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public int TriggeredAt
 		{
@@ -146,11 +116,6 @@ namespace Kaltura
 		public string UserId
 		{
 			get { return _UserId; }
-			set 
-			{ 
-				_UserId = value;
-				OnPropertyChanged("UserId");
-			}
 		}
 		public string PartnerData
 		{
@@ -212,52 +177,52 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = txt;
+						this._Id = txt;
 						continue;
 					case "cuePointType":
-						this.CuePointType = (KalturaCuePointType)KalturaStringEnum.Parse(typeof(KalturaCuePointType), txt);
+						this._CuePointType = (KalturaCuePointType)KalturaStringEnum.Parse(typeof(KalturaCuePointType), txt);
 						continue;
 					case "status":
-						this.Status = (KalturaCuePointStatus)ParseEnum(typeof(KalturaCuePointStatus), txt);
+						this._Status = (KalturaCuePointStatus)ParseEnum(typeof(KalturaCuePointStatus), txt);
 						continue;
 					case "entryId":
-						this.EntryId = txt;
+						this._EntryId = txt;
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "triggeredAt":
-						this.TriggeredAt = ParseInt(txt);
+						this._TriggeredAt = ParseInt(txt);
 						continue;
 					case "tags":
-						this.Tags = txt;
+						this._Tags = txt;
 						continue;
 					case "startTime":
-						this.StartTime = ParseInt(txt);
+						this._StartTime = ParseInt(txt);
 						continue;
 					case "userId":
-						this.UserId = txt;
+						this._UserId = txt;
 						continue;
 					case "partnerData":
-						this.PartnerData = txt;
+						this._PartnerData = txt;
 						continue;
 					case "partnerSortValue":
-						this.PartnerSortValue = ParseInt(txt);
+						this._PartnerSortValue = ParseInt(txt);
 						continue;
 					case "forceStop":
-						this.ForceStop = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._ForceStop = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "thumbOffset":
-						this.ThumbOffset = ParseInt(txt);
+						this._ThumbOffset = ParseInt(txt);
 						continue;
 					case "systemName":
-						this.SystemName = txt;
+						this._SystemName = txt;
 						continue;
 				}
 			}

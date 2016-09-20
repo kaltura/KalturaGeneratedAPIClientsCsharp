@@ -48,13 +48,8 @@ namespace Kaltura
 		public int Version
 		{
 			get { return _Version; }
-			set 
-			{ 
-				_Version = value;
-				OnPropertyChanged("Version");
-			}
 		}
-		public IList<KalturaKeyValue> UiAttributes
+		public new IList<KalturaKeyValue> UiAttributes
 		{
 			get { return _UiAttributes; }
 			set 
@@ -132,32 +127,32 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "version":
-						this.Version = ParseInt(txt);
+						this._Version = ParseInt(txt);
 						continue;
 					case "uiAttributes":
-						this.UiAttributes = new List<KalturaKeyValue>();
+						this._UiAttributes = new List<KalturaKeyValue>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.UiAttributes.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
+							this._UiAttributes.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
 						}
 						continue;
 					case "showResultOnAnswer":
-						this.ShowResultOnAnswer = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._ShowResultOnAnswer = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "showCorrectKeyOnAnswer":
-						this.ShowCorrectKeyOnAnswer = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._ShowCorrectKeyOnAnswer = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "allowAnswerUpdate":
-						this.AllowAnswerUpdate = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._AllowAnswerUpdate = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "showCorrectAfterSubmission":
-						this.ShowCorrectAfterSubmission = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._ShowCorrectAfterSubmission = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "allowDownload":
-						this.AllowDownload = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._AllowDownload = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "showGradeAfterSubmission":
-						this.ShowGradeAfterSubmission = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._ShowGradeAfterSubmission = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 				}
 			}

@@ -122,25 +122,25 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "lastPlayedAtGreaterThanOrEqual":
-						this.LastPlayedAtGreaterThanOrEqual = ParseInt(txt);
+						this._LastPlayedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "lastPlayedAtLessThanOrEqual":
-						this.LastPlayedAtLessThanOrEqual = ParseInt(txt);
+						this._LastPlayedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "durationLessThan":
-						this.DurationLessThan = ParseInt(txt);
+						this._DurationLessThan = ParseInt(txt);
 						continue;
 					case "durationGreaterThan":
-						this.DurationGreaterThan = ParseInt(txt);
+						this._DurationGreaterThan = ParseInt(txt);
 						continue;
 					case "durationLessThanOrEqual":
-						this.DurationLessThanOrEqual = ParseInt(txt);
+						this._DurationLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "durationGreaterThanOrEqual":
-						this.DurationGreaterThanOrEqual = ParseInt(txt);
+						this._DurationGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "durationTypeMatchOr":
-						this.DurationTypeMatchOr = txt;
+						this._DurationTypeMatchOr = txt;
 						continue;
 				}
 			}

@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "contentMatchPolicy":
-						this.ContentMatchPolicy = (KalturaDropFolderContentFileHandlerMatchPolicy)ParseEnum(typeof(KalturaDropFolderContentFileHandlerMatchPolicy), txt);
+						this._ContentMatchPolicy = (KalturaDropFolderContentFileHandlerMatchPolicy)ParseEnum(typeof(KalturaDropFolderContentFileHandlerMatchPolicy), txt);
 						continue;
 					case "slugRegex":
-						this.SlugRegex = txt;
+						this._SlugRegex = txt;
 						continue;
 				}
 			}

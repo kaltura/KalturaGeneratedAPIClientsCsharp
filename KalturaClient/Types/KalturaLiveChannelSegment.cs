@@ -55,38 +55,18 @@ namespace Kaltura
 		public string Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public string Name
 		{
@@ -127,11 +107,6 @@ namespace Kaltura
 		public KalturaLiveChannelSegmentStatus Status
 		{
 			get { return _Status; }
-			set 
-			{ 
-				_Status = value;
-				OnPropertyChanged("Status");
-			}
 		}
 		public string ChannelId
 		{
@@ -202,49 +177,49 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = txt;
+						this._Id = txt;
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "tags":
-						this.Tags = txt;
+						this._Tags = txt;
 						continue;
 					case "type":
-						this.Type = (KalturaLiveChannelSegmentType)KalturaStringEnum.Parse(typeof(KalturaLiveChannelSegmentType), txt);
+						this._Type = (KalturaLiveChannelSegmentType)KalturaStringEnum.Parse(typeof(KalturaLiveChannelSegmentType), txt);
 						continue;
 					case "status":
-						this.Status = (KalturaLiveChannelSegmentStatus)KalturaStringEnum.Parse(typeof(KalturaLiveChannelSegmentStatus), txt);
+						this._Status = (KalturaLiveChannelSegmentStatus)KalturaStringEnum.Parse(typeof(KalturaLiveChannelSegmentStatus), txt);
 						continue;
 					case "channelId":
-						this.ChannelId = txt;
+						this._ChannelId = txt;
 						continue;
 					case "entryId":
-						this.EntryId = txt;
+						this._EntryId = txt;
 						continue;
 					case "triggerType":
-						this.TriggerType = (KalturaLiveChannelSegmentTriggerType)KalturaStringEnum.Parse(typeof(KalturaLiveChannelSegmentTriggerType), txt);
+						this._TriggerType = (KalturaLiveChannelSegmentTriggerType)KalturaStringEnum.Parse(typeof(KalturaLiveChannelSegmentTriggerType), txt);
 						continue;
 					case "triggerSegmentId":
-						this.TriggerSegmentId = txt;
+						this._TriggerSegmentId = txt;
 						continue;
 					case "startTime":
-						this.StartTime = ParseFloat(txt);
+						this._StartTime = ParseFloat(txt);
 						continue;
 					case "duration":
-						this.Duration = ParseFloat(txt);
+						this._Duration = ParseFloat(txt);
 						continue;
 				}
 			}

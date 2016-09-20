@@ -64,11 +64,6 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public string Name
 		{
@@ -91,11 +86,6 @@ namespace Kaltura
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public KalturaUiConfObjType ObjType
 		{
@@ -109,11 +99,6 @@ namespace Kaltura
 		public string ObjTypeAsString
 		{
 			get { return _ObjTypeAsString; }
-			set 
-			{ 
-				_ObjTypeAsString = value;
-				OnPropertyChanged("ObjTypeAsString");
-			}
 		}
 		public int Width
 		{
@@ -154,11 +139,6 @@ namespace Kaltura
 		public string ConfFilePath
 		{
 			get { return _ConfFilePath; }
-			set 
-			{ 
-				_ConfFilePath = value;
-				OnPropertyChanged("ConfFilePath");
-			}
 		}
 		public string ConfFile
 		{
@@ -226,20 +206,10 @@ namespace Kaltura
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public KalturaUiConfCreationMode CreationMode
 		{
@@ -262,11 +232,6 @@ namespace Kaltura
 		public string Version
 		{
 			get { return _Version; }
-			set 
-			{ 
-				_Version = value;
-				OnPropertyChanged("Version");
-			}
 		}
 		public string PartnerTags
 		{
@@ -292,76 +257,76 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "objType":
-						this.ObjType = (KalturaUiConfObjType)ParseEnum(typeof(KalturaUiConfObjType), txt);
+						this._ObjType = (KalturaUiConfObjType)ParseEnum(typeof(KalturaUiConfObjType), txt);
 						continue;
 					case "objTypeAsString":
-						this.ObjTypeAsString = txt;
+						this._ObjTypeAsString = txt;
 						continue;
 					case "width":
-						this.Width = ParseInt(txt);
+						this._Width = ParseInt(txt);
 						continue;
 					case "height":
-						this.Height = ParseInt(txt);
+						this._Height = ParseInt(txt);
 						continue;
 					case "htmlParams":
-						this.HtmlParams = txt;
+						this._HtmlParams = txt;
 						continue;
 					case "swfUrl":
-						this.SwfUrl = txt;
+						this._SwfUrl = txt;
 						continue;
 					case "confFilePath":
-						this.ConfFilePath = txt;
+						this._ConfFilePath = txt;
 						continue;
 					case "confFile":
-						this.ConfFile = txt;
+						this._ConfFile = txt;
 						continue;
 					case "confFileFeatures":
-						this.ConfFileFeatures = txt;
+						this._ConfFileFeatures = txt;
 						continue;
 					case "config":
-						this.Config = txt;
+						this._Config = txt;
 						continue;
 					case "confVars":
-						this.ConfVars = txt;
+						this._ConfVars = txt;
 						continue;
 					case "useCdn":
-						this.UseCdn = ParseBool(txt);
+						this._UseCdn = ParseBool(txt);
 						continue;
 					case "tags":
-						this.Tags = txt;
+						this._Tags = txt;
 						continue;
 					case "swfUrlVersion":
-						this.SwfUrlVersion = txt;
+						this._SwfUrlVersion = txt;
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "creationMode":
-						this.CreationMode = (KalturaUiConfCreationMode)ParseEnum(typeof(KalturaUiConfCreationMode), txt);
+						this._CreationMode = (KalturaUiConfCreationMode)ParseEnum(typeof(KalturaUiConfCreationMode), txt);
 						continue;
 					case "html5Url":
-						this.Html5Url = txt;
+						this._Html5Url = txt;
 						continue;
 					case "version":
-						this.Version = txt;
+						this._Version = txt;
 						continue;
 					case "partnerTags":
-						this.PartnerTags = txt;
+						this._PartnerTags = txt;
 						continue;
 				}
 			}

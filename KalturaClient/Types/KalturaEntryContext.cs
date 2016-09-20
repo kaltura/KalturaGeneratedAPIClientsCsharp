@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "entryId":
-						this.EntryId = txt;
+						this._EntryId = txt;
 						continue;
 					case "followEntryRedirect":
-						this.FollowEntryRedirect = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._FollowEntryRedirect = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 				}
 			}

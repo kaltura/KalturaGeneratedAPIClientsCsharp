@@ -48,11 +48,6 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public string EntryId
 		{
@@ -75,47 +70,22 @@ namespace Kaltura
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public KalturaUserEntryStatus Status
 		{
 			get { return _Status; }
-			set 
-			{ 
-				_Status = value;
-				OnPropertyChanged("Status");
-			}
 		}
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public KalturaUserEntryType Type
 		{
 			get { return _Type; }
-			set 
-			{ 
-				_Type = value;
-				OnPropertyChanged("Type");
-			}
 		}
 		#endregion
 
@@ -132,28 +102,28 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "entryId":
-						this.EntryId = txt;
+						this._EntryId = txt;
 						continue;
 					case "userId":
-						this.UserId = txt;
+						this._UserId = txt;
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "status":
-						this.Status = (KalturaUserEntryStatus)KalturaStringEnum.Parse(typeof(KalturaUserEntryStatus), txt);
+						this._Status = (KalturaUserEntryStatus)KalturaStringEnum.Parse(typeof(KalturaUserEntryStatus), txt);
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "type":
-						this.Type = (KalturaUserEntryType)KalturaStringEnum.Parse(typeof(KalturaUserEntryType), txt);
+						this._Type = (KalturaUserEntryType)KalturaStringEnum.Parse(typeof(KalturaUserEntryType), txt);
 						continue;
 				}
 			}

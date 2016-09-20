@@ -41,11 +41,6 @@ namespace Kaltura
 		public KalturaEmailNotificationRecipientProviderType ProviderType
 		{
 			get { return _ProviderType; }
-			set 
-			{ 
-				_ProviderType = value;
-				OnPropertyChanged("ProviderType");
-			}
 		}
 		#endregion
 
@@ -62,7 +57,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "providerType":
-						this.ProviderType = (KalturaEmailNotificationRecipientProviderType)KalturaStringEnum.Parse(typeof(KalturaEmailNotificationRecipientProviderType), txt);
+						this._ProviderType = (KalturaEmailNotificationRecipientProviderType)KalturaStringEnum.Parse(typeof(KalturaEmailNotificationRecipientProviderType), txt);
 						continue;
 				}
 			}

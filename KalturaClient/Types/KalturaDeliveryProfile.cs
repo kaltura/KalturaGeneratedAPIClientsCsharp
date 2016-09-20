@@ -60,20 +60,10 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public string Name
 		{
@@ -114,20 +104,10 @@ namespace Kaltura
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public KalturaPlaybackProtocol StreamerType
 		{
@@ -150,11 +130,6 @@ namespace Kaltura
 		public string HostName
 		{
 			get { return _HostName; }
-			set 
-			{ 
-				_HostName = value;
-				OnPropertyChanged("HostName");
-			}
 		}
 		public KalturaDeliveryStatus Status
 		{
@@ -186,20 +161,10 @@ namespace Kaltura
 		public KalturaNullableBoolean IsDefault
 		{
 			get { return _IsDefault; }
-			set 
-			{ 
-				_IsDefault = value;
-				OnPropertyChanged("IsDefault");
-			}
 		}
 		public int ParentId
 		{
 			get { return _ParentId; }
-			set 
-			{ 
-				_ParentId = value;
-				OnPropertyChanged("ParentId");
-			}
 		}
 		public string MediaProtocols
 		{
@@ -252,64 +217,64 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 					case "type":
-						this.Type = (KalturaDeliveryProfileType)KalturaStringEnum.Parse(typeof(KalturaDeliveryProfileType), txt);
+						this._Type = (KalturaDeliveryProfileType)KalturaStringEnum.Parse(typeof(KalturaDeliveryProfileType), txt);
 						continue;
 					case "systemName":
-						this.SystemName = txt;
+						this._SystemName = txt;
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "streamerType":
-						this.StreamerType = (KalturaPlaybackProtocol)KalturaStringEnum.Parse(typeof(KalturaPlaybackProtocol), txt);
+						this._StreamerType = (KalturaPlaybackProtocol)KalturaStringEnum.Parse(typeof(KalturaPlaybackProtocol), txt);
 						continue;
 					case "url":
-						this.Url = txt;
+						this._Url = txt;
 						continue;
 					case "hostName":
-						this.HostName = txt;
+						this._HostName = txt;
 						continue;
 					case "status":
-						this.Status = (KalturaDeliveryStatus)ParseEnum(typeof(KalturaDeliveryStatus), txt);
+						this._Status = (KalturaDeliveryStatus)ParseEnum(typeof(KalturaDeliveryStatus), txt);
 						continue;
 					case "recognizer":
-						this.Recognizer = (KalturaUrlRecognizer)KalturaObjectFactory.Create(propertyNode, "KalturaUrlRecognizer");
+						this._Recognizer = (KalturaUrlRecognizer)KalturaObjectFactory.Create(propertyNode, "KalturaUrlRecognizer");
 						continue;
 					case "tokenizer":
-						this.Tokenizer = (KalturaUrlTokenizer)KalturaObjectFactory.Create(propertyNode, "KalturaUrlTokenizer");
+						this._Tokenizer = (KalturaUrlTokenizer)KalturaObjectFactory.Create(propertyNode, "KalturaUrlTokenizer");
 						continue;
 					case "isDefault":
-						this.IsDefault = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._IsDefault = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "parentId":
-						this.ParentId = ParseInt(txt);
+						this._ParentId = ParseInt(txt);
 						continue;
 					case "mediaProtocols":
-						this.MediaProtocols = txt;
+						this._MediaProtocols = txt;
 						continue;
 					case "priority":
-						this.Priority = ParseInt(txt);
+						this._Priority = ParseInt(txt);
 						continue;
 					case "extraParams":
-						this.ExtraParams = txt;
+						this._ExtraParams = txt;
 						continue;
 					case "supplementaryAssetsFilter":
-						this.SupplementaryAssetsFilter = (KalturaAssetFilter)KalturaObjectFactory.Create(propertyNode, "KalturaAssetFilter");
+						this._SupplementaryAssetsFilter = (KalturaAssetFilter)KalturaObjectFactory.Create(propertyNode, "KalturaAssetFilter");
 						continue;
 				}
 			}

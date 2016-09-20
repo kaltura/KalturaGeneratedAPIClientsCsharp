@@ -50,7 +50,7 @@ namespace Kaltura
 				OnPropertyChanged("Type");
 			}
 		}
-		public IList<KalturaString> Versions
+		public new IList<KalturaString> Versions
 		{
 			get { return _Versions; }
 			set 
@@ -92,20 +92,20 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "type":
-						this.Type = (KalturaUiConfObjType)ParseEnum(typeof(KalturaUiConfObjType), txt);
+						this._Type = (KalturaUiConfObjType)ParseEnum(typeof(KalturaUiConfObjType), txt);
 						continue;
 					case "versions":
-						this.Versions = new List<KalturaString>();
+						this._Versions = new List<KalturaString>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Versions.Add((KalturaString)KalturaObjectFactory.Create(arrayNode, "KalturaString"));
+							this._Versions.Add((KalturaString)KalturaObjectFactory.Create(arrayNode, "KalturaString"));
 						}
 						continue;
 					case "directory":
-						this.Directory = txt;
+						this._Directory = txt;
 						continue;
 					case "filename":
-						this.Filename = txt;
+						this._Filename = txt;
 						continue;
 				}
 			}

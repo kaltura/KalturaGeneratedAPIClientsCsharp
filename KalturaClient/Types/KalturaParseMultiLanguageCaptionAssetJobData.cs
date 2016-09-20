@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "multiLanaguageCaptionAssetId":
-						this.MultiLanaguageCaptionAssetId = txt;
+						this._MultiLanaguageCaptionAssetId = txt;
 						continue;
 					case "entryId":
-						this.EntryId = txt;
+						this._EntryId = txt;
 						continue;
 					case "fileLocation":
-						this.FileLocation = txt;
+						this._FileLocation = txt;
 						continue;
 				}
 			}

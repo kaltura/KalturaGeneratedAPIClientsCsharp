@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "xml":
-						this.Xml = txt;
+						this._Xml = txt;
 						continue;
 					case "resultParseData":
-						this.ResultParseData = txt;
+						this._ResultParseData = txt;
 						continue;
 					case "resultParserType":
-						this.ResultParserType = (KalturaGenericDistributionProviderParser)ParseEnum(typeof(KalturaGenericDistributionProviderParser), txt);
+						this._ResultParserType = (KalturaGenericDistributionProviderParser)ParseEnum(typeof(KalturaGenericDistributionProviderParser), txt);
 						continue;
 				}
 			}

@@ -192,46 +192,46 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "userId":
-						this.UserId = txt;
+						this._UserId = txt;
 						continue;
 					case "screenName":
-						this.ScreenName = txt;
+						this._ScreenName = txt;
 						continue;
 					case "email":
-						this.Email = txt;
+						this._Email = txt;
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "tags":
-						this.Tags = txt;
+						this._Tags = txt;
 						continue;
 					case "dateOfBirth":
-						this.DateOfBirth = ParseInt(txt);
+						this._DateOfBirth = ParseInt(txt);
 						continue;
 					case "country":
-						this.Country = txt;
+						this._Country = txt;
 						continue;
 					case "state":
-						this.State = txt;
+						this._State = txt;
 						continue;
 					case "city":
-						this.City = txt;
+						this._City = txt;
 						continue;
 					case "zip":
-						this.Zip = txt;
+						this._Zip = txt;
 						continue;
 					case "gender":
-						this.Gender = ParseInt(txt);
+						this._Gender = ParseInt(txt);
 						continue;
 					case "firstName":
-						this.FirstName = txt;
+						this._FirstName = txt;
 						continue;
 					case "lastName":
-						this.LastName = txt;
+						this._LastName = txt;
 						continue;
 					case "group":
-						this.Group = txt;
+						this._Group = txt;
 						continue;
 				}
 			}

@@ -132,28 +132,28 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "entryId":
-						this.EntryId = txt;
+						this._EntryId = txt;
 						continue;
 					case "assetId":
-						this.AssetId = txt;
+						this._AssetId = txt;
 						continue;
 					case "mediaServerIndex":
-						this.MediaServerIndex = (KalturaEntryServerNodeType)KalturaStringEnum.Parse(typeof(KalturaEntryServerNodeType), txt);
+						this._MediaServerIndex = (KalturaEntryServerNodeType)KalturaStringEnum.Parse(typeof(KalturaEntryServerNodeType), txt);
 						continue;
 					case "fileIndex":
-						this.FileIndex = ParseInt(txt);
+						this._FileIndex = ParseInt(txt);
 						continue;
 					case "srcFilePath":
-						this.SrcFilePath = txt;
+						this._SrcFilePath = txt;
 						continue;
 					case "destFilePath":
-						this.DestFilePath = txt;
+						this._DestFilePath = txt;
 						continue;
 					case "endTime":
-						this.EndTime = ParseFloat(txt);
+						this._EndTime = ParseFloat(txt);
 						continue;
 					case "destDataFilePath":
-						this.DestDataFilePath = txt;
+						this._DestDataFilePath = txt;
 						continue;
 				}
 			}

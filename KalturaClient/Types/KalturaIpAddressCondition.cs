@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "acceptInternalIps":
-						this.AcceptInternalIps = ParseBool(txt);
+						this._AcceptInternalIps = ParseBool(txt);
 						continue;
 					case "httpHeader":
-						this.HttpHeader = txt;
+						this._HttpHeader = txt;
 						continue;
 				}
 			}

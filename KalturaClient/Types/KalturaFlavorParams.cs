@@ -432,118 +432,118 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "videoCodec":
-						this.VideoCodec = (KalturaVideoCodec)KalturaStringEnum.Parse(typeof(KalturaVideoCodec), txt);
+						this._VideoCodec = (KalturaVideoCodec)KalturaStringEnum.Parse(typeof(KalturaVideoCodec), txt);
 						continue;
 					case "videoBitrate":
-						this.VideoBitrate = ParseInt(txt);
+						this._VideoBitrate = ParseInt(txt);
 						continue;
 					case "audioCodec":
-						this.AudioCodec = (KalturaAudioCodec)KalturaStringEnum.Parse(typeof(KalturaAudioCodec), txt);
+						this._AudioCodec = (KalturaAudioCodec)KalturaStringEnum.Parse(typeof(KalturaAudioCodec), txt);
 						continue;
 					case "audioBitrate":
-						this.AudioBitrate = ParseInt(txt);
+						this._AudioBitrate = ParseInt(txt);
 						continue;
 					case "audioChannels":
-						this.AudioChannels = ParseInt(txt);
+						this._AudioChannels = ParseInt(txt);
 						continue;
 					case "audioSampleRate":
-						this.AudioSampleRate = ParseInt(txt);
+						this._AudioSampleRate = ParseInt(txt);
 						continue;
 					case "width":
-						this.Width = ParseInt(txt);
+						this._Width = ParseInt(txt);
 						continue;
 					case "height":
-						this.Height = ParseInt(txt);
+						this._Height = ParseInt(txt);
 						continue;
 					case "frameRate":
-						this.FrameRate = ParseFloat(txt);
+						this._FrameRate = ParseFloat(txt);
 						continue;
 					case "gopSize":
-						this.GopSize = ParseInt(txt);
+						this._GopSize = ParseInt(txt);
 						continue;
 					case "conversionEngines":
-						this.ConversionEngines = txt;
+						this._ConversionEngines = txt;
 						continue;
 					case "conversionEnginesExtraParams":
-						this.ConversionEnginesExtraParams = txt;
+						this._ConversionEnginesExtraParams = txt;
 						continue;
 					case "twoPass":
-						this.TwoPass = ParseBool(txt);
+						this._TwoPass = ParseBool(txt);
 						continue;
 					case "deinterlice":
-						this.Deinterlice = ParseInt(txt);
+						this._Deinterlice = ParseInt(txt);
 						continue;
 					case "rotate":
-						this.Rotate = ParseInt(txt);
+						this._Rotate = ParseInt(txt);
 						continue;
 					case "operators":
-						this.Operators = txt;
+						this._Operators = txt;
 						continue;
 					case "engineVersion":
-						this.EngineVersion = ParseInt(txt);
+						this._EngineVersion = ParseInt(txt);
 						continue;
 					case "format":
-						this.Format = (KalturaContainerFormat)KalturaStringEnum.Parse(typeof(KalturaContainerFormat), txt);
+						this._Format = (KalturaContainerFormat)KalturaStringEnum.Parse(typeof(KalturaContainerFormat), txt);
 						continue;
 					case "aspectRatioProcessingMode":
-						this.AspectRatioProcessingMode = ParseInt(txt);
+						this._AspectRatioProcessingMode = ParseInt(txt);
 						continue;
 					case "forceFrameToMultiplication16":
-						this.ForceFrameToMultiplication16 = ParseInt(txt);
+						this._ForceFrameToMultiplication16 = ParseInt(txt);
 						continue;
 					case "isGopInSec":
-						this.IsGopInSec = ParseInt(txt);
+						this._IsGopInSec = ParseInt(txt);
 						continue;
 					case "isAvoidVideoShrinkFramesizeToSource":
-						this.IsAvoidVideoShrinkFramesizeToSource = ParseInt(txt);
+						this._IsAvoidVideoShrinkFramesizeToSource = ParseInt(txt);
 						continue;
 					case "isAvoidVideoShrinkBitrateToSource":
-						this.IsAvoidVideoShrinkBitrateToSource = ParseInt(txt);
+						this._IsAvoidVideoShrinkBitrateToSource = ParseInt(txt);
 						continue;
 					case "isVideoFrameRateForLowBrAppleHls":
-						this.IsVideoFrameRateForLowBrAppleHls = ParseInt(txt);
+						this._IsVideoFrameRateForLowBrAppleHls = ParseInt(txt);
 						continue;
 					case "multiStream":
-						this.MultiStream = txt;
+						this._MultiStream = txt;
 						continue;
 					case "anamorphicPixels":
-						this.AnamorphicPixels = ParseFloat(txt);
+						this._AnamorphicPixels = ParseFloat(txt);
 						continue;
 					case "isAvoidForcedKeyFrames":
-						this.IsAvoidForcedKeyFrames = ParseInt(txt);
+						this._IsAvoidForcedKeyFrames = ParseInt(txt);
 						continue;
 					case "isCropIMX":
-						this.IsCropIMX = ParseInt(txt);
+						this._IsCropIMX = ParseInt(txt);
 						continue;
 					case "optimizationPolicy":
-						this.OptimizationPolicy = ParseInt(txt);
+						this._OptimizationPolicy = ParseInt(txt);
 						continue;
 					case "maxFrameRate":
-						this.MaxFrameRate = ParseInt(txt);
+						this._MaxFrameRate = ParseInt(txt);
 						continue;
 					case "videoConstantBitrate":
-						this.VideoConstantBitrate = ParseInt(txt);
+						this._VideoConstantBitrate = ParseInt(txt);
 						continue;
 					case "videoBitrateTolerance":
-						this.VideoBitrateTolerance = ParseInt(txt);
+						this._VideoBitrateTolerance = ParseInt(txt);
 						continue;
 					case "watermarkData":
-						this.WatermarkData = txt;
+						this._WatermarkData = txt;
 						continue;
 					case "subtitlesData":
-						this.SubtitlesData = txt;
+						this._SubtitlesData = txt;
 						continue;
 					case "isEncrypted":
-						this.IsEncrypted = ParseInt(txt);
+						this._IsEncrypted = ParseInt(txt);
 						continue;
 					case "contentAwareness":
-						this.ContentAwareness = ParseFloat(txt);
+						this._ContentAwareness = ParseFloat(txt);
 						continue;
 					case "clipOffset":
-						this.ClipOffset = ParseInt(txt);
+						this._ClipOffset = ParseInt(txt);
 						continue;
 					case "clipDuration":
-						this.ClipDuration = ParseInt(txt);
+						this._ClipDuration = ParseInt(txt);
 						continue;
 				}
 			}

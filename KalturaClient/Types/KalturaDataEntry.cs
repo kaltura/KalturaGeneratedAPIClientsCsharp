@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "dataContent":
-						this.DataContent = txt;
+						this._DataContent = txt;
 						continue;
 					case "retrieveDataContentByGet":
-						this.RetrieveDataContentByGet = ParseBool(txt);
+						this._RetrieveDataContentByGet = ParseBool(txt);
 						continue;
 				}
 			}

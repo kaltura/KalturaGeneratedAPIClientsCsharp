@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "feedDescription":
-						this.FeedDescription = txt;
+						this._FeedDescription = txt;
 						continue;
 					case "feedLandingPage":
-						this.FeedLandingPage = txt;
+						this._FeedLandingPage = txt;
 						continue;
 				}
 			}

@@ -122,25 +122,25 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "flavorAssetId":
-						this.FlavorAssetId = txt;
+						this._FlavorAssetId = txt;
 						continue;
 					case "flavorParamsOutputId":
-						this.FlavorParamsOutputId = ParseInt(txt);
+						this._FlavorParamsOutputId = ParseInt(txt);
 						continue;
 					case "readyBehavior":
-						this.ReadyBehavior = ParseInt(txt);
+						this._ReadyBehavior = ParseInt(txt);
 						continue;
 					case "videoBitrate":
-						this.VideoBitrate = ParseInt(txt);
+						this._VideoBitrate = ParseInt(txt);
 						continue;
 					case "audioBitrate":
-						this.AudioBitrate = ParseInt(txt);
+						this._AudioBitrate = ParseInt(txt);
 						continue;
 					case "destFileSyncLocalPath":
-						this.DestFileSyncLocalPath = txt;
+						this._DestFileSyncLocalPath = txt;
 						continue;
 					case "destFileSyncRemoteUrl":
-						this.DestFileSyncRemoteUrl = txt;
+						this._DestFileSyncRemoteUrl = txt;
 						continue;
 				}
 			}

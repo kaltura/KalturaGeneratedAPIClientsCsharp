@@ -158,7 +158,7 @@ namespace Kaltura
 				OnPropertyChanged("ResourceSystemNamesLike");
 			}
 		}
-		public new KalturaScheduleEventOrderBy OrderBy
+		public KalturaScheduleEventOrderBy OrderBy
 		{
 			get { return _OrderBy; }
 			set 
@@ -182,43 +182,43 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "resourceIdsLike":
-						this.ResourceIdsLike = txt;
+						this._ResourceIdsLike = txt;
 						continue;
 					case "resourceIdsMultiLikeOr":
-						this.ResourceIdsMultiLikeOr = txt;
+						this._ResourceIdsMultiLikeOr = txt;
 						continue;
 					case "resourceIdsMultiLikeAnd":
-						this.ResourceIdsMultiLikeAnd = txt;
+						this._ResourceIdsMultiLikeAnd = txt;
 						continue;
 					case "parentResourceIdsLike":
-						this.ParentResourceIdsLike = txt;
+						this._ParentResourceIdsLike = txt;
 						continue;
 					case "parentResourceIdsMultiLikeOr":
-						this.ParentResourceIdsMultiLikeOr = txt;
+						this._ParentResourceIdsMultiLikeOr = txt;
 						continue;
 					case "parentResourceIdsMultiLikeAnd":
-						this.ParentResourceIdsMultiLikeAnd = txt;
+						this._ParentResourceIdsMultiLikeAnd = txt;
 						continue;
 					case "templateEntryCategoriesIdsMultiLikeAnd":
-						this.TemplateEntryCategoriesIdsMultiLikeAnd = txt;
+						this._TemplateEntryCategoriesIdsMultiLikeAnd = txt;
 						continue;
 					case "templateEntryCategoriesIdsMultiLikeOr":
-						this.TemplateEntryCategoriesIdsMultiLikeOr = txt;
+						this._TemplateEntryCategoriesIdsMultiLikeOr = txt;
 						continue;
 					case "resourceSystemNamesMultiLikeOr":
-						this.ResourceSystemNamesMultiLikeOr = txt;
+						this._ResourceSystemNamesMultiLikeOr = txt;
 						continue;
 					case "templateEntryCategoriesIdsLike":
-						this.TemplateEntryCategoriesIdsLike = txt;
+						this._TemplateEntryCategoriesIdsLike = txt;
 						continue;
 					case "resourceSystemNamesMultiLikeAnd":
-						this.ResourceSystemNamesMultiLikeAnd = txt;
+						this._ResourceSystemNamesMultiLikeAnd = txt;
 						continue;
 					case "resourceSystemNamesLike":
-						this.ResourceSystemNamesLike = txt;
+						this._ResourceSystemNamesLike = txt;
 						continue;
 					case "orderBy":
-						this.OrderBy = (KalturaScheduleEventOrderBy)KalturaStringEnum.Parse(typeof(KalturaScheduleEventOrderBy), txt);
+						this._OrderBy = (KalturaScheduleEventOrderBy)KalturaStringEnum.Parse(typeof(KalturaScheduleEventOrderBy), txt);
 						continue;
 				}
 			}

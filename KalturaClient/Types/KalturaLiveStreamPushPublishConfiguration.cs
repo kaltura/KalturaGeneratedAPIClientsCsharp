@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "publishUrl":
-						this.PublishUrl = txt;
+						this._PublishUrl = txt;
 						continue;
 					case "backupPublishUrl":
-						this.BackupPublishUrl = txt;
+						this._BackupPublishUrl = txt;
 						continue;
 					case "port":
-						this.Port = txt;
+						this._Port = txt;
 						continue;
 				}
 			}

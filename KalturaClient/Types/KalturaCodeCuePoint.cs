@@ -71,11 +71,6 @@ namespace Kaltura
 		public int Duration
 		{
 			get { return _Duration; }
-			set 
-			{ 
-				_Duration = value;
-				OnPropertyChanged("Duration");
-			}
 		}
 		#endregion
 
@@ -92,16 +87,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "code":
-						this.Code = txt;
+						this._Code = txt;
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "endTime":
-						this.EndTime = ParseInt(txt);
+						this._EndTime = ParseInt(txt);
 						continue;
 					case "duration":
-						this.Duration = ParseInt(txt);
+						this._Duration = ParseInt(txt);
 						continue;
 				}
 			}

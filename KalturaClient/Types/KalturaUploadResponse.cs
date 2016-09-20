@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "uploadTokenId":
-						this.UploadTokenId = txt;
+						this._UploadTokenId = txt;
 						continue;
 					case "fileSize":
-						this.FileSize = ParseInt(txt);
+						this._FileSize = ParseInt(txt);
 						continue;
 					case "errorCode":
-						this.ErrorCode = (KalturaUploadErrorCode)ParseEnum(typeof(KalturaUploadErrorCode), txt);
+						this._ErrorCode = (KalturaUploadErrorCode)ParseEnum(typeof(KalturaUploadErrorCode), txt);
 						continue;
 					case "errorDescription":
-						this.ErrorDescription = txt;
+						this._ErrorDescription = txt;
 						continue;
 				}
 			}

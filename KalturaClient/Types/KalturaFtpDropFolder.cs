@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "host":
-						this.Host = txt;
+						this._Host = txt;
 						continue;
 					case "port":
-						this.Port = ParseInt(txt);
+						this._Port = ParseInt(txt);
 						continue;
 					case "username":
-						this.Username = txt;
+						this._Username = txt;
 						continue;
 					case "password":
-						this.Password = txt;
+						this._Password = txt;
 						continue;
 				}
 			}

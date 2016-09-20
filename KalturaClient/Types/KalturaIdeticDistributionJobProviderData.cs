@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "thumbnailUrl":
-						this.ThumbnailUrl = txt;
+						this._ThumbnailUrl = txt;
 						continue;
 					case "flavorAssetUrl":
-						this.FlavorAssetUrl = txt;
+						this._FlavorAssetUrl = txt;
 						continue;
 				}
 			}

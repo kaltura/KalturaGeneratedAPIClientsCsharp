@@ -49,11 +49,6 @@ namespace Kaltura
 		public KalturaDistributionProviderType Type
 		{
 			get { return _Type; }
-			set 
-			{ 
-				_Type = value;
-				OnPropertyChanged("Type");
-			}
 		}
 		public string Name
 		{
@@ -142,31 +137,31 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "type":
-						this.Type = (KalturaDistributionProviderType)KalturaStringEnum.Parse(typeof(KalturaDistributionProviderType), txt);
+						this._Type = (KalturaDistributionProviderType)KalturaStringEnum.Parse(typeof(KalturaDistributionProviderType), txt);
 						continue;
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 					case "scheduleUpdateEnabled":
-						this.ScheduleUpdateEnabled = ParseBool(txt);
+						this._ScheduleUpdateEnabled = ParseBool(txt);
 						continue;
 					case "availabilityUpdateEnabled":
-						this.AvailabilityUpdateEnabled = ParseBool(txt);
+						this._AvailabilityUpdateEnabled = ParseBool(txt);
 						continue;
 					case "deleteInsteadUpdate":
-						this.DeleteInsteadUpdate = ParseBool(txt);
+						this._DeleteInsteadUpdate = ParseBool(txt);
 						continue;
 					case "intervalBeforeSunrise":
-						this.IntervalBeforeSunrise = ParseInt(txt);
+						this._IntervalBeforeSunrise = ParseInt(txt);
 						continue;
 					case "intervalBeforeSunset":
-						this.IntervalBeforeSunset = ParseInt(txt);
+						this._IntervalBeforeSunset = ParseInt(txt);
 						continue;
 					case "updateRequiredEntryFields":
-						this.UpdateRequiredEntryFields = txt;
+						this._UpdateRequiredEntryFields = txt;
 						continue;
 					case "updateRequiredMetadataXPaths":
-						this.UpdateRequiredMetadataXPaths = txt;
+						this._UpdateRequiredMetadataXPaths = txt;
 						continue;
 				}
 			}

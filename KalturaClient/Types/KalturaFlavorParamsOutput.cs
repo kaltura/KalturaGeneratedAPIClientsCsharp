@@ -112,22 +112,22 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "flavorParamsId":
-						this.FlavorParamsId = ParseInt(txt);
+						this._FlavorParamsId = ParseInt(txt);
 						continue;
 					case "commandLinesStr":
-						this.CommandLinesStr = txt;
+						this._CommandLinesStr = txt;
 						continue;
 					case "flavorParamsVersion":
-						this.FlavorParamsVersion = txt;
+						this._FlavorParamsVersion = txt;
 						continue;
 					case "flavorAssetId":
-						this.FlavorAssetId = txt;
+						this._FlavorAssetId = txt;
 						continue;
 					case "flavorAssetVersion":
-						this.FlavorAssetVersion = txt;
+						this._FlavorAssetVersion = txt;
 						continue;
 					case "readyBehavior":
-						this.ReadyBehavior = ParseInt(txt);
+						this._ReadyBehavior = ParseInt(txt);
 						continue;
 				}
 			}

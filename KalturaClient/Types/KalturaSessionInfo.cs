@@ -46,56 +46,26 @@ namespace Kaltura
 		public string Ks
 		{
 			get { return _Ks; }
-			set 
-			{ 
-				_Ks = value;
-				OnPropertyChanged("Ks");
-			}
 		}
 		public KalturaSessionType SessionType
 		{
 			get { return _SessionType; }
-			set 
-			{ 
-				_SessionType = value;
-				OnPropertyChanged("SessionType");
-			}
 		}
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public string UserId
 		{
 			get { return _UserId; }
-			set 
-			{ 
-				_UserId = value;
-				OnPropertyChanged("UserId");
-			}
 		}
 		public int Expiry
 		{
 			get { return _Expiry; }
-			set 
-			{ 
-				_Expiry = value;
-				OnPropertyChanged("Expiry");
-			}
 		}
 		public string Privileges
 		{
 			get { return _Privileges; }
-			set 
-			{ 
-				_Privileges = value;
-				OnPropertyChanged("Privileges");
-			}
 		}
 		#endregion
 
@@ -112,22 +82,22 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "ks":
-						this.Ks = txt;
+						this._Ks = txt;
 						continue;
 					case "sessionType":
-						this.SessionType = (KalturaSessionType)ParseEnum(typeof(KalturaSessionType), txt);
+						this._SessionType = (KalturaSessionType)ParseEnum(typeof(KalturaSessionType), txt);
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "userId":
-						this.UserId = txt;
+						this._UserId = txt;
 						continue;
 					case "expiry":
-						this.Expiry = ParseInt(txt);
+						this._Expiry = ParseInt(txt);
 						continue;
 					case "privileges":
-						this.Privileges = txt;
+						this._Privileges = txt;
 						continue;
 				}
 			}

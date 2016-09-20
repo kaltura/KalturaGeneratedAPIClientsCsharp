@@ -50,29 +50,14 @@ namespace Kaltura
 		public string Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public int ExpiresAt
 		{
@@ -86,11 +71,6 @@ namespace Kaltura
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public string UserId
 		{
@@ -152,34 +132,34 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = txt;
+						this._Id = txt;
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "expiresAt":
-						this.ExpiresAt = ParseInt(txt);
+						this._ExpiresAt = ParseInt(txt);
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "userId":
-						this.UserId = txt;
+						this._UserId = txt;
 						continue;
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 					case "systemName":
-						this.SystemName = txt;
+						this._SystemName = txt;
 						continue;
 					case "fullUrl":
-						this.FullUrl = txt;
+						this._FullUrl = txt;
 						continue;
 					case "status":
-						this.Status = (KalturaShortLinkStatus)ParseEnum(typeof(KalturaShortLinkStatus), txt);
+						this._Status = (KalturaShortLinkStatus)ParseEnum(typeof(KalturaShortLinkStatus), txt);
 						continue;
 				}
 			}

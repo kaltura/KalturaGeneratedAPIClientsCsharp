@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "fieldName":
-						this.FieldName = txt;
+						this._FieldName = txt;
 						continue;
 				}
 			}

@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "host":
-						this.Host = txt;
+						this._Host = txt;
 						continue;
 					case "cpcode":
-						this.Cpcode = ParseInt(txt);
+						this._Cpcode = ParseInt(txt);
 						continue;
 				}
 			}

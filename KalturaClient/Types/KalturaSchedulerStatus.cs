@@ -48,11 +48,6 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public int SchedulerConfiguredId
 		{
@@ -102,20 +97,10 @@ namespace Kaltura
 		public int SchedulerId
 		{
 			get { return _SchedulerId; }
-			set 
-			{ 
-				_SchedulerId = value;
-				OnPropertyChanged("SchedulerId");
-			}
 		}
 		public int WorkerId
 		{
 			get { return _WorkerId; }
-			set 
-			{ 
-				_WorkerId = value;
-				OnPropertyChanged("WorkerId");
-			}
 		}
 		#endregion
 
@@ -132,28 +117,28 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "schedulerConfiguredId":
-						this.SchedulerConfiguredId = ParseInt(txt);
+						this._SchedulerConfiguredId = ParseInt(txt);
 						continue;
 					case "workerConfiguredId":
-						this.WorkerConfiguredId = ParseInt(txt);
+						this._WorkerConfiguredId = ParseInt(txt);
 						continue;
 					case "workerType":
-						this.WorkerType = (KalturaBatchJobType)KalturaStringEnum.Parse(typeof(KalturaBatchJobType), txt);
+						this._WorkerType = (KalturaBatchJobType)KalturaStringEnum.Parse(typeof(KalturaBatchJobType), txt);
 						continue;
 					case "type":
-						this.Type = (KalturaSchedulerStatusType)ParseEnum(typeof(KalturaSchedulerStatusType), txt);
+						this._Type = (KalturaSchedulerStatusType)ParseEnum(typeof(KalturaSchedulerStatusType), txt);
 						continue;
 					case "value":
-						this.Value = ParseInt(txt);
+						this._Value = ParseInt(txt);
 						continue;
 					case "schedulerId":
-						this.SchedulerId = ParseInt(txt);
+						this._SchedulerId = ParseInt(txt);
 						continue;
 					case "workerId":
-						this.WorkerId = ParseInt(txt);
+						this._WorkerId = ParseInt(txt);
 						continue;
 				}
 			}

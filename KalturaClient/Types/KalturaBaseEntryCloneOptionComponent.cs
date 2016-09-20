@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "itemType":
-						this.ItemType = (KalturaBaseEntryCloneOptions)KalturaStringEnum.Parse(typeof(KalturaBaseEntryCloneOptions), txt);
+						this._ItemType = (KalturaBaseEntryCloneOptions)KalturaStringEnum.Parse(typeof(KalturaBaseEntryCloneOptions), txt);
 						continue;
 					case "rule":
-						this.Rule = (KalturaCloneComponentSelectorType)KalturaStringEnum.Parse(typeof(KalturaCloneComponentSelectorType), txt);
+						this._Rule = (KalturaCloneComponentSelectorType)KalturaStringEnum.Parse(typeof(KalturaCloneComponentSelectorType), txt);
 						continue;
 				}
 			}

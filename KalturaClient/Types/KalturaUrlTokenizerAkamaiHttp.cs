@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "paramName":
-						this.ParamName = txt;
+						this._ParamName = txt;
 						continue;
 					case "rootDir":
-						this.RootDir = txt;
+						this._RootDir = txt;
 						continue;
 				}
 			}

@@ -102,19 +102,19 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "timeReference":
-						this.TimeReference = ParseInt(txt);
+						this._TimeReference = ParseInt(txt);
 						continue;
 					case "timeZoneOffset":
-						this.TimeZoneOffset = ParseInt(txt);
+						this._TimeZoneOffset = ParseInt(txt);
 						continue;
 					case "entryIds":
-						this.EntryIds = txt;
+						this._EntryIds = txt;
 						continue;
 					case "outputPath":
-						this.OutputPath = txt;
+						this._OutputPath = txt;
 						continue;
 					case "recipientEmail":
-						this.RecipientEmail = txt;
+						this._RecipientEmail = txt;
 						continue;
 				}
 			}

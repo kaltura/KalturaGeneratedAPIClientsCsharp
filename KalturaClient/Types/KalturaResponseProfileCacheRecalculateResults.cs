@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "lastObjectKey":
-						this.LastObjectKey = txt;
+						this._LastObjectKey = txt;
 						continue;
 					case "recalculated":
-						this.Recalculated = ParseInt(txt);
+						this._Recalculated = ParseInt(txt);
 						continue;
 				}
 			}

@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "cuePointsFreeText":
-						this.CuePointsFreeText = txt;
+						this._CuePointsFreeText = txt;
 						continue;
 					case "cuePointTypeIn":
-						this.CuePointTypeIn = txt;
+						this._CuePointTypeIn = txt;
 						continue;
 					case "cuePointSubTypeEqual":
-						this.CuePointSubTypeEqual = ParseInt(txt);
+						this._CuePointSubTypeEqual = ParseInt(txt);
 						continue;
 				}
 			}

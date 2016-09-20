@@ -102,19 +102,19 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "flavorParamsIdEqual":
-						this.FlavorParamsIdEqual = ParseInt(txt);
+						this._FlavorParamsIdEqual = ParseInt(txt);
 						continue;
 					case "flavorParamsIdIn":
-						this.FlavorParamsIdIn = txt;
+						this._FlavorParamsIdIn = txt;
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaFlavorAssetStatus)ParseEnum(typeof(KalturaFlavorAssetStatus), txt);
+						this._StatusEqual = (KalturaFlavorAssetStatus)ParseEnum(typeof(KalturaFlavorAssetStatus), txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = txt;
+						this._StatusIn = txt;
 						continue;
 					case "statusNotIn":
-						this.StatusNotIn = txt;
+						this._StatusNotIn = txt;
 						continue;
 				}
 			}

@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "authData":
-						this.AuthData = txt;
+						this._AuthData = txt;
 						continue;
 					case "loginUrl":
-						this.LoginUrl = txt;
+						this._LoginUrl = txt;
 						continue;
 					case "message":
-						this.Message = txt;
+						this._Message = txt;
 						continue;
 				}
 			}

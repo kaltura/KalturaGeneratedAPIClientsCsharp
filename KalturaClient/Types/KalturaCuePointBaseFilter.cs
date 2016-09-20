@@ -332,88 +332,88 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this.IdEqual = txt;
+						this._IdEqual = txt;
 						continue;
 					case "idIn":
-						this.IdIn = txt;
+						this._IdIn = txt;
 						continue;
 					case "cuePointTypeEqual":
-						this.CuePointTypeEqual = (KalturaCuePointType)KalturaStringEnum.Parse(typeof(KalturaCuePointType), txt);
+						this._CuePointTypeEqual = (KalturaCuePointType)KalturaStringEnum.Parse(typeof(KalturaCuePointType), txt);
 						continue;
 					case "cuePointTypeIn":
-						this.CuePointTypeIn = txt;
+						this._CuePointTypeIn = txt;
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaCuePointStatus)ParseEnum(typeof(KalturaCuePointStatus), txt);
+						this._StatusEqual = (KalturaCuePointStatus)ParseEnum(typeof(KalturaCuePointStatus), txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = txt;
+						this._StatusIn = txt;
 						continue;
 					case "entryIdEqual":
-						this.EntryIdEqual = txt;
+						this._EntryIdEqual = txt;
 						continue;
 					case "entryIdIn":
-						this.EntryIdIn = txt;
+						this._EntryIdIn = txt;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this.CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this.CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this.UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this.UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "triggeredAtGreaterThanOrEqual":
-						this.TriggeredAtGreaterThanOrEqual = ParseInt(txt);
+						this._TriggeredAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "triggeredAtLessThanOrEqual":
-						this.TriggeredAtLessThanOrEqual = ParseInt(txt);
+						this._TriggeredAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "tagsLike":
-						this.TagsLike = txt;
+						this._TagsLike = txt;
 						continue;
 					case "tagsMultiLikeOr":
-						this.TagsMultiLikeOr = txt;
+						this._TagsMultiLikeOr = txt;
 						continue;
 					case "tagsMultiLikeAnd":
-						this.TagsMultiLikeAnd = txt;
+						this._TagsMultiLikeAnd = txt;
 						continue;
 					case "startTimeGreaterThanOrEqual":
-						this.StartTimeGreaterThanOrEqual = ParseInt(txt);
+						this._StartTimeGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "startTimeLessThanOrEqual":
-						this.StartTimeLessThanOrEqual = ParseInt(txt);
+						this._StartTimeLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "userIdEqual":
-						this.UserIdEqual = txt;
+						this._UserIdEqual = txt;
 						continue;
 					case "userIdIn":
-						this.UserIdIn = txt;
+						this._UserIdIn = txt;
 						continue;
 					case "partnerSortValueEqual":
-						this.PartnerSortValueEqual = ParseInt(txt);
+						this._PartnerSortValueEqual = ParseInt(txt);
 						continue;
 					case "partnerSortValueIn":
-						this.PartnerSortValueIn = txt;
+						this._PartnerSortValueIn = txt;
 						continue;
 					case "partnerSortValueGreaterThanOrEqual":
-						this.PartnerSortValueGreaterThanOrEqual = ParseInt(txt);
+						this._PartnerSortValueGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "partnerSortValueLessThanOrEqual":
-						this.PartnerSortValueLessThanOrEqual = ParseInt(txt);
+						this._PartnerSortValueLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "forceStopEqual":
-						this.ForceStopEqual = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._ForceStopEqual = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "systemNameEqual":
-						this.SystemNameEqual = txt;
+						this._SystemNameEqual = txt;
 						continue;
 					case "systemNameIn":
-						this.SystemNameIn = txt;
+						this._SystemNameIn = txt;
 						continue;
 				}
 			}

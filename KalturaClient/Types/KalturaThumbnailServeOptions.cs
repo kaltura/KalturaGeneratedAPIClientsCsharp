@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "download":
-						this.Download = ParseBool(txt);
+						this._Download = ParseBool(txt);
 						continue;
 					case "referrer":
-						this.Referrer = txt;
+						this._Referrer = txt;
 						continue;
 				}
 			}

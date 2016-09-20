@@ -38,7 +38,7 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
-		public new KalturaImageFlavorParamsOrderBy OrderBy
+		public KalturaImageFlavorParamsOrderBy OrderBy
 		{
 			get { return _OrderBy; }
 			set 
@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "orderBy":
-						this.OrderBy = (KalturaImageFlavorParamsOrderBy)KalturaStringEnum.Parse(typeof(KalturaImageFlavorParamsOrderBy), txt);
+						this._OrderBy = (KalturaImageFlavorParamsOrderBy)KalturaStringEnum.Parse(typeof(KalturaImageFlavorParamsOrderBy), txt);
 						continue;
 				}
 			}

@@ -142,31 +142,31 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "categoryIdEqual":
-						this.CategoryIdEqual = ParseInt(txt);
+						this._CategoryIdEqual = ParseInt(txt);
 						continue;
 					case "categoryIdIn":
-						this.CategoryIdIn = txt;
+						this._CategoryIdIn = txt;
 						continue;
 					case "entryIdEqual":
-						this.EntryIdEqual = txt;
+						this._EntryIdEqual = txt;
 						continue;
 					case "entryIdIn":
-						this.EntryIdIn = txt;
+						this._EntryIdIn = txt;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this.CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this.CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "categoryFullIdsStartsWith":
-						this.CategoryFullIdsStartsWith = txt;
+						this._CategoryFullIdsStartsWith = txt;
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaCategoryEntryStatus)ParseEnum(typeof(KalturaCategoryEntryStatus), txt);
+						this._StatusEqual = (KalturaCategoryEntryStatus)ParseEnum(typeof(KalturaCategoryEntryStatus), txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = txt;
+						this._StatusIn = txt;
 						continue;
 				}
 			}

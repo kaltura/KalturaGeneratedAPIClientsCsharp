@@ -152,7 +152,7 @@ namespace Kaltura
 				OnPropertyChanged("StorageProfilesXML");
 			}
 		}
-		public IList<KalturaString> AccessControlMessages
+		public new IList<KalturaString> AccessControlMessages
 		{
 			get { return _AccessControlMessages; }
 			set 
@@ -161,7 +161,7 @@ namespace Kaltura
 				OnPropertyChanged("AccessControlMessages");
 			}
 		}
-		public IList<KalturaRuleAction> AccessControlActions
+		public new IList<KalturaRuleAction> AccessControlActions
 		{
 			get { return _AccessControlActions; }
 			set 
@@ -170,7 +170,7 @@ namespace Kaltura
 				OnPropertyChanged("AccessControlActions");
 			}
 		}
-		public IList<KalturaFlavorAsset> FlavorAssets
+		public new IList<KalturaFlavorAsset> FlavorAssets
 		{
 			get { return _FlavorAssets; }
 			set 
@@ -188,7 +188,7 @@ namespace Kaltura
 				OnPropertyChanged("MsDuration");
 			}
 		}
-		public IDictionary<string, KalturaPluginData> PluginData
+		public new IDictionary<string, KalturaPluginData> PluginData
 		{
 			get { return _PluginData; }
 			set 
@@ -212,70 +212,70 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "isSiteRestricted":
-						this.IsSiteRestricted = ParseBool(txt);
+						this._IsSiteRestricted = ParseBool(txt);
 						continue;
 					case "isCountryRestricted":
-						this.IsCountryRestricted = ParseBool(txt);
+						this._IsCountryRestricted = ParseBool(txt);
 						continue;
 					case "isSessionRestricted":
-						this.IsSessionRestricted = ParseBool(txt);
+						this._IsSessionRestricted = ParseBool(txt);
 						continue;
 					case "isIpAddressRestricted":
-						this.IsIpAddressRestricted = ParseBool(txt);
+						this._IsIpAddressRestricted = ParseBool(txt);
 						continue;
 					case "isUserAgentRestricted":
-						this.IsUserAgentRestricted = ParseBool(txt);
+						this._IsUserAgentRestricted = ParseBool(txt);
 						continue;
 					case "previewLength":
-						this.PreviewLength = ParseInt(txt);
+						this._PreviewLength = ParseInt(txt);
 						continue;
 					case "isScheduledNow":
-						this.IsScheduledNow = ParseBool(txt);
+						this._IsScheduledNow = ParseBool(txt);
 						continue;
 					case "isAdmin":
-						this.IsAdmin = ParseBool(txt);
+						this._IsAdmin = ParseBool(txt);
 						continue;
 					case "streamerType":
-						this.StreamerType = txt;
+						this._StreamerType = txt;
 						continue;
 					case "mediaProtocol":
-						this.MediaProtocol = txt;
+						this._MediaProtocol = txt;
 						continue;
 					case "storageProfilesXML":
-						this.StorageProfilesXML = txt;
+						this._StorageProfilesXML = txt;
 						continue;
 					case "accessControlMessages":
-						this.AccessControlMessages = new List<KalturaString>();
+						this._AccessControlMessages = new List<KalturaString>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.AccessControlMessages.Add((KalturaString)KalturaObjectFactory.Create(arrayNode, "KalturaString"));
+							this._AccessControlMessages.Add((KalturaString)KalturaObjectFactory.Create(arrayNode, "KalturaString"));
 						}
 						continue;
 					case "accessControlActions":
-						this.AccessControlActions = new List<KalturaRuleAction>();
+						this._AccessControlActions = new List<KalturaRuleAction>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.AccessControlActions.Add((KalturaRuleAction)KalturaObjectFactory.Create(arrayNode, "KalturaRuleAction"));
+							this._AccessControlActions.Add((KalturaRuleAction)KalturaObjectFactory.Create(arrayNode, "KalturaRuleAction"));
 						}
 						continue;
 					case "flavorAssets":
-						this.FlavorAssets = new List<KalturaFlavorAsset>();
+						this._FlavorAssets = new List<KalturaFlavorAsset>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.FlavorAssets.Add((KalturaFlavorAsset)KalturaObjectFactory.Create(arrayNode, "KalturaFlavorAsset"));
+							this._FlavorAssets.Add((KalturaFlavorAsset)KalturaObjectFactory.Create(arrayNode, "KalturaFlavorAsset"));
 						}
 						continue;
 					case "msDuration":
-						this.MsDuration = ParseInt(txt);
+						this._MsDuration = ParseInt(txt);
 						continue;
 					case "pluginData":
 						{
 							string key;
-							this.PluginData = new Dictionary<string, KalturaPluginData>();
+							this._PluginData = new Dictionary<string, KalturaPluginData>();
 							foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 							{
 								key = arrayNode["itemKey"].InnerText;;
-								this.PluginData[key] = (KalturaPluginData)KalturaObjectFactory.Create(arrayNode, "KalturaPluginData");
+								this._PluginData[key] = (KalturaPluginData)KalturaObjectFactory.Create(arrayNode, "KalturaPluginData");
 							}
 						}
 						continue;

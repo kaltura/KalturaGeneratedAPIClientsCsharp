@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "entryIdEqual":
-						this.EntryIdEqual = txt;
+						this._EntryIdEqual = txt;
 						continue;
 					case "entryIdIn":
-						this.EntryIdIn = txt;
+						this._EntryIdIn = txt;
 						continue;
 				}
 			}

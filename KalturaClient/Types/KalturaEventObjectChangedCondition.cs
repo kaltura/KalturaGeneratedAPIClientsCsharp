@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "modifiedColumns":
-						this.ModifiedColumns = txt;
+						this._ModifiedColumns = txt;
 						continue;
 				}
 			}

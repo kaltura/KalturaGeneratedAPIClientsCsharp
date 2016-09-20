@@ -202,49 +202,49 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 					case "frequency":
-						this.Frequency = (KalturaScheduleEventRecurrenceFrequency)KalturaStringEnum.Parse(typeof(KalturaScheduleEventRecurrenceFrequency), txt);
+						this._Frequency = (KalturaScheduleEventRecurrenceFrequency)KalturaStringEnum.Parse(typeof(KalturaScheduleEventRecurrenceFrequency), txt);
 						continue;
 					case "until":
-						this.Until = ParseInt(txt);
+						this._Until = ParseInt(txt);
 						continue;
 					case "count":
-						this.Count = ParseInt(txt);
+						this._Count = ParseInt(txt);
 						continue;
 					case "interval":
-						this.Interval = ParseInt(txt);
+						this._Interval = ParseInt(txt);
 						continue;
 					case "bySecond":
-						this.BySecond = txt;
+						this._BySecond = txt;
 						continue;
 					case "byMinute":
-						this.ByMinute = txt;
+						this._ByMinute = txt;
 						continue;
 					case "byHour":
-						this.ByHour = txt;
+						this._ByHour = txt;
 						continue;
 					case "byDay":
-						this.ByDay = txt;
+						this._ByDay = txt;
 						continue;
 					case "byMonthDay":
-						this.ByMonthDay = txt;
+						this._ByMonthDay = txt;
 						continue;
 					case "byYearDay":
-						this.ByYearDay = txt;
+						this._ByYearDay = txt;
 						continue;
 					case "byWeekNumber":
-						this.ByWeekNumber = txt;
+						this._ByWeekNumber = txt;
 						continue;
 					case "byMonth":
-						this.ByMonth = txt;
+						this._ByMonth = txt;
 						continue;
 					case "byOffset":
-						this.ByOffset = txt;
+						this._ByOffset = txt;
 						continue;
 					case "weekStartDay":
-						this.WeekStartDay = (KalturaScheduleEventRecurrenceDay)KalturaStringEnum.Parse(typeof(KalturaScheduleEventRecurrenceDay), txt);
+						this._WeekStartDay = (KalturaScheduleEventRecurrenceDay)KalturaStringEnum.Parse(typeof(KalturaScheduleEventRecurrenceDay), txt);
 						continue;
 				}
 			}

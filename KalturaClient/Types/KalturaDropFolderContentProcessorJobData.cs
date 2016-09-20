@@ -112,22 +112,22 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "dropFolderId":
-						this.DropFolderId = ParseInt(txt);
+						this._DropFolderId = ParseInt(txt);
 						continue;
 					case "dropFolderFileIds":
-						this.DropFolderFileIds = txt;
+						this._DropFolderFileIds = txt;
 						continue;
 					case "parsedSlug":
-						this.ParsedSlug = txt;
+						this._ParsedSlug = txt;
 						continue;
 					case "contentMatchPolicy":
-						this.ContentMatchPolicy = (KalturaDropFolderContentFileHandlerMatchPolicy)ParseEnum(typeof(KalturaDropFolderContentFileHandlerMatchPolicy), txt);
+						this._ContentMatchPolicy = (KalturaDropFolderContentFileHandlerMatchPolicy)ParseEnum(typeof(KalturaDropFolderContentFileHandlerMatchPolicy), txt);
 						continue;
 					case "conversionProfileId":
-						this.ConversionProfileId = ParseInt(txt);
+						this._ConversionProfileId = ParseInt(txt);
 						continue;
 					case "parsedUserId":
-						this.ParsedUserId = txt;
+						this._ParsedUserId = txt;
 						continue;
 				}
 			}

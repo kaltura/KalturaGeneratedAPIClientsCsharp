@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "srcFileUrl":
-						this.SrcFileUrl = txt;
+						this._SrcFileUrl = txt;
 						continue;
 					case "destFileLocalPath":
-						this.DestFileLocalPath = txt;
+						this._DestFileLocalPath = txt;
 						continue;
 					case "metadataId":
-						this.MetadataId = ParseInt(txt);
+						this._MetadataId = ParseInt(txt);
 						continue;
 				}
 			}

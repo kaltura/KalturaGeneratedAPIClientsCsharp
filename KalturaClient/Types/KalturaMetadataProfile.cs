@@ -55,20 +55,10 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public KalturaMetadataObjectType MetadataObjectType
 		{
@@ -82,11 +72,6 @@ namespace Kaltura
 		public int Version
 		{
 			get { return _Version; }
-			set 
-			{ 
-				_Version = value;
-				OnPropertyChanged("Version");
-			}
 		}
 		public string Name
 		{
@@ -118,56 +103,26 @@ namespace Kaltura
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public KalturaMetadataProfileStatus Status
 		{
 			get { return _Status; }
-			set 
-			{ 
-				_Status = value;
-				OnPropertyChanged("Status");
-			}
 		}
 		public string Xsd
 		{
 			get { return _Xsd; }
-			set 
-			{ 
-				_Xsd = value;
-				OnPropertyChanged("Xsd");
-			}
 		}
 		public string Views
 		{
 			get { return _Views; }
-			set 
-			{ 
-				_Views = value;
-				OnPropertyChanged("Views");
-			}
 		}
 		public string Xslt
 		{
 			get { return _Xslt; }
-			set 
-			{ 
-				_Xslt = value;
-				OnPropertyChanged("Xslt");
-			}
 		}
 		public KalturaMetadataProfileCreateMode CreateMode
 		{
@@ -202,49 +157,49 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "metadataObjectType":
-						this.MetadataObjectType = (KalturaMetadataObjectType)KalturaStringEnum.Parse(typeof(KalturaMetadataObjectType), txt);
+						this._MetadataObjectType = (KalturaMetadataObjectType)KalturaStringEnum.Parse(typeof(KalturaMetadataObjectType), txt);
 						continue;
 					case "version":
-						this.Version = ParseInt(txt);
+						this._Version = ParseInt(txt);
 						continue;
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 					case "systemName":
-						this.SystemName = txt;
+						this._SystemName = txt;
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "status":
-						this.Status = (KalturaMetadataProfileStatus)ParseEnum(typeof(KalturaMetadataProfileStatus), txt);
+						this._Status = (KalturaMetadataProfileStatus)ParseEnum(typeof(KalturaMetadataProfileStatus), txt);
 						continue;
 					case "xsd":
-						this.Xsd = txt;
+						this._Xsd = txt;
 						continue;
 					case "views":
-						this.Views = txt;
+						this._Views = txt;
 						continue;
 					case "xslt":
-						this.Xslt = txt;
+						this._Xslt = txt;
 						continue;
 					case "createMode":
-						this.CreateMode = (KalturaMetadataProfileCreateMode)ParseEnum(typeof(KalturaMetadataProfileCreateMode), txt);
+						this._CreateMode = (KalturaMetadataProfileCreateMode)ParseEnum(typeof(KalturaMetadataProfileCreateMode), txt);
 						continue;
 					case "disableReIndexing":
-						this.DisableReIndexing = ParseBool(txt);
+						this._DisableReIndexing = ParseBool(txt);
 						continue;
 				}
 			}

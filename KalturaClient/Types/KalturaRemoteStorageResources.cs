@@ -38,7 +38,7 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
-		public IList<KalturaRemoteStorageResource> Resources
+		public new IList<KalturaRemoteStorageResource> Resources
 		{
 			get { return _Resources; }
 			set 
@@ -62,10 +62,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "resources":
-						this.Resources = new List<KalturaRemoteStorageResource>();
+						this._Resources = new List<KalturaRemoteStorageResource>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Resources.Add((KalturaRemoteStorageResource)KalturaObjectFactory.Create(arrayNode, "KalturaRemoteStorageResource"));
+							this._Resources.Add((KalturaRemoteStorageResource)KalturaObjectFactory.Create(arrayNode, "KalturaRemoteStorageResource"));
 						}
 						continue;
 				}

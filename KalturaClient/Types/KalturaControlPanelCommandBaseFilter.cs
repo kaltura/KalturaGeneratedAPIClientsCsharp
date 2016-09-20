@@ -162,37 +162,37 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this.IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(txt);
 						continue;
 					case "idIn":
-						this.IdIn = txt;
+						this._IdIn = txt;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this.CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this.CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdByIdEqual":
-						this.CreatedByIdEqual = ParseInt(txt);
+						this._CreatedByIdEqual = ParseInt(txt);
 						continue;
 					case "typeEqual":
-						this.TypeEqual = (KalturaControlPanelCommandType)ParseEnum(typeof(KalturaControlPanelCommandType), txt);
+						this._TypeEqual = (KalturaControlPanelCommandType)ParseEnum(typeof(KalturaControlPanelCommandType), txt);
 						continue;
 					case "typeIn":
-						this.TypeIn = txt;
+						this._TypeIn = txt;
 						continue;
 					case "targetTypeEqual":
-						this.TargetTypeEqual = (KalturaControlPanelCommandTargetType)ParseEnum(typeof(KalturaControlPanelCommandTargetType), txt);
+						this._TargetTypeEqual = (KalturaControlPanelCommandTargetType)ParseEnum(typeof(KalturaControlPanelCommandTargetType), txt);
 						continue;
 					case "targetTypeIn":
-						this.TargetTypeIn = txt;
+						this._TargetTypeIn = txt;
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaControlPanelCommandStatus)ParseEnum(typeof(KalturaControlPanelCommandStatus), txt);
+						this._StatusEqual = (KalturaControlPanelCommandStatus)ParseEnum(typeof(KalturaControlPanelCommandStatus), txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = txt;
+						this._StatusIn = txt;
 						continue;
 				}
 			}

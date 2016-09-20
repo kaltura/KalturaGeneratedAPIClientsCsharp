@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "fileSyncObjectType":
-						this.FileSyncObjectType = ParseInt(txt);
+						this._FileSyncObjectType = ParseInt(txt);
 						continue;
 					case "objectSubType":
-						this.ObjectSubType = ParseInt(txt);
+						this._ObjectSubType = ParseInt(txt);
 						continue;
 					case "objectId":
-						this.ObjectId = txt;
+						this._ObjectId = txt;
 						continue;
 					case "version":
-						this.Version = txt;
+						this._Version = txt;
 						continue;
 				}
 			}

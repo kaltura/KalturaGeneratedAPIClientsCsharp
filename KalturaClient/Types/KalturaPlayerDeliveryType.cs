@@ -60,7 +60,7 @@ namespace Kaltura
 				OnPropertyChanged("Label");
 			}
 		}
-		public IList<KalturaKeyValue> Flashvars
+		public new IList<KalturaKeyValue> Flashvars
 		{
 			get { return _Flashvars; }
 			set 
@@ -102,23 +102,23 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = txt;
+						this._Id = txt;
 						continue;
 					case "label":
-						this.Label = txt;
+						this._Label = txt;
 						continue;
 					case "flashvars":
-						this.Flashvars = new List<KalturaKeyValue>();
+						this._Flashvars = new List<KalturaKeyValue>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Flashvars.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
+							this._Flashvars.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
 						}
 						continue;
 					case "minVersion":
-						this.MinVersion = txt;
+						this._MinVersion = txt;
 						continue;
 					case "enabledByDefault":
-						this.EnabledByDefault = ParseBool(txt);
+						this._EnabledByDefault = ParseBool(txt);
 						continue;
 				}
 			}

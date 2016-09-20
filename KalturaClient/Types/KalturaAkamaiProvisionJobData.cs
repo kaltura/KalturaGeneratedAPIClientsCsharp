@@ -112,22 +112,22 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "wsdlUsername":
-						this.WsdlUsername = txt;
+						this._WsdlUsername = txt;
 						continue;
 					case "wsdlPassword":
-						this.WsdlPassword = txt;
+						this._WsdlPassword = txt;
 						continue;
 					case "cpcode":
-						this.Cpcode = txt;
+						this._Cpcode = txt;
 						continue;
 					case "emailId":
-						this.EmailId = txt;
+						this._EmailId = txt;
 						continue;
 					case "primaryContact":
-						this.PrimaryContact = txt;
+						this._PrimaryContact = txt;
 						continue;
 					case "secondaryContact":
-						this.SecondaryContact = txt;
+						this._SecondaryContact = txt;
 						continue;
 				}
 			}

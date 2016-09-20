@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "categoryId":
-						this.CategoryId = ParseInt(txt);
+						this._CategoryId = ParseInt(txt);
 						continue;
 					case "lastUpdatedCategoryEntryCreatedAt":
-						this.LastUpdatedCategoryEntryCreatedAt = ParseInt(txt);
+						this._LastUpdatedCategoryEntryCreatedAt = ParseInt(txt);
 						continue;
 					case "lastUpdatedCategoryCreatedAt":
-						this.LastUpdatedCategoryCreatedAt = ParseInt(txt);
+						this._LastUpdatedCategoryCreatedAt = ParseInt(txt);
 						continue;
 				}
 			}

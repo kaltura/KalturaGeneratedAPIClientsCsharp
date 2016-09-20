@@ -68,11 +68,6 @@ namespace Kaltura
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public KalturaCategoryUserPermissionLevel PermissionLevel
 		{
@@ -86,29 +81,14 @@ namespace Kaltura
 		public KalturaCategoryUserStatus Status
 		{
 			get { return _Status; }
-			set 
-			{ 
-				_Status = value;
-				OnPropertyChanged("Status");
-			}
 		}
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public KalturaUpdateMethodType UpdateMethod
 		{
@@ -122,11 +102,6 @@ namespace Kaltura
 		public string CategoryFullIds
 		{
 			get { return _CategoryFullIds; }
-			set 
-			{ 
-				_CategoryFullIds = value;
-				OnPropertyChanged("CategoryFullIds");
-			}
 		}
 		public string PermissionNames
 		{
@@ -152,34 +127,34 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "categoryId":
-						this.CategoryId = ParseInt(txt);
+						this._CategoryId = ParseInt(txt);
 						continue;
 					case "userId":
-						this.UserId = txt;
+						this._UserId = txt;
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "permissionLevel":
-						this.PermissionLevel = (KalturaCategoryUserPermissionLevel)ParseEnum(typeof(KalturaCategoryUserPermissionLevel), txt);
+						this._PermissionLevel = (KalturaCategoryUserPermissionLevel)ParseEnum(typeof(KalturaCategoryUserPermissionLevel), txt);
 						continue;
 					case "status":
-						this.Status = (KalturaCategoryUserStatus)ParseEnum(typeof(KalturaCategoryUserStatus), txt);
+						this._Status = (KalturaCategoryUserStatus)ParseEnum(typeof(KalturaCategoryUserStatus), txt);
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "updateMethod":
-						this.UpdateMethod = (KalturaUpdateMethodType)ParseEnum(typeof(KalturaUpdateMethodType), txt);
+						this._UpdateMethod = (KalturaUpdateMethodType)ParseEnum(typeof(KalturaUpdateMethodType), txt);
 						continue;
 					case "categoryFullIds":
-						this.CategoryFullIds = txt;
+						this._CategoryFullIds = txt;
 						continue;
 					case "permissionNames":
-						this.PermissionNames = txt;
+						this._PermissionNames = txt;
 						continue;
 				}
 			}

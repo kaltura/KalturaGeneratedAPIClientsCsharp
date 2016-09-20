@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "localFileSyncPath":
-						this.LocalFileSyncPath = txt;
+						this._LocalFileSyncPath = txt;
 						continue;
 				}
 			}

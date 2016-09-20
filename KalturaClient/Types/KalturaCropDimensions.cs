@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "left":
-						this.Left = ParseInt(txt);
+						this._Left = ParseInt(txt);
 						continue;
 					case "top":
-						this.Top = ParseInt(txt);
+						this._Top = ParseInt(txt);
 						continue;
 					case "width":
-						this.Width = ParseInt(txt);
+						this._Width = ParseInt(txt);
 						continue;
 					case "height":
-						this.Height = ParseInt(txt);
+						this._Height = ParseInt(txt);
 						continue;
 				}
 			}

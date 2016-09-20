@@ -168,7 +168,7 @@ namespace Kaltura
 				OnPropertyChanged("MessageID");
 			}
 		}
-		public IList<KalturaKeyValue> CustomHeaders
+		public new IList<KalturaKeyValue> CustomHeaders
 		{
 			get { return _CustomHeaders; }
 			set 
@@ -192,49 +192,49 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "format":
-						this.Format = (KalturaEmailNotificationFormat)KalturaStringEnum.Parse(typeof(KalturaEmailNotificationFormat), txt);
+						this._Format = (KalturaEmailNotificationFormat)KalturaStringEnum.Parse(typeof(KalturaEmailNotificationFormat), txt);
 						continue;
 					case "subject":
-						this.Subject = txt;
+						this._Subject = txt;
 						continue;
 					case "body":
-						this.Body = txt;
+						this._Body = txt;
 						continue;
 					case "fromEmail":
-						this.FromEmail = txt;
+						this._FromEmail = txt;
 						continue;
 					case "fromName":
-						this.FromName = txt;
+						this._FromName = txt;
 						continue;
 					case "to":
-						this.To = (KalturaEmailNotificationRecipientProvider)KalturaObjectFactory.Create(propertyNode, "KalturaEmailNotificationRecipientProvider");
+						this._To = (KalturaEmailNotificationRecipientProvider)KalturaObjectFactory.Create(propertyNode, "KalturaEmailNotificationRecipientProvider");
 						continue;
 					case "cc":
-						this.Cc = (KalturaEmailNotificationRecipientProvider)KalturaObjectFactory.Create(propertyNode, "KalturaEmailNotificationRecipientProvider");
+						this._Cc = (KalturaEmailNotificationRecipientProvider)KalturaObjectFactory.Create(propertyNode, "KalturaEmailNotificationRecipientProvider");
 						continue;
 					case "bcc":
-						this.Bcc = (KalturaEmailNotificationRecipientProvider)KalturaObjectFactory.Create(propertyNode, "KalturaEmailNotificationRecipientProvider");
+						this._Bcc = (KalturaEmailNotificationRecipientProvider)KalturaObjectFactory.Create(propertyNode, "KalturaEmailNotificationRecipientProvider");
 						continue;
 					case "replyTo":
-						this.ReplyTo = (KalturaEmailNotificationRecipientProvider)KalturaObjectFactory.Create(propertyNode, "KalturaEmailNotificationRecipientProvider");
+						this._ReplyTo = (KalturaEmailNotificationRecipientProvider)KalturaObjectFactory.Create(propertyNode, "KalturaEmailNotificationRecipientProvider");
 						continue;
 					case "priority":
-						this.Priority = (KalturaEmailNotificationTemplatePriority)ParseEnum(typeof(KalturaEmailNotificationTemplatePriority), txt);
+						this._Priority = (KalturaEmailNotificationTemplatePriority)ParseEnum(typeof(KalturaEmailNotificationTemplatePriority), txt);
 						continue;
 					case "confirmReadingTo":
-						this.ConfirmReadingTo = txt;
+						this._ConfirmReadingTo = txt;
 						continue;
 					case "hostname":
-						this.Hostname = txt;
+						this._Hostname = txt;
 						continue;
 					case "messageID":
-						this.MessageID = txt;
+						this._MessageID = txt;
 						continue;
 					case "customHeaders":
-						this.CustomHeaders = new List<KalturaKeyValue>();
+						this._CustomHeaders = new List<KalturaKeyValue>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.CustomHeaders.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
+							this._CustomHeaders.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
 						}
 						continue;
 				}

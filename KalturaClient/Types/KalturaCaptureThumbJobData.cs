@@ -132,28 +132,28 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "srcFileSyncLocalPath":
-						this.SrcFileSyncLocalPath = txt;
+						this._SrcFileSyncLocalPath = txt;
 						continue;
 					case "actualSrcFileSyncLocalPath":
-						this.ActualSrcFileSyncLocalPath = txt;
+						this._ActualSrcFileSyncLocalPath = txt;
 						continue;
 					case "srcFileSyncRemoteUrl":
-						this.SrcFileSyncRemoteUrl = txt;
+						this._SrcFileSyncRemoteUrl = txt;
 						continue;
 					case "thumbParamsOutputId":
-						this.ThumbParamsOutputId = ParseInt(txt);
+						this._ThumbParamsOutputId = ParseInt(txt);
 						continue;
 					case "thumbAssetId":
-						this.ThumbAssetId = txt;
+						this._ThumbAssetId = txt;
 						continue;
 					case "srcAssetId":
-						this.SrcAssetId = txt;
+						this._SrcAssetId = txt;
 						continue;
 					case "srcAssetType":
-						this.SrcAssetType = (KalturaAssetType)KalturaStringEnum.Parse(typeof(KalturaAssetType), txt);
+						this._SrcAssetType = (KalturaAssetType)KalturaStringEnum.Parse(typeof(KalturaAssetType), txt);
 						continue;
 					case "thumbPath":
-						this.ThumbPath = txt;
+						this._ThumbPath = txt;
 						continue;
 				}
 			}

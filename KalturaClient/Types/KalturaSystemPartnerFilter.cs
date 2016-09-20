@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "partnerParentIdEqual":
-						this.PartnerParentIdEqual = ParseInt(txt);
+						this._PartnerParentIdEqual = ParseInt(txt);
 						continue;
 					case "partnerParentIdIn":
-						this.PartnerParentIdIn = txt;
+						this._PartnerParentIdIn = txt;
 						continue;
 				}
 			}

@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "ks":
-						this.Ks = txt;
+						this._Ks = txt;
 						continue;
 					case "responseProfile":
-						this.ResponseProfile = (KalturaBaseResponseProfile)KalturaObjectFactory.Create(propertyNode, "KalturaBaseResponseProfile");
+						this._ResponseProfile = (KalturaBaseResponseProfile)KalturaObjectFactory.Create(propertyNode, "KalturaBaseResponseProfile");
 						continue;
 				}
 			}

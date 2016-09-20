@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "disableExtraAttributes":
-						this.DisableExtraAttributes = ParseBool(txt);
+						this._DisableExtraAttributes = ParseBool(txt);
 						continue;
 					case "forceProxy":
-						this.ForceProxy = ParseBool(txt);
+						this._ForceProxy = ParseBool(txt);
 						continue;
 				}
 			}

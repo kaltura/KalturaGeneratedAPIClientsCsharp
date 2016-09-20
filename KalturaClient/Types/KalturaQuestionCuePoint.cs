@@ -41,7 +41,7 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
-		public IDictionary<string, KalturaOptionalAnswer> OptionalAnswers
+		public new IDictionary<string, KalturaOptionalAnswer> OptionalAnswers
 		{
 			get { return _OptionalAnswers; }
 			set 
@@ -94,22 +94,22 @@ namespace Kaltura
 					case "optionalAnswers":
 						{
 							string key;
-							this.OptionalAnswers = new Dictionary<string, KalturaOptionalAnswer>();
+							this._OptionalAnswers = new Dictionary<string, KalturaOptionalAnswer>();
 							foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 							{
 								key = arrayNode["itemKey"].InnerText;;
-								this.OptionalAnswers[key] = (KalturaOptionalAnswer)KalturaObjectFactory.Create(arrayNode, "KalturaOptionalAnswer");
+								this._OptionalAnswers[key] = (KalturaOptionalAnswer)KalturaObjectFactory.Create(arrayNode, "KalturaOptionalAnswer");
 							}
 						}
 						continue;
 					case "hint":
-						this.Hint = txt;
+						this._Hint = txt;
 						continue;
 					case "question":
-						this.Question = txt;
+						this._Question = txt;
 						continue;
 					case "explanation":
-						this.Explanation = txt;
+						this._Explanation = txt;
 						continue;
 				}
 			}

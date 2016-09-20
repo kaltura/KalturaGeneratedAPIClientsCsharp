@@ -39,7 +39,7 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
-		public IList<KalturaString> Messages
+		public new IList<KalturaString> Messages
 		{
 			get { return _Messages; }
 			set 
@@ -48,7 +48,7 @@ namespace Kaltura
 				OnPropertyChanged("Messages");
 			}
 		}
-		public IList<KalturaRuleAction> Actions
+		public new IList<KalturaRuleAction> Actions
 		{
 			get { return _Actions; }
 			set 
@@ -72,17 +72,17 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "messages":
-						this.Messages = new List<KalturaString>();
+						this._Messages = new List<KalturaString>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Messages.Add((KalturaString)KalturaObjectFactory.Create(arrayNode, "KalturaString"));
+							this._Messages.Add((KalturaString)KalturaObjectFactory.Create(arrayNode, "KalturaString"));
 						}
 						continue;
 					case "actions":
-						this.Actions = new List<KalturaRuleAction>();
+						this._Actions = new List<KalturaRuleAction>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Actions.Add((KalturaRuleAction)KalturaObjectFactory.Create(arrayNode, "KalturaRuleAction"));
+							this._Actions.Add((KalturaRuleAction)KalturaObjectFactory.Create(arrayNode, "KalturaRuleAction"));
 						}
 						continue;
 				}

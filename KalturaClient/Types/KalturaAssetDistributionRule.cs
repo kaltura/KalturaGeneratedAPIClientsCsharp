@@ -48,7 +48,7 @@ namespace Kaltura
 				OnPropertyChanged("ValidationError");
 			}
 		}
-		public IList<KalturaAssetDistributionCondition> AssetDistributionConditions
+		public new IList<KalturaAssetDistributionCondition> AssetDistributionConditions
 		{
 			get { return _AssetDistributionConditions; }
 			set 
@@ -72,13 +72,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "validationError":
-						this.ValidationError = txt;
+						this._ValidationError = txt;
 						continue;
 					case "assetDistributionConditions":
-						this.AssetDistributionConditions = new List<KalturaAssetDistributionCondition>();
+						this._AssetDistributionConditions = new List<KalturaAssetDistributionCondition>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.AssetDistributionConditions.Add((KalturaAssetDistributionCondition)KalturaObjectFactory.Create(arrayNode, "KalturaAssetDistributionCondition"));
+							this._AssetDistributionConditions.Add((KalturaAssetDistributionCondition)KalturaObjectFactory.Create(arrayNode, "KalturaAssetDistributionCondition"));
 						}
 						continue;
 				}

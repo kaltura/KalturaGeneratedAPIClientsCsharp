@@ -342,91 +342,91 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this.IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(txt);
 						continue;
 					case "idIn":
-						this.IdIn = txt;
+						this._IdIn = txt;
 						continue;
 					case "partnerIdEqual":
-						this.PartnerIdEqual = ParseInt(txt);
+						this._PartnerIdEqual = ParseInt(txt);
 						continue;
 					case "partnerIdIn":
-						this.PartnerIdIn = txt;
+						this._PartnerIdIn = txt;
 						continue;
 					case "nameLike":
-						this.NameLike = txt;
+						this._NameLike = txt;
 						continue;
 					case "typeEqual":
-						this.TypeEqual = (KalturaDropFolderType)KalturaStringEnum.Parse(typeof(KalturaDropFolderType), txt);
+						this._TypeEqual = (KalturaDropFolderType)KalturaStringEnum.Parse(typeof(KalturaDropFolderType), txt);
 						continue;
 					case "typeIn":
-						this.TypeIn = txt;
+						this._TypeIn = txt;
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaDropFolderStatus)ParseEnum(typeof(KalturaDropFolderStatus), txt);
+						this._StatusEqual = (KalturaDropFolderStatus)ParseEnum(typeof(KalturaDropFolderStatus), txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = txt;
+						this._StatusIn = txt;
 						continue;
 					case "conversionProfileIdEqual":
-						this.ConversionProfileIdEqual = ParseInt(txt);
+						this._ConversionProfileIdEqual = ParseInt(txt);
 						continue;
 					case "conversionProfileIdIn":
-						this.ConversionProfileIdIn = txt;
+						this._ConversionProfileIdIn = txt;
 						continue;
 					case "dcEqual":
-						this.DcEqual = ParseInt(txt);
+						this._DcEqual = ParseInt(txt);
 						continue;
 					case "dcIn":
-						this.DcIn = txt;
+						this._DcIn = txt;
 						continue;
 					case "pathEqual":
-						this.PathEqual = txt;
+						this._PathEqual = txt;
 						continue;
 					case "pathLike":
-						this.PathLike = txt;
+						this._PathLike = txt;
 						continue;
 					case "fileHandlerTypeEqual":
-						this.FileHandlerTypeEqual = (KalturaDropFolderFileHandlerType)KalturaStringEnum.Parse(typeof(KalturaDropFolderFileHandlerType), txt);
+						this._FileHandlerTypeEqual = (KalturaDropFolderFileHandlerType)KalturaStringEnum.Parse(typeof(KalturaDropFolderFileHandlerType), txt);
 						continue;
 					case "fileHandlerTypeIn":
-						this.FileHandlerTypeIn = txt;
+						this._FileHandlerTypeIn = txt;
 						continue;
 					case "fileNamePatternsLike":
-						this.FileNamePatternsLike = txt;
+						this._FileNamePatternsLike = txt;
 						continue;
 					case "fileNamePatternsMultiLikeOr":
-						this.FileNamePatternsMultiLikeOr = txt;
+						this._FileNamePatternsMultiLikeOr = txt;
 						continue;
 					case "fileNamePatternsMultiLikeAnd":
-						this.FileNamePatternsMultiLikeAnd = txt;
+						this._FileNamePatternsMultiLikeAnd = txt;
 						continue;
 					case "tagsLike":
-						this.TagsLike = txt;
+						this._TagsLike = txt;
 						continue;
 					case "tagsMultiLikeOr":
-						this.TagsMultiLikeOr = txt;
+						this._TagsMultiLikeOr = txt;
 						continue;
 					case "tagsMultiLikeAnd":
-						this.TagsMultiLikeAnd = txt;
+						this._TagsMultiLikeAnd = txt;
 						continue;
 					case "errorCodeEqual":
-						this.ErrorCodeEqual = (KalturaDropFolderErrorCode)KalturaStringEnum.Parse(typeof(KalturaDropFolderErrorCode), txt);
+						this._ErrorCodeEqual = (KalturaDropFolderErrorCode)KalturaStringEnum.Parse(typeof(KalturaDropFolderErrorCode), txt);
 						continue;
 					case "errorCodeIn":
-						this.ErrorCodeIn = txt;
+						this._ErrorCodeIn = txt;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this.CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this.CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this.UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this.UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 				}
 			}

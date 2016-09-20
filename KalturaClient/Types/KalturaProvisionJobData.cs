@@ -182,43 +182,43 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "streamID":
-						this.StreamID = txt;
+						this._StreamID = txt;
 						continue;
 					case "backupStreamID":
-						this.BackupStreamID = txt;
+						this._BackupStreamID = txt;
 						continue;
 					case "rtmp":
-						this.Rtmp = txt;
+						this._Rtmp = txt;
 						continue;
 					case "encoderIP":
-						this.EncoderIP = txt;
+						this._EncoderIP = txt;
 						continue;
 					case "backupEncoderIP":
-						this.BackupEncoderIP = txt;
+						this._BackupEncoderIP = txt;
 						continue;
 					case "encoderPassword":
-						this.EncoderPassword = txt;
+						this._EncoderPassword = txt;
 						continue;
 					case "encoderUsername":
-						this.EncoderUsername = txt;
+						this._EncoderUsername = txt;
 						continue;
 					case "endDate":
-						this.EndDate = ParseInt(txt);
+						this._EndDate = ParseInt(txt);
 						continue;
 					case "returnVal":
-						this.ReturnVal = txt;
+						this._ReturnVal = txt;
 						continue;
 					case "mediaType":
-						this.MediaType = ParseInt(txt);
+						this._MediaType = ParseInt(txt);
 						continue;
 					case "primaryBroadcastingUrl":
-						this.PrimaryBroadcastingUrl = txt;
+						this._PrimaryBroadcastingUrl = txt;
 						continue;
 					case "secondaryBroadcastingUrl":
-						this.SecondaryBroadcastingUrl = txt;
+						this._SecondaryBroadcastingUrl = txt;
 						continue;
 					case "streamName":
-						this.StreamName = txt;
+						this._StreamName = txt;
 						continue;
 				}
 			}

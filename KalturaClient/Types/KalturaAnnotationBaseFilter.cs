@@ -152,34 +152,34 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "parentIdEqual":
-						this.ParentIdEqual = txt;
+						this._ParentIdEqual = txt;
 						continue;
 					case "parentIdIn":
-						this.ParentIdIn = txt;
+						this._ParentIdIn = txt;
 						continue;
 					case "textLike":
-						this.TextLike = txt;
+						this._TextLike = txt;
 						continue;
 					case "textMultiLikeOr":
-						this.TextMultiLikeOr = txt;
+						this._TextMultiLikeOr = txt;
 						continue;
 					case "textMultiLikeAnd":
-						this.TextMultiLikeAnd = txt;
+						this._TextMultiLikeAnd = txt;
 						continue;
 					case "endTimeGreaterThanOrEqual":
-						this.EndTimeGreaterThanOrEqual = ParseInt(txt);
+						this._EndTimeGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "endTimeLessThanOrEqual":
-						this.EndTimeLessThanOrEqual = ParseInt(txt);
+						this._EndTimeLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "durationGreaterThanOrEqual":
-						this.DurationGreaterThanOrEqual = ParseInt(txt);
+						this._DurationGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "durationLessThanOrEqual":
-						this.DurationLessThanOrEqual = ParseInt(txt);
+						this._DurationLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "isPublicEqual":
-						this.IsPublicEqual = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._IsPublicEqual = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 				}
 			}

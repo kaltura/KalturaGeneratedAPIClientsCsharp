@@ -122,25 +122,25 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "flavorAssetId":
-						this.FlavorAssetId = txt;
+						this._FlavorAssetId = txt;
 						continue;
 					case "createThumb":
-						this.CreateThumb = ParseBool(txt);
+						this._CreateThumb = ParseBool(txt);
 						continue;
 					case "thumbPath":
-						this.ThumbPath = txt;
+						this._ThumbPath = txt;
 						continue;
 					case "thumbOffset":
-						this.ThumbOffset = ParseInt(txt);
+						this._ThumbOffset = ParseInt(txt);
 						continue;
 					case "thumbHeight":
-						this.ThumbHeight = ParseInt(txt);
+						this._ThumbHeight = ParseInt(txt);
 						continue;
 					case "thumbBitrate":
-						this.ThumbBitrate = ParseInt(txt);
+						this._ThumbBitrate = ParseInt(txt);
 						continue;
 					case "customData":
-						this.CustomData = txt;
+						this._CustomData = txt;
 						continue;
 				}
 			}

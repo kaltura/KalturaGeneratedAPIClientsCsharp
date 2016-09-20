@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "contentLike":
-						this.ContentLike = txt;
+						this._ContentLike = txt;
 						continue;
 					case "contentMultiLikeOr":
-						this.ContentMultiLikeOr = txt;
+						this._ContentMultiLikeOr = txt;
 						continue;
 					case "contentMultiLikeAnd":
-						this.ContentMultiLikeAnd = txt;
+						this._ContentMultiLikeAnd = txt;
 						continue;
 				}
 			}

@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "playbackDomain":
-						this.PlaybackDomain = txt;
+						this._PlaybackDomain = txt;
 						continue;
 					case "config":
-						this.Config = txt;
+						this._Config = txt;
 						continue;
 				}
 			}

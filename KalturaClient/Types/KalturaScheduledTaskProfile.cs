@@ -53,20 +53,10 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public string Name
 		{
@@ -122,7 +112,7 @@ namespace Kaltura
 				OnPropertyChanged("ObjectFilter");
 			}
 		}
-		public IList<KalturaObjectTask> ObjectTasks
+		public new IList<KalturaObjectTask> ObjectTasks
 		{
 			get { return _ObjectTasks; }
 			set 
@@ -134,20 +124,10 @@ namespace Kaltura
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public int LastExecutionStartedAt
 		{
@@ -182,47 +162,47 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 					case "systemName":
-						this.SystemName = txt;
+						this._SystemName = txt;
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "status":
-						this.Status = (KalturaScheduledTaskProfileStatus)ParseEnum(typeof(KalturaScheduledTaskProfileStatus), txt);
+						this._Status = (KalturaScheduledTaskProfileStatus)ParseEnum(typeof(KalturaScheduledTaskProfileStatus), txt);
 						continue;
 					case "objectFilterEngineType":
-						this.ObjectFilterEngineType = (KalturaObjectFilterEngineType)KalturaStringEnum.Parse(typeof(KalturaObjectFilterEngineType), txt);
+						this._ObjectFilterEngineType = (KalturaObjectFilterEngineType)KalturaStringEnum.Parse(typeof(KalturaObjectFilterEngineType), txt);
 						continue;
 					case "objectFilter":
-						this.ObjectFilter = (KalturaFilter)KalturaObjectFactory.Create(propertyNode, "KalturaFilter");
+						this._ObjectFilter = (KalturaFilter)KalturaObjectFactory.Create(propertyNode, "KalturaFilter");
 						continue;
 					case "objectTasks":
-						this.ObjectTasks = new List<KalturaObjectTask>();
+						this._ObjectTasks = new List<KalturaObjectTask>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.ObjectTasks.Add((KalturaObjectTask)KalturaObjectFactory.Create(arrayNode, "KalturaObjectTask"));
+							this._ObjectTasks.Add((KalturaObjectTask)KalturaObjectFactory.Create(arrayNode, "KalturaObjectTask"));
 						}
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "lastExecutionStartedAt":
-						this.LastExecutionStartedAt = ParseInt(txt);
+						this._LastExecutionStartedAt = ParseInt(txt);
 						continue;
 					case "maxTotalCountAllowed":
-						this.MaxTotalCountAllowed = ParseInt(txt);
+						this._MaxTotalCountAllowed = ParseInt(txt);
 						continue;
 				}
 			}

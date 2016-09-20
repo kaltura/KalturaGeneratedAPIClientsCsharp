@@ -62,29 +62,14 @@ namespace Kaltura
 		public string Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public string FeedUrl
 		{
 			get { return _FeedUrl; }
-			set 
-			{ 
-				_FeedUrl = value;
-				OnPropertyChanged("FeedUrl");
-			}
 		}
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public string PlaylistId
 		{
@@ -107,11 +92,6 @@ namespace Kaltura
 		public KalturaSyndicationFeedStatus Status
 		{
 			get { return _Status; }
-			set 
-			{ 
-				_Status = value;
-				OnPropertyChanged("Status");
-			}
 		}
 		public KalturaSyndicationFeedType Type
 		{
@@ -134,11 +114,6 @@ namespace Kaltura
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public bool? AllowEmbed
 		{
@@ -233,11 +208,6 @@ namespace Kaltura
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public bool? UseCategoryEntries
 		{
@@ -272,70 +242,70 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = txt;
+						this._Id = txt;
 						continue;
 					case "feedUrl":
-						this.FeedUrl = txt;
+						this._FeedUrl = txt;
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "playlistId":
-						this.PlaylistId = txt;
+						this._PlaylistId = txt;
 						continue;
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 					case "status":
-						this.Status = (KalturaSyndicationFeedStatus)ParseEnum(typeof(KalturaSyndicationFeedStatus), txt);
+						this._Status = (KalturaSyndicationFeedStatus)ParseEnum(typeof(KalturaSyndicationFeedStatus), txt);
 						continue;
 					case "type":
-						this.Type = (KalturaSyndicationFeedType)ParseEnum(typeof(KalturaSyndicationFeedType), txt);
+						this._Type = (KalturaSyndicationFeedType)ParseEnum(typeof(KalturaSyndicationFeedType), txt);
 						continue;
 					case "landingPage":
-						this.LandingPage = txt;
+						this._LandingPage = txt;
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "allowEmbed":
-						this.AllowEmbed = ParseBool(txt);
+						this._AllowEmbed = ParseBool(txt);
 						continue;
 					case "playerUiconfId":
-						this.PlayerUiconfId = ParseInt(txt);
+						this._PlayerUiconfId = ParseInt(txt);
 						continue;
 					case "flavorParamId":
-						this.FlavorParamId = ParseInt(txt);
+						this._FlavorParamId = ParseInt(txt);
 						continue;
 					case "transcodeExistingContent":
-						this.TranscodeExistingContent = ParseBool(txt);
+						this._TranscodeExistingContent = ParseBool(txt);
 						continue;
 					case "addToDefaultConversionProfile":
-						this.AddToDefaultConversionProfile = ParseBool(txt);
+						this._AddToDefaultConversionProfile = ParseBool(txt);
 						continue;
 					case "categories":
-						this.Categories = txt;
+						this._Categories = txt;
 						continue;
 					case "storageId":
-						this.StorageId = ParseInt(txt);
+						this._StorageId = ParseInt(txt);
 						continue;
 					case "entriesOrderBy":
-						this.EntriesOrderBy = (KalturaSyndicationFeedEntriesOrderBy)KalturaStringEnum.Parse(typeof(KalturaSyndicationFeedEntriesOrderBy), txt);
+						this._EntriesOrderBy = (KalturaSyndicationFeedEntriesOrderBy)KalturaStringEnum.Parse(typeof(KalturaSyndicationFeedEntriesOrderBy), txt);
 						continue;
 					case "enforceEntitlement":
-						this.EnforceEntitlement = ParseBool(txt);
+						this._EnforceEntitlement = ParseBool(txt);
 						continue;
 					case "privacyContext":
-						this.PrivacyContext = txt;
+						this._PrivacyContext = txt;
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "useCategoryEntries":
-						this.UseCategoryEntries = ParseBool(txt);
+						this._UseCategoryEntries = ParseBool(txt);
 						continue;
 					case "feedContentTypeHeader":
-						this.FeedContentTypeHeader = txt;
+						this._FeedContentTypeHeader = txt;
 						continue;
 				}
 			}

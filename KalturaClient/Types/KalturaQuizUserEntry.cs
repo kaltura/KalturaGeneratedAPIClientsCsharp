@@ -41,11 +41,6 @@ namespace Kaltura
 		public float Score
 		{
 			get { return _Score; }
-			set 
-			{ 
-				_Score = value;
-				OnPropertyChanged("Score");
-			}
 		}
 		#endregion
 
@@ -62,7 +57,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "score":
-						this.Score = ParseFloat(txt);
+						this._Score = ParseFloat(txt);
 						continue;
 				}
 			}

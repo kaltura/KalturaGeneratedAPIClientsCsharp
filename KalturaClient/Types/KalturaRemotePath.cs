@@ -42,20 +42,10 @@ namespace Kaltura
 		public int StorageProfileId
 		{
 			get { return _StorageProfileId; }
-			set 
-			{ 
-				_StorageProfileId = value;
-				OnPropertyChanged("StorageProfileId");
-			}
 		}
 		public string Uri
 		{
 			get { return _Uri; }
-			set 
-			{ 
-				_Uri = value;
-				OnPropertyChanged("Uri");
-			}
 		}
 		#endregion
 
@@ -72,10 +62,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "storageProfileId":
-						this.StorageProfileId = ParseInt(txt);
+						this._StorageProfileId = ParseInt(txt);
 						continue;
 					case "uri":
-						this.Uri = txt;
+						this._Uri = txt;
 						continue;
 				}
 			}

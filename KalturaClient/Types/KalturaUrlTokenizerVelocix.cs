@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "hdsPaths":
-						this.HdsPaths = txt;
+						this._HdsPaths = txt;
 						continue;
 					case "paramName":
-						this.ParamName = txt;
+						this._ParamName = txt;
 						continue;
 					case "authPrefix":
-						this.AuthPrefix = txt;
+						this._AuthPrefix = txt;
 						continue;
 				}
 			}

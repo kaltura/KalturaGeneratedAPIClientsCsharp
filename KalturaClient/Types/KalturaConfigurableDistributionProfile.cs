@@ -40,7 +40,7 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
-		public IList<KalturaDistributionFieldConfig> FieldConfigArray
+		public new IList<KalturaDistributionFieldConfig> FieldConfigArray
 		{
 			get { return _FieldConfigArray; }
 			set 
@@ -49,7 +49,7 @@ namespace Kaltura
 				OnPropertyChanged("FieldConfigArray");
 			}
 		}
-		public IList<KalturaExtendingItemMrssParameter> ItemXpathsToExtend
+		public new IList<KalturaExtendingItemMrssParameter> ItemXpathsToExtend
 		{
 			get { return _ItemXpathsToExtend; }
 			set 
@@ -82,21 +82,21 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "fieldConfigArray":
-						this.FieldConfigArray = new List<KalturaDistributionFieldConfig>();
+						this._FieldConfigArray = new List<KalturaDistributionFieldConfig>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.FieldConfigArray.Add((KalturaDistributionFieldConfig)KalturaObjectFactory.Create(arrayNode, "KalturaDistributionFieldConfig"));
+							this._FieldConfigArray.Add((KalturaDistributionFieldConfig)KalturaObjectFactory.Create(arrayNode, "KalturaDistributionFieldConfig"));
 						}
 						continue;
 					case "itemXpathsToExtend":
-						this.ItemXpathsToExtend = new List<KalturaExtendingItemMrssParameter>();
+						this._ItemXpathsToExtend = new List<KalturaExtendingItemMrssParameter>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.ItemXpathsToExtend.Add((KalturaExtendingItemMrssParameter)KalturaObjectFactory.Create(arrayNode, "KalturaExtendingItemMrssParameter"));
+							this._ItemXpathsToExtend.Add((KalturaExtendingItemMrssParameter)KalturaObjectFactory.Create(arrayNode, "KalturaExtendingItemMrssParameter"));
 						}
 						continue;
 					case "useCategoryEntries":
-						this.UseCategoryEntries = ParseBool(txt);
+						this._UseCategoryEntries = ParseBool(txt);
 						continue;
 				}
 			}

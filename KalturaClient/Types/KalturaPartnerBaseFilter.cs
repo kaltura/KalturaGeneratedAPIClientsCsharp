@@ -202,49 +202,49 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this.IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(txt);
 						continue;
 					case "idIn":
-						this.IdIn = txt;
+						this._IdIn = txt;
 						continue;
 					case "idNotIn":
-						this.IdNotIn = txt;
+						this._IdNotIn = txt;
 						continue;
 					case "nameLike":
-						this.NameLike = txt;
+						this._NameLike = txt;
 						continue;
 					case "nameMultiLikeOr":
-						this.NameMultiLikeOr = txt;
+						this._NameMultiLikeOr = txt;
 						continue;
 					case "nameMultiLikeAnd":
-						this.NameMultiLikeAnd = txt;
+						this._NameMultiLikeAnd = txt;
 						continue;
 					case "nameEqual":
-						this.NameEqual = txt;
+						this._NameEqual = txt;
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaPartnerStatus)ParseEnum(typeof(KalturaPartnerStatus), txt);
+						this._StatusEqual = (KalturaPartnerStatus)ParseEnum(typeof(KalturaPartnerStatus), txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = txt;
+						this._StatusIn = txt;
 						continue;
 					case "partnerPackageEqual":
-						this.PartnerPackageEqual = ParseInt(txt);
+						this._PartnerPackageEqual = ParseInt(txt);
 						continue;
 					case "partnerPackageGreaterThanOrEqual":
-						this.PartnerPackageGreaterThanOrEqual = ParseInt(txt);
+						this._PartnerPackageGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "partnerPackageLessThanOrEqual":
-						this.PartnerPackageLessThanOrEqual = ParseInt(txt);
+						this._PartnerPackageLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "partnerPackageIn":
-						this.PartnerPackageIn = txt;
+						this._PartnerPackageIn = txt;
 						continue;
 					case "partnerGroupTypeEqual":
-						this.PartnerGroupTypeEqual = (KalturaPartnerGroupType)ParseEnum(typeof(KalturaPartnerGroupType), txt);
+						this._PartnerGroupTypeEqual = (KalturaPartnerGroupType)ParseEnum(typeof(KalturaPartnerGroupType), txt);
 						continue;
 					case "partnerNameDescriptionWebsiteAdminNameAdminEmailLike":
-						this.PartnerNameDescriptionWebsiteAdminNameAdminEmailLike = txt;
+						this._PartnerNameDescriptionWebsiteAdminNameAdminEmailLike = txt;
 						continue;
 				}
 			}

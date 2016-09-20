@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "pageSize":
-						this.PageSize = ParseInt(txt);
+						this._PageSize = ParseInt(txt);
 						continue;
 					case "pageIndex":
-						this.PageIndex = ParseInt(txt);
+						this._PageIndex = ParseInt(txt);
 						continue;
 				}
 			}

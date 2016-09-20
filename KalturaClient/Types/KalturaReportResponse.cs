@@ -48,7 +48,7 @@ namespace Kaltura
 				OnPropertyChanged("Columns");
 			}
 		}
-		public IList<KalturaString> Results
+		public new IList<KalturaString> Results
 		{
 			get { return _Results; }
 			set 
@@ -72,13 +72,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "columns":
-						this.Columns = txt;
+						this._Columns = txt;
 						continue;
 					case "results":
-						this.Results = new List<KalturaString>();
+						this._Results = new List<KalturaString>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Results.Add((KalturaString)KalturaObjectFactory.Create(arrayNode, "KalturaString"));
+							this._Results.Add((KalturaString)KalturaObjectFactory.Create(arrayNode, "KalturaString"));
 						}
 						continue;
 				}

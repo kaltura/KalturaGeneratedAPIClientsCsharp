@@ -138,7 +138,7 @@ namespace Kaltura
 				OnPropertyChanged("MessageID");
 			}
 		}
-		public IList<KalturaKeyValue> CustomHeaders
+		public new IList<KalturaKeyValue> CustomHeaders
 		{
 			get { return _CustomHeaders; }
 			set 
@@ -162,40 +162,40 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "fromEmail":
-						this.FromEmail = txt;
+						this._FromEmail = txt;
 						continue;
 					case "fromName":
-						this.FromName = txt;
+						this._FromName = txt;
 						continue;
 					case "to":
-						this.To = (KalturaEmailNotificationRecipientJobData)KalturaObjectFactory.Create(propertyNode, "KalturaEmailNotificationRecipientJobData");
+						this._To = (KalturaEmailNotificationRecipientJobData)KalturaObjectFactory.Create(propertyNode, "KalturaEmailNotificationRecipientJobData");
 						continue;
 					case "cc":
-						this.Cc = (KalturaEmailNotificationRecipientJobData)KalturaObjectFactory.Create(propertyNode, "KalturaEmailNotificationRecipientJobData");
+						this._Cc = (KalturaEmailNotificationRecipientJobData)KalturaObjectFactory.Create(propertyNode, "KalturaEmailNotificationRecipientJobData");
 						continue;
 					case "bcc":
-						this.Bcc = (KalturaEmailNotificationRecipientJobData)KalturaObjectFactory.Create(propertyNode, "KalturaEmailNotificationRecipientJobData");
+						this._Bcc = (KalturaEmailNotificationRecipientJobData)KalturaObjectFactory.Create(propertyNode, "KalturaEmailNotificationRecipientJobData");
 						continue;
 					case "replyTo":
-						this.ReplyTo = (KalturaEmailNotificationRecipientJobData)KalturaObjectFactory.Create(propertyNode, "KalturaEmailNotificationRecipientJobData");
+						this._ReplyTo = (KalturaEmailNotificationRecipientJobData)KalturaObjectFactory.Create(propertyNode, "KalturaEmailNotificationRecipientJobData");
 						continue;
 					case "priority":
-						this.Priority = (KalturaEmailNotificationTemplatePriority)ParseEnum(typeof(KalturaEmailNotificationTemplatePriority), txt);
+						this._Priority = (KalturaEmailNotificationTemplatePriority)ParseEnum(typeof(KalturaEmailNotificationTemplatePriority), txt);
 						continue;
 					case "confirmReadingTo":
-						this.ConfirmReadingTo = txt;
+						this._ConfirmReadingTo = txt;
 						continue;
 					case "hostname":
-						this.Hostname = txt;
+						this._Hostname = txt;
 						continue;
 					case "messageID":
-						this.MessageID = txt;
+						this._MessageID = txt;
 						continue;
 					case "customHeaders":
-						this.CustomHeaders = new List<KalturaKeyValue>();
+						this._CustomHeaders = new List<KalturaKeyValue>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.CustomHeaders.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
+							this._CustomHeaders.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
 						}
 						continue;
 				}

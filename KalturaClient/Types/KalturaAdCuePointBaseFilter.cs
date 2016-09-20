@@ -142,31 +142,31 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "protocolTypeEqual":
-						this.ProtocolTypeEqual = (KalturaAdProtocolType)KalturaStringEnum.Parse(typeof(KalturaAdProtocolType), txt);
+						this._ProtocolTypeEqual = (KalturaAdProtocolType)KalturaStringEnum.Parse(typeof(KalturaAdProtocolType), txt);
 						continue;
 					case "protocolTypeIn":
-						this.ProtocolTypeIn = txt;
+						this._ProtocolTypeIn = txt;
 						continue;
 					case "titleLike":
-						this.TitleLike = txt;
+						this._TitleLike = txt;
 						continue;
 					case "titleMultiLikeOr":
-						this.TitleMultiLikeOr = txt;
+						this._TitleMultiLikeOr = txt;
 						continue;
 					case "titleMultiLikeAnd":
-						this.TitleMultiLikeAnd = txt;
+						this._TitleMultiLikeAnd = txt;
 						continue;
 					case "endTimeGreaterThanOrEqual":
-						this.EndTimeGreaterThanOrEqual = ParseInt(txt);
+						this._EndTimeGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "endTimeLessThanOrEqual":
-						this.EndTimeLessThanOrEqual = ParseInt(txt);
+						this._EndTimeLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "durationGreaterThanOrEqual":
-						this.DurationGreaterThanOrEqual = ParseInt(txt);
+						this._DurationGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "durationLessThanOrEqual":
-						this.DurationLessThanOrEqual = ParseInt(txt);
+						this._DurationLessThanOrEqual = ParseInt(txt);
 						continue;
 				}
 			}

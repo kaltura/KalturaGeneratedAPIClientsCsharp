@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "shouldCopyMetadata":
-						this.ShouldCopyMetadata = ParseBool(txt);
+						this._ShouldCopyMetadata = ParseBool(txt);
 						continue;
 				}
 			}

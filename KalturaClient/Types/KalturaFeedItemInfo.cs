@@ -142,31 +142,31 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "itemXPath":
-						this.ItemXPath = txt;
+						this._ItemXPath = txt;
 						continue;
 					case "itemPublishDateXPath":
-						this.ItemPublishDateXPath = txt;
+						this._ItemPublishDateXPath = txt;
 						continue;
 					case "itemUniqueIdentifierXPath":
-						this.ItemUniqueIdentifierXPath = txt;
+						this._ItemUniqueIdentifierXPath = txt;
 						continue;
 					case "itemContentFileSizeXPath":
-						this.ItemContentFileSizeXPath = txt;
+						this._ItemContentFileSizeXPath = txt;
 						continue;
 					case "itemContentUrlXPath":
-						this.ItemContentUrlXPath = txt;
+						this._ItemContentUrlXPath = txt;
 						continue;
 					case "itemContentBitrateXPath":
-						this.ItemContentBitrateXPath = txt;
+						this._ItemContentBitrateXPath = txt;
 						continue;
 					case "itemHashXPath":
-						this.ItemHashXPath = txt;
+						this._ItemHashXPath = txt;
 						continue;
 					case "itemContentXpath":
-						this.ItemContentXpath = txt;
+						this._ItemContentXpath = txt;
 						continue;
 					case "contentBitrateAttributeName":
-						this.ContentBitrateAttributeName = txt;
+						this._ContentBitrateAttributeName = txt;
 						continue;
 				}
 			}

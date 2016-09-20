@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "itemHandlingLimit":
-						this.ItemHandlingLimit = ParseInt(txt);
+						this._ItemHandlingLimit = ParseInt(txt);
 						continue;
 					case "feedItemInfo":
-						this.FeedItemInfo = (KalturaFeedItemInfo)KalturaObjectFactory.Create(propertyNode, "KalturaFeedItemInfo");
+						this._FeedItemInfo = (KalturaFeedItemInfo)KalturaObjectFactory.Create(propertyNode, "KalturaFeedItemInfo");
 						continue;
 				}
 			}

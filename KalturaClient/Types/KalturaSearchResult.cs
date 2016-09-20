@@ -162,37 +162,37 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = txt;
+						this._Id = txt;
 						continue;
 					case "title":
-						this.Title = txt;
+						this._Title = txt;
 						continue;
 					case "thumbUrl":
-						this.ThumbUrl = txt;
+						this._ThumbUrl = txt;
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "tags":
-						this.Tags = txt;
+						this._Tags = txt;
 						continue;
 					case "url":
-						this.Url = txt;
+						this._Url = txt;
 						continue;
 					case "sourceLink":
-						this.SourceLink = txt;
+						this._SourceLink = txt;
 						continue;
 					case "credit":
-						this.Credit = txt;
+						this._Credit = txt;
 						continue;
 					case "licenseType":
-						this.LicenseType = (KalturaLicenseType)ParseEnum(typeof(KalturaLicenseType), txt);
+						this._LicenseType = (KalturaLicenseType)ParseEnum(typeof(KalturaLicenseType), txt);
 						continue;
 					case "flashPlaybackType":
-						this.FlashPlaybackType = txt;
+						this._FlashPlaybackType = txt;
 						continue;
 					case "fileExt":
-						this.FileExt = txt;
+						this._FileExt = txt;
 						continue;
 				}
 			}

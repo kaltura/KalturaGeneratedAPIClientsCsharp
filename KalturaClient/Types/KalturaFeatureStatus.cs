@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "type":
-						this.Type = (KalturaFeatureStatusType)ParseEnum(typeof(KalturaFeatureStatusType), txt);
+						this._Type = (KalturaFeatureStatusType)ParseEnum(typeof(KalturaFeatureStatusType), txt);
 						continue;
 					case "value":
-						this.Value = ParseInt(txt);
+						this._Value = ParseInt(txt);
 						continue;
 				}
 			}

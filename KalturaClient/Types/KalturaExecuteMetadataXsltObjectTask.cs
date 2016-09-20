@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "metadataProfileId":
-						this.MetadataProfileId = ParseInt(txt);
+						this._MetadataProfileId = ParseInt(txt);
 						continue;
 					case "metadataObjectType":
-						this.MetadataObjectType = (KalturaMetadataObjectType)KalturaStringEnum.Parse(typeof(KalturaMetadataObjectType), txt);
+						this._MetadataObjectType = (KalturaMetadataObjectType)KalturaStringEnum.Parse(typeof(KalturaMetadataObjectType), txt);
 						continue;
 					case "xslt":
-						this.Xslt = txt;
+						this._Xslt = txt;
 						continue;
 				}
 			}

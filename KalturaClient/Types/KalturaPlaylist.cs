@@ -54,7 +54,7 @@ namespace Kaltura
 				OnPropertyChanged("PlaylistContent");
 			}
 		}
-		public IList<KalturaMediaEntryFilterForPlaylist> Filters
+		public new IList<KalturaMediaEntryFilterForPlaylist> Filters
 		{
 			get { return _Filters; }
 			set 
@@ -84,38 +84,18 @@ namespace Kaltura
 		public int Plays
 		{
 			get { return _Plays; }
-			set 
-			{ 
-				_Plays = value;
-				OnPropertyChanged("Plays");
-			}
 		}
 		public int Views
 		{
 			get { return _Views; }
-			set 
-			{ 
-				_Views = value;
-				OnPropertyChanged("Views");
-			}
 		}
 		public int Duration
 		{
 			get { return _Duration; }
-			set 
-			{ 
-				_Duration = value;
-				OnPropertyChanged("Duration");
-			}
 		}
 		public string ExecuteUrl
 		{
 			get { return _ExecuteUrl; }
-			set 
-			{ 
-				_ExecuteUrl = value;
-				OnPropertyChanged("ExecuteUrl");
-			}
 		}
 		#endregion
 
@@ -132,32 +112,32 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "playlistContent":
-						this.PlaylistContent = txt;
+						this._PlaylistContent = txt;
 						continue;
 					case "filters":
-						this.Filters = new List<KalturaMediaEntryFilterForPlaylist>();
+						this._Filters = new List<KalturaMediaEntryFilterForPlaylist>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Filters.Add((KalturaMediaEntryFilterForPlaylist)KalturaObjectFactory.Create(arrayNode, "KalturaMediaEntryFilterForPlaylist"));
+							this._Filters.Add((KalturaMediaEntryFilterForPlaylist)KalturaObjectFactory.Create(arrayNode, "KalturaMediaEntryFilterForPlaylist"));
 						}
 						continue;
 					case "totalResults":
-						this.TotalResults = ParseInt(txt);
+						this._TotalResults = ParseInt(txt);
 						continue;
 					case "playlistType":
-						this.PlaylistType = (KalturaPlaylistType)ParseEnum(typeof(KalturaPlaylistType), txt);
+						this._PlaylistType = (KalturaPlaylistType)ParseEnum(typeof(KalturaPlaylistType), txt);
 						continue;
 					case "plays":
-						this.Plays = ParseInt(txt);
+						this._Plays = ParseInt(txt);
 						continue;
 					case "views":
-						this.Views = ParseInt(txt);
+						this._Views = ParseInt(txt);
 						continue;
 					case "duration":
-						this.Duration = ParseInt(txt);
+						this._Duration = ParseInt(txt);
 						continue;
 					case "executeUrl":
-						this.ExecuteUrl = txt;
+						this._ExecuteUrl = txt;
 						continue;
 				}
 			}

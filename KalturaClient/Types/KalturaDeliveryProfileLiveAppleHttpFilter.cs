@@ -38,7 +38,7 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
-		public new KalturaDeliveryProfileLiveAppleHttpOrderBy OrderBy
+		public KalturaDeliveryProfileLiveAppleHttpOrderBy OrderBy
 		{
 			get { return _OrderBy; }
 			set 
@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "orderBy":
-						this.OrderBy = (KalturaDeliveryProfileLiveAppleHttpOrderBy)KalturaStringEnum.Parse(typeof(KalturaDeliveryProfileLiveAppleHttpOrderBy), txt);
+						this._OrderBy = (KalturaDeliveryProfileLiveAppleHttpOrderBy)KalturaStringEnum.Parse(typeof(KalturaDeliveryProfileLiveAppleHttpOrderBy), txt);
 						continue;
 				}
 			}

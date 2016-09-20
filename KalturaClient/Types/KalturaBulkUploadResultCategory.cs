@@ -192,46 +192,46 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "relativePath":
-						this.RelativePath = txt;
+						this._RelativePath = txt;
 						continue;
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 					case "referenceId":
-						this.ReferenceId = txt;
+						this._ReferenceId = txt;
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "tags":
-						this.Tags = txt;
+						this._Tags = txt;
 						continue;
 					case "appearInList":
-						this.AppearInList = ParseInt(txt);
+						this._AppearInList = ParseInt(txt);
 						continue;
 					case "privacy":
-						this.Privacy = ParseInt(txt);
+						this._Privacy = ParseInt(txt);
 						continue;
 					case "inheritanceType":
-						this.InheritanceType = ParseInt(txt);
+						this._InheritanceType = ParseInt(txt);
 						continue;
 					case "userJoinPolicy":
-						this.UserJoinPolicy = ParseInt(txt);
+						this._UserJoinPolicy = ParseInt(txt);
 						continue;
 					case "defaultPermissionLevel":
-						this.DefaultPermissionLevel = ParseInt(txt);
+						this._DefaultPermissionLevel = ParseInt(txt);
 						continue;
 					case "owner":
-						this.Owner = txt;
+						this._Owner = txt;
 						continue;
 					case "contributionPolicy":
-						this.ContributionPolicy = ParseInt(txt);
+						this._ContributionPolicy = ParseInt(txt);
 						continue;
 					case "partnerSortValue":
-						this.PartnerSortValue = ParseInt(txt);
+						this._PartnerSortValue = ParseInt(txt);
 						continue;
 					case "moderation":
-						this.Moderation = ParseBool(txt);
+						this._Moderation = ParseBool(txt);
 						continue;
 				}
 			}

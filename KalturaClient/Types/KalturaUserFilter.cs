@@ -138,7 +138,7 @@ namespace Kaltura
 				OnPropertyChanged("PermissionNamesMultiLikeAnd");
 			}
 		}
-		public new KalturaUserOrderBy OrderBy
+		public KalturaUserOrderBy OrderBy
 		{
 			get { return _OrderBy; }
 			set 
@@ -162,37 +162,37 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "idOrScreenNameStartsWith":
-						this.IdOrScreenNameStartsWith = txt;
+						this._IdOrScreenNameStartsWith = txt;
 						continue;
 					case "idEqual":
-						this.IdEqual = txt;
+						this._IdEqual = txt;
 						continue;
 					case "idIn":
-						this.IdIn = txt;
+						this._IdIn = txt;
 						continue;
 					case "loginEnabledEqual":
-						this.LoginEnabledEqual = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._LoginEnabledEqual = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "roleIdEqual":
-						this.RoleIdEqual = txt;
+						this._RoleIdEqual = txt;
 						continue;
 					case "roleIdsEqual":
-						this.RoleIdsEqual = txt;
+						this._RoleIdsEqual = txt;
 						continue;
 					case "roleIdsIn":
-						this.RoleIdsIn = txt;
+						this._RoleIdsIn = txt;
 						continue;
 					case "firstNameOrLastNameStartsWith":
-						this.FirstNameOrLastNameStartsWith = txt;
+						this._FirstNameOrLastNameStartsWith = txt;
 						continue;
 					case "permissionNamesMultiLikeOr":
-						this.PermissionNamesMultiLikeOr = txt;
+						this._PermissionNamesMultiLikeOr = txt;
 						continue;
 					case "permissionNamesMultiLikeAnd":
-						this.PermissionNamesMultiLikeAnd = txt;
+						this._PermissionNamesMultiLikeAnd = txt;
 						continue;
 					case "orderBy":
-						this.OrderBy = (KalturaUserOrderBy)KalturaStringEnum.Parse(typeof(KalturaUserOrderBy), txt);
+						this._OrderBy = (KalturaUserOrderBy)KalturaStringEnum.Parse(typeof(KalturaUserOrderBy), txt);
 						continue;
 				}
 			}

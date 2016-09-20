@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "typeEqual":
-						this.TypeEqual = (KalturaDistributionProviderType)KalturaStringEnum.Parse(typeof(KalturaDistributionProviderType), txt);
+						this._TypeEqual = (KalturaDistributionProviderType)KalturaStringEnum.Parse(typeof(KalturaDistributionProviderType), txt);
 						continue;
 					case "typeIn":
-						this.TypeIn = txt;
+						this._TypeIn = txt;
 						continue;
 				}
 			}

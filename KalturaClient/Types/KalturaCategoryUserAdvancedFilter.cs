@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "memberIdEq":
-						this.MemberIdEq = txt;
+						this._MemberIdEq = txt;
 						continue;
 					case "memberIdIn":
-						this.MemberIdIn = txt;
+						this._MemberIdIn = txt;
 						continue;
 					case "memberPermissionsMatchOr":
-						this.MemberPermissionsMatchOr = txt;
+						this._MemberPermissionsMatchOr = txt;
 						continue;
 					case "memberPermissionsMatchAnd":
-						this.MemberPermissionsMatchAnd = txt;
+						this._MemberPermissionsMatchAnd = txt;
 						continue;
 				}
 			}

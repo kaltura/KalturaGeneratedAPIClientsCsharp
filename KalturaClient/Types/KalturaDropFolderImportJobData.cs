@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "dropFolderFileId":
-						this.DropFolderFileId = ParseInt(txt);
+						this._DropFolderFileId = ParseInt(txt);
 						continue;
 				}
 			}

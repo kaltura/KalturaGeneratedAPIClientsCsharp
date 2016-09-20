@@ -48,56 +48,26 @@ namespace Kaltura
 		public int Plays
 		{
 			get { return _Plays; }
-			set 
-			{ 
-				_Plays = value;
-				OnPropertyChanged("Plays");
-			}
 		}
 		public int Views
 		{
 			get { return _Views; }
-			set 
-			{ 
-				_Views = value;
-				OnPropertyChanged("Views");
-			}
 		}
 		public int LastPlayedAt
 		{
 			get { return _LastPlayedAt; }
-			set 
-			{ 
-				_LastPlayedAt = value;
-				OnPropertyChanged("LastPlayedAt");
-			}
 		}
 		public int Width
 		{
 			get { return _Width; }
-			set 
-			{ 
-				_Width = value;
-				OnPropertyChanged("Width");
-			}
 		}
 		public int Height
 		{
 			get { return _Height; }
-			set 
-			{ 
-				_Height = value;
-				OnPropertyChanged("Height");
-			}
 		}
 		public int Duration
 		{
 			get { return _Duration; }
-			set 
-			{ 
-				_Duration = value;
-				OnPropertyChanged("Duration");
-			}
 		}
 		public int MsDuration
 		{
@@ -111,11 +81,6 @@ namespace Kaltura
 		public KalturaDurationType DurationType
 		{
 			get { return _DurationType; }
-			set 
-			{ 
-				_DurationType = value;
-				OnPropertyChanged("DurationType");
-			}
 		}
 		#endregion
 
@@ -132,28 +97,28 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "plays":
-						this.Plays = ParseInt(txt);
+						this._Plays = ParseInt(txt);
 						continue;
 					case "views":
-						this.Views = ParseInt(txt);
+						this._Views = ParseInt(txt);
 						continue;
 					case "lastPlayedAt":
-						this.LastPlayedAt = ParseInt(txt);
+						this._LastPlayedAt = ParseInt(txt);
 						continue;
 					case "width":
-						this.Width = ParseInt(txt);
+						this._Width = ParseInt(txt);
 						continue;
 					case "height":
-						this.Height = ParseInt(txt);
+						this._Height = ParseInt(txt);
 						continue;
 					case "duration":
-						this.Duration = ParseInt(txt);
+						this._Duration = ParseInt(txt);
 						continue;
 					case "msDuration":
-						this.MsDuration = ParseInt(txt);
+						this._MsDuration = ParseInt(txt);
 						continue;
 					case "durationType":
-						this.DurationType = (KalturaDurationType)KalturaStringEnum.Parse(typeof(KalturaDurationType), txt);
+						this._DurationType = (KalturaDurationType)KalturaStringEnum.Parse(typeof(KalturaDurationType), txt);
 						continue;
 				}
 			}

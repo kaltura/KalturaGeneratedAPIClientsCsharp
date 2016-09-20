@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "totalEntryCount":
-						this.TotalEntryCount = ParseInt(txt);
+						this._TotalEntryCount = ParseInt(txt);
 						continue;
 					case "actualEntryCount":
-						this.ActualEntryCount = ParseInt(txt);
+						this._ActualEntryCount = ParseInt(txt);
 						continue;
 					case "requireTranscodingCount":
-						this.RequireTranscodingCount = ParseInt(txt);
+						this._RequireTranscodingCount = ParseInt(txt);
 						continue;
 				}
 			}

@@ -93,11 +93,6 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public string Name
 		{
@@ -138,11 +133,6 @@ namespace Kaltura
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public string AdminName
 		{
@@ -264,11 +254,6 @@ namespace Kaltura
 		public KalturaPartnerStatus Status
 		{
 			get { return _Status; }
-			set 
-			{ 
-				_Status = value;
-				OnPropertyChanged("Status");
-			}
 		}
 		public int AllowQuickEdit
 		{
@@ -309,38 +294,18 @@ namespace Kaltura
 		public int PartnerPackage
 		{
 			get { return _PartnerPackage; }
-			set 
-			{ 
-				_PartnerPackage = value;
-				OnPropertyChanged("PartnerPackage");
-			}
 		}
 		public string Secret
 		{
 			get { return _Secret; }
-			set 
-			{ 
-				_Secret = value;
-				OnPropertyChanged("Secret");
-			}
 		}
 		public string AdminSecret
 		{
 			get { return _AdminSecret; }
-			set 
-			{ 
-				_AdminSecret = value;
-				OnPropertyChanged("AdminSecret");
-			}
 		}
 		public string CmsPassword
 		{
 			get { return _CmsPassword; }
-			set 
-			{ 
-				_CmsPassword = value;
-				OnPropertyChanged("CmsPassword");
-			}
 		}
 		public int AllowMultiNotification
 		{
@@ -354,11 +319,6 @@ namespace Kaltura
 		public int AdminLoginUsersQuota
 		{
 			get { return _AdminLoginUsersQuota; }
-			set 
-			{ 
-				_AdminLoginUsersQuota = value;
-				OnPropertyChanged("AdminLoginUsersQuota");
-			}
 		}
 		public string AdminUserId
 		{
@@ -405,7 +365,7 @@ namespace Kaltura
 				OnPropertyChanged("State");
 			}
 		}
-		public IList<KalturaKeyValue> AdditionalParams
+		public new IList<KalturaKeyValue> AdditionalParams
 		{
 			get { return _AdditionalParams; }
 			set 
@@ -417,137 +377,62 @@ namespace Kaltura
 		public int PublishersQuota
 		{
 			get { return _PublishersQuota; }
-			set 
-			{ 
-				_PublishersQuota = value;
-				OnPropertyChanged("PublishersQuota");
-			}
 		}
 		public KalturaPartnerGroupType PartnerGroupType
 		{
 			get { return _PartnerGroupType; }
-			set 
-			{ 
-				_PartnerGroupType = value;
-				OnPropertyChanged("PartnerGroupType");
-			}
 		}
 		public bool? DefaultEntitlementEnforcement
 		{
 			get { return _DefaultEntitlementEnforcement; }
-			set 
-			{ 
-				_DefaultEntitlementEnforcement = value;
-				OnPropertyChanged("DefaultEntitlementEnforcement");
-			}
 		}
 		public string DefaultDeliveryType
 		{
 			get { return _DefaultDeliveryType; }
-			set 
-			{ 
-				_DefaultDeliveryType = value;
-				OnPropertyChanged("DefaultDeliveryType");
-			}
 		}
 		public string DefaultEmbedCodeType
 		{
 			get { return _DefaultEmbedCodeType; }
-			set 
-			{ 
-				_DefaultEmbedCodeType = value;
-				OnPropertyChanged("DefaultEmbedCodeType");
-			}
 		}
-		public IList<KalturaPlayerDeliveryType> DeliveryTypes
+		public new IList<KalturaPlayerDeliveryType> DeliveryTypes
 		{
 			get { return _DeliveryTypes; }
-			set 
-			{ 
-				_DeliveryTypes = value;
-				OnPropertyChanged("DeliveryTypes");
-			}
 		}
-		public IList<KalturaPlayerEmbedCodeType> EmbedCodeTypes
+		public new IList<KalturaPlayerEmbedCodeType> EmbedCodeTypes
 		{
 			get { return _EmbedCodeTypes; }
-			set 
-			{ 
-				_EmbedCodeTypes = value;
-				OnPropertyChanged("EmbedCodeTypes");
-			}
 		}
 		public int TemplatePartnerId
 		{
 			get { return _TemplatePartnerId; }
-			set 
-			{ 
-				_TemplatePartnerId = value;
-				OnPropertyChanged("TemplatePartnerId");
-			}
 		}
 		public bool? IgnoreSeoLinks
 		{
 			get { return _IgnoreSeoLinks; }
-			set 
-			{ 
-				_IgnoreSeoLinks = value;
-				OnPropertyChanged("IgnoreSeoLinks");
-			}
 		}
 		public string Host
 		{
 			get { return _Host; }
-			set 
-			{ 
-				_Host = value;
-				OnPropertyChanged("Host");
-			}
 		}
 		public string CdnHost
 		{
 			get { return _CdnHost; }
-			set 
-			{ 
-				_CdnHost = value;
-				OnPropertyChanged("CdnHost");
-			}
 		}
 		public bool? IsFirstLogin
 		{
 			get { return _IsFirstLogin; }
-			set 
-			{ 
-				_IsFirstLogin = value;
-				OnPropertyChanged("IsFirstLogin");
-			}
 		}
 		public string LogoutUrl
 		{
 			get { return _LogoutUrl; }
-			set 
-			{ 
-				_LogoutUrl = value;
-				OnPropertyChanged("LogoutUrl");
-			}
 		}
 		public int PartnerParentId
 		{
 			get { return _PartnerParentId; }
-			set 
-			{ 
-				_PartnerParentId = value;
-				OnPropertyChanged("PartnerParentId");
-			}
 		}
 		public string CrmId
 		{
 			get { return _CrmId; }
-			set 
-			{ 
-				_CrmId = value;
-				OnPropertyChanged("CrmId");
-			}
 		}
 		public string ReferenceId
 		{
@@ -561,11 +446,6 @@ namespace Kaltura
 		public bool? TimeAlignedRenditions
 		{
 			get { return _TimeAlignedRenditions; }
-			set 
-			{ 
-				_TimeAlignedRenditions = value;
-				OnPropertyChanged("TimeAlignedRenditions");
-			}
 		}
 		#endregion
 
@@ -582,175 +462,175 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 					case "website":
-						this.Website = txt;
+						this._Website = txt;
 						continue;
 					case "notificationUrl":
-						this.NotificationUrl = txt;
+						this._NotificationUrl = txt;
 						continue;
 					case "appearInSearch":
-						this.AppearInSearch = ParseInt(txt);
+						this._AppearInSearch = ParseInt(txt);
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "adminName":
-						this.AdminName = txt;
+						this._AdminName = txt;
 						continue;
 					case "adminEmail":
-						this.AdminEmail = txt;
+						this._AdminEmail = txt;
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "commercialUse":
-						this.CommercialUse = (KalturaCommercialUseType)ParseEnum(typeof(KalturaCommercialUseType), txt);
+						this._CommercialUse = (KalturaCommercialUseType)ParseEnum(typeof(KalturaCommercialUseType), txt);
 						continue;
 					case "landingPage":
-						this.LandingPage = txt;
+						this._LandingPage = txt;
 						continue;
 					case "userLandingPage":
-						this.UserLandingPage = txt;
+						this._UserLandingPage = txt;
 						continue;
 					case "contentCategories":
-						this.ContentCategories = txt;
+						this._ContentCategories = txt;
 						continue;
 					case "type":
-						this.Type = (KalturaPartnerType)ParseEnum(typeof(KalturaPartnerType), txt);
+						this._Type = (KalturaPartnerType)ParseEnum(typeof(KalturaPartnerType), txt);
 						continue;
 					case "phone":
-						this.Phone = txt;
+						this._Phone = txt;
 						continue;
 					case "describeYourself":
-						this.DescribeYourself = txt;
+						this._DescribeYourself = txt;
 						continue;
 					case "adultContent":
-						this.AdultContent = ParseBool(txt);
+						this._AdultContent = ParseBool(txt);
 						continue;
 					case "defConversionProfileType":
-						this.DefConversionProfileType = txt;
+						this._DefConversionProfileType = txt;
 						continue;
 					case "notify":
-						this.Notify = ParseInt(txt);
+						this._Notify = ParseInt(txt);
 						continue;
 					case "status":
-						this.Status = (KalturaPartnerStatus)ParseEnum(typeof(KalturaPartnerStatus), txt);
+						this._Status = (KalturaPartnerStatus)ParseEnum(typeof(KalturaPartnerStatus), txt);
 						continue;
 					case "allowQuickEdit":
-						this.AllowQuickEdit = ParseInt(txt);
+						this._AllowQuickEdit = ParseInt(txt);
 						continue;
 					case "mergeEntryLists":
-						this.MergeEntryLists = ParseInt(txt);
+						this._MergeEntryLists = ParseInt(txt);
 						continue;
 					case "notificationsConfig":
-						this.NotificationsConfig = txt;
+						this._NotificationsConfig = txt;
 						continue;
 					case "maxUploadSize":
-						this.MaxUploadSize = ParseInt(txt);
+						this._MaxUploadSize = ParseInt(txt);
 						continue;
 					case "partnerPackage":
-						this.PartnerPackage = ParseInt(txt);
+						this._PartnerPackage = ParseInt(txt);
 						continue;
 					case "secret":
-						this.Secret = txt;
+						this._Secret = txt;
 						continue;
 					case "adminSecret":
-						this.AdminSecret = txt;
+						this._AdminSecret = txt;
 						continue;
 					case "cmsPassword":
-						this.CmsPassword = txt;
+						this._CmsPassword = txt;
 						continue;
 					case "allowMultiNotification":
-						this.AllowMultiNotification = ParseInt(txt);
+						this._AllowMultiNotification = ParseInt(txt);
 						continue;
 					case "adminLoginUsersQuota":
-						this.AdminLoginUsersQuota = ParseInt(txt);
+						this._AdminLoginUsersQuota = ParseInt(txt);
 						continue;
 					case "adminUserId":
-						this.AdminUserId = txt;
+						this._AdminUserId = txt;
 						continue;
 					case "firstName":
-						this.FirstName = txt;
+						this._FirstName = txt;
 						continue;
 					case "lastName":
-						this.LastName = txt;
+						this._LastName = txt;
 						continue;
 					case "country":
-						this.Country = txt;
+						this._Country = txt;
 						continue;
 					case "state":
-						this.State = txt;
+						this._State = txt;
 						continue;
 					case "additionalParams":
-						this.AdditionalParams = new List<KalturaKeyValue>();
+						this._AdditionalParams = new List<KalturaKeyValue>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.AdditionalParams.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
+							this._AdditionalParams.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
 						}
 						continue;
 					case "publishersQuota":
-						this.PublishersQuota = ParseInt(txt);
+						this._PublishersQuota = ParseInt(txt);
 						continue;
 					case "partnerGroupType":
-						this.PartnerGroupType = (KalturaPartnerGroupType)ParseEnum(typeof(KalturaPartnerGroupType), txt);
+						this._PartnerGroupType = (KalturaPartnerGroupType)ParseEnum(typeof(KalturaPartnerGroupType), txt);
 						continue;
 					case "defaultEntitlementEnforcement":
-						this.DefaultEntitlementEnforcement = ParseBool(txt);
+						this._DefaultEntitlementEnforcement = ParseBool(txt);
 						continue;
 					case "defaultDeliveryType":
-						this.DefaultDeliveryType = txt;
+						this._DefaultDeliveryType = txt;
 						continue;
 					case "defaultEmbedCodeType":
-						this.DefaultEmbedCodeType = txt;
+						this._DefaultEmbedCodeType = txt;
 						continue;
 					case "deliveryTypes":
-						this.DeliveryTypes = new List<KalturaPlayerDeliveryType>();
+						this._DeliveryTypes = new List<KalturaPlayerDeliveryType>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.DeliveryTypes.Add((KalturaPlayerDeliveryType)KalturaObjectFactory.Create(arrayNode, "KalturaPlayerDeliveryType"));
+							this._DeliveryTypes.Add((KalturaPlayerDeliveryType)KalturaObjectFactory.Create(arrayNode, "KalturaPlayerDeliveryType"));
 						}
 						continue;
 					case "embedCodeTypes":
-						this.EmbedCodeTypes = new List<KalturaPlayerEmbedCodeType>();
+						this._EmbedCodeTypes = new List<KalturaPlayerEmbedCodeType>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.EmbedCodeTypes.Add((KalturaPlayerEmbedCodeType)KalturaObjectFactory.Create(arrayNode, "KalturaPlayerEmbedCodeType"));
+							this._EmbedCodeTypes.Add((KalturaPlayerEmbedCodeType)KalturaObjectFactory.Create(arrayNode, "KalturaPlayerEmbedCodeType"));
 						}
 						continue;
 					case "templatePartnerId":
-						this.TemplatePartnerId = ParseInt(txt);
+						this._TemplatePartnerId = ParseInt(txt);
 						continue;
 					case "ignoreSeoLinks":
-						this.IgnoreSeoLinks = ParseBool(txt);
+						this._IgnoreSeoLinks = ParseBool(txt);
 						continue;
 					case "host":
-						this.Host = txt;
+						this._Host = txt;
 						continue;
 					case "cdnHost":
-						this.CdnHost = txt;
+						this._CdnHost = txt;
 						continue;
 					case "isFirstLogin":
-						this.IsFirstLogin = ParseBool(txt);
+						this._IsFirstLogin = ParseBool(txt);
 						continue;
 					case "logoutUrl":
-						this.LogoutUrl = txt;
+						this._LogoutUrl = txt;
 						continue;
 					case "partnerParentId":
-						this.PartnerParentId = ParseInt(txt);
+						this._PartnerParentId = ParseInt(txt);
 						continue;
 					case "crmId":
-						this.CrmId = txt;
+						this._CrmId = txt;
 						continue;
 					case "referenceId":
-						this.ReferenceId = txt;
+						this._ReferenceId = txt;
 						continue;
 					case "timeAlignedRenditions":
-						this.TimeAlignedRenditions = ParseBool(txt);
+						this._TimeAlignedRenditions = ParseBool(txt);
 						continue;
 				}
 			}

@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "flavorAsset":
-						this.FlavorAsset = (KalturaFlavorAsset)KalturaObjectFactory.Create(propertyNode, "KalturaFlavorAsset");
+						this._FlavorAsset = (KalturaFlavorAsset)KalturaObjectFactory.Create(propertyNode, "KalturaFlavorAsset");
 						continue;
 					case "flavorParams":
-						this.FlavorParams = (KalturaFlavorParams)KalturaObjectFactory.Create(propertyNode, "KalturaFlavorParams");
+						this._FlavorParams = (KalturaFlavorParams)KalturaObjectFactory.Create(propertyNode, "KalturaFlavorParams");
 						continue;
 					case "entryId":
-						this.EntryId = txt;
+						this._EntryId = txt;
 						continue;
 				}
 			}

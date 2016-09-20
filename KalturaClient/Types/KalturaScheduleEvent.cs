@@ -65,29 +65,14 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public int ParentId
 		{
 			get { return _ParentId; }
-			set 
-			{ 
-				_ParentId = value;
-				OnPropertyChanged("ParentId");
-			}
 		}
 		public string Summary
 		{
@@ -110,11 +95,6 @@ namespace Kaltura
 		public KalturaScheduleEventStatus Status
 		{
 			get { return _Status; }
-			set 
-			{ 
-				_Status = value;
-				OnPropertyChanged("Status");
-			}
 		}
 		public int StartDate
 		{
@@ -263,20 +243,10 @@ namespace Kaltura
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public KalturaScheduleEventRecurrence Recurrence
 		{
@@ -302,79 +272,79 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "parentId":
-						this.ParentId = ParseInt(txt);
+						this._ParentId = ParseInt(txt);
 						continue;
 					case "summary":
-						this.Summary = txt;
+						this._Summary = txt;
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "status":
-						this.Status = (KalturaScheduleEventStatus)ParseEnum(typeof(KalturaScheduleEventStatus), txt);
+						this._Status = (KalturaScheduleEventStatus)ParseEnum(typeof(KalturaScheduleEventStatus), txt);
 						continue;
 					case "startDate":
-						this.StartDate = ParseInt(txt);
+						this._StartDate = ParseInt(txt);
 						continue;
 					case "endDate":
-						this.EndDate = ParseInt(txt);
+						this._EndDate = ParseInt(txt);
 						continue;
 					case "referenceId":
-						this.ReferenceId = txt;
+						this._ReferenceId = txt;
 						continue;
 					case "classificationType":
-						this.ClassificationType = (KalturaScheduleEventClassificationType)ParseEnum(typeof(KalturaScheduleEventClassificationType), txt);
+						this._ClassificationType = (KalturaScheduleEventClassificationType)ParseEnum(typeof(KalturaScheduleEventClassificationType), txt);
 						continue;
 					case "geoLatitude":
-						this.GeoLatitude = ParseFloat(txt);
+						this._GeoLatitude = ParseFloat(txt);
 						continue;
 					case "geoLongitude":
-						this.GeoLongitude = ParseFloat(txt);
+						this._GeoLongitude = ParseFloat(txt);
 						continue;
 					case "location":
-						this.Location = txt;
+						this._Location = txt;
 						continue;
 					case "organizer":
-						this.Organizer = txt;
+						this._Organizer = txt;
 						continue;
 					case "ownerId":
-						this.OwnerId = txt;
+						this._OwnerId = txt;
 						continue;
 					case "priority":
-						this.Priority = ParseInt(txt);
+						this._Priority = ParseInt(txt);
 						continue;
 					case "sequence":
-						this.Sequence = ParseInt(txt);
+						this._Sequence = ParseInt(txt);
 						continue;
 					case "recurrenceType":
-						this.RecurrenceType = (KalturaScheduleEventRecurrenceType)ParseEnum(typeof(KalturaScheduleEventRecurrenceType), txt);
+						this._RecurrenceType = (KalturaScheduleEventRecurrenceType)ParseEnum(typeof(KalturaScheduleEventRecurrenceType), txt);
 						continue;
 					case "duration":
-						this.Duration = ParseInt(txt);
+						this._Duration = ParseInt(txt);
 						continue;
 					case "contact":
-						this.Contact = txt;
+						this._Contact = txt;
 						continue;
 					case "comment":
-						this.Comment = txt;
+						this._Comment = txt;
 						continue;
 					case "tags":
-						this.Tags = txt;
+						this._Tags = txt;
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "recurrence":
-						this.Recurrence = (KalturaScheduleEventRecurrence)KalturaObjectFactory.Create(propertyNode, "KalturaScheduleEventRecurrence");
+						this._Recurrence = (KalturaScheduleEventRecurrence)KalturaObjectFactory.Create(propertyNode, "KalturaScheduleEventRecurrence");
 						continue;
 				}
 			}

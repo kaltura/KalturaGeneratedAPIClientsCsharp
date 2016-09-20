@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "fromDate":
-						this.FromDate = ParseInt(txt);
+						this._FromDate = ParseInt(txt);
 						continue;
 					case "toDate":
-						this.ToDate = ParseInt(txt);
+						this._ToDate = ParseInt(txt);
 						continue;
 					case "timezoneOffset":
-						this.TimezoneOffset = ParseInt(txt);
+						this._TimezoneOffset = ParseInt(txt);
 						continue;
 				}
 			}

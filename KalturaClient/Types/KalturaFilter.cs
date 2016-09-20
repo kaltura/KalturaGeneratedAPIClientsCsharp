@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "orderBy":
-						this.OrderBy = txt;
+						this._OrderBy = txt;
 						continue;
 					case "advancedSearch":
-						this.AdvancedSearch = (KalturaSearchItem)KalturaObjectFactory.Create(propertyNode, "KalturaSearchItem");
+						this._AdvancedSearch = (KalturaSearchItem)KalturaObjectFactory.Create(propertyNode, "KalturaSearchItem");
 						continue;
 				}
 			}

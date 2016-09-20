@@ -73,29 +73,14 @@ namespace Kaltura
 		public KalturaNullableBoolean IsCorrect
 		{
 			get { return _IsCorrect; }
-			set 
-			{ 
-				_IsCorrect = value;
-				OnPropertyChanged("IsCorrect");
-			}
 		}
-		public IList<KalturaString> CorrectAnswerKeys
+		public new IList<KalturaString> CorrectAnswerKeys
 		{
 			get { return _CorrectAnswerKeys; }
-			set 
-			{ 
-				_CorrectAnswerKeys = value;
-				OnPropertyChanged("CorrectAnswerKeys");
-			}
 		}
 		public string Explanation
 		{
 			get { return _Explanation; }
-			set 
-			{ 
-				_Explanation = value;
-				OnPropertyChanged("Explanation");
-			}
 		}
 		#endregion
 
@@ -112,26 +97,26 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "parentId":
-						this.ParentId = txt;
+						this._ParentId = txt;
 						continue;
 					case "quizUserEntryId":
-						this.QuizUserEntryId = txt;
+						this._QuizUserEntryId = txt;
 						continue;
 					case "answerKey":
-						this.AnswerKey = txt;
+						this._AnswerKey = txt;
 						continue;
 					case "isCorrect":
-						this.IsCorrect = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._IsCorrect = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "correctAnswerKeys":
-						this.CorrectAnswerKeys = new List<KalturaString>();
+						this._CorrectAnswerKeys = new List<KalturaString>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.CorrectAnswerKeys.Add((KalturaString)KalturaObjectFactory.Create(arrayNode, "KalturaString"));
+							this._CorrectAnswerKeys.Add((KalturaString)KalturaObjectFactory.Create(arrayNode, "KalturaString"));
 						}
 						continue;
 					case "explanation":
-						this.Explanation = txt;
+						this._Explanation = txt;
 						continue;
 				}
 			}

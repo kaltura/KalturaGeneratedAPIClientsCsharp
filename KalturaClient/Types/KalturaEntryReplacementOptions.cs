@@ -48,7 +48,7 @@ namespace Kaltura
 				OnPropertyChanged("KeepManualThumbnails");
 			}
 		}
-		public IList<KalturaPluginReplacementOptionsItem> PluginOptionItems
+		public new IList<KalturaPluginReplacementOptionsItem> PluginOptionItems
 		{
 			get { return _PluginOptionItems; }
 			set 
@@ -72,13 +72,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "keepManualThumbnails":
-						this.KeepManualThumbnails = ParseInt(txt);
+						this._KeepManualThumbnails = ParseInt(txt);
 						continue;
 					case "pluginOptionItems":
-						this.PluginOptionItems = new List<KalturaPluginReplacementOptionsItem>();
+						this._PluginOptionItems = new List<KalturaPluginReplacementOptionsItem>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.PluginOptionItems.Add((KalturaPluginReplacementOptionsItem)KalturaObjectFactory.Create(arrayNode, "KalturaPluginReplacementOptionsItem"));
+							this._PluginOptionItems.Add((KalturaPluginReplacementOptionsItem)KalturaObjectFactory.Create(arrayNode, "KalturaPluginReplacementOptionsItem"));
 						}
 						continue;
 				}

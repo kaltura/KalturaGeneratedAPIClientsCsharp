@@ -232,58 +232,58 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this.IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(txt);
 						continue;
 					case "partnerIdEqual":
-						this.PartnerIdEqual = ParseInt(txt);
+						this._PartnerIdEqual = ParseInt(txt);
 						continue;
 					case "metadataObjectTypeEqual":
-						this.MetadataObjectTypeEqual = (KalturaMetadataObjectType)KalturaStringEnum.Parse(typeof(KalturaMetadataObjectType), txt);
+						this._MetadataObjectTypeEqual = (KalturaMetadataObjectType)KalturaStringEnum.Parse(typeof(KalturaMetadataObjectType), txt);
 						continue;
 					case "metadataObjectTypeIn":
-						this.MetadataObjectTypeIn = txt;
+						this._MetadataObjectTypeIn = txt;
 						continue;
 					case "versionEqual":
-						this.VersionEqual = ParseInt(txt);
+						this._VersionEqual = ParseInt(txt);
 						continue;
 					case "nameEqual":
-						this.NameEqual = txt;
+						this._NameEqual = txt;
 						continue;
 					case "systemNameEqual":
-						this.SystemNameEqual = txt;
+						this._SystemNameEqual = txt;
 						continue;
 					case "systemNameIn":
-						this.SystemNameIn = txt;
+						this._SystemNameIn = txt;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this.CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this.CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this.UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this.UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaMetadataProfileStatus)ParseEnum(typeof(KalturaMetadataProfileStatus), txt);
+						this._StatusEqual = (KalturaMetadataProfileStatus)ParseEnum(typeof(KalturaMetadataProfileStatus), txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = txt;
+						this._StatusIn = txt;
 						continue;
 					case "createModeEqual":
-						this.CreateModeEqual = (KalturaMetadataProfileCreateMode)ParseEnum(typeof(KalturaMetadataProfileCreateMode), txt);
+						this._CreateModeEqual = (KalturaMetadataProfileCreateMode)ParseEnum(typeof(KalturaMetadataProfileCreateMode), txt);
 						continue;
 					case "createModeNotEqual":
-						this.CreateModeNotEqual = (KalturaMetadataProfileCreateMode)ParseEnum(typeof(KalturaMetadataProfileCreateMode), txt);
+						this._CreateModeNotEqual = (KalturaMetadataProfileCreateMode)ParseEnum(typeof(KalturaMetadataProfileCreateMode), txt);
 						continue;
 					case "createModeIn":
-						this.CreateModeIn = txt;
+						this._CreateModeIn = txt;
 						continue;
 					case "createModeNotIn":
-						this.CreateModeNotIn = txt;
+						this._CreateModeNotIn = txt;
 						continue;
 				}
 			}

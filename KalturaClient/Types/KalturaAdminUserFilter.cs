@@ -38,7 +38,7 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
-		public new KalturaAdminUserOrderBy OrderBy
+		public KalturaAdminUserOrderBy OrderBy
 		{
 			get { return _OrderBy; }
 			set 
@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "orderBy":
-						this.OrderBy = (KalturaAdminUserOrderBy)KalturaStringEnum.Parse(typeof(KalturaAdminUserOrderBy), txt);
+						this._OrderBy = (KalturaAdminUserOrderBy)KalturaStringEnum.Parse(typeof(KalturaAdminUserOrderBy), txt);
 						continue;
 				}
 			}

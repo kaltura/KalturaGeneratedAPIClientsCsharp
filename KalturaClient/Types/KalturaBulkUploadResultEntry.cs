@@ -282,73 +282,73 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "entryId":
-						this.EntryId = txt;
+						this._EntryId = txt;
 						continue;
 					case "title":
-						this.Title = txt;
+						this._Title = txt;
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "tags":
-						this.Tags = txt;
+						this._Tags = txt;
 						continue;
 					case "url":
-						this.Url = txt;
+						this._Url = txt;
 						continue;
 					case "contentType":
-						this.ContentType = txt;
+						this._ContentType = txt;
 						continue;
 					case "conversionProfileId":
-						this.ConversionProfileId = ParseInt(txt);
+						this._ConversionProfileId = ParseInt(txt);
 						continue;
 					case "accessControlProfileId":
-						this.AccessControlProfileId = ParseInt(txt);
+						this._AccessControlProfileId = ParseInt(txt);
 						continue;
 					case "category":
-						this.Category = txt;
+						this._Category = txt;
 						continue;
 					case "scheduleStartDate":
-						this.ScheduleStartDate = ParseInt(txt);
+						this._ScheduleStartDate = ParseInt(txt);
 						continue;
 					case "scheduleEndDate":
-						this.ScheduleEndDate = ParseInt(txt);
+						this._ScheduleEndDate = ParseInt(txt);
 						continue;
 					case "entryStatus":
-						this.EntryStatus = ParseInt(txt);
+						this._EntryStatus = ParseInt(txt);
 						continue;
 					case "thumbnailUrl":
-						this.ThumbnailUrl = txt;
+						this._ThumbnailUrl = txt;
 						continue;
 					case "thumbnailSaved":
-						this.ThumbnailSaved = ParseBool(txt);
+						this._ThumbnailSaved = ParseBool(txt);
 						continue;
 					case "sshPrivateKey":
-						this.SshPrivateKey = txt;
+						this._SshPrivateKey = txt;
 						continue;
 					case "sshPublicKey":
-						this.SshPublicKey = txt;
+						this._SshPublicKey = txt;
 						continue;
 					case "sshKeyPassphrase":
-						this.SshKeyPassphrase = txt;
+						this._SshKeyPassphrase = txt;
 						continue;
 					case "creatorId":
-						this.CreatorId = txt;
+						this._CreatorId = txt;
 						continue;
 					case "entitledUsersEdit":
-						this.EntitledUsersEdit = txt;
+						this._EntitledUsersEdit = txt;
 						continue;
 					case "entitledUsersPublish":
-						this.EntitledUsersPublish = txt;
+						this._EntitledUsersPublish = txt;
 						continue;
 					case "ownerId":
-						this.OwnerId = txt;
+						this._OwnerId = txt;
 						continue;
 					case "referenceId":
-						this.ReferenceId = txt;
+						this._ReferenceId = txt;
 						continue;
 					case "templateEntryId":
-						this.TemplateEntryId = txt;
+						this._TemplateEntryId = txt;
 						continue;
 				}
 			}

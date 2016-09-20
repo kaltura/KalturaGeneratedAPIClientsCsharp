@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "playbackDomainLike":
-						this.PlaybackDomainLike = txt;
+						this._PlaybackDomainLike = txt;
 						continue;
 					case "playbackDomainMultiLikeOr":
-						this.PlaybackDomainMultiLikeOr = txt;
+						this._PlaybackDomainMultiLikeOr = txt;
 						continue;
 					case "playbackDomainMultiLikeAnd":
-						this.PlaybackDomainMultiLikeAnd = txt;
+						this._PlaybackDomainMultiLikeAnd = txt;
 						continue;
 				}
 			}

@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "version":
-						this.Version = txt;
+						this._Version = txt;
 						continue;
 					case "assetId":
-						this.AssetId = txt;
+						this._AssetId = txt;
 						continue;
 					case "remoteId":
-						this.RemoteId = txt;
+						this._RemoteId = txt;
 						continue;
 				}
 			}

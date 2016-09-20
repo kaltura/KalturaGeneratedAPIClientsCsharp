@@ -88,7 +88,7 @@ namespace Kaltura
 				OnPropertyChanged("RedirectFromEntryId");
 			}
 		}
-		public new KalturaBaseEntryOrderBy OrderBy
+		public KalturaBaseEntryOrderBy OrderBy
 		{
 			get { return _OrderBy; }
 			set 
@@ -112,22 +112,22 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "freeText":
-						this.FreeText = txt;
+						this._FreeText = txt;
 						continue;
 					case "isRoot":
-						this.IsRoot = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._IsRoot = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "categoriesFullNameIn":
-						this.CategoriesFullNameIn = txt;
+						this._CategoriesFullNameIn = txt;
 						continue;
 					case "categoryAncestorIdIn":
-						this.CategoryAncestorIdIn = txt;
+						this._CategoryAncestorIdIn = txt;
 						continue;
 					case "redirectFromEntryId":
-						this.RedirectFromEntryId = txt;
+						this._RedirectFromEntryId = txt;
 						continue;
 					case "orderBy":
-						this.OrderBy = (KalturaBaseEntryOrderBy)KalturaStringEnum.Parse(typeof(KalturaBaseEntryOrderBy), txt);
+						this._OrderBy = (KalturaBaseEntryOrderBy)KalturaStringEnum.Parse(typeof(KalturaBaseEntryOrderBy), txt);
 						continue;
 				}
 			}

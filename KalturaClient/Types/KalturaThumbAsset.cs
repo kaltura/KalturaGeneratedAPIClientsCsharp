@@ -53,29 +53,14 @@ namespace Kaltura
 		public int Width
 		{
 			get { return _Width; }
-			set 
-			{ 
-				_Width = value;
-				OnPropertyChanged("Width");
-			}
 		}
 		public int Height
 		{
 			get { return _Height; }
-			set 
-			{ 
-				_Height = value;
-				OnPropertyChanged("Height");
-			}
 		}
 		public KalturaThumbAssetStatus Status
 		{
 			get { return _Status; }
-			set 
-			{ 
-				_Status = value;
-				OnPropertyChanged("Status");
-			}
 		}
 		#endregion
 
@@ -92,16 +77,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "thumbParamsId":
-						this.ThumbParamsId = ParseInt(txt);
+						this._ThumbParamsId = ParseInt(txt);
 						continue;
 					case "width":
-						this.Width = ParseInt(txt);
+						this._Width = ParseInt(txt);
 						continue;
 					case "height":
-						this.Height = ParseInt(txt);
+						this._Height = ParseInt(txt);
 						continue;
 					case "status":
-						this.Status = (KalturaThumbAssetStatus)ParseEnum(typeof(KalturaThumbAssetStatus), txt);
+						this._Status = (KalturaThumbAssetStatus)ParseEnum(typeof(KalturaThumbAssetStatus), txt);
 						continue;
 				}
 			}

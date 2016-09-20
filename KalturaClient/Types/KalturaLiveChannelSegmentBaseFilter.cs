@@ -152,34 +152,34 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "createdAtGreaterThanOrEqual":
-						this.CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this.CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this.UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this.UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaLiveChannelSegmentStatus)KalturaStringEnum.Parse(typeof(KalturaLiveChannelSegmentStatus), txt);
+						this._StatusEqual = (KalturaLiveChannelSegmentStatus)KalturaStringEnum.Parse(typeof(KalturaLiveChannelSegmentStatus), txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = txt;
+						this._StatusIn = txt;
 						continue;
 					case "channelIdEqual":
-						this.ChannelIdEqual = txt;
+						this._ChannelIdEqual = txt;
 						continue;
 					case "channelIdIn":
-						this.ChannelIdIn = txt;
+						this._ChannelIdIn = txt;
 						continue;
 					case "startTimeGreaterThanOrEqual":
-						this.StartTimeGreaterThanOrEqual = ParseFloat(txt);
+						this._StartTimeGreaterThanOrEqual = ParseFloat(txt);
 						continue;
 					case "startTimeLessThanOrEqual":
-						this.StartTimeLessThanOrEqual = ParseFloat(txt);
+						this._StartTimeLessThanOrEqual = ParseFloat(txt);
 						continue;
 				}
 			}

@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "storageProfileId":
-						this.StorageProfileId = ParseInt(txt);
+						this._StorageProfileId = ParseInt(txt);
 						continue;
 				}
 			}

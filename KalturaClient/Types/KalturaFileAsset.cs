@@ -51,20 +51,10 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public KalturaFileAssetObjectType FileAssetObjectType
 		{
@@ -114,38 +104,18 @@ namespace Kaltura
 		public int Version
 		{
 			get { return _Version; }
-			set 
-			{ 
-				_Version = value;
-				OnPropertyChanged("Version");
-			}
 		}
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public KalturaFileAssetStatus Status
 		{
 			get { return _Status; }
-			set 
-			{ 
-				_Status = value;
-				OnPropertyChanged("Status");
-			}
 		}
 		#endregion
 
@@ -162,37 +132,37 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "fileAssetObjectType":
-						this.FileAssetObjectType = (KalturaFileAssetObjectType)KalturaStringEnum.Parse(typeof(KalturaFileAssetObjectType), txt);
+						this._FileAssetObjectType = (KalturaFileAssetObjectType)KalturaStringEnum.Parse(typeof(KalturaFileAssetObjectType), txt);
 						continue;
 					case "objectId":
-						this.ObjectId = txt;
+						this._ObjectId = txt;
 						continue;
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 					case "systemName":
-						this.SystemName = txt;
+						this._SystemName = txt;
 						continue;
 					case "fileExt":
-						this.FileExt = txt;
+						this._FileExt = txt;
 						continue;
 					case "version":
-						this.Version = ParseInt(txt);
+						this._Version = ParseInt(txt);
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "status":
-						this.Status = (KalturaFileAssetStatus)KalturaStringEnum.Parse(typeof(KalturaFileAssetStatus), txt);
+						this._Status = (KalturaFileAssetStatus)KalturaStringEnum.Parse(typeof(KalturaFileAssetStatus), txt);
 						continue;
 				}
 			}

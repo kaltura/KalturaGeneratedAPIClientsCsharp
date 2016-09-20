@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "formatEqual":
-						this.FormatEqual = (KalturaCaptionType)KalturaStringEnum.Parse(typeof(KalturaCaptionType), txt);
+						this._FormatEqual = (KalturaCaptionType)KalturaStringEnum.Parse(typeof(KalturaCaptionType), txt);
 						continue;
 					case "formatIn":
-						this.FormatIn = txt;
+						this._FormatIn = txt;
 						continue;
 				}
 			}

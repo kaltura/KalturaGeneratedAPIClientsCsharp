@@ -68,7 +68,7 @@ namespace Kaltura
 				OnPropertyChanged("ParentCategoryIdsMultiLikeAnd");
 			}
 		}
-		public new KalturaEntryScheduleEventOrderBy OrderBy
+		public KalturaEntryScheduleEventOrderBy OrderBy
 		{
 			get { return _OrderBy; }
 			set 
@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "parentCategoryIdsLike":
-						this.ParentCategoryIdsLike = txt;
+						this._ParentCategoryIdsLike = txt;
 						continue;
 					case "parentCategoryIdsMultiLikeOr":
-						this.ParentCategoryIdsMultiLikeOr = txt;
+						this._ParentCategoryIdsMultiLikeOr = txt;
 						continue;
 					case "parentCategoryIdsMultiLikeAnd":
-						this.ParentCategoryIdsMultiLikeAnd = txt;
+						this._ParentCategoryIdsMultiLikeAnd = txt;
 						continue;
 					case "orderBy":
-						this.OrderBy = (KalturaEntryScheduleEventOrderBy)KalturaStringEnum.Parse(typeof(KalturaEntryScheduleEventOrderBy), txt);
+						this._OrderBy = (KalturaEntryScheduleEventOrderBy)KalturaStringEnum.Parse(typeof(KalturaEntryScheduleEventOrderBy), txt);
 						continue;
 				}
 			}

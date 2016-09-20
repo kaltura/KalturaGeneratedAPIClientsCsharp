@@ -102,19 +102,19 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "bitrate":
-						this.Bitrate = ParseInt(txt);
+						this._Bitrate = ParseInt(txt);
 						continue;
 					case "flavorId":
-						this.FlavorId = txt;
+						this._FlavorId = txt;
 						continue;
 					case "width":
-						this.Width = ParseInt(txt);
+						this._Width = ParseInt(txt);
 						continue;
 					case "height":
-						this.Height = ParseInt(txt);
+						this._Height = ParseInt(txt);
 						continue;
 					case "codec":
-						this.Codec = txt;
+						this._Codec = txt;
 						continue;
 				}
 			}

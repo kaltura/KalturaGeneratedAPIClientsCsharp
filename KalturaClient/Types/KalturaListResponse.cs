@@ -41,11 +41,6 @@ namespace Kaltura
 		public int TotalCount
 		{
 			get { return _TotalCount; }
-			set 
-			{ 
-				_TotalCount = value;
-				OnPropertyChanged("TotalCount");
-			}
 		}
 		#endregion
 
@@ -62,7 +57,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "totalCount":
-						this.TotalCount = ParseInt(txt);
+						this._TotalCount = ParseInt(txt);
 						continue;
 				}
 			}

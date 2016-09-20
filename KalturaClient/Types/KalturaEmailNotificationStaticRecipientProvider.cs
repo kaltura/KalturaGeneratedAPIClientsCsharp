@@ -38,7 +38,7 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
-		public IList<KalturaEmailNotificationRecipient> EmailRecipients
+		public new IList<KalturaEmailNotificationRecipient> EmailRecipients
 		{
 			get { return _EmailRecipients; }
 			set 
@@ -62,10 +62,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "emailRecipients":
-						this.EmailRecipients = new List<KalturaEmailNotificationRecipient>();
+						this._EmailRecipients = new List<KalturaEmailNotificationRecipient>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.EmailRecipients.Add((KalturaEmailNotificationRecipient)KalturaObjectFactory.Create(arrayNode, "KalturaEmailNotificationRecipient"));
+							this._EmailRecipients.Add((KalturaEmailNotificationRecipient)KalturaObjectFactory.Create(arrayNode, "KalturaEmailNotificationRecipient"));
 						}
 						continue;
 				}

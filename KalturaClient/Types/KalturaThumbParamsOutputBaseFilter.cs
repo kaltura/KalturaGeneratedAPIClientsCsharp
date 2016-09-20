@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "thumbParamsIdEqual":
-						this.ThumbParamsIdEqual = ParseInt(txt);
+						this._ThumbParamsIdEqual = ParseInt(txt);
 						continue;
 					case "thumbParamsVersionEqual":
-						this.ThumbParamsVersionEqual = txt;
+						this._ThumbParamsVersionEqual = txt;
 						continue;
 					case "thumbAssetIdEqual":
-						this.ThumbAssetIdEqual = txt;
+						this._ThumbAssetIdEqual = txt;
 						continue;
 					case "thumbAssetVersionEqual":
-						this.ThumbAssetVersionEqual = txt;
+						this._ThumbAssetVersionEqual = txt;
 						continue;
 				}
 			}

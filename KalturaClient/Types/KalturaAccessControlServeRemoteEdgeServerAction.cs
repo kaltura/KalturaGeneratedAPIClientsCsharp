@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "edgeServerIds":
-						this.EdgeServerIds = txt;
+						this._EdgeServerIds = txt;
 						continue;
 				}
 			}

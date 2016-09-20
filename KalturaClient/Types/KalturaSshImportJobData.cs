@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "privateKey":
-						this.PrivateKey = txt;
+						this._PrivateKey = txt;
 						continue;
 					case "publicKey":
-						this.PublicKey = txt;
+						this._PublicKey = txt;
 						continue;
 					case "passPhrase":
-						this.PassPhrase = txt;
+						this._PassPhrase = txt;
 						continue;
 				}
 			}

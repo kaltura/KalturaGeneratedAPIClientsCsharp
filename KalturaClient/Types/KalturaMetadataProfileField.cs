@@ -44,38 +44,18 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public string XPath
 		{
 			get { return _XPath; }
-			set 
-			{ 
-				_XPath = value;
-				OnPropertyChanged("XPath");
-			}
 		}
 		public string Key
 		{
 			get { return _Key; }
-			set 
-			{ 
-				_Key = value;
-				OnPropertyChanged("Key");
-			}
 		}
 		public string Label
 		{
 			get { return _Label; }
-			set 
-			{ 
-				_Label = value;
-				OnPropertyChanged("Label");
-			}
 		}
 		#endregion
 
@@ -92,16 +72,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "xPath":
-						this.XPath = txt;
+						this._XPath = txt;
 						continue;
 					case "key":
-						this.Key = txt;
+						this._Key = txt;
 						continue;
 					case "label":
-						this.Label = txt;
+						this._Label = txt;
 						continue;
 				}
 			}

@@ -48,7 +48,7 @@ namespace Kaltura
 				OnPropertyChanged("Total");
 			}
 		}
-		public IList<KalturaVarPartnerUsageItem> Objects
+		public new IList<KalturaVarPartnerUsageItem> Objects
 		{
 			get { return _Objects; }
 			set 
@@ -72,13 +72,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "total":
-						this.Total = (KalturaVarPartnerUsageItem)KalturaObjectFactory.Create(propertyNode, "KalturaVarPartnerUsageItem");
+						this._Total = (KalturaVarPartnerUsageItem)KalturaObjectFactory.Create(propertyNode, "KalturaVarPartnerUsageItem");
 						continue;
 					case "objects":
-						this.Objects = new List<KalturaVarPartnerUsageItem>();
+						this._Objects = new List<KalturaVarPartnerUsageItem>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Objects.Add((KalturaVarPartnerUsageItem)KalturaObjectFactory.Create(arrayNode, "KalturaVarPartnerUsageItem"));
+							this._Objects.Add((KalturaVarPartnerUsageItem)KalturaObjectFactory.Create(arrayNode, "KalturaVarPartnerUsageItem"));
 						}
 						continue;
 				}

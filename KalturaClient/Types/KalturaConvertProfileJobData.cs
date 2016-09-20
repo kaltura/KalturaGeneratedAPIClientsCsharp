@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "inputFileSyncLocalPath":
-						this.InputFileSyncLocalPath = txt;
+						this._InputFileSyncLocalPath = txt;
 						continue;
 					case "thumbHeight":
-						this.ThumbHeight = ParseInt(txt);
+						this._ThumbHeight = ParseInt(txt);
 						continue;
 					case "thumbBitrate":
-						this.ThumbBitrate = ParseInt(txt);
+						this._ThumbBitrate = ParseInt(txt);
 						continue;
 				}
 			}

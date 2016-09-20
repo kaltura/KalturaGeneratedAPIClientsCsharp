@@ -152,34 +152,34 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "serverUrl":
-						this.ServerUrl = txt;
+						this._ServerUrl = txt;
 						continue;
 					case "serverUsername":
-						this.ServerUsername = txt;
+						this._ServerUsername = txt;
 						continue;
 					case "serverPassword":
-						this.ServerPassword = txt;
+						this._ServerPassword = txt;
 						continue;
 					case "serverPrivateKey":
-						this.ServerPrivateKey = txt;
+						this._ServerPrivateKey = txt;
 						continue;
 					case "serverPublicKey":
-						this.ServerPublicKey = txt;
+						this._ServerPublicKey = txt;
 						continue;
 					case "serverPassPhrase":
-						this.ServerPassPhrase = txt;
+						this._ServerPassPhrase = txt;
 						continue;
 					case "ftpPassiveMode":
-						this.FtpPassiveMode = ParseBool(txt);
+						this._FtpPassiveMode = ParseBool(txt);
 						continue;
 					case "srcFileSyncLocalPath":
-						this.SrcFileSyncLocalPath = txt;
+						this._SrcFileSyncLocalPath = txt;
 						continue;
 					case "srcFileSyncId":
-						this.SrcFileSyncId = txt;
+						this._SrcFileSyncId = txt;
 						continue;
 					case "destFileSyncStoredPath":
-						this.DestFileSyncStoredPath = txt;
+						this._DestFileSyncStoredPath = txt;
 						continue;
 				}
 			}

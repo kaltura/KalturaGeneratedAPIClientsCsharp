@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "maxResults":
-						this.MaxResults = ParseInt(txt);
+						this._MaxResults = ParseInt(txt);
 						continue;
 					case "resultsFilePath":
-						this.ResultsFilePath = txt;
+						this._ResultsFilePath = txt;
 						continue;
 					case "referenceTime":
-						this.ReferenceTime = ParseInt(txt);
+						this._ReferenceTime = ParseInt(txt);
 						continue;
 				}
 			}

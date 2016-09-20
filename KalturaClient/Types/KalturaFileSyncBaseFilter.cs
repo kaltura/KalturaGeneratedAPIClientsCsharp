@@ -342,91 +342,91 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "partnerIdEqual":
-						this.PartnerIdEqual = ParseInt(txt);
+						this._PartnerIdEqual = ParseInt(txt);
 						continue;
 					case "fileObjectTypeEqual":
-						this.FileObjectTypeEqual = (KalturaFileSyncObjectType)KalturaStringEnum.Parse(typeof(KalturaFileSyncObjectType), txt);
+						this._FileObjectTypeEqual = (KalturaFileSyncObjectType)KalturaStringEnum.Parse(typeof(KalturaFileSyncObjectType), txt);
 						continue;
 					case "fileObjectTypeIn":
-						this.FileObjectTypeIn = txt;
+						this._FileObjectTypeIn = txt;
 						continue;
 					case "objectIdEqual":
-						this.ObjectIdEqual = txt;
+						this._ObjectIdEqual = txt;
 						continue;
 					case "objectIdIn":
-						this.ObjectIdIn = txt;
+						this._ObjectIdIn = txt;
 						continue;
 					case "versionEqual":
-						this.VersionEqual = txt;
+						this._VersionEqual = txt;
 						continue;
 					case "versionIn":
-						this.VersionIn = txt;
+						this._VersionIn = txt;
 						continue;
 					case "objectSubTypeEqual":
-						this.ObjectSubTypeEqual = ParseInt(txt);
+						this._ObjectSubTypeEqual = ParseInt(txt);
 						continue;
 					case "objectSubTypeIn":
-						this.ObjectSubTypeIn = txt;
+						this._ObjectSubTypeIn = txt;
 						continue;
 					case "dcEqual":
-						this.DcEqual = txt;
+						this._DcEqual = txt;
 						continue;
 					case "dcIn":
-						this.DcIn = txt;
+						this._DcIn = txt;
 						continue;
 					case "originalEqual":
-						this.OriginalEqual = ParseInt(txt);
+						this._OriginalEqual = ParseInt(txt);
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this.CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this.CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this.UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this.UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "readyAtGreaterThanOrEqual":
-						this.ReadyAtGreaterThanOrEqual = ParseInt(txt);
+						this._ReadyAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "readyAtLessThanOrEqual":
-						this.ReadyAtLessThanOrEqual = ParseInt(txt);
+						this._ReadyAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "syncTimeGreaterThanOrEqual":
-						this.SyncTimeGreaterThanOrEqual = ParseInt(txt);
+						this._SyncTimeGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "syncTimeLessThanOrEqual":
-						this.SyncTimeLessThanOrEqual = ParseInt(txt);
+						this._SyncTimeLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaFileSyncStatus)ParseEnum(typeof(KalturaFileSyncStatus), txt);
+						this._StatusEqual = (KalturaFileSyncStatus)ParseEnum(typeof(KalturaFileSyncStatus), txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = txt;
+						this._StatusIn = txt;
 						continue;
 					case "fileTypeEqual":
-						this.FileTypeEqual = (KalturaFileSyncType)ParseEnum(typeof(KalturaFileSyncType), txt);
+						this._FileTypeEqual = (KalturaFileSyncType)ParseEnum(typeof(KalturaFileSyncType), txt);
 						continue;
 					case "fileTypeIn":
-						this.FileTypeIn = txt;
+						this._FileTypeIn = txt;
 						continue;
 					case "linkedIdEqual":
-						this.LinkedIdEqual = ParseInt(txt);
+						this._LinkedIdEqual = ParseInt(txt);
 						continue;
 					case "linkCountGreaterThanOrEqual":
-						this.LinkCountGreaterThanOrEqual = ParseInt(txt);
+						this._LinkCountGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "linkCountLessThanOrEqual":
-						this.LinkCountLessThanOrEqual = ParseInt(txt);
+						this._LinkCountLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "fileSizeGreaterThanOrEqual":
-						this.FileSizeGreaterThanOrEqual = ParseFloat(txt);
+						this._FileSizeGreaterThanOrEqual = ParseFloat(txt);
 						continue;
 					case "fileSizeLessThanOrEqual":
-						this.FileSizeLessThanOrEqual = ParseFloat(txt);
+						this._FileSizeLessThanOrEqual = ParseFloat(txt);
 						continue;
 				}
 			}

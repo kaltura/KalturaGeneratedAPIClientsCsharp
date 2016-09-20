@@ -54,11 +54,6 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public string CreatedBy
 		{
@@ -192,46 +187,46 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "createdBy":
-						this.CreatedBy = txt;
+						this._CreatedBy = txt;
 						continue;
 					case "updatedBy":
-						this.UpdatedBy = txt;
+						this._UpdatedBy = txt;
 						continue;
 					case "commandId":
-						this.CommandId = txt;
+						this._CommandId = txt;
 						continue;
 					case "commandStatus":
-						this.CommandStatus = txt;
+						this._CommandStatus = txt;
 						continue;
 					case "schedulerId":
-						this.SchedulerId = ParseInt(txt);
+						this._SchedulerId = ParseInt(txt);
 						continue;
 					case "schedulerConfiguredId":
-						this.SchedulerConfiguredId = ParseInt(txt);
+						this._SchedulerConfiguredId = ParseInt(txt);
 						continue;
 					case "schedulerName":
-						this.SchedulerName = txt;
+						this._SchedulerName = txt;
 						continue;
 					case "workerId":
-						this.WorkerId = ParseInt(txt);
+						this._WorkerId = ParseInt(txt);
 						continue;
 					case "workerConfiguredId":
-						this.WorkerConfiguredId = ParseInt(txt);
+						this._WorkerConfiguredId = ParseInt(txt);
 						continue;
 					case "workerName":
-						this.WorkerName = txt;
+						this._WorkerName = txt;
 						continue;
 					case "variable":
-						this.Variable = txt;
+						this._Variable = txt;
 						continue;
 					case "variablePart":
-						this.VariablePart = txt;
+						this._VariablePart = txt;
 						continue;
 					case "value":
-						this.Value = txt;
+						this._Value = txt;
 						continue;
 				}
 			}

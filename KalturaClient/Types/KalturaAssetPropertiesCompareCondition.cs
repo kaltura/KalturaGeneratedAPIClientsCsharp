@@ -38,7 +38,7 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
-		public IList<KalturaKeyValue> Properties
+		public new IList<KalturaKeyValue> Properties
 		{
 			get { return _Properties; }
 			set 
@@ -62,10 +62,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "properties":
-						this.Properties = new List<KalturaKeyValue>();
+						this._Properties = new List<KalturaKeyValue>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Properties.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
+							this._Properties.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
 						}
 						continue;
 				}

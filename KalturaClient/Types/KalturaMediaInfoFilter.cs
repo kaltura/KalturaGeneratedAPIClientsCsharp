@@ -38,7 +38,7 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
-		public new KalturaMediaInfoOrderBy OrderBy
+		public KalturaMediaInfoOrderBy OrderBy
 		{
 			get { return _OrderBy; }
 			set 
@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "orderBy":
-						this.OrderBy = (KalturaMediaInfoOrderBy)KalturaStringEnum.Parse(typeof(KalturaMediaInfoOrderBy), txt);
+						this._OrderBy = (KalturaMediaInfoOrderBy)KalturaStringEnum.Parse(typeof(KalturaMediaInfoOrderBy), txt);
 						continue;
 				}
 			}

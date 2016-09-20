@@ -56,11 +56,6 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public long BulkUploadJobId
 		{
@@ -161,7 +156,7 @@ namespace Kaltura
 				OnPropertyChanged("ObjectErrorDescription");
 			}
 		}
-		public IList<KalturaBulkUploadPluginData> PluginsData
+		public new IList<KalturaBulkUploadPluginData> PluginsData
 		{
 			get { return _PluginsData; }
 			set 
@@ -212,56 +207,56 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "bulkUploadJobId":
-						this.BulkUploadJobId = ParseLong(txt);
+						this._BulkUploadJobId = ParseLong(txt);
 						continue;
 					case "lineIndex":
-						this.LineIndex = ParseInt(txt);
+						this._LineIndex = ParseInt(txt);
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "status":
-						this.Status = (KalturaBulkUploadResultStatus)KalturaStringEnum.Parse(typeof(KalturaBulkUploadResultStatus), txt);
+						this._Status = (KalturaBulkUploadResultStatus)KalturaStringEnum.Parse(typeof(KalturaBulkUploadResultStatus), txt);
 						continue;
 					case "action":
-						this.Action = (KalturaBulkUploadAction)KalturaStringEnum.Parse(typeof(KalturaBulkUploadAction), txt);
+						this._Action = (KalturaBulkUploadAction)KalturaStringEnum.Parse(typeof(KalturaBulkUploadAction), txt);
 						continue;
 					case "objectId":
-						this.ObjectId = txt;
+						this._ObjectId = txt;
 						continue;
 					case "objectStatus":
-						this.ObjectStatus = ParseInt(txt);
+						this._ObjectStatus = ParseInt(txt);
 						continue;
 					case "bulkUploadResultObjectType":
-						this.BulkUploadResultObjectType = (KalturaBulkUploadObjectType)KalturaStringEnum.Parse(typeof(KalturaBulkUploadObjectType), txt);
+						this._BulkUploadResultObjectType = (KalturaBulkUploadObjectType)KalturaStringEnum.Parse(typeof(KalturaBulkUploadObjectType), txt);
 						continue;
 					case "rowData":
-						this.RowData = txt;
+						this._RowData = txt;
 						continue;
 					case "partnerData":
-						this.PartnerData = txt;
+						this._PartnerData = txt;
 						continue;
 					case "objectErrorDescription":
-						this.ObjectErrorDescription = txt;
+						this._ObjectErrorDescription = txt;
 						continue;
 					case "pluginsData":
-						this.PluginsData = new List<KalturaBulkUploadPluginData>();
+						this._PluginsData = new List<KalturaBulkUploadPluginData>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.PluginsData.Add((KalturaBulkUploadPluginData)KalturaObjectFactory.Create(arrayNode, "KalturaBulkUploadPluginData"));
+							this._PluginsData.Add((KalturaBulkUploadPluginData)KalturaObjectFactory.Create(arrayNode, "KalturaBulkUploadPluginData"));
 						}
 						continue;
 					case "errorDescription":
-						this.ErrorDescription = txt;
+						this._ErrorDescription = txt;
 						continue;
 					case "errorCode":
-						this.ErrorCode = txt;
+						this._ErrorCode = txt;
 						continue;
 					case "errorType":
-						this.ErrorType = ParseInt(txt);
+						this._ErrorType = ParseInt(txt);
 						continue;
 				}
 			}

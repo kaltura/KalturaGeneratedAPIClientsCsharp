@@ -112,22 +112,22 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "protocolType":
-						this.ProtocolType = (KalturaAdProtocolType)KalturaStringEnum.Parse(typeof(KalturaAdProtocolType), txt);
+						this._ProtocolType = (KalturaAdProtocolType)KalturaStringEnum.Parse(typeof(KalturaAdProtocolType), txt);
 						continue;
 					case "sourceUrl":
-						this.SourceUrl = txt;
+						this._SourceUrl = txt;
 						continue;
 					case "adType":
-						this.AdType = (KalturaAdType)KalturaStringEnum.Parse(typeof(KalturaAdType), txt);
+						this._AdType = (KalturaAdType)KalturaStringEnum.Parse(typeof(KalturaAdType), txt);
 						continue;
 					case "title":
-						this.Title = txt;
+						this._Title = txt;
 						continue;
 					case "endTime":
-						this.EndTime = ParseInt(txt);
+						this._EndTime = ParseInt(txt);
 						continue;
 					case "duration":
-						this.Duration = ParseInt(txt);
+						this._Duration = ParseInt(txt);
 						continue;
 				}
 			}

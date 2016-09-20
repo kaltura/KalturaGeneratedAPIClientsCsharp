@@ -39,23 +39,13 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
-		public IList<KalturaSearchResult> Objects
+		public new IList<KalturaSearchResult> Objects
 		{
 			get { return _Objects; }
-			set 
-			{ 
-				_Objects = value;
-				OnPropertyChanged("Objects");
-			}
 		}
 		public bool? NeedMediaInfo
 		{
 			get { return _NeedMediaInfo; }
-			set 
-			{ 
-				_NeedMediaInfo = value;
-				OnPropertyChanged("NeedMediaInfo");
-			}
 		}
 		#endregion
 
@@ -72,14 +62,14 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "objects":
-						this.Objects = new List<KalturaSearchResult>();
+						this._Objects = new List<KalturaSearchResult>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Objects.Add((KalturaSearchResult)KalturaObjectFactory.Create(arrayNode, "KalturaSearchResult"));
+							this._Objects.Add((KalturaSearchResult)KalturaObjectFactory.Create(arrayNode, "KalturaSearchResult"));
 						}
 						continue;
 					case "needMediaInfo":
-						this.NeedMediaInfo = ParseBool(txt);
+						this._NeedMediaInfo = ParseBool(txt);
 						continue;
 				}
 			}

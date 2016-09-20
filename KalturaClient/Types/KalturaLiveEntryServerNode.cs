@@ -38,7 +38,7 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
-		public IList<KalturaLiveStreamParams> Streams
+		public new IList<KalturaLiveStreamParams> Streams
 		{
 			get { return _Streams; }
 			set 
@@ -62,10 +62,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "streams":
-						this.Streams = new List<KalturaLiveStreamParams>();
+						this._Streams = new List<KalturaLiveStreamParams>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Streams.Add((KalturaLiveStreamParams)KalturaObjectFactory.Create(arrayNode, "KalturaLiveStreamParams"));
+							this._Streams.Add((KalturaLiveStreamParams)KalturaObjectFactory.Create(arrayNode, "KalturaLiveStreamParams"));
 						}
 						continue;
 				}

@@ -43,11 +43,6 @@ namespace Kaltura
 		public bool? HasRealThumbnail
 		{
 			get { return _HasRealThumbnail; }
-			set 
-			{ 
-				_HasRealThumbnail = value;
-				OnPropertyChanged("HasRealThumbnail");
-			}
 		}
 		public KalturaEditorType EditorType
 		{
@@ -82,13 +77,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "hasRealThumbnail":
-						this.HasRealThumbnail = ParseBool(txt);
+						this._HasRealThumbnail = ParseBool(txt);
 						continue;
 					case "editorType":
-						this.EditorType = (KalturaEditorType)ParseEnum(typeof(KalturaEditorType), txt);
+						this._EditorType = (KalturaEditorType)ParseEnum(typeof(KalturaEditorType), txt);
 						continue;
 					case "dataContent":
-						this.DataContent = txt;
+						this._DataContent = txt;
 						continue;
 				}
 			}

@@ -172,40 +172,40 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this.IdEqual = txt;
+						this._IdEqual = txt;
 						continue;
 					case "idIn":
-						this.IdIn = txt;
+						this._IdIn = txt;
 						continue;
 					case "sourceWidgetIdEqual":
-						this.SourceWidgetIdEqual = txt;
+						this._SourceWidgetIdEqual = txt;
 						continue;
 					case "rootWidgetIdEqual":
-						this.RootWidgetIdEqual = txt;
+						this._RootWidgetIdEqual = txt;
 						continue;
 					case "partnerIdEqual":
-						this.PartnerIdEqual = ParseInt(txt);
+						this._PartnerIdEqual = ParseInt(txt);
 						continue;
 					case "entryIdEqual":
-						this.EntryIdEqual = txt;
+						this._EntryIdEqual = txt;
 						continue;
 					case "uiConfIdEqual":
-						this.UiConfIdEqual = ParseInt(txt);
+						this._UiConfIdEqual = ParseInt(txt);
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this.CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this.CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this.UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this.UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "partnerDataLike":
-						this.PartnerDataLike = txt;
+						this._PartnerDataLike = txt;
 						continue;
 				}
 			}

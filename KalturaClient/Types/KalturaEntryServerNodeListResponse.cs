@@ -38,14 +38,9 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
-		public IList<KalturaEntryServerNode> Objects
+		public new IList<KalturaEntryServerNode> Objects
 		{
 			get { return _Objects; }
-			set 
-			{ 
-				_Objects = value;
-				OnPropertyChanged("Objects");
-			}
 		}
 		#endregion
 
@@ -62,10 +57,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "objects":
-						this.Objects = new List<KalturaEntryServerNode>();
+						this._Objects = new List<KalturaEntryServerNode>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Objects.Add((KalturaEntryServerNode)KalturaObjectFactory.Create(arrayNode, "KalturaEntryServerNode"));
+							this._Objects.Add((KalturaEntryServerNode)KalturaObjectFactory.Create(arrayNode, "KalturaEntryServerNode"));
 						}
 						continue;
 				}

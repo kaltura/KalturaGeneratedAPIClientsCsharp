@@ -68,7 +68,7 @@ namespace Kaltura
 				OnPropertyChanged("UserIdCurrent");
 			}
 		}
-		public new KalturaCuePointOrderBy OrderBy
+		public KalturaCuePointOrderBy OrderBy
 		{
 			get { return _OrderBy; }
 			set 
@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "freeText":
-						this.FreeText = txt;
+						this._FreeText = txt;
 						continue;
 					case "userIdEqualCurrent":
-						this.UserIdEqualCurrent = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._UserIdEqualCurrent = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "userIdCurrent":
-						this.UserIdCurrent = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._UserIdCurrent = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "orderBy":
-						this.OrderBy = (KalturaCuePointOrderBy)KalturaStringEnum.Parse(typeof(KalturaCuePointOrderBy), txt);
+						this._OrderBy = (KalturaCuePointOrderBy)KalturaStringEnum.Parse(typeof(KalturaCuePointOrderBy), txt);
 						continue;
 				}
 			}

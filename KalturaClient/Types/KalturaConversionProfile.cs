@@ -59,20 +59,10 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public KalturaConversionProfileStatus Status
 		{
@@ -140,11 +130,6 @@ namespace Kaltura
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public string FlavorParamsIds
 		{
@@ -167,11 +152,6 @@ namespace Kaltura
 		public bool? IsPartnerDefault
 		{
 			get { return _IsPartnerDefault; }
-			set 
-			{ 
-				_IsPartnerDefault = value;
-				OnPropertyChanged("IsPartnerDefault");
-			}
 		}
 		public KalturaCropDimensions CropDimensions
 		{
@@ -242,61 +222,61 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "status":
-						this.Status = (KalturaConversionProfileStatus)KalturaStringEnum.Parse(typeof(KalturaConversionProfileStatus), txt);
+						this._Status = (KalturaConversionProfileStatus)KalturaStringEnum.Parse(typeof(KalturaConversionProfileStatus), txt);
 						continue;
 					case "type":
-						this.Type = (KalturaConversionProfileType)KalturaStringEnum.Parse(typeof(KalturaConversionProfileType), txt);
+						this._Type = (KalturaConversionProfileType)KalturaStringEnum.Parse(typeof(KalturaConversionProfileType), txt);
 						continue;
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 					case "systemName":
-						this.SystemName = txt;
+						this._SystemName = txt;
 						continue;
 					case "tags":
-						this.Tags = txt;
+						this._Tags = txt;
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "defaultEntryId":
-						this.DefaultEntryId = txt;
+						this._DefaultEntryId = txt;
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "flavorParamsIds":
-						this.FlavorParamsIds = txt;
+						this._FlavorParamsIds = txt;
 						continue;
 					case "isDefault":
-						this.IsDefault = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._IsDefault = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "isPartnerDefault":
-						this.IsPartnerDefault = ParseBool(txt);
+						this._IsPartnerDefault = ParseBool(txt);
 						continue;
 					case "cropDimensions":
-						this.CropDimensions = (KalturaCropDimensions)KalturaObjectFactory.Create(propertyNode, "KalturaCropDimensions");
+						this._CropDimensions = (KalturaCropDimensions)KalturaObjectFactory.Create(propertyNode, "KalturaCropDimensions");
 						continue;
 					case "clipStart":
-						this.ClipStart = ParseInt(txt);
+						this._ClipStart = ParseInt(txt);
 						continue;
 					case "clipDuration":
-						this.ClipDuration = ParseInt(txt);
+						this._ClipDuration = ParseInt(txt);
 						continue;
 					case "xslTransformation":
-						this.XslTransformation = txt;
+						this._XslTransformation = txt;
 						continue;
 					case "storageProfileId":
-						this.StorageProfileId = ParseInt(txt);
+						this._StorageProfileId = ParseInt(txt);
 						continue;
 					case "mediaParserType":
-						this.MediaParserType = (KalturaMediaParserType)KalturaStringEnum.Parse(typeof(KalturaMediaParserType), txt);
+						this._MediaParserType = (KalturaMediaParserType)KalturaStringEnum.Parse(typeof(KalturaMediaParserType), txt);
 						continue;
 				}
 			}

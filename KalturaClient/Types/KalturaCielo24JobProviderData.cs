@@ -95,29 +95,14 @@ namespace Kaltura
 		public string Username
 		{
 			get { return _Username; }
-			set 
-			{ 
-				_Username = value;
-				OnPropertyChanged("Username");
-			}
 		}
 		public string Password
 		{
 			get { return _Password; }
-			set 
-			{ 
-				_Password = value;
-				OnPropertyChanged("Password");
-			}
 		}
 		public string BaseUrl
 		{
 			get { return _BaseUrl; }
-			set 
-			{ 
-				_BaseUrl = value;
-				OnPropertyChanged("BaseUrl");
-			}
 		}
 		public KalturaLanguage SpokenLanguage
 		{
@@ -152,34 +137,34 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "entryId":
-						this.EntryId = txt;
+						this._EntryId = txt;
 						continue;
 					case "flavorAssetId":
-						this.FlavorAssetId = txt;
+						this._FlavorAssetId = txt;
 						continue;
 					case "captionAssetFormats":
-						this.CaptionAssetFormats = txt;
+						this._CaptionAssetFormats = txt;
 						continue;
 					case "priority":
-						this.Priority = (KalturaCielo24Priority)KalturaStringEnum.Parse(typeof(KalturaCielo24Priority), txt);
+						this._Priority = (KalturaCielo24Priority)KalturaStringEnum.Parse(typeof(KalturaCielo24Priority), txt);
 						continue;
 					case "fidelity":
-						this.Fidelity = (KalturaCielo24Fidelity)KalturaStringEnum.Parse(typeof(KalturaCielo24Fidelity), txt);
+						this._Fidelity = (KalturaCielo24Fidelity)KalturaStringEnum.Parse(typeof(KalturaCielo24Fidelity), txt);
 						continue;
 					case "username":
-						this.Username = txt;
+						this._Username = txt;
 						continue;
 					case "password":
-						this.Password = txt;
+						this._Password = txt;
 						continue;
 					case "baseUrl":
-						this.BaseUrl = txt;
+						this._BaseUrl = txt;
 						continue;
 					case "spokenLanguage":
-						this.SpokenLanguage = (KalturaLanguage)KalturaStringEnum.Parse(typeof(KalturaLanguage), txt);
+						this._SpokenLanguage = (KalturaLanguage)KalturaStringEnum.Parse(typeof(KalturaLanguage), txt);
 						continue;
 					case "replaceMediaContent":
-						this.ReplaceMediaContent = ParseBool(txt);
+						this._ReplaceMediaContent = ParseBool(txt);
 						continue;
 				}
 			}

@@ -212,52 +212,52 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "mailType":
-						this.MailType = (KalturaMailType)KalturaStringEnum.Parse(typeof(KalturaMailType), txt);
+						this._MailType = (KalturaMailType)KalturaStringEnum.Parse(typeof(KalturaMailType), txt);
 						continue;
 					case "mailPriority":
-						this.MailPriority = ParseInt(txt);
+						this._MailPriority = ParseInt(txt);
 						continue;
 					case "status":
-						this.Status = (KalturaMailJobStatus)ParseEnum(typeof(KalturaMailJobStatus), txt);
+						this._Status = (KalturaMailJobStatus)ParseEnum(typeof(KalturaMailJobStatus), txt);
 						continue;
 					case "recipientName":
-						this.RecipientName = txt;
+						this._RecipientName = txt;
 						continue;
 					case "recipientEmail":
-						this.RecipientEmail = txt;
+						this._RecipientEmail = txt;
 						continue;
 					case "recipientId":
-						this.RecipientId = ParseInt(txt);
+						this._RecipientId = ParseInt(txt);
 						continue;
 					case "fromName":
-						this.FromName = txt;
+						this._FromName = txt;
 						continue;
 					case "fromEmail":
-						this.FromEmail = txt;
+						this._FromEmail = txt;
 						continue;
 					case "bodyParams":
-						this.BodyParams = txt;
+						this._BodyParams = txt;
 						continue;
 					case "subjectParams":
-						this.SubjectParams = txt;
+						this._SubjectParams = txt;
 						continue;
 					case "templatePath":
-						this.TemplatePath = txt;
+						this._TemplatePath = txt;
 						continue;
 					case "language":
-						this.Language = (KalturaLanguageCode)KalturaStringEnum.Parse(typeof(KalturaLanguageCode), txt);
+						this._Language = (KalturaLanguageCode)KalturaStringEnum.Parse(typeof(KalturaLanguageCode), txt);
 						continue;
 					case "campaignId":
-						this.CampaignId = ParseInt(txt);
+						this._CampaignId = ParseInt(txt);
 						continue;
 					case "minSendDate":
-						this.MinSendDate = ParseInt(txt);
+						this._MinSendDate = ParseInt(txt);
 						continue;
 					case "isHtml":
-						this.IsHtml = ParseBool(txt);
+						this._IsHtml = ParseBool(txt);
 						continue;
 					case "separator":
-						this.Separator = txt;
+						this._Separator = txt;
 						continue;
 				}
 			}

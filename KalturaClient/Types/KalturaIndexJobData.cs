@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "filter":
-						this.Filter = (KalturaFilter)KalturaObjectFactory.Create(propertyNode, "KalturaFilter");
+						this._Filter = (KalturaFilter)KalturaObjectFactory.Create(propertyNode, "KalturaFilter");
 						continue;
 					case "lastIndexId":
-						this.LastIndexId = ParseInt(txt);
+						this._LastIndexId = ParseInt(txt);
 						continue;
 					case "lastIndexDepth":
-						this.LastIndexDepth = ParseInt(txt);
+						this._LastIndexDepth = ParseInt(txt);
 						continue;
 					case "shouldUpdate":
-						this.ShouldUpdate = ParseBool(txt);
+						this._ShouldUpdate = ParseBool(txt);
 						continue;
 				}
 			}

@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "objectId":
-						this.ObjectId = txt;
+						this._ObjectId = txt;
 						continue;
 					case "scopeObjectType":
-						this.ScopeObjectType = (KalturaEventNotificationEventObjectType)KalturaStringEnum.Parse(typeof(KalturaEventNotificationEventObjectType), txt);
+						this._ScopeObjectType = (KalturaEventNotificationEventObjectType)KalturaStringEnum.Parse(typeof(KalturaEventNotificationEventObjectType), txt);
 						continue;
 				}
 			}

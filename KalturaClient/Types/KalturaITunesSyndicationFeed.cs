@@ -104,11 +104,6 @@ namespace Kaltura
 		public KalturaITunesSyndicationFeedCategories Category
 		{
 			get { return _Category; }
-			set 
-			{ 
-				_Category = value;
-				OnPropertyChanged("Category");
-			}
 		}
 		public KalturaITunesSyndicationFeedAdultValues AdultContent
 		{
@@ -152,34 +147,34 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "feedDescription":
-						this.FeedDescription = txt;
+						this._FeedDescription = txt;
 						continue;
 					case "language":
-						this.Language = txt;
+						this._Language = txt;
 						continue;
 					case "feedLandingPage":
-						this.FeedLandingPage = txt;
+						this._FeedLandingPage = txt;
 						continue;
 					case "ownerName":
-						this.OwnerName = txt;
+						this._OwnerName = txt;
 						continue;
 					case "ownerEmail":
-						this.OwnerEmail = txt;
+						this._OwnerEmail = txt;
 						continue;
 					case "feedImageUrl":
-						this.FeedImageUrl = txt;
+						this._FeedImageUrl = txt;
 						continue;
 					case "category":
-						this.Category = (KalturaITunesSyndicationFeedCategories)KalturaStringEnum.Parse(typeof(KalturaITunesSyndicationFeedCategories), txt);
+						this._Category = (KalturaITunesSyndicationFeedCategories)KalturaStringEnum.Parse(typeof(KalturaITunesSyndicationFeedCategories), txt);
 						continue;
 					case "adultContent":
-						this.AdultContent = (KalturaITunesSyndicationFeedAdultValues)KalturaStringEnum.Parse(typeof(KalturaITunesSyndicationFeedAdultValues), txt);
+						this._AdultContent = (KalturaITunesSyndicationFeedAdultValues)KalturaStringEnum.Parse(typeof(KalturaITunesSyndicationFeedAdultValues), txt);
 						continue;
 					case "feedAuthor":
-						this.FeedAuthor = txt;
+						this._FeedAuthor = txt;
 						continue;
 					case "enforceOrder":
-						this.EnforceOrder = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._EnforceOrder = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 				}
 			}

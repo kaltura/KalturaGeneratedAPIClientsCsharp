@@ -58,7 +58,7 @@ namespace Kaltura
 				OnPropertyChanged("AssetParamsIdFilter");
 			}
 		}
-		public new KalturaConversionProfileAssetParamsOrderBy OrderBy
+		public KalturaConversionProfileAssetParamsOrderBy OrderBy
 		{
 			get { return _OrderBy; }
 			set 
@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "conversionProfileIdFilter":
-						this.ConversionProfileIdFilter = (KalturaConversionProfileFilter)KalturaObjectFactory.Create(propertyNode, "KalturaConversionProfileFilter");
+						this._ConversionProfileIdFilter = (KalturaConversionProfileFilter)KalturaObjectFactory.Create(propertyNode, "KalturaConversionProfileFilter");
 						continue;
 					case "assetParamsIdFilter":
-						this.AssetParamsIdFilter = (KalturaAssetParamsFilter)KalturaObjectFactory.Create(propertyNode, "KalturaAssetParamsFilter");
+						this._AssetParamsIdFilter = (KalturaAssetParamsFilter)KalturaObjectFactory.Create(propertyNode, "KalturaAssetParamsFilter");
 						continue;
 					case "orderBy":
-						this.OrderBy = (KalturaConversionProfileAssetParamsOrderBy)KalturaStringEnum.Parse(typeof(KalturaConversionProfileAssetParamsOrderBy), txt);
+						this._OrderBy = (KalturaConversionProfileAssetParamsOrderBy)KalturaStringEnum.Parse(typeof(KalturaConversionProfileAssetParamsOrderBy), txt);
 						continue;
 				}
 			}

@@ -62,7 +62,7 @@ namespace Kaltura
 				OnPropertyChanged("KsType");
 			}
 		}
-		public IList<KalturaIntegerValue> UserRoles
+		public new IList<KalturaIntegerValue> UserRoles
 		{
 			get { return _UserRoles; }
 			set 
@@ -122,29 +122,29 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "protocol":
-						this.Protocol = txt;
+						this._Protocol = txt;
 						continue;
 					case "ksType":
-						this.KsType = (KalturaSessionType)ParseEnum(typeof(KalturaSessionType), txt);
+						this._KsType = (KalturaSessionType)ParseEnum(typeof(KalturaSessionType), txt);
 						continue;
 					case "userRoles":
-						this.UserRoles = new List<KalturaIntegerValue>();
+						this._UserRoles = new List<KalturaIntegerValue>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.UserRoles.Add((KalturaIntegerValue)KalturaObjectFactory.Create(arrayNode, "KalturaIntegerValue"));
+							this._UserRoles.Add((KalturaIntegerValue)KalturaObjectFactory.Create(arrayNode, "KalturaIntegerValue"));
 						}
 						continue;
 					case "cachedObjectType":
-						this.CachedObjectType = txt;
+						this._CachedObjectType = txt;
 						continue;
 					case "objectId":
-						this.ObjectId = txt;
+						this._ObjectId = txt;
 						continue;
 					case "startObjectKey":
-						this.StartObjectKey = txt;
+						this._StartObjectKey = txt;
 						continue;
 					case "endObjectKey":
-						this.EndObjectKey = txt;
+						this._EndObjectKey = txt;
 						continue;
 				}
 			}

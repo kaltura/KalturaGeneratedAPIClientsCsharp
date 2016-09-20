@@ -152,34 +152,34 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "streamId":
-						this.StreamId = ParseInt(txt);
+						this._StreamId = ParseInt(txt);
 						continue;
 					case "systemUserName":
-						this.SystemUserName = txt;
+						this._SystemUserName = txt;
 						continue;
 					case "systemPassword":
-						this.SystemPassword = txt;
+						this._SystemPassword = txt;
 						continue;
 					case "domainName":
-						this.DomainName = txt;
+						this._DomainName = txt;
 						continue;
 					case "dvrEnabled":
-						this.DvrEnabled = (KalturaDVRStatus)ParseEnum(typeof(KalturaDVRStatus), txt);
+						this._DvrEnabled = (KalturaDVRStatus)ParseEnum(typeof(KalturaDVRStatus), txt);
 						continue;
 					case "dvrWindow":
-						this.DvrWindow = ParseInt(txt);
+						this._DvrWindow = ParseInt(txt);
 						continue;
 					case "primaryContact":
-						this.PrimaryContact = txt;
+						this._PrimaryContact = txt;
 						continue;
 					case "secondaryContact":
-						this.SecondaryContact = txt;
+						this._SecondaryContact = txt;
 						continue;
 					case "streamType":
-						this.StreamType = (KalturaAkamaiUniversalStreamType)KalturaStringEnum.Parse(typeof(KalturaAkamaiUniversalStreamType), txt);
+						this._StreamType = (KalturaAkamaiUniversalStreamType)KalturaStringEnum.Parse(typeof(KalturaAkamaiUniversalStreamType), txt);
 						continue;
 					case "notificationEmail":
-						this.NotificationEmail = txt;
+						this._NotificationEmail = txt;
 						continue;
 				}
 			}

@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "city":
-						this.City = (KalturaCoordinate)KalturaObjectFactory.Create(propertyNode, "KalturaCoordinate");
+						this._City = (KalturaCoordinate)KalturaObjectFactory.Create(propertyNode, "KalturaCoordinate");
 						continue;
 					case "country":
-						this.Country = (KalturaCoordinate)KalturaObjectFactory.Create(propertyNode, "KalturaCoordinate");
+						this._Country = (KalturaCoordinate)KalturaObjectFactory.Create(propertyNode, "KalturaCoordinate");
 						continue;
 				}
 			}

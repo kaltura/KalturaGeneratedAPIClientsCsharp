@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "resource":
-						this.Resource = (KalturaDataCenterContentResource)KalturaObjectFactory.Create(propertyNode, "KalturaDataCenterContentResource");
+						this._Resource = (KalturaDataCenterContentResource)KalturaObjectFactory.Create(propertyNode, "KalturaDataCenterContentResource");
 						continue;
 				}
 			}

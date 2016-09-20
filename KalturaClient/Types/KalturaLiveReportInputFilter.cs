@@ -102,19 +102,19 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "entryIds":
-						this.EntryIds = txt;
+						this._EntryIds = txt;
 						continue;
 					case "fromTime":
-						this.FromTime = ParseInt(txt);
+						this._FromTime = ParseInt(txt);
 						continue;
 					case "toTime":
-						this.ToTime = ParseInt(txt);
+						this._ToTime = ParseInt(txt);
 						continue;
 					case "live":
-						this.Live = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._Live = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "orderBy":
-						this.OrderBy = (KalturaLiveReportOrderBy)KalturaStringEnum.Parse(typeof(KalturaLiveReportOrderBy), txt);
+						this._OrderBy = (KalturaLiveReportOrderBy)KalturaStringEnum.Parse(typeof(KalturaLiveReportOrderBy), txt);
 						continue;
 				}
 			}

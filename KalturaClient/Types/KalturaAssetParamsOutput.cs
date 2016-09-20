@@ -112,22 +112,22 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "assetParamsId":
-						this.AssetParamsId = ParseInt(txt);
+						this._AssetParamsId = ParseInt(txt);
 						continue;
 					case "assetParamsVersion":
-						this.AssetParamsVersion = txt;
+						this._AssetParamsVersion = txt;
 						continue;
 					case "assetId":
-						this.AssetId = txt;
+						this._AssetId = txt;
 						continue;
 					case "assetVersion":
-						this.AssetVersion = txt;
+						this._AssetVersion = txt;
 						continue;
 					case "readyBehavior":
-						this.ReadyBehavior = ParseInt(txt);
+						this._ReadyBehavior = ParseInt(txt);
 						continue;
 					case "format":
-						this.Format = (KalturaContainerFormat)KalturaStringEnum.Parse(typeof(KalturaContainerFormat), txt);
+						this._Format = (KalturaContainerFormat)KalturaStringEnum.Parse(typeof(KalturaContainerFormat), txt);
 						continue;
 				}
 			}

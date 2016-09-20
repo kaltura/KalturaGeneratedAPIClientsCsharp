@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "contentMoid":
-						this.ContentMoid = txt;
+						this._ContentMoid = txt;
 						continue;
 					case "serviceToken":
-						this.ServiceToken = txt;
+						this._ServiceToken = txt;
 						continue;
 				}
 			}

@@ -132,28 +132,28 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "descriptionLike":
-						this.DescriptionLike = txt;
+						this._DescriptionLike = txt;
 						continue;
 					case "descriptionMultiLikeOr":
-						this.DescriptionMultiLikeOr = txt;
+						this._DescriptionMultiLikeOr = txt;
 						continue;
 					case "descriptionMultiLikeAnd":
-						this.DescriptionMultiLikeAnd = txt;
+						this._DescriptionMultiLikeAnd = txt;
 						continue;
 					case "titleLike":
-						this.TitleLike = txt;
+						this._TitleLike = txt;
 						continue;
 					case "titleMultiLikeOr":
-						this.TitleMultiLikeOr = txt;
+						this._TitleMultiLikeOr = txt;
 						continue;
 					case "titleMultiLikeAnd":
-						this.TitleMultiLikeAnd = txt;
+						this._TitleMultiLikeAnd = txt;
 						continue;
 					case "subTypeEqual":
-						this.SubTypeEqual = (KalturaThumbCuePointSubType)ParseEnum(typeof(KalturaThumbCuePointSubType), txt);
+						this._SubTypeEqual = (KalturaThumbCuePointSubType)ParseEnum(typeof(KalturaThumbCuePointSubType), txt);
 						continue;
 					case "subTypeIn":
-						this.SubTypeIn = txt;
+						this._SubTypeIn = txt;
 						continue;
 				}
 			}

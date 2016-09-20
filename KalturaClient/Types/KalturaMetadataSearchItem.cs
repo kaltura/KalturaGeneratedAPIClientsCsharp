@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "metadataProfileId":
-						this.MetadataProfileId = ParseInt(txt);
+						this._MetadataProfileId = ParseInt(txt);
 						continue;
 					case "orderBy":
-						this.OrderBy = txt;
+						this._OrderBy = txt;
 						continue;
 				}
 			}

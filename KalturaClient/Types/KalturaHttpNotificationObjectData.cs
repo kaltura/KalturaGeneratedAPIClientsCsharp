@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "apiObjectType":
-						this.ApiObjectType = txt;
+						this._ApiObjectType = txt;
 						continue;
 					case "format":
-						this.Format = (KalturaResponseType)ParseEnum(typeof(KalturaResponseType), txt);
+						this._Format = (KalturaResponseType)ParseEnum(typeof(KalturaResponseType), txt);
 						continue;
 					case "ignoreNull":
-						this.IgnoreNull = ParseBool(txt);
+						this._IgnoreNull = ParseBool(txt);
 						continue;
 					case "code":
-						this.Code = txt;
+						this._Code = txt;
 						continue;
 				}
 			}

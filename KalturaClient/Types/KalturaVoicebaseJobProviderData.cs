@@ -85,20 +85,10 @@ namespace Kaltura
 		public string ApiKey
 		{
 			get { return _ApiKey; }
-			set 
-			{ 
-				_ApiKey = value;
-				OnPropertyChanged("ApiKey");
-			}
 		}
 		public string ApiPassword
 		{
 			get { return _ApiPassword; }
-			set 
-			{ 
-				_ApiPassword = value;
-				OnPropertyChanged("ApiPassword");
-			}
 		}
 		public KalturaLanguage SpokenLanguage
 		{
@@ -112,11 +102,6 @@ namespace Kaltura
 		public string FileLocation
 		{
 			get { return _FileLocation; }
-			set 
-			{ 
-				_FileLocation = value;
-				OnPropertyChanged("FileLocation");
-			}
 		}
 		public bool? ReplaceMediaContent
 		{
@@ -142,31 +127,31 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "entryId":
-						this.EntryId = txt;
+						this._EntryId = txt;
 						continue;
 					case "flavorAssetId":
-						this.FlavorAssetId = txt;
+						this._FlavorAssetId = txt;
 						continue;
 					case "transcriptId":
-						this.TranscriptId = txt;
+						this._TranscriptId = txt;
 						continue;
 					case "captionAssetFormats":
-						this.CaptionAssetFormats = txt;
+						this._CaptionAssetFormats = txt;
 						continue;
 					case "apiKey":
-						this.ApiKey = txt;
+						this._ApiKey = txt;
 						continue;
 					case "apiPassword":
-						this.ApiPassword = txt;
+						this._ApiPassword = txt;
 						continue;
 					case "spokenLanguage":
-						this.SpokenLanguage = (KalturaLanguage)KalturaStringEnum.Parse(typeof(KalturaLanguage), txt);
+						this._SpokenLanguage = (KalturaLanguage)KalturaStringEnum.Parse(typeof(KalturaLanguage), txt);
 						continue;
 					case "fileLocation":
-						this.FileLocation = txt;
+						this._FileLocation = txt;
 						continue;
 					case "replaceMediaContent":
-						this.ReplaceMediaContent = ParseBool(txt);
+						this._ReplaceMediaContent = ParseBool(txt);
 						continue;
 				}
 			}

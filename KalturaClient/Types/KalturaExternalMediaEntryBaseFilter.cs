@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "externalSourceTypeEqual":
-						this.ExternalSourceTypeEqual = (KalturaExternalMediaSourceType)KalturaStringEnum.Parse(typeof(KalturaExternalMediaSourceType), txt);
+						this._ExternalSourceTypeEqual = (KalturaExternalMediaSourceType)KalturaStringEnum.Parse(typeof(KalturaExternalMediaSourceType), txt);
 						continue;
 					case "externalSourceTypeIn":
-						this.ExternalSourceTypeIn = txt;
+						this._ExternalSourceTypeIn = txt;
 						continue;
 					case "assetParamsIdsMatchOr":
-						this.AssetParamsIdsMatchOr = txt;
+						this._AssetParamsIdsMatchOr = txt;
 						continue;
 					case "assetParamsIdsMatchAnd":
-						this.AssetParamsIdsMatchAnd = txt;
+						this._AssetParamsIdsMatchAnd = txt;
 						continue;
 				}
 			}

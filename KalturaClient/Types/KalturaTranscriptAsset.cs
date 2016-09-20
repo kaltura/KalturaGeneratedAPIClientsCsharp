@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "accuracy":
-						this.Accuracy = ParseFloat(txt);
+						this._Accuracy = ParseFloat(txt);
 						continue;
 					case "humanVerified":
-						this.HumanVerified = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._HumanVerified = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "language":
-						this.Language = (KalturaLanguage)KalturaStringEnum.Parse(typeof(KalturaLanguage), txt);
+						this._Language = (KalturaLanguage)KalturaStringEnum.Parse(typeof(KalturaLanguage), txt);
 						continue;
 				}
 			}

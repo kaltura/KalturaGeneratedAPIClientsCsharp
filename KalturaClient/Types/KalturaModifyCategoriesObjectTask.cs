@@ -48,7 +48,7 @@ namespace Kaltura
 				OnPropertyChanged("AddRemoveType");
 			}
 		}
-		public IList<KalturaIntegerValue> CategoryIds
+		public new IList<KalturaIntegerValue> CategoryIds
 		{
 			get { return _CategoryIds; }
 			set 
@@ -72,13 +72,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "addRemoveType":
-						this.AddRemoveType = (KalturaScheduledTaskAddOrRemoveType)ParseEnum(typeof(KalturaScheduledTaskAddOrRemoveType), txt);
+						this._AddRemoveType = (KalturaScheduledTaskAddOrRemoveType)ParseEnum(typeof(KalturaScheduledTaskAddOrRemoveType), txt);
 						continue;
 					case "categoryIds":
-						this.CategoryIds = new List<KalturaIntegerValue>();
+						this._CategoryIds = new List<KalturaIntegerValue>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.CategoryIds.Add((KalturaIntegerValue)KalturaObjectFactory.Create(arrayNode, "KalturaIntegerValue"));
+							this._CategoryIds.Add((KalturaIntegerValue)KalturaObjectFactory.Create(arrayNode, "KalturaIntegerValue"));
 						}
 						continue;
 				}

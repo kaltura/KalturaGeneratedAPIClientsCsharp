@@ -102,19 +102,19 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "formatEqual":
-						this.FormatEqual = (KalturaAttachmentType)KalturaStringEnum.Parse(typeof(KalturaAttachmentType), txt);
+						this._FormatEqual = (KalturaAttachmentType)KalturaStringEnum.Parse(typeof(KalturaAttachmentType), txt);
 						continue;
 					case "formatIn":
-						this.FormatIn = txt;
+						this._FormatIn = txt;
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaAttachmentAssetStatus)ParseEnum(typeof(KalturaAttachmentAssetStatus), txt);
+						this._StatusEqual = (KalturaAttachmentAssetStatus)ParseEnum(typeof(KalturaAttachmentAssetStatus), txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = txt;
+						this._StatusIn = txt;
 						continue;
 					case "statusNotIn":
-						this.StatusNotIn = txt;
+						this._StatusNotIn = txt;
 						continue;
 				}
 			}

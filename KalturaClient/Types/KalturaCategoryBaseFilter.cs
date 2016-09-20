@@ -452,124 +452,124 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this.IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(txt);
 						continue;
 					case "idIn":
-						this.IdIn = txt;
+						this._IdIn = txt;
 						continue;
 					case "idNotIn":
-						this.IdNotIn = txt;
+						this._IdNotIn = txt;
 						continue;
 					case "parentIdEqual":
-						this.ParentIdEqual = ParseInt(txt);
+						this._ParentIdEqual = ParseInt(txt);
 						continue;
 					case "parentIdIn":
-						this.ParentIdIn = txt;
+						this._ParentIdIn = txt;
 						continue;
 					case "depthEqual":
-						this.DepthEqual = ParseInt(txt);
+						this._DepthEqual = ParseInt(txt);
 						continue;
 					case "fullNameEqual":
-						this.FullNameEqual = txt;
+						this._FullNameEqual = txt;
 						continue;
 					case "fullNameStartsWith":
-						this.FullNameStartsWith = txt;
+						this._FullNameStartsWith = txt;
 						continue;
 					case "fullNameIn":
-						this.FullNameIn = txt;
+						this._FullNameIn = txt;
 						continue;
 					case "fullIdsEqual":
-						this.FullIdsEqual = txt;
+						this._FullIdsEqual = txt;
 						continue;
 					case "fullIdsStartsWith":
-						this.FullIdsStartsWith = txt;
+						this._FullIdsStartsWith = txt;
 						continue;
 					case "fullIdsMatchOr":
-						this.FullIdsMatchOr = txt;
+						this._FullIdsMatchOr = txt;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this.CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this.CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this.UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this.UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "tagsLike":
-						this.TagsLike = txt;
+						this._TagsLike = txt;
 						continue;
 					case "tagsMultiLikeOr":
-						this.TagsMultiLikeOr = txt;
+						this._TagsMultiLikeOr = txt;
 						continue;
 					case "tagsMultiLikeAnd":
-						this.TagsMultiLikeAnd = txt;
+						this._TagsMultiLikeAnd = txt;
 						continue;
 					case "appearInListEqual":
-						this.AppearInListEqual = (KalturaAppearInListType)ParseEnum(typeof(KalturaAppearInListType), txt);
+						this._AppearInListEqual = (KalturaAppearInListType)ParseEnum(typeof(KalturaAppearInListType), txt);
 						continue;
 					case "privacyEqual":
-						this.PrivacyEqual = (KalturaPrivacyType)ParseEnum(typeof(KalturaPrivacyType), txt);
+						this._PrivacyEqual = (KalturaPrivacyType)ParseEnum(typeof(KalturaPrivacyType), txt);
 						continue;
 					case "privacyIn":
-						this.PrivacyIn = txt;
+						this._PrivacyIn = txt;
 						continue;
 					case "inheritanceTypeEqual":
-						this.InheritanceTypeEqual = (KalturaInheritanceType)ParseEnum(typeof(KalturaInheritanceType), txt);
+						this._InheritanceTypeEqual = (KalturaInheritanceType)ParseEnum(typeof(KalturaInheritanceType), txt);
 						continue;
 					case "inheritanceTypeIn":
-						this.InheritanceTypeIn = txt;
+						this._InheritanceTypeIn = txt;
 						continue;
 					case "referenceIdEqual":
-						this.ReferenceIdEqual = txt;
+						this._ReferenceIdEqual = txt;
 						continue;
 					case "referenceIdEmpty":
-						this.ReferenceIdEmpty = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._ReferenceIdEmpty = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "contributionPolicyEqual":
-						this.ContributionPolicyEqual = (KalturaContributionPolicyType)ParseEnum(typeof(KalturaContributionPolicyType), txt);
+						this._ContributionPolicyEqual = (KalturaContributionPolicyType)ParseEnum(typeof(KalturaContributionPolicyType), txt);
 						continue;
 					case "membersCountGreaterThanOrEqual":
-						this.MembersCountGreaterThanOrEqual = ParseInt(txt);
+						this._MembersCountGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "membersCountLessThanOrEqual":
-						this.MembersCountLessThanOrEqual = ParseInt(txt);
+						this._MembersCountLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "pendingMembersCountGreaterThanOrEqual":
-						this.PendingMembersCountGreaterThanOrEqual = ParseInt(txt);
+						this._PendingMembersCountGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "pendingMembersCountLessThanOrEqual":
-						this.PendingMembersCountLessThanOrEqual = ParseInt(txt);
+						this._PendingMembersCountLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "privacyContextEqual":
-						this.PrivacyContextEqual = txt;
+						this._PrivacyContextEqual = txt;
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaCategoryStatus)ParseEnum(typeof(KalturaCategoryStatus), txt);
+						this._StatusEqual = (KalturaCategoryStatus)ParseEnum(typeof(KalturaCategoryStatus), txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = txt;
+						this._StatusIn = txt;
 						continue;
 					case "inheritedParentIdEqual":
-						this.InheritedParentIdEqual = ParseInt(txt);
+						this._InheritedParentIdEqual = ParseInt(txt);
 						continue;
 					case "inheritedParentIdIn":
-						this.InheritedParentIdIn = txt;
+						this._InheritedParentIdIn = txt;
 						continue;
 					case "partnerSortValueGreaterThanOrEqual":
-						this.PartnerSortValueGreaterThanOrEqual = ParseInt(txt);
+						this._PartnerSortValueGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "partnerSortValueLessThanOrEqual":
-						this.PartnerSortValueLessThanOrEqual = ParseInt(txt);
+						this._PartnerSortValueLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "aggregationCategoriesMultiLikeOr":
-						this.AggregationCategoriesMultiLikeOr = txt;
+						this._AggregationCategoriesMultiLikeOr = txt;
 						continue;
 					case "aggregationCategoriesMultiLikeAnd":
-						this.AggregationCategoriesMultiLikeAnd = txt;
+						this._AggregationCategoriesMultiLikeAnd = txt;
 						continue;
 				}
 			}

@@ -58,7 +58,7 @@ namespace Kaltura
 				OnPropertyChanged("IsAnonymous");
 			}
 		}
-		public new KalturaUserEntryOrderBy OrderBy
+		public KalturaUserEntryOrderBy OrderBy
 		{
 			get { return _OrderBy; }
 			set 
@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "userIdEqualCurrent":
-						this.UserIdEqualCurrent = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._UserIdEqualCurrent = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "isAnonymous":
-						this.IsAnonymous = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._IsAnonymous = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "orderBy":
-						this.OrderBy = (KalturaUserEntryOrderBy)KalturaStringEnum.Parse(typeof(KalturaUserEntryOrderBy), txt);
+						this._OrderBy = (KalturaUserEntryOrderBy)KalturaStringEnum.Parse(typeof(KalturaUserEntryOrderBy), txt);
 						continue;
 				}
 			}

@@ -122,25 +122,25 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "uploadedOnGreaterThanOrEqual":
-						this.UploadedOnGreaterThanOrEqual = ParseInt(txt);
+						this._UploadedOnGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "uploadedOnLessThanOrEqual":
-						this.UploadedOnLessThanOrEqual = ParseInt(txt);
+						this._UploadedOnLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "uploadedOnEqual":
-						this.UploadedOnEqual = ParseInt(txt);
+						this._UploadedOnEqual = ParseInt(txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = txt;
+						this._StatusIn = txt;
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaBatchJobStatus)ParseEnum(typeof(KalturaBatchJobStatus), txt);
+						this._StatusEqual = (KalturaBatchJobStatus)ParseEnum(typeof(KalturaBatchJobStatus), txt);
 						continue;
 					case "bulkUploadObjectTypeEqual":
-						this.BulkUploadObjectTypeEqual = (KalturaBulkUploadObjectType)KalturaStringEnum.Parse(typeof(KalturaBulkUploadObjectType), txt);
+						this._BulkUploadObjectTypeEqual = (KalturaBulkUploadObjectType)KalturaStringEnum.Parse(typeof(KalturaBulkUploadObjectType), txt);
 						continue;
 					case "bulkUploadObjectTypeIn":
-						this.BulkUploadObjectTypeIn = txt;
+						this._BulkUploadObjectTypeIn = txt;
 						continue;
 				}
 			}

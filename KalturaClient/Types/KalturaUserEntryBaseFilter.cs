@@ -202,49 +202,49 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this.IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(txt);
 						continue;
 					case "idIn":
-						this.IdIn = txt;
+						this._IdIn = txt;
 						continue;
 					case "idNotIn":
-						this.IdNotIn = txt;
+						this._IdNotIn = txt;
 						continue;
 					case "entryIdEqual":
-						this.EntryIdEqual = txt;
+						this._EntryIdEqual = txt;
 						continue;
 					case "entryIdIn":
-						this.EntryIdIn = txt;
+						this._EntryIdIn = txt;
 						continue;
 					case "entryIdNotIn":
-						this.EntryIdNotIn = txt;
+						this._EntryIdNotIn = txt;
 						continue;
 					case "userIdEqual":
-						this.UserIdEqual = txt;
+						this._UserIdEqual = txt;
 						continue;
 					case "userIdIn":
-						this.UserIdIn = txt;
+						this._UserIdIn = txt;
 						continue;
 					case "userIdNotIn":
-						this.UserIdNotIn = txt;
+						this._UserIdNotIn = txt;
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaUserEntryStatus)KalturaStringEnum.Parse(typeof(KalturaUserEntryStatus), txt);
+						this._StatusEqual = (KalturaUserEntryStatus)KalturaStringEnum.Parse(typeof(KalturaUserEntryStatus), txt);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this.CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this.CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this.UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this.UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "typeEqual":
-						this.TypeEqual = (KalturaUserEntryType)KalturaStringEnum.Parse(typeof(KalturaUserEntryType), txt);
+						this._TypeEqual = (KalturaUserEntryType)KalturaStringEnum.Parse(typeof(KalturaUserEntryType), txt);
 						continue;
 				}
 			}

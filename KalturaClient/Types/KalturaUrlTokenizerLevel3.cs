@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "paramName":
-						this.ParamName = txt;
+						this._ParamName = txt;
 						continue;
 					case "expiryName":
-						this.ExpiryName = txt;
+						this._ExpiryName = txt;
 						continue;
 					case "gen":
-						this.Gen = txt;
+						this._Gen = txt;
 						continue;
 				}
 			}

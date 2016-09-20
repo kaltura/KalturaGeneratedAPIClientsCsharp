@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "streamUrl":
-						this.StreamUrl = txt;
+						this._StreamUrl = txt;
 						continue;
 				}
 			}

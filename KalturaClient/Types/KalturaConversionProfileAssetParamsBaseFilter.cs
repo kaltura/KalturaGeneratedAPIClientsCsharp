@@ -152,34 +152,34 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "conversionProfileIdEqual":
-						this.ConversionProfileIdEqual = ParseInt(txt);
+						this._ConversionProfileIdEqual = ParseInt(txt);
 						continue;
 					case "conversionProfileIdIn":
-						this.ConversionProfileIdIn = txt;
+						this._ConversionProfileIdIn = txt;
 						continue;
 					case "assetParamsIdEqual":
-						this.AssetParamsIdEqual = ParseInt(txt);
+						this._AssetParamsIdEqual = ParseInt(txt);
 						continue;
 					case "assetParamsIdIn":
-						this.AssetParamsIdIn = txt;
+						this._AssetParamsIdIn = txt;
 						continue;
 					case "readyBehaviorEqual":
-						this.ReadyBehaviorEqual = (KalturaFlavorReadyBehaviorType)ParseEnum(typeof(KalturaFlavorReadyBehaviorType), txt);
+						this._ReadyBehaviorEqual = (KalturaFlavorReadyBehaviorType)ParseEnum(typeof(KalturaFlavorReadyBehaviorType), txt);
 						continue;
 					case "readyBehaviorIn":
-						this.ReadyBehaviorIn = txt;
+						this._ReadyBehaviorIn = txt;
 						continue;
 					case "originEqual":
-						this.OriginEqual = (KalturaAssetParamsOrigin)ParseEnum(typeof(KalturaAssetParamsOrigin), txt);
+						this._OriginEqual = (KalturaAssetParamsOrigin)ParseEnum(typeof(KalturaAssetParamsOrigin), txt);
 						continue;
 					case "originIn":
-						this.OriginIn = txt;
+						this._OriginIn = txt;
 						continue;
 					case "systemNameEqual":
-						this.SystemNameEqual = txt;
+						this._SystemNameEqual = txt;
 						continue;
 					case "systemNameIn":
-						this.SystemNameIn = txt;
+						this._SystemNameIn = txt;
 						continue;
 				}
 			}

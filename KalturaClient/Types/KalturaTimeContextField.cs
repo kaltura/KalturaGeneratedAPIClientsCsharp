@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "offset":
-						this.Offset = ParseInt(txt);
+						this._Offset = ParseInt(txt);
 						continue;
 				}
 			}

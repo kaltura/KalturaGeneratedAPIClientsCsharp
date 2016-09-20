@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "dimensions":
-						this.Dimensions = (KalturaDistributionThumbDimensions)KalturaObjectFactory.Create(propertyNode, "KalturaDistributionThumbDimensions");
+						this._Dimensions = (KalturaDistributionThumbDimensions)KalturaObjectFactory.Create(propertyNode, "KalturaDistributionThumbDimensions");
 						continue;
 				}
 			}

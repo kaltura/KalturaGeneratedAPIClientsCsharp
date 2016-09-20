@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "attribute":
-						this.Attribute = (KalturaPlayableEntryCompareAttribute)KalturaStringEnum.Parse(typeof(KalturaPlayableEntryCompareAttribute), txt);
+						this._Attribute = (KalturaPlayableEntryCompareAttribute)KalturaStringEnum.Parse(typeof(KalturaPlayableEntryCompareAttribute), txt);
 						continue;
 				}
 			}

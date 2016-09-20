@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "headerData":
-						this.HeaderData = txt;
+						this._HeaderData = txt;
 						continue;
 					case "headerSign":
-						this.HeaderSign = txt;
+						this._HeaderSign = txt;
 						continue;
 					case "timeout":
-						this.Timeout = ParseInt(txt);
+						this._Timeout = ParseInt(txt);
 						continue;
 					case "salt":
-						this.Salt = txt;
+						this._Salt = txt;
 						continue;
 				}
 			}

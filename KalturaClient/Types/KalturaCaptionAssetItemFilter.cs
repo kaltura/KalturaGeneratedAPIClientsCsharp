@@ -192,46 +192,46 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "contentLike":
-						this.ContentLike = txt;
+						this._ContentLike = txt;
 						continue;
 					case "contentMultiLikeOr":
-						this.ContentMultiLikeOr = txt;
+						this._ContentMultiLikeOr = txt;
 						continue;
 					case "contentMultiLikeAnd":
-						this.ContentMultiLikeAnd = txt;
+						this._ContentMultiLikeAnd = txt;
 						continue;
 					case "partnerDescriptionLike":
-						this.PartnerDescriptionLike = txt;
+						this._PartnerDescriptionLike = txt;
 						continue;
 					case "partnerDescriptionMultiLikeOr":
-						this.PartnerDescriptionMultiLikeOr = txt;
+						this._PartnerDescriptionMultiLikeOr = txt;
 						continue;
 					case "partnerDescriptionMultiLikeAnd":
-						this.PartnerDescriptionMultiLikeAnd = txt;
+						this._PartnerDescriptionMultiLikeAnd = txt;
 						continue;
 					case "languageEqual":
-						this.LanguageEqual = (KalturaLanguage)KalturaStringEnum.Parse(typeof(KalturaLanguage), txt);
+						this._LanguageEqual = (KalturaLanguage)KalturaStringEnum.Parse(typeof(KalturaLanguage), txt);
 						continue;
 					case "languageIn":
-						this.LanguageIn = txt;
+						this._LanguageIn = txt;
 						continue;
 					case "labelEqual":
-						this.LabelEqual = txt;
+						this._LabelEqual = txt;
 						continue;
 					case "labelIn":
-						this.LabelIn = txt;
+						this._LabelIn = txt;
 						continue;
 					case "startTimeGreaterThanOrEqual":
-						this.StartTimeGreaterThanOrEqual = ParseInt(txt);
+						this._StartTimeGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "startTimeLessThanOrEqual":
-						this.StartTimeLessThanOrEqual = ParseInt(txt);
+						this._StartTimeLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "endTimeGreaterThanOrEqual":
-						this.EndTimeGreaterThanOrEqual = ParseInt(txt);
+						this._EndTimeGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "endTimeLessThanOrEqual":
-						this.EndTimeLessThanOrEqual = ParseInt(txt);
+						this._EndTimeLessThanOrEqual = ParseInt(txt);
 						continue;
 				}
 			}

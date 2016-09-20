@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "fromPartnerId":
-						this.FromPartnerId = ParseInt(txt);
+						this._FromPartnerId = ParseInt(txt);
 						continue;
 					case "toPartnerId":
-						this.ToPartnerId = ParseInt(txt);
+						this._ToPartnerId = ParseInt(txt);
 						continue;
 				}
 			}

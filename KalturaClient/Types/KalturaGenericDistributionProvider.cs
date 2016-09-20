@@ -52,38 +52,18 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public bool? IsDefault
 		{
@@ -97,11 +77,6 @@ namespace Kaltura
 		public KalturaGenericDistributionProviderStatus Status
 		{
 			get { return _Status; }
-			set 
-			{ 
-				_Status = value;
-				OnPropertyChanged("Status");
-			}
 		}
 		public string OptionalFlavorParamsIds
 		{
@@ -121,7 +96,7 @@ namespace Kaltura
 				OnPropertyChanged("RequiredFlavorParamsIds");
 			}
 		}
-		public IList<KalturaDistributionThumbDimensions> OptionalThumbDimensions
+		public new IList<KalturaDistributionThumbDimensions> OptionalThumbDimensions
 		{
 			get { return _OptionalThumbDimensions; }
 			set 
@@ -130,7 +105,7 @@ namespace Kaltura
 				OnPropertyChanged("OptionalThumbDimensions");
 			}
 		}
-		public IList<KalturaDistributionThumbDimensions> RequiredThumbDimensions
+		public new IList<KalturaDistributionThumbDimensions> RequiredThumbDimensions
 		{
 			get { return _RequiredThumbDimensions; }
 			set 
@@ -172,48 +147,48 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "isDefault":
-						this.IsDefault = ParseBool(txt);
+						this._IsDefault = ParseBool(txt);
 						continue;
 					case "status":
-						this.Status = (KalturaGenericDistributionProviderStatus)ParseEnum(typeof(KalturaGenericDistributionProviderStatus), txt);
+						this._Status = (KalturaGenericDistributionProviderStatus)ParseEnum(typeof(KalturaGenericDistributionProviderStatus), txt);
 						continue;
 					case "optionalFlavorParamsIds":
-						this.OptionalFlavorParamsIds = txt;
+						this._OptionalFlavorParamsIds = txt;
 						continue;
 					case "requiredFlavorParamsIds":
-						this.RequiredFlavorParamsIds = txt;
+						this._RequiredFlavorParamsIds = txt;
 						continue;
 					case "optionalThumbDimensions":
-						this.OptionalThumbDimensions = new List<KalturaDistributionThumbDimensions>();
+						this._OptionalThumbDimensions = new List<KalturaDistributionThumbDimensions>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.OptionalThumbDimensions.Add((KalturaDistributionThumbDimensions)KalturaObjectFactory.Create(arrayNode, "KalturaDistributionThumbDimensions"));
+							this._OptionalThumbDimensions.Add((KalturaDistributionThumbDimensions)KalturaObjectFactory.Create(arrayNode, "KalturaDistributionThumbDimensions"));
 						}
 						continue;
 					case "requiredThumbDimensions":
-						this.RequiredThumbDimensions = new List<KalturaDistributionThumbDimensions>();
+						this._RequiredThumbDimensions = new List<KalturaDistributionThumbDimensions>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.RequiredThumbDimensions.Add((KalturaDistributionThumbDimensions)KalturaObjectFactory.Create(arrayNode, "KalturaDistributionThumbDimensions"));
+							this._RequiredThumbDimensions.Add((KalturaDistributionThumbDimensions)KalturaObjectFactory.Create(arrayNode, "KalturaDistributionThumbDimensions"));
 						}
 						continue;
 					case "editableFields":
-						this.EditableFields = txt;
+						this._EditableFields = txt;
 						continue;
 					case "mandatoryFields":
-						this.MandatoryFields = txt;
+						this._MandatoryFields = txt;
 						continue;
 				}
 			}

@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "assetId":
-						this.AssetId = txt;
+						this._AssetId = txt;
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "title":
-						this.Title = txt;
+						this._Title = txt;
 						continue;
 					case "subType":
-						this.SubType = (KalturaThumbCuePointSubType)ParseEnum(typeof(KalturaThumbCuePointSubType), txt);
+						this._SubType = (KalturaThumbCuePointSubType)ParseEnum(typeof(KalturaThumbCuePointSubType), txt);
 						continue;
 				}
 			}

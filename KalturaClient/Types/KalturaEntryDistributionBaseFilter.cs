@@ -252,64 +252,64 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this.IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(txt);
 						continue;
 					case "idIn":
-						this.IdIn = txt;
+						this._IdIn = txt;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this.CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this.CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this.UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this.UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "submittedAtGreaterThanOrEqual":
-						this.SubmittedAtGreaterThanOrEqual = ParseInt(txt);
+						this._SubmittedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "submittedAtLessThanOrEqual":
-						this.SubmittedAtLessThanOrEqual = ParseInt(txt);
+						this._SubmittedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "entryIdEqual":
-						this.EntryIdEqual = txt;
+						this._EntryIdEqual = txt;
 						continue;
 					case "entryIdIn":
-						this.EntryIdIn = txt;
+						this._EntryIdIn = txt;
 						continue;
 					case "distributionProfileIdEqual":
-						this.DistributionProfileIdEqual = ParseInt(txt);
+						this._DistributionProfileIdEqual = ParseInt(txt);
 						continue;
 					case "distributionProfileIdIn":
-						this.DistributionProfileIdIn = txt;
+						this._DistributionProfileIdIn = txt;
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaEntryDistributionStatus)ParseEnum(typeof(KalturaEntryDistributionStatus), txt);
+						this._StatusEqual = (KalturaEntryDistributionStatus)ParseEnum(typeof(KalturaEntryDistributionStatus), txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = txt;
+						this._StatusIn = txt;
 						continue;
 					case "dirtyStatusEqual":
-						this.DirtyStatusEqual = (KalturaEntryDistributionFlag)ParseEnum(typeof(KalturaEntryDistributionFlag), txt);
+						this._DirtyStatusEqual = (KalturaEntryDistributionFlag)ParseEnum(typeof(KalturaEntryDistributionFlag), txt);
 						continue;
 					case "dirtyStatusIn":
-						this.DirtyStatusIn = txt;
+						this._DirtyStatusIn = txt;
 						continue;
 					case "sunriseGreaterThanOrEqual":
-						this.SunriseGreaterThanOrEqual = ParseInt(txt);
+						this._SunriseGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "sunriseLessThanOrEqual":
-						this.SunriseLessThanOrEqual = ParseInt(txt);
+						this._SunriseLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "sunsetGreaterThanOrEqual":
-						this.SunsetGreaterThanOrEqual = ParseInt(txt);
+						this._SunsetGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "sunsetLessThanOrEqual":
-						this.SunsetLessThanOrEqual = ParseInt(txt);
+						this._SunsetLessThanOrEqual = ParseInt(txt);
 						continue;
 				}
 			}

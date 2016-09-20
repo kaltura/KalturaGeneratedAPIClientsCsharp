@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "key":
-						this.Key = txt;
+						this._Key = txt;
 						continue;
 					case "text":
-						this.Text = txt;
+						this._Text = txt;
 						continue;
 					case "weight":
-						this.Weight = ParseFloat(txt);
+						this._Weight = ParseFloat(txt);
 						continue;
 					case "isCorrect":
-						this.IsCorrect = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._IsCorrect = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 				}
 			}

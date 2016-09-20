@@ -48,7 +48,7 @@ namespace Kaltura
 				OnPropertyChanged("TypeIn");
 			}
 		}
-		public new KalturaAssetOrderBy OrderBy
+		public KalturaAssetOrderBy OrderBy
 		{
 			get { return _OrderBy; }
 			set 
@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "typeIn":
-						this.TypeIn = txt;
+						this._TypeIn = txt;
 						continue;
 					case "orderBy":
-						this.OrderBy = (KalturaAssetOrderBy)KalturaStringEnum.Parse(typeof(KalturaAssetOrderBy), txt);
+						this._OrderBy = (KalturaAssetOrderBy)KalturaStringEnum.Parse(typeof(KalturaAssetOrderBy), txt);
 						continue;
 				}
 			}

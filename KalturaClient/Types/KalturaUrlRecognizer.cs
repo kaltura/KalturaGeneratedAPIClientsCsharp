@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "hosts":
-						this.Hosts = txt;
+						this._Hosts = txt;
 						continue;
 					case "uriPrefix":
-						this.UriPrefix = txt;
+						this._UriPrefix = txt;
 						continue;
 				}
 			}

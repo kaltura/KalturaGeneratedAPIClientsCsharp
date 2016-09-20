@@ -102,19 +102,19 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "vodEntryId":
-						this.VodEntryId = txt;
+						this._VodEntryId = txt;
 						continue;
 					case "liveEntryId":
-						this.LiveEntryId = txt;
+						this._LiveEntryId = txt;
 						continue;
 					case "totalVodDuration":
-						this.TotalVodDuration = ParseFloat(txt);
+						this._TotalVodDuration = ParseFloat(txt);
 						continue;
 					case "lastSegmentDuration":
-						this.LastSegmentDuration = ParseFloat(txt);
+						this._LastSegmentDuration = ParseFloat(txt);
 						continue;
 					case "amfArray":
-						this.AmfArray = txt;
+						this._AmfArray = txt;
 						continue;
 				}
 			}

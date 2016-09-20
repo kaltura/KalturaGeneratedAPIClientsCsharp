@@ -162,37 +162,37 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "entryId":
-						this.EntryId = txt;
+						this._EntryId = txt;
 						continue;
 					case "eventType":
-						this.EventType = (KalturaLiveStatsEventType)ParseEnum(typeof(KalturaLiveStatsEventType), txt);
+						this._EventType = (KalturaLiveStatsEventType)ParseEnum(typeof(KalturaLiveStatsEventType), txt);
 						continue;
 					case "sessionId":
-						this.SessionId = txt;
+						this._SessionId = txt;
 						continue;
 					case "eventIndex":
-						this.EventIndex = ParseInt(txt);
+						this._EventIndex = ParseInt(txt);
 						continue;
 					case "bufferTime":
-						this.BufferTime = ParseInt(txt);
+						this._BufferTime = ParseInt(txt);
 						continue;
 					case "bitrate":
-						this.Bitrate = ParseInt(txt);
+						this._Bitrate = ParseInt(txt);
 						continue;
 					case "referrer":
-						this.Referrer = txt;
+						this._Referrer = txt;
 						continue;
 					case "isLive":
-						this.IsLive = ParseBool(txt);
+						this._IsLive = ParseBool(txt);
 						continue;
 					case "startTime":
-						this.StartTime = txt;
+						this._StartTime = txt;
 						continue;
 					case "deliveryType":
-						this.DeliveryType = (KalturaPlaybackProtocol)KalturaStringEnum.Parse(typeof(KalturaPlaybackProtocol), txt);
+						this._DeliveryType = (KalturaPlaybackProtocol)KalturaStringEnum.Parse(typeof(KalturaPlaybackProtocol), txt);
 						continue;
 				}
 			}

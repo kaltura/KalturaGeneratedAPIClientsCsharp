@@ -68,38 +68,18 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public int SubmittedAt
 		{
 			get { return _SubmittedAt; }
-			set 
-			{ 
-				_SubmittedAt = value;
-				OnPropertyChanged("SubmittedAt");
-			}
 		}
 		public string EntryId
 		{
@@ -113,11 +93,6 @@ namespace Kaltura
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public int DistributionProfileId
 		{
@@ -131,29 +106,14 @@ namespace Kaltura
 		public KalturaEntryDistributionStatus Status
 		{
 			get { return _Status; }
-			set 
-			{ 
-				_Status = value;
-				OnPropertyChanged("Status");
-			}
 		}
 		public KalturaEntryDistributionSunStatus SunStatus
 		{
 			get { return _SunStatus; }
-			set 
-			{ 
-				_SunStatus = value;
-				OnPropertyChanged("SunStatus");
-			}
 		}
 		public KalturaEntryDistributionFlag DirtyStatus
 		{
 			get { return _DirtyStatus; }
-			set 
-			{ 
-				_DirtyStatus = value;
-				OnPropertyChanged("DirtyStatus");
-			}
 		}
 		public string ThumbAssetIds
 		{
@@ -203,31 +163,16 @@ namespace Kaltura
 		public string RemoteId
 		{
 			get { return _RemoteId; }
-			set 
-			{ 
-				_RemoteId = value;
-				OnPropertyChanged("RemoteId");
-			}
 		}
 		public int Plays
 		{
 			get { return _Plays; }
-			set 
-			{ 
-				_Plays = value;
-				OnPropertyChanged("Plays");
-			}
 		}
 		public int Views
 		{
 			get { return _Views; }
-			set 
-			{ 
-				_Views = value;
-				OnPropertyChanged("Views");
-			}
 		}
-		public IList<KalturaDistributionValidationError> ValidationErrors
+		public new IList<KalturaDistributionValidationError> ValidationErrors
 		{
 			get { return _ValidationErrors; }
 			set 
@@ -239,83 +184,38 @@ namespace Kaltura
 		public KalturaBatchJobErrorTypes ErrorType
 		{
 			get { return _ErrorType; }
-			set 
-			{ 
-				_ErrorType = value;
-				OnPropertyChanged("ErrorType");
-			}
 		}
 		public int ErrorNumber
 		{
 			get { return _ErrorNumber; }
-			set 
-			{ 
-				_ErrorNumber = value;
-				OnPropertyChanged("ErrorNumber");
-			}
 		}
 		public string ErrorDescription
 		{
 			get { return _ErrorDescription; }
-			set 
-			{ 
-				_ErrorDescription = value;
-				OnPropertyChanged("ErrorDescription");
-			}
 		}
 		public KalturaNullableBoolean HasSubmitResultsLog
 		{
 			get { return _HasSubmitResultsLog; }
-			set 
-			{ 
-				_HasSubmitResultsLog = value;
-				OnPropertyChanged("HasSubmitResultsLog");
-			}
 		}
 		public KalturaNullableBoolean HasSubmitSentDataLog
 		{
 			get { return _HasSubmitSentDataLog; }
-			set 
-			{ 
-				_HasSubmitSentDataLog = value;
-				OnPropertyChanged("HasSubmitSentDataLog");
-			}
 		}
 		public KalturaNullableBoolean HasUpdateResultsLog
 		{
 			get { return _HasUpdateResultsLog; }
-			set 
-			{ 
-				_HasUpdateResultsLog = value;
-				OnPropertyChanged("HasUpdateResultsLog");
-			}
 		}
 		public KalturaNullableBoolean HasUpdateSentDataLog
 		{
 			get { return _HasUpdateSentDataLog; }
-			set 
-			{ 
-				_HasUpdateSentDataLog = value;
-				OnPropertyChanged("HasUpdateSentDataLog");
-			}
 		}
 		public KalturaNullableBoolean HasDeleteResultsLog
 		{
 			get { return _HasDeleteResultsLog; }
-			set 
-			{ 
-				_HasDeleteResultsLog = value;
-				OnPropertyChanged("HasDeleteResultsLog");
-			}
 		}
 		public KalturaNullableBoolean HasDeleteSentDataLog
 		{
 			get { return _HasDeleteSentDataLog; }
-			set 
-			{ 
-				_HasDeleteSentDataLog = value;
-				OnPropertyChanged("HasDeleteSentDataLog");
-			}
 		}
 		#endregion
 
@@ -332,92 +232,92 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "submittedAt":
-						this.SubmittedAt = ParseInt(txt);
+						this._SubmittedAt = ParseInt(txt);
 						continue;
 					case "entryId":
-						this.EntryId = txt;
+						this._EntryId = txt;
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "distributionProfileId":
-						this.DistributionProfileId = ParseInt(txt);
+						this._DistributionProfileId = ParseInt(txt);
 						continue;
 					case "status":
-						this.Status = (KalturaEntryDistributionStatus)ParseEnum(typeof(KalturaEntryDistributionStatus), txt);
+						this._Status = (KalturaEntryDistributionStatus)ParseEnum(typeof(KalturaEntryDistributionStatus), txt);
 						continue;
 					case "sunStatus":
-						this.SunStatus = (KalturaEntryDistributionSunStatus)ParseEnum(typeof(KalturaEntryDistributionSunStatus), txt);
+						this._SunStatus = (KalturaEntryDistributionSunStatus)ParseEnum(typeof(KalturaEntryDistributionSunStatus), txt);
 						continue;
 					case "dirtyStatus":
-						this.DirtyStatus = (KalturaEntryDistributionFlag)ParseEnum(typeof(KalturaEntryDistributionFlag), txt);
+						this._DirtyStatus = (KalturaEntryDistributionFlag)ParseEnum(typeof(KalturaEntryDistributionFlag), txt);
 						continue;
 					case "thumbAssetIds":
-						this.ThumbAssetIds = txt;
+						this._ThumbAssetIds = txt;
 						continue;
 					case "flavorAssetIds":
-						this.FlavorAssetIds = txt;
+						this._FlavorAssetIds = txt;
 						continue;
 					case "assetIds":
-						this.AssetIds = txt;
+						this._AssetIds = txt;
 						continue;
 					case "sunrise":
-						this.Sunrise = ParseInt(txt);
+						this._Sunrise = ParseInt(txt);
 						continue;
 					case "sunset":
-						this.Sunset = ParseInt(txt);
+						this._Sunset = ParseInt(txt);
 						continue;
 					case "remoteId":
-						this.RemoteId = txt;
+						this._RemoteId = txt;
 						continue;
 					case "plays":
-						this.Plays = ParseInt(txt);
+						this._Plays = ParseInt(txt);
 						continue;
 					case "views":
-						this.Views = ParseInt(txt);
+						this._Views = ParseInt(txt);
 						continue;
 					case "validationErrors":
-						this.ValidationErrors = new List<KalturaDistributionValidationError>();
+						this._ValidationErrors = new List<KalturaDistributionValidationError>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.ValidationErrors.Add((KalturaDistributionValidationError)KalturaObjectFactory.Create(arrayNode, "KalturaDistributionValidationError"));
+							this._ValidationErrors.Add((KalturaDistributionValidationError)KalturaObjectFactory.Create(arrayNode, "KalturaDistributionValidationError"));
 						}
 						continue;
 					case "errorType":
-						this.ErrorType = (KalturaBatchJobErrorTypes)ParseEnum(typeof(KalturaBatchJobErrorTypes), txt);
+						this._ErrorType = (KalturaBatchJobErrorTypes)ParseEnum(typeof(KalturaBatchJobErrorTypes), txt);
 						continue;
 					case "errorNumber":
-						this.ErrorNumber = ParseInt(txt);
+						this._ErrorNumber = ParseInt(txt);
 						continue;
 					case "errorDescription":
-						this.ErrorDescription = txt;
+						this._ErrorDescription = txt;
 						continue;
 					case "hasSubmitResultsLog":
-						this.HasSubmitResultsLog = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._HasSubmitResultsLog = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "hasSubmitSentDataLog":
-						this.HasSubmitSentDataLog = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._HasSubmitSentDataLog = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "hasUpdateResultsLog":
-						this.HasUpdateResultsLog = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._HasUpdateResultsLog = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "hasUpdateSentDataLog":
-						this.HasUpdateSentDataLog = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._HasUpdateSentDataLog = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "hasDeleteResultsLog":
-						this.HasDeleteResultsLog = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._HasDeleteResultsLog = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "hasDeleteSentDataLog":
-						this.HasDeleteSentDataLog = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._HasDeleteSentDataLog = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 				}
 			}

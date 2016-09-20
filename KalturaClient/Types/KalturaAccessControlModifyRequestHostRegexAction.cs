@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "pattern":
-						this.Pattern = txt;
+						this._Pattern = txt;
 						continue;
 					case "replacement":
-						this.Replacement = txt;
+						this._Replacement = txt;
 						continue;
 					case "replacmenServerNodeId":
-						this.ReplacmenServerNodeId = ParseInt(txt);
+						this._ReplacmenServerNodeId = ParseInt(txt);
 						continue;
 				}
 			}

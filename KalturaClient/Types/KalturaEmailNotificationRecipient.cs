@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "email":
-						this.Email = (KalturaStringValue)KalturaObjectFactory.Create(propertyNode, "KalturaStringValue");
+						this._Email = (KalturaStringValue)KalturaObjectFactory.Create(propertyNode, "KalturaStringValue");
 						continue;
 					case "name":
-						this.Name = (KalturaStringValue)KalturaObjectFactory.Create(propertyNode, "KalturaStringValue");
+						this._Name = (KalturaStringValue)KalturaObjectFactory.Create(propertyNode, "KalturaStringValue");
 						continue;
 				}
 			}

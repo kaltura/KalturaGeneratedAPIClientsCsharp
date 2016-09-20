@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "conversionProfileId":
-						this.ConversionProfileId = ParseInt(txt);
+						this._ConversionProfileId = ParseInt(txt);
 						continue;
 				}
 			}

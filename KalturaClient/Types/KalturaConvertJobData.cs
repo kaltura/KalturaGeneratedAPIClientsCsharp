@@ -109,7 +109,7 @@ namespace Kaltura
 				OnPropertyChanged("CustomData");
 			}
 		}
-		public IList<KalturaDestFileSyncDescriptor> ExtraDestFileSyncs
+		public new IList<KalturaDestFileSyncDescriptor> ExtraDestFileSyncs
 		{
 			get { return _ExtraDestFileSyncs; }
 			set 
@@ -142,35 +142,35 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "destFileSyncLocalPath":
-						this.DestFileSyncLocalPath = txt;
+						this._DestFileSyncLocalPath = txt;
 						continue;
 					case "destFileSyncRemoteUrl":
-						this.DestFileSyncRemoteUrl = txt;
+						this._DestFileSyncRemoteUrl = txt;
 						continue;
 					case "logFileSyncLocalPath":
-						this.LogFileSyncLocalPath = txt;
+						this._LogFileSyncLocalPath = txt;
 						continue;
 					case "logFileSyncRemoteUrl":
-						this.LogFileSyncRemoteUrl = txt;
+						this._LogFileSyncRemoteUrl = txt;
 						continue;
 					case "flavorAssetId":
-						this.FlavorAssetId = txt;
+						this._FlavorAssetId = txt;
 						continue;
 					case "remoteMediaId":
-						this.RemoteMediaId = txt;
+						this._RemoteMediaId = txt;
 						continue;
 					case "customData":
-						this.CustomData = txt;
+						this._CustomData = txt;
 						continue;
 					case "extraDestFileSyncs":
-						this.ExtraDestFileSyncs = new List<KalturaDestFileSyncDescriptor>();
+						this._ExtraDestFileSyncs = new List<KalturaDestFileSyncDescriptor>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.ExtraDestFileSyncs.Add((KalturaDestFileSyncDescriptor)KalturaObjectFactory.Create(arrayNode, "KalturaDestFileSyncDescriptor"));
+							this._ExtraDestFileSyncs.Add((KalturaDestFileSyncDescriptor)KalturaObjectFactory.Create(arrayNode, "KalturaDestFileSyncDescriptor"));
 						}
 						continue;
 					case "engineMessage":
-						this.EngineMessage = txt;
+						this._EngineMessage = txt;
 						continue;
 				}
 			}

@@ -54,83 +54,38 @@ namespace Kaltura
 		public string UserId
 		{
 			get { return _UserId; }
-			set 
-			{ 
-				_UserId = value;
-				OnPropertyChanged("UserId");
-			}
 		}
 		public string UploadedBy
 		{
 			get { return _UploadedBy; }
-			set 
-			{ 
-				_UploadedBy = value;
-				OnPropertyChanged("UploadedBy");
-			}
 		}
 		public int ConversionProfileId
 		{
 			get { return _ConversionProfileId; }
-			set 
-			{ 
-				_ConversionProfileId = value;
-				OnPropertyChanged("ConversionProfileId");
-			}
 		}
 		public string ResultsFileLocalPath
 		{
 			get { return _ResultsFileLocalPath; }
-			set 
-			{ 
-				_ResultsFileLocalPath = value;
-				OnPropertyChanged("ResultsFileLocalPath");
-			}
 		}
 		public string ResultsFileUrl
 		{
 			get { return _ResultsFileUrl; }
-			set 
-			{ 
-				_ResultsFileUrl = value;
-				OnPropertyChanged("ResultsFileUrl");
-			}
 		}
 		public int NumOfEntries
 		{
 			get { return _NumOfEntries; }
-			set 
-			{ 
-				_NumOfEntries = value;
-				OnPropertyChanged("NumOfEntries");
-			}
 		}
 		public int NumOfObjects
 		{
 			get { return _NumOfObjects; }
-			set 
-			{ 
-				_NumOfObjects = value;
-				OnPropertyChanged("NumOfObjects");
-			}
 		}
 		public string FilePath
 		{
 			get { return _FilePath; }
-			set 
-			{ 
-				_FilePath = value;
-				OnPropertyChanged("FilePath");
-			}
 		}
 		public KalturaBulkUploadObjectType BulkUploadObjectType
 		{
 			get { return _BulkUploadObjectType; }
-			set 
-			{ 
-				_BulkUploadObjectType = value;
-				OnPropertyChanged("BulkUploadObjectType");
-			}
 		}
 		public string FileName
 		{
@@ -144,20 +99,10 @@ namespace Kaltura
 		public KalturaBulkUploadObjectData ObjectData
 		{
 			get { return _ObjectData; }
-			set 
-			{ 
-				_ObjectData = value;
-				OnPropertyChanged("ObjectData");
-			}
 		}
 		public KalturaBulkUploadType Type
 		{
 			get { return _Type; }
-			set 
-			{ 
-				_Type = value;
-				OnPropertyChanged("Type");
-			}
 		}
 		public string EmailRecipients
 		{
@@ -192,46 +137,46 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "userId":
-						this.UserId = txt;
+						this._UserId = txt;
 						continue;
 					case "uploadedBy":
-						this.UploadedBy = txt;
+						this._UploadedBy = txt;
 						continue;
 					case "conversionProfileId":
-						this.ConversionProfileId = ParseInt(txt);
+						this._ConversionProfileId = ParseInt(txt);
 						continue;
 					case "resultsFileLocalPath":
-						this.ResultsFileLocalPath = txt;
+						this._ResultsFileLocalPath = txt;
 						continue;
 					case "resultsFileUrl":
-						this.ResultsFileUrl = txt;
+						this._ResultsFileUrl = txt;
 						continue;
 					case "numOfEntries":
-						this.NumOfEntries = ParseInt(txt);
+						this._NumOfEntries = ParseInt(txt);
 						continue;
 					case "numOfObjects":
-						this.NumOfObjects = ParseInt(txt);
+						this._NumOfObjects = ParseInt(txt);
 						continue;
 					case "filePath":
-						this.FilePath = txt;
+						this._FilePath = txt;
 						continue;
 					case "bulkUploadObjectType":
-						this.BulkUploadObjectType = (KalturaBulkUploadObjectType)KalturaStringEnum.Parse(typeof(KalturaBulkUploadObjectType), txt);
+						this._BulkUploadObjectType = (KalturaBulkUploadObjectType)KalturaStringEnum.Parse(typeof(KalturaBulkUploadObjectType), txt);
 						continue;
 					case "fileName":
-						this.FileName = txt;
+						this._FileName = txt;
 						continue;
 					case "objectData":
-						this.ObjectData = (KalturaBulkUploadObjectData)KalturaObjectFactory.Create(propertyNode, "KalturaBulkUploadObjectData");
+						this._ObjectData = (KalturaBulkUploadObjectData)KalturaObjectFactory.Create(propertyNode, "KalturaBulkUploadObjectData");
 						continue;
 					case "type":
-						this.Type = (KalturaBulkUploadType)KalturaStringEnum.Parse(typeof(KalturaBulkUploadType), txt);
+						this._Type = (KalturaBulkUploadType)KalturaStringEnum.Parse(typeof(KalturaBulkUploadType), txt);
 						continue;
 					case "emailRecipients":
-						this.EmailRecipients = txt;
+						this._EmailRecipients = txt;
 						continue;
 					case "numOfErrorObjects":
-						this.NumOfErrorObjects = ParseInt(txt);
+						this._NumOfErrorObjects = ParseInt(txt);
 						continue;
 				}
 			}

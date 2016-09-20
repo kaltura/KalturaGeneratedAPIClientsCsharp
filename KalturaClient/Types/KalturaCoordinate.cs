@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "latitude":
-						this.Latitude = ParseFloat(txt);
+						this._Latitude = ParseFloat(txt);
 						continue;
 					case "longitude":
-						this.Longitude = ParseFloat(txt);
+						this._Longitude = ParseFloat(txt);
 						continue;
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 				}
 			}

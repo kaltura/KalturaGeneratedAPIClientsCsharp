@@ -172,40 +172,40 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "codeLike":
-						this.CodeLike = txt;
+						this._CodeLike = txt;
 						continue;
 					case "codeMultiLikeOr":
-						this.CodeMultiLikeOr = txt;
+						this._CodeMultiLikeOr = txt;
 						continue;
 					case "codeMultiLikeAnd":
-						this.CodeMultiLikeAnd = txt;
+						this._CodeMultiLikeAnd = txt;
 						continue;
 					case "codeEqual":
-						this.CodeEqual = txt;
+						this._CodeEqual = txt;
 						continue;
 					case "codeIn":
-						this.CodeIn = txt;
+						this._CodeIn = txt;
 						continue;
 					case "descriptionLike":
-						this.DescriptionLike = txt;
+						this._DescriptionLike = txt;
 						continue;
 					case "descriptionMultiLikeOr":
-						this.DescriptionMultiLikeOr = txt;
+						this._DescriptionMultiLikeOr = txt;
 						continue;
 					case "descriptionMultiLikeAnd":
-						this.DescriptionMultiLikeAnd = txt;
+						this._DescriptionMultiLikeAnd = txt;
 						continue;
 					case "endTimeGreaterThanOrEqual":
-						this.EndTimeGreaterThanOrEqual = ParseInt(txt);
+						this._EndTimeGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "endTimeLessThanOrEqual":
-						this.EndTimeLessThanOrEqual = ParseInt(txt);
+						this._EndTimeLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "durationGreaterThanOrEqual":
-						this.DurationGreaterThanOrEqual = ParseInt(txt);
+						this._DurationGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "durationLessThanOrEqual":
-						this.DurationLessThanOrEqual = ParseInt(txt);
+						this._DurationLessThanOrEqual = ParseInt(txt);
 						continue;
 				}
 			}

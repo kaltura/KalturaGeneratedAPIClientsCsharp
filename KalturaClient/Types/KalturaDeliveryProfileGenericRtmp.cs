@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "pattern":
-						this.Pattern = txt;
+						this._Pattern = txt;
 						continue;
 					case "rendererClass":
-						this.RendererClass = txt;
+						this._RendererClass = txt;
 						continue;
 				}
 			}

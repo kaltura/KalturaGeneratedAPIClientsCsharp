@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "data":
-						this.Data = txt;
+						this._Data = txt;
 						continue;
 				}
 			}

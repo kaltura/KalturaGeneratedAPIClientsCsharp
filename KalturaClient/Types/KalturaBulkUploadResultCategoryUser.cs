@@ -112,22 +112,22 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "categoryId":
-						this.CategoryId = ParseInt(txt);
+						this._CategoryId = ParseInt(txt);
 						continue;
 					case "categoryReferenceId":
-						this.CategoryReferenceId = txt;
+						this._CategoryReferenceId = txt;
 						continue;
 					case "userId":
-						this.UserId = txt;
+						this._UserId = txt;
 						continue;
 					case "permissionLevel":
-						this.PermissionLevel = ParseInt(txt);
+						this._PermissionLevel = ParseInt(txt);
 						continue;
 					case "updateMethod":
-						this.UpdateMethod = ParseInt(txt);
+						this._UpdateMethod = ParseInt(txt);
 						continue;
 					case "requiredObjectStatus":
-						this.RequiredObjectStatus = ParseInt(txt);
+						this._RequiredObjectStatus = ParseInt(txt);
 						continue;
 				}
 			}

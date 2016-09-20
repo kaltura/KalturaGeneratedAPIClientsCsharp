@@ -86,11 +86,6 @@ namespace Kaltura
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public KalturaUserType Type
 		{
@@ -230,20 +225,10 @@ namespace Kaltura
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public string PartnerData
 		{
@@ -275,15 +260,9 @@ namespace Kaltura
 		public int StorageSize
 		{
 			get { return _StorageSize; }
-			set 
-			{ 
-				_StorageSize = value;
-				OnPropertyChanged("StorageSize");
-			}
 		}
 		public string Password
 		{
-			get { return _Password; }
 			set 
 			{ 
 				_Password = value;
@@ -329,38 +308,18 @@ namespace Kaltura
 		public int LastLoginTime
 		{
 			get { return _LastLoginTime; }
-			set 
-			{ 
-				_LastLoginTime = value;
-				OnPropertyChanged("LastLoginTime");
-			}
 		}
 		public int StatusUpdatedAt
 		{
 			get { return _StatusUpdatedAt; }
-			set 
-			{ 
-				_StatusUpdatedAt = value;
-				OnPropertyChanged("StatusUpdatedAt");
-			}
 		}
 		public int DeletedAt
 		{
 			get { return _DeletedAt; }
-			set 
-			{ 
-				_DeletedAt = value;
-				OnPropertyChanged("DeletedAt");
-			}
 		}
 		public bool? LoginEnabled
 		{
 			get { return _LoginEnabled; }
-			set 
-			{ 
-				_LoginEnabled = value;
-				OnPropertyChanged("LoginEnabled");
-			}
 		}
 		public string RoleIds
 		{
@@ -374,20 +333,10 @@ namespace Kaltura
 		public string RoleNames
 		{
 			get { return _RoleNames; }
-			set 
-			{ 
-				_RoleNames = value;
-				OnPropertyChanged("RoleNames");
-			}
 		}
 		public bool? IsAccountOwner
 		{
 			get { return _IsAccountOwner; }
-			set 
-			{ 
-				_IsAccountOwner = value;
-				OnPropertyChanged("IsAccountOwner");
-			}
 		}
 		public string AllowedPartnerIds
 		{
@@ -422,115 +371,115 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = txt;
+						this._Id = txt;
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "type":
-						this.Type = (KalturaUserType)ParseEnum(typeof(KalturaUserType), txt);
+						this._Type = (KalturaUserType)ParseEnum(typeof(KalturaUserType), txt);
 						continue;
 					case "screenName":
-						this.ScreenName = txt;
+						this._ScreenName = txt;
 						continue;
 					case "fullName":
-						this.FullName = txt;
+						this._FullName = txt;
 						continue;
 					case "email":
-						this.Email = txt;
+						this._Email = txt;
 						continue;
 					case "dateOfBirth":
-						this.DateOfBirth = ParseInt(txt);
+						this._DateOfBirth = ParseInt(txt);
 						continue;
 					case "country":
-						this.Country = txt;
+						this._Country = txt;
 						continue;
 					case "state":
-						this.State = txt;
+						this._State = txt;
 						continue;
 					case "city":
-						this.City = txt;
+						this._City = txt;
 						continue;
 					case "zip":
-						this.Zip = txt;
+						this._Zip = txt;
 						continue;
 					case "thumbnailUrl":
-						this.ThumbnailUrl = txt;
+						this._ThumbnailUrl = txt;
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "tags":
-						this.Tags = txt;
+						this._Tags = txt;
 						continue;
 					case "adminTags":
-						this.AdminTags = txt;
+						this._AdminTags = txt;
 						continue;
 					case "gender":
-						this.Gender = (KalturaGender)ParseEnum(typeof(KalturaGender), txt);
+						this._Gender = (KalturaGender)ParseEnum(typeof(KalturaGender), txt);
 						continue;
 					case "status":
-						this.Status = (KalturaUserStatus)ParseEnum(typeof(KalturaUserStatus), txt);
+						this._Status = (KalturaUserStatus)ParseEnum(typeof(KalturaUserStatus), txt);
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "partnerData":
-						this.PartnerData = txt;
+						this._PartnerData = txt;
 						continue;
 					case "indexedPartnerDataInt":
-						this.IndexedPartnerDataInt = ParseInt(txt);
+						this._IndexedPartnerDataInt = ParseInt(txt);
 						continue;
 					case "indexedPartnerDataString":
-						this.IndexedPartnerDataString = txt;
+						this._IndexedPartnerDataString = txt;
 						continue;
 					case "storageSize":
-						this.StorageSize = ParseInt(txt);
+						this._StorageSize = ParseInt(txt);
 						continue;
 					case "password":
-						this.Password = txt;
+						this._Password = txt;
 						continue;
 					case "firstName":
-						this.FirstName = txt;
+						this._FirstName = txt;
 						continue;
 					case "lastName":
-						this.LastName = txt;
+						this._LastName = txt;
 						continue;
 					case "isAdmin":
-						this.IsAdmin = ParseBool(txt);
+						this._IsAdmin = ParseBool(txt);
 						continue;
 					case "language":
-						this.Language = (KalturaLanguageCode)KalturaStringEnum.Parse(typeof(KalturaLanguageCode), txt);
+						this._Language = (KalturaLanguageCode)KalturaStringEnum.Parse(typeof(KalturaLanguageCode), txt);
 						continue;
 					case "lastLoginTime":
-						this.LastLoginTime = ParseInt(txt);
+						this._LastLoginTime = ParseInt(txt);
 						continue;
 					case "statusUpdatedAt":
-						this.StatusUpdatedAt = ParseInt(txt);
+						this._StatusUpdatedAt = ParseInt(txt);
 						continue;
 					case "deletedAt":
-						this.DeletedAt = ParseInt(txt);
+						this._DeletedAt = ParseInt(txt);
 						continue;
 					case "loginEnabled":
-						this.LoginEnabled = ParseBool(txt);
+						this._LoginEnabled = ParseBool(txt);
 						continue;
 					case "roleIds":
-						this.RoleIds = txt;
+						this._RoleIds = txt;
 						continue;
 					case "roleNames":
-						this.RoleNames = txt;
+						this._RoleNames = txt;
 						continue;
 					case "isAccountOwner":
-						this.IsAccountOwner = ParseBool(txt);
+						this._IsAccountOwner = ParseBool(txt);
 						continue;
 					case "allowedPartnerIds":
-						this.AllowedPartnerIds = txt;
+						this._AllowedPartnerIds = txt;
 						continue;
 					case "allowedPartnerPackages":
-						this.AllowedPartnerPackages = txt;
+						this._AllowedPartnerPackages = txt;
 						continue;
 				}
 			}

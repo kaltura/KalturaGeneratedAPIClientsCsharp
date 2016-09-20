@@ -41,11 +41,6 @@ namespace Kaltura
 		public KalturaDropFolderFileHandlerType HandlerType
 		{
 			get { return _HandlerType; }
-			set 
-			{ 
-				_HandlerType = value;
-				OnPropertyChanged("HandlerType");
-			}
 		}
 		#endregion
 
@@ -62,7 +57,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "handlerType":
-						this.HandlerType = (KalturaDropFolderFileHandlerType)KalturaStringEnum.Parse(typeof(KalturaDropFolderFileHandlerType), txt);
+						this._HandlerType = (KalturaDropFolderFileHandlerType)KalturaStringEnum.Parse(typeof(KalturaDropFolderFileHandlerType), txt);
 						continue;
 				}
 			}

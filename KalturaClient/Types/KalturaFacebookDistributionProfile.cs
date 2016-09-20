@@ -122,25 +122,25 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "apiAuthorizeUrl":
-						this.ApiAuthorizeUrl = txt;
+						this._ApiAuthorizeUrl = txt;
 						continue;
 					case "pageId":
-						this.PageId = txt;
+						this._PageId = txt;
 						continue;
 					case "pageAccessToken":
-						this.PageAccessToken = txt;
+						this._PageAccessToken = txt;
 						continue;
 					case "userAccessToken":
-						this.UserAccessToken = txt;
+						this._UserAccessToken = txt;
 						continue;
 					case "state":
-						this.State = txt;
+						this._State = txt;
 						continue;
 					case "permissions":
-						this.Permissions = txt;
+						this._Permissions = txt;
 						continue;
 					case "reRequestPermissions":
-						this.ReRequestPermissions = ParseInt(txt);
+						this._ReRequestPermissions = ParseInt(txt);
 						continue;
 				}
 			}

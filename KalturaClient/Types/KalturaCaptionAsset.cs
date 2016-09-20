@@ -67,11 +67,6 @@ namespace Kaltura
 		public KalturaLanguageCode LanguageCode
 		{
 			get { return _LanguageCode; }
-			set 
-			{ 
-				_LanguageCode = value;
-				OnPropertyChanged("LanguageCode");
-			}
 		}
 		public KalturaNullableBoolean IsDefault
 		{
@@ -103,11 +98,6 @@ namespace Kaltura
 		public KalturaCaptionAssetStatus Status
 		{
 			get { return _Status; }
-			set 
-			{ 
-				_Status = value;
-				OnPropertyChanged("Status");
-			}
 		}
 		public string ParentId
 		{
@@ -142,31 +132,31 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "captionParamsId":
-						this.CaptionParamsId = ParseInt(txt);
+						this._CaptionParamsId = ParseInt(txt);
 						continue;
 					case "language":
-						this.Language = (KalturaLanguage)KalturaStringEnum.Parse(typeof(KalturaLanguage), txt);
+						this._Language = (KalturaLanguage)KalturaStringEnum.Parse(typeof(KalturaLanguage), txt);
 						continue;
 					case "languageCode":
-						this.LanguageCode = (KalturaLanguageCode)KalturaStringEnum.Parse(typeof(KalturaLanguageCode), txt);
+						this._LanguageCode = (KalturaLanguageCode)KalturaStringEnum.Parse(typeof(KalturaLanguageCode), txt);
 						continue;
 					case "isDefault":
-						this.IsDefault = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._IsDefault = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "label":
-						this.Label = txt;
+						this._Label = txt;
 						continue;
 					case "format":
-						this.Format = (KalturaCaptionType)KalturaStringEnum.Parse(typeof(KalturaCaptionType), txt);
+						this._Format = (KalturaCaptionType)KalturaStringEnum.Parse(typeof(KalturaCaptionType), txt);
 						continue;
 					case "status":
-						this.Status = (KalturaCaptionAssetStatus)ParseEnum(typeof(KalturaCaptionAssetStatus), txt);
+						this._Status = (KalturaCaptionAssetStatus)ParseEnum(typeof(KalturaCaptionAssetStatus), txt);
 						continue;
 					case "parentId":
-						this.ParentId = txt;
+						this._ParentId = txt;
 						continue;
 					case "accuracy":
-						this.Accuracy = ParseInt(txt);
+						this._Accuracy = ParseInt(txt);
 						continue;
 				}
 			}

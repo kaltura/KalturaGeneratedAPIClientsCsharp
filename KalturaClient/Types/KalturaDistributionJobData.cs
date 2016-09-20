@@ -128,7 +128,7 @@ namespace Kaltura
 				OnPropertyChanged("SentData");
 			}
 		}
-		public IList<KalturaDistributionRemoteMediaFile> MediaFiles
+		public new IList<KalturaDistributionRemoteMediaFile> MediaFiles
 		{
 			get { return _MediaFiles; }
 			set 
@@ -152,37 +152,37 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "distributionProfileId":
-						this.DistributionProfileId = ParseInt(txt);
+						this._DistributionProfileId = ParseInt(txt);
 						continue;
 					case "distributionProfile":
-						this.DistributionProfile = (KalturaDistributionProfile)KalturaObjectFactory.Create(propertyNode, "KalturaDistributionProfile");
+						this._DistributionProfile = (KalturaDistributionProfile)KalturaObjectFactory.Create(propertyNode, "KalturaDistributionProfile");
 						continue;
 					case "entryDistributionId":
-						this.EntryDistributionId = ParseInt(txt);
+						this._EntryDistributionId = ParseInt(txt);
 						continue;
 					case "entryDistribution":
-						this.EntryDistribution = (KalturaEntryDistribution)KalturaObjectFactory.Create(propertyNode, "KalturaEntryDistribution");
+						this._EntryDistribution = (KalturaEntryDistribution)KalturaObjectFactory.Create(propertyNode, "KalturaEntryDistribution");
 						continue;
 					case "remoteId":
-						this.RemoteId = txt;
+						this._RemoteId = txt;
 						continue;
 					case "providerType":
-						this.ProviderType = (KalturaDistributionProviderType)KalturaStringEnum.Parse(typeof(KalturaDistributionProviderType), txt);
+						this._ProviderType = (KalturaDistributionProviderType)KalturaStringEnum.Parse(typeof(KalturaDistributionProviderType), txt);
 						continue;
 					case "providerData":
-						this.ProviderData = (KalturaDistributionJobProviderData)KalturaObjectFactory.Create(propertyNode, "KalturaDistributionJobProviderData");
+						this._ProviderData = (KalturaDistributionJobProviderData)KalturaObjectFactory.Create(propertyNode, "KalturaDistributionJobProviderData");
 						continue;
 					case "results":
-						this.Results = txt;
+						this._Results = txt;
 						continue;
 					case "sentData":
-						this.SentData = txt;
+						this._SentData = txt;
 						continue;
 					case "mediaFiles":
-						this.MediaFiles = new List<KalturaDistributionRemoteMediaFile>();
+						this._MediaFiles = new List<KalturaDistributionRemoteMediaFile>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.MediaFiles.Add((KalturaDistributionRemoteMediaFile)KalturaObjectFactory.Create(arrayNode, "KalturaDistributionRemoteMediaFile"));
+							this._MediaFiles.Add((KalturaDistributionRemoteMediaFile)KalturaObjectFactory.Create(arrayNode, "KalturaDistributionRemoteMediaFile"));
 						}
 						continue;
 				}

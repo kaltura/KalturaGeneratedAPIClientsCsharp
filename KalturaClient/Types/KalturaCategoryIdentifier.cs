@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "identifier":
-						this.Identifier = (KalturaCategoryIdentifierField)KalturaStringEnum.Parse(typeof(KalturaCategoryIdentifierField), txt);
+						this._Identifier = (KalturaCategoryIdentifierField)KalturaStringEnum.Parse(typeof(KalturaCategoryIdentifierField), txt);
 						continue;
 				}
 			}

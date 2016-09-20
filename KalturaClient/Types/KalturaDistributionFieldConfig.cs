@@ -90,7 +90,7 @@ namespace Kaltura
 				OnPropertyChanged("UpdateOnChange");
 			}
 		}
-		public IList<KalturaString> UpdateParams
+		public new IList<KalturaString> UpdateParams
 		{
 			get { return _UpdateParams; }
 			set 
@@ -102,11 +102,6 @@ namespace Kaltura
 		public bool? IsDefault
 		{
 			get { return _IsDefault; }
-			set 
-			{ 
-				_IsDefault = value;
-				OnPropertyChanged("IsDefault");
-			}
 		}
 		public bool? TriggerDeleteOnError
 		{
@@ -132,32 +127,32 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "fieldName":
-						this.FieldName = txt;
+						this._FieldName = txt;
 						continue;
 					case "userFriendlyFieldName":
-						this.UserFriendlyFieldName = txt;
+						this._UserFriendlyFieldName = txt;
 						continue;
 					case "entryMrssXslt":
-						this.EntryMrssXslt = txt;
+						this._EntryMrssXslt = txt;
 						continue;
 					case "isRequired":
-						this.IsRequired = (KalturaDistributionFieldRequiredStatus)ParseEnum(typeof(KalturaDistributionFieldRequiredStatus), txt);
+						this._IsRequired = (KalturaDistributionFieldRequiredStatus)ParseEnum(typeof(KalturaDistributionFieldRequiredStatus), txt);
 						continue;
 					case "updateOnChange":
-						this.UpdateOnChange = ParseBool(txt);
+						this._UpdateOnChange = ParseBool(txt);
 						continue;
 					case "updateParams":
-						this.UpdateParams = new List<KalturaString>();
+						this._UpdateParams = new List<KalturaString>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.UpdateParams.Add((KalturaString)KalturaObjectFactory.Create(arrayNode, "KalturaString"));
+							this._UpdateParams.Add((KalturaString)KalturaObjectFactory.Create(arrayNode, "KalturaString"));
 						}
 						continue;
 					case "isDefault":
-						this.IsDefault = ParseBool(txt);
+						this._IsDefault = ParseBool(txt);
 						continue;
 					case "triggerDeleteOnError":
-						this.TriggerDeleteOnError = ParseBool(txt);
+						this._TriggerDeleteOnError = ParseBool(txt);
 						continue;
 				}
 			}

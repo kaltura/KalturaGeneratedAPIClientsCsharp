@@ -312,82 +312,82 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this.IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(txt);
 						continue;
 					case "idIn":
-						this.IdIn = txt;
+						this._IdIn = txt;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this.CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this.CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this.UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this.UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "heartbeatTimeGreaterThanOrEqual":
-						this.HeartbeatTimeGreaterThanOrEqual = ParseInt(txt);
+						this._HeartbeatTimeGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "heartbeatTimeLessThanOrEqual":
-						this.HeartbeatTimeLessThanOrEqual = ParseInt(txt);
+						this._HeartbeatTimeLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "nameEqual":
-						this.NameEqual = txt;
+						this._NameEqual = txt;
 						continue;
 					case "nameIn":
-						this.NameIn = txt;
+						this._NameIn = txt;
 						continue;
 					case "systemNameEqual":
-						this.SystemNameEqual = txt;
+						this._SystemNameEqual = txt;
 						continue;
 					case "systemNameIn":
-						this.SystemNameIn = txt;
+						this._SystemNameIn = txt;
 						continue;
 					case "hostNameLike":
-						this.HostNameLike = txt;
+						this._HostNameLike = txt;
 						continue;
 					case "hostNameMultiLikeOr":
-						this.HostNameMultiLikeOr = txt;
+						this._HostNameMultiLikeOr = txt;
 						continue;
 					case "hostNameMultiLikeAnd":
-						this.HostNameMultiLikeAnd = txt;
+						this._HostNameMultiLikeAnd = txt;
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaServerNodeStatus)ParseEnum(typeof(KalturaServerNodeStatus), txt);
+						this._StatusEqual = (KalturaServerNodeStatus)ParseEnum(typeof(KalturaServerNodeStatus), txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = txt;
+						this._StatusIn = txt;
 						continue;
 					case "typeEqual":
-						this.TypeEqual = (KalturaServerNodeType)KalturaStringEnum.Parse(typeof(KalturaServerNodeType), txt);
+						this._TypeEqual = (KalturaServerNodeType)KalturaStringEnum.Parse(typeof(KalturaServerNodeType), txt);
 						continue;
 					case "typeIn":
-						this.TypeIn = txt;
+						this._TypeIn = txt;
 						continue;
 					case "tagsLike":
-						this.TagsLike = txt;
+						this._TagsLike = txt;
 						continue;
 					case "tagsMultiLikeOr":
-						this.TagsMultiLikeOr = txt;
+						this._TagsMultiLikeOr = txt;
 						continue;
 					case "tagsMultiLikeAnd":
-						this.TagsMultiLikeAnd = txt;
+						this._TagsMultiLikeAnd = txt;
 						continue;
 					case "dcEqual":
-						this.DcEqual = ParseInt(txt);
+						this._DcEqual = ParseInt(txt);
 						continue;
 					case "dcIn":
-						this.DcIn = txt;
+						this._DcIn = txt;
 						continue;
 					case "parentIdEqual":
-						this.ParentIdEqual = ParseInt(txt);
+						this._ParentIdEqual = ParseInt(txt);
 						continue;
 					case "parentIdIn":
-						this.ParentIdIn = txt;
+						this._ParentIdIn = txt;
 						continue;
 				}
 			}

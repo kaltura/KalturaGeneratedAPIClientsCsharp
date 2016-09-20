@@ -112,22 +112,22 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "appPrefix":
-						this.AppPrefix = txt;
+						this._AppPrefix = txt;
 						continue;
 					case "transcoder":
-						this.Transcoder = txt;
+						this._Transcoder = txt;
 						continue;
 					case "GPUID":
-						this.GPUID = ParseInt(txt);
+						this._GPUID = ParseInt(txt);
 						continue;
 					case "liveServicePort":
-						this.LiveServicePort = ParseInt(txt);
+						this._LiveServicePort = ParseInt(txt);
 						continue;
 					case "liveServiceProtocol":
-						this.LiveServiceProtocol = txt;
+						this._LiveServiceProtocol = txt;
 						continue;
 					case "liveServiceInternalDomain":
-						this.LiveServiceInternalDomain = txt;
+						this._LiveServiceInternalDomain = txt;
 						continue;
 				}
 			}

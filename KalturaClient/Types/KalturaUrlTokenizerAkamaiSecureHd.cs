@@ -102,19 +102,19 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "paramName":
-						this.ParamName = txt;
+						this._ParamName = txt;
 						continue;
 					case "aclPostfix":
-						this.AclPostfix = txt;
+						this._AclPostfix = txt;
 						continue;
 					case "customPostfixes":
-						this.CustomPostfixes = txt;
+						this._CustomPostfixes = txt;
 						continue;
 					case "useCookieHosts":
-						this.UseCookieHosts = txt;
+						this._UseCookieHosts = txt;
 						continue;
 					case "rootDir":
-						this.RootDir = txt;
+						this._RootDir = txt;
 						continue;
 				}
 			}

@@ -112,22 +112,22 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "keywords":
-						this.Keywords = txt;
+						this._Keywords = txt;
 						continue;
 					case "searchInTags":
-						this.SearchInTags = ParseBool(txt);
+						this._SearchInTags = ParseBool(txt);
 						continue;
 					case "searchInAdminTags":
-						this.SearchInAdminTags = ParseBool(txt);
+						this._SearchInAdminTags = ParseBool(txt);
 						continue;
 					case "categories":
-						this.Categories = txt;
+						this._Categories = txt;
 						continue;
 					case "timeZoneOffset":
-						this.TimeZoneOffset = ParseInt(txt);
+						this._TimeZoneOffset = ParseInt(txt);
 						continue;
 					case "interval":
-						this.Interval = (KalturaReportInterval)KalturaStringEnum.Parse(typeof(KalturaReportInterval), txt);
+						this._Interval = (KalturaReportInterval)KalturaStringEnum.Parse(typeof(KalturaReportInterval), txt);
 						continue;
 				}
 			}

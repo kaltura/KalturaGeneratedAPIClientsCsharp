@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "token":
-						this.Token = txt;
+						this._Token = txt;
 						continue;
 				}
 			}

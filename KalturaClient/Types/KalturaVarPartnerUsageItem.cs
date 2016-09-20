@@ -272,70 +272,70 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "partnerName":
-						this.PartnerName = txt;
+						this._PartnerName = txt;
 						continue;
 					case "partnerStatus":
-						this.PartnerStatus = (KalturaPartnerStatus)ParseEnum(typeof(KalturaPartnerStatus), txt);
+						this._PartnerStatus = (KalturaPartnerStatus)ParseEnum(typeof(KalturaPartnerStatus), txt);
 						continue;
 					case "partnerPackage":
-						this.PartnerPackage = ParseInt(txt);
+						this._PartnerPackage = ParseInt(txt);
 						continue;
 					case "partnerCreatedAt":
-						this.PartnerCreatedAt = ParseInt(txt);
+						this._PartnerCreatedAt = ParseInt(txt);
 						continue;
 					case "views":
-						this.Views = ParseInt(txt);
+						this._Views = ParseInt(txt);
 						continue;
 					case "plays":
-						this.Plays = ParseInt(txt);
+						this._Plays = ParseInt(txt);
 						continue;
 					case "entriesCount":
-						this.EntriesCount = ParseInt(txt);
+						this._EntriesCount = ParseInt(txt);
 						continue;
 					case "totalEntriesCount":
-						this.TotalEntriesCount = ParseInt(txt);
+						this._TotalEntriesCount = ParseInt(txt);
 						continue;
 					case "videoEntriesCount":
-						this.VideoEntriesCount = ParseInt(txt);
+						this._VideoEntriesCount = ParseInt(txt);
 						continue;
 					case "imageEntriesCount":
-						this.ImageEntriesCount = ParseInt(txt);
+						this._ImageEntriesCount = ParseInt(txt);
 						continue;
 					case "audioEntriesCount":
-						this.AudioEntriesCount = ParseInt(txt);
+						this._AudioEntriesCount = ParseInt(txt);
 						continue;
 					case "mixEntriesCount":
-						this.MixEntriesCount = ParseInt(txt);
+						this._MixEntriesCount = ParseInt(txt);
 						continue;
 					case "bandwidth":
-						this.Bandwidth = ParseFloat(txt);
+						this._Bandwidth = ParseFloat(txt);
 						continue;
 					case "totalStorage":
-						this.TotalStorage = ParseFloat(txt);
+						this._TotalStorage = ParseFloat(txt);
 						continue;
 					case "storage":
-						this.Storage = ParseFloat(txt);
+						this._Storage = ParseFloat(txt);
 						continue;
 					case "deletedStorage":
-						this.DeletedStorage = ParseFloat(txt);
+						this._DeletedStorage = ParseFloat(txt);
 						continue;
 					case "peakStorage":
-						this.PeakStorage = ParseFloat(txt);
+						this._PeakStorage = ParseFloat(txt);
 						continue;
 					case "avgStorage":
-						this.AvgStorage = ParseFloat(txt);
+						this._AvgStorage = ParseFloat(txt);
 						continue;
 					case "combinedStorageBandwidth":
-						this.CombinedStorageBandwidth = ParseFloat(txt);
+						this._CombinedStorageBandwidth = ParseFloat(txt);
 						continue;
 					case "transcodingUsage":
-						this.TranscodingUsage = ParseFloat(txt);
+						this._TranscodingUsage = ParseFloat(txt);
 						continue;
 					case "dateId":
-						this.DateId = txt;
+						this._DateId = txt;
 						continue;
 				}
 			}

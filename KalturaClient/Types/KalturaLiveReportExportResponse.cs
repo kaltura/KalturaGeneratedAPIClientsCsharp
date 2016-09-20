@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "referenceJobId":
-						this.ReferenceJobId = ParseLong(txt);
+						this._ReferenceJobId = ParseLong(txt);
 						continue;
 					case "reportEmail":
-						this.ReportEmail = txt;
+						this._ReportEmail = txt;
 						continue;
 				}
 			}

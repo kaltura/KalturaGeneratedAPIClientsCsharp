@@ -51,38 +51,18 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public string UserId
 		{
 			get { return _UserId; }
-			set 
-			{ 
-				_UserId = value;
-				OnPropertyChanged("UserId");
-			}
 		}
 		public KalturaModerationObjectType ModerationObjectType
 		{
 			get { return _ModerationObjectType; }
-			set 
-			{ 
-				_ModerationObjectType = value;
-				OnPropertyChanged("ModerationObjectType");
-			}
 		}
 		public string FlaggedEntryId
 		{
@@ -105,11 +85,6 @@ namespace Kaltura
 		public KalturaModerationFlagStatus Status
 		{
 			get { return _Status; }
-			set 
-			{ 
-				_Status = value;
-				OnPropertyChanged("Status");
-			}
 		}
 		public string Comments
 		{
@@ -132,20 +107,10 @@ namespace Kaltura
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		#endregion
 
@@ -162,37 +127,37 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "userId":
-						this.UserId = txt;
+						this._UserId = txt;
 						continue;
 					case "moderationObjectType":
-						this.ModerationObjectType = (KalturaModerationObjectType)KalturaStringEnum.Parse(typeof(KalturaModerationObjectType), txt);
+						this._ModerationObjectType = (KalturaModerationObjectType)KalturaStringEnum.Parse(typeof(KalturaModerationObjectType), txt);
 						continue;
 					case "flaggedEntryId":
-						this.FlaggedEntryId = txt;
+						this._FlaggedEntryId = txt;
 						continue;
 					case "flaggedUserId":
-						this.FlaggedUserId = txt;
+						this._FlaggedUserId = txt;
 						continue;
 					case "status":
-						this.Status = (KalturaModerationFlagStatus)KalturaStringEnum.Parse(typeof(KalturaModerationFlagStatus), txt);
+						this._Status = (KalturaModerationFlagStatus)KalturaStringEnum.Parse(typeof(KalturaModerationFlagStatus), txt);
 						continue;
 					case "comments":
-						this.Comments = txt;
+						this._Comments = txt;
 						continue;
 					case "flagType":
-						this.FlagType = (KalturaModerationFlagType)ParseEnum(typeof(KalturaModerationFlagType), txt);
+						this._FlagType = (KalturaModerationFlagType)ParseEnum(typeof(KalturaModerationFlagType), txt);
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 				}
 			}

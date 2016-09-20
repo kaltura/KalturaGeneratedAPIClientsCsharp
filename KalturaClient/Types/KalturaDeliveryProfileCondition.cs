@@ -38,7 +38,7 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
-		public IList<KalturaIntegerValue> DeliveryProfileIds
+		public new IList<KalturaIntegerValue> DeliveryProfileIds
 		{
 			get { return _DeliveryProfileIds; }
 			set 
@@ -62,10 +62,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "deliveryProfileIds":
-						this.DeliveryProfileIds = new List<KalturaIntegerValue>();
+						this._DeliveryProfileIds = new List<KalturaIntegerValue>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.DeliveryProfileIds.Add((KalturaIntegerValue)KalturaObjectFactory.Create(arrayNode, "KalturaIntegerValue"));
+							this._DeliveryProfileIds.Add((KalturaIntegerValue)KalturaObjectFactory.Create(arrayNode, "KalturaIntegerValue"));
 						}
 						continue;
 				}

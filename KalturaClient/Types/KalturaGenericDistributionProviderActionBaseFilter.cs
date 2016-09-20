@@ -152,34 +152,34 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this.IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(txt);
 						continue;
 					case "idIn":
-						this.IdIn = txt;
+						this._IdIn = txt;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this.CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this.CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this.UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this.UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "genericDistributionProviderIdEqual":
-						this.GenericDistributionProviderIdEqual = ParseInt(txt);
+						this._GenericDistributionProviderIdEqual = ParseInt(txt);
 						continue;
 					case "genericDistributionProviderIdIn":
-						this.GenericDistributionProviderIdIn = txt;
+						this._GenericDistributionProviderIdIn = txt;
 						continue;
 					case "actionEqual":
-						this.ActionEqual = (KalturaDistributionAction)ParseEnum(typeof(KalturaDistributionAction), txt);
+						this._ActionEqual = (KalturaDistributionAction)ParseEnum(typeof(KalturaDistributionAction), txt);
 						continue;
 					case "actionIn":
-						this.ActionIn = txt;
+						this._ActionIn = txt;
 						continue;
 				}
 			}

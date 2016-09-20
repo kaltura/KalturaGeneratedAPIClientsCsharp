@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "referrer":
-						this.Referrer = txt;
+						this._Referrer = txt;
 						continue;
 				}
 			}

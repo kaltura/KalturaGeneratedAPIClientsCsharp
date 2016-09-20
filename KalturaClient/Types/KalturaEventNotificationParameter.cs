@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "key":
-						this.Key = txt;
+						this._Key = txt;
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "value":
-						this.Value = (KalturaStringValue)KalturaObjectFactory.Create(propertyNode, "KalturaStringValue");
+						this._Value = (KalturaStringValue)KalturaObjectFactory.Create(propertyNode, "KalturaStringValue");
 						continue;
 				}
 			}

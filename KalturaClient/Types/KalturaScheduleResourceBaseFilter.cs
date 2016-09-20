@@ -212,52 +212,52 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this.IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(txt);
 						continue;
 					case "idIn":
-						this.IdIn = txt;
+						this._IdIn = txt;
 						continue;
 					case "idNotIn":
-						this.IdNotIn = txt;
+						this._IdNotIn = txt;
 						continue;
 					case "parentIdEqual":
-						this.ParentIdEqual = ParseInt(txt);
+						this._ParentIdEqual = ParseInt(txt);
 						continue;
 					case "parentIdIn":
-						this.ParentIdIn = txt;
+						this._ParentIdIn = txt;
 						continue;
 					case "systemNameEqual":
-						this.SystemNameEqual = txt;
+						this._SystemNameEqual = txt;
 						continue;
 					case "systemNameIn":
-						this.SystemNameIn = txt;
+						this._SystemNameIn = txt;
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaScheduleResourceStatus)ParseEnum(typeof(KalturaScheduleResourceStatus), txt);
+						this._StatusEqual = (KalturaScheduleResourceStatus)ParseEnum(typeof(KalturaScheduleResourceStatus), txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = txt;
+						this._StatusIn = txt;
 						continue;
 					case "tagsLike":
-						this.TagsLike = txt;
+						this._TagsLike = txt;
 						continue;
 					case "tagsMultiLikeOr":
-						this.TagsMultiLikeOr = txt;
+						this._TagsMultiLikeOr = txt;
 						continue;
 					case "tagsMultiLikeAnd":
-						this.TagsMultiLikeAnd = txt;
+						this._TagsMultiLikeAnd = txt;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this.CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this.CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this.UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this.UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 				}
 			}

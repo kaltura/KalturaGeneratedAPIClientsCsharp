@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "hash":
-						this.Hash = txt;
+						this._Hash = txt;
 						continue;
 					case "feedXmlPath":
-						this.FeedXmlPath = txt;
+						this._FeedXmlPath = txt;
 						continue;
 				}
 			}

@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "keepDistributionItem":
-						this.KeepDistributionItem = ParseBool(txt);
+						this._KeepDistributionItem = ParseBool(txt);
 						continue;
 				}
 			}

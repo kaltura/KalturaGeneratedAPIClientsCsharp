@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "ftpPath":
-						this.FtpPath = txt;
+						this._FtpPath = txt;
 						continue;
 					case "username":
-						this.Username = txt;
+						this._Username = txt;
 						continue;
 					case "password":
-						this.Password = txt;
+						this._Password = txt;
 						continue;
 					case "domain":
-						this.Domain = txt;
+						this._Domain = txt;
 						continue;
 				}
 			}

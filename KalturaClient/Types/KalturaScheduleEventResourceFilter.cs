@@ -48,7 +48,7 @@ namespace Kaltura
 				OnPropertyChanged("EventIdOrItsParentIdEqual");
 			}
 		}
-		public new KalturaScheduleEventResourceOrderBy OrderBy
+		public KalturaScheduleEventResourceOrderBy OrderBy
 		{
 			get { return _OrderBy; }
 			set 
@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "eventIdOrItsParentIdEqual":
-						this.EventIdOrItsParentIdEqual = ParseInt(txt);
+						this._EventIdOrItsParentIdEqual = ParseInt(txt);
 						continue;
 					case "orderBy":
-						this.OrderBy = (KalturaScheduleEventResourceOrderBy)KalturaStringEnum.Parse(typeof(KalturaScheduleEventResourceOrderBy), txt);
+						this._OrderBy = (KalturaScheduleEventResourceOrderBy)KalturaStringEnum.Parse(typeof(KalturaScheduleEventResourceOrderBy), txt);
 						continue;
 				}
 			}

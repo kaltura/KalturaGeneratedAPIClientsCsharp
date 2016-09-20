@@ -45,11 +45,6 @@ namespace Kaltura
 		public string CallbackNotificationUrl
 		{
 			get { return _CallbackNotificationUrl; }
-			set 
-			{ 
-				_CallbackNotificationUrl = value;
-				OnPropertyChanged("CallbackNotificationUrl");
-			}
 		}
 		public KalturaIntegrationProviderType ProviderType
 		{
@@ -102,19 +97,19 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "callbackNotificationUrl":
-						this.CallbackNotificationUrl = txt;
+						this._CallbackNotificationUrl = txt;
 						continue;
 					case "providerType":
-						this.ProviderType = (KalturaIntegrationProviderType)KalturaStringEnum.Parse(typeof(KalturaIntegrationProviderType), txt);
+						this._ProviderType = (KalturaIntegrationProviderType)KalturaStringEnum.Parse(typeof(KalturaIntegrationProviderType), txt);
 						continue;
 					case "providerData":
-						this.ProviderData = (KalturaIntegrationJobProviderData)KalturaObjectFactory.Create(propertyNode, "KalturaIntegrationJobProviderData");
+						this._ProviderData = (KalturaIntegrationJobProviderData)KalturaObjectFactory.Create(propertyNode, "KalturaIntegrationJobProviderData");
 						continue;
 					case "triggerType":
-						this.TriggerType = (KalturaIntegrationTriggerType)KalturaStringEnum.Parse(typeof(KalturaIntegrationTriggerType), txt);
+						this._TriggerType = (KalturaIntegrationTriggerType)KalturaStringEnum.Parse(typeof(KalturaIntegrationTriggerType), txt);
 						continue;
 					case "triggerData":
-						this.TriggerData = (KalturaIntegrationJobTriggerData)KalturaObjectFactory.Create(propertyNode, "KalturaIntegrationJobTriggerData");
+						this._TriggerData = (KalturaIntegrationJobTriggerData)KalturaObjectFactory.Create(propertyNode, "KalturaIntegrationJobTriggerData");
 						continue;
 				}
 			}

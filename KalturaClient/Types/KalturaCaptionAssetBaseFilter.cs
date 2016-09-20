@@ -122,25 +122,25 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "captionParamsIdEqual":
-						this.CaptionParamsIdEqual = ParseInt(txt);
+						this._CaptionParamsIdEqual = ParseInt(txt);
 						continue;
 					case "captionParamsIdIn":
-						this.CaptionParamsIdIn = txt;
+						this._CaptionParamsIdIn = txt;
 						continue;
 					case "formatEqual":
-						this.FormatEqual = (KalturaCaptionType)KalturaStringEnum.Parse(typeof(KalturaCaptionType), txt);
+						this._FormatEqual = (KalturaCaptionType)KalturaStringEnum.Parse(typeof(KalturaCaptionType), txt);
 						continue;
 					case "formatIn":
-						this.FormatIn = txt;
+						this._FormatIn = txt;
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaCaptionAssetStatus)ParseEnum(typeof(KalturaCaptionAssetStatus), txt);
+						this._StatusEqual = (KalturaCaptionAssetStatus)ParseEnum(typeof(KalturaCaptionAssetStatus), txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = txt;
+						this._StatusIn = txt;
 						continue;
 					case "statusNotIn":
-						this.StatusNotIn = txt;
+						this._StatusNotIn = txt;
 						continue;
 				}
 			}

@@ -322,85 +322,85 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this.IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(txt);
 						continue;
 					case "idIn":
-						this.IdIn = txt;
+						this._IdIn = txt;
 						continue;
 					case "partnerIdEqual":
-						this.PartnerIdEqual = ParseInt(txt);
+						this._PartnerIdEqual = ParseInt(txt);
 						continue;
 					case "partnerIdIn":
-						this.PartnerIdIn = txt;
+						this._PartnerIdIn = txt;
 						continue;
 					case "dropFolderIdEqual":
-						this.DropFolderIdEqual = ParseInt(txt);
+						this._DropFolderIdEqual = ParseInt(txt);
 						continue;
 					case "dropFolderIdIn":
-						this.DropFolderIdIn = txt;
+						this._DropFolderIdIn = txt;
 						continue;
 					case "fileNameEqual":
-						this.FileNameEqual = txt;
+						this._FileNameEqual = txt;
 						continue;
 					case "fileNameIn":
-						this.FileNameIn = txt;
+						this._FileNameIn = txt;
 						continue;
 					case "fileNameLike":
-						this.FileNameLike = txt;
+						this._FileNameLike = txt;
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaDropFolderFileStatus)ParseEnum(typeof(KalturaDropFolderFileStatus), txt);
+						this._StatusEqual = (KalturaDropFolderFileStatus)ParseEnum(typeof(KalturaDropFolderFileStatus), txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = txt;
+						this._StatusIn = txt;
 						continue;
 					case "statusNotIn":
-						this.StatusNotIn = txt;
+						this._StatusNotIn = txt;
 						continue;
 					case "parsedSlugEqual":
-						this.ParsedSlugEqual = txt;
+						this._ParsedSlugEqual = txt;
 						continue;
 					case "parsedSlugIn":
-						this.ParsedSlugIn = txt;
+						this._ParsedSlugIn = txt;
 						continue;
 					case "parsedSlugLike":
-						this.ParsedSlugLike = txt;
+						this._ParsedSlugLike = txt;
 						continue;
 					case "parsedFlavorEqual":
-						this.ParsedFlavorEqual = txt;
+						this._ParsedFlavorEqual = txt;
 						continue;
 					case "parsedFlavorIn":
-						this.ParsedFlavorIn = txt;
+						this._ParsedFlavorIn = txt;
 						continue;
 					case "parsedFlavorLike":
-						this.ParsedFlavorLike = txt;
+						this._ParsedFlavorLike = txt;
 						continue;
 					case "leadDropFolderFileIdEqual":
-						this.LeadDropFolderFileIdEqual = ParseInt(txt);
+						this._LeadDropFolderFileIdEqual = ParseInt(txt);
 						continue;
 					case "deletedDropFolderFileIdEqual":
-						this.DeletedDropFolderFileIdEqual = ParseInt(txt);
+						this._DeletedDropFolderFileIdEqual = ParseInt(txt);
 						continue;
 					case "entryIdEqual":
-						this.EntryIdEqual = txt;
+						this._EntryIdEqual = txt;
 						continue;
 					case "errorCodeEqual":
-						this.ErrorCodeEqual = (KalturaDropFolderFileErrorCode)KalturaStringEnum.Parse(typeof(KalturaDropFolderFileErrorCode), txt);
+						this._ErrorCodeEqual = (KalturaDropFolderFileErrorCode)KalturaStringEnum.Parse(typeof(KalturaDropFolderFileErrorCode), txt);
 						continue;
 					case "errorCodeIn":
-						this.ErrorCodeIn = txt;
+						this._ErrorCodeIn = txt;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this.CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this.CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this.UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this.UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 				}
 			}

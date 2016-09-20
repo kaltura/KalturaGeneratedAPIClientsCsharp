@@ -132,28 +132,28 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "protocol":
-						this.Protocol = (KalturaDistributionProtocol)ParseEnum(typeof(KalturaDistributionProtocol), txt);
+						this._Protocol = (KalturaDistributionProtocol)ParseEnum(typeof(KalturaDistributionProtocol), txt);
 						continue;
 					case "serverUrl":
-						this.ServerUrl = txt;
+						this._ServerUrl = txt;
 						continue;
 					case "serverPath":
-						this.ServerPath = txt;
+						this._ServerPath = txt;
 						continue;
 					case "username":
-						this.Username = txt;
+						this._Username = txt;
 						continue;
 					case "password":
-						this.Password = txt;
+						this._Password = txt;
 						continue;
 					case "ftpPassiveMode":
-						this.FtpPassiveMode = ParseBool(txt);
+						this._FtpPassiveMode = ParseBool(txt);
 						continue;
 					case "httpFieldName":
-						this.HttpFieldName = txt;
+						this._HttpFieldName = txt;
 						continue;
 					case "httpFileName":
-						this.HttpFileName = txt;
+						this._HttpFileName = txt;
 						continue;
 				}
 			}

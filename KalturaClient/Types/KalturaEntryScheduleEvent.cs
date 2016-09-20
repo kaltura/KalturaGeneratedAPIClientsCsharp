@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "templateEntryId":
-						this.TemplateEntryId = txt;
+						this._TemplateEntryId = txt;
 						continue;
 					case "entryIds":
-						this.EntryIds = txt;
+						this._EntryIds = txt;
 						continue;
 					case "categoryIds":
-						this.CategoryIds = txt;
+						this._CategoryIds = txt;
 						continue;
 				}
 			}

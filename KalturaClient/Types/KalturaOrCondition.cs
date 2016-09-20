@@ -38,7 +38,7 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
-		public IList<KalturaCondition> Conditions
+		public new IList<KalturaCondition> Conditions
 		{
 			get { return _Conditions; }
 			set 
@@ -62,10 +62,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "conditions":
-						this.Conditions = new List<KalturaCondition>();
+						this._Conditions = new List<KalturaCondition>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Conditions.Add((KalturaCondition)KalturaObjectFactory.Create(arrayNode, "KalturaCondition"));
+							this._Conditions.Add((KalturaCondition)KalturaObjectFactory.Create(arrayNode, "KalturaCondition"));
 						}
 						continue;
 				}

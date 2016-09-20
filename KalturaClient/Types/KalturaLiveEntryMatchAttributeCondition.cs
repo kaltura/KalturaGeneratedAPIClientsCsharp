@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "attribute":
-						this.Attribute = (KalturaLiveEntryMatchAttribute)KalturaStringEnum.Parse(typeof(KalturaLiveEntryMatchAttribute), txt);
+						this._Attribute = (KalturaLiveEntryMatchAttribute)KalturaStringEnum.Parse(typeof(KalturaLiveEntryMatchAttribute), txt);
 						continue;
 				}
 			}

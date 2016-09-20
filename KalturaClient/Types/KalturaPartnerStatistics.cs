@@ -46,56 +46,26 @@ namespace Kaltura
 		public int PackageBandwidthAndStorage
 		{
 			get { return _PackageBandwidthAndStorage; }
-			set 
-			{ 
-				_PackageBandwidthAndStorage = value;
-				OnPropertyChanged("PackageBandwidthAndStorage");
-			}
 		}
 		public float Hosting
 		{
 			get { return _Hosting; }
-			set 
-			{ 
-				_Hosting = value;
-				OnPropertyChanged("Hosting");
-			}
 		}
 		public float Bandwidth
 		{
 			get { return _Bandwidth; }
-			set 
-			{ 
-				_Bandwidth = value;
-				OnPropertyChanged("Bandwidth");
-			}
 		}
 		public int Usage
 		{
 			get { return _Usage; }
-			set 
-			{ 
-				_Usage = value;
-				OnPropertyChanged("Usage");
-			}
 		}
 		public float UsagePercent
 		{
 			get { return _UsagePercent; }
-			set 
-			{ 
-				_UsagePercent = value;
-				OnPropertyChanged("UsagePercent");
-			}
 		}
 		public int ReachedLimitDate
 		{
 			get { return _ReachedLimitDate; }
-			set 
-			{ 
-				_ReachedLimitDate = value;
-				OnPropertyChanged("ReachedLimitDate");
-			}
 		}
 		#endregion
 
@@ -112,22 +82,22 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "packageBandwidthAndStorage":
-						this.PackageBandwidthAndStorage = ParseInt(txt);
+						this._PackageBandwidthAndStorage = ParseInt(txt);
 						continue;
 					case "hosting":
-						this.Hosting = ParseFloat(txt);
+						this._Hosting = ParseFloat(txt);
 						continue;
 					case "bandwidth":
-						this.Bandwidth = ParseFloat(txt);
+						this._Bandwidth = ParseFloat(txt);
 						continue;
 					case "usage":
-						this.Usage = ParseInt(txt);
+						this._Usage = ParseInt(txt);
 						continue;
 					case "usagePercent":
-						this.UsagePercent = ParseFloat(txt);
+						this._UsagePercent = ParseFloat(txt);
 						continue;
 					case "reachedLimitDate":
-						this.ReachedLimitDate = ParseInt(txt);
+						this._ReachedLimitDate = ParseInt(txt);
 						continue;
 				}
 			}

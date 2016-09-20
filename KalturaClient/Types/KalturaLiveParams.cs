@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "streamSuffix":
-						this.StreamSuffix = txt;
+						this._StreamSuffix = txt;
 						continue;
 				}
 			}

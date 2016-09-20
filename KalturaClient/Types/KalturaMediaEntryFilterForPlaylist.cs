@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "limit":
-						this.Limit = ParseInt(txt);
+						this._Limit = ParseInt(txt);
 						continue;
 				}
 			}

@@ -53,20 +53,10 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public KalturaPermissionType Type
 		{
 			get { return _Type; }
-			set 
-			{ 
-				_Type = value;
-				OnPropertyChanged("Type");
-			}
 		}
 		public string Name
 		{
@@ -107,11 +97,6 @@ namespace Kaltura
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public string DependsOnPermissionNames
 		{
@@ -143,20 +128,10 @@ namespace Kaltura
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public string PartnerGroup
 		{
@@ -182,43 +157,43 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "type":
-						this.Type = (KalturaPermissionType)ParseEnum(typeof(KalturaPermissionType), txt);
+						this._Type = (KalturaPermissionType)ParseEnum(typeof(KalturaPermissionType), txt);
 						continue;
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 					case "friendlyName":
-						this.FriendlyName = txt;
+						this._FriendlyName = txt;
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "status":
-						this.Status = (KalturaPermissionStatus)ParseEnum(typeof(KalturaPermissionStatus), txt);
+						this._Status = (KalturaPermissionStatus)ParseEnum(typeof(KalturaPermissionStatus), txt);
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "dependsOnPermissionNames":
-						this.DependsOnPermissionNames = txt;
+						this._DependsOnPermissionNames = txt;
 						continue;
 					case "tags":
-						this.Tags = txt;
+						this._Tags = txt;
 						continue;
 					case "permissionItemsIds":
-						this.PermissionItemsIds = txt;
+						this._PermissionItemsIds = txt;
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "partnerGroup":
-						this.PartnerGroup = txt;
+						this._PartnerGroup = txt;
 						continue;
 				}
 			}

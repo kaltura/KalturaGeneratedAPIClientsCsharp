@@ -48,7 +48,7 @@ namespace Kaltura
 				OnPropertyChanged("TemplateId");
 			}
 		}
-		public IList<KalturaKeyValue> ContentParameters
+		public new IList<KalturaKeyValue> ContentParameters
 		{
 			get { return _ContentParameters; }
 			set 
@@ -72,13 +72,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "templateId":
-						this.TemplateId = ParseInt(txt);
+						this._TemplateId = ParseInt(txt);
 						continue;
 					case "contentParameters":
-						this.ContentParameters = new List<KalturaKeyValue>();
+						this._ContentParameters = new List<KalturaKeyValue>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.ContentParameters.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
+							this._ContentParameters.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
 						}
 						continue;
 				}

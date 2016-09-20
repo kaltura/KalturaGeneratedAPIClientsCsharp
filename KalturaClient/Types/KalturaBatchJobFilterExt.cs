@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "jobTypeAndSubTypeIn":
-						this.JobTypeAndSubTypeIn = txt;
+						this._JobTypeAndSubTypeIn = txt;
 						continue;
 				}
 			}

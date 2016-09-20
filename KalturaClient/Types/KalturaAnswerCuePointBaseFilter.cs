@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "parentIdEqual":
-						this.ParentIdEqual = txt;
+						this._ParentIdEqual = txt;
 						continue;
 					case "parentIdIn":
-						this.ParentIdIn = txt;
+						this._ParentIdIn = txt;
 						continue;
 					case "quizUserEntryIdEqual":
-						this.QuizUserEntryIdEqual = txt;
+						this._QuizUserEntryIdEqual = txt;
 						continue;
 					case "quizUserEntryIdIn":
-						this.QuizUserEntryIdIn = txt;
+						this._QuizUserEntryIdIn = txt;
 						continue;
 				}
 			}

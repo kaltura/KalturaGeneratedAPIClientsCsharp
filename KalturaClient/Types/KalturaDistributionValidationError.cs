@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "action":
-						this.Action = (KalturaDistributionAction)ParseEnum(typeof(KalturaDistributionAction), txt);
+						this._Action = (KalturaDistributionAction)ParseEnum(typeof(KalturaDistributionAction), txt);
 						continue;
 					case "errorType":
-						this.ErrorType = (KalturaDistributionErrorType)ParseEnum(typeof(KalturaDistributionErrorType), txt);
+						this._ErrorType = (KalturaDistributionErrorType)ParseEnum(typeof(KalturaDistributionErrorType), txt);
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 				}
 			}

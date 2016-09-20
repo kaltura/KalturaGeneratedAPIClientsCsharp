@@ -122,25 +122,25 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "genericProviderId":
-						this.GenericProviderId = ParseInt(txt);
+						this._GenericProviderId = ParseInt(txt);
 						continue;
 					case "submitAction":
-						this.SubmitAction = (KalturaGenericDistributionProfileAction)KalturaObjectFactory.Create(propertyNode, "KalturaGenericDistributionProfileAction");
+						this._SubmitAction = (KalturaGenericDistributionProfileAction)KalturaObjectFactory.Create(propertyNode, "KalturaGenericDistributionProfileAction");
 						continue;
 					case "updateAction":
-						this.UpdateAction = (KalturaGenericDistributionProfileAction)KalturaObjectFactory.Create(propertyNode, "KalturaGenericDistributionProfileAction");
+						this._UpdateAction = (KalturaGenericDistributionProfileAction)KalturaObjectFactory.Create(propertyNode, "KalturaGenericDistributionProfileAction");
 						continue;
 					case "deleteAction":
-						this.DeleteAction = (KalturaGenericDistributionProfileAction)KalturaObjectFactory.Create(propertyNode, "KalturaGenericDistributionProfileAction");
+						this._DeleteAction = (KalturaGenericDistributionProfileAction)KalturaObjectFactory.Create(propertyNode, "KalturaGenericDistributionProfileAction");
 						continue;
 					case "fetchReportAction":
-						this.FetchReportAction = (KalturaGenericDistributionProfileAction)KalturaObjectFactory.Create(propertyNode, "KalturaGenericDistributionProfileAction");
+						this._FetchReportAction = (KalturaGenericDistributionProfileAction)KalturaObjectFactory.Create(propertyNode, "KalturaGenericDistributionProfileAction");
 						continue;
 					case "updateRequiredEntryFields":
-						this.UpdateRequiredEntryFields = txt;
+						this._UpdateRequiredEntryFields = txt;
 						continue;
 					case "updateRequiredMetadataXPaths":
-						this.UpdateRequiredMetadataXPaths = txt;
+						this._UpdateRequiredMetadataXPaths = txt;
 						continue;
 				}
 			}

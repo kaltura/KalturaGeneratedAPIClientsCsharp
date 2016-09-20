@@ -132,28 +132,28 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "audience":
-						this.Audience = ParseInt(txt);
+						this._Audience = ParseInt(txt);
 						continue;
 					case "dvrAudience":
-						this.DvrAudience = ParseInt(txt);
+						this._DvrAudience = ParseInt(txt);
 						continue;
 					case "avgBitrate":
-						this.AvgBitrate = ParseFloat(txt);
+						this._AvgBitrate = ParseFloat(txt);
 						continue;
 					case "bufferTime":
-						this.BufferTime = ParseInt(txt);
+						this._BufferTime = ParseInt(txt);
 						continue;
 					case "plays":
-						this.Plays = ParseInt(txt);
+						this._Plays = ParseInt(txt);
 						continue;
 					case "secondsViewed":
-						this.SecondsViewed = ParseInt(txt);
+						this._SecondsViewed = ParseInt(txt);
 						continue;
 					case "startEvent":
-						this.StartEvent = ParseLong(txt);
+						this._StartEvent = ParseLong(txt);
 						continue;
 					case "timestamp":
-						this.Timestamp = ParseInt(txt);
+						this._Timestamp = ParseInt(txt);
 						continue;
 				}
 			}

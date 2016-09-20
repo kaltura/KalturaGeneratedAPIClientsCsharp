@@ -102,19 +102,19 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "keyWords":
-						this.KeyWords = txt;
+						this._KeyWords = txt;
 						continue;
 					case "searchSource":
-						this.SearchSource = (KalturaSearchProviderType)ParseEnum(typeof(KalturaSearchProviderType), txt);
+						this._SearchSource = (KalturaSearchProviderType)ParseEnum(typeof(KalturaSearchProviderType), txt);
 						continue;
 					case "mediaType":
-						this.MediaType = (KalturaMediaType)ParseEnum(typeof(KalturaMediaType), txt);
+						this._MediaType = (KalturaMediaType)ParseEnum(typeof(KalturaMediaType), txt);
 						continue;
 					case "extraData":
-						this.ExtraData = txt;
+						this._ExtraData = txt;
 						continue;
 					case "authData":
-						this.AuthData = txt;
+						this._AuthData = txt;
 						continue;
 				}
 			}

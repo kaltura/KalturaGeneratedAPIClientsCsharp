@@ -43,29 +43,14 @@ namespace Kaltura
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public string Ks
 		{
 			get { return _Ks; }
-			set 
-			{ 
-				_Ks = value;
-				OnPropertyChanged("Ks");
-			}
 		}
 		public string UserId
 		{
 			get { return _UserId; }
-			set 
-			{ 
-				_UserId = value;
-				OnPropertyChanged("UserId");
-			}
 		}
 		#endregion
 
@@ -82,13 +67,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "ks":
-						this.Ks = txt;
+						this._Ks = txt;
 						continue;
 					case "userId":
-						this.UserId = txt;
+						this._UserId = txt;
 						continue;
 				}
 			}

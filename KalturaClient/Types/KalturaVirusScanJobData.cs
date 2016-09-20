@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "srcFilePath":
-						this.SrcFilePath = txt;
+						this._SrcFilePath = txt;
 						continue;
 					case "flavorAssetId":
-						this.FlavorAssetId = txt;
+						this._FlavorAssetId = txt;
 						continue;
 					case "scanResult":
-						this.ScanResult = (KalturaVirusScanJobResult)ParseEnum(typeof(KalturaVirusScanJobResult), txt);
+						this._ScanResult = (KalturaVirusScanJobResult)ParseEnum(typeof(KalturaVirusScanJobResult), txt);
 						continue;
 					case "virusFoundAction":
-						this.VirusFoundAction = (KalturaVirusFoundAction)ParseEnum(typeof(KalturaVirusFoundAction), txt);
+						this._VirusFoundAction = (KalturaVirusFoundAction)ParseEnum(typeof(KalturaVirusFoundAction), txt);
 						continue;
 				}
 			}

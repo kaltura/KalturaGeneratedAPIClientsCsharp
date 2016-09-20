@@ -44,11 +44,6 @@ namespace Kaltura
 		public KalturaYahooSyndicationFeedCategories Category
 		{
 			get { return _Category; }
-			set 
-			{ 
-				_Category = value;
-				OnPropertyChanged("Category");
-			}
 		}
 		public KalturaYahooSyndicationFeedAdultValues AdultContent
 		{
@@ -92,16 +87,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "category":
-						this.Category = (KalturaYahooSyndicationFeedCategories)KalturaStringEnum.Parse(typeof(KalturaYahooSyndicationFeedCategories), txt);
+						this._Category = (KalturaYahooSyndicationFeedCategories)KalturaStringEnum.Parse(typeof(KalturaYahooSyndicationFeedCategories), txt);
 						continue;
 					case "adultContent":
-						this.AdultContent = (KalturaYahooSyndicationFeedAdultValues)KalturaStringEnum.Parse(typeof(KalturaYahooSyndicationFeedAdultValues), txt);
+						this._AdultContent = (KalturaYahooSyndicationFeedAdultValues)KalturaStringEnum.Parse(typeof(KalturaYahooSyndicationFeedAdultValues), txt);
 						continue;
 					case "feedDescription":
-						this.FeedDescription = txt;
+						this._FeedDescription = txt;
 						continue;
 					case "feedLandingPage":
-						this.FeedLandingPage = txt;
+						this._FeedLandingPage = txt;
 						continue;
 				}
 			}

@@ -42,11 +42,6 @@ namespace Kaltura
 		public KalturaObjectTaskType Type
 		{
 			get { return _Type; }
-			set 
-			{ 
-				_Type = value;
-				OnPropertyChanged("Type");
-			}
 		}
 		public bool? StopProcessingOnError
 		{
@@ -72,10 +67,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "type":
-						this.Type = (KalturaObjectTaskType)KalturaStringEnum.Parse(typeof(KalturaObjectTaskType), txt);
+						this._Type = (KalturaObjectTaskType)KalturaStringEnum.Parse(typeof(KalturaObjectTaskType), txt);
 						continue;
 					case "stopProcessingOnError":
-						this.StopProcessingOnError = ParseBool(txt);
+						this._StopProcessingOnError = ParseBool(txt);
 						continue;
 				}
 			}

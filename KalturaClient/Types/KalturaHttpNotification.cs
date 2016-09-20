@@ -122,25 +122,25 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "object":
-						this.Object = (KalturaObjectBase)KalturaObjectFactory.Create(propertyNode, "KalturaObjectBase");
+						this._Object = (KalturaObjectBase)KalturaObjectFactory.Create(propertyNode, "KalturaObjectBase");
 						continue;
 					case "eventObjectType":
-						this.EventObjectType = (KalturaEventNotificationEventObjectType)KalturaStringEnum.Parse(typeof(KalturaEventNotificationEventObjectType), txt);
+						this._EventObjectType = (KalturaEventNotificationEventObjectType)KalturaStringEnum.Parse(typeof(KalturaEventNotificationEventObjectType), txt);
 						continue;
 					case "eventNotificationJobId":
-						this.EventNotificationJobId = ParseLong(txt);
+						this._EventNotificationJobId = ParseLong(txt);
 						continue;
 					case "templateId":
-						this.TemplateId = ParseInt(txt);
+						this._TemplateId = ParseInt(txt);
 						continue;
 					case "templateName":
-						this.TemplateName = txt;
+						this._TemplateName = txt;
 						continue;
 					case "templateSystemName":
-						this.TemplateSystemName = txt;
+						this._TemplateSystemName = txt;
 						continue;
 					case "eventType":
-						this.EventType = (KalturaEventNotificationEventType)KalturaStringEnum.Parse(typeof(KalturaEventNotificationEventType), txt);
+						this._EventType = (KalturaEventNotificationEventType)KalturaStringEnum.Parse(typeof(KalturaEventNotificationEventType), txt);
 						continue;
 				}
 			}

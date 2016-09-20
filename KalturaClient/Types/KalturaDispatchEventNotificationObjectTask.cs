@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "eventNotificationTemplateId":
-						this.EventNotificationTemplateId = ParseInt(txt);
+						this._EventNotificationTemplateId = ParseInt(txt);
 						continue;
 				}
 			}

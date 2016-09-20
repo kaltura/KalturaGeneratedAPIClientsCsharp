@@ -58,7 +58,7 @@ namespace Kaltura
 				OnPropertyChanged("ThumbAssetFilePath");
 			}
 		}
-		public IList<KalturaYouTubeApiCaptionDistributionInfo> CaptionsInfo
+		public new IList<KalturaYouTubeApiCaptionDistributionInfo> CaptionsInfo
 		{
 			get { return _CaptionsInfo; }
 			set 
@@ -82,16 +82,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "videoAssetFilePath":
-						this.VideoAssetFilePath = txt;
+						this._VideoAssetFilePath = txt;
 						continue;
 					case "thumbAssetFilePath":
-						this.ThumbAssetFilePath = txt;
+						this._ThumbAssetFilePath = txt;
 						continue;
 					case "captionsInfo":
-						this.CaptionsInfo = new List<KalturaYouTubeApiCaptionDistributionInfo>();
+						this._CaptionsInfo = new List<KalturaYouTubeApiCaptionDistributionInfo>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.CaptionsInfo.Add((KalturaYouTubeApiCaptionDistributionInfo)KalturaObjectFactory.Create(arrayNode, "KalturaYouTubeApiCaptionDistributionInfo"));
+							this._CaptionsInfo.Add((KalturaYouTubeApiCaptionDistributionInfo)KalturaObjectFactory.Create(arrayNode, "KalturaYouTubeApiCaptionDistributionInfo"));
 						}
 						continue;
 				}

@@ -57,20 +57,10 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public string CreatedBy
 		{
@@ -84,11 +74,6 @@ namespace Kaltura
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public string UpdatedBy
 		{
@@ -222,55 +207,55 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "createdBy":
-						this.CreatedBy = txt;
+						this._CreatedBy = txt;
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "updatedBy":
-						this.UpdatedBy = txt;
+						this._UpdatedBy = txt;
 						continue;
 					case "createdById":
-						this.CreatedById = ParseInt(txt);
+						this._CreatedById = ParseInt(txt);
 						continue;
 					case "schedulerId":
-						this.SchedulerId = ParseInt(txt);
+						this._SchedulerId = ParseInt(txt);
 						continue;
 					case "workerId":
-						this.WorkerId = ParseInt(txt);
+						this._WorkerId = ParseInt(txt);
 						continue;
 					case "workerConfiguredId":
-						this.WorkerConfiguredId = ParseInt(txt);
+						this._WorkerConfiguredId = ParseInt(txt);
 						continue;
 					case "workerName":
-						this.WorkerName = ParseInt(txt);
+						this._WorkerName = ParseInt(txt);
 						continue;
 					case "batchIndex":
-						this.BatchIndex = ParseInt(txt);
+						this._BatchIndex = ParseInt(txt);
 						continue;
 					case "type":
-						this.Type = (KalturaControlPanelCommandType)ParseEnum(typeof(KalturaControlPanelCommandType), txt);
+						this._Type = (KalturaControlPanelCommandType)ParseEnum(typeof(KalturaControlPanelCommandType), txt);
 						continue;
 					case "targetType":
-						this.TargetType = (KalturaControlPanelCommandTargetType)ParseEnum(typeof(KalturaControlPanelCommandTargetType), txt);
+						this._TargetType = (KalturaControlPanelCommandTargetType)ParseEnum(typeof(KalturaControlPanelCommandTargetType), txt);
 						continue;
 					case "status":
-						this.Status = (KalturaControlPanelCommandStatus)ParseEnum(typeof(KalturaControlPanelCommandStatus), txt);
+						this._Status = (KalturaControlPanelCommandStatus)ParseEnum(typeof(KalturaControlPanelCommandStatus), txt);
 						continue;
 					case "cause":
-						this.Cause = txt;
+						this._Cause = txt;
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "errorDescription":
-						this.ErrorDescription = txt;
+						this._ErrorDescription = txt;
 						continue;
 				}
 			}

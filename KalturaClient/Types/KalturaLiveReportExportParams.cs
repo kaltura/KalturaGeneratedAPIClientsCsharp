@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "entryIds":
-						this.EntryIds = txt;
+						this._EntryIds = txt;
 						continue;
 					case "recpientEmail":
-						this.RecpientEmail = txt;
+						this._RecpientEmail = txt;
 						continue;
 					case "timeZoneOffset":
-						this.TimeZoneOffset = ParseInt(txt);
+						this._TimeZoneOffset = ParseInt(txt);
 						continue;
 					case "applicationUrlTemplate":
-						this.ApplicationUrlTemplate = txt;
+						this._ApplicationUrlTemplate = txt;
 						continue;
 				}
 			}

@@ -102,19 +102,19 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "asset":
-						this.Asset = (KalturaCaptionAsset)KalturaObjectFactory.Create(propertyNode, "KalturaCaptionAsset");
+						this._Asset = (KalturaCaptionAsset)KalturaObjectFactory.Create(propertyNode, "KalturaCaptionAsset");
 						continue;
 					case "entry":
-						this.Entry = (KalturaBaseEntry)KalturaObjectFactory.Create(propertyNode, "KalturaBaseEntry");
+						this._Entry = (KalturaBaseEntry)KalturaObjectFactory.Create(propertyNode, "KalturaBaseEntry");
 						continue;
 					case "startTime":
-						this.StartTime = ParseInt(txt);
+						this._StartTime = ParseInt(txt);
 						continue;
 					case "endTime":
-						this.EndTime = ParseInt(txt);
+						this._EndTime = ParseInt(txt);
 						continue;
 					case "content":
-						this.Content = txt;
+						this._Content = txt;
 						continue;
 				}
 			}

@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "flavorParamsIdEqual":
-						this.FlavorParamsIdEqual = ParseInt(txt);
+						this._FlavorParamsIdEqual = ParseInt(txt);
 						continue;
 					case "flavorParamsVersionEqual":
-						this.FlavorParamsVersionEqual = txt;
+						this._FlavorParamsVersionEqual = txt;
 						continue;
 					case "flavorAssetIdEqual":
-						this.FlavorAssetIdEqual = txt;
+						this._FlavorAssetIdEqual = txt;
 						continue;
 					case "flavorAssetVersionEqual":
-						this.FlavorAssetVersionEqual = txt;
+						this._FlavorAssetVersionEqual = txt;
 						continue;
 				}
 			}

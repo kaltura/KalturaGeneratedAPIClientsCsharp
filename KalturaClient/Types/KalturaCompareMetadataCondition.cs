@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "xPath":
-						this.XPath = txt;
+						this._XPath = txt;
 						continue;
 					case "profileId":
-						this.ProfileId = ParseInt(txt);
+						this._ProfileId = ParseInt(txt);
 						continue;
 					case "profileSystemName":
-						this.ProfileSystemName = txt;
+						this._ProfileSystemName = txt;
 						continue;
 				}
 			}

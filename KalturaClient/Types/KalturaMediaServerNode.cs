@@ -49,7 +49,7 @@ namespace Kaltura
 				OnPropertyChanged("ApplicationName");
 			}
 		}
-		public IList<KalturaKeyValue> MediaServerPortConfig
+		public new IList<KalturaKeyValue> MediaServerPortConfig
 		{
 			get { return _MediaServerPortConfig; }
 			set 
@@ -58,7 +58,7 @@ namespace Kaltura
 				OnPropertyChanged("MediaServerPortConfig");
 			}
 		}
-		public IList<KalturaKeyValue> MediaServerPlaybackDomainConfig
+		public new IList<KalturaKeyValue> MediaServerPlaybackDomainConfig
 		{
 			get { return _MediaServerPlaybackDomainConfig; }
 			set 
@@ -82,20 +82,20 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "applicationName":
-						this.ApplicationName = txt;
+						this._ApplicationName = txt;
 						continue;
 					case "mediaServerPortConfig":
-						this.MediaServerPortConfig = new List<KalturaKeyValue>();
+						this._MediaServerPortConfig = new List<KalturaKeyValue>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.MediaServerPortConfig.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
+							this._MediaServerPortConfig.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
 						}
 						continue;
 					case "mediaServerPlaybackDomainConfig":
-						this.MediaServerPlaybackDomainConfig = new List<KalturaKeyValue>();
+						this._MediaServerPlaybackDomainConfig = new List<KalturaKeyValue>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.MediaServerPlaybackDomainConfig.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
+							this._MediaServerPlaybackDomainConfig.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
 						}
 						continue;
 				}

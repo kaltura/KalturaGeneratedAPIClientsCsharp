@@ -102,19 +102,19 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "srcXslPath":
-						this.SrcXslPath = txt;
+						this._SrcXslPath = txt;
 						continue;
 					case "srcVersion":
-						this.SrcVersion = ParseInt(txt);
+						this._SrcVersion = ParseInt(txt);
 						continue;
 					case "destVersion":
-						this.DestVersion = ParseInt(txt);
+						this._DestVersion = ParseInt(txt);
 						continue;
 					case "destXsdPath":
-						this.DestXsdPath = txt;
+						this._DestXsdPath = txt;
 						continue;
 					case "metadataProfileId":
-						this.MetadataProfileId = ParseInt(txt);
+						this._MetadataProfileId = ParseInt(txt);
 						continue;
 				}
 			}

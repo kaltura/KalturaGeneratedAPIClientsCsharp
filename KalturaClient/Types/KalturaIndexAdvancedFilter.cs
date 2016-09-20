@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "indexIdGreaterThan":
-						this.IndexIdGreaterThan = ParseInt(txt);
+						this._IndexIdGreaterThan = ParseInt(txt);
 						continue;
 					case "depthGreaterThanEqual":
-						this.DepthGreaterThanEqual = ParseInt(txt);
+						this._DepthGreaterThanEqual = ParseInt(txt);
 						continue;
 				}
 			}

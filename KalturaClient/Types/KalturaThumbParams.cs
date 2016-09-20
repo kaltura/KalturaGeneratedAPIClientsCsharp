@@ -222,55 +222,55 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "cropType":
-						this.CropType = (KalturaThumbCropType)ParseEnum(typeof(KalturaThumbCropType), txt);
+						this._CropType = (KalturaThumbCropType)ParseEnum(typeof(KalturaThumbCropType), txt);
 						continue;
 					case "quality":
-						this.Quality = ParseInt(txt);
+						this._Quality = ParseInt(txt);
 						continue;
 					case "cropX":
-						this.CropX = ParseInt(txt);
+						this._CropX = ParseInt(txt);
 						continue;
 					case "cropY":
-						this.CropY = ParseInt(txt);
+						this._CropY = ParseInt(txt);
 						continue;
 					case "cropWidth":
-						this.CropWidth = ParseInt(txt);
+						this._CropWidth = ParseInt(txt);
 						continue;
 					case "cropHeight":
-						this.CropHeight = ParseInt(txt);
+						this._CropHeight = ParseInt(txt);
 						continue;
 					case "videoOffset":
-						this.VideoOffset = ParseFloat(txt);
+						this._VideoOffset = ParseFloat(txt);
 						continue;
 					case "width":
-						this.Width = ParseInt(txt);
+						this._Width = ParseInt(txt);
 						continue;
 					case "height":
-						this.Height = ParseInt(txt);
+						this._Height = ParseInt(txt);
 						continue;
 					case "scaleWidth":
-						this.ScaleWidth = ParseFloat(txt);
+						this._ScaleWidth = ParseFloat(txt);
 						continue;
 					case "scaleHeight":
-						this.ScaleHeight = ParseFloat(txt);
+						this._ScaleHeight = ParseFloat(txt);
 						continue;
 					case "backgroundColor":
-						this.BackgroundColor = txt;
+						this._BackgroundColor = txt;
 						continue;
 					case "sourceParamsId":
-						this.SourceParamsId = ParseInt(txt);
+						this._SourceParamsId = ParseInt(txt);
 						continue;
 					case "format":
-						this.Format = (KalturaContainerFormat)KalturaStringEnum.Parse(typeof(KalturaContainerFormat), txt);
+						this._Format = (KalturaContainerFormat)KalturaStringEnum.Parse(typeof(KalturaContainerFormat), txt);
 						continue;
 					case "density":
-						this.Density = ParseInt(txt);
+						this._Density = ParseInt(txt);
 						continue;
 					case "stripProfiles":
-						this.StripProfiles = ParseBool(txt);
+						this._StripProfiles = ParseBool(txt);
 						continue;
 					case "videoOffsetInPercentage":
-						this.VideoOffsetInPercentage = ParseInt(txt);
+						this._VideoOffsetInPercentage = ParseInt(txt);
 						continue;
 				}
 			}

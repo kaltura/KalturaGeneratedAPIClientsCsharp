@@ -72,7 +72,7 @@ namespace Kaltura
 				OnPropertyChanged("Message");
 			}
 		}
-		public IList<KalturaRuleAction> Actions
+		public new IList<KalturaRuleAction> Actions
 		{
 			get { return _Actions; }
 			set 
@@ -81,7 +81,7 @@ namespace Kaltura
 				OnPropertyChanged("Actions");
 			}
 		}
-		public IList<KalturaCondition> Conditions
+		public new IList<KalturaCondition> Conditions
 		{
 			get { return _Conditions; }
 			set 
@@ -90,7 +90,7 @@ namespace Kaltura
 				OnPropertyChanged("Conditions");
 			}
 		}
-		public IList<KalturaContextTypeHolder> Contexts
+		public new IList<KalturaContextTypeHolder> Contexts
 		{
 			get { return _Contexts; }
 			set 
@@ -132,40 +132,40 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "ruleData":
-						this.RuleData = txt;
+						this._RuleData = txt;
 						continue;
 					case "message":
-						this.Message = txt;
+						this._Message = txt;
 						continue;
 					case "actions":
-						this.Actions = new List<KalturaRuleAction>();
+						this._Actions = new List<KalturaRuleAction>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Actions.Add((KalturaRuleAction)KalturaObjectFactory.Create(arrayNode, "KalturaRuleAction"));
+							this._Actions.Add((KalturaRuleAction)KalturaObjectFactory.Create(arrayNode, "KalturaRuleAction"));
 						}
 						continue;
 					case "conditions":
-						this.Conditions = new List<KalturaCondition>();
+						this._Conditions = new List<KalturaCondition>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Conditions.Add((KalturaCondition)KalturaObjectFactory.Create(arrayNode, "KalturaCondition"));
+							this._Conditions.Add((KalturaCondition)KalturaObjectFactory.Create(arrayNode, "KalturaCondition"));
 						}
 						continue;
 					case "contexts":
-						this.Contexts = new List<KalturaContextTypeHolder>();
+						this._Contexts = new List<KalturaContextTypeHolder>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Contexts.Add((KalturaContextTypeHolder)KalturaObjectFactory.Create(arrayNode, "KalturaContextTypeHolder"));
+							this._Contexts.Add((KalturaContextTypeHolder)KalturaObjectFactory.Create(arrayNode, "KalturaContextTypeHolder"));
 						}
 						continue;
 					case "stopProcessing":
-						this.StopProcessing = ParseBool(txt);
+						this._StopProcessing = ParseBool(txt);
 						continue;
 					case "forceAdminValidation":
-						this.ForceAdminValidation = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._ForceAdminValidation = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 				}
 			}

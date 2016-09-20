@@ -63,29 +63,14 @@ namespace Kaltura
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public string CategoryFullIds
 		{
 			get { return _CategoryFullIds; }
-			set 
-			{ 
-				_CategoryFullIds = value;
-				OnPropertyChanged("CategoryFullIds");
-			}
 		}
 		public KalturaCategoryEntryStatus Status
 		{
 			get { return _Status; }
-			set 
-			{ 
-				_Status = value;
-				OnPropertyChanged("Status");
-			}
 		}
 		#endregion
 
@@ -102,19 +87,19 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "categoryId":
-						this.CategoryId = ParseInt(txt);
+						this._CategoryId = ParseInt(txt);
 						continue;
 					case "entryId":
-						this.EntryId = txt;
+						this._EntryId = txt;
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "categoryFullIds":
-						this.CategoryFullIds = txt;
+						this._CategoryFullIds = txt;
 						continue;
 					case "status":
-						this.Status = (KalturaCategoryEntryStatus)ParseEnum(typeof(KalturaCategoryEntryStatus), txt);
+						this._Status = (KalturaCategoryEntryStatus)ParseEnum(typeof(KalturaCategoryEntryStatus), txt);
 						continue;
 				}
 			}

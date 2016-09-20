@@ -64,20 +64,10 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public int DropFolderId
 		{
@@ -109,29 +99,14 @@ namespace Kaltura
 		public int FileSizeLastSetAt
 		{
 			get { return _FileSizeLastSetAt; }
-			set 
-			{ 
-				_FileSizeLastSetAt = value;
-				OnPropertyChanged("FileSizeLastSetAt");
-			}
 		}
 		public KalturaDropFolderFileStatus Status
 		{
 			get { return _Status; }
-			set 
-			{ 
-				_Status = value;
-				OnPropertyChanged("Status");
-			}
 		}
 		public KalturaDropFolderType Type
 		{
 			get { return _Type; }
-			set 
-			{ 
-				_Type = value;
-				OnPropertyChanged("Type");
-			}
 		}
 		public string ParsedSlug
 		{
@@ -217,20 +192,10 @@ namespace Kaltura
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public int UploadStartDetectedAt
 		{
@@ -271,11 +236,6 @@ namespace Kaltura
 		public int BatchJobId
 		{
 			get { return _BatchJobId; }
-			set 
-			{ 
-				_BatchJobId = value;
-				OnPropertyChanged("BatchJobId");
-			}
 		}
 		#endregion
 
@@ -292,76 +252,76 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "dropFolderId":
-						this.DropFolderId = ParseInt(txt);
+						this._DropFolderId = ParseInt(txt);
 						continue;
 					case "fileName":
-						this.FileName = txt;
+						this._FileName = txt;
 						continue;
 					case "fileSize":
-						this.FileSize = ParseFloat(txt);
+						this._FileSize = ParseFloat(txt);
 						continue;
 					case "fileSizeLastSetAt":
-						this.FileSizeLastSetAt = ParseInt(txt);
+						this._FileSizeLastSetAt = ParseInt(txt);
 						continue;
 					case "status":
-						this.Status = (KalturaDropFolderFileStatus)ParseEnum(typeof(KalturaDropFolderFileStatus), txt);
+						this._Status = (KalturaDropFolderFileStatus)ParseEnum(typeof(KalturaDropFolderFileStatus), txt);
 						continue;
 					case "type":
-						this.Type = (KalturaDropFolderType)KalturaStringEnum.Parse(typeof(KalturaDropFolderType), txt);
+						this._Type = (KalturaDropFolderType)KalturaStringEnum.Parse(typeof(KalturaDropFolderType), txt);
 						continue;
 					case "parsedSlug":
-						this.ParsedSlug = txt;
+						this._ParsedSlug = txt;
 						continue;
 					case "parsedFlavor":
-						this.ParsedFlavor = txt;
+						this._ParsedFlavor = txt;
 						continue;
 					case "parsedUserId":
-						this.ParsedUserId = txt;
+						this._ParsedUserId = txt;
 						continue;
 					case "leadDropFolderFileId":
-						this.LeadDropFolderFileId = ParseInt(txt);
+						this._LeadDropFolderFileId = ParseInt(txt);
 						continue;
 					case "deletedDropFolderFileId":
-						this.DeletedDropFolderFileId = ParseInt(txt);
+						this._DeletedDropFolderFileId = ParseInt(txt);
 						continue;
 					case "entryId":
-						this.EntryId = txt;
+						this._EntryId = txt;
 						continue;
 					case "errorCode":
-						this.ErrorCode = (KalturaDropFolderFileErrorCode)KalturaStringEnum.Parse(typeof(KalturaDropFolderFileErrorCode), txt);
+						this._ErrorCode = (KalturaDropFolderFileErrorCode)KalturaStringEnum.Parse(typeof(KalturaDropFolderFileErrorCode), txt);
 						continue;
 					case "errorDescription":
-						this.ErrorDescription = txt;
+						this._ErrorDescription = txt;
 						continue;
 					case "lastModificationTime":
-						this.LastModificationTime = txt;
+						this._LastModificationTime = txt;
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "uploadStartDetectedAt":
-						this.UploadStartDetectedAt = ParseInt(txt);
+						this._UploadStartDetectedAt = ParseInt(txt);
 						continue;
 					case "uploadEndDetectedAt":
-						this.UploadEndDetectedAt = ParseInt(txt);
+						this._UploadEndDetectedAt = ParseInt(txt);
 						continue;
 					case "importStartedAt":
-						this.ImportStartedAt = ParseInt(txt);
+						this._ImportStartedAt = ParseInt(txt);
 						continue;
 					case "importEndedAt":
-						this.ImportEndedAt = ParseInt(txt);
+						this._ImportEndedAt = ParseInt(txt);
 						continue;
 					case "batchJobId":
-						this.BatchJobId = ParseInt(txt);
+						this._BatchJobId = ParseInt(txt);
 						continue;
 				}
 			}

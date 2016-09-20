@@ -50,20 +50,10 @@ namespace Kaltura
 		public int ConversionProfileId
 		{
 			get { return _ConversionProfileId; }
-			set 
-			{ 
-				_ConversionProfileId = value;
-				OnPropertyChanged("ConversionProfileId");
-			}
 		}
 		public int AssetParamsId
 		{
 			get { return _AssetParamsId; }
-			set 
-			{ 
-				_AssetParamsId = value;
-				OnPropertyChanged("AssetParamsId");
-			}
 		}
 		public KalturaFlavorReadyBehaviorType ReadyBehavior
 		{
@@ -152,34 +142,34 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "conversionProfileId":
-						this.ConversionProfileId = ParseInt(txt);
+						this._ConversionProfileId = ParseInt(txt);
 						continue;
 					case "assetParamsId":
-						this.AssetParamsId = ParseInt(txt);
+						this._AssetParamsId = ParseInt(txt);
 						continue;
 					case "readyBehavior":
-						this.ReadyBehavior = (KalturaFlavorReadyBehaviorType)ParseEnum(typeof(KalturaFlavorReadyBehaviorType), txt);
+						this._ReadyBehavior = (KalturaFlavorReadyBehaviorType)ParseEnum(typeof(KalturaFlavorReadyBehaviorType), txt);
 						continue;
 					case "origin":
-						this.Origin = (KalturaAssetParamsOrigin)ParseEnum(typeof(KalturaAssetParamsOrigin), txt);
+						this._Origin = (KalturaAssetParamsOrigin)ParseEnum(typeof(KalturaAssetParamsOrigin), txt);
 						continue;
 					case "systemName":
-						this.SystemName = txt;
+						this._SystemName = txt;
 						continue;
 					case "forceNoneComplied":
-						this.ForceNoneComplied = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._ForceNoneComplied = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "deletePolicy":
-						this.DeletePolicy = (KalturaAssetParamsDeletePolicy)ParseEnum(typeof(KalturaAssetParamsDeletePolicy), txt);
+						this._DeletePolicy = (KalturaAssetParamsDeletePolicy)ParseEnum(typeof(KalturaAssetParamsDeletePolicy), txt);
 						continue;
 					case "isEncrypted":
-						this.IsEncrypted = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._IsEncrypted = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "contentAwareness":
-						this.ContentAwareness = ParseFloat(txt);
+						this._ContentAwareness = ParseFloat(txt);
 						continue;
 					case "twoPass":
-						this.TwoPass = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._TwoPass = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 				}
 			}

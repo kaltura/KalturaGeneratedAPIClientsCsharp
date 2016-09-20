@@ -122,25 +122,25 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "limit":
-						this.Limit = ParseInt(txt);
+						this._Limit = ParseInt(txt);
 						continue;
 					case "cachedObjectType":
-						this.CachedObjectType = txt;
+						this._CachedObjectType = txt;
 						continue;
 					case "objectId":
-						this.ObjectId = txt;
+						this._ObjectId = txt;
 						continue;
 					case "startObjectKey":
-						this.StartObjectKey = txt;
+						this._StartObjectKey = txt;
 						continue;
 					case "endObjectKey":
-						this.EndObjectKey = txt;
+						this._EndObjectKey = txt;
 						continue;
 					case "jobCreatedAt":
-						this.JobCreatedAt = ParseInt(txt);
+						this._JobCreatedAt = ParseInt(txt);
 						continue;
 					case "isFirstLoop":
-						this.IsFirstLoop = ParseBool(txt);
+						this._IsFirstLoop = ParseBool(txt);
 						continue;
 				}
 			}

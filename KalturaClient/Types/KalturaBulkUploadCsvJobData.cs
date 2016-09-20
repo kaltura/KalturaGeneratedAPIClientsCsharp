@@ -42,13 +42,8 @@ namespace Kaltura
 		public KalturaBulkUploadCsvVersion CsvVersion
 		{
 			get { return _CsvVersion; }
-			set 
-			{ 
-				_CsvVersion = value;
-				OnPropertyChanged("CsvVersion");
-			}
 		}
-		public IList<KalturaString> Columns
+		public new IList<KalturaString> Columns
 		{
 			get { return _Columns; }
 			set 
@@ -72,13 +67,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "csvVersion":
-						this.CsvVersion = (KalturaBulkUploadCsvVersion)ParseEnum(typeof(KalturaBulkUploadCsvVersion), txt);
+						this._CsvVersion = (KalturaBulkUploadCsvVersion)ParseEnum(typeof(KalturaBulkUploadCsvVersion), txt);
 						continue;
 					case "columns":
-						this.Columns = new List<KalturaString>();
+						this._Columns = new List<KalturaString>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Columns.Add((KalturaString)KalturaObjectFactory.Create(arrayNode, "KalturaString"));
+							this._Columns.Add((KalturaString)KalturaObjectFactory.Create(arrayNode, "KalturaString"));
 						}
 						continue;
 				}

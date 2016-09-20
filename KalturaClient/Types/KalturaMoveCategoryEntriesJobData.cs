@@ -122,25 +122,25 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "srcCategoryId":
-						this.SrcCategoryId = ParseInt(txt);
+						this._SrcCategoryId = ParseInt(txt);
 						continue;
 					case "destCategoryId":
-						this.DestCategoryId = ParseInt(txt);
+						this._DestCategoryId = ParseInt(txt);
 						continue;
 					case "lastMovedCategoryId":
-						this.LastMovedCategoryId = ParseInt(txt);
+						this._LastMovedCategoryId = ParseInt(txt);
 						continue;
 					case "lastMovedCategoryPageIndex":
-						this.LastMovedCategoryPageIndex = ParseInt(txt);
+						this._LastMovedCategoryPageIndex = ParseInt(txt);
 						continue;
 					case "lastMovedCategoryEntryPageIndex":
-						this.LastMovedCategoryEntryPageIndex = ParseInt(txt);
+						this._LastMovedCategoryEntryPageIndex = ParseInt(txt);
 						continue;
 					case "moveFromChildren":
-						this.MoveFromChildren = ParseBool(txt);
+						this._MoveFromChildren = ParseBool(txt);
 						continue;
 					case "destCategoryFullIds":
-						this.DestCategoryFullIds = txt;
+						this._DestCategoryFullIds = txt;
 						continue;
 				}
 			}

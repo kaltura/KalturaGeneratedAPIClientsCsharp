@@ -39,7 +39,7 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
-		public IList<KalturaString> Values
+		public new IList<KalturaString> Values
 		{
 			get { return _Values; }
 			set 
@@ -48,7 +48,7 @@ namespace Kaltura
 				OnPropertyChanged("Values");
 			}
 		}
-		public IList<KalturaStringValue> AllowedValues
+		public new IList<KalturaStringValue> AllowedValues
 		{
 			get { return _AllowedValues; }
 			set 
@@ -72,17 +72,17 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "values":
-						this.Values = new List<KalturaString>();
+						this._Values = new List<KalturaString>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Values.Add((KalturaString)KalturaObjectFactory.Create(arrayNode, "KalturaString"));
+							this._Values.Add((KalturaString)KalturaObjectFactory.Create(arrayNode, "KalturaString"));
 						}
 						continue;
 					case "allowedValues":
-						this.AllowedValues = new List<KalturaStringValue>();
+						this._AllowedValues = new List<KalturaStringValue>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.AllowedValues.Add((KalturaStringValue)KalturaObjectFactory.Create(arrayNode, "KalturaStringValue"));
+							this._AllowedValues.Add((KalturaStringValue)KalturaObjectFactory.Create(arrayNode, "KalturaStringValue"));
 						}
 						continue;
 				}

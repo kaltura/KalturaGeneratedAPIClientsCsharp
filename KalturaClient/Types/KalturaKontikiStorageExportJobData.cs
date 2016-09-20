@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "flavorAssetId":
-						this.FlavorAssetId = txt;
+						this._FlavorAssetId = txt;
 						continue;
 					case "contentMoid":
-						this.ContentMoid = txt;
+						this._ContentMoid = txt;
 						continue;
 					case "serviceToken":
-						this.ServiceToken = txt;
+						this._ServiceToken = txt;
 						continue;
 				}
 			}

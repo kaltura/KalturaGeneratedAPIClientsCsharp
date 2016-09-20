@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "geoCoderType":
-						this.GeoCoderType = (KalturaGeoCoderType)KalturaStringEnum.Parse(typeof(KalturaGeoCoderType), txt);
+						this._GeoCoderType = (KalturaGeoCoderType)KalturaStringEnum.Parse(typeof(KalturaGeoCoderType), txt);
 						continue;
 				}
 			}

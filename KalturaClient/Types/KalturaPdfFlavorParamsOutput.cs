@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "readonly":
-						this.Readonly = ParseBool(txt);
+						this._Readonly = ParseBool(txt);
 						continue;
 				}
 			}

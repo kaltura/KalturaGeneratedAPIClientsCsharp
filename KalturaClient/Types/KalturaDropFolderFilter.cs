@@ -48,7 +48,7 @@ namespace Kaltura
 				OnPropertyChanged("CurrentDc");
 			}
 		}
-		public new KalturaDropFolderOrderBy OrderBy
+		public KalturaDropFolderOrderBy OrderBy
 		{
 			get { return _OrderBy; }
 			set 
@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "currentDc":
-						this.CurrentDc = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._CurrentDc = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "orderBy":
-						this.OrderBy = (KalturaDropFolderOrderBy)KalturaStringEnum.Parse(typeof(KalturaDropFolderOrderBy), txt);
+						this._OrderBy = (KalturaDropFolderOrderBy)KalturaStringEnum.Parse(typeof(KalturaDropFolderOrderBy), txt);
 						continue;
 				}
 			}

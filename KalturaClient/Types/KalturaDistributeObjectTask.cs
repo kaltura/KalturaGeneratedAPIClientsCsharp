@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "distributionProfileId":
-						this.DistributionProfileId = txt;
+						this._DistributionProfileId = txt;
 						continue;
 				}
 			}

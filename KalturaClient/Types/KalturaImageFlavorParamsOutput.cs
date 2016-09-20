@@ -102,19 +102,19 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "densityWidth":
-						this.DensityWidth = ParseInt(txt);
+						this._DensityWidth = ParseInt(txt);
 						continue;
 					case "densityHeight":
-						this.DensityHeight = ParseInt(txt);
+						this._DensityHeight = ParseInt(txt);
 						continue;
 					case "sizeWidth":
-						this.SizeWidth = ParseInt(txt);
+						this._SizeWidth = ParseInt(txt);
 						continue;
 					case "sizeHeight":
-						this.SizeHeight = ParseInt(txt);
+						this._SizeHeight = ParseInt(txt);
 						continue;
 					case "depth":
-						this.Depth = ParseInt(txt);
+						this._Depth = ParseInt(txt);
 						continue;
 				}
 			}

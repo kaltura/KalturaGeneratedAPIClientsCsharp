@@ -242,61 +242,61 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "categoryIdEqual":
-						this.CategoryIdEqual = ParseInt(txt);
+						this._CategoryIdEqual = ParseInt(txt);
 						continue;
 					case "categoryIdIn":
-						this.CategoryIdIn = txt;
+						this._CategoryIdIn = txt;
 						continue;
 					case "userIdEqual":
-						this.UserIdEqual = txt;
+						this._UserIdEqual = txt;
 						continue;
 					case "userIdIn":
-						this.UserIdIn = txt;
+						this._UserIdIn = txt;
 						continue;
 					case "permissionLevelEqual":
-						this.PermissionLevelEqual = (KalturaCategoryUserPermissionLevel)ParseEnum(typeof(KalturaCategoryUserPermissionLevel), txt);
+						this._PermissionLevelEqual = (KalturaCategoryUserPermissionLevel)ParseEnum(typeof(KalturaCategoryUserPermissionLevel), txt);
 						continue;
 					case "permissionLevelIn":
-						this.PermissionLevelIn = txt;
+						this._PermissionLevelIn = txt;
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaCategoryUserStatus)ParseEnum(typeof(KalturaCategoryUserStatus), txt);
+						this._StatusEqual = (KalturaCategoryUserStatus)ParseEnum(typeof(KalturaCategoryUserStatus), txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = txt;
+						this._StatusIn = txt;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this.CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this.CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this.UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this.UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "updateMethodEqual":
-						this.UpdateMethodEqual = (KalturaUpdateMethodType)ParseEnum(typeof(KalturaUpdateMethodType), txt);
+						this._UpdateMethodEqual = (KalturaUpdateMethodType)ParseEnum(typeof(KalturaUpdateMethodType), txt);
 						continue;
 					case "updateMethodIn":
-						this.UpdateMethodIn = txt;
+						this._UpdateMethodIn = txt;
 						continue;
 					case "categoryFullIdsStartsWith":
-						this.CategoryFullIdsStartsWith = txt;
+						this._CategoryFullIdsStartsWith = txt;
 						continue;
 					case "categoryFullIdsEqual":
-						this.CategoryFullIdsEqual = txt;
+						this._CategoryFullIdsEqual = txt;
 						continue;
 					case "permissionNamesMatchAnd":
-						this.PermissionNamesMatchAnd = txt;
+						this._PermissionNamesMatchAnd = txt;
 						continue;
 					case "permissionNamesMatchOr":
-						this.PermissionNamesMatchOr = txt;
+						this._PermissionNamesMatchOr = txt;
 						continue;
 					case "permissionNamesNotContains":
-						this.PermissionNamesNotContains = txt;
+						this._PermissionNamesNotContains = txt;
 						continue;
 				}
 			}

@@ -38,14 +38,9 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
-		public IList<KalturaBaseSyndicationFeed> Objects
+		public new IList<KalturaBaseSyndicationFeed> Objects
 		{
 			get { return _Objects; }
-			set 
-			{ 
-				_Objects = value;
-				OnPropertyChanged("Objects");
-			}
 		}
 		#endregion
 
@@ -62,10 +57,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "objects":
-						this.Objects = new List<KalturaBaseSyndicationFeed>();
+						this._Objects = new List<KalturaBaseSyndicationFeed>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Objects.Add((KalturaBaseSyndicationFeed)KalturaObjectFactory.Create(arrayNode, "KalturaBaseSyndicationFeed"));
+							this._Objects.Add((KalturaBaseSyndicationFeed)KalturaObjectFactory.Create(arrayNode, "KalturaBaseSyndicationFeed"));
 						}
 						continue;
 				}

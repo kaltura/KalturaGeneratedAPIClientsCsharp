@@ -142,31 +142,31 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "schedulerId":
-						this.SchedulerId = ParseInt(txt);
+						this._SchedulerId = ParseInt(txt);
 						continue;
 					case "workerId":
-						this.WorkerId = ParseInt(txt);
+						this._WorkerId = ParseInt(txt);
 						continue;
 					case "batchIndex":
-						this.BatchIndex = ParseInt(txt);
+						this._BatchIndex = ParseInt(txt);
 						continue;
 					case "timeStamp":
-						this.TimeStamp = ParseInt(txt);
+						this._TimeStamp = ParseInt(txt);
 						continue;
 					case "message":
-						this.Message = txt;
+						this._Message = txt;
 						continue;
 					case "errType":
-						this.ErrType = ParseInt(txt);
+						this._ErrType = ParseInt(txt);
 						continue;
 					case "errNumber":
-						this.ErrNumber = ParseInt(txt);
+						this._ErrNumber = ParseInt(txt);
 						continue;
 					case "hostName":
-						this.HostName = txt;
+						this._HostName = txt;
 						continue;
 					case "sessionId":
-						this.SessionId = txt;
+						this._SessionId = txt;
 						continue;
 				}
 			}

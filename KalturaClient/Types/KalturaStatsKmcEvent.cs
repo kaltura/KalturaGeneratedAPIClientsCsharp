@@ -141,11 +141,6 @@ namespace Kaltura
 		public string UserIp
 		{
 			get { return _UserIp; }
-			set 
-			{ 
-				_UserIp = value;
-				OnPropertyChanged("UserIp");
-			}
 		}
 		#endregion
 
@@ -162,37 +157,37 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "clientVer":
-						this.ClientVer = txt;
+						this._ClientVer = txt;
 						continue;
 					case "kmcEventActionPath":
-						this.KmcEventActionPath = txt;
+						this._KmcEventActionPath = txt;
 						continue;
 					case "kmcEventType":
-						this.KmcEventType = (KalturaStatsKmcEventType)ParseEnum(typeof(KalturaStatsKmcEventType), txt);
+						this._KmcEventType = (KalturaStatsKmcEventType)ParseEnum(typeof(KalturaStatsKmcEventType), txt);
 						continue;
 					case "eventTimestamp":
-						this.EventTimestamp = ParseFloat(txt);
+						this._EventTimestamp = ParseFloat(txt);
 						continue;
 					case "sessionId":
-						this.SessionId = txt;
+						this._SessionId = txt;
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "entryId":
-						this.EntryId = txt;
+						this._EntryId = txt;
 						continue;
 					case "widgetId":
-						this.WidgetId = txt;
+						this._WidgetId = txt;
 						continue;
 					case "uiconfId":
-						this.UiconfId = ParseInt(txt);
+						this._UiconfId = ParseInt(txt);
 						continue;
 					case "userId":
-						this.UserId = txt;
+						this._UserId = txt;
 						continue;
 					case "userIp":
-						this.UserIp = txt;
+						this._UserIp = txt;
 						continue;
 				}
 			}

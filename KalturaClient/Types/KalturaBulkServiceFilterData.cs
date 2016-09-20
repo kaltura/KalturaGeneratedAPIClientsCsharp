@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "filter":
-						this.Filter = (KalturaFilter)KalturaObjectFactory.Create(propertyNode, "KalturaFilter");
+						this._Filter = (KalturaFilter)KalturaObjectFactory.Create(propertyNode, "KalturaFilter");
 						continue;
 					case "templateObject":
-						this.TemplateObject = (KalturaObjectBase)KalturaObjectFactory.Create(propertyNode, "KalturaObjectBase");
+						this._TemplateObject = (KalturaObjectBase)KalturaObjectFactory.Create(propertyNode, "KalturaObjectBase");
 						continue;
 				}
 			}

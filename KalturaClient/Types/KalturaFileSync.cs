@@ -65,110 +65,50 @@ namespace Kaltura
 		public long Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public KalturaFileSyncObjectType FileObjectType
 		{
 			get { return _FileObjectType; }
-			set 
-			{ 
-				_FileObjectType = value;
-				OnPropertyChanged("FileObjectType");
-			}
 		}
 		public string ObjectId
 		{
 			get { return _ObjectId; }
-			set 
-			{ 
-				_ObjectId = value;
-				OnPropertyChanged("ObjectId");
-			}
 		}
 		public string Version
 		{
 			get { return _Version; }
-			set 
-			{ 
-				_Version = value;
-				OnPropertyChanged("Version");
-			}
 		}
 		public int ObjectSubType
 		{
 			get { return _ObjectSubType; }
-			set 
-			{ 
-				_ObjectSubType = value;
-				OnPropertyChanged("ObjectSubType");
-			}
 		}
 		public string Dc
 		{
 			get { return _Dc; }
-			set 
-			{ 
-				_Dc = value;
-				OnPropertyChanged("Dc");
-			}
 		}
 		public int Original
 		{
 			get { return _Original; }
-			set 
-			{ 
-				_Original = value;
-				OnPropertyChanged("Original");
-			}
 		}
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public int ReadyAt
 		{
 			get { return _ReadyAt; }
-			set 
-			{ 
-				_ReadyAt = value;
-				OnPropertyChanged("ReadyAt");
-			}
 		}
 		public int SyncTime
 		{
 			get { return _SyncTime; }
-			set 
-			{ 
-				_SyncTime = value;
-				OnPropertyChanged("SyncTime");
-			}
 		}
 		public KalturaFileSyncStatus Status
 		{
@@ -182,29 +122,14 @@ namespace Kaltura
 		public KalturaFileSyncType FileType
 		{
 			get { return _FileType; }
-			set 
-			{ 
-				_FileType = value;
-				OnPropertyChanged("FileType");
-			}
 		}
 		public int LinkedId
 		{
 			get { return _LinkedId; }
-			set 
-			{ 
-				_LinkedId = value;
-				OnPropertyChanged("LinkedId");
-			}
 		}
 		public int LinkCount
 		{
 			get { return _LinkCount; }
-			set 
-			{ 
-				_LinkCount = value;
-				OnPropertyChanged("LinkCount");
-			}
 		}
 		public string FileRoot
 		{
@@ -227,65 +152,30 @@ namespace Kaltura
 		public float FileSize
 		{
 			get { return _FileSize; }
-			set 
-			{ 
-				_FileSize = value;
-				OnPropertyChanged("FileSize");
-			}
 		}
 		public string FileUrl
 		{
 			get { return _FileUrl; }
-			set 
-			{ 
-				_FileUrl = value;
-				OnPropertyChanged("FileUrl");
-			}
 		}
 		public string FileContent
 		{
 			get { return _FileContent; }
-			set 
-			{ 
-				_FileContent = value;
-				OnPropertyChanged("FileContent");
-			}
 		}
 		public float FileDiscSize
 		{
 			get { return _FileDiscSize; }
-			set 
-			{ 
-				_FileDiscSize = value;
-				OnPropertyChanged("FileDiscSize");
-			}
 		}
 		public bool? IsCurrentDc
 		{
 			get { return _IsCurrentDc; }
-			set 
-			{ 
-				_IsCurrentDc = value;
-				OnPropertyChanged("IsCurrentDc");
-			}
 		}
 		public bool? IsDir
 		{
 			get { return _IsDir; }
-			set 
-			{ 
-				_IsDir = value;
-				OnPropertyChanged("IsDir");
-			}
 		}
 		public int OriginalId
 		{
 			get { return _OriginalId; }
-			set 
-			{ 
-				_OriginalId = value;
-				OnPropertyChanged("OriginalId");
-			}
 		}
 		#endregion
 
@@ -302,79 +192,79 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseLong(txt);
+						this._Id = ParseLong(txt);
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "fileObjectType":
-						this.FileObjectType = (KalturaFileSyncObjectType)KalturaStringEnum.Parse(typeof(KalturaFileSyncObjectType), txt);
+						this._FileObjectType = (KalturaFileSyncObjectType)KalturaStringEnum.Parse(typeof(KalturaFileSyncObjectType), txt);
 						continue;
 					case "objectId":
-						this.ObjectId = txt;
+						this._ObjectId = txt;
 						continue;
 					case "version":
-						this.Version = txt;
+						this._Version = txt;
 						continue;
 					case "objectSubType":
-						this.ObjectSubType = ParseInt(txt);
+						this._ObjectSubType = ParseInt(txt);
 						continue;
 					case "dc":
-						this.Dc = txt;
+						this._Dc = txt;
 						continue;
 					case "original":
-						this.Original = ParseInt(txt);
+						this._Original = ParseInt(txt);
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "readyAt":
-						this.ReadyAt = ParseInt(txt);
+						this._ReadyAt = ParseInt(txt);
 						continue;
 					case "syncTime":
-						this.SyncTime = ParseInt(txt);
+						this._SyncTime = ParseInt(txt);
 						continue;
 					case "status":
-						this.Status = (KalturaFileSyncStatus)ParseEnum(typeof(KalturaFileSyncStatus), txt);
+						this._Status = (KalturaFileSyncStatus)ParseEnum(typeof(KalturaFileSyncStatus), txt);
 						continue;
 					case "fileType":
-						this.FileType = (KalturaFileSyncType)ParseEnum(typeof(KalturaFileSyncType), txt);
+						this._FileType = (KalturaFileSyncType)ParseEnum(typeof(KalturaFileSyncType), txt);
 						continue;
 					case "linkedId":
-						this.LinkedId = ParseInt(txt);
+						this._LinkedId = ParseInt(txt);
 						continue;
 					case "linkCount":
-						this.LinkCount = ParseInt(txt);
+						this._LinkCount = ParseInt(txt);
 						continue;
 					case "fileRoot":
-						this.FileRoot = txt;
+						this._FileRoot = txt;
 						continue;
 					case "filePath":
-						this.FilePath = txt;
+						this._FilePath = txt;
 						continue;
 					case "fileSize":
-						this.FileSize = ParseFloat(txt);
+						this._FileSize = ParseFloat(txt);
 						continue;
 					case "fileUrl":
-						this.FileUrl = txt;
+						this._FileUrl = txt;
 						continue;
 					case "fileContent":
-						this.FileContent = txt;
+						this._FileContent = txt;
 						continue;
 					case "fileDiscSize":
-						this.FileDiscSize = ParseFloat(txt);
+						this._FileDiscSize = ParseFloat(txt);
 						continue;
 					case "isCurrentDc":
-						this.IsCurrentDc = ParseBool(txt);
+						this._IsCurrentDc = ParseBool(txt);
 						continue;
 					case "isDir":
-						this.IsDir = ParseBool(txt);
+						this._IsDir = ParseBool(txt);
 						continue;
 					case "originalId":
-						this.OriginalId = ParseInt(txt);
+						this._OriginalId = ParseInt(txt);
 						continue;
 				}
 			}

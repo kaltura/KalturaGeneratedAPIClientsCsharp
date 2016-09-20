@@ -74,11 +74,6 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public string FlavorAssetId
 		{
@@ -392,106 +387,106 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "flavorAssetId":
-						this.FlavorAssetId = txt;
+						this._FlavorAssetId = txt;
 						continue;
 					case "fileSize":
-						this.FileSize = ParseInt(txt);
+						this._FileSize = ParseInt(txt);
 						continue;
 					case "containerFormat":
-						this.ContainerFormat = txt;
+						this._ContainerFormat = txt;
 						continue;
 					case "containerId":
-						this.ContainerId = txt;
+						this._ContainerId = txt;
 						continue;
 					case "containerProfile":
-						this.ContainerProfile = txt;
+						this._ContainerProfile = txt;
 						continue;
 					case "containerDuration":
-						this.ContainerDuration = ParseInt(txt);
+						this._ContainerDuration = ParseInt(txt);
 						continue;
 					case "containerBitRate":
-						this.ContainerBitRate = ParseInt(txt);
+						this._ContainerBitRate = ParseInt(txt);
 						continue;
 					case "videoFormat":
-						this.VideoFormat = txt;
+						this._VideoFormat = txt;
 						continue;
 					case "videoCodecId":
-						this.VideoCodecId = txt;
+						this._VideoCodecId = txt;
 						continue;
 					case "videoDuration":
-						this.VideoDuration = ParseInt(txt);
+						this._VideoDuration = ParseInt(txt);
 						continue;
 					case "videoBitRate":
-						this.VideoBitRate = ParseInt(txt);
+						this._VideoBitRate = ParseInt(txt);
 						continue;
 					case "videoBitRateMode":
-						this.VideoBitRateMode = (KalturaBitRateMode)ParseEnum(typeof(KalturaBitRateMode), txt);
+						this._VideoBitRateMode = (KalturaBitRateMode)ParseEnum(typeof(KalturaBitRateMode), txt);
 						continue;
 					case "videoWidth":
-						this.VideoWidth = ParseInt(txt);
+						this._VideoWidth = ParseInt(txt);
 						continue;
 					case "videoHeight":
-						this.VideoHeight = ParseInt(txt);
+						this._VideoHeight = ParseInt(txt);
 						continue;
 					case "videoFrameRate":
-						this.VideoFrameRate = ParseFloat(txt);
+						this._VideoFrameRate = ParseFloat(txt);
 						continue;
 					case "videoDar":
-						this.VideoDar = ParseFloat(txt);
+						this._VideoDar = ParseFloat(txt);
 						continue;
 					case "videoRotation":
-						this.VideoRotation = ParseInt(txt);
+						this._VideoRotation = ParseInt(txt);
 						continue;
 					case "audioFormat":
-						this.AudioFormat = txt;
+						this._AudioFormat = txt;
 						continue;
 					case "audioCodecId":
-						this.AudioCodecId = txt;
+						this._AudioCodecId = txt;
 						continue;
 					case "audioDuration":
-						this.AudioDuration = ParseInt(txt);
+						this._AudioDuration = ParseInt(txt);
 						continue;
 					case "audioBitRate":
-						this.AudioBitRate = ParseInt(txt);
+						this._AudioBitRate = ParseInt(txt);
 						continue;
 					case "audioBitRateMode":
-						this.AudioBitRateMode = (KalturaBitRateMode)ParseEnum(typeof(KalturaBitRateMode), txt);
+						this._AudioBitRateMode = (KalturaBitRateMode)ParseEnum(typeof(KalturaBitRateMode), txt);
 						continue;
 					case "audioChannels":
-						this.AudioChannels = ParseInt(txt);
+						this._AudioChannels = ParseInt(txt);
 						continue;
 					case "audioSamplingRate":
-						this.AudioSamplingRate = ParseInt(txt);
+						this._AudioSamplingRate = ParseInt(txt);
 						continue;
 					case "audioResolution":
-						this.AudioResolution = ParseInt(txt);
+						this._AudioResolution = ParseInt(txt);
 						continue;
 					case "writingLib":
-						this.WritingLib = txt;
+						this._WritingLib = txt;
 						continue;
 					case "rawData":
-						this.RawData = txt;
+						this._RawData = txt;
 						continue;
 					case "multiStreamInfo":
-						this.MultiStreamInfo = txt;
+						this._MultiStreamInfo = txt;
 						continue;
 					case "scanType":
-						this.ScanType = ParseInt(txt);
+						this._ScanType = ParseInt(txt);
 						continue;
 					case "multiStream":
-						this.MultiStream = txt;
+						this._MultiStream = txt;
 						continue;
 					case "isFastStart":
-						this.IsFastStart = ParseInt(txt);
+						this._IsFastStart = ParseInt(txt);
 						continue;
 					case "contentStreams":
-						this.ContentStreams = txt;
+						this._ContentStreams = txt;
 						continue;
 					case "complexityValue":
-						this.ComplexityValue = ParseInt(txt);
+						this._ComplexityValue = ParseInt(txt);
 						continue;
 				}
 			}

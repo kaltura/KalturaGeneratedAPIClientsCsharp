@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "force":
-						this.Force = ParseBool(txt);
+						this._Force = ParseBool(txt);
 						continue;
 					case "createLink":
-						this.CreateLink = ParseBool(txt);
+						this._CreateLink = ParseBool(txt);
 						continue;
 				}
 			}

@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "userId":
-						this.UserId = txt;
+						this._UserId = txt;
 						continue;
 					case "password":
-						this.Password = txt;
+						this._Password = txt;
 						continue;
 					case "streamName":
-						this.StreamName = txt;
+						this._StreamName = txt;
 						continue;
 					case "applicationName":
-						this.ApplicationName = txt;
+						this._ApplicationName = txt;
 						continue;
 				}
 			}

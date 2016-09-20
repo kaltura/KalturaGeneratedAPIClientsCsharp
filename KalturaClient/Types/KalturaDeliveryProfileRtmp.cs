@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "enforceRtmpe":
-						this.EnforceRtmpe = ParseBool(txt);
+						this._EnforceRtmpe = ParseBool(txt);
 						continue;
 					case "prefix":
-						this.Prefix = txt;
+						this._Prefix = txt;
 						continue;
 				}
 			}

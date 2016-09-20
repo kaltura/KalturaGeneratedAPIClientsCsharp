@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "documentTypeEqual":
-						this.DocumentTypeEqual = (KalturaDocumentType)ParseEnum(typeof(KalturaDocumentType), txt);
+						this._DocumentTypeEqual = (KalturaDocumentType)ParseEnum(typeof(KalturaDocumentType), txt);
 						continue;
 					case "documentTypeIn":
-						this.DocumentTypeIn = txt;
+						this._DocumentTypeIn = txt;
 						continue;
 					case "assetParamsIdsMatchOr":
-						this.AssetParamsIdsMatchOr = txt;
+						this._AssetParamsIdsMatchOr = txt;
 						continue;
 					case "assetParamsIdsMatchAnd":
-						this.AssetParamsIdsMatchAnd = txt;
+						this._AssetParamsIdsMatchAnd = txt;
 						continue;
 				}
 			}

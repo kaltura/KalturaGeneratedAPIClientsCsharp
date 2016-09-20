@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "deleteType":
-						this.DeleteType = (KalturaDeleteFlavorsLogicType)ParseEnum(typeof(KalturaDeleteFlavorsLogicType), txt);
+						this._DeleteType = (KalturaDeleteFlavorsLogicType)ParseEnum(typeof(KalturaDeleteFlavorsLogicType), txt);
 						continue;
 					case "flavorParamsIds":
-						this.FlavorParamsIds = txt;
+						this._FlavorParamsIds = txt;
 						continue;
 				}
 			}

@@ -57,29 +57,14 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public int GenericDistributionProviderId
 		{
@@ -102,11 +87,6 @@ namespace Kaltura
 		public KalturaGenericDistributionProviderStatus Status
 		{
 			get { return _Status; }
-			set 
-			{ 
-				_Status = value;
-				OnPropertyChanged("Status");
-			}
 		}
 		public KalturaGenericDistributionProviderParser ResultsParser
 		{
@@ -183,29 +163,14 @@ namespace Kaltura
 		public string MrssTransformer
 		{
 			get { return _MrssTransformer; }
-			set 
-			{ 
-				_MrssTransformer = value;
-				OnPropertyChanged("MrssTransformer");
-			}
 		}
 		public string MrssValidator
 		{
 			get { return _MrssValidator; }
-			set 
-			{ 
-				_MrssValidator = value;
-				OnPropertyChanged("MrssValidator");
-			}
 		}
 		public string ResultsTransformer
 		{
 			get { return _ResultsTransformer; }
-			set 
-			{ 
-				_ResultsTransformer = value;
-				OnPropertyChanged("ResultsTransformer");
-			}
 		}
 		#endregion
 
@@ -222,55 +187,55 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "genericDistributionProviderId":
-						this.GenericDistributionProviderId = ParseInt(txt);
+						this._GenericDistributionProviderId = ParseInt(txt);
 						continue;
 					case "action":
-						this.Action = (KalturaDistributionAction)ParseEnum(typeof(KalturaDistributionAction), txt);
+						this._Action = (KalturaDistributionAction)ParseEnum(typeof(KalturaDistributionAction), txt);
 						continue;
 					case "status":
-						this.Status = (KalturaGenericDistributionProviderStatus)ParseEnum(typeof(KalturaGenericDistributionProviderStatus), txt);
+						this._Status = (KalturaGenericDistributionProviderStatus)ParseEnum(typeof(KalturaGenericDistributionProviderStatus), txt);
 						continue;
 					case "resultsParser":
-						this.ResultsParser = (KalturaGenericDistributionProviderParser)ParseEnum(typeof(KalturaGenericDistributionProviderParser), txt);
+						this._ResultsParser = (KalturaGenericDistributionProviderParser)ParseEnum(typeof(KalturaGenericDistributionProviderParser), txt);
 						continue;
 					case "protocol":
-						this.Protocol = (KalturaDistributionProtocol)ParseEnum(typeof(KalturaDistributionProtocol), txt);
+						this._Protocol = (KalturaDistributionProtocol)ParseEnum(typeof(KalturaDistributionProtocol), txt);
 						continue;
 					case "serverAddress":
-						this.ServerAddress = txt;
+						this._ServerAddress = txt;
 						continue;
 					case "remotePath":
-						this.RemotePath = txt;
+						this._RemotePath = txt;
 						continue;
 					case "remoteUsername":
-						this.RemoteUsername = txt;
+						this._RemoteUsername = txt;
 						continue;
 					case "remotePassword":
-						this.RemotePassword = txt;
+						this._RemotePassword = txt;
 						continue;
 					case "editableFields":
-						this.EditableFields = txt;
+						this._EditableFields = txt;
 						continue;
 					case "mandatoryFields":
-						this.MandatoryFields = txt;
+						this._MandatoryFields = txt;
 						continue;
 					case "mrssTransformer":
-						this.MrssTransformer = txt;
+						this._MrssTransformer = txt;
 						continue;
 					case "mrssValidator":
-						this.MrssValidator = txt;
+						this._MrssValidator = txt;
 						continue;
 					case "resultsTransformer":
-						this.ResultsTransformer = txt;
+						this._ResultsTransformer = txt;
 						continue;
 				}
 			}

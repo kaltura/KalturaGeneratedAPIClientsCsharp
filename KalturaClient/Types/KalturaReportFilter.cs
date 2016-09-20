@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "dimension":
-						this.Dimension = txt;
+						this._Dimension = txt;
 						continue;
 					case "values":
-						this.Values = txt;
+						this._Values = txt;
 						continue;
 				}
 			}

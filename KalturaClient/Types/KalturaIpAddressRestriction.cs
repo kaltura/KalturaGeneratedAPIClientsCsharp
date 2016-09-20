@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "ipAddressRestrictionType":
-						this.IpAddressRestrictionType = (KalturaIpAddressRestrictionType)ParseEnum(typeof(KalturaIpAddressRestrictionType), txt);
+						this._IpAddressRestrictionType = (KalturaIpAddressRestrictionType)ParseEnum(typeof(KalturaIpAddressRestrictionType), txt);
 						continue;
 					case "ipAddressList":
-						this.IpAddressList = txt;
+						this._IpAddressList = txt;
 						continue;
 				}
 			}

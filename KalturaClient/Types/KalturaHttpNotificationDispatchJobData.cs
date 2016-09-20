@@ -209,7 +209,7 @@ namespace Kaltura
 				OnPropertyChanged("SslKeyPassword");
 			}
 		}
-		public IList<KalturaKeyValue> CustomHeaders
+		public new IList<KalturaKeyValue> CustomHeaders
 		{
 			get { return _CustomHeaders; }
 			set 
@@ -242,65 +242,65 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "url":
-						this.Url = txt;
+						this._Url = txt;
 						continue;
 					case "method":
-						this.Method = (KalturaHttpNotificationMethod)ParseEnum(typeof(KalturaHttpNotificationMethod), txt);
+						this._Method = (KalturaHttpNotificationMethod)ParseEnum(typeof(KalturaHttpNotificationMethod), txt);
 						continue;
 					case "data":
-						this.Data = txt;
+						this._Data = txt;
 						continue;
 					case "timeout":
-						this.Timeout = ParseInt(txt);
+						this._Timeout = ParseInt(txt);
 						continue;
 					case "connectTimeout":
-						this.ConnectTimeout = ParseInt(txt);
+						this._ConnectTimeout = ParseInt(txt);
 						continue;
 					case "username":
-						this.Username = txt;
+						this._Username = txt;
 						continue;
 					case "password":
-						this.Password = txt;
+						this._Password = txt;
 						continue;
 					case "authenticationMethod":
-						this.AuthenticationMethod = (KalturaHttpNotificationAuthenticationMethod)ParseEnum(typeof(KalturaHttpNotificationAuthenticationMethod), txt);
+						this._AuthenticationMethod = (KalturaHttpNotificationAuthenticationMethod)ParseEnum(typeof(KalturaHttpNotificationAuthenticationMethod), txt);
 						continue;
 					case "sslVersion":
-						this.SslVersion = (KalturaHttpNotificationSslVersion)ParseEnum(typeof(KalturaHttpNotificationSslVersion), txt);
+						this._SslVersion = (KalturaHttpNotificationSslVersion)ParseEnum(typeof(KalturaHttpNotificationSslVersion), txt);
 						continue;
 					case "sslCertificate":
-						this.SslCertificate = txt;
+						this._SslCertificate = txt;
 						continue;
 					case "sslCertificateType":
-						this.SslCertificateType = (KalturaHttpNotificationCertificateType)KalturaStringEnum.Parse(typeof(KalturaHttpNotificationCertificateType), txt);
+						this._SslCertificateType = (KalturaHttpNotificationCertificateType)KalturaStringEnum.Parse(typeof(KalturaHttpNotificationCertificateType), txt);
 						continue;
 					case "sslCertificatePassword":
-						this.SslCertificatePassword = txt;
+						this._SslCertificatePassword = txt;
 						continue;
 					case "sslEngine":
-						this.SslEngine = txt;
+						this._SslEngine = txt;
 						continue;
 					case "sslEngineDefault":
-						this.SslEngineDefault = txt;
+						this._SslEngineDefault = txt;
 						continue;
 					case "sslKeyType":
-						this.SslKeyType = (KalturaHttpNotificationSslKeyType)KalturaStringEnum.Parse(typeof(KalturaHttpNotificationSslKeyType), txt);
+						this._SslKeyType = (KalturaHttpNotificationSslKeyType)KalturaStringEnum.Parse(typeof(KalturaHttpNotificationSslKeyType), txt);
 						continue;
 					case "sslKey":
-						this.SslKey = txt;
+						this._SslKey = txt;
 						continue;
 					case "sslKeyPassword":
-						this.SslKeyPassword = txt;
+						this._SslKeyPassword = txt;
 						continue;
 					case "customHeaders":
-						this.CustomHeaders = new List<KalturaKeyValue>();
+						this._CustomHeaders = new List<KalturaKeyValue>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.CustomHeaders.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
+							this._CustomHeaders.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
 						}
 						continue;
 					case "signSecret":
-						this.SignSecret = txt;
+						this._SignSecret = txt;
 						continue;
 				}
 			}

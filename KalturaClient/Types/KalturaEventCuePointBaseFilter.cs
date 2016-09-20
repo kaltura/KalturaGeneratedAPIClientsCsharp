@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "eventTypeEqual":
-						this.EventTypeEqual = (KalturaEventType)KalturaStringEnum.Parse(typeof(KalturaEventType), txt);
+						this._EventTypeEqual = (KalturaEventType)KalturaStringEnum.Parse(typeof(KalturaEventType), txt);
 						continue;
 					case "eventTypeIn":
-						this.EventTypeIn = txt;
+						this._EventTypeIn = txt;
 						continue;
 				}
 			}

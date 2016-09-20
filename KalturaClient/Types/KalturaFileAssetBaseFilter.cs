@@ -172,40 +172,40 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this.IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(txt);
 						continue;
 					case "idIn":
-						this.IdIn = txt;
+						this._IdIn = txt;
 						continue;
 					case "partnerIdEqual":
-						this.PartnerIdEqual = ParseInt(txt);
+						this._PartnerIdEqual = ParseInt(txt);
 						continue;
 					case "fileAssetObjectTypeEqual":
-						this.FileAssetObjectTypeEqual = (KalturaFileAssetObjectType)KalturaStringEnum.Parse(typeof(KalturaFileAssetObjectType), txt);
+						this._FileAssetObjectTypeEqual = (KalturaFileAssetObjectType)KalturaStringEnum.Parse(typeof(KalturaFileAssetObjectType), txt);
 						continue;
 					case "objectIdEqual":
-						this.ObjectIdEqual = txt;
+						this._ObjectIdEqual = txt;
 						continue;
 					case "objectIdIn":
-						this.ObjectIdIn = txt;
+						this._ObjectIdIn = txt;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this.CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this.CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this.UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this.UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaFileAssetStatus)KalturaStringEnum.Parse(typeof(KalturaFileAssetStatus), txt);
+						this._StatusEqual = (KalturaFileAssetStatus)KalturaStringEnum.Parse(typeof(KalturaFileAssetStatus), txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = txt;
+						this._StatusIn = txt;
 						continue;
 				}
 			}

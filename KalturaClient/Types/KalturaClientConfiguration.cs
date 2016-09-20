@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "clientTag":
-						this.ClientTag = txt;
+						this._ClientTag = txt;
 						continue;
 					case "apiVersion":
-						this.ApiVersion = txt;
+						this._ApiVersion = txt;
 						continue;
 				}
 			}

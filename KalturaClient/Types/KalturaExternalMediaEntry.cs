@@ -51,11 +51,6 @@ namespace Kaltura
 		public string AssetParamsIds
 		{
 			get { return _AssetParamsIds; }
-			set 
-			{ 
-				_AssetParamsIds = value;
-				OnPropertyChanged("AssetParamsIds");
-			}
 		}
 		#endregion
 
@@ -72,10 +67,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "externalSourceType":
-						this.ExternalSourceType = (KalturaExternalMediaSourceType)KalturaStringEnum.Parse(typeof(KalturaExternalMediaSourceType), txt);
+						this._ExternalSourceType = (KalturaExternalMediaSourceType)KalturaStringEnum.Parse(typeof(KalturaExternalMediaSourceType), txt);
 						continue;
 					case "assetParamsIds":
-						this.AssetParamsIds = txt;
+						this._AssetParamsIds = txt;
 						continue;
 				}
 			}

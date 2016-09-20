@@ -122,25 +122,25 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "host":
-						this.Host = txt;
+						this._Host = txt;
 						continue;
 					case "port":
-						this.Port = ParseInt(txt);
+						this._Port = ParseInt(txt);
 						continue;
 					case "username":
-						this.Username = txt;
+						this._Username = txt;
 						continue;
 					case "password":
-						this.Password = txt;
+						this._Password = txt;
 						continue;
 					case "privateKey":
-						this.PrivateKey = txt;
+						this._PrivateKey = txt;
 						continue;
 					case "publicKey":
-						this.PublicKey = txt;
+						this._PublicKey = txt;
 						continue;
 					case "passPhrase":
-						this.PassPhrase = txt;
+						this._PassPhrase = txt;
 						continue;
 				}
 			}

@@ -38,7 +38,7 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
-		public new KalturaSshDropFolderOrderBy OrderBy
+		public KalturaSshDropFolderOrderBy OrderBy
 		{
 			get { return _OrderBy; }
 			set 
@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "orderBy":
-						this.OrderBy = (KalturaSshDropFolderOrderBy)KalturaStringEnum.Parse(typeof(KalturaSshDropFolderOrderBy), txt);
+						this._OrderBy = (KalturaSshDropFolderOrderBy)KalturaStringEnum.Parse(typeof(KalturaSshDropFolderOrderBy), txt);
 						continue;
 				}
 			}

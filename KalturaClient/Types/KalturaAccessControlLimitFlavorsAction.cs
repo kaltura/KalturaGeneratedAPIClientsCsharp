@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "flavorParamsIds":
-						this.FlavorParamsIds = txt;
+						this._FlavorParamsIds = txt;
 						continue;
 					case "isBlockedList":
-						this.IsBlockedList = ParseBool(txt);
+						this._IsBlockedList = ParseBool(txt);
 						continue;
 				}
 			}

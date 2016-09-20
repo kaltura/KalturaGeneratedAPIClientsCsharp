@@ -49,7 +49,7 @@ namespace Kaltura
 				OnPropertyChanged("Resource");
 			}
 		}
-		public IList<KalturaOperationAttributes> OperationAttributes
+		public new IList<KalturaOperationAttributes> OperationAttributes
 		{
 			get { return _OperationAttributes; }
 			set 
@@ -82,17 +82,17 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "resource":
-						this.Resource = (KalturaContentResource)KalturaObjectFactory.Create(propertyNode, "KalturaContentResource");
+						this._Resource = (KalturaContentResource)KalturaObjectFactory.Create(propertyNode, "KalturaContentResource");
 						continue;
 					case "operationAttributes":
-						this.OperationAttributes = new List<KalturaOperationAttributes>();
+						this._OperationAttributes = new List<KalturaOperationAttributes>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.OperationAttributes.Add((KalturaOperationAttributes)KalturaObjectFactory.Create(arrayNode, "KalturaOperationAttributes"));
+							this._OperationAttributes.Add((KalturaOperationAttributes)KalturaObjectFactory.Create(arrayNode, "KalturaOperationAttributes"));
 						}
 						continue;
 					case "assetParamsId":
-						this.AssetParamsId = ParseInt(txt);
+						this._AssetParamsId = ParseInt(txt);
 						continue;
 				}
 			}

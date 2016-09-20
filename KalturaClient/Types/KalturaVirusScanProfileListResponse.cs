@@ -38,14 +38,9 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
-		public IList<KalturaVirusScanProfile> Objects
+		public new IList<KalturaVirusScanProfile> Objects
 		{
 			get { return _Objects; }
-			set 
-			{ 
-				_Objects = value;
-				OnPropertyChanged("Objects");
-			}
 		}
 		#endregion
 
@@ -62,10 +57,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "objects":
-						this.Objects = new List<KalturaVirusScanProfile>();
+						this._Objects = new List<KalturaVirusScanProfile>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Objects.Add((KalturaVirusScanProfile)KalturaObjectFactory.Create(arrayNode, "KalturaVirusScanProfile"));
+							this._Objects.Add((KalturaVirusScanProfile)KalturaObjectFactory.Create(arrayNode, "KalturaVirusScanProfile"));
 						}
 						continue;
 				}

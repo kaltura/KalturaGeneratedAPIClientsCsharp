@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "adultContent":
-						this.AdultContent = (KalturaGoogleSyndicationFeedAdultValues)KalturaStringEnum.Parse(typeof(KalturaGoogleSyndicationFeedAdultValues), txt);
+						this._AdultContent = (KalturaGoogleSyndicationFeedAdultValues)KalturaStringEnum.Parse(typeof(KalturaGoogleSyndicationFeedAdultValues), txt);
 						continue;
 				}
 			}

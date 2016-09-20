@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "entryId":
-						this.EntryId = txt;
+						this._EntryId = txt;
 						continue;
 					case "peakAudience":
-						this.PeakAudience = ParseInt(txt);
+						this._PeakAudience = ParseInt(txt);
 						continue;
 					case "peakDvrAudience":
-						this.PeakDvrAudience = ParseInt(txt);
+						this._PeakDvrAudience = ParseInt(txt);
 						continue;
 				}
 			}

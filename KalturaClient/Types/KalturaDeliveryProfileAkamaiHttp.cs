@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "useIntelliseek":
-						this.UseIntelliseek = ParseBool(txt);
+						this._UseIntelliseek = ParseBool(txt);
 						continue;
 				}
 			}

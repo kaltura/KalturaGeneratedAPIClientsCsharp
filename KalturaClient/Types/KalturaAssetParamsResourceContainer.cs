@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "resource":
-						this.Resource = (KalturaContentResource)KalturaObjectFactory.Create(propertyNode, "KalturaContentResource");
+						this._Resource = (KalturaContentResource)KalturaObjectFactory.Create(propertyNode, "KalturaContentResource");
 						continue;
 					case "assetParamsId":
-						this.AssetParamsId = ParseInt(txt);
+						this._AssetParamsId = ParseInt(txt);
 						continue;
 				}
 			}

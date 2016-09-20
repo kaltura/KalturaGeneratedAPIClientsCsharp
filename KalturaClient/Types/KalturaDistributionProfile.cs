@@ -64,38 +64,18 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public KalturaDistributionProviderType ProviderType
 		{
@@ -196,7 +176,7 @@ namespace Kaltura
 				OnPropertyChanged("RequiredFlavorParamsIds");
 			}
 		}
-		public IList<KalturaDistributionThumbDimensions> OptionalThumbDimensions
+		public new IList<KalturaDistributionThumbDimensions> OptionalThumbDimensions
 		{
 			get { return _OptionalThumbDimensions; }
 			set 
@@ -205,7 +185,7 @@ namespace Kaltura
 				OnPropertyChanged("OptionalThumbDimensions");
 			}
 		}
-		public IList<KalturaDistributionThumbDimensions> RequiredThumbDimensions
+		public new IList<KalturaDistributionThumbDimensions> RequiredThumbDimensions
 		{
 			get { return _RequiredThumbDimensions; }
 			set 
@@ -214,7 +194,7 @@ namespace Kaltura
 				OnPropertyChanged("RequiredThumbDimensions");
 			}
 		}
-		public IList<KalturaAssetDistributionRule> OptionalAssetDistributionRules
+		public new IList<KalturaAssetDistributionRule> OptionalAssetDistributionRules
 		{
 			get { return _OptionalAssetDistributionRules; }
 			set 
@@ -223,7 +203,7 @@ namespace Kaltura
 				OnPropertyChanged("OptionalAssetDistributionRules");
 			}
 		}
-		public IList<KalturaAssetDistributionRule> RequiredAssetDistributionRules
+		public new IList<KalturaAssetDistributionRule> RequiredAssetDistributionRules
 		{
 			get { return _RequiredAssetDistributionRules; }
 			set 
@@ -292,92 +272,92 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "providerType":
-						this.ProviderType = (KalturaDistributionProviderType)KalturaStringEnum.Parse(typeof(KalturaDistributionProviderType), txt);
+						this._ProviderType = (KalturaDistributionProviderType)KalturaStringEnum.Parse(typeof(KalturaDistributionProviderType), txt);
 						continue;
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 					case "status":
-						this.Status = (KalturaDistributionProfileStatus)ParseEnum(typeof(KalturaDistributionProfileStatus), txt);
+						this._Status = (KalturaDistributionProfileStatus)ParseEnum(typeof(KalturaDistributionProfileStatus), txt);
 						continue;
 					case "submitEnabled":
-						this.SubmitEnabled = (KalturaDistributionProfileActionStatus)ParseEnum(typeof(KalturaDistributionProfileActionStatus), txt);
+						this._SubmitEnabled = (KalturaDistributionProfileActionStatus)ParseEnum(typeof(KalturaDistributionProfileActionStatus), txt);
 						continue;
 					case "updateEnabled":
-						this.UpdateEnabled = (KalturaDistributionProfileActionStatus)ParseEnum(typeof(KalturaDistributionProfileActionStatus), txt);
+						this._UpdateEnabled = (KalturaDistributionProfileActionStatus)ParseEnum(typeof(KalturaDistributionProfileActionStatus), txt);
 						continue;
 					case "deleteEnabled":
-						this.DeleteEnabled = (KalturaDistributionProfileActionStatus)ParseEnum(typeof(KalturaDistributionProfileActionStatus), txt);
+						this._DeleteEnabled = (KalturaDistributionProfileActionStatus)ParseEnum(typeof(KalturaDistributionProfileActionStatus), txt);
 						continue;
 					case "reportEnabled":
-						this.ReportEnabled = (KalturaDistributionProfileActionStatus)ParseEnum(typeof(KalturaDistributionProfileActionStatus), txt);
+						this._ReportEnabled = (KalturaDistributionProfileActionStatus)ParseEnum(typeof(KalturaDistributionProfileActionStatus), txt);
 						continue;
 					case "autoCreateFlavors":
-						this.AutoCreateFlavors = txt;
+						this._AutoCreateFlavors = txt;
 						continue;
 					case "autoCreateThumb":
-						this.AutoCreateThumb = txt;
+						this._AutoCreateThumb = txt;
 						continue;
 					case "optionalFlavorParamsIds":
-						this.OptionalFlavorParamsIds = txt;
+						this._OptionalFlavorParamsIds = txt;
 						continue;
 					case "requiredFlavorParamsIds":
-						this.RequiredFlavorParamsIds = txt;
+						this._RequiredFlavorParamsIds = txt;
 						continue;
 					case "optionalThumbDimensions":
-						this.OptionalThumbDimensions = new List<KalturaDistributionThumbDimensions>();
+						this._OptionalThumbDimensions = new List<KalturaDistributionThumbDimensions>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.OptionalThumbDimensions.Add((KalturaDistributionThumbDimensions)KalturaObjectFactory.Create(arrayNode, "KalturaDistributionThumbDimensions"));
+							this._OptionalThumbDimensions.Add((KalturaDistributionThumbDimensions)KalturaObjectFactory.Create(arrayNode, "KalturaDistributionThumbDimensions"));
 						}
 						continue;
 					case "requiredThumbDimensions":
-						this.RequiredThumbDimensions = new List<KalturaDistributionThumbDimensions>();
+						this._RequiredThumbDimensions = new List<KalturaDistributionThumbDimensions>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.RequiredThumbDimensions.Add((KalturaDistributionThumbDimensions)KalturaObjectFactory.Create(arrayNode, "KalturaDistributionThumbDimensions"));
+							this._RequiredThumbDimensions.Add((KalturaDistributionThumbDimensions)KalturaObjectFactory.Create(arrayNode, "KalturaDistributionThumbDimensions"));
 						}
 						continue;
 					case "optionalAssetDistributionRules":
-						this.OptionalAssetDistributionRules = new List<KalturaAssetDistributionRule>();
+						this._OptionalAssetDistributionRules = new List<KalturaAssetDistributionRule>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.OptionalAssetDistributionRules.Add((KalturaAssetDistributionRule)KalturaObjectFactory.Create(arrayNode, "KalturaAssetDistributionRule"));
+							this._OptionalAssetDistributionRules.Add((KalturaAssetDistributionRule)KalturaObjectFactory.Create(arrayNode, "KalturaAssetDistributionRule"));
 						}
 						continue;
 					case "requiredAssetDistributionRules":
-						this.RequiredAssetDistributionRules = new List<KalturaAssetDistributionRule>();
+						this._RequiredAssetDistributionRules = new List<KalturaAssetDistributionRule>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.RequiredAssetDistributionRules.Add((KalturaAssetDistributionRule)KalturaObjectFactory.Create(arrayNode, "KalturaAssetDistributionRule"));
+							this._RequiredAssetDistributionRules.Add((KalturaAssetDistributionRule)KalturaObjectFactory.Create(arrayNode, "KalturaAssetDistributionRule"));
 						}
 						continue;
 					case "sunriseDefaultOffset":
-						this.SunriseDefaultOffset = ParseInt(txt);
+						this._SunriseDefaultOffset = ParseInt(txt);
 						continue;
 					case "sunsetDefaultOffset":
-						this.SunsetDefaultOffset = ParseInt(txt);
+						this._SunsetDefaultOffset = ParseInt(txt);
 						continue;
 					case "recommendedStorageProfileForDownload":
-						this.RecommendedStorageProfileForDownload = ParseInt(txt);
+						this._RecommendedStorageProfileForDownload = ParseInt(txt);
 						continue;
 					case "recommendedDcForDownload":
-						this.RecommendedDcForDownload = ParseInt(txt);
+						this._RecommendedDcForDownload = ParseInt(txt);
 						continue;
 					case "recommendedDcForExecute":
-						this.RecommendedDcForExecute = ParseInt(txt);
+						this._RecommendedDcForExecute = ParseInt(txt);
 						continue;
 				}
 			}

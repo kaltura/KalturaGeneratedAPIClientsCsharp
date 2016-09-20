@@ -43,29 +43,14 @@ namespace Kaltura
 		public string Header
 		{
 			get { return _Header; }
-			set 
-			{ 
-				_Header = value;
-				OnPropertyChanged("Header");
-			}
 		}
 		public string Data
 		{
 			get { return _Data; }
-			set 
-			{ 
-				_Data = value;
-				OnPropertyChanged("Data");
-			}
 		}
 		public int TotalCount
 		{
 			get { return _TotalCount; }
-			set 
-			{ 
-				_TotalCount = value;
-				OnPropertyChanged("TotalCount");
-			}
 		}
 		#endregion
 
@@ -82,13 +67,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "header":
-						this.Header = txt;
+						this._Header = txt;
 						continue;
 					case "data":
-						this.Data = txt;
+						this._Data = txt;
 						continue;
 					case "totalCount":
-						this.TotalCount = ParseInt(txt);
+						this._TotalCount = ParseInt(txt);
 						continue;
 				}
 			}

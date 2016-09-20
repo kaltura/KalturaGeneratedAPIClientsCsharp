@@ -102,19 +102,19 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "thumbParamsIdEqual":
-						this.ThumbParamsIdEqual = ParseInt(txt);
+						this._ThumbParamsIdEqual = ParseInt(txt);
 						continue;
 					case "thumbParamsIdIn":
-						this.ThumbParamsIdIn = txt;
+						this._ThumbParamsIdIn = txt;
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaThumbAssetStatus)ParseEnum(typeof(KalturaThumbAssetStatus), txt);
+						this._StatusEqual = (KalturaThumbAssetStatus)ParseEnum(typeof(KalturaThumbAssetStatus), txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = txt;
+						this._StatusIn = txt;
 						continue;
 					case "statusNotIn":
-						this.StatusNotIn = txt;
+						this._StatusNotIn = txt;
 						continue;
 				}
 			}

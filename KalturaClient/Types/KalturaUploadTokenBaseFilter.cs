@@ -122,25 +122,25 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this.IdEqual = txt;
+						this._IdEqual = txt;
 						continue;
 					case "idIn":
-						this.IdIn = txt;
+						this._IdIn = txt;
 						continue;
 					case "userIdEqual":
-						this.UserIdEqual = txt;
+						this._UserIdEqual = txt;
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaUploadTokenStatus)ParseEnum(typeof(KalturaUploadTokenStatus), txt);
+						this._StatusEqual = (KalturaUploadTokenStatus)ParseEnum(typeof(KalturaUploadTokenStatus), txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = txt;
+						this._StatusIn = txt;
 						continue;
 					case "fileNameEqual":
-						this.FileNameEqual = txt;
+						this._FileNameEqual = txt;
 						continue;
 					case "fileSizeEqual":
-						this.FileSizeEqual = ParseFloat(txt);
+						this._FileSizeEqual = ParseFloat(txt);
 						continue;
 				}
 			}

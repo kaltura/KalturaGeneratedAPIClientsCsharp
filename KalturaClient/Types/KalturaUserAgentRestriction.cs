@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "userAgentRestrictionType":
-						this.UserAgentRestrictionType = (KalturaUserAgentRestrictionType)ParseEnum(typeof(KalturaUserAgentRestrictionType), txt);
+						this._UserAgentRestrictionType = (KalturaUserAgentRestrictionType)ParseEnum(typeof(KalturaUserAgentRestrictionType), txt);
 						continue;
 					case "userAgentRegexList":
-						this.UserAgentRegexList = txt;
+						this._UserAgentRegexList = txt;
 						continue;
 				}
 			}

@@ -142,31 +142,31 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "userId":
-						this.UserId = txt;
+						this._UserId = txt;
 						continue;
 					case "type":
-						this.Type = (KalturaNotificationType)ParseEnum(typeof(KalturaNotificationType), txt);
+						this._Type = (KalturaNotificationType)ParseEnum(typeof(KalturaNotificationType), txt);
 						continue;
 					case "typeAsString":
-						this.TypeAsString = txt;
+						this._TypeAsString = txt;
 						continue;
 					case "objectId":
-						this.ObjectId = txt;
+						this._ObjectId = txt;
 						continue;
 					case "status":
-						this.Status = (KalturaNotificationStatus)ParseEnum(typeof(KalturaNotificationStatus), txt);
+						this._Status = (KalturaNotificationStatus)ParseEnum(typeof(KalturaNotificationStatus), txt);
 						continue;
 					case "data":
-						this.Data = txt;
+						this._Data = txt;
 						continue;
 					case "numberOfAttempts":
-						this.NumberOfAttempts = ParseInt(txt);
+						this._NumberOfAttempts = ParseInt(txt);
 						continue;
 					case "notificationResult":
-						this.NotificationResult = txt;
+						this._NotificationResult = txt;
 						continue;
 					case "objType":
-						this.ObjType = (KalturaNotificationObjectType)ParseEnum(typeof(KalturaNotificationObjectType), txt);
+						this._ObjType = (KalturaNotificationObjectType)ParseEnum(typeof(KalturaNotificationObjectType), txt);
 						continue;
 				}
 			}

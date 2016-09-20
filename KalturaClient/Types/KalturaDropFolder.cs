@@ -68,11 +68,6 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public int PartnerId
 		{
@@ -239,20 +234,10 @@ namespace Kaltura
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public int LastAccessedAt
 		{
@@ -332,88 +317,88 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "type":
-						this.Type = (KalturaDropFolderType)KalturaStringEnum.Parse(typeof(KalturaDropFolderType), txt);
+						this._Type = (KalturaDropFolderType)KalturaStringEnum.Parse(typeof(KalturaDropFolderType), txt);
 						continue;
 					case "status":
-						this.Status = (KalturaDropFolderStatus)ParseEnum(typeof(KalturaDropFolderStatus), txt);
+						this._Status = (KalturaDropFolderStatus)ParseEnum(typeof(KalturaDropFolderStatus), txt);
 						continue;
 					case "conversionProfileId":
-						this.ConversionProfileId = ParseInt(txt);
+						this._ConversionProfileId = ParseInt(txt);
 						continue;
 					case "dc":
-						this.Dc = ParseInt(txt);
+						this._Dc = ParseInt(txt);
 						continue;
 					case "path":
-						this.Path = txt;
+						this._Path = txt;
 						continue;
 					case "fileSizeCheckInterval":
-						this.FileSizeCheckInterval = ParseInt(txt);
+						this._FileSizeCheckInterval = ParseInt(txt);
 						continue;
 					case "fileDeletePolicy":
-						this.FileDeletePolicy = (KalturaDropFolderFileDeletePolicy)ParseEnum(typeof(KalturaDropFolderFileDeletePolicy), txt);
+						this._FileDeletePolicy = (KalturaDropFolderFileDeletePolicy)ParseEnum(typeof(KalturaDropFolderFileDeletePolicy), txt);
 						continue;
 					case "autoFileDeleteDays":
-						this.AutoFileDeleteDays = ParseInt(txt);
+						this._AutoFileDeleteDays = ParseInt(txt);
 						continue;
 					case "fileHandlerType":
-						this.FileHandlerType = (KalturaDropFolderFileHandlerType)KalturaStringEnum.Parse(typeof(KalturaDropFolderFileHandlerType), txt);
+						this._FileHandlerType = (KalturaDropFolderFileHandlerType)KalturaStringEnum.Parse(typeof(KalturaDropFolderFileHandlerType), txt);
 						continue;
 					case "fileNamePatterns":
-						this.FileNamePatterns = txt;
+						this._FileNamePatterns = txt;
 						continue;
 					case "fileHandlerConfig":
-						this.FileHandlerConfig = (KalturaDropFolderFileHandlerConfig)KalturaObjectFactory.Create(propertyNode, "KalturaDropFolderFileHandlerConfig");
+						this._FileHandlerConfig = (KalturaDropFolderFileHandlerConfig)KalturaObjectFactory.Create(propertyNode, "KalturaDropFolderFileHandlerConfig");
 						continue;
 					case "tags":
-						this.Tags = txt;
+						this._Tags = txt;
 						continue;
 					case "errorCode":
-						this.ErrorCode = (KalturaDropFolderErrorCode)KalturaStringEnum.Parse(typeof(KalturaDropFolderErrorCode), txt);
+						this._ErrorCode = (KalturaDropFolderErrorCode)KalturaStringEnum.Parse(typeof(KalturaDropFolderErrorCode), txt);
 						continue;
 					case "errorDescription":
-						this.ErrorDescription = txt;
+						this._ErrorDescription = txt;
 						continue;
 					case "ignoreFileNamePatterns":
-						this.IgnoreFileNamePatterns = txt;
+						this._IgnoreFileNamePatterns = txt;
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "lastAccessedAt":
-						this.LastAccessedAt = ParseInt(txt);
+						this._LastAccessedAt = ParseInt(txt);
 						continue;
 					case "incremental":
-						this.Incremental = ParseBool(txt);
+						this._Incremental = ParseBool(txt);
 						continue;
 					case "lastFileTimestamp":
-						this.LastFileTimestamp = ParseInt(txt);
+						this._LastFileTimestamp = ParseInt(txt);
 						continue;
 					case "metadataProfileId":
-						this.MetadataProfileId = ParseInt(txt);
+						this._MetadataProfileId = ParseInt(txt);
 						continue;
 					case "categoriesMetadataFieldName":
-						this.CategoriesMetadataFieldName = txt;
+						this._CategoriesMetadataFieldName = txt;
 						continue;
 					case "enforceEntitlement":
-						this.EnforceEntitlement = ParseBool(txt);
+						this._EnforceEntitlement = ParseBool(txt);
 						continue;
 					case "shouldValidateKS":
-						this.ShouldValidateKS = ParseBool(txt);
+						this._ShouldValidateKS = ParseBool(txt);
 						continue;
 				}
 			}

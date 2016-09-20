@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "cuePointId":
-						this.CuePointId = txt;
+						this._CuePointId = txt;
 						continue;
 				}
 			}

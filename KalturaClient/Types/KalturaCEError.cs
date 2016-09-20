@@ -50,11 +50,6 @@ namespace Kaltura
 		public string Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public int PartnerId
 		{
@@ -152,34 +147,34 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = txt;
+						this._Id = txt;
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "browser":
-						this.Browser = txt;
+						this._Browser = txt;
 						continue;
 					case "serverIp":
-						this.ServerIp = txt;
+						this._ServerIp = txt;
 						continue;
 					case "serverOs":
-						this.ServerOs = txt;
+						this._ServerOs = txt;
 						continue;
 					case "phpVersion":
-						this.PhpVersion = txt;
+						this._PhpVersion = txt;
 						continue;
 					case "ceAdminEmail":
-						this.CeAdminEmail = txt;
+						this._CeAdminEmail = txt;
 						continue;
 					case "type":
-						this.Type = txt;
+						this._Type = txt;
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "data":
-						this.Data = txt;
+						this._Data = txt;
 						continue;
 				}
 			}

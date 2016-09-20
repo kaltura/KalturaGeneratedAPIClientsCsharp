@@ -41,11 +41,6 @@ namespace Kaltura
 		public KalturaTubeMogulSyndicationFeedCategories Category
 		{
 			get { return _Category; }
-			set 
-			{ 
-				_Category = value;
-				OnPropertyChanged("Category");
-			}
 		}
 		#endregion
 
@@ -62,7 +57,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "category":
-						this.Category = (KalturaTubeMogulSyndicationFeedCategories)KalturaStringEnum.Parse(typeof(KalturaTubeMogulSyndicationFeedCategories), txt);
+						this._Category = (KalturaTubeMogulSyndicationFeedCategories)KalturaStringEnum.Parse(typeof(KalturaTubeMogulSyndicationFeedCategories), txt);
 						continue;
 				}
 			}

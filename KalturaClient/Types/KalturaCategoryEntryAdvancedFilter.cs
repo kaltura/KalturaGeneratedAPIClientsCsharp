@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "categoriesMatchOr":
-						this.CategoriesMatchOr = txt;
+						this._CategoriesMatchOr = txt;
 						continue;
 					case "categoryEntryStatusIn":
-						this.CategoryEntryStatusIn = txt;
+						this._CategoryEntryStatusIn = txt;
 						continue;
 					case "orderBy":
-						this.OrderBy = (KalturaCategoryEntryAdvancedOrderBy)KalturaStringEnum.Parse(typeof(KalturaCategoryEntryAdvancedOrderBy), txt);
+						this._OrderBy = (KalturaCategoryEntryAdvancedOrderBy)KalturaStringEnum.Parse(typeof(KalturaCategoryEntryAdvancedOrderBy), txt);
 						continue;
 					case "categoryIdEqual":
-						this.CategoryIdEqual = ParseInt(txt);
+						this._CategoryIdEqual = ParseInt(txt);
 						continue;
 				}
 			}

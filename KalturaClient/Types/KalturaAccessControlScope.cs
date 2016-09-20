@@ -89,7 +89,7 @@ namespace Kaltura
 				OnPropertyChanged("Time");
 			}
 		}
-		public IList<KalturaAccessControlContextTypeHolder> Contexts
+		public new IList<KalturaAccessControlContextTypeHolder> Contexts
 		{
 			get { return _Contexts; }
 			set 
@@ -98,7 +98,7 @@ namespace Kaltura
 				OnPropertyChanged("Contexts");
 			}
 		}
-		public IList<KalturaKeyValue> Hashes
+		public new IList<KalturaKeyValue> Hashes
 		{
 			get { return _Hashes; }
 			set 
@@ -122,32 +122,32 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "referrer":
-						this.Referrer = txt;
+						this._Referrer = txt;
 						continue;
 					case "ip":
-						this.Ip = txt;
+						this._Ip = txt;
 						continue;
 					case "ks":
-						this.Ks = txt;
+						this._Ks = txt;
 						continue;
 					case "userAgent":
-						this.UserAgent = txt;
+						this._UserAgent = txt;
 						continue;
 					case "time":
-						this.Time = ParseInt(txt);
+						this._Time = ParseInt(txt);
 						continue;
 					case "contexts":
-						this.Contexts = new List<KalturaAccessControlContextTypeHolder>();
+						this._Contexts = new List<KalturaAccessControlContextTypeHolder>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Contexts.Add((KalturaAccessControlContextTypeHolder)KalturaObjectFactory.Create(arrayNode, "KalturaAccessControlContextTypeHolder"));
+							this._Contexts.Add((KalturaAccessControlContextTypeHolder)KalturaObjectFactory.Create(arrayNode, "KalturaAccessControlContextTypeHolder"));
 						}
 						continue;
 					case "hashes":
-						this.Hashes = new List<KalturaKeyValue>();
+						this._Hashes = new List<KalturaKeyValue>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Hashes.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
+							this._Hashes.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
 						}
 						continue;
 				}

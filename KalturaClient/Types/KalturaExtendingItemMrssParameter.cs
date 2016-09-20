@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "xpath":
-						this.Xpath = txt;
+						this._Xpath = txt;
 						continue;
 					case "identifier":
-						this.Identifier = (KalturaObjectIdentifier)KalturaObjectFactory.Create(propertyNode, "KalturaObjectIdentifier");
+						this._Identifier = (KalturaObjectIdentifier)KalturaObjectFactory.Create(propertyNode, "KalturaObjectIdentifier");
 						continue;
 					case "extensionMode":
-						this.ExtensionMode = (KalturaMrssExtensionMode)ParseEnum(typeof(KalturaMrssExtensionMode), txt);
+						this._ExtensionMode = (KalturaMrssExtensionMode)ParseEnum(typeof(KalturaMrssExtensionMode), txt);
 						continue;
 				}
 			}

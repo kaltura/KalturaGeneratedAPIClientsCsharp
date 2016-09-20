@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "isPublic":
-						this.IsPublic = ParseBool(txt);
+						this._IsPublic = ParseBool(txt);
 						continue;
 				}
 			}

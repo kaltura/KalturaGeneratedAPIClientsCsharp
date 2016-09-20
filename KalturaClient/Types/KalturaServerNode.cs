@@ -54,47 +54,22 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public int HeartbeatTime
 		{
 			get { return _HeartbeatTime; }
-			set 
-			{ 
-				_HeartbeatTime = value;
-				OnPropertyChanged("HeartbeatTime");
-			}
 		}
 		public string Name
 		{
@@ -135,20 +110,10 @@ namespace Kaltura
 		public KalturaServerNodeStatus Status
 		{
 			get { return _Status; }
-			set 
-			{ 
-				_Status = value;
-				OnPropertyChanged("Status");
-			}
 		}
 		public KalturaServerNodeType Type
 		{
 			get { return _Type; }
-			set 
-			{ 
-				_Type = value;
-				OnPropertyChanged("Type");
-			}
 		}
 		public string Tags
 		{
@@ -162,11 +127,6 @@ namespace Kaltura
 		public int Dc
 		{
 			get { return _Dc; }
-			set 
-			{ 
-				_Dc = value;
-				OnPropertyChanged("Dc");
-			}
 		}
 		public int ParentId
 		{
@@ -192,46 +152,46 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "heartbeatTime":
-						this.HeartbeatTime = ParseInt(txt);
+						this._HeartbeatTime = ParseInt(txt);
 						continue;
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 					case "systemName":
-						this.SystemName = txt;
+						this._SystemName = txt;
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "hostName":
-						this.HostName = txt;
+						this._HostName = txt;
 						continue;
 					case "status":
-						this.Status = (KalturaServerNodeStatus)ParseEnum(typeof(KalturaServerNodeStatus), txt);
+						this._Status = (KalturaServerNodeStatus)ParseEnum(typeof(KalturaServerNodeStatus), txt);
 						continue;
 					case "type":
-						this.Type = (KalturaServerNodeType)KalturaStringEnum.Parse(typeof(KalturaServerNodeType), txt);
+						this._Type = (KalturaServerNodeType)KalturaStringEnum.Parse(typeof(KalturaServerNodeType), txt);
 						continue;
 					case "tags":
-						this.Tags = txt;
+						this._Tags = txt;
 						continue;
 					case "dc":
-						this.Dc = ParseInt(txt);
+						this._Dc = ParseInt(txt);
 						continue;
 					case "parentId":
-						this.ParentId = ParseInt(txt);
+						this._ParentId = ParseInt(txt);
 						continue;
 				}
 			}

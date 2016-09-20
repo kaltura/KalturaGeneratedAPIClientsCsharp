@@ -71,11 +71,6 @@ namespace Kaltura
 		public KalturaAttachmentAssetStatus Status
 		{
 			get { return _Status; }
-			set 
-			{ 
-				_Status = value;
-				OnPropertyChanged("Status");
-			}
 		}
 		#endregion
 
@@ -92,16 +87,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "filename":
-						this.Filename = txt;
+						this._Filename = txt;
 						continue;
 					case "title":
-						this.Title = txt;
+						this._Title = txt;
 						continue;
 					case "format":
-						this.Format = (KalturaAttachmentType)KalturaStringEnum.Parse(typeof(KalturaAttachmentType), txt);
+						this._Format = (KalturaAttachmentType)KalturaStringEnum.Parse(typeof(KalturaAttachmentType), txt);
 						continue;
 					case "status":
-						this.Status = (KalturaAttachmentAssetStatus)ParseEnum(typeof(KalturaAttachmentAssetStatus), txt);
+						this._Status = (KalturaAttachmentAssetStatus)ParseEnum(typeof(KalturaAttachmentAssetStatus), txt);
 						continue;
 				}
 			}

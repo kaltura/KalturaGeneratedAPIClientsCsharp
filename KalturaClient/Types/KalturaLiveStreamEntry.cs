@@ -56,22 +56,12 @@ namespace Kaltura
 		public string StreamRemoteId
 		{
 			get { return _StreamRemoteId; }
-			set 
-			{ 
-				_StreamRemoteId = value;
-				OnPropertyChanged("StreamRemoteId");
-			}
 		}
 		public string StreamRemoteBackupId
 		{
 			get { return _StreamRemoteBackupId; }
-			set 
-			{ 
-				_StreamRemoteBackupId = value;
-				OnPropertyChanged("StreamRemoteBackupId");
-			}
 		}
-		public IList<KalturaLiveStreamBitrate> Bitrates
+		public new IList<KalturaLiveStreamBitrate> Bitrates
 		{
 			get { return _Bitrates; }
 			set 
@@ -182,20 +172,10 @@ namespace Kaltura
 		public string StreamUsername
 		{
 			get { return _StreamUsername; }
-			set 
-			{ 
-				_StreamUsername = value;
-				OnPropertyChanged("StreamUsername");
-			}
 		}
 		public int PrimaryServerNodeId
 		{
 			get { return _PrimaryServerNodeId; }
-			set 
-			{ 
-				_PrimaryServerNodeId = value;
-				OnPropertyChanged("PrimaryServerNodeId");
-			}
 		}
 		#endregion
 
@@ -212,56 +192,56 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "streamRemoteId":
-						this.StreamRemoteId = txt;
+						this._StreamRemoteId = txt;
 						continue;
 					case "streamRemoteBackupId":
-						this.StreamRemoteBackupId = txt;
+						this._StreamRemoteBackupId = txt;
 						continue;
 					case "bitrates":
-						this.Bitrates = new List<KalturaLiveStreamBitrate>();
+						this._Bitrates = new List<KalturaLiveStreamBitrate>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Bitrates.Add((KalturaLiveStreamBitrate)KalturaObjectFactory.Create(arrayNode, "KalturaLiveStreamBitrate"));
+							this._Bitrates.Add((KalturaLiveStreamBitrate)KalturaObjectFactory.Create(arrayNode, "KalturaLiveStreamBitrate"));
 						}
 						continue;
 					case "primaryBroadcastingUrl":
-						this.PrimaryBroadcastingUrl = txt;
+						this._PrimaryBroadcastingUrl = txt;
 						continue;
 					case "secondaryBroadcastingUrl":
-						this.SecondaryBroadcastingUrl = txt;
+						this._SecondaryBroadcastingUrl = txt;
 						continue;
 					case "primaryRtspBroadcastingUrl":
-						this.PrimaryRtspBroadcastingUrl = txt;
+						this._PrimaryRtspBroadcastingUrl = txt;
 						continue;
 					case "secondaryRtspBroadcastingUrl":
-						this.SecondaryRtspBroadcastingUrl = txt;
+						this._SecondaryRtspBroadcastingUrl = txt;
 						continue;
 					case "streamName":
-						this.StreamName = txt;
+						this._StreamName = txt;
 						continue;
 					case "streamUrl":
-						this.StreamUrl = txt;
+						this._StreamUrl = txt;
 						continue;
 					case "hlsStreamUrl":
-						this.HlsStreamUrl = txt;
+						this._HlsStreamUrl = txt;
 						continue;
 					case "urlManager":
-						this.UrlManager = txt;
+						this._UrlManager = txt;
 						continue;
 					case "encodingIP1":
-						this.EncodingIP1 = txt;
+						this._EncodingIP1 = txt;
 						continue;
 					case "encodingIP2":
-						this.EncodingIP2 = txt;
+						this._EncodingIP2 = txt;
 						continue;
 					case "streamPassword":
-						this.StreamPassword = txt;
+						this._StreamPassword = txt;
 						continue;
 					case "streamUsername":
-						this.StreamUsername = txt;
+						this._StreamUsername = txt;
 						continue;
 					case "primaryServerNodeId":
-						this.PrimaryServerNodeId = ParseInt(txt);
+						this._PrimaryServerNodeId = ParseInt(txt);
 						continue;
 				}
 			}

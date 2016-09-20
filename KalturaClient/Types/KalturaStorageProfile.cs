@@ -72,38 +72,18 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public string Name
 		{
@@ -240,7 +220,7 @@ namespace Kaltura
 				OnPropertyChanged("PathManagerClass");
 			}
 		}
-		public IList<KalturaKeyValue> PathManagerParams
+		public new IList<KalturaKeyValue> PathManagerParams
 		{
 			get { return _PathManagerParams; }
 			set 
@@ -303,7 +283,7 @@ namespace Kaltura
 				OnPropertyChanged("CreateFileLink");
 			}
 		}
-		public IList<KalturaRule> Rules
+		public new IList<KalturaRule> Rules
 		{
 			get { return _Rules; }
 			set 
@@ -312,7 +292,7 @@ namespace Kaltura
 				OnPropertyChanged("Rules");
 			}
 		}
-		public IList<KalturaKeyValue> DeliveryProfileIds
+		public new IList<KalturaKeyValue> DeliveryProfileIds
 		{
 			get { return _DeliveryProfileIds; }
 			set 
@@ -372,112 +352,112 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 					case "systemName":
-						this.SystemName = txt;
+						this._SystemName = txt;
 						continue;
 					case "desciption":
-						this.Desciption = txt;
+						this._Desciption = txt;
 						continue;
 					case "status":
-						this.Status = (KalturaStorageProfileStatus)ParseEnum(typeof(KalturaStorageProfileStatus), txt);
+						this._Status = (KalturaStorageProfileStatus)ParseEnum(typeof(KalturaStorageProfileStatus), txt);
 						continue;
 					case "protocol":
-						this.Protocol = (KalturaStorageProfileProtocol)KalturaStringEnum.Parse(typeof(KalturaStorageProfileProtocol), txt);
+						this._Protocol = (KalturaStorageProfileProtocol)KalturaStringEnum.Parse(typeof(KalturaStorageProfileProtocol), txt);
 						continue;
 					case "storageUrl":
-						this.StorageUrl = txt;
+						this._StorageUrl = txt;
 						continue;
 					case "storageBaseDir":
-						this.StorageBaseDir = txt;
+						this._StorageBaseDir = txt;
 						continue;
 					case "storageUsername":
-						this.StorageUsername = txt;
+						this._StorageUsername = txt;
 						continue;
 					case "storagePassword":
-						this.StoragePassword = txt;
+						this._StoragePassword = txt;
 						continue;
 					case "storageFtpPassiveMode":
-						this.StorageFtpPassiveMode = ParseBool(txt);
+						this._StorageFtpPassiveMode = ParseBool(txt);
 						continue;
 					case "minFileSize":
-						this.MinFileSize = ParseInt(txt);
+						this._MinFileSize = ParseInt(txt);
 						continue;
 					case "maxFileSize":
-						this.MaxFileSize = ParseInt(txt);
+						this._MaxFileSize = ParseInt(txt);
 						continue;
 					case "flavorParamsIds":
-						this.FlavorParamsIds = txt;
+						this._FlavorParamsIds = txt;
 						continue;
 					case "maxConcurrentConnections":
-						this.MaxConcurrentConnections = ParseInt(txt);
+						this._MaxConcurrentConnections = ParseInt(txt);
 						continue;
 					case "pathManagerClass":
-						this.PathManagerClass = txt;
+						this._PathManagerClass = txt;
 						continue;
 					case "pathManagerParams":
-						this.PathManagerParams = new List<KalturaKeyValue>();
+						this._PathManagerParams = new List<KalturaKeyValue>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.PathManagerParams.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
+							this._PathManagerParams.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
 						}
 						continue;
 					case "trigger":
-						this.Trigger = ParseInt(txt);
+						this._Trigger = ParseInt(txt);
 						continue;
 					case "deliveryPriority":
-						this.DeliveryPriority = ParseInt(txt);
+						this._DeliveryPriority = ParseInt(txt);
 						continue;
 					case "deliveryStatus":
-						this.DeliveryStatus = (KalturaStorageProfileDeliveryStatus)ParseEnum(typeof(KalturaStorageProfileDeliveryStatus), txt);
+						this._DeliveryStatus = (KalturaStorageProfileDeliveryStatus)ParseEnum(typeof(KalturaStorageProfileDeliveryStatus), txt);
 						continue;
 					case "readyBehavior":
-						this.ReadyBehavior = (KalturaStorageProfileReadyBehavior)ParseEnum(typeof(KalturaStorageProfileReadyBehavior), txt);
+						this._ReadyBehavior = (KalturaStorageProfileReadyBehavior)ParseEnum(typeof(KalturaStorageProfileReadyBehavior), txt);
 						continue;
 					case "allowAutoDelete":
-						this.AllowAutoDelete = ParseInt(txt);
+						this._AllowAutoDelete = ParseInt(txt);
 						continue;
 					case "createFileLink":
-						this.CreateFileLink = ParseBool(txt);
+						this._CreateFileLink = ParseBool(txt);
 						continue;
 					case "rules":
-						this.Rules = new List<KalturaRule>();
+						this._Rules = new List<KalturaRule>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Rules.Add((KalturaRule)KalturaObjectFactory.Create(arrayNode, "KalturaRule"));
+							this._Rules.Add((KalturaRule)KalturaObjectFactory.Create(arrayNode, "KalturaRule"));
 						}
 						continue;
 					case "deliveryProfileIds":
-						this.DeliveryProfileIds = new List<KalturaKeyValue>();
+						this._DeliveryProfileIds = new List<KalturaKeyValue>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.DeliveryProfileIds.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
+							this._DeliveryProfileIds.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
 						}
 						continue;
 					case "privateKey":
-						this.PrivateKey = txt;
+						this._PrivateKey = txt;
 						continue;
 					case "publicKey":
-						this.PublicKey = txt;
+						this._PublicKey = txt;
 						continue;
 					case "passPhrase":
-						this.PassPhrase = txt;
+						this._PassPhrase = txt;
 						continue;
 					case "shouldExportThumbs":
-						this.ShouldExportThumbs = ParseBool(txt);
+						this._ShouldExportThumbs = ParseBool(txt);
 						continue;
 				}
 			}

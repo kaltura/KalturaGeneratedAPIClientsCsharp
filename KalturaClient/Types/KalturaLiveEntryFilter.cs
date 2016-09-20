@@ -68,7 +68,7 @@ namespace Kaltura
 				OnPropertyChanged("HasMediaServerHostname");
 			}
 		}
-		public new KalturaLiveEntryOrderBy OrderBy
+		public KalturaLiveEntryOrderBy OrderBy
 		{
 			get { return _OrderBy; }
 			set 
@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "isLive":
-						this.IsLive = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._IsLive = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "isRecordedEntryIdEmpty":
-						this.IsRecordedEntryIdEmpty = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._IsRecordedEntryIdEmpty = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "hasMediaServerHostname":
-						this.HasMediaServerHostname = txt;
+						this._HasMediaServerHostname = txt;
 						continue;
 					case "orderBy":
-						this.OrderBy = (KalturaLiveEntryOrderBy)KalturaStringEnum.Parse(typeof(KalturaLiveEntryOrderBy), txt);
+						this._OrderBy = (KalturaLiveEntryOrderBy)KalturaStringEnum.Parse(typeof(KalturaLiveEntryOrderBy), txt);
 						continue;
 				}
 			}

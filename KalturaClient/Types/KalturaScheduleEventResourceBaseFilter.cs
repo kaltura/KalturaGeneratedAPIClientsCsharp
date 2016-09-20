@@ -132,28 +132,28 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "eventIdEqual":
-						this.EventIdEqual = ParseInt(txt);
+						this._EventIdEqual = ParseInt(txt);
 						continue;
 					case "eventIdIn":
-						this.EventIdIn = txt;
+						this._EventIdIn = txt;
 						continue;
 					case "resourceIdEqual":
-						this.ResourceIdEqual = ParseInt(txt);
+						this._ResourceIdEqual = ParseInt(txt);
 						continue;
 					case "resourceIdIn":
-						this.ResourceIdIn = txt;
+						this._ResourceIdIn = txt;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this.CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this.CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this.UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this.UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 				}
 			}

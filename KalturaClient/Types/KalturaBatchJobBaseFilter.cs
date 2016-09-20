@@ -502,139 +502,139 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this.IdEqual = ParseLong(txt);
+						this._IdEqual = ParseLong(txt);
 						continue;
 					case "idGreaterThanOrEqual":
-						this.IdGreaterThanOrEqual = ParseLong(txt);
+						this._IdGreaterThanOrEqual = ParseLong(txt);
 						continue;
 					case "partnerIdEqual":
-						this.PartnerIdEqual = ParseInt(txt);
+						this._PartnerIdEqual = ParseInt(txt);
 						continue;
 					case "partnerIdIn":
-						this.PartnerIdIn = txt;
+						this._PartnerIdIn = txt;
 						continue;
 					case "partnerIdNotIn":
-						this.PartnerIdNotIn = txt;
+						this._PartnerIdNotIn = txt;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this.CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this.CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this.UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this.UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "executionAttemptsGreaterThanOrEqual":
-						this.ExecutionAttemptsGreaterThanOrEqual = ParseInt(txt);
+						this._ExecutionAttemptsGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "executionAttemptsLessThanOrEqual":
-						this.ExecutionAttemptsLessThanOrEqual = ParseInt(txt);
+						this._ExecutionAttemptsLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "lockVersionGreaterThanOrEqual":
-						this.LockVersionGreaterThanOrEqual = ParseInt(txt);
+						this._LockVersionGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "lockVersionLessThanOrEqual":
-						this.LockVersionLessThanOrEqual = ParseInt(txt);
+						this._LockVersionLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "entryIdEqual":
-						this.EntryIdEqual = txt;
+						this._EntryIdEqual = txt;
 						continue;
 					case "jobTypeEqual":
-						this.JobTypeEqual = (KalturaBatchJobType)KalturaStringEnum.Parse(typeof(KalturaBatchJobType), txt);
+						this._JobTypeEqual = (KalturaBatchJobType)KalturaStringEnum.Parse(typeof(KalturaBatchJobType), txt);
 						continue;
 					case "jobTypeIn":
-						this.JobTypeIn = txt;
+						this._JobTypeIn = txt;
 						continue;
 					case "jobTypeNotIn":
-						this.JobTypeNotIn = txt;
+						this._JobTypeNotIn = txt;
 						continue;
 					case "jobSubTypeEqual":
-						this.JobSubTypeEqual = ParseInt(txt);
+						this._JobSubTypeEqual = ParseInt(txt);
 						continue;
 					case "jobSubTypeIn":
-						this.JobSubTypeIn = txt;
+						this._JobSubTypeIn = txt;
 						continue;
 					case "jobSubTypeNotIn":
-						this.JobSubTypeNotIn = txt;
+						this._JobSubTypeNotIn = txt;
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaBatchJobStatus)ParseEnum(typeof(KalturaBatchJobStatus), txt);
+						this._StatusEqual = (KalturaBatchJobStatus)ParseEnum(typeof(KalturaBatchJobStatus), txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = txt;
+						this._StatusIn = txt;
 						continue;
 					case "statusNotIn":
-						this.StatusNotIn = txt;
+						this._StatusNotIn = txt;
 						continue;
 					case "priorityGreaterThanOrEqual":
-						this.PriorityGreaterThanOrEqual = ParseInt(txt);
+						this._PriorityGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "priorityLessThanOrEqual":
-						this.PriorityLessThanOrEqual = ParseInt(txt);
+						this._PriorityLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "priorityEqual":
-						this.PriorityEqual = ParseInt(txt);
+						this._PriorityEqual = ParseInt(txt);
 						continue;
 					case "priorityIn":
-						this.PriorityIn = txt;
+						this._PriorityIn = txt;
 						continue;
 					case "priorityNotIn":
-						this.PriorityNotIn = txt;
+						this._PriorityNotIn = txt;
 						continue;
 					case "batchVersionGreaterThanOrEqual":
-						this.BatchVersionGreaterThanOrEqual = ParseInt(txt);
+						this._BatchVersionGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "batchVersionLessThanOrEqual":
-						this.BatchVersionLessThanOrEqual = ParseInt(txt);
+						this._BatchVersionLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "batchVersionEqual":
-						this.BatchVersionEqual = ParseInt(txt);
+						this._BatchVersionEqual = ParseInt(txt);
 						continue;
 					case "queueTimeGreaterThanOrEqual":
-						this.QueueTimeGreaterThanOrEqual = ParseInt(txt);
+						this._QueueTimeGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "queueTimeLessThanOrEqual":
-						this.QueueTimeLessThanOrEqual = ParseInt(txt);
+						this._QueueTimeLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "finishTimeGreaterThanOrEqual":
-						this.FinishTimeGreaterThanOrEqual = ParseInt(txt);
+						this._FinishTimeGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "finishTimeLessThanOrEqual":
-						this.FinishTimeLessThanOrEqual = ParseInt(txt);
+						this._FinishTimeLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "errTypeEqual":
-						this.ErrTypeEqual = (KalturaBatchJobErrorTypes)ParseEnum(typeof(KalturaBatchJobErrorTypes), txt);
+						this._ErrTypeEqual = (KalturaBatchJobErrorTypes)ParseEnum(typeof(KalturaBatchJobErrorTypes), txt);
 						continue;
 					case "errTypeIn":
-						this.ErrTypeIn = txt;
+						this._ErrTypeIn = txt;
 						continue;
 					case "errTypeNotIn":
-						this.ErrTypeNotIn = txt;
+						this._ErrTypeNotIn = txt;
 						continue;
 					case "errNumberEqual":
-						this.ErrNumberEqual = ParseInt(txt);
+						this._ErrNumberEqual = ParseInt(txt);
 						continue;
 					case "errNumberIn":
-						this.ErrNumberIn = txt;
+						this._ErrNumberIn = txt;
 						continue;
 					case "errNumberNotIn":
-						this.ErrNumberNotIn = txt;
+						this._ErrNumberNotIn = txt;
 						continue;
 					case "estimatedEffortLessThan":
-						this.EstimatedEffortLessThan = ParseInt(txt);
+						this._EstimatedEffortLessThan = ParseInt(txt);
 						continue;
 					case "estimatedEffortGreaterThan":
-						this.EstimatedEffortGreaterThan = ParseInt(txt);
+						this._EstimatedEffortGreaterThan = ParseInt(txt);
 						continue;
 					case "urgencyLessThanOrEqual":
-						this.UrgencyLessThanOrEqual = ParseInt(txt);
+						this._UrgencyLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "urgencyGreaterThanOrEqual":
-						this.UrgencyGreaterThanOrEqual = ParseInt(txt);
+						this._UrgencyGreaterThanOrEqual = ParseInt(txt);
 						continue;
 				}
 			}

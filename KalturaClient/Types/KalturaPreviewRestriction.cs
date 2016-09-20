@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "previewLength":
-						this.PreviewLength = ParseInt(txt);
+						this._PreviewLength = ParseInt(txt);
 						continue;
 				}
 			}

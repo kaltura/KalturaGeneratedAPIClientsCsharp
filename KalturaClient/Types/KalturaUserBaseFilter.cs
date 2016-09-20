@@ -212,52 +212,52 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "partnerIdEqual":
-						this.PartnerIdEqual = ParseInt(txt);
+						this._PartnerIdEqual = ParseInt(txt);
 						continue;
 					case "typeEqual":
-						this.TypeEqual = (KalturaUserType)ParseEnum(typeof(KalturaUserType), txt);
+						this._TypeEqual = (KalturaUserType)ParseEnum(typeof(KalturaUserType), txt);
 						continue;
 					case "typeIn":
-						this.TypeIn = txt;
+						this._TypeIn = txt;
 						continue;
 					case "screenNameLike":
-						this.ScreenNameLike = txt;
+						this._ScreenNameLike = txt;
 						continue;
 					case "screenNameStartsWith":
-						this.ScreenNameStartsWith = txt;
+						this._ScreenNameStartsWith = txt;
 						continue;
 					case "emailLike":
-						this.EmailLike = txt;
+						this._EmailLike = txt;
 						continue;
 					case "emailStartsWith":
-						this.EmailStartsWith = txt;
+						this._EmailStartsWith = txt;
 						continue;
 					case "tagsMultiLikeOr":
-						this.TagsMultiLikeOr = txt;
+						this._TagsMultiLikeOr = txt;
 						continue;
 					case "tagsMultiLikeAnd":
-						this.TagsMultiLikeAnd = txt;
+						this._TagsMultiLikeAnd = txt;
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaUserStatus)ParseEnum(typeof(KalturaUserStatus), txt);
+						this._StatusEqual = (KalturaUserStatus)ParseEnum(typeof(KalturaUserStatus), txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = txt;
+						this._StatusIn = txt;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this.CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this.CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "firstNameStartsWith":
-						this.FirstNameStartsWith = txt;
+						this._FirstNameStartsWith = txt;
 						continue;
 					case "lastNameStartsWith":
-						this.LastNameStartsWith = txt;
+						this._LastNameStartsWith = txt;
 						continue;
 					case "isAdminEqual":
-						this.IsAdminEqual = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._IsAdminEqual = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 				}
 			}

@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "loginEmailEqual":
-						this.LoginEmailEqual = txt;
+						this._LoginEmailEqual = txt;
 						continue;
 				}
 			}

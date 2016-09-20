@@ -48,7 +48,7 @@ namespace Kaltura
 				OnPropertyChanged("Type");
 			}
 		}
-		public IList<KalturaSearchItem> Items
+		public new IList<KalturaSearchItem> Items
 		{
 			get { return _Items; }
 			set 
@@ -72,13 +72,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "type":
-						this.Type = (KalturaSearchOperatorType)ParseEnum(typeof(KalturaSearchOperatorType), txt);
+						this._Type = (KalturaSearchOperatorType)ParseEnum(typeof(KalturaSearchOperatorType), txt);
 						continue;
 					case "items":
-						this.Items = new List<KalturaSearchItem>();
+						this._Items = new List<KalturaSearchItem>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Items.Add((KalturaSearchItem)KalturaObjectFactory.Create(arrayNode, "KalturaSearchItem"));
+							this._Items.Add((KalturaSearchItem)KalturaObjectFactory.Create(arrayNode, "KalturaSearchItem"));
 						}
 						continue;
 				}

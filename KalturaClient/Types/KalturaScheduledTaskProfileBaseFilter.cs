@@ -192,46 +192,46 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this.IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(txt);
 						continue;
 					case "idIn":
-						this.IdIn = txt;
+						this._IdIn = txt;
 						continue;
 					case "partnerIdEqual":
-						this.PartnerIdEqual = ParseInt(txt);
+						this._PartnerIdEqual = ParseInt(txt);
 						continue;
 					case "partnerIdIn":
-						this.PartnerIdIn = txt;
+						this._PartnerIdIn = txt;
 						continue;
 					case "systemNameEqual":
-						this.SystemNameEqual = txt;
+						this._SystemNameEqual = txt;
 						continue;
 					case "systemNameIn":
-						this.SystemNameIn = txt;
+						this._SystemNameIn = txt;
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaScheduledTaskProfileStatus)ParseEnum(typeof(KalturaScheduledTaskProfileStatus), txt);
+						this._StatusEqual = (KalturaScheduledTaskProfileStatus)ParseEnum(typeof(KalturaScheduledTaskProfileStatus), txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = txt;
+						this._StatusIn = txt;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this.CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this.CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this.UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this.UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "lastExecutionStartedAtGreaterThanOrEqual":
-						this.LastExecutionStartedAtGreaterThanOrEqual = ParseInt(txt);
+						this._LastExecutionStartedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "lastExecutionStartedAtLessThanOrEqual":
-						this.LastExecutionStartedAtLessThanOrEqual = ParseInt(txt);
+						this._LastExecutionStartedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 				}
 			}

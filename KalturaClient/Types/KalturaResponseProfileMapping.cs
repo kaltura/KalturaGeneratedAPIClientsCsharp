@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "parentProperty":
-						this.ParentProperty = txt;
+						this._ParentProperty = txt;
 						continue;
 					case "filterProperty":
-						this.FilterProperty = txt;
+						this._FilterProperty = txt;
 						continue;
 					case "allowNull":
-						this.AllowNull = ParseBool(txt);
+						this._AllowNull = ParseBool(txt);
 						continue;
 				}
 			}

@@ -132,28 +132,28 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "resourceId":
-						this.ResourceId = txt;
+						this._ResourceId = txt;
 						continue;
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 					case "type":
-						this.Type = txt;
+						this._Type = txt;
 						continue;
 					case "systemName":
-						this.SystemName = txt;
+						this._SystemName = txt;
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "tags":
-						this.Tags = txt;
+						this._Tags = txt;
 						continue;
 					case "parentType":
-						this.ParentType = txt;
+						this._ParentType = txt;
 						continue;
 					case "parentSystemName":
-						this.ParentSystemName = txt;
+						this._ParentSystemName = txt;
 						continue;
 				}
 			}

@@ -192,46 +192,46 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this.IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(txt);
 						continue;
 					case "idIn":
-						this.IdIn = txt;
+						this._IdIn = txt;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this.CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this.CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this.UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this.UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "partnerIdEqual":
-						this.PartnerIdEqual = ParseInt(txt);
+						this._PartnerIdEqual = ParseInt(txt);
 						continue;
 					case "partnerIdIn":
-						this.PartnerIdIn = txt;
+						this._PartnerIdIn = txt;
 						continue;
 					case "nameEqual":
-						this.NameEqual = txt;
+						this._NameEqual = txt;
 						continue;
 					case "nameLike":
-						this.NameLike = txt;
+						this._NameLike = txt;
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaVirusScanProfileStatus)ParseEnum(typeof(KalturaVirusScanProfileStatus), txt);
+						this._StatusEqual = (KalturaVirusScanProfileStatus)ParseEnum(typeof(KalturaVirusScanProfileStatus), txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = txt;
+						this._StatusIn = txt;
 						continue;
 					case "engineTypeEqual":
-						this.EngineTypeEqual = (KalturaVirusScanEngineType)KalturaStringEnum.Parse(typeof(KalturaVirusScanEngineType), txt);
+						this._EngineTypeEqual = (KalturaVirusScanEngineType)KalturaStringEnum.Parse(typeof(KalturaVirusScanEngineType), txt);
 						continue;
 					case "engineTypeIn":
-						this.EngineTypeIn = txt;
+						this._EngineTypeIn = txt;
 						continue;
 				}
 			}

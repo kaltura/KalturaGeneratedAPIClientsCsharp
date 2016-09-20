@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "tokenizationFormat":
-						this.TokenizationFormat = ParseInt(txt);
+						this._TokenizationFormat = ParseInt(txt);
 						continue;
 					case "shouldIncludeClientIp":
-						this.ShouldIncludeClientIp = ParseBool(txt);
+						this._ShouldIncludeClientIp = ParseBool(txt);
 						continue;
 				}
 			}

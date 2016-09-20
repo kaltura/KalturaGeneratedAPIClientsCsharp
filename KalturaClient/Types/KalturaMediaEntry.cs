@@ -114,38 +114,18 @@ namespace Kaltura
 		public int MediaDate
 		{
 			get { return _MediaDate; }
-			set 
-			{ 
-				_MediaDate = value;
-				OnPropertyChanged("MediaDate");
-			}
 		}
 		public string DataUrl
 		{
 			get { return _DataUrl; }
-			set 
-			{ 
-				_DataUrl = value;
-				OnPropertyChanged("DataUrl");
-			}
 		}
 		public string FlavorParamsIds
 		{
 			get { return _FlavorParamsIds; }
-			set 
-			{ 
-				_FlavorParamsIds = value;
-				OnPropertyChanged("FlavorParamsIds");
-			}
 		}
 		public KalturaNullableBoolean IsTrimDisabled
 		{
 			get { return _IsTrimDisabled; }
-			set 
-			{ 
-				_IsTrimDisabled = value;
-				OnPropertyChanged("IsTrimDisabled");
-			}
 		}
 		#endregion
 
@@ -162,37 +142,37 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "mediaType":
-						this.MediaType = (KalturaMediaType)ParseEnum(typeof(KalturaMediaType), txt);
+						this._MediaType = (KalturaMediaType)ParseEnum(typeof(KalturaMediaType), txt);
 						continue;
 					case "conversionQuality":
-						this.ConversionQuality = txt;
+						this._ConversionQuality = txt;
 						continue;
 					case "sourceType":
-						this.SourceType = (KalturaSourceType)KalturaStringEnum.Parse(typeof(KalturaSourceType), txt);
+						this._SourceType = (KalturaSourceType)KalturaStringEnum.Parse(typeof(KalturaSourceType), txt);
 						continue;
 					case "searchProviderType":
-						this.SearchProviderType = (KalturaSearchProviderType)ParseEnum(typeof(KalturaSearchProviderType), txt);
+						this._SearchProviderType = (KalturaSearchProviderType)ParseEnum(typeof(KalturaSearchProviderType), txt);
 						continue;
 					case "searchProviderId":
-						this.SearchProviderId = txt;
+						this._SearchProviderId = txt;
 						continue;
 					case "creditUserName":
-						this.CreditUserName = txt;
+						this._CreditUserName = txt;
 						continue;
 					case "creditUrl":
-						this.CreditUrl = txt;
+						this._CreditUrl = txt;
 						continue;
 					case "mediaDate":
-						this.MediaDate = ParseInt(txt);
+						this._MediaDate = ParseInt(txt);
 						continue;
 					case "dataUrl":
-						this.DataUrl = txt;
+						this._DataUrl = txt;
 						continue;
 					case "flavorParamsIds":
-						this.FlavorParamsIds = txt;
+						this._FlavorParamsIds = txt;
 						continue;
 					case "isTrimDisabled":
-						this.IsTrimDisabled = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._IsTrimDisabled = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 				}
 			}

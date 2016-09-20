@@ -122,25 +122,25 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "templateEntryIdEqual":
-						this.TemplateEntryIdEqual = txt;
+						this._TemplateEntryIdEqual = txt;
 						continue;
 					case "entryIdsLike":
-						this.EntryIdsLike = txt;
+						this._EntryIdsLike = txt;
 						continue;
 					case "entryIdsMultiLikeOr":
-						this.EntryIdsMultiLikeOr = txt;
+						this._EntryIdsMultiLikeOr = txt;
 						continue;
 					case "entryIdsMultiLikeAnd":
-						this.EntryIdsMultiLikeAnd = txt;
+						this._EntryIdsMultiLikeAnd = txt;
 						continue;
 					case "categoryIdsLike":
-						this.CategoryIdsLike = txt;
+						this._CategoryIdsLike = txt;
 						continue;
 					case "categoryIdsMultiLikeOr":
-						this.CategoryIdsMultiLikeOr = txt;
+						this._CategoryIdsMultiLikeOr = txt;
 						continue;
 					case "categoryIdsMultiLikeAnd":
-						this.CategoryIdsMultiLikeAnd = txt;
+						this._CategoryIdsMultiLikeAnd = txt;
 						continue;
 				}
 			}

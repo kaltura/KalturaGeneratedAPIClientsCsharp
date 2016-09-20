@@ -51,101 +51,46 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public int MetadataProfileId
 		{
 			get { return _MetadataProfileId; }
-			set 
-			{ 
-				_MetadataProfileId = value;
-				OnPropertyChanged("MetadataProfileId");
-			}
 		}
 		public int MetadataProfileVersion
 		{
 			get { return _MetadataProfileVersion; }
-			set 
-			{ 
-				_MetadataProfileVersion = value;
-				OnPropertyChanged("MetadataProfileVersion");
-			}
 		}
 		public KalturaMetadataObjectType MetadataObjectType
 		{
 			get { return _MetadataObjectType; }
-			set 
-			{ 
-				_MetadataObjectType = value;
-				OnPropertyChanged("MetadataObjectType");
-			}
 		}
 		public string ObjectId
 		{
 			get { return _ObjectId; }
-			set 
-			{ 
-				_ObjectId = value;
-				OnPropertyChanged("ObjectId");
-			}
 		}
 		public int Version
 		{
 			get { return _Version; }
-			set 
-			{ 
-				_Version = value;
-				OnPropertyChanged("Version");
-			}
 		}
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public KalturaMetadataStatus Status
 		{
 			get { return _Status; }
-			set 
-			{ 
-				_Status = value;
-				OnPropertyChanged("Status");
-			}
 		}
 		public string Xml
 		{
 			get { return _Xml; }
-			set 
-			{ 
-				_Xml = value;
-				OnPropertyChanged("Xml");
-			}
 		}
 		#endregion
 
@@ -162,37 +107,37 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "metadataProfileId":
-						this.MetadataProfileId = ParseInt(txt);
+						this._MetadataProfileId = ParseInt(txt);
 						continue;
 					case "metadataProfileVersion":
-						this.MetadataProfileVersion = ParseInt(txt);
+						this._MetadataProfileVersion = ParseInt(txt);
 						continue;
 					case "metadataObjectType":
-						this.MetadataObjectType = (KalturaMetadataObjectType)KalturaStringEnum.Parse(typeof(KalturaMetadataObjectType), txt);
+						this._MetadataObjectType = (KalturaMetadataObjectType)KalturaStringEnum.Parse(typeof(KalturaMetadataObjectType), txt);
 						continue;
 					case "objectId":
-						this.ObjectId = txt;
+						this._ObjectId = txt;
 						continue;
 					case "version":
-						this.Version = ParseInt(txt);
+						this._Version = ParseInt(txt);
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "status":
-						this.Status = (KalturaMetadataStatus)ParseEnum(typeof(KalturaMetadataStatus), txt);
+						this._Status = (KalturaMetadataStatus)ParseEnum(typeof(KalturaMetadataStatus), txt);
 						continue;
 					case "xml":
-						this.Xml = txt;
+						this._Xml = txt;
 						continue;
 				}
 			}

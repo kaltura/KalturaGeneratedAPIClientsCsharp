@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "profile":
-						this.Profile = txt;
+						this._Profile = txt;
 						continue;
 					case "type":
-						this.Type = txt;
+						this._Type = txt;
 						continue;
 					case "aifp":
-						this.Aifp = txt;
+						this._Aifp = txt;
 						continue;
 					case "usePrefix":
-						this.UsePrefix = ParseBool(txt);
+						this._UsePrefix = ParseBool(txt);
 						continue;
 				}
 			}

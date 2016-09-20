@@ -56,11 +56,6 @@ namespace Kaltura
 		public string Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public string SourceWidgetId
 		{
@@ -74,20 +69,10 @@ namespace Kaltura
 		public string RootWidgetId
 		{
 			get { return _RootWidgetId; }
-			set 
-			{ 
-				_RootWidgetId = value;
-				OnPropertyChanged("RootWidgetId");
-			}
 		}
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public string EntryId
 		{
@@ -128,20 +113,10 @@ namespace Kaltura
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public string PartnerData
 		{
@@ -155,11 +130,6 @@ namespace Kaltura
 		public string WidgetHTML
 		{
 			get { return _WidgetHTML; }
-			set 
-			{ 
-				_WidgetHTML = value;
-				OnPropertyChanged("WidgetHTML");
-			}
 		}
 		public bool? EnforceEntitlement
 		{
@@ -212,52 +182,52 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = txt;
+						this._Id = txt;
 						continue;
 					case "sourceWidgetId":
-						this.SourceWidgetId = txt;
+						this._SourceWidgetId = txt;
 						continue;
 					case "rootWidgetId":
-						this.RootWidgetId = txt;
+						this._RootWidgetId = txt;
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "entryId":
-						this.EntryId = txt;
+						this._EntryId = txt;
 						continue;
 					case "uiConfId":
-						this.UiConfId = ParseInt(txt);
+						this._UiConfId = ParseInt(txt);
 						continue;
 					case "securityType":
-						this.SecurityType = (KalturaWidgetSecurityType)ParseEnum(typeof(KalturaWidgetSecurityType), txt);
+						this._SecurityType = (KalturaWidgetSecurityType)ParseEnum(typeof(KalturaWidgetSecurityType), txt);
 						continue;
 					case "securityPolicy":
-						this.SecurityPolicy = ParseInt(txt);
+						this._SecurityPolicy = ParseInt(txt);
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "partnerData":
-						this.PartnerData = txt;
+						this._PartnerData = txt;
 						continue;
 					case "widgetHTML":
-						this.WidgetHTML = txt;
+						this._WidgetHTML = txt;
 						continue;
 					case "enforceEntitlement":
-						this.EnforceEntitlement = ParseBool(txt);
+						this._EnforceEntitlement = ParseBool(txt);
 						continue;
 					case "privacyContext":
-						this.PrivacyContext = txt;
+						this._PrivacyContext = txt;
 						continue;
 					case "addEmbedHtml5Support":
-						this.AddEmbedHtml5Support = ParseBool(txt);
+						this._AddEmbedHtml5Support = ParseBool(txt);
 						continue;
 					case "roles":
-						this.Roles = txt;
+						this._Roles = txt;
 						continue;
 				}
 			}

@@ -152,34 +152,34 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "mediaTypeEqual":
-						this.MediaTypeEqual = (KalturaMediaType)ParseEnum(typeof(KalturaMediaType), txt);
+						this._MediaTypeEqual = (KalturaMediaType)ParseEnum(typeof(KalturaMediaType), txt);
 						continue;
 					case "mediaTypeIn":
-						this.MediaTypeIn = txt;
+						this._MediaTypeIn = txt;
 						continue;
 					case "sourceTypeEqual":
-						this.SourceTypeEqual = (KalturaSourceType)KalturaStringEnum.Parse(typeof(KalturaSourceType), txt);
+						this._SourceTypeEqual = (KalturaSourceType)KalturaStringEnum.Parse(typeof(KalturaSourceType), txt);
 						continue;
 					case "sourceTypeNotEqual":
-						this.SourceTypeNotEqual = (KalturaSourceType)KalturaStringEnum.Parse(typeof(KalturaSourceType), txt);
+						this._SourceTypeNotEqual = (KalturaSourceType)KalturaStringEnum.Parse(typeof(KalturaSourceType), txt);
 						continue;
 					case "sourceTypeIn":
-						this.SourceTypeIn = txt;
+						this._SourceTypeIn = txt;
 						continue;
 					case "sourceTypeNotIn":
-						this.SourceTypeNotIn = txt;
+						this._SourceTypeNotIn = txt;
 						continue;
 					case "mediaDateGreaterThanOrEqual":
-						this.MediaDateGreaterThanOrEqual = ParseInt(txt);
+						this._MediaDateGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "mediaDateLessThanOrEqual":
-						this.MediaDateLessThanOrEqual = ParseInt(txt);
+						this._MediaDateLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "flavorParamsIdsMatchOr":
-						this.FlavorParamsIdsMatchOr = txt;
+						this._FlavorParamsIdsMatchOr = txt;
 						continue;
 					case "flavorParamsIdsMatchAnd":
-						this.FlavorParamsIdsMatchAnd = txt;
+						this._FlavorParamsIdsMatchAnd = txt;
 						continue;
 				}
 			}

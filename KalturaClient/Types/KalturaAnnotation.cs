@@ -76,38 +76,18 @@ namespace Kaltura
 		public int Duration
 		{
 			get { return _Duration; }
-			set 
-			{ 
-				_Duration = value;
-				OnPropertyChanged("Duration");
-			}
 		}
 		public int Depth
 		{
 			get { return _Depth; }
-			set 
-			{ 
-				_Depth = value;
-				OnPropertyChanged("Depth");
-			}
 		}
 		public int ChildrenCount
 		{
 			get { return _ChildrenCount; }
-			set 
-			{ 
-				_ChildrenCount = value;
-				OnPropertyChanged("ChildrenCount");
-			}
 		}
 		public int DirectChildrenCount
 		{
 			get { return _DirectChildrenCount; }
-			set 
-			{ 
-				_DirectChildrenCount = value;
-				OnPropertyChanged("DirectChildrenCount");
-			}
 		}
 		public KalturaNullableBoolean IsPublic
 		{
@@ -142,31 +122,31 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "parentId":
-						this.ParentId = txt;
+						this._ParentId = txt;
 						continue;
 					case "text":
-						this.Text = txt;
+						this._Text = txt;
 						continue;
 					case "endTime":
-						this.EndTime = ParseInt(txt);
+						this._EndTime = ParseInt(txt);
 						continue;
 					case "duration":
-						this.Duration = ParseInt(txt);
+						this._Duration = ParseInt(txt);
 						continue;
 					case "depth":
-						this.Depth = ParseInt(txt);
+						this._Depth = ParseInt(txt);
 						continue;
 					case "childrenCount":
-						this.ChildrenCount = ParseInt(txt);
+						this._ChildrenCount = ParseInt(txt);
 						continue;
 					case "directChildrenCount":
-						this.DirectChildrenCount = ParseInt(txt);
+						this._DirectChildrenCount = ParseInt(txt);
 						continue;
 					case "isPublic":
-						this.IsPublic = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._IsPublic = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "searchableOnEntry":
-						this.SearchableOnEntry = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._SearchableOnEntry = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 				}
 			}

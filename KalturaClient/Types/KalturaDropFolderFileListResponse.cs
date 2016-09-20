@@ -38,14 +38,9 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
-		public IList<KalturaDropFolderFile> Objects
+		public new IList<KalturaDropFolderFile> Objects
 		{
 			get { return _Objects; }
-			set 
-			{ 
-				_Objects = value;
-				OnPropertyChanged("Objects");
-			}
 		}
 		#endregion
 
@@ -62,10 +57,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "objects":
-						this.Objects = new List<KalturaDropFolderFile>();
+						this._Objects = new List<KalturaDropFolderFile>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Objects.Add((KalturaDropFolderFile)KalturaObjectFactory.Create(arrayNode, "KalturaDropFolderFile"));
+							this._Objects.Add((KalturaDropFolderFile)KalturaObjectFactory.Create(arrayNode, "KalturaDropFolderFile"));
 						}
 						continue;
 				}

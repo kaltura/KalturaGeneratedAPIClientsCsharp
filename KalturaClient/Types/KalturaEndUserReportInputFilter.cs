@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "application":
-						this.Application = txt;
+						this._Application = txt;
 						continue;
 					case "userIds":
-						this.UserIds = txt;
+						this._UserIds = txt;
 						continue;
 					case "playbackContext":
-						this.PlaybackContext = txt;
+						this._PlaybackContext = txt;
 						continue;
 					case "ancestorPlaybackContext":
-						this.AncestorPlaybackContext = txt;
+						this._AncestorPlaybackContext = txt;
 						continue;
 				}
 			}

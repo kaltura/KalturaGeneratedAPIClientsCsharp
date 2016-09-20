@@ -52,56 +52,26 @@ namespace Kaltura
 		public string Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public string Token
 		{
 			get { return _Token; }
-			set 
-			{ 
-				_Token = value;
-				OnPropertyChanged("Token");
-			}
 		}
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public KalturaAppTokenStatus Status
 		{
 			get { return _Status; }
-			set 
-			{ 
-				_Status = value;
-				OnPropertyChanged("Status");
-			}
 		}
 		public int Expiry
 		{
@@ -172,40 +142,40 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = txt;
+						this._Id = txt;
 						continue;
 					case "token":
-						this.Token = txt;
+						this._Token = txt;
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "status":
-						this.Status = (KalturaAppTokenStatus)ParseEnum(typeof(KalturaAppTokenStatus), txt);
+						this._Status = (KalturaAppTokenStatus)ParseEnum(typeof(KalturaAppTokenStatus), txt);
 						continue;
 					case "expiry":
-						this.Expiry = ParseInt(txt);
+						this._Expiry = ParseInt(txt);
 						continue;
 					case "sessionType":
-						this.SessionType = (KalturaSessionType)ParseEnum(typeof(KalturaSessionType), txt);
+						this._SessionType = (KalturaSessionType)ParseEnum(typeof(KalturaSessionType), txt);
 						continue;
 					case "sessionUserId":
-						this.SessionUserId = txt;
+						this._SessionUserId = txt;
 						continue;
 					case "sessionDuration":
-						this.SessionDuration = ParseInt(txt);
+						this._SessionDuration = ParseInt(txt);
 						continue;
 					case "sessionPrivileges":
-						this.SessionPrivileges = txt;
+						this._SessionPrivileges = txt;
 						continue;
 					case "hashType":
-						this.HashType = (KalturaAppTokenHashType)KalturaStringEnum.Parse(typeof(KalturaAppTokenHashType), txt);
+						this._HashType = (KalturaAppTokenHashType)KalturaStringEnum.Parse(typeof(KalturaAppTokenHashType), txt);
 						continue;
 				}
 			}

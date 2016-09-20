@@ -98,7 +98,7 @@ namespace Kaltura
 				OnPropertyChanged("CommandLinesStr");
 			}
 		}
-		public IList<KalturaConvertCollectionFlavorData> Flavors
+		public new IList<KalturaConvertCollectionFlavorData> Flavors
 		{
 			get { return _Flavors; }
 			set 
@@ -122,28 +122,28 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "destDirLocalPath":
-						this.DestDirLocalPath = txt;
+						this._DestDirLocalPath = txt;
 						continue;
 					case "destDirRemoteUrl":
-						this.DestDirRemoteUrl = txt;
+						this._DestDirRemoteUrl = txt;
 						continue;
 					case "destFileName":
-						this.DestFileName = txt;
+						this._DestFileName = txt;
 						continue;
 					case "inputXmlLocalPath":
-						this.InputXmlLocalPath = txt;
+						this._InputXmlLocalPath = txt;
 						continue;
 					case "inputXmlRemoteUrl":
-						this.InputXmlRemoteUrl = txt;
+						this._InputXmlRemoteUrl = txt;
 						continue;
 					case "commandLinesStr":
-						this.CommandLinesStr = txt;
+						this._CommandLinesStr = txt;
 						continue;
 					case "flavors":
-						this.Flavors = new List<KalturaConvertCollectionFlavorData>();
+						this._Flavors = new List<KalturaConvertCollectionFlavorData>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Flavors.Add((KalturaConvertCollectionFlavorData)KalturaObjectFactory.Create(arrayNode, "KalturaConvertCollectionFlavorData"));
+							this._Flavors.Add((KalturaConvertCollectionFlavorData)KalturaObjectFactory.Create(arrayNode, "KalturaConvertCollectionFlavorData"));
 						}
 						continue;
 				}

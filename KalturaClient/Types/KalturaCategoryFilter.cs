@@ -118,7 +118,7 @@ namespace Kaltura
 				OnPropertyChanged("IdOrInheritedParentIdIn");
 			}
 		}
-		public new KalturaCategoryOrderBy OrderBy
+		public KalturaCategoryOrderBy OrderBy
 		{
 			get { return _OrderBy; }
 			set 
@@ -142,31 +142,31 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "freeText":
-						this.FreeText = txt;
+						this._FreeText = txt;
 						continue;
 					case "membersIn":
-						this.MembersIn = txt;
+						this._MembersIn = txt;
 						continue;
 					case "nameOrReferenceIdStartsWith":
-						this.NameOrReferenceIdStartsWith = txt;
+						this._NameOrReferenceIdStartsWith = txt;
 						continue;
 					case "managerEqual":
-						this.ManagerEqual = txt;
+						this._ManagerEqual = txt;
 						continue;
 					case "memberEqual":
-						this.MemberEqual = txt;
+						this._MemberEqual = txt;
 						continue;
 					case "fullNameStartsWithIn":
-						this.FullNameStartsWithIn = txt;
+						this._FullNameStartsWithIn = txt;
 						continue;
 					case "ancestorIdIn":
-						this.AncestorIdIn = txt;
+						this._AncestorIdIn = txt;
 						continue;
 					case "idOrInheritedParentIdIn":
-						this.IdOrInheritedParentIdIn = txt;
+						this._IdOrInheritedParentIdIn = txt;
 						continue;
 					case "orderBy":
-						this.OrderBy = (KalturaCategoryOrderBy)KalturaStringEnum.Parse(typeof(KalturaCategoryOrderBy), txt);
+						this._OrderBy = (KalturaCategoryOrderBy)KalturaStringEnum.Parse(typeof(KalturaCategoryOrderBy), txt);
 						continue;
 				}
 			}

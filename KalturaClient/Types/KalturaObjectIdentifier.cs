@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "extendedFeatures":
-						this.ExtendedFeatures = txt;
+						this._ExtendedFeatures = txt;
 						continue;
 				}
 			}

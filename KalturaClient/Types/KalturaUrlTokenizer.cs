@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "window":
-						this.Window = ParseInt(txt);
+						this._Window = ParseInt(txt);
 						continue;
 					case "key":
-						this.Key = txt;
+						this._Key = txt;
 						continue;
 					case "limitIpAddress":
-						this.LimitIpAddress = ParseBool(txt);
+						this._LimitIpAddress = ParseBool(txt);
 						continue;
 				}
 			}

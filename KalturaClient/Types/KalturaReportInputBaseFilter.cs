@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "fromDate":
-						this.FromDate = ParseInt(txt);
+						this._FromDate = ParseInt(txt);
 						continue;
 					case "toDate":
-						this.ToDate = ParseInt(txt);
+						this._ToDate = ParseInt(txt);
 						continue;
 					case "fromDay":
-						this.FromDay = txt;
+						this._FromDay = txt;
 						continue;
 					case "toDay":
-						this.ToDay = txt;
+						this._ToDay = txt;
 						continue;
 				}
 			}

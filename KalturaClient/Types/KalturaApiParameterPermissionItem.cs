@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "object":
-						this.Object = txt;
+						this._Object = txt;
 						continue;
 					case "parameter":
-						this.Parameter = txt;
+						this._Parameter = txt;
 						continue;
 					case "action":
-						this.Action = (KalturaApiParameterPermissionItemAction)KalturaStringEnum.Parse(typeof(KalturaApiParameterPermissionItemAction), txt);
+						this._Action = (KalturaApiParameterPermissionItemAction)KalturaStringEnum.Parse(typeof(KalturaApiParameterPermissionItemAction), txt);
 						continue;
 				}
 			}

@@ -54,47 +54,22 @@ namespace Kaltura
 		public string Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public string EntryId
 		{
 			get { return _EntryId; }
-			set 
-			{ 
-				_EntryId = value;
-				OnPropertyChanged("EntryId");
-			}
 		}
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public int Version
 		{
 			get { return _Version; }
-			set 
-			{ 
-				_Version = value;
-				OnPropertyChanged("Version");
-			}
 		}
 		public int Size
 		{
 			get { return _Size; }
-			set 
-			{ 
-				_Size = value;
-				OnPropertyChanged("Size");
-			}
 		}
 		public string Tags
 		{
@@ -117,38 +92,18 @@ namespace Kaltura
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public int DeletedAt
 		{
 			get { return _DeletedAt; }
-			set 
-			{ 
-				_DeletedAt = value;
-				OnPropertyChanged("DeletedAt");
-			}
 		}
 		public string Description
 		{
 			get { return _Description; }
-			set 
-			{ 
-				_Description = value;
-				OnPropertyChanged("Description");
-			}
 		}
 		public string PartnerData
 		{
@@ -192,46 +147,46 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = txt;
+						this._Id = txt;
 						continue;
 					case "entryId":
-						this.EntryId = txt;
+						this._EntryId = txt;
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "version":
-						this.Version = ParseInt(txt);
+						this._Version = ParseInt(txt);
 						continue;
 					case "size":
-						this.Size = ParseInt(txt);
+						this._Size = ParseInt(txt);
 						continue;
 					case "tags":
-						this.Tags = txt;
+						this._Tags = txt;
 						continue;
 					case "fileExt":
-						this.FileExt = txt;
+						this._FileExt = txt;
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "deletedAt":
-						this.DeletedAt = ParseInt(txt);
+						this._DeletedAt = ParseInt(txt);
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "partnerData":
-						this.PartnerData = txt;
+						this._PartnerData = txt;
 						continue;
 					case "partnerDescription":
-						this.PartnerDescription = txt;
+						this._PartnerDescription = txt;
 						continue;
 					case "actualSourceAssetParamsIds":
-						this.ActualSourceAssetParamsIds = txt;
+						this._ActualSourceAssetParamsIds = txt;
 						continue;
 				}
 			}

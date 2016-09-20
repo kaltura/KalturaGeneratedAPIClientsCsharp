@@ -40,7 +40,7 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
-		public IList<KalturaKeyValue> ProvisioningParams
+		public new IList<KalturaKeyValue> ProvisioningParams
 		{
 			get { return _ProvisioningParams; }
 			set 
@@ -82,17 +82,17 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "provisioningParams":
-						this.ProvisioningParams = new List<KalturaKeyValue>();
+						this._ProvisioningParams = new List<KalturaKeyValue>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.ProvisioningParams.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
+							this._ProvisioningParams.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
 						}
 						continue;
 					case "userName":
-						this.UserName = txt;
+						this._UserName = txt;
 						continue;
 					case "password":
-						this.Password = txt;
+						this._Password = txt;
 						continue;
 				}
 			}

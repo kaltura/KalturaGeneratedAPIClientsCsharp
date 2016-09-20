@@ -102,19 +102,19 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "objectTypeEqual":
-						this.ObjectTypeEqual = (KalturaTaggedObjectType)KalturaStringEnum.Parse(typeof(KalturaTaggedObjectType), txt);
+						this._ObjectTypeEqual = (KalturaTaggedObjectType)KalturaStringEnum.Parse(typeof(KalturaTaggedObjectType), txt);
 						continue;
 					case "tagEqual":
-						this.TagEqual = txt;
+						this._TagEqual = txt;
 						continue;
 					case "tagStartsWith":
-						this.TagStartsWith = txt;
+						this._TagStartsWith = txt;
 						continue;
 					case "instanceCountEqual":
-						this.InstanceCountEqual = ParseInt(txt);
+						this._InstanceCountEqual = ParseInt(txt);
 						continue;
 					case "instanceCountIn":
-						this.InstanceCountIn = ParseInt(txt);
+						this._InstanceCountIn = ParseInt(txt);
 						continue;
 				}
 			}

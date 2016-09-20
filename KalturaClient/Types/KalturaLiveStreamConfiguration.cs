@@ -102,19 +102,19 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "protocol":
-						this.Protocol = (KalturaPlaybackProtocol)KalturaStringEnum.Parse(typeof(KalturaPlaybackProtocol), txt);
+						this._Protocol = (KalturaPlaybackProtocol)KalturaStringEnum.Parse(typeof(KalturaPlaybackProtocol), txt);
 						continue;
 					case "url":
-						this.Url = txt;
+						this._Url = txt;
 						continue;
 					case "publishUrl":
-						this.PublishUrl = txt;
+						this._PublishUrl = txt;
 						continue;
 					case "backupUrl":
-						this.BackupUrl = txt;
+						this._BackupUrl = txt;
 						continue;
 					case "streamName":
-						this.StreamName = txt;
+						this._StreamName = txt;
 						continue;
 				}
 			}

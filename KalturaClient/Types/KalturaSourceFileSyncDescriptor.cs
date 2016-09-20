@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "actualFileSyncLocalPath":
-						this.ActualFileSyncLocalPath = txt;
+						this._ActualFileSyncLocalPath = txt;
 						continue;
 					case "assetId":
-						this.AssetId = txt;
+						this._AssetId = txt;
 						continue;
 					case "assetParamsId":
-						this.AssetParamsId = ParseInt(txt);
+						this._AssetParamsId = ParseInt(txt);
 						continue;
 				}
 			}

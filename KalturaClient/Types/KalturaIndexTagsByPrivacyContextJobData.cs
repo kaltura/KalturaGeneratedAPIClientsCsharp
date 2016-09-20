@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "changedCategoryId":
-						this.ChangedCategoryId = ParseInt(txt);
+						this._ChangedCategoryId = ParseInt(txt);
 						continue;
 					case "deletedPrivacyContexts":
-						this.DeletedPrivacyContexts = txt;
+						this._DeletedPrivacyContexts = txt;
 						continue;
 					case "addedPrivacyContexts":
-						this.AddedPrivacyContexts = txt;
+						this._AddedPrivacyContexts = txt;
 						continue;
 				}
 			}

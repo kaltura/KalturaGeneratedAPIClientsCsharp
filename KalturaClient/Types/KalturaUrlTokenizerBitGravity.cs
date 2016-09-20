@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "hashPatternRegex":
-						this.HashPatternRegex = txt;
+						this._HashPatternRegex = txt;
 						continue;
 				}
 			}

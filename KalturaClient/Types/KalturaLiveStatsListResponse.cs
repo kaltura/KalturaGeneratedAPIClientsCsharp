@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "objects":
-						this.Objects = (KalturaLiveStats)KalturaObjectFactory.Create(propertyNode, "KalturaLiveStats");
+						this._Objects = (KalturaLiveStats)KalturaObjectFactory.Create(propertyNode, "KalturaLiveStats");
 						continue;
 				}
 			}

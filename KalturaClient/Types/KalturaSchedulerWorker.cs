@@ -54,11 +54,6 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public int ConfiguredId
 		{
@@ -114,7 +109,7 @@ namespace Kaltura
 				OnPropertyChanged("Name");
 			}
 		}
-		public IList<KalturaSchedulerStatus> Statuses
+		public new IList<KalturaSchedulerStatus> Statuses
 		{
 			get { return _Statuses; }
 			set 
@@ -123,7 +118,7 @@ namespace Kaltura
 				OnPropertyChanged("Statuses");
 			}
 		}
-		public IList<KalturaSchedulerConfig> Configs
+		public new IList<KalturaSchedulerConfig> Configs
 		{
 			get { return _Configs; }
 			set 
@@ -132,7 +127,7 @@ namespace Kaltura
 				OnPropertyChanged("Configs");
 			}
 		}
-		public IList<KalturaBatchJob> LockedJobs
+		public new IList<KalturaBatchJob> LockedJobs
 		{
 			get { return _LockedJobs; }
 			set 
@@ -192,58 +187,58 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "configuredId":
-						this.ConfiguredId = ParseInt(txt);
+						this._ConfiguredId = ParseInt(txt);
 						continue;
 					case "schedulerId":
-						this.SchedulerId = ParseInt(txt);
+						this._SchedulerId = ParseInt(txt);
 						continue;
 					case "schedulerConfiguredId":
-						this.SchedulerConfiguredId = ParseInt(txt);
+						this._SchedulerConfiguredId = ParseInt(txt);
 						continue;
 					case "type":
-						this.Type = (KalturaBatchJobType)KalturaStringEnum.Parse(typeof(KalturaBatchJobType), txt);
+						this._Type = (KalturaBatchJobType)KalturaStringEnum.Parse(typeof(KalturaBatchJobType), txt);
 						continue;
 					case "typeName":
-						this.TypeName = txt;
+						this._TypeName = txt;
 						continue;
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 					case "statuses":
-						this.Statuses = new List<KalturaSchedulerStatus>();
+						this._Statuses = new List<KalturaSchedulerStatus>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Statuses.Add((KalturaSchedulerStatus)KalturaObjectFactory.Create(arrayNode, "KalturaSchedulerStatus"));
+							this._Statuses.Add((KalturaSchedulerStatus)KalturaObjectFactory.Create(arrayNode, "KalturaSchedulerStatus"));
 						}
 						continue;
 					case "configs":
-						this.Configs = new List<KalturaSchedulerConfig>();
+						this._Configs = new List<KalturaSchedulerConfig>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Configs.Add((KalturaSchedulerConfig)KalturaObjectFactory.Create(arrayNode, "KalturaSchedulerConfig"));
+							this._Configs.Add((KalturaSchedulerConfig)KalturaObjectFactory.Create(arrayNode, "KalturaSchedulerConfig"));
 						}
 						continue;
 					case "lockedJobs":
-						this.LockedJobs = new List<KalturaBatchJob>();
+						this._LockedJobs = new List<KalturaBatchJob>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.LockedJobs.Add((KalturaBatchJob)KalturaObjectFactory.Create(arrayNode, "KalturaBatchJob"));
+							this._LockedJobs.Add((KalturaBatchJob)KalturaObjectFactory.Create(arrayNode, "KalturaBatchJob"));
 						}
 						continue;
 					case "avgWait":
-						this.AvgWait = ParseInt(txt);
+						this._AvgWait = ParseInt(txt);
 						continue;
 					case "avgWork":
-						this.AvgWork = ParseInt(txt);
+						this._AvgWork = ParseInt(txt);
 						continue;
 					case "lastStatus":
-						this.LastStatus = ParseInt(txt);
+						this._LastStatus = ParseInt(txt);
 						continue;
 					case "lastStatusStr":
-						this.LastStatusStr = txt;
+						this._LastStatusStr = txt;
 						continue;
 				}
 			}

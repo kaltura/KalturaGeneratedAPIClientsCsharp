@@ -102,19 +102,19 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "xPath":
-						this.XPath = txt;
+						this._XPath = txt;
 						continue;
 					case "profileId":
-						this.ProfileId = ParseInt(txt);
+						this._ProfileId = ParseInt(txt);
 						continue;
 					case "profileSystemName":
-						this.ProfileSystemName = txt;
+						this._ProfileSystemName = txt;
 						continue;
 					case "versionA":
-						this.VersionA = txt;
+						this._VersionA = txt;
 						continue;
 					case "versionB":
-						this.VersionB = txt;
+						this._VersionB = txt;
 						continue;
 				}
 			}

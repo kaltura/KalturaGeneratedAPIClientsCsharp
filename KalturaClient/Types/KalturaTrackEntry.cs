@@ -222,55 +222,55 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "trackEventType":
-						this.TrackEventType = (KalturaTrackEntryEventType)ParseEnum(typeof(KalturaTrackEntryEventType), txt);
+						this._TrackEventType = (KalturaTrackEntryEventType)ParseEnum(typeof(KalturaTrackEntryEventType), txt);
 						continue;
 					case "psVersion":
-						this.PsVersion = txt;
+						this._PsVersion = txt;
 						continue;
 					case "context":
-						this.Context = txt;
+						this._Context = txt;
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "entryId":
-						this.EntryId = txt;
+						this._EntryId = txt;
 						continue;
 					case "hostName":
-						this.HostName = txt;
+						this._HostName = txt;
 						continue;
 					case "userId":
-						this.UserId = txt;
+						this._UserId = txt;
 						continue;
 					case "changedProperties":
-						this.ChangedProperties = txt;
+						this._ChangedProperties = txt;
 						continue;
 					case "paramStr1":
-						this.ParamStr1 = txt;
+						this._ParamStr1 = txt;
 						continue;
 					case "paramStr2":
-						this.ParamStr2 = txt;
+						this._ParamStr2 = txt;
 						continue;
 					case "paramStr3":
-						this.ParamStr3 = txt;
+						this._ParamStr3 = txt;
 						continue;
 					case "ks":
-						this.Ks = txt;
+						this._Ks = txt;
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "userIp":
-						this.UserIp = txt;
+						this._UserIp = txt;
 						continue;
 				}
 			}

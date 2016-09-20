@@ -232,58 +232,58 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "partnerIdEqual":
-						this.PartnerIdEqual = ParseInt(txt);
+						this._PartnerIdEqual = ParseInt(txt);
 						continue;
 					case "metadataProfileIdEqual":
-						this.MetadataProfileIdEqual = ParseInt(txt);
+						this._MetadataProfileIdEqual = ParseInt(txt);
 						continue;
 					case "metadataProfileIdIn":
-						this.MetadataProfileIdIn = txt;
+						this._MetadataProfileIdIn = txt;
 						continue;
 					case "metadataProfileVersionEqual":
-						this.MetadataProfileVersionEqual = ParseInt(txt);
+						this._MetadataProfileVersionEqual = ParseInt(txt);
 						continue;
 					case "metadataProfileVersionGreaterThanOrEqual":
-						this.MetadataProfileVersionGreaterThanOrEqual = ParseInt(txt);
+						this._MetadataProfileVersionGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "metadataProfileVersionLessThanOrEqual":
-						this.MetadataProfileVersionLessThanOrEqual = ParseInt(txt);
+						this._MetadataProfileVersionLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "metadataObjectTypeEqual":
-						this.MetadataObjectTypeEqual = (KalturaMetadataObjectType)KalturaStringEnum.Parse(typeof(KalturaMetadataObjectType), txt);
+						this._MetadataObjectTypeEqual = (KalturaMetadataObjectType)KalturaStringEnum.Parse(typeof(KalturaMetadataObjectType), txt);
 						continue;
 					case "objectIdEqual":
-						this.ObjectIdEqual = txt;
+						this._ObjectIdEqual = txt;
 						continue;
 					case "objectIdIn":
-						this.ObjectIdIn = txt;
+						this._ObjectIdIn = txt;
 						continue;
 					case "versionEqual":
-						this.VersionEqual = ParseInt(txt);
+						this._VersionEqual = ParseInt(txt);
 						continue;
 					case "versionGreaterThanOrEqual":
-						this.VersionGreaterThanOrEqual = ParseInt(txt);
+						this._VersionGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "versionLessThanOrEqual":
-						this.VersionLessThanOrEqual = ParseInt(txt);
+						this._VersionLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this.CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this.CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this.UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this.UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaMetadataStatus)ParseEnum(typeof(KalturaMetadataStatus), txt);
+						this._StatusEqual = (KalturaMetadataStatus)ParseEnum(typeof(KalturaMetadataStatus), txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = txt;
+						this._StatusIn = txt;
 						continue;
 				}
 			}

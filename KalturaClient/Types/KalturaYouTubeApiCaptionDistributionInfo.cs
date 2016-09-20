@@ -122,25 +122,25 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "language":
-						this.Language = txt;
+						this._Language = txt;
 						continue;
 					case "label":
-						this.Label = txt;
+						this._Label = txt;
 						continue;
 					case "filePath":
-						this.FilePath = txt;
+						this._FilePath = txt;
 						continue;
 					case "remoteId":
-						this.RemoteId = txt;
+						this._RemoteId = txt;
 						continue;
 					case "action":
-						this.Action = (KalturaYouTubeApiDistributionCaptionAction)ParseEnum(typeof(KalturaYouTubeApiDistributionCaptionAction), txt);
+						this._Action = (KalturaYouTubeApiDistributionCaptionAction)ParseEnum(typeof(KalturaYouTubeApiDistributionCaptionAction), txt);
 						continue;
 					case "version":
-						this.Version = txt;
+						this._Version = txt;
 						continue;
 					case "assetId":
-						this.AssetId = txt;
+						this._AssetId = txt;
 						continue;
 				}
 			}

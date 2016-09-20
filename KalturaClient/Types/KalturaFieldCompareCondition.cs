@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "field":
-						this.Field = (KalturaIntegerField)KalturaObjectFactory.Create(propertyNode, "KalturaIntegerField");
+						this._Field = (KalturaIntegerField)KalturaObjectFactory.Create(propertyNode, "KalturaIntegerField");
 						continue;
 				}
 			}

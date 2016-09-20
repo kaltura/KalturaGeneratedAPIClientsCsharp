@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "not":
-						this.Not = ParseBool(txt);
+						this._Not = ParseBool(txt);
 						continue;
 				}
 			}

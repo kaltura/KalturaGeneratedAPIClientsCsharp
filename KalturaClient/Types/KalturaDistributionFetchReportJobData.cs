@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "plays":
-						this.Plays = ParseInt(txt);
+						this._Plays = ParseInt(txt);
 						continue;
 					case "views":
-						this.Views = ParseInt(txt);
+						this._Views = ParseInt(txt);
 						continue;
 				}
 			}

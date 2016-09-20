@@ -46,56 +46,26 @@ namespace Kaltura
 		public float HostingGB
 		{
 			get { return _HostingGB; }
-			set 
-			{ 
-				_HostingGB = value;
-				OnPropertyChanged("HostingGB");
-			}
 		}
 		public float Percent
 		{
 			get { return _Percent; }
-			set 
-			{ 
-				_Percent = value;
-				OnPropertyChanged("Percent");
-			}
 		}
 		public int PackageBW
 		{
 			get { return _PackageBW; }
-			set 
-			{ 
-				_PackageBW = value;
-				OnPropertyChanged("PackageBW");
-			}
 		}
 		public float UsageGB
 		{
 			get { return _UsageGB; }
-			set 
-			{ 
-				_UsageGB = value;
-				OnPropertyChanged("UsageGB");
-			}
 		}
 		public int ReachedLimitDate
 		{
 			get { return _ReachedLimitDate; }
-			set 
-			{ 
-				_ReachedLimitDate = value;
-				OnPropertyChanged("ReachedLimitDate");
-			}
 		}
 		public string UsageGraph
 		{
 			get { return _UsageGraph; }
-			set 
-			{ 
-				_UsageGraph = value;
-				OnPropertyChanged("UsageGraph");
-			}
 		}
 		#endregion
 
@@ -112,22 +82,22 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "hostingGB":
-						this.HostingGB = ParseFloat(txt);
+						this._HostingGB = ParseFloat(txt);
 						continue;
 					case "Percent":
-						this.Percent = ParseFloat(txt);
+						this._Percent = ParseFloat(txt);
 						continue;
 					case "packageBW":
-						this.PackageBW = ParseInt(txt);
+						this._PackageBW = ParseInt(txt);
 						continue;
 					case "usageGB":
-						this.UsageGB = ParseFloat(txt);
+						this._UsageGB = ParseFloat(txt);
 						continue;
 					case "reachedLimitDate":
-						this.ReachedLimitDate = ParseInt(txt);
+						this._ReachedLimitDate = ParseInt(txt);
 						continue;
 					case "usageGraph":
-						this.UsageGraph = txt;
+						this._UsageGraph = txt;
 						continue;
 				}
 			}

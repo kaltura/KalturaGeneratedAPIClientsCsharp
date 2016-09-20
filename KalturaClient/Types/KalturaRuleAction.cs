@@ -41,11 +41,6 @@ namespace Kaltura
 		public KalturaRuleActionType Type
 		{
 			get { return _Type; }
-			set 
-			{ 
-				_Type = value;
-				OnPropertyChanged("Type");
-			}
 		}
 		#endregion
 
@@ -62,7 +57,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "type":
-						this.Type = (KalturaRuleActionType)KalturaStringEnum.Parse(typeof(KalturaRuleActionType), txt);
+						this._Type = (KalturaRuleActionType)KalturaStringEnum.Parse(typeof(KalturaRuleActionType), txt);
 						continue;
 				}
 			}

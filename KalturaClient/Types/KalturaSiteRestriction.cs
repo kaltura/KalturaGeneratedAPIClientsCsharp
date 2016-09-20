@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "siteRestrictionType":
-						this.SiteRestrictionType = (KalturaSiteRestrictionType)ParseEnum(typeof(KalturaSiteRestrictionType), txt);
+						this._SiteRestrictionType = (KalturaSiteRestrictionType)ParseEnum(typeof(KalturaSiteRestrictionType), txt);
 						continue;
 					case "siteList":
-						this.SiteList = txt;
+						this._SiteList = txt;
 						continue;
 				}
 			}

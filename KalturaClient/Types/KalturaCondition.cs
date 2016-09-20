@@ -43,11 +43,6 @@ namespace Kaltura
 		public KalturaConditionType Type
 		{
 			get { return _Type; }
-			set 
-			{ 
-				_Type = value;
-				OnPropertyChanged("Type");
-			}
 		}
 		public string Description
 		{
@@ -82,13 +77,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "type":
-						this.Type = (KalturaConditionType)KalturaStringEnum.Parse(typeof(KalturaConditionType), txt);
+						this._Type = (KalturaConditionType)KalturaStringEnum.Parse(typeof(KalturaConditionType), txt);
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "not":
-						this.Not = ParseBool(txt);
+						this._Not = ParseBool(txt);
 						continue;
 				}
 			}

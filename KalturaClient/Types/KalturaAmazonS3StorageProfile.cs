@@ -112,22 +112,22 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "filesPermissionInS3":
-						this.FilesPermissionInS3 = (KalturaAmazonS3StorageProfileFilesPermissionLevel)KalturaStringEnum.Parse(typeof(KalturaAmazonS3StorageProfileFilesPermissionLevel), txt);
+						this._FilesPermissionInS3 = (KalturaAmazonS3StorageProfileFilesPermissionLevel)KalturaStringEnum.Parse(typeof(KalturaAmazonS3StorageProfileFilesPermissionLevel), txt);
 						continue;
 					case "s3Region":
-						this.S3Region = txt;
+						this._S3Region = txt;
 						continue;
 					case "sseType":
-						this.SseType = txt;
+						this._SseType = txt;
 						continue;
 					case "sseKmsKeyId":
-						this.SseKmsKeyId = txt;
+						this._SseKmsKeyId = txt;
 						continue;
 					case "signatureType":
-						this.SignatureType = txt;
+						this._SignatureType = txt;
 						continue;
 					case "endPoint":
-						this.EndPoint = txt;
+						this._EndPoint = txt;
 						continue;
 				}
 			}

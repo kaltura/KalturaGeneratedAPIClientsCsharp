@@ -96,7 +96,7 @@ namespace Kaltura
 				OnPropertyChanged("LastElapsedRecordingTime");
 			}
 		}
-		public IList<KalturaLiveStreamConfiguration> LiveStreamConfigurations
+		public new IList<KalturaLiveStreamConfiguration> LiveStreamConfigurations
 		{
 			get { return _LiveStreamConfigurations; }
 			set 
@@ -123,7 +123,7 @@ namespace Kaltura
 				OnPropertyChanged("PushPublishEnabled");
 			}
 		}
-		public IList<KalturaLiveStreamPushPublishConfiguration> PublishConfigurations
+		public new IList<KalturaLiveStreamPushPublishConfiguration> PublishConfigurations
 		{
 			get { return _PublishConfigurations; }
 			set 
@@ -135,20 +135,10 @@ namespace Kaltura
 		public int FirstBroadcast
 		{
 			get { return _FirstBroadcast; }
-			set 
-			{ 
-				_FirstBroadcast = value;
-				OnPropertyChanged("FirstBroadcast");
-			}
 		}
 		public int LastBroadcast
 		{
 			get { return _LastBroadcast; }
-			set 
-			{ 
-				_LastBroadcast = value;
-				OnPropertyChanged("LastBroadcast");
-			}
 		}
 		public float CurrentBroadcastStartTime
 		{
@@ -171,11 +161,6 @@ namespace Kaltura
 		public KalturaEntryServerNodeStatus LiveStatus
 		{
 			get { return _LiveStatus; }
-			set 
-			{ 
-				_LiveStatus = value;
-				OnPropertyChanged("LiveStatus");
-			}
 		}
 		#endregion
 
@@ -192,54 +177,54 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "offlineMessage":
-						this.OfflineMessage = txt;
+						this._OfflineMessage = txt;
 						continue;
 					case "recordStatus":
-						this.RecordStatus = (KalturaRecordStatus)ParseEnum(typeof(KalturaRecordStatus), txt);
+						this._RecordStatus = (KalturaRecordStatus)ParseEnum(typeof(KalturaRecordStatus), txt);
 						continue;
 					case "dvrStatus":
-						this.DvrStatus = (KalturaDVRStatus)ParseEnum(typeof(KalturaDVRStatus), txt);
+						this._DvrStatus = (KalturaDVRStatus)ParseEnum(typeof(KalturaDVRStatus), txt);
 						continue;
 					case "dvrWindow":
-						this.DvrWindow = ParseInt(txt);
+						this._DvrWindow = ParseInt(txt);
 						continue;
 					case "lastElapsedRecordingTime":
-						this.LastElapsedRecordingTime = ParseInt(txt);
+						this._LastElapsedRecordingTime = ParseInt(txt);
 						continue;
 					case "liveStreamConfigurations":
-						this.LiveStreamConfigurations = new List<KalturaLiveStreamConfiguration>();
+						this._LiveStreamConfigurations = new List<KalturaLiveStreamConfiguration>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.LiveStreamConfigurations.Add((KalturaLiveStreamConfiguration)KalturaObjectFactory.Create(arrayNode, "KalturaLiveStreamConfiguration"));
+							this._LiveStreamConfigurations.Add((KalturaLiveStreamConfiguration)KalturaObjectFactory.Create(arrayNode, "KalturaLiveStreamConfiguration"));
 						}
 						continue;
 					case "recordedEntryId":
-						this.RecordedEntryId = txt;
+						this._RecordedEntryId = txt;
 						continue;
 					case "pushPublishEnabled":
-						this.PushPublishEnabled = (KalturaLivePublishStatus)ParseEnum(typeof(KalturaLivePublishStatus), txt);
+						this._PushPublishEnabled = (KalturaLivePublishStatus)ParseEnum(typeof(KalturaLivePublishStatus), txt);
 						continue;
 					case "publishConfigurations":
-						this.PublishConfigurations = new List<KalturaLiveStreamPushPublishConfiguration>();
+						this._PublishConfigurations = new List<KalturaLiveStreamPushPublishConfiguration>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.PublishConfigurations.Add((KalturaLiveStreamPushPublishConfiguration)KalturaObjectFactory.Create(arrayNode, "KalturaLiveStreamPushPublishConfiguration"));
+							this._PublishConfigurations.Add((KalturaLiveStreamPushPublishConfiguration)KalturaObjectFactory.Create(arrayNode, "KalturaLiveStreamPushPublishConfiguration"));
 						}
 						continue;
 					case "firstBroadcast":
-						this.FirstBroadcast = ParseInt(txt);
+						this._FirstBroadcast = ParseInt(txt);
 						continue;
 					case "lastBroadcast":
-						this.LastBroadcast = ParseInt(txt);
+						this._LastBroadcast = ParseInt(txt);
 						continue;
 					case "currentBroadcastStartTime":
-						this.CurrentBroadcastStartTime = ParseFloat(txt);
+						this._CurrentBroadcastStartTime = ParseFloat(txt);
 						continue;
 					case "recordingOptions":
-						this.RecordingOptions = (KalturaLiveEntryRecordingOptions)KalturaObjectFactory.Create(propertyNode, "KalturaLiveEntryRecordingOptions");
+						this._RecordingOptions = (KalturaLiveEntryRecordingOptions)KalturaObjectFactory.Create(propertyNode, "KalturaLiveEntryRecordingOptions");
 						continue;
 					case "liveStatus":
-						this.LiveStatus = (KalturaEntryServerNodeStatus)ParseEnum(typeof(KalturaEntryServerNodeStatus), txt);
+						this._LiveStatus = (KalturaEntryServerNodeStatus)ParseEnum(typeof(KalturaEntryServerNodeStatus), txt);
 						continue;
 				}
 			}

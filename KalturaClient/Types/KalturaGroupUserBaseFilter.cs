@@ -152,34 +152,34 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "userIdEqual":
-						this.UserIdEqual = txt;
+						this._UserIdEqual = txt;
 						continue;
 					case "userIdIn":
-						this.UserIdIn = txt;
+						this._UserIdIn = txt;
 						continue;
 					case "groupIdEqual":
-						this.GroupIdEqual = txt;
+						this._GroupIdEqual = txt;
 						continue;
 					case "groupIdIn":
-						this.GroupIdIn = txt;
+						this._GroupIdIn = txt;
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaGroupUserStatus)ParseEnum(typeof(KalturaGroupUserStatus), txt);
+						this._StatusEqual = (KalturaGroupUserStatus)ParseEnum(typeof(KalturaGroupUserStatus), txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = txt;
+						this._StatusIn = txt;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this.CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this.CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this.UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this.UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 				}
 			}

@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = txt;
+						this._Id = txt;
 						continue;
 					case "label":
-						this.Label = txt;
+						this._Label = txt;
 						continue;
 					case "entryOnly":
-						this.EntryOnly = ParseBool(txt);
+						this._EntryOnly = ParseBool(txt);
 						continue;
 					case "minVersion":
-						this.MinVersion = txt;
+						this._MinVersion = txt;
 						continue;
 				}
 			}

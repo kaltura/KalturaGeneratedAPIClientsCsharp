@@ -342,91 +342,91 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this.IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(txt);
 						continue;
 					case "idIn":
-						this.IdIn = txt;
+						this._IdIn = txt;
 						continue;
 					case "idNotIn":
-						this.IdNotIn = txt;
+						this._IdNotIn = txt;
 						continue;
 					case "parentIdEqual":
-						this.ParentIdEqual = ParseInt(txt);
+						this._ParentIdEqual = ParseInt(txt);
 						continue;
 					case "parentIdIn":
-						this.ParentIdIn = txt;
+						this._ParentIdIn = txt;
 						continue;
 					case "parentIdNotIn":
-						this.ParentIdNotIn = txt;
+						this._ParentIdNotIn = txt;
 						continue;
 					case "statusEqual":
-						this.StatusEqual = (KalturaScheduleEventStatus)ParseEnum(typeof(KalturaScheduleEventStatus), txt);
+						this._StatusEqual = (KalturaScheduleEventStatus)ParseEnum(typeof(KalturaScheduleEventStatus), txt);
 						continue;
 					case "statusIn":
-						this.StatusIn = txt;
+						this._StatusIn = txt;
 						continue;
 					case "startDateGreaterThanOrEqual":
-						this.StartDateGreaterThanOrEqual = ParseInt(txt);
+						this._StartDateGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "startDateLessThanOrEqual":
-						this.StartDateLessThanOrEqual = ParseInt(txt);
+						this._StartDateLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "endDateGreaterThanOrEqual":
-						this.EndDateGreaterThanOrEqual = ParseInt(txt);
+						this._EndDateGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "endDateLessThanOrEqual":
-						this.EndDateLessThanOrEqual = ParseInt(txt);
+						this._EndDateLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "referenceIdEqual":
-						this.ReferenceIdEqual = txt;
+						this._ReferenceIdEqual = txt;
 						continue;
 					case "referenceIdIn":
-						this.ReferenceIdIn = txt;
+						this._ReferenceIdIn = txt;
 						continue;
 					case "ownerIdEqual":
-						this.OwnerIdEqual = txt;
+						this._OwnerIdEqual = txt;
 						continue;
 					case "ownerIdIn":
-						this.OwnerIdIn = txt;
+						this._OwnerIdIn = txt;
 						continue;
 					case "priorityEqual":
-						this.PriorityEqual = ParseInt(txt);
+						this._PriorityEqual = ParseInt(txt);
 						continue;
 					case "priorityIn":
-						this.PriorityIn = txt;
+						this._PriorityIn = txt;
 						continue;
 					case "priorityGreaterThanOrEqual":
-						this.PriorityGreaterThanOrEqual = ParseInt(txt);
+						this._PriorityGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "priorityLessThanOrEqual":
-						this.PriorityLessThanOrEqual = ParseInt(txt);
+						this._PriorityLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "recurrenceTypeEqual":
-						this.RecurrenceTypeEqual = (KalturaScheduleEventRecurrenceType)ParseEnum(typeof(KalturaScheduleEventRecurrenceType), txt);
+						this._RecurrenceTypeEqual = (KalturaScheduleEventRecurrenceType)ParseEnum(typeof(KalturaScheduleEventRecurrenceType), txt);
 						continue;
 					case "recurrenceTypeIn":
-						this.RecurrenceTypeIn = txt;
+						this._RecurrenceTypeIn = txt;
 						continue;
 					case "tagsLike":
-						this.TagsLike = txt;
+						this._TagsLike = txt;
 						continue;
 					case "tagsMultiLikeOr":
-						this.TagsMultiLikeOr = txt;
+						this._TagsMultiLikeOr = txt;
 						continue;
 					case "tagsMultiLikeAnd":
-						this.TagsMultiLikeAnd = txt;
+						this._TagsMultiLikeAnd = txt;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this.CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this.CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this.UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this.UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 				}
 			}

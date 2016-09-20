@@ -252,64 +252,64 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this.IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(txt);
 						continue;
 					case "idIn":
-						this.IdIn = txt;
+						this._IdIn = txt;
 						continue;
 					case "nameLike":
-						this.NameLike = txt;
+						this._NameLike = txt;
 						continue;
 					case "partnerIdEqual":
-						this.PartnerIdEqual = ParseInt(txt);
+						this._PartnerIdEqual = ParseInt(txt);
 						continue;
 					case "partnerIdIn":
-						this.PartnerIdIn = txt;
+						this._PartnerIdIn = txt;
 						continue;
 					case "objTypeEqual":
-						this.ObjTypeEqual = (KalturaUiConfObjType)ParseEnum(typeof(KalturaUiConfObjType), txt);
+						this._ObjTypeEqual = (KalturaUiConfObjType)ParseEnum(typeof(KalturaUiConfObjType), txt);
 						continue;
 					case "objTypeIn":
-						this.ObjTypeIn = txt;
+						this._ObjTypeIn = txt;
 						continue;
 					case "tagsMultiLikeOr":
-						this.TagsMultiLikeOr = txt;
+						this._TagsMultiLikeOr = txt;
 						continue;
 					case "tagsMultiLikeAnd":
-						this.TagsMultiLikeAnd = txt;
+						this._TagsMultiLikeAnd = txt;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this.CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this.CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this.UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this.UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
 						continue;
 					case "creationModeEqual":
-						this.CreationModeEqual = (KalturaUiConfCreationMode)ParseEnum(typeof(KalturaUiConfCreationMode), txt);
+						this._CreationModeEqual = (KalturaUiConfCreationMode)ParseEnum(typeof(KalturaUiConfCreationMode), txt);
 						continue;
 					case "creationModeIn":
-						this.CreationModeIn = txt;
+						this._CreationModeIn = txt;
 						continue;
 					case "versionEqual":
-						this.VersionEqual = txt;
+						this._VersionEqual = txt;
 						continue;
 					case "versionMultiLikeOr":
-						this.VersionMultiLikeOr = txt;
+						this._VersionMultiLikeOr = txt;
 						continue;
 					case "versionMultiLikeAnd":
-						this.VersionMultiLikeAnd = txt;
+						this._VersionMultiLikeAnd = txt;
 						continue;
 					case "partnerTagsMultiLikeOr":
-						this.PartnerTagsMultiLikeOr = txt;
+						this._PartnerTagsMultiLikeOr = txt;
 						continue;
 					case "partnerTagsMultiLikeAnd":
-						this.PartnerTagsMultiLikeAnd = txt;
+						this._PartnerTagsMultiLikeAnd = txt;
 						continue;
 				}
 			}

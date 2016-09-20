@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "storageId":
-						this.StorageId = txt;
+						this._StorageId = txt;
 						continue;
 				}
 			}

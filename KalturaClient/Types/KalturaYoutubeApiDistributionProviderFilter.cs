@@ -38,7 +38,7 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
-		public new KalturaYoutubeApiDistributionProviderOrderBy OrderBy
+		public KalturaYoutubeApiDistributionProviderOrderBy OrderBy
 		{
 			get { return _OrderBy; }
 			set 
@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "orderBy":
-						this.OrderBy = (KalturaYoutubeApiDistributionProviderOrderBy)KalturaStringEnum.Parse(typeof(KalturaYoutubeApiDistributionProviderOrderBy), txt);
+						this._OrderBy = (KalturaYoutubeApiDistributionProviderOrderBy)KalturaStringEnum.Parse(typeof(KalturaYoutubeApiDistributionProviderOrderBy), txt);
 						continue;
 				}
 			}

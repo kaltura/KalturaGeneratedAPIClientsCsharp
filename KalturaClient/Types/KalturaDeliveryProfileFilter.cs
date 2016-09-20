@@ -48,7 +48,7 @@ namespace Kaltura
 				OnPropertyChanged("IsLive");
 			}
 		}
-		public new KalturaDeliveryProfileOrderBy OrderBy
+		public KalturaDeliveryProfileOrderBy OrderBy
 		{
 			get { return _OrderBy; }
 			set 
@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "isLive":
-						this.IsLive = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._IsLive = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "orderBy":
-						this.OrderBy = (KalturaDeliveryProfileOrderBy)KalturaStringEnum.Parse(typeof(KalturaDeliveryProfileOrderBy), txt);
+						this._OrderBy = (KalturaDeliveryProfileOrderBy)KalturaStringEnum.Parse(typeof(KalturaDeliveryProfileOrderBy), txt);
 						continue;
 				}
 			}

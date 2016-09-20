@@ -51,11 +51,6 @@ namespace Kaltura
 		public string AssetParamsIds
 		{
 			get { return _AssetParamsIds; }
-			set 
-			{ 
-				_AssetParamsIds = value;
-				OnPropertyChanged("AssetParamsIds");
-			}
 		}
 		#endregion
 
@@ -72,10 +67,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "documentType":
-						this.DocumentType = (KalturaDocumentType)ParseEnum(typeof(KalturaDocumentType), txt);
+						this._DocumentType = (KalturaDocumentType)ParseEnum(typeof(KalturaDocumentType), txt);
 						continue;
 					case "assetParamsIds":
-						this.AssetParamsIds = txt;
+						this._AssetParamsIds = txt;
 						continue;
 				}
 			}

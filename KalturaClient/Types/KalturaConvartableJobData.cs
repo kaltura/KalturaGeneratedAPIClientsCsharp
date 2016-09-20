@@ -75,7 +75,7 @@ namespace Kaltura
 				OnPropertyChanged("SrcFileSyncRemoteUrl");
 			}
 		}
-		public IList<KalturaSourceFileSyncDescriptor> SrcFileSyncs
+		public new IList<KalturaSourceFileSyncDescriptor> SrcFileSyncs
 		{
 			get { return _SrcFileSyncs; }
 			set 
@@ -138,7 +138,7 @@ namespace Kaltura
 				OnPropertyChanged("CurrentOperationIndex");
 			}
 		}
-		public IList<KalturaKeyValue> PluginData
+		public new IList<KalturaKeyValue> PluginData
 		{
 			get { return _PluginData; }
 			set 
@@ -162,44 +162,44 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "srcFileSyncLocalPath":
-						this.SrcFileSyncLocalPath = txt;
+						this._SrcFileSyncLocalPath = txt;
 						continue;
 					case "actualSrcFileSyncLocalPath":
-						this.ActualSrcFileSyncLocalPath = txt;
+						this._ActualSrcFileSyncLocalPath = txt;
 						continue;
 					case "srcFileSyncRemoteUrl":
-						this.SrcFileSyncRemoteUrl = txt;
+						this._SrcFileSyncRemoteUrl = txt;
 						continue;
 					case "srcFileSyncs":
-						this.SrcFileSyncs = new List<KalturaSourceFileSyncDescriptor>();
+						this._SrcFileSyncs = new List<KalturaSourceFileSyncDescriptor>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.SrcFileSyncs.Add((KalturaSourceFileSyncDescriptor)KalturaObjectFactory.Create(arrayNode, "KalturaSourceFileSyncDescriptor"));
+							this._SrcFileSyncs.Add((KalturaSourceFileSyncDescriptor)KalturaObjectFactory.Create(arrayNode, "KalturaSourceFileSyncDescriptor"));
 						}
 						continue;
 					case "engineVersion":
-						this.EngineVersion = ParseInt(txt);
+						this._EngineVersion = ParseInt(txt);
 						continue;
 					case "flavorParamsOutputId":
-						this.FlavorParamsOutputId = ParseInt(txt);
+						this._FlavorParamsOutputId = ParseInt(txt);
 						continue;
 					case "flavorParamsOutput":
-						this.FlavorParamsOutput = (KalturaFlavorParamsOutput)KalturaObjectFactory.Create(propertyNode, "KalturaFlavorParamsOutput");
+						this._FlavorParamsOutput = (KalturaFlavorParamsOutput)KalturaObjectFactory.Create(propertyNode, "KalturaFlavorParamsOutput");
 						continue;
 					case "mediaInfoId":
-						this.MediaInfoId = ParseInt(txt);
+						this._MediaInfoId = ParseInt(txt);
 						continue;
 					case "currentOperationSet":
-						this.CurrentOperationSet = ParseInt(txt);
+						this._CurrentOperationSet = ParseInt(txt);
 						continue;
 					case "currentOperationIndex":
-						this.CurrentOperationIndex = ParseInt(txt);
+						this._CurrentOperationIndex = ParseInt(txt);
 						continue;
 					case "pluginData":
-						this.PluginData = new List<KalturaKeyValue>();
+						this._PluginData = new List<KalturaKeyValue>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.PluginData.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
+							this._PluginData.Add((KalturaKeyValue)KalturaObjectFactory.Create(arrayNode, "KalturaKeyValue"));
 						}
 						continue;
 				}

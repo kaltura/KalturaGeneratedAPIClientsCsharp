@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "limitFlavorsRestrictionType":
-						this.LimitFlavorsRestrictionType = (KalturaLimitFlavorsRestrictionType)ParseEnum(typeof(KalturaLimitFlavorsRestrictionType), txt);
+						this._LimitFlavorsRestrictionType = (KalturaLimitFlavorsRestrictionType)ParseEnum(typeof(KalturaLimitFlavorsRestrictionType), txt);
 						continue;
 					case "flavorParamsIds":
-						this.FlavorParamsIds = txt;
+						this._FlavorParamsIds = txt;
 						continue;
 				}
 			}

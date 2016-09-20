@@ -145,7 +145,7 @@ namespace Kaltura
 				OnPropertyChanged("BulkUploadType");
 			}
 		}
-		public IList<KalturaBulkUploadResult> Results
+		public new IList<KalturaBulkUploadResult> Results
 		{
 			get { return _Results; }
 			set 
@@ -232,62 +232,62 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseLong(txt);
+						this._Id = ParseLong(txt);
 						continue;
 					case "uploadedBy":
-						this.UploadedBy = txt;
+						this._UploadedBy = txt;
 						continue;
 					case "uploadedByUserId":
-						this.UploadedByUserId = txt;
+						this._UploadedByUserId = txt;
 						continue;
 					case "uploadedOn":
-						this.UploadedOn = ParseInt(txt);
+						this._UploadedOn = ParseInt(txt);
 						continue;
 					case "numOfEntries":
-						this.NumOfEntries = ParseInt(txt);
+						this._NumOfEntries = ParseInt(txt);
 						continue;
 					case "status":
-						this.Status = (KalturaBatchJobStatus)ParseEnum(typeof(KalturaBatchJobStatus), txt);
+						this._Status = (KalturaBatchJobStatus)ParseEnum(typeof(KalturaBatchJobStatus), txt);
 						continue;
 					case "logFileUrl":
-						this.LogFileUrl = txt;
+						this._LogFileUrl = txt;
 						continue;
 					case "csvFileUrl":
-						this.CsvFileUrl = txt;
+						this._CsvFileUrl = txt;
 						continue;
 					case "bulkFileUrl":
-						this.BulkFileUrl = txt;
+						this._BulkFileUrl = txt;
 						continue;
 					case "bulkUploadType":
-						this.BulkUploadType = (KalturaBulkUploadType)KalturaStringEnum.Parse(typeof(KalturaBulkUploadType), txt);
+						this._BulkUploadType = (KalturaBulkUploadType)KalturaStringEnum.Parse(typeof(KalturaBulkUploadType), txt);
 						continue;
 					case "results":
-						this.Results = new List<KalturaBulkUploadResult>();
+						this._Results = new List<KalturaBulkUploadResult>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Results.Add((KalturaBulkUploadResult)KalturaObjectFactory.Create(arrayNode, "KalturaBulkUploadResult"));
+							this._Results.Add((KalturaBulkUploadResult)KalturaObjectFactory.Create(arrayNode, "KalturaBulkUploadResult"));
 						}
 						continue;
 					case "error":
-						this.Error = txt;
+						this._Error = txt;
 						continue;
 					case "errorType":
-						this.ErrorType = (KalturaBatchJobErrorTypes)ParseEnum(typeof(KalturaBatchJobErrorTypes), txt);
+						this._ErrorType = (KalturaBatchJobErrorTypes)ParseEnum(typeof(KalturaBatchJobErrorTypes), txt);
 						continue;
 					case "errorNumber":
-						this.ErrorNumber = ParseInt(txt);
+						this._ErrorNumber = ParseInt(txt);
 						continue;
 					case "fileName":
-						this.FileName = txt;
+						this._FileName = txt;
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "numOfObjects":
-						this.NumOfObjects = ParseInt(txt);
+						this._NumOfObjects = ParseInt(txt);
 						continue;
 					case "bulkUploadObjectType":
-						this.BulkUploadObjectType = (KalturaBulkUploadObjectType)KalturaStringEnum.Parse(typeof(KalturaBulkUploadObjectType), txt);
+						this._BulkUploadObjectType = (KalturaBulkUploadObjectType)KalturaStringEnum.Parse(typeof(KalturaBulkUploadObjectType), txt);
 						continue;
 				}
 			}

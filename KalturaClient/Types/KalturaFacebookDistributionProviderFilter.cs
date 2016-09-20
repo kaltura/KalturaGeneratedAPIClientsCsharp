@@ -38,7 +38,7 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
-		public new KalturaFacebookDistributionProviderOrderBy OrderBy
+		public KalturaFacebookDistributionProviderOrderBy OrderBy
 		{
 			get { return _OrderBy; }
 			set 
@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "orderBy":
-						this.OrderBy = (KalturaFacebookDistributionProviderOrderBy)KalturaStringEnum.Parse(typeof(KalturaFacebookDistributionProviderOrderBy), txt);
+						this._OrderBy = (KalturaFacebookDistributionProviderOrderBy)KalturaStringEnum.Parse(typeof(KalturaFacebookDistributionProviderOrderBy), txt);
 						continue;
 				}
 			}

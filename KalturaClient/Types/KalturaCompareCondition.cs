@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "value":
-						this.Value = (KalturaIntegerValue)KalturaObjectFactory.Create(propertyNode, "KalturaIntegerValue");
+						this._Value = (KalturaIntegerValue)KalturaObjectFactory.Create(propertyNode, "KalturaIntegerValue");
 						continue;
 					case "comparison":
-						this.Comparison = (KalturaSearchConditionComparison)KalturaStringEnum.Parse(typeof(KalturaSearchConditionComparison), txt);
+						this._Comparison = (KalturaSearchConditionComparison)KalturaStringEnum.Parse(typeof(KalturaSearchConditionComparison), txt);
 						continue;
 				}
 			}

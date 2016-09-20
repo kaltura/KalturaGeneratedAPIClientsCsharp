@@ -170,11 +170,6 @@ namespace Kaltura
 		public string UserIp
 		{
 			get { return _UserIp; }
-			set 
-			{ 
-				_UserIp = value;
-				OnPropertyChanged("UserIp");
-			}
 		}
 		public int ProcessDuration
 		{
@@ -272,70 +267,70 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "clientVer":
-						this.ClientVer = txt;
+						this._ClientVer = txt;
 						continue;
 					case "eventType":
-						this.EventType = (KalturaStatsEventType)ParseEnum(typeof(KalturaStatsEventType), txt);
+						this._EventType = (KalturaStatsEventType)ParseEnum(typeof(KalturaStatsEventType), txt);
 						continue;
 					case "eventTimestamp":
-						this.EventTimestamp = ParseFloat(txt);
+						this._EventTimestamp = ParseFloat(txt);
 						continue;
 					case "sessionId":
-						this.SessionId = txt;
+						this._SessionId = txt;
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "entryId":
-						this.EntryId = txt;
+						this._EntryId = txt;
 						continue;
 					case "uniqueViewer":
-						this.UniqueViewer = txt;
+						this._UniqueViewer = txt;
 						continue;
 					case "widgetId":
-						this.WidgetId = txt;
+						this._WidgetId = txt;
 						continue;
 					case "uiconfId":
-						this.UiconfId = ParseInt(txt);
+						this._UiconfId = ParseInt(txt);
 						continue;
 					case "userId":
-						this.UserId = txt;
+						this._UserId = txt;
 						continue;
 					case "currentPoint":
-						this.CurrentPoint = ParseInt(txt);
+						this._CurrentPoint = ParseInt(txt);
 						continue;
 					case "duration":
-						this.Duration = ParseInt(txt);
+						this._Duration = ParseInt(txt);
 						continue;
 					case "userIp":
-						this.UserIp = txt;
+						this._UserIp = txt;
 						continue;
 					case "processDuration":
-						this.ProcessDuration = ParseInt(txt);
+						this._ProcessDuration = ParseInt(txt);
 						continue;
 					case "controlId":
-						this.ControlId = txt;
+						this._ControlId = txt;
 						continue;
 					case "seek":
-						this.Seek = ParseBool(txt);
+						this._Seek = ParseBool(txt);
 						continue;
 					case "newPoint":
-						this.NewPoint = ParseInt(txt);
+						this._NewPoint = ParseInt(txt);
 						continue;
 					case "referrer":
-						this.Referrer = txt;
+						this._Referrer = txt;
 						continue;
 					case "isFirstInSession":
-						this.IsFirstInSession = ParseBool(txt);
+						this._IsFirstInSession = ParseBool(txt);
 						continue;
 					case "applicationId":
-						this.ApplicationId = txt;
+						this._ApplicationId = txt;
 						continue;
 					case "contextId":
-						this.ContextId = ParseInt(txt);
+						this._ContextId = ParseInt(txt);
 						continue;
 					case "featureType":
-						this.FeatureType = (KalturaStatsFeatureType)ParseEnum(typeof(KalturaStatsFeatureType), txt);
+						this._FeatureType = (KalturaStatsFeatureType)ParseEnum(typeof(KalturaStatsFeatureType), txt);
 						continue;
 				}
 			}

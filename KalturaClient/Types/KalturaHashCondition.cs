@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "hashName":
-						this.HashName = txt;
+						this._HashName = txt;
 						continue;
 					case "hashSecret":
-						this.HashSecret = txt;
+						this._HashSecret = txt;
 						continue;
 				}
 			}

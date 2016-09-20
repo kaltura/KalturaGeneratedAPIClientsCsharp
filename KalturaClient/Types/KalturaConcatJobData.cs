@@ -43,7 +43,7 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
-		public IList<KalturaString> SrcFiles
+		public new IList<KalturaString> SrcFiles
 		{
 			get { return _SrcFiles; }
 			set 
@@ -112,26 +112,26 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "srcFiles":
-						this.SrcFiles = new List<KalturaString>();
+						this._SrcFiles = new List<KalturaString>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.SrcFiles.Add((KalturaString)KalturaObjectFactory.Create(arrayNode, "KalturaString"));
+							this._SrcFiles.Add((KalturaString)KalturaObjectFactory.Create(arrayNode, "KalturaString"));
 						}
 						continue;
 					case "destFilePath":
-						this.DestFilePath = txt;
+						this._DestFilePath = txt;
 						continue;
 					case "flavorAssetId":
-						this.FlavorAssetId = txt;
+						this._FlavorAssetId = txt;
 						continue;
 					case "offset":
-						this.Offset = ParseFloat(txt);
+						this._Offset = ParseFloat(txt);
 						continue;
 					case "duration":
-						this.Duration = ParseFloat(txt);
+						this._Duration = ParseFloat(txt);
 						continue;
 					case "concatenatedDuration":
-						this.ConcatenatedDuration = ParseFloat(txt);
+						this._ConcatenatedDuration = ParseFloat(txt);
 						continue;
 				}
 			}

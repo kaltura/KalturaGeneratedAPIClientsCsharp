@@ -56,20 +56,10 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public string Name
 		{
@@ -110,29 +100,14 @@ namespace Kaltura
 		public KalturaEventNotificationTemplateStatus Status
 		{
 			get { return _Status; }
-			set 
-			{ 
-				_Status = value;
-				OnPropertyChanged("Status");
-			}
 		}
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public bool? ManualDispatchEnabled
 		{
@@ -170,7 +145,7 @@ namespace Kaltura
 				OnPropertyChanged("EventObjectType");
 			}
 		}
-		public IList<KalturaCondition> EventConditions
+		public new IList<KalturaCondition> EventConditions
 		{
 			get { return _EventConditions; }
 			set 
@@ -179,7 +154,7 @@ namespace Kaltura
 				OnPropertyChanged("EventConditions");
 			}
 		}
-		public IList<KalturaEventNotificationParameter> ContentParameters
+		public new IList<KalturaEventNotificationParameter> ContentParameters
 		{
 			get { return _ContentParameters; }
 			set 
@@ -188,7 +163,7 @@ namespace Kaltura
 				OnPropertyChanged("ContentParameters");
 			}
 		}
-		public IList<KalturaEventNotificationParameter> UserParameters
+		public new IList<KalturaEventNotificationParameter> UserParameters
 		{
 			get { return _UserParameters; }
 			set 
@@ -212,63 +187,63 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 					case "systemName":
-						this.SystemName = txt;
+						this._SystemName = txt;
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "type":
-						this.Type = (KalturaEventNotificationTemplateType)KalturaStringEnum.Parse(typeof(KalturaEventNotificationTemplateType), txt);
+						this._Type = (KalturaEventNotificationTemplateType)KalturaStringEnum.Parse(typeof(KalturaEventNotificationTemplateType), txt);
 						continue;
 					case "status":
-						this.Status = (KalturaEventNotificationTemplateStatus)ParseEnum(typeof(KalturaEventNotificationTemplateStatus), txt);
+						this._Status = (KalturaEventNotificationTemplateStatus)ParseEnum(typeof(KalturaEventNotificationTemplateStatus), txt);
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "manualDispatchEnabled":
-						this.ManualDispatchEnabled = ParseBool(txt);
+						this._ManualDispatchEnabled = ParseBool(txt);
 						continue;
 					case "automaticDispatchEnabled":
-						this.AutomaticDispatchEnabled = ParseBool(txt);
+						this._AutomaticDispatchEnabled = ParseBool(txt);
 						continue;
 					case "eventType":
-						this.EventType = (KalturaEventNotificationEventType)KalturaStringEnum.Parse(typeof(KalturaEventNotificationEventType), txt);
+						this._EventType = (KalturaEventNotificationEventType)KalturaStringEnum.Parse(typeof(KalturaEventNotificationEventType), txt);
 						continue;
 					case "eventObjectType":
-						this.EventObjectType = (KalturaEventNotificationEventObjectType)KalturaStringEnum.Parse(typeof(KalturaEventNotificationEventObjectType), txt);
+						this._EventObjectType = (KalturaEventNotificationEventObjectType)KalturaStringEnum.Parse(typeof(KalturaEventNotificationEventObjectType), txt);
 						continue;
 					case "eventConditions":
-						this.EventConditions = new List<KalturaCondition>();
+						this._EventConditions = new List<KalturaCondition>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.EventConditions.Add((KalturaCondition)KalturaObjectFactory.Create(arrayNode, "KalturaCondition"));
+							this._EventConditions.Add((KalturaCondition)KalturaObjectFactory.Create(arrayNode, "KalturaCondition"));
 						}
 						continue;
 					case "contentParameters":
-						this.ContentParameters = new List<KalturaEventNotificationParameter>();
+						this._ContentParameters = new List<KalturaEventNotificationParameter>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.ContentParameters.Add((KalturaEventNotificationParameter)KalturaObjectFactory.Create(arrayNode, "KalturaEventNotificationParameter"));
+							this._ContentParameters.Add((KalturaEventNotificationParameter)KalturaObjectFactory.Create(arrayNode, "KalturaEventNotificationParameter"));
 						}
 						continue;
 					case "userParameters":
-						this.UserParameters = new List<KalturaEventNotificationParameter>();
+						this._UserParameters = new List<KalturaEventNotificationParameter>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.UserParameters.Add((KalturaEventNotificationParameter)KalturaObjectFactory.Create(arrayNode, "KalturaEventNotificationParameter"));
+							this._UserParameters.Add((KalturaEventNotificationParameter)KalturaObjectFactory.Create(arrayNode, "KalturaEventNotificationParameter"));
 						}
 						continue;
 				}

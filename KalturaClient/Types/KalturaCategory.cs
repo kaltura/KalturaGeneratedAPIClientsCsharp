@@ -75,11 +75,6 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public int ParentId
 		{
@@ -93,20 +88,10 @@ namespace Kaltura
 		public int Depth
 		{
 			get { return _Depth; }
-			set 
-			{ 
-				_Depth = value;
-				OnPropertyChanged("Depth");
-			}
 		}
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public string Name
 		{
@@ -120,47 +105,22 @@ namespace Kaltura
 		public string FullName
 		{
 			get { return _FullName; }
-			set 
-			{ 
-				_FullName = value;
-				OnPropertyChanged("FullName");
-			}
 		}
 		public string FullIds
 		{
 			get { return _FullIds; }
-			set 
-			{ 
-				_FullIds = value;
-				OnPropertyChanged("FullIds");
-			}
 		}
 		public int EntriesCount
 		{
 			get { return _EntriesCount; }
-			set 
-			{ 
-				_EntriesCount = value;
-				OnPropertyChanged("EntriesCount");
-			}
 		}
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public string Description
 		{
@@ -210,11 +170,6 @@ namespace Kaltura
 		public KalturaUserJoinPolicyType UserJoinPolicy
 		{
 			get { return _UserJoinPolicy; }
-			set 
-			{ 
-				_UserJoinPolicy = value;
-				OnPropertyChanged("UserJoinPolicy");
-			}
 		}
 		public KalturaCategoryUserPermissionLevel DefaultPermissionLevel
 		{
@@ -237,11 +192,6 @@ namespace Kaltura
 		public int DirectEntriesCount
 		{
 			get { return _DirectEntriesCount; }
-			set 
-			{ 
-				_DirectEntriesCount = value;
-				OnPropertyChanged("DirectEntriesCount");
-			}
 		}
 		public string ReferenceId
 		{
@@ -264,20 +214,10 @@ namespace Kaltura
 		public int MembersCount
 		{
 			get { return _MembersCount; }
-			set 
-			{ 
-				_MembersCount = value;
-				OnPropertyChanged("MembersCount");
-			}
 		}
 		public int PendingMembersCount
 		{
 			get { return _PendingMembersCount; }
-			set 
-			{ 
-				_PendingMembersCount = value;
-				OnPropertyChanged("PendingMembersCount");
-			}
 		}
 		public string PrivacyContext
 		{
@@ -291,29 +231,14 @@ namespace Kaltura
 		public string PrivacyContexts
 		{
 			get { return _PrivacyContexts; }
-			set 
-			{ 
-				_PrivacyContexts = value;
-				OnPropertyChanged("PrivacyContexts");
-			}
 		}
 		public KalturaCategoryStatus Status
 		{
 			get { return _Status; }
-			set 
-			{ 
-				_Status = value;
-				OnPropertyChanged("Status");
-			}
 		}
 		public int InheritedParentId
 		{
 			get { return _InheritedParentId; }
-			set 
-			{ 
-				_InheritedParentId = value;
-				OnPropertyChanged("InheritedParentId");
-			}
 		}
 		public int PartnerSortValue
 		{
@@ -345,11 +270,6 @@ namespace Kaltura
 		public int DirectSubCategoriesCount
 		{
 			get { return _DirectSubCategoriesCount; }
-			set 
-			{ 
-				_DirectSubCategoriesCount = value;
-				OnPropertyChanged("DirectSubCategoriesCount");
-			}
 		}
 		public KalturaNullableBoolean Moderation
 		{
@@ -363,11 +283,6 @@ namespace Kaltura
 		public int PendingEntriesCount
 		{
 			get { return _PendingEntriesCount; }
-			set 
-			{ 
-				_PendingEntriesCount = value;
-				OnPropertyChanged("PendingEntriesCount");
-			}
 		}
 		public KalturaNullableBoolean IsAggregationCategory
 		{
@@ -402,109 +317,109 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "parentId":
-						this.ParentId = ParseInt(txt);
+						this._ParentId = ParseInt(txt);
 						continue;
 					case "depth":
-						this.Depth = ParseInt(txt);
+						this._Depth = ParseInt(txt);
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 					case "fullName":
-						this.FullName = txt;
+						this._FullName = txt;
 						continue;
 					case "fullIds":
-						this.FullIds = txt;
+						this._FullIds = txt;
 						continue;
 					case "entriesCount":
-						this.EntriesCount = ParseInt(txt);
+						this._EntriesCount = ParseInt(txt);
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "tags":
-						this.Tags = txt;
+						this._Tags = txt;
 						continue;
 					case "appearInList":
-						this.AppearInList = (KalturaAppearInListType)ParseEnum(typeof(KalturaAppearInListType), txt);
+						this._AppearInList = (KalturaAppearInListType)ParseEnum(typeof(KalturaAppearInListType), txt);
 						continue;
 					case "privacy":
-						this.Privacy = (KalturaPrivacyType)ParseEnum(typeof(KalturaPrivacyType), txt);
+						this._Privacy = (KalturaPrivacyType)ParseEnum(typeof(KalturaPrivacyType), txt);
 						continue;
 					case "inheritanceType":
-						this.InheritanceType = (KalturaInheritanceType)ParseEnum(typeof(KalturaInheritanceType), txt);
+						this._InheritanceType = (KalturaInheritanceType)ParseEnum(typeof(KalturaInheritanceType), txt);
 						continue;
 					case "userJoinPolicy":
-						this.UserJoinPolicy = (KalturaUserJoinPolicyType)ParseEnum(typeof(KalturaUserJoinPolicyType), txt);
+						this._UserJoinPolicy = (KalturaUserJoinPolicyType)ParseEnum(typeof(KalturaUserJoinPolicyType), txt);
 						continue;
 					case "defaultPermissionLevel":
-						this.DefaultPermissionLevel = (KalturaCategoryUserPermissionLevel)ParseEnum(typeof(KalturaCategoryUserPermissionLevel), txt);
+						this._DefaultPermissionLevel = (KalturaCategoryUserPermissionLevel)ParseEnum(typeof(KalturaCategoryUserPermissionLevel), txt);
 						continue;
 					case "owner":
-						this.Owner = txt;
+						this._Owner = txt;
 						continue;
 					case "directEntriesCount":
-						this.DirectEntriesCount = ParseInt(txt);
+						this._DirectEntriesCount = ParseInt(txt);
 						continue;
 					case "referenceId":
-						this.ReferenceId = txt;
+						this._ReferenceId = txt;
 						continue;
 					case "contributionPolicy":
-						this.ContributionPolicy = (KalturaContributionPolicyType)ParseEnum(typeof(KalturaContributionPolicyType), txt);
+						this._ContributionPolicy = (KalturaContributionPolicyType)ParseEnum(typeof(KalturaContributionPolicyType), txt);
 						continue;
 					case "membersCount":
-						this.MembersCount = ParseInt(txt);
+						this._MembersCount = ParseInt(txt);
 						continue;
 					case "pendingMembersCount":
-						this.PendingMembersCount = ParseInt(txt);
+						this._PendingMembersCount = ParseInt(txt);
 						continue;
 					case "privacyContext":
-						this.PrivacyContext = txt;
+						this._PrivacyContext = txt;
 						continue;
 					case "privacyContexts":
-						this.PrivacyContexts = txt;
+						this._PrivacyContexts = txt;
 						continue;
 					case "status":
-						this.Status = (KalturaCategoryStatus)ParseEnum(typeof(KalturaCategoryStatus), txt);
+						this._Status = (KalturaCategoryStatus)ParseEnum(typeof(KalturaCategoryStatus), txt);
 						continue;
 					case "inheritedParentId":
-						this.InheritedParentId = ParseInt(txt);
+						this._InheritedParentId = ParseInt(txt);
 						continue;
 					case "partnerSortValue":
-						this.PartnerSortValue = ParseInt(txt);
+						this._PartnerSortValue = ParseInt(txt);
 						continue;
 					case "partnerData":
-						this.PartnerData = txt;
+						this._PartnerData = txt;
 						continue;
 					case "defaultOrderBy":
-						this.DefaultOrderBy = (KalturaCategoryOrderBy)KalturaStringEnum.Parse(typeof(KalturaCategoryOrderBy), txt);
+						this._DefaultOrderBy = (KalturaCategoryOrderBy)KalturaStringEnum.Parse(typeof(KalturaCategoryOrderBy), txt);
 						continue;
 					case "directSubCategoriesCount":
-						this.DirectSubCategoriesCount = ParseInt(txt);
+						this._DirectSubCategoriesCount = ParseInt(txt);
 						continue;
 					case "moderation":
-						this.Moderation = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._Moderation = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "pendingEntriesCount":
-						this.PendingEntriesCount = ParseInt(txt);
+						this._PendingEntriesCount = ParseInt(txt);
 						continue;
 					case "isAggregationCategory":
-						this.IsAggregationCategory = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						this._IsAggregationCategory = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
 					case "aggregationCategories":
-						this.AggregationCategories = txt;
+						this._AggregationCategories = txt;
 						continue;
 				}
 			}

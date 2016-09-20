@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "flashVersion":
-						this.FlashVersion = ParseInt(txt);
+						this._FlashVersion = ParseInt(txt);
 						continue;
 					case "poly2Bitmap":
-						this.Poly2Bitmap = ParseBool(txt);
+						this._Poly2Bitmap = ParseBool(txt);
 						continue;
 				}
 			}

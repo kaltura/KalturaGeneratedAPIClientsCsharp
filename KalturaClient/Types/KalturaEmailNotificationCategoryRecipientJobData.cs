@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "categoryUserFilter":
-						this.CategoryUserFilter = (KalturaCategoryUserFilter)KalturaObjectFactory.Create(propertyNode, "KalturaCategoryUserFilter");
+						this._CategoryUserFilter = (KalturaCategoryUserFilter)KalturaObjectFactory.Create(propertyNode, "KalturaCategoryUserFilter");
 						continue;
 				}
 			}

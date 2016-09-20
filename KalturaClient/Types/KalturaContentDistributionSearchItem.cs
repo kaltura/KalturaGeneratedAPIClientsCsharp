@@ -122,25 +122,25 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "noDistributionProfiles":
-						this.NoDistributionProfiles = ParseBool(txt);
+						this._NoDistributionProfiles = ParseBool(txt);
 						continue;
 					case "distributionProfileId":
-						this.DistributionProfileId = ParseInt(txt);
+						this._DistributionProfileId = ParseInt(txt);
 						continue;
 					case "distributionSunStatus":
-						this.DistributionSunStatus = (KalturaEntryDistributionSunStatus)ParseEnum(typeof(KalturaEntryDistributionSunStatus), txt);
+						this._DistributionSunStatus = (KalturaEntryDistributionSunStatus)ParseEnum(typeof(KalturaEntryDistributionSunStatus), txt);
 						continue;
 					case "entryDistributionFlag":
-						this.EntryDistributionFlag = (KalturaEntryDistributionFlag)ParseEnum(typeof(KalturaEntryDistributionFlag), txt);
+						this._EntryDistributionFlag = (KalturaEntryDistributionFlag)ParseEnum(typeof(KalturaEntryDistributionFlag), txt);
 						continue;
 					case "entryDistributionStatus":
-						this.EntryDistributionStatus = (KalturaEntryDistributionStatus)ParseEnum(typeof(KalturaEntryDistributionStatus), txt);
+						this._EntryDistributionStatus = (KalturaEntryDistributionStatus)ParseEnum(typeof(KalturaEntryDistributionStatus), txt);
 						continue;
 					case "hasEntryDistributionValidationErrors":
-						this.HasEntryDistributionValidationErrors = ParseBool(txt);
+						this._HasEntryDistributionValidationErrors = ParseBool(txt);
 						continue;
 					case "entryDistributionValidationErrors":
-						this.EntryDistributionValidationErrors = txt;
+						this._EntryDistributionValidationErrors = txt;
 						continue;
 				}
 			}

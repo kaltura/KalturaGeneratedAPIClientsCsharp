@@ -48,7 +48,7 @@ namespace Kaltura
 				OnPropertyChanged("Xslt");
 			}
 		}
-		public IList<KalturaExtendingItemMrssParameter> ItemXpathsToExtend
+		public new IList<KalturaExtendingItemMrssParameter> ItemXpathsToExtend
 		{
 			get { return _ItemXpathsToExtend; }
 			set 
@@ -72,13 +72,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "xslt":
-						this.Xslt = txt;
+						this._Xslt = txt;
 						continue;
 					case "itemXpathsToExtend":
-						this.ItemXpathsToExtend = new List<KalturaExtendingItemMrssParameter>();
+						this._ItemXpathsToExtend = new List<KalturaExtendingItemMrssParameter>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.ItemXpathsToExtend.Add((KalturaExtendingItemMrssParameter)KalturaObjectFactory.Create(arrayNode, "KalturaExtendingItemMrssParameter"));
+							this._ItemXpathsToExtend.Add((KalturaExtendingItemMrssParameter)KalturaObjectFactory.Create(arrayNode, "KalturaExtendingItemMrssParameter"));
 						}
 						continue;
 				}

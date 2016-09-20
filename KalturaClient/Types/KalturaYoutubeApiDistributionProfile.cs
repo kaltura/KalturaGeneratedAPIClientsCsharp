@@ -172,40 +172,40 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "username":
-						this.Username = txt;
+						this._Username = txt;
 						continue;
 					case "defaultCategory":
-						this.DefaultCategory = ParseInt(txt);
+						this._DefaultCategory = ParseInt(txt);
 						continue;
 					case "allowComments":
-						this.AllowComments = txt;
+						this._AllowComments = txt;
 						continue;
 					case "allowEmbedding":
-						this.AllowEmbedding = txt;
+						this._AllowEmbedding = txt;
 						continue;
 					case "allowRatings":
-						this.AllowRatings = txt;
+						this._AllowRatings = txt;
 						continue;
 					case "allowResponses":
-						this.AllowResponses = txt;
+						this._AllowResponses = txt;
 						continue;
 					case "apiAuthorizeUrl":
-						this.ApiAuthorizeUrl = txt;
+						this._ApiAuthorizeUrl = txt;
 						continue;
 					case "googleClientId":
-						this.GoogleClientId = txt;
+						this._GoogleClientId = txt;
 						continue;
 					case "googleClientSecret":
-						this.GoogleClientSecret = txt;
+						this._GoogleClientSecret = txt;
 						continue;
 					case "googleTokenData":
-						this.GoogleTokenData = txt;
+						this._GoogleTokenData = txt;
 						continue;
 					case "assumeSuccess":
-						this.AssumeSuccess = ParseBool(txt);
+						this._AssumeSuccess = ParseBool(txt);
 						continue;
 					case "privacyStatus":
-						this.PrivacyStatus = txt;
+						this._PrivacyStatus = txt;
 						continue;
 				}
 			}

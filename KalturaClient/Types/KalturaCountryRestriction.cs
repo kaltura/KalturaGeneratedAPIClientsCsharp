@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "countryRestrictionType":
-						this.CountryRestrictionType = (KalturaCountryRestrictionType)ParseEnum(typeof(KalturaCountryRestrictionType), txt);
+						this._CountryRestrictionType = (KalturaCountryRestrictionType)ParseEnum(typeof(KalturaCountryRestrictionType), txt);
 						continue;
 					case "countryList":
-						this.CountryList = txt;
+						this._CountryList = txt;
 						continue;
 				}
 			}

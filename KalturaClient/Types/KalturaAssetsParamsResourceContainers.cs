@@ -38,7 +38,7 @@ namespace Kaltura
 		#endregion
 
 		#region Properties
-		public IList<KalturaAssetParamsResourceContainer> Resources
+		public new IList<KalturaAssetParamsResourceContainer> Resources
 		{
 			get { return _Resources; }
 			set 
@@ -62,10 +62,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "resources":
-						this.Resources = new List<KalturaAssetParamsResourceContainer>();
+						this._Resources = new List<KalturaAssetParamsResourceContainer>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Resources.Add((KalturaAssetParamsResourceContainer)KalturaObjectFactory.Create(arrayNode, "KalturaAssetParamsResourceContainer"));
+							this._Resources.Add((KalturaAssetParamsResourceContainer)KalturaObjectFactory.Create(arrayNode, "KalturaAssetParamsResourceContainer"));
 						}
 						continue;
 				}

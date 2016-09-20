@@ -51,11 +51,6 @@ namespace Kaltura
 		public string FeedId
 		{
 			get { return _FeedId; }
-			set 
-			{ 
-				_FeedId = value;
-				OnPropertyChanged("FeedId");
-			}
 		}
 		#endregion
 
@@ -72,10 +67,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "xsl":
-						this.Xsl = txt;
+						this._Xsl = txt;
 						continue;
 					case "feedId":
-						this.FeedId = txt;
+						this._FeedId = txt;
 						continue;
 				}
 			}

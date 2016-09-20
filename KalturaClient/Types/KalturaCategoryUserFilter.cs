@@ -68,7 +68,7 @@ namespace Kaltura
 				OnPropertyChanged("RelatedGroupsByUserId");
 			}
 		}
-		public new KalturaCategoryUserOrderBy OrderBy
+		public KalturaCategoryUserOrderBy OrderBy
 		{
 			get { return _OrderBy; }
 			set 
@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "categoryDirectMembers":
-						this.CategoryDirectMembers = ParseBool(txt);
+						this._CategoryDirectMembers = ParseBool(txt);
 						continue;
 					case "freeText":
-						this.FreeText = txt;
+						this._FreeText = txt;
 						continue;
 					case "relatedGroupsByUserId":
-						this.RelatedGroupsByUserId = txt;
+						this._RelatedGroupsByUserId = txt;
 						continue;
 					case "orderBy":
-						this.OrderBy = (KalturaCategoryUserOrderBy)KalturaStringEnum.Parse(typeof(KalturaCategoryUserOrderBy), txt);
+						this._OrderBy = (KalturaCategoryUserOrderBy)KalturaStringEnum.Parse(typeof(KalturaCategoryUserOrderBy), txt);
 						continue;
 				}
 			}

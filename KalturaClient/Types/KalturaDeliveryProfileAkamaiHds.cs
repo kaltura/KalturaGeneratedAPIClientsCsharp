@@ -62,7 +62,7 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "supportClipping":
-						this.SupportClipping = ParseBool(txt);
+						this._SupportClipping = ParseBool(txt);
 						continue;
 				}
 			}

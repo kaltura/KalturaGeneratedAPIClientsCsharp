@@ -50,11 +50,6 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public int ConfiguredId
 		{
@@ -83,59 +78,29 @@ namespace Kaltura
 				OnPropertyChanged("Host");
 			}
 		}
-		public IList<KalturaSchedulerStatus> Statuses
+		public new IList<KalturaSchedulerStatus> Statuses
 		{
 			get { return _Statuses; }
-			set 
-			{ 
-				_Statuses = value;
-				OnPropertyChanged("Statuses");
-			}
 		}
-		public IList<KalturaSchedulerConfig> Configs
+		public new IList<KalturaSchedulerConfig> Configs
 		{
 			get { return _Configs; }
-			set 
-			{ 
-				_Configs = value;
-				OnPropertyChanged("Configs");
-			}
 		}
-		public IList<KalturaSchedulerWorker> Workers
+		public new IList<KalturaSchedulerWorker> Workers
 		{
 			get { return _Workers; }
-			set 
-			{ 
-				_Workers = value;
-				OnPropertyChanged("Workers");
-			}
 		}
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int LastStatus
 		{
 			get { return _LastStatus; }
-			set 
-			{ 
-				_LastStatus = value;
-				OnPropertyChanged("LastStatus");
-			}
 		}
 		public string LastStatusStr
 		{
 			get { return _LastStatusStr; }
-			set 
-			{ 
-				_LastStatusStr = value;
-				OnPropertyChanged("LastStatusStr");
-			}
 		}
 		#endregion
 
@@ -152,46 +117,46 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "configuredId":
-						this.ConfiguredId = ParseInt(txt);
+						this._ConfiguredId = ParseInt(txt);
 						continue;
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 					case "host":
-						this.Host = txt;
+						this._Host = txt;
 						continue;
 					case "statuses":
-						this.Statuses = new List<KalturaSchedulerStatus>();
+						this._Statuses = new List<KalturaSchedulerStatus>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Statuses.Add((KalturaSchedulerStatus)KalturaObjectFactory.Create(arrayNode, "KalturaSchedulerStatus"));
+							this._Statuses.Add((KalturaSchedulerStatus)KalturaObjectFactory.Create(arrayNode, "KalturaSchedulerStatus"));
 						}
 						continue;
 					case "configs":
-						this.Configs = new List<KalturaSchedulerConfig>();
+						this._Configs = new List<KalturaSchedulerConfig>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Configs.Add((KalturaSchedulerConfig)KalturaObjectFactory.Create(arrayNode, "KalturaSchedulerConfig"));
+							this._Configs.Add((KalturaSchedulerConfig)KalturaObjectFactory.Create(arrayNode, "KalturaSchedulerConfig"));
 						}
 						continue;
 					case "workers":
-						this.Workers = new List<KalturaSchedulerWorker>();
+						this._Workers = new List<KalturaSchedulerWorker>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Workers.Add((KalturaSchedulerWorker)KalturaObjectFactory.Create(arrayNode, "KalturaSchedulerWorker"));
+							this._Workers.Add((KalturaSchedulerWorker)KalturaObjectFactory.Create(arrayNode, "KalturaSchedulerWorker"));
 						}
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "lastStatus":
-						this.LastStatus = ParseInt(txt);
+						this._LastStatus = ParseInt(txt);
 						continue;
 					case "lastStatusStr":
-						this.LastStatusStr = txt;
+						this._LastStatusStr = txt;
 						continue;
 				}
 			}

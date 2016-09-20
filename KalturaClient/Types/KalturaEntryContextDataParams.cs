@@ -92,16 +92,16 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "flavorAssetId":
-						this.FlavorAssetId = txt;
+						this._FlavorAssetId = txt;
 						continue;
 					case "flavorTags":
-						this.FlavorTags = txt;
+						this._FlavorTags = txt;
 						continue;
 					case "streamerType":
-						this.StreamerType = txt;
+						this._StreamerType = txt;
 						continue;
 					case "mediaProtocol":
-						this.MediaProtocol = txt;
+						this._MediaProtocol = txt;
 						continue;
 				}
 			}

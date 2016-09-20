@@ -72,10 +72,10 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "multicastIP":
-						this.MulticastIP = txt;
+						this._MulticastIP = txt;
 						continue;
 					case "multicastPort":
-						this.MulticastPort = ParseInt(txt);
+						this._MulticastPort = ParseInt(txt);
 						continue;
 				}
 			}

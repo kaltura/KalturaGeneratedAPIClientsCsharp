@@ -56,11 +56,6 @@ namespace Kaltura
 		public int Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public string Name
 		{
@@ -101,11 +96,6 @@ namespace Kaltura
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public int ConversionProfile2Id
 		{
@@ -128,20 +118,10 @@ namespace Kaltura
 		public KalturaEmailIngestionProfileStatus Status
 		{
 			get { return _Status; }
-			set 
-			{ 
-				_Status = value;
-				OnPropertyChanged("Status");
-			}
 		}
 		public string CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public string DefaultCategory
 		{
@@ -212,52 +192,52 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = ParseInt(txt);
+						this._Id = ParseInt(txt);
 						continue;
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "emailAddress":
-						this.EmailAddress = txt;
+						this._EmailAddress = txt;
 						continue;
 					case "mailboxId":
-						this.MailboxId = txt;
+						this._MailboxId = txt;
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "conversionProfile2Id":
-						this.ConversionProfile2Id = ParseInt(txt);
+						this._ConversionProfile2Id = ParseInt(txt);
 						continue;
 					case "moderationStatus":
-						this.ModerationStatus = (KalturaEntryModerationStatus)ParseEnum(typeof(KalturaEntryModerationStatus), txt);
+						this._ModerationStatus = (KalturaEntryModerationStatus)ParseEnum(typeof(KalturaEntryModerationStatus), txt);
 						continue;
 					case "status":
-						this.Status = (KalturaEmailIngestionProfileStatus)ParseEnum(typeof(KalturaEmailIngestionProfileStatus), txt);
+						this._Status = (KalturaEmailIngestionProfileStatus)ParseEnum(typeof(KalturaEmailIngestionProfileStatus), txt);
 						continue;
 					case "createdAt":
-						this.CreatedAt = txt;
+						this._CreatedAt = txt;
 						continue;
 					case "defaultCategory":
-						this.DefaultCategory = txt;
+						this._DefaultCategory = txt;
 						continue;
 					case "defaultUserId":
-						this.DefaultUserId = txt;
+						this._DefaultUserId = txt;
 						continue;
 					case "defaultTags":
-						this.DefaultTags = txt;
+						this._DefaultTags = txt;
 						continue;
 					case "defaultAdminTags":
-						this.DefaultAdminTags = txt;
+						this._DefaultAdminTags = txt;
 						continue;
 					case "maxAttachmentSizeKbytes":
-						this.MaxAttachmentSizeKbytes = ParseInt(txt);
+						this._MaxAttachmentSizeKbytes = ParseInt(txt);
 						continue;
 					case "maxAttachmentsPerMail":
-						this.MaxAttachmentsPerMail = ParseInt(txt);
+						this._MaxAttachmentsPerMail = ParseInt(txt);
 						continue;
 				}
 			}

@@ -84,11 +84,6 @@ namespace Kaltura
 		public string Id
 		{
 			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
 		}
 		public string Name
 		{
@@ -111,11 +106,6 @@ namespace Kaltura
 		public int PartnerId
 		{
 			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
 		}
 		public string UserId
 		{
@@ -174,29 +164,14 @@ namespace Kaltura
 		public KalturaEntryStatus Status
 		{
 			get { return _Status; }
-			set 
-			{ 
-				_Status = value;
-				OnPropertyChanged("Status");
-			}
 		}
 		public KalturaEntryModerationStatus ModerationStatus
 		{
 			get { return _ModerationStatus; }
-			set 
-			{ 
-				_ModerationStatus = value;
-				OnPropertyChanged("ModerationStatus");
-			}
 		}
 		public int ModerationCount
 		{
 			get { return _ModerationCount; }
-			set 
-			{ 
-				_ModerationCount = value;
-				OnPropertyChanged("ModerationCount");
-			}
 		}
 		public KalturaEntryType Type
 		{
@@ -210,47 +185,22 @@ namespace Kaltura
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
 		}
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
 		}
 		public float Rank
 		{
 			get { return _Rank; }
-			set 
-			{ 
-				_Rank = value;
-				OnPropertyChanged("Rank");
-			}
 		}
 		public int TotalRank
 		{
 			get { return _TotalRank; }
-			set 
-			{ 
-				_TotalRank = value;
-				OnPropertyChanged("TotalRank");
-			}
 		}
 		public int Votes
 		{
 			get { return _Votes; }
-			set 
-			{ 
-				_Votes = value;
-				OnPropertyChanged("Votes");
-			}
 		}
 		public int GroupId
 		{
@@ -273,20 +223,10 @@ namespace Kaltura
 		public string DownloadUrl
 		{
 			get { return _DownloadUrl; }
-			set 
-			{ 
-				_DownloadUrl = value;
-				OnPropertyChanged("DownloadUrl");
-			}
 		}
 		public string SearchText
 		{
 			get { return _SearchText; }
-			set 
-			{ 
-				_SearchText = value;
-				OnPropertyChanged("SearchText");
-			}
 		}
 		public KalturaLicenseType LicenseType
 		{
@@ -300,20 +240,10 @@ namespace Kaltura
 		public int Version
 		{
 			get { return _Version; }
-			set 
-			{ 
-				_Version = value;
-				OnPropertyChanged("Version");
-			}
 		}
 		public string ThumbnailUrl
 		{
 			get { return _ThumbnailUrl; }
-			set 
-			{ 
-				_ThumbnailUrl = value;
-				OnPropertyChanged("ThumbnailUrl");
-			}
 		}
 		public int AccessControlId
 		{
@@ -354,29 +284,14 @@ namespace Kaltura
 		public string ReplacingEntryId
 		{
 			get { return _ReplacingEntryId; }
-			set 
-			{ 
-				_ReplacingEntryId = value;
-				OnPropertyChanged("ReplacingEntryId");
-			}
 		}
 		public string ReplacedEntryId
 		{
 			get { return _ReplacedEntryId; }
-			set 
-			{ 
-				_ReplacedEntryId = value;
-				OnPropertyChanged("ReplacedEntryId");
-			}
 		}
 		public KalturaEntryReplacementStatus ReplacementStatus
 		{
 			get { return _ReplacementStatus; }
-			set 
-			{ 
-				_ReplacementStatus = value;
-				OnPropertyChanged("ReplacementStatus");
-			}
 		}
 		public int PartnerSortValue
 		{
@@ -408,11 +323,6 @@ namespace Kaltura
 		public string RootEntryId
 		{
 			get { return _RootEntryId; }
-			set 
-			{ 
-				_RootEntryId = value;
-				OnPropertyChanged("RootEntryId");
-			}
 		}
 		public string ParentEntryId
 		{
@@ -423,7 +333,7 @@ namespace Kaltura
 				OnPropertyChanged("ParentEntryId");
 			}
 		}
-		public IList<KalturaOperationAttributes> OperationAttributes
+		public new IList<KalturaOperationAttributes> OperationAttributes
 		{
 			get { return _OperationAttributes; }
 			set 
@@ -453,11 +363,6 @@ namespace Kaltura
 		public string Capabilities
 		{
 			get { return _Capabilities; }
-			set 
-			{ 
-				_Capabilities = value;
-				OnPropertyChanged("Capabilities");
-			}
 		}
 		public string TemplateEntryId
 		{
@@ -492,140 +397,140 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this.Id = txt;
+						this._Id = txt;
 						continue;
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 					case "description":
-						this.Description = txt;
+						this._Description = txt;
 						continue;
 					case "partnerId":
-						this.PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(txt);
 						continue;
 					case "userId":
-						this.UserId = txt;
+						this._UserId = txt;
 						continue;
 					case "creatorId":
-						this.CreatorId = txt;
+						this._CreatorId = txt;
 						continue;
 					case "tags":
-						this.Tags = txt;
+						this._Tags = txt;
 						continue;
 					case "adminTags":
-						this.AdminTags = txt;
+						this._AdminTags = txt;
 						continue;
 					case "categories":
-						this.Categories = txt;
+						this._Categories = txt;
 						continue;
 					case "categoriesIds":
-						this.CategoriesIds = txt;
+						this._CategoriesIds = txt;
 						continue;
 					case "status":
-						this.Status = (KalturaEntryStatus)KalturaStringEnum.Parse(typeof(KalturaEntryStatus), txt);
+						this._Status = (KalturaEntryStatus)KalturaStringEnum.Parse(typeof(KalturaEntryStatus), txt);
 						continue;
 					case "moderationStatus":
-						this.ModerationStatus = (KalturaEntryModerationStatus)ParseEnum(typeof(KalturaEntryModerationStatus), txt);
+						this._ModerationStatus = (KalturaEntryModerationStatus)ParseEnum(typeof(KalturaEntryModerationStatus), txt);
 						continue;
 					case "moderationCount":
-						this.ModerationCount = ParseInt(txt);
+						this._ModerationCount = ParseInt(txt);
 						continue;
 					case "type":
-						this.Type = (KalturaEntryType)KalturaStringEnum.Parse(typeof(KalturaEntryType), txt);
+						this._Type = (KalturaEntryType)KalturaStringEnum.Parse(typeof(KalturaEntryType), txt);
 						continue;
 					case "createdAt":
-						this.CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(txt);
 						continue;
 					case "updatedAt":
-						this.UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(txt);
 						continue;
 					case "rank":
-						this.Rank = ParseFloat(txt);
+						this._Rank = ParseFloat(txt);
 						continue;
 					case "totalRank":
-						this.TotalRank = ParseInt(txt);
+						this._TotalRank = ParseInt(txt);
 						continue;
 					case "votes":
-						this.Votes = ParseInt(txt);
+						this._Votes = ParseInt(txt);
 						continue;
 					case "groupId":
-						this.GroupId = ParseInt(txt);
+						this._GroupId = ParseInt(txt);
 						continue;
 					case "partnerData":
-						this.PartnerData = txt;
+						this._PartnerData = txt;
 						continue;
 					case "downloadUrl":
-						this.DownloadUrl = txt;
+						this._DownloadUrl = txt;
 						continue;
 					case "searchText":
-						this.SearchText = txt;
+						this._SearchText = txt;
 						continue;
 					case "licenseType":
-						this.LicenseType = (KalturaLicenseType)ParseEnum(typeof(KalturaLicenseType), txt);
+						this._LicenseType = (KalturaLicenseType)ParseEnum(typeof(KalturaLicenseType), txt);
 						continue;
 					case "version":
-						this.Version = ParseInt(txt);
+						this._Version = ParseInt(txt);
 						continue;
 					case "thumbnailUrl":
-						this.ThumbnailUrl = txt;
+						this._ThumbnailUrl = txt;
 						continue;
 					case "accessControlId":
-						this.AccessControlId = ParseInt(txt);
+						this._AccessControlId = ParseInt(txt);
 						continue;
 					case "startDate":
-						this.StartDate = ParseInt(txt);
+						this._StartDate = ParseInt(txt);
 						continue;
 					case "endDate":
-						this.EndDate = ParseInt(txt);
+						this._EndDate = ParseInt(txt);
 						continue;
 					case "referenceId":
-						this.ReferenceId = txt;
+						this._ReferenceId = txt;
 						continue;
 					case "replacingEntryId":
-						this.ReplacingEntryId = txt;
+						this._ReplacingEntryId = txt;
 						continue;
 					case "replacedEntryId":
-						this.ReplacedEntryId = txt;
+						this._ReplacedEntryId = txt;
 						continue;
 					case "replacementStatus":
-						this.ReplacementStatus = (KalturaEntryReplacementStatus)KalturaStringEnum.Parse(typeof(KalturaEntryReplacementStatus), txt);
+						this._ReplacementStatus = (KalturaEntryReplacementStatus)KalturaStringEnum.Parse(typeof(KalturaEntryReplacementStatus), txt);
 						continue;
 					case "partnerSortValue":
-						this.PartnerSortValue = ParseInt(txt);
+						this._PartnerSortValue = ParseInt(txt);
 						continue;
 					case "conversionProfileId":
-						this.ConversionProfileId = ParseInt(txt);
+						this._ConversionProfileId = ParseInt(txt);
 						continue;
 					case "redirectEntryId":
-						this.RedirectEntryId = txt;
+						this._RedirectEntryId = txt;
 						continue;
 					case "rootEntryId":
-						this.RootEntryId = txt;
+						this._RootEntryId = txt;
 						continue;
 					case "parentEntryId":
-						this.ParentEntryId = txt;
+						this._ParentEntryId = txt;
 						continue;
 					case "operationAttributes":
-						this.OperationAttributes = new List<KalturaOperationAttributes>();
+						this._OperationAttributes = new List<KalturaOperationAttributes>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.OperationAttributes.Add((KalturaOperationAttributes)KalturaObjectFactory.Create(arrayNode, "KalturaOperationAttributes"));
+							this._OperationAttributes.Add((KalturaOperationAttributes)KalturaObjectFactory.Create(arrayNode, "KalturaOperationAttributes"));
 						}
 						continue;
 					case "entitledUsersEdit":
-						this.EntitledUsersEdit = txt;
+						this._EntitledUsersEdit = txt;
 						continue;
 					case "entitledUsersPublish":
-						this.EntitledUsersPublish = txt;
+						this._EntitledUsersPublish = txt;
 						continue;
 					case "capabilities":
-						this.Capabilities = txt;
+						this._Capabilities = txt;
 						continue;
 					case "templateEntryId":
-						this.TemplateEntryId = txt;
+						this._TemplateEntryId = txt;
 						continue;
 					case "displayInSearch":
-						this.DisplayInSearch = (KalturaEntryDisplayInSearchType)ParseEnum(typeof(KalturaEntryDisplayInSearchType), txt);
+						this._DisplayInSearch = (KalturaEntryDisplayInSearchType)ParseEnum(typeof(KalturaEntryDisplayInSearchType), txt);
 						continue;
 				}
 			}

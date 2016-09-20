@@ -82,13 +82,13 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "flavorParamsId":
-						this.FlavorParamsId = ParseInt(txt);
+						this._FlavorParamsId = ParseInt(txt);
 						continue;
 					case "name":
-						this.Name = txt;
+						this._Name = txt;
 						continue;
 					case "value":
-						this.Value = txt;
+						this._Value = txt;
 						continue;
 				}
 			}

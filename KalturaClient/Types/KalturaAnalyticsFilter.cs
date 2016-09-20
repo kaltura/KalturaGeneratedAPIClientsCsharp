@@ -88,7 +88,7 @@ namespace Kaltura
 				OnPropertyChanged("Dimensions");
 			}
 		}
-		public IList<KalturaReportFilter> Filters
+		public new IList<KalturaReportFilter> Filters
 		{
 			get { return _Filters; }
 			set 
@@ -112,25 +112,25 @@ namespace Kaltura
 				switch (propertyNode.Name)
 				{
 					case "from_time":
-						this.From_time = txt;
+						this._From_time = txt;
 						continue;
 					case "to_time":
-						this.To_time = txt;
+						this._To_time = txt;
 						continue;
 					case "metrics":
-						this.Metrics = txt;
+						this._Metrics = txt;
 						continue;
 					case "utcOffset":
-						this.UtcOffset = ParseFloat(txt);
+						this._UtcOffset = ParseFloat(txt);
 						continue;
 					case "dimensions":
-						this.Dimensions = txt;
+						this._Dimensions = txt;
 						continue;
 					case "filters":
-						this.Filters = new List<KalturaReportFilter>();
+						this._Filters = new List<KalturaReportFilter>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							this.Filters.Add((KalturaReportFilter)KalturaObjectFactory.Create(arrayNode, "KalturaReportFilter"));
+							this._Filters.Add((KalturaReportFilter)KalturaObjectFactory.Create(arrayNode, "KalturaReportFilter"));
 						}
 						continue;
 				}

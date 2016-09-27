@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEntryScheduleEvent");
-			kparams.AddIfNotNull("templateEntryId", this.TemplateEntryId);
-			kparams.AddIfNotNull("entryIds", this.EntryIds);
-			kparams.AddIfNotNull("categoryIds", this.CategoryIds);
+			kparams.AddIfNotNull("templateEntryId", this._TemplateEntryId);
+			kparams.AddIfNotNull("entryIds", this._EntryIds);
+			kparams.AddIfNotNull("categoryIds", this._CategoryIds);
 			return kparams;
 		}
 		#endregion

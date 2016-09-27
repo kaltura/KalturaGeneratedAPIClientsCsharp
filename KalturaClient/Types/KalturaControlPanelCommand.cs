@@ -267,23 +267,23 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaControlPanelCommand");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("createdBy", this.CreatedBy);
-			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIfNotNull("updatedBy", this.UpdatedBy);
-			kparams.AddIfNotNull("createdById", this.CreatedById);
-			kparams.AddIfNotNull("schedulerId", this.SchedulerId);
-			kparams.AddIfNotNull("workerId", this.WorkerId);
-			kparams.AddIfNotNull("workerConfiguredId", this.WorkerConfiguredId);
-			kparams.AddIfNotNull("workerName", this.WorkerName);
-			kparams.AddIfNotNull("batchIndex", this.BatchIndex);
-			kparams.AddIfNotNull("type", this.Type);
-			kparams.AddIfNotNull("targetType", this.TargetType);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("cause", this.Cause);
-			kparams.AddIfNotNull("description", this.Description);
-			kparams.AddIfNotNull("errorDescription", this.ErrorDescription);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("createdBy", this._CreatedBy);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
+			kparams.AddIfNotNull("updatedBy", this._UpdatedBy);
+			kparams.AddIfNotNull("createdById", this._CreatedById);
+			kparams.AddIfNotNull("schedulerId", this._SchedulerId);
+			kparams.AddIfNotNull("workerId", this._WorkerId);
+			kparams.AddIfNotNull("workerConfiguredId", this._WorkerConfiguredId);
+			kparams.AddIfNotNull("workerName", this._WorkerName);
+			kparams.AddIfNotNull("batchIndex", this._BatchIndex);
+			kparams.AddIfNotNull("type", this._Type);
+			kparams.AddIfNotNull("targetType", this._TargetType);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("cause", this._Cause);
+			kparams.AddIfNotNull("description", this._Description);
+			kparams.AddIfNotNull("errorDescription", this._ErrorDescription);
 			return kparams;
 		}
 		#endregion

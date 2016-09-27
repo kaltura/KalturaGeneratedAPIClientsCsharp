@@ -143,15 +143,15 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUploadToken");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("userId", this.UserId);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("fileName", this.FileName);
-			kparams.AddIfNotNull("fileSize", this.FileSize);
-			kparams.AddIfNotNull("uploadedFileSize", this.UploadedFileSize);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("userId", this._UserId);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("fileName", this._FileName);
+			kparams.AddIfNotNull("fileSize", this._FileSize);
+			kparams.AddIfNotNull("uploadedFileSize", this._UploadedFileSize);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
 			return kparams;
 		}
 		#endregion

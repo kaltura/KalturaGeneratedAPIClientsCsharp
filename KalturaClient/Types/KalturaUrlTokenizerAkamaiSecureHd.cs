@@ -126,11 +126,11 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUrlTokenizerAkamaiSecureHd");
-			kparams.AddIfNotNull("paramName", this.ParamName);
-			kparams.AddIfNotNull("aclPostfix", this.AclPostfix);
-			kparams.AddIfNotNull("customPostfixes", this.CustomPostfixes);
-			kparams.AddIfNotNull("useCookieHosts", this.UseCookieHosts);
-			kparams.AddIfNotNull("rootDir", this.RootDir);
+			kparams.AddIfNotNull("paramName", this._ParamName);
+			kparams.AddIfNotNull("aclPostfix", this._AclPostfix);
+			kparams.AddIfNotNull("customPostfixes", this._CustomPostfixes);
+			kparams.AddIfNotNull("useCookieHosts", this._UseCookieHosts);
+			kparams.AddIfNotNull("rootDir", this._RootDir);
 			return kparams;
 		}
 		#endregion

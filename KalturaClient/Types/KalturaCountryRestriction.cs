@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCountryRestriction");
-			kparams.AddIfNotNull("countryRestrictionType", this.CountryRestrictionType);
-			kparams.AddIfNotNull("countryList", this.CountryList);
+			kparams.AddIfNotNull("countryRestrictionType", this._CountryRestrictionType);
+			kparams.AddIfNotNull("countryList", this._CountryList);
 			return kparams;
 		}
 		#endregion

@@ -135,14 +135,14 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUserEntry");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("entryId", this.EntryId);
-			kparams.AddIfNotNull("userId", this.UserId);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIfNotNull("type", this.Type);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("entryId", this._EntryId);
+			kparams.AddIfNotNull("userId", this._UserId);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
+			kparams.AddIfNotNull("type", this._Type);
 			return kparams;
 		}
 		#endregion

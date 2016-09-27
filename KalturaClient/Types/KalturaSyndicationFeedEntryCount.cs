@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSyndicationFeedEntryCount");
-			kparams.AddIfNotNull("totalEntryCount", this.TotalEntryCount);
-			kparams.AddIfNotNull("actualEntryCount", this.ActualEntryCount);
-			kparams.AddIfNotNull("requireTranscodingCount", this.RequireTranscodingCount);
+			kparams.AddIfNotNull("totalEntryCount", this._TotalEntryCount);
+			kparams.AddIfNotNull("actualEntryCount", this._ActualEntryCount);
+			kparams.AddIfNotNull("requireTranscodingCount", this._RequireTranscodingCount);
 			return kparams;
 		}
 		#endregion

@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveEntryFilter");
-			kparams.AddIfNotNull("isLive", this.IsLive);
-			kparams.AddIfNotNull("isRecordedEntryIdEmpty", this.IsRecordedEntryIdEmpty);
-			kparams.AddIfNotNull("hasMediaServerHostname", this.HasMediaServerHostname);
-			kparams.AddIfNotNull("orderBy", this.OrderBy);
+			kparams.AddIfNotNull("isLive", this._IsLive);
+			kparams.AddIfNotNull("isRecordedEntryIdEmpty", this._IsRecordedEntryIdEmpty);
+			kparams.AddIfNotNull("hasMediaServerHostname", this._HasMediaServerHostname);
+			kparams.AddIfNotNull("orderBy", this._OrderBy);
 			return kparams;
 		}
 		#endregion

@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAccessControlServeRemoteEdgeServerAction");
-			kparams.AddIfNotNull("edgeServerIds", this.EdgeServerIds);
+			kparams.AddIfNotNull("edgeServerIds", this._EdgeServerIds);
 			return kparams;
 		}
 		#endregion

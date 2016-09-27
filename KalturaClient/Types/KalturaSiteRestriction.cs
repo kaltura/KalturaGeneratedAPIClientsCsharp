@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSiteRestriction");
-			kparams.AddIfNotNull("siteRestrictionType", this.SiteRestrictionType);
-			kparams.AddIfNotNull("siteList", this.SiteList);
+			kparams.AddIfNotNull("siteRestrictionType", this._SiteRestrictionType);
+			kparams.AddIfNotNull("siteList", this._SiteList);
 			return kparams;
 		}
 		#endregion

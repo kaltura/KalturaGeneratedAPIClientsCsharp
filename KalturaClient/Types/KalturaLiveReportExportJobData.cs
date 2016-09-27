@@ -126,11 +126,11 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveReportExportJobData");
-			kparams.AddIfNotNull("timeReference", this.TimeReference);
-			kparams.AddIfNotNull("timeZoneOffset", this.TimeZoneOffset);
-			kparams.AddIfNotNull("entryIds", this.EntryIds);
-			kparams.AddIfNotNull("outputPath", this.OutputPath);
-			kparams.AddIfNotNull("recipientEmail", this.RecipientEmail);
+			kparams.AddIfNotNull("timeReference", this._TimeReference);
+			kparams.AddIfNotNull("timeZoneOffset", this._TimeZoneOffset);
+			kparams.AddIfNotNull("entryIds", this._EntryIds);
+			kparams.AddIfNotNull("outputPath", this._OutputPath);
+			kparams.AddIfNotNull("recipientEmail", this._RecipientEmail);
 			return kparams;
 		}
 		#endregion

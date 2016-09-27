@@ -299,24 +299,24 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaBulkUpload");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("uploadedBy", this.UploadedBy);
-			kparams.AddIfNotNull("uploadedByUserId", this.UploadedByUserId);
-			kparams.AddIfNotNull("uploadedOn", this.UploadedOn);
-			kparams.AddIfNotNull("numOfEntries", this.NumOfEntries);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("logFileUrl", this.LogFileUrl);
-			kparams.AddIfNotNull("csvFileUrl", this.CsvFileUrl);
-			kparams.AddIfNotNull("bulkFileUrl", this.BulkFileUrl);
-			kparams.AddIfNotNull("bulkUploadType", this.BulkUploadType);
-			kparams.AddIfNotNull("results", this.Results);
-			kparams.AddIfNotNull("error", this.Error);
-			kparams.AddIfNotNull("errorType", this.ErrorType);
-			kparams.AddIfNotNull("errorNumber", this.ErrorNumber);
-			kparams.AddIfNotNull("fileName", this.FileName);
-			kparams.AddIfNotNull("description", this.Description);
-			kparams.AddIfNotNull("numOfObjects", this.NumOfObjects);
-			kparams.AddIfNotNull("bulkUploadObjectType", this.BulkUploadObjectType);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("uploadedBy", this._UploadedBy);
+			kparams.AddIfNotNull("uploadedByUserId", this._UploadedByUserId);
+			kparams.AddIfNotNull("uploadedOn", this._UploadedOn);
+			kparams.AddIfNotNull("numOfEntries", this._NumOfEntries);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("logFileUrl", this._LogFileUrl);
+			kparams.AddIfNotNull("csvFileUrl", this._CsvFileUrl);
+			kparams.AddIfNotNull("bulkFileUrl", this._BulkFileUrl);
+			kparams.AddIfNotNull("bulkUploadType", this._BulkUploadType);
+			kparams.AddIfNotNull("results", this._Results);
+			kparams.AddIfNotNull("error", this._Error);
+			kparams.AddIfNotNull("errorType", this._ErrorType);
+			kparams.AddIfNotNull("errorNumber", this._ErrorNumber);
+			kparams.AddIfNotNull("fileName", this._FileName);
+			kparams.AddIfNotNull("description", this._Description);
+			kparams.AddIfNotNull("numOfObjects", this._NumOfObjects);
+			kparams.AddIfNotNull("bulkUploadObjectType", this._BulkUploadObjectType);
 			return kparams;
 		}
 		#endregion

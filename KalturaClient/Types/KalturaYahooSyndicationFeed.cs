@@ -108,10 +108,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaYahooSyndicationFeed");
-			kparams.AddIfNotNull("category", this.Category);
-			kparams.AddIfNotNull("adultContent", this.AdultContent);
-			kparams.AddIfNotNull("feedDescription", this.FeedDescription);
-			kparams.AddIfNotNull("feedLandingPage", this.FeedLandingPage);
+			kparams.AddIfNotNull("category", this._Category);
+			kparams.AddIfNotNull("adultContent", this._AdultContent);
+			kparams.AddIfNotNull("feedDescription", this._FeedDescription);
+			kparams.AddIfNotNull("feedLandingPage", this._FeedLandingPage);
 			return kparams;
 		}
 		#endregion

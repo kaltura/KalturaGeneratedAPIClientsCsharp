@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUrlTokenizerLevel3");
-			kparams.AddIfNotNull("paramName", this.ParamName);
-			kparams.AddIfNotNull("expiryName", this.ExpiryName);
-			kparams.AddIfNotNull("gen", this.Gen);
+			kparams.AddIfNotNull("paramName", this._ParamName);
+			kparams.AddIfNotNull("expiryName", this._ExpiryName);
+			kparams.AddIfNotNull("gen", this._Gen);
 			return kparams;
 		}
 		#endregion

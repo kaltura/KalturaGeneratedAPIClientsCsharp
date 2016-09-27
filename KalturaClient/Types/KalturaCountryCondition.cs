@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCountryCondition");
-			kparams.AddIfNotNull("geoCoderType", this.GeoCoderType);
+			kparams.AddIfNotNull("geoCoderType", this._GeoCoderType);
 			return kparams;
 		}
 		#endregion

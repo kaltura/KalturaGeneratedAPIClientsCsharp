@@ -176,16 +176,16 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCielo24JobProviderData");
-			kparams.AddIfNotNull("entryId", this.EntryId);
-			kparams.AddIfNotNull("flavorAssetId", this.FlavorAssetId);
-			kparams.AddIfNotNull("captionAssetFormats", this.CaptionAssetFormats);
-			kparams.AddIfNotNull("priority", this.Priority);
-			kparams.AddIfNotNull("fidelity", this.Fidelity);
-			kparams.AddIfNotNull("username", this.Username);
-			kparams.AddIfNotNull("password", this.Password);
-			kparams.AddIfNotNull("baseUrl", this.BaseUrl);
-			kparams.AddIfNotNull("spokenLanguage", this.SpokenLanguage);
-			kparams.AddIfNotNull("replaceMediaContent", this.ReplaceMediaContent);
+			kparams.AddIfNotNull("entryId", this._EntryId);
+			kparams.AddIfNotNull("flavorAssetId", this._FlavorAssetId);
+			kparams.AddIfNotNull("captionAssetFormats", this._CaptionAssetFormats);
+			kparams.AddIfNotNull("priority", this._Priority);
+			kparams.AddIfNotNull("fidelity", this._Fidelity);
+			kparams.AddIfNotNull("username", this._Username);
+			kparams.AddIfNotNull("password", this._Password);
+			kparams.AddIfNotNull("baseUrl", this._BaseUrl);
+			kparams.AddIfNotNull("spokenLanguage", this._SpokenLanguage);
+			kparams.AddIfNotNull("replaceMediaContent", this._ReplaceMediaContent);
 			return kparams;
 		}
 		#endregion

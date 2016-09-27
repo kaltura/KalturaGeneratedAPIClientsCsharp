@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaOptionalAnswer");
-			kparams.AddIfNotNull("key", this.Key);
-			kparams.AddIfNotNull("text", this.Text);
-			kparams.AddIfNotNull("weight", this.Weight);
-			kparams.AddIfNotNull("isCorrect", this.IsCorrect);
+			kparams.AddIfNotNull("key", this._Key);
+			kparams.AddIfNotNull("text", this._Text);
+			kparams.AddIfNotNull("weight", this._Weight);
+			kparams.AddIfNotNull("isCorrect", this._IsCorrect);
 			return kparams;
 		}
 		#endregion

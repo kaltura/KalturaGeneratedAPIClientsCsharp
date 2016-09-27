@@ -126,11 +126,11 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSearch");
-			kparams.AddIfNotNull("keyWords", this.KeyWords);
-			kparams.AddIfNotNull("searchSource", this.SearchSource);
-			kparams.AddIfNotNull("mediaType", this.MediaType);
-			kparams.AddIfNotNull("extraData", this.ExtraData);
-			kparams.AddIfNotNull("authData", this.AuthData);
+			kparams.AddIfNotNull("keyWords", this._KeyWords);
+			kparams.AddIfNotNull("searchSource", this._SearchSource);
+			kparams.AddIfNotNull("mediaType", this._MediaType);
+			kparams.AddIfNotNull("extraData", this._ExtraData);
+			kparams.AddIfNotNull("authData", this._AuthData);
 			return kparams;
 		}
 		#endregion

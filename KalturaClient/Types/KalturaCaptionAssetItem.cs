@@ -126,11 +126,11 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCaptionAssetItem");
-			kparams.AddIfNotNull("asset", this.Asset);
-			kparams.AddIfNotNull("entry", this.Entry);
-			kparams.AddIfNotNull("startTime", this.StartTime);
-			kparams.AddIfNotNull("endTime", this.EndTime);
-			kparams.AddIfNotNull("content", this.Content);
+			kparams.AddIfNotNull("asset", this._Asset);
+			kparams.AddIfNotNull("entry", this._Entry);
+			kparams.AddIfNotNull("startTime", this._StartTime);
+			kparams.AddIfNotNull("endTime", this._EndTime);
+			kparams.AddIfNotNull("content", this._Content);
 			return kparams;
 		}
 		#endregion

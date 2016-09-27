@@ -93,10 +93,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaMetadataProfileField");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("xPath", this.XPath);
-			kparams.AddIfNotNull("key", this.Key);
-			kparams.AddIfNotNull("label", this.Label);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("xPath", this._XPath);
+			kparams.AddIfNotNull("key", this._Key);
+			kparams.AddIfNotNull("label", this._Label);
 			return kparams;
 		}
 		#endregion

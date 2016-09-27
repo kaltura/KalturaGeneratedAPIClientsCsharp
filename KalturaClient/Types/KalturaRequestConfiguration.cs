@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaRequestConfiguration");
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("ks", this.Ks);
-			kparams.AddIfNotNull("responseProfile", this.ResponseProfile);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("ks", this._Ks);
+			kparams.AddIfNotNull("responseProfile", this._ResponseProfile);
 			return kparams;
 		}
 		#endregion

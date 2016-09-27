@@ -78,7 +78,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveEntryServerNode");
-			kparams.AddIfNotNull("streams", this.Streams);
+			kparams.AddIfNotNull("streams", this._Streams);
 			return kparams;
 		}
 		#endregion

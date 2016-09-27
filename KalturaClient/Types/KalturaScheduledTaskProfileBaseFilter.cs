@@ -243,20 +243,20 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaScheduledTaskProfileBaseFilter");
-			kparams.AddIfNotNull("idEqual", this.IdEqual);
-			kparams.AddIfNotNull("idIn", this.IdIn);
-			kparams.AddIfNotNull("partnerIdEqual", this.PartnerIdEqual);
-			kparams.AddIfNotNull("partnerIdIn", this.PartnerIdIn);
-			kparams.AddIfNotNull("systemNameEqual", this.SystemNameEqual);
-			kparams.AddIfNotNull("systemNameIn", this.SystemNameIn);
-			kparams.AddIfNotNull("statusEqual", this.StatusEqual);
-			kparams.AddIfNotNull("statusIn", this.StatusIn);
-			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
-			kparams.AddIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
-			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
-			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
-			kparams.AddIfNotNull("lastExecutionStartedAtGreaterThanOrEqual", this.LastExecutionStartedAtGreaterThanOrEqual);
-			kparams.AddIfNotNull("lastExecutionStartedAtLessThanOrEqual", this.LastExecutionStartedAtLessThanOrEqual);
+			kparams.AddIfNotNull("idEqual", this._IdEqual);
+			kparams.AddIfNotNull("idIn", this._IdIn);
+			kparams.AddIfNotNull("partnerIdEqual", this._PartnerIdEqual);
+			kparams.AddIfNotNull("partnerIdIn", this._PartnerIdIn);
+			kparams.AddIfNotNull("systemNameEqual", this._SystemNameEqual);
+			kparams.AddIfNotNull("systemNameIn", this._SystemNameIn);
+			kparams.AddIfNotNull("statusEqual", this._StatusEqual);
+			kparams.AddIfNotNull("statusIn", this._StatusIn);
+			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this._CreatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("createdAtLessThanOrEqual", this._CreatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this._UpdatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this._UpdatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("lastExecutionStartedAtGreaterThanOrEqual", this._LastExecutionStartedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("lastExecutionStartedAtLessThanOrEqual", this._LastExecutionStartedAtLessThanOrEqual);
 			return kparams;
 		}
 		#endregion

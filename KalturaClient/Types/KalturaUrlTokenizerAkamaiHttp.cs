@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUrlTokenizerAkamaiHttp");
-			kparams.AddIfNotNull("paramName", this.ParamName);
-			kparams.AddIfNotNull("rootDir", this.RootDir);
+			kparams.AddIfNotNull("paramName", this._ParamName);
+			kparams.AddIfNotNull("rootDir", this._RootDir);
 			return kparams;
 		}
 		#endregion

@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCompareCondition");
-			kparams.AddIfNotNull("value", this.Value);
-			kparams.AddIfNotNull("comparison", this.Comparison);
+			kparams.AddIfNotNull("value", this._Value);
+			kparams.AddIfNotNull("comparison", this._Comparison);
 			return kparams;
 		}
 		#endregion

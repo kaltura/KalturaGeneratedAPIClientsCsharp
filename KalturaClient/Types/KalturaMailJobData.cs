@@ -269,22 +269,22 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaMailJobData");
-			kparams.AddIfNotNull("mailType", this.MailType);
-			kparams.AddIfNotNull("mailPriority", this.MailPriority);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("recipientName", this.RecipientName);
-			kparams.AddIfNotNull("recipientEmail", this.RecipientEmail);
-			kparams.AddIfNotNull("recipientId", this.RecipientId);
-			kparams.AddIfNotNull("fromName", this.FromName);
-			kparams.AddIfNotNull("fromEmail", this.FromEmail);
-			kparams.AddIfNotNull("bodyParams", this.BodyParams);
-			kparams.AddIfNotNull("subjectParams", this.SubjectParams);
-			kparams.AddIfNotNull("templatePath", this.TemplatePath);
-			kparams.AddIfNotNull("language", this.Language);
-			kparams.AddIfNotNull("campaignId", this.CampaignId);
-			kparams.AddIfNotNull("minSendDate", this.MinSendDate);
-			kparams.AddIfNotNull("isHtml", this.IsHtml);
-			kparams.AddIfNotNull("separator", this.Separator);
+			kparams.AddIfNotNull("mailType", this._MailType);
+			kparams.AddIfNotNull("mailPriority", this._MailPriority);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("recipientName", this._RecipientName);
+			kparams.AddIfNotNull("recipientEmail", this._RecipientEmail);
+			kparams.AddIfNotNull("recipientId", this._RecipientId);
+			kparams.AddIfNotNull("fromName", this._FromName);
+			kparams.AddIfNotNull("fromEmail", this._FromEmail);
+			kparams.AddIfNotNull("bodyParams", this._BodyParams);
+			kparams.AddIfNotNull("subjectParams", this._SubjectParams);
+			kparams.AddIfNotNull("templatePath", this._TemplatePath);
+			kparams.AddIfNotNull("language", this._Language);
+			kparams.AddIfNotNull("campaignId", this._CampaignId);
+			kparams.AddIfNotNull("minSendDate", this._MinSendDate);
+			kparams.AddIfNotNull("isHtml", this._IsHtml);
+			kparams.AddIfNotNull("separator", this._Separator);
 			return kparams;
 		}
 		#endregion

@@ -143,12 +143,12 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAnalyticsFilter");
-			kparams.AddIfNotNull("from_time", this.From_time);
-			kparams.AddIfNotNull("to_time", this.To_time);
-			kparams.AddIfNotNull("metrics", this.Metrics);
-			kparams.AddIfNotNull("utcOffset", this.UtcOffset);
-			kparams.AddIfNotNull("dimensions", this.Dimensions);
-			kparams.AddIfNotNull("filters", this.Filters);
+			kparams.AddIfNotNull("from_time", this._From_time);
+			kparams.AddIfNotNull("to_time", this._To_time);
+			kparams.AddIfNotNull("metrics", this._Metrics);
+			kparams.AddIfNotNull("utcOffset", this._UtcOffset);
+			kparams.AddIfNotNull("dimensions", this._Dimensions);
+			kparams.AddIfNotNull("filters", this._Filters);
 			return kparams;
 		}
 		#endregion

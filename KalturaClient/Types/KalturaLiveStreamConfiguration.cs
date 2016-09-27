@@ -126,11 +126,11 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveStreamConfiguration");
-			kparams.AddIfNotNull("protocol", this.Protocol);
-			kparams.AddIfNotNull("url", this.Url);
-			kparams.AddIfNotNull("publishUrl", this.PublishUrl);
-			kparams.AddIfNotNull("backupUrl", this.BackupUrl);
-			kparams.AddIfNotNull("streamName", this.StreamName);
+			kparams.AddIfNotNull("protocol", this._Protocol);
+			kparams.AddIfNotNull("url", this._Url);
+			kparams.AddIfNotNull("publishUrl", this._PublishUrl);
+			kparams.AddIfNotNull("backupUrl", this._BackupUrl);
+			kparams.AddIfNotNull("streamName", this._StreamName);
 			return kparams;
 		}
 		#endregion

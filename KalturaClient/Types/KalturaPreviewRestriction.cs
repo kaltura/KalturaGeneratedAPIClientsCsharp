@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaPreviewRestriction");
-			kparams.AddIfNotNull("previewLength", this.PreviewLength);
+			kparams.AddIfNotNull("previewLength", this._PreviewLength);
 			return kparams;
 		}
 		#endregion

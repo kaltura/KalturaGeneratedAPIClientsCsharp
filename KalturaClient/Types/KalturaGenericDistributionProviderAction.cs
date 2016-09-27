@@ -247,23 +247,23 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaGenericDistributionProviderAction");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIfNotNull("genericDistributionProviderId", this.GenericDistributionProviderId);
-			kparams.AddIfNotNull("action", this.Action);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("resultsParser", this.ResultsParser);
-			kparams.AddIfNotNull("protocol", this.Protocol);
-			kparams.AddIfNotNull("serverAddress", this.ServerAddress);
-			kparams.AddIfNotNull("remotePath", this.RemotePath);
-			kparams.AddIfNotNull("remoteUsername", this.RemoteUsername);
-			kparams.AddIfNotNull("remotePassword", this.RemotePassword);
-			kparams.AddIfNotNull("editableFields", this.EditableFields);
-			kparams.AddIfNotNull("mandatoryFields", this.MandatoryFields);
-			kparams.AddIfNotNull("mrssTransformer", this.MrssTransformer);
-			kparams.AddIfNotNull("mrssValidator", this.MrssValidator);
-			kparams.AddIfNotNull("resultsTransformer", this.ResultsTransformer);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
+			kparams.AddIfNotNull("genericDistributionProviderId", this._GenericDistributionProviderId);
+			kparams.AddIfNotNull("action", this._Action);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("resultsParser", this._ResultsParser);
+			kparams.AddIfNotNull("protocol", this._Protocol);
+			kparams.AddIfNotNull("serverAddress", this._ServerAddress);
+			kparams.AddIfNotNull("remotePath", this._RemotePath);
+			kparams.AddIfNotNull("remoteUsername", this._RemoteUsername);
+			kparams.AddIfNotNull("remotePassword", this._RemotePassword);
+			kparams.AddIfNotNull("editableFields", this._EditableFields);
+			kparams.AddIfNotNull("mandatoryFields", this._MandatoryFields);
+			kparams.AddIfNotNull("mrssTransformer", this._MrssTransformer);
+			kparams.AddIfNotNull("mrssValidator", this._MrssValidator);
+			kparams.AddIfNotNull("resultsTransformer", this._ResultsTransformer);
 			return kparams;
 		}
 		#endregion

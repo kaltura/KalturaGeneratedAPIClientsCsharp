@@ -164,14 +164,14 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaQuiz");
-			kparams.AddIfNotNull("version", this.Version);
-			kparams.AddIfNotNull("uiAttributes", this.UiAttributes);
-			kparams.AddIfNotNull("showResultOnAnswer", this.ShowResultOnAnswer);
-			kparams.AddIfNotNull("showCorrectKeyOnAnswer", this.ShowCorrectKeyOnAnswer);
-			kparams.AddIfNotNull("allowAnswerUpdate", this.AllowAnswerUpdate);
-			kparams.AddIfNotNull("showCorrectAfterSubmission", this.ShowCorrectAfterSubmission);
-			kparams.AddIfNotNull("allowDownload", this.AllowDownload);
-			kparams.AddIfNotNull("showGradeAfterSubmission", this.ShowGradeAfterSubmission);
+			kparams.AddIfNotNull("version", this._Version);
+			kparams.AddIfNotNull("uiAttributes", this._UiAttributes);
+			kparams.AddIfNotNull("showResultOnAnswer", this._ShowResultOnAnswer);
+			kparams.AddIfNotNull("showCorrectKeyOnAnswer", this._ShowCorrectKeyOnAnswer);
+			kparams.AddIfNotNull("allowAnswerUpdate", this._AllowAnswerUpdate);
+			kparams.AddIfNotNull("showCorrectAfterSubmission", this._ShowCorrectAfterSubmission);
+			kparams.AddIfNotNull("allowDownload", this._AllowDownload);
+			kparams.AddIfNotNull("showGradeAfterSubmission", this._ShowGradeAfterSubmission);
 			return kparams;
 		}
 		#endregion

@@ -168,16 +168,16 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaScheduler");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("configuredId", this.ConfiguredId);
-			kparams.AddIfNotNull("name", this.Name);
-			kparams.AddIfNotNull("host", this.Host);
-			kparams.AddIfNotNull("statuses", this.Statuses);
-			kparams.AddIfNotNull("configs", this.Configs);
-			kparams.AddIfNotNull("workers", this.Workers);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("lastStatus", this.LastStatus);
-			kparams.AddIfNotNull("lastStatusStr", this.LastStatusStr);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("configuredId", this._ConfiguredId);
+			kparams.AddIfNotNull("name", this._Name);
+			kparams.AddIfNotNull("host", this._Host);
+			kparams.AddIfNotNull("statuses", this._Statuses);
+			kparams.AddIfNotNull("configs", this._Configs);
+			kparams.AddIfNotNull("workers", this._Workers);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("lastStatus", this._LastStatus);
+			kparams.AddIfNotNull("lastStatusStr", this._LastStatusStr);
 			return kparams;
 		}
 		#endregion

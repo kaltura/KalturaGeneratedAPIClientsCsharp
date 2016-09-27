@@ -152,13 +152,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaPostConvertJobData");
-			kparams.AddIfNotNull("flavorAssetId", this.FlavorAssetId);
-			kparams.AddIfNotNull("createThumb", this.CreateThumb);
-			kparams.AddIfNotNull("thumbPath", this.ThumbPath);
-			kparams.AddIfNotNull("thumbOffset", this.ThumbOffset);
-			kparams.AddIfNotNull("thumbHeight", this.ThumbHeight);
-			kparams.AddIfNotNull("thumbBitrate", this.ThumbBitrate);
-			kparams.AddIfNotNull("customData", this.CustomData);
+			kparams.AddIfNotNull("flavorAssetId", this._FlavorAssetId);
+			kparams.AddIfNotNull("createThumb", this._CreateThumb);
+			kparams.AddIfNotNull("thumbPath", this._ThumbPath);
+			kparams.AddIfNotNull("thumbOffset", this._ThumbOffset);
+			kparams.AddIfNotNull("thumbHeight", this._ThumbHeight);
+			kparams.AddIfNotNull("thumbBitrate", this._ThumbBitrate);
+			kparams.AddIfNotNull("customData", this._CustomData);
 			return kparams;
 		}
 		#endregion

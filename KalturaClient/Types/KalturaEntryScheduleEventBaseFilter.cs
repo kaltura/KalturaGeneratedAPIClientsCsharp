@@ -152,13 +152,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEntryScheduleEventBaseFilter");
-			kparams.AddIfNotNull("templateEntryIdEqual", this.TemplateEntryIdEqual);
-			kparams.AddIfNotNull("entryIdsLike", this.EntryIdsLike);
-			kparams.AddIfNotNull("entryIdsMultiLikeOr", this.EntryIdsMultiLikeOr);
-			kparams.AddIfNotNull("entryIdsMultiLikeAnd", this.EntryIdsMultiLikeAnd);
-			kparams.AddIfNotNull("categoryIdsLike", this.CategoryIdsLike);
-			kparams.AddIfNotNull("categoryIdsMultiLikeOr", this.CategoryIdsMultiLikeOr);
-			kparams.AddIfNotNull("categoryIdsMultiLikeAnd", this.CategoryIdsMultiLikeAnd);
+			kparams.AddIfNotNull("templateEntryIdEqual", this._TemplateEntryIdEqual);
+			kparams.AddIfNotNull("entryIdsLike", this._EntryIdsLike);
+			kparams.AddIfNotNull("entryIdsMultiLikeOr", this._EntryIdsMultiLikeOr);
+			kparams.AddIfNotNull("entryIdsMultiLikeAnd", this._EntryIdsMultiLikeAnd);
+			kparams.AddIfNotNull("categoryIdsLike", this._CategoryIdsLike);
+			kparams.AddIfNotNull("categoryIdsMultiLikeOr", this._CategoryIdsMultiLikeOr);
+			kparams.AddIfNotNull("categoryIdsMultiLikeAnd", this._CategoryIdsMultiLikeAnd);
 			return kparams;
 		}
 		#endregion

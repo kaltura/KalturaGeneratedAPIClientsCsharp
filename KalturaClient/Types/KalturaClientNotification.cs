@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaClientNotification");
-			kparams.AddIfNotNull("url", this.Url);
-			kparams.AddIfNotNull("data", this.Data);
+			kparams.AddIfNotNull("url", this._Url);
+			kparams.AddIfNotNull("data", this._Data);
 			return kparams;
 		}
 		#endregion

@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaResponseProfileMapping");
-			kparams.AddIfNotNull("parentProperty", this.ParentProperty);
-			kparams.AddIfNotNull("filterProperty", this.FilterProperty);
-			kparams.AddIfNotNull("allowNull", this.AllowNull);
+			kparams.AddIfNotNull("parentProperty", this._ParentProperty);
+			kparams.AddIfNotNull("filterProperty", this._FilterProperty);
+			kparams.AddIfNotNull("allowNull", this._AllowNull);
 			return kparams;
 		}
 		#endregion

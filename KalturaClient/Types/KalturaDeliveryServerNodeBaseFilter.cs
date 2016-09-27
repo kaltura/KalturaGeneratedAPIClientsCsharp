@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDeliveryServerNodeBaseFilter");
-			kparams.AddIfNotNull("playbackDomainLike", this.PlaybackDomainLike);
-			kparams.AddIfNotNull("playbackDomainMultiLikeOr", this.PlaybackDomainMultiLikeOr);
-			kparams.AddIfNotNull("playbackDomainMultiLikeAnd", this.PlaybackDomainMultiLikeAnd);
+			kparams.AddIfNotNull("playbackDomainLike", this._PlaybackDomainLike);
+			kparams.AddIfNotNull("playbackDomainMultiLikeOr", this._PlaybackDomainMultiLikeOr);
+			kparams.AddIfNotNull("playbackDomainMultiLikeAnd", this._PlaybackDomainMultiLikeAnd);
 			return kparams;
 		}
 		#endregion

@@ -217,18 +217,18 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCodeCuePointBaseFilter");
-			kparams.AddIfNotNull("codeLike", this.CodeLike);
-			kparams.AddIfNotNull("codeMultiLikeOr", this.CodeMultiLikeOr);
-			kparams.AddIfNotNull("codeMultiLikeAnd", this.CodeMultiLikeAnd);
-			kparams.AddIfNotNull("codeEqual", this.CodeEqual);
-			kparams.AddIfNotNull("codeIn", this.CodeIn);
-			kparams.AddIfNotNull("descriptionLike", this.DescriptionLike);
-			kparams.AddIfNotNull("descriptionMultiLikeOr", this.DescriptionMultiLikeOr);
-			kparams.AddIfNotNull("descriptionMultiLikeAnd", this.DescriptionMultiLikeAnd);
-			kparams.AddIfNotNull("endTimeGreaterThanOrEqual", this.EndTimeGreaterThanOrEqual);
-			kparams.AddIfNotNull("endTimeLessThanOrEqual", this.EndTimeLessThanOrEqual);
-			kparams.AddIfNotNull("durationGreaterThanOrEqual", this.DurationGreaterThanOrEqual);
-			kparams.AddIfNotNull("durationLessThanOrEqual", this.DurationLessThanOrEqual);
+			kparams.AddIfNotNull("codeLike", this._CodeLike);
+			kparams.AddIfNotNull("codeMultiLikeOr", this._CodeMultiLikeOr);
+			kparams.AddIfNotNull("codeMultiLikeAnd", this._CodeMultiLikeAnd);
+			kparams.AddIfNotNull("codeEqual", this._CodeEqual);
+			kparams.AddIfNotNull("codeIn", this._CodeIn);
+			kparams.AddIfNotNull("descriptionLike", this._DescriptionLike);
+			kparams.AddIfNotNull("descriptionMultiLikeOr", this._DescriptionMultiLikeOr);
+			kparams.AddIfNotNull("descriptionMultiLikeAnd", this._DescriptionMultiLikeAnd);
+			kparams.AddIfNotNull("endTimeGreaterThanOrEqual", this._EndTimeGreaterThanOrEqual);
+			kparams.AddIfNotNull("endTimeLessThanOrEqual", this._EndTimeLessThanOrEqual);
+			kparams.AddIfNotNull("durationGreaterThanOrEqual", this._DurationGreaterThanOrEqual);
+			kparams.AddIfNotNull("durationLessThanOrEqual", this._DurationLessThanOrEqual);
 			return kparams;
 		}
 		#endregion

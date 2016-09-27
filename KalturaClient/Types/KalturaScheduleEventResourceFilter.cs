@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaScheduleEventResourceFilter");
-			kparams.AddIfNotNull("eventIdOrItsParentIdEqual", this.EventIdOrItsParentIdEqual);
-			kparams.AddIfNotNull("orderBy", this.OrderBy);
+			kparams.AddIfNotNull("eventIdOrItsParentIdEqual", this._EventIdOrItsParentIdEqual);
+			kparams.AddIfNotNull("orderBy", this._OrderBy);
 			return kparams;
 		}
 		#endregion

@@ -139,12 +139,12 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDropFolderContentProcessorJobData");
-			kparams.AddIfNotNull("dropFolderId", this.DropFolderId);
-			kparams.AddIfNotNull("dropFolderFileIds", this.DropFolderFileIds);
-			kparams.AddIfNotNull("parsedSlug", this.ParsedSlug);
-			kparams.AddIfNotNull("contentMatchPolicy", this.ContentMatchPolicy);
-			kparams.AddIfNotNull("conversionProfileId", this.ConversionProfileId);
-			kparams.AddIfNotNull("parsedUserId", this.ParsedUserId);
+			kparams.AddIfNotNull("dropFolderId", this._DropFolderId);
+			kparams.AddIfNotNull("dropFolderFileIds", this._DropFolderFileIds);
+			kparams.AddIfNotNull("parsedSlug", this._ParsedSlug);
+			kparams.AddIfNotNull("contentMatchPolicy", this._ContentMatchPolicy);
+			kparams.AddIfNotNull("conversionProfileId", this._ConversionProfileId);
+			kparams.AddIfNotNull("parsedUserId", this._ParsedUserId);
 			return kparams;
 		}
 		#endregion

@@ -165,14 +165,14 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaScheduleEventResourceBaseFilter");
-			kparams.AddIfNotNull("eventIdEqual", this.EventIdEqual);
-			kparams.AddIfNotNull("eventIdIn", this.EventIdIn);
-			kparams.AddIfNotNull("resourceIdEqual", this.ResourceIdEqual);
-			kparams.AddIfNotNull("resourceIdIn", this.ResourceIdIn);
-			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
-			kparams.AddIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
-			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
-			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("eventIdEqual", this._EventIdEqual);
+			kparams.AddIfNotNull("eventIdIn", this._EventIdIn);
+			kparams.AddIfNotNull("resourceIdEqual", this._ResourceIdEqual);
+			kparams.AddIfNotNull("resourceIdIn", this._ResourceIdIn);
+			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this._CreatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("createdAtLessThanOrEqual", this._CreatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this._UpdatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this._UpdatedAtLessThanOrEqual);
 			return kparams;
 		}
 		#endregion

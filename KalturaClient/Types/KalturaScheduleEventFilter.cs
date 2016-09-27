@@ -230,19 +230,19 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaScheduleEventFilter");
-			kparams.AddIfNotNull("resourceIdsLike", this.ResourceIdsLike);
-			kparams.AddIfNotNull("resourceIdsMultiLikeOr", this.ResourceIdsMultiLikeOr);
-			kparams.AddIfNotNull("resourceIdsMultiLikeAnd", this.ResourceIdsMultiLikeAnd);
-			kparams.AddIfNotNull("parentResourceIdsLike", this.ParentResourceIdsLike);
-			kparams.AddIfNotNull("parentResourceIdsMultiLikeOr", this.ParentResourceIdsMultiLikeOr);
-			kparams.AddIfNotNull("parentResourceIdsMultiLikeAnd", this.ParentResourceIdsMultiLikeAnd);
-			kparams.AddIfNotNull("templateEntryCategoriesIdsMultiLikeAnd", this.TemplateEntryCategoriesIdsMultiLikeAnd);
-			kparams.AddIfNotNull("templateEntryCategoriesIdsMultiLikeOr", this.TemplateEntryCategoriesIdsMultiLikeOr);
-			kparams.AddIfNotNull("resourceSystemNamesMultiLikeOr", this.ResourceSystemNamesMultiLikeOr);
-			kparams.AddIfNotNull("templateEntryCategoriesIdsLike", this.TemplateEntryCategoriesIdsLike);
-			kparams.AddIfNotNull("resourceSystemNamesMultiLikeAnd", this.ResourceSystemNamesMultiLikeAnd);
-			kparams.AddIfNotNull("resourceSystemNamesLike", this.ResourceSystemNamesLike);
-			kparams.AddIfNotNull("orderBy", this.OrderBy);
+			kparams.AddIfNotNull("resourceIdsLike", this._ResourceIdsLike);
+			kparams.AddIfNotNull("resourceIdsMultiLikeOr", this._ResourceIdsMultiLikeOr);
+			kparams.AddIfNotNull("resourceIdsMultiLikeAnd", this._ResourceIdsMultiLikeAnd);
+			kparams.AddIfNotNull("parentResourceIdsLike", this._ParentResourceIdsLike);
+			kparams.AddIfNotNull("parentResourceIdsMultiLikeOr", this._ParentResourceIdsMultiLikeOr);
+			kparams.AddIfNotNull("parentResourceIdsMultiLikeAnd", this._ParentResourceIdsMultiLikeAnd);
+			kparams.AddIfNotNull("templateEntryCategoriesIdsMultiLikeAnd", this._TemplateEntryCategoriesIdsMultiLikeAnd);
+			kparams.AddIfNotNull("templateEntryCategoriesIdsMultiLikeOr", this._TemplateEntryCategoriesIdsMultiLikeOr);
+			kparams.AddIfNotNull("resourceSystemNamesMultiLikeOr", this._ResourceSystemNamesMultiLikeOr);
+			kparams.AddIfNotNull("templateEntryCategoriesIdsLike", this._TemplateEntryCategoriesIdsLike);
+			kparams.AddIfNotNull("resourceSystemNamesMultiLikeAnd", this._ResourceSystemNamesMultiLikeAnd);
+			kparams.AddIfNotNull("resourceSystemNamesLike", this._ResourceSystemNamesLike);
+			kparams.AddIfNotNull("orderBy", this._OrderBy);
 			return kparams;
 		}
 		#endregion

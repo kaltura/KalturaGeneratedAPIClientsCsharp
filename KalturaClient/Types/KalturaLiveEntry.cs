@@ -236,20 +236,20 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveEntry");
-			kparams.AddIfNotNull("offlineMessage", this.OfflineMessage);
-			kparams.AddIfNotNull("recordStatus", this.RecordStatus);
-			kparams.AddIfNotNull("dvrStatus", this.DvrStatus);
-			kparams.AddIfNotNull("dvrWindow", this.DvrWindow);
-			kparams.AddIfNotNull("lastElapsedRecordingTime", this.LastElapsedRecordingTime);
-			kparams.AddIfNotNull("liveStreamConfigurations", this.LiveStreamConfigurations);
-			kparams.AddIfNotNull("recordedEntryId", this.RecordedEntryId);
-			kparams.AddIfNotNull("pushPublishEnabled", this.PushPublishEnabled);
-			kparams.AddIfNotNull("publishConfigurations", this.PublishConfigurations);
-			kparams.AddIfNotNull("firstBroadcast", this.FirstBroadcast);
-			kparams.AddIfNotNull("lastBroadcast", this.LastBroadcast);
-			kparams.AddIfNotNull("currentBroadcastStartTime", this.CurrentBroadcastStartTime);
-			kparams.AddIfNotNull("recordingOptions", this.RecordingOptions);
-			kparams.AddIfNotNull("liveStatus", this.LiveStatus);
+			kparams.AddIfNotNull("offlineMessage", this._OfflineMessage);
+			kparams.AddIfNotNull("recordStatus", this._RecordStatus);
+			kparams.AddIfNotNull("dvrStatus", this._DvrStatus);
+			kparams.AddIfNotNull("dvrWindow", this._DvrWindow);
+			kparams.AddIfNotNull("lastElapsedRecordingTime", this._LastElapsedRecordingTime);
+			kparams.AddIfNotNull("liveStreamConfigurations", this._LiveStreamConfigurations);
+			kparams.AddIfNotNull("recordedEntryId", this._RecordedEntryId);
+			kparams.AddIfNotNull("pushPublishEnabled", this._PushPublishEnabled);
+			kparams.AddIfNotNull("publishConfigurations", this._PublishConfigurations);
+			kparams.AddIfNotNull("firstBroadcast", this._FirstBroadcast);
+			kparams.AddIfNotNull("lastBroadcast", this._LastBroadcast);
+			kparams.AddIfNotNull("currentBroadcastStartTime", this._CurrentBroadcastStartTime);
+			kparams.AddIfNotNull("recordingOptions", this._RecordingOptions);
+			kparams.AddIfNotNull("liveStatus", this._LiveStatus);
 			return kparams;
 		}
 		#endregion

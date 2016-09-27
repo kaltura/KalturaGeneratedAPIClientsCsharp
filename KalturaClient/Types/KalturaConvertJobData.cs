@@ -182,15 +182,15 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaConvertJobData");
-			kparams.AddIfNotNull("destFileSyncLocalPath", this.DestFileSyncLocalPath);
-			kparams.AddIfNotNull("destFileSyncRemoteUrl", this.DestFileSyncRemoteUrl);
-			kparams.AddIfNotNull("logFileSyncLocalPath", this.LogFileSyncLocalPath);
-			kparams.AddIfNotNull("logFileSyncRemoteUrl", this.LogFileSyncRemoteUrl);
-			kparams.AddIfNotNull("flavorAssetId", this.FlavorAssetId);
-			kparams.AddIfNotNull("remoteMediaId", this.RemoteMediaId);
-			kparams.AddIfNotNull("customData", this.CustomData);
-			kparams.AddIfNotNull("extraDestFileSyncs", this.ExtraDestFileSyncs);
-			kparams.AddIfNotNull("engineMessage", this.EngineMessage);
+			kparams.AddIfNotNull("destFileSyncLocalPath", this._DestFileSyncLocalPath);
+			kparams.AddIfNotNull("destFileSyncRemoteUrl", this._DestFileSyncRemoteUrl);
+			kparams.AddIfNotNull("logFileSyncLocalPath", this._LogFileSyncLocalPath);
+			kparams.AddIfNotNull("logFileSyncRemoteUrl", this._LogFileSyncRemoteUrl);
+			kparams.AddIfNotNull("flavorAssetId", this._FlavorAssetId);
+			kparams.AddIfNotNull("remoteMediaId", this._RemoteMediaId);
+			kparams.AddIfNotNull("customData", this._CustomData);
+			kparams.AddIfNotNull("extraDestFileSyncs", this._ExtraDestFileSyncs);
+			kparams.AddIfNotNull("engineMessage", this._EngineMessage);
 			return kparams;
 		}
 		#endregion

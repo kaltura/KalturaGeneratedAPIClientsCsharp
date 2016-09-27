@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEntryTranscriptAssetSearchItem");
-			kparams.AddIfNotNull("contentLike", this.ContentLike);
-			kparams.AddIfNotNull("contentMultiLikeOr", this.ContentMultiLikeOr);
-			kparams.AddIfNotNull("contentMultiLikeAnd", this.ContentMultiLikeAnd);
+			kparams.AddIfNotNull("contentLike", this._ContentLike);
+			kparams.AddIfNotNull("contentMultiLikeOr", this._ContentMultiLikeOr);
+			kparams.AddIfNotNull("contentMultiLikeAnd", this._ContentMultiLikeAnd);
 			return kparams;
 		}
 		#endregion

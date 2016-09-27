@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaVirusScanJobData");
-			kparams.AddIfNotNull("srcFilePath", this.SrcFilePath);
-			kparams.AddIfNotNull("flavorAssetId", this.FlavorAssetId);
-			kparams.AddIfNotNull("scanResult", this.ScanResult);
-			kparams.AddIfNotNull("virusFoundAction", this.VirusFoundAction);
+			kparams.AddIfNotNull("srcFilePath", this._SrcFilePath);
+			kparams.AddIfNotNull("flavorAssetId", this._FlavorAssetId);
+			kparams.AddIfNotNull("scanResult", this._ScanResult);
+			kparams.AddIfNotNull("virusFoundAction", this._VirusFoundAction);
 			return kparams;
 		}
 		#endregion

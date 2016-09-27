@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaApiParameterPermissionItem");
-			kparams.AddIfNotNull("object", this.Object);
-			kparams.AddIfNotNull("parameter", this.Parameter);
-			kparams.AddIfNotNull("action", this.Action);
+			kparams.AddIfNotNull("object", this._Object);
+			kparams.AddIfNotNull("parameter", this._Parameter);
+			kparams.AddIfNotNull("action", this._Action);
 			return kparams;
 		}
 		#endregion

@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaContextTypeHolder");
-			kparams.AddIfNotNull("type", this.Type);
+			kparams.AddIfNotNull("type", this._Type);
 			return kparams;
 		}
 		#endregion

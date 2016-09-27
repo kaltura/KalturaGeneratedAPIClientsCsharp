@@ -152,13 +152,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaHttpNotification");
-			kparams.AddIfNotNull("object", this.Object);
-			kparams.AddIfNotNull("eventObjectType", this.EventObjectType);
-			kparams.AddIfNotNull("eventNotificationJobId", this.EventNotificationJobId);
-			kparams.AddIfNotNull("templateId", this.TemplateId);
-			kparams.AddIfNotNull("templateName", this.TemplateName);
-			kparams.AddIfNotNull("templateSystemName", this.TemplateSystemName);
-			kparams.AddIfNotNull("eventType", this.EventType);
+			kparams.AddIfNotNull("object", this._Object);
+			kparams.AddIfNotNull("eventObjectType", this._EventObjectType);
+			kparams.AddIfNotNull("eventNotificationJobId", this._EventNotificationJobId);
+			kparams.AddIfNotNull("templateId", this._TemplateId);
+			kparams.AddIfNotNull("templateName", this._TemplateName);
+			kparams.AddIfNotNull("templateSystemName", this._TemplateSystemName);
+			kparams.AddIfNotNull("eventType", this._EventType);
 			return kparams;
 		}
 		#endregion

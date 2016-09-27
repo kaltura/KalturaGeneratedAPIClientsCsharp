@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDocumentEntryBaseFilter");
-			kparams.AddIfNotNull("documentTypeEqual", this.DocumentTypeEqual);
-			kparams.AddIfNotNull("documentTypeIn", this.DocumentTypeIn);
-			kparams.AddIfNotNull("assetParamsIdsMatchOr", this.AssetParamsIdsMatchOr);
-			kparams.AddIfNotNull("assetParamsIdsMatchAnd", this.AssetParamsIdsMatchAnd);
+			kparams.AddIfNotNull("documentTypeEqual", this._DocumentTypeEqual);
+			kparams.AddIfNotNull("documentTypeIn", this._DocumentTypeIn);
+			kparams.AddIfNotNull("assetParamsIdsMatchOr", this._AssetParamsIdsMatchOr);
+			kparams.AddIfNotNull("assetParamsIdsMatchAnd", this._AssetParamsIdsMatchAnd);
 			return kparams;
 		}
 		#endregion

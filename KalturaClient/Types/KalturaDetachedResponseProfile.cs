@@ -160,13 +160,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDetachedResponseProfile");
-			kparams.AddIfNotNull("name", this.Name);
-			kparams.AddIfNotNull("type", this.Type);
-			kparams.AddIfNotNull("fields", this.Fields);
-			kparams.AddIfNotNull("filter", this.Filter);
-			kparams.AddIfNotNull("pager", this.Pager);
-			kparams.AddIfNotNull("relatedProfiles", this.RelatedProfiles);
-			kparams.AddIfNotNull("mappings", this.Mappings);
+			kparams.AddIfNotNull("name", this._Name);
+			kparams.AddIfNotNull("type", this._Type);
+			kparams.AddIfNotNull("fields", this._Fields);
+			kparams.AddIfNotNull("filter", this._Filter);
+			kparams.AddIfNotNull("pager", this._Pager);
+			kparams.AddIfNotNull("relatedProfiles", this._RelatedProfiles);
+			kparams.AddIfNotNull("mappings", this._Mappings);
 			return kparams;
 		}
 		#endregion

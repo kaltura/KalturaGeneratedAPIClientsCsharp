@@ -109,12 +109,12 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaPartnerUsage");
-			kparams.AddIfNotNull("hostingGB", this.HostingGB);
-			kparams.AddIfNotNull("Percent", this.Percent);
-			kparams.AddIfNotNull("packageBW", this.PackageBW);
-			kparams.AddIfNotNull("usageGB", this.UsageGB);
-			kparams.AddIfNotNull("reachedLimitDate", this.ReachedLimitDate);
-			kparams.AddIfNotNull("usageGraph", this.UsageGraph);
+			kparams.AddIfNotNull("hostingGB", this._HostingGB);
+			kparams.AddIfNotNull("Percent", this._Percent);
+			kparams.AddIfNotNull("packageBW", this._PackageBW);
+			kparams.AddIfNotNull("usageGB", this._UsageGB);
+			kparams.AddIfNotNull("reachedLimitDate", this._ReachedLimitDate);
+			kparams.AddIfNotNull("usageGraph", this._UsageGraph);
 			return kparams;
 		}
 		#endregion

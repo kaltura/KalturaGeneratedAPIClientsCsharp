@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaKontikiStorageProfile");
-			kparams.AddIfNotNull("serviceToken", this.ServiceToken);
+			kparams.AddIfNotNull("serviceToken", this._ServiceToken);
 			return kparams;
 		}
 		#endregion

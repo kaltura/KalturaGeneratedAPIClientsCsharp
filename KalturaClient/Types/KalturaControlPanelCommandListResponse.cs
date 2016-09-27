@@ -73,7 +73,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaControlPanelCommandListResponse");
-			kparams.AddIfNotNull("objects", this.Objects);
+			kparams.AddIfNotNull("objects", this._Objects);
 			return kparams;
 		}
 		#endregion

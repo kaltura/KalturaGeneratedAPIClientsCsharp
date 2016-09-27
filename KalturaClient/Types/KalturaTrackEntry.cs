@@ -282,23 +282,23 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaTrackEntry");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("trackEventType", this.TrackEventType);
-			kparams.AddIfNotNull("psVersion", this.PsVersion);
-			kparams.AddIfNotNull("context", this.Context);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("entryId", this.EntryId);
-			kparams.AddIfNotNull("hostName", this.HostName);
-			kparams.AddIfNotNull("userId", this.UserId);
-			kparams.AddIfNotNull("changedProperties", this.ChangedProperties);
-			kparams.AddIfNotNull("paramStr1", this.ParamStr1);
-			kparams.AddIfNotNull("paramStr2", this.ParamStr2);
-			kparams.AddIfNotNull("paramStr3", this.ParamStr3);
-			kparams.AddIfNotNull("ks", this.Ks);
-			kparams.AddIfNotNull("description", this.Description);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIfNotNull("userIp", this.UserIp);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("trackEventType", this._TrackEventType);
+			kparams.AddIfNotNull("psVersion", this._PsVersion);
+			kparams.AddIfNotNull("context", this._Context);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("entryId", this._EntryId);
+			kparams.AddIfNotNull("hostName", this._HostName);
+			kparams.AddIfNotNull("userId", this._UserId);
+			kparams.AddIfNotNull("changedProperties", this._ChangedProperties);
+			kparams.AddIfNotNull("paramStr1", this._ParamStr1);
+			kparams.AddIfNotNull("paramStr2", this._ParamStr2);
+			kparams.AddIfNotNull("paramStr3", this._ParamStr3);
+			kparams.AddIfNotNull("ks", this._Ks);
+			kparams.AddIfNotNull("description", this._Description);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
+			kparams.AddIfNotNull("userIp", this._UserIp);
 			return kparams;
 		}
 		#endregion

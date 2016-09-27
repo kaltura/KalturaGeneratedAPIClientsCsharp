@@ -152,13 +152,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaGenericDistributionProfile");
-			kparams.AddIfNotNull("genericProviderId", this.GenericProviderId);
-			kparams.AddIfNotNull("submitAction", this.SubmitAction);
-			kparams.AddIfNotNull("updateAction", this.UpdateAction);
-			kparams.AddIfNotNull("deleteAction", this.DeleteAction);
-			kparams.AddIfNotNull("fetchReportAction", this.FetchReportAction);
-			kparams.AddIfNotNull("updateRequiredEntryFields", this.UpdateRequiredEntryFields);
-			kparams.AddIfNotNull("updateRequiredMetadataXPaths", this.UpdateRequiredMetadataXPaths);
+			kparams.AddIfNotNull("genericProviderId", this._GenericProviderId);
+			kparams.AddIfNotNull("submitAction", this._SubmitAction);
+			kparams.AddIfNotNull("updateAction", this._UpdateAction);
+			kparams.AddIfNotNull("deleteAction", this._DeleteAction);
+			kparams.AddIfNotNull("fetchReportAction", this._FetchReportAction);
+			kparams.AddIfNotNull("updateRequiredEntryFields", this._UpdateRequiredEntryFields);
+			kparams.AddIfNotNull("updateRequiredMetadataXPaths", this._UpdateRequiredMetadataXPaths);
 			return kparams;
 		}
 		#endregion

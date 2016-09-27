@@ -152,13 +152,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSshDropFolder");
-			kparams.AddIfNotNull("host", this.Host);
-			kparams.AddIfNotNull("port", this.Port);
-			kparams.AddIfNotNull("username", this.Username);
-			kparams.AddIfNotNull("password", this.Password);
-			kparams.AddIfNotNull("privateKey", this.PrivateKey);
-			kparams.AddIfNotNull("publicKey", this.PublicKey);
-			kparams.AddIfNotNull("passPhrase", this.PassPhrase);
+			kparams.AddIfNotNull("host", this._Host);
+			kparams.AddIfNotNull("port", this._Port);
+			kparams.AddIfNotNull("username", this._Username);
+			kparams.AddIfNotNull("password", this._Password);
+			kparams.AddIfNotNull("privateKey", this._PrivateKey);
+			kparams.AddIfNotNull("publicKey", this._PublicKey);
+			kparams.AddIfNotNull("passPhrase", this._PassPhrase);
 			return kparams;
 		}
 		#endregion

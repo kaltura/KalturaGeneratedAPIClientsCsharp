@@ -139,12 +139,12 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaFlavorParamsOutput");
-			kparams.AddIfNotNull("flavorParamsId", this.FlavorParamsId);
-			kparams.AddIfNotNull("commandLinesStr", this.CommandLinesStr);
-			kparams.AddIfNotNull("flavorParamsVersion", this.FlavorParamsVersion);
-			kparams.AddIfNotNull("flavorAssetId", this.FlavorAssetId);
-			kparams.AddIfNotNull("flavorAssetVersion", this.FlavorAssetVersion);
-			kparams.AddIfNotNull("readyBehavior", this.ReadyBehavior);
+			kparams.AddIfNotNull("flavorParamsId", this._FlavorParamsId);
+			kparams.AddIfNotNull("commandLinesStr", this._CommandLinesStr);
+			kparams.AddIfNotNull("flavorParamsVersion", this._FlavorParamsVersion);
+			kparams.AddIfNotNull("flavorAssetId", this._FlavorAssetId);
+			kparams.AddIfNotNull("flavorAssetVersion", this._FlavorAssetVersion);
+			kparams.AddIfNotNull("readyBehavior", this._ReadyBehavior);
 			return kparams;
 		}
 		#endregion

@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaFlavorAssetUrlOptions");
-			kparams.AddIfNotNull("fileName", this.FileName);
-			kparams.AddIfNotNull("referrer", this.Referrer);
+			kparams.AddIfNotNull("fileName", this._FileName);
+			kparams.AddIfNotNull("referrer", this._Referrer);
 			return kparams;
 		}
 		#endregion

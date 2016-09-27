@@ -204,17 +204,17 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaControlPanelCommandBaseFilter");
-			kparams.AddIfNotNull("idEqual", this.IdEqual);
-			kparams.AddIfNotNull("idIn", this.IdIn);
-			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
-			kparams.AddIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
-			kparams.AddIfNotNull("createdByIdEqual", this.CreatedByIdEqual);
-			kparams.AddIfNotNull("typeEqual", this.TypeEqual);
-			kparams.AddIfNotNull("typeIn", this.TypeIn);
-			kparams.AddIfNotNull("targetTypeEqual", this.TargetTypeEqual);
-			kparams.AddIfNotNull("targetTypeIn", this.TargetTypeIn);
-			kparams.AddIfNotNull("statusEqual", this.StatusEqual);
-			kparams.AddIfNotNull("statusIn", this.StatusIn);
+			kparams.AddIfNotNull("idEqual", this._IdEqual);
+			kparams.AddIfNotNull("idIn", this._IdIn);
+			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this._CreatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("createdAtLessThanOrEqual", this._CreatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("createdByIdEqual", this._CreatedByIdEqual);
+			kparams.AddIfNotNull("typeEqual", this._TypeEqual);
+			kparams.AddIfNotNull("typeIn", this._TypeIn);
+			kparams.AddIfNotNull("targetTypeEqual", this._TargetTypeEqual);
+			kparams.AddIfNotNull("targetTypeIn", this._TargetTypeIn);
+			kparams.AddIfNotNull("statusEqual", this._StatusEqual);
+			kparams.AddIfNotNull("statusIn", this._StatusIn);
 			return kparams;
 		}
 		#endregion

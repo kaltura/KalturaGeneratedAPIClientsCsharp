@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCategoryEntryAdvancedFilter");
-			kparams.AddIfNotNull("categoriesMatchOr", this.CategoriesMatchOr);
-			kparams.AddIfNotNull("categoryEntryStatusIn", this.CategoryEntryStatusIn);
-			kparams.AddIfNotNull("orderBy", this.OrderBy);
-			kparams.AddIfNotNull("categoryIdEqual", this.CategoryIdEqual);
+			kparams.AddIfNotNull("categoriesMatchOr", this._CategoriesMatchOr);
+			kparams.AddIfNotNull("categoryEntryStatusIn", this._CategoryEntryStatusIn);
+			kparams.AddIfNotNull("orderBy", this._OrderBy);
+			kparams.AddIfNotNull("categoryIdEqual", this._CategoryIdEqual);
 			return kparams;
 		}
 		#endregion

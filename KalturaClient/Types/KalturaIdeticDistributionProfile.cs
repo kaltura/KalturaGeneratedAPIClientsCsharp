@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaIdeticDistributionProfile");
-			kparams.AddIfNotNull("ftpPath", this.FtpPath);
-			kparams.AddIfNotNull("username", this.Username);
-			kparams.AddIfNotNull("password", this.Password);
-			kparams.AddIfNotNull("domain", this.Domain);
+			kparams.AddIfNotNull("ftpPath", this._FtpPath);
+			kparams.AddIfNotNull("username", this._Username);
+			kparams.AddIfNotNull("password", this._Password);
+			kparams.AddIfNotNull("domain", this._Domain);
 			return kparams;
 		}
 		#endregion

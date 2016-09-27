@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLike");
-			kparams.AddIfNotNull("entryId", this.EntryId);
-			kparams.AddIfNotNull("userId", this.UserId);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
+			kparams.AddIfNotNull("entryId", this._EntryId);
+			kparams.AddIfNotNull("userId", this._UserId);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
 			return kparams;
 		}
 		#endregion

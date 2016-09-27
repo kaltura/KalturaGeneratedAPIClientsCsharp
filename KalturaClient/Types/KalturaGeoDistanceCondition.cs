@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaGeoDistanceCondition");
-			kparams.AddIfNotNull("geoCoderType", this.GeoCoderType);
+			kparams.AddIfNotNull("geoCoderType", this._GeoCoderType);
 			return kparams;
 		}
 		#endregion

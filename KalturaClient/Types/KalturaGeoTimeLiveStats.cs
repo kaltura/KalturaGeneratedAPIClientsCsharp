@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaGeoTimeLiveStats");
-			kparams.AddIfNotNull("city", this.City);
-			kparams.AddIfNotNull("country", this.Country);
+			kparams.AddIfNotNull("city", this._City);
+			kparams.AddIfNotNull("country", this._Country);
 			return kparams;
 		}
 		#endregion

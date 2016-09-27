@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaTranscriptAsset");
-			kparams.AddIfNotNull("accuracy", this.Accuracy);
-			kparams.AddIfNotNull("humanVerified", this.HumanVerified);
-			kparams.AddIfNotNull("language", this.Language);
+			kparams.AddIfNotNull("accuracy", this._Accuracy);
+			kparams.AddIfNotNull("humanVerified", this._HumanVerified);
+			kparams.AddIfNotNull("language", this._Language);
 			return kparams;
 		}
 		#endregion

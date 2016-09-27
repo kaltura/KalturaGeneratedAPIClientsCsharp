@@ -171,16 +171,16 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaShortLink");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIfNotNull("expiresAt", this.ExpiresAt);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("userId", this.UserId);
-			kparams.AddIfNotNull("name", this.Name);
-			kparams.AddIfNotNull("systemName", this.SystemName);
-			kparams.AddIfNotNull("fullUrl", this.FullUrl);
-			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
+			kparams.AddIfNotNull("expiresAt", this._ExpiresAt);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("userId", this._UserId);
+			kparams.AddIfNotNull("name", this._Name);
+			kparams.AddIfNotNull("systemName", this._SystemName);
+			kparams.AddIfNotNull("fullUrl", this._FullUrl);
+			kparams.AddIfNotNull("status", this._Status);
 			return kparams;
 		}
 		#endregion

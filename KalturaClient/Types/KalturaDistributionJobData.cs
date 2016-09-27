@@ -195,16 +195,16 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDistributionJobData");
-			kparams.AddIfNotNull("distributionProfileId", this.DistributionProfileId);
-			kparams.AddIfNotNull("distributionProfile", this.DistributionProfile);
-			kparams.AddIfNotNull("entryDistributionId", this.EntryDistributionId);
-			kparams.AddIfNotNull("entryDistribution", this.EntryDistribution);
-			kparams.AddIfNotNull("remoteId", this.RemoteId);
-			kparams.AddIfNotNull("providerType", this.ProviderType);
-			kparams.AddIfNotNull("providerData", this.ProviderData);
-			kparams.AddIfNotNull("results", this.Results);
-			kparams.AddIfNotNull("sentData", this.SentData);
-			kparams.AddIfNotNull("mediaFiles", this.MediaFiles);
+			kparams.AddIfNotNull("distributionProfileId", this._DistributionProfileId);
+			kparams.AddIfNotNull("distributionProfile", this._DistributionProfile);
+			kparams.AddIfNotNull("entryDistributionId", this._EntryDistributionId);
+			kparams.AddIfNotNull("entryDistribution", this._EntryDistribution);
+			kparams.AddIfNotNull("remoteId", this._RemoteId);
+			kparams.AddIfNotNull("providerType", this._ProviderType);
+			kparams.AddIfNotNull("providerData", this._ProviderData);
+			kparams.AddIfNotNull("results", this._Results);
+			kparams.AddIfNotNull("sentData", this._SentData);
+			kparams.AddIfNotNull("mediaFiles", this._MediaFiles);
 			return kparams;
 		}
 		#endregion

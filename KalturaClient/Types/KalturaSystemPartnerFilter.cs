@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSystemPartnerFilter");
-			kparams.AddIfNotNull("partnerParentIdEqual", this.PartnerParentIdEqual);
-			kparams.AddIfNotNull("partnerParentIdIn", this.PartnerParentIdIn);
+			kparams.AddIfNotNull("partnerParentIdEqual", this._PartnerParentIdEqual);
+			kparams.AddIfNotNull("partnerParentIdIn", this._PartnerParentIdIn);
 			return kparams;
 		}
 		#endregion

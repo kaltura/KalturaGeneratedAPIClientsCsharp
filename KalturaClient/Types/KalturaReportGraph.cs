@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaReportGraph");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("data", this.Data);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("data", this._Data);
 			return kparams;
 		}
 		#endregion

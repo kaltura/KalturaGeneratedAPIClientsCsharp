@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEmailNotificationRecipient");
-			kparams.AddIfNotNull("email", this.Email);
-			kparams.AddIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("email", this._Email);
+			kparams.AddIfNotNull("name", this._Name);
 			return kparams;
 		}
 		#endregion

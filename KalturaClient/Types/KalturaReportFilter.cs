@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaReportFilter");
-			kparams.AddIfNotNull("dimension", this.Dimension);
-			kparams.AddIfNotNull("values", this.Values);
+			kparams.AddIfNotNull("dimension", this._Dimension);
+			kparams.AddIfNotNull("values", this._Values);
 			return kparams;
 		}
 		#endregion

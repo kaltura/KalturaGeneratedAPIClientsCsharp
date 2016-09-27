@@ -288,25 +288,25 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaConversionProfile");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("type", this.Type);
-			kparams.AddIfNotNull("name", this.Name);
-			kparams.AddIfNotNull("systemName", this.SystemName);
-			kparams.AddIfNotNull("tags", this.Tags);
-			kparams.AddIfNotNull("description", this.Description);
-			kparams.AddIfNotNull("defaultEntryId", this.DefaultEntryId);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("flavorParamsIds", this.FlavorParamsIds);
-			kparams.AddIfNotNull("isDefault", this.IsDefault);
-			kparams.AddIfNotNull("isPartnerDefault", this.IsPartnerDefault);
-			kparams.AddIfNotNull("cropDimensions", this.CropDimensions);
-			kparams.AddIfNotNull("clipStart", this.ClipStart);
-			kparams.AddIfNotNull("clipDuration", this.ClipDuration);
-			kparams.AddIfNotNull("xslTransformation", this.XslTransformation);
-			kparams.AddIfNotNull("storageProfileId", this.StorageProfileId);
-			kparams.AddIfNotNull("mediaParserType", this.MediaParserType);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("type", this._Type);
+			kparams.AddIfNotNull("name", this._Name);
+			kparams.AddIfNotNull("systemName", this._SystemName);
+			kparams.AddIfNotNull("tags", this._Tags);
+			kparams.AddIfNotNull("description", this._Description);
+			kparams.AddIfNotNull("defaultEntryId", this._DefaultEntryId);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("flavorParamsIds", this._FlavorParamsIds);
+			kparams.AddIfNotNull("isDefault", this._IsDefault);
+			kparams.AddIfNotNull("isPartnerDefault", this._IsPartnerDefault);
+			kparams.AddIfNotNull("cropDimensions", this._CropDimensions);
+			kparams.AddIfNotNull("clipStart", this._ClipStart);
+			kparams.AddIfNotNull("clipDuration", this._ClipDuration);
+			kparams.AddIfNotNull("xslTransformation", this._XslTransformation);
+			kparams.AddIfNotNull("storageProfileId", this._StorageProfileId);
+			kparams.AddIfNotNull("mediaParserType", this._MediaParserType);
 			return kparams;
 		}
 		#endregion

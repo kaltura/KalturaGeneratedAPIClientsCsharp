@@ -69,7 +69,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDropFolderFileHandlerConfig");
-			kparams.AddIfNotNull("handlerType", this.HandlerType);
+			kparams.AddIfNotNull("handlerType", this._HandlerType);
 			return kparams;
 		}
 		#endregion

@@ -289,22 +289,22 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEntryContextDataResult");
-			kparams.AddIfNotNull("isSiteRestricted", this.IsSiteRestricted);
-			kparams.AddIfNotNull("isCountryRestricted", this.IsCountryRestricted);
-			kparams.AddIfNotNull("isSessionRestricted", this.IsSessionRestricted);
-			kparams.AddIfNotNull("isIpAddressRestricted", this.IsIpAddressRestricted);
-			kparams.AddIfNotNull("isUserAgentRestricted", this.IsUserAgentRestricted);
-			kparams.AddIfNotNull("previewLength", this.PreviewLength);
-			kparams.AddIfNotNull("isScheduledNow", this.IsScheduledNow);
-			kparams.AddIfNotNull("isAdmin", this.IsAdmin);
-			kparams.AddIfNotNull("streamerType", this.StreamerType);
-			kparams.AddIfNotNull("mediaProtocol", this.MediaProtocol);
-			kparams.AddIfNotNull("storageProfilesXML", this.StorageProfilesXML);
-			kparams.AddIfNotNull("accessControlMessages", this.AccessControlMessages);
-			kparams.AddIfNotNull("accessControlActions", this.AccessControlActions);
-			kparams.AddIfNotNull("flavorAssets", this.FlavorAssets);
-			kparams.AddIfNotNull("msDuration", this.MsDuration);
-			kparams.AddIfNotNull("pluginData", this.PluginData);
+			kparams.AddIfNotNull("isSiteRestricted", this._IsSiteRestricted);
+			kparams.AddIfNotNull("isCountryRestricted", this._IsCountryRestricted);
+			kparams.AddIfNotNull("isSessionRestricted", this._IsSessionRestricted);
+			kparams.AddIfNotNull("isIpAddressRestricted", this._IsIpAddressRestricted);
+			kparams.AddIfNotNull("isUserAgentRestricted", this._IsUserAgentRestricted);
+			kparams.AddIfNotNull("previewLength", this._PreviewLength);
+			kparams.AddIfNotNull("isScheduledNow", this._IsScheduledNow);
+			kparams.AddIfNotNull("isAdmin", this._IsAdmin);
+			kparams.AddIfNotNull("streamerType", this._StreamerType);
+			kparams.AddIfNotNull("mediaProtocol", this._MediaProtocol);
+			kparams.AddIfNotNull("storageProfilesXML", this._StorageProfilesXML);
+			kparams.AddIfNotNull("accessControlMessages", this._AccessControlMessages);
+			kparams.AddIfNotNull("accessControlActions", this._AccessControlActions);
+			kparams.AddIfNotNull("flavorAssets", this._FlavorAssets);
+			kparams.AddIfNotNull("msDuration", this._MsDuration);
+			kparams.AddIfNotNull("pluginData", this._PluginData);
 			return kparams;
 		}
 		#endregion

@@ -160,13 +160,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAccessControlScope");
-			kparams.AddIfNotNull("referrer", this.Referrer);
-			kparams.AddIfNotNull("ip", this.Ip);
-			kparams.AddIfNotNull("ks", this.Ks);
-			kparams.AddIfNotNull("userAgent", this.UserAgent);
-			kparams.AddIfNotNull("time", this.Time);
-			kparams.AddIfNotNull("contexts", this.Contexts);
-			kparams.AddIfNotNull("hashes", this.Hashes);
+			kparams.AddIfNotNull("referrer", this._Referrer);
+			kparams.AddIfNotNull("ip", this._Ip);
+			kparams.AddIfNotNull("ks", this._Ks);
+			kparams.AddIfNotNull("userAgent", this._UserAgent);
+			kparams.AddIfNotNull("time", this._Time);
+			kparams.AddIfNotNull("contexts", this._Contexts);
+			kparams.AddIfNotNull("hashes", this._Hashes);
 			return kparams;
 		}
 		#endregion

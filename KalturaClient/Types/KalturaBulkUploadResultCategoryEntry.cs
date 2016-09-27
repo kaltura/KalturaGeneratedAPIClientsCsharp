@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaBulkUploadResultCategoryEntry");
-			kparams.AddIfNotNull("categoryId", this.CategoryId);
-			kparams.AddIfNotNull("entryId", this.EntryId);
+			kparams.AddIfNotNull("categoryId", this._CategoryId);
+			kparams.AddIfNotNull("entryId", this._EntryId);
 			return kparams;
 		}
 		#endregion

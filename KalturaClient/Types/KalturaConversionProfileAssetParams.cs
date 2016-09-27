@@ -181,16 +181,16 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaConversionProfileAssetParams");
-			kparams.AddIfNotNull("conversionProfileId", this.ConversionProfileId);
-			kparams.AddIfNotNull("assetParamsId", this.AssetParamsId);
-			kparams.AddIfNotNull("readyBehavior", this.ReadyBehavior);
-			kparams.AddIfNotNull("origin", this.Origin);
-			kparams.AddIfNotNull("systemName", this.SystemName);
-			kparams.AddIfNotNull("forceNoneComplied", this.ForceNoneComplied);
-			kparams.AddIfNotNull("deletePolicy", this.DeletePolicy);
-			kparams.AddIfNotNull("isEncrypted", this.IsEncrypted);
-			kparams.AddIfNotNull("contentAwareness", this.ContentAwareness);
-			kparams.AddIfNotNull("twoPass", this.TwoPass);
+			kparams.AddIfNotNull("conversionProfileId", this._ConversionProfileId);
+			kparams.AddIfNotNull("assetParamsId", this._AssetParamsId);
+			kparams.AddIfNotNull("readyBehavior", this._ReadyBehavior);
+			kparams.AddIfNotNull("origin", this._Origin);
+			kparams.AddIfNotNull("systemName", this._SystemName);
+			kparams.AddIfNotNull("forceNoneComplied", this._ForceNoneComplied);
+			kparams.AddIfNotNull("deletePolicy", this._DeletePolicy);
+			kparams.AddIfNotNull("isEncrypted", this._IsEncrypted);
+			kparams.AddIfNotNull("contentAwareness", this._ContentAwareness);
+			kparams.AddIfNotNull("twoPass", this._TwoPass);
 			return kparams;
 		}
 		#endregion

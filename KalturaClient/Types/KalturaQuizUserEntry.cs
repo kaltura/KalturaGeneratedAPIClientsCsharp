@@ -69,7 +69,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaQuizUserEntry");
-			kparams.AddIfNotNull("score", this.Score);
+			kparams.AddIfNotNull("score", this._Score);
 			return kparams;
 		}
 		#endregion

@@ -214,19 +214,19 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaScheduledTaskProfile");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("name", this.Name);
-			kparams.AddIfNotNull("systemName", this.SystemName);
-			kparams.AddIfNotNull("description", this.Description);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("objectFilterEngineType", this.ObjectFilterEngineType);
-			kparams.AddIfNotNull("objectFilter", this.ObjectFilter);
-			kparams.AddIfNotNull("objectTasks", this.ObjectTasks);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIfNotNull("lastExecutionStartedAt", this.LastExecutionStartedAt);
-			kparams.AddIfNotNull("maxTotalCountAllowed", this.MaxTotalCountAllowed);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("name", this._Name);
+			kparams.AddIfNotNull("systemName", this._SystemName);
+			kparams.AddIfNotNull("description", this._Description);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("objectFilterEngineType", this._ObjectFilterEngineType);
+			kparams.AddIfNotNull("objectFilter", this._ObjectFilter);
+			kparams.AddIfNotNull("objectTasks", this._ObjectTasks);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
+			kparams.AddIfNotNull("lastExecutionStartedAt", this._LastExecutionStartedAt);
+			kparams.AddIfNotNull("maxTotalCountAllowed", this._MaxTotalCountAllowed);
 			return kparams;
 		}
 		#endregion

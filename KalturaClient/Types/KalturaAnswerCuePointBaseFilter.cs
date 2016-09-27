@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAnswerCuePointBaseFilter");
-			kparams.AddIfNotNull("parentIdEqual", this.ParentIdEqual);
-			kparams.AddIfNotNull("parentIdIn", this.ParentIdIn);
-			kparams.AddIfNotNull("quizUserEntryIdEqual", this.QuizUserEntryIdEqual);
-			kparams.AddIfNotNull("quizUserEntryIdIn", this.QuizUserEntryIdIn);
+			kparams.AddIfNotNull("parentIdEqual", this._ParentIdEqual);
+			kparams.AddIfNotNull("parentIdIn", this._ParentIdIn);
+			kparams.AddIfNotNull("quizUserEntryIdEqual", this._QuizUserEntryIdEqual);
+			kparams.AddIfNotNull("quizUserEntryIdIn", this._QuizUserEntryIdIn);
 			return kparams;
 		}
 		#endregion

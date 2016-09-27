@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveStreamPushPublishConfiguration");
-			kparams.AddIfNotNull("publishUrl", this.PublishUrl);
-			kparams.AddIfNotNull("backupPublishUrl", this.BackupPublishUrl);
-			kparams.AddIfNotNull("port", this.Port);
+			kparams.AddIfNotNull("publishUrl", this._PublishUrl);
+			kparams.AddIfNotNull("backupPublishUrl", this._BackupPublishUrl);
+			kparams.AddIfNotNull("port", this._Port);
 			return kparams;
 		}
 		#endregion

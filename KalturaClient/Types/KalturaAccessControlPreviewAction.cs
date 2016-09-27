@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAccessControlPreviewAction");
-			kparams.AddIfNotNull("limit", this.Limit);
+			kparams.AddIfNotNull("limit", this._Limit);
 			return kparams;
 		}
 		#endregion

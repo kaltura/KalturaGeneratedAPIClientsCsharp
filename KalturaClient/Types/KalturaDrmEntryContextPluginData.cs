@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDrmEntryContextPluginData");
-			kparams.AddIfNotNull("flavorData", this.FlavorData);
+			kparams.AddIfNotNull("flavorData", this._FlavorData);
 			return kparams;
 		}
 		#endregion

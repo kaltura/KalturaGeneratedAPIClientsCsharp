@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaResponseProfileHolder");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("systemName", this.SystemName);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("systemName", this._SystemName);
 			return kparams;
 		}
 		#endregion

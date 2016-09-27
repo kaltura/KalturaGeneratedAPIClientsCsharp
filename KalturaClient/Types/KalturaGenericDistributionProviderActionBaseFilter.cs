@@ -191,16 +191,16 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaGenericDistributionProviderActionBaseFilter");
-			kparams.AddIfNotNull("idEqual", this.IdEqual);
-			kparams.AddIfNotNull("idIn", this.IdIn);
-			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
-			kparams.AddIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
-			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
-			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
-			kparams.AddIfNotNull("genericDistributionProviderIdEqual", this.GenericDistributionProviderIdEqual);
-			kparams.AddIfNotNull("genericDistributionProviderIdIn", this.GenericDistributionProviderIdIn);
-			kparams.AddIfNotNull("actionEqual", this.ActionEqual);
-			kparams.AddIfNotNull("actionIn", this.ActionIn);
+			kparams.AddIfNotNull("idEqual", this._IdEqual);
+			kparams.AddIfNotNull("idIn", this._IdIn);
+			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this._CreatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("createdAtLessThanOrEqual", this._CreatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this._UpdatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this._UpdatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("genericDistributionProviderIdEqual", this._GenericDistributionProviderIdEqual);
+			kparams.AddIfNotNull("genericDistributionProviderIdIn", this._GenericDistributionProviderIdIn);
+			kparams.AddIfNotNull("actionEqual", this._ActionEqual);
+			kparams.AddIfNotNull("actionIn", this._ActionIn);
 			return kparams;
 		}
 		#endregion

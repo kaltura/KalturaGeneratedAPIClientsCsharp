@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveParams");
-			kparams.AddIfNotNull("streamSuffix", this.StreamSuffix);
+			kparams.AddIfNotNull("streamSuffix", this._StreamSuffix);
 			return kparams;
 		}
 		#endregion

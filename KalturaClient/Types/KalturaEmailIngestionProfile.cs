@@ -249,22 +249,22 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEmailIngestionProfile");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("name", this.Name);
-			kparams.AddIfNotNull("description", this.Description);
-			kparams.AddIfNotNull("emailAddress", this.EmailAddress);
-			kparams.AddIfNotNull("mailboxId", this.MailboxId);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("conversionProfile2Id", this.ConversionProfile2Id);
-			kparams.AddIfNotNull("moderationStatus", this.ModerationStatus);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("defaultCategory", this.DefaultCategory);
-			kparams.AddIfNotNull("defaultUserId", this.DefaultUserId);
-			kparams.AddIfNotNull("defaultTags", this.DefaultTags);
-			kparams.AddIfNotNull("defaultAdminTags", this.DefaultAdminTags);
-			kparams.AddIfNotNull("maxAttachmentSizeKbytes", this.MaxAttachmentSizeKbytes);
-			kparams.AddIfNotNull("maxAttachmentsPerMail", this.MaxAttachmentsPerMail);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("name", this._Name);
+			kparams.AddIfNotNull("description", this._Description);
+			kparams.AddIfNotNull("emailAddress", this._EmailAddress);
+			kparams.AddIfNotNull("mailboxId", this._MailboxId);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("conversionProfile2Id", this._ConversionProfile2Id);
+			kparams.AddIfNotNull("moderationStatus", this._ModerationStatus);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("defaultCategory", this._DefaultCategory);
+			kparams.AddIfNotNull("defaultUserId", this._DefaultUserId);
+			kparams.AddIfNotNull("defaultTags", this._DefaultTags);
+			kparams.AddIfNotNull("defaultAdminTags", this._DefaultAdminTags);
+			kparams.AddIfNotNull("maxAttachmentSizeKbytes", this._MaxAttachmentSizeKbytes);
+			kparams.AddIfNotNull("maxAttachmentsPerMail", this._MaxAttachmentsPerMail);
 			return kparams;
 		}
 		#endregion

@@ -85,9 +85,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaStartWidgetSessionResponse");
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("ks", this.Ks);
-			kparams.AddIfNotNull("userId", this.UserId);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("ks", this._Ks);
+			kparams.AddIfNotNull("userId", this._UserId);
 			return kparams;
 		}
 		#endregion

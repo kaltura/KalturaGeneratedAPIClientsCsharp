@@ -82,8 +82,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSyndicationDistributionProfile");
-			kparams.AddIfNotNull("xsl", this.Xsl);
-			kparams.AddIfNotNull("feedId", this.FeedId);
+			kparams.AddIfNotNull("xsl", this._Xsl);
+			kparams.AddIfNotNull("feedId", this._FeedId);
 			return kparams;
 		}
 		#endregion

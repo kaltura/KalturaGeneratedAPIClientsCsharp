@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaThumbnailServeOptions");
-			kparams.AddIfNotNull("download", this.Download);
-			kparams.AddIfNotNull("referrer", this.Referrer);
+			kparams.AddIfNotNull("download", this._Download);
+			kparams.AddIfNotNull("referrer", this._Referrer);
 			return kparams;
 		}
 		#endregion

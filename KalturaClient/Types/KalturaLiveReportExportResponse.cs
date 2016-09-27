@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveReportExportResponse");
-			kparams.AddIfNotNull("referenceJobId", this.ReferenceJobId);
-			kparams.AddIfNotNull("reportEmail", this.ReportEmail);
+			kparams.AddIfNotNull("referenceJobId", this._ReferenceJobId);
+			kparams.AddIfNotNull("reportEmail", this._ReportEmail);
 			return kparams;
 		}
 		#endregion

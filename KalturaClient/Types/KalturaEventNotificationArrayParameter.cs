@@ -95,8 +95,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEventNotificationArrayParameter");
-			kparams.AddIfNotNull("values", this.Values);
-			kparams.AddIfNotNull("allowedValues", this.AllowedValues);
+			kparams.AddIfNotNull("values", this._Values);
+			kparams.AddIfNotNull("allowedValues", this._AllowedValues);
 			return kparams;
 		}
 		#endregion

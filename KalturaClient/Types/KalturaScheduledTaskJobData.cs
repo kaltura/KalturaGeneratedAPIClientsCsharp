@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaScheduledTaskJobData");
-			kparams.AddIfNotNull("maxResults", this.MaxResults);
-			kparams.AddIfNotNull("resultsFilePath", this.ResultsFilePath);
-			kparams.AddIfNotNull("referenceTime", this.ReferenceTime);
+			kparams.AddIfNotNull("maxResults", this._MaxResults);
+			kparams.AddIfNotNull("resultsFilePath", this._ResultsFilePath);
+			kparams.AddIfNotNull("referenceTime", this._ReferenceTime);
 			return kparams;
 		}
 		#endregion

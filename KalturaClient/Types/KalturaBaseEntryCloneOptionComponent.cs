@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaBaseEntryCloneOptionComponent");
-			kparams.AddIfNotNull("itemType", this.ItemType);
-			kparams.AddIfNotNull("rule", this.Rule);
+			kparams.AddIfNotNull("itemType", this._ItemType);
+			kparams.AddIfNotNull("rule", this._Rule);
 			return kparams;
 		}
 		#endregion

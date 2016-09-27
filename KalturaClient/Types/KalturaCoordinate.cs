@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCoordinate");
-			kparams.AddIfNotNull("latitude", this.Latitude);
-			kparams.AddIfNotNull("longitude", this.Longitude);
-			kparams.AddIfNotNull("name", this.Name);
+			kparams.AddIfNotNull("latitude", this._Latitude);
+			kparams.AddIfNotNull("longitude", this._Longitude);
+			kparams.AddIfNotNull("name", this._Name);
 			return kparams;
 		}
 		#endregion

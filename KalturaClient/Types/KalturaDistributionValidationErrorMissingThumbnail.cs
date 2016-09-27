@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDistributionValidationErrorMissingThumbnail");
-			kparams.AddIfNotNull("dimensions", this.Dimensions);
+			kparams.AddIfNotNull("dimensions", this._Dimensions);
 			return kparams;
 		}
 		#endregion

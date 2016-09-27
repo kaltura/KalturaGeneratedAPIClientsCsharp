@@ -295,24 +295,24 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaMetadataProfileBaseFilter");
-			kparams.AddIfNotNull("idEqual", this.IdEqual);
-			kparams.AddIfNotNull("partnerIdEqual", this.PartnerIdEqual);
-			kparams.AddIfNotNull("metadataObjectTypeEqual", this.MetadataObjectTypeEqual);
-			kparams.AddIfNotNull("metadataObjectTypeIn", this.MetadataObjectTypeIn);
-			kparams.AddIfNotNull("versionEqual", this.VersionEqual);
-			kparams.AddIfNotNull("nameEqual", this.NameEqual);
-			kparams.AddIfNotNull("systemNameEqual", this.SystemNameEqual);
-			kparams.AddIfNotNull("systemNameIn", this.SystemNameIn);
-			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
-			kparams.AddIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
-			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
-			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
-			kparams.AddIfNotNull("statusEqual", this.StatusEqual);
-			kparams.AddIfNotNull("statusIn", this.StatusIn);
-			kparams.AddIfNotNull("createModeEqual", this.CreateModeEqual);
-			kparams.AddIfNotNull("createModeNotEqual", this.CreateModeNotEqual);
-			kparams.AddIfNotNull("createModeIn", this.CreateModeIn);
-			kparams.AddIfNotNull("createModeNotIn", this.CreateModeNotIn);
+			kparams.AddIfNotNull("idEqual", this._IdEqual);
+			kparams.AddIfNotNull("partnerIdEqual", this._PartnerIdEqual);
+			kparams.AddIfNotNull("metadataObjectTypeEqual", this._MetadataObjectTypeEqual);
+			kparams.AddIfNotNull("metadataObjectTypeIn", this._MetadataObjectTypeIn);
+			kparams.AddIfNotNull("versionEqual", this._VersionEqual);
+			kparams.AddIfNotNull("nameEqual", this._NameEqual);
+			kparams.AddIfNotNull("systemNameEqual", this._SystemNameEqual);
+			kparams.AddIfNotNull("systemNameIn", this._SystemNameIn);
+			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this._CreatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("createdAtLessThanOrEqual", this._CreatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this._UpdatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this._UpdatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("statusEqual", this._StatusEqual);
+			kparams.AddIfNotNull("statusIn", this._StatusIn);
+			kparams.AddIfNotNull("createModeEqual", this._CreateModeEqual);
+			kparams.AddIfNotNull("createModeNotEqual", this._CreateModeNotEqual);
+			kparams.AddIfNotNull("createModeIn", this._CreateModeIn);
+			kparams.AddIfNotNull("createModeNotIn", this._CreateModeNotIn);
 			return kparams;
 		}
 		#endregion

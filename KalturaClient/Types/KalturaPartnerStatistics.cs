@@ -109,12 +109,12 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaPartnerStatistics");
-			kparams.AddIfNotNull("packageBandwidthAndStorage", this.PackageBandwidthAndStorage);
-			kparams.AddIfNotNull("hosting", this.Hosting);
-			kparams.AddIfNotNull("bandwidth", this.Bandwidth);
-			kparams.AddIfNotNull("usage", this.Usage);
-			kparams.AddIfNotNull("usagePercent", this.UsagePercent);
-			kparams.AddIfNotNull("reachedLimitDate", this.ReachedLimitDate);
+			kparams.AddIfNotNull("packageBandwidthAndStorage", this._PackageBandwidthAndStorage);
+			kparams.AddIfNotNull("hosting", this._Hosting);
+			kparams.AddIfNotNull("bandwidth", this._Bandwidth);
+			kparams.AddIfNotNull("usage", this._Usage);
+			kparams.AddIfNotNull("usagePercent", this._UsagePercent);
+			kparams.AddIfNotNull("reachedLimitDate", this._ReachedLimitDate);
 			return kparams;
 		}
 		#endregion

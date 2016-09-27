@@ -243,20 +243,20 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaBulkUploadResultUser");
-			kparams.AddIfNotNull("userId", this.UserId);
-			kparams.AddIfNotNull("screenName", this.ScreenName);
-			kparams.AddIfNotNull("email", this.Email);
-			kparams.AddIfNotNull("description", this.Description);
-			kparams.AddIfNotNull("tags", this.Tags);
-			kparams.AddIfNotNull("dateOfBirth", this.DateOfBirth);
-			kparams.AddIfNotNull("country", this.Country);
-			kparams.AddIfNotNull("state", this.State);
-			kparams.AddIfNotNull("city", this.City);
-			kparams.AddIfNotNull("zip", this.Zip);
-			kparams.AddIfNotNull("gender", this.Gender);
-			kparams.AddIfNotNull("firstName", this.FirstName);
-			kparams.AddIfNotNull("lastName", this.LastName);
-			kparams.AddIfNotNull("group", this.Group);
+			kparams.AddIfNotNull("userId", this._UserId);
+			kparams.AddIfNotNull("screenName", this._ScreenName);
+			kparams.AddIfNotNull("email", this._Email);
+			kparams.AddIfNotNull("description", this._Description);
+			kparams.AddIfNotNull("tags", this._Tags);
+			kparams.AddIfNotNull("dateOfBirth", this._DateOfBirth);
+			kparams.AddIfNotNull("country", this._Country);
+			kparams.AddIfNotNull("state", this._State);
+			kparams.AddIfNotNull("city", this._City);
+			kparams.AddIfNotNull("zip", this._Zip);
+			kparams.AddIfNotNull("gender", this._Gender);
+			kparams.AddIfNotNull("firstName", this._FirstName);
+			kparams.AddIfNotNull("lastName", this._LastName);
+			kparams.AddIfNotNull("group", this._Group);
 			return kparams;
 		}
 		#endregion

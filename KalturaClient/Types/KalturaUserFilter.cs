@@ -204,17 +204,17 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUserFilter");
-			kparams.AddIfNotNull("idOrScreenNameStartsWith", this.IdOrScreenNameStartsWith);
-			kparams.AddIfNotNull("idEqual", this.IdEqual);
-			kparams.AddIfNotNull("idIn", this.IdIn);
-			kparams.AddIfNotNull("loginEnabledEqual", this.LoginEnabledEqual);
-			kparams.AddIfNotNull("roleIdEqual", this.RoleIdEqual);
-			kparams.AddIfNotNull("roleIdsEqual", this.RoleIdsEqual);
-			kparams.AddIfNotNull("roleIdsIn", this.RoleIdsIn);
-			kparams.AddIfNotNull("firstNameOrLastNameStartsWith", this.FirstNameOrLastNameStartsWith);
-			kparams.AddIfNotNull("permissionNamesMultiLikeOr", this.PermissionNamesMultiLikeOr);
-			kparams.AddIfNotNull("permissionNamesMultiLikeAnd", this.PermissionNamesMultiLikeAnd);
-			kparams.AddIfNotNull("orderBy", this.OrderBy);
+			kparams.AddIfNotNull("idOrScreenNameStartsWith", this._IdOrScreenNameStartsWith);
+			kparams.AddIfNotNull("idEqual", this._IdEqual);
+			kparams.AddIfNotNull("idIn", this._IdIn);
+			kparams.AddIfNotNull("loginEnabledEqual", this._LoginEnabledEqual);
+			kparams.AddIfNotNull("roleIdEqual", this._RoleIdEqual);
+			kparams.AddIfNotNull("roleIdsEqual", this._RoleIdsEqual);
+			kparams.AddIfNotNull("roleIdsIn", this._RoleIdsIn);
+			kparams.AddIfNotNull("firstNameOrLastNameStartsWith", this._FirstNameOrLastNameStartsWith);
+			kparams.AddIfNotNull("permissionNamesMultiLikeOr", this._PermissionNamesMultiLikeOr);
+			kparams.AddIfNotNull("permissionNamesMultiLikeAnd", this._PermissionNamesMultiLikeAnd);
+			kparams.AddIfNotNull("orderBy", this._OrderBy);
 			return kparams;
 		}
 		#endregion

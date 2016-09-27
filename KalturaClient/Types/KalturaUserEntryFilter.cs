@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUserEntryFilter");
-			kparams.AddIfNotNull("userIdEqualCurrent", this.UserIdEqualCurrent);
-			kparams.AddIfNotNull("isAnonymous", this.IsAnonymous);
-			kparams.AddIfNotNull("orderBy", this.OrderBy);
+			kparams.AddIfNotNull("userIdEqualCurrent", this._UserIdEqualCurrent);
+			kparams.AddIfNotNull("isAnonymous", this._IsAnonymous);
+			kparams.AddIfNotNull("orderBy", this._OrderBy);
 			return kparams;
 		}
 		#endregion

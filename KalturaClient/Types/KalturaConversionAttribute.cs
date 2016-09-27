@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaConversionAttribute");
-			kparams.AddIfNotNull("flavorParamsId", this.FlavorParamsId);
-			kparams.AddIfNotNull("name", this.Name);
-			kparams.AddIfNotNull("value", this.Value);
+			kparams.AddIfNotNull("flavorParamsId", this._FlavorParamsId);
+			kparams.AddIfNotNull("name", this._Name);
+			kparams.AddIfNotNull("value", this._Value);
 			return kparams;
 		}
 		#endregion

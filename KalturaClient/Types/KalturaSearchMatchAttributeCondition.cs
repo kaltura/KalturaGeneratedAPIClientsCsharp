@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSearchMatchAttributeCondition");
-			kparams.AddIfNotNull("not", this.Not);
+			kparams.AddIfNotNull("not", this._Not);
 			return kparams;
 		}
 		#endregion

@@ -126,11 +126,11 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLikeBaseFilter");
-			kparams.AddIfNotNull("entryIdEqual", this.EntryIdEqual);
-			kparams.AddIfNotNull("entryIdIn", this.EntryIdIn);
-			kparams.AddIfNotNull("userIdEqual", this.UserIdEqual);
-			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
-			kparams.AddIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("entryIdEqual", this._EntryIdEqual);
+			kparams.AddIfNotNull("entryIdIn", this._EntryIdIn);
+			kparams.AddIfNotNull("userIdEqual", this._UserIdEqual);
+			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this._CreatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("createdAtLessThanOrEqual", this._CreatedAtLessThanOrEqual);
 			return kparams;
 		}
 		#endregion

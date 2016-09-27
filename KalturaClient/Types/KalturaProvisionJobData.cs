@@ -230,19 +230,19 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaProvisionJobData");
-			kparams.AddIfNotNull("streamID", this.StreamID);
-			kparams.AddIfNotNull("backupStreamID", this.BackupStreamID);
-			kparams.AddIfNotNull("rtmp", this.Rtmp);
-			kparams.AddIfNotNull("encoderIP", this.EncoderIP);
-			kparams.AddIfNotNull("backupEncoderIP", this.BackupEncoderIP);
-			kparams.AddIfNotNull("encoderPassword", this.EncoderPassword);
-			kparams.AddIfNotNull("encoderUsername", this.EncoderUsername);
-			kparams.AddIfNotNull("endDate", this.EndDate);
-			kparams.AddIfNotNull("returnVal", this.ReturnVal);
-			kparams.AddIfNotNull("mediaType", this.MediaType);
-			kparams.AddIfNotNull("primaryBroadcastingUrl", this.PrimaryBroadcastingUrl);
-			kparams.AddIfNotNull("secondaryBroadcastingUrl", this.SecondaryBroadcastingUrl);
-			kparams.AddIfNotNull("streamName", this.StreamName);
+			kparams.AddIfNotNull("streamID", this._StreamID);
+			kparams.AddIfNotNull("backupStreamID", this._BackupStreamID);
+			kparams.AddIfNotNull("rtmp", this._Rtmp);
+			kparams.AddIfNotNull("encoderIP", this._EncoderIP);
+			kparams.AddIfNotNull("backupEncoderIP", this._BackupEncoderIP);
+			kparams.AddIfNotNull("encoderPassword", this._EncoderPassword);
+			kparams.AddIfNotNull("encoderUsername", this._EncoderUsername);
+			kparams.AddIfNotNull("endDate", this._EndDate);
+			kparams.AddIfNotNull("returnVal", this._ReturnVal);
+			kparams.AddIfNotNull("mediaType", this._MediaType);
+			kparams.AddIfNotNull("primaryBroadcastingUrl", this._PrimaryBroadcastingUrl);
+			kparams.AddIfNotNull("secondaryBroadcastingUrl", this._SecondaryBroadcastingUrl);
+			kparams.AddIfNotNull("streamName", this._StreamName);
 			return kparams;
 		}
 		#endregion

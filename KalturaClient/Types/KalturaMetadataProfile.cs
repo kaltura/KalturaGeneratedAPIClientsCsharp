@@ -211,21 +211,21 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaMetadataProfile");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("metadataObjectType", this.MetadataObjectType);
-			kparams.AddIfNotNull("version", this.Version);
-			kparams.AddIfNotNull("name", this.Name);
-			kparams.AddIfNotNull("systemName", this.SystemName);
-			kparams.AddIfNotNull("description", this.Description);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("xsd", this.Xsd);
-			kparams.AddIfNotNull("views", this.Views);
-			kparams.AddIfNotNull("xslt", this.Xslt);
-			kparams.AddIfNotNull("createMode", this.CreateMode);
-			kparams.AddIfNotNull("disableReIndexing", this.DisableReIndexing);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("metadataObjectType", this._MetadataObjectType);
+			kparams.AddIfNotNull("version", this._Version);
+			kparams.AddIfNotNull("name", this._Name);
+			kparams.AddIfNotNull("systemName", this._SystemName);
+			kparams.AddIfNotNull("description", this._Description);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("xsd", this._Xsd);
+			kparams.AddIfNotNull("views", this._Views);
+			kparams.AddIfNotNull("xslt", this._Xslt);
+			kparams.AddIfNotNull("createMode", this._CreateMode);
+			kparams.AddIfNotNull("disableReIndexing", this._DisableReIndexing);
 			return kparams;
 		}
 		#endregion

@@ -152,13 +152,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaBulkUploadBaseFilter");
-			kparams.AddIfNotNull("uploadedOnGreaterThanOrEqual", this.UploadedOnGreaterThanOrEqual);
-			kparams.AddIfNotNull("uploadedOnLessThanOrEqual", this.UploadedOnLessThanOrEqual);
-			kparams.AddIfNotNull("uploadedOnEqual", this.UploadedOnEqual);
-			kparams.AddIfNotNull("statusIn", this.StatusIn);
-			kparams.AddIfNotNull("statusEqual", this.StatusEqual);
-			kparams.AddIfNotNull("bulkUploadObjectTypeEqual", this.BulkUploadObjectTypeEqual);
-			kparams.AddIfNotNull("bulkUploadObjectTypeIn", this.BulkUploadObjectTypeIn);
+			kparams.AddIfNotNull("uploadedOnGreaterThanOrEqual", this._UploadedOnGreaterThanOrEqual);
+			kparams.AddIfNotNull("uploadedOnLessThanOrEqual", this._UploadedOnLessThanOrEqual);
+			kparams.AddIfNotNull("uploadedOnEqual", this._UploadedOnEqual);
+			kparams.AddIfNotNull("statusIn", this._StatusIn);
+			kparams.AddIfNotNull("statusEqual", this._StatusEqual);
+			kparams.AddIfNotNull("bulkUploadObjectTypeEqual", this._BulkUploadObjectTypeEqual);
+			kparams.AddIfNotNull("bulkUploadObjectTypeIn", this._BulkUploadObjectTypeIn);
 			return kparams;
 		}
 		#endregion

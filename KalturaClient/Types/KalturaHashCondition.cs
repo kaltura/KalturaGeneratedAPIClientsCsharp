@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaHashCondition");
-			kparams.AddIfNotNull("hashName", this.HashName);
-			kparams.AddIfNotNull("hashSecret", this.HashSecret);
+			kparams.AddIfNotNull("hashName", this._HashName);
+			kparams.AddIfNotNull("hashSecret", this._HashSecret);
 			return kparams;
 		}
 		#endregion

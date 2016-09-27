@@ -82,8 +82,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaObjectTask");
-			kparams.AddIfNotNull("type", this.Type);
-			kparams.AddIfNotNull("stopProcessingOnError", this.StopProcessingOnError);
+			kparams.AddIfNotNull("type", this._Type);
+			kparams.AddIfNotNull("stopProcessingOnError", this._StopProcessingOnError);
 			return kparams;
 		}
 		#endregion

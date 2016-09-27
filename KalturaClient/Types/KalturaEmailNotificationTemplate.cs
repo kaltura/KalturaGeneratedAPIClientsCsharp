@@ -247,20 +247,20 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEmailNotificationTemplate");
-			kparams.AddIfNotNull("format", this.Format);
-			kparams.AddIfNotNull("subject", this.Subject);
-			kparams.AddIfNotNull("body", this.Body);
-			kparams.AddIfNotNull("fromEmail", this.FromEmail);
-			kparams.AddIfNotNull("fromName", this.FromName);
-			kparams.AddIfNotNull("to", this.To);
-			kparams.AddIfNotNull("cc", this.Cc);
-			kparams.AddIfNotNull("bcc", this.Bcc);
-			kparams.AddIfNotNull("replyTo", this.ReplyTo);
-			kparams.AddIfNotNull("priority", this.Priority);
-			kparams.AddIfNotNull("confirmReadingTo", this.ConfirmReadingTo);
-			kparams.AddIfNotNull("hostname", this.Hostname);
-			kparams.AddIfNotNull("messageID", this.MessageID);
-			kparams.AddIfNotNull("customHeaders", this.CustomHeaders);
+			kparams.AddIfNotNull("format", this._Format);
+			kparams.AddIfNotNull("subject", this._Subject);
+			kparams.AddIfNotNull("body", this._Body);
+			kparams.AddIfNotNull("fromEmail", this._FromEmail);
+			kparams.AddIfNotNull("fromName", this._FromName);
+			kparams.AddIfNotNull("to", this._To);
+			kparams.AddIfNotNull("cc", this._Cc);
+			kparams.AddIfNotNull("bcc", this._Bcc);
+			kparams.AddIfNotNull("replyTo", this._ReplyTo);
+			kparams.AddIfNotNull("priority", this._Priority);
+			kparams.AddIfNotNull("confirmReadingTo", this._ConfirmReadingTo);
+			kparams.AddIfNotNull("hostname", this._Hostname);
+			kparams.AddIfNotNull("messageID", this._MessageID);
+			kparams.AddIfNotNull("customHeaders", this._CustomHeaders);
 			return kparams;
 		}
 		#endregion

@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDirectoryRestriction");
-			kparams.AddIfNotNull("directoryRestrictionType", this.DirectoryRestrictionType);
+			kparams.AddIfNotNull("directoryRestrictionType", this._DirectoryRestrictionType);
 			return kparams;
 		}
 		#endregion

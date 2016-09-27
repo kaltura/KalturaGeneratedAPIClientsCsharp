@@ -256,21 +256,21 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaPartnerBaseFilter");
-			kparams.AddIfNotNull("idEqual", this.IdEqual);
-			kparams.AddIfNotNull("idIn", this.IdIn);
-			kparams.AddIfNotNull("idNotIn", this.IdNotIn);
-			kparams.AddIfNotNull("nameLike", this.NameLike);
-			kparams.AddIfNotNull("nameMultiLikeOr", this.NameMultiLikeOr);
-			kparams.AddIfNotNull("nameMultiLikeAnd", this.NameMultiLikeAnd);
-			kparams.AddIfNotNull("nameEqual", this.NameEqual);
-			kparams.AddIfNotNull("statusEqual", this.StatusEqual);
-			kparams.AddIfNotNull("statusIn", this.StatusIn);
-			kparams.AddIfNotNull("partnerPackageEqual", this.PartnerPackageEqual);
-			kparams.AddIfNotNull("partnerPackageGreaterThanOrEqual", this.PartnerPackageGreaterThanOrEqual);
-			kparams.AddIfNotNull("partnerPackageLessThanOrEqual", this.PartnerPackageLessThanOrEqual);
-			kparams.AddIfNotNull("partnerPackageIn", this.PartnerPackageIn);
-			kparams.AddIfNotNull("partnerGroupTypeEqual", this.PartnerGroupTypeEqual);
-			kparams.AddIfNotNull("partnerNameDescriptionWebsiteAdminNameAdminEmailLike", this.PartnerNameDescriptionWebsiteAdminNameAdminEmailLike);
+			kparams.AddIfNotNull("idEqual", this._IdEqual);
+			kparams.AddIfNotNull("idIn", this._IdIn);
+			kparams.AddIfNotNull("idNotIn", this._IdNotIn);
+			kparams.AddIfNotNull("nameLike", this._NameLike);
+			kparams.AddIfNotNull("nameMultiLikeOr", this._NameMultiLikeOr);
+			kparams.AddIfNotNull("nameMultiLikeAnd", this._NameMultiLikeAnd);
+			kparams.AddIfNotNull("nameEqual", this._NameEqual);
+			kparams.AddIfNotNull("statusEqual", this._StatusEqual);
+			kparams.AddIfNotNull("statusIn", this._StatusIn);
+			kparams.AddIfNotNull("partnerPackageEqual", this._PartnerPackageEqual);
+			kparams.AddIfNotNull("partnerPackageGreaterThanOrEqual", this._PartnerPackageGreaterThanOrEqual);
+			kparams.AddIfNotNull("partnerPackageLessThanOrEqual", this._PartnerPackageLessThanOrEqual);
+			kparams.AddIfNotNull("partnerPackageIn", this._PartnerPackageIn);
+			kparams.AddIfNotNull("partnerGroupTypeEqual", this._PartnerGroupTypeEqual);
+			kparams.AddIfNotNull("partnerNameDescriptionWebsiteAdminNameAdminEmailLike", this._PartnerNameDescriptionWebsiteAdminNameAdminEmailLike);
 			return kparams;
 		}
 		#endregion

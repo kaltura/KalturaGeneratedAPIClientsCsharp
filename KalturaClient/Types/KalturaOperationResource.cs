@@ -104,9 +104,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaOperationResource");
-			kparams.AddIfNotNull("resource", this.Resource);
-			kparams.AddIfNotNull("operationAttributes", this.OperationAttributes);
-			kparams.AddIfNotNull("assetParamsId", this.AssetParamsId);
+			kparams.AddIfNotNull("resource", this._Resource);
+			kparams.AddIfNotNull("operationAttributes", this._OperationAttributes);
+			kparams.AddIfNotNull("assetParamsId", this._AssetParamsId);
 			return kparams;
 		}
 		#endregion

@@ -269,22 +269,22 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUserBaseFilter");
-			kparams.AddIfNotNull("partnerIdEqual", this.PartnerIdEqual);
-			kparams.AddIfNotNull("typeEqual", this.TypeEqual);
-			kparams.AddIfNotNull("typeIn", this.TypeIn);
-			kparams.AddIfNotNull("screenNameLike", this.ScreenNameLike);
-			kparams.AddIfNotNull("screenNameStartsWith", this.ScreenNameStartsWith);
-			kparams.AddIfNotNull("emailLike", this.EmailLike);
-			kparams.AddIfNotNull("emailStartsWith", this.EmailStartsWith);
-			kparams.AddIfNotNull("tagsMultiLikeOr", this.TagsMultiLikeOr);
-			kparams.AddIfNotNull("tagsMultiLikeAnd", this.TagsMultiLikeAnd);
-			kparams.AddIfNotNull("statusEqual", this.StatusEqual);
-			kparams.AddIfNotNull("statusIn", this.StatusIn);
-			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
-			kparams.AddIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
-			kparams.AddIfNotNull("firstNameStartsWith", this.FirstNameStartsWith);
-			kparams.AddIfNotNull("lastNameStartsWith", this.LastNameStartsWith);
-			kparams.AddIfNotNull("isAdminEqual", this.IsAdminEqual);
+			kparams.AddIfNotNull("partnerIdEqual", this._PartnerIdEqual);
+			kparams.AddIfNotNull("typeEqual", this._TypeEqual);
+			kparams.AddIfNotNull("typeIn", this._TypeIn);
+			kparams.AddIfNotNull("screenNameLike", this._ScreenNameLike);
+			kparams.AddIfNotNull("screenNameStartsWith", this._ScreenNameStartsWith);
+			kparams.AddIfNotNull("emailLike", this._EmailLike);
+			kparams.AddIfNotNull("emailStartsWith", this._EmailStartsWith);
+			kparams.AddIfNotNull("tagsMultiLikeOr", this._TagsMultiLikeOr);
+			kparams.AddIfNotNull("tagsMultiLikeAnd", this._TagsMultiLikeAnd);
+			kparams.AddIfNotNull("statusEqual", this._StatusEqual);
+			kparams.AddIfNotNull("statusIn", this._StatusIn);
+			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this._CreatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("createdAtLessThanOrEqual", this._CreatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("firstNameStartsWith", this._FirstNameStartsWith);
+			kparams.AddIfNotNull("lastNameStartsWith", this._LastNameStartsWith);
+			kparams.AddIfNotNull("isAdminEqual", this._IsAdminEqual);
 			return kparams;
 		}
 		#endregion

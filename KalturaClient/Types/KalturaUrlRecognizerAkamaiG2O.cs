@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUrlRecognizerAkamaiG2O");
-			kparams.AddIfNotNull("headerData", this.HeaderData);
-			kparams.AddIfNotNull("headerSign", this.HeaderSign);
-			kparams.AddIfNotNull("timeout", this.Timeout);
-			kparams.AddIfNotNull("salt", this.Salt);
+			kparams.AddIfNotNull("headerData", this._HeaderData);
+			kparams.AddIfNotNull("headerSign", this._HeaderSign);
+			kparams.AddIfNotNull("timeout", this._Timeout);
+			kparams.AddIfNotNull("salt", this._Salt);
 			return kparams;
 		}
 		#endregion

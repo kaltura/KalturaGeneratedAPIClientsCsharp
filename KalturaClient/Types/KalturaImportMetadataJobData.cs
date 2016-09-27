@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaImportMetadataJobData");
-			kparams.AddIfNotNull("srcFileUrl", this.SrcFileUrl);
-			kparams.AddIfNotNull("destFileLocalPath", this.DestFileLocalPath);
-			kparams.AddIfNotNull("metadataId", this.MetadataId);
+			kparams.AddIfNotNull("srcFileUrl", this._SrcFileUrl);
+			kparams.AddIfNotNull("destFileLocalPath", this._DestFileLocalPath);
+			kparams.AddIfNotNull("metadataId", this._MetadataId);
 			return kparams;
 		}
 		#endregion

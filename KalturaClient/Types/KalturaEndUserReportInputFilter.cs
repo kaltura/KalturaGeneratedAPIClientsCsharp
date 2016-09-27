@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEndUserReportInputFilter");
-			kparams.AddIfNotNull("application", this.Application);
-			kparams.AddIfNotNull("userIds", this.UserIds);
-			kparams.AddIfNotNull("playbackContext", this.PlaybackContext);
-			kparams.AddIfNotNull("ancestorPlaybackContext", this.AncestorPlaybackContext);
+			kparams.AddIfNotNull("application", this._Application);
+			kparams.AddIfNotNull("userIds", this._UserIds);
+			kparams.AddIfNotNull("playbackContext", this._PlaybackContext);
+			kparams.AddIfNotNull("ancestorPlaybackContext", this._AncestorPlaybackContext);
 			return kparams;
 		}
 		#endregion

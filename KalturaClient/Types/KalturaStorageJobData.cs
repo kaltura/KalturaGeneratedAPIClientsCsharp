@@ -191,16 +191,16 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaStorageJobData");
-			kparams.AddIfNotNull("serverUrl", this.ServerUrl);
-			kparams.AddIfNotNull("serverUsername", this.ServerUsername);
-			kparams.AddIfNotNull("serverPassword", this.ServerPassword);
-			kparams.AddIfNotNull("serverPrivateKey", this.ServerPrivateKey);
-			kparams.AddIfNotNull("serverPublicKey", this.ServerPublicKey);
-			kparams.AddIfNotNull("serverPassPhrase", this.ServerPassPhrase);
-			kparams.AddIfNotNull("ftpPassiveMode", this.FtpPassiveMode);
-			kparams.AddIfNotNull("srcFileSyncLocalPath", this.SrcFileSyncLocalPath);
-			kparams.AddIfNotNull("srcFileSyncId", this.SrcFileSyncId);
-			kparams.AddIfNotNull("destFileSyncStoredPath", this.DestFileSyncStoredPath);
+			kparams.AddIfNotNull("serverUrl", this._ServerUrl);
+			kparams.AddIfNotNull("serverUsername", this._ServerUsername);
+			kparams.AddIfNotNull("serverPassword", this._ServerPassword);
+			kparams.AddIfNotNull("serverPrivateKey", this._ServerPrivateKey);
+			kparams.AddIfNotNull("serverPublicKey", this._ServerPublicKey);
+			kparams.AddIfNotNull("serverPassPhrase", this._ServerPassPhrase);
+			kparams.AddIfNotNull("ftpPassiveMode", this._FtpPassiveMode);
+			kparams.AddIfNotNull("srcFileSyncLocalPath", this._SrcFileSyncLocalPath);
+			kparams.AddIfNotNull("srcFileSyncId", this._SrcFileSyncId);
+			kparams.AddIfNotNull("destFileSyncStoredPath", this._DestFileSyncStoredPath);
 			return kparams;
 		}
 		#endregion

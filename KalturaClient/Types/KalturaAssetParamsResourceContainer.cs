@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAssetParamsResourceContainer");
-			kparams.AddIfNotNull("resource", this.Resource);
-			kparams.AddIfNotNull("assetParamsId", this.AssetParamsId);
+			kparams.AddIfNotNull("resource", this._Resource);
+			kparams.AddIfNotNull("assetParamsId", this._AssetParamsId);
 			return kparams;
 		}
 		#endregion

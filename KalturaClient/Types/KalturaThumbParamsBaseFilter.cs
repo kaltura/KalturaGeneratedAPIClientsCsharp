@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaThumbParamsBaseFilter");
-			kparams.AddIfNotNull("formatEqual", this.FormatEqual);
+			kparams.AddIfNotNull("formatEqual", this._FormatEqual);
 			return kparams;
 		}
 		#endregion

@@ -219,19 +219,19 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAssetParams");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("name", this.Name);
-			kparams.AddIfNotNull("systemName", this.SystemName);
-			kparams.AddIfNotNull("description", this.Description);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("isSystemDefault", this.IsSystemDefault);
-			kparams.AddIfNotNull("tags", this.Tags);
-			kparams.AddIfNotNull("requiredPermissions", this.RequiredPermissions);
-			kparams.AddIfNotNull("sourceRemoteStorageProfileId", this.SourceRemoteStorageProfileId);
-			kparams.AddIfNotNull("remoteStorageProfileIds", this.RemoteStorageProfileIds);
-			kparams.AddIfNotNull("mediaParserType", this.MediaParserType);
-			kparams.AddIfNotNull("sourceAssetParamsIds", this.SourceAssetParamsIds);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("name", this._Name);
+			kparams.AddIfNotNull("systemName", this._SystemName);
+			kparams.AddIfNotNull("description", this._Description);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("isSystemDefault", this._IsSystemDefault);
+			kparams.AddIfNotNull("tags", this._Tags);
+			kparams.AddIfNotNull("requiredPermissions", this._RequiredPermissions);
+			kparams.AddIfNotNull("sourceRemoteStorageProfileId", this._SourceRemoteStorageProfileId);
+			kparams.AddIfNotNull("remoteStorageProfileIds", this._RemoteStorageProfileIds);
+			kparams.AddIfNotNull("mediaParserType", this._MediaParserType);
+			kparams.AddIfNotNull("sourceAssetParamsIds", this._SourceAssetParamsIds);
 			return kparams;
 		}
 		#endregion

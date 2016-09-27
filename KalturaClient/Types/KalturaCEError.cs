@@ -186,16 +186,16 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCEError");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("browser", this.Browser);
-			kparams.AddIfNotNull("serverIp", this.ServerIp);
-			kparams.AddIfNotNull("serverOs", this.ServerOs);
-			kparams.AddIfNotNull("phpVersion", this.PhpVersion);
-			kparams.AddIfNotNull("ceAdminEmail", this.CeAdminEmail);
-			kparams.AddIfNotNull("type", this.Type);
-			kparams.AddIfNotNull("description", this.Description);
-			kparams.AddIfNotNull("data", this.Data);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("browser", this._Browser);
+			kparams.AddIfNotNull("serverIp", this._ServerIp);
+			kparams.AddIfNotNull("serverOs", this._ServerOs);
+			kparams.AddIfNotNull("phpVersion", this._PhpVersion);
+			kparams.AddIfNotNull("ceAdminEmail", this._CeAdminEmail);
+			kparams.AddIfNotNull("type", this._Type);
+			kparams.AddIfNotNull("description", this._Description);
+			kparams.AddIfNotNull("data", this._Data);
 			return kparams;
 		}
 		#endregion

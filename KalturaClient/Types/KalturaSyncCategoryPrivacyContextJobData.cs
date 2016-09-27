@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSyncCategoryPrivacyContextJobData");
-			kparams.AddIfNotNull("categoryId", this.CategoryId);
-			kparams.AddIfNotNull("lastUpdatedCategoryEntryCreatedAt", this.LastUpdatedCategoryEntryCreatedAt);
-			kparams.AddIfNotNull("lastUpdatedCategoryCreatedAt", this.LastUpdatedCategoryCreatedAt);
+			kparams.AddIfNotNull("categoryId", this._CategoryId);
+			kparams.AddIfNotNull("lastUpdatedCategoryEntryCreatedAt", this._LastUpdatedCategoryEntryCreatedAt);
+			kparams.AddIfNotNull("lastUpdatedCategoryCreatedAt", this._LastUpdatedCategoryCreatedAt);
 			return kparams;
 		}
 		#endregion

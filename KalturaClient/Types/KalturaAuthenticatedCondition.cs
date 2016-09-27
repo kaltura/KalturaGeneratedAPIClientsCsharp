@@ -78,7 +78,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAuthenticatedCondition");
-			kparams.AddIfNotNull("privileges", this.Privileges);
+			kparams.AddIfNotNull("privileges", this._Privileges);
 			return kparams;
 		}
 		#endregion

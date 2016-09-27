@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCameraScheduleResource");
-			kparams.AddIfNotNull("streamUrl", this.StreamUrl);
+			kparams.AddIfNotNull("streamUrl", this._StreamUrl);
 			return kparams;
 		}
 		#endregion

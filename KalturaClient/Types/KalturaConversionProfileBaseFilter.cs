@@ -230,19 +230,19 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaConversionProfileBaseFilter");
-			kparams.AddIfNotNull("idEqual", this.IdEqual);
-			kparams.AddIfNotNull("idIn", this.IdIn);
-			kparams.AddIfNotNull("statusEqual", this.StatusEqual);
-			kparams.AddIfNotNull("statusIn", this.StatusIn);
-			kparams.AddIfNotNull("typeEqual", this.TypeEqual);
-			kparams.AddIfNotNull("typeIn", this.TypeIn);
-			kparams.AddIfNotNull("nameEqual", this.NameEqual);
-			kparams.AddIfNotNull("systemNameEqual", this.SystemNameEqual);
-			kparams.AddIfNotNull("systemNameIn", this.SystemNameIn);
-			kparams.AddIfNotNull("tagsMultiLikeOr", this.TagsMultiLikeOr);
-			kparams.AddIfNotNull("tagsMultiLikeAnd", this.TagsMultiLikeAnd);
-			kparams.AddIfNotNull("defaultEntryIdEqual", this.DefaultEntryIdEqual);
-			kparams.AddIfNotNull("defaultEntryIdIn", this.DefaultEntryIdIn);
+			kparams.AddIfNotNull("idEqual", this._IdEqual);
+			kparams.AddIfNotNull("idIn", this._IdIn);
+			kparams.AddIfNotNull("statusEqual", this._StatusEqual);
+			kparams.AddIfNotNull("statusIn", this._StatusIn);
+			kparams.AddIfNotNull("typeEqual", this._TypeEqual);
+			kparams.AddIfNotNull("typeIn", this._TypeIn);
+			kparams.AddIfNotNull("nameEqual", this._NameEqual);
+			kparams.AddIfNotNull("systemNameEqual", this._SystemNameEqual);
+			kparams.AddIfNotNull("systemNameIn", this._SystemNameIn);
+			kparams.AddIfNotNull("tagsMultiLikeOr", this._TagsMultiLikeOr);
+			kparams.AddIfNotNull("tagsMultiLikeAnd", this._TagsMultiLikeAnd);
+			kparams.AddIfNotNull("defaultEntryIdEqual", this._DefaultEntryIdEqual);
+			kparams.AddIfNotNull("defaultEntryIdIn", this._DefaultEntryIdIn);
 			return kparams;
 		}
 		#endregion

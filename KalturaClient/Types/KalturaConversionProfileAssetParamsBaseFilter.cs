@@ -191,16 +191,16 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaConversionProfileAssetParamsBaseFilter");
-			kparams.AddIfNotNull("conversionProfileIdEqual", this.ConversionProfileIdEqual);
-			kparams.AddIfNotNull("conversionProfileIdIn", this.ConversionProfileIdIn);
-			kparams.AddIfNotNull("assetParamsIdEqual", this.AssetParamsIdEqual);
-			kparams.AddIfNotNull("assetParamsIdIn", this.AssetParamsIdIn);
-			kparams.AddIfNotNull("readyBehaviorEqual", this.ReadyBehaviorEqual);
-			kparams.AddIfNotNull("readyBehaviorIn", this.ReadyBehaviorIn);
-			kparams.AddIfNotNull("originEqual", this.OriginEqual);
-			kparams.AddIfNotNull("originIn", this.OriginIn);
-			kparams.AddIfNotNull("systemNameEqual", this.SystemNameEqual);
-			kparams.AddIfNotNull("systemNameIn", this.SystemNameIn);
+			kparams.AddIfNotNull("conversionProfileIdEqual", this._ConversionProfileIdEqual);
+			kparams.AddIfNotNull("conversionProfileIdIn", this._ConversionProfileIdIn);
+			kparams.AddIfNotNull("assetParamsIdEqual", this._AssetParamsIdEqual);
+			kparams.AddIfNotNull("assetParamsIdIn", this._AssetParamsIdIn);
+			kparams.AddIfNotNull("readyBehaviorEqual", this._ReadyBehaviorEqual);
+			kparams.AddIfNotNull("readyBehaviorIn", this._ReadyBehaviorIn);
+			kparams.AddIfNotNull("originEqual", this._OriginEqual);
+			kparams.AddIfNotNull("originIn", this._OriginIn);
+			kparams.AddIfNotNull("systemNameEqual", this._SystemNameEqual);
+			kparams.AddIfNotNull("systemNameIn", this._SystemNameIn);
 			return kparams;
 		}
 		#endregion

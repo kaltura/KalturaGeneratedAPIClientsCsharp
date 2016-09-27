@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaFilter");
-			kparams.AddIfNotNull("orderBy", this.OrderBy);
-			kparams.AddIfNotNull("advancedSearch", this.AdvancedSearch);
+			kparams.AddIfNotNull("orderBy", this._OrderBy);
+			kparams.AddIfNotNull("advancedSearch", this._AdvancedSearch);
 			return kparams;
 		}
 		#endregion

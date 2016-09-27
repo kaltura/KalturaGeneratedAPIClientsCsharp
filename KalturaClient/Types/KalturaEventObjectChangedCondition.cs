@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEventObjectChangedCondition");
-			kparams.AddIfNotNull("modifiedColumns", this.ModifiedColumns);
+			kparams.AddIfNotNull("modifiedColumns", this._ModifiedColumns);
 			return kparams;
 		}
 		#endregion

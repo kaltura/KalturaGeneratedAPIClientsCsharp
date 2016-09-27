@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDistributionThumbDimensions");
-			kparams.AddIfNotNull("width", this.Width);
-			kparams.AddIfNotNull("height", this.Height);
+			kparams.AddIfNotNull("width", this._Width);
+			kparams.AddIfNotNull("height", this._Height);
 			return kparams;
 		}
 		#endregion

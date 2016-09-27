@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDropFolderFileResource");
-			kparams.AddIfNotNull("dropFolderFileId", this.DropFolderFileId);
+			kparams.AddIfNotNull("dropFolderFileId", this._DropFolderFileId);
 			return kparams;
 		}
 		#endregion

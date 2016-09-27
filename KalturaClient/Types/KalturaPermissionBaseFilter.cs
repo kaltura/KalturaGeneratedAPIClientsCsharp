@@ -321,26 +321,26 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaPermissionBaseFilter");
-			kparams.AddIfNotNull("idEqual", this.IdEqual);
-			kparams.AddIfNotNull("idIn", this.IdIn);
-			kparams.AddIfNotNull("typeEqual", this.TypeEqual);
-			kparams.AddIfNotNull("typeIn", this.TypeIn);
-			kparams.AddIfNotNull("nameEqual", this.NameEqual);
-			kparams.AddIfNotNull("nameIn", this.NameIn);
-			kparams.AddIfNotNull("friendlyNameLike", this.FriendlyNameLike);
-			kparams.AddIfNotNull("descriptionLike", this.DescriptionLike);
-			kparams.AddIfNotNull("statusEqual", this.StatusEqual);
-			kparams.AddIfNotNull("statusIn", this.StatusIn);
-			kparams.AddIfNotNull("partnerIdEqual", this.PartnerIdEqual);
-			kparams.AddIfNotNull("partnerIdIn", this.PartnerIdIn);
-			kparams.AddIfNotNull("dependsOnPermissionNamesMultiLikeOr", this.DependsOnPermissionNamesMultiLikeOr);
-			kparams.AddIfNotNull("dependsOnPermissionNamesMultiLikeAnd", this.DependsOnPermissionNamesMultiLikeAnd);
-			kparams.AddIfNotNull("tagsMultiLikeOr", this.TagsMultiLikeOr);
-			kparams.AddIfNotNull("tagsMultiLikeAnd", this.TagsMultiLikeAnd);
-			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
-			kparams.AddIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
-			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
-			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("idEqual", this._IdEqual);
+			kparams.AddIfNotNull("idIn", this._IdIn);
+			kparams.AddIfNotNull("typeEqual", this._TypeEqual);
+			kparams.AddIfNotNull("typeIn", this._TypeIn);
+			kparams.AddIfNotNull("nameEqual", this._NameEqual);
+			kparams.AddIfNotNull("nameIn", this._NameIn);
+			kparams.AddIfNotNull("friendlyNameLike", this._FriendlyNameLike);
+			kparams.AddIfNotNull("descriptionLike", this._DescriptionLike);
+			kparams.AddIfNotNull("statusEqual", this._StatusEqual);
+			kparams.AddIfNotNull("statusIn", this._StatusIn);
+			kparams.AddIfNotNull("partnerIdEqual", this._PartnerIdEqual);
+			kparams.AddIfNotNull("partnerIdIn", this._PartnerIdIn);
+			kparams.AddIfNotNull("dependsOnPermissionNamesMultiLikeOr", this._DependsOnPermissionNamesMultiLikeOr);
+			kparams.AddIfNotNull("dependsOnPermissionNamesMultiLikeAnd", this._DependsOnPermissionNamesMultiLikeAnd);
+			kparams.AddIfNotNull("tagsMultiLikeOr", this._TagsMultiLikeOr);
+			kparams.AddIfNotNull("tagsMultiLikeAnd", this._TagsMultiLikeAnd);
+			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this._CreatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("createdAtLessThanOrEqual", this._CreatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this._UpdatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this._UpdatedAtLessThanOrEqual);
 			return kparams;
 		}
 		#endregion

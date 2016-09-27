@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaApiExceptionArg");
-			kparams.AddIfNotNull("name", this.Name);
-			kparams.AddIfNotNull("value", this.Value);
+			kparams.AddIfNotNull("name", this._Name);
+			kparams.AddIfNotNull("value", this._Value);
 			return kparams;
 		}
 		#endregion

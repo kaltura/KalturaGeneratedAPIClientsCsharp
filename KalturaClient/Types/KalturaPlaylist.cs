@@ -149,14 +149,14 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaPlaylist");
-			kparams.AddIfNotNull("playlistContent", this.PlaylistContent);
-			kparams.AddIfNotNull("filters", this.Filters);
-			kparams.AddIfNotNull("totalResults", this.TotalResults);
-			kparams.AddIfNotNull("playlistType", this.PlaylistType);
-			kparams.AddIfNotNull("plays", this.Plays);
-			kparams.AddIfNotNull("views", this.Views);
-			kparams.AddIfNotNull("duration", this.Duration);
-			kparams.AddIfNotNull("executeUrl", this.ExecuteUrl);
+			kparams.AddIfNotNull("playlistContent", this._PlaylistContent);
+			kparams.AddIfNotNull("filters", this._Filters);
+			kparams.AddIfNotNull("totalResults", this._TotalResults);
+			kparams.AddIfNotNull("playlistType", this._PlaylistType);
+			kparams.AddIfNotNull("plays", this._Plays);
+			kparams.AddIfNotNull("views", this._Views);
+			kparams.AddIfNotNull("duration", this._Duration);
+			kparams.AddIfNotNull("executeUrl", this._ExecuteUrl);
 			return kparams;
 		}
 		#endregion

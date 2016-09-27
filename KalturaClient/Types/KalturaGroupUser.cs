@@ -119,12 +119,12 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaGroupUser");
-			kparams.AddIfNotNull("userId", this.UserId);
-			kparams.AddIfNotNull("groupId", this.GroupId);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("userId", this._UserId);
+			kparams.AddIfNotNull("groupId", this._GroupId);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
 			return kparams;
 		}
 		#endregion

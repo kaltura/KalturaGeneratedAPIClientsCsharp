@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaStorageExportJobData");
-			kparams.AddIfNotNull("force", this.Force);
-			kparams.AddIfNotNull("createLink", this.CreateLink);
+			kparams.AddIfNotNull("force", this._Force);
+			kparams.AddIfNotNull("createLink", this._CreateLink);
 			return kparams;
 		}
 		#endregion

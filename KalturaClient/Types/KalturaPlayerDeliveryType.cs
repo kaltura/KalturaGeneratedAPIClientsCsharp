@@ -130,11 +130,11 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaPlayerDeliveryType");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("label", this.Label);
-			kparams.AddIfNotNull("flashvars", this.Flashvars);
-			kparams.AddIfNotNull("minVersion", this.MinVersion);
-			kparams.AddIfNotNull("enabledByDefault", this.EnabledByDefault);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("label", this._Label);
+			kparams.AddIfNotNull("flashvars", this._Flashvars);
+			kparams.AddIfNotNull("minVersion", this._MinVersion);
+			kparams.AddIfNotNull("enabledByDefault", this._EnabledByDefault);
 			return kparams;
 		}
 		#endregion

@@ -191,16 +191,16 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAnnotationBaseFilter");
-			kparams.AddIfNotNull("parentIdEqual", this.ParentIdEqual);
-			kparams.AddIfNotNull("parentIdIn", this.ParentIdIn);
-			kparams.AddIfNotNull("textLike", this.TextLike);
-			kparams.AddIfNotNull("textMultiLikeOr", this.TextMultiLikeOr);
-			kparams.AddIfNotNull("textMultiLikeAnd", this.TextMultiLikeAnd);
-			kparams.AddIfNotNull("endTimeGreaterThanOrEqual", this.EndTimeGreaterThanOrEqual);
-			kparams.AddIfNotNull("endTimeLessThanOrEqual", this.EndTimeLessThanOrEqual);
-			kparams.AddIfNotNull("durationGreaterThanOrEqual", this.DurationGreaterThanOrEqual);
-			kparams.AddIfNotNull("durationLessThanOrEqual", this.DurationLessThanOrEqual);
-			kparams.AddIfNotNull("isPublicEqual", this.IsPublicEqual);
+			kparams.AddIfNotNull("parentIdEqual", this._ParentIdEqual);
+			kparams.AddIfNotNull("parentIdIn", this._ParentIdIn);
+			kparams.AddIfNotNull("textLike", this._TextLike);
+			kparams.AddIfNotNull("textMultiLikeOr", this._TextMultiLikeOr);
+			kparams.AddIfNotNull("textMultiLikeAnd", this._TextMultiLikeAnd);
+			kparams.AddIfNotNull("endTimeGreaterThanOrEqual", this._EndTimeGreaterThanOrEqual);
+			kparams.AddIfNotNull("endTimeLessThanOrEqual", this._EndTimeLessThanOrEqual);
+			kparams.AddIfNotNull("durationGreaterThanOrEqual", this._DurationGreaterThanOrEqual);
+			kparams.AddIfNotNull("durationLessThanOrEqual", this._DurationLessThanOrEqual);
+			kparams.AddIfNotNull("isPublicEqual", this._IsPublicEqual);
 			return kparams;
 		}
 		#endregion

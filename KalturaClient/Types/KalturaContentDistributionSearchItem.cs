@@ -152,13 +152,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaContentDistributionSearchItem");
-			kparams.AddIfNotNull("noDistributionProfiles", this.NoDistributionProfiles);
-			kparams.AddIfNotNull("distributionProfileId", this.DistributionProfileId);
-			kparams.AddIfNotNull("distributionSunStatus", this.DistributionSunStatus);
-			kparams.AddIfNotNull("entryDistributionFlag", this.EntryDistributionFlag);
-			kparams.AddIfNotNull("entryDistributionStatus", this.EntryDistributionStatus);
-			kparams.AddIfNotNull("hasEntryDistributionValidationErrors", this.HasEntryDistributionValidationErrors);
-			kparams.AddIfNotNull("entryDistributionValidationErrors", this.EntryDistributionValidationErrors);
+			kparams.AddIfNotNull("noDistributionProfiles", this._NoDistributionProfiles);
+			kparams.AddIfNotNull("distributionProfileId", this._DistributionProfileId);
+			kparams.AddIfNotNull("distributionSunStatus", this._DistributionSunStatus);
+			kparams.AddIfNotNull("entryDistributionFlag", this._EntryDistributionFlag);
+			kparams.AddIfNotNull("entryDistributionStatus", this._EntryDistributionStatus);
+			kparams.AddIfNotNull("hasEntryDistributionValidationErrors", this._HasEntryDistributionValidationErrors);
+			kparams.AddIfNotNull("entryDistributionValidationErrors", this._EntryDistributionValidationErrors);
 			return kparams;
 		}
 		#endregion

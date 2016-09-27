@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUserLoginData");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("loginEmail", this.LoginEmail);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("loginEmail", this._LoginEmail);
 			return kparams;
 		}
 		#endregion

@@ -158,15 +158,15 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaVirusScanProfile");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("name", this.Name);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("engineType", this.EngineType);
-			kparams.AddIfNotNull("entryFilter", this.EntryFilter);
-			kparams.AddIfNotNull("actionIfInfected", this.ActionIfInfected);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("name", this._Name);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("engineType", this._EngineType);
+			kparams.AddIfNotNull("entryFilter", this._EntryFilter);
+			kparams.AddIfNotNull("actionIfInfected", this._ActionIfInfected);
 			return kparams;
 		}
 		#endregion

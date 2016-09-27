@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaStorageExportObjectTask");
-			kparams.AddIfNotNull("storageId", this.StorageId);
+			kparams.AddIfNotNull("storageId", this._StorageId);
 			return kparams;
 		}
 		#endregion

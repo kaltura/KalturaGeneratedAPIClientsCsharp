@@ -178,15 +178,15 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaNotificationJobData");
-			kparams.AddIfNotNull("userId", this.UserId);
-			kparams.AddIfNotNull("type", this.Type);
-			kparams.AddIfNotNull("typeAsString", this.TypeAsString);
-			kparams.AddIfNotNull("objectId", this.ObjectId);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("data", this.Data);
-			kparams.AddIfNotNull("numberOfAttempts", this.NumberOfAttempts);
-			kparams.AddIfNotNull("notificationResult", this.NotificationResult);
-			kparams.AddIfNotNull("objType", this.ObjType);
+			kparams.AddIfNotNull("userId", this._UserId);
+			kparams.AddIfNotNull("type", this._Type);
+			kparams.AddIfNotNull("typeAsString", this._TypeAsString);
+			kparams.AddIfNotNull("objectId", this._ObjectId);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("data", this._Data);
+			kparams.AddIfNotNull("numberOfAttempts", this._NumberOfAttempts);
+			kparams.AddIfNotNull("notificationResult", this._NotificationResult);
+			kparams.AddIfNotNull("objType", this._ObjType);
 			return kparams;
 		}
 		#endregion

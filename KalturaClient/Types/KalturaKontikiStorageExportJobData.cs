@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaKontikiStorageExportJobData");
-			kparams.AddIfNotNull("flavorAssetId", this.FlavorAssetId);
-			kparams.AddIfNotNull("contentMoid", this.ContentMoid);
-			kparams.AddIfNotNull("serviceToken", this.ServiceToken);
+			kparams.AddIfNotNull("flavorAssetId", this._FlavorAssetId);
+			kparams.AddIfNotNull("contentMoid", this._ContentMoid);
+			kparams.AddIfNotNull("serviceToken", this._ServiceToken);
 			return kparams;
 		}
 		#endregion

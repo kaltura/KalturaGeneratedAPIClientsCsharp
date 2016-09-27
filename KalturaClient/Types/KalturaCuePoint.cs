@@ -234,22 +234,22 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCuePoint");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("cuePointType", this.CuePointType);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("entryId", this.EntryId);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIfNotNull("triggeredAt", this.TriggeredAt);
-			kparams.AddIfNotNull("tags", this.Tags);
-			kparams.AddIfNotNull("startTime", this.StartTime);
-			kparams.AddIfNotNull("userId", this.UserId);
-			kparams.AddIfNotNull("partnerData", this.PartnerData);
-			kparams.AddIfNotNull("partnerSortValue", this.PartnerSortValue);
-			kparams.AddIfNotNull("forceStop", this.ForceStop);
-			kparams.AddIfNotNull("thumbOffset", this.ThumbOffset);
-			kparams.AddIfNotNull("systemName", this.SystemName);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("cuePointType", this._CuePointType);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("entryId", this._EntryId);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
+			kparams.AddIfNotNull("triggeredAt", this._TriggeredAt);
+			kparams.AddIfNotNull("tags", this._Tags);
+			kparams.AddIfNotNull("startTime", this._StartTime);
+			kparams.AddIfNotNull("userId", this._UserId);
+			kparams.AddIfNotNull("partnerData", this._PartnerData);
+			kparams.AddIfNotNull("partnerSortValue", this._PartnerSortValue);
+			kparams.AddIfNotNull("forceStop", this._ForceStop);
+			kparams.AddIfNotNull("thumbOffset", this._ThumbOffset);
+			kparams.AddIfNotNull("systemName", this._SystemName);
 			return kparams;
 		}
 		#endregion

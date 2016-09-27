@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaIpAddressRestriction");
-			kparams.AddIfNotNull("ipAddressRestrictionType", this.IpAddressRestrictionType);
-			kparams.AddIfNotNull("ipAddressList", this.IpAddressList);
+			kparams.AddIfNotNull("ipAddressRestrictionType", this._IpAddressRestrictionType);
+			kparams.AddIfNotNull("ipAddressList", this._IpAddressList);
 			return kparams;
 		}
 		#endregion

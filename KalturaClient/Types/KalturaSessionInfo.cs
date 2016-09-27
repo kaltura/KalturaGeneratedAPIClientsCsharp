@@ -109,12 +109,12 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSessionInfo");
-			kparams.AddIfNotNull("ks", this.Ks);
-			kparams.AddIfNotNull("sessionType", this.SessionType);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("userId", this.UserId);
-			kparams.AddIfNotNull("expiry", this.Expiry);
-			kparams.AddIfNotNull("privileges", this.Privileges);
+			kparams.AddIfNotNull("ks", this._Ks);
+			kparams.AddIfNotNull("sessionType", this._SessionType);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("userId", this._UserId);
+			kparams.AddIfNotNull("expiry", this._Expiry);
+			kparams.AddIfNotNull("privileges", this._Privileges);
 			return kparams;
 		}
 		#endregion

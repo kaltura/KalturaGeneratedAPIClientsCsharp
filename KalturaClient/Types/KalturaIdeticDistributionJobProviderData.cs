@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaIdeticDistributionJobProviderData");
-			kparams.AddIfNotNull("thumbnailUrl", this.ThumbnailUrl);
-			kparams.AddIfNotNull("flavorAssetUrl", this.FlavorAssetUrl);
+			kparams.AddIfNotNull("thumbnailUrl", this._ThumbnailUrl);
+			kparams.AddIfNotNull("flavorAssetUrl", this._FlavorAssetUrl);
 			return kparams;
 		}
 		#endregion

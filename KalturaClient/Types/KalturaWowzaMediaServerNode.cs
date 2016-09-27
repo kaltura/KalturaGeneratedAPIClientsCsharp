@@ -139,12 +139,12 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaWowzaMediaServerNode");
-			kparams.AddIfNotNull("appPrefix", this.AppPrefix);
-			kparams.AddIfNotNull("transcoder", this.Transcoder);
-			kparams.AddIfNotNull("GPUID", this.GPUID);
-			kparams.AddIfNotNull("liveServicePort", this.LiveServicePort);
-			kparams.AddIfNotNull("liveServiceProtocol", this.LiveServiceProtocol);
-			kparams.AddIfNotNull("liveServiceInternalDomain", this.LiveServiceInternalDomain);
+			kparams.AddIfNotNull("appPrefix", this._AppPrefix);
+			kparams.AddIfNotNull("transcoder", this._Transcoder);
+			kparams.AddIfNotNull("GPUID", this._GPUID);
+			kparams.AddIfNotNull("liveServicePort", this._LiveServicePort);
+			kparams.AddIfNotNull("liveServiceProtocol", this._LiveServiceProtocol);
+			kparams.AddIfNotNull("liveServiceInternalDomain", this._LiveServiceInternalDomain);
 			return kparams;
 		}
 		#endregion

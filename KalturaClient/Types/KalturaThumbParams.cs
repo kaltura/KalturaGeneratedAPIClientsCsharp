@@ -282,23 +282,23 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaThumbParams");
-			kparams.AddIfNotNull("cropType", this.CropType);
-			kparams.AddIfNotNull("quality", this.Quality);
-			kparams.AddIfNotNull("cropX", this.CropX);
-			kparams.AddIfNotNull("cropY", this.CropY);
-			kparams.AddIfNotNull("cropWidth", this.CropWidth);
-			kparams.AddIfNotNull("cropHeight", this.CropHeight);
-			kparams.AddIfNotNull("videoOffset", this.VideoOffset);
-			kparams.AddIfNotNull("width", this.Width);
-			kparams.AddIfNotNull("height", this.Height);
-			kparams.AddIfNotNull("scaleWidth", this.ScaleWidth);
-			kparams.AddIfNotNull("scaleHeight", this.ScaleHeight);
-			kparams.AddIfNotNull("backgroundColor", this.BackgroundColor);
-			kparams.AddIfNotNull("sourceParamsId", this.SourceParamsId);
-			kparams.AddIfNotNull("format", this.Format);
-			kparams.AddIfNotNull("density", this.Density);
-			kparams.AddIfNotNull("stripProfiles", this.StripProfiles);
-			kparams.AddIfNotNull("videoOffsetInPercentage", this.VideoOffsetInPercentage);
+			kparams.AddIfNotNull("cropType", this._CropType);
+			kparams.AddIfNotNull("quality", this._Quality);
+			kparams.AddIfNotNull("cropX", this._CropX);
+			kparams.AddIfNotNull("cropY", this._CropY);
+			kparams.AddIfNotNull("cropWidth", this._CropWidth);
+			kparams.AddIfNotNull("cropHeight", this._CropHeight);
+			kparams.AddIfNotNull("videoOffset", this._VideoOffset);
+			kparams.AddIfNotNull("width", this._Width);
+			kparams.AddIfNotNull("height", this._Height);
+			kparams.AddIfNotNull("scaleWidth", this._ScaleWidth);
+			kparams.AddIfNotNull("scaleHeight", this._ScaleHeight);
+			kparams.AddIfNotNull("backgroundColor", this._BackgroundColor);
+			kparams.AddIfNotNull("sourceParamsId", this._SourceParamsId);
+			kparams.AddIfNotNull("format", this._Format);
+			kparams.AddIfNotNull("density", this._Density);
+			kparams.AddIfNotNull("stripProfiles", this._StripProfiles);
+			kparams.AddIfNotNull("videoOffsetInPercentage", this._VideoOffsetInPercentage);
 			return kparams;
 		}
 		#endregion

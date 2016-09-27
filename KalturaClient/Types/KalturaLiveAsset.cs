@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveAsset");
-			kparams.AddIfNotNull("multicastIP", this.MulticastIP);
-			kparams.AddIfNotNull("multicastPort", this.MulticastPort);
+			kparams.AddIfNotNull("multicastIP", this._MulticastIP);
+			kparams.AddIfNotNull("multicastPort", this._MulticastPort);
 			return kparams;
 		}
 		#endregion

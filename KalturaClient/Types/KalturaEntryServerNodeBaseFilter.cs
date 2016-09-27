@@ -191,16 +191,16 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEntryServerNodeBaseFilter");
-			kparams.AddIfNotNull("entryIdEqual", this.EntryIdEqual);
-			kparams.AddIfNotNull("entryIdIn", this.EntryIdIn);
-			kparams.AddIfNotNull("serverNodeIdEqual", this.ServerNodeIdEqual);
-			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
-			kparams.AddIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
-			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
-			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
-			kparams.AddIfNotNull("statusEqual", this.StatusEqual);
-			kparams.AddIfNotNull("statusIn", this.StatusIn);
-			kparams.AddIfNotNull("serverTypeEqual", this.ServerTypeEqual);
+			kparams.AddIfNotNull("entryIdEqual", this._EntryIdEqual);
+			kparams.AddIfNotNull("entryIdIn", this._EntryIdIn);
+			kparams.AddIfNotNull("serverNodeIdEqual", this._ServerNodeIdEqual);
+			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this._CreatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("createdAtLessThanOrEqual", this._CreatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this._UpdatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this._UpdatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("statusEqual", this._StatusEqual);
+			kparams.AddIfNotNull("statusIn", this._StatusIn);
+			kparams.AddIfNotNull("serverTypeEqual", this._ServerTypeEqual);
 			return kparams;
 		}
 		#endregion

@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDistributionRemoteMediaFile");
-			kparams.AddIfNotNull("version", this.Version);
-			kparams.AddIfNotNull("assetId", this.AssetId);
-			kparams.AddIfNotNull("remoteId", this.RemoteId);
+			kparams.AddIfNotNull("version", this._Version);
+			kparams.AddIfNotNull("assetId", this._AssetId);
+			kparams.AddIfNotNull("remoteId", this._RemoteId);
 			return kparams;
 		}
 		#endregion

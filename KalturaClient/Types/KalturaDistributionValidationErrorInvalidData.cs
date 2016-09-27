@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDistributionValidationErrorInvalidData");
-			kparams.AddIfNotNull("fieldName", this.FieldName);
-			kparams.AddIfNotNull("validationErrorType", this.ValidationErrorType);
-			kparams.AddIfNotNull("validationErrorParam", this.ValidationErrorParam);
+			kparams.AddIfNotNull("fieldName", this._FieldName);
+			kparams.AddIfNotNull("validationErrorType", this._ValidationErrorType);
+			kparams.AddIfNotNull("validationErrorParam", this._ValidationErrorParam);
 			return kparams;
 		}
 		#endregion

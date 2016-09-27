@@ -159,17 +159,17 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaFlavorAsset");
-			kparams.AddIfNotNull("flavorParamsId", this.FlavorParamsId);
-			kparams.AddIfNotNull("width", this.Width);
-			kparams.AddIfNotNull("height", this.Height);
-			kparams.AddIfNotNull("bitrate", this.Bitrate);
-			kparams.AddIfNotNull("frameRate", this.FrameRate);
-			kparams.AddIfNotNull("isOriginal", this.IsOriginal);
-			kparams.AddIfNotNull("isWeb", this.IsWeb);
-			kparams.AddIfNotNull("containerFormat", this.ContainerFormat);
-			kparams.AddIfNotNull("videoCodecId", this.VideoCodecId);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("language", this.Language);
+			kparams.AddIfNotNull("flavorParamsId", this._FlavorParamsId);
+			kparams.AddIfNotNull("width", this._Width);
+			kparams.AddIfNotNull("height", this._Height);
+			kparams.AddIfNotNull("bitrate", this._Bitrate);
+			kparams.AddIfNotNull("frameRate", this._FrameRate);
+			kparams.AddIfNotNull("isOriginal", this._IsOriginal);
+			kparams.AddIfNotNull("isWeb", this._IsWeb);
+			kparams.AddIfNotNull("containerFormat", this._ContainerFormat);
+			kparams.AddIfNotNull("videoCodecId", this._VideoCodecId);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("language", this._Language);
 			return kparams;
 		}
 		#endregion

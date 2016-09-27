@@ -81,8 +81,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSearchResultResponse");
-			kparams.AddIfNotNull("objects", this.Objects);
-			kparams.AddIfNotNull("needMediaInfo", this.NeedMediaInfo);
+			kparams.AddIfNotNull("objects", this._Objects);
+			kparams.AddIfNotNull("needMediaInfo", this._NeedMediaInfo);
 			return kparams;
 		}
 		#endregion

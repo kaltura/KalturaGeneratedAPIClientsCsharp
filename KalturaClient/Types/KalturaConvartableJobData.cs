@@ -212,17 +212,17 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaConvartableJobData");
-			kparams.AddIfNotNull("srcFileSyncLocalPath", this.SrcFileSyncLocalPath);
-			kparams.AddIfNotNull("actualSrcFileSyncLocalPath", this.ActualSrcFileSyncLocalPath);
-			kparams.AddIfNotNull("srcFileSyncRemoteUrl", this.SrcFileSyncRemoteUrl);
-			kparams.AddIfNotNull("srcFileSyncs", this.SrcFileSyncs);
-			kparams.AddIfNotNull("engineVersion", this.EngineVersion);
-			kparams.AddIfNotNull("flavorParamsOutputId", this.FlavorParamsOutputId);
-			kparams.AddIfNotNull("flavorParamsOutput", this.FlavorParamsOutput);
-			kparams.AddIfNotNull("mediaInfoId", this.MediaInfoId);
-			kparams.AddIfNotNull("currentOperationSet", this.CurrentOperationSet);
-			kparams.AddIfNotNull("currentOperationIndex", this.CurrentOperationIndex);
-			kparams.AddIfNotNull("pluginData", this.PluginData);
+			kparams.AddIfNotNull("srcFileSyncLocalPath", this._SrcFileSyncLocalPath);
+			kparams.AddIfNotNull("actualSrcFileSyncLocalPath", this._ActualSrcFileSyncLocalPath);
+			kparams.AddIfNotNull("srcFileSyncRemoteUrl", this._SrcFileSyncRemoteUrl);
+			kparams.AddIfNotNull("srcFileSyncs", this._SrcFileSyncs);
+			kparams.AddIfNotNull("engineVersion", this._EngineVersion);
+			kparams.AddIfNotNull("flavorParamsOutputId", this._FlavorParamsOutputId);
+			kparams.AddIfNotNull("flavorParamsOutput", this._FlavorParamsOutput);
+			kparams.AddIfNotNull("mediaInfoId", this._MediaInfoId);
+			kparams.AddIfNotNull("currentOperationSet", this._CurrentOperationSet);
+			kparams.AddIfNotNull("currentOperationIndex", this._CurrentOperationIndex);
+			kparams.AddIfNotNull("pluginData", this._PluginData);
 			return kparams;
 		}
 		#endregion

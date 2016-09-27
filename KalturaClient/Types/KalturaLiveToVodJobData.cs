@@ -126,11 +126,11 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveToVodJobData");
-			kparams.AddIfNotNull("vodEntryId", this.VodEntryId);
-			kparams.AddIfNotNull("liveEntryId", this.LiveEntryId);
-			kparams.AddIfNotNull("totalVodDuration", this.TotalVodDuration);
-			kparams.AddIfNotNull("lastSegmentDuration", this.LastSegmentDuration);
-			kparams.AddIfNotNull("amfArray", this.AmfArray);
+			kparams.AddIfNotNull("vodEntryId", this._VodEntryId);
+			kparams.AddIfNotNull("liveEntryId", this._LiveEntryId);
+			kparams.AddIfNotNull("totalVodDuration", this._TotalVodDuration);
+			kparams.AddIfNotNull("lastSegmentDuration", this._LastSegmentDuration);
+			kparams.AddIfNotNull("amfArray", this._AmfArray);
 			return kparams;
 		}
 		#endregion

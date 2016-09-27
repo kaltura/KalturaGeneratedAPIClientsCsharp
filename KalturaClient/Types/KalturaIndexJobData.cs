@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaIndexJobData");
-			kparams.AddIfNotNull("filter", this.Filter);
-			kparams.AddIfNotNull("lastIndexId", this.LastIndexId);
-			kparams.AddIfNotNull("lastIndexDepth", this.LastIndexDepth);
-			kparams.AddIfNotNull("shouldUpdate", this.ShouldUpdate);
+			kparams.AddIfNotNull("filter", this._Filter);
+			kparams.AddIfNotNull("lastIndexId", this._LastIndexId);
+			kparams.AddIfNotNull("lastIndexDepth", this._LastIndexDepth);
+			kparams.AddIfNotNull("shouldUpdate", this._ShouldUpdate);
 			return kparams;
 		}
 		#endregion

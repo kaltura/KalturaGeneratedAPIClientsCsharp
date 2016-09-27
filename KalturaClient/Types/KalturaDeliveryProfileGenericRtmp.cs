@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDeliveryProfileGenericRtmp");
-			kparams.AddIfNotNull("pattern", this.Pattern);
-			kparams.AddIfNotNull("rendererClass", this.RendererClass);
+			kparams.AddIfNotNull("pattern", this._Pattern);
+			kparams.AddIfNotNull("rendererClass", this._RendererClass);
 			return kparams;
 		}
 		#endregion

@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaResponseProfileCacheRecalculateResults");
-			kparams.AddIfNotNull("lastObjectKey", this.LastObjectKey);
-			kparams.AddIfNotNull("recalculated", this.Recalculated);
+			kparams.AddIfNotNull("lastObjectKey", this._LastObjectKey);
+			kparams.AddIfNotNull("recalculated", this._Recalculated);
 			return kparams;
 		}
 		#endregion

@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSshUrlResource");
-			kparams.AddIfNotNull("privateKey", this.PrivateKey);
-			kparams.AddIfNotNull("publicKey", this.PublicKey);
-			kparams.AddIfNotNull("keyPassphrase", this.KeyPassphrase);
+			kparams.AddIfNotNull("privateKey", this._PrivateKey);
+			kparams.AddIfNotNull("publicKey", this._PublicKey);
+			kparams.AddIfNotNull("keyPassphrase", this._KeyPassphrase);
 			return kparams;
 		}
 		#endregion

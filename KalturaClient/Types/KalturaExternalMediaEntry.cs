@@ -82,8 +82,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaExternalMediaEntry");
-			kparams.AddIfNotNull("externalSourceType", this.ExternalSourceType);
-			kparams.AddIfNotNull("assetParamsIds", this.AssetParamsIds);
+			kparams.AddIfNotNull("externalSourceType", this._ExternalSourceType);
+			kparams.AddIfNotNull("assetParamsIds", this._AssetParamsIds);
 			return kparams;
 		}
 		#endregion

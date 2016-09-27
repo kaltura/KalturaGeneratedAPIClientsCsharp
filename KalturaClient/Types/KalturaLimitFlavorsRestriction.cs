@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLimitFlavorsRestriction");
-			kparams.AddIfNotNull("limitFlavorsRestrictionType", this.LimitFlavorsRestrictionType);
-			kparams.AddIfNotNull("flavorParamsIds", this.FlavorParamsIds);
+			kparams.AddIfNotNull("limitFlavorsRestrictionType", this._LimitFlavorsRestrictionType);
+			kparams.AddIfNotNull("flavorParamsIds", this._FlavorParamsIds);
 			return kparams;
 		}
 		#endregion

@@ -217,18 +217,18 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaYoutubeApiDistributionProfile");
-			kparams.AddIfNotNull("username", this.Username);
-			kparams.AddIfNotNull("defaultCategory", this.DefaultCategory);
-			kparams.AddIfNotNull("allowComments", this.AllowComments);
-			kparams.AddIfNotNull("allowEmbedding", this.AllowEmbedding);
-			kparams.AddIfNotNull("allowRatings", this.AllowRatings);
-			kparams.AddIfNotNull("allowResponses", this.AllowResponses);
-			kparams.AddIfNotNull("apiAuthorizeUrl", this.ApiAuthorizeUrl);
-			kparams.AddIfNotNull("googleClientId", this.GoogleClientId);
-			kparams.AddIfNotNull("googleClientSecret", this.GoogleClientSecret);
-			kparams.AddIfNotNull("googleTokenData", this.GoogleTokenData);
-			kparams.AddIfNotNull("assumeSuccess", this.AssumeSuccess);
-			kparams.AddIfNotNull("privacyStatus", this.PrivacyStatus);
+			kparams.AddIfNotNull("username", this._Username);
+			kparams.AddIfNotNull("defaultCategory", this._DefaultCategory);
+			kparams.AddIfNotNull("allowComments", this._AllowComments);
+			kparams.AddIfNotNull("allowEmbedding", this._AllowEmbedding);
+			kparams.AddIfNotNull("allowRatings", this._AllowRatings);
+			kparams.AddIfNotNull("allowResponses", this._AllowResponses);
+			kparams.AddIfNotNull("apiAuthorizeUrl", this._ApiAuthorizeUrl);
+			kparams.AddIfNotNull("googleClientId", this._GoogleClientId);
+			kparams.AddIfNotNull("googleClientSecret", this._GoogleClientSecret);
+			kparams.AddIfNotNull("googleTokenData", this._GoogleTokenData);
+			kparams.AddIfNotNull("assumeSuccess", this._AssumeSuccess);
+			kparams.AddIfNotNull("privacyStatus", this._PrivacyStatus);
 			return kparams;
 		}
 		#endregion

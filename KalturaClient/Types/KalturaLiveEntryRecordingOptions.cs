@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveEntryRecordingOptions");
-			kparams.AddIfNotNull("shouldCopyEntitlement", this.ShouldCopyEntitlement);
-			kparams.AddIfNotNull("shouldCopyScheduling", this.ShouldCopyScheduling);
-			kparams.AddIfNotNull("shouldCopyThumbnail", this.ShouldCopyThumbnail);
-			kparams.AddIfNotNull("shouldMakeHidden", this.ShouldMakeHidden);
+			kparams.AddIfNotNull("shouldCopyEntitlement", this._ShouldCopyEntitlement);
+			kparams.AddIfNotNull("shouldCopyScheduling", this._ShouldCopyScheduling);
+			kparams.AddIfNotNull("shouldCopyThumbnail", this._ShouldCopyThumbnail);
+			kparams.AddIfNotNull("shouldMakeHidden", this._ShouldMakeHidden);
 			return kparams;
 		}
 		#endregion

@@ -239,22 +239,22 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaWidget");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("sourceWidgetId", this.SourceWidgetId);
-			kparams.AddIfNotNull("rootWidgetId", this.RootWidgetId);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("entryId", this.EntryId);
-			kparams.AddIfNotNull("uiConfId", this.UiConfId);
-			kparams.AddIfNotNull("securityType", this.SecurityType);
-			kparams.AddIfNotNull("securityPolicy", this.SecurityPolicy);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIfNotNull("partnerData", this.PartnerData);
-			kparams.AddIfNotNull("widgetHTML", this.WidgetHTML);
-			kparams.AddIfNotNull("enforceEntitlement", this.EnforceEntitlement);
-			kparams.AddIfNotNull("privacyContext", this.PrivacyContext);
-			kparams.AddIfNotNull("addEmbedHtml5Support", this.AddEmbedHtml5Support);
-			kparams.AddIfNotNull("roles", this.Roles);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("sourceWidgetId", this._SourceWidgetId);
+			kparams.AddIfNotNull("rootWidgetId", this._RootWidgetId);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("entryId", this._EntryId);
+			kparams.AddIfNotNull("uiConfId", this._UiConfId);
+			kparams.AddIfNotNull("securityType", this._SecurityType);
+			kparams.AddIfNotNull("securityPolicy", this._SecurityPolicy);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
+			kparams.AddIfNotNull("partnerData", this._PartnerData);
+			kparams.AddIfNotNull("widgetHTML", this._WidgetHTML);
+			kparams.AddIfNotNull("enforceEntitlement", this._EnforceEntitlement);
+			kparams.AddIfNotNull("privacyContext", this._PrivacyContext);
+			kparams.AddIfNotNull("addEmbedHtml5Support", this._AddEmbedHtml5Support);
+			kparams.AddIfNotNull("roles", this._Roles);
 			return kparams;
 		}
 		#endregion

@@ -152,13 +152,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaConvertCollectionFlavorData");
-			kparams.AddIfNotNull("flavorAssetId", this.FlavorAssetId);
-			kparams.AddIfNotNull("flavorParamsOutputId", this.FlavorParamsOutputId);
-			kparams.AddIfNotNull("readyBehavior", this.ReadyBehavior);
-			kparams.AddIfNotNull("videoBitrate", this.VideoBitrate);
-			kparams.AddIfNotNull("audioBitrate", this.AudioBitrate);
-			kparams.AddIfNotNull("destFileSyncLocalPath", this.DestFileSyncLocalPath);
-			kparams.AddIfNotNull("destFileSyncRemoteUrl", this.DestFileSyncRemoteUrl);
+			kparams.AddIfNotNull("flavorAssetId", this._FlavorAssetId);
+			kparams.AddIfNotNull("flavorParamsOutputId", this._FlavorParamsOutputId);
+			kparams.AddIfNotNull("readyBehavior", this._ReadyBehavior);
+			kparams.AddIfNotNull("videoBitrate", this._VideoBitrate);
+			kparams.AddIfNotNull("audioBitrate", this._AudioBitrate);
+			kparams.AddIfNotNull("destFileSyncLocalPath", this._DestFileSyncLocalPath);
+			kparams.AddIfNotNull("destFileSyncRemoteUrl", this._DestFileSyncRemoteUrl);
 			return kparams;
 		}
 		#endregion

@@ -198,20 +198,20 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAsset");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("entryId", this.EntryId);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("version", this.Version);
-			kparams.AddIfNotNull("size", this.Size);
-			kparams.AddIfNotNull("tags", this.Tags);
-			kparams.AddIfNotNull("fileExt", this.FileExt);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIfNotNull("deletedAt", this.DeletedAt);
-			kparams.AddIfNotNull("description", this.Description);
-			kparams.AddIfNotNull("partnerData", this.PartnerData);
-			kparams.AddIfNotNull("partnerDescription", this.PartnerDescription);
-			kparams.AddIfNotNull("actualSourceAssetParamsIds", this.ActualSourceAssetParamsIds);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("entryId", this._EntryId);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("version", this._Version);
+			kparams.AddIfNotNull("size", this._Size);
+			kparams.AddIfNotNull("tags", this._Tags);
+			kparams.AddIfNotNull("fileExt", this._FileExt);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
+			kparams.AddIfNotNull("deletedAt", this._DeletedAt);
+			kparams.AddIfNotNull("description", this._Description);
+			kparams.AddIfNotNull("partnerData", this._PartnerData);
+			kparams.AddIfNotNull("partnerDescription", this._PartnerDescription);
+			kparams.AddIfNotNull("actualSourceAssetParamsIds", this._ActualSourceAssetParamsIds);
 			return kparams;
 		}
 		#endregion

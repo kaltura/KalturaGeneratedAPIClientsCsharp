@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaClientConfiguration");
-			kparams.AddIfNotNull("clientTag", this.ClientTag);
-			kparams.AddIfNotNull("apiVersion", this.ApiVersion);
+			kparams.AddIfNotNull("clientTag", this._ClientTag);
+			kparams.AddIfNotNull("apiVersion", this._ApiVersion);
 			return kparams;
 		}
 		#endregion

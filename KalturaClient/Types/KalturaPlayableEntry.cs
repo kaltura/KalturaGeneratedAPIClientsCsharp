@@ -130,14 +130,14 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaPlayableEntry");
-			kparams.AddIfNotNull("plays", this.Plays);
-			kparams.AddIfNotNull("views", this.Views);
-			kparams.AddIfNotNull("lastPlayedAt", this.LastPlayedAt);
-			kparams.AddIfNotNull("width", this.Width);
-			kparams.AddIfNotNull("height", this.Height);
-			kparams.AddIfNotNull("duration", this.Duration);
-			kparams.AddIfNotNull("msDuration", this.MsDuration);
-			kparams.AddIfNotNull("durationType", this.DurationType);
+			kparams.AddIfNotNull("plays", this._Plays);
+			kparams.AddIfNotNull("views", this._Views);
+			kparams.AddIfNotNull("lastPlayedAt", this._LastPlayedAt);
+			kparams.AddIfNotNull("width", this._Width);
+			kparams.AddIfNotNull("height", this._Height);
+			kparams.AddIfNotNull("duration", this._Duration);
+			kparams.AddIfNotNull("msDuration", this._MsDuration);
+			kparams.AddIfNotNull("durationType", this._DurationType);
 			return kparams;
 		}
 		#endregion

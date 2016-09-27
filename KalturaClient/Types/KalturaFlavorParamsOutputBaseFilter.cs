@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaFlavorParamsOutputBaseFilter");
-			kparams.AddIfNotNull("flavorParamsIdEqual", this.FlavorParamsIdEqual);
-			kparams.AddIfNotNull("flavorParamsVersionEqual", this.FlavorParamsVersionEqual);
-			kparams.AddIfNotNull("flavorAssetIdEqual", this.FlavorAssetIdEqual);
-			kparams.AddIfNotNull("flavorAssetVersionEqual", this.FlavorAssetVersionEqual);
+			kparams.AddIfNotNull("flavorParamsIdEqual", this._FlavorParamsIdEqual);
+			kparams.AddIfNotNull("flavorParamsVersionEqual", this._FlavorParamsVersionEqual);
+			kparams.AddIfNotNull("flavorAssetIdEqual", this._FlavorAssetIdEqual);
+			kparams.AddIfNotNull("flavorAssetVersionEqual", this._FlavorAssetVersionEqual);
 			return kparams;
 		}
 		#endregion

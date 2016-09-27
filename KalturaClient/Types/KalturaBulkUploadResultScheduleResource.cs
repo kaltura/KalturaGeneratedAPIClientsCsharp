@@ -165,14 +165,14 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaBulkUploadResultScheduleResource");
-			kparams.AddIfNotNull("resourceId", this.ResourceId);
-			kparams.AddIfNotNull("name", this.Name);
-			kparams.AddIfNotNull("type", this.Type);
-			kparams.AddIfNotNull("systemName", this.SystemName);
-			kparams.AddIfNotNull("description", this.Description);
-			kparams.AddIfNotNull("tags", this.Tags);
-			kparams.AddIfNotNull("parentType", this.ParentType);
-			kparams.AddIfNotNull("parentSystemName", this.ParentSystemName);
+			kparams.AddIfNotNull("resourceId", this._ResourceId);
+			kparams.AddIfNotNull("name", this._Name);
+			kparams.AddIfNotNull("type", this._Type);
+			kparams.AddIfNotNull("systemName", this._SystemName);
+			kparams.AddIfNotNull("description", this._Description);
+			kparams.AddIfNotNull("tags", this._Tags);
+			kparams.AddIfNotNull("parentType", this._ParentType);
+			kparams.AddIfNotNull("parentSystemName", this._ParentSystemName);
 			return kparams;
 		}
 		#endregion

@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSourceFileSyncDescriptor");
-			kparams.AddIfNotNull("actualFileSyncLocalPath", this.ActualFileSyncLocalPath);
-			kparams.AddIfNotNull("assetId", this.AssetId);
-			kparams.AddIfNotNull("assetParamsId", this.AssetParamsId);
+			kparams.AddIfNotNull("actualFileSyncLocalPath", this._ActualFileSyncLocalPath);
+			kparams.AddIfNotNull("assetId", this._AssetId);
+			kparams.AddIfNotNull("assetParamsId", this._AssetParamsId);
 			return kparams;
 		}
 		#endregion

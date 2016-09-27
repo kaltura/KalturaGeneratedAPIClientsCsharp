@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEdgeServerNode");
-			kparams.AddIfNotNull("playbackDomain", this.PlaybackDomain);
-			kparams.AddIfNotNull("config", this.Config);
+			kparams.AddIfNotNull("playbackDomain", this._PlaybackDomain);
+			kparams.AddIfNotNull("config", this._Config);
 			return kparams;
 		}
 		#endregion

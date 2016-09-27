@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDistributionValidationErrorMissingAsset");
-			kparams.AddIfNotNull("data", this.Data);
+			kparams.AddIfNotNull("data", this._Data);
 			return kparams;
 		}
 		#endregion

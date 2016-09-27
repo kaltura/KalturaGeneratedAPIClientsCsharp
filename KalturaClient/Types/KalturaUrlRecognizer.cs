@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUrlRecognizer");
-			kparams.AddIfNotNull("hosts", this.Hosts);
-			kparams.AddIfNotNull("uriPrefix", this.UriPrefix);
+			kparams.AddIfNotNull("hosts", this._Hosts);
+			kparams.AddIfNotNull("uriPrefix", this._UriPrefix);
 			return kparams;
 		}
 		#endregion

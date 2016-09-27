@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveStreamBitrate");
-			kparams.AddIfNotNull("bitrate", this.Bitrate);
-			kparams.AddIfNotNull("width", this.Width);
-			kparams.AddIfNotNull("height", this.Height);
-			kparams.AddIfNotNull("tags", this.Tags);
+			kparams.AddIfNotNull("bitrate", this._Bitrate);
+			kparams.AddIfNotNull("width", this._Width);
+			kparams.AddIfNotNull("height", this._Height);
+			kparams.AddIfNotNull("tags", this._Tags);
 			return kparams;
 		}
 		#endregion

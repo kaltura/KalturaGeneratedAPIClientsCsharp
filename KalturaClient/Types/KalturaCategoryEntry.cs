@@ -111,11 +111,11 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCategoryEntry");
-			kparams.AddIfNotNull("categoryId", this.CategoryId);
-			kparams.AddIfNotNull("entryId", this.EntryId);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("categoryFullIds", this.CategoryFullIds);
-			kparams.AddIfNotNull("status", this.Status);
+			kparams.AddIfNotNull("categoryId", this._CategoryId);
+			kparams.AddIfNotNull("entryId", this._EntryId);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("categoryFullIds", this._CategoryFullIds);
+			kparams.AddIfNotNull("status", this._Status);
 			return kparams;
 		}
 		#endregion

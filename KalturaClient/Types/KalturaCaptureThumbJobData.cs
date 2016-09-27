@@ -165,14 +165,14 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCaptureThumbJobData");
-			kparams.AddIfNotNull("srcFileSyncLocalPath", this.SrcFileSyncLocalPath);
-			kparams.AddIfNotNull("actualSrcFileSyncLocalPath", this.ActualSrcFileSyncLocalPath);
-			kparams.AddIfNotNull("srcFileSyncRemoteUrl", this.SrcFileSyncRemoteUrl);
-			kparams.AddIfNotNull("thumbParamsOutputId", this.ThumbParamsOutputId);
-			kparams.AddIfNotNull("thumbAssetId", this.ThumbAssetId);
-			kparams.AddIfNotNull("srcAssetId", this.SrcAssetId);
-			kparams.AddIfNotNull("srcAssetType", this.SrcAssetType);
-			kparams.AddIfNotNull("thumbPath", this.ThumbPath);
+			kparams.AddIfNotNull("srcFileSyncLocalPath", this._SrcFileSyncLocalPath);
+			kparams.AddIfNotNull("actualSrcFileSyncLocalPath", this._ActualSrcFileSyncLocalPath);
+			kparams.AddIfNotNull("srcFileSyncRemoteUrl", this._SrcFileSyncRemoteUrl);
+			kparams.AddIfNotNull("thumbParamsOutputId", this._ThumbParamsOutputId);
+			kparams.AddIfNotNull("thumbAssetId", this._ThumbAssetId);
+			kparams.AddIfNotNull("srcAssetId", this._SrcAssetId);
+			kparams.AddIfNotNull("srcAssetType", this._SrcAssetType);
+			kparams.AddIfNotNull("thumbPath", this._ThumbPath);
 			return kparams;
 		}
 		#endregion

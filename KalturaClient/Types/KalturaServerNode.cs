@@ -203,20 +203,20 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaServerNode");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIfNotNull("heartbeatTime", this.HeartbeatTime);
-			kparams.AddIfNotNull("name", this.Name);
-			kparams.AddIfNotNull("systemName", this.SystemName);
-			kparams.AddIfNotNull("description", this.Description);
-			kparams.AddIfNotNull("hostName", this.HostName);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("type", this.Type);
-			kparams.AddIfNotNull("tags", this.Tags);
-			kparams.AddIfNotNull("dc", this.Dc);
-			kparams.AddIfNotNull("parentId", this.ParentId);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
+			kparams.AddIfNotNull("heartbeatTime", this._HeartbeatTime);
+			kparams.AddIfNotNull("name", this._Name);
+			kparams.AddIfNotNull("systemName", this._SystemName);
+			kparams.AddIfNotNull("description", this._Description);
+			kparams.AddIfNotNull("hostName", this._HostName);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("type", this._Type);
+			kparams.AddIfNotNull("tags", this._Tags);
+			kparams.AddIfNotNull("dc", this._Dc);
+			kparams.AddIfNotNull("parentId", this._ParentId);
 			return kparams;
 		}
 		#endregion

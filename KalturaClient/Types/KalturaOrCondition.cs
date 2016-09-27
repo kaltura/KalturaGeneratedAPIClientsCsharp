@@ -78,7 +78,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaOrCondition");
-			kparams.AddIfNotNull("conditions", this.Conditions);
+			kparams.AddIfNotNull("conditions", this._Conditions);
 			return kparams;
 		}
 		#endregion

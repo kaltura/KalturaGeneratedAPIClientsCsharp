@@ -91,8 +91,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEntryReplacementOptions");
-			kparams.AddIfNotNull("keepManualThumbnails", this.KeepManualThumbnails);
-			kparams.AddIfNotNull("pluginOptionItems", this.PluginOptionItems);
+			kparams.AddIfNotNull("keepManualThumbnails", this._KeepManualThumbnails);
+			kparams.AddIfNotNull("pluginOptionItems", this._PluginOptionItems);
 			return kparams;
 		}
 		#endregion

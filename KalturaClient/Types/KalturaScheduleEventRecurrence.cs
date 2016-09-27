@@ -256,21 +256,21 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaScheduleEventRecurrence");
-			kparams.AddIfNotNull("name", this.Name);
-			kparams.AddIfNotNull("frequency", this.Frequency);
-			kparams.AddIfNotNull("until", this.Until);
-			kparams.AddIfNotNull("count", this.Count);
-			kparams.AddIfNotNull("interval", this.Interval);
-			kparams.AddIfNotNull("bySecond", this.BySecond);
-			kparams.AddIfNotNull("byMinute", this.ByMinute);
-			kparams.AddIfNotNull("byHour", this.ByHour);
-			kparams.AddIfNotNull("byDay", this.ByDay);
-			kparams.AddIfNotNull("byMonthDay", this.ByMonthDay);
-			kparams.AddIfNotNull("byYearDay", this.ByYearDay);
-			kparams.AddIfNotNull("byWeekNumber", this.ByWeekNumber);
-			kparams.AddIfNotNull("byMonth", this.ByMonth);
-			kparams.AddIfNotNull("byOffset", this.ByOffset);
-			kparams.AddIfNotNull("weekStartDay", this.WeekStartDay);
+			kparams.AddIfNotNull("name", this._Name);
+			kparams.AddIfNotNull("frequency", this._Frequency);
+			kparams.AddIfNotNull("until", this._Until);
+			kparams.AddIfNotNull("count", this._Count);
+			kparams.AddIfNotNull("interval", this._Interval);
+			kparams.AddIfNotNull("bySecond", this._BySecond);
+			kparams.AddIfNotNull("byMinute", this._ByMinute);
+			kparams.AddIfNotNull("byHour", this._ByHour);
+			kparams.AddIfNotNull("byDay", this._ByDay);
+			kparams.AddIfNotNull("byMonthDay", this._ByMonthDay);
+			kparams.AddIfNotNull("byYearDay", this._ByYearDay);
+			kparams.AddIfNotNull("byWeekNumber", this._ByWeekNumber);
+			kparams.AddIfNotNull("byMonth", this._ByMonth);
+			kparams.AddIfNotNull("byOffset", this._ByOffset);
+			kparams.AddIfNotNull("weekStartDay", this._WeekStartDay);
 			return kparams;
 		}
 		#endregion

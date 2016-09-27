@@ -177,14 +177,14 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaRule");
-			kparams.AddIfNotNull("description", this.Description);
-			kparams.AddIfNotNull("ruleData", this.RuleData);
-			kparams.AddIfNotNull("message", this.Message);
-			kparams.AddIfNotNull("actions", this.Actions);
-			kparams.AddIfNotNull("conditions", this.Conditions);
-			kparams.AddIfNotNull("contexts", this.Contexts);
-			kparams.AddIfNotNull("stopProcessing", this.StopProcessing);
-			kparams.AddIfNotNull("forceAdminValidation", this.ForceAdminValidation);
+			kparams.AddIfNotNull("description", this._Description);
+			kparams.AddIfNotNull("ruleData", this._RuleData);
+			kparams.AddIfNotNull("message", this._Message);
+			kparams.AddIfNotNull("actions", this._Actions);
+			kparams.AddIfNotNull("conditions", this._Conditions);
+			kparams.AddIfNotNull("contexts", this._Contexts);
+			kparams.AddIfNotNull("stopProcessing", this._StopProcessing);
+			kparams.AddIfNotNull("forceAdminValidation", this._ForceAdminValidation);
 			return kparams;
 		}
 		#endregion

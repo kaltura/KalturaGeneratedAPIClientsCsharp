@@ -152,13 +152,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaFacebookDistributionProfile");
-			kparams.AddIfNotNull("apiAuthorizeUrl", this.ApiAuthorizeUrl);
-			kparams.AddIfNotNull("pageId", this.PageId);
-			kparams.AddIfNotNull("pageAccessToken", this.PageAccessToken);
-			kparams.AddIfNotNull("userAccessToken", this.UserAccessToken);
-			kparams.AddIfNotNull("state", this.State);
-			kparams.AddIfNotNull("permissions", this.Permissions);
-			kparams.AddIfNotNull("reRequestPermissions", this.ReRequestPermissions);
+			kparams.AddIfNotNull("apiAuthorizeUrl", this._ApiAuthorizeUrl);
+			kparams.AddIfNotNull("pageId", this._PageId);
+			kparams.AddIfNotNull("pageAccessToken", this._PageAccessToken);
+			kparams.AddIfNotNull("userAccessToken", this._UserAccessToken);
+			kparams.AddIfNotNull("state", this._State);
+			kparams.AddIfNotNull("permissions", this._Permissions);
+			kparams.AddIfNotNull("reRequestPermissions", this._ReRequestPermissions);
 			return kparams;
 		}
 		#endregion

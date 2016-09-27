@@ -139,12 +139,12 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAssetParamsOutput");
-			kparams.AddIfNotNull("assetParamsId", this.AssetParamsId);
-			kparams.AddIfNotNull("assetParamsVersion", this.AssetParamsVersion);
-			kparams.AddIfNotNull("assetId", this.AssetId);
-			kparams.AddIfNotNull("assetVersion", this.AssetVersion);
-			kparams.AddIfNotNull("readyBehavior", this.ReadyBehavior);
-			kparams.AddIfNotNull("format", this.Format);
+			kparams.AddIfNotNull("assetParamsId", this._AssetParamsId);
+			kparams.AddIfNotNull("assetParamsVersion", this._AssetParamsVersion);
+			kparams.AddIfNotNull("assetId", this._AssetId);
+			kparams.AddIfNotNull("assetVersion", this._AssetVersion);
+			kparams.AddIfNotNull("readyBehavior", this._ReadyBehavior);
+			kparams.AddIfNotNull("format", this._Format);
 			return kparams;
 		}
 		#endregion

@@ -191,16 +191,16 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaMediaEntryBaseFilter");
-			kparams.AddIfNotNull("mediaTypeEqual", this.MediaTypeEqual);
-			kparams.AddIfNotNull("mediaTypeIn", this.MediaTypeIn);
-			kparams.AddIfNotNull("sourceTypeEqual", this.SourceTypeEqual);
-			kparams.AddIfNotNull("sourceTypeNotEqual", this.SourceTypeNotEqual);
-			kparams.AddIfNotNull("sourceTypeIn", this.SourceTypeIn);
-			kparams.AddIfNotNull("sourceTypeNotIn", this.SourceTypeNotIn);
-			kparams.AddIfNotNull("mediaDateGreaterThanOrEqual", this.MediaDateGreaterThanOrEqual);
-			kparams.AddIfNotNull("mediaDateLessThanOrEqual", this.MediaDateLessThanOrEqual);
-			kparams.AddIfNotNull("flavorParamsIdsMatchOr", this.FlavorParamsIdsMatchOr);
-			kparams.AddIfNotNull("flavorParamsIdsMatchAnd", this.FlavorParamsIdsMatchAnd);
+			kparams.AddIfNotNull("mediaTypeEqual", this._MediaTypeEqual);
+			kparams.AddIfNotNull("mediaTypeIn", this._MediaTypeIn);
+			kparams.AddIfNotNull("sourceTypeEqual", this._SourceTypeEqual);
+			kparams.AddIfNotNull("sourceTypeNotEqual", this._SourceTypeNotEqual);
+			kparams.AddIfNotNull("sourceTypeIn", this._SourceTypeIn);
+			kparams.AddIfNotNull("sourceTypeNotIn", this._SourceTypeNotIn);
+			kparams.AddIfNotNull("mediaDateGreaterThanOrEqual", this._MediaDateGreaterThanOrEqual);
+			kparams.AddIfNotNull("mediaDateLessThanOrEqual", this._MediaDateLessThanOrEqual);
+			kparams.AddIfNotNull("flavorParamsIdsMatchOr", this._FlavorParamsIdsMatchOr);
+			kparams.AddIfNotNull("flavorParamsIdsMatchAnd", this._FlavorParamsIdsMatchAnd);
 			return kparams;
 		}
 		#endregion

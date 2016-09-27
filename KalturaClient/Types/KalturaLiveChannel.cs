@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveChannel");
-			kparams.AddIfNotNull("playlistId", this.PlaylistId);
-			kparams.AddIfNotNull("repeat", this.Repeat);
+			kparams.AddIfNotNull("playlistId", this._PlaylistId);
+			kparams.AddIfNotNull("repeat", this._Repeat);
 			return kparams;
 		}
 		#endregion

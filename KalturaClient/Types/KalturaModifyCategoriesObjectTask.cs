@@ -91,8 +91,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaModifyCategoriesObjectTask");
-			kparams.AddIfNotNull("addRemoveType", this.AddRemoveType);
-			kparams.AddIfNotNull("categoryIds", this.CategoryIds);
+			kparams.AddIfNotNull("addRemoveType", this._AddRemoveType);
+			kparams.AddIfNotNull("categoryIds", this._CategoryIds);
 			return kparams;
 		}
 		#endregion

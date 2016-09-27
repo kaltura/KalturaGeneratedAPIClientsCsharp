@@ -69,7 +69,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaListResponse");
-			kparams.AddIfNotNull("totalCount", this.TotalCount);
+			kparams.AddIfNotNull("totalCount", this._TotalCount);
 			return kparams;
 		}
 		#endregion

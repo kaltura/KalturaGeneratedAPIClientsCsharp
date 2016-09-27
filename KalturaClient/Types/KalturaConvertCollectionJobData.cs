@@ -156,13 +156,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaConvertCollectionJobData");
-			kparams.AddIfNotNull("destDirLocalPath", this.DestDirLocalPath);
-			kparams.AddIfNotNull("destDirRemoteUrl", this.DestDirRemoteUrl);
-			kparams.AddIfNotNull("destFileName", this.DestFileName);
-			kparams.AddIfNotNull("inputXmlLocalPath", this.InputXmlLocalPath);
-			kparams.AddIfNotNull("inputXmlRemoteUrl", this.InputXmlRemoteUrl);
-			kparams.AddIfNotNull("commandLinesStr", this.CommandLinesStr);
-			kparams.AddIfNotNull("flavors", this.Flavors);
+			kparams.AddIfNotNull("destDirLocalPath", this._DestDirLocalPath);
+			kparams.AddIfNotNull("destDirRemoteUrl", this._DestDirRemoteUrl);
+			kparams.AddIfNotNull("destFileName", this._DestFileName);
+			kparams.AddIfNotNull("inputXmlLocalPath", this._InputXmlLocalPath);
+			kparams.AddIfNotNull("inputXmlRemoteUrl", this._InputXmlRemoteUrl);
+			kparams.AddIfNotNull("commandLinesStr", this._CommandLinesStr);
+			kparams.AddIfNotNull("flavors", this._Flavors);
 			return kparams;
 		}
 		#endregion

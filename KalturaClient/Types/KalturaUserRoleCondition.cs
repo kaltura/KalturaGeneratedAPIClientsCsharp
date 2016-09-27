@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUserRoleCondition");
-			kparams.AddIfNotNull("roleIds", this.RoleIds);
+			kparams.AddIfNotNull("roleIds", this._RoleIds);
 			return kparams;
 		}
 		#endregion

@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaFtpDropFolder");
-			kparams.AddIfNotNull("host", this.Host);
-			kparams.AddIfNotNull("port", this.Port);
-			kparams.AddIfNotNull("username", this.Username);
-			kparams.AddIfNotNull("password", this.Password);
+			kparams.AddIfNotNull("host", this._Host);
+			kparams.AddIfNotNull("port", this._Port);
+			kparams.AddIfNotNull("username", this._Username);
+			kparams.AddIfNotNull("password", this._Password);
 			return kparams;
 		}
 		#endregion

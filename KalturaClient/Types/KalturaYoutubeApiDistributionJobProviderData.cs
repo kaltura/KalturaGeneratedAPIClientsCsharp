@@ -104,9 +104,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaYoutubeApiDistributionJobProviderData");
-			kparams.AddIfNotNull("videoAssetFilePath", this.VideoAssetFilePath);
-			kparams.AddIfNotNull("thumbAssetFilePath", this.ThumbAssetFilePath);
-			kparams.AddIfNotNull("captionsInfo", this.CaptionsInfo);
+			kparams.AddIfNotNull("videoAssetFilePath", this._VideoAssetFilePath);
+			kparams.AddIfNotNull("thumbAssetFilePath", this._ThumbAssetFilePath);
+			kparams.AddIfNotNull("captionsInfo", this._CaptionsInfo);
 			return kparams;
 		}
 		#endregion

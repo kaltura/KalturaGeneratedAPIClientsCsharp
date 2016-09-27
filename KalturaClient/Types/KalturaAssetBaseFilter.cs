@@ -282,23 +282,23 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAssetBaseFilter");
-			kparams.AddIfNotNull("idEqual", this.IdEqual);
-			kparams.AddIfNotNull("idIn", this.IdIn);
-			kparams.AddIfNotNull("entryIdEqual", this.EntryIdEqual);
-			kparams.AddIfNotNull("entryIdIn", this.EntryIdIn);
-			kparams.AddIfNotNull("partnerIdEqual", this.PartnerIdEqual);
-			kparams.AddIfNotNull("partnerIdIn", this.PartnerIdIn);
-			kparams.AddIfNotNull("sizeGreaterThanOrEqual", this.SizeGreaterThanOrEqual);
-			kparams.AddIfNotNull("sizeLessThanOrEqual", this.SizeLessThanOrEqual);
-			kparams.AddIfNotNull("tagsLike", this.TagsLike);
-			kparams.AddIfNotNull("tagsMultiLikeOr", this.TagsMultiLikeOr);
-			kparams.AddIfNotNull("tagsMultiLikeAnd", this.TagsMultiLikeAnd);
-			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this.CreatedAtGreaterThanOrEqual);
-			kparams.AddIfNotNull("createdAtLessThanOrEqual", this.CreatedAtLessThanOrEqual);
-			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this.UpdatedAtGreaterThanOrEqual);
-			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this.UpdatedAtLessThanOrEqual);
-			kparams.AddIfNotNull("deletedAtGreaterThanOrEqual", this.DeletedAtGreaterThanOrEqual);
-			kparams.AddIfNotNull("deletedAtLessThanOrEqual", this.DeletedAtLessThanOrEqual);
+			kparams.AddIfNotNull("idEqual", this._IdEqual);
+			kparams.AddIfNotNull("idIn", this._IdIn);
+			kparams.AddIfNotNull("entryIdEqual", this._EntryIdEqual);
+			kparams.AddIfNotNull("entryIdIn", this._EntryIdIn);
+			kparams.AddIfNotNull("partnerIdEqual", this._PartnerIdEqual);
+			kparams.AddIfNotNull("partnerIdIn", this._PartnerIdIn);
+			kparams.AddIfNotNull("sizeGreaterThanOrEqual", this._SizeGreaterThanOrEqual);
+			kparams.AddIfNotNull("sizeLessThanOrEqual", this._SizeLessThanOrEqual);
+			kparams.AddIfNotNull("tagsLike", this._TagsLike);
+			kparams.AddIfNotNull("tagsMultiLikeOr", this._TagsMultiLikeOr);
+			kparams.AddIfNotNull("tagsMultiLikeAnd", this._TagsMultiLikeAnd);
+			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this._CreatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("createdAtLessThanOrEqual", this._CreatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this._UpdatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this._UpdatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("deletedAtGreaterThanOrEqual", this._DeletedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("deletedAtLessThanOrEqual", this._DeletedAtLessThanOrEqual);
 			return kparams;
 		}
 		#endregion

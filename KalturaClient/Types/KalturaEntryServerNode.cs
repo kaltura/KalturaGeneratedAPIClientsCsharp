@@ -125,14 +125,14 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEntryServerNode");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("entryId", this.EntryId);
-			kparams.AddIfNotNull("serverNodeId", this.ServerNodeId);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("serverType", this.ServerType);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("entryId", this._EntryId);
+			kparams.AddIfNotNull("serverNodeId", this._ServerNodeId);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("serverType", this._ServerType);
 			return kparams;
 		}
 		#endregion

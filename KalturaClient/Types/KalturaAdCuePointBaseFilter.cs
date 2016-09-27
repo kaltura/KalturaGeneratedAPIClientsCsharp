@@ -178,15 +178,15 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAdCuePointBaseFilter");
-			kparams.AddIfNotNull("protocolTypeEqual", this.ProtocolTypeEqual);
-			kparams.AddIfNotNull("protocolTypeIn", this.ProtocolTypeIn);
-			kparams.AddIfNotNull("titleLike", this.TitleLike);
-			kparams.AddIfNotNull("titleMultiLikeOr", this.TitleMultiLikeOr);
-			kparams.AddIfNotNull("titleMultiLikeAnd", this.TitleMultiLikeAnd);
-			kparams.AddIfNotNull("endTimeGreaterThanOrEqual", this.EndTimeGreaterThanOrEqual);
-			kparams.AddIfNotNull("endTimeLessThanOrEqual", this.EndTimeLessThanOrEqual);
-			kparams.AddIfNotNull("durationGreaterThanOrEqual", this.DurationGreaterThanOrEqual);
-			kparams.AddIfNotNull("durationLessThanOrEqual", this.DurationLessThanOrEqual);
+			kparams.AddIfNotNull("protocolTypeEqual", this._ProtocolTypeEqual);
+			kparams.AddIfNotNull("protocolTypeIn", this._ProtocolTypeIn);
+			kparams.AddIfNotNull("titleLike", this._TitleLike);
+			kparams.AddIfNotNull("titleMultiLikeOr", this._TitleMultiLikeOr);
+			kparams.AddIfNotNull("titleMultiLikeAnd", this._TitleMultiLikeAnd);
+			kparams.AddIfNotNull("endTimeGreaterThanOrEqual", this._EndTimeGreaterThanOrEqual);
+			kparams.AddIfNotNull("endTimeLessThanOrEqual", this._EndTimeLessThanOrEqual);
+			kparams.AddIfNotNull("durationGreaterThanOrEqual", this._DurationGreaterThanOrEqual);
+			kparams.AddIfNotNull("durationLessThanOrEqual", this._DurationLessThanOrEqual);
 			return kparams;
 		}
 		#endregion

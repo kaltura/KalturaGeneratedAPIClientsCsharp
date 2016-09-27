@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDropFolderContentFileHandlerConfig");
-			kparams.AddIfNotNull("contentMatchPolicy", this.ContentMatchPolicy);
-			kparams.AddIfNotNull("slugRegex", this.SlugRegex);
+			kparams.AddIfNotNull("contentMatchPolicy", this._ContentMatchPolicy);
+			kparams.AddIfNotNull("slugRegex", this._SlugRegex);
 			return kparams;
 		}
 		#endregion

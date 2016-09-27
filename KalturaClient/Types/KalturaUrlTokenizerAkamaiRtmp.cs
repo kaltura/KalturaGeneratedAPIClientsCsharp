@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUrlTokenizerAkamaiRtmp");
-			kparams.AddIfNotNull("profile", this.Profile);
-			kparams.AddIfNotNull("type", this.Type);
-			kparams.AddIfNotNull("aifp", this.Aifp);
-			kparams.AddIfNotNull("usePrefix", this.UsePrefix);
+			kparams.AddIfNotNull("profile", this._Profile);
+			kparams.AddIfNotNull("type", this._Type);
+			kparams.AddIfNotNull("aifp", this._Aifp);
+			kparams.AddIfNotNull("usePrefix", this._UsePrefix);
 			return kparams;
 		}
 		#endregion

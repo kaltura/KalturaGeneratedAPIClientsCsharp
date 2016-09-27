@@ -312,25 +312,25 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaHttpNotificationDispatchJobData");
-			kparams.AddIfNotNull("url", this.Url);
-			kparams.AddIfNotNull("method", this.Method);
-			kparams.AddIfNotNull("data", this.Data);
-			kparams.AddIfNotNull("timeout", this.Timeout);
-			kparams.AddIfNotNull("connectTimeout", this.ConnectTimeout);
-			kparams.AddIfNotNull("username", this.Username);
-			kparams.AddIfNotNull("password", this.Password);
-			kparams.AddIfNotNull("authenticationMethod", this.AuthenticationMethod);
-			kparams.AddIfNotNull("sslVersion", this.SslVersion);
-			kparams.AddIfNotNull("sslCertificate", this.SslCertificate);
-			kparams.AddIfNotNull("sslCertificateType", this.SslCertificateType);
-			kparams.AddIfNotNull("sslCertificatePassword", this.SslCertificatePassword);
-			kparams.AddIfNotNull("sslEngine", this.SslEngine);
-			kparams.AddIfNotNull("sslEngineDefault", this.SslEngineDefault);
-			kparams.AddIfNotNull("sslKeyType", this.SslKeyType);
-			kparams.AddIfNotNull("sslKey", this.SslKey);
-			kparams.AddIfNotNull("sslKeyPassword", this.SslKeyPassword);
-			kparams.AddIfNotNull("customHeaders", this.CustomHeaders);
-			kparams.AddIfNotNull("signSecret", this.SignSecret);
+			kparams.AddIfNotNull("url", this._Url);
+			kparams.AddIfNotNull("method", this._Method);
+			kparams.AddIfNotNull("data", this._Data);
+			kparams.AddIfNotNull("timeout", this._Timeout);
+			kparams.AddIfNotNull("connectTimeout", this._ConnectTimeout);
+			kparams.AddIfNotNull("username", this._Username);
+			kparams.AddIfNotNull("password", this._Password);
+			kparams.AddIfNotNull("authenticationMethod", this._AuthenticationMethod);
+			kparams.AddIfNotNull("sslVersion", this._SslVersion);
+			kparams.AddIfNotNull("sslCertificate", this._SslCertificate);
+			kparams.AddIfNotNull("sslCertificateType", this._SslCertificateType);
+			kparams.AddIfNotNull("sslCertificatePassword", this._SslCertificatePassword);
+			kparams.AddIfNotNull("sslEngine", this._SslEngine);
+			kparams.AddIfNotNull("sslEngineDefault", this._SslEngineDefault);
+			kparams.AddIfNotNull("sslKeyType", this._SslKeyType);
+			kparams.AddIfNotNull("sslKey", this._SslKey);
+			kparams.AddIfNotNull("sslKeyPassword", this._SslKeyPassword);
+			kparams.AddIfNotNull("customHeaders", this._CustomHeaders);
+			kparams.AddIfNotNull("signSecret", this._SignSecret);
 			return kparams;
 		}
 		#endregion

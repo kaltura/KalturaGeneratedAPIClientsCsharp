@@ -152,13 +152,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaResponseProfileCacheRecalculateOptions");
-			kparams.AddIfNotNull("limit", this.Limit);
-			kparams.AddIfNotNull("cachedObjectType", this.CachedObjectType);
-			kparams.AddIfNotNull("objectId", this.ObjectId);
-			kparams.AddIfNotNull("startObjectKey", this.StartObjectKey);
-			kparams.AddIfNotNull("endObjectKey", this.EndObjectKey);
-			kparams.AddIfNotNull("jobCreatedAt", this.JobCreatedAt);
-			kparams.AddIfNotNull("isFirstLoop", this.IsFirstLoop);
+			kparams.AddIfNotNull("limit", this._Limit);
+			kparams.AddIfNotNull("cachedObjectType", this._CachedObjectType);
+			kparams.AddIfNotNull("objectId", this._ObjectId);
+			kparams.AddIfNotNull("startObjectKey", this._StartObjectKey);
+			kparams.AddIfNotNull("endObjectKey", this._EndObjectKey);
+			kparams.AddIfNotNull("jobCreatedAt", this._JobCreatedAt);
+			kparams.AddIfNotNull("isFirstLoop", this._IsFirstLoop);
 			return kparams;
 		}
 		#endregion

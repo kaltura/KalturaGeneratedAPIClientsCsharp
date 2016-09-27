@@ -95,9 +95,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCondition");
-			kparams.AddIfNotNull("type", this.Type);
-			kparams.AddIfNotNull("description", this.Description);
-			kparams.AddIfNotNull("not", this.Not);
+			kparams.AddIfNotNull("type", this._Type);
+			kparams.AddIfNotNull("description", this._Description);
+			kparams.AddIfNotNull("not", this._Not);
 			return kparams;
 		}
 		#endregion

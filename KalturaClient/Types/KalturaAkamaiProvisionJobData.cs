@@ -139,12 +139,12 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAkamaiProvisionJobData");
-			kparams.AddIfNotNull("wsdlUsername", this.WsdlUsername);
-			kparams.AddIfNotNull("wsdlPassword", this.WsdlPassword);
-			kparams.AddIfNotNull("cpcode", this.Cpcode);
-			kparams.AddIfNotNull("emailId", this.EmailId);
-			kparams.AddIfNotNull("primaryContact", this.PrimaryContact);
-			kparams.AddIfNotNull("secondaryContact", this.SecondaryContact);
+			kparams.AddIfNotNull("wsdlUsername", this._WsdlUsername);
+			kparams.AddIfNotNull("wsdlPassword", this._WsdlPassword);
+			kparams.AddIfNotNull("cpcode", this._Cpcode);
+			kparams.AddIfNotNull("emailId", this._EmailId);
+			kparams.AddIfNotNull("primaryContact", this._PrimaryContact);
+			kparams.AddIfNotNull("secondaryContact", this._SecondaryContact);
 			return kparams;
 		}
 		#endregion

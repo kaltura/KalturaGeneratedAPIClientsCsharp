@@ -111,11 +111,11 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaScheduleEventResource");
-			kparams.AddIfNotNull("eventId", this.EventId);
-			kparams.AddIfNotNull("resourceId", this.ResourceId);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("eventId", this._EventId);
+			kparams.AddIfNotNull("resourceId", this._ResourceId);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
 			return kparams;
 		}
 		#endregion

@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUrlTokenizer");
-			kparams.AddIfNotNull("window", this.Window);
-			kparams.AddIfNotNull("key", this.Key);
-			kparams.AddIfNotNull("limitIpAddress", this.LimitIpAddress);
+			kparams.AddIfNotNull("window", this._Window);
+			kparams.AddIfNotNull("key", this._Key);
+			kparams.AddIfNotNull("limitIpAddress", this._LimitIpAddress);
 			return kparams;
 		}
 		#endregion

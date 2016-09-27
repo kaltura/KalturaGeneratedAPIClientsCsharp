@@ -121,10 +121,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaQuestionCuePoint");
-			kparams.AddIfNotNull("optionalAnswers", this.OptionalAnswers);
-			kparams.AddIfNotNull("hint", this.Hint);
-			kparams.AddIfNotNull("question", this.Question);
-			kparams.AddIfNotNull("explanation", this.Explanation);
+			kparams.AddIfNotNull("optionalAnswers", this._OptionalAnswers);
+			kparams.AddIfNotNull("hint", this._Hint);
+			kparams.AddIfNotNull("question", this._Question);
+			kparams.AddIfNotNull("explanation", this._Explanation);
 			return kparams;
 		}
 		#endregion

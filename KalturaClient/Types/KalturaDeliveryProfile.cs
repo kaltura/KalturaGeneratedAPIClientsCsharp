@@ -286,26 +286,26 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDeliveryProfile");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("name", this.Name);
-			kparams.AddIfNotNull("type", this.Type);
-			kparams.AddIfNotNull("systemName", this.SystemName);
-			kparams.AddIfNotNull("description", this.Description);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIfNotNull("streamerType", this.StreamerType);
-			kparams.AddIfNotNull("url", this.Url);
-			kparams.AddIfNotNull("hostName", this.HostName);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("recognizer", this.Recognizer);
-			kparams.AddIfNotNull("tokenizer", this.Tokenizer);
-			kparams.AddIfNotNull("isDefault", this.IsDefault);
-			kparams.AddIfNotNull("parentId", this.ParentId);
-			kparams.AddIfNotNull("mediaProtocols", this.MediaProtocols);
-			kparams.AddIfNotNull("priority", this.Priority);
-			kparams.AddIfNotNull("extraParams", this.ExtraParams);
-			kparams.AddIfNotNull("supplementaryAssetsFilter", this.SupplementaryAssetsFilter);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("name", this._Name);
+			kparams.AddIfNotNull("type", this._Type);
+			kparams.AddIfNotNull("systemName", this._SystemName);
+			kparams.AddIfNotNull("description", this._Description);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
+			kparams.AddIfNotNull("streamerType", this._StreamerType);
+			kparams.AddIfNotNull("url", this._Url);
+			kparams.AddIfNotNull("hostName", this._HostName);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("recognizer", this._Recognizer);
+			kparams.AddIfNotNull("tokenizer", this._Tokenizer);
+			kparams.AddIfNotNull("isDefault", this._IsDefault);
+			kparams.AddIfNotNull("parentId", this._ParentId);
+			kparams.AddIfNotNull("mediaProtocols", this._MediaProtocols);
+			kparams.AddIfNotNull("priority", this._Priority);
+			kparams.AddIfNotNull("extraParams", this._ExtraParams);
+			kparams.AddIfNotNull("supplementaryAssetsFilter", this._SupplementaryAssetsFilter);
 			return kparams;
 		}
 		#endregion

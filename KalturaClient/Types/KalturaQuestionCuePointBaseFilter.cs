@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaQuestionCuePointBaseFilter");
-			kparams.AddIfNotNull("questionLike", this.QuestionLike);
-			kparams.AddIfNotNull("questionMultiLikeOr", this.QuestionMultiLikeOr);
-			kparams.AddIfNotNull("questionMultiLikeAnd", this.QuestionMultiLikeAnd);
+			kparams.AddIfNotNull("questionLike", this._QuestionLike);
+			kparams.AddIfNotNull("questionMultiLikeOr", this._QuestionMultiLikeOr);
+			kparams.AddIfNotNull("questionMultiLikeAnd", this._QuestionMultiLikeAnd);
 			return kparams;
 		}
 		#endregion

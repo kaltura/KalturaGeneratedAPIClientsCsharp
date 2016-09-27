@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDistributionValidationError");
-			kparams.AddIfNotNull("action", this.Action);
-			kparams.AddIfNotNull("errorType", this.ErrorType);
-			kparams.AddIfNotNull("description", this.Description);
+			kparams.AddIfNotNull("action", this._Action);
+			kparams.AddIfNotNull("errorType", this._ErrorType);
+			kparams.AddIfNotNull("description", this._Description);
 			return kparams;
 		}
 		#endregion

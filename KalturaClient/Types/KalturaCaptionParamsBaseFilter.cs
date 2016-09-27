@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCaptionParamsBaseFilter");
-			kparams.AddIfNotNull("formatEqual", this.FormatEqual);
-			kparams.AddIfNotNull("formatIn", this.FormatIn);
+			kparams.AddIfNotNull("formatEqual", this._FormatEqual);
+			kparams.AddIfNotNull("formatIn", this._FormatIn);
 			return kparams;
 		}
 		#endregion

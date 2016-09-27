@@ -205,19 +205,19 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaPermission");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("type", this.Type);
-			kparams.AddIfNotNull("name", this.Name);
-			kparams.AddIfNotNull("friendlyName", this.FriendlyName);
-			kparams.AddIfNotNull("description", this.Description);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("dependsOnPermissionNames", this.DependsOnPermissionNames);
-			kparams.AddIfNotNull("tags", this.Tags);
-			kparams.AddIfNotNull("permissionItemsIds", this.PermissionItemsIds);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIfNotNull("partnerGroup", this.PartnerGroup);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("type", this._Type);
+			kparams.AddIfNotNull("name", this._Name);
+			kparams.AddIfNotNull("friendlyName", this._FriendlyName);
+			kparams.AddIfNotNull("description", this._Description);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("dependsOnPermissionNames", this._DependsOnPermissionNames);
+			kparams.AddIfNotNull("tags", this._Tags);
+			kparams.AddIfNotNull("permissionItemsIds", this._PermissionItemsIds);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
+			kparams.AddIfNotNull("partnerGroup", this._PartnerGroup);
 			return kparams;
 		}
 		#endregion

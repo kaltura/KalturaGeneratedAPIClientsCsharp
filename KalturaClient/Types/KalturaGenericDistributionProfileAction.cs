@@ -165,14 +165,14 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaGenericDistributionProfileAction");
-			kparams.AddIfNotNull("protocol", this.Protocol);
-			kparams.AddIfNotNull("serverUrl", this.ServerUrl);
-			kparams.AddIfNotNull("serverPath", this.ServerPath);
-			kparams.AddIfNotNull("username", this.Username);
-			kparams.AddIfNotNull("password", this.Password);
-			kparams.AddIfNotNull("ftpPassiveMode", this.FtpPassiveMode);
-			kparams.AddIfNotNull("httpFieldName", this.HttpFieldName);
-			kparams.AddIfNotNull("httpFileName", this.HttpFileName);
+			kparams.AddIfNotNull("protocol", this._Protocol);
+			kparams.AddIfNotNull("serverUrl", this._ServerUrl);
+			kparams.AddIfNotNull("serverPath", this._ServerPath);
+			kparams.AddIfNotNull("username", this._Username);
+			kparams.AddIfNotNull("password", this._Password);
+			kparams.AddIfNotNull("ftpPassiveMode", this._FtpPassiveMode);
+			kparams.AddIfNotNull("httpFieldName", this._HttpFieldName);
+			kparams.AddIfNotNull("httpFileName", this._HttpFileName);
 			return kparams;
 		}
 		#endregion

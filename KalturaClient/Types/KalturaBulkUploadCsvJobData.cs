@@ -86,8 +86,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaBulkUploadCsvJobData");
-			kparams.AddIfNotNull("csvVersion", this.CsvVersion);
-			kparams.AddIfNotNull("columns", this.Columns);
+			kparams.AddIfNotNull("csvVersion", this._CsvVersion);
+			kparams.AddIfNotNull("columns", this._Columns);
 			return kparams;
 		}
 		#endregion

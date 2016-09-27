@@ -91,8 +91,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAssetDistributionRule");
-			kparams.AddIfNotNull("validationError", this.ValidationError);
-			kparams.AddIfNotNull("assetDistributionConditions", this.AssetDistributionConditions);
+			kparams.AddIfNotNull("validationError", this._ValidationError);
+			kparams.AddIfNotNull("assetDistributionConditions", this._AssetDistributionConditions);
 			return kparams;
 		}
 		#endregion

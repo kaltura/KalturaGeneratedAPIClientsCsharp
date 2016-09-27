@@ -69,7 +69,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEmailNotificationRecipientJobData");
-			kparams.AddIfNotNull("providerType", this.ProviderType);
+			kparams.AddIfNotNull("providerType", this._ProviderType);
 			return kparams;
 		}
 		#endregion

@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaPlayerEmbedCodeType");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("label", this.Label);
-			kparams.AddIfNotNull("entryOnly", this.EntryOnly);
-			kparams.AddIfNotNull("minVersion", this.MinVersion);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("label", this._Label);
+			kparams.AddIfNotNull("entryOnly", this._EntryOnly);
+			kparams.AddIfNotNull("minVersion", this._MinVersion);
 			return kparams;
 		}
 		#endregion

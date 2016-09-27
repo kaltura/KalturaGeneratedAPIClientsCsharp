@@ -164,14 +164,14 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDistributionFieldConfig");
-			kparams.AddIfNotNull("fieldName", this.FieldName);
-			kparams.AddIfNotNull("userFriendlyFieldName", this.UserFriendlyFieldName);
-			kparams.AddIfNotNull("entryMrssXslt", this.EntryMrssXslt);
-			kparams.AddIfNotNull("isRequired", this.IsRequired);
-			kparams.AddIfNotNull("updateOnChange", this.UpdateOnChange);
-			kparams.AddIfNotNull("updateParams", this.UpdateParams);
-			kparams.AddIfNotNull("isDefault", this.IsDefault);
-			kparams.AddIfNotNull("triggerDeleteOnError", this.TriggerDeleteOnError);
+			kparams.AddIfNotNull("fieldName", this._FieldName);
+			kparams.AddIfNotNull("userFriendlyFieldName", this._UserFriendlyFieldName);
+			kparams.AddIfNotNull("entryMrssXslt", this._EntryMrssXslt);
+			kparams.AddIfNotNull("isRequired", this._IsRequired);
+			kparams.AddIfNotNull("updateOnChange", this._UpdateOnChange);
+			kparams.AddIfNotNull("updateParams", this._UpdateParams);
+			kparams.AddIfNotNull("isDefault", this._IsDefault);
+			kparams.AddIfNotNull("triggerDeleteOnError", this._TriggerDeleteOnError);
 			return kparams;
 		}
 		#endregion

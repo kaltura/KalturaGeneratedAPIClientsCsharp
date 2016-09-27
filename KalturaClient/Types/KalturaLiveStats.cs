@@ -165,14 +165,14 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveStats");
-			kparams.AddIfNotNull("audience", this.Audience);
-			kparams.AddIfNotNull("dvrAudience", this.DvrAudience);
-			kparams.AddIfNotNull("avgBitrate", this.AvgBitrate);
-			kparams.AddIfNotNull("bufferTime", this.BufferTime);
-			kparams.AddIfNotNull("plays", this.Plays);
-			kparams.AddIfNotNull("secondsViewed", this.SecondsViewed);
-			kparams.AddIfNotNull("startEvent", this.StartEvent);
-			kparams.AddIfNotNull("timestamp", this.Timestamp);
+			kparams.AddIfNotNull("audience", this._Audience);
+			kparams.AddIfNotNull("dvrAudience", this._DvrAudience);
+			kparams.AddIfNotNull("avgBitrate", this._AvgBitrate);
+			kparams.AddIfNotNull("bufferTime", this._BufferTime);
+			kparams.AddIfNotNull("plays", this._Plays);
+			kparams.AddIfNotNull("secondsViewed", this._SecondsViewed);
+			kparams.AddIfNotNull("startEvent", this._StartEvent);
+			kparams.AddIfNotNull("timestamp", this._Timestamp);
 			return kparams;
 		}
 		#endregion

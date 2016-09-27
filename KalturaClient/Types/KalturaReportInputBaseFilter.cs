@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaReportInputBaseFilter");
-			kparams.AddIfNotNull("fromDate", this.FromDate);
-			kparams.AddIfNotNull("toDate", this.ToDate);
-			kparams.AddIfNotNull("fromDay", this.FromDay);
-			kparams.AddIfNotNull("toDay", this.ToDay);
+			kparams.AddIfNotNull("fromDate", this._FromDate);
+			kparams.AddIfNotNull("toDate", this._ToDate);
+			kparams.AddIfNotNull("fromDay", this._FromDay);
+			kparams.AddIfNotNull("toDay", this._ToDay);
 			return kparams;
 		}
 		#endregion

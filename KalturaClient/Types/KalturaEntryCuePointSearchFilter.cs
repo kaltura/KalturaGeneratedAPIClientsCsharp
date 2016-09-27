@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEntryCuePointSearchFilter");
-			kparams.AddIfNotNull("cuePointsFreeText", this.CuePointsFreeText);
-			kparams.AddIfNotNull("cuePointTypeIn", this.CuePointTypeIn);
-			kparams.AddIfNotNull("cuePointSubTypeEqual", this.CuePointSubTypeEqual);
+			kparams.AddIfNotNull("cuePointsFreeText", this._CuePointsFreeText);
+			kparams.AddIfNotNull("cuePointTypeIn", this._CuePointTypeIn);
+			kparams.AddIfNotNull("cuePointSubTypeEqual", this._CuePointSubTypeEqual);
 			return kparams;
 		}
 		#endregion

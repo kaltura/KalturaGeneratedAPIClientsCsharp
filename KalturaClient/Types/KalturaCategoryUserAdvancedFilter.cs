@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCategoryUserAdvancedFilter");
-			kparams.AddIfNotNull("memberIdEq", this.MemberIdEq);
-			kparams.AddIfNotNull("memberIdIn", this.MemberIdIn);
-			kparams.AddIfNotNull("memberPermissionsMatchOr", this.MemberPermissionsMatchOr);
-			kparams.AddIfNotNull("memberPermissionsMatchAnd", this.MemberPermissionsMatchAnd);
+			kparams.AddIfNotNull("memberIdEq", this._MemberIdEq);
+			kparams.AddIfNotNull("memberIdIn", this._MemberIdIn);
+			kparams.AddIfNotNull("memberPermissionsMatchOr", this._MemberPermissionsMatchOr);
+			kparams.AddIfNotNull("memberPermissionsMatchAnd", this._MemberPermissionsMatchAnd);
 			return kparams;
 		}
 		#endregion

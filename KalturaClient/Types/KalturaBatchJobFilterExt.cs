@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaBatchJobFilterExt");
-			kparams.AddIfNotNull("jobTypeAndSubTypeIn", this.JobTypeAndSubTypeIn);
+			kparams.AddIfNotNull("jobTypeAndSubTypeIn", this._JobTypeAndSubTypeIn);
 			return kparams;
 		}
 		#endregion

@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUploadResponse");
-			kparams.AddIfNotNull("uploadTokenId", this.UploadTokenId);
-			kparams.AddIfNotNull("fileSize", this.FileSize);
-			kparams.AddIfNotNull("errorCode", this.ErrorCode);
-			kparams.AddIfNotNull("errorDescription", this.ErrorDescription);
+			kparams.AddIfNotNull("uploadTokenId", this._UploadTokenId);
+			kparams.AddIfNotNull("fileSize", this._FileSize);
+			kparams.AddIfNotNull("errorCode", this._ErrorCode);
+			kparams.AddIfNotNull("errorDescription", this._ErrorDescription);
 			return kparams;
 		}
 		#endregion

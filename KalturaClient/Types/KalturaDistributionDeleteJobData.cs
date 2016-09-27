@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDistributionDeleteJobData");
-			kparams.AddIfNotNull("keepDistributionItem", this.KeepDistributionItem);
+			kparams.AddIfNotNull("keepDistributionItem", this._KeepDistributionItem);
 			return kparams;
 		}
 		#endregion

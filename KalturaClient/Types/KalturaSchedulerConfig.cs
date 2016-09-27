@@ -238,20 +238,20 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSchedulerConfig");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("createdBy", this.CreatedBy);
-			kparams.AddIfNotNull("updatedBy", this.UpdatedBy);
-			kparams.AddIfNotNull("commandId", this.CommandId);
-			kparams.AddIfNotNull("commandStatus", this.CommandStatus);
-			kparams.AddIfNotNull("schedulerId", this.SchedulerId);
-			kparams.AddIfNotNull("schedulerConfiguredId", this.SchedulerConfiguredId);
-			kparams.AddIfNotNull("schedulerName", this.SchedulerName);
-			kparams.AddIfNotNull("workerId", this.WorkerId);
-			kparams.AddIfNotNull("workerConfiguredId", this.WorkerConfiguredId);
-			kparams.AddIfNotNull("workerName", this.WorkerName);
-			kparams.AddIfNotNull("variable", this.Variable);
-			kparams.AddIfNotNull("variablePart", this.VariablePart);
-			kparams.AddIfNotNull("value", this.Value);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("createdBy", this._CreatedBy);
+			kparams.AddIfNotNull("updatedBy", this._UpdatedBy);
+			kparams.AddIfNotNull("commandId", this._CommandId);
+			kparams.AddIfNotNull("commandStatus", this._CommandStatus);
+			kparams.AddIfNotNull("schedulerId", this._SchedulerId);
+			kparams.AddIfNotNull("schedulerConfiguredId", this._SchedulerConfiguredId);
+			kparams.AddIfNotNull("schedulerName", this._SchedulerName);
+			kparams.AddIfNotNull("workerId", this._WorkerId);
+			kparams.AddIfNotNull("workerConfiguredId", this._WorkerConfiguredId);
+			kparams.AddIfNotNull("workerName", this._WorkerName);
+			kparams.AddIfNotNull("variable", this._Variable);
+			kparams.AddIfNotNull("variablePart", this._VariablePart);
+			kparams.AddIfNotNull("value", this._Value);
 			return kparams;
 		}
 		#endregion

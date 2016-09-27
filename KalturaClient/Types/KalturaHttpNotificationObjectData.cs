@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaHttpNotificationObjectData");
-			kparams.AddIfNotNull("apiObjectType", this.ApiObjectType);
-			kparams.AddIfNotNull("format", this.Format);
-			kparams.AddIfNotNull("ignoreNull", this.IgnoreNull);
-			kparams.AddIfNotNull("code", this.Code);
+			kparams.AddIfNotNull("apiObjectType", this._ApiObjectType);
+			kparams.AddIfNotNull("format", this._Format);
+			kparams.AddIfNotNull("ignoreNull", this._IgnoreNull);
+			kparams.AddIfNotNull("code", this._Code);
 			return kparams;
 		}
 		#endregion

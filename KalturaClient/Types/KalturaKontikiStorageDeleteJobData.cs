@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaKontikiStorageDeleteJobData");
-			kparams.AddIfNotNull("contentMoid", this.ContentMoid);
-			kparams.AddIfNotNull("serviceToken", this.ServiceToken);
+			kparams.AddIfNotNull("contentMoid", this._ContentMoid);
+			kparams.AddIfNotNull("serviceToken", this._ServiceToken);
 			return kparams;
 		}
 		#endregion

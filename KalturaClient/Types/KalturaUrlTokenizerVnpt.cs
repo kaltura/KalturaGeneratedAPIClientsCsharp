@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUrlTokenizerVnpt");
-			kparams.AddIfNotNull("tokenizationFormat", this.TokenizationFormat);
-			kparams.AddIfNotNull("shouldIncludeClientIp", this.ShouldIncludeClientIp);
+			kparams.AddIfNotNull("tokenizationFormat", this._TokenizationFormat);
+			kparams.AddIfNotNull("shouldIncludeClientIp", this._ShouldIncludeClientIp);
 			return kparams;
 		}
 		#endregion

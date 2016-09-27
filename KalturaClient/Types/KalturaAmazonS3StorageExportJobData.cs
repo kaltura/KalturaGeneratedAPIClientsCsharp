@@ -139,12 +139,12 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAmazonS3StorageExportJobData");
-			kparams.AddIfNotNull("filesPermissionInS3", this.FilesPermissionInS3);
-			kparams.AddIfNotNull("s3Region", this.S3Region);
-			kparams.AddIfNotNull("sseType", this.SseType);
-			kparams.AddIfNotNull("sseKmsKeyId", this.SseKmsKeyId);
-			kparams.AddIfNotNull("signatureType", this.SignatureType);
-			kparams.AddIfNotNull("endPoint", this.EndPoint);
+			kparams.AddIfNotNull("filesPermissionInS3", this._FilesPermissionInS3);
+			kparams.AddIfNotNull("s3Region", this._S3Region);
+			kparams.AddIfNotNull("sseType", this._SseType);
+			kparams.AddIfNotNull("sseKmsKeyId", this._SseKmsKeyId);
+			kparams.AddIfNotNull("signatureType", this._SignatureType);
+			kparams.AddIfNotNull("endPoint", this._EndPoint);
 			return kparams;
 		}
 		#endregion

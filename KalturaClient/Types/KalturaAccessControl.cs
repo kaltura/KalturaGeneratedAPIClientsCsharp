@@ -162,15 +162,15 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAccessControl");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("name", this.Name);
-			kparams.AddIfNotNull("systemName", this.SystemName);
-			kparams.AddIfNotNull("description", this.Description);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("isDefault", this.IsDefault);
-			kparams.AddIfNotNull("restrictions", this.Restrictions);
-			kparams.AddIfNotNull("containsUnsuportedRestrictions", this.ContainsUnsuportedRestrictions);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("name", this._Name);
+			kparams.AddIfNotNull("systemName", this._SystemName);
+			kparams.AddIfNotNull("description", this._Description);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("isDefault", this._IsDefault);
+			kparams.AddIfNotNull("restrictions", this._Restrictions);
+			kparams.AddIfNotNull("containsUnsuportedRestrictions", this._ContainsUnsuportedRestrictions);
 			return kparams;
 		}
 		#endregion

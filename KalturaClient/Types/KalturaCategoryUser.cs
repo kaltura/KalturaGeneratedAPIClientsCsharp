@@ -166,16 +166,16 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCategoryUser");
-			kparams.AddIfNotNull("categoryId", this.CategoryId);
-			kparams.AddIfNotNull("userId", this.UserId);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("permissionLevel", this.PermissionLevel);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIfNotNull("updateMethod", this.UpdateMethod);
-			kparams.AddIfNotNull("categoryFullIds", this.CategoryFullIds);
-			kparams.AddIfNotNull("permissionNames", this.PermissionNames);
+			kparams.AddIfNotNull("categoryId", this._CategoryId);
+			kparams.AddIfNotNull("userId", this._UserId);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("permissionLevel", this._PermissionLevel);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
+			kparams.AddIfNotNull("updateMethod", this._UpdateMethod);
+			kparams.AddIfNotNull("categoryFullIds", this._CategoryFullIds);
+			kparams.AddIfNotNull("permissionNames", this._PermissionNames);
 			return kparams;
 		}
 		#endregion

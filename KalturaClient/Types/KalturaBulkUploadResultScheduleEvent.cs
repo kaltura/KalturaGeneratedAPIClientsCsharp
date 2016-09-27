@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaBulkUploadResultScheduleEvent");
-			kparams.AddIfNotNull("referenceId", this.ReferenceId);
+			kparams.AddIfNotNull("referenceId", this._ReferenceId);
 			return kparams;
 		}
 		#endregion

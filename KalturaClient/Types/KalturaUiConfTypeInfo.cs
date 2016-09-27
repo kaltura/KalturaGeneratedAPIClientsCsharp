@@ -117,10 +117,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUiConfTypeInfo");
-			kparams.AddIfNotNull("type", this.Type);
-			kparams.AddIfNotNull("versions", this.Versions);
-			kparams.AddIfNotNull("directory", this.Directory);
-			kparams.AddIfNotNull("filename", this.Filename);
+			kparams.AddIfNotNull("type", this._Type);
+			kparams.AddIfNotNull("versions", this._Versions);
+			kparams.AddIfNotNull("directory", this._Directory);
+			kparams.AddIfNotNull("filename", this._Filename);
 			return kparams;
 		}
 		#endregion

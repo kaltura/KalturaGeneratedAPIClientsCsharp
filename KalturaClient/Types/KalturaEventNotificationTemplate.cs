@@ -256,22 +256,22 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEventNotificationTemplate");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("name", this.Name);
-			kparams.AddIfNotNull("systemName", this.SystemName);
-			kparams.AddIfNotNull("description", this.Description);
-			kparams.AddIfNotNull("type", this.Type);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIfNotNull("manualDispatchEnabled", this.ManualDispatchEnabled);
-			kparams.AddIfNotNull("automaticDispatchEnabled", this.AutomaticDispatchEnabled);
-			kparams.AddIfNotNull("eventType", this.EventType);
-			kparams.AddIfNotNull("eventObjectType", this.EventObjectType);
-			kparams.AddIfNotNull("eventConditions", this.EventConditions);
-			kparams.AddIfNotNull("contentParameters", this.ContentParameters);
-			kparams.AddIfNotNull("userParameters", this.UserParameters);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("name", this._Name);
+			kparams.AddIfNotNull("systemName", this._SystemName);
+			kparams.AddIfNotNull("description", this._Description);
+			kparams.AddIfNotNull("type", this._Type);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
+			kparams.AddIfNotNull("manualDispatchEnabled", this._ManualDispatchEnabled);
+			kparams.AddIfNotNull("automaticDispatchEnabled", this._AutomaticDispatchEnabled);
+			kparams.AddIfNotNull("eventType", this._EventType);
+			kparams.AddIfNotNull("eventObjectType", this._EventObjectType);
+			kparams.AddIfNotNull("eventConditions", this._EventConditions);
+			kparams.AddIfNotNull("contentParameters", this._ContentParameters);
+			kparams.AddIfNotNull("userParameters", this._UserParameters);
 			return kparams;
 		}
 		#endregion

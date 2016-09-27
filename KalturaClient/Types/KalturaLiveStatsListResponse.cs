@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveStatsListResponse");
-			kparams.AddIfNotNull("objects", this.Objects);
+			kparams.AddIfNotNull("objects", this._Objects);
 			return kparams;
 		}
 		#endregion

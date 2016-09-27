@@ -187,18 +187,18 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAppToken");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("token", this.Token);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("expiry", this.Expiry);
-			kparams.AddIfNotNull("sessionType", this.SessionType);
-			kparams.AddIfNotNull("sessionUserId", this.SessionUserId);
-			kparams.AddIfNotNull("sessionDuration", this.SessionDuration);
-			kparams.AddIfNotNull("sessionPrivileges", this.SessionPrivileges);
-			kparams.AddIfNotNull("hashType", this.HashType);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("token", this._Token);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("expiry", this._Expiry);
+			kparams.AddIfNotNull("sessionType", this._SessionType);
+			kparams.AddIfNotNull("sessionUserId", this._SessionUserId);
+			kparams.AddIfNotNull("sessionDuration", this._SessionDuration);
+			kparams.AddIfNotNull("sessionPrivileges", this._SessionPrivileges);
+			kparams.AddIfNotNull("hashType", this._HashType);
 			return kparams;
 		}
 		#endregion

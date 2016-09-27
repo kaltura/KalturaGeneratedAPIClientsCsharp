@@ -108,9 +108,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaMediaServerNode");
-			kparams.AddIfNotNull("applicationName", this.ApplicationName);
-			kparams.AddIfNotNull("mediaServerPortConfig", this.MediaServerPortConfig);
-			kparams.AddIfNotNull("mediaServerPlaybackDomainConfig", this.MediaServerPlaybackDomainConfig);
+			kparams.AddIfNotNull("applicationName", this._ApplicationName);
+			kparams.AddIfNotNull("mediaServerPortConfig", this._MediaServerPortConfig);
+			kparams.AddIfNotNull("mediaServerPlaybackDomainConfig", this._MediaServerPlaybackDomainConfig);
 			return kparams;
 		}
 		#endregion

@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEntryLiveStats");
-			kparams.AddIfNotNull("entryId", this.EntryId);
-			kparams.AddIfNotNull("peakAudience", this.PeakAudience);
-			kparams.AddIfNotNull("peakDvrAudience", this.PeakDvrAudience);
+			kparams.AddIfNotNull("entryId", this._EntryId);
+			kparams.AddIfNotNull("peakAudience", this._PeakAudience);
+			kparams.AddIfNotNull("peakDvrAudience", this._PeakDvrAudience);
 			return kparams;
 		}
 		#endregion

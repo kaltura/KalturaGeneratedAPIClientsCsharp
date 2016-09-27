@@ -108,9 +108,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaConfigurableDistributionProfile");
-			kparams.AddIfNotNull("fieldConfigArray", this.FieldConfigArray);
-			kparams.AddIfNotNull("itemXpathsToExtend", this.ItemXpathsToExtend);
-			kparams.AddIfNotNull("useCategoryEntries", this.UseCategoryEntries);
+			kparams.AddIfNotNull("fieldConfigArray", this._FieldConfigArray);
+			kparams.AddIfNotNull("itemXpathsToExtend", this._ItemXpathsToExtend);
+			kparams.AddIfNotNull("useCategoryEntries", this._UseCategoryEntries);
 			return kparams;
 		}
 		#endregion

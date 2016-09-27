@@ -117,13 +117,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaTag");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("tag", this.Tag);
-			kparams.AddIfNotNull("taggedObjectType", this.TaggedObjectType);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("instanceCount", this.InstanceCount);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("tag", this._Tag);
+			kparams.AddIfNotNull("taggedObjectType", this._TaggedObjectType);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("instanceCount", this._InstanceCount);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
 			return kparams;
 		}
 		#endregion

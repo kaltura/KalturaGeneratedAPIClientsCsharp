@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDropFolderICalBulkUploadFileHandlerConfig");
-			kparams.AddIfNotNull("eventsType", this.EventsType);
+			kparams.AddIfNotNull("eventsType", this._EventsType);
 			return kparams;
 		}
 		#endregion

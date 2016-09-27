@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEventNotificationScope");
-			kparams.AddIfNotNull("objectId", this.ObjectId);
-			kparams.AddIfNotNull("scopeObjectType", this.ScopeObjectType);
+			kparams.AddIfNotNull("objectId", this._ObjectId);
+			kparams.AddIfNotNull("scopeObjectType", this._ScopeObjectType);
 			return kparams;
 		}
 		#endregion

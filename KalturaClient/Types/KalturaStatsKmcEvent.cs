@@ -199,17 +199,17 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaStatsKmcEvent");
-			kparams.AddIfNotNull("clientVer", this.ClientVer);
-			kparams.AddIfNotNull("kmcEventActionPath", this.KmcEventActionPath);
-			kparams.AddIfNotNull("kmcEventType", this.KmcEventType);
-			kparams.AddIfNotNull("eventTimestamp", this.EventTimestamp);
-			kparams.AddIfNotNull("sessionId", this.SessionId);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("entryId", this.EntryId);
-			kparams.AddIfNotNull("widgetId", this.WidgetId);
-			kparams.AddIfNotNull("uiconfId", this.UiconfId);
-			kparams.AddIfNotNull("userId", this.UserId);
-			kparams.AddIfNotNull("userIp", this.UserIp);
+			kparams.AddIfNotNull("clientVer", this._ClientVer);
+			kparams.AddIfNotNull("kmcEventActionPath", this._KmcEventActionPath);
+			kparams.AddIfNotNull("kmcEventType", this._KmcEventType);
+			kparams.AddIfNotNull("eventTimestamp", this._EventTimestamp);
+			kparams.AddIfNotNull("sessionId", this._SessionId);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("entryId", this._EntryId);
+			kparams.AddIfNotNull("widgetId", this._WidgetId);
+			kparams.AddIfNotNull("uiconfId", this._UiconfId);
+			kparams.AddIfNotNull("userId", this._UserId);
+			kparams.AddIfNotNull("userIp", this._UserIp);
 			return kparams;
 		}
 		#endregion

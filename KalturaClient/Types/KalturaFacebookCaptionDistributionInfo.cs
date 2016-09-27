@@ -139,12 +139,12 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaFacebookCaptionDistributionInfo");
-			kparams.AddIfNotNull("language", this.Language);
-			kparams.AddIfNotNull("label", this.Label);
-			kparams.AddIfNotNull("filePath", this.FilePath);
-			kparams.AddIfNotNull("remoteId", this.RemoteId);
-			kparams.AddIfNotNull("version", this.Version);
-			kparams.AddIfNotNull("assetId", this.AssetId);
+			kparams.AddIfNotNull("language", this._Language);
+			kparams.AddIfNotNull("label", this._Label);
+			kparams.AddIfNotNull("filePath", this._FilePath);
+			kparams.AddIfNotNull("remoteId", this._RemoteId);
+			kparams.AddIfNotNull("version", this._Version);
+			kparams.AddIfNotNull("assetId", this._AssetId);
 			return kparams;
 		}
 		#endregion

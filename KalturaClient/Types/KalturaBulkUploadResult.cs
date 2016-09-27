@@ -268,22 +268,22 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaBulkUploadResult");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("bulkUploadJobId", this.BulkUploadJobId);
-			kparams.AddIfNotNull("lineIndex", this.LineIndex);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("action", this.Action);
-			kparams.AddIfNotNull("objectId", this.ObjectId);
-			kparams.AddIfNotNull("objectStatus", this.ObjectStatus);
-			kparams.AddIfNotNull("bulkUploadResultObjectType", this.BulkUploadResultObjectType);
-			kparams.AddIfNotNull("rowData", this.RowData);
-			kparams.AddIfNotNull("partnerData", this.PartnerData);
-			kparams.AddIfNotNull("objectErrorDescription", this.ObjectErrorDescription);
-			kparams.AddIfNotNull("pluginsData", this.PluginsData);
-			kparams.AddIfNotNull("errorDescription", this.ErrorDescription);
-			kparams.AddIfNotNull("errorCode", this.ErrorCode);
-			kparams.AddIfNotNull("errorType", this.ErrorType);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("bulkUploadJobId", this._BulkUploadJobId);
+			kparams.AddIfNotNull("lineIndex", this._LineIndex);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("action", this._Action);
+			kparams.AddIfNotNull("objectId", this._ObjectId);
+			kparams.AddIfNotNull("objectStatus", this._ObjectStatus);
+			kparams.AddIfNotNull("bulkUploadResultObjectType", this._BulkUploadResultObjectType);
+			kparams.AddIfNotNull("rowData", this._RowData);
+			kparams.AddIfNotNull("partnerData", this._PartnerData);
+			kparams.AddIfNotNull("objectErrorDescription", this._ObjectErrorDescription);
+			kparams.AddIfNotNull("pluginsData", this._PluginsData);
+			kparams.AddIfNotNull("errorDescription", this._ErrorDescription);
+			kparams.AddIfNotNull("errorCode", this._ErrorCode);
+			kparams.AddIfNotNull("errorType", this._ErrorType);
 			return kparams;
 		}
 		#endregion

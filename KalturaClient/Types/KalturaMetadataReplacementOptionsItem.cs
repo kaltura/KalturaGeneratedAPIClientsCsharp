@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaMetadataReplacementOptionsItem");
-			kparams.AddIfNotNull("shouldCopyMetadata", this.ShouldCopyMetadata);
+			kparams.AddIfNotNull("shouldCopyMetadata", this._ShouldCopyMetadata);
 			return kparams;
 		}
 		#endregion

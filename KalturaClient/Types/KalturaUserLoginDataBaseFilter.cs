@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaUserLoginDataBaseFilter");
-			kparams.AddIfNotNull("loginEmailEqual", this.LoginEmailEqual);
+			kparams.AddIfNotNull("loginEmailEqual", this._LoginEmailEqual);
 			return kparams;
 		}
 		#endregion

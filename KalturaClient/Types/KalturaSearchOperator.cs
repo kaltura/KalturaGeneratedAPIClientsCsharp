@@ -91,8 +91,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSearchOperator");
-			kparams.AddIfNotNull("type", this.Type);
-			kparams.AddIfNotNull("items", this.Items);
+			kparams.AddIfNotNull("type", this._Type);
+			kparams.AddIfNotNull("items", this._Items);
 			return kparams;
 		}
 		#endregion

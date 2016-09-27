@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCropDimensions");
-			kparams.AddIfNotNull("left", this.Left);
-			kparams.AddIfNotNull("top", this.Top);
-			kparams.AddIfNotNull("width", this.Width);
-			kparams.AddIfNotNull("height", this.Height);
+			kparams.AddIfNotNull("left", this._Left);
+			kparams.AddIfNotNull("top", this._Top);
+			kparams.AddIfNotNull("width", this._Width);
+			kparams.AddIfNotNull("height", this._Height);
 			return kparams;
 		}
 		#endregion

@@ -126,11 +126,11 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaAttachmentAssetBaseFilter");
-			kparams.AddIfNotNull("formatEqual", this.FormatEqual);
-			kparams.AddIfNotNull("formatIn", this.FormatIn);
-			kparams.AddIfNotNull("statusEqual", this.StatusEqual);
-			kparams.AddIfNotNull("statusIn", this.StatusIn);
-			kparams.AddIfNotNull("statusNotIn", this.StatusNotIn);
+			kparams.AddIfNotNull("formatEqual", this._FormatEqual);
+			kparams.AddIfNotNull("formatIn", this._FormatIn);
+			kparams.AddIfNotNull("statusEqual", this._StatusEqual);
+			kparams.AddIfNotNull("statusIn", this._StatusIn);
+			kparams.AddIfNotNull("statusNotIn", this._StatusNotIn);
 			return kparams;
 		}
 		#endregion

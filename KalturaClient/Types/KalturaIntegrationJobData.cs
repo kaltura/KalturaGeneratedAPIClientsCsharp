@@ -121,11 +121,11 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaIntegrationJobData");
-			kparams.AddIfNotNull("callbackNotificationUrl", this.CallbackNotificationUrl);
-			kparams.AddIfNotNull("providerType", this.ProviderType);
-			kparams.AddIfNotNull("providerData", this.ProviderData);
-			kparams.AddIfNotNull("triggerType", this.TriggerType);
-			kparams.AddIfNotNull("triggerData", this.TriggerData);
+			kparams.AddIfNotNull("callbackNotificationUrl", this._CallbackNotificationUrl);
+			kparams.AddIfNotNull("providerType", this._ProviderType);
+			kparams.AddIfNotNull("providerData", this._ProviderData);
+			kparams.AddIfNotNull("triggerType", this._TriggerType);
+			kparams.AddIfNotNull("triggerData", this._TriggerData);
 			return kparams;
 		}
 		#endregion

@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDeliveryProfileGenericHttp");
-			kparams.AddIfNotNull("pattern", this.Pattern);
+			kparams.AddIfNotNull("pattern", this._Pattern);
 			return kparams;
 		}
 		#endregion

@@ -204,17 +204,17 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveStatsEvent");
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("entryId", this.EntryId);
-			kparams.AddIfNotNull("eventType", this.EventType);
-			kparams.AddIfNotNull("sessionId", this.SessionId);
-			kparams.AddIfNotNull("eventIndex", this.EventIndex);
-			kparams.AddIfNotNull("bufferTime", this.BufferTime);
-			kparams.AddIfNotNull("bitrate", this.Bitrate);
-			kparams.AddIfNotNull("referrer", this.Referrer);
-			kparams.AddIfNotNull("isLive", this.IsLive);
-			kparams.AddIfNotNull("startTime", this.StartTime);
-			kparams.AddIfNotNull("deliveryType", this.DeliveryType);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("entryId", this._EntryId);
+			kparams.AddIfNotNull("eventType", this._EventType);
+			kparams.AddIfNotNull("sessionId", this._SessionId);
+			kparams.AddIfNotNull("eventIndex", this._EventIndex);
+			kparams.AddIfNotNull("bufferTime", this._BufferTime);
+			kparams.AddIfNotNull("bitrate", this._Bitrate);
+			kparams.AddIfNotNull("referrer", this._Referrer);
+			kparams.AddIfNotNull("isLive", this._IsLive);
+			kparams.AddIfNotNull("startTime", this._StartTime);
+			kparams.AddIfNotNull("deliveryType", this._DeliveryType);
 			return kparams;
 		}
 		#endregion

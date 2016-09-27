@@ -91,8 +91,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaReportResponse");
-			kparams.AddIfNotNull("columns", this.Columns);
-			kparams.AddIfNotNull("results", this.Results);
+			kparams.AddIfNotNull("columns", this._Columns);
+			kparams.AddIfNotNull("results", this._Results);
 			return kparams;
 		}
 		#endregion

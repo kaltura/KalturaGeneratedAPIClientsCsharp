@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaFeedDropFolder");
-			kparams.AddIfNotNull("itemHandlingLimit", this.ItemHandlingLimit);
-			kparams.AddIfNotNull("feedItemInfo", this.FeedItemInfo);
+			kparams.AddIfNotNull("itemHandlingLimit", this._ItemHandlingLimit);
+			kparams.AddIfNotNull("feedItemInfo", this._FeedItemInfo);
 			return kparams;
 		}
 		#endregion

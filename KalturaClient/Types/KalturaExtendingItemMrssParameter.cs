@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaExtendingItemMrssParameter");
-			kparams.AddIfNotNull("xpath", this.Xpath);
-			kparams.AddIfNotNull("identifier", this.Identifier);
-			kparams.AddIfNotNull("extensionMode", this.ExtensionMode);
+			kparams.AddIfNotNull("xpath", this._Xpath);
+			kparams.AddIfNotNull("identifier", this._Identifier);
+			kparams.AddIfNotNull("extensionMode", this._ExtensionMode);
 			return kparams;
 		}
 		#endregion

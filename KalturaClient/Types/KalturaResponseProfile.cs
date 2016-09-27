@@ -122,13 +122,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaResponseProfile");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("systemName", this.SystemName);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("version", this.Version);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("systemName", this._SystemName);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("version", this._Version);
 			return kparams;
 		}
 		#endregion

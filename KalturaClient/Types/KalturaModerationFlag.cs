@@ -169,17 +169,17 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaModerationFlag");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("userId", this.UserId);
-			kparams.AddIfNotNull("moderationObjectType", this.ModerationObjectType);
-			kparams.AddIfNotNull("flaggedEntryId", this.FlaggedEntryId);
-			kparams.AddIfNotNull("flaggedUserId", this.FlaggedUserId);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("comments", this.Comments);
-			kparams.AddIfNotNull("flagType", this.FlagType);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("userId", this._UserId);
+			kparams.AddIfNotNull("moderationObjectType", this._ModerationObjectType);
+			kparams.AddIfNotNull("flaggedEntryId", this._FlaggedEntryId);
+			kparams.AddIfNotNull("flaggedUserId", this._FlaggedUserId);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("comments", this._Comments);
+			kparams.AddIfNotNull("flagType", this._FlagType);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
 			return kparams;
 		}
 		#endregion

@@ -152,13 +152,13 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaPlayableEntryBaseFilter");
-			kparams.AddIfNotNull("lastPlayedAtGreaterThanOrEqual", this.LastPlayedAtGreaterThanOrEqual);
-			kparams.AddIfNotNull("lastPlayedAtLessThanOrEqual", this.LastPlayedAtLessThanOrEqual);
-			kparams.AddIfNotNull("durationLessThan", this.DurationLessThan);
-			kparams.AddIfNotNull("durationGreaterThan", this.DurationGreaterThan);
-			kparams.AddIfNotNull("durationLessThanOrEqual", this.DurationLessThanOrEqual);
-			kparams.AddIfNotNull("durationGreaterThanOrEqual", this.DurationGreaterThanOrEqual);
-			kparams.AddIfNotNull("durationTypeMatchOr", this.DurationTypeMatchOr);
+			kparams.AddIfNotNull("lastPlayedAtGreaterThanOrEqual", this._LastPlayedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("lastPlayedAtLessThanOrEqual", this._LastPlayedAtLessThanOrEqual);
+			kparams.AddIfNotNull("durationLessThan", this._DurationLessThan);
+			kparams.AddIfNotNull("durationGreaterThan", this._DurationGreaterThan);
+			kparams.AddIfNotNull("durationLessThanOrEqual", this._DurationLessThanOrEqual);
+			kparams.AddIfNotNull("durationGreaterThanOrEqual", this._DurationGreaterThanOrEqual);
+			kparams.AddIfNotNull("durationTypeMatchOr", this._DurationTypeMatchOr);
 			return kparams;
 		}
 		#endregion

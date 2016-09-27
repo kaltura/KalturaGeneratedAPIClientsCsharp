@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaEntryScheduleEventFilter");
-			kparams.AddIfNotNull("parentCategoryIdsLike", this.ParentCategoryIdsLike);
-			kparams.AddIfNotNull("parentCategoryIdsMultiLikeOr", this.ParentCategoryIdsMultiLikeOr);
-			kparams.AddIfNotNull("parentCategoryIdsMultiLikeAnd", this.ParentCategoryIdsMultiLikeAnd);
-			kparams.AddIfNotNull("orderBy", this.OrderBy);
+			kparams.AddIfNotNull("parentCategoryIdsLike", this._ParentCategoryIdsLike);
+			kparams.AddIfNotNull("parentCategoryIdsMultiLikeOr", this._ParentCategoryIdsMultiLikeOr);
+			kparams.AddIfNotNull("parentCategoryIdsMultiLikeAnd", this._ParentCategoryIdsMultiLikeAnd);
+			kparams.AddIfNotNull("orderBy", this._OrderBy);
 			return kparams;
 		}
 		#endregion

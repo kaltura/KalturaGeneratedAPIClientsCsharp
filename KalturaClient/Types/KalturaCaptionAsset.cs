@@ -168,15 +168,15 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCaptionAsset");
-			kparams.AddIfNotNull("captionParamsId", this.CaptionParamsId);
-			kparams.AddIfNotNull("language", this.Language);
-			kparams.AddIfNotNull("languageCode", this.LanguageCode);
-			kparams.AddIfNotNull("isDefault", this.IsDefault);
-			kparams.AddIfNotNull("label", this.Label);
-			kparams.AddIfNotNull("format", this.Format);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("parentId", this.ParentId);
-			kparams.AddIfNotNull("accuracy", this.Accuracy);
+			kparams.AddIfNotNull("captionParamsId", this._CaptionParamsId);
+			kparams.AddIfNotNull("language", this._Language);
+			kparams.AddIfNotNull("languageCode", this._LanguageCode);
+			kparams.AddIfNotNull("isDefault", this._IsDefault);
+			kparams.AddIfNotNull("label", this._Label);
+			kparams.AddIfNotNull("format", this._Format);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("parentId", this._ParentId);
+			kparams.AddIfNotNull("accuracy", this._Accuracy);
 			return kparams;
 		}
 		#endregion

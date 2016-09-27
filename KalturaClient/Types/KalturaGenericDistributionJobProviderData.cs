@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaGenericDistributionJobProviderData");
-			kparams.AddIfNotNull("xml", this.Xml);
-			kparams.AddIfNotNull("resultParseData", this.ResultParseData);
-			kparams.AddIfNotNull("resultParserType", this.ResultParserType);
+			kparams.AddIfNotNull("xml", this._Xml);
+			kparams.AddIfNotNull("resultParseData", this._ResultParseData);
+			kparams.AddIfNotNull("resultParserType", this._ResultParserType);
 			return kparams;
 		}
 		#endregion

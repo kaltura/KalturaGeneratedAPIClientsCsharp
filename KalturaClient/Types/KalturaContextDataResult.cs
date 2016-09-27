@@ -95,8 +95,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaContextDataResult");
-			kparams.AddIfNotNull("messages", this.Messages);
-			kparams.AddIfNotNull("actions", this.Actions);
+			kparams.AddIfNotNull("messages", this._Messages);
+			kparams.AddIfNotNull("actions", this._Actions);
 			return kparams;
 		}
 		#endregion

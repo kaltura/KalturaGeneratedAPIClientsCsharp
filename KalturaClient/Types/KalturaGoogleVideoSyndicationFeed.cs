@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaGoogleVideoSyndicationFeed");
-			kparams.AddIfNotNull("adultContent", this.AdultContent);
+			kparams.AddIfNotNull("adultContent", this._AdultContent);
 			return kparams;
 		}
 		#endregion

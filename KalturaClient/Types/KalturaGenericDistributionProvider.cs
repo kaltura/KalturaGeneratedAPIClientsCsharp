@@ -200,18 +200,18 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaGenericDistributionProvider");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("isDefault", this.IsDefault);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("optionalFlavorParamsIds", this.OptionalFlavorParamsIds);
-			kparams.AddIfNotNull("requiredFlavorParamsIds", this.RequiredFlavorParamsIds);
-			kparams.AddIfNotNull("optionalThumbDimensions", this.OptionalThumbDimensions);
-			kparams.AddIfNotNull("requiredThumbDimensions", this.RequiredThumbDimensions);
-			kparams.AddIfNotNull("editableFields", this.EditableFields);
-			kparams.AddIfNotNull("mandatoryFields", this.MandatoryFields);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("isDefault", this._IsDefault);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("optionalFlavorParamsIds", this._OptionalFlavorParamsIds);
+			kparams.AddIfNotNull("requiredFlavorParamsIds", this._RequiredFlavorParamsIds);
+			kparams.AddIfNotNull("optionalThumbDimensions", this._OptionalThumbDimensions);
+			kparams.AddIfNotNull("requiredThumbDimensions", this._RequiredThumbDimensions);
+			kparams.AddIfNotNull("editableFields", this._EditableFields);
+			kparams.AddIfNotNull("mandatoryFields", this._MandatoryFields);
 			return kparams;
 		}
 		#endregion

@@ -126,11 +126,11 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveReportInputFilter");
-			kparams.AddIfNotNull("entryIds", this.EntryIds);
-			kparams.AddIfNotNull("fromTime", this.FromTime);
-			kparams.AddIfNotNull("toTime", this.ToTime);
-			kparams.AddIfNotNull("live", this.Live);
-			kparams.AddIfNotNull("orderBy", this.OrderBy);
+			kparams.AddIfNotNull("entryIds", this._EntryIds);
+			kparams.AddIfNotNull("fromTime", this._FromTime);
+			kparams.AddIfNotNull("toTime", this._ToTime);
+			kparams.AddIfNotNull("live", this._Live);
+			kparams.AddIfNotNull("orderBy", this._OrderBy);
 			return kparams;
 		}
 		#endregion

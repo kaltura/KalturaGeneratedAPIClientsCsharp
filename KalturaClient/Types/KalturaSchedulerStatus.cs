@@ -150,14 +150,14 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSchedulerStatus");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("schedulerConfiguredId", this.SchedulerConfiguredId);
-			kparams.AddIfNotNull("workerConfiguredId", this.WorkerConfiguredId);
-			kparams.AddIfNotNull("workerType", this.WorkerType);
-			kparams.AddIfNotNull("type", this.Type);
-			kparams.AddIfNotNull("value", this.Value);
-			kparams.AddIfNotNull("schedulerId", this.SchedulerId);
-			kparams.AddIfNotNull("workerId", this.WorkerId);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("schedulerConfiguredId", this._SchedulerConfiguredId);
+			kparams.AddIfNotNull("workerConfiguredId", this._WorkerConfiguredId);
+			kparams.AddIfNotNull("workerType", this._WorkerType);
+			kparams.AddIfNotNull("type", this._Type);
+			kparams.AddIfNotNull("value", this._Value);
+			kparams.AddIfNotNull("schedulerId", this._SchedulerId);
+			kparams.AddIfNotNull("workerId", this._WorkerId);
 			return kparams;
 		}
 		#endregion

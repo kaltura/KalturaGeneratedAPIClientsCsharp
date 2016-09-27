@@ -243,20 +243,20 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaBulkUploadResultCategory");
-			kparams.AddIfNotNull("relativePath", this.RelativePath);
-			kparams.AddIfNotNull("name", this.Name);
-			kparams.AddIfNotNull("referenceId", this.ReferenceId);
-			kparams.AddIfNotNull("description", this.Description);
-			kparams.AddIfNotNull("tags", this.Tags);
-			kparams.AddIfNotNull("appearInList", this.AppearInList);
-			kparams.AddIfNotNull("privacy", this.Privacy);
-			kparams.AddIfNotNull("inheritanceType", this.InheritanceType);
-			kparams.AddIfNotNull("userJoinPolicy", this.UserJoinPolicy);
-			kparams.AddIfNotNull("defaultPermissionLevel", this.DefaultPermissionLevel);
-			kparams.AddIfNotNull("owner", this.Owner);
-			kparams.AddIfNotNull("contributionPolicy", this.ContributionPolicy);
-			kparams.AddIfNotNull("partnerSortValue", this.PartnerSortValue);
-			kparams.AddIfNotNull("moderation", this.Moderation);
+			kparams.AddIfNotNull("relativePath", this._RelativePath);
+			kparams.AddIfNotNull("name", this._Name);
+			kparams.AddIfNotNull("referenceId", this._ReferenceId);
+			kparams.AddIfNotNull("description", this._Description);
+			kparams.AddIfNotNull("tags", this._Tags);
+			kparams.AddIfNotNull("appearInList", this._AppearInList);
+			kparams.AddIfNotNull("privacy", this._Privacy);
+			kparams.AddIfNotNull("inheritanceType", this._InheritanceType);
+			kparams.AddIfNotNull("userJoinPolicy", this._UserJoinPolicy);
+			kparams.AddIfNotNull("defaultPermissionLevel", this._DefaultPermissionLevel);
+			kparams.AddIfNotNull("owner", this._Owner);
+			kparams.AddIfNotNull("contributionPolicy", this._ContributionPolicy);
+			kparams.AddIfNotNull("partnerSortValue", this._PartnerSortValue);
+			kparams.AddIfNotNull("moderation", this._Moderation);
 			return kparams;
 		}
 		#endregion

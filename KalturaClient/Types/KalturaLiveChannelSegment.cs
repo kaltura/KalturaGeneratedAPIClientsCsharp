@@ -231,21 +231,21 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveChannelSegment");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIfNotNull("name", this.Name);
-			kparams.AddIfNotNull("description", this.Description);
-			kparams.AddIfNotNull("tags", this.Tags);
-			kparams.AddIfNotNull("type", this.Type);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("channelId", this.ChannelId);
-			kparams.AddIfNotNull("entryId", this.EntryId);
-			kparams.AddIfNotNull("triggerType", this.TriggerType);
-			kparams.AddIfNotNull("triggerSegmentId", this.TriggerSegmentId);
-			kparams.AddIfNotNull("startTime", this.StartTime);
-			kparams.AddIfNotNull("duration", this.Duration);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
+			kparams.AddIfNotNull("name", this._Name);
+			kparams.AddIfNotNull("description", this._Description);
+			kparams.AddIfNotNull("tags", this._Tags);
+			kparams.AddIfNotNull("type", this._Type);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("channelId", this._ChannelId);
+			kparams.AddIfNotNull("entryId", this._EntryId);
+			kparams.AddIfNotNull("triggerType", this._TriggerType);
+			kparams.AddIfNotNull("triggerSegmentId", this._TriggerSegmentId);
+			kparams.AddIfNotNull("startTime", this._StartTime);
+			kparams.AddIfNotNull("duration", this._Duration);
 			return kparams;
 		}
 		#endregion

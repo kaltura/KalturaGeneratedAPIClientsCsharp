@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaCategoryUserFilter");
-			kparams.AddIfNotNull("categoryDirectMembers", this.CategoryDirectMembers);
-			kparams.AddIfNotNull("freeText", this.FreeText);
-			kparams.AddIfNotNull("relatedGroupsByUserId", this.RelatedGroupsByUserId);
-			kparams.AddIfNotNull("orderBy", this.OrderBy);
+			kparams.AddIfNotNull("categoryDirectMembers", this._CategoryDirectMembers);
+			kparams.AddIfNotNull("freeText", this._FreeText);
+			kparams.AddIfNotNull("relatedGroupsByUserId", this._RelatedGroupsByUserId);
+			kparams.AddIfNotNull("orderBy", this._OrderBy);
 			return kparams;
 		}
 		#endregion

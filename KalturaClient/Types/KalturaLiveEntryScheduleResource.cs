@@ -74,7 +74,7 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveEntryScheduleResource");
-			kparams.AddIfNotNull("entryId", this.EntryId);
+			kparams.AddIfNotNull("entryId", this._EntryId);
 			return kparams;
 		}
 		#endregion

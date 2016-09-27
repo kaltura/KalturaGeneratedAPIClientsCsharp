@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaFilterPager");
-			kparams.AddIfNotNull("pageSize", this.PageSize);
-			kparams.AddIfNotNull("pageIndex", this.PageIndex);
+			kparams.AddIfNotNull("pageSize", this._PageSize);
+			kparams.AddIfNotNull("pageIndex", this._PageIndex);
 			return kparams;
 		}
 		#endregion

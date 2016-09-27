@@ -178,15 +178,15 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaBatchHistoryData");
-			kparams.AddIfNotNull("schedulerId", this.SchedulerId);
-			kparams.AddIfNotNull("workerId", this.WorkerId);
-			kparams.AddIfNotNull("batchIndex", this.BatchIndex);
-			kparams.AddIfNotNull("timeStamp", this.TimeStamp);
-			kparams.AddIfNotNull("message", this.Message);
-			kparams.AddIfNotNull("errType", this.ErrType);
-			kparams.AddIfNotNull("errNumber", this.ErrNumber);
-			kparams.AddIfNotNull("hostName", this.HostName);
-			kparams.AddIfNotNull("sessionId", this.SessionId);
+			kparams.AddIfNotNull("schedulerId", this._SchedulerId);
+			kparams.AddIfNotNull("workerId", this._WorkerId);
+			kparams.AddIfNotNull("batchIndex", this._BatchIndex);
+			kparams.AddIfNotNull("timeStamp", this._TimeStamp);
+			kparams.AddIfNotNull("message", this._Message);
+			kparams.AddIfNotNull("errType", this._ErrType);
+			kparams.AddIfNotNull("errNumber", this._ErrNumber);
+			kparams.AddIfNotNull("hostName", this._HostName);
+			kparams.AddIfNotNull("sessionId", this._SessionId);
 			return kparams;
 		}
 		#endregion

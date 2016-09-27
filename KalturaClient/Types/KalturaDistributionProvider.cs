@@ -173,15 +173,15 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDistributionProvider");
-			kparams.AddIfNotNull("type", this.Type);
-			kparams.AddIfNotNull("name", this.Name);
-			kparams.AddIfNotNull("scheduleUpdateEnabled", this.ScheduleUpdateEnabled);
-			kparams.AddIfNotNull("availabilityUpdateEnabled", this.AvailabilityUpdateEnabled);
-			kparams.AddIfNotNull("deleteInsteadUpdate", this.DeleteInsteadUpdate);
-			kparams.AddIfNotNull("intervalBeforeSunrise", this.IntervalBeforeSunrise);
-			kparams.AddIfNotNull("intervalBeforeSunset", this.IntervalBeforeSunset);
-			kparams.AddIfNotNull("updateRequiredEntryFields", this.UpdateRequiredEntryFields);
-			kparams.AddIfNotNull("updateRequiredMetadataXPaths", this.UpdateRequiredMetadataXPaths);
+			kparams.AddIfNotNull("type", this._Type);
+			kparams.AddIfNotNull("name", this._Name);
+			kparams.AddIfNotNull("scheduleUpdateEnabled", this._ScheduleUpdateEnabled);
+			kparams.AddIfNotNull("availabilityUpdateEnabled", this._AvailabilityUpdateEnabled);
+			kparams.AddIfNotNull("deleteInsteadUpdate", this._DeleteInsteadUpdate);
+			kparams.AddIfNotNull("intervalBeforeSunrise", this._IntervalBeforeSunrise);
+			kparams.AddIfNotNull("intervalBeforeSunset", this._IntervalBeforeSunset);
+			kparams.AddIfNotNull("updateRequiredEntryFields", this._UpdateRequiredEntryFields);
+			kparams.AddIfNotNull("updateRequiredMetadataXPaths", this._UpdateRequiredMetadataXPaths);
 			return kparams;
 		}
 		#endregion

@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveStreamPushPublishRTMPConfiguration");
-			kparams.AddIfNotNull("userId", this.UserId);
-			kparams.AddIfNotNull("password", this.Password);
-			kparams.AddIfNotNull("streamName", this.StreamName);
-			kparams.AddIfNotNull("applicationName", this.ApplicationName);
+			kparams.AddIfNotNull("userId", this._UserId);
+			kparams.AddIfNotNull("password", this._Password);
+			kparams.AddIfNotNull("streamName", this._StreamName);
+			kparams.AddIfNotNull("applicationName", this._ApplicationName);
 			return kparams;
 		}
 		#endregion

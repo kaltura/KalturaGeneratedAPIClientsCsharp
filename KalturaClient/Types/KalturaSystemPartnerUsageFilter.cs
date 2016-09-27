@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSystemPartnerUsageFilter");
-			kparams.AddIfNotNull("fromDate", this.FromDate);
-			kparams.AddIfNotNull("toDate", this.ToDate);
-			kparams.AddIfNotNull("timezoneOffset", this.TimezoneOffset);
+			kparams.AddIfNotNull("fromDate", this._FromDate);
+			kparams.AddIfNotNull("toDate", this._ToDate);
+			kparams.AddIfNotNull("timezoneOffset", this._TimezoneOffset);
 			return kparams;
 		}
 		#endregion

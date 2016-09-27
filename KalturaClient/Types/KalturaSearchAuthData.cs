@@ -100,9 +100,9 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaSearchAuthData");
-			kparams.AddIfNotNull("authData", this.AuthData);
-			kparams.AddIfNotNull("loginUrl", this.LoginUrl);
-			kparams.AddIfNotNull("message", this.Message);
+			kparams.AddIfNotNull("authData", this._AuthData);
+			kparams.AddIfNotNull("loginUrl", this._LoginUrl);
+			kparams.AddIfNotNull("message", this._Message);
 			return kparams;
 		}
 		#endregion

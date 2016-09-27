@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaLiveReportExportParams");
-			kparams.AddIfNotNull("entryIds", this.EntryIds);
-			kparams.AddIfNotNull("recpientEmail", this.RecpientEmail);
-			kparams.AddIfNotNull("timeZoneOffset", this.TimeZoneOffset);
-			kparams.AddIfNotNull("applicationUrlTemplate", this.ApplicationUrlTemplate);
+			kparams.AddIfNotNull("entryIds", this._EntryIds);
+			kparams.AddIfNotNull("recpientEmail", this._RecpientEmail);
+			kparams.AddIfNotNull("timeZoneOffset", this._TimeZoneOffset);
+			kparams.AddIfNotNull("applicationUrlTemplate", this._ApplicationUrlTemplate);
 			return kparams;
 		}
 		#endregion

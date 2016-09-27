@@ -149,17 +149,17 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaMetadata");
-			kparams.AddIfNotNull("id", this.Id);
-			kparams.AddIfNotNull("partnerId", this.PartnerId);
-			kparams.AddIfNotNull("metadataProfileId", this.MetadataProfileId);
-			kparams.AddIfNotNull("metadataProfileVersion", this.MetadataProfileVersion);
-			kparams.AddIfNotNull("metadataObjectType", this.MetadataObjectType);
-			kparams.AddIfNotNull("objectId", this.ObjectId);
-			kparams.AddIfNotNull("version", this.Version);
-			kparams.AddIfNotNull("createdAt", this.CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this.UpdatedAt);
-			kparams.AddIfNotNull("status", this.Status);
-			kparams.AddIfNotNull("xml", this.Xml);
+			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("metadataProfileId", this._MetadataProfileId);
+			kparams.AddIfNotNull("metadataProfileVersion", this._MetadataProfileVersion);
+			kparams.AddIfNotNull("metadataObjectType", this._MetadataObjectType);
+			kparams.AddIfNotNull("objectId", this._ObjectId);
+			kparams.AddIfNotNull("version", this._Version);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("xml", this._Xml);
 			return kparams;
 		}
 		#endregion

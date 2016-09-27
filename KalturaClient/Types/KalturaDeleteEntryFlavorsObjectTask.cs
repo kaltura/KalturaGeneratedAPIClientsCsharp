@@ -87,8 +87,8 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaDeleteEntryFlavorsObjectTask");
-			kparams.AddIfNotNull("deleteType", this.DeleteType);
-			kparams.AddIfNotNull("flavorParamsIds", this.FlavorParamsIds);
+			kparams.AddIfNotNull("deleteType", this._DeleteType);
+			kparams.AddIfNotNull("flavorParamsIds", this._FlavorParamsIds);
 			return kparams;
 		}
 		#endregion

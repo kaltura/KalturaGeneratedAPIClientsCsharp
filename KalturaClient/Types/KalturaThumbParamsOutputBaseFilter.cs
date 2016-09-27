@@ -113,10 +113,10 @@ namespace Kaltura
 		{
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaThumbParamsOutputBaseFilter");
-			kparams.AddIfNotNull("thumbParamsIdEqual", this.ThumbParamsIdEqual);
-			kparams.AddIfNotNull("thumbParamsVersionEqual", this.ThumbParamsVersionEqual);
-			kparams.AddIfNotNull("thumbAssetIdEqual", this.ThumbAssetIdEqual);
-			kparams.AddIfNotNull("thumbAssetVersionEqual", this.ThumbAssetVersionEqual);
+			kparams.AddIfNotNull("thumbParamsIdEqual", this._ThumbParamsIdEqual);
+			kparams.AddIfNotNull("thumbParamsVersionEqual", this._ThumbParamsVersionEqual);
+			kparams.AddIfNotNull("thumbAssetIdEqual", this._ThumbAssetIdEqual);
+			kparams.AddIfNotNull("thumbAssetVersionEqual", this._ThumbAssetVersionEqual);
 			return kparams;
 		}
 		#endregion

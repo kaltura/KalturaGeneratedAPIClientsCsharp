@@ -34,7 +34,7 @@ namespace Kaltura
 		public KalturaClient(KalturaConfiguration config) : base(config)
 		{
 				ApiVersion = "3.3.0";
-				ClientTag = "dotnet:16-09-28";
+				ClientTag = "dotnet:16-09-29";
 		}
 
 		KalturaAccessControlProfileService _AccessControlProfileService;

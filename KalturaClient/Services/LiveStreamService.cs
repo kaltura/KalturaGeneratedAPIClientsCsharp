@@ -223,6 +223,16 @@ namespace Kaltura
 			return (KalturaLiveStreamEntry)KalturaObjectFactory.Create(result, "KalturaLiveStreamEntry");
 		}
 
+		public void RegenrateSecureToken(string entryId)
+		{
+			KalturaParams kparams = new KalturaParams();
+			kparams.AddIfNotNull("entryId", entryId);
+			_Client.QueueServiceCall("livestream", "regenrateSecureToken", null, kparams);
+			if (this._Client.IsMultiRequest)
+				return;
+			XmlElement result = _Client.DoQueue();
+		}
+
 		public KalturaLiveEntry AppendRecording(string entryId, string assetId, KalturaEntryServerNodeType mediaServerIndex, KalturaDataCenterContentResource resource, float duration)
 		{
 			return this.AppendRecording(entryId, assetId, mediaServerIndex, resource, duration, false);

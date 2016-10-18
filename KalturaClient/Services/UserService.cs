@@ -175,12 +175,18 @@ namespace Kaltura
 
 		public string LoginByLoginId(string loginId, string password, int partnerId, int expiry, string privileges)
 		{
+			return this.LoginByLoginId(loginId, password, partnerId, expiry, privileges, null);
+		}
+
+		public string LoginByLoginId(string loginId, string password, int partnerId, int expiry, string privileges, string otp)
+		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddIfNotNull("loginId", loginId);
 			kparams.AddIfNotNull("password", password);
 			kparams.AddIfNotNull("partnerId", partnerId);
 			kparams.AddIfNotNull("expiry", expiry);
 			kparams.AddIfNotNull("privileges", privileges);
+			kparams.AddIfNotNull("otp", otp);
 			_Client.QueueServiceCall("user", "loginByLoginId", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

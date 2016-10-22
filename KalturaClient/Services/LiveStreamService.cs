@@ -223,11 +223,11 @@ namespace Kaltura
 			return (KalturaLiveStreamEntry)KalturaObjectFactory.Create(result, "KalturaLiveStreamEntry");
 		}
 
-		public void RegenrateSecureToken(string entryId)
+		public void RegenerateStreamToken(string entryId)
 		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddIfNotNull("entryId", entryId);
-			_Client.QueueServiceCall("livestream", "regenrateSecureToken", null, kparams);
+			_Client.QueueServiceCall("livestream", "regenerateStreamToken", null, kparams);
 			if (this._Client.IsMultiRequest)
 				return;
 			XmlElement result = _Client.DoQueue();

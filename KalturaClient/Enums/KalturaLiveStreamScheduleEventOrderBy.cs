@@ -33,11 +33,13 @@ namespace Kaltura
 		public static readonly KalturaLiveStreamScheduleEventOrderBy END_DATE_ASC = new KalturaLiveStreamScheduleEventOrderBy("+endDate");
 		public static readonly KalturaLiveStreamScheduleEventOrderBy PRIORITY_ASC = new KalturaLiveStreamScheduleEventOrderBy("+priority");
 		public static readonly KalturaLiveStreamScheduleEventOrderBy START_DATE_ASC = new KalturaLiveStreamScheduleEventOrderBy("+startDate");
+		public static readonly KalturaLiveStreamScheduleEventOrderBy SUMMARY_ASC = new KalturaLiveStreamScheduleEventOrderBy("+summary");
 		public static readonly KalturaLiveStreamScheduleEventOrderBy UPDATED_AT_ASC = new KalturaLiveStreamScheduleEventOrderBy("+updatedAt");
 		public static readonly KalturaLiveStreamScheduleEventOrderBy CREATED_AT_DESC = new KalturaLiveStreamScheduleEventOrderBy("-createdAt");
 		public static readonly KalturaLiveStreamScheduleEventOrderBy END_DATE_DESC = new KalturaLiveStreamScheduleEventOrderBy("-endDate");
 		public static readonly KalturaLiveStreamScheduleEventOrderBy PRIORITY_DESC = new KalturaLiveStreamScheduleEventOrderBy("-priority");
 		public static readonly KalturaLiveStreamScheduleEventOrderBy START_DATE_DESC = new KalturaLiveStreamScheduleEventOrderBy("-startDate");
+		public static readonly KalturaLiveStreamScheduleEventOrderBy SUMMARY_DESC = new KalturaLiveStreamScheduleEventOrderBy("-summary");
 		public static readonly KalturaLiveStreamScheduleEventOrderBy UPDATED_AT_DESC = new KalturaLiveStreamScheduleEventOrderBy("-updatedAt");
 
 		private KalturaLiveStreamScheduleEventOrderBy(string name) : base(name) { }

@@ -41,6 +41,7 @@ namespace Kaltura
 		public static readonly KalturaSourceType LIVE_CHANNEL = new KalturaSourceType("33");
 		public static readonly KalturaSourceType RECORDED_LIVE = new KalturaSourceType("34");
 		public static readonly KalturaSourceType CLIP = new KalturaSourceType("35");
+		public static readonly KalturaSourceType KALTURA_RECORDED_LIVE = new KalturaSourceType("36");
 		public static readonly KalturaSourceType LIVE_STREAM_ONTEXTDATA_CAPTIONS = new KalturaSourceType("42");
 
 		private KalturaSourceType(string name) : base(name) { }

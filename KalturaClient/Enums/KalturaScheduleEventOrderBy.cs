@@ -33,11 +33,13 @@ namespace Kaltura
 		public static readonly KalturaScheduleEventOrderBy END_DATE_ASC = new KalturaScheduleEventOrderBy("+endDate");
 		public static readonly KalturaScheduleEventOrderBy PRIORITY_ASC = new KalturaScheduleEventOrderBy("+priority");
 		public static readonly KalturaScheduleEventOrderBy START_DATE_ASC = new KalturaScheduleEventOrderBy("+startDate");
+		public static readonly KalturaScheduleEventOrderBy SUMMARY_ASC = new KalturaScheduleEventOrderBy("+summary");
 		public static readonly KalturaScheduleEventOrderBy UPDATED_AT_ASC = new KalturaScheduleEventOrderBy("+updatedAt");
 		public static readonly KalturaScheduleEventOrderBy CREATED_AT_DESC = new KalturaScheduleEventOrderBy("-createdAt");
 		public static readonly KalturaScheduleEventOrderBy END_DATE_DESC = new KalturaScheduleEventOrderBy("-endDate");
 		public static readonly KalturaScheduleEventOrderBy PRIORITY_DESC = new KalturaScheduleEventOrderBy("-priority");
 		public static readonly KalturaScheduleEventOrderBy START_DATE_DESC = new KalturaScheduleEventOrderBy("-startDate");
+		public static readonly KalturaScheduleEventOrderBy SUMMARY_DESC = new KalturaScheduleEventOrderBy("-summary");
 		public static readonly KalturaScheduleEventOrderBy UPDATED_AT_DESC = new KalturaScheduleEventOrderBy("-updatedAt");
 
 		private KalturaScheduleEventOrderBy(string name) : base(name) { }

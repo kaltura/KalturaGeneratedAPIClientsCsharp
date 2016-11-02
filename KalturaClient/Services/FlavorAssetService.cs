@@ -283,17 +283,17 @@ namespace Kaltura
 			XmlElement result = _Client.DoQueue();
 		}
 
-		public void ServeAdStitchCmd(string assetId)
+		public string ServeAdStitchCmd(string assetId)
 		{
-			this.ServeAdStitchCmd(assetId, null);
+			return this.ServeAdStitchCmd(assetId, null);
 		}
 
-		public void ServeAdStitchCmd(string assetId, string ffprobeJson)
+		public string ServeAdStitchCmd(string assetId, string ffprobeJson)
 		{
-			this.ServeAdStitchCmd(assetId, ffprobeJson, null);
+			return this.ServeAdStitchCmd(assetId, ffprobeJson, null);
 		}
 
-		public void ServeAdStitchCmd(string assetId, string ffprobeJson, string duration)
+		public string ServeAdStitchCmd(string assetId, string ffprobeJson, string duration)
 		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddIfNotNull("assetId", assetId);
@@ -301,8 +301,9 @@ namespace Kaltura
 			kparams.AddIfNotNull("duration", duration);
 			_Client.QueueServiceCall("flavorasset", "serveAdStitchCmd", null, kparams);
 			if (this._Client.IsMultiRequest)
-				return;
+				return null;
 			XmlElement result = _Client.DoQueue();
+			return result.InnerText;
 		}
 	}
 }

@@ -302,6 +302,20 @@ namespace Kaltura
 			XmlElement result = _Client.DoQueue();
 		}
 
+		public KalturaLiveEntry SetRecordedContent(string entryId, KalturaEntryServerNodeType mediaServerIndex, KalturaDataCenterContentResource resource, float duration)
+		{
+			KalturaParams kparams = new KalturaParams();
+			kparams.AddIfNotNull("entryId", entryId);
+			kparams.AddIfNotNull("mediaServerIndex", mediaServerIndex);
+			kparams.AddIfNotNull("resource", resource);
+			kparams.AddIfNotNull("duration", duration);
+			_Client.QueueServiceCall("livestream", "setRecordedContent", "KalturaLiveEntry", kparams);
+			if (this._Client.IsMultiRequest)
+				return null;
+			XmlElement result = _Client.DoQueue();
+			return (KalturaLiveEntry)KalturaObjectFactory.Create(result, "KalturaLiveEntry");
+		}
+
 		public void CreatePeriodicSyncPoints(string entryId, int interval, int duration)
 		{
 			KalturaParams kparams = new KalturaParams();

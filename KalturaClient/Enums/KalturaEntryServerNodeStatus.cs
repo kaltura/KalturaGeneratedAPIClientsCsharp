@@ -33,5 +33,6 @@ namespace Kaltura
 		PLAYABLE = 1,
 		BROADCASTING = 2,
 		AUTHENTICATED = 3,
+		MARKED_FOR_DELETION = 4,
 	}
 }

@@ -37,6 +37,7 @@ namespace Kaltura
 		private string _Name = null;
 		private KalturaScheduleEventRecurrenceFrequency _Frequency = null;
 		private int _Until = Int32.MinValue;
+		private string _TimeZone = null;
 		private int _Count = Int32.MinValue;
 		private int _Interval = Int32.MinValue;
 		private string _BySecond = null;
@@ -77,6 +78,15 @@ namespace Kaltura
 			{ 
 				_Until = value;
 				OnPropertyChanged("Until");
+			}
+		}
+		public string TimeZone
+		{
+			get { return _TimeZone; }
+			set 
+			{ 
+				_TimeZone = value;
+				OnPropertyChanged("TimeZone");
 			}
 		}
 		public int Count
@@ -210,6 +220,9 @@ namespace Kaltura
 					case "until":
 						this._Until = ParseInt(txt);
 						continue;
+					case "timeZone":
+						this._TimeZone = txt;
+						continue;
 					case "count":
 						this._Count = ParseInt(txt);
 						continue;
@@ -259,6 +272,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("name", this._Name);
 			kparams.AddIfNotNull("frequency", this._Frequency);
 			kparams.AddIfNotNull("until", this._Until);
+			kparams.AddIfNotNull("timeZone", this._TimeZone);
 			kparams.AddIfNotNull("count", this._Count);
 			kparams.AddIfNotNull("interval", this._Interval);
 			kparams.AddIfNotNull("bySecond", this._BySecond);

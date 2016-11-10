@@ -31,38 +31,38 @@ using System.Collections.Generic;
 
 namespace Kaltura
 {
-	public class KalturaDeliveryProfileVodPackagerHls : KalturaDeliveryProfileVodPackagerPlayServer
+	public class KalturaDeliveryProfileVodPackagerPlayServer : KalturaDeliveryProfile
 	{
 		#region Private Fields
-		private bool? _AllowFairplayOffline = null;
+		private bool? _AdStitchingEnabled = null;
 		#endregion
 
 		#region Properties
-		public bool? AllowFairplayOffline
+		public bool? AdStitchingEnabled
 		{
-			get { return _AllowFairplayOffline; }
+			get { return _AdStitchingEnabled; }
 			set 
 			{ 
-				_AllowFairplayOffline = value;
-				OnPropertyChanged("AllowFairplayOffline");
+				_AdStitchingEnabled = value;
+				OnPropertyChanged("AdStitchingEnabled");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public KalturaDeliveryProfileVodPackagerHls()
+		public KalturaDeliveryProfileVodPackagerPlayServer()
 		{
 		}
 
-		public KalturaDeliveryProfileVodPackagerHls(XmlElement node) : base(node)
+		public KalturaDeliveryProfileVodPackagerPlayServer(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
 				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
-					case "allowFairplayOffline":
-						this._AllowFairplayOffline = ParseBool(txt);
+					case "adStitchingEnabled":
+						this._AdStitchingEnabled = ParseBool(txt);
 						continue;
 				}
 			}
@@ -73,8 +73,8 @@ namespace Kaltura
 		public override KalturaParams ToParams()
 		{
 			KalturaParams kparams = base.ToParams();
-			kparams.AddReplace("objectType", "KalturaDeliveryProfileVodPackagerHls");
-			kparams.AddIfNotNull("allowFairplayOffline", this._AllowFairplayOffline);
+			kparams.AddReplace("objectType", "KalturaDeliveryProfileVodPackagerPlayServer");
+			kparams.AddIfNotNull("adStitchingEnabled", this._AdStitchingEnabled);
 			return kparams;
 		}
 		#endregion

@@ -45,6 +45,7 @@ namespace Kaltura
 		private string _DataUrl = null;
 		private string _FlavorParamsIds = null;
 		private KalturaNullableBoolean _IsTrimDisabled = (KalturaNullableBoolean)Int32.MinValue;
+		private IList<KalturaStreamContainer> _Streams;
 		#endregion
 
 		#region Properties
@@ -127,6 +128,15 @@ namespace Kaltura
 		{
 			get { return _IsTrimDisabled; }
 		}
+		public new IList<KalturaStreamContainer> Streams
+		{
+			get { return _Streams; }
+			set 
+			{ 
+				_Streams = value;
+				OnPropertyChanged("Streams");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -174,6 +184,13 @@ namespace Kaltura
 					case "isTrimDisabled":
 						this._IsTrimDisabled = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
 						continue;
+					case "streams":
+						this._Streams = new List<KalturaStreamContainer>();
+						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
+						{
+							this._Streams.Add((KalturaStreamContainer)KalturaObjectFactory.Create(arrayNode, "KalturaStreamContainer"));
+						}
+						continue;
 				}
 			}
 		}
@@ -195,6 +212,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("dataUrl", this._DataUrl);
 			kparams.AddIfNotNull("flavorParamsIds", this._FlavorParamsIds);
 			kparams.AddIfNotNull("isTrimDisabled", this._IsTrimDisabled);
+			kparams.AddIfNotNull("streams", this._Streams);
 			return kparams;
 		}
 		#endregion

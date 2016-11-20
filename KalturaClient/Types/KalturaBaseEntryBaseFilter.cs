@@ -45,6 +45,7 @@ namespace Kaltura
 		private string _PartnerIdIn = null;
 		private string _UserIdEqual = null;
 		private string _UserIdIn = null;
+		private string _UserIdNotIn = null;
 		private string _CreatorIdEqual = null;
 		private string _TagsLike = null;
 		private string _TagsMultiLikeOr = null;
@@ -211,6 +212,15 @@ namespace Kaltura
 			{ 
 				_UserIdIn = value;
 				OnPropertyChanged("UserIdIn");
+			}
+		}
+		public string UserIdNotIn
+		{
+			get { return _UserIdNotIn; }
+			set 
+			{ 
+				_UserIdNotIn = value;
+				OnPropertyChanged("UserIdNotIn");
 			}
 		}
 		public string CreatorIdEqual
@@ -854,6 +864,9 @@ namespace Kaltura
 					case "userIdIn":
 						this._UserIdIn = txt;
 						continue;
+					case "userIdNotIn":
+						this._UserIdNotIn = txt;
+						continue;
 					case "creatorIdEqual":
 						this._CreatorIdEqual = txt;
 						continue;
@@ -1073,6 +1086,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("partnerIdIn", this._PartnerIdIn);
 			kparams.AddIfNotNull("userIdEqual", this._UserIdEqual);
 			kparams.AddIfNotNull("userIdIn", this._UserIdIn);
+			kparams.AddIfNotNull("userIdNotIn", this._UserIdNotIn);
 			kparams.AddIfNotNull("creatorIdEqual", this._CreatorIdEqual);
 			kparams.AddIfNotNull("tagsLike", this._TagsLike);
 			kparams.AddIfNotNull("tagsMultiLikeOr", this._TagsMultiLikeOr);

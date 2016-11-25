@@ -43,6 +43,8 @@ namespace Kaltura
 		private string _CategoryFullIdsStartsWith = null;
 		private KalturaCategoryEntryStatus _StatusEqual = (KalturaCategoryEntryStatus)Int32.MinValue;
 		private string _StatusIn = null;
+		private string _CreatorUserIdEqual = null;
+		private string _CreatorUserIdIn = null;
 		#endregion
 
 		#region Properties
@@ -127,6 +129,24 @@ namespace Kaltura
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		public string CreatorUserIdEqual
+		{
+			get { return _CreatorUserIdEqual; }
+			set 
+			{ 
+				_CreatorUserIdEqual = value;
+				OnPropertyChanged("CreatorUserIdEqual");
+			}
+		}
+		public string CreatorUserIdIn
+		{
+			get { return _CreatorUserIdIn; }
+			set 
+			{ 
+				_CreatorUserIdIn = value;
+				OnPropertyChanged("CreatorUserIdIn");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -168,6 +188,12 @@ namespace Kaltura
 					case "statusIn":
 						this._StatusIn = txt;
 						continue;
+					case "creatorUserIdEqual":
+						this._CreatorUserIdEqual = txt;
+						continue;
+					case "creatorUserIdIn":
+						this._CreatorUserIdIn = txt;
+						continue;
 				}
 			}
 		}
@@ -187,6 +213,8 @@ namespace Kaltura
 			kparams.AddIfNotNull("categoryFullIdsStartsWith", this._CategoryFullIdsStartsWith);
 			kparams.AddIfNotNull("statusEqual", this._StatusEqual);
 			kparams.AddIfNotNull("statusIn", this._StatusIn);
+			kparams.AddIfNotNull("creatorUserIdEqual", this._CreatorUserIdEqual);
+			kparams.AddIfNotNull("creatorUserIdIn", this._CreatorUserIdIn);
 			return kparams;
 		}
 		#endregion

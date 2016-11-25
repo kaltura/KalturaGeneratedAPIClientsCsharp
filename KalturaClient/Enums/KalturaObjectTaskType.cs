@@ -38,6 +38,7 @@ namespace Kaltura
 		public static readonly KalturaObjectTaskType CONVERT_ENTRY_FLAVORS = new KalturaObjectTaskType("4");
 		public static readonly KalturaObjectTaskType DELETE_LOCAL_CONTENT = new KalturaObjectTaskType("5");
 		public static readonly KalturaObjectTaskType STORAGE_EXPORT = new KalturaObjectTaskType("6");
+		public static readonly KalturaObjectTaskType MODIFY_ENTRY = new KalturaObjectTaskType("7");
 
 		private KalturaObjectTaskType(string name) : base(name) { }
 	}

@@ -39,6 +39,8 @@ namespace Kaltura
 		private int _Width = Int32.MinValue;
 		private int _Height = Int32.MinValue;
 		private string _Codec = null;
+		private int _FrameRate = Int32.MinValue;
+		private float _KeyFrameInterval = Single.MinValue;
 		#endregion
 
 		#region Properties
@@ -87,6 +89,24 @@ namespace Kaltura
 				OnPropertyChanged("Codec");
 			}
 		}
+		public int FrameRate
+		{
+			get { return _FrameRate; }
+			set 
+			{ 
+				_FrameRate = value;
+				OnPropertyChanged("FrameRate");
+			}
+		}
+		public float KeyFrameInterval
+		{
+			get { return _KeyFrameInterval; }
+			set 
+			{ 
+				_KeyFrameInterval = value;
+				OnPropertyChanged("KeyFrameInterval");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -116,6 +136,12 @@ namespace Kaltura
 					case "codec":
 						this._Codec = txt;
 						continue;
+					case "frameRate":
+						this._FrameRate = ParseInt(txt);
+						continue;
+					case "keyFrameInterval":
+						this._KeyFrameInterval = ParseFloat(txt);
+						continue;
 				}
 			}
 		}
@@ -131,6 +157,8 @@ namespace Kaltura
 			kparams.AddIfNotNull("width", this._Width);
 			kparams.AddIfNotNull("height", this._Height);
 			kparams.AddIfNotNull("codec", this._Codec);
+			kparams.AddIfNotNull("frameRate", this._FrameRate);
+			kparams.AddIfNotNull("keyFrameInterval", this._KeyFrameInterval);
 			return kparams;
 		}
 		#endregion

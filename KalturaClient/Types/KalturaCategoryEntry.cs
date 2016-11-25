@@ -39,6 +39,7 @@ namespace Kaltura
 		private int _CreatedAt = Int32.MinValue;
 		private string _CategoryFullIds = null;
 		private KalturaCategoryEntryStatus _Status = (KalturaCategoryEntryStatus)Int32.MinValue;
+		private string _CreatorUserId = null;
 		#endregion
 
 		#region Properties
@@ -72,6 +73,10 @@ namespace Kaltura
 		{
 			get { return _Status; }
 		}
+		public string CreatorUserId
+		{
+			get { return _CreatorUserId; }
+		}
 		#endregion
 
 		#region CTor
@@ -101,6 +106,9 @@ namespace Kaltura
 					case "status":
 						this._Status = (KalturaCategoryEntryStatus)ParseEnum(typeof(KalturaCategoryEntryStatus), txt);
 						continue;
+					case "creatorUserId":
+						this._CreatorUserId = txt;
+						continue;
 				}
 			}
 		}
@@ -116,6 +124,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("createdAt", this._CreatedAt);
 			kparams.AddIfNotNull("categoryFullIds", this._CategoryFullIds);
 			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("creatorUserId", this._CreatorUserId);
 			return kparams;
 		}
 		#endregion

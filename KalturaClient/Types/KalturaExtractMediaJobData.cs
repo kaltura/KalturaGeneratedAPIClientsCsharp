@@ -35,6 +35,9 @@ namespace Kaltura
 	{
 		#region Private Fields
 		private string _FlavorAssetId = null;
+		private bool? _CalculateComplexity = null;
+		private bool? _ExtractId3Tags = null;
+		private string _DestDataFilePath = null;
 		#endregion
 
 		#region Properties
@@ -45,6 +48,33 @@ namespace Kaltura
 			{ 
 				_FlavorAssetId = value;
 				OnPropertyChanged("FlavorAssetId");
+			}
+		}
+		public bool? CalculateComplexity
+		{
+			get { return _CalculateComplexity; }
+			set 
+			{ 
+				_CalculateComplexity = value;
+				OnPropertyChanged("CalculateComplexity");
+			}
+		}
+		public bool? ExtractId3Tags
+		{
+			get { return _ExtractId3Tags; }
+			set 
+			{ 
+				_ExtractId3Tags = value;
+				OnPropertyChanged("ExtractId3Tags");
+			}
+		}
+		public string DestDataFilePath
+		{
+			get { return _DestDataFilePath; }
+			set 
+			{ 
+				_DestDataFilePath = value;
+				OnPropertyChanged("DestDataFilePath");
 			}
 		}
 		#endregion
@@ -64,6 +94,15 @@ namespace Kaltura
 					case "flavorAssetId":
 						this._FlavorAssetId = txt;
 						continue;
+					case "calculateComplexity":
+						this._CalculateComplexity = ParseBool(txt);
+						continue;
+					case "extractId3Tags":
+						this._ExtractId3Tags = ParseBool(txt);
+						continue;
+					case "destDataFilePath":
+						this._DestDataFilePath = txt;
+						continue;
 				}
 			}
 		}
@@ -75,6 +114,9 @@ namespace Kaltura
 			KalturaParams kparams = base.ToParams();
 			kparams.AddReplace("objectType", "KalturaExtractMediaJobData");
 			kparams.AddIfNotNull("flavorAssetId", this._FlavorAssetId);
+			kparams.AddIfNotNull("calculateComplexity", this._CalculateComplexity);
+			kparams.AddIfNotNull("extractId3Tags", this._ExtractId3Tags);
+			kparams.AddIfNotNull("destDataFilePath", this._DestDataFilePath);
 			return kparams;
 		}
 		#endregion

@@ -39,6 +39,8 @@ namespace Kaltura
 		private float _TotalVodDuration = Single.MinValue;
 		private float _LastSegmentDuration = Single.MinValue;
 		private string _AmfArray = null;
+		private int _LastCuePointSyncTime = Int32.MinValue;
+		private int _LastSegmentDrift = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -87,6 +89,24 @@ namespace Kaltura
 				OnPropertyChanged("AmfArray");
 			}
 		}
+		public int LastCuePointSyncTime
+		{
+			get { return _LastCuePointSyncTime; }
+			set 
+			{ 
+				_LastCuePointSyncTime = value;
+				OnPropertyChanged("LastCuePointSyncTime");
+			}
+		}
+		public int LastSegmentDrift
+		{
+			get { return _LastSegmentDrift; }
+			set 
+			{ 
+				_LastSegmentDrift = value;
+				OnPropertyChanged("LastSegmentDrift");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -116,6 +136,12 @@ namespace Kaltura
 					case "amfArray":
 						this._AmfArray = txt;
 						continue;
+					case "lastCuePointSyncTime":
+						this._LastCuePointSyncTime = ParseInt(txt);
+						continue;
+					case "lastSegmentDrift":
+						this._LastSegmentDrift = ParseInt(txt);
+						continue;
 				}
 			}
 		}
@@ -131,6 +157,8 @@ namespace Kaltura
 			kparams.AddIfNotNull("totalVodDuration", this._TotalVodDuration);
 			kparams.AddIfNotNull("lastSegmentDuration", this._LastSegmentDuration);
 			kparams.AddIfNotNull("amfArray", this._AmfArray);
+			kparams.AddIfNotNull("lastCuePointSyncTime", this._LastCuePointSyncTime);
+			kparams.AddIfNotNull("lastSegmentDrift", this._LastSegmentDrift);
 			return kparams;
 		}
 		#endregion

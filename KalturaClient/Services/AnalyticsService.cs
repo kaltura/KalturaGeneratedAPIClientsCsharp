@@ -42,8 +42,14 @@ namespace Kaltura
 
 		public KalturaReportResponse Query(KalturaAnalyticsFilter filter)
 		{
+			return this.Query(filter, null);
+		}
+
+		public KalturaReportResponse Query(KalturaAnalyticsFilter filter, KalturaFilterPager pager)
+		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddIfNotNull("filter", filter);
+			kparams.AddIfNotNull("pager", pager);
 			_Client.QueueServiceCall("analytics", "query", "KalturaReportResponse", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;

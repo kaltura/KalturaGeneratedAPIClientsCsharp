@@ -53,6 +53,7 @@ namespace Kaltura
 		private string _XslTransformation = null;
 		private int _StorageProfileId = Int32.MinValue;
 		private KalturaMediaParserType _MediaParserType = null;
+		private KalturaNullableBoolean _CalculateComplexity = (KalturaNullableBoolean)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -207,6 +208,15 @@ namespace Kaltura
 				OnPropertyChanged("MediaParserType");
 			}
 		}
+		public KalturaNullableBoolean CalculateComplexity
+		{
+			get { return _CalculateComplexity; }
+			set 
+			{ 
+				_CalculateComplexity = value;
+				OnPropertyChanged("CalculateComplexity");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -278,6 +288,9 @@ namespace Kaltura
 					case "mediaParserType":
 						this._MediaParserType = (KalturaMediaParserType)KalturaStringEnum.Parse(typeof(KalturaMediaParserType), txt);
 						continue;
+					case "calculateComplexity":
+						this._CalculateComplexity = (KalturaNullableBoolean)ParseEnum(typeof(KalturaNullableBoolean), txt);
+						continue;
 				}
 			}
 		}
@@ -307,6 +320,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("xslTransformation", this._XslTransformation);
 			kparams.AddIfNotNull("storageProfileId", this._StorageProfileId);
 			kparams.AddIfNotNull("mediaParserType", this._MediaParserType);
+			kparams.AddIfNotNull("calculateComplexity", this._CalculateComplexity);
 			return kparams;
 		}
 		#endregion

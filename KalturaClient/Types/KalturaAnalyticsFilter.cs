@@ -40,6 +40,7 @@ namespace Kaltura
 		private float _UtcOffset = Single.MinValue;
 		private string _Dimensions = null;
 		private IList<KalturaReportFilter> _Filters;
+		private string _OrderBy = null;
 		#endregion
 
 		#region Properties
@@ -97,6 +98,15 @@ namespace Kaltura
 				OnPropertyChanged("Filters");
 			}
 		}
+		public string OrderBy
+		{
+			get { return _OrderBy; }
+			set 
+			{ 
+				_OrderBy = value;
+				OnPropertyChanged("OrderBy");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -133,6 +143,9 @@ namespace Kaltura
 							this._Filters.Add((KalturaReportFilter)KalturaObjectFactory.Create(arrayNode, "KalturaReportFilter"));
 						}
 						continue;
+					case "orderBy":
+						this._OrderBy = txt;
+						continue;
 				}
 			}
 		}
@@ -149,6 +162,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("utcOffset", this._UtcOffset);
 			kparams.AddIfNotNull("dimensions", this._Dimensions);
 			kparams.AddIfNotNull("filters", this._Filters);
+			kparams.AddIfNotNull("orderBy", this._OrderBy);
 			return kparams;
 		}
 		#endregion

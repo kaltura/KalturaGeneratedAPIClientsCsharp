@@ -37,6 +37,7 @@ namespace Kaltura
 		private string _Description = null;
 		private string _RuleData = null;
 		private string _Message = null;
+		private string _Code = null;
 		private IList<KalturaRuleAction> _Actions;
 		private IList<KalturaCondition> _Conditions;
 		private IList<KalturaContextTypeHolder> _Contexts;
@@ -70,6 +71,15 @@ namespace Kaltura
 			{ 
 				_Message = value;
 				OnPropertyChanged("Message");
+			}
+		}
+		public string Code
+		{
+			get { return _Code; }
+			set 
+			{ 
+				_Code = value;
+				OnPropertyChanged("Code");
 			}
 		}
 		public new IList<KalturaRuleAction> Actions
@@ -140,6 +150,9 @@ namespace Kaltura
 					case "message":
 						this._Message = txt;
 						continue;
+					case "code":
+						this._Code = txt;
+						continue;
 					case "actions":
 						this._Actions = new List<KalturaRuleAction>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
@@ -180,6 +193,7 @@ namespace Kaltura
 			kparams.AddIfNotNull("description", this._Description);
 			kparams.AddIfNotNull("ruleData", this._RuleData);
 			kparams.AddIfNotNull("message", this._Message);
+			kparams.AddIfNotNull("code", this._Code);
 			kparams.AddIfNotNull("actions", this._Actions);
 			kparams.AddIfNotNull("conditions", this._Conditions);
 			kparams.AddIfNotNull("contexts", this._Contexts);

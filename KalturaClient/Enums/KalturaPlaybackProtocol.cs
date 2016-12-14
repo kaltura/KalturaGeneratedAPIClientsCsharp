@@ -42,6 +42,7 @@ namespace Kaltura
 		public static readonly KalturaPlaybackProtocol RTMP = new KalturaPlaybackProtocol("rtmp");
 		public static readonly KalturaPlaybackProtocol RTSP = new KalturaPlaybackProtocol("rtsp");
 		public static readonly KalturaPlaybackProtocol SILVER_LIGHT = new KalturaPlaybackProtocol("sl");
+		public static readonly KalturaPlaybackProtocol URL = new KalturaPlaybackProtocol("url");
 
 		private KalturaPlaybackProtocol(string name) : base(name) { }
 	}

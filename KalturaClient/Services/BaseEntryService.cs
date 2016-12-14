@@ -398,16 +398,16 @@ namespace Kaltura
 			return (KalturaBaseEntry)KalturaObjectFactory.Create(result, "KalturaBaseEntry");
 		}
 
-		public KalturaPlaybackContextResult GetPlaybackContext(string entryId, KalturaEntryContextDataParams contextDataParams)
+		public KalturaPlaybackContextOptions GetPlaybackContext(string entryId, KalturaPlaybackContextOptions contextDataParams)
 		{
 			KalturaParams kparams = new KalturaParams();
 			kparams.AddIfNotNull("entryId", entryId);
 			kparams.AddIfNotNull("contextDataParams", contextDataParams);
-			_Client.QueueServiceCall("baseentry", "getPlaybackContext", "KalturaPlaybackContextResult", kparams);
+			_Client.QueueServiceCall("baseentry", "getPlaybackContext", "KalturaPlaybackContextOptions", kparams);
 			if (this._Client.IsMultiRequest)
 				return null;
 			XmlElement result = _Client.DoQueue();
-			return (KalturaPlaybackContextResult)KalturaObjectFactory.Create(result, "KalturaPlaybackContextResult");
+			return (KalturaPlaybackContextOptions)KalturaObjectFactory.Create(result, "KalturaPlaybackContextOptions");
 		}
 	}
 }

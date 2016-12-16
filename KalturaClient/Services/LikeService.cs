@@ -29,82 +29,233 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaLikeService : KalturaServiceBase
+	public class LikeLikeRequestBuilder : RequestBuilder<bool>
 	{
-	public KalturaLikeService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+
+		public LikeLikeRequestBuilder()
+			: base("like_like", "like")
 		{
 		}
 
-		public bool Like(string entryId)
+		public LikeLikeRequestBuilder(string entryId)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("entryId", entryId);
-			_Client.QueueServiceCall("like_like", "like", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return false;
-			XmlElement result = _Client.DoQueue();
+			this.EntryId = entryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			if (result.InnerText.Equals("1") || result.InnerText.ToLower().Equals("true"))
 				return true;
 			return false;
 		}
+	}
 
-		public bool Unlike(string entryId)
+	public class LikeUnlikeRequestBuilder : RequestBuilder<bool>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		#endregion
+
+		public string EntryId
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("entryId", entryId);
-			_Client.QueueServiceCall("like_like", "unlike", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return false;
-			XmlElement result = _Client.DoQueue();
+			set;
+			get;
+		}
+
+		public LikeUnlikeRequestBuilder()
+			: base("like_like", "unlike")
+		{
+		}
+
+		public LikeUnlikeRequestBuilder(string entryId)
+			: this()
+		{
+			this.EntryId = entryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			if (result.InnerText.Equals("1") || result.InnerText.ToLower().Equals("true"))
 				return true;
 			return false;
 		}
+	}
 
-		public bool CheckLikeExists(string entryId)
+	public class LikeCheckLikeExistsRequestBuilder : RequestBuilder<bool>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string USER_ID = "userId";
+		#endregion
+
+		public string EntryId
 		{
-			return this.CheckLikeExists(entryId, null);
+			set;
+			get;
+		}
+		public string UserId
+		{
+			set;
+			get;
 		}
 
-		public bool CheckLikeExists(string entryId, string userId)
+		public LikeCheckLikeExistsRequestBuilder()
+			: base("like_like", "checkLikeExists")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("entryId", entryId);
-			kparams.AddIfNotNull("userId", userId);
-			_Client.QueueServiceCall("like_like", "checkLikeExists", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return false;
-			XmlElement result = _Client.DoQueue();
+		}
+
+		public LikeCheckLikeExistsRequestBuilder(string entryId, string userId)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.UserId = userId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("userId"))
+				kparams.AddIfNotNull("userId", UserId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			if (result.InnerText.Equals("1") || result.InnerText.ToLower().Equals("true"))
 				return true;
 			return false;
 		}
+	}
 
-		public KalturaLikeListResponse List()
+	public class LikeListRequestBuilder : RequestBuilder<ListResponse<Like>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public LikeFilter Filter
 		{
-			return this.List(null);
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
 		}
 
-		public KalturaLikeListResponse List(KalturaLikeFilter filter)
+		public LikeListRequestBuilder()
+			: base("like_like", "list")
 		{
-			return this.List(filter, null);
 		}
 
-		public KalturaLikeListResponse List(KalturaLikeFilter filter, KalturaFilterPager pager)
+		public LikeListRequestBuilder(LikeFilter filter, FilterPager pager)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("like_like", "list", "KalturaLikeListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaLikeListResponse)KalturaObjectFactory.Create(result, "KalturaLikeListResponse");
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<Like>>(result);
+		}
+	}
+
+
+	public class LikeService
+	{
+		private LikeService()
+		{
+		}
+
+		public static LikeLikeRequestBuilder Like(string entryId)
+		{
+			return new LikeLikeRequestBuilder(entryId);
+		}
+
+		public static LikeUnlikeRequestBuilder Unlike(string entryId)
+		{
+			return new LikeUnlikeRequestBuilder(entryId);
+		}
+
+		public static LikeCheckLikeExistsRequestBuilder CheckLikeExists(string entryId, string userId = null)
+		{
+			return new LikeCheckLikeExistsRequestBuilder(entryId, userId);
+		}
+
+		public static LikeListRequestBuilder List(LikeFilter filter = null, FilterPager pager = null)
+		{
+			return new LikeListRequestBuilder(filter, pager);
 		}
 	}
 }

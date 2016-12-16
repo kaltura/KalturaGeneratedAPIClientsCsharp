@@ -29,68 +29,245 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaSearchService : KalturaServiceBase
+	public class SearchSearchRequestBuilder : RequestBuilder<SearchResultResponse>
 	{
-	public KalturaSearchService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string SEARCH = "search";
+		public const string PAGER = "pager";
+		#endregion
+
+		public Search Search
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public SearchSearchRequestBuilder()
+			: base("search", "search")
 		{
 		}
 
-		public KalturaSearchResultResponse Search(KalturaSearch search)
+		public SearchSearchRequestBuilder(Search search, FilterPager pager)
+			: this()
 		{
-			return this.Search(search, null);
+			this.Search = search;
+			this.Pager = pager;
 		}
 
-		public KalturaSearchResultResponse Search(KalturaSearch search, KalturaFilterPager pager)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("search", search);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("search", "search", "KalturaSearchResultResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaSearchResultResponse)KalturaObjectFactory.Create(result, "KalturaSearchResultResponse");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("search"))
+				kparams.AddIfNotNull("search", Search);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
 		}
 
-		public KalturaSearchResult GetMediaInfo(KalturaSearchResult searchResult)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("searchResult", searchResult);
-			_Client.QueueServiceCall("search", "getMediaInfo", "KalturaSearchResult", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaSearchResult)KalturaObjectFactory.Create(result, "KalturaSearchResult");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaSearchResult SearchUrl(KalturaMediaType mediaType, string url)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("mediaType", mediaType);
-			kparams.AddIfNotNull("url", url);
-			_Client.QueueServiceCall("search", "searchUrl", "KalturaSearchResult", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaSearchResult)KalturaObjectFactory.Create(result, "KalturaSearchResult");
+			return ObjectFactory.Create<SearchResultResponse>(result);
+		}
+	}
+
+	public class SearchGetMediaInfoRequestBuilder : RequestBuilder<SearchResult>
+	{
+		#region Constants
+		public const string SEARCH_RESULT = "searchResult";
+		#endregion
+
+		public SearchResult SearchResult
+		{
+			set;
+			get;
 		}
 
-		public KalturaSearchAuthData ExternalLogin(KalturaSearchProviderType searchSource, string userName, string password)
+		public SearchGetMediaInfoRequestBuilder()
+			: base("search", "getMediaInfo")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("searchSource", searchSource);
-			kparams.AddIfNotNull("userName", userName);
-			kparams.AddIfNotNull("password", password);
-			_Client.QueueServiceCall("search", "externalLogin", "KalturaSearchAuthData", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaSearchAuthData)KalturaObjectFactory.Create(result, "KalturaSearchAuthData");
+		}
+
+		public SearchGetMediaInfoRequestBuilder(SearchResult searchResult)
+			: this()
+		{
+			this.SearchResult = searchResult;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("searchResult"))
+				kparams.AddIfNotNull("searchResult", SearchResult);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<SearchResult>(result);
+		}
+	}
+
+	public class SearchSearchUrlRequestBuilder : RequestBuilder<SearchResult>
+	{
+		#region Constants
+		public const string MEDIA_TYPE = "mediaType";
+		public const string URL = "url";
+		#endregion
+
+		public MediaType MediaType
+		{
+			set;
+			get;
+		}
+		public string Url
+		{
+			set;
+			get;
+		}
+
+		public SearchSearchUrlRequestBuilder()
+			: base("search", "searchUrl")
+		{
+		}
+
+		public SearchSearchUrlRequestBuilder(MediaType mediaType, string url)
+			: this()
+		{
+			this.MediaType = mediaType;
+			this.Url = url;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("mediaType"))
+				kparams.AddIfNotNull("mediaType", MediaType);
+			if (!isMapped("url"))
+				kparams.AddIfNotNull("url", Url);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<SearchResult>(result);
+		}
+	}
+
+	public class SearchExternalLoginRequestBuilder : RequestBuilder<SearchAuthData>
+	{
+		#region Constants
+		public const string SEARCH_SOURCE = "searchSource";
+		public const string USER_NAME = "userName";
+		public const string PASSWORD = "password";
+		#endregion
+
+		public SearchProviderType SearchSource
+		{
+			set;
+			get;
+		}
+		public string UserName
+		{
+			set;
+			get;
+		}
+		public string Password
+		{
+			set;
+			get;
+		}
+
+		public SearchExternalLoginRequestBuilder()
+			: base("search", "externalLogin")
+		{
+		}
+
+		public SearchExternalLoginRequestBuilder(SearchProviderType searchSource, string userName, string password)
+			: this()
+		{
+			this.SearchSource = searchSource;
+			this.UserName = userName;
+			this.Password = password;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("searchSource"))
+				kparams.AddIfNotNull("searchSource", SearchSource);
+			if (!isMapped("userName"))
+				kparams.AddIfNotNull("userName", UserName);
+			if (!isMapped("password"))
+				kparams.AddIfNotNull("password", Password);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<SearchAuthData>(result);
+		}
+	}
+
+
+	public class SearchService
+	{
+		private SearchService()
+		{
+		}
+
+		public static SearchSearchRequestBuilder Search(Search search, FilterPager pager = null)
+		{
+			return new SearchSearchRequestBuilder(search, pager);
+		}
+
+		public static SearchGetMediaInfoRequestBuilder GetMediaInfo(SearchResult searchResult)
+		{
+			return new SearchGetMediaInfoRequestBuilder(searchResult);
+		}
+
+		public static SearchSearchUrlRequestBuilder SearchUrl(MediaType mediaType, string url)
+		{
+			return new SearchSearchUrlRequestBuilder(mediaType, url);
+		}
+
+		public static SearchExternalLoginRequestBuilder ExternalLogin(SearchProviderType searchSource, string userName, string password)
+		{
+			return new SearchExternalLoginRequestBuilder(searchSource, userName, password);
 		}
 	}
 }

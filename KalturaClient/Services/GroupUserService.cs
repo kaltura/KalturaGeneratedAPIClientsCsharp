@@ -29,59 +29,179 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaGroupUserService : KalturaServiceBase
+	public class GroupUserAddRequestBuilder : RequestBuilder<GroupUser>
 	{
-	public KalturaGroupUserService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string GROUP_USER = "groupUser";
+		#endregion
+
+		public GroupUser GroupUser
+		{
+			set;
+			get;
+		}
+
+		public GroupUserAddRequestBuilder()
+			: base("groupuser", "add")
 		{
 		}
 
-		public KalturaGroupUser Add(KalturaGroupUser groupUser)
+		public GroupUserAddRequestBuilder(GroupUser groupUser)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("groupUser", groupUser);
-			_Client.QueueServiceCall("groupuser", "add", "KalturaGroupUser", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaGroupUser)KalturaObjectFactory.Create(result, "KalturaGroupUser");
+			this.GroupUser = groupUser;
 		}
 
-		public void Delete(string userId, string groupId)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("userId", userId);
-			kparams.AddIfNotNull("groupId", groupId);
-			_Client.QueueServiceCall("groupuser", "delete", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("groupUser"))
+				kparams.AddIfNotNull("groupUser", GroupUser);
+			return kparams;
 		}
 
-		public KalturaGroupUserListResponse List()
+		public override Files getFiles()
 		{
-			return this.List(null);
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaGroupUserListResponse List(KalturaGroupUserFilter filter)
+		public override object Deserialize(XmlElement result)
 		{
-			return this.List(filter, null);
+			return ObjectFactory.Create<GroupUser>(result);
+		}
+	}
+
+	public class GroupUserDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string USER_ID = "userId";
+		public const string GROUP_ID = "groupId";
+		#endregion
+
+		public string UserId
+		{
+			set;
+			get;
+		}
+		public string GroupId
+		{
+			set;
+			get;
 		}
 
-		public KalturaGroupUserListResponse List(KalturaGroupUserFilter filter, KalturaFilterPager pager)
+		public GroupUserDeleteRequestBuilder()
+			: base("groupuser", "delete")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("groupuser", "list", "KalturaGroupUserListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaGroupUserListResponse)KalturaObjectFactory.Create(result, "KalturaGroupUserListResponse");
+		}
+
+		public GroupUserDeleteRequestBuilder(string userId, string groupId)
+			: this()
+		{
+			this.UserId = userId;
+			this.GroupId = groupId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("userId"))
+				kparams.AddIfNotNull("userId", UserId);
+			if (!isMapped("groupId"))
+				kparams.AddIfNotNull("groupId", GroupId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class GroupUserListRequestBuilder : RequestBuilder<ListResponse<GroupUser>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public GroupUserFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public GroupUserListRequestBuilder()
+			: base("groupuser", "list")
+		{
+		}
+
+		public GroupUserListRequestBuilder(GroupUserFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<GroupUser>>(result);
+		}
+	}
+
+
+	public class GroupUserService
+	{
+		private GroupUserService()
+		{
+		}
+
+		public static GroupUserAddRequestBuilder Add(GroupUser groupUser)
+		{
+			return new GroupUserAddRequestBuilder(groupUser);
+		}
+
+		public static GroupUserDeleteRequestBuilder Delete(string userId, string groupId)
+		{
+			return new GroupUserDeleteRequestBuilder(userId, groupId);
+		}
+
+		public static GroupUserListRequestBuilder List(GroupUserFilter filter = null, FilterPager pager = null)
+		{
+			return new GroupUserListRequestBuilder(filter, pager);
 		}
 	}
 }

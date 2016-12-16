@@ -29,97 +29,323 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaExternalMediaService : KalturaServiceBase
+	public class ExternalMediaAddRequestBuilder : RequestBuilder<ExternalMediaEntry>
 	{
-	public KalturaExternalMediaService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string ENTRY = "entry";
+		#endregion
+
+		public ExternalMediaEntry Entry
+		{
+			set;
+			get;
+		}
+
+		public ExternalMediaAddRequestBuilder()
+			: base("externalmedia_externalmedia", "add")
 		{
 		}
 
-		public KalturaExternalMediaEntry Add(KalturaExternalMediaEntry entry)
+		public ExternalMediaAddRequestBuilder(ExternalMediaEntry entry)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("entry", entry);
-			_Client.QueueServiceCall("externalmedia_externalmedia", "add", "KalturaExternalMediaEntry", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaExternalMediaEntry)KalturaObjectFactory.Create(result, "KalturaExternalMediaEntry");
+			this.Entry = entry;
 		}
 
-		public KalturaExternalMediaEntry Get(string id)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("externalmedia_externalmedia", "get", "KalturaExternalMediaEntry", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaExternalMediaEntry)KalturaObjectFactory.Create(result, "KalturaExternalMediaEntry");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entry"))
+				kparams.AddIfNotNull("entry", Entry);
+			return kparams;
 		}
 
-		public KalturaExternalMediaEntry Update(string id, KalturaExternalMediaEntry entry)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("entry", entry);
-			_Client.QueueServiceCall("externalmedia_externalmedia", "update", "KalturaExternalMediaEntry", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaExternalMediaEntry)KalturaObjectFactory.Create(result, "KalturaExternalMediaEntry");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public void Delete(string id)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("externalmedia_externalmedia", "delete", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			return ObjectFactory.Create<ExternalMediaEntry>(result);
+		}
+	}
+
+	public class ExternalMediaGetRequestBuilder : RequestBuilder<ExternalMediaEntry>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
 		}
 
-		public KalturaExternalMediaEntryListResponse List()
+		public ExternalMediaGetRequestBuilder()
+			: base("externalmedia_externalmedia", "get")
 		{
-			return this.List(null);
 		}
 
-		public KalturaExternalMediaEntryListResponse List(KalturaExternalMediaEntryFilter filter)
+		public ExternalMediaGetRequestBuilder(string id)
+			: this()
 		{
-			return this.List(filter, null);
+			this.Id = id;
 		}
 
-		public KalturaExternalMediaEntryListResponse List(KalturaExternalMediaEntryFilter filter, KalturaFilterPager pager)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("externalmedia_externalmedia", "list", "KalturaExternalMediaEntryListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaExternalMediaEntryListResponse)KalturaObjectFactory.Create(result, "KalturaExternalMediaEntryListResponse");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
 		}
 
-		public int Count()
+		public override Files getFiles()
 		{
-			return this.Count(null);
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public int Count(KalturaExternalMediaEntryFilter filter)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			_Client.QueueServiceCall("externalmedia_externalmedia", "count", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return 0;
-			XmlElement result = _Client.DoQueue();
+			return ObjectFactory.Create<ExternalMediaEntry>(result);
+		}
+	}
+
+	public class ExternalMediaUpdateRequestBuilder : RequestBuilder<ExternalMediaEntry>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string ENTRY = "entry";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public ExternalMediaEntry Entry
+		{
+			set;
+			get;
+		}
+
+		public ExternalMediaUpdateRequestBuilder()
+			: base("externalmedia_externalmedia", "update")
+		{
+		}
+
+		public ExternalMediaUpdateRequestBuilder(string id, ExternalMediaEntry entry)
+			: this()
+		{
+			this.Id = id;
+			this.Entry = entry;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("entry"))
+				kparams.AddIfNotNull("entry", Entry);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ExternalMediaEntry>(result);
+		}
+	}
+
+	public class ExternalMediaDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+
+		public ExternalMediaDeleteRequestBuilder()
+			: base("externalmedia_externalmedia", "delete")
+		{
+		}
+
+		public ExternalMediaDeleteRequestBuilder(string id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class ExternalMediaListRequestBuilder : RequestBuilder<ListResponse<ExternalMediaEntry>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public ExternalMediaEntryFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public ExternalMediaListRequestBuilder()
+			: base("externalmedia_externalmedia", "list")
+		{
+		}
+
+		public ExternalMediaListRequestBuilder(ExternalMediaEntryFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<ExternalMediaEntry>>(result);
+		}
+	}
+
+	public class ExternalMediaCountRequestBuilder : RequestBuilder<int>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		#endregion
+
+		public ExternalMediaEntryFilter Filter
+		{
+			set;
+			get;
+		}
+
+		public ExternalMediaCountRequestBuilder()
+			: base("externalmedia_externalmedia", "count")
+		{
+		}
+
+		public ExternalMediaCountRequestBuilder(ExternalMediaEntryFilter filter)
+			: this()
+		{
+			this.Filter = filter;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			return int.Parse(result.InnerText);
+		}
+	}
+
+
+	public class ExternalMediaService
+	{
+		private ExternalMediaService()
+		{
+		}
+
+		public static ExternalMediaAddRequestBuilder Add(ExternalMediaEntry entry)
+		{
+			return new ExternalMediaAddRequestBuilder(entry);
+		}
+
+		public static ExternalMediaGetRequestBuilder Get(string id)
+		{
+			return new ExternalMediaGetRequestBuilder(id);
+		}
+
+		public static ExternalMediaUpdateRequestBuilder Update(string id, ExternalMediaEntry entry)
+		{
+			return new ExternalMediaUpdateRequestBuilder(id, entry);
+		}
+
+		public static ExternalMediaDeleteRequestBuilder Delete(string id)
+		{
+			return new ExternalMediaDeleteRequestBuilder(id);
+		}
+
+		public static ExternalMediaListRequestBuilder List(ExternalMediaEntryFilter filter = null, FilterPager pager = null)
+		{
+			return new ExternalMediaListRequestBuilder(filter, pager);
+		}
+
+		public static ExternalMediaCountRequestBuilder Count(ExternalMediaEntryFilter filter = null)
+		{
+			return new ExternalMediaCountRequestBuilder(filter);
 		}
 	}
 }

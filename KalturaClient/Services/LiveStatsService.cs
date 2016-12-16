@@ -29,28 +29,67 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaLiveStatsService : KalturaServiceBase
+	public class LiveStatsCollectRequestBuilder : RequestBuilder<bool>
 	{
-	public KalturaLiveStatsService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string EVENT = "event";
+		#endregion
+
+		public LiveStatsEvent Kevent
+		{
+			set;
+			get;
+		}
+
+		public LiveStatsCollectRequestBuilder()
+			: base("livestats", "collect")
 		{
 		}
 
-		public bool Collect(KalturaLiveStatsEvent kevent)
+		public LiveStatsCollectRequestBuilder(LiveStatsEvent kevent)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("event", kevent);
-			_Client.QueueServiceCall("livestats", "collect", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return false;
-			XmlElement result = _Client.DoQueue();
+			this.Kevent = kevent;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("kevent"))
+				kparams.AddIfNotNull("kevent", Kevent);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			if (result.InnerText.Equals("1") || result.InnerText.ToLower().Equals("true"))
 				return true;
 			return false;
+		}
+	}
+
+
+	public class LiveStatsService
+	{
+		private LiveStatsService()
+		{
+		}
+
+		public static LiveStatsCollectRequestBuilder Collect(LiveStatsEvent kevent)
+		{
+			return new LiveStatsCollectRequestBuilder(kevent);
 		}
 	}
 }

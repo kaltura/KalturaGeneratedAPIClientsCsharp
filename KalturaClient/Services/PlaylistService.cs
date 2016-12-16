@@ -29,226 +29,665 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaPlaylistService : KalturaServiceBase
+	public class PlaylistAddRequestBuilder : RequestBuilder<Playlist>
 	{
-	public KalturaPlaylistService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string PLAYLIST = "playlist";
+		public const string UPDATE_STATS = "updateStats";
+		#endregion
+
+		public Playlist Playlist
+		{
+			set;
+			get;
+		}
+		public bool UpdateStats
+		{
+			set;
+			get;
+		}
+
+		public PlaylistAddRequestBuilder()
+			: base("playlist", "add")
 		{
 		}
 
-		public KalturaPlaylist Add(KalturaPlaylist playlist)
+		public PlaylistAddRequestBuilder(Playlist playlist, bool updateStats)
+			: this()
 		{
-			return this.Add(playlist, false);
+			this.Playlist = playlist;
+			this.UpdateStats = updateStats;
 		}
 
-		public KalturaPlaylist Add(KalturaPlaylist playlist, bool updateStats)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("playlist", playlist);
-			kparams.AddIfNotNull("updateStats", updateStats);
-			_Client.QueueServiceCall("playlist", "add", "KalturaPlaylist", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaPlaylist)KalturaObjectFactory.Create(result, "KalturaPlaylist");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("playlist"))
+				kparams.AddIfNotNull("playlist", Playlist);
+			if (!isMapped("updateStats"))
+				kparams.AddIfNotNull("updateStats", UpdateStats);
+			return kparams;
 		}
 
-		public KalturaPlaylist Get(string id)
+		public override Files getFiles()
 		{
-			return this.Get(id, -1);
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaPlaylist Get(string id, int version)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("version", version);
-			_Client.QueueServiceCall("playlist", "get", "KalturaPlaylist", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaPlaylist)KalturaObjectFactory.Create(result, "KalturaPlaylist");
+			return ObjectFactory.Create<Playlist>(result);
+		}
+	}
+
+	public class PlaylistGetRequestBuilder : RequestBuilder<Playlist>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string VERSION = "version";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public int Version
+		{
+			set;
+			get;
 		}
 
-		public KalturaPlaylist Update(string id, KalturaPlaylist playlist)
+		public PlaylistGetRequestBuilder()
+			: base("playlist", "get")
 		{
-			return this.Update(id, playlist, false);
 		}
 
-		public KalturaPlaylist Update(string id, KalturaPlaylist playlist, bool updateStats)
+		public PlaylistGetRequestBuilder(string id, int version)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("playlist", playlist);
-			kparams.AddIfNotNull("updateStats", updateStats);
-			_Client.QueueServiceCall("playlist", "update", "KalturaPlaylist", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaPlaylist)KalturaObjectFactory.Create(result, "KalturaPlaylist");
+			this.Id = id;
+			this.Version = version;
 		}
 
-		public void Delete(string id)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("playlist", "delete", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("version"))
+				kparams.AddIfNotNull("version", Version);
+			return kparams;
 		}
 
-		public KalturaPlaylist Clone(string id)
+		public override Files getFiles()
 		{
-			return this.Clone(id, null);
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaPlaylist Clone(string id, KalturaPlaylist newPlaylist)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("newPlaylist", newPlaylist);
-			_Client.QueueServiceCall("playlist", "clone", "KalturaPlaylist", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaPlaylist)KalturaObjectFactory.Create(result, "KalturaPlaylist");
+			return ObjectFactory.Create<Playlist>(result);
+		}
+	}
+
+	public class PlaylistUpdateRequestBuilder : RequestBuilder<Playlist>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string PLAYLIST = "playlist";
+		public const string UPDATE_STATS = "updateStats";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public Playlist Playlist
+		{
+			set;
+			get;
+		}
+		public bool UpdateStats
+		{
+			set;
+			get;
 		}
 
-		public KalturaPlaylistListResponse List()
+		public PlaylistUpdateRequestBuilder()
+			: base("playlist", "update")
 		{
-			return this.List(null);
 		}
 
-		public KalturaPlaylistListResponse List(KalturaPlaylistFilter filter)
+		public PlaylistUpdateRequestBuilder(string id, Playlist playlist, bool updateStats)
+			: this()
 		{
-			return this.List(filter, null);
+			this.Id = id;
+			this.Playlist = playlist;
+			this.UpdateStats = updateStats;
 		}
 
-		public KalturaPlaylistListResponse List(KalturaPlaylistFilter filter, KalturaFilterPager pager)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("playlist", "list", "KalturaPlaylistListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaPlaylistListResponse)KalturaObjectFactory.Create(result, "KalturaPlaylistListResponse");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("playlist"))
+				kparams.AddIfNotNull("playlist", Playlist);
+			if (!isMapped("updateStats"))
+				kparams.AddIfNotNull("updateStats", UpdateStats);
+			return kparams;
 		}
 
-		public IList<KalturaBaseEntry> Execute(string id)
+		public override Files getFiles()
 		{
-			return this.Execute(id, "");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public IList<KalturaBaseEntry> Execute(string id, string detailed)
+		public override object Deserialize(XmlElement result)
 		{
-			return this.Execute(id, detailed, null);
+			return ObjectFactory.Create<Playlist>(result);
+		}
+	}
+
+	public class PlaylistDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
 		}
 
-		public IList<KalturaBaseEntry> Execute(string id, string detailed, KalturaContext playlistContext)
+		public PlaylistDeleteRequestBuilder()
+			: base("playlist", "delete")
 		{
-			return this.Execute(id, detailed, playlistContext, null);
 		}
 
-		public IList<KalturaBaseEntry> Execute(string id, string detailed, KalturaContext playlistContext, KalturaMediaEntryFilterForPlaylist filter)
+		public PlaylistDeleteRequestBuilder(string id)
+			: this()
 		{
-			return this.Execute(id, detailed, playlistContext, filter, null);
+			this.Id = id;
 		}
 
-		public IList<KalturaBaseEntry> Execute(string id, string detailed, KalturaContext playlistContext, KalturaMediaEntryFilterForPlaylist filter, KalturaFilterPager pager)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("detailed", detailed);
-			kparams.AddIfNotNull("playlistContext", playlistContext);
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("playlist", "execute", "KalturaBaseEntry", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			IList<KalturaBaseEntry> list = new List<KalturaBaseEntry>();
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class PlaylistCloneRequestBuilder : RequestBuilder<Playlist>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string NEW_PLAYLIST = "newPlaylist";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public Playlist NewPlaylist
+		{
+			set;
+			get;
+		}
+
+		public PlaylistCloneRequestBuilder()
+			: base("playlist", "clone")
+		{
+		}
+
+		public PlaylistCloneRequestBuilder(string id, Playlist newPlaylist)
+			: this()
+		{
+			this.Id = id;
+			this.NewPlaylist = newPlaylist;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("newPlaylist"))
+				kparams.AddIfNotNull("newPlaylist", NewPlaylist);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<Playlist>(result);
+		}
+	}
+
+	public class PlaylistListRequestBuilder : RequestBuilder<ListResponse<Playlist>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public PlaylistFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public PlaylistListRequestBuilder()
+			: base("playlist", "list")
+		{
+		}
+
+		public PlaylistListRequestBuilder(PlaylistFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<Playlist>>(result);
+		}
+	}
+
+	public class PlaylistExecuteRequestBuilder : RequestBuilder<IList<BaseEntry>>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string DETAILED = "detailed";
+		public const string PLAYLIST_CONTEXT = "playlistContext";
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public string Detailed
+		{
+			set;
+			get;
+		}
+		public Context PlaylistContext
+		{
+			set;
+			get;
+		}
+		public MediaEntryFilterForPlaylist Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public PlaylistExecuteRequestBuilder()
+			: base("playlist", "execute")
+		{
+		}
+
+		public PlaylistExecuteRequestBuilder(string id, string detailed, Context playlistContext, MediaEntryFilterForPlaylist filter, FilterPager pager)
+			: this()
+		{
+			this.Id = id;
+			this.Detailed = detailed;
+			this.PlaylistContext = playlistContext;
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("detailed"))
+				kparams.AddIfNotNull("detailed", Detailed);
+			if (!isMapped("playlistContext"))
+				kparams.AddIfNotNull("playlistContext", PlaylistContext);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			IList<BaseEntry> list = new List<BaseEntry>();
 			foreach(XmlElement node in result.ChildNodes)
 			{
-				list.Add((KalturaBaseEntry)KalturaObjectFactory.Create(node, "KalturaBaseEntry"));
+				list.Add(ObjectFactory.Create<BaseEntry>(node));
 			}
 			return list;
 		}
+	}
 
-		public IList<KalturaBaseEntry> ExecuteFromContent(KalturaPlaylistType playlistType, string playlistContent)
+	public class PlaylistExecuteFromContentRequestBuilder : RequestBuilder<IList<BaseEntry>>
+	{
+		#region Constants
+		public const string PLAYLIST_TYPE = "playlistType";
+		public const string PLAYLIST_CONTENT = "playlistContent";
+		public const string DETAILED = "detailed";
+		public const string PAGER = "pager";
+		#endregion
+
+		public PlaylistType PlaylistType
 		{
-			return this.ExecuteFromContent(playlistType, playlistContent, "");
+			set;
+			get;
+		}
+		public string PlaylistContent
+		{
+			set;
+			get;
+		}
+		public string Detailed
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
 		}
 
-		public IList<KalturaBaseEntry> ExecuteFromContent(KalturaPlaylistType playlistType, string playlistContent, string detailed)
+		public PlaylistExecuteFromContentRequestBuilder()
+			: base("playlist", "executeFromContent")
 		{
-			return this.ExecuteFromContent(playlistType, playlistContent, detailed, null);
 		}
 
-		public IList<KalturaBaseEntry> ExecuteFromContent(KalturaPlaylistType playlistType, string playlistContent, string detailed, KalturaFilterPager pager)
+		public PlaylistExecuteFromContentRequestBuilder(PlaylistType playlistType, string playlistContent, string detailed, FilterPager pager)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("playlistType", playlistType);
-			kparams.AddIfNotNull("playlistContent", playlistContent);
-			kparams.AddIfNotNull("detailed", detailed);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("playlist", "executeFromContent", "KalturaBaseEntry", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			IList<KalturaBaseEntry> list = new List<KalturaBaseEntry>();
+			this.PlaylistType = playlistType;
+			this.PlaylistContent = playlistContent;
+			this.Detailed = detailed;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("playlistType"))
+				kparams.AddIfNotNull("playlistType", PlaylistType);
+			if (!isMapped("playlistContent"))
+				kparams.AddIfNotNull("playlistContent", PlaylistContent);
+			if (!isMapped("detailed"))
+				kparams.AddIfNotNull("detailed", Detailed);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			IList<BaseEntry> list = new List<BaseEntry>();
 			foreach(XmlElement node in result.ChildNodes)
 			{
-				list.Add((KalturaBaseEntry)KalturaObjectFactory.Create(node, "KalturaBaseEntry"));
+				list.Add(ObjectFactory.Create<BaseEntry>(node));
 			}
 			return list;
 		}
+	}
 
-		public IList<KalturaBaseEntry> ExecuteFromFilters(IList<KalturaMediaEntryFilterForPlaylist> filters, int totalResults)
+	public class PlaylistExecuteFromFiltersRequestBuilder : RequestBuilder<IList<BaseEntry>>
+	{
+		#region Constants
+		public const string FILTERS = "filters";
+		public const string TOTAL_RESULTS = "totalResults";
+		public const string DETAILED = "detailed";
+		public const string PAGER = "pager";
+		#endregion
+
+		public IList<MediaEntryFilterForPlaylist> Filters
 		{
-			return this.ExecuteFromFilters(filters, totalResults, "1");
+			set;
+			get;
+		}
+		public int TotalResults
+		{
+			set;
+			get;
+		}
+		public string Detailed
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
 		}
 
-		public IList<KalturaBaseEntry> ExecuteFromFilters(IList<KalturaMediaEntryFilterForPlaylist> filters, int totalResults, string detailed)
+		public PlaylistExecuteFromFiltersRequestBuilder()
+			: base("playlist", "executeFromFilters")
 		{
-			return this.ExecuteFromFilters(filters, totalResults, detailed, null);
 		}
 
-		public IList<KalturaBaseEntry> ExecuteFromFilters(IList<KalturaMediaEntryFilterForPlaylist> filters, int totalResults, string detailed, KalturaFilterPager pager)
+		public PlaylistExecuteFromFiltersRequestBuilder(IList<MediaEntryFilterForPlaylist> filters, int totalResults, string detailed, FilterPager pager)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filters", filters);
-			kparams.AddIfNotNull("totalResults", totalResults);
-			kparams.AddIfNotNull("detailed", detailed);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("playlist", "executeFromFilters", "KalturaBaseEntry", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			IList<KalturaBaseEntry> list = new List<KalturaBaseEntry>();
+			this.Filters = filters;
+			this.TotalResults = totalResults;
+			this.Detailed = detailed;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filters"))
+				kparams.AddIfNotNull("filters", Filters);
+			if (!isMapped("totalResults"))
+				kparams.AddIfNotNull("totalResults", TotalResults);
+			if (!isMapped("detailed"))
+				kparams.AddIfNotNull("detailed", Detailed);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			IList<BaseEntry> list = new List<BaseEntry>();
 			foreach(XmlElement node in result.ChildNodes)
 			{
-				list.Add((KalturaBaseEntry)KalturaObjectFactory.Create(node, "KalturaBaseEntry"));
+				list.Add(ObjectFactory.Create<BaseEntry>(node));
 			}
 			return list;
 		}
+	}
 
-		public KalturaPlaylist GetStatsFromContent(KalturaPlaylistType playlistType, string playlistContent)
+	public class PlaylistGetStatsFromContentRequestBuilder : RequestBuilder<Playlist>
+	{
+		#region Constants
+		public const string PLAYLIST_TYPE = "playlistType";
+		public const string PLAYLIST_CONTENT = "playlistContent";
+		#endregion
+
+		public PlaylistType PlaylistType
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("playlistType", playlistType);
-			kparams.AddIfNotNull("playlistContent", playlistContent);
-			_Client.QueueServiceCall("playlist", "getStatsFromContent", "KalturaPlaylist", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaPlaylist)KalturaObjectFactory.Create(result, "KalturaPlaylist");
+			set;
+			get;
+		}
+		public string PlaylistContent
+		{
+			set;
+			get;
+		}
+
+		public PlaylistGetStatsFromContentRequestBuilder()
+			: base("playlist", "getStatsFromContent")
+		{
+		}
+
+		public PlaylistGetStatsFromContentRequestBuilder(PlaylistType playlistType, string playlistContent)
+			: this()
+		{
+			this.PlaylistType = playlistType;
+			this.PlaylistContent = playlistContent;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("playlistType"))
+				kparams.AddIfNotNull("playlistType", PlaylistType);
+			if (!isMapped("playlistContent"))
+				kparams.AddIfNotNull("playlistContent", PlaylistContent);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<Playlist>(result);
+		}
+	}
+
+
+	public class PlaylistService
+	{
+		private PlaylistService()
+		{
+		}
+
+		public static PlaylistAddRequestBuilder Add(Playlist playlist, bool updateStats = false)
+		{
+			return new PlaylistAddRequestBuilder(playlist, updateStats);
+		}
+
+		public static PlaylistGetRequestBuilder Get(string id, int version = -1)
+		{
+			return new PlaylistGetRequestBuilder(id, version);
+		}
+
+		public static PlaylistUpdateRequestBuilder Update(string id, Playlist playlist, bool updateStats = false)
+		{
+			return new PlaylistUpdateRequestBuilder(id, playlist, updateStats);
+		}
+
+		public static PlaylistDeleteRequestBuilder Delete(string id)
+		{
+			return new PlaylistDeleteRequestBuilder(id);
+		}
+
+		public static PlaylistCloneRequestBuilder Clone(string id, Playlist newPlaylist = null)
+		{
+			return new PlaylistCloneRequestBuilder(id, newPlaylist);
+		}
+
+		public static PlaylistListRequestBuilder List(PlaylistFilter filter = null, FilterPager pager = null)
+		{
+			return new PlaylistListRequestBuilder(filter, pager);
+		}
+
+		public static PlaylistExecuteRequestBuilder Execute(string id, string detailed = "", Context playlistContext = null, MediaEntryFilterForPlaylist filter = null, FilterPager pager = null)
+		{
+			return new PlaylistExecuteRequestBuilder(id, detailed, playlistContext, filter, pager);
+		}
+
+		public static PlaylistExecuteFromContentRequestBuilder ExecuteFromContent(PlaylistType playlistType, string playlistContent, string detailed = "", FilterPager pager = null)
+		{
+			return new PlaylistExecuteFromContentRequestBuilder(playlistType, playlistContent, detailed, pager);
+		}
+
+		public static PlaylistExecuteFromFiltersRequestBuilder ExecuteFromFilters(IList<MediaEntryFilterForPlaylist> filters, int totalResults, string detailed = "1", FilterPager pager = null)
+		{
+			return new PlaylistExecuteFromFiltersRequestBuilder(filters, totalResults, detailed, pager);
+		}
+
+		public static PlaylistGetStatsFromContentRequestBuilder GetStatsFromContent(PlaylistType playlistType, string playlistContent)
+		{
+			return new PlaylistGetStatsFromContentRequestBuilder(playlistType, playlistContent);
 		}
 	}
 }

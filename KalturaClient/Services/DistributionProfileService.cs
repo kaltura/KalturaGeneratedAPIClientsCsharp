@@ -29,115 +29,389 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaDistributionProfileService : KalturaServiceBase
+	public class DistributionProfileAddRequestBuilder : RequestBuilder<DistributionProfile>
 	{
-	public KalturaDistributionProfileService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string DISTRIBUTION_PROFILE = "distributionProfile";
+		#endregion
+
+		public DistributionProfile DistributionProfile
+		{
+			set;
+			get;
+		}
+
+		public DistributionProfileAddRequestBuilder()
+			: base("contentdistribution_distributionprofile", "add")
 		{
 		}
 
-		public KalturaDistributionProfile Add(KalturaDistributionProfile distributionProfile)
+		public DistributionProfileAddRequestBuilder(DistributionProfile distributionProfile)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("distributionProfile", distributionProfile);
-			_Client.QueueServiceCall("contentdistribution_distributionprofile", "add", "KalturaDistributionProfile", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaDistributionProfile)KalturaObjectFactory.Create(result, "KalturaDistributionProfile");
+			this.DistributionProfile = distributionProfile;
 		}
 
-		public KalturaDistributionProfile Get(int id)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("contentdistribution_distributionprofile", "get", "KalturaDistributionProfile", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaDistributionProfile)KalturaObjectFactory.Create(result, "KalturaDistributionProfile");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("distributionProfile"))
+				kparams.AddIfNotNull("distributionProfile", DistributionProfile);
+			return kparams;
 		}
 
-		public KalturaDistributionProfile Update(int id, KalturaDistributionProfile distributionProfile)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("distributionProfile", distributionProfile);
-			_Client.QueueServiceCall("contentdistribution_distributionprofile", "update", "KalturaDistributionProfile", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaDistributionProfile)KalturaObjectFactory.Create(result, "KalturaDistributionProfile");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaDistributionProfile UpdateStatus(int id, KalturaDistributionProfileStatus status)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("status", status);
-			_Client.QueueServiceCall("contentdistribution_distributionprofile", "updateStatus", "KalturaDistributionProfile", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaDistributionProfile)KalturaObjectFactory.Create(result, "KalturaDistributionProfile");
+			return ObjectFactory.Create<DistributionProfile>(result);
+		}
+	}
+
+	public class DistributionProfileGetRequestBuilder : RequestBuilder<DistributionProfile>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
 		}
 
-		public void Delete(int id)
+		public DistributionProfileGetRequestBuilder()
+			: base("contentdistribution_distributionprofile", "get")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("contentdistribution_distributionprofile", "delete", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
 		}
 
-		public KalturaDistributionProfileListResponse List()
+		public DistributionProfileGetRequestBuilder(int id)
+			: this()
 		{
-			return this.List(null);
+			this.Id = id;
 		}
 
-		public KalturaDistributionProfileListResponse List(KalturaDistributionProfileFilter filter)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.List(filter, null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
 		}
 
-		public KalturaDistributionProfileListResponse List(KalturaDistributionProfileFilter filter, KalturaFilterPager pager)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("contentdistribution_distributionprofile", "list", "KalturaDistributionProfileListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaDistributionProfileListResponse)KalturaObjectFactory.Create(result, "KalturaDistributionProfileListResponse");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaDistributionProfileListResponse ListByPartner()
+		public override object Deserialize(XmlElement result)
 		{
-			return this.ListByPartner(null);
+			return ObjectFactory.Create<DistributionProfile>(result);
+		}
+	}
+
+	public class DistributionProfileUpdateRequestBuilder : RequestBuilder<DistributionProfile>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string DISTRIBUTION_PROFILE = "distributionProfile";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public DistributionProfile DistributionProfile
+		{
+			set;
+			get;
 		}
 
-		public KalturaDistributionProfileListResponse ListByPartner(KalturaPartnerFilter filter)
+		public DistributionProfileUpdateRequestBuilder()
+			: base("contentdistribution_distributionprofile", "update")
 		{
-			return this.ListByPartner(filter, null);
 		}
 
-		public KalturaDistributionProfileListResponse ListByPartner(KalturaPartnerFilter filter, KalturaFilterPager pager)
+		public DistributionProfileUpdateRequestBuilder(int id, DistributionProfile distributionProfile)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("contentdistribution_distributionprofile", "listByPartner", "KalturaDistributionProfileListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaDistributionProfileListResponse)KalturaObjectFactory.Create(result, "KalturaDistributionProfileListResponse");
+			this.Id = id;
+			this.DistributionProfile = distributionProfile;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("distributionProfile"))
+				kparams.AddIfNotNull("distributionProfile", DistributionProfile);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<DistributionProfile>(result);
+		}
+	}
+
+	public class DistributionProfileUpdateStatusRequestBuilder : RequestBuilder<DistributionProfile>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string STATUS = "status";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public DistributionProfileStatus Status
+		{
+			set;
+			get;
+		}
+
+		public DistributionProfileUpdateStatusRequestBuilder()
+			: base("contentdistribution_distributionprofile", "updateStatus")
+		{
+		}
+
+		public DistributionProfileUpdateStatusRequestBuilder(int id, DistributionProfileStatus status)
+			: this()
+		{
+			this.Id = id;
+			this.Status = status;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("status"))
+				kparams.AddIfNotNull("status", Status);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<DistributionProfile>(result);
+		}
+	}
+
+	public class DistributionProfileDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public DistributionProfileDeleteRequestBuilder()
+			: base("contentdistribution_distributionprofile", "delete")
+		{
+		}
+
+		public DistributionProfileDeleteRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class DistributionProfileListRequestBuilder : RequestBuilder<ListResponse<DistributionProfile>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public DistributionProfileFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public DistributionProfileListRequestBuilder()
+			: base("contentdistribution_distributionprofile", "list")
+		{
+		}
+
+		public DistributionProfileListRequestBuilder(DistributionProfileFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<DistributionProfile>>(result);
+		}
+	}
+
+	public class DistributionProfileListByPartnerRequestBuilder : RequestBuilder<ListResponse<DistributionProfile>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public PartnerFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public DistributionProfileListByPartnerRequestBuilder()
+			: base("contentdistribution_distributionprofile", "listByPartner")
+		{
+		}
+
+		public DistributionProfileListByPartnerRequestBuilder(PartnerFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<DistributionProfile>>(result);
+		}
+	}
+
+
+	public class DistributionProfileService
+	{
+		private DistributionProfileService()
+		{
+		}
+
+		public static DistributionProfileAddRequestBuilder Add(DistributionProfile distributionProfile)
+		{
+			return new DistributionProfileAddRequestBuilder(distributionProfile);
+		}
+
+		public static DistributionProfileGetRequestBuilder Get(int id)
+		{
+			return new DistributionProfileGetRequestBuilder(id);
+		}
+
+		public static DistributionProfileUpdateRequestBuilder Update(int id, DistributionProfile distributionProfile)
+		{
+			return new DistributionProfileUpdateRequestBuilder(id, distributionProfile);
+		}
+
+		public static DistributionProfileUpdateStatusRequestBuilder UpdateStatus(int id, DistributionProfileStatus status)
+		{
+			return new DistributionProfileUpdateStatusRequestBuilder(id, status);
+		}
+
+		public static DistributionProfileDeleteRequestBuilder Delete(int id)
+		{
+			return new DistributionProfileDeleteRequestBuilder(id);
+		}
+
+		public static DistributionProfileListRequestBuilder List(DistributionProfileFilter filter = null, FilterPager pager = null)
+		{
+			return new DistributionProfileListRequestBuilder(filter, pager);
+		}
+
+		public static DistributionProfileListByPartnerRequestBuilder ListByPartner(PartnerFilter filter = null, FilterPager pager = null)
+		{
+			return new DistributionProfileListByPartnerRequestBuilder(filter, pager);
 		}
 	}
 }

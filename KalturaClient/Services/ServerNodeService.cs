@@ -29,120 +29,428 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaServerNodeService : KalturaServiceBase
+	public class ServerNodeAddRequestBuilder : RequestBuilder<ServerNode>
 	{
-	public KalturaServerNodeService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string SERVER_NODE = "serverNode";
+		#endregion
+
+		public ServerNode ServerNode
+		{
+			set;
+			get;
+		}
+
+		public ServerNodeAddRequestBuilder()
+			: base("servernode", "add")
 		{
 		}
 
-		public KalturaServerNode Add(KalturaServerNode serverNode)
+		public ServerNodeAddRequestBuilder(ServerNode serverNode)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("serverNode", serverNode);
-			_Client.QueueServiceCall("servernode", "add", "KalturaServerNode", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaServerNode)KalturaObjectFactory.Create(result, "KalturaServerNode");
+			this.ServerNode = serverNode;
 		}
 
-		public KalturaServerNode Get(int serverNodeId)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("serverNodeId", serverNodeId);
-			_Client.QueueServiceCall("servernode", "get", "KalturaServerNode", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaServerNode)KalturaObjectFactory.Create(result, "KalturaServerNode");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("serverNode"))
+				kparams.AddIfNotNull("serverNode", ServerNode);
+			return kparams;
 		}
 
-		public KalturaServerNode Update(int serverNodeId, KalturaServerNode serverNode)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("serverNodeId", serverNodeId);
-			kparams.AddIfNotNull("serverNode", serverNode);
-			_Client.QueueServiceCall("servernode", "update", "KalturaServerNode", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaServerNode)KalturaObjectFactory.Create(result, "KalturaServerNode");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public void Delete(string serverNodeId)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("serverNodeId", serverNodeId);
-			_Client.QueueServiceCall("servernode", "delete", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			return ObjectFactory.Create<ServerNode>(result);
+		}
+	}
+
+	public class ServerNodeGetRequestBuilder : RequestBuilder<ServerNode>
+	{
+		#region Constants
+		public const string SERVER_NODE_ID = "serverNodeId";
+		#endregion
+
+		public int ServerNodeId
+		{
+			set;
+			get;
 		}
 
-		public KalturaServerNode Disable(string serverNodeId)
+		public ServerNodeGetRequestBuilder()
+			: base("servernode", "get")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("serverNodeId", serverNodeId);
-			_Client.QueueServiceCall("servernode", "disable", "KalturaServerNode", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaServerNode)KalturaObjectFactory.Create(result, "KalturaServerNode");
 		}
 
-		public KalturaServerNode Enable(string serverNodeId)
+		public ServerNodeGetRequestBuilder(int serverNodeId)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("serverNodeId", serverNodeId);
-			_Client.QueueServiceCall("servernode", "enable", "KalturaServerNode", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaServerNode)KalturaObjectFactory.Create(result, "KalturaServerNode");
+			this.ServerNodeId = serverNodeId;
 		}
 
-		public KalturaServerNodeListResponse List()
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.List(null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("serverNodeId"))
+				kparams.AddIfNotNull("serverNodeId", ServerNodeId);
+			return kparams;
 		}
 
-		public KalturaServerNodeListResponse List(KalturaServerNodeFilter filter)
+		public override Files getFiles()
 		{
-			return this.List(filter, null);
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaServerNodeListResponse List(KalturaServerNodeFilter filter, KalturaFilterPager pager)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("servernode", "list", "KalturaServerNodeListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaServerNodeListResponse)KalturaObjectFactory.Create(result, "KalturaServerNodeListResponse");
+			return ObjectFactory.Create<ServerNode>(result);
+		}
+	}
+
+	public class ServerNodeUpdateRequestBuilder : RequestBuilder<ServerNode>
+	{
+		#region Constants
+		public const string SERVER_NODE_ID = "serverNodeId";
+		public const string SERVER_NODE = "serverNode";
+		#endregion
+
+		public int ServerNodeId
+		{
+			set;
+			get;
+		}
+		public ServerNode ServerNode
+		{
+			set;
+			get;
 		}
 
-		public KalturaServerNode ReportStatus(string hostName)
+		public ServerNodeUpdateRequestBuilder()
+			: base("servernode", "update")
 		{
-			return this.ReportStatus(hostName, null);
 		}
 
-		public KalturaServerNode ReportStatus(string hostName, KalturaServerNode serverNode)
+		public ServerNodeUpdateRequestBuilder(int serverNodeId, ServerNode serverNode)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("hostName", hostName);
-			kparams.AddIfNotNull("serverNode", serverNode);
-			_Client.QueueServiceCall("servernode", "reportStatus", "KalturaServerNode", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaServerNode)KalturaObjectFactory.Create(result, "KalturaServerNode");
+			this.ServerNodeId = serverNodeId;
+			this.ServerNode = serverNode;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("serverNodeId"))
+				kparams.AddIfNotNull("serverNodeId", ServerNodeId);
+			if (!isMapped("serverNode"))
+				kparams.AddIfNotNull("serverNode", ServerNode);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ServerNode>(result);
+		}
+	}
+
+	public class ServerNodeDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string SERVER_NODE_ID = "serverNodeId";
+		#endregion
+
+		public string ServerNodeId
+		{
+			set;
+			get;
+		}
+
+		public ServerNodeDeleteRequestBuilder()
+			: base("servernode", "delete")
+		{
+		}
+
+		public ServerNodeDeleteRequestBuilder(string serverNodeId)
+			: this()
+		{
+			this.ServerNodeId = serverNodeId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("serverNodeId"))
+				kparams.AddIfNotNull("serverNodeId", ServerNodeId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class ServerNodeDisableRequestBuilder : RequestBuilder<ServerNode>
+	{
+		#region Constants
+		public const string SERVER_NODE_ID = "serverNodeId";
+		#endregion
+
+		public string ServerNodeId
+		{
+			set;
+			get;
+		}
+
+		public ServerNodeDisableRequestBuilder()
+			: base("servernode", "disable")
+		{
+		}
+
+		public ServerNodeDisableRequestBuilder(string serverNodeId)
+			: this()
+		{
+			this.ServerNodeId = serverNodeId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("serverNodeId"))
+				kparams.AddIfNotNull("serverNodeId", ServerNodeId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ServerNode>(result);
+		}
+	}
+
+	public class ServerNodeEnableRequestBuilder : RequestBuilder<ServerNode>
+	{
+		#region Constants
+		public const string SERVER_NODE_ID = "serverNodeId";
+		#endregion
+
+		public string ServerNodeId
+		{
+			set;
+			get;
+		}
+
+		public ServerNodeEnableRequestBuilder()
+			: base("servernode", "enable")
+		{
+		}
+
+		public ServerNodeEnableRequestBuilder(string serverNodeId)
+			: this()
+		{
+			this.ServerNodeId = serverNodeId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("serverNodeId"))
+				kparams.AddIfNotNull("serverNodeId", ServerNodeId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ServerNode>(result);
+		}
+	}
+
+	public class ServerNodeListRequestBuilder : RequestBuilder<ListResponse<ServerNode>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public ServerNodeFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public ServerNodeListRequestBuilder()
+			: base("servernode", "list")
+		{
+		}
+
+		public ServerNodeListRequestBuilder(ServerNodeFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<ServerNode>>(result);
+		}
+	}
+
+	public class ServerNodeReportStatusRequestBuilder : RequestBuilder<ServerNode>
+	{
+		#region Constants
+		public const string HOST_NAME = "hostName";
+		public const string SERVER_NODE = "serverNode";
+		#endregion
+
+		public string HostName
+		{
+			set;
+			get;
+		}
+		public ServerNode ServerNode
+		{
+			set;
+			get;
+		}
+
+		public ServerNodeReportStatusRequestBuilder()
+			: base("servernode", "reportStatus")
+		{
+		}
+
+		public ServerNodeReportStatusRequestBuilder(string hostName, ServerNode serverNode)
+			: this()
+		{
+			this.HostName = hostName;
+			this.ServerNode = serverNode;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("hostName"))
+				kparams.AddIfNotNull("hostName", HostName);
+			if (!isMapped("serverNode"))
+				kparams.AddIfNotNull("serverNode", ServerNode);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ServerNode>(result);
+		}
+	}
+
+
+	public class ServerNodeService
+	{
+		private ServerNodeService()
+		{
+		}
+
+		public static ServerNodeAddRequestBuilder Add(ServerNode serverNode)
+		{
+			return new ServerNodeAddRequestBuilder(serverNode);
+		}
+
+		public static ServerNodeGetRequestBuilder Get(int serverNodeId)
+		{
+			return new ServerNodeGetRequestBuilder(serverNodeId);
+		}
+
+		public static ServerNodeUpdateRequestBuilder Update(int serverNodeId, ServerNode serverNode)
+		{
+			return new ServerNodeUpdateRequestBuilder(serverNodeId, serverNode);
+		}
+
+		public static ServerNodeDeleteRequestBuilder Delete(string serverNodeId)
+		{
+			return new ServerNodeDeleteRequestBuilder(serverNodeId);
+		}
+
+		public static ServerNodeDisableRequestBuilder Disable(string serverNodeId)
+		{
+			return new ServerNodeDisableRequestBuilder(serverNodeId);
+		}
+
+		public static ServerNodeEnableRequestBuilder Enable(string serverNodeId)
+		{
+			return new ServerNodeEnableRequestBuilder(serverNodeId);
+		}
+
+		public static ServerNodeListRequestBuilder List(ServerNodeFilter filter = null, FilterPager pager = null)
+		{
+			return new ServerNodeListRequestBuilder(filter, pager);
+		}
+
+		public static ServerNodeReportStatusRequestBuilder ReportStatus(string hostName, ServerNode serverNode = null)
+		{
+			return new ServerNodeReportStatusRequestBuilder(hostName, serverNode);
 		}
 	}
 }

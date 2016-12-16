@@ -29,177 +29,543 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaReportService : KalturaServiceBase
+	public class ReportGetGraphsRequestBuilder : RequestBuilder<IList<ReportGraph>>
 	{
-	public KalturaReportService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string REPORT_TYPE = "reportType";
+		public const string REPORT_INPUT_FILTER = "reportInputFilter";
+		public const string DIMENSION = "dimension";
+		public const string OBJECT_IDS = "objectIds";
+		#endregion
+
+		public ReportType ReportType
+		{
+			set;
+			get;
+		}
+		public ReportInputFilter ReportInputFilter
+		{
+			set;
+			get;
+		}
+		public string Dimension
+		{
+			set;
+			get;
+		}
+		public string ObjectIds
+		{
+			set;
+			get;
+		}
+
+		public ReportGetGraphsRequestBuilder()
+			: base("report", "getGraphs")
 		{
 		}
 
-		public IList<KalturaReportGraph> GetGraphs(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter)
+		public ReportGetGraphsRequestBuilder(ReportType reportType, ReportInputFilter reportInputFilter, string dimension, string objectIds)
+			: this()
 		{
-			return this.GetGraphs(reportType, reportInputFilter, null);
+			this.ReportType = reportType;
+			this.ReportInputFilter = reportInputFilter;
+			this.Dimension = dimension;
+			this.ObjectIds = objectIds;
 		}
 
-		public IList<KalturaReportGraph> GetGraphs(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, string dimension)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.GetGraphs(reportType, reportInputFilter, dimension, null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("reportType"))
+				kparams.AddIfNotNull("reportType", ReportType);
+			if (!isMapped("reportInputFilter"))
+				kparams.AddIfNotNull("reportInputFilter", ReportInputFilter);
+			if (!isMapped("dimension"))
+				kparams.AddIfNotNull("dimension", Dimension);
+			if (!isMapped("objectIds"))
+				kparams.AddIfNotNull("objectIds", ObjectIds);
+			return kparams;
 		}
 
-		public IList<KalturaReportGraph> GetGraphs(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, string dimension, string objectIds)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("reportType", reportType);
-			kparams.AddIfNotNull("reportInputFilter", reportInputFilter);
-			kparams.AddIfNotNull("dimension", dimension);
-			kparams.AddIfNotNull("objectIds", objectIds);
-			_Client.QueueServiceCall("report", "getGraphs", "KalturaReportGraph", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			IList<KalturaReportGraph> list = new List<KalturaReportGraph>();
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			IList<ReportGraph> list = new List<ReportGraph>();
 			foreach(XmlElement node in result.ChildNodes)
 			{
-				list.Add((KalturaReportGraph)KalturaObjectFactory.Create(node, "KalturaReportGraph"));
+				list.Add(ObjectFactory.Create<ReportGraph>(node));
 			}
 			return list;
 		}
+	}
 
-		public KalturaReportTotal GetTotal(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter)
+	public class ReportGetTotalRequestBuilder : RequestBuilder<ReportTotal>
+	{
+		#region Constants
+		public const string REPORT_TYPE = "reportType";
+		public const string REPORT_INPUT_FILTER = "reportInputFilter";
+		public const string OBJECT_IDS = "objectIds";
+		#endregion
+
+		public ReportType ReportType
 		{
-			return this.GetTotal(reportType, reportInputFilter, null);
+			set;
+			get;
+		}
+		public ReportInputFilter ReportInputFilter
+		{
+			set;
+			get;
+		}
+		public string ObjectIds
+		{
+			set;
+			get;
 		}
 
-		public KalturaReportTotal GetTotal(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, string objectIds)
+		public ReportGetTotalRequestBuilder()
+			: base("report", "getTotal")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("reportType", reportType);
-			kparams.AddIfNotNull("reportInputFilter", reportInputFilter);
-			kparams.AddIfNotNull("objectIds", objectIds);
-			_Client.QueueServiceCall("report", "getTotal", "KalturaReportTotal", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaReportTotal)KalturaObjectFactory.Create(result, "KalturaReportTotal");
 		}
 
-		public IList<KalturaReportBaseTotal> GetBaseTotal(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter)
+		public ReportGetTotalRequestBuilder(ReportType reportType, ReportInputFilter reportInputFilter, string objectIds)
+			: this()
 		{
-			return this.GetBaseTotal(reportType, reportInputFilter, null);
+			this.ReportType = reportType;
+			this.ReportInputFilter = reportInputFilter;
+			this.ObjectIds = objectIds;
 		}
 
-		public IList<KalturaReportBaseTotal> GetBaseTotal(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, string objectIds)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("reportType", reportType);
-			kparams.AddIfNotNull("reportInputFilter", reportInputFilter);
-			kparams.AddIfNotNull("objectIds", objectIds);
-			_Client.QueueServiceCall("report", "getBaseTotal", "KalturaReportBaseTotal", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			IList<KalturaReportBaseTotal> list = new List<KalturaReportBaseTotal>();
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("reportType"))
+				kparams.AddIfNotNull("reportType", ReportType);
+			if (!isMapped("reportInputFilter"))
+				kparams.AddIfNotNull("reportInputFilter", ReportInputFilter);
+			if (!isMapped("objectIds"))
+				kparams.AddIfNotNull("objectIds", ObjectIds);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ReportTotal>(result);
+		}
+	}
+
+	public class ReportGetBaseTotalRequestBuilder : RequestBuilder<IList<ReportBaseTotal>>
+	{
+		#region Constants
+		public const string REPORT_TYPE = "reportType";
+		public const string REPORT_INPUT_FILTER = "reportInputFilter";
+		public const string OBJECT_IDS = "objectIds";
+		#endregion
+
+		public ReportType ReportType
+		{
+			set;
+			get;
+		}
+		public ReportInputFilter ReportInputFilter
+		{
+			set;
+			get;
+		}
+		public string ObjectIds
+		{
+			set;
+			get;
+		}
+
+		public ReportGetBaseTotalRequestBuilder()
+			: base("report", "getBaseTotal")
+		{
+		}
+
+		public ReportGetBaseTotalRequestBuilder(ReportType reportType, ReportInputFilter reportInputFilter, string objectIds)
+			: this()
+		{
+			this.ReportType = reportType;
+			this.ReportInputFilter = reportInputFilter;
+			this.ObjectIds = objectIds;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("reportType"))
+				kparams.AddIfNotNull("reportType", ReportType);
+			if (!isMapped("reportInputFilter"))
+				kparams.AddIfNotNull("reportInputFilter", ReportInputFilter);
+			if (!isMapped("objectIds"))
+				kparams.AddIfNotNull("objectIds", ObjectIds);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			IList<ReportBaseTotal> list = new List<ReportBaseTotal>();
 			foreach(XmlElement node in result.ChildNodes)
 			{
-				list.Add((KalturaReportBaseTotal)KalturaObjectFactory.Create(node, "KalturaReportBaseTotal"));
+				list.Add(ObjectFactory.Create<ReportBaseTotal>(node));
 			}
 			return list;
 		}
+	}
 
-		public KalturaReportTable GetTable(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, KalturaFilterPager pager)
+	public class ReportGetTableRequestBuilder : RequestBuilder<ReportTable>
+	{
+		#region Constants
+		public const string REPORT_TYPE = "reportType";
+		public const string REPORT_INPUT_FILTER = "reportInputFilter";
+		public const string PAGER = "pager";
+		public const string ORDER = "order";
+		public const string OBJECT_IDS = "objectIds";
+		#endregion
+
+		public ReportType ReportType
 		{
-			return this.GetTable(reportType, reportInputFilter, pager, null);
+			set;
+			get;
+		}
+		public ReportInputFilter ReportInputFilter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+		public string Order
+		{
+			set;
+			get;
+		}
+		public string ObjectIds
+		{
+			set;
+			get;
 		}
 
-		public KalturaReportTable GetTable(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, KalturaFilterPager pager, string order)
+		public ReportGetTableRequestBuilder()
+			: base("report", "getTable")
 		{
-			return this.GetTable(reportType, reportInputFilter, pager, order, null);
 		}
 
-		public KalturaReportTable GetTable(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, KalturaFilterPager pager, string order, string objectIds)
+		public ReportGetTableRequestBuilder(ReportType reportType, ReportInputFilter reportInputFilter, FilterPager pager, string order, string objectIds)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("reportType", reportType);
-			kparams.AddIfNotNull("reportInputFilter", reportInputFilter);
-			kparams.AddIfNotNull("pager", pager);
-			kparams.AddIfNotNull("order", order);
-			kparams.AddIfNotNull("objectIds", objectIds);
-			_Client.QueueServiceCall("report", "getTable", "KalturaReportTable", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaReportTable)KalturaObjectFactory.Create(result, "KalturaReportTable");
+			this.ReportType = reportType;
+			this.ReportInputFilter = reportInputFilter;
+			this.Pager = pager;
+			this.Order = order;
+			this.ObjectIds = objectIds;
 		}
 
-		public string GetUrlForReportAsCsv(string reportTitle, string reportText, string headers, KalturaReportType reportType, KalturaReportInputFilter reportInputFilter)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.GetUrlForReportAsCsv(reportTitle, reportText, headers, reportType, reportInputFilter, null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("reportType"))
+				kparams.AddIfNotNull("reportType", ReportType);
+			if (!isMapped("reportInputFilter"))
+				kparams.AddIfNotNull("reportInputFilter", ReportInputFilter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			if (!isMapped("order"))
+				kparams.AddIfNotNull("order", Order);
+			if (!isMapped("objectIds"))
+				kparams.AddIfNotNull("objectIds", ObjectIds);
+			return kparams;
 		}
 
-		public string GetUrlForReportAsCsv(string reportTitle, string reportText, string headers, KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, string dimension)
+		public override Files getFiles()
 		{
-			return this.GetUrlForReportAsCsv(reportTitle, reportText, headers, reportType, reportInputFilter, dimension, null);
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public string GetUrlForReportAsCsv(string reportTitle, string reportText, string headers, KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, string dimension, KalturaFilterPager pager)
+		public override object Deserialize(XmlElement result)
 		{
-			return this.GetUrlForReportAsCsv(reportTitle, reportText, headers, reportType, reportInputFilter, dimension, pager, null);
+			return ObjectFactory.Create<ReportTable>(result);
+		}
+	}
+
+	public class ReportGetUrlForReportAsCsvRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		public const string REPORT_TITLE = "reportTitle";
+		public const string REPORT_TEXT = "reportText";
+		public const string HEADERS = "headers";
+		public const string REPORT_TYPE = "reportType";
+		public const string REPORT_INPUT_FILTER = "reportInputFilter";
+		public const string DIMENSION = "dimension";
+		public const string PAGER = "pager";
+		public const string ORDER = "order";
+		public const string OBJECT_IDS = "objectIds";
+		#endregion
+
+		public string ReportTitle
+		{
+			set;
+			get;
+		}
+		public string ReportText
+		{
+			set;
+			get;
+		}
+		public string Headers
+		{
+			set;
+			get;
+		}
+		public ReportType ReportType
+		{
+			set;
+			get;
+		}
+		public ReportInputFilter ReportInputFilter
+		{
+			set;
+			get;
+		}
+		public string Dimension
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+		public string Order
+		{
+			set;
+			get;
+		}
+		public string ObjectIds
+		{
+			set;
+			get;
 		}
 
-		public string GetUrlForReportAsCsv(string reportTitle, string reportText, string headers, KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, string dimension, KalturaFilterPager pager, string order)
+		public ReportGetUrlForReportAsCsvRequestBuilder()
+			: base("report", "getUrlForReportAsCsv")
 		{
-			return this.GetUrlForReportAsCsv(reportTitle, reportText, headers, reportType, reportInputFilter, dimension, pager, order, null);
 		}
 
-		public string GetUrlForReportAsCsv(string reportTitle, string reportText, string headers, KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, string dimension, KalturaFilterPager pager, string order, string objectIds)
+		public ReportGetUrlForReportAsCsvRequestBuilder(string reportTitle, string reportText, string headers, ReportType reportType, ReportInputFilter reportInputFilter, string dimension, FilterPager pager, string order, string objectIds)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("reportTitle", reportTitle);
-			kparams.AddIfNotNull("reportText", reportText);
-			kparams.AddIfNotNull("headers", headers);
-			kparams.AddIfNotNull("reportType", reportType);
-			kparams.AddIfNotNull("reportInputFilter", reportInputFilter);
-			kparams.AddIfNotNull("dimension", dimension);
-			kparams.AddIfNotNull("pager", pager);
-			kparams.AddIfNotNull("order", order);
-			kparams.AddIfNotNull("objectIds", objectIds);
-			_Client.QueueServiceCall("report", "getUrlForReportAsCsv", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
+			this.ReportTitle = reportTitle;
+			this.ReportText = reportText;
+			this.Headers = headers;
+			this.ReportType = reportType;
+			this.ReportInputFilter = reportInputFilter;
+			this.Dimension = dimension;
+			this.Pager = pager;
+			this.Order = order;
+			this.ObjectIds = objectIds;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("reportTitle"))
+				kparams.AddIfNotNull("reportTitle", ReportTitle);
+			if (!isMapped("reportText"))
+				kparams.AddIfNotNull("reportText", ReportText);
+			if (!isMapped("headers"))
+				kparams.AddIfNotNull("headers", Headers);
+			if (!isMapped("reportType"))
+				kparams.AddIfNotNull("reportType", ReportType);
+			if (!isMapped("reportInputFilter"))
+				kparams.AddIfNotNull("reportInputFilter", ReportInputFilter);
+			if (!isMapped("dimension"))
+				kparams.AddIfNotNull("dimension", Dimension);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			if (!isMapped("order"))
+				kparams.AddIfNotNull("order", Order);
+			if (!isMapped("objectIds"))
+				kparams.AddIfNotNull("objectIds", ObjectIds);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			return result.InnerText;
 		}
+	}
 
-		public string Serve(string id)
+	public class ReportServeRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("report", "serve", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
+			set;
+			get;
+		}
+
+		public ReportServeRequestBuilder()
+			: base("report", "serve")
+		{
+		}
+
+		public ReportServeRequestBuilder(string id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			return result.InnerText;
 		}
+	}
 
-		public KalturaReportResponse Execute(int id)
+	public class ReportExecuteRequestBuilder : RequestBuilder<ReportResponse>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string PARAMS = "params";
+		#endregion
+
+		public int Id
 		{
-			return this.Execute(id, null);
+			set;
+			get;
+		}
+		public IList<KeyValue> Params_
+		{
+			set;
+			get;
 		}
 
-		public KalturaReportResponse Execute(int id, IList<KalturaKeyValue> params_)
+		public ReportExecuteRequestBuilder()
+			: base("report", "execute")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("params", params_);
-			_Client.QueueServiceCall("report", "execute", "KalturaReportResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaReportResponse)KalturaObjectFactory.Create(result, "KalturaReportResponse");
+		}
+
+		public ReportExecuteRequestBuilder(int id, IList<KeyValue> params_)
+			: this()
+		{
+			this.Id = id;
+			this.Params_ = params_;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("params_"))
+				kparams.AddIfNotNull("params_", Params_);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ReportResponse>(result);
+		}
+	}
+
+
+	public class ReportService
+	{
+		private ReportService()
+		{
+		}
+
+		public static ReportGetGraphsRequestBuilder GetGraphs(ReportType reportType, ReportInputFilter reportInputFilter, string dimension = null, string objectIds = null)
+		{
+			return new ReportGetGraphsRequestBuilder(reportType, reportInputFilter, dimension, objectIds);
+		}
+
+		public static ReportGetTotalRequestBuilder GetTotal(ReportType reportType, ReportInputFilter reportInputFilter, string objectIds = null)
+		{
+			return new ReportGetTotalRequestBuilder(reportType, reportInputFilter, objectIds);
+		}
+
+		public static ReportGetBaseTotalRequestBuilder GetBaseTotal(ReportType reportType, ReportInputFilter reportInputFilter, string objectIds = null)
+		{
+			return new ReportGetBaseTotalRequestBuilder(reportType, reportInputFilter, objectIds);
+		}
+
+		public static ReportGetTableRequestBuilder GetTable(ReportType reportType, ReportInputFilter reportInputFilter, FilterPager pager, string order = null, string objectIds = null)
+		{
+			return new ReportGetTableRequestBuilder(reportType, reportInputFilter, pager, order, objectIds);
+		}
+
+		public static ReportGetUrlForReportAsCsvRequestBuilder GetUrlForReportAsCsv(string reportTitle, string reportText, string headers, ReportType reportType, ReportInputFilter reportInputFilter, string dimension = null, FilterPager pager = null, string order = null, string objectIds = null)
+		{
+			return new ReportGetUrlForReportAsCsvRequestBuilder(reportTitle, reportText, headers, reportType, reportInputFilter, dimension, pager, order, objectIds);
+		}
+
+		public static ReportServeRequestBuilder Serve(string id)
+		{
+			return new ReportServeRequestBuilder(id);
+		}
+
+		public static ReportExecuteRequestBuilder Execute(int id, IList<KeyValue> params_ = null)
+		{
+			return new ReportExecuteRequestBuilder(id, params_);
 		}
 	}
 }

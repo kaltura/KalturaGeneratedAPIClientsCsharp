@@ -29,54 +29,174 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaTagService : KalturaServiceBase
+	public class TagSearchRequestBuilder : RequestBuilder<ListResponse<Tag>>
 	{
-	public KalturaTagService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string TAG_FILTER = "tagFilter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public TagFilter TagFilter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public TagSearchRequestBuilder()
+			: base("tagsearch_tag", "search")
 		{
 		}
 
-		public KalturaTagListResponse Search(KalturaTagFilter tagFilter)
+		public TagSearchRequestBuilder(TagFilter tagFilter, FilterPager pager)
+			: this()
 		{
-			return this.Search(tagFilter, null);
+			this.TagFilter = tagFilter;
+			this.Pager = pager;
 		}
 
-		public KalturaTagListResponse Search(KalturaTagFilter tagFilter, KalturaFilterPager pager)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("tagFilter", tagFilter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("tagsearch_tag", "search", "KalturaTagListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaTagListResponse)KalturaObjectFactory.Create(result, "KalturaTagListResponse");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("tagFilter"))
+				kparams.AddIfNotNull("tagFilter", TagFilter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
 		}
 
-		public int DeletePending()
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			_Client.QueueServiceCall("tagsearch_tag", "deletePending", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return 0;
-			XmlElement result = _Client.DoQueue();
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<Tag>>(result);
+		}
+	}
+
+	public class TagDeletePendingRequestBuilder : RequestBuilder<int>
+	{
+		#region Constants
+		#endregion
+
+
+		public TagDeletePendingRequestBuilder()
+			: base("tagsearch_tag", "deletePending")
+		{
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			return int.Parse(result.InnerText);
 		}
+	}
 
-		public void IndexCategoryEntryTags(int categoryId, string pcToDecrement, string pcToIncrement)
+	public class TagIndexCategoryEntryTagsRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string CATEGORY_ID = "categoryId";
+		public const string PC_TO_DECREMENT = "pcToDecrement";
+		public const string PC_TO_INCREMENT = "pcToIncrement";
+		#endregion
+
+		public int CategoryId
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("categoryId", categoryId);
-			kparams.AddIfNotNull("pcToDecrement", pcToDecrement);
-			kparams.AddIfNotNull("pcToIncrement", pcToIncrement);
-			_Client.QueueServiceCall("tagsearch_tag", "indexCategoryEntryTags", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			set;
+			get;
+		}
+		public string PcToDecrement
+		{
+			set;
+			get;
+		}
+		public string PcToIncrement
+		{
+			set;
+			get;
+		}
+
+		public TagIndexCategoryEntryTagsRequestBuilder()
+			: base("tagsearch_tag", "indexCategoryEntryTags")
+		{
+		}
+
+		public TagIndexCategoryEntryTagsRequestBuilder(int categoryId, string pcToDecrement, string pcToIncrement)
+			: this()
+		{
+			this.CategoryId = categoryId;
+			this.PcToDecrement = pcToDecrement;
+			this.PcToIncrement = pcToIncrement;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("categoryId"))
+				kparams.AddIfNotNull("categoryId", CategoryId);
+			if (!isMapped("pcToDecrement"))
+				kparams.AddIfNotNull("pcToDecrement", PcToDecrement);
+			if (!isMapped("pcToIncrement"))
+				kparams.AddIfNotNull("pcToIncrement", PcToIncrement);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+
+	public class TagService
+	{
+		private TagService()
+		{
+		}
+
+		public static TagSearchRequestBuilder Search(TagFilter tagFilter, FilterPager pager = null)
+		{
+			return new TagSearchRequestBuilder(tagFilter, pager);
+		}
+
+		public static TagDeletePendingRequestBuilder DeletePending()
+		{
+			return new TagDeletePendingRequestBuilder();
+		}
+
+		public static TagIndexCategoryEntryTagsRequestBuilder IndexCategoryEntryTags(int categoryId, string pcToDecrement, string pcToIncrement)
+		{
+			return new TagIndexCategoryEntryTagsRequestBuilder(categoryId, pcToDecrement, pcToIncrement);
 		}
 	}
 }

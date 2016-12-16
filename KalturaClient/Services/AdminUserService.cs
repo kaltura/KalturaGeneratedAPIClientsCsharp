@@ -29,78 +29,263 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaAdminUserService : KalturaServiceBase
+	public class AdminUserUpdatePasswordRequestBuilder : RequestBuilder<AdminUser>
 	{
-	public KalturaAdminUserService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string EMAIL = "email";
+		public const string PASSWORD = "password";
+		public const string NEW_EMAIL = "newEmail";
+		public const string NEW_PASSWORD = "newPassword";
+		#endregion
+
+		public string Email
+		{
+			set;
+			get;
+		}
+		public string Password
+		{
+			set;
+			get;
+		}
+		public string NewEmail
+		{
+			set;
+			get;
+		}
+		public string NewPassword
+		{
+			set;
+			get;
+		}
+
+		public AdminUserUpdatePasswordRequestBuilder()
+			: base("adminuser", "updatePassword")
 		{
 		}
 
-		public KalturaAdminUser UpdatePassword(string email, string password)
+		public AdminUserUpdatePasswordRequestBuilder(string email, string password, string newEmail, string newPassword)
+			: this()
 		{
-			return this.UpdatePassword(email, password, "");
+			this.Email = email;
+			this.Password = password;
+			this.NewEmail = newEmail;
+			this.NewPassword = newPassword;
 		}
 
-		public KalturaAdminUser UpdatePassword(string email, string password, string newEmail)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.UpdatePassword(email, password, newEmail, "");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("email"))
+				kparams.AddIfNotNull("email", Email);
+			if (!isMapped("password"))
+				kparams.AddIfNotNull("password", Password);
+			if (!isMapped("newEmail"))
+				kparams.AddIfNotNull("newEmail", NewEmail);
+			if (!isMapped("newPassword"))
+				kparams.AddIfNotNull("newPassword", NewPassword);
+			return kparams;
 		}
 
-		public KalturaAdminUser UpdatePassword(string email, string password, string newEmail, string newPassword)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("email", email);
-			kparams.AddIfNotNull("password", password);
-			kparams.AddIfNotNull("newEmail", newEmail);
-			kparams.AddIfNotNull("newPassword", newPassword);
-			_Client.QueueServiceCall("adminuser", "updatePassword", "KalturaAdminUser", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaAdminUser)KalturaObjectFactory.Create(result, "KalturaAdminUser");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public void ResetPassword(string email)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("email", email);
-			_Client.QueueServiceCall("adminuser", "resetPassword", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			return ObjectFactory.Create<AdminUser>(result);
+		}
+	}
+
+	public class AdminUserResetPasswordRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string EMAIL = "email";
+		#endregion
+
+		public string Email
+		{
+			set;
+			get;
 		}
 
-		public string Login(string email, string password)
+		public AdminUserResetPasswordRequestBuilder()
+			: base("adminuser", "resetPassword")
 		{
-			return this.Login(email, password, Int32.MinValue);
 		}
 
-		public string Login(string email, string password, int partnerId)
+		public AdminUserResetPasswordRequestBuilder(string email)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("email", email);
-			kparams.AddIfNotNull("password", password);
-			kparams.AddIfNotNull("partnerId", partnerId);
-			_Client.QueueServiceCall("adminuser", "login", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
+			this.Email = email;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("email"))
+				kparams.AddIfNotNull("email", Email);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class AdminUserLoginRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		public const string EMAIL = "email";
+		public const string PASSWORD = "password";
+		public new const string PARTNER_ID = "partnerId";
+		#endregion
+
+		public string Email
+		{
+			set;
+			get;
+		}
+		public string Password
+		{
+			set;
+			get;
+		}
+		public new int PartnerId
+		{
+			set;
+			get;
+		}
+
+		public AdminUserLoginRequestBuilder()
+			: base("adminuser", "login")
+		{
+		}
+
+		public AdminUserLoginRequestBuilder(string email, string password, int partnerId)
+			: this()
+		{
+			this.Email = email;
+			this.Password = password;
+			this.PartnerId = partnerId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("email"))
+				kparams.AddIfNotNull("email", Email);
+			if (!isMapped("password"))
+				kparams.AddIfNotNull("password", Password);
+			if (!isMapped("partnerId"))
+				kparams.AddIfNotNull("partnerId", PartnerId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			return result.InnerText;
 		}
+	}
 
-		public void SetInitialPassword(string hashKey, string newPassword)
+	public class AdminUserSetInitialPasswordRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string HASH_KEY = "hashKey";
+		public const string NEW_PASSWORD = "newPassword";
+		#endregion
+
+		public string HashKey
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("hashKey", hashKey);
-			kparams.AddIfNotNull("newPassword", newPassword);
-			_Client.QueueServiceCall("adminuser", "setInitialPassword", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			set;
+			get;
+		}
+		public string NewPassword
+		{
+			set;
+			get;
+		}
+
+		public AdminUserSetInitialPasswordRequestBuilder()
+			: base("adminuser", "setInitialPassword")
+		{
+		}
+
+		public AdminUserSetInitialPasswordRequestBuilder(string hashKey, string newPassword)
+			: this()
+		{
+			this.HashKey = hashKey;
+			this.NewPassword = newPassword;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("hashKey"))
+				kparams.AddIfNotNull("hashKey", HashKey);
+			if (!isMapped("newPassword"))
+				kparams.AddIfNotNull("newPassword", NewPassword);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+
+	public class AdminUserService
+	{
+		private AdminUserService()
+		{
+		}
+
+		public static AdminUserUpdatePasswordRequestBuilder UpdatePassword(string email, string password, string newEmail = "", string newPassword = "")
+		{
+			return new AdminUserUpdatePasswordRequestBuilder(email, password, newEmail, newPassword);
+		}
+
+		public static AdminUserResetPasswordRequestBuilder ResetPassword(string email)
+		{
+			return new AdminUserResetPasswordRequestBuilder(email);
+		}
+
+		public static AdminUserLoginRequestBuilder Login(string email, string password, int partnerId = Int32.MinValue)
+		{
+			return new AdminUserLoginRequestBuilder(email, password, partnerId);
+		}
+
+		public static AdminUserSetInitialPasswordRequestBuilder SetInitialPassword(string hashKey, string newPassword)
+		{
+			return new AdminUserSetInitialPasswordRequestBuilder(hashKey, newPassword);
 		}
 	}
 }

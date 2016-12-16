@@ -29,70 +29,227 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaEntryServerNodeService : KalturaServiceBase
+	public class EntryServerNodeUpdateRequestBuilder : RequestBuilder<EntryServerNode>
 	{
-	public KalturaEntryServerNodeService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string ID = "id";
+		public const string ENTRY_SERVER_NODE = "entryServerNode";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public EntryServerNode EntryServerNode
+		{
+			set;
+			get;
+		}
+
+		public EntryServerNodeUpdateRequestBuilder()
+			: base("entryservernode", "update")
 		{
 		}
 
-		public KalturaEntryServerNode Update(int id, KalturaEntryServerNode entryServerNode)
+		public EntryServerNodeUpdateRequestBuilder(int id, EntryServerNode entryServerNode)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("entryServerNode", entryServerNode);
-			_Client.QueueServiceCall("entryservernode", "update", "KalturaEntryServerNode", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaEntryServerNode)KalturaObjectFactory.Create(result, "KalturaEntryServerNode");
+			this.Id = id;
+			this.EntryServerNode = entryServerNode;
 		}
 
-		public KalturaEntryServerNodeListResponse List()
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.List(null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("entryServerNode"))
+				kparams.AddIfNotNull("entryServerNode", EntryServerNode);
+			return kparams;
 		}
 
-		public KalturaEntryServerNodeListResponse List(KalturaEntryServerNodeFilter filter)
+		public override Files getFiles()
 		{
-			return this.List(filter, null);
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaEntryServerNodeListResponse List(KalturaEntryServerNodeFilter filter, KalturaFilterPager pager)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("entryservernode", "list", "KalturaEntryServerNodeListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaEntryServerNodeListResponse)KalturaObjectFactory.Create(result, "KalturaEntryServerNodeListResponse");
+			return ObjectFactory.Create<EntryServerNode>(result);
+		}
+	}
+
+	public class EntryServerNodeListRequestBuilder : RequestBuilder<ListResponse<EntryServerNode>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public EntryServerNodeFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
 		}
 
-		public KalturaEntryServerNode Get(string id)
+		public EntryServerNodeListRequestBuilder()
+			: base("entryservernode", "list")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("entryservernode", "get", "KalturaEntryServerNode", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaEntryServerNode)KalturaObjectFactory.Create(result, "KalturaEntryServerNode");
 		}
 
-		public void ValidateRegisteredEntryServerNode(int id)
+		public EntryServerNodeListRequestBuilder(EntryServerNodeFilter filter, FilterPager pager)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("entryservernode", "validateRegisteredEntryServerNode", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<EntryServerNode>>(result);
+		}
+	}
+
+	public class EntryServerNodeGetRequestBuilder : RequestBuilder<EntryServerNode>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+
+		public EntryServerNodeGetRequestBuilder()
+			: base("entryservernode", "get")
+		{
+		}
+
+		public EntryServerNodeGetRequestBuilder(string id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<EntryServerNode>(result);
+		}
+	}
+
+	public class EntryServerNodeValidateRegisteredEntryServerNodeRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public EntryServerNodeValidateRegisteredEntryServerNodeRequestBuilder()
+			: base("entryservernode", "validateRegisteredEntryServerNode")
+		{
+		}
+
+		public EntryServerNodeValidateRegisteredEntryServerNodeRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+
+	public class EntryServerNodeService
+	{
+		private EntryServerNodeService()
+		{
+		}
+
+		public static EntryServerNodeUpdateRequestBuilder Update(int id, EntryServerNode entryServerNode)
+		{
+			return new EntryServerNodeUpdateRequestBuilder(id, entryServerNode);
+		}
+
+		public static EntryServerNodeListRequestBuilder List(EntryServerNodeFilter filter = null, FilterPager pager = null)
+		{
+			return new EntryServerNodeListRequestBuilder(filter, pager);
+		}
+
+		public static EntryServerNodeGetRequestBuilder Get(string id)
+		{
+			return new EntryServerNodeGetRequestBuilder(id);
+		}
+
+		public static EntryServerNodeValidateRegisteredEntryServerNodeRequestBuilder ValidateRegisteredEntryServerNode(int id)
+		{
+			return new EntryServerNodeValidateRegisteredEntryServerNodeRequestBuilder(id);
 		}
 	}
 }

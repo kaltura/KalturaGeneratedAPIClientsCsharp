@@ -29,54 +29,140 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaVarConsoleService : KalturaServiceBase
+	public class VarConsoleGetPartnerUsageRequestBuilder : RequestBuilder<ListResponse<VarPartnerUsageItem>>
 	{
-	public KalturaVarConsoleService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string PARTNER_FILTER = "partnerFilter";
+		public const string USAGE_FILTER = "usageFilter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public PartnerFilter PartnerFilter
+		{
+			set;
+			get;
+		}
+		public ReportInputFilter UsageFilter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public VarConsoleGetPartnerUsageRequestBuilder()
+			: base("varconsole_varconsole", "getPartnerUsage")
 		{
 		}
 
-		public KalturaPartnerUsageListResponse GetPartnerUsage()
+		public VarConsoleGetPartnerUsageRequestBuilder(PartnerFilter partnerFilter, ReportInputFilter usageFilter, FilterPager pager)
+			: this()
 		{
-			return this.GetPartnerUsage(null);
+			this.PartnerFilter = partnerFilter;
+			this.UsageFilter = usageFilter;
+			this.Pager = pager;
 		}
 
-		public KalturaPartnerUsageListResponse GetPartnerUsage(KalturaPartnerFilter partnerFilter)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.GetPartnerUsage(partnerFilter, null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("partnerFilter"))
+				kparams.AddIfNotNull("partnerFilter", PartnerFilter);
+			if (!isMapped("usageFilter"))
+				kparams.AddIfNotNull("usageFilter", UsageFilter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
 		}
 
-		public KalturaPartnerUsageListResponse GetPartnerUsage(KalturaPartnerFilter partnerFilter, KalturaReportInputFilter usageFilter)
+		public override Files getFiles()
 		{
-			return this.GetPartnerUsage(partnerFilter, usageFilter, null);
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaPartnerUsageListResponse GetPartnerUsage(KalturaPartnerFilter partnerFilter, KalturaReportInputFilter usageFilter, KalturaFilterPager pager)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("partnerFilter", partnerFilter);
-			kparams.AddIfNotNull("usageFilter", usageFilter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("varconsole_varconsole", "getPartnerUsage", "KalturaPartnerUsageListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaPartnerUsageListResponse)KalturaObjectFactory.Create(result, "KalturaPartnerUsageListResponse");
+			return ObjectFactory.Create<ListResponse<VarPartnerUsageItem>>(result);
+		}
+	}
+
+	public class VarConsoleUpdateStatusRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string STATUS = "status";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public PartnerStatus Status
+		{
+			set;
+			get;
 		}
 
-		public void UpdateStatus(int id, KalturaPartnerStatus status)
+		public VarConsoleUpdateStatusRequestBuilder()
+			: base("varconsole_varconsole", "updateStatus")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("status", status);
-			_Client.QueueServiceCall("varconsole_varconsole", "updateStatus", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+		}
+
+		public VarConsoleUpdateStatusRequestBuilder(int id, PartnerStatus status)
+			: this()
+		{
+			this.Id = id;
+			this.Status = status;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("status"))
+				kparams.AddIfNotNull("status", Status);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+
+	public class VarConsoleService
+	{
+		private VarConsoleService()
+		{
+		}
+
+		public static VarConsoleGetPartnerUsageRequestBuilder GetPartnerUsage(PartnerFilter partnerFilter = null, ReportInputFilter usageFilter = null, FilterPager pager = null)
+		{
+			return new VarConsoleGetPartnerUsageRequestBuilder(partnerFilter, usageFilter, pager);
+		}
+
+		public static VarConsoleUpdateStatusRequestBuilder UpdateStatus(int id, PartnerStatus status)
+		{
+			return new VarConsoleUpdateStatusRequestBuilder(id, status);
 		}
 	}
 }

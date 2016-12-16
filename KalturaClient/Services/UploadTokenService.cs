@@ -29,105 +29,301 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaUploadTokenService : KalturaServiceBase
+	public class UploadTokenAddRequestBuilder : RequestBuilder<UploadToken>
 	{
-	public KalturaUploadTokenService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string UPLOAD_TOKEN = "uploadToken";
+		#endregion
+
+		public UploadToken UploadToken
+		{
+			set;
+			get;
+		}
+
+		public UploadTokenAddRequestBuilder()
+			: base("uploadtoken", "add")
 		{
 		}
 
-		public KalturaUploadToken Add()
+		public UploadTokenAddRequestBuilder(UploadToken uploadToken)
+			: this()
 		{
-			return this.Add(null);
+			this.UploadToken = uploadToken;
 		}
 
-		public KalturaUploadToken Add(KalturaUploadToken uploadToken)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("uploadToken", uploadToken);
-			_Client.QueueServiceCall("uploadtoken", "add", "KalturaUploadToken", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaUploadToken)KalturaObjectFactory.Create(result, "KalturaUploadToken");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("uploadToken"))
+				kparams.AddIfNotNull("uploadToken", UploadToken);
+			return kparams;
 		}
 
-		public KalturaUploadToken Get(string uploadTokenId)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("uploadTokenId", uploadTokenId);
-			_Client.QueueServiceCall("uploadtoken", "get", "KalturaUploadToken", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaUploadToken)KalturaObjectFactory.Create(result, "KalturaUploadToken");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaUploadToken Upload(string uploadTokenId, Stream fileData)
+		public override object Deserialize(XmlElement result)
 		{
-			return this.Upload(uploadTokenId, fileData, false);
+			return ObjectFactory.Create<UploadToken>(result);
+		}
+	}
+
+	public class UploadTokenGetRequestBuilder : RequestBuilder<UploadToken>
+	{
+		#region Constants
+		public const string UPLOAD_TOKEN_ID = "uploadTokenId";
+		#endregion
+
+		public string UploadTokenId
+		{
+			set;
+			get;
 		}
 
-		public KalturaUploadToken Upload(string uploadTokenId, Stream fileData, bool resume)
+		public UploadTokenGetRequestBuilder()
+			: base("uploadtoken", "get")
 		{
-			return this.Upload(uploadTokenId, fileData, resume, true);
 		}
 
-		public KalturaUploadToken Upload(string uploadTokenId, Stream fileData, bool resume, bool finalChunk)
+		public UploadTokenGetRequestBuilder(string uploadTokenId)
+			: this()
 		{
-			return this.Upload(uploadTokenId, fileData, resume, finalChunk, -1);
+			this.UploadTokenId = uploadTokenId;
 		}
 
-		public KalturaUploadToken Upload(string uploadTokenId, Stream fileData, bool resume, bool finalChunk, float resumeAt)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("uploadTokenId", uploadTokenId);
-			KalturaFiles kfiles = new KalturaFiles();
-			kfiles.Add("fileData", fileData);
-			kparams.AddIfNotNull("resume", resume);
-			kparams.AddIfNotNull("finalChunk", finalChunk);
-			kparams.AddIfNotNull("resumeAt", resumeAt);
-			_Client.QueueServiceCall("uploadtoken", "upload", "KalturaUploadToken", kparams, kfiles);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaUploadToken)KalturaObjectFactory.Create(result, "KalturaUploadToken");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("uploadTokenId"))
+				kparams.AddIfNotNull("uploadTokenId", UploadTokenId);
+			return kparams;
 		}
 
-		public void Delete(string uploadTokenId)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("uploadTokenId", uploadTokenId);
-			_Client.QueueServiceCall("uploadtoken", "delete", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaUploadTokenListResponse List()
+		public override object Deserialize(XmlElement result)
 		{
-			return this.List(null);
+			return ObjectFactory.Create<UploadToken>(result);
+		}
+	}
+
+	public class UploadTokenUploadRequestBuilder : RequestBuilder<UploadToken>
+	{
+		#region Constants
+		public const string UPLOAD_TOKEN_ID = "uploadTokenId";
+		public const string FILE_DATA = "fileData";
+		public const string RESUME = "resume";
+		public const string FINAL_CHUNK = "finalChunk";
+		public const string RESUME_AT = "resumeAt";
+		#endregion
+
+		public string UploadTokenId
+		{
+			set;
+			get;
+		}
+		public Stream FileData
+		{
+			set;
+			get;
+		}
+		public bool Resume
+		{
+			set;
+			get;
+		}
+		public bool FinalChunk
+		{
+			set;
+			get;
+		}
+		public float ResumeAt
+		{
+			set;
+			get;
 		}
 
-		public KalturaUploadTokenListResponse List(KalturaUploadTokenFilter filter)
+		public UploadTokenUploadRequestBuilder()
+			: base("uploadtoken", "upload")
 		{
-			return this.List(filter, null);
 		}
 
-		public KalturaUploadTokenListResponse List(KalturaUploadTokenFilter filter, KalturaFilterPager pager)
+		public UploadTokenUploadRequestBuilder(string uploadTokenId, Stream fileData, bool resume, bool finalChunk, float resumeAt)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("uploadtoken", "list", "KalturaUploadTokenListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaUploadTokenListResponse)KalturaObjectFactory.Create(result, "KalturaUploadTokenListResponse");
+			this.UploadTokenId = uploadTokenId;
+			this.FileData = fileData;
+			this.Resume = resume;
+			this.FinalChunk = finalChunk;
+			this.ResumeAt = resumeAt;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("uploadTokenId"))
+				kparams.AddIfNotNull("uploadTokenId", UploadTokenId);
+			if (!isMapped("resume"))
+				kparams.AddIfNotNull("resume", Resume);
+			if (!isMapped("finalChunk"))
+				kparams.AddIfNotNull("finalChunk", FinalChunk);
+			if (!isMapped("resumeAt"))
+				kparams.AddIfNotNull("resumeAt", ResumeAt);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			kfiles.Add("fileData", FileData);
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<UploadToken>(result);
+		}
+	}
+
+	public class UploadTokenDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string UPLOAD_TOKEN_ID = "uploadTokenId";
+		#endregion
+
+		public string UploadTokenId
+		{
+			set;
+			get;
+		}
+
+		public UploadTokenDeleteRequestBuilder()
+			: base("uploadtoken", "delete")
+		{
+		}
+
+		public UploadTokenDeleteRequestBuilder(string uploadTokenId)
+			: this()
+		{
+			this.UploadTokenId = uploadTokenId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("uploadTokenId"))
+				kparams.AddIfNotNull("uploadTokenId", UploadTokenId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class UploadTokenListRequestBuilder : RequestBuilder<ListResponse<UploadToken>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public UploadTokenFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public UploadTokenListRequestBuilder()
+			: base("uploadtoken", "list")
+		{
+		}
+
+		public UploadTokenListRequestBuilder(UploadTokenFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<UploadToken>>(result);
+		}
+	}
+
+
+	public class UploadTokenService
+	{
+		private UploadTokenService()
+		{
+		}
+
+		public static UploadTokenAddRequestBuilder Add(UploadToken uploadToken = null)
+		{
+			return new UploadTokenAddRequestBuilder(uploadToken);
+		}
+
+		public static UploadTokenGetRequestBuilder Get(string uploadTokenId)
+		{
+			return new UploadTokenGetRequestBuilder(uploadTokenId);
+		}
+
+		public static UploadTokenUploadRequestBuilder Upload(string uploadTokenId, Stream fileData, bool resume = false, bool finalChunk = true, float resumeAt = -1)
+		{
+			return new UploadTokenUploadRequestBuilder(uploadTokenId, fileData, resume, finalChunk, resumeAt);
+		}
+
+		public static UploadTokenDeleteRequestBuilder Delete(string uploadTokenId)
+		{
+			return new UploadTokenDeleteRequestBuilder(uploadTokenId);
+		}
+
+		public static UploadTokenListRequestBuilder List(UploadTokenFilter filter = null, FilterPager pager = null)
+		{
+			return new UploadTokenListRequestBuilder(filter, pager);
 		}
 	}
 }

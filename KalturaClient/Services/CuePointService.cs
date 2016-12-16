@@ -29,132 +29,484 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaCuePointService : KalturaServiceBase
+	public class CuePointAddRequestBuilder : RequestBuilder<CuePoint>
 	{
-	public KalturaCuePointService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string CUE_POINT = "cuePoint";
+		#endregion
+
+		public CuePoint CuePoint
+		{
+			set;
+			get;
+		}
+
+		public CuePointAddRequestBuilder()
+			: base("cuepoint_cuepoint", "add")
 		{
 		}
 
-		public KalturaCuePoint Add(KalturaCuePoint cuePoint)
+		public CuePointAddRequestBuilder(CuePoint cuePoint)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("cuePoint", cuePoint);
-			_Client.QueueServiceCall("cuepoint_cuepoint", "add", "KalturaCuePoint", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaCuePoint)KalturaObjectFactory.Create(result, "KalturaCuePoint");
+			this.CuePoint = cuePoint;
 		}
 
-		public KalturaCuePointListResponse AddFromBulk(Stream fileData)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			KalturaFiles kfiles = new KalturaFiles();
-			kfiles.Add("fileData", fileData);
-			_Client.QueueServiceCall("cuepoint_cuepoint", "addFromBulk", "KalturaCuePointListResponse", kparams, kfiles);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaCuePointListResponse)KalturaObjectFactory.Create(result, "KalturaCuePointListResponse");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("cuePoint"))
+				kparams.AddIfNotNull("cuePoint", CuePoint);
+			return kparams;
 		}
 
-		public KalturaCuePoint Get(string id)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("cuepoint_cuepoint", "get", "KalturaCuePoint", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaCuePoint)KalturaObjectFactory.Create(result, "KalturaCuePoint");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaCuePointListResponse List()
+		public override object Deserialize(XmlElement result)
 		{
-			return this.List(null);
+			return ObjectFactory.Create<CuePoint>(result);
+		}
+	}
+
+	public class CuePointAddFromBulkRequestBuilder : RequestBuilder<ListResponse<CuePoint>>
+	{
+		#region Constants
+		public const string FILE_DATA = "fileData";
+		#endregion
+
+		public Stream FileData
+		{
+			set;
+			get;
 		}
 
-		public KalturaCuePointListResponse List(KalturaCuePointFilter filter)
+		public CuePointAddFromBulkRequestBuilder()
+			: base("cuepoint_cuepoint", "addFromBulk")
 		{
-			return this.List(filter, null);
 		}
 
-		public KalturaCuePointListResponse List(KalturaCuePointFilter filter, KalturaFilterPager pager)
+		public CuePointAddFromBulkRequestBuilder(Stream fileData)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("cuepoint_cuepoint", "list", "KalturaCuePointListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaCuePointListResponse)KalturaObjectFactory.Create(result, "KalturaCuePointListResponse");
+			this.FileData = fileData;
 		}
 
-		public int Count()
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.Count(null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			return kparams;
 		}
 
-		public int Count(KalturaCuePointFilter filter)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			_Client.QueueServiceCall("cuepoint_cuepoint", "count", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return 0;
-			XmlElement result = _Client.DoQueue();
+			Files kfiles = base.getFiles();
+			kfiles.Add("fileData", FileData);
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<CuePoint>>(result);
+		}
+	}
+
+	public class CuePointGetRequestBuilder : RequestBuilder<CuePoint>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+
+		public CuePointGetRequestBuilder()
+			: base("cuepoint_cuepoint", "get")
+		{
+		}
+
+		public CuePointGetRequestBuilder(string id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<CuePoint>(result);
+		}
+	}
+
+	public class CuePointListRequestBuilder : RequestBuilder<ListResponse<CuePoint>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public CuePointFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public CuePointListRequestBuilder()
+			: base("cuepoint_cuepoint", "list")
+		{
+		}
+
+		public CuePointListRequestBuilder(CuePointFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<CuePoint>>(result);
+		}
+	}
+
+	public class CuePointCountRequestBuilder : RequestBuilder<int>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		#endregion
+
+		public CuePointFilter Filter
+		{
+			set;
+			get;
+		}
+
+		public CuePointCountRequestBuilder()
+			: base("cuepoint_cuepoint", "count")
+		{
+		}
+
+		public CuePointCountRequestBuilder(CuePointFilter filter)
+			: this()
+		{
+			this.Filter = filter;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			return int.Parse(result.InnerText);
 		}
+	}
 
-		public KalturaCuePoint Update(string id, KalturaCuePoint cuePoint)
+	public class CuePointUpdateRequestBuilder : RequestBuilder<CuePoint>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string CUE_POINT = "cuePoint";
+		#endregion
+
+		public string Id
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("cuePoint", cuePoint);
-			_Client.QueueServiceCall("cuepoint_cuepoint", "update", "KalturaCuePoint", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaCuePoint)KalturaObjectFactory.Create(result, "KalturaCuePoint");
+			set;
+			get;
+		}
+		public CuePoint CuePoint
+		{
+			set;
+			get;
 		}
 
-		public void Delete(string id)
+		public CuePointUpdateRequestBuilder()
+			: base("cuepoint_cuepoint", "update")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("cuepoint_cuepoint", "delete", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
 		}
 
-		public void UpdateStatus(string id, KalturaCuePointStatus status)
+		public CuePointUpdateRequestBuilder(string id, CuePoint cuePoint)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("status", status);
-			_Client.QueueServiceCall("cuepoint_cuepoint", "updateStatus", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			this.Id = id;
+			this.CuePoint = cuePoint;
 		}
 
-		public KalturaCuePoint Clone(string id, string entryId)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("entryId", entryId);
-			_Client.QueueServiceCall("cuepoint_cuepoint", "clone", "KalturaCuePoint", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaCuePoint)KalturaObjectFactory.Create(result, "KalturaCuePoint");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("cuePoint"))
+				kparams.AddIfNotNull("cuePoint", CuePoint);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<CuePoint>(result);
+		}
+	}
+
+	public class CuePointDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+
+		public CuePointDeleteRequestBuilder()
+			: base("cuepoint_cuepoint", "delete")
+		{
+		}
+
+		public CuePointDeleteRequestBuilder(string id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class CuePointUpdateStatusRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string STATUS = "status";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public CuePointStatus Status
+		{
+			set;
+			get;
+		}
+
+		public CuePointUpdateStatusRequestBuilder()
+			: base("cuepoint_cuepoint", "updateStatus")
+		{
+		}
+
+		public CuePointUpdateStatusRequestBuilder(string id, CuePointStatus status)
+			: this()
+		{
+			this.Id = id;
+			this.Status = status;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("status"))
+				kparams.AddIfNotNull("status", Status);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class CuePointCloneRequestBuilder : RequestBuilder<CuePoint>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string ENTRY_ID = "entryId";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public string EntryId
+		{
+			set;
+			get;
+		}
+
+		public CuePointCloneRequestBuilder()
+			: base("cuepoint_cuepoint", "clone")
+		{
+		}
+
+		public CuePointCloneRequestBuilder(string id, string entryId)
+			: this()
+		{
+			this.Id = id;
+			this.EntryId = entryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<CuePoint>(result);
+		}
+	}
+
+
+	public class CuePointService
+	{
+		private CuePointService()
+		{
+		}
+
+		public static CuePointAddRequestBuilder Add(CuePoint cuePoint)
+		{
+			return new CuePointAddRequestBuilder(cuePoint);
+		}
+
+		public static CuePointAddFromBulkRequestBuilder AddFromBulk(Stream fileData)
+		{
+			return new CuePointAddFromBulkRequestBuilder(fileData);
+		}
+
+		public static CuePointGetRequestBuilder Get(string id)
+		{
+			return new CuePointGetRequestBuilder(id);
+		}
+
+		public static CuePointListRequestBuilder List(CuePointFilter filter = null, FilterPager pager = null)
+		{
+			return new CuePointListRequestBuilder(filter, pager);
+		}
+
+		public static CuePointCountRequestBuilder Count(CuePointFilter filter = null)
+		{
+			return new CuePointCountRequestBuilder(filter);
+		}
+
+		public static CuePointUpdateRequestBuilder Update(string id, CuePoint cuePoint)
+		{
+			return new CuePointUpdateRequestBuilder(id, cuePoint);
+		}
+
+		public static CuePointDeleteRequestBuilder Delete(string id)
+		{
+			return new CuePointDeleteRequestBuilder(id);
+		}
+
+		public static CuePointUpdateStatusRequestBuilder UpdateStatus(string id, CuePointStatus status)
+		{
+			return new CuePointUpdateStatusRequestBuilder(id, status);
+		}
+
+		public static CuePointCloneRequestBuilder Clone(string id, string entryId)
+		{
+			return new CuePointCloneRequestBuilder(id, entryId);
 		}
 	}
 }

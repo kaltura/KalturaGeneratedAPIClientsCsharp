@@ -29,88 +29,332 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaFileAssetService : KalturaServiceBase
+	public class FileAssetAddRequestBuilder : RequestBuilder<FileAsset>
 	{
-	public KalturaFileAssetService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string FILE_ASSET = "fileAsset";
+		#endregion
+
+		public FileAsset FileAsset
+		{
+			set;
+			get;
+		}
+
+		public FileAssetAddRequestBuilder()
+			: base("fileasset", "add")
 		{
 		}
 
-		public KalturaFileAsset Add(KalturaFileAsset fileAsset)
+		public FileAssetAddRequestBuilder(FileAsset fileAsset)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("fileAsset", fileAsset);
-			_Client.QueueServiceCall("fileasset", "add", "KalturaFileAsset", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaFileAsset)KalturaObjectFactory.Create(result, "KalturaFileAsset");
+			this.FileAsset = fileAsset;
 		}
 
-		public KalturaFileAsset Get(int id)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("fileasset", "get", "KalturaFileAsset", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaFileAsset)KalturaObjectFactory.Create(result, "KalturaFileAsset");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("fileAsset"))
+				kparams.AddIfNotNull("fileAsset", FileAsset);
+			return kparams;
 		}
 
-		public KalturaFileAsset Update(int id, KalturaFileAsset fileAsset)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("fileAsset", fileAsset);
-			_Client.QueueServiceCall("fileasset", "update", "KalturaFileAsset", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaFileAsset)KalturaObjectFactory.Create(result, "KalturaFileAsset");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public void Delete(int id)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("fileasset", "delete", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			return ObjectFactory.Create<FileAsset>(result);
+		}
+	}
+
+	public class FileAssetGetRequestBuilder : RequestBuilder<FileAsset>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
 		}
 
-		public KalturaFileAsset SetContent(string id, KalturaContentResource contentResource)
+		public FileAssetGetRequestBuilder()
+			: base("fileasset", "get")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("contentResource", contentResource);
-			_Client.QueueServiceCall("fileasset", "setContent", "KalturaFileAsset", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaFileAsset)KalturaObjectFactory.Create(result, "KalturaFileAsset");
 		}
 
-		public KalturaFileAssetListResponse List(KalturaFileAssetFilter filter)
+		public FileAssetGetRequestBuilder(int id)
+			: this()
 		{
-			return this.List(filter, null);
+			this.Id = id;
 		}
 
-		public KalturaFileAssetListResponse List(KalturaFileAssetFilter filter, KalturaFilterPager pager)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("fileasset", "list", "KalturaFileAssetListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaFileAssetListResponse)KalturaObjectFactory.Create(result, "KalturaFileAssetListResponse");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<FileAsset>(result);
+		}
+	}
+
+	public class FileAssetUpdateRequestBuilder : RequestBuilder<FileAsset>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string FILE_ASSET = "fileAsset";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public FileAsset FileAsset
+		{
+			set;
+			get;
+		}
+
+		public FileAssetUpdateRequestBuilder()
+			: base("fileasset", "update")
+		{
+		}
+
+		public FileAssetUpdateRequestBuilder(int id, FileAsset fileAsset)
+			: this()
+		{
+			this.Id = id;
+			this.FileAsset = fileAsset;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("fileAsset"))
+				kparams.AddIfNotNull("fileAsset", FileAsset);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<FileAsset>(result);
+		}
+	}
+
+	public class FileAssetDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public FileAssetDeleteRequestBuilder()
+			: base("fileasset", "delete")
+		{
+		}
+
+		public FileAssetDeleteRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class FileAssetSetContentRequestBuilder : RequestBuilder<FileAsset>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string CONTENT_RESOURCE = "contentResource";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public ContentResource ContentResource
+		{
+			set;
+			get;
+		}
+
+		public FileAssetSetContentRequestBuilder()
+			: base("fileasset", "setContent")
+		{
+		}
+
+		public FileAssetSetContentRequestBuilder(string id, ContentResource contentResource)
+			: this()
+		{
+			this.Id = id;
+			this.ContentResource = contentResource;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("contentResource"))
+				kparams.AddIfNotNull("contentResource", ContentResource);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<FileAsset>(result);
+		}
+	}
+
+	public class FileAssetListRequestBuilder : RequestBuilder<ListResponse<FileAsset>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public FileAssetFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public FileAssetListRequestBuilder()
+			: base("fileasset", "list")
+		{
+		}
+
+		public FileAssetListRequestBuilder(FileAssetFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<FileAsset>>(result);
+		}
+	}
+
+
+	public class FileAssetService
+	{
+		private FileAssetService()
+		{
+		}
+
+		public static FileAssetAddRequestBuilder Add(FileAsset fileAsset)
+		{
+			return new FileAssetAddRequestBuilder(fileAsset);
+		}
+
+		public static FileAssetGetRequestBuilder Get(int id)
+		{
+			return new FileAssetGetRequestBuilder(id);
+		}
+
+		public static FileAssetUpdateRequestBuilder Update(int id, FileAsset fileAsset)
+		{
+			return new FileAssetUpdateRequestBuilder(id, fileAsset);
+		}
+
+		public static FileAssetDeleteRequestBuilder Delete(int id)
+		{
+			return new FileAssetDeleteRequestBuilder(id);
+		}
+
+		public static FileAssetSetContentRequestBuilder SetContent(string id, ContentResource contentResource)
+		{
+			return new FileAssetSetContentRequestBuilder(id, contentResource);
+		}
+
+		public static FileAssetListRequestBuilder List(FileAssetFilter filter, FilterPager pager = null)
+		{
+			return new FileAssetListRequestBuilder(filter, pager);
 		}
 	}
 }

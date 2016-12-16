@@ -29,50 +29,140 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaConversionProfileAssetParamsService : KalturaServiceBase
+	public class ConversionProfileAssetParamsListRequestBuilder : RequestBuilder<ListResponse<ConversionProfileAssetParams>>
 	{
-	public KalturaConversionProfileAssetParamsService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public ConversionProfileAssetParamsFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public ConversionProfileAssetParamsListRequestBuilder()
+			: base("conversionprofileassetparams", "list")
 		{
 		}
 
-		public KalturaConversionProfileAssetParamsListResponse List()
+		public ConversionProfileAssetParamsListRequestBuilder(ConversionProfileAssetParamsFilter filter, FilterPager pager)
+			: this()
 		{
-			return this.List(null);
+			this.Filter = filter;
+			this.Pager = pager;
 		}
 
-		public KalturaConversionProfileAssetParamsListResponse List(KalturaConversionProfileAssetParamsFilter filter)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.List(filter, null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
 		}
 
-		public KalturaConversionProfileAssetParamsListResponse List(KalturaConversionProfileAssetParamsFilter filter, KalturaFilterPager pager)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("conversionprofileassetparams", "list", "KalturaConversionProfileAssetParamsListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaConversionProfileAssetParamsListResponse)KalturaObjectFactory.Create(result, "KalturaConversionProfileAssetParamsListResponse");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaConversionProfileAssetParams Update(int conversionProfileId, int assetParamsId, KalturaConversionProfileAssetParams conversionProfileAssetParams)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("conversionProfileId", conversionProfileId);
-			kparams.AddIfNotNull("assetParamsId", assetParamsId);
-			kparams.AddIfNotNull("conversionProfileAssetParams", conversionProfileAssetParams);
-			_Client.QueueServiceCall("conversionprofileassetparams", "update", "KalturaConversionProfileAssetParams", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaConversionProfileAssetParams)KalturaObjectFactory.Create(result, "KalturaConversionProfileAssetParams");
+			return ObjectFactory.Create<ListResponse<ConversionProfileAssetParams>>(result);
+		}
+	}
+
+	public class ConversionProfileAssetParamsUpdateRequestBuilder : RequestBuilder<ConversionProfileAssetParams>
+	{
+		#region Constants
+		public const string CONVERSION_PROFILE_ID = "conversionProfileId";
+		public const string ASSET_PARAMS_ID = "assetParamsId";
+		public const string CONVERSION_PROFILE_ASSET_PARAMS = "conversionProfileAssetParams";
+		#endregion
+
+		public int ConversionProfileId
+		{
+			set;
+			get;
+		}
+		public int AssetParamsId
+		{
+			set;
+			get;
+		}
+		public ConversionProfileAssetParams ConversionProfileAssetParams
+		{
+			set;
+			get;
+		}
+
+		public ConversionProfileAssetParamsUpdateRequestBuilder()
+			: base("conversionprofileassetparams", "update")
+		{
+		}
+
+		public ConversionProfileAssetParamsUpdateRequestBuilder(int conversionProfileId, int assetParamsId, ConversionProfileAssetParams conversionProfileAssetParams)
+			: this()
+		{
+			this.ConversionProfileId = conversionProfileId;
+			this.AssetParamsId = assetParamsId;
+			this.ConversionProfileAssetParams = conversionProfileAssetParams;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("conversionProfileId"))
+				kparams.AddIfNotNull("conversionProfileId", ConversionProfileId);
+			if (!isMapped("assetParamsId"))
+				kparams.AddIfNotNull("assetParamsId", AssetParamsId);
+			if (!isMapped("conversionProfileAssetParams"))
+				kparams.AddIfNotNull("conversionProfileAssetParams", ConversionProfileAssetParams);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ConversionProfileAssetParams>(result);
+		}
+	}
+
+
+	public class ConversionProfileAssetParamsService
+	{
+		private ConversionProfileAssetParamsService()
+		{
+		}
+
+		public static ConversionProfileAssetParamsListRequestBuilder List(ConversionProfileAssetParamsFilter filter = null, FilterPager pager = null)
+		{
+			return new ConversionProfileAssetParamsListRequestBuilder(filter, pager);
+		}
+
+		public static ConversionProfileAssetParamsUpdateRequestBuilder Update(int conversionProfileId, int assetParamsId, ConversionProfileAssetParams conversionProfileAssetParams)
+		{
+			return new ConversionProfileAssetParamsUpdateRequestBuilder(conversionProfileId, assetParamsId, conversionProfileAssetParams);
 		}
 	}
 }

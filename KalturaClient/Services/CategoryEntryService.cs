@@ -29,127 +29,473 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaCategoryEntryService : KalturaServiceBase
+	public class CategoryEntryAddRequestBuilder : RequestBuilder<CategoryEntry>
 	{
-	public KalturaCategoryEntryService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string CATEGORY_ENTRY = "categoryEntry";
+		#endregion
+
+		public CategoryEntry CategoryEntry
+		{
+			set;
+			get;
+		}
+
+		public CategoryEntryAddRequestBuilder()
+			: base("categoryentry", "add")
 		{
 		}
 
-		public KalturaCategoryEntry Add(KalturaCategoryEntry categoryEntry)
+		public CategoryEntryAddRequestBuilder(CategoryEntry categoryEntry)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("categoryEntry", categoryEntry);
-			_Client.QueueServiceCall("categoryentry", "add", "KalturaCategoryEntry", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaCategoryEntry)KalturaObjectFactory.Create(result, "KalturaCategoryEntry");
+			this.CategoryEntry = categoryEntry;
 		}
 
-		public void Delete(string entryId, int categoryId)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("entryId", entryId);
-			kparams.AddIfNotNull("categoryId", categoryId);
-			_Client.QueueServiceCall("categoryentry", "delete", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("categoryEntry"))
+				kparams.AddIfNotNull("categoryEntry", CategoryEntry);
+			return kparams;
 		}
 
-		public KalturaCategoryEntryListResponse List()
+		public override Files getFiles()
 		{
-			return this.List(null);
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaCategoryEntryListResponse List(KalturaCategoryEntryFilter filter)
+		public override object Deserialize(XmlElement result)
 		{
-			return this.List(filter, null);
+			return ObjectFactory.Create<CategoryEntry>(result);
+		}
+	}
+
+	public class CategoryEntryDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string CATEGORY_ID = "categoryId";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public int CategoryId
+		{
+			set;
+			get;
 		}
 
-		public KalturaCategoryEntryListResponse List(KalturaCategoryEntryFilter filter, KalturaFilterPager pager)
+		public CategoryEntryDeleteRequestBuilder()
+			: base("categoryentry", "delete")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("categoryentry", "list", "KalturaCategoryEntryListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaCategoryEntryListResponse)KalturaObjectFactory.Create(result, "KalturaCategoryEntryListResponse");
 		}
 
-		public int Index(string entryId, int categoryId)
+		public CategoryEntryDeleteRequestBuilder(string entryId, int categoryId)
+			: this()
 		{
-			return this.Index(entryId, categoryId, true);
+			this.EntryId = entryId;
+			this.CategoryId = categoryId;
 		}
 
-		public int Index(string entryId, int categoryId, bool shouldUpdate)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("entryId", entryId);
-			kparams.AddIfNotNull("categoryId", categoryId);
-			kparams.AddIfNotNull("shouldUpdate", shouldUpdate);
-			_Client.QueueServiceCall("categoryentry", "index", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return 0;
-			XmlElement result = _Client.DoQueue();
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("categoryId"))
+				kparams.AddIfNotNull("categoryId", CategoryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class CategoryEntryListRequestBuilder : RequestBuilder<ListResponse<CategoryEntry>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public CategoryEntryFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public CategoryEntryListRequestBuilder()
+			: base("categoryentry", "list")
+		{
+		}
+
+		public CategoryEntryListRequestBuilder(CategoryEntryFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<CategoryEntry>>(result);
+		}
+	}
+
+	public class CategoryEntryIndexRequestBuilder : RequestBuilder<int>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string CATEGORY_ID = "categoryId";
+		public const string SHOULD_UPDATE = "shouldUpdate";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public int CategoryId
+		{
+			set;
+			get;
+		}
+		public bool ShouldUpdate
+		{
+			set;
+			get;
+		}
+
+		public CategoryEntryIndexRequestBuilder()
+			: base("categoryentry", "index")
+		{
+		}
+
+		public CategoryEntryIndexRequestBuilder(string entryId, int categoryId, bool shouldUpdate)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.CategoryId = categoryId;
+			this.ShouldUpdate = shouldUpdate;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("categoryId"))
+				kparams.AddIfNotNull("categoryId", CategoryId);
+			if (!isMapped("shouldUpdate"))
+				kparams.AddIfNotNull("shouldUpdate", ShouldUpdate);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			return int.Parse(result.InnerText);
 		}
+	}
 
-		public void Activate(string entryId, int categoryId)
+	public class CategoryEntryActivateRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string CATEGORY_ID = "categoryId";
+		#endregion
+
+		public string EntryId
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("entryId", entryId);
-			kparams.AddIfNotNull("categoryId", categoryId);
-			_Client.QueueServiceCall("categoryentry", "activate", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			set;
+			get;
+		}
+		public int CategoryId
+		{
+			set;
+			get;
 		}
 
-		public void Reject(string entryId, int categoryId)
+		public CategoryEntryActivateRequestBuilder()
+			: base("categoryentry", "activate")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("entryId", entryId);
-			kparams.AddIfNotNull("categoryId", categoryId);
-			_Client.QueueServiceCall("categoryentry", "reject", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
 		}
 
-		public void SyncPrivacyContext(string entryId, int categoryId)
+		public CategoryEntryActivateRequestBuilder(string entryId, int categoryId)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("entryId", entryId);
-			kparams.AddIfNotNull("categoryId", categoryId);
-			_Client.QueueServiceCall("categoryentry", "syncPrivacyContext", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			this.EntryId = entryId;
+			this.CategoryId = categoryId;
 		}
 
-		public KalturaBulkUpload AddFromBulkUpload(KalturaBulkServiceData bulkUploadData)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.AddFromBulkUpload(bulkUploadData, null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("categoryId"))
+				kparams.AddIfNotNull("categoryId", CategoryId);
+			return kparams;
 		}
 
-		public KalturaBulkUpload AddFromBulkUpload(KalturaBulkServiceData bulkUploadData, KalturaBulkUploadCategoryEntryData bulkUploadCategoryEntryData)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("bulkUploadData", bulkUploadData);
-			kparams.AddIfNotNull("bulkUploadCategoryEntryData", bulkUploadCategoryEntryData);
-			_Client.QueueServiceCall("categoryentry", "addFromBulkUpload", "KalturaBulkUpload", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaBulkUpload)KalturaObjectFactory.Create(result, "KalturaBulkUpload");
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class CategoryEntryRejectRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string CATEGORY_ID = "categoryId";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public int CategoryId
+		{
+			set;
+			get;
+		}
+
+		public CategoryEntryRejectRequestBuilder()
+			: base("categoryentry", "reject")
+		{
+		}
+
+		public CategoryEntryRejectRequestBuilder(string entryId, int categoryId)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.CategoryId = categoryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("categoryId"))
+				kparams.AddIfNotNull("categoryId", CategoryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class CategoryEntrySyncPrivacyContextRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string CATEGORY_ID = "categoryId";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public int CategoryId
+		{
+			set;
+			get;
+		}
+
+		public CategoryEntrySyncPrivacyContextRequestBuilder()
+			: base("categoryentry", "syncPrivacyContext")
+		{
+		}
+
+		public CategoryEntrySyncPrivacyContextRequestBuilder(string entryId, int categoryId)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.CategoryId = categoryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("categoryId"))
+				kparams.AddIfNotNull("categoryId", CategoryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class CategoryEntryAddFromBulkUploadRequestBuilder : RequestBuilder<BulkUpload>
+	{
+		#region Constants
+		public const string BULK_UPLOAD_DATA = "bulkUploadData";
+		public const string BULK_UPLOAD_CATEGORY_ENTRY_DATA = "bulkUploadCategoryEntryData";
+		#endregion
+
+		public BulkServiceData BulkUploadData
+		{
+			set;
+			get;
+		}
+		public BulkUploadCategoryEntryData BulkUploadCategoryEntryData
+		{
+			set;
+			get;
+		}
+
+		public CategoryEntryAddFromBulkUploadRequestBuilder()
+			: base("categoryentry", "addFromBulkUpload")
+		{
+		}
+
+		public CategoryEntryAddFromBulkUploadRequestBuilder(BulkServiceData bulkUploadData, BulkUploadCategoryEntryData bulkUploadCategoryEntryData)
+			: this()
+		{
+			this.BulkUploadData = bulkUploadData;
+			this.BulkUploadCategoryEntryData = bulkUploadCategoryEntryData;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("bulkUploadData"))
+				kparams.AddIfNotNull("bulkUploadData", BulkUploadData);
+			if (!isMapped("bulkUploadCategoryEntryData"))
+				kparams.AddIfNotNull("bulkUploadCategoryEntryData", BulkUploadCategoryEntryData);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<BulkUpload>(result);
+		}
+	}
+
+
+	public class CategoryEntryService
+	{
+		private CategoryEntryService()
+		{
+		}
+
+		public static CategoryEntryAddRequestBuilder Add(CategoryEntry categoryEntry)
+		{
+			return new CategoryEntryAddRequestBuilder(categoryEntry);
+		}
+
+		public static CategoryEntryDeleteRequestBuilder Delete(string entryId, int categoryId)
+		{
+			return new CategoryEntryDeleteRequestBuilder(entryId, categoryId);
+		}
+
+		public static CategoryEntryListRequestBuilder List(CategoryEntryFilter filter = null, FilterPager pager = null)
+		{
+			return new CategoryEntryListRequestBuilder(filter, pager);
+		}
+
+		public static CategoryEntryIndexRequestBuilder Index(string entryId, int categoryId, bool shouldUpdate = true)
+		{
+			return new CategoryEntryIndexRequestBuilder(entryId, categoryId, shouldUpdate);
+		}
+
+		public static CategoryEntryActivateRequestBuilder Activate(string entryId, int categoryId)
+		{
+			return new CategoryEntryActivateRequestBuilder(entryId, categoryId);
+		}
+
+		public static CategoryEntryRejectRequestBuilder Reject(string entryId, int categoryId)
+		{
+			return new CategoryEntryRejectRequestBuilder(entryId, categoryId);
+		}
+
+		public static CategoryEntrySyncPrivacyContextRequestBuilder SyncPrivacyContext(string entryId, int categoryId)
+		{
+			return new CategoryEntrySyncPrivacyContextRequestBuilder(entryId, categoryId);
+		}
+
+		public static CategoryEntryAddFromBulkUploadRequestBuilder AddFromBulkUpload(BulkServiceData bulkUploadData, BulkUploadCategoryEntryData bulkUploadCategoryEntryData = null)
+		{
+			return new CategoryEntryAddFromBulkUploadRequestBuilder(bulkUploadData, bulkUploadCategoryEntryData);
 		}
 	}
 }

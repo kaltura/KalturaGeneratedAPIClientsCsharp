@@ -29,111 +29,359 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaAppTokenService : KalturaServiceBase
+	public class AppTokenAddRequestBuilder : RequestBuilder<AppToken>
 	{
-	public KalturaAppTokenService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string APP_TOKEN = "appToken";
+		#endregion
+
+		public AppToken AppToken
+		{
+			set;
+			get;
+		}
+
+		public AppTokenAddRequestBuilder()
+			: base("apptoken", "add")
 		{
 		}
 
-		public KalturaAppToken Add(KalturaAppToken appToken)
+		public AppTokenAddRequestBuilder(AppToken appToken)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("appToken", appToken);
-			_Client.QueueServiceCall("apptoken", "add", "KalturaAppToken", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaAppToken)KalturaObjectFactory.Create(result, "KalturaAppToken");
+			this.AppToken = appToken;
 		}
 
-		public KalturaAppToken Get(string id)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("apptoken", "get", "KalturaAppToken", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaAppToken)KalturaObjectFactory.Create(result, "KalturaAppToken");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("appToken"))
+				kparams.AddIfNotNull("appToken", AppToken);
+			return kparams;
 		}
 
-		public KalturaAppToken Update(string id, KalturaAppToken appToken)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("appToken", appToken);
-			_Client.QueueServiceCall("apptoken", "update", "KalturaAppToken", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaAppToken)KalturaObjectFactory.Create(result, "KalturaAppToken");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public void Delete(string id)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("apptoken", "delete", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			return ObjectFactory.Create<AppToken>(result);
+		}
+	}
+
+	public class AppTokenGetRequestBuilder : RequestBuilder<AppToken>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
 		}
 
-		public KalturaAppTokenListResponse List()
+		public AppTokenGetRequestBuilder()
+			: base("apptoken", "get")
 		{
-			return this.List(null);
 		}
 
-		public KalturaAppTokenListResponse List(KalturaAppTokenFilter filter)
+		public AppTokenGetRequestBuilder(string id)
+			: this()
 		{
-			return this.List(filter, null);
+			this.Id = id;
 		}
 
-		public KalturaAppTokenListResponse List(KalturaAppTokenFilter filter, KalturaFilterPager pager)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("apptoken", "list", "KalturaAppTokenListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaAppTokenListResponse)KalturaObjectFactory.Create(result, "KalturaAppTokenListResponse");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
 		}
 
-		public KalturaSessionInfo StartSession(string id, string tokenHash)
+		public override Files getFiles()
 		{
-			return this.StartSession(id, tokenHash, null);
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaSessionInfo StartSession(string id, string tokenHash, string userId)
+		public override object Deserialize(XmlElement result)
 		{
-			return this.StartSession(id, tokenHash, userId, (KalturaSessionType)(Int32.MinValue));
+			return ObjectFactory.Create<AppToken>(result);
+		}
+	}
+
+	public class AppTokenUpdateRequestBuilder : RequestBuilder<AppToken>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string APP_TOKEN = "appToken";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public AppToken AppToken
+		{
+			set;
+			get;
 		}
 
-		public KalturaSessionInfo StartSession(string id, string tokenHash, string userId, KalturaSessionType type)
+		public AppTokenUpdateRequestBuilder()
+			: base("apptoken", "update")
 		{
-			return this.StartSession(id, tokenHash, userId, type, Int32.MinValue);
 		}
 
-		public KalturaSessionInfo StartSession(string id, string tokenHash, string userId, KalturaSessionType type, int expiry)
+		public AppTokenUpdateRequestBuilder(string id, AppToken appToken)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("tokenHash", tokenHash);
-			kparams.AddIfNotNull("userId", userId);
-			kparams.AddIfNotNull("type", type);
-			kparams.AddIfNotNull("expiry", expiry);
-			_Client.QueueServiceCall("apptoken", "startSession", "KalturaSessionInfo", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaSessionInfo)KalturaObjectFactory.Create(result, "KalturaSessionInfo");
+			this.Id = id;
+			this.AppToken = appToken;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("appToken"))
+				kparams.AddIfNotNull("appToken", AppToken);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<AppToken>(result);
+		}
+	}
+
+	public class AppTokenDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+
+		public AppTokenDeleteRequestBuilder()
+			: base("apptoken", "delete")
+		{
+		}
+
+		public AppTokenDeleteRequestBuilder(string id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class AppTokenListRequestBuilder : RequestBuilder<ListResponse<AppToken>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public AppTokenFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public AppTokenListRequestBuilder()
+			: base("apptoken", "list")
+		{
+		}
+
+		public AppTokenListRequestBuilder(AppTokenFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<AppToken>>(result);
+		}
+	}
+
+	public class AppTokenStartSessionRequestBuilder : RequestBuilder<SessionInfo>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string TOKEN_HASH = "tokenHash";
+		public const string USER_ID = "userId";
+		public const string TYPE = "type";
+		public const string EXPIRY = "expiry";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public string TokenHash
+		{
+			set;
+			get;
+		}
+		public string UserId
+		{
+			set;
+			get;
+		}
+		public SessionType Type
+		{
+			set;
+			get;
+		}
+		public int Expiry
+		{
+			set;
+			get;
+		}
+
+		public AppTokenStartSessionRequestBuilder()
+			: base("apptoken", "startSession")
+		{
+		}
+
+		public AppTokenStartSessionRequestBuilder(string id, string tokenHash, string userId, SessionType type, int expiry)
+			: this()
+		{
+			this.Id = id;
+			this.TokenHash = tokenHash;
+			this.UserId = userId;
+			this.Type = type;
+			this.Expiry = expiry;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("tokenHash"))
+				kparams.AddIfNotNull("tokenHash", TokenHash);
+			if (!isMapped("userId"))
+				kparams.AddIfNotNull("userId", UserId);
+			if (!isMapped("type"))
+				kparams.AddIfNotNull("type", Type);
+			if (!isMapped("expiry"))
+				kparams.AddIfNotNull("expiry", Expiry);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<SessionInfo>(result);
+		}
+	}
+
+
+	public class AppTokenService
+	{
+		private AppTokenService()
+		{
+		}
+
+		public static AppTokenAddRequestBuilder Add(AppToken appToken)
+		{
+			return new AppTokenAddRequestBuilder(appToken);
+		}
+
+		public static AppTokenGetRequestBuilder Get(string id)
+		{
+			return new AppTokenGetRequestBuilder(id);
+		}
+
+		public static AppTokenUpdateRequestBuilder Update(string id, AppToken appToken)
+		{
+			return new AppTokenUpdateRequestBuilder(id, appToken);
+		}
+
+		public static AppTokenDeleteRequestBuilder Delete(string id)
+		{
+			return new AppTokenDeleteRequestBuilder(id);
+		}
+
+		public static AppTokenListRequestBuilder List(AppTokenFilter filter = null, FilterPager pager = null)
+		{
+			return new AppTokenListRequestBuilder(filter, pager);
+		}
+
+		public static AppTokenStartSessionRequestBuilder StartSession(string id, string tokenHash, string userId = null, SessionType type = (SessionType)(Int32.MinValue), int expiry = Int32.MinValue)
+		{
+			return new AppTokenStartSessionRequestBuilder(id, tokenHash, userId, type, expiry);
 		}
 	}
 }

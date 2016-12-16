@@ -29,81 +29,275 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaLiveChannelSegmentService : KalturaServiceBase
+	public class LiveChannelSegmentAddRequestBuilder : RequestBuilder<LiveChannelSegment>
 	{
-	public KalturaLiveChannelSegmentService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string LIVE_CHANNEL_SEGMENT = "liveChannelSegment";
+		#endregion
+
+		public LiveChannelSegment LiveChannelSegment
+		{
+			set;
+			get;
+		}
+
+		public LiveChannelSegmentAddRequestBuilder()
+			: base("livechannelsegment", "add")
 		{
 		}
 
-		public KalturaLiveChannelSegment Add(KalturaLiveChannelSegment liveChannelSegment)
+		public LiveChannelSegmentAddRequestBuilder(LiveChannelSegment liveChannelSegment)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("liveChannelSegment", liveChannelSegment);
-			_Client.QueueServiceCall("livechannelsegment", "add", "KalturaLiveChannelSegment", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaLiveChannelSegment)KalturaObjectFactory.Create(result, "KalturaLiveChannelSegment");
+			this.LiveChannelSegment = liveChannelSegment;
 		}
 
-		public KalturaLiveChannelSegment Get(int id)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("livechannelsegment", "get", "KalturaLiveChannelSegment", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaLiveChannelSegment)KalturaObjectFactory.Create(result, "KalturaLiveChannelSegment");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("liveChannelSegment"))
+				kparams.AddIfNotNull("liveChannelSegment", LiveChannelSegment);
+			return kparams;
 		}
 
-		public KalturaLiveChannelSegment Update(int id, KalturaLiveChannelSegment liveChannelSegment)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("liveChannelSegment", liveChannelSegment);
-			_Client.QueueServiceCall("livechannelsegment", "update", "KalturaLiveChannelSegment", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaLiveChannelSegment)KalturaObjectFactory.Create(result, "KalturaLiveChannelSegment");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public void Delete(int id)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("livechannelsegment", "delete", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			return ObjectFactory.Create<LiveChannelSegment>(result);
+		}
+	}
+
+	public class LiveChannelSegmentGetRequestBuilder : RequestBuilder<LiveChannelSegment>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
 		}
 
-		public KalturaLiveChannelSegmentListResponse List()
+		public LiveChannelSegmentGetRequestBuilder()
+			: base("livechannelsegment", "get")
 		{
-			return this.List(null);
 		}
 
-		public KalturaLiveChannelSegmentListResponse List(KalturaLiveChannelSegmentFilter filter)
+		public LiveChannelSegmentGetRequestBuilder(int id)
+			: this()
 		{
-			return this.List(filter, null);
+			this.Id = id;
 		}
 
-		public KalturaLiveChannelSegmentListResponse List(KalturaLiveChannelSegmentFilter filter, KalturaFilterPager pager)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("livechannelsegment", "list", "KalturaLiveChannelSegmentListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaLiveChannelSegmentListResponse)KalturaObjectFactory.Create(result, "KalturaLiveChannelSegmentListResponse");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<LiveChannelSegment>(result);
+		}
+	}
+
+	public class LiveChannelSegmentUpdateRequestBuilder : RequestBuilder<LiveChannelSegment>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string LIVE_CHANNEL_SEGMENT = "liveChannelSegment";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public LiveChannelSegment LiveChannelSegment
+		{
+			set;
+			get;
+		}
+
+		public LiveChannelSegmentUpdateRequestBuilder()
+			: base("livechannelsegment", "update")
+		{
+		}
+
+		public LiveChannelSegmentUpdateRequestBuilder(int id, LiveChannelSegment liveChannelSegment)
+			: this()
+		{
+			this.Id = id;
+			this.LiveChannelSegment = liveChannelSegment;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("liveChannelSegment"))
+				kparams.AddIfNotNull("liveChannelSegment", LiveChannelSegment);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<LiveChannelSegment>(result);
+		}
+	}
+
+	public class LiveChannelSegmentDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public LiveChannelSegmentDeleteRequestBuilder()
+			: base("livechannelsegment", "delete")
+		{
+		}
+
+		public LiveChannelSegmentDeleteRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class LiveChannelSegmentListRequestBuilder : RequestBuilder<ListResponse<LiveChannelSegment>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public LiveChannelSegmentFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public LiveChannelSegmentListRequestBuilder()
+			: base("livechannelsegment", "list")
+		{
+		}
+
+		public LiveChannelSegmentListRequestBuilder(LiveChannelSegmentFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<LiveChannelSegment>>(result);
+		}
+	}
+
+
+	public class LiveChannelSegmentService
+	{
+		private LiveChannelSegmentService()
+		{
+		}
+
+		public static LiveChannelSegmentAddRequestBuilder Add(LiveChannelSegment liveChannelSegment)
+		{
+			return new LiveChannelSegmentAddRequestBuilder(liveChannelSegment);
+		}
+
+		public static LiveChannelSegmentGetRequestBuilder Get(int id)
+		{
+			return new LiveChannelSegmentGetRequestBuilder(id);
+		}
+
+		public static LiveChannelSegmentUpdateRequestBuilder Update(int id, LiveChannelSegment liveChannelSegment)
+		{
+			return new LiveChannelSegmentUpdateRequestBuilder(id, liveChannelSegment);
+		}
+
+		public static LiveChannelSegmentDeleteRequestBuilder Delete(int id)
+		{
+			return new LiveChannelSegmentDeleteRequestBuilder(id);
+		}
+
+		public static LiveChannelSegmentListRequestBuilder List(LiveChannelSegmentFilter filter = null, FilterPager pager = null)
+		{
+			return new LiveChannelSegmentListRequestBuilder(filter, pager);
 		}
 	}
 }

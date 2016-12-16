@@ -29,60 +29,220 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaStatsService : KalturaServiceBase
+	public class StatsCollectRequestBuilder : RequestBuilder<bool>
 	{
-	public KalturaStatsService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string EVENT = "event";
+		#endregion
+
+		public StatsEvent Kevent
+		{
+			set;
+			get;
+		}
+
+		public StatsCollectRequestBuilder()
+			: base("stats", "collect")
 		{
 		}
 
-		public bool Collect(KalturaStatsEvent kevent)
+		public StatsCollectRequestBuilder(StatsEvent kevent)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("event", kevent);
-			_Client.QueueServiceCall("stats", "collect", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return false;
-			XmlElement result = _Client.DoQueue();
+			this.Kevent = kevent;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("kevent"))
+				kparams.AddIfNotNull("kevent", Kevent);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			if (result.InnerText.Equals("1") || result.InnerText.ToLower().Equals("true"))
 				return true;
 			return false;
 		}
+	}
 
-		public void KmcCollect(KalturaStatsKmcEvent kmcEvent)
+	public class StatsKmcCollectRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string KMC_EVENT = "kmcEvent";
+		#endregion
+
+		public StatsKmcEvent KmcEvent
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("kmcEvent", kmcEvent);
-			_Client.QueueServiceCall("stats", "kmcCollect", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			set;
+			get;
 		}
 
-		public KalturaCEError ReportKceError(KalturaCEError kalturaCEError)
+		public StatsKmcCollectRequestBuilder()
+			: base("stats", "kmcCollect")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("kalturaCEError", kalturaCEError);
-			_Client.QueueServiceCall("stats", "reportKceError", "KalturaCEError", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaCEError)KalturaObjectFactory.Create(result, "KalturaCEError");
 		}
 
-		public void ReportError(string errorCode, string errorMessage)
+		public StatsKmcCollectRequestBuilder(StatsKmcEvent kmcEvent)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("errorCode", errorCode);
-			kparams.AddIfNotNull("errorMessage", errorMessage);
-			_Client.QueueServiceCall("stats", "reportError", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			this.KmcEvent = kmcEvent;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("kmcEvent"))
+				kparams.AddIfNotNull("kmcEvent", KmcEvent);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class StatsReportKceErrorRequestBuilder : RequestBuilder<CEError>
+	{
+		#region Constants
+		public const string KALTURA_CE_ERROR = "kalturaCEError";
+		#endregion
+
+		public CEError KalturaCEError
+		{
+			set;
+			get;
+		}
+
+		public StatsReportKceErrorRequestBuilder()
+			: base("stats", "reportKceError")
+		{
+		}
+
+		public StatsReportKceErrorRequestBuilder(CEError kalturaCEError)
+			: this()
+		{
+			this.KalturaCEError = kalturaCEError;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("kalturaCEError"))
+				kparams.AddIfNotNull("kalturaCEError", KalturaCEError);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<CEError>(result);
+		}
+	}
+
+	public class StatsReportErrorRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ERROR_CODE = "errorCode";
+		public const string ERROR_MESSAGE = "errorMessage";
+		#endregion
+
+		public string ErrorCode
+		{
+			set;
+			get;
+		}
+		public string ErrorMessage
+		{
+			set;
+			get;
+		}
+
+		public StatsReportErrorRequestBuilder()
+			: base("stats", "reportError")
+		{
+		}
+
+		public StatsReportErrorRequestBuilder(string errorCode, string errorMessage)
+			: this()
+		{
+			this.ErrorCode = errorCode;
+			this.ErrorMessage = errorMessage;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("errorCode"))
+				kparams.AddIfNotNull("errorCode", ErrorCode);
+			if (!isMapped("errorMessage"))
+				kparams.AddIfNotNull("errorMessage", ErrorMessage);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+
+	public class StatsService
+	{
+		private StatsService()
+		{
+		}
+
+		public static StatsCollectRequestBuilder Collect(StatsEvent kevent)
+		{
+			return new StatsCollectRequestBuilder(kevent);
+		}
+
+		public static StatsKmcCollectRequestBuilder KmcCollect(StatsKmcEvent kmcEvent)
+		{
+			return new StatsKmcCollectRequestBuilder(kmcEvent);
+		}
+
+		public static StatsReportKceErrorRequestBuilder ReportKceError(CEError kalturaCEError)
+		{
+			return new StatsReportKceErrorRequestBuilder(kalturaCEError);
+		}
+
+		public static StatsReportErrorRequestBuilder ReportError(string errorCode, string errorMessage)
+		{
+			return new StatsReportErrorRequestBuilder(errorCode, errorMessage);
 		}
 	}
 }

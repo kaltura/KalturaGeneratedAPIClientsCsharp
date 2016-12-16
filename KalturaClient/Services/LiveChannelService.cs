@@ -29,183 +29,700 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaLiveChannelService : KalturaServiceBase
+	public class LiveChannelAddRequestBuilder : RequestBuilder<LiveChannel>
 	{
-	public KalturaLiveChannelService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string LIVE_CHANNEL = "liveChannel";
+		#endregion
+
+		public LiveChannel LiveChannel
+		{
+			set;
+			get;
+		}
+
+		public LiveChannelAddRequestBuilder()
+			: base("livechannel", "add")
 		{
 		}
 
-		public KalturaLiveChannel Add(KalturaLiveChannel liveChannel)
+		public LiveChannelAddRequestBuilder(LiveChannel liveChannel)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("liveChannel", liveChannel);
-			_Client.QueueServiceCall("livechannel", "add", "KalturaLiveChannel", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaLiveChannel)KalturaObjectFactory.Create(result, "KalturaLiveChannel");
+			this.LiveChannel = liveChannel;
 		}
 
-		public KalturaLiveChannel Get(string id)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("livechannel", "get", "KalturaLiveChannel", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaLiveChannel)KalturaObjectFactory.Create(result, "KalturaLiveChannel");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("liveChannel"))
+				kparams.AddIfNotNull("liveChannel", LiveChannel);
+			return kparams;
 		}
 
-		public KalturaLiveChannel Update(string id, KalturaLiveChannel liveChannel)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("liveChannel", liveChannel);
-			_Client.QueueServiceCall("livechannel", "update", "KalturaLiveChannel", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaLiveChannel)KalturaObjectFactory.Create(result, "KalturaLiveChannel");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public void Delete(string id)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("livechannel", "delete", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			return ObjectFactory.Create<LiveChannel>(result);
+		}
+	}
+
+	public class LiveChannelGetRequestBuilder : RequestBuilder<LiveChannel>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
 		}
 
-		public KalturaLiveChannelListResponse List()
+		public LiveChannelGetRequestBuilder()
+			: base("livechannel", "get")
 		{
-			return this.List(null);
 		}
 
-		public KalturaLiveChannelListResponse List(KalturaLiveChannelFilter filter)
+		public LiveChannelGetRequestBuilder(string id)
+			: this()
 		{
-			return this.List(filter, null);
+			this.Id = id;
 		}
 
-		public KalturaLiveChannelListResponse List(KalturaLiveChannelFilter filter, KalturaFilterPager pager)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("livechannel", "list", "KalturaLiveChannelListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaLiveChannelListResponse)KalturaObjectFactory.Create(result, "KalturaLiveChannelListResponse");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
 		}
 
-		public bool IsLive(string id)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("livechannel", "isLive", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return false;
-			XmlElement result = _Client.DoQueue();
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<LiveChannel>(result);
+		}
+	}
+
+	public class LiveChannelUpdateRequestBuilder : RequestBuilder<LiveChannel>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string LIVE_CHANNEL = "liveChannel";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public LiveChannel LiveChannel
+		{
+			set;
+			get;
+		}
+
+		public LiveChannelUpdateRequestBuilder()
+			: base("livechannel", "update")
+		{
+		}
+
+		public LiveChannelUpdateRequestBuilder(string id, LiveChannel liveChannel)
+			: this()
+		{
+			this.Id = id;
+			this.LiveChannel = liveChannel;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("liveChannel"))
+				kparams.AddIfNotNull("liveChannel", LiveChannel);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<LiveChannel>(result);
+		}
+	}
+
+	public class LiveChannelDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+
+		public LiveChannelDeleteRequestBuilder()
+			: base("livechannel", "delete")
+		{
+		}
+
+		public LiveChannelDeleteRequestBuilder(string id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class LiveChannelListRequestBuilder : RequestBuilder<ListResponse<LiveChannel>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public LiveChannelFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public LiveChannelListRequestBuilder()
+			: base("livechannel", "list")
+		{
+		}
+
+		public LiveChannelListRequestBuilder(LiveChannelFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<LiveChannel>>(result);
+		}
+	}
+
+	public class LiveChannelIsLiveRequestBuilder : RequestBuilder<bool>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+
+		public LiveChannelIsLiveRequestBuilder()
+			: base("livechannel", "isLive")
+		{
+		}
+
+		public LiveChannelIsLiveRequestBuilder(string id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			if (result.InnerText.Equals("1") || result.InnerText.ToLower().Equals("true"))
 				return true;
 			return false;
 		}
+	}
 
-		public KalturaLiveEntry AppendRecording(string entryId, string assetId, KalturaEntryServerNodeType mediaServerIndex, KalturaDataCenterContentResource resource, float duration)
+	public class LiveChannelAppendRecordingRequestBuilder : RequestBuilder<LiveEntry>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string ASSET_ID = "assetId";
+		public const string MEDIA_SERVER_INDEX = "mediaServerIndex";
+		public const string RESOURCE = "resource";
+		public const string DURATION = "duration";
+		public const string IS_LAST_CHUNK = "isLastChunk";
+		#endregion
+
+		public string EntryId
 		{
-			return this.AppendRecording(entryId, assetId, mediaServerIndex, resource, duration, false);
+			set;
+			get;
+		}
+		public string AssetId
+		{
+			set;
+			get;
+		}
+		public EntryServerNodeType MediaServerIndex
+		{
+			set;
+			get;
+		}
+		public DataCenterContentResource Resource
+		{
+			set;
+			get;
+		}
+		public float Duration
+		{
+			set;
+			get;
+		}
+		public bool IsLastChunk
+		{
+			set;
+			get;
 		}
 
-		public KalturaLiveEntry AppendRecording(string entryId, string assetId, KalturaEntryServerNodeType mediaServerIndex, KalturaDataCenterContentResource resource, float duration, bool isLastChunk)
+		public LiveChannelAppendRecordingRequestBuilder()
+			: base("livechannel", "appendRecording")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("entryId", entryId);
-			kparams.AddIfNotNull("assetId", assetId);
-			kparams.AddIfNotNull("mediaServerIndex", mediaServerIndex);
-			kparams.AddIfNotNull("resource", resource);
-			kparams.AddIfNotNull("duration", duration);
-			kparams.AddIfNotNull("isLastChunk", isLastChunk);
-			_Client.QueueServiceCall("livechannel", "appendRecording", "KalturaLiveEntry", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaLiveEntry)KalturaObjectFactory.Create(result, "KalturaLiveEntry");
 		}
 
-		public KalturaLiveEntry RegisterMediaServer(string entryId, string hostname, KalturaEntryServerNodeType mediaServerIndex)
+		public LiveChannelAppendRecordingRequestBuilder(string entryId, string assetId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, float duration, bool isLastChunk)
+			: this()
 		{
-			return this.RegisterMediaServer(entryId, hostname, mediaServerIndex, null);
+			this.EntryId = entryId;
+			this.AssetId = assetId;
+			this.MediaServerIndex = mediaServerIndex;
+			this.Resource = resource;
+			this.Duration = duration;
+			this.IsLastChunk = isLastChunk;
 		}
 
-		public KalturaLiveEntry RegisterMediaServer(string entryId, string hostname, KalturaEntryServerNodeType mediaServerIndex, string applicationName)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.RegisterMediaServer(entryId, hostname, mediaServerIndex, applicationName, (KalturaEntryServerNodeStatus)(1));
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("assetId"))
+				kparams.AddIfNotNull("assetId", AssetId);
+			if (!isMapped("mediaServerIndex"))
+				kparams.AddIfNotNull("mediaServerIndex", MediaServerIndex);
+			if (!isMapped("resource"))
+				kparams.AddIfNotNull("resource", Resource);
+			if (!isMapped("duration"))
+				kparams.AddIfNotNull("duration", Duration);
+			if (!isMapped("isLastChunk"))
+				kparams.AddIfNotNull("isLastChunk", IsLastChunk);
+			return kparams;
 		}
 
-		public KalturaLiveEntry RegisterMediaServer(string entryId, string hostname, KalturaEntryServerNodeType mediaServerIndex, string applicationName, KalturaEntryServerNodeStatus liveEntryStatus)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("entryId", entryId);
-			kparams.AddIfNotNull("hostname", hostname);
-			kparams.AddIfNotNull("mediaServerIndex", mediaServerIndex);
-			kparams.AddIfNotNull("applicationName", applicationName);
-			kparams.AddIfNotNull("liveEntryStatus", liveEntryStatus);
-			_Client.QueueServiceCall("livechannel", "registerMediaServer", "KalturaLiveEntry", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaLiveEntry)KalturaObjectFactory.Create(result, "KalturaLiveEntry");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaLiveEntry UnregisterMediaServer(string entryId, string hostname, KalturaEntryServerNodeType mediaServerIndex)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("entryId", entryId);
-			kparams.AddIfNotNull("hostname", hostname);
-			kparams.AddIfNotNull("mediaServerIndex", mediaServerIndex);
-			_Client.QueueServiceCall("livechannel", "unregisterMediaServer", "KalturaLiveEntry", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaLiveEntry)KalturaObjectFactory.Create(result, "KalturaLiveEntry");
+			return ObjectFactory.Create<LiveEntry>(result);
+		}
+	}
+
+	public class LiveChannelRegisterMediaServerRequestBuilder : RequestBuilder<LiveEntry>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string HOSTNAME = "hostname";
+		public const string MEDIA_SERVER_INDEX = "mediaServerIndex";
+		public const string APPLICATION_NAME = "applicationName";
+		public const string LIVE_ENTRY_STATUS = "liveEntryStatus";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public string Hostname
+		{
+			set;
+			get;
+		}
+		public EntryServerNodeType MediaServerIndex
+		{
+			set;
+			get;
+		}
+		public string ApplicationName
+		{
+			set;
+			get;
+		}
+		public EntryServerNodeStatus LiveEntryStatus
+		{
+			set;
+			get;
 		}
 
-		public void ValidateRegisteredMediaServers(string entryId)
+		public LiveChannelRegisterMediaServerRequestBuilder()
+			: base("livechannel", "registerMediaServer")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("entryId", entryId);
-			_Client.QueueServiceCall("livechannel", "validateRegisteredMediaServers", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
 		}
 
-		public KalturaLiveEntry SetRecordedContent(string entryId, KalturaEntryServerNodeType mediaServerIndex, KalturaDataCenterContentResource resource, float duration)
+		public LiveChannelRegisterMediaServerRequestBuilder(string entryId, string hostname, EntryServerNodeType mediaServerIndex, string applicationName, EntryServerNodeStatus liveEntryStatus)
+			: this()
 		{
-			return this.SetRecordedContent(entryId, mediaServerIndex, resource, duration, null);
+			this.EntryId = entryId;
+			this.Hostname = hostname;
+			this.MediaServerIndex = mediaServerIndex;
+			this.ApplicationName = applicationName;
+			this.LiveEntryStatus = liveEntryStatus;
 		}
 
-		public KalturaLiveEntry SetRecordedContent(string entryId, KalturaEntryServerNodeType mediaServerIndex, KalturaDataCenterContentResource resource, float duration, string recordedEntryId)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("entryId", entryId);
-			kparams.AddIfNotNull("mediaServerIndex", mediaServerIndex);
-			kparams.AddIfNotNull("resource", resource);
-			kparams.AddIfNotNull("duration", duration);
-			kparams.AddIfNotNull("recordedEntryId", recordedEntryId);
-			_Client.QueueServiceCall("livechannel", "setRecordedContent", "KalturaLiveEntry", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaLiveEntry)KalturaObjectFactory.Create(result, "KalturaLiveEntry");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("hostname"))
+				kparams.AddIfNotNull("hostname", Hostname);
+			if (!isMapped("mediaServerIndex"))
+				kparams.AddIfNotNull("mediaServerIndex", MediaServerIndex);
+			if (!isMapped("applicationName"))
+				kparams.AddIfNotNull("applicationName", ApplicationName);
+			if (!isMapped("liveEntryStatus"))
+				kparams.AddIfNotNull("liveEntryStatus", LiveEntryStatus);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<LiveEntry>(result);
+		}
+	}
+
+	public class LiveChannelUnregisterMediaServerRequestBuilder : RequestBuilder<LiveEntry>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string HOSTNAME = "hostname";
+		public const string MEDIA_SERVER_INDEX = "mediaServerIndex";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public string Hostname
+		{
+			set;
+			get;
+		}
+		public EntryServerNodeType MediaServerIndex
+		{
+			set;
+			get;
+		}
+
+		public LiveChannelUnregisterMediaServerRequestBuilder()
+			: base("livechannel", "unregisterMediaServer")
+		{
+		}
+
+		public LiveChannelUnregisterMediaServerRequestBuilder(string entryId, string hostname, EntryServerNodeType mediaServerIndex)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.Hostname = hostname;
+			this.MediaServerIndex = mediaServerIndex;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("hostname"))
+				kparams.AddIfNotNull("hostname", Hostname);
+			if (!isMapped("mediaServerIndex"))
+				kparams.AddIfNotNull("mediaServerIndex", MediaServerIndex);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<LiveEntry>(result);
+		}
+	}
+
+	public class LiveChannelValidateRegisteredMediaServersRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+
+		public LiveChannelValidateRegisteredMediaServersRequestBuilder()
+			: base("livechannel", "validateRegisteredMediaServers")
+		{
+		}
+
+		public LiveChannelValidateRegisteredMediaServersRequestBuilder(string entryId)
+			: this()
+		{
+			this.EntryId = entryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class LiveChannelSetRecordedContentRequestBuilder : RequestBuilder<LiveEntry>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string MEDIA_SERVER_INDEX = "mediaServerIndex";
+		public const string RESOURCE = "resource";
+		public const string DURATION = "duration";
+		public const string RECORDED_ENTRY_ID = "recordedEntryId";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public EntryServerNodeType MediaServerIndex
+		{
+			set;
+			get;
+		}
+		public DataCenterContentResource Resource
+		{
+			set;
+			get;
+		}
+		public float Duration
+		{
+			set;
+			get;
+		}
+		public string RecordedEntryId
+		{
+			set;
+			get;
+		}
+
+		public LiveChannelSetRecordedContentRequestBuilder()
+			: base("livechannel", "setRecordedContent")
+		{
+		}
+
+		public LiveChannelSetRecordedContentRequestBuilder(string entryId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, float duration, string recordedEntryId)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.MediaServerIndex = mediaServerIndex;
+			this.Resource = resource;
+			this.Duration = duration;
+			this.RecordedEntryId = recordedEntryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("mediaServerIndex"))
+				kparams.AddIfNotNull("mediaServerIndex", MediaServerIndex);
+			if (!isMapped("resource"))
+				kparams.AddIfNotNull("resource", Resource);
+			if (!isMapped("duration"))
+				kparams.AddIfNotNull("duration", Duration);
+			if (!isMapped("recordedEntryId"))
+				kparams.AddIfNotNull("recordedEntryId", RecordedEntryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<LiveEntry>(result);
+		}
+	}
+
+
+	public class LiveChannelService
+	{
+		private LiveChannelService()
+		{
+		}
+
+		public static LiveChannelAddRequestBuilder Add(LiveChannel liveChannel)
+		{
+			return new LiveChannelAddRequestBuilder(liveChannel);
+		}
+
+		public static LiveChannelGetRequestBuilder Get(string id)
+		{
+			return new LiveChannelGetRequestBuilder(id);
+		}
+
+		public static LiveChannelUpdateRequestBuilder Update(string id, LiveChannel liveChannel)
+		{
+			return new LiveChannelUpdateRequestBuilder(id, liveChannel);
+		}
+
+		public static LiveChannelDeleteRequestBuilder Delete(string id)
+		{
+			return new LiveChannelDeleteRequestBuilder(id);
+		}
+
+		public static LiveChannelListRequestBuilder List(LiveChannelFilter filter = null, FilterPager pager = null)
+		{
+			return new LiveChannelListRequestBuilder(filter, pager);
+		}
+
+		public static LiveChannelIsLiveRequestBuilder IsLive(string id)
+		{
+			return new LiveChannelIsLiveRequestBuilder(id);
+		}
+
+		public static LiveChannelAppendRecordingRequestBuilder AppendRecording(string entryId, string assetId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, float duration, bool isLastChunk = false)
+		{
+			return new LiveChannelAppendRecordingRequestBuilder(entryId, assetId, mediaServerIndex, resource, duration, isLastChunk);
+		}
+
+		public static LiveChannelRegisterMediaServerRequestBuilder RegisterMediaServer(string entryId, string hostname, EntryServerNodeType mediaServerIndex, string applicationName = null, EntryServerNodeStatus liveEntryStatus = (EntryServerNodeStatus)(1))
+		{
+			return new LiveChannelRegisterMediaServerRequestBuilder(entryId, hostname, mediaServerIndex, applicationName, liveEntryStatus);
+		}
+
+		public static LiveChannelUnregisterMediaServerRequestBuilder UnregisterMediaServer(string entryId, string hostname, EntryServerNodeType mediaServerIndex)
+		{
+			return new LiveChannelUnregisterMediaServerRequestBuilder(entryId, hostname, mediaServerIndex);
+		}
+
+		public static LiveChannelValidateRegisteredMediaServersRequestBuilder ValidateRegisteredMediaServers(string entryId)
+		{
+			return new LiveChannelValidateRegisteredMediaServersRequestBuilder(entryId);
+		}
+
+		public static LiveChannelSetRecordedContentRequestBuilder SetRecordedContent(string entryId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, float duration, string recordedEntryId = null)
+		{
+			return new LiveChannelSetRecordedContentRequestBuilder(entryId, mediaServerIndex, resource, duration, recordedEntryId);
 		}
 	}
 }

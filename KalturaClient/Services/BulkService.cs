@@ -29,59 +29,170 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaBulkService : KalturaServiceBase
+	public class BulkGetRequestBuilder : RequestBuilder<BulkUpload>
 	{
-	public KalturaBulkService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public BulkGetRequestBuilder()
+			: base("bulkupload_bulk", "get")
 		{
 		}
 
-		public KalturaBulkUpload Get(int id)
+		public BulkGetRequestBuilder(int id)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("bulkupload_bulk", "get", "KalturaBulkUpload", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaBulkUpload)KalturaObjectFactory.Create(result, "KalturaBulkUpload");
+			this.Id = id;
 		}
 
-		public KalturaBulkUploadListResponse List()
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.List(null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
 		}
 
-		public KalturaBulkUploadListResponse List(KalturaBulkUploadFilter bulkUploadFilter)
+		public override Files getFiles()
 		{
-			return this.List(bulkUploadFilter, null);
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaBulkUploadListResponse List(KalturaBulkUploadFilter bulkUploadFilter, KalturaFilterPager pager)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("bulkUploadFilter", bulkUploadFilter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("bulkupload_bulk", "list", "KalturaBulkUploadListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaBulkUploadListResponse)KalturaObjectFactory.Create(result, "KalturaBulkUploadListResponse");
+			return ObjectFactory.Create<BulkUpload>(result);
+		}
+	}
+
+	public class BulkListRequestBuilder : RequestBuilder<ListResponse<BulkUpload>>
+	{
+		#region Constants
+		public const string BULK_UPLOAD_FILTER = "bulkUploadFilter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public BulkUploadFilter BulkUploadFilter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
 		}
 
-		public KalturaBulkUpload Abort(int id)
+		public BulkListRequestBuilder()
+			: base("bulkupload_bulk", "list")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("bulkupload_bulk", "abort", "KalturaBulkUpload", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaBulkUpload)KalturaObjectFactory.Create(result, "KalturaBulkUpload");
+		}
+
+		public BulkListRequestBuilder(BulkUploadFilter bulkUploadFilter, FilterPager pager)
+			: this()
+		{
+			this.BulkUploadFilter = bulkUploadFilter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("bulkUploadFilter"))
+				kparams.AddIfNotNull("bulkUploadFilter", BulkUploadFilter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<BulkUpload>>(result);
+		}
+	}
+
+	public class BulkAbortRequestBuilder : RequestBuilder<BulkUpload>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public BulkAbortRequestBuilder()
+			: base("bulkupload_bulk", "abort")
+		{
+		}
+
+		public BulkAbortRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<BulkUpload>(result);
+		}
+	}
+
+
+	public class BulkService
+	{
+		private BulkService()
+		{
+		}
+
+		public static BulkGetRequestBuilder Get(int id)
+		{
+			return new BulkGetRequestBuilder(id);
+		}
+
+		public static BulkListRequestBuilder List(BulkUploadFilter bulkUploadFilter = null, FilterPager pager = null)
+		{
+			return new BulkListRequestBuilder(bulkUploadFilter, pager);
+		}
+
+		public static BulkAbortRequestBuilder Abort(int id)
+		{
+			return new BulkAbortRequestBuilder(id);
 		}
 	}
 }

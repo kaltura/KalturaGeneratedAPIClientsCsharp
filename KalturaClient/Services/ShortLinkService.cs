@@ -29,82 +29,275 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaShortLinkService : KalturaServiceBase
+	public class ShortLinkListRequestBuilder : RequestBuilder<ListResponse<ShortLink>>
 	{
-	public KalturaShortLinkService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public ShortLinkFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public ShortLinkListRequestBuilder()
+			: base("shortlink_shortlink", "list")
 		{
 		}
 
-		public KalturaShortLinkListResponse List()
+		public ShortLinkListRequestBuilder(ShortLinkFilter filter, FilterPager pager)
+			: this()
 		{
-			return this.List(null);
+			this.Filter = filter;
+			this.Pager = pager;
 		}
 
-		public KalturaShortLinkListResponse List(KalturaShortLinkFilter filter)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.List(filter, null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
 		}
 
-		public KalturaShortLinkListResponse List(KalturaShortLinkFilter filter, KalturaFilterPager pager)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("shortlink_shortlink", "list", "KalturaShortLinkListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaShortLinkListResponse)KalturaObjectFactory.Create(result, "KalturaShortLinkListResponse");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaShortLink Add(KalturaShortLink shortLink)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("shortLink", shortLink);
-			_Client.QueueServiceCall("shortlink_shortlink", "add", "KalturaShortLink", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaShortLink)KalturaObjectFactory.Create(result, "KalturaShortLink");
+			return ObjectFactory.Create<ListResponse<ShortLink>>(result);
+		}
+	}
+
+	public class ShortLinkAddRequestBuilder : RequestBuilder<ShortLink>
+	{
+		#region Constants
+		public const string SHORT_LINK = "shortLink";
+		#endregion
+
+		public ShortLink ShortLink
+		{
+			set;
+			get;
 		}
 
-		public KalturaShortLink Get(string id)
+		public ShortLinkAddRequestBuilder()
+			: base("shortlink_shortlink", "add")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("shortlink_shortlink", "get", "KalturaShortLink", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaShortLink)KalturaObjectFactory.Create(result, "KalturaShortLink");
 		}
 
-		public KalturaShortLink Update(string id, KalturaShortLink shortLink)
+		public ShortLinkAddRequestBuilder(ShortLink shortLink)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("shortLink", shortLink);
-			_Client.QueueServiceCall("shortlink_shortlink", "update", "KalturaShortLink", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaShortLink)KalturaObjectFactory.Create(result, "KalturaShortLink");
+			this.ShortLink = shortLink;
 		}
 
-		public KalturaShortLink Delete(string id)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("shortlink_shortlink", "delete", "KalturaShortLink", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaShortLink)KalturaObjectFactory.Create(result, "KalturaShortLink");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("shortLink"))
+				kparams.AddIfNotNull("shortLink", ShortLink);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ShortLink>(result);
+		}
+	}
+
+	public class ShortLinkGetRequestBuilder : RequestBuilder<ShortLink>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+
+		public ShortLinkGetRequestBuilder()
+			: base("shortlink_shortlink", "get")
+		{
+		}
+
+		public ShortLinkGetRequestBuilder(string id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ShortLink>(result);
+		}
+	}
+
+	public class ShortLinkUpdateRequestBuilder : RequestBuilder<ShortLink>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string SHORT_LINK = "shortLink";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public ShortLink ShortLink
+		{
+			set;
+			get;
+		}
+
+		public ShortLinkUpdateRequestBuilder()
+			: base("shortlink_shortlink", "update")
+		{
+		}
+
+		public ShortLinkUpdateRequestBuilder(string id, ShortLink shortLink)
+			: this()
+		{
+			this.Id = id;
+			this.ShortLink = shortLink;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("shortLink"))
+				kparams.AddIfNotNull("shortLink", ShortLink);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ShortLink>(result);
+		}
+	}
+
+	public class ShortLinkDeleteRequestBuilder : RequestBuilder<ShortLink>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+
+		public ShortLinkDeleteRequestBuilder()
+			: base("shortlink_shortlink", "delete")
+		{
+		}
+
+		public ShortLinkDeleteRequestBuilder(string id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ShortLink>(result);
+		}
+	}
+
+
+	public class ShortLinkService
+	{
+		private ShortLinkService()
+		{
+		}
+
+		public static ShortLinkListRequestBuilder List(ShortLinkFilter filter = null, FilterPager pager = null)
+		{
+			return new ShortLinkListRequestBuilder(filter, pager);
+		}
+
+		public static ShortLinkAddRequestBuilder Add(ShortLink shortLink)
+		{
+			return new ShortLinkAddRequestBuilder(shortLink);
+		}
+
+		public static ShortLinkGetRequestBuilder Get(string id)
+		{
+			return new ShortLinkGetRequestBuilder(id);
+		}
+
+		public static ShortLinkUpdateRequestBuilder Update(string id, ShortLink shortLink)
+		{
+			return new ShortLinkUpdateRequestBuilder(id, shortLink);
+		}
+
+		public static ShortLinkDeleteRequestBuilder Delete(string id)
+		{
+			return new ShortLinkDeleteRequestBuilder(id);
 		}
 	}
 }

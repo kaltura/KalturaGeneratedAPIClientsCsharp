@@ -29,59 +29,157 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaSystemService : KalturaServiceBase
+	public class SystemPingRequestBuilder : RequestBuilder<bool>
 	{
-	public KalturaSystemService(KalturaClient client)
-			: base(client)
+		#region Constants
+		#endregion
+
+
+		public SystemPingRequestBuilder()
+			: base("system", "ping")
 		{
 		}
 
-		public bool Ping()
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			_Client.QueueServiceCall("system", "ping", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return false;
-			XmlElement result = _Client.DoQueue();
+			Params kparams = base.getParameters(includeServiceAndAction);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			if (result.InnerText.Equals("1") || result.InnerText.ToLower().Equals("true"))
 				return true;
 			return false;
 		}
+	}
 
-		public bool PingDatabase()
+	public class SystemPingDatabaseRequestBuilder : RequestBuilder<bool>
+	{
+		#region Constants
+		#endregion
+
+
+		public SystemPingDatabaseRequestBuilder()
+			: base("system", "pingDatabase")
 		{
-			KalturaParams kparams = new KalturaParams();
-			_Client.QueueServiceCall("system", "pingDatabase", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return false;
-			XmlElement result = _Client.DoQueue();
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			if (result.InnerText.Equals("1") || result.InnerText.ToLower().Equals("true"))
 				return true;
 			return false;
 		}
+	}
 
-		public int GetTime()
+	public class SystemGetTimeRequestBuilder : RequestBuilder<int>
+	{
+		#region Constants
+		#endregion
+
+
+		public SystemGetTimeRequestBuilder()
+			: base("system", "getTime")
 		{
-			KalturaParams kparams = new KalturaParams();
-			_Client.QueueServiceCall("system", "getTime", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return 0;
-			XmlElement result = _Client.DoQueue();
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			return int.Parse(result.InnerText);
 		}
+	}
 
-		public string GetVersion()
+	public class SystemGetVersionRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		#endregion
+
+
+		public SystemGetVersionRequestBuilder()
+			: base("system", "getVersion")
 		{
-			KalturaParams kparams = new KalturaParams();
-			_Client.QueueServiceCall("system", "getVersion", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			return result.InnerText;
+		}
+	}
+
+
+	public class SystemService
+	{
+		private SystemService()
+		{
+		}
+
+		public static SystemPingRequestBuilder Ping()
+		{
+			return new SystemPingRequestBuilder();
+		}
+
+		public static SystemPingDatabaseRequestBuilder PingDatabase()
+		{
+			return new SystemPingDatabaseRequestBuilder();
+		}
+
+		public static SystemGetTimeRequestBuilder GetTime()
+		{
+			return new SystemGetTimeRequestBuilder();
+		}
+
+		public static SystemGetVersionRequestBuilder GetVersion()
+		{
+			return new SystemGetVersionRequestBuilder();
 		}
 	}
 }

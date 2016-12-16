@@ -29,82 +29,275 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaDeliveryProfileService : KalturaServiceBase
+	public class DeliveryProfileAddRequestBuilder : RequestBuilder<DeliveryProfile>
 	{
-	public KalturaDeliveryProfileService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string DELIVERY = "delivery";
+		#endregion
+
+		public DeliveryProfile Delivery
+		{
+			set;
+			get;
+		}
+
+		public DeliveryProfileAddRequestBuilder()
+			: base("deliveryprofile", "add")
 		{
 		}
 
-		public KalturaDeliveryProfile Add(KalturaDeliveryProfile delivery)
+		public DeliveryProfileAddRequestBuilder(DeliveryProfile delivery)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("delivery", delivery);
-			_Client.QueueServiceCall("deliveryprofile", "add", "KalturaDeliveryProfile", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaDeliveryProfile)KalturaObjectFactory.Create(result, "KalturaDeliveryProfile");
+			this.Delivery = delivery;
 		}
 
-		public KalturaDeliveryProfile Update(string id, KalturaDeliveryProfile delivery)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("delivery", delivery);
-			_Client.QueueServiceCall("deliveryprofile", "update", "KalturaDeliveryProfile", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaDeliveryProfile)KalturaObjectFactory.Create(result, "KalturaDeliveryProfile");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("delivery"))
+				kparams.AddIfNotNull("delivery", Delivery);
+			return kparams;
 		}
 
-		public KalturaDeliveryProfile Get(string id)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("deliveryprofile", "get", "KalturaDeliveryProfile", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaDeliveryProfile)KalturaObjectFactory.Create(result, "KalturaDeliveryProfile");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaDeliveryProfile Clone(int deliveryId)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("deliveryId", deliveryId);
-			_Client.QueueServiceCall("deliveryprofile", "clone", "KalturaDeliveryProfile", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaDeliveryProfile)KalturaObjectFactory.Create(result, "KalturaDeliveryProfile");
+			return ObjectFactory.Create<DeliveryProfile>(result);
+		}
+	}
+
+	public class DeliveryProfileUpdateRequestBuilder : RequestBuilder<DeliveryProfile>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string DELIVERY = "delivery";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public DeliveryProfile Delivery
+		{
+			set;
+			get;
 		}
 
-		public KalturaDeliveryProfileListResponse List()
+		public DeliveryProfileUpdateRequestBuilder()
+			: base("deliveryprofile", "update")
 		{
-			return this.List(null);
 		}
 
-		public KalturaDeliveryProfileListResponse List(KalturaDeliveryProfileFilter filter)
+		public DeliveryProfileUpdateRequestBuilder(string id, DeliveryProfile delivery)
+			: this()
 		{
-			return this.List(filter, null);
+			this.Id = id;
+			this.Delivery = delivery;
 		}
 
-		public KalturaDeliveryProfileListResponse List(KalturaDeliveryProfileFilter filter, KalturaFilterPager pager)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("deliveryprofile", "list", "KalturaDeliveryProfileListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaDeliveryProfileListResponse)KalturaObjectFactory.Create(result, "KalturaDeliveryProfileListResponse");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("delivery"))
+				kparams.AddIfNotNull("delivery", Delivery);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<DeliveryProfile>(result);
+		}
+	}
+
+	public class DeliveryProfileGetRequestBuilder : RequestBuilder<DeliveryProfile>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+
+		public DeliveryProfileGetRequestBuilder()
+			: base("deliveryprofile", "get")
+		{
+		}
+
+		public DeliveryProfileGetRequestBuilder(string id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<DeliveryProfile>(result);
+		}
+	}
+
+	public class DeliveryProfileCloneRequestBuilder : RequestBuilder<DeliveryProfile>
+	{
+		#region Constants
+		public const string DELIVERY_ID = "deliveryId";
+		#endregion
+
+		public int DeliveryId
+		{
+			set;
+			get;
+		}
+
+		public DeliveryProfileCloneRequestBuilder()
+			: base("deliveryprofile", "clone")
+		{
+		}
+
+		public DeliveryProfileCloneRequestBuilder(int deliveryId)
+			: this()
+		{
+			this.DeliveryId = deliveryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("deliveryId"))
+				kparams.AddIfNotNull("deliveryId", DeliveryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<DeliveryProfile>(result);
+		}
+	}
+
+	public class DeliveryProfileListRequestBuilder : RequestBuilder<ListResponse<DeliveryProfile>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public DeliveryProfileFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public DeliveryProfileListRequestBuilder()
+			: base("deliveryprofile", "list")
+		{
+		}
+
+		public DeliveryProfileListRequestBuilder(DeliveryProfileFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<DeliveryProfile>>(result);
+		}
+	}
+
+
+	public class DeliveryProfileService
+	{
+		private DeliveryProfileService()
+		{
+		}
+
+		public static DeliveryProfileAddRequestBuilder Add(DeliveryProfile delivery)
+		{
+			return new DeliveryProfileAddRequestBuilder(delivery);
+		}
+
+		public static DeliveryProfileUpdateRequestBuilder Update(string id, DeliveryProfile delivery)
+		{
+			return new DeliveryProfileUpdateRequestBuilder(id, delivery);
+		}
+
+		public static DeliveryProfileGetRequestBuilder Get(string id)
+		{
+			return new DeliveryProfileGetRequestBuilder(id);
+		}
+
+		public static DeliveryProfileCloneRequestBuilder Clone(int deliveryId)
+		{
+			return new DeliveryProfileCloneRequestBuilder(deliveryId);
+		}
+
+		public static DeliveryProfileListRequestBuilder List(DeliveryProfileFilter filter = null, FilterPager pager = null)
+		{
+			return new DeliveryProfileListRequestBuilder(filter, pager);
 		}
 	}
 }

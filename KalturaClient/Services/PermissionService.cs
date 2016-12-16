@@ -29,92 +29,309 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaPermissionService : KalturaServiceBase
+	public class PermissionAddRequestBuilder : RequestBuilder<Permission>
 	{
-	public KalturaPermissionService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string PERMISSION = "permission";
+		#endregion
+
+		public Permission Permission
+		{
+			set;
+			get;
+		}
+
+		public PermissionAddRequestBuilder()
+			: base("permission", "add")
 		{
 		}
 
-		public KalturaPermission Add(KalturaPermission permission)
+		public PermissionAddRequestBuilder(Permission permission)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("permission", permission);
-			_Client.QueueServiceCall("permission", "add", "KalturaPermission", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaPermission)KalturaObjectFactory.Create(result, "KalturaPermission");
+			this.Permission = permission;
 		}
 
-		public KalturaPermission Get(string permissionName)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("permissionName", permissionName);
-			_Client.QueueServiceCall("permission", "get", "KalturaPermission", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaPermission)KalturaObjectFactory.Create(result, "KalturaPermission");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("permission"))
+				kparams.AddIfNotNull("permission", Permission);
+			return kparams;
 		}
 
-		public KalturaPermission Update(string permissionName, KalturaPermission permission)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("permissionName", permissionName);
-			kparams.AddIfNotNull("permission", permission);
-			_Client.QueueServiceCall("permission", "update", "KalturaPermission", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaPermission)KalturaObjectFactory.Create(result, "KalturaPermission");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaPermission Delete(string permissionName)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("permissionName", permissionName);
-			_Client.QueueServiceCall("permission", "delete", "KalturaPermission", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaPermission)KalturaObjectFactory.Create(result, "KalturaPermission");
+			return ObjectFactory.Create<Permission>(result);
+		}
+	}
+
+	public class PermissionGetRequestBuilder : RequestBuilder<Permission>
+	{
+		#region Constants
+		public const string PERMISSION_NAME = "permissionName";
+		#endregion
+
+		public string PermissionName
+		{
+			set;
+			get;
 		}
 
-		public KalturaPermissionListResponse List()
+		public PermissionGetRequestBuilder()
+			: base("permission", "get")
 		{
-			return this.List(null);
 		}
 
-		public KalturaPermissionListResponse List(KalturaPermissionFilter filter)
+		public PermissionGetRequestBuilder(string permissionName)
+			: this()
 		{
-			return this.List(filter, null);
+			this.PermissionName = permissionName;
 		}
 
-		public KalturaPermissionListResponse List(KalturaPermissionFilter filter, KalturaFilterPager pager)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("permission", "list", "KalturaPermissionListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaPermissionListResponse)KalturaObjectFactory.Create(result, "KalturaPermissionListResponse");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("permissionName"))
+				kparams.AddIfNotNull("permissionName", PermissionName);
+			return kparams;
 		}
 
-		public string GetCurrentPermissions()
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			_Client.QueueServiceCall("permission", "getCurrentPermissions", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<Permission>(result);
+		}
+	}
+
+	public class PermissionUpdateRequestBuilder : RequestBuilder<Permission>
+	{
+		#region Constants
+		public const string PERMISSION_NAME = "permissionName";
+		public const string PERMISSION = "permission";
+		#endregion
+
+		public string PermissionName
+		{
+			set;
+			get;
+		}
+		public Permission Permission
+		{
+			set;
+			get;
+		}
+
+		public PermissionUpdateRequestBuilder()
+			: base("permission", "update")
+		{
+		}
+
+		public PermissionUpdateRequestBuilder(string permissionName, Permission permission)
+			: this()
+		{
+			this.PermissionName = permissionName;
+			this.Permission = permission;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("permissionName"))
+				kparams.AddIfNotNull("permissionName", PermissionName);
+			if (!isMapped("permission"))
+				kparams.AddIfNotNull("permission", Permission);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<Permission>(result);
+		}
+	}
+
+	public class PermissionDeleteRequestBuilder : RequestBuilder<Permission>
+	{
+		#region Constants
+		public const string PERMISSION_NAME = "permissionName";
+		#endregion
+
+		public string PermissionName
+		{
+			set;
+			get;
+		}
+
+		public PermissionDeleteRequestBuilder()
+			: base("permission", "delete")
+		{
+		}
+
+		public PermissionDeleteRequestBuilder(string permissionName)
+			: this()
+		{
+			this.PermissionName = permissionName;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("permissionName"))
+				kparams.AddIfNotNull("permissionName", PermissionName);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<Permission>(result);
+		}
+	}
+
+	public class PermissionListRequestBuilder : RequestBuilder<ListResponse<Permission>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public PermissionFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public PermissionListRequestBuilder()
+			: base("permission", "list")
+		{
+		}
+
+		public PermissionListRequestBuilder(PermissionFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<Permission>>(result);
+		}
+	}
+
+	public class PermissionGetCurrentPermissionsRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		#endregion
+
+
+		public PermissionGetCurrentPermissionsRequestBuilder()
+			: base("permission", "getCurrentPermissions")
+		{
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			return result.InnerText;
+		}
+	}
+
+
+	public class PermissionService
+	{
+		private PermissionService()
+		{
+		}
+
+		public static PermissionAddRequestBuilder Add(Permission permission)
+		{
+			return new PermissionAddRequestBuilder(permission);
+		}
+
+		public static PermissionGetRequestBuilder Get(string permissionName)
+		{
+			return new PermissionGetRequestBuilder(permissionName);
+		}
+
+		public static PermissionUpdateRequestBuilder Update(string permissionName, Permission permission)
+		{
+			return new PermissionUpdateRequestBuilder(permissionName, permission);
+		}
+
+		public static PermissionDeleteRequestBuilder Delete(string permissionName)
+		{
+			return new PermissionDeleteRequestBuilder(permissionName);
+		}
+
+		public static PermissionListRequestBuilder List(PermissionFilter filter = null, FilterPager pager = null)
+		{
+			return new PermissionListRequestBuilder(filter, pager);
+		}
+
+		public static PermissionGetCurrentPermissionsRequestBuilder GetCurrentPermissions()
+		{
+			return new PermissionGetCurrentPermissionsRequestBuilder();
 		}
 	}
 }

@@ -29,81 +29,275 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaAccessControlProfileService : KalturaServiceBase
+	public class AccessControlProfileAddRequestBuilder : RequestBuilder<AccessControlProfile>
 	{
-	public KalturaAccessControlProfileService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string ACCESS_CONTROL_PROFILE = "accessControlProfile";
+		#endregion
+
+		public AccessControlProfile AccessControlProfile
+		{
+			set;
+			get;
+		}
+
+		public AccessControlProfileAddRequestBuilder()
+			: base("accesscontrolprofile", "add")
 		{
 		}
 
-		public KalturaAccessControlProfile Add(KalturaAccessControlProfile accessControlProfile)
+		public AccessControlProfileAddRequestBuilder(AccessControlProfile accessControlProfile)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("accessControlProfile", accessControlProfile);
-			_Client.QueueServiceCall("accesscontrolprofile", "add", "KalturaAccessControlProfile", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaAccessControlProfile)KalturaObjectFactory.Create(result, "KalturaAccessControlProfile");
+			this.AccessControlProfile = accessControlProfile;
 		}
 
-		public KalturaAccessControlProfile Get(int id)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("accesscontrolprofile", "get", "KalturaAccessControlProfile", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaAccessControlProfile)KalturaObjectFactory.Create(result, "KalturaAccessControlProfile");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("accessControlProfile"))
+				kparams.AddIfNotNull("accessControlProfile", AccessControlProfile);
+			return kparams;
 		}
 
-		public KalturaAccessControlProfile Update(int id, KalturaAccessControlProfile accessControlProfile)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("accessControlProfile", accessControlProfile);
-			_Client.QueueServiceCall("accesscontrolprofile", "update", "KalturaAccessControlProfile", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaAccessControlProfile)KalturaObjectFactory.Create(result, "KalturaAccessControlProfile");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public void Delete(int id)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("accesscontrolprofile", "delete", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			return ObjectFactory.Create<AccessControlProfile>(result);
+		}
+	}
+
+	public class AccessControlProfileGetRequestBuilder : RequestBuilder<AccessControlProfile>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
 		}
 
-		public KalturaAccessControlProfileListResponse List()
+		public AccessControlProfileGetRequestBuilder()
+			: base("accesscontrolprofile", "get")
 		{
-			return this.List(null);
 		}
 
-		public KalturaAccessControlProfileListResponse List(KalturaAccessControlProfileFilter filter)
+		public AccessControlProfileGetRequestBuilder(int id)
+			: this()
 		{
-			return this.List(filter, null);
+			this.Id = id;
 		}
 
-		public KalturaAccessControlProfileListResponse List(KalturaAccessControlProfileFilter filter, KalturaFilterPager pager)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("accesscontrolprofile", "list", "KalturaAccessControlProfileListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaAccessControlProfileListResponse)KalturaObjectFactory.Create(result, "KalturaAccessControlProfileListResponse");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<AccessControlProfile>(result);
+		}
+	}
+
+	public class AccessControlProfileUpdateRequestBuilder : RequestBuilder<AccessControlProfile>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string ACCESS_CONTROL_PROFILE = "accessControlProfile";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public AccessControlProfile AccessControlProfile
+		{
+			set;
+			get;
+		}
+
+		public AccessControlProfileUpdateRequestBuilder()
+			: base("accesscontrolprofile", "update")
+		{
+		}
+
+		public AccessControlProfileUpdateRequestBuilder(int id, AccessControlProfile accessControlProfile)
+			: this()
+		{
+			this.Id = id;
+			this.AccessControlProfile = accessControlProfile;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("accessControlProfile"))
+				kparams.AddIfNotNull("accessControlProfile", AccessControlProfile);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<AccessControlProfile>(result);
+		}
+	}
+
+	public class AccessControlProfileDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public AccessControlProfileDeleteRequestBuilder()
+			: base("accesscontrolprofile", "delete")
+		{
+		}
+
+		public AccessControlProfileDeleteRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class AccessControlProfileListRequestBuilder : RequestBuilder<ListResponse<AccessControlProfile>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public AccessControlProfileFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public AccessControlProfileListRequestBuilder()
+			: base("accesscontrolprofile", "list")
+		{
+		}
+
+		public AccessControlProfileListRequestBuilder(AccessControlProfileFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<AccessControlProfile>>(result);
+		}
+	}
+
+
+	public class AccessControlProfileService
+	{
+		private AccessControlProfileService()
+		{
+		}
+
+		public static AccessControlProfileAddRequestBuilder Add(AccessControlProfile accessControlProfile)
+		{
+			return new AccessControlProfileAddRequestBuilder(accessControlProfile);
+		}
+
+		public static AccessControlProfileGetRequestBuilder Get(int id)
+		{
+			return new AccessControlProfileGetRequestBuilder(id);
+		}
+
+		public static AccessControlProfileUpdateRequestBuilder Update(int id, AccessControlProfile accessControlProfile)
+		{
+			return new AccessControlProfileUpdateRequestBuilder(id, accessControlProfile);
+		}
+
+		public static AccessControlProfileDeleteRequestBuilder Delete(int id)
+		{
+			return new AccessControlProfileDeleteRequestBuilder(id);
+		}
+
+		public static AccessControlProfileListRequestBuilder List(AccessControlProfileFilter filter = null, FilterPager pager = null)
+		{
+			return new AccessControlProfileListRequestBuilder(filter, pager);
 		}
 	}
 }

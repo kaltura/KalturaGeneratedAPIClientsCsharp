@@ -29,14 +29,16 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
 
-	public class KalturaSchemaService : KalturaServiceBase
+	public class SchemaService
 	{
-	public KalturaSchemaService(KalturaClient client)
-			: base(client)
+		private SchemaService()
 		{
 		}
 	}

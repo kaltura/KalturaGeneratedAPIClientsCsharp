@@ -29,71 +29,149 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaCaptionAssetItemService : KalturaServiceBase
+	public class CaptionAssetItemSearchRequestBuilder : RequestBuilder<ListResponse<CaptionAssetItem>>
 	{
-	public KalturaCaptionAssetItemService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string ENTRY_FILTER = "entryFilter";
+		public const string CAPTION_ASSET_ITEM_FILTER = "captionAssetItemFilter";
+		public const string CAPTION_ASSET_ITEM_PAGER = "captionAssetItemPager";
+		#endregion
+
+		public BaseEntryFilter EntryFilter
+		{
+			set;
+			get;
+		}
+		public CaptionAssetItemFilter CaptionAssetItemFilter
+		{
+			set;
+			get;
+		}
+		public FilterPager CaptionAssetItemPager
+		{
+			set;
+			get;
+		}
+
+		public CaptionAssetItemSearchRequestBuilder()
+			: base("captionsearch_captionassetitem", "search")
 		{
 		}
 
-		public KalturaCaptionAssetItemListResponse Search()
+		public CaptionAssetItemSearchRequestBuilder(BaseEntryFilter entryFilter, CaptionAssetItemFilter captionAssetItemFilter, FilterPager captionAssetItemPager)
+			: this()
 		{
-			return this.Search(null);
+			this.EntryFilter = entryFilter;
+			this.CaptionAssetItemFilter = captionAssetItemFilter;
+			this.CaptionAssetItemPager = captionAssetItemPager;
 		}
 
-		public KalturaCaptionAssetItemListResponse Search(KalturaBaseEntryFilter entryFilter)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.Search(entryFilter, null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryFilter"))
+				kparams.AddIfNotNull("entryFilter", EntryFilter);
+			if (!isMapped("captionAssetItemFilter"))
+				kparams.AddIfNotNull("captionAssetItemFilter", CaptionAssetItemFilter);
+			if (!isMapped("captionAssetItemPager"))
+				kparams.AddIfNotNull("captionAssetItemPager", CaptionAssetItemPager);
+			return kparams;
 		}
 
-		public KalturaCaptionAssetItemListResponse Search(KalturaBaseEntryFilter entryFilter, KalturaCaptionAssetItemFilter captionAssetItemFilter)
+		public override Files getFiles()
 		{
-			return this.Search(entryFilter, captionAssetItemFilter, null);
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaCaptionAssetItemListResponse Search(KalturaBaseEntryFilter entryFilter, KalturaCaptionAssetItemFilter captionAssetItemFilter, KalturaFilterPager captionAssetItemPager)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("entryFilter", entryFilter);
-			kparams.AddIfNotNull("captionAssetItemFilter", captionAssetItemFilter);
-			kparams.AddIfNotNull("captionAssetItemPager", captionAssetItemPager);
-			_Client.QueueServiceCall("captionsearch_captionassetitem", "search", "KalturaCaptionAssetItemListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaCaptionAssetItemListResponse)KalturaObjectFactory.Create(result, "KalturaCaptionAssetItemListResponse");
+			return ObjectFactory.Create<ListResponse<CaptionAssetItem>>(result);
+		}
+	}
+
+	public class CaptionAssetItemSearchEntriesRequestBuilder : RequestBuilder<ListResponse<BaseEntry>>
+	{
+		#region Constants
+		public const string ENTRY_FILTER = "entryFilter";
+		public const string CAPTION_ASSET_ITEM_FILTER = "captionAssetItemFilter";
+		public const string CAPTION_ASSET_ITEM_PAGER = "captionAssetItemPager";
+		#endregion
+
+		public BaseEntryFilter EntryFilter
+		{
+			set;
+			get;
+		}
+		public CaptionAssetItemFilter CaptionAssetItemFilter
+		{
+			set;
+			get;
+		}
+		public FilterPager CaptionAssetItemPager
+		{
+			set;
+			get;
 		}
 
-		public KalturaBaseEntryListResponse SearchEntries()
+		public CaptionAssetItemSearchEntriesRequestBuilder()
+			: base("captionsearch_captionassetitem", "searchEntries")
 		{
-			return this.SearchEntries(null);
 		}
 
-		public KalturaBaseEntryListResponse SearchEntries(KalturaBaseEntryFilter entryFilter)
+		public CaptionAssetItemSearchEntriesRequestBuilder(BaseEntryFilter entryFilter, CaptionAssetItemFilter captionAssetItemFilter, FilterPager captionAssetItemPager)
+			: this()
 		{
-			return this.SearchEntries(entryFilter, null);
+			this.EntryFilter = entryFilter;
+			this.CaptionAssetItemFilter = captionAssetItemFilter;
+			this.CaptionAssetItemPager = captionAssetItemPager;
 		}
 
-		public KalturaBaseEntryListResponse SearchEntries(KalturaBaseEntryFilter entryFilter, KalturaCaptionAssetItemFilter captionAssetItemFilter)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.SearchEntries(entryFilter, captionAssetItemFilter, null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryFilter"))
+				kparams.AddIfNotNull("entryFilter", EntryFilter);
+			if (!isMapped("captionAssetItemFilter"))
+				kparams.AddIfNotNull("captionAssetItemFilter", CaptionAssetItemFilter);
+			if (!isMapped("captionAssetItemPager"))
+				kparams.AddIfNotNull("captionAssetItemPager", CaptionAssetItemPager);
+			return kparams;
 		}
 
-		public KalturaBaseEntryListResponse SearchEntries(KalturaBaseEntryFilter entryFilter, KalturaCaptionAssetItemFilter captionAssetItemFilter, KalturaFilterPager captionAssetItemPager)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("entryFilter", entryFilter);
-			kparams.AddIfNotNull("captionAssetItemFilter", captionAssetItemFilter);
-			kparams.AddIfNotNull("captionAssetItemPager", captionAssetItemPager);
-			_Client.QueueServiceCall("captionsearch_captionassetitem", "searchEntries", "KalturaBaseEntryListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaBaseEntryListResponse)KalturaObjectFactory.Create(result, "KalturaBaseEntryListResponse");
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<BaseEntry>>(result);
+		}
+	}
+
+
+	public class CaptionAssetItemService
+	{
+		private CaptionAssetItemService()
+		{
+		}
+
+		public static CaptionAssetItemSearchRequestBuilder Search(BaseEntryFilter entryFilter = null, CaptionAssetItemFilter captionAssetItemFilter = null, FilterPager captionAssetItemPager = null)
+		{
+			return new CaptionAssetItemSearchRequestBuilder(entryFilter, captionAssetItemFilter, captionAssetItemPager);
+		}
+
+		public static CaptionAssetItemSearchEntriesRequestBuilder SearchEntries(BaseEntryFilter entryFilter = null, CaptionAssetItemFilter captionAssetItemFilter = null, FilterPager captionAssetItemPager = null)
+		{
+			return new CaptionAssetItemSearchEntriesRequestBuilder(entryFilter, captionAssetItemFilter, captionAssetItemPager);
 		}
 	}
 }

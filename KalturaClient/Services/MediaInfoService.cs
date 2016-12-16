@@ -29,37 +29,74 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaMediaInfoService : KalturaServiceBase
+	public class MediaInfoListRequestBuilder : RequestBuilder<ListResponse<MediaInfo>>
 	{
-	public KalturaMediaInfoService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public MediaInfoFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public MediaInfoListRequestBuilder()
+			: base("mediainfo", "list")
 		{
 		}
 
-		public KalturaMediaInfoListResponse List()
+		public MediaInfoListRequestBuilder(MediaInfoFilter filter, FilterPager pager)
+			: this()
 		{
-			return this.List(null);
+			this.Filter = filter;
+			this.Pager = pager;
 		}
 
-		public KalturaMediaInfoListResponse List(KalturaMediaInfoFilter filter)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.List(filter, null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
 		}
 
-		public KalturaMediaInfoListResponse List(KalturaMediaInfoFilter filter, KalturaFilterPager pager)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("mediainfo", "list", "KalturaMediaInfoListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaMediaInfoListResponse)KalturaObjectFactory.Create(result, "KalturaMediaInfoListResponse");
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<MediaInfo>>(result);
+		}
+	}
+
+
+	public class MediaInfoService
+	{
+		private MediaInfoService()
+		{
+		}
+
+		public static MediaInfoListRequestBuilder List(MediaInfoFilter filter = null, FilterPager pager = null)
+		{
+			return new MediaInfoListRequestBuilder(filter, pager);
 		}
 	}
 }

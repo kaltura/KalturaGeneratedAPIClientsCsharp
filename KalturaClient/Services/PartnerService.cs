@@ -29,208 +29,527 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaPartnerService : KalturaServiceBase
+	public class PartnerRegisterRequestBuilder : RequestBuilder<Partner>
 	{
-	public KalturaPartnerService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string PARTNER = "partner";
+		public const string CMS_PASSWORD = "cmsPassword";
+		public const string TEMPLATE_PARTNER_ID = "templatePartnerId";
+		public const string SILENT = "silent";
+		#endregion
+
+		public Partner Partner
+		{
+			set;
+			get;
+		}
+		public string CmsPassword
+		{
+			set;
+			get;
+		}
+		public int TemplatePartnerId
+		{
+			set;
+			get;
+		}
+		public bool Silent
+		{
+			set;
+			get;
+		}
+
+		public PartnerRegisterRequestBuilder()
+			: base("partner", "register")
 		{
 		}
 
-		public KalturaPartner Register(KalturaPartner partner)
+		public PartnerRegisterRequestBuilder(Partner partner, string cmsPassword, int templatePartnerId, bool silent)
+			: this()
 		{
-			return this.Register(partner, "");
+			this.Partner = partner;
+			this.CmsPassword = cmsPassword;
+			this.TemplatePartnerId = templatePartnerId;
+			this.Silent = silent;
 		}
 
-		public KalturaPartner Register(KalturaPartner partner, string cmsPassword)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.Register(partner, cmsPassword, Int32.MinValue);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("partner"))
+				kparams.AddIfNotNull("partner", Partner);
+			if (!isMapped("cmsPassword"))
+				kparams.AddIfNotNull("cmsPassword", CmsPassword);
+			if (!isMapped("templatePartnerId"))
+				kparams.AddIfNotNull("templatePartnerId", TemplatePartnerId);
+			if (!isMapped("silent"))
+				kparams.AddIfNotNull("silent", Silent);
+			return kparams;
 		}
 
-		public KalturaPartner Register(KalturaPartner partner, string cmsPassword, int templatePartnerId)
+		public override Files getFiles()
 		{
-			return this.Register(partner, cmsPassword, templatePartnerId, false);
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaPartner Register(KalturaPartner partner, string cmsPassword, int templatePartnerId, bool silent)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("partner", partner);
-			kparams.AddIfNotNull("cmsPassword", cmsPassword);
-			kparams.AddIfNotNull("templatePartnerId", templatePartnerId);
-			kparams.AddIfNotNull("silent", silent);
-			_Client.QueueServiceCall("partner", "register", "KalturaPartner", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaPartner)KalturaObjectFactory.Create(result, "KalturaPartner");
+			return ObjectFactory.Create<Partner>(result);
+		}
+	}
+
+	public class PartnerUpdateRequestBuilder : RequestBuilder<Partner>
+	{
+		#region Constants
+		public const string PARTNER = "partner";
+		public const string ALLOW_EMPTY = "allowEmpty";
+		#endregion
+
+		public Partner Partner
+		{
+			set;
+			get;
+		}
+		public bool AllowEmpty
+		{
+			set;
+			get;
 		}
 
-		public KalturaPartner Update(KalturaPartner partner)
+		public PartnerUpdateRequestBuilder()
+			: base("partner", "update")
 		{
-			return this.Update(partner, false);
 		}
 
-		public KalturaPartner Update(KalturaPartner partner, bool allowEmpty)
+		public PartnerUpdateRequestBuilder(Partner partner, bool allowEmpty)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("partner", partner);
-			kparams.AddIfNotNull("allowEmpty", allowEmpty);
-			_Client.QueueServiceCall("partner", "update", "KalturaPartner", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaPartner)KalturaObjectFactory.Create(result, "KalturaPartner");
+			this.Partner = partner;
+			this.AllowEmpty = allowEmpty;
 		}
 
-		public KalturaPartner Get()
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.Get(Int32.MinValue);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("partner"))
+				kparams.AddIfNotNull("partner", Partner);
+			if (!isMapped("allowEmpty"))
+				kparams.AddIfNotNull("allowEmpty", AllowEmpty);
+			return kparams;
 		}
 
-		public KalturaPartner Get(int id)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("partner", "get", "KalturaPartner", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaPartner)KalturaObjectFactory.Create(result, "KalturaPartner");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaPartner GetSecrets(int partnerId, string adminEmail, string cmsPassword)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("partnerId", partnerId);
-			kparams.AddIfNotNull("adminEmail", adminEmail);
-			kparams.AddIfNotNull("cmsPassword", cmsPassword);
-			_Client.QueueServiceCall("partner", "getSecrets", "KalturaPartner", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaPartner)KalturaObjectFactory.Create(result, "KalturaPartner");
+			return ObjectFactory.Create<Partner>(result);
+		}
+	}
+
+	public class PartnerGetRequestBuilder : RequestBuilder<Partner>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
 		}
 
-		public KalturaPartner GetInfo()
+		public PartnerGetRequestBuilder()
+			: base("partner", "get")
 		{
-			KalturaParams kparams = new KalturaParams();
-			_Client.QueueServiceCall("partner", "getInfo", "KalturaPartner", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaPartner)KalturaObjectFactory.Create(result, "KalturaPartner");
 		}
 
-		public KalturaPartnerUsage GetUsage()
+		public PartnerGetRequestBuilder(int id)
+			: this()
 		{
-			return this.GetUsage();
+			this.Id = id;
 		}
 
-		public KalturaPartnerUsage GetUsage(int year)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.GetUsage(year, 1);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
 		}
 
-		public KalturaPartnerUsage GetUsage(int year, int month)
+		public override Files getFiles()
 		{
-			return this.GetUsage(year, month, null);
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaPartnerUsage GetUsage(int year, int month, KalturaReportInterval resolution)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("year", year);
-			kparams.AddIfNotNull("month", month);
-			kparams.AddIfNotNull("resolution", resolution);
-			_Client.QueueServiceCall("partner", "getUsage", "KalturaPartnerUsage", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaPartnerUsage)KalturaObjectFactory.Create(result, "KalturaPartnerUsage");
+			return ObjectFactory.Create<Partner>(result);
+		}
+	}
+
+	public class PartnerGetSecretsRequestBuilder : RequestBuilder<Partner>
+	{
+		#region Constants
+		public new const string PARTNER_ID = "partnerId";
+		public const string ADMIN_EMAIL = "adminEmail";
+		public const string CMS_PASSWORD = "cmsPassword";
+		#endregion
+
+		public new int PartnerId
+		{
+			set;
+			get;
+		}
+		public string AdminEmail
+		{
+			set;
+			get;
+		}
+		public string CmsPassword
+		{
+			set;
+			get;
 		}
 
-		public KalturaPartnerStatistics GetStatistics()
+		public PartnerGetSecretsRequestBuilder()
+			: base("partner", "getSecrets")
 		{
-			KalturaParams kparams = new KalturaParams();
-			_Client.QueueServiceCall("partner", "getStatistics", "KalturaPartnerStatistics", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaPartnerStatistics)KalturaObjectFactory.Create(result, "KalturaPartnerStatistics");
 		}
 
-		public KalturaPartnerListResponse ListPartnersForUser()
+		public PartnerGetSecretsRequestBuilder(int partnerId, string adminEmail, string cmsPassword)
+			: this()
 		{
-			return this.ListPartnersForUser(null);
+			this.PartnerId = partnerId;
+			this.AdminEmail = adminEmail;
+			this.CmsPassword = cmsPassword;
 		}
 
-		public KalturaPartnerListResponse ListPartnersForUser(KalturaPartnerFilter partnerFilter)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.ListPartnersForUser(partnerFilter, null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("partnerId"))
+				kparams.AddIfNotNull("partnerId", PartnerId);
+			if (!isMapped("adminEmail"))
+				kparams.AddIfNotNull("adminEmail", AdminEmail);
+			if (!isMapped("cmsPassword"))
+				kparams.AddIfNotNull("cmsPassword", CmsPassword);
+			return kparams;
 		}
 
-		public KalturaPartnerListResponse ListPartnersForUser(KalturaPartnerFilter partnerFilter, KalturaFilterPager pager)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("partnerFilter", partnerFilter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("partner", "listPartnersForUser", "KalturaPartnerListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaPartnerListResponse)KalturaObjectFactory.Create(result, "KalturaPartnerListResponse");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaPartnerListResponse List()
+		public override object Deserialize(XmlElement result)
 		{
-			return this.List(null);
+			return ObjectFactory.Create<Partner>(result);
+		}
+	}
+
+	public class PartnerGetInfoRequestBuilder : RequestBuilder<Partner>
+	{
+		#region Constants
+		#endregion
+
+
+		public PartnerGetInfoRequestBuilder()
+			: base("partner", "getInfo")
+		{
 		}
 
-		public KalturaPartnerListResponse List(KalturaPartnerFilter filter)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.List(filter, null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			return kparams;
 		}
 
-		public KalturaPartnerListResponse List(KalturaPartnerFilter filter, KalturaFilterPager pager)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("partner", "list", "KalturaPartnerListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaPartnerListResponse)KalturaObjectFactory.Create(result, "KalturaPartnerListResponse");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaFeatureStatusListResponse ListFeatureStatus()
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			_Client.QueueServiceCall("partner", "listFeatureStatus", "KalturaFeatureStatusListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaFeatureStatusListResponse)KalturaObjectFactory.Create(result, "KalturaFeatureStatusListResponse");
+			return ObjectFactory.Create<Partner>(result);
+		}
+	}
+
+	public class PartnerGetStatisticsRequestBuilder : RequestBuilder<PartnerStatistics>
+	{
+		#region Constants
+		#endregion
+
+
+		public PartnerGetStatisticsRequestBuilder()
+			: base("partner", "getStatistics")
+		{
 		}
 
-		public int Count()
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.Count(null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			return kparams;
 		}
 
-		public int Count(KalturaPartnerFilter filter)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			_Client.QueueServiceCall("partner", "count", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return 0;
-			XmlElement result = _Client.DoQueue();
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<PartnerStatistics>(result);
+		}
+	}
+
+	public class PartnerListPartnersForUserRequestBuilder : RequestBuilder<ListResponse<Partner>>
+	{
+		#region Constants
+		public const string PARTNER_FILTER = "partnerFilter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public PartnerFilter PartnerFilter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public PartnerListPartnersForUserRequestBuilder()
+			: base("partner", "listPartnersForUser")
+		{
+		}
+
+		public PartnerListPartnersForUserRequestBuilder(PartnerFilter partnerFilter, FilterPager pager)
+			: this()
+		{
+			this.PartnerFilter = partnerFilter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("partnerFilter"))
+				kparams.AddIfNotNull("partnerFilter", PartnerFilter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<Partner>>(result);
+		}
+	}
+
+	public class PartnerListRequestBuilder : RequestBuilder<ListResponse<Partner>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public PartnerFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public PartnerListRequestBuilder()
+			: base("partner", "list")
+		{
+		}
+
+		public PartnerListRequestBuilder(PartnerFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<Partner>>(result);
+		}
+	}
+
+	public class PartnerListFeatureStatusRequestBuilder : RequestBuilder<ListResponse<FeatureStatus>>
+	{
+		#region Constants
+		#endregion
+
+
+		public PartnerListFeatureStatusRequestBuilder()
+			: base("partner", "listFeatureStatus")
+		{
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<FeatureStatus>>(result);
+		}
+	}
+
+	public class PartnerCountRequestBuilder : RequestBuilder<int>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		#endregion
+
+		public PartnerFilter Filter
+		{
+			set;
+			get;
+		}
+
+		public PartnerCountRequestBuilder()
+			: base("partner", "count")
+		{
+		}
+
+		public PartnerCountRequestBuilder(PartnerFilter filter)
+			: this()
+		{
+			this.Filter = filter;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			return int.Parse(result.InnerText);
+		}
+	}
+
+
+	public class PartnerService
+	{
+		private PartnerService()
+		{
+		}
+
+		public static PartnerRegisterRequestBuilder Register(Partner partner, string cmsPassword = "", int templatePartnerId = Int32.MinValue, bool silent = false)
+		{
+			return new PartnerRegisterRequestBuilder(partner, cmsPassword, templatePartnerId, silent);
+		}
+
+		public static PartnerUpdateRequestBuilder Update(Partner partner, bool allowEmpty = false)
+		{
+			return new PartnerUpdateRequestBuilder(partner, allowEmpty);
+		}
+
+		public static PartnerGetRequestBuilder Get(int id = Int32.MinValue)
+		{
+			return new PartnerGetRequestBuilder(id);
+		}
+
+		public static PartnerGetSecretsRequestBuilder GetSecrets(int partnerId, string adminEmail, string cmsPassword)
+		{
+			return new PartnerGetSecretsRequestBuilder(partnerId, adminEmail, cmsPassword);
+		}
+
+		public static PartnerGetInfoRequestBuilder GetInfo()
+		{
+			return new PartnerGetInfoRequestBuilder();
+		}
+
+		public static PartnerGetStatisticsRequestBuilder GetStatistics()
+		{
+			return new PartnerGetStatisticsRequestBuilder();
+		}
+
+		public static PartnerListPartnersForUserRequestBuilder ListPartnersForUser(PartnerFilter partnerFilter = null, FilterPager pager = null)
+		{
+			return new PartnerListPartnersForUserRequestBuilder(partnerFilter, pager);
+		}
+
+		public static PartnerListRequestBuilder List(PartnerFilter filter = null, FilterPager pager = null)
+		{
+			return new PartnerListRequestBuilder(filter, pager);
+		}
+
+		public static PartnerListFeatureStatusRequestBuilder ListFeatureStatus()
+		{
+			return new PartnerListFeatureStatusRequestBuilder();
+		}
+
+		public static PartnerCountRequestBuilder Count(PartnerFilter filter = null)
+		{
+			return new PartnerCountRequestBuilder(filter);
 		}
 	}
 }

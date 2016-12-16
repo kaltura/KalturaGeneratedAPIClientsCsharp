@@ -29,82 +29,284 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaStorageProfileService : KalturaServiceBase
+	public class StorageProfileAddRequestBuilder : RequestBuilder<StorageProfile>
 	{
-	public KalturaStorageProfileService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string STORAGE_PROFILE = "storageProfile";
+		#endregion
+
+		public StorageProfile StorageProfile
+		{
+			set;
+			get;
+		}
+
+		public StorageProfileAddRequestBuilder()
+			: base("storageprofile", "add")
 		{
 		}
 
-		public KalturaStorageProfile Add(KalturaStorageProfile storageProfile)
+		public StorageProfileAddRequestBuilder(StorageProfile storageProfile)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("storageProfile", storageProfile);
-			_Client.QueueServiceCall("storageprofile", "add", "KalturaStorageProfile", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaStorageProfile)KalturaObjectFactory.Create(result, "KalturaStorageProfile");
+			this.StorageProfile = storageProfile;
 		}
 
-		public void UpdateStatus(int storageId, KalturaStorageProfileStatus status)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("storageId", storageId);
-			kparams.AddIfNotNull("status", status);
-			_Client.QueueServiceCall("storageprofile", "updateStatus", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("storageProfile"))
+				kparams.AddIfNotNull("storageProfile", StorageProfile);
+			return kparams;
 		}
 
-		public KalturaStorageProfile Get(int storageProfileId)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("storageProfileId", storageProfileId);
-			_Client.QueueServiceCall("storageprofile", "get", "KalturaStorageProfile", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaStorageProfile)KalturaObjectFactory.Create(result, "KalturaStorageProfile");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaStorageProfile Update(int storageProfileId, KalturaStorageProfile storageProfile)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("storageProfileId", storageProfileId);
-			kparams.AddIfNotNull("storageProfile", storageProfile);
-			_Client.QueueServiceCall("storageprofile", "update", "KalturaStorageProfile", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaStorageProfile)KalturaObjectFactory.Create(result, "KalturaStorageProfile");
+			return ObjectFactory.Create<StorageProfile>(result);
+		}
+	}
+
+	public class StorageProfileUpdateStatusRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string STORAGE_ID = "storageId";
+		public const string STATUS = "status";
+		#endregion
+
+		public int StorageId
+		{
+			set;
+			get;
+		}
+		public StorageProfileStatus Status
+		{
+			set;
+			get;
 		}
 
-		public KalturaStorageProfileListResponse List()
+		public StorageProfileUpdateStatusRequestBuilder()
+			: base("storageprofile", "updateStatus")
 		{
-			return this.List(null);
 		}
 
-		public KalturaStorageProfileListResponse List(KalturaStorageProfileFilter filter)
+		public StorageProfileUpdateStatusRequestBuilder(int storageId, StorageProfileStatus status)
+			: this()
 		{
-			return this.List(filter, null);
+			this.StorageId = storageId;
+			this.Status = status;
 		}
 
-		public KalturaStorageProfileListResponse List(KalturaStorageProfileFilter filter, KalturaFilterPager pager)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("storageprofile", "list", "KalturaStorageProfileListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaStorageProfileListResponse)KalturaObjectFactory.Create(result, "KalturaStorageProfileListResponse");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("storageId"))
+				kparams.AddIfNotNull("storageId", StorageId);
+			if (!isMapped("status"))
+				kparams.AddIfNotNull("status", Status);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class StorageProfileGetRequestBuilder : RequestBuilder<StorageProfile>
+	{
+		#region Constants
+		public const string STORAGE_PROFILE_ID = "storageProfileId";
+		#endregion
+
+		public int StorageProfileId
+		{
+			set;
+			get;
+		}
+
+		public StorageProfileGetRequestBuilder()
+			: base("storageprofile", "get")
+		{
+		}
+
+		public StorageProfileGetRequestBuilder(int storageProfileId)
+			: this()
+		{
+			this.StorageProfileId = storageProfileId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("storageProfileId"))
+				kparams.AddIfNotNull("storageProfileId", StorageProfileId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<StorageProfile>(result);
+		}
+	}
+
+	public class StorageProfileUpdateRequestBuilder : RequestBuilder<StorageProfile>
+	{
+		#region Constants
+		public const string STORAGE_PROFILE_ID = "storageProfileId";
+		public const string STORAGE_PROFILE = "storageProfile";
+		#endregion
+
+		public int StorageProfileId
+		{
+			set;
+			get;
+		}
+		public StorageProfile StorageProfile
+		{
+			set;
+			get;
+		}
+
+		public StorageProfileUpdateRequestBuilder()
+			: base("storageprofile", "update")
+		{
+		}
+
+		public StorageProfileUpdateRequestBuilder(int storageProfileId, StorageProfile storageProfile)
+			: this()
+		{
+			this.StorageProfileId = storageProfileId;
+			this.StorageProfile = storageProfile;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("storageProfileId"))
+				kparams.AddIfNotNull("storageProfileId", StorageProfileId);
+			if (!isMapped("storageProfile"))
+				kparams.AddIfNotNull("storageProfile", StorageProfile);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<StorageProfile>(result);
+		}
+	}
+
+	public class StorageProfileListRequestBuilder : RequestBuilder<ListResponse<StorageProfile>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public StorageProfileFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public StorageProfileListRequestBuilder()
+			: base("storageprofile", "list")
+		{
+		}
+
+		public StorageProfileListRequestBuilder(StorageProfileFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<StorageProfile>>(result);
+		}
+	}
+
+
+	public class StorageProfileService
+	{
+		private StorageProfileService()
+		{
+		}
+
+		public static StorageProfileAddRequestBuilder Add(StorageProfile storageProfile)
+		{
+			return new StorageProfileAddRequestBuilder(storageProfile);
+		}
+
+		public static StorageProfileUpdateStatusRequestBuilder UpdateStatus(int storageId, StorageProfileStatus status)
+		{
+			return new StorageProfileUpdateStatusRequestBuilder(storageId, status);
+		}
+
+		public static StorageProfileGetRequestBuilder Get(int storageProfileId)
+		{
+			return new StorageProfileGetRequestBuilder(storageProfileId);
+		}
+
+		public static StorageProfileUpdateRequestBuilder Update(int storageProfileId, StorageProfile storageProfile)
+		{
+			return new StorageProfileUpdateRequestBuilder(storageProfileId, storageProfile);
+		}
+
+		public static StorageProfileListRequestBuilder List(StorageProfileFilter filter = null, FilterPager pager = null)
+		{
+			return new StorageProfileListRequestBuilder(filter, pager);
 		}
 	}
 }

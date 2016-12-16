@@ -29,38 +29,112 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaUploadService : KalturaServiceBase
+	public class UploadUploadRequestBuilder : RequestBuilder<string>
 	{
-	public KalturaUploadService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string FILE_DATA = "fileData";
+		#endregion
+
+		public Stream FileData
+		{
+			set;
+			get;
+		}
+
+		public UploadUploadRequestBuilder()
+			: base("upload", "upload")
 		{
 		}
 
-		public string Upload(Stream fileData)
+		public UploadUploadRequestBuilder(Stream fileData)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			KalturaFiles kfiles = new KalturaFiles();
-			kfiles.Add("fileData", fileData);
-			_Client.QueueServiceCall("upload", "upload", null, kparams, kfiles);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
+			this.FileData = fileData;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			kfiles.Add("fileData", FileData);
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			return result.InnerText;
 		}
+	}
 
-		public KalturaUploadResponse GetUploadedFileTokenByFileName(string fileName)
+	public class UploadGetUploadedFileTokenByFileNameRequestBuilder : RequestBuilder<UploadResponse>
+	{
+		#region Constants
+		public const string FILE_NAME = "fileName";
+		#endregion
+
+		public string FileName
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("fileName", fileName);
-			_Client.QueueServiceCall("upload", "getUploadedFileTokenByFileName", "KalturaUploadResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaUploadResponse)KalturaObjectFactory.Create(result, "KalturaUploadResponse");
+			set;
+			get;
+		}
+
+		public UploadGetUploadedFileTokenByFileNameRequestBuilder()
+			: base("upload", "getUploadedFileTokenByFileName")
+		{
+		}
+
+		public UploadGetUploadedFileTokenByFileNameRequestBuilder(string fileName)
+			: this()
+		{
+			this.FileName = fileName;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("fileName"))
+				kparams.AddIfNotNull("fileName", FileName);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<UploadResponse>(result);
+		}
+	}
+
+
+	public class UploadService
+	{
+		private UploadService()
+		{
+		}
+
+		public static UploadUploadRequestBuilder Upload(Stream fileData)
+		{
+			return new UploadUploadRequestBuilder(fileData);
+		}
+
+		public static UploadGetUploadedFileTokenByFileNameRequestBuilder GetUploadedFileTokenByFileName(string fileName)
+		{
+			return new UploadGetUploadedFileTokenByFileNameRequestBuilder(fileName);
 		}
 	}
 }

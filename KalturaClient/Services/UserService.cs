@@ -29,319 +29,1041 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaUserService : KalturaServiceBase
+	public class UserAddRequestBuilder : RequestBuilder<User>
 	{
-	public KalturaUserService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string USER = "user";
+		#endregion
+
+		public User User
+		{
+			set;
+			get;
+		}
+
+		public UserAddRequestBuilder()
+			: base("user", "add")
 		{
 		}
 
-		public KalturaUser Add(KalturaUser user)
+		public UserAddRequestBuilder(User user)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("user", user);
-			_Client.QueueServiceCall("user", "add", "KalturaUser", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaUser)KalturaObjectFactory.Create(result, "KalturaUser");
+			this.User = user;
 		}
 
-		public KalturaUser Update(string userId, KalturaUser user)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("userId", userId);
-			kparams.AddIfNotNull("user", user);
-			_Client.QueueServiceCall("user", "update", "KalturaUser", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaUser)KalturaObjectFactory.Create(result, "KalturaUser");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("user"))
+				kparams.AddIfNotNull("user", User);
+			return kparams;
 		}
 
-		public KalturaUser Get()
+		public override Files getFiles()
 		{
-			return this.Get(null);
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaUser Get(string userId)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("userId", userId);
-			_Client.QueueServiceCall("user", "get", "KalturaUser", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaUser)KalturaObjectFactory.Create(result, "KalturaUser");
+			return ObjectFactory.Create<User>(result);
+		}
+	}
+
+	public class UserUpdateRequestBuilder : RequestBuilder<User>
+	{
+		#region Constants
+		public const string USER_ID = "userId";
+		public const string USER = "user";
+		#endregion
+
+		public string UserId
+		{
+			set;
+			get;
+		}
+		public User User
+		{
+			set;
+			get;
 		}
 
-		public KalturaUser GetByLoginId(string loginId)
+		public UserUpdateRequestBuilder()
+			: base("user", "update")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("loginId", loginId);
-			_Client.QueueServiceCall("user", "getByLoginId", "KalturaUser", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaUser)KalturaObjectFactory.Create(result, "KalturaUser");
 		}
 
-		public KalturaUser Delete(string userId)
+		public UserUpdateRequestBuilder(string userId, User user)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("userId", userId);
-			_Client.QueueServiceCall("user", "delete", "KalturaUser", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaUser)KalturaObjectFactory.Create(result, "KalturaUser");
+			this.UserId = userId;
+			this.User = user;
 		}
 
-		public KalturaUserListResponse List()
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.List(null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("userId"))
+				kparams.AddIfNotNull("userId", UserId);
+			if (!isMapped("user"))
+				kparams.AddIfNotNull("user", User);
+			return kparams;
 		}
 
-		public KalturaUserListResponse List(KalturaUserFilter filter)
+		public override Files getFiles()
 		{
-			return this.List(filter, null);
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaUserListResponse List(KalturaUserFilter filter, KalturaFilterPager pager)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("user", "list", "KalturaUserListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaUserListResponse)KalturaObjectFactory.Create(result, "KalturaUserListResponse");
+			return ObjectFactory.Create<User>(result);
+		}
+	}
+
+	public class UserGetRequestBuilder : RequestBuilder<User>
+	{
+		#region Constants
+		public const string USER_ID = "userId";
+		#endregion
+
+		public string UserId
+		{
+			set;
+			get;
 		}
 
-		public void NotifyBan(string userId)
+		public UserGetRequestBuilder()
+			: base("user", "get")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("userId", userId);
-			_Client.QueueServiceCall("user", "notifyBan", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
 		}
 
-		public string Login(int partnerId, string userId, string password)
+		public UserGetRequestBuilder(string userId)
+			: this()
 		{
-			return this.Login(partnerId, userId, password, 86400);
+			this.UserId = userId;
 		}
 
-		public string Login(int partnerId, string userId, string password, int expiry)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.Login(partnerId, userId, password, expiry, "*");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("userId"))
+				kparams.AddIfNotNull("userId", UserId);
+			return kparams;
 		}
 
-		public string Login(int partnerId, string userId, string password, int expiry, string privileges)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("partnerId", partnerId);
-			kparams.AddIfNotNull("userId", userId);
-			kparams.AddIfNotNull("password", password);
-			kparams.AddIfNotNull("expiry", expiry);
-			kparams.AddIfNotNull("privileges", privileges);
-			_Client.QueueServiceCall("user", "login", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<User>(result);
+		}
+	}
+
+	public class UserGetByLoginIdRequestBuilder : RequestBuilder<User>
+	{
+		#region Constants
+		public const string LOGIN_ID = "loginId";
+		#endregion
+
+		public string LoginId
+		{
+			set;
+			get;
+		}
+
+		public UserGetByLoginIdRequestBuilder()
+			: base("user", "getByLoginId")
+		{
+		}
+
+		public UserGetByLoginIdRequestBuilder(string loginId)
+			: this()
+		{
+			this.LoginId = loginId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("loginId"))
+				kparams.AddIfNotNull("loginId", LoginId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<User>(result);
+		}
+	}
+
+	public class UserDeleteRequestBuilder : RequestBuilder<User>
+	{
+		#region Constants
+		public const string USER_ID = "userId";
+		#endregion
+
+		public string UserId
+		{
+			set;
+			get;
+		}
+
+		public UserDeleteRequestBuilder()
+			: base("user", "delete")
+		{
+		}
+
+		public UserDeleteRequestBuilder(string userId)
+			: this()
+		{
+			this.UserId = userId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("userId"))
+				kparams.AddIfNotNull("userId", UserId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<User>(result);
+		}
+	}
+
+	public class UserListRequestBuilder : RequestBuilder<ListResponse<User>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public UserFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public UserListRequestBuilder()
+			: base("user", "list")
+		{
+		}
+
+		public UserListRequestBuilder(UserFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<User>>(result);
+		}
+	}
+
+	public class UserNotifyBanRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string USER_ID = "userId";
+		#endregion
+
+		public string UserId
+		{
+			set;
+			get;
+		}
+
+		public UserNotifyBanRequestBuilder()
+			: base("user", "notifyBan")
+		{
+		}
+
+		public UserNotifyBanRequestBuilder(string userId)
+			: this()
+		{
+			this.UserId = userId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("userId"))
+				kparams.AddIfNotNull("userId", UserId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class UserLoginRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		public new const string PARTNER_ID = "partnerId";
+		public const string USER_ID = "userId";
+		public const string PASSWORD = "password";
+		public const string EXPIRY = "expiry";
+		public const string PRIVILEGES = "privileges";
+		#endregion
+
+		public new int PartnerId
+		{
+			set;
+			get;
+		}
+		public string UserId
+		{
+			set;
+			get;
+		}
+		public string Password
+		{
+			set;
+			get;
+		}
+		public int Expiry
+		{
+			set;
+			get;
+		}
+		public string Privileges
+		{
+			set;
+			get;
+		}
+
+		public UserLoginRequestBuilder()
+			: base("user", "login")
+		{
+		}
+
+		public UserLoginRequestBuilder(int partnerId, string userId, string password, int expiry, string privileges)
+			: this()
+		{
+			this.PartnerId = partnerId;
+			this.UserId = userId;
+			this.Password = password;
+			this.Expiry = expiry;
+			this.Privileges = privileges;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("partnerId"))
+				kparams.AddIfNotNull("partnerId", PartnerId);
+			if (!isMapped("userId"))
+				kparams.AddIfNotNull("userId", UserId);
+			if (!isMapped("password"))
+				kparams.AddIfNotNull("password", Password);
+			if (!isMapped("expiry"))
+				kparams.AddIfNotNull("expiry", Expiry);
+			if (!isMapped("privileges"))
+				kparams.AddIfNotNull("privileges", Privileges);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			return result.InnerText;
 		}
+	}
 
-		public string LoginByLoginId(string loginId, string password)
+	public class UserLoginByLoginIdRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		public const string LOGIN_ID = "loginId";
+		public const string PASSWORD = "password";
+		public new const string PARTNER_ID = "partnerId";
+		public const string EXPIRY = "expiry";
+		public const string PRIVILEGES = "privileges";
+		public const string OTP = "otp";
+		#endregion
+
+		public string LoginId
 		{
-			return this.LoginByLoginId(loginId, password, Int32.MinValue);
+			set;
+			get;
+		}
+		public string Password
+		{
+			set;
+			get;
+		}
+		public new int PartnerId
+		{
+			set;
+			get;
+		}
+		public int Expiry
+		{
+			set;
+			get;
+		}
+		public string Privileges
+		{
+			set;
+			get;
+		}
+		public string Otp
+		{
+			set;
+			get;
 		}
 
-		public string LoginByLoginId(string loginId, string password, int partnerId)
+		public UserLoginByLoginIdRequestBuilder()
+			: base("user", "loginByLoginId")
 		{
-			return this.LoginByLoginId(loginId, password, partnerId, 86400);
 		}
 
-		public string LoginByLoginId(string loginId, string password, int partnerId, int expiry)
+		public UserLoginByLoginIdRequestBuilder(string loginId, string password, int partnerId, int expiry, string privileges, string otp)
+			: this()
 		{
-			return this.LoginByLoginId(loginId, password, partnerId, expiry, "*");
+			this.LoginId = loginId;
+			this.Password = password;
+			this.PartnerId = partnerId;
+			this.Expiry = expiry;
+			this.Privileges = privileges;
+			this.Otp = otp;
 		}
 
-		public string LoginByLoginId(string loginId, string password, int partnerId, int expiry, string privileges)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.LoginByLoginId(loginId, password, partnerId, expiry, privileges, null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("loginId"))
+				kparams.AddIfNotNull("loginId", LoginId);
+			if (!isMapped("password"))
+				kparams.AddIfNotNull("password", Password);
+			if (!isMapped("partnerId"))
+				kparams.AddIfNotNull("partnerId", PartnerId);
+			if (!isMapped("expiry"))
+				kparams.AddIfNotNull("expiry", Expiry);
+			if (!isMapped("privileges"))
+				kparams.AddIfNotNull("privileges", Privileges);
+			if (!isMapped("otp"))
+				kparams.AddIfNotNull("otp", Otp);
+			return kparams;
 		}
 
-		public string LoginByLoginId(string loginId, string password, int partnerId, int expiry, string privileges, string otp)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("loginId", loginId);
-			kparams.AddIfNotNull("password", password);
-			kparams.AddIfNotNull("partnerId", partnerId);
-			kparams.AddIfNotNull("expiry", expiry);
-			kparams.AddIfNotNull("privileges", privileges);
-			kparams.AddIfNotNull("otp", otp);
-			_Client.QueueServiceCall("user", "loginByLoginId", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			return result.InnerText;
 		}
+	}
 
-		public void UpdateLoginData(string oldLoginId, string password)
+	public class UserUpdateLoginDataRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string OLD_LOGIN_ID = "oldLoginId";
+		public const string PASSWORD = "password";
+		public const string NEW_LOGIN_ID = "newLoginId";
+		public const string NEW_PASSWORD = "newPassword";
+		public const string NEW_FIRST_NAME = "newFirstName";
+		public const string NEW_LAST_NAME = "newLastName";
+		#endregion
+
+		public string OldLoginId
 		{
-			this.UpdateLoginData(oldLoginId, password, "");
+			set;
+			get;
+		}
+		public string Password
+		{
+			set;
+			get;
+		}
+		public string NewLoginId
+		{
+			set;
+			get;
+		}
+		public string NewPassword
+		{
+			set;
+			get;
+		}
+		public string NewFirstName
+		{
+			set;
+			get;
+		}
+		public string NewLastName
+		{
+			set;
+			get;
 		}
 
-		public void UpdateLoginData(string oldLoginId, string password, string newLoginId)
+		public UserUpdateLoginDataRequestBuilder()
+			: base("user", "updateLoginData")
 		{
-			this.UpdateLoginData(oldLoginId, password, newLoginId, "");
 		}
 
-		public void UpdateLoginData(string oldLoginId, string password, string newLoginId, string newPassword)
+		public UserUpdateLoginDataRequestBuilder(string oldLoginId, string password, string newLoginId, string newPassword, string newFirstName, string newLastName)
+			: this()
 		{
-			this.UpdateLoginData(oldLoginId, password, newLoginId, newPassword, null);
+			this.OldLoginId = oldLoginId;
+			this.Password = password;
+			this.NewLoginId = newLoginId;
+			this.NewPassword = newPassword;
+			this.NewFirstName = newFirstName;
+			this.NewLastName = newLastName;
 		}
 
-		public void UpdateLoginData(string oldLoginId, string password, string newLoginId, string newPassword, string newFirstName)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			this.UpdateLoginData(oldLoginId, password, newLoginId, newPassword, newFirstName, null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("oldLoginId"))
+				kparams.AddIfNotNull("oldLoginId", OldLoginId);
+			if (!isMapped("password"))
+				kparams.AddIfNotNull("password", Password);
+			if (!isMapped("newLoginId"))
+				kparams.AddIfNotNull("newLoginId", NewLoginId);
+			if (!isMapped("newPassword"))
+				kparams.AddIfNotNull("newPassword", NewPassword);
+			if (!isMapped("newFirstName"))
+				kparams.AddIfNotNull("newFirstName", NewFirstName);
+			if (!isMapped("newLastName"))
+				kparams.AddIfNotNull("newLastName", NewLastName);
+			return kparams;
 		}
 
-		public void UpdateLoginData(string oldLoginId, string password, string newLoginId, string newPassword, string newFirstName, string newLastName)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("oldLoginId", oldLoginId);
-			kparams.AddIfNotNull("password", password);
-			kparams.AddIfNotNull("newLoginId", newLoginId);
-			kparams.AddIfNotNull("newPassword", newPassword);
-			kparams.AddIfNotNull("newFirstName", newFirstName);
-			kparams.AddIfNotNull("newLastName", newLastName);
-			_Client.QueueServiceCall("user", "updateLoginData", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public void ResetPassword(string email)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("email", email);
-			_Client.QueueServiceCall("user", "resetPassword", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			return null;
+		}
+	}
+
+	public class UserResetPasswordRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string EMAIL = "email";
+		#endregion
+
+		public string Email
+		{
+			set;
+			get;
 		}
 
-		public void SetInitialPassword(string hashKey, string newPassword)
+		public UserResetPasswordRequestBuilder()
+			: base("user", "resetPassword")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("hashKey", hashKey);
-			kparams.AddIfNotNull("newPassword", newPassword);
-			_Client.QueueServiceCall("user", "setInitialPassword", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
 		}
 
-		public KalturaUser EnableLogin(string userId, string loginId)
+		public UserResetPasswordRequestBuilder(string email)
+			: this()
 		{
-			return this.EnableLogin(userId, loginId, null);
+			this.Email = email;
 		}
 
-		public KalturaUser EnableLogin(string userId, string loginId, string password)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("userId", userId);
-			kparams.AddIfNotNull("loginId", loginId);
-			kparams.AddIfNotNull("password", password);
-			_Client.QueueServiceCall("user", "enableLogin", "KalturaUser", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaUser)KalturaObjectFactory.Create(result, "KalturaUser");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("email"))
+				kparams.AddIfNotNull("email", Email);
+			return kparams;
 		}
 
-		public KalturaUser DisableLogin()
+		public override Files getFiles()
 		{
-			return this.DisableLogin(null);
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaUser DisableLogin(string userId)
+		public override object Deserialize(XmlElement result)
 		{
-			return this.DisableLogin(userId, null);
+			return null;
+		}
+	}
+
+	public class UserSetInitialPasswordRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string HASH_KEY = "hashKey";
+		public const string NEW_PASSWORD = "newPassword";
+		#endregion
+
+		public string HashKey
+		{
+			set;
+			get;
+		}
+		public string NewPassword
+		{
+			set;
+			get;
 		}
 
-		public KalturaUser DisableLogin(string userId, string loginId)
+		public UserSetInitialPasswordRequestBuilder()
+			: base("user", "setInitialPassword")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("userId", userId);
-			kparams.AddIfNotNull("loginId", loginId);
-			_Client.QueueServiceCall("user", "disableLogin", "KalturaUser", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaUser)KalturaObjectFactory.Create(result, "KalturaUser");
 		}
 
-		public string Index(string id)
+		public UserSetInitialPasswordRequestBuilder(string hashKey, string newPassword)
+			: this()
 		{
-			return this.Index(id, true);
+			this.HashKey = hashKey;
+			this.NewPassword = newPassword;
 		}
 
-		public string Index(string id, bool shouldUpdate)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("shouldUpdate", shouldUpdate);
-			_Client.QueueServiceCall("user", "index", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("hashKey"))
+				kparams.AddIfNotNull("hashKey", HashKey);
+			if (!isMapped("newPassword"))
+				kparams.AddIfNotNull("newPassword", NewPassword);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class UserEnableLoginRequestBuilder : RequestBuilder<User>
+	{
+		#region Constants
+		public const string USER_ID = "userId";
+		public const string LOGIN_ID = "loginId";
+		public const string PASSWORD = "password";
+		#endregion
+
+		public string UserId
+		{
+			set;
+			get;
+		}
+		public string LoginId
+		{
+			set;
+			get;
+		}
+		public string Password
+		{
+			set;
+			get;
+		}
+
+		public UserEnableLoginRequestBuilder()
+			: base("user", "enableLogin")
+		{
+		}
+
+		public UserEnableLoginRequestBuilder(string userId, string loginId, string password)
+			: this()
+		{
+			this.UserId = userId;
+			this.LoginId = loginId;
+			this.Password = password;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("userId"))
+				kparams.AddIfNotNull("userId", UserId);
+			if (!isMapped("loginId"))
+				kparams.AddIfNotNull("loginId", LoginId);
+			if (!isMapped("password"))
+				kparams.AddIfNotNull("password", Password);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<User>(result);
+		}
+	}
+
+	public class UserDisableLoginRequestBuilder : RequestBuilder<User>
+	{
+		#region Constants
+		public const string USER_ID = "userId";
+		public const string LOGIN_ID = "loginId";
+		#endregion
+
+		public string UserId
+		{
+			set;
+			get;
+		}
+		public string LoginId
+		{
+			set;
+			get;
+		}
+
+		public UserDisableLoginRequestBuilder()
+			: base("user", "disableLogin")
+		{
+		}
+
+		public UserDisableLoginRequestBuilder(string userId, string loginId)
+			: this()
+		{
+			this.UserId = userId;
+			this.LoginId = loginId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("userId"))
+				kparams.AddIfNotNull("userId", UserId);
+			if (!isMapped("loginId"))
+				kparams.AddIfNotNull("loginId", LoginId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<User>(result);
+		}
+	}
+
+	public class UserIndexRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string SHOULD_UPDATE = "shouldUpdate";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public bool ShouldUpdate
+		{
+			set;
+			get;
+		}
+
+		public UserIndexRequestBuilder()
+			: base("user", "index")
+		{
+		}
+
+		public UserIndexRequestBuilder(string id, bool shouldUpdate)
+			: this()
+		{
+			this.Id = id;
+			this.ShouldUpdate = shouldUpdate;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("shouldUpdate"))
+				kparams.AddIfNotNull("shouldUpdate", ShouldUpdate);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			return result.InnerText;
 		}
+	}
 
-		public KalturaBulkUpload AddFromBulkUpload(Stream fileData)
+	public class UserAddFromBulkUploadRequestBuilder : RequestBuilder<BulkUpload>
+	{
+		#region Constants
+		public const string FILE_DATA = "fileData";
+		public const string BULK_UPLOAD_DATA = "bulkUploadData";
+		public const string BULK_UPLOAD_USER_DATA = "bulkUploadUserData";
+		#endregion
+
+		public Stream FileData
 		{
-			return this.AddFromBulkUpload(fileData, null);
+			set;
+			get;
+		}
+		public BulkUploadJobData BulkUploadData
+		{
+			set;
+			get;
+		}
+		public BulkUploadUserData BulkUploadUserData
+		{
+			set;
+			get;
 		}
 
-		public KalturaBulkUpload AddFromBulkUpload(Stream fileData, KalturaBulkUploadJobData bulkUploadData)
+		public UserAddFromBulkUploadRequestBuilder()
+			: base("user", "addFromBulkUpload")
 		{
-			return this.AddFromBulkUpload(fileData, bulkUploadData, null);
 		}
 
-		public KalturaBulkUpload AddFromBulkUpload(Stream fileData, KalturaBulkUploadJobData bulkUploadData, KalturaBulkUploadUserData bulkUploadUserData)
+		public UserAddFromBulkUploadRequestBuilder(Stream fileData, BulkUploadJobData bulkUploadData, BulkUploadUserData bulkUploadUserData)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			KalturaFiles kfiles = new KalturaFiles();
-			kfiles.Add("fileData", fileData);
-			kparams.AddIfNotNull("bulkUploadData", bulkUploadData);
-			kparams.AddIfNotNull("bulkUploadUserData", bulkUploadUserData);
-			_Client.QueueServiceCall("user", "addFromBulkUpload", "KalturaBulkUpload", kparams, kfiles);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaBulkUpload)KalturaObjectFactory.Create(result, "KalturaBulkUpload");
+			this.FileData = fileData;
+			this.BulkUploadData = bulkUploadData;
+			this.BulkUploadUserData = bulkUploadUserData;
 		}
 
-		public bool CheckLoginDataExists(KalturaUserLoginDataFilter filter)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			_Client.QueueServiceCall("user", "checkLoginDataExists", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return false;
-			XmlElement result = _Client.DoQueue();
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("bulkUploadData"))
+				kparams.AddIfNotNull("bulkUploadData", BulkUploadData);
+			if (!isMapped("bulkUploadUserData"))
+				kparams.AddIfNotNull("bulkUploadUserData", BulkUploadUserData);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			kfiles.Add("fileData", FileData);
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<BulkUpload>(result);
+		}
+	}
+
+	public class UserCheckLoginDataExistsRequestBuilder : RequestBuilder<bool>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		#endregion
+
+		public UserLoginDataFilter Filter
+		{
+			set;
+			get;
+		}
+
+		public UserCheckLoginDataExistsRequestBuilder()
+			: base("user", "checkLoginDataExists")
+		{
+		}
+
+		public UserCheckLoginDataExistsRequestBuilder(UserLoginDataFilter filter)
+			: this()
+		{
+			this.Filter = filter;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			if (result.InnerText.Equals("1") || result.InnerText.ToLower().Equals("true"))
 				return true;
 			return false;
+		}
+	}
+
+
+	public class UserService
+	{
+		private UserService()
+		{
+		}
+
+		public static UserAddRequestBuilder Add(User user)
+		{
+			return new UserAddRequestBuilder(user);
+		}
+
+		public static UserUpdateRequestBuilder Update(string userId, User user)
+		{
+			return new UserUpdateRequestBuilder(userId, user);
+		}
+
+		public static UserGetRequestBuilder Get(string userId = null)
+		{
+			return new UserGetRequestBuilder(userId);
+		}
+
+		public static UserGetByLoginIdRequestBuilder GetByLoginId(string loginId)
+		{
+			return new UserGetByLoginIdRequestBuilder(loginId);
+		}
+
+		public static UserDeleteRequestBuilder Delete(string userId)
+		{
+			return new UserDeleteRequestBuilder(userId);
+		}
+
+		public static UserListRequestBuilder List(UserFilter filter = null, FilterPager pager = null)
+		{
+			return new UserListRequestBuilder(filter, pager);
+		}
+
+		public static UserNotifyBanRequestBuilder NotifyBan(string userId)
+		{
+			return new UserNotifyBanRequestBuilder(userId);
+		}
+
+		public static UserLoginRequestBuilder Login(int partnerId, string userId, string password, int expiry = 86400, string privileges = "*")
+		{
+			return new UserLoginRequestBuilder(partnerId, userId, password, expiry, privileges);
+		}
+
+		public static UserLoginByLoginIdRequestBuilder LoginByLoginId(string loginId, string password, int partnerId = Int32.MinValue, int expiry = 86400, string privileges = "*", string otp = null)
+		{
+			return new UserLoginByLoginIdRequestBuilder(loginId, password, partnerId, expiry, privileges, otp);
+		}
+
+		public static UserUpdateLoginDataRequestBuilder UpdateLoginData(string oldLoginId, string password, string newLoginId = "", string newPassword = "", string newFirstName = null, string newLastName = null)
+		{
+			return new UserUpdateLoginDataRequestBuilder(oldLoginId, password, newLoginId, newPassword, newFirstName, newLastName);
+		}
+
+		public static UserResetPasswordRequestBuilder ResetPassword(string email)
+		{
+			return new UserResetPasswordRequestBuilder(email);
+		}
+
+		public static UserSetInitialPasswordRequestBuilder SetInitialPassword(string hashKey, string newPassword)
+		{
+			return new UserSetInitialPasswordRequestBuilder(hashKey, newPassword);
+		}
+
+		public static UserEnableLoginRequestBuilder EnableLogin(string userId, string loginId, string password = null)
+		{
+			return new UserEnableLoginRequestBuilder(userId, loginId, password);
+		}
+
+		public static UserDisableLoginRequestBuilder DisableLogin(string userId = null, string loginId = null)
+		{
+			return new UserDisableLoginRequestBuilder(userId, loginId);
+		}
+
+		public static UserIndexRequestBuilder Index(string id, bool shouldUpdate = true)
+		{
+			return new UserIndexRequestBuilder(id, shouldUpdate);
+		}
+
+		public static UserAddFromBulkUploadRequestBuilder AddFromBulkUpload(Stream fileData, BulkUploadJobData bulkUploadData = null, BulkUploadUserData bulkUploadUserData = null)
+		{
+			return new UserAddFromBulkUploadRequestBuilder(fileData, bulkUploadData, bulkUploadUserData);
+		}
+
+		public static UserCheckLoginDataExistsRequestBuilder CheckLoginDataExists(UserLoginDataFilter filter)
+		{
+			return new UserCheckLoginDataExistsRequestBuilder(filter);
 		}
 	}
 }

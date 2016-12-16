@@ -29,81 +29,275 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaCaptionParamsService : KalturaServiceBase
+	public class CaptionParamsAddRequestBuilder : RequestBuilder<CaptionParams>
 	{
-	public KalturaCaptionParamsService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string CAPTION_PARAMS = "captionParams";
+		#endregion
+
+		public CaptionParams CaptionParams
+		{
+			set;
+			get;
+		}
+
+		public CaptionParamsAddRequestBuilder()
+			: base("caption_captionparams", "add")
 		{
 		}
 
-		public KalturaCaptionParams Add(KalturaCaptionParams captionParams)
+		public CaptionParamsAddRequestBuilder(CaptionParams captionParams)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("captionParams", captionParams);
-			_Client.QueueServiceCall("caption_captionparams", "add", "KalturaCaptionParams", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaCaptionParams)KalturaObjectFactory.Create(result, "KalturaCaptionParams");
+			this.CaptionParams = captionParams;
 		}
 
-		public KalturaCaptionParams Get(int id)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("caption_captionparams", "get", "KalturaCaptionParams", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaCaptionParams)KalturaObjectFactory.Create(result, "KalturaCaptionParams");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("captionParams"))
+				kparams.AddIfNotNull("captionParams", CaptionParams);
+			return kparams;
 		}
 
-		public KalturaCaptionParams Update(int id, KalturaCaptionParams captionParams)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("captionParams", captionParams);
-			_Client.QueueServiceCall("caption_captionparams", "update", "KalturaCaptionParams", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaCaptionParams)KalturaObjectFactory.Create(result, "KalturaCaptionParams");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public void Delete(int id)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("caption_captionparams", "delete", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			return ObjectFactory.Create<CaptionParams>(result);
+		}
+	}
+
+	public class CaptionParamsGetRequestBuilder : RequestBuilder<CaptionParams>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
 		}
 
-		public KalturaCaptionParamsListResponse List()
+		public CaptionParamsGetRequestBuilder()
+			: base("caption_captionparams", "get")
 		{
-			return this.List(null);
 		}
 
-		public KalturaCaptionParamsListResponse List(KalturaCaptionParamsFilter filter)
+		public CaptionParamsGetRequestBuilder(int id)
+			: this()
 		{
-			return this.List(filter, null);
+			this.Id = id;
 		}
 
-		public KalturaCaptionParamsListResponse List(KalturaCaptionParamsFilter filter, KalturaFilterPager pager)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("caption_captionparams", "list", "KalturaCaptionParamsListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaCaptionParamsListResponse)KalturaObjectFactory.Create(result, "KalturaCaptionParamsListResponse");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<CaptionParams>(result);
+		}
+	}
+
+	public class CaptionParamsUpdateRequestBuilder : RequestBuilder<CaptionParams>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string CAPTION_PARAMS = "captionParams";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public CaptionParams CaptionParams
+		{
+			set;
+			get;
+		}
+
+		public CaptionParamsUpdateRequestBuilder()
+			: base("caption_captionparams", "update")
+		{
+		}
+
+		public CaptionParamsUpdateRequestBuilder(int id, CaptionParams captionParams)
+			: this()
+		{
+			this.Id = id;
+			this.CaptionParams = captionParams;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("captionParams"))
+				kparams.AddIfNotNull("captionParams", CaptionParams);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<CaptionParams>(result);
+		}
+	}
+
+	public class CaptionParamsDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public CaptionParamsDeleteRequestBuilder()
+			: base("caption_captionparams", "delete")
+		{
+		}
+
+		public CaptionParamsDeleteRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class CaptionParamsListRequestBuilder : RequestBuilder<ListResponse<CaptionParams>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public CaptionParamsFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public CaptionParamsListRequestBuilder()
+			: base("caption_captionparams", "list")
+		{
+		}
+
+		public CaptionParamsListRequestBuilder(CaptionParamsFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<CaptionParams>>(result);
+		}
+	}
+
+
+	public class CaptionParamsService
+	{
+		private CaptionParamsService()
+		{
+		}
+
+		public static CaptionParamsAddRequestBuilder Add(CaptionParams captionParams)
+		{
+			return new CaptionParamsAddRequestBuilder(captionParams);
+		}
+
+		public static CaptionParamsGetRequestBuilder Get(int id)
+		{
+			return new CaptionParamsGetRequestBuilder(id);
+		}
+
+		public static CaptionParamsUpdateRequestBuilder Update(int id, CaptionParams captionParams)
+		{
+			return new CaptionParamsUpdateRequestBuilder(id, captionParams);
+		}
+
+		public static CaptionParamsDeleteRequestBuilder Delete(int id)
+		{
+			return new CaptionParamsDeleteRequestBuilder(id);
+		}
+
+		public static CaptionParamsListRequestBuilder List(CaptionParamsFilter filter = null, FilterPager pager = null)
+		{
+			return new CaptionParamsListRequestBuilder(filter, pager);
 		}
 	}
 }

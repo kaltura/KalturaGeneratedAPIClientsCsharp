@@ -29,27 +29,74 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaNotificationService : KalturaServiceBase
+	public class NotificationGetClientNotificationRequestBuilder : RequestBuilder<ClientNotification>
 	{
-	public KalturaNotificationService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string TYPE = "type";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public NotificationType Type
+		{
+			set;
+			get;
+		}
+
+		public NotificationGetClientNotificationRequestBuilder()
+			: base("notification", "getClientNotification")
 		{
 		}
 
-		public KalturaClientNotification GetClientNotification(string entryId, KalturaNotificationType type)
+		public NotificationGetClientNotificationRequestBuilder(string entryId, NotificationType type)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("entryId", entryId);
-			kparams.AddIfNotNull("type", type);
-			_Client.QueueServiceCall("notification", "getClientNotification", "KalturaClientNotification", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaClientNotification)KalturaObjectFactory.Create(result, "KalturaClientNotification");
+			this.EntryId = entryId;
+			this.Type = type;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("type"))
+				kparams.AddIfNotNull("type", Type);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ClientNotification>(result);
+		}
+	}
+
+
+	public class NotificationService
+	{
+		private NotificationService()
+		{
+		}
+
+		public static NotificationGetClientNotificationRequestBuilder GetClientNotification(string entryId, NotificationType type)
+		{
+			return new NotificationGetClientNotificationRequestBuilder(entryId, type);
 		}
 	}
 }

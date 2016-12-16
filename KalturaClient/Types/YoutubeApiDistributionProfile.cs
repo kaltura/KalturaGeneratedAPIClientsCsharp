@@ -1,0 +1,287 @@
+// ===================================================================================================
+//                           _  __     _ _
+//                          | |/ /__ _| | |_ _  _ _ _ __ _
+//                          | ' </ _` | |  _| || | '_/ _` |
+//                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
+//
+// This file is part of the Kaltura Collaborative Media Suite which allows users
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// text.
+//
+// Copyright (C) 2006-2016  Kaltura Inc.
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+// @ignore
+// ===================================================================================================
+using System;
+using System.Xml;
+using System.Collections.Generic;
+using Kaltura.Enums;
+using Kaltura.Request;
+
+namespace Kaltura.Types
+{
+	public class YoutubeApiDistributionProfile : ConfigurableDistributionProfile
+	{
+		#region Constants
+		public const string USERNAME = "username";
+		public const string DEFAULT_CATEGORY = "defaultCategory";
+		public const string ALLOW_COMMENTS = "allowComments";
+		public const string ALLOW_EMBEDDING = "allowEmbedding";
+		public const string ALLOW_RATINGS = "allowRatings";
+		public const string ALLOW_RESPONSES = "allowResponses";
+		public const string API_AUTHORIZE_URL = "apiAuthorizeUrl";
+		public const string GOOGLE_CLIENT_ID = "googleClientId";
+		public const string GOOGLE_CLIENT_SECRET = "googleClientSecret";
+		public const string GOOGLE_TOKEN_DATA = "googleTokenData";
+		public const string ASSUME_SUCCESS = "assumeSuccess";
+		public const string PRIVACY_STATUS = "privacyStatus";
+		#endregion
+
+		#region Private Fields
+		private string _Username = null;
+		private int _DefaultCategory = Int32.MinValue;
+		private string _AllowComments = null;
+		private string _AllowEmbedding = null;
+		private string _AllowRatings = null;
+		private string _AllowResponses = null;
+		private string _ApiAuthorizeUrl = null;
+		private string _GoogleClientId = null;
+		private string _GoogleClientSecret = null;
+		private string _GoogleTokenData = null;
+		private bool? _AssumeSuccess = null;
+		private string _PrivacyStatus = null;
+		#endregion
+
+		#region Properties
+		public string Username
+		{
+			get { return _Username; }
+			set 
+			{ 
+				_Username = value;
+				OnPropertyChanged("Username");
+			}
+		}
+		public int DefaultCategory
+		{
+			get { return _DefaultCategory; }
+			set 
+			{ 
+				_DefaultCategory = value;
+				OnPropertyChanged("DefaultCategory");
+			}
+		}
+		public string AllowComments
+		{
+			get { return _AllowComments; }
+			set 
+			{ 
+				_AllowComments = value;
+				OnPropertyChanged("AllowComments");
+			}
+		}
+		public string AllowEmbedding
+		{
+			get { return _AllowEmbedding; }
+			set 
+			{ 
+				_AllowEmbedding = value;
+				OnPropertyChanged("AllowEmbedding");
+			}
+		}
+		public string AllowRatings
+		{
+			get { return _AllowRatings; }
+			set 
+			{ 
+				_AllowRatings = value;
+				OnPropertyChanged("AllowRatings");
+			}
+		}
+		public string AllowResponses
+		{
+			get { return _AllowResponses; }
+			set 
+			{ 
+				_AllowResponses = value;
+				OnPropertyChanged("AllowResponses");
+			}
+		}
+		public string ApiAuthorizeUrl
+		{
+			get { return _ApiAuthorizeUrl; }
+			set 
+			{ 
+				_ApiAuthorizeUrl = value;
+				OnPropertyChanged("ApiAuthorizeUrl");
+			}
+		}
+		public string GoogleClientId
+		{
+			get { return _GoogleClientId; }
+			set 
+			{ 
+				_GoogleClientId = value;
+				OnPropertyChanged("GoogleClientId");
+			}
+		}
+		public string GoogleClientSecret
+		{
+			get { return _GoogleClientSecret; }
+			set 
+			{ 
+				_GoogleClientSecret = value;
+				OnPropertyChanged("GoogleClientSecret");
+			}
+		}
+		public string GoogleTokenData
+		{
+			get { return _GoogleTokenData; }
+			set 
+			{ 
+				_GoogleTokenData = value;
+				OnPropertyChanged("GoogleTokenData");
+			}
+		}
+		public bool? AssumeSuccess
+		{
+			get { return _AssumeSuccess; }
+			set 
+			{ 
+				_AssumeSuccess = value;
+				OnPropertyChanged("AssumeSuccess");
+			}
+		}
+		public string PrivacyStatus
+		{
+			get { return _PrivacyStatus; }
+			set 
+			{ 
+				_PrivacyStatus = value;
+				OnPropertyChanged("PrivacyStatus");
+			}
+		}
+		#endregion
+
+		#region CTor
+		public YoutubeApiDistributionProfile()
+		{
+		}
+
+		public YoutubeApiDistributionProfile(XmlElement node) : base(node)
+		{
+			foreach (XmlElement propertyNode in node.ChildNodes)
+			{
+				string txt = propertyNode.InnerText;
+				switch (propertyNode.Name)
+				{
+					case "username":
+						this._Username = txt;
+						continue;
+					case "defaultCategory":
+						this._DefaultCategory = ParseInt(txt);
+						continue;
+					case "allowComments":
+						this._AllowComments = txt;
+						continue;
+					case "allowEmbedding":
+						this._AllowEmbedding = txt;
+						continue;
+					case "allowRatings":
+						this._AllowRatings = txt;
+						continue;
+					case "allowResponses":
+						this._AllowResponses = txt;
+						continue;
+					case "apiAuthorizeUrl":
+						this._ApiAuthorizeUrl = txt;
+						continue;
+					case "googleClientId":
+						this._GoogleClientId = txt;
+						continue;
+					case "googleClientSecret":
+						this._GoogleClientSecret = txt;
+						continue;
+					case "googleTokenData":
+						this._GoogleTokenData = txt;
+						continue;
+					case "assumeSuccess":
+						this._AssumeSuccess = ParseBool(txt);
+						continue;
+					case "privacyStatus":
+						this._PrivacyStatus = txt;
+						continue;
+				}
+			}
+		}
+		#endregion
+
+		#region Methods
+		public override Params ToParams(bool includeObjectType = true)
+		{
+			Params kparams = base.ToParams(includeObjectType);
+			if (includeObjectType)
+				kparams.AddReplace("objectType", "KalturaYoutubeApiDistributionProfile");
+			kparams.AddIfNotNull("username", this._Username);
+			kparams.AddIfNotNull("defaultCategory", this._DefaultCategory);
+			kparams.AddIfNotNull("allowComments", this._AllowComments);
+			kparams.AddIfNotNull("allowEmbedding", this._AllowEmbedding);
+			kparams.AddIfNotNull("allowRatings", this._AllowRatings);
+			kparams.AddIfNotNull("allowResponses", this._AllowResponses);
+			kparams.AddIfNotNull("apiAuthorizeUrl", this._ApiAuthorizeUrl);
+			kparams.AddIfNotNull("googleClientId", this._GoogleClientId);
+			kparams.AddIfNotNull("googleClientSecret", this._GoogleClientSecret);
+			kparams.AddIfNotNull("googleTokenData", this._GoogleTokenData);
+			kparams.AddIfNotNull("assumeSuccess", this._AssumeSuccess);
+			kparams.AddIfNotNull("privacyStatus", this._PrivacyStatus);
+			return kparams;
+		}
+		protected override string getPropertyName(string apiName)
+		{
+			switch(apiName)
+			{
+				case USERNAME:
+					return "Username";
+				case DEFAULT_CATEGORY:
+					return "DefaultCategory";
+				case ALLOW_COMMENTS:
+					return "AllowComments";
+				case ALLOW_EMBEDDING:
+					return "AllowEmbedding";
+				case ALLOW_RATINGS:
+					return "AllowRatings";
+				case ALLOW_RESPONSES:
+					return "AllowResponses";
+				case API_AUTHORIZE_URL:
+					return "ApiAuthorizeUrl";
+				case GOOGLE_CLIENT_ID:
+					return "GoogleClientId";
+				case GOOGLE_CLIENT_SECRET:
+					return "GoogleClientSecret";
+				case GOOGLE_TOKEN_DATA:
+					return "GoogleTokenData";
+				case ASSUME_SUCCESS:
+					return "AssumeSuccess";
+				case PRIVACY_STATUS:
+					return "PrivacyStatus";
+				default:
+					return base.getPropertyName(apiName);
+			}
+		}
+		#endregion
+	}
+}
+

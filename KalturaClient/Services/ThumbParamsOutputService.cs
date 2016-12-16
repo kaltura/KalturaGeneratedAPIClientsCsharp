@@ -29,48 +29,122 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaThumbParamsOutputService : KalturaServiceBase
+	public class ThumbParamsOutputGetRequestBuilder : RequestBuilder<ThumbParamsOutput>
 	{
-	public KalturaThumbParamsOutputService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public ThumbParamsOutputGetRequestBuilder()
+			: base("thumbparamsoutput", "get")
 		{
 		}
 
-		public KalturaThumbParamsOutput Get(int id)
+		public ThumbParamsOutputGetRequestBuilder(int id)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("thumbparamsoutput", "get", "KalturaThumbParamsOutput", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaThumbParamsOutput)KalturaObjectFactory.Create(result, "KalturaThumbParamsOutput");
+			this.Id = id;
 		}
 
-		public KalturaThumbParamsOutputListResponse List()
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.List(null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
 		}
 
-		public KalturaThumbParamsOutputListResponse List(KalturaThumbParamsOutputFilter filter)
+		public override Files getFiles()
 		{
-			return this.List(filter, null);
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaThumbParamsOutputListResponse List(KalturaThumbParamsOutputFilter filter, KalturaFilterPager pager)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("thumbparamsoutput", "list", "KalturaThumbParamsOutputListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaThumbParamsOutputListResponse)KalturaObjectFactory.Create(result, "KalturaThumbParamsOutputListResponse");
+			return ObjectFactory.Create<ThumbParamsOutput>(result);
+		}
+	}
+
+	public class ThumbParamsOutputListRequestBuilder : RequestBuilder<ListResponse<ThumbParamsOutput>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public ThumbParamsOutputFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public ThumbParamsOutputListRequestBuilder()
+			: base("thumbparamsoutput", "list")
+		{
+		}
+
+		public ThumbParamsOutputListRequestBuilder(ThumbParamsOutputFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<ThumbParamsOutput>>(result);
+		}
+	}
+
+
+	public class ThumbParamsOutputService
+	{
+		private ThumbParamsOutputService()
+		{
+		}
+
+		public static ThumbParamsOutputGetRequestBuilder Get(int id)
+		{
+			return new ThumbParamsOutputGetRequestBuilder(id);
+		}
+
+		public static ThumbParamsOutputListRequestBuilder List(ThumbParamsOutputFilter filter = null, FilterPager pager = null)
+		{
+			return new ThumbParamsOutputListRequestBuilder(filter, pager);
 		}
 	}
 }

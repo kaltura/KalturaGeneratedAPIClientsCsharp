@@ -29,37 +29,74 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaDistributionProviderService : KalturaServiceBase
+	public class DistributionProviderListRequestBuilder : RequestBuilder<ListResponse<DistributionProvider>>
 	{
-	public KalturaDistributionProviderService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public DistributionProviderFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public DistributionProviderListRequestBuilder()
+			: base("contentdistribution_distributionprovider", "list")
 		{
 		}
 
-		public KalturaDistributionProviderListResponse List()
+		public DistributionProviderListRequestBuilder(DistributionProviderFilter filter, FilterPager pager)
+			: this()
 		{
-			return this.List(null);
+			this.Filter = filter;
+			this.Pager = pager;
 		}
 
-		public KalturaDistributionProviderListResponse List(KalturaDistributionProviderFilter filter)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.List(filter, null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
 		}
 
-		public KalturaDistributionProviderListResponse List(KalturaDistributionProviderFilter filter, KalturaFilterPager pager)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("contentdistribution_distributionprovider", "list", "KalturaDistributionProviderListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaDistributionProviderListResponse)KalturaObjectFactory.Create(result, "KalturaDistributionProviderListResponse");
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<DistributionProvider>>(result);
+		}
+	}
+
+
+	public class DistributionProviderService
+	{
+		private DistributionProviderService()
+		{
+		}
+
+		public static DistributionProviderListRequestBuilder List(DistributionProviderFilter filter = null, FilterPager pager = null)
+		{
+			return new DistributionProviderListRequestBuilder(filter, pager);
 		}
 	}
 }

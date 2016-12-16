@@ -29,48 +29,122 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaFlavorParamsOutputService : KalturaServiceBase
+	public class FlavorParamsOutputGetRequestBuilder : RequestBuilder<FlavorParamsOutput>
 	{
-	public KalturaFlavorParamsOutputService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public FlavorParamsOutputGetRequestBuilder()
+			: base("flavorparamsoutput", "get")
 		{
 		}
 
-		public KalturaFlavorParamsOutput Get(int id)
+		public FlavorParamsOutputGetRequestBuilder(int id)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("flavorparamsoutput", "get", "KalturaFlavorParamsOutput", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaFlavorParamsOutput)KalturaObjectFactory.Create(result, "KalturaFlavorParamsOutput");
+			this.Id = id;
 		}
 
-		public KalturaFlavorParamsOutputListResponse List()
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.List(null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
 		}
 
-		public KalturaFlavorParamsOutputListResponse List(KalturaFlavorParamsOutputFilter filter)
+		public override Files getFiles()
 		{
-			return this.List(filter, null);
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaFlavorParamsOutputListResponse List(KalturaFlavorParamsOutputFilter filter, KalturaFilterPager pager)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("flavorparamsoutput", "list", "KalturaFlavorParamsOutputListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaFlavorParamsOutputListResponse)KalturaObjectFactory.Create(result, "KalturaFlavorParamsOutputListResponse");
+			return ObjectFactory.Create<FlavorParamsOutput>(result);
+		}
+	}
+
+	public class FlavorParamsOutputListRequestBuilder : RequestBuilder<ListResponse<FlavorParamsOutput>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public FlavorParamsOutputFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public FlavorParamsOutputListRequestBuilder()
+			: base("flavorparamsoutput", "list")
+		{
+		}
+
+		public FlavorParamsOutputListRequestBuilder(FlavorParamsOutputFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<FlavorParamsOutput>>(result);
+		}
+	}
+
+
+	public class FlavorParamsOutputService
+	{
+		private FlavorParamsOutputService()
+		{
+		}
+
+		public static FlavorParamsOutputGetRequestBuilder Get(int id)
+		{
+			return new FlavorParamsOutputGetRequestBuilder(id);
+		}
+
+		public static FlavorParamsOutputListRequestBuilder List(FlavorParamsOutputFilter filter = null, FilterPager pager = null)
+		{
+			return new FlavorParamsOutputListRequestBuilder(filter, pager);
 		}
 	}
 }

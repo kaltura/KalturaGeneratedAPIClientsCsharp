@@ -29,175 +29,609 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaMixingService : KalturaServiceBase
+	public class MixingAddRequestBuilder : RequestBuilder<MixEntry>
 	{
-	public KalturaMixingService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string MIX_ENTRY = "mixEntry";
+		#endregion
+
+		public MixEntry MixEntry
+		{
+			set;
+			get;
+		}
+
+		public MixingAddRequestBuilder()
+			: base("mixing", "add")
 		{
 		}
 
-		public KalturaMixEntry Add(KalturaMixEntry mixEntry)
+		public MixingAddRequestBuilder(MixEntry mixEntry)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("mixEntry", mixEntry);
-			_Client.QueueServiceCall("mixing", "add", "KalturaMixEntry", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaMixEntry)KalturaObjectFactory.Create(result, "KalturaMixEntry");
+			this.MixEntry = mixEntry;
 		}
 
-		public KalturaMixEntry Get(string entryId)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.Get(entryId, -1);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("mixEntry"))
+				kparams.AddIfNotNull("mixEntry", MixEntry);
+			return kparams;
 		}
 
-		public KalturaMixEntry Get(string entryId, int version)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("entryId", entryId);
-			kparams.AddIfNotNull("version", version);
-			_Client.QueueServiceCall("mixing", "get", "KalturaMixEntry", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaMixEntry)KalturaObjectFactory.Create(result, "KalturaMixEntry");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaMixEntry Update(string entryId, KalturaMixEntry mixEntry)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("entryId", entryId);
-			kparams.AddIfNotNull("mixEntry", mixEntry);
-			_Client.QueueServiceCall("mixing", "update", "KalturaMixEntry", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaMixEntry)KalturaObjectFactory.Create(result, "KalturaMixEntry");
+			return ObjectFactory.Create<MixEntry>(result);
+		}
+	}
+
+	public class MixingGetRequestBuilder : RequestBuilder<MixEntry>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string VERSION = "version";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public int Version
+		{
+			set;
+			get;
 		}
 
-		public void Delete(string entryId)
+		public MixingGetRequestBuilder()
+			: base("mixing", "get")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("entryId", entryId);
-			_Client.QueueServiceCall("mixing", "delete", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
 		}
 
-		public KalturaMixListResponse List()
+		public MixingGetRequestBuilder(string entryId, int version)
+			: this()
 		{
-			return this.List(null);
+			this.EntryId = entryId;
+			this.Version = version;
 		}
 
-		public KalturaMixListResponse List(KalturaMixEntryFilter filter)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.List(filter, null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("version"))
+				kparams.AddIfNotNull("version", Version);
+			return kparams;
 		}
 
-		public KalturaMixListResponse List(KalturaMixEntryFilter filter, KalturaFilterPager pager)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("mixing", "list", "KalturaMixListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaMixListResponse)KalturaObjectFactory.Create(result, "KalturaMixListResponse");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public int Count()
+		public override object Deserialize(XmlElement result)
 		{
-			return this.Count(null);
+			return ObjectFactory.Create<MixEntry>(result);
+		}
+	}
+
+	public class MixingUpdateRequestBuilder : RequestBuilder<MixEntry>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string MIX_ENTRY = "mixEntry";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public MixEntry MixEntry
+		{
+			set;
+			get;
 		}
 
-		public int Count(KalturaMediaEntryFilter filter)
+		public MixingUpdateRequestBuilder()
+			: base("mixing", "update")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			_Client.QueueServiceCall("mixing", "count", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return 0;
-			XmlElement result = _Client.DoQueue();
+		}
+
+		public MixingUpdateRequestBuilder(string entryId, MixEntry mixEntry)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.MixEntry = mixEntry;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("mixEntry"))
+				kparams.AddIfNotNull("mixEntry", MixEntry);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<MixEntry>(result);
+		}
+	}
+
+	public class MixingDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+
+		public MixingDeleteRequestBuilder()
+			: base("mixing", "delete")
+		{
+		}
+
+		public MixingDeleteRequestBuilder(string entryId)
+			: this()
+		{
+			this.EntryId = entryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class MixingListRequestBuilder : RequestBuilder<ListResponse<MixEntry>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public MixEntryFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public MixingListRequestBuilder()
+			: base("mixing", "list")
+		{
+		}
+
+		public MixingListRequestBuilder(MixEntryFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<MixEntry>>(result);
+		}
+	}
+
+	public class MixingCountRequestBuilder : RequestBuilder<int>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		#endregion
+
+		public MediaEntryFilter Filter
+		{
+			set;
+			get;
+		}
+
+		public MixingCountRequestBuilder()
+			: base("mixing", "count")
+		{
+		}
+
+		public MixingCountRequestBuilder(MediaEntryFilter filter)
+			: this()
+		{
+			this.Filter = filter;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			return int.Parse(result.InnerText);
 		}
+	}
 
-		public KalturaMixEntry Clone(string entryId)
+	public class MixingCloneRequestBuilder : RequestBuilder<MixEntry>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		#endregion
+
+		public string EntryId
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("entryId", entryId);
-			_Client.QueueServiceCall("mixing", "clone", "KalturaMixEntry", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaMixEntry)KalturaObjectFactory.Create(result, "KalturaMixEntry");
+			set;
+			get;
 		}
 
-		public KalturaMixEntry AppendMediaEntry(string mixEntryId, string mediaEntryId)
+		public MixingCloneRequestBuilder()
+			: base("mixing", "clone")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("mixEntryId", mixEntryId);
-			kparams.AddIfNotNull("mediaEntryId", mediaEntryId);
-			_Client.QueueServiceCall("mixing", "appendMediaEntry", "KalturaMixEntry", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaMixEntry)KalturaObjectFactory.Create(result, "KalturaMixEntry");
 		}
 
-		public IList<KalturaMixEntry> GetMixesByMediaId(string mediaEntryId)
+		public MixingCloneRequestBuilder(string entryId)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("mediaEntryId", mediaEntryId);
-			_Client.QueueServiceCall("mixing", "getMixesByMediaId", "KalturaMixEntry", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			IList<KalturaMixEntry> list = new List<KalturaMixEntry>();
+			this.EntryId = entryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<MixEntry>(result);
+		}
+	}
+
+	public class MixingAppendMediaEntryRequestBuilder : RequestBuilder<MixEntry>
+	{
+		#region Constants
+		public const string MIX_ENTRY_ID = "mixEntryId";
+		public const string MEDIA_ENTRY_ID = "mediaEntryId";
+		#endregion
+
+		public string MixEntryId
+		{
+			set;
+			get;
+		}
+		public string MediaEntryId
+		{
+			set;
+			get;
+		}
+
+		public MixingAppendMediaEntryRequestBuilder()
+			: base("mixing", "appendMediaEntry")
+		{
+		}
+
+		public MixingAppendMediaEntryRequestBuilder(string mixEntryId, string mediaEntryId)
+			: this()
+		{
+			this.MixEntryId = mixEntryId;
+			this.MediaEntryId = mediaEntryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("mixEntryId"))
+				kparams.AddIfNotNull("mixEntryId", MixEntryId);
+			if (!isMapped("mediaEntryId"))
+				kparams.AddIfNotNull("mediaEntryId", MediaEntryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<MixEntry>(result);
+		}
+	}
+
+	public class MixingGetMixesByMediaIdRequestBuilder : RequestBuilder<IList<MixEntry>>
+	{
+		#region Constants
+		public const string MEDIA_ENTRY_ID = "mediaEntryId";
+		#endregion
+
+		public string MediaEntryId
+		{
+			set;
+			get;
+		}
+
+		public MixingGetMixesByMediaIdRequestBuilder()
+			: base("mixing", "getMixesByMediaId")
+		{
+		}
+
+		public MixingGetMixesByMediaIdRequestBuilder(string mediaEntryId)
+			: this()
+		{
+			this.MediaEntryId = mediaEntryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("mediaEntryId"))
+				kparams.AddIfNotNull("mediaEntryId", MediaEntryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			IList<MixEntry> list = new List<MixEntry>();
 			foreach(XmlElement node in result.ChildNodes)
 			{
-				list.Add((KalturaMixEntry)KalturaObjectFactory.Create(node, "KalturaMixEntry"));
+				list.Add(ObjectFactory.Create<MixEntry>(node));
 			}
 			return list;
 		}
+	}
 
-		public IList<KalturaMediaEntry> GetReadyMediaEntries(string mixId)
+	public class MixingGetReadyMediaEntriesRequestBuilder : RequestBuilder<IList<MediaEntry>>
+	{
+		#region Constants
+		public const string MIX_ID = "mixId";
+		public const string VERSION = "version";
+		#endregion
+
+		public string MixId
 		{
-			return this.GetReadyMediaEntries(mixId, -1);
+			set;
+			get;
+		}
+		public int Version
+		{
+			set;
+			get;
 		}
 
-		public IList<KalturaMediaEntry> GetReadyMediaEntries(string mixId, int version)
+		public MixingGetReadyMediaEntriesRequestBuilder()
+			: base("mixing", "getReadyMediaEntries")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("mixId", mixId);
-			kparams.AddIfNotNull("version", version);
-			_Client.QueueServiceCall("mixing", "getReadyMediaEntries", "KalturaMediaEntry", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			IList<KalturaMediaEntry> list = new List<KalturaMediaEntry>();
+		}
+
+		public MixingGetReadyMediaEntriesRequestBuilder(string mixId, int version)
+			: this()
+		{
+			this.MixId = mixId;
+			this.Version = version;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("mixId"))
+				kparams.AddIfNotNull("mixId", MixId);
+			if (!isMapped("version"))
+				kparams.AddIfNotNull("version", Version);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			IList<MediaEntry> list = new List<MediaEntry>();
 			foreach(XmlElement node in result.ChildNodes)
 			{
-				list.Add((KalturaMediaEntry)KalturaObjectFactory.Create(node, "KalturaMediaEntry"));
+				list.Add(ObjectFactory.Create<MediaEntry>(node));
 			}
 			return list;
 		}
+	}
 
-		public void AnonymousRank(string entryId, int rank)
+	public class MixingAnonymousRankRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string RANK = "rank";
+		#endregion
+
+		public string EntryId
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("entryId", entryId);
-			kparams.AddIfNotNull("rank", rank);
-			_Client.QueueServiceCall("mixing", "anonymousRank", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			set;
+			get;
+		}
+		public int Rank
+		{
+			set;
+			get;
+		}
+
+		public MixingAnonymousRankRequestBuilder()
+			: base("mixing", "anonymousRank")
+		{
+		}
+
+		public MixingAnonymousRankRequestBuilder(string entryId, int rank)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.Rank = rank;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("rank"))
+				kparams.AddIfNotNull("rank", Rank);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+
+	public class MixingService
+	{
+		private MixingService()
+		{
+		}
+
+		public static MixingAddRequestBuilder Add(MixEntry mixEntry)
+		{
+			return new MixingAddRequestBuilder(mixEntry);
+		}
+
+		public static MixingGetRequestBuilder Get(string entryId, int version = -1)
+		{
+			return new MixingGetRequestBuilder(entryId, version);
+		}
+
+		public static MixingUpdateRequestBuilder Update(string entryId, MixEntry mixEntry)
+		{
+			return new MixingUpdateRequestBuilder(entryId, mixEntry);
+		}
+
+		public static MixingDeleteRequestBuilder Delete(string entryId)
+		{
+			return new MixingDeleteRequestBuilder(entryId);
+		}
+
+		public static MixingListRequestBuilder List(MixEntryFilter filter = null, FilterPager pager = null)
+		{
+			return new MixingListRequestBuilder(filter, pager);
+		}
+
+		public static MixingCountRequestBuilder Count(MediaEntryFilter filter = null)
+		{
+			return new MixingCountRequestBuilder(filter);
+		}
+
+		public static MixingCloneRequestBuilder Clone(string entryId)
+		{
+			return new MixingCloneRequestBuilder(entryId);
+		}
+
+		public static MixingAppendMediaEntryRequestBuilder AppendMediaEntry(string mixEntryId, string mediaEntryId)
+		{
+			return new MixingAppendMediaEntryRequestBuilder(mixEntryId, mediaEntryId);
+		}
+
+		public static MixingGetMixesByMediaIdRequestBuilder GetMixesByMediaId(string mediaEntryId)
+		{
+			return new MixingGetMixesByMediaIdRequestBuilder(mediaEntryId);
+		}
+
+		public static MixingGetReadyMediaEntriesRequestBuilder GetReadyMediaEntries(string mixId, int version = -1)
+		{
+			return new MixingGetReadyMediaEntriesRequestBuilder(mixId, version);
+		}
+
+		public static MixingAnonymousRankRequestBuilder AnonymousRank(string entryId, int rank)
+		{
+			return new MixingAnonymousRankRequestBuilder(entryId, rank);
 		}
 	}
 }

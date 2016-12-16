@@ -29,38 +29,131 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaIntegrationService : KalturaServiceBase
+	public class IntegrationDispatchRequestBuilder : RequestBuilder<int>
 	{
-	public KalturaIntegrationService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string DATA = "data";
+		public const string OBJECT_TYPE = "objectType";
+		public const string OBJECT_ID = "objectId";
+		#endregion
+
+		public IntegrationJobData Data
+		{
+			set;
+			get;
+		}
+		public BatchJobObjectType ObjectType
+		{
+			set;
+			get;
+		}
+		public string ObjectId
+		{
+			set;
+			get;
+		}
+
+		public IntegrationDispatchRequestBuilder()
+			: base("integration_integration", "dispatch")
 		{
 		}
 
-		public int Dispatch(KalturaIntegrationJobData data, KalturaBatchJobObjectType objectType, string objectId)
+		public IntegrationDispatchRequestBuilder(IntegrationJobData data, BatchJobObjectType objectType, string objectId)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("data", data);
-			kparams.AddIfNotNull("objectType", objectType);
-			kparams.AddIfNotNull("objectId", objectId);
-			_Client.QueueServiceCall("integration_integration", "dispatch", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return 0;
-			XmlElement result = _Client.DoQueue();
+			this.Data = data;
+			this.ObjectType = objectType;
+			this.ObjectId = objectId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("data"))
+				kparams.AddIfNotNull("data", Data);
+			if (!isMapped("objectType"))
+				kparams.AddIfNotNull("objectType", ObjectType);
+			if (!isMapped("objectId"))
+				kparams.AddIfNotNull("objectId", ObjectId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			return int.Parse(result.InnerText);
 		}
+	}
 
-		public void Notify(int id)
+	public class IntegrationNotifyRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("integration_integration", "notify", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			set;
+			get;
+		}
+
+		public IntegrationNotifyRequestBuilder()
+			: base("integration_integration", "notify")
+		{
+		}
+
+		public IntegrationNotifyRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+
+	public class IntegrationService
+	{
+		private IntegrationService()
+		{
+		}
+
+		public static IntegrationDispatchRequestBuilder Dispatch(IntegrationJobData data, BatchJobObjectType objectType, string objectId)
+		{
+			return new IntegrationDispatchRequestBuilder(data, objectType, objectId);
+		}
+
+		public static IntegrationNotifyRequestBuilder Notify(int id)
+		{
+			return new IntegrationNotifyRequestBuilder(id);
 		}
 	}
 }

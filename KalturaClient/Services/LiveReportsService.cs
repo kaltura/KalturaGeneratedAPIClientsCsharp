@@ -29,89 +29,193 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaLiveReportsService : KalturaServiceBase
+	public class LiveReportsGetEventsRequestBuilder : RequestBuilder<IList<ReportGraph>>
 	{
-	public KalturaLiveReportsService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string REPORT_TYPE = "reportType";
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public LiveReportType ReportType
+		{
+			set;
+			get;
+		}
+		public LiveReportInputFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public LiveReportsGetEventsRequestBuilder()
+			: base("livereports", "getEvents")
 		{
 		}
 
-		public IList<KalturaReportGraph> GetEvents(KalturaLiveReportType reportType)
+		public LiveReportsGetEventsRequestBuilder(LiveReportType reportType, LiveReportInputFilter filter, FilterPager pager)
+			: this()
 		{
-			return this.GetEvents(reportType, null);
+			this.ReportType = reportType;
+			this.Filter = filter;
+			this.Pager = pager;
 		}
 
-		public IList<KalturaReportGraph> GetEvents(KalturaLiveReportType reportType, KalturaLiveReportInputFilter filter)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.GetEvents(reportType, filter, null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("reportType"))
+				kparams.AddIfNotNull("reportType", ReportType);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
 		}
 
-		public IList<KalturaReportGraph> GetEvents(KalturaLiveReportType reportType, KalturaLiveReportInputFilter filter, KalturaFilterPager pager)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("reportType", reportType);
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("livereports", "getEvents", "KalturaReportGraph", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			IList<KalturaReportGraph> list = new List<KalturaReportGraph>();
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			IList<ReportGraph> list = new List<ReportGraph>();
 			foreach(XmlElement node in result.ChildNodes)
 			{
-				list.Add((KalturaReportGraph)KalturaObjectFactory.Create(node, "KalturaReportGraph"));
+				list.Add(ObjectFactory.Create<ReportGraph>(node));
 			}
 			return list;
 		}
+	}
 
-		public KalturaLiveStatsListResponse GetReport(KalturaLiveReportType reportType)
+	public class LiveReportsExportToCsvRequestBuilder : RequestBuilder<LiveReportExportResponse>
+	{
+		#region Constants
+		public const string REPORT_TYPE = "reportType";
+		public const string PARAMS = "params";
+		#endregion
+
+		public LiveReportExportType ReportType
 		{
-			return this.GetReport(reportType, null);
+			set;
+			get;
+		}
+		public LiveReportExportParams Params_
+		{
+			set;
+			get;
 		}
 
-		public KalturaLiveStatsListResponse GetReport(KalturaLiveReportType reportType, KalturaLiveReportInputFilter filter)
+		public LiveReportsExportToCsvRequestBuilder()
+			: base("livereports", "exportToCsv")
 		{
-			return this.GetReport(reportType, filter, null);
 		}
 
-		public KalturaLiveStatsListResponse GetReport(KalturaLiveReportType reportType, KalturaLiveReportInputFilter filter, KalturaFilterPager pager)
+		public LiveReportsExportToCsvRequestBuilder(LiveReportExportType reportType, LiveReportExportParams params_)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("reportType", reportType);
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("livereports", "getReport", "KalturaLiveStatsListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaLiveStatsListResponse)KalturaObjectFactory.Create(result, "KalturaLiveStatsListResponse");
+			this.ReportType = reportType;
+			this.Params_ = params_;
 		}
 
-		public KalturaLiveReportExportResponse ExportToCsv(KalturaLiveReportExportType reportType, KalturaLiveReportExportParams params_)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("reportType", reportType);
-			kparams.AddIfNotNull("params", params_);
-			_Client.QueueServiceCall("livereports", "exportToCsv", "KalturaLiveReportExportResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaLiveReportExportResponse)KalturaObjectFactory.Create(result, "KalturaLiveReportExportResponse");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("reportType"))
+				kparams.AddIfNotNull("reportType", ReportType);
+			if (!isMapped("params_"))
+				kparams.AddIfNotNull("params_", Params_);
+			return kparams;
 		}
 
-		public string ServeReport(string id)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("livereports", "serveReport", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<LiveReportExportResponse>(result);
+		}
+	}
+
+	public class LiveReportsServeReportRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+
+		public LiveReportsServeReportRequestBuilder()
+			: base("livereports", "serveReport")
+		{
+		}
+
+		public LiveReportsServeReportRequestBuilder(string id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			return result.InnerText;
+		}
+	}
+
+
+	public class LiveReportsService
+	{
+		private LiveReportsService()
+		{
+		}
+
+		public static LiveReportsGetEventsRequestBuilder GetEvents(LiveReportType reportType, LiveReportInputFilter filter = null, FilterPager pager = null)
+		{
+			return new LiveReportsGetEventsRequestBuilder(reportType, filter, pager);
+		}
+
+		public static LiveReportsExportToCsvRequestBuilder ExportToCsv(LiveReportExportType reportType, LiveReportExportParams params_)
+		{
+			return new LiveReportsExportToCsvRequestBuilder(reportType, params_);
+		}
+
+		public static LiveReportsServeReportRequestBuilder ServeReport(string id)
+		{
+			return new LiveReportsServeReportRequestBuilder(id);
 		}
 	}
 }

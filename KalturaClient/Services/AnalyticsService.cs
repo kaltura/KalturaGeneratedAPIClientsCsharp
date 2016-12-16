@@ -29,32 +29,74 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaAnalyticsService : KalturaServiceBase
+	public class AnalyticsQueryRequestBuilder : RequestBuilder<ReportResponse>
 	{
-	public KalturaAnalyticsService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public AnalyticsFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public AnalyticsQueryRequestBuilder()
+			: base("analytics", "query")
 		{
 		}
 
-		public KalturaReportResponse Query(KalturaAnalyticsFilter filter)
+		public AnalyticsQueryRequestBuilder(AnalyticsFilter filter, FilterPager pager)
+			: this()
 		{
-			return this.Query(filter, null);
+			this.Filter = filter;
+			this.Pager = pager;
 		}
 
-		public KalturaReportResponse Query(KalturaAnalyticsFilter filter, KalturaFilterPager pager)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("analytics", "query", "KalturaReportResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaReportResponse)KalturaObjectFactory.Create(result, "KalturaReportResponse");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ReportResponse>(result);
+		}
+	}
+
+
+	public class AnalyticsService
+	{
+		private AnalyticsService()
+		{
+		}
+
+		public static AnalyticsQueryRequestBuilder Query(AnalyticsFilter filter, FilterPager pager = null)
+		{
+			return new AnalyticsQueryRequestBuilder(filter, pager);
 		}
 	}
 }

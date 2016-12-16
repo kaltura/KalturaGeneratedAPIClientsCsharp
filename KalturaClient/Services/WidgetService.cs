@@ -29,82 +29,275 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaWidgetService : KalturaServiceBase
+	public class WidgetAddRequestBuilder : RequestBuilder<Widget>
 	{
-	public KalturaWidgetService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string WIDGET = "widget";
+		#endregion
+
+		public Widget Widget
+		{
+			set;
+			get;
+		}
+
+		public WidgetAddRequestBuilder()
+			: base("widget", "add")
 		{
 		}
 
-		public KalturaWidget Add(KalturaWidget widget)
+		public WidgetAddRequestBuilder(Widget widget)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("widget", widget);
-			_Client.QueueServiceCall("widget", "add", "KalturaWidget", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaWidget)KalturaObjectFactory.Create(result, "KalturaWidget");
+			this.Widget = widget;
 		}
 
-		public KalturaWidget Update(string id, KalturaWidget widget)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("widget", widget);
-			_Client.QueueServiceCall("widget", "update", "KalturaWidget", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaWidget)KalturaObjectFactory.Create(result, "KalturaWidget");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("widget"))
+				kparams.AddIfNotNull("widget", Widget);
+			return kparams;
 		}
 
-		public KalturaWidget Get(string id)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("widget", "get", "KalturaWidget", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaWidget)KalturaObjectFactory.Create(result, "KalturaWidget");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaWidget Clone(KalturaWidget widget)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("widget", widget);
-			_Client.QueueServiceCall("widget", "clone", "KalturaWidget", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaWidget)KalturaObjectFactory.Create(result, "KalturaWidget");
+			return ObjectFactory.Create<Widget>(result);
+		}
+	}
+
+	public class WidgetUpdateRequestBuilder : RequestBuilder<Widget>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string WIDGET = "widget";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public Widget Widget
+		{
+			set;
+			get;
 		}
 
-		public KalturaWidgetListResponse List()
+		public WidgetUpdateRequestBuilder()
+			: base("widget", "update")
 		{
-			return this.List(null);
 		}
 
-		public KalturaWidgetListResponse List(KalturaWidgetFilter filter)
+		public WidgetUpdateRequestBuilder(string id, Widget widget)
+			: this()
 		{
-			return this.List(filter, null);
+			this.Id = id;
+			this.Widget = widget;
 		}
 
-		public KalturaWidgetListResponse List(KalturaWidgetFilter filter, KalturaFilterPager pager)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("widget", "list", "KalturaWidgetListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaWidgetListResponse)KalturaObjectFactory.Create(result, "KalturaWidgetListResponse");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("widget"))
+				kparams.AddIfNotNull("widget", Widget);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<Widget>(result);
+		}
+	}
+
+	public class WidgetGetRequestBuilder : RequestBuilder<Widget>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+
+		public WidgetGetRequestBuilder()
+			: base("widget", "get")
+		{
+		}
+
+		public WidgetGetRequestBuilder(string id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<Widget>(result);
+		}
+	}
+
+	public class WidgetCloneRequestBuilder : RequestBuilder<Widget>
+	{
+		#region Constants
+		public const string WIDGET = "widget";
+		#endregion
+
+		public Widget Widget
+		{
+			set;
+			get;
+		}
+
+		public WidgetCloneRequestBuilder()
+			: base("widget", "clone")
+		{
+		}
+
+		public WidgetCloneRequestBuilder(Widget widget)
+			: this()
+		{
+			this.Widget = widget;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("widget"))
+				kparams.AddIfNotNull("widget", Widget);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<Widget>(result);
+		}
+	}
+
+	public class WidgetListRequestBuilder : RequestBuilder<ListResponse<Widget>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public WidgetFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public WidgetListRequestBuilder()
+			: base("widget", "list")
+		{
+		}
+
+		public WidgetListRequestBuilder(WidgetFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<Widget>>(result);
+		}
+	}
+
+
+	public class WidgetService
+	{
+		private WidgetService()
+		{
+		}
+
+		public static WidgetAddRequestBuilder Add(Widget widget)
+		{
+			return new WidgetAddRequestBuilder(widget);
+		}
+
+		public static WidgetUpdateRequestBuilder Update(string id, Widget widget)
+		{
+			return new WidgetUpdateRequestBuilder(id, widget);
+		}
+
+		public static WidgetGetRequestBuilder Get(string id)
+		{
+			return new WidgetGetRequestBuilder(id);
+		}
+
+		public static WidgetCloneRequestBuilder Clone(Widget widget)
+		{
+			return new WidgetCloneRequestBuilder(widget);
+		}
+
+		public static WidgetListRequestBuilder List(WidgetFilter filter = null, FilterPager pager = null)
+		{
+			return new WidgetListRequestBuilder(filter, pager);
 		}
 	}
 }

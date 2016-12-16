@@ -29,99 +29,332 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaVirusScanProfileService : KalturaServiceBase
+	public class VirusScanProfileListRequestBuilder : RequestBuilder<ListResponse<VirusScanProfile>>
 	{
-	public KalturaVirusScanProfileService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public VirusScanProfileFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public VirusScanProfileListRequestBuilder()
+			: base("virusscan_virusscanprofile", "list")
 		{
 		}
 
-		public KalturaVirusScanProfileListResponse List()
+		public VirusScanProfileListRequestBuilder(VirusScanProfileFilter filter, FilterPager pager)
+			: this()
 		{
-			return this.List(null);
+			this.Filter = filter;
+			this.Pager = pager;
 		}
 
-		public KalturaVirusScanProfileListResponse List(KalturaVirusScanProfileFilter filter)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.List(filter, null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
 		}
 
-		public KalturaVirusScanProfileListResponse List(KalturaVirusScanProfileFilter filter, KalturaFilterPager pager)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("virusscan_virusscanprofile", "list", "KalturaVirusScanProfileListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaVirusScanProfileListResponse)KalturaObjectFactory.Create(result, "KalturaVirusScanProfileListResponse");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaVirusScanProfile Add(KalturaVirusScanProfile virusScanProfile)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("virusScanProfile", virusScanProfile);
-			_Client.QueueServiceCall("virusscan_virusscanprofile", "add", "KalturaVirusScanProfile", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaVirusScanProfile)KalturaObjectFactory.Create(result, "KalturaVirusScanProfile");
+			return ObjectFactory.Create<ListResponse<VirusScanProfile>>(result);
+		}
+	}
+
+	public class VirusScanProfileAddRequestBuilder : RequestBuilder<VirusScanProfile>
+	{
+		#region Constants
+		public const string VIRUS_SCAN_PROFILE = "virusScanProfile";
+		#endregion
+
+		public VirusScanProfile VirusScanProfile
+		{
+			set;
+			get;
 		}
 
-		public KalturaVirusScanProfile Get(int virusScanProfileId)
+		public VirusScanProfileAddRequestBuilder()
+			: base("virusscan_virusscanprofile", "add")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("virusScanProfileId", virusScanProfileId);
-			_Client.QueueServiceCall("virusscan_virusscanprofile", "get", "KalturaVirusScanProfile", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaVirusScanProfile)KalturaObjectFactory.Create(result, "KalturaVirusScanProfile");
 		}
 
-		public KalturaVirusScanProfile Update(int virusScanProfileId, KalturaVirusScanProfile virusScanProfile)
+		public VirusScanProfileAddRequestBuilder(VirusScanProfile virusScanProfile)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("virusScanProfileId", virusScanProfileId);
-			kparams.AddIfNotNull("virusScanProfile", virusScanProfile);
-			_Client.QueueServiceCall("virusscan_virusscanprofile", "update", "KalturaVirusScanProfile", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaVirusScanProfile)KalturaObjectFactory.Create(result, "KalturaVirusScanProfile");
+			this.VirusScanProfile = virusScanProfile;
 		}
 
-		public KalturaVirusScanProfile Delete(int virusScanProfileId)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("virusScanProfileId", virusScanProfileId);
-			_Client.QueueServiceCall("virusscan_virusscanprofile", "delete", "KalturaVirusScanProfile", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaVirusScanProfile)KalturaObjectFactory.Create(result, "KalturaVirusScanProfile");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("virusScanProfile"))
+				kparams.AddIfNotNull("virusScanProfile", VirusScanProfile);
+			return kparams;
 		}
 
-		public int Scan(string flavorAssetId)
+		public override Files getFiles()
 		{
-			return this.Scan(flavorAssetId, Int32.MinValue);
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public int Scan(string flavorAssetId, int virusScanProfileId)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("flavorAssetId", flavorAssetId);
-			kparams.AddIfNotNull("virusScanProfileId", virusScanProfileId);
-			_Client.QueueServiceCall("virusscan_virusscanprofile", "scan", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return 0;
-			XmlElement result = _Client.DoQueue();
+			return ObjectFactory.Create<VirusScanProfile>(result);
+		}
+	}
+
+	public class VirusScanProfileGetRequestBuilder : RequestBuilder<VirusScanProfile>
+	{
+		#region Constants
+		public const string VIRUS_SCAN_PROFILE_ID = "virusScanProfileId";
+		#endregion
+
+		public int VirusScanProfileId
+		{
+			set;
+			get;
+		}
+
+		public VirusScanProfileGetRequestBuilder()
+			: base("virusscan_virusscanprofile", "get")
+		{
+		}
+
+		public VirusScanProfileGetRequestBuilder(int virusScanProfileId)
+			: this()
+		{
+			this.VirusScanProfileId = virusScanProfileId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("virusScanProfileId"))
+				kparams.AddIfNotNull("virusScanProfileId", VirusScanProfileId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<VirusScanProfile>(result);
+		}
+	}
+
+	public class VirusScanProfileUpdateRequestBuilder : RequestBuilder<VirusScanProfile>
+	{
+		#region Constants
+		public const string VIRUS_SCAN_PROFILE_ID = "virusScanProfileId";
+		public const string VIRUS_SCAN_PROFILE = "virusScanProfile";
+		#endregion
+
+		public int VirusScanProfileId
+		{
+			set;
+			get;
+		}
+		public VirusScanProfile VirusScanProfile
+		{
+			set;
+			get;
+		}
+
+		public VirusScanProfileUpdateRequestBuilder()
+			: base("virusscan_virusscanprofile", "update")
+		{
+		}
+
+		public VirusScanProfileUpdateRequestBuilder(int virusScanProfileId, VirusScanProfile virusScanProfile)
+			: this()
+		{
+			this.VirusScanProfileId = virusScanProfileId;
+			this.VirusScanProfile = virusScanProfile;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("virusScanProfileId"))
+				kparams.AddIfNotNull("virusScanProfileId", VirusScanProfileId);
+			if (!isMapped("virusScanProfile"))
+				kparams.AddIfNotNull("virusScanProfile", VirusScanProfile);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<VirusScanProfile>(result);
+		}
+	}
+
+	public class VirusScanProfileDeleteRequestBuilder : RequestBuilder<VirusScanProfile>
+	{
+		#region Constants
+		public const string VIRUS_SCAN_PROFILE_ID = "virusScanProfileId";
+		#endregion
+
+		public int VirusScanProfileId
+		{
+			set;
+			get;
+		}
+
+		public VirusScanProfileDeleteRequestBuilder()
+			: base("virusscan_virusscanprofile", "delete")
+		{
+		}
+
+		public VirusScanProfileDeleteRequestBuilder(int virusScanProfileId)
+			: this()
+		{
+			this.VirusScanProfileId = virusScanProfileId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("virusScanProfileId"))
+				kparams.AddIfNotNull("virusScanProfileId", VirusScanProfileId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<VirusScanProfile>(result);
+		}
+	}
+
+	public class VirusScanProfileScanRequestBuilder : RequestBuilder<int>
+	{
+		#region Constants
+		public const string FLAVOR_ASSET_ID = "flavorAssetId";
+		public const string VIRUS_SCAN_PROFILE_ID = "virusScanProfileId";
+		#endregion
+
+		public string FlavorAssetId
+		{
+			set;
+			get;
+		}
+		public int VirusScanProfileId
+		{
+			set;
+			get;
+		}
+
+		public VirusScanProfileScanRequestBuilder()
+			: base("virusscan_virusscanprofile", "scan")
+		{
+		}
+
+		public VirusScanProfileScanRequestBuilder(string flavorAssetId, int virusScanProfileId)
+			: this()
+		{
+			this.FlavorAssetId = flavorAssetId;
+			this.VirusScanProfileId = virusScanProfileId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("flavorAssetId"))
+				kparams.AddIfNotNull("flavorAssetId", FlavorAssetId);
+			if (!isMapped("virusScanProfileId"))
+				kparams.AddIfNotNull("virusScanProfileId", VirusScanProfileId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			return int.Parse(result.InnerText);
+		}
+	}
+
+
+	public class VirusScanProfileService
+	{
+		private VirusScanProfileService()
+		{
+		}
+
+		public static VirusScanProfileListRequestBuilder List(VirusScanProfileFilter filter = null, FilterPager pager = null)
+		{
+			return new VirusScanProfileListRequestBuilder(filter, pager);
+		}
+
+		public static VirusScanProfileAddRequestBuilder Add(VirusScanProfile virusScanProfile)
+		{
+			return new VirusScanProfileAddRequestBuilder(virusScanProfile);
+		}
+
+		public static VirusScanProfileGetRequestBuilder Get(int virusScanProfileId)
+		{
+			return new VirusScanProfileGetRequestBuilder(virusScanProfileId);
+		}
+
+		public static VirusScanProfileUpdateRequestBuilder Update(int virusScanProfileId, VirusScanProfile virusScanProfile)
+		{
+			return new VirusScanProfileUpdateRequestBuilder(virusScanProfileId, virusScanProfile);
+		}
+
+		public static VirusScanProfileDeleteRequestBuilder Delete(int virusScanProfileId)
+		{
+			return new VirusScanProfileDeleteRequestBuilder(virusScanProfileId);
+		}
+
+		public static VirusScanProfileScanRequestBuilder Scan(string flavorAssetId, int virusScanProfileId = Int32.MinValue)
+		{
+			return new VirusScanProfileScanRequestBuilder(flavorAssetId, virusScanProfileId);
 		}
 	}
 }

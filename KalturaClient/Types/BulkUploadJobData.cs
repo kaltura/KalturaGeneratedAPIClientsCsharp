@@ -1,0 +1,266 @@
+// ===================================================================================================
+//                           _  __     _ _
+//                          | |/ /__ _| | |_ _  _ _ _ __ _
+//                          | ' </ _` | |  _| || | '_/ _` |
+//                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
+//
+// This file is part of the Kaltura Collaborative Media Suite which allows users
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// text.
+//
+// Copyright (C) 2006-2016  Kaltura Inc.
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+// @ignore
+// ===================================================================================================
+using System;
+using System.Xml;
+using System.Collections.Generic;
+using Kaltura.Enums;
+using Kaltura.Request;
+
+namespace Kaltura.Types
+{
+	public class BulkUploadJobData : JobData
+	{
+		#region Constants
+		public const string USER_ID = "userId";
+		public const string UPLOADED_BY = "uploadedBy";
+		public const string CONVERSION_PROFILE_ID = "conversionProfileId";
+		public const string RESULTS_FILE_LOCAL_PATH = "resultsFileLocalPath";
+		public const string RESULTS_FILE_URL = "resultsFileUrl";
+		public const string NUM_OF_ENTRIES = "numOfEntries";
+		public const string NUM_OF_OBJECTS = "numOfObjects";
+		public const string FILE_PATH = "filePath";
+		public const string BULK_UPLOAD_OBJECT_TYPE = "bulkUploadObjectType";
+		public const string FILE_NAME = "fileName";
+		public const string OBJECT_DATA = "objectData";
+		public const string TYPE = "type";
+		public const string EMAIL_RECIPIENTS = "emailRecipients";
+		public const string NUM_OF_ERROR_OBJECTS = "numOfErrorObjects";
+		#endregion
+
+		#region Private Fields
+		private string _UserId = null;
+		private string _UploadedBy = null;
+		private int _ConversionProfileId = Int32.MinValue;
+		private string _ResultsFileLocalPath = null;
+		private string _ResultsFileUrl = null;
+		private int _NumOfEntries = Int32.MinValue;
+		private int _NumOfObjects = Int32.MinValue;
+		private string _FilePath = null;
+		private BulkUploadObjectType _BulkUploadObjectType = null;
+		private string _FileName = null;
+		private BulkUploadObjectData _ObjectData;
+		private BulkUploadType _Type = null;
+		private string _EmailRecipients = null;
+		private int _NumOfErrorObjects = Int32.MinValue;
+		#endregion
+
+		#region Properties
+		public string UserId
+		{
+			get { return _UserId; }
+		}
+		public string UploadedBy
+		{
+			get { return _UploadedBy; }
+		}
+		public int ConversionProfileId
+		{
+			get { return _ConversionProfileId; }
+		}
+		public string ResultsFileLocalPath
+		{
+			get { return _ResultsFileLocalPath; }
+		}
+		public string ResultsFileUrl
+		{
+			get { return _ResultsFileUrl; }
+		}
+		public int NumOfEntries
+		{
+			get { return _NumOfEntries; }
+		}
+		public int NumOfObjects
+		{
+			get { return _NumOfObjects; }
+		}
+		public string FilePath
+		{
+			get { return _FilePath; }
+		}
+		public BulkUploadObjectType BulkUploadObjectType
+		{
+			get { return _BulkUploadObjectType; }
+		}
+		public string FileName
+		{
+			get { return _FileName; }
+			set 
+			{ 
+				_FileName = value;
+				OnPropertyChanged("FileName");
+			}
+		}
+		public BulkUploadObjectData ObjectData
+		{
+			get { return _ObjectData; }
+		}
+		public BulkUploadType Type
+		{
+			get { return _Type; }
+		}
+		public string EmailRecipients
+		{
+			get { return _EmailRecipients; }
+			set 
+			{ 
+				_EmailRecipients = value;
+				OnPropertyChanged("EmailRecipients");
+			}
+		}
+		public int NumOfErrorObjects
+		{
+			get { return _NumOfErrorObjects; }
+			set 
+			{ 
+				_NumOfErrorObjects = value;
+				OnPropertyChanged("NumOfErrorObjects");
+			}
+		}
+		#endregion
+
+		#region CTor
+		public BulkUploadJobData()
+		{
+		}
+
+		public BulkUploadJobData(XmlElement node) : base(node)
+		{
+			foreach (XmlElement propertyNode in node.ChildNodes)
+			{
+				string txt = propertyNode.InnerText;
+				switch (propertyNode.Name)
+				{
+					case "userId":
+						this._UserId = txt;
+						continue;
+					case "uploadedBy":
+						this._UploadedBy = txt;
+						continue;
+					case "conversionProfileId":
+						this._ConversionProfileId = ParseInt(txt);
+						continue;
+					case "resultsFileLocalPath":
+						this._ResultsFileLocalPath = txt;
+						continue;
+					case "resultsFileUrl":
+						this._ResultsFileUrl = txt;
+						continue;
+					case "numOfEntries":
+						this._NumOfEntries = ParseInt(txt);
+						continue;
+					case "numOfObjects":
+						this._NumOfObjects = ParseInt(txt);
+						continue;
+					case "filePath":
+						this._FilePath = txt;
+						continue;
+					case "bulkUploadObjectType":
+						this._BulkUploadObjectType = (BulkUploadObjectType)StringEnum.Parse(typeof(BulkUploadObjectType), txt);
+						continue;
+					case "fileName":
+						this._FileName = txt;
+						continue;
+					case "objectData":
+						this._ObjectData = ObjectFactory.Create<BulkUploadObjectData>(propertyNode);
+						continue;
+					case "type":
+						this._Type = (BulkUploadType)StringEnum.Parse(typeof(BulkUploadType), txt);
+						continue;
+					case "emailRecipients":
+						this._EmailRecipients = txt;
+						continue;
+					case "numOfErrorObjects":
+						this._NumOfErrorObjects = ParseInt(txt);
+						continue;
+				}
+			}
+		}
+		#endregion
+
+		#region Methods
+		public override Params ToParams(bool includeObjectType = true)
+		{
+			Params kparams = base.ToParams(includeObjectType);
+			if (includeObjectType)
+				kparams.AddReplace("objectType", "KalturaBulkUploadJobData");
+			kparams.AddIfNotNull("userId", this._UserId);
+			kparams.AddIfNotNull("uploadedBy", this._UploadedBy);
+			kparams.AddIfNotNull("conversionProfileId", this._ConversionProfileId);
+			kparams.AddIfNotNull("resultsFileLocalPath", this._ResultsFileLocalPath);
+			kparams.AddIfNotNull("resultsFileUrl", this._ResultsFileUrl);
+			kparams.AddIfNotNull("numOfEntries", this._NumOfEntries);
+			kparams.AddIfNotNull("numOfObjects", this._NumOfObjects);
+			kparams.AddIfNotNull("filePath", this._FilePath);
+			kparams.AddIfNotNull("bulkUploadObjectType", this._BulkUploadObjectType);
+			kparams.AddIfNotNull("fileName", this._FileName);
+			kparams.AddIfNotNull("objectData", this._ObjectData);
+			kparams.AddIfNotNull("type", this._Type);
+			kparams.AddIfNotNull("emailRecipients", this._EmailRecipients);
+			kparams.AddIfNotNull("numOfErrorObjects", this._NumOfErrorObjects);
+			return kparams;
+		}
+		protected override string getPropertyName(string apiName)
+		{
+			switch(apiName)
+			{
+				case USER_ID:
+					return "UserId";
+				case UPLOADED_BY:
+					return "UploadedBy";
+				case CONVERSION_PROFILE_ID:
+					return "ConversionProfileId";
+				case RESULTS_FILE_LOCAL_PATH:
+					return "ResultsFileLocalPath";
+				case RESULTS_FILE_URL:
+					return "ResultsFileUrl";
+				case NUM_OF_ENTRIES:
+					return "NumOfEntries";
+				case NUM_OF_OBJECTS:
+					return "NumOfObjects";
+				case FILE_PATH:
+					return "FilePath";
+				case BULK_UPLOAD_OBJECT_TYPE:
+					return "BulkUploadObjectType";
+				case FILE_NAME:
+					return "FileName";
+				case OBJECT_DATA:
+					return "ObjectData";
+				case TYPE:
+					return "Type";
+				case EMAIL_RECIPIENTS:
+					return "EmailRecipients";
+				case NUM_OF_ERROR_OBJECTS:
+					return "NumOfErrorObjects";
+				default:
+					return base.getPropertyName(apiName);
+			}
+		}
+		#endregion
+	}
+}
+

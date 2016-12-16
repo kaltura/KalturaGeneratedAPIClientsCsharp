@@ -29,111 +29,379 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaScheduleEventService : KalturaServiceBase
+	public class ScheduleEventAddRequestBuilder : RequestBuilder<ScheduleEvent>
 	{
-	public KalturaScheduleEventService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string SCHEDULE_EVENT = "scheduleEvent";
+		#endregion
+
+		public ScheduleEvent ScheduleEvent
+		{
+			set;
+			get;
+		}
+
+		public ScheduleEventAddRequestBuilder()
+			: base("schedule_scheduleevent", "add")
 		{
 		}
 
-		public KalturaScheduleEvent Add(KalturaScheduleEvent scheduleEvent)
+		public ScheduleEventAddRequestBuilder(ScheduleEvent scheduleEvent)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("scheduleEvent", scheduleEvent);
-			_Client.QueueServiceCall("schedule_scheduleevent", "add", "KalturaScheduleEvent", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaScheduleEvent)KalturaObjectFactory.Create(result, "KalturaScheduleEvent");
+			this.ScheduleEvent = scheduleEvent;
 		}
 
-		public KalturaScheduleEvent Get(int scheduleEventId)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("scheduleEventId", scheduleEventId);
-			_Client.QueueServiceCall("schedule_scheduleevent", "get", "KalturaScheduleEvent", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaScheduleEvent)KalturaObjectFactory.Create(result, "KalturaScheduleEvent");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("scheduleEvent"))
+				kparams.AddIfNotNull("scheduleEvent", ScheduleEvent);
+			return kparams;
 		}
 
-		public KalturaScheduleEvent Update(int scheduleEventId, KalturaScheduleEvent scheduleEvent)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("scheduleEventId", scheduleEventId);
-			kparams.AddIfNotNull("scheduleEvent", scheduleEvent);
-			_Client.QueueServiceCall("schedule_scheduleevent", "update", "KalturaScheduleEvent", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaScheduleEvent)KalturaObjectFactory.Create(result, "KalturaScheduleEvent");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaScheduleEvent Delete(int scheduleEventId)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("scheduleEventId", scheduleEventId);
-			_Client.QueueServiceCall("schedule_scheduleevent", "delete", "KalturaScheduleEvent", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaScheduleEvent)KalturaObjectFactory.Create(result, "KalturaScheduleEvent");
+			return ObjectFactory.Create<ScheduleEvent>(result);
+		}
+	}
+
+	public class ScheduleEventGetRequestBuilder : RequestBuilder<ScheduleEvent>
+	{
+		#region Constants
+		public const string SCHEDULE_EVENT_ID = "scheduleEventId";
+		#endregion
+
+		public int ScheduleEventId
+		{
+			set;
+			get;
 		}
 
-		public KalturaScheduleEvent Cancel(int scheduleEventId)
+		public ScheduleEventGetRequestBuilder()
+			: base("schedule_scheduleevent", "get")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("scheduleEventId", scheduleEventId);
-			_Client.QueueServiceCall("schedule_scheduleevent", "cancel", "KalturaScheduleEvent", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaScheduleEvent)KalturaObjectFactory.Create(result, "KalturaScheduleEvent");
 		}
 
-		public KalturaScheduleEventListResponse List()
+		public ScheduleEventGetRequestBuilder(int scheduleEventId)
+			: this()
 		{
-			return this.List(null);
+			this.ScheduleEventId = scheduleEventId;
 		}
 
-		public KalturaScheduleEventListResponse List(KalturaScheduleEventFilter filter)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.List(filter, null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("scheduleEventId"))
+				kparams.AddIfNotNull("scheduleEventId", ScheduleEventId);
+			return kparams;
 		}
 
-		public KalturaScheduleEventListResponse List(KalturaScheduleEventFilter filter, KalturaFilterPager pager)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("schedule_scheduleevent", "list", "KalturaScheduleEventListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaScheduleEventListResponse)KalturaObjectFactory.Create(result, "KalturaScheduleEventListResponse");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaBulkUpload AddFromBulkUpload(Stream fileData)
+		public override object Deserialize(XmlElement result)
 		{
-			return this.AddFromBulkUpload(fileData, null);
+			return ObjectFactory.Create<ScheduleEvent>(result);
+		}
+	}
+
+	public class ScheduleEventUpdateRequestBuilder : RequestBuilder<ScheduleEvent>
+	{
+		#region Constants
+		public const string SCHEDULE_EVENT_ID = "scheduleEventId";
+		public const string SCHEDULE_EVENT = "scheduleEvent";
+		#endregion
+
+		public int ScheduleEventId
+		{
+			set;
+			get;
+		}
+		public ScheduleEvent ScheduleEvent
+		{
+			set;
+			get;
 		}
 
-		public KalturaBulkUpload AddFromBulkUpload(Stream fileData, KalturaBulkUploadICalJobData bulkUploadData)
+		public ScheduleEventUpdateRequestBuilder()
+			: base("schedule_scheduleevent", "update")
 		{
-			KalturaParams kparams = new KalturaParams();
-			KalturaFiles kfiles = new KalturaFiles();
-			kfiles.Add("fileData", fileData);
-			kparams.AddIfNotNull("bulkUploadData", bulkUploadData);
-			_Client.QueueServiceCall("schedule_scheduleevent", "addFromBulkUpload", "KalturaBulkUpload", kparams, kfiles);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaBulkUpload)KalturaObjectFactory.Create(result, "KalturaBulkUpload");
+		}
+
+		public ScheduleEventUpdateRequestBuilder(int scheduleEventId, ScheduleEvent scheduleEvent)
+			: this()
+		{
+			this.ScheduleEventId = scheduleEventId;
+			this.ScheduleEvent = scheduleEvent;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("scheduleEventId"))
+				kparams.AddIfNotNull("scheduleEventId", ScheduleEventId);
+			if (!isMapped("scheduleEvent"))
+				kparams.AddIfNotNull("scheduleEvent", ScheduleEvent);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ScheduleEvent>(result);
+		}
+	}
+
+	public class ScheduleEventDeleteRequestBuilder : RequestBuilder<ScheduleEvent>
+	{
+		#region Constants
+		public const string SCHEDULE_EVENT_ID = "scheduleEventId";
+		#endregion
+
+		public int ScheduleEventId
+		{
+			set;
+			get;
+		}
+
+		public ScheduleEventDeleteRequestBuilder()
+			: base("schedule_scheduleevent", "delete")
+		{
+		}
+
+		public ScheduleEventDeleteRequestBuilder(int scheduleEventId)
+			: this()
+		{
+			this.ScheduleEventId = scheduleEventId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("scheduleEventId"))
+				kparams.AddIfNotNull("scheduleEventId", ScheduleEventId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ScheduleEvent>(result);
+		}
+	}
+
+	public class ScheduleEventCancelRequestBuilder : RequestBuilder<ScheduleEvent>
+	{
+		#region Constants
+		public const string SCHEDULE_EVENT_ID = "scheduleEventId";
+		#endregion
+
+		public int ScheduleEventId
+		{
+			set;
+			get;
+		}
+
+		public ScheduleEventCancelRequestBuilder()
+			: base("schedule_scheduleevent", "cancel")
+		{
+		}
+
+		public ScheduleEventCancelRequestBuilder(int scheduleEventId)
+			: this()
+		{
+			this.ScheduleEventId = scheduleEventId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("scheduleEventId"))
+				kparams.AddIfNotNull("scheduleEventId", ScheduleEventId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ScheduleEvent>(result);
+		}
+	}
+
+	public class ScheduleEventListRequestBuilder : RequestBuilder<ListResponse<ScheduleEvent>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public ScheduleEventFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public ScheduleEventListRequestBuilder()
+			: base("schedule_scheduleevent", "list")
+		{
+		}
+
+		public ScheduleEventListRequestBuilder(ScheduleEventFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<ScheduleEvent>>(result);
+		}
+	}
+
+	public class ScheduleEventAddFromBulkUploadRequestBuilder : RequestBuilder<BulkUpload>
+	{
+		#region Constants
+		public const string FILE_DATA = "fileData";
+		public const string BULK_UPLOAD_DATA = "bulkUploadData";
+		#endregion
+
+		public Stream FileData
+		{
+			set;
+			get;
+		}
+		public BulkUploadICalJobData BulkUploadData
+		{
+			set;
+			get;
+		}
+
+		public ScheduleEventAddFromBulkUploadRequestBuilder()
+			: base("schedule_scheduleevent", "addFromBulkUpload")
+		{
+		}
+
+		public ScheduleEventAddFromBulkUploadRequestBuilder(Stream fileData, BulkUploadICalJobData bulkUploadData)
+			: this()
+		{
+			this.FileData = fileData;
+			this.BulkUploadData = bulkUploadData;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("bulkUploadData"))
+				kparams.AddIfNotNull("bulkUploadData", BulkUploadData);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			kfiles.Add("fileData", FileData);
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<BulkUpload>(result);
+		}
+	}
+
+
+	public class ScheduleEventService
+	{
+		private ScheduleEventService()
+		{
+		}
+
+		public static ScheduleEventAddRequestBuilder Add(ScheduleEvent scheduleEvent)
+		{
+			return new ScheduleEventAddRequestBuilder(scheduleEvent);
+		}
+
+		public static ScheduleEventGetRequestBuilder Get(int scheduleEventId)
+		{
+			return new ScheduleEventGetRequestBuilder(scheduleEventId);
+		}
+
+		public static ScheduleEventUpdateRequestBuilder Update(int scheduleEventId, ScheduleEvent scheduleEvent)
+		{
+			return new ScheduleEventUpdateRequestBuilder(scheduleEventId, scheduleEvent);
+		}
+
+		public static ScheduleEventDeleteRequestBuilder Delete(int scheduleEventId)
+		{
+			return new ScheduleEventDeleteRequestBuilder(scheduleEventId);
+		}
+
+		public static ScheduleEventCancelRequestBuilder Cancel(int scheduleEventId)
+		{
+			return new ScheduleEventCancelRequestBuilder(scheduleEventId);
+		}
+
+		public static ScheduleEventListRequestBuilder List(ScheduleEventFilter filter = null, FilterPager pager = null)
+		{
+			return new ScheduleEventListRequestBuilder(filter, pager);
+		}
+
+		public static ScheduleEventAddFromBulkUploadRequestBuilder AddFromBulkUpload(Stream fileData, BulkUploadICalJobData bulkUploadData = null)
+		{
+			return new ScheduleEventAddFromBulkUploadRequestBuilder(fileData, bulkUploadData);
 		}
 	}
 }

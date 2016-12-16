@@ -29,97 +29,328 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaFlavorParamsService : KalturaServiceBase
+	public class FlavorParamsAddRequestBuilder : RequestBuilder<FlavorParams>
 	{
-	public KalturaFlavorParamsService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string FLAVOR_PARAMS = "flavorParams";
+		#endregion
+
+		public FlavorParams FlavorParams
+		{
+			set;
+			get;
+		}
+
+		public FlavorParamsAddRequestBuilder()
+			: base("flavorparams", "add")
 		{
 		}
 
-		public KalturaFlavorParams Add(KalturaFlavorParams flavorParams)
+		public FlavorParamsAddRequestBuilder(FlavorParams flavorParams)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("flavorParams", flavorParams);
-			_Client.QueueServiceCall("flavorparams", "add", "KalturaFlavorParams", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaFlavorParams)KalturaObjectFactory.Create(result, "KalturaFlavorParams");
+			this.FlavorParams = flavorParams;
 		}
 
-		public KalturaFlavorParams Get(int id)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("flavorparams", "get", "KalturaFlavorParams", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaFlavorParams)KalturaObjectFactory.Create(result, "KalturaFlavorParams");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("flavorParams"))
+				kparams.AddIfNotNull("flavorParams", FlavorParams);
+			return kparams;
 		}
 
-		public KalturaFlavorParams Update(int id, KalturaFlavorParams flavorParams)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("flavorParams", flavorParams);
-			_Client.QueueServiceCall("flavorparams", "update", "KalturaFlavorParams", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaFlavorParams)KalturaObjectFactory.Create(result, "KalturaFlavorParams");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public void Delete(int id)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("flavorparams", "delete", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			return ObjectFactory.Create<FlavorParams>(result);
+		}
+	}
+
+	public class FlavorParamsGetRequestBuilder : RequestBuilder<FlavorParams>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
 		}
 
-		public KalturaFlavorParamsListResponse List()
+		public FlavorParamsGetRequestBuilder()
+			: base("flavorparams", "get")
 		{
-			return this.List(null);
 		}
 
-		public KalturaFlavorParamsListResponse List(KalturaFlavorParamsFilter filter)
+		public FlavorParamsGetRequestBuilder(int id)
+			: this()
 		{
-			return this.List(filter, null);
+			this.Id = id;
 		}
 
-		public KalturaFlavorParamsListResponse List(KalturaFlavorParamsFilter filter, KalturaFilterPager pager)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("flavorparams", "list", "KalturaFlavorParamsListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaFlavorParamsListResponse)KalturaObjectFactory.Create(result, "KalturaFlavorParamsListResponse");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
 		}
 
-		public IList<KalturaFlavorParams> GetByConversionProfileId(int conversionProfileId)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("conversionProfileId", conversionProfileId);
-			_Client.QueueServiceCall("flavorparams", "getByConversionProfileId", "KalturaFlavorParams", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			IList<KalturaFlavorParams> list = new List<KalturaFlavorParams>();
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<FlavorParams>(result);
+		}
+	}
+
+	public class FlavorParamsUpdateRequestBuilder : RequestBuilder<FlavorParams>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string FLAVOR_PARAMS = "flavorParams";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public FlavorParams FlavorParams
+		{
+			set;
+			get;
+		}
+
+		public FlavorParamsUpdateRequestBuilder()
+			: base("flavorparams", "update")
+		{
+		}
+
+		public FlavorParamsUpdateRequestBuilder(int id, FlavorParams flavorParams)
+			: this()
+		{
+			this.Id = id;
+			this.FlavorParams = flavorParams;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("flavorParams"))
+				kparams.AddIfNotNull("flavorParams", FlavorParams);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<FlavorParams>(result);
+		}
+	}
+
+	public class FlavorParamsDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public FlavorParamsDeleteRequestBuilder()
+			: base("flavorparams", "delete")
+		{
+		}
+
+		public FlavorParamsDeleteRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class FlavorParamsListRequestBuilder : RequestBuilder<ListResponse<FlavorParams>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public FlavorParamsFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public FlavorParamsListRequestBuilder()
+			: base("flavorparams", "list")
+		{
+		}
+
+		public FlavorParamsListRequestBuilder(FlavorParamsFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<FlavorParams>>(result);
+		}
+	}
+
+	public class FlavorParamsGetByConversionProfileIdRequestBuilder : RequestBuilder<IList<FlavorParams>>
+	{
+		#region Constants
+		public const string CONVERSION_PROFILE_ID = "conversionProfileId";
+		#endregion
+
+		public int ConversionProfileId
+		{
+			set;
+			get;
+		}
+
+		public FlavorParamsGetByConversionProfileIdRequestBuilder()
+			: base("flavorparams", "getByConversionProfileId")
+		{
+		}
+
+		public FlavorParamsGetByConversionProfileIdRequestBuilder(int conversionProfileId)
+			: this()
+		{
+			this.ConversionProfileId = conversionProfileId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("conversionProfileId"))
+				kparams.AddIfNotNull("conversionProfileId", ConversionProfileId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			IList<FlavorParams> list = new List<FlavorParams>();
 			foreach(XmlElement node in result.ChildNodes)
 			{
-				list.Add((KalturaFlavorParams)KalturaObjectFactory.Create(node, "KalturaFlavorParams"));
+				list.Add(ObjectFactory.Create<FlavorParams>(node));
 			}
 			return list;
+		}
+	}
+
+
+	public class FlavorParamsService
+	{
+		private FlavorParamsService()
+		{
+		}
+
+		public static FlavorParamsAddRequestBuilder Add(FlavorParams flavorParams)
+		{
+			return new FlavorParamsAddRequestBuilder(flavorParams);
+		}
+
+		public static FlavorParamsGetRequestBuilder Get(int id)
+		{
+			return new FlavorParamsGetRequestBuilder(id);
+		}
+
+		public static FlavorParamsUpdateRequestBuilder Update(int id, FlavorParams flavorParams)
+		{
+			return new FlavorParamsUpdateRequestBuilder(id, flavorParams);
+		}
+
+		public static FlavorParamsDeleteRequestBuilder Delete(int id)
+		{
+			return new FlavorParamsDeleteRequestBuilder(id);
+		}
+
+		public static FlavorParamsListRequestBuilder List(FlavorParamsFilter filter = null, FilterPager pager = null)
+		{
+			return new FlavorParamsListRequestBuilder(filter, pager);
+		}
+
+		public static FlavorParamsGetByConversionProfileIdRequestBuilder GetByConversionProfileId(int conversionProfileId)
+		{
+			return new FlavorParamsGetByConversionProfileIdRequestBuilder(conversionProfileId);
 		}
 	}
 }

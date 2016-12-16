@@ -29,87 +29,323 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaUserEntryService : KalturaServiceBase
+	public class UserEntryAddRequestBuilder : RequestBuilder<UserEntry>
 	{
-	public KalturaUserEntryService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string USER_ENTRY = "userEntry";
+		#endregion
+
+		public UserEntry UserEntry
+		{
+			set;
+			get;
+		}
+
+		public UserEntryAddRequestBuilder()
+			: base("userentry", "add")
 		{
 		}
 
-		public KalturaUserEntry Add(KalturaUserEntry userEntry)
+		public UserEntryAddRequestBuilder(UserEntry userEntry)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("userEntry", userEntry);
-			_Client.QueueServiceCall("userentry", "add", "KalturaUserEntry", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaUserEntry)KalturaObjectFactory.Create(result, "KalturaUserEntry");
+			this.UserEntry = userEntry;
 		}
 
-		public void Update(int id, KalturaUserEntry userEntry)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("userEntry", userEntry);
-			_Client.QueueServiceCall("userentry", "update", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("userEntry"))
+				kparams.AddIfNotNull("userEntry", UserEntry);
+			return kparams;
 		}
 
-		public KalturaUserEntry Delete(int id)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("userentry", "delete", "KalturaUserEntry", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaUserEntry)KalturaObjectFactory.Create(result, "KalturaUserEntry");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaUserEntryListResponse List(KalturaUserEntryFilter filter)
+		public override object Deserialize(XmlElement result)
 		{
-			return this.List(filter, null);
+			return ObjectFactory.Create<UserEntry>(result);
+		}
+	}
+
+	public class UserEntryUpdateRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string USER_ENTRY = "userEntry";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public UserEntry UserEntry
+		{
+			set;
+			get;
 		}
 
-		public KalturaUserEntryListResponse List(KalturaUserEntryFilter filter, KalturaFilterPager pager)
+		public UserEntryUpdateRequestBuilder()
+			: base("userentry", "update")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("userentry", "list", "KalturaUserEntryListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaUserEntryListResponse)KalturaObjectFactory.Create(result, "KalturaUserEntryListResponse");
 		}
 
-		public KalturaUserEntry Get(string id)
+		public UserEntryUpdateRequestBuilder(int id, UserEntry userEntry)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("userentry", "get", "KalturaUserEntry", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaUserEntry)KalturaObjectFactory.Create(result, "KalturaUserEntry");
+			this.Id = id;
+			this.UserEntry = userEntry;
 		}
 
-		public KalturaQuizUserEntry SubmitQuiz(int id)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("userentry", "submitQuiz", "KalturaQuizUserEntry", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaQuizUserEntry)KalturaObjectFactory.Create(result, "KalturaQuizUserEntry");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("userEntry"))
+				kparams.AddIfNotNull("userEntry", UserEntry);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class UserEntryDeleteRequestBuilder : RequestBuilder<UserEntry>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public UserEntryDeleteRequestBuilder()
+			: base("userentry", "delete")
+		{
+		}
+
+		public UserEntryDeleteRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<UserEntry>(result);
+		}
+	}
+
+	public class UserEntryListRequestBuilder : RequestBuilder<ListResponse<UserEntry>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public UserEntryFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public UserEntryListRequestBuilder()
+			: base("userentry", "list")
+		{
+		}
+
+		public UserEntryListRequestBuilder(UserEntryFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<UserEntry>>(result);
+		}
+	}
+
+	public class UserEntryGetRequestBuilder : RequestBuilder<UserEntry>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+
+		public UserEntryGetRequestBuilder()
+			: base("userentry", "get")
+		{
+		}
+
+		public UserEntryGetRequestBuilder(string id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<UserEntry>(result);
+		}
+	}
+
+	public class UserEntrySubmitQuizRequestBuilder : RequestBuilder<QuizUserEntry>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public UserEntrySubmitQuizRequestBuilder()
+			: base("userentry", "submitQuiz")
+		{
+		}
+
+		public UserEntrySubmitQuizRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<QuizUserEntry>(result);
+		}
+	}
+
+
+	public class UserEntryService
+	{
+		private UserEntryService()
+		{
+		}
+
+		public static UserEntryAddRequestBuilder Add(UserEntry userEntry)
+		{
+			return new UserEntryAddRequestBuilder(userEntry);
+		}
+
+		public static UserEntryUpdateRequestBuilder Update(int id, UserEntry userEntry)
+		{
+			return new UserEntryUpdateRequestBuilder(id, userEntry);
+		}
+
+		public static UserEntryDeleteRequestBuilder Delete(int id)
+		{
+			return new UserEntryDeleteRequestBuilder(id);
+		}
+
+		public static UserEntryListRequestBuilder List(UserEntryFilter filter, FilterPager pager = null)
+		{
+			return new UserEntryListRequestBuilder(filter, pager);
+		}
+
+		public static UserEntryGetRequestBuilder Get(string id)
+		{
+			return new UserEntryGetRequestBuilder(id);
+		}
+
+		public static UserEntrySubmitQuizRequestBuilder SubmitQuiz(int id)
+		{
+			return new UserEntrySubmitQuizRequestBuilder(id);
 		}
 	}
 }

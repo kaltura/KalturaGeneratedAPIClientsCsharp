@@ -29,132 +29,494 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaCaptionAssetService : KalturaServiceBase
+	public class CaptionAssetAddRequestBuilder : RequestBuilder<CaptionAsset>
 	{
-	public KalturaCaptionAssetService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string CAPTION_ASSET = "captionAsset";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public CaptionAsset CaptionAsset
+		{
+			set;
+			get;
+		}
+
+		public CaptionAssetAddRequestBuilder()
+			: base("caption_captionasset", "add")
 		{
 		}
 
-		public KalturaCaptionAsset Add(string entryId, KalturaCaptionAsset captionAsset)
+		public CaptionAssetAddRequestBuilder(string entryId, CaptionAsset captionAsset)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("entryId", entryId);
-			kparams.AddIfNotNull("captionAsset", captionAsset);
-			_Client.QueueServiceCall("caption_captionasset", "add", "KalturaCaptionAsset", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaCaptionAsset)KalturaObjectFactory.Create(result, "KalturaCaptionAsset");
+			this.EntryId = entryId;
+			this.CaptionAsset = captionAsset;
 		}
 
-		public KalturaCaptionAsset SetContent(string id, KalturaContentResource contentResource)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("contentResource", contentResource);
-			_Client.QueueServiceCall("caption_captionasset", "setContent", "KalturaCaptionAsset", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaCaptionAsset)KalturaObjectFactory.Create(result, "KalturaCaptionAsset");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("captionAsset"))
+				kparams.AddIfNotNull("captionAsset", CaptionAsset);
+			return kparams;
 		}
 
-		public KalturaCaptionAsset Update(string id, KalturaCaptionAsset captionAsset)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("captionAsset", captionAsset);
-			_Client.QueueServiceCall("caption_captionasset", "update", "KalturaCaptionAsset", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaCaptionAsset)KalturaObjectFactory.Create(result, "KalturaCaptionAsset");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public string GetUrl(string id)
+		public override object Deserialize(XmlElement result)
 		{
-			return this.GetUrl(id, Int32.MinValue);
+			return ObjectFactory.Create<CaptionAsset>(result);
+		}
+	}
+
+	public class CaptionAssetSetContentRequestBuilder : RequestBuilder<CaptionAsset>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string CONTENT_RESOURCE = "contentResource";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public ContentResource ContentResource
+		{
+			set;
+			get;
 		}
 
-		public string GetUrl(string id, int storageId)
+		public CaptionAssetSetContentRequestBuilder()
+			: base("caption_captionasset", "setContent")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("storageId", storageId);
-			_Client.QueueServiceCall("caption_captionasset", "getUrl", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
+		}
+
+		public CaptionAssetSetContentRequestBuilder(string id, ContentResource contentResource)
+			: this()
+		{
+			this.Id = id;
+			this.ContentResource = contentResource;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("contentResource"))
+				kparams.AddIfNotNull("contentResource", ContentResource);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<CaptionAsset>(result);
+		}
+	}
+
+	public class CaptionAssetUpdateRequestBuilder : RequestBuilder<CaptionAsset>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string CAPTION_ASSET = "captionAsset";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public CaptionAsset CaptionAsset
+		{
+			set;
+			get;
+		}
+
+		public CaptionAssetUpdateRequestBuilder()
+			: base("caption_captionasset", "update")
+		{
+		}
+
+		public CaptionAssetUpdateRequestBuilder(string id, CaptionAsset captionAsset)
+			: this()
+		{
+			this.Id = id;
+			this.CaptionAsset = captionAsset;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("captionAsset"))
+				kparams.AddIfNotNull("captionAsset", CaptionAsset);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<CaptionAsset>(result);
+		}
+	}
+
+	public class CaptionAssetGetUrlRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string STORAGE_ID = "storageId";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public int StorageId
+		{
+			set;
+			get;
+		}
+
+		public CaptionAssetGetUrlRequestBuilder()
+			: base("caption_captionasset", "getUrl")
+		{
+		}
+
+		public CaptionAssetGetUrlRequestBuilder(string id, int storageId)
+			: this()
+		{
+			this.Id = id;
+			this.StorageId = storageId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("storageId"))
+				kparams.AddIfNotNull("storageId", StorageId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			return result.InnerText;
 		}
+	}
 
-		public KalturaRemotePathListResponse GetRemotePaths(string id)
+	public class CaptionAssetGetRemotePathsRequestBuilder : RequestBuilder<ListResponse<RemotePath>>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("caption_captionasset", "getRemotePaths", "KalturaRemotePathListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaRemotePathListResponse)KalturaObjectFactory.Create(result, "KalturaRemotePathListResponse");
+			set;
+			get;
 		}
 
-		public void SetAsDefault(string captionAssetId)
+		public CaptionAssetGetRemotePathsRequestBuilder()
+			: base("caption_captionasset", "getRemotePaths")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("captionAssetId", captionAssetId);
-			_Client.QueueServiceCall("caption_captionasset", "setAsDefault", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
 		}
 
-		public KalturaCaptionAsset Get(string captionAssetId)
+		public CaptionAssetGetRemotePathsRequestBuilder(string id)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("captionAssetId", captionAssetId);
-			_Client.QueueServiceCall("caption_captionasset", "get", "KalturaCaptionAsset", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaCaptionAsset)KalturaObjectFactory.Create(result, "KalturaCaptionAsset");
+			this.Id = id;
 		}
 
-		public KalturaCaptionAssetListResponse List()
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.List(null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
 		}
 
-		public KalturaCaptionAssetListResponse List(KalturaAssetFilter filter)
+		public override Files getFiles()
 		{
-			return this.List(filter, null);
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaCaptionAssetListResponse List(KalturaAssetFilter filter, KalturaFilterPager pager)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("caption_captionasset", "list", "KalturaCaptionAssetListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaCaptionAssetListResponse)KalturaObjectFactory.Create(result, "KalturaCaptionAssetListResponse");
+			return ObjectFactory.Create<ListResponse<RemotePath>>(result);
+		}
+	}
+
+	public class CaptionAssetSetAsDefaultRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string CAPTION_ASSET_ID = "captionAssetId";
+		#endregion
+
+		public string CaptionAssetId
+		{
+			set;
+			get;
 		}
 
-		public void Delete(string captionAssetId)
+		public CaptionAssetSetAsDefaultRequestBuilder()
+			: base("caption_captionasset", "setAsDefault")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("captionAssetId", captionAssetId);
-			_Client.QueueServiceCall("caption_captionasset", "delete", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+		}
+
+		public CaptionAssetSetAsDefaultRequestBuilder(string captionAssetId)
+			: this()
+		{
+			this.CaptionAssetId = captionAssetId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("captionAssetId"))
+				kparams.AddIfNotNull("captionAssetId", CaptionAssetId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class CaptionAssetGetRequestBuilder : RequestBuilder<CaptionAsset>
+	{
+		#region Constants
+		public const string CAPTION_ASSET_ID = "captionAssetId";
+		#endregion
+
+		public string CaptionAssetId
+		{
+			set;
+			get;
+		}
+
+		public CaptionAssetGetRequestBuilder()
+			: base("caption_captionasset", "get")
+		{
+		}
+
+		public CaptionAssetGetRequestBuilder(string captionAssetId)
+			: this()
+		{
+			this.CaptionAssetId = captionAssetId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("captionAssetId"))
+				kparams.AddIfNotNull("captionAssetId", CaptionAssetId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<CaptionAsset>(result);
+		}
+	}
+
+	public class CaptionAssetListRequestBuilder : RequestBuilder<ListResponse<CaptionAsset>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public AssetFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public CaptionAssetListRequestBuilder()
+			: base("caption_captionasset", "list")
+		{
+		}
+
+		public CaptionAssetListRequestBuilder(AssetFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<CaptionAsset>>(result);
+		}
+	}
+
+	public class CaptionAssetDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string CAPTION_ASSET_ID = "captionAssetId";
+		#endregion
+
+		public string CaptionAssetId
+		{
+			set;
+			get;
+		}
+
+		public CaptionAssetDeleteRequestBuilder()
+			: base("caption_captionasset", "delete")
+		{
+		}
+
+		public CaptionAssetDeleteRequestBuilder(string captionAssetId)
+			: this()
+		{
+			this.CaptionAssetId = captionAssetId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("captionAssetId"))
+				kparams.AddIfNotNull("captionAssetId", CaptionAssetId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+
+	public class CaptionAssetService
+	{
+		private CaptionAssetService()
+		{
+		}
+
+		public static CaptionAssetAddRequestBuilder Add(string entryId, CaptionAsset captionAsset)
+		{
+			return new CaptionAssetAddRequestBuilder(entryId, captionAsset);
+		}
+
+		public static CaptionAssetSetContentRequestBuilder SetContent(string id, ContentResource contentResource)
+		{
+			return new CaptionAssetSetContentRequestBuilder(id, contentResource);
+		}
+
+		public static CaptionAssetUpdateRequestBuilder Update(string id, CaptionAsset captionAsset)
+		{
+			return new CaptionAssetUpdateRequestBuilder(id, captionAsset);
+		}
+
+		public static CaptionAssetGetUrlRequestBuilder GetUrl(string id, int storageId = Int32.MinValue)
+		{
+			return new CaptionAssetGetUrlRequestBuilder(id, storageId);
+		}
+
+		public static CaptionAssetGetRemotePathsRequestBuilder GetRemotePaths(string id)
+		{
+			return new CaptionAssetGetRemotePathsRequestBuilder(id);
+		}
+
+		public static CaptionAssetSetAsDefaultRequestBuilder SetAsDefault(string captionAssetId)
+		{
+			return new CaptionAssetSetAsDefaultRequestBuilder(captionAssetId);
+		}
+
+		public static CaptionAssetGetRequestBuilder Get(string captionAssetId)
+		{
+			return new CaptionAssetGetRequestBuilder(captionAssetId);
+		}
+
+		public static CaptionAssetListRequestBuilder List(AssetFilter filter = null, FilterPager pager = null)
+		{
+			return new CaptionAssetListRequestBuilder(filter, pager);
+		}
+
+		public static CaptionAssetDeleteRequestBuilder Delete(string captionAssetId)
+		{
+			return new CaptionAssetDeleteRequestBuilder(captionAssetId);
 		}
 	}
 }

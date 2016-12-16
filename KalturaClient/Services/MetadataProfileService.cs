@@ -29,181 +29,648 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaMetadataProfileService : KalturaServiceBase
+	public class MetadataProfileAddRequestBuilder : RequestBuilder<MetadataProfile>
 	{
-	public KalturaMetadataProfileService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string METADATA_PROFILE = "metadataProfile";
+		public const string XSD_DATA = "xsdData";
+		public const string VIEWS_DATA = "viewsData";
+		#endregion
+
+		public MetadataProfile MetadataProfile
+		{
+			set;
+			get;
+		}
+		public string XsdData
+		{
+			set;
+			get;
+		}
+		public string ViewsData
+		{
+			set;
+			get;
+		}
+
+		public MetadataProfileAddRequestBuilder()
+			: base("metadata_metadataprofile", "add")
 		{
 		}
 
-		public KalturaMetadataProfile Add(KalturaMetadataProfile metadataProfile, string xsdData)
+		public MetadataProfileAddRequestBuilder(MetadataProfile metadataProfile, string xsdData, string viewsData)
+			: this()
 		{
-			return this.Add(metadataProfile, xsdData, null);
+			this.MetadataProfile = metadataProfile;
+			this.XsdData = xsdData;
+			this.ViewsData = viewsData;
 		}
 
-		public KalturaMetadataProfile Add(KalturaMetadataProfile metadataProfile, string xsdData, string viewsData)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("metadataProfile", metadataProfile);
-			kparams.AddIfNotNull("xsdData", xsdData);
-			kparams.AddIfNotNull("viewsData", viewsData);
-			_Client.QueueServiceCall("metadata_metadataprofile", "add", "KalturaMetadataProfile", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaMetadataProfile)KalturaObjectFactory.Create(result, "KalturaMetadataProfile");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("metadataProfile"))
+				kparams.AddIfNotNull("metadataProfile", MetadataProfile);
+			if (!isMapped("xsdData"))
+				kparams.AddIfNotNull("xsdData", XsdData);
+			if (!isMapped("viewsData"))
+				kparams.AddIfNotNull("viewsData", ViewsData);
+			return kparams;
 		}
 
-		public KalturaMetadataProfile AddFromFile(KalturaMetadataProfile metadataProfile, Stream xsdFile)
+		public override Files getFiles()
 		{
-			return this.AddFromFile(metadataProfile, xsdFile, null);
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaMetadataProfile AddFromFile(KalturaMetadataProfile metadataProfile, Stream xsdFile, Stream viewsFile)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("metadataProfile", metadataProfile);
-			KalturaFiles kfiles = new KalturaFiles();
-			kfiles.Add("xsdFile", xsdFile);
-			kfiles.Add("viewsFile", viewsFile);
-			_Client.QueueServiceCall("metadata_metadataprofile", "addFromFile", "KalturaMetadataProfile", kparams, kfiles);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaMetadataProfile)KalturaObjectFactory.Create(result, "KalturaMetadataProfile");
+			return ObjectFactory.Create<MetadataProfile>(result);
+		}
+	}
+
+	public class MetadataProfileAddFromFileRequestBuilder : RequestBuilder<MetadataProfile>
+	{
+		#region Constants
+		public const string METADATA_PROFILE = "metadataProfile";
+		public const string XSD_FILE = "xsdFile";
+		public const string VIEWS_FILE = "viewsFile";
+		#endregion
+
+		public MetadataProfile MetadataProfile
+		{
+			set;
+			get;
+		}
+		public Stream XsdFile
+		{
+			set;
+			get;
+		}
+		public Stream ViewsFile
+		{
+			set;
+			get;
 		}
 
-		public KalturaMetadataProfile Get(int id)
+		public MetadataProfileAddFromFileRequestBuilder()
+			: base("metadata_metadataprofile", "addFromFile")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("metadata_metadataprofile", "get", "KalturaMetadataProfile", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaMetadataProfile)KalturaObjectFactory.Create(result, "KalturaMetadataProfile");
 		}
 
-		public KalturaMetadataProfile Update(int id, KalturaMetadataProfile metadataProfile)
+		public MetadataProfileAddFromFileRequestBuilder(MetadataProfile metadataProfile, Stream xsdFile, Stream viewsFile)
+			: this()
 		{
-			return this.Update(id, metadataProfile, null);
+			this.MetadataProfile = metadataProfile;
+			this.XsdFile = xsdFile;
+			this.ViewsFile = viewsFile;
 		}
 
-		public KalturaMetadataProfile Update(int id, KalturaMetadataProfile metadataProfile, string xsdData)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.Update(id, metadataProfile, xsdData, null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("metadataProfile"))
+				kparams.AddIfNotNull("metadataProfile", MetadataProfile);
+			return kparams;
 		}
 
-		public KalturaMetadataProfile Update(int id, KalturaMetadataProfile metadataProfile, string xsdData, string viewsData)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("metadataProfile", metadataProfile);
-			kparams.AddIfNotNull("xsdData", xsdData);
-			kparams.AddIfNotNull("viewsData", viewsData);
-			_Client.QueueServiceCall("metadata_metadataprofile", "update", "KalturaMetadataProfile", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaMetadataProfile)KalturaObjectFactory.Create(result, "KalturaMetadataProfile");
+			Files kfiles = base.getFiles();
+			kfiles.Add("xsdFile", XsdFile);
+			kfiles.Add("viewsFile", ViewsFile);
+			return kfiles;
 		}
 
-		public KalturaMetadataProfileListResponse List()
+		public override object Deserialize(XmlElement result)
 		{
-			return this.List(null);
+			return ObjectFactory.Create<MetadataProfile>(result);
+		}
+	}
+
+	public class MetadataProfileGetRequestBuilder : RequestBuilder<MetadataProfile>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
 		}
 
-		public KalturaMetadataProfileListResponse List(KalturaMetadataProfileFilter filter)
+		public MetadataProfileGetRequestBuilder()
+			: base("metadata_metadataprofile", "get")
 		{
-			return this.List(filter, null);
 		}
 
-		public KalturaMetadataProfileListResponse List(KalturaMetadataProfileFilter filter, KalturaFilterPager pager)
+		public MetadataProfileGetRequestBuilder(int id)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("metadata_metadataprofile", "list", "KalturaMetadataProfileListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaMetadataProfileListResponse)KalturaObjectFactory.Create(result, "KalturaMetadataProfileListResponse");
+			this.Id = id;
 		}
 
-		public KalturaMetadataProfileFieldListResponse ListFields(int metadataProfileId)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("metadataProfileId", metadataProfileId);
-			_Client.QueueServiceCall("metadata_metadataprofile", "listFields", "KalturaMetadataProfileFieldListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaMetadataProfileFieldListResponse)KalturaObjectFactory.Create(result, "KalturaMetadataProfileFieldListResponse");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
 		}
 
-		public void Delete(int id)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("metadata_metadataprofile", "delete", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public KalturaMetadataProfile Revert(int id, int toVersion)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("toVersion", toVersion);
-			_Client.QueueServiceCall("metadata_metadataprofile", "revert", "KalturaMetadataProfile", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaMetadataProfile)KalturaObjectFactory.Create(result, "KalturaMetadataProfile");
+			return ObjectFactory.Create<MetadataProfile>(result);
+		}
+	}
+
+	public class MetadataProfileUpdateRequestBuilder : RequestBuilder<MetadataProfile>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string METADATA_PROFILE = "metadataProfile";
+		public const string XSD_DATA = "xsdData";
+		public const string VIEWS_DATA = "viewsData";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public MetadataProfile MetadataProfile
+		{
+			set;
+			get;
+		}
+		public string XsdData
+		{
+			set;
+			get;
+		}
+		public string ViewsData
+		{
+			set;
+			get;
 		}
 
-		public KalturaMetadataProfile UpdateDefinitionFromFile(int id, Stream xsdFile)
+		public MetadataProfileUpdateRequestBuilder()
+			: base("metadata_metadataprofile", "update")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			KalturaFiles kfiles = new KalturaFiles();
-			kfiles.Add("xsdFile", xsdFile);
-			_Client.QueueServiceCall("metadata_metadataprofile", "updateDefinitionFromFile", "KalturaMetadataProfile", kparams, kfiles);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaMetadataProfile)KalturaObjectFactory.Create(result, "KalturaMetadataProfile");
 		}
 
-		public KalturaMetadataProfile UpdateViewsFromFile(int id, Stream viewsFile)
+		public MetadataProfileUpdateRequestBuilder(int id, MetadataProfile metadataProfile, string xsdData, string viewsData)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			KalturaFiles kfiles = new KalturaFiles();
-			kfiles.Add("viewsFile", viewsFile);
-			_Client.QueueServiceCall("metadata_metadataprofile", "updateViewsFromFile", "KalturaMetadataProfile", kparams, kfiles);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaMetadataProfile)KalturaObjectFactory.Create(result, "KalturaMetadataProfile");
+			this.Id = id;
+			this.MetadataProfile = metadataProfile;
+			this.XsdData = xsdData;
+			this.ViewsData = viewsData;
 		}
 
-		public KalturaMetadataProfile UpdateTransformationFromFile(int id, Stream xsltFile)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			KalturaFiles kfiles = new KalturaFiles();
-			kfiles.Add("xsltFile", xsltFile);
-			_Client.QueueServiceCall("metadata_metadataprofile", "updateTransformationFromFile", "KalturaMetadataProfile", kparams, kfiles);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaMetadataProfile)KalturaObjectFactory.Create(result, "KalturaMetadataProfile");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("metadataProfile"))
+				kparams.AddIfNotNull("metadataProfile", MetadataProfile);
+			if (!isMapped("xsdData"))
+				kparams.AddIfNotNull("xsdData", XsdData);
+			if (!isMapped("viewsData"))
+				kparams.AddIfNotNull("viewsData", ViewsData);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<MetadataProfile>(result);
+		}
+	}
+
+	public class MetadataProfileListRequestBuilder : RequestBuilder<ListResponse<MetadataProfile>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public MetadataProfileFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public MetadataProfileListRequestBuilder()
+			: base("metadata_metadataprofile", "list")
+		{
+		}
+
+		public MetadataProfileListRequestBuilder(MetadataProfileFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<MetadataProfile>>(result);
+		}
+	}
+
+	public class MetadataProfileListFieldsRequestBuilder : RequestBuilder<ListResponse<MetadataProfileField>>
+	{
+		#region Constants
+		public const string METADATA_PROFILE_ID = "metadataProfileId";
+		#endregion
+
+		public int MetadataProfileId
+		{
+			set;
+			get;
+		}
+
+		public MetadataProfileListFieldsRequestBuilder()
+			: base("metadata_metadataprofile", "listFields")
+		{
+		}
+
+		public MetadataProfileListFieldsRequestBuilder(int metadataProfileId)
+			: this()
+		{
+			this.MetadataProfileId = metadataProfileId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("metadataProfileId"))
+				kparams.AddIfNotNull("metadataProfileId", MetadataProfileId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<MetadataProfileField>>(result);
+		}
+	}
+
+	public class MetadataProfileDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public MetadataProfileDeleteRequestBuilder()
+			: base("metadata_metadataprofile", "delete")
+		{
+		}
+
+		public MetadataProfileDeleteRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class MetadataProfileRevertRequestBuilder : RequestBuilder<MetadataProfile>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string TO_VERSION = "toVersion";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public int ToVersion
+		{
+			set;
+			get;
+		}
+
+		public MetadataProfileRevertRequestBuilder()
+			: base("metadata_metadataprofile", "revert")
+		{
+		}
+
+		public MetadataProfileRevertRequestBuilder(int id, int toVersion)
+			: this()
+		{
+			this.Id = id;
+			this.ToVersion = toVersion;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("toVersion"))
+				kparams.AddIfNotNull("toVersion", ToVersion);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<MetadataProfile>(result);
+		}
+	}
+
+	public class MetadataProfileUpdateDefinitionFromFileRequestBuilder : RequestBuilder<MetadataProfile>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string XSD_FILE = "xsdFile";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public Stream XsdFile
+		{
+			set;
+			get;
+		}
+
+		public MetadataProfileUpdateDefinitionFromFileRequestBuilder()
+			: base("metadata_metadataprofile", "updateDefinitionFromFile")
+		{
+		}
+
+		public MetadataProfileUpdateDefinitionFromFileRequestBuilder(int id, Stream xsdFile)
+			: this()
+		{
+			this.Id = id;
+			this.XsdFile = xsdFile;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			kfiles.Add("xsdFile", XsdFile);
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<MetadataProfile>(result);
+		}
+	}
+
+	public class MetadataProfileUpdateViewsFromFileRequestBuilder : RequestBuilder<MetadataProfile>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string VIEWS_FILE = "viewsFile";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public Stream ViewsFile
+		{
+			set;
+			get;
+		}
+
+		public MetadataProfileUpdateViewsFromFileRequestBuilder()
+			: base("metadata_metadataprofile", "updateViewsFromFile")
+		{
+		}
+
+		public MetadataProfileUpdateViewsFromFileRequestBuilder(int id, Stream viewsFile)
+			: this()
+		{
+			this.Id = id;
+			this.ViewsFile = viewsFile;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			kfiles.Add("viewsFile", ViewsFile);
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<MetadataProfile>(result);
+		}
+	}
+
+	public class MetadataProfileUpdateTransformationFromFileRequestBuilder : RequestBuilder<MetadataProfile>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string XSLT_FILE = "xsltFile";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public Stream XsltFile
+		{
+			set;
+			get;
+		}
+
+		public MetadataProfileUpdateTransformationFromFileRequestBuilder()
+			: base("metadata_metadataprofile", "updateTransformationFromFile")
+		{
+		}
+
+		public MetadataProfileUpdateTransformationFromFileRequestBuilder(int id, Stream xsltFile)
+			: this()
+		{
+			this.Id = id;
+			this.XsltFile = xsltFile;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			kfiles.Add("xsltFile", XsltFile);
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<MetadataProfile>(result);
+		}
+	}
+
+
+	public class MetadataProfileService
+	{
+		private MetadataProfileService()
+		{
+		}
+
+		public static MetadataProfileAddRequestBuilder Add(MetadataProfile metadataProfile, string xsdData, string viewsData = null)
+		{
+			return new MetadataProfileAddRequestBuilder(metadataProfile, xsdData, viewsData);
+		}
+
+		public static MetadataProfileAddFromFileRequestBuilder AddFromFile(MetadataProfile metadataProfile, Stream xsdFile, Stream viewsFile = null)
+		{
+			return new MetadataProfileAddFromFileRequestBuilder(metadataProfile, xsdFile, viewsFile);
+		}
+
+		public static MetadataProfileGetRequestBuilder Get(int id)
+		{
+			return new MetadataProfileGetRequestBuilder(id);
+		}
+
+		public static MetadataProfileUpdateRequestBuilder Update(int id, MetadataProfile metadataProfile, string xsdData = null, string viewsData = null)
+		{
+			return new MetadataProfileUpdateRequestBuilder(id, metadataProfile, xsdData, viewsData);
+		}
+
+		public static MetadataProfileListRequestBuilder List(MetadataProfileFilter filter = null, FilterPager pager = null)
+		{
+			return new MetadataProfileListRequestBuilder(filter, pager);
+		}
+
+		public static MetadataProfileListFieldsRequestBuilder ListFields(int metadataProfileId)
+		{
+			return new MetadataProfileListFieldsRequestBuilder(metadataProfileId);
+		}
+
+		public static MetadataProfileDeleteRequestBuilder Delete(int id)
+		{
+			return new MetadataProfileDeleteRequestBuilder(id);
+		}
+
+		public static MetadataProfileRevertRequestBuilder Revert(int id, int toVersion)
+		{
+			return new MetadataProfileRevertRequestBuilder(id, toVersion);
+		}
+
+		public static MetadataProfileUpdateDefinitionFromFileRequestBuilder UpdateDefinitionFromFile(int id, Stream xsdFile)
+		{
+			return new MetadataProfileUpdateDefinitionFromFileRequestBuilder(id, xsdFile);
+		}
+
+		public static MetadataProfileUpdateViewsFromFileRequestBuilder UpdateViewsFromFile(int id, Stream viewsFile)
+		{
+			return new MetadataProfileUpdateViewsFromFileRequestBuilder(id, viewsFile);
+		}
+
+		public static MetadataProfileUpdateTransformationFromFileRequestBuilder UpdateTransformationFromFile(int id, Stream xsltFile)
+		{
+			return new MetadataProfileUpdateTransformationFromFileRequestBuilder(id, xsltFile);
 		}
 	}
 }

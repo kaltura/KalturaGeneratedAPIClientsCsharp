@@ -29,122 +29,446 @@ using System;
 using System.Xml;
 using System.Collections.Generic;
 using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
 
-namespace Kaltura
+namespace Kaltura.Services
 {
-
-	public class KalturaAttachmentAssetService : KalturaServiceBase
+	public class AttachmentAssetAddRequestBuilder : RequestBuilder<AttachmentAsset>
 	{
-	public KalturaAttachmentAssetService(KalturaClient client)
-			: base(client)
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string ATTACHMENT_ASSET = "attachmentAsset";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public AttachmentAsset AttachmentAsset
+		{
+			set;
+			get;
+		}
+
+		public AttachmentAssetAddRequestBuilder()
+			: base("attachment_attachmentasset", "add")
 		{
 		}
 
-		public KalturaAttachmentAsset Add(string entryId, KalturaAttachmentAsset attachmentAsset)
+		public AttachmentAssetAddRequestBuilder(string entryId, AttachmentAsset attachmentAsset)
+			: this()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("entryId", entryId);
-			kparams.AddIfNotNull("attachmentAsset", attachmentAsset);
-			_Client.QueueServiceCall("attachment_attachmentasset", "add", "KalturaAttachmentAsset", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaAttachmentAsset)KalturaObjectFactory.Create(result, "KalturaAttachmentAsset");
+			this.EntryId = entryId;
+			this.AttachmentAsset = attachmentAsset;
 		}
 
-		public KalturaAttachmentAsset SetContent(string id, KalturaContentResource contentResource)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("contentResource", contentResource);
-			_Client.QueueServiceCall("attachment_attachmentasset", "setContent", "KalturaAttachmentAsset", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaAttachmentAsset)KalturaObjectFactory.Create(result, "KalturaAttachmentAsset");
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("attachmentAsset"))
+				kparams.AddIfNotNull("attachmentAsset", AttachmentAsset);
+			return kparams;
 		}
 
-		public KalturaAttachmentAsset Update(string id, KalturaAttachmentAsset attachmentAsset)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("attachmentAsset", attachmentAsset);
-			_Client.QueueServiceCall("attachment_attachmentasset", "update", "KalturaAttachmentAsset", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaAttachmentAsset)KalturaObjectFactory.Create(result, "KalturaAttachmentAsset");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public string GetUrl(string id)
+		public override object Deserialize(XmlElement result)
 		{
-			return this.GetUrl(id, Int32.MinValue);
+			return ObjectFactory.Create<AttachmentAsset>(result);
+		}
+	}
+
+	public class AttachmentAssetSetContentRequestBuilder : RequestBuilder<AttachmentAsset>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string CONTENT_RESOURCE = "contentResource";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public ContentResource ContentResource
+		{
+			set;
+			get;
 		}
 
-		public string GetUrl(string id, int storageId)
+		public AttachmentAssetSetContentRequestBuilder()
+			: base("attachment_attachmentasset", "setContent")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			kparams.AddIfNotNull("storageId", storageId);
-			_Client.QueueServiceCall("attachment_attachmentasset", "getUrl", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
+		}
+
+		public AttachmentAssetSetContentRequestBuilder(string id, ContentResource contentResource)
+			: this()
+		{
+			this.Id = id;
+			this.ContentResource = contentResource;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("contentResource"))
+				kparams.AddIfNotNull("contentResource", ContentResource);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<AttachmentAsset>(result);
+		}
+	}
+
+	public class AttachmentAssetUpdateRequestBuilder : RequestBuilder<AttachmentAsset>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string ATTACHMENT_ASSET = "attachmentAsset";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public AttachmentAsset AttachmentAsset
+		{
+			set;
+			get;
+		}
+
+		public AttachmentAssetUpdateRequestBuilder()
+			: base("attachment_attachmentasset", "update")
+		{
+		}
+
+		public AttachmentAssetUpdateRequestBuilder(string id, AttachmentAsset attachmentAsset)
+			: this()
+		{
+			this.Id = id;
+			this.AttachmentAsset = attachmentAsset;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("attachmentAsset"))
+				kparams.AddIfNotNull("attachmentAsset", AttachmentAsset);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<AttachmentAsset>(result);
+		}
+	}
+
+	public class AttachmentAssetGetUrlRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string STORAGE_ID = "storageId";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public int StorageId
+		{
+			set;
+			get;
+		}
+
+		public AttachmentAssetGetUrlRequestBuilder()
+			: base("attachment_attachmentasset", "getUrl")
+		{
+		}
+
+		public AttachmentAssetGetUrlRequestBuilder(string id, int storageId)
+			: this()
+		{
+			this.Id = id;
+			this.StorageId = storageId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("storageId"))
+				kparams.AddIfNotNull("storageId", StorageId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
 			return result.InnerText;
 		}
+	}
 
-		public KalturaRemotePathListResponse GetRemotePaths(string id)
+	public class AttachmentAssetGetRemotePathsRequestBuilder : RequestBuilder<ListResponse<RemotePath>>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("id", id);
-			_Client.QueueServiceCall("attachment_attachmentasset", "getRemotePaths", "KalturaRemotePathListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaRemotePathListResponse)KalturaObjectFactory.Create(result, "KalturaRemotePathListResponse");
+			set;
+			get;
 		}
 
-		public KalturaAttachmentAsset Get(string attachmentAssetId)
+		public AttachmentAssetGetRemotePathsRequestBuilder()
+			: base("attachment_attachmentasset", "getRemotePaths")
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("attachmentAssetId", attachmentAssetId);
-			_Client.QueueServiceCall("attachment_attachmentasset", "get", "KalturaAttachmentAsset", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaAttachmentAsset)KalturaObjectFactory.Create(result, "KalturaAttachmentAsset");
 		}
 
-		public KalturaAttachmentAssetListResponse List()
+		public AttachmentAssetGetRemotePathsRequestBuilder(string id)
+			: this()
 		{
-			return this.List(null);
+			this.Id = id;
 		}
 
-		public KalturaAttachmentAssetListResponse List(KalturaAssetFilter filter)
+		public override Params getParameters(bool includeServiceAndAction)
 		{
-			return this.List(filter, null);
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
 		}
 
-		public KalturaAttachmentAssetListResponse List(KalturaAssetFilter filter, KalturaFilterPager pager)
+		public override Files getFiles()
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("filter", filter);
-			kparams.AddIfNotNull("pager", pager);
-			_Client.QueueServiceCall("attachment_attachmentasset", "list", "KalturaAttachmentAssetListResponse", kparams);
-			if (this._Client.IsMultiRequest)
-				return null;
-			XmlElement result = _Client.DoQueue();
-			return (KalturaAttachmentAssetListResponse)KalturaObjectFactory.Create(result, "KalturaAttachmentAssetListResponse");
+			Files kfiles = base.getFiles();
+			return kfiles;
 		}
 
-		public void Delete(string attachmentAssetId)
+		public override object Deserialize(XmlElement result)
 		{
-			KalturaParams kparams = new KalturaParams();
-			kparams.AddIfNotNull("attachmentAssetId", attachmentAssetId);
-			_Client.QueueServiceCall("attachment_attachmentasset", "delete", null, kparams);
-			if (this._Client.IsMultiRequest)
-				return;
-			XmlElement result = _Client.DoQueue();
+			return ObjectFactory.Create<ListResponse<RemotePath>>(result);
+		}
+	}
+
+	public class AttachmentAssetGetRequestBuilder : RequestBuilder<AttachmentAsset>
+	{
+		#region Constants
+		public const string ATTACHMENT_ASSET_ID = "attachmentAssetId";
+		#endregion
+
+		public string AttachmentAssetId
+		{
+			set;
+			get;
+		}
+
+		public AttachmentAssetGetRequestBuilder()
+			: base("attachment_attachmentasset", "get")
+		{
+		}
+
+		public AttachmentAssetGetRequestBuilder(string attachmentAssetId)
+			: this()
+		{
+			this.AttachmentAssetId = attachmentAssetId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("attachmentAssetId"))
+				kparams.AddIfNotNull("attachmentAssetId", AttachmentAssetId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<AttachmentAsset>(result);
+		}
+	}
+
+	public class AttachmentAssetListRequestBuilder : RequestBuilder<ListResponse<AttachmentAsset>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public AssetFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public AttachmentAssetListRequestBuilder()
+			: base("attachment_attachmentasset", "list")
+		{
+		}
+
+		public AttachmentAssetListRequestBuilder(AssetFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<AttachmentAsset>>(result);
+		}
+	}
+
+	public class AttachmentAssetDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ATTACHMENT_ASSET_ID = "attachmentAssetId";
+		#endregion
+
+		public string AttachmentAssetId
+		{
+			set;
+			get;
+		}
+
+		public AttachmentAssetDeleteRequestBuilder()
+			: base("attachment_attachmentasset", "delete")
+		{
+		}
+
+		public AttachmentAssetDeleteRequestBuilder(string attachmentAssetId)
+			: this()
+		{
+			this.AttachmentAssetId = attachmentAssetId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("attachmentAssetId"))
+				kparams.AddIfNotNull("attachmentAssetId", AttachmentAssetId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+
+	public class AttachmentAssetService
+	{
+		private AttachmentAssetService()
+		{
+		}
+
+		public static AttachmentAssetAddRequestBuilder Add(string entryId, AttachmentAsset attachmentAsset)
+		{
+			return new AttachmentAssetAddRequestBuilder(entryId, attachmentAsset);
+		}
+
+		public static AttachmentAssetSetContentRequestBuilder SetContent(string id, ContentResource contentResource)
+		{
+			return new AttachmentAssetSetContentRequestBuilder(id, contentResource);
+		}
+
+		public static AttachmentAssetUpdateRequestBuilder Update(string id, AttachmentAsset attachmentAsset)
+		{
+			return new AttachmentAssetUpdateRequestBuilder(id, attachmentAsset);
+		}
+
+		public static AttachmentAssetGetUrlRequestBuilder GetUrl(string id, int storageId = Int32.MinValue)
+		{
+			return new AttachmentAssetGetUrlRequestBuilder(id, storageId);
+		}
+
+		public static AttachmentAssetGetRemotePathsRequestBuilder GetRemotePaths(string id)
+		{
+			return new AttachmentAssetGetRemotePathsRequestBuilder(id);
+		}
+
+		public static AttachmentAssetGetRequestBuilder Get(string attachmentAssetId)
+		{
+			return new AttachmentAssetGetRequestBuilder(attachmentAssetId);
+		}
+
+		public static AttachmentAssetListRequestBuilder List(AssetFilter filter = null, FilterPager pager = null)
+		{
+			return new AttachmentAssetListRequestBuilder(filter, pager);
+		}
+
+		public static AttachmentAssetDeleteRequestBuilder Delete(string attachmentAssetId)
+		{
+			return new AttachmentAssetDeleteRequestBuilder(attachmentAssetId);
 		}
 	}
 }

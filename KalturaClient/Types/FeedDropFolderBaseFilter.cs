@@ -26,92 +26,51 @@
 // @ignore
 // ===================================================================================================
 using System;
-using Kaltura.Types;
+using System.Xml;
+using System.Collections.Generic;
 using Kaltura.Enums;
+using Kaltura.Request;
 
-namespace Kaltura
+namespace Kaltura.Types
 {
-	public class Client : ClientBase
+	public class FeedDropFolderBaseFilter : DropFolderFilter
 	{
-		public Client(Configuration config) : base(config)
-		{
-				ApiVersion = "3.3.0";
-				ClientTag = "dotnet:16-12-17";
-		}
-	
+		#region Constants
+		#endregion
+
+		#region Private Fields
+		#endregion
+
 		#region Properties
-			
- 		public string ClientTag
- 		{
- 			get
- 			{
- 				return clientConfiguration.ClientTag;
- 			}
- 			set
- 			{
- 				clientConfiguration.ClientTag = value;
- 			}
- 		}
-			
- 		public string ApiVersion
- 		{
- 			get
- 			{
- 				return clientConfiguration.ApiVersion;
- 			}
- 			set
- 			{
- 				clientConfiguration.ApiVersion = value;
- 			}
- 		}
-			
- 		public int PartnerId
- 		{
- 			get
- 			{
- 				return requestConfiguration.PartnerId;
- 			}
- 			set
- 			{
- 				requestConfiguration.PartnerId = value;
- 			}
- 		}
-			
- 		public string KS
- 		{
- 			get
- 			{
- 				return requestConfiguration.Ks;
- 			}
- 			set
- 			{
- 				requestConfiguration.Ks = value;
- 			}
- 		}
-			
- 		public string SessionId
- 		{
- 			get
- 			{
- 				return requestConfiguration.Ks;
- 			}
- 			set
- 			{
- 				requestConfiguration.Ks = value;
- 			}
- 		}
-			
- 		public BaseResponseProfile ResponseProfile
- 		{
- 			get
- 			{
- 				return requestConfiguration.ResponseProfile;
- 			}
- 			set
- 			{
- 				requestConfiguration.ResponseProfile = value;
- 			}
- 		}
+		#endregion
+
+		#region CTor
+		public FeedDropFolderBaseFilter()
+		{
+		}
+
+		public FeedDropFolderBaseFilter(XmlElement node) : base(node)
+		{
+		}
+		#endregion
+
+		#region Methods
+		public override Params ToParams(bool includeObjectType = true)
+		{
+			Params kparams = base.ToParams(includeObjectType);
+			if (includeObjectType)
+				kparams.AddReplace("objectType", "KalturaFeedDropFolderBaseFilter");
+			return kparams;
+		}
+		protected override string getPropertyName(string apiName)
+		{
+			switch(apiName)
+			{
+				default:
+					return base.getPropertyName(apiName);
+			}
+		}
 		#endregion
 	}
 }
+

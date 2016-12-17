@@ -25,93 +25,19 @@
 //
 // @ignore
 // ===================================================================================================
-using System;
-using Kaltura.Types;
-using Kaltura.Enums;
-
-namespace Kaltura
+namespace Kaltura.Enums
 {
-	public class Client : ClientBase
+	public sealed class FeedDropFolderOrderBy : StringEnum
 	{
-		public Client(Configuration config) : base(config)
-		{
-				ApiVersion = "3.3.0";
-				ClientTag = "dotnet:16-12-17";
-		}
-	
-		#region Properties
-			
- 		public string ClientTag
- 		{
- 			get
- 			{
- 				return clientConfiguration.ClientTag;
- 			}
- 			set
- 			{
- 				clientConfiguration.ClientTag = value;
- 			}
- 		}
-			
- 		public string ApiVersion
- 		{
- 			get
- 			{
- 				return clientConfiguration.ApiVersion;
- 			}
- 			set
- 			{
- 				clientConfiguration.ApiVersion = value;
- 			}
- 		}
-			
- 		public int PartnerId
- 		{
- 			get
- 			{
- 				return requestConfiguration.PartnerId;
- 			}
- 			set
- 			{
- 				requestConfiguration.PartnerId = value;
- 			}
- 		}
-			
- 		public string KS
- 		{
- 			get
- 			{
- 				return requestConfiguration.Ks;
- 			}
- 			set
- 			{
- 				requestConfiguration.Ks = value;
- 			}
- 		}
-			
- 		public string SessionId
- 		{
- 			get
- 			{
- 				return requestConfiguration.Ks;
- 			}
- 			set
- 			{
- 				requestConfiguration.Ks = value;
- 			}
- 		}
-			
- 		public BaseResponseProfile ResponseProfile
- 		{
- 			get
- 			{
- 				return requestConfiguration.ResponseProfile;
- 			}
- 			set
- 			{
- 				requestConfiguration.ResponseProfile = value;
- 			}
- 		}
-		#endregion
+		public static readonly FeedDropFolderOrderBy CREATED_AT_ASC = new FeedDropFolderOrderBy("+createdAt");
+		public static readonly FeedDropFolderOrderBy ID_ASC = new FeedDropFolderOrderBy("+id");
+		public static readonly FeedDropFolderOrderBy NAME_ASC = new FeedDropFolderOrderBy("+name");
+		public static readonly FeedDropFolderOrderBy UPDATED_AT_ASC = new FeedDropFolderOrderBy("+updatedAt");
+		public static readonly FeedDropFolderOrderBy CREATED_AT_DESC = new FeedDropFolderOrderBy("-createdAt");
+		public static readonly FeedDropFolderOrderBy ID_DESC = new FeedDropFolderOrderBy("-id");
+		public static readonly FeedDropFolderOrderBy NAME_DESC = new FeedDropFolderOrderBy("-name");
+		public static readonly FeedDropFolderOrderBy UPDATED_AT_DESC = new FeedDropFolderOrderBy("-updatedAt");
+
+		private FeedDropFolderOrderBy(string name) : base(name) { }
 	}
 }

@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "acceptInternalIps":
-						this._AcceptInternalIps = ParseBool(txt);
+						this._AcceptInternalIps = ParseBool(propertyNode.InnerText);
 						continue;
 					case "httpHeader":
-						this._HttpHeader = txt;
+						this._HttpHeader = propertyNode.InnerText;
 						continue;
 				}
 			}

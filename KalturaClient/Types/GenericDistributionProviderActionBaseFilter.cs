@@ -163,38 +163,37 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this._IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "idIn":
-						this._IdIn = txt;
+						this._IdIn = propertyNode.InnerText;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "genericDistributionProviderIdEqual":
-						this._GenericDistributionProviderIdEqual = ParseInt(txt);
+						this._GenericDistributionProviderIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "genericDistributionProviderIdIn":
-						this._GenericDistributionProviderIdIn = txt;
+						this._GenericDistributionProviderIdIn = propertyNode.InnerText;
 						continue;
 					case "actionEqual":
-						this._ActionEqual = (DistributionAction)ParseEnum(typeof(DistributionAction), txt);
+						this._ActionEqual = (DistributionAction)ParseEnum(typeof(DistributionAction), propertyNode.InnerText);
 						continue;
 					case "actionIn":
-						this._ActionIn = txt;
+						this._ActionIn = propertyNode.InnerText;
 						continue;
 				}
 			}

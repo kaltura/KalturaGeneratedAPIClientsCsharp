@@ -372,95 +372,94 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this._IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "idIn":
-						this._IdIn = txt;
+						this._IdIn = propertyNode.InnerText;
 						continue;
 					case "partnerIdEqual":
-						this._PartnerIdEqual = ParseInt(txt);
+						this._PartnerIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerIdIn":
-						this._PartnerIdIn = txt;
+						this._PartnerIdIn = propertyNode.InnerText;
 						continue;
 					case "nameLike":
-						this._NameLike = txt;
+						this._NameLike = propertyNode.InnerText;
 						continue;
 					case "typeEqual":
-						this._TypeEqual = (DropFolderType)StringEnum.Parse(typeof(DropFolderType), txt);
+						this._TypeEqual = (DropFolderType)StringEnum.Parse(typeof(DropFolderType), propertyNode.InnerText);
 						continue;
 					case "typeIn":
-						this._TypeIn = txt;
+						this._TypeIn = propertyNode.InnerText;
 						continue;
 					case "statusEqual":
-						this._StatusEqual = (DropFolderStatus)ParseEnum(typeof(DropFolderStatus), txt);
+						this._StatusEqual = (DropFolderStatus)ParseEnum(typeof(DropFolderStatus), propertyNode.InnerText);
 						continue;
 					case "statusIn":
-						this._StatusIn = txt;
+						this._StatusIn = propertyNode.InnerText;
 						continue;
 					case "conversionProfileIdEqual":
-						this._ConversionProfileIdEqual = ParseInt(txt);
+						this._ConversionProfileIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "conversionProfileIdIn":
-						this._ConversionProfileIdIn = txt;
+						this._ConversionProfileIdIn = propertyNode.InnerText;
 						continue;
 					case "dcEqual":
-						this._DcEqual = ParseInt(txt);
+						this._DcEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "dcIn":
-						this._DcIn = txt;
+						this._DcIn = propertyNode.InnerText;
 						continue;
 					case "pathEqual":
-						this._PathEqual = txt;
+						this._PathEqual = propertyNode.InnerText;
 						continue;
 					case "pathLike":
-						this._PathLike = txt;
+						this._PathLike = propertyNode.InnerText;
 						continue;
 					case "fileHandlerTypeEqual":
-						this._FileHandlerTypeEqual = (DropFolderFileHandlerType)StringEnum.Parse(typeof(DropFolderFileHandlerType), txt);
+						this._FileHandlerTypeEqual = (DropFolderFileHandlerType)StringEnum.Parse(typeof(DropFolderFileHandlerType), propertyNode.InnerText);
 						continue;
 					case "fileHandlerTypeIn":
-						this._FileHandlerTypeIn = txt;
+						this._FileHandlerTypeIn = propertyNode.InnerText;
 						continue;
 					case "fileNamePatternsLike":
-						this._FileNamePatternsLike = txt;
+						this._FileNamePatternsLike = propertyNode.InnerText;
 						continue;
 					case "fileNamePatternsMultiLikeOr":
-						this._FileNamePatternsMultiLikeOr = txt;
+						this._FileNamePatternsMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "fileNamePatternsMultiLikeAnd":
-						this._FileNamePatternsMultiLikeAnd = txt;
+						this._FileNamePatternsMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "tagsLike":
-						this._TagsLike = txt;
+						this._TagsLike = propertyNode.InnerText;
 						continue;
 					case "tagsMultiLikeOr":
-						this._TagsMultiLikeOr = txt;
+						this._TagsMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "tagsMultiLikeAnd":
-						this._TagsMultiLikeAnd = txt;
+						this._TagsMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "errorCodeEqual":
-						this._ErrorCodeEqual = (DropFolderErrorCode)StringEnum.Parse(typeof(DropFolderErrorCode), txt);
+						this._ErrorCodeEqual = (DropFolderErrorCode)StringEnum.Parse(typeof(DropFolderErrorCode), propertyNode.InnerText);
 						continue;
 					case "errorCodeIn":
-						this._ErrorCodeIn = txt;
+						this._ErrorCodeIn = propertyNode.InnerText;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

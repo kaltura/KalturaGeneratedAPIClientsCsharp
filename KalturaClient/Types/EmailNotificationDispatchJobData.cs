@@ -174,14 +174,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "fromEmail":
-						this._FromEmail = txt;
+						this._FromEmail = propertyNode.InnerText;
 						continue;
 					case "fromName":
-						this._FromName = txt;
+						this._FromName = propertyNode.InnerText;
 						continue;
 					case "to":
 						this._To = ObjectFactory.Create<EmailNotificationRecipientJobData>(propertyNode);
@@ -196,16 +195,16 @@ namespace Kaltura.Types
 						this._ReplyTo = ObjectFactory.Create<EmailNotificationRecipientJobData>(propertyNode);
 						continue;
 					case "priority":
-						this._Priority = (EmailNotificationTemplatePriority)ParseEnum(typeof(EmailNotificationTemplatePriority), txt);
+						this._Priority = (EmailNotificationTemplatePriority)ParseEnum(typeof(EmailNotificationTemplatePriority), propertyNode.InnerText);
 						continue;
 					case "confirmReadingTo":
-						this._ConfirmReadingTo = txt;
+						this._ConfirmReadingTo = propertyNode.InnerText;
 						continue;
 					case "hostname":
-						this._Hostname = txt;
+						this._Hostname = propertyNode.InnerText;
 						continue;
 					case "messageID":
-						this._MessageID = txt;
+						this._MessageID = propertyNode.InnerText;
 						continue;
 					case "customHeaders":
 						this._CustomHeaders = new List<KeyValue>();

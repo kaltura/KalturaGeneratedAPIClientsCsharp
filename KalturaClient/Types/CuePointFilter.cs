@@ -97,20 +97,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "freeText":
-						this._FreeText = txt;
+						this._FreeText = propertyNode.InnerText;
 						continue;
 					case "userIdEqualCurrent":
-						this._UserIdEqualCurrent = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._UserIdEqualCurrent = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "userIdCurrent":
-						this._UserIdCurrent = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._UserIdCurrent = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "orderBy":
-						this._OrderBy = (CuePointOrderBy)StringEnum.Parse(typeof(CuePointOrderBy), txt);
+						this._OrderBy = (CuePointOrderBy)StringEnum.Parse(typeof(CuePointOrderBy), propertyNode.InnerText);
 						continue;
 				}
 			}

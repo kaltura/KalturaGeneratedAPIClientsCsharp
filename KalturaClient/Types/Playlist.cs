@@ -121,11 +121,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "playlistContent":
-						this._PlaylistContent = txt;
+						this._PlaylistContent = propertyNode.InnerText;
 						continue;
 					case "filters":
 						this._Filters = new List<MediaEntryFilterForPlaylist>();
@@ -135,22 +134,22 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "totalResults":
-						this._TotalResults = ParseInt(txt);
+						this._TotalResults = ParseInt(propertyNode.InnerText);
 						continue;
 					case "playlistType":
-						this._PlaylistType = (PlaylistType)ParseEnum(typeof(PlaylistType), txt);
+						this._PlaylistType = (PlaylistType)ParseEnum(typeof(PlaylistType), propertyNode.InnerText);
 						continue;
 					case "plays":
-						this._Plays = ParseInt(txt);
+						this._Plays = ParseInt(propertyNode.InnerText);
 						continue;
 					case "views":
-						this._Views = ParseInt(txt);
+						this._Views = ParseInt(propertyNode.InnerText);
 						continue;
 					case "duration":
-						this._Duration = ParseInt(txt);
+						this._Duration = ParseInt(propertyNode.InnerText);
 						continue;
 					case "executeUrl":
-						this._ExecuteUrl = txt;
+						this._ExecuteUrl = propertyNode.InnerText;
 						continue;
 				}
 			}

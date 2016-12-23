@@ -152,20 +152,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "ruleData":
-						this._RuleData = txt;
+						this._RuleData = propertyNode.InnerText;
 						continue;
 					case "message":
-						this._Message = txt;
+						this._Message = propertyNode.InnerText;
 						continue;
 					case "code":
-						this._Code = txt;
+						this._Code = propertyNode.InnerText;
 						continue;
 					case "actions":
 						this._Actions = new List<RuleAction>();
@@ -189,10 +188,10 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "stopProcessing":
-						this._StopProcessing = ParseBool(txt);
+						this._StopProcessing = ParseBool(propertyNode.InnerText);
 						continue;
 					case "forceAdminValidation":
-						this._ForceAdminValidation = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._ForceAdminValidation = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 				}
 			}

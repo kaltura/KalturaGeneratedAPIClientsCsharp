@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "deleteType":
-						this._DeleteType = (DeleteFlavorsLogicType)ParseEnum(typeof(DeleteFlavorsLogicType), txt);
+						this._DeleteType = (DeleteFlavorsLogicType)ParseEnum(typeof(DeleteFlavorsLogicType), propertyNode.InnerText);
 						continue;
 					case "flavorParamsIds":
-						this._FlavorParamsIds = txt;
+						this._FlavorParamsIds = propertyNode.InnerText;
 						continue;
 				}
 			}

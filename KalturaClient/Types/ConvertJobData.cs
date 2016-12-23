@@ -152,29 +152,28 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "destFileSyncLocalPath":
-						this._DestFileSyncLocalPath = txt;
+						this._DestFileSyncLocalPath = propertyNode.InnerText;
 						continue;
 					case "destFileSyncRemoteUrl":
-						this._DestFileSyncRemoteUrl = txt;
+						this._DestFileSyncRemoteUrl = propertyNode.InnerText;
 						continue;
 					case "logFileSyncLocalPath":
-						this._LogFileSyncLocalPath = txt;
+						this._LogFileSyncLocalPath = propertyNode.InnerText;
 						continue;
 					case "logFileSyncRemoteUrl":
-						this._LogFileSyncRemoteUrl = txt;
+						this._LogFileSyncRemoteUrl = propertyNode.InnerText;
 						continue;
 					case "flavorAssetId":
-						this._FlavorAssetId = txt;
+						this._FlavorAssetId = propertyNode.InnerText;
 						continue;
 					case "remoteMediaId":
-						this._RemoteMediaId = txt;
+						this._RemoteMediaId = propertyNode.InnerText;
 						continue;
 					case "customData":
-						this._CustomData = txt;
+						this._CustomData = propertyNode.InnerText;
 						continue;
 					case "extraDestFileSyncs":
 						this._ExtraDestFileSyncs = new List<DestFileSyncDescriptor>();
@@ -184,7 +183,7 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "engineMessage":
-						this._EngineMessage = txt;
+						this._EngineMessage = propertyNode.InnerText;
 						continue;
 				}
 			}

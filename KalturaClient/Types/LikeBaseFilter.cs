@@ -108,23 +108,22 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "entryIdEqual":
-						this._EntryIdEqual = txt;
+						this._EntryIdEqual = propertyNode.InnerText;
 						continue;
 					case "entryIdIn":
-						this._EntryIdIn = txt;
+						this._EntryIdIn = propertyNode.InnerText;
 						continue;
 					case "userIdEqual":
-						this._UserIdEqual = txt;
+						this._UserIdEqual = propertyNode.InnerText;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

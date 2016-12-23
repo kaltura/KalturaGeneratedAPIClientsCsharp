@@ -108,23 +108,22 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "keyWords":
-						this._KeyWords = txt;
+						this._KeyWords = propertyNode.InnerText;
 						continue;
 					case "searchSource":
-						this._SearchSource = (SearchProviderType)ParseEnum(typeof(SearchProviderType), txt);
+						this._SearchSource = (SearchProviderType)ParseEnum(typeof(SearchProviderType), propertyNode.InnerText);
 						continue;
 					case "mediaType":
-						this._MediaType = (MediaType)ParseEnum(typeof(MediaType), txt);
+						this._MediaType = (MediaType)ParseEnum(typeof(MediaType), propertyNode.InnerText);
 						continue;
 					case "extraData":
-						this._ExtraData = txt;
+						this._ExtraData = propertyNode.InnerText;
 						continue;
 					case "authData":
-						this._AuthData = txt;
+						this._AuthData = propertyNode.InnerText;
 						continue;
 				}
 			}

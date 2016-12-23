@@ -130,29 +130,28 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "templateEntryIdEqual":
-						this._TemplateEntryIdEqual = txt;
+						this._TemplateEntryIdEqual = propertyNode.InnerText;
 						continue;
 					case "entryIdsLike":
-						this._EntryIdsLike = txt;
+						this._EntryIdsLike = propertyNode.InnerText;
 						continue;
 					case "entryIdsMultiLikeOr":
-						this._EntryIdsMultiLikeOr = txt;
+						this._EntryIdsMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "entryIdsMultiLikeAnd":
-						this._EntryIdsMultiLikeAnd = txt;
+						this._EntryIdsMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "categoryIdsLike":
-						this._CategoryIdsLike = txt;
+						this._CategoryIdsLike = propertyNode.InnerText;
 						continue;
 					case "categoryIdsMultiLikeOr":
-						this._CategoryIdsMultiLikeOr = txt;
+						this._CategoryIdsMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "categoryIdsMultiLikeAnd":
-						this._CategoryIdsMultiLikeAnd = txt;
+						this._CategoryIdsMultiLikeAnd = propertyNode.InnerText;
 						continue;
 				}
 			}

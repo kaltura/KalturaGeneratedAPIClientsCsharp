@@ -119,41 +119,40 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "metadataProfileId":
-						this._MetadataProfileId = ParseInt(txt);
+						this._MetadataProfileId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "metadataProfileVersion":
-						this._MetadataProfileVersion = ParseInt(txt);
+						this._MetadataProfileVersion = ParseInt(propertyNode.InnerText);
 						continue;
 					case "metadataObjectType":
-						this._MetadataObjectType = (MetadataObjectType)StringEnum.Parse(typeof(MetadataObjectType), txt);
+						this._MetadataObjectType = (MetadataObjectType)StringEnum.Parse(typeof(MetadataObjectType), propertyNode.InnerText);
 						continue;
 					case "objectId":
-						this._ObjectId = txt;
+						this._ObjectId = propertyNode.InnerText;
 						continue;
 					case "version":
-						this._Version = ParseInt(txt);
+						this._Version = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "status":
-						this._Status = (MetadataStatus)ParseEnum(typeof(MetadataStatus), txt);
+						this._Status = (MetadataStatus)ParseEnum(typeof(MetadataStatus), propertyNode.InnerText);
 						continue;
 					case "xml":
-						this._Xml = txt;
+						this._Xml = propertyNode.InnerText;
 						continue;
 				}
 			}

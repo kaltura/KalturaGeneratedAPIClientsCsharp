@@ -152,35 +152,34 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "userId":
-						this._UserId = txt;
+						this._UserId = propertyNode.InnerText;
 						continue;
 					case "type":
-						this._Type = (NotificationType)ParseEnum(typeof(NotificationType), txt);
+						this._Type = (NotificationType)ParseEnum(typeof(NotificationType), propertyNode.InnerText);
 						continue;
 					case "typeAsString":
-						this._TypeAsString = txt;
+						this._TypeAsString = propertyNode.InnerText;
 						continue;
 					case "objectId":
-						this._ObjectId = txt;
+						this._ObjectId = propertyNode.InnerText;
 						continue;
 					case "status":
-						this._Status = (NotificationStatus)ParseEnum(typeof(NotificationStatus), txt);
+						this._Status = (NotificationStatus)ParseEnum(typeof(NotificationStatus), propertyNode.InnerText);
 						continue;
 					case "data":
-						this._Data = txt;
+						this._Data = propertyNode.InnerText;
 						continue;
 					case "numberOfAttempts":
-						this._NumberOfAttempts = ParseInt(txt);
+						this._NumberOfAttempts = ParseInt(propertyNode.InnerText);
 						continue;
 					case "notificationResult":
-						this._NotificationResult = txt;
+						this._NotificationResult = propertyNode.InnerText;
 						continue;
 					case "objType":
-						this._ObjType = (NotificationObjectType)ParseEnum(typeof(NotificationObjectType), txt);
+						this._ObjType = (NotificationObjectType)ParseEnum(typeof(NotificationObjectType), propertyNode.InnerText);
 						continue;
 				}
 			}

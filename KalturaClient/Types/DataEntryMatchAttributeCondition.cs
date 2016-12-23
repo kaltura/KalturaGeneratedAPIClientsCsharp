@@ -64,11 +64,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "attribute":
-						this._Attribute = (DataEntryMatchAttribute)StringEnum.Parse(typeof(DataEntryMatchAttribute), txt);
+						this._Attribute = (DataEntryMatchAttribute)StringEnum.Parse(typeof(DataEntryMatchAttribute), propertyNode.InnerText);
 						continue;
 				}
 			}

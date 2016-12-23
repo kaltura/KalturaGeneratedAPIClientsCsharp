@@ -152,50 +152,49 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "userId":
-						this._UserId = txt;
+						this._UserId = propertyNode.InnerText;
 						continue;
 					case "uploadedBy":
-						this._UploadedBy = txt;
+						this._UploadedBy = propertyNode.InnerText;
 						continue;
 					case "conversionProfileId":
-						this._ConversionProfileId = ParseInt(txt);
+						this._ConversionProfileId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "resultsFileLocalPath":
-						this._ResultsFileLocalPath = txt;
+						this._ResultsFileLocalPath = propertyNode.InnerText;
 						continue;
 					case "resultsFileUrl":
-						this._ResultsFileUrl = txt;
+						this._ResultsFileUrl = propertyNode.InnerText;
 						continue;
 					case "numOfEntries":
-						this._NumOfEntries = ParseInt(txt);
+						this._NumOfEntries = ParseInt(propertyNode.InnerText);
 						continue;
 					case "numOfObjects":
-						this._NumOfObjects = ParseInt(txt);
+						this._NumOfObjects = ParseInt(propertyNode.InnerText);
 						continue;
 					case "filePath":
-						this._FilePath = txt;
+						this._FilePath = propertyNode.InnerText;
 						continue;
 					case "bulkUploadObjectType":
-						this._BulkUploadObjectType = (BulkUploadObjectType)StringEnum.Parse(typeof(BulkUploadObjectType), txt);
+						this._BulkUploadObjectType = (BulkUploadObjectType)StringEnum.Parse(typeof(BulkUploadObjectType), propertyNode.InnerText);
 						continue;
 					case "fileName":
-						this._FileName = txt;
+						this._FileName = propertyNode.InnerText;
 						continue;
 					case "objectData":
 						this._ObjectData = ObjectFactory.Create<BulkUploadObjectData>(propertyNode);
 						continue;
 					case "type":
-						this._Type = (BulkUploadType)StringEnum.Parse(typeof(BulkUploadType), txt);
+						this._Type = (BulkUploadType)StringEnum.Parse(typeof(BulkUploadType), propertyNode.InnerText);
 						continue;
 					case "emailRecipients":
-						this._EmailRecipients = txt;
+						this._EmailRecipients = propertyNode.InnerText;
 						continue;
 					case "numOfErrorObjects":
-						this._NumOfErrorObjects = ParseInt(txt);
+						this._NumOfErrorObjects = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

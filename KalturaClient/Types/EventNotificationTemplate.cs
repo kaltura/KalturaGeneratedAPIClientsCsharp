@@ -204,47 +204,46 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "name":
-						this._Name = txt;
+						this._Name = propertyNode.InnerText;
 						continue;
 					case "systemName":
-						this._SystemName = txt;
+						this._SystemName = propertyNode.InnerText;
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "type":
-						this._Type = (EventNotificationTemplateType)StringEnum.Parse(typeof(EventNotificationTemplateType), txt);
+						this._Type = (EventNotificationTemplateType)StringEnum.Parse(typeof(EventNotificationTemplateType), propertyNode.InnerText);
 						continue;
 					case "status":
-						this._Status = (EventNotificationTemplateStatus)ParseEnum(typeof(EventNotificationTemplateStatus), txt);
+						this._Status = (EventNotificationTemplateStatus)ParseEnum(typeof(EventNotificationTemplateStatus), propertyNode.InnerText);
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "manualDispatchEnabled":
-						this._ManualDispatchEnabled = ParseBool(txt);
+						this._ManualDispatchEnabled = ParseBool(propertyNode.InnerText);
 						continue;
 					case "automaticDispatchEnabled":
-						this._AutomaticDispatchEnabled = ParseBool(txt);
+						this._AutomaticDispatchEnabled = ParseBool(propertyNode.InnerText);
 						continue;
 					case "eventType":
-						this._EventType = (EventNotificationEventType)StringEnum.Parse(typeof(EventNotificationEventType), txt);
+						this._EventType = (EventNotificationEventType)StringEnum.Parse(typeof(EventNotificationEventType), propertyNode.InnerText);
 						continue;
 					case "eventObjectType":
-						this._EventObjectType = (EventNotificationEventObjectType)StringEnum.Parse(typeof(EventNotificationEventObjectType), txt);
+						this._EventObjectType = (EventNotificationEventObjectType)StringEnum.Parse(typeof(EventNotificationEventObjectType), propertyNode.InnerText);
 						continue;
 					case "eventConditions":
 						this._EventConditions = new List<Condition>();

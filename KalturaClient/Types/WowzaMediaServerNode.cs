@@ -119,26 +119,25 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "appPrefix":
-						this._AppPrefix = txt;
+						this._AppPrefix = propertyNode.InnerText;
 						continue;
 					case "transcoder":
-						this._Transcoder = txt;
+						this._Transcoder = propertyNode.InnerText;
 						continue;
 					case "GPUID":
-						this._GPUID = ParseInt(txt);
+						this._GPUID = ParseInt(propertyNode.InnerText);
 						continue;
 					case "liveServicePort":
-						this._LiveServicePort = ParseInt(txt);
+						this._LiveServicePort = ParseInt(propertyNode.InnerText);
 						continue;
 					case "liveServiceProtocol":
-						this._LiveServiceProtocol = txt;
+						this._LiveServiceProtocol = propertyNode.InnerText;
 						continue;
 					case "liveServiceInternalDomain":
-						this._LiveServiceInternalDomain = txt;
+						this._LiveServiceInternalDomain = propertyNode.InnerText;
 						continue;
 				}
 			}

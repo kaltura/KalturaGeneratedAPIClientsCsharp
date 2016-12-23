@@ -130,29 +130,28 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "limit":
-						this._Limit = ParseInt(txt);
+						this._Limit = ParseInt(propertyNode.InnerText);
 						continue;
 					case "cachedObjectType":
-						this._CachedObjectType = txt;
+						this._CachedObjectType = propertyNode.InnerText;
 						continue;
 					case "objectId":
-						this._ObjectId = txt;
+						this._ObjectId = propertyNode.InnerText;
 						continue;
 					case "startObjectKey":
-						this._StartObjectKey = txt;
+						this._StartObjectKey = propertyNode.InnerText;
 						continue;
 					case "endObjectKey":
-						this._EndObjectKey = txt;
+						this._EndObjectKey = propertyNode.InnerText;
 						continue;
 					case "jobCreatedAt":
-						this._JobCreatedAt = ParseInt(txt);
+						this._JobCreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "isFirstLoop":
-						this._IsFirstLoop = ParseBool(txt);
+						this._IsFirstLoop = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}

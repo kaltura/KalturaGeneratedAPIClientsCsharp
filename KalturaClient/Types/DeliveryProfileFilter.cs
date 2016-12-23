@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "isLive":
-						this._IsLive = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._IsLive = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "orderBy":
-						this._OrderBy = (DeliveryProfileOrderBy)StringEnum.Parse(typeof(DeliveryProfileOrderBy), txt);
+						this._OrderBy = (DeliveryProfileOrderBy)StringEnum.Parse(typeof(DeliveryProfileOrderBy), propertyNode.InnerText);
 						continue;
 				}
 			}

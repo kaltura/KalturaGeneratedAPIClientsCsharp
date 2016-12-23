@@ -86,17 +86,16 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "pattern":
-						this._Pattern = txt;
+						this._Pattern = propertyNode.InnerText;
 						continue;
 					case "rendererClass":
-						this._RendererClass = txt;
+						this._RendererClass = propertyNode.InnerText;
 						continue;
 					case "manifestRedirect":
-						this._ManifestRedirect = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._ManifestRedirect = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 				}
 			}

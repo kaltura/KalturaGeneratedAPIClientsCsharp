@@ -86,7 +86,6 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "flavorAsset":
@@ -96,7 +95,7 @@ namespace Kaltura.Types
 						this._FlavorParams = ObjectFactory.Create<FlavorParams>(propertyNode);
 						continue;
 					case "entryId":
-						this._EntryId = txt;
+						this._EntryId = propertyNode.InnerText;
 						continue;
 				}
 			}

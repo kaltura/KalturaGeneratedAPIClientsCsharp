@@ -251,38 +251,37 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseLong(txt);
+						this._Id = ParseLong(propertyNode.InnerText);
 						continue;
 					case "uploadedBy":
-						this._UploadedBy = txt;
+						this._UploadedBy = propertyNode.InnerText;
 						continue;
 					case "uploadedByUserId":
-						this._UploadedByUserId = txt;
+						this._UploadedByUserId = propertyNode.InnerText;
 						continue;
 					case "uploadedOn":
-						this._UploadedOn = ParseInt(txt);
+						this._UploadedOn = ParseInt(propertyNode.InnerText);
 						continue;
 					case "numOfEntries":
-						this._NumOfEntries = ParseInt(txt);
+						this._NumOfEntries = ParseInt(propertyNode.InnerText);
 						continue;
 					case "status":
-						this._Status = (BatchJobStatus)ParseEnum(typeof(BatchJobStatus), txt);
+						this._Status = (BatchJobStatus)ParseEnum(typeof(BatchJobStatus), propertyNode.InnerText);
 						continue;
 					case "logFileUrl":
-						this._LogFileUrl = txt;
+						this._LogFileUrl = propertyNode.InnerText;
 						continue;
 					case "csvFileUrl":
-						this._CsvFileUrl = txt;
+						this._CsvFileUrl = propertyNode.InnerText;
 						continue;
 					case "bulkFileUrl":
-						this._BulkFileUrl = txt;
+						this._BulkFileUrl = propertyNode.InnerText;
 						continue;
 					case "bulkUploadType":
-						this._BulkUploadType = (BulkUploadType)StringEnum.Parse(typeof(BulkUploadType), txt);
+						this._BulkUploadType = (BulkUploadType)StringEnum.Parse(typeof(BulkUploadType), propertyNode.InnerText);
 						continue;
 					case "results":
 						this._Results = new List<BulkUploadResult>();
@@ -292,25 +291,25 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "error":
-						this._Error = txt;
+						this._Error = propertyNode.InnerText;
 						continue;
 					case "errorType":
-						this._ErrorType = (BatchJobErrorTypes)ParseEnum(typeof(BatchJobErrorTypes), txt);
+						this._ErrorType = (BatchJobErrorTypes)ParseEnum(typeof(BatchJobErrorTypes), propertyNode.InnerText);
 						continue;
 					case "errorNumber":
-						this._ErrorNumber = ParseInt(txt);
+						this._ErrorNumber = ParseInt(propertyNode.InnerText);
 						continue;
 					case "fileName":
-						this._FileName = txt;
+						this._FileName = propertyNode.InnerText;
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "numOfObjects":
-						this._NumOfObjects = ParseInt(txt);
+						this._NumOfObjects = ParseInt(propertyNode.InnerText);
 						continue;
 					case "bulkUploadObjectType":
-						this._BulkUploadObjectType = (BulkUploadObjectType)StringEnum.Parse(typeof(BulkUploadObjectType), txt);
+						this._BulkUploadObjectType = (BulkUploadObjectType)StringEnum.Parse(typeof(BulkUploadObjectType), propertyNode.InnerText);
 						continue;
 				}
 			}

@@ -97,20 +97,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "shouldCopyEntitlement":
-						this._ShouldCopyEntitlement = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._ShouldCopyEntitlement = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "shouldCopyScheduling":
-						this._ShouldCopyScheduling = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._ShouldCopyScheduling = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "shouldCopyThumbnail":
-						this._ShouldCopyThumbnail = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._ShouldCopyThumbnail = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "shouldMakeHidden":
-						this._ShouldMakeHidden = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._ShouldMakeHidden = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 				}
 			}

@@ -119,26 +119,25 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "freeText":
-						this._FreeText = txt;
+						this._FreeText = propertyNode.InnerText;
 						continue;
 					case "isRoot":
-						this._IsRoot = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._IsRoot = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "categoriesFullNameIn":
-						this._CategoriesFullNameIn = txt;
+						this._CategoriesFullNameIn = propertyNode.InnerText;
 						continue;
 					case "categoryAncestorIdIn":
-						this._CategoryAncestorIdIn = txt;
+						this._CategoryAncestorIdIn = propertyNode.InnerText;
 						continue;
 					case "redirectFromEntryId":
-						this._RedirectFromEntryId = txt;
+						this._RedirectFromEntryId = propertyNode.InnerText;
 						continue;
 					case "orderBy":
-						this._OrderBy = (BaseEntryOrderBy)StringEnum.Parse(typeof(BaseEntryOrderBy), txt);
+						this._OrderBy = (BaseEntryOrderBy)StringEnum.Parse(typeof(BaseEntryOrderBy), propertyNode.InnerText);
 						continue;
 				}
 			}

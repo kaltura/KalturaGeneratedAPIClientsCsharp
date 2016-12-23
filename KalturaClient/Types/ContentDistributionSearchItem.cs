@@ -130,29 +130,28 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "noDistributionProfiles":
-						this._NoDistributionProfiles = ParseBool(txt);
+						this._NoDistributionProfiles = ParseBool(propertyNode.InnerText);
 						continue;
 					case "distributionProfileId":
-						this._DistributionProfileId = ParseInt(txt);
+						this._DistributionProfileId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "distributionSunStatus":
-						this._DistributionSunStatus = (EntryDistributionSunStatus)ParseEnum(typeof(EntryDistributionSunStatus), txt);
+						this._DistributionSunStatus = (EntryDistributionSunStatus)ParseEnum(typeof(EntryDistributionSunStatus), propertyNode.InnerText);
 						continue;
 					case "entryDistributionFlag":
-						this._EntryDistributionFlag = (EntryDistributionFlag)ParseEnum(typeof(EntryDistributionFlag), txt);
+						this._EntryDistributionFlag = (EntryDistributionFlag)ParseEnum(typeof(EntryDistributionFlag), propertyNode.InnerText);
 						continue;
 					case "entryDistributionStatus":
-						this._EntryDistributionStatus = (EntryDistributionStatus)ParseEnum(typeof(EntryDistributionStatus), txt);
+						this._EntryDistributionStatus = (EntryDistributionStatus)ParseEnum(typeof(EntryDistributionStatus), propertyNode.InnerText);
 						continue;
 					case "hasEntryDistributionValidationErrors":
-						this._HasEntryDistributionValidationErrors = ParseBool(txt);
+						this._HasEntryDistributionValidationErrors = ParseBool(propertyNode.InnerText);
 						continue;
 					case "entryDistributionValidationErrors":
-						this._EntryDistributionValidationErrors = txt;
+						this._EntryDistributionValidationErrors = propertyNode.InnerText;
 						continue;
 				}
 			}

@@ -119,7 +119,6 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "srcFiles":
@@ -130,19 +129,19 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "destFilePath":
-						this._DestFilePath = txt;
+						this._DestFilePath = propertyNode.InnerText;
 						continue;
 					case "flavorAssetId":
-						this._FlavorAssetId = txt;
+						this._FlavorAssetId = propertyNode.InnerText;
 						continue;
 					case "offset":
-						this._Offset = ParseFloat(txt);
+						this._Offset = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "duration":
-						this._Duration = ParseFloat(txt);
+						this._Duration = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "concatenatedDuration":
-						this._ConcatenatedDuration = ParseFloat(txt);
+						this._ConcatenatedDuration = ParseFloat(propertyNode.InnerText);
 						continue;
 				}
 			}

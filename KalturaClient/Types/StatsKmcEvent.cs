@@ -169,41 +169,40 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "clientVer":
-						this._ClientVer = txt;
+						this._ClientVer = propertyNode.InnerText;
 						continue;
 					case "kmcEventActionPath":
-						this._KmcEventActionPath = txt;
+						this._KmcEventActionPath = propertyNode.InnerText;
 						continue;
 					case "kmcEventType":
-						this._KmcEventType = (StatsKmcEventType)ParseEnum(typeof(StatsKmcEventType), txt);
+						this._KmcEventType = (StatsKmcEventType)ParseEnum(typeof(StatsKmcEventType), propertyNode.InnerText);
 						continue;
 					case "eventTimestamp":
-						this._EventTimestamp = ParseFloat(txt);
+						this._EventTimestamp = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "sessionId":
-						this._SessionId = txt;
+						this._SessionId = propertyNode.InnerText;
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "entryId":
-						this._EntryId = txt;
+						this._EntryId = propertyNode.InnerText;
 						continue;
 					case "widgetId":
-						this._WidgetId = txt;
+						this._WidgetId = propertyNode.InnerText;
 						continue;
 					case "uiconfId":
-						this._UiconfId = ParseInt(txt);
+						this._UiconfId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "userId":
-						this._UserId = txt;
+						this._UserId = propertyNode.InnerText;
 						continue;
 					case "userIp":
-						this._UserIp = txt;
+						this._UserIp = propertyNode.InnerText;
 						continue;
 				}
 			}

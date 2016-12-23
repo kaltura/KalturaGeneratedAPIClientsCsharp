@@ -136,23 +136,22 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "fieldName":
-						this._FieldName = txt;
+						this._FieldName = propertyNode.InnerText;
 						continue;
 					case "userFriendlyFieldName":
-						this._UserFriendlyFieldName = txt;
+						this._UserFriendlyFieldName = propertyNode.InnerText;
 						continue;
 					case "entryMrssXslt":
-						this._EntryMrssXslt = txt;
+						this._EntryMrssXslt = propertyNode.InnerText;
 						continue;
 					case "isRequired":
-						this._IsRequired = (DistributionFieldRequiredStatus)ParseEnum(typeof(DistributionFieldRequiredStatus), txt);
+						this._IsRequired = (DistributionFieldRequiredStatus)ParseEnum(typeof(DistributionFieldRequiredStatus), propertyNode.InnerText);
 						continue;
 					case "updateOnChange":
-						this._UpdateOnChange = ParseBool(txt);
+						this._UpdateOnChange = ParseBool(propertyNode.InnerText);
 						continue;
 					case "updateParams":
 						this._UpdateParams = new List<String>();
@@ -162,10 +161,10 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "isDefault":
-						this._IsDefault = ParseBool(txt);
+						this._IsDefault = ParseBool(propertyNode.InnerText);
 						continue;
 					case "triggerDeleteOnError":
-						this._TriggerDeleteOnError = ParseBool(txt);
+						this._TriggerDeleteOnError = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}

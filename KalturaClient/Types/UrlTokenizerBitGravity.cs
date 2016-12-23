@@ -64,11 +64,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "hashPatternRegex":
-						this._HashPatternRegex = txt;
+						this._HashPatternRegex = propertyNode.InnerText;
 						continue;
 				}
 			}

@@ -202,29 +202,28 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "configuredId":
-						this._ConfiguredId = ParseInt(txt);
+						this._ConfiguredId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "schedulerId":
-						this._SchedulerId = ParseInt(txt);
+						this._SchedulerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "schedulerConfiguredId":
-						this._SchedulerConfiguredId = ParseInt(txt);
+						this._SchedulerConfiguredId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "type":
-						this._Type = (BatchJobType)StringEnum.Parse(typeof(BatchJobType), txt);
+						this._Type = (BatchJobType)StringEnum.Parse(typeof(BatchJobType), propertyNode.InnerText);
 						continue;
 					case "typeName":
-						this._TypeName = txt;
+						this._TypeName = propertyNode.InnerText;
 						continue;
 					case "name":
-						this._Name = txt;
+						this._Name = propertyNode.InnerText;
 						continue;
 					case "statuses":
 						this._Statuses = new List<SchedulerStatus>();
@@ -248,16 +247,16 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "avgWait":
-						this._AvgWait = ParseInt(txt);
+						this._AvgWait = ParseInt(propertyNode.InnerText);
 						continue;
 					case "avgWork":
-						this._AvgWork = ParseInt(txt);
+						this._AvgWork = ParseInt(propertyNode.InnerText);
 						continue;
 					case "lastStatus":
-						this._LastStatus = ParseInt(txt);
+						this._LastStatus = ParseInt(propertyNode.InnerText);
 						continue;
 					case "lastStatusStr":
-						this._LastStatusStr = txt;
+						this._LastStatusStr = propertyNode.InnerText;
 						continue;
 				}
 			}

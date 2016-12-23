@@ -163,38 +163,37 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "userIdEqual":
-						this._UserIdEqual = txt;
+						this._UserIdEqual = propertyNode.InnerText;
 						continue;
 					case "userIdIn":
-						this._UserIdIn = txt;
+						this._UserIdIn = propertyNode.InnerText;
 						continue;
 					case "groupIdEqual":
-						this._GroupIdEqual = txt;
+						this._GroupIdEqual = propertyNode.InnerText;
 						continue;
 					case "groupIdIn":
-						this._GroupIdIn = txt;
+						this._GroupIdIn = propertyNode.InnerText;
 						continue;
 					case "statusEqual":
-						this._StatusEqual = (GroupUserStatus)ParseEnum(typeof(GroupUserStatus), txt);
+						this._StatusEqual = (GroupUserStatus)ParseEnum(typeof(GroupUserStatus), propertyNode.InnerText);
 						continue;
 					case "statusIn":
-						this._StatusIn = txt;
+						this._StatusIn = propertyNode.InnerText;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

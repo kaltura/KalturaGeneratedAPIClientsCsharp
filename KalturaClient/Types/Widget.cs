@@ -199,56 +199,55 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = txt;
+						this._Id = propertyNode.InnerText;
 						continue;
 					case "sourceWidgetId":
-						this._SourceWidgetId = txt;
+						this._SourceWidgetId = propertyNode.InnerText;
 						continue;
 					case "rootWidgetId":
-						this._RootWidgetId = txt;
+						this._RootWidgetId = propertyNode.InnerText;
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "entryId":
-						this._EntryId = txt;
+						this._EntryId = propertyNode.InnerText;
 						continue;
 					case "uiConfId":
-						this._UiConfId = ParseInt(txt);
+						this._UiConfId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "securityType":
-						this._SecurityType = (WidgetSecurityType)ParseEnum(typeof(WidgetSecurityType), txt);
+						this._SecurityType = (WidgetSecurityType)ParseEnum(typeof(WidgetSecurityType), propertyNode.InnerText);
 						continue;
 					case "securityPolicy":
-						this._SecurityPolicy = ParseInt(txt);
+						this._SecurityPolicy = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerData":
-						this._PartnerData = txt;
+						this._PartnerData = propertyNode.InnerText;
 						continue;
 					case "widgetHTML":
-						this._WidgetHTML = txt;
+						this._WidgetHTML = propertyNode.InnerText;
 						continue;
 					case "enforceEntitlement":
-						this._EnforceEntitlement = ParseBool(txt);
+						this._EnforceEntitlement = ParseBool(propertyNode.InnerText);
 						continue;
 					case "privacyContext":
-						this._PrivacyContext = txt;
+						this._PrivacyContext = propertyNode.InnerText;
 						continue;
 					case "addEmbedHtml5Support":
-						this._AddEmbedHtml5Support = ParseBool(txt);
+						this._AddEmbedHtml5Support = ParseBool(propertyNode.InnerText);
 						continue;
 					case "roles":
-						this._Roles = txt;
+						this._Roles = propertyNode.InnerText;
 						continue;
 				}
 			}

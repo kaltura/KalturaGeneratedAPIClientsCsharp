@@ -119,26 +119,25 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "filesPermissionInS3":
-						this._FilesPermissionInS3 = (AmazonS3StorageProfileFilesPermissionLevel)StringEnum.Parse(typeof(AmazonS3StorageProfileFilesPermissionLevel), txt);
+						this._FilesPermissionInS3 = (AmazonS3StorageProfileFilesPermissionLevel)StringEnum.Parse(typeof(AmazonS3StorageProfileFilesPermissionLevel), propertyNode.InnerText);
 						continue;
 					case "s3Region":
-						this._S3Region = txt;
+						this._S3Region = propertyNode.InnerText;
 						continue;
 					case "sseType":
-						this._SseType = txt;
+						this._SseType = propertyNode.InnerText;
 						continue;
 					case "sseKmsKeyId":
-						this._SseKmsKeyId = txt;
+						this._SseKmsKeyId = propertyNode.InnerText;
 						continue;
 					case "signatureType":
-						this._SignatureType = txt;
+						this._SignatureType = propertyNode.InnerText;
 						continue;
 					case "endPoint":
-						this._EndPoint = txt;
+						this._EndPoint = propertyNode.InnerText;
 						continue;
 				}
 			}

@@ -86,17 +86,16 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "totalEntryCount":
-						this._TotalEntryCount = ParseInt(txt);
+						this._TotalEntryCount = ParseInt(propertyNode.InnerText);
 						continue;
 					case "actualEntryCount":
-						this._ActualEntryCount = ParseInt(txt);
+						this._ActualEntryCount = ParseInt(propertyNode.InnerText);
 						continue;
 					case "requireTranscodingCount":
-						this._RequireTranscodingCount = ParseInt(txt);
+						this._RequireTranscodingCount = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

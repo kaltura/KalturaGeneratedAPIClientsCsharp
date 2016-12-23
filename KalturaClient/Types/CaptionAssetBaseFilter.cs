@@ -130,29 +130,28 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "captionParamsIdEqual":
-						this._CaptionParamsIdEqual = ParseInt(txt);
+						this._CaptionParamsIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "captionParamsIdIn":
-						this._CaptionParamsIdIn = txt;
+						this._CaptionParamsIdIn = propertyNode.InnerText;
 						continue;
 					case "formatEqual":
-						this._FormatEqual = (CaptionType)StringEnum.Parse(typeof(CaptionType), txt);
+						this._FormatEqual = (CaptionType)StringEnum.Parse(typeof(CaptionType), propertyNode.InnerText);
 						continue;
 					case "formatIn":
-						this._FormatIn = txt;
+						this._FormatIn = propertyNode.InnerText;
 						continue;
 					case "statusEqual":
-						this._StatusEqual = (CaptionAssetStatus)ParseEnum(typeof(CaptionAssetStatus), txt);
+						this._StatusEqual = (CaptionAssetStatus)ParseEnum(typeof(CaptionAssetStatus), propertyNode.InnerText);
 						continue;
 					case "statusIn":
-						this._StatusIn = txt;
+						this._StatusIn = propertyNode.InnerText;
 						continue;
 					case "statusNotIn":
-						this._StatusNotIn = txt;
+						this._StatusNotIn = propertyNode.InnerText;
 						continue;
 				}
 			}

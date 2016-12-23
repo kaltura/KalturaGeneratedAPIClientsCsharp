@@ -194,56 +194,55 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = txt;
+						this._Id = propertyNode.InnerText;
 						continue;
 					case "cuePointType":
-						this._CuePointType = (CuePointType)StringEnum.Parse(typeof(CuePointType), txt);
+						this._CuePointType = (CuePointType)StringEnum.Parse(typeof(CuePointType), propertyNode.InnerText);
 						continue;
 					case "status":
-						this._Status = (CuePointStatus)ParseEnum(typeof(CuePointStatus), txt);
+						this._Status = (CuePointStatus)ParseEnum(typeof(CuePointStatus), propertyNode.InnerText);
 						continue;
 					case "entryId":
-						this._EntryId = txt;
+						this._EntryId = propertyNode.InnerText;
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "triggeredAt":
-						this._TriggeredAt = ParseInt(txt);
+						this._TriggeredAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "tags":
-						this._Tags = txt;
+						this._Tags = propertyNode.InnerText;
 						continue;
 					case "startTime":
-						this._StartTime = ParseInt(txt);
+						this._StartTime = ParseInt(propertyNode.InnerText);
 						continue;
 					case "userId":
-						this._UserId = txt;
+						this._UserId = propertyNode.InnerText;
 						continue;
 					case "partnerData":
-						this._PartnerData = txt;
+						this._PartnerData = propertyNode.InnerText;
 						continue;
 					case "partnerSortValue":
-						this._PartnerSortValue = ParseInt(txt);
+						this._PartnerSortValue = ParseInt(propertyNode.InnerText);
 						continue;
 					case "forceStop":
-						this._ForceStop = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._ForceStop = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "thumbOffset":
-						this._ThumbOffset = ParseInt(txt);
+						this._ThumbOffset = ParseInt(propertyNode.InnerText);
 						continue;
 					case "systemName":
-						this._SystemName = txt;
+						this._SystemName = propertyNode.InnerText;
 						continue;
 				}
 			}

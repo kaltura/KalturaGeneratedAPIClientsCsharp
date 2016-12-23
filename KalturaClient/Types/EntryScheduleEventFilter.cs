@@ -97,20 +97,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "parentCategoryIdsLike":
-						this._ParentCategoryIdsLike = txt;
+						this._ParentCategoryIdsLike = propertyNode.InnerText;
 						continue;
 					case "parentCategoryIdsMultiLikeOr":
-						this._ParentCategoryIdsMultiLikeOr = txt;
+						this._ParentCategoryIdsMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "parentCategoryIdsMultiLikeAnd":
-						this._ParentCategoryIdsMultiLikeAnd = txt;
+						this._ParentCategoryIdsMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "orderBy":
-						this._OrderBy = (EntryScheduleEventOrderBy)StringEnum.Parse(typeof(EntryScheduleEventOrderBy), txt);
+						this._OrderBy = (EntryScheduleEventOrderBy)StringEnum.Parse(typeof(EntryScheduleEventOrderBy), propertyNode.InnerText);
 						continue;
 				}
 			}

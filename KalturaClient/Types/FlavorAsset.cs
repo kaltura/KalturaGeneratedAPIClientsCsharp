@@ -135,44 +135,43 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "flavorParamsId":
-						this._FlavorParamsId = ParseInt(txt);
+						this._FlavorParamsId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "width":
-						this._Width = ParseInt(txt);
+						this._Width = ParseInt(propertyNode.InnerText);
 						continue;
 					case "height":
-						this._Height = ParseInt(txt);
+						this._Height = ParseInt(propertyNode.InnerText);
 						continue;
 					case "bitrate":
-						this._Bitrate = ParseInt(txt);
+						this._Bitrate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "frameRate":
-						this._FrameRate = ParseFloat(txt);
+						this._FrameRate = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "isOriginal":
-						this._IsOriginal = ParseBool(txt);
+						this._IsOriginal = ParseBool(propertyNode.InnerText);
 						continue;
 					case "isWeb":
-						this._IsWeb = ParseBool(txt);
+						this._IsWeb = ParseBool(propertyNode.InnerText);
 						continue;
 					case "containerFormat":
-						this._ContainerFormat = txt;
+						this._ContainerFormat = propertyNode.InnerText;
 						continue;
 					case "videoCodecId":
-						this._VideoCodecId = txt;
+						this._VideoCodecId = propertyNode.InnerText;
 						continue;
 					case "status":
-						this._Status = (FlavorAssetStatus)ParseEnum(typeof(FlavorAssetStatus), txt);
+						this._Status = (FlavorAssetStatus)ParseEnum(typeof(FlavorAssetStatus), propertyNode.InnerText);
 						continue;
 					case "language":
-						this._Language = (Language)StringEnum.Parse(typeof(Language), txt);
+						this._Language = (Language)StringEnum.Parse(typeof(Language), propertyNode.InnerText);
 						continue;
 					case "label":
-						this._Label = txt;
+						this._Label = propertyNode.InnerText;
 						continue;
 				}
 			}

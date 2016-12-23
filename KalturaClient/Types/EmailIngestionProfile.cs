@@ -209,56 +209,55 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "name":
-						this._Name = txt;
+						this._Name = propertyNode.InnerText;
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "emailAddress":
-						this._EmailAddress = txt;
+						this._EmailAddress = propertyNode.InnerText;
 						continue;
 					case "mailboxId":
-						this._MailboxId = txt;
+						this._MailboxId = propertyNode.InnerText;
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "conversionProfile2Id":
-						this._ConversionProfile2Id = ParseInt(txt);
+						this._ConversionProfile2Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "moderationStatus":
-						this._ModerationStatus = (EntryModerationStatus)ParseEnum(typeof(EntryModerationStatus), txt);
+						this._ModerationStatus = (EntryModerationStatus)ParseEnum(typeof(EntryModerationStatus), propertyNode.InnerText);
 						continue;
 					case "status":
-						this._Status = (EmailIngestionProfileStatus)ParseEnum(typeof(EmailIngestionProfileStatus), txt);
+						this._Status = (EmailIngestionProfileStatus)ParseEnum(typeof(EmailIngestionProfileStatus), propertyNode.InnerText);
 						continue;
 					case "createdAt":
-						this._CreatedAt = txt;
+						this._CreatedAt = propertyNode.InnerText;
 						continue;
 					case "defaultCategory":
-						this._DefaultCategory = txt;
+						this._DefaultCategory = propertyNode.InnerText;
 						continue;
 					case "defaultUserId":
-						this._DefaultUserId = txt;
+						this._DefaultUserId = propertyNode.InnerText;
 						continue;
 					case "defaultTags":
-						this._DefaultTags = txt;
+						this._DefaultTags = propertyNode.InnerText;
 						continue;
 					case "defaultAdminTags":
-						this._DefaultAdminTags = txt;
+						this._DefaultAdminTags = propertyNode.InnerText;
 						continue;
 					case "maxAttachmentSizeKbytes":
-						this._MaxAttachmentSizeKbytes = ParseInt(txt);
+						this._MaxAttachmentSizeKbytes = ParseInt(propertyNode.InnerText);
 						continue;
 					case "maxAttachmentsPerMail":
-						this._MaxAttachmentsPerMail = ParseInt(txt);
+						this._MaxAttachmentsPerMail = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

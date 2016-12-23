@@ -141,32 +141,31 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "entryId":
-						this._EntryId = txt;
+						this._EntryId = propertyNode.InnerText;
 						continue;
 					case "assetId":
-						this._AssetId = txt;
+						this._AssetId = propertyNode.InnerText;
 						continue;
 					case "mediaServerIndex":
-						this._MediaServerIndex = (EntryServerNodeType)StringEnum.Parse(typeof(EntryServerNodeType), txt);
+						this._MediaServerIndex = (EntryServerNodeType)StringEnum.Parse(typeof(EntryServerNodeType), propertyNode.InnerText);
 						continue;
 					case "fileIndex":
-						this._FileIndex = ParseInt(txt);
+						this._FileIndex = ParseInt(propertyNode.InnerText);
 						continue;
 					case "srcFilePath":
-						this._SrcFilePath = txt;
+						this._SrcFilePath = propertyNode.InnerText;
 						continue;
 					case "destFilePath":
-						this._DestFilePath = txt;
+						this._DestFilePath = propertyNode.InnerText;
 						continue;
 					case "endTime":
-						this._EndTime = ParseFloat(txt);
+						this._EndTime = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "destDataFilePath":
-						this._DestDataFilePath = txt;
+						this._DestDataFilePath = propertyNode.InnerText;
 						continue;
 				}
 			}

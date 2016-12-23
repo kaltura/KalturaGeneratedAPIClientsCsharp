@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "ipAddressRestrictionType":
-						this._IpAddressRestrictionType = (IpAddressRestrictionType)ParseEnum(typeof(IpAddressRestrictionType), txt);
+						this._IpAddressRestrictionType = (IpAddressRestrictionType)ParseEnum(typeof(IpAddressRestrictionType), propertyNode.InnerText);
 						continue;
 					case "ipAddressList":
-						this._IpAddressList = txt;
+						this._IpAddressList = propertyNode.InnerText;
 						continue;
 				}
 			}

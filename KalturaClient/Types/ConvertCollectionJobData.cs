@@ -130,26 +130,25 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "destDirLocalPath":
-						this._DestDirLocalPath = txt;
+						this._DestDirLocalPath = propertyNode.InnerText;
 						continue;
 					case "destDirRemoteUrl":
-						this._DestDirRemoteUrl = txt;
+						this._DestDirRemoteUrl = propertyNode.InnerText;
 						continue;
 					case "destFileName":
-						this._DestFileName = txt;
+						this._DestFileName = propertyNode.InnerText;
 						continue;
 					case "inputXmlLocalPath":
-						this._InputXmlLocalPath = txt;
+						this._InputXmlLocalPath = propertyNode.InnerText;
 						continue;
 					case "inputXmlRemoteUrl":
-						this._InputXmlRemoteUrl = txt;
+						this._InputXmlRemoteUrl = propertyNode.InnerText;
 						continue;
 					case "commandLinesStr":
-						this._CommandLinesStr = txt;
+						this._CommandLinesStr = propertyNode.InnerText;
 						continue;
 					case "flavors":
 						this._Flavors = new List<ConvertCollectionFlavorData>();

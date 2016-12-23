@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "value":
 						this._Value = ObjectFactory.Create<IntegerValue>(propertyNode);
 						continue;
 					case "comparison":
-						this._Comparison = (SearchConditionComparison)StringEnum.Parse(typeof(SearchConditionComparison), txt);
+						this._Comparison = (SearchConditionComparison)StringEnum.Parse(typeof(SearchConditionComparison), propertyNode.InnerText);
 						continue;
 				}
 			}

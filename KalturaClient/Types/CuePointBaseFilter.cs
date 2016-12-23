@@ -361,92 +361,91 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this._IdEqual = txt;
+						this._IdEqual = propertyNode.InnerText;
 						continue;
 					case "idIn":
-						this._IdIn = txt;
+						this._IdIn = propertyNode.InnerText;
 						continue;
 					case "cuePointTypeEqual":
-						this._CuePointTypeEqual = (CuePointType)StringEnum.Parse(typeof(CuePointType), txt);
+						this._CuePointTypeEqual = (CuePointType)StringEnum.Parse(typeof(CuePointType), propertyNode.InnerText);
 						continue;
 					case "cuePointTypeIn":
-						this._CuePointTypeIn = txt;
+						this._CuePointTypeIn = propertyNode.InnerText;
 						continue;
 					case "statusEqual":
-						this._StatusEqual = (CuePointStatus)ParseEnum(typeof(CuePointStatus), txt);
+						this._StatusEqual = (CuePointStatus)ParseEnum(typeof(CuePointStatus), propertyNode.InnerText);
 						continue;
 					case "statusIn":
-						this._StatusIn = txt;
+						this._StatusIn = propertyNode.InnerText;
 						continue;
 					case "entryIdEqual":
-						this._EntryIdEqual = txt;
+						this._EntryIdEqual = propertyNode.InnerText;
 						continue;
 					case "entryIdIn":
-						this._EntryIdIn = txt;
+						this._EntryIdIn = propertyNode.InnerText;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "triggeredAtGreaterThanOrEqual":
-						this._TriggeredAtGreaterThanOrEqual = ParseInt(txt);
+						this._TriggeredAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "triggeredAtLessThanOrEqual":
-						this._TriggeredAtLessThanOrEqual = ParseInt(txt);
+						this._TriggeredAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "tagsLike":
-						this._TagsLike = txt;
+						this._TagsLike = propertyNode.InnerText;
 						continue;
 					case "tagsMultiLikeOr":
-						this._TagsMultiLikeOr = txt;
+						this._TagsMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "tagsMultiLikeAnd":
-						this._TagsMultiLikeAnd = txt;
+						this._TagsMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "startTimeGreaterThanOrEqual":
-						this._StartTimeGreaterThanOrEqual = ParseInt(txt);
+						this._StartTimeGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "startTimeLessThanOrEqual":
-						this._StartTimeLessThanOrEqual = ParseInt(txt);
+						this._StartTimeLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "userIdEqual":
-						this._UserIdEqual = txt;
+						this._UserIdEqual = propertyNode.InnerText;
 						continue;
 					case "userIdIn":
-						this._UserIdIn = txt;
+						this._UserIdIn = propertyNode.InnerText;
 						continue;
 					case "partnerSortValueEqual":
-						this._PartnerSortValueEqual = ParseInt(txt);
+						this._PartnerSortValueEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerSortValueIn":
-						this._PartnerSortValueIn = txt;
+						this._PartnerSortValueIn = propertyNode.InnerText;
 						continue;
 					case "partnerSortValueGreaterThanOrEqual":
-						this._PartnerSortValueGreaterThanOrEqual = ParseInt(txt);
+						this._PartnerSortValueGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerSortValueLessThanOrEqual":
-						this._PartnerSortValueLessThanOrEqual = ParseInt(txt);
+						this._PartnerSortValueLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "forceStopEqual":
-						this._ForceStopEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._ForceStopEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "systemNameEqual":
-						this._SystemNameEqual = txt;
+						this._SystemNameEqual = propertyNode.InnerText;
 						continue;
 					case "systemNameIn":
-						this._SystemNameIn = txt;
+						this._SystemNameIn = propertyNode.InnerText;
 						continue;
 				}
 			}

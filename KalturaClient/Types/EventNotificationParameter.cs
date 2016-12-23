@@ -86,14 +86,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "key":
-						this._Key = txt;
+						this._Key = propertyNode.InnerText;
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "value":
 						this._Value = ObjectFactory.Create<StringValue>(propertyNode);

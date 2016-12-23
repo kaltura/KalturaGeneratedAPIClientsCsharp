@@ -64,11 +64,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "adultContent":
-						this._AdultContent = (GoogleSyndicationFeedAdultValues)StringEnum.Parse(typeof(GoogleSyndicationFeedAdultValues), txt);
+						this._AdultContent = (GoogleSyndicationFeedAdultValues)StringEnum.Parse(typeof(GoogleSyndicationFeedAdultValues), propertyNode.InnerText);
 						continue;
 				}
 			}

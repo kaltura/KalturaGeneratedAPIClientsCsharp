@@ -148,38 +148,37 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "entryId":
-						this._EntryId = txt;
+						this._EntryId = propertyNode.InnerText;
 						continue;
 					case "flavorAssetId":
-						this._FlavorAssetId = txt;
+						this._FlavorAssetId = propertyNode.InnerText;
 						continue;
 					case "captionAssetFormats":
-						this._CaptionAssetFormats = txt;
+						this._CaptionAssetFormats = propertyNode.InnerText;
 						continue;
 					case "priority":
-						this._Priority = (Cielo24Priority)StringEnum.Parse(typeof(Cielo24Priority), txt);
+						this._Priority = (Cielo24Priority)StringEnum.Parse(typeof(Cielo24Priority), propertyNode.InnerText);
 						continue;
 					case "fidelity":
-						this._Fidelity = (Cielo24Fidelity)StringEnum.Parse(typeof(Cielo24Fidelity), txt);
+						this._Fidelity = (Cielo24Fidelity)StringEnum.Parse(typeof(Cielo24Fidelity), propertyNode.InnerText);
 						continue;
 					case "username":
-						this._Username = txt;
+						this._Username = propertyNode.InnerText;
 						continue;
 					case "password":
-						this._Password = txt;
+						this._Password = propertyNode.InnerText;
 						continue;
 					case "baseUrl":
-						this._BaseUrl = txt;
+						this._BaseUrl = propertyNode.InnerText;
 						continue;
 					case "spokenLanguage":
-						this._SpokenLanguage = (Language)StringEnum.Parse(typeof(Language), txt);
+						this._SpokenLanguage = (Language)StringEnum.Parse(typeof(Language), propertyNode.InnerText);
 						continue;
 					case "replaceMediaContent":
-						this._ReplaceMediaContent = ParseBool(txt);
+						this._ReplaceMediaContent = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}

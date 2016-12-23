@@ -59,11 +59,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "providerType":
-						this._ProviderType = (EmailNotificationRecipientProviderType)StringEnum.Parse(typeof(EmailNotificationRecipientProviderType), txt);
+						this._ProviderType = (EmailNotificationRecipientProviderType)StringEnum.Parse(typeof(EmailNotificationRecipientProviderType), propertyNode.InnerText);
 						continue;
 				}
 			}

@@ -75,11 +75,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "xslt":
-						this._Xslt = txt;
+						this._Xslt = propertyNode.InnerText;
 						continue;
 					case "itemXpathsToExtend":
 						this._ItemXpathsToExtend = new List<ExtendingItemMrssParameter>();

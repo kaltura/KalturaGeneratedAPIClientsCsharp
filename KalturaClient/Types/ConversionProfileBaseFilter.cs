@@ -196,47 +196,46 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this._IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "idIn":
-						this._IdIn = txt;
+						this._IdIn = propertyNode.InnerText;
 						continue;
 					case "statusEqual":
-						this._StatusEqual = (ConversionProfileStatus)StringEnum.Parse(typeof(ConversionProfileStatus), txt);
+						this._StatusEqual = (ConversionProfileStatus)StringEnum.Parse(typeof(ConversionProfileStatus), propertyNode.InnerText);
 						continue;
 					case "statusIn":
-						this._StatusIn = txt;
+						this._StatusIn = propertyNode.InnerText;
 						continue;
 					case "typeEqual":
-						this._TypeEqual = (ConversionProfileType)StringEnum.Parse(typeof(ConversionProfileType), txt);
+						this._TypeEqual = (ConversionProfileType)StringEnum.Parse(typeof(ConversionProfileType), propertyNode.InnerText);
 						continue;
 					case "typeIn":
-						this._TypeIn = txt;
+						this._TypeIn = propertyNode.InnerText;
 						continue;
 					case "nameEqual":
-						this._NameEqual = txt;
+						this._NameEqual = propertyNode.InnerText;
 						continue;
 					case "systemNameEqual":
-						this._SystemNameEqual = txt;
+						this._SystemNameEqual = propertyNode.InnerText;
 						continue;
 					case "systemNameIn":
-						this._SystemNameIn = txt;
+						this._SystemNameIn = propertyNode.InnerText;
 						continue;
 					case "tagsMultiLikeOr":
-						this._TagsMultiLikeOr = txt;
+						this._TagsMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "tagsMultiLikeAnd":
-						this._TagsMultiLikeAnd = txt;
+						this._TagsMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "defaultEntryIdEqual":
-						this._DefaultEntryIdEqual = txt;
+						this._DefaultEntryIdEqual = propertyNode.InnerText;
 						continue;
 					case "defaultEntryIdIn":
-						this._DefaultEntryIdIn = txt;
+						this._DefaultEntryIdIn = propertyNode.InnerText;
 						continue;
 				}
 			}

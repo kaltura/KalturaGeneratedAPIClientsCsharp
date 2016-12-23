@@ -64,11 +64,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "value":
-						this._Value = ParseBool(txt);
+						this._Value = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}

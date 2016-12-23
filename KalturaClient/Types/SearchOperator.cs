@@ -75,11 +75,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "type":
-						this._Type = (SearchOperatorType)ParseEnum(typeof(SearchOperatorType), txt);
+						this._Type = (SearchOperatorType)ParseEnum(typeof(SearchOperatorType), propertyNode.InnerText);
 						continue;
 					case "items":
 						this._Items = new List<SearchItem>();

@@ -108,23 +108,22 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "objectTypeEqual":
-						this._ObjectTypeEqual = (TaggedObjectType)StringEnum.Parse(typeof(TaggedObjectType), txt);
+						this._ObjectTypeEqual = (TaggedObjectType)StringEnum.Parse(typeof(TaggedObjectType), propertyNode.InnerText);
 						continue;
 					case "tagEqual":
-						this._TagEqual = txt;
+						this._TagEqual = propertyNode.InnerText;
 						continue;
 					case "tagStartsWith":
-						this._TagStartsWith = txt;
+						this._TagStartsWith = propertyNode.InnerText;
 						continue;
 					case "instanceCountEqual":
-						this._InstanceCountEqual = ParseInt(txt);
+						this._InstanceCountEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "instanceCountIn":
-						this._InstanceCountIn = ParseInt(txt);
+						this._InstanceCountIn = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

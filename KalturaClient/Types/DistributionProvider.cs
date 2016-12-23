@@ -147,35 +147,34 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "type":
-						this._Type = (DistributionProviderType)StringEnum.Parse(typeof(DistributionProviderType), txt);
+						this._Type = (DistributionProviderType)StringEnum.Parse(typeof(DistributionProviderType), propertyNode.InnerText);
 						continue;
 					case "name":
-						this._Name = txt;
+						this._Name = propertyNode.InnerText;
 						continue;
 					case "scheduleUpdateEnabled":
-						this._ScheduleUpdateEnabled = ParseBool(txt);
+						this._ScheduleUpdateEnabled = ParseBool(propertyNode.InnerText);
 						continue;
 					case "availabilityUpdateEnabled":
-						this._AvailabilityUpdateEnabled = ParseBool(txt);
+						this._AvailabilityUpdateEnabled = ParseBool(propertyNode.InnerText);
 						continue;
 					case "deleteInsteadUpdate":
-						this._DeleteInsteadUpdate = ParseBool(txt);
+						this._DeleteInsteadUpdate = ParseBool(propertyNode.InnerText);
 						continue;
 					case "intervalBeforeSunrise":
-						this._IntervalBeforeSunrise = ParseInt(txt);
+						this._IntervalBeforeSunrise = ParseInt(propertyNode.InnerText);
 						continue;
 					case "intervalBeforeSunset":
-						this._IntervalBeforeSunset = ParseInt(txt);
+						this._IntervalBeforeSunset = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updateRequiredEntryFields":
-						this._UpdateRequiredEntryFields = txt;
+						this._UpdateRequiredEntryFields = propertyNode.InnerText;
 						continue;
 					case "updateRequiredMetadataXPaths":
-						this._UpdateRequiredMetadataXPaths = txt;
+						this._UpdateRequiredMetadataXPaths = propertyNode.InnerText;
 						continue;
 				}
 			}

@@ -130,29 +130,28 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "flavorAssetId":
-						this._FlavorAssetId = txt;
+						this._FlavorAssetId = propertyNode.InnerText;
 						continue;
 					case "createThumb":
-						this._CreateThumb = ParseBool(txt);
+						this._CreateThumb = ParseBool(propertyNode.InnerText);
 						continue;
 					case "thumbPath":
-						this._ThumbPath = txt;
+						this._ThumbPath = propertyNode.InnerText;
 						continue;
 					case "thumbOffset":
-						this._ThumbOffset = ParseInt(txt);
+						this._ThumbOffset = ParseInt(propertyNode.InnerText);
 						continue;
 					case "thumbHeight":
-						this._ThumbHeight = ParseInt(txt);
+						this._ThumbHeight = ParseInt(propertyNode.InnerText);
 						continue;
 					case "thumbBitrate":
-						this._ThumbBitrate = ParseInt(txt);
+						this._ThumbBitrate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "customData":
-						this._CustomData = txt;
+						this._CustomData = propertyNode.InnerText;
 						continue;
 				}
 			}

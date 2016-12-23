@@ -86,17 +86,16 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "cuePointsFreeText":
-						this._CuePointsFreeText = txt;
+						this._CuePointsFreeText = propertyNode.InnerText;
 						continue;
 					case "cuePointTypeIn":
-						this._CuePointTypeIn = txt;
+						this._CuePointTypeIn = propertyNode.InnerText;
 						continue;
 					case "cuePointSubTypeEqual":
-						this._CuePointSubTypeEqual = ParseInt(txt);
+						this._CuePointSubTypeEqual = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

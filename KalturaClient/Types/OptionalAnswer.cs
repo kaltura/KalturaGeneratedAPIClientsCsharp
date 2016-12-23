@@ -97,20 +97,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "key":
-						this._Key = txt;
+						this._Key = propertyNode.InnerText;
 						continue;
 					case "text":
-						this._Text = txt;
+						this._Text = propertyNode.InnerText;
 						continue;
 					case "weight":
-						this._Weight = ParseFloat(txt);
+						this._Weight = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "isCorrect":
-						this._IsCorrect = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._IsCorrect = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 				}
 			}

@@ -86,7 +86,6 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "resource":
@@ -100,7 +99,7 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "assetParamsId":
-						this._AssetParamsId = ParseInt(txt);
+						this._AssetParamsId = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

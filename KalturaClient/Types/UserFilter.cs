@@ -174,41 +174,40 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "idOrScreenNameStartsWith":
-						this._IdOrScreenNameStartsWith = txt;
+						this._IdOrScreenNameStartsWith = propertyNode.InnerText;
 						continue;
 					case "idEqual":
-						this._IdEqual = txt;
+						this._IdEqual = propertyNode.InnerText;
 						continue;
 					case "idIn":
-						this._IdIn = txt;
+						this._IdIn = propertyNode.InnerText;
 						continue;
 					case "loginEnabledEqual":
-						this._LoginEnabledEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._LoginEnabledEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "roleIdEqual":
-						this._RoleIdEqual = txt;
+						this._RoleIdEqual = propertyNode.InnerText;
 						continue;
 					case "roleIdsEqual":
-						this._RoleIdsEqual = txt;
+						this._RoleIdsEqual = propertyNode.InnerText;
 						continue;
 					case "roleIdsIn":
-						this._RoleIdsIn = txt;
+						this._RoleIdsIn = propertyNode.InnerText;
 						continue;
 					case "firstNameOrLastNameStartsWith":
-						this._FirstNameOrLastNameStartsWith = txt;
+						this._FirstNameOrLastNameStartsWith = propertyNode.InnerText;
 						continue;
 					case "permissionNamesMultiLikeOr":
-						this._PermissionNamesMultiLikeOr = txt;
+						this._PermissionNamesMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "permissionNamesMultiLikeAnd":
-						this._PermissionNamesMultiLikeAnd = txt;
+						this._PermissionNamesMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "orderBy":
-						this._OrderBy = (UserOrderBy)StringEnum.Parse(typeof(UserOrderBy), txt);
+						this._OrderBy = (UserOrderBy)StringEnum.Parse(typeof(UserOrderBy), propertyNode.InnerText);
 						continue;
 				}
 			}

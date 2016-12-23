@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "disableExtraAttributes":
-						this._DisableExtraAttributes = ParseBool(txt);
+						this._DisableExtraAttributes = ParseBool(propertyNode.InnerText);
 						continue;
 					case "forceProxy":
-						this._ForceProxy = ParseBool(txt);
+						this._ForceProxy = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}

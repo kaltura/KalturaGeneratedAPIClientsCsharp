@@ -141,32 +141,31 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "audience":
-						this._Audience = ParseInt(txt);
+						this._Audience = ParseInt(propertyNode.InnerText);
 						continue;
 					case "dvrAudience":
-						this._DvrAudience = ParseInt(txt);
+						this._DvrAudience = ParseInt(propertyNode.InnerText);
 						continue;
 					case "avgBitrate":
-						this._AvgBitrate = ParseFloat(txt);
+						this._AvgBitrate = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "bufferTime":
-						this._BufferTime = ParseInt(txt);
+						this._BufferTime = ParseInt(propertyNode.InnerText);
 						continue;
 					case "plays":
-						this._Plays = ParseInt(txt);
+						this._Plays = ParseInt(propertyNode.InnerText);
 						continue;
 					case "secondsViewed":
-						this._SecondsViewed = ParseInt(txt);
+						this._SecondsViewed = ParseInt(propertyNode.InnerText);
 						continue;
 					case "startEvent":
-						this._StartEvent = ParseLong(txt);
+						this._StartEvent = ParseLong(propertyNode.InnerText);
 						continue;
 					case "timestamp":
-						this._Timestamp = ParseInt(txt);
+						this._Timestamp = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

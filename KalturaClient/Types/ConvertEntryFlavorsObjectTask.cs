@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "flavorParamsIds":
-						this._FlavorParamsIds = txt;
+						this._FlavorParamsIds = propertyNode.InnerText;
 						continue;
 					case "reconvert":
-						this._Reconvert = ParseBool(txt);
+						this._Reconvert = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}

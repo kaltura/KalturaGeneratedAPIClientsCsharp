@@ -89,26 +89,25 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "ks":
-						this._Ks = txt;
+						this._Ks = propertyNode.InnerText;
 						continue;
 					case "sessionType":
-						this._SessionType = (SessionType)ParseEnum(typeof(SessionType), txt);
+						this._SessionType = (SessionType)ParseEnum(typeof(SessionType), propertyNode.InnerText);
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "userId":
-						this._UserId = txt;
+						this._UserId = propertyNode.InnerText;
 						continue;
 					case "expiry":
-						this._Expiry = ParseInt(txt);
+						this._Expiry = ParseInt(propertyNode.InnerText);
 						continue;
 					case "privileges":
-						this._Privileges = txt;
+						this._Privileges = propertyNode.InnerText;
 						continue;
 				}
 			}

@@ -238,44 +238,43 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "name":
-						this._Name = txt;
+						this._Name = propertyNode.InnerText;
 						continue;
 					case "type":
-						this._Type = (DeliveryProfileType)StringEnum.Parse(typeof(DeliveryProfileType), txt);
+						this._Type = (DeliveryProfileType)StringEnum.Parse(typeof(DeliveryProfileType), propertyNode.InnerText);
 						continue;
 					case "systemName":
-						this._SystemName = txt;
+						this._SystemName = propertyNode.InnerText;
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "streamerType":
-						this._StreamerType = (PlaybackProtocol)StringEnum.Parse(typeof(PlaybackProtocol), txt);
+						this._StreamerType = (PlaybackProtocol)StringEnum.Parse(typeof(PlaybackProtocol), propertyNode.InnerText);
 						continue;
 					case "url":
-						this._Url = txt;
+						this._Url = propertyNode.InnerText;
 						continue;
 					case "hostName":
-						this._HostName = txt;
+						this._HostName = propertyNode.InnerText;
 						continue;
 					case "status":
-						this._Status = (DeliveryStatus)ParseEnum(typeof(DeliveryStatus), txt);
+						this._Status = (DeliveryStatus)ParseEnum(typeof(DeliveryStatus), propertyNode.InnerText);
 						continue;
 					case "recognizer":
 						this._Recognizer = ObjectFactory.Create<UrlRecognizer>(propertyNode);
@@ -284,19 +283,19 @@ namespace Kaltura.Types
 						this._Tokenizer = ObjectFactory.Create<UrlTokenizer>(propertyNode);
 						continue;
 					case "isDefault":
-						this._IsDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._IsDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "parentId":
-						this._ParentId = ParseInt(txt);
+						this._ParentId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "mediaProtocols":
-						this._MediaProtocols = txt;
+						this._MediaProtocols = propertyNode.InnerText;
 						continue;
 					case "priority":
-						this._Priority = ParseInt(txt);
+						this._Priority = ParseInt(propertyNode.InnerText);
 						continue;
 					case "extraParams":
-						this._ExtraParams = txt;
+						this._ExtraParams = propertyNode.InnerText;
 						continue;
 					case "supplementaryAssetsFilter":
 						this._SupplementaryAssetsFilter = ObjectFactory.Create<AssetFilter>(propertyNode);

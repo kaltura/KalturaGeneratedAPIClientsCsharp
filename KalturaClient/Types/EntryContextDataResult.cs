@@ -229,41 +229,40 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "isSiteRestricted":
-						this._IsSiteRestricted = ParseBool(txt);
+						this._IsSiteRestricted = ParseBool(propertyNode.InnerText);
 						continue;
 					case "isCountryRestricted":
-						this._IsCountryRestricted = ParseBool(txt);
+						this._IsCountryRestricted = ParseBool(propertyNode.InnerText);
 						continue;
 					case "isSessionRestricted":
-						this._IsSessionRestricted = ParseBool(txt);
+						this._IsSessionRestricted = ParseBool(propertyNode.InnerText);
 						continue;
 					case "isIpAddressRestricted":
-						this._IsIpAddressRestricted = ParseBool(txt);
+						this._IsIpAddressRestricted = ParseBool(propertyNode.InnerText);
 						continue;
 					case "isUserAgentRestricted":
-						this._IsUserAgentRestricted = ParseBool(txt);
+						this._IsUserAgentRestricted = ParseBool(propertyNode.InnerText);
 						continue;
 					case "previewLength":
-						this._PreviewLength = ParseInt(txt);
+						this._PreviewLength = ParseInt(propertyNode.InnerText);
 						continue;
 					case "isScheduledNow":
-						this._IsScheduledNow = ParseBool(txt);
+						this._IsScheduledNow = ParseBool(propertyNode.InnerText);
 						continue;
 					case "isAdmin":
-						this._IsAdmin = ParseBool(txt);
+						this._IsAdmin = ParseBool(propertyNode.InnerText);
 						continue;
 					case "streamerType":
-						this._StreamerType = txt;
+						this._StreamerType = propertyNode.InnerText;
 						continue;
 					case "mediaProtocol":
-						this._MediaProtocol = txt;
+						this._MediaProtocol = propertyNode.InnerText;
 						continue;
 					case "storageProfilesXML":
-						this._StorageProfilesXML = txt;
+						this._StorageProfilesXML = propertyNode.InnerText;
 						continue;
 					case "accessControlMessages":
 						this._AccessControlMessages = new List<String>();
@@ -287,7 +286,7 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "msDuration":
-						this._MsDuration = ParseInt(txt);
+						this._MsDuration = ParseInt(propertyNode.InnerText);
 						continue;
 					case "pluginData":
 						{

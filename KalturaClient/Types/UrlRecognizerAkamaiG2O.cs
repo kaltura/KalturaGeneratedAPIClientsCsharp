@@ -97,20 +97,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "headerData":
-						this._HeaderData = txt;
+						this._HeaderData = propertyNode.InnerText;
 						continue;
 					case "headerSign":
-						this._HeaderSign = txt;
+						this._HeaderSign = propertyNode.InnerText;
 						continue;
 					case "timeout":
-						this._Timeout = ParseInt(txt);
+						this._Timeout = ParseInt(propertyNode.InnerText);
 						continue;
 					case "salt":
-						this._Salt = txt;
+						this._Salt = propertyNode.InnerText;
 						continue;
 				}
 			}

@@ -251,62 +251,61 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this._IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerIdEqual":
-						this._PartnerIdEqual = ParseInt(txt);
+						this._PartnerIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "metadataObjectTypeEqual":
-						this._MetadataObjectTypeEqual = (MetadataObjectType)StringEnum.Parse(typeof(MetadataObjectType), txt);
+						this._MetadataObjectTypeEqual = (MetadataObjectType)StringEnum.Parse(typeof(MetadataObjectType), propertyNode.InnerText);
 						continue;
 					case "metadataObjectTypeIn":
-						this._MetadataObjectTypeIn = txt;
+						this._MetadataObjectTypeIn = propertyNode.InnerText;
 						continue;
 					case "versionEqual":
-						this._VersionEqual = ParseInt(txt);
+						this._VersionEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "nameEqual":
-						this._NameEqual = txt;
+						this._NameEqual = propertyNode.InnerText;
 						continue;
 					case "systemNameEqual":
-						this._SystemNameEqual = txt;
+						this._SystemNameEqual = propertyNode.InnerText;
 						continue;
 					case "systemNameIn":
-						this._SystemNameIn = txt;
+						this._SystemNameIn = propertyNode.InnerText;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "statusEqual":
-						this._StatusEqual = (MetadataProfileStatus)ParseEnum(typeof(MetadataProfileStatus), txt);
+						this._StatusEqual = (MetadataProfileStatus)ParseEnum(typeof(MetadataProfileStatus), propertyNode.InnerText);
 						continue;
 					case "statusIn":
-						this._StatusIn = txt;
+						this._StatusIn = propertyNode.InnerText;
 						continue;
 					case "createModeEqual":
-						this._CreateModeEqual = (MetadataProfileCreateMode)ParseEnum(typeof(MetadataProfileCreateMode), txt);
+						this._CreateModeEqual = (MetadataProfileCreateMode)ParseEnum(typeof(MetadataProfileCreateMode), propertyNode.InnerText);
 						continue;
 					case "createModeNotEqual":
-						this._CreateModeNotEqual = (MetadataProfileCreateMode)ParseEnum(typeof(MetadataProfileCreateMode), txt);
+						this._CreateModeNotEqual = (MetadataProfileCreateMode)ParseEnum(typeof(MetadataProfileCreateMode), propertyNode.InnerText);
 						continue;
 					case "createModeIn":
-						this._CreateModeIn = txt;
+						this._CreateModeIn = propertyNode.InnerText;
 						continue;
 					case "createModeNotIn":
-						this._CreateModeNotIn = txt;
+						this._CreateModeNotIn = propertyNode.InnerText;
 						continue;
 				}
 			}

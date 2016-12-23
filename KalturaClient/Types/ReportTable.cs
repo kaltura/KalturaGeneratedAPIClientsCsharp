@@ -71,17 +71,16 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "header":
-						this._Header = txt;
+						this._Header = propertyNode.InnerText;
 						continue;
 					case "data":
-						this._Data = txt;
+						this._Data = propertyNode.InnerText;
 						continue;
 					case "totalCount":
-						this._TotalCount = ParseInt(txt);
+						this._TotalCount = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

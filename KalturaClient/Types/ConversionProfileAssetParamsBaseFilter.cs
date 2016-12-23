@@ -163,38 +163,37 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "conversionProfileIdEqual":
-						this._ConversionProfileIdEqual = ParseInt(txt);
+						this._ConversionProfileIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "conversionProfileIdIn":
-						this._ConversionProfileIdIn = txt;
+						this._ConversionProfileIdIn = propertyNode.InnerText;
 						continue;
 					case "assetParamsIdEqual":
-						this._AssetParamsIdEqual = ParseInt(txt);
+						this._AssetParamsIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "assetParamsIdIn":
-						this._AssetParamsIdIn = txt;
+						this._AssetParamsIdIn = propertyNode.InnerText;
 						continue;
 					case "readyBehaviorEqual":
-						this._ReadyBehaviorEqual = (FlavorReadyBehaviorType)ParseEnum(typeof(FlavorReadyBehaviorType), txt);
+						this._ReadyBehaviorEqual = (FlavorReadyBehaviorType)ParseEnum(typeof(FlavorReadyBehaviorType), propertyNode.InnerText);
 						continue;
 					case "readyBehaviorIn":
-						this._ReadyBehaviorIn = txt;
+						this._ReadyBehaviorIn = propertyNode.InnerText;
 						continue;
 					case "originEqual":
-						this._OriginEqual = (AssetParamsOrigin)ParseEnum(typeof(AssetParamsOrigin), txt);
+						this._OriginEqual = (AssetParamsOrigin)ParseEnum(typeof(AssetParamsOrigin), propertyNode.InnerText);
 						continue;
 					case "originIn":
-						this._OriginIn = txt;
+						this._OriginIn = propertyNode.InnerText;
 						continue;
 					case "systemNameEqual":
-						this._SystemNameEqual = txt;
+						this._SystemNameEqual = propertyNode.InnerText;
 						continue;
 					case "systemNameIn":
-						this._SystemNameIn = txt;
+						this._SystemNameIn = propertyNode.InnerText;
 						continue;
 				}
 			}

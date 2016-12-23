@@ -160,32 +160,31 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "isDefault":
-						this._IsDefault = ParseBool(txt);
+						this._IsDefault = ParseBool(propertyNode.InnerText);
 						continue;
 					case "status":
-						this._Status = (GenericDistributionProviderStatus)ParseEnum(typeof(GenericDistributionProviderStatus), txt);
+						this._Status = (GenericDistributionProviderStatus)ParseEnum(typeof(GenericDistributionProviderStatus), propertyNode.InnerText);
 						continue;
 					case "optionalFlavorParamsIds":
-						this._OptionalFlavorParamsIds = txt;
+						this._OptionalFlavorParamsIds = propertyNode.InnerText;
 						continue;
 					case "requiredFlavorParamsIds":
-						this._RequiredFlavorParamsIds = txt;
+						this._RequiredFlavorParamsIds = propertyNode.InnerText;
 						continue;
 					case "optionalThumbDimensions":
 						this._OptionalThumbDimensions = new List<DistributionThumbDimensions>();
@@ -202,10 +201,10 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "editableFields":
-						this._EditableFields = txt;
+						this._EditableFields = propertyNode.InnerText;
 						continue;
 					case "mandatoryFields":
-						this._MandatoryFields = txt;
+						this._MandatoryFields = propertyNode.InnerText;
 						continue;
 				}
 			}

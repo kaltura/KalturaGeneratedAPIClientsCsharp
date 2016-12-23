@@ -108,23 +108,22 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "formatEqual":
-						this._FormatEqual = (AttachmentType)StringEnum.Parse(typeof(AttachmentType), txt);
+						this._FormatEqual = (AttachmentType)StringEnum.Parse(typeof(AttachmentType), propertyNode.InnerText);
 						continue;
 					case "formatIn":
-						this._FormatIn = txt;
+						this._FormatIn = propertyNode.InnerText;
 						continue;
 					case "statusEqual":
-						this._StatusEqual = (AttachmentAssetStatus)ParseEnum(typeof(AttachmentAssetStatus), txt);
+						this._StatusEqual = (AttachmentAssetStatus)ParseEnum(typeof(AttachmentAssetStatus), propertyNode.InnerText);
 						continue;
 					case "statusIn":
-						this._StatusIn = txt;
+						this._StatusIn = propertyNode.InnerText;
 						continue;
 					case "statusNotIn":
-						this._StatusNotIn = txt;
+						this._StatusNotIn = propertyNode.InnerText;
 						continue;
 				}
 			}

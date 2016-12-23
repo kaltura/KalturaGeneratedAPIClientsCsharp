@@ -240,59 +240,58 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this._IdEqual = txt;
+						this._IdEqual = propertyNode.InnerText;
 						continue;
 					case "idIn":
-						this._IdIn = txt;
+						this._IdIn = propertyNode.InnerText;
 						continue;
 					case "entryIdEqual":
-						this._EntryIdEqual = txt;
+						this._EntryIdEqual = propertyNode.InnerText;
 						continue;
 					case "entryIdIn":
-						this._EntryIdIn = txt;
+						this._EntryIdIn = propertyNode.InnerText;
 						continue;
 					case "partnerIdEqual":
-						this._PartnerIdEqual = ParseInt(txt);
+						this._PartnerIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerIdIn":
-						this._PartnerIdIn = txt;
+						this._PartnerIdIn = propertyNode.InnerText;
 						continue;
 					case "sizeGreaterThanOrEqual":
-						this._SizeGreaterThanOrEqual = ParseInt(txt);
+						this._SizeGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "sizeLessThanOrEqual":
-						this._SizeLessThanOrEqual = ParseInt(txt);
+						this._SizeLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "tagsLike":
-						this._TagsLike = txt;
+						this._TagsLike = propertyNode.InnerText;
 						continue;
 					case "tagsMultiLikeOr":
-						this._TagsMultiLikeOr = txt;
+						this._TagsMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "tagsMultiLikeAnd":
-						this._TagsMultiLikeAnd = txt;
+						this._TagsMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "deletedAtGreaterThanOrEqual":
-						this._DeletedAtGreaterThanOrEqual = ParseInt(txt);
+						this._DeletedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "deletedAtLessThanOrEqual":
-						this._DeletedAtLessThanOrEqual = ParseInt(txt);
+						this._DeletedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

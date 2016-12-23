@@ -181,32 +181,31 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "name":
-						this._Name = txt;
+						this._Name = propertyNode.InnerText;
 						continue;
 					case "systemName":
-						this._SystemName = txt;
+						this._SystemName = propertyNode.InnerText;
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "isSystemDefault":
-						this._IsSystemDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._IsSystemDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "tags":
-						this._Tags = txt;
+						this._Tags = propertyNode.InnerText;
 						continue;
 					case "requiredPermissions":
 						this._RequiredPermissions = new List<String>();
@@ -216,16 +215,16 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "sourceRemoteStorageProfileId":
-						this._SourceRemoteStorageProfileId = ParseInt(txt);
+						this._SourceRemoteStorageProfileId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "remoteStorageProfileIds":
-						this._RemoteStorageProfileIds = ParseInt(txt);
+						this._RemoteStorageProfileIds = ParseInt(propertyNode.InnerText);
 						continue;
 					case "mediaParserType":
-						this._MediaParserType = (MediaParserType)StringEnum.Parse(typeof(MediaParserType), txt);
+						this._MediaParserType = (MediaParserType)StringEnum.Parse(typeof(MediaParserType), propertyNode.InnerText);
 						continue;
 					case "sourceAssetParamsIds":
-						this._SourceAssetParamsIds = txt;
+						this._SourceAssetParamsIds = propertyNode.InnerText;
 						continue;
 				}
 			}

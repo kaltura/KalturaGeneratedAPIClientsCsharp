@@ -92,20 +92,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "code":
-						this._Code = txt;
+						this._Code = propertyNode.InnerText;
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "endTime":
-						this._EndTime = ParseInt(txt);
+						this._EndTime = ParseInt(propertyNode.InnerText);
 						continue;
 					case "duration":
-						this._Duration = ParseInt(txt);
+						this._Duration = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

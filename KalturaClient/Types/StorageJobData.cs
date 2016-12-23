@@ -163,38 +163,37 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "serverUrl":
-						this._ServerUrl = txt;
+						this._ServerUrl = propertyNode.InnerText;
 						continue;
 					case "serverUsername":
-						this._ServerUsername = txt;
+						this._ServerUsername = propertyNode.InnerText;
 						continue;
 					case "serverPassword":
-						this._ServerPassword = txt;
+						this._ServerPassword = propertyNode.InnerText;
 						continue;
 					case "serverPrivateKey":
-						this._ServerPrivateKey = txt;
+						this._ServerPrivateKey = propertyNode.InnerText;
 						continue;
 					case "serverPublicKey":
-						this._ServerPublicKey = txt;
+						this._ServerPublicKey = propertyNode.InnerText;
 						continue;
 					case "serverPassPhrase":
-						this._ServerPassPhrase = txt;
+						this._ServerPassPhrase = propertyNode.InnerText;
 						continue;
 					case "ftpPassiveMode":
-						this._FtpPassiveMode = ParseBool(txt);
+						this._FtpPassiveMode = ParseBool(propertyNode.InnerText);
 						continue;
 					case "srcFileSyncLocalPath":
-						this._SrcFileSyncLocalPath = txt;
+						this._SrcFileSyncLocalPath = propertyNode.InnerText;
 						continue;
 					case "srcFileSyncId":
-						this._SrcFileSyncId = txt;
+						this._SrcFileSyncId = propertyNode.InnerText;
 						continue;
 					case "destFileSyncStoredPath":
-						this._DestFileSyncStoredPath = txt;
+						this._DestFileSyncStoredPath = propertyNode.InnerText;
 						continue;
 				}
 			}

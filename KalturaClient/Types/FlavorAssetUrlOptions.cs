@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "fileName":
-						this._FileName = txt;
+						this._FileName = propertyNode.InnerText;
 						continue;
 					case "referrer":
-						this._Referrer = txt;
+						this._Referrer = propertyNode.InnerText;
 						continue;
 				}
 			}

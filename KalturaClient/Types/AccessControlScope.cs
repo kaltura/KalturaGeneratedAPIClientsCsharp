@@ -130,23 +130,22 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "referrer":
-						this._Referrer = txt;
+						this._Referrer = propertyNode.InnerText;
 						continue;
 					case "ip":
-						this._Ip = txt;
+						this._Ip = propertyNode.InnerText;
 						continue;
 					case "ks":
-						this._Ks = txt;
+						this._Ks = propertyNode.InnerText;
 						continue;
 					case "userAgent":
-						this._UserAgent = txt;
+						this._UserAgent = propertyNode.InnerText;
 						continue;
 					case "time":
-						this._Time = ParseInt(txt);
+						this._Time = ParseInt(propertyNode.InnerText);
 						continue;
 					case "contexts":
 						this._Contexts = new List<AccessControlContextTypeHolder>();

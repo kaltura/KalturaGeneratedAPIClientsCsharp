@@ -163,38 +163,37 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "streamId":
-						this._StreamId = ParseInt(txt);
+						this._StreamId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "systemUserName":
-						this._SystemUserName = txt;
+						this._SystemUserName = propertyNode.InnerText;
 						continue;
 					case "systemPassword":
-						this._SystemPassword = txt;
+						this._SystemPassword = propertyNode.InnerText;
 						continue;
 					case "domainName":
-						this._DomainName = txt;
+						this._DomainName = propertyNode.InnerText;
 						continue;
 					case "dvrEnabled":
-						this._DvrEnabled = (DVRStatus)ParseEnum(typeof(DVRStatus), txt);
+						this._DvrEnabled = (DVRStatus)ParseEnum(typeof(DVRStatus), propertyNode.InnerText);
 						continue;
 					case "dvrWindow":
-						this._DvrWindow = ParseInt(txt);
+						this._DvrWindow = ParseInt(propertyNode.InnerText);
 						continue;
 					case "primaryContact":
-						this._PrimaryContact = txt;
+						this._PrimaryContact = propertyNode.InnerText;
 						continue;
 					case "secondaryContact":
-						this._SecondaryContact = txt;
+						this._SecondaryContact = propertyNode.InnerText;
 						continue;
 					case "streamType":
-						this._StreamType = (AkamaiUniversalStreamType)StringEnum.Parse(typeof(AkamaiUniversalStreamType), txt);
+						this._StreamType = (AkamaiUniversalStreamType)StringEnum.Parse(typeof(AkamaiUniversalStreamType), propertyNode.InnerText);
 						continue;
 					case "notificationEmail":
-						this._NotificationEmail = txt;
+						this._NotificationEmail = propertyNode.InnerText;
 						continue;
 				}
 			}

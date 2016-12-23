@@ -104,20 +104,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "parentId":
-						this._ParentId = txt;
+						this._ParentId = propertyNode.InnerText;
 						continue;
 					case "quizUserEntryId":
-						this._QuizUserEntryId = txt;
+						this._QuizUserEntryId = propertyNode.InnerText;
 						continue;
 					case "answerKey":
-						this._AnswerKey = txt;
+						this._AnswerKey = propertyNode.InnerText;
 						continue;
 					case "isCorrect":
-						this._IsCorrect = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._IsCorrect = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "correctAnswerKeys":
 						this._CorrectAnswerKeys = new List<String>();
@@ -127,7 +126,7 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "explanation":
-						this._Explanation = txt;
+						this._Explanation = propertyNode.InnerText;
 						continue;
 				}
 			}

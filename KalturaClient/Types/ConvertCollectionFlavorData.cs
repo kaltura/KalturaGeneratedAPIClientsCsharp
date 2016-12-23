@@ -130,29 +130,28 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "flavorAssetId":
-						this._FlavorAssetId = txt;
+						this._FlavorAssetId = propertyNode.InnerText;
 						continue;
 					case "flavorParamsOutputId":
-						this._FlavorParamsOutputId = ParseInt(txt);
+						this._FlavorParamsOutputId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "readyBehavior":
-						this._ReadyBehavior = ParseInt(txt);
+						this._ReadyBehavior = ParseInt(propertyNode.InnerText);
 						continue;
 					case "videoBitrate":
-						this._VideoBitrate = ParseInt(txt);
+						this._VideoBitrate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "audioBitrate":
-						this._AudioBitrate = ParseInt(txt);
+						this._AudioBitrate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "destFileSyncLocalPath":
-						this._DestFileSyncLocalPath = txt;
+						this._DestFileSyncLocalPath = propertyNode.InnerText;
 						continue;
 					case "destFileSyncRemoteUrl":
-						this._DestFileSyncRemoteUrl = txt;
+						this._DestFileSyncRemoteUrl = propertyNode.InnerText;
 						continue;
 				}
 			}

@@ -130,29 +130,28 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "apiAuthorizeUrl":
-						this._ApiAuthorizeUrl = txt;
+						this._ApiAuthorizeUrl = propertyNode.InnerText;
 						continue;
 					case "pageId":
-						this._PageId = txt;
+						this._PageId = propertyNode.InnerText;
 						continue;
 					case "pageAccessToken":
-						this._PageAccessToken = txt;
+						this._PageAccessToken = propertyNode.InnerText;
 						continue;
 					case "userAccessToken":
-						this._UserAccessToken = txt;
+						this._UserAccessToken = propertyNode.InnerText;
 						continue;
 					case "state":
-						this._State = txt;
+						this._State = propertyNode.InnerText;
 						continue;
 					case "permissions":
-						this._Permissions = txt;
+						this._Permissions = propertyNode.InnerText;
 						continue;
 					case "reRequestPermissions":
-						this._ReRequestPermissions = ParseInt(txt);
+						this._ReRequestPermissions = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

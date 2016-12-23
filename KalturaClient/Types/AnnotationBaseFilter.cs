@@ -163,38 +163,37 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "parentIdEqual":
-						this._ParentIdEqual = txt;
+						this._ParentIdEqual = propertyNode.InnerText;
 						continue;
 					case "parentIdIn":
-						this._ParentIdIn = txt;
+						this._ParentIdIn = propertyNode.InnerText;
 						continue;
 					case "textLike":
-						this._TextLike = txt;
+						this._TextLike = propertyNode.InnerText;
 						continue;
 					case "textMultiLikeOr":
-						this._TextMultiLikeOr = txt;
+						this._TextMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "textMultiLikeAnd":
-						this._TextMultiLikeAnd = txt;
+						this._TextMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "endTimeGreaterThanOrEqual":
-						this._EndTimeGreaterThanOrEqual = ParseInt(txt);
+						this._EndTimeGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "endTimeLessThanOrEqual":
-						this._EndTimeLessThanOrEqual = ParseInt(txt);
+						this._EndTimeLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "durationGreaterThanOrEqual":
-						this._DurationGreaterThanOrEqual = ParseInt(txt);
+						this._DurationGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "durationLessThanOrEqual":
-						this._DurationLessThanOrEqual = ParseInt(txt);
+						this._DurationLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "isPublicEqual":
-						this._IsPublicEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._IsPublicEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 				}
 			}

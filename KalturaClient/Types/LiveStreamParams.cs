@@ -130,29 +130,28 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "bitrate":
-						this._Bitrate = ParseInt(txt);
+						this._Bitrate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "flavorId":
-						this._FlavorId = txt;
+						this._FlavorId = propertyNode.InnerText;
 						continue;
 					case "width":
-						this._Width = ParseInt(txt);
+						this._Width = ParseInt(propertyNode.InnerText);
 						continue;
 					case "height":
-						this._Height = ParseInt(txt);
+						this._Height = ParseInt(propertyNode.InnerText);
 						continue;
 					case "codec":
-						this._Codec = txt;
+						this._Codec = propertyNode.InnerText;
 						continue;
 					case "frameRate":
-						this._FrameRate = ParseInt(txt);
+						this._FrameRate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "keyFrameInterval":
-						this._KeyFrameInterval = ParseFloat(txt);
+						this._KeyFrameInterval = ParseFloat(propertyNode.InnerText);
 						continue;
 				}
 			}

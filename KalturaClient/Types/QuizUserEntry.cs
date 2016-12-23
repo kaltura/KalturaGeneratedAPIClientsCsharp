@@ -59,11 +59,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "score":
-						this._Score = ParseFloat(txt);
+						this._Score = ParseFloat(propertyNode.InnerText);
 						continue;
 				}
 			}

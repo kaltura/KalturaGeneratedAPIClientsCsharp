@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "playlistId":
-						this._PlaylistId = txt;
+						this._PlaylistId = propertyNode.InnerText;
 						continue;
 					case "repeat":
-						this._Repeat = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._Repeat = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 				}
 			}

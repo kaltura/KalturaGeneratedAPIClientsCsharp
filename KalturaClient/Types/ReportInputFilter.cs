@@ -119,26 +119,25 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "keywords":
-						this._Keywords = txt;
+						this._Keywords = propertyNode.InnerText;
 						continue;
 					case "searchInTags":
-						this._SearchInTags = ParseBool(txt);
+						this._SearchInTags = ParseBool(propertyNode.InnerText);
 						continue;
 					case "searchInAdminTags":
-						this._SearchInAdminTags = ParseBool(txt);
+						this._SearchInAdminTags = ParseBool(propertyNode.InnerText);
 						continue;
 					case "categories":
-						this._Categories = txt;
+						this._Categories = propertyNode.InnerText;
 						continue;
 					case "timeZoneOffset":
-						this._TimeZoneOffset = ParseInt(txt);
+						this._TimeZoneOffset = ParseInt(propertyNode.InnerText);
 						continue;
 					case "interval":
-						this._Interval = (ReportInterval)StringEnum.Parse(typeof(ReportInterval), txt);
+						this._Interval = (ReportInterval)StringEnum.Parse(typeof(ReportInterval), propertyNode.InnerText);
 						continue;
 				}
 			}

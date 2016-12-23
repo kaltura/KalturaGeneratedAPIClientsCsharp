@@ -218,53 +218,52 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this._IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "idIn":
-						this._IdIn = txt;
+						this._IdIn = propertyNode.InnerText;
 						continue;
 					case "idNotIn":
-						this._IdNotIn = txt;
+						this._IdNotIn = propertyNode.InnerText;
 						continue;
 					case "entryIdEqual":
-						this._EntryIdEqual = txt;
+						this._EntryIdEqual = propertyNode.InnerText;
 						continue;
 					case "entryIdIn":
-						this._EntryIdIn = txt;
+						this._EntryIdIn = propertyNode.InnerText;
 						continue;
 					case "entryIdNotIn":
-						this._EntryIdNotIn = txt;
+						this._EntryIdNotIn = propertyNode.InnerText;
 						continue;
 					case "userIdEqual":
-						this._UserIdEqual = txt;
+						this._UserIdEqual = propertyNode.InnerText;
 						continue;
 					case "userIdIn":
-						this._UserIdIn = txt;
+						this._UserIdIn = propertyNode.InnerText;
 						continue;
 					case "userIdNotIn":
-						this._UserIdNotIn = txt;
+						this._UserIdNotIn = propertyNode.InnerText;
 						continue;
 					case "statusEqual":
-						this._StatusEqual = (UserEntryStatus)StringEnum.Parse(typeof(UserEntryStatus), txt);
+						this._StatusEqual = (UserEntryStatus)StringEnum.Parse(typeof(UserEntryStatus), propertyNode.InnerText);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "typeEqual":
-						this._TypeEqual = (UserEntryType)StringEnum.Parse(typeof(UserEntryType), txt);
+						this._TypeEqual = (UserEntryType)StringEnum.Parse(typeof(UserEntryType), propertyNode.InnerText);
 						continue;
 				}
 			}

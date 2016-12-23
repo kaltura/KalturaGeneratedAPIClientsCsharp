@@ -174,41 +174,40 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = txt;
+						this._Id = propertyNode.InnerText;
 						continue;
 					case "title":
-						this._Title = txt;
+						this._Title = propertyNode.InnerText;
 						continue;
 					case "thumbUrl":
-						this._ThumbUrl = txt;
+						this._ThumbUrl = propertyNode.InnerText;
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "tags":
-						this._Tags = txt;
+						this._Tags = propertyNode.InnerText;
 						continue;
 					case "url":
-						this._Url = txt;
+						this._Url = propertyNode.InnerText;
 						continue;
 					case "sourceLink":
-						this._SourceLink = txt;
+						this._SourceLink = propertyNode.InnerText;
 						continue;
 					case "credit":
-						this._Credit = txt;
+						this._Credit = propertyNode.InnerText;
 						continue;
 					case "licenseType":
-						this._LicenseType = (LicenseType)ParseEnum(typeof(LicenseType), txt);
+						this._LicenseType = (LicenseType)ParseEnum(typeof(LicenseType), propertyNode.InnerText);
 						continue;
 					case "flashPlaybackType":
-						this._FlashPlaybackType = txt;
+						this._FlashPlaybackType = propertyNode.InnerText;
 						continue;
 					case "fileExt":
-						this._FileExt = txt;
+						this._FileExt = propertyNode.InnerText;
 						continue;
 				}
 			}

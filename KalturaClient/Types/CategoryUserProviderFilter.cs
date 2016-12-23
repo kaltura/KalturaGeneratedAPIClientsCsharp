@@ -185,44 +185,43 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "userIdEqual":
-						this._UserIdEqual = txt;
+						this._UserIdEqual = propertyNode.InnerText;
 						continue;
 					case "userIdIn":
-						this._UserIdIn = txt;
+						this._UserIdIn = propertyNode.InnerText;
 						continue;
 					case "statusEqual":
-						this._StatusEqual = (CategoryUserStatus)ParseEnum(typeof(CategoryUserStatus), txt);
+						this._StatusEqual = (CategoryUserStatus)ParseEnum(typeof(CategoryUserStatus), propertyNode.InnerText);
 						continue;
 					case "statusIn":
-						this._StatusIn = txt;
+						this._StatusIn = propertyNode.InnerText;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updateMethodEqual":
-						this._UpdateMethodEqual = (UpdateMethodType)ParseEnum(typeof(UpdateMethodType), txt);
+						this._UpdateMethodEqual = (UpdateMethodType)ParseEnum(typeof(UpdateMethodType), propertyNode.InnerText);
 						continue;
 					case "updateMethodIn":
-						this._UpdateMethodIn = txt;
+						this._UpdateMethodIn = propertyNode.InnerText;
 						continue;
 					case "permissionNamesMatchAnd":
-						this._PermissionNamesMatchAnd = txt;
+						this._PermissionNamesMatchAnd = propertyNode.InnerText;
 						continue;
 					case "permissionNamesMatchOr":
-						this._PermissionNamesMatchOr = txt;
+						this._PermissionNamesMatchOr = propertyNode.InnerText;
 						continue;
 				}
 			}

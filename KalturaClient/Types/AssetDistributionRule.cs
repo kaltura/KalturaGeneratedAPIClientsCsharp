@@ -75,11 +75,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "validationError":
-						this._ValidationError = txt;
+						this._ValidationError = propertyNode.InnerText;
 						continue;
 					case "assetDistributionConditions":
 						this._AssetDistributionConditions = new List<AssetDistributionCondition>();

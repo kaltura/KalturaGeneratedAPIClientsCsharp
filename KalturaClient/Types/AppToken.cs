@@ -155,44 +155,43 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = txt;
+						this._Id = propertyNode.InnerText;
 						continue;
 					case "token":
-						this._Token = txt;
+						this._Token = propertyNode.InnerText;
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "status":
-						this._Status = (AppTokenStatus)ParseEnum(typeof(AppTokenStatus), txt);
+						this._Status = (AppTokenStatus)ParseEnum(typeof(AppTokenStatus), propertyNode.InnerText);
 						continue;
 					case "expiry":
-						this._Expiry = ParseInt(txt);
+						this._Expiry = ParseInt(propertyNode.InnerText);
 						continue;
 					case "sessionType":
-						this._SessionType = (SessionType)ParseEnum(typeof(SessionType), txt);
+						this._SessionType = (SessionType)ParseEnum(typeof(SessionType), propertyNode.InnerText);
 						continue;
 					case "sessionUserId":
-						this._SessionUserId = txt;
+						this._SessionUserId = propertyNode.InnerText;
 						continue;
 					case "sessionDuration":
-						this._SessionDuration = ParseInt(txt);
+						this._SessionDuration = ParseInt(propertyNode.InnerText);
 						continue;
 					case "sessionPrivileges":
-						this._SessionPrivileges = txt;
+						this._SessionPrivileges = propertyNode.InnerText;
 						continue;
 					case "hashType":
-						this._HashType = (AppTokenHashType)StringEnum.Parse(typeof(AppTokenHashType), txt);
+						this._HashType = (AppTokenHashType)StringEnum.Parse(typeof(AppTokenHashType), propertyNode.InnerText);
 						continue;
 				}
 			}

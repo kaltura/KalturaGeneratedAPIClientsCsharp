@@ -229,56 +229,55 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this._IdEqual = txt;
+						this._IdEqual = propertyNode.InnerText;
 						continue;
 					case "idIn":
-						this._IdIn = txt;
+						this._IdIn = propertyNode.InnerText;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "expiresAtGreaterThanOrEqual":
-						this._ExpiresAtGreaterThanOrEqual = ParseInt(txt);
+						this._ExpiresAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "expiresAtLessThanOrEqual":
-						this._ExpiresAtLessThanOrEqual = ParseInt(txt);
+						this._ExpiresAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerIdEqual":
-						this._PartnerIdEqual = ParseInt(txt);
+						this._PartnerIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerIdIn":
-						this._PartnerIdIn = txt;
+						this._PartnerIdIn = propertyNode.InnerText;
 						continue;
 					case "userIdEqual":
-						this._UserIdEqual = txt;
+						this._UserIdEqual = propertyNode.InnerText;
 						continue;
 					case "userIdIn":
-						this._UserIdIn = txt;
+						this._UserIdIn = propertyNode.InnerText;
 						continue;
 					case "systemNameEqual":
-						this._SystemNameEqual = txt;
+						this._SystemNameEqual = propertyNode.InnerText;
 						continue;
 					case "systemNameIn":
-						this._SystemNameIn = txt;
+						this._SystemNameIn = propertyNode.InnerText;
 						continue;
 					case "statusEqual":
-						this._StatusEqual = (ShortLinkStatus)ParseEnum(typeof(ShortLinkStatus), txt);
+						this._StatusEqual = (ShortLinkStatus)ParseEnum(typeof(ShortLinkStatus), propertyNode.InnerText);
 						continue;
 					case "statusIn":
-						this._StatusIn = txt;
+						this._StatusIn = propertyNode.InnerText;
 						continue;
 				}
 			}

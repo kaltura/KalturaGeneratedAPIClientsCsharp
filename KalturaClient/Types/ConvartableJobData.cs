@@ -174,17 +174,16 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "srcFileSyncLocalPath":
-						this._SrcFileSyncLocalPath = txt;
+						this._SrcFileSyncLocalPath = propertyNode.InnerText;
 						continue;
 					case "actualSrcFileSyncLocalPath":
-						this._ActualSrcFileSyncLocalPath = txt;
+						this._ActualSrcFileSyncLocalPath = propertyNode.InnerText;
 						continue;
 					case "srcFileSyncRemoteUrl":
-						this._SrcFileSyncRemoteUrl = txt;
+						this._SrcFileSyncRemoteUrl = propertyNode.InnerText;
 						continue;
 					case "srcFileSyncs":
 						this._SrcFileSyncs = new List<SourceFileSyncDescriptor>();
@@ -194,22 +193,22 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "engineVersion":
-						this._EngineVersion = ParseInt(txt);
+						this._EngineVersion = ParseInt(propertyNode.InnerText);
 						continue;
 					case "flavorParamsOutputId":
-						this._FlavorParamsOutputId = ParseInt(txt);
+						this._FlavorParamsOutputId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "flavorParamsOutput":
 						this._FlavorParamsOutput = ObjectFactory.Create<FlavorParamsOutput>(propertyNode);
 						continue;
 					case "mediaInfoId":
-						this._MediaInfoId = ParseInt(txt);
+						this._MediaInfoId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "currentOperationSet":
-						this._CurrentOperationSet = ParseInt(txt);
+						this._CurrentOperationSet = ParseInt(propertyNode.InnerText);
 						continue;
 					case "currentOperationIndex":
-						this._CurrentOperationIndex = ParseInt(txt);
+						this._CurrentOperationIndex = ParseInt(propertyNode.InnerText);
 						continue;
 					case "pluginData":
 						this._PluginData = new List<KeyValue>();

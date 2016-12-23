@@ -86,17 +86,16 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "inputFileSyncLocalPath":
-						this._InputFileSyncLocalPath = txt;
+						this._InputFileSyncLocalPath = propertyNode.InnerText;
 						continue;
 					case "thumbHeight":
-						this._ThumbHeight = ParseInt(txt);
+						this._ThumbHeight = ParseInt(propertyNode.InnerText);
 						continue;
 					case "thumbBitrate":
-						this._ThumbBitrate = ParseInt(txt);
+						this._ThumbBitrate = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

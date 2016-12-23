@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "objectId":
-						this._ObjectId = txt;
+						this._ObjectId = propertyNode.InnerText;
 						continue;
 					case "scopeObjectType":
-						this._ScopeObjectType = (EventNotificationEventObjectType)StringEnum.Parse(typeof(EventNotificationEventObjectType), txt);
+						this._ScopeObjectType = (EventNotificationEventObjectType)StringEnum.Parse(typeof(EventNotificationEventObjectType), propertyNode.InnerText);
 						continue;
 				}
 			}

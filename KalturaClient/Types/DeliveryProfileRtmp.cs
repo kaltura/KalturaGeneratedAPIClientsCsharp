@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "enforceRtmpe":
-						this._EnforceRtmpe = ParseBool(txt);
+						this._EnforceRtmpe = ParseBool(propertyNode.InnerText);
 						continue;
 					case "prefix":
-						this._Prefix = txt;
+						this._Prefix = propertyNode.InnerText;
 						continue;
 				}
 			}

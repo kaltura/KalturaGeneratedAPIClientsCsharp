@@ -144,41 +144,40 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "fileAssetObjectType":
-						this._FileAssetObjectType = (FileAssetObjectType)StringEnum.Parse(typeof(FileAssetObjectType), txt);
+						this._FileAssetObjectType = (FileAssetObjectType)StringEnum.Parse(typeof(FileAssetObjectType), propertyNode.InnerText);
 						continue;
 					case "objectId":
-						this._ObjectId = txt;
+						this._ObjectId = propertyNode.InnerText;
 						continue;
 					case "name":
-						this._Name = txt;
+						this._Name = propertyNode.InnerText;
 						continue;
 					case "systemName":
-						this._SystemName = txt;
+						this._SystemName = propertyNode.InnerText;
 						continue;
 					case "fileExt":
-						this._FileExt = txt;
+						this._FileExt = propertyNode.InnerText;
 						continue;
 					case "version":
-						this._Version = ParseInt(txt);
+						this._Version = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "status":
-						this._Status = (FileAssetStatus)StringEnum.Parse(typeof(FileAssetStatus), txt);
+						this._Status = (FileAssetStatus)StringEnum.Parse(typeof(FileAssetStatus), propertyNode.InnerText);
 						continue;
 				}
 			}

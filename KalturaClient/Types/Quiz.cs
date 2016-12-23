@@ -136,11 +136,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "version":
-						this._Version = ParseInt(txt);
+						this._Version = ParseInt(propertyNode.InnerText);
 						continue;
 					case "uiAttributes":
 						this._UiAttributes = new List<KeyValue>();
@@ -150,22 +149,22 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "showResultOnAnswer":
-						this._ShowResultOnAnswer = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._ShowResultOnAnswer = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "showCorrectKeyOnAnswer":
-						this._ShowCorrectKeyOnAnswer = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._ShowCorrectKeyOnAnswer = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "allowAnswerUpdate":
-						this._AllowAnswerUpdate = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._AllowAnswerUpdate = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "showCorrectAfterSubmission":
-						this._ShowCorrectAfterSubmission = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._ShowCorrectAfterSubmission = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "allowDownload":
-						this._AllowDownload = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._AllowDownload = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "showGradeAfterSubmission":
-						this._ShowGradeAfterSubmission = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._ShowGradeAfterSubmission = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 				}
 			}

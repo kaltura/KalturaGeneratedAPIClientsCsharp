@@ -97,20 +97,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = txt;
+						this._Id = propertyNode.InnerText;
 						continue;
 					case "label":
-						this._Label = txt;
+						this._Label = propertyNode.InnerText;
 						continue;
 					case "entryOnly":
-						this._EntryOnly = ParseBool(txt);
+						this._EntryOnly = ParseBool(propertyNode.InnerText);
 						continue;
 					case "minVersion":
-						this._MinVersion = txt;
+						this._MinVersion = propertyNode.InnerText;
 						continue;
 				}
 			}

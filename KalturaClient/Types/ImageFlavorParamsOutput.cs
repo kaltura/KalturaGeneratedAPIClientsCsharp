@@ -108,23 +108,22 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "densityWidth":
-						this._DensityWidth = ParseInt(txt);
+						this._DensityWidth = ParseInt(propertyNode.InnerText);
 						continue;
 					case "densityHeight":
-						this._DensityHeight = ParseInt(txt);
+						this._DensityHeight = ParseInt(propertyNode.InnerText);
 						continue;
 					case "sizeWidth":
-						this._SizeWidth = ParseInt(txt);
+						this._SizeWidth = ParseInt(propertyNode.InnerText);
 						continue;
 					case "sizeHeight":
-						this._SizeHeight = ParseInt(txt);
+						this._SizeHeight = ParseInt(propertyNode.InnerText);
 						continue;
 					case "depth":
-						this._Depth = ParseInt(txt);
+						this._Depth = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

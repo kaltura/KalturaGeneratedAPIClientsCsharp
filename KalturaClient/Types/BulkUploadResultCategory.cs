@@ -207,50 +207,49 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "relativePath":
-						this._RelativePath = txt;
+						this._RelativePath = propertyNode.InnerText;
 						continue;
 					case "name":
-						this._Name = txt;
+						this._Name = propertyNode.InnerText;
 						continue;
 					case "referenceId":
-						this._ReferenceId = txt;
+						this._ReferenceId = propertyNode.InnerText;
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "tags":
-						this._Tags = txt;
+						this._Tags = propertyNode.InnerText;
 						continue;
 					case "appearInList":
-						this._AppearInList = ParseInt(txt);
+						this._AppearInList = ParseInt(propertyNode.InnerText);
 						continue;
 					case "privacy":
-						this._Privacy = ParseInt(txt);
+						this._Privacy = ParseInt(propertyNode.InnerText);
 						continue;
 					case "inheritanceType":
-						this._InheritanceType = ParseInt(txt);
+						this._InheritanceType = ParseInt(propertyNode.InnerText);
 						continue;
 					case "userJoinPolicy":
-						this._UserJoinPolicy = ParseInt(txt);
+						this._UserJoinPolicy = ParseInt(propertyNode.InnerText);
 						continue;
 					case "defaultPermissionLevel":
-						this._DefaultPermissionLevel = ParseInt(txt);
+						this._DefaultPermissionLevel = ParseInt(propertyNode.InnerText);
 						continue;
 					case "owner":
-						this._Owner = txt;
+						this._Owner = propertyNode.InnerText;
 						continue;
 					case "contributionPolicy":
-						this._ContributionPolicy = ParseInt(txt);
+						this._ContributionPolicy = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerSortValue":
-						this._PartnerSortValue = ParseInt(txt);
+						this._PartnerSortValue = ParseInt(propertyNode.InnerText);
 						continue;
 					case "moderation":
-						this._Moderation = ParseBool(txt);
+						this._Moderation = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}

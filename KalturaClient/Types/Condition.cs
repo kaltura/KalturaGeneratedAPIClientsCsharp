@@ -81,17 +81,16 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "type":
-						this._Type = (ConditionType)StringEnum.Parse(typeof(ConditionType), txt);
+						this._Type = (ConditionType)StringEnum.Parse(typeof(ConditionType), propertyNode.InnerText);
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "not":
-						this._Not = ParseBool(txt);
+						this._Not = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}

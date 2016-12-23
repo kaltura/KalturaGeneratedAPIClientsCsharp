@@ -192,23 +192,22 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "offlineMessage":
-						this._OfflineMessage = txt;
+						this._OfflineMessage = propertyNode.InnerText;
 						continue;
 					case "recordStatus":
-						this._RecordStatus = (RecordStatus)ParseEnum(typeof(RecordStatus), txt);
+						this._RecordStatus = (RecordStatus)ParseEnum(typeof(RecordStatus), propertyNode.InnerText);
 						continue;
 					case "dvrStatus":
-						this._DvrStatus = (DVRStatus)ParseEnum(typeof(DVRStatus), txt);
+						this._DvrStatus = (DVRStatus)ParseEnum(typeof(DVRStatus), propertyNode.InnerText);
 						continue;
 					case "dvrWindow":
-						this._DvrWindow = ParseInt(txt);
+						this._DvrWindow = ParseInt(propertyNode.InnerText);
 						continue;
 					case "lastElapsedRecordingTime":
-						this._LastElapsedRecordingTime = ParseInt(txt);
+						this._LastElapsedRecordingTime = ParseInt(propertyNode.InnerText);
 						continue;
 					case "liveStreamConfigurations":
 						this._LiveStreamConfigurations = new List<LiveStreamConfiguration>();
@@ -218,10 +217,10 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "recordedEntryId":
-						this._RecordedEntryId = txt;
+						this._RecordedEntryId = propertyNode.InnerText;
 						continue;
 					case "pushPublishEnabled":
-						this._PushPublishEnabled = (LivePublishStatus)ParseEnum(typeof(LivePublishStatus), txt);
+						this._PushPublishEnabled = (LivePublishStatus)ParseEnum(typeof(LivePublishStatus), propertyNode.InnerText);
 						continue;
 					case "publishConfigurations":
 						this._PublishConfigurations = new List<LiveStreamPushPublishConfiguration>();
@@ -231,19 +230,19 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "firstBroadcast":
-						this._FirstBroadcast = ParseInt(txt);
+						this._FirstBroadcast = ParseInt(propertyNode.InnerText);
 						continue;
 					case "lastBroadcast":
-						this._LastBroadcast = ParseInt(txt);
+						this._LastBroadcast = ParseInt(propertyNode.InnerText);
 						continue;
 					case "currentBroadcastStartTime":
-						this._CurrentBroadcastStartTime = ParseFloat(txt);
+						this._CurrentBroadcastStartTime = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "recordingOptions":
 						this._RecordingOptions = ObjectFactory.Create<LiveEntryRecordingOptions>(propertyNode);
 						continue;
 					case "liveStatus":
-						this._LiveStatus = (EntryServerNodeStatus)ParseEnum(typeof(EntryServerNodeStatus), txt);
+						this._LiveStatus = (EntryServerNodeStatus)ParseEnum(typeof(EntryServerNodeStatus), propertyNode.InnerText);
 						continue;
 				}
 			}

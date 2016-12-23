@@ -229,56 +229,55 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "mailType":
-						this._MailType = (MailType)StringEnum.Parse(typeof(MailType), txt);
+						this._MailType = (MailType)StringEnum.Parse(typeof(MailType), propertyNode.InnerText);
 						continue;
 					case "mailPriority":
-						this._MailPriority = ParseInt(txt);
+						this._MailPriority = ParseInt(propertyNode.InnerText);
 						continue;
 					case "status":
-						this._Status = (MailJobStatus)ParseEnum(typeof(MailJobStatus), txt);
+						this._Status = (MailJobStatus)ParseEnum(typeof(MailJobStatus), propertyNode.InnerText);
 						continue;
 					case "recipientName":
-						this._RecipientName = txt;
+						this._RecipientName = propertyNode.InnerText;
 						continue;
 					case "recipientEmail":
-						this._RecipientEmail = txt;
+						this._RecipientEmail = propertyNode.InnerText;
 						continue;
 					case "recipientId":
-						this._RecipientId = ParseInt(txt);
+						this._RecipientId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "fromName":
-						this._FromName = txt;
+						this._FromName = propertyNode.InnerText;
 						continue;
 					case "fromEmail":
-						this._FromEmail = txt;
+						this._FromEmail = propertyNode.InnerText;
 						continue;
 					case "bodyParams":
-						this._BodyParams = txt;
+						this._BodyParams = propertyNode.InnerText;
 						continue;
 					case "subjectParams":
-						this._SubjectParams = txt;
+						this._SubjectParams = propertyNode.InnerText;
 						continue;
 					case "templatePath":
-						this._TemplatePath = txt;
+						this._TemplatePath = propertyNode.InnerText;
 						continue;
 					case "language":
-						this._Language = (LanguageCode)StringEnum.Parse(typeof(LanguageCode), txt);
+						this._Language = (LanguageCode)StringEnum.Parse(typeof(LanguageCode), propertyNode.InnerText);
 						continue;
 					case "campaignId":
-						this._CampaignId = ParseInt(txt);
+						this._CampaignId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "minSendDate":
-						this._MinSendDate = ParseInt(txt);
+						this._MinSendDate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "isHtml":
-						this._IsHtml = ParseBool(txt);
+						this._IsHtml = ParseBool(propertyNode.InnerText);
 						continue;
 					case "separator":
-						this._Separator = txt;
+						this._Separator = propertyNode.InnerText;
 						continue;
 				}
 			}

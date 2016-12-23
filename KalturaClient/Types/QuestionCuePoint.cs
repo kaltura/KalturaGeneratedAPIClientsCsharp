@@ -97,7 +97,6 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "optionalAnswers":
@@ -112,13 +111,13 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "hint":
-						this._Hint = txt;
+						this._Hint = propertyNode.InnerText;
 						continue;
 					case "question":
-						this._Question = txt;
+						this._Question = propertyNode.InnerText;
 						continue;
 					case "explanation":
-						this._Explanation = txt;
+						this._Explanation = propertyNode.InnerText;
 						continue;
 				}
 			}

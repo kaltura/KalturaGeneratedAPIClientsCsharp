@@ -306,77 +306,76 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "entryId":
-						this._EntryId = txt;
+						this._EntryId = propertyNode.InnerText;
 						continue;
 					case "title":
-						this._Title = txt;
+						this._Title = propertyNode.InnerText;
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "tags":
-						this._Tags = txt;
+						this._Tags = propertyNode.InnerText;
 						continue;
 					case "url":
-						this._Url = txt;
+						this._Url = propertyNode.InnerText;
 						continue;
 					case "contentType":
-						this._ContentType = txt;
+						this._ContentType = propertyNode.InnerText;
 						continue;
 					case "conversionProfileId":
-						this._ConversionProfileId = ParseInt(txt);
+						this._ConversionProfileId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "accessControlProfileId":
-						this._AccessControlProfileId = ParseInt(txt);
+						this._AccessControlProfileId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "category":
-						this._Category = txt;
+						this._Category = propertyNode.InnerText;
 						continue;
 					case "scheduleStartDate":
-						this._ScheduleStartDate = ParseInt(txt);
+						this._ScheduleStartDate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "scheduleEndDate":
-						this._ScheduleEndDate = ParseInt(txt);
+						this._ScheduleEndDate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "entryStatus":
-						this._EntryStatus = ParseInt(txt);
+						this._EntryStatus = ParseInt(propertyNode.InnerText);
 						continue;
 					case "thumbnailUrl":
-						this._ThumbnailUrl = txt;
+						this._ThumbnailUrl = propertyNode.InnerText;
 						continue;
 					case "thumbnailSaved":
-						this._ThumbnailSaved = ParseBool(txt);
+						this._ThumbnailSaved = ParseBool(propertyNode.InnerText);
 						continue;
 					case "sshPrivateKey":
-						this._SshPrivateKey = txt;
+						this._SshPrivateKey = propertyNode.InnerText;
 						continue;
 					case "sshPublicKey":
-						this._SshPublicKey = txt;
+						this._SshPublicKey = propertyNode.InnerText;
 						continue;
 					case "sshKeyPassphrase":
-						this._SshKeyPassphrase = txt;
+						this._SshKeyPassphrase = propertyNode.InnerText;
 						continue;
 					case "creatorId":
-						this._CreatorId = txt;
+						this._CreatorId = propertyNode.InnerText;
 						continue;
 					case "entitledUsersEdit":
-						this._EntitledUsersEdit = txt;
+						this._EntitledUsersEdit = propertyNode.InnerText;
 						continue;
 					case "entitledUsersPublish":
-						this._EntitledUsersPublish = txt;
+						this._EntitledUsersPublish = propertyNode.InnerText;
 						continue;
 					case "ownerId":
-						this._OwnerId = txt;
+						this._OwnerId = propertyNode.InnerText;
 						continue;
 					case "referenceId":
-						this._ReferenceId = txt;
+						this._ReferenceId = propertyNode.InnerText;
 						continue;
 					case "templateEntryId":
-						this._TemplateEntryId = txt;
+						this._TemplateEntryId = propertyNode.InnerText;
 						continue;
 				}
 			}

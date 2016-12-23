@@ -132,35 +132,34 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "name":
-						this._Name = txt;
+						this._Name = propertyNode.InnerText;
 						continue;
 					case "status":
-						this._Status = (VirusScanProfileStatus)ParseEnum(typeof(VirusScanProfileStatus), txt);
+						this._Status = (VirusScanProfileStatus)ParseEnum(typeof(VirusScanProfileStatus), propertyNode.InnerText);
 						continue;
 					case "engineType":
-						this._EngineType = (VirusScanEngineType)StringEnum.Parse(typeof(VirusScanEngineType), txt);
+						this._EngineType = (VirusScanEngineType)StringEnum.Parse(typeof(VirusScanEngineType), propertyNode.InnerText);
 						continue;
 					case "entryFilter":
 						this._EntryFilter = ObjectFactory.Create<BaseEntryFilter>(propertyNode);
 						continue;
 					case "actionIfInfected":
-						this._ActionIfInfected = (VirusFoundAction)ParseEnum(typeof(VirusFoundAction), txt);
+						this._ActionIfInfected = (VirusFoundAction)ParseEnum(typeof(VirusFoundAction), propertyNode.InnerText);
 						continue;
 				}
 			}

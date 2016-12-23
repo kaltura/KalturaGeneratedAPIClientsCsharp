@@ -64,11 +64,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "flavorData":
-						this._FlavorData = txt;
+						this._FlavorData = propertyNode.InnerText;
 						continue;
 				}
 			}

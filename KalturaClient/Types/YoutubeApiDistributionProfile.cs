@@ -185,44 +185,43 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "username":
-						this._Username = txt;
+						this._Username = propertyNode.InnerText;
 						continue;
 					case "defaultCategory":
-						this._DefaultCategory = ParseInt(txt);
+						this._DefaultCategory = ParseInt(propertyNode.InnerText);
 						continue;
 					case "allowComments":
-						this._AllowComments = txt;
+						this._AllowComments = propertyNode.InnerText;
 						continue;
 					case "allowEmbedding":
-						this._AllowEmbedding = txt;
+						this._AllowEmbedding = propertyNode.InnerText;
 						continue;
 					case "allowRatings":
-						this._AllowRatings = txt;
+						this._AllowRatings = propertyNode.InnerText;
 						continue;
 					case "allowResponses":
-						this._AllowResponses = txt;
+						this._AllowResponses = propertyNode.InnerText;
 						continue;
 					case "apiAuthorizeUrl":
-						this._ApiAuthorizeUrl = txt;
+						this._ApiAuthorizeUrl = propertyNode.InnerText;
 						continue;
 					case "googleClientId":
-						this._GoogleClientId = txt;
+						this._GoogleClientId = propertyNode.InnerText;
 						continue;
 					case "googleClientSecret":
-						this._GoogleClientSecret = txt;
+						this._GoogleClientSecret = propertyNode.InnerText;
 						continue;
 					case "googleTokenData":
-						this._GoogleTokenData = txt;
+						this._GoogleTokenData = propertyNode.InnerText;
 						continue;
 					case "assumeSuccess":
-						this._AssumeSuccess = ParseBool(txt);
+						this._AssumeSuccess = ParseBool(propertyNode.InnerText);
 						continue;
 					case "privacyStatus":
-						this._PrivacyStatus = txt;
+						this._PrivacyStatus = propertyNode.InnerText;
 						continue;
 				}
 			}

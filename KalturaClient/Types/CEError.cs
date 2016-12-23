@@ -158,38 +158,37 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = txt;
+						this._Id = propertyNode.InnerText;
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "browser":
-						this._Browser = txt;
+						this._Browser = propertyNode.InnerText;
 						continue;
 					case "serverIp":
-						this._ServerIp = txt;
+						this._ServerIp = propertyNode.InnerText;
 						continue;
 					case "serverOs":
-						this._ServerOs = txt;
+						this._ServerOs = propertyNode.InnerText;
 						continue;
 					case "phpVersion":
-						this._PhpVersion = txt;
+						this._PhpVersion = propertyNode.InnerText;
 						continue;
 					case "ceAdminEmail":
-						this._CeAdminEmail = txt;
+						this._CeAdminEmail = propertyNode.InnerText;
 						continue;
 					case "type":
-						this._Type = txt;
+						this._Type = propertyNode.InnerText;
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "data":
-						this._Data = txt;
+						this._Data = propertyNode.InnerText;
 						continue;
 				}
 			}

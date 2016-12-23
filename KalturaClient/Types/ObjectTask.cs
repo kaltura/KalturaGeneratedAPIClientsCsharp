@@ -70,14 +70,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "type":
-						this._Type = (ObjectTaskType)StringEnum.Parse(typeof(ObjectTaskType), txt);
+						this._Type = (ObjectTaskType)StringEnum.Parse(typeof(ObjectTaskType), propertyNode.InnerText);
 						continue;
 					case "stopProcessingOnError":
-						this._StopProcessingOnError = ParseBool(txt);
+						this._StopProcessingOnError = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}

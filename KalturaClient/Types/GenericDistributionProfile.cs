@@ -130,11 +130,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "genericProviderId":
-						this._GenericProviderId = ParseInt(txt);
+						this._GenericProviderId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "submitAction":
 						this._SubmitAction = ObjectFactory.Create<GenericDistributionProfileAction>(propertyNode);
@@ -149,10 +148,10 @@ namespace Kaltura.Types
 						this._FetchReportAction = ObjectFactory.Create<GenericDistributionProfileAction>(propertyNode);
 						continue;
 					case "updateRequiredEntryFields":
-						this._UpdateRequiredEntryFields = txt;
+						this._UpdateRequiredEntryFields = propertyNode.InnerText;
 						continue;
 					case "updateRequiredMetadataXPaths":
-						this._UpdateRequiredMetadataXPaths = txt;
+						this._UpdateRequiredMetadataXPaths = propertyNode.InnerText;
 						continue;
 				}
 			}

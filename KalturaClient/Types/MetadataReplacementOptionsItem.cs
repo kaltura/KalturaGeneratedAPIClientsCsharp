@@ -64,11 +64,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "shouldCopyMetadata":
-						this._ShouldCopyMetadata = ParseBool(txt);
+						this._ShouldCopyMetadata = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}

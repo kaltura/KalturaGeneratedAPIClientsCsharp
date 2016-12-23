@@ -108,23 +108,22 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "thumbParamsIdEqual":
-						this._ThumbParamsIdEqual = ParseInt(txt);
+						this._ThumbParamsIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "thumbParamsIdIn":
-						this._ThumbParamsIdIn = txt;
+						this._ThumbParamsIdIn = propertyNode.InnerText;
 						continue;
 					case "statusEqual":
-						this._StatusEqual = (ThumbAssetStatus)ParseEnum(typeof(ThumbAssetStatus), txt);
+						this._StatusEqual = (ThumbAssetStatus)ParseEnum(typeof(ThumbAssetStatus), propertyNode.InnerText);
 						continue;
 					case "statusIn":
-						this._StatusIn = txt;
+						this._StatusIn = propertyNode.InnerText;
 						continue;
 					case "statusNotIn":
-						this._StatusNotIn = txt;
+						this._StatusNotIn = propertyNode.InnerText;
 						continue;
 				}
 			}

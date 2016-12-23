@@ -97,20 +97,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "fileSyncObjectType":
-						this._FileSyncObjectType = ParseInt(txt);
+						this._FileSyncObjectType = ParseInt(propertyNode.InnerText);
 						continue;
 					case "objectSubType":
-						this._ObjectSubType = ParseInt(txt);
+						this._ObjectSubType = ParseInt(propertyNode.InnerText);
 						continue;
 					case "objectId":
-						this._ObjectId = txt;
+						this._ObjectId = propertyNode.InnerText;
 						continue;
 					case "version":
-						this._Version = txt;
+						this._Version = propertyNode.InnerText;
 						continue;
 				}
 			}

@@ -64,11 +64,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "useIntelliseek":
-						this._UseIntelliseek = ParseBool(txt);
+						this._UseIntelliseek = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}

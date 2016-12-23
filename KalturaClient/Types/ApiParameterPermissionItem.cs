@@ -86,17 +86,16 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "object":
-						this._Object = txt;
+						this._Object = propertyNode.InnerText;
 						continue;
 					case "parameter":
-						this._Parameter = txt;
+						this._Parameter = propertyNode.InnerText;
 						continue;
 					case "action":
-						this._Action = (ApiParameterPermissionItemAction)StringEnum.Parse(typeof(ApiParameterPermissionItemAction), txt);
+						this._Action = (ApiParameterPermissionItemAction)StringEnum.Parse(typeof(ApiParameterPermissionItemAction), propertyNode.InnerText);
 						continue;
 				}
 			}

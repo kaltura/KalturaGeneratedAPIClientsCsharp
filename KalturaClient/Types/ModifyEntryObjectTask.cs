@@ -130,11 +130,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "inputMetadataProfileId":
-						this._InputMetadataProfileId = ParseInt(txt);
+						this._InputMetadataProfileId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "inputMetadata":
 						this._InputMetadata = new List<KeyValue>();
@@ -144,7 +143,7 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "outputMetadataProfileId":
-						this._OutputMetadataProfileId = ParseInt(txt);
+						this._OutputMetadataProfileId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "outputMetadata":
 						this._OutputMetadata = new List<KeyValue>();
@@ -154,13 +153,13 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "inputUserId":
-						this._InputUserId = txt;
+						this._InputUserId = propertyNode.InnerText;
 						continue;
 					case "inputEntitledUsersEdit":
-						this._InputEntitledUsersEdit = txt;
+						this._InputEntitledUsersEdit = propertyNode.InnerText;
 						continue;
 					case "inputEntitledUsersPublish":
-						this._InputEntitledUsersPublish = txt;
+						this._InputEntitledUsersPublish = propertyNode.InnerText;
 						continue;
 				}
 			}

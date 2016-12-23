@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "formatEqual":
-						this._FormatEqual = (CaptionType)StringEnum.Parse(typeof(CaptionType), txt);
+						this._FormatEqual = (CaptionType)StringEnum.Parse(typeof(CaptionType), propertyNode.InnerText);
 						continue;
 					case "formatIn":
-						this._FormatIn = txt;
+						this._FormatIn = propertyNode.InnerText;
 						continue;
 				}
 			}

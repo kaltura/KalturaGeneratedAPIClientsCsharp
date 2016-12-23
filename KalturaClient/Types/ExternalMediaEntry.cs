@@ -70,14 +70,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "externalSourceType":
-						this._ExternalSourceType = (ExternalMediaSourceType)StringEnum.Parse(typeof(ExternalMediaSourceType), txt);
+						this._ExternalSourceType = (ExternalMediaSourceType)StringEnum.Parse(typeof(ExternalMediaSourceType), propertyNode.InnerText);
 						continue;
 					case "assetParamsIds":
-						this._AssetParamsIds = txt;
+						this._AssetParamsIds = propertyNode.InnerText;
 						continue;
 				}
 			}

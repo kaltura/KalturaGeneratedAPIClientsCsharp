@@ -99,26 +99,25 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "categoryId":
-						this._CategoryId = ParseInt(txt);
+						this._CategoryId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "entryId":
-						this._EntryId = txt;
+						this._EntryId = propertyNode.InnerText;
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "categoryFullIds":
-						this._CategoryFullIds = txt;
+						this._CategoryFullIds = propertyNode.InnerText;
 						continue;
 					case "status":
-						this._Status = (CategoryEntryStatus)ParseEnum(typeof(CategoryEntryStatus), txt);
+						this._Status = (CategoryEntryStatus)ParseEnum(typeof(CategoryEntryStatus), propertyNode.InnerText);
 						continue;
 					case "creatorUserId":
-						this._CreatorUserId = txt;
+						this._CreatorUserId = propertyNode.InnerText;
 						continue;
 				}
 			}

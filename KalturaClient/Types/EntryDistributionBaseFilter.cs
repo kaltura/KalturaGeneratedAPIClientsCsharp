@@ -273,68 +273,67 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this._IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "idIn":
-						this._IdIn = txt;
+						this._IdIn = propertyNode.InnerText;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "submittedAtGreaterThanOrEqual":
-						this._SubmittedAtGreaterThanOrEqual = ParseInt(txt);
+						this._SubmittedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "submittedAtLessThanOrEqual":
-						this._SubmittedAtLessThanOrEqual = ParseInt(txt);
+						this._SubmittedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "entryIdEqual":
-						this._EntryIdEqual = txt;
+						this._EntryIdEqual = propertyNode.InnerText;
 						continue;
 					case "entryIdIn":
-						this._EntryIdIn = txt;
+						this._EntryIdIn = propertyNode.InnerText;
 						continue;
 					case "distributionProfileIdEqual":
-						this._DistributionProfileIdEqual = ParseInt(txt);
+						this._DistributionProfileIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "distributionProfileIdIn":
-						this._DistributionProfileIdIn = txt;
+						this._DistributionProfileIdIn = propertyNode.InnerText;
 						continue;
 					case "statusEqual":
-						this._StatusEqual = (EntryDistributionStatus)ParseEnum(typeof(EntryDistributionStatus), txt);
+						this._StatusEqual = (EntryDistributionStatus)ParseEnum(typeof(EntryDistributionStatus), propertyNode.InnerText);
 						continue;
 					case "statusIn":
-						this._StatusIn = txt;
+						this._StatusIn = propertyNode.InnerText;
 						continue;
 					case "dirtyStatusEqual":
-						this._DirtyStatusEqual = (EntryDistributionFlag)ParseEnum(typeof(EntryDistributionFlag), txt);
+						this._DirtyStatusEqual = (EntryDistributionFlag)ParseEnum(typeof(EntryDistributionFlag), propertyNode.InnerText);
 						continue;
 					case "dirtyStatusIn":
-						this._DirtyStatusIn = txt;
+						this._DirtyStatusIn = propertyNode.InnerText;
 						continue;
 					case "sunriseGreaterThanOrEqual":
-						this._SunriseGreaterThanOrEqual = ParseInt(txt);
+						this._SunriseGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "sunriseLessThanOrEqual":
-						this._SunriseLessThanOrEqual = ParseInt(txt);
+						this._SunriseLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "sunsetGreaterThanOrEqual":
-						this._SunsetGreaterThanOrEqual = ParseInt(txt);
+						this._SunsetGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "sunsetLessThanOrEqual":
-						this._SunsetLessThanOrEqual = ParseInt(txt);
+						this._SunsetLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

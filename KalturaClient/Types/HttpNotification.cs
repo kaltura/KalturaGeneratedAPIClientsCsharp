@@ -130,29 +130,28 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "object":
 						this._Object = ObjectFactory.Create<ObjectBase>(propertyNode);
 						continue;
 					case "eventObjectType":
-						this._EventObjectType = (EventNotificationEventObjectType)StringEnum.Parse(typeof(EventNotificationEventObjectType), txt);
+						this._EventObjectType = (EventNotificationEventObjectType)StringEnum.Parse(typeof(EventNotificationEventObjectType), propertyNode.InnerText);
 						continue;
 					case "eventNotificationJobId":
-						this._EventNotificationJobId = ParseLong(txt);
+						this._EventNotificationJobId = ParseLong(propertyNode.InnerText);
 						continue;
 					case "templateId":
-						this._TemplateId = ParseInt(txt);
+						this._TemplateId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "templateName":
-						this._TemplateName = txt;
+						this._TemplateName = propertyNode.InnerText;
 						continue;
 					case "templateSystemName":
-						this._TemplateSystemName = txt;
+						this._TemplateSystemName = propertyNode.InnerText;
 						continue;
 					case "eventType":
-						this._EventType = (EventNotificationEventType)StringEnum.Parse(typeof(EventNotificationEventType), txt);
+						this._EventType = (EventNotificationEventType)StringEnum.Parse(typeof(EventNotificationEventType), propertyNode.InnerText);
 						continue;
 				}
 			}

@@ -163,38 +163,37 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "mediaTypeEqual":
-						this._MediaTypeEqual = (MediaType)ParseEnum(typeof(MediaType), txt);
+						this._MediaTypeEqual = (MediaType)ParseEnum(typeof(MediaType), propertyNode.InnerText);
 						continue;
 					case "mediaTypeIn":
-						this._MediaTypeIn = txt;
+						this._MediaTypeIn = propertyNode.InnerText;
 						continue;
 					case "sourceTypeEqual":
-						this._SourceTypeEqual = (SourceType)StringEnum.Parse(typeof(SourceType), txt);
+						this._SourceTypeEqual = (SourceType)StringEnum.Parse(typeof(SourceType), propertyNode.InnerText);
 						continue;
 					case "sourceTypeNotEqual":
-						this._SourceTypeNotEqual = (SourceType)StringEnum.Parse(typeof(SourceType), txt);
+						this._SourceTypeNotEqual = (SourceType)StringEnum.Parse(typeof(SourceType), propertyNode.InnerText);
 						continue;
 					case "sourceTypeIn":
-						this._SourceTypeIn = txt;
+						this._SourceTypeIn = propertyNode.InnerText;
 						continue;
 					case "sourceTypeNotIn":
-						this._SourceTypeNotIn = txt;
+						this._SourceTypeNotIn = propertyNode.InnerText;
 						continue;
 					case "mediaDateGreaterThanOrEqual":
-						this._MediaDateGreaterThanOrEqual = ParseInt(txt);
+						this._MediaDateGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "mediaDateLessThanOrEqual":
-						this._MediaDateLessThanOrEqual = ParseInt(txt);
+						this._MediaDateLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "flavorParamsIdsMatchOr":
-						this._FlavorParamsIdsMatchOr = txt;
+						this._FlavorParamsIdsMatchOr = propertyNode.InnerText;
 						continue;
 					case "flavorParamsIdsMatchAnd":
-						this._FlavorParamsIdsMatchAnd = txt;
+						this._FlavorParamsIdsMatchAnd = propertyNode.InnerText;
 						continue;
 				}
 			}

@@ -205,59 +205,58 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "genericDistributionProviderId":
-						this._GenericDistributionProviderId = ParseInt(txt);
+						this._GenericDistributionProviderId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "action":
-						this._Action = (DistributionAction)ParseEnum(typeof(DistributionAction), txt);
+						this._Action = (DistributionAction)ParseEnum(typeof(DistributionAction), propertyNode.InnerText);
 						continue;
 					case "status":
-						this._Status = (GenericDistributionProviderStatus)ParseEnum(typeof(GenericDistributionProviderStatus), txt);
+						this._Status = (GenericDistributionProviderStatus)ParseEnum(typeof(GenericDistributionProviderStatus), propertyNode.InnerText);
 						continue;
 					case "resultsParser":
-						this._ResultsParser = (GenericDistributionProviderParser)ParseEnum(typeof(GenericDistributionProviderParser), txt);
+						this._ResultsParser = (GenericDistributionProviderParser)ParseEnum(typeof(GenericDistributionProviderParser), propertyNode.InnerText);
 						continue;
 					case "protocol":
-						this._Protocol = (DistributionProtocol)ParseEnum(typeof(DistributionProtocol), txt);
+						this._Protocol = (DistributionProtocol)ParseEnum(typeof(DistributionProtocol), propertyNode.InnerText);
 						continue;
 					case "serverAddress":
-						this._ServerAddress = txt;
+						this._ServerAddress = propertyNode.InnerText;
 						continue;
 					case "remotePath":
-						this._RemotePath = txt;
+						this._RemotePath = propertyNode.InnerText;
 						continue;
 					case "remoteUsername":
-						this._RemoteUsername = txt;
+						this._RemoteUsername = propertyNode.InnerText;
 						continue;
 					case "remotePassword":
-						this._RemotePassword = txt;
+						this._RemotePassword = propertyNode.InnerText;
 						continue;
 					case "editableFields":
-						this._EditableFields = txt;
+						this._EditableFields = propertyNode.InnerText;
 						continue;
 					case "mandatoryFields":
-						this._MandatoryFields = txt;
+						this._MandatoryFields = propertyNode.InnerText;
 						continue;
 					case "mrssTransformer":
-						this._MrssTransformer = txt;
+						this._MrssTransformer = propertyNode.InnerText;
 						continue;
 					case "mrssValidator":
-						this._MrssValidator = txt;
+						this._MrssValidator = propertyNode.InnerText;
 						continue;
 					case "resultsTransformer":
-						this._ResultsTransformer = txt;
+						this._ResultsTransformer = propertyNode.InnerText;
 						continue;
 				}
 			}

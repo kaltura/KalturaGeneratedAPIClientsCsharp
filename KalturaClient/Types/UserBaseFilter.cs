@@ -229,56 +229,55 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "partnerIdEqual":
-						this._PartnerIdEqual = ParseInt(txt);
+						this._PartnerIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "typeEqual":
-						this._TypeEqual = (UserType)ParseEnum(typeof(UserType), txt);
+						this._TypeEqual = (UserType)ParseEnum(typeof(UserType), propertyNode.InnerText);
 						continue;
 					case "typeIn":
-						this._TypeIn = txt;
+						this._TypeIn = propertyNode.InnerText;
 						continue;
 					case "screenNameLike":
-						this._ScreenNameLike = txt;
+						this._ScreenNameLike = propertyNode.InnerText;
 						continue;
 					case "screenNameStartsWith":
-						this._ScreenNameStartsWith = txt;
+						this._ScreenNameStartsWith = propertyNode.InnerText;
 						continue;
 					case "emailLike":
-						this._EmailLike = txt;
+						this._EmailLike = propertyNode.InnerText;
 						continue;
 					case "emailStartsWith":
-						this._EmailStartsWith = txt;
+						this._EmailStartsWith = propertyNode.InnerText;
 						continue;
 					case "tagsMultiLikeOr":
-						this._TagsMultiLikeOr = txt;
+						this._TagsMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "tagsMultiLikeAnd":
-						this._TagsMultiLikeAnd = txt;
+						this._TagsMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "statusEqual":
-						this._StatusEqual = (UserStatus)ParseEnum(typeof(UserStatus), txt);
+						this._StatusEqual = (UserStatus)ParseEnum(typeof(UserStatus), propertyNode.InnerText);
 						continue;
 					case "statusIn":
-						this._StatusIn = txt;
+						this._StatusIn = propertyNode.InnerText;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "firstNameStartsWith":
-						this._FirstNameStartsWith = txt;
+						this._FirstNameStartsWith = propertyNode.InnerText;
 						continue;
 					case "lastNameStartsWith":
-						this._LastNameStartsWith = txt;
+						this._LastNameStartsWith = propertyNode.InnerText;
 						continue;
 					case "isAdminEqual":
-						this._IsAdminEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._IsAdminEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 				}
 			}

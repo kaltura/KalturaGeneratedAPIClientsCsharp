@@ -97,20 +97,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "srcFilePath":
-						this._SrcFilePath = txt;
+						this._SrcFilePath = propertyNode.InnerText;
 						continue;
 					case "flavorAssetId":
-						this._FlavorAssetId = txt;
+						this._FlavorAssetId = propertyNode.InnerText;
 						continue;
 					case "scanResult":
-						this._ScanResult = (VirusScanJobResult)ParseEnum(typeof(VirusScanJobResult), txt);
+						this._ScanResult = (VirusScanJobResult)ParseEnum(typeof(VirusScanJobResult), propertyNode.InnerText);
 						continue;
 					case "virusFoundAction":
-						this._VirusFoundAction = (VirusFoundAction)ParseEnum(typeof(VirusFoundAction), txt);
+						this._VirusFoundAction = (VirusFoundAction)ParseEnum(typeof(VirusFoundAction), propertyNode.InnerText);
 						continue;
 				}
 			}

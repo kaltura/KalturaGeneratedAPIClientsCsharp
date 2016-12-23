@@ -97,20 +97,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "uploadTokenId":
-						this._UploadTokenId = txt;
+						this._UploadTokenId = propertyNode.InnerText;
 						continue;
 					case "fileSize":
-						this._FileSize = ParseInt(txt);
+						this._FileSize = ParseInt(propertyNode.InnerText);
 						continue;
 					case "errorCode":
-						this._ErrorCode = (UploadErrorCode)ParseEnum(typeof(UploadErrorCode), txt);
+						this._ErrorCode = (UploadErrorCode)ParseEnum(typeof(UploadErrorCode), propertyNode.InnerText);
 						continue;
 					case "errorDescription":
-						this._ErrorDescription = txt;
+						this._ErrorDescription = propertyNode.InnerText;
 						continue;
 				}
 			}

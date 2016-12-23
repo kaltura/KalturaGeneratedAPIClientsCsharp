@@ -86,17 +86,16 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "latitude":
-						this._Latitude = ParseFloat(txt);
+						this._Latitude = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "longitude":
-						this._Longitude = ParseFloat(txt);
+						this._Longitude = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "name":
-						this._Name = txt;
+						this._Name = propertyNode.InnerText;
 						continue;
 				}
 			}

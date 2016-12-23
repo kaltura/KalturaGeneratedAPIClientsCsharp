@@ -171,47 +171,46 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "type":
-						this._Type = (PermissionType)ParseEnum(typeof(PermissionType), txt);
+						this._Type = (PermissionType)ParseEnum(typeof(PermissionType), propertyNode.InnerText);
 						continue;
 					case "name":
-						this._Name = txt;
+						this._Name = propertyNode.InnerText;
 						continue;
 					case "friendlyName":
-						this._FriendlyName = txt;
+						this._FriendlyName = propertyNode.InnerText;
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "status":
-						this._Status = (PermissionStatus)ParseEnum(typeof(PermissionStatus), txt);
+						this._Status = (PermissionStatus)ParseEnum(typeof(PermissionStatus), propertyNode.InnerText);
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "dependsOnPermissionNames":
-						this._DependsOnPermissionNames = txt;
+						this._DependsOnPermissionNames = propertyNode.InnerText;
 						continue;
 					case "tags":
-						this._Tags = txt;
+						this._Tags = propertyNode.InnerText;
 						continue;
 					case "permissionItemsIds":
-						this._PermissionItemsIds = txt;
+						this._PermissionItemsIds = propertyNode.InnerText;
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerGroup":
-						this._PartnerGroup = txt;
+						this._PartnerGroup = propertyNode.InnerText;
 						continue;
 				}
 			}

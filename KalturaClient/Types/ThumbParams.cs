@@ -240,59 +240,58 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "cropType":
-						this._CropType = (ThumbCropType)ParseEnum(typeof(ThumbCropType), txt);
+						this._CropType = (ThumbCropType)ParseEnum(typeof(ThumbCropType), propertyNode.InnerText);
 						continue;
 					case "quality":
-						this._Quality = ParseInt(txt);
+						this._Quality = ParseInt(propertyNode.InnerText);
 						continue;
 					case "cropX":
-						this._CropX = ParseInt(txt);
+						this._CropX = ParseInt(propertyNode.InnerText);
 						continue;
 					case "cropY":
-						this._CropY = ParseInt(txt);
+						this._CropY = ParseInt(propertyNode.InnerText);
 						continue;
 					case "cropWidth":
-						this._CropWidth = ParseInt(txt);
+						this._CropWidth = ParseInt(propertyNode.InnerText);
 						continue;
 					case "cropHeight":
-						this._CropHeight = ParseInt(txt);
+						this._CropHeight = ParseInt(propertyNode.InnerText);
 						continue;
 					case "videoOffset":
-						this._VideoOffset = ParseFloat(txt);
+						this._VideoOffset = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "width":
-						this._Width = ParseInt(txt);
+						this._Width = ParseInt(propertyNode.InnerText);
 						continue;
 					case "height":
-						this._Height = ParseInt(txt);
+						this._Height = ParseInt(propertyNode.InnerText);
 						continue;
 					case "scaleWidth":
-						this._ScaleWidth = ParseFloat(txt);
+						this._ScaleWidth = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "scaleHeight":
-						this._ScaleHeight = ParseFloat(txt);
+						this._ScaleHeight = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "backgroundColor":
-						this._BackgroundColor = txt;
+						this._BackgroundColor = propertyNode.InnerText;
 						continue;
 					case "sourceParamsId":
-						this._SourceParamsId = ParseInt(txt);
+						this._SourceParamsId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "format":
-						this._Format = (ContainerFormat)StringEnum.Parse(typeof(ContainerFormat), txt);
+						this._Format = (ContainerFormat)StringEnum.Parse(typeof(ContainerFormat), propertyNode.InnerText);
 						continue;
 					case "density":
-						this._Density = ParseInt(txt);
+						this._Density = ParseInt(propertyNode.InnerText);
 						continue;
 					case "stripProfiles":
-						this._StripProfiles = ParseBool(txt);
+						this._StripProfiles = ParseBool(propertyNode.InnerText);
 						continue;
 					case "videoOffsetInPercentage":
-						this._VideoOffsetInPercentage = ParseInt(txt);
+						this._VideoOffsetInPercentage = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

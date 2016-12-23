@@ -108,23 +108,22 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "flavorParamsIdEqual":
-						this._FlavorParamsIdEqual = ParseInt(txt);
+						this._FlavorParamsIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "flavorParamsIdIn":
-						this._FlavorParamsIdIn = txt;
+						this._FlavorParamsIdIn = propertyNode.InnerText;
 						continue;
 					case "statusEqual":
-						this._StatusEqual = (FlavorAssetStatus)ParseEnum(typeof(FlavorAssetStatus), txt);
+						this._StatusEqual = (FlavorAssetStatus)ParseEnum(typeof(FlavorAssetStatus), propertyNode.InnerText);
 						continue;
 					case "statusIn":
-						this._StatusIn = txt;
+						this._StatusIn = propertyNode.InnerText;
 						continue;
 					case "statusNotIn":
-						this._StatusNotIn = txt;
+						this._StatusNotIn = propertyNode.InnerText;
 						continue;
 				}
 			}

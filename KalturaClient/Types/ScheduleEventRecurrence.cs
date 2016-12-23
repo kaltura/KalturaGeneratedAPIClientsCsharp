@@ -229,56 +229,55 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "name":
-						this._Name = txt;
+						this._Name = propertyNode.InnerText;
 						continue;
 					case "frequency":
-						this._Frequency = (ScheduleEventRecurrenceFrequency)StringEnum.Parse(typeof(ScheduleEventRecurrenceFrequency), txt);
+						this._Frequency = (ScheduleEventRecurrenceFrequency)StringEnum.Parse(typeof(ScheduleEventRecurrenceFrequency), propertyNode.InnerText);
 						continue;
 					case "until":
-						this._Until = ParseInt(txt);
+						this._Until = ParseInt(propertyNode.InnerText);
 						continue;
 					case "timeZone":
-						this._TimeZone = txt;
+						this._TimeZone = propertyNode.InnerText;
 						continue;
 					case "count":
-						this._Count = ParseInt(txt);
+						this._Count = ParseInt(propertyNode.InnerText);
 						continue;
 					case "interval":
-						this._Interval = ParseInt(txt);
+						this._Interval = ParseInt(propertyNode.InnerText);
 						continue;
 					case "bySecond":
-						this._BySecond = txt;
+						this._BySecond = propertyNode.InnerText;
 						continue;
 					case "byMinute":
-						this._ByMinute = txt;
+						this._ByMinute = propertyNode.InnerText;
 						continue;
 					case "byHour":
-						this._ByHour = txt;
+						this._ByHour = propertyNode.InnerText;
 						continue;
 					case "byDay":
-						this._ByDay = txt;
+						this._ByDay = propertyNode.InnerText;
 						continue;
 					case "byMonthDay":
-						this._ByMonthDay = txt;
+						this._ByMonthDay = propertyNode.InnerText;
 						continue;
 					case "byYearDay":
-						this._ByYearDay = txt;
+						this._ByYearDay = propertyNode.InnerText;
 						continue;
 					case "byWeekNumber":
-						this._ByWeekNumber = txt;
+						this._ByWeekNumber = propertyNode.InnerText;
 						continue;
 					case "byMonth":
-						this._ByMonth = txt;
+						this._ByMonth = propertyNode.InnerText;
 						continue;
 					case "byOffset":
-						this._ByOffset = txt;
+						this._ByOffset = propertyNode.InnerText;
 						continue;
 					case "weekStartDay":
-						this._WeekStartDay = (ScheduleEventRecurrenceDay)StringEnum.Parse(typeof(ScheduleEventRecurrenceDay), txt);
+						this._WeekStartDay = (ScheduleEventRecurrenceDay)StringEnum.Parse(typeof(ScheduleEventRecurrenceDay), propertyNode.InnerText);
 						continue;
 				}
 			}

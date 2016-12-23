@@ -64,11 +64,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "adStitchingEnabled":
-						this._AdStitchingEnabled = ParseBool(txt);
+						this._AdStitchingEnabled = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}

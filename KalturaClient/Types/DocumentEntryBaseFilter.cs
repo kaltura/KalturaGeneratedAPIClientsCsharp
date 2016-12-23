@@ -97,20 +97,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "documentTypeEqual":
-						this._DocumentTypeEqual = (DocumentType)ParseEnum(typeof(DocumentType), txt);
+						this._DocumentTypeEqual = (DocumentType)ParseEnum(typeof(DocumentType), propertyNode.InnerText);
 						continue;
 					case "documentTypeIn":
-						this._DocumentTypeIn = txt;
+						this._DocumentTypeIn = propertyNode.InnerText;
 						continue;
 					case "assetParamsIdsMatchOr":
-						this._AssetParamsIdsMatchOr = txt;
+						this._AssetParamsIdsMatchOr = propertyNode.InnerText;
 						continue;
 					case "assetParamsIdsMatchAnd":
-						this._AssetParamsIdsMatchAnd = txt;
+						this._AssetParamsIdsMatchAnd = propertyNode.InnerText;
 						continue;
 				}
 			}

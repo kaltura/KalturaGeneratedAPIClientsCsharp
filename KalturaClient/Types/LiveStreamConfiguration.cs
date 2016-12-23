@@ -108,23 +108,22 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "protocol":
-						this._Protocol = (PlaybackProtocol)StringEnum.Parse(typeof(PlaybackProtocol), txt);
+						this._Protocol = (PlaybackProtocol)StringEnum.Parse(typeof(PlaybackProtocol), propertyNode.InnerText);
 						continue;
 					case "url":
-						this._Url = txt;
+						this._Url = propertyNode.InnerText;
 						continue;
 					case "publishUrl":
-						this._PublishUrl = txt;
+						this._PublishUrl = propertyNode.InnerText;
 						continue;
 					case "backupUrl":
-						this._BackupUrl = txt;
+						this._BackupUrl = propertyNode.InnerText;
 						continue;
 					case "streamName":
-						this._StreamName = txt;
+						this._StreamName = propertyNode.InnerText;
 						continue;
 				}
 			}

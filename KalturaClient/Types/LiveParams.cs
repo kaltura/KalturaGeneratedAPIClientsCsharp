@@ -64,11 +64,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "streamSuffix":
-						this._StreamSuffix = txt;
+						this._StreamSuffix = propertyNode.InnerText;
 						continue;
 				}
 			}

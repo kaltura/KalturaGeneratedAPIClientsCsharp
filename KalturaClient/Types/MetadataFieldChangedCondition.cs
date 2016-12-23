@@ -108,23 +108,22 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "xPath":
-						this._XPath = txt;
+						this._XPath = propertyNode.InnerText;
 						continue;
 					case "profileId":
-						this._ProfileId = ParseInt(txt);
+						this._ProfileId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "profileSystemName":
-						this._ProfileSystemName = txt;
+						this._ProfileSystemName = propertyNode.InnerText;
 						continue;
 					case "versionA":
-						this._VersionA = txt;
+						this._VersionA = propertyNode.InnerText;
 						continue;
 					case "versionB":
-						this._VersionB = txt;
+						this._VersionB = propertyNode.InnerText;
 						continue;
 				}
 			}

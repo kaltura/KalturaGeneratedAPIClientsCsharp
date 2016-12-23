@@ -92,20 +92,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "category":
-						this._Category = (YahooSyndicationFeedCategories)StringEnum.Parse(typeof(YahooSyndicationFeedCategories), txt);
+						this._Category = (YahooSyndicationFeedCategories)StringEnum.Parse(typeof(YahooSyndicationFeedCategories), propertyNode.InnerText);
 						continue;
 					case "adultContent":
-						this._AdultContent = (YahooSyndicationFeedAdultValues)StringEnum.Parse(typeof(YahooSyndicationFeedAdultValues), txt);
+						this._AdultContent = (YahooSyndicationFeedAdultValues)StringEnum.Parse(typeof(YahooSyndicationFeedAdultValues), propertyNode.InnerText);
 						continue;
 					case "feedDescription":
-						this._FeedDescription = txt;
+						this._FeedDescription = propertyNode.InnerText;
 						continue;
 					case "feedLandingPage":
-						this._FeedLandingPage = txt;
+						this._FeedLandingPage = propertyNode.InnerText;
 						continue;
 				}
 			}

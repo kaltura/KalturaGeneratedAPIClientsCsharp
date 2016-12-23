@@ -196,47 +196,46 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "resourceIdsLike":
-						this._ResourceIdsLike = txt;
+						this._ResourceIdsLike = propertyNode.InnerText;
 						continue;
 					case "resourceIdsMultiLikeOr":
-						this._ResourceIdsMultiLikeOr = txt;
+						this._ResourceIdsMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "resourceIdsMultiLikeAnd":
-						this._ResourceIdsMultiLikeAnd = txt;
+						this._ResourceIdsMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "parentResourceIdsLike":
-						this._ParentResourceIdsLike = txt;
+						this._ParentResourceIdsLike = propertyNode.InnerText;
 						continue;
 					case "parentResourceIdsMultiLikeOr":
-						this._ParentResourceIdsMultiLikeOr = txt;
+						this._ParentResourceIdsMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "parentResourceIdsMultiLikeAnd":
-						this._ParentResourceIdsMultiLikeAnd = txt;
+						this._ParentResourceIdsMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "templateEntryCategoriesIdsMultiLikeAnd":
-						this._TemplateEntryCategoriesIdsMultiLikeAnd = txt;
+						this._TemplateEntryCategoriesIdsMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "templateEntryCategoriesIdsMultiLikeOr":
-						this._TemplateEntryCategoriesIdsMultiLikeOr = txt;
+						this._TemplateEntryCategoriesIdsMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "resourceSystemNamesMultiLikeOr":
-						this._ResourceSystemNamesMultiLikeOr = txt;
+						this._ResourceSystemNamesMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "templateEntryCategoriesIdsLike":
-						this._TemplateEntryCategoriesIdsLike = txt;
+						this._TemplateEntryCategoriesIdsLike = propertyNode.InnerText;
 						continue;
 					case "resourceSystemNamesMultiLikeAnd":
-						this._ResourceSystemNamesMultiLikeAnd = txt;
+						this._ResourceSystemNamesMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "resourceSystemNamesLike":
-						this._ResourceSystemNamesLike = txt;
+						this._ResourceSystemNamesLike = propertyNode.InnerText;
 						continue;
 					case "orderBy":
-						this._OrderBy = (ScheduleEventOrderBy)StringEnum.Parse(typeof(ScheduleEventOrderBy), txt);
+						this._OrderBy = (ScheduleEventOrderBy)StringEnum.Parse(typeof(ScheduleEventOrderBy), propertyNode.InnerText);
 						continue;
 				}
 			}

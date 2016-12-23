@@ -97,20 +97,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "systemNameEqual":
-						this._SystemNameEqual = txt;
+						this._SystemNameEqual = propertyNode.InnerText;
 						continue;
 					case "systemNameIn":
-						this._SystemNameIn = txt;
+						this._SystemNameIn = propertyNode.InnerText;
 						continue;
 					case "isSystemDefaultEqual":
-						this._IsSystemDefaultEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._IsSystemDefaultEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "tagsEqual":
-						this._TagsEqual = txt;
+						this._TagsEqual = propertyNode.InnerText;
 						continue;
 				}
 			}

@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "lastObjectKey":
-						this._LastObjectKey = txt;
+						this._LastObjectKey = propertyNode.InnerText;
 						continue;
 					case "recalculated":
-						this._Recalculated = ParseInt(txt);
+						this._Recalculated = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

@@ -339,86 +339,85 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this._IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "idIn":
-						this._IdIn = txt;
+						this._IdIn = propertyNode.InnerText;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "heartbeatTimeGreaterThanOrEqual":
-						this._HeartbeatTimeGreaterThanOrEqual = ParseInt(txt);
+						this._HeartbeatTimeGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "heartbeatTimeLessThanOrEqual":
-						this._HeartbeatTimeLessThanOrEqual = ParseInt(txt);
+						this._HeartbeatTimeLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "nameEqual":
-						this._NameEqual = txt;
+						this._NameEqual = propertyNode.InnerText;
 						continue;
 					case "nameIn":
-						this._NameIn = txt;
+						this._NameIn = propertyNode.InnerText;
 						continue;
 					case "systemNameEqual":
-						this._SystemNameEqual = txt;
+						this._SystemNameEqual = propertyNode.InnerText;
 						continue;
 					case "systemNameIn":
-						this._SystemNameIn = txt;
+						this._SystemNameIn = propertyNode.InnerText;
 						continue;
 					case "hostNameLike":
-						this._HostNameLike = txt;
+						this._HostNameLike = propertyNode.InnerText;
 						continue;
 					case "hostNameMultiLikeOr":
-						this._HostNameMultiLikeOr = txt;
+						this._HostNameMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "hostNameMultiLikeAnd":
-						this._HostNameMultiLikeAnd = txt;
+						this._HostNameMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "statusEqual":
-						this._StatusEqual = (ServerNodeStatus)ParseEnum(typeof(ServerNodeStatus), txt);
+						this._StatusEqual = (ServerNodeStatus)ParseEnum(typeof(ServerNodeStatus), propertyNode.InnerText);
 						continue;
 					case "statusIn":
-						this._StatusIn = txt;
+						this._StatusIn = propertyNode.InnerText;
 						continue;
 					case "typeEqual":
-						this._TypeEqual = (ServerNodeType)StringEnum.Parse(typeof(ServerNodeType), txt);
+						this._TypeEqual = (ServerNodeType)StringEnum.Parse(typeof(ServerNodeType), propertyNode.InnerText);
 						continue;
 					case "typeIn":
-						this._TypeIn = txt;
+						this._TypeIn = propertyNode.InnerText;
 						continue;
 					case "tagsLike":
-						this._TagsLike = txt;
+						this._TagsLike = propertyNode.InnerText;
 						continue;
 					case "tagsMultiLikeOr":
-						this._TagsMultiLikeOr = txt;
+						this._TagsMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "tagsMultiLikeAnd":
-						this._TagsMultiLikeAnd = txt;
+						this._TagsMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "dcEqual":
-						this._DcEqual = ParseInt(txt);
+						this._DcEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "dcIn":
-						this._DcIn = txt;
+						this._DcIn = propertyNode.InnerText;
 						continue;
 					case "parentIdEqual":
-						this._ParentIdEqual = ParseInt(txt);
+						this._ParentIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "parentIdIn":
-						this._ParentIdIn = txt;
+						this._ParentIdIn = propertyNode.InnerText;
 						continue;
 				}
 			}

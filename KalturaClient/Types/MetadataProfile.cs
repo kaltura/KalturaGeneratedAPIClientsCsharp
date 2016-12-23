@@ -173,53 +173,52 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "metadataObjectType":
-						this._MetadataObjectType = (MetadataObjectType)StringEnum.Parse(typeof(MetadataObjectType), txt);
+						this._MetadataObjectType = (MetadataObjectType)StringEnum.Parse(typeof(MetadataObjectType), propertyNode.InnerText);
 						continue;
 					case "version":
-						this._Version = ParseInt(txt);
+						this._Version = ParseInt(propertyNode.InnerText);
 						continue;
 					case "name":
-						this._Name = txt;
+						this._Name = propertyNode.InnerText;
 						continue;
 					case "systemName":
-						this._SystemName = txt;
+						this._SystemName = propertyNode.InnerText;
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "status":
-						this._Status = (MetadataProfileStatus)ParseEnum(typeof(MetadataProfileStatus), txt);
+						this._Status = (MetadataProfileStatus)ParseEnum(typeof(MetadataProfileStatus), propertyNode.InnerText);
 						continue;
 					case "xsd":
-						this._Xsd = txt;
+						this._Xsd = propertyNode.InnerText;
 						continue;
 					case "views":
-						this._Views = txt;
+						this._Views = propertyNode.InnerText;
 						continue;
 					case "xslt":
-						this._Xslt = txt;
+						this._Xslt = propertyNode.InnerText;
 						continue;
 					case "createMode":
-						this._CreateMode = (MetadataProfileCreateMode)ParseEnum(typeof(MetadataProfileCreateMode), txt);
+						this._CreateMode = (MetadataProfileCreateMode)ParseEnum(typeof(MetadataProfileCreateMode), propertyNode.InnerText);
 						continue;
 					case "disableReIndexing":
-						this._DisableReIndexing = ParseBool(txt);
+						this._DisableReIndexing = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}

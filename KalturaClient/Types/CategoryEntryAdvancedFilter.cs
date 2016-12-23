@@ -97,20 +97,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "categoriesMatchOr":
-						this._CategoriesMatchOr = txt;
+						this._CategoriesMatchOr = propertyNode.InnerText;
 						continue;
 					case "categoryEntryStatusIn":
-						this._CategoryEntryStatusIn = txt;
+						this._CategoryEntryStatusIn = propertyNode.InnerText;
 						continue;
 					case "orderBy":
-						this._OrderBy = (CategoryEntryAdvancedOrderBy)StringEnum.Parse(typeof(CategoryEntryAdvancedOrderBy), txt);
+						this._OrderBy = (CategoryEntryAdvancedOrderBy)StringEnum.Parse(typeof(CategoryEntryAdvancedOrderBy), propertyNode.InnerText);
 						continue;
 					case "categoryIdEqual":
-						this._CategoryIdEqual = ParseInt(txt);
+						this._CategoryIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

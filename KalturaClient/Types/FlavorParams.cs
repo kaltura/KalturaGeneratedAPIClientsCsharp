@@ -471,122 +471,121 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "videoCodec":
-						this._VideoCodec = (VideoCodec)StringEnum.Parse(typeof(VideoCodec), txt);
+						this._VideoCodec = (VideoCodec)StringEnum.Parse(typeof(VideoCodec), propertyNode.InnerText);
 						continue;
 					case "videoBitrate":
-						this._VideoBitrate = ParseInt(txt);
+						this._VideoBitrate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "audioCodec":
-						this._AudioCodec = (AudioCodec)StringEnum.Parse(typeof(AudioCodec), txt);
+						this._AudioCodec = (AudioCodec)StringEnum.Parse(typeof(AudioCodec), propertyNode.InnerText);
 						continue;
 					case "audioBitrate":
-						this._AudioBitrate = ParseInt(txt);
+						this._AudioBitrate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "audioChannels":
-						this._AudioChannels = ParseInt(txt);
+						this._AudioChannels = ParseInt(propertyNode.InnerText);
 						continue;
 					case "audioSampleRate":
-						this._AudioSampleRate = ParseInt(txt);
+						this._AudioSampleRate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "width":
-						this._Width = ParseInt(txt);
+						this._Width = ParseInt(propertyNode.InnerText);
 						continue;
 					case "height":
-						this._Height = ParseInt(txt);
+						this._Height = ParseInt(propertyNode.InnerText);
 						continue;
 					case "frameRate":
-						this._FrameRate = ParseFloat(txt);
+						this._FrameRate = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "gopSize":
-						this._GopSize = ParseInt(txt);
+						this._GopSize = ParseInt(propertyNode.InnerText);
 						continue;
 					case "conversionEngines":
-						this._ConversionEngines = txt;
+						this._ConversionEngines = propertyNode.InnerText;
 						continue;
 					case "conversionEnginesExtraParams":
-						this._ConversionEnginesExtraParams = txt;
+						this._ConversionEnginesExtraParams = propertyNode.InnerText;
 						continue;
 					case "twoPass":
-						this._TwoPass = ParseBool(txt);
+						this._TwoPass = ParseBool(propertyNode.InnerText);
 						continue;
 					case "deinterlice":
-						this._Deinterlice = ParseInt(txt);
+						this._Deinterlice = ParseInt(propertyNode.InnerText);
 						continue;
 					case "rotate":
-						this._Rotate = ParseInt(txt);
+						this._Rotate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "operators":
-						this._Operators = txt;
+						this._Operators = propertyNode.InnerText;
 						continue;
 					case "engineVersion":
-						this._EngineVersion = ParseInt(txt);
+						this._EngineVersion = ParseInt(propertyNode.InnerText);
 						continue;
 					case "format":
-						this._Format = (ContainerFormat)StringEnum.Parse(typeof(ContainerFormat), txt);
+						this._Format = (ContainerFormat)StringEnum.Parse(typeof(ContainerFormat), propertyNode.InnerText);
 						continue;
 					case "aspectRatioProcessingMode":
-						this._AspectRatioProcessingMode = ParseInt(txt);
+						this._AspectRatioProcessingMode = ParseInt(propertyNode.InnerText);
 						continue;
 					case "forceFrameToMultiplication16":
-						this._ForceFrameToMultiplication16 = ParseInt(txt);
+						this._ForceFrameToMultiplication16 = ParseInt(propertyNode.InnerText);
 						continue;
 					case "isGopInSec":
-						this._IsGopInSec = ParseInt(txt);
+						this._IsGopInSec = ParseInt(propertyNode.InnerText);
 						continue;
 					case "isAvoidVideoShrinkFramesizeToSource":
-						this._IsAvoidVideoShrinkFramesizeToSource = ParseInt(txt);
+						this._IsAvoidVideoShrinkFramesizeToSource = ParseInt(propertyNode.InnerText);
 						continue;
 					case "isAvoidVideoShrinkBitrateToSource":
-						this._IsAvoidVideoShrinkBitrateToSource = ParseInt(txt);
+						this._IsAvoidVideoShrinkBitrateToSource = ParseInt(propertyNode.InnerText);
 						continue;
 					case "isVideoFrameRateForLowBrAppleHls":
-						this._IsVideoFrameRateForLowBrAppleHls = ParseInt(txt);
+						this._IsVideoFrameRateForLowBrAppleHls = ParseInt(propertyNode.InnerText);
 						continue;
 					case "multiStream":
-						this._MultiStream = txt;
+						this._MultiStream = propertyNode.InnerText;
 						continue;
 					case "anamorphicPixels":
-						this._AnamorphicPixels = ParseFloat(txt);
+						this._AnamorphicPixels = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "isAvoidForcedKeyFrames":
-						this._IsAvoidForcedKeyFrames = ParseInt(txt);
+						this._IsAvoidForcedKeyFrames = ParseInt(propertyNode.InnerText);
 						continue;
 					case "isCropIMX":
-						this._IsCropIMX = ParseInt(txt);
+						this._IsCropIMX = ParseInt(propertyNode.InnerText);
 						continue;
 					case "optimizationPolicy":
-						this._OptimizationPolicy = ParseInt(txt);
+						this._OptimizationPolicy = ParseInt(propertyNode.InnerText);
 						continue;
 					case "maxFrameRate":
-						this._MaxFrameRate = ParseInt(txt);
+						this._MaxFrameRate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "videoConstantBitrate":
-						this._VideoConstantBitrate = ParseInt(txt);
+						this._VideoConstantBitrate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "videoBitrateTolerance":
-						this._VideoBitrateTolerance = ParseInt(txt);
+						this._VideoBitrateTolerance = ParseInt(propertyNode.InnerText);
 						continue;
 					case "watermarkData":
-						this._WatermarkData = txt;
+						this._WatermarkData = propertyNode.InnerText;
 						continue;
 					case "subtitlesData":
-						this._SubtitlesData = txt;
+						this._SubtitlesData = propertyNode.InnerText;
 						continue;
 					case "isEncrypted":
-						this._IsEncrypted = ParseInt(txt);
+						this._IsEncrypted = ParseInt(propertyNode.InnerText);
 						continue;
 					case "contentAwareness":
-						this._ContentAwareness = ParseFloat(txt);
+						this._ContentAwareness = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "clipOffset":
-						this._ClipOffset = ParseInt(txt);
+						this._ClipOffset = ParseInt(propertyNode.InnerText);
 						continue;
 					case "clipDuration":
-						this._ClipDuration = ParseInt(txt);
+						this._ClipDuration = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

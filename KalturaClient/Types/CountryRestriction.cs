@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "countryRestrictionType":
-						this._CountryRestrictionType = (CountryRestrictionType)ParseEnum(typeof(CountryRestrictionType), txt);
+						this._CountryRestrictionType = (CountryRestrictionType)ParseEnum(typeof(CountryRestrictionType), propertyNode.InnerText);
 						continue;
 					case "countryList":
-						this._CountryList = txt;
+						this._CountryList = propertyNode.InnerText;
 						continue;
 				}
 			}

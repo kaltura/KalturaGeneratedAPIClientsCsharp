@@ -59,11 +59,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "category":
-						this._Category = (TubeMogulSyndicationFeedCategories)StringEnum.Parse(typeof(TubeMogulSyndicationFeedCategories), txt);
+						this._Category = (TubeMogulSyndicationFeedCategories)StringEnum.Parse(typeof(TubeMogulSyndicationFeedCategories), propertyNode.InnerText);
 						continue;
 				}
 			}

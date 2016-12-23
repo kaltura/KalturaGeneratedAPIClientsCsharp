@@ -97,20 +97,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "apiObjectType":
-						this._ApiObjectType = txt;
+						this._ApiObjectType = propertyNode.InnerText;
 						continue;
 					case "format":
-						this._Format = (ResponseType)ParseEnum(typeof(ResponseType), txt);
+						this._Format = (ResponseType)ParseEnum(typeof(ResponseType), propertyNode.InnerText);
 						continue;
 					case "ignoreNull":
-						this._IgnoreNull = ParseBool(txt);
+						this._IgnoreNull = ParseBool(propertyNode.InnerText);
 						continue;
 					case "code":
-						this._Code = txt;
+						this._Code = propertyNode.InnerText;
 						continue;
 				}
 			}

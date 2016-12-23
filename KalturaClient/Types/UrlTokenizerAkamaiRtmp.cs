@@ -97,20 +97,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "profile":
-						this._Profile = txt;
+						this._Profile = propertyNode.InnerText;
 						continue;
 					case "type":
-						this._Type = txt;
+						this._Type = propertyNode.InnerText;
 						continue;
 					case "aifp":
-						this._Aifp = txt;
+						this._Aifp = propertyNode.InnerText;
 						continue;
 					case "usePrefix":
-						this._UsePrefix = ParseBool(txt);
+						this._UsePrefix = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}

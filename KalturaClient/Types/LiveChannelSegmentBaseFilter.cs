@@ -163,38 +163,37 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "statusEqual":
-						this._StatusEqual = (LiveChannelSegmentStatus)StringEnum.Parse(typeof(LiveChannelSegmentStatus), txt);
+						this._StatusEqual = (LiveChannelSegmentStatus)StringEnum.Parse(typeof(LiveChannelSegmentStatus), propertyNode.InnerText);
 						continue;
 					case "statusIn":
-						this._StatusIn = txt;
+						this._StatusIn = propertyNode.InnerText;
 						continue;
 					case "channelIdEqual":
-						this._ChannelIdEqual = txt;
+						this._ChannelIdEqual = propertyNode.InnerText;
 						continue;
 					case "channelIdIn":
-						this._ChannelIdIn = txt;
+						this._ChannelIdIn = propertyNode.InnerText;
 						continue;
 					case "startTimeGreaterThanOrEqual":
-						this._StartTimeGreaterThanOrEqual = ParseFloat(txt);
+						this._StartTimeGreaterThanOrEqual = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "startTimeLessThanOrEqual":
-						this._StartTimeLessThanOrEqual = ParseFloat(txt);
+						this._StartTimeLessThanOrEqual = ParseFloat(propertyNode.InnerText);
 						continue;
 				}
 			}

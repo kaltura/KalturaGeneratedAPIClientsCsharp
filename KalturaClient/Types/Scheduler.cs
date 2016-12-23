@@ -128,20 +128,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "configuredId":
-						this._ConfiguredId = ParseInt(txt);
+						this._ConfiguredId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "name":
-						this._Name = txt;
+						this._Name = propertyNode.InnerText;
 						continue;
 					case "host":
-						this._Host = txt;
+						this._Host = propertyNode.InnerText;
 						continue;
 					case "statuses":
 						this._Statuses = new List<SchedulerStatus>();
@@ -165,13 +164,13 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "lastStatus":
-						this._LastStatus = ParseInt(txt);
+						this._LastStatus = ParseInt(propertyNode.InnerText);
 						continue;
 					case "lastStatusStr":
-						this._LastStatusStr = txt;
+						this._LastStatusStr = propertyNode.InnerText;
 						continue;
 				}
 			}

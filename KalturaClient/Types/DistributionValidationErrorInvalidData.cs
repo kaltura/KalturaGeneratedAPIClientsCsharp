@@ -86,17 +86,16 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "fieldName":
-						this._FieldName = txt;
+						this._FieldName = propertyNode.InnerText;
 						continue;
 					case "validationErrorType":
-						this._ValidationErrorType = (DistributionValidationErrorType)ParseEnum(typeof(DistributionValidationErrorType), txt);
+						this._ValidationErrorType = (DistributionValidationErrorType)ParseEnum(typeof(DistributionValidationErrorType), propertyNode.InnerText);
 						continue;
 					case "validationErrorParam":
-						this._ValidationErrorParam = txt;
+						this._ValidationErrorParam = propertyNode.InnerText;
 						continue;
 				}
 			}

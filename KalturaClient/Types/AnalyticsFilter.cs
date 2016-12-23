@@ -130,23 +130,22 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "from_time":
-						this._From_time = txt;
+						this._From_time = propertyNode.InnerText;
 						continue;
 					case "to_time":
-						this._To_time = txt;
+						this._To_time = propertyNode.InnerText;
 						continue;
 					case "metrics":
-						this._Metrics = txt;
+						this._Metrics = propertyNode.InnerText;
 						continue;
 					case "utcOffset":
-						this._UtcOffset = ParseFloat(txt);
+						this._UtcOffset = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "dimensions":
-						this._Dimensions = txt;
+						this._Dimensions = propertyNode.InnerText;
 						continue;
 					case "filters":
 						this._Filters = new List<ReportFilter>();
@@ -156,7 +155,7 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "orderBy":
-						this._OrderBy = txt;
+						this._OrderBy = propertyNode.InnerText;
 						continue;
 				}
 			}

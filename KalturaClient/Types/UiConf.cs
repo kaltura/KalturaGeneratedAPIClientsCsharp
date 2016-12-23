@@ -282,80 +282,79 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "name":
-						this._Name = txt;
+						this._Name = propertyNode.InnerText;
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "objType":
-						this._ObjType = (UiConfObjType)ParseEnum(typeof(UiConfObjType), txt);
+						this._ObjType = (UiConfObjType)ParseEnum(typeof(UiConfObjType), propertyNode.InnerText);
 						continue;
 					case "objTypeAsString":
-						this._ObjTypeAsString = txt;
+						this._ObjTypeAsString = propertyNode.InnerText;
 						continue;
 					case "width":
-						this._Width = ParseInt(txt);
+						this._Width = ParseInt(propertyNode.InnerText);
 						continue;
 					case "height":
-						this._Height = ParseInt(txt);
+						this._Height = ParseInt(propertyNode.InnerText);
 						continue;
 					case "htmlParams":
-						this._HtmlParams = txt;
+						this._HtmlParams = propertyNode.InnerText;
 						continue;
 					case "swfUrl":
-						this._SwfUrl = txt;
+						this._SwfUrl = propertyNode.InnerText;
 						continue;
 					case "confFilePath":
-						this._ConfFilePath = txt;
+						this._ConfFilePath = propertyNode.InnerText;
 						continue;
 					case "confFile":
-						this._ConfFile = txt;
+						this._ConfFile = propertyNode.InnerText;
 						continue;
 					case "confFileFeatures":
-						this._ConfFileFeatures = txt;
+						this._ConfFileFeatures = propertyNode.InnerText;
 						continue;
 					case "config":
-						this._Config = txt;
+						this._Config = propertyNode.InnerText;
 						continue;
 					case "confVars":
-						this._ConfVars = txt;
+						this._ConfVars = propertyNode.InnerText;
 						continue;
 					case "useCdn":
-						this._UseCdn = ParseBool(txt);
+						this._UseCdn = ParseBool(propertyNode.InnerText);
 						continue;
 					case "tags":
-						this._Tags = txt;
+						this._Tags = propertyNode.InnerText;
 						continue;
 					case "swfUrlVersion":
-						this._SwfUrlVersion = txt;
+						this._SwfUrlVersion = propertyNode.InnerText;
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "creationMode":
-						this._CreationMode = (UiConfCreationMode)ParseEnum(typeof(UiConfCreationMode), txt);
+						this._CreationMode = (UiConfCreationMode)ParseEnum(typeof(UiConfCreationMode), propertyNode.InnerText);
 						continue;
 					case "html5Url":
-						this._Html5Url = txt;
+						this._Html5Url = propertyNode.InnerText;
 						continue;
 					case "version":
-						this._Version = txt;
+						this._Version = propertyNode.InnerText;
 						continue;
 					case "partnerTags":
-						this._PartnerTags = txt;
+						this._PartnerTags = propertyNode.InnerText;
 						continue;
 				}
 			}

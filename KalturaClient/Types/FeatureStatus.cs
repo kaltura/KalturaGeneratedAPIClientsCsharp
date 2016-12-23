@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "type":
-						this._Type = (FeatureStatusType)ParseEnum(typeof(FeatureStatusType), txt);
+						this._Type = (FeatureStatusType)ParseEnum(typeof(FeatureStatusType), propertyNode.InnerText);
 						continue;
 					case "value":
-						this._Value = ParseInt(txt);
+						this._Value = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

@@ -130,29 +130,28 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "lastPlayedAtGreaterThanOrEqual":
-						this._LastPlayedAtGreaterThanOrEqual = ParseInt(txt);
+						this._LastPlayedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "lastPlayedAtLessThanOrEqual":
-						this._LastPlayedAtLessThanOrEqual = ParseInt(txt);
+						this._LastPlayedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "durationLessThan":
-						this._DurationLessThan = ParseInt(txt);
+						this._DurationLessThan = ParseInt(propertyNode.InnerText);
 						continue;
 					case "durationGreaterThan":
-						this._DurationGreaterThan = ParseInt(txt);
+						this._DurationGreaterThan = ParseInt(propertyNode.InnerText);
 						continue;
 					case "durationLessThanOrEqual":
-						this._DurationLessThanOrEqual = ParseInt(txt);
+						this._DurationLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "durationGreaterThanOrEqual":
-						this._DurationGreaterThanOrEqual = ParseInt(txt);
+						this._DurationGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "durationTypeMatchOr":
-						this._DurationTypeMatchOr = txt;
+						this._DurationTypeMatchOr = propertyNode.InnerText;
 						continue;
 				}
 			}

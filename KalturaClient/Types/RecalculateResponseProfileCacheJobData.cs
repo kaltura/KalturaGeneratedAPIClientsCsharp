@@ -130,14 +130,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "protocol":
-						this._Protocol = txt;
+						this._Protocol = propertyNode.InnerText;
 						continue;
 					case "ksType":
-						this._KsType = (SessionType)ParseEnum(typeof(SessionType), txt);
+						this._KsType = (SessionType)ParseEnum(typeof(SessionType), propertyNode.InnerText);
 						continue;
 					case "userRoles":
 						this._UserRoles = new List<IntegerValue>();
@@ -147,16 +146,16 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "cachedObjectType":
-						this._CachedObjectType = txt;
+						this._CachedObjectType = propertyNode.InnerText;
 						continue;
 					case "objectId":
-						this._ObjectId = txt;
+						this._ObjectId = propertyNode.InnerText;
 						continue;
 					case "startObjectKey":
-						this._StartObjectKey = txt;
+						this._StartObjectKey = propertyNode.InnerText;
 						continue;
 					case "endObjectKey":
-						this._EndObjectKey = txt;
+						this._EndObjectKey = propertyNode.InnerText;
 						continue;
 				}
 			}

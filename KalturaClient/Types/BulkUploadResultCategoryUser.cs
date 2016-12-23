@@ -119,26 +119,25 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "categoryId":
-						this._CategoryId = ParseInt(txt);
+						this._CategoryId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "categoryReferenceId":
-						this._CategoryReferenceId = txt;
+						this._CategoryReferenceId = propertyNode.InnerText;
 						continue;
 					case "userId":
-						this._UserId = txt;
+						this._UserId = propertyNode.InnerText;
 						continue;
 					case "permissionLevel":
-						this._PermissionLevel = ParseInt(txt);
+						this._PermissionLevel = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updateMethod":
-						this._UpdateMethod = ParseInt(txt);
+						this._UpdateMethod = ParseInt(propertyNode.InnerText);
 						continue;
 					case "requiredObjectStatus":
-						this._RequiredObjectStatus = ParseInt(txt);
+						this._RequiredObjectStatus = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

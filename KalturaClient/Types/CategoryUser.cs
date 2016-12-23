@@ -138,38 +138,37 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "categoryId":
-						this._CategoryId = ParseInt(txt);
+						this._CategoryId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "userId":
-						this._UserId = txt;
+						this._UserId = propertyNode.InnerText;
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "permissionLevel":
-						this._PermissionLevel = (CategoryUserPermissionLevel)ParseEnum(typeof(CategoryUserPermissionLevel), txt);
+						this._PermissionLevel = (CategoryUserPermissionLevel)ParseEnum(typeof(CategoryUserPermissionLevel), propertyNode.InnerText);
 						continue;
 					case "status":
-						this._Status = (CategoryUserStatus)ParseEnum(typeof(CategoryUserStatus), txt);
+						this._Status = (CategoryUserStatus)ParseEnum(typeof(CategoryUserStatus), propertyNode.InnerText);
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updateMethod":
-						this._UpdateMethod = (UpdateMethodType)ParseEnum(typeof(UpdateMethodType), txt);
+						this._UpdateMethod = (UpdateMethodType)ParseEnum(typeof(UpdateMethodType), propertyNode.InnerText);
 						continue;
 					case "categoryFullIds":
-						this._CategoryFullIds = txt;
+						this._CategoryFullIds = propertyNode.InnerText;
 						continue;
 					case "permissionNames":
-						this._PermissionNames = txt;
+						this._PermissionNames = propertyNode.InnerText;
 						continue;
 				}
 			}

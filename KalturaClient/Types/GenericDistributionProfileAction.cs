@@ -141,32 +141,31 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "protocol":
-						this._Protocol = (DistributionProtocol)ParseEnum(typeof(DistributionProtocol), txt);
+						this._Protocol = (DistributionProtocol)ParseEnum(typeof(DistributionProtocol), propertyNode.InnerText);
 						continue;
 					case "serverUrl":
-						this._ServerUrl = txt;
+						this._ServerUrl = propertyNode.InnerText;
 						continue;
 					case "serverPath":
-						this._ServerPath = txt;
+						this._ServerPath = propertyNode.InnerText;
 						continue;
 					case "username":
-						this._Username = txt;
+						this._Username = propertyNode.InnerText;
 						continue;
 					case "password":
-						this._Password = txt;
+						this._Password = propertyNode.InnerText;
 						continue;
 					case "ftpPassiveMode":
-						this._FtpPassiveMode = ParseBool(txt);
+						this._FtpPassiveMode = ParseBool(propertyNode.InnerText);
 						continue;
 					case "httpFieldName":
-						this._HttpFieldName = txt;
+						this._HttpFieldName = propertyNode.InnerText;
 						continue;
 					case "httpFileName":
-						this._HttpFileName = txt;
+						this._HttpFileName = propertyNode.InnerText;
 						continue;
 				}
 			}

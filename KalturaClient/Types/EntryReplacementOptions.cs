@@ -75,11 +75,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "keepManualThumbnails":
-						this._KeepManualThumbnails = ParseInt(txt);
+						this._KeepManualThumbnails = ParseInt(propertyNode.InnerText);
 						continue;
 					case "pluginOptionItems":
 						this._PluginOptionItems = new List<PluginReplacementOptionsItem>();

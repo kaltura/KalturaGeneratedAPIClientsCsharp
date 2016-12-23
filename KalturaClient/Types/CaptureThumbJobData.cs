@@ -141,32 +141,31 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "srcFileSyncLocalPath":
-						this._SrcFileSyncLocalPath = txt;
+						this._SrcFileSyncLocalPath = propertyNode.InnerText;
 						continue;
 					case "actualSrcFileSyncLocalPath":
-						this._ActualSrcFileSyncLocalPath = txt;
+						this._ActualSrcFileSyncLocalPath = propertyNode.InnerText;
 						continue;
 					case "srcFileSyncRemoteUrl":
-						this._SrcFileSyncRemoteUrl = txt;
+						this._SrcFileSyncRemoteUrl = propertyNode.InnerText;
 						continue;
 					case "thumbParamsOutputId":
-						this._ThumbParamsOutputId = ParseInt(txt);
+						this._ThumbParamsOutputId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "thumbAssetId":
-						this._ThumbAssetId = txt;
+						this._ThumbAssetId = propertyNode.InnerText;
 						continue;
 					case "srcAssetId":
-						this._SrcAssetId = txt;
+						this._SrcAssetId = propertyNode.InnerText;
 						continue;
 					case "srcAssetType":
-						this._SrcAssetType = (AssetType)StringEnum.Parse(typeof(AssetType), txt);
+						this._SrcAssetType = (AssetType)StringEnum.Parse(typeof(AssetType), propertyNode.InnerText);
 						continue;
 					case "thumbPath":
-						this._ThumbPath = txt;
+						this._ThumbPath = propertyNode.InnerText;
 						continue;
 				}
 			}

@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "typeIn":
-						this._TypeIn = txt;
+						this._TypeIn = propertyNode.InnerText;
 						continue;
 					case "orderBy":
-						this._OrderBy = (AssetOrderBy)StringEnum.Parse(typeof(AssetOrderBy), txt);
+						this._OrderBy = (AssetOrderBy)StringEnum.Parse(typeof(AssetOrderBy), propertyNode.InnerText);
 						continue;
 				}
 			}

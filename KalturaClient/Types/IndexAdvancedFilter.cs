@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "indexIdGreaterThan":
-						this._IndexIdGreaterThan = ParseInt(txt);
+						this._IndexIdGreaterThan = ParseInt(propertyNode.InnerText);
 						continue;
 					case "depthGreaterThanEqual":
-						this._DepthGreaterThanEqual = ParseInt(txt);
+						this._DepthGreaterThanEqual = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

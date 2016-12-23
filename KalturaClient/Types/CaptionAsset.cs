@@ -142,35 +142,34 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "captionParamsId":
-						this._CaptionParamsId = ParseInt(txt);
+						this._CaptionParamsId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "language":
-						this._Language = (Language)StringEnum.Parse(typeof(Language), txt);
+						this._Language = (Language)StringEnum.Parse(typeof(Language), propertyNode.InnerText);
 						continue;
 					case "languageCode":
-						this._LanguageCode = (LanguageCode)StringEnum.Parse(typeof(LanguageCode), txt);
+						this._LanguageCode = (LanguageCode)StringEnum.Parse(typeof(LanguageCode), propertyNode.InnerText);
 						continue;
 					case "isDefault":
-						this._IsDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._IsDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "label":
-						this._Label = txt;
+						this._Label = propertyNode.InnerText;
 						continue;
 					case "format":
-						this._Format = (CaptionType)StringEnum.Parse(typeof(CaptionType), txt);
+						this._Format = (CaptionType)StringEnum.Parse(typeof(CaptionType), propertyNode.InnerText);
 						continue;
 					case "status":
-						this._Status = (CaptionAssetStatus)ParseEnum(typeof(CaptionAssetStatus), txt);
+						this._Status = (CaptionAssetStatus)ParseEnum(typeof(CaptionAssetStatus), propertyNode.InnerText);
 						continue;
 					case "parentId":
-						this._ParentId = txt;
+						this._ParentId = propertyNode.InnerText;
 						continue;
 					case "accuracy":
-						this._Accuracy = ParseInt(txt);
+						this._Accuracy = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

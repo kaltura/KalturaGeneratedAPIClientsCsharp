@@ -108,7 +108,6 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "asset":
@@ -118,13 +117,13 @@ namespace Kaltura.Types
 						this._Entry = ObjectFactory.Create<BaseEntry>(propertyNode);
 						continue;
 					case "startTime":
-						this._StartTime = ParseInt(txt);
+						this._StartTime = ParseInt(propertyNode.InnerText);
 						continue;
 					case "endTime":
-						this._EndTime = ParseInt(txt);
+						this._EndTime = ParseInt(propertyNode.InnerText);
 						continue;
 					case "content":
-						this._Content = txt;
+						this._Content = propertyNode.InnerText;
 						continue;
 				}
 			}

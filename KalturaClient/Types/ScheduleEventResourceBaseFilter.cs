@@ -141,32 +141,31 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "eventIdEqual":
-						this._EventIdEqual = ParseInt(txt);
+						this._EventIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "eventIdIn":
-						this._EventIdIn = txt;
+						this._EventIdIn = propertyNode.InnerText;
 						continue;
 					case "resourceIdEqual":
-						this._ResourceIdEqual = ParseInt(txt);
+						this._ResourceIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "resourceIdIn":
-						this._ResourceIdIn = txt;
+						this._ResourceIdIn = propertyNode.InnerText;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

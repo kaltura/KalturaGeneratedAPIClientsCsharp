@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "siteRestrictionType":
-						this._SiteRestrictionType = (SiteRestrictionType)ParseEnum(typeof(SiteRestrictionType), txt);
+						this._SiteRestrictionType = (SiteRestrictionType)ParseEnum(typeof(SiteRestrictionType), propertyNode.InnerText);
 						continue;
 					case "siteList":
-						this._SiteList = txt;
+						this._SiteList = propertyNode.InnerText;
 						continue;
 				}
 			}

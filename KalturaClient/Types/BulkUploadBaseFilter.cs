@@ -130,29 +130,28 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "uploadedOnGreaterThanOrEqual":
-						this._UploadedOnGreaterThanOrEqual = ParseInt(txt);
+						this._UploadedOnGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "uploadedOnLessThanOrEqual":
-						this._UploadedOnLessThanOrEqual = ParseInt(txt);
+						this._UploadedOnLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "uploadedOnEqual":
-						this._UploadedOnEqual = ParseInt(txt);
+						this._UploadedOnEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "statusIn":
-						this._StatusIn = txt;
+						this._StatusIn = propertyNode.InnerText;
 						continue;
 					case "statusEqual":
-						this._StatusEqual = (BatchJobStatus)ParseEnum(typeof(BatchJobStatus), txt);
+						this._StatusEqual = (BatchJobStatus)ParseEnum(typeof(BatchJobStatus), propertyNode.InnerText);
 						continue;
 					case "bulkUploadObjectTypeEqual":
-						this._BulkUploadObjectTypeEqual = (BulkUploadObjectType)StringEnum.Parse(typeof(BulkUploadObjectType), txt);
+						this._BulkUploadObjectTypeEqual = (BulkUploadObjectType)StringEnum.Parse(typeof(BulkUploadObjectType), propertyNode.InnerText);
 						continue;
 					case "bulkUploadObjectTypeIn":
-						this._BulkUploadObjectTypeIn = txt;
+						this._BulkUploadObjectTypeIn = propertyNode.InnerText;
 						continue;
 				}
 			}

@@ -298,80 +298,79 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "parentId":
-						this._ParentId = ParseInt(txt);
+						this._ParentId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "summary":
-						this._Summary = txt;
+						this._Summary = propertyNode.InnerText;
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "status":
-						this._Status = (ScheduleEventStatus)ParseEnum(typeof(ScheduleEventStatus), txt);
+						this._Status = (ScheduleEventStatus)ParseEnum(typeof(ScheduleEventStatus), propertyNode.InnerText);
 						continue;
 					case "startDate":
-						this._StartDate = ParseInt(txt);
+						this._StartDate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "endDate":
-						this._EndDate = ParseInt(txt);
+						this._EndDate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "referenceId":
-						this._ReferenceId = txt;
+						this._ReferenceId = propertyNode.InnerText;
 						continue;
 					case "classificationType":
-						this._ClassificationType = (ScheduleEventClassificationType)ParseEnum(typeof(ScheduleEventClassificationType), txt);
+						this._ClassificationType = (ScheduleEventClassificationType)ParseEnum(typeof(ScheduleEventClassificationType), propertyNode.InnerText);
 						continue;
 					case "geoLatitude":
-						this._GeoLatitude = ParseFloat(txt);
+						this._GeoLatitude = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "geoLongitude":
-						this._GeoLongitude = ParseFloat(txt);
+						this._GeoLongitude = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "location":
-						this._Location = txt;
+						this._Location = propertyNode.InnerText;
 						continue;
 					case "organizer":
-						this._Organizer = txt;
+						this._Organizer = propertyNode.InnerText;
 						continue;
 					case "ownerId":
-						this._OwnerId = txt;
+						this._OwnerId = propertyNode.InnerText;
 						continue;
 					case "priority":
-						this._Priority = ParseInt(txt);
+						this._Priority = ParseInt(propertyNode.InnerText);
 						continue;
 					case "sequence":
-						this._Sequence = ParseInt(txt);
+						this._Sequence = ParseInt(propertyNode.InnerText);
 						continue;
 					case "recurrenceType":
-						this._RecurrenceType = (ScheduleEventRecurrenceType)ParseEnum(typeof(ScheduleEventRecurrenceType), txt);
+						this._RecurrenceType = (ScheduleEventRecurrenceType)ParseEnum(typeof(ScheduleEventRecurrenceType), propertyNode.InnerText);
 						continue;
 					case "duration":
-						this._Duration = ParseInt(txt);
+						this._Duration = ParseInt(propertyNode.InnerText);
 						continue;
 					case "contact":
-						this._Contact = txt;
+						this._Contact = propertyNode.InnerText;
 						continue;
 					case "comment":
-						this._Comment = txt;
+						this._Comment = propertyNode.InnerText;
 						continue;
 					case "tags":
-						this._Tags = txt;
+						this._Tags = propertyNode.InnerText;
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "recurrence":
 						this._Recurrence = ObjectFactory.Create<ScheduleEventRecurrence>(propertyNode);

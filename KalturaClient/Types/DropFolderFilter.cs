@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "currentDc":
-						this._CurrentDc = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._CurrentDc = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "orderBy":
-						this._OrderBy = (DropFolderOrderBy)StringEnum.Parse(typeof(DropFolderOrderBy), txt);
+						this._OrderBy = (DropFolderOrderBy)StringEnum.Parse(typeof(DropFolderOrderBy), propertyNode.InnerText);
 						continue;
 				}
 			}

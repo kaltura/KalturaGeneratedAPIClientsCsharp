@@ -64,11 +64,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "directoryRestrictionType":
-						this._DirectoryRestrictionType = (DirectoryRestrictionType)ParseEnum(typeof(DirectoryRestrictionType), txt);
+						this._DirectoryRestrictionType = (DirectoryRestrictionType)ParseEnum(typeof(DirectoryRestrictionType), propertyNode.InnerText);
 						continue;
 				}
 			}

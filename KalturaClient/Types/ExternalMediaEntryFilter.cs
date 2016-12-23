@@ -64,11 +64,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "orderBy":
-						this._OrderBy = (ExternalMediaEntryOrderBy)StringEnum.Parse(typeof(ExternalMediaEntryOrderBy), txt);
+						this._OrderBy = (ExternalMediaEntryOrderBy)StringEnum.Parse(typeof(ExternalMediaEntryOrderBy), propertyNode.InnerText);
 						continue;
 				}
 			}

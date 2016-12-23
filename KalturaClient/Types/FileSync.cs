@@ -218,83 +218,82 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseLong(txt);
+						this._Id = ParseLong(propertyNode.InnerText);
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "fileObjectType":
-						this._FileObjectType = (FileSyncObjectType)StringEnum.Parse(typeof(FileSyncObjectType), txt);
+						this._FileObjectType = (FileSyncObjectType)StringEnum.Parse(typeof(FileSyncObjectType), propertyNode.InnerText);
 						continue;
 					case "objectId":
-						this._ObjectId = txt;
+						this._ObjectId = propertyNode.InnerText;
 						continue;
 					case "version":
-						this._Version = txt;
+						this._Version = propertyNode.InnerText;
 						continue;
 					case "objectSubType":
-						this._ObjectSubType = ParseInt(txt);
+						this._ObjectSubType = ParseInt(propertyNode.InnerText);
 						continue;
 					case "dc":
-						this._Dc = txt;
+						this._Dc = propertyNode.InnerText;
 						continue;
 					case "original":
-						this._Original = ParseInt(txt);
+						this._Original = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "readyAt":
-						this._ReadyAt = ParseInt(txt);
+						this._ReadyAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "syncTime":
-						this._SyncTime = ParseInt(txt);
+						this._SyncTime = ParseInt(propertyNode.InnerText);
 						continue;
 					case "status":
-						this._Status = (FileSyncStatus)ParseEnum(typeof(FileSyncStatus), txt);
+						this._Status = (FileSyncStatus)ParseEnum(typeof(FileSyncStatus), propertyNode.InnerText);
 						continue;
 					case "fileType":
-						this._FileType = (FileSyncType)ParseEnum(typeof(FileSyncType), txt);
+						this._FileType = (FileSyncType)ParseEnum(typeof(FileSyncType), propertyNode.InnerText);
 						continue;
 					case "linkedId":
-						this._LinkedId = ParseInt(txt);
+						this._LinkedId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "linkCount":
-						this._LinkCount = ParseInt(txt);
+						this._LinkCount = ParseInt(propertyNode.InnerText);
 						continue;
 					case "fileRoot":
-						this._FileRoot = txt;
+						this._FileRoot = propertyNode.InnerText;
 						continue;
 					case "filePath":
-						this._FilePath = txt;
+						this._FilePath = propertyNode.InnerText;
 						continue;
 					case "fileSize":
-						this._FileSize = ParseFloat(txt);
+						this._FileSize = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "fileUrl":
-						this._FileUrl = txt;
+						this._FileUrl = propertyNode.InnerText;
 						continue;
 					case "fileContent":
-						this._FileContent = txt;
+						this._FileContent = propertyNode.InnerText;
 						continue;
 					case "fileDiscSize":
-						this._FileDiscSize = ParseFloat(txt);
+						this._FileDiscSize = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "isCurrentDc":
-						this._IsCurrentDc = ParseBool(txt);
+						this._IsCurrentDc = ParseBool(propertyNode.InnerText);
 						continue;
 					case "isDir":
-						this._IsDir = ParseBool(txt);
+						this._IsDir = ParseBool(propertyNode.InnerText);
 						continue;
 					case "originalId":
-						this._OriginalId = ParseInt(txt);
+						this._OriginalId = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

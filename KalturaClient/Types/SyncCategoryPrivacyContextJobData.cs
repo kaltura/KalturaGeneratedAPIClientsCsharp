@@ -86,17 +86,16 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "categoryId":
-						this._CategoryId = ParseInt(txt);
+						this._CategoryId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "lastUpdatedCategoryEntryCreatedAt":
-						this._LastUpdatedCategoryEntryCreatedAt = ParseInt(txt);
+						this._LastUpdatedCategoryEntryCreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "lastUpdatedCategoryCreatedAt":
-						this._LastUpdatedCategoryCreatedAt = ParseInt(txt);
+						this._LastUpdatedCategoryCreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

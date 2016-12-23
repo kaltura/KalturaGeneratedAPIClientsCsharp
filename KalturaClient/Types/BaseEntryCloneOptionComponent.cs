@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "itemType":
-						this._ItemType = (BaseEntryCloneOptions)StringEnum.Parse(typeof(BaseEntryCloneOptions), txt);
+						this._ItemType = (BaseEntryCloneOptions)StringEnum.Parse(typeof(BaseEntryCloneOptions), propertyNode.InnerText);
 						continue;
 					case "rule":
-						this._Rule = (CloneComponentSelectorType)StringEnum.Parse(typeof(CloneComponentSelectorType), txt);
+						this._Rule = (CloneComponentSelectorType)StringEnum.Parse(typeof(CloneComponentSelectorType), propertyNode.InnerText);
 						continue;
 				}
 			}

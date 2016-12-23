@@ -97,20 +97,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "filter":
 						this._Filter = ObjectFactory.Create<Filter>(propertyNode);
 						continue;
 					case "lastIndexId":
-						this._LastIndexId = ParseInt(txt);
+						this._LastIndexId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "lastIndexDepth":
-						this._LastIndexDepth = ParseInt(txt);
+						this._LastIndexDepth = ParseInt(propertyNode.InnerText);
 						continue;
 					case "shouldUpdate":
-						this._ShouldUpdate = ParseBool(txt);
+						this._ShouldUpdate = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}

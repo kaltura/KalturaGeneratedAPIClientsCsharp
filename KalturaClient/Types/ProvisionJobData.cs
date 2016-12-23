@@ -196,47 +196,46 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "streamID":
-						this._StreamID = txt;
+						this._StreamID = propertyNode.InnerText;
 						continue;
 					case "backupStreamID":
-						this._BackupStreamID = txt;
+						this._BackupStreamID = propertyNode.InnerText;
 						continue;
 					case "rtmp":
-						this._Rtmp = txt;
+						this._Rtmp = propertyNode.InnerText;
 						continue;
 					case "encoderIP":
-						this._EncoderIP = txt;
+						this._EncoderIP = propertyNode.InnerText;
 						continue;
 					case "backupEncoderIP":
-						this._BackupEncoderIP = txt;
+						this._BackupEncoderIP = propertyNode.InnerText;
 						continue;
 					case "encoderPassword":
-						this._EncoderPassword = txt;
+						this._EncoderPassword = propertyNode.InnerText;
 						continue;
 					case "encoderUsername":
-						this._EncoderUsername = txt;
+						this._EncoderUsername = propertyNode.InnerText;
 						continue;
 					case "endDate":
-						this._EndDate = ParseInt(txt);
+						this._EndDate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "returnVal":
-						this._ReturnVal = txt;
+						this._ReturnVal = propertyNode.InnerText;
 						continue;
 					case "mediaType":
-						this._MediaType = ParseInt(txt);
+						this._MediaType = ParseInt(propertyNode.InnerText);
 						continue;
 					case "primaryBroadcastingUrl":
-						this._PrimaryBroadcastingUrl = txt;
+						this._PrimaryBroadcastingUrl = propertyNode.InnerText;
 						continue;
 					case "secondaryBroadcastingUrl":
-						this._SecondaryBroadcastingUrl = txt;
+						this._SecondaryBroadcastingUrl = propertyNode.InnerText;
 						continue;
 					case "streamName":
-						this._StreamName = txt;
+						this._StreamName = propertyNode.InnerText;
 						continue;
 				}
 			}

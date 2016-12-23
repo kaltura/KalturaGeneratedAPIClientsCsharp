@@ -86,7 +86,6 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "conversionProfileIdFilter":
@@ -96,7 +95,7 @@ namespace Kaltura.Types
 						this._AssetParamsIdFilter = ObjectFactory.Create<AssetParamsFilter>(propertyNode);
 						continue;
 					case "orderBy":
-						this._OrderBy = (ConversionProfileAssetParamsOrderBy)StringEnum.Parse(typeof(ConversionProfileAssetParamsOrderBy), txt);
+						this._OrderBy = (ConversionProfileAssetParamsOrderBy)StringEnum.Parse(typeof(ConversionProfileAssetParamsOrderBy), propertyNode.InnerText);
 						continue;
 				}
 			}

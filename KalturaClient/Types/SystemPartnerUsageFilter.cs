@@ -86,17 +86,16 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "fromDate":
-						this._FromDate = ParseInt(txt);
+						this._FromDate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "toDate":
-						this._ToDate = ParseInt(txt);
+						this._ToDate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "timezoneOffset":
-						this._TimezoneOffset = ParseInt(txt);
+						this._TimezoneOffset = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

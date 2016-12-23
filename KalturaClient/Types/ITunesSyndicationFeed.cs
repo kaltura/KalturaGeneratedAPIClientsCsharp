@@ -158,38 +158,37 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "feedDescription":
-						this._FeedDescription = txt;
+						this._FeedDescription = propertyNode.InnerText;
 						continue;
 					case "language":
-						this._Language = txt;
+						this._Language = propertyNode.InnerText;
 						continue;
 					case "feedLandingPage":
-						this._FeedLandingPage = txt;
+						this._FeedLandingPage = propertyNode.InnerText;
 						continue;
 					case "ownerName":
-						this._OwnerName = txt;
+						this._OwnerName = propertyNode.InnerText;
 						continue;
 					case "ownerEmail":
-						this._OwnerEmail = txt;
+						this._OwnerEmail = propertyNode.InnerText;
 						continue;
 					case "feedImageUrl":
-						this._FeedImageUrl = txt;
+						this._FeedImageUrl = propertyNode.InnerText;
 						continue;
 					case "category":
-						this._Category = (ITunesSyndicationFeedCategories)StringEnum.Parse(typeof(ITunesSyndicationFeedCategories), txt);
+						this._Category = (ITunesSyndicationFeedCategories)StringEnum.Parse(typeof(ITunesSyndicationFeedCategories), propertyNode.InnerText);
 						continue;
 					case "adultContent":
-						this._AdultContent = (ITunesSyndicationFeedAdultValues)StringEnum.Parse(typeof(ITunesSyndicationFeedAdultValues), txt);
+						this._AdultContent = (ITunesSyndicationFeedAdultValues)StringEnum.Parse(typeof(ITunesSyndicationFeedAdultValues), propertyNode.InnerText);
 						continue;
 					case "feedAuthor":
-						this._FeedAuthor = txt;
+						this._FeedAuthor = propertyNode.InnerText;
 						continue;
 					case "enforceOrder":
-						this._EnforceOrder = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._EnforceOrder = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 				}
 			}

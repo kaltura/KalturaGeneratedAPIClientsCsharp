@@ -174,41 +174,40 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "categoryIdEqual":
-						this._CategoryIdEqual = ParseInt(txt);
+						this._CategoryIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "categoryIdIn":
-						this._CategoryIdIn = txt;
+						this._CategoryIdIn = propertyNode.InnerText;
 						continue;
 					case "entryIdEqual":
-						this._EntryIdEqual = txt;
+						this._EntryIdEqual = propertyNode.InnerText;
 						continue;
 					case "entryIdIn":
-						this._EntryIdIn = txt;
+						this._EntryIdIn = propertyNode.InnerText;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "categoryFullIdsStartsWith":
-						this._CategoryFullIdsStartsWith = txt;
+						this._CategoryFullIdsStartsWith = propertyNode.InnerText;
 						continue;
 					case "statusEqual":
-						this._StatusEqual = (CategoryEntryStatus)ParseEnum(typeof(CategoryEntryStatus), txt);
+						this._StatusEqual = (CategoryEntryStatus)ParseEnum(typeof(CategoryEntryStatus), propertyNode.InnerText);
 						continue;
 					case "statusIn":
-						this._StatusIn = txt;
+						this._StatusIn = propertyNode.InnerText;
 						continue;
 					case "creatorUserIdEqual":
-						this._CreatorUserIdEqual = txt;
+						this._CreatorUserIdEqual = propertyNode.InnerText;
 						continue;
 					case "creatorUserIdIn":
-						this._CreatorUserIdIn = txt;
+						this._CreatorUserIdIn = propertyNode.InnerText;
 						continue;
 				}
 			}

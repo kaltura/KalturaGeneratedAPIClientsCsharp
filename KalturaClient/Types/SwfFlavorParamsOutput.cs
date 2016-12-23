@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "flashVersion":
-						this._FlashVersion = ParseInt(txt);
+						this._FlashVersion = ParseInt(propertyNode.InnerText);
 						continue;
 					case "poly2Bitmap":
-						this._Poly2Bitmap = ParseBool(txt);
+						this._Poly2Bitmap = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}

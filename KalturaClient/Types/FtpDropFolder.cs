@@ -97,20 +97,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "host":
-						this._Host = txt;
+						this._Host = propertyNode.InnerText;
 						continue;
 					case "port":
-						this._Port = ParseInt(txt);
+						this._Port = ParseInt(propertyNode.InnerText);
 						continue;
 					case "username":
-						this._Username = txt;
+						this._Username = propertyNode.InnerText;
 						continue;
 					case "password":
-						this._Password = txt;
+						this._Password = propertyNode.InnerText;
 						continue;
 				}
 			}

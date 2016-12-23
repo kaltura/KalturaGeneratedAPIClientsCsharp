@@ -86,17 +86,16 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "actualFileSyncLocalPath":
-						this._ActualFileSyncLocalPath = txt;
+						this._ActualFileSyncLocalPath = propertyNode.InnerText;
 						continue;
 					case "assetId":
-						this._AssetId = txt;
+						this._AssetId = propertyNode.InnerText;
 						continue;
 					case "assetParamsId":
-						this._AssetParamsId = ParseInt(txt);
+						this._AssetParamsId = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

@@ -265,74 +265,73 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = txt;
+						this._Id = propertyNode.InnerText;
 						continue;
 					case "feedUrl":
-						this._FeedUrl = txt;
+						this._FeedUrl = propertyNode.InnerText;
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "playlistId":
-						this._PlaylistId = txt;
+						this._PlaylistId = propertyNode.InnerText;
 						continue;
 					case "name":
-						this._Name = txt;
+						this._Name = propertyNode.InnerText;
 						continue;
 					case "status":
-						this._Status = (SyndicationFeedStatus)ParseEnum(typeof(SyndicationFeedStatus), txt);
+						this._Status = (SyndicationFeedStatus)ParseEnum(typeof(SyndicationFeedStatus), propertyNode.InnerText);
 						continue;
 					case "type":
-						this._Type = (SyndicationFeedType)ParseEnum(typeof(SyndicationFeedType), txt);
+						this._Type = (SyndicationFeedType)ParseEnum(typeof(SyndicationFeedType), propertyNode.InnerText);
 						continue;
 					case "landingPage":
-						this._LandingPage = txt;
+						this._LandingPage = propertyNode.InnerText;
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "allowEmbed":
-						this._AllowEmbed = ParseBool(txt);
+						this._AllowEmbed = ParseBool(propertyNode.InnerText);
 						continue;
 					case "playerUiconfId":
-						this._PlayerUiconfId = ParseInt(txt);
+						this._PlayerUiconfId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "flavorParamId":
-						this._FlavorParamId = ParseInt(txt);
+						this._FlavorParamId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "transcodeExistingContent":
-						this._TranscodeExistingContent = ParseBool(txt);
+						this._TranscodeExistingContent = ParseBool(propertyNode.InnerText);
 						continue;
 					case "addToDefaultConversionProfile":
-						this._AddToDefaultConversionProfile = ParseBool(txt);
+						this._AddToDefaultConversionProfile = ParseBool(propertyNode.InnerText);
 						continue;
 					case "categories":
-						this._Categories = txt;
+						this._Categories = propertyNode.InnerText;
 						continue;
 					case "storageId":
-						this._StorageId = ParseInt(txt);
+						this._StorageId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "entriesOrderBy":
-						this._EntriesOrderBy = (SyndicationFeedEntriesOrderBy)StringEnum.Parse(typeof(SyndicationFeedEntriesOrderBy), txt);
+						this._EntriesOrderBy = (SyndicationFeedEntriesOrderBy)StringEnum.Parse(typeof(SyndicationFeedEntriesOrderBy), propertyNode.InnerText);
 						continue;
 					case "enforceEntitlement":
-						this._EnforceEntitlement = ParseBool(txt);
+						this._EnforceEntitlement = ParseBool(propertyNode.InnerText);
 						continue;
 					case "privacyContext":
-						this._PrivacyContext = txt;
+						this._PrivacyContext = propertyNode.InnerText;
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "useCategoryEntries":
-						this._UseCategoryEntries = ParseBool(txt);
+						this._UseCategoryEntries = ParseBool(propertyNode.InnerText);
 						continue;
 					case "feedContentTypeHeader":
-						this._FeedContentTypeHeader = txt;
+						this._FeedContentTypeHeader = propertyNode.InnerText;
 						continue;
 				}
 			}

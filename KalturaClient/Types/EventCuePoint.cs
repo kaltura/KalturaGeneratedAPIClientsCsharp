@@ -64,11 +64,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "eventType":
-						this._EventType = (EventType)StringEnum.Parse(typeof(EventType), txt);
+						this._EventType = (EventType)StringEnum.Parse(typeof(EventType), propertyNode.InnerText);
 						continue;
 				}
 			}

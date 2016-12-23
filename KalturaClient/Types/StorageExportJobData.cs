@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "force":
-						this._Force = ParseBool(txt);
+						this._Force = ParseBool(propertyNode.InnerText);
 						continue;
 					case "createLink":
-						this._CreateLink = ParseBool(txt);
+						this._CreateLink = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}

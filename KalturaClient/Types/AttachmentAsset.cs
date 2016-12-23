@@ -92,20 +92,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "filename":
-						this._Filename = txt;
+						this._Filename = propertyNode.InnerText;
 						continue;
 					case "title":
-						this._Title = txt;
+						this._Title = propertyNode.InnerText;
 						continue;
 					case "format":
-						this._Format = (AttachmentType)StringEnum.Parse(typeof(AttachmentType), txt);
+						this._Format = (AttachmentType)StringEnum.Parse(typeof(AttachmentType), propertyNode.InnerText);
 						continue;
 					case "status":
-						this._Status = (AttachmentAssetStatus)ParseEnum(typeof(AttachmentAssetStatus), txt);
+						this._Status = (AttachmentAssetStatus)ParseEnum(typeof(AttachmentAssetStatus), propertyNode.InnerText);
 						continue;
 				}
 			}

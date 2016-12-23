@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "tokenizationFormat":
-						this._TokenizationFormat = ParseInt(txt);
+						this._TokenizationFormat = ParseInt(propertyNode.InnerText);
 						continue;
 					case "shouldIncludeClientIp":
-						this._ShouldIncludeClientIp = ParseBool(txt);
+						this._ShouldIncludeClientIp = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}

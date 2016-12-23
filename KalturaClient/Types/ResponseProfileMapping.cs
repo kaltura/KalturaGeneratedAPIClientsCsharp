@@ -86,17 +86,16 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "parentProperty":
-						this._ParentProperty = txt;
+						this._ParentProperty = propertyNode.InnerText;
 						continue;
 					case "filterProperty":
-						this._FilterProperty = txt;
+						this._FilterProperty = propertyNode.InnerText;
 						continue;
 					case "allowNull":
-						this._AllowNull = ParseBool(txt);
+						this._AllowNull = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}

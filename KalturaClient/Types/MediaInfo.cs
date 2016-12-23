@@ -422,110 +422,109 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "flavorAssetId":
-						this._FlavorAssetId = txt;
+						this._FlavorAssetId = propertyNode.InnerText;
 						continue;
 					case "fileSize":
-						this._FileSize = ParseInt(txt);
+						this._FileSize = ParseInt(propertyNode.InnerText);
 						continue;
 					case "containerFormat":
-						this._ContainerFormat = txt;
+						this._ContainerFormat = propertyNode.InnerText;
 						continue;
 					case "containerId":
-						this._ContainerId = txt;
+						this._ContainerId = propertyNode.InnerText;
 						continue;
 					case "containerProfile":
-						this._ContainerProfile = txt;
+						this._ContainerProfile = propertyNode.InnerText;
 						continue;
 					case "containerDuration":
-						this._ContainerDuration = ParseInt(txt);
+						this._ContainerDuration = ParseInt(propertyNode.InnerText);
 						continue;
 					case "containerBitRate":
-						this._ContainerBitRate = ParseInt(txt);
+						this._ContainerBitRate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "videoFormat":
-						this._VideoFormat = txt;
+						this._VideoFormat = propertyNode.InnerText;
 						continue;
 					case "videoCodecId":
-						this._VideoCodecId = txt;
+						this._VideoCodecId = propertyNode.InnerText;
 						continue;
 					case "videoDuration":
-						this._VideoDuration = ParseInt(txt);
+						this._VideoDuration = ParseInt(propertyNode.InnerText);
 						continue;
 					case "videoBitRate":
-						this._VideoBitRate = ParseInt(txt);
+						this._VideoBitRate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "videoBitRateMode":
-						this._VideoBitRateMode = (BitRateMode)ParseEnum(typeof(BitRateMode), txt);
+						this._VideoBitRateMode = (BitRateMode)ParseEnum(typeof(BitRateMode), propertyNode.InnerText);
 						continue;
 					case "videoWidth":
-						this._VideoWidth = ParseInt(txt);
+						this._VideoWidth = ParseInt(propertyNode.InnerText);
 						continue;
 					case "videoHeight":
-						this._VideoHeight = ParseInt(txt);
+						this._VideoHeight = ParseInt(propertyNode.InnerText);
 						continue;
 					case "videoFrameRate":
-						this._VideoFrameRate = ParseFloat(txt);
+						this._VideoFrameRate = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "videoDar":
-						this._VideoDar = ParseFloat(txt);
+						this._VideoDar = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "videoRotation":
-						this._VideoRotation = ParseInt(txt);
+						this._VideoRotation = ParseInt(propertyNode.InnerText);
 						continue;
 					case "audioFormat":
-						this._AudioFormat = txt;
+						this._AudioFormat = propertyNode.InnerText;
 						continue;
 					case "audioCodecId":
-						this._AudioCodecId = txt;
+						this._AudioCodecId = propertyNode.InnerText;
 						continue;
 					case "audioDuration":
-						this._AudioDuration = ParseInt(txt);
+						this._AudioDuration = ParseInt(propertyNode.InnerText);
 						continue;
 					case "audioBitRate":
-						this._AudioBitRate = ParseInt(txt);
+						this._AudioBitRate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "audioBitRateMode":
-						this._AudioBitRateMode = (BitRateMode)ParseEnum(typeof(BitRateMode), txt);
+						this._AudioBitRateMode = (BitRateMode)ParseEnum(typeof(BitRateMode), propertyNode.InnerText);
 						continue;
 					case "audioChannels":
-						this._AudioChannels = ParseInt(txt);
+						this._AudioChannels = ParseInt(propertyNode.InnerText);
 						continue;
 					case "audioSamplingRate":
-						this._AudioSamplingRate = ParseInt(txt);
+						this._AudioSamplingRate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "audioResolution":
-						this._AudioResolution = ParseInt(txt);
+						this._AudioResolution = ParseInt(propertyNode.InnerText);
 						continue;
 					case "writingLib":
-						this._WritingLib = txt;
+						this._WritingLib = propertyNode.InnerText;
 						continue;
 					case "rawData":
-						this._RawData = txt;
+						this._RawData = propertyNode.InnerText;
 						continue;
 					case "multiStreamInfo":
-						this._MultiStreamInfo = txt;
+						this._MultiStreamInfo = propertyNode.InnerText;
 						continue;
 					case "scanType":
-						this._ScanType = ParseInt(txt);
+						this._ScanType = ParseInt(propertyNode.InnerText);
 						continue;
 					case "multiStream":
-						this._MultiStream = txt;
+						this._MultiStream = propertyNode.InnerText;
 						continue;
 					case "isFastStart":
-						this._IsFastStart = ParseInt(txt);
+						this._IsFastStart = ParseInt(propertyNode.InnerText);
 						continue;
 					case "contentStreams":
-						this._ContentStreams = txt;
+						this._ContentStreams = propertyNode.InnerText;
 						continue;
 					case "complexityValue":
-						this._ComplexityValue = ParseInt(txt);
+						this._ComplexityValue = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

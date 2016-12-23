@@ -108,23 +108,22 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "paramName":
-						this._ParamName = txt;
+						this._ParamName = propertyNode.InnerText;
 						continue;
 					case "aclPostfix":
-						this._AclPostfix = txt;
+						this._AclPostfix = propertyNode.InnerText;
 						continue;
 					case "customPostfixes":
-						this._CustomPostfixes = txt;
+						this._CustomPostfixes = propertyNode.InnerText;
 						continue;
 					case "useCookieHosts":
-						this._UseCookieHosts = txt;
+						this._UseCookieHosts = propertyNode.InnerText;
 						continue;
 					case "rootDir":
-						this._RootDir = txt;
+						this._RootDir = propertyNode.InnerText;
 						continue;
 				}
 			}

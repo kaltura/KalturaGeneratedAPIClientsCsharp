@@ -97,20 +97,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "assetId":
-						this._AssetId = txt;
+						this._AssetId = propertyNode.InnerText;
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "title":
-						this._Title = txt;
+						this._Title = propertyNode.InnerText;
 						continue;
 					case "subType":
-						this._SubType = (ThumbCuePointSubType)ParseEnum(typeof(ThumbCuePointSubType), txt);
+						this._SubType = (ThumbCuePointSubType)ParseEnum(typeof(ThumbCuePointSubType), propertyNode.InnerText);
 						continue;
 				}
 			}

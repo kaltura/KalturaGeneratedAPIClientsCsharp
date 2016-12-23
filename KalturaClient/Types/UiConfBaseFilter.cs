@@ -273,68 +273,67 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this._IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "idIn":
-						this._IdIn = txt;
+						this._IdIn = propertyNode.InnerText;
 						continue;
 					case "nameLike":
-						this._NameLike = txt;
+						this._NameLike = propertyNode.InnerText;
 						continue;
 					case "partnerIdEqual":
-						this._PartnerIdEqual = ParseInt(txt);
+						this._PartnerIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerIdIn":
-						this._PartnerIdIn = txt;
+						this._PartnerIdIn = propertyNode.InnerText;
 						continue;
 					case "objTypeEqual":
-						this._ObjTypeEqual = (UiConfObjType)ParseEnum(typeof(UiConfObjType), txt);
+						this._ObjTypeEqual = (UiConfObjType)ParseEnum(typeof(UiConfObjType), propertyNode.InnerText);
 						continue;
 					case "objTypeIn":
-						this._ObjTypeIn = txt;
+						this._ObjTypeIn = propertyNode.InnerText;
 						continue;
 					case "tagsMultiLikeOr":
-						this._TagsMultiLikeOr = txt;
+						this._TagsMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "tagsMultiLikeAnd":
-						this._TagsMultiLikeAnd = txt;
+						this._TagsMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "creationModeEqual":
-						this._CreationModeEqual = (UiConfCreationMode)ParseEnum(typeof(UiConfCreationMode), txt);
+						this._CreationModeEqual = (UiConfCreationMode)ParseEnum(typeof(UiConfCreationMode), propertyNode.InnerText);
 						continue;
 					case "creationModeIn":
-						this._CreationModeIn = txt;
+						this._CreationModeIn = propertyNode.InnerText;
 						continue;
 					case "versionEqual":
-						this._VersionEqual = txt;
+						this._VersionEqual = propertyNode.InnerText;
 						continue;
 					case "versionMultiLikeOr":
-						this._VersionMultiLikeOr = txt;
+						this._VersionMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "versionMultiLikeAnd":
-						this._VersionMultiLikeAnd = txt;
+						this._VersionMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "partnerTagsMultiLikeOr":
-						this._PartnerTagsMultiLikeOr = txt;
+						this._PartnerTagsMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "partnerTagsMultiLikeAnd":
-						this._PartnerTagsMultiLikeAnd = txt;
+						this._PartnerTagsMultiLikeAnd = propertyNode.InnerText;
 						continue;
 				}
 			}

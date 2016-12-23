@@ -41,12 +41,12 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Private Fields
-		private string _Scheme = null;
+		private DrmSchemeName _Scheme = null;
 		private string _LicenseURL = null;
 		#endregion
 
 		#region Properties
-		public string Scheme
+		public DrmSchemeName Scheme
 		{
 			get { return _Scheme; }
 			set 
@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "scheme":
-						this._Scheme = txt;
+						this._Scheme = (DrmSchemeName)StringEnum.Parse(typeof(DrmSchemeName), propertyNode.InnerText);
 						continue;
 					case "licenseURL":
-						this._LicenseURL = txt;
+						this._LicenseURL = propertyNode.InnerText;
 						continue;
 				}
 			}

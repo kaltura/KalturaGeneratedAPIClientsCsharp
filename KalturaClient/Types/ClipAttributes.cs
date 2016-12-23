@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "offset":
-						this._Offset = ParseInt(txt);
+						this._Offset = ParseInt(propertyNode.InnerText);
 						continue;
 					case "duration":
-						this._Duration = ParseInt(txt);
+						this._Duration = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

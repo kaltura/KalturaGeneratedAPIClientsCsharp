@@ -97,20 +97,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "srcFileUrl":
-						this._SrcFileUrl = txt;
+						this._SrcFileUrl = propertyNode.InnerText;
 						continue;
 					case "destFileLocalPath":
-						this._DestFileLocalPath = txt;
+						this._DestFileLocalPath = propertyNode.InnerText;
 						continue;
 					case "flavorAssetId":
-						this._FlavorAssetId = txt;
+						this._FlavorAssetId = propertyNode.InnerText;
 						continue;
 					case "fileSize":
-						this._FileSize = ParseInt(txt);
+						this._FileSize = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

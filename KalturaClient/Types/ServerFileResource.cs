@@ -64,11 +64,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "localFilePath":
-						this._LocalFilePath = txt;
+						this._LocalFilePath = propertyNode.InnerText;
 						continue;
 				}
 			}

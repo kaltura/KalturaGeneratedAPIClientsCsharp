@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "multicastIP":
-						this._MulticastIP = txt;
+						this._MulticastIP = propertyNode.InnerText;
 						continue;
 					case "multicastPort":
-						this._MulticastPort = ParseInt(txt);
+						this._MulticastPort = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

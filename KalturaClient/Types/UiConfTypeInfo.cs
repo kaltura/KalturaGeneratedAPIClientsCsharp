@@ -97,11 +97,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "type":
-						this._Type = (UiConfObjType)ParseEnum(typeof(UiConfObjType), txt);
+						this._Type = (UiConfObjType)ParseEnum(typeof(UiConfObjType), propertyNode.InnerText);
 						continue;
 					case "versions":
 						this._Versions = new List<String>();
@@ -111,10 +110,10 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "directory":
-						this._Directory = txt;
+						this._Directory = propertyNode.InnerText;
 						continue;
 					case "filename":
-						this._Filename = txt;
+						this._Filename = propertyNode.InnerText;
 						continue;
 				}
 			}

@@ -290,74 +290,73 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "clientVer":
-						this._ClientVer = txt;
+						this._ClientVer = propertyNode.InnerText;
 						continue;
 					case "eventType":
-						this._EventType = (StatsEventType)ParseEnum(typeof(StatsEventType), txt);
+						this._EventType = (StatsEventType)ParseEnum(typeof(StatsEventType), propertyNode.InnerText);
 						continue;
 					case "eventTimestamp":
-						this._EventTimestamp = ParseFloat(txt);
+						this._EventTimestamp = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "sessionId":
-						this._SessionId = txt;
+						this._SessionId = propertyNode.InnerText;
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "entryId":
-						this._EntryId = txt;
+						this._EntryId = propertyNode.InnerText;
 						continue;
 					case "uniqueViewer":
-						this._UniqueViewer = txt;
+						this._UniqueViewer = propertyNode.InnerText;
 						continue;
 					case "widgetId":
-						this._WidgetId = txt;
+						this._WidgetId = propertyNode.InnerText;
 						continue;
 					case "uiconfId":
-						this._UiconfId = ParseInt(txt);
+						this._UiconfId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "userId":
-						this._UserId = txt;
+						this._UserId = propertyNode.InnerText;
 						continue;
 					case "currentPoint":
-						this._CurrentPoint = ParseInt(txt);
+						this._CurrentPoint = ParseInt(propertyNode.InnerText);
 						continue;
 					case "duration":
-						this._Duration = ParseInt(txt);
+						this._Duration = ParseInt(propertyNode.InnerText);
 						continue;
 					case "userIp":
-						this._UserIp = txt;
+						this._UserIp = propertyNode.InnerText;
 						continue;
 					case "processDuration":
-						this._ProcessDuration = ParseInt(txt);
+						this._ProcessDuration = ParseInt(propertyNode.InnerText);
 						continue;
 					case "controlId":
-						this._ControlId = txt;
+						this._ControlId = propertyNode.InnerText;
 						continue;
 					case "seek":
-						this._Seek = ParseBool(txt);
+						this._Seek = ParseBool(propertyNode.InnerText);
 						continue;
 					case "newPoint":
-						this._NewPoint = ParseInt(txt);
+						this._NewPoint = ParseInt(propertyNode.InnerText);
 						continue;
 					case "referrer":
-						this._Referrer = txt;
+						this._Referrer = propertyNode.InnerText;
 						continue;
 					case "isFirstInSession":
-						this._IsFirstInSession = ParseBool(txt);
+						this._IsFirstInSession = ParseBool(propertyNode.InnerText);
 						continue;
 					case "applicationId":
-						this._ApplicationId = txt;
+						this._ApplicationId = propertyNode.InnerText;
 						continue;
 					case "contextId":
-						this._ContextId = ParseInt(txt);
+						this._ContextId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "featureType":
-						this._FeatureType = (StatsFeatureType)ParseEnum(typeof(StatsFeatureType), txt);
+						this._FeatureType = (StatsFeatureType)ParseEnum(typeof(StatsFeatureType), propertyNode.InnerText);
 						continue;
 				}
 			}

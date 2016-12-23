@@ -75,11 +75,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "templateId":
-						this._TemplateId = ParseInt(txt);
+						this._TemplateId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "contentParameters":
 						this._ContentParameters = new List<KeyValue>();

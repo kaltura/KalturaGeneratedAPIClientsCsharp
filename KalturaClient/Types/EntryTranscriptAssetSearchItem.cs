@@ -86,17 +86,16 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "contentLike":
-						this._ContentLike = txt;
+						this._ContentLike = propertyNode.InnerText;
 						continue;
 					case "contentMultiLikeOr":
-						this._ContentMultiLikeOr = txt;
+						this._ContentMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "contentMultiLikeAnd":
-						this._ContentMultiLikeAnd = txt;
+						this._ContentMultiLikeAnd = propertyNode.InnerText;
 						continue;
 				}
 			}

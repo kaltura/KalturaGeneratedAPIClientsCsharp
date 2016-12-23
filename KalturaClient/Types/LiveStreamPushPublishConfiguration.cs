@@ -86,17 +86,16 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "publishUrl":
-						this._PublishUrl = txt;
+						this._PublishUrl = propertyNode.InnerText;
 						continue;
 					case "backupPublishUrl":
-						this._BackupPublishUrl = txt;
+						this._BackupPublishUrl = propertyNode.InnerText;
 						continue;
 					case "port":
-						this._Port = txt;
+						this._Port = propertyNode.InnerText;
 						continue;
 				}
 			}

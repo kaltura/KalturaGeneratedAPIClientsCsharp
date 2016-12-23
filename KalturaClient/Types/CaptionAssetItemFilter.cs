@@ -207,50 +207,49 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "contentLike":
-						this._ContentLike = txt;
+						this._ContentLike = propertyNode.InnerText;
 						continue;
 					case "contentMultiLikeOr":
-						this._ContentMultiLikeOr = txt;
+						this._ContentMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "contentMultiLikeAnd":
-						this._ContentMultiLikeAnd = txt;
+						this._ContentMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "partnerDescriptionLike":
-						this._PartnerDescriptionLike = txt;
+						this._PartnerDescriptionLike = propertyNode.InnerText;
 						continue;
 					case "partnerDescriptionMultiLikeOr":
-						this._PartnerDescriptionMultiLikeOr = txt;
+						this._PartnerDescriptionMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "partnerDescriptionMultiLikeAnd":
-						this._PartnerDescriptionMultiLikeAnd = txt;
+						this._PartnerDescriptionMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "languageEqual":
-						this._LanguageEqual = (Language)StringEnum.Parse(typeof(Language), txt);
+						this._LanguageEqual = (Language)StringEnum.Parse(typeof(Language), propertyNode.InnerText);
 						continue;
 					case "languageIn":
-						this._LanguageIn = txt;
+						this._LanguageIn = propertyNode.InnerText;
 						continue;
 					case "labelEqual":
-						this._LabelEqual = txt;
+						this._LabelEqual = propertyNode.InnerText;
 						continue;
 					case "labelIn":
-						this._LabelIn = txt;
+						this._LabelIn = propertyNode.InnerText;
 						continue;
 					case "startTimeGreaterThanOrEqual":
-						this._StartTimeGreaterThanOrEqual = ParseInt(txt);
+						this._StartTimeGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "startTimeLessThanOrEqual":
-						this._StartTimeLessThanOrEqual = ParseInt(txt);
+						this._StartTimeLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "endTimeGreaterThanOrEqual":
-						this._EndTimeGreaterThanOrEqual = ParseInt(txt);
+						this._EndTimeGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "endTimeLessThanOrEqual":
-						this._EndTimeLessThanOrEqual = ParseInt(txt);
+						this._EndTimeLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

@@ -426,65 +426,64 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseLong(txt);
+						this._Id = ParseLong(propertyNode.InnerText);
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "deletedAt":
-						this._DeletedAt = ParseInt(txt);
+						this._DeletedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "lockExpiration":
-						this._LockExpiration = ParseInt(txt);
+						this._LockExpiration = ParseInt(propertyNode.InnerText);
 						continue;
 					case "executionAttempts":
-						this._ExecutionAttempts = ParseInt(txt);
+						this._ExecutionAttempts = ParseInt(propertyNode.InnerText);
 						continue;
 					case "lockVersion":
-						this._LockVersion = ParseInt(txt);
+						this._LockVersion = ParseInt(propertyNode.InnerText);
 						continue;
 					case "entryId":
-						this._EntryId = txt;
+						this._EntryId = propertyNode.InnerText;
 						continue;
 					case "entryName":
-						this._EntryName = txt;
+						this._EntryName = propertyNode.InnerText;
 						continue;
 					case "jobType":
-						this._JobType = (BatchJobType)StringEnum.Parse(typeof(BatchJobType), txt);
+						this._JobType = (BatchJobType)StringEnum.Parse(typeof(BatchJobType), propertyNode.InnerText);
 						continue;
 					case "jobSubType":
-						this._JobSubType = ParseInt(txt);
+						this._JobSubType = ParseInt(propertyNode.InnerText);
 						continue;
 					case "data":
 						this._Data = ObjectFactory.Create<JobData>(propertyNode);
 						continue;
 					case "status":
-						this._Status = (BatchJobStatus)ParseEnum(typeof(BatchJobStatus), txt);
+						this._Status = (BatchJobStatus)ParseEnum(typeof(BatchJobStatus), propertyNode.InnerText);
 						continue;
 					case "abort":
-						this._Abort = ParseInt(txt);
+						this._Abort = ParseInt(propertyNode.InnerText);
 						continue;
 					case "checkAgainTimeout":
-						this._CheckAgainTimeout = ParseInt(txt);
+						this._CheckAgainTimeout = ParseInt(propertyNode.InnerText);
 						continue;
 					case "message":
-						this._Message = txt;
+						this._Message = propertyNode.InnerText;
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "priority":
-						this._Priority = ParseInt(txt);
+						this._Priority = ParseInt(propertyNode.InnerText);
 						continue;
 					case "history":
 						this._History = new List<BatchHistoryData>();
@@ -494,58 +493,58 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "bulkJobId":
-						this._BulkJobId = ParseInt(txt);
+						this._BulkJobId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "batchVersion":
-						this._BatchVersion = ParseInt(txt);
+						this._BatchVersion = ParseInt(propertyNode.InnerText);
 						continue;
 					case "parentJobId":
-						this._ParentJobId = ParseInt(txt);
+						this._ParentJobId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "rootJobId":
-						this._RootJobId = ParseInt(txt);
+						this._RootJobId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "queueTime":
-						this._QueueTime = ParseInt(txt);
+						this._QueueTime = ParseInt(propertyNode.InnerText);
 						continue;
 					case "finishTime":
-						this._FinishTime = ParseInt(txt);
+						this._FinishTime = ParseInt(propertyNode.InnerText);
 						continue;
 					case "errType":
-						this._ErrType = (BatchJobErrorTypes)ParseEnum(typeof(BatchJobErrorTypes), txt);
+						this._ErrType = (BatchJobErrorTypes)ParseEnum(typeof(BatchJobErrorTypes), propertyNode.InnerText);
 						continue;
 					case "errNumber":
-						this._ErrNumber = ParseInt(txt);
+						this._ErrNumber = ParseInt(propertyNode.InnerText);
 						continue;
 					case "estimatedEffort":
-						this._EstimatedEffort = ParseInt(txt);
+						this._EstimatedEffort = ParseInt(propertyNode.InnerText);
 						continue;
 					case "urgency":
-						this._Urgency = ParseInt(txt);
+						this._Urgency = ParseInt(propertyNode.InnerText);
 						continue;
 					case "schedulerId":
-						this._SchedulerId = ParseInt(txt);
+						this._SchedulerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "workerId":
-						this._WorkerId = ParseInt(txt);
+						this._WorkerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "batchIndex":
-						this._BatchIndex = ParseInt(txt);
+						this._BatchIndex = ParseInt(propertyNode.InnerText);
 						continue;
 					case "lastSchedulerId":
-						this._LastSchedulerId = ParseInt(txt);
+						this._LastSchedulerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "lastWorkerId":
-						this._LastWorkerId = ParseInt(txt);
+						this._LastWorkerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "dc":
-						this._Dc = ParseInt(txt);
+						this._Dc = ParseInt(propertyNode.InnerText);
 						continue;
 					case "jobObjectId":
-						this._JobObjectId = txt;
+						this._JobObjectId = propertyNode.InnerText;
 						continue;
 					case "jobObjectType":
-						this._JobObjectType = ParseInt(txt);
+						this._JobObjectType = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

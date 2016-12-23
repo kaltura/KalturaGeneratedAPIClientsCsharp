@@ -97,20 +97,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "isLive":
-						this._IsLive = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._IsLive = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "isRecordedEntryIdEmpty":
-						this._IsRecordedEntryIdEmpty = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._IsRecordedEntryIdEmpty = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "hasMediaServerHostname":
-						this._HasMediaServerHostname = txt;
+						this._HasMediaServerHostname = propertyNode.InnerText;
 						continue;
 					case "orderBy":
-						this._OrderBy = (LiveEntryOrderBy)StringEnum.Parse(typeof(LiveEntryOrderBy), txt);
+						this._OrderBy = (LiveEntryOrderBy)StringEnum.Parse(typeof(LiveEntryOrderBy), propertyNode.InnerText);
 						continue;
 				}
 			}

@@ -207,50 +207,49 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this._IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "idIn":
-						this._IdIn = txt;
+						this._IdIn = propertyNode.InnerText;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerIdEqual":
-						this._PartnerIdEqual = ParseInt(txt);
+						this._PartnerIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerIdIn":
-						this._PartnerIdIn = txt;
+						this._PartnerIdIn = propertyNode.InnerText;
 						continue;
 					case "nameEqual":
-						this._NameEqual = txt;
+						this._NameEqual = propertyNode.InnerText;
 						continue;
 					case "nameLike":
-						this._NameLike = txt;
+						this._NameLike = propertyNode.InnerText;
 						continue;
 					case "statusEqual":
-						this._StatusEqual = (VirusScanProfileStatus)ParseEnum(typeof(VirusScanProfileStatus), txt);
+						this._StatusEqual = (VirusScanProfileStatus)ParseEnum(typeof(VirusScanProfileStatus), propertyNode.InnerText);
 						continue;
 					case "statusIn":
-						this._StatusIn = txt;
+						this._StatusIn = propertyNode.InnerText;
 						continue;
 					case "engineTypeEqual":
-						this._EngineTypeEqual = (VirusScanEngineType)StringEnum.Parse(typeof(VirusScanEngineType), txt);
+						this._EngineTypeEqual = (VirusScanEngineType)StringEnum.Parse(typeof(VirusScanEngineType), propertyNode.InnerText);
 						continue;
 					case "engineTypeIn":
-						this._EngineTypeIn = txt;
+						this._EngineTypeIn = propertyNode.InnerText;
 						continue;
 				}
 			}

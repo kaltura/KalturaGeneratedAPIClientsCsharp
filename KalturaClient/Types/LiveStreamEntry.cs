@@ -209,14 +209,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "streamRemoteId":
-						this._StreamRemoteId = txt;
+						this._StreamRemoteId = propertyNode.InnerText;
 						continue;
 					case "streamRemoteBackupId":
-						this._StreamRemoteBackupId = txt;
+						this._StreamRemoteBackupId = propertyNode.InnerText;
 						continue;
 					case "bitrates":
 						this._Bitrates = new List<LiveStreamBitrate>();
@@ -226,43 +225,43 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "primaryBroadcastingUrl":
-						this._PrimaryBroadcastingUrl = txt;
+						this._PrimaryBroadcastingUrl = propertyNode.InnerText;
 						continue;
 					case "secondaryBroadcastingUrl":
-						this._SecondaryBroadcastingUrl = txt;
+						this._SecondaryBroadcastingUrl = propertyNode.InnerText;
 						continue;
 					case "primaryRtspBroadcastingUrl":
-						this._PrimaryRtspBroadcastingUrl = txt;
+						this._PrimaryRtspBroadcastingUrl = propertyNode.InnerText;
 						continue;
 					case "secondaryRtspBroadcastingUrl":
-						this._SecondaryRtspBroadcastingUrl = txt;
+						this._SecondaryRtspBroadcastingUrl = propertyNode.InnerText;
 						continue;
 					case "streamName":
-						this._StreamName = txt;
+						this._StreamName = propertyNode.InnerText;
 						continue;
 					case "streamUrl":
-						this._StreamUrl = txt;
+						this._StreamUrl = propertyNode.InnerText;
 						continue;
 					case "hlsStreamUrl":
-						this._HlsStreamUrl = txt;
+						this._HlsStreamUrl = propertyNode.InnerText;
 						continue;
 					case "urlManager":
-						this._UrlManager = txt;
+						this._UrlManager = propertyNode.InnerText;
 						continue;
 					case "encodingIP1":
-						this._EncodingIP1 = txt;
+						this._EncodingIP1 = propertyNode.InnerText;
 						continue;
 					case "encodingIP2":
-						this._EncodingIP2 = txt;
+						this._EncodingIP2 = propertyNode.InnerText;
 						continue;
 					case "streamPassword":
-						this._StreamPassword = txt;
+						this._StreamPassword = propertyNode.InnerText;
 						continue;
 					case "streamUsername":
-						this._StreamUsername = txt;
+						this._StreamUsername = propertyNode.InnerText;
 						continue;
 					case "primaryServerNodeId":
-						this._PrimaryServerNodeId = ParseInt(txt);
+						this._PrimaryServerNodeId = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

@@ -295,74 +295,73 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerName":
-						this._PartnerName = txt;
+						this._PartnerName = propertyNode.InnerText;
 						continue;
 					case "partnerStatus":
-						this._PartnerStatus = (PartnerStatus)ParseEnum(typeof(PartnerStatus), txt);
+						this._PartnerStatus = (PartnerStatus)ParseEnum(typeof(PartnerStatus), propertyNode.InnerText);
 						continue;
 					case "partnerPackage":
-						this._PartnerPackage = ParseInt(txt);
+						this._PartnerPackage = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerCreatedAt":
-						this._PartnerCreatedAt = ParseInt(txt);
+						this._PartnerCreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "views":
-						this._Views = ParseInt(txt);
+						this._Views = ParseInt(propertyNode.InnerText);
 						continue;
 					case "plays":
-						this._Plays = ParseInt(txt);
+						this._Plays = ParseInt(propertyNode.InnerText);
 						continue;
 					case "entriesCount":
-						this._EntriesCount = ParseInt(txt);
+						this._EntriesCount = ParseInt(propertyNode.InnerText);
 						continue;
 					case "totalEntriesCount":
-						this._TotalEntriesCount = ParseInt(txt);
+						this._TotalEntriesCount = ParseInt(propertyNode.InnerText);
 						continue;
 					case "videoEntriesCount":
-						this._VideoEntriesCount = ParseInt(txt);
+						this._VideoEntriesCount = ParseInt(propertyNode.InnerText);
 						continue;
 					case "imageEntriesCount":
-						this._ImageEntriesCount = ParseInt(txt);
+						this._ImageEntriesCount = ParseInt(propertyNode.InnerText);
 						continue;
 					case "audioEntriesCount":
-						this._AudioEntriesCount = ParseInt(txt);
+						this._AudioEntriesCount = ParseInt(propertyNode.InnerText);
 						continue;
 					case "mixEntriesCount":
-						this._MixEntriesCount = ParseInt(txt);
+						this._MixEntriesCount = ParseInt(propertyNode.InnerText);
 						continue;
 					case "bandwidth":
-						this._Bandwidth = ParseFloat(txt);
+						this._Bandwidth = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "totalStorage":
-						this._TotalStorage = ParseFloat(txt);
+						this._TotalStorage = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "storage":
-						this._Storage = ParseFloat(txt);
+						this._Storage = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "deletedStorage":
-						this._DeletedStorage = ParseFloat(txt);
+						this._DeletedStorage = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "peakStorage":
-						this._PeakStorage = ParseFloat(txt);
+						this._PeakStorage = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "avgStorage":
-						this._AvgStorage = ParseFloat(txt);
+						this._AvgStorage = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "combinedStorageBandwidth":
-						this._CombinedStorageBandwidth = ParseFloat(txt);
+						this._CombinedStorageBandwidth = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "transcodingUsage":
-						this._TranscodingUsage = ParseFloat(txt);
+						this._TranscodingUsage = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "dateId":
-						this._DateId = txt;
+						this._DateId = propertyNode.InnerText;
 						continue;
 				}
 			}

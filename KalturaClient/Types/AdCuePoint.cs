@@ -119,26 +119,25 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "protocolType":
-						this._ProtocolType = (AdProtocolType)StringEnum.Parse(typeof(AdProtocolType), txt);
+						this._ProtocolType = (AdProtocolType)StringEnum.Parse(typeof(AdProtocolType), propertyNode.InnerText);
 						continue;
 					case "sourceUrl":
-						this._SourceUrl = txt;
+						this._SourceUrl = propertyNode.InnerText;
 						continue;
 					case "adType":
-						this._AdType = (AdType)StringEnum.Parse(typeof(AdType), txt);
+						this._AdType = (AdType)StringEnum.Parse(typeof(AdType), propertyNode.InnerText);
 						continue;
 					case "title":
-						this._Title = txt;
+						this._Title = propertyNode.InnerText;
 						continue;
 					case "endTime":
-						this._EndTime = ParseInt(txt);
+						this._EndTime = ParseInt(propertyNode.InnerText);
 						continue;
 					case "duration":
-						this._Duration = ParseInt(txt);
+						this._Duration = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

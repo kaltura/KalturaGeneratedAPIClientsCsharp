@@ -193,53 +193,52 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = txt;
+						this._Id = propertyNode.InnerText;
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "name":
-						this._Name = txt;
+						this._Name = propertyNode.InnerText;
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "tags":
-						this._Tags = txt;
+						this._Tags = propertyNode.InnerText;
 						continue;
 					case "type":
-						this._Type = (LiveChannelSegmentType)StringEnum.Parse(typeof(LiveChannelSegmentType), txt);
+						this._Type = (LiveChannelSegmentType)StringEnum.Parse(typeof(LiveChannelSegmentType), propertyNode.InnerText);
 						continue;
 					case "status":
-						this._Status = (LiveChannelSegmentStatus)StringEnum.Parse(typeof(LiveChannelSegmentStatus), txt);
+						this._Status = (LiveChannelSegmentStatus)StringEnum.Parse(typeof(LiveChannelSegmentStatus), propertyNode.InnerText);
 						continue;
 					case "channelId":
-						this._ChannelId = txt;
+						this._ChannelId = propertyNode.InnerText;
 						continue;
 					case "entryId":
-						this._EntryId = txt;
+						this._EntryId = propertyNode.InnerText;
 						continue;
 					case "triggerType":
-						this._TriggerType = (LiveChannelSegmentTriggerType)StringEnum.Parse(typeof(LiveChannelSegmentTriggerType), txt);
+						this._TriggerType = (LiveChannelSegmentTriggerType)StringEnum.Parse(typeof(LiveChannelSegmentTriggerType), propertyNode.InnerText);
 						continue;
 					case "triggerSegmentId":
-						this._TriggerSegmentId = txt;
+						this._TriggerSegmentId = propertyNode.InnerText;
 						continue;
 					case "startTime":
-						this._StartTime = ParseFloat(txt);
+						this._StartTime = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "duration":
-						this._Duration = ParseFloat(txt);
+						this._Duration = ParseFloat(propertyNode.InnerText);
 						continue;
 				}
 			}

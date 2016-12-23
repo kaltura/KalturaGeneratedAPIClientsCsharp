@@ -119,26 +119,25 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "dropFolderId":
-						this._DropFolderId = ParseInt(txt);
+						this._DropFolderId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "dropFolderFileIds":
-						this._DropFolderFileIds = txt;
+						this._DropFolderFileIds = propertyNode.InnerText;
 						continue;
 					case "parsedSlug":
-						this._ParsedSlug = txt;
+						this._ParsedSlug = propertyNode.InnerText;
 						continue;
 					case "contentMatchPolicy":
-						this._ContentMatchPolicy = (DropFolderContentFileHandlerMatchPolicy)ParseEnum(typeof(DropFolderContentFileHandlerMatchPolicy), txt);
+						this._ContentMatchPolicy = (DropFolderContentFileHandlerMatchPolicy)ParseEnum(typeof(DropFolderContentFileHandlerMatchPolicy), propertyNode.InnerText);
 						continue;
 					case "conversionProfileId":
-						this._ConversionProfileId = ParseInt(txt);
+						this._ConversionProfileId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "parsedUserId":
-						this._ParsedUserId = txt;
+						this._ParsedUserId = propertyNode.InnerText;
 						continue;
 				}
 			}

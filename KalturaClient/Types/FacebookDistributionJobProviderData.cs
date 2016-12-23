@@ -86,14 +86,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "videoAssetFilePath":
-						this._VideoAssetFilePath = txt;
+						this._VideoAssetFilePath = propertyNode.InnerText;
 						continue;
 					case "thumbAssetFilePath":
-						this._ThumbAssetFilePath = txt;
+						this._ThumbAssetFilePath = propertyNode.InnerText;
 						continue;
 					case "captionsInfo":
 						this._CaptionsInfo = new List<FacebookCaptionDistributionInfo>();

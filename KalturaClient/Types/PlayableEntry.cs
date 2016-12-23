@@ -106,32 +106,31 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "plays":
-						this._Plays = ParseInt(txt);
+						this._Plays = ParseInt(propertyNode.InnerText);
 						continue;
 					case "views":
-						this._Views = ParseInt(txt);
+						this._Views = ParseInt(propertyNode.InnerText);
 						continue;
 					case "lastPlayedAt":
-						this._LastPlayedAt = ParseInt(txt);
+						this._LastPlayedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "width":
-						this._Width = ParseInt(txt);
+						this._Width = ParseInt(propertyNode.InnerText);
 						continue;
 					case "height":
-						this._Height = ParseInt(txt);
+						this._Height = ParseInt(propertyNode.InnerText);
 						continue;
 					case "duration":
-						this._Duration = ParseInt(txt);
+						this._Duration = ParseInt(propertyNode.InnerText);
 						continue;
 					case "msDuration":
-						this._MsDuration = ParseInt(txt);
+						this._MsDuration = ParseInt(propertyNode.InnerText);
 						continue;
 					case "durationType":
-						this._DurationType = (DurationType)StringEnum.Parse(typeof(DurationType), txt);
+						this._DurationType = (DurationType)StringEnum.Parse(typeof(DurationType), propertyNode.InnerText);
 						continue;
 				}
 			}

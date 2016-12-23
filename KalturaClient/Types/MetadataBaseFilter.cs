@@ -251,62 +251,61 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "partnerIdEqual":
-						this._PartnerIdEqual = ParseInt(txt);
+						this._PartnerIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "metadataProfileIdEqual":
-						this._MetadataProfileIdEqual = ParseInt(txt);
+						this._MetadataProfileIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "metadataProfileIdIn":
-						this._MetadataProfileIdIn = txt;
+						this._MetadataProfileIdIn = propertyNode.InnerText;
 						continue;
 					case "metadataProfileVersionEqual":
-						this._MetadataProfileVersionEqual = ParseInt(txt);
+						this._MetadataProfileVersionEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "metadataProfileVersionGreaterThanOrEqual":
-						this._MetadataProfileVersionGreaterThanOrEqual = ParseInt(txt);
+						this._MetadataProfileVersionGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "metadataProfileVersionLessThanOrEqual":
-						this._MetadataProfileVersionLessThanOrEqual = ParseInt(txt);
+						this._MetadataProfileVersionLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "metadataObjectTypeEqual":
-						this._MetadataObjectTypeEqual = (MetadataObjectType)StringEnum.Parse(typeof(MetadataObjectType), txt);
+						this._MetadataObjectTypeEqual = (MetadataObjectType)StringEnum.Parse(typeof(MetadataObjectType), propertyNode.InnerText);
 						continue;
 					case "objectIdEqual":
-						this._ObjectIdEqual = txt;
+						this._ObjectIdEqual = propertyNode.InnerText;
 						continue;
 					case "objectIdIn":
-						this._ObjectIdIn = txt;
+						this._ObjectIdIn = propertyNode.InnerText;
 						continue;
 					case "versionEqual":
-						this._VersionEqual = ParseInt(txt);
+						this._VersionEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "versionGreaterThanOrEqual":
-						this._VersionGreaterThanOrEqual = ParseInt(txt);
+						this._VersionGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "versionLessThanOrEqual":
-						this._VersionLessThanOrEqual = ParseInt(txt);
+						this._VersionLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "statusEqual":
-						this._StatusEqual = (MetadataStatus)ParseEnum(typeof(MetadataStatus), txt);
+						this._StatusEqual = (MetadataStatus)ParseEnum(typeof(MetadataStatus), propertyNode.InnerText);
 						continue;
 					case "statusIn":
-						this._StatusIn = txt;
+						this._StatusIn = propertyNode.InnerText;
 						continue;
 				}
 			}

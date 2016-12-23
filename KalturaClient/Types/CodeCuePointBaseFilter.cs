@@ -185,44 +185,43 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "codeLike":
-						this._CodeLike = txt;
+						this._CodeLike = propertyNode.InnerText;
 						continue;
 					case "codeMultiLikeOr":
-						this._CodeMultiLikeOr = txt;
+						this._CodeMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "codeMultiLikeAnd":
-						this._CodeMultiLikeAnd = txt;
+						this._CodeMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "codeEqual":
-						this._CodeEqual = txt;
+						this._CodeEqual = propertyNode.InnerText;
 						continue;
 					case "codeIn":
-						this._CodeIn = txt;
+						this._CodeIn = propertyNode.InnerText;
 						continue;
 					case "descriptionLike":
-						this._DescriptionLike = txt;
+						this._DescriptionLike = propertyNode.InnerText;
 						continue;
 					case "descriptionMultiLikeOr":
-						this._DescriptionMultiLikeOr = txt;
+						this._DescriptionMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "descriptionMultiLikeAnd":
-						this._DescriptionMultiLikeAnd = txt;
+						this._DescriptionMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "endTimeGreaterThanOrEqual":
-						this._EndTimeGreaterThanOrEqual = ParseInt(txt);
+						this._EndTimeGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "endTimeLessThanOrEqual":
-						this._EndTimeLessThanOrEqual = ParseInt(txt);
+						this._EndTimeLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "durationGreaterThanOrEqual":
-						this._DurationGreaterThanOrEqual = ParseInt(txt);
+						this._DurationGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "durationLessThanOrEqual":
-						this._DurationLessThanOrEqual = ParseInt(txt);
+						this._DurationLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

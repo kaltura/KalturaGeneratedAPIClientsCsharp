@@ -130,29 +130,28 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "language":
-						this._Language = txt;
+						this._Language = propertyNode.InnerText;
 						continue;
 					case "label":
-						this._Label = txt;
+						this._Label = propertyNode.InnerText;
 						continue;
 					case "filePath":
-						this._FilePath = txt;
+						this._FilePath = propertyNode.InnerText;
 						continue;
 					case "remoteId":
-						this._RemoteId = txt;
+						this._RemoteId = propertyNode.InnerText;
 						continue;
 					case "action":
-						this._Action = (YouTubeApiDistributionCaptionAction)ParseEnum(typeof(YouTubeApiDistributionCaptionAction), txt);
+						this._Action = (YouTubeApiDistributionCaptionAction)ParseEnum(typeof(YouTubeApiDistributionCaptionAction), propertyNode.InnerText);
 						continue;
 					case "version":
-						this._Version = txt;
+						this._Version = propertyNode.InnerText;
 						continue;
 					case "assetId":
-						this._AssetId = txt;
+						this._AssetId = propertyNode.InnerText;
 						continue;
 				}
 			}

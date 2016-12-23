@@ -117,35 +117,34 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = txt;
+						this._Id = propertyNode.InnerText;
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "userId":
-						this._UserId = txt;
+						this._UserId = propertyNode.InnerText;
 						continue;
 					case "status":
-						this._Status = (UploadTokenStatus)ParseEnum(typeof(UploadTokenStatus), txt);
+						this._Status = (UploadTokenStatus)ParseEnum(typeof(UploadTokenStatus), propertyNode.InnerText);
 						continue;
 					case "fileName":
-						this._FileName = txt;
+						this._FileName = propertyNode.InnerText;
 						continue;
 					case "fileSize":
-						this._FileSize = ParseFloat(txt);
+						this._FileSize = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "uploadedFileSize":
-						this._UploadedFileSize = ParseFloat(txt);
+						this._UploadedFileSize = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

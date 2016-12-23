@@ -65,7 +65,6 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "objects":
@@ -76,7 +75,7 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "needMediaInfo":
-						this._NeedMediaInfo = ParseBool(txt);
+						this._NeedMediaInfo = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}

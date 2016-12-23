@@ -225,59 +225,58 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdBy":
-						this._CreatedBy = txt;
+						this._CreatedBy = propertyNode.InnerText;
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedBy":
-						this._UpdatedBy = txt;
+						this._UpdatedBy = propertyNode.InnerText;
 						continue;
 					case "createdById":
-						this._CreatedById = ParseInt(txt);
+						this._CreatedById = ParseInt(propertyNode.InnerText);
 						continue;
 					case "schedulerId":
-						this._SchedulerId = ParseInt(txt);
+						this._SchedulerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "workerId":
-						this._WorkerId = ParseInt(txt);
+						this._WorkerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "workerConfiguredId":
-						this._WorkerConfiguredId = ParseInt(txt);
+						this._WorkerConfiguredId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "workerName":
-						this._WorkerName = ParseInt(txt);
+						this._WorkerName = ParseInt(propertyNode.InnerText);
 						continue;
 					case "batchIndex":
-						this._BatchIndex = ParseInt(txt);
+						this._BatchIndex = ParseInt(propertyNode.InnerText);
 						continue;
 					case "type":
-						this._Type = (ControlPanelCommandType)ParseEnum(typeof(ControlPanelCommandType), txt);
+						this._Type = (ControlPanelCommandType)ParseEnum(typeof(ControlPanelCommandType), propertyNode.InnerText);
 						continue;
 					case "targetType":
-						this._TargetType = (ControlPanelCommandTargetType)ParseEnum(typeof(ControlPanelCommandTargetType), txt);
+						this._TargetType = (ControlPanelCommandTargetType)ParseEnum(typeof(ControlPanelCommandTargetType), propertyNode.InnerText);
 						continue;
 					case "status":
-						this._Status = (ControlPanelCommandStatus)ParseEnum(typeof(ControlPanelCommandStatus), txt);
+						this._Status = (ControlPanelCommandStatus)ParseEnum(typeof(ControlPanelCommandStatus), propertyNode.InnerText);
 						continue;
 					case "cause":
-						this._Cause = txt;
+						this._Cause = propertyNode.InnerText;
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "errorDescription":
-						this._ErrorDescription = txt;
+						this._ErrorDescription = propertyNode.InnerText;
 						continue;
 				}
 			}

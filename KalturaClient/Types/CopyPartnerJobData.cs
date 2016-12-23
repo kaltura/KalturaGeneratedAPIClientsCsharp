@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "fromPartnerId":
-						this._FromPartnerId = ParseInt(txt);
+						this._FromPartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "toPartnerId":
-						this._ToPartnerId = ParseInt(txt);
+						this._ToPartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

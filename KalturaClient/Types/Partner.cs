@@ -516,113 +516,112 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "name":
-						this._Name = txt;
+						this._Name = propertyNode.InnerText;
 						continue;
 					case "website":
-						this._Website = txt;
+						this._Website = propertyNode.InnerText;
 						continue;
 					case "notificationUrl":
-						this._NotificationUrl = txt;
+						this._NotificationUrl = propertyNode.InnerText;
 						continue;
 					case "appearInSearch":
-						this._AppearInSearch = ParseInt(txt);
+						this._AppearInSearch = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "adminName":
-						this._AdminName = txt;
+						this._AdminName = propertyNode.InnerText;
 						continue;
 					case "adminEmail":
-						this._AdminEmail = txt;
+						this._AdminEmail = propertyNode.InnerText;
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "commercialUse":
-						this._CommercialUse = (CommercialUseType)ParseEnum(typeof(CommercialUseType), txt);
+						this._CommercialUse = (CommercialUseType)ParseEnum(typeof(CommercialUseType), propertyNode.InnerText);
 						continue;
 					case "landingPage":
-						this._LandingPage = txt;
+						this._LandingPage = propertyNode.InnerText;
 						continue;
 					case "userLandingPage":
-						this._UserLandingPage = txt;
+						this._UserLandingPage = propertyNode.InnerText;
 						continue;
 					case "contentCategories":
-						this._ContentCategories = txt;
+						this._ContentCategories = propertyNode.InnerText;
 						continue;
 					case "type":
-						this._Type = (PartnerType)ParseEnum(typeof(PartnerType), txt);
+						this._Type = (PartnerType)ParseEnum(typeof(PartnerType), propertyNode.InnerText);
 						continue;
 					case "phone":
-						this._Phone = txt;
+						this._Phone = propertyNode.InnerText;
 						continue;
 					case "describeYourself":
-						this._DescribeYourself = txt;
+						this._DescribeYourself = propertyNode.InnerText;
 						continue;
 					case "adultContent":
-						this._AdultContent = ParseBool(txt);
+						this._AdultContent = ParseBool(propertyNode.InnerText);
 						continue;
 					case "defConversionProfileType":
-						this._DefConversionProfileType = txt;
+						this._DefConversionProfileType = propertyNode.InnerText;
 						continue;
 					case "notify":
-						this._Notify = ParseInt(txt);
+						this._Notify = ParseInt(propertyNode.InnerText);
 						continue;
 					case "status":
-						this._Status = (PartnerStatus)ParseEnum(typeof(PartnerStatus), txt);
+						this._Status = (PartnerStatus)ParseEnum(typeof(PartnerStatus), propertyNode.InnerText);
 						continue;
 					case "allowQuickEdit":
-						this._AllowQuickEdit = ParseInt(txt);
+						this._AllowQuickEdit = ParseInt(propertyNode.InnerText);
 						continue;
 					case "mergeEntryLists":
-						this._MergeEntryLists = ParseInt(txt);
+						this._MergeEntryLists = ParseInt(propertyNode.InnerText);
 						continue;
 					case "notificationsConfig":
-						this._NotificationsConfig = txt;
+						this._NotificationsConfig = propertyNode.InnerText;
 						continue;
 					case "maxUploadSize":
-						this._MaxUploadSize = ParseInt(txt);
+						this._MaxUploadSize = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerPackage":
-						this._PartnerPackage = ParseInt(txt);
+						this._PartnerPackage = ParseInt(propertyNode.InnerText);
 						continue;
 					case "secret":
-						this._Secret = txt;
+						this._Secret = propertyNode.InnerText;
 						continue;
 					case "adminSecret":
-						this._AdminSecret = txt;
+						this._AdminSecret = propertyNode.InnerText;
 						continue;
 					case "cmsPassword":
-						this._CmsPassword = txt;
+						this._CmsPassword = propertyNode.InnerText;
 						continue;
 					case "allowMultiNotification":
-						this._AllowMultiNotification = ParseInt(txt);
+						this._AllowMultiNotification = ParseInt(propertyNode.InnerText);
 						continue;
 					case "adminLoginUsersQuota":
-						this._AdminLoginUsersQuota = ParseInt(txt);
+						this._AdminLoginUsersQuota = ParseInt(propertyNode.InnerText);
 						continue;
 					case "adminUserId":
-						this._AdminUserId = txt;
+						this._AdminUserId = propertyNode.InnerText;
 						continue;
 					case "firstName":
-						this._FirstName = txt;
+						this._FirstName = propertyNode.InnerText;
 						continue;
 					case "lastName":
-						this._LastName = txt;
+						this._LastName = propertyNode.InnerText;
 						continue;
 					case "country":
-						this._Country = txt;
+						this._Country = propertyNode.InnerText;
 						continue;
 					case "state":
-						this._State = txt;
+						this._State = propertyNode.InnerText;
 						continue;
 					case "additionalParams":
 						this._AdditionalParams = new List<KeyValue>();
@@ -632,19 +631,19 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "publishersQuota":
-						this._PublishersQuota = ParseInt(txt);
+						this._PublishersQuota = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerGroupType":
-						this._PartnerGroupType = (PartnerGroupType)ParseEnum(typeof(PartnerGroupType), txt);
+						this._PartnerGroupType = (PartnerGroupType)ParseEnum(typeof(PartnerGroupType), propertyNode.InnerText);
 						continue;
 					case "defaultEntitlementEnforcement":
-						this._DefaultEntitlementEnforcement = ParseBool(txt);
+						this._DefaultEntitlementEnforcement = ParseBool(propertyNode.InnerText);
 						continue;
 					case "defaultDeliveryType":
-						this._DefaultDeliveryType = txt;
+						this._DefaultDeliveryType = propertyNode.InnerText;
 						continue;
 					case "defaultEmbedCodeType":
-						this._DefaultEmbedCodeType = txt;
+						this._DefaultEmbedCodeType = propertyNode.InnerText;
 						continue;
 					case "deliveryTypes":
 						this._DeliveryTypes = new List<PlayerDeliveryType>();
@@ -661,34 +660,34 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "templatePartnerId":
-						this._TemplatePartnerId = ParseInt(txt);
+						this._TemplatePartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "ignoreSeoLinks":
-						this._IgnoreSeoLinks = ParseBool(txt);
+						this._IgnoreSeoLinks = ParseBool(propertyNode.InnerText);
 						continue;
 					case "host":
-						this._Host = txt;
+						this._Host = propertyNode.InnerText;
 						continue;
 					case "cdnHost":
-						this._CdnHost = txt;
+						this._CdnHost = propertyNode.InnerText;
 						continue;
 					case "isFirstLogin":
-						this._IsFirstLogin = ParseBool(txt);
+						this._IsFirstLogin = ParseBool(propertyNode.InnerText);
 						continue;
 					case "logoutUrl":
-						this._LogoutUrl = txt;
+						this._LogoutUrl = propertyNode.InnerText;
 						continue;
 					case "partnerParentId":
-						this._PartnerParentId = ParseInt(txt);
+						this._PartnerParentId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "crmId":
-						this._CrmId = txt;
+						this._CrmId = propertyNode.InnerText;
 						continue;
 					case "referenceId":
-						this._ReferenceId = txt;
+						this._ReferenceId = propertyNode.InnerText;
 						continue;
 					case "timeAlignedRenditions":
-						this._TimeAlignedRenditions = ParseBool(txt);
+						this._TimeAlignedRenditions = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}

@@ -207,50 +207,49 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "userId":
-						this._UserId = txt;
+						this._UserId = propertyNode.InnerText;
 						continue;
 					case "screenName":
-						this._ScreenName = txt;
+						this._ScreenName = propertyNode.InnerText;
 						continue;
 					case "email":
-						this._Email = txt;
+						this._Email = propertyNode.InnerText;
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "tags":
-						this._Tags = txt;
+						this._Tags = propertyNode.InnerText;
 						continue;
 					case "dateOfBirth":
-						this._DateOfBirth = ParseInt(txt);
+						this._DateOfBirth = ParseInt(propertyNode.InnerText);
 						continue;
 					case "country":
-						this._Country = txt;
+						this._Country = propertyNode.InnerText;
 						continue;
 					case "state":
-						this._State = txt;
+						this._State = propertyNode.InnerText;
 						continue;
 					case "city":
-						this._City = txt;
+						this._City = propertyNode.InnerText;
 						continue;
 					case "zip":
-						this._Zip = txt;
+						this._Zip = propertyNode.InnerText;
 						continue;
 					case "gender":
-						this._Gender = ParseInt(txt);
+						this._Gender = ParseInt(propertyNode.InnerText);
 						continue;
 					case "firstName":
-						this._FirstName = txt;
+						this._FirstName = propertyNode.InnerText;
 						continue;
 					case "lastName":
-						this._LastName = txt;
+						this._LastName = propertyNode.InnerText;
 						continue;
 					case "group":
-						this._Group = txt;
+						this._Group = propertyNode.InnerText;
 						continue;
 				}
 			}

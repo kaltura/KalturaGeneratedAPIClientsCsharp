@@ -86,17 +86,16 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "xml":
-						this._Xml = txt;
+						this._Xml = propertyNode.InnerText;
 						continue;
 					case "resultParseData":
-						this._ResultParseData = txt;
+						this._ResultParseData = propertyNode.InnerText;
 						continue;
 					case "resultParserType":
-						this._ResultParserType = (GenericDistributionProviderParser)ParseEnum(typeof(GenericDistributionProviderParser), txt);
+						this._ResultParserType = (GenericDistributionProviderParser)ParseEnum(typeof(GenericDistributionProviderParser), propertyNode.InnerText);
 						continue;
 				}
 			}

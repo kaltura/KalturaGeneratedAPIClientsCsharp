@@ -119,26 +119,25 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "wsdlUsername":
-						this._WsdlUsername = txt;
+						this._WsdlUsername = propertyNode.InnerText;
 						continue;
 					case "wsdlPassword":
-						this._WsdlPassword = txt;
+						this._WsdlPassword = propertyNode.InnerText;
 						continue;
 					case "cpcode":
-						this._Cpcode = txt;
+						this._Cpcode = propertyNode.InnerText;
 						continue;
 					case "emailId":
-						this._EmailId = txt;
+						this._EmailId = propertyNode.InnerText;
 						continue;
 					case "primaryContact":
-						this._PrimaryContact = txt;
+						this._PrimaryContact = propertyNode.InnerText;
 						continue;
 					case "secondaryContact":
-						this._SecondaryContact = txt;
+						this._SecondaryContact = propertyNode.InnerText;
 						continue;
 				}
 			}

@@ -130,17 +130,16 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "name":
-						this._Name = txt;
+						this._Name = propertyNode.InnerText;
 						continue;
 					case "type":
-						this._Type = (ResponseProfileType)ParseEnum(typeof(ResponseProfileType), txt);
+						this._Type = (ResponseProfileType)ParseEnum(typeof(ResponseProfileType), propertyNode.InnerText);
 						continue;
 					case "fields":
-						this._Fields = txt;
+						this._Fields = propertyNode.InnerText;
 						continue;
 					case "filter":
 						this._Filter = ObjectFactory.Create<RelatedFilter>(propertyNode);

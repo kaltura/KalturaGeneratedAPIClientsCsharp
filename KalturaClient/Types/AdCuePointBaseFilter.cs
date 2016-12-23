@@ -152,35 +152,34 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "protocolTypeEqual":
-						this._ProtocolTypeEqual = (AdProtocolType)StringEnum.Parse(typeof(AdProtocolType), txt);
+						this._ProtocolTypeEqual = (AdProtocolType)StringEnum.Parse(typeof(AdProtocolType), propertyNode.InnerText);
 						continue;
 					case "protocolTypeIn":
-						this._ProtocolTypeIn = txt;
+						this._ProtocolTypeIn = propertyNode.InnerText;
 						continue;
 					case "titleLike":
-						this._TitleLike = txt;
+						this._TitleLike = propertyNode.InnerText;
 						continue;
 					case "titleMultiLikeOr":
-						this._TitleMultiLikeOr = txt;
+						this._TitleMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "titleMultiLikeAnd":
-						this._TitleMultiLikeAnd = txt;
+						this._TitleMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "endTimeGreaterThanOrEqual":
-						this._EndTimeGreaterThanOrEqual = ParseInt(txt);
+						this._EndTimeGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "endTimeLessThanOrEqual":
-						this._EndTimeLessThanOrEqual = ParseInt(txt);
+						this._EndTimeLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "durationGreaterThanOrEqual":
-						this._DurationGreaterThanOrEqual = ParseInt(txt);
+						this._DurationGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "durationLessThanOrEqual":
-						this._DurationLessThanOrEqual = ParseInt(txt);
+						this._DurationLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

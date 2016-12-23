@@ -372,95 +372,94 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "partnerIdEqual":
-						this._PartnerIdEqual = ParseInt(txt);
+						this._PartnerIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "fileObjectTypeEqual":
-						this._FileObjectTypeEqual = (FileSyncObjectType)StringEnum.Parse(typeof(FileSyncObjectType), txt);
+						this._FileObjectTypeEqual = (FileSyncObjectType)StringEnum.Parse(typeof(FileSyncObjectType), propertyNode.InnerText);
 						continue;
 					case "fileObjectTypeIn":
-						this._FileObjectTypeIn = txt;
+						this._FileObjectTypeIn = propertyNode.InnerText;
 						continue;
 					case "objectIdEqual":
-						this._ObjectIdEqual = txt;
+						this._ObjectIdEqual = propertyNode.InnerText;
 						continue;
 					case "objectIdIn":
-						this._ObjectIdIn = txt;
+						this._ObjectIdIn = propertyNode.InnerText;
 						continue;
 					case "versionEqual":
-						this._VersionEqual = txt;
+						this._VersionEqual = propertyNode.InnerText;
 						continue;
 					case "versionIn":
-						this._VersionIn = txt;
+						this._VersionIn = propertyNode.InnerText;
 						continue;
 					case "objectSubTypeEqual":
-						this._ObjectSubTypeEqual = ParseInt(txt);
+						this._ObjectSubTypeEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "objectSubTypeIn":
-						this._ObjectSubTypeIn = txt;
+						this._ObjectSubTypeIn = propertyNode.InnerText;
 						continue;
 					case "dcEqual":
-						this._DcEqual = txt;
+						this._DcEqual = propertyNode.InnerText;
 						continue;
 					case "dcIn":
-						this._DcIn = txt;
+						this._DcIn = propertyNode.InnerText;
 						continue;
 					case "originalEqual":
-						this._OriginalEqual = ParseInt(txt);
+						this._OriginalEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "readyAtGreaterThanOrEqual":
-						this._ReadyAtGreaterThanOrEqual = ParseInt(txt);
+						this._ReadyAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "readyAtLessThanOrEqual":
-						this._ReadyAtLessThanOrEqual = ParseInt(txt);
+						this._ReadyAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "syncTimeGreaterThanOrEqual":
-						this._SyncTimeGreaterThanOrEqual = ParseInt(txt);
+						this._SyncTimeGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "syncTimeLessThanOrEqual":
-						this._SyncTimeLessThanOrEqual = ParseInt(txt);
+						this._SyncTimeLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "statusEqual":
-						this._StatusEqual = (FileSyncStatus)ParseEnum(typeof(FileSyncStatus), txt);
+						this._StatusEqual = (FileSyncStatus)ParseEnum(typeof(FileSyncStatus), propertyNode.InnerText);
 						continue;
 					case "statusIn":
-						this._StatusIn = txt;
+						this._StatusIn = propertyNode.InnerText;
 						continue;
 					case "fileTypeEqual":
-						this._FileTypeEqual = (FileSyncType)ParseEnum(typeof(FileSyncType), txt);
+						this._FileTypeEqual = (FileSyncType)ParseEnum(typeof(FileSyncType), propertyNode.InnerText);
 						continue;
 					case "fileTypeIn":
-						this._FileTypeIn = txt;
+						this._FileTypeIn = propertyNode.InnerText;
 						continue;
 					case "linkedIdEqual":
-						this._LinkedIdEqual = ParseInt(txt);
+						this._LinkedIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "linkCountGreaterThanOrEqual":
-						this._LinkCountGreaterThanOrEqual = ParseInt(txt);
+						this._LinkCountGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "linkCountLessThanOrEqual":
-						this._LinkCountLessThanOrEqual = ParseInt(txt);
+						this._LinkCountLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "fileSizeGreaterThanOrEqual":
-						this._FileSizeGreaterThanOrEqual = ParseFloat(txt);
+						this._FileSizeGreaterThanOrEqual = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "fileSizeLessThanOrEqual":
-						this._FileSizeLessThanOrEqual = ParseFloat(txt);
+						this._FileSizeLessThanOrEqual = ParseFloat(propertyNode.InnerText);
 						continue;
 				}
 			}

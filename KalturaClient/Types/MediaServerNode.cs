@@ -86,11 +86,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "applicationName":
-						this._ApplicationName = txt;
+						this._ApplicationName = propertyNode.InnerText;
 						continue;
 					case "mediaServerPortConfig":
 						this._MediaServerPortConfig = new List<KeyValue>();

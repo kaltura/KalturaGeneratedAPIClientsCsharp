@@ -64,11 +64,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "supportClipping":
-						this._SupportClipping = ParseBool(txt);
+						this._SupportClipping = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}

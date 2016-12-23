@@ -132,35 +132,34 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "parentId":
-						this._ParentId = txt;
+						this._ParentId = propertyNode.InnerText;
 						continue;
 					case "text":
-						this._Text = txt;
+						this._Text = propertyNode.InnerText;
 						continue;
 					case "endTime":
-						this._EndTime = ParseInt(txt);
+						this._EndTime = ParseInt(propertyNode.InnerText);
 						continue;
 					case "duration":
-						this._Duration = ParseInt(txt);
+						this._Duration = ParseInt(propertyNode.InnerText);
 						continue;
 					case "depth":
-						this._Depth = ParseInt(txt);
+						this._Depth = ParseInt(propertyNode.InnerText);
 						continue;
 					case "childrenCount":
-						this._ChildrenCount = ParseInt(txt);
+						this._ChildrenCount = ParseInt(propertyNode.InnerText);
 						continue;
 					case "directChildrenCount":
-						this._DirectChildrenCount = ParseInt(txt);
+						this._DirectChildrenCount = ParseInt(propertyNode.InnerText);
 						continue;
 					case "isPublic":
-						this._IsPublic = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._IsPublic = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "searchableOnEntry":
-						this._SearchableOnEntry = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._SearchableOnEntry = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 				}
 			}

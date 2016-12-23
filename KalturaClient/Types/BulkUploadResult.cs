@@ -224,44 +224,43 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "bulkUploadJobId":
-						this._BulkUploadJobId = ParseLong(txt);
+						this._BulkUploadJobId = ParseLong(propertyNode.InnerText);
 						continue;
 					case "lineIndex":
-						this._LineIndex = ParseInt(txt);
+						this._LineIndex = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "status":
-						this._Status = (BulkUploadResultStatus)StringEnum.Parse(typeof(BulkUploadResultStatus), txt);
+						this._Status = (BulkUploadResultStatus)StringEnum.Parse(typeof(BulkUploadResultStatus), propertyNode.InnerText);
 						continue;
 					case "action":
-						this._Action = (BulkUploadAction)StringEnum.Parse(typeof(BulkUploadAction), txt);
+						this._Action = (BulkUploadAction)StringEnum.Parse(typeof(BulkUploadAction), propertyNode.InnerText);
 						continue;
 					case "objectId":
-						this._ObjectId = txt;
+						this._ObjectId = propertyNode.InnerText;
 						continue;
 					case "objectStatus":
-						this._ObjectStatus = ParseInt(txt);
+						this._ObjectStatus = ParseInt(propertyNode.InnerText);
 						continue;
 					case "bulkUploadResultObjectType":
-						this._BulkUploadResultObjectType = (BulkUploadObjectType)StringEnum.Parse(typeof(BulkUploadObjectType), txt);
+						this._BulkUploadResultObjectType = (BulkUploadObjectType)StringEnum.Parse(typeof(BulkUploadObjectType), propertyNode.InnerText);
 						continue;
 					case "rowData":
-						this._RowData = txt;
+						this._RowData = propertyNode.InnerText;
 						continue;
 					case "partnerData":
-						this._PartnerData = txt;
+						this._PartnerData = propertyNode.InnerText;
 						continue;
 					case "objectErrorDescription":
-						this._ObjectErrorDescription = txt;
+						this._ObjectErrorDescription = propertyNode.InnerText;
 						continue;
 					case "pluginsData":
 						this._PluginsData = new List<BulkUploadPluginData>();
@@ -271,13 +270,13 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "errorDescription":
-						this._ErrorDescription = txt;
+						this._ErrorDescription = propertyNode.InnerText;
 						continue;
 					case "errorCode":
-						this._ErrorCode = txt;
+						this._ErrorCode = propertyNode.InnerText;
 						continue;
 					case "errorType":
-						this._ErrorType = ParseInt(txt);
+						this._ErrorType = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

@@ -548,143 +548,142 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this._IdEqual = ParseLong(txt);
+						this._IdEqual = ParseLong(propertyNode.InnerText);
 						continue;
 					case "idGreaterThanOrEqual":
-						this._IdGreaterThanOrEqual = ParseLong(txt);
+						this._IdGreaterThanOrEqual = ParseLong(propertyNode.InnerText);
 						continue;
 					case "partnerIdEqual":
-						this._PartnerIdEqual = ParseInt(txt);
+						this._PartnerIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerIdIn":
-						this._PartnerIdIn = txt;
+						this._PartnerIdIn = propertyNode.InnerText;
 						continue;
 					case "partnerIdNotIn":
-						this._PartnerIdNotIn = txt;
+						this._PartnerIdNotIn = propertyNode.InnerText;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "executionAttemptsGreaterThanOrEqual":
-						this._ExecutionAttemptsGreaterThanOrEqual = ParseInt(txt);
+						this._ExecutionAttemptsGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "executionAttemptsLessThanOrEqual":
-						this._ExecutionAttemptsLessThanOrEqual = ParseInt(txt);
+						this._ExecutionAttemptsLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "lockVersionGreaterThanOrEqual":
-						this._LockVersionGreaterThanOrEqual = ParseInt(txt);
+						this._LockVersionGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "lockVersionLessThanOrEqual":
-						this._LockVersionLessThanOrEqual = ParseInt(txt);
+						this._LockVersionLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "entryIdEqual":
-						this._EntryIdEqual = txt;
+						this._EntryIdEqual = propertyNode.InnerText;
 						continue;
 					case "jobTypeEqual":
-						this._JobTypeEqual = (BatchJobType)StringEnum.Parse(typeof(BatchJobType), txt);
+						this._JobTypeEqual = (BatchJobType)StringEnum.Parse(typeof(BatchJobType), propertyNode.InnerText);
 						continue;
 					case "jobTypeIn":
-						this._JobTypeIn = txt;
+						this._JobTypeIn = propertyNode.InnerText;
 						continue;
 					case "jobTypeNotIn":
-						this._JobTypeNotIn = txt;
+						this._JobTypeNotIn = propertyNode.InnerText;
 						continue;
 					case "jobSubTypeEqual":
-						this._JobSubTypeEqual = ParseInt(txt);
+						this._JobSubTypeEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "jobSubTypeIn":
-						this._JobSubTypeIn = txt;
+						this._JobSubTypeIn = propertyNode.InnerText;
 						continue;
 					case "jobSubTypeNotIn":
-						this._JobSubTypeNotIn = txt;
+						this._JobSubTypeNotIn = propertyNode.InnerText;
 						continue;
 					case "statusEqual":
-						this._StatusEqual = (BatchJobStatus)ParseEnum(typeof(BatchJobStatus), txt);
+						this._StatusEqual = (BatchJobStatus)ParseEnum(typeof(BatchJobStatus), propertyNode.InnerText);
 						continue;
 					case "statusIn":
-						this._StatusIn = txt;
+						this._StatusIn = propertyNode.InnerText;
 						continue;
 					case "statusNotIn":
-						this._StatusNotIn = txt;
+						this._StatusNotIn = propertyNode.InnerText;
 						continue;
 					case "priorityGreaterThanOrEqual":
-						this._PriorityGreaterThanOrEqual = ParseInt(txt);
+						this._PriorityGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "priorityLessThanOrEqual":
-						this._PriorityLessThanOrEqual = ParseInt(txt);
+						this._PriorityLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "priorityEqual":
-						this._PriorityEqual = ParseInt(txt);
+						this._PriorityEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "priorityIn":
-						this._PriorityIn = txt;
+						this._PriorityIn = propertyNode.InnerText;
 						continue;
 					case "priorityNotIn":
-						this._PriorityNotIn = txt;
+						this._PriorityNotIn = propertyNode.InnerText;
 						continue;
 					case "batchVersionGreaterThanOrEqual":
-						this._BatchVersionGreaterThanOrEqual = ParseInt(txt);
+						this._BatchVersionGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "batchVersionLessThanOrEqual":
-						this._BatchVersionLessThanOrEqual = ParseInt(txt);
+						this._BatchVersionLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "batchVersionEqual":
-						this._BatchVersionEqual = ParseInt(txt);
+						this._BatchVersionEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "queueTimeGreaterThanOrEqual":
-						this._QueueTimeGreaterThanOrEqual = ParseInt(txt);
+						this._QueueTimeGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "queueTimeLessThanOrEqual":
-						this._QueueTimeLessThanOrEqual = ParseInt(txt);
+						this._QueueTimeLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "finishTimeGreaterThanOrEqual":
-						this._FinishTimeGreaterThanOrEqual = ParseInt(txt);
+						this._FinishTimeGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "finishTimeLessThanOrEqual":
-						this._FinishTimeLessThanOrEqual = ParseInt(txt);
+						this._FinishTimeLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "errTypeEqual":
-						this._ErrTypeEqual = (BatchJobErrorTypes)ParseEnum(typeof(BatchJobErrorTypes), txt);
+						this._ErrTypeEqual = (BatchJobErrorTypes)ParseEnum(typeof(BatchJobErrorTypes), propertyNode.InnerText);
 						continue;
 					case "errTypeIn":
-						this._ErrTypeIn = txt;
+						this._ErrTypeIn = propertyNode.InnerText;
 						continue;
 					case "errTypeNotIn":
-						this._ErrTypeNotIn = txt;
+						this._ErrTypeNotIn = propertyNode.InnerText;
 						continue;
 					case "errNumberEqual":
-						this._ErrNumberEqual = ParseInt(txt);
+						this._ErrNumberEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "errNumberIn":
-						this._ErrNumberIn = txt;
+						this._ErrNumberIn = propertyNode.InnerText;
 						continue;
 					case "errNumberNotIn":
-						this._ErrNumberNotIn = txt;
+						this._ErrNumberNotIn = propertyNode.InnerText;
 						continue;
 					case "estimatedEffortLessThan":
-						this._EstimatedEffortLessThan = ParseInt(txt);
+						this._EstimatedEffortLessThan = ParseInt(propertyNode.InnerText);
 						continue;
 					case "estimatedEffortGreaterThan":
-						this._EstimatedEffortGreaterThan = ParseInt(txt);
+						this._EstimatedEffortGreaterThan = ParseInt(propertyNode.InnerText);
 						continue;
 					case "urgencyLessThanOrEqual":
-						this._UrgencyLessThanOrEqual = ParseInt(txt);
+						this._UrgencyLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "urgencyGreaterThanOrEqual":
-						this._UrgencyGreaterThanOrEqual = ParseInt(txt);
+						this._UrgencyGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

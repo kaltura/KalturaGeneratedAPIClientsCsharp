@@ -139,41 +139,40 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "userId":
-						this._UserId = txt;
+						this._UserId = propertyNode.InnerText;
 						continue;
 					case "moderationObjectType":
-						this._ModerationObjectType = (ModerationObjectType)StringEnum.Parse(typeof(ModerationObjectType), txt);
+						this._ModerationObjectType = (ModerationObjectType)StringEnum.Parse(typeof(ModerationObjectType), propertyNode.InnerText);
 						continue;
 					case "flaggedEntryId":
-						this._FlaggedEntryId = txt;
+						this._FlaggedEntryId = propertyNode.InnerText;
 						continue;
 					case "flaggedUserId":
-						this._FlaggedUserId = txt;
+						this._FlaggedUserId = propertyNode.InnerText;
 						continue;
 					case "status":
-						this._Status = (ModerationFlagStatus)StringEnum.Parse(typeof(ModerationFlagStatus), txt);
+						this._Status = (ModerationFlagStatus)StringEnum.Parse(typeof(ModerationFlagStatus), propertyNode.InnerText);
 						continue;
 					case "comments":
-						this._Comments = txt;
+						this._Comments = propertyNode.InnerText;
 						continue;
 					case "flagType":
-						this._FlagType = (ModerationFlagType)ParseEnum(typeof(ModerationFlagType), txt);
+						this._FlagType = (ModerationFlagType)ParseEnum(typeof(ModerationFlagType), propertyNode.InnerText);
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

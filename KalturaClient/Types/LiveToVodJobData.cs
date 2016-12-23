@@ -130,29 +130,28 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "vodEntryId":
-						this._VodEntryId = txt;
+						this._VodEntryId = propertyNode.InnerText;
 						continue;
 					case "liveEntryId":
-						this._LiveEntryId = txt;
+						this._LiveEntryId = propertyNode.InnerText;
 						continue;
 					case "totalVodDuration":
-						this._TotalVodDuration = ParseFloat(txt);
+						this._TotalVodDuration = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "lastSegmentDuration":
-						this._LastSegmentDuration = ParseFloat(txt);
+						this._LastSegmentDuration = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "amfArray":
-						this._AmfArray = txt;
+						this._AmfArray = propertyNode.InnerText;
 						continue;
 					case "lastCuePointSyncTime":
-						this._LastCuePointSyncTime = ParseInt(txt);
+						this._LastCuePointSyncTime = ParseInt(propertyNode.InnerText);
 						continue;
 					case "lastSegmentDrift":
-						this._LastSegmentDrift = ParseInt(txt);
+						this._LastSegmentDrift = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

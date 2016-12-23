@@ -111,32 +111,31 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "entryId":
-						this._EntryId = txt;
+						this._EntryId = propertyNode.InnerText;
 						continue;
 					case "userId":
-						this._UserId = txt;
+						this._UserId = propertyNode.InnerText;
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "status":
-						this._Status = (UserEntryStatus)StringEnum.Parse(typeof(UserEntryStatus), txt);
+						this._Status = (UserEntryStatus)StringEnum.Parse(typeof(UserEntryStatus), propertyNode.InnerText);
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "type":
-						this._Type = (UserEntryType)StringEnum.Parse(typeof(UserEntryType), txt);
+						this._Type = (UserEntryType)StringEnum.Parse(typeof(UserEntryType), propertyNode.InnerText);
 						continue;
 				}
 			}

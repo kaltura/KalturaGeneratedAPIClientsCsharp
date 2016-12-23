@@ -137,35 +137,34 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "entryId":
-						this._EntryId = txt;
+						this._EntryId = propertyNode.InnerText;
 						continue;
 					case "flavorAssetId":
-						this._FlavorAssetId = txt;
+						this._FlavorAssetId = propertyNode.InnerText;
 						continue;
 					case "transcriptId":
-						this._TranscriptId = txt;
+						this._TranscriptId = propertyNode.InnerText;
 						continue;
 					case "captionAssetFormats":
-						this._CaptionAssetFormats = txt;
+						this._CaptionAssetFormats = propertyNode.InnerText;
 						continue;
 					case "apiKey":
-						this._ApiKey = txt;
+						this._ApiKey = propertyNode.InnerText;
 						continue;
 					case "apiPassword":
-						this._ApiPassword = txt;
+						this._ApiPassword = propertyNode.InnerText;
 						continue;
 					case "spokenLanguage":
-						this._SpokenLanguage = (Language)StringEnum.Parse(typeof(Language), txt);
+						this._SpokenLanguage = (Language)StringEnum.Parse(typeof(Language), propertyNode.InnerText);
 						continue;
 					case "fileLocation":
-						this._FileLocation = txt;
+						this._FileLocation = propertyNode.InnerText;
 						continue;
 					case "replaceMediaContent":
-						this._ReplaceMediaContent = ParseBool(txt);
+						this._ReplaceMediaContent = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}

@@ -86,17 +86,16 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "xpath":
-						this._Xpath = txt;
+						this._Xpath = propertyNode.InnerText;
 						continue;
 					case "identifier":
 						this._Identifier = ObjectFactory.Create<ObjectIdentifier>(propertyNode);
 						continue;
 					case "extensionMode":
-						this._ExtensionMode = (MrssExtensionMode)ParseEnum(typeof(MrssExtensionMode), txt);
+						this._ExtensionMode = (MrssExtensionMode)ParseEnum(typeof(MrssExtensionMode), propertyNode.InnerText);
 						continue;
 				}
 			}

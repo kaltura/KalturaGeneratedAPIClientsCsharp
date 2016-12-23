@@ -141,32 +141,31 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "descriptionLike":
-						this._DescriptionLike = txt;
+						this._DescriptionLike = propertyNode.InnerText;
 						continue;
 					case "descriptionMultiLikeOr":
-						this._DescriptionMultiLikeOr = txt;
+						this._DescriptionMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "descriptionMultiLikeAnd":
-						this._DescriptionMultiLikeAnd = txt;
+						this._DescriptionMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "titleLike":
-						this._TitleLike = txt;
+						this._TitleLike = propertyNode.InnerText;
 						continue;
 					case "titleMultiLikeOr":
-						this._TitleMultiLikeOr = txt;
+						this._TitleMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "titleMultiLikeAnd":
-						this._TitleMultiLikeAnd = txt;
+						this._TitleMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "subTypeEqual":
-						this._SubTypeEqual = (ThumbCuePointSubType)ParseEnum(typeof(ThumbCuePointSubType), txt);
+						this._SubTypeEqual = (ThumbCuePointSubType)ParseEnum(typeof(ThumbCuePointSubType), propertyNode.InnerText);
 						continue;
 					case "subTypeIn":
-						this._SubTypeIn = txt;
+						this._SubTypeIn = propertyNode.InnerText;
 						continue;
 				}
 			}

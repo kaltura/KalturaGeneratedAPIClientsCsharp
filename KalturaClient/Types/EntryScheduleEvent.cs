@@ -86,17 +86,16 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "templateEntryId":
-						this._TemplateEntryId = txt;
+						this._TemplateEntryId = propertyNode.InnerText;
 						continue;
 					case "entryIds":
-						this._EntryIds = txt;
+						this._EntryIds = propertyNode.InnerText;
 						continue;
 					case "categoryIds":
-						this._CategoryIds = txt;
+						this._CategoryIds = propertyNode.InnerText;
 						continue;
 				}
 			}

@@ -97,20 +97,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "flavorParamsIdEqual":
-						this._FlavorParamsIdEqual = ParseInt(txt);
+						this._FlavorParamsIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "flavorParamsVersionEqual":
-						this._FlavorParamsVersionEqual = txt;
+						this._FlavorParamsVersionEqual = propertyNode.InnerText;
 						continue;
 					case "flavorAssetIdEqual":
-						this._FlavorAssetIdEqual = txt;
+						this._FlavorAssetIdEqual = propertyNode.InnerText;
 						continue;
 					case "flavorAssetVersionEqual":
-						this._FlavorAssetVersionEqual = txt;
+						this._FlavorAssetVersionEqual = propertyNode.InnerText;
 						continue;
 				}
 			}

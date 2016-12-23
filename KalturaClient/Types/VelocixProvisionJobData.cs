@@ -86,7 +86,6 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "provisioningParams":
@@ -97,10 +96,10 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "userName":
-						this._UserName = txt;
+						this._UserName = propertyNode.InnerText;
 						continue;
 					case "password":
-						this._Password = txt;
+						this._Password = propertyNode.InnerText;
 						continue;
 				}
 			}

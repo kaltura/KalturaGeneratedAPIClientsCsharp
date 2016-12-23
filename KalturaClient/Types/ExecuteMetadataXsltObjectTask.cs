@@ -86,17 +86,16 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "metadataProfileId":
-						this._MetadataProfileId = ParseInt(txt);
+						this._MetadataProfileId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "metadataObjectType":
-						this._MetadataObjectType = (MetadataObjectType)StringEnum.Parse(typeof(MetadataObjectType), txt);
+						this._MetadataObjectType = (MetadataObjectType)StringEnum.Parse(typeof(MetadataObjectType), propertyNode.InnerText);
 						continue;
 					case "xslt":
-						this._Xslt = txt;
+						this._Xslt = propertyNode.InnerText;
 						continue;
 				}
 			}

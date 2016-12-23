@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "limitFlavorsRestrictionType":
-						this._LimitFlavorsRestrictionType = (LimitFlavorsRestrictionType)ParseEnum(typeof(LimitFlavorsRestrictionType), txt);
+						this._LimitFlavorsRestrictionType = (LimitFlavorsRestrictionType)ParseEnum(typeof(LimitFlavorsRestrictionType), propertyNode.InnerText);
 						continue;
 					case "flavorParamsIds":
-						this._FlavorParamsIds = txt;
+						this._FlavorParamsIds = propertyNode.InnerText;
 						continue;
 				}
 			}

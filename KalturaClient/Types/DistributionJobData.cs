@@ -163,35 +163,34 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "distributionProfileId":
-						this._DistributionProfileId = ParseInt(txt);
+						this._DistributionProfileId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "distributionProfile":
 						this._DistributionProfile = ObjectFactory.Create<DistributionProfile>(propertyNode);
 						continue;
 					case "entryDistributionId":
-						this._EntryDistributionId = ParseInt(txt);
+						this._EntryDistributionId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "entryDistribution":
 						this._EntryDistribution = ObjectFactory.Create<EntryDistribution>(propertyNode);
 						continue;
 					case "remoteId":
-						this._RemoteId = txt;
+						this._RemoteId = propertyNode.InnerText;
 						continue;
 					case "providerType":
-						this._ProviderType = (DistributionProviderType)StringEnum.Parse(typeof(DistributionProviderType), txt);
+						this._ProviderType = (DistributionProviderType)StringEnum.Parse(typeof(DistributionProviderType), propertyNode.InnerText);
 						continue;
 					case "providerData":
 						this._ProviderData = ObjectFactory.Create<DistributionJobProviderData>(propertyNode);
 						continue;
 					case "results":
-						this._Results = txt;
+						this._Results = propertyNode.InnerText;
 						continue;
 					case "sentData":
-						this._SentData = txt;
+						this._SentData = propertyNode.InnerText;
 						continue;
 					case "mediaFiles":
 						this._MediaFiles = new List<DistributionRemoteMediaFile>();

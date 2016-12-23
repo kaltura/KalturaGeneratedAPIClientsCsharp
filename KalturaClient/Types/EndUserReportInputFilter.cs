@@ -97,20 +97,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "application":
-						this._Application = txt;
+						this._Application = propertyNode.InnerText;
 						continue;
 					case "userIds":
-						this._UserIds = txt;
+						this._UserIds = propertyNode.InnerText;
 						continue;
 					case "playbackContext":
-						this._PlaybackContext = txt;
+						this._PlaybackContext = propertyNode.InnerText;
 						continue;
 					case "ancestorPlaybackContext":
-						this._AncestorPlaybackContext = txt;
+						this._AncestorPlaybackContext = propertyNode.InnerText;
 						continue;
 				}
 			}

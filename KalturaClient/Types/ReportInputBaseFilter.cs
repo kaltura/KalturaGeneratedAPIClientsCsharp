@@ -97,20 +97,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "fromDate":
-						this._FromDate = ParseInt(txt);
+						this._FromDate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "toDate":
-						this._ToDate = ParseInt(txt);
+						this._ToDate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "fromDay":
-						this._FromDay = txt;
+						this._FromDay = propertyNode.InnerText;
 						continue;
 					case "toDay":
-						this._ToDay = txt;
+						this._ToDay = propertyNode.InnerText;
 						continue;
 				}
 			}

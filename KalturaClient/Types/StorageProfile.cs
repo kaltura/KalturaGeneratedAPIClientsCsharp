@@ -385,65 +385,64 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "name":
-						this._Name = txt;
+						this._Name = propertyNode.InnerText;
 						continue;
 					case "systemName":
-						this._SystemName = txt;
+						this._SystemName = propertyNode.InnerText;
 						continue;
 					case "desciption":
-						this._Desciption = txt;
+						this._Desciption = propertyNode.InnerText;
 						continue;
 					case "status":
-						this._Status = (StorageProfileStatus)ParseEnum(typeof(StorageProfileStatus), txt);
+						this._Status = (StorageProfileStatus)ParseEnum(typeof(StorageProfileStatus), propertyNode.InnerText);
 						continue;
 					case "protocol":
-						this._Protocol = (StorageProfileProtocol)StringEnum.Parse(typeof(StorageProfileProtocol), txt);
+						this._Protocol = (StorageProfileProtocol)StringEnum.Parse(typeof(StorageProfileProtocol), propertyNode.InnerText);
 						continue;
 					case "storageUrl":
-						this._StorageUrl = txt;
+						this._StorageUrl = propertyNode.InnerText;
 						continue;
 					case "storageBaseDir":
-						this._StorageBaseDir = txt;
+						this._StorageBaseDir = propertyNode.InnerText;
 						continue;
 					case "storageUsername":
-						this._StorageUsername = txt;
+						this._StorageUsername = propertyNode.InnerText;
 						continue;
 					case "storagePassword":
-						this._StoragePassword = txt;
+						this._StoragePassword = propertyNode.InnerText;
 						continue;
 					case "storageFtpPassiveMode":
-						this._StorageFtpPassiveMode = ParseBool(txt);
+						this._StorageFtpPassiveMode = ParseBool(propertyNode.InnerText);
 						continue;
 					case "minFileSize":
-						this._MinFileSize = ParseInt(txt);
+						this._MinFileSize = ParseInt(propertyNode.InnerText);
 						continue;
 					case "maxFileSize":
-						this._MaxFileSize = ParseInt(txt);
+						this._MaxFileSize = ParseInt(propertyNode.InnerText);
 						continue;
 					case "flavorParamsIds":
-						this._FlavorParamsIds = txt;
+						this._FlavorParamsIds = propertyNode.InnerText;
 						continue;
 					case "maxConcurrentConnections":
-						this._MaxConcurrentConnections = ParseInt(txt);
+						this._MaxConcurrentConnections = ParseInt(propertyNode.InnerText);
 						continue;
 					case "pathManagerClass":
-						this._PathManagerClass = txt;
+						this._PathManagerClass = propertyNode.InnerText;
 						continue;
 					case "pathManagerParams":
 						this._PathManagerParams = new List<KeyValue>();
@@ -453,22 +452,22 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "trigger":
-						this._Trigger = ParseInt(txt);
+						this._Trigger = ParseInt(propertyNode.InnerText);
 						continue;
 					case "deliveryPriority":
-						this._DeliveryPriority = ParseInt(txt);
+						this._DeliveryPriority = ParseInt(propertyNode.InnerText);
 						continue;
 					case "deliveryStatus":
-						this._DeliveryStatus = (StorageProfileDeliveryStatus)ParseEnum(typeof(StorageProfileDeliveryStatus), txt);
+						this._DeliveryStatus = (StorageProfileDeliveryStatus)ParseEnum(typeof(StorageProfileDeliveryStatus), propertyNode.InnerText);
 						continue;
 					case "readyBehavior":
-						this._ReadyBehavior = (StorageProfileReadyBehavior)ParseEnum(typeof(StorageProfileReadyBehavior), txt);
+						this._ReadyBehavior = (StorageProfileReadyBehavior)ParseEnum(typeof(StorageProfileReadyBehavior), propertyNode.InnerText);
 						continue;
 					case "allowAutoDelete":
-						this._AllowAutoDelete = ParseInt(txt);
+						this._AllowAutoDelete = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createFileLink":
-						this._CreateFileLink = ParseBool(txt);
+						this._CreateFileLink = ParseBool(propertyNode.InnerText);
 						continue;
 					case "rules":
 						this._Rules = new List<Rule>();
@@ -485,16 +484,16 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "privateKey":
-						this._PrivateKey = txt;
+						this._PrivateKey = propertyNode.InnerText;
 						continue;
 					case "publicKey":
-						this._PublicKey = txt;
+						this._PublicKey = propertyNode.InnerText;
 						continue;
 					case "passPhrase":
-						this._PassPhrase = txt;
+						this._PassPhrase = propertyNode.InnerText;
 						continue;
 					case "shouldExportThumbs":
-						this._ShouldExportThumbs = ParseBool(txt);
+						this._ShouldExportThumbs = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}

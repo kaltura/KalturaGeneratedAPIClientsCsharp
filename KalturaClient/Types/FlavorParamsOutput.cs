@@ -119,26 +119,25 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "flavorParamsId":
-						this._FlavorParamsId = ParseInt(txt);
+						this._FlavorParamsId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "commandLinesStr":
-						this._CommandLinesStr = txt;
+						this._CommandLinesStr = propertyNode.InnerText;
 						continue;
 					case "flavorParamsVersion":
-						this._FlavorParamsVersion = txt;
+						this._FlavorParamsVersion = propertyNode.InnerText;
 						continue;
 					case "flavorAssetId":
-						this._FlavorAssetId = txt;
+						this._FlavorAssetId = propertyNode.InnerText;
 						continue;
 					case "flavorAssetVersion":
-						this._FlavorAssetVersion = txt;
+						this._FlavorAssetVersion = propertyNode.InnerText;
 						continue;
 					case "readyBehavior":
-						this._ReadyBehavior = ParseInt(txt);
+						this._ReadyBehavior = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

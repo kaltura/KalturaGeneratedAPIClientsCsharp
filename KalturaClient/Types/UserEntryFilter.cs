@@ -86,17 +86,16 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "userIdEqualCurrent":
-						this._UserIdEqualCurrent = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._UserIdEqualCurrent = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "isAnonymous":
-						this._IsAnonymous = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._IsAnonymous = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "orderBy":
-						this._OrderBy = (UserEntryOrderBy)StringEnum.Parse(typeof(UserEntryOrderBy), txt);
+						this._OrderBy = (UserEntryOrderBy)StringEnum.Parse(typeof(UserEntryOrderBy), propertyNode.InnerText);
 						continue;
 				}
 			}

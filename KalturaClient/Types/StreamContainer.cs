@@ -119,26 +119,25 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "type":
-						this._Type = txt;
+						this._Type = propertyNode.InnerText;
 						continue;
 					case "trackIndex":
-						this._TrackIndex = ParseInt(txt);
+						this._TrackIndex = ParseInt(propertyNode.InnerText);
 						continue;
 					case "language":
-						this._Language = txt;
+						this._Language = propertyNode.InnerText;
 						continue;
 					case "channelIndex":
-						this._ChannelIndex = ParseInt(txt);
+						this._ChannelIndex = ParseInt(propertyNode.InnerText);
 						continue;
 					case "label":
-						this._Label = txt;
+						this._Label = propertyNode.InnerText;
 						continue;
 					case "channelLayout":
-						this._ChannelLayout = txt;
+						this._ChannelLayout = propertyNode.InnerText;
 						continue;
 				}
 			}

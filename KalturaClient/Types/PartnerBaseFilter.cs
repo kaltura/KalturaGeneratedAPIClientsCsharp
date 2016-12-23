@@ -218,53 +218,52 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this._IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "idIn":
-						this._IdIn = txt;
+						this._IdIn = propertyNode.InnerText;
 						continue;
 					case "idNotIn":
-						this._IdNotIn = txt;
+						this._IdNotIn = propertyNode.InnerText;
 						continue;
 					case "nameLike":
-						this._NameLike = txt;
+						this._NameLike = propertyNode.InnerText;
 						continue;
 					case "nameMultiLikeOr":
-						this._NameMultiLikeOr = txt;
+						this._NameMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "nameMultiLikeAnd":
-						this._NameMultiLikeAnd = txt;
+						this._NameMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "nameEqual":
-						this._NameEqual = txt;
+						this._NameEqual = propertyNode.InnerText;
 						continue;
 					case "statusEqual":
-						this._StatusEqual = (PartnerStatus)ParseEnum(typeof(PartnerStatus), txt);
+						this._StatusEqual = (PartnerStatus)ParseEnum(typeof(PartnerStatus), propertyNode.InnerText);
 						continue;
 					case "statusIn":
-						this._StatusIn = txt;
+						this._StatusIn = propertyNode.InnerText;
 						continue;
 					case "partnerPackageEqual":
-						this._PartnerPackageEqual = ParseInt(txt);
+						this._PartnerPackageEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerPackageGreaterThanOrEqual":
-						this._PartnerPackageGreaterThanOrEqual = ParseInt(txt);
+						this._PartnerPackageGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerPackageLessThanOrEqual":
-						this._PartnerPackageLessThanOrEqual = ParseInt(txt);
+						this._PartnerPackageLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerPackageIn":
-						this._PartnerPackageIn = txt;
+						this._PartnerPackageIn = propertyNode.InnerText;
 						continue;
 					case "partnerGroupTypeEqual":
-						this._PartnerGroupTypeEqual = (PartnerGroupType)ParseEnum(typeof(PartnerGroupType), txt);
+						this._PartnerGroupTypeEqual = (PartnerGroupType)ParseEnum(typeof(PartnerGroupType), propertyNode.InnerText);
 						continue;
 					case "partnerNameDescriptionWebsiteAdminNameAdminEmailLike":
-						this._PartnerNameDescriptionWebsiteAdminNameAdminEmailLike = txt;
+						this._PartnerNameDescriptionWebsiteAdminNameAdminEmailLike = propertyNode.InnerText;
 						continue;
 				}
 			}

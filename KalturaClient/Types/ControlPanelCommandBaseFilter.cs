@@ -174,41 +174,40 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this._IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "idIn":
-						this._IdIn = txt;
+						this._IdIn = propertyNode.InnerText;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdByIdEqual":
-						this._CreatedByIdEqual = ParseInt(txt);
+						this._CreatedByIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "typeEqual":
-						this._TypeEqual = (ControlPanelCommandType)ParseEnum(typeof(ControlPanelCommandType), txt);
+						this._TypeEqual = (ControlPanelCommandType)ParseEnum(typeof(ControlPanelCommandType), propertyNode.InnerText);
 						continue;
 					case "typeIn":
-						this._TypeIn = txt;
+						this._TypeIn = propertyNode.InnerText;
 						continue;
 					case "targetTypeEqual":
-						this._TargetTypeEqual = (ControlPanelCommandTargetType)ParseEnum(typeof(ControlPanelCommandTargetType), txt);
+						this._TargetTypeEqual = (ControlPanelCommandTargetType)ParseEnum(typeof(ControlPanelCommandTargetType), propertyNode.InnerText);
 						continue;
 					case "targetTypeIn":
-						this._TargetTypeIn = txt;
+						this._TargetTypeIn = propertyNode.InnerText;
 						continue;
 					case "statusEqual":
-						this._StatusEqual = (ControlPanelCommandStatus)ParseEnum(typeof(ControlPanelCommandStatus), txt);
+						this._StatusEqual = (ControlPanelCommandStatus)ParseEnum(typeof(ControlPanelCommandStatus), propertyNode.InnerText);
 						continue;
 					case "statusIn":
-						this._StatusIn = txt;
+						this._StatusIn = propertyNode.InnerText;
 						continue;
 				}
 			}

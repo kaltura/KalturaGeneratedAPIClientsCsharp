@@ -152,35 +152,34 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "schedulerId":
-						this._SchedulerId = ParseInt(txt);
+						this._SchedulerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "workerId":
-						this._WorkerId = ParseInt(txt);
+						this._WorkerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "batchIndex":
-						this._BatchIndex = ParseInt(txt);
+						this._BatchIndex = ParseInt(propertyNode.InnerText);
 						continue;
 					case "timeStamp":
-						this._TimeStamp = ParseInt(txt);
+						this._TimeStamp = ParseInt(propertyNode.InnerText);
 						continue;
 					case "message":
-						this._Message = txt;
+						this._Message = propertyNode.InnerText;
 						continue;
 					case "errType":
-						this._ErrType = ParseInt(txt);
+						this._ErrType = ParseInt(propertyNode.InnerText);
 						continue;
 					case "errNumber":
-						this._ErrNumber = ParseInt(txt);
+						this._ErrNumber = ParseInt(propertyNode.InnerText);
 						continue;
 					case "hostName":
-						this._HostName = txt;
+						this._HostName = propertyNode.InnerText;
 						continue;
 					case "sessionId":
-						this._SessionId = txt;
+						this._SessionId = propertyNode.InnerText;
 						continue;
 				}
 			}

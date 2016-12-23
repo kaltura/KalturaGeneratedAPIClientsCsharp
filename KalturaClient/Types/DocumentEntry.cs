@@ -70,14 +70,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "documentType":
-						this._DocumentType = (DocumentType)ParseEnum(typeof(DocumentType), txt);
+						this._DocumentType = (DocumentType)ParseEnum(typeof(DocumentType), propertyNode.InnerText);
 						continue;
 					case "assetParamsIds":
-						this._AssetParamsIds = txt;
+						this._AssetParamsIds = propertyNode.InnerText;
 						continue;
 				}
 			}

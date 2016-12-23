@@ -911,242 +911,241 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this._IdEqual = txt;
+						this._IdEqual = propertyNode.InnerText;
 						continue;
 					case "idIn":
-						this._IdIn = txt;
+						this._IdIn = propertyNode.InnerText;
 						continue;
 					case "idNotIn":
-						this._IdNotIn = txt;
+						this._IdNotIn = propertyNode.InnerText;
 						continue;
 					case "nameLike":
-						this._NameLike = txt;
+						this._NameLike = propertyNode.InnerText;
 						continue;
 					case "nameMultiLikeOr":
-						this._NameMultiLikeOr = txt;
+						this._NameMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "nameMultiLikeAnd":
-						this._NameMultiLikeAnd = txt;
+						this._NameMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "nameEqual":
-						this._NameEqual = txt;
+						this._NameEqual = propertyNode.InnerText;
 						continue;
 					case "partnerIdEqual":
-						this._PartnerIdEqual = ParseInt(txt);
+						this._PartnerIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerIdIn":
-						this._PartnerIdIn = txt;
+						this._PartnerIdIn = propertyNode.InnerText;
 						continue;
 					case "userIdEqual":
-						this._UserIdEqual = txt;
+						this._UserIdEqual = propertyNode.InnerText;
 						continue;
 					case "userIdIn":
-						this._UserIdIn = txt;
+						this._UserIdIn = propertyNode.InnerText;
 						continue;
 					case "userIdNotIn":
-						this._UserIdNotIn = txt;
+						this._UserIdNotIn = propertyNode.InnerText;
 						continue;
 					case "creatorIdEqual":
-						this._CreatorIdEqual = txt;
+						this._CreatorIdEqual = propertyNode.InnerText;
 						continue;
 					case "tagsLike":
-						this._TagsLike = txt;
+						this._TagsLike = propertyNode.InnerText;
 						continue;
 					case "tagsMultiLikeOr":
-						this._TagsMultiLikeOr = txt;
+						this._TagsMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "tagsMultiLikeAnd":
-						this._TagsMultiLikeAnd = txt;
+						this._TagsMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "adminTagsLike":
-						this._AdminTagsLike = txt;
+						this._AdminTagsLike = propertyNode.InnerText;
 						continue;
 					case "adminTagsMultiLikeOr":
-						this._AdminTagsMultiLikeOr = txt;
+						this._AdminTagsMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "adminTagsMultiLikeAnd":
-						this._AdminTagsMultiLikeAnd = txt;
+						this._AdminTagsMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "categoriesMatchAnd":
-						this._CategoriesMatchAnd = txt;
+						this._CategoriesMatchAnd = propertyNode.InnerText;
 						continue;
 					case "categoriesMatchOr":
-						this._CategoriesMatchOr = txt;
+						this._CategoriesMatchOr = propertyNode.InnerText;
 						continue;
 					case "categoriesNotContains":
-						this._CategoriesNotContains = txt;
+						this._CategoriesNotContains = propertyNode.InnerText;
 						continue;
 					case "categoriesIdsMatchAnd":
-						this._CategoriesIdsMatchAnd = txt;
+						this._CategoriesIdsMatchAnd = propertyNode.InnerText;
 						continue;
 					case "categoriesIdsMatchOr":
-						this._CategoriesIdsMatchOr = txt;
+						this._CategoriesIdsMatchOr = propertyNode.InnerText;
 						continue;
 					case "categoriesIdsNotContains":
-						this._CategoriesIdsNotContains = txt;
+						this._CategoriesIdsNotContains = propertyNode.InnerText;
 						continue;
 					case "categoriesIdsEmpty":
-						this._CategoriesIdsEmpty = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._CategoriesIdsEmpty = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "statusEqual":
-						this._StatusEqual = (EntryStatus)StringEnum.Parse(typeof(EntryStatus), txt);
+						this._StatusEqual = (EntryStatus)StringEnum.Parse(typeof(EntryStatus), propertyNode.InnerText);
 						continue;
 					case "statusNotEqual":
-						this._StatusNotEqual = (EntryStatus)StringEnum.Parse(typeof(EntryStatus), txt);
+						this._StatusNotEqual = (EntryStatus)StringEnum.Parse(typeof(EntryStatus), propertyNode.InnerText);
 						continue;
 					case "statusIn":
-						this._StatusIn = txt;
+						this._StatusIn = propertyNode.InnerText;
 						continue;
 					case "statusNotIn":
-						this._StatusNotIn = txt;
+						this._StatusNotIn = propertyNode.InnerText;
 						continue;
 					case "moderationStatusEqual":
-						this._ModerationStatusEqual = (EntryModerationStatus)ParseEnum(typeof(EntryModerationStatus), txt);
+						this._ModerationStatusEqual = (EntryModerationStatus)ParseEnum(typeof(EntryModerationStatus), propertyNode.InnerText);
 						continue;
 					case "moderationStatusNotEqual":
-						this._ModerationStatusNotEqual = (EntryModerationStatus)ParseEnum(typeof(EntryModerationStatus), txt);
+						this._ModerationStatusNotEqual = (EntryModerationStatus)ParseEnum(typeof(EntryModerationStatus), propertyNode.InnerText);
 						continue;
 					case "moderationStatusIn":
-						this._ModerationStatusIn = txt;
+						this._ModerationStatusIn = propertyNode.InnerText;
 						continue;
 					case "moderationStatusNotIn":
-						this._ModerationStatusNotIn = txt;
+						this._ModerationStatusNotIn = propertyNode.InnerText;
 						continue;
 					case "typeEqual":
-						this._TypeEqual = (EntryType)StringEnum.Parse(typeof(EntryType), txt);
+						this._TypeEqual = (EntryType)StringEnum.Parse(typeof(EntryType), propertyNode.InnerText);
 						continue;
 					case "typeIn":
-						this._TypeIn = txt;
+						this._TypeIn = propertyNode.InnerText;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "totalRankLessThanOrEqual":
-						this._TotalRankLessThanOrEqual = ParseInt(txt);
+						this._TotalRankLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "totalRankGreaterThanOrEqual":
-						this._TotalRankGreaterThanOrEqual = ParseInt(txt);
+						this._TotalRankGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "groupIdEqual":
-						this._GroupIdEqual = ParseInt(txt);
+						this._GroupIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "searchTextMatchAnd":
-						this._SearchTextMatchAnd = txt;
+						this._SearchTextMatchAnd = propertyNode.InnerText;
 						continue;
 					case "searchTextMatchOr":
-						this._SearchTextMatchOr = txt;
+						this._SearchTextMatchOr = propertyNode.InnerText;
 						continue;
 					case "accessControlIdEqual":
-						this._AccessControlIdEqual = ParseInt(txt);
+						this._AccessControlIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "accessControlIdIn":
-						this._AccessControlIdIn = txt;
+						this._AccessControlIdIn = propertyNode.InnerText;
 						continue;
 					case "startDateGreaterThanOrEqual":
-						this._StartDateGreaterThanOrEqual = ParseInt(txt);
+						this._StartDateGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "startDateLessThanOrEqual":
-						this._StartDateLessThanOrEqual = ParseInt(txt);
+						this._StartDateLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "startDateGreaterThanOrEqualOrNull":
-						this._StartDateGreaterThanOrEqualOrNull = ParseInt(txt);
+						this._StartDateGreaterThanOrEqualOrNull = ParseInt(propertyNode.InnerText);
 						continue;
 					case "startDateLessThanOrEqualOrNull":
-						this._StartDateLessThanOrEqualOrNull = ParseInt(txt);
+						this._StartDateLessThanOrEqualOrNull = ParseInt(propertyNode.InnerText);
 						continue;
 					case "endDateGreaterThanOrEqual":
-						this._EndDateGreaterThanOrEqual = ParseInt(txt);
+						this._EndDateGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "endDateLessThanOrEqual":
-						this._EndDateLessThanOrEqual = ParseInt(txt);
+						this._EndDateLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "endDateGreaterThanOrEqualOrNull":
-						this._EndDateGreaterThanOrEqualOrNull = ParseInt(txt);
+						this._EndDateGreaterThanOrEqualOrNull = ParseInt(propertyNode.InnerText);
 						continue;
 					case "endDateLessThanOrEqualOrNull":
-						this._EndDateLessThanOrEqualOrNull = ParseInt(txt);
+						this._EndDateLessThanOrEqualOrNull = ParseInt(propertyNode.InnerText);
 						continue;
 					case "referenceIdEqual":
-						this._ReferenceIdEqual = txt;
+						this._ReferenceIdEqual = propertyNode.InnerText;
 						continue;
 					case "referenceIdIn":
-						this._ReferenceIdIn = txt;
+						this._ReferenceIdIn = propertyNode.InnerText;
 						continue;
 					case "replacingEntryIdEqual":
-						this._ReplacingEntryIdEqual = txt;
+						this._ReplacingEntryIdEqual = propertyNode.InnerText;
 						continue;
 					case "replacingEntryIdIn":
-						this._ReplacingEntryIdIn = txt;
+						this._ReplacingEntryIdIn = propertyNode.InnerText;
 						continue;
 					case "replacedEntryIdEqual":
-						this._ReplacedEntryIdEqual = txt;
+						this._ReplacedEntryIdEqual = propertyNode.InnerText;
 						continue;
 					case "replacedEntryIdIn":
-						this._ReplacedEntryIdIn = txt;
+						this._ReplacedEntryIdIn = propertyNode.InnerText;
 						continue;
 					case "replacementStatusEqual":
-						this._ReplacementStatusEqual = (EntryReplacementStatus)StringEnum.Parse(typeof(EntryReplacementStatus), txt);
+						this._ReplacementStatusEqual = (EntryReplacementStatus)StringEnum.Parse(typeof(EntryReplacementStatus), propertyNode.InnerText);
 						continue;
 					case "replacementStatusIn":
-						this._ReplacementStatusIn = txt;
+						this._ReplacementStatusIn = propertyNode.InnerText;
 						continue;
 					case "partnerSortValueGreaterThanOrEqual":
-						this._PartnerSortValueGreaterThanOrEqual = ParseInt(txt);
+						this._PartnerSortValueGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerSortValueLessThanOrEqual":
-						this._PartnerSortValueLessThanOrEqual = ParseInt(txt);
+						this._PartnerSortValueLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "rootEntryIdEqual":
-						this._RootEntryIdEqual = txt;
+						this._RootEntryIdEqual = propertyNode.InnerText;
 						continue;
 					case "rootEntryIdIn":
-						this._RootEntryIdIn = txt;
+						this._RootEntryIdIn = propertyNode.InnerText;
 						continue;
 					case "parentEntryIdEqual":
-						this._ParentEntryIdEqual = txt;
+						this._ParentEntryIdEqual = propertyNode.InnerText;
 						continue;
 					case "entitledUsersEditMatchAnd":
-						this._EntitledUsersEditMatchAnd = txt;
+						this._EntitledUsersEditMatchAnd = propertyNode.InnerText;
 						continue;
 					case "entitledUsersEditMatchOr":
-						this._EntitledUsersEditMatchOr = txt;
+						this._EntitledUsersEditMatchOr = propertyNode.InnerText;
 						continue;
 					case "entitledUsersPublishMatchAnd":
-						this._EntitledUsersPublishMatchAnd = txt;
+						this._EntitledUsersPublishMatchAnd = propertyNode.InnerText;
 						continue;
 					case "entitledUsersPublishMatchOr":
-						this._EntitledUsersPublishMatchOr = txt;
+						this._EntitledUsersPublishMatchOr = propertyNode.InnerText;
 						continue;
 					case "tagsNameMultiLikeOr":
-						this._TagsNameMultiLikeOr = txt;
+						this._TagsNameMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "tagsAdminTagsMultiLikeOr":
-						this._TagsAdminTagsMultiLikeOr = txt;
+						this._TagsAdminTagsMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "tagsAdminTagsNameMultiLikeOr":
-						this._TagsAdminTagsNameMultiLikeOr = txt;
+						this._TagsAdminTagsNameMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "tagsNameMultiLikeAnd":
-						this._TagsNameMultiLikeAnd = txt;
+						this._TagsNameMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "tagsAdminTagsMultiLikeAnd":
-						this._TagsAdminTagsMultiLikeAnd = txt;
+						this._TagsAdminTagsMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "tagsAdminTagsNameMultiLikeAnd":
-						this._TagsAdminTagsNameMultiLikeAnd = txt;
+						this._TagsAdminTagsNameMultiLikeAnd = propertyNode.InnerText;
 						continue;
 				}
 			}

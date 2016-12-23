@@ -108,23 +108,22 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "entryIds":
-						this._EntryIds = txt;
+						this._EntryIds = propertyNode.InnerText;
 						continue;
 					case "fromTime":
-						this._FromTime = ParseInt(txt);
+						this._FromTime = ParseInt(propertyNode.InnerText);
 						continue;
 					case "toTime":
-						this._ToTime = ParseInt(txt);
+						this._ToTime = ParseInt(propertyNode.InnerText);
 						continue;
 					case "live":
-						this._Live = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._Live = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "orderBy":
-						this._OrderBy = (LiveReportOrderBy)StringEnum.Parse(typeof(LiveReportOrderBy), txt);
+						this._OrderBy = (LiveReportOrderBy)StringEnum.Parse(typeof(LiveReportOrderBy), propertyNode.InnerText);
 						continue;
 				}
 			}

@@ -152,35 +152,34 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "itemXPath":
-						this._ItemXPath = txt;
+						this._ItemXPath = propertyNode.InnerText;
 						continue;
 					case "itemPublishDateXPath":
-						this._ItemPublishDateXPath = txt;
+						this._ItemPublishDateXPath = propertyNode.InnerText;
 						continue;
 					case "itemUniqueIdentifierXPath":
-						this._ItemUniqueIdentifierXPath = txt;
+						this._ItemUniqueIdentifierXPath = propertyNode.InnerText;
 						continue;
 					case "itemContentFileSizeXPath":
-						this._ItemContentFileSizeXPath = txt;
+						this._ItemContentFileSizeXPath = propertyNode.InnerText;
 						continue;
 					case "itemContentUrlXPath":
-						this._ItemContentUrlXPath = txt;
+						this._ItemContentUrlXPath = propertyNode.InnerText;
 						continue;
 					case "itemContentBitrateXPath":
-						this._ItemContentBitrateXPath = txt;
+						this._ItemContentBitrateXPath = propertyNode.InnerText;
 						continue;
 					case "itemHashXPath":
-						this._ItemHashXPath = txt;
+						this._ItemHashXPath = propertyNode.InnerText;
 						continue;
 					case "itemContentXpath":
-						this._ItemContentXpath = txt;
+						this._ItemContentXpath = propertyNode.InnerText;
 						continue;
 					case "contentBitrateAttributeName":
-						this._ContentBitrateAttributeName = txt;
+						this._ContentBitrateAttributeName = propertyNode.InnerText;
 						continue;
 				}
 			}

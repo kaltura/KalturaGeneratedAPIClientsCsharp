@@ -353,113 +353,112 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "parentId":
-						this._ParentId = ParseInt(txt);
+						this._ParentId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "depth":
-						this._Depth = ParseInt(txt);
+						this._Depth = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "name":
-						this._Name = txt;
+						this._Name = propertyNode.InnerText;
 						continue;
 					case "fullName":
-						this._FullName = txt;
+						this._FullName = propertyNode.InnerText;
 						continue;
 					case "fullIds":
-						this._FullIds = txt;
+						this._FullIds = propertyNode.InnerText;
 						continue;
 					case "entriesCount":
-						this._EntriesCount = ParseInt(txt);
+						this._EntriesCount = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "tags":
-						this._Tags = txt;
+						this._Tags = propertyNode.InnerText;
 						continue;
 					case "appearInList":
-						this._AppearInList = (AppearInListType)ParseEnum(typeof(AppearInListType), txt);
+						this._AppearInList = (AppearInListType)ParseEnum(typeof(AppearInListType), propertyNode.InnerText);
 						continue;
 					case "privacy":
-						this._Privacy = (PrivacyType)ParseEnum(typeof(PrivacyType), txt);
+						this._Privacy = (PrivacyType)ParseEnum(typeof(PrivacyType), propertyNode.InnerText);
 						continue;
 					case "inheritanceType":
-						this._InheritanceType = (InheritanceType)ParseEnum(typeof(InheritanceType), txt);
+						this._InheritanceType = (InheritanceType)ParseEnum(typeof(InheritanceType), propertyNode.InnerText);
 						continue;
 					case "userJoinPolicy":
-						this._UserJoinPolicy = (UserJoinPolicyType)ParseEnum(typeof(UserJoinPolicyType), txt);
+						this._UserJoinPolicy = (UserJoinPolicyType)ParseEnum(typeof(UserJoinPolicyType), propertyNode.InnerText);
 						continue;
 					case "defaultPermissionLevel":
-						this._DefaultPermissionLevel = (CategoryUserPermissionLevel)ParseEnum(typeof(CategoryUserPermissionLevel), txt);
+						this._DefaultPermissionLevel = (CategoryUserPermissionLevel)ParseEnum(typeof(CategoryUserPermissionLevel), propertyNode.InnerText);
 						continue;
 					case "owner":
-						this._Owner = txt;
+						this._Owner = propertyNode.InnerText;
 						continue;
 					case "directEntriesCount":
-						this._DirectEntriesCount = ParseInt(txt);
+						this._DirectEntriesCount = ParseInt(propertyNode.InnerText);
 						continue;
 					case "referenceId":
-						this._ReferenceId = txt;
+						this._ReferenceId = propertyNode.InnerText;
 						continue;
 					case "contributionPolicy":
-						this._ContributionPolicy = (ContributionPolicyType)ParseEnum(typeof(ContributionPolicyType), txt);
+						this._ContributionPolicy = (ContributionPolicyType)ParseEnum(typeof(ContributionPolicyType), propertyNode.InnerText);
 						continue;
 					case "membersCount":
-						this._MembersCount = ParseInt(txt);
+						this._MembersCount = ParseInt(propertyNode.InnerText);
 						continue;
 					case "pendingMembersCount":
-						this._PendingMembersCount = ParseInt(txt);
+						this._PendingMembersCount = ParseInt(propertyNode.InnerText);
 						continue;
 					case "privacyContext":
-						this._PrivacyContext = txt;
+						this._PrivacyContext = propertyNode.InnerText;
 						continue;
 					case "privacyContexts":
-						this._PrivacyContexts = txt;
+						this._PrivacyContexts = propertyNode.InnerText;
 						continue;
 					case "status":
-						this._Status = (CategoryStatus)ParseEnum(typeof(CategoryStatus), txt);
+						this._Status = (CategoryStatus)ParseEnum(typeof(CategoryStatus), propertyNode.InnerText);
 						continue;
 					case "inheritedParentId":
-						this._InheritedParentId = ParseInt(txt);
+						this._InheritedParentId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerSortValue":
-						this._PartnerSortValue = ParseInt(txt);
+						this._PartnerSortValue = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerData":
-						this._PartnerData = txt;
+						this._PartnerData = propertyNode.InnerText;
 						continue;
 					case "defaultOrderBy":
-						this._DefaultOrderBy = (CategoryOrderBy)StringEnum.Parse(typeof(CategoryOrderBy), txt);
+						this._DefaultOrderBy = (CategoryOrderBy)StringEnum.Parse(typeof(CategoryOrderBy), propertyNode.InnerText);
 						continue;
 					case "directSubCategoriesCount":
-						this._DirectSubCategoriesCount = ParseInt(txt);
+						this._DirectSubCategoriesCount = ParseInt(propertyNode.InnerText);
 						continue;
 					case "moderation":
-						this._Moderation = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._Moderation = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "pendingEntriesCount":
-						this._PendingEntriesCount = ParseInt(txt);
+						this._PendingEntriesCount = ParseInt(propertyNode.InnerText);
 						continue;
 					case "isAggregationCategory":
-						this._IsAggregationCategory = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._IsAggregationCategory = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "aggregationCategories":
-						this._AggregationCategories = txt;
+						this._AggregationCategories = propertyNode.InnerText;
 						continue;
 				}
 			}

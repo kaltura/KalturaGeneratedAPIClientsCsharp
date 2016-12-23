@@ -81,17 +81,16 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "hasRealThumbnail":
-						this._HasRealThumbnail = ParseBool(txt);
+						this._HasRealThumbnail = ParseBool(propertyNode.InnerText);
 						continue;
 					case "editorType":
-						this._EditorType = (EditorType)ParseEnum(typeof(EditorType), txt);
+						this._EditorType = (EditorType)ParseEnum(typeof(EditorType), propertyNode.InnerText);
 						continue;
 					case "dataContent":
-						this._DataContent = txt;
+						this._DataContent = propertyNode.InnerText;
 						continue;
 				}
 			}

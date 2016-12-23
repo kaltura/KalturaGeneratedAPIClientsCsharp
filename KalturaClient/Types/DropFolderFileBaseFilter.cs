@@ -350,89 +350,88 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this._IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "idIn":
-						this._IdIn = txt;
+						this._IdIn = propertyNode.InnerText;
 						continue;
 					case "partnerIdEqual":
-						this._PartnerIdEqual = ParseInt(txt);
+						this._PartnerIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerIdIn":
-						this._PartnerIdIn = txt;
+						this._PartnerIdIn = propertyNode.InnerText;
 						continue;
 					case "dropFolderIdEqual":
-						this._DropFolderIdEqual = ParseInt(txt);
+						this._DropFolderIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "dropFolderIdIn":
-						this._DropFolderIdIn = txt;
+						this._DropFolderIdIn = propertyNode.InnerText;
 						continue;
 					case "fileNameEqual":
-						this._FileNameEqual = txt;
+						this._FileNameEqual = propertyNode.InnerText;
 						continue;
 					case "fileNameIn":
-						this._FileNameIn = txt;
+						this._FileNameIn = propertyNode.InnerText;
 						continue;
 					case "fileNameLike":
-						this._FileNameLike = txt;
+						this._FileNameLike = propertyNode.InnerText;
 						continue;
 					case "statusEqual":
-						this._StatusEqual = (DropFolderFileStatus)ParseEnum(typeof(DropFolderFileStatus), txt);
+						this._StatusEqual = (DropFolderFileStatus)ParseEnum(typeof(DropFolderFileStatus), propertyNode.InnerText);
 						continue;
 					case "statusIn":
-						this._StatusIn = txt;
+						this._StatusIn = propertyNode.InnerText;
 						continue;
 					case "statusNotIn":
-						this._StatusNotIn = txt;
+						this._StatusNotIn = propertyNode.InnerText;
 						continue;
 					case "parsedSlugEqual":
-						this._ParsedSlugEqual = txt;
+						this._ParsedSlugEqual = propertyNode.InnerText;
 						continue;
 					case "parsedSlugIn":
-						this._ParsedSlugIn = txt;
+						this._ParsedSlugIn = propertyNode.InnerText;
 						continue;
 					case "parsedSlugLike":
-						this._ParsedSlugLike = txt;
+						this._ParsedSlugLike = propertyNode.InnerText;
 						continue;
 					case "parsedFlavorEqual":
-						this._ParsedFlavorEqual = txt;
+						this._ParsedFlavorEqual = propertyNode.InnerText;
 						continue;
 					case "parsedFlavorIn":
-						this._ParsedFlavorIn = txt;
+						this._ParsedFlavorIn = propertyNode.InnerText;
 						continue;
 					case "parsedFlavorLike":
-						this._ParsedFlavorLike = txt;
+						this._ParsedFlavorLike = propertyNode.InnerText;
 						continue;
 					case "leadDropFolderFileIdEqual":
-						this._LeadDropFolderFileIdEqual = ParseInt(txt);
+						this._LeadDropFolderFileIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "deletedDropFolderFileIdEqual":
-						this._DeletedDropFolderFileIdEqual = ParseInt(txt);
+						this._DeletedDropFolderFileIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "entryIdEqual":
-						this._EntryIdEqual = txt;
+						this._EntryIdEqual = propertyNode.InnerText;
 						continue;
 					case "errorCodeEqual":
-						this._ErrorCodeEqual = (DropFolderFileErrorCode)StringEnum.Parse(typeof(DropFolderFileErrorCode), txt);
+						this._ErrorCodeEqual = (DropFolderFileErrorCode)StringEnum.Parse(typeof(DropFolderFileErrorCode), propertyNode.InnerText);
 						continue;
 					case "errorCodeIn":
-						this._ErrorCodeIn = txt;
+						this._ErrorCodeIn = propertyNode.InnerText;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

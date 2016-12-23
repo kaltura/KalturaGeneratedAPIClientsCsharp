@@ -75,11 +75,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "itemHandlingLimit":
-						this._ItemHandlingLimit = ParseInt(txt);
+						this._ItemHandlingLimit = ParseInt(propertyNode.InnerText);
 						continue;
 					case "feedItemInfo":
 						this._FeedItemInfo = ObjectFactory.Create<FeedItemInfo>(propertyNode);

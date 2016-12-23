@@ -103,20 +103,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "callbackNotificationUrl":
-						this._CallbackNotificationUrl = txt;
+						this._CallbackNotificationUrl = propertyNode.InnerText;
 						continue;
 					case "providerType":
-						this._ProviderType = (IntegrationProviderType)StringEnum.Parse(typeof(IntegrationProviderType), txt);
+						this._ProviderType = (IntegrationProviderType)StringEnum.Parse(typeof(IntegrationProviderType), propertyNode.InnerText);
 						continue;
 					case "providerData":
 						this._ProviderData = ObjectFactory.Create<IntegrationJobProviderData>(propertyNode);
 						continue;
 					case "triggerType":
-						this._TriggerType = (IntegrationTriggerType)StringEnum.Parse(typeof(IntegrationTriggerType), txt);
+						this._TriggerType = (IntegrationTriggerType)StringEnum.Parse(typeof(IntegrationTriggerType), propertyNode.InnerText);
 						continue;
 					case "triggerData":
 						this._TriggerData = ObjectFactory.Create<IntegrationJobTriggerData>(propertyNode);

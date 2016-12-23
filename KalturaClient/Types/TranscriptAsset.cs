@@ -86,17 +86,16 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "accuracy":
-						this._Accuracy = ParseFloat(txt);
+						this._Accuracy = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "humanVerified":
-						this._HumanVerified = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._HumanVerified = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "language":
-						this._Language = (Language)StringEnum.Parse(typeof(Language), txt);
+						this._Language = (Language)StringEnum.Parse(typeof(Language), propertyNode.InnerText);
 						continue;
 				}
 			}

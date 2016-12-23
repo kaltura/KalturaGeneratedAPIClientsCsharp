@@ -240,59 +240,58 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "trackEventType":
-						this._TrackEventType = (TrackEntryEventType)ParseEnum(typeof(TrackEntryEventType), txt);
+						this._TrackEventType = (TrackEntryEventType)ParseEnum(typeof(TrackEntryEventType), propertyNode.InnerText);
 						continue;
 					case "psVersion":
-						this._PsVersion = txt;
+						this._PsVersion = propertyNode.InnerText;
 						continue;
 					case "context":
-						this._Context = txt;
+						this._Context = propertyNode.InnerText;
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "entryId":
-						this._EntryId = txt;
+						this._EntryId = propertyNode.InnerText;
 						continue;
 					case "hostName":
-						this._HostName = txt;
+						this._HostName = propertyNode.InnerText;
 						continue;
 					case "userId":
-						this._UserId = txt;
+						this._UserId = propertyNode.InnerText;
 						continue;
 					case "changedProperties":
-						this._ChangedProperties = txt;
+						this._ChangedProperties = propertyNode.InnerText;
 						continue;
 					case "paramStr1":
-						this._ParamStr1 = txt;
+						this._ParamStr1 = propertyNode.InnerText;
 						continue;
 					case "paramStr2":
-						this._ParamStr2 = txt;
+						this._ParamStr2 = propertyNode.InnerText;
 						continue;
 					case "paramStr3":
-						this._ParamStr3 = txt;
+						this._ParamStr3 = propertyNode.InnerText;
 						continue;
 					case "ks":
-						this._Ks = txt;
+						this._Ks = propertyNode.InnerText;
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "userIp":
-						this._UserIp = txt;
+						this._UserIp = propertyNode.InnerText;
 						continue;
 				}
 			}

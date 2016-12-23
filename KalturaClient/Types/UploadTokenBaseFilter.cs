@@ -130,29 +130,28 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this._IdEqual = txt;
+						this._IdEqual = propertyNode.InnerText;
 						continue;
 					case "idIn":
-						this._IdIn = txt;
+						this._IdIn = propertyNode.InnerText;
 						continue;
 					case "userIdEqual":
-						this._UserIdEqual = txt;
+						this._UserIdEqual = propertyNode.InnerText;
 						continue;
 					case "statusEqual":
-						this._StatusEqual = (UploadTokenStatus)ParseEnum(typeof(UploadTokenStatus), txt);
+						this._StatusEqual = (UploadTokenStatus)ParseEnum(typeof(UploadTokenStatus), propertyNode.InnerText);
 						continue;
 					case "statusIn":
-						this._StatusIn = txt;
+						this._StatusIn = propertyNode.InnerText;
 						continue;
 					case "fileNameEqual":
-						this._FileNameEqual = txt;
+						this._FileNameEqual = propertyNode.InnerText;
 						continue;
 					case "fileSizeEqual":
-						this._FileSizeEqual = ParseFloat(txt);
+						this._FileSizeEqual = ParseFloat(propertyNode.InnerText);
 						continue;
 				}
 			}

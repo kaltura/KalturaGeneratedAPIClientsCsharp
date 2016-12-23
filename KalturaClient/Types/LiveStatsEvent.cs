@@ -174,41 +174,40 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "entryId":
-						this._EntryId = txt;
+						this._EntryId = propertyNode.InnerText;
 						continue;
 					case "eventType":
-						this._EventType = (LiveStatsEventType)ParseEnum(typeof(LiveStatsEventType), txt);
+						this._EventType = (LiveStatsEventType)ParseEnum(typeof(LiveStatsEventType), propertyNode.InnerText);
 						continue;
 					case "sessionId":
-						this._SessionId = txt;
+						this._SessionId = propertyNode.InnerText;
 						continue;
 					case "eventIndex":
-						this._EventIndex = ParseInt(txt);
+						this._EventIndex = ParseInt(propertyNode.InnerText);
 						continue;
 					case "bufferTime":
-						this._BufferTime = ParseInt(txt);
+						this._BufferTime = ParseInt(propertyNode.InnerText);
 						continue;
 					case "bitrate":
-						this._Bitrate = ParseInt(txt);
+						this._Bitrate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "referrer":
-						this._Referrer = txt;
+						this._Referrer = propertyNode.InnerText;
 						continue;
 					case "isLive":
-						this._IsLive = ParseBool(txt);
+						this._IsLive = ParseBool(propertyNode.InnerText);
 						continue;
 					case "startTime":
-						this._StartTime = txt;
+						this._StartTime = propertyNode.InnerText;
 						continue;
 					case "deliveryType":
-						this._DeliveryType = (PlaybackProtocol)StringEnum.Parse(typeof(PlaybackProtocol), txt);
+						this._DeliveryType = (PlaybackProtocol)StringEnum.Parse(typeof(PlaybackProtocol), propertyNode.InnerText);
 						continue;
 				}
 			}

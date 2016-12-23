@@ -176,29 +176,28 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "name":
-						this._Name = txt;
+						this._Name = propertyNode.InnerText;
 						continue;
 					case "systemName":
-						this._SystemName = txt;
+						this._SystemName = propertyNode.InnerText;
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "status":
-						this._Status = (ScheduledTaskProfileStatus)ParseEnum(typeof(ScheduledTaskProfileStatus), txt);
+						this._Status = (ScheduledTaskProfileStatus)ParseEnum(typeof(ScheduledTaskProfileStatus), propertyNode.InnerText);
 						continue;
 					case "objectFilterEngineType":
-						this._ObjectFilterEngineType = (ObjectFilterEngineType)StringEnum.Parse(typeof(ObjectFilterEngineType), txt);
+						this._ObjectFilterEngineType = (ObjectFilterEngineType)StringEnum.Parse(typeof(ObjectFilterEngineType), propertyNode.InnerText);
 						continue;
 					case "objectFilter":
 						this._ObjectFilter = ObjectFactory.Create<Filter>(propertyNode);
@@ -211,16 +210,16 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "lastExecutionStartedAt":
-						this._LastExecutionStartedAt = ParseInt(txt);
+						this._LastExecutionStartedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "maxTotalCountAllowed":
-						this._MaxTotalCountAllowed = ParseInt(txt);
+						this._MaxTotalCountAllowed = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "eventIdOrItsParentIdEqual":
-						this._EventIdOrItsParentIdEqual = ParseInt(txt);
+						this._EventIdOrItsParentIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "orderBy":
-						this._OrderBy = (ScheduleEventResourceOrderBy)StringEnum.Parse(typeof(ScheduleEventResourceOrderBy), txt);
+						this._OrderBy = (ScheduleEventResourceOrderBy)StringEnum.Parse(typeof(ScheduleEventResourceOrderBy), propertyNode.InnerText);
 						continue;
 				}
 			}

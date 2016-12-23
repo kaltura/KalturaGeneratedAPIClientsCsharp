@@ -56,6 +56,7 @@ namespace Kaltura.Types
 		public const string STORAGE_PROFILE_ID = "storageProfileId";
 		public const string MEDIA_PARSER_TYPE = "mediaParserType";
 		public const string CALCULATE_COMPLEXITY = "calculateComplexity";
+		public const string COLLECTION_TAGS = "collectionTags";
 		#endregion
 
 		#region Private Fields
@@ -79,6 +80,7 @@ namespace Kaltura.Types
 		private int _StorageProfileId = Int32.MinValue;
 		private MediaParserType _MediaParserType = null;
 		private NullableBoolean _CalculateComplexity = (NullableBoolean)Int32.MinValue;
+		private string _CollectionTags = null;
 		#endregion
 
 		#region Properties
@@ -242,6 +244,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("CalculateComplexity");
 			}
 		}
+		public string CollectionTags
+		{
+			get { return _CollectionTags; }
+			set 
+			{ 
+				_CollectionTags = value;
+				OnPropertyChanged("CollectionTags");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -253,68 +264,70 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "status":
-						this._Status = (ConversionProfileStatus)StringEnum.Parse(typeof(ConversionProfileStatus), txt);
+						this._Status = (ConversionProfileStatus)StringEnum.Parse(typeof(ConversionProfileStatus), propertyNode.InnerText);
 						continue;
 					case "type":
-						this._Type = (ConversionProfileType)StringEnum.Parse(typeof(ConversionProfileType), txt);
+						this._Type = (ConversionProfileType)StringEnum.Parse(typeof(ConversionProfileType), propertyNode.InnerText);
 						continue;
 					case "name":
-						this._Name = txt;
+						this._Name = propertyNode.InnerText;
 						continue;
 					case "systemName":
-						this._SystemName = txt;
+						this._SystemName = propertyNode.InnerText;
 						continue;
 					case "tags":
-						this._Tags = txt;
+						this._Tags = propertyNode.InnerText;
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "defaultEntryId":
-						this._DefaultEntryId = txt;
+						this._DefaultEntryId = propertyNode.InnerText;
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "flavorParamsIds":
-						this._FlavorParamsIds = txt;
+						this._FlavorParamsIds = propertyNode.InnerText;
 						continue;
 					case "isDefault":
-						this._IsDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._IsDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "isPartnerDefault":
-						this._IsPartnerDefault = ParseBool(txt);
+						this._IsPartnerDefault = ParseBool(propertyNode.InnerText);
 						continue;
 					case "cropDimensions":
 						this._CropDimensions = ObjectFactory.Create<CropDimensions>(propertyNode);
 						continue;
 					case "clipStart":
-						this._ClipStart = ParseInt(txt);
+						this._ClipStart = ParseInt(propertyNode.InnerText);
 						continue;
 					case "clipDuration":
-						this._ClipDuration = ParseInt(txt);
+						this._ClipDuration = ParseInt(propertyNode.InnerText);
 						continue;
 					case "xslTransformation":
-						this._XslTransformation = txt;
+						this._XslTransformation = propertyNode.InnerText;
 						continue;
 					case "storageProfileId":
-						this._StorageProfileId = ParseInt(txt);
+						this._StorageProfileId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "mediaParserType":
-						this._MediaParserType = (MediaParserType)StringEnum.Parse(typeof(MediaParserType), txt);
+						this._MediaParserType = (MediaParserType)StringEnum.Parse(typeof(MediaParserType), propertyNode.InnerText);
 						continue;
 					case "calculateComplexity":
-						this._CalculateComplexity = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._CalculateComplexity = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
+						continue;
+					case "collectionTags":
+						this._CollectionTags = propertyNode.InnerText;
 						continue;
 				}
 			}
@@ -347,6 +360,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("storageProfileId", this._StorageProfileId);
 			kparams.AddIfNotNull("mediaParserType", this._MediaParserType);
 			kparams.AddIfNotNull("calculateComplexity", this._CalculateComplexity);
+			kparams.AddIfNotNull("collectionTags", this._CollectionTags);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -393,6 +407,8 @@ namespace Kaltura.Types
 					return "MediaParserType";
 				case CALCULATE_COMPLEXITY:
 					return "CalculateComplexity";
+				case COLLECTION_TAGS:
+					return "CollectionTags";
 				default:
 					return base.getPropertyName(apiName);
 			}

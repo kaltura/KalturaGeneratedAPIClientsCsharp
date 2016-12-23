@@ -311,6 +311,63 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class ScheduleEventGetConflictsRequestBuilder : RequestBuilder<IList<ScheduleEvent>>
+	{
+		#region Constants
+		public const string RESOURCE_IDS = "resourceIds";
+		public const string SCHEDULE_EVENT = "scheduleEvent";
+		#endregion
+
+		public string ResourceIds
+		{
+			set;
+			get;
+		}
+		public ScheduleEvent ScheduleEvent
+		{
+			set;
+			get;
+		}
+
+		public ScheduleEventGetConflictsRequestBuilder()
+			: base("schedule_scheduleevent", "getConflicts")
+		{
+		}
+
+		public ScheduleEventGetConflictsRequestBuilder(string resourceIds, ScheduleEvent scheduleEvent)
+			: this()
+		{
+			this.ResourceIds = resourceIds;
+			this.ScheduleEvent = scheduleEvent;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("resourceIds"))
+				kparams.AddIfNotNull("resourceIds", ResourceIds);
+			if (!isMapped("scheduleEvent"))
+				kparams.AddIfNotNull("scheduleEvent", ScheduleEvent);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			IList<ScheduleEvent> list = new List<ScheduleEvent>();
+			foreach(XmlElement node in result.ChildNodes)
+			{
+				list.Add(ObjectFactory.Create<ScheduleEvent>(node));
+			}
+			return list;
+		}
+	}
+
 	public class ScheduleEventAddFromBulkUploadRequestBuilder : RequestBuilder<BulkUpload>
 	{
 		#region Constants
@@ -397,6 +454,11 @@ namespace Kaltura.Services
 		public static ScheduleEventListRequestBuilder List(ScheduleEventFilter filter = null, FilterPager pager = null)
 		{
 			return new ScheduleEventListRequestBuilder(filter, pager);
+		}
+
+		public static ScheduleEventGetConflictsRequestBuilder GetConflicts(string resourceIds, ScheduleEvent scheduleEvent)
+		{
+			return new ScheduleEventGetConflictsRequestBuilder(resourceIds, scheduleEvent);
 		}
 
 		public static ScheduleEventAddFromBulkUploadRequestBuilder AddFromBulkUpload(Stream fileData, BulkUploadICalJobData bulkUploadData = null)

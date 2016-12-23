@@ -126,32 +126,31 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "schedulerConfiguredId":
-						this._SchedulerConfiguredId = ParseInt(txt);
+						this._SchedulerConfiguredId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "workerConfiguredId":
-						this._WorkerConfiguredId = ParseInt(txt);
+						this._WorkerConfiguredId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "workerType":
-						this._WorkerType = (BatchJobType)StringEnum.Parse(typeof(BatchJobType), txt);
+						this._WorkerType = (BatchJobType)StringEnum.Parse(typeof(BatchJobType), propertyNode.InnerText);
 						continue;
 					case "type":
-						this._Type = (SchedulerStatusType)ParseEnum(typeof(SchedulerStatusType), txt);
+						this._Type = (SchedulerStatusType)ParseEnum(typeof(SchedulerStatusType), propertyNode.InnerText);
 						continue;
 					case "value":
-						this._Value = ParseInt(txt);
+						this._Value = ParseInt(propertyNode.InnerText);
 						continue;
 					case "schedulerId":
-						this._SchedulerId = ParseInt(txt);
+						this._SchedulerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "workerId":
-						this._WorkerId = ParseInt(txt);
+						this._WorkerId = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

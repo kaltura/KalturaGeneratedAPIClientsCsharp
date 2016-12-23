@@ -89,26 +89,25 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "packageBandwidthAndStorage":
-						this._PackageBandwidthAndStorage = ParseInt(txt);
+						this._PackageBandwidthAndStorage = ParseInt(propertyNode.InnerText);
 						continue;
 					case "hosting":
-						this._Hosting = ParseFloat(txt);
+						this._Hosting = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "bandwidth":
-						this._Bandwidth = ParseFloat(txt);
+						this._Bandwidth = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "usage":
-						this._Usage = ParseInt(txt);
+						this._Usage = ParseInt(propertyNode.InnerText);
 						continue;
 					case "usagePercent":
-						this._UsagePercent = ParseFloat(txt);
+						this._UsagePercent = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "reachedLimitDate":
-						this._ReachedLimitDate = ParseInt(txt);
+						this._ReachedLimitDate = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

@@ -297,53 +297,52 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "providerType":
-						this._ProviderType = (DistributionProviderType)StringEnum.Parse(typeof(DistributionProviderType), txt);
+						this._ProviderType = (DistributionProviderType)StringEnum.Parse(typeof(DistributionProviderType), propertyNode.InnerText);
 						continue;
 					case "name":
-						this._Name = txt;
+						this._Name = propertyNode.InnerText;
 						continue;
 					case "status":
-						this._Status = (DistributionProfileStatus)ParseEnum(typeof(DistributionProfileStatus), txt);
+						this._Status = (DistributionProfileStatus)ParseEnum(typeof(DistributionProfileStatus), propertyNode.InnerText);
 						continue;
 					case "submitEnabled":
-						this._SubmitEnabled = (DistributionProfileActionStatus)ParseEnum(typeof(DistributionProfileActionStatus), txt);
+						this._SubmitEnabled = (DistributionProfileActionStatus)ParseEnum(typeof(DistributionProfileActionStatus), propertyNode.InnerText);
 						continue;
 					case "updateEnabled":
-						this._UpdateEnabled = (DistributionProfileActionStatus)ParseEnum(typeof(DistributionProfileActionStatus), txt);
+						this._UpdateEnabled = (DistributionProfileActionStatus)ParseEnum(typeof(DistributionProfileActionStatus), propertyNode.InnerText);
 						continue;
 					case "deleteEnabled":
-						this._DeleteEnabled = (DistributionProfileActionStatus)ParseEnum(typeof(DistributionProfileActionStatus), txt);
+						this._DeleteEnabled = (DistributionProfileActionStatus)ParseEnum(typeof(DistributionProfileActionStatus), propertyNode.InnerText);
 						continue;
 					case "reportEnabled":
-						this._ReportEnabled = (DistributionProfileActionStatus)ParseEnum(typeof(DistributionProfileActionStatus), txt);
+						this._ReportEnabled = (DistributionProfileActionStatus)ParseEnum(typeof(DistributionProfileActionStatus), propertyNode.InnerText);
 						continue;
 					case "autoCreateFlavors":
-						this._AutoCreateFlavors = txt;
+						this._AutoCreateFlavors = propertyNode.InnerText;
 						continue;
 					case "autoCreateThumb":
-						this._AutoCreateThumb = txt;
+						this._AutoCreateThumb = propertyNode.InnerText;
 						continue;
 					case "optionalFlavorParamsIds":
-						this._OptionalFlavorParamsIds = txt;
+						this._OptionalFlavorParamsIds = propertyNode.InnerText;
 						continue;
 					case "requiredFlavorParamsIds":
-						this._RequiredFlavorParamsIds = txt;
+						this._RequiredFlavorParamsIds = propertyNode.InnerText;
 						continue;
 					case "optionalThumbDimensions":
 						this._OptionalThumbDimensions = new List<DistributionThumbDimensions>();
@@ -374,19 +373,19 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "sunriseDefaultOffset":
-						this._SunriseDefaultOffset = ParseInt(txt);
+						this._SunriseDefaultOffset = ParseInt(propertyNode.InnerText);
 						continue;
 					case "sunsetDefaultOffset":
-						this._SunsetDefaultOffset = ParseInt(txt);
+						this._SunsetDefaultOffset = ParseInt(propertyNode.InnerText);
 						continue;
 					case "recommendedStorageProfileForDownload":
-						this._RecommendedStorageProfileForDownload = ParseInt(txt);
+						this._RecommendedStorageProfileForDownload = ParseInt(propertyNode.InnerText);
 						continue;
 					case "recommendedDcForDownload":
-						this._RecommendedDcForDownload = ParseInt(txt);
+						this._RecommendedDcForDownload = ParseInt(propertyNode.InnerText);
 						continue;
 					case "recommendedDcForExecute":
-						this._RecommendedDcForExecute = ParseInt(txt);
+						this._RecommendedDcForExecute = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

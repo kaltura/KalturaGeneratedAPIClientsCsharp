@@ -46,6 +46,7 @@ namespace Kaltura.Types
 		public const string IS_ENCRYPTED = "isEncrypted";
 		public const string CONTENT_AWARENESS = "contentAwareness";
 		public const string TWO_PASS = "twoPass";
+		public const string TAGS = "tags";
 		#endregion
 
 		#region Private Fields
@@ -59,6 +60,7 @@ namespace Kaltura.Types
 		private NullableBoolean _IsEncrypted = (NullableBoolean)Int32.MinValue;
 		private float _ContentAwareness = Single.MinValue;
 		private NullableBoolean _TwoPass = (NullableBoolean)Int32.MinValue;
+		private string _Tags = null;
 		#endregion
 
 		#region Properties
@@ -142,6 +144,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("TwoPass");
 			}
 		}
+		public string Tags
+		{
+			get { return _Tags; }
+			set 
+			{ 
+				_Tags = value;
+				OnPropertyChanged("Tags");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -153,38 +164,40 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "conversionProfileId":
-						this._ConversionProfileId = ParseInt(txt);
+						this._ConversionProfileId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "assetParamsId":
-						this._AssetParamsId = ParseInt(txt);
+						this._AssetParamsId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "readyBehavior":
-						this._ReadyBehavior = (FlavorReadyBehaviorType)ParseEnum(typeof(FlavorReadyBehaviorType), txt);
+						this._ReadyBehavior = (FlavorReadyBehaviorType)ParseEnum(typeof(FlavorReadyBehaviorType), propertyNode.InnerText);
 						continue;
 					case "origin":
-						this._Origin = (AssetParamsOrigin)ParseEnum(typeof(AssetParamsOrigin), txt);
+						this._Origin = (AssetParamsOrigin)ParseEnum(typeof(AssetParamsOrigin), propertyNode.InnerText);
 						continue;
 					case "systemName":
-						this._SystemName = txt;
+						this._SystemName = propertyNode.InnerText;
 						continue;
 					case "forceNoneComplied":
-						this._ForceNoneComplied = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._ForceNoneComplied = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "deletePolicy":
-						this._DeletePolicy = (AssetParamsDeletePolicy)ParseEnum(typeof(AssetParamsDeletePolicy), txt);
+						this._DeletePolicy = (AssetParamsDeletePolicy)ParseEnum(typeof(AssetParamsDeletePolicy), propertyNode.InnerText);
 						continue;
 					case "isEncrypted":
-						this._IsEncrypted = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._IsEncrypted = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "contentAwareness":
-						this._ContentAwareness = ParseFloat(txt);
+						this._ContentAwareness = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "twoPass":
-						this._TwoPass = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._TwoPass = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
+						continue;
+					case "tags":
+						this._Tags = propertyNode.InnerText;
 						continue;
 				}
 			}
@@ -207,6 +220,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("isEncrypted", this._IsEncrypted);
 			kparams.AddIfNotNull("contentAwareness", this._ContentAwareness);
 			kparams.AddIfNotNull("twoPass", this._TwoPass);
+			kparams.AddIfNotNull("tags", this._Tags);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -233,6 +247,8 @@ namespace Kaltura.Types
 					return "ContentAwareness";
 				case TWO_PASS:
 					return "TwoPass";
+				case TAGS:
+					return "Tags";
 				default:
 					return base.getPropertyName(apiName);
 			}

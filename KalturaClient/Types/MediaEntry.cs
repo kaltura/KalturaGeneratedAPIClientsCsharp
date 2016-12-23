@@ -165,41 +165,40 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "mediaType":
-						this._MediaType = (MediaType)ParseEnum(typeof(MediaType), txt);
+						this._MediaType = (MediaType)ParseEnum(typeof(MediaType), propertyNode.InnerText);
 						continue;
 					case "conversionQuality":
-						this._ConversionQuality = txt;
+						this._ConversionQuality = propertyNode.InnerText;
 						continue;
 					case "sourceType":
-						this._SourceType = (SourceType)StringEnum.Parse(typeof(SourceType), txt);
+						this._SourceType = (SourceType)StringEnum.Parse(typeof(SourceType), propertyNode.InnerText);
 						continue;
 					case "searchProviderType":
-						this._SearchProviderType = (SearchProviderType)ParseEnum(typeof(SearchProviderType), txt);
+						this._SearchProviderType = (SearchProviderType)ParseEnum(typeof(SearchProviderType), propertyNode.InnerText);
 						continue;
 					case "searchProviderId":
-						this._SearchProviderId = txt;
+						this._SearchProviderId = propertyNode.InnerText;
 						continue;
 					case "creditUserName":
-						this._CreditUserName = txt;
+						this._CreditUserName = propertyNode.InnerText;
 						continue;
 					case "creditUrl":
-						this._CreditUrl = txt;
+						this._CreditUrl = propertyNode.InnerText;
 						continue;
 					case "mediaDate":
-						this._MediaDate = ParseInt(txt);
+						this._MediaDate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "dataUrl":
-						this._DataUrl = txt;
+						this._DataUrl = propertyNode.InnerText;
 						continue;
 					case "flavorParamsIds":
-						this._FlavorParamsIds = txt;
+						this._FlavorParamsIds = propertyNode.InnerText;
 						continue;
 					case "isTrimDisabled":
-						this._IsTrimDisabled = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._IsTrimDisabled = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "streams":
 						this._Streams = new List<StreamContainer>();

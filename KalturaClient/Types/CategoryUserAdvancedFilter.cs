@@ -97,20 +97,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "memberIdEq":
-						this._MemberIdEq = txt;
+						this._MemberIdEq = propertyNode.InnerText;
 						continue;
 					case "memberIdIn":
-						this._MemberIdIn = txt;
+						this._MemberIdIn = propertyNode.InnerText;
 						continue;
 					case "memberPermissionsMatchOr":
-						this._MemberPermissionsMatchOr = txt;
+						this._MemberPermissionsMatchOr = propertyNode.InnerText;
 						continue;
 					case "memberPermissionsMatchAnd":
-						this._MemberPermissionsMatchAnd = txt;
+						this._MemberPermissionsMatchAnd = propertyNode.InnerText;
 						continue;
 				}
 			}

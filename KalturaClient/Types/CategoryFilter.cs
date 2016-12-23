@@ -152,35 +152,34 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "freeText":
-						this._FreeText = txt;
+						this._FreeText = propertyNode.InnerText;
 						continue;
 					case "membersIn":
-						this._MembersIn = txt;
+						this._MembersIn = propertyNode.InnerText;
 						continue;
 					case "nameOrReferenceIdStartsWith":
-						this._NameOrReferenceIdStartsWith = txt;
+						this._NameOrReferenceIdStartsWith = propertyNode.InnerText;
 						continue;
 					case "managerEqual":
-						this._ManagerEqual = txt;
+						this._ManagerEqual = propertyNode.InnerText;
 						continue;
 					case "memberEqual":
-						this._MemberEqual = txt;
+						this._MemberEqual = propertyNode.InnerText;
 						continue;
 					case "fullNameStartsWithIn":
-						this._FullNameStartsWithIn = txt;
+						this._FullNameStartsWithIn = propertyNode.InnerText;
 						continue;
 					case "ancestorIdIn":
-						this._AncestorIdIn = txt;
+						this._AncestorIdIn = propertyNode.InnerText;
 						continue;
 					case "idOrInheritedParentIdIn":
-						this._IdOrInheritedParentIdIn = txt;
+						this._IdOrInheritedParentIdIn = propertyNode.InnerText;
 						continue;
 					case "orderBy":
-						this._OrderBy = (CategoryOrderBy)StringEnum.Parse(typeof(CategoryOrderBy), txt);
+						this._OrderBy = (CategoryOrderBy)StringEnum.Parse(typeof(CategoryOrderBy), propertyNode.InnerText);
 						continue;
 				}
 			}

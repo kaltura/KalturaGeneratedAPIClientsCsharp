@@ -97,20 +97,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "flavorAssetId":
-						this._FlavorAssetId = txt;
+						this._FlavorAssetId = propertyNode.InnerText;
 						continue;
 					case "flavorTags":
-						this._FlavorTags = txt;
+						this._FlavorTags = propertyNode.InnerText;
 						continue;
 					case "streamerType":
-						this._StreamerType = txt;
+						this._StreamerType = propertyNode.InnerText;
 						continue;
 					case "mediaProtocol":
-						this._MediaProtocol = txt;
+						this._MediaProtocol = propertyNode.InnerText;
 						continue;
 				}
 			}

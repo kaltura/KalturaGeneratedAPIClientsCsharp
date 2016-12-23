@@ -97,20 +97,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "externalSourceTypeEqual":
-						this._ExternalSourceTypeEqual = (ExternalMediaSourceType)StringEnum.Parse(typeof(ExternalMediaSourceType), txt);
+						this._ExternalSourceTypeEqual = (ExternalMediaSourceType)StringEnum.Parse(typeof(ExternalMediaSourceType), propertyNode.InnerText);
 						continue;
 					case "externalSourceTypeIn":
-						this._ExternalSourceTypeIn = txt;
+						this._ExternalSourceTypeIn = propertyNode.InnerText;
 						continue;
 					case "assetParamsIdsMatchOr":
-						this._AssetParamsIdsMatchOr = txt;
+						this._AssetParamsIdsMatchOr = propertyNode.InnerText;
 						continue;
 					case "assetParamsIdsMatchAnd":
-						this._AssetParamsIdsMatchAnd = txt;
+						this._AssetParamsIdsMatchAnd = propertyNode.InnerText;
 						continue;
 				}
 			}

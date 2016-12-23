@@ -409,119 +409,118 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = txt;
+						this._Id = propertyNode.InnerText;
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "type":
-						this._Type = (UserType)ParseEnum(typeof(UserType), txt);
+						this._Type = (UserType)ParseEnum(typeof(UserType), propertyNode.InnerText);
 						continue;
 					case "screenName":
-						this._ScreenName = txt;
+						this._ScreenName = propertyNode.InnerText;
 						continue;
 					case "fullName":
-						this._FullName = txt;
+						this._FullName = propertyNode.InnerText;
 						continue;
 					case "email":
-						this._Email = txt;
+						this._Email = propertyNode.InnerText;
 						continue;
 					case "dateOfBirth":
-						this._DateOfBirth = ParseInt(txt);
+						this._DateOfBirth = ParseInt(propertyNode.InnerText);
 						continue;
 					case "country":
-						this._Country = txt;
+						this._Country = propertyNode.InnerText;
 						continue;
 					case "state":
-						this._State = txt;
+						this._State = propertyNode.InnerText;
 						continue;
 					case "city":
-						this._City = txt;
+						this._City = propertyNode.InnerText;
 						continue;
 					case "zip":
-						this._Zip = txt;
+						this._Zip = propertyNode.InnerText;
 						continue;
 					case "thumbnailUrl":
-						this._ThumbnailUrl = txt;
+						this._ThumbnailUrl = propertyNode.InnerText;
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "tags":
-						this._Tags = txt;
+						this._Tags = propertyNode.InnerText;
 						continue;
 					case "adminTags":
-						this._AdminTags = txt;
+						this._AdminTags = propertyNode.InnerText;
 						continue;
 					case "gender":
-						this._Gender = (Gender)ParseEnum(typeof(Gender), txt);
+						this._Gender = (Gender)ParseEnum(typeof(Gender), propertyNode.InnerText);
 						continue;
 					case "status":
-						this._Status = (UserStatus)ParseEnum(typeof(UserStatus), txt);
+						this._Status = (UserStatus)ParseEnum(typeof(UserStatus), propertyNode.InnerText);
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerData":
-						this._PartnerData = txt;
+						this._PartnerData = propertyNode.InnerText;
 						continue;
 					case "indexedPartnerDataInt":
-						this._IndexedPartnerDataInt = ParseInt(txt);
+						this._IndexedPartnerDataInt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "indexedPartnerDataString":
-						this._IndexedPartnerDataString = txt;
+						this._IndexedPartnerDataString = propertyNode.InnerText;
 						continue;
 					case "storageSize":
-						this._StorageSize = ParseInt(txt);
+						this._StorageSize = ParseInt(propertyNode.InnerText);
 						continue;
 					case "password":
-						this._Password = txt;
+						this._Password = propertyNode.InnerText;
 						continue;
 					case "firstName":
-						this._FirstName = txt;
+						this._FirstName = propertyNode.InnerText;
 						continue;
 					case "lastName":
-						this._LastName = txt;
+						this._LastName = propertyNode.InnerText;
 						continue;
 					case "isAdmin":
-						this._IsAdmin = ParseBool(txt);
+						this._IsAdmin = ParseBool(propertyNode.InnerText);
 						continue;
 					case "language":
-						this._Language = (LanguageCode)StringEnum.Parse(typeof(LanguageCode), txt);
+						this._Language = (LanguageCode)StringEnum.Parse(typeof(LanguageCode), propertyNode.InnerText);
 						continue;
 					case "lastLoginTime":
-						this._LastLoginTime = ParseInt(txt);
+						this._LastLoginTime = ParseInt(propertyNode.InnerText);
 						continue;
 					case "statusUpdatedAt":
-						this._StatusUpdatedAt = ParseInt(txt);
+						this._StatusUpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "deletedAt":
-						this._DeletedAt = ParseInt(txt);
+						this._DeletedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "loginEnabled":
-						this._LoginEnabled = ParseBool(txt);
+						this._LoginEnabled = ParseBool(propertyNode.InnerText);
 						continue;
 					case "roleIds":
-						this._RoleIds = txt;
+						this._RoleIds = propertyNode.InnerText;
 						continue;
 					case "roleNames":
-						this._RoleNames = txt;
+						this._RoleNames = propertyNode.InnerText;
 						continue;
 					case "isAccountOwner":
-						this._IsAccountOwner = ParseBool(txt);
+						this._IsAccountOwner = ParseBool(propertyNode.InnerText);
 						continue;
 					case "allowedPartnerIds":
-						this._AllowedPartnerIds = txt;
+						this._AllowedPartnerIds = propertyNode.InnerText;
 						continue;
 					case "allowedPartnerPackages":
-						this._AllowedPartnerPackages = txt;
+						this._AllowedPartnerPackages = propertyNode.InnerText;
 						continue;
 				}
 			}

@@ -75,11 +75,10 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "addRemoveType":
-						this._AddRemoveType = (ScheduledTaskAddOrRemoveType)ParseEnum(typeof(ScheduledTaskAddOrRemoveType), txt);
+						this._AddRemoveType = (ScheduledTaskAddOrRemoveType)ParseEnum(typeof(ScheduledTaskAddOrRemoveType), propertyNode.InnerText);
 						continue;
 					case "categoryIds":
 						this._CategoryIds = new List<IntegerValue>();

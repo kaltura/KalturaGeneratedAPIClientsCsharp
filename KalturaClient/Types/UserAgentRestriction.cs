@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "userAgentRestrictionType":
-						this._UserAgentRestrictionType = (UserAgentRestrictionType)ParseEnum(typeof(UserAgentRestrictionType), txt);
+						this._UserAgentRestrictionType = (UserAgentRestrictionType)ParseEnum(typeof(UserAgentRestrictionType), propertyNode.InnerText);
 						continue;
 					case "userAgentRegexList":
-						this._UserAgentRegexList = txt;
+						this._UserAgentRegexList = propertyNode.InnerText;
 						continue;
 				}
 			}

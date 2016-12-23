@@ -1302,7 +1302,7 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class BaseEntryGetPlaybackContextRequestBuilder : RequestBuilder<PlaybackContextOptions>
+	public class BaseEntryGetPlaybackContextRequestBuilder : RequestBuilder<PlaybackContext>
 	{
 		#region Constants
 		public const string ENTRY_ID = "entryId";
@@ -1350,7 +1350,7 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<PlaybackContextOptions>(result);
+			return ObjectFactory.Create<PlaybackContext>(result);
 		}
 	}
 

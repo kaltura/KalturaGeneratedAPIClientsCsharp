@@ -346,92 +346,91 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "name":
-						this._Name = txt;
+						this._Name = propertyNode.InnerText;
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "type":
-						this._Type = (DropFolderType)StringEnum.Parse(typeof(DropFolderType), txt);
+						this._Type = (DropFolderType)StringEnum.Parse(typeof(DropFolderType), propertyNode.InnerText);
 						continue;
 					case "status":
-						this._Status = (DropFolderStatus)ParseEnum(typeof(DropFolderStatus), txt);
+						this._Status = (DropFolderStatus)ParseEnum(typeof(DropFolderStatus), propertyNode.InnerText);
 						continue;
 					case "conversionProfileId":
-						this._ConversionProfileId = ParseInt(txt);
+						this._ConversionProfileId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "dc":
-						this._Dc = ParseInt(txt);
+						this._Dc = ParseInt(propertyNode.InnerText);
 						continue;
 					case "path":
-						this._Path = txt;
+						this._Path = propertyNode.InnerText;
 						continue;
 					case "fileSizeCheckInterval":
-						this._FileSizeCheckInterval = ParseInt(txt);
+						this._FileSizeCheckInterval = ParseInt(propertyNode.InnerText);
 						continue;
 					case "fileDeletePolicy":
-						this._FileDeletePolicy = (DropFolderFileDeletePolicy)ParseEnum(typeof(DropFolderFileDeletePolicy), txt);
+						this._FileDeletePolicy = (DropFolderFileDeletePolicy)ParseEnum(typeof(DropFolderFileDeletePolicy), propertyNode.InnerText);
 						continue;
 					case "autoFileDeleteDays":
-						this._AutoFileDeleteDays = ParseInt(txt);
+						this._AutoFileDeleteDays = ParseInt(propertyNode.InnerText);
 						continue;
 					case "fileHandlerType":
-						this._FileHandlerType = (DropFolderFileHandlerType)StringEnum.Parse(typeof(DropFolderFileHandlerType), txt);
+						this._FileHandlerType = (DropFolderFileHandlerType)StringEnum.Parse(typeof(DropFolderFileHandlerType), propertyNode.InnerText);
 						continue;
 					case "fileNamePatterns":
-						this._FileNamePatterns = txt;
+						this._FileNamePatterns = propertyNode.InnerText;
 						continue;
 					case "fileHandlerConfig":
 						this._FileHandlerConfig = ObjectFactory.Create<DropFolderFileHandlerConfig>(propertyNode);
 						continue;
 					case "tags":
-						this._Tags = txt;
+						this._Tags = propertyNode.InnerText;
 						continue;
 					case "errorCode":
-						this._ErrorCode = (DropFolderErrorCode)StringEnum.Parse(typeof(DropFolderErrorCode), txt);
+						this._ErrorCode = (DropFolderErrorCode)StringEnum.Parse(typeof(DropFolderErrorCode), propertyNode.InnerText);
 						continue;
 					case "errorDescription":
-						this._ErrorDescription = txt;
+						this._ErrorDescription = propertyNode.InnerText;
 						continue;
 					case "ignoreFileNamePatterns":
-						this._IgnoreFileNamePatterns = txt;
+						this._IgnoreFileNamePatterns = propertyNode.InnerText;
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "lastAccessedAt":
-						this._LastAccessedAt = ParseInt(txt);
+						this._LastAccessedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "incremental":
-						this._Incremental = ParseBool(txt);
+						this._Incremental = ParseBool(propertyNode.InnerText);
 						continue;
 					case "lastFileTimestamp":
-						this._LastFileTimestamp = ParseInt(txt);
+						this._LastFileTimestamp = ParseInt(propertyNode.InnerText);
 						continue;
 					case "metadataProfileId":
-						this._MetadataProfileId = ParseInt(txt);
+						this._MetadataProfileId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "categoriesMetadataFieldName":
-						this._CategoriesMetadataFieldName = txt;
+						this._CategoriesMetadataFieldName = propertyNode.InnerText;
 						continue;
 					case "enforceEntitlement":
-						this._EnforceEntitlement = ParseBool(txt);
+						this._EnforceEntitlement = ParseBool(propertyNode.InnerText);
 						continue;
 					case "shouldValidateKS":
-						this._ShouldValidateKS = ParseBool(txt);
+						this._ShouldValidateKS = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}

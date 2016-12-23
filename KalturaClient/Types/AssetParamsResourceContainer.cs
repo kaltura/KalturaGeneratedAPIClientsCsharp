@@ -75,14 +75,13 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "resource":
 						this._Resource = ObjectFactory.Create<ContentResource>(propertyNode);
 						continue;
 					case "assetParamsId":
-						this._AssetParamsId = ParseInt(txt);
+						this._AssetParamsId = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

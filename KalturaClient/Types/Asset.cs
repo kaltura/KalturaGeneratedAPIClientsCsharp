@@ -162,50 +162,49 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = txt;
+						this._Id = propertyNode.InnerText;
 						continue;
 					case "entryId":
-						this._EntryId = txt;
+						this._EntryId = propertyNode.InnerText;
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "version":
-						this._Version = ParseInt(txt);
+						this._Version = ParseInt(propertyNode.InnerText);
 						continue;
 					case "size":
-						this._Size = ParseInt(txt);
+						this._Size = ParseInt(propertyNode.InnerText);
 						continue;
 					case "tags":
-						this._Tags = txt;
+						this._Tags = propertyNode.InnerText;
 						continue;
 					case "fileExt":
-						this._FileExt = txt;
+						this._FileExt = propertyNode.InnerText;
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "deletedAt":
-						this._DeletedAt = ParseInt(txt);
+						this._DeletedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "partnerData":
-						this._PartnerData = txt;
+						this._PartnerData = propertyNode.InnerText;
 						continue;
 					case "partnerDescription":
-						this._PartnerDescription = txt;
+						this._PartnerDescription = propertyNode.InnerText;
 						continue;
 					case "actualSourceAssetParamsIds":
-						this._ActualSourceAssetParamsIds = txt;
+						this._ActualSourceAssetParamsIds = propertyNode.InnerText;
 						continue;
 				}
 			}

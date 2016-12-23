@@ -372,95 +372,94 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this._IdEqual = ParseInt(txt);
+						this._IdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "idIn":
-						this._IdIn = txt;
+						this._IdIn = propertyNode.InnerText;
 						continue;
 					case "idNotIn":
-						this._IdNotIn = txt;
+						this._IdNotIn = propertyNode.InnerText;
 						continue;
 					case "parentIdEqual":
-						this._ParentIdEqual = ParseInt(txt);
+						this._ParentIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "parentIdIn":
-						this._ParentIdIn = txt;
+						this._ParentIdIn = propertyNode.InnerText;
 						continue;
 					case "parentIdNotIn":
-						this._ParentIdNotIn = txt;
+						this._ParentIdNotIn = propertyNode.InnerText;
 						continue;
 					case "statusEqual":
-						this._StatusEqual = (ScheduleEventStatus)ParseEnum(typeof(ScheduleEventStatus), txt);
+						this._StatusEqual = (ScheduleEventStatus)ParseEnum(typeof(ScheduleEventStatus), propertyNode.InnerText);
 						continue;
 					case "statusIn":
-						this._StatusIn = txt;
+						this._StatusIn = propertyNode.InnerText;
 						continue;
 					case "startDateGreaterThanOrEqual":
-						this._StartDateGreaterThanOrEqual = ParseInt(txt);
+						this._StartDateGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "startDateLessThanOrEqual":
-						this._StartDateLessThanOrEqual = ParseInt(txt);
+						this._StartDateLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "endDateGreaterThanOrEqual":
-						this._EndDateGreaterThanOrEqual = ParseInt(txt);
+						this._EndDateGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "endDateLessThanOrEqual":
-						this._EndDateLessThanOrEqual = ParseInt(txt);
+						this._EndDateLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "referenceIdEqual":
-						this._ReferenceIdEqual = txt;
+						this._ReferenceIdEqual = propertyNode.InnerText;
 						continue;
 					case "referenceIdIn":
-						this._ReferenceIdIn = txt;
+						this._ReferenceIdIn = propertyNode.InnerText;
 						continue;
 					case "ownerIdEqual":
-						this._OwnerIdEqual = txt;
+						this._OwnerIdEqual = propertyNode.InnerText;
 						continue;
 					case "ownerIdIn":
-						this._OwnerIdIn = txt;
+						this._OwnerIdIn = propertyNode.InnerText;
 						continue;
 					case "priorityEqual":
-						this._PriorityEqual = ParseInt(txt);
+						this._PriorityEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "priorityIn":
-						this._PriorityIn = txt;
+						this._PriorityIn = propertyNode.InnerText;
 						continue;
 					case "priorityGreaterThanOrEqual":
-						this._PriorityGreaterThanOrEqual = ParseInt(txt);
+						this._PriorityGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "priorityLessThanOrEqual":
-						this._PriorityLessThanOrEqual = ParseInt(txt);
+						this._PriorityLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "recurrenceTypeEqual":
-						this._RecurrenceTypeEqual = (ScheduleEventRecurrenceType)ParseEnum(typeof(ScheduleEventRecurrenceType), txt);
+						this._RecurrenceTypeEqual = (ScheduleEventRecurrenceType)ParseEnum(typeof(ScheduleEventRecurrenceType), propertyNode.InnerText);
 						continue;
 					case "recurrenceTypeIn":
-						this._RecurrenceTypeIn = txt;
+						this._RecurrenceTypeIn = propertyNode.InnerText;
 						continue;
 					case "tagsLike":
-						this._TagsLike = txt;
+						this._TagsLike = propertyNode.InnerText;
 						continue;
 					case "tagsMultiLikeOr":
-						this._TagsMultiLikeOr = txt;
+						this._TagsMultiLikeOr = propertyNode.InnerText;
 						continue;
 					case "tagsMultiLikeAnd":
-						this._TagsMultiLikeAnd = txt;
+						this._TagsMultiLikeAnd = propertyNode.InnerText;
 						continue;
 					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(txt);
+						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(txt);
+						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(txt);
+						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

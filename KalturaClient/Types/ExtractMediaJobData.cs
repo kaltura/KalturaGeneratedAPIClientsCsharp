@@ -97,20 +97,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "flavorAssetId":
-						this._FlavorAssetId = txt;
+						this._FlavorAssetId = propertyNode.InnerText;
 						continue;
 					case "calculateComplexity":
-						this._CalculateComplexity = ParseBool(txt);
+						this._CalculateComplexity = ParseBool(propertyNode.InnerText);
 						continue;
 					case "extractId3Tags":
-						this._ExtractId3Tags = ParseBool(txt);
+						this._ExtractId3Tags = ParseBool(propertyNode.InnerText);
 						continue;
 					case "destDataFilePath":
-						this._DestDataFilePath = txt;
+						this._DestDataFilePath = propertyNode.InnerText;
 						continue;
 				}
 			}

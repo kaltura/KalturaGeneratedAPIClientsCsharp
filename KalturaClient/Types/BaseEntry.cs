@@ -442,122 +442,121 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = txt;
+						this._Id = propertyNode.InnerText;
 						continue;
 					case "name":
-						this._Name = txt;
+						this._Name = propertyNode.InnerText;
 						continue;
 					case "description":
-						this._Description = txt;
+						this._Description = propertyNode.InnerText;
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "userId":
-						this._UserId = txt;
+						this._UserId = propertyNode.InnerText;
 						continue;
 					case "creatorId":
-						this._CreatorId = txt;
+						this._CreatorId = propertyNode.InnerText;
 						continue;
 					case "tags":
-						this._Tags = txt;
+						this._Tags = propertyNode.InnerText;
 						continue;
 					case "adminTags":
-						this._AdminTags = txt;
+						this._AdminTags = propertyNode.InnerText;
 						continue;
 					case "categories":
-						this._Categories = txt;
+						this._Categories = propertyNode.InnerText;
 						continue;
 					case "categoriesIds":
-						this._CategoriesIds = txt;
+						this._CategoriesIds = propertyNode.InnerText;
 						continue;
 					case "status":
-						this._Status = (EntryStatus)StringEnum.Parse(typeof(EntryStatus), txt);
+						this._Status = (EntryStatus)StringEnum.Parse(typeof(EntryStatus), propertyNode.InnerText);
 						continue;
 					case "moderationStatus":
-						this._ModerationStatus = (EntryModerationStatus)ParseEnum(typeof(EntryModerationStatus), txt);
+						this._ModerationStatus = (EntryModerationStatus)ParseEnum(typeof(EntryModerationStatus), propertyNode.InnerText);
 						continue;
 					case "moderationCount":
-						this._ModerationCount = ParseInt(txt);
+						this._ModerationCount = ParseInt(propertyNode.InnerText);
 						continue;
 					case "type":
-						this._Type = (EntryType)StringEnum.Parse(typeof(EntryType), txt);
+						this._Type = (EntryType)StringEnum.Parse(typeof(EntryType), propertyNode.InnerText);
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "rank":
-						this._Rank = ParseFloat(txt);
+						this._Rank = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "totalRank":
-						this._TotalRank = ParseInt(txt);
+						this._TotalRank = ParseInt(propertyNode.InnerText);
 						continue;
 					case "votes":
-						this._Votes = ParseInt(txt);
+						this._Votes = ParseInt(propertyNode.InnerText);
 						continue;
 					case "groupId":
-						this._GroupId = ParseInt(txt);
+						this._GroupId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerData":
-						this._PartnerData = txt;
+						this._PartnerData = propertyNode.InnerText;
 						continue;
 					case "downloadUrl":
-						this._DownloadUrl = txt;
+						this._DownloadUrl = propertyNode.InnerText;
 						continue;
 					case "searchText":
-						this._SearchText = txt;
+						this._SearchText = propertyNode.InnerText;
 						continue;
 					case "licenseType":
-						this._LicenseType = (LicenseType)ParseEnum(typeof(LicenseType), txt);
+						this._LicenseType = (LicenseType)ParseEnum(typeof(LicenseType), propertyNode.InnerText);
 						continue;
 					case "version":
-						this._Version = ParseInt(txt);
+						this._Version = ParseInt(propertyNode.InnerText);
 						continue;
 					case "thumbnailUrl":
-						this._ThumbnailUrl = txt;
+						this._ThumbnailUrl = propertyNode.InnerText;
 						continue;
 					case "accessControlId":
-						this._AccessControlId = ParseInt(txt);
+						this._AccessControlId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "startDate":
-						this._StartDate = ParseInt(txt);
+						this._StartDate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "endDate":
-						this._EndDate = ParseInt(txt);
+						this._EndDate = ParseInt(propertyNode.InnerText);
 						continue;
 					case "referenceId":
-						this._ReferenceId = txt;
+						this._ReferenceId = propertyNode.InnerText;
 						continue;
 					case "replacingEntryId":
-						this._ReplacingEntryId = txt;
+						this._ReplacingEntryId = propertyNode.InnerText;
 						continue;
 					case "replacedEntryId":
-						this._ReplacedEntryId = txt;
+						this._ReplacedEntryId = propertyNode.InnerText;
 						continue;
 					case "replacementStatus":
-						this._ReplacementStatus = (EntryReplacementStatus)StringEnum.Parse(typeof(EntryReplacementStatus), txt);
+						this._ReplacementStatus = (EntryReplacementStatus)StringEnum.Parse(typeof(EntryReplacementStatus), propertyNode.InnerText);
 						continue;
 					case "partnerSortValue":
-						this._PartnerSortValue = ParseInt(txt);
+						this._PartnerSortValue = ParseInt(propertyNode.InnerText);
 						continue;
 					case "conversionProfileId":
-						this._ConversionProfileId = ParseInt(txt);
+						this._ConversionProfileId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "redirectEntryId":
-						this._RedirectEntryId = txt;
+						this._RedirectEntryId = propertyNode.InnerText;
 						continue;
 					case "rootEntryId":
-						this._RootEntryId = txt;
+						this._RootEntryId = propertyNode.InnerText;
 						continue;
 					case "parentEntryId":
-						this._ParentEntryId = txt;
+						this._ParentEntryId = propertyNode.InnerText;
 						continue;
 					case "operationAttributes":
 						this._OperationAttributes = new List<OperationAttributes>();
@@ -567,19 +566,19 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "entitledUsersEdit":
-						this._EntitledUsersEdit = txt;
+						this._EntitledUsersEdit = propertyNode.InnerText;
 						continue;
 					case "entitledUsersPublish":
-						this._EntitledUsersPublish = txt;
+						this._EntitledUsersPublish = propertyNode.InnerText;
 						continue;
 					case "capabilities":
-						this._Capabilities = txt;
+						this._Capabilities = propertyNode.InnerText;
 						continue;
 					case "templateEntryId":
-						this._TemplateEntryId = txt;
+						this._TemplateEntryId = propertyNode.InnerText;
 						continue;
 					case "displayInSearch":
-						this._DisplayInSearch = (EntryDisplayInSearchType)ParseEnum(typeof(EntryDisplayInSearchType), txt);
+						this._DisplayInSearch = (EntryDisplayInSearchType)ParseEnum(typeof(EntryDisplayInSearchType), propertyNode.InnerText);
 						continue;
 				}
 			}

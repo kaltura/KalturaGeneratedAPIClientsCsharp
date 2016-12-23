@@ -202,50 +202,49 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdBy":
-						this._CreatedBy = txt;
+						this._CreatedBy = propertyNode.InnerText;
 						continue;
 					case "updatedBy":
-						this._UpdatedBy = txt;
+						this._UpdatedBy = propertyNode.InnerText;
 						continue;
 					case "commandId":
-						this._CommandId = txt;
+						this._CommandId = propertyNode.InnerText;
 						continue;
 					case "commandStatus":
-						this._CommandStatus = txt;
+						this._CommandStatus = propertyNode.InnerText;
 						continue;
 					case "schedulerId":
-						this._SchedulerId = ParseInt(txt);
+						this._SchedulerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "schedulerConfiguredId":
-						this._SchedulerConfiguredId = ParseInt(txt);
+						this._SchedulerConfiguredId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "schedulerName":
-						this._SchedulerName = txt;
+						this._SchedulerName = propertyNode.InnerText;
 						continue;
 					case "workerId":
-						this._WorkerId = ParseInt(txt);
+						this._WorkerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "workerConfiguredId":
-						this._WorkerConfiguredId = ParseInt(txt);
+						this._WorkerConfiguredId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "workerName":
-						this._WorkerName = txt;
+						this._WorkerName = propertyNode.InnerText;
 						continue;
 					case "variable":
-						this._Variable = txt;
+						this._Variable = propertyNode.InnerText;
 						continue;
 					case "variablePart":
-						this._VariablePart = txt;
+						this._VariablePart = propertyNode.InnerText;
 						continue;
 					case "value":
-						this._Value = txt;
+						this._Value = propertyNode.InnerText;
 						continue;
 				}
 			}

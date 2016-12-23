@@ -130,29 +130,28 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "srcCategoryId":
-						this._SrcCategoryId = ParseInt(txt);
+						this._SrcCategoryId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "destCategoryId":
-						this._DestCategoryId = ParseInt(txt);
+						this._DestCategoryId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "lastMovedCategoryId":
-						this._LastMovedCategoryId = ParseInt(txt);
+						this._LastMovedCategoryId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "lastMovedCategoryPageIndex":
-						this._LastMovedCategoryPageIndex = ParseInt(txt);
+						this._LastMovedCategoryPageIndex = ParseInt(propertyNode.InnerText);
 						continue;
 					case "lastMovedCategoryEntryPageIndex":
-						this._LastMovedCategoryEntryPageIndex = ParseInt(txt);
+						this._LastMovedCategoryEntryPageIndex = ParseInt(propertyNode.InnerText);
 						continue;
 					case "moveFromChildren":
-						this._MoveFromChildren = ParseBool(txt);
+						this._MoveFromChildren = ParseBool(propertyNode.InnerText);
 						continue;
 					case "destCategoryFullIds":
-						this._DestCategoryFullIds = txt;
+						this._DestCategoryFullIds = propertyNode.InnerText;
 						continue;
 				}
 			}

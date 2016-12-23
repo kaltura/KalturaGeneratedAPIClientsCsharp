@@ -277,80 +277,79 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "dropFolderId":
-						this._DropFolderId = ParseInt(txt);
+						this._DropFolderId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "fileName":
-						this._FileName = txt;
+						this._FileName = propertyNode.InnerText;
 						continue;
 					case "fileSize":
-						this._FileSize = ParseFloat(txt);
+						this._FileSize = ParseFloat(propertyNode.InnerText);
 						continue;
 					case "fileSizeLastSetAt":
-						this._FileSizeLastSetAt = ParseInt(txt);
+						this._FileSizeLastSetAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "status":
-						this._Status = (DropFolderFileStatus)ParseEnum(typeof(DropFolderFileStatus), txt);
+						this._Status = (DropFolderFileStatus)ParseEnum(typeof(DropFolderFileStatus), propertyNode.InnerText);
 						continue;
 					case "type":
-						this._Type = (DropFolderType)StringEnum.Parse(typeof(DropFolderType), txt);
+						this._Type = (DropFolderType)StringEnum.Parse(typeof(DropFolderType), propertyNode.InnerText);
 						continue;
 					case "parsedSlug":
-						this._ParsedSlug = txt;
+						this._ParsedSlug = propertyNode.InnerText;
 						continue;
 					case "parsedFlavor":
-						this._ParsedFlavor = txt;
+						this._ParsedFlavor = propertyNode.InnerText;
 						continue;
 					case "parsedUserId":
-						this._ParsedUserId = txt;
+						this._ParsedUserId = propertyNode.InnerText;
 						continue;
 					case "leadDropFolderFileId":
-						this._LeadDropFolderFileId = ParseInt(txt);
+						this._LeadDropFolderFileId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "deletedDropFolderFileId":
-						this._DeletedDropFolderFileId = ParseInt(txt);
+						this._DeletedDropFolderFileId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "entryId":
-						this._EntryId = txt;
+						this._EntryId = propertyNode.InnerText;
 						continue;
 					case "errorCode":
-						this._ErrorCode = (DropFolderFileErrorCode)StringEnum.Parse(typeof(DropFolderFileErrorCode), txt);
+						this._ErrorCode = (DropFolderFileErrorCode)StringEnum.Parse(typeof(DropFolderFileErrorCode), propertyNode.InnerText);
 						continue;
 					case "errorDescription":
-						this._ErrorDescription = txt;
+						this._ErrorDescription = propertyNode.InnerText;
 						continue;
 					case "lastModificationTime":
-						this._LastModificationTime = txt;
+						this._LastModificationTime = propertyNode.InnerText;
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "uploadStartDetectedAt":
-						this._UploadStartDetectedAt = ParseInt(txt);
+						this._UploadStartDetectedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "uploadEndDetectedAt":
-						this._UploadEndDetectedAt = ParseInt(txt);
+						this._UploadEndDetectedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "importStartedAt":
-						this._ImportStartedAt = ParseInt(txt);
+						this._ImportStartedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "importEndedAt":
-						this._ImportEndedAt = ParseInt(txt);
+						this._ImportEndedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "batchJobId":
-						this._BatchJobId = ParseInt(txt);
+						this._BatchJobId = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

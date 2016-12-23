@@ -86,17 +86,16 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "changedCategoryId":
-						this._ChangedCategoryId = ParseInt(txt);
+						this._ChangedCategoryId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "deletedPrivacyContexts":
-						this._DeletedPrivacyContexts = txt;
+						this._DeletedPrivacyContexts = propertyNode.InnerText;
 						continue;
 					case "addedPrivacyContexts":
-						this._AddedPrivacyContexts = txt;
+						this._AddedPrivacyContexts = propertyNode.InnerText;
 						continue;
 				}
 			}

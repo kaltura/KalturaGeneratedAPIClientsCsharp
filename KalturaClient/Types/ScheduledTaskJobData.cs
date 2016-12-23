@@ -86,17 +86,16 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "maxResults":
-						this._MaxResults = ParseInt(txt);
+						this._MaxResults = ParseInt(propertyNode.InnerText);
 						continue;
 					case "resultsFilePath":
-						this._ResultsFilePath = txt;
+						this._ResultsFilePath = propertyNode.InnerText;
 						continue;
 					case "referenceTime":
-						this._ReferenceTime = ParseInt(txt);
+						this._ReferenceTime = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}

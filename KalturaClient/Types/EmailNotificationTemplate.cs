@@ -207,23 +207,22 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "format":
-						this._Format = (EmailNotificationFormat)StringEnum.Parse(typeof(EmailNotificationFormat), txt);
+						this._Format = (EmailNotificationFormat)StringEnum.Parse(typeof(EmailNotificationFormat), propertyNode.InnerText);
 						continue;
 					case "subject":
-						this._Subject = txt;
+						this._Subject = propertyNode.InnerText;
 						continue;
 					case "body":
-						this._Body = txt;
+						this._Body = propertyNode.InnerText;
 						continue;
 					case "fromEmail":
-						this._FromEmail = txt;
+						this._FromEmail = propertyNode.InnerText;
 						continue;
 					case "fromName":
-						this._FromName = txt;
+						this._FromName = propertyNode.InnerText;
 						continue;
 					case "to":
 						this._To = ObjectFactory.Create<EmailNotificationRecipientProvider>(propertyNode);
@@ -238,16 +237,16 @@ namespace Kaltura.Types
 						this._ReplyTo = ObjectFactory.Create<EmailNotificationRecipientProvider>(propertyNode);
 						continue;
 					case "priority":
-						this._Priority = (EmailNotificationTemplatePriority)ParseEnum(typeof(EmailNotificationTemplatePriority), txt);
+						this._Priority = (EmailNotificationTemplatePriority)ParseEnum(typeof(EmailNotificationTemplatePriority), propertyNode.InnerText);
 						continue;
 					case "confirmReadingTo":
-						this._ConfirmReadingTo = txt;
+						this._ConfirmReadingTo = propertyNode.InnerText;
 						continue;
 					case "hostname":
-						this._Hostname = txt;
+						this._Hostname = propertyNode.InnerText;
 						continue;
 					case "messageID":
-						this._MessageID = txt;
+						this._MessageID = propertyNode.InnerText;
 						continue;
 					case "customHeaders":
 						this._CustomHeaders = new List<KeyValue>();

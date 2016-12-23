@@ -261,62 +261,61 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(txt);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
 					case "createdAt":
-						this._CreatedAt = ParseInt(txt);
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAt":
-						this._UpdatedAt = ParseInt(txt);
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "submittedAt":
-						this._SubmittedAt = ParseInt(txt);
+						this._SubmittedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "entryId":
-						this._EntryId = txt;
+						this._EntryId = propertyNode.InnerText;
 						continue;
 					case "partnerId":
-						this._PartnerId = ParseInt(txt);
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "distributionProfileId":
-						this._DistributionProfileId = ParseInt(txt);
+						this._DistributionProfileId = ParseInt(propertyNode.InnerText);
 						continue;
 					case "status":
-						this._Status = (EntryDistributionStatus)ParseEnum(typeof(EntryDistributionStatus), txt);
+						this._Status = (EntryDistributionStatus)ParseEnum(typeof(EntryDistributionStatus), propertyNode.InnerText);
 						continue;
 					case "sunStatus":
-						this._SunStatus = (EntryDistributionSunStatus)ParseEnum(typeof(EntryDistributionSunStatus), txt);
+						this._SunStatus = (EntryDistributionSunStatus)ParseEnum(typeof(EntryDistributionSunStatus), propertyNode.InnerText);
 						continue;
 					case "dirtyStatus":
-						this._DirtyStatus = (EntryDistributionFlag)ParseEnum(typeof(EntryDistributionFlag), txt);
+						this._DirtyStatus = (EntryDistributionFlag)ParseEnum(typeof(EntryDistributionFlag), propertyNode.InnerText);
 						continue;
 					case "thumbAssetIds":
-						this._ThumbAssetIds = txt;
+						this._ThumbAssetIds = propertyNode.InnerText;
 						continue;
 					case "flavorAssetIds":
-						this._FlavorAssetIds = txt;
+						this._FlavorAssetIds = propertyNode.InnerText;
 						continue;
 					case "assetIds":
-						this._AssetIds = txt;
+						this._AssetIds = propertyNode.InnerText;
 						continue;
 					case "sunrise":
-						this._Sunrise = ParseInt(txt);
+						this._Sunrise = ParseInt(propertyNode.InnerText);
 						continue;
 					case "sunset":
-						this._Sunset = ParseInt(txt);
+						this._Sunset = ParseInt(propertyNode.InnerText);
 						continue;
 					case "remoteId":
-						this._RemoteId = txt;
+						this._RemoteId = propertyNode.InnerText;
 						continue;
 					case "plays":
-						this._Plays = ParseInt(txt);
+						this._Plays = ParseInt(propertyNode.InnerText);
 						continue;
 					case "views":
-						this._Views = ParseInt(txt);
+						this._Views = ParseInt(propertyNode.InnerText);
 						continue;
 					case "validationErrors":
 						this._ValidationErrors = new List<DistributionValidationError>();
@@ -326,31 +325,31 @@ namespace Kaltura.Types
 						}
 						continue;
 					case "errorType":
-						this._ErrorType = (BatchJobErrorTypes)ParseEnum(typeof(BatchJobErrorTypes), txt);
+						this._ErrorType = (BatchJobErrorTypes)ParseEnum(typeof(BatchJobErrorTypes), propertyNode.InnerText);
 						continue;
 					case "errorNumber":
-						this._ErrorNumber = ParseInt(txt);
+						this._ErrorNumber = ParseInt(propertyNode.InnerText);
 						continue;
 					case "errorDescription":
-						this._ErrorDescription = txt;
+						this._ErrorDescription = propertyNode.InnerText;
 						continue;
 					case "hasSubmitResultsLog":
-						this._HasSubmitResultsLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._HasSubmitResultsLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "hasSubmitSentDataLog":
-						this._HasSubmitSentDataLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._HasSubmitSentDataLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "hasUpdateResultsLog":
-						this._HasUpdateResultsLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._HasUpdateResultsLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "hasUpdateSentDataLog":
-						this._HasUpdateSentDataLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._HasUpdateSentDataLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "hasDeleteResultsLog":
-						this._HasDeleteResultsLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._HasDeleteResultsLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "hasDeleteSentDataLog":
-						this._HasDeleteSentDataLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), txt);
+						this._HasDeleteSentDataLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 				}
 			}

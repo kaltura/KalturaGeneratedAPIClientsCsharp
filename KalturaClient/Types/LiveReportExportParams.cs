@@ -97,20 +97,19 @@ namespace Kaltura.Types
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
-				string txt = propertyNode.InnerText;
 				switch (propertyNode.Name)
 				{
 					case "entryIds":
-						this._EntryIds = txt;
+						this._EntryIds = propertyNode.InnerText;
 						continue;
 					case "recpientEmail":
-						this._RecpientEmail = txt;
+						this._RecpientEmail = propertyNode.InnerText;
 						continue;
 					case "timeZoneOffset":
-						this._TimeZoneOffset = ParseInt(txt);
+						this._TimeZoneOffset = ParseInt(propertyNode.InnerText);
 						continue;
 					case "applicationUrlTemplate":
-						this._ApplicationUrlTemplate = txt;
+						this._ApplicationUrlTemplate = propertyNode.InnerText;
 						continue;
 				}
 			}

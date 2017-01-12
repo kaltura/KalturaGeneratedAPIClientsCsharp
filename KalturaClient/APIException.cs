@@ -69,6 +69,7 @@ namespace Kaltura
 		public static string SCHEDULE_EVENT_ID_NOT_FOUND = "SCHEDULE_EVENT_ID_NOT_FOUND";
 		public static string LOCK_TIMED_OUT = "LOCK_TIMED_OUT";
 		public static string MAX_FILE_SYNCS_FOR_OBJECT_PER_DAY_REACHED = "MAX_FILE_SYNCS_FOR_OBJECT_PER_DAY_REACHED";
+		public static string RESOURCE_IS_RESERVED = "RESOURCE_IS_RESERVED";
 		public static string ENTRY_NOT_READY = "ENTRY_NOT_READY";
 		public static string INVALID_ENTRY_TYPE = "INVALID_ENTRY_TYPE";
 		public static string INVALID_ENTRY_MEDIA_TYPE = "INVALID_ENTRY_MEDIA_TYPE";

@@ -27,13 +27,11 @@
 // ===================================================================================================
 namespace Kaltura.Enums
 {
-	public sealed class AttachmentType : StringEnum
+	public sealed class TranscriptProviderType : StringEnum
 	{
-		public static readonly AttachmentType TEXT = new AttachmentType("1");
-		public static readonly AttachmentType MEDIA = new AttachmentType("2");
-		public static readonly AttachmentType DOCUMENT = new AttachmentType("3");
-		public static readonly AttachmentType JSON = new AttachmentType("4");
+		public static readonly TranscriptProviderType CIELO24 = new TranscriptProviderType("cielo24.Cielo24");
+		public static readonly TranscriptProviderType VOICEBASE = new TranscriptProviderType("voicebase.Voicebase");
 
-		private AttachmentType(string name) : base(name) { }
+		private TranscriptProviderType(string name) : base(name) { }
 	}
 }

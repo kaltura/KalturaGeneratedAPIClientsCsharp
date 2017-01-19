@@ -39,12 +39,14 @@ namespace Kaltura.Types
 		public const string ACCURACY = "accuracy";
 		public const string HUMAN_VERIFIED = "humanVerified";
 		public const string LANGUAGE = "language";
+		public const string PROVIDER_TYPE = "providerType";
 		#endregion
 
 		#region Private Fields
 		private float _Accuracy = Single.MinValue;
 		private NullableBoolean _HumanVerified = (NullableBoolean)Int32.MinValue;
 		private Language _Language = null;
+		private TranscriptProviderType _ProviderType = null;
 		#endregion
 
 		#region Properties
@@ -75,6 +77,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("Language");
 			}
 		}
+		public TranscriptProviderType ProviderType
+		{
+			get { return _ProviderType; }
+			set 
+			{ 
+				_ProviderType = value;
+				OnPropertyChanged("ProviderType");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -97,6 +108,9 @@ namespace Kaltura.Types
 					case "language":
 						this._Language = (Language)StringEnum.Parse(typeof(Language), propertyNode.InnerText);
 						continue;
+					case "providerType":
+						this._ProviderType = (TranscriptProviderType)StringEnum.Parse(typeof(TranscriptProviderType), propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -111,6 +125,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("accuracy", this._Accuracy);
 			kparams.AddIfNotNull("humanVerified", this._HumanVerified);
 			kparams.AddIfNotNull("language", this._Language);
+			kparams.AddIfNotNull("providerType", this._ProviderType);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -123,6 +138,8 @@ namespace Kaltura.Types
 					return "HumanVerified";
 				case LANGUAGE:
 					return "Language";
+				case PROVIDER_TYPE:
+					return "ProviderType";
 				default:
 					return base.getPropertyName(apiName);
 			}

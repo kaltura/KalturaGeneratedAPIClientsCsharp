@@ -35,6 +35,7 @@ namespace Kaltura.Enums
 		public static readonly BaseEntryCloneOptions THUMB_CUE_POINTS = new BaseEntryCloneOptions("thumbCuePoint.THUMB_CUE_POINTS");
 		public static readonly BaseEntryCloneOptions USERS = new BaseEntryCloneOptions("1");
 		public static readonly BaseEntryCloneOptions CATEGORIES = new BaseEntryCloneOptions("2");
+		public static readonly BaseEntryCloneOptions CHILD_ENTRIES = new BaseEntryCloneOptions("3");
 
 		private BaseEntryCloneOptions(string name) : base(name) { }
 	}

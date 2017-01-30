@@ -33,7 +33,7 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class ThumbnailServeOptions : AssetServeOptions
+	public class AttachmentServeOptions : AssetServeOptions
 	{
 		#region Constants
 		#endregion
@@ -45,11 +45,11 @@ namespace Kaltura.Types
 		#endregion
 
 		#region CTor
-		public ThumbnailServeOptions()
+		public AttachmentServeOptions()
 		{
 		}
 
-		public ThumbnailServeOptions(XmlElement node) : base(node)
+		public AttachmentServeOptions(XmlElement node) : base(node)
 		{
 		}
 		#endregion
@@ -59,7 +59,7 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaThumbnailServeOptions");
+				kparams.AddReplace("objectType", "KalturaAttachmentServeOptions");
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)

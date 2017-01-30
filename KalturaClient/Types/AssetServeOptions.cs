@@ -33,24 +33,58 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class ThumbnailServeOptions : AssetServeOptions
+	public class AssetServeOptions : ObjectBase
 	{
 		#region Constants
+		public const string DOWNLOAD = "download";
+		public const string REFERRER = "referrer";
 		#endregion
 
 		#region Private Fields
+		private bool? _Download = null;
+		private string _Referrer = null;
 		#endregion
 
 		#region Properties
+		public bool? Download
+		{
+			get { return _Download; }
+			set 
+			{ 
+				_Download = value;
+				OnPropertyChanged("Download");
+			}
+		}
+		public string Referrer
+		{
+			get { return _Referrer; }
+			set 
+			{ 
+				_Referrer = value;
+				OnPropertyChanged("Referrer");
+			}
+		}
 		#endregion
 
 		#region CTor
-		public ThumbnailServeOptions()
+		public AssetServeOptions()
 		{
 		}
 
-		public ThumbnailServeOptions(XmlElement node) : base(node)
+		public AssetServeOptions(XmlElement node) : base(node)
 		{
+			foreach (XmlElement propertyNode in node.ChildNodes)
+			{
+				switch (propertyNode.Name)
+				{
+					case "download":
+						this._Download = ParseBool(propertyNode.InnerText);
+						continue;
+					case "referrer":
+						this._Referrer = propertyNode.InnerText;
+						continue;
+				}
+			}
 		}
 		#endregion
 
@@ -59,13 +93,19 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaThumbnailServeOptions");
+				kparams.AddReplace("objectType", "KalturaAssetServeOptions");
+			kparams.AddIfNotNull("download", this._Download);
+			kparams.AddIfNotNull("referrer", this._Referrer);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
+				case DOWNLOAD:
+					return "Download";
+				case REFERRER:
+					return "Referrer";
 				default:
 					return base.getPropertyName(apiName);
 			}

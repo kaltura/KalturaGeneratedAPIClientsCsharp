@@ -50,6 +50,7 @@ namespace Kaltura.Types
 		public const string CURRENT_BROADCAST_START_TIME = "currentBroadcastStartTime";
 		public const string RECORDING_OPTIONS = "recordingOptions";
 		public const string LIVE_STATUS = "liveStatus";
+		public const string SEGMENT_DURATION = "segmentDuration";
 		#endregion
 
 		#region Private Fields
@@ -67,6 +68,7 @@ namespace Kaltura.Types
 		private float _CurrentBroadcastStartTime = Single.MinValue;
 		private LiveEntryRecordingOptions _RecordingOptions;
 		private EntryServerNodeStatus _LiveStatus = (EntryServerNodeStatus)Int32.MinValue;
+		private int _SegmentDuration = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -181,6 +183,15 @@ namespace Kaltura.Types
 		{
 			get { return _LiveStatus; }
 		}
+		public int SegmentDuration
+		{
+			get { return _SegmentDuration; }
+			set 
+			{ 
+				_SegmentDuration = value;
+				OnPropertyChanged("SegmentDuration");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -244,6 +255,9 @@ namespace Kaltura.Types
 					case "liveStatus":
 						this._LiveStatus = (EntryServerNodeStatus)ParseEnum(typeof(EntryServerNodeStatus), propertyNode.InnerText);
 						continue;
+					case "segmentDuration":
+						this._SegmentDuration = ParseInt(propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -269,6 +283,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("currentBroadcastStartTime", this._CurrentBroadcastStartTime);
 			kparams.AddIfNotNull("recordingOptions", this._RecordingOptions);
 			kparams.AddIfNotNull("liveStatus", this._LiveStatus);
+			kparams.AddIfNotNull("segmentDuration", this._SegmentDuration);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -303,6 +318,8 @@ namespace Kaltura.Types
 					return "RecordingOptions";
 				case LIVE_STATUS:
 					return "LiveStatus";
+				case SEGMENT_DURATION:
+					return "SegmentDuration";
 				default:
 					return base.getPropertyName(apiName);
 			}

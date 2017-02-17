@@ -35,6 +35,124 @@ using Kaltura.Enums;
 
 namespace Kaltura.Services
 {
+	public class ReportExecuteRequestBuilder : RequestBuilder<ReportResponse>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string PARAMS = "params";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public IList<KeyValue> Params_
+		{
+			set;
+			get;
+		}
+
+		public ReportExecuteRequestBuilder()
+			: base("report", "execute")
+		{
+		}
+
+		public ReportExecuteRequestBuilder(int id, IList<KeyValue> params_)
+			: this()
+		{
+			this.Id = id;
+			this.Params_ = params_;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("params_"))
+				kparams.AddIfNotNull("params_", Params_);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ReportResponse>(result);
+		}
+	}
+
+	public class ReportGetBaseTotalRequestBuilder : RequestBuilder<IList<ReportBaseTotal>>
+	{
+		#region Constants
+		public const string REPORT_TYPE = "reportType";
+		public const string REPORT_INPUT_FILTER = "reportInputFilter";
+		public const string OBJECT_IDS = "objectIds";
+		#endregion
+
+		public ReportType ReportType
+		{
+			set;
+			get;
+		}
+		public ReportInputFilter ReportInputFilter
+		{
+			set;
+			get;
+		}
+		public string ObjectIds
+		{
+			set;
+			get;
+		}
+
+		public ReportGetBaseTotalRequestBuilder()
+			: base("report", "getBaseTotal")
+		{
+		}
+
+		public ReportGetBaseTotalRequestBuilder(ReportType reportType, ReportInputFilter reportInputFilter, string objectIds)
+			: this()
+		{
+			this.ReportType = reportType;
+			this.ReportInputFilter = reportInputFilter;
+			this.ObjectIds = objectIds;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("reportType"))
+				kparams.AddIfNotNull("reportType", ReportType);
+			if (!isMapped("reportInputFilter"))
+				kparams.AddIfNotNull("reportInputFilter", ReportInputFilter);
+			if (!isMapped("objectIds"))
+				kparams.AddIfNotNull("objectIds", ObjectIds);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			IList<ReportBaseTotal> list = new List<ReportBaseTotal>();
+			foreach(XmlElement node in result.ChildNodes)
+			{
+				list.Add(ObjectFactory.Create<ReportBaseTotal>(node));
+			}
+			return list;
+		}
+	}
+
 	public class ReportGetGraphsRequestBuilder : RequestBuilder<IList<ReportGraph>>
 	{
 		#region Constants
@@ -105,133 +223,6 @@ namespace Kaltura.Services
 			foreach(XmlElement node in result.ChildNodes)
 			{
 				list.Add(ObjectFactory.Create<ReportGraph>(node));
-			}
-			return list;
-		}
-	}
-
-	public class ReportGetTotalRequestBuilder : RequestBuilder<ReportTotal>
-	{
-		#region Constants
-		public const string REPORT_TYPE = "reportType";
-		public const string REPORT_INPUT_FILTER = "reportInputFilter";
-		public const string OBJECT_IDS = "objectIds";
-		#endregion
-
-		public ReportType ReportType
-		{
-			set;
-			get;
-		}
-		public ReportInputFilter ReportInputFilter
-		{
-			set;
-			get;
-		}
-		public string ObjectIds
-		{
-			set;
-			get;
-		}
-
-		public ReportGetTotalRequestBuilder()
-			: base("report", "getTotal")
-		{
-		}
-
-		public ReportGetTotalRequestBuilder(ReportType reportType, ReportInputFilter reportInputFilter, string objectIds)
-			: this()
-		{
-			this.ReportType = reportType;
-			this.ReportInputFilter = reportInputFilter;
-			this.ObjectIds = objectIds;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("reportType"))
-				kparams.AddIfNotNull("reportType", ReportType);
-			if (!isMapped("reportInputFilter"))
-				kparams.AddIfNotNull("reportInputFilter", ReportInputFilter);
-			if (!isMapped("objectIds"))
-				kparams.AddIfNotNull("objectIds", ObjectIds);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ReportTotal>(result);
-		}
-	}
-
-	public class ReportGetBaseTotalRequestBuilder : RequestBuilder<IList<ReportBaseTotal>>
-	{
-		#region Constants
-		public const string REPORT_TYPE = "reportType";
-		public const string REPORT_INPUT_FILTER = "reportInputFilter";
-		public const string OBJECT_IDS = "objectIds";
-		#endregion
-
-		public ReportType ReportType
-		{
-			set;
-			get;
-		}
-		public ReportInputFilter ReportInputFilter
-		{
-			set;
-			get;
-		}
-		public string ObjectIds
-		{
-			set;
-			get;
-		}
-
-		public ReportGetBaseTotalRequestBuilder()
-			: base("report", "getBaseTotal")
-		{
-		}
-
-		public ReportGetBaseTotalRequestBuilder(ReportType reportType, ReportInputFilter reportInputFilter, string objectIds)
-			: this()
-		{
-			this.ReportType = reportType;
-			this.ReportInputFilter = reportInputFilter;
-			this.ObjectIds = objectIds;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("reportType"))
-				kparams.AddIfNotNull("reportType", ReportType);
-			if (!isMapped("reportInputFilter"))
-				kparams.AddIfNotNull("reportInputFilter", ReportInputFilter);
-			if (!isMapped("objectIds"))
-				kparams.AddIfNotNull("objectIds", ObjectIds);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			IList<ReportBaseTotal> list = new List<ReportBaseTotal>();
-			foreach(XmlElement node in result.ChildNodes)
-			{
-				list.Add(ObjectFactory.Create<ReportBaseTotal>(node));
 			}
 			return list;
 		}
@@ -313,6 +304,67 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ReportTable>(result);
+		}
+	}
+
+	public class ReportGetTotalRequestBuilder : RequestBuilder<ReportTotal>
+	{
+		#region Constants
+		public const string REPORT_TYPE = "reportType";
+		public const string REPORT_INPUT_FILTER = "reportInputFilter";
+		public const string OBJECT_IDS = "objectIds";
+		#endregion
+
+		public ReportType ReportType
+		{
+			set;
+			get;
+		}
+		public ReportInputFilter ReportInputFilter
+		{
+			set;
+			get;
+		}
+		public string ObjectIds
+		{
+			set;
+			get;
+		}
+
+		public ReportGetTotalRequestBuilder()
+			: base("report", "getTotal")
+		{
+		}
+
+		public ReportGetTotalRequestBuilder(ReportType reportType, ReportInputFilter reportInputFilter, string objectIds)
+			: this()
+		{
+			this.ReportType = reportType;
+			this.ReportInputFilter = reportInputFilter;
+			this.ObjectIds = objectIds;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("reportType"))
+				kparams.AddIfNotNull("reportType", ReportType);
+			if (!isMapped("reportInputFilter"))
+				kparams.AddIfNotNull("reportInputFilter", ReportInputFilter);
+			if (!isMapped("objectIds"))
+				kparams.AddIfNotNull("objectIds", ObjectIds);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ReportTotal>(result);
 		}
 	}
 
@@ -474,58 +526,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class ReportExecuteRequestBuilder : RequestBuilder<ReportResponse>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string PARAMS = "params";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-		public IList<KeyValue> Params_
-		{
-			set;
-			get;
-		}
-
-		public ReportExecuteRequestBuilder()
-			: base("report", "execute")
-		{
-		}
-
-		public ReportExecuteRequestBuilder(int id, IList<KeyValue> params_)
-			: this()
-		{
-			this.Id = id;
-			this.Params_ = params_;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("params_"))
-				kparams.AddIfNotNull("params_", Params_);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ReportResponse>(result);
-		}
-	}
-
 
 	public class ReportService
 	{
@@ -533,14 +533,9 @@ namespace Kaltura.Services
 		{
 		}
 
-		public static ReportGetGraphsRequestBuilder GetGraphs(ReportType reportType, ReportInputFilter reportInputFilter, string dimension = null, string objectIds = null)
+		public static ReportExecuteRequestBuilder Execute(int id, IList<KeyValue> params_ = null)
 		{
-			return new ReportGetGraphsRequestBuilder(reportType, reportInputFilter, dimension, objectIds);
-		}
-
-		public static ReportGetTotalRequestBuilder GetTotal(ReportType reportType, ReportInputFilter reportInputFilter, string objectIds = null)
-		{
-			return new ReportGetTotalRequestBuilder(reportType, reportInputFilter, objectIds);
+			return new ReportExecuteRequestBuilder(id, params_);
 		}
 
 		public static ReportGetBaseTotalRequestBuilder GetBaseTotal(ReportType reportType, ReportInputFilter reportInputFilter, string objectIds = null)
@@ -548,9 +543,19 @@ namespace Kaltura.Services
 			return new ReportGetBaseTotalRequestBuilder(reportType, reportInputFilter, objectIds);
 		}
 
+		public static ReportGetGraphsRequestBuilder GetGraphs(ReportType reportType, ReportInputFilter reportInputFilter, string dimension = null, string objectIds = null)
+		{
+			return new ReportGetGraphsRequestBuilder(reportType, reportInputFilter, dimension, objectIds);
+		}
+
 		public static ReportGetTableRequestBuilder GetTable(ReportType reportType, ReportInputFilter reportInputFilter, FilterPager pager, string order = null, string objectIds = null)
 		{
 			return new ReportGetTableRequestBuilder(reportType, reportInputFilter, pager, order, objectIds);
+		}
+
+		public static ReportGetTotalRequestBuilder GetTotal(ReportType reportType, ReportInputFilter reportInputFilter, string objectIds = null)
+		{
+			return new ReportGetTotalRequestBuilder(reportType, reportInputFilter, objectIds);
 		}
 
 		public static ReportGetUrlForReportAsCsvRequestBuilder GetUrlForReportAsCsv(string reportTitle, string reportText, string headers, ReportType reportType, ReportInputFilter reportInputFilter, string dimension = null, FilterPager pager = null, string order = null, string objectIds = null)
@@ -561,11 +566,6 @@ namespace Kaltura.Services
 		public static ReportServeRequestBuilder Serve(string id)
 		{
 			return new ReportServeRequestBuilder(id);
-		}
-
-		public static ReportExecuteRequestBuilder Execute(int id, IList<KeyValue> params_ = null)
-		{
-			return new ReportExecuteRequestBuilder(id, params_);
 		}
 	}
 }

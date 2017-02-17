@@ -78,101 +78,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class CaptionParamsGetRequestBuilder : RequestBuilder<CaptionParams>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-
-		public CaptionParamsGetRequestBuilder()
-			: base("caption_captionparams", "get")
-		{
-		}
-
-		public CaptionParamsGetRequestBuilder(int id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<CaptionParams>(result);
-		}
-	}
-
-	public class CaptionParamsUpdateRequestBuilder : RequestBuilder<CaptionParams>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string CAPTION_PARAMS = "captionParams";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-		public CaptionParams CaptionParams
-		{
-			set;
-			get;
-		}
-
-		public CaptionParamsUpdateRequestBuilder()
-			: base("caption_captionparams", "update")
-		{
-		}
-
-		public CaptionParamsUpdateRequestBuilder(int id, CaptionParams captionParams)
-			: this()
-		{
-			this.Id = id;
-			this.CaptionParams = captionParams;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("captionParams"))
-				kparams.AddIfNotNull("captionParams", CaptionParams);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<CaptionParams>(result);
-		}
-	}
-
 	public class CaptionParamsDeleteRequestBuilder : RequestBuilder<object>
 	{
 		#region Constants
@@ -213,6 +118,49 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return null;
+		}
+	}
+
+	public class CaptionParamsGetRequestBuilder : RequestBuilder<CaptionParams>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public CaptionParamsGetRequestBuilder()
+			: base("caption_captionparams", "get")
+		{
+		}
+
+		public CaptionParamsGetRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<CaptionParams>(result);
 		}
 	}
 
@@ -268,6 +216,58 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class CaptionParamsUpdateRequestBuilder : RequestBuilder<CaptionParams>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string CAPTION_PARAMS = "captionParams";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public CaptionParams CaptionParams
+		{
+			set;
+			get;
+		}
+
+		public CaptionParamsUpdateRequestBuilder()
+			: base("caption_captionparams", "update")
+		{
+		}
+
+		public CaptionParamsUpdateRequestBuilder(int id, CaptionParams captionParams)
+			: this()
+		{
+			this.Id = id;
+			this.CaptionParams = captionParams;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("captionParams"))
+				kparams.AddIfNotNull("captionParams", CaptionParams);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<CaptionParams>(result);
+		}
+	}
+
 
 	public class CaptionParamsService
 	{
@@ -280,24 +280,24 @@ namespace Kaltura.Services
 			return new CaptionParamsAddRequestBuilder(captionParams);
 		}
 
-		public static CaptionParamsGetRequestBuilder Get(int id)
-		{
-			return new CaptionParamsGetRequestBuilder(id);
-		}
-
-		public static CaptionParamsUpdateRequestBuilder Update(int id, CaptionParams captionParams)
-		{
-			return new CaptionParamsUpdateRequestBuilder(id, captionParams);
-		}
-
 		public static CaptionParamsDeleteRequestBuilder Delete(int id)
 		{
 			return new CaptionParamsDeleteRequestBuilder(id);
 		}
 
+		public static CaptionParamsGetRequestBuilder Get(int id)
+		{
+			return new CaptionParamsGetRequestBuilder(id);
+		}
+
 		public static CaptionParamsListRequestBuilder List(CaptionParamsFilter filter = null, FilterPager pager = null)
 		{
 			return new CaptionParamsListRequestBuilder(filter, pager);
+		}
+
+		public static CaptionParamsUpdateRequestBuilder Update(int id, CaptionParams captionParams)
+		{
+			return new CaptionParamsUpdateRequestBuilder(id, captionParams);
 		}
 	}
 }

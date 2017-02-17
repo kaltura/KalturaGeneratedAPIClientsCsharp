@@ -155,6 +155,49 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class MetadataProfileDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public MetadataProfileDeleteRequestBuilder()
+			: base("metadata_metadataprofile", "delete")
+		{
+		}
+
+		public MetadataProfileDeleteRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
 	public class MetadataProfileGetRequestBuilder : RequestBuilder<MetadataProfile>
 	{
 		#region Constants
@@ -183,76 +226,6 @@ namespace Kaltura.Services
 			Params kparams = base.getParameters(includeServiceAndAction);
 			if (!isMapped("id"))
 				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<MetadataProfile>(result);
-		}
-	}
-
-	public class MetadataProfileUpdateRequestBuilder : RequestBuilder<MetadataProfile>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string METADATA_PROFILE = "metadataProfile";
-		public const string XSD_DATA = "xsdData";
-		public const string VIEWS_DATA = "viewsData";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-		public MetadataProfile MetadataProfile
-		{
-			set;
-			get;
-		}
-		public string XsdData
-		{
-			set;
-			get;
-		}
-		public string ViewsData
-		{
-			set;
-			get;
-		}
-
-		public MetadataProfileUpdateRequestBuilder()
-			: base("metadata_metadataprofile", "update")
-		{
-		}
-
-		public MetadataProfileUpdateRequestBuilder(int id, MetadataProfile metadataProfile, string xsdData, string viewsData)
-			: this()
-		{
-			this.Id = id;
-			this.MetadataProfile = metadataProfile;
-			this.XsdData = xsdData;
-			this.ViewsData = viewsData;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("metadataProfile"))
-				kparams.AddIfNotNull("metadataProfile", MetadataProfile);
-			if (!isMapped("xsdData"))
-				kparams.AddIfNotNull("xsdData", XsdData);
-			if (!isMapped("viewsData"))
-				kparams.AddIfNotNull("viewsData", ViewsData);
 			return kparams;
 		}
 
@@ -363,49 +336,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class MetadataProfileDeleteRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-
-		public MetadataProfileDeleteRequestBuilder()
-			: base("metadata_metadataprofile", "delete")
-		{
-		}
-
-		public MetadataProfileDeleteRequestBuilder(int id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
 	public class MetadataProfileRevertRequestBuilder : RequestBuilder<MetadataProfile>
 	{
 		#region Constants
@@ -443,6 +373,76 @@ namespace Kaltura.Services
 				kparams.AddIfNotNull("id", Id);
 			if (!isMapped("toVersion"))
 				kparams.AddIfNotNull("toVersion", ToVersion);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<MetadataProfile>(result);
+		}
+	}
+
+	public class MetadataProfileUpdateRequestBuilder : RequestBuilder<MetadataProfile>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string METADATA_PROFILE = "metadataProfile";
+		public const string XSD_DATA = "xsdData";
+		public const string VIEWS_DATA = "viewsData";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public MetadataProfile MetadataProfile
+		{
+			set;
+			get;
+		}
+		public string XsdData
+		{
+			set;
+			get;
+		}
+		public string ViewsData
+		{
+			set;
+			get;
+		}
+
+		public MetadataProfileUpdateRequestBuilder()
+			: base("metadata_metadataprofile", "update")
+		{
+		}
+
+		public MetadataProfileUpdateRequestBuilder(int id, MetadataProfile metadataProfile, string xsdData, string viewsData)
+			: this()
+		{
+			this.Id = id;
+			this.MetadataProfile = metadataProfile;
+			this.XsdData = xsdData;
+			this.ViewsData = viewsData;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("metadataProfile"))
+				kparams.AddIfNotNull("metadataProfile", MetadataProfile);
+			if (!isMapped("xsdData"))
+				kparams.AddIfNotNull("xsdData", XsdData);
+			if (!isMapped("viewsData"))
+				kparams.AddIfNotNull("viewsData", ViewsData);
 			return kparams;
 		}
 
@@ -509,57 +509,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class MetadataProfileUpdateViewsFromFileRequestBuilder : RequestBuilder<MetadataProfile>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string VIEWS_FILE = "viewsFile";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-		public Stream ViewsFile
-		{
-			set;
-			get;
-		}
-
-		public MetadataProfileUpdateViewsFromFileRequestBuilder()
-			: base("metadata_metadataprofile", "updateViewsFromFile")
-		{
-		}
-
-		public MetadataProfileUpdateViewsFromFileRequestBuilder(int id, Stream viewsFile)
-			: this()
-		{
-			this.Id = id;
-			this.ViewsFile = viewsFile;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			kfiles.Add("viewsFile", ViewsFile);
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<MetadataProfile>(result);
-		}
-	}
-
 	public class MetadataProfileUpdateTransformationFromFileRequestBuilder : RequestBuilder<MetadataProfile>
 	{
 		#region Constants
@@ -611,6 +560,57 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class MetadataProfileUpdateViewsFromFileRequestBuilder : RequestBuilder<MetadataProfile>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string VIEWS_FILE = "viewsFile";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public Stream ViewsFile
+		{
+			set;
+			get;
+		}
+
+		public MetadataProfileUpdateViewsFromFileRequestBuilder()
+			: base("metadata_metadataprofile", "updateViewsFromFile")
+		{
+		}
+
+		public MetadataProfileUpdateViewsFromFileRequestBuilder(int id, Stream viewsFile)
+			: this()
+		{
+			this.Id = id;
+			this.ViewsFile = viewsFile;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			kfiles.Add("viewsFile", ViewsFile);
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<MetadataProfile>(result);
+		}
+	}
+
 
 	public class MetadataProfileService
 	{
@@ -628,14 +628,14 @@ namespace Kaltura.Services
 			return new MetadataProfileAddFromFileRequestBuilder(metadataProfile, xsdFile, viewsFile);
 		}
 
+		public static MetadataProfileDeleteRequestBuilder Delete(int id)
+		{
+			return new MetadataProfileDeleteRequestBuilder(id);
+		}
+
 		public static MetadataProfileGetRequestBuilder Get(int id)
 		{
 			return new MetadataProfileGetRequestBuilder(id);
-		}
-
-		public static MetadataProfileUpdateRequestBuilder Update(int id, MetadataProfile metadataProfile, string xsdData = null, string viewsData = null)
-		{
-			return new MetadataProfileUpdateRequestBuilder(id, metadataProfile, xsdData, viewsData);
 		}
 
 		public static MetadataProfileListRequestBuilder List(MetadataProfileFilter filter = null, FilterPager pager = null)
@@ -648,14 +648,14 @@ namespace Kaltura.Services
 			return new MetadataProfileListFieldsRequestBuilder(metadataProfileId);
 		}
 
-		public static MetadataProfileDeleteRequestBuilder Delete(int id)
-		{
-			return new MetadataProfileDeleteRequestBuilder(id);
-		}
-
 		public static MetadataProfileRevertRequestBuilder Revert(int id, int toVersion)
 		{
 			return new MetadataProfileRevertRequestBuilder(id, toVersion);
+		}
+
+		public static MetadataProfileUpdateRequestBuilder Update(int id, MetadataProfile metadataProfile, string xsdData = null, string viewsData = null)
+		{
+			return new MetadataProfileUpdateRequestBuilder(id, metadataProfile, xsdData, viewsData);
 		}
 
 		public static MetadataProfileUpdateDefinitionFromFileRequestBuilder UpdateDefinitionFromFile(int id, Stream xsdFile)
@@ -663,14 +663,14 @@ namespace Kaltura.Services
 			return new MetadataProfileUpdateDefinitionFromFileRequestBuilder(id, xsdFile);
 		}
 
-		public static MetadataProfileUpdateViewsFromFileRequestBuilder UpdateViewsFromFile(int id, Stream viewsFile)
-		{
-			return new MetadataProfileUpdateViewsFromFileRequestBuilder(id, viewsFile);
-		}
-
 		public static MetadataProfileUpdateTransformationFromFileRequestBuilder UpdateTransformationFromFile(int id, Stream xsltFile)
 		{
 			return new MetadataProfileUpdateTransformationFromFileRequestBuilder(id, xsltFile);
+		}
+
+		public static MetadataProfileUpdateViewsFromFileRequestBuilder UpdateViewsFromFile(int id, Stream viewsFile)
+		{
+			return new MetadataProfileUpdateViewsFromFileRequestBuilder(id, viewsFile);
 		}
 	}
 }

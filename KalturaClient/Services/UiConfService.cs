@@ -78,59 +78,7 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class UiConfUpdateRequestBuilder : RequestBuilder<UiConf>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string UI_CONF = "uiConf";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-		public UiConf UiConf
-		{
-			set;
-			get;
-		}
-
-		public UiConfUpdateRequestBuilder()
-			: base("uiconf", "update")
-		{
-		}
-
-		public UiConfUpdateRequestBuilder(int id, UiConf uiConf)
-			: this()
-		{
-			this.Id = id;
-			this.UiConf = uiConf;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("uiConf"))
-				kparams.AddIfNotNull("uiConf", UiConf);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<UiConf>(result);
-		}
-	}
-
-	public class UiConfGetRequestBuilder : RequestBuilder<UiConf>
+	public class UiConfCloneRequestBuilder : RequestBuilder<UiConf>
 	{
 		#region Constants
 		public const string ID = "id";
@@ -142,12 +90,12 @@ namespace Kaltura.Services
 			get;
 		}
 
-		public UiConfGetRequestBuilder()
-			: base("uiconf", "get")
+		public UiConfCloneRequestBuilder()
+			: base("uiconf", "clone")
 		{
 		}
 
-		public UiConfGetRequestBuilder(int id)
+		public UiConfCloneRequestBuilder(int id)
 			: this()
 		{
 			this.Id = id;
@@ -216,7 +164,7 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class UiConfCloneRequestBuilder : RequestBuilder<UiConf>
+	public class UiConfGetRequestBuilder : RequestBuilder<UiConf>
 	{
 		#region Constants
 		public const string ID = "id";
@@ -228,12 +176,12 @@ namespace Kaltura.Services
 			get;
 		}
 
-		public UiConfCloneRequestBuilder()
-			: base("uiconf", "clone")
+		public UiConfGetRequestBuilder()
+			: base("uiconf", "get")
 		{
 		}
 
-		public UiConfCloneRequestBuilder(int id)
+		public UiConfGetRequestBuilder(int id)
 			: this()
 		{
 			this.Id = id;
@@ -259,43 +207,20 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class UiConfListTemplatesRequestBuilder : RequestBuilder<ListResponse<UiConf>>
+	public class UiConfGetAvailableTypesRequestBuilder : RequestBuilder<IList<UiConfTypeInfo>>
 	{
 		#region Constants
-		public const string FILTER = "filter";
-		public const string PAGER = "pager";
 		#endregion
 
-		public UiConfFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
 
-		public UiConfListTemplatesRequestBuilder()
-			: base("uiconf", "listTemplates")
+		public UiConfGetAvailableTypesRequestBuilder()
+			: base("uiconf", "getAvailableTypes")
 		{
-		}
-
-		public UiConfListTemplatesRequestBuilder(UiConfFilter filter, FilterPager pager)
-			: this()
-		{
-			this.Filter = filter;
-			this.Pager = pager;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("filter"))
-				kparams.AddIfNotNull("filter", Filter);
-			if (!isMapped("pager"))
-				kparams.AddIfNotNull("pager", Pager);
 			return kparams;
 		}
 
@@ -307,7 +232,12 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<ListResponse<UiConf>>(result);
+			IList<UiConfTypeInfo> list = new List<UiConfTypeInfo>();
+			foreach(XmlElement node in result.ChildNodes)
+			{
+				list.Add(ObjectFactory.Create<UiConfTypeInfo>(node));
+			}
+			return list;
 		}
 	}
 
@@ -363,20 +293,43 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class UiConfGetAvailableTypesRequestBuilder : RequestBuilder<IList<UiConfTypeInfo>>
+	public class UiConfListTemplatesRequestBuilder : RequestBuilder<ListResponse<UiConf>>
 	{
 		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
 		#endregion
 
-
-		public UiConfGetAvailableTypesRequestBuilder()
-			: base("uiconf", "getAvailableTypes")
+		public UiConfFilter Filter
 		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public UiConfListTemplatesRequestBuilder()
+			: base("uiconf", "listTemplates")
+		{
+		}
+
+		public UiConfListTemplatesRequestBuilder(UiConfFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
 			return kparams;
 		}
 
@@ -388,12 +341,59 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			IList<UiConfTypeInfo> list = new List<UiConfTypeInfo>();
-			foreach(XmlElement node in result.ChildNodes)
-			{
-				list.Add(ObjectFactory.Create<UiConfTypeInfo>(node));
-			}
-			return list;
+			return ObjectFactory.Create<ListResponse<UiConf>>(result);
+		}
+	}
+
+	public class UiConfUpdateRequestBuilder : RequestBuilder<UiConf>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string UI_CONF = "uiConf";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public UiConf UiConf
+		{
+			set;
+			get;
+		}
+
+		public UiConfUpdateRequestBuilder()
+			: base("uiconf", "update")
+		{
+		}
+
+		public UiConfUpdateRequestBuilder(int id, UiConf uiConf)
+			: this()
+		{
+			this.Id = id;
+			this.UiConf = uiConf;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("uiConf"))
+				kparams.AddIfNotNull("uiConf", UiConf);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<UiConf>(result);
 		}
 	}
 
@@ -409,14 +409,9 @@ namespace Kaltura.Services
 			return new UiConfAddRequestBuilder(uiConf);
 		}
 
-		public static UiConfUpdateRequestBuilder Update(int id, UiConf uiConf)
+		public static UiConfCloneRequestBuilder Clone(int id)
 		{
-			return new UiConfUpdateRequestBuilder(id, uiConf);
-		}
-
-		public static UiConfGetRequestBuilder Get(int id)
-		{
-			return new UiConfGetRequestBuilder(id);
+			return new UiConfCloneRequestBuilder(id);
 		}
 
 		public static UiConfDeleteRequestBuilder Delete(int id)
@@ -424,14 +419,14 @@ namespace Kaltura.Services
 			return new UiConfDeleteRequestBuilder(id);
 		}
 
-		public static UiConfCloneRequestBuilder Clone(int id)
+		public static UiConfGetRequestBuilder Get(int id)
 		{
-			return new UiConfCloneRequestBuilder(id);
+			return new UiConfGetRequestBuilder(id);
 		}
 
-		public static UiConfListTemplatesRequestBuilder ListTemplates(UiConfFilter filter = null, FilterPager pager = null)
+		public static UiConfGetAvailableTypesRequestBuilder GetAvailableTypes()
 		{
-			return new UiConfListTemplatesRequestBuilder(filter, pager);
+			return new UiConfGetAvailableTypesRequestBuilder();
 		}
 
 		public static UiConfListRequestBuilder List(UiConfFilter filter = null, FilterPager pager = null)
@@ -439,9 +434,14 @@ namespace Kaltura.Services
 			return new UiConfListRequestBuilder(filter, pager);
 		}
 
-		public static UiConfGetAvailableTypesRequestBuilder GetAvailableTypes()
+		public static UiConfListTemplatesRequestBuilder ListTemplates(UiConfFilter filter = null, FilterPager pager = null)
 		{
-			return new UiConfGetAvailableTypesRequestBuilder();
+			return new UiConfListTemplatesRequestBuilder(filter, pager);
+		}
+
+		public static UiConfUpdateRequestBuilder Update(int id, UiConf uiConf)
+		{
+			return new UiConfUpdateRequestBuilder(id, uiConf);
 		}
 	}
 }

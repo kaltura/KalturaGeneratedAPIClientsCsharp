@@ -78,101 +78,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class AccessControlProfileGetRequestBuilder : RequestBuilder<AccessControlProfile>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-
-		public AccessControlProfileGetRequestBuilder()
-			: base("accesscontrolprofile", "get")
-		{
-		}
-
-		public AccessControlProfileGetRequestBuilder(int id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<AccessControlProfile>(result);
-		}
-	}
-
-	public class AccessControlProfileUpdateRequestBuilder : RequestBuilder<AccessControlProfile>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string ACCESS_CONTROL_PROFILE = "accessControlProfile";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-		public AccessControlProfile AccessControlProfile
-		{
-			set;
-			get;
-		}
-
-		public AccessControlProfileUpdateRequestBuilder()
-			: base("accesscontrolprofile", "update")
-		{
-		}
-
-		public AccessControlProfileUpdateRequestBuilder(int id, AccessControlProfile accessControlProfile)
-			: this()
-		{
-			this.Id = id;
-			this.AccessControlProfile = accessControlProfile;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("accessControlProfile"))
-				kparams.AddIfNotNull("accessControlProfile", AccessControlProfile);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<AccessControlProfile>(result);
-		}
-	}
-
 	public class AccessControlProfileDeleteRequestBuilder : RequestBuilder<object>
 	{
 		#region Constants
@@ -213,6 +118,49 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return null;
+		}
+	}
+
+	public class AccessControlProfileGetRequestBuilder : RequestBuilder<AccessControlProfile>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public AccessControlProfileGetRequestBuilder()
+			: base("accesscontrolprofile", "get")
+		{
+		}
+
+		public AccessControlProfileGetRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<AccessControlProfile>(result);
 		}
 	}
 
@@ -268,6 +216,58 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class AccessControlProfileUpdateRequestBuilder : RequestBuilder<AccessControlProfile>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string ACCESS_CONTROL_PROFILE = "accessControlProfile";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public AccessControlProfile AccessControlProfile
+		{
+			set;
+			get;
+		}
+
+		public AccessControlProfileUpdateRequestBuilder()
+			: base("accesscontrolprofile", "update")
+		{
+		}
+
+		public AccessControlProfileUpdateRequestBuilder(int id, AccessControlProfile accessControlProfile)
+			: this()
+		{
+			this.Id = id;
+			this.AccessControlProfile = accessControlProfile;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("accessControlProfile"))
+				kparams.AddIfNotNull("accessControlProfile", AccessControlProfile);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<AccessControlProfile>(result);
+		}
+	}
+
 
 	public class AccessControlProfileService
 	{
@@ -280,24 +280,24 @@ namespace Kaltura.Services
 			return new AccessControlProfileAddRequestBuilder(accessControlProfile);
 		}
 
-		public static AccessControlProfileGetRequestBuilder Get(int id)
-		{
-			return new AccessControlProfileGetRequestBuilder(id);
-		}
-
-		public static AccessControlProfileUpdateRequestBuilder Update(int id, AccessControlProfile accessControlProfile)
-		{
-			return new AccessControlProfileUpdateRequestBuilder(id, accessControlProfile);
-		}
-
 		public static AccessControlProfileDeleteRequestBuilder Delete(int id)
 		{
 			return new AccessControlProfileDeleteRequestBuilder(id);
 		}
 
+		public static AccessControlProfileGetRequestBuilder Get(int id)
+		{
+			return new AccessControlProfileGetRequestBuilder(id);
+		}
+
 		public static AccessControlProfileListRequestBuilder List(AccessControlProfileFilter filter = null, FilterPager pager = null)
 		{
 			return new AccessControlProfileListRequestBuilder(filter, pager);
+		}
+
+		public static AccessControlProfileUpdateRequestBuilder Update(int id, AccessControlProfile accessControlProfile)
+		{
+			return new AccessControlProfileUpdateRequestBuilder(id, accessControlProfile);
 		}
 	}
 }

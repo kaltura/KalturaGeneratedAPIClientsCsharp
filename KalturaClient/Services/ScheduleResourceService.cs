@@ -78,98 +78,54 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class ScheduleResourceGetRequestBuilder : RequestBuilder<ScheduleResource>
+	public class ScheduleResourceAddFromBulkUploadRequestBuilder : RequestBuilder<BulkUpload>
 	{
 		#region Constants
-		public const string SCHEDULE_RESOURCE_ID = "scheduleResourceId";
+		public const string FILE_DATA = "fileData";
+		public const string BULK_UPLOAD_DATA = "bulkUploadData";
 		#endregion
 
-		public int ScheduleResourceId
+		public Stream FileData
+		{
+			set;
+			get;
+		}
+		public BulkUploadCsvJobData BulkUploadData
 		{
 			set;
 			get;
 		}
 
-		public ScheduleResourceGetRequestBuilder()
-			: base("schedule_scheduleresource", "get")
+		public ScheduleResourceAddFromBulkUploadRequestBuilder()
+			: base("schedule_scheduleresource", "addFromBulkUpload")
 		{
 		}
 
-		public ScheduleResourceGetRequestBuilder(int scheduleResourceId)
+		public ScheduleResourceAddFromBulkUploadRequestBuilder(Stream fileData, BulkUploadCsvJobData bulkUploadData)
 			: this()
 		{
-			this.ScheduleResourceId = scheduleResourceId;
+			this.FileData = fileData;
+			this.BulkUploadData = bulkUploadData;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("scheduleResourceId"))
-				kparams.AddIfNotNull("scheduleResourceId", ScheduleResourceId);
+			if (!isMapped("bulkUploadData"))
+				kparams.AddIfNotNull("bulkUploadData", BulkUploadData);
 			return kparams;
 		}
 
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
+			kfiles.Add("fileData", FileData);
 			return kfiles;
 		}
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<ScheduleResource>(result);
-		}
-	}
-
-	public class ScheduleResourceUpdateRequestBuilder : RequestBuilder<ScheduleResource>
-	{
-		#region Constants
-		public const string SCHEDULE_RESOURCE_ID = "scheduleResourceId";
-		public const string SCHEDULE_RESOURCE = "scheduleResource";
-		#endregion
-
-		public int ScheduleResourceId
-		{
-			set;
-			get;
-		}
-		public ScheduleResource ScheduleResource
-		{
-			set;
-			get;
-		}
-
-		public ScheduleResourceUpdateRequestBuilder()
-			: base("schedule_scheduleresource", "update")
-		{
-		}
-
-		public ScheduleResourceUpdateRequestBuilder(int scheduleResourceId, ScheduleResource scheduleResource)
-			: this()
-		{
-			this.ScheduleResourceId = scheduleResourceId;
-			this.ScheduleResource = scheduleResource;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("scheduleResourceId"))
-				kparams.AddIfNotNull("scheduleResourceId", ScheduleResourceId);
-			if (!isMapped("scheduleResource"))
-				kparams.AddIfNotNull("scheduleResource", ScheduleResource);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ScheduleResource>(result);
+			return ObjectFactory.Create<BulkUpload>(result);
 		}
 	}
 
@@ -191,6 +147,49 @@ namespace Kaltura.Services
 		}
 
 		public ScheduleResourceDeleteRequestBuilder(int scheduleResourceId)
+			: this()
+		{
+			this.ScheduleResourceId = scheduleResourceId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("scheduleResourceId"))
+				kparams.AddIfNotNull("scheduleResourceId", ScheduleResourceId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ScheduleResource>(result);
+		}
+	}
+
+	public class ScheduleResourceGetRequestBuilder : RequestBuilder<ScheduleResource>
+	{
+		#region Constants
+		public const string SCHEDULE_RESOURCE_ID = "scheduleResourceId";
+		#endregion
+
+		public int ScheduleResourceId
+		{
+			set;
+			get;
+		}
+
+		public ScheduleResourceGetRequestBuilder()
+			: base("schedule_scheduleresource", "get")
+		{
+		}
+
+		public ScheduleResourceGetRequestBuilder(int scheduleResourceId)
 			: this()
 		{
 			this.ScheduleResourceId = scheduleResourceId;
@@ -268,54 +267,55 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class ScheduleResourceAddFromBulkUploadRequestBuilder : RequestBuilder<BulkUpload>
+	public class ScheduleResourceUpdateRequestBuilder : RequestBuilder<ScheduleResource>
 	{
 		#region Constants
-		public const string FILE_DATA = "fileData";
-		public const string BULK_UPLOAD_DATA = "bulkUploadData";
+		public const string SCHEDULE_RESOURCE_ID = "scheduleResourceId";
+		public const string SCHEDULE_RESOURCE = "scheduleResource";
 		#endregion
 
-		public Stream FileData
+		public int ScheduleResourceId
 		{
 			set;
 			get;
 		}
-		public BulkUploadCsvJobData BulkUploadData
+		public ScheduleResource ScheduleResource
 		{
 			set;
 			get;
 		}
 
-		public ScheduleResourceAddFromBulkUploadRequestBuilder()
-			: base("schedule_scheduleresource", "addFromBulkUpload")
+		public ScheduleResourceUpdateRequestBuilder()
+			: base("schedule_scheduleresource", "update")
 		{
 		}
 
-		public ScheduleResourceAddFromBulkUploadRequestBuilder(Stream fileData, BulkUploadCsvJobData bulkUploadData)
+		public ScheduleResourceUpdateRequestBuilder(int scheduleResourceId, ScheduleResource scheduleResource)
 			: this()
 		{
-			this.FileData = fileData;
-			this.BulkUploadData = bulkUploadData;
+			this.ScheduleResourceId = scheduleResourceId;
+			this.ScheduleResource = scheduleResource;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("bulkUploadData"))
-				kparams.AddIfNotNull("bulkUploadData", BulkUploadData);
+			if (!isMapped("scheduleResourceId"))
+				kparams.AddIfNotNull("scheduleResourceId", ScheduleResourceId);
+			if (!isMapped("scheduleResource"))
+				kparams.AddIfNotNull("scheduleResource", ScheduleResource);
 			return kparams;
 		}
 
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("fileData", FileData);
 			return kfiles;
 		}
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<BulkUpload>(result);
+			return ObjectFactory.Create<ScheduleResource>(result);
 		}
 	}
 
@@ -331,14 +331,9 @@ namespace Kaltura.Services
 			return new ScheduleResourceAddRequestBuilder(scheduleResource);
 		}
 
-		public static ScheduleResourceGetRequestBuilder Get(int scheduleResourceId)
+		public static ScheduleResourceAddFromBulkUploadRequestBuilder AddFromBulkUpload(Stream fileData, BulkUploadCsvJobData bulkUploadData = null)
 		{
-			return new ScheduleResourceGetRequestBuilder(scheduleResourceId);
-		}
-
-		public static ScheduleResourceUpdateRequestBuilder Update(int scheduleResourceId, ScheduleResource scheduleResource)
-		{
-			return new ScheduleResourceUpdateRequestBuilder(scheduleResourceId, scheduleResource);
+			return new ScheduleResourceAddFromBulkUploadRequestBuilder(fileData, bulkUploadData);
 		}
 
 		public static ScheduleResourceDeleteRequestBuilder Delete(int scheduleResourceId)
@@ -346,14 +341,19 @@ namespace Kaltura.Services
 			return new ScheduleResourceDeleteRequestBuilder(scheduleResourceId);
 		}
 
+		public static ScheduleResourceGetRequestBuilder Get(int scheduleResourceId)
+		{
+			return new ScheduleResourceGetRequestBuilder(scheduleResourceId);
+		}
+
 		public static ScheduleResourceListRequestBuilder List(ScheduleResourceFilter filter = null, FilterPager pager = null)
 		{
 			return new ScheduleResourceListRequestBuilder(filter, pager);
 		}
 
-		public static ScheduleResourceAddFromBulkUploadRequestBuilder AddFromBulkUpload(Stream fileData, BulkUploadCsvJobData bulkUploadData = null)
+		public static ScheduleResourceUpdateRequestBuilder Update(int scheduleResourceId, ScheduleResource scheduleResource)
 		{
-			return new ScheduleResourceAddFromBulkUploadRequestBuilder(fileData, bulkUploadData);
+			return new ScheduleResourceUpdateRequestBuilder(scheduleResourceId, scheduleResource);
 		}
 	}
 }

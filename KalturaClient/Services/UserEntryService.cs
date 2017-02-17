@@ -78,58 +78,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class UserEntryUpdateRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string USER_ENTRY = "userEntry";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-		public UserEntry UserEntry
-		{
-			set;
-			get;
-		}
-
-		public UserEntryUpdateRequestBuilder()
-			: base("userentry", "update")
-		{
-		}
-
-		public UserEntryUpdateRequestBuilder(int id, UserEntry userEntry)
-			: this()
-		{
-			this.Id = id;
-			this.UserEntry = userEntry;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("userEntry"))
-				kparams.AddIfNotNull("userEntry", UserEntry);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
 	public class UserEntryDeleteRequestBuilder : RequestBuilder<UserEntry>
 	{
 		#region Constants
@@ -148,6 +96,49 @@ namespace Kaltura.Services
 		}
 
 		public UserEntryDeleteRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<UserEntry>(result);
+		}
+	}
+
+	public class UserEntryGetRequestBuilder : RequestBuilder<UserEntry>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+
+		public UserEntryGetRequestBuilder()
+			: base("userentry", "get")
+		{
+		}
+
+		public UserEntryGetRequestBuilder(string id)
 			: this()
 		{
 			this.Id = id;
@@ -225,49 +216,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class UserEntryGetRequestBuilder : RequestBuilder<UserEntry>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public string Id
-		{
-			set;
-			get;
-		}
-
-		public UserEntryGetRequestBuilder()
-			: base("userentry", "get")
-		{
-		}
-
-		public UserEntryGetRequestBuilder(string id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<UserEntry>(result);
-		}
-	}
-
 	public class UserEntrySubmitQuizRequestBuilder : RequestBuilder<QuizUserEntry>
 	{
 		#region Constants
@@ -311,6 +259,58 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class UserEntryUpdateRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string USER_ENTRY = "userEntry";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public UserEntry UserEntry
+		{
+			set;
+			get;
+		}
+
+		public UserEntryUpdateRequestBuilder()
+			: base("userentry", "update")
+		{
+		}
+
+		public UserEntryUpdateRequestBuilder(int id, UserEntry userEntry)
+			: this()
+		{
+			this.Id = id;
+			this.UserEntry = userEntry;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("userEntry"))
+				kparams.AddIfNotNull("userEntry", UserEntry);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
 
 	public class UserEntryService
 	{
@@ -323,19 +323,9 @@ namespace Kaltura.Services
 			return new UserEntryAddRequestBuilder(userEntry);
 		}
 
-		public static UserEntryUpdateRequestBuilder Update(int id, UserEntry userEntry)
-		{
-			return new UserEntryUpdateRequestBuilder(id, userEntry);
-		}
-
 		public static UserEntryDeleteRequestBuilder Delete(int id)
 		{
 			return new UserEntryDeleteRequestBuilder(id);
-		}
-
-		public static UserEntryListRequestBuilder List(UserEntryFilter filter, FilterPager pager = null)
-		{
-			return new UserEntryListRequestBuilder(filter, pager);
 		}
 
 		public static UserEntryGetRequestBuilder Get(string id)
@@ -343,9 +333,19 @@ namespace Kaltura.Services
 			return new UserEntryGetRequestBuilder(id);
 		}
 
+		public static UserEntryListRequestBuilder List(UserEntryFilter filter, FilterPager pager = null)
+		{
+			return new UserEntryListRequestBuilder(filter, pager);
+		}
+
 		public static UserEntrySubmitQuizRequestBuilder SubmitQuiz(int id)
 		{
 			return new UserEntrySubmitQuizRequestBuilder(id);
+		}
+
+		public static UserEntryUpdateRequestBuilder Update(int id, UserEntry userEntry)
+		{
+			return new UserEntryUpdateRequestBuilder(id, userEntry);
 		}
 	}
 }

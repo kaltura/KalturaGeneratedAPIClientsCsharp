@@ -78,101 +78,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class PermissionItemGetRequestBuilder : RequestBuilder<PermissionItem>
-	{
-		#region Constants
-		public const string PERMISSION_ITEM_ID = "permissionItemId";
-		#endregion
-
-		public int PermissionItemId
-		{
-			set;
-			get;
-		}
-
-		public PermissionItemGetRequestBuilder()
-			: base("permissionitem", "get")
-		{
-		}
-
-		public PermissionItemGetRequestBuilder(int permissionItemId)
-			: this()
-		{
-			this.PermissionItemId = permissionItemId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("permissionItemId"))
-				kparams.AddIfNotNull("permissionItemId", PermissionItemId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<PermissionItem>(result);
-		}
-	}
-
-	public class PermissionItemUpdateRequestBuilder : RequestBuilder<PermissionItem>
-	{
-		#region Constants
-		public const string PERMISSION_ITEM_ID = "permissionItemId";
-		public const string PERMISSION_ITEM = "permissionItem";
-		#endregion
-
-		public int PermissionItemId
-		{
-			set;
-			get;
-		}
-		public PermissionItem PermissionItem
-		{
-			set;
-			get;
-		}
-
-		public PermissionItemUpdateRequestBuilder()
-			: base("permissionitem", "update")
-		{
-		}
-
-		public PermissionItemUpdateRequestBuilder(int permissionItemId, PermissionItem permissionItem)
-			: this()
-		{
-			this.PermissionItemId = permissionItemId;
-			this.PermissionItem = permissionItem;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("permissionItemId"))
-				kparams.AddIfNotNull("permissionItemId", PermissionItemId);
-			if (!isMapped("permissionItem"))
-				kparams.AddIfNotNull("permissionItem", PermissionItem);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<PermissionItem>(result);
-		}
-	}
-
 	public class PermissionItemDeleteRequestBuilder : RequestBuilder<PermissionItem>
 	{
 		#region Constants
@@ -191,6 +96,49 @@ namespace Kaltura.Services
 		}
 
 		public PermissionItemDeleteRequestBuilder(int permissionItemId)
+			: this()
+		{
+			this.PermissionItemId = permissionItemId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("permissionItemId"))
+				kparams.AddIfNotNull("permissionItemId", PermissionItemId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<PermissionItem>(result);
+		}
+	}
+
+	public class PermissionItemGetRequestBuilder : RequestBuilder<PermissionItem>
+	{
+		#region Constants
+		public const string PERMISSION_ITEM_ID = "permissionItemId";
+		#endregion
+
+		public int PermissionItemId
+		{
+			set;
+			get;
+		}
+
+		public PermissionItemGetRequestBuilder()
+			: base("permissionitem", "get")
+		{
+		}
+
+		public PermissionItemGetRequestBuilder(int permissionItemId)
 			: this()
 		{
 			this.PermissionItemId = permissionItemId;
@@ -268,6 +216,58 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class PermissionItemUpdateRequestBuilder : RequestBuilder<PermissionItem>
+	{
+		#region Constants
+		public const string PERMISSION_ITEM_ID = "permissionItemId";
+		public const string PERMISSION_ITEM = "permissionItem";
+		#endregion
+
+		public int PermissionItemId
+		{
+			set;
+			get;
+		}
+		public PermissionItem PermissionItem
+		{
+			set;
+			get;
+		}
+
+		public PermissionItemUpdateRequestBuilder()
+			: base("permissionitem", "update")
+		{
+		}
+
+		public PermissionItemUpdateRequestBuilder(int permissionItemId, PermissionItem permissionItem)
+			: this()
+		{
+			this.PermissionItemId = permissionItemId;
+			this.PermissionItem = permissionItem;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("permissionItemId"))
+				kparams.AddIfNotNull("permissionItemId", PermissionItemId);
+			if (!isMapped("permissionItem"))
+				kparams.AddIfNotNull("permissionItem", PermissionItem);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<PermissionItem>(result);
+		}
+	}
+
 
 	public class PermissionItemService
 	{
@@ -280,24 +280,24 @@ namespace Kaltura.Services
 			return new PermissionItemAddRequestBuilder(permissionItem);
 		}
 
-		public static PermissionItemGetRequestBuilder Get(int permissionItemId)
-		{
-			return new PermissionItemGetRequestBuilder(permissionItemId);
-		}
-
-		public static PermissionItemUpdateRequestBuilder Update(int permissionItemId, PermissionItem permissionItem)
-		{
-			return new PermissionItemUpdateRequestBuilder(permissionItemId, permissionItem);
-		}
-
 		public static PermissionItemDeleteRequestBuilder Delete(int permissionItemId)
 		{
 			return new PermissionItemDeleteRequestBuilder(permissionItemId);
 		}
 
+		public static PermissionItemGetRequestBuilder Get(int permissionItemId)
+		{
+			return new PermissionItemGetRequestBuilder(permissionItemId);
+		}
+
 		public static PermissionItemListRequestBuilder List(PermissionItemFilter filter = null, FilterPager pager = null)
 		{
 			return new PermissionItemListRequestBuilder(filter, pager);
+		}
+
+		public static PermissionItemUpdateRequestBuilder Update(int permissionItemId, PermissionItem permissionItem)
+		{
+			return new PermissionItemUpdateRequestBuilder(permissionItemId, permissionItem);
 		}
 	}
 }

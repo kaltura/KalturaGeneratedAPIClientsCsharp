@@ -78,110 +78,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class AnnotationUpdateRequestBuilder : RequestBuilder<Annotation>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string ANNOTATION = "annotation";
-		#endregion
-
-		public string Id
-		{
-			set;
-			get;
-		}
-		public CuePoint Annotation
-		{
-			set;
-			get;
-		}
-
-		public AnnotationUpdateRequestBuilder()
-			: base("annotation_annotation", "update")
-		{
-		}
-
-		public AnnotationUpdateRequestBuilder(string id, CuePoint annotation)
-			: this()
-		{
-			this.Id = id;
-			this.Annotation = annotation;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("annotation"))
-				kparams.AddIfNotNull("annotation", Annotation);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<Annotation>(result);
-		}
-	}
-
-	public class AnnotationListRequestBuilder : RequestBuilder<ListResponse<Annotation>>
-	{
-		#region Constants
-		public const string FILTER = "filter";
-		public const string PAGER = "pager";
-		#endregion
-
-		public CuePointFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
-
-		public AnnotationListRequestBuilder()
-			: base("annotation_annotation", "list")
-		{
-		}
-
-		public AnnotationListRequestBuilder(CuePointFilter filter, FilterPager pager)
-			: this()
-		{
-			this.Filter = filter;
-			this.Pager = pager;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("filter"))
-				kparams.AddIfNotNull("filter", Filter);
-			if (!isMapped("pager"))
-				kparams.AddIfNotNull("pager", Pager);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ListResponse<Annotation>>(result);
-		}
-	}
-
 	public class AnnotationAddFromBulkRequestBuilder : RequestBuilder<ListResponse<CuePoint>>
 	{
 		#region Constants
@@ -224,10 +120,11 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class AnnotationGetRequestBuilder : RequestBuilder<CuePoint>
+	public class AnnotationCloneRequestBuilder : RequestBuilder<CuePoint>
 	{
 		#region Constants
 		public const string ID = "id";
+		public const string ENTRY_ID = "entryId";
 		#endregion
 
 		public string Id
@@ -235,16 +132,22 @@ namespace Kaltura.Services
 			set;
 			get;
 		}
+		public string EntryId
+		{
+			set;
+			get;
+		}
 
-		public AnnotationGetRequestBuilder()
-			: base("annotation_annotation", "get")
+		public AnnotationCloneRequestBuilder()
+			: base("annotation_annotation", "clone")
 		{
 		}
 
-		public AnnotationGetRequestBuilder(string id)
+		public AnnotationCloneRequestBuilder(string id, string entryId)
 			: this()
 		{
 			this.Id = id;
+			this.EntryId = entryId;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -252,6 +155,8 @@ namespace Kaltura.Services
 			Params kparams = base.getParameters(includeServiceAndAction);
 			if (!isMapped("id"))
 				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
 			return kparams;
 		}
 
@@ -353,6 +258,153 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class AnnotationGetRequestBuilder : RequestBuilder<CuePoint>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+
+		public AnnotationGetRequestBuilder()
+			: base("annotation_annotation", "get")
+		{
+		}
+
+		public AnnotationGetRequestBuilder(string id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<CuePoint>(result);
+		}
+	}
+
+	public class AnnotationListRequestBuilder : RequestBuilder<ListResponse<Annotation>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public CuePointFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public AnnotationListRequestBuilder()
+			: base("annotation_annotation", "list")
+		{
+		}
+
+		public AnnotationListRequestBuilder(CuePointFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<Annotation>>(result);
+		}
+	}
+
+	public class AnnotationUpdateRequestBuilder : RequestBuilder<Annotation>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string ANNOTATION = "annotation";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public CuePoint Annotation
+		{
+			set;
+			get;
+		}
+
+		public AnnotationUpdateRequestBuilder()
+			: base("annotation_annotation", "update")
+		{
+		}
+
+		public AnnotationUpdateRequestBuilder(string id, CuePoint annotation)
+			: this()
+		{
+			this.Id = id;
+			this.Annotation = annotation;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("annotation"))
+				kparams.AddIfNotNull("annotation", Annotation);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<Annotation>(result);
+		}
+	}
+
 	public class AnnotationUpdateStatusRequestBuilder : RequestBuilder<object>
 	{
 		#region Constants
@@ -405,58 +457,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class AnnotationCloneRequestBuilder : RequestBuilder<CuePoint>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string ENTRY_ID = "entryId";
-		#endregion
-
-		public string Id
-		{
-			set;
-			get;
-		}
-		public string EntryId
-		{
-			set;
-			get;
-		}
-
-		public AnnotationCloneRequestBuilder()
-			: base("annotation_annotation", "clone")
-		{
-		}
-
-		public AnnotationCloneRequestBuilder(string id, string entryId)
-			: this()
-		{
-			this.Id = id;
-			this.EntryId = entryId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<CuePoint>(result);
-		}
-	}
-
 
 	public class AnnotationService
 	{
@@ -469,24 +469,14 @@ namespace Kaltura.Services
 			return new AnnotationAddRequestBuilder(annotation);
 		}
 
-		public static AnnotationUpdateRequestBuilder Update(string id, CuePoint annotation)
-		{
-			return new AnnotationUpdateRequestBuilder(id, annotation);
-		}
-
-		public static AnnotationListRequestBuilder List(CuePointFilter filter = null, FilterPager pager = null)
-		{
-			return new AnnotationListRequestBuilder(filter, pager);
-		}
-
 		public static AnnotationAddFromBulkRequestBuilder AddFromBulk(Stream fileData)
 		{
 			return new AnnotationAddFromBulkRequestBuilder(fileData);
 		}
 
-		public static AnnotationGetRequestBuilder Get(string id)
+		public static AnnotationCloneRequestBuilder Clone(string id, string entryId)
 		{
-			return new AnnotationGetRequestBuilder(id);
+			return new AnnotationCloneRequestBuilder(id, entryId);
 		}
 
 		public static AnnotationCountRequestBuilder Count(CuePointFilter filter = null)
@@ -499,14 +489,24 @@ namespace Kaltura.Services
 			return new AnnotationDeleteRequestBuilder(id);
 		}
 
+		public static AnnotationGetRequestBuilder Get(string id)
+		{
+			return new AnnotationGetRequestBuilder(id);
+		}
+
+		public static AnnotationListRequestBuilder List(CuePointFilter filter = null, FilterPager pager = null)
+		{
+			return new AnnotationListRequestBuilder(filter, pager);
+		}
+
+		public static AnnotationUpdateRequestBuilder Update(string id, CuePoint annotation)
+		{
+			return new AnnotationUpdateRequestBuilder(id, annotation);
+		}
+
 		public static AnnotationUpdateStatusRequestBuilder UpdateStatus(string id, CuePointStatus status)
 		{
 			return new AnnotationUpdateStatusRequestBuilder(id, status);
-		}
-
-		public static AnnotationCloneRequestBuilder Clone(string id, string entryId)
-		{
-			return new AnnotationCloneRequestBuilder(id, entryId);
 		}
 	}
 }

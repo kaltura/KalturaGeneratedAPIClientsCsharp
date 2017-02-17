@@ -35,58 +35,6 @@ using Kaltura.Enums;
 
 namespace Kaltura.Services
 {
-	public class DocumentsAddFromUploadedFileRequestBuilder : RequestBuilder<DocumentEntry>
-	{
-		#region Constants
-		public const string DOCUMENT_ENTRY = "documentEntry";
-		public const string UPLOAD_TOKEN_ID = "uploadTokenId";
-		#endregion
-
-		public DocumentEntry DocumentEntry
-		{
-			set;
-			get;
-		}
-		public string UploadTokenId
-		{
-			set;
-			get;
-		}
-
-		public DocumentsAddFromUploadedFileRequestBuilder()
-			: base("document_documents", "addFromUploadedFile")
-		{
-		}
-
-		public DocumentsAddFromUploadedFileRequestBuilder(DocumentEntry documentEntry, string uploadTokenId)
-			: this()
-		{
-			this.DocumentEntry = documentEntry;
-			this.UploadTokenId = uploadTokenId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("documentEntry"))
-				kparams.AddIfNotNull("documentEntry", DocumentEntry);
-			if (!isMapped("uploadTokenId"))
-				kparams.AddIfNotNull("uploadTokenId", UploadTokenId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<DocumentEntry>(result);
-		}
-	}
-
 	public class DocumentsAddFromEntryRequestBuilder : RequestBuilder<DocumentEntry>
 	{
 		#region Constants
@@ -200,397 +148,43 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class DocumentsConvertRequestBuilder : RequestBuilder<long>
+	public class DocumentsAddFromUploadedFileRequestBuilder : RequestBuilder<DocumentEntry>
 	{
 		#region Constants
-		public const string ENTRY_ID = "entryId";
-		public const string CONVERSION_PROFILE_ID = "conversionProfileId";
-		public const string DYNAMIC_CONVERSION_ATTRIBUTES = "dynamicConversionAttributes";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public int ConversionProfileId
-		{
-			set;
-			get;
-		}
-		public IList<ConversionAttribute> DynamicConversionAttributes
-		{
-			set;
-			get;
-		}
-
-		public DocumentsConvertRequestBuilder()
-			: base("document_documents", "convert")
-		{
-		}
-
-		public DocumentsConvertRequestBuilder(string entryId, int conversionProfileId, IList<ConversionAttribute> dynamicConversionAttributes)
-			: this()
-		{
-			this.EntryId = entryId;
-			this.ConversionProfileId = conversionProfileId;
-			this.DynamicConversionAttributes = dynamicConversionAttributes;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			if (!isMapped("conversionProfileId"))
-				kparams.AddIfNotNull("conversionProfileId", ConversionProfileId);
-			if (!isMapped("dynamicConversionAttributes"))
-				kparams.AddIfNotNull("dynamicConversionAttributes", DynamicConversionAttributes);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return long.Parse(result.InnerText);
-		}
-	}
-
-	public class DocumentsGetRequestBuilder : RequestBuilder<DocumentEntry>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		public const string VERSION = "version";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public int Version
-		{
-			set;
-			get;
-		}
-
-		public DocumentsGetRequestBuilder()
-			: base("document_documents", "get")
-		{
-		}
-
-		public DocumentsGetRequestBuilder(string entryId, int version)
-			: this()
-		{
-			this.EntryId = entryId;
-			this.Version = version;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			if (!isMapped("version"))
-				kparams.AddIfNotNull("version", Version);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<DocumentEntry>(result);
-		}
-	}
-
-	public class DocumentsUpdateRequestBuilder : RequestBuilder<DocumentEntry>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
 		public const string DOCUMENT_ENTRY = "documentEntry";
+		public const string UPLOAD_TOKEN_ID = "uploadTokenId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
 		public DocumentEntry DocumentEntry
 		{
 			set;
 			get;
 		}
+		public string UploadTokenId
+		{
+			set;
+			get;
+		}
 
-		public DocumentsUpdateRequestBuilder()
-			: base("document_documents", "update")
+		public DocumentsAddFromUploadedFileRequestBuilder()
+			: base("document_documents", "addFromUploadedFile")
 		{
 		}
 
-		public DocumentsUpdateRequestBuilder(string entryId, DocumentEntry documentEntry)
+		public DocumentsAddFromUploadedFileRequestBuilder(DocumentEntry documentEntry, string uploadTokenId)
 			: this()
 		{
-			this.EntryId = entryId;
 			this.DocumentEntry = documentEntry;
+			this.UploadTokenId = uploadTokenId;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
 			if (!isMapped("documentEntry"))
 				kparams.AddIfNotNull("documentEntry", DocumentEntry);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<DocumentEntry>(result);
-		}
-	}
-
-	public class DocumentsDeleteRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-
-		public DocumentsDeleteRequestBuilder()
-			: base("document_documents", "delete")
-		{
-		}
-
-		public DocumentsDeleteRequestBuilder(string entryId)
-			: this()
-		{
-			this.EntryId = entryId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
-	public class DocumentsListRequestBuilder : RequestBuilder<ListResponse<DocumentEntry>>
-	{
-		#region Constants
-		public const string FILTER = "filter";
-		public const string PAGER = "pager";
-		#endregion
-
-		public DocumentEntryFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
-
-		public DocumentsListRequestBuilder()
-			: base("document_documents", "list")
-		{
-		}
-
-		public DocumentsListRequestBuilder(DocumentEntryFilter filter, FilterPager pager)
-			: this()
-		{
-			this.Filter = filter;
-			this.Pager = pager;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("filter"))
-				kparams.AddIfNotNull("filter", Filter);
-			if (!isMapped("pager"))
-				kparams.AddIfNotNull("pager", Pager);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ListResponse<DocumentEntry>>(result);
-		}
-	}
-
-	public class DocumentsUploadRequestBuilder : RequestBuilder<string>
-	{
-		#region Constants
-		public const string FILE_DATA = "fileData";
-		#endregion
-
-		public Stream FileData
-		{
-			set;
-			get;
-		}
-
-		public DocumentsUploadRequestBuilder()
-			: base("document_documents", "upload")
-		{
-		}
-
-		public DocumentsUploadRequestBuilder(Stream fileData)
-			: this()
-		{
-			this.FileData = fileData;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			kfiles.Add("fileData", FileData);
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return result.InnerText;
-		}
-	}
-
-	public class DocumentsConvertPptToSwfRequestBuilder : RequestBuilder<string>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-
-		public DocumentsConvertPptToSwfRequestBuilder()
-			: base("document_documents", "convertPptToSwf")
-		{
-		}
-
-		public DocumentsConvertPptToSwfRequestBuilder(string entryId)
-			: this()
-		{
-			this.EntryId = entryId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return result.InnerText;
-		}
-	}
-
-	public class DocumentsUpdateContentRequestBuilder : RequestBuilder<DocumentEntry>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		public const string RESOURCE = "resource";
-		public const string CONVERSION_PROFILE_ID = "conversionProfileId";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public Resource Resource
-		{
-			set;
-			get;
-		}
-		public int ConversionProfileId
-		{
-			set;
-			get;
-		}
-
-		public DocumentsUpdateContentRequestBuilder()
-			: base("document_documents", "updateContent")
-		{
-		}
-
-		public DocumentsUpdateContentRequestBuilder(string entryId, Resource resource, int conversionProfileId)
-			: this()
-		{
-			this.EntryId = entryId;
-			this.Resource = resource;
-			this.ConversionProfileId = conversionProfileId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			if (!isMapped("resource"))
-				kparams.AddIfNotNull("resource", Resource);
-			if (!isMapped("conversionProfileId"))
-				kparams.AddIfNotNull("conversionProfileId", ConversionProfileId);
+			if (!isMapped("uploadTokenId"))
+				kparams.AddIfNotNull("uploadTokenId", UploadTokenId);
 			return kparams;
 		}
 
@@ -692,16 +286,417 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class DocumentsConvertRequestBuilder : RequestBuilder<long>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string CONVERSION_PROFILE_ID = "conversionProfileId";
+		public const string DYNAMIC_CONVERSION_ATTRIBUTES = "dynamicConversionAttributes";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public int ConversionProfileId
+		{
+			set;
+			get;
+		}
+		public IList<ConversionAttribute> DynamicConversionAttributes
+		{
+			set;
+			get;
+		}
+
+		public DocumentsConvertRequestBuilder()
+			: base("document_documents", "convert")
+		{
+		}
+
+		public DocumentsConvertRequestBuilder(string entryId, int conversionProfileId, IList<ConversionAttribute> dynamicConversionAttributes)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.ConversionProfileId = conversionProfileId;
+			this.DynamicConversionAttributes = dynamicConversionAttributes;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("conversionProfileId"))
+				kparams.AddIfNotNull("conversionProfileId", ConversionProfileId);
+			if (!isMapped("dynamicConversionAttributes"))
+				kparams.AddIfNotNull("dynamicConversionAttributes", DynamicConversionAttributes);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return long.Parse(result.InnerText);
+		}
+	}
+
+	public class DocumentsConvertPptToSwfRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+
+		public DocumentsConvertPptToSwfRequestBuilder()
+			: base("document_documents", "convertPptToSwf")
+		{
+		}
+
+		public DocumentsConvertPptToSwfRequestBuilder(string entryId)
+			: this()
+		{
+			this.EntryId = entryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return result.InnerText;
+		}
+	}
+
+	public class DocumentsDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+
+		public DocumentsDeleteRequestBuilder()
+			: base("document_documents", "delete")
+		{
+		}
+
+		public DocumentsDeleteRequestBuilder(string entryId)
+			: this()
+		{
+			this.EntryId = entryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class DocumentsGetRequestBuilder : RequestBuilder<DocumentEntry>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string VERSION = "version";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public int Version
+		{
+			set;
+			get;
+		}
+
+		public DocumentsGetRequestBuilder()
+			: base("document_documents", "get")
+		{
+		}
+
+		public DocumentsGetRequestBuilder(string entryId, int version)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.Version = version;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("version"))
+				kparams.AddIfNotNull("version", Version);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<DocumentEntry>(result);
+		}
+	}
+
+	public class DocumentsListRequestBuilder : RequestBuilder<ListResponse<DocumentEntry>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public DocumentEntryFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public DocumentsListRequestBuilder()
+			: base("document_documents", "list")
+		{
+		}
+
+		public DocumentsListRequestBuilder(DocumentEntryFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<DocumentEntry>>(result);
+		}
+	}
+
+	public class DocumentsUpdateRequestBuilder : RequestBuilder<DocumentEntry>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string DOCUMENT_ENTRY = "documentEntry";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public DocumentEntry DocumentEntry
+		{
+			set;
+			get;
+		}
+
+		public DocumentsUpdateRequestBuilder()
+			: base("document_documents", "update")
+		{
+		}
+
+		public DocumentsUpdateRequestBuilder(string entryId, DocumentEntry documentEntry)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.DocumentEntry = documentEntry;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("documentEntry"))
+				kparams.AddIfNotNull("documentEntry", DocumentEntry);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<DocumentEntry>(result);
+		}
+	}
+
+	public class DocumentsUpdateContentRequestBuilder : RequestBuilder<DocumentEntry>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string RESOURCE = "resource";
+		public const string CONVERSION_PROFILE_ID = "conversionProfileId";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public Resource Resource
+		{
+			set;
+			get;
+		}
+		public int ConversionProfileId
+		{
+			set;
+			get;
+		}
+
+		public DocumentsUpdateContentRequestBuilder()
+			: base("document_documents", "updateContent")
+		{
+		}
+
+		public DocumentsUpdateContentRequestBuilder(string entryId, Resource resource, int conversionProfileId)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.Resource = resource;
+			this.ConversionProfileId = conversionProfileId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("resource"))
+				kparams.AddIfNotNull("resource", Resource);
+			if (!isMapped("conversionProfileId"))
+				kparams.AddIfNotNull("conversionProfileId", ConversionProfileId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<DocumentEntry>(result);
+		}
+	}
+
+	public class DocumentsUploadRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		public const string FILE_DATA = "fileData";
+		#endregion
+
+		public Stream FileData
+		{
+			set;
+			get;
+		}
+
+		public DocumentsUploadRequestBuilder()
+			: base("document_documents", "upload")
+		{
+		}
+
+		public DocumentsUploadRequestBuilder(Stream fileData)
+			: this()
+		{
+			this.FileData = fileData;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			kfiles.Add("fileData", FileData);
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return result.InnerText;
+		}
+	}
+
 
 	public class DocumentsService
 	{
 		private DocumentsService()
 		{
-		}
-
-		public static DocumentsAddFromUploadedFileRequestBuilder AddFromUploadedFile(DocumentEntry documentEntry, string uploadTokenId)
-		{
-			return new DocumentsAddFromUploadedFileRequestBuilder(documentEntry, uploadTokenId);
 		}
 
 		public static DocumentsAddFromEntryRequestBuilder AddFromEntry(string sourceEntryId, DocumentEntry documentEntry = null, int sourceFlavorParamsId = Int32.MinValue)
@@ -714,44 +709,9 @@ namespace Kaltura.Services
 			return new DocumentsAddFromFlavorAssetRequestBuilder(sourceFlavorAssetId, documentEntry);
 		}
 
-		public static DocumentsConvertRequestBuilder Convert(string entryId, int conversionProfileId = Int32.MinValue, IList<ConversionAttribute> dynamicConversionAttributes = null)
+		public static DocumentsAddFromUploadedFileRequestBuilder AddFromUploadedFile(DocumentEntry documentEntry, string uploadTokenId)
 		{
-			return new DocumentsConvertRequestBuilder(entryId, conversionProfileId, dynamicConversionAttributes);
-		}
-
-		public static DocumentsGetRequestBuilder Get(string entryId, int version = -1)
-		{
-			return new DocumentsGetRequestBuilder(entryId, version);
-		}
-
-		public static DocumentsUpdateRequestBuilder Update(string entryId, DocumentEntry documentEntry)
-		{
-			return new DocumentsUpdateRequestBuilder(entryId, documentEntry);
-		}
-
-		public static DocumentsDeleteRequestBuilder Delete(string entryId)
-		{
-			return new DocumentsDeleteRequestBuilder(entryId);
-		}
-
-		public static DocumentsListRequestBuilder List(DocumentEntryFilter filter = null, FilterPager pager = null)
-		{
-			return new DocumentsListRequestBuilder(filter, pager);
-		}
-
-		public static DocumentsUploadRequestBuilder Upload(Stream fileData)
-		{
-			return new DocumentsUploadRequestBuilder(fileData);
-		}
-
-		public static DocumentsConvertPptToSwfRequestBuilder ConvertPptToSwf(string entryId)
-		{
-			return new DocumentsConvertPptToSwfRequestBuilder(entryId);
-		}
-
-		public static DocumentsUpdateContentRequestBuilder UpdateContent(string entryId, Resource resource, int conversionProfileId = Int32.MinValue)
-		{
-			return new DocumentsUpdateContentRequestBuilder(entryId, resource, conversionProfileId);
+			return new DocumentsAddFromUploadedFileRequestBuilder(documentEntry, uploadTokenId);
 		}
 
 		public static DocumentsApproveReplaceRequestBuilder ApproveReplace(string entryId)
@@ -762,6 +722,46 @@ namespace Kaltura.Services
 		public static DocumentsCancelReplaceRequestBuilder CancelReplace(string entryId)
 		{
 			return new DocumentsCancelReplaceRequestBuilder(entryId);
+		}
+
+		public static DocumentsConvertRequestBuilder Convert(string entryId, int conversionProfileId = Int32.MinValue, IList<ConversionAttribute> dynamicConversionAttributes = null)
+		{
+			return new DocumentsConvertRequestBuilder(entryId, conversionProfileId, dynamicConversionAttributes);
+		}
+
+		public static DocumentsConvertPptToSwfRequestBuilder ConvertPptToSwf(string entryId)
+		{
+			return new DocumentsConvertPptToSwfRequestBuilder(entryId);
+		}
+
+		public static DocumentsDeleteRequestBuilder Delete(string entryId)
+		{
+			return new DocumentsDeleteRequestBuilder(entryId);
+		}
+
+		public static DocumentsGetRequestBuilder Get(string entryId, int version = -1)
+		{
+			return new DocumentsGetRequestBuilder(entryId, version);
+		}
+
+		public static DocumentsListRequestBuilder List(DocumentEntryFilter filter = null, FilterPager pager = null)
+		{
+			return new DocumentsListRequestBuilder(filter, pager);
+		}
+
+		public static DocumentsUpdateRequestBuilder Update(string entryId, DocumentEntry documentEntry)
+		{
+			return new DocumentsUpdateRequestBuilder(entryId, documentEntry);
+		}
+
+		public static DocumentsUpdateContentRequestBuilder UpdateContent(string entryId, Resource resource, int conversionProfileId = Int32.MinValue)
+		{
+			return new DocumentsUpdateContentRequestBuilder(entryId, resource, conversionProfileId);
+		}
+
+		public static DocumentsUploadRequestBuilder Upload(Stream fileData)
+		{
+			return new DocumentsUploadRequestBuilder(fileData);
 		}
 	}
 }

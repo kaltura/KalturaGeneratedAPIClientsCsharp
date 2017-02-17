@@ -120,6 +120,144 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class CuePointCloneRequestBuilder : RequestBuilder<CuePoint>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string ENTRY_ID = "entryId";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public string EntryId
+		{
+			set;
+			get;
+		}
+
+		public CuePointCloneRequestBuilder()
+			: base("cuepoint_cuepoint", "clone")
+		{
+		}
+
+		public CuePointCloneRequestBuilder(string id, string entryId)
+			: this()
+		{
+			this.Id = id;
+			this.EntryId = entryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<CuePoint>(result);
+		}
+	}
+
+	public class CuePointCountRequestBuilder : RequestBuilder<int>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		#endregion
+
+		public CuePointFilter Filter
+		{
+			set;
+			get;
+		}
+
+		public CuePointCountRequestBuilder()
+			: base("cuepoint_cuepoint", "count")
+		{
+		}
+
+		public CuePointCountRequestBuilder(CuePointFilter filter)
+			: this()
+		{
+			this.Filter = filter;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return int.Parse(result.InnerText);
+		}
+	}
+
+	public class CuePointDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+
+		public CuePointDeleteRequestBuilder()
+			: base("cuepoint_cuepoint", "delete")
+		{
+		}
+
+		public CuePointDeleteRequestBuilder(string id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
 	public class CuePointGetRequestBuilder : RequestBuilder<CuePoint>
 	{
 		#region Constants
@@ -215,49 +353,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class CuePointCountRequestBuilder : RequestBuilder<int>
-	{
-		#region Constants
-		public const string FILTER = "filter";
-		#endregion
-
-		public CuePointFilter Filter
-		{
-			set;
-			get;
-		}
-
-		public CuePointCountRequestBuilder()
-			: base("cuepoint_cuepoint", "count")
-		{
-		}
-
-		public CuePointCountRequestBuilder(CuePointFilter filter)
-			: this()
-		{
-			this.Filter = filter;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("filter"))
-				kparams.AddIfNotNull("filter", Filter);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return int.Parse(result.InnerText);
-		}
-	}
-
 	public class CuePointUpdateRequestBuilder : RequestBuilder<CuePoint>
 	{
 		#region Constants
@@ -307,49 +402,6 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<CuePoint>(result);
-		}
-	}
-
-	public class CuePointDeleteRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public string Id
-		{
-			set;
-			get;
-		}
-
-		public CuePointDeleteRequestBuilder()
-			: base("cuepoint_cuepoint", "delete")
-		{
-		}
-
-		public CuePointDeleteRequestBuilder(string id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
 		}
 	}
 
@@ -405,58 +457,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class CuePointCloneRequestBuilder : RequestBuilder<CuePoint>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string ENTRY_ID = "entryId";
-		#endregion
-
-		public string Id
-		{
-			set;
-			get;
-		}
-		public string EntryId
-		{
-			set;
-			get;
-		}
-
-		public CuePointCloneRequestBuilder()
-			: base("cuepoint_cuepoint", "clone")
-		{
-		}
-
-		public CuePointCloneRequestBuilder(string id, string entryId)
-			: this()
-		{
-			this.Id = id;
-			this.EntryId = entryId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<CuePoint>(result);
-		}
-	}
-
 
 	public class CuePointService
 	{
@@ -474,6 +474,21 @@ namespace Kaltura.Services
 			return new CuePointAddFromBulkRequestBuilder(fileData);
 		}
 
+		public static CuePointCloneRequestBuilder Clone(string id, string entryId)
+		{
+			return new CuePointCloneRequestBuilder(id, entryId);
+		}
+
+		public static CuePointCountRequestBuilder Count(CuePointFilter filter = null)
+		{
+			return new CuePointCountRequestBuilder(filter);
+		}
+
+		public static CuePointDeleteRequestBuilder Delete(string id)
+		{
+			return new CuePointDeleteRequestBuilder(id);
+		}
+
 		public static CuePointGetRequestBuilder Get(string id)
 		{
 			return new CuePointGetRequestBuilder(id);
@@ -484,29 +499,14 @@ namespace Kaltura.Services
 			return new CuePointListRequestBuilder(filter, pager);
 		}
 
-		public static CuePointCountRequestBuilder Count(CuePointFilter filter = null)
-		{
-			return new CuePointCountRequestBuilder(filter);
-		}
-
 		public static CuePointUpdateRequestBuilder Update(string id, CuePoint cuePoint)
 		{
 			return new CuePointUpdateRequestBuilder(id, cuePoint);
 		}
 
-		public static CuePointDeleteRequestBuilder Delete(string id)
-		{
-			return new CuePointDeleteRequestBuilder(id);
-		}
-
 		public static CuePointUpdateStatusRequestBuilder UpdateStatus(string id, CuePointStatus status)
 		{
 			return new CuePointUpdateStatusRequestBuilder(id, status);
-		}
-
-		public static CuePointCloneRequestBuilder Clone(string id, string entryId)
-		{
-			return new CuePointCloneRequestBuilder(id, entryId);
 		}
 	}
 }

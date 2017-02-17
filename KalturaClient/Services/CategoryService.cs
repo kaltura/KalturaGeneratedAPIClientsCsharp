@@ -78,98 +78,63 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class CategoryGetRequestBuilder : RequestBuilder<Category>
+	public class CategoryAddFromBulkUploadRequestBuilder : RequestBuilder<BulkUpload>
 	{
 		#region Constants
-		public const string ID = "id";
+		public const string FILE_DATA = "fileData";
+		public const string BULK_UPLOAD_DATA = "bulkUploadData";
+		public const string BULK_UPLOAD_CATEGORY_DATA = "bulkUploadCategoryData";
 		#endregion
 
-		public int Id
+		public Stream FileData
+		{
+			set;
+			get;
+		}
+		public BulkUploadJobData BulkUploadData
+		{
+			set;
+			get;
+		}
+		public BulkUploadCategoryData BulkUploadCategoryData
 		{
 			set;
 			get;
 		}
 
-		public CategoryGetRequestBuilder()
-			: base("category", "get")
+		public CategoryAddFromBulkUploadRequestBuilder()
+			: base("category", "addFromBulkUpload")
 		{
 		}
 
-		public CategoryGetRequestBuilder(int id)
+		public CategoryAddFromBulkUploadRequestBuilder(Stream fileData, BulkUploadJobData bulkUploadData, BulkUploadCategoryData bulkUploadCategoryData)
 			: this()
 		{
-			this.Id = id;
+			this.FileData = fileData;
+			this.BulkUploadData = bulkUploadData;
+			this.BulkUploadCategoryData = bulkUploadCategoryData;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("bulkUploadData"))
+				kparams.AddIfNotNull("bulkUploadData", BulkUploadData);
+			if (!isMapped("bulkUploadCategoryData"))
+				kparams.AddIfNotNull("bulkUploadCategoryData", BulkUploadCategoryData);
 			return kparams;
 		}
 
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
+			kfiles.Add("fileData", FileData);
 			return kfiles;
 		}
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<Category>(result);
-		}
-	}
-
-	public class CategoryUpdateRequestBuilder : RequestBuilder<Category>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string CATEGORY = "category";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-		public Category Category
-		{
-			set;
-			get;
-		}
-
-		public CategoryUpdateRequestBuilder()
-			: base("category", "update")
-		{
-		}
-
-		public CategoryUpdateRequestBuilder(int id, Category category)
-			: this()
-		{
-			this.Id = id;
-			this.Category = category;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("category"))
-				kparams.AddIfNotNull("category", Category);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<Category>(result);
+			return ObjectFactory.Create<BulkUpload>(result);
 		}
 	}
 
@@ -225,43 +190,34 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class CategoryListRequestBuilder : RequestBuilder<ListResponse<Category>>
+	public class CategoryGetRequestBuilder : RequestBuilder<Category>
 	{
 		#region Constants
-		public const string FILTER = "filter";
-		public const string PAGER = "pager";
+		public const string ID = "id";
 		#endregion
 
-		public CategoryFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
+		public int Id
 		{
 			set;
 			get;
 		}
 
-		public CategoryListRequestBuilder()
-			: base("category", "list")
+		public CategoryGetRequestBuilder()
+			: base("category", "get")
 		{
 		}
 
-		public CategoryListRequestBuilder(CategoryFilter filter, FilterPager pager)
+		public CategoryGetRequestBuilder(int id)
 			: this()
 		{
-			this.Filter = filter;
-			this.Pager = pager;
+			this.Id = id;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("filter"))
-				kparams.AddIfNotNull("filter", Filter);
-			if (!isMapped("pager"))
-				kparams.AddIfNotNull("pager", Pager);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
 			return kparams;
 		}
 
@@ -273,7 +229,7 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<ListResponse<Category>>(result);
+			return ObjectFactory.Create<Category>(result);
 		}
 	}
 
@@ -326,6 +282,58 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return int.Parse(result.InnerText);
+		}
+	}
+
+	public class CategoryListRequestBuilder : RequestBuilder<ListResponse<Category>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public CategoryFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public CategoryListRequestBuilder()
+			: base("category", "list")
+		{
+		}
+
+		public CategoryListRequestBuilder(CategoryFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<Category>>(result);
 		}
 	}
 
@@ -410,63 +418,55 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class CategoryAddFromBulkUploadRequestBuilder : RequestBuilder<BulkUpload>
+	public class CategoryUpdateRequestBuilder : RequestBuilder<Category>
 	{
 		#region Constants
-		public const string FILE_DATA = "fileData";
-		public const string BULK_UPLOAD_DATA = "bulkUploadData";
-		public const string BULK_UPLOAD_CATEGORY_DATA = "bulkUploadCategoryData";
+		public const string ID = "id";
+		public const string CATEGORY = "category";
 		#endregion
 
-		public Stream FileData
+		public int Id
 		{
 			set;
 			get;
 		}
-		public BulkUploadJobData BulkUploadData
-		{
-			set;
-			get;
-		}
-		public BulkUploadCategoryData BulkUploadCategoryData
+		public Category Category
 		{
 			set;
 			get;
 		}
 
-		public CategoryAddFromBulkUploadRequestBuilder()
-			: base("category", "addFromBulkUpload")
+		public CategoryUpdateRequestBuilder()
+			: base("category", "update")
 		{
 		}
 
-		public CategoryAddFromBulkUploadRequestBuilder(Stream fileData, BulkUploadJobData bulkUploadData, BulkUploadCategoryData bulkUploadCategoryData)
+		public CategoryUpdateRequestBuilder(int id, Category category)
 			: this()
 		{
-			this.FileData = fileData;
-			this.BulkUploadData = bulkUploadData;
-			this.BulkUploadCategoryData = bulkUploadCategoryData;
+			this.Id = id;
+			this.Category = category;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("bulkUploadData"))
-				kparams.AddIfNotNull("bulkUploadData", BulkUploadData);
-			if (!isMapped("bulkUploadCategoryData"))
-				kparams.AddIfNotNull("bulkUploadCategoryData", BulkUploadCategoryData);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("category"))
+				kparams.AddIfNotNull("category", Category);
 			return kparams;
 		}
 
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("fileData", FileData);
 			return kfiles;
 		}
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<BulkUpload>(result);
+			return ObjectFactory.Create<Category>(result);
 		}
 	}
 
@@ -482,14 +482,9 @@ namespace Kaltura.Services
 			return new CategoryAddRequestBuilder(category);
 		}
 
-		public static CategoryGetRequestBuilder Get(int id)
+		public static CategoryAddFromBulkUploadRequestBuilder AddFromBulkUpload(Stream fileData, BulkUploadJobData bulkUploadData = null, BulkUploadCategoryData bulkUploadCategoryData = null)
 		{
-			return new CategoryGetRequestBuilder(id);
-		}
-
-		public static CategoryUpdateRequestBuilder Update(int id, Category category)
-		{
-			return new CategoryUpdateRequestBuilder(id, category);
+			return new CategoryAddFromBulkUploadRequestBuilder(fileData, bulkUploadData, bulkUploadCategoryData);
 		}
 
 		public static CategoryDeleteRequestBuilder Delete(int id, NullableBoolean moveEntriesToParentCategory = (NullableBoolean)(1))
@@ -497,14 +492,19 @@ namespace Kaltura.Services
 			return new CategoryDeleteRequestBuilder(id, moveEntriesToParentCategory);
 		}
 
-		public static CategoryListRequestBuilder List(CategoryFilter filter = null, FilterPager pager = null)
+		public static CategoryGetRequestBuilder Get(int id)
 		{
-			return new CategoryListRequestBuilder(filter, pager);
+			return new CategoryGetRequestBuilder(id);
 		}
 
 		public static CategoryIndexRequestBuilder Index(int id, bool shouldUpdate = true)
 		{
 			return new CategoryIndexRequestBuilder(id, shouldUpdate);
+		}
+
+		public static CategoryListRequestBuilder List(CategoryFilter filter = null, FilterPager pager = null)
+		{
+			return new CategoryListRequestBuilder(filter, pager);
 		}
 
 		public static CategoryMoveRequestBuilder Move(string categoryIds, int targetCategoryParentId)
@@ -517,9 +517,9 @@ namespace Kaltura.Services
 			return new CategoryUnlockCategoriesRequestBuilder();
 		}
 
-		public static CategoryAddFromBulkUploadRequestBuilder AddFromBulkUpload(Stream fileData, BulkUploadJobData bulkUploadData = null, BulkUploadCategoryData bulkUploadCategoryData = null)
+		public static CategoryUpdateRequestBuilder Update(int id, Category category)
 		{
-			return new CategoryAddFromBulkUploadRequestBuilder(fileData, bulkUploadData, bulkUploadCategoryData);
+			return new CategoryUpdateRequestBuilder(id, category);
 		}
 	}
 }

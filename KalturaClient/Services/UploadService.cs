@@ -35,48 +35,6 @@ using Kaltura.Enums;
 
 namespace Kaltura.Services
 {
-	public class UploadUploadRequestBuilder : RequestBuilder<string>
-	{
-		#region Constants
-		public const string FILE_DATA = "fileData";
-		#endregion
-
-		public Stream FileData
-		{
-			set;
-			get;
-		}
-
-		public UploadUploadRequestBuilder()
-			: base("upload", "upload")
-		{
-		}
-
-		public UploadUploadRequestBuilder(Stream fileData)
-			: this()
-		{
-			this.FileData = fileData;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			kfiles.Add("fileData", FileData);
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return result.InnerText;
-		}
-	}
-
 	public class UploadGetUploadedFileTokenByFileNameRequestBuilder : RequestBuilder<UploadResponse>
 	{
 		#region Constants
@@ -120,6 +78,48 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class UploadUploadRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		public const string FILE_DATA = "fileData";
+		#endregion
+
+		public Stream FileData
+		{
+			set;
+			get;
+		}
+
+		public UploadUploadRequestBuilder()
+			: base("upload", "upload")
+		{
+		}
+
+		public UploadUploadRequestBuilder(Stream fileData)
+			: this()
+		{
+			this.FileData = fileData;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			kfiles.Add("fileData", FileData);
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return result.InnerText;
+		}
+	}
+
 
 	public class UploadService
 	{
@@ -127,14 +127,14 @@ namespace Kaltura.Services
 		{
 		}
 
-		public static UploadUploadRequestBuilder Upload(Stream fileData)
-		{
-			return new UploadUploadRequestBuilder(fileData);
-		}
-
 		public static UploadGetUploadedFileTokenByFileNameRequestBuilder GetUploadedFileTokenByFileName(string fileName)
 		{
 			return new UploadGetUploadedFileTokenByFileNameRequestBuilder(fileName);
+		}
+
+		public static UploadUploadRequestBuilder Upload(Stream fileData)
+		{
+			return new UploadUploadRequestBuilder(fileData);
 		}
 	}
 }

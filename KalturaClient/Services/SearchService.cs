@@ -35,153 +35,6 @@ using Kaltura.Enums;
 
 namespace Kaltura.Services
 {
-	public class SearchSearchRequestBuilder : RequestBuilder<SearchResultResponse>
-	{
-		#region Constants
-		public const string SEARCH = "search";
-		public const string PAGER = "pager";
-		#endregion
-
-		public Search Search
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
-
-		public SearchSearchRequestBuilder()
-			: base("search", "search")
-		{
-		}
-
-		public SearchSearchRequestBuilder(Search search, FilterPager pager)
-			: this()
-		{
-			this.Search = search;
-			this.Pager = pager;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("search"))
-				kparams.AddIfNotNull("search", Search);
-			if (!isMapped("pager"))
-				kparams.AddIfNotNull("pager", Pager);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<SearchResultResponse>(result);
-		}
-	}
-
-	public class SearchGetMediaInfoRequestBuilder : RequestBuilder<SearchResult>
-	{
-		#region Constants
-		public const string SEARCH_RESULT = "searchResult";
-		#endregion
-
-		public SearchResult SearchResult
-		{
-			set;
-			get;
-		}
-
-		public SearchGetMediaInfoRequestBuilder()
-			: base("search", "getMediaInfo")
-		{
-		}
-
-		public SearchGetMediaInfoRequestBuilder(SearchResult searchResult)
-			: this()
-		{
-			this.SearchResult = searchResult;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("searchResult"))
-				kparams.AddIfNotNull("searchResult", SearchResult);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<SearchResult>(result);
-		}
-	}
-
-	public class SearchSearchUrlRequestBuilder : RequestBuilder<SearchResult>
-	{
-		#region Constants
-		public const string MEDIA_TYPE = "mediaType";
-		public const string URL = "url";
-		#endregion
-
-		public MediaType MediaType
-		{
-			set;
-			get;
-		}
-		public string Url
-		{
-			set;
-			get;
-		}
-
-		public SearchSearchUrlRequestBuilder()
-			: base("search", "searchUrl")
-		{
-		}
-
-		public SearchSearchUrlRequestBuilder(MediaType mediaType, string url)
-			: this()
-		{
-			this.MediaType = mediaType;
-			this.Url = url;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("mediaType"))
-				kparams.AddIfNotNull("mediaType", MediaType);
-			if (!isMapped("url"))
-				kparams.AddIfNotNull("url", Url);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<SearchResult>(result);
-		}
-	}
-
 	public class SearchExternalLoginRequestBuilder : RequestBuilder<SearchAuthData>
 	{
 		#region Constants
@@ -243,6 +96,153 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class SearchGetMediaInfoRequestBuilder : RequestBuilder<SearchResult>
+	{
+		#region Constants
+		public const string SEARCH_RESULT = "searchResult";
+		#endregion
+
+		public SearchResult SearchResult
+		{
+			set;
+			get;
+		}
+
+		public SearchGetMediaInfoRequestBuilder()
+			: base("search", "getMediaInfo")
+		{
+		}
+
+		public SearchGetMediaInfoRequestBuilder(SearchResult searchResult)
+			: this()
+		{
+			this.SearchResult = searchResult;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("searchResult"))
+				kparams.AddIfNotNull("searchResult", SearchResult);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<SearchResult>(result);
+		}
+	}
+
+	public class SearchSearchRequestBuilder : RequestBuilder<SearchResultResponse>
+	{
+		#region Constants
+		public const string SEARCH = "search";
+		public const string PAGER = "pager";
+		#endregion
+
+		public Search Search
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public SearchSearchRequestBuilder()
+			: base("search", "search")
+		{
+		}
+
+		public SearchSearchRequestBuilder(Search search, FilterPager pager)
+			: this()
+		{
+			this.Search = search;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("search"))
+				kparams.AddIfNotNull("search", Search);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<SearchResultResponse>(result);
+		}
+	}
+
+	public class SearchSearchUrlRequestBuilder : RequestBuilder<SearchResult>
+	{
+		#region Constants
+		public const string MEDIA_TYPE = "mediaType";
+		public const string URL = "url";
+		#endregion
+
+		public MediaType MediaType
+		{
+			set;
+			get;
+		}
+		public string Url
+		{
+			set;
+			get;
+		}
+
+		public SearchSearchUrlRequestBuilder()
+			: base("search", "searchUrl")
+		{
+		}
+
+		public SearchSearchUrlRequestBuilder(MediaType mediaType, string url)
+			: this()
+		{
+			this.MediaType = mediaType;
+			this.Url = url;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("mediaType"))
+				kparams.AddIfNotNull("mediaType", MediaType);
+			if (!isMapped("url"))
+				kparams.AddIfNotNull("url", Url);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<SearchResult>(result);
+		}
+	}
+
 
 	public class SearchService
 	{
@@ -250,9 +250,9 @@ namespace Kaltura.Services
 		{
 		}
 
-		public static SearchSearchRequestBuilder Search(Search search, FilterPager pager = null)
+		public static SearchExternalLoginRequestBuilder ExternalLogin(SearchProviderType searchSource, string userName, string password)
 		{
-			return new SearchSearchRequestBuilder(search, pager);
+			return new SearchExternalLoginRequestBuilder(searchSource, userName, password);
 		}
 
 		public static SearchGetMediaInfoRequestBuilder GetMediaInfo(SearchResult searchResult)
@@ -260,14 +260,14 @@ namespace Kaltura.Services
 			return new SearchGetMediaInfoRequestBuilder(searchResult);
 		}
 
+		public static SearchSearchRequestBuilder Search(Search search, FilterPager pager = null)
+		{
+			return new SearchSearchRequestBuilder(search, pager);
+		}
+
 		public static SearchSearchUrlRequestBuilder SearchUrl(MediaType mediaType, string url)
 		{
 			return new SearchSearchUrlRequestBuilder(mediaType, url);
-		}
-
-		public static SearchExternalLoginRequestBuilder ExternalLogin(SearchProviderType searchSource, string userName, string password)
-		{
-			return new SearchExternalLoginRequestBuilder(searchSource, userName, password);
 		}
 	}
 }

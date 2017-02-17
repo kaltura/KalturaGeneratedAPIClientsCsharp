@@ -35,6 +35,58 @@ using Kaltura.Enums;
 
 namespace Kaltura.Services
 {
+	public class CategoryUserActivateRequestBuilder : RequestBuilder<CategoryUser>
+	{
+		#region Constants
+		public const string CATEGORY_ID = "categoryId";
+		public const string USER_ID = "userId";
+		#endregion
+
+		public int CategoryId
+		{
+			set;
+			get;
+		}
+		public string UserId
+		{
+			set;
+			get;
+		}
+
+		public CategoryUserActivateRequestBuilder()
+			: base("categoryuser", "activate")
+		{
+		}
+
+		public CategoryUserActivateRequestBuilder(int categoryId, string userId)
+			: this()
+		{
+			this.CategoryId = categoryId;
+			this.UserId = userId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("categoryId"))
+				kparams.AddIfNotNull("categoryId", CategoryId);
+			if (!isMapped("userId"))
+				kparams.AddIfNotNull("userId", UserId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<CategoryUser>(result);
+		}
+	}
+
 	public class CategoryUserAddRequestBuilder : RequestBuilder<CategoryUser>
 	{
 		#region Constants
@@ -75,6 +127,213 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<CategoryUser>(result);
+		}
+	}
+
+	public class CategoryUserAddFromBulkUploadRequestBuilder : RequestBuilder<BulkUpload>
+	{
+		#region Constants
+		public const string FILE_DATA = "fileData";
+		public const string BULK_UPLOAD_DATA = "bulkUploadData";
+		public const string BULK_UPLOAD_CATEGORY_USER_DATA = "bulkUploadCategoryUserData";
+		#endregion
+
+		public Stream FileData
+		{
+			set;
+			get;
+		}
+		public BulkUploadJobData BulkUploadData
+		{
+			set;
+			get;
+		}
+		public BulkUploadCategoryUserData BulkUploadCategoryUserData
+		{
+			set;
+			get;
+		}
+
+		public CategoryUserAddFromBulkUploadRequestBuilder()
+			: base("categoryuser", "addFromBulkUpload")
+		{
+		}
+
+		public CategoryUserAddFromBulkUploadRequestBuilder(Stream fileData, BulkUploadJobData bulkUploadData, BulkUploadCategoryUserData bulkUploadCategoryUserData)
+			: this()
+		{
+			this.FileData = fileData;
+			this.BulkUploadData = bulkUploadData;
+			this.BulkUploadCategoryUserData = bulkUploadCategoryUserData;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("bulkUploadData"))
+				kparams.AddIfNotNull("bulkUploadData", BulkUploadData);
+			if (!isMapped("bulkUploadCategoryUserData"))
+				kparams.AddIfNotNull("bulkUploadCategoryUserData", BulkUploadCategoryUserData);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			kfiles.Add("fileData", FileData);
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<BulkUpload>(result);
+		}
+	}
+
+	public class CategoryUserCopyFromCategoryRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string CATEGORY_ID = "categoryId";
+		#endregion
+
+		public int CategoryId
+		{
+			set;
+			get;
+		}
+
+		public CategoryUserCopyFromCategoryRequestBuilder()
+			: base("categoryuser", "copyFromCategory")
+		{
+		}
+
+		public CategoryUserCopyFromCategoryRequestBuilder(int categoryId)
+			: this()
+		{
+			this.CategoryId = categoryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("categoryId"))
+				kparams.AddIfNotNull("categoryId", CategoryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class CategoryUserDeactivateRequestBuilder : RequestBuilder<CategoryUser>
+	{
+		#region Constants
+		public const string CATEGORY_ID = "categoryId";
+		public const string USER_ID = "userId";
+		#endregion
+
+		public int CategoryId
+		{
+			set;
+			get;
+		}
+		public string UserId
+		{
+			set;
+			get;
+		}
+
+		public CategoryUserDeactivateRequestBuilder()
+			: base("categoryuser", "deactivate")
+		{
+		}
+
+		public CategoryUserDeactivateRequestBuilder(int categoryId, string userId)
+			: this()
+		{
+			this.CategoryId = categoryId;
+			this.UserId = userId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("categoryId"))
+				kparams.AddIfNotNull("categoryId", CategoryId);
+			if (!isMapped("userId"))
+				kparams.AddIfNotNull("userId", UserId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<CategoryUser>(result);
+		}
+	}
+
+	public class CategoryUserDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string CATEGORY_ID = "categoryId";
+		public const string USER_ID = "userId";
+		#endregion
+
+		public int CategoryId
+		{
+			set;
+			get;
+		}
+		public string UserId
+		{
+			set;
+			get;
+		}
+
+		public CategoryUserDeleteRequestBuilder()
+			: base("categoryuser", "delete")
+		{
+		}
+
+		public CategoryUserDeleteRequestBuilder(int categoryId, string userId)
+			: this()
+		{
+			this.CategoryId = categoryId;
+			this.UserId = userId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("categoryId"))
+				kparams.AddIfNotNull("categoryId", CategoryId);
+			if (!isMapped("userId"))
+				kparams.AddIfNotNull("userId", UserId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
 		}
 	}
 
@@ -127,6 +386,119 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<CategoryUser>(result);
+		}
+	}
+
+	public class CategoryUserIndexRequestBuilder : RequestBuilder<int>
+	{
+		#region Constants
+		public const string USER_ID = "userId";
+		public const string CATEGORY_ID = "categoryId";
+		public const string SHOULD_UPDATE = "shouldUpdate";
+		#endregion
+
+		public string UserId
+		{
+			set;
+			get;
+		}
+		public int CategoryId
+		{
+			set;
+			get;
+		}
+		public bool ShouldUpdate
+		{
+			set;
+			get;
+		}
+
+		public CategoryUserIndexRequestBuilder()
+			: base("categoryuser", "index")
+		{
+		}
+
+		public CategoryUserIndexRequestBuilder(string userId, int categoryId, bool shouldUpdate)
+			: this()
+		{
+			this.UserId = userId;
+			this.CategoryId = categoryId;
+			this.ShouldUpdate = shouldUpdate;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("userId"))
+				kparams.AddIfNotNull("userId", UserId);
+			if (!isMapped("categoryId"))
+				kparams.AddIfNotNull("categoryId", CategoryId);
+			if (!isMapped("shouldUpdate"))
+				kparams.AddIfNotNull("shouldUpdate", ShouldUpdate);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return int.Parse(result.InnerText);
+		}
+	}
+
+	public class CategoryUserListRequestBuilder : RequestBuilder<ListResponse<CategoryUser>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public CategoryUserFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public CategoryUserListRequestBuilder()
+			: base("categoryuser", "list")
+		{
+		}
+
+		public CategoryUserListRequestBuilder(CategoryUserFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<CategoryUser>>(result);
 		}
 	}
 
@@ -200,378 +572,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class CategoryUserDeleteRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string CATEGORY_ID = "categoryId";
-		public const string USER_ID = "userId";
-		#endregion
-
-		public int CategoryId
-		{
-			set;
-			get;
-		}
-		public string UserId
-		{
-			set;
-			get;
-		}
-
-		public CategoryUserDeleteRequestBuilder()
-			: base("categoryuser", "delete")
-		{
-		}
-
-		public CategoryUserDeleteRequestBuilder(int categoryId, string userId)
-			: this()
-		{
-			this.CategoryId = categoryId;
-			this.UserId = userId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("categoryId"))
-				kparams.AddIfNotNull("categoryId", CategoryId);
-			if (!isMapped("userId"))
-				kparams.AddIfNotNull("userId", UserId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
-	public class CategoryUserActivateRequestBuilder : RequestBuilder<CategoryUser>
-	{
-		#region Constants
-		public const string CATEGORY_ID = "categoryId";
-		public const string USER_ID = "userId";
-		#endregion
-
-		public int CategoryId
-		{
-			set;
-			get;
-		}
-		public string UserId
-		{
-			set;
-			get;
-		}
-
-		public CategoryUserActivateRequestBuilder()
-			: base("categoryuser", "activate")
-		{
-		}
-
-		public CategoryUserActivateRequestBuilder(int categoryId, string userId)
-			: this()
-		{
-			this.CategoryId = categoryId;
-			this.UserId = userId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("categoryId"))
-				kparams.AddIfNotNull("categoryId", CategoryId);
-			if (!isMapped("userId"))
-				kparams.AddIfNotNull("userId", UserId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<CategoryUser>(result);
-		}
-	}
-
-	public class CategoryUserDeactivateRequestBuilder : RequestBuilder<CategoryUser>
-	{
-		#region Constants
-		public const string CATEGORY_ID = "categoryId";
-		public const string USER_ID = "userId";
-		#endregion
-
-		public int CategoryId
-		{
-			set;
-			get;
-		}
-		public string UserId
-		{
-			set;
-			get;
-		}
-
-		public CategoryUserDeactivateRequestBuilder()
-			: base("categoryuser", "deactivate")
-		{
-		}
-
-		public CategoryUserDeactivateRequestBuilder(int categoryId, string userId)
-			: this()
-		{
-			this.CategoryId = categoryId;
-			this.UserId = userId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("categoryId"))
-				kparams.AddIfNotNull("categoryId", CategoryId);
-			if (!isMapped("userId"))
-				kparams.AddIfNotNull("userId", UserId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<CategoryUser>(result);
-		}
-	}
-
-	public class CategoryUserListRequestBuilder : RequestBuilder<ListResponse<CategoryUser>>
-	{
-		#region Constants
-		public const string FILTER = "filter";
-		public const string PAGER = "pager";
-		#endregion
-
-		public CategoryUserFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
-
-		public CategoryUserListRequestBuilder()
-			: base("categoryuser", "list")
-		{
-		}
-
-		public CategoryUserListRequestBuilder(CategoryUserFilter filter, FilterPager pager)
-			: this()
-		{
-			this.Filter = filter;
-			this.Pager = pager;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("filter"))
-				kparams.AddIfNotNull("filter", Filter);
-			if (!isMapped("pager"))
-				kparams.AddIfNotNull("pager", Pager);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ListResponse<CategoryUser>>(result);
-		}
-	}
-
-	public class CategoryUserCopyFromCategoryRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string CATEGORY_ID = "categoryId";
-		#endregion
-
-		public int CategoryId
-		{
-			set;
-			get;
-		}
-
-		public CategoryUserCopyFromCategoryRequestBuilder()
-			: base("categoryuser", "copyFromCategory")
-		{
-		}
-
-		public CategoryUserCopyFromCategoryRequestBuilder(int categoryId)
-			: this()
-		{
-			this.CategoryId = categoryId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("categoryId"))
-				kparams.AddIfNotNull("categoryId", CategoryId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
-	public class CategoryUserIndexRequestBuilder : RequestBuilder<int>
-	{
-		#region Constants
-		public const string USER_ID = "userId";
-		public const string CATEGORY_ID = "categoryId";
-		public const string SHOULD_UPDATE = "shouldUpdate";
-		#endregion
-
-		public string UserId
-		{
-			set;
-			get;
-		}
-		public int CategoryId
-		{
-			set;
-			get;
-		}
-		public bool ShouldUpdate
-		{
-			set;
-			get;
-		}
-
-		public CategoryUserIndexRequestBuilder()
-			: base("categoryuser", "index")
-		{
-		}
-
-		public CategoryUserIndexRequestBuilder(string userId, int categoryId, bool shouldUpdate)
-			: this()
-		{
-			this.UserId = userId;
-			this.CategoryId = categoryId;
-			this.ShouldUpdate = shouldUpdate;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("userId"))
-				kparams.AddIfNotNull("userId", UserId);
-			if (!isMapped("categoryId"))
-				kparams.AddIfNotNull("categoryId", CategoryId);
-			if (!isMapped("shouldUpdate"))
-				kparams.AddIfNotNull("shouldUpdate", ShouldUpdate);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return int.Parse(result.InnerText);
-		}
-	}
-
-	public class CategoryUserAddFromBulkUploadRequestBuilder : RequestBuilder<BulkUpload>
-	{
-		#region Constants
-		public const string FILE_DATA = "fileData";
-		public const string BULK_UPLOAD_DATA = "bulkUploadData";
-		public const string BULK_UPLOAD_CATEGORY_USER_DATA = "bulkUploadCategoryUserData";
-		#endregion
-
-		public Stream FileData
-		{
-			set;
-			get;
-		}
-		public BulkUploadJobData BulkUploadData
-		{
-			set;
-			get;
-		}
-		public BulkUploadCategoryUserData BulkUploadCategoryUserData
-		{
-			set;
-			get;
-		}
-
-		public CategoryUserAddFromBulkUploadRequestBuilder()
-			: base("categoryuser", "addFromBulkUpload")
-		{
-		}
-
-		public CategoryUserAddFromBulkUploadRequestBuilder(Stream fileData, BulkUploadJobData bulkUploadData, BulkUploadCategoryUserData bulkUploadCategoryUserData)
-			: this()
-		{
-			this.FileData = fileData;
-			this.BulkUploadData = bulkUploadData;
-			this.BulkUploadCategoryUserData = bulkUploadCategoryUserData;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("bulkUploadData"))
-				kparams.AddIfNotNull("bulkUploadData", BulkUploadData);
-			if (!isMapped("bulkUploadCategoryUserData"))
-				kparams.AddIfNotNull("bulkUploadCategoryUserData", BulkUploadCategoryUserData);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			kfiles.Add("fileData", FileData);
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<BulkUpload>(result);
-		}
-	}
-
 
 	public class CategoryUserService
 	{
@@ -579,39 +579,19 @@ namespace Kaltura.Services
 		{
 		}
 
-		public static CategoryUserAddRequestBuilder Add(CategoryUser categoryUser)
-		{
-			return new CategoryUserAddRequestBuilder(categoryUser);
-		}
-
-		public static CategoryUserGetRequestBuilder Get(int categoryId, string userId)
-		{
-			return new CategoryUserGetRequestBuilder(categoryId, userId);
-		}
-
-		public static CategoryUserUpdateRequestBuilder Update(int categoryId, string userId, CategoryUser categoryUser, bool override_ = false)
-		{
-			return new CategoryUserUpdateRequestBuilder(categoryId, userId, categoryUser, override_);
-		}
-
-		public static CategoryUserDeleteRequestBuilder Delete(int categoryId, string userId)
-		{
-			return new CategoryUserDeleteRequestBuilder(categoryId, userId);
-		}
-
 		public static CategoryUserActivateRequestBuilder Activate(int categoryId, string userId)
 		{
 			return new CategoryUserActivateRequestBuilder(categoryId, userId);
 		}
 
-		public static CategoryUserDeactivateRequestBuilder Deactivate(int categoryId, string userId)
+		public static CategoryUserAddRequestBuilder Add(CategoryUser categoryUser)
 		{
-			return new CategoryUserDeactivateRequestBuilder(categoryId, userId);
+			return new CategoryUserAddRequestBuilder(categoryUser);
 		}
 
-		public static CategoryUserListRequestBuilder List(CategoryUserFilter filter = null, FilterPager pager = null)
+		public static CategoryUserAddFromBulkUploadRequestBuilder AddFromBulkUpload(Stream fileData, BulkUploadJobData bulkUploadData = null, BulkUploadCategoryUserData bulkUploadCategoryUserData = null)
 		{
-			return new CategoryUserListRequestBuilder(filter, pager);
+			return new CategoryUserAddFromBulkUploadRequestBuilder(fileData, bulkUploadData, bulkUploadCategoryUserData);
 		}
 
 		public static CategoryUserCopyFromCategoryRequestBuilder CopyFromCategory(int categoryId)
@@ -619,14 +599,34 @@ namespace Kaltura.Services
 			return new CategoryUserCopyFromCategoryRequestBuilder(categoryId);
 		}
 
+		public static CategoryUserDeactivateRequestBuilder Deactivate(int categoryId, string userId)
+		{
+			return new CategoryUserDeactivateRequestBuilder(categoryId, userId);
+		}
+
+		public static CategoryUserDeleteRequestBuilder Delete(int categoryId, string userId)
+		{
+			return new CategoryUserDeleteRequestBuilder(categoryId, userId);
+		}
+
+		public static CategoryUserGetRequestBuilder Get(int categoryId, string userId)
+		{
+			return new CategoryUserGetRequestBuilder(categoryId, userId);
+		}
+
 		public static CategoryUserIndexRequestBuilder Index(string userId, int categoryId, bool shouldUpdate = true)
 		{
 			return new CategoryUserIndexRequestBuilder(userId, categoryId, shouldUpdate);
 		}
 
-		public static CategoryUserAddFromBulkUploadRequestBuilder AddFromBulkUpload(Stream fileData, BulkUploadJobData bulkUploadData = null, BulkUploadCategoryUserData bulkUploadCategoryUserData = null)
+		public static CategoryUserListRequestBuilder List(CategoryUserFilter filter = null, FilterPager pager = null)
 		{
-			return new CategoryUserAddFromBulkUploadRequestBuilder(fileData, bulkUploadData, bulkUploadCategoryUserData);
+			return new CategoryUserListRequestBuilder(filter, pager);
+		}
+
+		public static CategoryUserUpdateRequestBuilder Update(int categoryId, string userId, CategoryUser categoryUser, bool override_ = false)
+		{
+			return new CategoryUserUpdateRequestBuilder(categoryId, userId, categoryUser, override_);
 		}
 	}
 }

@@ -35,6 +35,58 @@ using Kaltura.Enums;
 
 namespace Kaltura.Services
 {
+	public class LiveReportsExportToCsvRequestBuilder : RequestBuilder<LiveReportExportResponse>
+	{
+		#region Constants
+		public const string REPORT_TYPE = "reportType";
+		public const string PARAMS = "params";
+		#endregion
+
+		public LiveReportExportType ReportType
+		{
+			set;
+			get;
+		}
+		public LiveReportExportParams Params_
+		{
+			set;
+			get;
+		}
+
+		public LiveReportsExportToCsvRequestBuilder()
+			: base("livereports", "exportToCsv")
+		{
+		}
+
+		public LiveReportsExportToCsvRequestBuilder(LiveReportExportType reportType, LiveReportExportParams params_)
+			: this()
+		{
+			this.ReportType = reportType;
+			this.Params_ = params_;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("reportType"))
+				kparams.AddIfNotNull("reportType", ReportType);
+			if (!isMapped("params_"))
+				kparams.AddIfNotNull("params_", Params_);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<LiveReportExportResponse>(result);
+		}
+	}
+
 	public class LiveReportsGetEventsRequestBuilder : RequestBuilder<IList<ReportGraph>>
 	{
 		#region Constants
@@ -101,58 +153,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class LiveReportsExportToCsvRequestBuilder : RequestBuilder<LiveReportExportResponse>
-	{
-		#region Constants
-		public const string REPORT_TYPE = "reportType";
-		public const string PARAMS = "params";
-		#endregion
-
-		public LiveReportExportType ReportType
-		{
-			set;
-			get;
-		}
-		public LiveReportExportParams Params_
-		{
-			set;
-			get;
-		}
-
-		public LiveReportsExportToCsvRequestBuilder()
-			: base("livereports", "exportToCsv")
-		{
-		}
-
-		public LiveReportsExportToCsvRequestBuilder(LiveReportExportType reportType, LiveReportExportParams params_)
-			: this()
-		{
-			this.ReportType = reportType;
-			this.Params_ = params_;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("reportType"))
-				kparams.AddIfNotNull("reportType", ReportType);
-			if (!isMapped("params_"))
-				kparams.AddIfNotNull("params_", Params_);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<LiveReportExportResponse>(result);
-		}
-	}
-
 	public class LiveReportsServeReportRequestBuilder : RequestBuilder<string>
 	{
 		#region Constants
@@ -203,14 +203,14 @@ namespace Kaltura.Services
 		{
 		}
 
-		public static LiveReportsGetEventsRequestBuilder GetEvents(LiveReportType reportType, LiveReportInputFilter filter = null, FilterPager pager = null)
-		{
-			return new LiveReportsGetEventsRequestBuilder(reportType, filter, pager);
-		}
-
 		public static LiveReportsExportToCsvRequestBuilder ExportToCsv(LiveReportExportType reportType, LiveReportExportParams params_)
 		{
 			return new LiveReportsExportToCsvRequestBuilder(reportType, params_);
+		}
+
+		public static LiveReportsGetEventsRequestBuilder GetEvents(LiveReportType reportType, LiveReportInputFilter filter = null, FilterPager pager = null)
+		{
+			return new LiveReportsGetEventsRequestBuilder(reportType, filter, pager);
 		}
 
 		public static LiveReportsServeReportRequestBuilder ServeReport(string id)

@@ -191,11 +191,124 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class MediaAddFromUrlRequestBuilder : RequestBuilder<MediaEntry>
+	public class MediaAddFromEntryRequestBuilder : RequestBuilder<MediaEntry>
+	{
+		#region Constants
+		public const string SOURCE_ENTRY_ID = "sourceEntryId";
+		public const string MEDIA_ENTRY = "mediaEntry";
+		public const string SOURCE_FLAVOR_PARAMS_ID = "sourceFlavorParamsId";
+		#endregion
+
+		public string SourceEntryId
+		{
+			set;
+			get;
+		}
+		public MediaEntry MediaEntry
+		{
+			set;
+			get;
+		}
+		public int SourceFlavorParamsId
+		{
+			set;
+			get;
+		}
+
+		public MediaAddFromEntryRequestBuilder()
+			: base("media", "addFromEntry")
+		{
+		}
+
+		public MediaAddFromEntryRequestBuilder(string sourceEntryId, MediaEntry mediaEntry, int sourceFlavorParamsId)
+			: this()
+		{
+			this.SourceEntryId = sourceEntryId;
+			this.MediaEntry = mediaEntry;
+			this.SourceFlavorParamsId = sourceFlavorParamsId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("sourceEntryId"))
+				kparams.AddIfNotNull("sourceEntryId", SourceEntryId);
+			if (!isMapped("mediaEntry"))
+				kparams.AddIfNotNull("mediaEntry", MediaEntry);
+			if (!isMapped("sourceFlavorParamsId"))
+				kparams.AddIfNotNull("sourceFlavorParamsId", SourceFlavorParamsId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<MediaEntry>(result);
+		}
+	}
+
+	public class MediaAddFromFlavorAssetRequestBuilder : RequestBuilder<MediaEntry>
+	{
+		#region Constants
+		public const string SOURCE_FLAVOR_ASSET_ID = "sourceFlavorAssetId";
+		public const string MEDIA_ENTRY = "mediaEntry";
+		#endregion
+
+		public string SourceFlavorAssetId
+		{
+			set;
+			get;
+		}
+		public MediaEntry MediaEntry
+		{
+			set;
+			get;
+		}
+
+		public MediaAddFromFlavorAssetRequestBuilder()
+			: base("media", "addFromFlavorAsset")
+		{
+		}
+
+		public MediaAddFromFlavorAssetRequestBuilder(string sourceFlavorAssetId, MediaEntry mediaEntry)
+			: this()
+		{
+			this.SourceFlavorAssetId = sourceFlavorAssetId;
+			this.MediaEntry = mediaEntry;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("sourceFlavorAssetId"))
+				kparams.AddIfNotNull("sourceFlavorAssetId", SourceFlavorAssetId);
+			if (!isMapped("mediaEntry"))
+				kparams.AddIfNotNull("mediaEntry", MediaEntry);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<MediaEntry>(result);
+		}
+	}
+
+	public class MediaAddFromRecordedWebcamRequestBuilder : RequestBuilder<MediaEntry>
 	{
 		#region Constants
 		public const string MEDIA_ENTRY = "mediaEntry";
-		public const string URL = "url";
+		public const string WEBCAM_TOKEN_ID = "webcamTokenId";
 		#endregion
 
 		public MediaEntry MediaEntry
@@ -203,22 +316,22 @@ namespace Kaltura.Services
 			set;
 			get;
 		}
-		public string Url
+		public string WebcamTokenId
 		{
 			set;
 			get;
 		}
 
-		public MediaAddFromUrlRequestBuilder()
-			: base("media", "addFromUrl")
+		public MediaAddFromRecordedWebcamRequestBuilder()
+			: base("media", "addFromRecordedWebcam")
 		{
 		}
 
-		public MediaAddFromUrlRequestBuilder(MediaEntry mediaEntry, string url)
+		public MediaAddFromRecordedWebcamRequestBuilder(MediaEntry mediaEntry, string webcamTokenId)
 			: this()
 		{
 			this.MediaEntry = mediaEntry;
-			this.Url = url;
+			this.WebcamTokenId = webcamTokenId;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -226,8 +339,8 @@ namespace Kaltura.Services
 			Params kparams = base.getParameters(includeServiceAndAction);
 			if (!isMapped("mediaEntry"))
 				kparams.AddIfNotNull("mediaEntry", MediaEntry);
-			if (!isMapped("url"))
-				kparams.AddIfNotNull("url", Url);
+			if (!isMapped("webcamTokenId"))
+				kparams.AddIfNotNull("webcamTokenId", WebcamTokenId);
 			return kparams;
 		}
 
@@ -347,11 +460,11 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class MediaAddFromRecordedWebcamRequestBuilder : RequestBuilder<MediaEntry>
+	public class MediaAddFromUrlRequestBuilder : RequestBuilder<MediaEntry>
 	{
 		#region Constants
 		public const string MEDIA_ENTRY = "mediaEntry";
-		public const string WEBCAM_TOKEN_ID = "webcamTokenId";
+		public const string URL = "url";
 		#endregion
 
 		public MediaEntry MediaEntry
@@ -359,22 +472,22 @@ namespace Kaltura.Services
 			set;
 			get;
 		}
-		public string WebcamTokenId
+		public string Url
 		{
 			set;
 			get;
 		}
 
-		public MediaAddFromRecordedWebcamRequestBuilder()
-			: base("media", "addFromRecordedWebcam")
+		public MediaAddFromUrlRequestBuilder()
+			: base("media", "addFromUrl")
 		{
 		}
 
-		public MediaAddFromRecordedWebcamRequestBuilder(MediaEntry mediaEntry, string webcamTokenId)
+		public MediaAddFromUrlRequestBuilder(MediaEntry mediaEntry, string url)
 			: this()
 		{
 			this.MediaEntry = mediaEntry;
-			this.WebcamTokenId = webcamTokenId;
+			this.Url = url;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -382,8 +495,8 @@ namespace Kaltura.Services
 			Params kparams = base.getParameters(includeServiceAndAction);
 			if (!isMapped("mediaEntry"))
 				kparams.AddIfNotNull("mediaEntry", MediaEntry);
-			if (!isMapped("webcamTokenId"))
-				kparams.AddIfNotNull("webcamTokenId", WebcamTokenId);
+			if (!isMapped("url"))
+				kparams.AddIfNotNull("url", Url);
 			return kparams;
 		}
 
@@ -399,52 +512,129 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class MediaAddFromEntryRequestBuilder : RequestBuilder<MediaEntry>
+	public class MediaAnonymousRankRequestBuilder : RequestBuilder<object>
 	{
 		#region Constants
-		public const string SOURCE_ENTRY_ID = "sourceEntryId";
-		public const string MEDIA_ENTRY = "mediaEntry";
-		public const string SOURCE_FLAVOR_PARAMS_ID = "sourceFlavorParamsId";
+		public const string ENTRY_ID = "entryId";
+		public const string RANK = "rank";
 		#endregion
 
-		public string SourceEntryId
+		public string EntryId
 		{
 			set;
 			get;
 		}
-		public MediaEntry MediaEntry
-		{
-			set;
-			get;
-		}
-		public int SourceFlavorParamsId
+		public int Rank
 		{
 			set;
 			get;
 		}
 
-		public MediaAddFromEntryRequestBuilder()
-			: base("media", "addFromEntry")
+		public MediaAnonymousRankRequestBuilder()
+			: base("media", "anonymousRank")
 		{
 		}
 
-		public MediaAddFromEntryRequestBuilder(string sourceEntryId, MediaEntry mediaEntry, int sourceFlavorParamsId)
+		public MediaAnonymousRankRequestBuilder(string entryId, int rank)
 			: this()
 		{
-			this.SourceEntryId = sourceEntryId;
-			this.MediaEntry = mediaEntry;
-			this.SourceFlavorParamsId = sourceFlavorParamsId;
+			this.EntryId = entryId;
+			this.Rank = rank;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("sourceEntryId"))
-				kparams.AddIfNotNull("sourceEntryId", SourceEntryId);
-			if (!isMapped("mediaEntry"))
-				kparams.AddIfNotNull("mediaEntry", MediaEntry);
-			if (!isMapped("sourceFlavorParamsId"))
-				kparams.AddIfNotNull("sourceFlavorParamsId", SourceFlavorParamsId);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("rank"))
+				kparams.AddIfNotNull("rank", Rank);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class MediaApproveRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+
+		public MediaApproveRequestBuilder()
+			: base("media", "approve")
+		{
+		}
+
+		public MediaApproveRequestBuilder(string entryId)
+			: this()
+		{
+			this.EntryId = entryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class MediaApproveReplaceRequestBuilder : RequestBuilder<MediaEntry>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+
+		public MediaApproveReplaceRequestBuilder()
+			: base("media", "approveReplace")
+		{
+		}
+
+		public MediaApproveReplaceRequestBuilder(string entryId)
+			: this()
+		{
+			this.EntryId = entryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
 			return kparams;
 		}
 
@@ -460,43 +650,94 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class MediaAddFromFlavorAssetRequestBuilder : RequestBuilder<MediaEntry>
+	public class MediaBulkUploadAddRequestBuilder : RequestBuilder<BulkUpload>
 	{
 		#region Constants
-		public const string SOURCE_FLAVOR_ASSET_ID = "sourceFlavorAssetId";
-		public const string MEDIA_ENTRY = "mediaEntry";
+		public const string FILE_DATA = "fileData";
+		public const string BULK_UPLOAD_DATA = "bulkUploadData";
+		public const string BULK_UPLOAD_ENTRY_DATA = "bulkUploadEntryData";
 		#endregion
 
-		public string SourceFlavorAssetId
+		public Stream FileData
 		{
 			set;
 			get;
 		}
-		public MediaEntry MediaEntry
+		public BulkUploadJobData BulkUploadData
+		{
+			set;
+			get;
+		}
+		public BulkUploadEntryData BulkUploadEntryData
 		{
 			set;
 			get;
 		}
 
-		public MediaAddFromFlavorAssetRequestBuilder()
-			: base("media", "addFromFlavorAsset")
+		public MediaBulkUploadAddRequestBuilder()
+			: base("media", "bulkUploadAdd")
 		{
 		}
 
-		public MediaAddFromFlavorAssetRequestBuilder(string sourceFlavorAssetId, MediaEntry mediaEntry)
+		public MediaBulkUploadAddRequestBuilder(Stream fileData, BulkUploadJobData bulkUploadData, BulkUploadEntryData bulkUploadEntryData)
 			: this()
 		{
-			this.SourceFlavorAssetId = sourceFlavorAssetId;
-			this.MediaEntry = mediaEntry;
+			this.FileData = fileData;
+			this.BulkUploadData = bulkUploadData;
+			this.BulkUploadEntryData = bulkUploadEntryData;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("sourceFlavorAssetId"))
-				kparams.AddIfNotNull("sourceFlavorAssetId", SourceFlavorAssetId);
-			if (!isMapped("mediaEntry"))
-				kparams.AddIfNotNull("mediaEntry", MediaEntry);
+			if (!isMapped("bulkUploadData"))
+				kparams.AddIfNotNull("bulkUploadData", BulkUploadData);
+			if (!isMapped("bulkUploadEntryData"))
+				kparams.AddIfNotNull("bulkUploadEntryData", BulkUploadEntryData);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			kfiles.Add("fileData", FileData);
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<BulkUpload>(result);
+		}
+	}
+
+	public class MediaCancelReplaceRequestBuilder : RequestBuilder<MediaEntry>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+
+		public MediaCancelReplaceRequestBuilder()
+			: base("media", "cancelReplace")
+		{
+		}
+
+		public MediaCancelReplaceRequestBuilder(string entryId)
+			: this()
+		{
+			this.EntryId = entryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
 			return kparams;
 		}
 
@@ -570,6 +811,135 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return long.Parse(result.InnerText);
+		}
+	}
+
+	public class MediaCountRequestBuilder : RequestBuilder<int>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		#endregion
+
+		public MediaEntryFilter Filter
+		{
+			set;
+			get;
+		}
+
+		public MediaCountRequestBuilder()
+			: base("media", "count")
+		{
+		}
+
+		public MediaCountRequestBuilder(MediaEntryFilter filter)
+			: this()
+		{
+			this.Filter = filter;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return int.Parse(result.InnerText);
+		}
+	}
+
+	public class MediaDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+
+		public MediaDeleteRequestBuilder()
+			: base("media", "delete")
+		{
+		}
+
+		public MediaDeleteRequestBuilder(string entryId)
+			: this()
+		{
+			this.EntryId = entryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class MediaFlagRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string MODERATION_FLAG = "moderationFlag";
+		#endregion
+
+		public ModerationFlag ModerationFlag
+		{
+			set;
+			get;
+		}
+
+		public MediaFlagRequestBuilder()
+			: base("media", "flag")
+		{
+		}
+
+		public MediaFlagRequestBuilder(ModerationFlag moderationFlag)
+			: this()
+		{
+			this.ModerationFlag = moderationFlag;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("moderationFlag"))
+				kparams.AddIfNotNull("moderationFlag", ModerationFlag);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
 		}
 	}
 
@@ -683,6 +1053,205 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return result.InnerText;
+		}
+	}
+
+	public class MediaListRequestBuilder : RequestBuilder<ListResponse<MediaEntry>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public MediaEntryFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public MediaListRequestBuilder()
+			: base("media", "list")
+		{
+		}
+
+		public MediaListRequestBuilder(MediaEntryFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<MediaEntry>>(result);
+		}
+	}
+
+	public class MediaListFlagsRequestBuilder : RequestBuilder<ListResponse<ModerationFlag>>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string PAGER = "pager";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public MediaListFlagsRequestBuilder()
+			: base("media", "listFlags")
+		{
+		}
+
+		public MediaListFlagsRequestBuilder(string entryId, FilterPager pager)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<ModerationFlag>>(result);
+		}
+	}
+
+	public class MediaRejectRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+
+		public MediaRejectRequestBuilder()
+			: base("media", "reject")
+		{
+		}
+
+		public MediaRejectRequestBuilder(string entryId)
+			: this()
+		{
+			this.EntryId = entryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class MediaRequestConversionRequestBuilder : RequestBuilder<int>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string FILE_FORMAT = "fileFormat";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public string FileFormat
+		{
+			set;
+			get;
+		}
+
+		public MediaRequestConversionRequestBuilder()
+			: base("media", "requestConversion")
+		{
+		}
+
+		public MediaRequestConversionRequestBuilder(string entryId, string fileFormat)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.FileFormat = fileFormat;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("fileFormat"))
+				kparams.AddIfNotNull("fileFormat", FileFormat);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return int.Parse(result.InnerText);
 		}
 	}
 
@@ -805,272 +1374,6 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<MediaEntry>(result);
-		}
-	}
-
-	public class MediaDeleteRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-
-		public MediaDeleteRequestBuilder()
-			: base("media", "delete")
-		{
-		}
-
-		public MediaDeleteRequestBuilder(string entryId)
-			: this()
-		{
-			this.EntryId = entryId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
-	public class MediaApproveReplaceRequestBuilder : RequestBuilder<MediaEntry>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-
-		public MediaApproveReplaceRequestBuilder()
-			: base("media", "approveReplace")
-		{
-		}
-
-		public MediaApproveReplaceRequestBuilder(string entryId)
-			: this()
-		{
-			this.EntryId = entryId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<MediaEntry>(result);
-		}
-	}
-
-	public class MediaCancelReplaceRequestBuilder : RequestBuilder<MediaEntry>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-
-		public MediaCancelReplaceRequestBuilder()
-			: base("media", "cancelReplace")
-		{
-		}
-
-		public MediaCancelReplaceRequestBuilder(string entryId)
-			: this()
-		{
-			this.EntryId = entryId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<MediaEntry>(result);
-		}
-	}
-
-	public class MediaListRequestBuilder : RequestBuilder<ListResponse<MediaEntry>>
-	{
-		#region Constants
-		public const string FILTER = "filter";
-		public const string PAGER = "pager";
-		#endregion
-
-		public MediaEntryFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
-
-		public MediaListRequestBuilder()
-			: base("media", "list")
-		{
-		}
-
-		public MediaListRequestBuilder(MediaEntryFilter filter, FilterPager pager)
-			: this()
-		{
-			this.Filter = filter;
-			this.Pager = pager;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("filter"))
-				kparams.AddIfNotNull("filter", Filter);
-			if (!isMapped("pager"))
-				kparams.AddIfNotNull("pager", Pager);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ListResponse<MediaEntry>>(result);
-		}
-	}
-
-	public class MediaCountRequestBuilder : RequestBuilder<int>
-	{
-		#region Constants
-		public const string FILTER = "filter";
-		#endregion
-
-		public MediaEntryFilter Filter
-		{
-			set;
-			get;
-		}
-
-		public MediaCountRequestBuilder()
-			: base("media", "count")
-		{
-		}
-
-		public MediaCountRequestBuilder(MediaEntryFilter filter)
-			: this()
-		{
-			this.Filter = filter;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("filter"))
-				kparams.AddIfNotNull("filter", Filter);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return int.Parse(result.InnerText);
-		}
-	}
-
-	public class MediaUploadRequestBuilder : RequestBuilder<string>
-	{
-		#region Constants
-		public const string FILE_DATA = "fileData";
-		#endregion
-
-		public Stream FileData
-		{
-			set;
-			get;
-		}
-
-		public MediaUploadRequestBuilder()
-			: base("media", "upload")
-		{
-		}
-
-		public MediaUploadRequestBuilder(Stream fileData)
-			: this()
-		{
-			this.FileData = fileData;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			kfiles.Add("fileData", FileData);
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return result.InnerText;
 		}
 	}
 
@@ -1205,57 +1508,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class MediaUpdateThumbnailJpegRequestBuilder : RequestBuilder<MediaEntry>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		public const string FILE_DATA = "fileData";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public Stream FileData
-		{
-			set;
-			get;
-		}
-
-		public MediaUpdateThumbnailJpegRequestBuilder()
-			: base("media", "updateThumbnailJpeg")
-		{
-		}
-
-		public MediaUpdateThumbnailJpegRequestBuilder(string entryId, Stream fileData)
-			: this()
-		{
-			this.EntryId = entryId;
-			this.FileData = fileData;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			kfiles.Add("fileData", FileData);
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<MediaEntry>(result);
-		}
-	}
-
 	public class MediaUpdateThumbnailFromUrlRequestBuilder : RequestBuilder<BaseEntry>
 	{
 		#region Constants
@@ -1308,335 +1560,41 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class MediaRequestConversionRequestBuilder : RequestBuilder<int>
+	public class MediaUpdateThumbnailJpegRequestBuilder : RequestBuilder<MediaEntry>
 	{
 		#region Constants
 		public const string ENTRY_ID = "entryId";
-		public const string FILE_FORMAT = "fileFormat";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public string FileFormat
-		{
-			set;
-			get;
-		}
-
-		public MediaRequestConversionRequestBuilder()
-			: base("media", "requestConversion")
-		{
-		}
-
-		public MediaRequestConversionRequestBuilder(string entryId, string fileFormat)
-			: this()
-		{
-			this.EntryId = entryId;
-			this.FileFormat = fileFormat;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			if (!isMapped("fileFormat"))
-				kparams.AddIfNotNull("fileFormat", FileFormat);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return int.Parse(result.InnerText);
-		}
-	}
-
-	public class MediaFlagRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string MODERATION_FLAG = "moderationFlag";
-		#endregion
-
-		public ModerationFlag ModerationFlag
-		{
-			set;
-			get;
-		}
-
-		public MediaFlagRequestBuilder()
-			: base("media", "flag")
-		{
-		}
-
-		public MediaFlagRequestBuilder(ModerationFlag moderationFlag)
-			: this()
-		{
-			this.ModerationFlag = moderationFlag;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("moderationFlag"))
-				kparams.AddIfNotNull("moderationFlag", ModerationFlag);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
-	public class MediaRejectRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-
-		public MediaRejectRequestBuilder()
-			: base("media", "reject")
-		{
-		}
-
-		public MediaRejectRequestBuilder(string entryId)
-			: this()
-		{
-			this.EntryId = entryId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
-	public class MediaApproveRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-
-		public MediaApproveRequestBuilder()
-			: base("media", "approve")
-		{
-		}
-
-		public MediaApproveRequestBuilder(string entryId)
-			: this()
-		{
-			this.EntryId = entryId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
-	public class MediaListFlagsRequestBuilder : RequestBuilder<ListResponse<ModerationFlag>>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		public const string PAGER = "pager";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
-
-		public MediaListFlagsRequestBuilder()
-			: base("media", "listFlags")
-		{
-		}
-
-		public MediaListFlagsRequestBuilder(string entryId, FilterPager pager)
-			: this()
-		{
-			this.EntryId = entryId;
-			this.Pager = pager;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			if (!isMapped("pager"))
-				kparams.AddIfNotNull("pager", Pager);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ListResponse<ModerationFlag>>(result);
-		}
-	}
-
-	public class MediaAnonymousRankRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		public const string RANK = "rank";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public int Rank
-		{
-			set;
-			get;
-		}
-
-		public MediaAnonymousRankRequestBuilder()
-			: base("media", "anonymousRank")
-		{
-		}
-
-		public MediaAnonymousRankRequestBuilder(string entryId, int rank)
-			: this()
-		{
-			this.EntryId = entryId;
-			this.Rank = rank;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			if (!isMapped("rank"))
-				kparams.AddIfNotNull("rank", Rank);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
-	public class MediaBulkUploadAddRequestBuilder : RequestBuilder<BulkUpload>
-	{
-		#region Constants
 		public const string FILE_DATA = "fileData";
-		public const string BULK_UPLOAD_DATA = "bulkUploadData";
-		public const string BULK_UPLOAD_ENTRY_DATA = "bulkUploadEntryData";
 		#endregion
 
+		public string EntryId
+		{
+			set;
+			get;
+		}
 		public Stream FileData
 		{
 			set;
 			get;
 		}
-		public BulkUploadJobData BulkUploadData
-		{
-			set;
-			get;
-		}
-		public BulkUploadEntryData BulkUploadEntryData
-		{
-			set;
-			get;
-		}
 
-		public MediaBulkUploadAddRequestBuilder()
-			: base("media", "bulkUploadAdd")
+		public MediaUpdateThumbnailJpegRequestBuilder()
+			: base("media", "updateThumbnailJpeg")
 		{
 		}
 
-		public MediaBulkUploadAddRequestBuilder(Stream fileData, BulkUploadJobData bulkUploadData, BulkUploadEntryData bulkUploadEntryData)
+		public MediaUpdateThumbnailJpegRequestBuilder(string entryId, Stream fileData)
 			: this()
 		{
+			this.EntryId = entryId;
 			this.FileData = fileData;
-			this.BulkUploadData = bulkUploadData;
-			this.BulkUploadEntryData = bulkUploadEntryData;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("bulkUploadData"))
-				kparams.AddIfNotNull("bulkUploadData", BulkUploadData);
-			if (!isMapped("bulkUploadEntryData"))
-				kparams.AddIfNotNull("bulkUploadEntryData", BulkUploadEntryData);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
 			return kparams;
 		}
 
@@ -1649,7 +1607,49 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<BulkUpload>(result);
+			return ObjectFactory.Create<MediaEntry>(result);
+		}
+	}
+
+	public class MediaUploadRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		public const string FILE_DATA = "fileData";
+		#endregion
+
+		public Stream FileData
+		{
+			set;
+			get;
+		}
+
+		public MediaUploadRequestBuilder()
+			: base("media", "upload")
+		{
+		}
+
+		public MediaUploadRequestBuilder(Stream fileData)
+			: this()
+		{
+			this.FileData = fileData;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			kfiles.Add("fileData", FileData);
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return result.InnerText;
 		}
 	}
 
@@ -1675,9 +1675,19 @@ namespace Kaltura.Services
 			return new MediaAddFromBulkRequestBuilder(mediaEntry, url, bulkUploadId);
 		}
 
-		public static MediaAddFromUrlRequestBuilder AddFromUrl(MediaEntry mediaEntry, string url)
+		public static MediaAddFromEntryRequestBuilder AddFromEntry(string sourceEntryId, MediaEntry mediaEntry = null, int sourceFlavorParamsId = Int32.MinValue)
 		{
-			return new MediaAddFromUrlRequestBuilder(mediaEntry, url);
+			return new MediaAddFromEntryRequestBuilder(sourceEntryId, mediaEntry, sourceFlavorParamsId);
+		}
+
+		public static MediaAddFromFlavorAssetRequestBuilder AddFromFlavorAsset(string sourceFlavorAssetId, MediaEntry mediaEntry = null)
+		{
+			return new MediaAddFromFlavorAssetRequestBuilder(sourceFlavorAssetId, mediaEntry);
+		}
+
+		public static MediaAddFromRecordedWebcamRequestBuilder AddFromRecordedWebcam(MediaEntry mediaEntry, string webcamTokenId)
+		{
+			return new MediaAddFromRecordedWebcamRequestBuilder(mediaEntry, webcamTokenId);
 		}
 
 		public static MediaAddFromSearchResultRequestBuilder AddFromSearchResult(MediaEntry mediaEntry = null, SearchResult searchResult = null)
@@ -1690,24 +1700,54 @@ namespace Kaltura.Services
 			return new MediaAddFromUploadedFileRequestBuilder(mediaEntry, uploadTokenId);
 		}
 
-		public static MediaAddFromRecordedWebcamRequestBuilder AddFromRecordedWebcam(MediaEntry mediaEntry, string webcamTokenId)
+		public static MediaAddFromUrlRequestBuilder AddFromUrl(MediaEntry mediaEntry, string url)
 		{
-			return new MediaAddFromRecordedWebcamRequestBuilder(mediaEntry, webcamTokenId);
+			return new MediaAddFromUrlRequestBuilder(mediaEntry, url);
 		}
 
-		public static MediaAddFromEntryRequestBuilder AddFromEntry(string sourceEntryId, MediaEntry mediaEntry = null, int sourceFlavorParamsId = Int32.MinValue)
+		public static MediaAnonymousRankRequestBuilder AnonymousRank(string entryId, int rank)
 		{
-			return new MediaAddFromEntryRequestBuilder(sourceEntryId, mediaEntry, sourceFlavorParamsId);
+			return new MediaAnonymousRankRequestBuilder(entryId, rank);
 		}
 
-		public static MediaAddFromFlavorAssetRequestBuilder AddFromFlavorAsset(string sourceFlavorAssetId, MediaEntry mediaEntry = null)
+		public static MediaApproveRequestBuilder Approve(string entryId)
 		{
-			return new MediaAddFromFlavorAssetRequestBuilder(sourceFlavorAssetId, mediaEntry);
+			return new MediaApproveRequestBuilder(entryId);
+		}
+
+		public static MediaApproveReplaceRequestBuilder ApproveReplace(string entryId)
+		{
+			return new MediaApproveReplaceRequestBuilder(entryId);
+		}
+
+		public static MediaBulkUploadAddRequestBuilder BulkUploadAdd(Stream fileData, BulkUploadJobData bulkUploadData = null, BulkUploadEntryData bulkUploadEntryData = null)
+		{
+			return new MediaBulkUploadAddRequestBuilder(fileData, bulkUploadData, bulkUploadEntryData);
+		}
+
+		public static MediaCancelReplaceRequestBuilder CancelReplace(string entryId)
+		{
+			return new MediaCancelReplaceRequestBuilder(entryId);
 		}
 
 		public static MediaConvertRequestBuilder Convert(string entryId, int conversionProfileId = Int32.MinValue, IList<ConversionAttribute> dynamicConversionAttributes = null)
 		{
 			return new MediaConvertRequestBuilder(entryId, conversionProfileId, dynamicConversionAttributes);
+		}
+
+		public static MediaCountRequestBuilder Count(MediaEntryFilter filter = null)
+		{
+			return new MediaCountRequestBuilder(filter);
+		}
+
+		public static MediaDeleteRequestBuilder Delete(string entryId)
+		{
+			return new MediaDeleteRequestBuilder(entryId);
+		}
+
+		public static MediaFlagRequestBuilder Flag(ModerationFlag moderationFlag)
+		{
+			return new MediaFlagRequestBuilder(moderationFlag);
 		}
 
 		public static MediaGetRequestBuilder Get(string entryId, int version = -1)
@@ -1720,6 +1760,26 @@ namespace Kaltura.Services
 			return new MediaGetMrssRequestBuilder(entryId, extendingItemsArray, features);
 		}
 
+		public static MediaListRequestBuilder List(MediaEntryFilter filter = null, FilterPager pager = null)
+		{
+			return new MediaListRequestBuilder(filter, pager);
+		}
+
+		public static MediaListFlagsRequestBuilder ListFlags(string entryId, FilterPager pager = null)
+		{
+			return new MediaListFlagsRequestBuilder(entryId, pager);
+		}
+
+		public static MediaRejectRequestBuilder Reject(string entryId)
+		{
+			return new MediaRejectRequestBuilder(entryId);
+		}
+
+		public static MediaRequestConversionRequestBuilder RequestConversion(string entryId, string fileFormat)
+		{
+			return new MediaRequestConversionRequestBuilder(entryId, fileFormat);
+		}
+
 		public static MediaUpdateRequestBuilder Update(string entryId, MediaEntry mediaEntry)
 		{
 			return new MediaUpdateRequestBuilder(entryId, mediaEntry);
@@ -1728,36 +1788,6 @@ namespace Kaltura.Services
 		public static MediaUpdateContentRequestBuilder UpdateContent(string entryId, Resource resource, int conversionProfileId = Int32.MinValue, EntryReplacementOptions advancedOptions = null)
 		{
 			return new MediaUpdateContentRequestBuilder(entryId, resource, conversionProfileId, advancedOptions);
-		}
-
-		public static MediaDeleteRequestBuilder Delete(string entryId)
-		{
-			return new MediaDeleteRequestBuilder(entryId);
-		}
-
-		public static MediaApproveReplaceRequestBuilder ApproveReplace(string entryId)
-		{
-			return new MediaApproveReplaceRequestBuilder(entryId);
-		}
-
-		public static MediaCancelReplaceRequestBuilder CancelReplace(string entryId)
-		{
-			return new MediaCancelReplaceRequestBuilder(entryId);
-		}
-
-		public static MediaListRequestBuilder List(MediaEntryFilter filter = null, FilterPager pager = null)
-		{
-			return new MediaListRequestBuilder(filter, pager);
-		}
-
-		public static MediaCountRequestBuilder Count(MediaEntryFilter filter = null)
-		{
-			return new MediaCountRequestBuilder(filter);
-		}
-
-		public static MediaUploadRequestBuilder Upload(Stream fileData)
-		{
-			return new MediaUploadRequestBuilder(fileData);
 		}
 
 		public static MediaUpdateThumbnailRequestBuilder UpdateThumbnail(string entryId, int timeOffset, int flavorParamsId = Int32.MinValue)
@@ -1770,49 +1800,19 @@ namespace Kaltura.Services
 			return new MediaUpdateThumbnailFromSourceEntryRequestBuilder(entryId, sourceEntryId, timeOffset, flavorParamsId);
 		}
 
-		public static MediaUpdateThumbnailJpegRequestBuilder UpdateThumbnailJpeg(string entryId, Stream fileData)
-		{
-			return new MediaUpdateThumbnailJpegRequestBuilder(entryId, fileData);
-		}
-
 		public static MediaUpdateThumbnailFromUrlRequestBuilder UpdateThumbnailFromUrl(string entryId, string url)
 		{
 			return new MediaUpdateThumbnailFromUrlRequestBuilder(entryId, url);
 		}
 
-		public static MediaRequestConversionRequestBuilder RequestConversion(string entryId, string fileFormat)
+		public static MediaUpdateThumbnailJpegRequestBuilder UpdateThumbnailJpeg(string entryId, Stream fileData)
 		{
-			return new MediaRequestConversionRequestBuilder(entryId, fileFormat);
+			return new MediaUpdateThumbnailJpegRequestBuilder(entryId, fileData);
 		}
 
-		public static MediaFlagRequestBuilder Flag(ModerationFlag moderationFlag)
+		public static MediaUploadRequestBuilder Upload(Stream fileData)
 		{
-			return new MediaFlagRequestBuilder(moderationFlag);
-		}
-
-		public static MediaRejectRequestBuilder Reject(string entryId)
-		{
-			return new MediaRejectRequestBuilder(entryId);
-		}
-
-		public static MediaApproveRequestBuilder Approve(string entryId)
-		{
-			return new MediaApproveRequestBuilder(entryId);
-		}
-
-		public static MediaListFlagsRequestBuilder ListFlags(string entryId, FilterPager pager = null)
-		{
-			return new MediaListFlagsRequestBuilder(entryId, pager);
-		}
-
-		public static MediaAnonymousRankRequestBuilder AnonymousRank(string entryId, int rank)
-		{
-			return new MediaAnonymousRankRequestBuilder(entryId, rank);
-		}
-
-		public static MediaBulkUploadAddRequestBuilder BulkUploadAdd(Stream fileData, BulkUploadJobData bulkUploadData = null, BulkUploadEntryData bulkUploadEntryData = null)
-		{
-			return new MediaBulkUploadAddRequestBuilder(fileData, bulkUploadData, bulkUploadEntryData);
+			return new MediaUploadRequestBuilder(fileData);
 		}
 	}
 }

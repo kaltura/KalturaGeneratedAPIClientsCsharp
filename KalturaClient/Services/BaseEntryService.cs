@@ -200,6 +200,334 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class BaseEntryAnonymousRankRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string RANK = "rank";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public int Rank
+		{
+			set;
+			get;
+		}
+
+		public BaseEntryAnonymousRankRequestBuilder()
+			: base("baseentry", "anonymousRank")
+		{
+		}
+
+		public BaseEntryAnonymousRankRequestBuilder(string entryId, int rank)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.Rank = rank;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("rank"))
+				kparams.AddIfNotNull("rank", Rank);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class BaseEntryApproveRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+
+		public BaseEntryApproveRequestBuilder()
+			: base("baseentry", "approve")
+		{
+		}
+
+		public BaseEntryApproveRequestBuilder(string entryId)
+			: this()
+		{
+			this.EntryId = entryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class BaseEntryCloneRequestBuilder : RequestBuilder<BaseEntry>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string CLONE_OPTIONS = "cloneOptions";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public IList<BaseEntryCloneOptionItem> CloneOptions
+		{
+			set;
+			get;
+		}
+
+		public BaseEntryCloneRequestBuilder()
+			: base("baseentry", "clone")
+		{
+		}
+
+		public BaseEntryCloneRequestBuilder(string entryId, IList<BaseEntryCloneOptionItem> cloneOptions)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.CloneOptions = cloneOptions;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("cloneOptions"))
+				kparams.AddIfNotNull("cloneOptions", CloneOptions);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<BaseEntry>(result);
+		}
+	}
+
+	public class BaseEntryCountRequestBuilder : RequestBuilder<int>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		#endregion
+
+		public BaseEntryFilter Filter
+		{
+			set;
+			get;
+		}
+
+		public BaseEntryCountRequestBuilder()
+			: base("baseentry", "count")
+		{
+		}
+
+		public BaseEntryCountRequestBuilder(BaseEntryFilter filter)
+			: this()
+		{
+			this.Filter = filter;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return int.Parse(result.InnerText);
+		}
+	}
+
+	public class BaseEntryDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+
+		public BaseEntryDeleteRequestBuilder()
+			: base("baseentry", "delete")
+		{
+		}
+
+		public BaseEntryDeleteRequestBuilder(string entryId)
+			: this()
+		{
+			this.EntryId = entryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class BaseEntryExportRequestBuilder : RequestBuilder<BaseEntry>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string STORAGE_PROFILE_ID = "storageProfileId";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public int StorageProfileId
+		{
+			set;
+			get;
+		}
+
+		public BaseEntryExportRequestBuilder()
+			: base("baseentry", "export")
+		{
+		}
+
+		public BaseEntryExportRequestBuilder(string entryId, int storageProfileId)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.StorageProfileId = storageProfileId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("storageProfileId"))
+				kparams.AddIfNotNull("storageProfileId", StorageProfileId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<BaseEntry>(result);
+		}
+	}
+
+	public class BaseEntryFlagRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string MODERATION_FLAG = "moderationFlag";
+		#endregion
+
+		public ModerationFlag ModerationFlag
+		{
+			set;
+			get;
+		}
+
+		public BaseEntryFlagRequestBuilder()
+			: base("baseentry", "flag")
+		{
+		}
+
+		public BaseEntryFlagRequestBuilder(ModerationFlag moderationFlag)
+			: this()
+		{
+			this.ModerationFlag = moderationFlag;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("moderationFlag"))
+				kparams.AddIfNotNull("moderationFlag", ModerationFlag);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
 	public class BaseEntryGetRequestBuilder : RequestBuilder<BaseEntry>
 	{
 		#region Constants
@@ -252,6 +580,158 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class BaseEntryGetByIdsRequestBuilder : RequestBuilder<IList<BaseEntry>>
+	{
+		#region Constants
+		public const string ENTRY_IDS = "entryIds";
+		#endregion
+
+		public string EntryIds
+		{
+			set;
+			get;
+		}
+
+		public BaseEntryGetByIdsRequestBuilder()
+			: base("baseentry", "getByIds")
+		{
+		}
+
+		public BaseEntryGetByIdsRequestBuilder(string entryIds)
+			: this()
+		{
+			this.EntryIds = entryIds;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryIds"))
+				kparams.AddIfNotNull("entryIds", EntryIds);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			IList<BaseEntry> list = new List<BaseEntry>();
+			foreach(XmlElement node in result.ChildNodes)
+			{
+				list.Add(ObjectFactory.Create<BaseEntry>(node));
+			}
+			return list;
+		}
+	}
+
+	public class BaseEntryGetContextDataRequestBuilder : RequestBuilder<EntryContextDataResult>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string CONTEXT_DATA_PARAMS = "contextDataParams";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public EntryContextDataParams ContextDataParams
+		{
+			set;
+			get;
+		}
+
+		public BaseEntryGetContextDataRequestBuilder()
+			: base("baseentry", "getContextData")
+		{
+		}
+
+		public BaseEntryGetContextDataRequestBuilder(string entryId, EntryContextDataParams contextDataParams)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.ContextDataParams = contextDataParams;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("contextDataParams"))
+				kparams.AddIfNotNull("contextDataParams", ContextDataParams);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<EntryContextDataResult>(result);
+		}
+	}
+
+	public class BaseEntryGetPlaybackContextRequestBuilder : RequestBuilder<PlaybackContext>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string CONTEXT_DATA_PARAMS = "contextDataParams";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public PlaybackContextOptions ContextDataParams
+		{
+			set;
+			get;
+		}
+
+		public BaseEntryGetPlaybackContextRequestBuilder()
+			: base("baseentry", "getPlaybackContext")
+		{
+		}
+
+		public BaseEntryGetPlaybackContextRequestBuilder(string entryId, PlaybackContextOptions contextDataParams)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.ContextDataParams = contextDataParams;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("contextDataParams"))
+				kparams.AddIfNotNull("contextDataParams", ContextDataParams);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<PlaybackContext>(result);
+		}
+	}
+
 	public class BaseEntryGetRemotePathsRequestBuilder : RequestBuilder<ListResponse<RemotePath>>
 	{
 		#region Constants
@@ -292,6 +772,257 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<RemotePath>>(result);
+		}
+	}
+
+	public class BaseEntryIndexRequestBuilder : RequestBuilder<int>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string SHOULD_UPDATE = "shouldUpdate";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public bool ShouldUpdate
+		{
+			set;
+			get;
+		}
+
+		public BaseEntryIndexRequestBuilder()
+			: base("baseentry", "index")
+		{
+		}
+
+		public BaseEntryIndexRequestBuilder(string id, bool shouldUpdate)
+			: this()
+		{
+			this.Id = id;
+			this.ShouldUpdate = shouldUpdate;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("shouldUpdate"))
+				kparams.AddIfNotNull("shouldUpdate", ShouldUpdate);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return int.Parse(result.InnerText);
+		}
+	}
+
+	public class BaseEntryListRequestBuilder : RequestBuilder<ListResponse<BaseEntry>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public BaseEntryFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public BaseEntryListRequestBuilder()
+			: base("baseentry", "list")
+		{
+		}
+
+		public BaseEntryListRequestBuilder(BaseEntryFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<BaseEntry>>(result);
+		}
+	}
+
+	public class BaseEntryListByReferenceIdRequestBuilder : RequestBuilder<ListResponse<BaseEntry>>
+	{
+		#region Constants
+		public const string REF_ID = "refId";
+		public const string PAGER = "pager";
+		#endregion
+
+		public string RefId
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public BaseEntryListByReferenceIdRequestBuilder()
+			: base("baseentry", "listByReferenceId")
+		{
+		}
+
+		public BaseEntryListByReferenceIdRequestBuilder(string refId, FilterPager pager)
+			: this()
+		{
+			this.RefId = refId;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("refId"))
+				kparams.AddIfNotNull("refId", RefId);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<BaseEntry>>(result);
+		}
+	}
+
+	public class BaseEntryListFlagsRequestBuilder : RequestBuilder<ListResponse<ModerationFlag>>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string PAGER = "pager";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public BaseEntryListFlagsRequestBuilder()
+			: base("baseentry", "listFlags")
+		{
+		}
+
+		public BaseEntryListFlagsRequestBuilder(string entryId, FilterPager pager)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<ModerationFlag>>(result);
+		}
+	}
+
+	public class BaseEntryRejectRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+
+		public BaseEntryRejectRequestBuilder()
+			: base("baseentry", "reject")
+		{
+		}
+
+		public BaseEntryRejectRequestBuilder(string entryId)
+			: this()
+		{
+			this.EntryId = entryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
 		}
 	}
 
@@ -417,389 +1148,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class BaseEntryGetByIdsRequestBuilder : RequestBuilder<IList<BaseEntry>>
-	{
-		#region Constants
-		public const string ENTRY_IDS = "entryIds";
-		#endregion
-
-		public string EntryIds
-		{
-			set;
-			get;
-		}
-
-		public BaseEntryGetByIdsRequestBuilder()
-			: base("baseentry", "getByIds")
-		{
-		}
-
-		public BaseEntryGetByIdsRequestBuilder(string entryIds)
-			: this()
-		{
-			this.EntryIds = entryIds;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryIds"))
-				kparams.AddIfNotNull("entryIds", EntryIds);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			IList<BaseEntry> list = new List<BaseEntry>();
-			foreach(XmlElement node in result.ChildNodes)
-			{
-				list.Add(ObjectFactory.Create<BaseEntry>(node));
-			}
-			return list;
-		}
-	}
-
-	public class BaseEntryDeleteRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-
-		public BaseEntryDeleteRequestBuilder()
-			: base("baseentry", "delete")
-		{
-		}
-
-		public BaseEntryDeleteRequestBuilder(string entryId)
-			: this()
-		{
-			this.EntryId = entryId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
-	public class BaseEntryListRequestBuilder : RequestBuilder<ListResponse<BaseEntry>>
-	{
-		#region Constants
-		public const string FILTER = "filter";
-		public const string PAGER = "pager";
-		#endregion
-
-		public BaseEntryFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
-
-		public BaseEntryListRequestBuilder()
-			: base("baseentry", "list")
-		{
-		}
-
-		public BaseEntryListRequestBuilder(BaseEntryFilter filter, FilterPager pager)
-			: this()
-		{
-			this.Filter = filter;
-			this.Pager = pager;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("filter"))
-				kparams.AddIfNotNull("filter", Filter);
-			if (!isMapped("pager"))
-				kparams.AddIfNotNull("pager", Pager);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ListResponse<BaseEntry>>(result);
-		}
-	}
-
-	public class BaseEntryListByReferenceIdRequestBuilder : RequestBuilder<ListResponse<BaseEntry>>
-	{
-		#region Constants
-		public const string REF_ID = "refId";
-		public const string PAGER = "pager";
-		#endregion
-
-		public string RefId
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
-
-		public BaseEntryListByReferenceIdRequestBuilder()
-			: base("baseentry", "listByReferenceId")
-		{
-		}
-
-		public BaseEntryListByReferenceIdRequestBuilder(string refId, FilterPager pager)
-			: this()
-		{
-			this.RefId = refId;
-			this.Pager = pager;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("refId"))
-				kparams.AddIfNotNull("refId", RefId);
-			if (!isMapped("pager"))
-				kparams.AddIfNotNull("pager", Pager);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ListResponse<BaseEntry>>(result);
-		}
-	}
-
-	public class BaseEntryCountRequestBuilder : RequestBuilder<int>
-	{
-		#region Constants
-		public const string FILTER = "filter";
-		#endregion
-
-		public BaseEntryFilter Filter
-		{
-			set;
-			get;
-		}
-
-		public BaseEntryCountRequestBuilder()
-			: base("baseentry", "count")
-		{
-		}
-
-		public BaseEntryCountRequestBuilder(BaseEntryFilter filter)
-			: this()
-		{
-			this.Filter = filter;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("filter"))
-				kparams.AddIfNotNull("filter", Filter);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return int.Parse(result.InnerText);
-		}
-	}
-
-	public class BaseEntryUploadRequestBuilder : RequestBuilder<string>
-	{
-		#region Constants
-		public const string FILE_DATA = "fileData";
-		#endregion
-
-		public Stream FileData
-		{
-			set;
-			get;
-		}
-
-		public BaseEntryUploadRequestBuilder()
-			: base("baseentry", "upload")
-		{
-		}
-
-		public BaseEntryUploadRequestBuilder(Stream fileData)
-			: this()
-		{
-			this.FileData = fileData;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			kfiles.Add("fileData", FileData);
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return result.InnerText;
-		}
-	}
-
-	public class BaseEntryUpdateThumbnailJpegRequestBuilder : RequestBuilder<BaseEntry>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		public const string FILE_DATA = "fileData";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public Stream FileData
-		{
-			set;
-			get;
-		}
-
-		public BaseEntryUpdateThumbnailJpegRequestBuilder()
-			: base("baseentry", "updateThumbnailJpeg")
-		{
-		}
-
-		public BaseEntryUpdateThumbnailJpegRequestBuilder(string entryId, Stream fileData)
-			: this()
-		{
-			this.EntryId = entryId;
-			this.FileData = fileData;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			kfiles.Add("fileData", FileData);
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<BaseEntry>(result);
-		}
-	}
-
-	public class BaseEntryUpdateThumbnailFromUrlRequestBuilder : RequestBuilder<BaseEntry>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		public const string URL = "url";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public string Url
-		{
-			set;
-			get;
-		}
-
-		public BaseEntryUpdateThumbnailFromUrlRequestBuilder()
-			: base("baseentry", "updateThumbnailFromUrl")
-		{
-		}
-
-		public BaseEntryUpdateThumbnailFromUrlRequestBuilder(string entryId, string url)
-			: this()
-		{
-			this.EntryId = entryId;
-			this.Url = url;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			if (!isMapped("url"))
-				kparams.AddIfNotNull("url", Url);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<BaseEntry>(result);
-		}
-	}
-
 	public class BaseEntryUpdateThumbnailFromSourceEntryRequestBuilder : RequestBuilder<BaseEntry>
 	{
 		#region Constants
@@ -861,53 +1209,11 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class BaseEntryFlagRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string MODERATION_FLAG = "moderationFlag";
-		#endregion
-
-		public ModerationFlag ModerationFlag
-		{
-			set;
-			get;
-		}
-
-		public BaseEntryFlagRequestBuilder()
-			: base("baseentry", "flag")
-		{
-		}
-
-		public BaseEntryFlagRequestBuilder(ModerationFlag moderationFlag)
-			: this()
-		{
-			this.ModerationFlag = moderationFlag;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("moderationFlag"))
-				kparams.AddIfNotNull("moderationFlag", ModerationFlag);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
-	public class BaseEntryRejectRequestBuilder : RequestBuilder<object>
+	public class BaseEntryUpdateThumbnailFromUrlRequestBuilder : RequestBuilder<BaseEntry>
 	{
 		#region Constants
 		public const string ENTRY_ID = "entryId";
+		public const string URL = "url";
 		#endregion
 
 		public string EntryId
@@ -915,16 +1221,22 @@ namespace Kaltura.Services
 			set;
 			get;
 		}
+		public string Url
+		{
+			set;
+			get;
+		}
 
-		public BaseEntryRejectRequestBuilder()
-			: base("baseentry", "reject")
+		public BaseEntryUpdateThumbnailFromUrlRequestBuilder()
+			: base("baseentry", "updateThumbnailFromUrl")
 		{
 		}
 
-		public BaseEntryRejectRequestBuilder(string entryId)
+		public BaseEntryUpdateThumbnailFromUrlRequestBuilder(string entryId, string url)
 			: this()
 		{
 			this.EntryId = entryId;
+			this.Url = url;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -932,257 +1244,8 @@ namespace Kaltura.Services
 			Params kparams = base.getParameters(includeServiceAndAction);
 			if (!isMapped("entryId"))
 				kparams.AddIfNotNull("entryId", EntryId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
-	public class BaseEntryApproveRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-
-		public BaseEntryApproveRequestBuilder()
-			: base("baseentry", "approve")
-		{
-		}
-
-		public BaseEntryApproveRequestBuilder(string entryId)
-			: this()
-		{
-			this.EntryId = entryId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
-	public class BaseEntryListFlagsRequestBuilder : RequestBuilder<ListResponse<ModerationFlag>>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		public const string PAGER = "pager";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
-
-		public BaseEntryListFlagsRequestBuilder()
-			: base("baseentry", "listFlags")
-		{
-		}
-
-		public BaseEntryListFlagsRequestBuilder(string entryId, FilterPager pager)
-			: this()
-		{
-			this.EntryId = entryId;
-			this.Pager = pager;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			if (!isMapped("pager"))
-				kparams.AddIfNotNull("pager", Pager);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ListResponse<ModerationFlag>>(result);
-		}
-	}
-
-	public class BaseEntryAnonymousRankRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		public const string RANK = "rank";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public int Rank
-		{
-			set;
-			get;
-		}
-
-		public BaseEntryAnonymousRankRequestBuilder()
-			: base("baseentry", "anonymousRank")
-		{
-		}
-
-		public BaseEntryAnonymousRankRequestBuilder(string entryId, int rank)
-			: this()
-		{
-			this.EntryId = entryId;
-			this.Rank = rank;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			if (!isMapped("rank"))
-				kparams.AddIfNotNull("rank", Rank);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
-	public class BaseEntryGetContextDataRequestBuilder : RequestBuilder<EntryContextDataResult>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		public const string CONTEXT_DATA_PARAMS = "contextDataParams";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public EntryContextDataParams ContextDataParams
-		{
-			set;
-			get;
-		}
-
-		public BaseEntryGetContextDataRequestBuilder()
-			: base("baseentry", "getContextData")
-		{
-		}
-
-		public BaseEntryGetContextDataRequestBuilder(string entryId, EntryContextDataParams contextDataParams)
-			: this()
-		{
-			this.EntryId = entryId;
-			this.ContextDataParams = contextDataParams;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			if (!isMapped("contextDataParams"))
-				kparams.AddIfNotNull("contextDataParams", ContextDataParams);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<EntryContextDataResult>(result);
-		}
-	}
-
-	public class BaseEntryExportRequestBuilder : RequestBuilder<BaseEntry>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		public const string STORAGE_PROFILE_ID = "storageProfileId";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public int StorageProfileId
-		{
-			set;
-			get;
-		}
-
-		public BaseEntryExportRequestBuilder()
-			: base("baseentry", "export")
-		{
-		}
-
-		public BaseEntryExportRequestBuilder(string entryId, int storageProfileId)
-			: this()
-		{
-			this.EntryId = entryId;
-			this.StorageProfileId = storageProfileId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			if (!isMapped("storageProfileId"))
-				kparams.AddIfNotNull("storageProfileId", StorageProfileId);
+			if (!isMapped("url"))
+				kparams.AddIfNotNull("url", Url);
 			return kparams;
 		}
 
@@ -1198,63 +1261,11 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class BaseEntryIndexRequestBuilder : RequestBuilder<int>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string SHOULD_UPDATE = "shouldUpdate";
-		#endregion
-
-		public string Id
-		{
-			set;
-			get;
-		}
-		public bool ShouldUpdate
-		{
-			set;
-			get;
-		}
-
-		public BaseEntryIndexRequestBuilder()
-			: base("baseentry", "index")
-		{
-		}
-
-		public BaseEntryIndexRequestBuilder(string id, bool shouldUpdate)
-			: this()
-		{
-			this.Id = id;
-			this.ShouldUpdate = shouldUpdate;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("shouldUpdate"))
-				kparams.AddIfNotNull("shouldUpdate", ShouldUpdate);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return int.Parse(result.InnerText);
-		}
-	}
-
-	public class BaseEntryCloneRequestBuilder : RequestBuilder<BaseEntry>
+	public class BaseEntryUpdateThumbnailJpegRequestBuilder : RequestBuilder<BaseEntry>
 	{
 		#region Constants
 		public const string ENTRY_ID = "entryId";
-		public const string CLONE_OPTIONS = "cloneOptions";
+		public const string FILE_DATA = "fileData";
 		#endregion
 
 		public string EntryId
@@ -1262,22 +1273,22 @@ namespace Kaltura.Services
 			set;
 			get;
 		}
-		public IList<BaseEntryCloneOptionItem> CloneOptions
+		public Stream FileData
 		{
 			set;
 			get;
 		}
 
-		public BaseEntryCloneRequestBuilder()
-			: base("baseentry", "clone")
+		public BaseEntryUpdateThumbnailJpegRequestBuilder()
+			: base("baseentry", "updateThumbnailJpeg")
 		{
 		}
 
-		public BaseEntryCloneRequestBuilder(string entryId, IList<BaseEntryCloneOptionItem> cloneOptions)
+		public BaseEntryUpdateThumbnailJpegRequestBuilder(string entryId, Stream fileData)
 			: this()
 		{
 			this.EntryId = entryId;
-			this.CloneOptions = cloneOptions;
+			this.FileData = fileData;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -1285,14 +1296,13 @@ namespace Kaltura.Services
 			Params kparams = base.getParameters(includeServiceAndAction);
 			if (!isMapped("entryId"))
 				kparams.AddIfNotNull("entryId", EntryId);
-			if (!isMapped("cloneOptions"))
-				kparams.AddIfNotNull("cloneOptions", CloneOptions);
 			return kparams;
 		}
 
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
+			kfiles.Add("fileData", FileData);
 			return kfiles;
 		}
 
@@ -1302,55 +1312,45 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class BaseEntryGetPlaybackContextRequestBuilder : RequestBuilder<PlaybackContext>
+	public class BaseEntryUploadRequestBuilder : RequestBuilder<string>
 	{
 		#region Constants
-		public const string ENTRY_ID = "entryId";
-		public const string CONTEXT_DATA_PARAMS = "contextDataParams";
+		public const string FILE_DATA = "fileData";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public PlaybackContextOptions ContextDataParams
+		public Stream FileData
 		{
 			set;
 			get;
 		}
 
-		public BaseEntryGetPlaybackContextRequestBuilder()
-			: base("baseentry", "getPlaybackContext")
+		public BaseEntryUploadRequestBuilder()
+			: base("baseentry", "upload")
 		{
 		}
 
-		public BaseEntryGetPlaybackContextRequestBuilder(string entryId, PlaybackContextOptions contextDataParams)
+		public BaseEntryUploadRequestBuilder(Stream fileData)
 			: this()
 		{
-			this.EntryId = entryId;
-			this.ContextDataParams = contextDataParams;
+			this.FileData = fileData;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			if (!isMapped("contextDataParams"))
-				kparams.AddIfNotNull("contextDataParams", ContextDataParams);
 			return kparams;
 		}
 
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
+			kfiles.Add("fileData", FileData);
 			return kfiles;
 		}
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<PlaybackContext>(result);
+			return result.InnerText;
 		}
 	}
 
@@ -1376,24 +1376,44 @@ namespace Kaltura.Services
 			return new BaseEntryAddFromUploadedFileRequestBuilder(entry, uploadTokenId, type);
 		}
 
+		public static BaseEntryAnonymousRankRequestBuilder AnonymousRank(string entryId, int rank)
+		{
+			return new BaseEntryAnonymousRankRequestBuilder(entryId, rank);
+		}
+
+		public static BaseEntryApproveRequestBuilder Approve(string entryId)
+		{
+			return new BaseEntryApproveRequestBuilder(entryId);
+		}
+
+		public static BaseEntryCloneRequestBuilder Clone(string entryId, IList<BaseEntryCloneOptionItem> cloneOptions = null)
+		{
+			return new BaseEntryCloneRequestBuilder(entryId, cloneOptions);
+		}
+
+		public static BaseEntryCountRequestBuilder Count(BaseEntryFilter filter = null)
+		{
+			return new BaseEntryCountRequestBuilder(filter);
+		}
+
+		public static BaseEntryDeleteRequestBuilder Delete(string entryId)
+		{
+			return new BaseEntryDeleteRequestBuilder(entryId);
+		}
+
+		public static BaseEntryExportRequestBuilder Export(string entryId, int storageProfileId)
+		{
+			return new BaseEntryExportRequestBuilder(entryId, storageProfileId);
+		}
+
+		public static BaseEntryFlagRequestBuilder Flag(ModerationFlag moderationFlag)
+		{
+			return new BaseEntryFlagRequestBuilder(moderationFlag);
+		}
+
 		public static BaseEntryGetRequestBuilder Get(string entryId, int version = -1)
 		{
 			return new BaseEntryGetRequestBuilder(entryId, version);
-		}
-
-		public static BaseEntryGetRemotePathsRequestBuilder GetRemotePaths(string entryId)
-		{
-			return new BaseEntryGetRemotePathsRequestBuilder(entryId);
-		}
-
-		public static BaseEntryUpdateRequestBuilder Update(string entryId, BaseEntry baseEntry)
-		{
-			return new BaseEntryUpdateRequestBuilder(entryId, baseEntry);
-		}
-
-		public static BaseEntryUpdateContentRequestBuilder UpdateContent(string entryId, Resource resource, int conversionProfileId = Int32.MinValue, EntryReplacementOptions advancedOptions = null)
-		{
-			return new BaseEntryUpdateContentRequestBuilder(entryId, resource, conversionProfileId, advancedOptions);
 		}
 
 		public static BaseEntryGetByIdsRequestBuilder GetByIds(string entryIds)
@@ -1401,9 +1421,24 @@ namespace Kaltura.Services
 			return new BaseEntryGetByIdsRequestBuilder(entryIds);
 		}
 
-		public static BaseEntryDeleteRequestBuilder Delete(string entryId)
+		public static BaseEntryGetContextDataRequestBuilder GetContextData(string entryId, EntryContextDataParams contextDataParams)
 		{
-			return new BaseEntryDeleteRequestBuilder(entryId);
+			return new BaseEntryGetContextDataRequestBuilder(entryId, contextDataParams);
+		}
+
+		public static BaseEntryGetPlaybackContextRequestBuilder GetPlaybackContext(string entryId, PlaybackContextOptions contextDataParams)
+		{
+			return new BaseEntryGetPlaybackContextRequestBuilder(entryId, contextDataParams);
+		}
+
+		public static BaseEntryGetRemotePathsRequestBuilder GetRemotePaths(string entryId)
+		{
+			return new BaseEntryGetRemotePathsRequestBuilder(entryId);
+		}
+
+		public static BaseEntryIndexRequestBuilder Index(string id, bool shouldUpdate = true)
+		{
+			return new BaseEntryIndexRequestBuilder(id, shouldUpdate);
 		}
 
 		public static BaseEntryListRequestBuilder List(BaseEntryFilter filter = null, FilterPager pager = null)
@@ -1416,34 +1451,9 @@ namespace Kaltura.Services
 			return new BaseEntryListByReferenceIdRequestBuilder(refId, pager);
 		}
 
-		public static BaseEntryCountRequestBuilder Count(BaseEntryFilter filter = null)
+		public static BaseEntryListFlagsRequestBuilder ListFlags(string entryId, FilterPager pager = null)
 		{
-			return new BaseEntryCountRequestBuilder(filter);
-		}
-
-		public static BaseEntryUploadRequestBuilder Upload(Stream fileData)
-		{
-			return new BaseEntryUploadRequestBuilder(fileData);
-		}
-
-		public static BaseEntryUpdateThumbnailJpegRequestBuilder UpdateThumbnailJpeg(string entryId, Stream fileData)
-		{
-			return new BaseEntryUpdateThumbnailJpegRequestBuilder(entryId, fileData);
-		}
-
-		public static BaseEntryUpdateThumbnailFromUrlRequestBuilder UpdateThumbnailFromUrl(string entryId, string url)
-		{
-			return new BaseEntryUpdateThumbnailFromUrlRequestBuilder(entryId, url);
-		}
-
-		public static BaseEntryUpdateThumbnailFromSourceEntryRequestBuilder UpdateThumbnailFromSourceEntry(string entryId, string sourceEntryId, int timeOffset)
-		{
-			return new BaseEntryUpdateThumbnailFromSourceEntryRequestBuilder(entryId, sourceEntryId, timeOffset);
-		}
-
-		public static BaseEntryFlagRequestBuilder Flag(ModerationFlag moderationFlag)
-		{
-			return new BaseEntryFlagRequestBuilder(moderationFlag);
+			return new BaseEntryListFlagsRequestBuilder(entryId, pager);
 		}
 
 		public static BaseEntryRejectRequestBuilder Reject(string entryId)
@@ -1451,44 +1461,34 @@ namespace Kaltura.Services
 			return new BaseEntryRejectRequestBuilder(entryId);
 		}
 
-		public static BaseEntryApproveRequestBuilder Approve(string entryId)
+		public static BaseEntryUpdateRequestBuilder Update(string entryId, BaseEntry baseEntry)
 		{
-			return new BaseEntryApproveRequestBuilder(entryId);
+			return new BaseEntryUpdateRequestBuilder(entryId, baseEntry);
 		}
 
-		public static BaseEntryListFlagsRequestBuilder ListFlags(string entryId, FilterPager pager = null)
+		public static BaseEntryUpdateContentRequestBuilder UpdateContent(string entryId, Resource resource, int conversionProfileId = Int32.MinValue, EntryReplacementOptions advancedOptions = null)
 		{
-			return new BaseEntryListFlagsRequestBuilder(entryId, pager);
+			return new BaseEntryUpdateContentRequestBuilder(entryId, resource, conversionProfileId, advancedOptions);
 		}
 
-		public static BaseEntryAnonymousRankRequestBuilder AnonymousRank(string entryId, int rank)
+		public static BaseEntryUpdateThumbnailFromSourceEntryRequestBuilder UpdateThumbnailFromSourceEntry(string entryId, string sourceEntryId, int timeOffset)
 		{
-			return new BaseEntryAnonymousRankRequestBuilder(entryId, rank);
+			return new BaseEntryUpdateThumbnailFromSourceEntryRequestBuilder(entryId, sourceEntryId, timeOffset);
 		}
 
-		public static BaseEntryGetContextDataRequestBuilder GetContextData(string entryId, EntryContextDataParams contextDataParams)
+		public static BaseEntryUpdateThumbnailFromUrlRequestBuilder UpdateThumbnailFromUrl(string entryId, string url)
 		{
-			return new BaseEntryGetContextDataRequestBuilder(entryId, contextDataParams);
+			return new BaseEntryUpdateThumbnailFromUrlRequestBuilder(entryId, url);
 		}
 
-		public static BaseEntryExportRequestBuilder Export(string entryId, int storageProfileId)
+		public static BaseEntryUpdateThumbnailJpegRequestBuilder UpdateThumbnailJpeg(string entryId, Stream fileData)
 		{
-			return new BaseEntryExportRequestBuilder(entryId, storageProfileId);
+			return new BaseEntryUpdateThumbnailJpegRequestBuilder(entryId, fileData);
 		}
 
-		public static BaseEntryIndexRequestBuilder Index(string id, bool shouldUpdate = true)
+		public static BaseEntryUploadRequestBuilder Upload(Stream fileData)
 		{
-			return new BaseEntryIndexRequestBuilder(id, shouldUpdate);
-		}
-
-		public static BaseEntryCloneRequestBuilder Clone(string entryId, IList<BaseEntryCloneOptionItem> cloneOptions = null)
-		{
-			return new BaseEntryCloneRequestBuilder(entryId, cloneOptions);
-		}
-
-		public static BaseEntryGetPlaybackContextRequestBuilder GetPlaybackContext(string entryId, PlaybackContextOptions contextDataParams)
-		{
-			return new BaseEntryGetPlaybackContextRequestBuilder(entryId, contextDataParams);
+			return new BaseEntryUploadRequestBuilder(fileData);
 		}
 	}
 }

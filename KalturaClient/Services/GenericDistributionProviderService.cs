@@ -78,101 +78,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class GenericDistributionProviderGetRequestBuilder : RequestBuilder<GenericDistributionProvider>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-
-		public GenericDistributionProviderGetRequestBuilder()
-			: base("contentdistribution_genericdistributionprovider", "get")
-		{
-		}
-
-		public GenericDistributionProviderGetRequestBuilder(int id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<GenericDistributionProvider>(result);
-		}
-	}
-
-	public class GenericDistributionProviderUpdateRequestBuilder : RequestBuilder<GenericDistributionProvider>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string GENERIC_DISTRIBUTION_PROVIDER = "genericDistributionProvider";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-		public GenericDistributionProvider GenericDistributionProvider
-		{
-			set;
-			get;
-		}
-
-		public GenericDistributionProviderUpdateRequestBuilder()
-			: base("contentdistribution_genericdistributionprovider", "update")
-		{
-		}
-
-		public GenericDistributionProviderUpdateRequestBuilder(int id, GenericDistributionProvider genericDistributionProvider)
-			: this()
-		{
-			this.Id = id;
-			this.GenericDistributionProvider = genericDistributionProvider;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("genericDistributionProvider"))
-				kparams.AddIfNotNull("genericDistributionProvider", GenericDistributionProvider);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<GenericDistributionProvider>(result);
-		}
-	}
-
 	public class GenericDistributionProviderDeleteRequestBuilder : RequestBuilder<object>
 	{
 		#region Constants
@@ -213,6 +118,49 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return null;
+		}
+	}
+
+	public class GenericDistributionProviderGetRequestBuilder : RequestBuilder<GenericDistributionProvider>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public GenericDistributionProviderGetRequestBuilder()
+			: base("contentdistribution_genericdistributionprovider", "get")
+		{
+		}
+
+		public GenericDistributionProviderGetRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<GenericDistributionProvider>(result);
 		}
 	}
 
@@ -268,6 +216,58 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class GenericDistributionProviderUpdateRequestBuilder : RequestBuilder<GenericDistributionProvider>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string GENERIC_DISTRIBUTION_PROVIDER = "genericDistributionProvider";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public GenericDistributionProvider GenericDistributionProvider
+		{
+			set;
+			get;
+		}
+
+		public GenericDistributionProviderUpdateRequestBuilder()
+			: base("contentdistribution_genericdistributionprovider", "update")
+		{
+		}
+
+		public GenericDistributionProviderUpdateRequestBuilder(int id, GenericDistributionProvider genericDistributionProvider)
+			: this()
+		{
+			this.Id = id;
+			this.GenericDistributionProvider = genericDistributionProvider;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("genericDistributionProvider"))
+				kparams.AddIfNotNull("genericDistributionProvider", GenericDistributionProvider);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<GenericDistributionProvider>(result);
+		}
+	}
+
 
 	public class GenericDistributionProviderService
 	{
@@ -280,24 +280,24 @@ namespace Kaltura.Services
 			return new GenericDistributionProviderAddRequestBuilder(genericDistributionProvider);
 		}
 
-		public static GenericDistributionProviderGetRequestBuilder Get(int id)
-		{
-			return new GenericDistributionProviderGetRequestBuilder(id);
-		}
-
-		public static GenericDistributionProviderUpdateRequestBuilder Update(int id, GenericDistributionProvider genericDistributionProvider)
-		{
-			return new GenericDistributionProviderUpdateRequestBuilder(id, genericDistributionProvider);
-		}
-
 		public static GenericDistributionProviderDeleteRequestBuilder Delete(int id)
 		{
 			return new GenericDistributionProviderDeleteRequestBuilder(id);
 		}
 
+		public static GenericDistributionProviderGetRequestBuilder Get(int id)
+		{
+			return new GenericDistributionProviderGetRequestBuilder(id);
+		}
+
 		public static GenericDistributionProviderListRequestBuilder List(GenericDistributionProviderFilter filter = null, FilterPager pager = null)
 		{
 			return new GenericDistributionProviderListRequestBuilder(filter, pager);
+		}
+
+		public static GenericDistributionProviderUpdateRequestBuilder Update(int id, GenericDistributionProvider genericDistributionProvider)
+		{
+			return new GenericDistributionProviderUpdateRequestBuilder(id, genericDistributionProvider);
 		}
 	}
 }

@@ -87,43 +87,94 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class ThumbAssetSetContentRequestBuilder : RequestBuilder<ThumbAsset>
+	public class ThumbAssetAddFromImageRequestBuilder : RequestBuilder<ThumbAsset>
 	{
 		#region Constants
-		public const string ID = "id";
-		public const string CONTENT_RESOURCE = "contentResource";
+		public const string ENTRY_ID = "entryId";
+		public const string FILE_DATA = "fileData";
 		#endregion
 
-		public string Id
+		public string EntryId
 		{
 			set;
 			get;
 		}
-		public ContentResource ContentResource
+		public Stream FileData
 		{
 			set;
 			get;
 		}
 
-		public ThumbAssetSetContentRequestBuilder()
-			: base("thumbasset", "setContent")
+		public ThumbAssetAddFromImageRequestBuilder()
+			: base("thumbasset", "addFromImage")
 		{
 		}
 
-		public ThumbAssetSetContentRequestBuilder(string id, ContentResource contentResource)
+		public ThumbAssetAddFromImageRequestBuilder(string entryId, Stream fileData)
 			: this()
 		{
-			this.Id = id;
-			this.ContentResource = contentResource;
+			this.EntryId = entryId;
+			this.FileData = fileData;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("contentResource"))
-				kparams.AddIfNotNull("contentResource", ContentResource);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			kfiles.Add("fileData", FileData);
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ThumbAsset>(result);
+		}
+	}
+
+	public class ThumbAssetAddFromUrlRequestBuilder : RequestBuilder<ThumbAsset>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string URL = "url";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public string Url
+		{
+			set;
+			get;
+		}
+
+		public ThumbAssetAddFromUrlRequestBuilder()
+			: base("thumbasset", "addFromUrl")
+		{
+		}
+
+		public ThumbAssetAddFromUrlRequestBuilder(string entryId, string url)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.Url = url;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("url"))
+				kparams.AddIfNotNull("url", Url);
 			return kparams;
 		}
 
@@ -139,59 +190,7 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class ThumbAssetUpdateRequestBuilder : RequestBuilder<ThumbAsset>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string THUMB_ASSET = "thumbAsset";
-		#endregion
-
-		public string Id
-		{
-			set;
-			get;
-		}
-		public ThumbAsset ThumbAsset
-		{
-			set;
-			get;
-		}
-
-		public ThumbAssetUpdateRequestBuilder()
-			: base("thumbasset", "update")
-		{
-		}
-
-		public ThumbAssetUpdateRequestBuilder(string id, ThumbAsset thumbAsset)
-			: this()
-		{
-			this.Id = id;
-			this.ThumbAsset = thumbAsset;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("thumbAsset"))
-				kparams.AddIfNotNull("thumbAsset", ThumbAsset);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ThumbAsset>(result);
-		}
-	}
-
-	public class ThumbAssetSetAsDefaultRequestBuilder : RequestBuilder<object>
+	public class ThumbAssetDeleteRequestBuilder : RequestBuilder<object>
 	{
 		#region Constants
 		public const string THUMB_ASSET_ID = "thumbAssetId";
@@ -203,12 +202,12 @@ namespace Kaltura.Services
 			get;
 		}
 
-		public ThumbAssetSetAsDefaultRequestBuilder()
-			: base("thumbasset", "setAsDefault")
+		public ThumbAssetDeleteRequestBuilder()
+			: base("thumbasset", "delete")
 		{
 		}
 
-		public ThumbAssetSetAsDefaultRequestBuilder(string thumbAssetId)
+		public ThumbAssetDeleteRequestBuilder(string thumbAssetId)
 			: this()
 		{
 			this.ThumbAssetId = thumbAssetId;
@@ -234,43 +233,43 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class ThumbAssetGenerateByEntryIdRequestBuilder : RequestBuilder<ThumbAsset>
+	public class ThumbAssetExportRequestBuilder : RequestBuilder<FlavorAsset>
 	{
 		#region Constants
-		public const string ENTRY_ID = "entryId";
-		public const string DEST_THUMB_PARAMS_ID = "destThumbParamsId";
+		public const string ASSET_ID = "assetId";
+		public const string STORAGE_PROFILE_ID = "storageProfileId";
 		#endregion
 
-		public string EntryId
+		public string AssetId
 		{
 			set;
 			get;
 		}
-		public int DestThumbParamsId
+		public int StorageProfileId
 		{
 			set;
 			get;
 		}
 
-		public ThumbAssetGenerateByEntryIdRequestBuilder()
-			: base("thumbasset", "generateByEntryId")
+		public ThumbAssetExportRequestBuilder()
+			: base("thumbasset", "export")
 		{
 		}
 
-		public ThumbAssetGenerateByEntryIdRequestBuilder(string entryId, int destThumbParamsId)
+		public ThumbAssetExportRequestBuilder(string assetId, int storageProfileId)
 			: this()
 		{
-			this.EntryId = entryId;
-			this.DestThumbParamsId = destThumbParamsId;
+			this.AssetId = assetId;
+			this.StorageProfileId = storageProfileId;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			if (!isMapped("destThumbParamsId"))
-				kparams.AddIfNotNull("destThumbParamsId", DestThumbParamsId);
+			if (!isMapped("assetId"))
+				kparams.AddIfNotNull("assetId", AssetId);
+			if (!isMapped("storageProfileId"))
+				kparams.AddIfNotNull("storageProfileId", StorageProfileId);
 			return kparams;
 		}
 
@@ -282,7 +281,7 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<ThumbAsset>(result);
+			return ObjectFactory.Create<FlavorAsset>(result);
 		}
 	}
 
@@ -347,34 +346,43 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class ThumbAssetRegenerateRequestBuilder : RequestBuilder<ThumbAsset>
+	public class ThumbAssetGenerateByEntryIdRequestBuilder : RequestBuilder<ThumbAsset>
 	{
 		#region Constants
-		public const string THUMB_ASSET_ID = "thumbAssetId";
+		public const string ENTRY_ID = "entryId";
+		public const string DEST_THUMB_PARAMS_ID = "destThumbParamsId";
 		#endregion
 
-		public string ThumbAssetId
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public int DestThumbParamsId
 		{
 			set;
 			get;
 		}
 
-		public ThumbAssetRegenerateRequestBuilder()
-			: base("thumbasset", "regenerate")
+		public ThumbAssetGenerateByEntryIdRequestBuilder()
+			: base("thumbasset", "generateByEntryId")
 		{
 		}
 
-		public ThumbAssetRegenerateRequestBuilder(string thumbAssetId)
+		public ThumbAssetGenerateByEntryIdRequestBuilder(string entryId, int destThumbParamsId)
 			: this()
 		{
-			this.ThumbAssetId = thumbAssetId;
+			this.EntryId = entryId;
+			this.DestThumbParamsId = destThumbParamsId;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("thumbAssetId"))
-				kparams.AddIfNotNull("thumbAssetId", ThumbAssetId);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("destThumbParamsId"))
+				kparams.AddIfNotNull("destThumbParamsId", DestThumbParamsId);
 			return kparams;
 		}
 
@@ -481,43 +489,34 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class ThumbAssetListRequestBuilder : RequestBuilder<ListResponse<ThumbAsset>>
+	public class ThumbAssetGetRemotePathsRequestBuilder : RequestBuilder<ListResponse<RemotePath>>
 	{
 		#region Constants
-		public const string FILTER = "filter";
-		public const string PAGER = "pager";
+		public const string ID = "id";
 		#endregion
 
-		public AssetFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
+		public string Id
 		{
 			set;
 			get;
 		}
 
-		public ThumbAssetListRequestBuilder()
-			: base("thumbasset", "list")
+		public ThumbAssetGetRemotePathsRequestBuilder()
+			: base("thumbasset", "getRemotePaths")
 		{
 		}
 
-		public ThumbAssetListRequestBuilder(AssetFilter filter, FilterPager pager)
+		public ThumbAssetGetRemotePathsRequestBuilder(string id)
 			: this()
 		{
-			this.Filter = filter;
-			this.Pager = pager;
+			this.Id = id;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("filter"))
-				kparams.AddIfNotNull("filter", Filter);
-			if (!isMapped("pager"))
-				kparams.AddIfNotNull("pager", Pager);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
 			return kparams;
 		}
 
@@ -529,153 +528,7 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<ListResponse<ThumbAsset>>(result);
-		}
-	}
-
-	public class ThumbAssetAddFromUrlRequestBuilder : RequestBuilder<ThumbAsset>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		public const string URL = "url";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public string Url
-		{
-			set;
-			get;
-		}
-
-		public ThumbAssetAddFromUrlRequestBuilder()
-			: base("thumbasset", "addFromUrl")
-		{
-		}
-
-		public ThumbAssetAddFromUrlRequestBuilder(string entryId, string url)
-			: this()
-		{
-			this.EntryId = entryId;
-			this.Url = url;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			if (!isMapped("url"))
-				kparams.AddIfNotNull("url", Url);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ThumbAsset>(result);
-		}
-	}
-
-	public class ThumbAssetAddFromImageRequestBuilder : RequestBuilder<ThumbAsset>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		public const string FILE_DATA = "fileData";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public Stream FileData
-		{
-			set;
-			get;
-		}
-
-		public ThumbAssetAddFromImageRequestBuilder()
-			: base("thumbasset", "addFromImage")
-		{
-		}
-
-		public ThumbAssetAddFromImageRequestBuilder(string entryId, Stream fileData)
-			: this()
-		{
-			this.EntryId = entryId;
-			this.FileData = fileData;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			kfiles.Add("fileData", FileData);
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ThumbAsset>(result);
-		}
-	}
-
-	public class ThumbAssetDeleteRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string THUMB_ASSET_ID = "thumbAssetId";
-		#endregion
-
-		public string ThumbAssetId
-		{
-			set;
-			get;
-		}
-
-		public ThumbAssetDeleteRequestBuilder()
-			: base("thumbasset", "delete")
-		{
-		}
-
-		public ThumbAssetDeleteRequestBuilder(string thumbAssetId)
-			: this()
-		{
-			this.ThumbAssetId = thumbAssetId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("thumbAssetId"))
-				kparams.AddIfNotNull("thumbAssetId", ThumbAssetId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
+			return ObjectFactory.Create<ListResponse<RemotePath>>(result);
 		}
 	}
 
@@ -740,10 +593,149 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class ThumbAssetGetRemotePathsRequestBuilder : RequestBuilder<ListResponse<RemotePath>>
+	public class ThumbAssetListRequestBuilder : RequestBuilder<ListResponse<ThumbAsset>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public AssetFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public ThumbAssetListRequestBuilder()
+			: base("thumbasset", "list")
+		{
+		}
+
+		public ThumbAssetListRequestBuilder(AssetFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<ThumbAsset>>(result);
+		}
+	}
+
+	public class ThumbAssetRegenerateRequestBuilder : RequestBuilder<ThumbAsset>
+	{
+		#region Constants
+		public const string THUMB_ASSET_ID = "thumbAssetId";
+		#endregion
+
+		public string ThumbAssetId
+		{
+			set;
+			get;
+		}
+
+		public ThumbAssetRegenerateRequestBuilder()
+			: base("thumbasset", "regenerate")
+		{
+		}
+
+		public ThumbAssetRegenerateRequestBuilder(string thumbAssetId)
+			: this()
+		{
+			this.ThumbAssetId = thumbAssetId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("thumbAssetId"))
+				kparams.AddIfNotNull("thumbAssetId", ThumbAssetId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ThumbAsset>(result);
+		}
+	}
+
+	public class ThumbAssetSetAsDefaultRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string THUMB_ASSET_ID = "thumbAssetId";
+		#endregion
+
+		public string ThumbAssetId
+		{
+			set;
+			get;
+		}
+
+		public ThumbAssetSetAsDefaultRequestBuilder()
+			: base("thumbasset", "setAsDefault")
+		{
+		}
+
+		public ThumbAssetSetAsDefaultRequestBuilder(string thumbAssetId)
+			: this()
+		{
+			this.ThumbAssetId = thumbAssetId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("thumbAssetId"))
+				kparams.AddIfNotNull("thumbAssetId", ThumbAssetId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class ThumbAssetSetContentRequestBuilder : RequestBuilder<ThumbAsset>
 	{
 		#region Constants
 		public const string ID = "id";
+		public const string CONTENT_RESOURCE = "contentResource";
 		#endregion
 
 		public string Id
@@ -751,16 +743,22 @@ namespace Kaltura.Services
 			set;
 			get;
 		}
+		public ContentResource ContentResource
+		{
+			set;
+			get;
+		}
 
-		public ThumbAssetGetRemotePathsRequestBuilder()
-			: base("thumbasset", "getRemotePaths")
+		public ThumbAssetSetContentRequestBuilder()
+			: base("thumbasset", "setContent")
 		{
 		}
 
-		public ThumbAssetGetRemotePathsRequestBuilder(string id)
+		public ThumbAssetSetContentRequestBuilder(string id, ContentResource contentResource)
 			: this()
 		{
 			this.Id = id;
+			this.ContentResource = contentResource;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -768,6 +766,8 @@ namespace Kaltura.Services
 			Params kparams = base.getParameters(includeServiceAndAction);
 			if (!isMapped("id"))
 				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("contentResource"))
+				kparams.AddIfNotNull("contentResource", ContentResource);
 			return kparams;
 		}
 
@@ -779,47 +779,47 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<ListResponse<RemotePath>>(result);
+			return ObjectFactory.Create<ThumbAsset>(result);
 		}
 	}
 
-	public class ThumbAssetExportRequestBuilder : RequestBuilder<FlavorAsset>
+	public class ThumbAssetUpdateRequestBuilder : RequestBuilder<ThumbAsset>
 	{
 		#region Constants
-		public const string ASSET_ID = "assetId";
-		public const string STORAGE_PROFILE_ID = "storageProfileId";
+		public const string ID = "id";
+		public const string THUMB_ASSET = "thumbAsset";
 		#endregion
 
-		public string AssetId
+		public string Id
 		{
 			set;
 			get;
 		}
-		public int StorageProfileId
+		public ThumbAsset ThumbAsset
 		{
 			set;
 			get;
 		}
 
-		public ThumbAssetExportRequestBuilder()
-			: base("thumbasset", "export")
+		public ThumbAssetUpdateRequestBuilder()
+			: base("thumbasset", "update")
 		{
 		}
 
-		public ThumbAssetExportRequestBuilder(string assetId, int storageProfileId)
+		public ThumbAssetUpdateRequestBuilder(string id, ThumbAsset thumbAsset)
 			: this()
 		{
-			this.AssetId = assetId;
-			this.StorageProfileId = storageProfileId;
+			this.Id = id;
+			this.ThumbAsset = thumbAsset;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("assetId"))
-				kparams.AddIfNotNull("assetId", AssetId);
-			if (!isMapped("storageProfileId"))
-				kparams.AddIfNotNull("storageProfileId", StorageProfileId);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("thumbAsset"))
+				kparams.AddIfNotNull("thumbAsset", ThumbAsset);
 			return kparams;
 		}
 
@@ -831,7 +831,7 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<FlavorAsset>(result);
+			return ObjectFactory.Create<ThumbAsset>(result);
 		}
 	}
 
@@ -847,24 +847,24 @@ namespace Kaltura.Services
 			return new ThumbAssetAddRequestBuilder(entryId, thumbAsset);
 		}
 
-		public static ThumbAssetSetContentRequestBuilder SetContent(string id, ContentResource contentResource)
+		public static ThumbAssetAddFromImageRequestBuilder AddFromImage(string entryId, Stream fileData)
 		{
-			return new ThumbAssetSetContentRequestBuilder(id, contentResource);
+			return new ThumbAssetAddFromImageRequestBuilder(entryId, fileData);
 		}
 
-		public static ThumbAssetUpdateRequestBuilder Update(string id, ThumbAsset thumbAsset)
+		public static ThumbAssetAddFromUrlRequestBuilder AddFromUrl(string entryId, string url)
 		{
-			return new ThumbAssetUpdateRequestBuilder(id, thumbAsset);
+			return new ThumbAssetAddFromUrlRequestBuilder(entryId, url);
 		}
 
-		public static ThumbAssetSetAsDefaultRequestBuilder SetAsDefault(string thumbAssetId)
+		public static ThumbAssetDeleteRequestBuilder Delete(string thumbAssetId)
 		{
-			return new ThumbAssetSetAsDefaultRequestBuilder(thumbAssetId);
+			return new ThumbAssetDeleteRequestBuilder(thumbAssetId);
 		}
 
-		public static ThumbAssetGenerateByEntryIdRequestBuilder GenerateByEntryId(string entryId, int destThumbParamsId)
+		public static ThumbAssetExportRequestBuilder Export(string assetId, int storageProfileId)
 		{
-			return new ThumbAssetGenerateByEntryIdRequestBuilder(entryId, destThumbParamsId);
+			return new ThumbAssetExportRequestBuilder(assetId, storageProfileId);
 		}
 
 		public static ThumbAssetGenerateRequestBuilder Generate(string entryId, ThumbParams thumbParams, string sourceAssetId = null)
@@ -872,9 +872,9 @@ namespace Kaltura.Services
 			return new ThumbAssetGenerateRequestBuilder(entryId, thumbParams, sourceAssetId);
 		}
 
-		public static ThumbAssetRegenerateRequestBuilder Regenerate(string thumbAssetId)
+		public static ThumbAssetGenerateByEntryIdRequestBuilder GenerateByEntryId(string entryId, int destThumbParamsId)
 		{
-			return new ThumbAssetRegenerateRequestBuilder(thumbAssetId);
+			return new ThumbAssetGenerateByEntryIdRequestBuilder(entryId, destThumbParamsId);
 		}
 
 		public static ThumbAssetGetRequestBuilder Get(string thumbAssetId)
@@ -887,24 +887,9 @@ namespace Kaltura.Services
 			return new ThumbAssetGetByEntryIdRequestBuilder(entryId);
 		}
 
-		public static ThumbAssetListRequestBuilder List(AssetFilter filter = null, FilterPager pager = null)
+		public static ThumbAssetGetRemotePathsRequestBuilder GetRemotePaths(string id)
 		{
-			return new ThumbAssetListRequestBuilder(filter, pager);
-		}
-
-		public static ThumbAssetAddFromUrlRequestBuilder AddFromUrl(string entryId, string url)
-		{
-			return new ThumbAssetAddFromUrlRequestBuilder(entryId, url);
-		}
-
-		public static ThumbAssetAddFromImageRequestBuilder AddFromImage(string entryId, Stream fileData)
-		{
-			return new ThumbAssetAddFromImageRequestBuilder(entryId, fileData);
-		}
-
-		public static ThumbAssetDeleteRequestBuilder Delete(string thumbAssetId)
-		{
-			return new ThumbAssetDeleteRequestBuilder(thumbAssetId);
+			return new ThumbAssetGetRemotePathsRequestBuilder(id);
 		}
 
 		public static ThumbAssetGetUrlRequestBuilder GetUrl(string id, int storageId = Int32.MinValue, ThumbParams thumbParams = null)
@@ -912,14 +897,29 @@ namespace Kaltura.Services
 			return new ThumbAssetGetUrlRequestBuilder(id, storageId, thumbParams);
 		}
 
-		public static ThumbAssetGetRemotePathsRequestBuilder GetRemotePaths(string id)
+		public static ThumbAssetListRequestBuilder List(AssetFilter filter = null, FilterPager pager = null)
 		{
-			return new ThumbAssetGetRemotePathsRequestBuilder(id);
+			return new ThumbAssetListRequestBuilder(filter, pager);
 		}
 
-		public static ThumbAssetExportRequestBuilder Export(string assetId, int storageProfileId)
+		public static ThumbAssetRegenerateRequestBuilder Regenerate(string thumbAssetId)
 		{
-			return new ThumbAssetExportRequestBuilder(assetId, storageProfileId);
+			return new ThumbAssetRegenerateRequestBuilder(thumbAssetId);
+		}
+
+		public static ThumbAssetSetAsDefaultRequestBuilder SetAsDefault(string thumbAssetId)
+		{
+			return new ThumbAssetSetAsDefaultRequestBuilder(thumbAssetId);
+		}
+
+		public static ThumbAssetSetContentRequestBuilder SetContent(string id, ContentResource contentResource)
+		{
+			return new ThumbAssetSetContentRequestBuilder(id, contentResource);
+		}
+
+		public static ThumbAssetUpdateRequestBuilder Update(string id, ThumbAsset thumbAsset)
+		{
+			return new ThumbAssetUpdateRequestBuilder(id, thumbAsset);
 		}
 	}
 }

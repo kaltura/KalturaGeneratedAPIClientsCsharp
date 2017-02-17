@@ -87,6 +87,282 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class CaptionAssetDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string CAPTION_ASSET_ID = "captionAssetId";
+		#endregion
+
+		public string CaptionAssetId
+		{
+			set;
+			get;
+		}
+
+		public CaptionAssetDeleteRequestBuilder()
+			: base("caption_captionasset", "delete")
+		{
+		}
+
+		public CaptionAssetDeleteRequestBuilder(string captionAssetId)
+			: this()
+		{
+			this.CaptionAssetId = captionAssetId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("captionAssetId"))
+				kparams.AddIfNotNull("captionAssetId", CaptionAssetId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class CaptionAssetGetRequestBuilder : RequestBuilder<CaptionAsset>
+	{
+		#region Constants
+		public const string CAPTION_ASSET_ID = "captionAssetId";
+		#endregion
+
+		public string CaptionAssetId
+		{
+			set;
+			get;
+		}
+
+		public CaptionAssetGetRequestBuilder()
+			: base("caption_captionasset", "get")
+		{
+		}
+
+		public CaptionAssetGetRequestBuilder(string captionAssetId)
+			: this()
+		{
+			this.CaptionAssetId = captionAssetId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("captionAssetId"))
+				kparams.AddIfNotNull("captionAssetId", CaptionAssetId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<CaptionAsset>(result);
+		}
+	}
+
+	public class CaptionAssetGetRemotePathsRequestBuilder : RequestBuilder<ListResponse<RemotePath>>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+
+		public CaptionAssetGetRemotePathsRequestBuilder()
+			: base("caption_captionasset", "getRemotePaths")
+		{
+		}
+
+		public CaptionAssetGetRemotePathsRequestBuilder(string id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<RemotePath>>(result);
+		}
+	}
+
+	public class CaptionAssetGetUrlRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string STORAGE_ID = "storageId";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public int StorageId
+		{
+			set;
+			get;
+		}
+
+		public CaptionAssetGetUrlRequestBuilder()
+			: base("caption_captionasset", "getUrl")
+		{
+		}
+
+		public CaptionAssetGetUrlRequestBuilder(string id, int storageId)
+			: this()
+		{
+			this.Id = id;
+			this.StorageId = storageId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("storageId"))
+				kparams.AddIfNotNull("storageId", StorageId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return result.InnerText;
+		}
+	}
+
+	public class CaptionAssetListRequestBuilder : RequestBuilder<ListResponse<CaptionAsset>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public AssetFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public CaptionAssetListRequestBuilder()
+			: base("caption_captionasset", "list")
+		{
+		}
+
+		public CaptionAssetListRequestBuilder(AssetFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<CaptionAsset>>(result);
+		}
+	}
+
+	public class CaptionAssetSetAsDefaultRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string CAPTION_ASSET_ID = "captionAssetId";
+		#endregion
+
+		public string CaptionAssetId
+		{
+			set;
+			get;
+		}
+
+		public CaptionAssetSetAsDefaultRequestBuilder()
+			: base("caption_captionasset", "setAsDefault")
+		{
+		}
+
+		public CaptionAssetSetAsDefaultRequestBuilder(string captionAssetId)
+			: this()
+		{
+			this.CaptionAssetId = captionAssetId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("captionAssetId"))
+				kparams.AddIfNotNull("captionAssetId", CaptionAssetId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
 	public class CaptionAssetSetContentRequestBuilder : RequestBuilder<CaptionAsset>
 	{
 		#region Constants
@@ -191,282 +467,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class CaptionAssetGetUrlRequestBuilder : RequestBuilder<string>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string STORAGE_ID = "storageId";
-		#endregion
-
-		public string Id
-		{
-			set;
-			get;
-		}
-		public int StorageId
-		{
-			set;
-			get;
-		}
-
-		public CaptionAssetGetUrlRequestBuilder()
-			: base("caption_captionasset", "getUrl")
-		{
-		}
-
-		public CaptionAssetGetUrlRequestBuilder(string id, int storageId)
-			: this()
-		{
-			this.Id = id;
-			this.StorageId = storageId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("storageId"))
-				kparams.AddIfNotNull("storageId", StorageId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return result.InnerText;
-		}
-	}
-
-	public class CaptionAssetGetRemotePathsRequestBuilder : RequestBuilder<ListResponse<RemotePath>>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public string Id
-		{
-			set;
-			get;
-		}
-
-		public CaptionAssetGetRemotePathsRequestBuilder()
-			: base("caption_captionasset", "getRemotePaths")
-		{
-		}
-
-		public CaptionAssetGetRemotePathsRequestBuilder(string id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ListResponse<RemotePath>>(result);
-		}
-	}
-
-	public class CaptionAssetSetAsDefaultRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string CAPTION_ASSET_ID = "captionAssetId";
-		#endregion
-
-		public string CaptionAssetId
-		{
-			set;
-			get;
-		}
-
-		public CaptionAssetSetAsDefaultRequestBuilder()
-			: base("caption_captionasset", "setAsDefault")
-		{
-		}
-
-		public CaptionAssetSetAsDefaultRequestBuilder(string captionAssetId)
-			: this()
-		{
-			this.CaptionAssetId = captionAssetId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("captionAssetId"))
-				kparams.AddIfNotNull("captionAssetId", CaptionAssetId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
-	public class CaptionAssetGetRequestBuilder : RequestBuilder<CaptionAsset>
-	{
-		#region Constants
-		public const string CAPTION_ASSET_ID = "captionAssetId";
-		#endregion
-
-		public string CaptionAssetId
-		{
-			set;
-			get;
-		}
-
-		public CaptionAssetGetRequestBuilder()
-			: base("caption_captionasset", "get")
-		{
-		}
-
-		public CaptionAssetGetRequestBuilder(string captionAssetId)
-			: this()
-		{
-			this.CaptionAssetId = captionAssetId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("captionAssetId"))
-				kparams.AddIfNotNull("captionAssetId", CaptionAssetId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<CaptionAsset>(result);
-		}
-	}
-
-	public class CaptionAssetListRequestBuilder : RequestBuilder<ListResponse<CaptionAsset>>
-	{
-		#region Constants
-		public const string FILTER = "filter";
-		public const string PAGER = "pager";
-		#endregion
-
-		public AssetFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
-
-		public CaptionAssetListRequestBuilder()
-			: base("caption_captionasset", "list")
-		{
-		}
-
-		public CaptionAssetListRequestBuilder(AssetFilter filter, FilterPager pager)
-			: this()
-		{
-			this.Filter = filter;
-			this.Pager = pager;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("filter"))
-				kparams.AddIfNotNull("filter", Filter);
-			if (!isMapped("pager"))
-				kparams.AddIfNotNull("pager", Pager);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ListResponse<CaptionAsset>>(result);
-		}
-	}
-
-	public class CaptionAssetDeleteRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string CAPTION_ASSET_ID = "captionAssetId";
-		#endregion
-
-		public string CaptionAssetId
-		{
-			set;
-			get;
-		}
-
-		public CaptionAssetDeleteRequestBuilder()
-			: base("caption_captionasset", "delete")
-		{
-		}
-
-		public CaptionAssetDeleteRequestBuilder(string captionAssetId)
-			: this()
-		{
-			this.CaptionAssetId = captionAssetId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("captionAssetId"))
-				kparams.AddIfNotNull("captionAssetId", CaptionAssetId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
 
 	public class CaptionAssetService
 	{
@@ -479,6 +479,36 @@ namespace Kaltura.Services
 			return new CaptionAssetAddRequestBuilder(entryId, captionAsset);
 		}
 
+		public static CaptionAssetDeleteRequestBuilder Delete(string captionAssetId)
+		{
+			return new CaptionAssetDeleteRequestBuilder(captionAssetId);
+		}
+
+		public static CaptionAssetGetRequestBuilder Get(string captionAssetId)
+		{
+			return new CaptionAssetGetRequestBuilder(captionAssetId);
+		}
+
+		public static CaptionAssetGetRemotePathsRequestBuilder GetRemotePaths(string id)
+		{
+			return new CaptionAssetGetRemotePathsRequestBuilder(id);
+		}
+
+		public static CaptionAssetGetUrlRequestBuilder GetUrl(string id, int storageId = Int32.MinValue)
+		{
+			return new CaptionAssetGetUrlRequestBuilder(id, storageId);
+		}
+
+		public static CaptionAssetListRequestBuilder List(AssetFilter filter = null, FilterPager pager = null)
+		{
+			return new CaptionAssetListRequestBuilder(filter, pager);
+		}
+
+		public static CaptionAssetSetAsDefaultRequestBuilder SetAsDefault(string captionAssetId)
+		{
+			return new CaptionAssetSetAsDefaultRequestBuilder(captionAssetId);
+		}
+
 		public static CaptionAssetSetContentRequestBuilder SetContent(string id, ContentResource contentResource)
 		{
 			return new CaptionAssetSetContentRequestBuilder(id, contentResource);
@@ -487,36 +517,6 @@ namespace Kaltura.Services
 		public static CaptionAssetUpdateRequestBuilder Update(string id, CaptionAsset captionAsset)
 		{
 			return new CaptionAssetUpdateRequestBuilder(id, captionAsset);
-		}
-
-		public static CaptionAssetGetUrlRequestBuilder GetUrl(string id, int storageId = Int32.MinValue)
-		{
-			return new CaptionAssetGetUrlRequestBuilder(id, storageId);
-		}
-
-		public static CaptionAssetGetRemotePathsRequestBuilder GetRemotePaths(string id)
-		{
-			return new CaptionAssetGetRemotePathsRequestBuilder(id);
-		}
-
-		public static CaptionAssetSetAsDefaultRequestBuilder SetAsDefault(string captionAssetId)
-		{
-			return new CaptionAssetSetAsDefaultRequestBuilder(captionAssetId);
-		}
-
-		public static CaptionAssetGetRequestBuilder Get(string captionAssetId)
-		{
-			return new CaptionAssetGetRequestBuilder(captionAssetId);
-		}
-
-		public static CaptionAssetListRequestBuilder List(AssetFilter filter = null, FilterPager pager = null)
-		{
-			return new CaptionAssetListRequestBuilder(filter, pager);
-		}
-
-		public static CaptionAssetDeleteRequestBuilder Delete(string captionAssetId)
-		{
-			return new CaptionAssetDeleteRequestBuilder(captionAssetId);
 		}
 	}
 }

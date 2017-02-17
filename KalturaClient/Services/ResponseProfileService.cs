@@ -78,6 +78,101 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class ResponseProfileCloneRequestBuilder : RequestBuilder<ResponseProfile>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string PROFILE = "profile";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public ResponseProfile Profile
+		{
+			set;
+			get;
+		}
+
+		public ResponseProfileCloneRequestBuilder()
+			: base("responseprofile", "clone")
+		{
+		}
+
+		public ResponseProfileCloneRequestBuilder(int id, ResponseProfile profile)
+			: this()
+		{
+			this.Id = id;
+			this.Profile = profile;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("profile"))
+				kparams.AddIfNotNull("profile", Profile);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ResponseProfile>(result);
+		}
+	}
+
+	public class ResponseProfileDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public ResponseProfileDeleteRequestBuilder()
+			: base("responseprofile", "delete")
+		{
+		}
+
+		public ResponseProfileDeleteRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
 	public class ResponseProfileGetRequestBuilder : RequestBuilder<ResponseProfile>
 	{
 		#region Constants
@@ -118,6 +213,101 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ResponseProfile>(result);
+		}
+	}
+
+	public class ResponseProfileListRequestBuilder : RequestBuilder<ListResponse<ResponseProfile>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public ResponseProfileFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public ResponseProfileListRequestBuilder()
+			: base("responseprofile", "list")
+		{
+		}
+
+		public ResponseProfileListRequestBuilder(ResponseProfileFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<ResponseProfile>>(result);
+		}
+	}
+
+	public class ResponseProfileRecalculateRequestBuilder : RequestBuilder<ResponseProfileCacheRecalculateResults>
+	{
+		#region Constants
+		public const string OPTIONS = "options";
+		#endregion
+
+		public ResponseProfileCacheRecalculateOptions Options
+		{
+			set;
+			get;
+		}
+
+		public ResponseProfileRecalculateRequestBuilder()
+			: base("responseprofile", "recalculate")
+		{
+		}
+
+		public ResponseProfileRecalculateRequestBuilder(ResponseProfileCacheRecalculateOptions options)
+			: this()
+		{
+			this.Options = options;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("options"))
+				kparams.AddIfNotNull("options", Options);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ResponseProfileCacheRecalculateResults>(result);
 		}
 	}
 
@@ -225,196 +415,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class ResponseProfileDeleteRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-
-		public ResponseProfileDeleteRequestBuilder()
-			: base("responseprofile", "delete")
-		{
-		}
-
-		public ResponseProfileDeleteRequestBuilder(int id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
-	public class ResponseProfileListRequestBuilder : RequestBuilder<ListResponse<ResponseProfile>>
-	{
-		#region Constants
-		public const string FILTER = "filter";
-		public const string PAGER = "pager";
-		#endregion
-
-		public ResponseProfileFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
-
-		public ResponseProfileListRequestBuilder()
-			: base("responseprofile", "list")
-		{
-		}
-
-		public ResponseProfileListRequestBuilder(ResponseProfileFilter filter, FilterPager pager)
-			: this()
-		{
-			this.Filter = filter;
-			this.Pager = pager;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("filter"))
-				kparams.AddIfNotNull("filter", Filter);
-			if (!isMapped("pager"))
-				kparams.AddIfNotNull("pager", Pager);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ListResponse<ResponseProfile>>(result);
-		}
-	}
-
-	public class ResponseProfileRecalculateRequestBuilder : RequestBuilder<ResponseProfileCacheRecalculateResults>
-	{
-		#region Constants
-		public const string OPTIONS = "options";
-		#endregion
-
-		public ResponseProfileCacheRecalculateOptions Options
-		{
-			set;
-			get;
-		}
-
-		public ResponseProfileRecalculateRequestBuilder()
-			: base("responseprofile", "recalculate")
-		{
-		}
-
-		public ResponseProfileRecalculateRequestBuilder(ResponseProfileCacheRecalculateOptions options)
-			: this()
-		{
-			this.Options = options;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("options"))
-				kparams.AddIfNotNull("options", Options);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ResponseProfileCacheRecalculateResults>(result);
-		}
-	}
-
-	public class ResponseProfileCloneRequestBuilder : RequestBuilder<ResponseProfile>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string PROFILE = "profile";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-		public ResponseProfile Profile
-		{
-			set;
-			get;
-		}
-
-		public ResponseProfileCloneRequestBuilder()
-			: base("responseprofile", "clone")
-		{
-		}
-
-		public ResponseProfileCloneRequestBuilder(int id, ResponseProfile profile)
-			: this()
-		{
-			this.Id = id;
-			this.Profile = profile;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("profile"))
-				kparams.AddIfNotNull("profile", Profile);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ResponseProfile>(result);
-		}
-	}
-
 
 	public class ResponseProfileService
 	{
@@ -427,24 +427,19 @@ namespace Kaltura.Services
 			return new ResponseProfileAddRequestBuilder(addResponseProfile);
 		}
 
-		public static ResponseProfileGetRequestBuilder Get(int id)
+		public static ResponseProfileCloneRequestBuilder Clone(int id, ResponseProfile profile)
 		{
-			return new ResponseProfileGetRequestBuilder(id);
-		}
-
-		public static ResponseProfileUpdateRequestBuilder Update(int id, ResponseProfile updateResponseProfile)
-		{
-			return new ResponseProfileUpdateRequestBuilder(id, updateResponseProfile);
-		}
-
-		public static ResponseProfileUpdateStatusRequestBuilder UpdateStatus(int id, ResponseProfileStatus status)
-		{
-			return new ResponseProfileUpdateStatusRequestBuilder(id, status);
+			return new ResponseProfileCloneRequestBuilder(id, profile);
 		}
 
 		public static ResponseProfileDeleteRequestBuilder Delete(int id)
 		{
 			return new ResponseProfileDeleteRequestBuilder(id);
+		}
+
+		public static ResponseProfileGetRequestBuilder Get(int id)
+		{
+			return new ResponseProfileGetRequestBuilder(id);
 		}
 
 		public static ResponseProfileListRequestBuilder List(ResponseProfileFilter filter = null, FilterPager pager = null)
@@ -457,9 +452,14 @@ namespace Kaltura.Services
 			return new ResponseProfileRecalculateRequestBuilder(options);
 		}
 
-		public static ResponseProfileCloneRequestBuilder Clone(int id, ResponseProfile profile)
+		public static ResponseProfileUpdateRequestBuilder Update(int id, ResponseProfile updateResponseProfile)
 		{
-			return new ResponseProfileCloneRequestBuilder(id, profile);
+			return new ResponseProfileUpdateRequestBuilder(id, updateResponseProfile);
+		}
+
+		public static ResponseProfileUpdateStatusRequestBuilder UpdateStatus(int id, ResponseProfileStatus status)
+		{
+			return new ResponseProfileUpdateStatusRequestBuilder(id, status);
 		}
 	}
 }

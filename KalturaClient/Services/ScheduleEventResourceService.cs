@@ -78,6 +78,58 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class ScheduleEventResourceDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string SCHEDULE_EVENT_ID = "scheduleEventId";
+		public const string SCHEDULE_RESOURCE_ID = "scheduleResourceId";
+		#endregion
+
+		public int ScheduleEventId
+		{
+			set;
+			get;
+		}
+		public int ScheduleResourceId
+		{
+			set;
+			get;
+		}
+
+		public ScheduleEventResourceDeleteRequestBuilder()
+			: base("schedule_scheduleeventresource", "delete")
+		{
+		}
+
+		public ScheduleEventResourceDeleteRequestBuilder(int scheduleEventId, int scheduleResourceId)
+			: this()
+		{
+			this.ScheduleEventId = scheduleEventId;
+			this.ScheduleResourceId = scheduleResourceId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("scheduleEventId"))
+				kparams.AddIfNotNull("scheduleEventId", ScheduleEventId);
+			if (!isMapped("scheduleResourceId"))
+				kparams.AddIfNotNull("scheduleResourceId", ScheduleResourceId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
 	public class ScheduleEventResourceGetRequestBuilder : RequestBuilder<ScheduleEventResource>
 	{
 		#region Constants
@@ -127,6 +179,58 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ScheduleEventResource>(result);
+		}
+	}
+
+	public class ScheduleEventResourceListRequestBuilder : RequestBuilder<ListResponse<ScheduleEventResource>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public ScheduleEventResourceFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public ScheduleEventResourceListRequestBuilder()
+			: base("schedule_scheduleeventresource", "list")
+		{
+		}
+
+		public ScheduleEventResourceListRequestBuilder(ScheduleEventResourceFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<ScheduleEventResource>>(result);
 		}
 	}
 
@@ -191,110 +295,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class ScheduleEventResourceDeleteRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string SCHEDULE_EVENT_ID = "scheduleEventId";
-		public const string SCHEDULE_RESOURCE_ID = "scheduleResourceId";
-		#endregion
-
-		public int ScheduleEventId
-		{
-			set;
-			get;
-		}
-		public int ScheduleResourceId
-		{
-			set;
-			get;
-		}
-
-		public ScheduleEventResourceDeleteRequestBuilder()
-			: base("schedule_scheduleeventresource", "delete")
-		{
-		}
-
-		public ScheduleEventResourceDeleteRequestBuilder(int scheduleEventId, int scheduleResourceId)
-			: this()
-		{
-			this.ScheduleEventId = scheduleEventId;
-			this.ScheduleResourceId = scheduleResourceId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("scheduleEventId"))
-				kparams.AddIfNotNull("scheduleEventId", ScheduleEventId);
-			if (!isMapped("scheduleResourceId"))
-				kparams.AddIfNotNull("scheduleResourceId", ScheduleResourceId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
-	public class ScheduleEventResourceListRequestBuilder : RequestBuilder<ListResponse<ScheduleEventResource>>
-	{
-		#region Constants
-		public const string FILTER = "filter";
-		public const string PAGER = "pager";
-		#endregion
-
-		public ScheduleEventResourceFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
-
-		public ScheduleEventResourceListRequestBuilder()
-			: base("schedule_scheduleeventresource", "list")
-		{
-		}
-
-		public ScheduleEventResourceListRequestBuilder(ScheduleEventResourceFilter filter, FilterPager pager)
-			: this()
-		{
-			this.Filter = filter;
-			this.Pager = pager;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("filter"))
-				kparams.AddIfNotNull("filter", Filter);
-			if (!isMapped("pager"))
-				kparams.AddIfNotNull("pager", Pager);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ListResponse<ScheduleEventResource>>(result);
-		}
-	}
-
 
 	public class ScheduleEventResourceService
 	{
@@ -307,24 +307,24 @@ namespace Kaltura.Services
 			return new ScheduleEventResourceAddRequestBuilder(scheduleEventResource);
 		}
 
-		public static ScheduleEventResourceGetRequestBuilder Get(int scheduleEventId, int scheduleResourceId)
-		{
-			return new ScheduleEventResourceGetRequestBuilder(scheduleEventId, scheduleResourceId);
-		}
-
-		public static ScheduleEventResourceUpdateRequestBuilder Update(int scheduleEventId, int scheduleResourceId, ScheduleEventResource scheduleEventResource)
-		{
-			return new ScheduleEventResourceUpdateRequestBuilder(scheduleEventId, scheduleResourceId, scheduleEventResource);
-		}
-
 		public static ScheduleEventResourceDeleteRequestBuilder Delete(int scheduleEventId, int scheduleResourceId)
 		{
 			return new ScheduleEventResourceDeleteRequestBuilder(scheduleEventId, scheduleResourceId);
 		}
 
+		public static ScheduleEventResourceGetRequestBuilder Get(int scheduleEventId, int scheduleResourceId)
+		{
+			return new ScheduleEventResourceGetRequestBuilder(scheduleEventId, scheduleResourceId);
+		}
+
 		public static ScheduleEventResourceListRequestBuilder List(ScheduleEventResourceFilter filter = null, FilterPager pager = null)
 		{
 			return new ScheduleEventResourceListRequestBuilder(filter, pager);
+		}
+
+		public static ScheduleEventResourceUpdateRequestBuilder Update(int scheduleEventId, int scheduleResourceId, ScheduleEventResource scheduleEventResource)
+		{
+			return new ScheduleEventResourceUpdateRequestBuilder(scheduleEventId, scheduleResourceId, scheduleEventResource);
 		}
 	}
 }

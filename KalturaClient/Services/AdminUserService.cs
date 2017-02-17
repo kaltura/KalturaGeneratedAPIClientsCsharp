@@ -35,6 +35,162 @@ using Kaltura.Enums;
 
 namespace Kaltura.Services
 {
+	public class AdminUserLoginRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		public const string EMAIL = "email";
+		public const string PASSWORD = "password";
+		public new const string PARTNER_ID = "partnerId";
+		#endregion
+
+		public string Email
+		{
+			set;
+			get;
+		}
+		public string Password
+		{
+			set;
+			get;
+		}
+		public new int PartnerId
+		{
+			set;
+			get;
+		}
+
+		public AdminUserLoginRequestBuilder()
+			: base("adminuser", "login")
+		{
+		}
+
+		public AdminUserLoginRequestBuilder(string email, string password, int partnerId)
+			: this()
+		{
+			this.Email = email;
+			this.Password = password;
+			this.PartnerId = partnerId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("email"))
+				kparams.AddIfNotNull("email", Email);
+			if (!isMapped("password"))
+				kparams.AddIfNotNull("password", Password);
+			if (!isMapped("partnerId"))
+				kparams.AddIfNotNull("partnerId", PartnerId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return result.InnerText;
+		}
+	}
+
+	public class AdminUserResetPasswordRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string EMAIL = "email";
+		#endregion
+
+		public string Email
+		{
+			set;
+			get;
+		}
+
+		public AdminUserResetPasswordRequestBuilder()
+			: base("adminuser", "resetPassword")
+		{
+		}
+
+		public AdminUserResetPasswordRequestBuilder(string email)
+			: this()
+		{
+			this.Email = email;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("email"))
+				kparams.AddIfNotNull("email", Email);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class AdminUserSetInitialPasswordRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string HASH_KEY = "hashKey";
+		public const string NEW_PASSWORD = "newPassword";
+		#endregion
+
+		public string HashKey
+		{
+			set;
+			get;
+		}
+		public string NewPassword
+		{
+			set;
+			get;
+		}
+
+		public AdminUserSetInitialPasswordRequestBuilder()
+			: base("adminuser", "setInitialPassword")
+		{
+		}
+
+		public AdminUserSetInitialPasswordRequestBuilder(string hashKey, string newPassword)
+			: this()
+		{
+			this.HashKey = hashKey;
+			this.NewPassword = newPassword;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("hashKey"))
+				kparams.AddIfNotNull("hashKey", HashKey);
+			if (!isMapped("newPassword"))
+				kparams.AddIfNotNull("newPassword", NewPassword);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
 	public class AdminUserUpdatePasswordRequestBuilder : RequestBuilder<AdminUser>
 	{
 		#region Constants
@@ -105,162 +261,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class AdminUserResetPasswordRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string EMAIL = "email";
-		#endregion
-
-		public string Email
-		{
-			set;
-			get;
-		}
-
-		public AdminUserResetPasswordRequestBuilder()
-			: base("adminuser", "resetPassword")
-		{
-		}
-
-		public AdminUserResetPasswordRequestBuilder(string email)
-			: this()
-		{
-			this.Email = email;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("email"))
-				kparams.AddIfNotNull("email", Email);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
-	public class AdminUserLoginRequestBuilder : RequestBuilder<string>
-	{
-		#region Constants
-		public const string EMAIL = "email";
-		public const string PASSWORD = "password";
-		public new const string PARTNER_ID = "partnerId";
-		#endregion
-
-		public string Email
-		{
-			set;
-			get;
-		}
-		public string Password
-		{
-			set;
-			get;
-		}
-		public new int PartnerId
-		{
-			set;
-			get;
-		}
-
-		public AdminUserLoginRequestBuilder()
-			: base("adminuser", "login")
-		{
-		}
-
-		public AdminUserLoginRequestBuilder(string email, string password, int partnerId)
-			: this()
-		{
-			this.Email = email;
-			this.Password = password;
-			this.PartnerId = partnerId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("email"))
-				kparams.AddIfNotNull("email", Email);
-			if (!isMapped("password"))
-				kparams.AddIfNotNull("password", Password);
-			if (!isMapped("partnerId"))
-				kparams.AddIfNotNull("partnerId", PartnerId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return result.InnerText;
-		}
-	}
-
-	public class AdminUserSetInitialPasswordRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string HASH_KEY = "hashKey";
-		public const string NEW_PASSWORD = "newPassword";
-		#endregion
-
-		public string HashKey
-		{
-			set;
-			get;
-		}
-		public string NewPassword
-		{
-			set;
-			get;
-		}
-
-		public AdminUserSetInitialPasswordRequestBuilder()
-			: base("adminuser", "setInitialPassword")
-		{
-		}
-
-		public AdminUserSetInitialPasswordRequestBuilder(string hashKey, string newPassword)
-			: this()
-		{
-			this.HashKey = hashKey;
-			this.NewPassword = newPassword;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("hashKey"))
-				kparams.AddIfNotNull("hashKey", HashKey);
-			if (!isMapped("newPassword"))
-				kparams.AddIfNotNull("newPassword", NewPassword);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
 
 	public class AdminUserService
 	{
@@ -268,9 +268,9 @@ namespace Kaltura.Services
 		{
 		}
 
-		public static AdminUserUpdatePasswordRequestBuilder UpdatePassword(string email, string password, string newEmail = "", string newPassword = "")
+		public static AdminUserLoginRequestBuilder Login(string email, string password, int partnerId = Int32.MinValue)
 		{
-			return new AdminUserUpdatePasswordRequestBuilder(email, password, newEmail, newPassword);
+			return new AdminUserLoginRequestBuilder(email, password, partnerId);
 		}
 
 		public static AdminUserResetPasswordRequestBuilder ResetPassword(string email)
@@ -278,14 +278,14 @@ namespace Kaltura.Services
 			return new AdminUserResetPasswordRequestBuilder(email);
 		}
 
-		public static AdminUserLoginRequestBuilder Login(string email, string password, int partnerId = Int32.MinValue)
-		{
-			return new AdminUserLoginRequestBuilder(email, password, partnerId);
-		}
-
 		public static AdminUserSetInitialPasswordRequestBuilder SetInitialPassword(string hashKey, string newPassword)
 		{
 			return new AdminUserSetInitialPasswordRequestBuilder(hashKey, newPassword);
+		}
+
+		public static AdminUserUpdatePasswordRequestBuilder UpdatePassword(string email, string password, string newEmail = "", string newPassword = "")
+		{
+			return new AdminUserUpdatePasswordRequestBuilder(email, password, newEmail, newPassword);
 		}
 	}
 }

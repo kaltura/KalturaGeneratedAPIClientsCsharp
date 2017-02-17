@@ -78,6 +78,49 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class SyndicationFeedDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+
+		public SyndicationFeedDeleteRequestBuilder()
+			: base("syndicationfeed", "delete")
+		{
+		}
+
+		public SyndicationFeedDeleteRequestBuilder(string id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
 	public class SyndicationFeedGetRequestBuilder : RequestBuilder<BaseSyndicationFeed>
 	{
 		#region Constants
@@ -121,43 +164,34 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class SyndicationFeedUpdateRequestBuilder : RequestBuilder<BaseSyndicationFeed>
+	public class SyndicationFeedGetEntryCountRequestBuilder : RequestBuilder<SyndicationFeedEntryCount>
 	{
 		#region Constants
-		public const string ID = "id";
-		public const string SYNDICATION_FEED = "syndicationFeed";
+		public const string FEED_ID = "feedId";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public BaseSyndicationFeed SyndicationFeed
+		public string FeedId
 		{
 			set;
 			get;
 		}
 
-		public SyndicationFeedUpdateRequestBuilder()
-			: base("syndicationfeed", "update")
+		public SyndicationFeedGetEntryCountRequestBuilder()
+			: base("syndicationfeed", "getEntryCount")
 		{
 		}
 
-		public SyndicationFeedUpdateRequestBuilder(string id, BaseSyndicationFeed syndicationFeed)
+		public SyndicationFeedGetEntryCountRequestBuilder(string feedId)
 			: this()
 		{
-			this.Id = id;
-			this.SyndicationFeed = syndicationFeed;
+			this.FeedId = feedId;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("syndicationFeed"))
-				kparams.AddIfNotNull("syndicationFeed", SyndicationFeed);
+			if (!isMapped("feedId"))
+				kparams.AddIfNotNull("feedId", FeedId);
 			return kparams;
 		}
 
@@ -169,50 +203,7 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<BaseSyndicationFeed>(result);
-		}
-	}
-
-	public class SyndicationFeedDeleteRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public string Id
-		{
-			set;
-			get;
-		}
-
-		public SyndicationFeedDeleteRequestBuilder()
-			: base("syndicationfeed", "delete")
-		{
-		}
-
-		public SyndicationFeedDeleteRequestBuilder(string id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
+			return ObjectFactory.Create<SyndicationFeedEntryCount>(result);
 		}
 	}
 
@@ -268,49 +259,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class SyndicationFeedGetEntryCountRequestBuilder : RequestBuilder<SyndicationFeedEntryCount>
-	{
-		#region Constants
-		public const string FEED_ID = "feedId";
-		#endregion
-
-		public string FeedId
-		{
-			set;
-			get;
-		}
-
-		public SyndicationFeedGetEntryCountRequestBuilder()
-			: base("syndicationfeed", "getEntryCount")
-		{
-		}
-
-		public SyndicationFeedGetEntryCountRequestBuilder(string feedId)
-			: this()
-		{
-			this.FeedId = feedId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("feedId"))
-				kparams.AddIfNotNull("feedId", FeedId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<SyndicationFeedEntryCount>(result);
-		}
-	}
-
 	public class SyndicationFeedRequestConversionRequestBuilder : RequestBuilder<string>
 	{
 		#region Constants
@@ -354,6 +302,58 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class SyndicationFeedUpdateRequestBuilder : RequestBuilder<BaseSyndicationFeed>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string SYNDICATION_FEED = "syndicationFeed";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public BaseSyndicationFeed SyndicationFeed
+		{
+			set;
+			get;
+		}
+
+		public SyndicationFeedUpdateRequestBuilder()
+			: base("syndicationfeed", "update")
+		{
+		}
+
+		public SyndicationFeedUpdateRequestBuilder(string id, BaseSyndicationFeed syndicationFeed)
+			: this()
+		{
+			this.Id = id;
+			this.SyndicationFeed = syndicationFeed;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("syndicationFeed"))
+				kparams.AddIfNotNull("syndicationFeed", SyndicationFeed);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<BaseSyndicationFeed>(result);
+		}
+	}
+
 
 	public class SyndicationFeedService
 	{
@@ -366,24 +366,14 @@ namespace Kaltura.Services
 			return new SyndicationFeedAddRequestBuilder(syndicationFeed);
 		}
 
-		public static SyndicationFeedGetRequestBuilder Get(string id)
-		{
-			return new SyndicationFeedGetRequestBuilder(id);
-		}
-
-		public static SyndicationFeedUpdateRequestBuilder Update(string id, BaseSyndicationFeed syndicationFeed)
-		{
-			return new SyndicationFeedUpdateRequestBuilder(id, syndicationFeed);
-		}
-
 		public static SyndicationFeedDeleteRequestBuilder Delete(string id)
 		{
 			return new SyndicationFeedDeleteRequestBuilder(id);
 		}
 
-		public static SyndicationFeedListRequestBuilder List(BaseSyndicationFeedFilter filter = null, FilterPager pager = null)
+		public static SyndicationFeedGetRequestBuilder Get(string id)
 		{
-			return new SyndicationFeedListRequestBuilder(filter, pager);
+			return new SyndicationFeedGetRequestBuilder(id);
 		}
 
 		public static SyndicationFeedGetEntryCountRequestBuilder GetEntryCount(string feedId)
@@ -391,9 +381,19 @@ namespace Kaltura.Services
 			return new SyndicationFeedGetEntryCountRequestBuilder(feedId);
 		}
 
+		public static SyndicationFeedListRequestBuilder List(BaseSyndicationFeedFilter filter = null, FilterPager pager = null)
+		{
+			return new SyndicationFeedListRequestBuilder(filter, pager);
+		}
+
 		public static SyndicationFeedRequestConversionRequestBuilder RequestConversion(string feedId)
 		{
 			return new SyndicationFeedRequestConversionRequestBuilder(feedId);
+		}
+
+		public static SyndicationFeedUpdateRequestBuilder Update(string id, BaseSyndicationFeed syndicationFeed)
+		{
+			return new SyndicationFeedUpdateRequestBuilder(id, syndicationFeed);
 		}
 	}
 }

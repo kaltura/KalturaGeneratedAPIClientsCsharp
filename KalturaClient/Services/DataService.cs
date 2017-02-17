@@ -78,6 +78,49 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class DataDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+
+		public DataDeleteRequestBuilder()
+			: base("data", "delete")
+		{
+		}
+
+		public DataDeleteRequestBuilder(string entryId)
+			: this()
+		{
+			this.EntryId = entryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
 	public class DataGetRequestBuilder : RequestBuilder<DataEntry>
 	{
 		#region Constants
@@ -127,101 +170,6 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<DataEntry>(result);
-		}
-	}
-
-	public class DataUpdateRequestBuilder : RequestBuilder<DataEntry>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		public const string DOCUMENT_ENTRY = "documentEntry";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public DataEntry DocumentEntry
-		{
-			set;
-			get;
-		}
-
-		public DataUpdateRequestBuilder()
-			: base("data", "update")
-		{
-		}
-
-		public DataUpdateRequestBuilder(string entryId, DataEntry documentEntry)
-			: this()
-		{
-			this.EntryId = entryId;
-			this.DocumentEntry = documentEntry;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			if (!isMapped("documentEntry"))
-				kparams.AddIfNotNull("documentEntry", DocumentEntry);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<DataEntry>(result);
-		}
-	}
-
-	public class DataDeleteRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-
-		public DataDeleteRequestBuilder()
-			: base("data", "delete")
-		{
-		}
-
-		public DataDeleteRequestBuilder(string entryId)
-			: this()
-		{
-			this.EntryId = entryId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
 		}
 	}
 
@@ -277,6 +225,58 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class DataUpdateRequestBuilder : RequestBuilder<DataEntry>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string DOCUMENT_ENTRY = "documentEntry";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public DataEntry DocumentEntry
+		{
+			set;
+			get;
+		}
+
+		public DataUpdateRequestBuilder()
+			: base("data", "update")
+		{
+		}
+
+		public DataUpdateRequestBuilder(string entryId, DataEntry documentEntry)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.DocumentEntry = documentEntry;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("documentEntry"))
+				kparams.AddIfNotNull("documentEntry", DocumentEntry);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<DataEntry>(result);
+		}
+	}
+
 
 	public class DataService
 	{
@@ -289,24 +289,24 @@ namespace Kaltura.Services
 			return new DataAddRequestBuilder(dataEntry);
 		}
 
-		public static DataGetRequestBuilder Get(string entryId, int version = -1)
-		{
-			return new DataGetRequestBuilder(entryId, version);
-		}
-
-		public static DataUpdateRequestBuilder Update(string entryId, DataEntry documentEntry)
-		{
-			return new DataUpdateRequestBuilder(entryId, documentEntry);
-		}
-
 		public static DataDeleteRequestBuilder Delete(string entryId)
 		{
 			return new DataDeleteRequestBuilder(entryId);
 		}
 
+		public static DataGetRequestBuilder Get(string entryId, int version = -1)
+		{
+			return new DataGetRequestBuilder(entryId, version);
+		}
+
 		public static DataListRequestBuilder List(DataEntryFilter filter = null, FilterPager pager = null)
 		{
 			return new DataListRequestBuilder(filter, pager);
+		}
+
+		public static DataUpdateRequestBuilder Update(string entryId, DataEntry documentEntry)
+		{
+			return new DataUpdateRequestBuilder(entryId, documentEntry);
 		}
 	}
 }

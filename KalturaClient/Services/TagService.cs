@@ -35,58 +35,6 @@ using Kaltura.Enums;
 
 namespace Kaltura.Services
 {
-	public class TagSearchRequestBuilder : RequestBuilder<ListResponse<Tag>>
-	{
-		#region Constants
-		public const string TAG_FILTER = "tagFilter";
-		public const string PAGER = "pager";
-		#endregion
-
-		public TagFilter TagFilter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
-
-		public TagSearchRequestBuilder()
-			: base("tagsearch_tag", "search")
-		{
-		}
-
-		public TagSearchRequestBuilder(TagFilter tagFilter, FilterPager pager)
-			: this()
-		{
-			this.TagFilter = tagFilter;
-			this.Pager = pager;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("tagFilter"))
-				kparams.AddIfNotNull("tagFilter", TagFilter);
-			if (!isMapped("pager"))
-				kparams.AddIfNotNull("pager", Pager);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ListResponse<Tag>>(result);
-		}
-	}
-
 	public class TagDeletePendingRequestBuilder : RequestBuilder<int>
 	{
 		#region Constants
@@ -177,16 +125,63 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class TagSearchRequestBuilder : RequestBuilder<ListResponse<Tag>>
+	{
+		#region Constants
+		public const string TAG_FILTER = "tagFilter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public TagFilter TagFilter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public TagSearchRequestBuilder()
+			: base("tagsearch_tag", "search")
+		{
+		}
+
+		public TagSearchRequestBuilder(TagFilter tagFilter, FilterPager pager)
+			: this()
+		{
+			this.TagFilter = tagFilter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("tagFilter"))
+				kparams.AddIfNotNull("tagFilter", TagFilter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<Tag>>(result);
+		}
+	}
+
 
 	public class TagService
 	{
 		private TagService()
 		{
-		}
-
-		public static TagSearchRequestBuilder Search(TagFilter tagFilter, FilterPager pager = null)
-		{
-			return new TagSearchRequestBuilder(tagFilter, pager);
 		}
 
 		public static TagDeletePendingRequestBuilder DeletePending()
@@ -197,6 +192,11 @@ namespace Kaltura.Services
 		public static TagIndexCategoryEntryTagsRequestBuilder IndexCategoryEntryTags(int categoryId, string pcToDecrement, string pcToIncrement)
 		{
 			return new TagIndexCategoryEntryTagsRequestBuilder(categoryId, pcToDecrement, pcToIncrement);
+		}
+
+		public static TagSearchRequestBuilder Search(TagFilter tagFilter, FilterPager pager = null)
+		{
+			return new TagSearchRequestBuilder(tagFilter, pager);
 		}
 	}
 }

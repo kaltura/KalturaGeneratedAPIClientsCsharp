@@ -35,7 +35,50 @@ using Kaltura.Enums;
 
 namespace Kaltura.Services
 {
-	public class ConversionProfileSetAsDefaultRequestBuilder : RequestBuilder<ConversionProfile>
+	public class ConversionProfileAddRequestBuilder : RequestBuilder<ConversionProfile>
+	{
+		#region Constants
+		public const string CONVERSION_PROFILE = "conversionProfile";
+		#endregion
+
+		public ConversionProfile ConversionProfile
+		{
+			set;
+			get;
+		}
+
+		public ConversionProfileAddRequestBuilder()
+			: base("conversionprofile", "add")
+		{
+		}
+
+		public ConversionProfileAddRequestBuilder(ConversionProfile conversionProfile)
+			: this()
+		{
+			this.ConversionProfile = conversionProfile;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("conversionProfile"))
+				kparams.AddIfNotNull("conversionProfile", ConversionProfile);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ConversionProfile>(result);
+		}
+	}
+
+	public class ConversionProfileDeleteRequestBuilder : RequestBuilder<object>
 	{
 		#region Constants
 		public const string ID = "id";
@@ -47,12 +90,55 @@ namespace Kaltura.Services
 			get;
 		}
 
-		public ConversionProfileSetAsDefaultRequestBuilder()
-			: base("conversionprofile", "setAsDefault")
+		public ConversionProfileDeleteRequestBuilder()
+			: base("conversionprofile", "delete")
 		{
 		}
 
-		public ConversionProfileSetAsDefaultRequestBuilder(int id)
+		public ConversionProfileDeleteRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class ConversionProfileGetRequestBuilder : RequestBuilder<ConversionProfile>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public ConversionProfileGetRequestBuilder()
+			: base("conversionprofile", "get")
+		{
+		}
+
+		public ConversionProfileGetRequestBuilder(int id)
 			: this()
 		{
 			this.Id = id;
@@ -121,34 +207,43 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class ConversionProfileAddRequestBuilder : RequestBuilder<ConversionProfile>
+	public class ConversionProfileListRequestBuilder : RequestBuilder<ListResponse<ConversionProfile>>
 	{
 		#region Constants
-		public const string CONVERSION_PROFILE = "conversionProfile";
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
 		#endregion
 
-		public ConversionProfile ConversionProfile
+		public ConversionProfileFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
 		{
 			set;
 			get;
 		}
 
-		public ConversionProfileAddRequestBuilder()
-			: base("conversionprofile", "add")
+		public ConversionProfileListRequestBuilder()
+			: base("conversionprofile", "list")
 		{
 		}
 
-		public ConversionProfileAddRequestBuilder(ConversionProfile conversionProfile)
+		public ConversionProfileListRequestBuilder(ConversionProfileFilter filter, FilterPager pager)
 			: this()
 		{
-			this.ConversionProfile = conversionProfile;
+			this.Filter = filter;
+			this.Pager = pager;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("conversionProfile"))
-				kparams.AddIfNotNull("conversionProfile", ConversionProfile);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
 			return kparams;
 		}
 
@@ -160,11 +255,11 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<ConversionProfile>(result);
+			return ObjectFactory.Create<ListResponse<ConversionProfile>>(result);
 		}
 	}
 
-	public class ConversionProfileGetRequestBuilder : RequestBuilder<ConversionProfile>
+	public class ConversionProfileSetAsDefaultRequestBuilder : RequestBuilder<ConversionProfile>
 	{
 		#region Constants
 		public const string ID = "id";
@@ -176,12 +271,12 @@ namespace Kaltura.Services
 			get;
 		}
 
-		public ConversionProfileGetRequestBuilder()
-			: base("conversionprofile", "get")
+		public ConversionProfileSetAsDefaultRequestBuilder()
+			: base("conversionprofile", "setAsDefault")
 		{
 		}
 
-		public ConversionProfileGetRequestBuilder(int id)
+		public ConversionProfileSetAsDefaultRequestBuilder(int id)
 			: this()
 		{
 			this.Id = id;
@@ -259,101 +354,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class ConversionProfileDeleteRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-
-		public ConversionProfileDeleteRequestBuilder()
-			: base("conversionprofile", "delete")
-		{
-		}
-
-		public ConversionProfileDeleteRequestBuilder(int id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
-	public class ConversionProfileListRequestBuilder : RequestBuilder<ListResponse<ConversionProfile>>
-	{
-		#region Constants
-		public const string FILTER = "filter";
-		public const string PAGER = "pager";
-		#endregion
-
-		public ConversionProfileFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
-
-		public ConversionProfileListRequestBuilder()
-			: base("conversionprofile", "list")
-		{
-		}
-
-		public ConversionProfileListRequestBuilder(ConversionProfileFilter filter, FilterPager pager)
-			: this()
-		{
-			this.Filter = filter;
-			this.Pager = pager;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("filter"))
-				kparams.AddIfNotNull("filter", Filter);
-			if (!isMapped("pager"))
-				kparams.AddIfNotNull("pager", Pager);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ListResponse<ConversionProfile>>(result);
-		}
-	}
-
 
 	public class ConversionProfileService
 	{
@@ -361,29 +361,9 @@ namespace Kaltura.Services
 		{
 		}
 
-		public static ConversionProfileSetAsDefaultRequestBuilder SetAsDefault(int id)
-		{
-			return new ConversionProfileSetAsDefaultRequestBuilder(id);
-		}
-
-		public static ConversionProfileGetDefaultRequestBuilder GetDefault(ConversionProfileType type = null)
-		{
-			return new ConversionProfileGetDefaultRequestBuilder(type);
-		}
-
 		public static ConversionProfileAddRequestBuilder Add(ConversionProfile conversionProfile)
 		{
 			return new ConversionProfileAddRequestBuilder(conversionProfile);
-		}
-
-		public static ConversionProfileGetRequestBuilder Get(int id)
-		{
-			return new ConversionProfileGetRequestBuilder(id);
-		}
-
-		public static ConversionProfileUpdateRequestBuilder Update(int id, ConversionProfile conversionProfile)
-		{
-			return new ConversionProfileUpdateRequestBuilder(id, conversionProfile);
 		}
 
 		public static ConversionProfileDeleteRequestBuilder Delete(int id)
@@ -391,9 +371,29 @@ namespace Kaltura.Services
 			return new ConversionProfileDeleteRequestBuilder(id);
 		}
 
+		public static ConversionProfileGetRequestBuilder Get(int id)
+		{
+			return new ConversionProfileGetRequestBuilder(id);
+		}
+
+		public static ConversionProfileGetDefaultRequestBuilder GetDefault(ConversionProfileType type = null)
+		{
+			return new ConversionProfileGetDefaultRequestBuilder(type);
+		}
+
 		public static ConversionProfileListRequestBuilder List(ConversionProfileFilter filter = null, FilterPager pager = null)
 		{
 			return new ConversionProfileListRequestBuilder(filter, pager);
+		}
+
+		public static ConversionProfileSetAsDefaultRequestBuilder SetAsDefault(int id)
+		{
+			return new ConversionProfileSetAsDefaultRequestBuilder(id);
+		}
+
+		public static ConversionProfileUpdateRequestBuilder Update(int id, ConversionProfile conversionProfile)
+		{
+			return new ConversionProfileUpdateRequestBuilder(id, conversionProfile);
 		}
 	}
 }

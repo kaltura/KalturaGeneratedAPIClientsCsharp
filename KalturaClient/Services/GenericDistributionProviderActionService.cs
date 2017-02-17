@@ -387,214 +387,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class GenericDistributionProviderActionGetRequestBuilder : RequestBuilder<GenericDistributionProviderAction>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-
-		public GenericDistributionProviderActionGetRequestBuilder()
-			: base("contentdistribution_genericdistributionprovideraction", "get")
-		{
-		}
-
-		public GenericDistributionProviderActionGetRequestBuilder(int id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<GenericDistributionProviderAction>(result);
-		}
-	}
-
-	public class GenericDistributionProviderActionGetByProviderIdRequestBuilder : RequestBuilder<GenericDistributionProviderAction>
-	{
-		#region Constants
-		public const string GENERIC_DISTRIBUTION_PROVIDER_ID = "genericDistributionProviderId";
-		public const string ACTION_TYPE = "actionType";
-		#endregion
-
-		public int GenericDistributionProviderId
-		{
-			set;
-			get;
-		}
-		public DistributionAction ActionType
-		{
-			set;
-			get;
-		}
-
-		public GenericDistributionProviderActionGetByProviderIdRequestBuilder()
-			: base("contentdistribution_genericdistributionprovideraction", "getByProviderId")
-		{
-		}
-
-		public GenericDistributionProviderActionGetByProviderIdRequestBuilder(int genericDistributionProviderId, DistributionAction actionType)
-			: this()
-		{
-			this.GenericDistributionProviderId = genericDistributionProviderId;
-			this.ActionType = actionType;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("genericDistributionProviderId"))
-				kparams.AddIfNotNull("genericDistributionProviderId", GenericDistributionProviderId);
-			if (!isMapped("actionType"))
-				kparams.AddIfNotNull("actionType", ActionType);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<GenericDistributionProviderAction>(result);
-		}
-	}
-
-	public class GenericDistributionProviderActionUpdateByProviderIdRequestBuilder : RequestBuilder<GenericDistributionProviderAction>
-	{
-		#region Constants
-		public const string GENERIC_DISTRIBUTION_PROVIDER_ID = "genericDistributionProviderId";
-		public const string ACTION_TYPE = "actionType";
-		public const string GENERIC_DISTRIBUTION_PROVIDER_ACTION = "genericDistributionProviderAction";
-		#endregion
-
-		public int GenericDistributionProviderId
-		{
-			set;
-			get;
-		}
-		public DistributionAction ActionType
-		{
-			set;
-			get;
-		}
-		public GenericDistributionProviderAction GenericDistributionProviderAction
-		{
-			set;
-			get;
-		}
-
-		public GenericDistributionProviderActionUpdateByProviderIdRequestBuilder()
-			: base("contentdistribution_genericdistributionprovideraction", "updateByProviderId")
-		{
-		}
-
-		public GenericDistributionProviderActionUpdateByProviderIdRequestBuilder(int genericDistributionProviderId, DistributionAction actionType, GenericDistributionProviderAction genericDistributionProviderAction)
-			: this()
-		{
-			this.GenericDistributionProviderId = genericDistributionProviderId;
-			this.ActionType = actionType;
-			this.GenericDistributionProviderAction = genericDistributionProviderAction;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("genericDistributionProviderId"))
-				kparams.AddIfNotNull("genericDistributionProviderId", GenericDistributionProviderId);
-			if (!isMapped("actionType"))
-				kparams.AddIfNotNull("actionType", ActionType);
-			if (!isMapped("genericDistributionProviderAction"))
-				kparams.AddIfNotNull("genericDistributionProviderAction", GenericDistributionProviderAction);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<GenericDistributionProviderAction>(result);
-		}
-	}
-
-	public class GenericDistributionProviderActionUpdateRequestBuilder : RequestBuilder<GenericDistributionProviderAction>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string GENERIC_DISTRIBUTION_PROVIDER_ACTION = "genericDistributionProviderAction";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-		public GenericDistributionProviderAction GenericDistributionProviderAction
-		{
-			set;
-			get;
-		}
-
-		public GenericDistributionProviderActionUpdateRequestBuilder()
-			: base("contentdistribution_genericdistributionprovideraction", "update")
-		{
-		}
-
-		public GenericDistributionProviderActionUpdateRequestBuilder(int id, GenericDistributionProviderAction genericDistributionProviderAction)
-			: this()
-		{
-			this.Id = id;
-			this.GenericDistributionProviderAction = genericDistributionProviderAction;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("genericDistributionProviderAction"))
-				kparams.AddIfNotNull("genericDistributionProviderAction", GenericDistributionProviderAction);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<GenericDistributionProviderAction>(result);
-		}
-	}
-
 	public class GenericDistributionProviderActionDeleteRequestBuilder : RequestBuilder<object>
 	{
 		#region Constants
@@ -690,6 +482,101 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class GenericDistributionProviderActionGetRequestBuilder : RequestBuilder<GenericDistributionProviderAction>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public GenericDistributionProviderActionGetRequestBuilder()
+			: base("contentdistribution_genericdistributionprovideraction", "get")
+		{
+		}
+
+		public GenericDistributionProviderActionGetRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<GenericDistributionProviderAction>(result);
+		}
+	}
+
+	public class GenericDistributionProviderActionGetByProviderIdRequestBuilder : RequestBuilder<GenericDistributionProviderAction>
+	{
+		#region Constants
+		public const string GENERIC_DISTRIBUTION_PROVIDER_ID = "genericDistributionProviderId";
+		public const string ACTION_TYPE = "actionType";
+		#endregion
+
+		public int GenericDistributionProviderId
+		{
+			set;
+			get;
+		}
+		public DistributionAction ActionType
+		{
+			set;
+			get;
+		}
+
+		public GenericDistributionProviderActionGetByProviderIdRequestBuilder()
+			: base("contentdistribution_genericdistributionprovideraction", "getByProviderId")
+		{
+		}
+
+		public GenericDistributionProviderActionGetByProviderIdRequestBuilder(int genericDistributionProviderId, DistributionAction actionType)
+			: this()
+		{
+			this.GenericDistributionProviderId = genericDistributionProviderId;
+			this.ActionType = actionType;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("genericDistributionProviderId"))
+				kparams.AddIfNotNull("genericDistributionProviderId", GenericDistributionProviderId);
+			if (!isMapped("actionType"))
+				kparams.AddIfNotNull("actionType", ActionType);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<GenericDistributionProviderAction>(result);
+		}
+	}
+
 	public class GenericDistributionProviderActionListRequestBuilder : RequestBuilder<ListResponse<GenericDistributionProviderAction>>
 	{
 		#region Constants
@@ -742,6 +629,119 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class GenericDistributionProviderActionUpdateRequestBuilder : RequestBuilder<GenericDistributionProviderAction>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string GENERIC_DISTRIBUTION_PROVIDER_ACTION = "genericDistributionProviderAction";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public GenericDistributionProviderAction GenericDistributionProviderAction
+		{
+			set;
+			get;
+		}
+
+		public GenericDistributionProviderActionUpdateRequestBuilder()
+			: base("contentdistribution_genericdistributionprovideraction", "update")
+		{
+		}
+
+		public GenericDistributionProviderActionUpdateRequestBuilder(int id, GenericDistributionProviderAction genericDistributionProviderAction)
+			: this()
+		{
+			this.Id = id;
+			this.GenericDistributionProviderAction = genericDistributionProviderAction;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("genericDistributionProviderAction"))
+				kparams.AddIfNotNull("genericDistributionProviderAction", GenericDistributionProviderAction);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<GenericDistributionProviderAction>(result);
+		}
+	}
+
+	public class GenericDistributionProviderActionUpdateByProviderIdRequestBuilder : RequestBuilder<GenericDistributionProviderAction>
+	{
+		#region Constants
+		public const string GENERIC_DISTRIBUTION_PROVIDER_ID = "genericDistributionProviderId";
+		public const string ACTION_TYPE = "actionType";
+		public const string GENERIC_DISTRIBUTION_PROVIDER_ACTION = "genericDistributionProviderAction";
+		#endregion
+
+		public int GenericDistributionProviderId
+		{
+			set;
+			get;
+		}
+		public DistributionAction ActionType
+		{
+			set;
+			get;
+		}
+		public GenericDistributionProviderAction GenericDistributionProviderAction
+		{
+			set;
+			get;
+		}
+
+		public GenericDistributionProviderActionUpdateByProviderIdRequestBuilder()
+			: base("contentdistribution_genericdistributionprovideraction", "updateByProviderId")
+		{
+		}
+
+		public GenericDistributionProviderActionUpdateByProviderIdRequestBuilder(int genericDistributionProviderId, DistributionAction actionType, GenericDistributionProviderAction genericDistributionProviderAction)
+			: this()
+		{
+			this.GenericDistributionProviderId = genericDistributionProviderId;
+			this.ActionType = actionType;
+			this.GenericDistributionProviderAction = genericDistributionProviderAction;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("genericDistributionProviderId"))
+				kparams.AddIfNotNull("genericDistributionProviderId", GenericDistributionProviderId);
+			if (!isMapped("actionType"))
+				kparams.AddIfNotNull("actionType", ActionType);
+			if (!isMapped("genericDistributionProviderAction"))
+				kparams.AddIfNotNull("genericDistributionProviderAction", GenericDistributionProviderAction);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<GenericDistributionProviderAction>(result);
+		}
+	}
+
 
 	public class GenericDistributionProviderActionService
 	{
@@ -784,26 +784,6 @@ namespace Kaltura.Services
 			return new GenericDistributionProviderActionAddResultsTransformFromFileRequestBuilder(id, transformFile);
 		}
 
-		public static GenericDistributionProviderActionGetRequestBuilder Get(int id)
-		{
-			return new GenericDistributionProviderActionGetRequestBuilder(id);
-		}
-
-		public static GenericDistributionProviderActionGetByProviderIdRequestBuilder GetByProviderId(int genericDistributionProviderId, DistributionAction actionType)
-		{
-			return new GenericDistributionProviderActionGetByProviderIdRequestBuilder(genericDistributionProviderId, actionType);
-		}
-
-		public static GenericDistributionProviderActionUpdateByProviderIdRequestBuilder UpdateByProviderId(int genericDistributionProviderId, DistributionAction actionType, GenericDistributionProviderAction genericDistributionProviderAction)
-		{
-			return new GenericDistributionProviderActionUpdateByProviderIdRequestBuilder(genericDistributionProviderId, actionType, genericDistributionProviderAction);
-		}
-
-		public static GenericDistributionProviderActionUpdateRequestBuilder Update(int id, GenericDistributionProviderAction genericDistributionProviderAction)
-		{
-			return new GenericDistributionProviderActionUpdateRequestBuilder(id, genericDistributionProviderAction);
-		}
-
 		public static GenericDistributionProviderActionDeleteRequestBuilder Delete(int id)
 		{
 			return new GenericDistributionProviderActionDeleteRequestBuilder(id);
@@ -814,9 +794,29 @@ namespace Kaltura.Services
 			return new GenericDistributionProviderActionDeleteByProviderIdRequestBuilder(genericDistributionProviderId, actionType);
 		}
 
+		public static GenericDistributionProviderActionGetRequestBuilder Get(int id)
+		{
+			return new GenericDistributionProviderActionGetRequestBuilder(id);
+		}
+
+		public static GenericDistributionProviderActionGetByProviderIdRequestBuilder GetByProviderId(int genericDistributionProviderId, DistributionAction actionType)
+		{
+			return new GenericDistributionProviderActionGetByProviderIdRequestBuilder(genericDistributionProviderId, actionType);
+		}
+
 		public static GenericDistributionProviderActionListRequestBuilder List(GenericDistributionProviderActionFilter filter = null, FilterPager pager = null)
 		{
 			return new GenericDistributionProviderActionListRequestBuilder(filter, pager);
+		}
+
+		public static GenericDistributionProviderActionUpdateRequestBuilder Update(int id, GenericDistributionProviderAction genericDistributionProviderAction)
+		{
+			return new GenericDistributionProviderActionUpdateRequestBuilder(id, genericDistributionProviderAction);
+		}
+
+		public static GenericDistributionProviderActionUpdateByProviderIdRequestBuilder UpdateByProviderId(int genericDistributionProviderId, DistributionAction actionType, GenericDistributionProviderAction genericDistributionProviderAction)
+		{
+			return new GenericDistributionProviderActionUpdateByProviderIdRequestBuilder(genericDistributionProviderId, actionType, genericDistributionProviderAction);
 		}
 	}
 }

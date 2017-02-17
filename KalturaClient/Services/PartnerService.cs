@@ -35,6 +35,344 @@ using Kaltura.Enums;
 
 namespace Kaltura.Services
 {
+	public class PartnerCountRequestBuilder : RequestBuilder<int>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		#endregion
+
+		public PartnerFilter Filter
+		{
+			set;
+			get;
+		}
+
+		public PartnerCountRequestBuilder()
+			: base("partner", "count")
+		{
+		}
+
+		public PartnerCountRequestBuilder(PartnerFilter filter)
+			: this()
+		{
+			this.Filter = filter;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return int.Parse(result.InnerText);
+		}
+	}
+
+	public class PartnerGetRequestBuilder : RequestBuilder<Partner>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public PartnerGetRequestBuilder()
+			: base("partner", "get")
+		{
+		}
+
+		public PartnerGetRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<Partner>(result);
+		}
+	}
+
+	public class PartnerGetInfoRequestBuilder : RequestBuilder<Partner>
+	{
+		#region Constants
+		#endregion
+
+
+		public PartnerGetInfoRequestBuilder()
+			: base("partner", "getInfo")
+		{
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<Partner>(result);
+		}
+	}
+
+	public class PartnerGetSecretsRequestBuilder : RequestBuilder<Partner>
+	{
+		#region Constants
+		public new const string PARTNER_ID = "partnerId";
+		public const string ADMIN_EMAIL = "adminEmail";
+		public const string CMS_PASSWORD = "cmsPassword";
+		#endregion
+
+		public new int PartnerId
+		{
+			set;
+			get;
+		}
+		public string AdminEmail
+		{
+			set;
+			get;
+		}
+		public string CmsPassword
+		{
+			set;
+			get;
+		}
+
+		public PartnerGetSecretsRequestBuilder()
+			: base("partner", "getSecrets")
+		{
+		}
+
+		public PartnerGetSecretsRequestBuilder(int partnerId, string adminEmail, string cmsPassword)
+			: this()
+		{
+			this.PartnerId = partnerId;
+			this.AdminEmail = adminEmail;
+			this.CmsPassword = cmsPassword;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("partnerId"))
+				kparams.AddIfNotNull("partnerId", PartnerId);
+			if (!isMapped("adminEmail"))
+				kparams.AddIfNotNull("adminEmail", AdminEmail);
+			if (!isMapped("cmsPassword"))
+				kparams.AddIfNotNull("cmsPassword", CmsPassword);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<Partner>(result);
+		}
+	}
+
+	public class PartnerGetStatisticsRequestBuilder : RequestBuilder<PartnerStatistics>
+	{
+		#region Constants
+		#endregion
+
+
+		public PartnerGetStatisticsRequestBuilder()
+			: base("partner", "getStatistics")
+		{
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<PartnerStatistics>(result);
+		}
+	}
+
+	public class PartnerListRequestBuilder : RequestBuilder<ListResponse<Partner>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public PartnerFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public PartnerListRequestBuilder()
+			: base("partner", "list")
+		{
+		}
+
+		public PartnerListRequestBuilder(PartnerFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<Partner>>(result);
+		}
+	}
+
+	public class PartnerListFeatureStatusRequestBuilder : RequestBuilder<ListResponse<FeatureStatus>>
+	{
+		#region Constants
+		#endregion
+
+
+		public PartnerListFeatureStatusRequestBuilder()
+			: base("partner", "listFeatureStatus")
+		{
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<FeatureStatus>>(result);
+		}
+	}
+
+	public class PartnerListPartnersForUserRequestBuilder : RequestBuilder<ListResponse<Partner>>
+	{
+		#region Constants
+		public const string PARTNER_FILTER = "partnerFilter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public PartnerFilter PartnerFilter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public PartnerListPartnersForUserRequestBuilder()
+			: base("partner", "listPartnersForUser")
+		{
+		}
+
+		public PartnerListPartnersForUserRequestBuilder(PartnerFilter partnerFilter, FilterPager pager)
+			: this()
+		{
+			this.PartnerFilter = partnerFilter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("partnerFilter"))
+				kparams.AddIfNotNull("partnerFilter", PartnerFilter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<Partner>>(result);
+		}
+	}
+
 	public class PartnerRegisterRequestBuilder : RequestBuilder<Partner>
 	{
 		#region Constants
@@ -157,344 +495,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class PartnerGetRequestBuilder : RequestBuilder<Partner>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-
-		public PartnerGetRequestBuilder()
-			: base("partner", "get")
-		{
-		}
-
-		public PartnerGetRequestBuilder(int id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<Partner>(result);
-		}
-	}
-
-	public class PartnerGetSecretsRequestBuilder : RequestBuilder<Partner>
-	{
-		#region Constants
-		public new const string PARTNER_ID = "partnerId";
-		public const string ADMIN_EMAIL = "adminEmail";
-		public const string CMS_PASSWORD = "cmsPassword";
-		#endregion
-
-		public new int PartnerId
-		{
-			set;
-			get;
-		}
-		public string AdminEmail
-		{
-			set;
-			get;
-		}
-		public string CmsPassword
-		{
-			set;
-			get;
-		}
-
-		public PartnerGetSecretsRequestBuilder()
-			: base("partner", "getSecrets")
-		{
-		}
-
-		public PartnerGetSecretsRequestBuilder(int partnerId, string adminEmail, string cmsPassword)
-			: this()
-		{
-			this.PartnerId = partnerId;
-			this.AdminEmail = adminEmail;
-			this.CmsPassword = cmsPassword;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("partnerId"))
-				kparams.AddIfNotNull("partnerId", PartnerId);
-			if (!isMapped("adminEmail"))
-				kparams.AddIfNotNull("adminEmail", AdminEmail);
-			if (!isMapped("cmsPassword"))
-				kparams.AddIfNotNull("cmsPassword", CmsPassword);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<Partner>(result);
-		}
-	}
-
-	public class PartnerGetInfoRequestBuilder : RequestBuilder<Partner>
-	{
-		#region Constants
-		#endregion
-
-
-		public PartnerGetInfoRequestBuilder()
-			: base("partner", "getInfo")
-		{
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<Partner>(result);
-		}
-	}
-
-	public class PartnerGetStatisticsRequestBuilder : RequestBuilder<PartnerStatistics>
-	{
-		#region Constants
-		#endregion
-
-
-		public PartnerGetStatisticsRequestBuilder()
-			: base("partner", "getStatistics")
-		{
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<PartnerStatistics>(result);
-		}
-	}
-
-	public class PartnerListPartnersForUserRequestBuilder : RequestBuilder<ListResponse<Partner>>
-	{
-		#region Constants
-		public const string PARTNER_FILTER = "partnerFilter";
-		public const string PAGER = "pager";
-		#endregion
-
-		public PartnerFilter PartnerFilter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
-
-		public PartnerListPartnersForUserRequestBuilder()
-			: base("partner", "listPartnersForUser")
-		{
-		}
-
-		public PartnerListPartnersForUserRequestBuilder(PartnerFilter partnerFilter, FilterPager pager)
-			: this()
-		{
-			this.PartnerFilter = partnerFilter;
-			this.Pager = pager;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("partnerFilter"))
-				kparams.AddIfNotNull("partnerFilter", PartnerFilter);
-			if (!isMapped("pager"))
-				kparams.AddIfNotNull("pager", Pager);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ListResponse<Partner>>(result);
-		}
-	}
-
-	public class PartnerListRequestBuilder : RequestBuilder<ListResponse<Partner>>
-	{
-		#region Constants
-		public const string FILTER = "filter";
-		public const string PAGER = "pager";
-		#endregion
-
-		public PartnerFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
-
-		public PartnerListRequestBuilder()
-			: base("partner", "list")
-		{
-		}
-
-		public PartnerListRequestBuilder(PartnerFilter filter, FilterPager pager)
-			: this()
-		{
-			this.Filter = filter;
-			this.Pager = pager;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("filter"))
-				kparams.AddIfNotNull("filter", Filter);
-			if (!isMapped("pager"))
-				kparams.AddIfNotNull("pager", Pager);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ListResponse<Partner>>(result);
-		}
-	}
-
-	public class PartnerListFeatureStatusRequestBuilder : RequestBuilder<ListResponse<FeatureStatus>>
-	{
-		#region Constants
-		#endregion
-
-
-		public PartnerListFeatureStatusRequestBuilder()
-			: base("partner", "listFeatureStatus")
-		{
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ListResponse<FeatureStatus>>(result);
-		}
-	}
-
-	public class PartnerCountRequestBuilder : RequestBuilder<int>
-	{
-		#region Constants
-		public const string FILTER = "filter";
-		#endregion
-
-		public PartnerFilter Filter
-		{
-			set;
-			get;
-		}
-
-		public PartnerCountRequestBuilder()
-			: base("partner", "count")
-		{
-		}
-
-		public PartnerCountRequestBuilder(PartnerFilter filter)
-			: this()
-		{
-			this.Filter = filter;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("filter"))
-				kparams.AddIfNotNull("filter", Filter);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return int.Parse(result.InnerText);
-		}
-	}
-
 
 	public class PartnerService
 	{
@@ -502,14 +502,9 @@ namespace Kaltura.Services
 		{
 		}
 
-		public static PartnerRegisterRequestBuilder Register(Partner partner, string cmsPassword = "", int templatePartnerId = Int32.MinValue, bool silent = false)
+		public static PartnerCountRequestBuilder Count(PartnerFilter filter = null)
 		{
-			return new PartnerRegisterRequestBuilder(partner, cmsPassword, templatePartnerId, silent);
-		}
-
-		public static PartnerUpdateRequestBuilder Update(Partner partner, bool allowEmpty = false)
-		{
-			return new PartnerUpdateRequestBuilder(partner, allowEmpty);
+			return new PartnerCountRequestBuilder(filter);
 		}
 
 		public static PartnerGetRequestBuilder Get(int id = Int32.MinValue)
@@ -517,24 +512,19 @@ namespace Kaltura.Services
 			return new PartnerGetRequestBuilder(id);
 		}
 
-		public static PartnerGetSecretsRequestBuilder GetSecrets(int partnerId, string adminEmail, string cmsPassword)
-		{
-			return new PartnerGetSecretsRequestBuilder(partnerId, adminEmail, cmsPassword);
-		}
-
 		public static PartnerGetInfoRequestBuilder GetInfo()
 		{
 			return new PartnerGetInfoRequestBuilder();
 		}
 
+		public static PartnerGetSecretsRequestBuilder GetSecrets(int partnerId, string adminEmail, string cmsPassword)
+		{
+			return new PartnerGetSecretsRequestBuilder(partnerId, adminEmail, cmsPassword);
+		}
+
 		public static PartnerGetStatisticsRequestBuilder GetStatistics()
 		{
 			return new PartnerGetStatisticsRequestBuilder();
-		}
-
-		public static PartnerListPartnersForUserRequestBuilder ListPartnersForUser(PartnerFilter partnerFilter = null, FilterPager pager = null)
-		{
-			return new PartnerListPartnersForUserRequestBuilder(partnerFilter, pager);
 		}
 
 		public static PartnerListRequestBuilder List(PartnerFilter filter = null, FilterPager pager = null)
@@ -547,9 +537,19 @@ namespace Kaltura.Services
 			return new PartnerListFeatureStatusRequestBuilder();
 		}
 
-		public static PartnerCountRequestBuilder Count(PartnerFilter filter = null)
+		public static PartnerListPartnersForUserRequestBuilder ListPartnersForUser(PartnerFilter partnerFilter = null, FilterPager pager = null)
 		{
-			return new PartnerCountRequestBuilder(filter);
+			return new PartnerListPartnersForUserRequestBuilder(partnerFilter, pager);
+		}
+
+		public static PartnerRegisterRequestBuilder Register(Partner partner, string cmsPassword = "", int templatePartnerId = Int32.MinValue, bool silent = false)
+		{
+			return new PartnerRegisterRequestBuilder(partner, cmsPassword, templatePartnerId, silent);
+		}
+
+		public static PartnerUpdateRequestBuilder Update(Partner partner, bool allowEmpty = false)
+		{
+			return new PartnerUpdateRequestBuilder(partner, allowEmpty);
 		}
 	}
 }

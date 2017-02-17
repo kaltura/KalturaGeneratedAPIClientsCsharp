@@ -78,6 +78,49 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class PermissionDeleteRequestBuilder : RequestBuilder<Permission>
+	{
+		#region Constants
+		public const string PERMISSION_NAME = "permissionName";
+		#endregion
+
+		public string PermissionName
+		{
+			set;
+			get;
+		}
+
+		public PermissionDeleteRequestBuilder()
+			: base("permission", "delete")
+		{
+		}
+
+		public PermissionDeleteRequestBuilder(string permissionName)
+			: this()
+		{
+			this.PermissionName = permissionName;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("permissionName"))
+				kparams.AddIfNotNull("permissionName", PermissionName);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<Permission>(result);
+		}
+	}
+
 	public class PermissionGetRequestBuilder : RequestBuilder<Permission>
 	{
 		#region Constants
@@ -121,43 +164,20 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class PermissionUpdateRequestBuilder : RequestBuilder<Permission>
+	public class PermissionGetCurrentPermissionsRequestBuilder : RequestBuilder<string>
 	{
 		#region Constants
-		public const string PERMISSION_NAME = "permissionName";
-		public const string PERMISSION = "permission";
 		#endregion
 
-		public string PermissionName
-		{
-			set;
-			get;
-		}
-		public Permission Permission
-		{
-			set;
-			get;
-		}
 
-		public PermissionUpdateRequestBuilder()
-			: base("permission", "update")
+		public PermissionGetCurrentPermissionsRequestBuilder()
+			: base("permission", "getCurrentPermissions")
 		{
-		}
-
-		public PermissionUpdateRequestBuilder(string permissionName, Permission permission)
-			: this()
-		{
-			this.PermissionName = permissionName;
-			this.Permission = permission;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("permissionName"))
-				kparams.AddIfNotNull("permissionName", PermissionName);
-			if (!isMapped("permission"))
-				kparams.AddIfNotNull("permission", Permission);
 			return kparams;
 		}
 
@@ -169,50 +189,7 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<Permission>(result);
-		}
-	}
-
-	public class PermissionDeleteRequestBuilder : RequestBuilder<Permission>
-	{
-		#region Constants
-		public const string PERMISSION_NAME = "permissionName";
-		#endregion
-
-		public string PermissionName
-		{
-			set;
-			get;
-		}
-
-		public PermissionDeleteRequestBuilder()
-			: base("permission", "delete")
-		{
-		}
-
-		public PermissionDeleteRequestBuilder(string permissionName)
-			: this()
-		{
-			this.PermissionName = permissionName;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("permissionName"))
-				kparams.AddIfNotNull("permissionName", PermissionName);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<Permission>(result);
+			return result.InnerText;
 		}
 	}
 
@@ -268,20 +245,43 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class PermissionGetCurrentPermissionsRequestBuilder : RequestBuilder<string>
+	public class PermissionUpdateRequestBuilder : RequestBuilder<Permission>
 	{
 		#region Constants
+		public const string PERMISSION_NAME = "permissionName";
+		public const string PERMISSION = "permission";
 		#endregion
 
-
-		public PermissionGetCurrentPermissionsRequestBuilder()
-			: base("permission", "getCurrentPermissions")
+		public string PermissionName
 		{
+			set;
+			get;
+		}
+		public Permission Permission
+		{
+			set;
+			get;
+		}
+
+		public PermissionUpdateRequestBuilder()
+			: base("permission", "update")
+		{
+		}
+
+		public PermissionUpdateRequestBuilder(string permissionName, Permission permission)
+			: this()
+		{
+			this.PermissionName = permissionName;
+			this.Permission = permission;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("permissionName"))
+				kparams.AddIfNotNull("permissionName", PermissionName);
+			if (!isMapped("permission"))
+				kparams.AddIfNotNull("permission", Permission);
 			return kparams;
 		}
 
@@ -293,7 +293,7 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return result.InnerText;
+			return ObjectFactory.Create<Permission>(result);
 		}
 	}
 
@@ -309,19 +309,19 @@ namespace Kaltura.Services
 			return new PermissionAddRequestBuilder(permission);
 		}
 
+		public static PermissionDeleteRequestBuilder Delete(string permissionName)
+		{
+			return new PermissionDeleteRequestBuilder(permissionName);
+		}
+
 		public static PermissionGetRequestBuilder Get(string permissionName)
 		{
 			return new PermissionGetRequestBuilder(permissionName);
 		}
 
-		public static PermissionUpdateRequestBuilder Update(string permissionName, Permission permission)
+		public static PermissionGetCurrentPermissionsRequestBuilder GetCurrentPermissions()
 		{
-			return new PermissionUpdateRequestBuilder(permissionName, permission);
-		}
-
-		public static PermissionDeleteRequestBuilder Delete(string permissionName)
-		{
-			return new PermissionDeleteRequestBuilder(permissionName);
+			return new PermissionGetCurrentPermissionsRequestBuilder();
 		}
 
 		public static PermissionListRequestBuilder List(PermissionFilter filter = null, FilterPager pager = null)
@@ -329,9 +329,9 @@ namespace Kaltura.Services
 			return new PermissionListRequestBuilder(filter, pager);
 		}
 
-		public static PermissionGetCurrentPermissionsRequestBuilder GetCurrentPermissions()
+		public static PermissionUpdateRequestBuilder Update(string permissionName, Permission permission)
 		{
-			return new PermissionGetCurrentPermissionsRequestBuilder();
+			return new PermissionUpdateRequestBuilder(permissionName, permission);
 		}
 	}
 }

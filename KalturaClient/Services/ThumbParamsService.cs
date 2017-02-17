@@ -78,6 +78,49 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class ThumbParamsDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public ThumbParamsDeleteRequestBuilder()
+			: base("thumbparams", "delete")
+		{
+		}
+
+		public ThumbParamsDeleteRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
 	public class ThumbParamsGetRequestBuilder : RequestBuilder<ThumbParams>
 	{
 		#region Constants
@@ -121,43 +164,34 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class ThumbParamsUpdateRequestBuilder : RequestBuilder<ThumbParams>
+	public class ThumbParamsGetByConversionProfileIdRequestBuilder : RequestBuilder<IList<ThumbParams>>
 	{
 		#region Constants
-		public const string ID = "id";
-		public const string THUMB_PARAMS = "thumbParams";
+		public const string CONVERSION_PROFILE_ID = "conversionProfileId";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public ThumbParams ThumbParams
+		public int ConversionProfileId
 		{
 			set;
 			get;
 		}
 
-		public ThumbParamsUpdateRequestBuilder()
-			: base("thumbparams", "update")
+		public ThumbParamsGetByConversionProfileIdRequestBuilder()
+			: base("thumbparams", "getByConversionProfileId")
 		{
 		}
 
-		public ThumbParamsUpdateRequestBuilder(int id, ThumbParams thumbParams)
+		public ThumbParamsGetByConversionProfileIdRequestBuilder(int conversionProfileId)
 			: this()
 		{
-			this.Id = id;
-			this.ThumbParams = thumbParams;
+			this.ConversionProfileId = conversionProfileId;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("thumbParams"))
-				kparams.AddIfNotNull("thumbParams", ThumbParams);
+			if (!isMapped("conversionProfileId"))
+				kparams.AddIfNotNull("conversionProfileId", ConversionProfileId);
 			return kparams;
 		}
 
@@ -169,50 +203,12 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<ThumbParams>(result);
-		}
-	}
-
-	public class ThumbParamsDeleteRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-
-		public ThumbParamsDeleteRequestBuilder()
-			: base("thumbparams", "delete")
-		{
-		}
-
-		public ThumbParamsDeleteRequestBuilder(int id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
+			IList<ThumbParams> list = new List<ThumbParams>();
+			foreach(XmlElement node in result.ChildNodes)
+			{
+				list.Add(ObjectFactory.Create<ThumbParams>(node));
+			}
+			return list;
 		}
 	}
 
@@ -268,34 +264,43 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class ThumbParamsGetByConversionProfileIdRequestBuilder : RequestBuilder<IList<ThumbParams>>
+	public class ThumbParamsUpdateRequestBuilder : RequestBuilder<ThumbParams>
 	{
 		#region Constants
-		public const string CONVERSION_PROFILE_ID = "conversionProfileId";
+		public const string ID = "id";
+		public const string THUMB_PARAMS = "thumbParams";
 		#endregion
 
-		public int ConversionProfileId
+		public int Id
+		{
+			set;
+			get;
+		}
+		public ThumbParams ThumbParams
 		{
 			set;
 			get;
 		}
 
-		public ThumbParamsGetByConversionProfileIdRequestBuilder()
-			: base("thumbparams", "getByConversionProfileId")
+		public ThumbParamsUpdateRequestBuilder()
+			: base("thumbparams", "update")
 		{
 		}
 
-		public ThumbParamsGetByConversionProfileIdRequestBuilder(int conversionProfileId)
+		public ThumbParamsUpdateRequestBuilder(int id, ThumbParams thumbParams)
 			: this()
 		{
-			this.ConversionProfileId = conversionProfileId;
+			this.Id = id;
+			this.ThumbParams = thumbParams;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("conversionProfileId"))
-				kparams.AddIfNotNull("conversionProfileId", ConversionProfileId);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("thumbParams"))
+				kparams.AddIfNotNull("thumbParams", ThumbParams);
 			return kparams;
 		}
 
@@ -307,12 +312,7 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			IList<ThumbParams> list = new List<ThumbParams>();
-			foreach(XmlElement node in result.ChildNodes)
-			{
-				list.Add(ObjectFactory.Create<ThumbParams>(node));
-			}
-			return list;
+			return ObjectFactory.Create<ThumbParams>(result);
 		}
 	}
 
@@ -328,19 +328,19 @@ namespace Kaltura.Services
 			return new ThumbParamsAddRequestBuilder(thumbParams);
 		}
 
+		public static ThumbParamsDeleteRequestBuilder Delete(int id)
+		{
+			return new ThumbParamsDeleteRequestBuilder(id);
+		}
+
 		public static ThumbParamsGetRequestBuilder Get(int id)
 		{
 			return new ThumbParamsGetRequestBuilder(id);
 		}
 
-		public static ThumbParamsUpdateRequestBuilder Update(int id, ThumbParams thumbParams)
+		public static ThumbParamsGetByConversionProfileIdRequestBuilder GetByConversionProfileId(int conversionProfileId)
 		{
-			return new ThumbParamsUpdateRequestBuilder(id, thumbParams);
-		}
-
-		public static ThumbParamsDeleteRequestBuilder Delete(int id)
-		{
-			return new ThumbParamsDeleteRequestBuilder(id);
+			return new ThumbParamsGetByConversionProfileIdRequestBuilder(conversionProfileId);
 		}
 
 		public static ThumbParamsListRequestBuilder List(ThumbParamsFilter filter = null, FilterPager pager = null)
@@ -348,9 +348,9 @@ namespace Kaltura.Services
 			return new ThumbParamsListRequestBuilder(filter, pager);
 		}
 
-		public static ThumbParamsGetByConversionProfileIdRequestBuilder GetByConversionProfileId(int conversionProfileId)
+		public static ThumbParamsUpdateRequestBuilder Update(int id, ThumbParams thumbParams)
 		{
-			return new ThumbParamsGetByConversionProfileIdRequestBuilder(conversionProfileId);
+			return new ThumbParamsUpdateRequestBuilder(id, thumbParams);
 		}
 	}
 }

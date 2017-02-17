@@ -78,187 +78,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class EmailIngestionProfileGetByEmailAddressRequestBuilder : RequestBuilder<EmailIngestionProfile>
-	{
-		#region Constants
-		public const string EMAIL_ADDRESS = "emailAddress";
-		#endregion
-
-		public string EmailAddress
-		{
-			set;
-			get;
-		}
-
-		public EmailIngestionProfileGetByEmailAddressRequestBuilder()
-			: base("emailingestionprofile", "getByEmailAddress")
-		{
-		}
-
-		public EmailIngestionProfileGetByEmailAddressRequestBuilder(string emailAddress)
-			: this()
-		{
-			this.EmailAddress = emailAddress;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("emailAddress"))
-				kparams.AddIfNotNull("emailAddress", EmailAddress);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<EmailIngestionProfile>(result);
-		}
-	}
-
-	public class EmailIngestionProfileGetRequestBuilder : RequestBuilder<EmailIngestionProfile>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-
-		public EmailIngestionProfileGetRequestBuilder()
-			: base("emailingestionprofile", "get")
-		{
-		}
-
-		public EmailIngestionProfileGetRequestBuilder(int id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<EmailIngestionProfile>(result);
-		}
-	}
-
-	public class EmailIngestionProfileUpdateRequestBuilder : RequestBuilder<EmailIngestionProfile>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string EMAIL_IP = "EmailIP";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-		public EmailIngestionProfile EmailIP
-		{
-			set;
-			get;
-		}
-
-		public EmailIngestionProfileUpdateRequestBuilder()
-			: base("emailingestionprofile", "update")
-		{
-		}
-
-		public EmailIngestionProfileUpdateRequestBuilder(int id, EmailIngestionProfile EmailIP)
-			: this()
-		{
-			this.Id = id;
-			this.EmailIP = EmailIP;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("EmailIP"))
-				kparams.AddIfNotNull("EmailIP", EmailIP);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<EmailIngestionProfile>(result);
-		}
-	}
-
-	public class EmailIngestionProfileDeleteRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-
-		public EmailIngestionProfileDeleteRequestBuilder()
-			: base("emailingestionprofile", "delete")
-		{
-		}
-
-		public EmailIngestionProfileDeleteRequestBuilder(int id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
 	public class EmailIngestionProfileAddMediaEntryRequestBuilder : RequestBuilder<MediaEntry>
 	{
 		#region Constants
@@ -338,6 +157,187 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class EmailIngestionProfileDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public EmailIngestionProfileDeleteRequestBuilder()
+			: base("emailingestionprofile", "delete")
+		{
+		}
+
+		public EmailIngestionProfileDeleteRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class EmailIngestionProfileGetRequestBuilder : RequestBuilder<EmailIngestionProfile>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public EmailIngestionProfileGetRequestBuilder()
+			: base("emailingestionprofile", "get")
+		{
+		}
+
+		public EmailIngestionProfileGetRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<EmailIngestionProfile>(result);
+		}
+	}
+
+	public class EmailIngestionProfileGetByEmailAddressRequestBuilder : RequestBuilder<EmailIngestionProfile>
+	{
+		#region Constants
+		public const string EMAIL_ADDRESS = "emailAddress";
+		#endregion
+
+		public string EmailAddress
+		{
+			set;
+			get;
+		}
+
+		public EmailIngestionProfileGetByEmailAddressRequestBuilder()
+			: base("emailingestionprofile", "getByEmailAddress")
+		{
+		}
+
+		public EmailIngestionProfileGetByEmailAddressRequestBuilder(string emailAddress)
+			: this()
+		{
+			this.EmailAddress = emailAddress;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("emailAddress"))
+				kparams.AddIfNotNull("emailAddress", EmailAddress);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<EmailIngestionProfile>(result);
+		}
+	}
+
+	public class EmailIngestionProfileUpdateRequestBuilder : RequestBuilder<EmailIngestionProfile>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string EMAIL_IP = "EmailIP";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public EmailIngestionProfile EmailIP
+		{
+			set;
+			get;
+		}
+
+		public EmailIngestionProfileUpdateRequestBuilder()
+			: base("emailingestionprofile", "update")
+		{
+		}
+
+		public EmailIngestionProfileUpdateRequestBuilder(int id, EmailIngestionProfile EmailIP)
+			: this()
+		{
+			this.Id = id;
+			this.EmailIP = EmailIP;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("EmailIP"))
+				kparams.AddIfNotNull("EmailIP", EmailIP);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<EmailIngestionProfile>(result);
+		}
+	}
+
 
 	public class EmailIngestionProfileService
 	{
@@ -350,19 +350,9 @@ namespace Kaltura.Services
 			return new EmailIngestionProfileAddRequestBuilder(EmailIP);
 		}
 
-		public static EmailIngestionProfileGetByEmailAddressRequestBuilder GetByEmailAddress(string emailAddress)
+		public static EmailIngestionProfileAddMediaEntryRequestBuilder AddMediaEntry(MediaEntry mediaEntry, string uploadTokenId, int emailProfId, string fromAddress, string emailMsgId)
 		{
-			return new EmailIngestionProfileGetByEmailAddressRequestBuilder(emailAddress);
-		}
-
-		public static EmailIngestionProfileGetRequestBuilder Get(int id)
-		{
-			return new EmailIngestionProfileGetRequestBuilder(id);
-		}
-
-		public static EmailIngestionProfileUpdateRequestBuilder Update(int id, EmailIngestionProfile EmailIP)
-		{
-			return new EmailIngestionProfileUpdateRequestBuilder(id, EmailIP);
+			return new EmailIngestionProfileAddMediaEntryRequestBuilder(mediaEntry, uploadTokenId, emailProfId, fromAddress, emailMsgId);
 		}
 
 		public static EmailIngestionProfileDeleteRequestBuilder Delete(int id)
@@ -370,9 +360,19 @@ namespace Kaltura.Services
 			return new EmailIngestionProfileDeleteRequestBuilder(id);
 		}
 
-		public static EmailIngestionProfileAddMediaEntryRequestBuilder AddMediaEntry(MediaEntry mediaEntry, string uploadTokenId, int emailProfId, string fromAddress, string emailMsgId)
+		public static EmailIngestionProfileGetRequestBuilder Get(int id)
 		{
-			return new EmailIngestionProfileAddMediaEntryRequestBuilder(mediaEntry, uploadTokenId, emailProfId, fromAddress, emailMsgId);
+			return new EmailIngestionProfileGetRequestBuilder(id);
+		}
+
+		public static EmailIngestionProfileGetByEmailAddressRequestBuilder GetByEmailAddress(string emailAddress)
+		{
+			return new EmailIngestionProfileGetByEmailAddressRequestBuilder(emailAddress);
+		}
+
+		public static EmailIngestionProfileUpdateRequestBuilder Update(int id, EmailIngestionProfile EmailIP)
+		{
+			return new EmailIngestionProfileUpdateRequestBuilder(id, EmailIP);
 		}
 	}
 }

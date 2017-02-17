@@ -78,101 +78,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class FileAssetGetRequestBuilder : RequestBuilder<FileAsset>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-
-		public FileAssetGetRequestBuilder()
-			: base("fileasset", "get")
-		{
-		}
-
-		public FileAssetGetRequestBuilder(int id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<FileAsset>(result);
-		}
-	}
-
-	public class FileAssetUpdateRequestBuilder : RequestBuilder<FileAsset>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string FILE_ASSET = "fileAsset";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-		public FileAsset FileAsset
-		{
-			set;
-			get;
-		}
-
-		public FileAssetUpdateRequestBuilder()
-			: base("fileasset", "update")
-		{
-		}
-
-		public FileAssetUpdateRequestBuilder(int id, FileAsset fileAsset)
-			: this()
-		{
-			this.Id = id;
-			this.FileAsset = fileAsset;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("fileAsset"))
-				kparams.AddIfNotNull("fileAsset", FileAsset);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<FileAsset>(result);
-		}
-	}
-
 	public class FileAssetDeleteRequestBuilder : RequestBuilder<object>
 	{
 		#region Constants
@@ -216,34 +121,27 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class FileAssetSetContentRequestBuilder : RequestBuilder<FileAsset>
+	public class FileAssetGetRequestBuilder : RequestBuilder<FileAsset>
 	{
 		#region Constants
 		public const string ID = "id";
-		public const string CONTENT_RESOURCE = "contentResource";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public ContentResource ContentResource
+		public int Id
 		{
 			set;
 			get;
 		}
 
-		public FileAssetSetContentRequestBuilder()
-			: base("fileasset", "setContent")
+		public FileAssetGetRequestBuilder()
+			: base("fileasset", "get")
 		{
 		}
 
-		public FileAssetSetContentRequestBuilder(string id, ContentResource contentResource)
+		public FileAssetGetRequestBuilder(int id)
 			: this()
 		{
 			this.Id = id;
-			this.ContentResource = contentResource;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -251,8 +149,6 @@ namespace Kaltura.Services
 			Params kparams = base.getParameters(includeServiceAndAction);
 			if (!isMapped("id"))
 				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("contentResource"))
-				kparams.AddIfNotNull("contentResource", ContentResource);
 			return kparams;
 		}
 
@@ -320,6 +216,110 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class FileAssetSetContentRequestBuilder : RequestBuilder<FileAsset>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string CONTENT_RESOURCE = "contentResource";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public ContentResource ContentResource
+		{
+			set;
+			get;
+		}
+
+		public FileAssetSetContentRequestBuilder()
+			: base("fileasset", "setContent")
+		{
+		}
+
+		public FileAssetSetContentRequestBuilder(string id, ContentResource contentResource)
+			: this()
+		{
+			this.Id = id;
+			this.ContentResource = contentResource;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("contentResource"))
+				kparams.AddIfNotNull("contentResource", ContentResource);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<FileAsset>(result);
+		}
+	}
+
+	public class FileAssetUpdateRequestBuilder : RequestBuilder<FileAsset>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string FILE_ASSET = "fileAsset";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public FileAsset FileAsset
+		{
+			set;
+			get;
+		}
+
+		public FileAssetUpdateRequestBuilder()
+			: base("fileasset", "update")
+		{
+		}
+
+		public FileAssetUpdateRequestBuilder(int id, FileAsset fileAsset)
+			: this()
+		{
+			this.Id = id;
+			this.FileAsset = fileAsset;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("fileAsset"))
+				kparams.AddIfNotNull("fileAsset", FileAsset);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<FileAsset>(result);
+		}
+	}
+
 
 	public class FileAssetService
 	{
@@ -332,19 +332,19 @@ namespace Kaltura.Services
 			return new FileAssetAddRequestBuilder(fileAsset);
 		}
 
+		public static FileAssetDeleteRequestBuilder Delete(int id)
+		{
+			return new FileAssetDeleteRequestBuilder(id);
+		}
+
 		public static FileAssetGetRequestBuilder Get(int id)
 		{
 			return new FileAssetGetRequestBuilder(id);
 		}
 
-		public static FileAssetUpdateRequestBuilder Update(int id, FileAsset fileAsset)
+		public static FileAssetListRequestBuilder List(FileAssetFilter filter, FilterPager pager = null)
 		{
-			return new FileAssetUpdateRequestBuilder(id, fileAsset);
-		}
-
-		public static FileAssetDeleteRequestBuilder Delete(int id)
-		{
-			return new FileAssetDeleteRequestBuilder(id);
+			return new FileAssetListRequestBuilder(filter, pager);
 		}
 
 		public static FileAssetSetContentRequestBuilder SetContent(string id, ContentResource contentResource)
@@ -352,9 +352,9 @@ namespace Kaltura.Services
 			return new FileAssetSetContentRequestBuilder(id, contentResource);
 		}
 
-		public static FileAssetListRequestBuilder List(FileAssetFilter filter, FilterPager pager = null)
+		public static FileAssetUpdateRequestBuilder Update(int id, FileAsset fileAsset)
 		{
-			return new FileAssetListRequestBuilder(filter, pager);
+			return new FileAssetUpdateRequestBuilder(id, fileAsset);
 		}
 	}
 }

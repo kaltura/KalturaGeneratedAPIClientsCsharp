@@ -78,6 +78,49 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class EntryDistributionDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public EntryDistributionDeleteRequestBuilder()
+			: base("contentdistribution_entrydistribution", "delete")
+		{
+		}
+
+		public EntryDistributionDeleteRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
 	public class EntryDistributionGetRequestBuilder : RequestBuilder<EntryDistribution>
 	{
 		#region Constants
@@ -121,7 +164,59 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class EntryDistributionValidateRequestBuilder : RequestBuilder<EntryDistribution>
+	public class EntryDistributionListRequestBuilder : RequestBuilder<ListResponse<EntryDistribution>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public EntryDistributionFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public EntryDistributionListRequestBuilder()
+			: base("contentdistribution_entrydistribution", "list")
+		{
+		}
+
+		public EntryDistributionListRequestBuilder(EntryDistributionFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<EntryDistribution>>(result);
+		}
+	}
+
+	public class EntryDistributionRetrySubmitRequestBuilder : RequestBuilder<EntryDistribution>
 	{
 		#region Constants
 		public const string ID = "id";
@@ -133,12 +228,193 @@ namespace Kaltura.Services
 			get;
 		}
 
-		public EntryDistributionValidateRequestBuilder()
-			: base("contentdistribution_entrydistribution", "validate")
+		public EntryDistributionRetrySubmitRequestBuilder()
+			: base("contentdistribution_entrydistribution", "retrySubmit")
 		{
 		}
 
-		public EntryDistributionValidateRequestBuilder(int id)
+		public EntryDistributionRetrySubmitRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<EntryDistribution>(result);
+		}
+	}
+
+	public class EntryDistributionSubmitAddRequestBuilder : RequestBuilder<EntryDistribution>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string SUBMIT_WHEN_READY = "submitWhenReady";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public bool SubmitWhenReady
+		{
+			set;
+			get;
+		}
+
+		public EntryDistributionSubmitAddRequestBuilder()
+			: base("contentdistribution_entrydistribution", "submitAdd")
+		{
+		}
+
+		public EntryDistributionSubmitAddRequestBuilder(int id, bool submitWhenReady)
+			: this()
+		{
+			this.Id = id;
+			this.SubmitWhenReady = submitWhenReady;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("submitWhenReady"))
+				kparams.AddIfNotNull("submitWhenReady", SubmitWhenReady);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<EntryDistribution>(result);
+		}
+	}
+
+	public class EntryDistributionSubmitDeleteRequestBuilder : RequestBuilder<EntryDistribution>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public EntryDistributionSubmitDeleteRequestBuilder()
+			: base("contentdistribution_entrydistribution", "submitDelete")
+		{
+		}
+
+		public EntryDistributionSubmitDeleteRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<EntryDistribution>(result);
+		}
+	}
+
+	public class EntryDistributionSubmitFetchReportRequestBuilder : RequestBuilder<EntryDistribution>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public EntryDistributionSubmitFetchReportRequestBuilder()
+			: base("contentdistribution_entrydistribution", "submitFetchReport")
+		{
+		}
+
+		public EntryDistributionSubmitFetchReportRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<EntryDistribution>(result);
+		}
+	}
+
+	public class EntryDistributionSubmitUpdateRequestBuilder : RequestBuilder<EntryDistribution>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public EntryDistributionSubmitUpdateRequestBuilder()
+			: base("contentdistribution_entrydistribution", "submitUpdate")
+		{
+		}
+
+		public EntryDistributionSubmitUpdateRequestBuilder(int id)
 			: this()
 		{
 			this.Id = id;
@@ -216,7 +492,7 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class EntryDistributionDeleteRequestBuilder : RequestBuilder<object>
+	public class EntryDistributionValidateRequestBuilder : RequestBuilder<EntryDistribution>
 	{
 		#region Constants
 		public const string ID = "id";
@@ -228,288 +504,12 @@ namespace Kaltura.Services
 			get;
 		}
 
-		public EntryDistributionDeleteRequestBuilder()
-			: base("contentdistribution_entrydistribution", "delete")
+		public EntryDistributionValidateRequestBuilder()
+			: base("contentdistribution_entrydistribution", "validate")
 		{
 		}
 
-		public EntryDistributionDeleteRequestBuilder(int id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
-	public class EntryDistributionListRequestBuilder : RequestBuilder<ListResponse<EntryDistribution>>
-	{
-		#region Constants
-		public const string FILTER = "filter";
-		public const string PAGER = "pager";
-		#endregion
-
-		public EntryDistributionFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
-
-		public EntryDistributionListRequestBuilder()
-			: base("contentdistribution_entrydistribution", "list")
-		{
-		}
-
-		public EntryDistributionListRequestBuilder(EntryDistributionFilter filter, FilterPager pager)
-			: this()
-		{
-			this.Filter = filter;
-			this.Pager = pager;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("filter"))
-				kparams.AddIfNotNull("filter", Filter);
-			if (!isMapped("pager"))
-				kparams.AddIfNotNull("pager", Pager);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ListResponse<EntryDistribution>>(result);
-		}
-	}
-
-	public class EntryDistributionSubmitAddRequestBuilder : RequestBuilder<EntryDistribution>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string SUBMIT_WHEN_READY = "submitWhenReady";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-		public bool SubmitWhenReady
-		{
-			set;
-			get;
-		}
-
-		public EntryDistributionSubmitAddRequestBuilder()
-			: base("contentdistribution_entrydistribution", "submitAdd")
-		{
-		}
-
-		public EntryDistributionSubmitAddRequestBuilder(int id, bool submitWhenReady)
-			: this()
-		{
-			this.Id = id;
-			this.SubmitWhenReady = submitWhenReady;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("submitWhenReady"))
-				kparams.AddIfNotNull("submitWhenReady", SubmitWhenReady);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<EntryDistribution>(result);
-		}
-	}
-
-	public class EntryDistributionSubmitUpdateRequestBuilder : RequestBuilder<EntryDistribution>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-
-		public EntryDistributionSubmitUpdateRequestBuilder()
-			: base("contentdistribution_entrydistribution", "submitUpdate")
-		{
-		}
-
-		public EntryDistributionSubmitUpdateRequestBuilder(int id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<EntryDistribution>(result);
-		}
-	}
-
-	public class EntryDistributionSubmitFetchReportRequestBuilder : RequestBuilder<EntryDistribution>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-
-		public EntryDistributionSubmitFetchReportRequestBuilder()
-			: base("contentdistribution_entrydistribution", "submitFetchReport")
-		{
-		}
-
-		public EntryDistributionSubmitFetchReportRequestBuilder(int id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<EntryDistribution>(result);
-		}
-	}
-
-	public class EntryDistributionSubmitDeleteRequestBuilder : RequestBuilder<EntryDistribution>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-
-		public EntryDistributionSubmitDeleteRequestBuilder()
-			: base("contentdistribution_entrydistribution", "submitDelete")
-		{
-		}
-
-		public EntryDistributionSubmitDeleteRequestBuilder(int id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<EntryDistribution>(result);
-		}
-	}
-
-	public class EntryDistributionRetrySubmitRequestBuilder : RequestBuilder<EntryDistribution>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-
-		public EntryDistributionRetrySubmitRequestBuilder()
-			: base("contentdistribution_entrydistribution", "retrySubmit")
-		{
-		}
-
-		public EntryDistributionRetrySubmitRequestBuilder(int id)
+		public EntryDistributionValidateRequestBuilder(int id)
 			: this()
 		{
 			this.Id = id;
@@ -547,24 +547,14 @@ namespace Kaltura.Services
 			return new EntryDistributionAddRequestBuilder(entryDistribution);
 		}
 
-		public static EntryDistributionGetRequestBuilder Get(int id)
-		{
-			return new EntryDistributionGetRequestBuilder(id);
-		}
-
-		public static EntryDistributionValidateRequestBuilder Validate(int id)
-		{
-			return new EntryDistributionValidateRequestBuilder(id);
-		}
-
-		public static EntryDistributionUpdateRequestBuilder Update(int id, EntryDistribution entryDistribution)
-		{
-			return new EntryDistributionUpdateRequestBuilder(id, entryDistribution);
-		}
-
 		public static EntryDistributionDeleteRequestBuilder Delete(int id)
 		{
 			return new EntryDistributionDeleteRequestBuilder(id);
+		}
+
+		public static EntryDistributionGetRequestBuilder Get(int id)
+		{
+			return new EntryDistributionGetRequestBuilder(id);
 		}
 
 		public static EntryDistributionListRequestBuilder List(EntryDistributionFilter filter = null, FilterPager pager = null)
@@ -572,19 +562,14 @@ namespace Kaltura.Services
 			return new EntryDistributionListRequestBuilder(filter, pager);
 		}
 
+		public static EntryDistributionRetrySubmitRequestBuilder RetrySubmit(int id)
+		{
+			return new EntryDistributionRetrySubmitRequestBuilder(id);
+		}
+
 		public static EntryDistributionSubmitAddRequestBuilder SubmitAdd(int id, bool submitWhenReady = false)
 		{
 			return new EntryDistributionSubmitAddRequestBuilder(id, submitWhenReady);
-		}
-
-		public static EntryDistributionSubmitUpdateRequestBuilder SubmitUpdate(int id)
-		{
-			return new EntryDistributionSubmitUpdateRequestBuilder(id);
-		}
-
-		public static EntryDistributionSubmitFetchReportRequestBuilder SubmitFetchReport(int id)
-		{
-			return new EntryDistributionSubmitFetchReportRequestBuilder(id);
 		}
 
 		public static EntryDistributionSubmitDeleteRequestBuilder SubmitDelete(int id)
@@ -592,9 +577,24 @@ namespace Kaltura.Services
 			return new EntryDistributionSubmitDeleteRequestBuilder(id);
 		}
 
-		public static EntryDistributionRetrySubmitRequestBuilder RetrySubmit(int id)
+		public static EntryDistributionSubmitFetchReportRequestBuilder SubmitFetchReport(int id)
 		{
-			return new EntryDistributionRetrySubmitRequestBuilder(id);
+			return new EntryDistributionSubmitFetchReportRequestBuilder(id);
+		}
+
+		public static EntryDistributionSubmitUpdateRequestBuilder SubmitUpdate(int id)
+		{
+			return new EntryDistributionSubmitUpdateRequestBuilder(id);
+		}
+
+		public static EntryDistributionUpdateRequestBuilder Update(int id, EntryDistribution entryDistribution)
+		{
+			return new EntryDistributionUpdateRequestBuilder(id, entryDistribution);
+		}
+
+		public static EntryDistributionValidateRequestBuilder Validate(int id)
+		{
+			return new EntryDistributionValidateRequestBuilder(id);
 		}
 	}
 }

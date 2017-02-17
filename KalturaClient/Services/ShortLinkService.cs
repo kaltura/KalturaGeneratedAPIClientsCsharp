@@ -35,58 +35,6 @@ using Kaltura.Enums;
 
 namespace Kaltura.Services
 {
-	public class ShortLinkListRequestBuilder : RequestBuilder<ListResponse<ShortLink>>
-	{
-		#region Constants
-		public const string FILTER = "filter";
-		public const string PAGER = "pager";
-		#endregion
-
-		public ShortLinkFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
-
-		public ShortLinkListRequestBuilder()
-			: base("shortlink_shortlink", "list")
-		{
-		}
-
-		public ShortLinkListRequestBuilder(ShortLinkFilter filter, FilterPager pager)
-			: this()
-		{
-			this.Filter = filter;
-			this.Pager = pager;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("filter"))
-				kparams.AddIfNotNull("filter", Filter);
-			if (!isMapped("pager"))
-				kparams.AddIfNotNull("pager", Pager);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ListResponse<ShortLink>>(result);
-		}
-	}
-
 	public class ShortLinkAddRequestBuilder : RequestBuilder<ShortLink>
 	{
 		#region Constants
@@ -113,101 +61,6 @@ namespace Kaltura.Services
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("shortLink"))
-				kparams.AddIfNotNull("shortLink", ShortLink);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ShortLink>(result);
-		}
-	}
-
-	public class ShortLinkGetRequestBuilder : RequestBuilder<ShortLink>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public string Id
-		{
-			set;
-			get;
-		}
-
-		public ShortLinkGetRequestBuilder()
-			: base("shortlink_shortlink", "get")
-		{
-		}
-
-		public ShortLinkGetRequestBuilder(string id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ShortLink>(result);
-		}
-	}
-
-	public class ShortLinkUpdateRequestBuilder : RequestBuilder<ShortLink>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string SHORT_LINK = "shortLink";
-		#endregion
-
-		public string Id
-		{
-			set;
-			get;
-		}
-		public ShortLink ShortLink
-		{
-			set;
-			get;
-		}
-
-		public ShortLinkUpdateRequestBuilder()
-			: base("shortlink_shortlink", "update")
-		{
-		}
-
-		public ShortLinkUpdateRequestBuilder(string id, ShortLink shortLink)
-			: this()
-		{
-			this.Id = id;
-			this.ShortLink = shortLink;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
 			if (!isMapped("shortLink"))
 				kparams.AddIfNotNull("shortLink", ShortLink);
 			return kparams;
@@ -268,6 +121,153 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class ShortLinkGetRequestBuilder : RequestBuilder<ShortLink>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+
+		public ShortLinkGetRequestBuilder()
+			: base("shortlink_shortlink", "get")
+		{
+		}
+
+		public ShortLinkGetRequestBuilder(string id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ShortLink>(result);
+		}
+	}
+
+	public class ShortLinkListRequestBuilder : RequestBuilder<ListResponse<ShortLink>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public ShortLinkFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public ShortLinkListRequestBuilder()
+			: base("shortlink_shortlink", "list")
+		{
+		}
+
+		public ShortLinkListRequestBuilder(ShortLinkFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<ShortLink>>(result);
+		}
+	}
+
+	public class ShortLinkUpdateRequestBuilder : RequestBuilder<ShortLink>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string SHORT_LINK = "shortLink";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public ShortLink ShortLink
+		{
+			set;
+			get;
+		}
+
+		public ShortLinkUpdateRequestBuilder()
+			: base("shortlink_shortlink", "update")
+		{
+		}
+
+		public ShortLinkUpdateRequestBuilder(string id, ShortLink shortLink)
+			: this()
+		{
+			this.Id = id;
+			this.ShortLink = shortLink;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("shortLink"))
+				kparams.AddIfNotNull("shortLink", ShortLink);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ShortLink>(result);
+		}
+	}
+
 
 	public class ShortLinkService
 	{
@@ -275,14 +275,14 @@ namespace Kaltura.Services
 		{
 		}
 
-		public static ShortLinkListRequestBuilder List(ShortLinkFilter filter = null, FilterPager pager = null)
-		{
-			return new ShortLinkListRequestBuilder(filter, pager);
-		}
-
 		public static ShortLinkAddRequestBuilder Add(ShortLink shortLink)
 		{
 			return new ShortLinkAddRequestBuilder(shortLink);
+		}
+
+		public static ShortLinkDeleteRequestBuilder Delete(string id)
+		{
+			return new ShortLinkDeleteRequestBuilder(id);
 		}
 
 		public static ShortLinkGetRequestBuilder Get(string id)
@@ -290,14 +290,14 @@ namespace Kaltura.Services
 			return new ShortLinkGetRequestBuilder(id);
 		}
 
+		public static ShortLinkListRequestBuilder List(ShortLinkFilter filter = null, FilterPager pager = null)
+		{
+			return new ShortLinkListRequestBuilder(filter, pager);
+		}
+
 		public static ShortLinkUpdateRequestBuilder Update(string id, ShortLink shortLink)
 		{
 			return new ShortLinkUpdateRequestBuilder(id, shortLink);
-		}
-
-		public static ShortLinkDeleteRequestBuilder Delete(string id)
-		{
-			return new ShortLinkDeleteRequestBuilder(id);
 		}
 	}
 }

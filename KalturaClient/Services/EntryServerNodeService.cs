@@ -35,34 +35,27 @@ using Kaltura.Enums;
 
 namespace Kaltura.Services
 {
-	public class EntryServerNodeUpdateRequestBuilder : RequestBuilder<EntryServerNode>
+	public class EntryServerNodeGetRequestBuilder : RequestBuilder<EntryServerNode>
 	{
 		#region Constants
 		public const string ID = "id";
-		public const string ENTRY_SERVER_NODE = "entryServerNode";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public EntryServerNode EntryServerNode
+		public string Id
 		{
 			set;
 			get;
 		}
 
-		public EntryServerNodeUpdateRequestBuilder()
-			: base("entryservernode", "update")
+		public EntryServerNodeGetRequestBuilder()
+			: base("entryservernode", "get")
 		{
 		}
 
-		public EntryServerNodeUpdateRequestBuilder(int id, EntryServerNode entryServerNode)
+		public EntryServerNodeGetRequestBuilder(string id)
 			: this()
 		{
 			this.Id = id;
-			this.EntryServerNode = entryServerNode;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -70,8 +63,6 @@ namespace Kaltura.Services
 			Params kparams = base.getParameters(includeServiceAndAction);
 			if (!isMapped("id"))
 				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("entryServerNode"))
-				kparams.AddIfNotNull("entryServerNode", EntryServerNode);
 			return kparams;
 		}
 
@@ -139,27 +130,34 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class EntryServerNodeGetRequestBuilder : RequestBuilder<EntryServerNode>
+	public class EntryServerNodeUpdateRequestBuilder : RequestBuilder<EntryServerNode>
 	{
 		#region Constants
 		public const string ID = "id";
+		public const string ENTRY_SERVER_NODE = "entryServerNode";
 		#endregion
 
-		public string Id
+		public int Id
+		{
+			set;
+			get;
+		}
+		public EntryServerNode EntryServerNode
 		{
 			set;
 			get;
 		}
 
-		public EntryServerNodeGetRequestBuilder()
-			: base("entryservernode", "get")
+		public EntryServerNodeUpdateRequestBuilder()
+			: base("entryservernode", "update")
 		{
 		}
 
-		public EntryServerNodeGetRequestBuilder(string id)
+		public EntryServerNodeUpdateRequestBuilder(int id, EntryServerNode entryServerNode)
 			: this()
 		{
 			this.Id = id;
+			this.EntryServerNode = entryServerNode;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -167,6 +165,8 @@ namespace Kaltura.Services
 			Params kparams = base.getParameters(includeServiceAndAction);
 			if (!isMapped("id"))
 				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("entryServerNode"))
+				kparams.AddIfNotNull("entryServerNode", EntryServerNode);
 			return kparams;
 		}
 
@@ -232,9 +232,9 @@ namespace Kaltura.Services
 		{
 		}
 
-		public static EntryServerNodeUpdateRequestBuilder Update(int id, EntryServerNode entryServerNode)
+		public static EntryServerNodeGetRequestBuilder Get(string id)
 		{
-			return new EntryServerNodeUpdateRequestBuilder(id, entryServerNode);
+			return new EntryServerNodeGetRequestBuilder(id);
 		}
 
 		public static EntryServerNodeListRequestBuilder List(EntryServerNodeFilter filter = null, FilterPager pager = null)
@@ -242,9 +242,9 @@ namespace Kaltura.Services
 			return new EntryServerNodeListRequestBuilder(filter, pager);
 		}
 
-		public static EntryServerNodeGetRequestBuilder Get(string id)
+		public static EntryServerNodeUpdateRequestBuilder Update(int id, EntryServerNode entryServerNode)
 		{
-			return new EntryServerNodeGetRequestBuilder(id);
+			return new EntryServerNodeUpdateRequestBuilder(id, entryServerNode);
 		}
 
 		public static EntryServerNodeValidateRegisteredEntryServerNodeRequestBuilder ValidateRegisteredEntryServerNode(int id)

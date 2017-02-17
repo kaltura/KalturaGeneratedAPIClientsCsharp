@@ -35,96 +35,6 @@ using Kaltura.Enums;
 
 namespace Kaltura.Services
 {
-	public class LikeLikeRequestBuilder : RequestBuilder<bool>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-
-		public LikeLikeRequestBuilder()
-			: base("like_like", "like")
-		{
-		}
-
-		public LikeLikeRequestBuilder(string entryId)
-			: this()
-		{
-			this.EntryId = entryId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			if (result.InnerText.Equals("1") || result.InnerText.ToLower().Equals("true"))
-				return true;
-			return false;
-		}
-	}
-
-	public class LikeUnlikeRequestBuilder : RequestBuilder<bool>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-
-		public LikeUnlikeRequestBuilder()
-			: base("like_like", "unlike")
-		{
-		}
-
-		public LikeUnlikeRequestBuilder(string entryId)
-			: this()
-		{
-			this.EntryId = entryId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			if (result.InnerText.Equals("1") || result.InnerText.ToLower().Equals("true"))
-				return true;
-			return false;
-		}
-	}
-
 	public class LikeCheckLikeExistsRequestBuilder : RequestBuilder<bool>
 	{
 		#region Constants
@@ -162,6 +72,51 @@ namespace Kaltura.Services
 				kparams.AddIfNotNull("entryId", EntryId);
 			if (!isMapped("userId"))
 				kparams.AddIfNotNull("userId", UserId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			if (result.InnerText.Equals("1") || result.InnerText.ToLower().Equals("true"))
+				return true;
+			return false;
+		}
+	}
+
+	public class LikeLikeRequestBuilder : RequestBuilder<bool>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+
+		public LikeLikeRequestBuilder()
+			: base("like_like", "like")
+		{
+		}
+
+		public LikeLikeRequestBuilder(string entryId)
+			: this()
+		{
+			this.EntryId = entryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
 			return kparams;
 		}
 
@@ -231,6 +186,51 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class LikeUnlikeRequestBuilder : RequestBuilder<bool>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+
+		public LikeUnlikeRequestBuilder()
+			: base("like_like", "unlike")
+		{
+		}
+
+		public LikeUnlikeRequestBuilder(string entryId)
+			: this()
+		{
+			this.EntryId = entryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			if (result.InnerText.Equals("1") || result.InnerText.ToLower().Equals("true"))
+				return true;
+			return false;
+		}
+	}
+
 
 	public class LikeService
 	{
@@ -238,24 +238,24 @@ namespace Kaltura.Services
 		{
 		}
 
-		public static LikeLikeRequestBuilder Like(string entryId)
-		{
-			return new LikeLikeRequestBuilder(entryId);
-		}
-
-		public static LikeUnlikeRequestBuilder Unlike(string entryId)
-		{
-			return new LikeUnlikeRequestBuilder(entryId);
-		}
-
 		public static LikeCheckLikeExistsRequestBuilder CheckLikeExists(string entryId, string userId = null)
 		{
 			return new LikeCheckLikeExistsRequestBuilder(entryId, userId);
 		}
 
+		public static LikeLikeRequestBuilder Like(string entryId)
+		{
+			return new LikeLikeRequestBuilder(entryId);
+		}
+
 		public static LikeListRequestBuilder List(LikeFilter filter = null, FilterPager pager = null)
 		{
 			return new LikeListRequestBuilder(filter, pager);
+		}
+
+		public static LikeUnlikeRequestBuilder Unlike(string entryId)
+		{
+			return new LikeUnlikeRequestBuilder(entryId);
 		}
 	}
 }

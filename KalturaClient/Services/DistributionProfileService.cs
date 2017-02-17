@@ -78,153 +78,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class DistributionProfileGetRequestBuilder : RequestBuilder<DistributionProfile>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-
-		public DistributionProfileGetRequestBuilder()
-			: base("contentdistribution_distributionprofile", "get")
-		{
-		}
-
-		public DistributionProfileGetRequestBuilder(int id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<DistributionProfile>(result);
-		}
-	}
-
-	public class DistributionProfileUpdateRequestBuilder : RequestBuilder<DistributionProfile>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string DISTRIBUTION_PROFILE = "distributionProfile";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-		public DistributionProfile DistributionProfile
-		{
-			set;
-			get;
-		}
-
-		public DistributionProfileUpdateRequestBuilder()
-			: base("contentdistribution_distributionprofile", "update")
-		{
-		}
-
-		public DistributionProfileUpdateRequestBuilder(int id, DistributionProfile distributionProfile)
-			: this()
-		{
-			this.Id = id;
-			this.DistributionProfile = distributionProfile;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("distributionProfile"))
-				kparams.AddIfNotNull("distributionProfile", DistributionProfile);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<DistributionProfile>(result);
-		}
-	}
-
-	public class DistributionProfileUpdateStatusRequestBuilder : RequestBuilder<DistributionProfile>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string STATUS = "status";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-		public DistributionProfileStatus Status
-		{
-			set;
-			get;
-		}
-
-		public DistributionProfileUpdateStatusRequestBuilder()
-			: base("contentdistribution_distributionprofile", "updateStatus")
-		{
-		}
-
-		public DistributionProfileUpdateStatusRequestBuilder(int id, DistributionProfileStatus status)
-			: this()
-		{
-			this.Id = id;
-			this.Status = status;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("status"))
-				kparams.AddIfNotNull("status", Status);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<DistributionProfile>(result);
-		}
-	}
-
 	public class DistributionProfileDeleteRequestBuilder : RequestBuilder<object>
 	{
 		#region Constants
@@ -265,6 +118,49 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return null;
+		}
+	}
+
+	public class DistributionProfileGetRequestBuilder : RequestBuilder<DistributionProfile>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public DistributionProfileGetRequestBuilder()
+			: base("contentdistribution_distributionprofile", "get")
+		{
+		}
+
+		public DistributionProfileGetRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<DistributionProfile>(result);
 		}
 	}
 
@@ -372,6 +268,110 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class DistributionProfileUpdateRequestBuilder : RequestBuilder<DistributionProfile>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string DISTRIBUTION_PROFILE = "distributionProfile";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public DistributionProfile DistributionProfile
+		{
+			set;
+			get;
+		}
+
+		public DistributionProfileUpdateRequestBuilder()
+			: base("contentdistribution_distributionprofile", "update")
+		{
+		}
+
+		public DistributionProfileUpdateRequestBuilder(int id, DistributionProfile distributionProfile)
+			: this()
+		{
+			this.Id = id;
+			this.DistributionProfile = distributionProfile;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("distributionProfile"))
+				kparams.AddIfNotNull("distributionProfile", DistributionProfile);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<DistributionProfile>(result);
+		}
+	}
+
+	public class DistributionProfileUpdateStatusRequestBuilder : RequestBuilder<DistributionProfile>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string STATUS = "status";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public DistributionProfileStatus Status
+		{
+			set;
+			get;
+		}
+
+		public DistributionProfileUpdateStatusRequestBuilder()
+			: base("contentdistribution_distributionprofile", "updateStatus")
+		{
+		}
+
+		public DistributionProfileUpdateStatusRequestBuilder(int id, DistributionProfileStatus status)
+			: this()
+		{
+			this.Id = id;
+			this.Status = status;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("status"))
+				kparams.AddIfNotNull("status", Status);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<DistributionProfile>(result);
+		}
+	}
+
 
 	public class DistributionProfileService
 	{
@@ -384,24 +384,14 @@ namespace Kaltura.Services
 			return new DistributionProfileAddRequestBuilder(distributionProfile);
 		}
 
-		public static DistributionProfileGetRequestBuilder Get(int id)
-		{
-			return new DistributionProfileGetRequestBuilder(id);
-		}
-
-		public static DistributionProfileUpdateRequestBuilder Update(int id, DistributionProfile distributionProfile)
-		{
-			return new DistributionProfileUpdateRequestBuilder(id, distributionProfile);
-		}
-
-		public static DistributionProfileUpdateStatusRequestBuilder UpdateStatus(int id, DistributionProfileStatus status)
-		{
-			return new DistributionProfileUpdateStatusRequestBuilder(id, status);
-		}
-
 		public static DistributionProfileDeleteRequestBuilder Delete(int id)
 		{
 			return new DistributionProfileDeleteRequestBuilder(id);
+		}
+
+		public static DistributionProfileGetRequestBuilder Get(int id)
+		{
+			return new DistributionProfileGetRequestBuilder(id);
 		}
 
 		public static DistributionProfileListRequestBuilder List(DistributionProfileFilter filter = null, FilterPager pager = null)
@@ -412,6 +402,16 @@ namespace Kaltura.Services
 		public static DistributionProfileListByPartnerRequestBuilder ListByPartner(PartnerFilter filter = null, FilterPager pager = null)
 		{
 			return new DistributionProfileListByPartnerRequestBuilder(filter, pager);
+		}
+
+		public static DistributionProfileUpdateRequestBuilder Update(int id, DistributionProfile distributionProfile)
+		{
+			return new DistributionProfileUpdateRequestBuilder(id, distributionProfile);
+		}
+
+		public static DistributionProfileUpdateStatusRequestBuilder UpdateStatus(int id, DistributionProfileStatus status)
+		{
+			return new DistributionProfileUpdateStatusRequestBuilder(id, status);
 		}
 	}
 }

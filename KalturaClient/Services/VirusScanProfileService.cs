@@ -35,58 +35,6 @@ using Kaltura.Enums;
 
 namespace Kaltura.Services
 {
-	public class VirusScanProfileListRequestBuilder : RequestBuilder<ListResponse<VirusScanProfile>>
-	{
-		#region Constants
-		public const string FILTER = "filter";
-		public const string PAGER = "pager";
-		#endregion
-
-		public VirusScanProfileFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
-
-		public VirusScanProfileListRequestBuilder()
-			: base("virusscan_virusscanprofile", "list")
-		{
-		}
-
-		public VirusScanProfileListRequestBuilder(VirusScanProfileFilter filter, FilterPager pager)
-			: this()
-		{
-			this.Filter = filter;
-			this.Pager = pager;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("filter"))
-				kparams.AddIfNotNull("filter", Filter);
-			if (!isMapped("pager"))
-				kparams.AddIfNotNull("pager", Pager);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ListResponse<VirusScanProfile>>(result);
-		}
-	}
-
 	public class VirusScanProfileAddRequestBuilder : RequestBuilder<VirusScanProfile>
 	{
 		#region Constants
@@ -113,101 +61,6 @@ namespace Kaltura.Services
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("virusScanProfile"))
-				kparams.AddIfNotNull("virusScanProfile", VirusScanProfile);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<VirusScanProfile>(result);
-		}
-	}
-
-	public class VirusScanProfileGetRequestBuilder : RequestBuilder<VirusScanProfile>
-	{
-		#region Constants
-		public const string VIRUS_SCAN_PROFILE_ID = "virusScanProfileId";
-		#endregion
-
-		public int VirusScanProfileId
-		{
-			set;
-			get;
-		}
-
-		public VirusScanProfileGetRequestBuilder()
-			: base("virusscan_virusscanprofile", "get")
-		{
-		}
-
-		public VirusScanProfileGetRequestBuilder(int virusScanProfileId)
-			: this()
-		{
-			this.VirusScanProfileId = virusScanProfileId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("virusScanProfileId"))
-				kparams.AddIfNotNull("virusScanProfileId", VirusScanProfileId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<VirusScanProfile>(result);
-		}
-	}
-
-	public class VirusScanProfileUpdateRequestBuilder : RequestBuilder<VirusScanProfile>
-	{
-		#region Constants
-		public const string VIRUS_SCAN_PROFILE_ID = "virusScanProfileId";
-		public const string VIRUS_SCAN_PROFILE = "virusScanProfile";
-		#endregion
-
-		public int VirusScanProfileId
-		{
-			set;
-			get;
-		}
-		public VirusScanProfile VirusScanProfile
-		{
-			set;
-			get;
-		}
-
-		public VirusScanProfileUpdateRequestBuilder()
-			: base("virusscan_virusscanprofile", "update")
-		{
-		}
-
-		public VirusScanProfileUpdateRequestBuilder(int virusScanProfileId, VirusScanProfile virusScanProfile)
-			: this()
-		{
-			this.VirusScanProfileId = virusScanProfileId;
-			this.VirusScanProfile = virusScanProfile;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("virusScanProfileId"))
-				kparams.AddIfNotNull("virusScanProfileId", VirusScanProfileId);
 			if (!isMapped("virusScanProfile"))
 				kparams.AddIfNotNull("virusScanProfile", VirusScanProfile);
 			return kparams;
@@ -268,6 +121,101 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class VirusScanProfileGetRequestBuilder : RequestBuilder<VirusScanProfile>
+	{
+		#region Constants
+		public const string VIRUS_SCAN_PROFILE_ID = "virusScanProfileId";
+		#endregion
+
+		public int VirusScanProfileId
+		{
+			set;
+			get;
+		}
+
+		public VirusScanProfileGetRequestBuilder()
+			: base("virusscan_virusscanprofile", "get")
+		{
+		}
+
+		public VirusScanProfileGetRequestBuilder(int virusScanProfileId)
+			: this()
+		{
+			this.VirusScanProfileId = virusScanProfileId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("virusScanProfileId"))
+				kparams.AddIfNotNull("virusScanProfileId", VirusScanProfileId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<VirusScanProfile>(result);
+		}
+	}
+
+	public class VirusScanProfileListRequestBuilder : RequestBuilder<ListResponse<VirusScanProfile>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public VirusScanProfileFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public VirusScanProfileListRequestBuilder()
+			: base("virusscan_virusscanprofile", "list")
+		{
+		}
+
+		public VirusScanProfileListRequestBuilder(VirusScanProfileFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<VirusScanProfile>>(result);
+		}
+	}
+
 	public class VirusScanProfileScanRequestBuilder : RequestBuilder<int>
 	{
 		#region Constants
@@ -320,6 +268,58 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class VirusScanProfileUpdateRequestBuilder : RequestBuilder<VirusScanProfile>
+	{
+		#region Constants
+		public const string VIRUS_SCAN_PROFILE_ID = "virusScanProfileId";
+		public const string VIRUS_SCAN_PROFILE = "virusScanProfile";
+		#endregion
+
+		public int VirusScanProfileId
+		{
+			set;
+			get;
+		}
+		public VirusScanProfile VirusScanProfile
+		{
+			set;
+			get;
+		}
+
+		public VirusScanProfileUpdateRequestBuilder()
+			: base("virusscan_virusscanprofile", "update")
+		{
+		}
+
+		public VirusScanProfileUpdateRequestBuilder(int virusScanProfileId, VirusScanProfile virusScanProfile)
+			: this()
+		{
+			this.VirusScanProfileId = virusScanProfileId;
+			this.VirusScanProfile = virusScanProfile;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("virusScanProfileId"))
+				kparams.AddIfNotNull("virusScanProfileId", VirusScanProfileId);
+			if (!isMapped("virusScanProfile"))
+				kparams.AddIfNotNull("virusScanProfile", VirusScanProfile);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<VirusScanProfile>(result);
+		}
+	}
+
 
 	public class VirusScanProfileService
 	{
@@ -327,24 +327,9 @@ namespace Kaltura.Services
 		{
 		}
 
-		public static VirusScanProfileListRequestBuilder List(VirusScanProfileFilter filter = null, FilterPager pager = null)
-		{
-			return new VirusScanProfileListRequestBuilder(filter, pager);
-		}
-
 		public static VirusScanProfileAddRequestBuilder Add(VirusScanProfile virusScanProfile)
 		{
 			return new VirusScanProfileAddRequestBuilder(virusScanProfile);
-		}
-
-		public static VirusScanProfileGetRequestBuilder Get(int virusScanProfileId)
-		{
-			return new VirusScanProfileGetRequestBuilder(virusScanProfileId);
-		}
-
-		public static VirusScanProfileUpdateRequestBuilder Update(int virusScanProfileId, VirusScanProfile virusScanProfile)
-		{
-			return new VirusScanProfileUpdateRequestBuilder(virusScanProfileId, virusScanProfile);
 		}
 
 		public static VirusScanProfileDeleteRequestBuilder Delete(int virusScanProfileId)
@@ -352,9 +337,24 @@ namespace Kaltura.Services
 			return new VirusScanProfileDeleteRequestBuilder(virusScanProfileId);
 		}
 
+		public static VirusScanProfileGetRequestBuilder Get(int virusScanProfileId)
+		{
+			return new VirusScanProfileGetRequestBuilder(virusScanProfileId);
+		}
+
+		public static VirusScanProfileListRequestBuilder List(VirusScanProfileFilter filter = null, FilterPager pager = null)
+		{
+			return new VirusScanProfileListRequestBuilder(filter, pager);
+		}
+
 		public static VirusScanProfileScanRequestBuilder Scan(string flavorAssetId, int virusScanProfileId = Int32.MinValue)
 		{
 			return new VirusScanProfileScanRequestBuilder(flavorAssetId, virusScanProfileId);
+		}
+
+		public static VirusScanProfileUpdateRequestBuilder Update(int virusScanProfileId, VirusScanProfile virusScanProfile)
+		{
+			return new VirusScanProfileUpdateRequestBuilder(virusScanProfileId, virusScanProfile);
 		}
 	}
 }

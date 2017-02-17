@@ -78,101 +78,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class ServerNodeGetRequestBuilder : RequestBuilder<ServerNode>
-	{
-		#region Constants
-		public const string SERVER_NODE_ID = "serverNodeId";
-		#endregion
-
-		public int ServerNodeId
-		{
-			set;
-			get;
-		}
-
-		public ServerNodeGetRequestBuilder()
-			: base("servernode", "get")
-		{
-		}
-
-		public ServerNodeGetRequestBuilder(int serverNodeId)
-			: this()
-		{
-			this.ServerNodeId = serverNodeId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("serverNodeId"))
-				kparams.AddIfNotNull("serverNodeId", ServerNodeId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ServerNode>(result);
-		}
-	}
-
-	public class ServerNodeUpdateRequestBuilder : RequestBuilder<ServerNode>
-	{
-		#region Constants
-		public const string SERVER_NODE_ID = "serverNodeId";
-		public const string SERVER_NODE = "serverNode";
-		#endregion
-
-		public int ServerNodeId
-		{
-			set;
-			get;
-		}
-		public ServerNode ServerNode
-		{
-			set;
-			get;
-		}
-
-		public ServerNodeUpdateRequestBuilder()
-			: base("servernode", "update")
-		{
-		}
-
-		public ServerNodeUpdateRequestBuilder(int serverNodeId, ServerNode serverNode)
-			: this()
-		{
-			this.ServerNodeId = serverNodeId;
-			this.ServerNode = serverNode;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("serverNodeId"))
-				kparams.AddIfNotNull("serverNodeId", ServerNodeId);
-			if (!isMapped("serverNode"))
-				kparams.AddIfNotNull("serverNode", ServerNode);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ServerNode>(result);
-		}
-	}
-
 	public class ServerNodeDeleteRequestBuilder : RequestBuilder<object>
 	{
 		#region Constants
@@ -302,6 +207,49 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class ServerNodeGetRequestBuilder : RequestBuilder<ServerNode>
+	{
+		#region Constants
+		public const string SERVER_NODE_ID = "serverNodeId";
+		#endregion
+
+		public int ServerNodeId
+		{
+			set;
+			get;
+		}
+
+		public ServerNodeGetRequestBuilder()
+			: base("servernode", "get")
+		{
+		}
+
+		public ServerNodeGetRequestBuilder(int serverNodeId)
+			: this()
+		{
+			this.ServerNodeId = serverNodeId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("serverNodeId"))
+				kparams.AddIfNotNull("serverNodeId", ServerNodeId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ServerNode>(result);
+		}
+	}
+
 	public class ServerNodeListRequestBuilder : RequestBuilder<ListResponse<ServerNode>>
 	{
 		#region Constants
@@ -406,6 +354,58 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class ServerNodeUpdateRequestBuilder : RequestBuilder<ServerNode>
+	{
+		#region Constants
+		public const string SERVER_NODE_ID = "serverNodeId";
+		public const string SERVER_NODE = "serverNode";
+		#endregion
+
+		public int ServerNodeId
+		{
+			set;
+			get;
+		}
+		public ServerNode ServerNode
+		{
+			set;
+			get;
+		}
+
+		public ServerNodeUpdateRequestBuilder()
+			: base("servernode", "update")
+		{
+		}
+
+		public ServerNodeUpdateRequestBuilder(int serverNodeId, ServerNode serverNode)
+			: this()
+		{
+			this.ServerNodeId = serverNodeId;
+			this.ServerNode = serverNode;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("serverNodeId"))
+				kparams.AddIfNotNull("serverNodeId", ServerNodeId);
+			if (!isMapped("serverNode"))
+				kparams.AddIfNotNull("serverNode", ServerNode);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ServerNode>(result);
+		}
+	}
+
 
 	public class ServerNodeService
 	{
@@ -416,16 +416,6 @@ namespace Kaltura.Services
 		public static ServerNodeAddRequestBuilder Add(ServerNode serverNode)
 		{
 			return new ServerNodeAddRequestBuilder(serverNode);
-		}
-
-		public static ServerNodeGetRequestBuilder Get(int serverNodeId)
-		{
-			return new ServerNodeGetRequestBuilder(serverNodeId);
-		}
-
-		public static ServerNodeUpdateRequestBuilder Update(int serverNodeId, ServerNode serverNode)
-		{
-			return new ServerNodeUpdateRequestBuilder(serverNodeId, serverNode);
 		}
 
 		public static ServerNodeDeleteRequestBuilder Delete(string serverNodeId)
@@ -443,6 +433,11 @@ namespace Kaltura.Services
 			return new ServerNodeEnableRequestBuilder(serverNodeId);
 		}
 
+		public static ServerNodeGetRequestBuilder Get(int serverNodeId)
+		{
+			return new ServerNodeGetRequestBuilder(serverNodeId);
+		}
+
 		public static ServerNodeListRequestBuilder List(ServerNodeFilter filter = null, FilterPager pager = null)
 		{
 			return new ServerNodeListRequestBuilder(filter, pager);
@@ -451,6 +446,11 @@ namespace Kaltura.Services
 		public static ServerNodeReportStatusRequestBuilder ReportStatus(string hostName, ServerNode serverNode = null)
 		{
 			return new ServerNodeReportStatusRequestBuilder(hostName, serverNode);
+		}
+
+		public static ServerNodeUpdateRequestBuilder Update(int serverNodeId, ServerNode serverNode)
+		{
+			return new ServerNodeUpdateRequestBuilder(serverNodeId, serverNode);
 		}
 	}
 }

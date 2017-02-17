@@ -78,11 +78,11 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class MixingGetRequestBuilder : RequestBuilder<MixEntry>
+	public class MixingAnonymousRankRequestBuilder : RequestBuilder<object>
 	{
 		#region Constants
 		public const string ENTRY_ID = "entryId";
-		public const string VERSION = "version";
+		public const string RANK = "rank";
 		#endregion
 
 		public string EntryId
@@ -90,22 +90,22 @@ namespace Kaltura.Services
 			set;
 			get;
 		}
-		public int Version
+		public int Rank
 		{
 			set;
 			get;
 		}
 
-		public MixingGetRequestBuilder()
-			: base("mixing", "get")
+		public MixingAnonymousRankRequestBuilder()
+			: base("mixing", "anonymousRank")
 		{
 		}
 
-		public MixingGetRequestBuilder(string entryId, int version)
+		public MixingAnonymousRankRequestBuilder(string entryId, int rank)
 			: this()
 		{
 			this.EntryId = entryId;
-			this.Version = version;
+			this.Rank = rank;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -113,103 +113,8 @@ namespace Kaltura.Services
 			Params kparams = base.getParameters(includeServiceAndAction);
 			if (!isMapped("entryId"))
 				kparams.AddIfNotNull("entryId", EntryId);
-			if (!isMapped("version"))
-				kparams.AddIfNotNull("version", Version);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<MixEntry>(result);
-		}
-	}
-
-	public class MixingUpdateRequestBuilder : RequestBuilder<MixEntry>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		public const string MIX_ENTRY = "mixEntry";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public MixEntry MixEntry
-		{
-			set;
-			get;
-		}
-
-		public MixingUpdateRequestBuilder()
-			: base("mixing", "update")
-		{
-		}
-
-		public MixingUpdateRequestBuilder(string entryId, MixEntry mixEntry)
-			: this()
-		{
-			this.EntryId = entryId;
-			this.MixEntry = mixEntry;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			if (!isMapped("mixEntry"))
-				kparams.AddIfNotNull("mixEntry", MixEntry);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<MixEntry>(result);
-		}
-	}
-
-	public class MixingDeleteRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-
-		public MixingDeleteRequestBuilder()
-			: base("mixing", "delete")
-		{
-		}
-
-		public MixingDeleteRequestBuilder(string entryId)
-			: this()
-		{
-			this.EntryId = entryId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("rank"))
+				kparams.AddIfNotNull("rank", Rank);
 			return kparams;
 		}
 
@@ -225,43 +130,43 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class MixingListRequestBuilder : RequestBuilder<ListResponse<MixEntry>>
+	public class MixingAppendMediaEntryRequestBuilder : RequestBuilder<MixEntry>
 	{
 		#region Constants
-		public const string FILTER = "filter";
-		public const string PAGER = "pager";
+		public const string MIX_ENTRY_ID = "mixEntryId";
+		public const string MEDIA_ENTRY_ID = "mediaEntryId";
 		#endregion
 
-		public MixEntryFilter Filter
+		public string MixEntryId
 		{
 			set;
 			get;
 		}
-		public FilterPager Pager
+		public string MediaEntryId
 		{
 			set;
 			get;
 		}
 
-		public MixingListRequestBuilder()
-			: base("mixing", "list")
+		public MixingAppendMediaEntryRequestBuilder()
+			: base("mixing", "appendMediaEntry")
 		{
 		}
 
-		public MixingListRequestBuilder(MixEntryFilter filter, FilterPager pager)
+		public MixingAppendMediaEntryRequestBuilder(string mixEntryId, string mediaEntryId)
 			: this()
 		{
-			this.Filter = filter;
-			this.Pager = pager;
+			this.MixEntryId = mixEntryId;
+			this.MediaEntryId = mediaEntryId;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("filter"))
-				kparams.AddIfNotNull("filter", Filter);
-			if (!isMapped("pager"))
-				kparams.AddIfNotNull("pager", Pager);
+			if (!isMapped("mixEntryId"))
+				kparams.AddIfNotNull("mixEntryId", MixEntryId);
+			if (!isMapped("mediaEntryId"))
+				kparams.AddIfNotNull("mediaEntryId", MediaEntryId);
 			return kparams;
 		}
 
@@ -273,50 +178,7 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<ListResponse<MixEntry>>(result);
-		}
-	}
-
-	public class MixingCountRequestBuilder : RequestBuilder<int>
-	{
-		#region Constants
-		public const string FILTER = "filter";
-		#endregion
-
-		public MediaEntryFilter Filter
-		{
-			set;
-			get;
-		}
-
-		public MixingCountRequestBuilder()
-			: base("mixing", "count")
-		{
-		}
-
-		public MixingCountRequestBuilder(MediaEntryFilter filter)
-			: this()
-		{
-			this.Filter = filter;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("filter"))
-				kparams.AddIfNotNull("filter", Filter);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return int.Parse(result.InnerText);
+			return ObjectFactory.Create<MixEntry>(result);
 		}
 	}
 
@@ -363,43 +225,129 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class MixingAppendMediaEntryRequestBuilder : RequestBuilder<MixEntry>
+	public class MixingCountRequestBuilder : RequestBuilder<int>
 	{
 		#region Constants
-		public const string MIX_ENTRY_ID = "mixEntryId";
-		public const string MEDIA_ENTRY_ID = "mediaEntryId";
+		public const string FILTER = "filter";
 		#endregion
 
-		public string MixEntryId
-		{
-			set;
-			get;
-		}
-		public string MediaEntryId
+		public MediaEntryFilter Filter
 		{
 			set;
 			get;
 		}
 
-		public MixingAppendMediaEntryRequestBuilder()
-			: base("mixing", "appendMediaEntry")
+		public MixingCountRequestBuilder()
+			: base("mixing", "count")
 		{
 		}
 
-		public MixingAppendMediaEntryRequestBuilder(string mixEntryId, string mediaEntryId)
+		public MixingCountRequestBuilder(MediaEntryFilter filter)
 			: this()
 		{
-			this.MixEntryId = mixEntryId;
-			this.MediaEntryId = mediaEntryId;
+			this.Filter = filter;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("mixEntryId"))
-				kparams.AddIfNotNull("mixEntryId", MixEntryId);
-			if (!isMapped("mediaEntryId"))
-				kparams.AddIfNotNull("mediaEntryId", MediaEntryId);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return int.Parse(result.InnerText);
+		}
+	}
+
+	public class MixingDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+
+		public MixingDeleteRequestBuilder()
+			: base("mixing", "delete")
+		{
+		}
+
+		public MixingDeleteRequestBuilder(string entryId)
+			: this()
+		{
+			this.EntryId = entryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class MixingGetRequestBuilder : RequestBuilder<MixEntry>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string VERSION = "version";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public int Version
+		{
+			set;
+			get;
+		}
+
+		public MixingGetRequestBuilder()
+			: base("mixing", "get")
+		{
+		}
+
+		public MixingGetRequestBuilder(string entryId, int version)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.Version = version;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("version"))
+				kparams.AddIfNotNull("version", Version);
 			return kparams;
 		}
 
@@ -520,43 +468,43 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class MixingAnonymousRankRequestBuilder : RequestBuilder<object>
+	public class MixingListRequestBuilder : RequestBuilder<ListResponse<MixEntry>>
 	{
 		#region Constants
-		public const string ENTRY_ID = "entryId";
-		public const string RANK = "rank";
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
 		#endregion
 
-		public string EntryId
+		public MixEntryFilter Filter
 		{
 			set;
 			get;
 		}
-		public int Rank
+		public FilterPager Pager
 		{
 			set;
 			get;
 		}
 
-		public MixingAnonymousRankRequestBuilder()
-			: base("mixing", "anonymousRank")
+		public MixingListRequestBuilder()
+			: base("mixing", "list")
 		{
 		}
 
-		public MixingAnonymousRankRequestBuilder(string entryId, int rank)
+		public MixingListRequestBuilder(MixEntryFilter filter, FilterPager pager)
 			: this()
 		{
-			this.EntryId = entryId;
-			this.Rank = rank;
+			this.Filter = filter;
+			this.Pager = pager;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			if (!isMapped("rank"))
-				kparams.AddIfNotNull("rank", Rank);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
 			return kparams;
 		}
 
@@ -568,7 +516,59 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return null;
+			return ObjectFactory.Create<ListResponse<MixEntry>>(result);
+		}
+	}
+
+	public class MixingUpdateRequestBuilder : RequestBuilder<MixEntry>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string MIX_ENTRY = "mixEntry";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public MixEntry MixEntry
+		{
+			set;
+			get;
+		}
+
+		public MixingUpdateRequestBuilder()
+			: base("mixing", "update")
+		{
+		}
+
+		public MixingUpdateRequestBuilder(string entryId, MixEntry mixEntry)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.MixEntry = mixEntry;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("mixEntry"))
+				kparams.AddIfNotNull("mixEntry", MixEntry);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<MixEntry>(result);
 		}
 	}
 
@@ -584,29 +584,14 @@ namespace Kaltura.Services
 			return new MixingAddRequestBuilder(mixEntry);
 		}
 
-		public static MixingGetRequestBuilder Get(string entryId, int version = -1)
+		public static MixingAnonymousRankRequestBuilder AnonymousRank(string entryId, int rank)
 		{
-			return new MixingGetRequestBuilder(entryId, version);
+			return new MixingAnonymousRankRequestBuilder(entryId, rank);
 		}
 
-		public static MixingUpdateRequestBuilder Update(string entryId, MixEntry mixEntry)
+		public static MixingAppendMediaEntryRequestBuilder AppendMediaEntry(string mixEntryId, string mediaEntryId)
 		{
-			return new MixingUpdateRequestBuilder(entryId, mixEntry);
-		}
-
-		public static MixingDeleteRequestBuilder Delete(string entryId)
-		{
-			return new MixingDeleteRequestBuilder(entryId);
-		}
-
-		public static MixingListRequestBuilder List(MixEntryFilter filter = null, FilterPager pager = null)
-		{
-			return new MixingListRequestBuilder(filter, pager);
-		}
-
-		public static MixingCountRequestBuilder Count(MediaEntryFilter filter = null)
-		{
-			return new MixingCountRequestBuilder(filter);
+			return new MixingAppendMediaEntryRequestBuilder(mixEntryId, mediaEntryId);
 		}
 
 		public static MixingCloneRequestBuilder Clone(string entryId)
@@ -614,9 +599,19 @@ namespace Kaltura.Services
 			return new MixingCloneRequestBuilder(entryId);
 		}
 
-		public static MixingAppendMediaEntryRequestBuilder AppendMediaEntry(string mixEntryId, string mediaEntryId)
+		public static MixingCountRequestBuilder Count(MediaEntryFilter filter = null)
 		{
-			return new MixingAppendMediaEntryRequestBuilder(mixEntryId, mediaEntryId);
+			return new MixingCountRequestBuilder(filter);
+		}
+
+		public static MixingDeleteRequestBuilder Delete(string entryId)
+		{
+			return new MixingDeleteRequestBuilder(entryId);
+		}
+
+		public static MixingGetRequestBuilder Get(string entryId, int version = -1)
+		{
+			return new MixingGetRequestBuilder(entryId, version);
 		}
 
 		public static MixingGetMixesByMediaIdRequestBuilder GetMixesByMediaId(string mediaEntryId)
@@ -629,9 +624,14 @@ namespace Kaltura.Services
 			return new MixingGetReadyMediaEntriesRequestBuilder(mixId, version);
 		}
 
-		public static MixingAnonymousRankRequestBuilder AnonymousRank(string entryId, int rank)
+		public static MixingListRequestBuilder List(MixEntryFilter filter = null, FilterPager pager = null)
 		{
-			return new MixingAnonymousRankRequestBuilder(entryId, rank);
+			return new MixingListRequestBuilder(filter, pager);
+		}
+
+		public static MixingUpdateRequestBuilder Update(string entryId, MixEntry mixEntry)
+		{
+			return new MixingUpdateRequestBuilder(entryId, mixEntry);
 		}
 	}
 }

@@ -105,6 +105,76 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class MetadataAddFromBulkRequestBuilder : RequestBuilder<Metadata>
+	{
+		#region Constants
+		public const string METADATA_PROFILE_ID = "metadataProfileId";
+		public const string OBJECT_TYPE = "objectType";
+		public const string OBJECT_ID = "objectId";
+		public const string URL = "url";
+		#endregion
+
+		public int MetadataProfileId
+		{
+			set;
+			get;
+		}
+		public MetadataObjectType ObjectType
+		{
+			set;
+			get;
+		}
+		public string ObjectId
+		{
+			set;
+			get;
+		}
+		public string Url
+		{
+			set;
+			get;
+		}
+
+		public MetadataAddFromBulkRequestBuilder()
+			: base("metadata_metadata", "addFromBulk")
+		{
+		}
+
+		public MetadataAddFromBulkRequestBuilder(int metadataProfileId, MetadataObjectType objectType, string objectId, string url)
+			: this()
+		{
+			this.MetadataProfileId = metadataProfileId;
+			this.ObjectType = objectType;
+			this.ObjectId = objectId;
+			this.Url = url;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("metadataProfileId"))
+				kparams.AddIfNotNull("metadataProfileId", MetadataProfileId);
+			if (!isMapped("objectType"))
+				kparams.AddIfNotNull("objectType", ObjectType);
+			if (!isMapped("objectId"))
+				kparams.AddIfNotNull("objectId", ObjectId);
+			if (!isMapped("url"))
+				kparams.AddIfNotNull("url", Url);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<Metadata>(result);
+		}
+	}
+
 	public class MetadataAddFromFileRequestBuilder : RequestBuilder<Metadata>
 	{
 		#region Constants
@@ -244,61 +314,34 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class MetadataAddFromBulkRequestBuilder : RequestBuilder<Metadata>
+	public class MetadataDeleteRequestBuilder : RequestBuilder<object>
 	{
 		#region Constants
-		public const string METADATA_PROFILE_ID = "metadataProfileId";
-		public const string OBJECT_TYPE = "objectType";
-		public const string OBJECT_ID = "objectId";
-		public const string URL = "url";
+		public const string ID = "id";
 		#endregion
 
-		public int MetadataProfileId
-		{
-			set;
-			get;
-		}
-		public MetadataObjectType ObjectType
-		{
-			set;
-			get;
-		}
-		public string ObjectId
-		{
-			set;
-			get;
-		}
-		public string Url
+		public int Id
 		{
 			set;
 			get;
 		}
 
-		public MetadataAddFromBulkRequestBuilder()
-			: base("metadata_metadata", "addFromBulk")
+		public MetadataDeleteRequestBuilder()
+			: base("metadata_metadata", "delete")
 		{
 		}
 
-		public MetadataAddFromBulkRequestBuilder(int metadataProfileId, MetadataObjectType objectType, string objectId, string url)
+		public MetadataDeleteRequestBuilder(int id)
 			: this()
 		{
-			this.MetadataProfileId = metadataProfileId;
-			this.ObjectType = objectType;
-			this.ObjectId = objectId;
-			this.Url = url;
+			this.Id = id;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("metadataProfileId"))
-				kparams.AddIfNotNull("metadataProfileId", MetadataProfileId);
-			if (!isMapped("objectType"))
-				kparams.AddIfNotNull("objectType", ObjectType);
-			if (!isMapped("objectId"))
-				kparams.AddIfNotNull("objectId", ObjectId);
-			if (!isMapped("url"))
-				kparams.AddIfNotNull("url", Url);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
 			return kparams;
 		}
 
@@ -310,7 +353,7 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<Metadata>(result);
+			return null;
 		}
 	}
 
@@ -354,6 +397,162 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<Metadata>(result);
+		}
+	}
+
+	public class MetadataIndexRequestBuilder : RequestBuilder<int>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string SHOULD_UPDATE = "shouldUpdate";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public bool ShouldUpdate
+		{
+			set;
+			get;
+		}
+
+		public MetadataIndexRequestBuilder()
+			: base("metadata_metadata", "index")
+		{
+		}
+
+		public MetadataIndexRequestBuilder(string id, bool shouldUpdate)
+			: this()
+		{
+			this.Id = id;
+			this.ShouldUpdate = shouldUpdate;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("shouldUpdate"))
+				kparams.AddIfNotNull("shouldUpdate", ShouldUpdate);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return int.Parse(result.InnerText);
+		}
+	}
+
+	public class MetadataInvalidateRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string VERSION = "version";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public int Version
+		{
+			set;
+			get;
+		}
+
+		public MetadataInvalidateRequestBuilder()
+			: base("metadata_metadata", "invalidate")
+		{
+		}
+
+		public MetadataInvalidateRequestBuilder(int id, int version)
+			: this()
+		{
+			this.Id = id;
+			this.Version = version;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("version"))
+				kparams.AddIfNotNull("version", Version);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class MetadataListRequestBuilder : RequestBuilder<ListResponse<Metadata>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public MetadataFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public MetadataListRequestBuilder()
+			: base("metadata_metadata", "list")
+		{
+		}
+
+		public MetadataListRequestBuilder(MetadataFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<Metadata>>(result);
 		}
 	}
 
@@ -469,205 +668,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class MetadataListRequestBuilder : RequestBuilder<ListResponse<Metadata>>
-	{
-		#region Constants
-		public const string FILTER = "filter";
-		public const string PAGER = "pager";
-		#endregion
-
-		public MetadataFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
-
-		public MetadataListRequestBuilder()
-			: base("metadata_metadata", "list")
-		{
-		}
-
-		public MetadataListRequestBuilder(MetadataFilter filter, FilterPager pager)
-			: this()
-		{
-			this.Filter = filter;
-			this.Pager = pager;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("filter"))
-				kparams.AddIfNotNull("filter", Filter);
-			if (!isMapped("pager"))
-				kparams.AddIfNotNull("pager", Pager);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ListResponse<Metadata>>(result);
-		}
-	}
-
-	public class MetadataDeleteRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-
-		public MetadataDeleteRequestBuilder()
-			: base("metadata_metadata", "delete")
-		{
-		}
-
-		public MetadataDeleteRequestBuilder(int id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
-	public class MetadataInvalidateRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string VERSION = "version";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-		public int Version
-		{
-			set;
-			get;
-		}
-
-		public MetadataInvalidateRequestBuilder()
-			: base("metadata_metadata", "invalidate")
-		{
-		}
-
-		public MetadataInvalidateRequestBuilder(int id, int version)
-			: this()
-		{
-			this.Id = id;
-			this.Version = version;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("version"))
-				kparams.AddIfNotNull("version", Version);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
-	public class MetadataIndexRequestBuilder : RequestBuilder<int>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string SHOULD_UPDATE = "shouldUpdate";
-		#endregion
-
-		public string Id
-		{
-			set;
-			get;
-		}
-		public bool ShouldUpdate
-		{
-			set;
-			get;
-		}
-
-		public MetadataIndexRequestBuilder()
-			: base("metadata_metadata", "index")
-		{
-		}
-
-		public MetadataIndexRequestBuilder(string id, bool shouldUpdate)
-			: this()
-		{
-			this.Id = id;
-			this.ShouldUpdate = shouldUpdate;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("shouldUpdate"))
-				kparams.AddIfNotNull("shouldUpdate", ShouldUpdate);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return int.Parse(result.InnerText);
-		}
-	}
-
 	public class MetadataUpdateFromXSLRequestBuilder : RequestBuilder<Metadata>
 	{
 		#region Constants
@@ -731,6 +731,11 @@ namespace Kaltura.Services
 			return new MetadataAddRequestBuilder(metadataProfileId, objectType, objectId, xmlData);
 		}
 
+		public static MetadataAddFromBulkRequestBuilder AddFromBulk(int metadataProfileId, MetadataObjectType objectType, string objectId, string url)
+		{
+			return new MetadataAddFromBulkRequestBuilder(metadataProfileId, objectType, objectId, url);
+		}
+
 		public static MetadataAddFromFileRequestBuilder AddFromFile(int metadataProfileId, MetadataObjectType objectType, string objectId, Stream xmlFile)
 		{
 			return new MetadataAddFromFileRequestBuilder(metadataProfileId, objectType, objectId, xmlFile);
@@ -741,14 +746,29 @@ namespace Kaltura.Services
 			return new MetadataAddFromUrlRequestBuilder(metadataProfileId, objectType, objectId, url);
 		}
 
-		public static MetadataAddFromBulkRequestBuilder AddFromBulk(int metadataProfileId, MetadataObjectType objectType, string objectId, string url)
+		public static MetadataDeleteRequestBuilder Delete(int id)
 		{
-			return new MetadataAddFromBulkRequestBuilder(metadataProfileId, objectType, objectId, url);
+			return new MetadataDeleteRequestBuilder(id);
 		}
 
 		public static MetadataGetRequestBuilder Get(int id)
 		{
 			return new MetadataGetRequestBuilder(id);
+		}
+
+		public static MetadataIndexRequestBuilder Index(string id, bool shouldUpdate)
+		{
+			return new MetadataIndexRequestBuilder(id, shouldUpdate);
+		}
+
+		public static MetadataInvalidateRequestBuilder Invalidate(int id, int version = Int32.MinValue)
+		{
+			return new MetadataInvalidateRequestBuilder(id, version);
+		}
+
+		public static MetadataListRequestBuilder List(MetadataFilter filter = null, FilterPager pager = null)
+		{
+			return new MetadataListRequestBuilder(filter, pager);
 		}
 
 		public static MetadataUpdateRequestBuilder Update(int id, string xmlData = null, int version = Int32.MinValue)
@@ -759,26 +779,6 @@ namespace Kaltura.Services
 		public static MetadataUpdateFromFileRequestBuilder UpdateFromFile(int id, Stream xmlFile = null)
 		{
 			return new MetadataUpdateFromFileRequestBuilder(id, xmlFile);
-		}
-
-		public static MetadataListRequestBuilder List(MetadataFilter filter = null, FilterPager pager = null)
-		{
-			return new MetadataListRequestBuilder(filter, pager);
-		}
-
-		public static MetadataDeleteRequestBuilder Delete(int id)
-		{
-			return new MetadataDeleteRequestBuilder(id);
-		}
-
-		public static MetadataInvalidateRequestBuilder Invalidate(int id, int version = Int32.MinValue)
-		{
-			return new MetadataInvalidateRequestBuilder(id, version);
-		}
-
-		public static MetadataIndexRequestBuilder Index(string id, bool shouldUpdate)
-		{
-			return new MetadataIndexRequestBuilder(id, shouldUpdate);
 		}
 
 		public static MetadataUpdateFromXSLRequestBuilder UpdateFromXSL(int id, Stream xslFile)

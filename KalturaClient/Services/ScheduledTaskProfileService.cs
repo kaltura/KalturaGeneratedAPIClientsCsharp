@@ -78,6 +78,49 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class ScheduledTaskProfileDeleteRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public ScheduledTaskProfileDeleteRequestBuilder()
+			: base("scheduledtask_scheduledtaskprofile", "delete")
+		{
+		}
+
+		public ScheduledTaskProfileDeleteRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
 	public class ScheduledTaskProfileGetRequestBuilder : RequestBuilder<ScheduledTaskProfile>
 	{
 		#region Constants
@@ -121,43 +164,34 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class ScheduledTaskProfileUpdateRequestBuilder : RequestBuilder<ScheduledTaskProfile>
+	public class ScheduledTaskProfileGetDryRunResultsRequestBuilder : RequestBuilder<ListResponse<ObjectBase>>
 	{
 		#region Constants
-		public const string ID = "id";
-		public const string SCHEDULED_TASK_PROFILE = "scheduledTaskProfile";
+		public const string REQUEST_ID = "requestId";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public ScheduledTaskProfile ScheduledTaskProfile
+		public int RequestId
 		{
 			set;
 			get;
 		}
 
-		public ScheduledTaskProfileUpdateRequestBuilder()
-			: base("scheduledtask_scheduledtaskprofile", "update")
+		public ScheduledTaskProfileGetDryRunResultsRequestBuilder()
+			: base("scheduledtask_scheduledtaskprofile", "getDryRunResults")
 		{
 		}
 
-		public ScheduledTaskProfileUpdateRequestBuilder(int id, ScheduledTaskProfile scheduledTaskProfile)
+		public ScheduledTaskProfileGetDryRunResultsRequestBuilder(int requestId)
 			: this()
 		{
-			this.Id = id;
-			this.ScheduledTaskProfile = scheduledTaskProfile;
+			this.RequestId = requestId;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("scheduledTaskProfile"))
-				kparams.AddIfNotNull("scheduledTaskProfile", ScheduledTaskProfile);
+			if (!isMapped("requestId"))
+				kparams.AddIfNotNull("requestId", RequestId);
 			return kparams;
 		}
 
@@ -169,50 +203,7 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<ScheduledTaskProfile>(result);
-		}
-	}
-
-	public class ScheduledTaskProfileDeleteRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-
-		public ScheduledTaskProfileDeleteRequestBuilder()
-			: base("scheduledtask_scheduledtaskprofile", "delete")
-		{
-		}
-
-		public ScheduledTaskProfileDeleteRequestBuilder(int id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
+			return ObjectFactory.Create<ListResponse<ObjectBase>>(result);
 		}
 	}
 
@@ -320,34 +311,43 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class ScheduledTaskProfileGetDryRunResultsRequestBuilder : RequestBuilder<ListResponse<ObjectBase>>
+	public class ScheduledTaskProfileUpdateRequestBuilder : RequestBuilder<ScheduledTaskProfile>
 	{
 		#region Constants
-		public const string REQUEST_ID = "requestId";
+		public const string ID = "id";
+		public const string SCHEDULED_TASK_PROFILE = "scheduledTaskProfile";
 		#endregion
 
-		public int RequestId
+		public int Id
+		{
+			set;
+			get;
+		}
+		public ScheduledTaskProfile ScheduledTaskProfile
 		{
 			set;
 			get;
 		}
 
-		public ScheduledTaskProfileGetDryRunResultsRequestBuilder()
-			: base("scheduledtask_scheduledtaskprofile", "getDryRunResults")
+		public ScheduledTaskProfileUpdateRequestBuilder()
+			: base("scheduledtask_scheduledtaskprofile", "update")
 		{
 		}
 
-		public ScheduledTaskProfileGetDryRunResultsRequestBuilder(int requestId)
+		public ScheduledTaskProfileUpdateRequestBuilder(int id, ScheduledTaskProfile scheduledTaskProfile)
 			: this()
 		{
-			this.RequestId = requestId;
+			this.Id = id;
+			this.ScheduledTaskProfile = scheduledTaskProfile;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("requestId"))
-				kparams.AddIfNotNull("requestId", RequestId);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("scheduledTaskProfile"))
+				kparams.AddIfNotNull("scheduledTaskProfile", ScheduledTaskProfile);
 			return kparams;
 		}
 
@@ -359,7 +359,7 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<ListResponse<ObjectBase>>(result);
+			return ObjectFactory.Create<ScheduledTaskProfile>(result);
 		}
 	}
 
@@ -375,19 +375,19 @@ namespace Kaltura.Services
 			return new ScheduledTaskProfileAddRequestBuilder(scheduledTaskProfile);
 		}
 
+		public static ScheduledTaskProfileDeleteRequestBuilder Delete(int id)
+		{
+			return new ScheduledTaskProfileDeleteRequestBuilder(id);
+		}
+
 		public static ScheduledTaskProfileGetRequestBuilder Get(int id)
 		{
 			return new ScheduledTaskProfileGetRequestBuilder(id);
 		}
 
-		public static ScheduledTaskProfileUpdateRequestBuilder Update(int id, ScheduledTaskProfile scheduledTaskProfile)
+		public static ScheduledTaskProfileGetDryRunResultsRequestBuilder GetDryRunResults(int requestId)
 		{
-			return new ScheduledTaskProfileUpdateRequestBuilder(id, scheduledTaskProfile);
-		}
-
-		public static ScheduledTaskProfileDeleteRequestBuilder Delete(int id)
-		{
-			return new ScheduledTaskProfileDeleteRequestBuilder(id);
+			return new ScheduledTaskProfileGetDryRunResultsRequestBuilder(requestId);
 		}
 
 		public static ScheduledTaskProfileListRequestBuilder List(ScheduledTaskProfileFilter filter = null, FilterPager pager = null)
@@ -400,9 +400,9 @@ namespace Kaltura.Services
 			return new ScheduledTaskProfileRequestDryRunRequestBuilder(scheduledTaskProfileId, maxResults);
 		}
 
-		public static ScheduledTaskProfileGetDryRunResultsRequestBuilder GetDryRunResults(int requestId)
+		public static ScheduledTaskProfileUpdateRequestBuilder Update(int id, ScheduledTaskProfile scheduledTaskProfile)
 		{
-			return new ScheduledTaskProfileGetDryRunResultsRequestBuilder(requestId);
+			return new ScheduledTaskProfileUpdateRequestBuilder(id, scheduledTaskProfile);
 		}
 	}
 }

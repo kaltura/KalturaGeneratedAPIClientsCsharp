@@ -35,6 +35,64 @@ using Kaltura.Enums;
 
 namespace Kaltura.Services
 {
+	public class SystemGetTimeRequestBuilder : RequestBuilder<int>
+	{
+		#region Constants
+		#endregion
+
+
+		public SystemGetTimeRequestBuilder()
+			: base("system", "getTime")
+		{
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return int.Parse(result.InnerText);
+		}
+	}
+
+	public class SystemGetVersionRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		#endregion
+
+
+		public SystemGetVersionRequestBuilder()
+			: base("system", "getVersion")
+		{
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return result.InnerText;
+		}
+	}
+
 	public class SystemPingRequestBuilder : RequestBuilder<bool>
 	{
 		#region Constants
@@ -97,79 +155,11 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class SystemGetTimeRequestBuilder : RequestBuilder<int>
-	{
-		#region Constants
-		#endregion
-
-
-		public SystemGetTimeRequestBuilder()
-			: base("system", "getTime")
-		{
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return int.Parse(result.InnerText);
-		}
-	}
-
-	public class SystemGetVersionRequestBuilder : RequestBuilder<string>
-	{
-		#region Constants
-		#endregion
-
-
-		public SystemGetVersionRequestBuilder()
-			: base("system", "getVersion")
-		{
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return result.InnerText;
-		}
-	}
-
 
 	public class SystemService
 	{
 		private SystemService()
 		{
-		}
-
-		public static SystemPingRequestBuilder Ping()
-		{
-			return new SystemPingRequestBuilder();
-		}
-
-		public static SystemPingDatabaseRequestBuilder PingDatabase()
-		{
-			return new SystemPingDatabaseRequestBuilder();
 		}
 
 		public static SystemGetTimeRequestBuilder GetTime()
@@ -180,6 +170,16 @@ namespace Kaltura.Services
 		public static SystemGetVersionRequestBuilder GetVersion()
 		{
 			return new SystemGetVersionRequestBuilder();
+		}
+
+		public static SystemPingRequestBuilder Ping()
+		{
+			return new SystemPingRequestBuilder();
+		}
+
+		public static SystemPingDatabaseRequestBuilder PingDatabase()
+		{
+			return new SystemPingDatabaseRequestBuilder();
 		}
 	}
 }

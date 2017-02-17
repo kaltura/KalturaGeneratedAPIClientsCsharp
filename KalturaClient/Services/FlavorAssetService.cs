@@ -87,43 +87,52 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class FlavorAssetUpdateRequestBuilder : RequestBuilder<FlavorAsset>
+	public class FlavorAssetConvertRequestBuilder : RequestBuilder<object>
 	{
 		#region Constants
-		public const string ID = "id";
-		public const string FLAVOR_ASSET = "flavorAsset";
+		public const string ENTRY_ID = "entryId";
+		public const string FLAVOR_PARAMS_ID = "flavorParamsId";
+		public const string PRIORITY = "priority";
 		#endregion
 
-		public string Id
+		public string EntryId
 		{
 			set;
 			get;
 		}
-		public FlavorAsset FlavorAsset
+		public int FlavorParamsId
+		{
+			set;
+			get;
+		}
+		public int Priority
 		{
 			set;
 			get;
 		}
 
-		public FlavorAssetUpdateRequestBuilder()
-			: base("flavorasset", "update")
+		public FlavorAssetConvertRequestBuilder()
+			: base("flavorasset", "convert")
 		{
 		}
 
-		public FlavorAssetUpdateRequestBuilder(string id, FlavorAsset flavorAsset)
+		public FlavorAssetConvertRequestBuilder(string entryId, int flavorParamsId, int priority)
 			: this()
 		{
-			this.Id = id;
-			this.FlavorAsset = flavorAsset;
+			this.EntryId = entryId;
+			this.FlavorParamsId = flavorParamsId;
+			this.Priority = priority;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("flavorAsset"))
-				kparams.AddIfNotNull("flavorAsset", FlavorAsset);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("flavorParamsId"))
+				kparams.AddIfNotNull("flavorParamsId", FlavorParamsId);
+			if (!isMapped("priority"))
+				kparams.AddIfNotNull("priority", Priority);
 			return kparams;
 		}
 
@@ -135,15 +144,14 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<FlavorAsset>(result);
+			return null;
 		}
 	}
 
-	public class FlavorAssetSetContentRequestBuilder : RequestBuilder<FlavorAsset>
+	public class FlavorAssetDeleteRequestBuilder : RequestBuilder<object>
 	{
 		#region Constants
 		public const string ID = "id";
-		public const string CONTENT_RESOURCE = "contentResource";
 		#endregion
 
 		public string Id
@@ -151,22 +159,16 @@ namespace Kaltura.Services
 			set;
 			get;
 		}
-		public ContentResource ContentResource
-		{
-			set;
-			get;
-		}
 
-		public FlavorAssetSetContentRequestBuilder()
-			: base("flavorasset", "setContent")
+		public FlavorAssetDeleteRequestBuilder()
+			: base("flavorasset", "delete")
 		{
 		}
 
-		public FlavorAssetSetContentRequestBuilder(string id, ContentResource contentResource)
+		public FlavorAssetDeleteRequestBuilder(string id)
 			: this()
 		{
 			this.Id = id;
-			this.ContentResource = contentResource;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -174,8 +176,101 @@ namespace Kaltura.Services
 			Params kparams = base.getParameters(includeServiceAndAction);
 			if (!isMapped("id"))
 				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("contentResource"))
-				kparams.AddIfNotNull("contentResource", ContentResource);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class FlavorAssetDeleteLocalContentRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ASSET_ID = "assetId";
+		#endregion
+
+		public string AssetId
+		{
+			set;
+			get;
+		}
+
+		public FlavorAssetDeleteLocalContentRequestBuilder()
+			: base("flavorasset", "deleteLocalContent")
+		{
+		}
+
+		public FlavorAssetDeleteLocalContentRequestBuilder(string assetId)
+			: this()
+		{
+			this.AssetId = assetId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("assetId"))
+				kparams.AddIfNotNull("assetId", AssetId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class FlavorAssetExportRequestBuilder : RequestBuilder<FlavorAsset>
+	{
+		#region Constants
+		public const string ASSET_ID = "assetId";
+		public const string STORAGE_PROFILE_ID = "storageProfileId";
+		#endregion
+
+		public string AssetId
+		{
+			set;
+			get;
+		}
+		public int StorageProfileId
+		{
+			set;
+			get;
+		}
+
+		public FlavorAssetExportRequestBuilder()
+			: base("flavorasset", "export")
+		{
+		}
+
+		public FlavorAssetExportRequestBuilder(string assetId, int storageProfileId)
+			: this()
+		{
+			this.AssetId = assetId;
+			this.StorageProfileId = storageProfileId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("assetId"))
+				kparams.AddIfNotNull("assetId", AssetId);
+			if (!isMapped("storageProfileId"))
+				kparams.AddIfNotNull("storageProfileId", StorageProfileId);
 			return kparams;
 		}
 
@@ -282,366 +377,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class FlavorAssetListRequestBuilder : RequestBuilder<ListResponse<FlavorAsset>>
-	{
-		#region Constants
-		public const string FILTER = "filter";
-		public const string PAGER = "pager";
-		#endregion
-
-		public AssetFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
-
-		public FlavorAssetListRequestBuilder()
-			: base("flavorasset", "list")
-		{
-		}
-
-		public FlavorAssetListRequestBuilder(AssetFilter filter, FilterPager pager)
-			: this()
-		{
-			this.Filter = filter;
-			this.Pager = pager;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("filter"))
-				kparams.AddIfNotNull("filter", Filter);
-			if (!isMapped("pager"))
-				kparams.AddIfNotNull("pager", Pager);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ListResponse<FlavorAsset>>(result);
-		}
-	}
-
-	public class FlavorAssetGetWebPlayableByEntryIdRequestBuilder : RequestBuilder<IList<FlavorAsset>>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-
-		public FlavorAssetGetWebPlayableByEntryIdRequestBuilder()
-			: base("flavorasset", "getWebPlayableByEntryId")
-		{
-		}
-
-		public FlavorAssetGetWebPlayableByEntryIdRequestBuilder(string entryId)
-			: this()
-		{
-			this.EntryId = entryId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			IList<FlavorAsset> list = new List<FlavorAsset>();
-			foreach(XmlElement node in result.ChildNodes)
-			{
-				list.Add(ObjectFactory.Create<FlavorAsset>(node));
-			}
-			return list;
-		}
-	}
-
-	public class FlavorAssetConvertRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		public const string FLAVOR_PARAMS_ID = "flavorParamsId";
-		public const string PRIORITY = "priority";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public int FlavorParamsId
-		{
-			set;
-			get;
-		}
-		public int Priority
-		{
-			set;
-			get;
-		}
-
-		public FlavorAssetConvertRequestBuilder()
-			: base("flavorasset", "convert")
-		{
-		}
-
-		public FlavorAssetConvertRequestBuilder(string entryId, int flavorParamsId, int priority)
-			: this()
-		{
-			this.EntryId = entryId;
-			this.FlavorParamsId = flavorParamsId;
-			this.Priority = priority;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			if (!isMapped("flavorParamsId"))
-				kparams.AddIfNotNull("flavorParamsId", FlavorParamsId);
-			if (!isMapped("priority"))
-				kparams.AddIfNotNull("priority", Priority);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
-	public class FlavorAssetReconvertRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public string Id
-		{
-			set;
-			get;
-		}
-
-		public FlavorAssetReconvertRequestBuilder()
-			: base("flavorasset", "reconvert")
-		{
-		}
-
-		public FlavorAssetReconvertRequestBuilder(string id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
-	public class FlavorAssetDeleteRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public string Id
-		{
-			set;
-			get;
-		}
-
-		public FlavorAssetDeleteRequestBuilder()
-			: base("flavorasset", "delete")
-		{
-		}
-
-		public FlavorAssetDeleteRequestBuilder(string id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
-	public class FlavorAssetGetUrlRequestBuilder : RequestBuilder<string>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string STORAGE_ID = "storageId";
-		public const string FORCE_PROXY = "forceProxy";
-		public const string OPTIONS = "options";
-		#endregion
-
-		public string Id
-		{
-			set;
-			get;
-		}
-		public int StorageId
-		{
-			set;
-			get;
-		}
-		public bool ForceProxy
-		{
-			set;
-			get;
-		}
-		public FlavorAssetUrlOptions Options
-		{
-			set;
-			get;
-		}
-
-		public FlavorAssetGetUrlRequestBuilder()
-			: base("flavorasset", "getUrl")
-		{
-		}
-
-		public FlavorAssetGetUrlRequestBuilder(string id, int storageId, bool forceProxy, FlavorAssetUrlOptions options)
-			: this()
-		{
-			this.Id = id;
-			this.StorageId = storageId;
-			this.ForceProxy = forceProxy;
-			this.Options = options;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("storageId"))
-				kparams.AddIfNotNull("storageId", StorageId);
-			if (!isMapped("forceProxy"))
-				kparams.AddIfNotNull("forceProxy", ForceProxy);
-			if (!isMapped("options"))
-				kparams.AddIfNotNull("options", Options);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return result.InnerText;
-		}
-	}
-
-	public class FlavorAssetGetRemotePathsRequestBuilder : RequestBuilder<ListResponse<RemotePath>>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public string Id
-		{
-			set;
-			get;
-		}
-
-		public FlavorAssetGetRemotePathsRequestBuilder()
-			: base("flavorasset", "getRemotePaths")
-		{
-		}
-
-		public FlavorAssetGetRemotePathsRequestBuilder(string id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ListResponse<RemotePath>>(result);
-		}
-	}
-
 	public class FlavorAssetGetDownloadUrlRequestBuilder : RequestBuilder<string>
 	{
 		#region Constants
@@ -742,43 +477,34 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class FlavorAssetExportRequestBuilder : RequestBuilder<FlavorAsset>
+	public class FlavorAssetGetRemotePathsRequestBuilder : RequestBuilder<ListResponse<RemotePath>>
 	{
 		#region Constants
-		public const string ASSET_ID = "assetId";
-		public const string STORAGE_PROFILE_ID = "storageProfileId";
+		public const string ID = "id";
 		#endregion
 
-		public string AssetId
-		{
-			set;
-			get;
-		}
-		public int StorageProfileId
+		public string Id
 		{
 			set;
 			get;
 		}
 
-		public FlavorAssetExportRequestBuilder()
-			: base("flavorasset", "export")
+		public FlavorAssetGetRemotePathsRequestBuilder()
+			: base("flavorasset", "getRemotePaths")
 		{
 		}
 
-		public FlavorAssetExportRequestBuilder(string assetId, int storageProfileId)
+		public FlavorAssetGetRemotePathsRequestBuilder(string id)
 			: this()
 		{
-			this.AssetId = assetId;
-			this.StorageProfileId = storageProfileId;
+			this.Id = id;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("assetId"))
-				kparams.AddIfNotNull("assetId", AssetId);
-			if (!isMapped("storageProfileId"))
-				kparams.AddIfNotNull("storageProfileId", StorageProfileId);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
 			return kparams;
 		}
 
@@ -790,38 +516,65 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<FlavorAsset>(result);
+			return ObjectFactory.Create<ListResponse<RemotePath>>(result);
 		}
 	}
 
-	public class FlavorAssetSetAsSourceRequestBuilder : RequestBuilder<object>
+	public class FlavorAssetGetUrlRequestBuilder : RequestBuilder<string>
 	{
 		#region Constants
-		public const string ASSET_ID = "assetId";
+		public const string ID = "id";
+		public const string STORAGE_ID = "storageId";
+		public const string FORCE_PROXY = "forceProxy";
+		public const string OPTIONS = "options";
 		#endregion
 
-		public string AssetId
+		public string Id
+		{
+			set;
+			get;
+		}
+		public int StorageId
+		{
+			set;
+			get;
+		}
+		public bool ForceProxy
+		{
+			set;
+			get;
+		}
+		public FlavorAssetUrlOptions Options
 		{
 			set;
 			get;
 		}
 
-		public FlavorAssetSetAsSourceRequestBuilder()
-			: base("flavorasset", "setAsSource")
+		public FlavorAssetGetUrlRequestBuilder()
+			: base("flavorasset", "getUrl")
 		{
 		}
 
-		public FlavorAssetSetAsSourceRequestBuilder(string assetId)
+		public FlavorAssetGetUrlRequestBuilder(string id, int storageId, bool forceProxy, FlavorAssetUrlOptions options)
 			: this()
 		{
-			this.AssetId = assetId;
+			this.Id = id;
+			this.StorageId = storageId;
+			this.ForceProxy = forceProxy;
+			this.Options = options;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("assetId"))
-				kparams.AddIfNotNull("assetId", AssetId);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("storageId"))
+				kparams.AddIfNotNull("storageId", StorageId);
+			if (!isMapped("forceProxy"))
+				kparams.AddIfNotNull("forceProxy", ForceProxy);
+			if (!isMapped("options"))
+				kparams.AddIfNotNull("options", Options);
 			return kparams;
 		}
 
@@ -833,38 +586,138 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return null;
+			return result.InnerText;
 		}
 	}
 
-	public class FlavorAssetDeleteLocalContentRequestBuilder : RequestBuilder<object>
+	public class FlavorAssetGetWebPlayableByEntryIdRequestBuilder : RequestBuilder<IList<FlavorAsset>>
 	{
 		#region Constants
-		public const string ASSET_ID = "assetId";
+		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string AssetId
+		public string EntryId
 		{
 			set;
 			get;
 		}
 
-		public FlavorAssetDeleteLocalContentRequestBuilder()
-			: base("flavorasset", "deleteLocalContent")
+		public FlavorAssetGetWebPlayableByEntryIdRequestBuilder()
+			: base("flavorasset", "getWebPlayableByEntryId")
 		{
 		}
 
-		public FlavorAssetDeleteLocalContentRequestBuilder(string assetId)
+		public FlavorAssetGetWebPlayableByEntryIdRequestBuilder(string entryId)
 			: this()
 		{
-			this.AssetId = assetId;
+			this.EntryId = entryId;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("assetId"))
-				kparams.AddIfNotNull("assetId", AssetId);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			IList<FlavorAsset> list = new List<FlavorAsset>();
+			foreach(XmlElement node in result.ChildNodes)
+			{
+				list.Add(ObjectFactory.Create<FlavorAsset>(node));
+			}
+			return list;
+		}
+	}
+
+	public class FlavorAssetListRequestBuilder : RequestBuilder<ListResponse<FlavorAsset>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public AssetFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public FlavorAssetListRequestBuilder()
+			: base("flavorasset", "list")
+		{
+		}
+
+		public FlavorAssetListRequestBuilder(AssetFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<FlavorAsset>>(result);
+		}
+	}
+
+	public class FlavorAssetReconvertRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+
+		public FlavorAssetReconvertRequestBuilder()
+			: base("flavorasset", "reconvert")
+		{
+		}
+
+		public FlavorAssetReconvertRequestBuilder(string id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
 			return kparams;
 		}
 
@@ -941,6 +794,153 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class FlavorAssetSetAsSourceRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string ASSET_ID = "assetId";
+		#endregion
+
+		public string AssetId
+		{
+			set;
+			get;
+		}
+
+		public FlavorAssetSetAsSourceRequestBuilder()
+			: base("flavorasset", "setAsSource")
+		{
+		}
+
+		public FlavorAssetSetAsSourceRequestBuilder(string assetId)
+			: this()
+		{
+			this.AssetId = assetId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("assetId"))
+				kparams.AddIfNotNull("assetId", AssetId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
+	public class FlavorAssetSetContentRequestBuilder : RequestBuilder<FlavorAsset>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string CONTENT_RESOURCE = "contentResource";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public ContentResource ContentResource
+		{
+			set;
+			get;
+		}
+
+		public FlavorAssetSetContentRequestBuilder()
+			: base("flavorasset", "setContent")
+		{
+		}
+
+		public FlavorAssetSetContentRequestBuilder(string id, ContentResource contentResource)
+			: this()
+		{
+			this.Id = id;
+			this.ContentResource = contentResource;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("contentResource"))
+				kparams.AddIfNotNull("contentResource", ContentResource);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<FlavorAsset>(result);
+		}
+	}
+
+	public class FlavorAssetUpdateRequestBuilder : RequestBuilder<FlavorAsset>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string FLAVOR_ASSET = "flavorAsset";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public FlavorAsset FlavorAsset
+		{
+			set;
+			get;
+		}
+
+		public FlavorAssetUpdateRequestBuilder()
+			: base("flavorasset", "update")
+		{
+		}
+
+		public FlavorAssetUpdateRequestBuilder(string id, FlavorAsset flavorAsset)
+			: this()
+		{
+			this.Id = id;
+			this.FlavorAsset = flavorAsset;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("flavorAsset"))
+				kparams.AddIfNotNull("flavorAsset", FlavorAsset);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<FlavorAsset>(result);
+		}
+	}
+
 
 	public class FlavorAssetService
 	{
@@ -953,14 +953,24 @@ namespace Kaltura.Services
 			return new FlavorAssetAddRequestBuilder(entryId, flavorAsset);
 		}
 
-		public static FlavorAssetUpdateRequestBuilder Update(string id, FlavorAsset flavorAsset)
+		public static FlavorAssetConvertRequestBuilder Convert(string entryId, int flavorParamsId, int priority = 0)
 		{
-			return new FlavorAssetUpdateRequestBuilder(id, flavorAsset);
+			return new FlavorAssetConvertRequestBuilder(entryId, flavorParamsId, priority);
 		}
 
-		public static FlavorAssetSetContentRequestBuilder SetContent(string id, ContentResource contentResource)
+		public static FlavorAssetDeleteRequestBuilder Delete(string id)
 		{
-			return new FlavorAssetSetContentRequestBuilder(id, contentResource);
+			return new FlavorAssetDeleteRequestBuilder(id);
+		}
+
+		public static FlavorAssetDeleteLocalContentRequestBuilder DeleteLocalContent(string assetId)
+		{
+			return new FlavorAssetDeleteLocalContentRequestBuilder(assetId);
+		}
+
+		public static FlavorAssetExportRequestBuilder Export(string assetId, int storageProfileId)
+		{
+			return new FlavorAssetExportRequestBuilder(assetId, storageProfileId);
 		}
 
 		public static FlavorAssetGetRequestBuilder Get(string id)
@@ -973,41 +983,6 @@ namespace Kaltura.Services
 			return new FlavorAssetGetByEntryIdRequestBuilder(entryId);
 		}
 
-		public static FlavorAssetListRequestBuilder List(AssetFilter filter = null, FilterPager pager = null)
-		{
-			return new FlavorAssetListRequestBuilder(filter, pager);
-		}
-
-		public static FlavorAssetGetWebPlayableByEntryIdRequestBuilder GetWebPlayableByEntryId(string entryId)
-		{
-			return new FlavorAssetGetWebPlayableByEntryIdRequestBuilder(entryId);
-		}
-
-		public static FlavorAssetConvertRequestBuilder Convert(string entryId, int flavorParamsId, int priority = 0)
-		{
-			return new FlavorAssetConvertRequestBuilder(entryId, flavorParamsId, priority);
-		}
-
-		public static FlavorAssetReconvertRequestBuilder Reconvert(string id)
-		{
-			return new FlavorAssetReconvertRequestBuilder(id);
-		}
-
-		public static FlavorAssetDeleteRequestBuilder Delete(string id)
-		{
-			return new FlavorAssetDeleteRequestBuilder(id);
-		}
-
-		public static FlavorAssetGetUrlRequestBuilder GetUrl(string id, int storageId = Int32.MinValue, bool forceProxy = false, FlavorAssetUrlOptions options = null)
-		{
-			return new FlavorAssetGetUrlRequestBuilder(id, storageId, forceProxy, options);
-		}
-
-		public static FlavorAssetGetRemotePathsRequestBuilder GetRemotePaths(string id)
-		{
-			return new FlavorAssetGetRemotePathsRequestBuilder(id);
-		}
-
 		public static FlavorAssetGetDownloadUrlRequestBuilder GetDownloadUrl(string id, bool useCdn = false)
 		{
 			return new FlavorAssetGetDownloadUrlRequestBuilder(id, useCdn);
@@ -1018,9 +993,34 @@ namespace Kaltura.Services
 			return new FlavorAssetGetFlavorAssetsWithParamsRequestBuilder(entryId);
 		}
 
-		public static FlavorAssetExportRequestBuilder Export(string assetId, int storageProfileId)
+		public static FlavorAssetGetRemotePathsRequestBuilder GetRemotePaths(string id)
 		{
-			return new FlavorAssetExportRequestBuilder(assetId, storageProfileId);
+			return new FlavorAssetGetRemotePathsRequestBuilder(id);
+		}
+
+		public static FlavorAssetGetUrlRequestBuilder GetUrl(string id, int storageId = Int32.MinValue, bool forceProxy = false, FlavorAssetUrlOptions options = null)
+		{
+			return new FlavorAssetGetUrlRequestBuilder(id, storageId, forceProxy, options);
+		}
+
+		public static FlavorAssetGetWebPlayableByEntryIdRequestBuilder GetWebPlayableByEntryId(string entryId)
+		{
+			return new FlavorAssetGetWebPlayableByEntryIdRequestBuilder(entryId);
+		}
+
+		public static FlavorAssetListRequestBuilder List(AssetFilter filter = null, FilterPager pager = null)
+		{
+			return new FlavorAssetListRequestBuilder(filter, pager);
+		}
+
+		public static FlavorAssetReconvertRequestBuilder Reconvert(string id)
+		{
+			return new FlavorAssetReconvertRequestBuilder(id);
+		}
+
+		public static FlavorAssetServeAdStitchCmdRequestBuilder ServeAdStitchCmd(string assetId, string ffprobeJson = null, string duration = null)
+		{
+			return new FlavorAssetServeAdStitchCmdRequestBuilder(assetId, ffprobeJson, duration);
 		}
 
 		public static FlavorAssetSetAsSourceRequestBuilder SetAsSource(string assetId)
@@ -1028,14 +1028,14 @@ namespace Kaltura.Services
 			return new FlavorAssetSetAsSourceRequestBuilder(assetId);
 		}
 
-		public static FlavorAssetDeleteLocalContentRequestBuilder DeleteLocalContent(string assetId)
+		public static FlavorAssetSetContentRequestBuilder SetContent(string id, ContentResource contentResource)
 		{
-			return new FlavorAssetDeleteLocalContentRequestBuilder(assetId);
+			return new FlavorAssetSetContentRequestBuilder(id, contentResource);
 		}
 
-		public static FlavorAssetServeAdStitchCmdRequestBuilder ServeAdStitchCmd(string assetId, string ffprobeJson = null, string duration = null)
+		public static FlavorAssetUpdateRequestBuilder Update(string id, FlavorAsset flavorAsset)
 		{
-			return new FlavorAssetServeAdStitchCmdRequestBuilder(assetId, ffprobeJson, duration);
+			return new FlavorAssetUpdateRequestBuilder(id, flavorAsset);
 		}
 	}
 }

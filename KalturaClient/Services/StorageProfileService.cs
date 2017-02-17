@@ -78,58 +78,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class StorageProfileUpdateStatusRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string STORAGE_ID = "storageId";
-		public const string STATUS = "status";
-		#endregion
-
-		public int StorageId
-		{
-			set;
-			get;
-		}
-		public StorageProfileStatus Status
-		{
-			set;
-			get;
-		}
-
-		public StorageProfileUpdateStatusRequestBuilder()
-			: base("storageprofile", "updateStatus")
-		{
-		}
-
-		public StorageProfileUpdateStatusRequestBuilder(int storageId, StorageProfileStatus status)
-			: this()
-		{
-			this.StorageId = storageId;
-			this.Status = status;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("storageId"))
-				kparams.AddIfNotNull("storageId", StorageId);
-			if (!isMapped("status"))
-				kparams.AddIfNotNull("status", Status);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
 	public class StorageProfileGetRequestBuilder : RequestBuilder<StorageProfile>
 	{
 		#region Constants
@@ -158,58 +106,6 @@ namespace Kaltura.Services
 			Params kparams = base.getParameters(includeServiceAndAction);
 			if (!isMapped("storageProfileId"))
 				kparams.AddIfNotNull("storageProfileId", StorageProfileId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<StorageProfile>(result);
-		}
-	}
-
-	public class StorageProfileUpdateRequestBuilder : RequestBuilder<StorageProfile>
-	{
-		#region Constants
-		public const string STORAGE_PROFILE_ID = "storageProfileId";
-		public const string STORAGE_PROFILE = "storageProfile";
-		#endregion
-
-		public int StorageProfileId
-		{
-			set;
-			get;
-		}
-		public StorageProfile StorageProfile
-		{
-			set;
-			get;
-		}
-
-		public StorageProfileUpdateRequestBuilder()
-			: base("storageprofile", "update")
-		{
-		}
-
-		public StorageProfileUpdateRequestBuilder(int storageProfileId, StorageProfile storageProfile)
-			: this()
-		{
-			this.StorageProfileId = storageProfileId;
-			this.StorageProfile = storageProfile;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("storageProfileId"))
-				kparams.AddIfNotNull("storageProfileId", StorageProfileId);
-			if (!isMapped("storageProfile"))
-				kparams.AddIfNotNull("storageProfile", StorageProfile);
 			return kparams;
 		}
 
@@ -277,6 +173,110 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class StorageProfileUpdateRequestBuilder : RequestBuilder<StorageProfile>
+	{
+		#region Constants
+		public const string STORAGE_PROFILE_ID = "storageProfileId";
+		public const string STORAGE_PROFILE = "storageProfile";
+		#endregion
+
+		public int StorageProfileId
+		{
+			set;
+			get;
+		}
+		public StorageProfile StorageProfile
+		{
+			set;
+			get;
+		}
+
+		public StorageProfileUpdateRequestBuilder()
+			: base("storageprofile", "update")
+		{
+		}
+
+		public StorageProfileUpdateRequestBuilder(int storageProfileId, StorageProfile storageProfile)
+			: this()
+		{
+			this.StorageProfileId = storageProfileId;
+			this.StorageProfile = storageProfile;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("storageProfileId"))
+				kparams.AddIfNotNull("storageProfileId", StorageProfileId);
+			if (!isMapped("storageProfile"))
+				kparams.AddIfNotNull("storageProfile", StorageProfile);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<StorageProfile>(result);
+		}
+	}
+
+	public class StorageProfileUpdateStatusRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string STORAGE_ID = "storageId";
+		public const string STATUS = "status";
+		#endregion
+
+		public int StorageId
+		{
+			set;
+			get;
+		}
+		public StorageProfileStatus Status
+		{
+			set;
+			get;
+		}
+
+		public StorageProfileUpdateStatusRequestBuilder()
+			: base("storageprofile", "updateStatus")
+		{
+		}
+
+		public StorageProfileUpdateStatusRequestBuilder(int storageId, StorageProfileStatus status)
+			: this()
+		{
+			this.StorageId = storageId;
+			this.Status = status;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("storageId"))
+				kparams.AddIfNotNull("storageId", StorageId);
+			if (!isMapped("status"))
+				kparams.AddIfNotNull("status", Status);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
 
 	public class StorageProfileService
 	{
@@ -289,14 +289,14 @@ namespace Kaltura.Services
 			return new StorageProfileAddRequestBuilder(storageProfile);
 		}
 
-		public static StorageProfileUpdateStatusRequestBuilder UpdateStatus(int storageId, StorageProfileStatus status)
-		{
-			return new StorageProfileUpdateStatusRequestBuilder(storageId, status);
-		}
-
 		public static StorageProfileGetRequestBuilder Get(int storageProfileId)
 		{
 			return new StorageProfileGetRequestBuilder(storageProfileId);
+		}
+
+		public static StorageProfileListRequestBuilder List(StorageProfileFilter filter = null, FilterPager pager = null)
+		{
+			return new StorageProfileListRequestBuilder(filter, pager);
 		}
 
 		public static StorageProfileUpdateRequestBuilder Update(int storageProfileId, StorageProfile storageProfile)
@@ -304,9 +304,9 @@ namespace Kaltura.Services
 			return new StorageProfileUpdateRequestBuilder(storageProfileId, storageProfile);
 		}
 
-		public static StorageProfileListRequestBuilder List(StorageProfileFilter filter = null, FilterPager pager = null)
+		public static StorageProfileUpdateStatusRequestBuilder UpdateStatus(int storageId, StorageProfileStatus status)
 		{
-			return new StorageProfileListRequestBuilder(filter, pager);
+			return new StorageProfileUpdateStatusRequestBuilder(storageId, status);
 		}
 	}
 }

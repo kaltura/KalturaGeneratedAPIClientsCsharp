@@ -78,101 +78,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class LiveChannelSegmentGetRequestBuilder : RequestBuilder<LiveChannelSegment>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-
-		public LiveChannelSegmentGetRequestBuilder()
-			: base("livechannelsegment", "get")
-		{
-		}
-
-		public LiveChannelSegmentGetRequestBuilder(int id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<LiveChannelSegment>(result);
-		}
-	}
-
-	public class LiveChannelSegmentUpdateRequestBuilder : RequestBuilder<LiveChannelSegment>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string LIVE_CHANNEL_SEGMENT = "liveChannelSegment";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-		public LiveChannelSegment LiveChannelSegment
-		{
-			set;
-			get;
-		}
-
-		public LiveChannelSegmentUpdateRequestBuilder()
-			: base("livechannelsegment", "update")
-		{
-		}
-
-		public LiveChannelSegmentUpdateRequestBuilder(int id, LiveChannelSegment liveChannelSegment)
-			: this()
-		{
-			this.Id = id;
-			this.LiveChannelSegment = liveChannelSegment;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("liveChannelSegment"))
-				kparams.AddIfNotNull("liveChannelSegment", LiveChannelSegment);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<LiveChannelSegment>(result);
-		}
-	}
-
 	public class LiveChannelSegmentDeleteRequestBuilder : RequestBuilder<object>
 	{
 		#region Constants
@@ -213,6 +118,49 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return null;
+		}
+	}
+
+	public class LiveChannelSegmentGetRequestBuilder : RequestBuilder<LiveChannelSegment>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public LiveChannelSegmentGetRequestBuilder()
+			: base("livechannelsegment", "get")
+		{
+		}
+
+		public LiveChannelSegmentGetRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<LiveChannelSegment>(result);
 		}
 	}
 
@@ -268,6 +216,58 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class LiveChannelSegmentUpdateRequestBuilder : RequestBuilder<LiveChannelSegment>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string LIVE_CHANNEL_SEGMENT = "liveChannelSegment";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public LiveChannelSegment LiveChannelSegment
+		{
+			set;
+			get;
+		}
+
+		public LiveChannelSegmentUpdateRequestBuilder()
+			: base("livechannelsegment", "update")
+		{
+		}
+
+		public LiveChannelSegmentUpdateRequestBuilder(int id, LiveChannelSegment liveChannelSegment)
+			: this()
+		{
+			this.Id = id;
+			this.LiveChannelSegment = liveChannelSegment;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("liveChannelSegment"))
+				kparams.AddIfNotNull("liveChannelSegment", LiveChannelSegment);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<LiveChannelSegment>(result);
+		}
+	}
+
 
 	public class LiveChannelSegmentService
 	{
@@ -280,24 +280,24 @@ namespace Kaltura.Services
 			return new LiveChannelSegmentAddRequestBuilder(liveChannelSegment);
 		}
 
-		public static LiveChannelSegmentGetRequestBuilder Get(int id)
-		{
-			return new LiveChannelSegmentGetRequestBuilder(id);
-		}
-
-		public static LiveChannelSegmentUpdateRequestBuilder Update(int id, LiveChannelSegment liveChannelSegment)
-		{
-			return new LiveChannelSegmentUpdateRequestBuilder(id, liveChannelSegment);
-		}
-
 		public static LiveChannelSegmentDeleteRequestBuilder Delete(int id)
 		{
 			return new LiveChannelSegmentDeleteRequestBuilder(id);
 		}
 
+		public static LiveChannelSegmentGetRequestBuilder Get(int id)
+		{
+			return new LiveChannelSegmentGetRequestBuilder(id);
+		}
+
 		public static LiveChannelSegmentListRequestBuilder List(LiveChannelSegmentFilter filter = null, FilterPager pager = null)
 		{
 			return new LiveChannelSegmentListRequestBuilder(filter, pager);
+		}
+
+		public static LiveChannelSegmentUpdateRequestBuilder Update(int id, LiveChannelSegment liveChannelSegment)
+		{
+			return new LiveChannelSegmentUpdateRequestBuilder(id, liveChannelSegment);
 		}
 	}
 }

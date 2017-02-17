@@ -87,58 +87,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class QuizUpdateRequestBuilder : RequestBuilder<Quiz>
-	{
-		#region Constants
-		public const string ENTRY_ID = "entryId";
-		public const string QUIZ = "quiz";
-		#endregion
-
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public Quiz Quiz
-		{
-			set;
-			get;
-		}
-
-		public QuizUpdateRequestBuilder()
-			: base("quiz_quiz", "update")
-		{
-		}
-
-		public QuizUpdateRequestBuilder(string entryId, Quiz quiz)
-			: this()
-		{
-			this.EntryId = entryId;
-			this.Quiz = quiz;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
-			if (!isMapped("quiz"))
-				kparams.AddIfNotNull("quiz", Quiz);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<Quiz>(result);
-		}
-	}
-
 	public class QuizGetRequestBuilder : RequestBuilder<Quiz>
 	{
 		#region Constants
@@ -179,58 +127,6 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<Quiz>(result);
-		}
-	}
-
-	public class QuizListRequestBuilder : RequestBuilder<ListResponse<Quiz>>
-	{
-		#region Constants
-		public const string FILTER = "filter";
-		public const string PAGER = "pager";
-		#endregion
-
-		public QuizFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
-
-		public QuizListRequestBuilder()
-			: base("quiz_quiz", "list")
-		{
-		}
-
-		public QuizListRequestBuilder(QuizFilter filter, FilterPager pager)
-			: this()
-		{
-			this.Filter = filter;
-			this.Pager = pager;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("filter"))
-				kparams.AddIfNotNull("filter", Filter);
-			if (!isMapped("pager"))
-				kparams.AddIfNotNull("pager", Pager);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ListResponse<Quiz>>(result);
 		}
 	}
 
@@ -286,6 +182,110 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class QuizListRequestBuilder : RequestBuilder<ListResponse<Quiz>>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string PAGER = "pager";
+		#endregion
+
+		public QuizFilter Filter
+		{
+			set;
+			get;
+		}
+		public FilterPager Pager
+		{
+			set;
+			get;
+		}
+
+		public QuizListRequestBuilder()
+			: base("quiz_quiz", "list")
+		{
+		}
+
+		public QuizListRequestBuilder(QuizFilter filter, FilterPager pager)
+			: this()
+		{
+			this.Filter = filter;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<Quiz>>(result);
+		}
+	}
+
+	public class QuizUpdateRequestBuilder : RequestBuilder<Quiz>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string QUIZ = "quiz";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public Quiz Quiz
+		{
+			set;
+			get;
+		}
+
+		public QuizUpdateRequestBuilder()
+			: base("quiz_quiz", "update")
+		{
+		}
+
+		public QuizUpdateRequestBuilder(string entryId, Quiz quiz)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.Quiz = quiz;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("quiz"))
+				kparams.AddIfNotNull("quiz", Quiz);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<Quiz>(result);
+		}
+	}
+
 
 	public class QuizService
 	{
@@ -298,14 +298,14 @@ namespace Kaltura.Services
 			return new QuizAddRequestBuilder(entryId, quiz);
 		}
 
-		public static QuizUpdateRequestBuilder Update(string entryId, Quiz quiz)
-		{
-			return new QuizUpdateRequestBuilder(entryId, quiz);
-		}
-
 		public static QuizGetRequestBuilder Get(string entryId)
 		{
 			return new QuizGetRequestBuilder(entryId);
+		}
+
+		public static QuizGetUrlRequestBuilder GetUrl(string entryId, QuizOutputType quizOutputType)
+		{
+			return new QuizGetUrlRequestBuilder(entryId, quizOutputType);
 		}
 
 		public static QuizListRequestBuilder List(QuizFilter filter = null, FilterPager pager = null)
@@ -313,9 +313,9 @@ namespace Kaltura.Services
 			return new QuizListRequestBuilder(filter, pager);
 		}
 
-		public static QuizGetUrlRequestBuilder GetUrl(string entryId, QuizOutputType quizOutputType)
+		public static QuizUpdateRequestBuilder Update(string entryId, Quiz quiz)
 		{
-			return new QuizGetUrlRequestBuilder(entryId, quizOutputType);
+			return new QuizUpdateRequestBuilder(entryId, quiz);
 		}
 	}
 }

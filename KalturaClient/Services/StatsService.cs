@@ -123,49 +123,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class StatsReportKceErrorRequestBuilder : RequestBuilder<CEError>
-	{
-		#region Constants
-		public const string KALTURA_CE_ERROR = "kalturaCEError";
-		#endregion
-
-		public CEError KalturaCEError
-		{
-			set;
-			get;
-		}
-
-		public StatsReportKceErrorRequestBuilder()
-			: base("stats", "reportKceError")
-		{
-		}
-
-		public StatsReportKceErrorRequestBuilder(CEError kalturaCEError)
-			: this()
-		{
-			this.KalturaCEError = kalturaCEError;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("kalturaCEError"))
-				kparams.AddIfNotNull("kalturaCEError", KalturaCEError);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<CEError>(result);
-		}
-	}
-
 	public class StatsReportErrorRequestBuilder : RequestBuilder<object>
 	{
 		#region Constants
@@ -218,6 +175,49 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class StatsReportKceErrorRequestBuilder : RequestBuilder<CEError>
+	{
+		#region Constants
+		public const string KALTURA_CE_ERROR = "kalturaCEError";
+		#endregion
+
+		public CEError KalturaCEError
+		{
+			set;
+			get;
+		}
+
+		public StatsReportKceErrorRequestBuilder()
+			: base("stats", "reportKceError")
+		{
+		}
+
+		public StatsReportKceErrorRequestBuilder(CEError kalturaCEError)
+			: this()
+		{
+			this.KalturaCEError = kalturaCEError;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("kalturaCEError"))
+				kparams.AddIfNotNull("kalturaCEError", KalturaCEError);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<CEError>(result);
+		}
+	}
+
 
 	public class StatsService
 	{
@@ -235,14 +235,14 @@ namespace Kaltura.Services
 			return new StatsKmcCollectRequestBuilder(kmcEvent);
 		}
 
-		public static StatsReportKceErrorRequestBuilder ReportKceError(CEError kalturaCEError)
-		{
-			return new StatsReportKceErrorRequestBuilder(kalturaCEError);
-		}
-
 		public static StatsReportErrorRequestBuilder ReportError(string errorCode, string errorMessage)
 		{
 			return new StatsReportErrorRequestBuilder(errorCode, errorMessage);
+		}
+
+		public static StatsReportKceErrorRequestBuilder ReportKceError(CEError kalturaCEError)
+		{
+			return new StatsReportKceErrorRequestBuilder(kalturaCEError);
 		}
 	}
 }

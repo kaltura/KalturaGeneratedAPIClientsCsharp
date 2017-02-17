@@ -78,43 +78,34 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class DeliveryProfileUpdateRequestBuilder : RequestBuilder<DeliveryProfile>
+	public class DeliveryProfileCloneRequestBuilder : RequestBuilder<DeliveryProfile>
 	{
 		#region Constants
-		public const string ID = "id";
-		public const string DELIVERY = "delivery";
+		public const string DELIVERY_ID = "deliveryId";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public DeliveryProfile Delivery
+		public int DeliveryId
 		{
 			set;
 			get;
 		}
 
-		public DeliveryProfileUpdateRequestBuilder()
-			: base("deliveryprofile", "update")
+		public DeliveryProfileCloneRequestBuilder()
+			: base("deliveryprofile", "clone")
 		{
 		}
 
-		public DeliveryProfileUpdateRequestBuilder(string id, DeliveryProfile delivery)
+		public DeliveryProfileCloneRequestBuilder(int deliveryId)
 			: this()
 		{
-			this.Id = id;
-			this.Delivery = delivery;
+			this.DeliveryId = deliveryId;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("delivery"))
-				kparams.AddIfNotNull("delivery", Delivery);
+			if (!isMapped("deliveryId"))
+				kparams.AddIfNotNull("deliveryId", DeliveryId);
 			return kparams;
 		}
 
@@ -158,49 +149,6 @@ namespace Kaltura.Services
 			Params kparams = base.getParameters(includeServiceAndAction);
 			if (!isMapped("id"))
 				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<DeliveryProfile>(result);
-		}
-	}
-
-	public class DeliveryProfileCloneRequestBuilder : RequestBuilder<DeliveryProfile>
-	{
-		#region Constants
-		public const string DELIVERY_ID = "deliveryId";
-		#endregion
-
-		public int DeliveryId
-		{
-			set;
-			get;
-		}
-
-		public DeliveryProfileCloneRequestBuilder()
-			: base("deliveryprofile", "clone")
-		{
-		}
-
-		public DeliveryProfileCloneRequestBuilder(int deliveryId)
-			: this()
-		{
-			this.DeliveryId = deliveryId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("deliveryId"))
-				kparams.AddIfNotNull("deliveryId", DeliveryId);
 			return kparams;
 		}
 
@@ -268,6 +216,58 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class DeliveryProfileUpdateRequestBuilder : RequestBuilder<DeliveryProfile>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string DELIVERY = "delivery";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public DeliveryProfile Delivery
+		{
+			set;
+			get;
+		}
+
+		public DeliveryProfileUpdateRequestBuilder()
+			: base("deliveryprofile", "update")
+		{
+		}
+
+		public DeliveryProfileUpdateRequestBuilder(string id, DeliveryProfile delivery)
+			: this()
+		{
+			this.Id = id;
+			this.Delivery = delivery;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("delivery"))
+				kparams.AddIfNotNull("delivery", Delivery);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<DeliveryProfile>(result);
+		}
+	}
+
 
 	public class DeliveryProfileService
 	{
@@ -280,9 +280,9 @@ namespace Kaltura.Services
 			return new DeliveryProfileAddRequestBuilder(delivery);
 		}
 
-		public static DeliveryProfileUpdateRequestBuilder Update(string id, DeliveryProfile delivery)
+		public static DeliveryProfileCloneRequestBuilder Clone(int deliveryId)
 		{
-			return new DeliveryProfileUpdateRequestBuilder(id, delivery);
+			return new DeliveryProfileCloneRequestBuilder(deliveryId);
 		}
 
 		public static DeliveryProfileGetRequestBuilder Get(string id)
@@ -290,14 +290,14 @@ namespace Kaltura.Services
 			return new DeliveryProfileGetRequestBuilder(id);
 		}
 
-		public static DeliveryProfileCloneRequestBuilder Clone(int deliveryId)
-		{
-			return new DeliveryProfileCloneRequestBuilder(deliveryId);
-		}
-
 		public static DeliveryProfileListRequestBuilder List(DeliveryProfileFilter filter = null, FilterPager pager = null)
 		{
 			return new DeliveryProfileListRequestBuilder(filter, pager);
+		}
+
+		public static DeliveryProfileUpdateRequestBuilder Update(string id, DeliveryProfile delivery)
+		{
+			return new DeliveryProfileUpdateRequestBuilder(id, delivery);
 		}
 	}
 }

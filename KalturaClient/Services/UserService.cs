@@ -78,11 +78,115 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class UserUpdateRequestBuilder : RequestBuilder<User>
+	public class UserAddFromBulkUploadRequestBuilder : RequestBuilder<BulkUpload>
+	{
+		#region Constants
+		public const string FILE_DATA = "fileData";
+		public const string BULK_UPLOAD_DATA = "bulkUploadData";
+		public const string BULK_UPLOAD_USER_DATA = "bulkUploadUserData";
+		#endregion
+
+		public Stream FileData
+		{
+			set;
+			get;
+		}
+		public BulkUploadJobData BulkUploadData
+		{
+			set;
+			get;
+		}
+		public BulkUploadUserData BulkUploadUserData
+		{
+			set;
+			get;
+		}
+
+		public UserAddFromBulkUploadRequestBuilder()
+			: base("user", "addFromBulkUpload")
+		{
+		}
+
+		public UserAddFromBulkUploadRequestBuilder(Stream fileData, BulkUploadJobData bulkUploadData, BulkUploadUserData bulkUploadUserData)
+			: this()
+		{
+			this.FileData = fileData;
+			this.BulkUploadData = bulkUploadData;
+			this.BulkUploadUserData = bulkUploadUserData;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("bulkUploadData"))
+				kparams.AddIfNotNull("bulkUploadData", BulkUploadData);
+			if (!isMapped("bulkUploadUserData"))
+				kparams.AddIfNotNull("bulkUploadUserData", BulkUploadUserData);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			kfiles.Add("fileData", FileData);
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<BulkUpload>(result);
+		}
+	}
+
+	public class UserCheckLoginDataExistsRequestBuilder : RequestBuilder<bool>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		#endregion
+
+		public UserLoginDataFilter Filter
+		{
+			set;
+			get;
+		}
+
+		public UserCheckLoginDataExistsRequestBuilder()
+			: base("user", "checkLoginDataExists")
+		{
+		}
+
+		public UserCheckLoginDataExistsRequestBuilder(UserLoginDataFilter filter)
+			: this()
+		{
+			this.Filter = filter;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			if (result.InnerText.Equals("1") || result.InnerText.ToLower().Equals("true"))
+				return true;
+			return false;
+		}
+	}
+
+	public class UserDeleteRequestBuilder : RequestBuilder<User>
 	{
 		#region Constants
 		public const string USER_ID = "userId";
-		public const string USER = "user";
 		#endregion
 
 		public string UserId
@@ -90,22 +194,16 @@ namespace Kaltura.Services
 			set;
 			get;
 		}
-		public User User
-		{
-			set;
-			get;
-		}
 
-		public UserUpdateRequestBuilder()
-			: base("user", "update")
+		public UserDeleteRequestBuilder()
+			: base("user", "delete")
 		{
 		}
 
-		public UserUpdateRequestBuilder(string userId, User user)
+		public UserDeleteRequestBuilder(string userId)
 			: this()
 		{
 			this.UserId = userId;
-			this.User = user;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -113,8 +211,119 @@ namespace Kaltura.Services
 			Params kparams = base.getParameters(includeServiceAndAction);
 			if (!isMapped("userId"))
 				kparams.AddIfNotNull("userId", UserId);
-			if (!isMapped("user"))
-				kparams.AddIfNotNull("user", User);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<User>(result);
+		}
+	}
+
+	public class UserDisableLoginRequestBuilder : RequestBuilder<User>
+	{
+		#region Constants
+		public const string USER_ID = "userId";
+		public const string LOGIN_ID = "loginId";
+		#endregion
+
+		public string UserId
+		{
+			set;
+			get;
+		}
+		public string LoginId
+		{
+			set;
+			get;
+		}
+
+		public UserDisableLoginRequestBuilder()
+			: base("user", "disableLogin")
+		{
+		}
+
+		public UserDisableLoginRequestBuilder(string userId, string loginId)
+			: this()
+		{
+			this.UserId = userId;
+			this.LoginId = loginId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("userId"))
+				kparams.AddIfNotNull("userId", UserId);
+			if (!isMapped("loginId"))
+				kparams.AddIfNotNull("loginId", LoginId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<User>(result);
+		}
+	}
+
+	public class UserEnableLoginRequestBuilder : RequestBuilder<User>
+	{
+		#region Constants
+		public const string USER_ID = "userId";
+		public const string LOGIN_ID = "loginId";
+		public const string PASSWORD = "password";
+		#endregion
+
+		public string UserId
+		{
+			set;
+			get;
+		}
+		public string LoginId
+		{
+			set;
+			get;
+		}
+		public string Password
+		{
+			set;
+			get;
+		}
+
+		public UserEnableLoginRequestBuilder()
+			: base("user", "enableLogin")
+		{
+		}
+
+		public UserEnableLoginRequestBuilder(string userId, string loginId, string password)
+			: this()
+		{
+			this.UserId = userId;
+			this.LoginId = loginId;
+			this.Password = password;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("userId"))
+				kparams.AddIfNotNull("userId", UserId);
+			if (!isMapped("loginId"))
+				kparams.AddIfNotNull("loginId", LoginId);
+			if (!isMapped("password"))
+				kparams.AddIfNotNull("password", Password);
 			return kparams;
 		}
 
@@ -216,34 +425,43 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class UserDeleteRequestBuilder : RequestBuilder<User>
+	public class UserIndexRequestBuilder : RequestBuilder<string>
 	{
 		#region Constants
-		public const string USER_ID = "userId";
+		public const string ID = "id";
+		public const string SHOULD_UPDATE = "shouldUpdate";
 		#endregion
 
-		public string UserId
+		public string Id
+		{
+			set;
+			get;
+		}
+		public bool ShouldUpdate
 		{
 			set;
 			get;
 		}
 
-		public UserDeleteRequestBuilder()
-			: base("user", "delete")
+		public UserIndexRequestBuilder()
+			: base("user", "index")
 		{
 		}
 
-		public UserDeleteRequestBuilder(string userId)
+		public UserIndexRequestBuilder(string id, bool shouldUpdate)
 			: this()
 		{
-			this.UserId = userId;
+			this.Id = id;
+			this.ShouldUpdate = shouldUpdate;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("userId"))
-				kparams.AddIfNotNull("userId", UserId);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("shouldUpdate"))
+				kparams.AddIfNotNull("shouldUpdate", ShouldUpdate);
 			return kparams;
 		}
 
@@ -255,7 +473,7 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<User>(result);
+			return result.InnerText;
 		}
 	}
 
@@ -308,49 +526,6 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<User>>(result);
-		}
-	}
-
-	public class UserNotifyBanRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string USER_ID = "userId";
-		#endregion
-
-		public string UserId
-		{
-			set;
-			get;
-		}
-
-		public UserNotifyBanRequestBuilder()
-			: base("user", "notifyBan")
-		{
-		}
-
-		public UserNotifyBanRequestBuilder(string userId)
-			: this()
-		{
-			this.UserId = userId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("userId"))
-				kparams.AddIfNotNull("userId", UserId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
 		}
 	}
 
@@ -521,79 +696,34 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class UserUpdateLoginDataRequestBuilder : RequestBuilder<object>
+	public class UserNotifyBanRequestBuilder : RequestBuilder<object>
 	{
 		#region Constants
-		public const string OLD_LOGIN_ID = "oldLoginId";
-		public const string PASSWORD = "password";
-		public const string NEW_LOGIN_ID = "newLoginId";
-		public const string NEW_PASSWORD = "newPassword";
-		public const string NEW_FIRST_NAME = "newFirstName";
-		public const string NEW_LAST_NAME = "newLastName";
+		public const string USER_ID = "userId";
 		#endregion
 
-		public string OldLoginId
-		{
-			set;
-			get;
-		}
-		public string Password
-		{
-			set;
-			get;
-		}
-		public string NewLoginId
-		{
-			set;
-			get;
-		}
-		public string NewPassword
-		{
-			set;
-			get;
-		}
-		public string NewFirstName
-		{
-			set;
-			get;
-		}
-		public string NewLastName
+		public string UserId
 		{
 			set;
 			get;
 		}
 
-		public UserUpdateLoginDataRequestBuilder()
-			: base("user", "updateLoginData")
+		public UserNotifyBanRequestBuilder()
+			: base("user", "notifyBan")
 		{
 		}
 
-		public UserUpdateLoginDataRequestBuilder(string oldLoginId, string password, string newLoginId, string newPassword, string newFirstName, string newLastName)
+		public UserNotifyBanRequestBuilder(string userId)
 			: this()
 		{
-			this.OldLoginId = oldLoginId;
-			this.Password = password;
-			this.NewLoginId = newLoginId;
-			this.NewPassword = newPassword;
-			this.NewFirstName = newFirstName;
-			this.NewLastName = newLastName;
+			this.UserId = userId;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("oldLoginId"))
-				kparams.AddIfNotNull("oldLoginId", OldLoginId);
-			if (!isMapped("password"))
-				kparams.AddIfNotNull("password", Password);
-			if (!isMapped("newLoginId"))
-				kparams.AddIfNotNull("newLoginId", NewLoginId);
-			if (!isMapped("newPassword"))
-				kparams.AddIfNotNull("newPassword", NewPassword);
-			if (!isMapped("newFirstName"))
-				kparams.AddIfNotNull("newFirstName", NewFirstName);
-			if (!isMapped("newLastName"))
-				kparams.AddIfNotNull("newLastName", NewLastName);
+			if (!isMapped("userId"))
+				kparams.AddIfNotNull("userId", UserId);
 			return kparams;
 		}
 
@@ -704,12 +834,11 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class UserEnableLoginRequestBuilder : RequestBuilder<User>
+	public class UserUpdateRequestBuilder : RequestBuilder<User>
 	{
 		#region Constants
 		public const string USER_ID = "userId";
-		public const string LOGIN_ID = "loginId";
-		public const string PASSWORD = "password";
+		public const string USER = "user";
 		#endregion
 
 		public string UserId
@@ -717,7 +846,58 @@ namespace Kaltura.Services
 			set;
 			get;
 		}
-		public string LoginId
+		public User User
+		{
+			set;
+			get;
+		}
+
+		public UserUpdateRequestBuilder()
+			: base("user", "update")
+		{
+		}
+
+		public UserUpdateRequestBuilder(string userId, User user)
+			: this()
+		{
+			this.UserId = userId;
+			this.User = user;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("userId"))
+				kparams.AddIfNotNull("userId", UserId);
+			if (!isMapped("user"))
+				kparams.AddIfNotNull("user", User);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<User>(result);
+		}
+	}
+
+	public class UserUpdateLoginDataRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string OLD_LOGIN_ID = "oldLoginId";
+		public const string PASSWORD = "password";
+		public const string NEW_LOGIN_ID = "newLoginId";
+		public const string NEW_PASSWORD = "newPassword";
+		public const string NEW_FIRST_NAME = "newFirstName";
+		public const string NEW_LAST_NAME = "newLastName";
+		#endregion
+
+		public string OldLoginId
 		{
 			set;
 			get;
@@ -727,29 +907,58 @@ namespace Kaltura.Services
 			set;
 			get;
 		}
+		public string NewLoginId
+		{
+			set;
+			get;
+		}
+		public string NewPassword
+		{
+			set;
+			get;
+		}
+		public string NewFirstName
+		{
+			set;
+			get;
+		}
+		public string NewLastName
+		{
+			set;
+			get;
+		}
 
-		public UserEnableLoginRequestBuilder()
-			: base("user", "enableLogin")
+		public UserUpdateLoginDataRequestBuilder()
+			: base("user", "updateLoginData")
 		{
 		}
 
-		public UserEnableLoginRequestBuilder(string userId, string loginId, string password)
+		public UserUpdateLoginDataRequestBuilder(string oldLoginId, string password, string newLoginId, string newPassword, string newFirstName, string newLastName)
 			: this()
 		{
-			this.UserId = userId;
-			this.LoginId = loginId;
+			this.OldLoginId = oldLoginId;
 			this.Password = password;
+			this.NewLoginId = newLoginId;
+			this.NewPassword = newPassword;
+			this.NewFirstName = newFirstName;
+			this.NewLastName = newLastName;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("userId"))
-				kparams.AddIfNotNull("userId", UserId);
-			if (!isMapped("loginId"))
-				kparams.AddIfNotNull("loginId", LoginId);
+			if (!isMapped("oldLoginId"))
+				kparams.AddIfNotNull("oldLoginId", OldLoginId);
 			if (!isMapped("password"))
 				kparams.AddIfNotNull("password", Password);
+			if (!isMapped("newLoginId"))
+				kparams.AddIfNotNull("newLoginId", NewLoginId);
+			if (!isMapped("newPassword"))
+				kparams.AddIfNotNull("newPassword", NewPassword);
+			if (!isMapped("newFirstName"))
+				kparams.AddIfNotNull("newFirstName", NewFirstName);
+			if (!isMapped("newLastName"))
+				kparams.AddIfNotNull("newLastName", NewLastName);
 			return kparams;
 		}
 
@@ -761,216 +970,7 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<User>(result);
-		}
-	}
-
-	public class UserDisableLoginRequestBuilder : RequestBuilder<User>
-	{
-		#region Constants
-		public const string USER_ID = "userId";
-		public const string LOGIN_ID = "loginId";
-		#endregion
-
-		public string UserId
-		{
-			set;
-			get;
-		}
-		public string LoginId
-		{
-			set;
-			get;
-		}
-
-		public UserDisableLoginRequestBuilder()
-			: base("user", "disableLogin")
-		{
-		}
-
-		public UserDisableLoginRequestBuilder(string userId, string loginId)
-			: this()
-		{
-			this.UserId = userId;
-			this.LoginId = loginId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("userId"))
-				kparams.AddIfNotNull("userId", UserId);
-			if (!isMapped("loginId"))
-				kparams.AddIfNotNull("loginId", LoginId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<User>(result);
-		}
-	}
-
-	public class UserIndexRequestBuilder : RequestBuilder<string>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string SHOULD_UPDATE = "shouldUpdate";
-		#endregion
-
-		public string Id
-		{
-			set;
-			get;
-		}
-		public bool ShouldUpdate
-		{
-			set;
-			get;
-		}
-
-		public UserIndexRequestBuilder()
-			: base("user", "index")
-		{
-		}
-
-		public UserIndexRequestBuilder(string id, bool shouldUpdate)
-			: this()
-		{
-			this.Id = id;
-			this.ShouldUpdate = shouldUpdate;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("shouldUpdate"))
-				kparams.AddIfNotNull("shouldUpdate", ShouldUpdate);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return result.InnerText;
-		}
-	}
-
-	public class UserAddFromBulkUploadRequestBuilder : RequestBuilder<BulkUpload>
-	{
-		#region Constants
-		public const string FILE_DATA = "fileData";
-		public const string BULK_UPLOAD_DATA = "bulkUploadData";
-		public const string BULK_UPLOAD_USER_DATA = "bulkUploadUserData";
-		#endregion
-
-		public Stream FileData
-		{
-			set;
-			get;
-		}
-		public BulkUploadJobData BulkUploadData
-		{
-			set;
-			get;
-		}
-		public BulkUploadUserData BulkUploadUserData
-		{
-			set;
-			get;
-		}
-
-		public UserAddFromBulkUploadRequestBuilder()
-			: base("user", "addFromBulkUpload")
-		{
-		}
-
-		public UserAddFromBulkUploadRequestBuilder(Stream fileData, BulkUploadJobData bulkUploadData, BulkUploadUserData bulkUploadUserData)
-			: this()
-		{
-			this.FileData = fileData;
-			this.BulkUploadData = bulkUploadData;
-			this.BulkUploadUserData = bulkUploadUserData;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("bulkUploadData"))
-				kparams.AddIfNotNull("bulkUploadData", BulkUploadData);
-			if (!isMapped("bulkUploadUserData"))
-				kparams.AddIfNotNull("bulkUploadUserData", BulkUploadUserData);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			kfiles.Add("fileData", FileData);
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<BulkUpload>(result);
-		}
-	}
-
-	public class UserCheckLoginDataExistsRequestBuilder : RequestBuilder<bool>
-	{
-		#region Constants
-		public const string FILTER = "filter";
-		#endregion
-
-		public UserLoginDataFilter Filter
-		{
-			set;
-			get;
-		}
-
-		public UserCheckLoginDataExistsRequestBuilder()
-			: base("user", "checkLoginDataExists")
-		{
-		}
-
-		public UserCheckLoginDataExistsRequestBuilder(UserLoginDataFilter filter)
-			: this()
-		{
-			this.Filter = filter;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("filter"))
-				kparams.AddIfNotNull("filter", Filter);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			if (result.InnerText.Equals("1") || result.InnerText.ToLower().Equals("true"))
-				return true;
-			return false;
+			return null;
 		}
 	}
 
@@ -986,9 +986,29 @@ namespace Kaltura.Services
 			return new UserAddRequestBuilder(user);
 		}
 
-		public static UserUpdateRequestBuilder Update(string userId, User user)
+		public static UserAddFromBulkUploadRequestBuilder AddFromBulkUpload(Stream fileData, BulkUploadJobData bulkUploadData = null, BulkUploadUserData bulkUploadUserData = null)
 		{
-			return new UserUpdateRequestBuilder(userId, user);
+			return new UserAddFromBulkUploadRequestBuilder(fileData, bulkUploadData, bulkUploadUserData);
+		}
+
+		public static UserCheckLoginDataExistsRequestBuilder CheckLoginDataExists(UserLoginDataFilter filter)
+		{
+			return new UserCheckLoginDataExistsRequestBuilder(filter);
+		}
+
+		public static UserDeleteRequestBuilder Delete(string userId)
+		{
+			return new UserDeleteRequestBuilder(userId);
+		}
+
+		public static UserDisableLoginRequestBuilder DisableLogin(string userId = null, string loginId = null)
+		{
+			return new UserDisableLoginRequestBuilder(userId, loginId);
+		}
+
+		public static UserEnableLoginRequestBuilder EnableLogin(string userId, string loginId, string password = null)
+		{
+			return new UserEnableLoginRequestBuilder(userId, loginId, password);
 		}
 
 		public static UserGetRequestBuilder Get(string userId = null)
@@ -1001,19 +1021,14 @@ namespace Kaltura.Services
 			return new UserGetByLoginIdRequestBuilder(loginId);
 		}
 
-		public static UserDeleteRequestBuilder Delete(string userId)
+		public static UserIndexRequestBuilder Index(string id, bool shouldUpdate = true)
 		{
-			return new UserDeleteRequestBuilder(userId);
+			return new UserIndexRequestBuilder(id, shouldUpdate);
 		}
 
 		public static UserListRequestBuilder List(UserFilter filter = null, FilterPager pager = null)
 		{
 			return new UserListRequestBuilder(filter, pager);
-		}
-
-		public static UserNotifyBanRequestBuilder NotifyBan(string userId)
-		{
-			return new UserNotifyBanRequestBuilder(userId);
 		}
 
 		public static UserLoginRequestBuilder Login(int partnerId, string userId, string password, int expiry = 86400, string privileges = "*")
@@ -1026,9 +1041,9 @@ namespace Kaltura.Services
 			return new UserLoginByLoginIdRequestBuilder(loginId, password, partnerId, expiry, privileges, otp);
 		}
 
-		public static UserUpdateLoginDataRequestBuilder UpdateLoginData(string oldLoginId, string password, string newLoginId = "", string newPassword = "", string newFirstName = null, string newLastName = null)
+		public static UserNotifyBanRequestBuilder NotifyBan(string userId)
 		{
-			return new UserUpdateLoginDataRequestBuilder(oldLoginId, password, newLoginId, newPassword, newFirstName, newLastName);
+			return new UserNotifyBanRequestBuilder(userId);
 		}
 
 		public static UserResetPasswordRequestBuilder ResetPassword(string email)
@@ -1041,29 +1056,14 @@ namespace Kaltura.Services
 			return new UserSetInitialPasswordRequestBuilder(hashKey, newPassword);
 		}
 
-		public static UserEnableLoginRequestBuilder EnableLogin(string userId, string loginId, string password = null)
+		public static UserUpdateRequestBuilder Update(string userId, User user)
 		{
-			return new UserEnableLoginRequestBuilder(userId, loginId, password);
+			return new UserUpdateRequestBuilder(userId, user);
 		}
 
-		public static UserDisableLoginRequestBuilder DisableLogin(string userId = null, string loginId = null)
+		public static UserUpdateLoginDataRequestBuilder UpdateLoginData(string oldLoginId, string password, string newLoginId = "", string newPassword = "", string newFirstName = null, string newLastName = null)
 		{
-			return new UserDisableLoginRequestBuilder(userId, loginId);
-		}
-
-		public static UserIndexRequestBuilder Index(string id, bool shouldUpdate = true)
-		{
-			return new UserIndexRequestBuilder(id, shouldUpdate);
-		}
-
-		public static UserAddFromBulkUploadRequestBuilder AddFromBulkUpload(Stream fileData, BulkUploadJobData bulkUploadData = null, BulkUploadUserData bulkUploadUserData = null)
-		{
-			return new UserAddFromBulkUploadRequestBuilder(fileData, bulkUploadData, bulkUploadUserData);
-		}
-
-		public static UserCheckLoginDataExistsRequestBuilder CheckLoginDataExists(UserLoginDataFilter filter)
-		{
-			return new UserCheckLoginDataExistsRequestBuilder(filter);
+			return new UserUpdateLoginDataRequestBuilder(oldLoginId, password, newLoginId, newPassword, newFirstName, newLastName);
 		}
 	}
 }

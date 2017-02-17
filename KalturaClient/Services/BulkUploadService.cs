@@ -35,6 +35,49 @@ using Kaltura.Enums;
 
 namespace Kaltura.Services
 {
+	public class BulkUploadAbortRequestBuilder : RequestBuilder<BulkUpload>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public long Id
+		{
+			set;
+			get;
+		}
+
+		public BulkUploadAbortRequestBuilder()
+			: base("bulkupload", "abort")
+		{
+		}
+
+		public BulkUploadAbortRequestBuilder(long id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<BulkUpload>(result);
+		}
+	}
+
 	public class BulkUploadAddRequestBuilder : RequestBuilder<BulkUpload>
 	{
 		#region Constants
@@ -199,54 +242,16 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class BulkUploadAbortRequestBuilder : RequestBuilder<BulkUpload>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public long Id
-		{
-			set;
-			get;
-		}
-
-		public BulkUploadAbortRequestBuilder()
-			: base("bulkupload", "abort")
-		{
-		}
-
-		public BulkUploadAbortRequestBuilder(long id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<BulkUpload>(result);
-		}
-	}
-
 
 	public class BulkUploadService
 	{
 		private BulkUploadService()
 		{
+		}
+
+		public static BulkUploadAbortRequestBuilder Abort(long id)
+		{
+			return new BulkUploadAbortRequestBuilder(id);
 		}
 
 		public static BulkUploadAddRequestBuilder Add(int conversionProfileId, Stream csvFileData, BulkUploadType bulkUploadType = null, string uploadedBy = null, string fileName = null)
@@ -262,11 +267,6 @@ namespace Kaltura.Services
 		public static BulkUploadListRequestBuilder List(FilterPager pager = null)
 		{
 			return new BulkUploadListRequestBuilder(pager);
-		}
-
-		public static BulkUploadAbortRequestBuilder Abort(long id)
-		{
-			return new BulkUploadAbortRequestBuilder(id);
 		}
 	}
 }

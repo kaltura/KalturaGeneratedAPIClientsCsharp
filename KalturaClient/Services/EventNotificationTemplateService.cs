@@ -130,153 +130,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class EventNotificationTemplateGetRequestBuilder : RequestBuilder<EventNotificationTemplate>
-	{
-		#region Constants
-		public const string ID = "id";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-
-		public EventNotificationTemplateGetRequestBuilder()
-			: base("eventnotification_eventnotificationtemplate", "get")
-		{
-		}
-
-		public EventNotificationTemplateGetRequestBuilder(int id)
-			: this()
-		{
-			this.Id = id;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<EventNotificationTemplate>(result);
-		}
-	}
-
-	public class EventNotificationTemplateUpdateRequestBuilder : RequestBuilder<EventNotificationTemplate>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string EVENT_NOTIFICATION_TEMPLATE = "eventNotificationTemplate";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-		public EventNotificationTemplate EventNotificationTemplate
-		{
-			set;
-			get;
-		}
-
-		public EventNotificationTemplateUpdateRequestBuilder()
-			: base("eventnotification_eventnotificationtemplate", "update")
-		{
-		}
-
-		public EventNotificationTemplateUpdateRequestBuilder(int id, EventNotificationTemplate eventNotificationTemplate)
-			: this()
-		{
-			this.Id = id;
-			this.EventNotificationTemplate = eventNotificationTemplate;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("eventNotificationTemplate"))
-				kparams.AddIfNotNull("eventNotificationTemplate", EventNotificationTemplate);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<EventNotificationTemplate>(result);
-		}
-	}
-
-	public class EventNotificationTemplateUpdateStatusRequestBuilder : RequestBuilder<EventNotificationTemplate>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string STATUS = "status";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-		public EventNotificationTemplateStatus Status
-		{
-			set;
-			get;
-		}
-
-		public EventNotificationTemplateUpdateStatusRequestBuilder()
-			: base("eventnotification_eventnotificationtemplate", "updateStatus")
-		{
-		}
-
-		public EventNotificationTemplateUpdateStatusRequestBuilder(int id, EventNotificationTemplateStatus status)
-			: this()
-		{
-			this.Id = id;
-			this.Status = status;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("status"))
-				kparams.AddIfNotNull("status", Status);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<EventNotificationTemplate>(result);
-		}
-	}
-
 	public class EventNotificationTemplateDeleteRequestBuilder : RequestBuilder<object>
 	{
 		#region Constants
@@ -317,6 +170,101 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return null;
+		}
+	}
+
+	public class EventNotificationTemplateDispatchRequestBuilder : RequestBuilder<int>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string SCOPE = "scope";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public EventNotificationScope Scope
+		{
+			set;
+			get;
+		}
+
+		public EventNotificationTemplateDispatchRequestBuilder()
+			: base("eventnotification_eventnotificationtemplate", "dispatch")
+		{
+		}
+
+		public EventNotificationTemplateDispatchRequestBuilder(int id, EventNotificationScope scope)
+			: this()
+		{
+			this.Id = id;
+			this.Scope = scope;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("scope"))
+				kparams.AddIfNotNull("scope", Scope);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return int.Parse(result.InnerText);
+		}
+	}
+
+	public class EventNotificationTemplateGetRequestBuilder : RequestBuilder<EventNotificationTemplate>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+
+		public EventNotificationTemplateGetRequestBuilder()
+			: base("eventnotification_eventnotificationtemplate", "get")
+		{
+		}
+
+		public EventNotificationTemplateGetRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<EventNotificationTemplate>(result);
 		}
 	}
 
@@ -424,58 +372,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class EventNotificationTemplateDispatchRequestBuilder : RequestBuilder<int>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string SCOPE = "scope";
-		#endregion
-
-		public int Id
-		{
-			set;
-			get;
-		}
-		public EventNotificationScope Scope
-		{
-			set;
-			get;
-		}
-
-		public EventNotificationTemplateDispatchRequestBuilder()
-			: base("eventnotification_eventnotificationtemplate", "dispatch")
-		{
-		}
-
-		public EventNotificationTemplateDispatchRequestBuilder(int id, EventNotificationScope scope)
-			: this()
-		{
-			this.Id = id;
-			this.Scope = scope;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("scope"))
-				kparams.AddIfNotNull("scope", Scope);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return int.Parse(result.InnerText);
-		}
-	}
-
 	public class EventNotificationTemplateListTemplatesRequestBuilder : RequestBuilder<ListResponse<EventNotificationTemplate>>
 	{
 		#region Constants
@@ -528,6 +424,110 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class EventNotificationTemplateUpdateRequestBuilder : RequestBuilder<EventNotificationTemplate>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string EVENT_NOTIFICATION_TEMPLATE = "eventNotificationTemplate";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public EventNotificationTemplate EventNotificationTemplate
+		{
+			set;
+			get;
+		}
+
+		public EventNotificationTemplateUpdateRequestBuilder()
+			: base("eventnotification_eventnotificationtemplate", "update")
+		{
+		}
+
+		public EventNotificationTemplateUpdateRequestBuilder(int id, EventNotificationTemplate eventNotificationTemplate)
+			: this()
+		{
+			this.Id = id;
+			this.EventNotificationTemplate = eventNotificationTemplate;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("eventNotificationTemplate"))
+				kparams.AddIfNotNull("eventNotificationTemplate", EventNotificationTemplate);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<EventNotificationTemplate>(result);
+		}
+	}
+
+	public class EventNotificationTemplateUpdateStatusRequestBuilder : RequestBuilder<EventNotificationTemplate>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string STATUS = "status";
+		#endregion
+
+		public int Id
+		{
+			set;
+			get;
+		}
+		public EventNotificationTemplateStatus Status
+		{
+			set;
+			get;
+		}
+
+		public EventNotificationTemplateUpdateStatusRequestBuilder()
+			: base("eventnotification_eventnotificationtemplate", "updateStatus")
+		{
+		}
+
+		public EventNotificationTemplateUpdateStatusRequestBuilder(int id, EventNotificationTemplateStatus status)
+			: this()
+		{
+			this.Id = id;
+			this.Status = status;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("status"))
+				kparams.AddIfNotNull("status", Status);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<EventNotificationTemplate>(result);
+		}
+	}
+
 
 	public class EventNotificationTemplateService
 	{
@@ -545,24 +545,19 @@ namespace Kaltura.Services
 			return new EventNotificationTemplateCloneRequestBuilder(id, eventNotificationTemplate);
 		}
 
-		public static EventNotificationTemplateGetRequestBuilder Get(int id)
-		{
-			return new EventNotificationTemplateGetRequestBuilder(id);
-		}
-
-		public static EventNotificationTemplateUpdateRequestBuilder Update(int id, EventNotificationTemplate eventNotificationTemplate)
-		{
-			return new EventNotificationTemplateUpdateRequestBuilder(id, eventNotificationTemplate);
-		}
-
-		public static EventNotificationTemplateUpdateStatusRequestBuilder UpdateStatus(int id, EventNotificationTemplateStatus status)
-		{
-			return new EventNotificationTemplateUpdateStatusRequestBuilder(id, status);
-		}
-
 		public static EventNotificationTemplateDeleteRequestBuilder Delete(int id)
 		{
 			return new EventNotificationTemplateDeleteRequestBuilder(id);
+		}
+
+		public static EventNotificationTemplateDispatchRequestBuilder Dispatch(int id, EventNotificationScope scope)
+		{
+			return new EventNotificationTemplateDispatchRequestBuilder(id, scope);
+		}
+
+		public static EventNotificationTemplateGetRequestBuilder Get(int id)
+		{
+			return new EventNotificationTemplateGetRequestBuilder(id);
 		}
 
 		public static EventNotificationTemplateListRequestBuilder List(EventNotificationTemplateFilter filter = null, FilterPager pager = null)
@@ -575,14 +570,19 @@ namespace Kaltura.Services
 			return new EventNotificationTemplateListByPartnerRequestBuilder(filter, pager);
 		}
 
-		public static EventNotificationTemplateDispatchRequestBuilder Dispatch(int id, EventNotificationScope scope)
-		{
-			return new EventNotificationTemplateDispatchRequestBuilder(id, scope);
-		}
-
 		public static EventNotificationTemplateListTemplatesRequestBuilder ListTemplates(EventNotificationTemplateFilter filter = null, FilterPager pager = null)
 		{
 			return new EventNotificationTemplateListTemplatesRequestBuilder(filter, pager);
+		}
+
+		public static EventNotificationTemplateUpdateRequestBuilder Update(int id, EventNotificationTemplate eventNotificationTemplate)
+		{
+			return new EventNotificationTemplateUpdateRequestBuilder(id, eventNotificationTemplate);
+		}
+
+		public static EventNotificationTemplateUpdateStatusRequestBuilder UpdateStatus(int id, EventNotificationTemplateStatus status)
+		{
+			return new EventNotificationTemplateUpdateStatusRequestBuilder(id, status);
 		}
 	}
 }

@@ -78,41 +78,32 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class WidgetUpdateRequestBuilder : RequestBuilder<Widget>
+	public class WidgetCloneRequestBuilder : RequestBuilder<Widget>
 	{
 		#region Constants
-		public const string ID = "id";
 		public const string WIDGET = "widget";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
 		public Widget Widget
 		{
 			set;
 			get;
 		}
 
-		public WidgetUpdateRequestBuilder()
-			: base("widget", "update")
+		public WidgetCloneRequestBuilder()
+			: base("widget", "clone")
 		{
 		}
 
-		public WidgetUpdateRequestBuilder(string id, Widget widget)
+		public WidgetCloneRequestBuilder(Widget widget)
 			: this()
 		{
-			this.Id = id;
 			this.Widget = widget;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
 			if (!isMapped("widget"))
 				kparams.AddIfNotNull("widget", Widget);
 			return kparams;
@@ -158,49 +149,6 @@ namespace Kaltura.Services
 			Params kparams = base.getParameters(includeServiceAndAction);
 			if (!isMapped("id"))
 				kparams.AddIfNotNull("id", Id);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<Widget>(result);
-		}
-	}
-
-	public class WidgetCloneRequestBuilder : RequestBuilder<Widget>
-	{
-		#region Constants
-		public const string WIDGET = "widget";
-		#endregion
-
-		public Widget Widget
-		{
-			set;
-			get;
-		}
-
-		public WidgetCloneRequestBuilder()
-			: base("widget", "clone")
-		{
-		}
-
-		public WidgetCloneRequestBuilder(Widget widget)
-			: this()
-		{
-			this.Widget = widget;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("widget"))
-				kparams.AddIfNotNull("widget", Widget);
 			return kparams;
 		}
 
@@ -268,6 +216,58 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class WidgetUpdateRequestBuilder : RequestBuilder<Widget>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string WIDGET = "widget";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public Widget Widget
+		{
+			set;
+			get;
+		}
+
+		public WidgetUpdateRequestBuilder()
+			: base("widget", "update")
+		{
+		}
+
+		public WidgetUpdateRequestBuilder(string id, Widget widget)
+			: this()
+		{
+			this.Id = id;
+			this.Widget = widget;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("widget"))
+				kparams.AddIfNotNull("widget", Widget);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<Widget>(result);
+		}
+	}
+
 
 	public class WidgetService
 	{
@@ -280,9 +280,9 @@ namespace Kaltura.Services
 			return new WidgetAddRequestBuilder(widget);
 		}
 
-		public static WidgetUpdateRequestBuilder Update(string id, Widget widget)
+		public static WidgetCloneRequestBuilder Clone(Widget widget)
 		{
-			return new WidgetUpdateRequestBuilder(id, widget);
+			return new WidgetCloneRequestBuilder(widget);
 		}
 
 		public static WidgetGetRequestBuilder Get(string id)
@@ -290,14 +290,14 @@ namespace Kaltura.Services
 			return new WidgetGetRequestBuilder(id);
 		}
 
-		public static WidgetCloneRequestBuilder Clone(Widget widget)
-		{
-			return new WidgetCloneRequestBuilder(widget);
-		}
-
 		public static WidgetListRequestBuilder List(WidgetFilter filter = null, FilterPager pager = null)
 		{
 			return new WidgetListRequestBuilder(filter, pager);
+		}
+
+		public static WidgetUpdateRequestBuilder Update(string id, Widget widget)
+		{
+			return new WidgetUpdateRequestBuilder(id, widget);
 		}
 	}
 }

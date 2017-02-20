@@ -121,6 +121,76 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class DropFolderFreeExclusiveDropFolderRequestBuilder : RequestBuilder<DropFolder>
+	{
+		#region Constants
+		public const string DROP_FOLDER_ID = "dropFolderId";
+		public const string STATUS = "status";
+		public const string ERROR_CODE = "errorCode";
+		public const string ERROR_DESCRIPTION = "errorDescription";
+		#endregion
+
+		public int DropFolderId
+		{
+			set;
+			get;
+		}
+		public int Status
+		{
+			set;
+			get;
+		}
+		public string ErrorCode
+		{
+			set;
+			get;
+		}
+		public string ErrorDescription
+		{
+			set;
+			get;
+		}
+
+		public DropFolderFreeExclusiveDropFolderRequestBuilder()
+			: base("dropfolder_dropfolder", "freeExclusiveDropFolder")
+		{
+		}
+
+		public DropFolderFreeExclusiveDropFolderRequestBuilder(int dropFolderId, int status, string errorCode, string errorDescription)
+			: this()
+		{
+			this.DropFolderId = dropFolderId;
+			this.Status = status;
+			this.ErrorCode = errorCode;
+			this.ErrorDescription = errorDescription;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("dropFolderId"))
+				kparams.AddIfNotNull("dropFolderId", DropFolderId);
+			if (!isMapped("status"))
+				kparams.AddIfNotNull("status", Status);
+			if (!isMapped("errorCode"))
+				kparams.AddIfNotNull("errorCode", ErrorCode);
+			if (!isMapped("errorDescription"))
+				kparams.AddIfNotNull("errorDescription", ErrorDescription);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<DropFolder>(result);
+		}
+	}
+
 	public class DropFolderGetRequestBuilder : RequestBuilder<DropFolder>
 	{
 		#region Constants
@@ -149,6 +219,58 @@ namespace Kaltura.Services
 			Params kparams = base.getParameters(includeServiceAndAction);
 			if (!isMapped("dropFolderId"))
 				kparams.AddIfNotNull("dropFolderId", DropFolderId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<DropFolder>(result);
+		}
+	}
+
+	public class DropFolderGetExclusiveDropFolderRequestBuilder : RequestBuilder<DropFolder>
+	{
+		#region Constants
+		public const string TAG = "tag";
+		public const string MAX_TIME = "maxTime";
+		#endregion
+
+		public string Tag
+		{
+			set;
+			get;
+		}
+		public int MaxTime
+		{
+			set;
+			get;
+		}
+
+		public DropFolderGetExclusiveDropFolderRequestBuilder()
+			: base("dropfolder_dropfolder", "getExclusiveDropFolder")
+		{
+		}
+
+		public DropFolderGetExclusiveDropFolderRequestBuilder(string tag, int maxTime)
+			: this()
+		{
+			this.Tag = tag;
+			this.MaxTime = maxTime;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("tag"))
+				kparams.AddIfNotNull("tag", Tag);
+			if (!isMapped("maxTime"))
+				kparams.AddIfNotNull("maxTime", MaxTime);
 			return kparams;
 		}
 
@@ -285,9 +407,19 @@ namespace Kaltura.Services
 			return new DropFolderDeleteRequestBuilder(dropFolderId);
 		}
 
+		public static DropFolderFreeExclusiveDropFolderRequestBuilder FreeExclusiveDropFolder(int dropFolderId, int status, string errorCode = null, string errorDescription = null)
+		{
+			return new DropFolderFreeExclusiveDropFolderRequestBuilder(dropFolderId, status, errorCode, errorDescription);
+		}
+
 		public static DropFolderGetRequestBuilder Get(int dropFolderId)
 		{
 			return new DropFolderGetRequestBuilder(dropFolderId);
+		}
+
+		public static DropFolderGetExclusiveDropFolderRequestBuilder GetExclusiveDropFolder(string tag, int maxTime)
+		{
+			return new DropFolderGetExclusiveDropFolderRequestBuilder(tag, maxTime);
 		}
 
 		public static DropFolderListRequestBuilder List(DropFolderFilter filter = null, FilterPager pager = null)

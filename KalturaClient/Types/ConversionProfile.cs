@@ -57,6 +57,8 @@ namespace Kaltura.Types
 		public const string MEDIA_PARSER_TYPE = "mediaParserType";
 		public const string CALCULATE_COMPLEXITY = "calculateComplexity";
 		public const string COLLECTION_TAGS = "collectionTags";
+		public const string CONDITIONAL_PROFILES = "conditionalProfiles";
+		public const string DETECT_GOP = "detectGOP";
 		#endregion
 
 		#region Private Fields
@@ -81,6 +83,8 @@ namespace Kaltura.Types
 		private MediaParserType _MediaParserType = null;
 		private NullableBoolean _CalculateComplexity = (NullableBoolean)Int32.MinValue;
 		private string _CollectionTags = null;
+		private string _ConditionalProfiles = null;
+		private int _DetectGOP = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -253,6 +257,24 @@ namespace Kaltura.Types
 				OnPropertyChanged("CollectionTags");
 			}
 		}
+		public string ConditionalProfiles
+		{
+			get { return _ConditionalProfiles; }
+			set 
+			{ 
+				_ConditionalProfiles = value;
+				OnPropertyChanged("ConditionalProfiles");
+			}
+		}
+		public int DetectGOP
+		{
+			get { return _DetectGOP; }
+			set 
+			{ 
+				_DetectGOP = value;
+				OnPropertyChanged("DetectGOP");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -329,6 +351,12 @@ namespace Kaltura.Types
 					case "collectionTags":
 						this._CollectionTags = propertyNode.InnerText;
 						continue;
+					case "conditionalProfiles":
+						this._ConditionalProfiles = propertyNode.InnerText;
+						continue;
+					case "detectGOP":
+						this._DetectGOP = ParseInt(propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -361,6 +389,8 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("mediaParserType", this._MediaParserType);
 			kparams.AddIfNotNull("calculateComplexity", this._CalculateComplexity);
 			kparams.AddIfNotNull("collectionTags", this._CollectionTags);
+			kparams.AddIfNotNull("conditionalProfiles", this._ConditionalProfiles);
+			kparams.AddIfNotNull("detectGOP", this._DetectGOP);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -409,6 +439,10 @@ namespace Kaltura.Types
 					return "CalculateComplexity";
 				case COLLECTION_TAGS:
 					return "CollectionTags";
+				case CONDITIONAL_PROFILES:
+					return "ConditionalProfiles";
+				case DETECT_GOP:
+					return "DetectGOP";
 				default:
 					return base.getPropertyName(apiName);
 			}

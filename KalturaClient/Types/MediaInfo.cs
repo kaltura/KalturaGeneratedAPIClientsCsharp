@@ -70,6 +70,7 @@ namespace Kaltura.Types
 		public const string IS_FAST_START = "isFastStart";
 		public const string CONTENT_STREAMS = "contentStreams";
 		public const string COMPLEXITY_VALUE = "complexityValue";
+		public const string MAX_GOP = "maxGOP";
 		#endregion
 
 		#region Private Fields
@@ -107,6 +108,7 @@ namespace Kaltura.Types
 		private int _IsFastStart = Int32.MinValue;
 		private string _ContentStreams = null;
 		private int _ComplexityValue = Int32.MinValue;
+		private float _MaxGOP = Single.MinValue;
 		#endregion
 
 		#region Properties
@@ -411,6 +413,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("ComplexityValue");
 			}
 		}
+		public float MaxGOP
+		{
+			get { return _MaxGOP; }
+			set 
+			{ 
+				_MaxGOP = value;
+				OnPropertyChanged("MaxGOP");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -526,6 +537,9 @@ namespace Kaltura.Types
 					case "complexityValue":
 						this._ComplexityValue = ParseInt(propertyNode.InnerText);
 						continue;
+					case "maxGOP":
+						this._MaxGOP = ParseFloat(propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -571,6 +585,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("isFastStart", this._IsFastStart);
 			kparams.AddIfNotNull("contentStreams", this._ContentStreams);
 			kparams.AddIfNotNull("complexityValue", this._ComplexityValue);
+			kparams.AddIfNotNull("maxGOP", this._MaxGOP);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -645,6 +660,8 @@ namespace Kaltura.Types
 					return "ContentStreams";
 				case COMPLEXITY_VALUE:
 					return "ComplexityValue";
+				case MAX_GOP:
+					return "MaxGOP";
 				default:
 					return base.getPropertyName(apiName);
 			}

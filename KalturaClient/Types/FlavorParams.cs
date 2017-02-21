@@ -63,6 +63,7 @@ namespace Kaltura.Types
 		public const string MULTI_STREAM = "multiStream";
 		public const string ANAMORPHIC_PIXELS = "anamorphicPixels";
 		public const string IS_AVOID_FORCED_KEY_FRAMES = "isAvoidForcedKeyFrames";
+		public const string FORCED_KEY_FRAMES_MODE = "forcedKeyFramesMode";
 		public const string IS_CROP_IMX = "isCropIMX";
 		public const string OPTIMIZATION_POLICY = "optimizationPolicy";
 		public const string MAX_FRAME_RATE = "maxFrameRate";
@@ -104,6 +105,7 @@ namespace Kaltura.Types
 		private string _MultiStream = null;
 		private float _AnamorphicPixels = Single.MinValue;
 		private int _IsAvoidForcedKeyFrames = Int32.MinValue;
+		private int _ForcedKeyFramesMode = Int32.MinValue;
 		private int _IsCropIMX = Int32.MinValue;
 		private int _OptimizationPolicy = Int32.MinValue;
 		private int _MaxFrameRate = Int32.MinValue;
@@ -361,6 +363,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsAvoidForcedKeyFrames");
 			}
 		}
+		public int ForcedKeyFramesMode
+		{
+			get { return _ForcedKeyFramesMode; }
+			set 
+			{ 
+				_ForcedKeyFramesMode = value;
+				OnPropertyChanged("ForcedKeyFramesMode");
+			}
+		}
 		public int IsCropIMX
 		{
 			get { return _IsCropIMX; }
@@ -554,6 +565,9 @@ namespace Kaltura.Types
 					case "isAvoidForcedKeyFrames":
 						this._IsAvoidForcedKeyFrames = ParseInt(propertyNode.InnerText);
 						continue;
+					case "forcedKeyFramesMode":
+						this._ForcedKeyFramesMode = ParseInt(propertyNode.InnerText);
+						continue;
 					case "isCropIMX":
 						this._IsCropIMX = ParseInt(propertyNode.InnerText);
 						continue;
@@ -625,6 +639,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("multiStream", this._MultiStream);
 			kparams.AddIfNotNull("anamorphicPixels", this._AnamorphicPixels);
 			kparams.AddIfNotNull("isAvoidForcedKeyFrames", this._IsAvoidForcedKeyFrames);
+			kparams.AddIfNotNull("forcedKeyFramesMode", this._ForcedKeyFramesMode);
 			kparams.AddIfNotNull("isCropIMX", this._IsCropIMX);
 			kparams.AddIfNotNull("optimizationPolicy", this._OptimizationPolicy);
 			kparams.AddIfNotNull("maxFrameRate", this._MaxFrameRate);
@@ -696,6 +711,8 @@ namespace Kaltura.Types
 					return "AnamorphicPixels";
 				case IS_AVOID_FORCED_KEY_FRAMES:
 					return "IsAvoidForcedKeyFrames";
+				case FORCED_KEY_FRAMES_MODE:
+					return "ForcedKeyFramesMode";
 				case IS_CROP_IMX:
 					return "IsCropIMX";
 				case OPTIMIZATION_POLICY:

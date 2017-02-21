@@ -40,6 +40,7 @@ namespace Kaltura.Types
 		public const string CALCULATE_COMPLEXITY = "calculateComplexity";
 		public const string EXTRACT_ID3TAGS = "extractId3Tags";
 		public const string DEST_DATA_FILE_PATH = "destDataFilePath";
+		public const string DETECT_GOP = "detectGOP";
 		#endregion
 
 		#region Private Fields
@@ -47,6 +48,7 @@ namespace Kaltura.Types
 		private bool? _CalculateComplexity = null;
 		private bool? _ExtractId3Tags = null;
 		private string _DestDataFilePath = null;
+		private int _DetectGOP = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -86,6 +88,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestDataFilePath");
 			}
 		}
+		public int DetectGOP
+		{
+			get { return _DetectGOP; }
+			set 
+			{ 
+				_DetectGOP = value;
+				OnPropertyChanged("DetectGOP");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -111,6 +122,9 @@ namespace Kaltura.Types
 					case "destDataFilePath":
 						this._DestDataFilePath = propertyNode.InnerText;
 						continue;
+					case "detectGOP":
+						this._DetectGOP = ParseInt(propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -126,6 +140,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("calculateComplexity", this._CalculateComplexity);
 			kparams.AddIfNotNull("extractId3Tags", this._ExtractId3Tags);
 			kparams.AddIfNotNull("destDataFilePath", this._DestDataFilePath);
+			kparams.AddIfNotNull("detectGOP", this._DetectGOP);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -140,6 +155,8 @@ namespace Kaltura.Types
 					return "ExtractId3Tags";
 				case DEST_DATA_FILE_PATH:
 					return "DestDataFilePath";
+				case DETECT_GOP:
+					return "DetectGOP";
 				default:
 					return base.getPropertyName(apiName);
 			}

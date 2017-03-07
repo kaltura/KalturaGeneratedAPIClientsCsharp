@@ -42,6 +42,7 @@ namespace Kaltura.Enums
 		public static readonly SourceType RECORDED_LIVE = new SourceType("34");
 		public static readonly SourceType CLIP = new SourceType("35");
 		public static readonly SourceType KALTURA_RECORDED_LIVE = new SourceType("36");
+		public static readonly SourceType LECTURE_CAPTURE = new SourceType("37");
 		public static readonly SourceType LIVE_STREAM_ONTEXTDATA_CAPTIONS = new SourceType("42");
 
 		private SourceType(string name) : base(name) { }

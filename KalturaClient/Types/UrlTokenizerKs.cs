@@ -37,10 +37,12 @@ namespace Kaltura.Types
 	{
 		#region Constants
 		public const string USE_PATH = "usePath";
+		public const string ADDITIONAL_URIS = "additionalUris";
 		#endregion
 
 		#region Private Fields
 		private bool? _UsePath = null;
+		private string _AdditionalUris = null;
 		#endregion
 
 		#region Properties
@@ -51,6 +53,15 @@ namespace Kaltura.Types
 			{ 
 				_UsePath = value;
 				OnPropertyChanged("UsePath");
+			}
+		}
+		public string AdditionalUris
+		{
+			get { return _AdditionalUris; }
+			set 
+			{ 
+				_AdditionalUris = value;
+				OnPropertyChanged("AdditionalUris");
 			}
 		}
 		#endregion
@@ -69,6 +80,9 @@ namespace Kaltura.Types
 					case "usePath":
 						this._UsePath = ParseBool(propertyNode.InnerText);
 						continue;
+					case "additionalUris":
+						this._AdditionalUris = propertyNode.InnerText;
+						continue;
 				}
 			}
 		}
@@ -81,6 +95,7 @@ namespace Kaltura.Types
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaUrlTokenizerKs");
 			kparams.AddIfNotNull("usePath", this._UsePath);
+			kparams.AddIfNotNull("additionalUris", this._AdditionalUris);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -89,6 +104,8 @@ namespace Kaltura.Types
 			{
 				case USE_PATH:
 					return "UsePath";
+				case ADDITIONAL_URIS:
+					return "AdditionalUris";
 				default:
 					return base.getPropertyName(apiName);
 			}

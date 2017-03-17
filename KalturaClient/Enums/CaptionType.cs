@@ -32,6 +32,7 @@ namespace Kaltura.Enums
 		public static readonly CaptionType SRT = new CaptionType("1");
 		public static readonly CaptionType DFXP = new CaptionType("2");
 		public static readonly CaptionType WEBVTT = new CaptionType("3");
+		public static readonly CaptionType CAP = new CaptionType("4");
 
 		private CaptionType(string name) : base(name) { }
 	}

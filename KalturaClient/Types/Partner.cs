@@ -487,6 +487,11 @@ namespace Kaltura.Types
 		public int PartnerParentId
 		{
 			get { return _PartnerParentId; }
+			set 
+			{ 
+				_PartnerParentId = value;
+				OnPropertyChanged("PartnerParentId");
+			}
 		}
 		public string CrmId
 		{

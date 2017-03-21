@@ -38,11 +38,15 @@ namespace Kaltura.Types
 		#region Constants
 		public const string FEED_DESCRIPTION = "feedDescription";
 		public const string FEED_LANDING_PAGE = "feedLandingPage";
+		public const string ENTRY_FILTER = "entryFilter";
+		public const string PAGE_SIZE = "pageSize";
 		#endregion
 
 		#region Private Fields
 		private string _FeedDescription = null;
 		private string _FeedLandingPage = null;
+		private BaseEntryFilter _EntryFilter;
+		private int _PageSize = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -64,6 +68,24 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedLandingPage");
 			}
 		}
+		public BaseEntryFilter EntryFilter
+		{
+			get { return _EntryFilter; }
+			set 
+			{ 
+				_EntryFilter = value;
+				OnPropertyChanged("EntryFilter");
+			}
+		}
+		public int PageSize
+		{
+			get { return _PageSize; }
+			set 
+			{ 
+				_PageSize = value;
+				OnPropertyChanged("PageSize");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -83,6 +105,12 @@ namespace Kaltura.Types
 					case "feedLandingPage":
 						this._FeedLandingPage = propertyNode.InnerText;
 						continue;
+					case "entryFilter":
+						this._EntryFilter = ObjectFactory.Create<BaseEntryFilter>(propertyNode);
+						continue;
+					case "pageSize":
+						this._PageSize = ParseInt(propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -96,6 +124,8 @@ namespace Kaltura.Types
 				kparams.AddReplace("objectType", "KalturaGenericSyndicationFeed");
 			kparams.AddIfNotNull("feedDescription", this._FeedDescription);
 			kparams.AddIfNotNull("feedLandingPage", this._FeedLandingPage);
+			kparams.AddIfNotNull("entryFilter", this._EntryFilter);
+			kparams.AddIfNotNull("pageSize", this._PageSize);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -106,6 +136,10 @@ namespace Kaltura.Types
 					return "FeedDescription";
 				case FEED_LANDING_PAGE:
 					return "FeedLandingPage";
+				case ENTRY_FILTER:
+					return "EntryFilter";
+				case PAGE_SIZE:
+					return "PageSize";
 				default:
 					return base.getPropertyName(apiName);
 			}

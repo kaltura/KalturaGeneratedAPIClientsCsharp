@@ -35,5 +35,7 @@ namespace Kaltura.Enums
 		TUBE_MOGUL = 4,
 		KALTURA = 5,
 		KALTURA_XSLT = 6,
+		ROKU_DIRECT_PUBLISHER = 7,
+		OPERA_TV_SNAP = 8,
 	}
 }

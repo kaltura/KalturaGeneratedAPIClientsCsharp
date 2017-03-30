@@ -37,10 +37,12 @@ namespace Kaltura.Types
 	{
 		#region Constants
 		public const string LOCAL_FILE_PATH = "localFilePath";
+		public const string KEEP_ORIGINAL_FILE = "keepOriginalFile";
 		#endregion
 
 		#region Private Fields
 		private string _LocalFilePath = null;
+		private bool? _KeepOriginalFile = null;
 		#endregion
 
 		#region Properties
@@ -51,6 +53,15 @@ namespace Kaltura.Types
 			{ 
 				_LocalFilePath = value;
 				OnPropertyChanged("LocalFilePath");
+			}
+		}
+		public bool? KeepOriginalFile
+		{
+			get { return _KeepOriginalFile; }
+			set 
+			{ 
+				_KeepOriginalFile = value;
+				OnPropertyChanged("KeepOriginalFile");
 			}
 		}
 		#endregion
@@ -69,6 +80,9 @@ namespace Kaltura.Types
 					case "localFilePath":
 						this._LocalFilePath = propertyNode.InnerText;
 						continue;
+					case "keepOriginalFile":
+						this._KeepOriginalFile = ParseBool(propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -81,6 +95,7 @@ namespace Kaltura.Types
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaServerFileResource");
 			kparams.AddIfNotNull("localFilePath", this._LocalFilePath);
+			kparams.AddIfNotNull("keepOriginalFile", this._KeepOriginalFile);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -89,6 +104,8 @@ namespace Kaltura.Types
 			{
 				case LOCAL_FILE_PATH:
 					return "LocalFilePath";
+				case KEEP_ORIGINAL_FILE:
+					return "KeepOriginalFile";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -36,6 +36,8 @@ namespace Kaltura.Types
 	public class AssetParamsBaseFilter : RelatedFilter
 	{
 		#region Constants
+		public const string ID_EQUAL = "idEqual";
+		public const string ID_IN = "idIn";
 		public const string SYSTEM_NAME_EQUAL = "systemNameEqual";
 		public const string SYSTEM_NAME_IN = "systemNameIn";
 		public const string IS_SYSTEM_DEFAULT_EQUAL = "isSystemDefaultEqual";
@@ -43,6 +45,8 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Private Fields
+		private int _IdEqual = Int32.MinValue;
+		private string _IdIn = null;
 		private string _SystemNameEqual = null;
 		private string _SystemNameIn = null;
 		private NullableBoolean _IsSystemDefaultEqual = (NullableBoolean)Int32.MinValue;
@@ -50,6 +54,24 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		public int IdEqual
+		{
+			get { return _IdEqual; }
+			set 
+			{ 
+				_IdEqual = value;
+				OnPropertyChanged("IdEqual");
+			}
+		}
+		public string IdIn
+		{
+			get { return _IdIn; }
+			set 
+			{ 
+				_IdIn = value;
+				OnPropertyChanged("IdIn");
+			}
+		}
 		public string SystemNameEqual
 		{
 			get { return _SystemNameEqual; }
@@ -99,6 +121,12 @@ namespace Kaltura.Types
 			{
 				switch (propertyNode.Name)
 				{
+					case "idEqual":
+						this._IdEqual = ParseInt(propertyNode.InnerText);
+						continue;
+					case "idIn":
+						this._IdIn = propertyNode.InnerText;
+						continue;
 					case "systemNameEqual":
 						this._SystemNameEqual = propertyNode.InnerText;
 						continue;
@@ -122,6 +150,8 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaAssetParamsBaseFilter");
+			kparams.AddIfNotNull("idEqual", this._IdEqual);
+			kparams.AddIfNotNull("idIn", this._IdIn);
 			kparams.AddIfNotNull("systemNameEqual", this._SystemNameEqual);
 			kparams.AddIfNotNull("systemNameIn", this._SystemNameIn);
 			kparams.AddIfNotNull("isSystemDefaultEqual", this._IsSystemDefaultEqual);
@@ -132,6 +162,10 @@ namespace Kaltura.Types
 		{
 			switch(apiName)
 			{
+				case ID_EQUAL:
+					return "IdEqual";
+				case ID_IN:
+					return "IdIn";
 				case SYSTEM_NAME_EQUAL:
 					return "SystemNameEqual";
 				case SYSTEM_NAME_IN:

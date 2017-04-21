@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2016  Kaltura Inc.
+// Copyright (C) 2006-2017  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -35,6 +35,7 @@ namespace Kaltura.Enums
 		public static readonly AudioCodec AC3 = new AudioCodec("ac3");
 		public static readonly AudioCodec AMRNB = new AudioCodec("amrnb");
 		public static readonly AudioCodec COPY = new AudioCodec("copy");
+		public static readonly AudioCodec EAC3 = new AudioCodec("eac3");
 		public static readonly AudioCodec MP3 = new AudioCodec("mp3");
 		public static readonly AudioCodec MPEG2 = new AudioCodec("mpeg2");
 		public static readonly AudioCodec PCM = new AudioCodec("pcm");

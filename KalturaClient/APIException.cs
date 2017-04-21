@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2016  Kaltura Inc.
+// Copyright (C) 2006-2017  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -434,6 +434,7 @@ namespace Kaltura
 		public static string PROFILE_STATUS_DISABLED = "PROFILE_STATUS_DISABLED";
 		public static string UNSAFE_HTML_TAGS = "UNSAFE_HTML_TAGS";
 		public static string RECORDED_NOT_READY = "RECORDED_NOT_READY";
+		public static string RECORDEDING_FLOW_NOT_COMPLETE = "RECORDEDING_FLOW_NOT_COMPLETE";
 		public static string RECORDED_ENTRY_LIVE_MISMATCH = "RECORDED_ENTRY_LIVE_MISMATCH";
 		public static string CANNOT_DELETE_LIVE_ENTRY_WHILE_STREAMING = "CANNOT_DELETE_LIVE_ENTRY_WHILE_STREAMING";
 		public static string INTERNAL_SERVER_ERROR = "INTERNAL_SERVER_ERROR";

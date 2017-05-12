@@ -48,6 +48,7 @@ namespace Kaltura.Enums
 		public static readonly ConditionType HASH = new ConditionType("12");
 		public static readonly ConditionType DELIVERY_PROFILE = new ConditionType("13");
 		public static readonly ConditionType ACTIVE_EDGE_VALIDATE = new ConditionType("14");
+		public static readonly ConditionType ANONYMOUS_IP = new ConditionType("15");
 
 		private ConditionType(string name) : base(name) { }
 	}

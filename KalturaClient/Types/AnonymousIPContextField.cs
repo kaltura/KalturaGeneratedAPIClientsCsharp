@@ -33,59 +33,41 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class MatchCondition : Condition
+	public class AnonymousIPContextField : StringField
 	{
 		#region Constants
-		public const string VALUES = "values";
-		public const string MATCH_TYPE = "matchType";
+		public const string GEO_CODER_TYPE = "geoCoderType";
 		#endregion
 
 		#region Private Fields
-		private IList<StringValue> _Values;
-		private MatchConditionType _MatchType = null;
+		private GeoCoderType _GeoCoderType = null;
 		#endregion
 
 		#region Properties
-		public IList<StringValue> Values
+		public GeoCoderType GeoCoderType
 		{
-			get { return _Values; }
+			get { return _GeoCoderType; }
 			set 
 			{ 
-				_Values = value;
-				OnPropertyChanged("Values");
-			}
-		}
-		public MatchConditionType MatchType
-		{
-			get { return _MatchType; }
-			set 
-			{ 
-				_MatchType = value;
-				OnPropertyChanged("MatchType");
+				_GeoCoderType = value;
+				OnPropertyChanged("GeoCoderType");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public MatchCondition()
+		public AnonymousIPContextField()
 		{
 		}
 
-		public MatchCondition(XmlElement node) : base(node)
+		public AnonymousIPContextField(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
 				switch (propertyNode.Name)
 				{
-					case "values":
-						this._Values = new List<StringValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Values.Add(ObjectFactory.Create<StringValue>(arrayNode));
-						}
-						continue;
-					case "matchType":
-						this._MatchType = (MatchConditionType)StringEnum.Parse(typeof(MatchConditionType), propertyNode.InnerText);
+					case "geoCoderType":
+						this._GeoCoderType = (GeoCoderType)StringEnum.Parse(typeof(GeoCoderType), propertyNode.InnerText);
 						continue;
 				}
 			}
@@ -97,19 +79,16 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaMatchCondition");
-			kparams.AddIfNotNull("values", this._Values);
-			kparams.AddIfNotNull("matchType", this._MatchType);
+				kparams.AddReplace("objectType", "KalturaAnonymousIPContextField");
+			kparams.AddIfNotNull("geoCoderType", this._GeoCoderType);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case VALUES:
-					return "Values";
-				case MATCH_TYPE:
-					return "MatchType";
+				case GEO_CODER_TYPE:
+					return "GeoCoderType";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -768,6 +768,7 @@ namespace Kaltura.Services
 		public const string RESOURCE = "resource";
 		public const string DURATION = "duration";
 		public const string RECORDED_ENTRY_ID = "recordedEntryId";
+		public const string FLAVOR_PARAMS_ID = "flavorParamsId";
 		#endregion
 
 		public string EntryId
@@ -795,13 +796,18 @@ namespace Kaltura.Services
 			set;
 			get;
 		}
+		public int FlavorParamsId
+		{
+			set;
+			get;
+		}
 
 		public LiveStreamSetRecordedContentRequestBuilder()
 			: base("livestream", "setRecordedContent")
 		{
 		}
 
-		public LiveStreamSetRecordedContentRequestBuilder(string entryId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, float duration, string recordedEntryId)
+		public LiveStreamSetRecordedContentRequestBuilder(string entryId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, float duration, string recordedEntryId, int flavorParamsId)
 			: this()
 		{
 			this.EntryId = entryId;
@@ -809,6 +815,7 @@ namespace Kaltura.Services
 			this.Resource = resource;
 			this.Duration = duration;
 			this.RecordedEntryId = recordedEntryId;
+			this.FlavorParamsId = flavorParamsId;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -824,6 +831,8 @@ namespace Kaltura.Services
 				kparams.AddIfNotNull("duration", Duration);
 			if (!isMapped("recordedEntryId"))
 				kparams.AddIfNotNull("recordedEntryId", RecordedEntryId);
+			if (!isMapped("flavorParamsId"))
+				kparams.AddIfNotNull("flavorParamsId", FlavorParamsId);
 			return kparams;
 		}
 
@@ -1165,9 +1174,9 @@ namespace Kaltura.Services
 			return new LiveStreamRemoveLiveStreamPushPublishConfigurationRequestBuilder(entryId, protocol);
 		}
 
-		public static LiveStreamSetRecordedContentRequestBuilder SetRecordedContent(string entryId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, float duration, string recordedEntryId = null)
+		public static LiveStreamSetRecordedContentRequestBuilder SetRecordedContent(string entryId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, float duration, string recordedEntryId = null, int flavorParamsId = Int32.MinValue)
 		{
-			return new LiveStreamSetRecordedContentRequestBuilder(entryId, mediaServerIndex, resource, duration, recordedEntryId);
+			return new LiveStreamSetRecordedContentRequestBuilder(entryId, mediaServerIndex, resource, duration, recordedEntryId, flavorParamsId);
 		}
 
 		public static LiveStreamUnregisterMediaServerRequestBuilder UnregisterMediaServer(string entryId, string hostname, EntryServerNodeType mediaServerIndex)

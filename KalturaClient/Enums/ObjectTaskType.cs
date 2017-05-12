@@ -39,6 +39,7 @@ namespace Kaltura.Enums
 		public static readonly ObjectTaskType DELETE_LOCAL_CONTENT = new ObjectTaskType("5");
 		public static readonly ObjectTaskType STORAGE_EXPORT = new ObjectTaskType("6");
 		public static readonly ObjectTaskType MODIFY_ENTRY = new ObjectTaskType("7");
+		public static readonly ObjectTaskType MAIL_NOTIFICATION = new ObjectTaskType("8");
 
 		private ObjectTaskType(string name) : base(name) { }
 	}

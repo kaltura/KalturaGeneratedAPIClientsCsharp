@@ -258,7 +258,7 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class ScheduleEventGetConflictsRequestBuilder : RequestBuilder<IList<ScheduleEvent>>
+	public class ScheduleEventGetConflictsRequestBuilder : RequestBuilder<ListResponse<ScheduleEvent>>
 	{
 		#region Constants
 		public const string RESOURCE_IDS = "resourceIds";
@@ -306,12 +306,7 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			IList<ScheduleEvent> list = new List<ScheduleEvent>();
-			foreach(XmlElement node in result.ChildNodes)
-			{
-				list.Add(ObjectFactory.Create<ScheduleEvent>(node));
-			}
-			return list;
+			return ObjectFactory.Create<ListResponse<ScheduleEvent>>(result);
 		}
 	}
 

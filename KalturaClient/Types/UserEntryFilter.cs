@@ -38,12 +38,16 @@ namespace Kaltura.Types
 		#region Constants
 		public const string USER_ID_EQUAL_CURRENT = "userIdEqualCurrent";
 		public const string IS_ANONYMOUS = "isAnonymous";
+		public const string PRIVACY_CONTEXT_EQUAL = "privacyContextEqual";
+		public const string PRIVACY_CONTEXT_IN = "privacyContextIn";
 		public new const string ORDER_BY = "orderBy";
 		#endregion
 
 		#region Private Fields
 		private NullableBoolean _UserIdEqualCurrent = (NullableBoolean)Int32.MinValue;
 		private NullableBoolean _IsAnonymous = (NullableBoolean)Int32.MinValue;
+		private string _PrivacyContextEqual = null;
+		private string _PrivacyContextIn = null;
 		private UserEntryOrderBy _OrderBy = null;
 		#endregion
 
@@ -64,6 +68,24 @@ namespace Kaltura.Types
 			{ 
 				_IsAnonymous = value;
 				OnPropertyChanged("IsAnonymous");
+			}
+		}
+		public string PrivacyContextEqual
+		{
+			get { return _PrivacyContextEqual; }
+			set 
+			{ 
+				_PrivacyContextEqual = value;
+				OnPropertyChanged("PrivacyContextEqual");
+			}
+		}
+		public string PrivacyContextIn
+		{
+			get { return _PrivacyContextIn; }
+			set 
+			{ 
+				_PrivacyContextIn = value;
+				OnPropertyChanged("PrivacyContextIn");
 			}
 		}
 		public new UserEntryOrderBy OrderBy
@@ -94,6 +116,12 @@ namespace Kaltura.Types
 					case "isAnonymous":
 						this._IsAnonymous = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
+					case "privacyContextEqual":
+						this._PrivacyContextEqual = propertyNode.InnerText;
+						continue;
+					case "privacyContextIn":
+						this._PrivacyContextIn = propertyNode.InnerText;
+						continue;
 					case "orderBy":
 						this._OrderBy = (UserEntryOrderBy)StringEnum.Parse(typeof(UserEntryOrderBy), propertyNode.InnerText);
 						continue;
@@ -110,6 +138,8 @@ namespace Kaltura.Types
 				kparams.AddReplace("objectType", "KalturaUserEntryFilter");
 			kparams.AddIfNotNull("userIdEqualCurrent", this._UserIdEqualCurrent);
 			kparams.AddIfNotNull("isAnonymous", this._IsAnonymous);
+			kparams.AddIfNotNull("privacyContextEqual", this._PrivacyContextEqual);
+			kparams.AddIfNotNull("privacyContextIn", this._PrivacyContextIn);
 			kparams.AddIfNotNull("orderBy", this._OrderBy);
 			return kparams;
 		}
@@ -121,6 +151,10 @@ namespace Kaltura.Types
 					return "UserIdEqualCurrent";
 				case IS_ANONYMOUS:
 					return "IsAnonymous";
+				case PRIVACY_CONTEXT_EQUAL:
+					return "PrivacyContextEqual";
+				case PRIVACY_CONTEXT_IN:
+					return "PrivacyContextIn";
 				case ORDER_BY:
 					return "OrderBy";
 				default:

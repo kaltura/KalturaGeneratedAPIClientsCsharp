@@ -32,6 +32,7 @@ namespace Kaltura.Enums
 		PENDING_MODERATION = 1,
 		APPROVED = 2,
 		REJECTED = 3,
+		DELETED = 4,
 		FLAGGED_FOR_REVIEW = 5,
 		AUTO_APPROVED = 6,
 	}

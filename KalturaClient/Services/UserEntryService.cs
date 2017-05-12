@@ -78,6 +78,49 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class UserEntryBulkDeleteRequestBuilder : RequestBuilder<int>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		#endregion
+
+		public UserEntryFilter Filter
+		{
+			set;
+			get;
+		}
+
+		public UserEntryBulkDeleteRequestBuilder()
+			: base("userentry", "bulkDelete")
+		{
+		}
+
+		public UserEntryBulkDeleteRequestBuilder(UserEntryFilter filter)
+			: this()
+		{
+			this.Filter = filter;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return int.Parse(result.InnerText);
+		}
+	}
+
 	public class UserEntryDeleteRequestBuilder : RequestBuilder<UserEntry>
 	{
 		#region Constants
@@ -321,6 +364,11 @@ namespace Kaltura.Services
 		public static UserEntryAddRequestBuilder Add(UserEntry userEntry)
 		{
 			return new UserEntryAddRequestBuilder(userEntry);
+		}
+
+		public static UserEntryBulkDeleteRequestBuilder BulkDelete(UserEntryFilter filter)
+		{
+			return new UserEntryBulkDeleteRequestBuilder(filter);
 		}
 
 		public static UserEntryDeleteRequestBuilder Delete(int id)

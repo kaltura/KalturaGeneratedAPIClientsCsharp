@@ -33,59 +33,69 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class MatchCondition : Condition
+	public class MailNotificationObjectTask : ObjectTask
 	{
 		#region Constants
-		public const string VALUES = "values";
-		public const string MATCH_TYPE = "matchType";
+		public const string MAIL_ADDRESS = "mailAddress";
+		public const string MESSAGE = "message";
+		public const string SEND_TO_USERS = "sendToUsers";
 		#endregion
 
 		#region Private Fields
-		private IList<StringValue> _Values;
-		private MatchConditionType _MatchType = null;
+		private string _MailAddress = null;
+		private string _Message = null;
+		private bool? _SendToUsers = null;
 		#endregion
 
 		#region Properties
-		public IList<StringValue> Values
+		public string MailAddress
 		{
-			get { return _Values; }
+			get { return _MailAddress; }
 			set 
 			{ 
-				_Values = value;
-				OnPropertyChanged("Values");
+				_MailAddress = value;
+				OnPropertyChanged("MailAddress");
 			}
 		}
-		public MatchConditionType MatchType
+		public string Message
 		{
-			get { return _MatchType; }
+			get { return _Message; }
 			set 
 			{ 
-				_MatchType = value;
-				OnPropertyChanged("MatchType");
+				_Message = value;
+				OnPropertyChanged("Message");
+			}
+		}
+		public bool? SendToUsers
+		{
+			get { return _SendToUsers; }
+			set 
+			{ 
+				_SendToUsers = value;
+				OnPropertyChanged("SendToUsers");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public MatchCondition()
+		public MailNotificationObjectTask()
 		{
 		}
 
-		public MatchCondition(XmlElement node) : base(node)
+		public MailNotificationObjectTask(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
 				switch (propertyNode.Name)
 				{
-					case "values":
-						this._Values = new List<StringValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Values.Add(ObjectFactory.Create<StringValue>(arrayNode));
-						}
+					case "mailAddress":
+						this._MailAddress = propertyNode.InnerText;
 						continue;
-					case "matchType":
-						this._MatchType = (MatchConditionType)StringEnum.Parse(typeof(MatchConditionType), propertyNode.InnerText);
+					case "message":
+						this._Message = propertyNode.InnerText;
+						continue;
+					case "sendToUsers":
+						this._SendToUsers = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}
@@ -97,19 +107,22 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaMatchCondition");
-			kparams.AddIfNotNull("values", this._Values);
-			kparams.AddIfNotNull("matchType", this._MatchType);
+				kparams.AddReplace("objectType", "KalturaMailNotificationObjectTask");
+			kparams.AddIfNotNull("mailAddress", this._MailAddress);
+			kparams.AddIfNotNull("message", this._Message);
+			kparams.AddIfNotNull("sendToUsers", this._SendToUsers);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case VALUES:
-					return "Values";
-				case MATCH_TYPE:
-					return "MatchType";
+				case MAIL_ADDRESS:
+					return "MailAddress";
+				case MESSAGE:
+					return "Message";
+				case SEND_TO_USERS:
+					return "SendToUsers";
 				default:
 					return base.getPropertyName(apiName);
 			}

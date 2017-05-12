@@ -51,6 +51,9 @@ namespace Kaltura.Types
 		public const string UPDATED_AT_LESS_THAN_OR_EQUAL = "updatedAtLessThanOrEqual";
 		public const string UPDATED_AT_GREATER_THAN_OR_EQUAL = "updatedAtGreaterThanOrEqual";
 		public const string TYPE_EQUAL = "typeEqual";
+		public const string EXTENDED_STATUS_EQUAL = "extendedStatusEqual";
+		public const string EXTENDED_STATUS_IN = "extendedStatusIn";
+		public const string EXTENDED_STATUS_NOT_IN = "extendedStatusNotIn";
 		#endregion
 
 		#region Private Fields
@@ -69,6 +72,9 @@ namespace Kaltura.Types
 		private int _UpdatedAtLessThanOrEqual = Int32.MinValue;
 		private int _UpdatedAtGreaterThanOrEqual = Int32.MinValue;
 		private UserEntryType _TypeEqual = null;
+		private UserEntryExtendedStatus _ExtendedStatusEqual = null;
+		private string _ExtendedStatusIn = null;
+		private string _ExtendedStatusNotIn = null;
 		#endregion
 
 		#region Properties
@@ -207,6 +213,33 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeEqual");
 			}
 		}
+		public UserEntryExtendedStatus ExtendedStatusEqual
+		{
+			get { return _ExtendedStatusEqual; }
+			set 
+			{ 
+				_ExtendedStatusEqual = value;
+				OnPropertyChanged("ExtendedStatusEqual");
+			}
+		}
+		public string ExtendedStatusIn
+		{
+			get { return _ExtendedStatusIn; }
+			set 
+			{ 
+				_ExtendedStatusIn = value;
+				OnPropertyChanged("ExtendedStatusIn");
+			}
+		}
+		public string ExtendedStatusNotIn
+		{
+			get { return _ExtendedStatusNotIn; }
+			set 
+			{ 
+				_ExtendedStatusNotIn = value;
+				OnPropertyChanged("ExtendedStatusNotIn");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -265,6 +298,15 @@ namespace Kaltura.Types
 					case "typeEqual":
 						this._TypeEqual = (UserEntryType)StringEnum.Parse(typeof(UserEntryType), propertyNode.InnerText);
 						continue;
+					case "extendedStatusEqual":
+						this._ExtendedStatusEqual = (UserEntryExtendedStatus)StringEnum.Parse(typeof(UserEntryExtendedStatus), propertyNode.InnerText);
+						continue;
+					case "extendedStatusIn":
+						this._ExtendedStatusIn = propertyNode.InnerText;
+						continue;
+					case "extendedStatusNotIn":
+						this._ExtendedStatusNotIn = propertyNode.InnerText;
+						continue;
 				}
 			}
 		}
@@ -291,6 +333,9 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this._UpdatedAtLessThanOrEqual);
 			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this._UpdatedAtGreaterThanOrEqual);
 			kparams.AddIfNotNull("typeEqual", this._TypeEqual);
+			kparams.AddIfNotNull("extendedStatusEqual", this._ExtendedStatusEqual);
+			kparams.AddIfNotNull("extendedStatusIn", this._ExtendedStatusIn);
+			kparams.AddIfNotNull("extendedStatusNotIn", this._ExtendedStatusNotIn);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -327,6 +372,12 @@ namespace Kaltura.Types
 					return "UpdatedAtGreaterThanOrEqual";
 				case TYPE_EQUAL:
 					return "TypeEqual";
+				case EXTENDED_STATUS_EQUAL:
+					return "ExtendedStatusEqual";
+				case EXTENDED_STATUS_IN:
+					return "ExtendedStatusIn";
+				case EXTENDED_STATUS_NOT_IN:
+					return "ExtendedStatusNotIn";
 				default:
 					return base.getPropertyName(apiName);
 			}

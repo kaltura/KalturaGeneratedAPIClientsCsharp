@@ -25,93 +25,13 @@
 //
 // @ignore
 // ===================================================================================================
-using System;
-using Kaltura.Types;
-using Kaltura.Enums;
-
-namespace Kaltura
+namespace Kaltura.Enums
 {
-	public class Client : ClientBase
+	public sealed class MatchConditionType : StringEnum
 	{
-		public Client(Configuration config) : base(config)
-		{
-				ApiVersion = "3.3.0";
-				ClientTag = "dotnet:17-05-12";
-		}
-	
-		#region Properties
-			
- 		public string ClientTag
- 		{
- 			get
- 			{
- 				return clientConfiguration.ClientTag;
- 			}
- 			set
- 			{
- 				clientConfiguration.ClientTag = value;
- 			}
- 		}
-			
- 		public string ApiVersion
- 		{
- 			get
- 			{
- 				return clientConfiguration.ApiVersion;
- 			}
- 			set
- 			{
- 				clientConfiguration.ApiVersion = value;
- 			}
- 		}
-			
- 		public int PartnerId
- 		{
- 			get
- 			{
- 				return requestConfiguration.PartnerId;
- 			}
- 			set
- 			{
- 				requestConfiguration.PartnerId = value;
- 			}
- 		}
-			
- 		public string KS
- 		{
- 			get
- 			{
- 				return requestConfiguration.Ks;
- 			}
- 			set
- 			{
- 				requestConfiguration.Ks = value;
- 			}
- 		}
-			
- 		public string SessionId
- 		{
- 			get
- 			{
- 				return requestConfiguration.Ks;
- 			}
- 			set
- 			{
- 				requestConfiguration.Ks = value;
- 			}
- 		}
-			
- 		public BaseResponseProfile ResponseProfile
- 		{
- 			get
- 			{
- 				return requestConfiguration.ResponseProfile;
- 			}
- 			set
- 			{
- 				requestConfiguration.ResponseProfile = value;
- 			}
- 		}
-		#endregion
+		public static readonly MatchConditionType MATCH_ANY = new MatchConditionType("1");
+		public static readonly MatchConditionType MATCH_ALL = new MatchConditionType("2");
+
+		private MatchConditionType(string name) : base(name) { }
 	}
 }

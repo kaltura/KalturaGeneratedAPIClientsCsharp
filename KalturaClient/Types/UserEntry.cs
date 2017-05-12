@@ -44,6 +44,7 @@ namespace Kaltura.Types
 		public const string CREATED_AT = "createdAt";
 		public const string UPDATED_AT = "updatedAt";
 		public const string TYPE = "type";
+		public const string EXTENDED_STATUS = "extendedStatus";
 		#endregion
 
 		#region Private Fields
@@ -55,6 +56,7 @@ namespace Kaltura.Types
 		private int _CreatedAt = Int32.MinValue;
 		private int _UpdatedAt = Int32.MinValue;
 		private UserEntryType _Type = null;
+		private UserEntryExtendedStatus _ExtendedStatus = null;
 		#endregion
 
 		#region Properties
@@ -100,6 +102,15 @@ namespace Kaltura.Types
 		{
 			get { return _Type; }
 		}
+		public UserEntryExtendedStatus ExtendedStatus
+		{
+			get { return _ExtendedStatus; }
+			set 
+			{ 
+				_ExtendedStatus = value;
+				OnPropertyChanged("ExtendedStatus");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -137,6 +148,9 @@ namespace Kaltura.Types
 					case "type":
 						this._Type = (UserEntryType)StringEnum.Parse(typeof(UserEntryType), propertyNode.InnerText);
 						continue;
+					case "extendedStatus":
+						this._ExtendedStatus = (UserEntryExtendedStatus)StringEnum.Parse(typeof(UserEntryExtendedStatus), propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -156,6 +170,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("createdAt", this._CreatedAt);
 			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
 			kparams.AddIfNotNull("type", this._Type);
+			kparams.AddIfNotNull("extendedStatus", this._ExtendedStatus);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -178,6 +193,8 @@ namespace Kaltura.Types
 					return "UpdatedAt";
 				case TYPE:
 					return "Type";
+				case EXTENDED_STATUS:
+					return "ExtendedStatus";
 				default:
 					return base.getPropertyName(apiName);
 			}

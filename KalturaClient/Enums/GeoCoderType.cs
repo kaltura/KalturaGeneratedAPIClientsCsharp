@@ -30,6 +30,7 @@ namespace Kaltura.Enums
 	public sealed class GeoCoderType : StringEnum
 	{
 		public static readonly GeoCoderType KALTURA = new GeoCoderType("1");
+		public static readonly GeoCoderType MAX_MIND = new GeoCoderType("2");
 
 		private GeoCoderType(string name) : base(name) { }
 	}

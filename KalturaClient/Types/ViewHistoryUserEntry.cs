@@ -33,59 +33,55 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class MatchCondition : Condition
+	public class ViewHistoryUserEntry : UserEntry
 	{
 		#region Constants
-		public const string VALUES = "values";
-		public const string MATCH_TYPE = "matchType";
+		public const string PLAYBACK_CONTEXT = "playbackContext";
+		public const string LAST_TIME_REACHED = "lastTimeReached";
 		#endregion
 
 		#region Private Fields
-		private IList<StringValue> _Values;
-		private MatchConditionType _MatchType = null;
+		private string _PlaybackContext = null;
+		private int _LastTimeReached = Int32.MinValue;
 		#endregion
 
 		#region Properties
-		public IList<StringValue> Values
+		public string PlaybackContext
 		{
-			get { return _Values; }
+			get { return _PlaybackContext; }
 			set 
 			{ 
-				_Values = value;
-				OnPropertyChanged("Values");
+				_PlaybackContext = value;
+				OnPropertyChanged("PlaybackContext");
 			}
 		}
-		public MatchConditionType MatchType
+		public int LastTimeReached
 		{
-			get { return _MatchType; }
+			get { return _LastTimeReached; }
 			set 
 			{ 
-				_MatchType = value;
-				OnPropertyChanged("MatchType");
+				_LastTimeReached = value;
+				OnPropertyChanged("LastTimeReached");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public MatchCondition()
+		public ViewHistoryUserEntry()
 		{
 		}
 
-		public MatchCondition(XmlElement node) : base(node)
+		public ViewHistoryUserEntry(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
 				switch (propertyNode.Name)
 				{
-					case "values":
-						this._Values = new List<StringValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Values.Add(ObjectFactory.Create<StringValue>(arrayNode));
-						}
+					case "playbackContext":
+						this._PlaybackContext = propertyNode.InnerText;
 						continue;
-					case "matchType":
-						this._MatchType = (MatchConditionType)StringEnum.Parse(typeof(MatchConditionType), propertyNode.InnerText);
+					case "lastTimeReached":
+						this._LastTimeReached = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}
@@ -97,19 +93,19 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaMatchCondition");
-			kparams.AddIfNotNull("values", this._Values);
-			kparams.AddIfNotNull("matchType", this._MatchType);
+				kparams.AddReplace("objectType", "KalturaViewHistoryUserEntry");
+			kparams.AddIfNotNull("playbackContext", this._PlaybackContext);
+			kparams.AddIfNotNull("lastTimeReached", this._LastTimeReached);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case VALUES:
-					return "Values";
-				case MATCH_TYPE:
-					return "MatchType";
+				case PLAYBACK_CONTEXT:
+					return "PlaybackContext";
+				case LAST_TIME_REACHED:
+					return "LastTimeReached";
 				default:
 					return base.getPropertyName(apiName);
 			}

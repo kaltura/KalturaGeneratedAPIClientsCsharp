@@ -33,62 +33,24 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class MatchCondition : Condition
+	public class ViewHistoryUserEntryFilter : UserEntryFilter
 	{
 		#region Constants
-		public const string VALUES = "values";
-		public const string MATCH_TYPE = "matchType";
 		#endregion
 
 		#region Private Fields
-		private IList<StringValue> _Values;
-		private MatchConditionType _MatchType = null;
 		#endregion
 
 		#region Properties
-		public IList<StringValue> Values
-		{
-			get { return _Values; }
-			set 
-			{ 
-				_Values = value;
-				OnPropertyChanged("Values");
-			}
-		}
-		public MatchConditionType MatchType
-		{
-			get { return _MatchType; }
-			set 
-			{ 
-				_MatchType = value;
-				OnPropertyChanged("MatchType");
-			}
-		}
 		#endregion
 
 		#region CTor
-		public MatchCondition()
+		public ViewHistoryUserEntryFilter()
 		{
 		}
 
-		public MatchCondition(XmlElement node) : base(node)
+		public ViewHistoryUserEntryFilter(XmlElement node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
-			{
-				switch (propertyNode.Name)
-				{
-					case "values":
-						this._Values = new List<StringValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Values.Add(ObjectFactory.Create<StringValue>(arrayNode));
-						}
-						continue;
-					case "matchType":
-						this._MatchType = (MatchConditionType)StringEnum.Parse(typeof(MatchConditionType), propertyNode.InnerText);
-						continue;
-				}
-			}
 		}
 		#endregion
 
@@ -97,19 +59,13 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaMatchCondition");
-			kparams.AddIfNotNull("values", this._Values);
-			kparams.AddIfNotNull("matchType", this._MatchType);
+				kparams.AddReplace("objectType", "KalturaViewHistoryUserEntryFilter");
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case VALUES:
-					return "Values";
-				case MATCH_TYPE:
-					return "MatchType";
 				default:
 					return base.getPropertyName(apiName);
 			}

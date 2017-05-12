@@ -43,6 +43,7 @@ namespace Kaltura.Types
 		public const string CODEC = "codec";
 		public const string FRAME_RATE = "frameRate";
 		public const string KEY_FRAME_INTERVAL = "keyFrameInterval";
+		public const string LANGUAGE = "language";
 		#endregion
 
 		#region Private Fields
@@ -53,6 +54,7 @@ namespace Kaltura.Types
 		private string _Codec = null;
 		private int _FrameRate = Int32.MinValue;
 		private float _KeyFrameInterval = Single.MinValue;
+		private string _Language = null;
 		#endregion
 
 		#region Properties
@@ -119,6 +121,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("KeyFrameInterval");
 			}
 		}
+		public string Language
+		{
+			get { return _Language; }
+			set 
+			{ 
+				_Language = value;
+				OnPropertyChanged("Language");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -153,6 +164,9 @@ namespace Kaltura.Types
 					case "keyFrameInterval":
 						this._KeyFrameInterval = ParseFloat(propertyNode.InnerText);
 						continue;
+					case "language":
+						this._Language = propertyNode.InnerText;
+						continue;
 				}
 			}
 		}
@@ -171,6 +185,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("codec", this._Codec);
 			kparams.AddIfNotNull("frameRate", this._FrameRate);
 			kparams.AddIfNotNull("keyFrameInterval", this._KeyFrameInterval);
+			kparams.AddIfNotNull("language", this._Language);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -191,6 +206,8 @@ namespace Kaltura.Types
 					return "FrameRate";
 				case KEY_FRAME_INTERVAL:
 					return "KeyFrameInterval";
+				case LANGUAGE:
+					return "Language";
 				default:
 					return base.getPropertyName(apiName);
 			}

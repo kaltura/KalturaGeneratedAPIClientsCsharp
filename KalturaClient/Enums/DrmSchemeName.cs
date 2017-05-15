@@ -29,6 +29,11 @@ namespace Kaltura.Enums
 {
 	public sealed class DrmSchemeName : StringEnum
 	{
+		public static readonly DrmSchemeName PLAYREADY_CENC = new DrmSchemeName("drm.PLAYREADY_CENC");
+		public static readonly DrmSchemeName WIDEVINE_CENC = new DrmSchemeName("drm.WIDEVINE_CENC");
+		public static readonly DrmSchemeName FAIRPLAY = new DrmSchemeName("fairplay.FAIRPLAY");
+		public static readonly DrmSchemeName PLAYREADY = new DrmSchemeName("playReady.PLAYREADY");
+		public static readonly DrmSchemeName WIDEVINE = new DrmSchemeName("widevine.WIDEVINE");
 
 		private DrmSchemeName(string name) : base(name) { }
 	}

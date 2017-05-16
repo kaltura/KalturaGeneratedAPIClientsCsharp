@@ -48,6 +48,7 @@ namespace Kaltura.Types
 		public const string TEMPLATE_ENTRY_CATEGORIES_IDS_LIKE = "templateEntryCategoriesIdsLike";
 		public const string RESOURCE_SYSTEM_NAMES_MULTI_LIKE_AND = "resourceSystemNamesMultiLikeAnd";
 		public const string RESOURCE_SYSTEM_NAMES_LIKE = "resourceSystemNamesLike";
+		public const string RESOURCE_ID_EQUAL = "resourceIdEqual";
 		public new const string ORDER_BY = "orderBy";
 		#endregion
 
@@ -64,6 +65,7 @@ namespace Kaltura.Types
 		private string _TemplateEntryCategoriesIdsLike = null;
 		private string _ResourceSystemNamesMultiLikeAnd = null;
 		private string _ResourceSystemNamesLike = null;
+		private string _ResourceIdEqual = null;
 		private ScheduleEventOrderBy _OrderBy = null;
 		#endregion
 
@@ -176,6 +178,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("ResourceSystemNamesLike");
 			}
 		}
+		public string ResourceIdEqual
+		{
+			get { return _ResourceIdEqual; }
+			set 
+			{ 
+				_ResourceIdEqual = value;
+				OnPropertyChanged("ResourceIdEqual");
+			}
+		}
 		public new ScheduleEventOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -234,6 +245,9 @@ namespace Kaltura.Types
 					case "resourceSystemNamesLike":
 						this._ResourceSystemNamesLike = propertyNode.InnerText;
 						continue;
+					case "resourceIdEqual":
+						this._ResourceIdEqual = propertyNode.InnerText;
+						continue;
 					case "orderBy":
 						this._OrderBy = (ScheduleEventOrderBy)StringEnum.Parse(typeof(ScheduleEventOrderBy), propertyNode.InnerText);
 						continue;
@@ -260,6 +274,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("templateEntryCategoriesIdsLike", this._TemplateEntryCategoriesIdsLike);
 			kparams.AddIfNotNull("resourceSystemNamesMultiLikeAnd", this._ResourceSystemNamesMultiLikeAnd);
 			kparams.AddIfNotNull("resourceSystemNamesLike", this._ResourceSystemNamesLike);
+			kparams.AddIfNotNull("resourceIdEqual", this._ResourceIdEqual);
 			kparams.AddIfNotNull("orderBy", this._OrderBy);
 			return kparams;
 		}
@@ -291,6 +306,8 @@ namespace Kaltura.Types
 					return "ResourceSystemNamesMultiLikeAnd";
 				case RESOURCE_SYSTEM_NAMES_LIKE:
 					return "ResourceSystemNamesLike";
+				case RESOURCE_ID_EQUAL:
+					return "ResourceIdEqual";
 				case ORDER_BY:
 					return "OrderBy";
 				default:

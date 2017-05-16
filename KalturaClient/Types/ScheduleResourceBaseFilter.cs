@@ -41,6 +41,7 @@ namespace Kaltura.Types
 		public const string ID_NOT_IN = "idNotIn";
 		public const string PARENT_ID_EQUAL = "parentIdEqual";
 		public const string PARENT_ID_IN = "parentIdIn";
+		public const string NAME_EQUAL = "nameEqual";
 		public const string SYSTEM_NAME_EQUAL = "systemNameEqual";
 		public const string SYSTEM_NAME_IN = "systemNameIn";
 		public const string STATUS_EQUAL = "statusEqual";
@@ -60,6 +61,7 @@ namespace Kaltura.Types
 		private string _IdNotIn = null;
 		private int _ParentIdEqual = Int32.MinValue;
 		private string _ParentIdIn = null;
+		private string _NameEqual = null;
 		private string _SystemNameEqual = null;
 		private string _SystemNameIn = null;
 		private ScheduleResourceStatus _StatusEqual = (ScheduleResourceStatus)Int32.MinValue;
@@ -117,6 +119,15 @@ namespace Kaltura.Types
 			{ 
 				_ParentIdIn = value;
 				OnPropertyChanged("ParentIdIn");
+			}
+		}
+		public string NameEqual
+		{
+			get { return _NameEqual; }
+			set 
+			{ 
+				_NameEqual = value;
+				OnPropertyChanged("NameEqual");
 			}
 		}
 		public string SystemNameEqual
@@ -246,6 +257,9 @@ namespace Kaltura.Types
 					case "parentIdIn":
 						this._ParentIdIn = propertyNode.InnerText;
 						continue;
+					case "nameEqual":
+						this._NameEqual = propertyNode.InnerText;
+						continue;
 					case "systemNameEqual":
 						this._SystemNameEqual = propertyNode.InnerText;
 						continue;
@@ -295,6 +309,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("idNotIn", this._IdNotIn);
 			kparams.AddIfNotNull("parentIdEqual", this._ParentIdEqual);
 			kparams.AddIfNotNull("parentIdIn", this._ParentIdIn);
+			kparams.AddIfNotNull("nameEqual", this._NameEqual);
 			kparams.AddIfNotNull("systemNameEqual", this._SystemNameEqual);
 			kparams.AddIfNotNull("systemNameIn", this._SystemNameIn);
 			kparams.AddIfNotNull("statusEqual", this._StatusEqual);
@@ -322,6 +337,8 @@ namespace Kaltura.Types
 					return "ParentIdEqual";
 				case PARENT_ID_IN:
 					return "ParentIdIn";
+				case NAME_EQUAL:
+					return "NameEqual";
 				case SYSTEM_NAME_EQUAL:
 					return "SystemNameEqual";
 				case SYSTEM_NAME_IN:

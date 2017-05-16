@@ -29,7 +29,6 @@ namespace Kaltura.Enums
 {
 	public sealed class EventNotificationEventType : StringEnum
 	{
-		public static readonly EventNotificationEventType INTEGRATION_JOB_CLOSED = new EventNotificationEventType("integrationEventNotifications.INTEGRATION_JOB_CLOSED");
 		public static readonly EventNotificationEventType BATCH_JOB_STATUS = new EventNotificationEventType("1");
 		public static readonly EventNotificationEventType OBJECT_ADDED = new EventNotificationEventType("2");
 		public static readonly EventNotificationEventType OBJECT_CHANGED = new EventNotificationEventType("3");

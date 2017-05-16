@@ -29,10 +29,10 @@ namespace Kaltura.Enums
 {
 	public sealed class BatchJobType : StringEnum
 	{
+		public static readonly BatchJobType CONVERT = new BatchJobType("0");
 		public static readonly BatchJobType PARSE_MULTI_LANGUAGE_CAPTION_ASSET = new BatchJobType("caption.parsemultilanguagecaptionasset");
 		public static readonly BatchJobType PARSE_CAPTION_ASSET = new BatchJobType("captionSearch.parseCaptionAsset");
 		public static readonly BatchJobType DISTRIBUTION_DELETE = new BatchJobType("contentDistribution.DistributionDelete");
-		public static readonly BatchJobType CONVERT = new BatchJobType("0");
 		public static readonly BatchJobType DISTRIBUTION_DISABLE = new BatchJobType("contentDistribution.DistributionDisable");
 		public static readonly BatchJobType DISTRIBUTION_ENABLE = new BatchJobType("contentDistribution.DistributionEnable");
 		public static readonly BatchJobType DISTRIBUTION_FETCH_REPORT = new BatchJobType("contentDistribution.DistributionFetchReport");
@@ -47,7 +47,6 @@ namespace Kaltura.Enums
 		public static readonly BatchJobType INDEX_TAGS = new BatchJobType("tagSearch.IndexTagsByPrivacyContext");
 		public static readonly BatchJobType TAG_RESOLVE = new BatchJobType("tagSearch.TagResolve");
 		public static readonly BatchJobType VIRUS_SCAN = new BatchJobType("virusScan.VirusScan");
-		public static readonly BatchJobType WIDEVINE_REPOSITORY_SYNC = new BatchJobType("widevine.WidevineRepositorySync");
 		public static readonly BatchJobType IMPORT = new BatchJobType("1");
 		public static readonly BatchJobType DELETE = new BatchJobType("2");
 		public static readonly BatchJobType FLATTEN = new BatchJobType("3");

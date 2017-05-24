@@ -59,6 +59,7 @@ namespace Kaltura.Types
 		public const string COLLECTION_TAGS = "collectionTags";
 		public const string CONDITIONAL_PROFILES = "conditionalProfiles";
 		public const string DETECT_GOP = "detectGOP";
+		public const string MEDIA_INFO_XSL_TRANSFORMATION = "mediaInfoXslTransformation";
 		#endregion
 
 		#region Private Fields
@@ -85,6 +86,7 @@ namespace Kaltura.Types
 		private string _CollectionTags = null;
 		private string _ConditionalProfiles = null;
 		private int _DetectGOP = Int32.MinValue;
+		private string _MediaInfoXslTransformation = null;
 		#endregion
 
 		#region Properties
@@ -275,6 +277,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("DetectGOP");
 			}
 		}
+		public string MediaInfoXslTransformation
+		{
+			get { return _MediaInfoXslTransformation; }
+			set 
+			{ 
+				_MediaInfoXslTransformation = value;
+				OnPropertyChanged("MediaInfoXslTransformation");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -357,6 +368,9 @@ namespace Kaltura.Types
 					case "detectGOP":
 						this._DetectGOP = ParseInt(propertyNode.InnerText);
 						continue;
+					case "mediaInfoXslTransformation":
+						this._MediaInfoXslTransformation = propertyNode.InnerText;
+						continue;
 				}
 			}
 		}
@@ -391,6 +405,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("collectionTags", this._CollectionTags);
 			kparams.AddIfNotNull("conditionalProfiles", this._ConditionalProfiles);
 			kparams.AddIfNotNull("detectGOP", this._DetectGOP);
+			kparams.AddIfNotNull("mediaInfoXslTransformation", this._MediaInfoXslTransformation);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -443,6 +458,8 @@ namespace Kaltura.Types
 					return "ConditionalProfiles";
 				case DETECT_GOP:
 					return "DetectGOP";
+				case MEDIA_INFO_XSL_TRANSFORMATION:
+					return "MediaInfoXslTransformation";
 				default:
 					return base.getPropertyName(apiName);
 			}

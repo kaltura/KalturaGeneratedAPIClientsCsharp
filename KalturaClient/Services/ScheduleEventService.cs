@@ -263,6 +263,7 @@ namespace Kaltura.Services
 		#region Constants
 		public const string RESOURCE_IDS = "resourceIds";
 		public const string SCHEDULE_EVENT = "scheduleEvent";
+		public const string SCHEDULE_EVENT_ID_TO_IGNORE = "scheduleEventIdToIgnore";
 		#endregion
 
 		public string ResourceIds
@@ -275,17 +276,23 @@ namespace Kaltura.Services
 			set;
 			get;
 		}
+		public string ScheduleEventIdToIgnore
+		{
+			set;
+			get;
+		}
 
 		public ScheduleEventGetConflictsRequestBuilder()
 			: base("schedule_scheduleevent", "getConflicts")
 		{
 		}
 
-		public ScheduleEventGetConflictsRequestBuilder(string resourceIds, ScheduleEvent scheduleEvent)
+		public ScheduleEventGetConflictsRequestBuilder(string resourceIds, ScheduleEvent scheduleEvent, string scheduleEventIdToIgnore)
 			: this()
 		{
 			this.ResourceIds = resourceIds;
 			this.ScheduleEvent = scheduleEvent;
+			this.ScheduleEventIdToIgnore = scheduleEventIdToIgnore;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -295,6 +302,8 @@ namespace Kaltura.Services
 				kparams.AddIfNotNull("resourceIds", ResourceIds);
 			if (!isMapped("scheduleEvent"))
 				kparams.AddIfNotNull("scheduleEvent", ScheduleEvent);
+			if (!isMapped("scheduleEventIdToIgnore"))
+				kparams.AddIfNotNull("scheduleEventIdToIgnore", ScheduleEventIdToIgnore);
 			return kparams;
 		}
 
@@ -446,9 +455,9 @@ namespace Kaltura.Services
 			return new ScheduleEventGetRequestBuilder(scheduleEventId);
 		}
 
-		public static ScheduleEventGetConflictsRequestBuilder GetConflicts(string resourceIds, ScheduleEvent scheduleEvent)
+		public static ScheduleEventGetConflictsRequestBuilder GetConflicts(string resourceIds, ScheduleEvent scheduleEvent, string scheduleEventIdToIgnore = null)
 		{
-			return new ScheduleEventGetConflictsRequestBuilder(resourceIds, scheduleEvent);
+			return new ScheduleEventGetConflictsRequestBuilder(resourceIds, scheduleEvent, scheduleEventIdToIgnore);
 		}
 
 		public static ScheduleEventListRequestBuilder List(ScheduleEventFilter filter = null, FilterPager pager = null)

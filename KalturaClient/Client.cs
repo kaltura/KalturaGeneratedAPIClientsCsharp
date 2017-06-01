@@ -53,6 +53,16 @@ namespace Kaltura
  			}
  		}
 			
+ 		public void setClientTag(string value)
+ 		{
+ 			ClientTag = value;
+ 		}
+			
+ 		public string getClientTag()
+ 		{
+ 			return ClientTag;
+ 		}
+			
  		public string ApiVersion
  		{
  			get
@@ -63,6 +73,16 @@ namespace Kaltura
  			{
  				clientConfiguration.ApiVersion = value;
  			}
+ 		}
+			
+ 		public void setApiVersion(string value)
+ 		{
+ 			ApiVersion = value;
+ 		}
+			
+ 		public string getApiVersion()
+ 		{
+ 			return ApiVersion;
  		}
 			
  		public int PartnerId
@@ -77,6 +97,16 @@ namespace Kaltura
  			}
  		}
 			
+ 		public void setPartnerId(int value)
+ 		{
+ 			PartnerId = value;
+ 		}
+			
+ 		public int getPartnerId()
+ 		{
+ 			return PartnerId;
+ 		}
+			
  		public string KS
  		{
  			get
@@ -87,6 +117,16 @@ namespace Kaltura
  			{
  				requestConfiguration.Ks = value;
  			}
+ 		}
+			
+ 		public void setKS(string value)
+ 		{
+ 			KS = value;
+ 		}
+			
+ 		public string getKS()
+ 		{
+ 			return KS;
  		}
 			
  		public string SessionId
@@ -101,6 +141,16 @@ namespace Kaltura
  			}
  		}
 			
+ 		public void setSessionId(string value)
+ 		{
+ 			SessionId = value;
+ 		}
+			
+ 		public string getSessionId()
+ 		{
+ 			return SessionId;
+ 		}
+			
  		public BaseResponseProfile ResponseProfile
  		{
  			get
@@ -111,6 +161,16 @@ namespace Kaltura
  			{
  				requestConfiguration.ResponseProfile = value;
  			}
+ 		}
+			
+ 		public void setResponseProfile(BaseResponseProfile value)
+ 		{
+ 			ResponseProfile = value;
+ 		}
+			
+ 		public BaseResponseProfile getResponseProfile()
+ 		{
+ 			return ResponseProfile;
  		}
 		#endregion
 	}

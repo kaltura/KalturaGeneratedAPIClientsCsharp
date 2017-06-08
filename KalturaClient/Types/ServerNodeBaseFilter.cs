@@ -60,8 +60,9 @@ namespace Kaltura.Types
 		public const string TAGS_MULTI_LIKE_AND = "tagsMultiLikeAnd";
 		public const string DC_EQUAL = "dcEqual";
 		public const string DC_IN = "dcIn";
-		public const string PARENT_ID_EQUAL = "parentIdEqual";
-		public const string PARENT_ID_IN = "parentIdIn";
+		public const string PARENT_ID_LIKE = "parentIdLike";
+		public const string PARENT_ID_MULTI_LIKE_OR = "parentIdMultiLikeOr";
+		public const string PARENT_ID_MULTI_LIKE_AND = "parentIdMultiLikeAnd";
 		#endregion
 
 		#region Private Fields
@@ -89,8 +90,9 @@ namespace Kaltura.Types
 		private string _TagsMultiLikeAnd = null;
 		private int _DcEqual = Int32.MinValue;
 		private string _DcIn = null;
-		private int _ParentIdEqual = Int32.MinValue;
-		private string _ParentIdIn = null;
+		private string _ParentIdLike = null;
+		private string _ParentIdMultiLikeOr = null;
+		private string _ParentIdMultiLikeAnd = null;
 		#endregion
 
 		#region Properties
@@ -310,22 +312,31 @@ namespace Kaltura.Types
 				OnPropertyChanged("DcIn");
 			}
 		}
-		public int ParentIdEqual
+		public string ParentIdLike
 		{
-			get { return _ParentIdEqual; }
+			get { return _ParentIdLike; }
 			set 
 			{ 
-				_ParentIdEqual = value;
-				OnPropertyChanged("ParentIdEqual");
+				_ParentIdLike = value;
+				OnPropertyChanged("ParentIdLike");
 			}
 		}
-		public string ParentIdIn
+		public string ParentIdMultiLikeOr
 		{
-			get { return _ParentIdIn; }
+			get { return _ParentIdMultiLikeOr; }
 			set 
 			{ 
-				_ParentIdIn = value;
-				OnPropertyChanged("ParentIdIn");
+				_ParentIdMultiLikeOr = value;
+				OnPropertyChanged("ParentIdMultiLikeOr");
+			}
+		}
+		public string ParentIdMultiLikeAnd
+		{
+			get { return _ParentIdMultiLikeAnd; }
+			set 
+			{ 
+				_ParentIdMultiLikeAnd = value;
+				OnPropertyChanged("ParentIdMultiLikeAnd");
 			}
 		}
 		#endregion
@@ -413,11 +424,14 @@ namespace Kaltura.Types
 					case "dcIn":
 						this._DcIn = propertyNode.InnerText;
 						continue;
-					case "parentIdEqual":
-						this._ParentIdEqual = ParseInt(propertyNode.InnerText);
+					case "parentIdLike":
+						this._ParentIdLike = propertyNode.InnerText;
 						continue;
-					case "parentIdIn":
-						this._ParentIdIn = propertyNode.InnerText;
+					case "parentIdMultiLikeOr":
+						this._ParentIdMultiLikeOr = propertyNode.InnerText;
+						continue;
+					case "parentIdMultiLikeAnd":
+						this._ParentIdMultiLikeAnd = propertyNode.InnerText;
 						continue;
 				}
 			}
@@ -454,8 +468,9 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("tagsMultiLikeAnd", this._TagsMultiLikeAnd);
 			kparams.AddIfNotNull("dcEqual", this._DcEqual);
 			kparams.AddIfNotNull("dcIn", this._DcIn);
-			kparams.AddIfNotNull("parentIdEqual", this._ParentIdEqual);
-			kparams.AddIfNotNull("parentIdIn", this._ParentIdIn);
+			kparams.AddIfNotNull("parentIdLike", this._ParentIdLike);
+			kparams.AddIfNotNull("parentIdMultiLikeOr", this._ParentIdMultiLikeOr);
+			kparams.AddIfNotNull("parentIdMultiLikeAnd", this._ParentIdMultiLikeAnd);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -510,10 +525,12 @@ namespace Kaltura.Types
 					return "DcEqual";
 				case DC_IN:
 					return "DcIn";
-				case PARENT_ID_EQUAL:
-					return "ParentIdEqual";
-				case PARENT_ID_IN:
-					return "ParentIdIn";
+				case PARENT_ID_LIKE:
+					return "ParentIdLike";
+				case PARENT_ID_MULTI_LIKE_OR:
+					return "ParentIdMultiLikeOr";
+				case PARENT_ID_MULTI_LIKE_AND:
+					return "ParentIdMultiLikeAnd";
 				default:
 					return base.getPropertyName(apiName);
 			}

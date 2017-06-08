@@ -36,45 +36,12 @@ namespace Kaltura.Types
 	public class DeliveryServerNodeBaseFilter : ServerNodeFilter
 	{
 		#region Constants
-		public const string PLAYBACK_DOMAIN_LIKE = "playbackDomainLike";
-		public const string PLAYBACK_DOMAIN_MULTI_LIKE_OR = "playbackDomainMultiLikeOr";
-		public const string PLAYBACK_DOMAIN_MULTI_LIKE_AND = "playbackDomainMultiLikeAnd";
 		#endregion
 
 		#region Private Fields
-		private string _PlaybackDomainLike = null;
-		private string _PlaybackDomainMultiLikeOr = null;
-		private string _PlaybackDomainMultiLikeAnd = null;
 		#endregion
 
 		#region Properties
-		public string PlaybackDomainLike
-		{
-			get { return _PlaybackDomainLike; }
-			set 
-			{ 
-				_PlaybackDomainLike = value;
-				OnPropertyChanged("PlaybackDomainLike");
-			}
-		}
-		public string PlaybackDomainMultiLikeOr
-		{
-			get { return _PlaybackDomainMultiLikeOr; }
-			set 
-			{ 
-				_PlaybackDomainMultiLikeOr = value;
-				OnPropertyChanged("PlaybackDomainMultiLikeOr");
-			}
-		}
-		public string PlaybackDomainMultiLikeAnd
-		{
-			get { return _PlaybackDomainMultiLikeAnd; }
-			set 
-			{ 
-				_PlaybackDomainMultiLikeAnd = value;
-				OnPropertyChanged("PlaybackDomainMultiLikeAnd");
-			}
-		}
 		#endregion
 
 		#region CTor
@@ -84,21 +51,6 @@ namespace Kaltura.Types
 
 		public DeliveryServerNodeBaseFilter(XmlElement node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
-			{
-				switch (propertyNode.Name)
-				{
-					case "playbackDomainLike":
-						this._PlaybackDomainLike = propertyNode.InnerText;
-						continue;
-					case "playbackDomainMultiLikeOr":
-						this._PlaybackDomainMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "playbackDomainMultiLikeAnd":
-						this._PlaybackDomainMultiLikeAnd = propertyNode.InnerText;
-						continue;
-				}
-			}
 		}
 		#endregion
 
@@ -108,21 +60,12 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaDeliveryServerNodeBaseFilter");
-			kparams.AddIfNotNull("playbackDomainLike", this._PlaybackDomainLike);
-			kparams.AddIfNotNull("playbackDomainMultiLikeOr", this._PlaybackDomainMultiLikeOr);
-			kparams.AddIfNotNull("playbackDomainMultiLikeAnd", this._PlaybackDomainMultiLikeAnd);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case PLAYBACK_DOMAIN_LIKE:
-					return "PlaybackDomainLike";
-				case PLAYBACK_DOMAIN_MULTI_LIKE_OR:
-					return "PlaybackDomainMultiLikeOr";
-				case PLAYBACK_DOMAIN_MULTI_LIKE_AND:
-					return "PlaybackDomainMultiLikeAnd";
 				default:
 					return base.getPropertyName(apiName);
 			}

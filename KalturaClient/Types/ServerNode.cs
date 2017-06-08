@@ -66,7 +66,7 @@ namespace Kaltura.Types
 		private ServerNodeType _Type = null;
 		private string _Tags = null;
 		private int _Dc = Int32.MinValue;
-		private int _ParentId = Int32.MinValue;
+		private string _ParentId = null;
 		#endregion
 
 		#region Properties
@@ -147,7 +147,7 @@ namespace Kaltura.Types
 		{
 			get { return _Dc; }
 		}
-		public int ParentId
+		public string ParentId
 		{
 			get { return _ParentId; }
 			set 
@@ -209,7 +209,7 @@ namespace Kaltura.Types
 						this._Dc = ParseInt(propertyNode.InnerText);
 						continue;
 					case "parentId":
-						this._ParentId = ParseInt(propertyNode.InnerText);
+						this._ParentId = propertyNode.InnerText;
 						continue;
 				}
 			}

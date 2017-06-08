@@ -78,6 +78,58 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class PollGetVoteRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		public const string POLL_ID = "pollId";
+		public const string USER_ID = "userId";
+		#endregion
+
+		public string PollId
+		{
+			set;
+			get;
+		}
+		public string UserId
+		{
+			set;
+			get;
+		}
+
+		public PollGetVoteRequestBuilder()
+			: base("poll_poll", "getVote")
+		{
+		}
+
+		public PollGetVoteRequestBuilder(string pollId, string userId)
+			: this()
+		{
+			this.PollId = pollId;
+			this.UserId = userId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("pollId"))
+				kparams.AddIfNotNull("pollId", PollId);
+			if (!isMapped("userId"))
+				kparams.AddIfNotNull("userId", UserId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return result.InnerText;
+		}
+	}
+
 	public class PollGetVotesRequestBuilder : RequestBuilder<string>
 	{
 		#region Constants
@@ -210,6 +262,11 @@ namespace Kaltura.Services
 		public static PollAddRequestBuilder Add(string pollType = "SINGLE_ANONYMOUS")
 		{
 			return new PollAddRequestBuilder(pollType);
+		}
+
+		public static PollGetVoteRequestBuilder GetVote(string pollId, string userId)
+		{
+			return new PollGetVoteRequestBuilder(pollId, userId);
 		}
 
 		public static PollGetVotesRequestBuilder GetVotes(string pollId, string answerIds, string otherDCVotes = null)

@@ -33,14 +33,14 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class EntryServerNodeBaseFilter : RelatedFilter
+	public class EntryServerNodeBaseFilter : Filter
 	{
 		#region Constants
 		public const string ENTRY_ID_EQUAL = "entryIdEqual";
 		public const string ENTRY_ID_IN = "entryIdIn";
 		public const string SERVER_NODE_ID_EQUAL = "serverNodeIdEqual";
-		public const string CREATED_AT_GREATER_THAN_OR_EQUAL = "createdAtGreaterThanOrEqual";
 		public const string CREATED_AT_LESS_THAN_OR_EQUAL = "createdAtLessThanOrEqual";
+		public const string CREATED_AT_GREATER_THAN_OR_EQUAL = "createdAtGreaterThanOrEqual";
 		public const string UPDATED_AT_GREATER_THAN_OR_EQUAL = "updatedAtGreaterThanOrEqual";
 		public const string UPDATED_AT_LESS_THAN_OR_EQUAL = "updatedAtLessThanOrEqual";
 		public const string STATUS_EQUAL = "statusEqual";
@@ -52,8 +52,8 @@ namespace Kaltura.Types
 		private string _EntryIdEqual = null;
 		private string _EntryIdIn = null;
 		private int _ServerNodeIdEqual = Int32.MinValue;
-		private int _CreatedAtGreaterThanOrEqual = Int32.MinValue;
 		private int _CreatedAtLessThanOrEqual = Int32.MinValue;
+		private int _CreatedAtGreaterThanOrEqual = Int32.MinValue;
 		private int _UpdatedAtGreaterThanOrEqual = Int32.MinValue;
 		private int _UpdatedAtLessThanOrEqual = Int32.MinValue;
 		private EntryServerNodeStatus _StatusEqual = (EntryServerNodeStatus)Int32.MinValue;
@@ -89,15 +89,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerNodeIdEqual");
 			}
 		}
-		public int CreatedAtGreaterThanOrEqual
-		{
-			get { return _CreatedAtGreaterThanOrEqual; }
-			set 
-			{ 
-				_CreatedAtGreaterThanOrEqual = value;
-				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
-			}
-		}
 		public int CreatedAtLessThanOrEqual
 		{
 			get { return _CreatedAtLessThanOrEqual; }
@@ -105,6 +96,15 @@ namespace Kaltura.Types
 			{ 
 				_CreatedAtLessThanOrEqual = value;
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
+			}
+		}
+		public int CreatedAtGreaterThanOrEqual
+		{
+			get { return _CreatedAtGreaterThanOrEqual; }
+			set 
+			{ 
+				_CreatedAtGreaterThanOrEqual = value;
+				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
 		public int UpdatedAtGreaterThanOrEqual
@@ -174,11 +174,11 @@ namespace Kaltura.Types
 					case "serverNodeIdEqual":
 						this._ServerNodeIdEqual = ParseInt(propertyNode.InnerText);
 						continue;
-					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
 					case "createdAtLessThanOrEqual":
 						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
+						continue;
+					case "createdAtGreaterThanOrEqual":
+						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
 					case "updatedAtGreaterThanOrEqual":
 						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
@@ -209,8 +209,8 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("entryIdEqual", this._EntryIdEqual);
 			kparams.AddIfNotNull("entryIdIn", this._EntryIdIn);
 			kparams.AddIfNotNull("serverNodeIdEqual", this._ServerNodeIdEqual);
-			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this._CreatedAtGreaterThanOrEqual);
 			kparams.AddIfNotNull("createdAtLessThanOrEqual", this._CreatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this._CreatedAtGreaterThanOrEqual);
 			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this._UpdatedAtGreaterThanOrEqual);
 			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this._UpdatedAtLessThanOrEqual);
 			kparams.AddIfNotNull("statusEqual", this._StatusEqual);
@@ -228,10 +228,10 @@ namespace Kaltura.Types
 					return "EntryIdIn";
 				case SERVER_NODE_ID_EQUAL:
 					return "ServerNodeIdEqual";
-				case CREATED_AT_GREATER_THAN_OR_EQUAL:
-					return "CreatedAtGreaterThanOrEqual";
 				case CREATED_AT_LESS_THAN_OR_EQUAL:
 					return "CreatedAtLessThanOrEqual";
+				case CREATED_AT_GREATER_THAN_OR_EQUAL:
+					return "CreatedAtGreaterThanOrEqual";
 				case UPDATED_AT_GREATER_THAN_OR_EQUAL:
 					return "UpdatedAtGreaterThanOrEqual";
 				case UPDATED_AT_LESS_THAN_OR_EQUAL:

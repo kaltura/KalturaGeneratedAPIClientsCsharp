@@ -32,6 +32,8 @@ namespace Kaltura.Enums
 		public static readonly MetadataObjectType AD_CUE_POINT = new MetadataObjectType("adCuePointMetadata.AdCuePoint");
 		public static readonly MetadataObjectType ANNOTATION = new MetadataObjectType("annotationMetadata.Annotation");
 		public static readonly MetadataObjectType CODE_CUE_POINT = new MetadataObjectType("codeCuePointMetadata.CodeCuePoint");
+		public static readonly MetadataObjectType ANSWER_CUE_POINT = new MetadataObjectType("quiz.AnswerCuePoint");
+		public static readonly MetadataObjectType QUESTION_CUE_POINT = new MetadataObjectType("quiz.QuestionCuePoint");
 		public static readonly MetadataObjectType THUMB_CUE_POINT = new MetadataObjectType("thumbCuePointMetadata.thumbCuePoint");
 		public static readonly MetadataObjectType ENTRY = new MetadataObjectType("1");
 		public static readonly MetadataObjectType CATEGORY = new MetadataObjectType("2");

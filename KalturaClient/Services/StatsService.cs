@@ -123,6 +123,49 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class StatsReportDeviceCapabilitiesRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string DATA = "data";
+		#endregion
+
+		public string Data
+		{
+			set;
+			get;
+		}
+
+		public StatsReportDeviceCapabilitiesRequestBuilder()
+			: base("stats", "reportDeviceCapabilities")
+		{
+		}
+
+		public StatsReportDeviceCapabilitiesRequestBuilder(string data)
+			: this()
+		{
+			this.Data = data;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("data"))
+				kparams.AddIfNotNull("data", Data);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
 	public class StatsReportErrorRequestBuilder : RequestBuilder<object>
 	{
 		#region Constants
@@ -233,6 +276,11 @@ namespace Kaltura.Services
 		public static StatsKmcCollectRequestBuilder KmcCollect(StatsKmcEvent kmcEvent)
 		{
 			return new StatsKmcCollectRequestBuilder(kmcEvent);
+		}
+
+		public static StatsReportDeviceCapabilitiesRequestBuilder ReportDeviceCapabilities(string data)
+		{
+			return new StatsReportDeviceCapabilitiesRequestBuilder(data);
 		}
 
 		public static StatsReportErrorRequestBuilder ReportError(string errorCode, string errorMessage)

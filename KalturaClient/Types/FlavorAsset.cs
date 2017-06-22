@@ -123,6 +123,11 @@ namespace Kaltura.Types
 		public string Label
 		{
 			get { return _Label; }
+			set 
+			{ 
+				_Label = value;
+				OnPropertyChanged("Label");
+			}
 		}
 		#endregion
 

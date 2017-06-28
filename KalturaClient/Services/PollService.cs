@@ -191,6 +191,58 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class PollResetVotesRequestBuilder : RequestBuilder<object>
+	{
+		#region Constants
+		public const string POLL_ID = "pollId";
+		public const string ANSWER_IDS = "answerIds";
+		#endregion
+
+		public string PollId
+		{
+			set;
+			get;
+		}
+		public string AnswerIds
+		{
+			set;
+			get;
+		}
+
+		public PollResetVotesRequestBuilder()
+			: base("poll_poll", "resetVotes")
+		{
+		}
+
+		public PollResetVotesRequestBuilder(string pollId, string answerIds)
+			: this()
+		{
+			this.PollId = pollId;
+			this.AnswerIds = answerIds;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("pollId"))
+				kparams.AddIfNotNull("pollId", PollId);
+			if (!isMapped("answerIds"))
+				kparams.AddIfNotNull("answerIds", AnswerIds);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+	}
+
 	public class PollVoteRequestBuilder : RequestBuilder<string>
 	{
 		#region Constants
@@ -272,6 +324,11 @@ namespace Kaltura.Services
 		public static PollGetVotesRequestBuilder GetVotes(string pollId, string answerIds, string otherDCVotes = null)
 		{
 			return new PollGetVotesRequestBuilder(pollId, answerIds, otherDCVotes);
+		}
+
+		public static PollResetVotesRequestBuilder ResetVotes(string pollId, string answerIds)
+		{
+			return new PollResetVotesRequestBuilder(pollId, answerIds);
 		}
 
 		public static PollVoteRequestBuilder Vote(string pollId, string userId, string answerIds)

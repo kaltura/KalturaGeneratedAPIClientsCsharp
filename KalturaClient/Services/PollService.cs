@@ -135,7 +135,6 @@ namespace Kaltura.Services
 		#region Constants
 		public const string POLL_ID = "pollId";
 		public const string ANSWER_IDS = "answerIds";
-		public const string OTHER_DC_VOTES = "otherDCVotes";
 		#endregion
 
 		public string PollId
@@ -148,23 +147,17 @@ namespace Kaltura.Services
 			set;
 			get;
 		}
-		public string OtherDCVotes
-		{
-			set;
-			get;
-		}
 
 		public PollGetVotesRequestBuilder()
 			: base("poll_poll", "getVotes")
 		{
 		}
 
-		public PollGetVotesRequestBuilder(string pollId, string answerIds, string otherDCVotes)
+		public PollGetVotesRequestBuilder(string pollId, string answerIds)
 			: this()
 		{
 			this.PollId = pollId;
 			this.AnswerIds = answerIds;
-			this.OtherDCVotes = otherDCVotes;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -174,8 +167,6 @@ namespace Kaltura.Services
 				kparams.AddIfNotNull("pollId", PollId);
 			if (!isMapped("answerIds"))
 				kparams.AddIfNotNull("answerIds", AnswerIds);
-			if (!isMapped("otherDCVotes"))
-				kparams.AddIfNotNull("otherDCVotes", OtherDCVotes);
 			return kparams;
 		}
 
@@ -195,15 +186,9 @@ namespace Kaltura.Services
 	{
 		#region Constants
 		public const string POLL_ID = "pollId";
-		public const string ANSWER_IDS = "answerIds";
 		#endregion
 
 		public string PollId
-		{
-			set;
-			get;
-		}
-		public string AnswerIds
 		{
 			set;
 			get;
@@ -214,11 +199,10 @@ namespace Kaltura.Services
 		{
 		}
 
-		public PollResetVotesRequestBuilder(string pollId, string answerIds)
+		public PollResetVotesRequestBuilder(string pollId)
 			: this()
 		{
 			this.PollId = pollId;
-			this.AnswerIds = answerIds;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -226,8 +210,6 @@ namespace Kaltura.Services
 			Params kparams = base.getParameters(includeServiceAndAction);
 			if (!isMapped("pollId"))
 				kparams.AddIfNotNull("pollId", PollId);
-			if (!isMapped("answerIds"))
-				kparams.AddIfNotNull("answerIds", AnswerIds);
 			return kparams;
 		}
 
@@ -321,14 +303,14 @@ namespace Kaltura.Services
 			return new PollGetVoteRequestBuilder(pollId, userId);
 		}
 
-		public static PollGetVotesRequestBuilder GetVotes(string pollId, string answerIds, string otherDCVotes = null)
+		public static PollGetVotesRequestBuilder GetVotes(string pollId, string answerIds)
 		{
-			return new PollGetVotesRequestBuilder(pollId, answerIds, otherDCVotes);
+			return new PollGetVotesRequestBuilder(pollId, answerIds);
 		}
 
-		public static PollResetVotesRequestBuilder ResetVotes(string pollId, string answerIds)
+		public static PollResetVotesRequestBuilder ResetVotes(string pollId)
 		{
-			return new PollResetVotesRequestBuilder(pollId, answerIds);
+			return new PollResetVotesRequestBuilder(pollId);
 		}
 
 		public static PollVoteRequestBuilder Vote(string pollId, string userId, string answerIds)

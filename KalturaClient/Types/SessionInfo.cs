@@ -33,51 +33,15 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class SessionInfo : ObjectBase
+	public class SessionInfo : Session
 	{
 		#region Constants
-		public const string KS = "ks";
-		public const string SESSION_TYPE = "sessionType";
-		public const string PARTNER_ID = "partnerId";
-		public const string USER_ID = "userId";
-		public const string EXPIRY = "expiry";
-		public const string PRIVILEGES = "privileges";
 		#endregion
 
 		#region Private Fields
-		private string _Ks = null;
-		private SessionType _SessionType = (SessionType)Int32.MinValue;
-		private int _PartnerId = Int32.MinValue;
-		private string _UserId = null;
-		private int _Expiry = Int32.MinValue;
-		private string _Privileges = null;
 		#endregion
 
 		#region Properties
-		public string Ks
-		{
-			get { return _Ks; }
-		}
-		public SessionType SessionType
-		{
-			get { return _SessionType; }
-		}
-		public int PartnerId
-		{
-			get { return _PartnerId; }
-		}
-		public string UserId
-		{
-			get { return _UserId; }
-		}
-		public int Expiry
-		{
-			get { return _Expiry; }
-		}
-		public string Privileges
-		{
-			get { return _Privileges; }
-		}
 		#endregion
 
 		#region CTor
@@ -87,30 +51,6 @@ namespace Kaltura.Types
 
 		public SessionInfo(XmlElement node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
-			{
-				switch (propertyNode.Name)
-				{
-					case "ks":
-						this._Ks = propertyNode.InnerText;
-						continue;
-					case "sessionType":
-						this._SessionType = (SessionType)ParseEnum(typeof(SessionType), propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "userId":
-						this._UserId = propertyNode.InnerText;
-						continue;
-					case "expiry":
-						this._Expiry = ParseInt(propertyNode.InnerText);
-						continue;
-					case "privileges":
-						this._Privileges = propertyNode.InnerText;
-						continue;
-				}
-			}
 		}
 		#endregion
 
@@ -120,30 +60,12 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaSessionInfo");
-			kparams.AddIfNotNull("ks", this._Ks);
-			kparams.AddIfNotNull("sessionType", this._SessionType);
-			kparams.AddIfNotNull("partnerId", this._PartnerId);
-			kparams.AddIfNotNull("userId", this._UserId);
-			kparams.AddIfNotNull("expiry", this._Expiry);
-			kparams.AddIfNotNull("privileges", this._Privileges);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case KS:
-					return "Ks";
-				case SESSION_TYPE:
-					return "SessionType";
-				case PARTNER_ID:
-					return "PartnerId";
-				case USER_ID:
-					return "UserId";
-				case EXPIRY:
-					return "Expiry";
-				case PRIVILEGES:
-					return "Privileges";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -33,28 +33,17 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class AssetFilter : AssetBaseFilter
+	public class AssetFilter : Filter
 	{
 		#region Constants
-		public const string TYPE_IN = "typeIn";
 		public new const string ORDER_BY = "orderBy";
 		#endregion
 
 		#region Private Fields
-		private string _TypeIn = null;
 		private AssetOrderBy _OrderBy = null;
 		#endregion
 
 		#region Properties
-		public string TypeIn
-		{
-			get { return _TypeIn; }
-			set 
-			{ 
-				_TypeIn = value;
-				OnPropertyChanged("TypeIn");
-			}
-		}
 		public new AssetOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -77,9 +66,6 @@ namespace Kaltura.Types
 			{
 				switch (propertyNode.Name)
 				{
-					case "typeIn":
-						this._TypeIn = propertyNode.InnerText;
-						continue;
 					case "orderBy":
 						this._OrderBy = (AssetOrderBy)StringEnum.Parse(typeof(AssetOrderBy), propertyNode.InnerText);
 						continue;
@@ -94,7 +80,6 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaAssetFilter");
-			kparams.AddIfNotNull("typeIn", this._TypeIn);
 			kparams.AddIfNotNull("orderBy", this._OrderBy);
 			return kparams;
 		}
@@ -102,8 +87,6 @@ namespace Kaltura.Types
 		{
 			switch(apiName)
 			{
-				case TYPE_IN:
-					return "TypeIn";
 				case ORDER_BY:
 					return "OrderBy";
 				default:

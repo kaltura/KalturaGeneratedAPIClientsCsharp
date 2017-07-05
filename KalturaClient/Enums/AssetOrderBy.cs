@@ -29,14 +29,15 @@ namespace Kaltura.Enums
 {
 	public sealed class AssetOrderBy : StringEnum
 	{
-		public static readonly AssetOrderBy CREATED_AT_ASC = new AssetOrderBy("+createdAt");
-		public static readonly AssetOrderBy DELETED_AT_ASC = new AssetOrderBy("+deletedAt");
-		public static readonly AssetOrderBy SIZE_ASC = new AssetOrderBy("+size");
-		public static readonly AssetOrderBy UPDATED_AT_ASC = new AssetOrderBy("+updatedAt");
-		public static readonly AssetOrderBy CREATED_AT_DESC = new AssetOrderBy("-createdAt");
-		public static readonly AssetOrderBy DELETED_AT_DESC = new AssetOrderBy("-deletedAt");
-		public static readonly AssetOrderBy SIZE_DESC = new AssetOrderBy("-size");
-		public static readonly AssetOrderBy UPDATED_AT_DESC = new AssetOrderBy("-updatedAt");
+		public static readonly AssetOrderBy RELEVANCY_DESC = new AssetOrderBy("RELEVANCY_DESC");
+		public static readonly AssetOrderBy NAME_ASC = new AssetOrderBy("NAME_ASC");
+		public static readonly AssetOrderBy NAME_DESC = new AssetOrderBy("NAME_DESC");
+		public static readonly AssetOrderBy VIEWS_DESC = new AssetOrderBy("VIEWS_DESC");
+		public static readonly AssetOrderBy RATINGS_DESC = new AssetOrderBy("RATINGS_DESC");
+		public static readonly AssetOrderBy VOTES_DESC = new AssetOrderBy("VOTES_DESC");
+		public static readonly AssetOrderBy START_DATE_DESC = new AssetOrderBy("START_DATE_DESC");
+		public static readonly AssetOrderBy START_DATE_ASC = new AssetOrderBy("START_DATE_ASC");
+		public static readonly AssetOrderBy LIKES_DESC = new AssetOrderBy("LIKES_DESC");
 
 		private AssetOrderBy(string name) : base(name) { }
 	}

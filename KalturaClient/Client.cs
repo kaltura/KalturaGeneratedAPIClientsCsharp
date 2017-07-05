@@ -35,8 +35,8 @@ namespace Kaltura
 	{
 		public Client(Configuration config) : base(config)
 		{
-				ApiVersion = "3.3.0";
-				ClientTag = "dotnet:17-07-04";
+				ApiVersion = "3.6.287.20330";
+				ClientTag = "dotnet:17-07-05";
 		}
 	
 		#region Properties
@@ -107,6 +107,50 @@ namespace Kaltura
  			return PartnerId;
  		}
 			
+ 		public int UserId
+ 		{
+ 			get
+ 			{
+ 				return requestConfiguration.UserId;
+ 			}
+ 			set
+ 			{
+ 				requestConfiguration.UserId = value;
+ 			}
+ 		}
+			
+ 		public void setUserId(int value)
+ 		{
+ 			UserId = value;
+ 		}
+			
+ 		public int getUserId()
+ 		{
+ 			return UserId;
+ 		}
+			
+ 		public int Language
+ 		{
+ 			get
+ 			{
+ 				return requestConfiguration.Language;
+ 			}
+ 			set
+ 			{
+ 				requestConfiguration.Language = value;
+ 			}
+ 		}
+			
+ 		public void setLanguage(int value)
+ 		{
+ 			Language = value;
+ 		}
+			
+ 		public int getLanguage()
+ 		{
+ 			return Language;
+ 		}
+			
  		public string KS
  		{
  			get
@@ -149,28 +193,6 @@ namespace Kaltura
  		public string getSessionId()
  		{
  			return SessionId;
- 		}
-			
- 		public BaseResponseProfile ResponseProfile
- 		{
- 			get
- 			{
- 				return requestConfiguration.ResponseProfile;
- 			}
- 			set
- 			{
- 				requestConfiguration.ResponseProfile = value;
- 			}
- 		}
-			
- 		public void setResponseProfile(BaseResponseProfile value)
- 		{
- 			ResponseProfile = value;
- 		}
-			
- 		public BaseResponseProfile getResponseProfile()
- 		{
- 			return ResponseProfile;
  		}
 		#endregion
 	}

@@ -35,14 +35,45 @@ using Kaltura.Enums;
 
 namespace Kaltura.Services
 {
-	public class NotificationGetClientNotificationRequestBuilder : RequestBuilder<ClientNotification>
+	public class NotificationInitiateCleanupRequestBuilder : StandaloneRequestBuilder<bool>
 	{
 		#region Constants
-		public const string ENTRY_ID = "entryId";
+		#endregion
+
+
+		public NotificationInitiateCleanupRequestBuilder()
+			: base("notification", "initiateCleanup")
+		{
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			if (result.InnerText.Equals("1") || result.InnerText.ToLower().Equals("true"))
+				return true;
+			return false;
+		}
+	}
+
+	public class NotificationRegisterRequestBuilder : StandaloneRequestBuilder<RegistryResponse>
+	{
+		#region Constants
+		public const string IDENTIFIER = "identifier";
 		public const string TYPE = "type";
 		#endregion
 
-		public string EntryId
+		public string Identifier
 		{
 			set;
 			get;
@@ -53,23 +84,23 @@ namespace Kaltura.Services
 			get;
 		}
 
-		public NotificationGetClientNotificationRequestBuilder()
-			: base("notification", "getClientNotification")
+		public NotificationRegisterRequestBuilder()
+			: base("notification", "register")
 		{
 		}
 
-		public NotificationGetClientNotificationRequestBuilder(string entryId, NotificationType type)
+		public NotificationRegisterRequestBuilder(string identifier, NotificationType type)
 			: this()
 		{
-			this.EntryId = entryId;
+			this.Identifier = identifier;
 			this.Type = type;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("entryId"))
-				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("identifier"))
+				kparams.AddIfNotNull("identifier", Identifier);
 			if (!isMapped("type"))
 				kparams.AddIfNotNull("type", Type);
 			return kparams;
@@ -83,7 +114,52 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<ClientNotification>(result);
+			return ObjectFactory.Create<RegistryResponse>(result);
+		}
+	}
+
+	public class NotificationSetDevicePushTokenRequestBuilder : StandaloneRequestBuilder<bool>
+	{
+		#region Constants
+		public const string PUSH_TOKEN = "pushToken";
+		#endregion
+
+		public string PushToken
+		{
+			set;
+			get;
+		}
+
+		public NotificationSetDevicePushTokenRequestBuilder()
+			: base("notification", "setDevicePushToken")
+		{
+		}
+
+		public NotificationSetDevicePushTokenRequestBuilder(string pushToken)
+			: this()
+		{
+			this.PushToken = pushToken;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("pushToken"))
+				kparams.AddIfNotNull("pushToken", PushToken);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			if (result.InnerText.Equals("1") || result.InnerText.ToLower().Equals("true"))
+				return true;
+			return false;
 		}
 	}
 
@@ -94,9 +170,19 @@ namespace Kaltura.Services
 		{
 		}
 
-		public static NotificationGetClientNotificationRequestBuilder GetClientNotification(string entryId, NotificationType type)
+		public static NotificationInitiateCleanupRequestBuilder InitiateCleanup()
 		{
-			return new NotificationGetClientNotificationRequestBuilder(entryId, type);
+			return new NotificationInitiateCleanupRequestBuilder();
+		}
+
+		public static NotificationRegisterRequestBuilder Register(string identifier, NotificationType type)
+		{
+			return new NotificationRegisterRequestBuilder(identifier, type);
+		}
+
+		public static NotificationSetDevicePushTokenRequestBuilder SetDevicePushToken(string pushToken)
+		{
+			return new NotificationSetDevicePushTokenRequestBuilder(pushToken);
 		}
 	}
 }

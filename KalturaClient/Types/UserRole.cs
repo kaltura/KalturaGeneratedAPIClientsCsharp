@@ -38,31 +38,17 @@ namespace Kaltura.Types
 		#region Constants
 		public const string ID = "id";
 		public const string NAME = "name";
-		public const string SYSTEM_NAME = "systemName";
-		public const string DESCRIPTION = "description";
-		public const string STATUS = "status";
-		public const string PARTNER_ID = "partnerId";
-		public const string PERMISSION_NAMES = "permissionNames";
-		public const string TAGS = "tags";
-		public const string CREATED_AT = "createdAt";
-		public const string UPDATED_AT = "updatedAt";
+		public const string PERMISSIONS = "permissions";
 		#endregion
 
 		#region Private Fields
-		private int _Id = Int32.MinValue;
+		private long _Id = long.MinValue;
 		private string _Name = null;
-		private string _SystemName = null;
-		private string _Description = null;
-		private UserRoleStatus _Status = (UserRoleStatus)Int32.MinValue;
-		private int _PartnerId = Int32.MinValue;
-		private string _PermissionNames = null;
-		private string _Tags = null;
-		private int _CreatedAt = Int32.MinValue;
-		private int _UpdatedAt = Int32.MinValue;
+		private IList<Permission> _Permissions;
 		#endregion
 
 		#region Properties
-		public int Id
+		public long Id
 		{
 			get { return _Id; }
 		}
@@ -75,62 +61,14 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
-		public string SystemName
+		public IList<Permission> Permissions
 		{
-			get { return _SystemName; }
+			get { return _Permissions; }
 			set 
 			{ 
-				_SystemName = value;
-				OnPropertyChanged("SystemName");
+				_Permissions = value;
+				OnPropertyChanged("Permissions");
 			}
-		}
-		public string Description
-		{
-			get { return _Description; }
-			set 
-			{ 
-				_Description = value;
-				OnPropertyChanged("Description");
-			}
-		}
-		public UserRoleStatus Status
-		{
-			get { return _Status; }
-			set 
-			{ 
-				_Status = value;
-				OnPropertyChanged("Status");
-			}
-		}
-		public int PartnerId
-		{
-			get { return _PartnerId; }
-		}
-		public string PermissionNames
-		{
-			get { return _PermissionNames; }
-			set 
-			{ 
-				_PermissionNames = value;
-				OnPropertyChanged("PermissionNames");
-			}
-		}
-		public string Tags
-		{
-			get { return _Tags; }
-			set 
-			{ 
-				_Tags = value;
-				OnPropertyChanged("Tags");
-			}
-		}
-		public int CreatedAt
-		{
-			get { return _CreatedAt; }
-		}
-		public int UpdatedAt
-		{
-			get { return _UpdatedAt; }
 		}
 		#endregion
 
@@ -146,34 +84,17 @@ namespace Kaltura.Types
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
+						this._Id = ParseLong(propertyNode.InnerText);
 						continue;
 					case "name":
 						this._Name = propertyNode.InnerText;
 						continue;
-					case "systemName":
-						this._SystemName = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "status":
-						this._Status = (UserRoleStatus)ParseEnum(typeof(UserRoleStatus), propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "permissionNames":
-						this._PermissionNames = propertyNode.InnerText;
-						continue;
-					case "tags":
-						this._Tags = propertyNode.InnerText;
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
+					case "permissions":
+						this._Permissions = new List<Permission>();
+						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
+						{
+							this._Permissions.Add(ObjectFactory.Create<Permission>(arrayNode));
+						}
 						continue;
 				}
 			}
@@ -188,14 +109,7 @@ namespace Kaltura.Types
 				kparams.AddReplace("objectType", "KalturaUserRole");
 			kparams.AddIfNotNull("id", this._Id);
 			kparams.AddIfNotNull("name", this._Name);
-			kparams.AddIfNotNull("systemName", this._SystemName);
-			kparams.AddIfNotNull("description", this._Description);
-			kparams.AddIfNotNull("status", this._Status);
-			kparams.AddIfNotNull("partnerId", this._PartnerId);
-			kparams.AddIfNotNull("permissionNames", this._PermissionNames);
-			kparams.AddIfNotNull("tags", this._Tags);
-			kparams.AddIfNotNull("createdAt", this._CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
+			kparams.AddIfNotNull("permissions", this._Permissions);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -206,22 +120,8 @@ namespace Kaltura.Types
 					return "Id";
 				case NAME:
 					return "Name";
-				case SYSTEM_NAME:
-					return "SystemName";
-				case DESCRIPTION:
-					return "Description";
-				case STATUS:
-					return "Status";
-				case PARTNER_ID:
-					return "PartnerId";
-				case PERMISSION_NAMES:
-					return "PermissionNames";
-				case TAGS:
-					return "Tags";
-				case CREATED_AT:
-					return "CreatedAt";
-				case UPDATED_AT:
-					return "UpdatedAt";
+				case PERMISSIONS:
+					return "Permissions";
 				default:
 					return base.getPropertyName(apiName);
 			}

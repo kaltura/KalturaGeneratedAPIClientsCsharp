@@ -35,50 +35,7 @@ using Kaltura.Enums;
 
 namespace Kaltura.Services
 {
-	public class SystemGetCountryRequestBuilder : StandaloneRequestBuilder<Country>
-	{
-		#region Constants
-		public const string IP = "ip";
-		#endregion
-
-		public string Ip
-		{
-			set;
-			get;
-		}
-
-		public SystemGetCountryRequestBuilder()
-			: base("system", "getCountry")
-		{
-		}
-
-		public SystemGetCountryRequestBuilder(string ip)
-			: this()
-		{
-			this.Ip = ip;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("ip"))
-				kparams.AddIfNotNull("ip", Ip);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<Country>(result);
-		}
-	}
-
-	public class SystemGetTimeRequestBuilder : StandaloneRequestBuilder<long>
+	public class SystemGetTimeRequestBuilder : RequestBuilder<int>
 	{
 		#region Constants
 		#endregion
@@ -103,11 +60,11 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return long.Parse(result.InnerText);
+			return int.Parse(result.InnerText);
 		}
 	}
 
-	public class SystemGetVersionRequestBuilder : StandaloneRequestBuilder<string>
+	public class SystemGetVersionRequestBuilder : RequestBuilder<string>
 	{
 		#region Constants
 		#endregion
@@ -136,7 +93,7 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class SystemPingRequestBuilder : StandaloneRequestBuilder<bool>
+	public class SystemPingRequestBuilder : RequestBuilder<bool>
 	{
 		#region Constants
 		#endregion
@@ -167,16 +124,42 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class SystemPingDatabaseRequestBuilder : RequestBuilder<bool>
+	{
+		#region Constants
+		#endregion
+
+
+		public SystemPingDatabaseRequestBuilder()
+			: base("system", "pingDatabase")
+		{
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			if (result.InnerText.Equals("1") || result.InnerText.ToLower().Equals("true"))
+				return true;
+			return false;
+		}
+	}
+
 
 	public class SystemService
 	{
 		private SystemService()
 		{
-		}
-
-		public static SystemGetCountryRequestBuilder GetCountry(string ip = null)
-		{
-			return new SystemGetCountryRequestBuilder(ip);
 		}
 
 		public static SystemGetTimeRequestBuilder GetTime()
@@ -192,6 +175,11 @@ namespace Kaltura.Services
 		public static SystemPingRequestBuilder Ping()
 		{
 			return new SystemPingRequestBuilder();
+		}
+
+		public static SystemPingDatabaseRequestBuilder PingDatabase()
+		{
+			return new SystemPingDatabaseRequestBuilder();
 		}
 	}
 }

@@ -29,10 +29,10 @@ namespace Kaltura.Enums
 {
 	public sealed class ApiParameterPermissionItemAction : StringEnum
 	{
-		public static readonly ApiParameterPermissionItemAction READ = new ApiParameterPermissionItemAction("READ");
-		public static readonly ApiParameterPermissionItemAction INSERT = new ApiParameterPermissionItemAction("INSERT");
-		public static readonly ApiParameterPermissionItemAction UPDATE = new ApiParameterPermissionItemAction("UPDATE");
-		public static readonly ApiParameterPermissionItemAction USAGE = new ApiParameterPermissionItemAction("USAGE");
+		public static readonly ApiParameterPermissionItemAction USAGE = new ApiParameterPermissionItemAction("all");
+		public static readonly ApiParameterPermissionItemAction INSERT = new ApiParameterPermissionItemAction("insert");
+		public static readonly ApiParameterPermissionItemAction READ = new ApiParameterPermissionItemAction("read");
+		public static readonly ApiParameterPermissionItemAction UPDATE = new ApiParameterPermissionItemAction("update");
 
 		private ApiParameterPermissionItemAction(string name) : base(name) { }
 	}

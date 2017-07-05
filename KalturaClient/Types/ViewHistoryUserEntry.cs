@@ -38,11 +38,13 @@ namespace Kaltura.Types
 		#region Constants
 		public const string PLAYBACK_CONTEXT = "playbackContext";
 		public const string LAST_TIME_REACHED = "lastTimeReached";
+		public const string LAST_UPDATE_TIME = "lastUpdateTime";
 		#endregion
 
 		#region Private Fields
 		private string _PlaybackContext = null;
 		private int _LastTimeReached = Int32.MinValue;
+		private int _LastUpdateTime = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -64,6 +66,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastTimeReached");
 			}
 		}
+		public int LastUpdateTime
+		{
+			get { return _LastUpdateTime; }
+			set 
+			{ 
+				_LastUpdateTime = value;
+				OnPropertyChanged("LastUpdateTime");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -83,6 +94,9 @@ namespace Kaltura.Types
 					case "lastTimeReached":
 						this._LastTimeReached = ParseInt(propertyNode.InnerText);
 						continue;
+					case "lastUpdateTime":
+						this._LastUpdateTime = ParseInt(propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -96,6 +110,7 @@ namespace Kaltura.Types
 				kparams.AddReplace("objectType", "KalturaViewHistoryUserEntry");
 			kparams.AddIfNotNull("playbackContext", this._PlaybackContext);
 			kparams.AddIfNotNull("lastTimeReached", this._LastTimeReached);
+			kparams.AddIfNotNull("lastUpdateTime", this._LastUpdateTime);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -106,6 +121,8 @@ namespace Kaltura.Types
 					return "PlaybackContext";
 				case LAST_TIME_REACHED:
 					return "LastTimeReached";
+				case LAST_UPDATE_TIME:
+					return "LastUpdateTime";
 				default:
 					return base.getPropertyName(apiName);
 			}

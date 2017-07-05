@@ -29,8 +29,8 @@ namespace Kaltura.Enums
 {
 	public enum AppTokenStatus
 	{
-		DELETED = 0,
 		DISABLED = 1,
 		ACTIVE = 2,
+		DELETED = 3,
 	}
 }

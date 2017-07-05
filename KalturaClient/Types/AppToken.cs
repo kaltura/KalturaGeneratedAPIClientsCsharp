@@ -37,34 +37,58 @@ namespace Kaltura.Types
 	{
 		#region Constants
 		public const string ID = "id";
-		public const string EXPIRY = "expiry";
-		public const string PARTNER_ID = "partnerId";
-		public const string SESSION_DURATION = "sessionDuration";
-		public const string HASH_TYPE = "hashType";
-		public const string SESSION_PRIVILEGES = "sessionPrivileges";
-		public const string SESSION_TYPE = "sessionType";
-		public const string STATUS = "status";
 		public const string TOKEN = "token";
+		public const string PARTNER_ID = "partnerId";
+		public const string CREATED_AT = "createdAt";
+		public const string UPDATED_AT = "updatedAt";
+		public const string STATUS = "status";
+		public const string EXPIRY = "expiry";
+		public const string SESSION_TYPE = "sessionType";
 		public const string SESSION_USER_ID = "sessionUserId";
+		public const string SESSION_DURATION = "sessionDuration";
+		public const string SESSION_PRIVILEGES = "sessionPrivileges";
+		public const string HASH_TYPE = "hashType";
 		#endregion
 
 		#region Private Fields
 		private string _Id = null;
-		private int _Expiry = Int32.MinValue;
-		private int _PartnerId = Int32.MinValue;
-		private int _SessionDuration = Int32.MinValue;
-		private AppTokenHashType _HashType = null;
-		private string _SessionPrivileges = null;
-		private SessionType _SessionType = (SessionType)Int32.MinValue;
-		private AppTokenStatus _Status = (AppTokenStatus)Int32.MinValue;
 		private string _Token = null;
+		private int _PartnerId = Int32.MinValue;
+		private int _CreatedAt = Int32.MinValue;
+		private int _UpdatedAt = Int32.MinValue;
+		private AppTokenStatus _Status = (AppTokenStatus)Int32.MinValue;
+		private int _Expiry = Int32.MinValue;
+		private SessionType _SessionType = (SessionType)Int32.MinValue;
 		private string _SessionUserId = null;
+		private int _SessionDuration = Int32.MinValue;
+		private string _SessionPrivileges = null;
+		private AppTokenHashType _HashType = null;
 		#endregion
 
 		#region Properties
 		public string Id
 		{
 			get { return _Id; }
+		}
+		public string Token
+		{
+			get { return _Token; }
+		}
+		public int PartnerId
+		{
+			get { return _PartnerId; }
+		}
+		public int CreatedAt
+		{
+			get { return _CreatedAt; }
+		}
+		public int UpdatedAt
+		{
+			get { return _UpdatedAt; }
+		}
+		public AppTokenStatus Status
+		{
+			get { return _Status; }
 		}
 		public int Expiry
 		{
@@ -73,42 +97,6 @@ namespace Kaltura.Types
 			{ 
 				_Expiry = value;
 				OnPropertyChanged("Expiry");
-			}
-		}
-		public int PartnerId
-		{
-			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
-		}
-		public int SessionDuration
-		{
-			get { return _SessionDuration; }
-			set 
-			{ 
-				_SessionDuration = value;
-				OnPropertyChanged("SessionDuration");
-			}
-		}
-		public AppTokenHashType HashType
-		{
-			get { return _HashType; }
-			set 
-			{ 
-				_HashType = value;
-				OnPropertyChanged("HashType");
-			}
-		}
-		public string SessionPrivileges
-		{
-			get { return _SessionPrivileges; }
-			set 
-			{ 
-				_SessionPrivileges = value;
-				OnPropertyChanged("SessionPrivileges");
 			}
 		}
 		public SessionType SessionType
@@ -120,19 +108,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SessionType");
 			}
 		}
-		public AppTokenStatus Status
-		{
-			get { return _Status; }
-		}
-		public string Token
-		{
-			get { return _Token; }
-			set 
-			{ 
-				_Token = value;
-				OnPropertyChanged("Token");
-			}
-		}
 		public string SessionUserId
 		{
 			get { return _SessionUserId; }
@@ -140,6 +115,33 @@ namespace Kaltura.Types
 			{ 
 				_SessionUserId = value;
 				OnPropertyChanged("SessionUserId");
+			}
+		}
+		public int SessionDuration
+		{
+			get { return _SessionDuration; }
+			set 
+			{ 
+				_SessionDuration = value;
+				OnPropertyChanged("SessionDuration");
+			}
+		}
+		public string SessionPrivileges
+		{
+			get { return _SessionPrivileges; }
+			set 
+			{ 
+				_SessionPrivileges = value;
+				OnPropertyChanged("SessionPrivileges");
+			}
+		}
+		public AppTokenHashType HashType
+		{
+			get { return _HashType; }
+			set 
+			{ 
+				_HashType = value;
+				OnPropertyChanged("HashType");
 			}
 		}
 		#endregion
@@ -158,32 +160,38 @@ namespace Kaltura.Types
 					case "id":
 						this._Id = propertyNode.InnerText;
 						continue;
-					case "expiry":
-						this._Expiry = ParseInt(propertyNode.InnerText);
+					case "token":
+						this._Token = propertyNode.InnerText;
 						continue;
 					case "partnerId":
 						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
-					case "sessionDuration":
-						this._SessionDuration = ParseInt(propertyNode.InnerText);
+					case "createdAt":
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
 						continue;
-					case "hashType":
-						this._HashType = (AppTokenHashType)StringEnum.Parse(typeof(AppTokenHashType), propertyNode.InnerText);
-						continue;
-					case "sessionPrivileges":
-						this._SessionPrivileges = propertyNode.InnerText;
-						continue;
-					case "sessionType":
-						this._SessionType = (SessionType)ParseEnum(typeof(SessionType), propertyNode.InnerText);
+					case "updatedAt":
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 					case "status":
 						this._Status = (AppTokenStatus)ParseEnum(typeof(AppTokenStatus), propertyNode.InnerText);
 						continue;
-					case "token":
-						this._Token = propertyNode.InnerText;
+					case "expiry":
+						this._Expiry = ParseInt(propertyNode.InnerText);
+						continue;
+					case "sessionType":
+						this._SessionType = (SessionType)ParseEnum(typeof(SessionType), propertyNode.InnerText);
 						continue;
 					case "sessionUserId":
 						this._SessionUserId = propertyNode.InnerText;
+						continue;
+					case "sessionDuration":
+						this._SessionDuration = ParseInt(propertyNode.InnerText);
+						continue;
+					case "sessionPrivileges":
+						this._SessionPrivileges = propertyNode.InnerText;
+						continue;
+					case "hashType":
+						this._HashType = (AppTokenHashType)StringEnum.Parse(typeof(AppTokenHashType), propertyNode.InnerText);
 						continue;
 				}
 			}
@@ -197,15 +205,17 @@ namespace Kaltura.Types
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaAppToken");
 			kparams.AddIfNotNull("id", this._Id);
-			kparams.AddIfNotNull("expiry", this._Expiry);
-			kparams.AddIfNotNull("partnerId", this._PartnerId);
-			kparams.AddIfNotNull("sessionDuration", this._SessionDuration);
-			kparams.AddIfNotNull("hashType", this._HashType);
-			kparams.AddIfNotNull("sessionPrivileges", this._SessionPrivileges);
-			kparams.AddIfNotNull("sessionType", this._SessionType);
-			kparams.AddIfNotNull("status", this._Status);
 			kparams.AddIfNotNull("token", this._Token);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
+			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("expiry", this._Expiry);
+			kparams.AddIfNotNull("sessionType", this._SessionType);
 			kparams.AddIfNotNull("sessionUserId", this._SessionUserId);
+			kparams.AddIfNotNull("sessionDuration", this._SessionDuration);
+			kparams.AddIfNotNull("sessionPrivileges", this._SessionPrivileges);
+			kparams.AddIfNotNull("hashType", this._HashType);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -214,24 +224,28 @@ namespace Kaltura.Types
 			{
 				case ID:
 					return "Id";
-				case EXPIRY:
-					return "Expiry";
-				case PARTNER_ID:
-					return "PartnerId";
-				case SESSION_DURATION:
-					return "SessionDuration";
-				case HASH_TYPE:
-					return "HashType";
-				case SESSION_PRIVILEGES:
-					return "SessionPrivileges";
-				case SESSION_TYPE:
-					return "SessionType";
-				case STATUS:
-					return "Status";
 				case TOKEN:
 					return "Token";
+				case PARTNER_ID:
+					return "PartnerId";
+				case CREATED_AT:
+					return "CreatedAt";
+				case UPDATED_AT:
+					return "UpdatedAt";
+				case STATUS:
+					return "Status";
+				case EXPIRY:
+					return "Expiry";
+				case SESSION_TYPE:
+					return "SessionType";
 				case SESSION_USER_ID:
 					return "SessionUserId";
+				case SESSION_DURATION:
+					return "SessionDuration";
+				case SESSION_PRIVILEGES:
+					return "SessionPrivileges";
+				case HASH_TYPE:
+					return "HashType";
 				default:
 					return base.getPropertyName(apiName);
 			}

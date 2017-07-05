@@ -29,10 +29,10 @@ namespace Kaltura.Enums
 {
 	public sealed class AppTokenHashType : StringEnum
 	{
+		public static readonly AppTokenHashType MD5 = new AppTokenHashType("MD5");
 		public static readonly AppTokenHashType SHA1 = new AppTokenHashType("SHA1");
 		public static readonly AppTokenHashType SHA256 = new AppTokenHashType("SHA256");
 		public static readonly AppTokenHashType SHA512 = new AppTokenHashType("SHA512");
-		public static readonly AppTokenHashType MD5 = new AppTokenHashType("MD5");
 
 		private AppTokenHashType(string name) : base(name) { }
 	}

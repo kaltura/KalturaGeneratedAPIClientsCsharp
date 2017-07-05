@@ -29,7 +29,14 @@ namespace Kaltura.Enums
 {
 	public sealed class UserRoleOrderBy : StringEnum
 	{
-		public static readonly UserRoleOrderBy NONE = new UserRoleOrderBy("NONE");
+		public static readonly UserRoleOrderBy CREATED_AT_ASC = new UserRoleOrderBy("+createdAt");
+		public static readonly UserRoleOrderBy ID_ASC = new UserRoleOrderBy("+id");
+		public static readonly UserRoleOrderBy NAME_ASC = new UserRoleOrderBy("+name");
+		public static readonly UserRoleOrderBy UPDATED_AT_ASC = new UserRoleOrderBy("+updatedAt");
+		public static readonly UserRoleOrderBy CREATED_AT_DESC = new UserRoleOrderBy("-createdAt");
+		public static readonly UserRoleOrderBy ID_DESC = new UserRoleOrderBy("-id");
+		public static readonly UserRoleOrderBy NAME_DESC = new UserRoleOrderBy("-name");
+		public static readonly UserRoleOrderBy UPDATED_AT_DESC = new UserRoleOrderBy("-updatedAt");
 
 		private UserRoleOrderBy(string name) : base(name) { }
 	}

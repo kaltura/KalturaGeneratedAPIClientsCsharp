@@ -35,36 +35,7 @@ using Kaltura.Enums;
 
 namespace Kaltura.Services
 {
-	public class SessionEndRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		#endregion
-
-
-		public SessionEndRequestBuilder()
-			: base("session", "end")
-		{
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
-	public class SessionGetRequestBuilder : RequestBuilder<SessionInfo>
+	public class SessionGetRequestBuilder : StandaloneRequestBuilder<Session>
 	{
 		#region Constants
 		public const string SESSION = "session";
@@ -103,92 +74,38 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<SessionInfo>(result);
+			return ObjectFactory.Create<Session>(result);
 		}
 	}
 
-	public class SessionImpersonateRequestBuilder : RequestBuilder<string>
+	public class SessionSwitchUserRequestBuilder : StandaloneRequestBuilder<LoginSession>
 	{
 		#region Constants
-		public const string SECRET = "secret";
-		public const string IMPERSONATED_PARTNER_ID = "impersonatedPartnerId";
-		public const string USER_ID = "userId";
-		public const string TYPE = "type";
-		public new const string PARTNER_ID = "partnerId";
-		public const string EXPIRY = "expiry";
-		public const string PRIVILEGES = "privileges";
+		public const string USER_ID_TO_SWITCH = "userIdToSwitch";
 		#endregion
 
-		public string Secret
-		{
-			set;
-			get;
-		}
-		public int ImpersonatedPartnerId
-		{
-			set;
-			get;
-		}
-		public string UserId
-		{
-			set;
-			get;
-		}
-		public SessionType Type
-		{
-			set;
-			get;
-		}
-		public new int PartnerId
-		{
-			set;
-			get;
-		}
-		public int Expiry
-		{
-			set;
-			get;
-		}
-		public string Privileges
+		public string UserIdToSwitch
 		{
 			set;
 			get;
 		}
 
-		public SessionImpersonateRequestBuilder()
-			: base("session", "impersonate")
+		public SessionSwitchUserRequestBuilder()
+			: base("session", "switchUser")
 		{
 		}
 
-		public SessionImpersonateRequestBuilder(string secret, int impersonatedPartnerId, string userId, SessionType type, int partnerId, int expiry, string privileges)
+		public SessionSwitchUserRequestBuilder(string userIdToSwitch)
 			: this()
 		{
-			this.Secret = secret;
-			this.ImpersonatedPartnerId = impersonatedPartnerId;
-			this.UserId = userId;
-			this.Type = type;
-			this.PartnerId = partnerId;
-			this.Expiry = expiry;
-			this.Privileges = privileges;
+			this.UserIdToSwitch = userIdToSwitch;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
 		{
 			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("secret"))
-				kparams.AddIfNotNull("secret", Secret);
-			if (!isMapped("impersonatedPartnerId"))
-				kparams.AddIfNotNull("impersonatedPartnerId", ImpersonatedPartnerId);
-			if (!isMapped("userId"))
-				kparams.AddIfNotNull("userId", UserId);
-			if (!isMapped("type"))
-				kparams.AddIfNotNull("type", Type);
-			if (!isMapped("partnerId"))
-				kparams.AddIfNotNull("partnerId", PartnerId);
-			if (!isMapped("expiry"))
-				kparams.AddIfNotNull("expiry", Expiry);
-			if (!isMapped("privileges"))
-				kparams.AddIfNotNull("privileges", Privileges);
+			if (!isMapped("userIdToSwitch"))
+				kparams.AddIfNotNull("userIdToSwitch", UserIdToSwitch);
 			return kparams;
 		}
 
@@ -200,217 +117,7 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return result.InnerText;
-		}
-	}
-
-	public class SessionImpersonateByKsRequestBuilder : RequestBuilder<SessionInfo>
-	{
-		#region Constants
-		public const string SESSION = "session";
-		public const string TYPE = "type";
-		public const string EXPIRY = "expiry";
-		public const string PRIVILEGES = "privileges";
-		#endregion
-
-		public string Session
-		{
-			set;
-			get;
-		}
-		public SessionType Type
-		{
-			set;
-			get;
-		}
-		public int Expiry
-		{
-			set;
-			get;
-		}
-		public string Privileges
-		{
-			set;
-			get;
-		}
-
-		public SessionImpersonateByKsRequestBuilder()
-			: base("session", "impersonateByKs")
-		{
-		}
-
-		public SessionImpersonateByKsRequestBuilder(string session, SessionType type, int expiry, string privileges)
-			: this()
-		{
-			this.Session = session;
-			this.Type = type;
-			this.Expiry = expiry;
-			this.Privileges = privileges;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("session"))
-				kparams.AddIfNotNull("session", Session);
-			if (!isMapped("type"))
-				kparams.AddIfNotNull("type", Type);
-			if (!isMapped("expiry"))
-				kparams.AddIfNotNull("expiry", Expiry);
-			if (!isMapped("privileges"))
-				kparams.AddIfNotNull("privileges", Privileges);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<SessionInfo>(result);
-		}
-	}
-
-	public class SessionStartRequestBuilder : RequestBuilder<string>
-	{
-		#region Constants
-		public const string SECRET = "secret";
-		public const string USER_ID = "userId";
-		public const string TYPE = "type";
-		public new const string PARTNER_ID = "partnerId";
-		public const string EXPIRY = "expiry";
-		public const string PRIVILEGES = "privileges";
-		#endregion
-
-		public string Secret
-		{
-			set;
-			get;
-		}
-		public string UserId
-		{
-			set;
-			get;
-		}
-		public SessionType Type
-		{
-			set;
-			get;
-		}
-		public new int PartnerId
-		{
-			set;
-			get;
-		}
-		public int Expiry
-		{
-			set;
-			get;
-		}
-		public string Privileges
-		{
-			set;
-			get;
-		}
-
-		public SessionStartRequestBuilder()
-			: base("session", "start")
-		{
-		}
-
-		public SessionStartRequestBuilder(string secret, string userId, SessionType type, int partnerId, int expiry, string privileges)
-			: this()
-		{
-			this.Secret = secret;
-			this.UserId = userId;
-			this.Type = type;
-			this.PartnerId = partnerId;
-			this.Expiry = expiry;
-			this.Privileges = privileges;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("secret"))
-				kparams.AddIfNotNull("secret", Secret);
-			if (!isMapped("userId"))
-				kparams.AddIfNotNull("userId", UserId);
-			if (!isMapped("type"))
-				kparams.AddIfNotNull("type", Type);
-			if (!isMapped("partnerId"))
-				kparams.AddIfNotNull("partnerId", PartnerId);
-			if (!isMapped("expiry"))
-				kparams.AddIfNotNull("expiry", Expiry);
-			if (!isMapped("privileges"))
-				kparams.AddIfNotNull("privileges", Privileges);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return result.InnerText;
-		}
-	}
-
-	public class SessionStartWidgetSessionRequestBuilder : RequestBuilder<StartWidgetSessionResponse>
-	{
-		#region Constants
-		public const string WIDGET_ID = "widgetId";
-		public const string EXPIRY = "expiry";
-		#endregion
-
-		public string WidgetId
-		{
-			set;
-			get;
-		}
-		public int Expiry
-		{
-			set;
-			get;
-		}
-
-		public SessionStartWidgetSessionRequestBuilder()
-			: base("session", "startWidgetSession")
-		{
-		}
-
-		public SessionStartWidgetSessionRequestBuilder(string widgetId, int expiry)
-			: this()
-		{
-			this.WidgetId = widgetId;
-			this.Expiry = expiry;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("widgetId"))
-				kparams.AddIfNotNull("widgetId", WidgetId);
-			if (!isMapped("expiry"))
-				kparams.AddIfNotNull("expiry", Expiry);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<StartWidgetSessionResponse>(result);
+			return ObjectFactory.Create<LoginSession>(result);
 		}
 	}
 
@@ -421,34 +128,14 @@ namespace Kaltura.Services
 		{
 		}
 
-		public static SessionEndRequestBuilder End()
-		{
-			return new SessionEndRequestBuilder();
-		}
-
 		public static SessionGetRequestBuilder Get(string session = null)
 		{
 			return new SessionGetRequestBuilder(session);
 		}
 
-		public static SessionImpersonateRequestBuilder Impersonate(string secret, int impersonatedPartnerId, string userId = "", SessionType type = (SessionType)(0), int partnerId = Int32.MinValue, int expiry = 86400, string privileges = null)
+		public static SessionSwitchUserRequestBuilder SwitchUser(string userIdToSwitch)
 		{
-			return new SessionImpersonateRequestBuilder(secret, impersonatedPartnerId, userId, type, partnerId, expiry, privileges);
-		}
-
-		public static SessionImpersonateByKsRequestBuilder ImpersonateByKs(string session, SessionType type = (SessionType)(Int32.MinValue), int expiry = Int32.MinValue, string privileges = null)
-		{
-			return new SessionImpersonateByKsRequestBuilder(session, type, expiry, privileges);
-		}
-
-		public static SessionStartRequestBuilder Start(string secret, string userId = "", SessionType type = (SessionType)(0), int partnerId = Int32.MinValue, int expiry = 86400, string privileges = null)
-		{
-			return new SessionStartRequestBuilder(secret, userId, type, partnerId, expiry, privileges);
-		}
-
-		public static SessionStartWidgetSessionRequestBuilder StartWidgetSession(string widgetId, int expiry = 86400)
-		{
-			return new SessionStartWidgetSessionRequestBuilder(widgetId, expiry);
+			return new SessionSwitchUserRequestBuilder(userIdToSwitch);
 		}
 	}
 }

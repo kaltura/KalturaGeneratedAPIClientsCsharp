@@ -35,7 +35,7 @@ using Kaltura.Enums;
 
 namespace Kaltura.Services
 {
-	public class AppTokenAddRequestBuilder : RequestBuilder<AppToken>
+	public class AppTokenAddRequestBuilder : StandaloneRequestBuilder<AppToken>
 	{
 		#region Constants
 		public const string APP_TOKEN = "appToken";
@@ -78,7 +78,7 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class AppTokenDeleteRequestBuilder : RequestBuilder<object>
+	public class AppTokenDeleteRequestBuilder : StandaloneRequestBuilder<bool>
 	{
 		#region Constants
 		public const string ID = "id";
@@ -117,11 +117,13 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return null;
+			if (result.InnerText.Equals("1") || result.InnerText.ToLower().Equals("true"))
+				return true;
+			return false;
 		}
 	}
 
-	public class AppTokenGetRequestBuilder : RequestBuilder<AppToken>
+	public class AppTokenGetRequestBuilder : StandaloneRequestBuilder<AppToken>
 	{
 		#region Constants
 		public const string ID = "id";
@@ -164,59 +166,7 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class AppTokenListRequestBuilder : RequestBuilder<ListResponse<AppToken>>
-	{
-		#region Constants
-		public const string FILTER = "filter";
-		public const string PAGER = "pager";
-		#endregion
-
-		public AppTokenFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
-
-		public AppTokenListRequestBuilder()
-			: base("apptoken", "list")
-		{
-		}
-
-		public AppTokenListRequestBuilder(AppTokenFilter filter, FilterPager pager)
-			: this()
-		{
-			this.Filter = filter;
-			this.Pager = pager;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("filter"))
-				kparams.AddIfNotNull("filter", Filter);
-			if (!isMapped("pager"))
-				kparams.AddIfNotNull("pager", Pager);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<ListResponse<AppToken>>(result);
-		}
-	}
-
-	public class AppTokenStartSessionRequestBuilder : RequestBuilder<SessionInfo>
+	public class AppTokenStartSessionRequestBuilder : StandaloneRequestBuilder<SessionInfo>
 	{
 		#region Constants
 		public const string ID = "id";
@@ -224,6 +174,7 @@ namespace Kaltura.Services
 		public const string USER_ID = "userId";
 		public const string TYPE = "type";
 		public const string EXPIRY = "expiry";
+		public const string UDID = "udid";
 		#endregion
 
 		public string Id
@@ -251,13 +202,18 @@ namespace Kaltura.Services
 			set;
 			get;
 		}
+		public string Udid
+		{
+			set;
+			get;
+		}
 
 		public AppTokenStartSessionRequestBuilder()
 			: base("apptoken", "startSession")
 		{
 		}
 
-		public AppTokenStartSessionRequestBuilder(string id, string tokenHash, string userId, SessionType type, int expiry)
+		public AppTokenStartSessionRequestBuilder(string id, string tokenHash, string userId, SessionType type, int expiry, string udid)
 			: this()
 		{
 			this.Id = id;
@@ -265,6 +221,7 @@ namespace Kaltura.Services
 			this.UserId = userId;
 			this.Type = type;
 			this.Expiry = expiry;
+			this.Udid = udid;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -280,6 +237,8 @@ namespace Kaltura.Services
 				kparams.AddIfNotNull("type", Type);
 			if (!isMapped("expiry"))
 				kparams.AddIfNotNull("expiry", Expiry);
+			if (!isMapped("udid"))
+				kparams.AddIfNotNull("udid", Udid);
 			return kparams;
 		}
 
@@ -292,58 +251,6 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<SessionInfo>(result);
-		}
-	}
-
-	public class AppTokenUpdateRequestBuilder : RequestBuilder<AppToken>
-	{
-		#region Constants
-		public const string ID = "id";
-		public const string APP_TOKEN = "appToken";
-		#endregion
-
-		public string Id
-		{
-			set;
-			get;
-		}
-		public AppToken AppToken
-		{
-			set;
-			get;
-		}
-
-		public AppTokenUpdateRequestBuilder()
-			: base("apptoken", "update")
-		{
-		}
-
-		public AppTokenUpdateRequestBuilder(string id, AppToken appToken)
-			: this()
-		{
-			this.Id = id;
-			this.AppToken = appToken;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("id"))
-				kparams.AddIfNotNull("id", Id);
-			if (!isMapped("appToken"))
-				kparams.AddIfNotNull("appToken", AppToken);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<AppToken>(result);
 		}
 	}
 
@@ -369,19 +276,9 @@ namespace Kaltura.Services
 			return new AppTokenGetRequestBuilder(id);
 		}
 
-		public static AppTokenListRequestBuilder List(AppTokenFilter filter = null, FilterPager pager = null)
+		public static AppTokenStartSessionRequestBuilder StartSession(string id, string tokenHash, string userId = null, SessionType type = (SessionType)(Int32.MinValue), int expiry = Int32.MinValue, string udid = null)
 		{
-			return new AppTokenListRequestBuilder(filter, pager);
-		}
-
-		public static AppTokenStartSessionRequestBuilder StartSession(string id, string tokenHash, string userId = null, SessionType type = (SessionType)(Int32.MinValue), int expiry = Int32.MinValue)
-		{
-			return new AppTokenStartSessionRequestBuilder(id, tokenHash, userId, type, expiry);
-		}
-
-		public static AppTokenUpdateRequestBuilder Update(string id, AppToken appToken)
-		{
-			return new AppTokenUpdateRequestBuilder(id, appToken);
+			return new AppTokenStartSessionRequestBuilder(id, tokenHash, userId, type, expiry, udid);
 		}
 	}
 }

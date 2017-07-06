@@ -29,17 +29,9 @@ namespace Kaltura.Enums
 {
 	public sealed class AssetType : StringEnum
 	{
-		public static readonly AssetType ATTACHMENT = new AssetType("attachment.Attachment");
-		public static readonly AssetType CAPTION = new AssetType("caption.Caption");
-		public static readonly AssetType DOCUMENT = new AssetType("document.Document");
-		public static readonly AssetType IMAGE = new AssetType("document.Image");
-		public static readonly AssetType PDF = new AssetType("document.PDF");
-		public static readonly AssetType SWF = new AssetType("document.SWF");
-		public static readonly AssetType TIMED_THUMB_ASSET = new AssetType("thumbCuePoint.timedThumb");
-		public static readonly AssetType TRANSCRIPT = new AssetType("transcript.Transcript");
-		public static readonly AssetType FLAVOR = new AssetType("1");
-		public static readonly AssetType THUMBNAIL = new AssetType("2");
-		public static readonly AssetType LIVE = new AssetType("3");
+		public static readonly AssetType MEDIA = new AssetType("media");
+		public static readonly AssetType RECORDING = new AssetType("recording");
+		public static readonly AssetType EPG = new AssetType("epg");
 
 		private AssetType(string name) : base(name) { }
 	}

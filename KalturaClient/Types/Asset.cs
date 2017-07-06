@@ -33,64 +33,41 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class Asset : ObjectBase
+	public class Asset : BaseAssetInfo
 	{
 		#region Constants
-		public const string ID = "id";
-		public const string ENTRY_ID = "entryId";
-		public const string PARTNER_ID = "partnerId";
-		public const string VERSION = "version";
-		public const string SIZE = "size";
+		public const string METAS = "metas";
 		public const string TAGS = "tags";
-		public const string FILE_EXT = "fileExt";
-		public const string CREATED_AT = "createdAt";
-		public const string UPDATED_AT = "updatedAt";
-		public const string DELETED_AT = "deletedAt";
-		public const string DESCRIPTION = "description";
-		public const string PARTNER_DATA = "partnerData";
-		public const string PARTNER_DESCRIPTION = "partnerDescription";
-		public const string ACTUAL_SOURCE_ASSET_PARAMS_IDS = "actualSourceAssetParamsIds";
+		public const string START_DATE = "startDate";
+		public const string END_DATE = "endDate";
+		public const string ENABLE_CDVR = "enableCdvr";
+		public const string ENABLE_CATCH_UP = "enableCatchUp";
+		public const string ENABLE_START_OVER = "enableStartOver";
+		public const string ENABLE_TRICK_PLAY = "enableTrickPlay";
 		#endregion
 
 		#region Private Fields
-		private string _Id = null;
-		private string _EntryId = null;
-		private int _PartnerId = Int32.MinValue;
-		private int _Version = Int32.MinValue;
-		private int _Size = Int32.MinValue;
-		private string _Tags = null;
-		private string _FileExt = null;
-		private int _CreatedAt = Int32.MinValue;
-		private int _UpdatedAt = Int32.MinValue;
-		private int _DeletedAt = Int32.MinValue;
-		private string _Description = null;
-		private string _PartnerData = null;
-		private string _PartnerDescription = null;
-		private string _ActualSourceAssetParamsIds = null;
+		private IDictionary<string, Value> _Metas;
+		private IDictionary<string, StringValueArray> _Tags;
+		private long _StartDate = long.MinValue;
+		private long _EndDate = long.MinValue;
+		private bool? _EnableCdvr = null;
+		private bool? _EnableCatchUp = null;
+		private bool? _EnableStartOver = null;
+		private bool? _EnableTrickPlay = null;
 		#endregion
 
 		#region Properties
-		public string Id
+		public IDictionary<string, Value> Metas
 		{
-			get { return _Id; }
+			get { return _Metas; }
+			set 
+			{ 
+				_Metas = value;
+				OnPropertyChanged("Metas");
+			}
 		}
-		public string EntryId
-		{
-			get { return _EntryId; }
-		}
-		public int PartnerId
-		{
-			get { return _PartnerId; }
-		}
-		public int Version
-		{
-			get { return _Version; }
-		}
-		public int Size
-		{
-			get { return _Size; }
-		}
-		public string Tags
+		public IDictionary<string, StringValueArray> Tags
 		{
 			get { return _Tags; }
 			set 
@@ -99,56 +76,58 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
-		public string FileExt
+		public long StartDate
 		{
-			get { return _FileExt; }
+			get { return _StartDate; }
 			set 
 			{ 
-				_FileExt = value;
-				OnPropertyChanged("FileExt");
+				_StartDate = value;
+				OnPropertyChanged("StartDate");
 			}
 		}
-		public int CreatedAt
+		public long EndDate
 		{
-			get { return _CreatedAt; }
-		}
-		public int UpdatedAt
-		{
-			get { return _UpdatedAt; }
-		}
-		public int DeletedAt
-		{
-			get { return _DeletedAt; }
-		}
-		public string Description
-		{
-			get { return _Description; }
-		}
-		public string PartnerData
-		{
-			get { return _PartnerData; }
+			get { return _EndDate; }
 			set 
 			{ 
-				_PartnerData = value;
-				OnPropertyChanged("PartnerData");
+				_EndDate = value;
+				OnPropertyChanged("EndDate");
 			}
 		}
-		public string PartnerDescription
+		public bool? EnableCdvr
 		{
-			get { return _PartnerDescription; }
+			get { return _EnableCdvr; }
 			set 
 			{ 
-				_PartnerDescription = value;
-				OnPropertyChanged("PartnerDescription");
+				_EnableCdvr = value;
+				OnPropertyChanged("EnableCdvr");
 			}
 		}
-		public string ActualSourceAssetParamsIds
+		public bool? EnableCatchUp
 		{
-			get { return _ActualSourceAssetParamsIds; }
+			get { return _EnableCatchUp; }
 			set 
 			{ 
-				_ActualSourceAssetParamsIds = value;
-				OnPropertyChanged("ActualSourceAssetParamsIds");
+				_EnableCatchUp = value;
+				OnPropertyChanged("EnableCatchUp");
+			}
+		}
+		public bool? EnableStartOver
+		{
+			get { return _EnableStartOver; }
+			set 
+			{ 
+				_EnableStartOver = value;
+				OnPropertyChanged("EnableStartOver");
+			}
+		}
+		public bool? EnableTrickPlay
+		{
+			get { return _EnableTrickPlay; }
+			set 
+			{ 
+				_EnableTrickPlay = value;
+				OnPropertyChanged("EnableTrickPlay");
 			}
 		}
 		#endregion
@@ -164,47 +143,45 @@ namespace Kaltura.Types
 			{
 				switch (propertyNode.Name)
 				{
-					case "id":
-						this._Id = propertyNode.InnerText;
-						continue;
-					case "entryId":
-						this._EntryId = propertyNode.InnerText;
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "version":
-						this._Version = ParseInt(propertyNode.InnerText);
-						continue;
-					case "size":
-						this._Size = ParseInt(propertyNode.InnerText);
+					case "metas":
+						{
+							string key;
+							this._Metas = new Dictionary<string, Value>();
+							foreach(XmlElement arrayNode in propertyNode.ChildNodes)
+							{
+								key = arrayNode["itemKey"].InnerText;;
+								this._Metas[key] = ObjectFactory.Create<Value>(arrayNode);
+							}
+						}
 						continue;
 					case "tags":
-						this._Tags = propertyNode.InnerText;
+						{
+							string key;
+							this._Tags = new Dictionary<string, StringValueArray>();
+							foreach(XmlElement arrayNode in propertyNode.ChildNodes)
+							{
+								key = arrayNode["itemKey"].InnerText;;
+								this._Tags[key] = ObjectFactory.Create<StringValueArray>(arrayNode);
+							}
+						}
 						continue;
-					case "fileExt":
-						this._FileExt = propertyNode.InnerText;
+					case "startDate":
+						this._StartDate = ParseLong(propertyNode.InnerText);
 						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
+					case "endDate":
+						this._EndDate = ParseLong(propertyNode.InnerText);
 						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
+					case "enableCdvr":
+						this._EnableCdvr = ParseBool(propertyNode.InnerText);
 						continue;
-					case "deletedAt":
-						this._DeletedAt = ParseInt(propertyNode.InnerText);
+					case "enableCatchUp":
+						this._EnableCatchUp = ParseBool(propertyNode.InnerText);
 						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
+					case "enableStartOver":
+						this._EnableStartOver = ParseBool(propertyNode.InnerText);
 						continue;
-					case "partnerData":
-						this._PartnerData = propertyNode.InnerText;
-						continue;
-					case "partnerDescription":
-						this._PartnerDescription = propertyNode.InnerText;
-						continue;
-					case "actualSourceAssetParamsIds":
-						this._ActualSourceAssetParamsIds = propertyNode.InnerText;
+					case "enableTrickPlay":
+						this._EnableTrickPlay = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}
@@ -217,54 +194,36 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaAsset");
-			kparams.AddIfNotNull("id", this._Id);
-			kparams.AddIfNotNull("entryId", this._EntryId);
-			kparams.AddIfNotNull("partnerId", this._PartnerId);
-			kparams.AddIfNotNull("version", this._Version);
-			kparams.AddIfNotNull("size", this._Size);
+			kparams.AddIfNotNull("metas", this._Metas);
 			kparams.AddIfNotNull("tags", this._Tags);
-			kparams.AddIfNotNull("fileExt", this._FileExt);
-			kparams.AddIfNotNull("createdAt", this._CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
-			kparams.AddIfNotNull("deletedAt", this._DeletedAt);
-			kparams.AddIfNotNull("description", this._Description);
-			kparams.AddIfNotNull("partnerData", this._PartnerData);
-			kparams.AddIfNotNull("partnerDescription", this._PartnerDescription);
-			kparams.AddIfNotNull("actualSourceAssetParamsIds", this._ActualSourceAssetParamsIds);
+			kparams.AddIfNotNull("startDate", this._StartDate);
+			kparams.AddIfNotNull("endDate", this._EndDate);
+			kparams.AddIfNotNull("enableCdvr", this._EnableCdvr);
+			kparams.AddIfNotNull("enableCatchUp", this._EnableCatchUp);
+			kparams.AddIfNotNull("enableStartOver", this._EnableStartOver);
+			kparams.AddIfNotNull("enableTrickPlay", this._EnableTrickPlay);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case ID:
-					return "Id";
-				case ENTRY_ID:
-					return "EntryId";
-				case PARTNER_ID:
-					return "PartnerId";
-				case VERSION:
-					return "Version";
-				case SIZE:
-					return "Size";
+				case METAS:
+					return "Metas";
 				case TAGS:
 					return "Tags";
-				case FILE_EXT:
-					return "FileExt";
-				case CREATED_AT:
-					return "CreatedAt";
-				case UPDATED_AT:
-					return "UpdatedAt";
-				case DELETED_AT:
-					return "DeletedAt";
-				case DESCRIPTION:
-					return "Description";
-				case PARTNER_DATA:
-					return "PartnerData";
-				case PARTNER_DESCRIPTION:
-					return "PartnerDescription";
-				case ACTUAL_SOURCE_ASSET_PARAMS_IDS:
-					return "ActualSourceAssetParamsIds";
+				case START_DATE:
+					return "StartDate";
+				case END_DATE:
+					return "EndDate";
+				case ENABLE_CDVR:
+					return "EnableCdvr";
+				case ENABLE_CATCH_UP:
+					return "EnableCatchUp";
+				case ENABLE_START_OVER:
+					return "EnableStartOver";
+				case ENABLE_TRICK_PLAY:
+					return "EnableTrickPlay";
 				default:
 					return base.getPropertyName(apiName);
 			}

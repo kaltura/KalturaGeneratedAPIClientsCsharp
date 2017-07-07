@@ -37,27 +37,51 @@ namespace Kaltura.Types
 	{
 		#region Constants
 		public const string ID = "id";
-		public const string NAME = "name";
+		public const string TYPE = "type";
+		public const string PARTNER_ID = "partnerId";
+		public const string TAGS = "tags";
+		public const string CREATED_AT = "createdAt";
+		public const string UPDATED_AT = "updatedAt";
 		#endregion
 
 		#region Private Fields
-		private long _Id = long.MinValue;
-		private string _Name = null;
+		private int _Id = Int32.MinValue;
+		private PermissionItemType _Type = null;
+		private int _PartnerId = Int32.MinValue;
+		private string _Tags = null;
+		private int _CreatedAt = Int32.MinValue;
+		private int _UpdatedAt = Int32.MinValue;
 		#endregion
 
 		#region Properties
-		public long Id
+		public int Id
 		{
 			get { return _Id; }
 		}
-		public string Name
+		public PermissionItemType Type
 		{
-			get { return _Name; }
+			get { return _Type; }
+		}
+		public int PartnerId
+		{
+			get { return _PartnerId; }
+		}
+		public string Tags
+		{
+			get { return _Tags; }
 			set 
 			{ 
-				_Name = value;
-				OnPropertyChanged("Name");
+				_Tags = value;
+				OnPropertyChanged("Tags");
 			}
+		}
+		public int CreatedAt
+		{
+			get { return _CreatedAt; }
+		}
+		public int UpdatedAt
+		{
+			get { return _UpdatedAt; }
 		}
 		#endregion
 
@@ -73,10 +97,22 @@ namespace Kaltura.Types
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseLong(propertyNode.InnerText);
+						this._Id = ParseInt(propertyNode.InnerText);
 						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
+					case "type":
+						this._Type = (PermissionItemType)StringEnum.Parse(typeof(PermissionItemType), propertyNode.InnerText);
+						continue;
+					case "partnerId":
+						this._PartnerId = ParseInt(propertyNode.InnerText);
+						continue;
+					case "tags":
+						this._Tags = propertyNode.InnerText;
+						continue;
+					case "createdAt":
+						this._CreatedAt = ParseInt(propertyNode.InnerText);
+						continue;
+					case "updatedAt":
+						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}
@@ -90,7 +126,11 @@ namespace Kaltura.Types
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaPermissionItem");
 			kparams.AddIfNotNull("id", this._Id);
-			kparams.AddIfNotNull("name", this._Name);
+			kparams.AddIfNotNull("type", this._Type);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("tags", this._Tags);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -99,8 +139,16 @@ namespace Kaltura.Types
 			{
 				case ID:
 					return "Id";
-				case NAME:
-					return "Name";
+				case TYPE:
+					return "Type";
+				case PARTNER_ID:
+					return "PartnerId";
+				case TAGS:
+					return "Tags";
+				case CREATED_AT:
+					return "CreatedAt";
+				case UPDATED_AT:
+					return "UpdatedAt";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -33,28 +33,17 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class UserRoleFilter : Filter
+	public class UserRoleFilter : UserRoleBaseFilter
 	{
 		#region Constants
-		public const string ID_IN = "idIn";
 		public new const string ORDER_BY = "orderBy";
 		#endregion
 
 		#region Private Fields
-		private string _IdIn = null;
 		private UserRoleOrderBy _OrderBy = null;
 		#endregion
 
 		#region Properties
-		public string IdIn
-		{
-			get { return _IdIn; }
-			set 
-			{ 
-				_IdIn = value;
-				OnPropertyChanged("IdIn");
-			}
-		}
 		public new UserRoleOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -77,9 +66,6 @@ namespace Kaltura.Types
 			{
 				switch (propertyNode.Name)
 				{
-					case "idIn":
-						this._IdIn = propertyNode.InnerText;
-						continue;
 					case "orderBy":
 						this._OrderBy = (UserRoleOrderBy)StringEnum.Parse(typeof(UserRoleOrderBy), propertyNode.InnerText);
 						continue;
@@ -94,7 +80,6 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaUserRoleFilter");
-			kparams.AddIfNotNull("idIn", this._IdIn);
 			kparams.AddIfNotNull("orderBy", this._OrderBy);
 			return kparams;
 		}
@@ -102,8 +87,6 @@ namespace Kaltura.Types
 		{
 			switch(apiName)
 			{
-				case ID_IN:
-					return "IdIn";
 				case ORDER_BY:
 					return "OrderBy";
 				default:

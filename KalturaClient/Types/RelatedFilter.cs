@@ -33,48 +33,15 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class RelatedFilter : AssetFilter
+	public class RelatedFilter : Filter
 	{
 		#region Constants
-		public const string KSQL = "kSql";
-		public const string ID_EQUAL = "idEqual";
-		public const string TYPE_IN = "typeIn";
 		#endregion
 
 		#region Private Fields
-		private string _KSql = null;
-		private string _IdEqual = null;
-		private string _TypeIn = null;
 		#endregion
 
 		#region Properties
-		public string KSql
-		{
-			get { return _KSql; }
-			set 
-			{ 
-				_KSql = value;
-				OnPropertyChanged("KSql");
-			}
-		}
-		public string IdEqual
-		{
-			get { return _IdEqual; }
-			set 
-			{ 
-				_IdEqual = value;
-				OnPropertyChanged("IdEqual");
-			}
-		}
-		public string TypeIn
-		{
-			get { return _TypeIn; }
-			set 
-			{ 
-				_TypeIn = value;
-				OnPropertyChanged("TypeIn");
-			}
-		}
 		#endregion
 
 		#region CTor
@@ -84,21 +51,6 @@ namespace Kaltura.Types
 
 		public RelatedFilter(XmlElement node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
-			{
-				switch (propertyNode.Name)
-				{
-					case "kSql":
-						this._KSql = propertyNode.InnerText;
-						continue;
-					case "idEqual":
-						this._IdEqual = propertyNode.InnerText;
-						continue;
-					case "typeIn":
-						this._TypeIn = propertyNode.InnerText;
-						continue;
-				}
-			}
 		}
 		#endregion
 
@@ -108,21 +60,12 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaRelatedFilter");
-			kparams.AddIfNotNull("kSql", this._KSql);
-			kparams.AddIfNotNull("idEqual", this._IdEqual);
-			kparams.AddIfNotNull("typeIn", this._TypeIn);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case KSQL:
-					return "KSql";
-				case ID_EQUAL:
-					return "IdEqual";
-				case TYPE_IN:
-					return "TypeIn";
 				default:
 					return base.getPropertyName(apiName);
 			}

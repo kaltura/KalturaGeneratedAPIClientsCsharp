@@ -37,20 +37,31 @@ namespace Kaltura.Types
 	{
 		#region Constants
 		public const string ORDER_BY = "orderBy";
+		public const string ADVANCED_SEARCH = "advancedSearch";
 		#endregion
 
 		#region Private Fields
-		private int _OrderBy = Int32.MinValue;
+		private string _OrderBy = null;
+		private SearchItem _AdvancedSearch;
 		#endregion
 
 		#region Properties
-		public int OrderBy
+		public string OrderBy
 		{
 			get { return _OrderBy; }
 			set 
 			{ 
 				_OrderBy = value;
 				OnPropertyChanged("OrderBy");
+			}
+		}
+		public SearchItem AdvancedSearch
+		{
+			get { return _AdvancedSearch; }
+			set 
+			{ 
+				_AdvancedSearch = value;
+				OnPropertyChanged("AdvancedSearch");
 			}
 		}
 		#endregion
@@ -67,7 +78,10 @@ namespace Kaltura.Types
 				switch (propertyNode.Name)
 				{
 					case "orderBy":
-						this._OrderBy = ParseInt(propertyNode.InnerText);
+						this._OrderBy = propertyNode.InnerText;
+						continue;
+					case "advancedSearch":
+						this._AdvancedSearch = ObjectFactory.Create<SearchItem>(propertyNode);
 						continue;
 				}
 			}
@@ -81,6 +95,7 @@ namespace Kaltura.Types
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaFilter");
 			kparams.AddIfNotNull("orderBy", this._OrderBy);
+			kparams.AddIfNotNull("advancedSearch", this._AdvancedSearch);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -89,6 +104,8 @@ namespace Kaltura.Types
 			{
 				case ORDER_BY:
 					return "OrderBy";
+				case ADVANCED_SEARCH:
+					return "AdvancedSearch";
 				default:
 					return base.getPropertyName(apiName);
 			}

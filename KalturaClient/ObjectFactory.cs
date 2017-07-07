@@ -69,80 +69,176 @@ namespace Kaltura
 			string className = xmlElement["objectType"].InnerText;
 			switch (className)
 			{
-				case "KalturaRegionListResponse":
-					return new ListResponse<Region>(xmlElement);
-				case "KalturaUserAssetRuleListResponse":
-					return new ListResponse<UserAssetRule>(xmlElement);
-				case "KalturaCDNAdapterProfileListResponse":
-					return new ListResponse<CDNAdapterProfile>(xmlElement);
-				case "KalturaBookmarkListResponse":
-					return new ListResponse<Bookmark>(xmlElement);
-				case "KalturaAssetListResponse":
-					return new ListResponse<Asset>(xmlElement);
-				case "KalturaAssetCommentListResponse":
-					return new ListResponse<AssetComment>(xmlElement);
-				case "KalturaSeriesRecordingListResponse":
-					return new ListResponse<SeriesRecording>(xmlElement);
-				case "KalturaHouseholdPremiumServiceListResponse":
-					return new ListResponse<HouseholdPremiumService>(xmlElement);
-				case "KalturaCDVRAdapterProfileListResponse":
-					return new ListResponse<CDVRAdapterProfile>(xmlElement);
-				case "KalturaExportTaskListResponse":
-					return new ListResponse<ExportTask>(xmlElement);
-				case "KalturaExternalChannelProfileListResponse":
-					return new ListResponse<ExternalChannelProfile>(xmlElement);
-				case "KalturaRecommendationProfileListResponse":
-					return new ListResponse<RecommendationProfile>(xmlElement);
-				case "KalturaRegistrySettingsListResponse":
-					return new ListResponse<RegistrySettings>(xmlElement);
-				case "KalturaHouseholdPaymentMethodListResponse":
-					return new ListResponse<HouseholdPaymentMethod>(xmlElement);
-				case "KalturaPaymentMethodProfileListResponse":
-					return new ListResponse<PaymentMethodProfile>(xmlElement);
-				case "KalturaHouseholdPaymentGatewayListResponse":
-					return new ListResponse<HouseholdPaymentGateway>(xmlElement);
-				case "KalturaPaymentGatewayProfileListResponse":
-					return new ListResponse<PaymentGatewayProfile>(xmlElement);
-				case "KalturaParentalRuleListResponse":
-					return new ListResponse<ParentalRule>(xmlElement);
-				case "KalturaRecordingListResponse":
-					return new ListResponse<Recording>(xmlElement);
-				case "KalturaBillingTransactionListResponse":
-					return new ListResponse<BillingTransaction>(xmlElement);
+				case "KalturaFileSyncListResponse":
+					return new ListResponse<FileSync>(xmlElement);
+				case "KalturaBatchJobListResponse":
+					return new ListResponse<BatchJob>(xmlElement);
+				case "KalturaMediaInfoListResponse":
+					return new ListResponse<MediaInfo>(xmlElement);
+				case "KalturaFlavorParamsOutputListResponse":
+					return new ListResponse<FlavorParamsOutput>(xmlElement);
+				case "KalturaThumbParamsOutputListResponse":
+					return new ListResponse<ThumbParamsOutput>(xmlElement);
+				case "KalturaAccessControlListResponse":
+					return new ListResponse<AccessControl>(xmlElement);
+				case "KalturaAccessControlProfileListResponse":
+					return new ListResponse<AccessControlProfile>(xmlElement);
+				case "KalturaAnnotationListResponse":
+					return new ListResponse<Annotation>(xmlElement);
+				case "KalturaAppTokenListResponse":
+					return new ListResponse<AppToken>(xmlElement);
+				case "KalturaAttachmentAssetListResponse":
+					return new ListResponse<AttachmentAsset>(xmlElement);
+				case "KalturaBaseEntryListResponse":
+					return new ListResponse<BaseEntry>(xmlElement);
+				case "KalturaBaseSyndicationFeedListResponse":
+					return new ListResponse<BaseSyndicationFeed>(xmlElement);
+				case "KalturaBulkUploadListResponse":
+					return new ListResponse<BulkUpload>(xmlElement);
+				case "KalturaCaptionAssetItemListResponse":
+					return new ListResponse<CaptionAssetItem>(xmlElement);
+				case "KalturaCaptionAssetListResponse":
+					return new ListResponse<CaptionAsset>(xmlElement);
+				case "KalturaCaptionParamsListResponse":
+					return new ListResponse<CaptionParams>(xmlElement);
+				case "KalturaCategoryEntryListResponse":
+					return new ListResponse<CategoryEntry>(xmlElement);
+				case "KalturaCategoryListResponse":
+					return new ListResponse<Category>(xmlElement);
+				case "KalturaCategoryUserListResponse":
+					return new ListResponse<CategoryUser>(xmlElement);
+				case "KalturaControlPanelCommandListResponse":
+					return new ListResponse<ControlPanelCommand>(xmlElement);
+				case "KalturaConversionProfileAssetParamsListResponse":
+					return new ListResponse<ConversionProfileAssetParams>(xmlElement);
+				case "KalturaConversionProfileListResponse":
+					return new ListResponse<ConversionProfile>(xmlElement);
+				case "KalturaCuePointListResponse":
+					return new ListResponse<CuePoint>(xmlElement);
+				case "KalturaDataListResponse":
+					return new ListResponse<DataEntry>(xmlElement);
+				case "KalturaDeliveryProfileListResponse":
+					return new ListResponse<DeliveryProfile>(xmlElement);
+				case "KalturaDistributionProfileListResponse":
+					return new ListResponse<DistributionProfile>(xmlElement);
+				case "KalturaDistributionProviderListResponse":
+					return new ListResponse<DistributionProvider>(xmlElement);
+				case "KalturaDocumentListResponse":
+					return new ListResponse<DocumentEntry>(xmlElement);
+				case "KalturaDropFolderFileListResponse":
+					return new ListResponse<DropFolderFile>(xmlElement);
+				case "KalturaDropFolderListResponse":
+					return new ListResponse<DropFolder>(xmlElement);
+				case "KalturaEntryDistributionListResponse":
+					return new ListResponse<EntryDistribution>(xmlElement);
+				case "KalturaEntryServerNodeListResponse":
+					return new ListResponse<EntryServerNode>(xmlElement);
+				case "KalturaEventNotificationTemplateListResponse":
+					return new ListResponse<EventNotificationTemplate>(xmlElement);
+				case "KalturaExternalMediaEntryListResponse":
+					return new ListResponse<ExternalMediaEntry>(xmlElement);
+				case "KalturaFeatureStatusListResponse":
+					return new ListResponse<FeatureStatus>(xmlElement);
+				case "KalturaFileAssetListResponse":
+					return new ListResponse<FileAsset>(xmlElement);
+				case "KalturaFlavorAssetListResponse":
+					return new ListResponse<FlavorAsset>(xmlElement);
+				case "KalturaFlavorParamsListResponse":
+					return new ListResponse<FlavorParams>(xmlElement);
+				case "KalturaGenericDistributionProviderActionListResponse":
+					return new ListResponse<GenericDistributionProviderAction>(xmlElement);
+				case "KalturaGenericDistributionProviderListResponse":
+					return new ListResponse<GenericDistributionProvider>(xmlElement);
+				case "KalturaGroupUserListResponse":
+					return new ListResponse<GroupUser>(xmlElement);
+				case "KalturaLikeListResponse":
+					return new ListResponse<Like>(xmlElement);
+				case "KalturaLiveChannelListResponse":
+					return new ListResponse<LiveChannel>(xmlElement);
+				case "KalturaLiveChannelSegmentListResponse":
+					return new ListResponse<LiveChannelSegment>(xmlElement);
+				case "KalturaLiveStreamListResponse":
+					return new ListResponse<LiveStreamEntry>(xmlElement);
+				case "KalturaMediaListResponse":
+					return new ListResponse<MediaEntry>(xmlElement);
+				case "KalturaMetadataListResponse":
+					return new ListResponse<Metadata>(xmlElement);
+				case "KalturaMetadataProfileFieldListResponse":
+					return new ListResponse<MetadataProfileField>(xmlElement);
+				case "KalturaMetadataProfileListResponse":
+					return new ListResponse<MetadataProfile>(xmlElement);
+				case "KalturaMixListResponse":
+					return new ListResponse<MixEntry>(xmlElement);
+				case "KalturaModerationFlagListResponse":
+					return new ListResponse<ModerationFlag>(xmlElement);
+				case "KalturaObjectListResponse":
+					return new ListResponse<ObjectBase>(xmlElement);
+				case "KalturaPartnerListResponse":
+					return new ListResponse<Partner>(xmlElement);
+				case "KalturaPartnerUsageListResponse":
+					return new ListResponse<VarPartnerUsageItem>(xmlElement);
+				case "KalturaPermissionItemListResponse":
+					return new ListResponse<PermissionItem>(xmlElement);
+				case "KalturaPermissionListResponse":
+					return new ListResponse<Permission>(xmlElement);
+				case "KalturaPlaylistListResponse":
+					return new ListResponse<Playlist>(xmlElement);
+				case "KalturaQuizListResponse":
+					return new ListResponse<Quiz>(xmlElement);
+				case "KalturaRemotePathListResponse":
+					return new ListResponse<RemotePath>(xmlElement);
+				case "KalturaReportListResponse":
+					return new ListResponse<Report>(xmlElement);
+				case "KalturaResponseProfileListResponse":
+					return new ListResponse<ResponseProfile>(xmlElement);
+				case "KalturaScheduleEventListResponse":
+					return new ListResponse<ScheduleEvent>(xmlElement);
+				case "KalturaScheduleEventResourceListResponse":
+					return new ListResponse<ScheduleEventResource>(xmlElement);
+				case "KalturaScheduleResourceListResponse":
+					return new ListResponse<ScheduleResource>(xmlElement);
+				case "KalturaScheduledTaskProfileListResponse":
+					return new ListResponse<ScheduledTaskProfile>(xmlElement);
+				case "KalturaSchedulerListResponse":
+					return new ListResponse<Scheduler>(xmlElement);
+				case "KalturaSchedulerWorkerListResponse":
+					return new ListResponse<SchedulerWorker>(xmlElement);
+				case "KalturaServerNodeListResponse":
+					return new ListResponse<ServerNode>(xmlElement);
+				case "KalturaShortLinkListResponse":
+					return new ListResponse<ShortLink>(xmlElement);
+				case "KalturaStorageProfileListResponse":
+					return new ListResponse<StorageProfile>(xmlElement);
+				case "KalturaSystemPartnerUsageListResponse":
+					return new ListResponse<SystemPartnerUsageItem>(xmlElement);
+				case "KalturaTagListResponse":
+					return new ListResponse<Tag>(xmlElement);
+				case "KalturaThumbAssetListResponse":
+					return new ListResponse<ThumbAsset>(xmlElement);
+				case "KalturaThumbParamsListResponse":
+					return new ListResponse<ThumbParams>(xmlElement);
+				case "KalturaTrackEntryListResponse":
+					return new ListResponse<TrackEntry>(xmlElement);
+				case "KalturaTranscriptAssetListResponse":
+					return new ListResponse<TranscriptAsset>(xmlElement);
+				case "KalturaUiConfAdminListResponse":
+					return new ListResponse<UiConfAdmin>(xmlElement);
+				case "KalturaUiConfListResponse":
+					return new ListResponse<UiConf>(xmlElement);
+				case "KalturaUploadTokenListResponse":
+					return new ListResponse<UploadToken>(xmlElement);
+				case "KalturaUserEntryListResponse":
+					return new ListResponse<UserEntry>(xmlElement);
+				case "KalturaUserListResponse":
+					return new ListResponse<User>(xmlElement);
+				case "KalturaUserLoginDataListResponse":
+					return new ListResponse<UserLoginData>(xmlElement);
 				case "KalturaUserRoleListResponse":
 					return new ListResponse<UserRole>(xmlElement);
-				case "KalturaInboxMessageListResponse":
-					return new ListResponse<InboxMessage>(xmlElement);
-				case "KalturaFollowTvSeriesListResponse":
-					return new ListResponse<FollowTvSeries>(xmlElement);
-				case "KalturaAnnouncementListResponse":
-					return new ListResponse<Announcement>(xmlElement);
-				case "KalturaPersonalFeedListResponse":
-					return new ListResponse<PersonalFeed>(xmlElement);
-				case "KalturaTopicListResponse":
-					return new ListResponse<Topic>(xmlElement);
-				case "KalturaProductPriceListResponse":
-					return new ListResponse<ProductPrice>(xmlElement);
-				case "KalturaItemPriceListResponse":
-					return new ListResponse<ItemPrice>(xmlElement);
-				case "KalturaSubscriptionListResponse":
-					return new ListResponse<Subscription>(xmlElement);
-				case "KalturaProductsPriceListResponse":
-					return new ListResponse<ProductPrice>(xmlElement);
-				case "KalturaEntitlementListResponse":
-					return new ListResponse<Entitlement>(xmlElement);
-				case "KalturaHomeNetworkListResponse":
-					return new ListResponse<HomeNetwork>(xmlElement);
-				case "KalturaFavoriteListResponse":
-					return new ListResponse<Favorite>(xmlElement);
-				case "KalturaOTTUserListResponse":
-					return new ListResponse<OTTUser>(xmlElement);
-				case "KalturaAssetStatisticsListResponse":
-					return new ListResponse<AssetStatistics>(xmlElement);
-				case "KalturaSlimAssetInfoWrapper":
-					return new ListResponse<BaseAssetInfo>(xmlElement);
-				case "KalturaAssetHistoryListResponse":
-					return new ListResponse<AssetHistory>(xmlElement);
+				case "KalturaVirusScanProfileListResponse":
+					return new ListResponse<VirusScanProfile>(xmlElement);
+				case "KalturaWidgetListResponse":
+					return new ListResponse<Widget>(xmlElement);
 			}
 		
 			return null;

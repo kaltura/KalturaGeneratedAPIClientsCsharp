@@ -31,6 +31,7 @@ namespace Kaltura.Enums
 	{
 		public static readonly GeoCoderType KALTURA = new GeoCoderType("1");
 		public static readonly GeoCoderType MAX_MIND = new GeoCoderType("2");
+		public static readonly GeoCoderType DIGITAL_ELEMENT = new GeoCoderType("3");
 
 		private GeoCoderType(string name) : base(name) { }
 	}

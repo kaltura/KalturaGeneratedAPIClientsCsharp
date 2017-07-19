@@ -33,44 +33,24 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class DropFolderFileResource : GenericDataCenterContentResource
+	public class GenericDataCenterContentResource : DataCenterContentResource
 	{
 		#region Constants
-		public const string DROP_FOLDER_FILE_ID = "dropFolderFileId";
 		#endregion
 
 		#region Private Fields
-		private int _DropFolderFileId = Int32.MinValue;
 		#endregion
 
 		#region Properties
-		public int DropFolderFileId
-		{
-			get { return _DropFolderFileId; }
-			set 
-			{ 
-				_DropFolderFileId = value;
-				OnPropertyChanged("DropFolderFileId");
-			}
-		}
 		#endregion
 
 		#region CTor
-		public DropFolderFileResource()
+		public GenericDataCenterContentResource()
 		{
 		}
 
-		public DropFolderFileResource(XmlElement node) : base(node)
+		public GenericDataCenterContentResource(XmlElement node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
-			{
-				switch (propertyNode.Name)
-				{
-					case "dropFolderFileId":
-						this._DropFolderFileId = ParseInt(propertyNode.InnerText);
-						continue;
-				}
-			}
 		}
 		#endregion
 
@@ -79,16 +59,13 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaDropFolderFileResource");
-			kparams.AddIfNotNull("dropFolderFileId", this._DropFolderFileId);
+				kparams.AddReplace("objectType", "KalturaGenericDataCenterContentResource");
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case DROP_FOLDER_FILE_ID:
-					return "DropFolderFileId";
 				default:
 					return base.getPropertyName(apiName);
 			}

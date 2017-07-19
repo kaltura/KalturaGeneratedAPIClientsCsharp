@@ -78,6 +78,58 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class DataAddContentRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string RESOURCE = "resource";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public GenericDataCenterContentResource Resource
+		{
+			set;
+			get;
+		}
+
+		public DataAddContentRequestBuilder()
+			: base("data", "addContent")
+		{
+		}
+
+		public DataAddContentRequestBuilder(string entryId, GenericDataCenterContentResource resource)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.Resource = resource;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("resource"))
+				kparams.AddIfNotNull("resource", Resource);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return result.InnerText;
+		}
+	}
+
 	public class DataDeleteRequestBuilder : RequestBuilder<object>
 	{
 		#region Constants
@@ -287,6 +339,11 @@ namespace Kaltura.Services
 		public static DataAddRequestBuilder Add(DataEntry dataEntry)
 		{
 			return new DataAddRequestBuilder(dataEntry);
+		}
+
+		public static DataAddContentRequestBuilder AddContent(string entryId, GenericDataCenterContentResource resource)
+		{
+			return new DataAddContentRequestBuilder(entryId, resource);
 		}
 
 		public static DataDeleteRequestBuilder Delete(string entryId)

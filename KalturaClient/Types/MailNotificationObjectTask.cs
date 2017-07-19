@@ -36,25 +36,49 @@ namespace Kaltura.Types
 	public class MailNotificationObjectTask : ObjectTask
 	{
 		#region Constants
-		public const string MAIL_ADDRESS = "mailAddress";
+		public const string MAIL_TO = "mailTo";
+		public const string SENDER = "sender";
+		public const string SUBJECT = "subject";
 		public const string MESSAGE = "message";
+		public const string LINK = "link";
 		public const string SEND_TO_USERS = "sendToUsers";
 		#endregion
 
 		#region Private Fields
-		private string _MailAddress = null;
+		private string _MailTo = null;
+		private string _Sender = null;
+		private string _Subject = null;
 		private string _Message = null;
+		private string _Link = null;
 		private bool? _SendToUsers = null;
 		#endregion
 
 		#region Properties
-		public string MailAddress
+		public string MailTo
 		{
-			get { return _MailAddress; }
+			get { return _MailTo; }
 			set 
 			{ 
-				_MailAddress = value;
-				OnPropertyChanged("MailAddress");
+				_MailTo = value;
+				OnPropertyChanged("MailTo");
+			}
+		}
+		public string Sender
+		{
+			get { return _Sender; }
+			set 
+			{ 
+				_Sender = value;
+				OnPropertyChanged("Sender");
+			}
+		}
+		public string Subject
+		{
+			get { return _Subject; }
+			set 
+			{ 
+				_Subject = value;
+				OnPropertyChanged("Subject");
 			}
 		}
 		public string Message
@@ -64,6 +88,15 @@ namespace Kaltura.Types
 			{ 
 				_Message = value;
 				OnPropertyChanged("Message");
+			}
+		}
+		public string Link
+		{
+			get { return _Link; }
+			set 
+			{ 
+				_Link = value;
+				OnPropertyChanged("Link");
 			}
 		}
 		public bool? SendToUsers
@@ -88,11 +121,20 @@ namespace Kaltura.Types
 			{
 				switch (propertyNode.Name)
 				{
-					case "mailAddress":
-						this._MailAddress = propertyNode.InnerText;
+					case "mailTo":
+						this._MailTo = propertyNode.InnerText;
+						continue;
+					case "sender":
+						this._Sender = propertyNode.InnerText;
+						continue;
+					case "subject":
+						this._Subject = propertyNode.InnerText;
 						continue;
 					case "message":
 						this._Message = propertyNode.InnerText;
+						continue;
+					case "link":
+						this._Link = propertyNode.InnerText;
 						continue;
 					case "sendToUsers":
 						this._SendToUsers = ParseBool(propertyNode.InnerText);
@@ -108,8 +150,11 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaMailNotificationObjectTask");
-			kparams.AddIfNotNull("mailAddress", this._MailAddress);
+			kparams.AddIfNotNull("mailTo", this._MailTo);
+			kparams.AddIfNotNull("sender", this._Sender);
+			kparams.AddIfNotNull("subject", this._Subject);
 			kparams.AddIfNotNull("message", this._Message);
+			kparams.AddIfNotNull("link", this._Link);
 			kparams.AddIfNotNull("sendToUsers", this._SendToUsers);
 			return kparams;
 		}
@@ -117,10 +162,16 @@ namespace Kaltura.Types
 		{
 			switch(apiName)
 			{
-				case MAIL_ADDRESS:
-					return "MailAddress";
+				case MAIL_TO:
+					return "MailTo";
+				case SENDER:
+					return "Sender";
+				case SUBJECT:
+					return "Subject";
 				case MESSAGE:
 					return "Message";
+				case LINK:
+					return "Link";
 				case SEND_TO_USERS:
 					return "SendToUsers";
 				default:

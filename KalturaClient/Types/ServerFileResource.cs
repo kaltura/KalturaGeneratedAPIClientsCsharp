@@ -33,7 +33,7 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class ServerFileResource : DataCenterContentResource
+	public class ServerFileResource : GenericDataCenterContentResource
 	{
 		#region Constants
 		public const string LOCAL_FILE_PATH = "localFilePath";

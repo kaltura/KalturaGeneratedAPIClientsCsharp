@@ -33,7 +33,7 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class UploadedFileTokenResource : DataCenterContentResource
+	public class UploadedFileTokenResource : GenericDataCenterContentResource
 	{
 		#region Constants
 		public const string TOKEN = "token";

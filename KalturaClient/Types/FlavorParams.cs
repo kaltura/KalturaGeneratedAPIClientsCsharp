@@ -73,6 +73,7 @@ namespace Kaltura.Types
 		public const string SUBTITLES_DATA = "subtitlesData";
 		public const string IS_ENCRYPTED = "isEncrypted";
 		public const string CONTENT_AWARENESS = "contentAwareness";
+		public const string CHUNKED_ENCODE_MODE = "chunkedEncodeMode";
 		public const string CLIP_OFFSET = "clipOffset";
 		public const string CLIP_DURATION = "clipDuration";
 		#endregion
@@ -115,6 +116,7 @@ namespace Kaltura.Types
 		private string _SubtitlesData = null;
 		private int _IsEncrypted = Int32.MinValue;
 		private float _ContentAwareness = Single.MinValue;
+		private int _ChunkedEncodeMode = Int32.MinValue;
 		private int _ClipOffset = Int32.MinValue;
 		private int _ClipDuration = Int32.MinValue;
 		#endregion
@@ -453,6 +455,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentAwareness");
 			}
 		}
+		public int ChunkedEncodeMode
+		{
+			get { return _ChunkedEncodeMode; }
+			set 
+			{ 
+				_ChunkedEncodeMode = value;
+				OnPropertyChanged("ChunkedEncodeMode");
+			}
+		}
 		public int ClipOffset
 		{
 			get { return _ClipOffset; }
@@ -595,6 +606,9 @@ namespace Kaltura.Types
 					case "contentAwareness":
 						this._ContentAwareness = ParseFloat(propertyNode.InnerText);
 						continue;
+					case "chunkedEncodeMode":
+						this._ChunkedEncodeMode = ParseInt(propertyNode.InnerText);
+						continue;
 					case "clipOffset":
 						this._ClipOffset = ParseInt(propertyNode.InnerText);
 						continue;
@@ -649,6 +663,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("subtitlesData", this._SubtitlesData);
 			kparams.AddIfNotNull("isEncrypted", this._IsEncrypted);
 			kparams.AddIfNotNull("contentAwareness", this._ContentAwareness);
+			kparams.AddIfNotNull("chunkedEncodeMode", this._ChunkedEncodeMode);
 			kparams.AddIfNotNull("clipOffset", this._ClipOffset);
 			kparams.AddIfNotNull("clipDuration", this._ClipDuration);
 			return kparams;
@@ -731,6 +746,8 @@ namespace Kaltura.Types
 					return "IsEncrypted";
 				case CONTENT_AWARENESS:
 					return "ContentAwareness";
+				case CHUNKED_ENCODE_MODE:
+					return "ChunkedEncodeMode";
 				case CLIP_OFFSET:
 					return "ClipOffset";
 				case CLIP_DURATION:

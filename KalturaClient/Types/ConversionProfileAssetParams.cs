@@ -45,6 +45,7 @@ namespace Kaltura.Types
 		public const string DELETE_POLICY = "deletePolicy";
 		public const string IS_ENCRYPTED = "isEncrypted";
 		public const string CONTENT_AWARENESS = "contentAwareness";
+		public const string CHUNKED_ENCODE_MODE = "chunkedEncodeMode";
 		public const string TWO_PASS = "twoPass";
 		public const string TAGS = "tags";
 		#endregion
@@ -59,6 +60,7 @@ namespace Kaltura.Types
 		private AssetParamsDeletePolicy _DeletePolicy = (AssetParamsDeletePolicy)Int32.MinValue;
 		private NullableBoolean _IsEncrypted = (NullableBoolean)Int32.MinValue;
 		private float _ContentAwareness = Single.MinValue;
+		private int _ChunkedEncodeMode = Int32.MinValue;
 		private NullableBoolean _TwoPass = (NullableBoolean)Int32.MinValue;
 		private string _Tags = null;
 		#endregion
@@ -135,6 +137,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentAwareness");
 			}
 		}
+		public int ChunkedEncodeMode
+		{
+			get { return _ChunkedEncodeMode; }
+			set 
+			{ 
+				_ChunkedEncodeMode = value;
+				OnPropertyChanged("ChunkedEncodeMode");
+			}
+		}
 		public NullableBoolean TwoPass
 		{
 			get { return _TwoPass; }
@@ -193,6 +204,9 @@ namespace Kaltura.Types
 					case "contentAwareness":
 						this._ContentAwareness = ParseFloat(propertyNode.InnerText);
 						continue;
+					case "chunkedEncodeMode":
+						this._ChunkedEncodeMode = ParseInt(propertyNode.InnerText);
+						continue;
 					case "twoPass":
 						this._TwoPass = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
@@ -219,6 +233,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("deletePolicy", this._DeletePolicy);
 			kparams.AddIfNotNull("isEncrypted", this._IsEncrypted);
 			kparams.AddIfNotNull("contentAwareness", this._ContentAwareness);
+			kparams.AddIfNotNull("chunkedEncodeMode", this._ChunkedEncodeMode);
 			kparams.AddIfNotNull("twoPass", this._TwoPass);
 			kparams.AddIfNotNull("tags", this._Tags);
 			return kparams;
@@ -245,6 +260,8 @@ namespace Kaltura.Types
 					return "IsEncrypted";
 				case CONTENT_AWARENESS:
 					return "ContentAwareness";
+				case CHUNKED_ENCODE_MODE:
+					return "ChunkedEncodeMode";
 				case TWO_PASS:
 					return "TwoPass";
 				case TAGS:

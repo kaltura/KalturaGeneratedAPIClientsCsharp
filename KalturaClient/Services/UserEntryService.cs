@@ -381,7 +381,7 @@ namespace Kaltura.Services
 			return new UserEntryGetRequestBuilder(id);
 		}
 
-		public static UserEntryListRequestBuilder List(UserEntryFilter filter, FilterPager pager = null)
+		public static UserEntryListRequestBuilder List(UserEntryFilter filter = null, FilterPager pager = null)
 		{
 			return new UserEntryListRequestBuilder(filter, pager);
 		}

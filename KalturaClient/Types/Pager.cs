@@ -33,24 +33,58 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class FilterPager : Pager
+	public class Pager : ObjectBase
 	{
 		#region Constants
+		public const string PAGE_SIZE = "pageSize";
+		public const string PAGE_INDEX = "pageIndex";
 		#endregion
 
 		#region Private Fields
+		private int _PageSize = Int32.MinValue;
+		private int _PageIndex = Int32.MinValue;
 		#endregion
 
 		#region Properties
+		public int PageSize
+		{
+			get { return _PageSize; }
+			set 
+			{ 
+				_PageSize = value;
+				OnPropertyChanged("PageSize");
+			}
+		}
+		public int PageIndex
+		{
+			get { return _PageIndex; }
+			set 
+			{ 
+				_PageIndex = value;
+				OnPropertyChanged("PageIndex");
+			}
+		}
 		#endregion
 
 		#region CTor
-		public FilterPager()
+		public Pager()
 		{
 		}
 
-		public FilterPager(XmlElement node) : base(node)
+		public Pager(XmlElement node) : base(node)
 		{
+			foreach (XmlElement propertyNode in node.ChildNodes)
+			{
+				switch (propertyNode.Name)
+				{
+					case "pageSize":
+						this._PageSize = ParseInt(propertyNode.InnerText);
+						continue;
+					case "pageIndex":
+						this._PageIndex = ParseInt(propertyNode.InnerText);
+						continue;
+				}
+			}
 		}
 		#endregion
 
@@ -59,13 +93,19 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaFilterPager");
+				kparams.AddReplace("objectType", "KalturaPager");
+			kparams.AddIfNotNull("pageSize", this._PageSize);
+			kparams.AddIfNotNull("pageIndex", this._PageIndex);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
+				case PAGE_SIZE:
+					return "PageSize";
+				case PAGE_INDEX:
+					return "PageIndex";
 				default:
 					return base.getPropertyName(apiName);
 			}

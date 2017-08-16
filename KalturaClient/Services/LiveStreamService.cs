@@ -385,6 +385,67 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class LiveStreamCreateRecordedEntryRequestBuilder : RequestBuilder<LiveEntry>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string MEDIA_SERVER_INDEX = "mediaServerIndex";
+		public const string LIVE_ENTRY_STATUS = "liveEntryStatus";
+		#endregion
+
+		public string EntryId
+		{
+			set;
+			get;
+		}
+		public EntryServerNodeType MediaServerIndex
+		{
+			set;
+			get;
+		}
+		public EntryServerNodeStatus LiveEntryStatus
+		{
+			set;
+			get;
+		}
+
+		public LiveStreamCreateRecordedEntryRequestBuilder()
+			: base("livestream", "createRecordedEntry")
+		{
+		}
+
+		public LiveStreamCreateRecordedEntryRequestBuilder(string entryId, EntryServerNodeType mediaServerIndex, EntryServerNodeStatus liveEntryStatus)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.MediaServerIndex = mediaServerIndex;
+			this.LiveEntryStatus = liveEntryStatus;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("mediaServerIndex"))
+				kparams.AddIfNotNull("mediaServerIndex", MediaServerIndex);
+			if (!isMapped("liveEntryStatus"))
+				kparams.AddIfNotNull("liveEntryStatus", LiveEntryStatus);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<LiveEntry>(result);
+		}
+	}
+
 	public class LiveStreamDeleteRequestBuilder : RequestBuilder<object>
 	{
 		#region Constants
@@ -637,6 +698,7 @@ namespace Kaltura.Services
 		public const string MEDIA_SERVER_INDEX = "mediaServerIndex";
 		public const string APPLICATION_NAME = "applicationName";
 		public const string LIVE_ENTRY_STATUS = "liveEntryStatus";
+		public const string SHOULD_CREATE_RECORDED_ENTRY = "shouldCreateRecordedEntry";
 		#endregion
 
 		public string EntryId
@@ -664,13 +726,18 @@ namespace Kaltura.Services
 			set;
 			get;
 		}
+		public bool ShouldCreateRecordedEntry
+		{
+			set;
+			get;
+		}
 
 		public LiveStreamRegisterMediaServerRequestBuilder()
 			: base("livestream", "registerMediaServer")
 		{
 		}
 
-		public LiveStreamRegisterMediaServerRequestBuilder(string entryId, string hostname, EntryServerNodeType mediaServerIndex, string applicationName, EntryServerNodeStatus liveEntryStatus)
+		public LiveStreamRegisterMediaServerRequestBuilder(string entryId, string hostname, EntryServerNodeType mediaServerIndex, string applicationName, EntryServerNodeStatus liveEntryStatus, bool shouldCreateRecordedEntry)
 			: this()
 		{
 			this.EntryId = entryId;
@@ -678,6 +745,7 @@ namespace Kaltura.Services
 			this.MediaServerIndex = mediaServerIndex;
 			this.ApplicationName = applicationName;
 			this.LiveEntryStatus = liveEntryStatus;
+			this.ShouldCreateRecordedEntry = shouldCreateRecordedEntry;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -693,6 +761,8 @@ namespace Kaltura.Services
 				kparams.AddIfNotNull("applicationName", ApplicationName);
 			if (!isMapped("liveEntryStatus"))
 				kparams.AddIfNotNull("liveEntryStatus", LiveEntryStatus);
+			if (!isMapped("shouldCreateRecordedEntry"))
+				kparams.AddIfNotNull("shouldCreateRecordedEntry", ShouldCreateRecordedEntry);
 			return kparams;
 		}
 
@@ -1139,6 +1209,11 @@ namespace Kaltura.Services
 			return new LiveStreamCreatePeriodicSyncPointsRequestBuilder(entryId, interval, duration);
 		}
 
+		public static LiveStreamCreateRecordedEntryRequestBuilder CreateRecordedEntry(string entryId, EntryServerNodeType mediaServerIndex, EntryServerNodeStatus liveEntryStatus)
+		{
+			return new LiveStreamCreateRecordedEntryRequestBuilder(entryId, mediaServerIndex, liveEntryStatus);
+		}
+
 		public static LiveStreamDeleteRequestBuilder Delete(string entryId)
 		{
 			return new LiveStreamDeleteRequestBuilder(entryId);
@@ -1164,9 +1239,9 @@ namespace Kaltura.Services
 			return new LiveStreamRegenerateStreamTokenRequestBuilder(entryId);
 		}
 
-		public static LiveStreamRegisterMediaServerRequestBuilder RegisterMediaServer(string entryId, string hostname, EntryServerNodeType mediaServerIndex, string applicationName = null, EntryServerNodeStatus liveEntryStatus = (EntryServerNodeStatus)(1))
+		public static LiveStreamRegisterMediaServerRequestBuilder RegisterMediaServer(string entryId, string hostname, EntryServerNodeType mediaServerIndex, string applicationName = null, EntryServerNodeStatus liveEntryStatus = (EntryServerNodeStatus)(1), bool shouldCreateRecordedEntry = true)
 		{
-			return new LiveStreamRegisterMediaServerRequestBuilder(entryId, hostname, mediaServerIndex, applicationName, liveEntryStatus);
+			return new LiveStreamRegisterMediaServerRequestBuilder(entryId, hostname, mediaServerIndex, applicationName, liveEntryStatus, shouldCreateRecordedEntry);
 		}
 
 		public static LiveStreamRemoveLiveStreamPushPublishConfigurationRequestBuilder RemoveLiveStreamPushPublishConfiguration(string entryId, PlaybackProtocol protocol)

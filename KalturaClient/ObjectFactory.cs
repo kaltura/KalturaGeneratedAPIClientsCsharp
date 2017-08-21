@@ -125,6 +125,10 @@ namespace Kaltura
 					return new ListResponse<DistributionProvider>(xmlElement);
 				case "KalturaDocumentListResponse":
 					return new ListResponse<DocumentEntry>(xmlElement);
+				case "KalturaDrmPolicyListResponse":
+					return new ListResponse<DrmPolicy>(xmlElement);
+				case "KalturaDrmProfileListResponse":
+					return new ListResponse<DrmProfile>(xmlElement);
 				case "KalturaDropFolderFileListResponse":
 					return new ListResponse<DropFolderFile>(xmlElement);
 				case "KalturaDropFolderListResponse":

@@ -47,7 +47,6 @@ namespace Kaltura.Enums
 		public static readonly BatchJobType INDEX_TAGS = new BatchJobType("tagSearch.IndexTagsByPrivacyContext");
 		public static readonly BatchJobType TAG_RESOLVE = new BatchJobType("tagSearch.TagResolve");
 		public static readonly BatchJobType VIRUS_SCAN = new BatchJobType("virusScan.VirusScan");
-		public static readonly BatchJobType WIDEVINE_REPOSITORY_SYNC = new BatchJobType("widevine.WidevineRepositorySync");
 		public static readonly BatchJobType IMPORT = new BatchJobType("1");
 		public static readonly BatchJobType DELETE = new BatchJobType("2");
 		public static readonly BatchJobType FLATTEN = new BatchJobType("3");

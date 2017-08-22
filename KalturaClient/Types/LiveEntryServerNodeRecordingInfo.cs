@@ -33,63 +33,55 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class LiveEntryServerNode : EntryServerNode
+	public class LiveEntryServerNodeRecordingInfo : ObjectBase
 	{
 		#region Constants
-		public const string STREAMS = "streams";
-		public const string RECORDING_INFO = "recordingInfo";
+		public const string RECORDED_ENTRY_ID = "recordedEntryId";
+		public const string DURATION = "duration";
 		#endregion
 
 		#region Private Fields
-		private IList<LiveStreamParams> _Streams;
-		private IList<LiveEntryServerNodeRecordingInfo> _RecordingInfo;
+		private string _RecordedEntryId = null;
+		private int _Duration = Int32.MinValue;
 		#endregion
 
 		#region Properties
-		public IList<LiveStreamParams> Streams
+		public string RecordedEntryId
 		{
-			get { return _Streams; }
+			get { return _RecordedEntryId; }
 			set 
 			{ 
-				_Streams = value;
-				OnPropertyChanged("Streams");
+				_RecordedEntryId = value;
+				OnPropertyChanged("RecordedEntryId");
 			}
 		}
-		public IList<LiveEntryServerNodeRecordingInfo> RecordingInfo
+		public int Duration
 		{
-			get { return _RecordingInfo; }
+			get { return _Duration; }
 			set 
 			{ 
-				_RecordingInfo = value;
-				OnPropertyChanged("RecordingInfo");
+				_Duration = value;
+				OnPropertyChanged("Duration");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public LiveEntryServerNode()
+		public LiveEntryServerNodeRecordingInfo()
 		{
 		}
 
-		public LiveEntryServerNode(XmlElement node) : base(node)
+		public LiveEntryServerNodeRecordingInfo(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
 				switch (propertyNode.Name)
 				{
-					case "streams":
-						this._Streams = new List<LiveStreamParams>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Streams.Add(ObjectFactory.Create<LiveStreamParams>(arrayNode));
-						}
+					case "recordedEntryId":
+						this._RecordedEntryId = propertyNode.InnerText;
 						continue;
-					case "recordingInfo":
-						this._RecordingInfo = new List<LiveEntryServerNodeRecordingInfo>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._RecordingInfo.Add(ObjectFactory.Create<LiveEntryServerNodeRecordingInfo>(arrayNode));
-						}
+					case "duration":
+						this._Duration = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}
@@ -101,19 +93,19 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaLiveEntryServerNode");
-			kparams.AddIfNotNull("streams", this._Streams);
-			kparams.AddIfNotNull("recordingInfo", this._RecordingInfo);
+				kparams.AddReplace("objectType", "KalturaLiveEntryServerNodeRecordingInfo");
+			kparams.AddIfNotNull("recordedEntryId", this._RecordedEntryId);
+			kparams.AddIfNotNull("duration", this._Duration);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case STREAMS:
-					return "Streams";
-				case RECORDING_INFO:
-					return "RecordingInfo";
+				case RECORDED_ENTRY_ID:
+					return "RecordedEntryId";
+				case DURATION:
+					return "Duration";
 				default:
 					return base.getPropertyName(apiName);
 			}

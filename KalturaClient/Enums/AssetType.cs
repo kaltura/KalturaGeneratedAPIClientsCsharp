@@ -37,7 +37,6 @@ namespace Kaltura.Enums
 		public static readonly AssetType SWF = new AssetType("document.SWF");
 		public static readonly AssetType TIMED_THUMB_ASSET = new AssetType("thumbCuePoint.timedThumb");
 		public static readonly AssetType TRANSCRIPT = new AssetType("transcript.Transcript");
-		public static readonly AssetType WIDEVINE_FLAVOR = new AssetType("widevine.WidevineFlavor");
 		public static readonly AssetType FLAVOR = new AssetType("1");
 		public static readonly AssetType THUMBNAIL = new AssetType("2");
 		public static readonly AssetType LIVE = new AssetType("3");

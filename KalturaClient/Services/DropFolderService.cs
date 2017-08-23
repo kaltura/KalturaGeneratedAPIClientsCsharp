@@ -125,17 +125,11 @@ namespace Kaltura.Services
 	{
 		#region Constants
 		public const string DROP_FOLDER_ID = "dropFolderId";
-		public const string STATUS = "status";
 		public const string ERROR_CODE = "errorCode";
 		public const string ERROR_DESCRIPTION = "errorDescription";
 		#endregion
 
 		public int DropFolderId
-		{
-			set;
-			get;
-		}
-		public int Status
 		{
 			set;
 			get;
@@ -156,11 +150,10 @@ namespace Kaltura.Services
 		{
 		}
 
-		public DropFolderFreeExclusiveDropFolderRequestBuilder(int dropFolderId, int status, string errorCode, string errorDescription)
+		public DropFolderFreeExclusiveDropFolderRequestBuilder(int dropFolderId, string errorCode, string errorDescription)
 			: this()
 		{
 			this.DropFolderId = dropFolderId;
-			this.Status = status;
 			this.ErrorCode = errorCode;
 			this.ErrorDescription = errorDescription;
 		}
@@ -170,8 +163,6 @@ namespace Kaltura.Services
 			Params kparams = base.getParameters(includeServiceAndAction);
 			if (!isMapped("dropFolderId"))
 				kparams.AddIfNotNull("dropFolderId", DropFolderId);
-			if (!isMapped("status"))
-				kparams.AddIfNotNull("status", Status);
 			if (!isMapped("errorCode"))
 				kparams.AddIfNotNull("errorCode", ErrorCode);
 			if (!isMapped("errorDescription"))
@@ -407,9 +398,9 @@ namespace Kaltura.Services
 			return new DropFolderDeleteRequestBuilder(dropFolderId);
 		}
 
-		public static DropFolderFreeExclusiveDropFolderRequestBuilder FreeExclusiveDropFolder(int dropFolderId, int status, string errorCode = null, string errorDescription = null)
+		public static DropFolderFreeExclusiveDropFolderRequestBuilder FreeExclusiveDropFolder(int dropFolderId, string errorCode = null, string errorDescription = null)
 		{
-			return new DropFolderFreeExclusiveDropFolderRequestBuilder(dropFolderId, status, errorCode, errorDescription);
+			return new DropFolderFreeExclusiveDropFolderRequestBuilder(dropFolderId, errorCode, errorDescription);
 		}
 
 		public static DropFolderGetRequestBuilder Get(int dropFolderId)

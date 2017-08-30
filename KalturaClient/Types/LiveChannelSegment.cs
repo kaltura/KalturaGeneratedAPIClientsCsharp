@@ -54,7 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Private Fields
-		private string _Id = null;
+		private long _Id = long.MinValue;
 		private int _PartnerId = Int32.MinValue;
 		private int _CreatedAt = Int32.MinValue;
 		private int _UpdatedAt = Int32.MinValue;
@@ -66,13 +66,13 @@ namespace Kaltura.Types
 		private string _ChannelId = null;
 		private string _EntryId = null;
 		private LiveChannelSegmentTriggerType _TriggerType = null;
-		private string _TriggerSegmentId = null;
+		private long _TriggerSegmentId = long.MinValue;
 		private float _StartTime = Single.MinValue;
 		private float _Duration = Single.MinValue;
 		#endregion
 
 		#region Properties
-		public string Id
+		public long Id
 		{
 			get { return _Id; }
 		}
@@ -155,7 +155,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TriggerType");
 			}
 		}
-		public string TriggerSegmentId
+		public long TriggerSegmentId
 		{
 			get { return _TriggerSegmentId; }
 			set 
@@ -196,7 +196,7 @@ namespace Kaltura.Types
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = propertyNode.InnerText;
+						this._Id = ParseLong(propertyNode.InnerText);
 						continue;
 					case "partnerId":
 						this._PartnerId = ParseInt(propertyNode.InnerText);
@@ -232,7 +232,7 @@ namespace Kaltura.Types
 						this._TriggerType = (LiveChannelSegmentTriggerType)StringEnum.Parse(typeof(LiveChannelSegmentTriggerType), propertyNode.InnerText);
 						continue;
 					case "triggerSegmentId":
-						this._TriggerSegmentId = propertyNode.InnerText;
+						this._TriggerSegmentId = ParseLong(propertyNode.InnerText);
 						continue;
 					case "startTime":
 						this._StartTime = ParseFloat(propertyNode.InnerText);

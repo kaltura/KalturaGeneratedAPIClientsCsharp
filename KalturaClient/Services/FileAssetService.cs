@@ -84,7 +84,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
+		public long Id
 		{
 			set;
 			get;
@@ -95,7 +95,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public FileAssetDeleteRequestBuilder(int id)
+		public FileAssetDeleteRequestBuilder(long id)
 			: this()
 		{
 			this.Id = id;
@@ -127,7 +127,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
+		public long Id
 		{
 			set;
 			get;
@@ -138,7 +138,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public FileAssetGetRequestBuilder(int id)
+		public FileAssetGetRequestBuilder(long id)
 			: this()
 		{
 			this.Id = id;
@@ -223,7 +223,7 @@ namespace Kaltura.Services
 		public const string CONTENT_RESOURCE = "contentResource";
 		#endregion
 
-		public string Id
+		public long Id
 		{
 			set;
 			get;
@@ -239,7 +239,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public FileAssetSetContentRequestBuilder(string id, ContentResource contentResource)
+		public FileAssetSetContentRequestBuilder(long id, ContentResource contentResource)
 			: this()
 		{
 			this.Id = id;
@@ -275,7 +275,7 @@ namespace Kaltura.Services
 		public const string FILE_ASSET = "fileAsset";
 		#endregion
 
-		public int Id
+		public long Id
 		{
 			set;
 			get;
@@ -291,7 +291,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public FileAssetUpdateRequestBuilder(int id, FileAsset fileAsset)
+		public FileAssetUpdateRequestBuilder(long id, FileAsset fileAsset)
 			: this()
 		{
 			this.Id = id;
@@ -332,12 +332,12 @@ namespace Kaltura.Services
 			return new FileAssetAddRequestBuilder(fileAsset);
 		}
 
-		public static FileAssetDeleteRequestBuilder Delete(int id)
+		public static FileAssetDeleteRequestBuilder Delete(long id)
 		{
 			return new FileAssetDeleteRequestBuilder(id);
 		}
 
-		public static FileAssetGetRequestBuilder Get(int id)
+		public static FileAssetGetRequestBuilder Get(long id)
 		{
 			return new FileAssetGetRequestBuilder(id);
 		}
@@ -347,12 +347,12 @@ namespace Kaltura.Services
 			return new FileAssetListRequestBuilder(filter, pager);
 		}
 
-		public static FileAssetSetContentRequestBuilder SetContent(string id, ContentResource contentResource)
+		public static FileAssetSetContentRequestBuilder SetContent(long id, ContentResource contentResource)
 		{
 			return new FileAssetSetContentRequestBuilder(id, contentResource);
 		}
 
-		public static FileAssetUpdateRequestBuilder Update(int id, FileAsset fileAsset)
+		public static FileAssetUpdateRequestBuilder Update(long id, FileAsset fileAsset)
 		{
 			return new FileAssetUpdateRequestBuilder(id, fileAsset);
 		}

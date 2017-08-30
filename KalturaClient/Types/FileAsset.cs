@@ -50,7 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Private Fields
-		private int _Id = Int32.MinValue;
+		private long _Id = long.MinValue;
 		private int _PartnerId = Int32.MinValue;
 		private FileAssetObjectType _FileAssetObjectType = null;
 		private string _ObjectId = null;
@@ -64,7 +64,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		public int Id
+		public long Id
 		{
 			get { return _Id; }
 		}
@@ -147,7 +147,7 @@ namespace Kaltura.Types
 				switch (propertyNode.Name)
 				{
 					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
+						this._Id = ParseLong(propertyNode.InnerText);
 						continue;
 					case "partnerId":
 						this._PartnerId = ParseInt(propertyNode.InnerText);

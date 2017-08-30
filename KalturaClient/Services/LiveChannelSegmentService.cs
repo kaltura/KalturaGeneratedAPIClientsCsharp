@@ -84,7 +84,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
+		public long Id
 		{
 			set;
 			get;
@@ -95,7 +95,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public LiveChannelSegmentDeleteRequestBuilder(int id)
+		public LiveChannelSegmentDeleteRequestBuilder(long id)
 			: this()
 		{
 			this.Id = id;
@@ -127,7 +127,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
+		public long Id
 		{
 			set;
 			get;
@@ -138,7 +138,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public LiveChannelSegmentGetRequestBuilder(int id)
+		public LiveChannelSegmentGetRequestBuilder(long id)
 			: this()
 		{
 			this.Id = id;
@@ -223,7 +223,7 @@ namespace Kaltura.Services
 		public const string LIVE_CHANNEL_SEGMENT = "liveChannelSegment";
 		#endregion
 
-		public int Id
+		public long Id
 		{
 			set;
 			get;
@@ -239,7 +239,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public LiveChannelSegmentUpdateRequestBuilder(int id, LiveChannelSegment liveChannelSegment)
+		public LiveChannelSegmentUpdateRequestBuilder(long id, LiveChannelSegment liveChannelSegment)
 			: this()
 		{
 			this.Id = id;
@@ -280,12 +280,12 @@ namespace Kaltura.Services
 			return new LiveChannelSegmentAddRequestBuilder(liveChannelSegment);
 		}
 
-		public static LiveChannelSegmentDeleteRequestBuilder Delete(int id)
+		public static LiveChannelSegmentDeleteRequestBuilder Delete(long id)
 		{
 			return new LiveChannelSegmentDeleteRequestBuilder(id);
 		}
 
-		public static LiveChannelSegmentGetRequestBuilder Get(int id)
+		public static LiveChannelSegmentGetRequestBuilder Get(long id)
 		{
 			return new LiveChannelSegmentGetRequestBuilder(id);
 		}
@@ -295,7 +295,7 @@ namespace Kaltura.Services
 			return new LiveChannelSegmentListRequestBuilder(filter, pager);
 		}
 
-		public static LiveChannelSegmentUpdateRequestBuilder Update(int id, LiveChannelSegment liveChannelSegment)
+		public static LiveChannelSegmentUpdateRequestBuilder Update(long id, LiveChannelSegment liveChannelSegment)
 		{
 			return new LiveChannelSegmentUpdateRequestBuilder(id, liveChannelSegment);
 		}

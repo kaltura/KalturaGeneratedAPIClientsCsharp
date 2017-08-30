@@ -85,7 +85,7 @@ namespace Kaltura.Services
 		public const string PROFILE = "profile";
 		#endregion
 
-		public int Id
+		public long Id
 		{
 			set;
 			get;
@@ -101,7 +101,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public ResponseProfileCloneRequestBuilder(int id, ResponseProfile profile)
+		public ResponseProfileCloneRequestBuilder(long id, ResponseProfile profile)
 			: this()
 		{
 			this.Id = id;
@@ -136,7 +136,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
+		public long Id
 		{
 			set;
 			get;
@@ -147,7 +147,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public ResponseProfileDeleteRequestBuilder(int id)
+		public ResponseProfileDeleteRequestBuilder(long id)
 			: this()
 		{
 			this.Id = id;
@@ -179,7 +179,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
+		public long Id
 		{
 			set;
 			get;
@@ -190,7 +190,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public ResponseProfileGetRequestBuilder(int id)
+		public ResponseProfileGetRequestBuilder(long id)
 			: this()
 		{
 			this.Id = id;
@@ -318,7 +318,7 @@ namespace Kaltura.Services
 		public const string UPDATE_RESPONSE_PROFILE = "updateResponseProfile";
 		#endregion
 
-		public int Id
+		public long Id
 		{
 			set;
 			get;
@@ -334,7 +334,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public ResponseProfileUpdateRequestBuilder(int id, ResponseProfile updateResponseProfile)
+		public ResponseProfileUpdateRequestBuilder(long id, ResponseProfile updateResponseProfile)
 			: this()
 		{
 			this.Id = id;
@@ -370,7 +370,7 @@ namespace Kaltura.Services
 		public const string STATUS = "status";
 		#endregion
 
-		public int Id
+		public long Id
 		{
 			set;
 			get;
@@ -386,7 +386,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public ResponseProfileUpdateStatusRequestBuilder(int id, ResponseProfileStatus status)
+		public ResponseProfileUpdateStatusRequestBuilder(long id, ResponseProfileStatus status)
 			: this()
 		{
 			this.Id = id;
@@ -427,17 +427,17 @@ namespace Kaltura.Services
 			return new ResponseProfileAddRequestBuilder(addResponseProfile);
 		}
 
-		public static ResponseProfileCloneRequestBuilder Clone(int id, ResponseProfile profile)
+		public static ResponseProfileCloneRequestBuilder Clone(long id, ResponseProfile profile)
 		{
 			return new ResponseProfileCloneRequestBuilder(id, profile);
 		}
 
-		public static ResponseProfileDeleteRequestBuilder Delete(int id)
+		public static ResponseProfileDeleteRequestBuilder Delete(long id)
 		{
 			return new ResponseProfileDeleteRequestBuilder(id);
 		}
 
-		public static ResponseProfileGetRequestBuilder Get(int id)
+		public static ResponseProfileGetRequestBuilder Get(long id)
 		{
 			return new ResponseProfileGetRequestBuilder(id);
 		}
@@ -452,12 +452,12 @@ namespace Kaltura.Services
 			return new ResponseProfileRecalculateRequestBuilder(options);
 		}
 
-		public static ResponseProfileUpdateRequestBuilder Update(int id, ResponseProfile updateResponseProfile)
+		public static ResponseProfileUpdateRequestBuilder Update(long id, ResponseProfile updateResponseProfile)
 		{
 			return new ResponseProfileUpdateRequestBuilder(id, updateResponseProfile);
 		}
 
-		public static ResponseProfileUpdateStatusRequestBuilder UpdateStatus(int id, ResponseProfileStatus status)
+		public static ResponseProfileUpdateStatusRequestBuilder UpdateStatus(long id, ResponseProfileStatus status)
 		{
 			return new ResponseProfileUpdateStatusRequestBuilder(id, status);
 		}

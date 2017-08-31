@@ -60,6 +60,7 @@ namespace Kaltura.Types
 		public const string CONDITIONAL_PROFILES = "conditionalProfiles";
 		public const string DETECT_GOP = "detectGOP";
 		public const string MEDIA_INFO_XSL_TRANSFORMATION = "mediaInfoXslTransformation";
+		public const string DEFAULT_REPLACEMENT_OPTIONS = "defaultReplacementOptions";
 		#endregion
 
 		#region Private Fields
@@ -87,6 +88,7 @@ namespace Kaltura.Types
 		private string _ConditionalProfiles = null;
 		private int _DetectGOP = Int32.MinValue;
 		private string _MediaInfoXslTransformation = null;
+		private EntryReplacementOptions _DefaultReplacementOptions;
 		#endregion
 
 		#region Properties
@@ -286,6 +288,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaInfoXslTransformation");
 			}
 		}
+		public EntryReplacementOptions DefaultReplacementOptions
+		{
+			get { return _DefaultReplacementOptions; }
+			set 
+			{ 
+				_DefaultReplacementOptions = value;
+				OnPropertyChanged("DefaultReplacementOptions");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -371,6 +382,9 @@ namespace Kaltura.Types
 					case "mediaInfoXslTransformation":
 						this._MediaInfoXslTransformation = propertyNode.InnerText;
 						continue;
+					case "defaultReplacementOptions":
+						this._DefaultReplacementOptions = ObjectFactory.Create<EntryReplacementOptions>(propertyNode);
+						continue;
 				}
 			}
 		}
@@ -406,6 +420,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("conditionalProfiles", this._ConditionalProfiles);
 			kparams.AddIfNotNull("detectGOP", this._DetectGOP);
 			kparams.AddIfNotNull("mediaInfoXslTransformation", this._MediaInfoXslTransformation);
+			kparams.AddIfNotNull("defaultReplacementOptions", this._DefaultReplacementOptions);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -460,6 +475,8 @@ namespace Kaltura.Types
 					return "DetectGOP";
 				case MEDIA_INFO_XSL_TRANSFORMATION:
 					return "MediaInfoXslTransformation";
+				case DEFAULT_REPLACEMENT_OPTIONS:
+					return "DefaultReplacementOptions";
 				default:
 					return base.getPropertyName(apiName);
 			}

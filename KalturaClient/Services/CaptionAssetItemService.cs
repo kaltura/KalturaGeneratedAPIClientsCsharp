@@ -35,6 +35,67 @@ using Kaltura.Enums;
 
 namespace Kaltura.Services
 {
+	public class CaptionAssetItemListRequestBuilder : RequestBuilder<ListResponse<CaptionAssetItem>>
+	{
+		#region Constants
+		public const string CAPTION_ASSET_ID = "captionAssetId";
+		public const string CAPTION_ASSET_ITEM_FILTER = "captionAssetItemFilter";
+		public const string CAPTION_ASSET_ITEM_PAGER = "captionAssetItemPager";
+		#endregion
+
+		public string CaptionAssetId
+		{
+			set;
+			get;
+		}
+		public CaptionAssetItemFilter CaptionAssetItemFilter
+		{
+			set;
+			get;
+		}
+		public FilterPager CaptionAssetItemPager
+		{
+			set;
+			get;
+		}
+
+		public CaptionAssetItemListRequestBuilder()
+			: base("captionsearch_captionassetitem", "list")
+		{
+		}
+
+		public CaptionAssetItemListRequestBuilder(string captionAssetId, CaptionAssetItemFilter captionAssetItemFilter, FilterPager captionAssetItemPager)
+			: this()
+		{
+			this.CaptionAssetId = captionAssetId;
+			this.CaptionAssetItemFilter = captionAssetItemFilter;
+			this.CaptionAssetItemPager = captionAssetItemPager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("captionAssetId"))
+				kparams.AddIfNotNull("captionAssetId", CaptionAssetId);
+			if (!isMapped("captionAssetItemFilter"))
+				kparams.AddIfNotNull("captionAssetItemFilter", CaptionAssetItemFilter);
+			if (!isMapped("captionAssetItemPager"))
+				kparams.AddIfNotNull("captionAssetItemPager", CaptionAssetItemPager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ListResponse<CaptionAssetItem>>(result);
+		}
+	}
+
 	public class CaptionAssetItemSearchRequestBuilder : RequestBuilder<ListResponse<CaptionAssetItem>>
 	{
 		#region Constants
@@ -162,6 +223,11 @@ namespace Kaltura.Services
 	{
 		private CaptionAssetItemService()
 		{
+		}
+
+		public static CaptionAssetItemListRequestBuilder List(string captionAssetId, CaptionAssetItemFilter captionAssetItemFilter = null, FilterPager captionAssetItemPager = null)
+		{
+			return new CaptionAssetItemListRequestBuilder(captionAssetId, captionAssetItemFilter, captionAssetItemPager);
 		}
 
 		public static CaptionAssetItemSearchRequestBuilder Search(BaseEntryFilter entryFilter = null, CaptionAssetItemFilter captionAssetItemFilter = null, FilterPager captionAssetItemPager = null)

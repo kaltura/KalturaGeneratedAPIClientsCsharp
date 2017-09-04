@@ -33,55 +33,50 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class ResponseProfileHolder : BaseResponseProfile
+	public class ClearBeaconsJobData : JobData
 	{
 		#region Constants
-		public const string ID = "id";
-		public const string SYSTEM_NAME = "systemName";
+		public const string OBJECT_ID = "objectId";
+		public const string RELATED_OBJECT_TYPE = "relatedObjectType";
 		#endregion
 
 		#region Private Fields
-		private long _Id = long.MinValue;
-		private string _SystemName = null;
+		private string _ObjectId = null;
+		private int _RelatedObjectType = Int32.MinValue;
 		#endregion
 
 		#region Properties
-		public long Id
+		public string ObjectId
 		{
-			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
+			get { return _ObjectId; }
 		}
-		public string SystemName
+		public int RelatedObjectType
 		{
-			get { return _SystemName; }
+			get { return _RelatedObjectType; }
 			set 
 			{ 
-				_SystemName = value;
-				OnPropertyChanged("SystemName");
+				_RelatedObjectType = value;
+				OnPropertyChanged("RelatedObjectType");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public ResponseProfileHolder()
+		public ClearBeaconsJobData()
 		{
 		}
 
-		public ResponseProfileHolder(XmlElement node) : base(node)
+		public ClearBeaconsJobData(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
 				switch (propertyNode.Name)
 				{
-					case "id":
-						this._Id = ParseLong(propertyNode.InnerText);
+					case "objectId":
+						this._ObjectId = propertyNode.InnerText;
 						continue;
-					case "systemName":
-						this._SystemName = propertyNode.InnerText;
+					case "relatedObjectType":
+						this._RelatedObjectType = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}
@@ -93,19 +88,19 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaResponseProfileHolder");
-			kparams.AddIfNotNull("id", this._Id);
-			kparams.AddIfNotNull("systemName", this._SystemName);
+				kparams.AddReplace("objectType", "KalturaClearBeaconsJobData");
+			kparams.AddIfNotNull("objectId", this._ObjectId);
+			kparams.AddIfNotNull("relatedObjectType", this._RelatedObjectType);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case ID:
-					return "Id";
-				case SYSTEM_NAME:
-					return "SystemName";
+				case OBJECT_ID:
+					return "ObjectId";
+				case RELATED_OBJECT_TYPE:
+					return "RelatedObjectType";
 				default:
 					return base.getPropertyName(apiName);
 			}

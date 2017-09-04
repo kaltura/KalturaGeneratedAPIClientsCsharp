@@ -85,6 +85,7 @@ namespace Kaltura.Enums
 		public static readonly BatchJobType LIVE_REPORT_EXPORT = new BatchJobType("40");
 		public static readonly BatchJobType RECALCULATE_CACHE = new BatchJobType("41");
 		public static readonly BatchJobType LIVE_TO_VOD = new BatchJobType("42");
+		public static readonly BatchJobType COPY_CAPTIONS = new BatchJobType("43");
 
 		private BatchJobType(string name) : base(name) { }
 	}

@@ -42,6 +42,9 @@ namespace Kaltura.Types
 		public const string WEBEX_PARTNER_ID = "webexPartnerId";
 		public const string WEBEX_SERVICE_URL = "webexServiceUrl";
 		public const string WEBEX_HOST_ID_METADATA_FIELD_NAME = "webexHostIdMetadataFieldName";
+		public const string DELETE_FROM_RECYCLE_BIN = "deleteFromRecycleBin";
+		public const string WEBEX_SERVICE_TYPE = "webexServiceType";
+		public const string DELETE_FROM_TIMESTAMP = "deleteFromTimestamp";
 		#endregion
 
 		#region Private Fields
@@ -51,6 +54,9 @@ namespace Kaltura.Types
 		private string _WebexPartnerId = null;
 		private string _WebexServiceUrl = null;
 		private string _WebexHostIdMetadataFieldName = null;
+		private bool? _DeleteFromRecycleBin = null;
+		private string _WebexServiceType = null;
+		private int _DeleteFromTimestamp = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -108,6 +114,33 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebexHostIdMetadataFieldName");
 			}
 		}
+		public bool? DeleteFromRecycleBin
+		{
+			get { return _DeleteFromRecycleBin; }
+			set 
+			{ 
+				_DeleteFromRecycleBin = value;
+				OnPropertyChanged("DeleteFromRecycleBin");
+			}
+		}
+		public string WebexServiceType
+		{
+			get { return _WebexServiceType; }
+			set 
+			{ 
+				_WebexServiceType = value;
+				OnPropertyChanged("WebexServiceType");
+			}
+		}
+		public int DeleteFromTimestamp
+		{
+			get { return _DeleteFromTimestamp; }
+			set 
+			{ 
+				_DeleteFromTimestamp = value;
+				OnPropertyChanged("DeleteFromTimestamp");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -139,6 +172,15 @@ namespace Kaltura.Types
 					case "webexHostIdMetadataFieldName":
 						this._WebexHostIdMetadataFieldName = propertyNode.InnerText;
 						continue;
+					case "deleteFromRecycleBin":
+						this._DeleteFromRecycleBin = ParseBool(propertyNode.InnerText);
+						continue;
+					case "webexServiceType":
+						this._WebexServiceType = propertyNode.InnerText;
+						continue;
+					case "deleteFromTimestamp":
+						this._DeleteFromTimestamp = ParseInt(propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -156,6 +198,9 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("webexPartnerId", this._WebexPartnerId);
 			kparams.AddIfNotNull("webexServiceUrl", this._WebexServiceUrl);
 			kparams.AddIfNotNull("webexHostIdMetadataFieldName", this._WebexHostIdMetadataFieldName);
+			kparams.AddIfNotNull("deleteFromRecycleBin", this._DeleteFromRecycleBin);
+			kparams.AddIfNotNull("webexServiceType", this._WebexServiceType);
+			kparams.AddIfNotNull("deleteFromTimestamp", this._DeleteFromTimestamp);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -174,6 +219,12 @@ namespace Kaltura.Types
 					return "WebexServiceUrl";
 				case WEBEX_HOST_ID_METADATA_FIELD_NAME:
 					return "WebexHostIdMetadataFieldName";
+				case DELETE_FROM_RECYCLE_BIN:
+					return "DeleteFromRecycleBin";
+				case WEBEX_SERVICE_TYPE:
+					return "WebexServiceType";
+				case DELETE_FROM_TIMESTAMP:
+					return "DeleteFromTimestamp";
 				default:
 					return base.getPropertyName(apiName);
 			}

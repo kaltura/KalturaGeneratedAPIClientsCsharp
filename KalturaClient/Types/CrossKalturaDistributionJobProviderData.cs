@@ -41,6 +41,8 @@ namespace Kaltura.Types
 		public const string DISTRIBUTED_METADATA = "distributedMetadata";
 		public const string DISTRIBUTED_CAPTION_ASSETS = "distributedCaptionAssets";
 		public const string DISTRIBUTED_CUE_POINTS = "distributedCuePoints";
+		public const string DISTRIBUTED_THUMB_CUE_POINTS = "distributedThumbCuePoints";
+		public const string DISTRIBUTED_TIMED_THUMB_ASSETS = "distributedTimedThumbAssets";
 		#endregion
 
 		#region Private Fields
@@ -49,6 +51,8 @@ namespace Kaltura.Types
 		private string _DistributedMetadata = null;
 		private string _DistributedCaptionAssets = null;
 		private string _DistributedCuePoints = null;
+		private string _DistributedThumbCuePoints = null;
+		private string _DistributedTimedThumbAssets = null;
 		#endregion
 
 		#region Properties
@@ -97,6 +101,24 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributedCuePoints");
 			}
 		}
+		public string DistributedThumbCuePoints
+		{
+			get { return _DistributedThumbCuePoints; }
+			set 
+			{ 
+				_DistributedThumbCuePoints = value;
+				OnPropertyChanged("DistributedThumbCuePoints");
+			}
+		}
+		public string DistributedTimedThumbAssets
+		{
+			get { return _DistributedTimedThumbAssets; }
+			set 
+			{ 
+				_DistributedTimedThumbAssets = value;
+				OnPropertyChanged("DistributedTimedThumbAssets");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -125,6 +147,12 @@ namespace Kaltura.Types
 					case "distributedCuePoints":
 						this._DistributedCuePoints = propertyNode.InnerText;
 						continue;
+					case "distributedThumbCuePoints":
+						this._DistributedThumbCuePoints = propertyNode.InnerText;
+						continue;
+					case "distributedTimedThumbAssets":
+						this._DistributedTimedThumbAssets = propertyNode.InnerText;
+						continue;
 				}
 			}
 		}
@@ -141,6 +169,8 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("distributedMetadata", this._DistributedMetadata);
 			kparams.AddIfNotNull("distributedCaptionAssets", this._DistributedCaptionAssets);
 			kparams.AddIfNotNull("distributedCuePoints", this._DistributedCuePoints);
+			kparams.AddIfNotNull("distributedThumbCuePoints", this._DistributedThumbCuePoints);
+			kparams.AddIfNotNull("distributedTimedThumbAssets", this._DistributedTimedThumbAssets);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -157,6 +187,10 @@ namespace Kaltura.Types
 					return "DistributedCaptionAssets";
 				case DISTRIBUTED_CUE_POINTS:
 					return "DistributedCuePoints";
+				case DISTRIBUTED_THUMB_CUE_POINTS:
+					return "DistributedThumbCuePoints";
+				case DISTRIBUTED_TIMED_THUMB_ASSETS:
+					return "DistributedTimedThumbAssets";
 				default:
 					return base.getPropertyName(apiName);
 			}

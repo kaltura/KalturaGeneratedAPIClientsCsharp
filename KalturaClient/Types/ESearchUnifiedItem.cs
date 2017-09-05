@@ -25,17 +25,52 @@
 //
 // @ignore
 // ===================================================================================================
-namespace Kaltura.Enums
-{
-	public sealed class EventNotificationTemplateType : StringEnum
-	{
-		public static readonly EventNotificationTemplateType BPM_ABORT = new EventNotificationTemplateType("businessProcessNotification.BusinessProcessAbort");
-		public static readonly EventNotificationTemplateType BPM_SIGNAL = new EventNotificationTemplateType("businessProcessNotification.BusinessProcessSignal");
-		public static readonly EventNotificationTemplateType BPM_START = new EventNotificationTemplateType("businessProcessNotification.BusinessProcessStart");
-		public static readonly EventNotificationTemplateType EMAIL = new EventNotificationTemplateType("emailNotification.Email");
-		public static readonly EventNotificationTemplateType HTTP = new EventNotificationTemplateType("httpNotification.Http");
-		public static readonly EventNotificationTemplateType PUSH = new EventNotificationTemplateType("pushNotification.Push");
+using System;
+using System.Xml;
+using System.Collections.Generic;
+using Kaltura.Enums;
+using Kaltura.Request;
 
-		private EventNotificationTemplateType(string name) : base(name) { }
+namespace Kaltura.Types
+{
+	public class ESearchUnifiedItem : ESearchItem
+	{
+		#region Constants
+		#endregion
+
+		#region Private Fields
+		#endregion
+
+		#region Properties
+		#endregion
+
+		#region CTor
+		public ESearchUnifiedItem()
+		{
+		}
+
+		public ESearchUnifiedItem(XmlElement node) : base(node)
+		{
+		}
+		#endregion
+
+		#region Methods
+		public override Params ToParams(bool includeObjectType = true)
+		{
+			Params kparams = base.ToParams(includeObjectType);
+			if (includeObjectType)
+				kparams.AddReplace("objectType", "KalturaESearchUnifiedItem");
+			return kparams;
+		}
+		protected override string getPropertyName(string apiName)
+		{
+			switch(apiName)
+			{
+				default:
+					return base.getPropertyName(apiName);
+			}
+		}
+		#endregion
 	}
 }
+

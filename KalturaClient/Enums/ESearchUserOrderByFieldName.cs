@@ -27,15 +27,11 @@
 // ===================================================================================================
 namespace Kaltura.Enums
 {
-	public sealed class EventNotificationTemplateType : StringEnum
+	public sealed class ESearchUserOrderByFieldName : StringEnum
 	{
-		public static readonly EventNotificationTemplateType BPM_ABORT = new EventNotificationTemplateType("businessProcessNotification.BusinessProcessAbort");
-		public static readonly EventNotificationTemplateType BPM_SIGNAL = new EventNotificationTemplateType("businessProcessNotification.BusinessProcessSignal");
-		public static readonly EventNotificationTemplateType BPM_START = new EventNotificationTemplateType("businessProcessNotification.BusinessProcessStart");
-		public static readonly EventNotificationTemplateType EMAIL = new EventNotificationTemplateType("emailNotification.Email");
-		public static readonly EventNotificationTemplateType HTTP = new EventNotificationTemplateType("httpNotification.Http");
-		public static readonly EventNotificationTemplateType PUSH = new EventNotificationTemplateType("pushNotification.Push");
+		public static readonly ESearchUserOrderByFieldName USER_CREATED_AT = new ESearchUserOrderByFieldName("created_at");
+		public static readonly ESearchUserOrderByFieldName USER_UPDATED_AT = new ESearchUserOrderByFieldName("updated_at");
 
-		private EventNotificationTemplateType(string name) : base(name) { }
+		private ESearchUserOrderByFieldName(string name) : base(name) { }
 	}
 }

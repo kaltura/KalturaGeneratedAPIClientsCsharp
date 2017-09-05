@@ -29,6 +29,7 @@ namespace Kaltura.Enums
 {
 	public sealed class DrmProviderType : StringEnum
 	{
+		public static readonly DrmProviderType FAIRPLAY = new DrmProviderType("fairplay.FAIRPLAY");
 		public static readonly DrmProviderType PLAY_READY = new DrmProviderType("playReady.PLAY_READY");
 		public static readonly DrmProviderType WIDEVINE = new DrmProviderType("widevine.WIDEVINE");
 		public static readonly DrmProviderType CENC = new DrmProviderType("1");

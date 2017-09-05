@@ -29,7 +29,6 @@ namespace Kaltura.Enums
 {
 	public sealed class BatchJobType : StringEnum
 	{
-		public static readonly BatchJobType CONVERT = new BatchJobType("0");
 		public static readonly BatchJobType PARSE_MULTI_LANGUAGE_CAPTION_ASSET = new BatchJobType("caption.parsemultilanguagecaptionasset");
 		public static readonly BatchJobType PARSE_CAPTION_ASSET = new BatchJobType("captionSearch.parseCaptionAsset");
 		public static readonly BatchJobType DISTRIBUTION_DELETE = new BatchJobType("contentDistribution.DistributionDelete");
@@ -39,6 +38,7 @@ namespace Kaltura.Enums
 		public static readonly BatchJobType DISTRIBUTION_SUBMIT = new BatchJobType("contentDistribution.DistributionSubmit");
 		public static readonly BatchJobType DISTRIBUTION_SYNC = new BatchJobType("contentDistribution.DistributionSync");
 		public static readonly BatchJobType DISTRIBUTION_UPDATE = new BatchJobType("contentDistribution.DistributionUpdate");
+		public static readonly BatchJobType CONVERT = new BatchJobType("0");
 		public static readonly BatchJobType DROP_FOLDER_CONTENT_PROCESSOR = new BatchJobType("dropFolder.DropFolderContentProcessor");
 		public static readonly BatchJobType DROP_FOLDER_WATCHER = new BatchJobType("dropFolder.DropFolderWatcher");
 		public static readonly BatchJobType EVENT_NOTIFICATION_HANDLER = new BatchJobType("eventNotification.EventNotificationHandler");
@@ -47,6 +47,7 @@ namespace Kaltura.Enums
 		public static readonly BatchJobType INDEX_TAGS = new BatchJobType("tagSearch.IndexTagsByPrivacyContext");
 		public static readonly BatchJobType TAG_RESOLVE = new BatchJobType("tagSearch.TagResolve");
 		public static readonly BatchJobType VIRUS_SCAN = new BatchJobType("virusScan.VirusScan");
+		public static readonly BatchJobType WIDEVINE_REPOSITORY_SYNC = new BatchJobType("widevine.WidevineRepositorySync");
 		public static readonly BatchJobType IMPORT = new BatchJobType("1");
 		public static readonly BatchJobType DELETE = new BatchJobType("2");
 		public static readonly BatchJobType FLATTEN = new BatchJobType("3");

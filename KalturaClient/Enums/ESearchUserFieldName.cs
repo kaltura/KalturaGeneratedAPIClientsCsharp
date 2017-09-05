@@ -27,15 +27,20 @@
 // ===================================================================================================
 namespace Kaltura.Enums
 {
-	public sealed class EventNotificationTemplateType : StringEnum
+	public sealed class ESearchUserFieldName : StringEnum
 	{
-		public static readonly EventNotificationTemplateType BPM_ABORT = new EventNotificationTemplateType("businessProcessNotification.BusinessProcessAbort");
-		public static readonly EventNotificationTemplateType BPM_SIGNAL = new EventNotificationTemplateType("businessProcessNotification.BusinessProcessSignal");
-		public static readonly EventNotificationTemplateType BPM_START = new EventNotificationTemplateType("businessProcessNotification.BusinessProcessStart");
-		public static readonly EventNotificationTemplateType EMAIL = new EventNotificationTemplateType("emailNotification.Email");
-		public static readonly EventNotificationTemplateType HTTP = new EventNotificationTemplateType("httpNotification.Http");
-		public static readonly EventNotificationTemplateType PUSH = new EventNotificationTemplateType("pushNotification.Push");
+		public static readonly ESearchUserFieldName USER_CREATED_AT = new ESearchUserFieldName("created_at");
+		public static readonly ESearchUserFieldName USER_EMAIL = new ESearchUserFieldName("email");
+		public static readonly ESearchUserFieldName USER_FIRST_NAME = new ESearchUserFieldName("first_name");
+		public static readonly ESearchUserFieldName USER_GROUP_IDS = new ESearchUserFieldName("group_ids");
+		public static readonly ESearchUserFieldName USER_TYPE = new ESearchUserFieldName("kuser_type");
+		public static readonly ESearchUserFieldName USER_LAST_NAME = new ESearchUserFieldName("last_name");
+		public static readonly ESearchUserFieldName USER_PERMISSION_NAMES = new ESearchUserFieldName("permission_names");
+		public static readonly ESearchUserFieldName USER_ROLE_IDS = new ESearchUserFieldName("role_ids");
+		public static readonly ESearchUserFieldName USER_SCREEN_NAME = new ESearchUserFieldName("screen_name");
+		public static readonly ESearchUserFieldName USER_TAGS = new ESearchUserFieldName("tags");
+		public static readonly ESearchUserFieldName USER_UPDATED_AT = new ESearchUserFieldName("updated_at");
 
-		private EventNotificationTemplateType(string name) : base(name) { }
+		private ESearchUserFieldName(string name) : base(name) { }
 	}
 }

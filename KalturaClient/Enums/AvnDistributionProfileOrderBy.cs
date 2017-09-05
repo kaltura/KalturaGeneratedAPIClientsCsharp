@@ -27,15 +27,13 @@
 // ===================================================================================================
 namespace Kaltura.Enums
 {
-	public sealed class EventNotificationTemplateType : StringEnum
+	public sealed class AvnDistributionProfileOrderBy : StringEnum
 	{
-		public static readonly EventNotificationTemplateType BPM_ABORT = new EventNotificationTemplateType("businessProcessNotification.BusinessProcessAbort");
-		public static readonly EventNotificationTemplateType BPM_SIGNAL = new EventNotificationTemplateType("businessProcessNotification.BusinessProcessSignal");
-		public static readonly EventNotificationTemplateType BPM_START = new EventNotificationTemplateType("businessProcessNotification.BusinessProcessStart");
-		public static readonly EventNotificationTemplateType EMAIL = new EventNotificationTemplateType("emailNotification.Email");
-		public static readonly EventNotificationTemplateType HTTP = new EventNotificationTemplateType("httpNotification.Http");
-		public static readonly EventNotificationTemplateType PUSH = new EventNotificationTemplateType("pushNotification.Push");
+		public static readonly AvnDistributionProfileOrderBy CREATED_AT_ASC = new AvnDistributionProfileOrderBy("+createdAt");
+		public static readonly AvnDistributionProfileOrderBy UPDATED_AT_ASC = new AvnDistributionProfileOrderBy("+updatedAt");
+		public static readonly AvnDistributionProfileOrderBy CREATED_AT_DESC = new AvnDistributionProfileOrderBy("-createdAt");
+		public static readonly AvnDistributionProfileOrderBy UPDATED_AT_DESC = new AvnDistributionProfileOrderBy("-updatedAt");
 
-		private EventNotificationTemplateType(string name) : base(name) { }
+		private AvnDistributionProfileOrderBy(string name) : base(name) { }
 	}
 }

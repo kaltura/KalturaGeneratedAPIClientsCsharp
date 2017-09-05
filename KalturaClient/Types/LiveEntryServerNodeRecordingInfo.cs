@@ -38,11 +38,13 @@ namespace Kaltura.Types
 		#region Constants
 		public const string RECORDED_ENTRY_ID = "recordedEntryId";
 		public const string DURATION = "duration";
+		public const string RECORDING_STATUS = "recordingStatus";
 		#endregion
 
 		#region Private Fields
 		private string _RecordedEntryId = null;
 		private int _Duration = Int32.MinValue;
+		private EntryServerNodeRecordingStatus _RecordingStatus = (EntryServerNodeRecordingStatus)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -64,6 +66,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("Duration");
 			}
 		}
+		public EntryServerNodeRecordingStatus RecordingStatus
+		{
+			get { return _RecordingStatus; }
+			set 
+			{ 
+				_RecordingStatus = value;
+				OnPropertyChanged("RecordingStatus");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -83,6 +94,9 @@ namespace Kaltura.Types
 					case "duration":
 						this._Duration = ParseInt(propertyNode.InnerText);
 						continue;
+					case "recordingStatus":
+						this._RecordingStatus = (EntryServerNodeRecordingStatus)ParseEnum(typeof(EntryServerNodeRecordingStatus), propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -96,6 +110,7 @@ namespace Kaltura.Types
 				kparams.AddReplace("objectType", "KalturaLiveEntryServerNodeRecordingInfo");
 			kparams.AddIfNotNull("recordedEntryId", this._RecordedEntryId);
 			kparams.AddIfNotNull("duration", this._Duration);
+			kparams.AddIfNotNull("recordingStatus", this._RecordingStatus);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -106,6 +121,8 @@ namespace Kaltura.Types
 					return "RecordedEntryId";
 				case DURATION:
 					return "Duration";
+				case RECORDING_STATUS:
+					return "RecordingStatus";
 				default:
 					return base.getPropertyName(apiName);
 			}

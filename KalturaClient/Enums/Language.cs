@@ -373,7 +373,7 @@ namespace Kaltura.Enums
 		public static readonly Language NE = new Language("Nepali");
 		public static readonly Language NEW_ = new Language("Newari Nepal Bhasa");
 		public static readonly Language NIO = new Language("Nganasan");
-		public static readonly Language NCG = new Language("Nisga'a");
+		public static readonly Language NCG = new Language("Nisgaa");
 		public static readonly Language NIU = new Language("Niuean");
 		public static readonly Language NOG = new Language("Nogai");
 		public static readonly Language NON = new Language("Norse Old");
@@ -417,7 +417,7 @@ namespace Kaltura.Enums
 		public static readonly Language PRG = new Language("Prussian");
 		public static readonly Language FUC = new Language("Pulaar");
 		public static readonly Language PA = new Language("Punjabi");
-		public static readonly Language QXQ = new Language("Qashqa'i");
+		public static readonly Language QXQ = new Language("Qashqai");
 		public static readonly Language ALC = new Language("Qawasqar");
 		public static readonly Language QU = new Language("Quechua");
 		public static readonly Language QUC = new Language("Quich Central");
@@ -521,7 +521,7 @@ namespace Kaltura.Enums
 		public static readonly Language TI = new Language("Tigrinya");
 		public static readonly Language TLI = new Language("Tlingit");
 		public static readonly Language TCX = new Language("Toda");
-		public static readonly Language OOD = new Language("Tohono O'odham");
+		public static readonly Language OOD = new Language("Tohono Oodham");
 		public static readonly Language TPI = new Language("Tok Pisin");
 		public static readonly Language TO = new Language("Tonga");
 		public static readonly Language TOG = new Language("Tonga (Nyasa)");

@@ -30,9 +30,6 @@ namespace Kaltura.Enums
 	public sealed class VirusScanEngineType : StringEnum
 	{
 		public static readonly VirusScanEngineType CLAMAV_SCAN_ENGINE = new VirusScanEngineType("clamAVScanEngine.ClamAV");
-		public static readonly VirusScanEngineType SYMANTEC_SCAN_DIRECT_ENGINE = new VirusScanEngineType("symantecScanEngine.SymantecScanDirectEngine");
-		public static readonly VirusScanEngineType SYMANTEC_SCAN_ENGINE = new VirusScanEngineType("symantecScanEngine.SymantecScanEngine");
-		public static readonly VirusScanEngineType SYMANTEC_SCAN_JAVA_ENGINE = new VirusScanEngineType("symantecScanEngine.SymantecScanJavaEngine");
 
 		private VirusScanEngineType(string name) : base(name) { }
 	}

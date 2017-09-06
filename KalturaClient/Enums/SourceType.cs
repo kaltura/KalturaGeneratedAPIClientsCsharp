@@ -29,7 +29,6 @@ namespace Kaltura.Enums
 {
 	public sealed class SourceType : StringEnum
 	{
-		public static readonly SourceType LIMELIGHT_LIVE = new SourceType("limeLight.LIVE_STREAM");
 		public static readonly SourceType VELOCIX_LIVE = new SourceType("velocix.VELOCIX_LIVE");
 		public static readonly SourceType FILE = new SourceType("1");
 		public static readonly SourceType WEBCAM = new SourceType("2");

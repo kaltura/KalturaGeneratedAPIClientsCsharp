@@ -68,6 +68,7 @@ namespace Kaltura.Enums
 		public static readonly DeliveryProfileType VOD_PACKAGER_HDS = new DeliveryProfileType("63");
 		public static readonly DeliveryProfileType VOD_PACKAGER_MSS = new DeliveryProfileType("67");
 		public static readonly DeliveryProfileType VOD_PACKAGER_DASH = new DeliveryProfileType("68");
+		public static readonly DeliveryProfileType VOD_PACKAGER_HLS_MANIFEST = new DeliveryProfileType("69");
 		public static readonly DeliveryProfileType LIVE_HLS = new DeliveryProfileType("1001");
 		public static readonly DeliveryProfileType LIVE_HDS = new DeliveryProfileType("1002");
 		public static readonly DeliveryProfileType LIVE_DASH = new DeliveryProfileType("1003");

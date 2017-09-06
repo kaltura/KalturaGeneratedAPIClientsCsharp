@@ -424,119 +424,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class EventNotificationTemplateRegisterRequestBuilder : RequestBuilder<PushNotificationData>
-	{
-		#region Constants
-		public const string NOTIFICATION_TEMPLATE_SYSTEM_NAME = "notificationTemplateSystemName";
-		public const string PUSH_NOTIFICATION_PARAMS = "pushNotificationParams";
-		#endregion
-
-		public string NotificationTemplateSystemName
-		{
-			set;
-			get;
-		}
-		public PushNotificationParams PushNotificationParams
-		{
-			set;
-			get;
-		}
-
-		public EventNotificationTemplateRegisterRequestBuilder()
-			: base("eventnotification_eventnotificationtemplate", "register")
-		{
-		}
-
-		public EventNotificationTemplateRegisterRequestBuilder(string notificationTemplateSystemName, PushNotificationParams pushNotificationParams)
-			: this()
-		{
-			this.NotificationTemplateSystemName = notificationTemplateSystemName;
-			this.PushNotificationParams = pushNotificationParams;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("notificationTemplateSystemName"))
-				kparams.AddIfNotNull("notificationTemplateSystemName", NotificationTemplateSystemName);
-			if (!isMapped("pushNotificationParams"))
-				kparams.AddIfNotNull("pushNotificationParams", PushNotificationParams);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return ObjectFactory.Create<PushNotificationData>(result);
-		}
-	}
-
-	public class EventNotificationTemplateSendCommandRequestBuilder : RequestBuilder<object>
-	{
-		#region Constants
-		public const string NOTIFICATION_TEMPLATE_SYSTEM_NAME = "notificationTemplateSystemName";
-		public const string PUSH_NOTIFICATION_PARAMS = "pushNotificationParams";
-		public const string COMMAND = "command";
-		#endregion
-
-		public string NotificationTemplateSystemName
-		{
-			set;
-			get;
-		}
-		public PushNotificationParams PushNotificationParams
-		{
-			set;
-			get;
-		}
-		public PushNotificationCommandType Command
-		{
-			set;
-			get;
-		}
-
-		public EventNotificationTemplateSendCommandRequestBuilder()
-			: base("eventnotification_eventnotificationtemplate", "sendCommand")
-		{
-		}
-
-		public EventNotificationTemplateSendCommandRequestBuilder(string notificationTemplateSystemName, PushNotificationParams pushNotificationParams, PushNotificationCommandType command)
-			: this()
-		{
-			this.NotificationTemplateSystemName = notificationTemplateSystemName;
-			this.PushNotificationParams = pushNotificationParams;
-			this.Command = command;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("notificationTemplateSystemName"))
-				kparams.AddIfNotNull("notificationTemplateSystemName", NotificationTemplateSystemName);
-			if (!isMapped("pushNotificationParams"))
-				kparams.AddIfNotNull("pushNotificationParams", PushNotificationParams);
-			if (!isMapped("command"))
-				kparams.AddIfNotNull("command", Command);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-	}
-
 	public class EventNotificationTemplateUpdateRequestBuilder : RequestBuilder<EventNotificationTemplate>
 	{
 		#region Constants
@@ -686,16 +573,6 @@ namespace Kaltura.Services
 		public static EventNotificationTemplateListTemplatesRequestBuilder ListTemplates(EventNotificationTemplateFilter filter = null, FilterPager pager = null)
 		{
 			return new EventNotificationTemplateListTemplatesRequestBuilder(filter, pager);
-		}
-
-		public static EventNotificationTemplateRegisterRequestBuilder Register(string notificationTemplateSystemName, PushNotificationParams pushNotificationParams)
-		{
-			return new EventNotificationTemplateRegisterRequestBuilder(notificationTemplateSystemName, pushNotificationParams);
-		}
-
-		public static EventNotificationTemplateSendCommandRequestBuilder SendCommand(string notificationTemplateSystemName, PushNotificationParams pushNotificationParams, PushNotificationCommandType command)
-		{
-			return new EventNotificationTemplateSendCommandRequestBuilder(notificationTemplateSystemName, pushNotificationParams, command);
 		}
 
 		public static EventNotificationTemplateUpdateRequestBuilder Update(int id, EventNotificationTemplate eventNotificationTemplate)

@@ -167,9 +167,9 @@ namespace Kaltura.Enums
 		public static readonly Language EEE = new Language("E");
 		public static readonly Language EGL = new Language("Emilian");
 		public static readonly Language EN = new Language("English");
-		public static readonly Language ENM = new Language("English	 Middle (1100-1500)");
 		public static readonly Language EN_US = new Language("English (American)");
 		public static readonly Language EN_GB = new Language("English (British)");
+		public static readonly Language ENM = new Language("English Middle (1100-1500)");
 		public static readonly Language MYV = new Language("Erzya");
 		public static readonly Language EO = new Language("Esperanto");
 		public static readonly Language ET = new Language("Estonian");
@@ -377,7 +377,7 @@ namespace Kaltura.Enums
 		public static readonly Language NIU = new Language("Niuean");
 		public static readonly Language NOG = new Language("Nogai");
 		public static readonly Language NON = new Language("Norse Old");
-		public static readonly Language NSO = new Language("Northern Sotho	 Pedi Sepedi");
+		public static readonly Language NSO = new Language("Northern Sotho Pedi Sepedi");
 		public static readonly Language NO = new Language("Norwegian");
 		public static readonly Language NOV = new Language("Novial");
 		public static readonly Language NYM = new Language("Nyamwezi");
@@ -505,9 +505,9 @@ namespace Kaltura.Enums
 		public static readonly Language TLY = new Language("Talysh");
 		public static readonly Language TTQ = new Language("Tamajaq Tawallammat");
 		public static readonly Language TAQ = new Language("Tamasheq");
-		public static readonly Language TZM = new Language("Tamazight	 Central Atlas");
+		public static readonly Language TZM = new Language("Tamazight Central Atlas");
 		public static readonly Language TA = new Language("Tamil");
-		public static readonly Language TAR = new Language("Tarahumara	 Central");
+		public static readonly Language TAR = new Language("Tarahumara Central");
 		public static readonly Language TTT = new Language("Tat Muslim");
 		public static readonly Language TT = new Language("Tatar");
 		public static readonly Language TE = new Language("Telugu");
@@ -534,7 +534,7 @@ namespace Kaltura.Enums
 		public static readonly Language TPN = new Language("Tupinamb");
 		public static readonly Language TUV = new Language("Turkana");
 		public static readonly Language TR = new Language("Turkish");
-		public static readonly Language OTA = new Language("Turkish	 Ottoman");
+		public static readonly Language OTA = new Language("Turkish Ottoman");
 		public static readonly Language TK = new Language("Turkmen");
 		public static readonly Language TUS = new Language("Tuscarora");
 		public static readonly Language TVL = new Language("Tuvalu");

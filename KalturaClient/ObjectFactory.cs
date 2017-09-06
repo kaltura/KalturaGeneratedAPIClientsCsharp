@@ -89,16 +89,12 @@ namespace Kaltura
 					return new ListResponse<AppToken>(xmlElement);
 				case "KalturaAttachmentAssetListResponse":
 					return new ListResponse<AttachmentAsset>(xmlElement);
-				case "KalturaAuditTrailListResponse":
-					return new ListResponse<AuditTrail>(xmlElement);
 				case "KalturaBaseEntryListResponse":
 					return new ListResponse<BaseEntry>(xmlElement);
 				case "KalturaBaseSyndicationFeedListResponse":
 					return new ListResponse<BaseSyndicationFeed>(xmlElement);
 				case "KalturaBulkUploadListResponse":
 					return new ListResponse<BulkUpload>(xmlElement);
-				case "KalturaBusinessProcessServerListResponse":
-					return new ListResponse<BusinessProcessServer>(xmlElement);
 				case "KalturaCaptionAssetItemListResponse":
 					return new ListResponse<CaptionAssetItem>(xmlElement);
 				case "KalturaCaptionAssetListResponse":
@@ -129,10 +125,6 @@ namespace Kaltura
 					return new ListResponse<DistributionProvider>(xmlElement);
 				case "KalturaDocumentListResponse":
 					return new ListResponse<DocumentEntry>(xmlElement);
-				case "KalturaDrmPolicyListResponse":
-					return new ListResponse<DrmPolicy>(xmlElement);
-				case "KalturaDrmProfileListResponse":
-					return new ListResponse<DrmProfile>(xmlElement);
 				case "KalturaDropFolderFileListResponse":
 					return new ListResponse<DropFolderFile>(xmlElement);
 				case "KalturaDropFolderListResponse":

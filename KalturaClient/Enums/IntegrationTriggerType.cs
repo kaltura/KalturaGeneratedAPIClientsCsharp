@@ -29,7 +29,6 @@ namespace Kaltura.Enums
 {
 	public sealed class IntegrationTriggerType : StringEnum
 	{
-		public static readonly IntegrationTriggerType BPM_EVENT_NOTIFICATION = new IntegrationTriggerType("bpmEventNotificationIntegration.BpmEventNotification");
 		public static readonly IntegrationTriggerType MANUAL = new IntegrationTriggerType("1");
 
 		private IntegrationTriggerType(string name) : base(name) { }

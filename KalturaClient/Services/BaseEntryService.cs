@@ -300,6 +300,7 @@ namespace Kaltura.Services
 		#region Constants
 		public const string ENTRY_ID = "entryId";
 		public const string CLONE_OPTIONS = "cloneOptions";
+		public const string SET_SOURCE_AS_ROOT_ENTRY_ID = "setSourceAsRootEntryId";
 		#endregion
 
 		public string EntryId
@@ -312,17 +313,23 @@ namespace Kaltura.Services
 			set;
 			get;
 		}
+		public bool SetSourceAsRootEntryId
+		{
+			set;
+			get;
+		}
 
 		public BaseEntryCloneRequestBuilder()
 			: base("baseentry", "clone")
 		{
 		}
 
-		public BaseEntryCloneRequestBuilder(string entryId, IList<BaseEntryCloneOptionItem> cloneOptions)
+		public BaseEntryCloneRequestBuilder(string entryId, IList<BaseEntryCloneOptionItem> cloneOptions, bool setSourceAsRootEntryId)
 			: this()
 		{
 			this.EntryId = entryId;
 			this.CloneOptions = cloneOptions;
+			this.SetSourceAsRootEntryId = setSourceAsRootEntryId;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -332,6 +339,8 @@ namespace Kaltura.Services
 				kparams.AddIfNotNull("entryId", EntryId);
 			if (!isMapped("cloneOptions"))
 				kparams.AddIfNotNull("cloneOptions", CloneOptions);
+			if (!isMapped("setSourceAsRootEntryId"))
+				kparams.AddIfNotNull("setSourceAsRootEntryId", SetSourceAsRootEntryId);
 			return kparams;
 		}
 
@@ -1386,9 +1395,9 @@ namespace Kaltura.Services
 			return new BaseEntryApproveRequestBuilder(entryId);
 		}
 
-		public static BaseEntryCloneRequestBuilder Clone(string entryId, IList<BaseEntryCloneOptionItem> cloneOptions = null)
+		public static BaseEntryCloneRequestBuilder Clone(string entryId, IList<BaseEntryCloneOptionItem> cloneOptions = null, bool setSourceAsRootEntryId = false)
 		{
-			return new BaseEntryCloneRequestBuilder(entryId, cloneOptions);
+			return new BaseEntryCloneRequestBuilder(entryId, cloneOptions, setSourceAsRootEntryId);
 		}
 
 		public static BaseEntryCountRequestBuilder Count(BaseEntryFilter filter = null)

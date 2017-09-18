@@ -43,14 +43,14 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Private Fields
-		private IDictionary<string, OptionalAnswer> _OptionalAnswers;
+		private IList<OptionalAnswer> _OptionalAnswers;
 		private string _Hint = null;
 		private string _Question = null;
 		private string _Explanation = null;
 		#endregion
 
 		#region Properties
-		public IDictionary<string, OptionalAnswer> OptionalAnswers
+		public IList<OptionalAnswer> OptionalAnswers
 		{
 			get { return _OptionalAnswers; }
 			set 
@@ -100,14 +100,10 @@ namespace Kaltura.Types
 				switch (propertyNode.Name)
 				{
 					case "optionalAnswers":
+						this._OptionalAnswers = new List<OptionalAnswer>();
+						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
-							string key;
-							this._OptionalAnswers = new Dictionary<string, OptionalAnswer>();
-							foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-							{
-								key = arrayNode["itemKey"].InnerText;;
-								this._OptionalAnswers[key] = ObjectFactory.Create<OptionalAnswer>(arrayNode);
-							}
+							this._OptionalAnswers.Add(ObjectFactory.Create<OptionalAnswer>(arrayNode));
 						}
 						continue;
 					case "hint":

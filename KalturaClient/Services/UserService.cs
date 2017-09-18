@@ -608,6 +608,49 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class UserLoginByKsRequestBuilder : RequestBuilder<SessionResponse>
+	{
+		#region Constants
+		public const string REQUESTED_PARTNER_ID = "requestedPartnerId";
+		#endregion
+
+		public int RequestedPartnerId
+		{
+			set;
+			get;
+		}
+
+		public UserLoginByKsRequestBuilder()
+			: base("user", "loginByKs")
+		{
+		}
+
+		public UserLoginByKsRequestBuilder(int requestedPartnerId)
+			: this()
+		{
+			this.RequestedPartnerId = requestedPartnerId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("requestedPartnerId"))
+				kparams.AddIfNotNull("requestedPartnerId", RequestedPartnerId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<SessionResponse>(result);
+		}
+	}
+
 	public class UserLoginByLoginIdRequestBuilder : RequestBuilder<string>
 	{
 		#region Constants
@@ -1034,6 +1077,11 @@ namespace Kaltura.Services
 		public static UserLoginRequestBuilder Login(int partnerId, string userId, string password, int expiry = 86400, string privileges = "*")
 		{
 			return new UserLoginRequestBuilder(partnerId, userId, password, expiry, privileges);
+		}
+
+		public static UserLoginByKsRequestBuilder LoginByKs(int requestedPartnerId)
+		{
+			return new UserLoginByKsRequestBuilder(requestedPartnerId);
 		}
 
 		public static UserLoginByLoginIdRequestBuilder LoginByLoginId(string loginId, string password, int partnerId = Int32.MinValue, int expiry = 86400, string privileges = "*", string otp = null)

@@ -45,6 +45,7 @@ namespace Kaltura.Types
 		public const string UPLOADED_FILE_SIZE = "uploadedFileSize";
 		public const string CREATED_AT = "createdAt";
 		public const string UPDATED_AT = "updatedAt";
+		public const string UPLOAD_URL = "uploadUrl";
 		#endregion
 
 		#region Private Fields
@@ -57,6 +58,7 @@ namespace Kaltura.Types
 		private float _UploadedFileSize = Single.MinValue;
 		private int _CreatedAt = Int32.MinValue;
 		private int _UpdatedAt = Int32.MinValue;
+		private string _UploadUrl = null;
 		#endregion
 
 		#region Properties
@@ -106,6 +108,10 @@ namespace Kaltura.Types
 		{
 			get { return _UpdatedAt; }
 		}
+		public string UploadUrl
+		{
+			get { return _UploadUrl; }
+		}
 		#endregion
 
 		#region CTor
@@ -146,6 +152,9 @@ namespace Kaltura.Types
 					case "updatedAt":
 						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
+					case "uploadUrl":
+						this._UploadUrl = propertyNode.InnerText;
+						continue;
 				}
 			}
 		}
@@ -166,6 +175,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("uploadedFileSize", this._UploadedFileSize);
 			kparams.AddIfNotNull("createdAt", this._CreatedAt);
 			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
+			kparams.AddIfNotNull("uploadUrl", this._UploadUrl);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -190,6 +200,8 @@ namespace Kaltura.Types
 					return "CreatedAt";
 				case UPDATED_AT:
 					return "UpdatedAt";
+				case UPLOAD_URL:
+					return "UploadUrl";
 				default:
 					return base.getPropertyName(apiName);
 			}

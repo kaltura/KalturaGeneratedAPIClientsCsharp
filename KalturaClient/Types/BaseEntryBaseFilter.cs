@@ -108,6 +108,8 @@ namespace Kaltura.Types
 		public const string ENTITLED_USERS_EDIT_MATCH_OR = "entitledUsersEditMatchOr";
 		public const string ENTITLED_USERS_PUBLISH_MATCH_AND = "entitledUsersPublishMatchAnd";
 		public const string ENTITLED_USERS_PUBLISH_MATCH_OR = "entitledUsersPublishMatchOr";
+		public const string ENTITLED_USERS_VIEW_MATCH_AND = "entitledUsersViewMatchAnd";
+		public const string ENTITLED_USERS_VIEW_MATCH_OR = "entitledUsersViewMatchOr";
 		public const string TAGS_NAME_MULTI_LIKE_OR = "tagsNameMultiLikeOr";
 		public const string TAGS_ADMIN_TAGS_MULTI_LIKE_OR = "tagsAdminTagsMultiLikeOr";
 		public const string TAGS_ADMIN_TAGS_NAME_MULTI_LIKE_OR = "tagsAdminTagsNameMultiLikeOr";
@@ -189,6 +191,8 @@ namespace Kaltura.Types
 		private string _EntitledUsersEditMatchOr = null;
 		private string _EntitledUsersPublishMatchAnd = null;
 		private string _EntitledUsersPublishMatchOr = null;
+		private string _EntitledUsersViewMatchAnd = null;
+		private string _EntitledUsersViewMatchOr = null;
 		private string _TagsNameMultiLikeOr = null;
 		private string _TagsAdminTagsMultiLikeOr = null;
 		private string _TagsAdminTagsNameMultiLikeOr = null;
@@ -846,6 +850,24 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntitledUsersPublishMatchOr");
 			}
 		}
+		public string EntitledUsersViewMatchAnd
+		{
+			get { return _EntitledUsersViewMatchAnd; }
+			set 
+			{ 
+				_EntitledUsersViewMatchAnd = value;
+				OnPropertyChanged("EntitledUsersViewMatchAnd");
+			}
+		}
+		public string EntitledUsersViewMatchOr
+		{
+			get { return _EntitledUsersViewMatchOr; }
+			set 
+			{ 
+				_EntitledUsersViewMatchOr = value;
+				OnPropertyChanged("EntitledUsersViewMatchOr");
+			}
+		}
 		public string TagsNameMultiLikeOr
 		{
 			get { return _TagsNameMultiLikeOr; }
@@ -1129,6 +1151,12 @@ namespace Kaltura.Types
 					case "entitledUsersPublishMatchOr":
 						this._EntitledUsersPublishMatchOr = propertyNode.InnerText;
 						continue;
+					case "entitledUsersViewMatchAnd":
+						this._EntitledUsersViewMatchAnd = propertyNode.InnerText;
+						continue;
+					case "entitledUsersViewMatchOr":
+						this._EntitledUsersViewMatchOr = propertyNode.InnerText;
+						continue;
 					case "tagsNameMultiLikeOr":
 						this._TagsNameMultiLikeOr = propertyNode.InnerText;
 						continue;
@@ -1230,6 +1258,8 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("entitledUsersEditMatchOr", this._EntitledUsersEditMatchOr);
 			kparams.AddIfNotNull("entitledUsersPublishMatchAnd", this._EntitledUsersPublishMatchAnd);
 			kparams.AddIfNotNull("entitledUsersPublishMatchOr", this._EntitledUsersPublishMatchOr);
+			kparams.AddIfNotNull("entitledUsersViewMatchAnd", this._EntitledUsersViewMatchAnd);
+			kparams.AddIfNotNull("entitledUsersViewMatchOr", this._EntitledUsersViewMatchOr);
 			kparams.AddIfNotNull("tagsNameMultiLikeOr", this._TagsNameMultiLikeOr);
 			kparams.AddIfNotNull("tagsAdminTagsMultiLikeOr", this._TagsAdminTagsMultiLikeOr);
 			kparams.AddIfNotNull("tagsAdminTagsNameMultiLikeOr", this._TagsAdminTagsNameMultiLikeOr);
@@ -1386,6 +1416,10 @@ namespace Kaltura.Types
 					return "EntitledUsersPublishMatchAnd";
 				case ENTITLED_USERS_PUBLISH_MATCH_OR:
 					return "EntitledUsersPublishMatchOr";
+				case ENTITLED_USERS_VIEW_MATCH_AND:
+					return "EntitledUsersViewMatchAnd";
+				case ENTITLED_USERS_VIEW_MATCH_OR:
+					return "EntitledUsersViewMatchOr";
 				case TAGS_NAME_MULTI_LIKE_OR:
 					return "TagsNameMultiLikeOr";
 				case TAGS_ADMIN_TAGS_MULTI_LIKE_OR:

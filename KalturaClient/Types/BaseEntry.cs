@@ -77,6 +77,7 @@ namespace Kaltura.Types
 		public const string OPERATION_ATTRIBUTES = "operationAttributes";
 		public const string ENTITLED_USERS_EDIT = "entitledUsersEdit";
 		public const string ENTITLED_USERS_PUBLISH = "entitledUsersPublish";
+		public const string ENTITLED_USERS_VIEW = "entitledUsersView";
 		public const string CAPABILITIES = "capabilities";
 		public const string TEMPLATE_ENTRY_ID = "templateEntryId";
 		public const string DISPLAY_IN_SEARCH = "displayInSearch";
@@ -124,6 +125,7 @@ namespace Kaltura.Types
 		private IList<OperationAttributes> _OperationAttributes;
 		private string _EntitledUsersEdit = null;
 		private string _EntitledUsersPublish = null;
+		private string _EntitledUsersView = null;
 		private string _Capabilities = null;
 		private string _TemplateEntryId = null;
 		private EntryDisplayInSearchType _DisplayInSearch = (EntryDisplayInSearchType)Int32.MinValue;
@@ -409,6 +411,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntitledUsersPublish");
 			}
 		}
+		public string EntitledUsersView
+		{
+			get { return _EntitledUsersView; }
+			set 
+			{ 
+				_EntitledUsersView = value;
+				OnPropertyChanged("EntitledUsersView");
+			}
+		}
 		public string Capabilities
 		{
 			get { return _Capabilities; }
@@ -571,6 +582,9 @@ namespace Kaltura.Types
 					case "entitledUsersPublish":
 						this._EntitledUsersPublish = propertyNode.InnerText;
 						continue;
+					case "entitledUsersView":
+						this._EntitledUsersView = propertyNode.InnerText;
+						continue;
 					case "capabilities":
 						this._Capabilities = propertyNode.InnerText;
 						continue;
@@ -632,6 +646,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("operationAttributes", this._OperationAttributes);
 			kparams.AddIfNotNull("entitledUsersEdit", this._EntitledUsersEdit);
 			kparams.AddIfNotNull("entitledUsersPublish", this._EntitledUsersPublish);
+			kparams.AddIfNotNull("entitledUsersView", this._EntitledUsersView);
 			kparams.AddIfNotNull("capabilities", this._Capabilities);
 			kparams.AddIfNotNull("templateEntryId", this._TemplateEntryId);
 			kparams.AddIfNotNull("displayInSearch", this._DisplayInSearch);
@@ -723,6 +738,8 @@ namespace Kaltura.Types
 					return "EntitledUsersEdit";
 				case ENTITLED_USERS_PUBLISH:
 					return "EntitledUsersPublish";
+				case ENTITLED_USERS_VIEW:
+					return "EntitledUsersView";
 				case CAPABILITIES:
 					return "Capabilities";
 				case TEMPLATE_ENTRY_ID:

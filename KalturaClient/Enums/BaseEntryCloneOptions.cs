@@ -37,6 +37,8 @@ namespace Kaltura.Enums
 		public static readonly BaseEntryCloneOptions CATEGORIES = new BaseEntryCloneOptions("2");
 		public static readonly BaseEntryCloneOptions CHILD_ENTRIES = new BaseEntryCloneOptions("3");
 		public static readonly BaseEntryCloneOptions ACCESS_CONTROL = new BaseEntryCloneOptions("4");
+		public static readonly BaseEntryCloneOptions METADATA = new BaseEntryCloneOptions("5");
+		public static readonly BaseEntryCloneOptions FLAVORS = new BaseEntryCloneOptions("6");
 
 		private BaseEntryCloneOptions(string name) : base(name) { }
 	}

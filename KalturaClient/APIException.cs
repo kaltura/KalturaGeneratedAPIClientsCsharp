@@ -331,6 +331,7 @@ namespace Kaltura
 		public static string ERROR_KSOHW_ROLLBACK = "ERROR_KSOHW_ROLLBACK";
 		public static string ENTRY_ID_NOT_FOUND = "ENTRY_ID_NOT_FOUND";
 		public static string SUPPORTED_FLAVOR_NOT_EXIST = "SUPPORTED_FLAVOR_NOT_EXIST";
+		public static string FLAVOR_IS_NOT_SUPPORTED = "FLAVOR_IS_NOT_SUPPORTED";
 		public static string ENTRIES_AMOUNT_EXCEEDED = "ENTRIES_AMOUNT_EXCEEDED";
 		public static string INVALID_ENTRY_IDS = "INVALID_ENTRY_IDS";
 		public static string INVALID_ENTRY = "INVALID_ENTRY";

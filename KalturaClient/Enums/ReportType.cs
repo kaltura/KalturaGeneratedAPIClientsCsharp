@@ -41,7 +41,7 @@ namespace Kaltura.Enums
 		public static readonly ReportType TOP_SYNDICATION = new ReportType("6");
 		public static readonly ReportType CONTENT_CONTRIBUTIONS = new ReportType("7");
 		public static readonly ReportType USER_ENGAGEMENT = new ReportType("11");
-		public static readonly ReportType SPEFICIC_USER_ENGAGEMENT = new ReportType("12");
+		public static readonly ReportType SPECIFIC_USER_ENGAGEMENT = new ReportType("12");
 		public static readonly ReportType USER_TOP_CONTENT = new ReportType("13");
 		public static readonly ReportType USER_CONTENT_DROPOFF = new ReportType("14");
 		public static readonly ReportType USER_CONTENT_INTERACTIONS = new ReportType("15");
@@ -51,7 +51,7 @@ namespace Kaltura.Enums
 		public static readonly ReportType VAR_USAGE = new ReportType("19");
 		public static readonly ReportType TOP_CREATORS = new ReportType("20");
 		public static readonly ReportType PLATFORMS = new ReportType("21");
-		public static readonly ReportType OPERATION_SYSTEM = new ReportType("22");
+		public static readonly ReportType OPERATING_SYSTEM = new ReportType("22");
 		public static readonly ReportType BROWSERS = new ReportType("23");
 		public static readonly ReportType LIVE = new ReportType("24");
 		public static readonly ReportType TOP_PLAYBACK_CONTEXT = new ReportType("25");

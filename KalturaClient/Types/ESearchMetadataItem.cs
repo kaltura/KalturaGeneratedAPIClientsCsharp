@@ -38,11 +38,13 @@ namespace Kaltura.Types
 		#region Constants
 		public const string XPATH = "xpath";
 		public const string METADATA_PROFILE_ID = "metadataProfileId";
+		public const string METADATA_FIELD_ID = "metadataFieldId";
 		#endregion
 
 		#region Private Fields
 		private string _Xpath = null;
 		private int _MetadataProfileId = Int32.MinValue;
+		private int _MetadataFieldId = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -64,6 +66,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataProfileId");
 			}
 		}
+		public int MetadataFieldId
+		{
+			get { return _MetadataFieldId; }
+			set 
+			{ 
+				_MetadataFieldId = value;
+				OnPropertyChanged("MetadataFieldId");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -83,6 +94,9 @@ namespace Kaltura.Types
 					case "metadataProfileId":
 						this._MetadataProfileId = ParseInt(propertyNode.InnerText);
 						continue;
+					case "metadataFieldId":
+						this._MetadataFieldId = ParseInt(propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -96,6 +110,7 @@ namespace Kaltura.Types
 				kparams.AddReplace("objectType", "KalturaESearchMetadataItem");
 			kparams.AddIfNotNull("xpath", this._Xpath);
 			kparams.AddIfNotNull("metadataProfileId", this._MetadataProfileId);
+			kparams.AddIfNotNull("metadataFieldId", this._MetadataFieldId);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -106,6 +121,8 @@ namespace Kaltura.Types
 					return "Xpath";
 				case METADATA_PROFILE_ID:
 					return "MetadataProfileId";
+				case METADATA_FIELD_ID:
+					return "MetadataFieldId";
 				default:
 					return base.getPropertyName(apiName);
 			}

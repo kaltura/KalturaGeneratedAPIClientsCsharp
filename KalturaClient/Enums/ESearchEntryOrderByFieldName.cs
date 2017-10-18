@@ -31,8 +31,11 @@ namespace Kaltura.Enums
 	{
 		public static readonly ESearchEntryOrderByFieldName ENTRY_CREATED_AT = new ESearchEntryOrderByFieldName("created_at");
 		public static readonly ESearchEntryOrderByFieldName ENTRY_END_DATE = new ESearchEntryOrderByFieldName("end_date");
+		public static readonly ESearchEntryOrderByFieldName ENTRY_NAME = new ESearchEntryOrderByFieldName("name.keyword");
 		public static readonly ESearchEntryOrderByFieldName ENTRY_START_DATE = new ESearchEntryOrderByFieldName("start_date");
 		public static readonly ESearchEntryOrderByFieldName ENTRY_UPDATED_AT = new ESearchEntryOrderByFieldName("updated_at");
+		public static readonly ESearchEntryOrderByFieldName ENTRY_VIEWS = new ESearchEntryOrderByFieldName("views");
+		public static readonly ESearchEntryOrderByFieldName ENTRY_VOTES = new ESearchEntryOrderByFieldName("votes");
 
 		private ESearchEntryOrderByFieldName(string name) : base(name) { }
 	}

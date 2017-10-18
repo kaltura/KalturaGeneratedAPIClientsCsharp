@@ -60,6 +60,8 @@ namespace Kaltura.Enums
 		public static readonly ESearchEntryFieldName ENTRY_TAGS = new ESearchEntryFieldName("tags");
 		public static readonly ESearchEntryFieldName ENTRY_TEMPLATE_ENTRY_ID = new ESearchEntryFieldName("template_entry_id");
 		public static readonly ESearchEntryFieldName ENTRY_UPDATED_AT = new ESearchEntryFieldName("updated_at");
+		public static readonly ESearchEntryFieldName ENTRY_VIEWS = new ESearchEntryFieldName("views");
+		public static readonly ESearchEntryFieldName ENTRY_VOTES = new ESearchEntryFieldName("votes");
 
 		private ESearchEntryFieldName(string name) : base(name) { }
 	}

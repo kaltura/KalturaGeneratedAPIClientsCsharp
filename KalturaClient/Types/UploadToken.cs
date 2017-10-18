@@ -46,6 +46,7 @@ namespace Kaltura.Types
 		public const string CREATED_AT = "createdAt";
 		public const string UPDATED_AT = "updatedAt";
 		public const string UPLOAD_URL = "uploadUrl";
+		public const string AUTO_FINALIZE = "autoFinalize";
 		#endregion
 
 		#region Private Fields
@@ -59,6 +60,7 @@ namespace Kaltura.Types
 		private int _CreatedAt = Int32.MinValue;
 		private int _UpdatedAt = Int32.MinValue;
 		private string _UploadUrl = null;
+		private NullableBoolean _AutoFinalize = (NullableBoolean)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -112,6 +114,15 @@ namespace Kaltura.Types
 		{
 			get { return _UploadUrl; }
 		}
+		public NullableBoolean AutoFinalize
+		{
+			get { return _AutoFinalize; }
+			set 
+			{ 
+				_AutoFinalize = value;
+				OnPropertyChanged("AutoFinalize");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -155,6 +166,9 @@ namespace Kaltura.Types
 					case "uploadUrl":
 						this._UploadUrl = propertyNode.InnerText;
 						continue;
+					case "autoFinalize":
+						this._AutoFinalize = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -176,6 +190,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("createdAt", this._CreatedAt);
 			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
 			kparams.AddIfNotNull("uploadUrl", this._UploadUrl);
+			kparams.AddIfNotNull("autoFinalize", this._AutoFinalize);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -202,6 +217,8 @@ namespace Kaltura.Types
 					return "UpdatedAt";
 				case UPLOAD_URL:
 					return "UploadUrl";
+				case AUTO_FINALIZE:
+					return "AutoFinalize";
 				default:
 					return base.getPropertyName(apiName);
 			}

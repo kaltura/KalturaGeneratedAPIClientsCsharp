@@ -212,7 +212,9 @@ namespace Kaltura.Enums
 		public static readonly Language GU = new Language("Gujarati");
 		public static readonly Language GWI = new Language("Gwichin");
 		public static readonly Language HAI = new Language("Haida");
+		public static readonly Language HNN = new Language("Hainanese");
 		public static readonly Language HAS = new Language("Haisla");
+		public static readonly Language HAK = new Language("Hakka");
 		public static readonly Language HUR = new Language("Halkomelem");
 		public static readonly Language HAA = new Language("Han");
 		public static readonly Language HNI = new Language("Hani");
@@ -225,6 +227,7 @@ namespace Kaltura.Enums
 		public static readonly Language HIL = new Language("Hiligaynon");
 		public static readonly Language HI = new Language("Hindi");
 		public static readonly Language HMN = new Language("Hmong");
+		public static readonly Language HKK = new Language("Hokkien");
 		public static readonly Language HOP = new Language("Hopi");
 		public static readonly Language CZH = new Language("Huizhou Chinese");
 		public static readonly Language HU = new Language("Hungarian");
@@ -232,8 +235,8 @@ namespace Kaltura.Enums
 		public static readonly Language KPO = new Language("Ikposo");
 		public static readonly Language ILO = new Language("Iloko");
 		public static readonly Language SMN = new Language("Inari Sami");
-		public static readonly Language ID = new Language("Indonesian");
 		public static readonly Language IN = new Language("Indonesian");
+		public static readonly Language ID = new Language("Indonesian");
 		public static readonly Language IZH = new Language("Ingrian");
 		public static readonly Language INH = new Language("Ingush");
 		public static readonly Language IA = new Language("Interlingua");
@@ -511,6 +514,7 @@ namespace Kaltura.Enums
 		public static readonly Language TTT = new Language("Tat Muslim");
 		public static readonly Language TT = new Language("Tatar");
 		public static readonly Language TE = new Language("Telugu");
+		public static readonly Language TEO = new Language("Teo Chew");
 		public static readonly Language TET = new Language("Tetum");
 		public static readonly Language TH = new Language("Thai");
 		public static readonly Language NOD = new Language("Thai (Northern)");
@@ -567,8 +571,8 @@ namespace Kaltura.Enums
 		public static readonly Language WYM = new Language("Wymysorys");
 		public static readonly Language XH = new Language("Xhosa");
 		public static readonly Language AME = new Language("Yanesha");
-		public static readonly Language JI = new Language("Yiddish");
 		public static readonly Language YI = new Language("Yiddish");
+		public static readonly Language JI = new Language("Yiddish");
 		public static readonly Language YO = new Language("Yoruba");
 		public static readonly Language ZAI = new Language("Zapotec Isthmus");
 		public static readonly Language DJE = new Language("Zarma");

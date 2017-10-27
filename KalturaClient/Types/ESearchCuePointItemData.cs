@@ -44,6 +44,7 @@ namespace Kaltura.Types
 		public const string START_TIME = "startTime";
 		public const string END_TIME = "endTime";
 		public const string SUB_TYPE = "subType";
+		public const string QUESTION = "question";
 		public const string ANSWERS = "answers";
 		public const string HINT = "hint";
 		public const string EXPLANATION = "explanation";
@@ -58,6 +59,7 @@ namespace Kaltura.Types
 		private string _StartTime = null;
 		private string _EndTime = null;
 		private string _SubType = null;
+		private string _Question = null;
 		private string _Answers = null;
 		private string _Hint = null;
 		private string _Explanation = null;
@@ -136,6 +138,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("SubType");
 			}
 		}
+		public string Question
+		{
+			get { return _Question; }
+			set 
+			{ 
+				_Question = value;
+				OnPropertyChanged("Question");
+			}
+		}
 		public string Answers
 		{
 			get { return _Answers; }
@@ -200,6 +211,9 @@ namespace Kaltura.Types
 					case "subType":
 						this._SubType = propertyNode.InnerText;
 						continue;
+					case "question":
+						this._Question = propertyNode.InnerText;
+						continue;
 					case "answers":
 						this._Answers = propertyNode.InnerText;
 						continue;
@@ -228,6 +242,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("startTime", this._StartTime);
 			kparams.AddIfNotNull("endTime", this._EndTime);
 			kparams.AddIfNotNull("subType", this._SubType);
+			kparams.AddIfNotNull("question", this._Question);
 			kparams.AddIfNotNull("answers", this._Answers);
 			kparams.AddIfNotNull("hint", this._Hint);
 			kparams.AddIfNotNull("explanation", this._Explanation);
@@ -253,6 +268,8 @@ namespace Kaltura.Types
 					return "EndTime";
 				case SUB_TYPE:
 					return "SubType";
+				case QUESTION:
+					return "Question";
 				case ANSWERS:
 					return "Answers";
 				case HINT:

@@ -33,72 +33,24 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class ESearchParams : ESearchObject
+	public class ESearchObject : ObjectBase
 	{
 		#region Constants
-		public const string SEARCH_OPERATOR = "searchOperator";
-		public const string OBJECT_STATUSES = "objectStatuses";
-		public const string ORDER_BY = "orderBy";
 		#endregion
 
 		#region Private Fields
-		private ESearchOperator _SearchOperator;
-		private string _ObjectStatuses = null;
-		private ESearchOrderBy _OrderBy;
 		#endregion
 
 		#region Properties
-		public ESearchOperator SearchOperator
-		{
-			get { return _SearchOperator; }
-			set 
-			{ 
-				_SearchOperator = value;
-				OnPropertyChanged("SearchOperator");
-			}
-		}
-		public string ObjectStatuses
-		{
-			get { return _ObjectStatuses; }
-			set 
-			{ 
-				_ObjectStatuses = value;
-				OnPropertyChanged("ObjectStatuses");
-			}
-		}
-		public ESearchOrderBy OrderBy
-		{
-			get { return _OrderBy; }
-			set 
-			{ 
-				_OrderBy = value;
-				OnPropertyChanged("OrderBy");
-			}
-		}
 		#endregion
 
 		#region CTor
-		public ESearchParams()
+		public ESearchObject()
 		{
 		}
 
-		public ESearchParams(XmlElement node) : base(node)
+		public ESearchObject(XmlElement node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
-			{
-				switch (propertyNode.Name)
-				{
-					case "searchOperator":
-						this._SearchOperator = ObjectFactory.Create<ESearchOperator>(propertyNode);
-						continue;
-					case "objectStatuses":
-						this._ObjectStatuses = propertyNode.InnerText;
-						continue;
-					case "orderBy":
-						this._OrderBy = ObjectFactory.Create<ESearchOrderBy>(propertyNode);
-						continue;
-				}
-			}
 		}
 		#endregion
 
@@ -107,22 +59,13 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaESearchParams");
-			kparams.AddIfNotNull("searchOperator", this._SearchOperator);
-			kparams.AddIfNotNull("objectStatuses", this._ObjectStatuses);
-			kparams.AddIfNotNull("orderBy", this._OrderBy);
+				kparams.AddReplace("objectType", "KalturaESearchObject");
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case SEARCH_OPERATOR:
-					return "SearchOperator";
-				case OBJECT_STATUSES:
-					return "ObjectStatuses";
-				case ORDER_BY:
-					return "OrderBy";
 				default:
 					return base.getPropertyName(apiName);
 			}

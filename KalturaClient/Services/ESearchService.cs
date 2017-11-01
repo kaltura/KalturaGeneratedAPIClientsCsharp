@@ -90,7 +90,7 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public ESearchParams SearchParams
+		public ESearchObject SearchParams
 		{
 			set;
 			get;
@@ -106,7 +106,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public ESearchSearchCategoryRequestBuilder(ESearchParams searchParams, Pager pager)
+		public ESearchSearchCategoryRequestBuilder(ESearchObject searchParams, Pager pager)
 			: this()
 		{
 			this.SearchParams = searchParams;
@@ -142,7 +142,7 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public ESearchParams SearchParams
+		public ESearchObject SearchParams
 		{
 			set;
 			get;
@@ -158,7 +158,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public ESearchSearchEntryRequestBuilder(ESearchParams searchParams, Pager pager)
+		public ESearchSearchEntryRequestBuilder(ESearchObject searchParams, Pager pager)
 			: this()
 		{
 			this.SearchParams = searchParams;
@@ -194,7 +194,7 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public ESearchParams SearchParams
+		public ESearchObject SearchParams
 		{
 			set;
 			get;
@@ -210,7 +210,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public ESearchSearchUserRequestBuilder(ESearchParams searchParams, Pager pager)
+		public ESearchSearchUserRequestBuilder(ESearchObject searchParams, Pager pager)
 			: this()
 		{
 			this.SearchParams = searchParams;
@@ -251,17 +251,17 @@ namespace Kaltura.Services
 			return new ESearchGetAllowedSearchTypesRequestBuilder(searchItem);
 		}
 
-		public static ESearchSearchCategoryRequestBuilder SearchCategory(ESearchParams searchParams, Pager pager = null)
+		public static ESearchSearchCategoryRequestBuilder SearchCategory(ESearchObject searchParams, Pager pager = null)
 		{
 			return new ESearchSearchCategoryRequestBuilder(searchParams, pager);
 		}
 
-		public static ESearchSearchEntryRequestBuilder SearchEntry(ESearchParams searchParams, Pager pager = null)
+		public static ESearchSearchEntryRequestBuilder SearchEntry(ESearchObject searchParams, Pager pager = null)
 		{
 			return new ESearchSearchEntryRequestBuilder(searchParams, pager);
 		}
 
-		public static ESearchSearchUserRequestBuilder SearchUser(ESearchParams searchParams, Pager pager = null)
+		public static ESearchSearchUserRequestBuilder SearchUser(ESearchObject searchParams, Pager pager = null)
 		{
 			return new ESearchSearchUserRequestBuilder(searchParams, pager);
 		}

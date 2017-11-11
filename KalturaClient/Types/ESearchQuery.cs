@@ -36,21 +36,21 @@ namespace Kaltura.Types
 	public class ESearchQuery : ESearchObject
 	{
 		#region Constants
-		public const string ESERACH_QUERY = "eSerachQuery";
+		public const string ESEARCH_QUERY = "eSearchQuery";
 		#endregion
 
 		#region Private Fields
-		private string _ESerachQuery = null;
+		private string _ESearchQuery = null;
 		#endregion
 
 		#region Properties
-		public string ESerachQuery
+		public string ESearchQueryValue
 		{
-			get { return _ESerachQuery; }
+			get { return _ESearchQuery; }
 			set 
 			{ 
-				_ESerachQuery = value;
-				OnPropertyChanged("ESerachQuery");
+				_ESearchQuery = value;
+				OnPropertyChanged("ESearchQuery");
 			}
 		}
 		#endregion
@@ -66,8 +66,8 @@ namespace Kaltura.Types
 			{
 				switch (propertyNode.Name)
 				{
-					case "eSerachQuery":
-						this._ESerachQuery = propertyNode.InnerText;
+					case "eSearchQuery":
+						this._ESearchQuery = propertyNode.InnerText;
 						continue;
 				}
 			}
@@ -80,15 +80,15 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaESearchQuery");
-			kparams.AddIfNotNull("eSerachQuery", this._ESerachQuery);
+			kparams.AddIfNotNull("eSearchQuery", this._ESearchQuery);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case ESERACH_QUERY:
-					return "ESerachQuery";
+				case ESEARCH_QUERY:
+					return "ESearchQuery";
 				default:
 					return base.getPropertyName(apiName);
 			}

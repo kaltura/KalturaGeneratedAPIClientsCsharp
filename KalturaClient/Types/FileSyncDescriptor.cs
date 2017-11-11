@@ -37,12 +37,14 @@ namespace Kaltura.Types
 	{
 		#region Constants
 		public const string FILE_SYNC_LOCAL_PATH = "fileSyncLocalPath";
+		public const string FILE_ENCRYPTION_KEY = "fileEncryptionKey";
 		public const string FILE_SYNC_REMOTE_URL = "fileSyncRemoteUrl";
 		public const string FILE_SYNC_OBJECT_SUB_TYPE = "fileSyncObjectSubType";
 		#endregion
 
 		#region Private Fields
 		private string _FileSyncLocalPath = null;
+		private string _FileEncryptionKey = null;
 		private string _FileSyncRemoteUrl = null;
 		private int _FileSyncObjectSubType = Int32.MinValue;
 		#endregion
@@ -55,6 +57,15 @@ namespace Kaltura.Types
 			{ 
 				_FileSyncLocalPath = value;
 				OnPropertyChanged("FileSyncLocalPath");
+			}
+		}
+		public string FileEncryptionKey
+		{
+			get { return _FileEncryptionKey; }
+			set 
+			{ 
+				_FileEncryptionKey = value;
+				OnPropertyChanged("FileEncryptionKey");
 			}
 		}
 		public string FileSyncRemoteUrl
@@ -91,6 +102,9 @@ namespace Kaltura.Types
 					case "fileSyncLocalPath":
 						this._FileSyncLocalPath = propertyNode.InnerText;
 						continue;
+					case "fileEncryptionKey":
+						this._FileEncryptionKey = propertyNode.InnerText;
+						continue;
 					case "fileSyncRemoteUrl":
 						this._FileSyncRemoteUrl = propertyNode.InnerText;
 						continue;
@@ -109,6 +123,7 @@ namespace Kaltura.Types
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaFileSyncDescriptor");
 			kparams.AddIfNotNull("fileSyncLocalPath", this._FileSyncLocalPath);
+			kparams.AddIfNotNull("fileEncryptionKey", this._FileEncryptionKey);
 			kparams.AddIfNotNull("fileSyncRemoteUrl", this._FileSyncRemoteUrl);
 			kparams.AddIfNotNull("fileSyncObjectSubType", this._FileSyncObjectSubType);
 			return kparams;
@@ -119,6 +134,8 @@ namespace Kaltura.Types
 			{
 				case FILE_SYNC_LOCAL_PATH:
 					return "FileSyncLocalPath";
+				case FILE_ENCRYPTION_KEY:
+					return "FileEncryptionKey";
 				case FILE_SYNC_REMOTE_URL:
 					return "FileSyncRemoteUrl";
 				case FILE_SYNC_OBJECT_SUB_TYPE:

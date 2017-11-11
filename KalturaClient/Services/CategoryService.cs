@@ -337,7 +337,7 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class CategoryMoveRequestBuilder : RequestBuilder<ListResponse<Category>>
+	public class CategoryMoveRequestBuilder : RequestBuilder<bool>
 	{
 		#region Constants
 		public const string CATEGORY_IDS = "categoryIds";
@@ -385,7 +385,9 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<ListResponse<Category>>(result);
+			if (result.InnerText.Equals("1") || result.InnerText.ToLower().Equals("true"))
+				return true;
+			return false;
 		}
 	}
 

@@ -40,6 +40,7 @@ namespace Kaltura
 		public static string SERVICE_DOES_NOT_EXISTS = "SERVICE_DOES_NOT_EXISTS";
 		public static string INVALID_PARAMETER_CHAR = "INVALID_PARAMETER_CHAR";
 		public static string ACTION_NOT_SPECIFIED = "ACTION_NOT_SPECIFIED";
+		public static string ACTION_BLOCKED = "ACTION_BLOCKED";
 		public static string ACTION_DOES_NOT_EXISTS = "ACTION_DOES_NOT_EXISTS";
 		public static string ACTION_FORBIDDEN = "ACTION_FORBIDDEN";
 		public static string MISSING_MANDATORY_PARAMETER = "MISSING_MANDATORY_PARAMETER";

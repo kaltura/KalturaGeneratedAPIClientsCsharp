@@ -40,6 +40,7 @@ namespace Kaltura.Types
 		public const string SENDER = "sender";
 		public const string SUBJECT = "subject";
 		public const string MESSAGE = "message";
+		public const string FOOTER = "footer";
 		public const string LINK = "link";
 		public const string SEND_TO_USERS = "sendToUsers";
 		#endregion
@@ -49,6 +50,7 @@ namespace Kaltura.Types
 		private string _Sender = null;
 		private string _Subject = null;
 		private string _Message = null;
+		private string _Footer = null;
 		private string _Link = null;
 		private bool? _SendToUsers = null;
 		#endregion
@@ -88,6 +90,15 @@ namespace Kaltura.Types
 			{ 
 				_Message = value;
 				OnPropertyChanged("Message");
+			}
+		}
+		public string Footer
+		{
+			get { return _Footer; }
+			set 
+			{ 
+				_Footer = value;
+				OnPropertyChanged("Footer");
 			}
 		}
 		public string Link
@@ -133,6 +144,9 @@ namespace Kaltura.Types
 					case "message":
 						this._Message = propertyNode.InnerText;
 						continue;
+					case "footer":
+						this._Footer = propertyNode.InnerText;
+						continue;
 					case "link":
 						this._Link = propertyNode.InnerText;
 						continue;
@@ -154,6 +168,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("sender", this._Sender);
 			kparams.AddIfNotNull("subject", this._Subject);
 			kparams.AddIfNotNull("message", this._Message);
+			kparams.AddIfNotNull("footer", this._Footer);
 			kparams.AddIfNotNull("link", this._Link);
 			kparams.AddIfNotNull("sendToUsers", this._SendToUsers);
 			return kparams;
@@ -170,6 +185,8 @@ namespace Kaltura.Types
 					return "Subject";
 				case MESSAGE:
 					return "Message";
+				case FOOTER:
+					return "Footer";
 				case LINK:
 					return "Link";
 				case SEND_TO_USERS:

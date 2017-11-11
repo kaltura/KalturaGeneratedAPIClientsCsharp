@@ -51,6 +51,9 @@ namespace Kaltura.Types
 		public const string RECORDING_OPTIONS = "recordingOptions";
 		public const string LIVE_STATUS = "liveStatus";
 		public const string SEGMENT_DURATION = "segmentDuration";
+		public const string EXPLICIT_LIVE = "explicitLive";
+		public const string VIEW_MODE = "viewMode";
+		public const string RECORDING_STATUS = "recordingStatus";
 		#endregion
 
 		#region Private Fields
@@ -69,6 +72,9 @@ namespace Kaltura.Types
 		private LiveEntryRecordingOptions _RecordingOptions;
 		private EntryServerNodeStatus _LiveStatus = (EntryServerNodeStatus)Int32.MinValue;
 		private int _SegmentDuration = Int32.MinValue;
+		private bool? _ExplicitLive = null;
+		private ViewMode _ViewMode = (ViewMode)Int32.MinValue;
+		private RecordingStatus _RecordingStatus = (RecordingStatus)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -192,6 +198,33 @@ namespace Kaltura.Types
 				OnPropertyChanged("SegmentDuration");
 			}
 		}
+		public bool? ExplicitLive
+		{
+			get { return _ExplicitLive; }
+			set 
+			{ 
+				_ExplicitLive = value;
+				OnPropertyChanged("ExplicitLive");
+			}
+		}
+		public ViewMode ViewMode
+		{
+			get { return _ViewMode; }
+			set 
+			{ 
+				_ViewMode = value;
+				OnPropertyChanged("ViewMode");
+			}
+		}
+		public RecordingStatus RecordingStatus
+		{
+			get { return _RecordingStatus; }
+			set 
+			{ 
+				_RecordingStatus = value;
+				OnPropertyChanged("RecordingStatus");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -258,6 +291,15 @@ namespace Kaltura.Types
 					case "segmentDuration":
 						this._SegmentDuration = ParseInt(propertyNode.InnerText);
 						continue;
+					case "explicitLive":
+						this._ExplicitLive = ParseBool(propertyNode.InnerText);
+						continue;
+					case "viewMode":
+						this._ViewMode = (ViewMode)ParseEnum(typeof(ViewMode), propertyNode.InnerText);
+						continue;
+					case "recordingStatus":
+						this._RecordingStatus = (RecordingStatus)ParseEnum(typeof(RecordingStatus), propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -284,6 +326,9 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("recordingOptions", this._RecordingOptions);
 			kparams.AddIfNotNull("liveStatus", this._LiveStatus);
 			kparams.AddIfNotNull("segmentDuration", this._SegmentDuration);
+			kparams.AddIfNotNull("explicitLive", this._ExplicitLive);
+			kparams.AddIfNotNull("viewMode", this._ViewMode);
+			kparams.AddIfNotNull("recordingStatus", this._RecordingStatus);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -320,6 +365,12 @@ namespace Kaltura.Types
 					return "LiveStatus";
 				case SEGMENT_DURATION:
 					return "SegmentDuration";
+				case EXPLICIT_LIVE:
+					return "ExplicitLive";
+				case VIEW_MODE:
+					return "ViewMode";
+				case RECORDING_STATUS:
+					return "RecordingStatus";
 				default:
 					return base.getPropertyName(apiName);
 			}

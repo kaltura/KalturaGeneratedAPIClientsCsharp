@@ -27,11 +27,9 @@
 // ===================================================================================================
 namespace Kaltura.Enums
 {
-	public enum RecordingStatus
+	public enum ViewMode
 	{
-		STOPPED = 0,
-		PAUSED = 1,
-		ACTIVE = 2,
-		DISABLED = 3,
+		PREVIEW = 0,
+		ALLOW_ALL = 1,
 	}
 }

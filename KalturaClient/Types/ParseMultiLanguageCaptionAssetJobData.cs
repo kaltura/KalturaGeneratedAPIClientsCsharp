@@ -39,12 +39,14 @@ namespace Kaltura.Types
 		public const string MULTI_LANAGUAGE_CAPTION_ASSET_ID = "multiLanaguageCaptionAssetId";
 		public const string ENTRY_ID = "entryId";
 		public const string FILE_LOCATION = "fileLocation";
+		public const string FILE_ENCRYPTION_KEY = "fileEncryptionKey";
 		#endregion
 
 		#region Private Fields
 		private string _MultiLanaguageCaptionAssetId = null;
 		private string _EntryId = null;
 		private string _FileLocation = null;
+		private string _FileEncryptionKey = null;
 		#endregion
 
 		#region Properties
@@ -75,6 +77,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileLocation");
 			}
 		}
+		public string FileEncryptionKey
+		{
+			get { return _FileEncryptionKey; }
+			set 
+			{ 
+				_FileEncryptionKey = value;
+				OnPropertyChanged("FileEncryptionKey");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -97,6 +108,9 @@ namespace Kaltura.Types
 					case "fileLocation":
 						this._FileLocation = propertyNode.InnerText;
 						continue;
+					case "fileEncryptionKey":
+						this._FileEncryptionKey = propertyNode.InnerText;
+						continue;
 				}
 			}
 		}
@@ -111,6 +125,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("multiLanaguageCaptionAssetId", this._MultiLanaguageCaptionAssetId);
 			kparams.AddIfNotNull("entryId", this._EntryId);
 			kparams.AddIfNotNull("fileLocation", this._FileLocation);
+			kparams.AddIfNotNull("fileEncryptionKey", this._FileEncryptionKey);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -123,6 +138,8 @@ namespace Kaltura.Types
 					return "EntryId";
 				case FILE_LOCATION:
 					return "FileLocation";
+				case FILE_ENCRYPTION_KEY:
+					return "FileEncryptionKey";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -36,12 +36,23 @@ namespace Kaltura.Types
 	public class LiveStreamScheduleEvent : EntryScheduleEvent
 	{
 		#region Constants
+		public const string PROJECTED_AUDIENCE = "projectedAudience";
 		#endregion
 
 		#region Private Fields
+		private int _ProjectedAudience = Int32.MinValue;
 		#endregion
 
 		#region Properties
+		public int ProjectedAudience
+		{
+			get { return _ProjectedAudience; }
+			set 
+			{ 
+				_ProjectedAudience = value;
+				OnPropertyChanged("ProjectedAudience");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -51,6 +62,15 @@ namespace Kaltura.Types
 
 		public LiveStreamScheduleEvent(XmlElement node) : base(node)
 		{
+			foreach (XmlElement propertyNode in node.ChildNodes)
+			{
+				switch (propertyNode.Name)
+				{
+					case "projectedAudience":
+						this._ProjectedAudience = ParseInt(propertyNode.InnerText);
+						continue;
+				}
+			}
 		}
 		#endregion
 
@@ -60,12 +80,15 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaLiveStreamScheduleEvent");
+			kparams.AddIfNotNull("projectedAudience", this._ProjectedAudience);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
+				case PROJECTED_AUDIENCE:
+					return "ProjectedAudience";
 				default:
 					return base.getPropertyName(apiName);
 			}

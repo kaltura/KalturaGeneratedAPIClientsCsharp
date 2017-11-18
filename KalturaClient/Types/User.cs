@@ -362,6 +362,11 @@ namespace Kaltura.Types
 		public bool? LoginEnabled
 		{
 			get { return _LoginEnabled; }
+			set 
+			{ 
+				_LoginEnabled = value;
+				OnPropertyChanged("LoginEnabled");
+			}
 		}
 		public string RoleIds
 		{
@@ -379,6 +384,11 @@ namespace Kaltura.Types
 		public bool? IsAccountOwner
 		{
 			get { return _IsAccountOwner; }
+			set 
+			{ 
+				_IsAccountOwner = value;
+				OnPropertyChanged("IsAccountOwner");
+			}
 		}
 		public string AllowedPartnerIds
 		{

@@ -48,6 +48,7 @@ namespace Kaltura.Types
 		public const string STATUS = "status";
 		public const string LANGUAGE = "language";
 		public const string LABEL = "label";
+		public const string IS_DEFAULT = "isDefault";
 		#endregion
 
 		#region Private Fields
@@ -63,6 +64,7 @@ namespace Kaltura.Types
 		private FlavorAssetStatus _Status = (FlavorAssetStatus)Int32.MinValue;
 		private Language _Language = null;
 		private string _Label = null;
+		private NullableBoolean _IsDefault = (NullableBoolean)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -129,6 +131,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("Label");
 			}
 		}
+		public NullableBoolean IsDefault
+		{
+			get { return _IsDefault; }
+			set 
+			{ 
+				_IsDefault = value;
+				OnPropertyChanged("IsDefault");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -178,6 +189,9 @@ namespace Kaltura.Types
 					case "label":
 						this._Label = propertyNode.InnerText;
 						continue;
+					case "isDefault":
+						this._IsDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -201,6 +215,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("status", this._Status);
 			kparams.AddIfNotNull("language", this._Language);
 			kparams.AddIfNotNull("label", this._Label);
+			kparams.AddIfNotNull("isDefault", this._IsDefault);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -231,6 +246,8 @@ namespace Kaltura.Types
 					return "Language";
 				case LABEL:
 					return "Label";
+				case IS_DEFAULT:
+					return "IsDefault";
 				default:
 					return base.getPropertyName(apiName);
 			}

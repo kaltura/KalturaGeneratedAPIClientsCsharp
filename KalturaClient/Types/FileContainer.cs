@@ -33,49 +33,21 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class YouTubeApiCaptionDistributionInfo : ObjectBase
+	public class FileContainer : ObjectBase
 	{
 		#region Constants
-		public const string LANGUAGE = "language";
-		public const string LABEL = "label";
 		public const string FILE_PATH = "filePath";
 		public const string ENCRYPTION_KEY = "encryptionKey";
-		public const string REMOTE_ID = "remoteId";
-		public const string ACTION = "action";
-		public const string VERSION = "version";
-		public const string ASSET_ID = "assetId";
+		public const string FILE_SIZE = "fileSize";
 		#endregion
 
 		#region Private Fields
-		private string _Language = null;
-		private string _Label = null;
 		private string _FilePath = null;
 		private string _EncryptionKey = null;
-		private string _RemoteId = null;
-		private YouTubeApiDistributionCaptionAction _Action = (YouTubeApiDistributionCaptionAction)Int32.MinValue;
-		private string _Version = null;
-		private string _AssetId = null;
+		private int _FileSize = Int32.MinValue;
 		#endregion
 
 		#region Properties
-		public string Language
-		{
-			get { return _Language; }
-			set 
-			{ 
-				_Language = value;
-				OnPropertyChanged("Language");
-			}
-		}
-		public string Label
-		{
-			get { return _Label; }
-			set 
-			{ 
-				_Label = value;
-				OnPropertyChanged("Label");
-			}
-		}
 		public string FilePath
 		{
 			get { return _FilePath; }
@@ -94,78 +66,36 @@ namespace Kaltura.Types
 				OnPropertyChanged("EncryptionKey");
 			}
 		}
-		public string RemoteId
+		public int FileSize
 		{
-			get { return _RemoteId; }
+			get { return _FileSize; }
 			set 
 			{ 
-				_RemoteId = value;
-				OnPropertyChanged("RemoteId");
-			}
-		}
-		public YouTubeApiDistributionCaptionAction Action
-		{
-			get { return _Action; }
-			set 
-			{ 
-				_Action = value;
-				OnPropertyChanged("Action");
-			}
-		}
-		public string Version
-		{
-			get { return _Version; }
-			set 
-			{ 
-				_Version = value;
-				OnPropertyChanged("Version");
-			}
-		}
-		public string AssetId
-		{
-			get { return _AssetId; }
-			set 
-			{ 
-				_AssetId = value;
-				OnPropertyChanged("AssetId");
+				_FileSize = value;
+				OnPropertyChanged("FileSize");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public YouTubeApiCaptionDistributionInfo()
+		public FileContainer()
 		{
 		}
 
-		public YouTubeApiCaptionDistributionInfo(XmlElement node) : base(node)
+		public FileContainer(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
 				switch (propertyNode.Name)
 				{
-					case "language":
-						this._Language = propertyNode.InnerText;
-						continue;
-					case "label":
-						this._Label = propertyNode.InnerText;
-						continue;
 					case "filePath":
 						this._FilePath = propertyNode.InnerText;
 						continue;
 					case "encryptionKey":
 						this._EncryptionKey = propertyNode.InnerText;
 						continue;
-					case "remoteId":
-						this._RemoteId = propertyNode.InnerText;
-						continue;
-					case "action":
-						this._Action = (YouTubeApiDistributionCaptionAction)ParseEnum(typeof(YouTubeApiDistributionCaptionAction), propertyNode.InnerText);
-						continue;
-					case "version":
-						this._Version = propertyNode.InnerText;
-						continue;
-					case "assetId":
-						this._AssetId = propertyNode.InnerText;
+					case "fileSize":
+						this._FileSize = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}
@@ -177,37 +107,22 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaYouTubeApiCaptionDistributionInfo");
-			kparams.AddIfNotNull("language", this._Language);
-			kparams.AddIfNotNull("label", this._Label);
+				kparams.AddReplace("objectType", "KalturaFileContainer");
 			kparams.AddIfNotNull("filePath", this._FilePath);
 			kparams.AddIfNotNull("encryptionKey", this._EncryptionKey);
-			kparams.AddIfNotNull("remoteId", this._RemoteId);
-			kparams.AddIfNotNull("action", this._Action);
-			kparams.AddIfNotNull("version", this._Version);
-			kparams.AddIfNotNull("assetId", this._AssetId);
+			kparams.AddIfNotNull("fileSize", this._FileSize);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case LANGUAGE:
-					return "Language";
-				case LABEL:
-					return "Label";
 				case FILE_PATH:
 					return "FilePath";
 				case ENCRYPTION_KEY:
 					return "EncryptionKey";
-				case REMOTE_ID:
-					return "RemoteId";
-				case ACTION:
-					return "Action";
-				case VERSION:
-					return "Version";
-				case ASSET_ID:
-					return "AssetId";
+				case FILE_SIZE:
+					return "FileSize";
 				default:
 					return base.getPropertyName(apiName);
 			}

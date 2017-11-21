@@ -36,27 +36,27 @@ namespace Kaltura.Types
 	public class VirusScanJobData : JobData
 	{
 		#region Constants
-		public const string SRC_FILE_PATH = "srcFilePath";
+		public const string FILE_CONTAINER = "fileContainer";
 		public const string FLAVOR_ASSET_ID = "flavorAssetId";
 		public const string SCAN_RESULT = "scanResult";
 		public const string VIRUS_FOUND_ACTION = "virusFoundAction";
 		#endregion
 
 		#region Private Fields
-		private string _SrcFilePath = null;
+		private FileContainer _FileContainer;
 		private string _FlavorAssetId = null;
 		private VirusScanJobResult _ScanResult = (VirusScanJobResult)Int32.MinValue;
 		private VirusFoundAction _VirusFoundAction = (VirusFoundAction)Int32.MinValue;
 		#endregion
 
 		#region Properties
-		public string SrcFilePath
+		public FileContainer FileContainer
 		{
-			get { return _SrcFilePath; }
+			get { return _FileContainer; }
 			set 
 			{ 
-				_SrcFilePath = value;
-				OnPropertyChanged("SrcFilePath");
+				_FileContainer = value;
+				OnPropertyChanged("FileContainer");
 			}
 		}
 		public string FlavorAssetId
@@ -99,8 +99,8 @@ namespace Kaltura.Types
 			{
 				switch (propertyNode.Name)
 				{
-					case "srcFilePath":
-						this._SrcFilePath = propertyNode.InnerText;
+					case "fileContainer":
+						this._FileContainer = ObjectFactory.Create<FileContainer>(propertyNode);
 						continue;
 					case "flavorAssetId":
 						this._FlavorAssetId = propertyNode.InnerText;
@@ -122,7 +122,7 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaVirusScanJobData");
-			kparams.AddIfNotNull("srcFilePath", this._SrcFilePath);
+			kparams.AddIfNotNull("fileContainer", this._FileContainer);
 			kparams.AddIfNotNull("flavorAssetId", this._FlavorAssetId);
 			kparams.AddIfNotNull("scanResult", this._ScanResult);
 			kparams.AddIfNotNull("virusFoundAction", this._VirusFoundAction);
@@ -132,8 +132,8 @@ namespace Kaltura.Types
 		{
 			switch(apiName)
 			{
-				case SRC_FILE_PATH:
-					return "SrcFilePath";
+				case FILE_CONTAINER:
+					return "FileContainer";
 				case FLAVOR_ASSET_ID:
 					return "FlavorAssetId";
 				case SCAN_RESULT:

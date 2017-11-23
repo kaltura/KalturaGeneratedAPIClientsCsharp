@@ -48,6 +48,7 @@ namespace Kaltura.Types
 		public const string SESSION_DURATION = "sessionDuration";
 		public const string SESSION_PRIVILEGES = "sessionPrivileges";
 		public const string HASH_TYPE = "hashType";
+		public const string DESCRIPTION = "description";
 		#endregion
 
 		#region Private Fields
@@ -63,6 +64,7 @@ namespace Kaltura.Types
 		private int _SessionDuration = Int32.MinValue;
 		private string _SessionPrivileges = null;
 		private AppTokenHashType _HashType = null;
+		private string _Description = null;
 		#endregion
 
 		#region Properties
@@ -144,6 +146,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("HashType");
 			}
 		}
+		public string Description
+		{
+			get { return _Description; }
+			set 
+			{ 
+				_Description = value;
+				OnPropertyChanged("Description");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -193,6 +204,9 @@ namespace Kaltura.Types
 					case "hashType":
 						this._HashType = (AppTokenHashType)StringEnum.Parse(typeof(AppTokenHashType), propertyNode.InnerText);
 						continue;
+					case "description":
+						this._Description = propertyNode.InnerText;
+						continue;
 				}
 			}
 		}
@@ -216,6 +230,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("sessionDuration", this._SessionDuration);
 			kparams.AddIfNotNull("sessionPrivileges", this._SessionPrivileges);
 			kparams.AddIfNotNull("hashType", this._HashType);
+			kparams.AddIfNotNull("description", this._Description);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -246,6 +261,8 @@ namespace Kaltura.Types
 					return "SessionPrivileges";
 				case HASH_TYPE:
 					return "HashType";
+				case DESCRIPTION:
+					return "Description";
 				default:
 					return base.getPropertyName(apiName);
 			}

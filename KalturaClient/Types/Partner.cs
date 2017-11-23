@@ -89,6 +89,7 @@ namespace Kaltura.Types
 		public const string CRM_ID = "crmId";
 		public const string REFERENCE_ID = "referenceId";
 		public const string TIME_ALIGNED_RENDITIONS = "timeAlignedRenditions";
+		public const string ESEARCH_LANGUAGES = "eSearchLanguages";
 		#endregion
 
 		#region Private Fields
@@ -145,6 +146,7 @@ namespace Kaltura.Types
 		private string _CrmId = null;
 		private string _ReferenceId = null;
 		private bool? _TimeAlignedRenditions = null;
+		private IList<ESearchLanguageItem> _ESearchLanguages;
 		#endregion
 
 		#region Properties
@@ -515,6 +517,15 @@ namespace Kaltura.Types
 		{
 			get { return _TimeAlignedRenditions; }
 		}
+		public IList<ESearchLanguageItem> ESearchLanguages
+		{
+			get { return _ESearchLanguages; }
+			set 
+			{ 
+				_ESearchLanguages = value;
+				OnPropertyChanged("ESearchLanguages");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -699,6 +710,13 @@ namespace Kaltura.Types
 					case "timeAlignedRenditions":
 						this._TimeAlignedRenditions = ParseBool(propertyNode.InnerText);
 						continue;
+					case "eSearchLanguages":
+						this._ESearchLanguages = new List<ESearchLanguageItem>();
+						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
+						{
+							this._ESearchLanguages.Add(ObjectFactory.Create<ESearchLanguageItem>(arrayNode));
+						}
+						continue;
 				}
 			}
 		}
@@ -763,6 +781,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("crmId", this._CrmId);
 			kparams.AddIfNotNull("referenceId", this._ReferenceId);
 			kparams.AddIfNotNull("timeAlignedRenditions", this._TimeAlignedRenditions);
+			kparams.AddIfNotNull("eSearchLanguages", this._ESearchLanguages);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -875,6 +894,8 @@ namespace Kaltura.Types
 					return "ReferenceId";
 				case TIME_ALIGNED_RENDITIONS:
 					return "TimeAlignedRenditions";
+				case ESEARCH_LANGUAGES:
+					return "ESearchLanguages";
 				default:
 					return base.getPropertyName(apiName);
 			}

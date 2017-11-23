@@ -36,12 +36,23 @@ namespace Kaltura.Types
 	public class ESearchItemData : ObjectBase
 	{
 		#region Constants
+		public const string HIGHLIGHT = "highlight";
 		#endregion
 
 		#region Private Fields
+		private string _Highlight = null;
 		#endregion
 
 		#region Properties
+		public string Highlight
+		{
+			get { return _Highlight; }
+			set 
+			{ 
+				_Highlight = value;
+				OnPropertyChanged("Highlight");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -51,6 +62,15 @@ namespace Kaltura.Types
 
 		public ESearchItemData(XmlElement node) : base(node)
 		{
+			foreach (XmlElement propertyNode in node.ChildNodes)
+			{
+				switch (propertyNode.Name)
+				{
+					case "highlight":
+						this._Highlight = propertyNode.InnerText;
+						continue;
+				}
+			}
 		}
 		#endregion
 
@@ -60,12 +80,15 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaESearchItemData");
+			kparams.AddIfNotNull("highlight", this._Highlight);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
+				case HIGHLIGHT:
+					return "Highlight";
 				default:
 					return base.getPropertyName(apiName);
 			}

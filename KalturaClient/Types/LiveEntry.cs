@@ -72,7 +72,7 @@ namespace Kaltura.Types
 		private LiveEntryRecordingOptions _RecordingOptions;
 		private EntryServerNodeStatus _LiveStatus = (EntryServerNodeStatus)Int32.MinValue;
 		private int _SegmentDuration = Int32.MinValue;
-		private bool? _ExplicitLive = null;
+		private NullableBoolean _ExplicitLive = (NullableBoolean)Int32.MinValue;
 		private ViewMode _ViewMode = (ViewMode)Int32.MinValue;
 		private RecordingStatus _RecordingStatus = (RecordingStatus)Int32.MinValue;
 		#endregion
@@ -198,7 +198,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SegmentDuration");
 			}
 		}
-		public bool? ExplicitLive
+		public NullableBoolean ExplicitLive
 		{
 			get { return _ExplicitLive; }
 			set 
@@ -292,7 +292,7 @@ namespace Kaltura.Types
 						this._SegmentDuration = ParseInt(propertyNode.InnerText);
 						continue;
 					case "explicitLive":
-						this._ExplicitLive = ParseBool(propertyNode.InnerText);
+						this._ExplicitLive = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
 					case "viewMode":
 						this._ViewMode = (ViewMode)ParseEnum(typeof(ViewMode), propertyNode.InnerText);

@@ -44,6 +44,7 @@ namespace Kaltura.Types
 		public const string UPDATED_AT_LESS_THAN_OR_EQUAL = "updatedAtLessThanOrEqual";
 		public const string STATUS_EQUAL = "statusEqual";
 		public const string STATUS_IN = "statusIn";
+		public const string SESSION_USER_ID_EQUAL = "sessionUserIdEqual";
 		#endregion
 
 		#region Private Fields
@@ -55,6 +56,7 @@ namespace Kaltura.Types
 		private int _UpdatedAtLessThanOrEqual = Int32.MinValue;
 		private AppTokenStatus _StatusEqual = (AppTokenStatus)Int32.MinValue;
 		private string _StatusIn = null;
+		private string _SessionUserIdEqual = null;
 		#endregion
 
 		#region Properties
@@ -130,6 +132,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		public string SessionUserIdEqual
+		{
+			get { return _SessionUserIdEqual; }
+			set 
+			{ 
+				_SessionUserIdEqual = value;
+				OnPropertyChanged("SessionUserIdEqual");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -167,6 +178,9 @@ namespace Kaltura.Types
 					case "statusIn":
 						this._StatusIn = propertyNode.InnerText;
 						continue;
+					case "sessionUserIdEqual":
+						this._SessionUserIdEqual = propertyNode.InnerText;
+						continue;
 				}
 			}
 		}
@@ -186,6 +200,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this._UpdatedAtLessThanOrEqual);
 			kparams.AddIfNotNull("statusEqual", this._StatusEqual);
 			kparams.AddIfNotNull("statusIn", this._StatusIn);
+			kparams.AddIfNotNull("sessionUserIdEqual", this._SessionUserIdEqual);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -208,6 +223,8 @@ namespace Kaltura.Types
 					return "StatusEqual";
 				case STATUS_IN:
 					return "StatusIn";
+				case SESSION_USER_ID_EQUAL:
+					return "SessionUserIdEqual";
 				default:
 					return base.getPropertyName(apiName);
 			}

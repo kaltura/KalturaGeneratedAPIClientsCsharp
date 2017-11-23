@@ -33,69 +33,41 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class EmailNotificationCategoryRecipientProvider : EmailNotificationRecipientProvider
+	public class ESearchLanguageItem : ObjectBase
 	{
 		#region Constants
-		public const string CATEGORY_ID = "categoryId";
-		public const string CATEGORY_IDS = "categoryIds";
-		public const string CATEGORY_USER_FILTER = "categoryUserFilter";
+		public const string ESERACH_LANGUAGE = "eSerachLanguage";
 		#endregion
 
 		#region Private Fields
-		private StringValue _CategoryId;
-		private StringValue _CategoryIds;
-		private CategoryUserProviderFilter _CategoryUserFilter;
+		private ESearchLanguage _ESerachLanguage = null;
 		#endregion
 
 		#region Properties
-		public StringValue CategoryId
+		public ESearchLanguage ESerachLanguage
 		{
-			get { return _CategoryId; }
+			get { return _ESerachLanguage; }
 			set 
 			{ 
-				_CategoryId = value;
-				OnPropertyChanged("CategoryId");
-			}
-		}
-		public StringValue CategoryIds
-		{
-			get { return _CategoryIds; }
-			set 
-			{ 
-				_CategoryIds = value;
-				OnPropertyChanged("CategoryIds");
-			}
-		}
-		public CategoryUserProviderFilter CategoryUserFilter
-		{
-			get { return _CategoryUserFilter; }
-			set 
-			{ 
-				_CategoryUserFilter = value;
-				OnPropertyChanged("CategoryUserFilter");
+				_ESerachLanguage = value;
+				OnPropertyChanged("ESerachLanguage");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public EmailNotificationCategoryRecipientProvider()
+		public ESearchLanguageItem()
 		{
 		}
 
-		public EmailNotificationCategoryRecipientProvider(XmlElement node) : base(node)
+		public ESearchLanguageItem(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
 				switch (propertyNode.Name)
 				{
-					case "categoryId":
-						this._CategoryId = ObjectFactory.Create<StringValue>(propertyNode);
-						continue;
-					case "categoryIds":
-						this._CategoryIds = ObjectFactory.Create<StringValue>(propertyNode);
-						continue;
-					case "categoryUserFilter":
-						this._CategoryUserFilter = ObjectFactory.Create<CategoryUserProviderFilter>(propertyNode);
+					case "eSerachLanguage":
+						this._ESerachLanguage = (ESearchLanguage)StringEnum.Parse(typeof(ESearchLanguage), propertyNode.InnerText);
 						continue;
 				}
 			}
@@ -107,22 +79,16 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaEmailNotificationCategoryRecipientProvider");
-			kparams.AddIfNotNull("categoryId", this._CategoryId);
-			kparams.AddIfNotNull("categoryIds", this._CategoryIds);
-			kparams.AddIfNotNull("categoryUserFilter", this._CategoryUserFilter);
+				kparams.AddReplace("objectType", "KalturaESearchLanguageItem");
+			kparams.AddIfNotNull("eSerachLanguage", this._ESerachLanguage);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case CATEGORY_ID:
-					return "CategoryId";
-				case CATEGORY_IDS:
-					return "CategoryIds";
-				case CATEGORY_USER_FILTER:
-					return "CategoryUserFilter";
+				case ESERACH_LANGUAGE:
+					return "ESerachLanguage";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -33,18 +33,22 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class ESearchParams : ESearchObject
+	public class ESearchParams : ObjectBase
 	{
 		#region Constants
 		public const string SEARCH_OPERATOR = "searchOperator";
 		public const string OBJECT_STATUSES = "objectStatuses";
+		public const string OBJECT_ID = "objectId";
 		public const string ORDER_BY = "orderBy";
+		public const string USE_HIGHLIGHT = "useHighlight";
 		#endregion
 
 		#region Private Fields
 		private ESearchOperator _SearchOperator;
 		private string _ObjectStatuses = null;
+		private string _ObjectId = null;
 		private ESearchOrderBy _OrderBy;
+		private bool? _UseHighlight = null;
 		#endregion
 
 		#region Properties
@@ -66,6 +70,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectStatuses");
 			}
 		}
+		public string ObjectId
+		{
+			get { return _ObjectId; }
+			set 
+			{ 
+				_ObjectId = value;
+				OnPropertyChanged("ObjectId");
+			}
+		}
 		public ESearchOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -73,6 +86,15 @@ namespace Kaltura.Types
 			{ 
 				_OrderBy = value;
 				OnPropertyChanged("OrderBy");
+			}
+		}
+		public bool? UseHighlight
+		{
+			get { return _UseHighlight; }
+			set 
+			{ 
+				_UseHighlight = value;
+				OnPropertyChanged("UseHighlight");
 			}
 		}
 		#endregion
@@ -94,8 +116,14 @@ namespace Kaltura.Types
 					case "objectStatuses":
 						this._ObjectStatuses = propertyNode.InnerText;
 						continue;
+					case "objectId":
+						this._ObjectId = propertyNode.InnerText;
+						continue;
 					case "orderBy":
 						this._OrderBy = ObjectFactory.Create<ESearchOrderBy>(propertyNode);
+						continue;
+					case "useHighlight":
+						this._UseHighlight = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}
@@ -110,7 +138,9 @@ namespace Kaltura.Types
 				kparams.AddReplace("objectType", "KalturaESearchParams");
 			kparams.AddIfNotNull("searchOperator", this._SearchOperator);
 			kparams.AddIfNotNull("objectStatuses", this._ObjectStatuses);
+			kparams.AddIfNotNull("objectId", this._ObjectId);
 			kparams.AddIfNotNull("orderBy", this._OrderBy);
+			kparams.AddIfNotNull("useHighlight", this._UseHighlight);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -121,8 +151,12 @@ namespace Kaltura.Types
 					return "SearchOperator";
 				case OBJECT_STATUSES:
 					return "ObjectStatuses";
+				case OBJECT_ID:
+					return "ObjectId";
 				case ORDER_BY:
 					return "OrderBy";
+				case USE_HIGHLIGHT:
+					return "UseHighlight";
 				default:
 					return base.getPropertyName(apiName);
 			}

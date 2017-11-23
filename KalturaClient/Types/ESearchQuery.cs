@@ -33,7 +33,7 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class ESearchQuery : ESearchObject
+	public class ESearchQuery : ESearchBaseItem
 	{
 		#region Constants
 		public const string ESEARCH_QUERY = "eSearchQuery";

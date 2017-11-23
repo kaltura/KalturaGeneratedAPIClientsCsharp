@@ -36,7 +36,7 @@ namespace Kaltura.Types
 	public class CaptureThumbJobData : JobData
 	{
 		#region Constants
-		public const string SRC_FILE_SYNC_LOCAL_PATH = "srcFileSyncLocalPath";
+		public const string FILE_CONTAINER = "fileContainer";
 		public const string ACTUAL_SRC_FILE_SYNC_LOCAL_PATH = "actualSrcFileSyncLocalPath";
 		public const string SRC_FILE_SYNC_REMOTE_URL = "srcFileSyncRemoteUrl";
 		public const string THUMB_PARAMS_OUTPUT_ID = "thumbParamsOutputId";
@@ -47,7 +47,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Private Fields
-		private string _SrcFileSyncLocalPath = null;
+		private FileContainer _FileContainer;
 		private string _ActualSrcFileSyncLocalPath = null;
 		private string _SrcFileSyncRemoteUrl = null;
 		private int _ThumbParamsOutputId = Int32.MinValue;
@@ -58,13 +58,13 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		public string SrcFileSyncLocalPath
+		public FileContainer FileContainer
 		{
-			get { return _SrcFileSyncLocalPath; }
+			get { return _FileContainer; }
 			set 
 			{ 
-				_SrcFileSyncLocalPath = value;
-				OnPropertyChanged("SrcFileSyncLocalPath");
+				_FileContainer = value;
+				OnPropertyChanged("FileContainer");
 			}
 		}
 		public string ActualSrcFileSyncLocalPath
@@ -143,8 +143,8 @@ namespace Kaltura.Types
 			{
 				switch (propertyNode.Name)
 				{
-					case "srcFileSyncLocalPath":
-						this._SrcFileSyncLocalPath = propertyNode.InnerText;
+					case "fileContainer":
+						this._FileContainer = ObjectFactory.Create<FileContainer>(propertyNode);
 						continue;
 					case "actualSrcFileSyncLocalPath":
 						this._ActualSrcFileSyncLocalPath = propertyNode.InnerText;
@@ -178,7 +178,7 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaCaptureThumbJobData");
-			kparams.AddIfNotNull("srcFileSyncLocalPath", this._SrcFileSyncLocalPath);
+			kparams.AddIfNotNull("fileContainer", this._FileContainer);
 			kparams.AddIfNotNull("actualSrcFileSyncLocalPath", this._ActualSrcFileSyncLocalPath);
 			kparams.AddIfNotNull("srcFileSyncRemoteUrl", this._SrcFileSyncRemoteUrl);
 			kparams.AddIfNotNull("thumbParamsOutputId", this._ThumbParamsOutputId);
@@ -192,8 +192,8 @@ namespace Kaltura.Types
 		{
 			switch(apiName)
 			{
-				case SRC_FILE_SYNC_LOCAL_PATH:
-					return "SrcFileSyncLocalPath";
+				case FILE_CONTAINER:
+					return "FileContainer";
 				case ACTUAL_SRC_FILE_SYNC_LOCAL_PATH:
 					return "ActualSrcFileSyncLocalPath";
 				case SRC_FILE_SYNC_REMOTE_URL:

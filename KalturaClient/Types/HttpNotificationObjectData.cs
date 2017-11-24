@@ -40,6 +40,7 @@ namespace Kaltura.Types
 		public const string FORMAT = "format";
 		public const string IGNORE_NULL = "ignoreNull";
 		public const string CODE = "code";
+		public const string DATA_STRING_REPLACEMENTS = "dataStringReplacements";
 		#endregion
 
 		#region Private Fields
@@ -47,6 +48,7 @@ namespace Kaltura.Types
 		private ResponseType _Format = (ResponseType)Int32.MinValue;
 		private bool? _IgnoreNull = null;
 		private string _Code = null;
+		private IList<KeyValue> _DataStringReplacements;
 		#endregion
 
 		#region Properties
@@ -86,6 +88,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("Code");
 			}
 		}
+		public IList<KeyValue> DataStringReplacements
+		{
+			get { return _DataStringReplacements; }
+			set 
+			{ 
+				_DataStringReplacements = value;
+				OnPropertyChanged("DataStringReplacements");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -111,6 +122,13 @@ namespace Kaltura.Types
 					case "code":
 						this._Code = propertyNode.InnerText;
 						continue;
+					case "dataStringReplacements":
+						this._DataStringReplacements = new List<KeyValue>();
+						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
+						{
+							this._DataStringReplacements.Add(ObjectFactory.Create<KeyValue>(arrayNode));
+						}
+						continue;
 				}
 			}
 		}
@@ -126,6 +144,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("format", this._Format);
 			kparams.AddIfNotNull("ignoreNull", this._IgnoreNull);
 			kparams.AddIfNotNull("code", this._Code);
+			kparams.AddIfNotNull("dataStringReplacements", this._DataStringReplacements);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -140,6 +159,8 @@ namespace Kaltura.Types
 					return "IgnoreNull";
 				case CODE:
 					return "Code";
+				case DATA_STRING_REPLACEMENTS:
+					return "DataStringReplacements";
 				default:
 					return base.getPropertyName(apiName);
 			}

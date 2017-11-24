@@ -40,11 +40,11 @@ namespace Kaltura.Enums
 		public static readonly ESearchEntryFieldName ENTRY_CREATOR_ID = new ESearchEntryFieldName("creator_kuser_id");
 		public static readonly ESearchEntryFieldName ENTRY_CREDIT = new ESearchEntryFieldName("credit");
 		public static readonly ESearchEntryFieldName ENTRY_DESCRIPTION = new ESearchEntryFieldName("description");
-		public static readonly ESearchEntryFieldName ENTRY_DISPLAY_IN_SEARCH = new ESearchEntryFieldName("display_in_search");
 		public static readonly ESearchEntryFieldName ENTRY_END_DATE = new ESearchEntryFieldName("end_date");
 		public static readonly ESearchEntryFieldName ENTRY_ENTITLED_USER_EDIT = new ESearchEntryFieldName("entitled_kusers_edit");
 		public static readonly ESearchEntryFieldName ENTRY_ENTITLED_USER_PUBLISH = new ESearchEntryFieldName("entitled_kusers_publish");
 		public static readonly ESearchEntryFieldName ENTRY_TYPE = new ESearchEntryFieldName("entry_type");
+		public static readonly ESearchEntryFieldName ENTRY_EXTERNAL_SOURCE_TYPE = new ESearchEntryFieldName("external_source_type");
 		public static readonly ESearchEntryFieldName ENTRY_USER_ID = new ESearchEntryFieldName("kuser_id");
 		public static readonly ESearchEntryFieldName ENTRY_LENGTH_IN_MSECS = new ESearchEntryFieldName("length_in_msecs");
 		public static readonly ESearchEntryFieldName ENTRY_MEDIA_TYPE = new ESearchEntryFieldName("media_type");

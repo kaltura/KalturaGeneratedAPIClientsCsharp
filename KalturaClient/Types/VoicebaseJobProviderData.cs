@@ -45,6 +45,7 @@ namespace Kaltura.Types
 		public const string SPOKEN_LANGUAGE = "spokenLanguage";
 		public const string FILE_LOCATION = "fileLocation";
 		public const string REPLACE_MEDIA_CONTENT = "replaceMediaContent";
+		public const string ADDITIONAL_PARAMETERS = "additionalParameters";
 		#endregion
 
 		#region Private Fields
@@ -57,6 +58,7 @@ namespace Kaltura.Types
 		private Language _SpokenLanguage = null;
 		private string _FileLocation = null;
 		private bool? _ReplaceMediaContent = null;
+		private string _AdditionalParameters = null;
 		#endregion
 
 		#region Properties
@@ -126,6 +128,10 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplaceMediaContent");
 			}
 		}
+		public string AdditionalParameters
+		{
+			get { return _AdditionalParameters; }
+		}
 		#endregion
 
 		#region CTor
@@ -166,6 +172,9 @@ namespace Kaltura.Types
 					case "replaceMediaContent":
 						this._ReplaceMediaContent = ParseBool(propertyNode.InnerText);
 						continue;
+					case "additionalParameters":
+						this._AdditionalParameters = propertyNode.InnerText;
+						continue;
 				}
 			}
 		}
@@ -186,6 +195,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("spokenLanguage", this._SpokenLanguage);
 			kparams.AddIfNotNull("fileLocation", this._FileLocation);
 			kparams.AddIfNotNull("replaceMediaContent", this._ReplaceMediaContent);
+			kparams.AddIfNotNull("additionalParameters", this._AdditionalParameters);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -210,6 +220,8 @@ namespace Kaltura.Types
 					return "FileLocation";
 				case REPLACE_MEDIA_CONTENT:
 					return "ReplaceMediaContent";
+				case ADDITIONAL_PARAMETERS:
+					return "AdditionalParameters";
 				default:
 					return base.getPropertyName(apiName);
 			}

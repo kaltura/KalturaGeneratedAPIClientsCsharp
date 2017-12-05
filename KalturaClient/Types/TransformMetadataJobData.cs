@@ -36,7 +36,7 @@ namespace Kaltura.Types
 	public class TransformMetadataJobData : JobData
 	{
 		#region Constants
-		public const string SRC_XSL_PATH = "srcXslPath";
+		public const string SRC_XSL = "srcXsl";
 		public const string SRC_VERSION = "srcVersion";
 		public const string DEST_VERSION = "destVersion";
 		public const string DEST_XSD_PATH = "destXsdPath";
@@ -44,7 +44,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Private Fields
-		private string _SrcXslPath = null;
+		private FileContainer _SrcXsl;
 		private int _SrcVersion = Int32.MinValue;
 		private int _DestVersion = Int32.MinValue;
 		private string _DestXsdPath = null;
@@ -52,13 +52,13 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		public string SrcXslPath
+		public FileContainer SrcXsl
 		{
-			get { return _SrcXslPath; }
+			get { return _SrcXsl; }
 			set 
 			{ 
-				_SrcXslPath = value;
-				OnPropertyChanged("SrcXslPath");
+				_SrcXsl = value;
+				OnPropertyChanged("SrcXsl");
 			}
 		}
 		public int SrcVersion
@@ -110,8 +110,8 @@ namespace Kaltura.Types
 			{
 				switch (propertyNode.Name)
 				{
-					case "srcXslPath":
-						this._SrcXslPath = propertyNode.InnerText;
+					case "srcXsl":
+						this._SrcXsl = ObjectFactory.Create<FileContainer>(propertyNode);
 						continue;
 					case "srcVersion":
 						this._SrcVersion = ParseInt(propertyNode.InnerText);
@@ -136,7 +136,7 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaTransformMetadataJobData");
-			kparams.AddIfNotNull("srcXslPath", this._SrcXslPath);
+			kparams.AddIfNotNull("srcXsl", this._SrcXsl);
 			kparams.AddIfNotNull("srcVersion", this._SrcVersion);
 			kparams.AddIfNotNull("destVersion", this._DestVersion);
 			kparams.AddIfNotNull("destXsdPath", this._DestXsdPath);
@@ -147,8 +147,8 @@ namespace Kaltura.Types
 		{
 			switch(apiName)
 			{
-				case SRC_XSL_PATH:
-					return "SrcXslPath";
+				case SRC_XSL:
+					return "SrcXsl";
 				case SRC_VERSION:
 					return "SrcVersion";
 				case DEST_VERSION:

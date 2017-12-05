@@ -44,6 +44,7 @@ namespace Kaltura.Types
 		public const string SERVER_PASS_PHRASE = "serverPassPhrase";
 		public const string FTP_PASSIVE_MODE = "ftpPassiveMode";
 		public const string SRC_FILE_SYNC_LOCAL_PATH = "srcFileSyncLocalPath";
+		public const string SRC_FILE_ENCRYPTION_KEY = "srcFileEncryptionKey";
 		public const string SRC_FILE_SYNC_ID = "srcFileSyncId";
 		public const string DEST_FILE_SYNC_STORED_PATH = "destFileSyncStoredPath";
 		#endregion
@@ -57,6 +58,7 @@ namespace Kaltura.Types
 		private string _ServerPassPhrase = null;
 		private bool? _FtpPassiveMode = null;
 		private string _SrcFileSyncLocalPath = null;
+		private string _SrcFileEncryptionKey = null;
 		private string _SrcFileSyncId = null;
 		private string _DestFileSyncStoredPath = null;
 		#endregion
@@ -134,6 +136,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcFileSyncLocalPath");
 			}
 		}
+		public string SrcFileEncryptionKey
+		{
+			get { return _SrcFileEncryptionKey; }
+			set 
+			{ 
+				_SrcFileEncryptionKey = value;
+				OnPropertyChanged("SrcFileEncryptionKey");
+			}
+		}
 		public string SrcFileSyncId
 		{
 			get { return _SrcFileSyncId; }
@@ -189,6 +200,9 @@ namespace Kaltura.Types
 					case "srcFileSyncLocalPath":
 						this._SrcFileSyncLocalPath = propertyNode.InnerText;
 						continue;
+					case "srcFileEncryptionKey":
+						this._SrcFileEncryptionKey = propertyNode.InnerText;
+						continue;
 					case "srcFileSyncId":
 						this._SrcFileSyncId = propertyNode.InnerText;
 						continue;
@@ -214,6 +228,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("serverPassPhrase", this._ServerPassPhrase);
 			kparams.AddIfNotNull("ftpPassiveMode", this._FtpPassiveMode);
 			kparams.AddIfNotNull("srcFileSyncLocalPath", this._SrcFileSyncLocalPath);
+			kparams.AddIfNotNull("srcFileEncryptionKey", this._SrcFileEncryptionKey);
 			kparams.AddIfNotNull("srcFileSyncId", this._SrcFileSyncId);
 			kparams.AddIfNotNull("destFileSyncStoredPath", this._DestFileSyncStoredPath);
 			return kparams;
@@ -238,6 +253,8 @@ namespace Kaltura.Types
 					return "FtpPassiveMode";
 				case SRC_FILE_SYNC_LOCAL_PATH:
 					return "SrcFileSyncLocalPath";
+				case SRC_FILE_ENCRYPTION_KEY:
+					return "SrcFileEncryptionKey";
 				case SRC_FILE_SYNC_ID:
 					return "SrcFileSyncId";
 				case DEST_FILE_SYNC_STORED_PATH:

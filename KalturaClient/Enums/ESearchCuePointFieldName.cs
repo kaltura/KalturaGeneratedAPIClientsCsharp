@@ -40,7 +40,6 @@ namespace Kaltura.Enums
 		public static readonly ESearchCuePointFieldName CUE_POINT_SUB_TYPE = new ESearchCuePointFieldName("cue_points.cue_point_sub_type");
 		public static readonly ESearchCuePointFieldName CUE_POINT_TAGS = new ESearchCuePointFieldName("cue_points.cue_point_tags");
 		public static readonly ESearchCuePointFieldName CUE_POINT_TEXT = new ESearchCuePointFieldName("cue_points.cue_point_text");
-		public static readonly ESearchCuePointFieldName CUE_POINT_TYPE = new ESearchCuePointFieldName("cue_points.cue_point_type");
 
 		private ESearchCuePointFieldName(string name) : base(name) { }
 	}

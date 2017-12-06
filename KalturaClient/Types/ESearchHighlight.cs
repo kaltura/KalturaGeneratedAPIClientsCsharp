@@ -33,55 +33,59 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class MediaEntryFilterForPlaylist : MediaEntryFilter
+	public class ESearchHighlight : ObjectBase
 	{
 		#region Constants
-		public const string LIMIT = "limit";
-		public const string NAME = "name";
+		public const string FIELD_NAME = "fieldName";
+		public const string HITS = "hits";
 		#endregion
 
 		#region Private Fields
-		private int _Limit = Int32.MinValue;
-		private string _Name = null;
+		private string _FieldName = null;
+		private IList<String> _Hits;
 		#endregion
 
 		#region Properties
-		public int Limit
+		public string FieldName
 		{
-			get { return _Limit; }
+			get { return _FieldName; }
 			set 
 			{ 
-				_Limit = value;
-				OnPropertyChanged("Limit");
+				_FieldName = value;
+				OnPropertyChanged("FieldName");
 			}
 		}
-		public string Name
+		public IList<String> Hits
 		{
-			get { return _Name; }
+			get { return _Hits; }
 			set 
 			{ 
-				_Name = value;
-				OnPropertyChanged("Name");
+				_Hits = value;
+				OnPropertyChanged("Hits");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public MediaEntryFilterForPlaylist()
+		public ESearchHighlight()
 		{
 		}
 
-		public MediaEntryFilterForPlaylist(XmlElement node) : base(node)
+		public ESearchHighlight(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
 				switch (propertyNode.Name)
 				{
-					case "limit":
-						this._Limit = ParseInt(propertyNode.InnerText);
+					case "fieldName":
+						this._FieldName = propertyNode.InnerText;
 						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
+					case "hits":
+						this._Hits = new List<String>();
+						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
+						{
+							this._Hits.Add(ObjectFactory.Create<String>(arrayNode));
+						}
 						continue;
 				}
 			}
@@ -93,19 +97,19 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaMediaEntryFilterForPlaylist");
-			kparams.AddIfNotNull("limit", this._Limit);
-			kparams.AddIfNotNull("name", this._Name);
+				kparams.AddReplace("objectType", "KalturaESearchHighlight");
+			kparams.AddIfNotNull("fieldName", this._FieldName);
+			kparams.AddIfNotNull("hits", this._Hits);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case LIMIT:
-					return "Limit";
-				case NAME:
-					return "Name";
+				case FIELD_NAME:
+					return "FieldName";
+				case HITS:
+					return "Hits";
 				default:
 					return base.getPropertyName(apiName);
 			}

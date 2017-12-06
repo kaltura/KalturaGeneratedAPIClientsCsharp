@@ -40,11 +40,11 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Private Fields
-		private string _Highlight = null;
+		private IList<ESearchHighlight> _Highlight;
 		#endregion
 
 		#region Properties
-		public string Highlight
+		public IList<ESearchHighlight> Highlight
 		{
 			get { return _Highlight; }
 			set 
@@ -67,7 +67,11 @@ namespace Kaltura.Types
 				switch (propertyNode.Name)
 				{
 					case "highlight":
-						this._Highlight = propertyNode.InnerText;
+						this._Highlight = new List<ESearchHighlight>();
+						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
+						{
+							this._Highlight.Add(ObjectFactory.Create<ESearchHighlight>(arrayNode));
+						}
 						continue;
 				}
 			}

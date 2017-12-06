@@ -43,7 +43,7 @@ namespace Kaltura.Types
 
 		#region Private Fields
 		private ObjectBase _Object;
-		private string _Highlight = null;
+		private IList<ESearchHighlight> _Highlight;
 		private IList<ESearchItemDataResult> _ItemsData;
 		#endregion
 
@@ -57,7 +57,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Object");
 			}
 		}
-		public string Highlight
+		public IList<ESearchHighlight> Highlight
 		{
 			get { return _Highlight; }
 			set 
@@ -92,7 +92,11 @@ namespace Kaltura.Types
 						this._Object = ObjectFactory.Create<ObjectBase>(propertyNode);
 						continue;
 					case "highlight":
-						this._Highlight = propertyNode.InnerText;
+						this._Highlight = new List<ESearchHighlight>();
+						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
+						{
+							this._Highlight.Add(ObjectFactory.Create<ESearchHighlight>(arrayNode));
+						}
 						continue;
 					case "itemsData":
 						this._ItemsData = new List<ESearchItemDataResult>();

@@ -33,7 +33,7 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class ESearchCategoryItem : ESearchItem
+	public class ESearchCategoryItem : ESearchAbstractCategoryItem
 	{
 		#region Constants
 		public const string FIELD_NAME = "fieldName";

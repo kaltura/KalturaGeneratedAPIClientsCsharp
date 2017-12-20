@@ -33,24 +33,58 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class ESearchUnifiedItem : ESearchAbstractEntryItem
+	public class ESearchMetadataOrderByItem : ESearchOrderByItem
 	{
 		#region Constants
+		public const string XPATH = "xpath";
+		public const string METADATA_PROFILE_ID = "metadataProfileId";
 		#endregion
 
 		#region Private Fields
+		private string _Xpath = null;
+		private int _MetadataProfileId = Int32.MinValue;
 		#endregion
 
 		#region Properties
+		public string Xpath
+		{
+			get { return _Xpath; }
+			set 
+			{ 
+				_Xpath = value;
+				OnPropertyChanged("Xpath");
+			}
+		}
+		public int MetadataProfileId
+		{
+			get { return _MetadataProfileId; }
+			set 
+			{ 
+				_MetadataProfileId = value;
+				OnPropertyChanged("MetadataProfileId");
+			}
+		}
 		#endregion
 
 		#region CTor
-		public ESearchUnifiedItem()
+		public ESearchMetadataOrderByItem()
 		{
 		}
 
-		public ESearchUnifiedItem(XmlElement node) : base(node)
+		public ESearchMetadataOrderByItem(XmlElement node) : base(node)
 		{
+			foreach (XmlElement propertyNode in node.ChildNodes)
+			{
+				switch (propertyNode.Name)
+				{
+					case "xpath":
+						this._Xpath = propertyNode.InnerText;
+						continue;
+					case "metadataProfileId":
+						this._MetadataProfileId = ParseInt(propertyNode.InnerText);
+						continue;
+				}
+			}
 		}
 		#endregion
 
@@ -59,13 +93,19 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaESearchUnifiedItem");
+				kparams.AddReplace("objectType", "KalturaESearchMetadataOrderByItem");
+			kparams.AddIfNotNull("xpath", this._Xpath);
+			kparams.AddIfNotNull("metadataProfileId", this._MetadataProfileId);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
+				case XPATH:
+					return "Xpath";
+				case METADATA_PROFILE_ID:
+					return "MetadataProfileId";
 				default:
 					return base.getPropertyName(apiName);
 			}

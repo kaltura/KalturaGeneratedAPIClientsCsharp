@@ -48,6 +48,7 @@ namespace Kaltura.Types
 		public const string ANSWERS = "answers";
 		public const string HINT = "hint";
 		public const string EXPLANATION = "explanation";
+		public const string ASSET_ID = "assetId";
 		#endregion
 
 		#region Private Fields
@@ -63,6 +64,7 @@ namespace Kaltura.Types
 		private string _Answers = null;
 		private string _Hint = null;
 		private string _Explanation = null;
+		private string _AssetId = null;
 		#endregion
 
 		#region Properties
@@ -174,6 +176,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("Explanation");
 			}
 		}
+		public string AssetId
+		{
+			get { return _AssetId; }
+			set 
+			{ 
+				_AssetId = value;
+				OnPropertyChanged("AssetId");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -223,6 +234,9 @@ namespace Kaltura.Types
 					case "explanation":
 						this._Explanation = propertyNode.InnerText;
 						continue;
+					case "assetId":
+						this._AssetId = propertyNode.InnerText;
+						continue;
 				}
 			}
 		}
@@ -246,6 +260,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("answers", this._Answers);
 			kparams.AddIfNotNull("hint", this._Hint);
 			kparams.AddIfNotNull("explanation", this._Explanation);
+			kparams.AddIfNotNull("assetId", this._AssetId);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -276,6 +291,8 @@ namespace Kaltura.Types
 					return "Hint";
 				case EXPLANATION:
 					return "Explanation";
+				case ASSET_ID:
+					return "AssetId";
 				default:
 					return base.getPropertyName(apiName);
 			}

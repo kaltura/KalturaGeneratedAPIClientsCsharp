@@ -29,8 +29,8 @@ namespace Kaltura.Enums
 {
 	public sealed class ESearchCategoryOrderByFieldName : StringEnum
 	{
-		public static readonly ESearchCategoryOrderByFieldName CATEGORY_CREATED_AT = new ESearchCategoryOrderByFieldName("created_at");
-		public static readonly ESearchCategoryOrderByFieldName CATEGORY_UPDATED_AT = new ESearchCategoryOrderByFieldName("updated_at");
+		public static readonly ESearchCategoryOrderByFieldName CREATED_AT = new ESearchCategoryOrderByFieldName("created_at");
+		public static readonly ESearchCategoryOrderByFieldName UPDATED_AT = new ESearchCategoryOrderByFieldName("updated_at");
 
 		private ESearchCategoryOrderByFieldName(string name) : base(name) { }
 	}

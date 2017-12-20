@@ -33,7 +33,7 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class ESearchUnifiedItem : ESearchAbstractEntryItem
+	public class ESearchEntryBaseItem : ESearchBaseItem
 	{
 		#region Constants
 		#endregion
@@ -45,11 +45,11 @@ namespace Kaltura.Types
 		#endregion
 
 		#region CTor
-		public ESearchUnifiedItem()
+		public ESearchEntryBaseItem()
 		{
 		}
 
-		public ESearchUnifiedItem(XmlElement node) : base(node)
+		public ESearchEntryBaseItem(XmlElement node) : base(node)
 		{
 		}
 		#endregion
@@ -59,7 +59,7 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaESearchUnifiedItem");
+				kparams.AddReplace("objectType", "KalturaESearchEntryBaseItem");
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)

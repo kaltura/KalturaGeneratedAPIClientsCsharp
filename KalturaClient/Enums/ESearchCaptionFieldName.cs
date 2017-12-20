@@ -29,9 +29,9 @@ namespace Kaltura.Enums
 {
 	public sealed class ESearchCaptionFieldName : StringEnum
 	{
-		public static readonly ESearchCaptionFieldName CAPTION_CONTENT = new ESearchCaptionFieldName("caption_assets.lines.content");
-		public static readonly ESearchCaptionFieldName CAPTION_END_TIME = new ESearchCaptionFieldName("caption_assets.lines.end_time");
-		public static readonly ESearchCaptionFieldName CAPTION_START_TIME = new ESearchCaptionFieldName("caption_assets.lines.start_time");
+		public static readonly ESearchCaptionFieldName CONTENT = new ESearchCaptionFieldName("content");
+		public static readonly ESearchCaptionFieldName END_TIME = new ESearchCaptionFieldName("end_time");
+		public static readonly ESearchCaptionFieldName START_TIME = new ESearchCaptionFieldName("start_time");
 
 		private ESearchCaptionFieldName(string name) : base(name) { }
 	}

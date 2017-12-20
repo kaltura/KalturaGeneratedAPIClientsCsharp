@@ -35,54 +35,6 @@ using Kaltura.Enums;
 
 namespace Kaltura.Services
 {
-	public class ESearchGetAllowedSearchTypesRequestBuilder : RequestBuilder<IList<KeyValue>>
-	{
-		#region Constants
-		public const string SEARCH_ITEM = "searchItem";
-		#endregion
-
-		public ESearchItem SearchItem
-		{
-			set;
-			get;
-		}
-
-		public ESearchGetAllowedSearchTypesRequestBuilder()
-			: base("elasticsearch_esearch", "getAllowedSearchTypes")
-		{
-		}
-
-		public ESearchGetAllowedSearchTypesRequestBuilder(ESearchItem searchItem)
-			: this()
-		{
-			this.SearchItem = searchItem;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("searchItem"))
-				kparams.AddIfNotNull("searchItem", SearchItem);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(XmlElement result)
-		{
-			IList<KeyValue> list = new List<KeyValue>();
-			foreach(XmlElement node in result.ChildNodes)
-			{
-				list.Add(ObjectFactory.Create<KeyValue>(node));
-			}
-			return list;
-		}
-	}
-
 	public class ESearchSearchCategoryRequestBuilder : RequestBuilder<ESearchResponse>
 	{
 		#region Constants
@@ -90,7 +42,7 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public ESearchParams SearchParams
+		public ESearchCategoryParams SearchParams
 		{
 			set;
 			get;
@@ -106,7 +58,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public ESearchSearchCategoryRequestBuilder(ESearchParams searchParams, Pager pager)
+		public ESearchSearchCategoryRequestBuilder(ESearchCategoryParams searchParams, Pager pager)
 			: this()
 		{
 			this.SearchParams = searchParams;
@@ -142,7 +94,7 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public ESearchParams SearchParams
+		public ESearchEntryParams SearchParams
 		{
 			set;
 			get;
@@ -158,7 +110,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public ESearchSearchEntryRequestBuilder(ESearchParams searchParams, Pager pager)
+		public ESearchSearchEntryRequestBuilder(ESearchEntryParams searchParams, Pager pager)
 			: this()
 		{
 			this.SearchParams = searchParams;
@@ -194,7 +146,7 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public ESearchParams SearchParams
+		public ESearchUserParams SearchParams
 		{
 			set;
 			get;
@@ -210,7 +162,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public ESearchSearchUserRequestBuilder(ESearchParams searchParams, Pager pager)
+		public ESearchSearchUserRequestBuilder(ESearchUserParams searchParams, Pager pager)
 			: this()
 		{
 			this.SearchParams = searchParams;
@@ -246,22 +198,17 @@ namespace Kaltura.Services
 		{
 		}
 
-		public static ESearchGetAllowedSearchTypesRequestBuilder GetAllowedSearchTypes(ESearchItem searchItem)
-		{
-			return new ESearchGetAllowedSearchTypesRequestBuilder(searchItem);
-		}
-
-		public static ESearchSearchCategoryRequestBuilder SearchCategory(ESearchParams searchParams, Pager pager = null)
+		public static ESearchSearchCategoryRequestBuilder SearchCategory(ESearchCategoryParams searchParams, Pager pager = null)
 		{
 			return new ESearchSearchCategoryRequestBuilder(searchParams, pager);
 		}
 
-		public static ESearchSearchEntryRequestBuilder SearchEntry(ESearchParams searchParams, Pager pager = null)
+		public static ESearchSearchEntryRequestBuilder SearchEntry(ESearchEntryParams searchParams, Pager pager = null)
 		{
 			return new ESearchSearchEntryRequestBuilder(searchParams, pager);
 		}
 
-		public static ESearchSearchUserRequestBuilder SearchUser(ESearchParams searchParams, Pager pager = null)
+		public static ESearchSearchUserRequestBuilder SearchUser(ESearchUserParams searchParams, Pager pager = null)
 		{
 			return new ESearchSearchUserRequestBuilder(searchParams, pager);
 		}

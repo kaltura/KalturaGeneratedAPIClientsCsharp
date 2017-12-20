@@ -29,17 +29,17 @@ namespace Kaltura.Enums
 {
 	public sealed class ESearchCuePointFieldName : StringEnum
 	{
-		public static readonly ESearchCuePointFieldName CUE_POINT_ANSWERS = new ESearchCuePointFieldName("cue_points.cue_point_answers");
-		public static readonly ESearchCuePointFieldName CUE_POINT_END_TIME = new ESearchCuePointFieldName("cue_points.cue_point_end_time");
-		public static readonly ESearchCuePointFieldName CUE_POINT_EXPLANATION = new ESearchCuePointFieldName("cue_points.cue_point_explanation");
-		public static readonly ESearchCuePointFieldName CUE_POINT_HINT = new ESearchCuePointFieldName("cue_points.cue_point_hint");
-		public static readonly ESearchCuePointFieldName CUE_POINT_ID = new ESearchCuePointFieldName("cue_points.cue_point_id");
-		public static readonly ESearchCuePointFieldName CUE_POINT_NAME = new ESearchCuePointFieldName("cue_points.cue_point_name");
-		public static readonly ESearchCuePointFieldName CUE_POINT_QUESTION = new ESearchCuePointFieldName("cue_points.cue_point_question");
-		public static readonly ESearchCuePointFieldName CUE_POINT_START_TIME = new ESearchCuePointFieldName("cue_points.cue_point_start_time");
-		public static readonly ESearchCuePointFieldName CUE_POINT_SUB_TYPE = new ESearchCuePointFieldName("cue_points.cue_point_sub_type");
-		public static readonly ESearchCuePointFieldName CUE_POINT_TAGS = new ESearchCuePointFieldName("cue_points.cue_point_tags");
-		public static readonly ESearchCuePointFieldName CUE_POINT_TEXT = new ESearchCuePointFieldName("cue_points.cue_point_text");
+		public static readonly ESearchCuePointFieldName ANSWERS = new ESearchCuePointFieldName("answers");
+		public static readonly ESearchCuePointFieldName END_TIME = new ESearchCuePointFieldName("end_time");
+		public static readonly ESearchCuePointFieldName EXPLANATION = new ESearchCuePointFieldName("explanation");
+		public static readonly ESearchCuePointFieldName HINT = new ESearchCuePointFieldName("hint");
+		public static readonly ESearchCuePointFieldName ID = new ESearchCuePointFieldName("id");
+		public static readonly ESearchCuePointFieldName NAME = new ESearchCuePointFieldName("name");
+		public static readonly ESearchCuePointFieldName QUESTION = new ESearchCuePointFieldName("question");
+		public static readonly ESearchCuePointFieldName START_TIME = new ESearchCuePointFieldName("start_time");
+		public static readonly ESearchCuePointFieldName SUB_TYPE = new ESearchCuePointFieldName("sub_type");
+		public static readonly ESearchCuePointFieldName TAGS = new ESearchCuePointFieldName("tags");
+		public static readonly ESearchCuePointFieldName TEXT = new ESearchCuePointFieldName("text");
 
 		private ESearchCuePointFieldName(string name) : base(name) { }
 	}

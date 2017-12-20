@@ -29,40 +29,42 @@ namespace Kaltura.Enums
 {
 	public sealed class ESearchEntryFieldName : StringEnum
 	{
-		public static readonly ESearchEntryFieldName ENTRY_ID = new ESearchEntryFieldName("_id");
-		public static readonly ESearchEntryFieldName ENTRY_ACCESS_CONTROL_ID = new ESearchEntryFieldName("access_control_id");
-		public static readonly ESearchEntryFieldName ENTRY_ADMIN_TAGS = new ESearchEntryFieldName("admin_tags");
-		public static readonly ESearchEntryFieldName ENTRY_CATEGORIES = new ESearchEntryFieldName("categories");
-		public static readonly ESearchEntryFieldName ENTRY_CATEGORY_NAME = new ESearchEntryFieldName("categories.name");
-		public static readonly ESearchEntryFieldName ENTRY_CATEGORY_IDS = new ESearchEntryFieldName("category_ids");
-		public static readonly ESearchEntryFieldName ENTRY_CONVERSION_PROFILE_ID = new ESearchEntryFieldName("conversion_profile_id");
-		public static readonly ESearchEntryFieldName ENTRY_CREATED_AT = new ESearchEntryFieldName("created_at");
-		public static readonly ESearchEntryFieldName ENTRY_CREATOR_ID = new ESearchEntryFieldName("creator_kuser_id");
-		public static readonly ESearchEntryFieldName ENTRY_CREDIT = new ESearchEntryFieldName("credit");
-		public static readonly ESearchEntryFieldName ENTRY_DESCRIPTION = new ESearchEntryFieldName("description");
-		public static readonly ESearchEntryFieldName ENTRY_END_DATE = new ESearchEntryFieldName("end_date");
-		public static readonly ESearchEntryFieldName ENTRY_ENTITLED_USER_EDIT = new ESearchEntryFieldName("entitled_kusers_edit");
-		public static readonly ESearchEntryFieldName ENTRY_ENTITLED_USER_PUBLISH = new ESearchEntryFieldName("entitled_kusers_publish");
+		public static readonly ESearchEntryFieldName ACCESS_CONTROL_ID = new ESearchEntryFieldName("access_control_id");
+		public static readonly ESearchEntryFieldName ADMIN_TAGS = new ESearchEntryFieldName("admin_tags");
+		public static readonly ESearchEntryFieldName CATEGORIES = new ESearchEntryFieldName("categories");
+		public static readonly ESearchEntryFieldName CATEGORY_IDS = new ESearchEntryFieldName("category_ids");
+		public static readonly ESearchEntryFieldName CATEGORY_NAME = new ESearchEntryFieldName("category_name");
+		public static readonly ESearchEntryFieldName CONVERSION_PROFILE_ID = new ESearchEntryFieldName("conversion_profile_id");
+		public static readonly ESearchEntryFieldName CREATED_AT = new ESearchEntryFieldName("created_at");
+		public static readonly ESearchEntryFieldName CREATOR_ID = new ESearchEntryFieldName("creator_kuser_id");
+		public static readonly ESearchEntryFieldName CREDIT = new ESearchEntryFieldName("credit");
+		public static readonly ESearchEntryFieldName DESCRIPTION = new ESearchEntryFieldName("description");
+		public static readonly ESearchEntryFieldName END_DATE = new ESearchEntryFieldName("end_date");
+		public static readonly ESearchEntryFieldName ENTITLED_USER_EDIT = new ESearchEntryFieldName("entitled_kusers_edit");
+		public static readonly ESearchEntryFieldName ENTITLED_USER_PUBLISH = new ESearchEntryFieldName("entitled_kusers_publish");
 		public static readonly ESearchEntryFieldName ENTRY_TYPE = new ESearchEntryFieldName("entry_type");
-		public static readonly ESearchEntryFieldName ENTRY_EXTERNAL_SOURCE_TYPE = new ESearchEntryFieldName("external_source_type");
-		public static readonly ESearchEntryFieldName ENTRY_USER_ID = new ESearchEntryFieldName("kuser_id");
-		public static readonly ESearchEntryFieldName ENTRY_LENGTH_IN_MSECS = new ESearchEntryFieldName("length_in_msecs");
-		public static readonly ESearchEntryFieldName ENTRY_MEDIA_TYPE = new ESearchEntryFieldName("media_type");
-		public static readonly ESearchEntryFieldName ENTRY_MODERATION_STATUS = new ESearchEntryFieldName("moderation_status");
-		public static readonly ESearchEntryFieldName ENTRY_NAME = new ESearchEntryFieldName("name");
-		public static readonly ESearchEntryFieldName ENTRY_PARENT_ENTRY_ID = new ESearchEntryFieldName("parent_id");
-		public static readonly ESearchEntryFieldName ENTRY_PUSH_PUBLISH = new ESearchEntryFieldName("push_publish");
-		public static readonly ESearchEntryFieldName ENTRY_RECORDED_ENTRY_ID = new ESearchEntryFieldName("recorded_entry_id");
-		public static readonly ESearchEntryFieldName ENTRY_REDIRECT_ENTRY_ID = new ESearchEntryFieldName("redirect_entry_id");
-		public static readonly ESearchEntryFieldName ENTRY_REFERENCE_ID = new ESearchEntryFieldName("reference_id");
-		public static readonly ESearchEntryFieldName ENTRY_SITE_URL = new ESearchEntryFieldName("site_url");
-		public static readonly ESearchEntryFieldName ENTRY_SOURCE_TYPE = new ESearchEntryFieldName("source_type");
-		public static readonly ESearchEntryFieldName ENTRY_START_DATE = new ESearchEntryFieldName("start_date");
-		public static readonly ESearchEntryFieldName ENTRY_TAGS = new ESearchEntryFieldName("tags");
-		public static readonly ESearchEntryFieldName ENTRY_TEMPLATE_ENTRY_ID = new ESearchEntryFieldName("template_entry_id");
-		public static readonly ESearchEntryFieldName ENTRY_UPDATED_AT = new ESearchEntryFieldName("updated_at");
-		public static readonly ESearchEntryFieldName ENTRY_VIEWS = new ESearchEntryFieldName("views");
-		public static readonly ESearchEntryFieldName ENTRY_VOTES = new ESearchEntryFieldName("votes");
+		public static readonly ESearchEntryFieldName EXTERNAL_SOURCE_TYPE = new ESearchEntryFieldName("external_source_type");
+		public static readonly ESearchEntryFieldName ID = new ESearchEntryFieldName("id");
+		public static readonly ESearchEntryFieldName IS_LIVE = new ESearchEntryFieldName("is_live");
+		public static readonly ESearchEntryFieldName IS_QUIZ = new ESearchEntryFieldName("is_quiz");
+		public static readonly ESearchEntryFieldName USER_ID = new ESearchEntryFieldName("kuser_id");
+		public static readonly ESearchEntryFieldName LENGTH_IN_MSECS = new ESearchEntryFieldName("length_in_msecs");
+		public static readonly ESearchEntryFieldName MEDIA_TYPE = new ESearchEntryFieldName("media_type");
+		public static readonly ESearchEntryFieldName MODERATION_STATUS = new ESearchEntryFieldName("moderation_status");
+		public static readonly ESearchEntryFieldName NAME = new ESearchEntryFieldName("name");
+		public static readonly ESearchEntryFieldName PARENT_ENTRY_ID = new ESearchEntryFieldName("parent_id");
+		public static readonly ESearchEntryFieldName PUSH_PUBLISH = new ESearchEntryFieldName("push_publish");
+		public static readonly ESearchEntryFieldName RECORDED_ENTRY_ID = new ESearchEntryFieldName("recorded_entry_id");
+		public static readonly ESearchEntryFieldName REDIRECT_ENTRY_ID = new ESearchEntryFieldName("redirect_entry_id");
+		public static readonly ESearchEntryFieldName REFERENCE_ID = new ESearchEntryFieldName("reference_id");
+		public static readonly ESearchEntryFieldName SITE_URL = new ESearchEntryFieldName("site_url");
+		public static readonly ESearchEntryFieldName SOURCE_TYPE = new ESearchEntryFieldName("source_type");
+		public static readonly ESearchEntryFieldName START_DATE = new ESearchEntryFieldName("start_date");
+		public static readonly ESearchEntryFieldName TAGS = new ESearchEntryFieldName("tags");
+		public static readonly ESearchEntryFieldName TEMPLATE_ENTRY_ID = new ESearchEntryFieldName("template_entry_id");
+		public static readonly ESearchEntryFieldName UPDATED_AT = new ESearchEntryFieldName("updated_at");
+		public static readonly ESearchEntryFieldName VIEWS = new ESearchEntryFieldName("views");
+		public static readonly ESearchEntryFieldName VOTES = new ESearchEntryFieldName("votes");
 
 		private ESearchEntryFieldName(string name) : base(name) { }
 	}

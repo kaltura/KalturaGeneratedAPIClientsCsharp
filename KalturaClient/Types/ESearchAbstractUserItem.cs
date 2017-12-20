@@ -33,24 +33,72 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class ESearchUnifiedItem : ESearchAbstractEntryItem
+	public class ESearchAbstractUserItem : ESearchUserBaseItem
 	{
 		#region Constants
+		public const string SEARCH_TERM = "searchTerm";
+		public const string ITEM_TYPE = "itemType";
+		public const string RANGE = "range";
 		#endregion
 
 		#region Private Fields
+		private string _SearchTerm = null;
+		private ESearchItemType _ItemType = (ESearchItemType)Int32.MinValue;
+		private ESearchRange _Range;
 		#endregion
 
 		#region Properties
+		public string SearchTerm
+		{
+			get { return _SearchTerm; }
+			set 
+			{ 
+				_SearchTerm = value;
+				OnPropertyChanged("SearchTerm");
+			}
+		}
+		public ESearchItemType ItemType
+		{
+			get { return _ItemType; }
+			set 
+			{ 
+				_ItemType = value;
+				OnPropertyChanged("ItemType");
+			}
+		}
+		public ESearchRange Range
+		{
+			get { return _Range; }
+			set 
+			{ 
+				_Range = value;
+				OnPropertyChanged("Range");
+			}
+		}
 		#endregion
 
 		#region CTor
-		public ESearchUnifiedItem()
+		public ESearchAbstractUserItem()
 		{
 		}
 
-		public ESearchUnifiedItem(XmlElement node) : base(node)
+		public ESearchAbstractUserItem(XmlElement node) : base(node)
 		{
+			foreach (XmlElement propertyNode in node.ChildNodes)
+			{
+				switch (propertyNode.Name)
+				{
+					case "searchTerm":
+						this._SearchTerm = propertyNode.InnerText;
+						continue;
+					case "itemType":
+						this._ItemType = (ESearchItemType)ParseEnum(typeof(ESearchItemType), propertyNode.InnerText);
+						continue;
+					case "range":
+						this._Range = ObjectFactory.Create<ESearchRange>(propertyNode);
+						continue;
+				}
+			}
 		}
 		#endregion
 
@@ -59,13 +107,22 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaESearchUnifiedItem");
+				kparams.AddReplace("objectType", "KalturaESearchAbstractUserItem");
+			kparams.AddIfNotNull("searchTerm", this._SearchTerm);
+			kparams.AddIfNotNull("itemType", this._ItemType);
+			kparams.AddIfNotNull("range", this._Range);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
+				case SEARCH_TERM:
+					return "SearchTerm";
+				case ITEM_TYPE:
+					return "ItemType";
+				case RANGE:
+					return "Range";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -33,24 +33,62 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class ESearchUnifiedItem : ESearchAbstractEntryItem
+	public class ESearchEntryOperator : ESearchEntryBaseItem
 	{
 		#region Constants
+		public const string OPERATOR = "operator";
+		public const string SEARCH_ITEMS = "searchItems";
 		#endregion
 
 		#region Private Fields
+		private ESearchOperatorType _Operator = (ESearchOperatorType)Int32.MinValue;
+		private IList<ESearchEntryBaseItem> _SearchItems;
 		#endregion
 
 		#region Properties
+		public ESearchOperatorType Operator
+		{
+			get { return _Operator; }
+			set 
+			{ 
+				_Operator = value;
+				OnPropertyChanged("Operator");
+			}
+		}
+		public IList<ESearchEntryBaseItem> SearchItems
+		{
+			get { return _SearchItems; }
+			set 
+			{ 
+				_SearchItems = value;
+				OnPropertyChanged("SearchItems");
+			}
+		}
 		#endregion
 
 		#region CTor
-		public ESearchUnifiedItem()
+		public ESearchEntryOperator()
 		{
 		}
 
-		public ESearchUnifiedItem(XmlElement node) : base(node)
+		public ESearchEntryOperator(XmlElement node) : base(node)
 		{
+			foreach (XmlElement propertyNode in node.ChildNodes)
+			{
+				switch (propertyNode.Name)
+				{
+					case "operator":
+						this._Operator = (ESearchOperatorType)ParseEnum(typeof(ESearchOperatorType), propertyNode.InnerText);
+						continue;
+					case "searchItems":
+						this._SearchItems = new List<ESearchEntryBaseItem>();
+						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
+						{
+							this._SearchItems.Add(ObjectFactory.Create<ESearchEntryBaseItem>(arrayNode));
+						}
+						continue;
+				}
+			}
 		}
 		#endregion
 
@@ -59,13 +97,19 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaESearchUnifiedItem");
+				kparams.AddReplace("objectType", "KalturaESearchEntryOperator");
+			kparams.AddIfNotNull("operator", this._Operator);
+			kparams.AddIfNotNull("searchItems", this._SearchItems);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
+				case OPERATOR:
+					return "Operator";
+				case SEARCH_ITEMS:
+					return "SearchItems";
 				default:
 					return base.getPropertyName(apiName);
 			}

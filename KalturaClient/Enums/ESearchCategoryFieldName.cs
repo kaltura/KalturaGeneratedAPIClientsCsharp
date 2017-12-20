@@ -29,32 +29,32 @@ namespace Kaltura.Enums
 {
 	public sealed class ESearchCategoryFieldName : StringEnum
 	{
-		public static readonly ESearchCategoryFieldName CATEGORY_CONTRIBUTION_POLICY = new ESearchCategoryFieldName("contribution_policy");
-		public static readonly ESearchCategoryFieldName CATEGORY_CREATED_AT = new ESearchCategoryFieldName("created_at");
-		public static readonly ESearchCategoryFieldName CATEGORY_DEPTH = new ESearchCategoryFieldName("depth");
-		public static readonly ESearchCategoryFieldName CATEGORY_DESCRIPTION = new ESearchCategoryFieldName("description");
-		public static readonly ESearchCategoryFieldName CATEGORY_DIRECT_ENTRIES_COUNT = new ESearchCategoryFieldName("direct_entries_count");
-		public static readonly ESearchCategoryFieldName CATEGORY_DIRECT_SUB_CATEGORIES_COUNT = new ESearchCategoryFieldName("direct_sub_categories_count");
-		public static readonly ESearchCategoryFieldName CATEGORY_DISPLAY_IN_SEARCH = new ESearchCategoryFieldName("display_in_search");
-		public static readonly ESearchCategoryFieldName CATEGORY_ENTRIES_COUNT = new ESearchCategoryFieldName("entries_count");
-		public static readonly ESearchCategoryFieldName CATEGORY_FULL_IDS = new ESearchCategoryFieldName("full_ids");
-		public static readonly ESearchCategoryFieldName CATEGORY_FULL_NAME = new ESearchCategoryFieldName("full_name");
-		public static readonly ESearchCategoryFieldName CATEGORY_INHERITANCE_TYPE = new ESearchCategoryFieldName("inheritance_type");
-		public static readonly ESearchCategoryFieldName CATEGORY_INHERITED_PARENT_ID = new ESearchCategoryFieldName("inherited_parent_id");
-		public static readonly ESearchCategoryFieldName CATEGORY_KUSER_ID = new ESearchCategoryFieldName("kuser_id");
-		public static readonly ESearchCategoryFieldName CATEGORY_KUSER_IDS = new ESearchCategoryFieldName("kuser_ids");
-		public static readonly ESearchCategoryFieldName CATEGORY_MEMBERS_COUNT = new ESearchCategoryFieldName("members_count");
-		public static readonly ESearchCategoryFieldName CATEGORY_MODERATION = new ESearchCategoryFieldName("moderation");
-		public static readonly ESearchCategoryFieldName CATEGORY_NAME = new ESearchCategoryFieldName("name");
-		public static readonly ESearchCategoryFieldName CATEGORY_PARENT_ID = new ESearchCategoryFieldName("parent_id");
-		public static readonly ESearchCategoryFieldName CATEGORY_PENDING_ENTRIES_COUNT = new ESearchCategoryFieldName("pending_entries_count");
-		public static readonly ESearchCategoryFieldName CATEGORY_PENDING_MEMBERS_COUNT = new ESearchCategoryFieldName("pending_members_count");
-		public static readonly ESearchCategoryFieldName CATEGORY_PRIVACY = new ESearchCategoryFieldName("privacy");
-		public static readonly ESearchCategoryFieldName CATEGORY_PRIVACY_CONTEXT = new ESearchCategoryFieldName("privacy_context");
-		public static readonly ESearchCategoryFieldName CATEGORY_PRIVACY_CONTEXTS = new ESearchCategoryFieldName("privacy_contexts");
-		public static readonly ESearchCategoryFieldName CATEGORY_REFERENCE_ID = new ESearchCategoryFieldName("reference_id");
-		public static readonly ESearchCategoryFieldName CATEGORY_TAGS = new ESearchCategoryFieldName("tags");
-		public static readonly ESearchCategoryFieldName CATEGORY_UPDATED_AT = new ESearchCategoryFieldName("updated_at");
+		public static readonly ESearchCategoryFieldName CONTRIBUTION_POLICY = new ESearchCategoryFieldName("contribution_policy");
+		public static readonly ESearchCategoryFieldName CREATED_AT = new ESearchCategoryFieldName("created_at");
+		public static readonly ESearchCategoryFieldName DEPTH = new ESearchCategoryFieldName("depth");
+		public static readonly ESearchCategoryFieldName DESCRIPTION = new ESearchCategoryFieldName("description");
+		public static readonly ESearchCategoryFieldName DIRECT_ENTRIES_COUNT = new ESearchCategoryFieldName("direct_entries_count");
+		public static readonly ESearchCategoryFieldName DIRECT_SUB_CATEGORIES_COUNT = new ESearchCategoryFieldName("direct_sub_categories_count");
+		public static readonly ESearchCategoryFieldName DISPLAY_IN_SEARCH = new ESearchCategoryFieldName("display_in_search");
+		public static readonly ESearchCategoryFieldName ENTRIES_COUNT = new ESearchCategoryFieldName("entries_count");
+		public static readonly ESearchCategoryFieldName FULL_IDS = new ESearchCategoryFieldName("full_ids");
+		public static readonly ESearchCategoryFieldName FULL_NAME = new ESearchCategoryFieldName("full_name");
+		public static readonly ESearchCategoryFieldName INHERITANCE_TYPE = new ESearchCategoryFieldName("inheritance_type");
+		public static readonly ESearchCategoryFieldName INHERITED_PARENT_ID = new ESearchCategoryFieldName("inherited_parent_id");
+		public static readonly ESearchCategoryFieldName MEMBERS_COUNT = new ESearchCategoryFieldName("members_count");
+		public static readonly ESearchCategoryFieldName MODERATION = new ESearchCategoryFieldName("moderation");
+		public static readonly ESearchCategoryFieldName NAME = new ESearchCategoryFieldName("name");
+		public static readonly ESearchCategoryFieldName PARENT_ID = new ESearchCategoryFieldName("parent_id");
+		public static readonly ESearchCategoryFieldName PENDING_ENTRIES_COUNT = new ESearchCategoryFieldName("pending_entries_count");
+		public static readonly ESearchCategoryFieldName PENDING_MEMBERS_COUNT = new ESearchCategoryFieldName("pending_members_count");
+		public static readonly ESearchCategoryFieldName PRIVACY = new ESearchCategoryFieldName("privacy");
+		public static readonly ESearchCategoryFieldName PRIVACY_CONTEXT = new ESearchCategoryFieldName("privacy_context");
+		public static readonly ESearchCategoryFieldName PRIVACY_CONTEXTS = new ESearchCategoryFieldName("privacy_contexts");
+		public static readonly ESearchCategoryFieldName REFERENCE_ID = new ESearchCategoryFieldName("reference_id");
+		public static readonly ESearchCategoryFieldName TAGS = new ESearchCategoryFieldName("tags");
+		public static readonly ESearchCategoryFieldName UPDATED_AT = new ESearchCategoryFieldName("updated_at");
+		public static readonly ESearchCategoryFieldName USER_ID = new ESearchCategoryFieldName("user_id");
+		public static readonly ESearchCategoryFieldName USER_IDS = new ESearchCategoryFieldName("user_ids");
 
 		private ESearchCategoryFieldName(string name) : base(name) { }
 	}

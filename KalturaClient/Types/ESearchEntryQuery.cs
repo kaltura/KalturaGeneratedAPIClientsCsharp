@@ -33,24 +33,44 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class ESearchUnifiedItem : ESearchAbstractEntryItem
+	public class ESearchEntryQuery : ESearchEntryBaseItem
 	{
 		#region Constants
+		public const string ESEARCH_QUERY = "eSearchQuery";
 		#endregion
 
 		#region Private Fields
+		private string _ESearchQuery = null;
 		#endregion
 
 		#region Properties
+		public string ESearchQuery
+		{
+			get { return _ESearchQuery; }
+			set 
+			{ 
+				_ESearchQuery = value;
+				OnPropertyChanged("ESearchQuery");
+			}
+		}
 		#endregion
 
 		#region CTor
-		public ESearchUnifiedItem()
+		public ESearchEntryQuery()
 		{
 		}
 
-		public ESearchUnifiedItem(XmlElement node) : base(node)
+		public ESearchEntryQuery(XmlElement node) : base(node)
 		{
+			foreach (XmlElement propertyNode in node.ChildNodes)
+			{
+				switch (propertyNode.Name)
+				{
+					case "eSearchQuery":
+						this._ESearchQuery = propertyNode.InnerText;
+						continue;
+				}
+			}
 		}
 		#endregion
 
@@ -59,13 +79,16 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaESearchUnifiedItem");
+				kparams.AddReplace("objectType", "KalturaESearchEntryQuery");
+			kparams.AddIfNotNull("eSearchQuery", this._ESearchQuery);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
+				case ESEARCH_QUERY:
+					return "ESearchQuery";
 				default:
 					return base.getPropertyName(apiName);
 			}

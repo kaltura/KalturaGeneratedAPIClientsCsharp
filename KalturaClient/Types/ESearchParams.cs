@@ -36,7 +36,6 @@ namespace Kaltura.Types
 	public class ESearchParams : ObjectBase
 	{
 		#region Constants
-		public const string SEARCH_OPERATOR = "searchOperator";
 		public const string OBJECT_STATUSES = "objectStatuses";
 		public const string OBJECT_ID = "objectId";
 		public const string ORDER_BY = "orderBy";
@@ -44,7 +43,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Private Fields
-		private ESearchOperator _SearchOperator;
 		private string _ObjectStatuses = null;
 		private string _ObjectId = null;
 		private ESearchOrderBy _OrderBy;
@@ -52,15 +50,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		public ESearchOperator SearchOperator
-		{
-			get { return _SearchOperator; }
-			set 
-			{ 
-				_SearchOperator = value;
-				OnPropertyChanged("SearchOperator");
-			}
-		}
 		public string ObjectStatuses
 		{
 			get { return _ObjectStatuses; }
@@ -110,9 +99,6 @@ namespace Kaltura.Types
 			{
 				switch (propertyNode.Name)
 				{
-					case "searchOperator":
-						this._SearchOperator = ObjectFactory.Create<ESearchOperator>(propertyNode);
-						continue;
 					case "objectStatuses":
 						this._ObjectStatuses = propertyNode.InnerText;
 						continue;
@@ -136,7 +122,6 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaESearchParams");
-			kparams.AddIfNotNull("searchOperator", this._SearchOperator);
 			kparams.AddIfNotNull("objectStatuses", this._ObjectStatuses);
 			kparams.AddIfNotNull("objectId", this._ObjectId);
 			kparams.AddIfNotNull("orderBy", this._OrderBy);
@@ -147,8 +132,6 @@ namespace Kaltura.Types
 		{
 			switch(apiName)
 			{
-				case SEARCH_OPERATOR:
-					return "SearchOperator";
 				case OBJECT_STATUSES:
 					return "ObjectStatuses";
 				case OBJECT_ID:

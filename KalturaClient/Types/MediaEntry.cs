@@ -48,6 +48,8 @@ namespace Kaltura.Types
 		public const string FLAVOR_PARAMS_IDS = "flavorParamsIds";
 		public const string IS_TRIM_DISABLED = "isTrimDisabled";
 		public const string STREAMS = "streams";
+		public const string IS_SEQUENCE_ENTRY = "isSequenceEntry";
+		public const string SEQUENCE_ENTRY_IDS = "sequenceEntryIds";
 		#endregion
 
 		#region Private Fields
@@ -63,6 +65,8 @@ namespace Kaltura.Types
 		private string _FlavorParamsIds = null;
 		private NullableBoolean _IsTrimDisabled = (NullableBoolean)Int32.MinValue;
 		private IList<StreamContainer> _Streams;
+		private NullableBoolean _IsSequenceEntry = (NullableBoolean)Int32.MinValue;
+		private string _SequenceEntryIds = null;
 		#endregion
 
 		#region Properties
@@ -154,6 +158,24 @@ namespace Kaltura.Types
 				OnPropertyChanged("Streams");
 			}
 		}
+		public NullableBoolean IsSequenceEntry
+		{
+			get { return _IsSequenceEntry; }
+			set 
+			{ 
+				_IsSequenceEntry = value;
+				OnPropertyChanged("IsSequenceEntry");
+			}
+		}
+		public string SequenceEntryIds
+		{
+			get { return _SequenceEntryIds; }
+			set 
+			{ 
+				_SequenceEntryIds = value;
+				OnPropertyChanged("SequenceEntryIds");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -207,6 +229,12 @@ namespace Kaltura.Types
 							this._Streams.Add(ObjectFactory.Create<StreamContainer>(arrayNode));
 						}
 						continue;
+					case "isSequenceEntry":
+						this._IsSequenceEntry = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
+						continue;
+					case "sequenceEntryIds":
+						this._SequenceEntryIds = propertyNode.InnerText;
+						continue;
 				}
 			}
 		}
@@ -230,6 +258,8 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("flavorParamsIds", this._FlavorParamsIds);
 			kparams.AddIfNotNull("isTrimDisabled", this._IsTrimDisabled);
 			kparams.AddIfNotNull("streams", this._Streams);
+			kparams.AddIfNotNull("isSequenceEntry", this._IsSequenceEntry);
+			kparams.AddIfNotNull("sequenceEntryIds", this._SequenceEntryIds);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -260,6 +290,10 @@ namespace Kaltura.Types
 					return "IsTrimDisabled";
 				case STREAMS:
 					return "Streams";
+				case IS_SEQUENCE_ENTRY:
+					return "IsSequenceEntry";
+				case SEQUENCE_ENTRY_IDS:
+					return "SequenceEntryIds";
 				default:
 					return base.getPropertyName(apiName);
 			}

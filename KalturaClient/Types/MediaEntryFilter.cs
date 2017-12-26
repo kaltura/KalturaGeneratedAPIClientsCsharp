@@ -36,36 +36,14 @@ namespace Kaltura.Types
 	public class MediaEntryFilter : MediaEntryBaseFilter
 	{
 		#region Constants
-		public const string IS_SEQUENCE_ENTRY = "isSequenceEntry";
-		public const string SEQUENCE_ENTRY_IDS_IN = "sequenceEntryIdsIn";
 		public new const string ORDER_BY = "orderBy";
 		#endregion
 
 		#region Private Fields
-		private NullableBoolean _IsSequenceEntry = (NullableBoolean)Int32.MinValue;
-		private string _SequenceEntryIdsIn = null;
 		private MediaEntryOrderBy _OrderBy = null;
 		#endregion
 
 		#region Properties
-		public NullableBoolean IsSequenceEntry
-		{
-			get { return _IsSequenceEntry; }
-			set 
-			{ 
-				_IsSequenceEntry = value;
-				OnPropertyChanged("IsSequenceEntry");
-			}
-		}
-		public string SequenceEntryIdsIn
-		{
-			get { return _SequenceEntryIdsIn; }
-			set 
-			{ 
-				_SequenceEntryIdsIn = value;
-				OnPropertyChanged("SequenceEntryIdsIn");
-			}
-		}
 		public new MediaEntryOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -88,12 +66,6 @@ namespace Kaltura.Types
 			{
 				switch (propertyNode.Name)
 				{
-					case "isSequenceEntry":
-						this._IsSequenceEntry = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "sequenceEntryIdsIn":
-						this._SequenceEntryIdsIn = propertyNode.InnerText;
-						continue;
 					case "orderBy":
 						this._OrderBy = (MediaEntryOrderBy)StringEnum.Parse(typeof(MediaEntryOrderBy), propertyNode.InnerText);
 						continue;
@@ -108,8 +80,6 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaMediaEntryFilter");
-			kparams.AddIfNotNull("isSequenceEntry", this._IsSequenceEntry);
-			kparams.AddIfNotNull("sequenceEntryIdsIn", this._SequenceEntryIdsIn);
 			kparams.AddIfNotNull("orderBy", this._OrderBy);
 			return kparams;
 		}
@@ -117,10 +87,6 @@ namespace Kaltura.Types
 		{
 			switch(apiName)
 			{
-				case IS_SEQUENCE_ENTRY:
-					return "IsSequenceEntry";
-				case SEQUENCE_ENTRY_IDS_IN:
-					return "SequenceEntryIdsIn";
 				case ORDER_BY:
 					return "OrderBy";
 				default:

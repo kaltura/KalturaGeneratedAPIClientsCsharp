@@ -39,12 +39,14 @@ namespace Kaltura.Types
 		public const string SEARCH_TERM = "searchTerm";
 		public const string ITEM_TYPE = "itemType";
 		public const string RANGE = "range";
+		public const string ADD_HIGHLIGHT = "addHighlight";
 		#endregion
 
 		#region Private Fields
 		private string _SearchTerm = null;
 		private ESearchItemType _ItemType = (ESearchItemType)Int32.MinValue;
 		private ESearchRange _Range;
+		private bool? _AddHighlight = null;
 		#endregion
 
 		#region Properties
@@ -75,6 +77,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("Range");
 			}
 		}
+		public bool? AddHighlight
+		{
+			get { return _AddHighlight; }
+			set 
+			{ 
+				_AddHighlight = value;
+				OnPropertyChanged("AddHighlight");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -97,6 +108,9 @@ namespace Kaltura.Types
 					case "range":
 						this._Range = ObjectFactory.Create<ESearchRange>(propertyNode);
 						continue;
+					case "addHighlight":
+						this._AddHighlight = ParseBool(propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -111,6 +125,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("searchTerm", this._SearchTerm);
 			kparams.AddIfNotNull("itemType", this._ItemType);
 			kparams.AddIfNotNull("range", this._Range);
+			kparams.AddIfNotNull("addHighlight", this._AddHighlight);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -123,6 +138,8 @@ namespace Kaltura.Types
 					return "ItemType";
 				case RANGE:
 					return "Range";
+				case ADD_HIGHLIGHT:
+					return "AddHighlight";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -39,14 +39,12 @@ namespace Kaltura.Types
 		public const string OBJECT_STATUSES = "objectStatuses";
 		public const string OBJECT_ID = "objectId";
 		public const string ORDER_BY = "orderBy";
-		public const string USE_HIGHLIGHT = "useHighlight";
 		#endregion
 
 		#region Private Fields
 		private string _ObjectStatuses = null;
 		private string _ObjectId = null;
 		private ESearchOrderBy _OrderBy;
-		private bool? _UseHighlight = null;
 		#endregion
 
 		#region Properties
@@ -77,15 +75,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("OrderBy");
 			}
 		}
-		public bool? UseHighlight
-		{
-			get { return _UseHighlight; }
-			set 
-			{ 
-				_UseHighlight = value;
-				OnPropertyChanged("UseHighlight");
-			}
-		}
 		#endregion
 
 		#region CTor
@@ -108,9 +97,6 @@ namespace Kaltura.Types
 					case "orderBy":
 						this._OrderBy = ObjectFactory.Create<ESearchOrderBy>(propertyNode);
 						continue;
-					case "useHighlight":
-						this._UseHighlight = ParseBool(propertyNode.InnerText);
-						continue;
 				}
 			}
 		}
@@ -125,7 +111,6 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("objectStatuses", this._ObjectStatuses);
 			kparams.AddIfNotNull("objectId", this._ObjectId);
 			kparams.AddIfNotNull("orderBy", this._OrderBy);
-			kparams.AddIfNotNull("useHighlight", this._UseHighlight);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -138,8 +123,6 @@ namespace Kaltura.Types
 					return "ObjectId";
 				case ORDER_BY:
 					return "OrderBy";
-				case USE_HIGHLIGHT:
-					return "UseHighlight";
 				default:
 					return base.getPropertyName(apiName);
 			}

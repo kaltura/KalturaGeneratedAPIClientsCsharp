@@ -32,7 +32,6 @@ namespace Kaltura.Enums
 		public static readonly BatchJobType PARSE_MULTI_LANGUAGE_CAPTION_ASSET = new BatchJobType("caption.parsemultilanguagecaptionasset");
 		public static readonly BatchJobType PARSE_CAPTION_ASSET = new BatchJobType("captionSearch.parseCaptionAsset");
 		public static readonly BatchJobType DISTRIBUTION_DELETE = new BatchJobType("contentDistribution.DistributionDelete");
-		public static readonly BatchJobType CONVERT = new BatchJobType("0");
 		public static readonly BatchJobType DISTRIBUTION_DISABLE = new BatchJobType("contentDistribution.DistributionDisable");
 		public static readonly BatchJobType DISTRIBUTION_ENABLE = new BatchJobType("contentDistribution.DistributionEnable");
 		public static readonly BatchJobType DISTRIBUTION_FETCH_REPORT = new BatchJobType("contentDistribution.DistributionFetchReport");
@@ -40,6 +39,7 @@ namespace Kaltura.Enums
 		public static readonly BatchJobType DISTRIBUTION_SYNC = new BatchJobType("contentDistribution.DistributionSync");
 		public static readonly BatchJobType DISTRIBUTION_UPDATE = new BatchJobType("contentDistribution.DistributionUpdate");
 		public static readonly BatchJobType DROP_FOLDER_CONTENT_PROCESSOR = new BatchJobType("dropFolder.DropFolderContentProcessor");
+		public static readonly BatchJobType CONVERT = new BatchJobType("0");
 		public static readonly BatchJobType DROP_FOLDER_WATCHER = new BatchJobType("dropFolder.DropFolderWatcher");
 		public static readonly BatchJobType EVENT_NOTIFICATION_HANDLER = new BatchJobType("eventNotification.EventNotificationHandler");
 		public static readonly BatchJobType INTEGRATION = new BatchJobType("integration.Integration");
@@ -88,6 +88,7 @@ namespace Kaltura.Enums
 		public static readonly BatchJobType LIVE_TO_VOD = new BatchJobType("42");
 		public static readonly BatchJobType COPY_CAPTIONS = new BatchJobType("43");
 		public static readonly BatchJobType CHUNKED_ENCODE_JOB_SCHEDULER = new BatchJobType("44");
+		public static readonly BatchJobType SERVER_NODE_MONITOR = new BatchJobType("45");
 
 		private BatchJobType(string name) : base(name) { }
 	}

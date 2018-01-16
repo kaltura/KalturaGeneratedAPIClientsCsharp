@@ -302,6 +302,49 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class ServerNodeMarkOfflineRequestBuilder : RequestBuilder<ServerNode>
+	{
+		#region Constants
+		public const string SERVER_NODE_ID = "serverNodeId";
+		#endregion
+
+		public string ServerNodeId
+		{
+			set;
+			get;
+		}
+
+		public ServerNodeMarkOfflineRequestBuilder()
+			: base("servernode", "markOffline")
+		{
+		}
+
+		public ServerNodeMarkOfflineRequestBuilder(string serverNodeId)
+			: this()
+		{
+			this.ServerNodeId = serverNodeId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("serverNodeId"))
+				kparams.AddIfNotNull("serverNodeId", ServerNodeId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<ServerNode>(result);
+		}
+	}
+
 	public class ServerNodeReportStatusRequestBuilder : RequestBuilder<ServerNode>
 	{
 		#region Constants
@@ -441,6 +484,11 @@ namespace Kaltura.Services
 		public static ServerNodeListRequestBuilder List(ServerNodeFilter filter = null, FilterPager pager = null)
 		{
 			return new ServerNodeListRequestBuilder(filter, pager);
+		}
+
+		public static ServerNodeMarkOfflineRequestBuilder MarkOffline(string serverNodeId)
+		{
+			return new ServerNodeMarkOfflineRequestBuilder(serverNodeId);
 		}
 
 		public static ServerNodeReportStatusRequestBuilder ReportStatus(string hostName, ServerNode serverNode = null)

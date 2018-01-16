@@ -75,6 +75,7 @@ namespace Kaltura.Enums
 		public static readonly EventNotificationEventObjectType WIDGET = new EventNotificationEventObjectType("36");
 		public static readonly EventNotificationEventObjectType CATEGORYENTRY = new EventNotificationEventObjectType("37");
 		public static readonly EventNotificationEventObjectType LIVE_STREAM = new EventNotificationEventObjectType("38");
+		public static readonly EventNotificationEventObjectType SERVER_NODE = new EventNotificationEventObjectType("39");
 
 		private EventNotificationEventObjectType(string name) : base(name) { }
 	}

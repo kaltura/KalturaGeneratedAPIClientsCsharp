@@ -56,12 +56,12 @@ namespace Kaltura.Types
 		private string _Id = null;
 		private string _Name = null;
 		private string _Text = null;
-		private string _Tags = null;
+		private IList<String> _Tags;
 		private string _StartTime = null;
 		private string _EndTime = null;
 		private string _SubType = null;
 		private string _Question = null;
-		private string _Answers = null;
+		private IList<String> _Answers;
 		private string _Hint = null;
 		private string _Explanation = null;
 		private string _AssetId = null;
@@ -104,7 +104,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Text");
 			}
 		}
-		public string Tags
+		public IList<String> Tags
 		{
 			get { return _Tags; }
 			set 
@@ -149,7 +149,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Question");
 			}
 		}
-		public string Answers
+		public IList<String> Answers
 		{
 			get { return _Answers; }
 			set 
@@ -211,7 +211,11 @@ namespace Kaltura.Types
 						this._Text = propertyNode.InnerText;
 						continue;
 					case "tags":
-						this._Tags = propertyNode.InnerText;
+						this._Tags = new List<String>();
+						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
+						{
+							this._Tags.Add(ObjectFactory.Create<String>(arrayNode));
+						}
 						continue;
 					case "startTime":
 						this._StartTime = propertyNode.InnerText;
@@ -226,7 +230,11 @@ namespace Kaltura.Types
 						this._Question = propertyNode.InnerText;
 						continue;
 					case "answers":
-						this._Answers = propertyNode.InnerText;
+						this._Answers = new List<String>();
+						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
+						{
+							this._Answers.Add(ObjectFactory.Create<String>(arrayNode));
+						}
 						continue;
 					case "hint":
 						this._Hint = propertyNode.InnerText;

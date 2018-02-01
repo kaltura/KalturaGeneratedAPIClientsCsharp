@@ -33,69 +33,59 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class ESearchEntryMetadataItem : ESearchEntryAbstractNestedItem
+	public class ESearchNestedOperator : ESearchEntryNestedBaseItem
 	{
 		#region Constants
-		public const string XPATH = "xpath";
-		public const string METADATA_PROFILE_ID = "metadataProfileId";
-		public const string METADATA_FIELD_ID = "metadataFieldId";
+		public const string OPERATOR = "operator";
+		public const string SEARCH_ITEMS = "searchItems";
 		#endregion
 
 		#region Private Fields
-		private string _Xpath = null;
-		private int _MetadataProfileId = Int32.MinValue;
-		private int _MetadataFieldId = Int32.MinValue;
+		private ESearchOperatorType _Operator = (ESearchOperatorType)Int32.MinValue;
+		private IList<ESearchEntryNestedBaseItem> _SearchItems;
 		#endregion
 
 		#region Properties
-		public string Xpath
+		public ESearchOperatorType Operator
 		{
-			get { return _Xpath; }
+			get { return _Operator; }
 			set 
 			{ 
-				_Xpath = value;
-				OnPropertyChanged("Xpath");
+				_Operator = value;
+				OnPropertyChanged("Operator");
 			}
 		}
-		public int MetadataProfileId
+		public IList<ESearchEntryNestedBaseItem> SearchItems
 		{
-			get { return _MetadataProfileId; }
+			get { return _SearchItems; }
 			set 
 			{ 
-				_MetadataProfileId = value;
-				OnPropertyChanged("MetadataProfileId");
-			}
-		}
-		public int MetadataFieldId
-		{
-			get { return _MetadataFieldId; }
-			set 
-			{ 
-				_MetadataFieldId = value;
-				OnPropertyChanged("MetadataFieldId");
+				_SearchItems = value;
+				OnPropertyChanged("SearchItems");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public ESearchEntryMetadataItem()
+		public ESearchNestedOperator()
 		{
 		}
 
-		public ESearchEntryMetadataItem(XmlElement node) : base(node)
+		public ESearchNestedOperator(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
 				switch (propertyNode.Name)
 				{
-					case "xpath":
-						this._Xpath = propertyNode.InnerText;
+					case "operator":
+						this._Operator = (ESearchOperatorType)ParseEnum(typeof(ESearchOperatorType), propertyNode.InnerText);
 						continue;
-					case "metadataProfileId":
-						this._MetadataProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "metadataFieldId":
-						this._MetadataFieldId = ParseInt(propertyNode.InnerText);
+					case "searchItems":
+						this._SearchItems = new List<ESearchEntryNestedBaseItem>();
+						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
+						{
+							this._SearchItems.Add(ObjectFactory.Create<ESearchEntryNestedBaseItem>(arrayNode));
+						}
 						continue;
 				}
 			}
@@ -107,22 +97,19 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaESearchEntryMetadataItem");
-			kparams.AddIfNotNull("xpath", this._Xpath);
-			kparams.AddIfNotNull("metadataProfileId", this._MetadataProfileId);
-			kparams.AddIfNotNull("metadataFieldId", this._MetadataFieldId);
+				kparams.AddReplace("objectType", "KalturaESearchNestedOperator");
+			kparams.AddIfNotNull("operator", this._Operator);
+			kparams.AddIfNotNull("searchItems", this._SearchItems);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case XPATH:
-					return "Xpath";
-				case METADATA_PROFILE_ID:
-					return "MetadataProfileId";
-				case METADATA_FIELD_ID:
-					return "MetadataFieldId";
+				case OPERATOR:
+					return "Operator";
+				case SEARCH_ITEMS:
+					return "SearchItems";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -33,16 +33,14 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class ESearchCuePointItem : ESearchAbstractEntryItem
+	public class ESearchCuePointItem : ESearchEntryAbstractNestedItem
 	{
 		#region Constants
 		public const string FIELD_NAME = "fieldName";
-		public const string CUE_POINT_TYPE = "cuePointType";
 		#endregion
 
 		#region Private Fields
 		private ESearchCuePointFieldName _FieldName = null;
-		private CuePointType _CuePointType = null;
 		#endregion
 
 		#region Properties
@@ -53,15 +51,6 @@ namespace Kaltura.Types
 			{ 
 				_FieldName = value;
 				OnPropertyChanged("FieldName");
-			}
-		}
-		public CuePointType CuePointType
-		{
-			get { return _CuePointType; }
-			set 
-			{ 
-				_CuePointType = value;
-				OnPropertyChanged("CuePointType");
 			}
 		}
 		#endregion
@@ -80,9 +69,6 @@ namespace Kaltura.Types
 					case "fieldName":
 						this._FieldName = (ESearchCuePointFieldName)StringEnum.Parse(typeof(ESearchCuePointFieldName), propertyNode.InnerText);
 						continue;
-					case "cuePointType":
-						this._CuePointType = (CuePointType)StringEnum.Parse(typeof(CuePointType), propertyNode.InnerText);
-						continue;
 				}
 			}
 		}
@@ -95,7 +81,6 @@ namespace Kaltura.Types
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaESearchCuePointItem");
 			kparams.AddIfNotNull("fieldName", this._FieldName);
-			kparams.AddIfNotNull("cuePointType", this._CuePointType);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -104,8 +89,6 @@ namespace Kaltura.Types
 			{
 				case FIELD_NAME:
 					return "FieldName";
-				case CUE_POINT_TYPE:
-					return "CuePointType";
 				default:
 					return base.getPropertyName(apiName);
 			}

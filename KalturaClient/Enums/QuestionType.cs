@@ -27,21 +27,14 @@
 // ===================================================================================================
 namespace Kaltura.Enums
 {
-	public sealed class ESearchCuePointFieldName : StringEnum
+	public enum QuestionType
 	{
-		public static readonly ESearchCuePointFieldName ANSWERS = new ESearchCuePointFieldName("answers");
-		public static readonly ESearchCuePointFieldName END_TIME = new ESearchCuePointFieldName("end_time");
-		public static readonly ESearchCuePointFieldName EXPLANATION = new ESearchCuePointFieldName("explanation");
-		public static readonly ESearchCuePointFieldName HINT = new ESearchCuePointFieldName("hint");
-		public static readonly ESearchCuePointFieldName ID = new ESearchCuePointFieldName("id");
-		public static readonly ESearchCuePointFieldName NAME = new ESearchCuePointFieldName("name");
-		public static readonly ESearchCuePointFieldName QUESTION = new ESearchCuePointFieldName("question");
-		public static readonly ESearchCuePointFieldName START_TIME = new ESearchCuePointFieldName("start_time");
-		public static readonly ESearchCuePointFieldName SUB_TYPE = new ESearchCuePointFieldName("sub_type");
-		public static readonly ESearchCuePointFieldName TAGS = new ESearchCuePointFieldName("tags");
-		public static readonly ESearchCuePointFieldName TEXT = new ESearchCuePointFieldName("text");
-		public static readonly ESearchCuePointFieldName TYPE = new ESearchCuePointFieldName("type");
-
-		private ESearchCuePointFieldName(string name) : base(name) { }
+		MULTIPLE_CHOICE_ANSWER = 1,
+		TRUE_FALSE = 2,
+		REFLECTION_POINT = 3,
+		MULTIPLE_ANSWER_QUESTION = 4,
+		FILL_IN_BLANK = 5,
+		HOT_SPOT = 6,
+		GO_TO = 7,
 	}
 }

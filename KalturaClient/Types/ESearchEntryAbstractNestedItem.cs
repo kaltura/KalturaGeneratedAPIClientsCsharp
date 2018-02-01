@@ -33,69 +33,83 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class ESearchEntryMetadataItem : ESearchEntryAbstractNestedItem
+	public class ESearchEntryAbstractNestedItem : ESearchEntryNestedBaseItem
 	{
 		#region Constants
-		public const string XPATH = "xpath";
-		public const string METADATA_PROFILE_ID = "metadataProfileId";
-		public const string METADATA_FIELD_ID = "metadataFieldId";
+		public const string SEARCH_TERM = "searchTerm";
+		public const string ITEM_TYPE = "itemType";
+		public const string RANGE = "range";
+		public const string ADD_HIGHLIGHT = "addHighlight";
 		#endregion
 
 		#region Private Fields
-		private string _Xpath = null;
-		private int _MetadataProfileId = Int32.MinValue;
-		private int _MetadataFieldId = Int32.MinValue;
+		private string _SearchTerm = null;
+		private ESearchItemType _ItemType = (ESearchItemType)Int32.MinValue;
+		private ESearchRange _Range;
+		private bool? _AddHighlight = null;
 		#endregion
 
 		#region Properties
-		public string Xpath
+		public string SearchTerm
 		{
-			get { return _Xpath; }
+			get { return _SearchTerm; }
 			set 
 			{ 
-				_Xpath = value;
-				OnPropertyChanged("Xpath");
+				_SearchTerm = value;
+				OnPropertyChanged("SearchTerm");
 			}
 		}
-		public int MetadataProfileId
+		public ESearchItemType ItemType
 		{
-			get { return _MetadataProfileId; }
+			get { return _ItemType; }
 			set 
 			{ 
-				_MetadataProfileId = value;
-				OnPropertyChanged("MetadataProfileId");
+				_ItemType = value;
+				OnPropertyChanged("ItemType");
 			}
 		}
-		public int MetadataFieldId
+		public ESearchRange Range
 		{
-			get { return _MetadataFieldId; }
+			get { return _Range; }
 			set 
 			{ 
-				_MetadataFieldId = value;
-				OnPropertyChanged("MetadataFieldId");
+				_Range = value;
+				OnPropertyChanged("Range");
+			}
+		}
+		public bool? AddHighlight
+		{
+			get { return _AddHighlight; }
+			set 
+			{ 
+				_AddHighlight = value;
+				OnPropertyChanged("AddHighlight");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public ESearchEntryMetadataItem()
+		public ESearchEntryAbstractNestedItem()
 		{
 		}
 
-		public ESearchEntryMetadataItem(XmlElement node) : base(node)
+		public ESearchEntryAbstractNestedItem(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
 				switch (propertyNode.Name)
 				{
-					case "xpath":
-						this._Xpath = propertyNode.InnerText;
+					case "searchTerm":
+						this._SearchTerm = propertyNode.InnerText;
 						continue;
-					case "metadataProfileId":
-						this._MetadataProfileId = ParseInt(propertyNode.InnerText);
+					case "itemType":
+						this._ItemType = (ESearchItemType)ParseEnum(typeof(ESearchItemType), propertyNode.InnerText);
 						continue;
-					case "metadataFieldId":
-						this._MetadataFieldId = ParseInt(propertyNode.InnerText);
+					case "range":
+						this._Range = ObjectFactory.Create<ESearchRange>(propertyNode);
+						continue;
+					case "addHighlight":
+						this._AddHighlight = ParseBool(propertyNode.InnerText);
 						continue;
 				}
 			}
@@ -107,22 +121,25 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaESearchEntryMetadataItem");
-			kparams.AddIfNotNull("xpath", this._Xpath);
-			kparams.AddIfNotNull("metadataProfileId", this._MetadataProfileId);
-			kparams.AddIfNotNull("metadataFieldId", this._MetadataFieldId);
+				kparams.AddReplace("objectType", "KalturaESearchEntryAbstractNestedItem");
+			kparams.AddIfNotNull("searchTerm", this._SearchTerm);
+			kparams.AddIfNotNull("itemType", this._ItemType);
+			kparams.AddIfNotNull("range", this._Range);
+			kparams.AddIfNotNull("addHighlight", this._AddHighlight);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case XPATH:
-					return "Xpath";
-				case METADATA_PROFILE_ID:
-					return "MetadataProfileId";
-				case METADATA_FIELD_ID:
-					return "MetadataFieldId";
+				case SEARCH_TERM:
+					return "SearchTerm";
+				case ITEM_TYPE:
+					return "ItemType";
+				case RANGE:
+					return "Range";
+				case ADD_HIGHLIGHT:
+					return "AddHighlight";
 				default:
 					return base.getPropertyName(apiName);
 			}

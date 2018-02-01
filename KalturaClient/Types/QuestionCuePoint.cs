@@ -40,6 +40,7 @@ namespace Kaltura.Types
 		public const string HINT = "hint";
 		public const string QUESTION = "question";
 		public const string EXPLANATION = "explanation";
+		public const string QUESTION_TYPE = "questionType";
 		#endregion
 
 		#region Private Fields
@@ -47,6 +48,7 @@ namespace Kaltura.Types
 		private string _Hint = null;
 		private string _Question = null;
 		private string _Explanation = null;
+		private QuestionType _QuestionType = (QuestionType)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -86,6 +88,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("Explanation");
 			}
 		}
+		public QuestionType QuestionType
+		{
+			get { return _QuestionType; }
+			set 
+			{ 
+				_QuestionType = value;
+				OnPropertyChanged("QuestionType");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -115,6 +126,9 @@ namespace Kaltura.Types
 					case "explanation":
 						this._Explanation = propertyNode.InnerText;
 						continue;
+					case "questionType":
+						this._QuestionType = (QuestionType)ParseEnum(typeof(QuestionType), propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -130,6 +144,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("hint", this._Hint);
 			kparams.AddIfNotNull("question", this._Question);
 			kparams.AddIfNotNull("explanation", this._Explanation);
+			kparams.AddIfNotNull("questionType", this._QuestionType);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -144,6 +159,8 @@ namespace Kaltura.Types
 					return "Question";
 				case EXPLANATION:
 					return "Explanation";
+				case QUESTION_TYPE:
+					return "QuestionType";
 				default:
 					return base.getPropertyName(apiName);
 			}

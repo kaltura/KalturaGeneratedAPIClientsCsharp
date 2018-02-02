@@ -339,6 +339,67 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class UserExportToCsvRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string METADATA_PROFILE_ID = "metadataProfileId";
+		public const string ADDITIONAL_FIELDS = "additionalFields";
+		#endregion
+
+		public UserFilter Filter
+		{
+			set;
+			get;
+		}
+		public int MetadataProfileId
+		{
+			set;
+			get;
+		}
+		public IList<CsvAdditionalFieldInfo> AdditionalFields
+		{
+			set;
+			get;
+		}
+
+		public UserExportToCsvRequestBuilder()
+			: base("user", "exportToCsv")
+		{
+		}
+
+		public UserExportToCsvRequestBuilder(UserFilter filter, int metadataProfileId, IList<CsvAdditionalFieldInfo> additionalFields)
+			: this()
+		{
+			this.Filter = filter;
+			this.MetadataProfileId = metadataProfileId;
+			this.AdditionalFields = additionalFields;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("metadataProfileId"))
+				kparams.AddIfNotNull("metadataProfileId", MetadataProfileId);
+			if (!isMapped("additionalFields"))
+				kparams.AddIfNotNull("additionalFields", AdditionalFields);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return result.InnerText;
+		}
+	}
+
 	public class UserGetRequestBuilder : RequestBuilder<User>
 	{
 		#region Constants
@@ -825,6 +886,49 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class UserServeCsvRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+
+		public UserServeCsvRequestBuilder()
+			: base("user", "serveCsv")
+		{
+		}
+
+		public UserServeCsvRequestBuilder(string id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return result.InnerText;
+		}
+	}
+
 	public class UserSetInitialPasswordRequestBuilder : RequestBuilder<object>
 	{
 		#region Constants
@@ -1054,6 +1158,11 @@ namespace Kaltura.Services
 			return new UserEnableLoginRequestBuilder(userId, loginId, password);
 		}
 
+		public static UserExportToCsvRequestBuilder ExportToCsv(UserFilter filter, int metadataProfileId = Int32.MinValue, IList<CsvAdditionalFieldInfo> additionalFields = null)
+		{
+			return new UserExportToCsvRequestBuilder(filter, metadataProfileId, additionalFields);
+		}
+
 		public static UserGetRequestBuilder Get(string userId = null)
 		{
 			return new UserGetRequestBuilder(userId);
@@ -1097,6 +1206,11 @@ namespace Kaltura.Services
 		public static UserResetPasswordRequestBuilder ResetPassword(string email)
 		{
 			return new UserResetPasswordRequestBuilder(email);
+		}
+
+		public static UserServeCsvRequestBuilder ServeCsv(string id)
+		{
+			return new UserServeCsvRequestBuilder(id);
 		}
 
 		public static UserSetInitialPasswordRequestBuilder SetInitialPassword(string hashKey, string newPassword)

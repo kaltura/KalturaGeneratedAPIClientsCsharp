@@ -41,6 +41,7 @@ namespace Kaltura.Types
 		public const string ENDS_AT = "endsAt";
 		public const string LANGUAGE = "language";
 		public const string CAPTION_ASSET_ID = "captionAssetId";
+		public const string LABEL = "label";
 		#endregion
 
 		#region Private Fields
@@ -49,6 +50,7 @@ namespace Kaltura.Types
 		private int _EndsAt = Int32.MinValue;
 		private string _Language = null;
 		private string _CaptionAssetId = null;
+		private string _Label = null;
 		#endregion
 
 		#region Properties
@@ -97,6 +99,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("CaptionAssetId");
 			}
 		}
+		public string Label
+		{
+			get { return _Label; }
+			set 
+			{ 
+				_Label = value;
+				OnPropertyChanged("Label");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -125,6 +136,9 @@ namespace Kaltura.Types
 					case "captionAssetId":
 						this._CaptionAssetId = propertyNode.InnerText;
 						continue;
+					case "label":
+						this._Label = propertyNode.InnerText;
+						continue;
 				}
 			}
 		}
@@ -141,6 +155,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("endsAt", this._EndsAt);
 			kparams.AddIfNotNull("language", this._Language);
 			kparams.AddIfNotNull("captionAssetId", this._CaptionAssetId);
+			kparams.AddIfNotNull("label", this._Label);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -157,6 +172,8 @@ namespace Kaltura.Types
 					return "Language";
 				case CAPTION_ASSET_ID:
 					return "CaptionAssetId";
+				case LABEL:
+					return "Label";
 				default:
 					return base.getPropertyName(apiName);
 			}

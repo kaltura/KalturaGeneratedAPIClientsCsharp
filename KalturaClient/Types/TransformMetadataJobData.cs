@@ -39,7 +39,7 @@ namespace Kaltura.Types
 		public const string SRC_XSL = "srcXsl";
 		public const string SRC_VERSION = "srcVersion";
 		public const string DEST_VERSION = "destVersion";
-		public const string DEST_XSD_PATH = "destXsdPath";
+		public const string DEST_XSD = "destXsd";
 		public const string METADATA_PROFILE_ID = "metadataProfileId";
 		#endregion
 
@@ -47,7 +47,7 @@ namespace Kaltura.Types
 		private FileContainer _SrcXsl;
 		private int _SrcVersion = Int32.MinValue;
 		private int _DestVersion = Int32.MinValue;
-		private string _DestXsdPath = null;
+		private FileContainer _DestXsd;
 		private int _MetadataProfileId = Int32.MinValue;
 		#endregion
 
@@ -79,13 +79,13 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestVersion");
 			}
 		}
-		public string DestXsdPath
+		public FileContainer DestXsd
 		{
-			get { return _DestXsdPath; }
+			get { return _DestXsd; }
 			set 
 			{ 
-				_DestXsdPath = value;
-				OnPropertyChanged("DestXsdPath");
+				_DestXsd = value;
+				OnPropertyChanged("DestXsd");
 			}
 		}
 		public int MetadataProfileId
@@ -119,8 +119,8 @@ namespace Kaltura.Types
 					case "destVersion":
 						this._DestVersion = ParseInt(propertyNode.InnerText);
 						continue;
-					case "destXsdPath":
-						this._DestXsdPath = propertyNode.InnerText;
+					case "destXsd":
+						this._DestXsd = ObjectFactory.Create<FileContainer>(propertyNode);
 						continue;
 					case "metadataProfileId":
 						this._MetadataProfileId = ParseInt(propertyNode.InnerText);
@@ -139,7 +139,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("srcXsl", this._SrcXsl);
 			kparams.AddIfNotNull("srcVersion", this._SrcVersion);
 			kparams.AddIfNotNull("destVersion", this._DestVersion);
-			kparams.AddIfNotNull("destXsdPath", this._DestXsdPath);
+			kparams.AddIfNotNull("destXsd", this._DestXsd);
 			kparams.AddIfNotNull("metadataProfileId", this._MetadataProfileId);
 			return kparams;
 		}
@@ -153,8 +153,8 @@ namespace Kaltura.Types
 					return "SrcVersion";
 				case DEST_VERSION:
 					return "DestVersion";
-				case DEST_XSD_PATH:
-					return "DestXsdPath";
+				case DEST_XSD:
+					return "DestXsd";
 				case METADATA_PROFILE_ID:
 					return "MetadataProfileId";
 				default:

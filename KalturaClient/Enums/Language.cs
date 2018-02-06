@@ -127,6 +127,8 @@ namespace Kaltura.Enums
 		public static readonly Language CIC = new Language("Chickasaw");
 		public static readonly Language CLC = new Language("Chilcotin");
 		public static readonly Language ZH = new Language("Chinese");
+		public static readonly Language ZH_HANS = new Language("Chinese (Simplified)");
+		public static readonly Language ZH_HANT = new Language("Chinese (Traditional)");
 		public static readonly Language CHN = new Language("Chinook jargon");
 		public static readonly Language CHP = new Language("Chipewyan");
 		public static readonly Language CIW = new Language("Chippewa");
@@ -571,8 +573,8 @@ namespace Kaltura.Enums
 		public static readonly Language WYM = new Language("Wymysorys");
 		public static readonly Language XH = new Language("Xhosa");
 		public static readonly Language AME = new Language("Yanesha");
-		public static readonly Language YI = new Language("Yiddish");
 		public static readonly Language JI = new Language("Yiddish");
+		public static readonly Language YI = new Language("Yiddish");
 		public static readonly Language YO = new Language("Yoruba");
 		public static readonly Language ZAI = new Language("Zapotec Isthmus");
 		public static readonly Language DJE = new Language("Zarma");

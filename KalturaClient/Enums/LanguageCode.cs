@@ -174,8 +174,6 @@ namespace Kaltura.Enums
 		public static readonly LanguageCode YI = new LanguageCode("yi");
 		public static readonly LanguageCode YO = new LanguageCode("yo");
 		public static readonly LanguageCode ZH = new LanguageCode("zh");
-		public static readonly LanguageCode ZH_HANS = new LanguageCode("zh_s");
-		public static readonly LanguageCode ZH_HANT = new LanguageCode("zh_t");
 		public static readonly LanguageCode ZU = new LanguageCode("zu");
 
 		private LanguageCode(string name) : base(name) { }

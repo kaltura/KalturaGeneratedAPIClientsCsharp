@@ -54,6 +54,7 @@ namespace Kaltura.Enums
 		public static readonly ESearchEntryFieldName RECORDED_ENTRY_ID = new ESearchEntryFieldName("recorded_entry_id");
 		public static readonly ESearchEntryFieldName REDIRECT_ENTRY_ID = new ESearchEntryFieldName("redirect_entry_id");
 		public static readonly ESearchEntryFieldName REFERENCE_ID = new ESearchEntryFieldName("reference_id");
+		public static readonly ESearchEntryFieldName ROOT_ID = new ESearchEntryFieldName("root_id");
 		public static readonly ESearchEntryFieldName SITE_URL = new ESearchEntryFieldName("site_url");
 		public static readonly ESearchEntryFieldName SOURCE_TYPE = new ESearchEntryFieldName("source_type");
 		public static readonly ESearchEntryFieldName START_DATE = new ESearchEntryFieldName("start_date");

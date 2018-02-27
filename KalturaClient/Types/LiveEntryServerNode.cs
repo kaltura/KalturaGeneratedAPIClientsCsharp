@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2017  Kaltura Inc.
+// Copyright (C) 2006-2018  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -38,11 +38,13 @@ namespace Kaltura.Types
 		#region Constants
 		public const string STREAMS = "streams";
 		public const string RECORDING_INFO = "recordingInfo";
+		public const string IS_PLAYABLE_USER = "isPlayableUser";
 		#endregion
 
 		#region Private Fields
 		private IList<LiveStreamParams> _Streams;
 		private IList<LiveEntryServerNodeRecordingInfo> _RecordingInfo;
+		private bool? _IsPlayableUser = null;
 		#endregion
 
 		#region Properties
@@ -62,6 +64,15 @@ namespace Kaltura.Types
 			{ 
 				_RecordingInfo = value;
 				OnPropertyChanged("RecordingInfo");
+			}
+		}
+		public bool? IsPlayableUser
+		{
+			get { return _IsPlayableUser; }
+			set 
+			{ 
+				_IsPlayableUser = value;
+				OnPropertyChanged("IsPlayableUser");
 			}
 		}
 		#endregion
@@ -91,6 +102,9 @@ namespace Kaltura.Types
 							this._RecordingInfo.Add(ObjectFactory.Create<LiveEntryServerNodeRecordingInfo>(arrayNode));
 						}
 						continue;
+					case "isPlayableUser":
+						this._IsPlayableUser = ParseBool(propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -104,6 +118,7 @@ namespace Kaltura.Types
 				kparams.AddReplace("objectType", "KalturaLiveEntryServerNode");
 			kparams.AddIfNotNull("streams", this._Streams);
 			kparams.AddIfNotNull("recordingInfo", this._RecordingInfo);
+			kparams.AddIfNotNull("isPlayableUser", this._IsPlayableUser);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -114,6 +129,8 @@ namespace Kaltura.Types
 					return "Streams";
 				case RECORDING_INFO:
 					return "RecordingInfo";
+				case IS_PLAYABLE_USER:
+					return "IsPlayableUser";
 				default:
 					return base.getPropertyName(apiName);
 			}

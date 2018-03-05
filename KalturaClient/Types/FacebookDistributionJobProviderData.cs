@@ -37,13 +37,13 @@ namespace Kaltura.Types
 	{
 		#region Constants
 		public const string VIDEO_ASSET_FILE_PATH = "videoAssetFilePath";
-		public const string THUMB_ASSET_FILE_PATH = "thumbAssetFilePath";
+		public const string THUMB_ASSET_ID = "thumbAssetId";
 		public const string CAPTIONS_INFO = "captionsInfo";
 		#endregion
 
 		#region Private Fields
 		private string _VideoAssetFilePath = null;
-		private string _ThumbAssetFilePath = null;
+		private string _ThumbAssetId = null;
 		private IList<FacebookCaptionDistributionInfo> _CaptionsInfo;
 		#endregion
 
@@ -57,13 +57,13 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoAssetFilePath");
 			}
 		}
-		public string ThumbAssetFilePath
+		public string ThumbAssetId
 		{
-			get { return _ThumbAssetFilePath; }
+			get { return _ThumbAssetId; }
 			set 
 			{ 
-				_ThumbAssetFilePath = value;
-				OnPropertyChanged("ThumbAssetFilePath");
+				_ThumbAssetId = value;
+				OnPropertyChanged("ThumbAssetId");
 			}
 		}
 		public IList<FacebookCaptionDistributionInfo> CaptionsInfo
@@ -91,8 +91,8 @@ namespace Kaltura.Types
 					case "videoAssetFilePath":
 						this._VideoAssetFilePath = propertyNode.InnerText;
 						continue;
-					case "thumbAssetFilePath":
-						this._ThumbAssetFilePath = propertyNode.InnerText;
+					case "thumbAssetId":
+						this._ThumbAssetId = propertyNode.InnerText;
 						continue;
 					case "captionsInfo":
 						this._CaptionsInfo = new List<FacebookCaptionDistributionInfo>();
@@ -113,7 +113,7 @@ namespace Kaltura.Types
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaFacebookDistributionJobProviderData");
 			kparams.AddIfNotNull("videoAssetFilePath", this._VideoAssetFilePath);
-			kparams.AddIfNotNull("thumbAssetFilePath", this._ThumbAssetFilePath);
+			kparams.AddIfNotNull("thumbAssetId", this._ThumbAssetId);
 			kparams.AddIfNotNull("captionsInfo", this._CaptionsInfo);
 			return kparams;
 		}
@@ -123,8 +123,8 @@ namespace Kaltura.Types
 			{
 				case VIDEO_ASSET_FILE_PATH:
 					return "VideoAssetFilePath";
-				case THUMB_ASSET_FILE_PATH:
-					return "ThumbAssetFilePath";
+				case THUMB_ASSET_ID:
+					return "ThumbAssetId";
 				case CAPTIONS_INFO:
 					return "CaptionsInfo";
 				default:

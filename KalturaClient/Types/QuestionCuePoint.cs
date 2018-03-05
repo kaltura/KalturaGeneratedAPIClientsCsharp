@@ -41,6 +41,7 @@ namespace Kaltura.Types
 		public const string QUESTION = "question";
 		public const string EXPLANATION = "explanation";
 		public const string QUESTION_TYPE = "questionType";
+		public const string PRESENTATION_ORDER = "presentationOrder";
 		#endregion
 
 		#region Private Fields
@@ -49,6 +50,7 @@ namespace Kaltura.Types
 		private string _Question = null;
 		private string _Explanation = null;
 		private QuestionType _QuestionType = (QuestionType)Int32.MinValue;
+		private int _PresentationOrder = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -97,6 +99,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("QuestionType");
 			}
 		}
+		public int PresentationOrder
+		{
+			get { return _PresentationOrder; }
+			set 
+			{ 
+				_PresentationOrder = value;
+				OnPropertyChanged("PresentationOrder");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -129,6 +140,9 @@ namespace Kaltura.Types
 					case "questionType":
 						this._QuestionType = (QuestionType)ParseEnum(typeof(QuestionType), propertyNode.InnerText);
 						continue;
+					case "presentationOrder":
+						this._PresentationOrder = ParseInt(propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -145,6 +159,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("question", this._Question);
 			kparams.AddIfNotNull("explanation", this._Explanation);
 			kparams.AddIfNotNull("questionType", this._QuestionType);
+			kparams.AddIfNotNull("presentationOrder", this._PresentationOrder);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -161,6 +176,8 @@ namespace Kaltura.Types
 					return "Explanation";
 				case QUESTION_TYPE:
 					return "QuestionType";
+				case PRESENTATION_ORDER:
+					return "PresentationOrder";
 				default:
 					return base.getPropertyName(apiName);
 			}

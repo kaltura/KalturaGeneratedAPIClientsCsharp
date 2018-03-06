@@ -40,6 +40,7 @@ namespace Kaltura.Types
 		public const string USER_FRIENDLY_FIELD_NAME = "userFriendlyFieldName";
 		public const string ENTRY_MRSS_XSLT = "entryMrssXslt";
 		public const string IS_REQUIRED = "isRequired";
+		public const string TYPE = "type";
 		public const string UPDATE_ON_CHANGE = "updateOnChange";
 		public const string UPDATE_PARAMS = "updateParams";
 		public const string IS_DEFAULT = "isDefault";
@@ -51,6 +52,7 @@ namespace Kaltura.Types
 		private string _UserFriendlyFieldName = null;
 		private string _EntryMrssXslt = null;
 		private DistributionFieldRequiredStatus _IsRequired = (DistributionFieldRequiredStatus)Int32.MinValue;
+		private string _Type = null;
 		private bool? _UpdateOnChange = null;
 		private IList<String> _UpdateParams;
 		private bool? _IsDefault = null;
@@ -92,6 +94,15 @@ namespace Kaltura.Types
 			{ 
 				_IsRequired = value;
 				OnPropertyChanged("IsRequired");
+			}
+		}
+		public string Type
+		{
+			get { return _Type; }
+			set 
+			{ 
+				_Type = value;
+				OnPropertyChanged("Type");
 			}
 		}
 		public bool? UpdateOnChange
@@ -150,6 +161,9 @@ namespace Kaltura.Types
 					case "isRequired":
 						this._IsRequired = (DistributionFieldRequiredStatus)ParseEnum(typeof(DistributionFieldRequiredStatus), propertyNode.InnerText);
 						continue;
+					case "type":
+						this._Type = propertyNode.InnerText;
+						continue;
 					case "updateOnChange":
 						this._UpdateOnChange = ParseBool(propertyNode.InnerText);
 						continue;
@@ -181,6 +195,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("userFriendlyFieldName", this._UserFriendlyFieldName);
 			kparams.AddIfNotNull("entryMrssXslt", this._EntryMrssXslt);
 			kparams.AddIfNotNull("isRequired", this._IsRequired);
+			kparams.AddIfNotNull("type", this._Type);
 			kparams.AddIfNotNull("updateOnChange", this._UpdateOnChange);
 			kparams.AddIfNotNull("updateParams", this._UpdateParams);
 			kparams.AddIfNotNull("isDefault", this._IsDefault);
@@ -199,6 +214,8 @@ namespace Kaltura.Types
 					return "EntryMrssXslt";
 				case IS_REQUIRED:
 					return "IsRequired";
+				case TYPE:
+					return "Type";
 				case UPDATE_ON_CHANGE:
 					return "UpdateOnChange";
 				case UPDATE_PARAMS:

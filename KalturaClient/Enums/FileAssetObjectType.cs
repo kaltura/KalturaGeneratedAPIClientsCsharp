@@ -30,6 +30,7 @@ namespace Kaltura.Enums
 	public sealed class FileAssetObjectType : StringEnum
 	{
 		public static readonly FileAssetObjectType UI_CONF = new FileAssetObjectType("2");
+		public static readonly FileAssetObjectType ENTRY = new FileAssetObjectType("3");
 
 		private FileAssetObjectType(string name) : base(name) { }
 	}

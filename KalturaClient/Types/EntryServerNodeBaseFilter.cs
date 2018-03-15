@@ -46,6 +46,7 @@ namespace Kaltura.Types
 		public const string STATUS_EQUAL = "statusEqual";
 		public const string STATUS_IN = "statusIn";
 		public const string SERVER_TYPE_EQUAL = "serverTypeEqual";
+		public const string SERVER_TYPE_IN = "serverTypeIn";
 		#endregion
 
 		#region Private Fields
@@ -59,6 +60,7 @@ namespace Kaltura.Types
 		private EntryServerNodeStatus _StatusEqual = (EntryServerNodeStatus)Int32.MinValue;
 		private string _StatusIn = null;
 		private EntryServerNodeType _ServerTypeEqual = null;
+		private string _ServerTypeIn = null;
 		#endregion
 
 		#region Properties
@@ -152,6 +154,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerTypeEqual");
 			}
 		}
+		public string ServerTypeIn
+		{
+			get { return _ServerTypeIn; }
+			set 
+			{ 
+				_ServerTypeIn = value;
+				OnPropertyChanged("ServerTypeIn");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -195,6 +206,9 @@ namespace Kaltura.Types
 					case "serverTypeEqual":
 						this._ServerTypeEqual = (EntryServerNodeType)StringEnum.Parse(typeof(EntryServerNodeType), propertyNode.InnerText);
 						continue;
+					case "serverTypeIn":
+						this._ServerTypeIn = propertyNode.InnerText;
+						continue;
 				}
 			}
 		}
@@ -216,6 +230,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("statusEqual", this._StatusEqual);
 			kparams.AddIfNotNull("statusIn", this._StatusIn);
 			kparams.AddIfNotNull("serverTypeEqual", this._ServerTypeEqual);
+			kparams.AddIfNotNull("serverTypeIn", this._ServerTypeIn);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -242,6 +257,8 @@ namespace Kaltura.Types
 					return "StatusIn";
 				case SERVER_TYPE_EQUAL:
 					return "ServerTypeEqual";
+				case SERVER_TYPE_IN:
+					return "ServerTypeIn";
 				default:
 					return base.getPropertyName(apiName);
 			}

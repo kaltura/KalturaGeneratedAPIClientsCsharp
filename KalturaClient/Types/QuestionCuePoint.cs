@@ -42,6 +42,7 @@ namespace Kaltura.Types
 		public const string EXPLANATION = "explanation";
 		public const string QUESTION_TYPE = "questionType";
 		public const string PRESENTATION_ORDER = "presentationOrder";
+		public const string EXCLUDE_FROM_SCORE = "excludeFromScore";
 		#endregion
 
 		#region Private Fields
@@ -51,6 +52,7 @@ namespace Kaltura.Types
 		private string _Explanation = null;
 		private QuestionType _QuestionType = (QuestionType)Int32.MinValue;
 		private int _PresentationOrder = Int32.MinValue;
+		private NullableBoolean _ExcludeFromScore = (NullableBoolean)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -108,6 +110,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("PresentationOrder");
 			}
 		}
+		public NullableBoolean ExcludeFromScore
+		{
+			get { return _ExcludeFromScore; }
+			set 
+			{ 
+				_ExcludeFromScore = value;
+				OnPropertyChanged("ExcludeFromScore");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -143,6 +154,9 @@ namespace Kaltura.Types
 					case "presentationOrder":
 						this._PresentationOrder = ParseInt(propertyNode.InnerText);
 						continue;
+					case "excludeFromScore":
+						this._ExcludeFromScore = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -160,6 +174,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("explanation", this._Explanation);
 			kparams.AddIfNotNull("questionType", this._QuestionType);
 			kparams.AddIfNotNull("presentationOrder", this._PresentationOrder);
+			kparams.AddIfNotNull("excludeFromScore", this._ExcludeFromScore);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -178,6 +193,8 @@ namespace Kaltura.Types
 					return "QuestionType";
 				case PRESENTATION_ORDER:
 					return "PresentationOrder";
+				case EXCLUDE_FROM_SCORE:
+					return "ExcludeFromScore";
 				default:
 					return base.getPropertyName(apiName);
 			}

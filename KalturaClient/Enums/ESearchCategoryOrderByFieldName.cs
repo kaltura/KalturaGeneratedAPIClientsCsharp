@@ -30,6 +30,9 @@ namespace Kaltura.Enums
 	public sealed class ESearchCategoryOrderByFieldName : StringEnum
 	{
 		public static readonly ESearchCategoryOrderByFieldName CREATED_AT = new ESearchCategoryOrderByFieldName("created_at");
+		public static readonly ESearchCategoryOrderByFieldName ENTRIES_COUNT = new ESearchCategoryOrderByFieldName("entries_count");
+		public static readonly ESearchCategoryOrderByFieldName MEMBERS_COUNT = new ESearchCategoryOrderByFieldName("members_count");
+		public static readonly ESearchCategoryOrderByFieldName NAME = new ESearchCategoryOrderByFieldName("name");
 		public static readonly ESearchCategoryOrderByFieldName UPDATED_AT = new ESearchCategoryOrderByFieldName("updated_at");
 
 		private ESearchCategoryOrderByFieldName(string name) : base(name) { }

@@ -61,6 +61,7 @@ namespace Kaltura.Types
 		public const string DETECT_GOP = "detectGOP";
 		public const string MEDIA_INFO_XSL_TRANSFORMATION = "mediaInfoXslTransformation";
 		public const string DEFAULT_REPLACEMENT_OPTIONS = "defaultReplacementOptions";
+		public const string DEFAULT_AUDIO_LANG = "defaultAudioLang";
 		#endregion
 
 		#region Private Fields
@@ -89,6 +90,7 @@ namespace Kaltura.Types
 		private int _DetectGOP = Int32.MinValue;
 		private string _MediaInfoXslTransformation = null;
 		private EntryReplacementOptions _DefaultReplacementOptions;
+		private Language _DefaultAudioLang = null;
 		#endregion
 
 		#region Properties
@@ -297,6 +299,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("DefaultReplacementOptions");
 			}
 		}
+		public Language DefaultAudioLang
+		{
+			get { return _DefaultAudioLang; }
+			set 
+			{ 
+				_DefaultAudioLang = value;
+				OnPropertyChanged("DefaultAudioLang");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -385,6 +396,9 @@ namespace Kaltura.Types
 					case "defaultReplacementOptions":
 						this._DefaultReplacementOptions = ObjectFactory.Create<EntryReplacementOptions>(propertyNode);
 						continue;
+					case "defaultAudioLang":
+						this._DefaultAudioLang = (Language)StringEnum.Parse(typeof(Language), propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -421,6 +435,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("detectGOP", this._DetectGOP);
 			kparams.AddIfNotNull("mediaInfoXslTransformation", this._MediaInfoXslTransformation);
 			kparams.AddIfNotNull("defaultReplacementOptions", this._DefaultReplacementOptions);
+			kparams.AddIfNotNull("defaultAudioLang", this._DefaultAudioLang);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -477,6 +492,8 @@ namespace Kaltura.Types
 					return "MediaInfoXslTransformation";
 				case DEFAULT_REPLACEMENT_OPTIONS:
 					return "DefaultReplacementOptions";
+				case DEFAULT_AUDIO_LANG:
+					return "DefaultAudioLang";
 				default:
 					return base.getPropertyName(apiName);
 			}

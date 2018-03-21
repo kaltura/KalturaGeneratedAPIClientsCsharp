@@ -37,12 +37,16 @@ namespace Kaltura.Types
 	{
 		#region Constants
 		public const string MAX_RESULTS = "maxResults";
+		public const string TOTAL_COUNT = "totalCount";
+		public const string FILE_FORMAT = "fileFormat";
 		public const string RESULTS_FILE_PATH = "resultsFilePath";
 		public const string REFERENCE_TIME = "referenceTime";
 		#endregion
 
 		#region Private Fields
 		private int _MaxResults = Int32.MinValue;
+		private int _TotalCount = Int32.MinValue;
+		private DryRunFileType _FileFormat = (DryRunFileType)Int32.MinValue;
 		private string _ResultsFilePath = null;
 		private int _ReferenceTime = Int32.MinValue;
 		#endregion
@@ -55,6 +59,24 @@ namespace Kaltura.Types
 			{ 
 				_MaxResults = value;
 				OnPropertyChanged("MaxResults");
+			}
+		}
+		public int TotalCount
+		{
+			get { return _TotalCount; }
+			set 
+			{ 
+				_TotalCount = value;
+				OnPropertyChanged("TotalCount");
+			}
+		}
+		public DryRunFileType FileFormat
+		{
+			get { return _FileFormat; }
+			set 
+			{ 
+				_FileFormat = value;
+				OnPropertyChanged("FileFormat");
 			}
 		}
 		public string ResultsFilePath
@@ -91,6 +113,12 @@ namespace Kaltura.Types
 					case "maxResults":
 						this._MaxResults = ParseInt(propertyNode.InnerText);
 						continue;
+					case "totalCount":
+						this._TotalCount = ParseInt(propertyNode.InnerText);
+						continue;
+					case "fileFormat":
+						this._FileFormat = (DryRunFileType)ParseEnum(typeof(DryRunFileType), propertyNode.InnerText);
+						continue;
 					case "resultsFilePath":
 						this._ResultsFilePath = propertyNode.InnerText;
 						continue;
@@ -109,6 +137,8 @@ namespace Kaltura.Types
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaScheduledTaskJobData");
 			kparams.AddIfNotNull("maxResults", this._MaxResults);
+			kparams.AddIfNotNull("totalCount", this._TotalCount);
+			kparams.AddIfNotNull("fileFormat", this._FileFormat);
 			kparams.AddIfNotNull("resultsFilePath", this._ResultsFilePath);
 			kparams.AddIfNotNull("referenceTime", this._ReferenceTime);
 			return kparams;
@@ -119,6 +149,10 @@ namespace Kaltura.Types
 			{
 				case MAX_RESULTS:
 					return "MaxResults";
+				case TOTAL_COUNT:
+					return "TotalCount";
+				case FILE_FORMAT:
+					return "FileFormat";
 				case RESULTS_FILE_PATH:
 					return "ResultsFilePath";
 				case REFERENCE_TIME:

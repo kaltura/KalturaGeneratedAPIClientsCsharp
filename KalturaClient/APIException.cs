@@ -574,6 +574,7 @@ namespace Kaltura
 		public static string SCHEDULED_TASK_DRY_RUN_NOT_ALLOWED = "SCHEDULED_TASK_DRY_RUN_NOT_ALLOWED";
 		public static string DRY_RUN_NOT_READY = "DRY_RUN_NOT_READY";
 		public static string DRY_RUN_FAILED = "DRY_RUN_FAILED";
+		public static string DRY_RUN_RESULT_IS_TOO_BIG = "DRY_RUN_RESULT_IS_TOO_BIG";
 		public static string MAX_SUB_PUBLISHERS_EXCEEDED = "MAX_SUB_PUBLISHERS_EXCEEDED";
 		public static string INVALID_STREAM_NAME = "INVALID_STREAM_NAME";
 		#endregion

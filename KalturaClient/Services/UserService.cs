@@ -1158,7 +1158,7 @@ namespace Kaltura.Services
 			return new UserEnableLoginRequestBuilder(userId, loginId, password);
 		}
 
-		public static UserExportToCsvRequestBuilder ExportToCsv(UserFilter filter, int metadataProfileId = Int32.MinValue, IList<CsvAdditionalFieldInfo> additionalFields = null)
+		public static UserExportToCsvRequestBuilder ExportToCsv(UserFilter filter = null, int metadataProfileId = Int32.MinValue, IList<CsvAdditionalFieldInfo> additionalFields = null)
 		{
 			return new UserExportToCsvRequestBuilder(filter, metadataProfileId, additionalFields);
 		}

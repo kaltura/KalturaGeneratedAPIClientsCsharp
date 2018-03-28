@@ -39,6 +39,7 @@ namespace Kaltura.Enums
 		public static readonly ESearchCategoryFieldName ENTRIES_COUNT = new ESearchCategoryFieldName("entries_count");
 		public static readonly ESearchCategoryFieldName FULL_IDS = new ESearchCategoryFieldName("full_ids");
 		public static readonly ESearchCategoryFieldName FULL_NAME = new ESearchCategoryFieldName("full_name");
+		public static readonly ESearchCategoryFieldName ID = new ESearchCategoryFieldName("id");
 		public static readonly ESearchCategoryFieldName INHERITANCE_TYPE = new ESearchCategoryFieldName("inheritance_type");
 		public static readonly ESearchCategoryFieldName INHERITED_PARENT_ID = new ESearchCategoryFieldName("inherited_parent_id");
 		public static readonly ESearchCategoryFieldName MEMBERS_COUNT = new ESearchCategoryFieldName("members_count");

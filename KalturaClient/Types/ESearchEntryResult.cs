@@ -36,12 +36,23 @@ namespace Kaltura.Types
 	public class ESearchEntryResult : ESearchResult
 	{
 		#region Constants
+		public const string OBJECT = "object";
 		#endregion
 
 		#region Private Fields
+		private BaseEntry _Object;
 		#endregion
 
 		#region Properties
+		public BaseEntry Object
+		{
+			get { return _Object; }
+			set 
+			{ 
+				_Object = value;
+				OnPropertyChanged("Object");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -51,6 +62,15 @@ namespace Kaltura.Types
 
 		public ESearchEntryResult(XmlElement node) : base(node)
 		{
+			foreach (XmlElement propertyNode in node.ChildNodes)
+			{
+				switch (propertyNode.Name)
+				{
+					case "object":
+						this._Object = ObjectFactory.Create<BaseEntry>(propertyNode);
+						continue;
+				}
+			}
 		}
 		#endregion
 
@@ -60,12 +80,15 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaESearchEntryResult");
+			kparams.AddIfNotNull("object", this._Object);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
+				case OBJECT:
+					return "Object";
 				default:
 					return base.getPropertyName(apiName);
 			}

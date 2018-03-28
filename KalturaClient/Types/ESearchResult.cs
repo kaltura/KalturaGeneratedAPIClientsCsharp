@@ -36,27 +36,16 @@ namespace Kaltura.Types
 	public class ESearchResult : ObjectBase
 	{
 		#region Constants
-		public const string OBJECT = "object";
 		public const string HIGHLIGHT = "highlight";
 		public const string ITEMS_DATA = "itemsData";
 		#endregion
 
 		#region Private Fields
-		private ObjectBase _Object;
 		private IList<ESearchHighlight> _Highlight;
 		private IList<ESearchItemDataResult> _ItemsData;
 		#endregion
 
 		#region Properties
-		public ObjectBase Object
-		{
-			get { return _Object; }
-			set 
-			{ 
-				_Object = value;
-				OnPropertyChanged("Object");
-			}
-		}
 		public IList<ESearchHighlight> Highlight
 		{
 			get { return _Highlight; }
@@ -88,9 +77,6 @@ namespace Kaltura.Types
 			{
 				switch (propertyNode.Name)
 				{
-					case "object":
-						this._Object = ObjectFactory.Create<ObjectBase>(propertyNode);
-						continue;
 					case "highlight":
 						this._Highlight = new List<ESearchHighlight>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
@@ -116,7 +102,6 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaESearchResult");
-			kparams.AddIfNotNull("object", this._Object);
 			kparams.AddIfNotNull("highlight", this._Highlight);
 			kparams.AddIfNotNull("itemsData", this._ItemsData);
 			return kparams;
@@ -125,8 +110,6 @@ namespace Kaltura.Types
 		{
 			switch(apiName)
 			{
-				case OBJECT:
-					return "Object";
 				case HIGHLIGHT:
 					return "Highlight";
 				case ITEMS_DATA:

@@ -54,6 +54,7 @@ namespace Kaltura.Types
 		public const string EXPLICIT_LIVE = "explicitLive";
 		public const string VIEW_MODE = "viewMode";
 		public const string RECORDING_STATUS = "recordingStatus";
+		public const string LAST_BROADCAST_END_TIME = "lastBroadcastEndTime";
 		#endregion
 
 		#region Private Fields
@@ -75,6 +76,7 @@ namespace Kaltura.Types
 		private NullableBoolean _ExplicitLive = (NullableBoolean)Int32.MinValue;
 		private ViewMode _ViewMode = (ViewMode)Int32.MinValue;
 		private RecordingStatus _RecordingStatus = (RecordingStatus)Int32.MinValue;
+		private int _LastBroadcastEndTime = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -225,6 +227,10 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecordingStatus");
 			}
 		}
+		public int LastBroadcastEndTime
+		{
+			get { return _LastBroadcastEndTime; }
+		}
 		#endregion
 
 		#region CTor
@@ -300,6 +306,9 @@ namespace Kaltura.Types
 					case "recordingStatus":
 						this._RecordingStatus = (RecordingStatus)ParseEnum(typeof(RecordingStatus), propertyNode.InnerText);
 						continue;
+					case "lastBroadcastEndTime":
+						this._LastBroadcastEndTime = ParseInt(propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -329,6 +338,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("explicitLive", this._ExplicitLive);
 			kparams.AddIfNotNull("viewMode", this._ViewMode);
 			kparams.AddIfNotNull("recordingStatus", this._RecordingStatus);
+			kparams.AddIfNotNull("lastBroadcastEndTime", this._LastBroadcastEndTime);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -371,6 +381,8 @@ namespace Kaltura.Types
 					return "ViewMode";
 				case RECORDING_STATUS:
 					return "RecordingStatus";
+				case LAST_BROADCAST_END_TIME:
+					return "LastBroadcastEndTime";
 				default:
 					return base.getPropertyName(apiName);
 			}

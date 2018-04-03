@@ -33,69 +33,73 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class ClipAttributes : OperationAttributes
+	public class ClipConcatJobData : JobData
 	{
 		#region Constants
-		public const string OFFSET = "offset";
-		public const string DURATION = "duration";
-		public const string GLOBAL_OFFSET_IN_DESTINATION = "globalOffsetInDestination";
+		public const string PARTNER_ID = "partnerId";
+		public const string PRIORITY = "priority";
+		public const string OPERATION_ATTRIBUTES = "operationAttributes";
 		#endregion
 
 		#region Private Fields
-		private int _Offset = Int32.MinValue;
-		private int _Duration = Int32.MinValue;
-		private int _GlobalOffsetInDestination = Int32.MinValue;
+		private int _PartnerId = Int32.MinValue;
+		private int _Priority = Int32.MinValue;
+		private IList<ObjectBase> _OperationAttributes;
 		#endregion
 
 		#region Properties
-		public int Offset
+		public int PartnerId
 		{
-			get { return _Offset; }
+			get { return _PartnerId; }
 			set 
 			{ 
-				_Offset = value;
-				OnPropertyChanged("Offset");
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
 			}
 		}
-		public int Duration
+		public int Priority
 		{
-			get { return _Duration; }
+			get { return _Priority; }
 			set 
 			{ 
-				_Duration = value;
-				OnPropertyChanged("Duration");
+				_Priority = value;
+				OnPropertyChanged("Priority");
 			}
 		}
-		public int GlobalOffsetInDestination
+		public IList<ObjectBase> OperationAttributes
 		{
-			get { return _GlobalOffsetInDestination; }
+			get { return _OperationAttributes; }
 			set 
 			{ 
-				_GlobalOffsetInDestination = value;
-				OnPropertyChanged("GlobalOffsetInDestination");
+				_OperationAttributes = value;
+				OnPropertyChanged("OperationAttributes");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public ClipAttributes()
+		public ClipConcatJobData()
 		{
 		}
 
-		public ClipAttributes(XmlElement node) : base(node)
+		public ClipConcatJobData(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
 				switch (propertyNode.Name)
 				{
-					case "offset":
-						this._Offset = ParseInt(propertyNode.InnerText);
+					case "partnerId":
+						this._PartnerId = ParseInt(propertyNode.InnerText);
 						continue;
-					case "duration":
-						this._Duration = ParseInt(propertyNode.InnerText);
+					case "priority":
+						this._Priority = ParseInt(propertyNode.InnerText);
 						continue;
-					case "globalOffsetInDestination":
-						this._GlobalOffsetInDestination = ParseInt(propertyNode.InnerText);
+					case "operationAttributes":
+						this._OperationAttributes = new List<ObjectBase>();
+						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
+						{
+							this._OperationAttributes.Add(ObjectFactory.Create<ObjectBase>(arrayNode));
+						}
 						continue;
 				}
 			}
@@ -107,22 +111,22 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaClipAttributes");
-			kparams.AddIfNotNull("offset", this._Offset);
-			kparams.AddIfNotNull("duration", this._Duration);
-			kparams.AddIfNotNull("globalOffsetInDestination", this._GlobalOffsetInDestination);
+				kparams.AddReplace("objectType", "KalturaClipConcatJobData");
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("priority", this._Priority);
+			kparams.AddIfNotNull("operationAttributes", this._OperationAttributes);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case OFFSET:
-					return "Offset";
-				case DURATION:
-					return "Duration";
-				case GLOBAL_OFFSET_IN_DESTINATION:
-					return "GlobalOffsetInDestination";
+				case PARTNER_ID:
+					return "PartnerId";
+				case PRIORITY:
+					return "Priority";
+				case OPERATION_ATTRIBUTES:
+					return "OperationAttributes";
 				default:
 					return base.getPropertyName(apiName);
 			}

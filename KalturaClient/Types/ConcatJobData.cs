@@ -42,6 +42,7 @@ namespace Kaltura.Types
 		public const string OFFSET = "offset";
 		public const string DURATION = "duration";
 		public const string CONCATENATED_DURATION = "concatenatedDuration";
+		public const string SHOULD_SORT = "shouldSort";
 		#endregion
 
 		#region Private Fields
@@ -51,6 +52,7 @@ namespace Kaltura.Types
 		private float _Offset = Single.MinValue;
 		private float _Duration = Single.MinValue;
 		private float _ConcatenatedDuration = Single.MinValue;
+		private bool? _ShouldSort = null;
 		#endregion
 
 		#region Properties
@@ -108,6 +110,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConcatenatedDuration");
 			}
 		}
+		public bool? ShouldSort
+		{
+			get { return _ShouldSort; }
+			set 
+			{ 
+				_ShouldSort = value;
+				OnPropertyChanged("ShouldSort");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -143,6 +154,9 @@ namespace Kaltura.Types
 					case "concatenatedDuration":
 						this._ConcatenatedDuration = ParseFloat(propertyNode.InnerText);
 						continue;
+					case "shouldSort":
+						this._ShouldSort = ParseBool(propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -160,6 +174,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("offset", this._Offset);
 			kparams.AddIfNotNull("duration", this._Duration);
 			kparams.AddIfNotNull("concatenatedDuration", this._ConcatenatedDuration);
+			kparams.AddIfNotNull("shouldSort", this._ShouldSort);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -178,6 +193,8 @@ namespace Kaltura.Types
 					return "Duration";
 				case CONCATENATED_DURATION:
 					return "ConcatenatedDuration";
+				case SHOULD_SORT:
+					return "ShouldSort";
 				default:
 					return base.getPropertyName(apiName);
 			}

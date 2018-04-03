@@ -405,6 +405,67 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class AnnotationUpdateCuePointsTimesRequestBuilder : RequestBuilder<CuePoint>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string START_TIME = "startTime";
+		public const string END_TIME = "endTime";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public int StartTime
+		{
+			set;
+			get;
+		}
+		public int EndTime
+		{
+			set;
+			get;
+		}
+
+		public AnnotationUpdateCuePointsTimesRequestBuilder()
+			: base("annotation_annotation", "updateCuePointsTimes")
+		{
+		}
+
+		public AnnotationUpdateCuePointsTimesRequestBuilder(string id, int startTime, int endTime)
+			: this()
+		{
+			this.Id = id;
+			this.StartTime = startTime;
+			this.EndTime = endTime;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("startTime"))
+				kparams.AddIfNotNull("startTime", StartTime);
+			if (!isMapped("endTime"))
+				kparams.AddIfNotNull("endTime", EndTime);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<CuePoint>(result);
+		}
+	}
+
 	public class AnnotationUpdateStatusRequestBuilder : RequestBuilder<object>
 	{
 		#region Constants
@@ -502,6 +563,11 @@ namespace Kaltura.Services
 		public static AnnotationUpdateRequestBuilder Update(string id, CuePoint annotation)
 		{
 			return new AnnotationUpdateRequestBuilder(id, annotation);
+		}
+
+		public static AnnotationUpdateCuePointsTimesRequestBuilder UpdateCuePointsTimes(string id, int startTime, int endTime = Int32.MinValue)
+		{
+			return new AnnotationUpdateCuePointsTimesRequestBuilder(id, startTime, endTime);
 		}
 
 		public static AnnotationUpdateStatusRequestBuilder UpdateStatus(string id, CuePointStatus status)

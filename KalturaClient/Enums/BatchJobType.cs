@@ -36,10 +36,10 @@ namespace Kaltura.Enums
 		public static readonly BatchJobType DISTRIBUTION_ENABLE = new BatchJobType("contentDistribution.DistributionEnable");
 		public static readonly BatchJobType DISTRIBUTION_FETCH_REPORT = new BatchJobType("contentDistribution.DistributionFetchReport");
 		public static readonly BatchJobType DISTRIBUTION_SUBMIT = new BatchJobType("contentDistribution.DistributionSubmit");
-		public static readonly BatchJobType DISTRIBUTION_SYNC = new BatchJobType("contentDistribution.DistributionSync");
 		public static readonly BatchJobType DISTRIBUTION_UPDATE = new BatchJobType("contentDistribution.DistributionUpdate");
-		public static readonly BatchJobType CONVERT = new BatchJobType("0");
 		public static readonly BatchJobType DROP_FOLDER_CONTENT_PROCESSOR = new BatchJobType("dropFolder.DropFolderContentProcessor");
+		public static readonly BatchJobType CONVERT = new BatchJobType("0");
+		public static readonly BatchJobType DISTRIBUTION_SYNC = new BatchJobType("contentDistribution.DistributionSync");
 		public static readonly BatchJobType DROP_FOLDER_WATCHER = new BatchJobType("dropFolder.DropFolderWatcher");
 		public static readonly BatchJobType EVENT_NOTIFICATION_HANDLER = new BatchJobType("eventNotification.EventNotificationHandler");
 		public static readonly BatchJobType INTEGRATION = new BatchJobType("integration.Integration");
@@ -90,6 +90,8 @@ namespace Kaltura.Enums
 		public static readonly BatchJobType CHUNKED_ENCODE_JOB_SCHEDULER = new BatchJobType("44");
 		public static readonly BatchJobType SERVER_NODE_MONITOR = new BatchJobType("45");
 		public static readonly BatchJobType USERS_CSV = new BatchJobType("46");
+		public static readonly BatchJobType CLIP_CONCAT = new BatchJobType("47");
+		public static readonly BatchJobType COPY_CUE_POINTS = new BatchJobType("48");
 
 		private BatchJobType(string name) : base(name) { }
 	}

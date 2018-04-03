@@ -405,6 +405,67 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class CuePointUpdateCuePointsTimesRequestBuilder : RequestBuilder<CuePoint>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string START_TIME = "startTime";
+		public const string END_TIME = "endTime";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public int StartTime
+		{
+			set;
+			get;
+		}
+		public int EndTime
+		{
+			set;
+			get;
+		}
+
+		public CuePointUpdateCuePointsTimesRequestBuilder()
+			: base("cuepoint_cuepoint", "updateCuePointsTimes")
+		{
+		}
+
+		public CuePointUpdateCuePointsTimesRequestBuilder(string id, int startTime, int endTime)
+			: this()
+		{
+			this.Id = id;
+			this.StartTime = startTime;
+			this.EndTime = endTime;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("startTime"))
+				kparams.AddIfNotNull("startTime", StartTime);
+			if (!isMapped("endTime"))
+				kparams.AddIfNotNull("endTime", EndTime);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<CuePoint>(result);
+		}
+	}
+
 	public class CuePointUpdateStatusRequestBuilder : RequestBuilder<object>
 	{
 		#region Constants
@@ -502,6 +563,11 @@ namespace Kaltura.Services
 		public static CuePointUpdateRequestBuilder Update(string id, CuePoint cuePoint)
 		{
 			return new CuePointUpdateRequestBuilder(id, cuePoint);
+		}
+
+		public static CuePointUpdateCuePointsTimesRequestBuilder UpdateCuePointsTimes(string id, int startTime, int endTime = Int32.MinValue)
+		{
+			return new CuePointUpdateCuePointsTimesRequestBuilder(id, startTime, endTime);
 		}
 
 		public static CuePointUpdateStatusRequestBuilder UpdateStatus(string id, CuePointStatus status)

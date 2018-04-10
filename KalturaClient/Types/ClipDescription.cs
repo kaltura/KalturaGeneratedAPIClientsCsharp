@@ -33,73 +33,83 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class CopyCaptionsJobData : JobData
+	public class ClipDescription : ObjectBase
 	{
 		#region Constants
-		public const string ENTRY_ID = "entryId";
-		public const string CLIPS_DESCRIPTION_ARRAY = "clipsDescriptionArray";
-		public const string FULL_COPY = "fullCopy";
+		public const string SOURCE_ENTRY_ID = "sourceEntryId";
+		public const string START_TIME = "startTime";
+		public const string DURATION = "duration";
+		public const string OFFSET_IN_DESTINATION = "offsetInDestination";
 		#endregion
 
 		#region Private Fields
-		private string _EntryId = null;
-		private IList<ClipDescription> _ClipsDescriptionArray;
-		private bool? _FullCopy = null;
+		private string _SourceEntryId = null;
+		private int _StartTime = Int32.MinValue;
+		private int _Duration = Int32.MinValue;
+		private int _OffsetInDestination = Int32.MinValue;
 		#endregion
 
 		#region Properties
-		public string EntryId
+		public string SourceEntryId
 		{
-			get { return _EntryId; }
+			get { return _SourceEntryId; }
 			set 
 			{ 
-				_EntryId = value;
-				OnPropertyChanged("EntryId");
+				_SourceEntryId = value;
+				OnPropertyChanged("SourceEntryId");
 			}
 		}
-		public IList<ClipDescription> ClipsDescriptionArray
+		public int StartTime
 		{
-			get { return _ClipsDescriptionArray; }
+			get { return _StartTime; }
 			set 
 			{ 
-				_ClipsDescriptionArray = value;
-				OnPropertyChanged("ClipsDescriptionArray");
+				_StartTime = value;
+				OnPropertyChanged("StartTime");
 			}
 		}
-		public bool? FullCopy
+		public int Duration
 		{
-			get { return _FullCopy; }
+			get { return _Duration; }
 			set 
 			{ 
-				_FullCopy = value;
-				OnPropertyChanged("FullCopy");
+				_Duration = value;
+				OnPropertyChanged("Duration");
+			}
+		}
+		public int OffsetInDestination
+		{
+			get { return _OffsetInDestination; }
+			set 
+			{ 
+				_OffsetInDestination = value;
+				OnPropertyChanged("OffsetInDestination");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public CopyCaptionsJobData()
+		public ClipDescription()
 		{
 		}
 
-		public CopyCaptionsJobData(XmlElement node) : base(node)
+		public ClipDescription(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
 				switch (propertyNode.Name)
 				{
-					case "entryId":
-						this._EntryId = propertyNode.InnerText;
+					case "sourceEntryId":
+						this._SourceEntryId = propertyNode.InnerText;
 						continue;
-					case "clipsDescriptionArray":
-						this._ClipsDescriptionArray = new List<ClipDescription>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._ClipsDescriptionArray.Add(ObjectFactory.Create<ClipDescription>(arrayNode));
-						}
+					case "startTime":
+						this._StartTime = ParseInt(propertyNode.InnerText);
 						continue;
-					case "fullCopy":
-						this._FullCopy = ParseBool(propertyNode.InnerText);
+					case "duration":
+						this._Duration = ParseInt(propertyNode.InnerText);
+						continue;
+					case "offsetInDestination":
+						this._OffsetInDestination = ParseInt(propertyNode.InnerText);
 						continue;
 				}
 			}
@@ -111,22 +121,25 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaCopyCaptionsJobData");
-			kparams.AddIfNotNull("entryId", this._EntryId);
-			kparams.AddIfNotNull("clipsDescriptionArray", this._ClipsDescriptionArray);
-			kparams.AddIfNotNull("fullCopy", this._FullCopy);
+				kparams.AddReplace("objectType", "KalturaClipDescription");
+			kparams.AddIfNotNull("sourceEntryId", this._SourceEntryId);
+			kparams.AddIfNotNull("startTime", this._StartTime);
+			kparams.AddIfNotNull("duration", this._Duration);
+			kparams.AddIfNotNull("offsetInDestination", this._OffsetInDestination);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case ENTRY_ID:
-					return "EntryId";
-				case CLIPS_DESCRIPTION_ARRAY:
-					return "ClipsDescriptionArray";
-				case FULL_COPY:
-					return "FullCopy";
+				case SOURCE_ENTRY_ID:
+					return "SourceEntryId";
+				case START_TIME:
+					return "StartTime";
+				case DURATION:
+					return "Duration";
+				case OFFSET_IN_DESTINATION:
+					return "OffsetInDestination";
 				default:
 					return base.getPropertyName(apiName);
 			}

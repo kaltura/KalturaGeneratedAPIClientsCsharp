@@ -647,7 +647,7 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class LiveStreamRegenerateStreamTokenRequestBuilder : RequestBuilder<object>
+	public class LiveStreamRegenerateStreamTokenRequestBuilder : RequestBuilder<LiveEntry>
 	{
 		#region Constants
 		public const string ENTRY_ID = "entryId";
@@ -686,7 +686,7 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return null;
+			return ObjectFactory.Create<LiveEntry>(result);
 		}
 	}
 

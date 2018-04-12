@@ -39,7 +39,6 @@ namespace Kaltura.Types
 		public const string LANGUAGE = "language";
 		public const string LABEL = "label";
 		public const string FILE_PATH = "filePath";
-		public const string ENCRYPTION_KEY = "encryptionKey";
 		public const string REMOTE_ID = "remoteId";
 		public const string ACTION = "action";
 		public const string VERSION = "version";
@@ -50,7 +49,6 @@ namespace Kaltura.Types
 		private string _Language = null;
 		private string _Label = null;
 		private string _FilePath = null;
-		private string _EncryptionKey = null;
 		private string _RemoteId = null;
 		private YouTubeApiDistributionCaptionAction _Action = (YouTubeApiDistributionCaptionAction)Int32.MinValue;
 		private string _Version = null;
@@ -83,15 +81,6 @@ namespace Kaltura.Types
 			{ 
 				_FilePath = value;
 				OnPropertyChanged("FilePath");
-			}
-		}
-		public string EncryptionKey
-		{
-			get { return _EncryptionKey; }
-			set 
-			{ 
-				_EncryptionKey = value;
-				OnPropertyChanged("EncryptionKey");
 			}
 		}
 		public string RemoteId
@@ -152,9 +141,6 @@ namespace Kaltura.Types
 					case "filePath":
 						this._FilePath = propertyNode.InnerText;
 						continue;
-					case "encryptionKey":
-						this._EncryptionKey = propertyNode.InnerText;
-						continue;
 					case "remoteId":
 						this._RemoteId = propertyNode.InnerText;
 						continue;
@@ -181,7 +167,6 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("language", this._Language);
 			kparams.AddIfNotNull("label", this._Label);
 			kparams.AddIfNotNull("filePath", this._FilePath);
-			kparams.AddIfNotNull("encryptionKey", this._EncryptionKey);
 			kparams.AddIfNotNull("remoteId", this._RemoteId);
 			kparams.AddIfNotNull("action", this._Action);
 			kparams.AddIfNotNull("version", this._Version);
@@ -198,8 +183,6 @@ namespace Kaltura.Types
 					return "Label";
 				case FILE_PATH:
 					return "FilePath";
-				case ENCRYPTION_KEY:
-					return "EncryptionKey";
 				case REMOTE_ID:
 					return "RemoteId";
 				case ACTION:

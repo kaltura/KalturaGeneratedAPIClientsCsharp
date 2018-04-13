@@ -44,6 +44,7 @@ namespace Kaltura.Types
 		public const string WEBEX_HOST_ID_METADATA_FIELD_NAME = "webexHostIdMetadataFieldName";
 		public const string DELETE_FROM_RECYCLE_BIN = "deleteFromRecycleBin";
 		public const string WEBEX_SERVICE_TYPE = "webexServiceType";
+		public const string WEBEX_SITE_NAME = "webexSiteName";
 		public const string DELETE_FROM_TIMESTAMP = "deleteFromTimestamp";
 		#endregion
 
@@ -56,6 +57,7 @@ namespace Kaltura.Types
 		private string _WebexHostIdMetadataFieldName = null;
 		private bool? _DeleteFromRecycleBin = null;
 		private string _WebexServiceType = null;
+		private string _WebexSiteName = null;
 		private int _DeleteFromTimestamp = Int32.MinValue;
 		#endregion
 
@@ -132,6 +134,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebexServiceType");
 			}
 		}
+		public string WebexSiteName
+		{
+			get { return _WebexSiteName; }
+			set 
+			{ 
+				_WebexSiteName = value;
+				OnPropertyChanged("WebexSiteName");
+			}
+		}
 		public int DeleteFromTimestamp
 		{
 			get { return _DeleteFromTimestamp; }
@@ -178,6 +189,9 @@ namespace Kaltura.Types
 					case "webexServiceType":
 						this._WebexServiceType = propertyNode.InnerText;
 						continue;
+					case "webexSiteName":
+						this._WebexSiteName = propertyNode.InnerText;
+						continue;
 					case "deleteFromTimestamp":
 						this._DeleteFromTimestamp = ParseInt(propertyNode.InnerText);
 						continue;
@@ -200,6 +214,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("webexHostIdMetadataFieldName", this._WebexHostIdMetadataFieldName);
 			kparams.AddIfNotNull("deleteFromRecycleBin", this._DeleteFromRecycleBin);
 			kparams.AddIfNotNull("webexServiceType", this._WebexServiceType);
+			kparams.AddIfNotNull("webexSiteName", this._WebexSiteName);
 			kparams.AddIfNotNull("deleteFromTimestamp", this._DeleteFromTimestamp);
 			return kparams;
 		}
@@ -223,6 +238,8 @@ namespace Kaltura.Types
 					return "DeleteFromRecycleBin";
 				case WEBEX_SERVICE_TYPE:
 					return "WebexServiceType";
+				case WEBEX_SITE_NAME:
+					return "WebexSiteName";
 				case DELETE_FROM_TIMESTAMP:
 					return "DeleteFromTimestamp";
 				default:

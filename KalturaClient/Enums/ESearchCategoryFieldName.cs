@@ -55,7 +55,6 @@ namespace Kaltura.Enums
 		public static readonly ESearchCategoryFieldName TAGS = new ESearchCategoryFieldName("tags");
 		public static readonly ESearchCategoryFieldName UPDATED_AT = new ESearchCategoryFieldName("updated_at");
 		public static readonly ESearchCategoryFieldName USER_ID = new ESearchCategoryFieldName("user_id");
-		public static readonly ESearchCategoryFieldName USER_IDS = new ESearchCategoryFieldName("user_ids");
 
 		private ESearchCategoryFieldName(string name) : base(name) { }
 	}

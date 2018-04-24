@@ -45,6 +45,7 @@ namespace Kaltura.Types
 		public const string CATEGORY = "category";
 		public const string ADULT_CONTENT = "adultContent";
 		public const string FEED_AUTHOR = "feedAuthor";
+		public const string ENFORCE_FEED_AUTHOR = "enforceFeedAuthor";
 		public const string ENFORCE_ORDER = "enforceOrder";
 		#endregion
 
@@ -58,6 +59,7 @@ namespace Kaltura.Types
 		private ITunesSyndicationFeedCategories _Category = null;
 		private ITunesSyndicationFeedAdultValues _AdultContent = null;
 		private string _FeedAuthor = null;
+		private bool? _EnforceFeedAuthor = null;
 		private NullableBoolean _EnforceOrder = (NullableBoolean)Int32.MinValue;
 		#endregion
 
@@ -138,6 +140,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedAuthor");
 			}
 		}
+		public bool? EnforceFeedAuthor
+		{
+			get { return _EnforceFeedAuthor; }
+			set 
+			{ 
+				_EnforceFeedAuthor = value;
+				OnPropertyChanged("EnforceFeedAuthor");
+			}
+		}
 		public NullableBoolean EnforceOrder
 		{
 			get { return _EnforceOrder; }
@@ -187,6 +198,9 @@ namespace Kaltura.Types
 					case "feedAuthor":
 						this._FeedAuthor = propertyNode.InnerText;
 						continue;
+					case "enforceFeedAuthor":
+						this._EnforceFeedAuthor = ParseBool(propertyNode.InnerText);
+						continue;
 					case "enforceOrder":
 						this._EnforceOrder = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
 						continue;
@@ -210,6 +224,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("category", this._Category);
 			kparams.AddIfNotNull("adultContent", this._AdultContent);
 			kparams.AddIfNotNull("feedAuthor", this._FeedAuthor);
+			kparams.AddIfNotNull("enforceFeedAuthor", this._EnforceFeedAuthor);
 			kparams.AddIfNotNull("enforceOrder", this._EnforceOrder);
 			return kparams;
 		}
@@ -235,6 +250,8 @@ namespace Kaltura.Types
 					return "AdultContent";
 				case FEED_AUTHOR:
 					return "FeedAuthor";
+				case ENFORCE_FEED_AUTHOR:
+					return "EnforceFeedAuthor";
 				case ENFORCE_ORDER:
 					return "EnforceOrder";
 				default:

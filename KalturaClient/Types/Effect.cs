@@ -33,87 +33,55 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class ClipAttributes : OperationAttributes
+	public class Effect : ObjectBase
 	{
 		#region Constants
-		public const string OFFSET = "offset";
-		public const string DURATION = "duration";
-		public const string GLOBAL_OFFSET_IN_DESTINATION = "globalOffsetInDestination";
-		public const string EFFECT_ARRAY = "effectArray";
+		public const string EFFECT_TYPE = "effectType";
+		public const string VALUE = "value";
 		#endregion
 
 		#region Private Fields
-		private int _Offset = Int32.MinValue;
-		private int _Duration = Int32.MinValue;
-		private int _GlobalOffsetInDestination = Int32.MinValue;
-		private IList<Effect> _EffectArray;
+		private EffectType _EffectType = (EffectType)Int32.MinValue;
+		private string _Value = null;
 		#endregion
 
 		#region Properties
-		public int Offset
+		public EffectType EffectType
 		{
-			get { return _Offset; }
+			get { return _EffectType; }
 			set 
 			{ 
-				_Offset = value;
-				OnPropertyChanged("Offset");
+				_EffectType = value;
+				OnPropertyChanged("EffectType");
 			}
 		}
-		public int Duration
+		public string Value
 		{
-			get { return _Duration; }
+			get { return _Value; }
 			set 
 			{ 
-				_Duration = value;
-				OnPropertyChanged("Duration");
-			}
-		}
-		public int GlobalOffsetInDestination
-		{
-			get { return _GlobalOffsetInDestination; }
-			set 
-			{ 
-				_GlobalOffsetInDestination = value;
-				OnPropertyChanged("GlobalOffsetInDestination");
-			}
-		}
-		public IList<Effect> EffectArray
-		{
-			get { return _EffectArray; }
-			set 
-			{ 
-				_EffectArray = value;
-				OnPropertyChanged("EffectArray");
+				_Value = value;
+				OnPropertyChanged("Value");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public ClipAttributes()
+		public Effect()
 		{
 		}
 
-		public ClipAttributes(XmlElement node) : base(node)
+		public Effect(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
 				switch (propertyNode.Name)
 				{
-					case "offset":
-						this._Offset = ParseInt(propertyNode.InnerText);
+					case "effectType":
+						this._EffectType = (EffectType)ParseEnum(typeof(EffectType), propertyNode.InnerText);
 						continue;
-					case "duration":
-						this._Duration = ParseInt(propertyNode.InnerText);
-						continue;
-					case "globalOffsetInDestination":
-						this._GlobalOffsetInDestination = ParseInt(propertyNode.InnerText);
-						continue;
-					case "effectArray":
-						this._EffectArray = new List<Effect>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._EffectArray.Add(ObjectFactory.Create<Effect>(arrayNode));
-						}
+					case "value":
+						this._Value = propertyNode.InnerText;
 						continue;
 				}
 			}
@@ -125,25 +93,19 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaClipAttributes");
-			kparams.AddIfNotNull("offset", this._Offset);
-			kparams.AddIfNotNull("duration", this._Duration);
-			kparams.AddIfNotNull("globalOffsetInDestination", this._GlobalOffsetInDestination);
-			kparams.AddIfNotNull("effectArray", this._EffectArray);
+				kparams.AddReplace("objectType", "KalturaEffect");
+			kparams.AddIfNotNull("effectType", this._EffectType);
+			kparams.AddIfNotNull("value", this._Value);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case OFFSET:
-					return "Offset";
-				case DURATION:
-					return "Duration";
-				case GLOBAL_OFFSET_IN_DESTINATION:
-					return "GlobalOffsetInDestination";
-				case EFFECT_ARRAY:
-					return "EffectArray";
+				case EFFECT_TYPE:
+					return "EffectType";
+				case VALUE:
+					return "Value";
 				default:
 					return base.getPropertyName(apiName);
 			}

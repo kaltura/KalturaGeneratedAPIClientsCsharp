@@ -182,6 +182,58 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class EntryServerNodeUpdateStatusRequestBuilder : RequestBuilder<EntryServerNode>
+	{
+		#region Constants
+		public const string ID = "id";
+		public const string STATUS = "status";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+		public EntryServerNodeStatus Status
+		{
+			set;
+			get;
+		}
+
+		public EntryServerNodeUpdateStatusRequestBuilder()
+			: base("entryservernode", "updateStatus")
+		{
+		}
+
+		public EntryServerNodeUpdateStatusRequestBuilder(string id, EntryServerNodeStatus status)
+			: this()
+		{
+			this.Id = id;
+			this.Status = status;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			if (!isMapped("status"))
+				kparams.AddIfNotNull("status", Status);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<EntryServerNode>(result);
+		}
+	}
+
 	public class EntryServerNodeValidateRegisteredEntryServerNodeRequestBuilder : RequestBuilder<object>
 	{
 		#region Constants
@@ -245,6 +297,11 @@ namespace Kaltura.Services
 		public static EntryServerNodeUpdateRequestBuilder Update(int id, EntryServerNode entryServerNode)
 		{
 			return new EntryServerNodeUpdateRequestBuilder(id, entryServerNode);
+		}
+
+		public static EntryServerNodeUpdateStatusRequestBuilder UpdateStatus(string id, EntryServerNodeStatus status)
+		{
+			return new EntryServerNodeUpdateStatusRequestBuilder(id, status);
 		}
 
 		public static EntryServerNodeValidateRegisteredEntryServerNodeRequestBuilder ValidateRegisteredEntryServerNode(int id)

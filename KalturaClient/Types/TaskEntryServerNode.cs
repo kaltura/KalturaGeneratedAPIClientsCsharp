@@ -25,14 +25,52 @@
 //
 // @ignore
 // ===================================================================================================
-namespace Kaltura.Enums
-{
-	public sealed class EntryServerNodeType : StringEnum
-	{
-		public static readonly EntryServerNodeType LIVE_PRIMARY = new EntryServerNodeType("0");
-		public static readonly EntryServerNodeType LIVE_BACKUP = new EntryServerNodeType("1");
-		public static readonly EntryServerNodeType LIVE_CLIPPING_TASK = new EntryServerNodeType("2");
+using System;
+using System.Xml;
+using System.Collections.Generic;
+using Kaltura.Enums;
+using Kaltura.Request;
 
-		private EntryServerNodeType(string name) : base(name) { }
+namespace Kaltura.Types
+{
+	public class TaskEntryServerNode : EntryServerNode
+	{
+		#region Constants
+		#endregion
+
+		#region Private Fields
+		#endregion
+
+		#region Properties
+		#endregion
+
+		#region CTor
+		public TaskEntryServerNode()
+		{
+		}
+
+		public TaskEntryServerNode(XmlElement node) : base(node)
+		{
+		}
+		#endregion
+
+		#region Methods
+		public override Params ToParams(bool includeObjectType = true)
+		{
+			Params kparams = base.ToParams(includeObjectType);
+			if (includeObjectType)
+				kparams.AddReplace("objectType", "KalturaTaskEntryServerNode");
+			return kparams;
+		}
+		protected override string getPropertyName(string apiName)
+		{
+			switch(apiName)
+			{
+				default:
+					return base.getPropertyName(apiName);
+			}
+		}
+		#endregion
 	}
 }
+

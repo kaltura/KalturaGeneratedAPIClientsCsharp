@@ -29,10 +29,16 @@ namespace Kaltura.Enums
 {
 	public enum EntryServerNodeStatus
 	{
+		ERROR = -1,
 		STOPPED = 0,
 		PLAYABLE = 1,
 		BROADCASTING = 2,
 		AUTHENTICATED = 3,
 		MARKED_FOR_DELETION = 4,
+		TASK_PENDING = 5,
+		TASK_QUEUED = 6,
+		TASK_PROCESSING = 7,
+		TASK_UPLOADING = 8,
+		TASK_FINISHED = 9,
 	}
 }

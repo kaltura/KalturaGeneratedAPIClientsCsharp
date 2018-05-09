@@ -35,7 +35,7 @@ using Kaltura.Enums;
 
 namespace Kaltura.Services
 {
-	public class ESearchSearchCategoryRequestBuilder : RequestBuilder<ESearchResponse>
+	public class ESearchSearchCategoryRequestBuilder : RequestBuilder<ESearchCategoryResponse>
 	{
 		#region Constants
 		public const string SEARCH_PARAMS = "searchParams";
@@ -83,11 +83,11 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<ESearchResponse>(result);
+			return ObjectFactory.Create<ESearchCategoryResponse>(result);
 		}
 	}
 
-	public class ESearchSearchEntryRequestBuilder : RequestBuilder<ESearchResponse>
+	public class ESearchSearchEntryRequestBuilder : RequestBuilder<ESearchEntryResponse>
 	{
 		#region Constants
 		public const string SEARCH_PARAMS = "searchParams";
@@ -135,11 +135,11 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<ESearchResponse>(result);
+			return ObjectFactory.Create<ESearchEntryResponse>(result);
 		}
 	}
 
-	public class ESearchSearchUserRequestBuilder : RequestBuilder<ESearchResponse>
+	public class ESearchSearchUserRequestBuilder : RequestBuilder<ESearchUserResponse>
 	{
 		#region Constants
 		public const string SEARCH_PARAMS = "searchParams";
@@ -187,7 +187,7 @@ namespace Kaltura.Services
 
 		public override object Deserialize(XmlElement result)
 		{
-			return ObjectFactory.Create<ESearchResponse>(result);
+			return ObjectFactory.Create<ESearchUserResponse>(result);
 		}
 	}
 

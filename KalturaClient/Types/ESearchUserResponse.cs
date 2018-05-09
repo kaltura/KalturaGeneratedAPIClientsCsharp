@@ -33,36 +33,40 @@ using Kaltura.Request;
 
 namespace Kaltura.Types
 {
-	public class ESearchResponse : ObjectBase
+	public class ESearchUserResponse : ESearchResponse
 	{
 		#region Constants
-		public const string TOTAL_COUNT = "totalCount";
+		public const string OBJECTS = "objects";
 		#endregion
 
 		#region Private Fields
-		private int _TotalCount = Int32.MinValue;
+		private IList<ESearchUserResult> _Objects;
 		#endregion
 
 		#region Properties
-		public int TotalCount
+		public IList<ESearchUserResult> Objects
 		{
-			get { return _TotalCount; }
+			get { return _Objects; }
 		}
 		#endregion
 
 		#region CTor
-		public ESearchResponse()
+		public ESearchUserResponse()
 		{
 		}
 
-		public ESearchResponse(XmlElement node) : base(node)
+		public ESearchUserResponse(XmlElement node) : base(node)
 		{
 			foreach (XmlElement propertyNode in node.ChildNodes)
 			{
 				switch (propertyNode.Name)
 				{
-					case "totalCount":
-						this._TotalCount = ParseInt(propertyNode.InnerText);
+					case "objects":
+						this._Objects = new List<ESearchUserResult>();
+						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
+						{
+							this._Objects.Add(ObjectFactory.Create<ESearchUserResult>(arrayNode));
+						}
 						continue;
 				}
 			}
@@ -74,16 +78,16 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaESearchResponse");
-			kparams.AddIfNotNull("totalCount", this._TotalCount);
+				kparams.AddReplace("objectType", "KalturaESearchUserResponse");
+			kparams.AddIfNotNull("objects", this._Objects);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case TOTAL_COUNT:
-					return "TotalCount";
+				case OBJECTS:
+					return "Objects";
 				default:
 					return base.getPropertyName(apiName);
 			}

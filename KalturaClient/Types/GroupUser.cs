@@ -42,6 +42,7 @@ namespace Kaltura.Types
 		public const string PARTNER_ID = "partnerId";
 		public const string CREATED_AT = "createdAt";
 		public const string UPDATED_AT = "updatedAt";
+		public const string CREATION_MODE = "creationMode";
 		#endregion
 
 		#region Private Fields
@@ -51,6 +52,7 @@ namespace Kaltura.Types
 		private int _PartnerId = Int32.MinValue;
 		private int _CreatedAt = Int32.MinValue;
 		private int _UpdatedAt = Int32.MinValue;
+		private GroupUserCreationMode _CreationMode = (GroupUserCreationMode)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -88,6 +90,15 @@ namespace Kaltura.Types
 		{
 			get { return _UpdatedAt; }
 		}
+		public GroupUserCreationMode CreationMode
+		{
+			get { return _CreationMode; }
+			set 
+			{ 
+				_CreationMode = value;
+				OnPropertyChanged("CreationMode");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -119,6 +130,9 @@ namespace Kaltura.Types
 					case "updatedAt":
 						this._UpdatedAt = ParseInt(propertyNode.InnerText);
 						continue;
+					case "creationMode":
+						this._CreationMode = (GroupUserCreationMode)ParseEnum(typeof(GroupUserCreationMode), propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -136,6 +150,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("partnerId", this._PartnerId);
 			kparams.AddIfNotNull("createdAt", this._CreatedAt);
 			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
+			kparams.AddIfNotNull("creationMode", this._CreationMode);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -154,6 +169,8 @@ namespace Kaltura.Types
 					return "CreatedAt";
 				case UPDATED_AT:
 					return "UpdatedAt";
+				case CREATION_MODE:
+					return "CreationMode";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -182,6 +182,58 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class GroupUserSyncRequestBuilder : RequestBuilder<BulkUpload>
+	{
+		#region Constants
+		public const string USER_ID = "userId";
+		public const string GROUP_IDS = "groupIds";
+		#endregion
+
+		public string UserId
+		{
+			set;
+			get;
+		}
+		public string GroupIds
+		{
+			set;
+			get;
+		}
+
+		public GroupUserSyncRequestBuilder()
+			: base("groupuser", "sync")
+		{
+		}
+
+		public GroupUserSyncRequestBuilder(string userId, string groupIds)
+			: this()
+		{
+			this.UserId = userId;
+			this.GroupIds = groupIds;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("userId"))
+				kparams.AddIfNotNull("userId", UserId);
+			if (!isMapped("groupIds"))
+				kparams.AddIfNotNull("groupIds", GroupIds);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<BulkUpload>(result);
+		}
+	}
+
 
 	public class GroupUserService
 	{
@@ -202,6 +254,11 @@ namespace Kaltura.Services
 		public static GroupUserListRequestBuilder List(GroupUserFilter filter = null, FilterPager pager = null)
 		{
 			return new GroupUserListRequestBuilder(filter, pager);
+		}
+
+		public static GroupUserSyncRequestBuilder Sync(string userId, string groupIds)
+		{
+			return new GroupUserSyncRequestBuilder(userId, groupIds);
 		}
 	}
 }

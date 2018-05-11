@@ -73,6 +73,7 @@ namespace Kaltura.Types
 		public const string IS_ACCOUNT_OWNER = "isAccountOwner";
 		public const string ALLOWED_PARTNER_IDS = "allowedPartnerIds";
 		public const string ALLOWED_PARTNER_PACKAGES = "allowedPartnerPackages";
+		public const string USER_MODE = "userMode";
 		#endregion
 
 		#region Private Fields
@@ -113,6 +114,7 @@ namespace Kaltura.Types
 		private bool? _IsAccountOwner = null;
 		private string _AllowedPartnerIds = null;
 		private string _AllowedPartnerPackages = null;
+		private UserMode _UserMode = (UserMode)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -408,6 +410,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowedPartnerPackages");
 			}
 		}
+		public UserMode UserMode
+		{
+			get { return _UserMode; }
+			set 
+			{ 
+				_UserMode = value;
+				OnPropertyChanged("UserMode");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -532,6 +543,9 @@ namespace Kaltura.Types
 					case "allowedPartnerPackages":
 						this._AllowedPartnerPackages = propertyNode.InnerText;
 						continue;
+					case "userMode":
+						this._UserMode = (UserMode)ParseEnum(typeof(UserMode), propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -580,6 +594,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("isAccountOwner", this._IsAccountOwner);
 			kparams.AddIfNotNull("allowedPartnerIds", this._AllowedPartnerIds);
 			kparams.AddIfNotNull("allowedPartnerPackages", this._AllowedPartnerPackages);
+			kparams.AddIfNotNull("userMode", this._UserMode);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -660,6 +675,8 @@ namespace Kaltura.Types
 					return "AllowedPartnerIds";
 				case ALLOWED_PARTNER_PACKAGES:
 					return "AllowedPartnerPackages";
+				case USER_MODE:
+					return "UserMode";
 				default:
 					return base.getPropertyName(apiName);
 			}

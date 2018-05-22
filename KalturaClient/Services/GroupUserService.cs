@@ -187,6 +187,8 @@ namespace Kaltura.Services
 		#region Constants
 		public const string USER_ID = "userId";
 		public const string GROUP_IDS = "groupIds";
+		public const string REMOVE_FROM_EXISTING_GROUPS = "removeFromExistingGroups";
+		public const string CREATE_NEW_GROUPS = "createNewGroups";
 		#endregion
 
 		public string UserId
@@ -199,17 +201,29 @@ namespace Kaltura.Services
 			set;
 			get;
 		}
+		public bool RemoveFromExistingGroups
+		{
+			set;
+			get;
+		}
+		public bool CreateNewGroups
+		{
+			set;
+			get;
+		}
 
 		public GroupUserSyncRequestBuilder()
 			: base("groupuser", "sync")
 		{
 		}
 
-		public GroupUserSyncRequestBuilder(string userId, string groupIds)
+		public GroupUserSyncRequestBuilder(string userId, string groupIds, bool removeFromExistingGroups, bool createNewGroups)
 			: this()
 		{
 			this.UserId = userId;
 			this.GroupIds = groupIds;
+			this.RemoveFromExistingGroups = removeFromExistingGroups;
+			this.CreateNewGroups = createNewGroups;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -219,6 +233,10 @@ namespace Kaltura.Services
 				kparams.AddIfNotNull("userId", UserId);
 			if (!isMapped("groupIds"))
 				kparams.AddIfNotNull("groupIds", GroupIds);
+			if (!isMapped("removeFromExistingGroups"))
+				kparams.AddIfNotNull("removeFromExistingGroups", RemoveFromExistingGroups);
+			if (!isMapped("createNewGroups"))
+				kparams.AddIfNotNull("createNewGroups", CreateNewGroups);
 			return kparams;
 		}
 
@@ -256,9 +274,9 @@ namespace Kaltura.Services
 			return new GroupUserListRequestBuilder(filter, pager);
 		}
 
-		public static GroupUserSyncRequestBuilder Sync(string userId, string groupIds)
+		public static GroupUserSyncRequestBuilder Sync(string userId, string groupIds, bool removeFromExistingGroups = true, bool createNewGroups = true)
 		{
-			return new GroupUserSyncRequestBuilder(userId, groupIds);
+			return new GroupUserSyncRequestBuilder(userId, groupIds, removeFromExistingGroups, createNewGroups);
 		}
 	}
 }

@@ -27,11 +27,12 @@
 // ===================================================================================================
 namespace Kaltura.Enums
 {
-	public sealed class ObjectFilterEngineType : StringEnum
+	public enum ReachProfileContentDeletionPolicy
 	{
-		public static readonly ObjectFilterEngineType ENTRY = new ObjectFilterEngineType("1");
-		public static readonly ObjectFilterEngineType ENTRY_VENDOR_TASK = new ObjectFilterEngineType("2");
-
-		private ObjectFilterEngineType(string name) : base(name) { }
+		DO_NOTHING = 1,
+		DELETE_ONCE_PROCESSED = 2,
+		DELETE_AFTER_WEEK = 3,
+		DELETE_AFTER_MONTH = 4,
+		DELETE_AFTER_THREE_MONTHS = 5,
 	}
 }

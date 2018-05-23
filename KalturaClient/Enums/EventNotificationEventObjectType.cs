@@ -77,6 +77,8 @@ namespace Kaltura.Enums
 		public static readonly EventNotificationEventObjectType LIVE_STREAM = new EventNotificationEventObjectType("38");
 		public static readonly EventNotificationEventObjectType SERVER_NODE = new EventNotificationEventObjectType("39");
 		public static readonly EventNotificationEventObjectType ENTRY_SERVER_NODE = new EventNotificationEventObjectType("40");
+		public static readonly EventNotificationEventObjectType REACH_PROFILE = new EventNotificationEventObjectType("41");
+		public static readonly EventNotificationEventObjectType ENTRY_VENDOR_TASK = new EventNotificationEventObjectType("42");
 
 		private EventNotificationEventObjectType(string name) : base(name) { }
 	}

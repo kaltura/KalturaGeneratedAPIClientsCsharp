@@ -27,11 +27,14 @@
 // ===================================================================================================
 namespace Kaltura.Enums
 {
-	public sealed class ObjectFilterEngineType : StringEnum
+	public enum EntryVendorTaskStatus
 	{
-		public static readonly ObjectFilterEngineType ENTRY = new ObjectFilterEngineType("1");
-		public static readonly ObjectFilterEngineType ENTRY_VENDOR_TASK = new ObjectFilterEngineType("2");
-
-		private ObjectFilterEngineType(string name) : base(name) { }
+		PENDING = 1,
+		READY = 2,
+		PROCESSING = 3,
+		PENDING_MODERATION = 4,
+		REJECTED = 5,
+		ERROR = 6,
+		ABORTED = 7,
 	}
 }

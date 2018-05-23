@@ -27,11 +27,9 @@
 // ===================================================================================================
 namespace Kaltura.Enums
 {
-	public sealed class ObjectFilterEngineType : StringEnum
+	public enum ReachProfileType
 	{
-		public static readonly ObjectFilterEngineType ENTRY = new ObjectFilterEngineType("1");
-		public static readonly ObjectFilterEngineType ENTRY_VENDOR_TASK = new ObjectFilterEngineType("2");
-
-		private ObjectFilterEngineType(string name) : base(name) { }
+		FREE_TRIAL = 1,
+		PAID = 2,
 	}
 }

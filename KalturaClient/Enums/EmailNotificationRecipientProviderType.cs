@@ -32,6 +32,7 @@ namespace Kaltura.Enums
 		public static readonly EmailNotificationRecipientProviderType STATIC_LIST = new EmailNotificationRecipientProviderType("1");
 		public static readonly EmailNotificationRecipientProviderType CATEGORY = new EmailNotificationRecipientProviderType("2");
 		public static readonly EmailNotificationRecipientProviderType USER = new EmailNotificationRecipientProviderType("3");
+		public static readonly EmailNotificationRecipientProviderType GROUP = new EmailNotificationRecipientProviderType("4");
 
 		private EmailNotificationRecipientProviderType(string name) : base(name) { }
 	}

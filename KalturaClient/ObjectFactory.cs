@@ -141,6 +141,8 @@ namespace Kaltura
 					return new ListResponse<EntryDistribution>(xmlElement);
 				case "KalturaEntryServerNodeListResponse":
 					return new ListResponse<EntryServerNode>(xmlElement);
+				case "KalturaEntryVendorTaskListResponse":
+					return new ListResponse<EntryVendorTask>(xmlElement);
 				case "KalturaEventNotificationTemplateListResponse":
 					return new ListResponse<EventNotificationTemplate>(xmlElement);
 				case "KalturaExternalMediaEntryListResponse":
@@ -193,6 +195,8 @@ namespace Kaltura
 					return new ListResponse<Playlist>(xmlElement);
 				case "KalturaQuizListResponse":
 					return new ListResponse<Quiz>(xmlElement);
+				case "KalturaReachProfileListResponse":
+					return new ListResponse<ReachProfile>(xmlElement);
 				case "KalturaRemotePathListResponse":
 					return new ListResponse<RemotePath>(xmlElement);
 				case "KalturaReportListResponse":

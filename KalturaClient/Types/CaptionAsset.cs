@@ -45,6 +45,7 @@ namespace Kaltura.Types
 		public const string STATUS = "status";
 		public const string PARENT_ID = "parentId";
 		public const string ACCURACY = "accuracy";
+		public const string DISPLAY_ON_PLAYER = "displayOnPlayer";
 		#endregion
 
 		#region Private Fields
@@ -57,6 +58,7 @@ namespace Kaltura.Types
 		private CaptionAssetStatus _Status = (CaptionAssetStatus)Int32.MinValue;
 		private string _ParentId = null;
 		private int _Accuracy = Int32.MinValue;
+		private bool? _DisplayOnPlayer = null;
 		#endregion
 
 		#region Properties
@@ -131,6 +133,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("Accuracy");
 			}
 		}
+		public bool? DisplayOnPlayer
+		{
+			get { return _DisplayOnPlayer; }
+			set 
+			{ 
+				_DisplayOnPlayer = value;
+				OnPropertyChanged("DisplayOnPlayer");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -171,6 +182,9 @@ namespace Kaltura.Types
 					case "accuracy":
 						this._Accuracy = ParseInt(propertyNode.InnerText);
 						continue;
+					case "displayOnPlayer":
+						this._DisplayOnPlayer = ParseBool(propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -191,6 +205,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("status", this._Status);
 			kparams.AddIfNotNull("parentId", this._ParentId);
 			kparams.AddIfNotNull("accuracy", this._Accuracy);
+			kparams.AddIfNotNull("displayOnPlayer", this._DisplayOnPlayer);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -215,6 +230,8 @@ namespace Kaltura.Types
 					return "ParentId";
 				case ACCURACY:
 					return "Accuracy";
+				case DISPLAY_ON_PLAYER:
+					return "DisplayOnPlayer";
 				default:
 					return base.getPropertyName(apiName);
 			}

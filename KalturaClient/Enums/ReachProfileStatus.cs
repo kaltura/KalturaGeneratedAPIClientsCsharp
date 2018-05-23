@@ -27,11 +27,10 @@
 // ===================================================================================================
 namespace Kaltura.Enums
 {
-	public sealed class ObjectFilterEngineType : StringEnum
+	public enum ReachProfileStatus
 	{
-		public static readonly ObjectFilterEngineType ENTRY = new ObjectFilterEngineType("1");
-		public static readonly ObjectFilterEngineType ENTRY_VENDOR_TASK = new ObjectFilterEngineType("2");
-
-		private ObjectFilterEngineType(string name) : base(name) { }
+		DISABLED = 1,
+		ACTIVE = 2,
+		DELETED = 3,
 	}
 }

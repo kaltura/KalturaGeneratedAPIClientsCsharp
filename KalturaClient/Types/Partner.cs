@@ -89,10 +89,9 @@ namespace Kaltura.Types
 		public const string CRM_ID = "crmId";
 		public const string REFERENCE_ID = "referenceId";
 		public const string TIME_ALIGNED_RENDITIONS = "timeAlignedRenditions";
-		public const string ESEARCH_LANGUAGES = "eSearchLanguages";
-		public const string PUBLISHER_ENVIRONMENT_TYPE = "publisherEnvironmentType";
 		public const string OVP_ENVIRONMENT_URL = "ovpEnvironmentUrl";
 		public const string OTT_ENVIRONMENT_URL = "ottEnvironmentUrl";
+		public const string ESEARCH_LANGUAGES = "eSearchLanguages";
 		#endregion
 
 		#region Private Fields
@@ -149,10 +148,9 @@ namespace Kaltura.Types
 		private string _CrmId = null;
 		private string _ReferenceId = null;
 		private bool? _TimeAlignedRenditions = null;
-		private IList<ESearchLanguageItem> _ESearchLanguages;
-		private int _PublisherEnvironmentType = Int32.MinValue;
 		private string _OvpEnvironmentUrl = null;
 		private string _OttEnvironmentUrl = null;
+		private IList<ESearchLanguageItem> _ESearchLanguages;
 		#endregion
 
 		#region Properties
@@ -523,6 +521,14 @@ namespace Kaltura.Types
 		{
 			get { return _TimeAlignedRenditions; }
 		}
+		public string OvpEnvironmentUrl
+		{
+			get { return _OvpEnvironmentUrl; }
+		}
+		public string OttEnvironmentUrl
+		{
+			get { return _OttEnvironmentUrl; }
+		}
 		public IList<ESearchLanguageItem> ESearchLanguages
 		{
 			get { return _ESearchLanguages; }
@@ -531,18 +537,6 @@ namespace Kaltura.Types
 				_ESearchLanguages = value;
 				OnPropertyChanged("ESearchLanguages");
 			}
-		}
-		public int PublisherEnvironmentType
-		{
-			get { return _PublisherEnvironmentType; }
-		}
-		public string OvpEnvironmentUrl
-		{
-			get { return _OvpEnvironmentUrl; }
-		}
-		public string OttEnvironmentUrl
-		{
-			get { return _OttEnvironmentUrl; }
 		}
 		#endregion
 
@@ -728,21 +722,18 @@ namespace Kaltura.Types
 					case "timeAlignedRenditions":
 						this._TimeAlignedRenditions = ParseBool(propertyNode.InnerText);
 						continue;
+					case "ovpEnvironmentUrl":
+						this._OvpEnvironmentUrl = propertyNode.InnerText;
+						continue;
+					case "ottEnvironmentUrl":
+						this._OttEnvironmentUrl = propertyNode.InnerText;
+						continue;
 					case "eSearchLanguages":
 						this._ESearchLanguages = new List<ESearchLanguageItem>();
 						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
 						{
 							this._ESearchLanguages.Add(ObjectFactory.Create<ESearchLanguageItem>(arrayNode));
 						}
-						continue;
-					case "publisherEnvironmentType":
-						this._PublisherEnvironmentType = ParseInt(propertyNode.InnerText);
-						continue;
-					case "ovpEnvironmentUrl":
-						this._OvpEnvironmentUrl = propertyNode.InnerText;
-						continue;
-					case "ottEnvironmentUrl":
-						this._OttEnvironmentUrl = propertyNode.InnerText;
 						continue;
 				}
 			}
@@ -808,10 +799,9 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("crmId", this._CrmId);
 			kparams.AddIfNotNull("referenceId", this._ReferenceId);
 			kparams.AddIfNotNull("timeAlignedRenditions", this._TimeAlignedRenditions);
-			kparams.AddIfNotNull("eSearchLanguages", this._ESearchLanguages);
-			kparams.AddIfNotNull("publisherEnvironmentType", this._PublisherEnvironmentType);
 			kparams.AddIfNotNull("ovpEnvironmentUrl", this._OvpEnvironmentUrl);
 			kparams.AddIfNotNull("ottEnvironmentUrl", this._OttEnvironmentUrl);
+			kparams.AddIfNotNull("eSearchLanguages", this._ESearchLanguages);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -924,14 +914,12 @@ namespace Kaltura.Types
 					return "ReferenceId";
 				case TIME_ALIGNED_RENDITIONS:
 					return "TimeAlignedRenditions";
-				case ESEARCH_LANGUAGES:
-					return "ESearchLanguages";
-				case PUBLISHER_ENVIRONMENT_TYPE:
-					return "PublisherEnvironmentType";
 				case OVP_ENVIRONMENT_URL:
 					return "OvpEnvironmentUrl";
 				case OTT_ENVIRONMENT_URL:
 					return "OttEnvironmentUrl";
+				case ESEARCH_LANGUAGES:
+					return "ESearchLanguages";
 				default:
 					return base.getPropertyName(apiName);
 			}

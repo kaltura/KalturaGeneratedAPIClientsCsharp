@@ -52,6 +52,7 @@ namespace Kaltura.Types
 		public const string FORCE_STOP = "forceStop";
 		public const string THUMB_OFFSET = "thumbOffset";
 		public const string SYSTEM_NAME = "systemName";
+		public const string IS_MOMENTARY = "isMomentary";
 		#endregion
 
 		#region Private Fields
@@ -71,6 +72,7 @@ namespace Kaltura.Types
 		private NullableBoolean _ForceStop = (NullableBoolean)Int32.MinValue;
 		private int _ThumbOffset = Int32.MinValue;
 		private string _SystemName = null;
+		private bool? _IsMomentary = null;
 		#endregion
 
 		#region Properties
@@ -183,6 +185,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemName");
 			}
 		}
+		public bool? IsMomentary
+		{
+			get { return _IsMomentary; }
+			set 
+			{ 
+				_IsMomentary = value;
+				OnPropertyChanged("IsMomentary");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -244,6 +255,9 @@ namespace Kaltura.Types
 					case "systemName":
 						this._SystemName = propertyNode.InnerText;
 						continue;
+					case "isMomentary":
+						this._IsMomentary = ParseBool(propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -271,6 +285,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("forceStop", this._ForceStop);
 			kparams.AddIfNotNull("thumbOffset", this._ThumbOffset);
 			kparams.AddIfNotNull("systemName", this._SystemName);
+			kparams.AddIfNotNull("isMomentary", this._IsMomentary);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -309,6 +324,8 @@ namespace Kaltura.Types
 					return "ThumbOffset";
 				case SYSTEM_NAME:
 					return "SystemName";
+				case IS_MOMENTARY:
+					return "IsMomentary";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -74,6 +74,12 @@ namespace Kaltura.Types
 		public const string DELETE_REFERENCE = "deleteReference";
 		public const string RELEASE_CLAIMS = "releaseClaims";
 		public const string API_AUTHORIZE_URL = "apiAuthorizeUrl";
+		public const string PRIVACY_STATUS = "privacyStatus";
+		public const string ENABLE_CONTENT_ID = "enableContentId";
+		public const string THIRD_PARTY_ADS = "thirdPartyAds";
+		public const string PRODUCT_LISTING_ADS = "productListingAds";
+		public const string DOMAIN_WHITELIST = "domainWhitelist";
+		public const string NOTIFY_SUBSCRIBERS = "notifySubscribers";
 		#endregion
 
 		#region Private Fields
@@ -115,6 +121,12 @@ namespace Kaltura.Types
 		private bool? _DeleteReference = null;
 		private bool? _ReleaseClaims = null;
 		private string _ApiAuthorizeUrl = null;
+		private string _PrivacyStatus = null;
+		private string _EnableContentId = null;
+		private string _ThirdPartyAds = null;
+		private string _ProductListingAds = null;
+		private string _DomainWhitelist = null;
+		private string _NotifySubscribers = null;
 		#endregion
 
 		#region Properties
@@ -460,6 +472,60 @@ namespace Kaltura.Types
 				OnPropertyChanged("ApiAuthorizeUrl");
 			}
 		}
+		public string PrivacyStatus
+		{
+			get { return _PrivacyStatus; }
+			set 
+			{ 
+				_PrivacyStatus = value;
+				OnPropertyChanged("PrivacyStatus");
+			}
+		}
+		public string EnableContentId
+		{
+			get { return _EnableContentId; }
+			set 
+			{ 
+				_EnableContentId = value;
+				OnPropertyChanged("EnableContentId");
+			}
+		}
+		public string ThirdPartyAds
+		{
+			get { return _ThirdPartyAds; }
+			set 
+			{ 
+				_ThirdPartyAds = value;
+				OnPropertyChanged("ThirdPartyAds");
+			}
+		}
+		public string ProductListingAds
+		{
+			get { return _ProductListingAds; }
+			set 
+			{ 
+				_ProductListingAds = value;
+				OnPropertyChanged("ProductListingAds");
+			}
+		}
+		public string DomainWhitelist
+		{
+			get { return _DomainWhitelist; }
+			set 
+			{ 
+				_DomainWhitelist = value;
+				OnPropertyChanged("DomainWhitelist");
+			}
+		}
+		public string NotifySubscribers
+		{
+			get { return _NotifySubscribers; }
+			set 
+			{ 
+				_NotifySubscribers = value;
+				OnPropertyChanged("NotifySubscribers");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -587,6 +653,24 @@ namespace Kaltura.Types
 					case "apiAuthorizeUrl":
 						this._ApiAuthorizeUrl = propertyNode.InnerText;
 						continue;
+					case "privacyStatus":
+						this._PrivacyStatus = propertyNode.InnerText;
+						continue;
+					case "enableContentId":
+						this._EnableContentId = propertyNode.InnerText;
+						continue;
+					case "thirdPartyAds":
+						this._ThirdPartyAds = propertyNode.InnerText;
+						continue;
+					case "productListingAds":
+						this._ProductListingAds = propertyNode.InnerText;
+						continue;
+					case "domainWhitelist":
+						this._DomainWhitelist = propertyNode.InnerText;
+						continue;
+					case "notifySubscribers":
+						this._NotifySubscribers = propertyNode.InnerText;
+						continue;
 				}
 			}
 		}
@@ -636,6 +720,12 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("deleteReference", this._DeleteReference);
 			kparams.AddIfNotNull("releaseClaims", this._ReleaseClaims);
 			kparams.AddIfNotNull("apiAuthorizeUrl", this._ApiAuthorizeUrl);
+			kparams.AddIfNotNull("privacyStatus", this._PrivacyStatus);
+			kparams.AddIfNotNull("enableContentId", this._EnableContentId);
+			kparams.AddIfNotNull("thirdPartyAds", this._ThirdPartyAds);
+			kparams.AddIfNotNull("productListingAds", this._ProductListingAds);
+			kparams.AddIfNotNull("domainWhitelist", this._DomainWhitelist);
+			kparams.AddIfNotNull("notifySubscribers", this._NotifySubscribers);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -718,6 +808,18 @@ namespace Kaltura.Types
 					return "ReleaseClaims";
 				case API_AUTHORIZE_URL:
 					return "ApiAuthorizeUrl";
+				case PRIVACY_STATUS:
+					return "PrivacyStatus";
+				case ENABLE_CONTENT_ID:
+					return "EnableContentId";
+				case THIRD_PARTY_ADS:
+					return "ThirdPartyAds";
+				case PRODUCT_LISTING_ADS:
+					return "ProductListingAds";
+				case DOMAIN_WHITELIST:
+					return "DomainWhitelist";
+				case NOTIFY_SUBSCRIBERS:
+					return "NotifySubscribers";
 				default:
 					return base.getPropertyName(apiName);
 			}

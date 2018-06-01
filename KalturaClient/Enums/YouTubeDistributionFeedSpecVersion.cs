@@ -31,6 +31,7 @@ namespace Kaltura.Enums
 	{
 		public static readonly YouTubeDistributionFeedSpecVersion VERSION_1 = new YouTubeDistributionFeedSpecVersion("1");
 		public static readonly YouTubeDistributionFeedSpecVersion VERSION_2 = new YouTubeDistributionFeedSpecVersion("2");
+		public static readonly YouTubeDistributionFeedSpecVersion VERSION_3 = new YouTubeDistributionFeedSpecVersion("3");
 
 		private YouTubeDistributionFeedSpecVersion(string name) : base(name) { }
 	}

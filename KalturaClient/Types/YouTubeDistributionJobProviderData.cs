@@ -49,6 +49,10 @@ namespace Kaltura.Types
 		public const string GOOGLE_CLIENT_ID = "googleClientId";
 		public const string GOOGLE_CLIENT_SECRET = "googleClientSecret";
 		public const string GOOGLE_TOKEN_DATA = "googleTokenData";
+		public const string CAPTIONS_CSV_MAP = "captionsCsvMap";
+		public const string SUBMIT_CSV_MAP = "submitCsvMap";
+		public const string UPDATE_CSV_MAP = "updateCsvMap";
+		public const string DELETE_VIDEO_IDS = "deleteVideoIds";
 		#endregion
 
 		#region Private Fields
@@ -65,6 +69,10 @@ namespace Kaltura.Types
 		private string _GoogleClientId = null;
 		private string _GoogleClientSecret = null;
 		private string _GoogleTokenData = null;
+		private string _CaptionsCsvMap = null;
+		private string _SubmitCsvMap = null;
+		private string _UpdateCsvMap = null;
+		private string _DeleteVideoIds = null;
 		#endregion
 
 		#region Properties
@@ -185,6 +193,42 @@ namespace Kaltura.Types
 				OnPropertyChanged("GoogleTokenData");
 			}
 		}
+		public string CaptionsCsvMap
+		{
+			get { return _CaptionsCsvMap; }
+			set 
+			{ 
+				_CaptionsCsvMap = value;
+				OnPropertyChanged("CaptionsCsvMap");
+			}
+		}
+		public string SubmitCsvMap
+		{
+			get { return _SubmitCsvMap; }
+			set 
+			{ 
+				_SubmitCsvMap = value;
+				OnPropertyChanged("SubmitCsvMap");
+			}
+		}
+		public string UpdateCsvMap
+		{
+			get { return _UpdateCsvMap; }
+			set 
+			{ 
+				_UpdateCsvMap = value;
+				OnPropertyChanged("UpdateCsvMap");
+			}
+		}
+		public string DeleteVideoIds
+		{
+			get { return _DeleteVideoIds; }
+			set 
+			{ 
+				_DeleteVideoIds = value;
+				OnPropertyChanged("DeleteVideoIds");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -237,6 +281,18 @@ namespace Kaltura.Types
 					case "googleTokenData":
 						this._GoogleTokenData = propertyNode.InnerText;
 						continue;
+					case "captionsCsvMap":
+						this._CaptionsCsvMap = propertyNode.InnerText;
+						continue;
+					case "submitCsvMap":
+						this._SubmitCsvMap = propertyNode.InnerText;
+						continue;
+					case "updateCsvMap":
+						this._UpdateCsvMap = propertyNode.InnerText;
+						continue;
+					case "deleteVideoIds":
+						this._DeleteVideoIds = propertyNode.InnerText;
+						continue;
 				}
 			}
 		}
@@ -261,6 +317,10 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("googleClientId", this._GoogleClientId);
 			kparams.AddIfNotNull("googleClientSecret", this._GoogleClientSecret);
 			kparams.AddIfNotNull("googleTokenData", this._GoogleTokenData);
+			kparams.AddIfNotNull("captionsCsvMap", this._CaptionsCsvMap);
+			kparams.AddIfNotNull("submitCsvMap", this._SubmitCsvMap);
+			kparams.AddIfNotNull("updateCsvMap", this._UpdateCsvMap);
+			kparams.AddIfNotNull("deleteVideoIds", this._DeleteVideoIds);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -293,6 +353,14 @@ namespace Kaltura.Types
 					return "GoogleClientSecret";
 				case GOOGLE_TOKEN_DATA:
 					return "GoogleTokenData";
+				case CAPTIONS_CSV_MAP:
+					return "CaptionsCsvMap";
+				case SUBMIT_CSV_MAP:
+					return "SubmitCsvMap";
+				case UPDATE_CSV_MAP:
+					return "UpdateCsvMap";
+				case DELETE_VIDEO_IDS:
+					return "DeleteVideoIds";
 				default:
 					return base.getPropertyName(apiName);
 			}

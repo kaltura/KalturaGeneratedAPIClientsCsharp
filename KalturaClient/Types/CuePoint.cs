@@ -188,11 +188,6 @@ namespace Kaltura.Types
 		public bool? IsMomentary
 		{
 			get { return _IsMomentary; }
-			set 
-			{ 
-				_IsMomentary = value;
-				OnPropertyChanged("IsMomentary");
-			}
 		}
 		#endregion
 

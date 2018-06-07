@@ -38,6 +38,7 @@ namespace Kaltura.Types
 		#region Constants
 		public const string VIDEO_ASSET_FILE_PATH = "videoAssetFilePath";
 		public const string THUMB_ASSET_FILE_PATH = "thumbAssetFilePath";
+		public const string THUMB_ASSET_ID = "thumbAssetId";
 		public const string CAPTION_ASSET_IDS = "captionAssetIds";
 		public const string SFTP_DIRECTORY = "sftpDirectory";
 		public const string SFTP_METADATA_FILENAME = "sftpMetadataFilename";
@@ -58,6 +59,7 @@ namespace Kaltura.Types
 		#region Private Fields
 		private string _VideoAssetFilePath = null;
 		private string _ThumbAssetFilePath = null;
+		private string _ThumbAssetId = null;
 		private string _CaptionAssetIds = null;
 		private string _SftpDirectory = null;
 		private string _SftpMetadataFilename = null;
@@ -92,6 +94,15 @@ namespace Kaltura.Types
 			{ 
 				_ThumbAssetFilePath = value;
 				OnPropertyChanged("ThumbAssetFilePath");
+			}
+		}
+		public string ThumbAssetId
+		{
+			get { return _ThumbAssetId; }
+			set 
+			{ 
+				_ThumbAssetId = value;
+				OnPropertyChanged("ThumbAssetId");
 			}
 		}
 		public string CaptionAssetIds
@@ -248,6 +259,9 @@ namespace Kaltura.Types
 					case "thumbAssetFilePath":
 						this._ThumbAssetFilePath = propertyNode.InnerText;
 						continue;
+					case "thumbAssetId":
+						this._ThumbAssetId = propertyNode.InnerText;
+						continue;
 					case "captionAssetIds":
 						this._CaptionAssetIds = propertyNode.InnerText;
 						continue;
@@ -306,6 +320,7 @@ namespace Kaltura.Types
 				kparams.AddReplace("objectType", "KalturaYouTubeDistributionJobProviderData");
 			kparams.AddIfNotNull("videoAssetFilePath", this._VideoAssetFilePath);
 			kparams.AddIfNotNull("thumbAssetFilePath", this._ThumbAssetFilePath);
+			kparams.AddIfNotNull("thumbAssetId", this._ThumbAssetId);
 			kparams.AddIfNotNull("captionAssetIds", this._CaptionAssetIds);
 			kparams.AddIfNotNull("sftpDirectory", this._SftpDirectory);
 			kparams.AddIfNotNull("sftpMetadataFilename", this._SftpMetadataFilename);
@@ -331,6 +346,8 @@ namespace Kaltura.Types
 					return "VideoAssetFilePath";
 				case THUMB_ASSET_FILE_PATH:
 					return "ThumbAssetFilePath";
+				case THUMB_ASSET_ID:
+					return "ThumbAssetId";
 				case CAPTION_ASSET_IDS:
 					return "CaptionAssetIds";
 				case SFTP_DIRECTORY:

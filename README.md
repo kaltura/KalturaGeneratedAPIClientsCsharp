@@ -1,2 +1,2 @@
 # Kaltura C# API Client Library.
-Compatible with Kaltura server version 3.3.0 and above.
+Compatible with Kaltura server version 14.1.0 and above.

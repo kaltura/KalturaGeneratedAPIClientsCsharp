@@ -51,7 +51,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Private Fields
-		private int _IdEqual = Int32.MinValue;
+		private long _IdEqual = long.MinValue;
 		private string _IdIn = null;
 		private int _PartnerIdEqual = Int32.MinValue;
 		private FileAssetObjectType _FileAssetObjectTypeEqual = null;
@@ -66,7 +66,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		public int IdEqual
+		public long IdEqual
 		{
 			get { return _IdEqual; }
 			set 
@@ -188,7 +188,7 @@ namespace Kaltura.Types
 				switch (propertyNode.Name)
 				{
 					case "idEqual":
-						this._IdEqual = ParseInt(propertyNode.InnerText);
+						this._IdEqual = ParseLong(propertyNode.InnerText);
 						continue;
 					case "idIn":
 						this._IdIn = propertyNode.InnerText;

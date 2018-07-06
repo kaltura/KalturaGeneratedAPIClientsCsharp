@@ -53,6 +53,7 @@ namespace Kaltura.Types
 		public const string THUMB_OFFSET = "thumbOffset";
 		public const string SYSTEM_NAME = "systemName";
 		public const string IS_MOMENTARY = "isMomentary";
+		public const string COPIED_FROM = "copiedFrom";
 		#endregion
 
 		#region Private Fields
@@ -73,6 +74,7 @@ namespace Kaltura.Types
 		private int _ThumbOffset = Int32.MinValue;
 		private string _SystemName = null;
 		private bool? _IsMomentary = null;
+		private string _CopiedFrom = null;
 		#endregion
 
 		#region Properties
@@ -189,6 +191,10 @@ namespace Kaltura.Types
 		{
 			get { return _IsMomentary; }
 		}
+		public string CopiedFrom
+		{
+			get { return _CopiedFrom; }
+		}
 		#endregion
 
 		#region CTor
@@ -253,6 +259,9 @@ namespace Kaltura.Types
 					case "isMomentary":
 						this._IsMomentary = ParseBool(propertyNode.InnerText);
 						continue;
+					case "copiedFrom":
+						this._CopiedFrom = propertyNode.InnerText;
+						continue;
 				}
 			}
 		}
@@ -281,6 +290,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("thumbOffset", this._ThumbOffset);
 			kparams.AddIfNotNull("systemName", this._SystemName);
 			kparams.AddIfNotNull("isMomentary", this._IsMomentary);
+			kparams.AddIfNotNull("copiedFrom", this._CopiedFrom);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -321,6 +331,8 @@ namespace Kaltura.Types
 					return "SystemName";
 				case IS_MOMENTARY:
 					return "IsMomentary";
+				case COPIED_FROM:
+					return "CopiedFrom";
 				default:
 					return base.getPropertyName(apiName);
 			}

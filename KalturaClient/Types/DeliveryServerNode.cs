@@ -37,10 +37,12 @@ namespace Kaltura.Types
 	{
 		#region Constants
 		public const string DELIVERY_PROFILE_IDS = "deliveryProfileIds";
+		public const string CONFIG = "config";
 		#endregion
 
 		#region Private Fields
 		private IList<KeyValue> _DeliveryProfileIds;
+		private string _Config = null;
 		#endregion
 
 		#region Properties
@@ -51,6 +53,15 @@ namespace Kaltura.Types
 			{ 
 				_DeliveryProfileIds = value;
 				OnPropertyChanged("DeliveryProfileIds");
+			}
+		}
+		public string Config
+		{
+			get { return _Config; }
+			set 
+			{ 
+				_Config = value;
+				OnPropertyChanged("Config");
 			}
 		}
 		#endregion
@@ -73,6 +84,9 @@ namespace Kaltura.Types
 							this._DeliveryProfileIds.Add(ObjectFactory.Create<KeyValue>(arrayNode));
 						}
 						continue;
+					case "config":
+						this._Config = propertyNode.InnerText;
+						continue;
 				}
 			}
 		}
@@ -85,6 +99,7 @@ namespace Kaltura.Types
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaDeliveryServerNode");
 			kparams.AddIfNotNull("deliveryProfileIds", this._DeliveryProfileIds);
+			kparams.AddIfNotNull("config", this._Config);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -93,6 +108,8 @@ namespace Kaltura.Types
 			{
 				case DELIVERY_PROFILE_IDS:
 					return "DeliveryProfileIds";
+				case CONFIG:
+					return "Config";
 				default:
 					return base.getPropertyName(apiName);
 			}

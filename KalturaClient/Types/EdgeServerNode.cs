@@ -37,12 +37,10 @@ namespace Kaltura.Types
 	{
 		#region Constants
 		public const string PLAYBACK_DOMAIN = "playbackDomain";
-		public const string CONFIG = "config";
 		#endregion
 
 		#region Private Fields
 		private string _PlaybackDomain = null;
-		private string _Config = null;
 		#endregion
 
 		#region Properties
@@ -53,15 +51,6 @@ namespace Kaltura.Types
 			{ 
 				_PlaybackDomain = value;
 				OnPropertyChanged("PlaybackDomain");
-			}
-		}
-		public string Config
-		{
-			get { return _Config; }
-			set 
-			{ 
-				_Config = value;
-				OnPropertyChanged("Config");
 			}
 		}
 		#endregion
@@ -80,9 +69,6 @@ namespace Kaltura.Types
 					case "playbackDomain":
 						this._PlaybackDomain = propertyNode.InnerText;
 						continue;
-					case "config":
-						this._Config = propertyNode.InnerText;
-						continue;
 				}
 			}
 		}
@@ -95,7 +81,6 @@ namespace Kaltura.Types
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaEdgeServerNode");
 			kparams.AddIfNotNull("playbackDomain", this._PlaybackDomain);
-			kparams.AddIfNotNull("config", this._Config);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -104,8 +89,6 @@ namespace Kaltura.Types
 			{
 				case PLAYBACK_DOMAIN:
 					return "PlaybackDomain";
-				case CONFIG:
-					return "Config";
 				default:
 					return base.getPropertyName(apiName);
 			}

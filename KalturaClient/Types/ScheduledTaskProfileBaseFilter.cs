@@ -50,6 +50,7 @@ namespace Kaltura.Types
 		public const string UPDATED_AT_LESS_THAN_OR_EQUAL = "updatedAtLessThanOrEqual";
 		public const string LAST_EXECUTION_STARTED_AT_GREATER_THAN_OR_EQUAL = "lastExecutionStartedAtGreaterThanOrEqual";
 		public const string LAST_EXECUTION_STARTED_AT_LESS_THAN_OR_EQUAL = "lastExecutionStartedAtLessThanOrEqual";
+		public const string LAST_EXECUTION_STARTED_AT_LESS_THAN_OR_EQUAL_OR_NULL = "lastExecutionStartedAtLessThanOrEqualOrNull";
 		#endregion
 
 		#region Private Fields
@@ -67,6 +68,7 @@ namespace Kaltura.Types
 		private int _UpdatedAtLessThanOrEqual = Int32.MinValue;
 		private int _LastExecutionStartedAtGreaterThanOrEqual = Int32.MinValue;
 		private int _LastExecutionStartedAtLessThanOrEqual = Int32.MinValue;
+		private int _LastExecutionStartedAtLessThanOrEqualOrNull = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -196,6 +198,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastExecutionStartedAtLessThanOrEqual");
 			}
 		}
+		public int LastExecutionStartedAtLessThanOrEqualOrNull
+		{
+			get { return _LastExecutionStartedAtLessThanOrEqualOrNull; }
+			set 
+			{ 
+				_LastExecutionStartedAtLessThanOrEqualOrNull = value;
+				OnPropertyChanged("LastExecutionStartedAtLessThanOrEqualOrNull");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -251,6 +262,9 @@ namespace Kaltura.Types
 					case "lastExecutionStartedAtLessThanOrEqual":
 						this._LastExecutionStartedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
 						continue;
+					case "lastExecutionStartedAtLessThanOrEqualOrNull":
+						this._LastExecutionStartedAtLessThanOrEqualOrNull = ParseInt(propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -276,6 +290,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this._UpdatedAtLessThanOrEqual);
 			kparams.AddIfNotNull("lastExecutionStartedAtGreaterThanOrEqual", this._LastExecutionStartedAtGreaterThanOrEqual);
 			kparams.AddIfNotNull("lastExecutionStartedAtLessThanOrEqual", this._LastExecutionStartedAtLessThanOrEqual);
+			kparams.AddIfNotNull("lastExecutionStartedAtLessThanOrEqualOrNull", this._LastExecutionStartedAtLessThanOrEqualOrNull);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -310,6 +325,8 @@ namespace Kaltura.Types
 					return "LastExecutionStartedAtGreaterThanOrEqual";
 				case LAST_EXECUTION_STARTED_AT_LESS_THAN_OR_EQUAL:
 					return "LastExecutionStartedAtLessThanOrEqual";
+				case LAST_EXECUTION_STARTED_AT_LESS_THAN_OR_EQUAL_OR_NULL:
+					return "LastExecutionStartedAtLessThanOrEqualOrNull";
 				default:
 					return base.getPropertyName(apiName);
 			}

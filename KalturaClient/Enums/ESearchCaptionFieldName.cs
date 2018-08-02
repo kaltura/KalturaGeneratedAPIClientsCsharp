@@ -31,6 +31,8 @@ namespace Kaltura.Enums
 	{
 		public static readonly ESearchCaptionFieldName CONTENT = new ESearchCaptionFieldName("content");
 		public static readonly ESearchCaptionFieldName END_TIME = new ESearchCaptionFieldName("end_time");
+		public static readonly ESearchCaptionFieldName LABEL = new ESearchCaptionFieldName("label");
+		public static readonly ESearchCaptionFieldName LANGUAGE = new ESearchCaptionFieldName("language");
 		public static readonly ESearchCaptionFieldName START_TIME = new ESearchCaptionFieldName("start_time");
 
 		private ESearchCaptionFieldName(string name) : base(name) { }

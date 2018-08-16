@@ -57,6 +57,7 @@ namespace Kaltura.Enums
 		public static readonly ReportType TOP_PLAYBACK_CONTEXT = new ReportType("25");
 		public static readonly ReportType VPAAS_USAGE = new ReportType("26");
 		public static readonly ReportType ENTRY_USAGE = new ReportType("27");
+		public static readonly ReportType REACH_USAGE = new ReportType("28");
 		public static readonly ReportType PARTNER_USAGE = new ReportType("201");
 
 		private ReportType(string name) : base(name) { }

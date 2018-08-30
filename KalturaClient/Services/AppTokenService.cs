@@ -224,6 +224,7 @@ namespace Kaltura.Services
 		public const string USER_ID = "userId";
 		public const string TYPE = "type";
 		public const string EXPIRY = "expiry";
+		public const string SESSION_PRIVILEGES = "sessionPrivileges";
 		#endregion
 
 		public string Id
@@ -251,13 +252,18 @@ namespace Kaltura.Services
 			set;
 			get;
 		}
+		public string SessionPrivileges
+		{
+			set;
+			get;
+		}
 
 		public AppTokenStartSessionRequestBuilder()
 			: base("apptoken", "startSession")
 		{
 		}
 
-		public AppTokenStartSessionRequestBuilder(string id, string tokenHash, string userId, SessionType type, int expiry)
+		public AppTokenStartSessionRequestBuilder(string id, string tokenHash, string userId, SessionType type, int expiry, string sessionPrivileges)
 			: this()
 		{
 			this.Id = id;
@@ -265,6 +271,7 @@ namespace Kaltura.Services
 			this.UserId = userId;
 			this.Type = type;
 			this.Expiry = expiry;
+			this.SessionPrivileges = sessionPrivileges;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -280,6 +287,8 @@ namespace Kaltura.Services
 				kparams.AddIfNotNull("type", Type);
 			if (!isMapped("expiry"))
 				kparams.AddIfNotNull("expiry", Expiry);
+			if (!isMapped("sessionPrivileges"))
+				kparams.AddIfNotNull("sessionPrivileges", SessionPrivileges);
 			return kparams;
 		}
 
@@ -374,9 +383,9 @@ namespace Kaltura.Services
 			return new AppTokenListRequestBuilder(filter, pager);
 		}
 
-		public static AppTokenStartSessionRequestBuilder StartSession(string id, string tokenHash, string userId = null, SessionType type = (SessionType)(Int32.MinValue), int expiry = Int32.MinValue)
+		public static AppTokenStartSessionRequestBuilder StartSession(string id, string tokenHash, string userId = null, SessionType type = (SessionType)(Int32.MinValue), int expiry = Int32.MinValue, string sessionPrivileges = null)
 		{
-			return new AppTokenStartSessionRequestBuilder(id, tokenHash, userId, type, expiry);
+			return new AppTokenStartSessionRequestBuilder(id, tokenHash, userId, type, expiry, sessionPrivileges);
 		}
 
 		public static AppTokenUpdateRequestBuilder Update(string id, AppToken appToken)

@@ -250,6 +250,76 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class ServerNodeGetFullPathRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		public const string HOST_NAME = "hostName";
+		public const string PROTOCOL = "protocol";
+		public const string DELIVERY_FORMAT = "deliveryFormat";
+		public const string DELIVERY_TYPE = "deliveryType";
+		#endregion
+
+		public string HostName
+		{
+			set;
+			get;
+		}
+		public string Protocol
+		{
+			set;
+			get;
+		}
+		public string DeliveryFormat
+		{
+			set;
+			get;
+		}
+		public string DeliveryType
+		{
+			set;
+			get;
+		}
+
+		public ServerNodeGetFullPathRequestBuilder()
+			: base("servernode", "getFullPath")
+		{
+		}
+
+		public ServerNodeGetFullPathRequestBuilder(string hostName, string protocol, string deliveryFormat, string deliveryType)
+			: this()
+		{
+			this.HostName = hostName;
+			this.Protocol = protocol;
+			this.DeliveryFormat = deliveryFormat;
+			this.DeliveryType = deliveryType;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("hostName"))
+				kparams.AddIfNotNull("hostName", HostName);
+			if (!isMapped("protocol"))
+				kparams.AddIfNotNull("protocol", Protocol);
+			if (!isMapped("deliveryFormat"))
+				kparams.AddIfNotNull("deliveryFormat", DeliveryFormat);
+			if (!isMapped("deliveryType"))
+				kparams.AddIfNotNull("deliveryType", DeliveryType);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return result.InnerText;
+		}
+	}
+
 	public class ServerNodeListRequestBuilder : RequestBuilder<ListResponse<ServerNode>>
 	{
 		#region Constants
@@ -350,6 +420,7 @@ namespace Kaltura.Services
 		#region Constants
 		public const string HOST_NAME = "hostName";
 		public const string SERVER_NODE = "serverNode";
+		public const string SERVER_NODE_STATUS = "serverNodeStatus";
 		#endregion
 
 		public string HostName
@@ -362,17 +433,23 @@ namespace Kaltura.Services
 			set;
 			get;
 		}
+		public ServerNodeStatus ServerNodeStatus
+		{
+			set;
+			get;
+		}
 
 		public ServerNodeReportStatusRequestBuilder()
 			: base("servernode", "reportStatus")
 		{
 		}
 
-		public ServerNodeReportStatusRequestBuilder(string hostName, ServerNode serverNode)
+		public ServerNodeReportStatusRequestBuilder(string hostName, ServerNode serverNode, ServerNodeStatus serverNodeStatus)
 			: this()
 		{
 			this.HostName = hostName;
 			this.ServerNode = serverNode;
+			this.ServerNodeStatus = serverNodeStatus;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -382,6 +459,8 @@ namespace Kaltura.Services
 				kparams.AddIfNotNull("hostName", HostName);
 			if (!isMapped("serverNode"))
 				kparams.AddIfNotNull("serverNode", ServerNode);
+			if (!isMapped("serverNodeStatus"))
+				kparams.AddIfNotNull("serverNodeStatus", ServerNodeStatus);
 			return kparams;
 		}
 
@@ -481,6 +560,11 @@ namespace Kaltura.Services
 			return new ServerNodeGetRequestBuilder(serverNodeId);
 		}
 
+		public static ServerNodeGetFullPathRequestBuilder GetFullPath(string hostName, string protocol = "http", string deliveryFormat = null, string deliveryType = null)
+		{
+			return new ServerNodeGetFullPathRequestBuilder(hostName, protocol, deliveryFormat, deliveryType);
+		}
+
 		public static ServerNodeListRequestBuilder List(ServerNodeFilter filter = null, FilterPager pager = null)
 		{
 			return new ServerNodeListRequestBuilder(filter, pager);
@@ -491,9 +575,9 @@ namespace Kaltura.Services
 			return new ServerNodeMarkOfflineRequestBuilder(serverNodeId);
 		}
 
-		public static ServerNodeReportStatusRequestBuilder ReportStatus(string hostName, ServerNode serverNode = null)
+		public static ServerNodeReportStatusRequestBuilder ReportStatus(string hostName, ServerNode serverNode = null, ServerNodeStatus serverNodeStatus = (ServerNodeStatus)(1))
 		{
-			return new ServerNodeReportStatusRequestBuilder(hostName, serverNode);
+			return new ServerNodeReportStatusRequestBuilder(hostName, serverNode, serverNodeStatus);
 		}
 
 		public static ServerNodeUpdateRequestBuilder Update(int serverNodeId, ServerNode serverNode)

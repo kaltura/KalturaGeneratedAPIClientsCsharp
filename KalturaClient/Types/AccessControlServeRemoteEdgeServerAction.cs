@@ -37,10 +37,12 @@ namespace Kaltura.Types
 	{
 		#region Constants
 		public const string EDGE_SERVER_IDS = "edgeServerIds";
+		public const string SEAMLESS_FALLBACK_ENABLED = "seamlessFallbackEnabled";
 		#endregion
 
 		#region Private Fields
 		private string _EdgeServerIds = null;
+		private NullableBoolean _SeamlessFallbackEnabled = (NullableBoolean)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -51,6 +53,15 @@ namespace Kaltura.Types
 			{ 
 				_EdgeServerIds = value;
 				OnPropertyChanged("EdgeServerIds");
+			}
+		}
+		public NullableBoolean SeamlessFallbackEnabled
+		{
+			get { return _SeamlessFallbackEnabled; }
+			set 
+			{ 
+				_SeamlessFallbackEnabled = value;
+				OnPropertyChanged("SeamlessFallbackEnabled");
 			}
 		}
 		#endregion
@@ -69,6 +80,9 @@ namespace Kaltura.Types
 					case "edgeServerIds":
 						this._EdgeServerIds = propertyNode.InnerText;
 						continue;
+					case "seamlessFallbackEnabled":
+						this._SeamlessFallbackEnabled = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
+						continue;
 				}
 			}
 		}
@@ -81,6 +95,7 @@ namespace Kaltura.Types
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaAccessControlServeRemoteEdgeServerAction");
 			kparams.AddIfNotNull("edgeServerIds", this._EdgeServerIds);
+			kparams.AddIfNotNull("seamlessFallbackEnabled", this._SeamlessFallbackEnabled);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -89,6 +104,8 @@ namespace Kaltura.Types
 			{
 				case EDGE_SERVER_IDS:
 					return "EdgeServerIds";
+				case SEAMLESS_FALLBACK_ENABLED:
+					return "SeamlessFallbackEnabled";
 				default:
 					return base.getPropertyName(apiName);
 			}

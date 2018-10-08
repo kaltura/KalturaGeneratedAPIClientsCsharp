@@ -37,6 +37,7 @@ namespace Kaltura.Types
 	{
 		#region Constants
 		public const string FLAVOR_ASSET_ID = "flavorAssetId";
+		public const string FLAVOR_ASSET_ENCRYPTION_KEY = "flavorAssetEncryptionKey";
 		public const string CREATE_THUMB = "createThumb";
 		public const string THUMB_PATH = "thumbPath";
 		public const string THUMB_OFFSET = "thumbOffset";
@@ -47,6 +48,7 @@ namespace Kaltura.Types
 
 		#region Private Fields
 		private string _FlavorAssetId = null;
+		private string _FlavorAssetEncryptionKey = null;
 		private bool? _CreateThumb = null;
 		private string _ThumbPath = null;
 		private int _ThumbOffset = Int32.MinValue;
@@ -63,6 +65,15 @@ namespace Kaltura.Types
 			{ 
 				_FlavorAssetId = value;
 				OnPropertyChanged("FlavorAssetId");
+			}
+		}
+		public string FlavorAssetEncryptionKey
+		{
+			get { return _FlavorAssetEncryptionKey; }
+			set 
+			{ 
+				_FlavorAssetEncryptionKey = value;
+				OnPropertyChanged("FlavorAssetEncryptionKey");
 			}
 		}
 		public bool? CreateThumb
@@ -135,6 +146,9 @@ namespace Kaltura.Types
 					case "flavorAssetId":
 						this._FlavorAssetId = propertyNode.InnerText;
 						continue;
+					case "flavorAssetEncryptionKey":
+						this._FlavorAssetEncryptionKey = propertyNode.InnerText;
+						continue;
 					case "createThumb":
 						this._CreateThumb = ParseBool(propertyNode.InnerText);
 						continue;
@@ -165,6 +179,7 @@ namespace Kaltura.Types
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaPostConvertJobData");
 			kparams.AddIfNotNull("flavorAssetId", this._FlavorAssetId);
+			kparams.AddIfNotNull("flavorAssetEncryptionKey", this._FlavorAssetEncryptionKey);
 			kparams.AddIfNotNull("createThumb", this._CreateThumb);
 			kparams.AddIfNotNull("thumbPath", this._ThumbPath);
 			kparams.AddIfNotNull("thumbOffset", this._ThumbOffset);
@@ -179,6 +194,8 @@ namespace Kaltura.Types
 			{
 				case FLAVOR_ASSET_ID:
 					return "FlavorAssetId";
+				case FLAVOR_ASSET_ENCRYPTION_KEY:
+					return "FlavorAssetEncryptionKey";
 				case CREATE_THUMB:
 					return "CreateThumb";
 				case THUMB_PATH:

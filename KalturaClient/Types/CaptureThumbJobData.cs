@@ -42,6 +42,7 @@ namespace Kaltura.Types
 		public const string THUMB_PARAMS_OUTPUT_ID = "thumbParamsOutputId";
 		public const string THUMB_ASSET_ID = "thumbAssetId";
 		public const string SRC_ASSET_ID = "srcAssetId";
+		public const string SRC_ASSET_ENCRYPTION_KEY = "srcAssetEncryptionKey";
 		public const string SRC_ASSET_TYPE = "srcAssetType";
 		public const string THUMB_PATH = "thumbPath";
 		#endregion
@@ -53,6 +54,7 @@ namespace Kaltura.Types
 		private int _ThumbParamsOutputId = Int32.MinValue;
 		private string _ThumbAssetId = null;
 		private string _SrcAssetId = null;
+		private string _SrcAssetEncryptionKey = null;
 		private AssetType _SrcAssetType = null;
 		private string _ThumbPath = null;
 		#endregion
@@ -112,6 +114,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcAssetId");
 			}
 		}
+		public string SrcAssetEncryptionKey
+		{
+			get { return _SrcAssetEncryptionKey; }
+			set 
+			{ 
+				_SrcAssetEncryptionKey = value;
+				OnPropertyChanged("SrcAssetEncryptionKey");
+			}
+		}
 		public AssetType SrcAssetType
 		{
 			get { return _SrcAssetType; }
@@ -161,6 +172,9 @@ namespace Kaltura.Types
 					case "srcAssetId":
 						this._SrcAssetId = propertyNode.InnerText;
 						continue;
+					case "srcAssetEncryptionKey":
+						this._SrcAssetEncryptionKey = propertyNode.InnerText;
+						continue;
 					case "srcAssetType":
 						this._SrcAssetType = (AssetType)StringEnum.Parse(typeof(AssetType), propertyNode.InnerText);
 						continue;
@@ -184,6 +198,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("thumbParamsOutputId", this._ThumbParamsOutputId);
 			kparams.AddIfNotNull("thumbAssetId", this._ThumbAssetId);
 			kparams.AddIfNotNull("srcAssetId", this._SrcAssetId);
+			kparams.AddIfNotNull("srcAssetEncryptionKey", this._SrcAssetEncryptionKey);
 			kparams.AddIfNotNull("srcAssetType", this._SrcAssetType);
 			kparams.AddIfNotNull("thumbPath", this._ThumbPath);
 			return kparams;
@@ -204,6 +219,8 @@ namespace Kaltura.Types
 					return "ThumbAssetId";
 				case SRC_ASSET_ID:
 					return "SrcAssetId";
+				case SRC_ASSET_ENCRYPTION_KEY:
+					return "SrcAssetEncryptionKey";
 				case SRC_ASSET_TYPE:
 					return "SrcAssetType";
 				case THUMB_PATH:

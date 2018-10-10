@@ -40,6 +40,9 @@ namespace Kaltura.Types
 		public const string SEARCH_IN_TAGS = "searchInTags";
 		public const string SEARCH_IN_ADMIN_TAGS = "searchInAdminTags";
 		public const string CATEGORIES = "categories";
+		public const string CUSTOM_VAR1IN = "customVar1In";
+		public const string CUSTOM_VAR2IN = "customVar2In";
+		public const string CUSTOM_VAR3IN = "customVar3In";
 		public const string TIME_ZONE_OFFSET = "timeZoneOffset";
 		public const string INTERVAL = "interval";
 		#endregion
@@ -49,6 +52,9 @@ namespace Kaltura.Types
 		private bool? _SearchInTags = null;
 		private bool? _SearchInAdminTags = null;
 		private string _Categories = null;
+		private string _CustomVar1In = null;
+		private string _CustomVar2In = null;
+		private string _CustomVar3In = null;
 		private int _TimeZoneOffset = Int32.MinValue;
 		private ReportInterval _Interval = null;
 		#endregion
@@ -88,6 +94,33 @@ namespace Kaltura.Types
 			{ 
 				_Categories = value;
 				OnPropertyChanged("Categories");
+			}
+		}
+		public string CustomVar1In
+		{
+			get { return _CustomVar1In; }
+			set 
+			{ 
+				_CustomVar1In = value;
+				OnPropertyChanged("CustomVar1In");
+			}
+		}
+		public string CustomVar2In
+		{
+			get { return _CustomVar2In; }
+			set 
+			{ 
+				_CustomVar2In = value;
+				OnPropertyChanged("CustomVar2In");
+			}
+		}
+		public string CustomVar3In
+		{
+			get { return _CustomVar3In; }
+			set 
+			{ 
+				_CustomVar3In = value;
+				OnPropertyChanged("CustomVar3In");
 			}
 		}
 		public int TimeZoneOffset
@@ -133,6 +166,15 @@ namespace Kaltura.Types
 					case "categories":
 						this._Categories = propertyNode.InnerText;
 						continue;
+					case "customVar1In":
+						this._CustomVar1In = propertyNode.InnerText;
+						continue;
+					case "customVar2In":
+						this._CustomVar2In = propertyNode.InnerText;
+						continue;
+					case "customVar3In":
+						this._CustomVar3In = propertyNode.InnerText;
+						continue;
 					case "timeZoneOffset":
 						this._TimeZoneOffset = ParseInt(propertyNode.InnerText);
 						continue;
@@ -154,6 +196,9 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("searchInTags", this._SearchInTags);
 			kparams.AddIfNotNull("searchInAdminTags", this._SearchInAdminTags);
 			kparams.AddIfNotNull("categories", this._Categories);
+			kparams.AddIfNotNull("customVar1In", this._CustomVar1In);
+			kparams.AddIfNotNull("customVar2In", this._CustomVar2In);
+			kparams.AddIfNotNull("customVar3In", this._CustomVar3In);
 			kparams.AddIfNotNull("timeZoneOffset", this._TimeZoneOffset);
 			kparams.AddIfNotNull("interval", this._Interval);
 			return kparams;
@@ -170,6 +215,12 @@ namespace Kaltura.Types
 					return "SearchInAdminTags";
 				case CATEGORIES:
 					return "Categories";
+				case CUSTOM_VAR1IN:
+					return "CustomVar1In";
+				case CUSTOM_VAR2IN:
+					return "CustomVar2In";
+				case CUSTOM_VAR3IN:
+					return "CustomVar3In";
 				case TIME_ZONE_OFFSET:
 					return "TimeZoneOffset";
 				case INTERVAL:

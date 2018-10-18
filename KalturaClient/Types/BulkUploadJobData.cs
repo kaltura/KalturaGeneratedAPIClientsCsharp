@@ -50,6 +50,7 @@ namespace Kaltura.Types
 		public const string TYPE = "type";
 		public const string EMAIL_RECIPIENTS = "emailRecipients";
 		public const string NUM_OF_ERROR_OBJECTS = "numOfErrorObjects";
+		public const string PRIVILEGES = "privileges";
 		#endregion
 
 		#region Private Fields
@@ -67,6 +68,7 @@ namespace Kaltura.Types
 		private BulkUploadType _Type = null;
 		private string _EmailRecipients = null;
 		private int _NumOfErrorObjects = Int32.MinValue;
+		private string _Privileges = null;
 		#endregion
 
 		#region Properties
@@ -141,6 +143,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("NumOfErrorObjects");
 			}
 		}
+		public string Privileges
+		{
+			get { return _Privileges; }
+			set 
+			{ 
+				_Privileges = value;
+				OnPropertyChanged("Privileges");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -196,6 +207,9 @@ namespace Kaltura.Types
 					case "numOfErrorObjects":
 						this._NumOfErrorObjects = ParseInt(propertyNode.InnerText);
 						continue;
+					case "privileges":
+						this._Privileges = propertyNode.InnerText;
+						continue;
 				}
 			}
 		}
@@ -221,6 +235,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("type", this._Type);
 			kparams.AddIfNotNull("emailRecipients", this._EmailRecipients);
 			kparams.AddIfNotNull("numOfErrorObjects", this._NumOfErrorObjects);
+			kparams.AddIfNotNull("privileges", this._Privileges);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -255,6 +270,8 @@ namespace Kaltura.Types
 					return "EmailRecipients";
 				case NUM_OF_ERROR_OBJECTS:
 					return "NumOfErrorObjects";
+				case PRIVILEGES:
+					return "Privileges";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -48,6 +48,7 @@ namespace Kaltura.Types
 		public const string CHUNKED_ENCODE_MODE = "chunkedEncodeMode";
 		public const string TWO_PASS = "twoPass";
 		public const string TAGS = "tags";
+		public const string OVERLOAD_PARAMS = "overloadParams";
 		#endregion
 
 		#region Private Fields
@@ -63,6 +64,7 @@ namespace Kaltura.Types
 		private int _ChunkedEncodeMode = Int32.MinValue;
 		private NullableBoolean _TwoPass = (NullableBoolean)Int32.MinValue;
 		private string _Tags = null;
+		private string _OverloadParams = null;
 		#endregion
 
 		#region Properties
@@ -164,6 +166,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
+		public string OverloadParams
+		{
+			get { return _OverloadParams; }
+			set 
+			{ 
+				_OverloadParams = value;
+				OnPropertyChanged("OverloadParams");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -213,6 +224,9 @@ namespace Kaltura.Types
 					case "tags":
 						this._Tags = propertyNode.InnerText;
 						continue;
+					case "overloadParams":
+						this._OverloadParams = propertyNode.InnerText;
+						continue;
 				}
 			}
 		}
@@ -236,6 +250,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("chunkedEncodeMode", this._ChunkedEncodeMode);
 			kparams.AddIfNotNull("twoPass", this._TwoPass);
 			kparams.AddIfNotNull("tags", this._Tags);
+			kparams.AddIfNotNull("overloadParams", this._OverloadParams);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -266,6 +281,8 @@ namespace Kaltura.Types
 					return "TwoPass";
 				case TAGS:
 					return "Tags";
+				case OVERLOAD_PARAMS:
+					return "OverloadParams";
 				default:
 					return base.getPropertyName(apiName);
 			}

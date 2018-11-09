@@ -39,6 +39,7 @@ namespace Kaltura.Enums
 		public static readonly ESearchUserFieldName SCREEN_NAME = new ESearchUserFieldName("screen_name");
 		public static readonly ESearchUserFieldName TAGS = new ESearchUserFieldName("tags");
 		public static readonly ESearchUserFieldName UPDATED_AT = new ESearchUserFieldName("updated_at");
+		public static readonly ESearchUserFieldName USER_ID = new ESearchUserFieldName("user_id");
 		public static readonly ESearchUserFieldName TYPE = new ESearchUserFieldName("user_type");
 
 		private ESearchUserFieldName(string name) : base(name) { }

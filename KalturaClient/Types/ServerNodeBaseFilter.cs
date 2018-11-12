@@ -63,6 +63,8 @@ namespace Kaltura.Types
 		public const string PARENT_ID_LIKE = "parentIdLike";
 		public const string PARENT_ID_MULTI_LIKE_OR = "parentIdMultiLikeOr";
 		public const string PARENT_ID_MULTI_LIKE_AND = "parentIdMultiLikeAnd";
+		public const string ENVIRONMENT_EQUAL = "environmentEqual";
+		public const string ENVIRONMENT_IN = "environmentIn";
 		#endregion
 
 		#region Private Fields
@@ -93,6 +95,8 @@ namespace Kaltura.Types
 		private string _ParentIdLike = null;
 		private string _ParentIdMultiLikeOr = null;
 		private string _ParentIdMultiLikeAnd = null;
+		private string _EnvironmentEqual = null;
+		private string _EnvironmentIn = null;
 		#endregion
 
 		#region Properties
@@ -339,6 +343,24 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentIdMultiLikeAnd");
 			}
 		}
+		public string EnvironmentEqual
+		{
+			get { return _EnvironmentEqual; }
+			set 
+			{ 
+				_EnvironmentEqual = value;
+				OnPropertyChanged("EnvironmentEqual");
+			}
+		}
+		public string EnvironmentIn
+		{
+			get { return _EnvironmentIn; }
+			set 
+			{ 
+				_EnvironmentIn = value;
+				OnPropertyChanged("EnvironmentIn");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -433,6 +455,12 @@ namespace Kaltura.Types
 					case "parentIdMultiLikeAnd":
 						this._ParentIdMultiLikeAnd = propertyNode.InnerText;
 						continue;
+					case "environmentEqual":
+						this._EnvironmentEqual = propertyNode.InnerText;
+						continue;
+					case "environmentIn":
+						this._EnvironmentIn = propertyNode.InnerText;
+						continue;
 				}
 			}
 		}
@@ -471,6 +499,8 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("parentIdLike", this._ParentIdLike);
 			kparams.AddIfNotNull("parentIdMultiLikeOr", this._ParentIdMultiLikeOr);
 			kparams.AddIfNotNull("parentIdMultiLikeAnd", this._ParentIdMultiLikeAnd);
+			kparams.AddIfNotNull("environmentEqual", this._EnvironmentEqual);
+			kparams.AddIfNotNull("environmentIn", this._EnvironmentIn);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -531,6 +561,10 @@ namespace Kaltura.Types
 					return "ParentIdMultiLikeOr";
 				case PARENT_ID_MULTI_LIKE_AND:
 					return "ParentIdMultiLikeAnd";
+				case ENVIRONMENT_EQUAL:
+					return "EnvironmentEqual";
+				case ENVIRONMENT_IN:
+					return "EnvironmentIn";
 				default:
 					return base.getPropertyName(apiName);
 			}

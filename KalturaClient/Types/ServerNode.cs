@@ -50,6 +50,7 @@ namespace Kaltura.Types
 		public const string TAGS = "tags";
 		public const string DC = "dc";
 		public const string PARENT_ID = "parentId";
+		public const string ENVIRONMENT = "environment";
 		#endregion
 
 		#region Private Fields
@@ -67,6 +68,7 @@ namespace Kaltura.Types
 		private string _Tags = null;
 		private int _Dc = Int32.MinValue;
 		private string _ParentId = null;
+		private string _Environment = null;
 		#endregion
 
 		#region Properties
@@ -156,6 +158,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentId");
 			}
 		}
+		public string Environment
+		{
+			get { return _Environment; }
+			set 
+			{ 
+				_Environment = value;
+				OnPropertyChanged("Environment");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -211,6 +222,9 @@ namespace Kaltura.Types
 					case "parentId":
 						this._ParentId = propertyNode.InnerText;
 						continue;
+					case "environment":
+						this._Environment = propertyNode.InnerText;
+						continue;
 				}
 			}
 		}
@@ -236,6 +250,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("tags", this._Tags);
 			kparams.AddIfNotNull("dc", this._Dc);
 			kparams.AddIfNotNull("parentId", this._ParentId);
+			kparams.AddIfNotNull("environment", this._Environment);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -270,6 +285,8 @@ namespace Kaltura.Types
 					return "Dc";
 				case PARENT_ID:
 					return "ParentId";
+				case ENVIRONMENT:
+					return "Environment";
 				default:
 					return base.getPropertyName(apiName);
 			}

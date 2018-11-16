@@ -44,6 +44,8 @@ namespace Kaltura.Types
 		public const string CUSTOM_VAR2IN = "customVar2In";
 		public const string CUSTOM_VAR3IN = "customVar3In";
 		public const string DEVICES_IN = "devicesIn";
+		public const string COUNTRIES_IN = "countriesIn";
+		public const string REGIONS_IN = "regionsIn";
 		public const string TIME_ZONE_OFFSET = "timeZoneOffset";
 		public const string INTERVAL = "interval";
 		#endregion
@@ -57,6 +59,8 @@ namespace Kaltura.Types
 		private string _CustomVar2In = null;
 		private string _CustomVar3In = null;
 		private string _DevicesIn = null;
+		private string _CountriesIn = null;
+		private string _RegionsIn = null;
 		private int _TimeZoneOffset = Int32.MinValue;
 		private ReportInterval _Interval = null;
 		#endregion
@@ -134,6 +138,24 @@ namespace Kaltura.Types
 				OnPropertyChanged("DevicesIn");
 			}
 		}
+		public string CountriesIn
+		{
+			get { return _CountriesIn; }
+			set 
+			{ 
+				_CountriesIn = value;
+				OnPropertyChanged("CountriesIn");
+			}
+		}
+		public string RegionsIn
+		{
+			get { return _RegionsIn; }
+			set 
+			{ 
+				_RegionsIn = value;
+				OnPropertyChanged("RegionsIn");
+			}
+		}
 		public int TimeZoneOffset
 		{
 			get { return _TimeZoneOffset; }
@@ -189,6 +211,12 @@ namespace Kaltura.Types
 					case "devicesIn":
 						this._DevicesIn = propertyNode.InnerText;
 						continue;
+					case "countriesIn":
+						this._CountriesIn = propertyNode.InnerText;
+						continue;
+					case "regionsIn":
+						this._RegionsIn = propertyNode.InnerText;
+						continue;
 					case "timeZoneOffset":
 						this._TimeZoneOffset = ParseInt(propertyNode.InnerText);
 						continue;
@@ -214,6 +242,8 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("customVar2In", this._CustomVar2In);
 			kparams.AddIfNotNull("customVar3In", this._CustomVar3In);
 			kparams.AddIfNotNull("devicesIn", this._DevicesIn);
+			kparams.AddIfNotNull("countriesIn", this._CountriesIn);
+			kparams.AddIfNotNull("regionsIn", this._RegionsIn);
 			kparams.AddIfNotNull("timeZoneOffset", this._TimeZoneOffset);
 			kparams.AddIfNotNull("interval", this._Interval);
 			return kparams;
@@ -238,6 +268,10 @@ namespace Kaltura.Types
 					return "CustomVar3In";
 				case DEVICES_IN:
 					return "DevicesIn";
+				case COUNTRIES_IN:
+					return "CountriesIn";
+				case REGIONS_IN:
+					return "RegionsIn";
 				case TIME_ZONE_OFFSET:
 					return "TimeZoneOffset";
 				case INTERVAL:

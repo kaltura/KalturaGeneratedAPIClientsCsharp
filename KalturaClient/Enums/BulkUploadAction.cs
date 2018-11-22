@@ -36,6 +36,8 @@ namespace Kaltura.Enums
 		public static readonly BulkUploadAction REPLACE = new BulkUploadAction("4");
 		public static readonly BulkUploadAction TRANSFORM_XSLT = new BulkUploadAction("5");
 		public static readonly BulkUploadAction ADD_OR_UPDATE = new BulkUploadAction("6");
+		public static readonly BulkUploadAction ACTIVATE = new BulkUploadAction("7");
+		public static readonly BulkUploadAction REJECT = new BulkUploadAction("8");
 
 		private BulkUploadAction(string name) : base(name) { }
 	}

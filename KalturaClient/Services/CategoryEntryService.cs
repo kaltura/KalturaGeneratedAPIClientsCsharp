@@ -451,6 +451,66 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class CategoryEntryUpdateStatusfrombulkRequestBuilder : RequestBuilder<BulkUpload>
+	{
+		#region Constants
+		public const string FILE_DATA = "fileData";
+		public const string BULK_UPLOAD_DATA = "bulkUploadData";
+		public const string BULK_UPLOAD_CATEGORY_ENTRY_DATA = "bulkUploadCategoryEntryData";
+		#endregion
+
+		public Stream FileData
+		{
+			set;
+			get;
+		}
+		public BulkUploadJobData BulkUploadData
+		{
+			set;
+			get;
+		}
+		public BulkUploadCategoryEntryData BulkUploadCategoryEntryData
+		{
+			set;
+			get;
+		}
+
+		public CategoryEntryUpdateStatusfrombulkRequestBuilder()
+			: base("categoryentry", "updateStatusfrombulk")
+		{
+		}
+
+		public CategoryEntryUpdateStatusfrombulkRequestBuilder(Stream fileData, BulkUploadJobData bulkUploadData, BulkUploadCategoryEntryData bulkUploadCategoryEntryData)
+			: this()
+		{
+			this.FileData = fileData;
+			this.BulkUploadData = bulkUploadData;
+			this.BulkUploadCategoryEntryData = bulkUploadCategoryEntryData;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("bulkUploadData"))
+				kparams.AddIfNotNull("bulkUploadData", BulkUploadData);
+			if (!isMapped("bulkUploadCategoryEntryData"))
+				kparams.AddIfNotNull("bulkUploadCategoryEntryData", BulkUploadCategoryEntryData);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			kfiles.Add("fileData", FileData);
+			return kfiles;
+		}
+
+		public override object Deserialize(XmlElement result)
+		{
+			return ObjectFactory.Create<BulkUpload>(result);
+		}
+	}
+
 
 	public class CategoryEntryService
 	{
@@ -496,6 +556,11 @@ namespace Kaltura.Services
 		public static CategoryEntrySyncPrivacyContextRequestBuilder SyncPrivacyContext(string entryId, int categoryId)
 		{
 			return new CategoryEntrySyncPrivacyContextRequestBuilder(entryId, categoryId);
+		}
+
+		public static CategoryEntryUpdateStatusfrombulkRequestBuilder UpdateStatusfrombulk(Stream fileData, BulkUploadJobData bulkUploadData = null, BulkUploadCategoryEntryData bulkUploadCategoryEntryData = null)
+		{
+			return new CategoryEntryUpdateStatusfrombulkRequestBuilder(fileData, bulkUploadData, bulkUploadCategoryEntryData);
 		}
 	}
 }

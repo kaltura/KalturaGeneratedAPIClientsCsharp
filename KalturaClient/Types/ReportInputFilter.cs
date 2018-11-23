@@ -43,9 +43,11 @@ namespace Kaltura.Types
 		public const string CUSTOM_VAR1IN = "customVar1In";
 		public const string CUSTOM_VAR2IN = "customVar2In";
 		public const string CUSTOM_VAR3IN = "customVar3In";
-		public const string DEVICES_IN = "devicesIn";
-		public const string COUNTRIES_IN = "countriesIn";
-		public const string REGIONS_IN = "regionsIn";
+		public const string DEVICE_IN = "deviceIn";
+		public const string COUNTRY_IN = "countryIn";
+		public const string REGION_IN = "regionIn";
+		public const string OPERATING_SYSTEM_FAMILY_IN = "operatingSystemFamilyIn";
+		public const string BROWSER_FAMILY_IN = "browserFamilyIn";
 		public const string TIME_ZONE_OFFSET = "timeZoneOffset";
 		public const string INTERVAL = "interval";
 		#endregion
@@ -58,9 +60,11 @@ namespace Kaltura.Types
 		private string _CustomVar1In = null;
 		private string _CustomVar2In = null;
 		private string _CustomVar3In = null;
-		private string _DevicesIn = null;
-		private string _CountriesIn = null;
-		private string _RegionsIn = null;
+		private string _DeviceIn = null;
+		private string _CountryIn = null;
+		private string _RegionIn = null;
+		private string _OperatingSystemFamilyIn = null;
+		private string _BrowserFamilyIn = null;
 		private int _TimeZoneOffset = Int32.MinValue;
 		private ReportInterval _Interval = null;
 		#endregion
@@ -129,31 +133,49 @@ namespace Kaltura.Types
 				OnPropertyChanged("CustomVar3In");
 			}
 		}
-		public string DevicesIn
+		public string DeviceIn
 		{
-			get { return _DevicesIn; }
+			get { return _DeviceIn; }
 			set 
 			{ 
-				_DevicesIn = value;
-				OnPropertyChanged("DevicesIn");
+				_DeviceIn = value;
+				OnPropertyChanged("DeviceIn");
 			}
 		}
-		public string CountriesIn
+		public string CountryIn
 		{
-			get { return _CountriesIn; }
+			get { return _CountryIn; }
 			set 
 			{ 
-				_CountriesIn = value;
-				OnPropertyChanged("CountriesIn");
+				_CountryIn = value;
+				OnPropertyChanged("CountryIn");
 			}
 		}
-		public string RegionsIn
+		public string RegionIn
 		{
-			get { return _RegionsIn; }
+			get { return _RegionIn; }
 			set 
 			{ 
-				_RegionsIn = value;
-				OnPropertyChanged("RegionsIn");
+				_RegionIn = value;
+				OnPropertyChanged("RegionIn");
+			}
+		}
+		public string OperatingSystemFamilyIn
+		{
+			get { return _OperatingSystemFamilyIn; }
+			set 
+			{ 
+				_OperatingSystemFamilyIn = value;
+				OnPropertyChanged("OperatingSystemFamilyIn");
+			}
+		}
+		public string BrowserFamilyIn
+		{
+			get { return _BrowserFamilyIn; }
+			set 
+			{ 
+				_BrowserFamilyIn = value;
+				OnPropertyChanged("BrowserFamilyIn");
 			}
 		}
 		public int TimeZoneOffset
@@ -208,14 +230,20 @@ namespace Kaltura.Types
 					case "customVar3In":
 						this._CustomVar3In = propertyNode.InnerText;
 						continue;
-					case "devicesIn":
-						this._DevicesIn = propertyNode.InnerText;
+					case "deviceIn":
+						this._DeviceIn = propertyNode.InnerText;
 						continue;
-					case "countriesIn":
-						this._CountriesIn = propertyNode.InnerText;
+					case "countryIn":
+						this._CountryIn = propertyNode.InnerText;
 						continue;
-					case "regionsIn":
-						this._RegionsIn = propertyNode.InnerText;
+					case "regionIn":
+						this._RegionIn = propertyNode.InnerText;
+						continue;
+					case "operatingSystemFamilyIn":
+						this._OperatingSystemFamilyIn = propertyNode.InnerText;
+						continue;
+					case "browserFamilyIn":
+						this._BrowserFamilyIn = propertyNode.InnerText;
 						continue;
 					case "timeZoneOffset":
 						this._TimeZoneOffset = ParseInt(propertyNode.InnerText);
@@ -241,9 +269,11 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("customVar1In", this._CustomVar1In);
 			kparams.AddIfNotNull("customVar2In", this._CustomVar2In);
 			kparams.AddIfNotNull("customVar3In", this._CustomVar3In);
-			kparams.AddIfNotNull("devicesIn", this._DevicesIn);
-			kparams.AddIfNotNull("countriesIn", this._CountriesIn);
-			kparams.AddIfNotNull("regionsIn", this._RegionsIn);
+			kparams.AddIfNotNull("deviceIn", this._DeviceIn);
+			kparams.AddIfNotNull("countryIn", this._CountryIn);
+			kparams.AddIfNotNull("regionIn", this._RegionIn);
+			kparams.AddIfNotNull("operatingSystemFamilyIn", this._OperatingSystemFamilyIn);
+			kparams.AddIfNotNull("browserFamilyIn", this._BrowserFamilyIn);
 			kparams.AddIfNotNull("timeZoneOffset", this._TimeZoneOffset);
 			kparams.AddIfNotNull("interval", this._Interval);
 			return kparams;
@@ -266,12 +296,16 @@ namespace Kaltura.Types
 					return "CustomVar2In";
 				case CUSTOM_VAR3IN:
 					return "CustomVar3In";
-				case DEVICES_IN:
-					return "DevicesIn";
-				case COUNTRIES_IN:
-					return "CountriesIn";
-				case REGIONS_IN:
-					return "RegionsIn";
+				case DEVICE_IN:
+					return "DeviceIn";
+				case COUNTRY_IN:
+					return "CountryIn";
+				case REGION_IN:
+					return "RegionIn";
+				case OPERATING_SYSTEM_FAMILY_IN:
+					return "OperatingSystemFamilyIn";
+				case BROWSER_FAMILY_IN:
+					return "BrowserFamilyIn";
 				case TIME_ZONE_OFFSET:
 					return "TimeZoneOffset";
 				case INTERVAL:

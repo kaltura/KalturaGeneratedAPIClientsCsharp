@@ -60,6 +60,8 @@ namespace Kaltura.Enums
 		public static readonly ReportType REACH_USAGE = new ReportType("28");
 		public static readonly ReportType TOP_CUSTOM_VAR1 = new ReportType("29");
 		public static readonly ReportType CITIES = new ReportType("30");
+		public static readonly ReportType OPERATING_SYSTEM_FAMILIES = new ReportType("32");
+		public static readonly ReportType BROWSERS_FAMIILES = new ReportType("33");
 		public static readonly ReportType PARTNER_USAGE = new ReportType("201");
 
 		private ReportType(string name) : base(name) { }

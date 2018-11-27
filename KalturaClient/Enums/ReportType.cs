@@ -62,6 +62,8 @@ namespace Kaltura.Enums
 		public static readonly ReportType CITIES = new ReportType("30");
 		public static readonly ReportType OPERATING_SYSTEM_FAMILIES = new ReportType("32");
 		public static readonly ReportType BROWSERS_FAMILIES = new ReportType("33");
+		public static readonly ReportType USER_ENGAGEMENT_TIMELINE = new ReportType("34");
+		public static readonly ReportType UNIQUE_USERS_PLAY = new ReportType("35");
 		public static readonly ReportType PARTNER_USAGE = new ReportType("201");
 
 		private ReportType(string name) : base(name) { }

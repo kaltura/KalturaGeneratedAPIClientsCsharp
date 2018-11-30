@@ -451,7 +451,7 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class CategoryEntryUpdateStatusfrombulkRequestBuilder : RequestBuilder<BulkUpload>
+	public class CategoryEntryUpdateStatusFromBulkRequestBuilder : RequestBuilder<BulkUpload>
 	{
 		#region Constants
 		public const string FILE_DATA = "fileData";
@@ -475,12 +475,12 @@ namespace Kaltura.Services
 			get;
 		}
 
-		public CategoryEntryUpdateStatusfrombulkRequestBuilder()
-			: base("categoryentry", "updateStatusfrombulk")
+		public CategoryEntryUpdateStatusFromBulkRequestBuilder()
+			: base("categoryentry", "updateStatusFromBulk")
 		{
 		}
 
-		public CategoryEntryUpdateStatusfrombulkRequestBuilder(Stream fileData, BulkUploadJobData bulkUploadData, BulkUploadCategoryEntryData bulkUploadCategoryEntryData)
+		public CategoryEntryUpdateStatusFromBulkRequestBuilder(Stream fileData, BulkUploadJobData bulkUploadData, BulkUploadCategoryEntryData bulkUploadCategoryEntryData)
 			: this()
 		{
 			this.FileData = fileData;
@@ -558,9 +558,9 @@ namespace Kaltura.Services
 			return new CategoryEntrySyncPrivacyContextRequestBuilder(entryId, categoryId);
 		}
 
-		public static CategoryEntryUpdateStatusfrombulkRequestBuilder UpdateStatusfrombulk(Stream fileData, BulkUploadJobData bulkUploadData = null, BulkUploadCategoryEntryData bulkUploadCategoryEntryData = null)
+		public static CategoryEntryUpdateStatusFromBulkRequestBuilder UpdateStatusFromBulk(Stream fileData, BulkUploadJobData bulkUploadData = null, BulkUploadCategoryEntryData bulkUploadCategoryEntryData = null)
 		{
-			return new CategoryEntryUpdateStatusfrombulkRequestBuilder(fileData, bulkUploadData, bulkUploadCategoryEntryData);
+			return new CategoryEntryUpdateStatusFromBulkRequestBuilder(fileData, bulkUploadData, bulkUploadCategoryEntryData);
 		}
 	}
 }

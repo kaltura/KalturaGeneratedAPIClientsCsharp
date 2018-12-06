@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ImportMetadataJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._SrcFileUrl = data.TryGetValueSafe<string>("srcFileUrl");
+			    this._DestFileLocalPath = data.TryGetValueSafe<string>("destFileLocalPath");
+			    this._MetadataId = data.TryGetValueSafe<int>("metadataId");
+		}
 		#endregion
 
 		#region Methods

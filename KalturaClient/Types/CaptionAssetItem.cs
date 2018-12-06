@@ -128,6 +128,15 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CaptionAssetItem(IDictionary<string,object> data) : base(data)
+		{
+			    this._Asset = ObjectFactory.Create<CaptionAsset>(data.TryGetValueSafe<IDictionary<string,object>>("asset"));
+			    this._Entry = ObjectFactory.Create<BaseEntry>(data.TryGetValueSafe<IDictionary<string,object>>("entry"));
+			    this._StartTime = data.TryGetValueSafe<int>("startTime");
+			    this._EndTime = data.TryGetValueSafe<int>("endTime");
+			    this._Content = data.TryGetValueSafe<string>("content");
+		}
 		#endregion
 
 		#region Methods

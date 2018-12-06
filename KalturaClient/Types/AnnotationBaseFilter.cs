@@ -198,6 +198,20 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AnnotationBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._ParentIdEqual = data.TryGetValueSafe<string>("parentIdEqual");
+			    this._ParentIdIn = data.TryGetValueSafe<string>("parentIdIn");
+			    this._TextLike = data.TryGetValueSafe<string>("textLike");
+			    this._TextMultiLikeOr = data.TryGetValueSafe<string>("textMultiLikeOr");
+			    this._TextMultiLikeAnd = data.TryGetValueSafe<string>("textMultiLikeAnd");
+			    this._EndTimeGreaterThanOrEqual = data.TryGetValueSafe<int>("endTimeGreaterThanOrEqual");
+			    this._EndTimeLessThanOrEqual = data.TryGetValueSafe<int>("endTimeLessThanOrEqual");
+			    this._DurationGreaterThanOrEqual = data.TryGetValueSafe<int>("durationGreaterThanOrEqual");
+			    this._DurationLessThanOrEqual = data.TryGetValueSafe<int>("durationLessThanOrEqual");
+			    this._IsPublicEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isPublicEqual"));
+		}
 		#endregion
 
 		#region Methods

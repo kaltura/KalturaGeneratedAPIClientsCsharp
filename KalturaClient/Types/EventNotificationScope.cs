@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EventNotificationScope(IDictionary<string,object> data) : base(data)
+		{
+			    this._ObjectId = data.TryGetValueSafe<string>("objectId");
+			    this._ScopeObjectType = (EventNotificationEventObjectType)StringEnum.Parse(typeof(EventNotificationEventObjectType), data.TryGetValueSafe<string>("scopeObjectType"));
+		}
 		#endregion
 
 		#region Methods

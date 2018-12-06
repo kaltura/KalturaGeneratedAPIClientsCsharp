@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<UploadResponse>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<UploadResponse>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class UploadUploadRequestBuilder : RequestBuilder<string>
@@ -117,6 +121,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return result.InnerText;
+		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
 		}
 	}
 

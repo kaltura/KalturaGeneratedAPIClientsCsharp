@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DeliveryProfileAkamaiHds(IDictionary<string,object> data) : base(data)
+		{
+			    this._SupportClipping = data.TryGetValueSafe<bool>("supportClipping");
+		}
 		#endregion
 
 		#region Methods

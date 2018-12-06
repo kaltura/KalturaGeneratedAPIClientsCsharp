@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ThumbParamsOutputBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._ThumbParamsIdEqual = data.TryGetValueSafe<int>("thumbParamsIdEqual");
+			    this._ThumbParamsVersionEqual = data.TryGetValueSafe<string>("thumbParamsVersionEqual");
+			    this._ThumbAssetIdEqual = data.TryGetValueSafe<string>("thumbAssetIdEqual");
+			    this._ThumbAssetVersionEqual = data.TryGetValueSafe<string>("thumbAssetVersionEqual");
+		}
 		#endregion
 
 		#region Methods

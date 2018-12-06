@@ -108,6 +108,23 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FreewheelGenericDistributionJobProviderData(IDictionary<string,object> data) : base(data)
+		{
+			    this._VideoAssetFilePaths = new List<String>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("videoAssetFilePaths", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._VideoAssetFilePaths.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._ThumbAssetFilePath = data.TryGetValueSafe<string>("thumbAssetFilePath");
+			    this._CuePoints = new List<CuePoint>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("cuePoints", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._CuePoints.Add(ObjectFactory.Create<CuePoint>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

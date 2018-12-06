@@ -324,6 +324,29 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CategoryUserBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._CategoryIdEqual = data.TryGetValueSafe<int>("categoryIdEqual");
+			    this._CategoryIdIn = data.TryGetValueSafe<string>("categoryIdIn");
+			    this._UserIdEqual = data.TryGetValueSafe<string>("userIdEqual");
+			    this._UserIdIn = data.TryGetValueSafe<string>("userIdIn");
+			    this._PermissionLevelEqual = (CategoryUserPermissionLevel)ParseEnum(typeof(CategoryUserPermissionLevel), data.TryGetValueSafe<int>("permissionLevelEqual"));
+			    this._PermissionLevelIn = data.TryGetValueSafe<string>("permissionLevelIn");
+			    this._StatusEqual = (CategoryUserStatus)ParseEnum(typeof(CategoryUserStatus), data.TryGetValueSafe<int>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
+			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
+			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
+			    this._UpdateMethodEqual = (UpdateMethodType)ParseEnum(typeof(UpdateMethodType), data.TryGetValueSafe<int>("updateMethodEqual"));
+			    this._UpdateMethodIn = data.TryGetValueSafe<string>("updateMethodIn");
+			    this._CategoryFullIdsStartsWith = data.TryGetValueSafe<string>("categoryFullIdsStartsWith");
+			    this._CategoryFullIdsEqual = data.TryGetValueSafe<string>("categoryFullIdsEqual");
+			    this._PermissionNamesMatchAnd = data.TryGetValueSafe<string>("permissionNamesMatchAnd");
+			    this._PermissionNamesMatchOr = data.TryGetValueSafe<string>("permissionNamesMatchOr");
+			    this._PermissionNamesNotContains = data.TryGetValueSafe<string>("permissionNamesNotContains");
+		}
 		#endregion
 
 		#region Methods

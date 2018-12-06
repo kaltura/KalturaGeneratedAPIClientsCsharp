@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AccessControlServeRemoteEdgeServerAction(IDictionary<string,object> data) : base(data)
+		{
+			    this._EdgeServerIds = data.TryGetValueSafe<string>("edgeServerIds");
+			    this._SeamlessFallbackEnabled = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("seamlessFallbackEnabled"));
+		}
 		#endregion
 
 		#region Methods

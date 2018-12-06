@@ -184,6 +184,19 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AdCuePointBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._ProtocolTypeEqual = (AdProtocolType)StringEnum.Parse(typeof(AdProtocolType), data.TryGetValueSafe<string>("protocolTypeEqual"));
+			    this._ProtocolTypeIn = data.TryGetValueSafe<string>("protocolTypeIn");
+			    this._TitleLike = data.TryGetValueSafe<string>("titleLike");
+			    this._TitleMultiLikeOr = data.TryGetValueSafe<string>("titleMultiLikeOr");
+			    this._TitleMultiLikeAnd = data.TryGetValueSafe<string>("titleMultiLikeAnd");
+			    this._EndTimeGreaterThanOrEqual = data.TryGetValueSafe<int>("endTimeGreaterThanOrEqual");
+			    this._EndTimeLessThanOrEqual = data.TryGetValueSafe<int>("endTimeLessThanOrEqual");
+			    this._DurationGreaterThanOrEqual = data.TryGetValueSafe<int>("durationGreaterThanOrEqual");
+			    this._DurationLessThanOrEqual = data.TryGetValueSafe<int>("durationLessThanOrEqual");
+		}
 		#endregion
 
 		#region Methods

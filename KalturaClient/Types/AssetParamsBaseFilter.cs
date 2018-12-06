@@ -142,6 +142,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AssetParamsBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
+			    this._IdIn = data.TryGetValueSafe<string>("idIn");
+			    this._SystemNameEqual = data.TryGetValueSafe<string>("systemNameEqual");
+			    this._SystemNameIn = data.TryGetValueSafe<string>("systemNameIn");
+			    this._IsSystemDefaultEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isSystemDefaultEqual"));
+			    this._TagsEqual = data.TryGetValueSafe<string>("tagsEqual");
+		}
 		#endregion
 
 		#region Methods

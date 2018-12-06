@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<MixEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MixEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class MixingAnonymousRankRequestBuilder : RequestBuilder<object>
@@ -125,6 +129,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -180,6 +188,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<MixEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MixEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class MixingCloneRequestBuilder : RequestBuilder<MixEntry>
@@ -222,6 +234,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<MixEntry>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MixEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -266,6 +282,10 @@ namespace Kaltura.Services
 		{
 			return int.Parse(result.InnerText);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (int)(result);
+		}
 	}
 
 	public class MixingDeleteRequestBuilder : RequestBuilder<object>
@@ -306,6 +326,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -361,6 +385,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<MixEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MixEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class MixingGetMixesByMediaIdRequestBuilder : RequestBuilder<IList<MixEntry>>
@@ -404,6 +432,15 @@ namespace Kaltura.Services
 		{
 			IList<MixEntry> list = new List<MixEntry>();
 			foreach(XmlElement node in result.ChildNodes)
+			{
+				list.Add(ObjectFactory.Create<MixEntry>(node));
+			}
+			return list;
+		}
+		public override object DeserializeObject(object result)
+		{
+			var list = new List<MixEntry>();
+			foreach(var node in (IEnumerable<IDictionary<string,object>>)result)
 			{
 				list.Add(ObjectFactory.Create<MixEntry>(node));
 			}
@@ -466,6 +503,15 @@ namespace Kaltura.Services
 			}
 			return list;
 		}
+		public override object DeserializeObject(object result)
+		{
+			var list = new List<MediaEntry>();
+			foreach(var node in (IEnumerable<IDictionary<string,object>>)result)
+			{
+				list.Add(ObjectFactory.Create<MediaEntry>(node));
+			}
+			return list;
+		}
 	}
 
 	public class MixingListRequestBuilder : RequestBuilder<ListResponse<MixEntry>>
@@ -518,6 +564,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<MixEntry>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<MixEntry>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class MixingUpdateRequestBuilder : RequestBuilder<MixEntry>
@@ -569,6 +619,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<MixEntry>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MixEntry>((IDictionary<string,object>)result);
 		}
 	}
 

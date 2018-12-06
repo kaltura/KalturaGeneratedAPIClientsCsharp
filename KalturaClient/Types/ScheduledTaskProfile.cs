@@ -224,6 +224,28 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ScheduledTaskProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._SystemName = data.TryGetValueSafe<string>("systemName");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._Status = (ScheduledTaskProfileStatus)ParseEnum(typeof(ScheduledTaskProfileStatus), data.TryGetValueSafe<int>("status"));
+			    this._ObjectFilterEngineType = (ObjectFilterEngineType)StringEnum.Parse(typeof(ObjectFilterEngineType), data.TryGetValueSafe<string>("objectFilterEngineType"));
+			    this._ObjectFilter = ObjectFactory.Create<Filter>(data.TryGetValueSafe<IDictionary<string,object>>("objectFilter"));
+			    this._ObjectTasks = new List<ObjectTask>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("objectTasks", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._ObjectTasks.Add(ObjectFactory.Create<ObjectTask>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._LastExecutionStartedAt = data.TryGetValueSafe<int>("lastExecutionStartedAt");
+			    this._MaxTotalCountAllowed = data.TryGetValueSafe<int>("maxTotalCountAllowed");
+		}
 		#endregion
 
 		#region Methods

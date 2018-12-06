@@ -142,6 +142,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AssetParamsOutput(IDictionary<string,object> data) : base(data)
+		{
+			    this._AssetParamsId = data.TryGetValueSafe<int>("assetParamsId");
+			    this._AssetParamsVersion = data.TryGetValueSafe<string>("assetParamsVersion");
+			    this._AssetId = data.TryGetValueSafe<string>("assetId");
+			    this._AssetVersion = data.TryGetValueSafe<string>("assetVersion");
+			    this._ReadyBehavior = data.TryGetValueSafe<int>("readyBehavior");
+			    this._Format = (ContainerFormat)StringEnum.Parse(typeof(ContainerFormat), data.TryGetValueSafe<string>("format"));
+		}
 		#endregion
 
 		#region Methods

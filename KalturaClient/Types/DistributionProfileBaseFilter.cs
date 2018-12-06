@@ -170,6 +170,18 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DistributionProfileBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
+			    this._IdIn = data.TryGetValueSafe<string>("idIn");
+			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
+			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
+			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
+			    this._StatusEqual = (DistributionProfileStatus)ParseEnum(typeof(DistributionProfileStatus), data.TryGetValueSafe<int>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+		}
 		#endregion
 
 		#region Methods

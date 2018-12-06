@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<MediaEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MediaEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class MediaAddContentRequestBuilder : RequestBuilder<MediaEntry>
@@ -127,6 +131,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<MediaEntry>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MediaEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -189,6 +197,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<MediaEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MediaEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class MediaAddFromEntryRequestBuilder : RequestBuilder<MediaEntry>
@@ -250,6 +262,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<MediaEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MediaEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class MediaAddFromFlavorAssetRequestBuilder : RequestBuilder<MediaEntry>
@@ -301,6 +317,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<MediaEntry>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MediaEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -354,6 +374,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<MediaEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MediaEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class MediaAddFromSearchResultRequestBuilder : RequestBuilder<MediaEntry>
@@ -405,6 +429,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<MediaEntry>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MediaEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -458,6 +486,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<MediaEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MediaEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class MediaAddFromUrlRequestBuilder : RequestBuilder<MediaEntry>
@@ -509,6 +541,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<MediaEntry>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MediaEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -562,6 +598,10 @@ namespace Kaltura.Services
 		{
 			return null;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return null;
+		}
 	}
 
 	public class MediaApproveRequestBuilder : RequestBuilder<object>
@@ -602,6 +642,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -647,6 +691,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<MediaEntry>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MediaEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -708,6 +756,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<BulkUpload>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<BulkUpload>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class MediaCancelReplaceRequestBuilder : RequestBuilder<MediaEntry>
@@ -750,6 +802,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<MediaEntry>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MediaEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -812,6 +868,10 @@ namespace Kaltura.Services
 		{
 			return long.Parse(result.InnerText);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (long)result;
+		}
 	}
 
 	public class MediaCountRequestBuilder : RequestBuilder<int>
@@ -854,6 +914,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return int.Parse(result.InnerText);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return (int)(result);
 		}
 	}
 
@@ -898,6 +962,10 @@ namespace Kaltura.Services
 		{
 			return null;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return null;
+		}
 	}
 
 	public class MediaFlagRequestBuilder : RequestBuilder<object>
@@ -938,6 +1006,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -992,6 +1064,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<MediaEntry>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MediaEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -1054,6 +1130,10 @@ namespace Kaltura.Services
 		{
 			return result.InnerText;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
+		}
 	}
 
 	public class MediaListRequestBuilder : RequestBuilder<ListResponse<MediaEntry>>
@@ -1105,6 +1185,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<MediaEntry>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<MediaEntry>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -1158,6 +1242,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<ModerationFlag>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<ModerationFlag>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class MediaRejectRequestBuilder : RequestBuilder<object>
@@ -1198,6 +1286,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -1253,6 +1345,10 @@ namespace Kaltura.Services
 		{
 			return int.Parse(result.InnerText);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (int)(result);
+		}
 	}
 
 	public class MediaUpdateRequestBuilder : RequestBuilder<MediaEntry>
@@ -1304,6 +1400,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<MediaEntry>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MediaEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -1375,6 +1475,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<MediaEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MediaEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class MediaUpdateThumbnailRequestBuilder : RequestBuilder<MediaEntry>
@@ -1435,6 +1539,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<MediaEntry>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MediaEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -1506,6 +1614,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<MediaEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MediaEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class MediaUpdateThumbnailFromUrlRequestBuilder : RequestBuilder<BaseEntry>
@@ -1558,6 +1670,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<BaseEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<BaseEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class MediaUpdateThumbnailJpegRequestBuilder : RequestBuilder<MediaEntry>
@@ -1609,6 +1725,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<MediaEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MediaEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class MediaUploadRequestBuilder : RequestBuilder<string>
@@ -1650,6 +1770,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return result.InnerText;
+		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
 		}
 	}
 

@@ -131,6 +131,21 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AnswerCuePoint(IDictionary<string,object> data) : base(data)
+		{
+			    this._ParentId = data.TryGetValueSafe<string>("parentId");
+			    this._QuizUserEntryId = data.TryGetValueSafe<string>("quizUserEntryId");
+			    this._AnswerKey = data.TryGetValueSafe<string>("answerKey");
+			    this._IsCorrect = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isCorrect"));
+			    this._CorrectAnswerKeys = new List<String>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("correctAnswerKeys", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._CorrectAnswerKeys.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._Explanation = data.TryGetValueSafe<string>("explanation");
+		}
 		#endregion
 
 		#region Methods

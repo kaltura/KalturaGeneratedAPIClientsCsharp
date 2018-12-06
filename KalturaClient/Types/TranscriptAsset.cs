@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public TranscriptAsset(IDictionary<string,object> data) : base(data)
+		{
+			    this._Accuracy = data.TryGetValueSafe<float>("accuracy");
+			    this._HumanVerified = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("humanVerified"));
+			    this._Language = (Language)StringEnum.Parse(typeof(Language), data.TryGetValueSafe<string>("language"));
+			    this._ProviderType = (TranscriptProviderType)StringEnum.Parse(typeof(TranscriptProviderType), data.TryGetValueSafe<string>("providerType"));
+		}
 		#endregion
 
 		#region Methods

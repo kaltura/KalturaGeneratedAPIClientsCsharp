@@ -212,6 +212,21 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FreewheelGenericDistributionProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._Apikey = data.TryGetValueSafe<string>("apikey");
+			    this._Email = data.TryGetValueSafe<string>("email");
+			    this._SftpPass = data.TryGetValueSafe<string>("sftpPass");
+			    this._SftpLogin = data.TryGetValueSafe<string>("sftpLogin");
+			    this._ContentOwner = data.TryGetValueSafe<string>("contentOwner");
+			    this._UpstreamVideoId = data.TryGetValueSafe<string>("upstreamVideoId");
+			    this._UpstreamNetworkName = data.TryGetValueSafe<string>("upstreamNetworkName");
+			    this._UpstreamNetworkId = data.TryGetValueSafe<string>("upstreamNetworkId");
+			    this._CategoryId = data.TryGetValueSafe<string>("categoryId");
+			    this._ReplaceGroup = data.TryGetValueSafe<bool>("replaceGroup");
+			    this._ReplaceAirDates = data.TryGetValueSafe<bool>("replaceAirDates");
+		}
 		#endregion
 
 		#region Methods

@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FieldMatchCondition(IDictionary<string,object> data) : base(data)
+		{
+			    this._Field = ObjectFactory.Create<StringField>(data.TryGetValueSafe<IDictionary<string,object>>("field"));
+		}
 		#endregion
 
 		#region Methods

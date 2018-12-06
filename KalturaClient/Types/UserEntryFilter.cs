@@ -128,6 +128,15 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UserEntryFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._UserIdEqualCurrent = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("userIdEqualCurrent"));
+			    this._IsAnonymous = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isAnonymous"));
+			    this._PrivacyContextEqual = data.TryGetValueSafe<string>("privacyContextEqual");
+			    this._PrivacyContextIn = data.TryGetValueSafe<string>("privacyContextIn");
+			    this._OrderBy = (UserEntryOrderBy)StringEnum.Parse(typeof(UserEntryOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

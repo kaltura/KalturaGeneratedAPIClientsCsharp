@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public LiveParamsBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public LiveParamsBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

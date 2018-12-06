@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public KontikiStorageProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._ServiceToken = data.TryGetValueSafe<string>("serviceToken");
+		}
 		#endregion
 
 		#region Methods

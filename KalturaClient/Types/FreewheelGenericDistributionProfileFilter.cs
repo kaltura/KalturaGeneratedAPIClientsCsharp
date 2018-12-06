@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FreewheelGenericDistributionProfileFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (FreewheelGenericDistributionProfileOrderBy)StringEnum.Parse(typeof(FreewheelGenericDistributionProfileOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

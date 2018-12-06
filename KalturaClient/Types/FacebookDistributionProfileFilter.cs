@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FacebookDistributionProfileFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (FacebookDistributionProfileOrderBy)StringEnum.Parse(typeof(FacebookDistributionProfileOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

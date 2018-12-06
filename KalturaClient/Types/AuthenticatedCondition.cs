@@ -76,6 +76,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AuthenticatedCondition(IDictionary<string,object> data) : base(data)
+		{
+			    this._Privileges = new List<StringValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("privileges", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Privileges.Add(ObjectFactory.Create<StringValue>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

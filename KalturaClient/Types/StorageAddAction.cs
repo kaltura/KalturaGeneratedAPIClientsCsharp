@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public StorageAddAction(XmlElement node) : base(node)
 		{
 		}
+
+		public StorageAddAction(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

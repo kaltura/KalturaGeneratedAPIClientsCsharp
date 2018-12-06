@@ -95,6 +95,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public MixEntry(IDictionary<string,object> data) : base(data)
+		{
+			    this._HasRealThumbnail = data.TryGetValueSafe<bool>("hasRealThumbnail");
+			    this._EditorType = (EditorType)ParseEnum(typeof(EditorType), data.TryGetValueSafe<int>("editorType"));
+			    this._DataContent = data.TryGetValueSafe<string>("dataContent");
+		}
 		#endregion
 
 		#region Methods

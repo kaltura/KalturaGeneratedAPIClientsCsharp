@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public Context(XmlElement node) : base(node)
 		{
 		}
+
+		public Context(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

@@ -196,6 +196,34 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PlayReadyPlayRight(IDictionary<string,object> data) : base(data)
+		{
+			    this._AnalogVideoOPL = (PlayReadyAnalogVideoOPL)ParseEnum(typeof(PlayReadyAnalogVideoOPL), data.TryGetValueSafe<int>("analogVideoOPL"));
+			    this._AnalogVideoOutputProtectionList = new List<PlayReadyAnalogVideoOPIdHolder>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("analogVideoOutputProtectionList", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._AnalogVideoOutputProtectionList.Add(ObjectFactory.Create<PlayReadyAnalogVideoOPIdHolder>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._CompressedDigitalAudioOPL = (PlayReadyDigitalAudioOPL)ParseEnum(typeof(PlayReadyDigitalAudioOPL), data.TryGetValueSafe<int>("compressedDigitalAudioOPL"));
+			    this._CompressedDigitalVideoOPL = (PlayReadyCompressedDigitalVideoOPL)ParseEnum(typeof(PlayReadyCompressedDigitalVideoOPL), data.TryGetValueSafe<int>("compressedDigitalVideoOPL"));
+			    this._DigitalAudioOutputProtectionList = new List<PlayReadyDigitalAudioOPIdHolder>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("digitalAudioOutputProtectionList", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._DigitalAudioOutputProtectionList.Add(ObjectFactory.Create<PlayReadyDigitalAudioOPIdHolder>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._UncompressedDigitalAudioOPL = (PlayReadyDigitalAudioOPL)ParseEnum(typeof(PlayReadyDigitalAudioOPL), data.TryGetValueSafe<int>("uncompressedDigitalAudioOPL"));
+			    this._UncompressedDigitalVideoOPL = (PlayReadyUncompressedDigitalVideoOPL)ParseEnum(typeof(PlayReadyUncompressedDigitalVideoOPL), data.TryGetValueSafe<int>("uncompressedDigitalVideoOPL"));
+			    this._FirstPlayExpiration = data.TryGetValueSafe<int>("firstPlayExpiration");
+			    this._PlayEnablers = new List<PlayReadyPlayEnablerHolder>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("playEnablers", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._PlayEnablers.Add(ObjectFactory.Create<PlayReadyPlayEnablerHolder>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

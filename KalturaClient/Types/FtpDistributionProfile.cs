@@ -310,6 +310,28 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FtpDistributionProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._Protocol = (DistributionProtocol)ParseEnum(typeof(DistributionProtocol), data.TryGetValueSafe<int>("protocol"));
+			    this._Host = data.TryGetValueSafe<string>("host");
+			    this._Port = data.TryGetValueSafe<int>("port");
+			    this._BasePath = data.TryGetValueSafe<string>("basePath");
+			    this._Username = data.TryGetValueSafe<string>("username");
+			    this._Password = data.TryGetValueSafe<string>("password");
+			    this._Passphrase = data.TryGetValueSafe<string>("passphrase");
+			    this._SftpPublicKey = data.TryGetValueSafe<string>("sftpPublicKey");
+			    this._SftpPrivateKey = data.TryGetValueSafe<string>("sftpPrivateKey");
+			    this._DisableMetadata = data.TryGetValueSafe<bool>("disableMetadata");
+			    this._MetadataXslt = data.TryGetValueSafe<string>("metadataXslt");
+			    this._MetadataFilenameXslt = data.TryGetValueSafe<string>("metadataFilenameXslt");
+			    this._FlavorAssetFilenameXslt = data.TryGetValueSafe<string>("flavorAssetFilenameXslt");
+			    this._ThumbnailAssetFilenameXslt = data.TryGetValueSafe<string>("thumbnailAssetFilenameXslt");
+			    this._AssetFilenameXslt = data.TryGetValueSafe<string>("assetFilenameXslt");
+			    this._AsperaPublicKey = data.TryGetValueSafe<string>("asperaPublicKey");
+			    this._AsperaPrivateKey = data.TryGetValueSafe<string>("asperaPrivateKey");
+			    this._SendMetadataAfterAssets = data.TryGetValueSafe<bool>("sendMetadataAfterAssets");
+		}
 		#endregion
 
 		#region Methods

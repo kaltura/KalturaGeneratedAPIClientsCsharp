@@ -76,6 +76,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EmailNotificationStaticRecipientJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._EmailRecipients = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("emailRecipients", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._EmailRecipients.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

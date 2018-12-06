@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AccessControlDrmPolicyAction(IDictionary<string,object> data) : base(data)
+		{
+			    this._PolicyId = data.TryGetValueSafe<int>("policyId");
+		}
 		#endregion
 
 		#region Methods

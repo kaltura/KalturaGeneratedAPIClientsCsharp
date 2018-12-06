@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveEntryScheduleResourceFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (LiveEntryScheduleResourceOrderBy)StringEnum.Parse(typeof(LiveEntryScheduleResourceOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

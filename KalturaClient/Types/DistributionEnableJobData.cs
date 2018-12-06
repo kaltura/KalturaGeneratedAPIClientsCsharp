@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public DistributionEnableJobData(XmlElement node) : base(node)
 		{
 		}
+
+		public DistributionEnableJobData(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UrlTokenizerKs(IDictionary<string,object> data) : base(data)
+		{
+			    this._UsePath = data.TryGetValueSafe<bool>("usePath");
+			    this._AdditionalUris = data.TryGetValueSafe<string>("additionalUris");
+		}
 		#endregion
 
 		#region Methods

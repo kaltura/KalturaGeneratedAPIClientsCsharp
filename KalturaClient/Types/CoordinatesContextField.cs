@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CoordinatesContextField(IDictionary<string,object> data) : base(data)
+		{
+			    this._GeoCoderType = (GeoCoderType)StringEnum.Parse(typeof(GeoCoderType), data.TryGetValueSafe<string>("geoCoderType"));
+		}
 		#endregion
 
 		#region Methods

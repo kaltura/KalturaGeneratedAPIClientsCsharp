@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DeliveryProfileGenericHdsFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (DeliveryProfileGenericHdsOrderBy)StringEnum.Parse(typeof(DeliveryProfileGenericHdsOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

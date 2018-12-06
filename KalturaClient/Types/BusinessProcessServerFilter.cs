@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BusinessProcessServerFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._CurrentDcOrExternal = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("currentDcOrExternal"));
+			    this._CurrentDc = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("currentDc"));
+			    this._OrderBy = (BusinessProcessServerOrderBy)StringEnum.Parse(typeof(BusinessProcessServerOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

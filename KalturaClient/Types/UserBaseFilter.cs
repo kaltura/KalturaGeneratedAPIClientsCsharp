@@ -282,6 +282,26 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UserBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
+			    this._TypeEqual = (UserType)ParseEnum(typeof(UserType), data.TryGetValueSafe<int>("typeEqual"));
+			    this._TypeIn = data.TryGetValueSafe<string>("typeIn");
+			    this._ScreenNameLike = data.TryGetValueSafe<string>("screenNameLike");
+			    this._ScreenNameStartsWith = data.TryGetValueSafe<string>("screenNameStartsWith");
+			    this._EmailLike = data.TryGetValueSafe<string>("emailLike");
+			    this._EmailStartsWith = data.TryGetValueSafe<string>("emailStartsWith");
+			    this._TagsMultiLikeOr = data.TryGetValueSafe<string>("tagsMultiLikeOr");
+			    this._TagsMultiLikeAnd = data.TryGetValueSafe<string>("tagsMultiLikeAnd");
+			    this._StatusEqual = (UserStatus)ParseEnum(typeof(UserStatus), data.TryGetValueSafe<int>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
+			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			    this._FirstNameStartsWith = data.TryGetValueSafe<string>("firstNameStartsWith");
+			    this._LastNameStartsWith = data.TryGetValueSafe<string>("lastNameStartsWith");
+			    this._IsAdminEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isAdminEqual"));
+		}
 		#endregion
 
 		#region Methods

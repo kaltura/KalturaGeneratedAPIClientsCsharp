@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveStreamEntryCompareAttributeCondition(IDictionary<string,object> data) : base(data)
+		{
+			    this._Attribute = (LiveStreamEntryCompareAttribute)StringEnum.Parse(typeof(LiveStreamEntryCompareAttribute), data.TryGetValueSafe<string>("attribute"));
+		}
 		#endregion
 
 		#region Methods

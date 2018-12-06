@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public YahooDistributionJobProviderData(IDictionary<string,object> data) : base(data)
+		{
+			    this._SmallThumbPath = data.TryGetValueSafe<string>("smallThumbPath");
+			    this._LargeThumbPath = data.TryGetValueSafe<string>("largeThumbPath");
+			    this._VideoAssetFilePath = data.TryGetValueSafe<string>("videoAssetFilePath");
+		}
 		#endregion
 
 		#region Methods

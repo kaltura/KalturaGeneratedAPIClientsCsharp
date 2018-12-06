@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EntryContextDataParams(IDictionary<string,object> data) : base(data)
+		{
+			    this._FlavorAssetId = data.TryGetValueSafe<string>("flavorAssetId");
+			    this._FlavorTags = data.TryGetValueSafe<string>("flavorTags");
+			    this._StreamerType = data.TryGetValueSafe<string>("streamerType");
+			    this._MediaProtocol = data.TryGetValueSafe<string>("mediaProtocol");
+		}
 		#endregion
 
 		#region Methods

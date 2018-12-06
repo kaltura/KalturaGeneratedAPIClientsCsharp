@@ -198,6 +198,20 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AkamaiUniversalProvisionJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._StreamId = data.TryGetValueSafe<int>("streamId");
+			    this._SystemUserName = data.TryGetValueSafe<string>("systemUserName");
+			    this._SystemPassword = data.TryGetValueSafe<string>("systemPassword");
+			    this._DomainName = data.TryGetValueSafe<string>("domainName");
+			    this._DvrEnabled = (DVRStatus)ParseEnum(typeof(DVRStatus), data.TryGetValueSafe<int>("dvrEnabled"));
+			    this._DvrWindow = data.TryGetValueSafe<int>("dvrWindow");
+			    this._PrimaryContact = data.TryGetValueSafe<string>("primaryContact");
+			    this._SecondaryContact = data.TryGetValueSafe<string>("secondaryContact");
+			    this._StreamType = (AkamaiUniversalStreamType)StringEnum.Parse(typeof(AkamaiUniversalStreamType), data.TryGetValueSafe<string>("streamType"));
+			    this._NotificationEmail = data.TryGetValueSafe<string>("notificationEmail");
+		}
 		#endregion
 
 		#region Methods

@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DeliveryProfileVodPackagerPlayServer(IDictionary<string,object> data) : base(data)
+		{
+			    this._AdStitchingEnabled = data.TryGetValueSafe<bool>("adStitchingEnabled");
+		}
 		#endregion
 
 		#region Methods

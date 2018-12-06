@@ -142,6 +142,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DropFolderContentProcessorJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._DropFolderId = data.TryGetValueSafe<int>("dropFolderId");
+			    this._DropFolderFileIds = data.TryGetValueSafe<string>("dropFolderFileIds");
+			    this._ParsedSlug = data.TryGetValueSafe<string>("parsedSlug");
+			    this._ContentMatchPolicy = (DropFolderContentFileHandlerMatchPolicy)ParseEnum(typeof(DropFolderContentFileHandlerMatchPolicy), data.TryGetValueSafe<int>("contentMatchPolicy"));
+			    this._ConversionProfileId = data.TryGetValueSafe<int>("conversionProfileId");
+			    this._ParsedUserId = data.TryGetValueSafe<string>("parsedUserId");
+		}
 		#endregion
 
 		#region Methods

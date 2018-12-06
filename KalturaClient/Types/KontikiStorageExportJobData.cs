@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public KontikiStorageExportJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._FlavorAssetId = data.TryGetValueSafe<string>("flavorAssetId");
+			    this._ContentMoid = data.TryGetValueSafe<string>("contentMoid");
+			    this._ServiceToken = data.TryGetValueSafe<string>("serviceToken");
+		}
 		#endregion
 
 		#region Methods

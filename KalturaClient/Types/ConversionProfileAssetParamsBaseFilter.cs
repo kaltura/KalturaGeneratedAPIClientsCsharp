@@ -198,6 +198,20 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ConversionProfileAssetParamsBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._ConversionProfileIdEqual = data.TryGetValueSafe<int>("conversionProfileIdEqual");
+			    this._ConversionProfileIdIn = data.TryGetValueSafe<string>("conversionProfileIdIn");
+			    this._AssetParamsIdEqual = data.TryGetValueSafe<int>("assetParamsIdEqual");
+			    this._AssetParamsIdIn = data.TryGetValueSafe<string>("assetParamsIdIn");
+			    this._ReadyBehaviorEqual = (FlavorReadyBehaviorType)ParseEnum(typeof(FlavorReadyBehaviorType), data.TryGetValueSafe<int>("readyBehaviorEqual"));
+			    this._ReadyBehaviorIn = data.TryGetValueSafe<string>("readyBehaviorIn");
+			    this._OriginEqual = (AssetParamsOrigin)ParseEnum(typeof(AssetParamsOrigin), data.TryGetValueSafe<int>("originEqual"));
+			    this._OriginIn = data.TryGetValueSafe<string>("originIn");
+			    this._SystemNameEqual = data.TryGetValueSafe<string>("systemNameEqual");
+			    this._SystemNameIn = data.TryGetValueSafe<string>("systemNameIn");
+		}
 		#endregion
 
 		#region Methods

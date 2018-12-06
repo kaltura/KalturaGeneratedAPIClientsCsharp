@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public SshImportJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._PrivateKey = data.TryGetValueSafe<string>("privateKey");
+			    this._PublicKey = data.TryGetValueSafe<string>("publicKey");
+			    this._PassPhrase = data.TryGetValueSafe<string>("passPhrase");
+		}
 		#endregion
 
 		#region Methods

@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public WidevineProfileFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (WidevineProfileOrderBy)StringEnum.Parse(typeof(WidevineProfileOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EdgeServerNodeBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._PlaybackDomainLike = data.TryGetValueSafe<string>("playbackDomainLike");
+			    this._PlaybackDomainMultiLikeOr = data.TryGetValueSafe<string>("playbackDomainMultiLikeOr");
+			    this._PlaybackDomainMultiLikeAnd = data.TryGetValueSafe<string>("playbackDomainMultiLikeAnd");
+		}
 		#endregion
 
 		#region Methods

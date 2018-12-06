@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EdgeServerNode(IDictionary<string,object> data) : base(data)
+		{
+			    this._PlaybackDomain = data.TryGetValueSafe<string>("playbackDomain");
+		}
 		#endregion
 
 		#region Methods

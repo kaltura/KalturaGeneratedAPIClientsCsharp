@@ -229,6 +229,28 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AssetParams(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._SystemName = data.TryGetValueSafe<string>("systemName");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._IsSystemDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isSystemDefault"));
+			    this._Tags = data.TryGetValueSafe<string>("tags");
+			    this._RequiredPermissions = new List<String>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("requiredPermissions", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._RequiredPermissions.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._SourceRemoteStorageProfileId = data.TryGetValueSafe<int>("sourceRemoteStorageProfileId");
+			    this._RemoteStorageProfileIds = data.TryGetValueSafe<int>("remoteStorageProfileIds");
+			    this._MediaParserType = (MediaParserType)StringEnum.Parse(typeof(MediaParserType), data.TryGetValueSafe<string>("mediaParserType"));
+			    this._SourceAssetParamsIds = data.TryGetValueSafe<string>("sourceAssetParamsIds");
+		}
 		#endregion
 
 		#region Methods

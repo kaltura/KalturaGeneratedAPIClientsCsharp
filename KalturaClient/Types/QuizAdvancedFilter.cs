@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public QuizAdvancedFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IsQuiz = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isQuiz"));
+		}
 		#endregion
 
 		#region Methods

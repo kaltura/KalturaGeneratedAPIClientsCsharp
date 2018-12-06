@@ -128,6 +128,15 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ScheduledTaskJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._MaxResults = data.TryGetValueSafe<int>("maxResults");
+			    this._TotalCount = data.TryGetValueSafe<int>("totalCount");
+			    this._FileFormat = (DryRunFileType)ParseEnum(typeof(DryRunFileType), data.TryGetValueSafe<int>("fileFormat"));
+			    this._ResultsFilePath = data.TryGetValueSafe<string>("resultsFilePath");
+			    this._ReferenceTime = data.TryGetValueSafe<int>("referenceTime");
+		}
 		#endregion
 
 		#region Methods

@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AuditTrailFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (AuditTrailOrderBy)StringEnum.Parse(typeof(AuditTrailOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

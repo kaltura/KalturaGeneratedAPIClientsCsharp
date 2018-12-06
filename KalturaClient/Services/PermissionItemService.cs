@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<PermissionItem>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<PermissionItem>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class PermissionItemDeleteRequestBuilder : RequestBuilder<PermissionItem>
@@ -119,6 +123,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<PermissionItem>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<PermissionItem>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class PermissionItemGetRequestBuilder : RequestBuilder<PermissionItem>
@@ -161,6 +169,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<PermissionItem>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<PermissionItem>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -214,6 +226,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<PermissionItem>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<PermissionItem>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class PermissionItemUpdateRequestBuilder : RequestBuilder<PermissionItem>
@@ -265,6 +281,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<PermissionItem>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<PermissionItem>((IDictionary<string,object>)result);
 		}
 	}
 

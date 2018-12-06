@@ -76,6 +76,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ESearchOrderBy(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderItems = new List<ESearchOrderByItem>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("orderItems", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._OrderItems.Add(ObjectFactory.Create<ESearchOrderByItem>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

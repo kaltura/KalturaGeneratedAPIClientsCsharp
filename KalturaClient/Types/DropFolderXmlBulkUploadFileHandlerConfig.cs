@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public DropFolderXmlBulkUploadFileHandlerConfig(XmlElement node) : base(node)
 		{
 		}
+
+		public DropFolderXmlBulkUploadFileHandlerConfig(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

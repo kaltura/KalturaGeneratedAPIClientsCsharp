@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CompareCondition(IDictionary<string,object> data) : base(data)
+		{
+			    this._Value = ObjectFactory.Create<IntegerValue>(data.TryGetValueSafe<IDictionary<string,object>>("value"));
+			    this._Comparison = (SearchConditionComparison)StringEnum.Parse(typeof(SearchConditionComparison), data.TryGetValueSafe<string>("comparison"));
+		}
 		#endregion
 
 		#region Methods

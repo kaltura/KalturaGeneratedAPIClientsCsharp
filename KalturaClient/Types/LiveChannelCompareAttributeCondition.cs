@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveChannelCompareAttributeCondition(IDictionary<string,object> data) : base(data)
+		{
+			    this._Attribute = (LiveChannelCompareAttribute)StringEnum.Parse(typeof(LiveChannelCompareAttribute), data.TryGetValueSafe<string>("attribute"));
+		}
 		#endregion
 
 		#region Methods

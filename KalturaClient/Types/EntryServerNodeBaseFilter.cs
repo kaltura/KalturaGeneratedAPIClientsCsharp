@@ -212,6 +212,21 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EntryServerNodeBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._EntryIdEqual = data.TryGetValueSafe<string>("entryIdEqual");
+			    this._EntryIdIn = data.TryGetValueSafe<string>("entryIdIn");
+			    this._ServerNodeIdEqual = data.TryGetValueSafe<int>("serverNodeIdEqual");
+			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
+			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
+			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
+			    this._StatusEqual = (EntryServerNodeStatus)ParseEnum(typeof(EntryServerNodeStatus), data.TryGetValueSafe<int>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			    this._ServerTypeEqual = (EntryServerNodeType)StringEnum.Parse(typeof(EntryServerNodeType), data.TryGetValueSafe<string>("serverTypeEqual"));
+			    this._ServerTypeIn = data.TryGetValueSafe<string>("serverTypeIn");
+		}
 		#endregion
 
 		#region Methods

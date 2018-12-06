@@ -76,6 +76,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AuditTrailChangeInfo(IDictionary<string,object> data) : base(data)
+		{
+			    this._ChangedItems = new List<AuditTrailChangeItem>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("changedItems", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._ChangedItems.Add(ObjectFactory.Create<AuditTrailChangeItem>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

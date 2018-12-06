@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PlayReadyContentKey(IDictionary<string,object> data) : base(data)
+		{
+			    this._KeyId = data.TryGetValueSafe<string>("keyId");
+			    this._ContentKey = data.TryGetValueSafe<string>("contentKey");
+		}
 		#endregion
 
 		#region Methods

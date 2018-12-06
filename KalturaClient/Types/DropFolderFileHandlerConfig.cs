@@ -67,6 +67,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DropFolderFileHandlerConfig(IDictionary<string,object> data) : base(data)
+		{
+			    this._HandlerType = (DropFolderFileHandlerType)StringEnum.Parse(typeof(DropFolderFileHandlerType), data.TryGetValueSafe<string>("handlerType"));
+		}
 		#endregion
 
 		#region Methods

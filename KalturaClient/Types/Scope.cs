@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public Scope(XmlElement node) : base(node)
 		{
 		}
+
+		public Scope(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

@@ -202,6 +202,25 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DistributionJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._DistributionProfileId = data.TryGetValueSafe<int>("distributionProfileId");
+			    this._DistributionProfile = ObjectFactory.Create<DistributionProfile>(data.TryGetValueSafe<IDictionary<string,object>>("distributionProfile"));
+			    this._EntryDistributionId = data.TryGetValueSafe<int>("entryDistributionId");
+			    this._EntryDistribution = ObjectFactory.Create<EntryDistribution>(data.TryGetValueSafe<IDictionary<string,object>>("entryDistribution"));
+			    this._RemoteId = data.TryGetValueSafe<string>("remoteId");
+			    this._ProviderType = (DistributionProviderType)StringEnum.Parse(typeof(DistributionProviderType), data.TryGetValueSafe<string>("providerType"));
+			    this._ProviderData = ObjectFactory.Create<DistributionJobProviderData>(data.TryGetValueSafe<IDictionary<string,object>>("providerData"));
+			    this._Results = data.TryGetValueSafe<string>("results");
+			    this._SentData = data.TryGetValueSafe<string>("sentData");
+			    this._MediaFiles = new List<DistributionRemoteMediaFile>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("mediaFiles", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._MediaFiles.Add(ObjectFactory.Create<DistributionRemoteMediaFile>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

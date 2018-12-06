@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public SyndicationDistributionProvider(XmlElement node) : base(node)
 		{
 		}
+
+		public SyndicationDistributionProvider(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public RemoteStorageResource(IDictionary<string,object> data) : base(data)
+		{
+			    this._StorageProfileId = data.TryGetValueSafe<int>("storageProfileId");
+		}
 		#endregion
 
 		#region Methods

@@ -128,6 +128,15 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FlavorAssetBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._FlavorParamsIdEqual = data.TryGetValueSafe<int>("flavorParamsIdEqual");
+			    this._FlavorParamsIdIn = data.TryGetValueSafe<string>("flavorParamsIdIn");
+			    this._StatusEqual = (FlavorAssetStatus)ParseEnum(typeof(FlavorAssetStatus), data.TryGetValueSafe<int>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			    this._StatusNotIn = data.TryGetValueSafe<string>("statusNotIn");
+		}
 		#endregion
 
 		#region Methods

@@ -128,6 +128,15 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public WebexDropFolderFile(IDictionary<string,object> data) : base(data)
+		{
+			    this._RecordingId = data.TryGetValueSafe<int>("recordingId");
+			    this._WebexHostId = data.TryGetValueSafe<string>("webexHostId");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._ConfId = data.TryGetValueSafe<string>("confId");
+			    this._ContentUrl = data.TryGetValueSafe<string>("contentUrl");
+		}
 		#endregion
 
 		#region Methods

@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public SiteRestriction(IDictionary<string,object> data) : base(data)
+		{
+			    this._SiteRestrictionType = (SiteRestrictionType)ParseEnum(typeof(SiteRestrictionType), data.TryGetValueSafe<int>("siteRestrictionType"));
+			    this._SiteList = data.TryGetValueSafe<string>("siteList");
+		}
 		#endregion
 
 		#region Methods

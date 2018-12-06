@@ -157,6 +157,21 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public Metadata(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._MetadataProfileId = data.TryGetValueSafe<int>("metadataProfileId");
+			    this._MetadataProfileVersion = data.TryGetValueSafe<int>("metadataProfileVersion");
+			    this._MetadataObjectType = (MetadataObjectType)StringEnum.Parse(typeof(MetadataObjectType), data.TryGetValueSafe<string>("metadataObjectType"));
+			    this._ObjectId = data.TryGetValueSafe<string>("objectId");
+			    this._Version = data.TryGetValueSafe<int>("version");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._Status = (MetadataStatus)ParseEnum(typeof(MetadataStatus), data.TryGetValueSafe<int>("status"));
+			    this._Xml = data.TryGetValueSafe<string>("xml");
+		}
 		#endregion
 
 		#region Methods

@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UrlTokenizerVnpt(IDictionary<string,object> data) : base(data)
+		{
+			    this._TokenizationFormat = data.TryGetValueSafe<int>("tokenizationFormat");
+			    this._ShouldIncludeClientIp = data.TryGetValueSafe<bool>("shouldIncludeClientIp");
+		}
 		#endregion
 
 		#region Methods

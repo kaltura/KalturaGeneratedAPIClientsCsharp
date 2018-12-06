@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public RokuSyndicationFeed(XmlElement node) : base(node)
 		{
 		}
+
+		public RokuSyndicationFeed(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

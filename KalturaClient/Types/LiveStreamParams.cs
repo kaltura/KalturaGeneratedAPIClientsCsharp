@@ -170,6 +170,18 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveStreamParams(IDictionary<string,object> data) : base(data)
+		{
+			    this._Bitrate = data.TryGetValueSafe<int>("bitrate");
+			    this._FlavorId = data.TryGetValueSafe<string>("flavorId");
+			    this._Width = data.TryGetValueSafe<int>("width");
+			    this._Height = data.TryGetValueSafe<int>("height");
+			    this._Codec = data.TryGetValueSafe<string>("codec");
+			    this._FrameRate = data.TryGetValueSafe<int>("frameRate");
+			    this._KeyFrameInterval = data.TryGetValueSafe<float>("keyFrameInterval");
+			    this._Language = data.TryGetValueSafe<string>("language");
+		}
 		#endregion
 
 		#region Methods

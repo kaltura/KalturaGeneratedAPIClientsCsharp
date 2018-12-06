@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public ImageFlavorParamsBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public ImageFlavorParamsBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public StringResource(IDictionary<string,object> data) : base(data)
+		{
+			    this._Content = data.TryGetValueSafe<string>("content");
+		}
 		#endregion
 
 		#region Methods

@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DeliveryProfileGenericHttp(IDictionary<string,object> data) : base(data)
+		{
+			    this._Pattern = data.TryGetValueSafe<string>("pattern");
+		}
 		#endregion
 
 		#region Methods

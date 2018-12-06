@@ -170,6 +170,18 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BulkUploadResultScheduleResource(IDictionary<string,object> data) : base(data)
+		{
+			    this._ResourceId = data.TryGetValueSafe<string>("resourceId");
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._Type = data.TryGetValueSafe<string>("type");
+			    this._SystemName = data.TryGetValueSafe<string>("systemName");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._Tags = data.TryGetValueSafe<string>("tags");
+			    this._ParentType = data.TryGetValueSafe<string>("parentType");
+			    this._ParentSystemName = data.TryGetValueSafe<string>("parentSystemName");
+		}
 		#endregion
 
 		#region Methods

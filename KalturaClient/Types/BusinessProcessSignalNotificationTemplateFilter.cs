@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BusinessProcessSignalNotificationTemplateFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (BusinessProcessSignalNotificationTemplateOrderBy)StringEnum.Parse(typeof(BusinessProcessSignalNotificationTemplateOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

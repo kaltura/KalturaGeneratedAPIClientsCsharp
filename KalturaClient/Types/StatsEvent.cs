@@ -361,6 +361,32 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public StatsEvent(IDictionary<string,object> data) : base(data)
+		{
+			    this._ClientVer = data.TryGetValueSafe<string>("clientVer");
+			    this._EventType = (StatsEventType)ParseEnum(typeof(StatsEventType), data.TryGetValueSafe<int>("eventType"));
+			    this._EventTimestamp = data.TryGetValueSafe<float>("eventTimestamp");
+			    this._SessionId = data.TryGetValueSafe<string>("sessionId");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+			    this._UniqueViewer = data.TryGetValueSafe<string>("uniqueViewer");
+			    this._WidgetId = data.TryGetValueSafe<string>("widgetId");
+			    this._UiconfId = data.TryGetValueSafe<int>("uiconfId");
+			    this._UserId = data.TryGetValueSafe<string>("userId");
+			    this._CurrentPoint = data.TryGetValueSafe<int>("currentPoint");
+			    this._Duration = data.TryGetValueSafe<int>("duration");
+			    this._UserIp = data.TryGetValueSafe<string>("userIp");
+			    this._ProcessDuration = data.TryGetValueSafe<int>("processDuration");
+			    this._ControlId = data.TryGetValueSafe<string>("controlId");
+			    this._Seek = data.TryGetValueSafe<bool>("seek");
+			    this._NewPoint = data.TryGetValueSafe<int>("newPoint");
+			    this._Referrer = data.TryGetValueSafe<string>("referrer");
+			    this._IsFirstInSession = data.TryGetValueSafe<bool>("isFirstInSession");
+			    this._ApplicationId = data.TryGetValueSafe<string>("applicationId");
+			    this._ContextId = data.TryGetValueSafe<int>("contextId");
+			    this._FeatureType = (StatsFeatureType)ParseEnum(typeof(StatsFeatureType), data.TryGetValueSafe<int>("featureType"));
+		}
 		#endregion
 
 		#region Methods

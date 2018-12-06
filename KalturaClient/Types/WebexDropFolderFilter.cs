@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public WebexDropFolderFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (WebexDropFolderOrderBy)StringEnum.Parse(typeof(WebexDropFolderOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

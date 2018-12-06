@@ -296,6 +296,27 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public TrackEntry(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._TrackEventType = (TrackEntryEventType)ParseEnum(typeof(TrackEntryEventType), data.TryGetValueSafe<int>("trackEventType"));
+			    this._PsVersion = data.TryGetValueSafe<string>("psVersion");
+			    this._Context = data.TryGetValueSafe<string>("context");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+			    this._HostName = data.TryGetValueSafe<string>("hostName");
+			    this._UserId = data.TryGetValueSafe<string>("userId");
+			    this._ChangedProperties = data.TryGetValueSafe<string>("changedProperties");
+			    this._ParamStr1 = data.TryGetValueSafe<string>("paramStr1");
+			    this._ParamStr2 = data.TryGetValueSafe<string>("paramStr2");
+			    this._ParamStr3 = data.TryGetValueSafe<string>("paramStr3");
+			    this._Ks = data.TryGetValueSafe<string>("ks");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._UserIp = data.TryGetValueSafe<string>("userIp");
+		}
 		#endregion
 
 		#region Methods

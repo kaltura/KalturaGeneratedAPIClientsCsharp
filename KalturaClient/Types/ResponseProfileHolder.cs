@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ResponseProfileHolder(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<long>("id");
+			    this._SystemName = data.TryGetValueSafe<string>("systemName");
+		}
 		#endregion
 
 		#region Methods

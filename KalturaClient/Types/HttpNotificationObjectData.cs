@@ -132,6 +132,20 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public HttpNotificationObjectData(IDictionary<string,object> data) : base(data)
+		{
+			    this._ApiObjectType = data.TryGetValueSafe<string>("apiObjectType");
+			    this._Format = (ResponseType)ParseEnum(typeof(ResponseType), data.TryGetValueSafe<int>("format"));
+			    this._IgnoreNull = data.TryGetValueSafe<bool>("ignoreNull");
+			    this._Code = data.TryGetValueSafe<string>("code");
+			    this._DataStringReplacements = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("dataStringReplacements", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._DataStringReplacements.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

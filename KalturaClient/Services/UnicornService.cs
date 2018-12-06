@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return null;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return null;
+		}
 	}
 
 

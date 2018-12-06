@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DataEntry(IDictionary<string,object> data) : base(data)
+		{
+			    this._DataContent = data.TryGetValueSafe<string>("dataContent");
+			    this._RetrieveDataContentByGet = data.TryGetValueSafe<bool>("retrieveDataContentByGet");
+		}
 		#endregion
 
 		#region Methods

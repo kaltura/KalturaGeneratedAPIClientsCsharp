@@ -223,6 +223,25 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public MetadataProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._MetadataObjectType = (MetadataObjectType)StringEnum.Parse(typeof(MetadataObjectType), data.TryGetValueSafe<string>("metadataObjectType"));
+			    this._Version = data.TryGetValueSafe<int>("version");
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._SystemName = data.TryGetValueSafe<string>("systemName");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._Status = (MetadataProfileStatus)ParseEnum(typeof(MetadataProfileStatus), data.TryGetValueSafe<int>("status"));
+			    this._Xsd = data.TryGetValueSafe<string>("xsd");
+			    this._Views = data.TryGetValueSafe<string>("views");
+			    this._Xslt = data.TryGetValueSafe<string>("xslt");
+			    this._CreateMode = (MetadataProfileCreateMode)ParseEnum(typeof(MetadataProfileCreateMode), data.TryGetValueSafe<int>("createMode"));
+			    this._DisableReIndexing = data.TryGetValueSafe<bool>("disableReIndexing");
+		}
 		#endregion
 
 		#region Methods

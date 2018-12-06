@@ -243,6 +243,25 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveChannelSegment(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<long>("id");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._Tags = data.TryGetValueSafe<string>("tags");
+			    this._Type = (LiveChannelSegmentType)StringEnum.Parse(typeof(LiveChannelSegmentType), data.TryGetValueSafe<string>("type"));
+			    this._Status = (LiveChannelSegmentStatus)StringEnum.Parse(typeof(LiveChannelSegmentStatus), data.TryGetValueSafe<string>("status"));
+			    this._ChannelId = data.TryGetValueSafe<string>("channelId");
+			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+			    this._TriggerType = (LiveChannelSegmentTriggerType)StringEnum.Parse(typeof(LiveChannelSegmentTriggerType), data.TryGetValueSafe<string>("triggerType"));
+			    this._TriggerSegmentId = data.TryGetValueSafe<long>("triggerSegmentId");
+			    this._StartTime = data.TryGetValueSafe<float>("startTime");
+			    this._Duration = data.TryGetValueSafe<float>("duration");
+		}
 		#endregion
 
 		#region Methods

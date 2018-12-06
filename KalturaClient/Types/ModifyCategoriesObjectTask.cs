@@ -90,6 +90,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ModifyCategoriesObjectTask(IDictionary<string,object> data) : base(data)
+		{
+			    this._AddRemoveType = (ScheduledTaskAddOrRemoveType)ParseEnum(typeof(ScheduledTaskAddOrRemoveType), data.TryGetValueSafe<int>("addRemoveType"));
+			    this._CategoryIds = new List<IntegerValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("categoryIds", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._CategoryIds.Add(ObjectFactory.Create<IntegerValue>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

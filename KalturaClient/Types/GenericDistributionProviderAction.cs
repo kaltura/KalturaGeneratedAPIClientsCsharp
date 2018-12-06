@@ -261,6 +261,27 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public GenericDistributionProviderAction(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._GenericDistributionProviderId = data.TryGetValueSafe<int>("genericDistributionProviderId");
+			    this._Action = (DistributionAction)ParseEnum(typeof(DistributionAction), data.TryGetValueSafe<int>("action"));
+			    this._Status = (GenericDistributionProviderStatus)ParseEnum(typeof(GenericDistributionProviderStatus), data.TryGetValueSafe<int>("status"));
+			    this._ResultsParser = (GenericDistributionProviderParser)ParseEnum(typeof(GenericDistributionProviderParser), data.TryGetValueSafe<int>("resultsParser"));
+			    this._Protocol = (DistributionProtocol)ParseEnum(typeof(DistributionProtocol), data.TryGetValueSafe<int>("protocol"));
+			    this._ServerAddress = data.TryGetValueSafe<string>("serverAddress");
+			    this._RemotePath = data.TryGetValueSafe<string>("remotePath");
+			    this._RemoteUsername = data.TryGetValueSafe<string>("remoteUsername");
+			    this._RemotePassword = data.TryGetValueSafe<string>("remotePassword");
+			    this._EditableFields = data.TryGetValueSafe<string>("editableFields");
+			    this._MandatoryFields = data.TryGetValueSafe<string>("mandatoryFields");
+			    this._MrssTransformer = data.TryGetValueSafe<string>("mrssTransformer");
+			    this._MrssValidator = data.TryGetValueSafe<string>("mrssValidator");
+			    this._ResultsTransformer = data.TryGetValueSafe<string>("resultsTransformer");
+		}
 		#endregion
 
 		#region Methods

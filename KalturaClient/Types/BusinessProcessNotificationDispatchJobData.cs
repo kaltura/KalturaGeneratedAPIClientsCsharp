@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BusinessProcessNotificationDispatchJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._Server = ObjectFactory.Create<BusinessProcessServer>(data.TryGetValueSafe<IDictionary<string,object>>("server"));
+			    this._CaseId = data.TryGetValueSafe<string>("caseId");
+		}
 		#endregion
 
 		#region Methods

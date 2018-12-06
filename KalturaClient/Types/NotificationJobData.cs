@@ -184,6 +184,19 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public NotificationJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._UserId = data.TryGetValueSafe<string>("userId");
+			    this._Type = (NotificationType)ParseEnum(typeof(NotificationType), data.TryGetValueSafe<int>("type"));
+			    this._TypeAsString = data.TryGetValueSafe<string>("typeAsString");
+			    this._ObjectId = data.TryGetValueSafe<string>("objectId");
+			    this._Status = (NotificationStatus)ParseEnum(typeof(NotificationStatus), data.TryGetValueSafe<int>("status"));
+			    this._Data = data.TryGetValueSafe<string>("data");
+			    this._NumberOfAttempts = data.TryGetValueSafe<int>("numberOfAttempts");
+			    this._NotificationResult = data.TryGetValueSafe<string>("notificationResult");
+			    this._ObjType = (NotificationObjectType)ParseEnum(typeof(NotificationObjectType), data.TryGetValueSafe<int>("objType"));
+		}
 		#endregion
 
 		#region Methods

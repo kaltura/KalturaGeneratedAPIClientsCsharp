@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CsvAdditionalFieldInfo(IDictionary<string,object> data) : base(data)
+		{
+			    this._FieldName = data.TryGetValueSafe<string>("fieldName");
+			    this._Xpath = data.TryGetValueSafe<string>("xpath");
+		}
 		#endregion
 
 		#region Methods

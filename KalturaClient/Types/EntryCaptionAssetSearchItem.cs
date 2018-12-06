@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EntryCaptionAssetSearchItem(IDictionary<string,object> data) : base(data)
+		{
+			    this._ContentLike = data.TryGetValueSafe<string>("contentLike");
+			    this._ContentMultiLikeOr = data.TryGetValueSafe<string>("contentMultiLikeOr");
+			    this._ContentMultiLikeAnd = data.TryGetValueSafe<string>("contentMultiLikeAnd");
+		}
 		#endregion
 
 		#region Methods

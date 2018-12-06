@@ -207,6 +207,21 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public StatsKmcEvent(IDictionary<string,object> data) : base(data)
+		{
+			    this._ClientVer = data.TryGetValueSafe<string>("clientVer");
+			    this._KmcEventActionPath = data.TryGetValueSafe<string>("kmcEventActionPath");
+			    this._KmcEventType = (StatsKmcEventType)ParseEnum(typeof(StatsKmcEventType), data.TryGetValueSafe<int>("kmcEventType"));
+			    this._EventTimestamp = data.TryGetValueSafe<float>("eventTimestamp");
+			    this._SessionId = data.TryGetValueSafe<string>("sessionId");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+			    this._WidgetId = data.TryGetValueSafe<string>("widgetId");
+			    this._UiconfId = data.TryGetValueSafe<int>("uiconfId");
+			    this._UserId = data.TryGetValueSafe<string>("userId");
+			    this._UserIp = data.TryGetValueSafe<string>("userIp");
+		}
 		#endregion
 
 		#region Methods

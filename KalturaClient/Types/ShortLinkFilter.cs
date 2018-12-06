@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ShortLinkFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (ShortLinkOrderBy)StringEnum.Parse(typeof(ShortLinkOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

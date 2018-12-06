@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ConfigurableDistributionJobProviderData(IDictionary<string,object> data) : base(data)
+		{
+			    this._FieldValues = data.TryGetValueSafe<string>("fieldValues");
+		}
 		#endregion
 
 		#region Methods

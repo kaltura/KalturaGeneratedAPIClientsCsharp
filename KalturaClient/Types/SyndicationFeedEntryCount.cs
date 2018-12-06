@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public SyndicationFeedEntryCount(IDictionary<string,object> data) : base(data)
+		{
+			    this._TotalEntryCount = data.TryGetValueSafe<int>("totalEntryCount");
+			    this._ActualEntryCount = data.TryGetValueSafe<int>("actualEntryCount");
+			    this._RequireTranscodingCount = data.TryGetValueSafe<int>("requireTranscodingCount");
+		}
 		#endregion
 
 		#region Methods

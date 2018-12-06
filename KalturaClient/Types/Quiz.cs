@@ -169,6 +169,23 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public Quiz(IDictionary<string,object> data) : base(data)
+		{
+			    this._Version = data.TryGetValueSafe<int>("version");
+			    this._UiAttributes = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("uiAttributes", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._UiAttributes.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._ShowResultOnAnswer = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("showResultOnAnswer"));
+			    this._ShowCorrectKeyOnAnswer = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("showCorrectKeyOnAnswer"));
+			    this._AllowAnswerUpdate = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("allowAnswerUpdate"));
+			    this._ShowCorrectAfterSubmission = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("showCorrectAfterSubmission"));
+			    this._AllowDownload = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("allowDownload"));
+			    this._ShowGradeAfterSubmission = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("showGradeAfterSubmission"));
+		}
 		#endregion
 
 		#region Methods

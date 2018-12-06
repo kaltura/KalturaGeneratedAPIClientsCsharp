@@ -198,6 +198,20 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public GenericDistributionProviderActionBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
+			    this._IdIn = data.TryGetValueSafe<string>("idIn");
+			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
+			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
+			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
+			    this._GenericDistributionProviderIdEqual = data.TryGetValueSafe<int>("genericDistributionProviderIdEqual");
+			    this._GenericDistributionProviderIdIn = data.TryGetValueSafe<string>("genericDistributionProviderIdIn");
+			    this._ActionEqual = (DistributionAction)ParseEnum(typeof(DistributionAction), data.TryGetValueSafe<int>("actionEqual"));
+			    this._ActionIn = data.TryGetValueSafe<string>("actionIn");
+		}
 		#endregion
 
 		#region Methods

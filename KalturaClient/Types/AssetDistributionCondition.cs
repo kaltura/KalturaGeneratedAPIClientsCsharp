@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public AssetDistributionCondition(XmlElement node) : base(node)
 		{
 		}
+
+		public AssetDistributionCondition(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UrlRecognizerAkamaiG2O(IDictionary<string,object> data) : base(data)
+		{
+			    this._HeaderData = data.TryGetValueSafe<string>("headerData");
+			    this._HeaderSign = data.TryGetValueSafe<string>("headerSign");
+			    this._Timeout = data.TryGetValueSafe<int>("timeout");
+			    this._Salt = data.TryGetValueSafe<string>("salt");
+		}
 		#endregion
 
 		#region Methods

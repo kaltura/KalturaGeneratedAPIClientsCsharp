@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ESearchParams(IDictionary<string,object> data) : base(data)
+		{
+			    this._ObjectStatuses = data.TryGetValueSafe<string>("objectStatuses");
+			    this._ObjectId = data.TryGetValueSafe<string>("objectId");
+			    this._OrderBy = ObjectFactory.Create<ESearchOrderBy>(data.TryGetValueSafe<IDictionary<string,object>>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

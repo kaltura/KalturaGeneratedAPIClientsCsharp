@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<EntryServerNode>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<EntryServerNode>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class EntryServerNodeListRequestBuilder : RequestBuilder<ListResponse<EntryServerNode>>
@@ -127,6 +131,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<EntryServerNode>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<EntryServerNode>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -180,6 +188,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<EntryServerNode>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<EntryServerNode>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class EntryServerNodeUpdateStatusRequestBuilder : RequestBuilder<EntryServerNode>
@@ -232,6 +244,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<EntryServerNode>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<EntryServerNode>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class EntryServerNodeValidateRegisteredEntryServerNodeRequestBuilder : RequestBuilder<object>
@@ -272,6 +288,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}

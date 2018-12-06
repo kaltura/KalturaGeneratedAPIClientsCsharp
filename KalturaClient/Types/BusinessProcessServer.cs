@@ -168,6 +168,20 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BusinessProcessServer(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._SystemName = data.TryGetValueSafe<string>("systemName");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._Status = (BusinessProcessServerStatus)StringEnum.Parse(typeof(BusinessProcessServerStatus), data.TryGetValueSafe<string>("status"));
+			    this._Type = (BusinessProcessProvider)StringEnum.Parse(typeof(BusinessProcessProvider), data.TryGetValueSafe<string>("type"));
+			    this._Dc = data.TryGetValueSafe<int>("dc");
+		}
 		#endregion
 
 		#region Methods

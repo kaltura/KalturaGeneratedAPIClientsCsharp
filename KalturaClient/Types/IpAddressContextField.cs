@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public IpAddressContextField(XmlElement node) : base(node)
 		{
 		}
+
+		public IpAddressContextField(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

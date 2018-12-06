@@ -126,6 +126,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ResponseProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<long>("id");
+			    this._SystemName = data.TryGetValueSafe<string>("systemName");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._Status = (ResponseProfileStatus)ParseEnum(typeof(ResponseProfileStatus), data.TryGetValueSafe<int>("status"));
+			    this._Version = data.TryGetValueSafe<int>("version");
+		}
 		#endregion
 
 		#region Methods

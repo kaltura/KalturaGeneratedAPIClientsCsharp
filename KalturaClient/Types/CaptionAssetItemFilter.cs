@@ -254,6 +254,24 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CaptionAssetItemFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._ContentLike = data.TryGetValueSafe<string>("contentLike");
+			    this._ContentMultiLikeOr = data.TryGetValueSafe<string>("contentMultiLikeOr");
+			    this._ContentMultiLikeAnd = data.TryGetValueSafe<string>("contentMultiLikeAnd");
+			    this._PartnerDescriptionLike = data.TryGetValueSafe<string>("partnerDescriptionLike");
+			    this._PartnerDescriptionMultiLikeOr = data.TryGetValueSafe<string>("partnerDescriptionMultiLikeOr");
+			    this._PartnerDescriptionMultiLikeAnd = data.TryGetValueSafe<string>("partnerDescriptionMultiLikeAnd");
+			    this._LanguageEqual = (Language)StringEnum.Parse(typeof(Language), data.TryGetValueSafe<string>("languageEqual"));
+			    this._LanguageIn = data.TryGetValueSafe<string>("languageIn");
+			    this._LabelEqual = data.TryGetValueSafe<string>("labelEqual");
+			    this._LabelIn = data.TryGetValueSafe<string>("labelIn");
+			    this._StartTimeGreaterThanOrEqual = data.TryGetValueSafe<int>("startTimeGreaterThanOrEqual");
+			    this._StartTimeLessThanOrEqual = data.TryGetValueSafe<int>("startTimeLessThanOrEqual");
+			    this._EndTimeGreaterThanOrEqual = data.TryGetValueSafe<int>("endTimeGreaterThanOrEqual");
+			    this._EndTimeLessThanOrEqual = data.TryGetValueSafe<int>("endTimeLessThanOrEqual");
+		}
 		#endregion
 
 		#region Methods

@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CategoryEntryAdvancedFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._CategoriesMatchOr = data.TryGetValueSafe<string>("categoriesMatchOr");
+			    this._CategoryEntryStatusIn = data.TryGetValueSafe<string>("categoryEntryStatusIn");
+			    this._OrderBy = (CategoryEntryAdvancedOrderBy)StringEnum.Parse(typeof(CategoryEntryAdvancedOrderBy), data.TryGetValueSafe<string>("orderBy"));
+			    this._CategoryIdEqual = data.TryGetValueSafe<int>("categoryIdEqual");
+		}
 		#endregion
 
 		#region Methods

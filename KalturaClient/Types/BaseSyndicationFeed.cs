@@ -336,6 +336,32 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BaseSyndicationFeed(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<string>("id");
+			    this._FeedUrl = data.TryGetValueSafe<string>("feedUrl");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._PlaylistId = data.TryGetValueSafe<string>("playlistId");
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._Status = (SyndicationFeedStatus)ParseEnum(typeof(SyndicationFeedStatus), data.TryGetValueSafe<int>("status"));
+			    this._Type = (SyndicationFeedType)ParseEnum(typeof(SyndicationFeedType), data.TryGetValueSafe<int>("type"));
+			    this._LandingPage = data.TryGetValueSafe<string>("landingPage");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._AllowEmbed = data.TryGetValueSafe<bool>("allowEmbed");
+			    this._PlayerUiconfId = data.TryGetValueSafe<int>("playerUiconfId");
+			    this._FlavorParamId = data.TryGetValueSafe<int>("flavorParamId");
+			    this._TranscodeExistingContent = data.TryGetValueSafe<bool>("transcodeExistingContent");
+			    this._AddToDefaultConversionProfile = data.TryGetValueSafe<bool>("addToDefaultConversionProfile");
+			    this._Categories = data.TryGetValueSafe<string>("categories");
+			    this._StorageId = data.TryGetValueSafe<int>("storageId");
+			    this._EntriesOrderBy = (SyndicationFeedEntriesOrderBy)StringEnum.Parse(typeof(SyndicationFeedEntriesOrderBy), data.TryGetValueSafe<string>("entriesOrderBy"));
+			    this._EnforceEntitlement = data.TryGetValueSafe<bool>("enforceEntitlement");
+			    this._PrivacyContext = data.TryGetValueSafe<string>("privacyContext");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._UseCategoryEntries = data.TryGetValueSafe<bool>("useCategoryEntries");
+			    this._FeedContentTypeHeader = data.TryGetValueSafe<string>("feedContentTypeHeader");
+		}
 		#endregion
 
 		#region Methods

@@ -240,6 +240,23 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ProvisionJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._StreamID = data.TryGetValueSafe<string>("streamID");
+			    this._BackupStreamID = data.TryGetValueSafe<string>("backupStreamID");
+			    this._Rtmp = data.TryGetValueSafe<string>("rtmp");
+			    this._EncoderIP = data.TryGetValueSafe<string>("encoderIP");
+			    this._BackupEncoderIP = data.TryGetValueSafe<string>("backupEncoderIP");
+			    this._EncoderPassword = data.TryGetValueSafe<string>("encoderPassword");
+			    this._EncoderUsername = data.TryGetValueSafe<string>("encoderUsername");
+			    this._EndDate = data.TryGetValueSafe<int>("endDate");
+			    this._ReturnVal = data.TryGetValueSafe<string>("returnVal");
+			    this._MediaType = data.TryGetValueSafe<int>("mediaType");
+			    this._PrimaryBroadcastingUrl = data.TryGetValueSafe<string>("primaryBroadcastingUrl");
+			    this._SecondaryBroadcastingUrl = data.TryGetValueSafe<string>("secondaryBroadcastingUrl");
+			    this._StreamName = data.TryGetValueSafe<string>("streamName");
+		}
 		#endregion
 
 		#region Methods

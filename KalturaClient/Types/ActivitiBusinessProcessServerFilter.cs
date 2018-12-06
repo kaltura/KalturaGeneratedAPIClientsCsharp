@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ActivitiBusinessProcessServerFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (ActivitiBusinessProcessServerOrderBy)StringEnum.Parse(typeof(ActivitiBusinessProcessServerOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

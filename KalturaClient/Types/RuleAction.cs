@@ -67,6 +67,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public RuleAction(IDictionary<string,object> data) : base(data)
+		{
+			    this._Type = (RuleActionType)StringEnum.Parse(typeof(RuleActionType), data.TryGetValueSafe<string>("type"));
+		}
 		#endregion
 
 		#region Methods

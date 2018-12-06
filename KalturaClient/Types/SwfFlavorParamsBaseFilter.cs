@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public SwfFlavorParamsBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public SwfFlavorParamsBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

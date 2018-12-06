@@ -402,6 +402,36 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ConversionProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._Status = (ConversionProfileStatus)StringEnum.Parse(typeof(ConversionProfileStatus), data.TryGetValueSafe<string>("status"));
+			    this._Type = (ConversionProfileType)StringEnum.Parse(typeof(ConversionProfileType), data.TryGetValueSafe<string>("type"));
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._SystemName = data.TryGetValueSafe<string>("systemName");
+			    this._Tags = data.TryGetValueSafe<string>("tags");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._DefaultEntryId = data.TryGetValueSafe<string>("defaultEntryId");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._FlavorParamsIds = data.TryGetValueSafe<string>("flavorParamsIds");
+			    this._IsDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isDefault"));
+			    this._IsPartnerDefault = data.TryGetValueSafe<bool>("isPartnerDefault");
+			    this._CropDimensions = ObjectFactory.Create<CropDimensions>(data.TryGetValueSafe<IDictionary<string,object>>("cropDimensions"));
+			    this._ClipStart = data.TryGetValueSafe<int>("clipStart");
+			    this._ClipDuration = data.TryGetValueSafe<int>("clipDuration");
+			    this._XslTransformation = data.TryGetValueSafe<string>("xslTransformation");
+			    this._StorageProfileId = data.TryGetValueSafe<int>("storageProfileId");
+			    this._MediaParserType = (MediaParserType)StringEnum.Parse(typeof(MediaParserType), data.TryGetValueSafe<string>("mediaParserType"));
+			    this._CalculateComplexity = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("calculateComplexity"));
+			    this._CollectionTags = data.TryGetValueSafe<string>("collectionTags");
+			    this._ConditionalProfiles = data.TryGetValueSafe<string>("conditionalProfiles");
+			    this._DetectGOP = data.TryGetValueSafe<int>("detectGOP");
+			    this._MediaInfoXslTransformation = data.TryGetValueSafe<string>("mediaInfoXslTransformation");
+			    this._DefaultReplacementOptions = ObjectFactory.Create<EntryReplacementOptions>(data.TryGetValueSafe<IDictionary<string,object>>("defaultReplacementOptions"));
+			    this._DefaultAudioLang = (Language)StringEnum.Parse(typeof(Language), data.TryGetValueSafe<string>("defaultAudioLang"));
+		}
 		#endregion
 
 		#region Methods

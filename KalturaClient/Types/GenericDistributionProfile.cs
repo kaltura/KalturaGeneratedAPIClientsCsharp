@@ -156,6 +156,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public GenericDistributionProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._GenericProviderId = data.TryGetValueSafe<int>("genericProviderId");
+			    this._SubmitAction = ObjectFactory.Create<GenericDistributionProfileAction>(data.TryGetValueSafe<IDictionary<string,object>>("submitAction"));
+			    this._UpdateAction = ObjectFactory.Create<GenericDistributionProfileAction>(data.TryGetValueSafe<IDictionary<string,object>>("updateAction"));
+			    this._DeleteAction = ObjectFactory.Create<GenericDistributionProfileAction>(data.TryGetValueSafe<IDictionary<string,object>>("deleteAction"));
+			    this._FetchReportAction = ObjectFactory.Create<GenericDistributionProfileAction>(data.TryGetValueSafe<IDictionary<string,object>>("fetchReportAction"));
+			    this._UpdateRequiredEntryFields = data.TryGetValueSafe<string>("updateRequiredEntryFields");
+			    this._UpdateRequiredMetadataXPaths = data.TryGetValueSafe<string>("updateRequiredMetadataXPaths");
+		}
 		#endregion
 
 		#region Methods

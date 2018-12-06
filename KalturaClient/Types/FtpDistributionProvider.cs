@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public FtpDistributionProvider(XmlElement node) : base(node)
 		{
 		}
+
+		public FtpDistributionProvider(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

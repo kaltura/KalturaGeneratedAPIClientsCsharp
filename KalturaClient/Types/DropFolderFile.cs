@@ -354,6 +354,34 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DropFolderFile(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._DropFolderId = data.TryGetValueSafe<int>("dropFolderId");
+			    this._FileName = data.TryGetValueSafe<string>("fileName");
+			    this._FileSize = data.TryGetValueSafe<float>("fileSize");
+			    this._FileSizeLastSetAt = data.TryGetValueSafe<int>("fileSizeLastSetAt");
+			    this._Status = (DropFolderFileStatus)ParseEnum(typeof(DropFolderFileStatus), data.TryGetValueSafe<int>("status"));
+			    this._Type = (DropFolderType)StringEnum.Parse(typeof(DropFolderType), data.TryGetValueSafe<string>("type"));
+			    this._ParsedSlug = data.TryGetValueSafe<string>("parsedSlug");
+			    this._ParsedFlavor = data.TryGetValueSafe<string>("parsedFlavor");
+			    this._ParsedUserId = data.TryGetValueSafe<string>("parsedUserId");
+			    this._LeadDropFolderFileId = data.TryGetValueSafe<int>("leadDropFolderFileId");
+			    this._DeletedDropFolderFileId = data.TryGetValueSafe<int>("deletedDropFolderFileId");
+			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+			    this._ErrorCode = (DropFolderFileErrorCode)StringEnum.Parse(typeof(DropFolderFileErrorCode), data.TryGetValueSafe<string>("errorCode"));
+			    this._ErrorDescription = data.TryGetValueSafe<string>("errorDescription");
+			    this._LastModificationTime = data.TryGetValueSafe<string>("lastModificationTime");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._UploadStartDetectedAt = data.TryGetValueSafe<int>("uploadStartDetectedAt");
+			    this._UploadEndDetectedAt = data.TryGetValueSafe<int>("uploadEndDetectedAt");
+			    this._ImportStartedAt = data.TryGetValueSafe<int>("importStartedAt");
+			    this._ImportEndedAt = data.TryGetValueSafe<int>("importEndedAt");
+			    this._BatchJobId = data.TryGetValueSafe<int>("batchJobId");
+		}
 		#endregion
 
 		#region Methods

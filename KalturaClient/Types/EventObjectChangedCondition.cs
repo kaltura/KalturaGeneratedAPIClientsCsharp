@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EventObjectChangedCondition(IDictionary<string,object> data) : base(data)
+		{
+			    this._ModifiedColumns = data.TryGetValueSafe<string>("modifiedColumns");
+		}
 		#endregion
 
 		#region Methods

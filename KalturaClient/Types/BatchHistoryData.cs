@@ -184,6 +184,19 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BatchHistoryData(IDictionary<string,object> data) : base(data)
+		{
+			    this._SchedulerId = data.TryGetValueSafe<int>("schedulerId");
+			    this._WorkerId = data.TryGetValueSafe<int>("workerId");
+			    this._BatchIndex = data.TryGetValueSafe<int>("batchIndex");
+			    this._TimeStamp = data.TryGetValueSafe<int>("timeStamp");
+			    this._Message = data.TryGetValueSafe<string>("message");
+			    this._ErrType = data.TryGetValueSafe<int>("errType");
+			    this._ErrNumber = data.TryGetValueSafe<int>("errNumber");
+			    this._HostName = data.TryGetValueSafe<string>("hostName");
+			    this._SessionId = data.TryGetValueSafe<string>("sessionId");
+		}
 		#endregion
 
 		#region Methods

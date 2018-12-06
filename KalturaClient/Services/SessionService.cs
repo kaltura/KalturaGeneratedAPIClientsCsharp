@@ -62,6 +62,10 @@ namespace Kaltura.Services
 		{
 			return null;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return null;
+		}
 	}
 
 	public class SessionGetRequestBuilder : RequestBuilder<SessionInfo>
@@ -104,6 +108,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<SessionInfo>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<SessionInfo>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -202,6 +210,10 @@ namespace Kaltura.Services
 		{
 			return result.InnerText;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
+		}
 	}
 
 	public class SessionImpersonateByKsRequestBuilder : RequestBuilder<SessionInfo>
@@ -271,6 +283,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<SessionInfo>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<SessionInfo>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -360,6 +376,10 @@ namespace Kaltura.Services
 		{
 			return result.InnerText;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
+		}
 	}
 
 	public class SessionStartWidgetSessionRequestBuilder : RequestBuilder<StartWidgetSessionResponse>
@@ -411,6 +431,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<StartWidgetSessionResponse>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<StartWidgetSessionResponse>((IDictionary<string,object>)result);
 		}
 	}
 

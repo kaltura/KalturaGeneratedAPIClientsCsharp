@@ -85,6 +85,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ESearchCategoryResponse>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ESearchCategoryResponse>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ESearchSearchEntryRequestBuilder : RequestBuilder<ESearchEntryResponse>
@@ -137,6 +141,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ESearchEntryResponse>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ESearchEntryResponse>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ESearchSearchUserRequestBuilder : RequestBuilder<ESearchUserResponse>
@@ -188,6 +196,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ESearchUserResponse>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ESearchUserResponse>((IDictionary<string,object>)result);
 		}
 	}
 

@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UrlRecognizer(IDictionary<string,object> data) : base(data)
+		{
+			    this._Hosts = data.TryGetValueSafe<string>("hosts");
+			    this._UriPrefix = data.TryGetValueSafe<string>("uriPrefix");
+		}
 		#endregion
 
 		#region Methods

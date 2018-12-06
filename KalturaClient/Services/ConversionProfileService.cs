@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ConversionProfile>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ConversionProfile>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ConversionProfileDeleteRequestBuilder : RequestBuilder<object>
@@ -116,6 +120,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -162,6 +170,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ConversionProfile>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ConversionProfile>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ConversionProfileGetDefaultRequestBuilder : RequestBuilder<ConversionProfile>
@@ -204,6 +216,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ConversionProfile>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ConversionProfile>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -257,6 +273,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<ConversionProfile>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<ConversionProfile>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ConversionProfileSetAsDefaultRequestBuilder : RequestBuilder<ConversionProfile>
@@ -299,6 +319,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ConversionProfile>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ConversionProfile>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -351,6 +375,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ConversionProfile>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ConversionProfile>((IDictionary<string,object>)result);
 		}
 	}
 

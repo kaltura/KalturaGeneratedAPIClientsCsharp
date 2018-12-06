@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DistributionValidationErrorInvalidData(IDictionary<string,object> data) : base(data)
+		{
+			    this._FieldName = data.TryGetValueSafe<string>("fieldName");
+			    this._ValidationErrorType = (DistributionValidationErrorType)ParseEnum(typeof(DistributionValidationErrorType), data.TryGetValueSafe<int>("validationErrorType"));
+			    this._ValidationErrorParam = data.TryGetValueSafe<string>("validationErrorParam");
+		}
 		#endregion
 
 		#region Methods

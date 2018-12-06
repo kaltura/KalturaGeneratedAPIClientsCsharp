@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UrlTokenizerAkamaiHttp(IDictionary<string,object> data) : base(data)
+		{
+			    this._ParamName = data.TryGetValueSafe<string>("paramName");
+			    this._RootDir = data.TryGetValueSafe<string>("rootDir");
+		}
 		#endregion
 
 		#region Methods

@@ -90,6 +90,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AssetDistributionRule(IDictionary<string,object> data) : base(data)
+		{
+			    this._ValidationError = data.TryGetValueSafe<string>("validationError");
+			    this._AssetDistributionConditions = new List<AssetDistributionCondition>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("assetDistributionConditions", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._AssetDistributionConditions.Add(ObjectFactory.Create<AssetDistributionCondition>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

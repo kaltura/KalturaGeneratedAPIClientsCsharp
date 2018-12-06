@@ -142,6 +142,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AmazonS3StorageProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._FilesPermissionInS3 = (AmazonS3StorageProfileFilesPermissionLevel)StringEnum.Parse(typeof(AmazonS3StorageProfileFilesPermissionLevel), data.TryGetValueSafe<string>("filesPermissionInS3"));
+			    this._S3Region = data.TryGetValueSafe<string>("s3Region");
+			    this._SseType = data.TryGetValueSafe<string>("sseType");
+			    this._SseKmsKeyId = data.TryGetValueSafe<string>("sseKmsKeyId");
+			    this._SignatureType = data.TryGetValueSafe<string>("signatureType");
+			    this._EndPoint = data.TryGetValueSafe<string>("endPoint");
+		}
 		#endregion
 
 		#region Methods

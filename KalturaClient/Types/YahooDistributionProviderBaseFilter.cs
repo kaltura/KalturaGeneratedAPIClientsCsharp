@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public YahooDistributionProviderBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public YahooDistributionProviderBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

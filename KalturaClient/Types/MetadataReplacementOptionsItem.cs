@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public MetadataReplacementOptionsItem(IDictionary<string,object> data) : base(data)
+		{
+			    this._ShouldCopyMetadata = data.TryGetValueSafe<bool>("shouldCopyMetadata");
+		}
 		#endregion
 
 		#region Methods

@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public MsnDistributionJobProviderData(IDictionary<string,object> data) : base(data)
+		{
+			    this._Xml = data.TryGetValueSafe<string>("xml");
+		}
 		#endregion
 
 		#region Methods

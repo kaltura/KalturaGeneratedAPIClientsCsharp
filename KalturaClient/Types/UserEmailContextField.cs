@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public UserEmailContextField(XmlElement node) : base(node)
 		{
 		}
+
+		public UserEmailContextField(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CameraScheduleResource(IDictionary<string,object> data) : base(data)
+		{
+			    this._StreamUrl = data.TryGetValueSafe<string>("streamUrl");
+		}
 		#endregion
 
 		#region Methods

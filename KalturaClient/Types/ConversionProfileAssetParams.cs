@@ -230,6 +230,23 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ConversionProfileAssetParams(IDictionary<string,object> data) : base(data)
+		{
+			    this._ConversionProfileId = data.TryGetValueSafe<int>("conversionProfileId");
+			    this._AssetParamsId = data.TryGetValueSafe<int>("assetParamsId");
+			    this._ReadyBehavior = (FlavorReadyBehaviorType)ParseEnum(typeof(FlavorReadyBehaviorType), data.TryGetValueSafe<int>("readyBehavior"));
+			    this._Origin = (AssetParamsOrigin)ParseEnum(typeof(AssetParamsOrigin), data.TryGetValueSafe<int>("origin"));
+			    this._SystemName = data.TryGetValueSafe<string>("systemName");
+			    this._ForceNoneComplied = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("forceNoneComplied"));
+			    this._DeletePolicy = (AssetParamsDeletePolicy)ParseEnum(typeof(AssetParamsDeletePolicy), data.TryGetValueSafe<int>("deletePolicy"));
+			    this._IsEncrypted = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isEncrypted"));
+			    this._ContentAwareness = data.TryGetValueSafe<float>("contentAwareness");
+			    this._ChunkedEncodeMode = data.TryGetValueSafe<int>("chunkedEncodeMode");
+			    this._TwoPass = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("twoPass"));
+			    this._Tags = data.TryGetValueSafe<string>("tags");
+			    this._OverloadParams = data.TryGetValueSafe<string>("overloadParams");
+		}
 		#endregion
 
 		#region Methods

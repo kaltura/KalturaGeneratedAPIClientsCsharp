@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public PlayReadyPolicyBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public PlayReadyPolicyBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public QuizUserEntryBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public QuizUserEntryBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

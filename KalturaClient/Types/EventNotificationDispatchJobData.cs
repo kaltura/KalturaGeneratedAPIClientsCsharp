@@ -90,6 +90,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EventNotificationDispatchJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._TemplateId = data.TryGetValueSafe<int>("templateId");
+			    this._ContentParameters = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("contentParameters", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._ContentParameters.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

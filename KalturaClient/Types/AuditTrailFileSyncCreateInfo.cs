@@ -128,6 +128,15 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AuditTrailFileSyncCreateInfo(IDictionary<string,object> data) : base(data)
+		{
+			    this._Version = data.TryGetValueSafe<string>("version");
+			    this._ObjectSubType = data.TryGetValueSafe<int>("objectSubType");
+			    this._Dc = data.TryGetValueSafe<int>("dc");
+			    this._Original = data.TryGetValueSafe<bool>("original");
+			    this._FileType = (AuditTrailFileSyncType)ParseEnum(typeof(AuditTrailFileSyncType), data.TryGetValueSafe<int>("fileType"));
+		}
 		#endregion
 
 		#region Methods

@@ -85,6 +85,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ThumbAsset>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ThumbAsset>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ThumbAssetAddFromImageRequestBuilder : RequestBuilder<ThumbAsset>
@@ -135,6 +139,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ThumbAsset>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ThumbAsset>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -188,6 +196,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ThumbAsset>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ThumbAsset>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ThumbAssetDeleteRequestBuilder : RequestBuilder<object>
@@ -228,6 +240,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -282,6 +298,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<FlavorAsset>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<FlavorAsset>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -344,6 +364,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ThumbAsset>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ThumbAsset>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ThumbAssetGenerateByEntryIdRequestBuilder : RequestBuilder<ThumbAsset>
@@ -396,6 +420,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ThumbAsset>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ThumbAsset>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ThumbAssetGetRequestBuilder : RequestBuilder<ThumbAsset>
@@ -438,6 +466,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ThumbAsset>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ThumbAsset>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -487,6 +519,15 @@ namespace Kaltura.Services
 			}
 			return list;
 		}
+		public override object DeserializeObject(object result)
+		{
+			var list = new List<ThumbAsset>();
+			foreach(var node in (IEnumerable<IDictionary<string,object>>)result)
+			{
+				list.Add(ObjectFactory.Create<ThumbAsset>(node));
+			}
+			return list;
+		}
 	}
 
 	public class ThumbAssetGetRemotePathsRequestBuilder : RequestBuilder<ListResponse<RemotePath>>
@@ -529,6 +570,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<RemotePath>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<RemotePath>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -591,6 +636,10 @@ namespace Kaltura.Services
 		{
 			return result.InnerText;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
+		}
 	}
 
 	public class ThumbAssetListRequestBuilder : RequestBuilder<ListResponse<ThumbAsset>>
@@ -643,6 +692,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<ThumbAsset>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<ThumbAsset>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ThumbAssetRegenerateRequestBuilder : RequestBuilder<ThumbAsset>
@@ -686,6 +739,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ThumbAsset>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ThumbAsset>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ThumbAssetSetAsDefaultRequestBuilder : RequestBuilder<object>
@@ -726,6 +783,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -781,6 +842,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ThumbAsset>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ThumbAsset>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ThumbAssetUpdateRequestBuilder : RequestBuilder<ThumbAsset>
@@ -832,6 +897,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ThumbAsset>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ThumbAsset>((IDictionary<string,object>)result);
 		}
 	}
 

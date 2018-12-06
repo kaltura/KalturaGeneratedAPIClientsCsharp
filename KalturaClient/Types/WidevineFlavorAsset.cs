@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public WidevineFlavorAsset(IDictionary<string,object> data) : base(data)
+		{
+			    this._WidevineDistributionStartDate = data.TryGetValueSafe<int>("widevineDistributionStartDate");
+			    this._WidevineDistributionEndDate = data.TryGetValueSafe<int>("widevineDistributionEndDate");
+			    this._WidevineAssetId = data.TryGetValueSafe<int>("widevineAssetId");
+		}
 		#endregion
 
 		#region Methods

@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public YouTubeDistributionProviderFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (YouTubeDistributionProviderOrderBy)StringEnum.Parse(typeof(YouTubeDistributionProviderOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveReportExportParams(IDictionary<string,object> data) : base(data)
+		{
+			    this._EntryIds = data.TryGetValueSafe<string>("entryIds");
+			    this._RecpientEmail = data.TryGetValueSafe<string>("recpientEmail");
+			    this._TimeZoneOffset = data.TryGetValueSafe<int>("timeZoneOffset");
+			    this._ApplicationUrlTemplate = data.TryGetValueSafe<string>("applicationUrlTemplate");
+		}
 		#endregion
 
 		#region Methods

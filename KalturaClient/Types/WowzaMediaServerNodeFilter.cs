@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public WowzaMediaServerNodeFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (WowzaMediaServerNodeOrderBy)StringEnum.Parse(typeof(WowzaMediaServerNodeOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

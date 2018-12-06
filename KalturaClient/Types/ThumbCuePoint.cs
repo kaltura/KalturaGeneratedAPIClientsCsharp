@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ThumbCuePoint(IDictionary<string,object> data) : base(data)
+		{
+			    this._AssetId = data.TryGetValueSafe<string>("assetId");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._Title = data.TryGetValueSafe<string>("title");
+			    this._SubType = (ThumbCuePointSubType)ParseEnum(typeof(ThumbCuePointSubType), data.TryGetValueSafe<int>("subType"));
+		}
 		#endregion
 
 		#region Methods

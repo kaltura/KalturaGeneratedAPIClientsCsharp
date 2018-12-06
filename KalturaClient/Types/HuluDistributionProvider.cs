@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public HuluDistributionProvider(XmlElement node) : base(node)
 		{
 		}
+
+		public HuluDistributionProvider(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

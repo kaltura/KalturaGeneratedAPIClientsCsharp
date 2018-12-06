@@ -213,6 +213,25 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BulkUploadJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._UserId = data.TryGetValueSafe<string>("userId");
+			    this._UploadedBy = data.TryGetValueSafe<string>("uploadedBy");
+			    this._ConversionProfileId = data.TryGetValueSafe<int>("conversionProfileId");
+			    this._ResultsFileLocalPath = data.TryGetValueSafe<string>("resultsFileLocalPath");
+			    this._ResultsFileUrl = data.TryGetValueSafe<string>("resultsFileUrl");
+			    this._NumOfEntries = data.TryGetValueSafe<int>("numOfEntries");
+			    this._NumOfObjects = data.TryGetValueSafe<int>("numOfObjects");
+			    this._FilePath = data.TryGetValueSafe<string>("filePath");
+			    this._BulkUploadObjectType = (BulkUploadObjectType)StringEnum.Parse(typeof(BulkUploadObjectType), data.TryGetValueSafe<string>("bulkUploadObjectType"));
+			    this._FileName = data.TryGetValueSafe<string>("fileName");
+			    this._ObjectData = ObjectFactory.Create<BulkUploadObjectData>(data.TryGetValueSafe<IDictionary<string,object>>("objectData"));
+			    this._Type = (BulkUploadType)StringEnum.Parse(typeof(BulkUploadType), data.TryGetValueSafe<string>("type"));
+			    this._EmailRecipients = data.TryGetValueSafe<string>("emailRecipients");
+			    this._NumOfErrorObjects = data.TryGetValueSafe<int>("numOfErrorObjects");
+			    this._Privileges = data.TryGetValueSafe<string>("privileges");
+		}
 		#endregion
 
 		#region Methods

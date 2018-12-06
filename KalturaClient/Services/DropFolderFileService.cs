@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<DropFolderFile>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DropFolderFile>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DropFolderFileDeleteRequestBuilder : RequestBuilder<DropFolderFile>
@@ -118,6 +122,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<DropFolderFile>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DropFolderFile>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -162,6 +170,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<DropFolderFile>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DropFolderFile>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DropFolderFileIgnoreRequestBuilder : RequestBuilder<DropFolderFile>
@@ -204,6 +216,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<DropFolderFile>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DropFolderFile>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -257,6 +273,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<DropFolderFile>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<DropFolderFile>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DropFolderFileUpdateRequestBuilder : RequestBuilder<DropFolderFile>
@@ -309,6 +329,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<DropFolderFile>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DropFolderFile>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DropFolderFileUpdateStatusRequestBuilder : RequestBuilder<DropFolderFile>
@@ -360,6 +384,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<DropFolderFile>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DropFolderFile>((IDictionary<string,object>)result);
 		}
 	}
 

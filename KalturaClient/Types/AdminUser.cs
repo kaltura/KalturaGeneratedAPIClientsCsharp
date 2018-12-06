@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public AdminUser(XmlElement node) : base(node)
 		{
 		}
+
+		public AdminUser(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

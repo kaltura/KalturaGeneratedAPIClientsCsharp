@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public SystemPartnerUsageFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._FromDate = data.TryGetValueSafe<int>("fromDate");
+			    this._ToDate = data.TryGetValueSafe<int>("toDate");
+			    this._TimezoneOffset = data.TryGetValueSafe<int>("timezoneOffset");
+		}
 		#endregion
 
 		#region Methods

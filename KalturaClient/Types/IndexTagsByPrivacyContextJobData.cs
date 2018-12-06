@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public IndexTagsByPrivacyContextJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._ChangedCategoryId = data.TryGetValueSafe<int>("changedCategoryId");
+			    this._DeletedPrivacyContexts = data.TryGetValueSafe<string>("deletedPrivacyContexts");
+			    this._AddedPrivacyContexts = data.TryGetValueSafe<string>("addedPrivacyContexts");
+		}
 		#endregion
 
 		#region Methods

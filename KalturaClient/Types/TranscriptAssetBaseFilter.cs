@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public TranscriptAssetBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public TranscriptAssetBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

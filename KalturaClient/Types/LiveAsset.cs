@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveAsset(IDictionary<string,object> data) : base(data)
+		{
+			    this._MulticastIP = data.TryGetValueSafe<string>("multicastIP");
+			    this._MulticastPort = data.TryGetValueSafe<int>("multicastPort");
+		}
 		#endregion
 
 		#region Methods

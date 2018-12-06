@@ -90,6 +90,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public MatchCondition(IDictionary<string,object> data) : base(data)
+		{
+			    this._Values = new List<StringValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("values", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Values.Add(ObjectFactory.Create<StringValue>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._MatchType = (MatchConditionType)StringEnum.Parse(typeof(MatchConditionType), data.TryGetValueSafe<string>("matchType"));
+		}
 		#endregion
 
 		#region Methods

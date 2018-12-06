@@ -168,6 +168,24 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AccessControl(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._SystemName = data.TryGetValueSafe<string>("systemName");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._IsDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isDefault"));
+			    this._Restrictions = new List<BaseRestriction>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("restrictions", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Restrictions.Add(ObjectFactory.Create<BaseRestriction>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._ContainsUnsuportedRestrictions = data.TryGetValueSafe<bool>("containsUnsuportedRestrictions");
+		}
 		#endregion
 
 		#region Methods

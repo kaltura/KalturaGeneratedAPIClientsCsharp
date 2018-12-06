@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public GeoTimeLiveStats(IDictionary<string,object> data) : base(data)
+		{
+			    this._City = ObjectFactory.Create<Coordinate>(data.TryGetValueSafe<IDictionary<string,object>>("city"));
+			    this._Country = ObjectFactory.Create<Coordinate>(data.TryGetValueSafe<IDictionary<string,object>>("country"));
+		}
 		#endregion
 
 		#region Methods

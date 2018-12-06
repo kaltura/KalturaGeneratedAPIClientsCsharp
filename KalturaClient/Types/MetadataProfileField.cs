@@ -94,6 +94,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public MetadataProfileField(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._XPath = data.TryGetValueSafe<string>("xPath");
+			    this._Key = data.TryGetValueSafe<string>("key");
+			    this._Label = data.TryGetValueSafe<string>("label");
+		}
 		#endregion
 
 		#region Methods

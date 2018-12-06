@@ -94,6 +94,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<CaptionAssetItem>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<CaptionAssetItem>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class CaptionAssetItemSearchRequestBuilder : RequestBuilder<ListResponse<CaptionAssetItem>>
@@ -155,6 +159,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<CaptionAssetItem>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<CaptionAssetItem>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class CaptionAssetItemSearchEntriesRequestBuilder : RequestBuilder<ListResponse<BaseEntry>>
@@ -215,6 +223,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<BaseEntry>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<BaseEntry>>((IDictionary<string,object>)result);
 		}
 	}
 

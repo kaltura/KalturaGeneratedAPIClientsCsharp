@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public HuluDistributionProviderFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (HuluDistributionProviderOrderBy)StringEnum.Parse(typeof(HuluDistributionProviderOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

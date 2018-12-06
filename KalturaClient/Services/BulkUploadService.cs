@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<BulkUpload>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<BulkUpload>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class BulkUploadAddRequestBuilder : RequestBuilder<BulkUpload>
@@ -154,6 +158,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<BulkUpload>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<BulkUpload>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class BulkUploadGetRequestBuilder : RequestBuilder<BulkUpload>
@@ -197,6 +205,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<BulkUpload>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<BulkUpload>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class BulkUploadListRequestBuilder : RequestBuilder<ListResponse<BulkUpload>>
@@ -239,6 +251,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<BulkUpload>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<BulkUpload>>((IDictionary<string,object>)result);
 		}
 	}
 

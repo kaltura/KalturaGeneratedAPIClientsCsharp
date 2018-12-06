@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ConversionProfileAssetParamsFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._ConversionProfileIdFilter = ObjectFactory.Create<ConversionProfileFilter>(data.TryGetValueSafe<IDictionary<string,object>>("conversionProfileIdFilter"));
+			    this._AssetParamsIdFilter = ObjectFactory.Create<AssetParamsFilter>(data.TryGetValueSafe<IDictionary<string,object>>("assetParamsIdFilter"));
+			    this._OrderBy = (ConversionProfileAssetParamsOrderBy)StringEnum.Parse(typeof(ConversionProfileAssetParamsOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

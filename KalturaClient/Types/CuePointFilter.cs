@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CuePointFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._FreeText = data.TryGetValueSafe<string>("freeText");
+			    this._UserIdEqualCurrent = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("userIdEqualCurrent"));
+			    this._UserIdCurrent = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("userIdCurrent"));
+			    this._OrderBy = (CuePointOrderBy)StringEnum.Parse(typeof(CuePointOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

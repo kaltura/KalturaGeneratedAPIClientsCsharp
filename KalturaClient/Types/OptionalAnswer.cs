@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public OptionalAnswer(IDictionary<string,object> data) : base(data)
+		{
+			    this._Key = data.TryGetValueSafe<string>("key");
+			    this._Text = data.TryGetValueSafe<string>("text");
+			    this._Weight = data.TryGetValueSafe<float>("weight");
+			    this._IsCorrect = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isCorrect"));
+		}
 		#endregion
 
 		#region Methods

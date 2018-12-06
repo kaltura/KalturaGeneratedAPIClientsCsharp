@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public KontikiStorageDeleteJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._ContentMoid = data.TryGetValueSafe<string>("contentMoid");
+			    this._ServiceToken = data.TryGetValueSafe<string>("serviceToken");
+		}
 		#endregion
 
 		#region Methods

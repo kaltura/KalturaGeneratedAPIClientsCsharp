@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DeliveryProfileLiveAppleHttpFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (DeliveryProfileLiveAppleHttpOrderBy)StringEnum.Parse(typeof(DeliveryProfileLiveAppleHttpOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

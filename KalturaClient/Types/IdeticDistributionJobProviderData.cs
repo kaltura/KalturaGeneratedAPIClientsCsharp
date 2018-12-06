@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public IdeticDistributionJobProviderData(IDictionary<string,object> data) : base(data)
+		{
+			    this._ThumbnailUrl = data.TryGetValueSafe<string>("thumbnailUrl");
+			    this._FlavorAssetUrl = data.TryGetValueSafe<string>("flavorAssetUrl");
+		}
 		#endregion
 
 		#region Methods

@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<GenericDistributionProvider>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<GenericDistributionProvider>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class GenericDistributionProviderDeleteRequestBuilder : RequestBuilder<object>
@@ -116,6 +120,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -161,6 +169,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<GenericDistributionProvider>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<GenericDistributionProvider>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -214,6 +226,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<GenericDistributionProvider>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<GenericDistributionProvider>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class GenericDistributionProviderUpdateRequestBuilder : RequestBuilder<GenericDistributionProvider>
@@ -265,6 +281,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<GenericDistributionProvider>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<GenericDistributionProvider>((IDictionary<string,object>)result);
 		}
 	}
 

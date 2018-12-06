@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FeedDropFolderFile(IDictionary<string,object> data) : base(data)
+		{
+			    this._Hash = data.TryGetValueSafe<string>("hash");
+			    this._FeedXmlPath = data.TryGetValueSafe<string>("feedXmlPath");
+		}
 		#endregion
 
 		#region Methods

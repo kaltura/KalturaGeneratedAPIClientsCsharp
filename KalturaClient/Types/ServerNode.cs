@@ -228,6 +228,25 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ServerNode(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._HeartbeatTime = data.TryGetValueSafe<int>("heartbeatTime");
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._SystemName = data.TryGetValueSafe<string>("systemName");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._HostName = data.TryGetValueSafe<string>("hostName");
+			    this._Status = (ServerNodeStatus)ParseEnum(typeof(ServerNodeStatus), data.TryGetValueSafe<int>("status"));
+			    this._Type = (ServerNodeType)StringEnum.Parse(typeof(ServerNodeType), data.TryGetValueSafe<string>("type"));
+			    this._Tags = data.TryGetValueSafe<string>("tags");
+			    this._Dc = data.TryGetValueSafe<int>("dc");
+			    this._ParentId = data.TryGetValueSafe<string>("parentId");
+			    this._Environment = data.TryGetValueSafe<string>("environment");
+		}
 		#endregion
 
 		#region Methods

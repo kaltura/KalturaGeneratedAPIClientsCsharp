@@ -85,6 +85,10 @@ namespace Kaltura.Services
 		{
 			return null;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return null;
+		}
 	}
 
 	public class CategoryEntryAddRequestBuilder : RequestBuilder<CategoryEntry>
@@ -127,6 +131,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<CategoryEntry>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<CategoryEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -180,6 +188,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<BulkUpload>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<BulkUpload>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class CategoryEntryDeleteRequestBuilder : RequestBuilder<object>
@@ -229,6 +241,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -293,6 +309,10 @@ namespace Kaltura.Services
 		{
 			return int.Parse(result.InnerText);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (int)(result);
+		}
 	}
 
 	public class CategoryEntryListRequestBuilder : RequestBuilder<ListResponse<CategoryEntry>>
@@ -344,6 +364,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<CategoryEntry>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<CategoryEntry>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -397,6 +421,10 @@ namespace Kaltura.Services
 		{
 			return null;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return null;
+		}
 	}
 
 	public class CategoryEntrySyncPrivacyContextRequestBuilder : RequestBuilder<object>
@@ -446,6 +474,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -508,6 +540,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<BulkUpload>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<BulkUpload>((IDictionary<string,object>)result);
 		}
 	}
 

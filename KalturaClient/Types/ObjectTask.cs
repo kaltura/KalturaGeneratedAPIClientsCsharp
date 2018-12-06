@@ -81,6 +81,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ObjectTask(IDictionary<string,object> data) : base(data)
+		{
+			    this._Type = (ObjectTaskType)StringEnum.Parse(typeof(ObjectTaskType), data.TryGetValueSafe<string>("type"));
+			    this._StopProcessingOnError = data.TryGetValueSafe<bool>("stopProcessingOnError");
+		}
 		#endregion
 
 		#region Methods

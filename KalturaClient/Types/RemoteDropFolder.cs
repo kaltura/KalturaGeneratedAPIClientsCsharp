@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public RemoteDropFolder(XmlElement node) : base(node)
 		{
 		}
+
+		public RemoteDropFolder(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

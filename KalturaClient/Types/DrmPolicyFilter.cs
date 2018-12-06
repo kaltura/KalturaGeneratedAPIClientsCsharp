@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DrmPolicyFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (DrmPolicyOrderBy)StringEnum.Parse(typeof(DrmPolicyOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

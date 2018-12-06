@@ -226,6 +226,22 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FileAssetBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IdEqual = data.TryGetValueSafe<long>("idEqual");
+			    this._IdIn = data.TryGetValueSafe<string>("idIn");
+			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
+			    this._FileAssetObjectTypeEqual = (FileAssetObjectType)StringEnum.Parse(typeof(FileAssetObjectType), data.TryGetValueSafe<string>("fileAssetObjectTypeEqual"));
+			    this._ObjectIdEqual = data.TryGetValueSafe<string>("objectIdEqual");
+			    this._ObjectIdIn = data.TryGetValueSafe<string>("objectIdIn");
+			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
+			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
+			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
+			    this._StatusEqual = (FileAssetStatus)StringEnum.Parse(typeof(FileAssetStatus), data.TryGetValueSafe<string>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+		}
 		#endregion
 
 		#region Methods

@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ExternalMediaEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ExternalMediaEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ExternalMediaCountRequestBuilder : RequestBuilder<int>
@@ -119,6 +123,10 @@ namespace Kaltura.Services
 		{
 			return int.Parse(result.InnerText);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (int)(result);
+		}
 	}
 
 	public class ExternalMediaDeleteRequestBuilder : RequestBuilder<object>
@@ -159,6 +167,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -204,6 +216,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ExternalMediaEntry>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ExternalMediaEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -257,6 +273,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<ExternalMediaEntry>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<ExternalMediaEntry>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ExternalMediaUpdateRequestBuilder : RequestBuilder<ExternalMediaEntry>
@@ -308,6 +328,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ExternalMediaEntry>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ExternalMediaEntry>((IDictionary<string,object>)result);
 		}
 	}
 

@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public UiConfAdminBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public UiConfAdminBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

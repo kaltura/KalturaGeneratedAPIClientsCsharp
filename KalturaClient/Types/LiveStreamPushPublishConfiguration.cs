@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveStreamPushPublishConfiguration(IDictionary<string,object> data) : base(data)
+		{
+			    this._PublishUrl = data.TryGetValueSafe<string>("publishUrl");
+			    this._BackupPublishUrl = data.TryGetValueSafe<string>("backupPublishUrl");
+			    this._Port = data.TryGetValueSafe<string>("port");
+		}
 		#endregion
 
 		#region Methods

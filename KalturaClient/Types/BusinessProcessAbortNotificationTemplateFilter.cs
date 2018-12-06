@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BusinessProcessAbortNotificationTemplateFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (BusinessProcessAbortNotificationTemplateOrderBy)StringEnum.Parse(typeof(BusinessProcessAbortNotificationTemplateOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

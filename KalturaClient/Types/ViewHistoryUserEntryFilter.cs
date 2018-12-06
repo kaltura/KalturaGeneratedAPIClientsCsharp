@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public ViewHistoryUserEntryFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public ViewHistoryUserEntryFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public Like(IDictionary<string,object> data) : base(data)
+		{
+			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+			    this._UserId = data.TryGetValueSafe<string>("userId");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+		}
 		#endregion
 
 		#region Methods

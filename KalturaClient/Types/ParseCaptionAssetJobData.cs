@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ParseCaptionAssetJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._CaptionAssetId = data.TryGetValueSafe<string>("captionAssetId");
+		}
 		#endregion
 
 		#region Methods

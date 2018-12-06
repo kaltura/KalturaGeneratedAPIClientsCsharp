@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public MetroPcsDistributionProvider(XmlElement node) : base(node)
 		{
 		}
+
+		public MetroPcsDistributionProvider(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

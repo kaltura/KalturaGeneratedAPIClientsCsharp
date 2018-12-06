@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PlayReadyLicenseDetails(IDictionary<string,object> data) : base(data)
+		{
+			    this._Policy = ObjectFactory.Create<PlayReadyPolicy>(data.TryGetValueSafe<IDictionary<string,object>>("policy"));
+			    this._BeginDate = data.TryGetValueSafe<int>("beginDate");
+			    this._ExpirationDate = data.TryGetValueSafe<int>("expirationDate");
+			    this._RemovalDate = data.TryGetValueSafe<int>("removalDate");
+		}
 		#endregion
 
 		#region Methods

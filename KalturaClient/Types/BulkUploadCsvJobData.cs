@@ -85,6 +85,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BulkUploadCsvJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._CsvVersion = (BulkUploadCsvVersion)ParseEnum(typeof(BulkUploadCsvVersion), data.TryGetValueSafe<int>("csvVersion"));
+			    this._Columns = new List<String>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("columns", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Columns.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

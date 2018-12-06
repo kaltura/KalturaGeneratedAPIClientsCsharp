@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveStreamAdminEntryMatchAttributeCondition(IDictionary<string,object> data) : base(data)
+		{
+			    this._Attribute = (LiveStreamAdminEntryMatchAttribute)StringEnum.Parse(typeof(LiveStreamAdminEntryMatchAttribute), data.TryGetValueSafe<string>("attribute"));
+		}
 		#endregion
 
 		#region Methods

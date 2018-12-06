@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BulkUploadResultScheduleEvent(IDictionary<string,object> data) : base(data)
+		{
+			    this._ReferenceId = data.TryGetValueSafe<string>("referenceId");
+		}
 		#endregion
 
 		#region Methods

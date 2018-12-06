@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EntryScheduleEventFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._ParentCategoryIdsLike = data.TryGetValueSafe<string>("parentCategoryIdsLike");
+			    this._ParentCategoryIdsMultiLikeOr = data.TryGetValueSafe<string>("parentCategoryIdsMultiLikeOr");
+			    this._ParentCategoryIdsMultiLikeAnd = data.TryGetValueSafe<string>("parentCategoryIdsMultiLikeAnd");
+			    this._OrderBy = (EntryScheduleEventOrderBy)StringEnum.Parse(typeof(EntryScheduleEventOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

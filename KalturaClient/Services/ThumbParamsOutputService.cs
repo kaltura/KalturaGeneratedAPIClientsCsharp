@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ThumbParamsOutput>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ThumbParamsOutput>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ThumbParamsOutputListRequestBuilder : RequestBuilder<ListResponse<ThumbParamsOutput>>
@@ -127,6 +131,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<ThumbParamsOutput>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<ThumbParamsOutput>>((IDictionary<string,object>)result);
 		}
 	}
 

@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveEntryServerNodeRecordingInfo(IDictionary<string,object> data) : base(data)
+		{
+			    this._RecordedEntryId = data.TryGetValueSafe<string>("recordedEntryId");
+			    this._Duration = data.TryGetValueSafe<int>("duration");
+			    this._RecordingStatus = (EntryServerNodeRecordingStatus)ParseEnum(typeof(EntryServerNodeRecordingStatus), data.TryGetValueSafe<int>("recordingStatus"));
+		}
 		#endregion
 
 		#region Methods

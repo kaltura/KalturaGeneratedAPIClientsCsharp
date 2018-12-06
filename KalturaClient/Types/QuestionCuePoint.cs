@@ -160,6 +160,22 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public QuestionCuePoint(IDictionary<string,object> data) : base(data)
+		{
+			    this._OptionalAnswers = new List<OptionalAnswer>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("optionalAnswers", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._OptionalAnswers.Add(ObjectFactory.Create<OptionalAnswer>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._Hint = data.TryGetValueSafe<string>("hint");
+			    this._Question = data.TryGetValueSafe<string>("question");
+			    this._Explanation = data.TryGetValueSafe<string>("explanation");
+			    this._QuestionType = (QuestionType)ParseEnum(typeof(QuestionType), data.TryGetValueSafe<int>("questionType"));
+			    this._PresentationOrder = data.TryGetValueSafe<int>("presentationOrder");
+			    this._ExcludeFromScore = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("excludeFromScore"));
+		}
 		#endregion
 
 		#region Methods

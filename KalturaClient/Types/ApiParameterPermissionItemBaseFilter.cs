@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public ApiParameterPermissionItemBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public ApiParameterPermissionItemBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

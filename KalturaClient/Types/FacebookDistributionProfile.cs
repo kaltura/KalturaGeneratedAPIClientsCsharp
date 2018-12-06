@@ -156,6 +156,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FacebookDistributionProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._ApiAuthorizeUrl = data.TryGetValueSafe<string>("apiAuthorizeUrl");
+			    this._PageId = data.TryGetValueSafe<string>("pageId");
+			    this._PageAccessToken = data.TryGetValueSafe<string>("pageAccessToken");
+			    this._UserAccessToken = data.TryGetValueSafe<string>("userAccessToken");
+			    this._State = data.TryGetValueSafe<string>("state");
+			    this._Permissions = data.TryGetValueSafe<string>("permissions");
+			    this._ReRequestPermissions = data.TryGetValueSafe<int>("reRequestPermissions");
+		}
 		#endregion
 
 		#region Methods

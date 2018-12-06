@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DeliveryProfileAkamaiHttp(IDictionary<string,object> data) : base(data)
+		{
+			    this._UseIntelliseek = data.TryGetValueSafe<bool>("useIntelliseek");
+		}
 		#endregion
 
 		#region Methods

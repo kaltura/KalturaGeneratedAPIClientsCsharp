@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public BulkUploadUserData(XmlElement node) : base(node)
 		{
 		}
+
+		public BulkUploadUserData(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

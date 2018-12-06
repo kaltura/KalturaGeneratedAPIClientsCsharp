@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ExecuteMetadataXsltObjectTask(IDictionary<string,object> data) : base(data)
+		{
+			    this._MetadataProfileId = data.TryGetValueSafe<int>("metadataProfileId");
+			    this._MetadataObjectType = (MetadataObjectType)StringEnum.Parse(typeof(MetadataObjectType), data.TryGetValueSafe<string>("metadataObjectType"));
+			    this._Xslt = data.TryGetValueSafe<string>("xslt");
+		}
 		#endregion
 
 		#region Methods

@@ -282,6 +282,26 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ScheduleEventRecurrence(IDictionary<string,object> data) : base(data)
+		{
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._Frequency = (ScheduleEventRecurrenceFrequency)StringEnum.Parse(typeof(ScheduleEventRecurrenceFrequency), data.TryGetValueSafe<string>("frequency"));
+			    this._Until = data.TryGetValueSafe<int>("until");
+			    this._TimeZone = data.TryGetValueSafe<string>("timeZone");
+			    this._Count = data.TryGetValueSafe<int>("count");
+			    this._Interval = data.TryGetValueSafe<int>("interval");
+			    this._BySecond = data.TryGetValueSafe<string>("bySecond");
+			    this._ByMinute = data.TryGetValueSafe<string>("byMinute");
+			    this._ByHour = data.TryGetValueSafe<string>("byHour");
+			    this._ByDay = data.TryGetValueSafe<string>("byDay");
+			    this._ByMonthDay = data.TryGetValueSafe<string>("byMonthDay");
+			    this._ByYearDay = data.TryGetValueSafe<string>("byYearDay");
+			    this._ByWeekNumber = data.TryGetValueSafe<string>("byWeekNumber");
+			    this._ByMonth = data.TryGetValueSafe<string>("byMonth");
+			    this._ByOffset = data.TryGetValueSafe<string>("byOffset");
+			    this._WeekStartDay = (ScheduleEventRecurrenceDay)StringEnum.Parse(typeof(ScheduleEventRecurrenceDay), data.TryGetValueSafe<string>("weekStartDay"));
+		}
 		#endregion
 
 		#region Methods

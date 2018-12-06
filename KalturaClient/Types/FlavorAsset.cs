@@ -195,6 +195,23 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FlavorAsset(IDictionary<string,object> data) : base(data)
+		{
+			    this._FlavorParamsId = data.TryGetValueSafe<int>("flavorParamsId");
+			    this._Width = data.TryGetValueSafe<int>("width");
+			    this._Height = data.TryGetValueSafe<int>("height");
+			    this._Bitrate = data.TryGetValueSafe<int>("bitrate");
+			    this._FrameRate = data.TryGetValueSafe<float>("frameRate");
+			    this._IsOriginal = data.TryGetValueSafe<bool>("isOriginal");
+			    this._IsWeb = data.TryGetValueSafe<bool>("isWeb");
+			    this._ContainerFormat = data.TryGetValueSafe<string>("containerFormat");
+			    this._VideoCodecId = data.TryGetValueSafe<string>("videoCodecId");
+			    this._Status = (FlavorAssetStatus)ParseEnum(typeof(FlavorAssetStatus), data.TryGetValueSafe<int>("status"));
+			    this._Language = (Language)StringEnum.Parse(typeof(Language), data.TryGetValueSafe<string>("language"));
+			    this._Label = data.TryGetValueSafe<string>("label");
+			    this._IsDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isDefault"));
+		}
 		#endregion
 
 		#region Methods

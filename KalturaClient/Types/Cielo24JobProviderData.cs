@@ -197,6 +197,21 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public Cielo24JobProviderData(IDictionary<string,object> data) : base(data)
+		{
+			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+			    this._FlavorAssetId = data.TryGetValueSafe<string>("flavorAssetId");
+			    this._CaptionAssetFormats = data.TryGetValueSafe<string>("captionAssetFormats");
+			    this._Priority = (Cielo24Priority)StringEnum.Parse(typeof(Cielo24Priority), data.TryGetValueSafe<string>("priority"));
+			    this._Fidelity = (Cielo24Fidelity)StringEnum.Parse(typeof(Cielo24Fidelity), data.TryGetValueSafe<string>("fidelity"));
+			    this._Username = data.TryGetValueSafe<string>("username");
+			    this._Password = data.TryGetValueSafe<string>("password");
+			    this._BaseUrl = data.TryGetValueSafe<string>("baseUrl");
+			    this._SpokenLanguage = (Language)StringEnum.Parse(typeof(Language), data.TryGetValueSafe<string>("spokenLanguage"));
+			    this._ReplaceMediaContent = data.TryGetValueSafe<bool>("replaceMediaContent");
+			    this._AdditionalParameters = data.TryGetValueSafe<string>("additionalParameters");
+		}
 		#endregion
 
 		#region Methods

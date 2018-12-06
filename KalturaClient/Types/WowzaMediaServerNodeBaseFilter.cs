@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public WowzaMediaServerNodeBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public WowzaMediaServerNodeBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

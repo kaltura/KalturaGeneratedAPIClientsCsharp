@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DistributionValidationErrorMissingAsset(IDictionary<string,object> data) : base(data)
+		{
+			    this._Data = data.TryGetValueSafe<string>("data");
+		}
 		#endregion
 
 		#region Methods

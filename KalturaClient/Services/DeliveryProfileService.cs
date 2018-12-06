@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<DeliveryProfile>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DeliveryProfile>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DeliveryProfileCloneRequestBuilder : RequestBuilder<DeliveryProfile>
@@ -119,6 +123,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<DeliveryProfile>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DeliveryProfile>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DeliveryProfileGetRequestBuilder : RequestBuilder<DeliveryProfile>
@@ -161,6 +169,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<DeliveryProfile>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DeliveryProfile>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -214,6 +226,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<DeliveryProfile>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<DeliveryProfile>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DeliveryProfileUpdateRequestBuilder : RequestBuilder<DeliveryProfile>
@@ -265,6 +281,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<DeliveryProfile>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DeliveryProfile>((IDictionary<string,object>)result);
 		}
 	}
 

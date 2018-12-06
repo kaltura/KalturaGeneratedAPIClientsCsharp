@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public SwfFlavorParams(IDictionary<string,object> data) : base(data)
+		{
+			    this._FlashVersion = data.TryGetValueSafe<int>("flashVersion");
+			    this._Poly2Bitmap = data.TryGetValueSafe<bool>("poly2Bitmap");
+		}
 		#endregion
 
 		#region Methods

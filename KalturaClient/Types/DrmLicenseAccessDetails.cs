@@ -118,6 +118,19 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DrmLicenseAccessDetails(IDictionary<string,object> data) : base(data)
+		{
+			    this._Policy = data.TryGetValueSafe<string>("policy");
+			    this._Duration = data.TryGetValueSafe<int>("duration");
+			    this._Absolute_duration = data.TryGetValueSafe<int>("absolute_duration");
+			    this._LicenseParams = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("licenseParams", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._LicenseParams.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

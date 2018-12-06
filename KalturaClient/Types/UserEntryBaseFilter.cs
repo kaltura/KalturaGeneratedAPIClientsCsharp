@@ -310,6 +310,28 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UserEntryBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
+			    this._IdIn = data.TryGetValueSafe<string>("idIn");
+			    this._IdNotIn = data.TryGetValueSafe<string>("idNotIn");
+			    this._EntryIdEqual = data.TryGetValueSafe<string>("entryIdEqual");
+			    this._EntryIdIn = data.TryGetValueSafe<string>("entryIdIn");
+			    this._EntryIdNotIn = data.TryGetValueSafe<string>("entryIdNotIn");
+			    this._UserIdEqual = data.TryGetValueSafe<string>("userIdEqual");
+			    this._UserIdIn = data.TryGetValueSafe<string>("userIdIn");
+			    this._UserIdNotIn = data.TryGetValueSafe<string>("userIdNotIn");
+			    this._StatusEqual = (UserEntryStatus)StringEnum.Parse(typeof(UserEntryStatus), data.TryGetValueSafe<string>("statusEqual"));
+			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
+			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
+			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
+			    this._TypeEqual = (UserEntryType)StringEnum.Parse(typeof(UserEntryType), data.TryGetValueSafe<string>("typeEqual"));
+			    this._ExtendedStatusEqual = (UserEntryExtendedStatus)StringEnum.Parse(typeof(UserEntryExtendedStatus), data.TryGetValueSafe<string>("extendedStatusEqual"));
+			    this._ExtendedStatusIn = data.TryGetValueSafe<string>("extendedStatusIn");
+			    this._ExtendedStatusNotIn = data.TryGetValueSafe<string>("extendedStatusNotIn");
+		}
 		#endregion
 
 		#region Methods

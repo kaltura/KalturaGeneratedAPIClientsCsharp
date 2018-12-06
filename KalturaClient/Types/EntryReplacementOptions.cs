@@ -90,6 +90,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EntryReplacementOptions(IDictionary<string,object> data) : base(data)
+		{
+			    this._KeepManualThumbnails = data.TryGetValueSafe<int>("keepManualThumbnails");
+			    this._PluginOptionItems = new List<PluginReplacementOptionsItem>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("pluginOptionItems", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._PluginOptionItems.Add(ObjectFactory.Create<PluginReplacementOptionsItem>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

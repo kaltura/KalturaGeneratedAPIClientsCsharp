@@ -209,6 +209,24 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public Asset(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<string>("id");
+			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._Version = data.TryGetValueSafe<int>("version");
+			    this._Size = data.TryGetValueSafe<int>("size");
+			    this._Tags = data.TryGetValueSafe<string>("tags");
+			    this._FileExt = data.TryGetValueSafe<string>("fileExt");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._DeletedAt = data.TryGetValueSafe<int>("deletedAt");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._PartnerData = data.TryGetValueSafe<string>("partnerData");
+			    this._PartnerDescription = data.TryGetValueSafe<string>("partnerDescription");
+			    this._ActualSourceAssetParamsIds = data.TryGetValueSafe<string>("actualSourceAssetParamsIds");
+		}
 		#endregion
 
 		#region Methods

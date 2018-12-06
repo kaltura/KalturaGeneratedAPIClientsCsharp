@@ -212,6 +212,21 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ControlPanelCommandBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
+			    this._IdIn = data.TryGetValueSafe<string>("idIn");
+			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
+			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			    this._CreatedByIdEqual = data.TryGetValueSafe<int>("createdByIdEqual");
+			    this._TypeEqual = (ControlPanelCommandType)ParseEnum(typeof(ControlPanelCommandType), data.TryGetValueSafe<int>("typeEqual"));
+			    this._TypeIn = data.TryGetValueSafe<string>("typeIn");
+			    this._TargetTypeEqual = (ControlPanelCommandTargetType)ParseEnum(typeof(ControlPanelCommandTargetType), data.TryGetValueSafe<int>("targetTypeEqual"));
+			    this._TargetTypeIn = data.TryGetValueSafe<string>("targetTypeIn");
+			    this._StatusEqual = (ControlPanelCommandStatus)ParseEnum(typeof(ControlPanelCommandStatus), data.TryGetValueSafe<int>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+		}
 		#endregion
 
 		#region Methods

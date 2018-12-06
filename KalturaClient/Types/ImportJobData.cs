@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ImportJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._SrcFileUrl = data.TryGetValueSafe<string>("srcFileUrl");
+			    this._DestFileLocalPath = data.TryGetValueSafe<string>("destFileLocalPath");
+			    this._FlavorAssetId = data.TryGetValueSafe<string>("flavorAssetId");
+			    this._FileSize = data.TryGetValueSafe<int>("fileSize");
+		}
 		#endregion
 
 		#region Methods

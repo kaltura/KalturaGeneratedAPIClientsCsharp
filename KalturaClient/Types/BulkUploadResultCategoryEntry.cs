@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BulkUploadResultCategoryEntry(IDictionary<string,object> data) : base(data)
+		{
+			    this._CategoryId = data.TryGetValueSafe<int>("categoryId");
+			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+		}
 		#endregion
 
 		#region Methods

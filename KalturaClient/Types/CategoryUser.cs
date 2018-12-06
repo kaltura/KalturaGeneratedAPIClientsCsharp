@@ -173,6 +173,20 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CategoryUser(IDictionary<string,object> data) : base(data)
+		{
+			    this._CategoryId = data.TryGetValueSafe<int>("categoryId");
+			    this._UserId = data.TryGetValueSafe<string>("userId");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._PermissionLevel = (CategoryUserPermissionLevel)ParseEnum(typeof(CategoryUserPermissionLevel), data.TryGetValueSafe<int>("permissionLevel"));
+			    this._Status = (CategoryUserStatus)ParseEnum(typeof(CategoryUserStatus), data.TryGetValueSafe<int>("status"));
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._UpdateMethod = (UpdateMethodType)ParseEnum(typeof(UpdateMethodType), data.TryGetValueSafe<int>("updateMethod"));
+			    this._CategoryFullIds = data.TryGetValueSafe<string>("categoryFullIds");
+			    this._PermissionNames = data.TryGetValueSafe<string>("permissionNames");
+		}
 		#endregion
 
 		#region Methods

@@ -450,6 +450,38 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CuePointBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IdEqual = data.TryGetValueSafe<string>("idEqual");
+			    this._IdIn = data.TryGetValueSafe<string>("idIn");
+			    this._CuePointTypeEqual = (CuePointType)StringEnum.Parse(typeof(CuePointType), data.TryGetValueSafe<string>("cuePointTypeEqual"));
+			    this._CuePointTypeIn = data.TryGetValueSafe<string>("cuePointTypeIn");
+			    this._StatusEqual = (CuePointStatus)ParseEnum(typeof(CuePointStatus), data.TryGetValueSafe<int>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			    this._EntryIdEqual = data.TryGetValueSafe<string>("entryIdEqual");
+			    this._EntryIdIn = data.TryGetValueSafe<string>("entryIdIn");
+			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
+			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
+			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
+			    this._TriggeredAtGreaterThanOrEqual = data.TryGetValueSafe<int>("triggeredAtGreaterThanOrEqual");
+			    this._TriggeredAtLessThanOrEqual = data.TryGetValueSafe<int>("triggeredAtLessThanOrEqual");
+			    this._TagsLike = data.TryGetValueSafe<string>("tagsLike");
+			    this._TagsMultiLikeOr = data.TryGetValueSafe<string>("tagsMultiLikeOr");
+			    this._TagsMultiLikeAnd = data.TryGetValueSafe<string>("tagsMultiLikeAnd");
+			    this._StartTimeGreaterThanOrEqual = data.TryGetValueSafe<int>("startTimeGreaterThanOrEqual");
+			    this._StartTimeLessThanOrEqual = data.TryGetValueSafe<int>("startTimeLessThanOrEqual");
+			    this._UserIdEqual = data.TryGetValueSafe<string>("userIdEqual");
+			    this._UserIdIn = data.TryGetValueSafe<string>("userIdIn");
+			    this._PartnerSortValueEqual = data.TryGetValueSafe<int>("partnerSortValueEqual");
+			    this._PartnerSortValueIn = data.TryGetValueSafe<string>("partnerSortValueIn");
+			    this._PartnerSortValueGreaterThanOrEqual = data.TryGetValueSafe<int>("partnerSortValueGreaterThanOrEqual");
+			    this._PartnerSortValueLessThanOrEqual = data.TryGetValueSafe<int>("partnerSortValueLessThanOrEqual");
+			    this._ForceStopEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("forceStopEqual"));
+			    this._SystemNameEqual = data.TryGetValueSafe<string>("systemNameEqual");
+			    this._SystemNameIn = data.TryGetValueSafe<string>("systemNameIn");
+		}
 		#endregion
 
 		#region Methods

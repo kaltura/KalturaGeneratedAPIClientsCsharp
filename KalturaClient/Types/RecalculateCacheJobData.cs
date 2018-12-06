@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public RecalculateCacheJobData(XmlElement node) : base(node)
 		{
 		}
+
+		public RecalculateCacheJobData(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

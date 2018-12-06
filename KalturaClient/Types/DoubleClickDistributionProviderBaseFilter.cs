@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public DoubleClickDistributionProviderBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public DoubleClickDistributionProviderBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

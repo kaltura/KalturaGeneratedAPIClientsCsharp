@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public FreewheelGenericDistributionProfileBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public FreewheelGenericDistributionProfileBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

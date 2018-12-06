@@ -85,6 +85,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<Quiz>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<Quiz>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class QuizGetRequestBuilder : RequestBuilder<Quiz>
@@ -127,6 +131,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<Quiz>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<Quiz>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -180,6 +188,10 @@ namespace Kaltura.Services
 		{
 			return result.InnerText;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
+		}
 	}
 
 	public class QuizListRequestBuilder : RequestBuilder<ListResponse<Quiz>>
@@ -232,6 +244,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<Quiz>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<Quiz>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class QuizUpdateRequestBuilder : RequestBuilder<Quiz>
@@ -283,6 +299,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<Quiz>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<Quiz>((IDictionary<string,object>)result);
 		}
 	}
 

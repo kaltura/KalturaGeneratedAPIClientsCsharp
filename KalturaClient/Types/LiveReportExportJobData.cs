@@ -128,6 +128,15 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveReportExportJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._TimeReference = data.TryGetValueSafe<int>("timeReference");
+			    this._TimeZoneOffset = data.TryGetValueSafe<int>("timeZoneOffset");
+			    this._EntryIds = data.TryGetValueSafe<string>("entryIds");
+			    this._OutputPath = data.TryGetValueSafe<string>("outputPath");
+			    this._RecipientEmail = data.TryGetValueSafe<string>("recipientEmail");
+		}
 		#endregion
 
 		#region Methods

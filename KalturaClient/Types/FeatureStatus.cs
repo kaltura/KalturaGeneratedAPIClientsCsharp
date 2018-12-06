@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FeatureStatus(IDictionary<string,object> data) : base(data)
+		{
+			    this._Type = (FeatureStatusType)ParseEnum(typeof(FeatureStatusType), data.TryGetValueSafe<int>("type"));
+			    this._Value = data.TryGetValueSafe<int>("value");
+		}
 		#endregion
 
 		#region Methods

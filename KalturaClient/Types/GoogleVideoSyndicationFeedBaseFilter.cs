@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public GoogleVideoSyndicationFeedBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public GoogleVideoSyndicationFeedBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

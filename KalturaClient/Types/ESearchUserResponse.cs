@@ -71,6 +71,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ESearchUserResponse(IDictionary<string,object> data) : base(data)
+		{
+			    this._Objects = new List<ESearchUserResult>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("objects", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Objects.Add(ObjectFactory.Create<ESearchUserResult>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

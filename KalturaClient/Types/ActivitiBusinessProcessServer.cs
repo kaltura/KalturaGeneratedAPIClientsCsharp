@@ -128,6 +128,15 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ActivitiBusinessProcessServer(IDictionary<string,object> data) : base(data)
+		{
+			    this._Host = data.TryGetValueSafe<string>("host");
+			    this._Port = data.TryGetValueSafe<int>("port");
+			    this._Protocol = (ActivitiBusinessProcessServerProtocol)StringEnum.Parse(typeof(ActivitiBusinessProcessServerProtocol), data.TryGetValueSafe<string>("protocol"));
+			    this._Username = data.TryGetValueSafe<string>("username");
+			    this._Password = data.TryGetValueSafe<string>("password");
+		}
 		#endregion
 
 		#region Methods

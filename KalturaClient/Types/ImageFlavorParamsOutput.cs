@@ -128,6 +128,15 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ImageFlavorParamsOutput(IDictionary<string,object> data) : base(data)
+		{
+			    this._DensityWidth = data.TryGetValueSafe<int>("densityWidth");
+			    this._DensityHeight = data.TryGetValueSafe<int>("densityHeight");
+			    this._SizeWidth = data.TryGetValueSafe<int>("sizeWidth");
+			    this._SizeHeight = data.TryGetValueSafe<int>("sizeHeight");
+			    this._Depth = data.TryGetValueSafe<int>("depth");
+		}
 		#endregion
 
 		#region Methods

@@ -226,6 +226,22 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CodeCuePointBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._CodeLike = data.TryGetValueSafe<string>("codeLike");
+			    this._CodeMultiLikeOr = data.TryGetValueSafe<string>("codeMultiLikeOr");
+			    this._CodeMultiLikeAnd = data.TryGetValueSafe<string>("codeMultiLikeAnd");
+			    this._CodeEqual = data.TryGetValueSafe<string>("codeEqual");
+			    this._CodeIn = data.TryGetValueSafe<string>("codeIn");
+			    this._DescriptionLike = data.TryGetValueSafe<string>("descriptionLike");
+			    this._DescriptionMultiLikeOr = data.TryGetValueSafe<string>("descriptionMultiLikeOr");
+			    this._DescriptionMultiLikeAnd = data.TryGetValueSafe<string>("descriptionMultiLikeAnd");
+			    this._EndTimeGreaterThanOrEqual = data.TryGetValueSafe<int>("endTimeGreaterThanOrEqual");
+			    this._EndTimeLessThanOrEqual = data.TryGetValueSafe<int>("endTimeLessThanOrEqual");
+			    this._DurationGreaterThanOrEqual = data.TryGetValueSafe<int>("durationGreaterThanOrEqual");
+			    this._DurationLessThanOrEqual = data.TryGetValueSafe<int>("durationLessThanOrEqual");
+		}
 		#endregion
 
 		#region Methods

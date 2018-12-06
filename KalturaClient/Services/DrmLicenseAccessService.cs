@@ -94,6 +94,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<DrmLicenseAccessDetails>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DrmLicenseAccessDetails>((IDictionary<string,object>)result);
+		}
 	}
 
 

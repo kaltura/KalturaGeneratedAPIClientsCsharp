@@ -62,6 +62,10 @@ namespace Kaltura.Services
 		{
 			return int.Parse(result.InnerText);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (int)(result);
+		}
 	}
 
 	public class TagIndexCategoryEntryTagsRequestBuilder : RequestBuilder<object>
@@ -123,6 +127,10 @@ namespace Kaltura.Services
 		{
 			return null;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return null;
+		}
 	}
 
 	public class TagSearchRequestBuilder : RequestBuilder<ListResponse<Tag>>
@@ -174,6 +182,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<Tag>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<Tag>>((IDictionary<string,object>)result);
 		}
 	}
 

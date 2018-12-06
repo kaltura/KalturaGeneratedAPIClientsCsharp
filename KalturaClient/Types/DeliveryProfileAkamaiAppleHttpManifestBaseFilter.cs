@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public DeliveryProfileAkamaiAppleHttpManifestBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public DeliveryProfileAkamaiAppleHttpManifestBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

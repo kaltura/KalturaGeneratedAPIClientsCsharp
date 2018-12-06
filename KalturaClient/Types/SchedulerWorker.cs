@@ -261,6 +261,39 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public SchedulerWorker(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._ConfiguredId = data.TryGetValueSafe<int>("configuredId");
+			    this._SchedulerId = data.TryGetValueSafe<int>("schedulerId");
+			    this._SchedulerConfiguredId = data.TryGetValueSafe<int>("schedulerConfiguredId");
+			    this._Type = (BatchJobType)StringEnum.Parse(typeof(BatchJobType), data.TryGetValueSafe<string>("type"));
+			    this._TypeName = data.TryGetValueSafe<string>("typeName");
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._Statuses = new List<SchedulerStatus>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("statuses", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Statuses.Add(ObjectFactory.Create<SchedulerStatus>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._Configs = new List<SchedulerConfig>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("configs", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Configs.Add(ObjectFactory.Create<SchedulerConfig>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._LockedJobs = new List<BatchJob>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("lockedJobs", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._LockedJobs.Add(ObjectFactory.Create<BatchJob>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._AvgWait = data.TryGetValueSafe<int>("avgWait");
+			    this._AvgWork = data.TryGetValueSafe<int>("avgWork");
+			    this._LastStatus = data.TryGetValueSafe<int>("lastStatus");
+			    this._LastStatusStr = data.TryGetValueSafe<string>("lastStatusStr");
+		}
 		#endregion
 
 		#region Methods

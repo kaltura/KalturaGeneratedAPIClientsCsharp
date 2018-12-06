@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public DeleteLocalContentObjectTask(XmlElement node) : base(node)
 		{
 		}
+
+		public DeleteLocalContentObjectTask(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

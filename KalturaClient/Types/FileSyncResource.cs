@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FileSyncResource(IDictionary<string,object> data) : base(data)
+		{
+			    this._FileSyncObjectType = data.TryGetValueSafe<int>("fileSyncObjectType");
+			    this._ObjectSubType = data.TryGetValueSafe<int>("objectSubType");
+			    this._ObjectId = data.TryGetValueSafe<string>("objectId");
+			    this._Version = data.TryGetValueSafe<string>("version");
+		}
 		#endregion
 
 		#region Methods

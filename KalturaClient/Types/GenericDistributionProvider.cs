@@ -209,6 +209,32 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public GenericDistributionProvider(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._IsDefault = data.TryGetValueSafe<bool>("isDefault");
+			    this._Status = (GenericDistributionProviderStatus)ParseEnum(typeof(GenericDistributionProviderStatus), data.TryGetValueSafe<int>("status"));
+			    this._OptionalFlavorParamsIds = data.TryGetValueSafe<string>("optionalFlavorParamsIds");
+			    this._RequiredFlavorParamsIds = data.TryGetValueSafe<string>("requiredFlavorParamsIds");
+			    this._OptionalThumbDimensions = new List<DistributionThumbDimensions>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("optionalThumbDimensions", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._OptionalThumbDimensions.Add(ObjectFactory.Create<DistributionThumbDimensions>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._RequiredThumbDimensions = new List<DistributionThumbDimensions>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("requiredThumbDimensions", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._RequiredThumbDimensions.Add(ObjectFactory.Create<DistributionThumbDimensions>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._EditableFields = data.TryGetValueSafe<string>("editableFields");
+			    this._MandatoryFields = data.TryGetValueSafe<string>("mandatoryFields");
+		}
 		#endregion
 
 		#region Methods

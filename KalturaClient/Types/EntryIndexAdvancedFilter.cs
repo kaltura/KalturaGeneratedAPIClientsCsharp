@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public EntryIndexAdvancedFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public EntryIndexAdvancedFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

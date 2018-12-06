@@ -104,6 +104,18 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public OperationResource(IDictionary<string,object> data) : base(data)
+		{
+			    this._Resource = ObjectFactory.Create<ContentResource>(data.TryGetValueSafe<IDictionary<string,object>>("resource"));
+			    this._OperationAttributes = new List<OperationAttributes>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("operationAttributes", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._OperationAttributes.Add(ObjectFactory.Create<OperationAttributes>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._AssetParamsId = data.TryGetValueSafe<int>("assetParamsId");
+		}
 		#endregion
 
 		#region Methods

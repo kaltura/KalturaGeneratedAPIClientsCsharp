@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public UserAgentCondition(XmlElement node) : base(node)
 		{
 		}
+
+		public UserAgentCondition(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

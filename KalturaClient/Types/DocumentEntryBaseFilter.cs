@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DocumentEntryBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._DocumentTypeEqual = (DocumentType)ParseEnum(typeof(DocumentType), data.TryGetValueSafe<int>("documentTypeEqual"));
+			    this._DocumentTypeIn = data.TryGetValueSafe<string>("documentTypeIn");
+			    this._AssetParamsIdsMatchOr = data.TryGetValueSafe<string>("assetParamsIdsMatchOr");
+			    this._AssetParamsIdsMatchAnd = data.TryGetValueSafe<string>("assetParamsIdsMatchAnd");
+		}
 		#endregion
 
 		#region Methods

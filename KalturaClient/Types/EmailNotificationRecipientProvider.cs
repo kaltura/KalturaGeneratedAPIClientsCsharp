@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public EmailNotificationRecipientProvider(XmlElement node) : base(node)
 		{
 		}
+
+		public EmailNotificationRecipientProvider(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

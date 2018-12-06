@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<UiConf>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<UiConf>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class UiConfCloneRequestBuilder : RequestBuilder<UiConf>
@@ -119,6 +123,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<UiConf>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<UiConf>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class UiConfDeleteRequestBuilder : RequestBuilder<object>
@@ -159,6 +167,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -205,6 +217,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<UiConf>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<UiConf>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class UiConfGetAvailableTypesRequestBuilder : RequestBuilder<IList<UiConfTypeInfo>>
@@ -234,6 +250,15 @@ namespace Kaltura.Services
 		{
 			IList<UiConfTypeInfo> list = new List<UiConfTypeInfo>();
 			foreach(XmlElement node in result.ChildNodes)
+			{
+				list.Add(ObjectFactory.Create<UiConfTypeInfo>(node));
+			}
+			return list;
+		}
+		public override object DeserializeObject(object result)
+		{
+			var list = new List<UiConfTypeInfo>();
+			foreach(var node in (IEnumerable<IDictionary<string,object>>)result)
 			{
 				list.Add(ObjectFactory.Create<UiConfTypeInfo>(node));
 			}
@@ -291,6 +316,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<UiConf>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<UiConf>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class UiConfListTemplatesRequestBuilder : RequestBuilder<ListResponse<UiConf>>
@@ -343,6 +372,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<UiConf>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<UiConf>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class UiConfUpdateRequestBuilder : RequestBuilder<UiConf>
@@ -394,6 +427,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<UiConf>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<UiConf>((IDictionary<string,object>)result);
 		}
 	}
 

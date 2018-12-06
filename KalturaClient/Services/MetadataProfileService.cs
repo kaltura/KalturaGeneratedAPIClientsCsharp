@@ -94,6 +94,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<MetadataProfile>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MetadataProfile>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class MetadataProfileAddFromFileRequestBuilder : RequestBuilder<MetadataProfile>
@@ -153,6 +157,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<MetadataProfile>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MetadataProfile>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class MetadataProfileDeleteRequestBuilder : RequestBuilder<object>
@@ -193,6 +201,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -238,6 +250,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<MetadataProfile>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MetadataProfile>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -291,6 +307,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<MetadataProfile>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<MetadataProfile>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class MetadataProfileListFieldsRequestBuilder : RequestBuilder<ListResponse<MetadataProfileField>>
@@ -333,6 +353,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<MetadataProfileField>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<MetadataProfileField>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -385,6 +409,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<MetadataProfile>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MetadataProfile>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -456,6 +484,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<MetadataProfile>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MetadataProfile>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class MetadataProfileUpdateDefinitionFromFileRequestBuilder : RequestBuilder<MetadataProfile>
@@ -506,6 +538,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<MetadataProfile>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MetadataProfile>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -558,6 +594,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<MetadataProfile>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MetadataProfile>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class MetadataProfileUpdateViewsFromFileRequestBuilder : RequestBuilder<MetadataProfile>
@@ -608,6 +648,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<MetadataProfile>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MetadataProfile>((IDictionary<string,object>)result);
 		}
 	}
 

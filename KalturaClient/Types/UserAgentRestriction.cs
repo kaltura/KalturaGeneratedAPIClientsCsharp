@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UserAgentRestriction(IDictionary<string,object> data) : base(data)
+		{
+			    this._UserAgentRestrictionType = (UserAgentRestrictionType)ParseEnum(typeof(UserAgentRestrictionType), data.TryGetValueSafe<int>("userAgentRestrictionType"));
+			    this._UserAgentRegexList = data.TryGetValueSafe<string>("userAgentRegexList");
+		}
 		#endregion
 
 		#region Methods

@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public AuditTrailInfo(XmlElement node) : base(node)
 		{
 		}
+
+		public AuditTrailInfo(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

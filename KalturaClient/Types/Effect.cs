@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public Effect(IDictionary<string,object> data) : base(data)
+		{
+			    this._EffectType = (EffectType)ParseEnum(typeof(EffectType), data.TryGetValueSafe<int>("effectType"));
+			    this._Value = data.TryGetValueSafe<string>("value");
+		}
 		#endregion
 
 		#region Methods

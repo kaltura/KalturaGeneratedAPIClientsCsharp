@@ -128,6 +128,15 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public TagFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._ObjectTypeEqual = (TaggedObjectType)StringEnum.Parse(typeof(TaggedObjectType), data.TryGetValueSafe<string>("objectTypeEqual"));
+			    this._TagEqual = data.TryGetValueSafe<string>("tagEqual");
+			    this._TagStartsWith = data.TryGetValueSafe<string>("tagStartsWith");
+			    this._InstanceCountEqual = data.TryGetValueSafe<int>("instanceCountEqual");
+			    this._InstanceCountIn = data.TryGetValueSafe<int>("instanceCountIn");
+		}
 		#endregion
 
 		#region Methods

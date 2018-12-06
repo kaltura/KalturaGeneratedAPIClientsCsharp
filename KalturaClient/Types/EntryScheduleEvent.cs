@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EntryScheduleEvent(IDictionary<string,object> data) : base(data)
+		{
+			    this._TemplateEntryId = data.TryGetValueSafe<string>("templateEntryId");
+			    this._EntryIds = data.TryGetValueSafe<string>("entryIds");
+			    this._CategoryIds = data.TryGetValueSafe<string>("categoryIds");
+		}
 		#endregion
 
 		#region Methods

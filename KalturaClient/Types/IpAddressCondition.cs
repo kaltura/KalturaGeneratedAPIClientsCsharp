@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public IpAddressCondition(IDictionary<string,object> data) : base(data)
+		{
+			    this._AcceptInternalIps = data.TryGetValueSafe<bool>("acceptInternalIps");
+			    this._HttpHeader = data.TryGetValueSafe<string>("httpHeader");
+		}
 		#endregion
 
 		#region Methods

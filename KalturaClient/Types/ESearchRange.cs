@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ESearchRange(IDictionary<string,object> data) : base(data)
+		{
+			    this._GreaterThanOrEqual = data.TryGetValueSafe<int>("greaterThanOrEqual");
+			    this._LessThanOrEqual = data.TryGetValueSafe<int>("lessThanOrEqual");
+			    this._GreaterThan = data.TryGetValueSafe<int>("greaterThan");
+			    this._LessThan = data.TryGetValueSafe<int>("lessThan");
+		}
 		#endregion
 
 		#region Methods

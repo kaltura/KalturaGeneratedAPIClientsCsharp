@@ -90,6 +90,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FreewheelDistributionJobProviderData(IDictionary<string,object> data) : base(data)
+		{
+			    this._VideoAssetFilePaths = new List<FreewheelDistributionAssetPath>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("videoAssetFilePaths", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._VideoAssetFilePaths.Add(ObjectFactory.Create<FreewheelDistributionAssetPath>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._ThumbAssetFilePath = data.TryGetValueSafe<string>("thumbAssetFilePath");
+		}
 		#endregion
 
 		#region Methods

@@ -464,6 +464,39 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DropFolderBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
+			    this._IdIn = data.TryGetValueSafe<string>("idIn");
+			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
+			    this._PartnerIdIn = data.TryGetValueSafe<string>("partnerIdIn");
+			    this._NameLike = data.TryGetValueSafe<string>("nameLike");
+			    this._TypeEqual = (DropFolderType)StringEnum.Parse(typeof(DropFolderType), data.TryGetValueSafe<string>("typeEqual"));
+			    this._TypeIn = data.TryGetValueSafe<string>("typeIn");
+			    this._StatusEqual = (DropFolderStatus)ParseEnum(typeof(DropFolderStatus), data.TryGetValueSafe<int>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			    this._ConversionProfileIdEqual = data.TryGetValueSafe<int>("conversionProfileIdEqual");
+			    this._ConversionProfileIdIn = data.TryGetValueSafe<string>("conversionProfileIdIn");
+			    this._DcEqual = data.TryGetValueSafe<int>("dcEqual");
+			    this._DcIn = data.TryGetValueSafe<string>("dcIn");
+			    this._PathEqual = data.TryGetValueSafe<string>("pathEqual");
+			    this._PathLike = data.TryGetValueSafe<string>("pathLike");
+			    this._FileHandlerTypeEqual = (DropFolderFileHandlerType)StringEnum.Parse(typeof(DropFolderFileHandlerType), data.TryGetValueSafe<string>("fileHandlerTypeEqual"));
+			    this._FileHandlerTypeIn = data.TryGetValueSafe<string>("fileHandlerTypeIn");
+			    this._FileNamePatternsLike = data.TryGetValueSafe<string>("fileNamePatternsLike");
+			    this._FileNamePatternsMultiLikeOr = data.TryGetValueSafe<string>("fileNamePatternsMultiLikeOr");
+			    this._FileNamePatternsMultiLikeAnd = data.TryGetValueSafe<string>("fileNamePatternsMultiLikeAnd");
+			    this._TagsLike = data.TryGetValueSafe<string>("tagsLike");
+			    this._TagsMultiLikeOr = data.TryGetValueSafe<string>("tagsMultiLikeOr");
+			    this._TagsMultiLikeAnd = data.TryGetValueSafe<string>("tagsMultiLikeAnd");
+			    this._ErrorCodeEqual = (DropFolderErrorCode)StringEnum.Parse(typeof(DropFolderErrorCode), data.TryGetValueSafe<string>("errorCodeEqual"));
+			    this._ErrorCodeIn = data.TryGetValueSafe<string>("errorCodeIn");
+			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
+			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
+			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
+		}
 		#endregion
 
 		#region Methods

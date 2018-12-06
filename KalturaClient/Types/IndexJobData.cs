@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public IndexJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._Filter = ObjectFactory.Create<Filter>(data.TryGetValueSafe<IDictionary<string,object>>("filter"));
+			    this._LastIndexId = data.TryGetValueSafe<int>("lastIndexId");
+			    this._LastIndexDepth = data.TryGetValueSafe<int>("lastIndexDepth");
+			    this._ShouldUpdate = data.TryGetValueSafe<bool>("shouldUpdate");
+		}
 		#endregion
 
 		#region Methods

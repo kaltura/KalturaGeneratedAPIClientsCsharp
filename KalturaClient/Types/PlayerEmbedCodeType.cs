@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PlayerEmbedCodeType(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<string>("id");
+			    this._Label = data.TryGetValueSafe<string>("label");
+			    this._EntryOnly = data.TryGetValueSafe<bool>("entryOnly");
+			    this._MinVersion = data.TryGetValueSafe<string>("minVersion");
+		}
 		#endregion
 
 		#region Methods

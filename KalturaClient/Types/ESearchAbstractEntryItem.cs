@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ESearchAbstractEntryItem(IDictionary<string,object> data) : base(data)
+		{
+			    this._SearchTerm = data.TryGetValueSafe<string>("searchTerm");
+			    this._ItemType = (ESearchItemType)ParseEnum(typeof(ESearchItemType), data.TryGetValueSafe<int>("itemType"));
+			    this._Range = ObjectFactory.Create<ESearchRange>(data.TryGetValueSafe<IDictionary<string,object>>("range"));
+			    this._AddHighlight = data.TryGetValueSafe<bool>("addHighlight");
+		}
 		#endregion
 
 		#region Methods

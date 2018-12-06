@@ -212,6 +212,21 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CategoryEntryBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._CategoryIdEqual = data.TryGetValueSafe<int>("categoryIdEqual");
+			    this._CategoryIdIn = data.TryGetValueSafe<string>("categoryIdIn");
+			    this._EntryIdEqual = data.TryGetValueSafe<string>("entryIdEqual");
+			    this._EntryIdIn = data.TryGetValueSafe<string>("entryIdIn");
+			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
+			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			    this._CategoryFullIdsStartsWith = data.TryGetValueSafe<string>("categoryFullIdsStartsWith");
+			    this._StatusEqual = (CategoryEntryStatus)ParseEnum(typeof(CategoryEntryStatus), data.TryGetValueSafe<int>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			    this._CreatorUserIdEqual = data.TryGetValueSafe<string>("creatorUserIdEqual");
+			    this._CreatorUserIdIn = data.TryGetValueSafe<string>("creatorUserIdIn");
+		}
 		#endregion
 
 		#region Methods

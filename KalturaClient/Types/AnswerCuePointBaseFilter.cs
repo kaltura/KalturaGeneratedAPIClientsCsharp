@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AnswerCuePointBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._ParentIdEqual = data.TryGetValueSafe<string>("parentIdEqual");
+			    this._ParentIdIn = data.TryGetValueSafe<string>("parentIdIn");
+			    this._QuizUserEntryIdEqual = data.TryGetValueSafe<string>("quizUserEntryIdEqual");
+			    this._QuizUserEntryIdIn = data.TryGetValueSafe<string>("quizUserEntryIdIn");
+		}
 		#endregion
 
 		#region Methods

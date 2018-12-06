@@ -262,6 +262,26 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EmailIngestionProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._EmailAddress = data.TryGetValueSafe<string>("emailAddress");
+			    this._MailboxId = data.TryGetValueSafe<string>("mailboxId");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._ConversionProfile2Id = data.TryGetValueSafe<int>("conversionProfile2Id");
+			    this._ModerationStatus = (EntryModerationStatus)ParseEnum(typeof(EntryModerationStatus), data.TryGetValueSafe<int>("moderationStatus"));
+			    this._Status = (EmailIngestionProfileStatus)ParseEnum(typeof(EmailIngestionProfileStatus), data.TryGetValueSafe<int>("status"));
+			    this._CreatedAt = data.TryGetValueSafe<string>("createdAt");
+			    this._DefaultCategory = data.TryGetValueSafe<string>("defaultCategory");
+			    this._DefaultUserId = data.TryGetValueSafe<string>("defaultUserId");
+			    this._DefaultTags = data.TryGetValueSafe<string>("defaultTags");
+			    this._DefaultAdminTags = data.TryGetValueSafe<string>("defaultAdminTags");
+			    this._MaxAttachmentSizeKbytes = data.TryGetValueSafe<int>("maxAttachmentSizeKbytes");
+			    this._MaxAttachmentsPerMail = data.TryGetValueSafe<int>("maxAttachmentsPerMail");
+		}
 		#endregion
 
 		#region Methods

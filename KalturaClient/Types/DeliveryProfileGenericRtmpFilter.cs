@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DeliveryProfileGenericRtmpFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (DeliveryProfileGenericRtmpOrderBy)StringEnum.Parse(typeof(DeliveryProfileGenericRtmpOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

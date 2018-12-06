@@ -378,6 +378,35 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ScheduleEvent(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._ParentId = data.TryGetValueSafe<int>("parentId");
+			    this._Summary = data.TryGetValueSafe<string>("summary");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._Status = (ScheduleEventStatus)ParseEnum(typeof(ScheduleEventStatus), data.TryGetValueSafe<int>("status"));
+			    this._StartDate = data.TryGetValueSafe<int>("startDate");
+			    this._EndDate = data.TryGetValueSafe<int>("endDate");
+			    this._ReferenceId = data.TryGetValueSafe<string>("referenceId");
+			    this._ClassificationType = (ScheduleEventClassificationType)ParseEnum(typeof(ScheduleEventClassificationType), data.TryGetValueSafe<int>("classificationType"));
+			    this._GeoLatitude = data.TryGetValueSafe<float>("geoLatitude");
+			    this._GeoLongitude = data.TryGetValueSafe<float>("geoLongitude");
+			    this._Location = data.TryGetValueSafe<string>("location");
+			    this._Organizer = data.TryGetValueSafe<string>("organizer");
+			    this._OwnerId = data.TryGetValueSafe<string>("ownerId");
+			    this._Priority = data.TryGetValueSafe<int>("priority");
+			    this._Sequence = data.TryGetValueSafe<int>("sequence");
+			    this._RecurrenceType = (ScheduleEventRecurrenceType)ParseEnum(typeof(ScheduleEventRecurrenceType), data.TryGetValueSafe<int>("recurrenceType"));
+			    this._Duration = data.TryGetValueSafe<int>("duration");
+			    this._Contact = data.TryGetValueSafe<string>("contact");
+			    this._Comment = data.TryGetValueSafe<string>("comment");
+			    this._Tags = data.TryGetValueSafe<string>("tags");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._Recurrence = ObjectFactory.Create<ScheduleEventRecurrence>(data.TryGetValueSafe<IDictionary<string,object>>("recurrence"));
+		}
 		#endregion
 
 		#region Methods

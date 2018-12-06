@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ClippingTaskEntryServerNode(IDictionary<string,object> data) : base(data)
+		{
+			    this._ClipAttributes = ObjectFactory.Create<ClipAttributes>(data.TryGetValueSafe<IDictionary<string,object>>("clipAttributes"));
+			    this._ClippedEntryId = data.TryGetValueSafe<string>("clippedEntryId");
+			    this._LiveEntryId = data.TryGetValueSafe<string>("liveEntryId");
+		}
 		#endregion
 
 		#region Methods

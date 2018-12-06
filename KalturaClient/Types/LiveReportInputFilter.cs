@@ -128,6 +128,15 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveReportInputFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._EntryIds = data.TryGetValueSafe<string>("entryIds");
+			    this._FromTime = data.TryGetValueSafe<int>("fromTime");
+			    this._ToTime = data.TryGetValueSafe<int>("toTime");
+			    this._Live = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("live"));
+			    this._OrderBy = (LiveReportOrderBy)StringEnum.Parse(typeof(LiveReportOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

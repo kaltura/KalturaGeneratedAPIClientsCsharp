@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<BaseSyndicationFeed>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<BaseSyndicationFeed>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class SyndicationFeedDeleteRequestBuilder : RequestBuilder<object>
@@ -116,6 +120,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -162,6 +170,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<BaseSyndicationFeed>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<BaseSyndicationFeed>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class SyndicationFeedGetEntryCountRequestBuilder : RequestBuilder<SyndicationFeedEntryCount>
@@ -204,6 +216,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<SyndicationFeedEntryCount>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<SyndicationFeedEntryCount>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -257,6 +273,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<BaseSyndicationFeed>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<BaseSyndicationFeed>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class SyndicationFeedRequestConversionRequestBuilder : RequestBuilder<string>
@@ -299,6 +319,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return result.InnerText;
+		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
 		}
 	}
 
@@ -351,6 +375,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<BaseSyndicationFeed>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<BaseSyndicationFeed>((IDictionary<string,object>)result);
 		}
 	}
 

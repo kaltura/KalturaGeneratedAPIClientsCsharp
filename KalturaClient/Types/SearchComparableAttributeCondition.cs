@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public SearchComparableAttributeCondition(IDictionary<string,object> data) : base(data)
+		{
+			    this._Comparison = (SearchConditionComparison)StringEnum.Parse(typeof(SearchConditionComparison), data.TryGetValueSafe<string>("comparison"));
+		}
 		#endregion
 
 		#region Methods

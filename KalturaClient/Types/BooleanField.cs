@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public BooleanField(XmlElement node) : base(node)
 		{
 		}
+
+		public BooleanField(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

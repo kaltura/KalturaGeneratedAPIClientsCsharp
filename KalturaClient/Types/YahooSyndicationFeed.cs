@@ -109,6 +109,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public YahooSyndicationFeed(IDictionary<string,object> data) : base(data)
+		{
+			    this._Category = (YahooSyndicationFeedCategories)StringEnum.Parse(typeof(YahooSyndicationFeedCategories), data.TryGetValueSafe<string>("category"));
+			    this._AdultContent = (YahooSyndicationFeedAdultValues)StringEnum.Parse(typeof(YahooSyndicationFeedAdultValues), data.TryGetValueSafe<string>("adultContent"));
+			    this._FeedDescription = data.TryGetValueSafe<string>("feedDescription");
+			    this._FeedLandingPage = data.TryGetValueSafe<string>("feedLandingPage");
+		}
 		#endregion
 
 		#region Methods

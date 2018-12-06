@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DeleteFileJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._LocalFileSyncPath = data.TryGetValueSafe<string>("localFileSyncPath");
+		}
 		#endregion
 
 		#region Methods

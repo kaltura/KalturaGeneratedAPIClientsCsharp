@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<UserRole>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<UserRole>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class UserRoleCloneRequestBuilder : RequestBuilder<UserRole>
@@ -118,6 +122,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<UserRole>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<UserRole>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -162,6 +170,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<UserRole>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<UserRole>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class UserRoleGetRequestBuilder : RequestBuilder<UserRole>
@@ -204,6 +216,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<UserRole>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<UserRole>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -257,6 +273,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<UserRole>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<UserRole>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class UserRoleUpdateRequestBuilder : RequestBuilder<UserRole>
@@ -308,6 +328,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<UserRole>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<UserRole>((IDictionary<string,object>)result);
 		}
 	}
 

@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public WidevineRepositorySyncJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._SyncMode = (WidevineRepositorySyncMode)ParseEnum(typeof(WidevineRepositorySyncMode), data.TryGetValueSafe<int>("syncMode"));
+			    this._WvAssetIds = data.TryGetValueSafe<string>("wvAssetIds");
+			    this._ModifiedAttributes = data.TryGetValueSafe<string>("modifiedAttributes");
+			    this._MonitorSyncCompletion = data.TryGetValueSafe<int>("monitorSyncCompletion");
+		}
 		#endregion
 
 		#region Methods

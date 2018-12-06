@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ShortLink>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ShortLink>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ShortLinkDeleteRequestBuilder : RequestBuilder<ShortLink>
@@ -119,6 +123,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ShortLink>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ShortLink>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ShortLinkGetRequestBuilder : RequestBuilder<ShortLink>
@@ -161,6 +169,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ShortLink>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ShortLink>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -214,6 +226,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<ShortLink>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<ShortLink>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ShortLinkUpdateRequestBuilder : RequestBuilder<ShortLink>
@@ -265,6 +281,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ShortLink>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ShortLink>((IDictionary<string,object>)result);
 		}
 	}
 

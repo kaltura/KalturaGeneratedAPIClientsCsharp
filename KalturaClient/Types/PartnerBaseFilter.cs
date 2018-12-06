@@ -268,6 +268,25 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PartnerBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
+			    this._IdIn = data.TryGetValueSafe<string>("idIn");
+			    this._IdNotIn = data.TryGetValueSafe<string>("idNotIn");
+			    this._NameLike = data.TryGetValueSafe<string>("nameLike");
+			    this._NameMultiLikeOr = data.TryGetValueSafe<string>("nameMultiLikeOr");
+			    this._NameMultiLikeAnd = data.TryGetValueSafe<string>("nameMultiLikeAnd");
+			    this._NameEqual = data.TryGetValueSafe<string>("nameEqual");
+			    this._StatusEqual = (PartnerStatus)ParseEnum(typeof(PartnerStatus), data.TryGetValueSafe<int>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			    this._PartnerPackageEqual = data.TryGetValueSafe<int>("partnerPackageEqual");
+			    this._PartnerPackageGreaterThanOrEqual = data.TryGetValueSafe<int>("partnerPackageGreaterThanOrEqual");
+			    this._PartnerPackageLessThanOrEqual = data.TryGetValueSafe<int>("partnerPackageLessThanOrEqual");
+			    this._PartnerPackageIn = data.TryGetValueSafe<string>("partnerPackageIn");
+			    this._PartnerGroupTypeEqual = (PartnerGroupType)ParseEnum(typeof(PartnerGroupType), data.TryGetValueSafe<int>("partnerGroupTypeEqual"));
+			    this._PartnerNameDescriptionWebsiteAdminNameAdminEmailLike = data.TryGetValueSafe<string>("partnerNameDescriptionWebsiteAdminNameAdminEmailLike");
+		}
 		#endregion
 
 		#region Methods

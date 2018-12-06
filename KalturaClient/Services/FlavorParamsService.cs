@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<FlavorParams>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<FlavorParams>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class FlavorParamsDeleteRequestBuilder : RequestBuilder<object>
@@ -116,6 +120,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -162,6 +170,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<FlavorParams>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<FlavorParams>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class FlavorParamsGetByConversionProfileIdRequestBuilder : RequestBuilder<IList<FlavorParams>>
@@ -205,6 +217,15 @@ namespace Kaltura.Services
 		{
 			IList<FlavorParams> list = new List<FlavorParams>();
 			foreach(XmlElement node in result.ChildNodes)
+			{
+				list.Add(ObjectFactory.Create<FlavorParams>(node));
+			}
+			return list;
+		}
+		public override object DeserializeObject(object result)
+		{
+			var list = new List<FlavorParams>();
+			foreach(var node in (IEnumerable<IDictionary<string,object>>)result)
 			{
 				list.Add(ObjectFactory.Create<FlavorParams>(node));
 			}
@@ -262,6 +283,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<FlavorParams>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<FlavorParams>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class FlavorParamsUpdateRequestBuilder : RequestBuilder<FlavorParams>
@@ -313,6 +338,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<FlavorParams>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<FlavorParams>((IDictionary<string,object>)result);
 		}
 	}
 

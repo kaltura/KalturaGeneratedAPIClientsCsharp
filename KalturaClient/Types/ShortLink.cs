@@ -178,6 +178,20 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ShortLink(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<string>("id");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._ExpiresAt = data.TryGetValueSafe<int>("expiresAt");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._UserId = data.TryGetValueSafe<string>("userId");
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._SystemName = data.TryGetValueSafe<string>("systemName");
+			    this._FullUrl = data.TryGetValueSafe<string>("fullUrl");
+			    this._Status = (ShortLinkStatus)ParseEnum(typeof(ShortLinkStatus), data.TryGetValueSafe<int>("status"));
+		}
 		#endregion
 
 		#region Methods

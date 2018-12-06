@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public UrlTokenizerCht(XmlElement node) : base(node)
 		{
 		}
+
+		public UrlTokenizerCht(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

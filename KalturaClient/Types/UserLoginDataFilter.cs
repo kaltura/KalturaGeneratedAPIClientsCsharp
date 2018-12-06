@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UserLoginDataFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (UserLoginDataOrderBy)StringEnum.Parse(typeof(UserLoginDataOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

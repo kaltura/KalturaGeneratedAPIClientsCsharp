@@ -108,6 +108,23 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public QuickPlayDistributionJobProviderData(IDictionary<string,object> data) : base(data)
+		{
+			    this._Xml = data.TryGetValueSafe<string>("xml");
+			    this._VideoFilePaths = new List<String>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("videoFilePaths", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._VideoFilePaths.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._ThumbnailFilePaths = new List<String>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("thumbnailFilePaths", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._ThumbnailFilePaths.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

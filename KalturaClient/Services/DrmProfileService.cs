@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<DrmProfile>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DrmProfile>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DrmProfileDeleteRequestBuilder : RequestBuilder<DrmProfile>
@@ -118,6 +122,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<DrmProfile>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DrmProfile>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -162,6 +170,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<DrmProfile>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DrmProfile>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DrmProfileGetByProviderRequestBuilder : RequestBuilder<DrmProfile>
@@ -204,6 +216,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<DrmProfile>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DrmProfile>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -257,6 +273,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<DrmProfile>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<DrmProfile>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DrmProfileUpdateRequestBuilder : RequestBuilder<DrmProfile>
@@ -308,6 +328,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<DrmProfile>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DrmProfile>((IDictionary<string,object>)result);
 		}
 	}
 

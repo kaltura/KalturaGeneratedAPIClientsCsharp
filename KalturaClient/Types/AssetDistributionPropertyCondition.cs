@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AssetDistributionPropertyCondition(IDictionary<string,object> data) : base(data)
+		{
+			    this._PropertyName = data.TryGetValueSafe<string>("propertyName");
+			    this._PropertyValue = data.TryGetValueSafe<string>("propertyValue");
+		}
 		#endregion
 
 		#region Methods

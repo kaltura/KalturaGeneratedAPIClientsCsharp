@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public GoogleVideoSyndicationFeed(IDictionary<string,object> data) : base(data)
+		{
+			    this._AdultContent = (GoogleSyndicationFeedAdultValues)StringEnum.Parse(typeof(GoogleSyndicationFeedAdultValues), data.TryGetValueSafe<string>("adultContent"));
+		}
 		#endregion
 
 		#region Methods

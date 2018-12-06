@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ESearchCategoryResult(IDictionary<string,object> data) : base(data)
+		{
+			    this._Object = ObjectFactory.Create<Category>(data.TryGetValueSafe<IDictionary<string,object>>("object"));
+		}
 		#endregion
 
 		#region Methods

@@ -130,6 +130,18 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EntryServerNode(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+			    this._ServerNodeId = data.TryGetValueSafe<int>("serverNodeId");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._Status = (EntryServerNodeStatus)ParseEnum(typeof(EntryServerNodeStatus), data.TryGetValueSafe<int>("status"));
+			    this._ServerType = (EntryServerNodeType)StringEnum.Parse(typeof(EntryServerNodeType), data.TryGetValueSafe<string>("serverType"));
+		}
 		#endregion
 
 		#region Methods

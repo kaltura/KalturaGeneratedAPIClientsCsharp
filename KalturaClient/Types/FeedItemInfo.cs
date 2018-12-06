@@ -184,6 +184,19 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FeedItemInfo(IDictionary<string,object> data) : base(data)
+		{
+			    this._ItemXPath = data.TryGetValueSafe<string>("itemXPath");
+			    this._ItemPublishDateXPath = data.TryGetValueSafe<string>("itemPublishDateXPath");
+			    this._ItemUniqueIdentifierXPath = data.TryGetValueSafe<string>("itemUniqueIdentifierXPath");
+			    this._ItemContentFileSizeXPath = data.TryGetValueSafe<string>("itemContentFileSizeXPath");
+			    this._ItemContentUrlXPath = data.TryGetValueSafe<string>("itemContentUrlXPath");
+			    this._ItemContentBitrateXPath = data.TryGetValueSafe<string>("itemContentBitrateXPath");
+			    this._ItemHashXPath = data.TryGetValueSafe<string>("itemHashXPath");
+			    this._ItemContentXpath = data.TryGetValueSafe<string>("itemContentXpath");
+			    this._ContentBitrateAttributeName = data.TryGetValueSafe<string>("contentBitrateAttributeName");
+		}
 		#endregion
 
 		#region Methods

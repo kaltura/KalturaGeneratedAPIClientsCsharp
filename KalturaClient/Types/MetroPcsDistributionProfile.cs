@@ -198,6 +198,20 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public MetroPcsDistributionProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._FtpHost = data.TryGetValueSafe<string>("ftpHost");
+			    this._FtpLogin = data.TryGetValueSafe<string>("ftpLogin");
+			    this._FtpPass = data.TryGetValueSafe<string>("ftpPass");
+			    this._FtpPath = data.TryGetValueSafe<string>("ftpPath");
+			    this._ProviderName = data.TryGetValueSafe<string>("providerName");
+			    this._ProviderId = data.TryGetValueSafe<string>("providerId");
+			    this._Copyright = data.TryGetValueSafe<string>("copyright");
+			    this._Entitlements = data.TryGetValueSafe<string>("entitlements");
+			    this._Rating = data.TryGetValueSafe<string>("rating");
+			    this._ItemType = data.TryGetValueSafe<string>("itemType");
+		}
 		#endregion
 
 		#region Methods

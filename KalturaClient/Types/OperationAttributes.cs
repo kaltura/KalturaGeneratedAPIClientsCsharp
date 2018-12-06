@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public OperationAttributes(XmlElement node) : base(node)
 		{
 		}
+
+		public OperationAttributes(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

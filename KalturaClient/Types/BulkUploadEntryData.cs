@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BulkUploadEntryData(IDictionary<string,object> data) : base(data)
+		{
+			    this._ConversionProfileId = data.TryGetValueSafe<int>("conversionProfileId");
+		}
 		#endregion
 
 		#region Methods

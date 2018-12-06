@@ -328,6 +328,34 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public HuluDistributionProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._SftpHost = data.TryGetValueSafe<string>("sftpHost");
+			    this._SftpLogin = data.TryGetValueSafe<string>("sftpLogin");
+			    this._SftpPass = data.TryGetValueSafe<string>("sftpPass");
+			    this._SeriesChannel = data.TryGetValueSafe<string>("seriesChannel");
+			    this._SeriesPrimaryCategory = data.TryGetValueSafe<string>("seriesPrimaryCategory");
+			    this._SeriesAdditionalCategories = new List<String>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("seriesAdditionalCategories", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._SeriesAdditionalCategories.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._SeasonNumber = data.TryGetValueSafe<string>("seasonNumber");
+			    this._SeasonSynopsis = data.TryGetValueSafe<string>("seasonSynopsis");
+			    this._SeasonTuneInInformation = data.TryGetValueSafe<string>("seasonTuneInInformation");
+			    this._VideoMediaType = data.TryGetValueSafe<string>("videoMediaType");
+			    this._DisableEpisodeNumberCustomValidation = data.TryGetValueSafe<bool>("disableEpisodeNumberCustomValidation");
+			    this._Protocol = (DistributionProtocol)ParseEnum(typeof(DistributionProtocol), data.TryGetValueSafe<int>("protocol"));
+			    this._AsperaHost = data.TryGetValueSafe<string>("asperaHost");
+			    this._AsperaLogin = data.TryGetValueSafe<string>("asperaLogin");
+			    this._AsperaPass = data.TryGetValueSafe<string>("asperaPass");
+			    this._Port = data.TryGetValueSafe<int>("port");
+			    this._Passphrase = data.TryGetValueSafe<string>("passphrase");
+			    this._AsperaPublicKey = data.TryGetValueSafe<string>("asperaPublicKey");
+			    this._AsperaPrivateKey = data.TryGetValueSafe<string>("asperaPrivateKey");
+		}
 		#endregion
 
 		#region Methods

@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public PdfFlavorParamsBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public PdfFlavorParamsBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

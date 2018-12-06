@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return result.InnerText;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
+		}
 	}
 
 	public class PollGetVoteRequestBuilder : RequestBuilder<string>
@@ -127,6 +131,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return result.InnerText;
+		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
 		}
 	}
 
@@ -180,6 +188,10 @@ namespace Kaltura.Services
 		{
 			return result.InnerText;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
+		}
 	}
 
 	public class PollResetVotesRequestBuilder : RequestBuilder<object>
@@ -220,6 +232,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -283,6 +299,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return result.InnerText;
+		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
 		}
 	}
 

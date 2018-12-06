@@ -128,6 +128,15 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UnicornDistributionJobProviderData(IDictionary<string,object> data) : base(data)
+		{
+			    this._CatalogGuid = data.TryGetValueSafe<string>("catalogGuid");
+			    this._Title = data.TryGetValueSafe<string>("title");
+			    this._MediaChanged = data.TryGetValueSafe<bool>("mediaChanged");
+			    this._FlavorAssetVersion = data.TryGetValueSafe<string>("flavorAssetVersion");
+			    this._NotificationBaseUrl = data.TryGetValueSafe<string>("notificationBaseUrl");
+		}
 		#endregion
 
 		#region Methods

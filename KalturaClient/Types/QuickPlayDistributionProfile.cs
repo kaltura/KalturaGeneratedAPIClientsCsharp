@@ -296,6 +296,27 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public QuickPlayDistributionProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._SftpHost = data.TryGetValueSafe<string>("sftpHost");
+			    this._SftpLogin = data.TryGetValueSafe<string>("sftpLogin");
+			    this._SftpPass = data.TryGetValueSafe<string>("sftpPass");
+			    this._SftpBasePath = data.TryGetValueSafe<string>("sftpBasePath");
+			    this._ChannelTitle = data.TryGetValueSafe<string>("channelTitle");
+			    this._ChannelLink = data.TryGetValueSafe<string>("channelLink");
+			    this._ChannelDescription = data.TryGetValueSafe<string>("channelDescription");
+			    this._ChannelManagingEditor = data.TryGetValueSafe<string>("channelManagingEditor");
+			    this._ChannelLanguage = data.TryGetValueSafe<string>("channelLanguage");
+			    this._ChannelImageTitle = data.TryGetValueSafe<string>("channelImageTitle");
+			    this._ChannelImageWidth = data.TryGetValueSafe<string>("channelImageWidth");
+			    this._ChannelImageHeight = data.TryGetValueSafe<string>("channelImageHeight");
+			    this._ChannelImageLink = data.TryGetValueSafe<string>("channelImageLink");
+			    this._ChannelImageUrl = data.TryGetValueSafe<string>("channelImageUrl");
+			    this._ChannelCopyright = data.TryGetValueSafe<string>("channelCopyright");
+			    this._ChannelGenerator = data.TryGetValueSafe<string>("channelGenerator");
+			    this._ChannelRating = data.TryGetValueSafe<string>("channelRating");
+		}
 		#endregion
 
 		#region Methods

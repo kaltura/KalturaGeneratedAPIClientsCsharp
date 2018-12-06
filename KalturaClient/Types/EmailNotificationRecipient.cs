@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EmailNotificationRecipient(IDictionary<string,object> data) : base(data)
+		{
+			    this._Email = ObjectFactory.Create<StringValue>(data.TryGetValueSafe<IDictionary<string,object>>("email"));
+			    this._Name = ObjectFactory.Create<StringValue>(data.TryGetValueSafe<IDictionary<string,object>>("name"));
+		}
 		#endregion
 
 		#region Methods

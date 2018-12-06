@@ -220,6 +220,31 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ConvartableJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._SrcFileSyncLocalPath = data.TryGetValueSafe<string>("srcFileSyncLocalPath");
+			    this._ActualSrcFileSyncLocalPath = data.TryGetValueSafe<string>("actualSrcFileSyncLocalPath");
+			    this._SrcFileSyncRemoteUrl = data.TryGetValueSafe<string>("srcFileSyncRemoteUrl");
+			    this._SrcFileSyncs = new List<SourceFileSyncDescriptor>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("srcFileSyncs", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._SrcFileSyncs.Add(ObjectFactory.Create<SourceFileSyncDescriptor>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._EngineVersion = data.TryGetValueSafe<int>("engineVersion");
+			    this._FlavorParamsOutputId = data.TryGetValueSafe<int>("flavorParamsOutputId");
+			    this._FlavorParamsOutput = ObjectFactory.Create<FlavorParamsOutput>(data.TryGetValueSafe<IDictionary<string,object>>("flavorParamsOutput"));
+			    this._MediaInfoId = data.TryGetValueSafe<int>("mediaInfoId");
+			    this._CurrentOperationSet = data.TryGetValueSafe<int>("currentOperationSet");
+			    this._CurrentOperationIndex = data.TryGetValueSafe<int>("currentOperationIndex");
+			    this._PluginData = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("pluginData", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._PluginData.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

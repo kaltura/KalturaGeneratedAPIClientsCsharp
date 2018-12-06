@@ -342,6 +342,68 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CrossKalturaDistributionProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._TargetServiceUrl = data.TryGetValueSafe<string>("targetServiceUrl");
+			    this._TargetAccountId = data.TryGetValueSafe<int>("targetAccountId");
+			    this._TargetLoginId = data.TryGetValueSafe<string>("targetLoginId");
+			    this._TargetLoginPassword = data.TryGetValueSafe<string>("targetLoginPassword");
+			    this._MetadataXslt = data.TryGetValueSafe<string>("metadataXslt");
+			    this._MetadataXpathsTriggerUpdate = new List<StringValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("metadataXpathsTriggerUpdate", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._MetadataXpathsTriggerUpdate.Add(ObjectFactory.Create<StringValue>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._DistributeCaptions = data.TryGetValueSafe<bool>("distributeCaptions");
+			    this._DistributeCuePoints = data.TryGetValueSafe<bool>("distributeCuePoints");
+			    this._DistributeRemoteFlavorAssetContent = data.TryGetValueSafe<bool>("distributeRemoteFlavorAssetContent");
+			    this._DistributeRemoteThumbAssetContent = data.TryGetValueSafe<bool>("distributeRemoteThumbAssetContent");
+			    this._DistributeRemoteCaptionAssetContent = data.TryGetValueSafe<bool>("distributeRemoteCaptionAssetContent");
+			    this._MapAccessControlProfileIds = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("mapAccessControlProfileIds", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._MapAccessControlProfileIds.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._MapConversionProfileIds = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("mapConversionProfileIds", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._MapConversionProfileIds.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._MapMetadataProfileIds = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("mapMetadataProfileIds", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._MapMetadataProfileIds.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._MapStorageProfileIds = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("mapStorageProfileIds", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._MapStorageProfileIds.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._MapFlavorParamsIds = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("mapFlavorParamsIds", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._MapFlavorParamsIds.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._MapThumbParamsIds = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("mapThumbParamsIds", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._MapThumbParamsIds.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._MapCaptionParamsIds = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("mapCaptionParamsIds", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._MapCaptionParamsIds.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

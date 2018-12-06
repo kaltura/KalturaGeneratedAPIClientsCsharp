@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ScheduledTaskProfile>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ScheduledTaskProfile>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ScheduledTaskProfileDeleteRequestBuilder : RequestBuilder<object>
@@ -116,6 +120,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -162,6 +170,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ScheduledTaskProfile>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ScheduledTaskProfile>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ScheduledTaskProfileGetDryRunResultsRequestBuilder : RequestBuilder<ListResponse<ObjectBase>>
@@ -204,6 +216,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<ObjectBase>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<ObjectBase>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -257,6 +273,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<ScheduledTaskProfile>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<ScheduledTaskProfile>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ScheduledTaskProfileRequestDryRunRequestBuilder : RequestBuilder<int>
@@ -309,6 +329,10 @@ namespace Kaltura.Services
 		{
 			return int.Parse(result.InnerText);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (int)(result);
+		}
 	}
 
 	public class ScheduledTaskProfileUpdateRequestBuilder : RequestBuilder<ScheduledTaskProfile>
@@ -360,6 +384,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ScheduledTaskProfile>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ScheduledTaskProfile>((IDictionary<string,object>)result);
 		}
 	}
 

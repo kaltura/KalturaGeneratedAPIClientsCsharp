@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public DeliveryProfileRtmpBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public DeliveryProfileRtmpBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

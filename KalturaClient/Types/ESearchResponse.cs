@@ -67,6 +67,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ESearchResponse(IDictionary<string,object> data) : base(data)
+		{
+			    this._TotalCount = data.TryGetValueSafe<int>("totalCount");
+		}
 		#endregion
 
 		#region Methods

@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public MediaInfoBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._FlavorAssetIdEqual = data.TryGetValueSafe<string>("flavorAssetIdEqual");
+		}
 		#endregion
 
 		#region Methods

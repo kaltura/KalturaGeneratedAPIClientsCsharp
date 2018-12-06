@@ -142,6 +142,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public StreamContainer(IDictionary<string,object> data) : base(data)
+		{
+			    this._Type = data.TryGetValueSafe<string>("type");
+			    this._TrackIndex = data.TryGetValueSafe<int>("trackIndex");
+			    this._Language = data.TryGetValueSafe<string>("language");
+			    this._ChannelIndex = data.TryGetValueSafe<int>("channelIndex");
+			    this._Label = data.TryGetValueSafe<string>("label");
+			    this._ChannelLayout = data.TryGetValueSafe<string>("channelLayout");
+		}
 		#endregion
 
 		#region Methods

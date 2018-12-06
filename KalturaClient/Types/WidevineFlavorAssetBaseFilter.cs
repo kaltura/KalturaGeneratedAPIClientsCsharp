@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public WidevineFlavorAssetBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public WidevineFlavorAssetBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

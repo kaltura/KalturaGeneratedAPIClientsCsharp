@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ImageFlavorParamsFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (ImageFlavorParamsOrderBy)StringEnum.Parse(typeof(ImageFlavorParamsOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

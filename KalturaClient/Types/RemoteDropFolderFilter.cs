@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public RemoteDropFolderFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (RemoteDropFolderOrderBy)StringEnum.Parse(typeof(RemoteDropFolderOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

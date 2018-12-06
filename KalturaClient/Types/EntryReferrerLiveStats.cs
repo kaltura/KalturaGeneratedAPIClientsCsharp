@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EntryReferrerLiveStats(IDictionary<string,object> data) : base(data)
+		{
+			    this._Referrer = data.TryGetValueSafe<string>("referrer");
+		}
 		#endregion
 
 		#region Methods

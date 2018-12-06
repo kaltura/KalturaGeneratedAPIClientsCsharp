@@ -108,6 +108,23 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveEntryServerNode(IDictionary<string,object> data) : base(data)
+		{
+			    this._Streams = new List<LiveStreamParams>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("streams", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Streams.Add(ObjectFactory.Create<LiveStreamParams>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._RecordingInfo = new List<LiveEntryServerNodeRecordingInfo>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("recordingInfo", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._RecordingInfo.Add(ObjectFactory.Create<LiveEntryServerNodeRecordingInfo>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._IsPlayableUser = data.TryGetValueSafe<bool>("isPlayableUser");
+		}
 		#endregion
 
 		#region Methods

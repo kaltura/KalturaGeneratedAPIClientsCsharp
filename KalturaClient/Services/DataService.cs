@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<DataEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DataEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DataAddContentRequestBuilder : RequestBuilder<string>
@@ -128,6 +132,10 @@ namespace Kaltura.Services
 		{
 			return result.InnerText;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
+		}
 	}
 
 	public class DataDeleteRequestBuilder : RequestBuilder<object>
@@ -168,6 +176,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -223,6 +235,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<DataEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DataEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DataListRequestBuilder : RequestBuilder<ListResponse<DataEntry>>
@@ -275,6 +291,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<DataEntry>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<DataEntry>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DataUpdateRequestBuilder : RequestBuilder<DataEntry>
@@ -326,6 +346,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<DataEntry>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DataEntry>((IDictionary<string,object>)result);
 		}
 	}
 

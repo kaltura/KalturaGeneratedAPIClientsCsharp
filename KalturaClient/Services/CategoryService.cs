@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<Category>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<Category>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class CategoryAddFromBulkUploadRequestBuilder : RequestBuilder<BulkUpload>
@@ -136,6 +140,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<BulkUpload>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<BulkUpload>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class CategoryDeleteRequestBuilder : RequestBuilder<object>
@@ -188,6 +196,10 @@ namespace Kaltura.Services
 		{
 			return null;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return null;
+		}
 	}
 
 	public class CategoryGetRequestBuilder : RequestBuilder<Category>
@@ -230,6 +242,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<Category>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<Category>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -283,6 +299,10 @@ namespace Kaltura.Services
 		{
 			return int.Parse(result.InnerText);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (int)(result);
+		}
 	}
 
 	public class CategoryListRequestBuilder : RequestBuilder<ListResponse<Category>>
@@ -334,6 +354,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<Category>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<Category>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -389,6 +413,13 @@ namespace Kaltura.Services
 				return true;
 			return false;
 		}
+		public override object DeserializeObject(object result)
+		{
+			var resultStr = (string)result;
+			if (resultStr.Equals("1") || resultStr.ToLower().Equals("true"))
+				return true;
+			return false;
+		}
 	}
 
 	public class CategoryUnlockCategoriesRequestBuilder : RequestBuilder<object>
@@ -415,6 +446,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -469,6 +504,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<Category>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<Category>((IDictionary<string,object>)result);
 		}
 	}
 

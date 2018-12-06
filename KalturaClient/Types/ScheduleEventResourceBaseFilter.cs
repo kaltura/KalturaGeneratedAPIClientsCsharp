@@ -170,6 +170,18 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ScheduleEventResourceBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._EventIdEqual = data.TryGetValueSafe<int>("eventIdEqual");
+			    this._EventIdIn = data.TryGetValueSafe<string>("eventIdIn");
+			    this._ResourceIdEqual = data.TryGetValueSafe<int>("resourceIdEqual");
+			    this._ResourceIdIn = data.TryGetValueSafe<string>("resourceIdIn");
+			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
+			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
+			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
+		}
 		#endregion
 
 		#region Methods

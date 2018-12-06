@@ -142,6 +142,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AkamaiProvisionJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._WsdlUsername = data.TryGetValueSafe<string>("wsdlUsername");
+			    this._WsdlPassword = data.TryGetValueSafe<string>("wsdlPassword");
+			    this._Cpcode = data.TryGetValueSafe<string>("cpcode");
+			    this._EmailId = data.TryGetValueSafe<string>("emailId");
+			    this._PrimaryContact = data.TryGetValueSafe<string>("primaryContact");
+			    this._SecondaryContact = data.TryGetValueSafe<string>("secondaryContact");
+		}
 		#endregion
 
 		#region Methods

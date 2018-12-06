@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DeliveryProfileLivePackagerHls(IDictionary<string,object> data) : base(data)
+		{
+			    this._DisableExtraAttributes = data.TryGetValueSafe<bool>("disableExtraAttributes");
+			    this._ForceProxy = data.TryGetValueSafe<bool>("forceProxy");
+		}
 		#endregion
 
 		#region Methods

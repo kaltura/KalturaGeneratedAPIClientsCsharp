@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public AvnDistributionProviderBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public AvnDistributionProviderBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

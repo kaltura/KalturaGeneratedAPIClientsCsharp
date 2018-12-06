@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public ESearchCategoryBaseItem(XmlElement node) : base(node)
 		{
 		}
+
+		public ESearchCategoryBaseItem(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

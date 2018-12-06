@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BulkDownloadJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._EntryIds = data.TryGetValueSafe<string>("entryIds");
+			    this._FlavorParamsId = data.TryGetValueSafe<int>("flavorParamsId");
+			    this._PuserId = data.TryGetValueSafe<string>("puserId");
+		}
 		#endregion
 
 		#region Methods

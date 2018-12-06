@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DropFolderContentFileHandlerConfig(IDictionary<string,object> data) : base(data)
+		{
+			    this._ContentMatchPolicy = (DropFolderContentFileHandlerMatchPolicy)ParseEnum(typeof(DropFolderContentFileHandlerMatchPolicy), data.TryGetValueSafe<int>("contentMatchPolicy"));
+			    this._SlugRegex = data.TryGetValueSafe<string>("slugRegex");
+		}
 		#endregion
 
 		#region Methods

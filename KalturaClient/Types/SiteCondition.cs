@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public SiteCondition(XmlElement node) : base(node)
 		{
 		}
+
+		public SiteCondition(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

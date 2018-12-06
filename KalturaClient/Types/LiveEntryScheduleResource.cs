@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveEntryScheduleResource(IDictionary<string,object> data) : base(data)
+		{
+			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+		}
 		#endregion
 
 		#region Methods

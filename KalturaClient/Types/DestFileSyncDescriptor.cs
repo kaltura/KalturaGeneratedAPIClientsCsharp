@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public DestFileSyncDescriptor(XmlElement node) : base(node)
 		{
 		}
+
+		public DestFileSyncDescriptor(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

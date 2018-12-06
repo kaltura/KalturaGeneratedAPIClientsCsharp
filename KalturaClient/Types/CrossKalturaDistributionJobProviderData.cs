@@ -156,6 +156,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CrossKalturaDistributionJobProviderData(IDictionary<string,object> data) : base(data)
+		{
+			    this._DistributedFlavorAssets = data.TryGetValueSafe<string>("distributedFlavorAssets");
+			    this._DistributedThumbAssets = data.TryGetValueSafe<string>("distributedThumbAssets");
+			    this._DistributedMetadata = data.TryGetValueSafe<string>("distributedMetadata");
+			    this._DistributedCaptionAssets = data.TryGetValueSafe<string>("distributedCaptionAssets");
+			    this._DistributedCuePoints = data.TryGetValueSafe<string>("distributedCuePoints");
+			    this._DistributedThumbCuePoints = data.TryGetValueSafe<string>("distributedThumbCuePoints");
+			    this._DistributedTimedThumbAssets = data.TryGetValueSafe<string>("distributedTimedThumbAssets");
+		}
 		#endregion
 
 		#region Methods

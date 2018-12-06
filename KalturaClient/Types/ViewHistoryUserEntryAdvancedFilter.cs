@@ -170,6 +170,18 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ViewHistoryUserEntryAdvancedFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IdEqual = data.TryGetValueSafe<string>("idEqual");
+			    this._IdIn = data.TryGetValueSafe<string>("idIn");
+			    this._UserIdEqual = data.TryGetValueSafe<string>("userIdEqual");
+			    this._UserIdIn = data.TryGetValueSafe<string>("userIdIn");
+			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<string>("updatedAtGreaterThanOrEqual");
+			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<string>("updatedAtLessThanOrEqual");
+			    this._ExtendedStatusEqual = (UserEntryExtendedStatus)StringEnum.Parse(typeof(UserEntryExtendedStatus), data.TryGetValueSafe<string>("extendedStatusEqual"));
+			    this._ExtendedStatusIn = data.TryGetValueSafe<string>("extendedStatusIn");
+		}
 		#endregion
 
 		#region Methods

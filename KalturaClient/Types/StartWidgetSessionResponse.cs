@@ -85,6 +85,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public StartWidgetSessionResponse(IDictionary<string,object> data) : base(data)
+		{
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._Ks = data.TryGetValueSafe<string>("ks");
+			    this._UserId = data.TryGetValueSafe<string>("userId");
+		}
 		#endregion
 
 		#region Methods

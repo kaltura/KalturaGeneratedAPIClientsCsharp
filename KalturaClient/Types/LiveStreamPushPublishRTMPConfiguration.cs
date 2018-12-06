@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveStreamPushPublishRTMPConfiguration(IDictionary<string,object> data) : base(data)
+		{
+			    this._UserId = data.TryGetValueSafe<string>("userId");
+			    this._Password = data.TryGetValueSafe<string>("password");
+			    this._StreamName = data.TryGetValueSafe<string>("streamName");
+			    this._ApplicationName = data.TryGetValueSafe<string>("applicationName");
+		}
 		#endregion
 
 		#region Methods

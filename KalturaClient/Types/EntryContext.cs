@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EntryContext(IDictionary<string,object> data) : base(data)
+		{
+			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+			    this._FollowEntryRedirect = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("followEntryRedirect"));
+		}
 		#endregion
 
 		#region Methods

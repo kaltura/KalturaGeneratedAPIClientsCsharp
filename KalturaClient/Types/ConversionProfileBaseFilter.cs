@@ -240,6 +240,23 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ConversionProfileBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
+			    this._IdIn = data.TryGetValueSafe<string>("idIn");
+			    this._StatusEqual = (ConversionProfileStatus)StringEnum.Parse(typeof(ConversionProfileStatus), data.TryGetValueSafe<string>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			    this._TypeEqual = (ConversionProfileType)StringEnum.Parse(typeof(ConversionProfileType), data.TryGetValueSafe<string>("typeEqual"));
+			    this._TypeIn = data.TryGetValueSafe<string>("typeIn");
+			    this._NameEqual = data.TryGetValueSafe<string>("nameEqual");
+			    this._SystemNameEqual = data.TryGetValueSafe<string>("systemNameEqual");
+			    this._SystemNameIn = data.TryGetValueSafe<string>("systemNameIn");
+			    this._TagsMultiLikeOr = data.TryGetValueSafe<string>("tagsMultiLikeOr");
+			    this._TagsMultiLikeAnd = data.TryGetValueSafe<string>("tagsMultiLikeAnd");
+			    this._DefaultEntryIdEqual = data.TryGetValueSafe<string>("defaultEntryIdEqual");
+			    this._DefaultEntryIdIn = data.TryGetValueSafe<string>("defaultEntryIdIn");
+		}
 		#endregion
 
 		#region Methods

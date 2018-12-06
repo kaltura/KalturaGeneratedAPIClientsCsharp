@@ -338,6 +338,30 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EntryDistributionBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
+			    this._IdIn = data.TryGetValueSafe<string>("idIn");
+			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
+			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
+			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
+			    this._SubmittedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("submittedAtGreaterThanOrEqual");
+			    this._SubmittedAtLessThanOrEqual = data.TryGetValueSafe<int>("submittedAtLessThanOrEqual");
+			    this._EntryIdEqual = data.TryGetValueSafe<string>("entryIdEqual");
+			    this._EntryIdIn = data.TryGetValueSafe<string>("entryIdIn");
+			    this._DistributionProfileIdEqual = data.TryGetValueSafe<int>("distributionProfileIdEqual");
+			    this._DistributionProfileIdIn = data.TryGetValueSafe<string>("distributionProfileIdIn");
+			    this._StatusEqual = (EntryDistributionStatus)ParseEnum(typeof(EntryDistributionStatus), data.TryGetValueSafe<int>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			    this._DirtyStatusEqual = (EntryDistributionFlag)ParseEnum(typeof(EntryDistributionFlag), data.TryGetValueSafe<int>("dirtyStatusEqual"));
+			    this._DirtyStatusIn = data.TryGetValueSafe<string>("dirtyStatusIn");
+			    this._SunriseGreaterThanOrEqual = data.TryGetValueSafe<int>("sunriseGreaterThanOrEqual");
+			    this._SunriseLessThanOrEqual = data.TryGetValueSafe<int>("sunriseLessThanOrEqual");
+			    this._SunsetGreaterThanOrEqual = data.TryGetValueSafe<int>("sunsetGreaterThanOrEqual");
+			    this._SunsetLessThanOrEqual = data.TryGetValueSafe<int>("sunsetLessThanOrEqual");
+		}
 		#endregion
 
 		#region Methods

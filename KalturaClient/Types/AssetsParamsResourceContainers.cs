@@ -76,6 +76,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AssetsParamsResourceContainers(IDictionary<string,object> data) : base(data)
+		{
+			    this._Resources = new List<AssetParamsResourceContainer>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("resources", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Resources.Add(ObjectFactory.Create<AssetParamsResourceContainer>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

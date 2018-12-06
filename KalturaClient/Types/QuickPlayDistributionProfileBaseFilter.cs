@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public QuickPlayDistributionProfileBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public QuickPlayDistributionProfileBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

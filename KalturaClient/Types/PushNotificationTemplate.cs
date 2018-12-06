@@ -136,6 +136,25 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PushNotificationTemplate(IDictionary<string,object> data) : base(data)
+		{
+			    this._QueueNameParameters = new List<PushEventNotificationParameter>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("queueNameParameters", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._QueueNameParameters.Add(ObjectFactory.Create<PushEventNotificationParameter>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._QueueKeyParameters = new List<PushEventNotificationParameter>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("queueKeyParameters", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._QueueKeyParameters.Add(ObjectFactory.Create<PushEventNotificationParameter>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._ApiObjectType = data.TryGetValueSafe<string>("apiObjectType");
+			    this._ObjectFormat = (ResponseType)ParseEnum(typeof(ResponseType), data.TryGetValueSafe<int>("objectFormat"));
+			    this._ResponseProfileId = data.TryGetValueSafe<int>("responseProfileId");
+		}
 		#endregion
 
 		#region Methods

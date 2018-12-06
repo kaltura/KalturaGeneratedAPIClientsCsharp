@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ESearchEntryParams(IDictionary<string,object> data) : base(data)
+		{
+			    this._SearchOperator = ObjectFactory.Create<ESearchEntryOperator>(data.TryGetValueSafe<IDictionary<string,object>>("searchOperator"));
+		}
 		#endregion
 
 		#region Methods

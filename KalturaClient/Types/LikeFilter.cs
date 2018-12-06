@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LikeFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (LikeOrderBy)StringEnum.Parse(typeof(LikeOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

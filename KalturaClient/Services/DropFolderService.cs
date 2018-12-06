@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<DropFolder>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DropFolder>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DropFolderDeleteRequestBuilder : RequestBuilder<DropFolder>
@@ -118,6 +122,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<DropFolder>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DropFolder>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -180,6 +188,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<DropFolder>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DropFolder>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DropFolderGetRequestBuilder : RequestBuilder<DropFolder>
@@ -222,6 +234,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<DropFolder>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DropFolder>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -275,6 +291,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<DropFolder>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DropFolder>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DropFolderListRequestBuilder : RequestBuilder<ListResponse<DropFolder>>
@@ -327,6 +347,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<DropFolder>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<DropFolder>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DropFolderUpdateRequestBuilder : RequestBuilder<DropFolder>
@@ -378,6 +402,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<DropFolder>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DropFolder>((IDictionary<string,object>)result);
 		}
 	}
 

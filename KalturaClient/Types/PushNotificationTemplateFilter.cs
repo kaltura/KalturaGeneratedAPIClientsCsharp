@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PushNotificationTemplateFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (PushNotificationTemplateOrderBy)StringEnum.Parse(typeof(PushNotificationTemplateOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

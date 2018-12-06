@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EventNotificationTemplateFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (EventNotificationTemplateOrderBy)StringEnum.Parse(typeof(EventNotificationTemplateOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

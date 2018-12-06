@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<UserEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<UserEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class UserEntryBulkDeleteRequestBuilder : RequestBuilder<int>
@@ -118,6 +122,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return int.Parse(result.InnerText);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return (int)(result);
 		}
 	}
 
@@ -162,6 +170,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<UserEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<UserEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class UserEntryGetRequestBuilder : RequestBuilder<UserEntry>
@@ -204,6 +216,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<UserEntry>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<UserEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -257,6 +273,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<UserEntry>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<UserEntry>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class UserEntrySubmitQuizRequestBuilder : RequestBuilder<QuizUserEntry>
@@ -299,6 +319,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<QuizUserEntry>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<QuizUserEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -349,6 +373,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}

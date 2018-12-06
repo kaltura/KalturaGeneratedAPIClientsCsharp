@@ -198,6 +198,20 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ResponseProfileBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IdEqual = data.TryGetValueSafe<long>("idEqual");
+			    this._IdIn = data.TryGetValueSafe<string>("idIn");
+			    this._SystemNameEqual = data.TryGetValueSafe<string>("systemNameEqual");
+			    this._SystemNameIn = data.TryGetValueSafe<string>("systemNameIn");
+			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
+			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
+			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
+			    this._StatusEqual = (ResponseProfileStatus)ParseEnum(typeof(ResponseProfileStatus), data.TryGetValueSafe<int>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+		}
 		#endregion
 
 		#region Methods

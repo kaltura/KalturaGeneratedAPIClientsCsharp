@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public DeleteEntryObjectTask(XmlElement node) : base(node)
 		{
 		}
+
+		public DeleteEntryObjectTask(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

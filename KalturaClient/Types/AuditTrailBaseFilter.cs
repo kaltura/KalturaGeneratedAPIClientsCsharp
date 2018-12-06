@@ -576,6 +576,47 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AuditTrailBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
+			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
+			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			    this._ParsedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("parsedAtGreaterThanOrEqual");
+			    this._ParsedAtLessThanOrEqual = data.TryGetValueSafe<int>("parsedAtLessThanOrEqual");
+			    this._StatusEqual = (AuditTrailStatus)ParseEnum(typeof(AuditTrailStatus), data.TryGetValueSafe<int>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			    this._AuditObjectTypeEqual = (AuditTrailObjectType)StringEnum.Parse(typeof(AuditTrailObjectType), data.TryGetValueSafe<string>("auditObjectTypeEqual"));
+			    this._AuditObjectTypeIn = data.TryGetValueSafe<string>("auditObjectTypeIn");
+			    this._ObjectIdEqual = data.TryGetValueSafe<string>("objectIdEqual");
+			    this._ObjectIdIn = data.TryGetValueSafe<string>("objectIdIn");
+			    this._RelatedObjectIdEqual = data.TryGetValueSafe<string>("relatedObjectIdEqual");
+			    this._RelatedObjectIdIn = data.TryGetValueSafe<string>("relatedObjectIdIn");
+			    this._RelatedObjectTypeEqual = (AuditTrailObjectType)StringEnum.Parse(typeof(AuditTrailObjectType), data.TryGetValueSafe<string>("relatedObjectTypeEqual"));
+			    this._RelatedObjectTypeIn = data.TryGetValueSafe<string>("relatedObjectTypeIn");
+			    this._EntryIdEqual = data.TryGetValueSafe<string>("entryIdEqual");
+			    this._EntryIdIn = data.TryGetValueSafe<string>("entryIdIn");
+			    this._MasterPartnerIdEqual = data.TryGetValueSafe<int>("masterPartnerIdEqual");
+			    this._MasterPartnerIdIn = data.TryGetValueSafe<string>("masterPartnerIdIn");
+			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
+			    this._PartnerIdIn = data.TryGetValueSafe<string>("partnerIdIn");
+			    this._RequestIdEqual = data.TryGetValueSafe<string>("requestIdEqual");
+			    this._RequestIdIn = data.TryGetValueSafe<string>("requestIdIn");
+			    this._UserIdEqual = data.TryGetValueSafe<string>("userIdEqual");
+			    this._UserIdIn = data.TryGetValueSafe<string>("userIdIn");
+			    this._ActionEqual = (AuditTrailAction)StringEnum.Parse(typeof(AuditTrailAction), data.TryGetValueSafe<string>("actionEqual"));
+			    this._ActionIn = data.TryGetValueSafe<string>("actionIn");
+			    this._KsEqual = data.TryGetValueSafe<string>("ksEqual");
+			    this._ContextEqual = (AuditTrailContext)ParseEnum(typeof(AuditTrailContext), data.TryGetValueSafe<int>("contextEqual"));
+			    this._ContextIn = data.TryGetValueSafe<string>("contextIn");
+			    this._EntryPointEqual = data.TryGetValueSafe<string>("entryPointEqual");
+			    this._EntryPointIn = data.TryGetValueSafe<string>("entryPointIn");
+			    this._ServerNameEqual = data.TryGetValueSafe<string>("serverNameEqual");
+			    this._ServerNameIn = data.TryGetValueSafe<string>("serverNameIn");
+			    this._IpAddressEqual = data.TryGetValueSafe<string>("ipAddressEqual");
+			    this._IpAddressIn = data.TryGetValueSafe<string>("ipAddressIn");
+			    this._ClientTagEqual = data.TryGetValueSafe<string>("clientTagEqual");
+		}
 		#endregion
 
 		#region Methods

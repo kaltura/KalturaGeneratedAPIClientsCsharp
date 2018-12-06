@@ -249,6 +249,24 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public SchedulerConfig(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._CreatedBy = data.TryGetValueSafe<string>("createdBy");
+			    this._UpdatedBy = data.TryGetValueSafe<string>("updatedBy");
+			    this._CommandId = data.TryGetValueSafe<string>("commandId");
+			    this._CommandStatus = data.TryGetValueSafe<string>("commandStatus");
+			    this._SchedulerId = data.TryGetValueSafe<int>("schedulerId");
+			    this._SchedulerConfiguredId = data.TryGetValueSafe<int>("schedulerConfiguredId");
+			    this._SchedulerName = data.TryGetValueSafe<string>("schedulerName");
+			    this._WorkerId = data.TryGetValueSafe<int>("workerId");
+			    this._WorkerConfiguredId = data.TryGetValueSafe<int>("workerConfiguredId");
+			    this._WorkerName = data.TryGetValueSafe<string>("workerName");
+			    this._Variable = data.TryGetValueSafe<string>("variable");
+			    this._VariablePart = data.TryGetValueSafe<string>("variablePart");
+			    this._Value = data.TryGetValueSafe<string>("value");
+		}
 		#endregion
 
 		#region Methods

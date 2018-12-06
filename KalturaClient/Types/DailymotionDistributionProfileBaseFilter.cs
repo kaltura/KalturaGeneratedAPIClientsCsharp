@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public DailymotionDistributionProfileBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public DailymotionDistributionProfileBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

@@ -215,6 +215,23 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public Permission(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._Type = (PermissionType)ParseEnum(typeof(PermissionType), data.TryGetValueSafe<int>("type"));
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._FriendlyName = data.TryGetValueSafe<string>("friendlyName");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._Status = (PermissionStatus)ParseEnum(typeof(PermissionStatus), data.TryGetValueSafe<int>("status"));
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._DependsOnPermissionNames = data.TryGetValueSafe<string>("dependsOnPermissionNames");
+			    this._Tags = data.TryGetValueSafe<string>("tags");
+			    this._PermissionItemsIds = data.TryGetValueSafe<string>("permissionItemsIds");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._PartnerGroup = data.TryGetValueSafe<string>("partnerGroup");
+		}
 		#endregion
 
 		#region Methods

@@ -225,6 +225,27 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ComcastMrssDistributionProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._MetadataProfileId = data.TryGetValueSafe<int>("metadataProfileId");
+			    this._FeedUrl = data.TryGetValueSafe<string>("feedUrl");
+			    this._FeedTitle = data.TryGetValueSafe<string>("feedTitle");
+			    this._FeedLink = data.TryGetValueSafe<string>("feedLink");
+			    this._FeedDescription = data.TryGetValueSafe<string>("feedDescription");
+			    this._FeedLastBuildDate = data.TryGetValueSafe<string>("feedLastBuildDate");
+			    this._ItemLink = data.TryGetValueSafe<string>("itemLink");
+			    this._CPlatformTvSeries = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("cPlatformTvSeries", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._CPlatformTvSeries.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._CPlatformTvSeriesField = data.TryGetValueSafe<string>("cPlatformTvSeriesField");
+			    this._ShouldIncludeCuePoints = data.TryGetValueSafe<bool>("shouldIncludeCuePoints");
+			    this._ShouldIncludeCaptions = data.TryGetValueSafe<bool>("shouldIncludeCaptions");
+			    this._ShouldAddThumbExtension = data.TryGetValueSafe<bool>("shouldAddThumbExtension");
+		}
 		#endregion
 
 		#region Methods

@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public SyndicationDistributionProfileBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public SyndicationDistributionProfileBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

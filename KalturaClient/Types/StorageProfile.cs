@@ -498,6 +498,57 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public StorageProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._SystemName = data.TryGetValueSafe<string>("systemName");
+			    this._Desciption = data.TryGetValueSafe<string>("desciption");
+			    this._Status = (StorageProfileStatus)ParseEnum(typeof(StorageProfileStatus), data.TryGetValueSafe<int>("status"));
+			    this._Protocol = (StorageProfileProtocol)StringEnum.Parse(typeof(StorageProfileProtocol), data.TryGetValueSafe<string>("protocol"));
+			    this._StorageUrl = data.TryGetValueSafe<string>("storageUrl");
+			    this._StorageBaseDir = data.TryGetValueSafe<string>("storageBaseDir");
+			    this._StorageUsername = data.TryGetValueSafe<string>("storageUsername");
+			    this._StoragePassword = data.TryGetValueSafe<string>("storagePassword");
+			    this._StorageFtpPassiveMode = data.TryGetValueSafe<bool>("storageFtpPassiveMode");
+			    this._MinFileSize = data.TryGetValueSafe<int>("minFileSize");
+			    this._MaxFileSize = data.TryGetValueSafe<int>("maxFileSize");
+			    this._FlavorParamsIds = data.TryGetValueSafe<string>("flavorParamsIds");
+			    this._MaxConcurrentConnections = data.TryGetValueSafe<int>("maxConcurrentConnections");
+			    this._PathManagerClass = data.TryGetValueSafe<string>("pathManagerClass");
+			    this._PathManagerParams = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("pathManagerParams", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._PathManagerParams.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._Trigger = data.TryGetValueSafe<int>("trigger");
+			    this._DeliveryPriority = data.TryGetValueSafe<int>("deliveryPriority");
+			    this._DeliveryStatus = (StorageProfileDeliveryStatus)ParseEnum(typeof(StorageProfileDeliveryStatus), data.TryGetValueSafe<int>("deliveryStatus"));
+			    this._ReadyBehavior = (StorageProfileReadyBehavior)ParseEnum(typeof(StorageProfileReadyBehavior), data.TryGetValueSafe<int>("readyBehavior"));
+			    this._AllowAutoDelete = data.TryGetValueSafe<int>("allowAutoDelete");
+			    this._CreateFileLink = data.TryGetValueSafe<bool>("createFileLink");
+			    this._Rules = new List<Rule>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("rules", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Rules.Add(ObjectFactory.Create<Rule>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._DeliveryProfileIds = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("deliveryProfileIds", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._DeliveryProfileIds.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._PrivateKey = data.TryGetValueSafe<string>("privateKey");
+			    this._PublicKey = data.TryGetValueSafe<string>("publicKey");
+			    this._PassPhrase = data.TryGetValueSafe<string>("passPhrase");
+			    this._ShouldExportThumbs = data.TryGetValueSafe<bool>("shouldExportThumbs");
+		}
 		#endregion
 
 		#region Methods

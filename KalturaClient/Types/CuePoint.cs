@@ -265,6 +265,28 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CuePoint(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<string>("id");
+			    this._CuePointType = (CuePointType)StringEnum.Parse(typeof(CuePointType), data.TryGetValueSafe<string>("cuePointType"));
+			    this._Status = (CuePointStatus)ParseEnum(typeof(CuePointStatus), data.TryGetValueSafe<int>("status"));
+			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._TriggeredAt = data.TryGetValueSafe<int>("triggeredAt");
+			    this._Tags = data.TryGetValueSafe<string>("tags");
+			    this._StartTime = data.TryGetValueSafe<int>("startTime");
+			    this._UserId = data.TryGetValueSafe<string>("userId");
+			    this._PartnerData = data.TryGetValueSafe<string>("partnerData");
+			    this._PartnerSortValue = data.TryGetValueSafe<int>("partnerSortValue");
+			    this._ForceStop = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("forceStop"));
+			    this._ThumbOffset = data.TryGetValueSafe<int>("thumbOffset");
+			    this._SystemName = data.TryGetValueSafe<string>("systemName");
+			    this._IsMomentary = data.TryGetValueSafe<bool>("isMomentary");
+			    this._CopiedFrom = data.TryGetValueSafe<string>("copiedFrom");
+		}
 		#endregion
 
 		#region Methods

@@ -156,6 +156,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public HttpNotification(IDictionary<string,object> data) : base(data)
+		{
+			    this._Object = ObjectFactory.Create<ObjectBase>(data.TryGetValueSafe<IDictionary<string,object>>("object"));
+			    this._EventObjectType = (EventNotificationEventObjectType)StringEnum.Parse(typeof(EventNotificationEventObjectType), data.TryGetValueSafe<string>("eventObjectType"));
+			    this._EventNotificationJobId = data.TryGetValueSafe<long>("eventNotificationJobId");
+			    this._TemplateId = data.TryGetValueSafe<int>("templateId");
+			    this._TemplateName = data.TryGetValueSafe<string>("templateName");
+			    this._TemplateSystemName = data.TryGetValueSafe<string>("templateSystemName");
+			    this._EventType = (EventNotificationEventType)StringEnum.Parse(typeof(EventNotificationEventType), data.TryGetValueSafe<string>("eventType"));
+		}
 		#endregion
 
 		#region Methods

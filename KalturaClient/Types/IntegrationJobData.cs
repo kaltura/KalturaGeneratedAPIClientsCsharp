@@ -123,6 +123,15 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public IntegrationJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._CallbackNotificationUrl = data.TryGetValueSafe<string>("callbackNotificationUrl");
+			    this._ProviderType = (IntegrationProviderType)StringEnum.Parse(typeof(IntegrationProviderType), data.TryGetValueSafe<string>("providerType"));
+			    this._ProviderData = ObjectFactory.Create<IntegrationJobProviderData>(data.TryGetValueSafe<IDictionary<string,object>>("providerData"));
+			    this._TriggerType = (IntegrationTriggerType)StringEnum.Parse(typeof(IntegrationTriggerType), data.TryGetValueSafe<string>("triggerType"));
+			    this._TriggerData = ObjectFactory.Create<IntegrationJobTriggerData>(data.TryGetValueSafe<IDictionary<string,object>>("triggerData"));
+		}
 		#endregion
 
 		#region Methods

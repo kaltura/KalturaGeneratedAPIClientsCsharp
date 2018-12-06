@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ExternalMediaEntryCompareAttributeCondition(IDictionary<string,object> data) : base(data)
+		{
+			    this._Attribute = (ExternalMediaEntryCompareAttribute)StringEnum.Parse(typeof(ExternalMediaEntryCompareAttribute), data.TryGetValueSafe<string>("attribute"));
+		}
 		#endregion
 
 		#region Methods

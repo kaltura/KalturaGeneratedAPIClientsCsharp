@@ -136,6 +136,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public GroupUser(IDictionary<string,object> data) : base(data)
+		{
+			    this._UserId = data.TryGetValueSafe<string>("userId");
+			    this._GroupId = data.TryGetValueSafe<string>("groupId");
+			    this._Status = (GroupUserStatus)ParseEnum(typeof(GroupUserStatus), data.TryGetValueSafe<int>("status"));
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._CreationMode = (GroupUserCreationMode)ParseEnum(typeof(GroupUserCreationMode), data.TryGetValueSafe<int>("creationMode"));
+		}
 		#endregion
 
 		#region Methods

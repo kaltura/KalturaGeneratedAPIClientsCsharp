@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FileSyncDescriptor(IDictionary<string,object> data) : base(data)
+		{
+			    this._FileSyncLocalPath = data.TryGetValueSafe<string>("fileSyncLocalPath");
+			    this._FileEncryptionKey = data.TryGetValueSafe<string>("fileEncryptionKey");
+			    this._FileSyncRemoteUrl = data.TryGetValueSafe<string>("fileSyncRemoteUrl");
+			    this._FileSyncObjectSubType = data.TryGetValueSafe<int>("fileSyncObjectSubType");
+		}
 		#endregion
 
 		#region Methods

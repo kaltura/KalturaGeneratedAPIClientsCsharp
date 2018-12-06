@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PlayReadyProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._KeySeed = data.TryGetValueSafe<string>("keySeed");
+		}
 		#endregion
 
 		#region Methods

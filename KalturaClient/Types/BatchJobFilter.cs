@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BatchJobFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (BatchJobOrderBy)StringEnum.Parse(typeof(BatchJobOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

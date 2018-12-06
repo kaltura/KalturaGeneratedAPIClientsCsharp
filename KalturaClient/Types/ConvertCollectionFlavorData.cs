@@ -156,6 +156,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ConvertCollectionFlavorData(IDictionary<string,object> data) : base(data)
+		{
+			    this._FlavorAssetId = data.TryGetValueSafe<string>("flavorAssetId");
+			    this._FlavorParamsOutputId = data.TryGetValueSafe<int>("flavorParamsOutputId");
+			    this._ReadyBehavior = data.TryGetValueSafe<int>("readyBehavior");
+			    this._VideoBitrate = data.TryGetValueSafe<int>("videoBitrate");
+			    this._AudioBitrate = data.TryGetValueSafe<int>("audioBitrate");
+			    this._DestFileSyncLocalPath = data.TryGetValueSafe<string>("destFileSyncLocalPath");
+			    this._DestFileSyncRemoteUrl = data.TryGetValueSafe<string>("destFileSyncRemoteUrl");
+		}
 		#endregion
 
 		#region Methods

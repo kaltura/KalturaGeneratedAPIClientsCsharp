@@ -146,6 +146,21 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UsersCsvJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._Filter = ObjectFactory.Create<UserFilter>(data.TryGetValueSafe<IDictionary<string,object>>("filter"));
+			    this._MetadataProfileId = data.TryGetValueSafe<int>("metadataProfileId");
+			    this._AdditionalFields = new List<CsvAdditionalFieldInfo>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("additionalFields", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._AdditionalFields.Add(ObjectFactory.Create<CsvAdditionalFieldInfo>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._UserName = data.TryGetValueSafe<string>("userName");
+			    this._UserMail = data.TryGetValueSafe<string>("userMail");
+			    this._OutputPath = data.TryGetValueSafe<string>("outputPath");
+		}
 		#endregion
 
 		#region Methods

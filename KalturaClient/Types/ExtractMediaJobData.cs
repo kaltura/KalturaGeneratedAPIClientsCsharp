@@ -128,6 +128,15 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ExtractMediaJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._FlavorAssetId = data.TryGetValueSafe<string>("flavorAssetId");
+			    this._CalculateComplexity = data.TryGetValueSafe<bool>("calculateComplexity");
+			    this._ExtractId3Tags = data.TryGetValueSafe<bool>("extractId3Tags");
+			    this._DestDataFilePath = data.TryGetValueSafe<string>("destDataFilePath");
+			    this._DetectGOP = data.TryGetValueSafe<int>("detectGOP");
+		}
 		#endregion
 
 		#region Methods

@@ -212,6 +212,21 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public SearchResult(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<string>("id");
+			    this._Title = data.TryGetValueSafe<string>("title");
+			    this._ThumbUrl = data.TryGetValueSafe<string>("thumbUrl");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._Tags = data.TryGetValueSafe<string>("tags");
+			    this._Url = data.TryGetValueSafe<string>("url");
+			    this._SourceLink = data.TryGetValueSafe<string>("sourceLink");
+			    this._Credit = data.TryGetValueSafe<string>("credit");
+			    this._LicenseType = (LicenseType)ParseEnum(typeof(LicenseType), data.TryGetValueSafe<int>("licenseType"));
+			    this._FlashPlaybackType = data.TryGetValueSafe<string>("flashPlaybackType");
+			    this._FileExt = data.TryGetValueSafe<string>("fileExt");
+		}
 		#endregion
 
 		#region Methods

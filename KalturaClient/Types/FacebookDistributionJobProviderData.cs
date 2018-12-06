@@ -104,6 +104,18 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FacebookDistributionJobProviderData(IDictionary<string,object> data) : base(data)
+		{
+			    this._VideoAssetFilePath = data.TryGetValueSafe<string>("videoAssetFilePath");
+			    this._ThumbAssetId = data.TryGetValueSafe<string>("thumbAssetId");
+			    this._CaptionsInfo = new List<FacebookCaptionDistributionInfo>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("captionsInfo", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._CaptionsInfo.Add(ObjectFactory.Create<FacebookCaptionDistributionInfo>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

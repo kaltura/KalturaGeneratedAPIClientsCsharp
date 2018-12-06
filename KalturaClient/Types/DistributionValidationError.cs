@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DistributionValidationError(IDictionary<string,object> data) : base(data)
+		{
+			    this._Action = (DistributionAction)ParseEnum(typeof(DistributionAction), data.TryGetValueSafe<int>("action"));
+			    this._ErrorType = (DistributionErrorType)ParseEnum(typeof(DistributionErrorType), data.TryGetValueSafe<int>("errorType"));
+			    this._Description = data.TryGetValueSafe<string>("description");
+		}
 		#endregion
 
 		#region Methods

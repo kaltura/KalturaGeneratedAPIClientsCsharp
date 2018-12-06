@@ -352,6 +352,31 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public SystemPartnerUsageItem(IDictionary<string,object> data) : base(data)
+		{
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._PartnerName = data.TryGetValueSafe<string>("partnerName");
+			    this._PartnerStatus = (PartnerStatus)ParseEnum(typeof(PartnerStatus), data.TryGetValueSafe<int>("partnerStatus"));
+			    this._PartnerPackage = data.TryGetValueSafe<int>("partnerPackage");
+			    this._PartnerCreatedAt = data.TryGetValueSafe<int>("partnerCreatedAt");
+			    this._Views = data.TryGetValueSafe<int>("views");
+			    this._Plays = data.TryGetValueSafe<int>("plays");
+			    this._EntriesCount = data.TryGetValueSafe<int>("entriesCount");
+			    this._TotalEntriesCount = data.TryGetValueSafe<int>("totalEntriesCount");
+			    this._VideoEntriesCount = data.TryGetValueSafe<int>("videoEntriesCount");
+			    this._ImageEntriesCount = data.TryGetValueSafe<int>("imageEntriesCount");
+			    this._AudioEntriesCount = data.TryGetValueSafe<int>("audioEntriesCount");
+			    this._MixEntriesCount = data.TryGetValueSafe<int>("mixEntriesCount");
+			    this._Bandwidth = data.TryGetValueSafe<float>("bandwidth");
+			    this._TotalStorage = data.TryGetValueSafe<float>("totalStorage");
+			    this._Storage = data.TryGetValueSafe<float>("storage");
+			    this._PeakStorage = data.TryGetValueSafe<float>("peakStorage");
+			    this._AvgStorage = data.TryGetValueSafe<float>("avgStorage");
+			    this._CombinedBandwidthStorage = data.TryGetValueSafe<float>("combinedBandwidthStorage");
+			    this._DeletedStorage = data.TryGetValueSafe<float>("deletedStorage");
+			    this._TranscodingUsage = data.TryGetValueSafe<float>("transcodingUsage");
+		}
 		#endregion
 
 		#region Methods

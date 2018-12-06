@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public TimedThumbAssetBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public TimedThumbAssetBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

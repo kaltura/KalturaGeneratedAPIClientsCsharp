@@ -142,6 +142,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public WowzaMediaServerNode(IDictionary<string,object> data) : base(data)
+		{
+			    this._AppPrefix = data.TryGetValueSafe<string>("appPrefix");
+			    this._Transcoder = data.TryGetValueSafe<string>("transcoder");
+			    this._GPUID = data.TryGetValueSafe<int>("GPUID");
+			    this._LiveServicePort = data.TryGetValueSafe<int>("liveServicePort");
+			    this._LiveServiceProtocol = data.TryGetValueSafe<string>("liveServiceProtocol");
+			    this._LiveServiceInternalDomain = data.TryGetValueSafe<string>("liveServiceInternalDomain");
+		}
 		#endregion
 
 		#region Methods

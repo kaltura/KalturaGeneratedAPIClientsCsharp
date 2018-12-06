@@ -160,6 +160,22 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AnalyticsFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._From_time = data.TryGetValueSafe<string>("from_time");
+			    this._To_time = data.TryGetValueSafe<string>("to_time");
+			    this._Metrics = data.TryGetValueSafe<string>("metrics");
+			    this._UtcOffset = data.TryGetValueSafe<float>("utcOffset");
+			    this._Dimensions = data.TryGetValueSafe<string>("dimensions");
+			    this._Filters = new List<ReportFilter>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("filters", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Filters.Add(ObjectFactory.Create<ReportFilter>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._OrderBy = data.TryGetValueSafe<string>("orderBy");
+		}
 		#endregion
 
 		#region Methods

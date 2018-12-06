@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<StorageProfile>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<StorageProfile>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class StorageProfileGetRequestBuilder : RequestBuilder<StorageProfile>
@@ -118,6 +122,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<StorageProfile>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<StorageProfile>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -171,6 +179,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<StorageProfile>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<StorageProfile>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class StorageProfileUpdateRequestBuilder : RequestBuilder<StorageProfile>
@@ -223,6 +235,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<StorageProfile>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<StorageProfile>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class StorageProfileUpdateStatusRequestBuilder : RequestBuilder<object>
@@ -272,6 +288,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}

@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BaseEntryCloneOptionComponent(IDictionary<string,object> data) : base(data)
+		{
+			    this._ItemType = (BaseEntryCloneOptions)StringEnum.Parse(typeof(BaseEntryCloneOptions), data.TryGetValueSafe<string>("itemType"));
+			    this._Rule = (CloneComponentSelectorType)StringEnum.Parse(typeof(CloneComponentSelectorType), data.TryGetValueSafe<string>("rule"));
+		}
 		#endregion
 
 		#region Methods

@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DeleteEntryFlavorsObjectTask(IDictionary<string,object> data) : base(data)
+		{
+			    this._DeleteType = (DeleteFlavorsLogicType)ParseEnum(typeof(DeleteFlavorsLogicType), data.TryGetValueSafe<int>("deleteType"));
+			    this._FlavorParamsIds = data.TryGetValueSafe<string>("flavorParamsIds");
+		}
 		#endregion
 
 		#region Methods

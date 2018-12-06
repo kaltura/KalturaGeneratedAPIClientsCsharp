@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ReportInputBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._FromDate = data.TryGetValueSafe<int>("fromDate");
+			    this._ToDate = data.TryGetValueSafe<int>("toDate");
+			    this._FromDay = data.TryGetValueSafe<string>("fromDay");
+			    this._ToDay = data.TryGetValueSafe<string>("toDay");
+		}
 		#endregion
 
 		#region Methods

@@ -94,6 +94,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<DocumentEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DocumentEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DocumentsAddFromFlavorAssetRequestBuilder : RequestBuilder<DocumentEntry>
@@ -145,6 +149,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<DocumentEntry>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DocumentEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -198,6 +206,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<DocumentEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DocumentEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DocumentsApproveReplaceRequestBuilder : RequestBuilder<DocumentEntry>
@@ -241,6 +253,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<DocumentEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DocumentEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DocumentsCancelReplaceRequestBuilder : RequestBuilder<DocumentEntry>
@@ -283,6 +299,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<DocumentEntry>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DocumentEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -345,6 +365,10 @@ namespace Kaltura.Services
 		{
 			return long.Parse(result.InnerText);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (long)result;
+		}
 	}
 
 	public class DocumentsConvertPptToSwfRequestBuilder : RequestBuilder<string>
@@ -388,6 +412,10 @@ namespace Kaltura.Services
 		{
 			return result.InnerText;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
+		}
 	}
 
 	public class DocumentsDeleteRequestBuilder : RequestBuilder<object>
@@ -428,6 +456,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -483,6 +515,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<DocumentEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DocumentEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DocumentsListRequestBuilder : RequestBuilder<ListResponse<DocumentEntry>>
@@ -535,6 +571,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<DocumentEntry>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<DocumentEntry>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DocumentsUpdateRequestBuilder : RequestBuilder<DocumentEntry>
@@ -586,6 +626,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<DocumentEntry>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DocumentEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -648,6 +692,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<DocumentEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DocumentEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DocumentsUploadRequestBuilder : RequestBuilder<string>
@@ -689,6 +737,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return result.InnerText;
+		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
 		}
 	}
 

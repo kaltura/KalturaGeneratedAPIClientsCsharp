@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BaseEntryMatchAttributeCondition(IDictionary<string,object> data) : base(data)
+		{
+			    this._Attribute = (BaseEntryMatchAttribute)StringEnum.Parse(typeof(BaseEntryMatchAttribute), data.TryGetValueSafe<string>("attribute"));
+		}
 		#endregion
 
 		#region Methods

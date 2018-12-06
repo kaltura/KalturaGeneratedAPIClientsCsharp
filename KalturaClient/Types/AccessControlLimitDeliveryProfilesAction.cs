@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AccessControlLimitDeliveryProfilesAction(IDictionary<string,object> data) : base(data)
+		{
+			    this._DeliveryProfileIds = data.TryGetValueSafe<string>("deliveryProfileIds");
+			    this._IsBlockedList = data.TryGetValueSafe<bool>("isBlockedList");
+		}
 		#endregion
 
 		#region Methods

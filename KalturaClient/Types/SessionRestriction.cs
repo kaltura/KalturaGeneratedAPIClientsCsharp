@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public SessionRestriction(XmlElement node) : base(node)
 		{
 		}
+
+		public SessionRestriction(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DeliveryProfileGenericRtmp(IDictionary<string,object> data) : base(data)
+		{
+			    this._Pattern = data.TryGetValueSafe<string>("pattern");
+			    this._RendererClass = data.TryGetValueSafe<string>("rendererClass");
+		}
 		#endregion
 
 		#region Methods

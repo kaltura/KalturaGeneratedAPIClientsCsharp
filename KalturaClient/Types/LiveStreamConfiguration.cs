@@ -128,6 +128,15 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveStreamConfiguration(IDictionary<string,object> data) : base(data)
+		{
+			    this._Protocol = (PlaybackProtocol)StringEnum.Parse(typeof(PlaybackProtocol), data.TryGetValueSafe<string>("protocol"));
+			    this._Url = data.TryGetValueSafe<string>("url");
+			    this._PublishUrl = data.TryGetValueSafe<string>("publishUrl");
+			    this._BackupUrl = data.TryGetValueSafe<string>("backupUrl");
+			    this._StreamName = data.TryGetValueSafe<string>("streamName");
+		}
 		#endregion
 
 		#region Methods

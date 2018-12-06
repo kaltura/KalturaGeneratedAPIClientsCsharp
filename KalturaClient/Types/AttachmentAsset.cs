@@ -109,6 +109,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AttachmentAsset(IDictionary<string,object> data) : base(data)
+		{
+			    this._Filename = data.TryGetValueSafe<string>("filename");
+			    this._Title = data.TryGetValueSafe<string>("title");
+			    this._Format = (AttachmentType)StringEnum.Parse(typeof(AttachmentType), data.TryGetValueSafe<string>("format"));
+			    this._Status = (AttachmentAssetStatus)ParseEnum(typeof(AttachmentAssetStatus), data.TryGetValueSafe<int>("status"));
+		}
 		#endregion
 
 		#region Methods

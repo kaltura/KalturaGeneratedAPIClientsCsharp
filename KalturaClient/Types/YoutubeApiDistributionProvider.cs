@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public YoutubeApiDistributionProvider(XmlElement node) : base(node)
 		{
 		}
+
+		public YoutubeApiDistributionProvider(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

@@ -549,6 +549,48 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public User(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<string>("id");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._Type = (UserType)ParseEnum(typeof(UserType), data.TryGetValueSafe<int>("type"));
+			    this._ScreenName = data.TryGetValueSafe<string>("screenName");
+			    this._FullName = data.TryGetValueSafe<string>("fullName");
+			    this._Email = data.TryGetValueSafe<string>("email");
+			    this._DateOfBirth = data.TryGetValueSafe<int>("dateOfBirth");
+			    this._Country = data.TryGetValueSafe<string>("country");
+			    this._State = data.TryGetValueSafe<string>("state");
+			    this._City = data.TryGetValueSafe<string>("city");
+			    this._Zip = data.TryGetValueSafe<string>("zip");
+			    this._ThumbnailUrl = data.TryGetValueSafe<string>("thumbnailUrl");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._Tags = data.TryGetValueSafe<string>("tags");
+			    this._AdminTags = data.TryGetValueSafe<string>("adminTags");
+			    this._Gender = (Gender)ParseEnum(typeof(Gender), data.TryGetValueSafe<int>("gender"));
+			    this._Status = (UserStatus)ParseEnum(typeof(UserStatus), data.TryGetValueSafe<int>("status"));
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._PartnerData = data.TryGetValueSafe<string>("partnerData");
+			    this._IndexedPartnerDataInt = data.TryGetValueSafe<int>("indexedPartnerDataInt");
+			    this._IndexedPartnerDataString = data.TryGetValueSafe<string>("indexedPartnerDataString");
+			    this._StorageSize = data.TryGetValueSafe<int>("storageSize");
+			    this._Password = data.TryGetValueSafe<string>("password");
+			    this._FirstName = data.TryGetValueSafe<string>("firstName");
+			    this._LastName = data.TryGetValueSafe<string>("lastName");
+			    this._IsAdmin = data.TryGetValueSafe<bool>("isAdmin");
+			    this._Language = (LanguageCode)StringEnum.Parse(typeof(LanguageCode), data.TryGetValueSafe<string>("language"));
+			    this._LastLoginTime = data.TryGetValueSafe<int>("lastLoginTime");
+			    this._StatusUpdatedAt = data.TryGetValueSafe<int>("statusUpdatedAt");
+			    this._DeletedAt = data.TryGetValueSafe<int>("deletedAt");
+			    this._LoginEnabled = data.TryGetValueSafe<bool>("loginEnabled");
+			    this._RoleIds = data.TryGetValueSafe<string>("roleIds");
+			    this._RoleNames = data.TryGetValueSafe<string>("roleNames");
+			    this._IsAccountOwner = data.TryGetValueSafe<bool>("isAccountOwner");
+			    this._AllowedPartnerIds = data.TryGetValueSafe<string>("allowedPartnerIds");
+			    this._AllowedPartnerPackages = data.TryGetValueSafe<string>("allowedPartnerPackages");
+			    this._UserMode = (UserMode)ParseEnum(typeof(UserMode), data.TryGetValueSafe<int>("userMode"));
+		}
 		#endregion
 
 		#region Methods

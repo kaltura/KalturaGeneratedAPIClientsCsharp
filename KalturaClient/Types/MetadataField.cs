@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public MetadataField(IDictionary<string,object> data) : base(data)
+		{
+			    this._XPath = data.TryGetValueSafe<string>("xPath");
+			    this._ProfileId = data.TryGetValueSafe<int>("profileId");
+			    this._ProfileSystemName = data.TryGetValueSafe<string>("profileSystemName");
+		}
 		#endregion
 
 		#region Methods

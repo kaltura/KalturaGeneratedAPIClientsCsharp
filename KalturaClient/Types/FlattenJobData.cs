@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public FlattenJobData(XmlElement node) : base(node)
 		{
 		}
+
+		public FlattenJobData(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

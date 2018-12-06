@@ -178,6 +178,20 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UserRole(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._SystemName = data.TryGetValueSafe<string>("systemName");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._Status = (UserRoleStatus)ParseEnum(typeof(UserRoleStatus), data.TryGetValueSafe<int>("status"));
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._PermissionNames = data.TryGetValueSafe<string>("permissionNames");
+			    this._Tags = data.TryGetValueSafe<string>("tags");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+		}
 		#endregion
 
 		#region Methods

@@ -118,6 +118,19 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DailymotionDistributionJobProviderData(IDictionary<string,object> data) : base(data)
+		{
+			    this._VideoAssetFilePath = data.TryGetValueSafe<string>("videoAssetFilePath");
+			    this._AccessControlGeoBlockingOperation = data.TryGetValueSafe<string>("accessControlGeoBlockingOperation");
+			    this._AccessControlGeoBlockingCountryList = data.TryGetValueSafe<string>("accessControlGeoBlockingCountryList");
+			    this._CaptionsInfo = new List<DailymotionDistributionCaptionInfo>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("captionsInfo", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._CaptionsInfo.Add(ObjectFactory.Create<DailymotionDistributionCaptionInfo>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

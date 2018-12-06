@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public YahooSyndicationFeedFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (YahooSyndicationFeedOrderBy)StringEnum.Parse(typeof(YahooSyndicationFeedOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

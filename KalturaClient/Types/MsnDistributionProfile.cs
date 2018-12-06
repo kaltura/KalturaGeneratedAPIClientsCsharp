@@ -268,6 +268,25 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public MsnDistributionProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._Username = data.TryGetValueSafe<string>("username");
+			    this._Password = data.TryGetValueSafe<string>("password");
+			    this._Domain = data.TryGetValueSafe<string>("domain");
+			    this._CsId = data.TryGetValueSafe<string>("csId");
+			    this._Source = data.TryGetValueSafe<string>("source");
+			    this._SourceFriendlyName = data.TryGetValueSafe<string>("sourceFriendlyName");
+			    this._PageGroup = data.TryGetValueSafe<string>("pageGroup");
+			    this._SourceFlavorParamsId = data.TryGetValueSafe<int>("sourceFlavorParamsId");
+			    this._WmvFlavorParamsId = data.TryGetValueSafe<int>("wmvFlavorParamsId");
+			    this._FlvFlavorParamsId = data.TryGetValueSafe<int>("flvFlavorParamsId");
+			    this._SlFlavorParamsId = data.TryGetValueSafe<int>("slFlavorParamsId");
+			    this._SlHdFlavorParamsId = data.TryGetValueSafe<int>("slHdFlavorParamsId");
+			    this._MsnvideoCat = data.TryGetValueSafe<string>("msnvideoCat");
+			    this._MsnvideoTop = data.TryGetValueSafe<string>("msnvideoTop");
+			    this._MsnvideoTopCat = data.TryGetValueSafe<string>("msnvideoTopCat");
+		}
 		#endregion
 
 		#region Methods

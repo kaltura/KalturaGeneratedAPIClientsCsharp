@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CameraScheduleResourceFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (CameraScheduleResourceOrderBy)StringEnum.Parse(typeof(CameraScheduleResourceOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ReportBaseTotal(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<string>("id");
+			    this._Data = data.TryGetValueSafe<string>("data");
+		}
 		#endregion
 
 		#region Methods

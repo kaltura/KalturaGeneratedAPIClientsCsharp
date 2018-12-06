@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UiConfAdminFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (UiConfAdminOrderBy)StringEnum.Parse(typeof(UiConfAdminOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

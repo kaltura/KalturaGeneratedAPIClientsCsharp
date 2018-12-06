@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public QuestionCuePointBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._QuestionLike = data.TryGetValueSafe<string>("questionLike");
+			    this._QuestionMultiLikeOr = data.TryGetValueSafe<string>("questionMultiLikeOr");
+			    this._QuestionMultiLikeAnd = data.TryGetValueSafe<string>("questionMultiLikeAnd");
+		}
 		#endregion
 
 		#region Methods

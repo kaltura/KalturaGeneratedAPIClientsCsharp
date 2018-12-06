@@ -184,6 +184,19 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CategoryFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._FreeText = data.TryGetValueSafe<string>("freeText");
+			    this._MembersIn = data.TryGetValueSafe<string>("membersIn");
+			    this._NameOrReferenceIdStartsWith = data.TryGetValueSafe<string>("nameOrReferenceIdStartsWith");
+			    this._ManagerEqual = data.TryGetValueSafe<string>("managerEqual");
+			    this._MemberEqual = data.TryGetValueSafe<string>("memberEqual");
+			    this._FullNameStartsWithIn = data.TryGetValueSafe<string>("fullNameStartsWithIn");
+			    this._AncestorIdIn = data.TryGetValueSafe<string>("ancestorIdIn");
+			    this._IdOrInheritedParentIdIn = data.TryGetValueSafe<string>("idOrInheritedParentIdIn");
+			    this._OrderBy = (CategoryOrderBy)StringEnum.Parse(typeof(CategoryOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EmailNotificationGroupRecipientJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._GroupId = data.TryGetValueSafe<string>("groupId");
+		}
 		#endregion
 
 		#region Methods

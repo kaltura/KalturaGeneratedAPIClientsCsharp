@@ -252,6 +252,26 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public Widget(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<string>("id");
+			    this._SourceWidgetId = data.TryGetValueSafe<string>("sourceWidgetId");
+			    this._RootWidgetId = data.TryGetValueSafe<string>("rootWidgetId");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+			    this._UiConfId = data.TryGetValueSafe<int>("uiConfId");
+			    this._SecurityType = (WidgetSecurityType)ParseEnum(typeof(WidgetSecurityType), data.TryGetValueSafe<int>("securityType"));
+			    this._SecurityPolicy = data.TryGetValueSafe<int>("securityPolicy");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._PartnerData = data.TryGetValueSafe<string>("partnerData");
+			    this._WidgetHTML = data.TryGetValueSafe<string>("widgetHTML");
+			    this._EnforceEntitlement = data.TryGetValueSafe<bool>("enforceEntitlement");
+			    this._PrivacyContext = data.TryGetValueSafe<string>("privacyContext");
+			    this._AddEmbedHtml5Support = data.TryGetValueSafe<bool>("addEmbedHtml5Support");
+			    this._Roles = data.TryGetValueSafe<string>("roles");
+		}
 		#endregion
 
 		#region Methods

@@ -160,6 +160,22 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ConcatJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._SrcFiles = new List<String>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("srcFiles", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._SrcFiles.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._DestFilePath = data.TryGetValueSafe<string>("destFilePath");
+			    this._FlavorAssetId = data.TryGetValueSafe<string>("flavorAssetId");
+			    this._Offset = data.TryGetValueSafe<float>("offset");
+			    this._Duration = data.TryGetValueSafe<float>("duration");
+			    this._ConcatenatedDuration = data.TryGetValueSafe<float>("concatenatedDuration");
+			    this._ShouldSort = data.TryGetValueSafe<bool>("shouldSort");
+		}
 		#endregion
 
 		#region Methods

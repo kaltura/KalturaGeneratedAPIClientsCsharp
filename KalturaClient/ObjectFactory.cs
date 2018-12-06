@@ -26,6 +26,7 @@
 // @ignore
 // ===================================================================================================
 using System;
+using System.Collections.Generic;
 using System.Xml;
 using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
@@ -44,10 +45,10 @@ namespace Kaltura
 				return null;
 			}
 				
-			string className = xmlElement["objectType"].InnerText;
+			var className = xmlElement["objectType"].InnerText;
 			className = prefixRegex.Replace(className, "");
 			
-			Type type = Type.GetType("Kaltura.Types." + className);
+			var type = Type.GetType("Kaltura.Types." + className);
 			if (type == null)
 			{
 				type = typeof(T);
@@ -57,6 +58,27 @@ namespace Kaltura
 				throw new SerializationException("Invalid object type");
 			
 			return (T)System.Activator.CreateInstance(type, xmlElement);
+		}
+		public static T Create<T>(IDictionary<string,object> data) where T : ObjectBase
+		{
+			if (data == null || data["objectType"] == null)
+			{
+				return null;
+			}
+				
+			var className = (string)data["objectType"];
+			className = prefixRegex.Replace(className, "");
+			
+			var type = Type.GetType("Kaltura.Types." + className);
+			if (type == null)
+			{
+				type = typeof(T);
+			}
+			
+			if (type == null)
+				throw new SerializationException("Invalid object type");
+			
+			return (T)System.Activator.CreateInstance(type, data);
 		}
 		
 		public static IListResponse Create(XmlElement xmlElement)
@@ -247,6 +269,198 @@ namespace Kaltura
 					return new ListResponse<VirusScanProfile>(xmlElement);
 				case "KalturaWidgetListResponse":
 					return new ListResponse<Widget>(xmlElement);
+			}
+		
+			return null;
+		}
+		public static IListResponse Create(IDictionary<string,object> data)
+		{
+			if (data == null || data["objectType"] == null)
+			{
+				return null;
+			}
+			
+			string className = (string)data["objectType"];
+			switch (className)
+			{
+				case "KalturaFileSyncListResponse":
+					return new ListResponse<FileSync>(data);
+				case "KalturaBatchJobListResponse":
+					return new ListResponse<BatchJob>(data);
+				case "KalturaMediaInfoListResponse":
+					return new ListResponse<MediaInfo>(data);
+				case "KalturaFlavorParamsOutputListResponse":
+					return new ListResponse<FlavorParamsOutput>(data);
+				case "KalturaThumbParamsOutputListResponse":
+					return new ListResponse<ThumbParamsOutput>(data);
+				case "KalturaAccessControlListResponse":
+					return new ListResponse<AccessControl>(data);
+				case "KalturaAccessControlProfileListResponse":
+					return new ListResponse<AccessControlProfile>(data);
+				case "KalturaAnnotationListResponse":
+					return new ListResponse<Annotation>(data);
+				case "KalturaAppTokenListResponse":
+					return new ListResponse<AppToken>(data);
+				case "KalturaAttachmentAssetListResponse":
+					return new ListResponse<AttachmentAsset>(data);
+				case "KalturaAuditTrailListResponse":
+					return new ListResponse<AuditTrail>(data);
+				case "KalturaBaseEntryListResponse":
+					return new ListResponse<BaseEntry>(data);
+				case "KalturaBaseSyndicationFeedListResponse":
+					return new ListResponse<BaseSyndicationFeed>(data);
+				case "KalturaBulkUploadListResponse":
+					return new ListResponse<BulkUpload>(data);
+				case "KalturaBusinessProcessServerListResponse":
+					return new ListResponse<BusinessProcessServer>(data);
+				case "KalturaCaptionAssetItemListResponse":
+					return new ListResponse<CaptionAssetItem>(data);
+				case "KalturaCaptionAssetListResponse":
+					return new ListResponse<CaptionAsset>(data);
+				case "KalturaCaptionParamsListResponse":
+					return new ListResponse<CaptionParams>(data);
+				case "KalturaCategoryEntryListResponse":
+					return new ListResponse<CategoryEntry>(data);
+				case "KalturaCategoryListResponse":
+					return new ListResponse<Category>(data);
+				case "KalturaCategoryUserListResponse":
+					return new ListResponse<CategoryUser>(data);
+				case "KalturaControlPanelCommandListResponse":
+					return new ListResponse<ControlPanelCommand>(data);
+				case "KalturaConversionProfileAssetParamsListResponse":
+					return new ListResponse<ConversionProfileAssetParams>(data);
+				case "KalturaConversionProfileListResponse":
+					return new ListResponse<ConversionProfile>(data);
+				case "KalturaCuePointListResponse":
+					return new ListResponse<CuePoint>(data);
+				case "KalturaDataListResponse":
+					return new ListResponse<DataEntry>(data);
+				case "KalturaDeliveryProfileListResponse":
+					return new ListResponse<DeliveryProfile>(data);
+				case "KalturaDistributionProfileListResponse":
+					return new ListResponse<DistributionProfile>(data);
+				case "KalturaDistributionProviderListResponse":
+					return new ListResponse<DistributionProvider>(data);
+				case "KalturaDocumentListResponse":
+					return new ListResponse<DocumentEntry>(data);
+				case "KalturaDrmPolicyListResponse":
+					return new ListResponse<DrmPolicy>(data);
+				case "KalturaDrmProfileListResponse":
+					return new ListResponse<DrmProfile>(data);
+				case "KalturaDropFolderFileListResponse":
+					return new ListResponse<DropFolderFile>(data);
+				case "KalturaDropFolderListResponse":
+					return new ListResponse<DropFolder>(data);
+				case "KalturaEntryDistributionListResponse":
+					return new ListResponse<EntryDistribution>(data);
+				case "KalturaEntryServerNodeListResponse":
+					return new ListResponse<EntryServerNode>(data);
+				case "KalturaEventNotificationTemplateListResponse":
+					return new ListResponse<EventNotificationTemplate>(data);
+				case "KalturaExternalMediaEntryListResponse":
+					return new ListResponse<ExternalMediaEntry>(data);
+				case "KalturaFeatureStatusListResponse":
+					return new ListResponse<FeatureStatus>(data);
+				case "KalturaFileAssetListResponse":
+					return new ListResponse<FileAsset>(data);
+				case "KalturaFlavorAssetListResponse":
+					return new ListResponse<FlavorAsset>(data);
+				case "KalturaFlavorParamsListResponse":
+					return new ListResponse<FlavorParams>(data);
+				case "KalturaGenericDistributionProviderActionListResponse":
+					return new ListResponse<GenericDistributionProviderAction>(data);
+				case "KalturaGenericDistributionProviderListResponse":
+					return new ListResponse<GenericDistributionProvider>(data);
+				case "KalturaGroupUserListResponse":
+					return new ListResponse<GroupUser>(data);
+				case "KalturaLikeListResponse":
+					return new ListResponse<Like>(data);
+				case "KalturaLiveChannelListResponse":
+					return new ListResponse<LiveChannel>(data);
+				case "KalturaLiveChannelSegmentListResponse":
+					return new ListResponse<LiveChannelSegment>(data);
+				case "KalturaLiveStreamListResponse":
+					return new ListResponse<LiveStreamEntry>(data);
+				case "KalturaMediaListResponse":
+					return new ListResponse<MediaEntry>(data);
+				case "KalturaMetadataListResponse":
+					return new ListResponse<Metadata>(data);
+				case "KalturaMetadataProfileFieldListResponse":
+					return new ListResponse<MetadataProfileField>(data);
+				case "KalturaMetadataProfileListResponse":
+					return new ListResponse<MetadataProfile>(data);
+				case "KalturaMixListResponse":
+					return new ListResponse<MixEntry>(data);
+				case "KalturaModerationFlagListResponse":
+					return new ListResponse<ModerationFlag>(data);
+				case "KalturaObjectListResponse":
+					return new ListResponse<ObjectBase>(data);
+				case "KalturaPartnerListResponse":
+					return new ListResponse<Partner>(data);
+				case "KalturaPartnerUsageListResponse":
+					return new ListResponse<VarPartnerUsageItem>(data);
+				case "KalturaPermissionItemListResponse":
+					return new ListResponse<PermissionItem>(data);
+				case "KalturaPermissionListResponse":
+					return new ListResponse<Permission>(data);
+				case "KalturaPlaylistListResponse":
+					return new ListResponse<Playlist>(data);
+				case "KalturaQuizListResponse":
+					return new ListResponse<Quiz>(data);
+				case "KalturaRemotePathListResponse":
+					return new ListResponse<RemotePath>(data);
+				case "KalturaReportListResponse":
+					return new ListResponse<Report>(data);
+				case "KalturaResponseProfileListResponse":
+					return new ListResponse<ResponseProfile>(data);
+				case "KalturaScheduleEventListResponse":
+					return new ListResponse<ScheduleEvent>(data);
+				case "KalturaScheduleEventResourceListResponse":
+					return new ListResponse<ScheduleEventResource>(data);
+				case "KalturaScheduleResourceListResponse":
+					return new ListResponse<ScheduleResource>(data);
+				case "KalturaScheduledTaskProfileListResponse":
+					return new ListResponse<ScheduledTaskProfile>(data);
+				case "KalturaSchedulerListResponse":
+					return new ListResponse<Scheduler>(data);
+				case "KalturaSchedulerWorkerListResponse":
+					return new ListResponse<SchedulerWorker>(data);
+				case "KalturaServerNodeListResponse":
+					return new ListResponse<ServerNode>(data);
+				case "KalturaShortLinkListResponse":
+					return new ListResponse<ShortLink>(data);
+				case "KalturaStorageProfileListResponse":
+					return new ListResponse<StorageProfile>(data);
+				case "KalturaSystemPartnerUsageListResponse":
+					return new ListResponse<SystemPartnerUsageItem>(data);
+				case "KalturaTagListResponse":
+					return new ListResponse<Tag>(data);
+				case "KalturaThumbAssetListResponse":
+					return new ListResponse<ThumbAsset>(data);
+				case "KalturaThumbParamsListResponse":
+					return new ListResponse<ThumbParams>(data);
+				case "KalturaTrackEntryListResponse":
+					return new ListResponse<TrackEntry>(data);
+				case "KalturaTranscriptAssetListResponse":
+					return new ListResponse<TranscriptAsset>(data);
+				case "KalturaUiConfAdminListResponse":
+					return new ListResponse<UiConfAdmin>(data);
+				case "KalturaUiConfListResponse":
+					return new ListResponse<UiConf>(data);
+				case "KalturaUploadTokenListResponse":
+					return new ListResponse<UploadToken>(data);
+				case "KalturaUserEntryListResponse":
+					return new ListResponse<UserEntry>(data);
+				case "KalturaUserListResponse":
+					return new ListResponse<User>(data);
+				case "KalturaUserLoginDataListResponse":
+					return new ListResponse<UserLoginData>(data);
+				case "KalturaUserRoleListResponse":
+					return new ListResponse<UserRole>(data);
+				case "KalturaVirusScanProfileListResponse":
+					return new ListResponse<VirusScanProfile>(data);
+				case "KalturaWidgetListResponse":
+					return new ListResponse<Widget>(data);
 			}
 		
 			return null;

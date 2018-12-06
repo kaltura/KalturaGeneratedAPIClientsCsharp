@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public StorageDeleteJobData(XmlElement node) : base(node)
 		{
 		}
+
+		public StorageDeleteJobData(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

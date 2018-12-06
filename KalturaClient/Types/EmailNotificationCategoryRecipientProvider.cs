@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EmailNotificationCategoryRecipientProvider(IDictionary<string,object> data) : base(data)
+		{
+			    this._CategoryId = ObjectFactory.Create<StringValue>(data.TryGetValueSafe<IDictionary<string,object>>("categoryId"));
+			    this._CategoryIds = ObjectFactory.Create<StringValue>(data.TryGetValueSafe<IDictionary<string,object>>("categoryIds"));
+			    this._CategoryUserFilter = ObjectFactory.Create<CategoryUserProviderFilter>(data.TryGetValueSafe<IDictionary<string,object>>("categoryUserFilter"));
+		}
 		#endregion
 
 		#region Methods

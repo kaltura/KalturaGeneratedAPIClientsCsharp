@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ESearchCategoryUserItem(IDictionary<string,object> data) : base(data)
+		{
+			    this._FieldName = (ESearchCategoryUserFieldName)StringEnum.Parse(typeof(ESearchCategoryUserFieldName), data.TryGetValueSafe<string>("fieldName"));
+			    this._PermissionLevel = (CategoryUserPermissionLevel)ParseEnum(typeof(CategoryUserPermissionLevel), data.TryGetValueSafe<int>("permissionLevel"));
+			    this._PermissionName = data.TryGetValueSafe<string>("permissionName");
+		}
 		#endregion
 
 		#region Methods

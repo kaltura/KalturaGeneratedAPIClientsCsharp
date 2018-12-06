@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DistributionValidationErrorMissingFlavor(IDictionary<string,object> data) : base(data)
+		{
+			    this._FlavorParamsId = data.TryGetValueSafe<string>("flavorParamsId");
+		}
 		#endregion
 
 		#region Methods

@@ -109,6 +109,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CodeCuePoint(IDictionary<string,object> data) : base(data)
+		{
+			    this._Code = data.TryGetValueSafe<string>("code");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._EndTime = data.TryGetValueSafe<int>("endTime");
+			    this._Duration = data.TryGetValueSafe<int>("duration");
+		}
 		#endregion
 
 		#region Methods

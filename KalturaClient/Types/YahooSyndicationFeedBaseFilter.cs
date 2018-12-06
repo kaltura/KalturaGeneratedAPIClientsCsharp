@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public YahooSyndicationFeedBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public YahooSyndicationFeedBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

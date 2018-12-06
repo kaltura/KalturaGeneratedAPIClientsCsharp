@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ServerNode>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ServerNode>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ServerNodeDeleteRequestBuilder : RequestBuilder<object>
@@ -116,6 +120,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -162,6 +170,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ServerNode>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ServerNode>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ServerNodeEnableRequestBuilder : RequestBuilder<ServerNode>
@@ -205,6 +217,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ServerNode>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ServerNode>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ServerNodeGetRequestBuilder : RequestBuilder<ServerNode>
@@ -247,6 +263,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ServerNode>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ServerNode>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -318,6 +338,10 @@ namespace Kaltura.Services
 		{
 			return result.InnerText;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
+		}
 	}
 
 	public class ServerNodeListRequestBuilder : RequestBuilder<ListResponse<ServerNode>>
@@ -370,6 +394,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<ServerNode>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<ServerNode>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ServerNodeMarkOfflineRequestBuilder : RequestBuilder<ServerNode>
@@ -412,6 +440,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ServerNode>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ServerNode>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -474,6 +506,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ServerNode>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ServerNode>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ServerNodeUpdateRequestBuilder : RequestBuilder<ServerNode>
@@ -525,6 +561,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ServerNode>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ServerNode>((IDictionary<string,object>)result);
 		}
 	}
 

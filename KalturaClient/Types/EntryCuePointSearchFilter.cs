@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EntryCuePointSearchFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._CuePointsFreeText = data.TryGetValueSafe<string>("cuePointsFreeText");
+			    this._CuePointTypeIn = data.TryGetValueSafe<string>("cuePointTypeIn");
+			    this._CuePointSubTypeEqual = data.TryGetValueSafe<int>("cuePointSubTypeEqual");
+		}
 		#endregion
 
 		#region Methods

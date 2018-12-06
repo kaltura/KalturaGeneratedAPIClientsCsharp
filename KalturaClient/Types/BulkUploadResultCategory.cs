@@ -254,6 +254,24 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BulkUploadResultCategory(IDictionary<string,object> data) : base(data)
+		{
+			    this._RelativePath = data.TryGetValueSafe<string>("relativePath");
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._ReferenceId = data.TryGetValueSafe<string>("referenceId");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._Tags = data.TryGetValueSafe<string>("tags");
+			    this._AppearInList = data.TryGetValueSafe<int>("appearInList");
+			    this._Privacy = data.TryGetValueSafe<int>("privacy");
+			    this._InheritanceType = data.TryGetValueSafe<int>("inheritanceType");
+			    this._UserJoinPolicy = data.TryGetValueSafe<int>("userJoinPolicy");
+			    this._DefaultPermissionLevel = data.TryGetValueSafe<int>("defaultPermissionLevel");
+			    this._Owner = data.TryGetValueSafe<string>("owner");
+			    this._ContributionPolicy = data.TryGetValueSafe<int>("contributionPolicy");
+			    this._PartnerSortValue = data.TryGetValueSafe<int>("partnerSortValue");
+			    this._Moderation = data.TryGetValueSafe<bool>("moderation");
+		}
 		#endregion
 
 		#region Methods

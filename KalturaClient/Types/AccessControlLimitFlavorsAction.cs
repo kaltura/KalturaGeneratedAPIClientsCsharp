@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AccessControlLimitFlavorsAction(IDictionary<string,object> data) : base(data)
+		{
+			    this._FlavorParamsIds = data.TryGetValueSafe<string>("flavorParamsIds");
+			    this._IsBlockedList = data.TryGetValueSafe<bool>("isBlockedList");
+		}
 		#endregion
 
 		#region Methods

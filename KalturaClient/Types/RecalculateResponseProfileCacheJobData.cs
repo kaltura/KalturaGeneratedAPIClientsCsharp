@@ -160,6 +160,22 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public RecalculateResponseProfileCacheJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._Protocol = data.TryGetValueSafe<string>("protocol");
+			    this._KsType = (SessionType)ParseEnum(typeof(SessionType), data.TryGetValueSafe<int>("ksType"));
+			    this._UserRoles = new List<IntegerValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("userRoles", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._UserRoles.Add(ObjectFactory.Create<IntegerValue>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._CachedObjectType = data.TryGetValueSafe<string>("cachedObjectType");
+			    this._ObjectId = data.TryGetValueSafe<string>("objectId");
+			    this._StartObjectKey = data.TryGetValueSafe<string>("startObjectKey");
+			    this._EndObjectKey = data.TryGetValueSafe<string>("endObjectKey");
+		}
 		#endregion
 
 		#region Methods

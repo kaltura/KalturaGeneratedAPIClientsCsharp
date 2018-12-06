@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AppTokenFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (AppTokenOrderBy)StringEnum.Parse(typeof(AppTokenOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

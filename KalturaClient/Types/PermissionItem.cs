@@ -117,6 +117,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PermissionItem(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._Type = (PermissionItemType)StringEnum.Parse(typeof(PermissionItemType), data.TryGetValueSafe<string>("type"));
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._Tags = data.TryGetValueSafe<string>("tags");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+		}
 		#endregion
 
 		#region Methods

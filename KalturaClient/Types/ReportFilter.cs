@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ReportFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._Dimension = data.TryGetValueSafe<string>("dimension");
+			    this._Values = data.TryGetValueSafe<string>("values");
+		}
 		#endregion
 
 		#region Methods

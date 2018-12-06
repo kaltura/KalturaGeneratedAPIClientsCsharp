@@ -212,6 +212,21 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public StorageJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._ServerUrl = data.TryGetValueSafe<string>("serverUrl");
+			    this._ServerUsername = data.TryGetValueSafe<string>("serverUsername");
+			    this._ServerPassword = data.TryGetValueSafe<string>("serverPassword");
+			    this._ServerPrivateKey = data.TryGetValueSafe<string>("serverPrivateKey");
+			    this._ServerPublicKey = data.TryGetValueSafe<string>("serverPublicKey");
+			    this._ServerPassPhrase = data.TryGetValueSafe<string>("serverPassPhrase");
+			    this._FtpPassiveMode = data.TryGetValueSafe<bool>("ftpPassiveMode");
+			    this._SrcFileSyncLocalPath = data.TryGetValueSafe<string>("srcFileSyncLocalPath");
+			    this._SrcFileEncryptionKey = data.TryGetValueSafe<string>("srcFileEncryptionKey");
+			    this._SrcFileSyncId = data.TryGetValueSafe<string>("srcFileSyncId");
+			    this._DestFileSyncStoredPath = data.TryGetValueSafe<string>("destFileSyncStoredPath");
+		}
 		#endregion
 
 		#region Methods

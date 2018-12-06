@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ConvertEntryFlavorsObjectTask(IDictionary<string,object> data) : base(data)
+		{
+			    this._FlavorParamsIds = data.TryGetValueSafe<string>("flavorParamsIds");
+			    this._Reconvert = data.TryGetValueSafe<bool>("reconvert");
+		}
 		#endregion
 
 		#region Methods

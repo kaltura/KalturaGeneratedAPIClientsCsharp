@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public LiveAssetBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public LiveAssetBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

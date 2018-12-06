@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<DistributionProfile>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DistributionProfile>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DistributionProfileDeleteRequestBuilder : RequestBuilder<object>
@@ -116,6 +120,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -161,6 +169,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<DistributionProfile>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DistributionProfile>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -214,6 +226,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<DistributionProfile>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<DistributionProfile>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DistributionProfileListByPartnerRequestBuilder : RequestBuilder<ListResponse<DistributionProfile>>
@@ -265,6 +281,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<DistributionProfile>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<DistributionProfile>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -318,6 +338,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<DistributionProfile>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DistributionProfile>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DistributionProfileUpdateStatusRequestBuilder : RequestBuilder<DistributionProfile>
@@ -369,6 +393,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<DistributionProfile>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DistributionProfile>((IDictionary<string,object>)result);
 		}
 	}
 

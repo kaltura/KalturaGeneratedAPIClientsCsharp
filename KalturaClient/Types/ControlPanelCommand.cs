@@ -281,6 +281,27 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ControlPanelCommand(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._CreatedBy = data.TryGetValueSafe<string>("createdBy");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._UpdatedBy = data.TryGetValueSafe<string>("updatedBy");
+			    this._CreatedById = data.TryGetValueSafe<int>("createdById");
+			    this._SchedulerId = data.TryGetValueSafe<int>("schedulerId");
+			    this._WorkerId = data.TryGetValueSafe<int>("workerId");
+			    this._WorkerConfiguredId = data.TryGetValueSafe<int>("workerConfiguredId");
+			    this._WorkerName = data.TryGetValueSafe<int>("workerName");
+			    this._BatchIndex = data.TryGetValueSafe<int>("batchIndex");
+			    this._Type = (ControlPanelCommandType)ParseEnum(typeof(ControlPanelCommandType), data.TryGetValueSafe<int>("type"));
+			    this._TargetType = (ControlPanelCommandTargetType)ParseEnum(typeof(ControlPanelCommandTargetType), data.TryGetValueSafe<int>("targetType"));
+			    this._Status = (ControlPanelCommandStatus)ParseEnum(typeof(ControlPanelCommandStatus), data.TryGetValueSafe<int>("status"));
+			    this._Cause = data.TryGetValueSafe<string>("cause");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._ErrorDescription = data.TryGetValueSafe<string>("errorDescription");
+		}
 		#endregion
 
 		#region Methods

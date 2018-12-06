@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BpmEventNotificationIntegrationJobTriggerData(IDictionary<string,object> data) : base(data)
+		{
+			    this._TemplateId = data.TryGetValueSafe<int>("templateId");
+			    this._BusinessProcessId = data.TryGetValueSafe<string>("businessProcessId");
+			    this._CaseId = data.TryGetValueSafe<string>("caseId");
+		}
 		#endregion
 
 		#region Methods

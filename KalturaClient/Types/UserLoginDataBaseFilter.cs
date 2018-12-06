@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UserLoginDataBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._LoginEmailEqual = data.TryGetValueSafe<string>("loginEmailEqual");
+		}
 		#endregion
 
 		#region Methods

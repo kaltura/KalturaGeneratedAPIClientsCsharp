@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DrmEntryContextPluginData(IDictionary<string,object> data) : base(data)
+		{
+			    this._FlavorData = data.TryGetValueSafe<string>("flavorData");
+		}
 		#endregion
 
 		#region Methods

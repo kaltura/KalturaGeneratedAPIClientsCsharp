@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UrlTokenizerAkamaiRtsp(IDictionary<string,object> data) : base(data)
+		{
+			    this._Host = data.TryGetValueSafe<string>("host");
+			    this._Cpcode = data.TryGetValueSafe<int>("cpcode");
+		}
 		#endregion
 
 		#region Methods

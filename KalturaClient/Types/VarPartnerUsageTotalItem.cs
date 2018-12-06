@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public VarPartnerUsageTotalItem(XmlElement node) : base(node)
 		{
 		}
+
+		public VarPartnerUsageTotalItem(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

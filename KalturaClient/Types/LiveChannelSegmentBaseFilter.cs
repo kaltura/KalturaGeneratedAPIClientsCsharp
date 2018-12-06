@@ -198,6 +198,20 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveChannelSegmentBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
+			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
+			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
+			    this._StatusEqual = (LiveChannelSegmentStatus)StringEnum.Parse(typeof(LiveChannelSegmentStatus), data.TryGetValueSafe<string>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			    this._ChannelIdEqual = data.TryGetValueSafe<string>("channelIdEqual");
+			    this._ChannelIdIn = data.TryGetValueSafe<string>("channelIdIn");
+			    this._StartTimeGreaterThanOrEqual = data.TryGetValueSafe<float>("startTimeGreaterThanOrEqual");
+			    this._StartTimeLessThanOrEqual = data.TryGetValueSafe<float>("startTimeLessThanOrEqual");
+		}
 		#endregion
 
 		#region Methods

@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public DeliveryProfileGenericSilverLightBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public DeliveryProfileGenericSilverLightBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

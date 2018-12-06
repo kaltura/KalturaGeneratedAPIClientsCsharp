@@ -95,6 +95,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public Condition(IDictionary<string,object> data) : base(data)
+		{
+			    this._Type = (ConditionType)StringEnum.Parse(typeof(ConditionType), data.TryGetValueSafe<string>("type"));
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._Not = data.TryGetValueSafe<bool>("not");
+		}
 		#endregion
 
 		#region Methods

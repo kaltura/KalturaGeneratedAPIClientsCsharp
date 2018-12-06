@@ -142,6 +142,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public WidevineProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._Key = data.TryGetValueSafe<string>("key");
+			    this._Iv = data.TryGetValueSafe<string>("iv");
+			    this._Owner = data.TryGetValueSafe<string>("owner");
+			    this._Portal = data.TryGetValueSafe<string>("portal");
+			    this._MaxGop = data.TryGetValueSafe<int>("maxGop");
+			    this._RegServerHost = data.TryGetValueSafe<string>("regServerHost");
+		}
 		#endregion
 
 		#region Methods

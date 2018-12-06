@@ -81,6 +81,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DocumentEntry(IDictionary<string,object> data) : base(data)
+		{
+			    this._DocumentType = (DocumentType)ParseEnum(typeof(DocumentType), data.TryGetValueSafe<int>("documentType"));
+			    this._AssetParamsIds = data.TryGetValueSafe<string>("assetParamsIds");
+		}
 		#endregion
 
 		#region Methods

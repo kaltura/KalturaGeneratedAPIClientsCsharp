@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<FlavorParamsOutput>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<FlavorParamsOutput>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class FlavorParamsOutputListRequestBuilder : RequestBuilder<ListResponse<FlavorParamsOutput>>
@@ -127,6 +131,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<FlavorParamsOutput>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<FlavorParamsOutput>>((IDictionary<string,object>)result);
 		}
 	}
 

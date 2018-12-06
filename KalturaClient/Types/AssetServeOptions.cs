@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AssetServeOptions(IDictionary<string,object> data) : base(data)
+		{
+			    this._Download = data.TryGetValueSafe<bool>("download");
+			    this._Referrer = data.TryGetValueSafe<string>("referrer");
+		}
 		#endregion
 
 		#region Methods

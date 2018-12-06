@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public FtpScheduledDistributionProviderBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public FtpScheduledDistributionProviderBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AssetParamsResourceContainer(IDictionary<string,object> data) : base(data)
+		{
+			    this._Resource = ObjectFactory.Create<ContentResource>(data.TryGetValueSafe<IDictionary<string,object>>("resource"));
+			    this._AssetParamsId = data.TryGetValueSafe<int>("assetParamsId");
+		}
 		#endregion
 
 		#region Methods

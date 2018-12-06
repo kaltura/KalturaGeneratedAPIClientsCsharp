@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public MixEntryCompareAttributeCondition(IDictionary<string,object> data) : base(data)
+		{
+			    this._Attribute = (MixEntryCompareAttribute)StringEnum.Parse(typeof(MixEntryCompareAttribute), data.TryGetValueSafe<string>("attribute"));
+		}
 		#endregion
 
 		#region Methods

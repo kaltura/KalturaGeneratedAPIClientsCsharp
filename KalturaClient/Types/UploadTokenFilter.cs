@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UploadTokenFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (UploadTokenOrderBy)StringEnum.Parse(typeof(UploadTokenOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PlayReadyCopyEnablerHolder(IDictionary<string,object> data) : base(data)
+		{
+			    this._Type = (PlayReadyCopyEnablerType)StringEnum.Parse(typeof(PlayReadyCopyEnablerType), data.TryGetValueSafe<string>("type"));
+		}
 		#endregion
 
 		#region Methods

@@ -296,6 +296,27 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AssetBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IdEqual = data.TryGetValueSafe<string>("idEqual");
+			    this._IdIn = data.TryGetValueSafe<string>("idIn");
+			    this._EntryIdEqual = data.TryGetValueSafe<string>("entryIdEqual");
+			    this._EntryIdIn = data.TryGetValueSafe<string>("entryIdIn");
+			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
+			    this._PartnerIdIn = data.TryGetValueSafe<string>("partnerIdIn");
+			    this._SizeGreaterThanOrEqual = data.TryGetValueSafe<int>("sizeGreaterThanOrEqual");
+			    this._SizeLessThanOrEqual = data.TryGetValueSafe<int>("sizeLessThanOrEqual");
+			    this._TagsLike = data.TryGetValueSafe<string>("tagsLike");
+			    this._TagsMultiLikeOr = data.TryGetValueSafe<string>("tagsMultiLikeOr");
+			    this._TagsMultiLikeAnd = data.TryGetValueSafe<string>("tagsMultiLikeAnd");
+			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
+			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
+			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
+			    this._DeletedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("deletedAtGreaterThanOrEqual");
+			    this._DeletedAtLessThanOrEqual = data.TryGetValueSafe<int>("deletedAtLessThanOrEqual");
+		}
 		#endregion
 
 		#region Methods

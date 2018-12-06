@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public SyncCategoryPrivacyContextJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._CategoryId = data.TryGetValueSafe<int>("categoryId");
+			    this._LastUpdatedCategoryEntryCreatedAt = data.TryGetValueSafe<int>("lastUpdatedCategoryEntryCreatedAt");
+			    this._LastUpdatedCategoryCreatedAt = data.TryGetValueSafe<int>("lastUpdatedCategoryCreatedAt");
+		}
 		#endregion
 
 		#region Methods

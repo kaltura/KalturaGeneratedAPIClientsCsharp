@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DistributionDeleteJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._KeepDistributionItem = data.TryGetValueSafe<bool>("keepDistributionItem");
+		}
 		#endregion
 
 		#region Methods

@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FtpDropFolderFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (FtpDropFolderOrderBy)StringEnum.Parse(typeof(FtpDropFolderOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

@@ -104,6 +104,18 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ClipConcatJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._Priority = data.TryGetValueSafe<int>("priority");
+			    this._OperationAttributes = new List<ObjectBase>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("operationAttributes", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._OperationAttributes.Add(ObjectFactory.Create<ObjectBase>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

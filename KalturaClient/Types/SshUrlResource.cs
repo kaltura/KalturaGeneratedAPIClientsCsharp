@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public SshUrlResource(IDictionary<string,object> data) : base(data)
+		{
+			    this._PrivateKey = data.TryGetValueSafe<string>("privateKey");
+			    this._PublicKey = data.TryGetValueSafe<string>("publicKey");
+			    this._KeyPassphrase = data.TryGetValueSafe<string>("keyPassphrase");
+		}
 		#endregion
 
 		#region Methods

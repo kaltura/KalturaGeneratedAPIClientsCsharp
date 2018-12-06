@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public BusinessProcessNotificationTemplateBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public BusinessProcessNotificationTemplateBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

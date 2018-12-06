@@ -226,6 +226,22 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public WidgetBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IdEqual = data.TryGetValueSafe<string>("idEqual");
+			    this._IdIn = data.TryGetValueSafe<string>("idIn");
+			    this._SourceWidgetIdEqual = data.TryGetValueSafe<string>("sourceWidgetIdEqual");
+			    this._RootWidgetIdEqual = data.TryGetValueSafe<string>("rootWidgetIdEqual");
+			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
+			    this._EntryIdEqual = data.TryGetValueSafe<string>("entryIdEqual");
+			    this._UiConfIdEqual = data.TryGetValueSafe<int>("uiConfIdEqual");
+			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
+			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
+			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
+			    this._PartnerDataLike = data.TryGetValueSafe<string>("partnerDataLike");
+		}
 		#endregion
 
 		#region Methods

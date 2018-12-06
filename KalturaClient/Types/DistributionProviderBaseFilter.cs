@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DistributionProviderBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._TypeEqual = (DistributionProviderType)StringEnum.Parse(typeof(DistributionProviderType), data.TryGetValueSafe<string>("typeEqual"));
+			    this._TypeIn = data.TryGetValueSafe<string>("typeIn");
+		}
 		#endregion
 
 		#region Methods

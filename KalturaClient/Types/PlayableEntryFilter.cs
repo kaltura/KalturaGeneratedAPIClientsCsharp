@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PlayableEntryFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (PlayableEntryOrderBy)StringEnum.Parse(typeof(PlayableEntryOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BulkUploadFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (BulkUploadOrderBy)StringEnum.Parse(typeof(BulkUploadOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

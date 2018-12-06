@@ -103,6 +103,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<Metadata>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<Metadata>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class MetadataAddFromBulkRequestBuilder : RequestBuilder<Metadata>
@@ -173,6 +177,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<Metadata>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<Metadata>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class MetadataAddFromFileRequestBuilder : RequestBuilder<Metadata>
@@ -241,6 +249,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<Metadata>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<Metadata>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -312,6 +324,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<Metadata>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<Metadata>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class MetadataDeleteRequestBuilder : RequestBuilder<object>
@@ -352,6 +368,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -397,6 +417,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<Metadata>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<Metadata>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -450,6 +474,10 @@ namespace Kaltura.Services
 		{
 			return int.Parse(result.InnerText);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (int)(result);
+		}
 	}
 
 	public class MetadataInvalidateRequestBuilder : RequestBuilder<object>
@@ -499,6 +527,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -553,6 +585,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<Metadata>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<Metadata>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -615,6 +651,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<Metadata>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<Metadata>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class MetadataUpdateFromFileRequestBuilder : RequestBuilder<Metadata>
@@ -666,6 +706,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<Metadata>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<Metadata>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class MetadataUpdateFromXSLRequestBuilder : RequestBuilder<Metadata>
@@ -716,6 +760,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<Metadata>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<Metadata>((IDictionary<string,object>)result);
 		}
 	}
 

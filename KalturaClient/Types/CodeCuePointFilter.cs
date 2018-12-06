@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CodeCuePointFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (CodeCuePointOrderBy)StringEnum.Parse(typeof(CodeCuePointOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

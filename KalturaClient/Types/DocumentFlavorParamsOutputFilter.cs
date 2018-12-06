@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DocumentFlavorParamsOutputFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (DocumentFlavorParamsOutputOrderBy)StringEnum.Parse(typeof(DocumentFlavorParamsOutputOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

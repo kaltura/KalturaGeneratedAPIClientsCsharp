@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PdfFlavorParamsOutput(IDictionary<string,object> data) : base(data)
+		{
+			    this._Readonly = data.TryGetValueSafe<bool>("readonly");
+		}
 		#endregion
 
 		#region Methods

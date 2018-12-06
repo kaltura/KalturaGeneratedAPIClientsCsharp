@@ -118,6 +118,19 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ClipAttributes(IDictionary<string,object> data) : base(data)
+		{
+			    this._Offset = data.TryGetValueSafe<int>("offset");
+			    this._Duration = data.TryGetValueSafe<int>("duration");
+			    this._GlobalOffsetInDestination = data.TryGetValueSafe<int>("globalOffsetInDestination");
+			    this._EffectArray = new List<Effect>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("effectArray", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._EffectArray.Add(ObjectFactory.Create<Effect>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

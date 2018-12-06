@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ExtendingItemMrssParameter(IDictionary<string,object> data) : base(data)
+		{
+			    this._Xpath = data.TryGetValueSafe<string>("xpath");
+			    this._Identifier = ObjectFactory.Create<ObjectIdentifier>(data.TryGetValueSafe<IDictionary<string,object>>("identifier"));
+			    this._ExtensionMode = (MrssExtensionMode)ParseEnum(typeof(MrssExtensionMode), data.TryGetValueSafe<int>("extensionMode"));
+		}
 		#endregion
 
 		#region Methods

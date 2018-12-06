@@ -90,6 +90,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public GenericXsltSyndicationFeed(IDictionary<string,object> data) : base(data)
+		{
+			    this._Xslt = data.TryGetValueSafe<string>("xslt");
+			    this._ItemXpathsToExtend = new List<ExtendingItemMrssParameter>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("itemXpathsToExtend", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._ItemXpathsToExtend.Add(ObjectFactory.Create<ExtendingItemMrssParameter>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

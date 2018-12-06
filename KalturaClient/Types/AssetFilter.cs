@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AssetFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._TypeIn = data.TryGetValueSafe<string>("typeIn");
+			    this._OrderBy = (AssetOrderBy)StringEnum.Parse(typeof(AssetOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

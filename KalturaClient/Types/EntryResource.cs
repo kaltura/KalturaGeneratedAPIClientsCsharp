@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EntryResource(IDictionary<string,object> data) : base(data)
+		{
+			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+			    this._FlavorParamsId = data.TryGetValueSafe<int>("flavorParamsId");
+		}
 		#endregion
 
 		#region Methods

@@ -94,6 +94,10 @@ namespace Kaltura.Services
 		{
 			return null;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return null;
+		}
 	}
 
 	public class BusinessProcessCaseListRequestBuilder : RequestBuilder<IList<BusinessProcessCase>>
@@ -146,6 +150,15 @@ namespace Kaltura.Services
 		{
 			IList<BusinessProcessCase> list = new List<BusinessProcessCase>();
 			foreach(XmlElement node in result.ChildNodes)
+			{
+				list.Add(ObjectFactory.Create<BusinessProcessCase>(node));
+			}
+			return list;
+		}
+		public override object DeserializeObject(object result)
+		{
+			var list = new List<BusinessProcessCase>();
+			foreach(var node in (IEnumerable<IDictionary<string,object>>)result)
 			{
 				list.Add(ObjectFactory.Create<BusinessProcessCase>(node));
 			}

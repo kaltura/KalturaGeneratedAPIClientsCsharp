@@ -177,6 +177,21 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ModerationFlag(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._UserId = data.TryGetValueSafe<string>("userId");
+			    this._ModerationObjectType = (ModerationObjectType)StringEnum.Parse(typeof(ModerationObjectType), data.TryGetValueSafe<string>("moderationObjectType"));
+			    this._FlaggedEntryId = data.TryGetValueSafe<string>("flaggedEntryId");
+			    this._FlaggedUserId = data.TryGetValueSafe<string>("flaggedUserId");
+			    this._Status = (ModerationFlagStatus)StringEnum.Parse(typeof(ModerationFlagStatus), data.TryGetValueSafe<string>("status"));
+			    this._Comments = data.TryGetValueSafe<string>("comments");
+			    this._FlagType = (ModerationFlagType)ParseEnum(typeof(ModerationFlagType), data.TryGetValueSafe<int>("flagType"));
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+		}
 		#endregion
 
 		#region Methods

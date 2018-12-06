@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AssetTypeCondition(IDictionary<string,object> data) : base(data)
+		{
+			    this._AssetTypes = data.TryGetValueSafe<string>("assetTypes");
+		}
 		#endregion
 
 		#region Methods

@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public HuluDistributionProfileBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public HuluDistributionProfileBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

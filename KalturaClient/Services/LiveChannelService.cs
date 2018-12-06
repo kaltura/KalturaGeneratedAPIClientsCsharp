@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<LiveChannel>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<LiveChannel>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class LiveChannelAppendRecordingRequestBuilder : RequestBuilder<LiveEntry>
@@ -164,6 +168,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<LiveEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<LiveEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class LiveChannelCreateRecordedEntryRequestBuilder : RequestBuilder<LiveEntry>
@@ -225,6 +233,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<LiveEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<LiveEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class LiveChannelDeleteRequestBuilder : RequestBuilder<object>
@@ -265,6 +277,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -311,6 +327,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<LiveChannel>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<LiveChannel>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class LiveChannelIsLiveRequestBuilder : RequestBuilder<bool>
@@ -353,6 +373,13 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			if (result.InnerText.Equals("1") || result.InnerText.ToLower().Equals("true"))
+				return true;
+			return false;
+		}
+		public override object DeserializeObject(object result)
+		{
+			var resultStr = (string)result;
+			if (resultStr.Equals("1") || resultStr.ToLower().Equals("true"))
 				return true;
 			return false;
 		}
@@ -407,6 +434,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<LiveChannel>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<LiveChannel>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -496,6 +527,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<LiveEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<LiveEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class LiveChannelSetRecordedContentRequestBuilder : RequestBuilder<LiveEntry>
@@ -584,6 +619,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<LiveEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<LiveEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class LiveChannelUnregisterMediaServerRequestBuilder : RequestBuilder<LiveEntry>
@@ -645,6 +684,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<LiveEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<LiveEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class LiveChannelUpdateRequestBuilder : RequestBuilder<LiveChannel>
@@ -697,6 +740,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<LiveChannel>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<LiveChannel>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class LiveChannelValidateRegisteredMediaServersRequestBuilder : RequestBuilder<object>
@@ -737,6 +784,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}

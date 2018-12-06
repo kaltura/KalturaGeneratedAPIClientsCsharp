@@ -188,6 +188,20 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CaptionAsset(IDictionary<string,object> data) : base(data)
+		{
+			    this._CaptionParamsId = data.TryGetValueSafe<int>("captionParamsId");
+			    this._Language = (Language)StringEnum.Parse(typeof(Language), data.TryGetValueSafe<string>("language"));
+			    this._LanguageCode = (LanguageCode)StringEnum.Parse(typeof(LanguageCode), data.TryGetValueSafe<string>("languageCode"));
+			    this._IsDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isDefault"));
+			    this._Label = data.TryGetValueSafe<string>("label");
+			    this._Format = (CaptionType)StringEnum.Parse(typeof(CaptionType), data.TryGetValueSafe<string>("format"));
+			    this._Status = (CaptionAssetStatus)ParseEnum(typeof(CaptionAssetStatus), data.TryGetValueSafe<int>("status"));
+			    this._ParentId = data.TryGetValueSafe<string>("parentId");
+			    this._Accuracy = data.TryGetValueSafe<int>("accuracy");
+			    this._DisplayOnPlayer = data.TryGetValueSafe<bool>("displayOnPlayer");
+		}
 		#endregion
 
 		#region Methods

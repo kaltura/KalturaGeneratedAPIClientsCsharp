@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ClipDescription(IDictionary<string,object> data) : base(data)
+		{
+			    this._SourceEntryId = data.TryGetValueSafe<string>("sourceEntryId");
+			    this._StartTime = data.TryGetValueSafe<int>("startTime");
+			    this._Duration = data.TryGetValueSafe<int>("duration");
+			    this._OffsetInDestination = data.TryGetValueSafe<int>("offsetInDestination");
+		}
 		#endregion
 
 		#region Methods

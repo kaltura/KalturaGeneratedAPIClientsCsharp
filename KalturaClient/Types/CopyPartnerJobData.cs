@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CopyPartnerJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._FromPartnerId = data.TryGetValueSafe<int>("fromPartnerId");
+			    this._ToPartnerId = data.TryGetValueSafe<int>("toPartnerId");
+		}
 		#endregion
 
 		#region Methods

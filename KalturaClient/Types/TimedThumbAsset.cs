@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public TimedThumbAsset(IDictionary<string,object> data) : base(data)
+		{
+			    this._CuePointId = data.TryGetValueSafe<string>("cuePointId");
+		}
 		#endregion
 
 		#region Methods

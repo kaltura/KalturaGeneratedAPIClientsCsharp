@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public SearchAuthData(IDictionary<string,object> data) : base(data)
+		{
+			    this._AuthData = data.TryGetValueSafe<string>("authData");
+			    this._LoginUrl = data.TryGetValueSafe<string>("loginUrl");
+			    this._Message = data.TryGetValueSafe<string>("message");
+		}
 		#endregion
 
 		#region Methods

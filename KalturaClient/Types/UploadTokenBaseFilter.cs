@@ -156,6 +156,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UploadTokenBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IdEqual = data.TryGetValueSafe<string>("idEqual");
+			    this._IdIn = data.TryGetValueSafe<string>("idIn");
+			    this._UserIdEqual = data.TryGetValueSafe<string>("userIdEqual");
+			    this._StatusEqual = (UploadTokenStatus)ParseEnum(typeof(UploadTokenStatus), data.TryGetValueSafe<int>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			    this._FileNameEqual = data.TryGetValueSafe<string>("fileNameEqual");
+			    this._FileSizeEqual = data.TryGetValueSafe<float>("fileSizeEqual");
+		}
 		#endregion
 
 		#region Methods

@@ -170,6 +170,18 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PostConvertJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._FlavorAssetId = data.TryGetValueSafe<string>("flavorAssetId");
+			    this._FlavorAssetEncryptionKey = data.TryGetValueSafe<string>("flavorAssetEncryptionKey");
+			    this._CreateThumb = data.TryGetValueSafe<bool>("createThumb");
+			    this._ThumbPath = data.TryGetValueSafe<string>("thumbPath");
+			    this._ThumbOffset = data.TryGetValueSafe<int>("thumbOffset");
+			    this._ThumbHeight = data.TryGetValueSafe<int>("thumbHeight");
+			    this._ThumbBitrate = data.TryGetValueSafe<int>("thumbBitrate");
+			    this._CustomData = data.TryGetValueSafe<string>("customData");
+		}
 		#endregion
 
 		#region Methods

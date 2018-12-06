@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ResponseProfile>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ResponseProfile>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ResponseProfileCloneRequestBuilder : RequestBuilder<ResponseProfile>
@@ -128,6 +132,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ResponseProfile>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ResponseProfile>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ResponseProfileDeleteRequestBuilder : RequestBuilder<object>
@@ -168,6 +176,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -213,6 +225,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ResponseProfile>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ResponseProfile>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -266,6 +282,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<ResponseProfile>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<ResponseProfile>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ResponseProfileRecalculateRequestBuilder : RequestBuilder<ResponseProfileCacheRecalculateResults>
@@ -308,6 +328,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ResponseProfileCacheRecalculateResults>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ResponseProfileCacheRecalculateResults>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -361,6 +385,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ResponseProfile>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ResponseProfile>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ResponseProfileUpdateStatusRequestBuilder : RequestBuilder<ResponseProfile>
@@ -412,6 +440,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ResponseProfile>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ResponseProfile>((IDictionary<string,object>)result);
 		}
 	}
 

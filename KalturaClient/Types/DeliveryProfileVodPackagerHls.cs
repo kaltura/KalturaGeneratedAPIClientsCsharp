@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DeliveryProfileVodPackagerHls(IDictionary<string,object> data) : base(data)
+		{
+			    this._AllowFairplayOffline = data.TryGetValueSafe<bool>("allowFairplayOffline");
+		}
 		#endregion
 
 		#region Methods

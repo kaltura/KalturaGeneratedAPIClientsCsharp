@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<LiveChannelSegment>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<LiveChannelSegment>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class LiveChannelSegmentDeleteRequestBuilder : RequestBuilder<object>
@@ -116,6 +120,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -161,6 +169,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<LiveChannelSegment>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<LiveChannelSegment>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -214,6 +226,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<LiveChannelSegment>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<LiveChannelSegment>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class LiveChannelSegmentUpdateRequestBuilder : RequestBuilder<LiveChannelSegment>
@@ -265,6 +281,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<LiveChannelSegment>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<LiveChannelSegment>((IDictionary<string,object>)result);
 		}
 	}
 

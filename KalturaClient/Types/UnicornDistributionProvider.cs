@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public UnicornDistributionProvider(XmlElement node) : base(node)
 		{
 		}
+
+		public UnicornDistributionProvider(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

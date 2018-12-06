@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DeliveryProfileFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IsLive = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isLive"));
+			    this._OrderBy = (DeliveryProfileOrderBy)StringEnum.Parse(typeof(DeliveryProfileOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

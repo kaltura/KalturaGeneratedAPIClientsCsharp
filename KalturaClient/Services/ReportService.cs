@@ -85,6 +85,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ReportResponse>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ReportResponse>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ReportGetBaseTotalRequestBuilder : RequestBuilder<IList<ReportBaseTotal>>
@@ -146,6 +150,15 @@ namespace Kaltura.Services
 		{
 			IList<ReportBaseTotal> list = new List<ReportBaseTotal>();
 			foreach(XmlElement node in result.ChildNodes)
+			{
+				list.Add(ObjectFactory.Create<ReportBaseTotal>(node));
+			}
+			return list;
+		}
+		public override object DeserializeObject(object result)
+		{
+			var list = new List<ReportBaseTotal>();
+			foreach(var node in (IEnumerable<IDictionary<string,object>>)result)
 			{
 				list.Add(ObjectFactory.Create<ReportBaseTotal>(node));
 			}
@@ -221,6 +234,15 @@ namespace Kaltura.Services
 		{
 			IList<ReportGraph> list = new List<ReportGraph>();
 			foreach(XmlElement node in result.ChildNodes)
+			{
+				list.Add(ObjectFactory.Create<ReportGraph>(node));
+			}
+			return list;
+		}
+		public override object DeserializeObject(object result)
+		{
+			var list = new List<ReportGraph>();
+			foreach(var node in (IEnumerable<IDictionary<string,object>>)result)
 			{
 				list.Add(ObjectFactory.Create<ReportGraph>(node));
 			}
@@ -305,6 +327,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ReportTable>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ReportTable>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ReportGetTotalRequestBuilder : RequestBuilder<ReportTotal>
@@ -365,6 +391,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ReportTotal>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ReportTotal>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -481,6 +511,10 @@ namespace Kaltura.Services
 		{
 			return result.InnerText;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
+		}
 	}
 
 	public class ReportServeRequestBuilder : RequestBuilder<string>
@@ -523,6 +557,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return result.InnerText;
+		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
 		}
 	}
 

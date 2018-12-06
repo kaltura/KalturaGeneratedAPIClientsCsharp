@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ServerNodeFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (ServerNodeOrderBy)StringEnum.Parse(typeof(ServerNodeOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

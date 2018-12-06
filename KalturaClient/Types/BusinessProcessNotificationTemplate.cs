@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BusinessProcessNotificationTemplate(IDictionary<string,object> data) : base(data)
+		{
+			    this._ServerId = data.TryGetValueSafe<int>("serverId");
+			    this._ProcessId = data.TryGetValueSafe<string>("processId");
+			    this._MainObjectCode = data.TryGetValueSafe<string>("mainObjectCode");
+		}
 		#endregion
 
 		#region Methods

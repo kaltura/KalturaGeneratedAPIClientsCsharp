@@ -310,6 +310,28 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public MetadataBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
+			    this._MetadataProfileIdEqual = data.TryGetValueSafe<int>("metadataProfileIdEqual");
+			    this._MetadataProfileIdIn = data.TryGetValueSafe<string>("metadataProfileIdIn");
+			    this._MetadataProfileVersionEqual = data.TryGetValueSafe<int>("metadataProfileVersionEqual");
+			    this._MetadataProfileVersionGreaterThanOrEqual = data.TryGetValueSafe<int>("metadataProfileVersionGreaterThanOrEqual");
+			    this._MetadataProfileVersionLessThanOrEqual = data.TryGetValueSafe<int>("metadataProfileVersionLessThanOrEqual");
+			    this._MetadataObjectTypeEqual = (MetadataObjectType)StringEnum.Parse(typeof(MetadataObjectType), data.TryGetValueSafe<string>("metadataObjectTypeEqual"));
+			    this._ObjectIdEqual = data.TryGetValueSafe<string>("objectIdEqual");
+			    this._ObjectIdIn = data.TryGetValueSafe<string>("objectIdIn");
+			    this._VersionEqual = data.TryGetValueSafe<int>("versionEqual");
+			    this._VersionGreaterThanOrEqual = data.TryGetValueSafe<int>("versionGreaterThanOrEqual");
+			    this._VersionLessThanOrEqual = data.TryGetValueSafe<int>("versionLessThanOrEqual");
+			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
+			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
+			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
+			    this._StatusEqual = (MetadataStatus)ParseEnum(typeof(MetadataStatus), data.TryGetValueSafe<int>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+		}
 		#endregion
 
 		#region Methods

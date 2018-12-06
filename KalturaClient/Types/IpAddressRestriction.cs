@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public IpAddressRestriction(IDictionary<string,object> data) : base(data)
+		{
+			    this._IpAddressRestrictionType = (IpAddressRestrictionType)ParseEnum(typeof(IpAddressRestrictionType), data.TryGetValueSafe<int>("ipAddressRestrictionType"));
+			    this._IpAddressList = data.TryGetValueSafe<string>("ipAddressList");
+		}
 		#endregion
 
 		#region Methods

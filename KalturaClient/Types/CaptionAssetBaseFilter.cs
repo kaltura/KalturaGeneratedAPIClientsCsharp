@@ -156,6 +156,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CaptionAssetBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._CaptionParamsIdEqual = data.TryGetValueSafe<int>("captionParamsIdEqual");
+			    this._CaptionParamsIdIn = data.TryGetValueSafe<string>("captionParamsIdIn");
+			    this._FormatEqual = (CaptionType)StringEnum.Parse(typeof(CaptionType), data.TryGetValueSafe<string>("formatEqual"));
+			    this._FormatIn = data.TryGetValueSafe<string>("formatIn");
+			    this._StatusEqual = (CaptionAssetStatus)ParseEnum(typeof(CaptionAssetStatus), data.TryGetValueSafe<int>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			    this._StatusNotIn = data.TryGetValueSafe<string>("statusNotIn");
+		}
 		#endregion
 
 		#region Methods

@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public MetroPcsDistributionJobProviderData(IDictionary<string,object> data) : base(data)
+		{
+			    this._AssetLocalPaths = data.TryGetValueSafe<string>("assetLocalPaths");
+			    this._ThumbUrls = data.TryGetValueSafe<string>("thumbUrls");
+		}
 		#endregion
 
 		#region Methods

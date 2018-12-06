@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public ComcastMrssDistributionProfileBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public ComcastMrssDistributionProfileBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

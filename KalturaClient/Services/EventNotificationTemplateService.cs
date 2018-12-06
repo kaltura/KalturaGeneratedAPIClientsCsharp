@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<EventNotificationTemplate>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<EventNotificationTemplate>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class EventNotificationTemplateCloneRequestBuilder : RequestBuilder<EventNotificationTemplate>
@@ -128,6 +132,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<EventNotificationTemplate>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<EventNotificationTemplate>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class EventNotificationTemplateDeleteRequestBuilder : RequestBuilder<object>
@@ -168,6 +176,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -223,6 +235,10 @@ namespace Kaltura.Services
 		{
 			return int.Parse(result.InnerText);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (int)(result);
+		}
 	}
 
 	public class EventNotificationTemplateGetRequestBuilder : RequestBuilder<EventNotificationTemplate>
@@ -265,6 +281,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<EventNotificationTemplate>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<EventNotificationTemplate>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -318,6 +338,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<EventNotificationTemplate>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<EventNotificationTemplate>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class EventNotificationTemplateListByPartnerRequestBuilder : RequestBuilder<ListResponse<EventNotificationTemplate>>
@@ -369,6 +393,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<EventNotificationTemplate>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<EventNotificationTemplate>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -422,6 +450,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<EventNotificationTemplate>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<EventNotificationTemplate>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class EventNotificationTemplateRegisterRequestBuilder : RequestBuilder<PushNotificationData>
@@ -473,6 +505,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<PushNotificationData>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<PushNotificationData>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -535,6 +571,10 @@ namespace Kaltura.Services
 		{
 			return null;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return null;
+		}
 	}
 
 	public class EventNotificationTemplateUpdateRequestBuilder : RequestBuilder<EventNotificationTemplate>
@@ -587,6 +627,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<EventNotificationTemplate>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<EventNotificationTemplate>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class EventNotificationTemplateUpdateStatusRequestBuilder : RequestBuilder<EventNotificationTemplate>
@@ -638,6 +682,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<EventNotificationTemplate>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<EventNotificationTemplate>((IDictionary<string,object>)result);
 		}
 	}
 

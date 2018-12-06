@@ -196,6 +196,34 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public Rule(IDictionary<string,object> data) : base(data)
+		{
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._RuleData = data.TryGetValueSafe<string>("ruleData");
+			    this._Message = data.TryGetValueSafe<string>("message");
+			    this._Code = data.TryGetValueSafe<string>("code");
+			    this._Actions = new List<RuleAction>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("actions", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Actions.Add(ObjectFactory.Create<RuleAction>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._Conditions = new List<Condition>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("conditions", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Conditions.Add(ObjectFactory.Create<Condition>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._Contexts = new List<ContextTypeHolder>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("contexts", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Contexts.Add(ObjectFactory.Create<ContextTypeHolder>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._StopProcessing = data.TryGetValueSafe<bool>("stopProcessing");
+			    this._ForceAdminValidation = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("forceAdminValidation"));
+		}
 		#endregion
 
 		#region Methods

@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DistributionValidationErrorInvalidMetadata(IDictionary<string,object> data) : base(data)
+		{
+			    this._MetadataProfileId = data.TryGetValueSafe<int>("metadataProfileId");
+		}
 		#endregion
 
 		#region Methods

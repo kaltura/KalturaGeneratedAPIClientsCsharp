@@ -674,6 +674,54 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public YouTubeDistributionProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._FeedSpecVersion = (YouTubeDistributionFeedSpecVersion)StringEnum.Parse(typeof(YouTubeDistributionFeedSpecVersion), data.TryGetValueSafe<string>("feedSpecVersion"));
+			    this._Username = data.TryGetValueSafe<string>("username");
+			    this._NotificationEmail = data.TryGetValueSafe<string>("notificationEmail");
+			    this._SftpHost = data.TryGetValueSafe<string>("sftpHost");
+			    this._SftpPort = data.TryGetValueSafe<int>("sftpPort");
+			    this._SftpLogin = data.TryGetValueSafe<string>("sftpLogin");
+			    this._SftpPublicKey = data.TryGetValueSafe<string>("sftpPublicKey");
+			    this._SftpPrivateKey = data.TryGetValueSafe<string>("sftpPrivateKey");
+			    this._SftpBaseDir = data.TryGetValueSafe<string>("sftpBaseDir");
+			    this._OwnerName = data.TryGetValueSafe<string>("ownerName");
+			    this._DefaultCategory = data.TryGetValueSafe<string>("defaultCategory");
+			    this._AllowComments = data.TryGetValueSafe<string>("allowComments");
+			    this._AllowEmbedding = data.TryGetValueSafe<string>("allowEmbedding");
+			    this._AllowRatings = data.TryGetValueSafe<string>("allowRatings");
+			    this._AllowResponses = data.TryGetValueSafe<string>("allowResponses");
+			    this._CommercialPolicy = data.TryGetValueSafe<string>("commercialPolicy");
+			    this._UgcPolicy = data.TryGetValueSafe<string>("ugcPolicy");
+			    this._Target = data.TryGetValueSafe<string>("target");
+			    this._AdServerPartnerId = data.TryGetValueSafe<string>("adServerPartnerId");
+			    this._EnableAdServer = data.TryGetValueSafe<bool>("enableAdServer");
+			    this._AllowPreRollAds = data.TryGetValueSafe<bool>("allowPreRollAds");
+			    this._AllowPostRollAds = data.TryGetValueSafe<bool>("allowPostRollAds");
+			    this._Strict = data.TryGetValueSafe<string>("strict");
+			    this._OverrideManualEdits = data.TryGetValueSafe<string>("overrideManualEdits");
+			    this._UrgentReference = data.TryGetValueSafe<string>("urgentReference");
+			    this._AllowSyndication = data.TryGetValueSafe<string>("allowSyndication");
+			    this._HideViewCount = data.TryGetValueSafe<string>("hideViewCount");
+			    this._AllowAdsenseForVideo = data.TryGetValueSafe<string>("allowAdsenseForVideo");
+			    this._AllowInvideo = data.TryGetValueSafe<string>("allowInvideo");
+			    this._AllowMidRollAds = data.TryGetValueSafe<bool>("allowMidRollAds");
+			    this._InstreamStandard = data.TryGetValueSafe<string>("instreamStandard");
+			    this._InstreamTrueview = data.TryGetValueSafe<string>("instreamTrueview");
+			    this._ClaimType = data.TryGetValueSafe<string>("claimType");
+			    this._BlockOutsideOwnership = data.TryGetValueSafe<string>("blockOutsideOwnership");
+			    this._CaptionAutosync = data.TryGetValueSafe<string>("captionAutosync");
+			    this._DeleteReference = data.TryGetValueSafe<bool>("deleteReference");
+			    this._ReleaseClaims = data.TryGetValueSafe<bool>("releaseClaims");
+			    this._ApiAuthorizeUrl = data.TryGetValueSafe<string>("apiAuthorizeUrl");
+			    this._PrivacyStatus = data.TryGetValueSafe<string>("privacyStatus");
+			    this._EnableContentId = data.TryGetValueSafe<string>("enableContentId");
+			    this._ThirdPartyAds = data.TryGetValueSafe<string>("thirdPartyAds");
+			    this._ProductListingAds = data.TryGetValueSafe<string>("productListingAds");
+			    this._DomainWhitelist = data.TryGetValueSafe<string>("domainWhitelist");
+			    this._NotifySubscribers = data.TryGetValueSafe<string>("notifySubscribers");
+		}
 		#endregion
 
 		#region Methods

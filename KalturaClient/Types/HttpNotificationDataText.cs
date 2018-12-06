@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public HttpNotificationDataText(IDictionary<string,object> data) : base(data)
+		{
+			    this._Content = ObjectFactory.Create<StringValue>(data.TryGetValueSafe<IDictionary<string,object>>("content"));
+		}
 		#endregion
 
 		#region Methods

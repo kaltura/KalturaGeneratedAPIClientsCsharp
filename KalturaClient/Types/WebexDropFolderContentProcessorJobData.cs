@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public WebexDropFolderContentProcessorJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._WebexHostId = data.TryGetValueSafe<string>("webexHostId");
+		}
 		#endregion
 
 		#region Methods

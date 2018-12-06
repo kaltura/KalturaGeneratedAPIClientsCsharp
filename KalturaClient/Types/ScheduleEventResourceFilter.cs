@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ScheduleEventResourceFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._EventIdOrItsParentIdEqual = data.TryGetValueSafe<int>("eventIdOrItsParentIdEqual");
+			    this._OrderBy = (ScheduleEventResourceOrderBy)StringEnum.Parse(typeof(ScheduleEventResourceOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<EmailIngestionProfile>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<EmailIngestionProfile>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class EmailIngestionProfileAddMediaEntryRequestBuilder : RequestBuilder<MediaEntry>
@@ -155,6 +159,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<MediaEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<MediaEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class EmailIngestionProfileDeleteRequestBuilder : RequestBuilder<object>
@@ -195,6 +203,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -241,6 +253,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<EmailIngestionProfile>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<EmailIngestionProfile>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class EmailIngestionProfileGetByEmailAddressRequestBuilder : RequestBuilder<EmailIngestionProfile>
@@ -283,6 +299,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<EmailIngestionProfile>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<EmailIngestionProfile>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -335,6 +355,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<EmailIngestionProfile>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<EmailIngestionProfile>((IDictionary<string,object>)result);
 		}
 	}
 

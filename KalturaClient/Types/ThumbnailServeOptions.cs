@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public ThumbnailServeOptions(XmlElement node) : base(node)
 		{
 		}
+
+		public ThumbnailServeOptions(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

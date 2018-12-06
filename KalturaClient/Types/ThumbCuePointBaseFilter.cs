@@ -170,6 +170,18 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ThumbCuePointBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._DescriptionLike = data.TryGetValueSafe<string>("descriptionLike");
+			    this._DescriptionMultiLikeOr = data.TryGetValueSafe<string>("descriptionMultiLikeOr");
+			    this._DescriptionMultiLikeAnd = data.TryGetValueSafe<string>("descriptionMultiLikeAnd");
+			    this._TitleLike = data.TryGetValueSafe<string>("titleLike");
+			    this._TitleMultiLikeOr = data.TryGetValueSafe<string>("titleMultiLikeOr");
+			    this._TitleMultiLikeAnd = data.TryGetValueSafe<string>("titleMultiLikeAnd");
+			    this._SubTypeEqual = (ThumbCuePointSubType)ParseEnum(typeof(ThumbCuePointSubType), data.TryGetValueSafe<int>("subTypeEqual"));
+			    this._SubTypeIn = data.TryGetValueSafe<string>("subTypeIn");
+		}
 		#endregion
 
 		#region Methods

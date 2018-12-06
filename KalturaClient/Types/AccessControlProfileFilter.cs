@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AccessControlProfileFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (AccessControlProfileOrderBy)StringEnum.Parse(typeof(AccessControlProfileOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

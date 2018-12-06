@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DeliveryProfileLiveAppleHttp(IDictionary<string,object> data) : base(data)
+		{
+			    this._DisableExtraAttributes = data.TryGetValueSafe<bool>("disableExtraAttributes");
+			    this._ForceProxy = data.TryGetValueSafe<bool>("forceProxy");
+		}
 		#endregion
 
 		#region Methods

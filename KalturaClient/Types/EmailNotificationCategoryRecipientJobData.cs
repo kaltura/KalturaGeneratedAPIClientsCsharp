@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EmailNotificationCategoryRecipientJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._CategoryUserFilter = ObjectFactory.Create<CategoryUserFilter>(data.TryGetValueSafe<IDictionary<string,object>>("categoryUserFilter"));
+		}
 		#endregion
 
 		#region Methods

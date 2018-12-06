@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<UploadToken>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<UploadToken>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class UploadTokenDeleteRequestBuilder : RequestBuilder<object>
@@ -116,6 +120,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -161,6 +169,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<UploadToken>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<UploadToken>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -213,6 +225,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<UploadToken>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<UploadToken>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -291,6 +307,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<UploadToken>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<UploadToken>((IDictionary<string,object>)result);
 		}
 	}
 

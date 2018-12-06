@@ -164,6 +164,27 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AccessControlScope(IDictionary<string,object> data) : base(data)
+		{
+			    this._Referrer = data.TryGetValueSafe<string>("referrer");
+			    this._Ip = data.TryGetValueSafe<string>("ip");
+			    this._Ks = data.TryGetValueSafe<string>("ks");
+			    this._UserAgent = data.TryGetValueSafe<string>("userAgent");
+			    this._Time = data.TryGetValueSafe<int>("time");
+			    this._Contexts = new List<AccessControlContextTypeHolder>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("contexts", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Contexts.Add(ObjectFactory.Create<AccessControlContextTypeHolder>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._Hashes = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("hashes", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Hashes.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

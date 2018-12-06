@@ -463,6 +463,45 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public Category(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._ParentId = data.TryGetValueSafe<int>("parentId");
+			    this._Depth = data.TryGetValueSafe<int>("depth");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._FullName = data.TryGetValueSafe<string>("fullName");
+			    this._FullIds = data.TryGetValueSafe<string>("fullIds");
+			    this._EntriesCount = data.TryGetValueSafe<int>("entriesCount");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._Tags = data.TryGetValueSafe<string>("tags");
+			    this._AppearInList = (AppearInListType)ParseEnum(typeof(AppearInListType), data.TryGetValueSafe<int>("appearInList"));
+			    this._Privacy = (PrivacyType)ParseEnum(typeof(PrivacyType), data.TryGetValueSafe<int>("privacy"));
+			    this._InheritanceType = (InheritanceType)ParseEnum(typeof(InheritanceType), data.TryGetValueSafe<int>("inheritanceType"));
+			    this._UserJoinPolicy = (UserJoinPolicyType)ParseEnum(typeof(UserJoinPolicyType), data.TryGetValueSafe<int>("userJoinPolicy"));
+			    this._DefaultPermissionLevel = (CategoryUserPermissionLevel)ParseEnum(typeof(CategoryUserPermissionLevel), data.TryGetValueSafe<int>("defaultPermissionLevel"));
+			    this._Owner = data.TryGetValueSafe<string>("owner");
+			    this._DirectEntriesCount = data.TryGetValueSafe<int>("directEntriesCount");
+			    this._ReferenceId = data.TryGetValueSafe<string>("referenceId");
+			    this._ContributionPolicy = (ContributionPolicyType)ParseEnum(typeof(ContributionPolicyType), data.TryGetValueSafe<int>("contributionPolicy"));
+			    this._MembersCount = data.TryGetValueSafe<int>("membersCount");
+			    this._PendingMembersCount = data.TryGetValueSafe<int>("pendingMembersCount");
+			    this._PrivacyContext = data.TryGetValueSafe<string>("privacyContext");
+			    this._PrivacyContexts = data.TryGetValueSafe<string>("privacyContexts");
+			    this._Status = (CategoryStatus)ParseEnum(typeof(CategoryStatus), data.TryGetValueSafe<int>("status"));
+			    this._InheritedParentId = data.TryGetValueSafe<int>("inheritedParentId");
+			    this._PartnerSortValue = data.TryGetValueSafe<int>("partnerSortValue");
+			    this._PartnerData = data.TryGetValueSafe<string>("partnerData");
+			    this._DefaultOrderBy = (CategoryOrderBy)StringEnum.Parse(typeof(CategoryOrderBy), data.TryGetValueSafe<string>("defaultOrderBy"));
+			    this._DirectSubCategoriesCount = data.TryGetValueSafe<int>("directSubCategoriesCount");
+			    this._Moderation = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("moderation"));
+			    this._PendingEntriesCount = data.TryGetValueSafe<int>("pendingEntriesCount");
+			    this._IsAggregationCategory = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isAggregationCategory"));
+			    this._AggregationCategories = data.TryGetValueSafe<string>("aggregationCategories");
+		}
 		#endregion
 
 		#region Methods

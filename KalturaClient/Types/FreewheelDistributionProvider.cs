@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public FreewheelDistributionProvider(XmlElement node) : base(node)
 		{
 		}
+
+		public FreewheelDistributionProvider(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

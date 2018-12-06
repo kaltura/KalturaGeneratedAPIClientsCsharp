@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public TimeContextField(IDictionary<string,object> data) : base(data)
+		{
+			    this._Offset = data.TryGetValueSafe<int>("offset");
+		}
 		#endregion
 
 		#region Methods

@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public DailymotionDistributionProvider(XmlElement node) : base(node)
 		{
 		}
+
+		public DailymotionDistributionProvider(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

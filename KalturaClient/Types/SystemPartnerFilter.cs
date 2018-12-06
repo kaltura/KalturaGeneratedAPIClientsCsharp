@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public SystemPartnerFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._PartnerParentIdEqual = data.TryGetValueSafe<int>("partnerParentIdEqual");
+			    this._PartnerParentIdIn = data.TryGetValueSafe<string>("partnerParentIdIn");
+		}
 		#endregion
 
 		#region Methods

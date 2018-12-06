@@ -390,6 +390,54 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DistributionProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._ProviderType = (DistributionProviderType)StringEnum.Parse(typeof(DistributionProviderType), data.TryGetValueSafe<string>("providerType"));
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._Status = (DistributionProfileStatus)ParseEnum(typeof(DistributionProfileStatus), data.TryGetValueSafe<int>("status"));
+			    this._SubmitEnabled = (DistributionProfileActionStatus)ParseEnum(typeof(DistributionProfileActionStatus), data.TryGetValueSafe<int>("submitEnabled"));
+			    this._UpdateEnabled = (DistributionProfileActionStatus)ParseEnum(typeof(DistributionProfileActionStatus), data.TryGetValueSafe<int>("updateEnabled"));
+			    this._DeleteEnabled = (DistributionProfileActionStatus)ParseEnum(typeof(DistributionProfileActionStatus), data.TryGetValueSafe<int>("deleteEnabled"));
+			    this._ReportEnabled = (DistributionProfileActionStatus)ParseEnum(typeof(DistributionProfileActionStatus), data.TryGetValueSafe<int>("reportEnabled"));
+			    this._AutoCreateFlavors = data.TryGetValueSafe<string>("autoCreateFlavors");
+			    this._AutoCreateThumb = data.TryGetValueSafe<string>("autoCreateThumb");
+			    this._OptionalFlavorParamsIds = data.TryGetValueSafe<string>("optionalFlavorParamsIds");
+			    this._RequiredFlavorParamsIds = data.TryGetValueSafe<string>("requiredFlavorParamsIds");
+			    this._OptionalThumbDimensions = new List<DistributionThumbDimensions>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("optionalThumbDimensions", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._OptionalThumbDimensions.Add(ObjectFactory.Create<DistributionThumbDimensions>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._RequiredThumbDimensions = new List<DistributionThumbDimensions>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("requiredThumbDimensions", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._RequiredThumbDimensions.Add(ObjectFactory.Create<DistributionThumbDimensions>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._OptionalAssetDistributionRules = new List<AssetDistributionRule>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("optionalAssetDistributionRules", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._OptionalAssetDistributionRules.Add(ObjectFactory.Create<AssetDistributionRule>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._RequiredAssetDistributionRules = new List<AssetDistributionRule>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("requiredAssetDistributionRules", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._RequiredAssetDistributionRules.Add(ObjectFactory.Create<AssetDistributionRule>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._SunriseDefaultOffset = data.TryGetValueSafe<int>("sunriseDefaultOffset");
+			    this._SunsetDefaultOffset = data.TryGetValueSafe<int>("sunsetDefaultOffset");
+			    this._RecommendedStorageProfileForDownload = data.TryGetValueSafe<int>("recommendedStorageProfileForDownload");
+			    this._RecommendedDcForDownload = data.TryGetValueSafe<int>("recommendedDcForDownload");
+			    this._RecommendedDcForExecute = data.TryGetValueSafe<int>("recommendedDcForExecute");
+		}
 		#endregion
 
 		#region Methods

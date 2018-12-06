@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public LiveEntryScheduleResourceBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public LiveEntryScheduleResourceBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DeliveryProfileLivePackager(IDictionary<string,object> data) : base(data)
+		{
+			    this._LivePackagerSigningDomain = data.TryGetValueSafe<string>("livePackagerSigningDomain");
+		}
 		#endregion
 
 		#region Methods

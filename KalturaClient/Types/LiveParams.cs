@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveParams(IDictionary<string,object> data) : base(data)
+		{
+			    this._StreamSuffix = data.TryGetValueSafe<string>("streamSuffix");
+		}
 		#endregion
 
 		#region Methods

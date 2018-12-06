@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DistributionRemoteMediaFile(IDictionary<string,object> data) : base(data)
+		{
+			    this._Version = data.TryGetValueSafe<string>("version");
+			    this._AssetId = data.TryGetValueSafe<string>("assetId");
+			    this._RemoteId = data.TryGetValueSafe<string>("remoteId");
+		}
 		#endregion
 
 		#region Methods

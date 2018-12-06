@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PlaylistFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (PlaylistOrderBy)StringEnum.Parse(typeof(PlaylistOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

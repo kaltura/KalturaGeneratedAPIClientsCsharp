@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public SwfFlavorParamsOutputFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (SwfFlavorParamsOutputOrderBy)StringEnum.Parse(typeof(SwfFlavorParamsOutputOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

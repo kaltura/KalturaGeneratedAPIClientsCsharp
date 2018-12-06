@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public RequestConfiguration(IDictionary<string,object> data) : base(data)
+		{
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._Ks = data.TryGetValueSafe<string>("ks");
+			    this._ResponseProfile = ObjectFactory.Create<BaseResponseProfile>(data.TryGetValueSafe<IDictionary<string,object>>("responseProfile"));
+		}
 		#endregion
 
 		#region Methods

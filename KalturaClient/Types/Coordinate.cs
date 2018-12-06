@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public Coordinate(IDictionary<string,object> data) : base(data)
+		{
+			    this._Latitude = data.TryGetValueSafe<float>("latitude");
+			    this._Longitude = data.TryGetValueSafe<float>("longitude");
+			    this._Name = data.TryGetValueSafe<string>("name");
+		}
 		#endregion
 
 		#region Methods

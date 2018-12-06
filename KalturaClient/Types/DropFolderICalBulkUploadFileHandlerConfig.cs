@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DropFolderICalBulkUploadFileHandlerConfig(IDictionary<string,object> data) : base(data)
+		{
+			    this._EventsType = (ScheduleEventType)ParseEnum(typeof(ScheduleEventType), data.TryGetValueSafe<int>("eventsType"));
+		}
 		#endregion
 
 		#region Methods

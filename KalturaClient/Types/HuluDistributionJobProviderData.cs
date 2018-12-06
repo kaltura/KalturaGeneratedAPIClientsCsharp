@@ -136,6 +136,25 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public HuluDistributionJobProviderData(IDictionary<string,object> data) : base(data)
+		{
+			    this._VideoAssetFilePath = data.TryGetValueSafe<string>("videoAssetFilePath");
+			    this._ThumbAssetFilePath = data.TryGetValueSafe<string>("thumbAssetFilePath");
+			    this._CuePoints = new List<CuePoint>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("cuePoints", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._CuePoints.Add(ObjectFactory.Create<CuePoint>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._FileBaseName = data.TryGetValueSafe<string>("fileBaseName");
+			    this._CaptionLocalPaths = new List<String>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("captionLocalPaths", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._CaptionLocalPaths.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

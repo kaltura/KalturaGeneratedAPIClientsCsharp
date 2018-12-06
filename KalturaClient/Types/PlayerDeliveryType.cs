@@ -132,6 +132,20 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PlayerDeliveryType(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<string>("id");
+			    this._Label = data.TryGetValueSafe<string>("label");
+			    this._Flashvars = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("flashvars", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Flashvars.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._MinVersion = data.TryGetValueSafe<string>("minVersion");
+			    this._EnabledByDefault = data.TryGetValueSafe<bool>("enabledByDefault");
+		}
 		#endregion
 
 		#region Methods

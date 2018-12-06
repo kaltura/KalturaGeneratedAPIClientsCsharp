@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PreviewRestriction(IDictionary<string,object> data) : base(data)
+		{
+			    this._PreviewLength = data.TryGetValueSafe<int>("previewLength");
+		}
 		#endregion
 
 		#region Methods

@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EntryLiveStats(IDictionary<string,object> data) : base(data)
+		{
+			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+			    this._PeakAudience = data.TryGetValueSafe<int>("peakAudience");
+			    this._PeakDvrAudience = data.TryGetValueSafe<int>("peakDvrAudience");
+		}
 		#endregion
 
 		#region Methods

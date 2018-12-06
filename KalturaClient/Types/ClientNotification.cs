@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ClientNotification(IDictionary<string,object> data) : base(data)
+		{
+			    this._Url = data.TryGetValueSafe<string>("url");
+			    this._Data = data.TryGetValueSafe<string>("data");
+		}
 		#endregion
 
 		#region Methods

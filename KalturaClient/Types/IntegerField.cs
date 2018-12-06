@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public IntegerField(XmlElement node) : base(node)
 		{
 		}
+
+		public IntegerField(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

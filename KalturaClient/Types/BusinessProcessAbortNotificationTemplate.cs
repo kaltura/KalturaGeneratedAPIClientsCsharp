@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public BusinessProcessAbortNotificationTemplate(XmlElement node) : base(node)
 		{
 		}
+
+		public BusinessProcessAbortNotificationTemplate(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

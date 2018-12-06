@@ -156,6 +156,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public MoveCategoryEntriesJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._SrcCategoryId = data.TryGetValueSafe<int>("srcCategoryId");
+			    this._DestCategoryId = data.TryGetValueSafe<int>("destCategoryId");
+			    this._LastMovedCategoryId = data.TryGetValueSafe<int>("lastMovedCategoryId");
+			    this._LastMovedCategoryPageIndex = data.TryGetValueSafe<int>("lastMovedCategoryPageIndex");
+			    this._LastMovedCategoryEntryPageIndex = data.TryGetValueSafe<int>("lastMovedCategoryEntryPageIndex");
+			    this._MoveFromChildren = data.TryGetValueSafe<bool>("moveFromChildren");
+			    this._DestCategoryFullIds = data.TryGetValueSafe<string>("destCategoryFullIds");
+		}
 		#endregion
 
 		#region Methods

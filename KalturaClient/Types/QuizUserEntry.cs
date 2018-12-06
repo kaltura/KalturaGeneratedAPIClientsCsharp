@@ -67,6 +67,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public QuizUserEntry(IDictionary<string,object> data) : base(data)
+		{
+			    this._Score = data.TryGetValueSafe<float>("score");
+		}
 		#endregion
 
 		#region Methods

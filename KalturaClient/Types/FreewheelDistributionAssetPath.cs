@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FreewheelDistributionAssetPath(IDictionary<string,object> data) : base(data)
+		{
+			    this._Path = data.TryGetValueSafe<string>("path");
+		}
 		#endregion
 
 		#region Methods

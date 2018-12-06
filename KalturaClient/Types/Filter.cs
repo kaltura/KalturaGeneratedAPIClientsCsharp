@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public Filter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = data.TryGetValueSafe<string>("orderBy");
+			    this._AdvancedSearch = ObjectFactory.Create<SearchItem>(data.TryGetValueSafe<IDictionary<string,object>>("advancedSearch"));
+		}
 		#endregion
 
 		#region Methods

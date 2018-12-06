@@ -359,6 +359,34 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UiConf(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._ObjType = (UiConfObjType)ParseEnum(typeof(UiConfObjType), data.TryGetValueSafe<int>("objType"));
+			    this._ObjTypeAsString = data.TryGetValueSafe<string>("objTypeAsString");
+			    this._Width = data.TryGetValueSafe<int>("width");
+			    this._Height = data.TryGetValueSafe<int>("height");
+			    this._HtmlParams = data.TryGetValueSafe<string>("htmlParams");
+			    this._SwfUrl = data.TryGetValueSafe<string>("swfUrl");
+			    this._ConfFilePath = data.TryGetValueSafe<string>("confFilePath");
+			    this._ConfFile = data.TryGetValueSafe<string>("confFile");
+			    this._ConfFileFeatures = data.TryGetValueSafe<string>("confFileFeatures");
+			    this._Config = data.TryGetValueSafe<string>("config");
+			    this._ConfVars = data.TryGetValueSafe<string>("confVars");
+			    this._UseCdn = data.TryGetValueSafe<bool>("useCdn");
+			    this._Tags = data.TryGetValueSafe<string>("tags");
+			    this._SwfUrlVersion = data.TryGetValueSafe<string>("swfUrlVersion");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._CreationMode = (UiConfCreationMode)ParseEnum(typeof(UiConfCreationMode), data.TryGetValueSafe<int>("creationMode"));
+			    this._Html5Url = data.TryGetValueSafe<string>("html5Url");
+			    this._Version = data.TryGetValueSafe<string>("version");
+			    this._PartnerTags = data.TryGetValueSafe<string>("partnerTags");
+		}
 		#endregion
 
 		#region Methods

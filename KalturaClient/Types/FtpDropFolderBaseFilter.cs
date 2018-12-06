@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public FtpDropFolderBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public FtpDropFolderBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

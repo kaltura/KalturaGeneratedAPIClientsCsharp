@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DistributionValidationErrorMissingMetadata(IDictionary<string,object> data) : base(data)
+		{
+			    this._FieldName = data.TryGetValueSafe<string>("fieldName");
+		}
 		#endregion
 
 		#region Methods

@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public VirusScanJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._FileContainer = ObjectFactory.Create<FileContainer>(data.TryGetValueSafe<IDictionary<string,object>>("fileContainer"));
+			    this._FlavorAssetId = data.TryGetValueSafe<string>("flavorAssetId");
+			    this._ScanResult = (VirusScanJobResult)ParseEnum(typeof(VirusScanJobResult), data.TryGetValueSafe<int>("scanResult"));
+			    this._VirusFoundAction = (VirusFoundAction)ParseEnum(typeof(VirusFoundAction), data.TryGetValueSafe<int>("virusFoundAction"));
+		}
 		#endregion
 
 		#region Methods

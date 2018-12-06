@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public BulkServiceData(XmlElement node) : base(node)
 		{
 		}
+
+		public BulkServiceData(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

@@ -193,6 +193,20 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CEError(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<string>("id");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._Browser = data.TryGetValueSafe<string>("browser");
+			    this._ServerIp = data.TryGetValueSafe<string>("serverIp");
+			    this._ServerOs = data.TryGetValueSafe<string>("serverOs");
+			    this._PhpVersion = data.TryGetValueSafe<string>("phpVersion");
+			    this._CeAdminEmail = data.TryGetValueSafe<string>("ceAdminEmail");
+			    this._Type = data.TryGetValueSafe<string>("type");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._Data = data.TryGetValueSafe<string>("data");
+		}
 		#endregion
 
 		#region Methods

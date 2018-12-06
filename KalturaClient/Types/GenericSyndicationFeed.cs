@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public GenericSyndicationFeed(IDictionary<string,object> data) : base(data)
+		{
+			    this._FeedDescription = data.TryGetValueSafe<string>("feedDescription");
+			    this._FeedLandingPage = data.TryGetValueSafe<string>("feedLandingPage");
+			    this._EntryFilter = ObjectFactory.Create<BaseEntryFilter>(data.TryGetValueSafe<IDictionary<string,object>>("entryFilter"));
+			    this._PageSize = data.TryGetValueSafe<int>("pageSize");
+		}
 		#endregion
 
 		#region Methods

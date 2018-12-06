@@ -254,6 +254,24 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ReportInputFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._Keywords = data.TryGetValueSafe<string>("keywords");
+			    this._SearchInTags = data.TryGetValueSafe<bool>("searchInTags");
+			    this._SearchInAdminTags = data.TryGetValueSafe<bool>("searchInAdminTags");
+			    this._Categories = data.TryGetValueSafe<string>("categories");
+			    this._CustomVar1In = data.TryGetValueSafe<string>("customVar1In");
+			    this._CustomVar2In = data.TryGetValueSafe<string>("customVar2In");
+			    this._CustomVar3In = data.TryGetValueSafe<string>("customVar3In");
+			    this._DeviceIn = data.TryGetValueSafe<string>("deviceIn");
+			    this._CountryIn = data.TryGetValueSafe<string>("countryIn");
+			    this._RegionIn = data.TryGetValueSafe<string>("regionIn");
+			    this._OperatingSystemFamilyIn = data.TryGetValueSafe<string>("operatingSystemFamilyIn");
+			    this._BrowserFamilyIn = data.TryGetValueSafe<string>("browserFamilyIn");
+			    this._TimeZoneOffset = data.TryGetValueSafe<int>("timeZoneOffset");
+			    this._Interval = (ReportInterval)StringEnum.Parse(typeof(ReportInterval), data.TryGetValueSafe<string>("interval"));
+		}
 		#endregion
 
 		#region Methods

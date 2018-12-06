@@ -112,6 +112,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public SessionInfo(IDictionary<string,object> data) : base(data)
+		{
+			    this._Ks = data.TryGetValueSafe<string>("ks");
+			    this._SessionType = (SessionType)ParseEnum(typeof(SessionType), data.TryGetValueSafe<int>("sessionType"));
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._UserId = data.TryGetValueSafe<string>("userId");
+			    this._Expiry = data.TryGetValueSafe<int>("expiry");
+			    this._Privileges = data.TryGetValueSafe<string>("privileges");
+		}
 		#endregion
 
 		#region Methods

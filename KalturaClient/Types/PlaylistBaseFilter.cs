@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public PlaylistBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public PlaylistBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

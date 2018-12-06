@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PlayReadyPolicyFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (PlayReadyPolicyOrderBy)StringEnum.Parse(typeof(PlayReadyPolicyOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

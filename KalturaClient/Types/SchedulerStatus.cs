@@ -155,6 +155,18 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public SchedulerStatus(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._SchedulerConfiguredId = data.TryGetValueSafe<int>("schedulerConfiguredId");
+			    this._WorkerConfiguredId = data.TryGetValueSafe<int>("workerConfiguredId");
+			    this._WorkerType = (BatchJobType)StringEnum.Parse(typeof(BatchJobType), data.TryGetValueSafe<string>("workerType"));
+			    this._Type = (SchedulerStatusType)ParseEnum(typeof(SchedulerStatusType), data.TryGetValueSafe<int>("type"));
+			    this._Value = data.TryGetValueSafe<int>("value");
+			    this._SchedulerId = data.TryGetValueSafe<int>("schedulerId");
+			    this._WorkerId = data.TryGetValueSafe<int>("workerId");
+		}
 		#endregion
 
 		#region Methods

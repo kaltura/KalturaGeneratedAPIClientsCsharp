@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public CrossKalturaDistributionProviderBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public CrossKalturaDistributionProviderBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

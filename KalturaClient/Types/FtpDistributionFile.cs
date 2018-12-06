@@ -142,6 +142,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FtpDistributionFile(IDictionary<string,object> data) : base(data)
+		{
+			    this._AssetId = data.TryGetValueSafe<string>("assetId");
+			    this._Filename = data.TryGetValueSafe<string>("filename");
+			    this._Contents = data.TryGetValueSafe<string>("contents");
+			    this._LocalFilePath = data.TryGetValueSafe<string>("localFilePath");
+			    this._Version = data.TryGetValueSafe<string>("version");
+			    this._Hash = data.TryGetValueSafe<string>("hash");
+		}
 		#endregion
 
 		#region Methods

@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<GroupUser>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<GroupUser>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class GroupUserDeleteRequestBuilder : RequestBuilder<object>
@@ -125,6 +129,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -179,6 +187,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<GroupUser>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<GroupUser>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -249,6 +261,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<BulkUpload>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<BulkUpload>((IDictionary<string,object>)result);
 		}
 	}
 

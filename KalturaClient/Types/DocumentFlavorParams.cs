@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public DocumentFlavorParams(XmlElement node) : base(node)
 		{
 		}
+
+		public DocumentFlavorParams(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

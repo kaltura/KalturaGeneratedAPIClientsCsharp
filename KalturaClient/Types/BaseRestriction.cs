@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public BaseRestriction(XmlElement node) : base(node)
 		{
 		}
+
+		public BaseRestriction(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

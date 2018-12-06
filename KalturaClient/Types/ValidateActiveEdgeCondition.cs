@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ValidateActiveEdgeCondition(IDictionary<string,object> data) : base(data)
+		{
+			    this._EdgeServerIds = data.TryGetValueSafe<string>("edgeServerIds");
+		}
 		#endregion
 
 		#region Methods

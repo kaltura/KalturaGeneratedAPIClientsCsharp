@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public ComcastMrssDistributionProvider(XmlElement node) : base(node)
 		{
 		}
+
+		public ComcastMrssDistributionProvider(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

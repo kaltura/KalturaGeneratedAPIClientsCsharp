@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public RecordScheduleEvent(XmlElement node) : base(node)
 		{
 		}
+
+		public RecordScheduleEvent(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

@@ -156,6 +156,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DailymotionDistributionCaptionInfo(IDictionary<string,object> data) : base(data)
+		{
+			    this._Language = data.TryGetValueSafe<string>("language");
+			    this._FilePath = data.TryGetValueSafe<string>("filePath");
+			    this._RemoteId = data.TryGetValueSafe<string>("remoteId");
+			    this._Action = (DailymotionDistributionCaptionAction)ParseEnum(typeof(DailymotionDistributionCaptionAction), data.TryGetValueSafe<int>("action"));
+			    this._Version = data.TryGetValueSafe<string>("version");
+			    this._AssetId = data.TryGetValueSafe<string>("assetId");
+			    this._Format = (DailymotionDistributionCaptionFormat)ParseEnum(typeof(DailymotionDistributionCaptionFormat), data.TryGetValueSafe<int>("format"));
+		}
 		#endregion
 
 		#region Methods

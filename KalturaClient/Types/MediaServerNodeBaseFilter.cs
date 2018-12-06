@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public MediaServerNodeBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public MediaServerNodeBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

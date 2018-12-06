@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UrlTokenizerCloudFront(IDictionary<string,object> data) : base(data)
+		{
+			    this._KeyPairId = data.TryGetValueSafe<string>("keyPairId");
+			    this._RootDir = data.TryGetValueSafe<string>("rootDir");
+		}
 		#endregion
 
 		#region Methods

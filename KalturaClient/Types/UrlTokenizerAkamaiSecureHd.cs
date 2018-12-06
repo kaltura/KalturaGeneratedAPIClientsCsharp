@@ -128,6 +128,15 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UrlTokenizerAkamaiSecureHd(IDictionary<string,object> data) : base(data)
+		{
+			    this._ParamName = data.TryGetValueSafe<string>("paramName");
+			    this._AclPostfix = data.TryGetValueSafe<string>("aclPostfix");
+			    this._CustomPostfixes = data.TryGetValueSafe<string>("customPostfixes");
+			    this._UseCookieHosts = data.TryGetValueSafe<string>("useCookieHosts");
+			    this._RootDir = data.TryGetValueSafe<string>("rootDir");
+		}
 		#endregion
 
 		#region Methods

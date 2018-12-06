@@ -243,6 +243,29 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DrmPolicy(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._SystemName = data.TryGetValueSafe<string>("systemName");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._Provider = (DrmProviderType)StringEnum.Parse(typeof(DrmProviderType), data.TryGetValueSafe<string>("provider"));
+			    this._Status = (DrmPolicyStatus)ParseEnum(typeof(DrmPolicyStatus), data.TryGetValueSafe<int>("status"));
+			    this._Scenario = (DrmLicenseScenario)StringEnum.Parse(typeof(DrmLicenseScenario), data.TryGetValueSafe<string>("scenario"));
+			    this._LicenseType = (DrmLicenseType)StringEnum.Parse(typeof(DrmLicenseType), data.TryGetValueSafe<string>("licenseType"));
+			    this._LicenseExpirationPolicy = (DrmLicenseExpirationPolicy)ParseEnum(typeof(DrmLicenseExpirationPolicy), data.TryGetValueSafe<int>("licenseExpirationPolicy"));
+			    this._Duration = data.TryGetValueSafe<int>("duration");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._LicenseParams = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("licenseParams", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._LicenseParams.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

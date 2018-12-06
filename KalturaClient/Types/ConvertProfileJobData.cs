@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ConvertProfileJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._InputFileSyncLocalPath = data.TryGetValueSafe<string>("inputFileSyncLocalPath");
+			    this._ThumbHeight = data.TryGetValueSafe<int>("thumbHeight");
+			    this._ThumbBitrate = data.TryGetValueSafe<int>("thumbBitrate");
+		}
 		#endregion
 
 		#region Methods

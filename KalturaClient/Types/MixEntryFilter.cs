@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public MixEntryFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (MixEntryOrderBy)StringEnum.Parse(typeof(MixEntryOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

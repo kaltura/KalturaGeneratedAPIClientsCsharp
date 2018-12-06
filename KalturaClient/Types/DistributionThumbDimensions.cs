@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DistributionThumbDimensions(IDictionary<string,object> data) : base(data)
+		{
+			    this._Width = data.TryGetValueSafe<int>("width");
+			    this._Height = data.TryGetValueSafe<int>("height");
+		}
 		#endregion
 
 		#region Methods

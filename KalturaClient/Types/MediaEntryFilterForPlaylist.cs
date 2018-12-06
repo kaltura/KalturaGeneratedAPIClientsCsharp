@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public MediaEntryFilterForPlaylist(IDictionary<string,object> data) : base(data)
+		{
+			    this._Limit = data.TryGetValueSafe<int>("limit");
+			    this._Name = data.TryGetValueSafe<string>("name");
+		}
 		#endregion
 
 		#region Methods

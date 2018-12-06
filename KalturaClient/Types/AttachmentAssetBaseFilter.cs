@@ -128,6 +128,15 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AttachmentAssetBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._FormatEqual = (AttachmentType)StringEnum.Parse(typeof(AttachmentType), data.TryGetValueSafe<string>("formatEqual"));
+			    this._FormatIn = data.TryGetValueSafe<string>("formatIn");
+			    this._StatusEqual = (AttachmentAssetStatus)ParseEnum(typeof(AttachmentAssetStatus), data.TryGetValueSafe<int>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			    this._StatusNotIn = data.TryGetValueSafe<string>("statusNotIn");
+		}
 		#endregion
 
 		#region Methods

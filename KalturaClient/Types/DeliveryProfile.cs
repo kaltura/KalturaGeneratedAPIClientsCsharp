@@ -303,6 +303,30 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DeliveryProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._Type = (DeliveryProfileType)StringEnum.Parse(typeof(DeliveryProfileType), data.TryGetValueSafe<string>("type"));
+			    this._SystemName = data.TryGetValueSafe<string>("systemName");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._StreamerType = (PlaybackProtocol)StringEnum.Parse(typeof(PlaybackProtocol), data.TryGetValueSafe<string>("streamerType"));
+			    this._Url = data.TryGetValueSafe<string>("url");
+			    this._HostName = data.TryGetValueSafe<string>("hostName");
+			    this._Status = (DeliveryStatus)ParseEnum(typeof(DeliveryStatus), data.TryGetValueSafe<int>("status"));
+			    this._Recognizer = ObjectFactory.Create<UrlRecognizer>(data.TryGetValueSafe<IDictionary<string,object>>("recognizer"));
+			    this._Tokenizer = ObjectFactory.Create<UrlTokenizer>(data.TryGetValueSafe<IDictionary<string,object>>("tokenizer"));
+			    this._IsDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isDefault"));
+			    this._ParentId = data.TryGetValueSafe<int>("parentId");
+			    this._MediaProtocols = data.TryGetValueSafe<string>("mediaProtocols");
+			    this._Priority = data.TryGetValueSafe<int>("priority");
+			    this._ExtraParams = data.TryGetValueSafe<string>("extraParams");
+			    this._SupplementaryAssetsFilter = ObjectFactory.Create<AssetFilter>(data.TryGetValueSafe<IDictionary<string,object>>("supplementaryAssetsFilter"));
+		}
 		#endregion
 
 		#region Methods

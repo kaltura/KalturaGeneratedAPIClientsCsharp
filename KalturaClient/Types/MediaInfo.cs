@@ -543,6 +543,45 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public MediaInfo(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._FlavorAssetId = data.TryGetValueSafe<string>("flavorAssetId");
+			    this._FileSize = data.TryGetValueSafe<int>("fileSize");
+			    this._ContainerFormat = data.TryGetValueSafe<string>("containerFormat");
+			    this._ContainerId = data.TryGetValueSafe<string>("containerId");
+			    this._ContainerProfile = data.TryGetValueSafe<string>("containerProfile");
+			    this._ContainerDuration = data.TryGetValueSafe<int>("containerDuration");
+			    this._ContainerBitRate = data.TryGetValueSafe<int>("containerBitRate");
+			    this._VideoFormat = data.TryGetValueSafe<string>("videoFormat");
+			    this._VideoCodecId = data.TryGetValueSafe<string>("videoCodecId");
+			    this._VideoDuration = data.TryGetValueSafe<int>("videoDuration");
+			    this._VideoBitRate = data.TryGetValueSafe<int>("videoBitRate");
+			    this._VideoBitRateMode = (BitRateMode)ParseEnum(typeof(BitRateMode), data.TryGetValueSafe<int>("videoBitRateMode"));
+			    this._VideoWidth = data.TryGetValueSafe<int>("videoWidth");
+			    this._VideoHeight = data.TryGetValueSafe<int>("videoHeight");
+			    this._VideoFrameRate = data.TryGetValueSafe<float>("videoFrameRate");
+			    this._VideoDar = data.TryGetValueSafe<float>("videoDar");
+			    this._VideoRotation = data.TryGetValueSafe<int>("videoRotation");
+			    this._AudioFormat = data.TryGetValueSafe<string>("audioFormat");
+			    this._AudioCodecId = data.TryGetValueSafe<string>("audioCodecId");
+			    this._AudioDuration = data.TryGetValueSafe<int>("audioDuration");
+			    this._AudioBitRate = data.TryGetValueSafe<int>("audioBitRate");
+			    this._AudioBitRateMode = (BitRateMode)ParseEnum(typeof(BitRateMode), data.TryGetValueSafe<int>("audioBitRateMode"));
+			    this._AudioChannels = data.TryGetValueSafe<int>("audioChannels");
+			    this._AudioSamplingRate = data.TryGetValueSafe<int>("audioSamplingRate");
+			    this._AudioResolution = data.TryGetValueSafe<int>("audioResolution");
+			    this._WritingLib = data.TryGetValueSafe<string>("writingLib");
+			    this._RawData = data.TryGetValueSafe<string>("rawData");
+			    this._MultiStreamInfo = data.TryGetValueSafe<string>("multiStreamInfo");
+			    this._ScanType = data.TryGetValueSafe<int>("scanType");
+			    this._MultiStream = data.TryGetValueSafe<string>("multiStream");
+			    this._IsFastStart = data.TryGetValueSafe<int>("isFastStart");
+			    this._ContentStreams = data.TryGetValueSafe<string>("contentStreams");
+			    this._ComplexityValue = data.TryGetValueSafe<int>("complexityValue");
+			    this._MaxGOP = data.TryGetValueSafe<float>("maxGOP");
+		}
 		#endregion
 
 		#region Methods

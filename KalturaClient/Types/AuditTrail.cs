@@ -324,6 +324,34 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AuditTrail(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._ParsedAt = data.TryGetValueSafe<int>("parsedAt");
+			    this._Status = (AuditTrailStatus)ParseEnum(typeof(AuditTrailStatus), data.TryGetValueSafe<int>("status"));
+			    this._AuditObjectType = (AuditTrailObjectType)StringEnum.Parse(typeof(AuditTrailObjectType), data.TryGetValueSafe<string>("auditObjectType"));
+			    this._ObjectId = data.TryGetValueSafe<string>("objectId");
+			    this._RelatedObjectId = data.TryGetValueSafe<string>("relatedObjectId");
+			    this._RelatedObjectType = (AuditTrailObjectType)StringEnum.Parse(typeof(AuditTrailObjectType), data.TryGetValueSafe<string>("relatedObjectType"));
+			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+			    this._MasterPartnerId = data.TryGetValueSafe<int>("masterPartnerId");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._RequestId = data.TryGetValueSafe<string>("requestId");
+			    this._UserId = data.TryGetValueSafe<string>("userId");
+			    this._Action = (AuditTrailAction)StringEnum.Parse(typeof(AuditTrailAction), data.TryGetValueSafe<string>("action"));
+			    this._Data = ObjectFactory.Create<AuditTrailInfo>(data.TryGetValueSafe<IDictionary<string,object>>("data"));
+			    this._Ks = data.TryGetValueSafe<string>("ks");
+			    this._Context = (AuditTrailContext)ParseEnum(typeof(AuditTrailContext), data.TryGetValueSafe<int>("context"));
+			    this._EntryPoint = data.TryGetValueSafe<string>("entryPoint");
+			    this._ServerName = data.TryGetValueSafe<string>("serverName");
+			    this._IpAddress = data.TryGetValueSafe<string>("ipAddress");
+			    this._UserAgent = data.TryGetValueSafe<string>("userAgent");
+			    this._ClientTag = data.TryGetValueSafe<string>("clientTag");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._ErrorDescription = data.TryGetValueSafe<string>("errorDescription");
+		}
 		#endregion
 
 		#region Methods

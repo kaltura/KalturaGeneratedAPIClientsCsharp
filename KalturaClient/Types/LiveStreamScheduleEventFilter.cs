@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveStreamScheduleEventFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (LiveStreamScheduleEventOrderBy)StringEnum.Parse(typeof(LiveStreamScheduleEventOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

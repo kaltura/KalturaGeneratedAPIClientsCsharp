@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public TubeMogulSyndicationFeedFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (TubeMogulSyndicationFeedOrderBy)StringEnum.Parse(typeof(TubeMogulSyndicationFeedOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

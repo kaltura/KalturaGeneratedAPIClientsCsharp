@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CategoryIdentifier(IDictionary<string,object> data) : base(data)
+		{
+			    this._Identifier = (CategoryIdentifierField)StringEnum.Parse(typeof(CategoryIdentifierField), data.TryGetValueSafe<string>("identifier"));
+		}
 		#endregion
 
 		#region Methods

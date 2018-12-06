@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public ScpDropFolderBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public ScpDropFolderBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

@@ -226,6 +226,22 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public YoutubeApiDistributionProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._Username = data.TryGetValueSafe<string>("username");
+			    this._DefaultCategory = data.TryGetValueSafe<int>("defaultCategory");
+			    this._AllowComments = data.TryGetValueSafe<string>("allowComments");
+			    this._AllowEmbedding = data.TryGetValueSafe<string>("allowEmbedding");
+			    this._AllowRatings = data.TryGetValueSafe<string>("allowRatings");
+			    this._AllowResponses = data.TryGetValueSafe<string>("allowResponses");
+			    this._ApiAuthorizeUrl = data.TryGetValueSafe<string>("apiAuthorizeUrl");
+			    this._GoogleClientId = data.TryGetValueSafe<string>("googleClientId");
+			    this._GoogleClientSecret = data.TryGetValueSafe<string>("googleClientSecret");
+			    this._GoogleTokenData = data.TryGetValueSafe<string>("googleTokenData");
+			    this._AssumeSuccess = data.TryGetValueSafe<bool>("assumeSuccess");
+			    this._PrivacyStatus = data.TryGetValueSafe<string>("privacyStatus");
+		}
 		#endregion
 
 		#region Methods

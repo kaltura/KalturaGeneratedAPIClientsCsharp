@@ -314,6 +314,33 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BulkUpload(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<long>("id");
+			    this._UploadedBy = data.TryGetValueSafe<string>("uploadedBy");
+			    this._UploadedByUserId = data.TryGetValueSafe<string>("uploadedByUserId");
+			    this._UploadedOn = data.TryGetValueSafe<int>("uploadedOn");
+			    this._NumOfEntries = data.TryGetValueSafe<int>("numOfEntries");
+			    this._Status = (BatchJobStatus)ParseEnum(typeof(BatchJobStatus), data.TryGetValueSafe<int>("status"));
+			    this._LogFileUrl = data.TryGetValueSafe<string>("logFileUrl");
+			    this._CsvFileUrl = data.TryGetValueSafe<string>("csvFileUrl");
+			    this._BulkFileUrl = data.TryGetValueSafe<string>("bulkFileUrl");
+			    this._BulkUploadType = (BulkUploadType)StringEnum.Parse(typeof(BulkUploadType), data.TryGetValueSafe<string>("bulkUploadType"));
+			    this._Results = new List<BulkUploadResult>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("results", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Results.Add(ObjectFactory.Create<BulkUploadResult>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._Error = data.TryGetValueSafe<string>("error");
+			    this._ErrorType = (BatchJobErrorTypes)ParseEnum(typeof(BatchJobErrorTypes), data.TryGetValueSafe<int>("errorType"));
+			    this._ErrorNumber = data.TryGetValueSafe<int>("errorNumber");
+			    this._FileName = data.TryGetValueSafe<string>("fileName");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._NumOfObjects = data.TryGetValueSafe<int>("numOfObjects");
+			    this._BulkUploadObjectType = (BulkUploadObjectType)StringEnum.Parse(typeof(BulkUploadObjectType), data.TryGetValueSafe<string>("bulkUploadObjectType"));
+		}
 		#endregion
 
 		#region Methods

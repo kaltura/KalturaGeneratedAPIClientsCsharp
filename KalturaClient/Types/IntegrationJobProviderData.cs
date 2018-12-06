@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public IntegrationJobProviderData(XmlElement node) : base(node)
 		{
 		}
+
+		public IntegrationJobProviderData(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

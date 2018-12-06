@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FileContainer(IDictionary<string,object> data) : base(data)
+		{
+			    this._FilePath = data.TryGetValueSafe<string>("filePath");
+			    this._EncryptionKey = data.TryGetValueSafe<string>("encryptionKey");
+			    this._FileSize = data.TryGetValueSafe<int>("fileSize");
+		}
 		#endregion
 
 		#region Methods

@@ -62,6 +62,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<PlayReadyContentKey>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<PlayReadyContentKey>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class PlayReadyDrmGetContentKeysRequestBuilder : RequestBuilder<IList<PlayReadyContentKey>>
@@ -105,6 +109,15 @@ namespace Kaltura.Services
 		{
 			IList<PlayReadyContentKey> list = new List<PlayReadyContentKey>();
 			foreach(XmlElement node in result.ChildNodes)
+			{
+				list.Add(ObjectFactory.Create<PlayReadyContentKey>(node));
+			}
+			return list;
+		}
+		public override object DeserializeObject(object result)
+		{
+			var list = new List<PlayReadyContentKey>();
+			foreach(var node in (IEnumerable<IDictionary<string,object>>)result)
 			{
 				list.Add(ObjectFactory.Create<PlayReadyContentKey>(node));
 			}
@@ -161,6 +174,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<PlayReadyContentKey>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<PlayReadyContentKey>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -240,6 +257,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<PlayReadyLicenseDetails>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<PlayReadyLicenseDetails>((IDictionary<string,object>)result);
 		}
 	}
 

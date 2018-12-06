@@ -156,6 +156,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public SshDropFolder(IDictionary<string,object> data) : base(data)
+		{
+			    this._Host = data.TryGetValueSafe<string>("host");
+			    this._Port = data.TryGetValueSafe<int>("port");
+			    this._Username = data.TryGetValueSafe<string>("username");
+			    this._Password = data.TryGetValueSafe<string>("password");
+			    this._PrivateKey = data.TryGetValueSafe<string>("privateKey");
+			    this._PublicKey = data.TryGetValueSafe<string>("publicKey");
+			    this._PassPhrase = data.TryGetValueSafe<string>("passPhrase");
+		}
 		#endregion
 
 		#region Methods

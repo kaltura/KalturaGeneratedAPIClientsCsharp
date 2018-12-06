@@ -464,6 +464,39 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ScheduleEventBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
+			    this._IdIn = data.TryGetValueSafe<string>("idIn");
+			    this._IdNotIn = data.TryGetValueSafe<string>("idNotIn");
+			    this._ParentIdEqual = data.TryGetValueSafe<int>("parentIdEqual");
+			    this._ParentIdIn = data.TryGetValueSafe<string>("parentIdIn");
+			    this._ParentIdNotIn = data.TryGetValueSafe<string>("parentIdNotIn");
+			    this._StatusEqual = (ScheduleEventStatus)ParseEnum(typeof(ScheduleEventStatus), data.TryGetValueSafe<int>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			    this._StartDateGreaterThanOrEqual = data.TryGetValueSafe<int>("startDateGreaterThanOrEqual");
+			    this._StartDateLessThanOrEqual = data.TryGetValueSafe<int>("startDateLessThanOrEqual");
+			    this._EndDateGreaterThanOrEqual = data.TryGetValueSafe<int>("endDateGreaterThanOrEqual");
+			    this._EndDateLessThanOrEqual = data.TryGetValueSafe<int>("endDateLessThanOrEqual");
+			    this._ReferenceIdEqual = data.TryGetValueSafe<string>("referenceIdEqual");
+			    this._ReferenceIdIn = data.TryGetValueSafe<string>("referenceIdIn");
+			    this._OwnerIdEqual = data.TryGetValueSafe<string>("ownerIdEqual");
+			    this._OwnerIdIn = data.TryGetValueSafe<string>("ownerIdIn");
+			    this._PriorityEqual = data.TryGetValueSafe<int>("priorityEqual");
+			    this._PriorityIn = data.TryGetValueSafe<string>("priorityIn");
+			    this._PriorityGreaterThanOrEqual = data.TryGetValueSafe<int>("priorityGreaterThanOrEqual");
+			    this._PriorityLessThanOrEqual = data.TryGetValueSafe<int>("priorityLessThanOrEqual");
+			    this._RecurrenceTypeEqual = (ScheduleEventRecurrenceType)ParseEnum(typeof(ScheduleEventRecurrenceType), data.TryGetValueSafe<int>("recurrenceTypeEqual"));
+			    this._RecurrenceTypeIn = data.TryGetValueSafe<string>("recurrenceTypeIn");
+			    this._TagsLike = data.TryGetValueSafe<string>("tagsLike");
+			    this._TagsMultiLikeOr = data.TryGetValueSafe<string>("tagsMultiLikeOr");
+			    this._TagsMultiLikeAnd = data.TryGetValueSafe<string>("tagsMultiLikeAnd");
+			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
+			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
+			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
+		}
 		#endregion
 
 		#region Methods

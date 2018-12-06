@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PlayReadyAnalogVideoOPIdHolder(IDictionary<string,object> data) : base(data)
+		{
+			    this._Type = (PlayReadyAnalogVideoOPId)StringEnum.Parse(typeof(PlayReadyAnalogVideoOPId), data.TryGetValueSafe<string>("type"));
+		}
 		#endregion
 
 		#region Methods

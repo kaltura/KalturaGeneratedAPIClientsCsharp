@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public DoubleClickDistributionJobProviderData(XmlElement node) : base(node)
 		{
 		}
+
+		public DoubleClickDistributionJobProviderData(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public OperaSyndicationFeed(XmlElement node) : base(node)
 		{
 		}
+
+		public OperaSyndicationFeed(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

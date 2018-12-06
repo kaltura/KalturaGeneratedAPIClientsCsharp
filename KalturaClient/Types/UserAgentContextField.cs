@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public UserAgentContextField(XmlElement node) : base(node)
 		{
 		}
+
+		public UserAgentContextField(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

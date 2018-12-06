@@ -160,6 +160,22 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ConvertCollectionJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._DestDirLocalPath = data.TryGetValueSafe<string>("destDirLocalPath");
+			    this._DestDirRemoteUrl = data.TryGetValueSafe<string>("destDirRemoteUrl");
+			    this._DestFileName = data.TryGetValueSafe<string>("destFileName");
+			    this._InputXmlLocalPath = data.TryGetValueSafe<string>("inputXmlLocalPath");
+			    this._InputXmlRemoteUrl = data.TryGetValueSafe<string>("inputXmlRemoteUrl");
+			    this._CommandLinesStr = data.TryGetValueSafe<string>("commandLinesStr");
+			    this._Flavors = new List<ConvertCollectionFlavorData>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("flavors", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Flavors.Add(ObjectFactory.Create<ConvertCollectionFlavorData>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

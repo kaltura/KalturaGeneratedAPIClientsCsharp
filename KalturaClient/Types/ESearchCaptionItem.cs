@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ESearchCaptionItem(IDictionary<string,object> data) : base(data)
+		{
+			    this._FieldName = (ESearchCaptionFieldName)StringEnum.Parse(typeof(ESearchCaptionFieldName), data.TryGetValueSafe<string>("fieldName"));
+		}
 		#endregion
 
 		#region Methods

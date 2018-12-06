@@ -549,6 +549,53 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BatchJob(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<long>("id");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._DeletedAt = data.TryGetValueSafe<int>("deletedAt");
+			    this._LockExpiration = data.TryGetValueSafe<int>("lockExpiration");
+			    this._ExecutionAttempts = data.TryGetValueSafe<int>("executionAttempts");
+			    this._LockVersion = data.TryGetValueSafe<int>("lockVersion");
+			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+			    this._EntryName = data.TryGetValueSafe<string>("entryName");
+			    this._JobType = (BatchJobType)StringEnum.Parse(typeof(BatchJobType), data.TryGetValueSafe<string>("jobType"));
+			    this._JobSubType = data.TryGetValueSafe<int>("jobSubType");
+			    this._Data = ObjectFactory.Create<JobData>(data.TryGetValueSafe<IDictionary<string,object>>("data"));
+			    this._Status = (BatchJobStatus)ParseEnum(typeof(BatchJobStatus), data.TryGetValueSafe<int>("status"));
+			    this._Abort = data.TryGetValueSafe<int>("abort");
+			    this._CheckAgainTimeout = data.TryGetValueSafe<int>("checkAgainTimeout");
+			    this._Message = data.TryGetValueSafe<string>("message");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._Priority = data.TryGetValueSafe<int>("priority");
+			    this._History = new List<BatchHistoryData>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("history", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._History.Add(ObjectFactory.Create<BatchHistoryData>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._BulkJobId = data.TryGetValueSafe<int>("bulkJobId");
+			    this._BatchVersion = data.TryGetValueSafe<int>("batchVersion");
+			    this._ParentJobId = data.TryGetValueSafe<int>("parentJobId");
+			    this._RootJobId = data.TryGetValueSafe<int>("rootJobId");
+			    this._QueueTime = data.TryGetValueSafe<int>("queueTime");
+			    this._FinishTime = data.TryGetValueSafe<int>("finishTime");
+			    this._ErrType = (BatchJobErrorTypes)ParseEnum(typeof(BatchJobErrorTypes), data.TryGetValueSafe<int>("errType"));
+			    this._ErrNumber = data.TryGetValueSafe<int>("errNumber");
+			    this._EstimatedEffort = data.TryGetValueSafe<int>("estimatedEffort");
+			    this._Urgency = data.TryGetValueSafe<int>("urgency");
+			    this._SchedulerId = data.TryGetValueSafe<int>("schedulerId");
+			    this._WorkerId = data.TryGetValueSafe<int>("workerId");
+			    this._BatchIndex = data.TryGetValueSafe<int>("batchIndex");
+			    this._LastSchedulerId = data.TryGetValueSafe<int>("lastSchedulerId");
+			    this._LastWorkerId = data.TryGetValueSafe<int>("lastWorkerId");
+			    this._Dc = data.TryGetValueSafe<int>("dc");
+			    this._JobObjectId = data.TryGetValueSafe<string>("jobObjectId");
+			    this._JobObjectType = data.TryGetValueSafe<int>("jobObjectType");
+		}
 		#endregion
 
 		#region Methods

@@ -198,6 +198,20 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public WebexDropFolder(IDictionary<string,object> data) : base(data)
+		{
+			    this._WebexUserId = data.TryGetValueSafe<string>("webexUserId");
+			    this._WebexPassword = data.TryGetValueSafe<string>("webexPassword");
+			    this._WebexSiteId = data.TryGetValueSafe<int>("webexSiteId");
+			    this._WebexPartnerId = data.TryGetValueSafe<string>("webexPartnerId");
+			    this._WebexServiceUrl = data.TryGetValueSafe<string>("webexServiceUrl");
+			    this._WebexHostIdMetadataFieldName = data.TryGetValueSafe<string>("webexHostIdMetadataFieldName");
+			    this._DeleteFromRecycleBin = data.TryGetValueSafe<bool>("deleteFromRecycleBin");
+			    this._WebexServiceType = data.TryGetValueSafe<string>("webexServiceType");
+			    this._WebexSiteName = data.TryGetValueSafe<string>("webexSiteName");
+			    this._DeleteFromTimestamp = data.TryGetValueSafe<int>("deleteFromTimestamp");
+		}
 		#endregion
 
 		#region Methods

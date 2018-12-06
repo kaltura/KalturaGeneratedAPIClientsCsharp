@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public DistributionSubmitJobData(XmlElement node) : base(node)
 		{
 		}
+
+		public DistributionSubmitJobData(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

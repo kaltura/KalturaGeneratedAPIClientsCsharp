@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DocumentEntryCompareAttributeCondition(IDictionary<string,object> data) : base(data)
+		{
+			    this._Attribute = (DocumentEntryCompareAttribute)StringEnum.Parse(typeof(DocumentEntryCompareAttribute), data.TryGetValueSafe<string>("attribute"));
+		}
 		#endregion
 
 		#region Methods

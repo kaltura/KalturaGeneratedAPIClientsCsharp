@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UploadResponse(IDictionary<string,object> data) : base(data)
+		{
+			    this._UploadTokenId = data.TryGetValueSafe<string>("uploadTokenId");
+			    this._FileSize = data.TryGetValueSafe<int>("fileSize");
+			    this._ErrorCode = (UploadErrorCode)ParseEnum(typeof(UploadErrorCode), data.TryGetValueSafe<int>("errorCode"));
+			    this._ErrorDescription = data.TryGetValueSafe<string>("errorDescription");
+		}
 		#endregion
 
 		#region Methods

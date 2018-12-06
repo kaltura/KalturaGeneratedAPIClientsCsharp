@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AuditTrailChangeItem(IDictionary<string,object> data) : base(data)
+		{
+			    this._Descriptor = data.TryGetValueSafe<string>("descriptor");
+			    this._OldValue = data.TryGetValueSafe<string>("oldValue");
+			    this._NewValue = data.TryGetValueSafe<string>("newValue");
+		}
 		#endregion
 
 		#region Methods

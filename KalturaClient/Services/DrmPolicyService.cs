@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<DrmPolicy>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DrmPolicy>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DrmPolicyDeleteRequestBuilder : RequestBuilder<DrmPolicy>
@@ -119,6 +123,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<DrmPolicy>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DrmPolicy>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DrmPolicyGetRequestBuilder : RequestBuilder<DrmPolicy>
@@ -161,6 +169,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<DrmPolicy>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DrmPolicy>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -214,6 +226,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<DrmPolicy>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<DrmPolicy>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class DrmPolicyUpdateRequestBuilder : RequestBuilder<DrmPolicy>
@@ -265,6 +281,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<DrmPolicy>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<DrmPolicy>((IDictionary<string,object>)result);
 		}
 	}
 

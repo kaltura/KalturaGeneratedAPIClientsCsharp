@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BulkUploadFilterJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._Filter = ObjectFactory.Create<Filter>(data.TryGetValueSafe<IDictionary<string,object>>("filter"));
+			    this._TemplateObject = ObjectFactory.Create<ObjectBase>(data.TryGetValueSafe<IDictionary<string,object>>("templateObject"));
+		}
 		#endregion
 
 		#region Methods

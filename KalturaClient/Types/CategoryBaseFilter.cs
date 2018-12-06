@@ -618,6 +618,50 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CategoryBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
+			    this._IdIn = data.TryGetValueSafe<string>("idIn");
+			    this._IdNotIn = data.TryGetValueSafe<string>("idNotIn");
+			    this._ParentIdEqual = data.TryGetValueSafe<int>("parentIdEqual");
+			    this._ParentIdIn = data.TryGetValueSafe<string>("parentIdIn");
+			    this._DepthEqual = data.TryGetValueSafe<int>("depthEqual");
+			    this._FullNameEqual = data.TryGetValueSafe<string>("fullNameEqual");
+			    this._FullNameStartsWith = data.TryGetValueSafe<string>("fullNameStartsWith");
+			    this._FullNameIn = data.TryGetValueSafe<string>("fullNameIn");
+			    this._FullIdsEqual = data.TryGetValueSafe<string>("fullIdsEqual");
+			    this._FullIdsStartsWith = data.TryGetValueSafe<string>("fullIdsStartsWith");
+			    this._FullIdsMatchOr = data.TryGetValueSafe<string>("fullIdsMatchOr");
+			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
+			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
+			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
+			    this._TagsLike = data.TryGetValueSafe<string>("tagsLike");
+			    this._TagsMultiLikeOr = data.TryGetValueSafe<string>("tagsMultiLikeOr");
+			    this._TagsMultiLikeAnd = data.TryGetValueSafe<string>("tagsMultiLikeAnd");
+			    this._AppearInListEqual = (AppearInListType)ParseEnum(typeof(AppearInListType), data.TryGetValueSafe<int>("appearInListEqual"));
+			    this._PrivacyEqual = (PrivacyType)ParseEnum(typeof(PrivacyType), data.TryGetValueSafe<int>("privacyEqual"));
+			    this._PrivacyIn = data.TryGetValueSafe<string>("privacyIn");
+			    this._InheritanceTypeEqual = (InheritanceType)ParseEnum(typeof(InheritanceType), data.TryGetValueSafe<int>("inheritanceTypeEqual"));
+			    this._InheritanceTypeIn = data.TryGetValueSafe<string>("inheritanceTypeIn");
+			    this._ReferenceIdEqual = data.TryGetValueSafe<string>("referenceIdEqual");
+			    this._ReferenceIdEmpty = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("referenceIdEmpty"));
+			    this._ContributionPolicyEqual = (ContributionPolicyType)ParseEnum(typeof(ContributionPolicyType), data.TryGetValueSafe<int>("contributionPolicyEqual"));
+			    this._MembersCountGreaterThanOrEqual = data.TryGetValueSafe<int>("membersCountGreaterThanOrEqual");
+			    this._MembersCountLessThanOrEqual = data.TryGetValueSafe<int>("membersCountLessThanOrEqual");
+			    this._PendingMembersCountGreaterThanOrEqual = data.TryGetValueSafe<int>("pendingMembersCountGreaterThanOrEqual");
+			    this._PendingMembersCountLessThanOrEqual = data.TryGetValueSafe<int>("pendingMembersCountLessThanOrEqual");
+			    this._PrivacyContextEqual = data.TryGetValueSafe<string>("privacyContextEqual");
+			    this._StatusEqual = (CategoryStatus)ParseEnum(typeof(CategoryStatus), data.TryGetValueSafe<int>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			    this._InheritedParentIdEqual = data.TryGetValueSafe<int>("inheritedParentIdEqual");
+			    this._InheritedParentIdIn = data.TryGetValueSafe<string>("inheritedParentIdIn");
+			    this._PartnerSortValueGreaterThanOrEqual = data.TryGetValueSafe<int>("partnerSortValueGreaterThanOrEqual");
+			    this._PartnerSortValueLessThanOrEqual = data.TryGetValueSafe<int>("partnerSortValueLessThanOrEqual");
+			    this._AggregationCategoriesMultiLikeOr = data.TryGetValueSafe<string>("aggregationCategoriesMultiLikeOr");
+			    this._AggregationCategoriesMultiLikeAnd = data.TryGetValueSafe<string>("aggregationCategoriesMultiLikeAnd");
+		}
 		#endregion
 
 		#region Methods

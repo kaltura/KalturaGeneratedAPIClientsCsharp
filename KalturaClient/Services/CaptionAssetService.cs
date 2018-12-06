@@ -85,6 +85,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<CaptionAsset>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<CaptionAsset>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class CaptionAssetDeleteRequestBuilder : RequestBuilder<object>
@@ -125,6 +129,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -171,6 +179,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<CaptionAsset>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<CaptionAsset>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class CaptionAssetGetRemotePathsRequestBuilder : RequestBuilder<ListResponse<RemotePath>>
@@ -213,6 +225,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<RemotePath>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<RemotePath>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -266,6 +282,10 @@ namespace Kaltura.Services
 		{
 			return result.InnerText;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
+		}
 	}
 
 	public class CaptionAssetListRequestBuilder : RequestBuilder<ListResponse<CaptionAsset>>
@@ -318,6 +338,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<CaptionAsset>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<CaptionAsset>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class CaptionAssetSetAsDefaultRequestBuilder : RequestBuilder<object>
@@ -358,6 +382,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -413,6 +441,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<CaptionAsset>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<CaptionAsset>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class CaptionAssetUpdateRequestBuilder : RequestBuilder<CaptionAsset>
@@ -464,6 +496,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<CaptionAsset>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<CaptionAsset>((IDictionary<string,object>)result);
 		}
 	}
 

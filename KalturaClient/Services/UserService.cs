@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<User>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<User>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class UserAddFromBulkUploadRequestBuilder : RequestBuilder<BulkUpload>
@@ -136,6 +140,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<BulkUpload>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<BulkUpload>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class UserCheckLoginDataExistsRequestBuilder : RequestBuilder<bool>
@@ -181,6 +189,13 @@ namespace Kaltura.Services
 				return true;
 			return false;
 		}
+		public override object DeserializeObject(object result)
+		{
+			var resultStr = (string)result;
+			if (resultStr.Equals("1") || resultStr.ToLower().Equals("true"))
+				return true;
+			return false;
+		}
 	}
 
 	public class UserDeleteRequestBuilder : RequestBuilder<User>
@@ -223,6 +238,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<User>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<User>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -275,6 +294,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<User>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<User>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -337,6 +360,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<User>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<User>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class UserExportToCsvRequestBuilder : RequestBuilder<string>
@@ -398,6 +425,10 @@ namespace Kaltura.Services
 		{
 			return result.InnerText;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
+		}
 	}
 
 	public class UserGetRequestBuilder : RequestBuilder<User>
@@ -441,6 +472,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<User>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<User>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class UserGetByLoginIdRequestBuilder : RequestBuilder<User>
@@ -483,6 +518,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<User>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<User>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -536,6 +575,10 @@ namespace Kaltura.Services
 		{
 			return result.InnerText;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
+		}
 	}
 
 	public class UserListRequestBuilder : RequestBuilder<ListResponse<User>>
@@ -587,6 +630,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<User>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<User>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -667,6 +714,10 @@ namespace Kaltura.Services
 		{
 			return result.InnerText;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
+		}
 	}
 
 	public class UserLoginByKsRequestBuilder : RequestBuilder<SessionResponse>
@@ -709,6 +760,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<SessionResponse>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<SessionResponse>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -798,6 +853,10 @@ namespace Kaltura.Services
 		{
 			return result.InnerText;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
+		}
 	}
 
 	public class UserNotifyBanRequestBuilder : RequestBuilder<object>
@@ -838,6 +897,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -884,6 +947,10 @@ namespace Kaltura.Services
 		{
 			return null;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return null;
+		}
 	}
 
 	public class UserServeCsvRequestBuilder : RequestBuilder<string>
@@ -926,6 +993,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return result.InnerText;
+		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
 		}
 	}
 
@@ -976,6 +1047,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -1030,6 +1105,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<User>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<User>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -1116,6 +1195,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}

@@ -170,6 +170,18 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public GenericDistributionProfileAction(IDictionary<string,object> data) : base(data)
+		{
+			    this._Protocol = (DistributionProtocol)ParseEnum(typeof(DistributionProtocol), data.TryGetValueSafe<int>("protocol"));
+			    this._ServerUrl = data.TryGetValueSafe<string>("serverUrl");
+			    this._ServerPath = data.TryGetValueSafe<string>("serverPath");
+			    this._Username = data.TryGetValueSafe<string>("username");
+			    this._Password = data.TryGetValueSafe<string>("password");
+			    this._FtpPassiveMode = data.TryGetValueSafe<bool>("ftpPassiveMode");
+			    this._HttpFieldName = data.TryGetValueSafe<string>("httpFieldName");
+			    this._HttpFileName = data.TryGetValueSafe<string>("httpFileName");
+		}
 		#endregion
 
 		#region Methods

@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FlavorAssetWithParams(IDictionary<string,object> data) : base(data)
+		{
+			    this._FlavorAsset = ObjectFactory.Create<FlavorAsset>(data.TryGetValueSafe<IDictionary<string,object>>("flavorAsset"));
+			    this._FlavorParams = ObjectFactory.Create<FlavorParams>(data.TryGetValueSafe<IDictionary<string,object>>("flavorParams"));
+			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+		}
 		#endregion
 
 		#region Methods

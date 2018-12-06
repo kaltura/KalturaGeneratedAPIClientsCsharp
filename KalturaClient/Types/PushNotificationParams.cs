@@ -76,6 +76,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PushNotificationParams(IDictionary<string,object> data) : base(data)
+		{
+			    this._UserParams = new List<PushEventNotificationParameter>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("userParams", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._UserParams.Add(ObjectFactory.Create<PushEventNotificationParameter>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

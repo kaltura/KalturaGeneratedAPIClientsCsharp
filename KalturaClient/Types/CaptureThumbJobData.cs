@@ -184,6 +184,19 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CaptureThumbJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._FileContainer = ObjectFactory.Create<FileContainer>(data.TryGetValueSafe<IDictionary<string,object>>("fileContainer"));
+			    this._ActualSrcFileSyncLocalPath = data.TryGetValueSafe<string>("actualSrcFileSyncLocalPath");
+			    this._SrcFileSyncRemoteUrl = data.TryGetValueSafe<string>("srcFileSyncRemoteUrl");
+			    this._ThumbParamsOutputId = data.TryGetValueSafe<int>("thumbParamsOutputId");
+			    this._ThumbAssetId = data.TryGetValueSafe<string>("thumbAssetId");
+			    this._SrcAssetId = data.TryGetValueSafe<string>("srcAssetId");
+			    this._SrcAssetEncryptionKey = data.TryGetValueSafe<string>("srcAssetEncryptionKey");
+			    this._SrcAssetType = (AssetType)StringEnum.Parse(typeof(AssetType), data.TryGetValueSafe<string>("srcAssetType"));
+			    this._ThumbPath = data.TryGetValueSafe<string>("thumbPath");
+		}
 		#endregion
 
 		#region Methods

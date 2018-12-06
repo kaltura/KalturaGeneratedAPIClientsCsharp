@@ -210,6 +210,27 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public MediaEntry(IDictionary<string,object> data) : base(data)
+		{
+			    this._MediaType = (MediaType)ParseEnum(typeof(MediaType), data.TryGetValueSafe<int>("mediaType"));
+			    this._ConversionQuality = data.TryGetValueSafe<string>("conversionQuality");
+			    this._SourceType = (SourceType)StringEnum.Parse(typeof(SourceType), data.TryGetValueSafe<string>("sourceType"));
+			    this._SearchProviderType = (SearchProviderType)ParseEnum(typeof(SearchProviderType), data.TryGetValueSafe<int>("searchProviderType"));
+			    this._SearchProviderId = data.TryGetValueSafe<string>("searchProviderId");
+			    this._CreditUserName = data.TryGetValueSafe<string>("creditUserName");
+			    this._CreditUrl = data.TryGetValueSafe<string>("creditUrl");
+			    this._MediaDate = data.TryGetValueSafe<int>("mediaDate");
+			    this._DataUrl = data.TryGetValueSafe<string>("dataUrl");
+			    this._FlavorParamsIds = data.TryGetValueSafe<string>("flavorParamsIds");
+			    this._IsTrimDisabled = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isTrimDisabled"));
+			    this._Streams = new List<StreamContainer>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("streams", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Streams.Add(ObjectFactory.Create<StreamContainer>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

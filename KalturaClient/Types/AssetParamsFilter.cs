@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AssetParamsFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (AssetParamsOrderBy)StringEnum.Parse(typeof(AssetParamsOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

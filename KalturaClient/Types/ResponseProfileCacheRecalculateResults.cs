@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ResponseProfileCacheRecalculateResults(IDictionary<string,object> data) : base(data)
+		{
+			    this._LastObjectKey = data.TryGetValueSafe<string>("lastObjectKey");
+			    this._Recalculated = data.TryGetValueSafe<int>("recalculated");
+		}
 		#endregion
 
 		#region Methods

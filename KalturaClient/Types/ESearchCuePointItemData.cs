@@ -248,6 +248,33 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ESearchCuePointItemData(IDictionary<string,object> data) : base(data)
+		{
+			    this._CuePointType = data.TryGetValueSafe<string>("cuePointType");
+			    this._Id = data.TryGetValueSafe<string>("id");
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._Text = data.TryGetValueSafe<string>("text");
+			    this._Tags = new List<String>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("tags", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Tags.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._StartTime = data.TryGetValueSafe<string>("startTime");
+			    this._EndTime = data.TryGetValueSafe<string>("endTime");
+			    this._SubType = data.TryGetValueSafe<string>("subType");
+			    this._Question = data.TryGetValueSafe<string>("question");
+			    this._Answers = new List<String>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("answers", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Answers.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._Hint = data.TryGetValueSafe<string>("hint");
+			    this._Explanation = data.TryGetValueSafe<string>("explanation");
+			    this._AssetId = data.TryGetValueSafe<string>("assetId");
+		}
 		#endregion
 
 		#region Methods

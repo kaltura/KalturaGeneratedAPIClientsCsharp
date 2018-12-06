@@ -80,6 +80,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public SearchResultResponse(IDictionary<string,object> data) : base(data)
+		{
+			    this._Objects = new List<SearchResult>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("objects", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Objects.Add(ObjectFactory.Create<SearchResult>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._NeedMediaInfo = data.TryGetValueSafe<bool>("needMediaInfo");
+		}
 		#endregion
 
 		#region Methods

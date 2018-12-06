@@ -154,6 +154,19 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UserEntry(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+			    this._UserId = data.TryGetValueSafe<string>("userId");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._Status = (UserEntryStatus)StringEnum.Parse(typeof(UserEntryStatus), data.TryGetValueSafe<string>("status"));
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._Type = (UserEntryType)StringEnum.Parse(typeof(UserEntryType), data.TryGetValueSafe<string>("type"));
+			    this._ExtendedStatus = (UserEntryExtendedStatus)StringEnum.Parse(typeof(UserEntryExtendedStatus), data.TryGetValueSafe<string>("extendedStatus"));
+		}
 		#endregion
 
 		#region Methods

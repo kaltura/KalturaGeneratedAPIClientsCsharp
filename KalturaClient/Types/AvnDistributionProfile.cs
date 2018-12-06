@@ -81,6 +81,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AvnDistributionProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._FeedUrl = data.TryGetValueSafe<string>("feedUrl");
+			    this._FeedTitle = data.TryGetValueSafe<string>("feedTitle");
+		}
 		#endregion
 
 		#region Methods

@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ScheduleEvent>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ScheduleEvent>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ScheduleEventAddFromBulkUploadRequestBuilder : RequestBuilder<BulkUpload>
@@ -127,6 +131,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<BulkUpload>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<BulkUpload>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ScheduleEventCancelRequestBuilder : RequestBuilder<ScheduleEvent>
@@ -169,6 +177,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ScheduleEvent>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ScheduleEvent>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -213,6 +225,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ScheduleEvent>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ScheduleEvent>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ScheduleEventGetRequestBuilder : RequestBuilder<ScheduleEvent>
@@ -255,6 +271,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ScheduleEvent>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ScheduleEvent>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -317,6 +337,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<ScheduleEvent>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<ScheduleEvent>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ScheduleEventListRequestBuilder : RequestBuilder<ListResponse<ScheduleEvent>>
@@ -369,6 +393,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<ScheduleEvent>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<ScheduleEvent>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ScheduleEventUpdateRequestBuilder : RequestBuilder<ScheduleEvent>
@@ -420,6 +448,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ScheduleEvent>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ScheduleEvent>((IDictionary<string,object>)result);
 		}
 	}
 

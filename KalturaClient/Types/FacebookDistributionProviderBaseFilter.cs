@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public FacebookDistributionProviderBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public FacebookDistributionProviderBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

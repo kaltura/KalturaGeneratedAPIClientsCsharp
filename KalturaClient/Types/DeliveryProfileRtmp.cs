@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DeliveryProfileRtmp(IDictionary<string,object> data) : base(data)
+		{
+			    this._EnforceRtmpe = data.TryGetValueSafe<bool>("enforceRtmpe");
+			    this._Prefix = data.TryGetValueSafe<string>("prefix");
+		}
 		#endregion
 
 		#region Methods

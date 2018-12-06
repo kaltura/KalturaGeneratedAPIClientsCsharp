@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PlaylistMatchAttributeCondition(IDictionary<string,object> data) : base(data)
+		{
+			    this._Attribute = (PlaylistMatchAttribute)StringEnum.Parse(typeof(PlaylistMatchAttribute), data.TryGetValueSafe<string>("attribute"));
+		}
 		#endregion
 
 		#region Methods

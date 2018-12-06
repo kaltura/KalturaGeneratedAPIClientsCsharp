@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FairplayDrmProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._PublicCertificate = data.TryGetValueSafe<string>("publicCertificate");
+		}
 		#endregion
 
 		#region Methods

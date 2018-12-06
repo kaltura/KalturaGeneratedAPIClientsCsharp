@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveEntryFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IsLive = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isLive"));
+			    this._IsRecordedEntryIdEmpty = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isRecordedEntryIdEmpty"));
+			    this._HasMediaServerHostname = data.TryGetValueSafe<string>("hasMediaServerHostname");
+			    this._OrderBy = (LiveEntryOrderBy)StringEnum.Parse(typeof(LiveEntryOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ObjectIdentifier(IDictionary<string,object> data) : base(data)
+		{
+			    this._ExtendedFeatures = data.TryGetValueSafe<string>("extendedFeatures");
+		}
 		#endregion
 
 		#region Methods

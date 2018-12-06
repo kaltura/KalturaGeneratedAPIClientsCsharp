@@ -183,6 +183,24 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DistributionFieldConfig(IDictionary<string,object> data) : base(data)
+		{
+			    this._FieldName = data.TryGetValueSafe<string>("fieldName");
+			    this._UserFriendlyFieldName = data.TryGetValueSafe<string>("userFriendlyFieldName");
+			    this._EntryMrssXslt = data.TryGetValueSafe<string>("entryMrssXslt");
+			    this._IsRequired = (DistributionFieldRequiredStatus)ParseEnum(typeof(DistributionFieldRequiredStatus), data.TryGetValueSafe<int>("isRequired"));
+			    this._Type = data.TryGetValueSafe<string>("type");
+			    this._UpdateOnChange = data.TryGetValueSafe<bool>("updateOnChange");
+			    this._UpdateParams = new List<String>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("updateParams", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._UpdateParams.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._IsDefault = data.TryGetValueSafe<bool>("isDefault");
+			    this._TriggerDeleteOnError = data.TryGetValueSafe<bool>("triggerDeleteOnError");
+		}
 		#endregion
 
 		#region Methods

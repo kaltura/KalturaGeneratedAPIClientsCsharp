@@ -81,6 +81,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ExternalMediaEntry(IDictionary<string,object> data) : base(data)
+		{
+			    this._ExternalSourceType = (ExternalMediaSourceType)StringEnum.Parse(typeof(ExternalMediaSourceType), data.TryGetValueSafe<string>("externalSourceType"));
+			    this._AssetParamsIds = data.TryGetValueSafe<string>("assetParamsIds");
+		}
 		#endregion
 
 		#region Methods

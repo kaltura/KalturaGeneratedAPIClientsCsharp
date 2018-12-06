@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public ConfigurableDistributionProfileBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public ConfigurableDistributionProfileBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

@@ -464,6 +464,39 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FileSyncBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
+			    this._FileObjectTypeEqual = (FileSyncObjectType)StringEnum.Parse(typeof(FileSyncObjectType), data.TryGetValueSafe<string>("fileObjectTypeEqual"));
+			    this._FileObjectTypeIn = data.TryGetValueSafe<string>("fileObjectTypeIn");
+			    this._ObjectIdEqual = data.TryGetValueSafe<string>("objectIdEqual");
+			    this._ObjectIdIn = data.TryGetValueSafe<string>("objectIdIn");
+			    this._VersionEqual = data.TryGetValueSafe<string>("versionEqual");
+			    this._VersionIn = data.TryGetValueSafe<string>("versionIn");
+			    this._ObjectSubTypeEqual = data.TryGetValueSafe<int>("objectSubTypeEqual");
+			    this._ObjectSubTypeIn = data.TryGetValueSafe<string>("objectSubTypeIn");
+			    this._DcEqual = data.TryGetValueSafe<string>("dcEqual");
+			    this._DcIn = data.TryGetValueSafe<string>("dcIn");
+			    this._OriginalEqual = data.TryGetValueSafe<int>("originalEqual");
+			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
+			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
+			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
+			    this._ReadyAtGreaterThanOrEqual = data.TryGetValueSafe<int>("readyAtGreaterThanOrEqual");
+			    this._ReadyAtLessThanOrEqual = data.TryGetValueSafe<int>("readyAtLessThanOrEqual");
+			    this._SyncTimeGreaterThanOrEqual = data.TryGetValueSafe<int>("syncTimeGreaterThanOrEqual");
+			    this._SyncTimeLessThanOrEqual = data.TryGetValueSafe<int>("syncTimeLessThanOrEqual");
+			    this._StatusEqual = (FileSyncStatus)ParseEnum(typeof(FileSyncStatus), data.TryGetValueSafe<int>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			    this._FileTypeEqual = (FileSyncType)ParseEnum(typeof(FileSyncType), data.TryGetValueSafe<int>("fileTypeEqual"));
+			    this._FileTypeIn = data.TryGetValueSafe<string>("fileTypeIn");
+			    this._LinkedIdEqual = data.TryGetValueSafe<int>("linkedIdEqual");
+			    this._LinkCountGreaterThanOrEqual = data.TryGetValueSafe<int>("linkCountGreaterThanOrEqual");
+			    this._LinkCountLessThanOrEqual = data.TryGetValueSafe<int>("linkCountLessThanOrEqual");
+			    this._FileSizeGreaterThanOrEqual = data.TryGetValueSafe<float>("fileSizeGreaterThanOrEqual");
+			    this._FileSizeLessThanOrEqual = data.TryGetValueSafe<float>("fileSizeLessThanOrEqual");
+		}
 		#endregion
 
 		#region Methods

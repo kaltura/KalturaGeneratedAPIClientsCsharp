@@ -108,6 +108,23 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public MediaServerNode(IDictionary<string,object> data) : base(data)
+		{
+			    this._ApplicationName = data.TryGetValueSafe<string>("applicationName");
+			    this._MediaServerPortConfig = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("mediaServerPortConfig", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._MediaServerPortConfig.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._MediaServerPlaybackDomainConfig = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("mediaServerPlaybackDomainConfig", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._MediaServerPlaybackDomainConfig.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

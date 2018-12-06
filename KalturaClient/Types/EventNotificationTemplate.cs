@@ -269,6 +269,41 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EventNotificationTemplate(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._SystemName = data.TryGetValueSafe<string>("systemName");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._Type = (EventNotificationTemplateType)StringEnum.Parse(typeof(EventNotificationTemplateType), data.TryGetValueSafe<string>("type"));
+			    this._Status = (EventNotificationTemplateStatus)ParseEnum(typeof(EventNotificationTemplateStatus), data.TryGetValueSafe<int>("status"));
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._ManualDispatchEnabled = data.TryGetValueSafe<bool>("manualDispatchEnabled");
+			    this._AutomaticDispatchEnabled = data.TryGetValueSafe<bool>("automaticDispatchEnabled");
+			    this._EventType = (EventNotificationEventType)StringEnum.Parse(typeof(EventNotificationEventType), data.TryGetValueSafe<string>("eventType"));
+			    this._EventObjectType = (EventNotificationEventObjectType)StringEnum.Parse(typeof(EventNotificationEventObjectType), data.TryGetValueSafe<string>("eventObjectType"));
+			    this._EventConditions = new List<Condition>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("eventConditions", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._EventConditions.Add(ObjectFactory.Create<Condition>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._ContentParameters = new List<EventNotificationParameter>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("contentParameters", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._ContentParameters.Add(ObjectFactory.Create<EventNotificationParameter>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._UserParameters = new List<EventNotificationParameter>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("userParameters", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._UserParameters.Add(ObjectFactory.Create<EventNotificationParameter>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

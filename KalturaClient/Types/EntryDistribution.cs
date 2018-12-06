@@ -354,6 +354,43 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EntryDistribution(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._SubmittedAt = data.TryGetValueSafe<int>("submittedAt");
+			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._DistributionProfileId = data.TryGetValueSafe<int>("distributionProfileId");
+			    this._Status = (EntryDistributionStatus)ParseEnum(typeof(EntryDistributionStatus), data.TryGetValueSafe<int>("status"));
+			    this._SunStatus = (EntryDistributionSunStatus)ParseEnum(typeof(EntryDistributionSunStatus), data.TryGetValueSafe<int>("sunStatus"));
+			    this._DirtyStatus = (EntryDistributionFlag)ParseEnum(typeof(EntryDistributionFlag), data.TryGetValueSafe<int>("dirtyStatus"));
+			    this._ThumbAssetIds = data.TryGetValueSafe<string>("thumbAssetIds");
+			    this._FlavorAssetIds = data.TryGetValueSafe<string>("flavorAssetIds");
+			    this._AssetIds = data.TryGetValueSafe<string>("assetIds");
+			    this._Sunrise = data.TryGetValueSafe<int>("sunrise");
+			    this._Sunset = data.TryGetValueSafe<int>("sunset");
+			    this._RemoteId = data.TryGetValueSafe<string>("remoteId");
+			    this._Plays = data.TryGetValueSafe<int>("plays");
+			    this._Views = data.TryGetValueSafe<int>("views");
+			    this._ValidationErrors = new List<DistributionValidationError>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("validationErrors", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._ValidationErrors.Add(ObjectFactory.Create<DistributionValidationError>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._ErrorType = (BatchJobErrorTypes)ParseEnum(typeof(BatchJobErrorTypes), data.TryGetValueSafe<int>("errorType"));
+			    this._ErrorNumber = data.TryGetValueSafe<int>("errorNumber");
+			    this._ErrorDescription = data.TryGetValueSafe<string>("errorDescription");
+			    this._HasSubmitResultsLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("hasSubmitResultsLog"));
+			    this._HasSubmitSentDataLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("hasSubmitSentDataLog"));
+			    this._HasUpdateResultsLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("hasUpdateResultsLog"));
+			    this._HasUpdateSentDataLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("hasUpdateSentDataLog"));
+			    this._HasDeleteResultsLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("hasDeleteResultsLog"));
+			    this._HasDeleteSentDataLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("hasDeleteSentDataLog"));
+		}
 		#endregion
 
 		#region Methods

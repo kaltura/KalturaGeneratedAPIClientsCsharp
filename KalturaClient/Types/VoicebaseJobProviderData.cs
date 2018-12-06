@@ -178,6 +178,20 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public VoicebaseJobProviderData(IDictionary<string,object> data) : base(data)
+		{
+			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+			    this._FlavorAssetId = data.TryGetValueSafe<string>("flavorAssetId");
+			    this._TranscriptId = data.TryGetValueSafe<string>("transcriptId");
+			    this._CaptionAssetFormats = data.TryGetValueSafe<string>("captionAssetFormats");
+			    this._ApiKey = data.TryGetValueSafe<string>("apiKey");
+			    this._ApiPassword = data.TryGetValueSafe<string>("apiPassword");
+			    this._SpokenLanguage = (Language)StringEnum.Parse(typeof(Language), data.TryGetValueSafe<string>("spokenLanguage"));
+			    this._FileLocation = data.TryGetValueSafe<string>("fileLocation");
+			    this._ReplaceMediaContent = data.TryGetValueSafe<bool>("replaceMediaContent");
+			    this._AdditionalParameters = data.TryGetValueSafe<string>("additionalParameters");
+		}
 		#endregion
 
 		#region Methods

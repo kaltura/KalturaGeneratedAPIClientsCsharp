@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public TranscriptAssetFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (TranscriptAssetOrderBy)StringEnum.Parse(typeof(TranscriptAssetOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

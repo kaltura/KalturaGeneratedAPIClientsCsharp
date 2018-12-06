@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public MsnDistributionProvider(XmlElement node) : base(node)
 		{
 		}
+
+		public MsnDistributionProvider(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

@@ -207,6 +207,21 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ITunesSyndicationFeed(IDictionary<string,object> data) : base(data)
+		{
+			    this._FeedDescription = data.TryGetValueSafe<string>("feedDescription");
+			    this._Language = data.TryGetValueSafe<string>("language");
+			    this._FeedLandingPage = data.TryGetValueSafe<string>("feedLandingPage");
+			    this._OwnerName = data.TryGetValueSafe<string>("ownerName");
+			    this._OwnerEmail = data.TryGetValueSafe<string>("ownerEmail");
+			    this._FeedImageUrl = data.TryGetValueSafe<string>("feedImageUrl");
+			    this._Category = (ITunesSyndicationFeedCategories)StringEnum.Parse(typeof(ITunesSyndicationFeedCategories), data.TryGetValueSafe<string>("category"));
+			    this._AdultContent = (ITunesSyndicationFeedAdultValues)StringEnum.Parse(typeof(ITunesSyndicationFeedAdultValues), data.TryGetValueSafe<string>("adultContent"));
+			    this._FeedAuthor = data.TryGetValueSafe<string>("feedAuthor");
+			    this._EnforceFeedAuthor = data.TryGetValueSafe<bool>("enforceFeedAuthor");
+			    this._EnforceOrder = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("enforceOrder"));
+		}
 		#endregion
 
 		#region Methods

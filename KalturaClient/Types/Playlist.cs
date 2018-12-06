@@ -154,6 +154,23 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public Playlist(IDictionary<string,object> data) : base(data)
+		{
+			    this._PlaylistContent = data.TryGetValueSafe<string>("playlistContent");
+			    this._Filters = new List<MediaEntryFilterForPlaylist>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("filters", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Filters.Add(ObjectFactory.Create<MediaEntryFilterForPlaylist>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._TotalResults = data.TryGetValueSafe<int>("totalResults");
+			    this._PlaylistType = (PlaylistType)ParseEnum(typeof(PlaylistType), data.TryGetValueSafe<int>("playlistType"));
+			    this._Plays = data.TryGetValueSafe<int>("plays");
+			    this._Views = data.TryGetValueSafe<int>("views");
+			    this._Duration = data.TryGetValueSafe<int>("duration");
+			    this._ExecuteUrl = data.TryGetValueSafe<string>("executeUrl");
+		}
 		#endregion
 
 		#region Methods

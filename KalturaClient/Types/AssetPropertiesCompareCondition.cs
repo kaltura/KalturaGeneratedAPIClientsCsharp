@@ -76,6 +76,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AssetPropertiesCompareCondition(IDictionary<string,object> data) : base(data)
+		{
+			    this._Properties = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("properties", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Properties.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

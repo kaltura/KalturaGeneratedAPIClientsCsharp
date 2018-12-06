@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UrlTokenizer(IDictionary<string,object> data) : base(data)
+		{
+			    this._Window = data.TryGetValueSafe<int>("window");
+			    this._Key = data.TryGetValueSafe<string>("key");
+			    this._LimitIpAddress = data.TryGetValueSafe<bool>("limitIpAddress");
+		}
 		#endregion
 
 		#region Methods

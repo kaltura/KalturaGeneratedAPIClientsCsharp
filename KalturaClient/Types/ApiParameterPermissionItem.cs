@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ApiParameterPermissionItem(IDictionary<string,object> data) : base(data)
+		{
+			    this._Object = data.TryGetValueSafe<string>("object");
+			    this._Parameter = data.TryGetValueSafe<string>("parameter");
+			    this._Action = (ApiParameterPermissionItemAction)StringEnum.Parse(typeof(ApiParameterPermissionItemAction), data.TryGetValueSafe<string>("action"));
+		}
 		#endregion
 
 		#region Methods

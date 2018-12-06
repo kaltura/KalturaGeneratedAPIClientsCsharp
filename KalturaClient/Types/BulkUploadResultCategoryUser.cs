@@ -142,6 +142,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BulkUploadResultCategoryUser(IDictionary<string,object> data) : base(data)
+		{
+			    this._CategoryId = data.TryGetValueSafe<int>("categoryId");
+			    this._CategoryReferenceId = data.TryGetValueSafe<string>("categoryReferenceId");
+			    this._UserId = data.TryGetValueSafe<string>("userId");
+			    this._PermissionLevel = data.TryGetValueSafe<int>("permissionLevel");
+			    this._UpdateMethod = data.TryGetValueSafe<int>("updateMethod");
+			    this._RequiredObjectStatus = data.TryGetValueSafe<int>("requiredObjectStatus");
+		}
 		#endregion
 
 		#region Methods

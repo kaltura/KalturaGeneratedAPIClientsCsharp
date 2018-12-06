@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DirectoryRestriction(IDictionary<string,object> data) : base(data)
+		{
+			    this._DirectoryRestrictionType = (DirectoryRestrictionType)ParseEnum(typeof(DirectoryRestrictionType), data.TryGetValueSafe<int>("directoryRestrictionType"));
+		}
 		#endregion
 
 		#region Methods

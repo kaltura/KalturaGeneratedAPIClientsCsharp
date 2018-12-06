@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FieldCompareCondition(IDictionary<string,object> data) : base(data)
+		{
+			    this._Field = ObjectFactory.Create<IntegerField>(data.TryGetValueSafe<IDictionary<string,object>>("field"));
+		}
 		#endregion
 
 		#region Methods

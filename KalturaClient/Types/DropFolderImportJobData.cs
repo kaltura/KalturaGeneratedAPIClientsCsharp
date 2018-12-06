@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DropFolderImportJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._DropFolderFileId = data.TryGetValueSafe<int>("dropFolderFileId");
+		}
 		#endregion
 
 		#region Methods

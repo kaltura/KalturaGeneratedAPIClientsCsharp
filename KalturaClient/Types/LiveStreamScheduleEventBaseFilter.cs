@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public LiveStreamScheduleEventBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public LiveStreamScheduleEventBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

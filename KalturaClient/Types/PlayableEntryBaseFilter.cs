@@ -156,6 +156,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PlayableEntryBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._LastPlayedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("lastPlayedAtGreaterThanOrEqual");
+			    this._LastPlayedAtLessThanOrEqual = data.TryGetValueSafe<int>("lastPlayedAtLessThanOrEqual");
+			    this._DurationLessThan = data.TryGetValueSafe<int>("durationLessThan");
+			    this._DurationGreaterThan = data.TryGetValueSafe<int>("durationGreaterThan");
+			    this._DurationLessThanOrEqual = data.TryGetValueSafe<int>("durationLessThanOrEqual");
+			    this._DurationGreaterThanOrEqual = data.TryGetValueSafe<int>("durationGreaterThanOrEqual");
+			    this._DurationTypeMatchOr = data.TryGetValueSafe<string>("durationTypeMatchOr");
+		}
 		#endregion
 
 		#region Methods

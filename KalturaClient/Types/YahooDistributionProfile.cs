@@ -156,6 +156,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public YahooDistributionProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._FtpPath = data.TryGetValueSafe<string>("ftpPath");
+			    this._FtpUsername = data.TryGetValueSafe<string>("ftpUsername");
+			    this._FtpPassword = data.TryGetValueSafe<string>("ftpPassword");
+			    this._FtpHost = data.TryGetValueSafe<string>("ftpHost");
+			    this._ContactTelephone = data.TryGetValueSafe<string>("contactTelephone");
+			    this._ContactEmail = data.TryGetValueSafe<string>("contactEmail");
+			    this._ProcessFeed = (YahooDistributionProcessFeedActionStatus)ParseEnum(typeof(YahooDistributionProcessFeedActionStatus), data.TryGetValueSafe<int>("processFeed"));
+		}
 		#endregion
 
 		#region Methods

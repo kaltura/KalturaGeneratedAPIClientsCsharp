@@ -76,6 +76,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public RemotePath(IDictionary<string,object> data) : base(data)
+		{
+			    this._StorageProfileId = data.TryGetValueSafe<int>("storageProfileId");
+			    this._Uri = data.TryGetValueSafe<string>("uri");
+		}
 		#endregion
 
 		#region Methods

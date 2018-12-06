@@ -128,6 +128,15 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public Search(IDictionary<string,object> data) : base(data)
+		{
+			    this._KeyWords = data.TryGetValueSafe<string>("keyWords");
+			    this._SearchSource = (SearchProviderType)ParseEnum(typeof(SearchProviderType), data.TryGetValueSafe<int>("searchSource"));
+			    this._MediaType = (MediaType)ParseEnum(typeof(MediaType), data.TryGetValueSafe<int>("mediaType"));
+			    this._ExtraData = data.TryGetValueSafe<string>("extraData");
+			    this._AuthData = data.TryGetValueSafe<string>("authData");
+		}
 		#endregion
 
 		#region Methods

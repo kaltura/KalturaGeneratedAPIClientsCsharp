@@ -76,6 +76,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DeliveryProfileCondition(IDictionary<string,object> data) : base(data)
+		{
+			    this._DeliveryProfileIds = new List<IntegerValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("deliveryProfileIds", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._DeliveryProfileIds.Add(ObjectFactory.Create<IntegerValue>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

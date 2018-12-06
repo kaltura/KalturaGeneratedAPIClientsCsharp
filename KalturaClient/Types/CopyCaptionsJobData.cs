@@ -104,6 +104,18 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CopyCaptionsJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+			    this._ClipsDescriptionArray = new List<ClipDescription>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("clipsDescriptionArray", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._ClipsDescriptionArray.Add(ObjectFactory.Create<ClipDescription>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._FullCopy = data.TryGetValueSafe<bool>("fullCopy");
+		}
 		#endregion
 
 		#region Methods

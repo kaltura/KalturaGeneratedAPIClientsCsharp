@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ExternalMediaEntryFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (ExternalMediaEntryOrderBy)StringEnum.Parse(typeof(ExternalMediaEntryOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

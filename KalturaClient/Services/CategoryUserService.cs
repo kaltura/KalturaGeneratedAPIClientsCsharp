@@ -85,6 +85,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<CategoryUser>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<CategoryUser>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class CategoryUserAddRequestBuilder : RequestBuilder<CategoryUser>
@@ -127,6 +131,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<CategoryUser>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<CategoryUser>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -188,6 +196,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<BulkUpload>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<BulkUpload>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class CategoryUserCopyFromCategoryRequestBuilder : RequestBuilder<object>
@@ -228,6 +240,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -283,6 +299,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<CategoryUser>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<CategoryUser>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class CategoryUserDeleteRequestBuilder : RequestBuilder<object>
@@ -332,6 +352,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -386,6 +410,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<CategoryUser>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<CategoryUser>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -448,6 +476,10 @@ namespace Kaltura.Services
 		{
 			return int.Parse(result.InnerText);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (int)(result);
+		}
 	}
 
 	public class CategoryUserListRequestBuilder : RequestBuilder<ListResponse<CategoryUser>>
@@ -499,6 +531,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<CategoryUser>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<CategoryUser>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -569,6 +605,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<CategoryUser>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<CategoryUser>((IDictionary<string,object>)result);
 		}
 	}
 

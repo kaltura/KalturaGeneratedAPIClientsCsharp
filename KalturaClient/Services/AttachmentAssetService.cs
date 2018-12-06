@@ -85,6 +85,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<AttachmentAsset>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<AttachmentAsset>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class AttachmentAssetDeleteRequestBuilder : RequestBuilder<object>
@@ -125,6 +129,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -171,6 +179,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<AttachmentAsset>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<AttachmentAsset>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class AttachmentAssetGetRemotePathsRequestBuilder : RequestBuilder<ListResponse<RemotePath>>
@@ -213,6 +225,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<RemotePath>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<RemotePath>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -266,6 +282,10 @@ namespace Kaltura.Services
 		{
 			return result.InnerText;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
+		}
 	}
 
 	public class AttachmentAssetListRequestBuilder : RequestBuilder<ListResponse<AttachmentAsset>>
@@ -317,6 +337,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<AttachmentAsset>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<AttachmentAsset>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -370,6 +394,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<AttachmentAsset>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<AttachmentAsset>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class AttachmentAssetUpdateRequestBuilder : RequestBuilder<AttachmentAsset>
@@ -421,6 +449,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<AttachmentAsset>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<AttachmentAsset>((IDictionary<string,object>)result);
 		}
 	}
 

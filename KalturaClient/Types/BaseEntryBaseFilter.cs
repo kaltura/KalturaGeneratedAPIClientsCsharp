@@ -1178,6 +1178,90 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BaseEntryBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IdEqual = data.TryGetValueSafe<string>("idEqual");
+			    this._IdIn = data.TryGetValueSafe<string>("idIn");
+			    this._IdNotIn = data.TryGetValueSafe<string>("idNotIn");
+			    this._NameLike = data.TryGetValueSafe<string>("nameLike");
+			    this._NameMultiLikeOr = data.TryGetValueSafe<string>("nameMultiLikeOr");
+			    this._NameMultiLikeAnd = data.TryGetValueSafe<string>("nameMultiLikeAnd");
+			    this._NameEqual = data.TryGetValueSafe<string>("nameEqual");
+			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
+			    this._PartnerIdIn = data.TryGetValueSafe<string>("partnerIdIn");
+			    this._UserIdEqual = data.TryGetValueSafe<string>("userIdEqual");
+			    this._UserIdIn = data.TryGetValueSafe<string>("userIdIn");
+			    this._UserIdNotIn = data.TryGetValueSafe<string>("userIdNotIn");
+			    this._CreatorIdEqual = data.TryGetValueSafe<string>("creatorIdEqual");
+			    this._TagsLike = data.TryGetValueSafe<string>("tagsLike");
+			    this._TagsMultiLikeOr = data.TryGetValueSafe<string>("tagsMultiLikeOr");
+			    this._TagsMultiLikeAnd = data.TryGetValueSafe<string>("tagsMultiLikeAnd");
+			    this._AdminTagsLike = data.TryGetValueSafe<string>("adminTagsLike");
+			    this._AdminTagsMultiLikeOr = data.TryGetValueSafe<string>("adminTagsMultiLikeOr");
+			    this._AdminTagsMultiLikeAnd = data.TryGetValueSafe<string>("adminTagsMultiLikeAnd");
+			    this._CategoriesMatchAnd = data.TryGetValueSafe<string>("categoriesMatchAnd");
+			    this._CategoriesMatchOr = data.TryGetValueSafe<string>("categoriesMatchOr");
+			    this._CategoriesNotContains = data.TryGetValueSafe<string>("categoriesNotContains");
+			    this._CategoriesIdsMatchAnd = data.TryGetValueSafe<string>("categoriesIdsMatchAnd");
+			    this._CategoriesIdsMatchOr = data.TryGetValueSafe<string>("categoriesIdsMatchOr");
+			    this._CategoriesIdsNotContains = data.TryGetValueSafe<string>("categoriesIdsNotContains");
+			    this._CategoriesIdsEmpty = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("categoriesIdsEmpty"));
+			    this._StatusEqual = (EntryStatus)StringEnum.Parse(typeof(EntryStatus), data.TryGetValueSafe<string>("statusEqual"));
+			    this._StatusNotEqual = (EntryStatus)StringEnum.Parse(typeof(EntryStatus), data.TryGetValueSafe<string>("statusNotEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			    this._StatusNotIn = data.TryGetValueSafe<string>("statusNotIn");
+			    this._ModerationStatusEqual = (EntryModerationStatus)ParseEnum(typeof(EntryModerationStatus), data.TryGetValueSafe<int>("moderationStatusEqual"));
+			    this._ModerationStatusNotEqual = (EntryModerationStatus)ParseEnum(typeof(EntryModerationStatus), data.TryGetValueSafe<int>("moderationStatusNotEqual"));
+			    this._ModerationStatusIn = data.TryGetValueSafe<string>("moderationStatusIn");
+			    this._ModerationStatusNotIn = data.TryGetValueSafe<string>("moderationStatusNotIn");
+			    this._TypeEqual = (EntryType)StringEnum.Parse(typeof(EntryType), data.TryGetValueSafe<string>("typeEqual"));
+			    this._TypeIn = data.TryGetValueSafe<string>("typeIn");
+			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
+			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
+			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
+			    this._TotalRankLessThanOrEqual = data.TryGetValueSafe<int>("totalRankLessThanOrEqual");
+			    this._TotalRankGreaterThanOrEqual = data.TryGetValueSafe<int>("totalRankGreaterThanOrEqual");
+			    this._GroupIdEqual = data.TryGetValueSafe<int>("groupIdEqual");
+			    this._SearchTextMatchAnd = data.TryGetValueSafe<string>("searchTextMatchAnd");
+			    this._SearchTextMatchOr = data.TryGetValueSafe<string>("searchTextMatchOr");
+			    this._AccessControlIdEqual = data.TryGetValueSafe<int>("accessControlIdEqual");
+			    this._AccessControlIdIn = data.TryGetValueSafe<string>("accessControlIdIn");
+			    this._StartDateGreaterThanOrEqual = data.TryGetValueSafe<int>("startDateGreaterThanOrEqual");
+			    this._StartDateLessThanOrEqual = data.TryGetValueSafe<int>("startDateLessThanOrEqual");
+			    this._StartDateGreaterThanOrEqualOrNull = data.TryGetValueSafe<int>("startDateGreaterThanOrEqualOrNull");
+			    this._StartDateLessThanOrEqualOrNull = data.TryGetValueSafe<int>("startDateLessThanOrEqualOrNull");
+			    this._EndDateGreaterThanOrEqual = data.TryGetValueSafe<int>("endDateGreaterThanOrEqual");
+			    this._EndDateLessThanOrEqual = data.TryGetValueSafe<int>("endDateLessThanOrEqual");
+			    this._EndDateGreaterThanOrEqualOrNull = data.TryGetValueSafe<int>("endDateGreaterThanOrEqualOrNull");
+			    this._EndDateLessThanOrEqualOrNull = data.TryGetValueSafe<int>("endDateLessThanOrEqualOrNull");
+			    this._ReferenceIdEqual = data.TryGetValueSafe<string>("referenceIdEqual");
+			    this._ReferenceIdIn = data.TryGetValueSafe<string>("referenceIdIn");
+			    this._ReplacingEntryIdEqual = data.TryGetValueSafe<string>("replacingEntryIdEqual");
+			    this._ReplacingEntryIdIn = data.TryGetValueSafe<string>("replacingEntryIdIn");
+			    this._ReplacedEntryIdEqual = data.TryGetValueSafe<string>("replacedEntryIdEqual");
+			    this._ReplacedEntryIdIn = data.TryGetValueSafe<string>("replacedEntryIdIn");
+			    this._ReplacementStatusEqual = (EntryReplacementStatus)StringEnum.Parse(typeof(EntryReplacementStatus), data.TryGetValueSafe<string>("replacementStatusEqual"));
+			    this._ReplacementStatusIn = data.TryGetValueSafe<string>("replacementStatusIn");
+			    this._PartnerSortValueGreaterThanOrEqual = data.TryGetValueSafe<int>("partnerSortValueGreaterThanOrEqual");
+			    this._PartnerSortValueLessThanOrEqual = data.TryGetValueSafe<int>("partnerSortValueLessThanOrEqual");
+			    this._RootEntryIdEqual = data.TryGetValueSafe<string>("rootEntryIdEqual");
+			    this._RootEntryIdIn = data.TryGetValueSafe<string>("rootEntryIdIn");
+			    this._ParentEntryIdEqual = data.TryGetValueSafe<string>("parentEntryIdEqual");
+			    this._EntitledUsersEditMatchAnd = data.TryGetValueSafe<string>("entitledUsersEditMatchAnd");
+			    this._EntitledUsersEditMatchOr = data.TryGetValueSafe<string>("entitledUsersEditMatchOr");
+			    this._EntitledUsersPublishMatchAnd = data.TryGetValueSafe<string>("entitledUsersPublishMatchAnd");
+			    this._EntitledUsersPublishMatchOr = data.TryGetValueSafe<string>("entitledUsersPublishMatchOr");
+			    this._EntitledUsersViewMatchAnd = data.TryGetValueSafe<string>("entitledUsersViewMatchAnd");
+			    this._EntitledUsersViewMatchOr = data.TryGetValueSafe<string>("entitledUsersViewMatchOr");
+			    this._TagsNameMultiLikeOr = data.TryGetValueSafe<string>("tagsNameMultiLikeOr");
+			    this._TagsAdminTagsMultiLikeOr = data.TryGetValueSafe<string>("tagsAdminTagsMultiLikeOr");
+			    this._TagsAdminTagsNameMultiLikeOr = data.TryGetValueSafe<string>("tagsAdminTagsNameMultiLikeOr");
+			    this._TagsNameMultiLikeAnd = data.TryGetValueSafe<string>("tagsNameMultiLikeAnd");
+			    this._TagsAdminTagsMultiLikeAnd = data.TryGetValueSafe<string>("tagsAdminTagsMultiLikeAnd");
+			    this._TagsAdminTagsNameMultiLikeAnd = data.TryGetValueSafe<string>("tagsAdminTagsNameMultiLikeAnd");
+		}
 		#endregion
 
 		#region Methods

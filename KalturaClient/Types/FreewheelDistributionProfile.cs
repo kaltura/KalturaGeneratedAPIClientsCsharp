@@ -142,6 +142,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FreewheelDistributionProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._Apikey = data.TryGetValueSafe<string>("apikey");
+			    this._Email = data.TryGetValueSafe<string>("email");
+			    this._SftpPass = data.TryGetValueSafe<string>("sftpPass");
+			    this._SftpLogin = data.TryGetValueSafe<string>("sftpLogin");
+			    this._AccountId = data.TryGetValueSafe<string>("accountId");
+			    this._MetadataProfileId = data.TryGetValueSafe<int>("metadataProfileId");
+		}
 		#endregion
 
 		#region Methods

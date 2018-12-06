@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public IndexAdvancedFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IndexIdGreaterThan = data.TryGetValueSafe<int>("indexIdGreaterThan");
+			    this._DepthGreaterThanEqual = data.TryGetValueSafe<int>("depthGreaterThanEqual");
+		}
 		#endregion
 
 		#region Methods

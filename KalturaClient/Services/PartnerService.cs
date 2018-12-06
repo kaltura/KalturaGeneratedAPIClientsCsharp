@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return int.Parse(result.InnerText);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (int)(result);
+		}
 	}
 
 	public class PartnerGetRequestBuilder : RequestBuilder<Partner>
@@ -119,6 +123,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<Partner>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<Partner>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class PartnerGetInfoRequestBuilder : RequestBuilder<Partner>
@@ -147,6 +155,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<Partner>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<Partner>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -209,6 +221,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<Partner>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<Partner>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class PartnerGetStatisticsRequestBuilder : RequestBuilder<PartnerStatistics>
@@ -237,6 +253,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<PartnerStatistics>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<PartnerStatistics>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -290,6 +310,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<Partner>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<Partner>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class PartnerListFeatureStatusRequestBuilder : RequestBuilder<ListResponse<FeatureStatus>>
@@ -318,6 +342,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<FeatureStatus>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<FeatureStatus>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -370,6 +398,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<Partner>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<Partner>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -441,6 +473,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<Partner>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<Partner>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class PartnerUpdateRequestBuilder : RequestBuilder<Partner>
@@ -492,6 +528,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<Partner>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<Partner>((IDictionary<string,object>)result);
 		}
 	}
 

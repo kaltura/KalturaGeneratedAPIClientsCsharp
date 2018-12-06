@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public LocationScheduleResource(XmlElement node) : base(node)
 		{
 		}
+
+		public LocationScheduleResource(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

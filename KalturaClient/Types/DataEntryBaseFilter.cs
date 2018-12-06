@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public DataEntryBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public DataEntryBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

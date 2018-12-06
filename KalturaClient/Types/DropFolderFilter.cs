@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DropFolderFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._CurrentDc = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("currentDc"));
+			    this._OrderBy = (DropFolderOrderBy)StringEnum.Parse(typeof(DropFolderOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

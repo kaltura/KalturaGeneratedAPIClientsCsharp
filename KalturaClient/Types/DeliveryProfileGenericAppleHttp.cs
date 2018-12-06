@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DeliveryProfileGenericAppleHttp(IDictionary<string,object> data) : base(data)
+		{
+			    this._Pattern = data.TryGetValueSafe<string>("pattern");
+			    this._RendererClass = data.TryGetValueSafe<string>("rendererClass");
+			    this._ManifestRedirect = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("manifestRedirect"));
+		}
 		#endregion
 
 		#region Methods

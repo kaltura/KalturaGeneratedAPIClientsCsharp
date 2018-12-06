@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DistributeObjectTask(IDictionary<string,object> data) : base(data)
+		{
+			    this._DistributionProfileId = data.TryGetValueSafe<string>("distributionProfileId");
+		}
 		#endregion
 
 		#region Methods

@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UiConfAdmin(IDictionary<string,object> data) : base(data)
+		{
+			    this._IsPublic = data.TryGetValueSafe<bool>("isPublic");
+		}
 		#endregion
 
 		#region Methods

@@ -113,6 +113,15 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ScheduleEventResource(IDictionary<string,object> data) : base(data)
+		{
+			    this._EventId = data.TryGetValueSafe<int>("eventId");
+			    this._ResourceId = data.TryGetValueSafe<int>("resourceId");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+		}
 		#endregion
 
 		#region Methods

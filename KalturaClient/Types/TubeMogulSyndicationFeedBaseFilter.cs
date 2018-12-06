@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public TubeMogulSyndicationFeedBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public TubeMogulSyndicationFeedBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

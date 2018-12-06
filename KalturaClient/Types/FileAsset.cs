@@ -182,6 +182,21 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FileAsset(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<long>("id");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._FileAssetObjectType = (FileAssetObjectType)StringEnum.Parse(typeof(FileAssetObjectType), data.TryGetValueSafe<string>("fileAssetObjectType"));
+			    this._ObjectId = data.TryGetValueSafe<string>("objectId");
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._SystemName = data.TryGetValueSafe<string>("systemName");
+			    this._FileExt = data.TryGetValueSafe<string>("fileExt");
+			    this._Version = data.TryGetValueSafe<int>("version");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._Status = (FileAssetStatus)StringEnum.Parse(typeof(FileAssetStatus), data.TryGetValueSafe<string>("status"));
+		}
 		#endregion
 
 		#region Methods

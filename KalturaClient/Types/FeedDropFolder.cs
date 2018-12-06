@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FeedDropFolder(IDictionary<string,object> data) : base(data)
+		{
+			    this._ItemHandlingLimit = data.TryGetValueSafe<int>("itemHandlingLimit");
+			    this._FeedItemInfo = ObjectFactory.Create<FeedItemInfo>(data.TryGetValueSafe<IDictionary<string,object>>("feedItemInfo"));
+		}
 		#endregion
 
 		#region Methods

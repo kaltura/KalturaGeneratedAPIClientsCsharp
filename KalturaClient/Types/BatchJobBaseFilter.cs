@@ -688,6 +688,55 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BatchJobBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IdEqual = data.TryGetValueSafe<long>("idEqual");
+			    this._IdGreaterThanOrEqual = data.TryGetValueSafe<long>("idGreaterThanOrEqual");
+			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
+			    this._PartnerIdIn = data.TryGetValueSafe<string>("partnerIdIn");
+			    this._PartnerIdNotIn = data.TryGetValueSafe<string>("partnerIdNotIn");
+			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
+			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
+			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
+			    this._ExecutionAttemptsGreaterThanOrEqual = data.TryGetValueSafe<int>("executionAttemptsGreaterThanOrEqual");
+			    this._ExecutionAttemptsLessThanOrEqual = data.TryGetValueSafe<int>("executionAttemptsLessThanOrEqual");
+			    this._LockVersionGreaterThanOrEqual = data.TryGetValueSafe<int>("lockVersionGreaterThanOrEqual");
+			    this._LockVersionLessThanOrEqual = data.TryGetValueSafe<int>("lockVersionLessThanOrEqual");
+			    this._EntryIdEqual = data.TryGetValueSafe<string>("entryIdEqual");
+			    this._JobTypeEqual = (BatchJobType)StringEnum.Parse(typeof(BatchJobType), data.TryGetValueSafe<string>("jobTypeEqual"));
+			    this._JobTypeIn = data.TryGetValueSafe<string>("jobTypeIn");
+			    this._JobTypeNotIn = data.TryGetValueSafe<string>("jobTypeNotIn");
+			    this._JobSubTypeEqual = data.TryGetValueSafe<int>("jobSubTypeEqual");
+			    this._JobSubTypeIn = data.TryGetValueSafe<string>("jobSubTypeIn");
+			    this._JobSubTypeNotIn = data.TryGetValueSafe<string>("jobSubTypeNotIn");
+			    this._StatusEqual = (BatchJobStatus)ParseEnum(typeof(BatchJobStatus), data.TryGetValueSafe<int>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			    this._StatusNotIn = data.TryGetValueSafe<string>("statusNotIn");
+			    this._PriorityGreaterThanOrEqual = data.TryGetValueSafe<int>("priorityGreaterThanOrEqual");
+			    this._PriorityLessThanOrEqual = data.TryGetValueSafe<int>("priorityLessThanOrEqual");
+			    this._PriorityEqual = data.TryGetValueSafe<int>("priorityEqual");
+			    this._PriorityIn = data.TryGetValueSafe<string>("priorityIn");
+			    this._PriorityNotIn = data.TryGetValueSafe<string>("priorityNotIn");
+			    this._BatchVersionGreaterThanOrEqual = data.TryGetValueSafe<int>("batchVersionGreaterThanOrEqual");
+			    this._BatchVersionLessThanOrEqual = data.TryGetValueSafe<int>("batchVersionLessThanOrEqual");
+			    this._BatchVersionEqual = data.TryGetValueSafe<int>("batchVersionEqual");
+			    this._QueueTimeGreaterThanOrEqual = data.TryGetValueSafe<int>("queueTimeGreaterThanOrEqual");
+			    this._QueueTimeLessThanOrEqual = data.TryGetValueSafe<int>("queueTimeLessThanOrEqual");
+			    this._FinishTimeGreaterThanOrEqual = data.TryGetValueSafe<int>("finishTimeGreaterThanOrEqual");
+			    this._FinishTimeLessThanOrEqual = data.TryGetValueSafe<int>("finishTimeLessThanOrEqual");
+			    this._ErrTypeEqual = (BatchJobErrorTypes)ParseEnum(typeof(BatchJobErrorTypes), data.TryGetValueSafe<int>("errTypeEqual"));
+			    this._ErrTypeIn = data.TryGetValueSafe<string>("errTypeIn");
+			    this._ErrTypeNotIn = data.TryGetValueSafe<string>("errTypeNotIn");
+			    this._ErrNumberEqual = data.TryGetValueSafe<int>("errNumberEqual");
+			    this._ErrNumberIn = data.TryGetValueSafe<string>("errNumberIn");
+			    this._ErrNumberNotIn = data.TryGetValueSafe<string>("errNumberNotIn");
+			    this._EstimatedEffortLessThan = data.TryGetValueSafe<int>("estimatedEffortLessThan");
+			    this._EstimatedEffortGreaterThan = data.TryGetValueSafe<int>("estimatedEffortGreaterThan");
+			    this._UrgencyLessThanOrEqual = data.TryGetValueSafe<int>("urgencyLessThanOrEqual");
+			    this._UrgencyGreaterThanOrEqual = data.TryGetValueSafe<int>("urgencyGreaterThanOrEqual");
+		}
 		#endregion
 
 		#region Methods

@@ -314,6 +314,33 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public HttpNotificationTemplate(IDictionary<string,object> data) : base(data)
+		{
+			    this._Url = data.TryGetValueSafe<string>("url");
+			    this._Method = (HttpNotificationMethod)ParseEnum(typeof(HttpNotificationMethod), data.TryGetValueSafe<int>("method"));
+			    this._Data = ObjectFactory.Create<HttpNotificationData>(data.TryGetValueSafe<IDictionary<string,object>>("data"));
+			    this._Timeout = data.TryGetValueSafe<int>("timeout");
+			    this._ConnectTimeout = data.TryGetValueSafe<int>("connectTimeout");
+			    this._Username = data.TryGetValueSafe<string>("username");
+			    this._Password = data.TryGetValueSafe<string>("password");
+			    this._AuthenticationMethod = (HttpNotificationAuthenticationMethod)ParseEnum(typeof(HttpNotificationAuthenticationMethod), data.TryGetValueSafe<int>("authenticationMethod"));
+			    this._SslVersion = (HttpNotificationSslVersion)ParseEnum(typeof(HttpNotificationSslVersion), data.TryGetValueSafe<int>("sslVersion"));
+			    this._SslCertificate = data.TryGetValueSafe<string>("sslCertificate");
+			    this._SslCertificateType = (HttpNotificationCertificateType)StringEnum.Parse(typeof(HttpNotificationCertificateType), data.TryGetValueSafe<string>("sslCertificateType"));
+			    this._SslCertificatePassword = data.TryGetValueSafe<string>("sslCertificatePassword");
+			    this._SslEngine = data.TryGetValueSafe<string>("sslEngine");
+			    this._SslEngineDefault = data.TryGetValueSafe<string>("sslEngineDefault");
+			    this._SslKeyType = (HttpNotificationSslKeyType)StringEnum.Parse(typeof(HttpNotificationSslKeyType), data.TryGetValueSafe<string>("sslKeyType"));
+			    this._SslKey = data.TryGetValueSafe<string>("sslKey");
+			    this._SslKeyPassword = data.TryGetValueSafe<string>("sslKeyPassword");
+			    this._CustomHeaders = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("customHeaders", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._CustomHeaders.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

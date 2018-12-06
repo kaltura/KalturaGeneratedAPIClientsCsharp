@@ -121,6 +121,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public Tag(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._Tag = data.TryGetValueSafe<string>("tag");
+			    this._TaggedObjectType = (TaggedObjectType)StringEnum.Parse(typeof(TaggedObjectType), data.TryGetValueSafe<string>("taggedObjectType"));
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._InstanceCount = data.TryGetValueSafe<int>("instanceCount");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+		}
 		#endregion
 
 		#region Methods

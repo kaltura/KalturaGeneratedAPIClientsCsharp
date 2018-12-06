@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public HttpNotificationTemplateBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public HttpNotificationTemplateBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

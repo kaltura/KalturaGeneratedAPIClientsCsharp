@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AccessControlPreviewAction(IDictionary<string,object> data) : base(data)
+		{
+			    this._Limit = data.TryGetValueSafe<int>("limit");
+		}
 		#endregion
 
 		#region Methods

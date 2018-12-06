@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public StorageExportJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._Force = data.TryGetValueSafe<bool>("force");
+			    this._CreateLink = data.TryGetValueSafe<bool>("createLink");
+		}
 		#endregion
 
 		#region Methods

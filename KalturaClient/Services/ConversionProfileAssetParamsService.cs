@@ -85,6 +85,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<ConversionProfileAssetParams>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<ConversionProfileAssetParams>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ConversionProfileAssetParamsUpdateRequestBuilder : RequestBuilder<ConversionProfileAssetParams>
@@ -145,6 +149,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ConversionProfileAssetParams>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ConversionProfileAssetParams>((IDictionary<string,object>)result);
 		}
 	}
 

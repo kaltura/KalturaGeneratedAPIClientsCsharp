@@ -156,6 +156,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ContentDistributionSearchItem(IDictionary<string,object> data) : base(data)
+		{
+			    this._NoDistributionProfiles = data.TryGetValueSafe<bool>("noDistributionProfiles");
+			    this._DistributionProfileId = data.TryGetValueSafe<int>("distributionProfileId");
+			    this._DistributionSunStatus = (EntryDistributionSunStatus)ParseEnum(typeof(EntryDistributionSunStatus), data.TryGetValueSafe<int>("distributionSunStatus"));
+			    this._EntryDistributionFlag = (EntryDistributionFlag)ParseEnum(typeof(EntryDistributionFlag), data.TryGetValueSafe<int>("entryDistributionFlag"));
+			    this._EntryDistributionStatus = (EntryDistributionStatus)ParseEnum(typeof(EntryDistributionStatus), data.TryGetValueSafe<int>("entryDistributionStatus"));
+			    this._HasEntryDistributionValidationErrors = data.TryGetValueSafe<bool>("hasEntryDistributionValidationErrors");
+			    this._EntryDistributionValidationErrors = data.TryGetValueSafe<string>("entryDistributionValidationErrors");
+		}
 		#endregion
 
 		#region Methods

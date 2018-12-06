@@ -164,6 +164,27 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ModifyEntryObjectTask(IDictionary<string,object> data) : base(data)
+		{
+			    this._InputMetadataProfileId = data.TryGetValueSafe<int>("inputMetadataProfileId");
+			    this._InputMetadata = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("inputMetadata", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._InputMetadata.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._OutputMetadataProfileId = data.TryGetValueSafe<int>("outputMetadataProfileId");
+			    this._OutputMetadata = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("outputMetadata", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._OutputMetadata.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._InputUserId = data.TryGetValueSafe<string>("inputUserId");
+			    this._InputEntitledUsersEdit = data.TryGetValueSafe<string>("inputEntitledUsersEdit");
+			    this._InputEntitledUsersPublish = data.TryGetValueSafe<string>("inputEntitledUsersPublish");
+		}
 		#endregion
 
 		#region Methods

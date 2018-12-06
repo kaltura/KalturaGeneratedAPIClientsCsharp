@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ThumbParamsFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (ThumbParamsOrderBy)StringEnum.Parse(typeof(ThumbParamsOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

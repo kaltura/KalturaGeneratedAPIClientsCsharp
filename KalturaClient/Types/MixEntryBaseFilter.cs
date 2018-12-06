@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public MixEntryBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public MixEntryBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

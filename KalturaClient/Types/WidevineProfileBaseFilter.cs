@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public WidevineProfileBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public WidevineProfileBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

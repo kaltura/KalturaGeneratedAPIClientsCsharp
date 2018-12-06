@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EventFieldCondition(IDictionary<string,object> data) : base(data)
+		{
+			    this._Field = ObjectFactory.Create<BooleanField>(data.TryGetValueSafe<IDictionary<string,object>>("field"));
+		}
 		#endregion
 
 		#region Methods

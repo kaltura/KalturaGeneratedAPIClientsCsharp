@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PushEventNotificationParameter(IDictionary<string,object> data) : base(data)
+		{
+			    this._QueueKeyToken = data.TryGetValueSafe<string>("queueKeyToken");
+		}
 		#endregion
 
 		#region Methods

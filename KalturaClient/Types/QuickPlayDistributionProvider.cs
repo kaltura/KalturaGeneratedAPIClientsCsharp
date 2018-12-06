@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public QuickPlayDistributionProvider(XmlElement node) : base(node)
 		{
 		}
+
+		public QuickPlayDistributionProvider(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

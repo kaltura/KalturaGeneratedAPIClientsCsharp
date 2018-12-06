@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ESearchUserResult(IDictionary<string,object> data) : base(data)
+		{
+			    this._Object = ObjectFactory.Create<User>(data.TryGetValueSafe<IDictionary<string,object>>("object"));
+		}
 		#endregion
 
 		#region Methods

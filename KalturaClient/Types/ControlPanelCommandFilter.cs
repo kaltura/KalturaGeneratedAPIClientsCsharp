@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ControlPanelCommandFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (ControlPanelCommandOrderBy)StringEnum.Parse(typeof(ControlPanelCommandOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

@@ -108,6 +108,23 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ConfigurableDistributionProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._FieldConfigArray = new List<DistributionFieldConfig>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("fieldConfigArray", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._FieldConfigArray.Add(ObjectFactory.Create<DistributionFieldConfig>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._ItemXpathsToExtend = new List<ExtendingItemMrssParameter>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("itemXpathsToExtend", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._ItemXpathsToExtend.Add(ObjectFactory.Create<ExtendingItemMrssParameter>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._UseCategoryEntries = data.TryGetValueSafe<bool>("useCategoryEntries");
+		}
 		#endregion
 
 		#region Methods

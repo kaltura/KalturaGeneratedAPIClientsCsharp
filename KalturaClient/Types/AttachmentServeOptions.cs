@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public AttachmentServeOptions(XmlElement node) : base(node)
 		{
 		}
+
+		public AttachmentServeOptions(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

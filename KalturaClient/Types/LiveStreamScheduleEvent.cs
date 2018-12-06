@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveStreamScheduleEvent(IDictionary<string,object> data) : base(data)
+		{
+			    this._ProjectedAudience = data.TryGetValueSafe<int>("projectedAudience");
+		}
 		#endregion
 
 		#region Methods

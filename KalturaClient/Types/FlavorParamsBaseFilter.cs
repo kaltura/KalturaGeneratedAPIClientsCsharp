@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FlavorParamsBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._FormatEqual = (ContainerFormat)StringEnum.Parse(typeof(ContainerFormat), data.TryGetValueSafe<string>("formatEqual"));
+		}
 		#endregion
 
 		#region Methods

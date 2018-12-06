@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AdminUserFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (AdminUserOrderBy)StringEnum.Parse(typeof(AdminUserOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

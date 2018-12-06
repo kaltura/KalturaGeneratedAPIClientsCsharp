@@ -164,6 +164,19 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public Annotation(IDictionary<string,object> data) : base(data)
+		{
+			    this._ParentId = data.TryGetValueSafe<string>("parentId");
+			    this._Text = data.TryGetValueSafe<string>("text");
+			    this._EndTime = data.TryGetValueSafe<int>("endTime");
+			    this._Duration = data.TryGetValueSafe<int>("duration");
+			    this._Depth = data.TryGetValueSafe<int>("depth");
+			    this._ChildrenCount = data.TryGetValueSafe<int>("childrenCount");
+			    this._DirectChildrenCount = data.TryGetValueSafe<int>("directChildrenCount");
+			    this._IsPublic = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isPublic"));
+			    this._SearchableOnEntry = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("searchableOnEntry"));
+		}
 		#endregion
 
 		#region Methods

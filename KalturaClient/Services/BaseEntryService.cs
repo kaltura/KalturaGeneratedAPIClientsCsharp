@@ -85,6 +85,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<BaseEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<BaseEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class BaseEntryAddContentRequestBuilder : RequestBuilder<BaseEntry>
@@ -136,6 +140,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<BaseEntry>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<BaseEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -198,6 +206,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<BaseEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<BaseEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class BaseEntryAnonymousRankRequestBuilder : RequestBuilder<object>
@@ -250,6 +262,10 @@ namespace Kaltura.Services
 		{
 			return null;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return null;
+		}
 	}
 
 	public class BaseEntryApproveRequestBuilder : RequestBuilder<object>
@@ -290,6 +306,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -345,6 +365,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<BaseEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<BaseEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class BaseEntryCountRequestBuilder : RequestBuilder<int>
@@ -388,6 +412,10 @@ namespace Kaltura.Services
 		{
 			return int.Parse(result.InnerText);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (int)(result);
+		}
 	}
 
 	public class BaseEntryDeleteRequestBuilder : RequestBuilder<object>
@@ -428,6 +456,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -483,6 +515,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<BaseEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<BaseEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class BaseEntryFlagRequestBuilder : RequestBuilder<object>
@@ -523,6 +559,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -578,6 +618,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<BaseEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<BaseEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class BaseEntryGetByIdsRequestBuilder : RequestBuilder<IList<BaseEntry>>
@@ -621,6 +665,15 @@ namespace Kaltura.Services
 		{
 			IList<BaseEntry> list = new List<BaseEntry>();
 			foreach(XmlElement node in result.ChildNodes)
+			{
+				list.Add(ObjectFactory.Create<BaseEntry>(node));
+			}
+			return list;
+		}
+		public override object DeserializeObject(object result)
+		{
+			var list = new List<BaseEntry>();
+			foreach(var node in (IEnumerable<IDictionary<string,object>>)result)
 			{
 				list.Add(ObjectFactory.Create<BaseEntry>(node));
 			}
@@ -678,6 +731,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<EntryContextDataResult>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<EntryContextDataResult>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class BaseEntryGetPlaybackContextRequestBuilder : RequestBuilder<PlaybackContext>
@@ -730,6 +787,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<PlaybackContext>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<PlaybackContext>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class BaseEntryGetRemotePathsRequestBuilder : RequestBuilder<ListResponse<RemotePath>>
@@ -772,6 +833,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<RemotePath>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<RemotePath>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -825,6 +890,10 @@ namespace Kaltura.Services
 		{
 			return int.Parse(result.InnerText);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (int)(result);
+		}
 	}
 
 	public class BaseEntryListRequestBuilder : RequestBuilder<ListResponse<BaseEntry>>
@@ -876,6 +945,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<BaseEntry>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<BaseEntry>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -929,6 +1002,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<BaseEntry>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<BaseEntry>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class BaseEntryListFlagsRequestBuilder : RequestBuilder<ListResponse<ModerationFlag>>
@@ -981,6 +1058,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<ModerationFlag>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<ModerationFlag>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class BaseEntryRejectRequestBuilder : RequestBuilder<object>
@@ -1021,6 +1102,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -1075,6 +1160,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<BaseEntry>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<BaseEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -1146,6 +1235,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<BaseEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<BaseEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class BaseEntryUpdateThumbnailFromSourceEntryRequestBuilder : RequestBuilder<BaseEntry>
@@ -1207,6 +1300,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<BaseEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<BaseEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class BaseEntryUpdateThumbnailFromUrlRequestBuilder : RequestBuilder<BaseEntry>
@@ -1259,6 +1356,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<BaseEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<BaseEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class BaseEntryUpdateThumbnailJpegRequestBuilder : RequestBuilder<BaseEntry>
@@ -1310,6 +1411,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<BaseEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<BaseEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class BaseEntryUploadRequestBuilder : RequestBuilder<string>
@@ -1351,6 +1456,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return result.InnerText;
+		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
 		}
 	}
 

@@ -85,6 +85,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PushNotificationData(IDictionary<string,object> data) : base(data)
+		{
+			    this._QueueName = data.TryGetValueSafe<string>("queueName");
+			    this._QueueKey = data.TryGetValueSafe<string>("queueKey");
+			    this._Url = data.TryGetValueSafe<string>("url");
+		}
 		#endregion
 
 		#region Methods

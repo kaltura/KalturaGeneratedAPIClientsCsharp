@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveChannelMatchAttributeCondition(IDictionary<string,object> data) : base(data)
+		{
+			    this._Attribute = (LiveChannelMatchAttribute)StringEnum.Parse(typeof(LiveChannelMatchAttribute), data.TryGetValueSafe<string>("attribute"));
+		}
 		#endregion
 
 		#region Methods

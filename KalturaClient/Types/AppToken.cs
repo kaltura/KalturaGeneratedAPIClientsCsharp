@@ -210,6 +210,23 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AppToken(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<string>("id");
+			    this._Token = data.TryGetValueSafe<string>("token");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._Status = (AppTokenStatus)ParseEnum(typeof(AppTokenStatus), data.TryGetValueSafe<int>("status"));
+			    this._Expiry = data.TryGetValueSafe<int>("expiry");
+			    this._SessionType = (SessionType)ParseEnum(typeof(SessionType), data.TryGetValueSafe<int>("sessionType"));
+			    this._SessionUserId = data.TryGetValueSafe<string>("sessionUserId");
+			    this._SessionDuration = data.TryGetValueSafe<int>("sessionDuration");
+			    this._SessionPrivileges = data.TryGetValueSafe<string>("sessionPrivileges");
+			    this._HashType = (AppTokenHashType)StringEnum.Parse(typeof(AppTokenHashType), data.TryGetValueSafe<string>("hashType"));
+			    this._Description = data.TryGetValueSafe<string>("description");
+		}
 		#endregion
 
 		#region Methods

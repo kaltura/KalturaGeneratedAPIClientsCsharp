@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LimitFlavorsRestriction(IDictionary<string,object> data) : base(data)
+		{
+			    this._LimitFlavorsRestrictionType = (LimitFlavorsRestrictionType)ParseEnum(typeof(LimitFlavorsRestrictionType), data.TryGetValueSafe<int>("limitFlavorsRestrictionType"));
+			    this._FlavorParamsIds = data.TryGetValueSafe<string>("flavorParamsIds");
+		}
 		#endregion
 
 		#region Methods

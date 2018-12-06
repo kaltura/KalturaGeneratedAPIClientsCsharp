@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CropDimensions(IDictionary<string,object> data) : base(data)
+		{
+			    this._Left = data.TryGetValueSafe<int>("left");
+			    this._Top = data.TryGetValueSafe<int>("top");
+			    this._Width = data.TryGetValueSafe<int>("width");
+			    this._Height = data.TryGetValueSafe<int>("height");
+		}
 		#endregion
 
 		#region Methods

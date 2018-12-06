@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public PluginReplacementOptionsItem(XmlElement node) : base(node)
 		{
 		}
+
+		public PluginReplacementOptionsItem(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public RegexCondition(XmlElement node) : base(node)
 		{
 		}
+
+		public RegexCondition(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

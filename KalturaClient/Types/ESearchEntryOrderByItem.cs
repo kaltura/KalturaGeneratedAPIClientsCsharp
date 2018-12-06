@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ESearchEntryOrderByItem(IDictionary<string,object> data) : base(data)
+		{
+			    this._SortField = (ESearchEntryOrderByFieldName)StringEnum.Parse(typeof(ESearchEntryOrderByFieldName), data.TryGetValueSafe<string>("sortField"));
+		}
 		#endregion
 
 		#region Methods

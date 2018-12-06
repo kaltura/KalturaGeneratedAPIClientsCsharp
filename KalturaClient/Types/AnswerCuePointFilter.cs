@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AnswerCuePointFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (AnswerCuePointOrderBy)StringEnum.Parse(typeof(AnswerCuePointOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

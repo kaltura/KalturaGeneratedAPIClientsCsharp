@@ -254,6 +254,24 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ScheduleEventFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._ResourceIdsLike = data.TryGetValueSafe<string>("resourceIdsLike");
+			    this._ResourceIdsMultiLikeOr = data.TryGetValueSafe<string>("resourceIdsMultiLikeOr");
+			    this._ResourceIdsMultiLikeAnd = data.TryGetValueSafe<string>("resourceIdsMultiLikeAnd");
+			    this._ParentResourceIdsLike = data.TryGetValueSafe<string>("parentResourceIdsLike");
+			    this._ParentResourceIdsMultiLikeOr = data.TryGetValueSafe<string>("parentResourceIdsMultiLikeOr");
+			    this._ParentResourceIdsMultiLikeAnd = data.TryGetValueSafe<string>("parentResourceIdsMultiLikeAnd");
+			    this._TemplateEntryCategoriesIdsMultiLikeAnd = data.TryGetValueSafe<string>("templateEntryCategoriesIdsMultiLikeAnd");
+			    this._TemplateEntryCategoriesIdsMultiLikeOr = data.TryGetValueSafe<string>("templateEntryCategoriesIdsMultiLikeOr");
+			    this._ResourceSystemNamesMultiLikeOr = data.TryGetValueSafe<string>("resourceSystemNamesMultiLikeOr");
+			    this._TemplateEntryCategoriesIdsLike = data.TryGetValueSafe<string>("templateEntryCategoriesIdsLike");
+			    this._ResourceSystemNamesMultiLikeAnd = data.TryGetValueSafe<string>("resourceSystemNamesMultiLikeAnd");
+			    this._ResourceSystemNamesLike = data.TryGetValueSafe<string>("resourceSystemNamesLike");
+			    this._ResourceIdEqual = data.TryGetValueSafe<string>("resourceIdEqual");
+			    this._OrderBy = (ScheduleEventOrderBy)StringEnum.Parse(typeof(ScheduleEventOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

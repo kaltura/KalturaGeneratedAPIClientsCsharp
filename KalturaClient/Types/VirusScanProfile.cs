@@ -164,6 +164,19 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public VirusScanProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._Status = (VirusScanProfileStatus)ParseEnum(typeof(VirusScanProfileStatus), data.TryGetValueSafe<int>("status"));
+			    this._EngineType = (VirusScanEngineType)StringEnum.Parse(typeof(VirusScanEngineType), data.TryGetValueSafe<string>("engineType"));
+			    this._EntryFilter = ObjectFactory.Create<BaseEntryFilter>(data.TryGetValueSafe<IDictionary<string,object>>("entryFilter"));
+			    this._ActionIfInfected = (VirusFoundAction)ParseEnum(typeof(VirusFoundAction), data.TryGetValueSafe<int>("actionIfInfected"));
+		}
 		#endregion
 
 		#region Methods

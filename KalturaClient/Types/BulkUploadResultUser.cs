@@ -254,6 +254,24 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BulkUploadResultUser(IDictionary<string,object> data) : base(data)
+		{
+			    this._UserId = data.TryGetValueSafe<string>("userId");
+			    this._ScreenName = data.TryGetValueSafe<string>("screenName");
+			    this._Email = data.TryGetValueSafe<string>("email");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._Tags = data.TryGetValueSafe<string>("tags");
+			    this._DateOfBirth = data.TryGetValueSafe<int>("dateOfBirth");
+			    this._Country = data.TryGetValueSafe<string>("country");
+			    this._State = data.TryGetValueSafe<string>("state");
+			    this._City = data.TryGetValueSafe<string>("city");
+			    this._Zip = data.TryGetValueSafe<string>("zip");
+			    this._Gender = data.TryGetValueSafe<int>("gender");
+			    this._FirstName = data.TryGetValueSafe<string>("firstName");
+			    this._LastName = data.TryGetValueSafe<string>("lastName");
+			    this._Group = data.TryGetValueSafe<string>("group");
+		}
 		#endregion
 
 		#region Methods

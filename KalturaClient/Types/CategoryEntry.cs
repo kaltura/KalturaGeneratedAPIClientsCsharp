@@ -122,6 +122,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CategoryEntry(IDictionary<string,object> data) : base(data)
+		{
+			    this._CategoryId = data.TryGetValueSafe<int>("categoryId");
+			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._CategoryFullIds = data.TryGetValueSafe<string>("categoryFullIds");
+			    this._Status = (CategoryEntryStatus)ParseEnum(typeof(CategoryEntryStatus), data.TryGetValueSafe<int>("status"));
+			    this._CreatorUserId = data.TryGetValueSafe<string>("creatorUserId");
+		}
 		#endregion
 
 		#region Methods

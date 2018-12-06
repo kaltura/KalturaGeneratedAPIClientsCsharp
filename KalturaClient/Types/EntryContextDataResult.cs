@@ -302,6 +302,45 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EntryContextDataResult(IDictionary<string,object> data) : base(data)
+		{
+			    this._IsSiteRestricted = data.TryGetValueSafe<bool>("isSiteRestricted");
+			    this._IsCountryRestricted = data.TryGetValueSafe<bool>("isCountryRestricted");
+			    this._IsSessionRestricted = data.TryGetValueSafe<bool>("isSessionRestricted");
+			    this._IsIpAddressRestricted = data.TryGetValueSafe<bool>("isIpAddressRestricted");
+			    this._IsUserAgentRestricted = data.TryGetValueSafe<bool>("isUserAgentRestricted");
+			    this._PreviewLength = data.TryGetValueSafe<int>("previewLength");
+			    this._IsScheduledNow = data.TryGetValueSafe<bool>("isScheduledNow");
+			    this._IsAdmin = data.TryGetValueSafe<bool>("isAdmin");
+			    this._StreamerType = data.TryGetValueSafe<string>("streamerType");
+			    this._MediaProtocol = data.TryGetValueSafe<string>("mediaProtocol");
+			    this._StorageProfilesXML = data.TryGetValueSafe<string>("storageProfilesXML");
+			    this._AccessControlMessages = new List<String>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("accessControlMessages", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._AccessControlMessages.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._AccessControlActions = new List<RuleAction>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("accessControlActions", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._AccessControlActions.Add(ObjectFactory.Create<RuleAction>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._FlavorAssets = new List<FlavorAsset>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("flavorAssets", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._FlavorAssets.Add(ObjectFactory.Create<FlavorAsset>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._MsDuration = data.TryGetValueSafe<int>("msDuration");
+			    this._PluginData = new Dictionary<string, PluginData>();
+			    foreach(var keyValuePair in data.TryGetValueSafe("pluginData", new Dictionary<string, object>()))
+			    {
+			        this._PluginData[keyValuePair.Key] = ObjectFactory.Create<PluginData>((IDictionary<string,object>)keyValuePair.Value);
+				}
+		}
 		#endregion
 
 		#region Methods

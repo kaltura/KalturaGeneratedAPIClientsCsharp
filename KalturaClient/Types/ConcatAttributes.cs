@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ConcatAttributes(IDictionary<string,object> data) : base(data)
+		{
+			    this._Resource = ObjectFactory.Create<DataCenterContentResource>(data.TryGetValueSafe<IDictionary<string,object>>("resource"));
+		}
 		#endregion
 
 		#region Methods

@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CategoryUserFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._CategoryDirectMembers = data.TryGetValueSafe<bool>("categoryDirectMembers");
+			    this._FreeText = data.TryGetValueSafe<string>("freeText");
+			    this._RelatedGroupsByUserId = data.TryGetValueSafe<string>("relatedGroupsByUserId");
+			    this._OrderBy = (CategoryUserOrderBy)StringEnum.Parse(typeof(CategoryUserOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

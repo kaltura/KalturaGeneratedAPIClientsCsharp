@@ -436,6 +436,37 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DropFolderFileBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
+			    this._IdIn = data.TryGetValueSafe<string>("idIn");
+			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
+			    this._PartnerIdIn = data.TryGetValueSafe<string>("partnerIdIn");
+			    this._DropFolderIdEqual = data.TryGetValueSafe<int>("dropFolderIdEqual");
+			    this._DropFolderIdIn = data.TryGetValueSafe<string>("dropFolderIdIn");
+			    this._FileNameEqual = data.TryGetValueSafe<string>("fileNameEqual");
+			    this._FileNameIn = data.TryGetValueSafe<string>("fileNameIn");
+			    this._FileNameLike = data.TryGetValueSafe<string>("fileNameLike");
+			    this._StatusEqual = (DropFolderFileStatus)ParseEnum(typeof(DropFolderFileStatus), data.TryGetValueSafe<int>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			    this._StatusNotIn = data.TryGetValueSafe<string>("statusNotIn");
+			    this._ParsedSlugEqual = data.TryGetValueSafe<string>("parsedSlugEqual");
+			    this._ParsedSlugIn = data.TryGetValueSafe<string>("parsedSlugIn");
+			    this._ParsedSlugLike = data.TryGetValueSafe<string>("parsedSlugLike");
+			    this._ParsedFlavorEqual = data.TryGetValueSafe<string>("parsedFlavorEqual");
+			    this._ParsedFlavorIn = data.TryGetValueSafe<string>("parsedFlavorIn");
+			    this._ParsedFlavorLike = data.TryGetValueSafe<string>("parsedFlavorLike");
+			    this._LeadDropFolderFileIdEqual = data.TryGetValueSafe<int>("leadDropFolderFileIdEqual");
+			    this._DeletedDropFolderFileIdEqual = data.TryGetValueSafe<int>("deletedDropFolderFileIdEqual");
+			    this._EntryIdEqual = data.TryGetValueSafe<string>("entryIdEqual");
+			    this._ErrorCodeEqual = (DropFolderFileErrorCode)StringEnum.Parse(typeof(DropFolderFileErrorCode), data.TryGetValueSafe<string>("errorCodeEqual"));
+			    this._ErrorCodeIn = data.TryGetValueSafe<string>("errorCodeIn");
+			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
+			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
+			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
+		}
 		#endregion
 
 		#region Methods

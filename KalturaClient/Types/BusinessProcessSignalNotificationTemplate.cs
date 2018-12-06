@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BusinessProcessSignalNotificationTemplate(IDictionary<string,object> data) : base(data)
+		{
+			    this._Message = data.TryGetValueSafe<string>("message");
+			    this._EventId = data.TryGetValueSafe<string>("eventId");
+		}
 		#endregion
 
 		#region Methods

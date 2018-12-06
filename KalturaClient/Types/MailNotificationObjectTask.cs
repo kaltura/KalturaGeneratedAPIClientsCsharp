@@ -156,6 +156,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public MailNotificationObjectTask(IDictionary<string,object> data) : base(data)
+		{
+			    this._MailTo = data.TryGetValueSafe<string>("mailTo");
+			    this._Sender = data.TryGetValueSafe<string>("sender");
+			    this._Subject = data.TryGetValueSafe<string>("subject");
+			    this._Message = data.TryGetValueSafe<string>("message");
+			    this._Footer = data.TryGetValueSafe<string>("footer");
+			    this._Link = data.TryGetValueSafe<string>("link");
+			    this._SendToUsers = data.TryGetValueSafe<bool>("sendToUsers");
+		}
 		#endregion
 
 		#region Methods

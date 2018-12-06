@@ -90,6 +90,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PlayReadyCopyRight(IDictionary<string,object> data) : base(data)
+		{
+			    this._CopyCount = data.TryGetValueSafe<int>("copyCount");
+			    this._CopyEnablers = new List<PlayReadyCopyEnablerHolder>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("copyEnablers", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._CopyEnablers.Add(ObjectFactory.Create<PlayReadyCopyEnablerHolder>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

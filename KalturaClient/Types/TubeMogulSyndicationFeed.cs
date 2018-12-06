@@ -67,6 +67,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public TubeMogulSyndicationFeed(IDictionary<string,object> data) : base(data)
+		{
+			    this._Category = (TubeMogulSyndicationFeedCategories)StringEnum.Parse(typeof(TubeMogulSyndicationFeedCategories), data.TryGetValueSafe<string>("category"));
+		}
 		#endregion
 
 		#region Methods

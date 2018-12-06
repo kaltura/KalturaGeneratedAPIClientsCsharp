@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public ITunesSyndicationFeedBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public ITunesSyndicationFeedBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

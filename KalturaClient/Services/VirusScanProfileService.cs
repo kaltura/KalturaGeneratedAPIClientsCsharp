@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<VirusScanProfile>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<VirusScanProfile>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class VirusScanProfileDeleteRequestBuilder : RequestBuilder<VirusScanProfile>
@@ -119,6 +123,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<VirusScanProfile>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<VirusScanProfile>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class VirusScanProfileGetRequestBuilder : RequestBuilder<VirusScanProfile>
@@ -161,6 +169,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<VirusScanProfile>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<VirusScanProfile>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -214,6 +226,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<VirusScanProfile>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<VirusScanProfile>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class VirusScanProfileScanRequestBuilder : RequestBuilder<int>
@@ -266,6 +282,10 @@ namespace Kaltura.Services
 		{
 			return int.Parse(result.InnerText);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (int)(result);
+		}
 	}
 
 	public class VirusScanProfileUpdateRequestBuilder : RequestBuilder<VirusScanProfile>
@@ -317,6 +337,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<VirusScanProfile>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<VirusScanProfile>((IDictionary<string,object>)result);
 		}
 	}
 

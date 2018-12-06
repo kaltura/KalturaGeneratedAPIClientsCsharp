@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveReportExportResponse(IDictionary<string,object> data) : base(data)
+		{
+			    this._ReferenceJobId = data.TryGetValueSafe<long>("referenceJobId");
+			    this._ReportEmail = data.TryGetValueSafe<string>("reportEmail");
+		}
 		#endregion
 
 		#region Methods

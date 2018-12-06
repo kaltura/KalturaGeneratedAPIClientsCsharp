@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AuditTrailTextInfo(IDictionary<string,object> data) : base(data)
+		{
+			    this._Info = data.TryGetValueSafe<string>("info");
+		}
 		#endregion
 
 		#region Methods

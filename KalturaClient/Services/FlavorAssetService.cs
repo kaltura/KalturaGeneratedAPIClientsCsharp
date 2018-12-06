@@ -85,6 +85,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<FlavorAsset>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<FlavorAsset>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class FlavorAssetConvertRequestBuilder : RequestBuilder<object>
@@ -146,6 +150,10 @@ namespace Kaltura.Services
 		{
 			return null;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return null;
+		}
 	}
 
 	public class FlavorAssetDeleteRequestBuilder : RequestBuilder<object>
@@ -189,6 +197,10 @@ namespace Kaltura.Services
 		{
 			return null;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return null;
+		}
 	}
 
 	public class FlavorAssetDeleteLocalContentRequestBuilder : RequestBuilder<object>
@@ -229,6 +241,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -284,6 +300,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<FlavorAsset>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<FlavorAsset>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class FlavorAssetGetRequestBuilder : RequestBuilder<FlavorAsset>
@@ -326,6 +346,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<FlavorAsset>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<FlavorAsset>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -370,6 +394,15 @@ namespace Kaltura.Services
 		{
 			IList<FlavorAsset> list = new List<FlavorAsset>();
 			foreach(XmlElement node in result.ChildNodes)
+			{
+				list.Add(ObjectFactory.Create<FlavorAsset>(node));
+			}
+			return list;
+		}
+		public override object DeserializeObject(object result)
+		{
+			var list = new List<FlavorAsset>();
+			foreach(var node in (IEnumerable<IDictionary<string,object>>)result)
 			{
 				list.Add(ObjectFactory.Create<FlavorAsset>(node));
 			}
@@ -427,6 +460,10 @@ namespace Kaltura.Services
 		{
 			return result.InnerText;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
+		}
 	}
 
 	public class FlavorAssetGetFlavorAssetsWithParamsRequestBuilder : RequestBuilder<IList<FlavorAssetWithParams>>
@@ -475,6 +512,15 @@ namespace Kaltura.Services
 			}
 			return list;
 		}
+		public override object DeserializeObject(object result)
+		{
+			var list = new List<FlavorAssetWithParams>();
+			foreach(var node in (IEnumerable<IDictionary<string,object>>)result)
+			{
+				list.Add(ObjectFactory.Create<FlavorAssetWithParams>(node));
+			}
+			return list;
+		}
 	}
 
 	public class FlavorAssetGetRemotePathsRequestBuilder : RequestBuilder<ListResponse<RemotePath>>
@@ -517,6 +563,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<RemotePath>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<RemotePath>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -588,6 +638,10 @@ namespace Kaltura.Services
 		{
 			return result.InnerText;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
+		}
 	}
 
 	public class FlavorAssetGetWebPlayableByEntryIdRequestBuilder : RequestBuilder<IList<FlavorAsset>>
@@ -631,6 +685,15 @@ namespace Kaltura.Services
 		{
 			IList<FlavorAsset> list = new List<FlavorAsset>();
 			foreach(XmlElement node in result.ChildNodes)
+			{
+				list.Add(ObjectFactory.Create<FlavorAsset>(node));
+			}
+			return list;
+		}
+		public override object DeserializeObject(object result)
+		{
+			var list = new List<FlavorAsset>();
+			foreach(var node in (IEnumerable<IDictionary<string,object>>)result)
 			{
 				list.Add(ObjectFactory.Create<FlavorAsset>(node));
 			}
@@ -688,6 +751,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<FlavorAsset>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<FlavorAsset>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class FlavorAssetReconvertRequestBuilder : RequestBuilder<object>
@@ -728,6 +795,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -792,6 +863,10 @@ namespace Kaltura.Services
 		{
 			return result.InnerText;
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
+		}
 	}
 
 	public class FlavorAssetSetAsSourceRequestBuilder : RequestBuilder<object>
@@ -832,6 +907,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -887,6 +966,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<FlavorAsset>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<FlavorAsset>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class FlavorAssetUpdateRequestBuilder : RequestBuilder<FlavorAsset>
@@ -938,6 +1021,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<FlavorAsset>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<FlavorAsset>((IDictionary<string,object>)result);
 		}
 	}
 

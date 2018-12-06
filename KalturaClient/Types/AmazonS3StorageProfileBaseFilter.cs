@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public AmazonS3StorageProfileBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public AmazonS3StorageProfileBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

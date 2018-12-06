@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveChannel(IDictionary<string,object> data) : base(data)
+		{
+			    this._PlaylistId = data.TryGetValueSafe<string>("playlistId");
+			    this._Repeat = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("repeat"));
+		}
 		#endregion
 
 		#region Methods

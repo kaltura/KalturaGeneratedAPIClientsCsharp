@@ -266,6 +266,31 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveStreamEntry(IDictionary<string,object> data) : base(data)
+		{
+			    this._StreamRemoteId = data.TryGetValueSafe<string>("streamRemoteId");
+			    this._StreamRemoteBackupId = data.TryGetValueSafe<string>("streamRemoteBackupId");
+			    this._Bitrates = new List<LiveStreamBitrate>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("bitrates", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Bitrates.Add(ObjectFactory.Create<LiveStreamBitrate>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._PrimaryBroadcastingUrl = data.TryGetValueSafe<string>("primaryBroadcastingUrl");
+			    this._SecondaryBroadcastingUrl = data.TryGetValueSafe<string>("secondaryBroadcastingUrl");
+			    this._PrimaryRtspBroadcastingUrl = data.TryGetValueSafe<string>("primaryRtspBroadcastingUrl");
+			    this._SecondaryRtspBroadcastingUrl = data.TryGetValueSafe<string>("secondaryRtspBroadcastingUrl");
+			    this._StreamName = data.TryGetValueSafe<string>("streamName");
+			    this._StreamUrl = data.TryGetValueSafe<string>("streamUrl");
+			    this._HlsStreamUrl = data.TryGetValueSafe<string>("hlsStreamUrl");
+			    this._UrlManager = data.TryGetValueSafe<string>("urlManager");
+			    this._EncodingIP1 = data.TryGetValueSafe<string>("encodingIP1");
+			    this._EncodingIP2 = data.TryGetValueSafe<string>("encodingIP2");
+			    this._StreamPassword = data.TryGetValueSafe<string>("streamPassword");
+			    this._StreamUsername = data.TryGetValueSafe<string>("streamUsername");
+			    this._PrimaryServerNodeId = data.TryGetValueSafe<int>("primaryServerNodeId");
+		}
 		#endregion
 
 		#region Methods

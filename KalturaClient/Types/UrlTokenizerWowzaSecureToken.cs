@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UrlTokenizerWowzaSecureToken(IDictionary<string,object> data) : base(data)
+		{
+			    this._ParamPrefix = data.TryGetValueSafe<string>("paramPrefix");
+			    this._HashAlgorithm = data.TryGetValueSafe<string>("hashAlgorithm");
+		}
 		#endregion
 
 		#region Methods

@@ -212,6 +212,21 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveStatsEvent(IDictionary<string,object> data) : base(data)
+		{
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+			    this._EventType = (LiveStatsEventType)ParseEnum(typeof(LiveStatsEventType), data.TryGetValueSafe<int>("eventType"));
+			    this._SessionId = data.TryGetValueSafe<string>("sessionId");
+			    this._EventIndex = data.TryGetValueSafe<int>("eventIndex");
+			    this._BufferTime = data.TryGetValueSafe<int>("bufferTime");
+			    this._Bitrate = data.TryGetValueSafe<int>("bitrate");
+			    this._Referrer = data.TryGetValueSafe<string>("referrer");
+			    this._IsLive = data.TryGetValueSafe<bool>("isLive");
+			    this._StartTime = data.TryGetValueSafe<string>("startTime");
+			    this._DeliveryType = (PlaybackProtocol)StringEnum.Parse(typeof(PlaybackProtocol), data.TryGetValueSafe<string>("deliveryType"));
+		}
 		#endregion
 
 		#region Methods

@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public MetadataSearchItem(IDictionary<string,object> data) : base(data)
+		{
+			    this._MetadataProfileId = data.TryGetValueSafe<int>("metadataProfileId");
+			    this._OrderBy = data.TryGetValueSafe<string>("orderBy");
+		}
 		#endregion
 
 		#region Methods

@@ -128,6 +128,15 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public MetadataFieldChangedCondition(IDictionary<string,object> data) : base(data)
+		{
+			    this._XPath = data.TryGetValueSafe<string>("xPath");
+			    this._ProfileId = data.TryGetValueSafe<int>("profileId");
+			    this._ProfileSystemName = data.TryGetValueSafe<string>("profileSystemName");
+			    this._VersionA = data.TryGetValueSafe<string>("versionA");
+			    this._VersionB = data.TryGetValueSafe<string>("versionB");
+		}
 		#endregion
 
 		#region Methods

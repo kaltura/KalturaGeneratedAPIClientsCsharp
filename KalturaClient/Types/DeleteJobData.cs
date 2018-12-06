@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DeleteJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._Filter = ObjectFactory.Create<Filter>(data.TryGetValueSafe<IDictionary<string,object>>("filter"));
+		}
 		#endregion
 
 		#region Methods

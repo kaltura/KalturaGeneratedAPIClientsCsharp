@@ -156,6 +156,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public YouTubeApiCaptionDistributionInfo(IDictionary<string,object> data) : base(data)
+		{
+			    this._Language = data.TryGetValueSafe<string>("language");
+			    this._Label = data.TryGetValueSafe<string>("label");
+			    this._FilePath = data.TryGetValueSafe<string>("filePath");
+			    this._RemoteId = data.TryGetValueSafe<string>("remoteId");
+			    this._Action = (YouTubeApiDistributionCaptionAction)ParseEnum(typeof(YouTubeApiDistributionCaptionAction), data.TryGetValueSafe<int>("action"));
+			    this._Version = data.TryGetValueSafe<string>("version");
+			    this._AssetId = data.TryGetValueSafe<string>("assetId");
+		}
 		#endregion
 
 		#region Methods

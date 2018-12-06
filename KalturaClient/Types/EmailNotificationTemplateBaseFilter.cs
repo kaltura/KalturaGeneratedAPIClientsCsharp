@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public EmailNotificationTemplateBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public EmailNotificationTemplateBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

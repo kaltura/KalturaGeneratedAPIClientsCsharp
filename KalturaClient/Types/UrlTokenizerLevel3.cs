@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UrlTokenizerLevel3(IDictionary<string,object> data) : base(data)
+		{
+			    this._ParamName = data.TryGetValueSafe<string>("paramName");
+			    this._ExpiryName = data.TryGetValueSafe<string>("expiryName");
+			    this._Gen = data.TryGetValueSafe<string>("gen");
+		}
 		#endregion
 
 		#region Methods

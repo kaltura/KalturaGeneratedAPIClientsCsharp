@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CountryRestriction(IDictionary<string,object> data) : base(data)
+		{
+			    this._CountryRestrictionType = (CountryRestrictionType)ParseEnum(typeof(CountryRestrictionType), data.TryGetValueSafe<int>("countryRestrictionType"));
+			    this._CountryList = data.TryGetValueSafe<string>("countryList");
+		}
 		#endregion
 
 		#region Methods

@@ -76,6 +76,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public RemoteStorageResources(IDictionary<string,object> data) : base(data)
+		{
+			    this._Resources = new List<RemoteStorageResource>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("resources", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Resources.Add(ObjectFactory.Create<RemoteStorageResource>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

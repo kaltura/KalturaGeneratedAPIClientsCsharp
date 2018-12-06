@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveEntryRecordingOptions(IDictionary<string,object> data) : base(data)
+		{
+			    this._ShouldCopyEntitlement = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("shouldCopyEntitlement"));
+			    this._ShouldCopyScheduling = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("shouldCopyScheduling"));
+			    this._ShouldCopyThumbnail = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("shouldCopyThumbnail"));
+			    this._ShouldMakeHidden = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("shouldMakeHidden"));
+		}
 		#endregion
 
 		#region Methods

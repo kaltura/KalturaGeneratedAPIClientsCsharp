@@ -94,6 +94,22 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ESearchResult(IDictionary<string,object> data) : base(data)
+		{
+			    this._Highlight = new List<ESearchHighlight>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("highlight", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Highlight.Add(ObjectFactory.Create<ESearchHighlight>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._ItemsData = new List<ESearchItemDataResult>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("itemsData", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._ItemsData.Add(ObjectFactory.Create<ESearchItemDataResult>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

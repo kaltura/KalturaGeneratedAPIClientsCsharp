@@ -85,6 +85,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<LiveStreamEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<LiveStreamEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class LiveStreamAddLiveStreamPushPublishConfigurationRequestBuilder : RequestBuilder<LiveStreamEntry>
@@ -154,6 +158,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<LiveStreamEntry>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<LiveStreamEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -243,6 +251,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<LiveEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<LiveEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class LiveStreamAuthenticateRequestBuilder : RequestBuilder<LiveStreamEntry>
@@ -322,6 +334,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<LiveStreamEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<LiveStreamEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class LiveStreamCreatePeriodicSyncPointsRequestBuilder : RequestBuilder<object>
@@ -380,6 +396,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -444,6 +464,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<LiveEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<LiveEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class LiveStreamDeleteRequestBuilder : RequestBuilder<object>
@@ -484,6 +508,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -539,6 +567,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<LiveStreamEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<LiveStreamEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class LiveStreamIsLiveRequestBuilder : RequestBuilder<bool>
@@ -590,6 +622,13 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			if (result.InnerText.Equals("1") || result.InnerText.ToLower().Equals("true"))
+				return true;
+			return false;
+		}
+		public override object DeserializeObject(object result)
+		{
+			var resultStr = (string)result;
+			if (resultStr.Equals("1") || resultStr.ToLower().Equals("true"))
 				return true;
 			return false;
 		}
@@ -645,6 +684,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<LiveStreamEntry>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<LiveStreamEntry>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class LiveStreamRegenerateStreamTokenRequestBuilder : RequestBuilder<LiveEntry>
@@ -687,6 +730,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<LiveEntry>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<LiveEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -776,6 +823,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<LiveEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<LiveEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class LiveStreamRemoveLiveStreamPushPublishConfigurationRequestBuilder : RequestBuilder<LiveStreamEntry>
@@ -827,6 +878,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<LiveStreamEntry>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<LiveStreamEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -916,6 +971,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<LiveEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<LiveEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class LiveStreamUnregisterMediaServerRequestBuilder : RequestBuilder<LiveEntry>
@@ -977,6 +1036,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<LiveEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<LiveEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class LiveStreamUpdateRequestBuilder : RequestBuilder<LiveStreamEntry>
@@ -1028,6 +1091,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<LiveStreamEntry>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<LiveStreamEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -1081,6 +1148,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<LiveStreamEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<LiveStreamEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class LiveStreamUpdateOfflineThumbnailJpegRequestBuilder : RequestBuilder<LiveStreamEntry>
@@ -1132,6 +1203,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<LiveStreamEntry>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<LiveStreamEntry>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class LiveStreamValidateRegisteredMediaServersRequestBuilder : RequestBuilder<object>
@@ -1172,6 +1247,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}

@@ -128,6 +128,15 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BusinessProcessCase(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<string>("id");
+			    this._BusinessProcessId = data.TryGetValueSafe<string>("businessProcessId");
+			    this._BusinessProcessStartNotificationTemplateId = data.TryGetValueSafe<int>("businessProcessStartNotificationTemplateId");
+			    this._Suspended = data.TryGetValueSafe<bool>("suspended");
+			    this._ActivityId = data.TryGetValueSafe<string>("activityId");
+		}
 		#endregion
 
 		#region Methods

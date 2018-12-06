@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BatchJobFilterExt(IDictionary<string,object> data) : base(data)
+		{
+			    this._JobTypeAndSubTypeIn = data.TryGetValueSafe<string>("jobTypeAndSubTypeIn");
+		}
 		#endregion
 
 		#region Methods

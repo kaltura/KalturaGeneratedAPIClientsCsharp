@@ -184,6 +184,19 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UnicornDistributionProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._Username = data.TryGetValueSafe<string>("username");
+			    this._Password = data.TryGetValueSafe<string>("password");
+			    this._DomainName = data.TryGetValueSafe<string>("domainName");
+			    this._ChannelGuid = data.TryGetValueSafe<string>("channelGuid");
+			    this._ApiHostUrl = data.TryGetValueSafe<string>("apiHostUrl");
+			    this._DomainGuid = data.TryGetValueSafe<string>("domainGuid");
+			    this._AdFreeApplicationGuid = data.TryGetValueSafe<string>("adFreeApplicationGuid");
+			    this._RemoteAssetParamsId = data.TryGetValueSafe<int>("remoteAssetParamsId");
+			    this._StorageProfileId = data.TryGetValueSafe<string>("storageProfileId");
+		}
 		#endregion
 
 		#region Methods

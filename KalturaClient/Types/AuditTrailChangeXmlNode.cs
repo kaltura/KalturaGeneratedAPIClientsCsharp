@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AuditTrailChangeXmlNode(IDictionary<string,object> data) : base(data)
+		{
+			    this._Type = (AuditTrailChangeXmlNodeType)ParseEnum(typeof(AuditTrailChangeXmlNodeType), data.TryGetValueSafe<int>("type"));
+		}
 		#endregion
 
 		#region Methods

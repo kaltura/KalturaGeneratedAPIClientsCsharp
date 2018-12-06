@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CategoryUserAdvancedFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._MemberIdEq = data.TryGetValueSafe<string>("memberIdEq");
+			    this._MemberIdIn = data.TryGetValueSafe<string>("memberIdIn");
+			    this._MemberPermissionsMatchOr = data.TryGetValueSafe<string>("memberPermissionsMatchOr");
+			    this._MemberPermissionsMatchAnd = data.TryGetValueSafe<string>("memberPermissionsMatchAnd");
+		}
 		#endregion
 
 		#region Methods

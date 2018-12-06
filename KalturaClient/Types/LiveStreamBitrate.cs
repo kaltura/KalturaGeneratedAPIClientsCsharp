@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveStreamBitrate(IDictionary<string,object> data) : base(data)
+		{
+			    this._Bitrate = data.TryGetValueSafe<int>("bitrate");
+			    this._Width = data.TryGetValueSafe<int>("width");
+			    this._Height = data.TryGetValueSafe<int>("height");
+			    this._Tags = data.TryGetValueSafe<string>("tags");
+		}
 		#endregion
 
 		#region Methods

@@ -170,6 +170,18 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveStats(IDictionary<string,object> data) : base(data)
+		{
+			    this._Audience = data.TryGetValueSafe<int>("audience");
+			    this._DvrAudience = data.TryGetValueSafe<int>("dvrAudience");
+			    this._AvgBitrate = data.TryGetValueSafe<float>("avgBitrate");
+			    this._BufferTime = data.TryGetValueSafe<int>("bufferTime");
+			    this._Plays = data.TryGetValueSafe<int>("plays");
+			    this._SecondsViewed = data.TryGetValueSafe<int>("secondsViewed");
+			    this._StartEvent = data.TryGetValueSafe<long>("startEvent");
+			    this._Timestamp = data.TryGetValueSafe<int>("timestamp");
+		}
 		#endregion
 
 		#region Methods

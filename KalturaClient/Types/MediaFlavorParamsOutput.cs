@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public MediaFlavorParamsOutput(XmlElement node) : base(node)
 		{
 		}
+
+		public MediaFlavorParamsOutput(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

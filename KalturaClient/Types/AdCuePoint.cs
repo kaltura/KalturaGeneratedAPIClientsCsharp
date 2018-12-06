@@ -142,6 +142,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AdCuePoint(IDictionary<string,object> data) : base(data)
+		{
+			    this._ProtocolType = (AdProtocolType)StringEnum.Parse(typeof(AdProtocolType), data.TryGetValueSafe<string>("protocolType"));
+			    this._SourceUrl = data.TryGetValueSafe<string>("sourceUrl");
+			    this._AdType = (AdType)StringEnum.Parse(typeof(AdType), data.TryGetValueSafe<string>("adType"));
+			    this._Title = data.TryGetValueSafe<string>("title");
+			    this._EndTime = data.TryGetValueSafe<int>("endTime");
+			    this._Duration = data.TryGetValueSafe<int>("duration");
+		}
 		#endregion
 
 		#region Methods

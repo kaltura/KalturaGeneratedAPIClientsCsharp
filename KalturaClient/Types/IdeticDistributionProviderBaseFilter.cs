@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public IdeticDistributionProviderBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public IdeticDistributionProviderBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

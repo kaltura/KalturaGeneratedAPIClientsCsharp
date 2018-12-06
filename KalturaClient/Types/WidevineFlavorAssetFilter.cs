@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public WidevineFlavorAssetFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (WidevineFlavorAssetOrderBy)StringEnum.Parse(typeof(WidevineFlavorAssetOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

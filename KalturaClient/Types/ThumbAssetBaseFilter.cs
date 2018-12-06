@@ -128,6 +128,15 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ThumbAssetBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._ThumbParamsIdEqual = data.TryGetValueSafe<int>("thumbParamsIdEqual");
+			    this._ThumbParamsIdIn = data.TryGetValueSafe<string>("thumbParamsIdIn");
+			    this._StatusEqual = (ThumbAssetStatus)ParseEnum(typeof(ThumbAssetStatus), data.TryGetValueSafe<int>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			    this._StatusNotIn = data.TryGetValueSafe<string>("statusNotIn");
+		}
 		#endregion
 
 		#region Methods

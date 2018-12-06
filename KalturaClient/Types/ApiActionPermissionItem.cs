@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ApiActionPermissionItem(IDictionary<string,object> data) : base(data)
+		{
+			    this._Service = data.TryGetValueSafe<string>("service");
+			    this._Action = data.TryGetValueSafe<string>("action");
+		}
 		#endregion
 
 		#region Methods

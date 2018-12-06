@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ScheduleResource>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ScheduleResource>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ScheduleResourceAddFromBulkUploadRequestBuilder : RequestBuilder<BulkUpload>
@@ -127,6 +131,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<BulkUpload>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<BulkUpload>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ScheduleResourceDeleteRequestBuilder : RequestBuilder<ScheduleResource>
@@ -170,6 +178,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ScheduleResource>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ScheduleResource>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ScheduleResourceGetRequestBuilder : RequestBuilder<ScheduleResource>
@@ -212,6 +224,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ScheduleResource>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ScheduleResource>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -265,6 +281,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<ScheduleResource>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<ScheduleResource>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ScheduleResourceUpdateRequestBuilder : RequestBuilder<ScheduleResource>
@@ -316,6 +336,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ScheduleResource>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ScheduleResource>((IDictionary<string,object>)result);
 		}
 	}
 

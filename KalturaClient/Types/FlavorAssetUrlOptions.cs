@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FlavorAssetUrlOptions(IDictionary<string,object> data) : base(data)
+		{
+			    this._FileName = data.TryGetValueSafe<string>("fileName");
+			    this._Referrer = data.TryGetValueSafe<string>("referrer");
+		}
 		#endregion
 
 		#region Methods

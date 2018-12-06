@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DropFolderFileFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (DropFolderFileOrderBy)StringEnum.Parse(typeof(DropFolderFileOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

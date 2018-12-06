@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EventCuePointBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._EventTypeEqual = (EventType)StringEnum.Parse(typeof(EventType), data.TryGetValueSafe<string>("eventTypeEqual"));
+			    this._EventTypeIn = data.TryGetValueSafe<string>("eventTypeIn");
+		}
 		#endregion
 
 		#region Methods

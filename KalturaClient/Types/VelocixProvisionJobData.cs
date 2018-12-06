@@ -104,6 +104,18 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public VelocixProvisionJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._ProvisioningParams = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("provisioningParams", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._ProvisioningParams.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._UserName = data.TryGetValueSafe<string>("userName");
+			    this._Password = data.TryGetValueSafe<string>("password");
+		}
 		#endregion
 
 		#region Methods

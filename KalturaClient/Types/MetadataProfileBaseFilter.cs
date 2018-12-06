@@ -310,6 +310,28 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public MetadataProfileBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
+			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
+			    this._MetadataObjectTypeEqual = (MetadataObjectType)StringEnum.Parse(typeof(MetadataObjectType), data.TryGetValueSafe<string>("metadataObjectTypeEqual"));
+			    this._MetadataObjectTypeIn = data.TryGetValueSafe<string>("metadataObjectTypeIn");
+			    this._VersionEqual = data.TryGetValueSafe<int>("versionEqual");
+			    this._NameEqual = data.TryGetValueSafe<string>("nameEqual");
+			    this._SystemNameEqual = data.TryGetValueSafe<string>("systemNameEqual");
+			    this._SystemNameIn = data.TryGetValueSafe<string>("systemNameIn");
+			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
+			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
+			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
+			    this._StatusEqual = (MetadataProfileStatus)ParseEnum(typeof(MetadataProfileStatus), data.TryGetValueSafe<int>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			    this._CreateModeEqual = (MetadataProfileCreateMode)ParseEnum(typeof(MetadataProfileCreateMode), data.TryGetValueSafe<int>("createModeEqual"));
+			    this._CreateModeNotEqual = (MetadataProfileCreateMode)ParseEnum(typeof(MetadataProfileCreateMode), data.TryGetValueSafe<int>("createModeNotEqual"));
+			    this._CreateModeIn = data.TryGetValueSafe<string>("createModeIn");
+			    this._CreateModeNotIn = data.TryGetValueSafe<string>("createModeNotIn");
+		}
 		#endregion
 
 		#region Methods

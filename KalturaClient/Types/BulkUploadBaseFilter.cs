@@ -156,6 +156,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BulkUploadBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._UploadedOnGreaterThanOrEqual = data.TryGetValueSafe<int>("uploadedOnGreaterThanOrEqual");
+			    this._UploadedOnLessThanOrEqual = data.TryGetValueSafe<int>("uploadedOnLessThanOrEqual");
+			    this._UploadedOnEqual = data.TryGetValueSafe<int>("uploadedOnEqual");
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			    this._StatusEqual = (BatchJobStatus)ParseEnum(typeof(BatchJobStatus), data.TryGetValueSafe<int>("statusEqual"));
+			    this._BulkUploadObjectTypeEqual = (BulkUploadObjectType)StringEnum.Parse(typeof(BulkUploadObjectType), data.TryGetValueSafe<string>("bulkUploadObjectTypeEqual"));
+			    this._BulkUploadObjectTypeIn = data.TryGetValueSafe<string>("bulkUploadObjectTypeIn");
+		}
 		#endregion
 
 		#region Methods

@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CaptionParamsBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._FormatEqual = (CaptionType)StringEnum.Parse(typeof(CaptionType), data.TryGetValueSafe<string>("formatEqual"));
+			    this._FormatIn = data.TryGetValueSafe<string>("formatIn");
+		}
 		#endregion
 
 		#region Methods

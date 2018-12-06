@@ -296,6 +296,27 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ThumbParams(IDictionary<string,object> data) : base(data)
+		{
+			    this._CropType = (ThumbCropType)ParseEnum(typeof(ThumbCropType), data.TryGetValueSafe<int>("cropType"));
+			    this._Quality = data.TryGetValueSafe<int>("quality");
+			    this._CropX = data.TryGetValueSafe<int>("cropX");
+			    this._CropY = data.TryGetValueSafe<int>("cropY");
+			    this._CropWidth = data.TryGetValueSafe<int>("cropWidth");
+			    this._CropHeight = data.TryGetValueSafe<int>("cropHeight");
+			    this._VideoOffset = data.TryGetValueSafe<float>("videoOffset");
+			    this._Width = data.TryGetValueSafe<int>("width");
+			    this._Height = data.TryGetValueSafe<int>("height");
+			    this._ScaleWidth = data.TryGetValueSafe<float>("scaleWidth");
+			    this._ScaleHeight = data.TryGetValueSafe<float>("scaleHeight");
+			    this._BackgroundColor = data.TryGetValueSafe<string>("backgroundColor");
+			    this._SourceParamsId = data.TryGetValueSafe<int>("sourceParamsId");
+			    this._Format = (ContainerFormat)StringEnum.Parse(typeof(ContainerFormat), data.TryGetValueSafe<string>("format"));
+			    this._Density = data.TryGetValueSafe<int>("density");
+			    this._StripProfiles = data.TryGetValueSafe<bool>("stripProfiles");
+			    this._VideoOffsetInPercentage = data.TryGetValueSafe<int>("videoOffsetInPercentage");
+		}
 		#endregion
 
 		#region Methods

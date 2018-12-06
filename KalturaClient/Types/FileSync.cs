@@ -298,6 +298,35 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FileSync(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<long>("id");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._FileObjectType = (FileSyncObjectType)StringEnum.Parse(typeof(FileSyncObjectType), data.TryGetValueSafe<string>("fileObjectType"));
+			    this._ObjectId = data.TryGetValueSafe<string>("objectId");
+			    this._Version = data.TryGetValueSafe<string>("version");
+			    this._ObjectSubType = data.TryGetValueSafe<int>("objectSubType");
+			    this._Dc = data.TryGetValueSafe<string>("dc");
+			    this._Original = data.TryGetValueSafe<int>("original");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._ReadyAt = data.TryGetValueSafe<int>("readyAt");
+			    this._SyncTime = data.TryGetValueSafe<int>("syncTime");
+			    this._Status = (FileSyncStatus)ParseEnum(typeof(FileSyncStatus), data.TryGetValueSafe<int>("status"));
+			    this._FileType = (FileSyncType)ParseEnum(typeof(FileSyncType), data.TryGetValueSafe<int>("fileType"));
+			    this._LinkedId = data.TryGetValueSafe<int>("linkedId");
+			    this._LinkCount = data.TryGetValueSafe<int>("linkCount");
+			    this._FileRoot = data.TryGetValueSafe<string>("fileRoot");
+			    this._FilePath = data.TryGetValueSafe<string>("filePath");
+			    this._FileSize = data.TryGetValueSafe<float>("fileSize");
+			    this._FileUrl = data.TryGetValueSafe<string>("fileUrl");
+			    this._FileContent = data.TryGetValueSafe<string>("fileContent");
+			    this._FileDiscSize = data.TryGetValueSafe<float>("fileDiscSize");
+			    this._IsCurrentDc = data.TryGetValueSafe<bool>("isCurrentDc");
+			    this._IsDir = data.TryGetValueSafe<bool>("isDir");
+			    this._OriginalId = data.TryGetValueSafe<int>("originalId");
+		}
 		#endregion
 
 		#region Methods

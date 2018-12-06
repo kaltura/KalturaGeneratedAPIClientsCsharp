@@ -212,6 +212,21 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UserFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IdOrScreenNameStartsWith = data.TryGetValueSafe<string>("idOrScreenNameStartsWith");
+			    this._IdEqual = data.TryGetValueSafe<string>("idEqual");
+			    this._IdIn = data.TryGetValueSafe<string>("idIn");
+			    this._LoginEnabledEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("loginEnabledEqual"));
+			    this._RoleIdEqual = data.TryGetValueSafe<string>("roleIdEqual");
+			    this._RoleIdsEqual = data.TryGetValueSafe<string>("roleIdsEqual");
+			    this._RoleIdsIn = data.TryGetValueSafe<string>("roleIdsIn");
+			    this._FirstNameOrLastNameStartsWith = data.TryGetValueSafe<string>("firstNameOrLastNameStartsWith");
+			    this._PermissionNamesMultiLikeOr = data.TryGetValueSafe<string>("permissionNamesMultiLikeOr");
+			    this._PermissionNamesMultiLikeAnd = data.TryGetValueSafe<string>("permissionNamesMultiLikeAnd");
+			    this._OrderBy = (UserOrderBy)StringEnum.Parse(typeof(UserOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

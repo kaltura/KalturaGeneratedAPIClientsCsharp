@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public IdeticDistributionProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._FtpPath = data.TryGetValueSafe<string>("ftpPath");
+			    this._Username = data.TryGetValueSafe<string>("username");
+			    this._Password = data.TryGetValueSafe<string>("password");
+			    this._Domain = data.TryGetValueSafe<string>("domain");
+		}
 		#endregion
 
 		#region Methods

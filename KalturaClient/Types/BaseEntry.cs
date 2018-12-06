@@ -597,6 +597,60 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BaseEntry(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<string>("id");
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._UserId = data.TryGetValueSafe<string>("userId");
+			    this._CreatorId = data.TryGetValueSafe<string>("creatorId");
+			    this._Tags = data.TryGetValueSafe<string>("tags");
+			    this._AdminTags = data.TryGetValueSafe<string>("adminTags");
+			    this._Categories = data.TryGetValueSafe<string>("categories");
+			    this._CategoriesIds = data.TryGetValueSafe<string>("categoriesIds");
+			    this._Status = (EntryStatus)StringEnum.Parse(typeof(EntryStatus), data.TryGetValueSafe<string>("status"));
+			    this._ModerationStatus = (EntryModerationStatus)ParseEnum(typeof(EntryModerationStatus), data.TryGetValueSafe<int>("moderationStatus"));
+			    this._ModerationCount = data.TryGetValueSafe<int>("moderationCount");
+			    this._Type = (EntryType)StringEnum.Parse(typeof(EntryType), data.TryGetValueSafe<string>("type"));
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._Rank = data.TryGetValueSafe<float>("rank");
+			    this._TotalRank = data.TryGetValueSafe<int>("totalRank");
+			    this._Votes = data.TryGetValueSafe<int>("votes");
+			    this._GroupId = data.TryGetValueSafe<int>("groupId");
+			    this._PartnerData = data.TryGetValueSafe<string>("partnerData");
+			    this._DownloadUrl = data.TryGetValueSafe<string>("downloadUrl");
+			    this._SearchText = data.TryGetValueSafe<string>("searchText");
+			    this._LicenseType = (LicenseType)ParseEnum(typeof(LicenseType), data.TryGetValueSafe<int>("licenseType"));
+			    this._Version = data.TryGetValueSafe<int>("version");
+			    this._ThumbnailUrl = data.TryGetValueSafe<string>("thumbnailUrl");
+			    this._AccessControlId = data.TryGetValueSafe<int>("accessControlId");
+			    this._StartDate = data.TryGetValueSafe<int>("startDate");
+			    this._EndDate = data.TryGetValueSafe<int>("endDate");
+			    this._ReferenceId = data.TryGetValueSafe<string>("referenceId");
+			    this._ReplacingEntryId = data.TryGetValueSafe<string>("replacingEntryId");
+			    this._ReplacedEntryId = data.TryGetValueSafe<string>("replacedEntryId");
+			    this._ReplacementStatus = (EntryReplacementStatus)StringEnum.Parse(typeof(EntryReplacementStatus), data.TryGetValueSafe<string>("replacementStatus"));
+			    this._PartnerSortValue = data.TryGetValueSafe<int>("partnerSortValue");
+			    this._ConversionProfileId = data.TryGetValueSafe<int>("conversionProfileId");
+			    this._RedirectEntryId = data.TryGetValueSafe<string>("redirectEntryId");
+			    this._RootEntryId = data.TryGetValueSafe<string>("rootEntryId");
+			    this._ParentEntryId = data.TryGetValueSafe<string>("parentEntryId");
+			    this._OperationAttributes = new List<OperationAttributes>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("operationAttributes", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._OperationAttributes.Add(ObjectFactory.Create<OperationAttributes>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._EntitledUsersEdit = data.TryGetValueSafe<string>("entitledUsersEdit");
+			    this._EntitledUsersPublish = data.TryGetValueSafe<string>("entitledUsersPublish");
+			    this._EntitledUsersView = data.TryGetValueSafe<string>("entitledUsersView");
+			    this._Capabilities = data.TryGetValueSafe<string>("capabilities");
+			    this._TemplateEntryId = data.TryGetValueSafe<string>("templateEntryId");
+			    this._DisplayInSearch = (EntryDisplayInSearchType)ParseEnum(typeof(EntryDisplayInSearchType), data.TryGetValueSafe<int>("displayInSearch"));
+		}
 		#endregion
 
 		#region Methods

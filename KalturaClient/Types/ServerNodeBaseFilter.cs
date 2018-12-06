@@ -464,6 +464,39 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ServerNodeBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
+			    this._IdIn = data.TryGetValueSafe<string>("idIn");
+			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
+			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
+			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
+			    this._HeartbeatTimeGreaterThanOrEqual = data.TryGetValueSafe<int>("heartbeatTimeGreaterThanOrEqual");
+			    this._HeartbeatTimeLessThanOrEqual = data.TryGetValueSafe<int>("heartbeatTimeLessThanOrEqual");
+			    this._NameEqual = data.TryGetValueSafe<string>("nameEqual");
+			    this._NameIn = data.TryGetValueSafe<string>("nameIn");
+			    this._SystemNameEqual = data.TryGetValueSafe<string>("systemNameEqual");
+			    this._SystemNameIn = data.TryGetValueSafe<string>("systemNameIn");
+			    this._HostNameLike = data.TryGetValueSafe<string>("hostNameLike");
+			    this._HostNameMultiLikeOr = data.TryGetValueSafe<string>("hostNameMultiLikeOr");
+			    this._HostNameMultiLikeAnd = data.TryGetValueSafe<string>("hostNameMultiLikeAnd");
+			    this._StatusEqual = (ServerNodeStatus)ParseEnum(typeof(ServerNodeStatus), data.TryGetValueSafe<int>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			    this._TypeEqual = (ServerNodeType)StringEnum.Parse(typeof(ServerNodeType), data.TryGetValueSafe<string>("typeEqual"));
+			    this._TypeIn = data.TryGetValueSafe<string>("typeIn");
+			    this._TagsLike = data.TryGetValueSafe<string>("tagsLike");
+			    this._TagsMultiLikeOr = data.TryGetValueSafe<string>("tagsMultiLikeOr");
+			    this._TagsMultiLikeAnd = data.TryGetValueSafe<string>("tagsMultiLikeAnd");
+			    this._DcEqual = data.TryGetValueSafe<int>("dcEqual");
+			    this._DcIn = data.TryGetValueSafe<string>("dcIn");
+			    this._ParentIdLike = data.TryGetValueSafe<string>("parentIdLike");
+			    this._ParentIdMultiLikeOr = data.TryGetValueSafe<string>("parentIdMultiLikeOr");
+			    this._ParentIdMultiLikeAnd = data.TryGetValueSafe<string>("parentIdMultiLikeAnd");
+			    this._EnvironmentEqual = data.TryGetValueSafe<string>("environmentEqual");
+			    this._EnvironmentIn = data.TryGetValueSafe<string>("environmentIn");
+		}
 		#endregion
 
 		#region Methods

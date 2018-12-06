@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UrlTokenizerVelocix(IDictionary<string,object> data) : base(data)
+		{
+			    this._HdsPaths = data.TryGetValueSafe<string>("hdsPaths");
+			    this._ParamName = data.TryGetValueSafe<string>("paramName");
+			    this._AuthPrefix = data.TryGetValueSafe<string>("authPrefix");
+		}
 		#endregion
 
 		#region Methods

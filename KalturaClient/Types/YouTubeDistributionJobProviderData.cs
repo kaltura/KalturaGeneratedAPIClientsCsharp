@@ -310,6 +310,28 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public YouTubeDistributionJobProviderData(IDictionary<string,object> data) : base(data)
+		{
+			    this._VideoAssetFilePath = data.TryGetValueSafe<string>("videoAssetFilePath");
+			    this._ThumbAssetFilePath = data.TryGetValueSafe<string>("thumbAssetFilePath");
+			    this._ThumbAssetId = data.TryGetValueSafe<string>("thumbAssetId");
+			    this._CaptionAssetIds = data.TryGetValueSafe<string>("captionAssetIds");
+			    this._SftpDirectory = data.TryGetValueSafe<string>("sftpDirectory");
+			    this._SftpMetadataFilename = data.TryGetValueSafe<string>("sftpMetadataFilename");
+			    this._CurrentPlaylists = data.TryGetValueSafe<string>("currentPlaylists");
+			    this._NewPlaylists = data.TryGetValueSafe<string>("newPlaylists");
+			    this._SubmitXml = data.TryGetValueSafe<string>("submitXml");
+			    this._UpdateXml = data.TryGetValueSafe<string>("updateXml");
+			    this._DeleteXml = data.TryGetValueSafe<string>("deleteXml");
+			    this._GoogleClientId = data.TryGetValueSafe<string>("googleClientId");
+			    this._GoogleClientSecret = data.TryGetValueSafe<string>("googleClientSecret");
+			    this._GoogleTokenData = data.TryGetValueSafe<string>("googleTokenData");
+			    this._CaptionsCsvMap = data.TryGetValueSafe<string>("captionsCsvMap");
+			    this._SubmitCsvMap = data.TryGetValueSafe<string>("submitCsvMap");
+			    this._UpdateCsvMap = data.TryGetValueSafe<string>("updateCsvMap");
+			    this._DeleteVideoIds = data.TryGetValueSafe<string>("deleteVideoIds");
+		}
 		#endregion
 
 		#region Methods

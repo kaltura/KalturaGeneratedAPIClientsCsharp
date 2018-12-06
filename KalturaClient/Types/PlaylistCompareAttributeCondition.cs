@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PlaylistCompareAttributeCondition(IDictionary<string,object> data) : base(data)
+		{
+			    this._Attribute = (PlaylistCompareAttribute)StringEnum.Parse(typeof(PlaylistCompareAttribute), data.TryGetValueSafe<string>("attribute"));
+		}
 		#endregion
 
 		#region Methods

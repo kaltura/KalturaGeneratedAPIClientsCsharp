@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public HashCondition(IDictionary<string,object> data) : base(data)
+		{
+			    this._HashName = data.TryGetValueSafe<string>("hashName");
+			    this._HashSecret = data.TryGetValueSafe<string>("hashSecret");
+		}
 		#endregion
 
 		#region Methods

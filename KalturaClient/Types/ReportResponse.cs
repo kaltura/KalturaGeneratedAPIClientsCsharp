@@ -90,6 +90,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ReportResponse(IDictionary<string,object> data) : base(data)
+		{
+			    this._Columns = data.TryGetValueSafe<string>("columns");
+			    this._Results = new List<String>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("results", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Results.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

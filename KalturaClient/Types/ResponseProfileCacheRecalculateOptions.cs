@@ -156,6 +156,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ResponseProfileCacheRecalculateOptions(IDictionary<string,object> data) : base(data)
+		{
+			    this._Limit = data.TryGetValueSafe<int>("limit");
+			    this._CachedObjectType = data.TryGetValueSafe<string>("cachedObjectType");
+			    this._ObjectId = data.TryGetValueSafe<string>("objectId");
+			    this._StartObjectKey = data.TryGetValueSafe<string>("startObjectKey");
+			    this._EndObjectKey = data.TryGetValueSafe<string>("endObjectKey");
+			    this._JobCreatedAt = data.TryGetValueSafe<int>("jobCreatedAt");
+			    this._IsFirstLoop = data.TryGetValueSafe<bool>("isFirstLoop");
+		}
 		#endregion
 
 		#region Methods

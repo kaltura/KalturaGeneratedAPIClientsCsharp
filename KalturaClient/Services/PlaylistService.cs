@@ -85,6 +85,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<Playlist>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<Playlist>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class PlaylistCloneRequestBuilder : RequestBuilder<Playlist>
@@ -137,6 +141,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<Playlist>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<Playlist>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class PlaylistDeleteRequestBuilder : RequestBuilder<object>
@@ -177,6 +185,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -264,6 +276,15 @@ namespace Kaltura.Services
 			}
 			return list;
 		}
+		public override object DeserializeObject(object result)
+		{
+			var list = new List<BaseEntry>();
+			foreach(var node in (IEnumerable<IDictionary<string,object>>)result)
+			{
+				list.Add(ObjectFactory.Create<BaseEntry>(node));
+			}
+			return list;
+		}
 	}
 
 	public class PlaylistExecuteFromContentRequestBuilder : RequestBuilder<IList<BaseEntry>>
@@ -334,6 +355,15 @@ namespace Kaltura.Services
 		{
 			IList<BaseEntry> list = new List<BaseEntry>();
 			foreach(XmlElement node in result.ChildNodes)
+			{
+				list.Add(ObjectFactory.Create<BaseEntry>(node));
+			}
+			return list;
+		}
+		public override object DeserializeObject(object result)
+		{
+			var list = new List<BaseEntry>();
+			foreach(var node in (IEnumerable<IDictionary<string,object>>)result)
 			{
 				list.Add(ObjectFactory.Create<BaseEntry>(node));
 			}
@@ -414,6 +444,15 @@ namespace Kaltura.Services
 			}
 			return list;
 		}
+		public override object DeserializeObject(object result)
+		{
+			var list = new List<BaseEntry>();
+			foreach(var node in (IEnumerable<IDictionary<string,object>>)result)
+			{
+				list.Add(ObjectFactory.Create<BaseEntry>(node));
+			}
+			return list;
+		}
 	}
 
 	public class PlaylistGetRequestBuilder : RequestBuilder<Playlist>
@@ -465,6 +504,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<Playlist>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<Playlist>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -518,6 +561,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<Playlist>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<Playlist>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class PlaylistListRequestBuilder : RequestBuilder<ListResponse<Playlist>>
@@ -569,6 +616,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<Playlist>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<Playlist>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -630,6 +681,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<Playlist>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<Playlist>((IDictionary<string,object>)result);
 		}
 	}
 

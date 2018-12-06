@@ -128,6 +128,15 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public CaptionParams(IDictionary<string,object> data) : base(data)
+		{
+			    this._Language = (Language)StringEnum.Parse(typeof(Language), data.TryGetValueSafe<string>("language"));
+			    this._IsDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isDefault"));
+			    this._Label = data.TryGetValueSafe<string>("label");
+			    this._Format = (CaptionType)StringEnum.Parse(typeof(CaptionType), data.TryGetValueSafe<string>("format"));
+			    this._SourceParamsId = data.TryGetValueSafe<int>("sourceParamsId");
+		}
 		#endregion
 
 		#region Methods

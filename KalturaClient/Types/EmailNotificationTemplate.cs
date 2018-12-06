@@ -258,6 +258,29 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EmailNotificationTemplate(IDictionary<string,object> data) : base(data)
+		{
+			    this._Format = (EmailNotificationFormat)StringEnum.Parse(typeof(EmailNotificationFormat), data.TryGetValueSafe<string>("format"));
+			    this._Subject = data.TryGetValueSafe<string>("subject");
+			    this._Body = data.TryGetValueSafe<string>("body");
+			    this._FromEmail = data.TryGetValueSafe<string>("fromEmail");
+			    this._FromName = data.TryGetValueSafe<string>("fromName");
+			    this._To = ObjectFactory.Create<EmailNotificationRecipientProvider>(data.TryGetValueSafe<IDictionary<string,object>>("to"));
+			    this._Cc = ObjectFactory.Create<EmailNotificationRecipientProvider>(data.TryGetValueSafe<IDictionary<string,object>>("cc"));
+			    this._Bcc = ObjectFactory.Create<EmailNotificationRecipientProvider>(data.TryGetValueSafe<IDictionary<string,object>>("bcc"));
+			    this._ReplyTo = ObjectFactory.Create<EmailNotificationRecipientProvider>(data.TryGetValueSafe<IDictionary<string,object>>("replyTo"));
+			    this._Priority = (EmailNotificationTemplatePriority)ParseEnum(typeof(EmailNotificationTemplatePriority), data.TryGetValueSafe<int>("priority"));
+			    this._ConfirmReadingTo = data.TryGetValueSafe<string>("confirmReadingTo");
+			    this._Hostname = data.TryGetValueSafe<string>("hostname");
+			    this._MessageID = data.TryGetValueSafe<string>("messageID");
+			    this._CustomHeaders = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("customHeaders", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._CustomHeaders.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

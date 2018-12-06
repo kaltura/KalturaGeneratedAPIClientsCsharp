@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<Annotation>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<Annotation>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class AnnotationAddFromBulkRequestBuilder : RequestBuilder<ListResponse<CuePoint>>
@@ -117,6 +121,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<CuePoint>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<CuePoint>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -170,6 +178,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<CuePoint>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<CuePoint>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class AnnotationCountRequestBuilder : RequestBuilder<int>
@@ -213,6 +225,10 @@ namespace Kaltura.Services
 		{
 			return int.Parse(result.InnerText);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return (int)(result);
+		}
 	}
 
 	public class AnnotationDeleteRequestBuilder : RequestBuilder<object>
@@ -253,6 +269,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -298,6 +318,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<CuePoint>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<CuePoint>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -351,6 +375,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<Annotation>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<Annotation>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class AnnotationUpdateRequestBuilder : RequestBuilder<Annotation>
@@ -402,6 +430,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<Annotation>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<Annotation>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -464,6 +496,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<CuePoint>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<CuePoint>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class AnnotationUpdateStatusRequestBuilder : RequestBuilder<object>
@@ -513,6 +549,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}

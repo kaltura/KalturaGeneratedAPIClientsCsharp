@@ -281,6 +281,31 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BulkUploadResult(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._BulkUploadJobId = data.TryGetValueSafe<long>("bulkUploadJobId");
+			    this._LineIndex = data.TryGetValueSafe<int>("lineIndex");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._Status = (BulkUploadResultStatus)StringEnum.Parse(typeof(BulkUploadResultStatus), data.TryGetValueSafe<string>("status"));
+			    this._Action = (BulkUploadAction)StringEnum.Parse(typeof(BulkUploadAction), data.TryGetValueSafe<string>("action"));
+			    this._ObjectId = data.TryGetValueSafe<string>("objectId");
+			    this._ObjectStatus = data.TryGetValueSafe<int>("objectStatus");
+			    this._BulkUploadResultObjectType = (BulkUploadObjectType)StringEnum.Parse(typeof(BulkUploadObjectType), data.TryGetValueSafe<string>("bulkUploadResultObjectType"));
+			    this._RowData = data.TryGetValueSafe<string>("rowData");
+			    this._PartnerData = data.TryGetValueSafe<string>("partnerData");
+			    this._ObjectErrorDescription = data.TryGetValueSafe<string>("objectErrorDescription");
+			    this._PluginsData = new List<BulkUploadPluginData>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("pluginsData", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._PluginsData.Add(ObjectFactory.Create<BulkUploadPluginData>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._ErrorDescription = data.TryGetValueSafe<string>("errorDescription");
+			    this._ErrorCode = data.TryGetValueSafe<string>("errorCode");
+			    this._ErrorType = data.TryGetValueSafe<int>("errorType");
+		}
 		#endregion
 
 		#region Methods

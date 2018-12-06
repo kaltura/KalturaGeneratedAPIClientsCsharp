@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public SshDropFolderBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public SshDropFolderBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

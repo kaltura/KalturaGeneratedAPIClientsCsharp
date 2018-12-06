@@ -104,6 +104,18 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public YoutubeApiDistributionJobProviderData(IDictionary<string,object> data) : base(data)
+		{
+			    this._VideoAssetFilePath = data.TryGetValueSafe<string>("videoAssetFilePath");
+			    this._ThumbAssetFilePath = data.TryGetValueSafe<string>("thumbAssetFilePath");
+			    this._CaptionsInfo = new List<YouTubeApiCaptionDistributionInfo>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("captionsInfo", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._CaptionsInfo.Add(ObjectFactory.Create<YouTubeApiCaptionDistributionInfo>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EntryDistributionFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (EntryDistributionOrderBy)StringEnum.Parse(typeof(EntryDistributionOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

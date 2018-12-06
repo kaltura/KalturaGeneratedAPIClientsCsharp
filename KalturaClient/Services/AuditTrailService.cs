@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<AuditTrail>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<AuditTrail>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class AuditTrailGetRequestBuilder : RequestBuilder<AuditTrail>
@@ -118,6 +122,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<AuditTrail>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<AuditTrail>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -170,6 +178,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ListResponse<AuditTrail>>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<AuditTrail>>((IDictionary<string,object>)result);
 		}
 	}
 

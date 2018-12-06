@@ -90,6 +90,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ESearchHighlight(IDictionary<string,object> data) : base(data)
+		{
+			    this._FieldName = data.TryGetValueSafe<string>("fieldName");
+			    this._Hits = new List<String>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("hits", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Hits.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

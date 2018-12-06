@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ESearchLanguageItem(IDictionary<string,object> data) : base(data)
+		{
+			    this._ESerachLanguage = (ESearchLanguage)StringEnum.Parse(typeof(ESearchLanguage), data.TryGetValueSafe<string>("eSerachLanguage"));
+		}
 		#endregion
 
 		#region Methods

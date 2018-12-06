@@ -338,6 +338,30 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UiConfBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
+			    this._IdIn = data.TryGetValueSafe<string>("idIn");
+			    this._NameLike = data.TryGetValueSafe<string>("nameLike");
+			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
+			    this._PartnerIdIn = data.TryGetValueSafe<string>("partnerIdIn");
+			    this._ObjTypeEqual = (UiConfObjType)ParseEnum(typeof(UiConfObjType), data.TryGetValueSafe<int>("objTypeEqual"));
+			    this._ObjTypeIn = data.TryGetValueSafe<string>("objTypeIn");
+			    this._TagsMultiLikeOr = data.TryGetValueSafe<string>("tagsMultiLikeOr");
+			    this._TagsMultiLikeAnd = data.TryGetValueSafe<string>("tagsMultiLikeAnd");
+			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
+			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
+			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
+			    this._CreationModeEqual = (UiConfCreationMode)ParseEnum(typeof(UiConfCreationMode), data.TryGetValueSafe<int>("creationModeEqual"));
+			    this._CreationModeIn = data.TryGetValueSafe<string>("creationModeIn");
+			    this._VersionEqual = data.TryGetValueSafe<string>("versionEqual");
+			    this._VersionMultiLikeOr = data.TryGetValueSafe<string>("versionMultiLikeOr");
+			    this._VersionMultiLikeAnd = data.TryGetValueSafe<string>("versionMultiLikeAnd");
+			    this._PartnerTagsMultiLikeOr = data.TryGetValueSafe<string>("partnerTagsMultiLikeOr");
+			    this._PartnerTagsMultiLikeAnd = data.TryGetValueSafe<string>("partnerTagsMultiLikeAnd");
+		}
 		#endregion
 
 		#region Methods

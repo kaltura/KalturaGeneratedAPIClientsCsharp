@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UrlTokenizerAkamaiRtmp(IDictionary<string,object> data) : base(data)
+		{
+			    this._Profile = data.TryGetValueSafe<string>("profile");
+			    this._Type = data.TryGetValueSafe<string>("type");
+			    this._Aifp = data.TryGetValueSafe<string>("aifp");
+			    this._UsePrefix = data.TryGetValueSafe<bool>("usePrefix");
+		}
 		#endregion
 
 		#region Methods

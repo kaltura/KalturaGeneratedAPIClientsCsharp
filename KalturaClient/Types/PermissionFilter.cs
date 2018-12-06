@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PermissionFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (PermissionOrderBy)StringEnum.Parse(typeof(PermissionOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

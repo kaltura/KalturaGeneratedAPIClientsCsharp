@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public ActivitiBusinessProcessServerBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public ActivitiBusinessProcessServerBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

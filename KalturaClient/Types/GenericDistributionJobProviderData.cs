@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public GenericDistributionJobProviderData(IDictionary<string,object> data) : base(data)
+		{
+			    this._Xml = data.TryGetValueSafe<string>("xml");
+			    this._ResultParseData = data.TryGetValueSafe<string>("resultParseData");
+			    this._ResultParserType = (GenericDistributionProviderParser)ParseEnum(typeof(GenericDistributionProviderParser), data.TryGetValueSafe<int>("resultParserType"));
+		}
 		#endregion
 
 		#region Methods

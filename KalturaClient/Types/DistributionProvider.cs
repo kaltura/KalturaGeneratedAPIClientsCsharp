@@ -179,6 +179,19 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DistributionProvider(IDictionary<string,object> data) : base(data)
+		{
+			    this._Type = (DistributionProviderType)StringEnum.Parse(typeof(DistributionProviderType), data.TryGetValueSafe<string>("type"));
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._ScheduleUpdateEnabled = data.TryGetValueSafe<bool>("scheduleUpdateEnabled");
+			    this._AvailabilityUpdateEnabled = data.TryGetValueSafe<bool>("availabilityUpdateEnabled");
+			    this._DeleteInsteadUpdate = data.TryGetValueSafe<bool>("deleteInsteadUpdate");
+			    this._IntervalBeforeSunrise = data.TryGetValueSafe<int>("intervalBeforeSunrise");
+			    this._IntervalBeforeSunset = data.TryGetValueSafe<int>("intervalBeforeSunset");
+			    this._UpdateRequiredEntryFields = data.TryGetValueSafe<string>("updateRequiredEntryFields");
+			    this._UpdateRequiredMetadataXPaths = data.TryGetValueSafe<string>("updateRequiredMetadataXPaths");
+		}
 		#endregion
 
 		#region Methods

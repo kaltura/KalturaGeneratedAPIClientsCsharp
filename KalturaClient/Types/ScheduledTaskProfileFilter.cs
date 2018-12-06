@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ScheduledTaskProfileFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (ScheduledTaskProfileOrderBy)StringEnum.Parse(typeof(ScheduledTaskProfileOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

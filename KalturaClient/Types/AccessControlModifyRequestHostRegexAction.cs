@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public AccessControlModifyRequestHostRegexAction(IDictionary<string,object> data) : base(data)
+		{
+			    this._Pattern = data.TryGetValueSafe<string>("pattern");
+			    this._Replacement = data.TryGetValueSafe<string>("replacement");
+			    this._ReplacmenServerNodeId = data.TryGetValueSafe<int>("replacmenServerNodeId");
+		}
 		#endregion
 
 		#region Methods

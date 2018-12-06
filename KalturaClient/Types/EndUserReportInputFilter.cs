@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EndUserReportInputFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._Application = data.TryGetValueSafe<string>("application");
+			    this._UserIds = data.TryGetValueSafe<string>("userIds");
+			    this._PlaybackContext = data.TryGetValueSafe<string>("playbackContext");
+			    this._AncestorPlaybackContext = data.TryGetValueSafe<string>("ancestorPlaybackContext");
+		}
 		#endregion
 
 		#region Methods

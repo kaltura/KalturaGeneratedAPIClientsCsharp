@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ServerFileResource(IDictionary<string,object> data) : base(data)
+		{
+			    this._LocalFilePath = data.TryGetValueSafe<string>("localFilePath");
+			    this._KeepOriginalFile = data.TryGetValueSafe<bool>("keepOriginalFile");
+		}
 		#endregion
 
 		#region Methods

@@ -151,6 +151,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DoubleClickDistributionProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._ChannelTitle = data.TryGetValueSafe<string>("channelTitle");
+			    this._ChannelLink = data.TryGetValueSafe<string>("channelLink");
+			    this._ChannelDescription = data.TryGetValueSafe<string>("channelDescription");
+			    this._FeedUrl = data.TryGetValueSafe<string>("feedUrl");
+			    this._CuePointsProvider = data.TryGetValueSafe<string>("cuePointsProvider");
+			    this._ItemsPerPage = data.TryGetValueSafe<string>("itemsPerPage");
+			    this._IgnoreSchedulingInFeed = data.TryGetValueSafe<bool>("ignoreSchedulingInFeed");
+		}
 		#endregion
 
 		#region Methods

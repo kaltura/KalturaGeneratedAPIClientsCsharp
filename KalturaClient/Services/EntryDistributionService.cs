@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<EntryDistribution>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<EntryDistribution>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class EntryDistributionDeleteRequestBuilder : RequestBuilder<object>
@@ -116,6 +120,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -161,6 +169,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<EntryDistribution>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<EntryDistribution>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -214,6 +226,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<EntryDistribution>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<EntryDistribution>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class EntryDistributionRetrySubmitRequestBuilder : RequestBuilder<EntryDistribution>
@@ -256,6 +272,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<EntryDistribution>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<EntryDistribution>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -309,6 +329,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<EntryDistribution>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<EntryDistribution>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class EntryDistributionSubmitDeleteRequestBuilder : RequestBuilder<EntryDistribution>
@@ -351,6 +375,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<EntryDistribution>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<EntryDistribution>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -395,6 +423,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<EntryDistribution>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<EntryDistribution>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class EntryDistributionSubmitUpdateRequestBuilder : RequestBuilder<EntryDistribution>
@@ -437,6 +469,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<EntryDistribution>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<EntryDistribution>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -490,6 +526,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<EntryDistribution>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<EntryDistribution>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class EntryDistributionValidateRequestBuilder : RequestBuilder<EntryDistribution>
@@ -532,6 +572,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<EntryDistribution>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<EntryDistribution>((IDictionary<string,object>)result);
 		}
 	}
 

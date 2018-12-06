@@ -618,6 +618,50 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FlavorParams(IDictionary<string,object> data) : base(data)
+		{
+			    this._VideoCodec = (VideoCodec)StringEnum.Parse(typeof(VideoCodec), data.TryGetValueSafe<string>("videoCodec"));
+			    this._VideoBitrate = data.TryGetValueSafe<int>("videoBitrate");
+			    this._AudioCodec = (AudioCodec)StringEnum.Parse(typeof(AudioCodec), data.TryGetValueSafe<string>("audioCodec"));
+			    this._AudioBitrate = data.TryGetValueSafe<int>("audioBitrate");
+			    this._AudioChannels = data.TryGetValueSafe<int>("audioChannels");
+			    this._AudioSampleRate = data.TryGetValueSafe<int>("audioSampleRate");
+			    this._Width = data.TryGetValueSafe<int>("width");
+			    this._Height = data.TryGetValueSafe<int>("height");
+			    this._FrameRate = data.TryGetValueSafe<float>("frameRate");
+			    this._GopSize = data.TryGetValueSafe<int>("gopSize");
+			    this._ConversionEngines = data.TryGetValueSafe<string>("conversionEngines");
+			    this._ConversionEnginesExtraParams = data.TryGetValueSafe<string>("conversionEnginesExtraParams");
+			    this._TwoPass = data.TryGetValueSafe<bool>("twoPass");
+			    this._Deinterlice = data.TryGetValueSafe<int>("deinterlice");
+			    this._Rotate = data.TryGetValueSafe<int>("rotate");
+			    this._Operators = data.TryGetValueSafe<string>("operators");
+			    this._EngineVersion = data.TryGetValueSafe<int>("engineVersion");
+			    this._Format = (ContainerFormat)StringEnum.Parse(typeof(ContainerFormat), data.TryGetValueSafe<string>("format"));
+			    this._AspectRatioProcessingMode = data.TryGetValueSafe<int>("aspectRatioProcessingMode");
+			    this._ForceFrameToMultiplication16 = data.TryGetValueSafe<int>("forceFrameToMultiplication16");
+			    this._IsGopInSec = data.TryGetValueSafe<int>("isGopInSec");
+			    this._IsAvoidVideoShrinkFramesizeToSource = data.TryGetValueSafe<int>("isAvoidVideoShrinkFramesizeToSource");
+			    this._IsAvoidVideoShrinkBitrateToSource = data.TryGetValueSafe<int>("isAvoidVideoShrinkBitrateToSource");
+			    this._IsVideoFrameRateForLowBrAppleHls = data.TryGetValueSafe<int>("isVideoFrameRateForLowBrAppleHls");
+			    this._MultiStream = data.TryGetValueSafe<string>("multiStream");
+			    this._AnamorphicPixels = data.TryGetValueSafe<float>("anamorphicPixels");
+			    this._IsAvoidForcedKeyFrames = data.TryGetValueSafe<int>("isAvoidForcedKeyFrames");
+			    this._ForcedKeyFramesMode = data.TryGetValueSafe<int>("forcedKeyFramesMode");
+			    this._IsCropIMX = data.TryGetValueSafe<int>("isCropIMX");
+			    this._OptimizationPolicy = data.TryGetValueSafe<int>("optimizationPolicy");
+			    this._MaxFrameRate = data.TryGetValueSafe<int>("maxFrameRate");
+			    this._VideoConstantBitrate = data.TryGetValueSafe<int>("videoConstantBitrate");
+			    this._VideoBitrateTolerance = data.TryGetValueSafe<int>("videoBitrateTolerance");
+			    this._WatermarkData = data.TryGetValueSafe<string>("watermarkData");
+			    this._SubtitlesData = data.TryGetValueSafe<string>("subtitlesData");
+			    this._IsEncrypted = data.TryGetValueSafe<int>("isEncrypted");
+			    this._ContentAwareness = data.TryGetValueSafe<float>("contentAwareness");
+			    this._ChunkedEncodeMode = data.TryGetValueSafe<int>("chunkedEncodeMode");
+			    this._ClipOffset = data.TryGetValueSafe<int>("clipOffset");
+			    this._ClipDuration = data.TryGetValueSafe<int>("clipDuration");
+		}
 		#endregion
 
 		#region Methods

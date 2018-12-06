@@ -90,6 +90,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DeliveryServerNode(IDictionary<string,object> data) : base(data)
+		{
+			    this._DeliveryProfileIds = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("deliveryProfileIds", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._DeliveryProfileIds.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._Config = data.TryGetValueSafe<string>("config");
+		}
 		#endregion
 
 		#region Methods

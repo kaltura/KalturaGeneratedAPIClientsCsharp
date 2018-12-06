@@ -90,6 +90,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public SearchOperator(IDictionary<string,object> data) : base(data)
+		{
+			    this._Type = (SearchOperatorType)ParseEnum(typeof(SearchOperatorType), data.TryGetValueSafe<int>("type"));
+			    this._Items = new List<SearchItem>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("items", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Items.Add(ObjectFactory.Create<SearchItem>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

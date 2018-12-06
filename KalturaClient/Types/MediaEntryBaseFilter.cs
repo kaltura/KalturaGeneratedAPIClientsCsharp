@@ -198,6 +198,20 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public MediaEntryBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._MediaTypeEqual = (MediaType)ParseEnum(typeof(MediaType), data.TryGetValueSafe<int>("mediaTypeEqual"));
+			    this._MediaTypeIn = data.TryGetValueSafe<string>("mediaTypeIn");
+			    this._SourceTypeEqual = (SourceType)StringEnum.Parse(typeof(SourceType), data.TryGetValueSafe<string>("sourceTypeEqual"));
+			    this._SourceTypeNotEqual = (SourceType)StringEnum.Parse(typeof(SourceType), data.TryGetValueSafe<string>("sourceTypeNotEqual"));
+			    this._SourceTypeIn = data.TryGetValueSafe<string>("sourceTypeIn");
+			    this._SourceTypeNotIn = data.TryGetValueSafe<string>("sourceTypeNotIn");
+			    this._MediaDateGreaterThanOrEqual = data.TryGetValueSafe<int>("mediaDateGreaterThanOrEqual");
+			    this._MediaDateLessThanOrEqual = data.TryGetValueSafe<int>("mediaDateLessThanOrEqual");
+			    this._FlavorParamsIdsMatchOr = data.TryGetValueSafe<string>("flavorParamsIdsMatchOr");
+			    this._FlavorParamsIdsMatchAnd = data.TryGetValueSafe<string>("flavorParamsIdsMatchAnd");
+		}
 		#endregion
 
 		#region Methods

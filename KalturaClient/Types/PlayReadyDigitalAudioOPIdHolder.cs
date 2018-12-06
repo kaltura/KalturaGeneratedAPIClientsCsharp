@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PlayReadyDigitalAudioOPIdHolder(IDictionary<string,object> data) : base(data)
+		{
+			    this._Type = (PlayReadyDigitalAudioOPId)StringEnum.Parse(typeof(PlayReadyDigitalAudioOPId), data.TryGetValueSafe<string>("type"));
+		}
 		#endregion
 
 		#region Methods

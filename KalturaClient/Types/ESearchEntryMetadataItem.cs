@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ESearchEntryMetadataItem(IDictionary<string,object> data) : base(data)
+		{
+			    this._Xpath = data.TryGetValueSafe<string>("xpath");
+			    this._MetadataProfileId = data.TryGetValueSafe<int>("metadataProfileId");
+			    this._MetadataFieldId = data.TryGetValueSafe<int>("metadataFieldId");
+		}
 		#endregion
 
 		#region Methods

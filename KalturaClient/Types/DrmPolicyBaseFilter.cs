@@ -198,6 +198,20 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DrmPolicyBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
+			    this._PartnerIdIn = data.TryGetValueSafe<string>("partnerIdIn");
+			    this._NameLike = data.TryGetValueSafe<string>("nameLike");
+			    this._SystemNameLike = data.TryGetValueSafe<string>("systemNameLike");
+			    this._ProviderEqual = (DrmProviderType)StringEnum.Parse(typeof(DrmProviderType), data.TryGetValueSafe<string>("providerEqual"));
+			    this._ProviderIn = data.TryGetValueSafe<string>("providerIn");
+			    this._StatusEqual = (DrmPolicyStatus)ParseEnum(typeof(DrmPolicyStatus), data.TryGetValueSafe<int>("statusEqual"));
+			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			    this._ScenarioEqual = (DrmLicenseScenario)StringEnum.Parse(typeof(DrmLicenseScenario), data.TryGetValueSafe<string>("scenarioEqual"));
+			    this._ScenarioIn = data.TryGetValueSafe<string>("scenarioIn");
+		}
 		#endregion
 
 		#region Methods

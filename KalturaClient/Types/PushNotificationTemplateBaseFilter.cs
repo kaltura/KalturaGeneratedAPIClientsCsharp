@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public PushNotificationTemplateBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public PushNotificationTemplateBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

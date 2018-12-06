@@ -747,6 +747,87 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public Partner(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._Website = data.TryGetValueSafe<string>("website");
+			    this._NotificationUrl = data.TryGetValueSafe<string>("notificationUrl");
+			    this._AppearInSearch = data.TryGetValueSafe<int>("appearInSearch");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._AdminName = data.TryGetValueSafe<string>("adminName");
+			    this._AdminEmail = data.TryGetValueSafe<string>("adminEmail");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._CommercialUse = (CommercialUseType)ParseEnum(typeof(CommercialUseType), data.TryGetValueSafe<int>("commercialUse"));
+			    this._LandingPage = data.TryGetValueSafe<string>("landingPage");
+			    this._UserLandingPage = data.TryGetValueSafe<string>("userLandingPage");
+			    this._ContentCategories = data.TryGetValueSafe<string>("contentCategories");
+			    this._Type = (PartnerType)ParseEnum(typeof(PartnerType), data.TryGetValueSafe<int>("type"));
+			    this._Phone = data.TryGetValueSafe<string>("phone");
+			    this._DescribeYourself = data.TryGetValueSafe<string>("describeYourself");
+			    this._AdultContent = data.TryGetValueSafe<bool>("adultContent");
+			    this._DefConversionProfileType = data.TryGetValueSafe<string>("defConversionProfileType");
+			    this._Notify = data.TryGetValueSafe<int>("notify");
+			    this._Status = (PartnerStatus)ParseEnum(typeof(PartnerStatus), data.TryGetValueSafe<int>("status"));
+			    this._AllowQuickEdit = data.TryGetValueSafe<int>("allowQuickEdit");
+			    this._MergeEntryLists = data.TryGetValueSafe<int>("mergeEntryLists");
+			    this._NotificationsConfig = data.TryGetValueSafe<string>("notificationsConfig");
+			    this._MaxUploadSize = data.TryGetValueSafe<int>("maxUploadSize");
+			    this._PartnerPackage = data.TryGetValueSafe<int>("partnerPackage");
+			    this._Secret = data.TryGetValueSafe<string>("secret");
+			    this._AdminSecret = data.TryGetValueSafe<string>("adminSecret");
+			    this._CmsPassword = data.TryGetValueSafe<string>("cmsPassword");
+			    this._AllowMultiNotification = data.TryGetValueSafe<int>("allowMultiNotification");
+			    this._AdminLoginUsersQuota = data.TryGetValueSafe<int>("adminLoginUsersQuota");
+			    this._AdminUserId = data.TryGetValueSafe<string>("adminUserId");
+			    this._FirstName = data.TryGetValueSafe<string>("firstName");
+			    this._LastName = data.TryGetValueSafe<string>("lastName");
+			    this._Country = data.TryGetValueSafe<string>("country");
+			    this._State = data.TryGetValueSafe<string>("state");
+			    this._AdditionalParams = new List<KeyValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("additionalParams", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._AdditionalParams.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._PublishersQuota = data.TryGetValueSafe<int>("publishersQuota");
+			    this._PartnerGroupType = (PartnerGroupType)ParseEnum(typeof(PartnerGroupType), data.TryGetValueSafe<int>("partnerGroupType"));
+			    this._DefaultEntitlementEnforcement = data.TryGetValueSafe<bool>("defaultEntitlementEnforcement");
+			    this._DefaultDeliveryType = data.TryGetValueSafe<string>("defaultDeliveryType");
+			    this._DefaultEmbedCodeType = data.TryGetValueSafe<string>("defaultEmbedCodeType");
+			    this._DeliveryTypes = new List<PlayerDeliveryType>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("deliveryTypes", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._DeliveryTypes.Add(ObjectFactory.Create<PlayerDeliveryType>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._EmbedCodeTypes = new List<PlayerEmbedCodeType>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("embedCodeTypes", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._EmbedCodeTypes.Add(ObjectFactory.Create<PlayerEmbedCodeType>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._TemplatePartnerId = data.TryGetValueSafe<int>("templatePartnerId");
+			    this._IgnoreSeoLinks = data.TryGetValueSafe<bool>("ignoreSeoLinks");
+			    this._Host = data.TryGetValueSafe<string>("host");
+			    this._CdnHost = data.TryGetValueSafe<string>("cdnHost");
+			    this._IsFirstLogin = data.TryGetValueSafe<bool>("isFirstLogin");
+			    this._LogoutUrl = data.TryGetValueSafe<string>("logoutUrl");
+			    this._PartnerParentId = data.TryGetValueSafe<int>("partnerParentId");
+			    this._CrmId = data.TryGetValueSafe<string>("crmId");
+			    this._ReferenceId = data.TryGetValueSafe<string>("referenceId");
+			    this._TimeAlignedRenditions = data.TryGetValueSafe<bool>("timeAlignedRenditions");
+			    this._PublisherEnvironmentType = data.TryGetValueSafe<int>("publisherEnvironmentType");
+			    this._OvpEnvironmentUrl = data.TryGetValueSafe<string>("ovpEnvironmentUrl");
+			    this._OttEnvironmentUrl = data.TryGetValueSafe<string>("ottEnvironmentUrl");
+			    this._ESearchLanguages = new List<ESearchLanguageItem>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("eSearchLanguages", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._ESearchLanguages.Add(ObjectFactory.Create<ESearchLanguageItem>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

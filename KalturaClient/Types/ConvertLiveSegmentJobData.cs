@@ -170,6 +170,18 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ConvertLiveSegmentJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+			    this._AssetId = data.TryGetValueSafe<string>("assetId");
+			    this._MediaServerIndex = (EntryServerNodeType)StringEnum.Parse(typeof(EntryServerNodeType), data.TryGetValueSafe<string>("mediaServerIndex"));
+			    this._FileIndex = data.TryGetValueSafe<int>("fileIndex");
+			    this._SrcFilePath = data.TryGetValueSafe<string>("srcFilePath");
+			    this._DestFilePath = data.TryGetValueSafe<string>("destFilePath");
+			    this._EndTime = data.TryGetValueSafe<float>("endTime");
+			    this._DestDataFilePath = data.TryGetValueSafe<string>("destDataFilePath");
+		}
 		#endregion
 
 		#region Methods

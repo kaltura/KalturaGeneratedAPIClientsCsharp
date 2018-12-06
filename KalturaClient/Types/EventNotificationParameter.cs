@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EventNotificationParameter(IDictionary<string,object> data) : base(data)
+		{
+			    this._Key = data.TryGetValueSafe<string>("key");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._Value = ObjectFactory.Create<StringValue>(data.TryGetValueSafe<IDictionary<string,object>>("value"));
+		}
 		#endregion
 
 		#region Methods

@@ -435,6 +435,38 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DropFolder(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._Type = (DropFolderType)StringEnum.Parse(typeof(DropFolderType), data.TryGetValueSafe<string>("type"));
+			    this._Status = (DropFolderStatus)ParseEnum(typeof(DropFolderStatus), data.TryGetValueSafe<int>("status"));
+			    this._ConversionProfileId = data.TryGetValueSafe<int>("conversionProfileId");
+			    this._Dc = data.TryGetValueSafe<int>("dc");
+			    this._Path = data.TryGetValueSafe<string>("path");
+			    this._FileSizeCheckInterval = data.TryGetValueSafe<int>("fileSizeCheckInterval");
+			    this._FileDeletePolicy = (DropFolderFileDeletePolicy)ParseEnum(typeof(DropFolderFileDeletePolicy), data.TryGetValueSafe<int>("fileDeletePolicy"));
+			    this._AutoFileDeleteDays = data.TryGetValueSafe<int>("autoFileDeleteDays");
+			    this._FileHandlerType = (DropFolderFileHandlerType)StringEnum.Parse(typeof(DropFolderFileHandlerType), data.TryGetValueSafe<string>("fileHandlerType"));
+			    this._FileNamePatterns = data.TryGetValueSafe<string>("fileNamePatterns");
+			    this._FileHandlerConfig = ObjectFactory.Create<DropFolderFileHandlerConfig>(data.TryGetValueSafe<IDictionary<string,object>>("fileHandlerConfig"));
+			    this._Tags = data.TryGetValueSafe<string>("tags");
+			    this._ErrorCode = (DropFolderErrorCode)StringEnum.Parse(typeof(DropFolderErrorCode), data.TryGetValueSafe<string>("errorCode"));
+			    this._ErrorDescription = data.TryGetValueSafe<string>("errorDescription");
+			    this._IgnoreFileNamePatterns = data.TryGetValueSafe<string>("ignoreFileNamePatterns");
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			    this._LastAccessedAt = data.TryGetValueSafe<int>("lastAccessedAt");
+			    this._Incremental = data.TryGetValueSafe<bool>("incremental");
+			    this._LastFileTimestamp = data.TryGetValueSafe<int>("lastFileTimestamp");
+			    this._MetadataProfileId = data.TryGetValueSafe<int>("metadataProfileId");
+			    this._CategoriesMetadataFieldName = data.TryGetValueSafe<string>("categoriesMetadataFieldName");
+			    this._EnforceEntitlement = data.TryGetValueSafe<bool>("enforceEntitlement");
+			    this._ShouldValidateKS = data.TryGetValueSafe<bool>("shouldValidateKS");
+		}
 		#endregion
 
 		#region Methods

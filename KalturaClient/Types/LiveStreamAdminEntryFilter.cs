@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveStreamAdminEntryFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (LiveStreamAdminEntryOrderBy)StringEnum.Parse(typeof(LiveStreamAdminEntryOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

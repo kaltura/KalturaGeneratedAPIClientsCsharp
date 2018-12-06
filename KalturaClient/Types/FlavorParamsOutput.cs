@@ -142,6 +142,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FlavorParamsOutput(IDictionary<string,object> data) : base(data)
+		{
+			    this._FlavorParamsId = data.TryGetValueSafe<int>("flavorParamsId");
+			    this._CommandLinesStr = data.TryGetValueSafe<string>("commandLinesStr");
+			    this._FlavorParamsVersion = data.TryGetValueSafe<string>("flavorParamsVersion");
+			    this._FlavorAssetId = data.TryGetValueSafe<string>("flavorAssetId");
+			    this._FlavorAssetVersion = data.TryGetValueSafe<string>("flavorAssetVersion");
+			    this._ReadyBehavior = data.TryGetValueSafe<int>("readyBehavior");
+		}
 		#endregion
 
 		#region Methods

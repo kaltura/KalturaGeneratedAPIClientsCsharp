@@ -380,6 +380,33 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BulkUploadResultEntry(IDictionary<string,object> data) : base(data)
+		{
+			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+			    this._Title = data.TryGetValueSafe<string>("title");
+			    this._Description = data.TryGetValueSafe<string>("description");
+			    this._Tags = data.TryGetValueSafe<string>("tags");
+			    this._Url = data.TryGetValueSafe<string>("url");
+			    this._ContentType = data.TryGetValueSafe<string>("contentType");
+			    this._ConversionProfileId = data.TryGetValueSafe<int>("conversionProfileId");
+			    this._AccessControlProfileId = data.TryGetValueSafe<int>("accessControlProfileId");
+			    this._Category = data.TryGetValueSafe<string>("category");
+			    this._ScheduleStartDate = data.TryGetValueSafe<int>("scheduleStartDate");
+			    this._ScheduleEndDate = data.TryGetValueSafe<int>("scheduleEndDate");
+			    this._EntryStatus = data.TryGetValueSafe<int>("entryStatus");
+			    this._ThumbnailUrl = data.TryGetValueSafe<string>("thumbnailUrl");
+			    this._ThumbnailSaved = data.TryGetValueSafe<bool>("thumbnailSaved");
+			    this._SshPrivateKey = data.TryGetValueSafe<string>("sshPrivateKey");
+			    this._SshPublicKey = data.TryGetValueSafe<string>("sshPublicKey");
+			    this._SshKeyPassphrase = data.TryGetValueSafe<string>("sshKeyPassphrase");
+			    this._CreatorId = data.TryGetValueSafe<string>("creatorId");
+			    this._EntitledUsersEdit = data.TryGetValueSafe<string>("entitledUsersEdit");
+			    this._EntitledUsersPublish = data.TryGetValueSafe<string>("entitledUsersPublish");
+			    this._OwnerId = data.TryGetValueSafe<string>("ownerId");
+			    this._ReferenceId = data.TryGetValueSafe<string>("referenceId");
+			    this._TemplateEntryId = data.TryGetValueSafe<string>("templateEntryId");
+		}
 		#endregion
 
 		#region Methods

@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FileSyncFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._CurrentDc = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("currentDc"));
+			    this._OrderBy = (FileSyncOrderBy)StringEnum.Parse(typeof(FileSyncOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

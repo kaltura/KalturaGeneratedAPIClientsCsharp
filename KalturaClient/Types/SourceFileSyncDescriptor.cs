@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public SourceFileSyncDescriptor(IDictionary<string,object> data) : base(data)
+		{
+			    this._ActualFileSyncLocalPath = data.TryGetValueSafe<string>("actualFileSyncLocalPath");
+			    this._AssetId = data.TryGetValueSafe<string>("assetId");
+			    this._AssetParamsId = data.TryGetValueSafe<int>("assetParamsId");
+		}
 		#endregion
 
 		#region Methods

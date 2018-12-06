@@ -175,6 +175,35 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public Scheduler(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<int>("id");
+			    this._ConfiguredId = data.TryGetValueSafe<int>("configuredId");
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._Host = data.TryGetValueSafe<string>("host");
+			    this._Statuses = new List<SchedulerStatus>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("statuses", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Statuses.Add(ObjectFactory.Create<SchedulerStatus>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._Configs = new List<SchedulerConfig>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("configs", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Configs.Add(ObjectFactory.Create<SchedulerConfig>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._Workers = new List<SchedulerWorker>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("workers", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Workers.Add(ObjectFactory.Create<SchedulerWorker>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
+			    this._LastStatus = data.TryGetValueSafe<int>("lastStatus");
+			    this._LastStatusStr = data.TryGetValueSafe<string>("lastStatusStr");
+		}
 		#endregion
 
 		#region Methods

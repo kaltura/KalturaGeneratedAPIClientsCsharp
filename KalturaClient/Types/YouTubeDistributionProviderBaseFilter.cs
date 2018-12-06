@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public YouTubeDistributionProviderBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public YouTubeDistributionProviderBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

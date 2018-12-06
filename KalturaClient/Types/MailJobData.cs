@@ -282,6 +282,26 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public MailJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._MailType = (MailType)StringEnum.Parse(typeof(MailType), data.TryGetValueSafe<string>("mailType"));
+			    this._MailPriority = data.TryGetValueSafe<int>("mailPriority");
+			    this._Status = (MailJobStatus)ParseEnum(typeof(MailJobStatus), data.TryGetValueSafe<int>("status"));
+			    this._RecipientName = data.TryGetValueSafe<string>("recipientName");
+			    this._RecipientEmail = data.TryGetValueSafe<string>("recipientEmail");
+			    this._RecipientId = data.TryGetValueSafe<int>("recipientId");
+			    this._FromName = data.TryGetValueSafe<string>("fromName");
+			    this._FromEmail = data.TryGetValueSafe<string>("fromEmail");
+			    this._BodyParams = data.TryGetValueSafe<string>("bodyParams");
+			    this._SubjectParams = data.TryGetValueSafe<string>("subjectParams");
+			    this._TemplatePath = data.TryGetValueSafe<string>("templatePath");
+			    this._Language = (LanguageCode)StringEnum.Parse(typeof(LanguageCode), data.TryGetValueSafe<string>("language"));
+			    this._CampaignId = data.TryGetValueSafe<int>("campaignId");
+			    this._MinSendDate = data.TryGetValueSafe<int>("minSendDate");
+			    this._IsHtml = data.TryGetValueSafe<bool>("isHtml");
+			    this._Separator = data.TryGetValueSafe<string>("separator");
+		}
 		#endregion
 
 		#region Methods

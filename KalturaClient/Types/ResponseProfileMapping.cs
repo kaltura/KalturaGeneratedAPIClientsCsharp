@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ResponseProfileMapping(IDictionary<string,object> data) : base(data)
+		{
+			    this._ParentProperty = data.TryGetValueSafe<string>("parentProperty");
+			    this._FilterProperty = data.TryGetValueSafe<string>("filterProperty");
+			    this._AllowNull = data.TryGetValueSafe<bool>("allowNull");
+		}
 		#endregion
 
 		#region Methods

@@ -114,6 +114,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ParseMultiLanguageCaptionAssetJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._MultiLanaguageCaptionAssetId = data.TryGetValueSafe<string>("multiLanaguageCaptionAssetId");
+			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+			    this._FileLocation = data.TryGetValueSafe<string>("fileLocation");
+			    this._FileEncryptionKey = data.TryGetValueSafe<string>("fileEncryptionKey");
+		}
 		#endregion
 
 		#region Methods

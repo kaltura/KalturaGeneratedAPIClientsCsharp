@@ -85,6 +85,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<LiveReportExportResponse>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<LiveReportExportResponse>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class LiveReportsGetEventsRequestBuilder : RequestBuilder<IList<ReportGraph>>
@@ -151,6 +155,15 @@ namespace Kaltura.Services
 			}
 			return list;
 		}
+		public override object DeserializeObject(object result)
+		{
+			var list = new List<ReportGraph>();
+			foreach(var node in (IEnumerable<IDictionary<string,object>>)result)
+			{
+				list.Add(ObjectFactory.Create<ReportGraph>(node));
+			}
+			return list;
+		}
 	}
 
 	public class LiveReportsServeReportRequestBuilder : RequestBuilder<string>
@@ -193,6 +206,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return result.InnerText;
+		}
+		public override object DeserializeObject(object result)
+		{
+			return (string)result;
 		}
 	}
 

@@ -112,6 +112,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PartnerStatistics(IDictionary<string,object> data) : base(data)
+		{
+			    this._PackageBandwidthAndStorage = data.TryGetValueSafe<int>("packageBandwidthAndStorage");
+			    this._Hosting = data.TryGetValueSafe<float>("hosting");
+			    this._Bandwidth = data.TryGetValueSafe<float>("bandwidth");
+			    this._Usage = data.TryGetValueSafe<int>("usage");
+			    this._UsagePercent = data.TryGetValueSafe<float>("usagePercent");
+			    this._ReachedLimitDate = data.TryGetValueSafe<int>("reachedLimitDate");
+		}
 		#endregion
 
 		#region Methods

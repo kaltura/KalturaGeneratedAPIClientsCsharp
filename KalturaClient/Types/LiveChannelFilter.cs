@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveChannelFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (LiveChannelOrderBy)StringEnum.Parse(typeof(LiveChannelOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

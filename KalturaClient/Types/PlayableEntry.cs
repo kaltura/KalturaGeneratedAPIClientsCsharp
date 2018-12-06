@@ -135,6 +135,18 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PlayableEntry(IDictionary<string,object> data) : base(data)
+		{
+			    this._Plays = data.TryGetValueSafe<int>("plays");
+			    this._Views = data.TryGetValueSafe<int>("views");
+			    this._LastPlayedAt = data.TryGetValueSafe<int>("lastPlayedAt");
+			    this._Width = data.TryGetValueSafe<int>("width");
+			    this._Height = data.TryGetValueSafe<int>("height");
+			    this._Duration = data.TryGetValueSafe<int>("duration");
+			    this._MsDuration = data.TryGetValueSafe<int>("msDuration");
+			    this._DurationType = (DurationType)StringEnum.Parse(typeof(DurationType), data.TryGetValueSafe<string>("durationType"));
+		}
 		#endregion
 
 		#region Methods

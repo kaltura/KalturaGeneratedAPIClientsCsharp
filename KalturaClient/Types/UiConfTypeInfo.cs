@@ -118,6 +118,19 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UiConfTypeInfo(IDictionary<string,object> data) : base(data)
+		{
+			    this._Type = (UiConfObjType)ParseEnum(typeof(UiConfObjType), data.TryGetValueSafe<int>("type"));
+			    this._Versions = new List<String>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("versions", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Versions.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._Directory = data.TryGetValueSafe<string>("directory");
+			    this._Filename = data.TryGetValueSafe<string>("filename");
+		}
 		#endregion
 
 		#region Methods

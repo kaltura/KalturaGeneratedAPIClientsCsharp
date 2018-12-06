@@ -132,6 +132,20 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public PlayReadyPolicy(IDictionary<string,object> data) : base(data)
+		{
+			    this._GracePeriod = data.TryGetValueSafe<int>("gracePeriod");
+			    this._LicenseRemovalPolicy = (PlayReadyLicenseRemovalPolicy)ParseEnum(typeof(PlayReadyLicenseRemovalPolicy), data.TryGetValueSafe<int>("licenseRemovalPolicy"));
+			    this._LicenseRemovalDuration = data.TryGetValueSafe<int>("licenseRemovalDuration");
+			    this._MinSecurityLevel = (PlayReadyMinimumLicenseSecurityLevel)ParseEnum(typeof(PlayReadyMinimumLicenseSecurityLevel), data.TryGetValueSafe<int>("minSecurityLevel"));
+			    this._Rights = new List<PlayReadyRight>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("rights", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Rights.Add(ObjectFactory.Create<PlayReadyRight>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

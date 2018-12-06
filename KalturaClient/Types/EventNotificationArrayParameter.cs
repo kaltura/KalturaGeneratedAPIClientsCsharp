@@ -94,6 +94,22 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EventNotificationArrayParameter(IDictionary<string,object> data) : base(data)
+		{
+			    this._Values = new List<String>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("values", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Values.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._AllowedValues = new List<StringValue>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("allowedValues", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._AllowedValues.Add(ObjectFactory.Create<StringValue>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

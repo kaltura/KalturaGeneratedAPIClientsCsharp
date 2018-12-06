@@ -67,6 +67,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EmailNotificationRecipientJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._ProviderType = (EmailNotificationRecipientProviderType)StringEnum.Parse(typeof(EmailNotificationRecipientProviderType), data.TryGetValueSafe<string>("providerType"));
+		}
 		#endregion
 
 		#region Methods

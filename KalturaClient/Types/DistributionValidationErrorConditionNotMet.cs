@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DistributionValidationErrorConditionNotMet(IDictionary<string,object> data) : base(data)
+		{
+			    this._ConditionName = data.TryGetValueSafe<string>("conditionName");
+		}
 		#endregion
 
 		#region Methods

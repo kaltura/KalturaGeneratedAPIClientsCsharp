@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UserRoleCondition(IDictionary<string,object> data) : base(data)
+		{
+			    this._RoleIds = data.TryGetValueSafe<string>("roleIds");
+		}
 		#endregion
 
 		#region Methods

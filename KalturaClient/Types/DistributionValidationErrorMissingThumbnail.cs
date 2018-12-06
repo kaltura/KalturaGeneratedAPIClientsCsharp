@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DistributionValidationErrorMissingThumbnail(IDictionary<string,object> data) : base(data)
+		{
+			    this._Dimensions = ObjectFactory.Create<DistributionThumbDimensions>(data.TryGetValueSafe<IDictionary<string,object>>("dimensions"));
+		}
 		#endregion
 
 		#region Methods

@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public DeliveryServerNodeBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public DeliveryServerNodeBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

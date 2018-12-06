@@ -104,6 +104,18 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ESearchItemDataResult(IDictionary<string,object> data) : base(data)
+		{
+			    this._TotalCount = data.TryGetValueSafe<int>("totalCount");
+			    this._Items = new List<ESearchItemData>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("items", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._Items.Add(ObjectFactory.Create<ESearchItemData>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._ItemsType = data.TryGetValueSafe<string>("itemsType");
+		}
 		#endregion
 
 		#region Methods

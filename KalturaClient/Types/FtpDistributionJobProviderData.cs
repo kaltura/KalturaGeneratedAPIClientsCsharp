@@ -76,6 +76,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public FtpDistributionJobProviderData(IDictionary<string,object> data) : base(data)
+		{
+			    this._FilesForDistribution = new List<FtpDistributionFile>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("filesForDistribution", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._FilesForDistribution.Add(ObjectFactory.Create<FtpDistributionFile>((IDictionary<string,object>)dataDictionary));
+			    }
+		}
 		#endregion
 
 		#region Methods

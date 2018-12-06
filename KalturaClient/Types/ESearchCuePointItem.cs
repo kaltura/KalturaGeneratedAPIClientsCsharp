@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ESearchCuePointItem(IDictionary<string,object> data) : base(data)
+		{
+			    this._FieldName = (ESearchCuePointFieldName)StringEnum.Parse(typeof(ESearchCuePointFieldName), data.TryGetValueSafe<string>("fieldName"));
+		}
 		#endregion
 
 		#region Methods

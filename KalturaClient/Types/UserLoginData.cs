@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UserLoginData(IDictionary<string,object> data) : base(data)
+		{
+			    this._Id = data.TryGetValueSafe<string>("id");
+			    this._LoginEmail = data.TryGetValueSafe<string>("loginEmail");
+		}
 		#endregion
 
 		#region Methods

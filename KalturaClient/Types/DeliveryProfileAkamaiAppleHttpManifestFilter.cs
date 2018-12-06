@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DeliveryProfileAkamaiAppleHttpManifestFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (DeliveryProfileAkamaiAppleHttpManifestOrderBy)StringEnum.Parse(typeof(DeliveryProfileAkamaiAppleHttpManifestOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

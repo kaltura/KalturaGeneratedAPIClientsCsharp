@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ConversionAttribute(IDictionary<string,object> data) : base(data)
+		{
+			    this._FlavorParamsId = data.TryGetValueSafe<int>("flavorParamsId");
+			    this._Name = data.TryGetValueSafe<string>("name");
+			    this._Value = data.TryGetValueSafe<string>("value");
+		}
 		#endregion
 
 		#region Methods

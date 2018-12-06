@@ -188,6 +188,24 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ConvertJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._DestFileSyncLocalPath = data.TryGetValueSafe<string>("destFileSyncLocalPath");
+			    this._DestFileSyncRemoteUrl = data.TryGetValueSafe<string>("destFileSyncRemoteUrl");
+			    this._LogFileSyncLocalPath = data.TryGetValueSafe<string>("logFileSyncLocalPath");
+			    this._LogFileSyncRemoteUrl = data.TryGetValueSafe<string>("logFileSyncRemoteUrl");
+			    this._FlavorAssetId = data.TryGetValueSafe<string>("flavorAssetId");
+			    this._RemoteMediaId = data.TryGetValueSafe<string>("remoteMediaId");
+			    this._CustomData = data.TryGetValueSafe<string>("customData");
+			    this._ExtraDestFileSyncs = new List<DestFileSyncDescriptor>();
+			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("extraDestFileSyncs", new List<object>()))
+			    {
+			        if (dataDictionary == null) { continue; }
+			        this._ExtraDestFileSyncs.Add(ObjectFactory.Create<DestFileSyncDescriptor>((IDictionary<string,object>)dataDictionary));
+			    }
+			    this._EngineMessage = data.TryGetValueSafe<string>("engineMessage");
+		}
 		#endregion
 
 		#region Methods

@@ -156,6 +156,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public EntryScheduleEventBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._TemplateEntryIdEqual = data.TryGetValueSafe<string>("templateEntryIdEqual");
+			    this._EntryIdsLike = data.TryGetValueSafe<string>("entryIdsLike");
+			    this._EntryIdsMultiLikeOr = data.TryGetValueSafe<string>("entryIdsMultiLikeOr");
+			    this._EntryIdsMultiLikeAnd = data.TryGetValueSafe<string>("entryIdsMultiLikeAnd");
+			    this._CategoryIdsLike = data.TryGetValueSafe<string>("categoryIdsLike");
+			    this._CategoryIdsMultiLikeOr = data.TryGetValueSafe<string>("categoryIdsMultiLikeOr");
+			    this._CategoryIdsMultiLikeAnd = data.TryGetValueSafe<string>("categoryIdsMultiLikeAnd");
+		}
 		#endregion
 
 		#region Methods

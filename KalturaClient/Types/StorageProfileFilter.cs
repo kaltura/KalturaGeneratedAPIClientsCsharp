@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public StorageProfileFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (StorageProfileOrderBy)StringEnum.Parse(typeof(StorageProfileOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

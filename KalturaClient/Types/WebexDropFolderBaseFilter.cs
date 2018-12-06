@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public WebexDropFolderBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public WebexDropFolderBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public FilterPager(XmlElement node) : base(node)
 		{
 		}
+
+		public FilterPager(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

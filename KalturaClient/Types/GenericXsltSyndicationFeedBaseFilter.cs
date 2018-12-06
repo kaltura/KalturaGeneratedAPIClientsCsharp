@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public GenericXsltSyndicationFeedBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public GenericXsltSyndicationFeedBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

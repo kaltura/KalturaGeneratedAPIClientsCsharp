@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DistributionFetchReportJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._Plays = data.TryGetValueSafe<int>("plays");
+			    this._Views = data.TryGetValueSafe<int>("views");
+		}
 		#endregion
 
 		#region Methods

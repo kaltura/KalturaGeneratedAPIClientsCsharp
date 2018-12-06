@@ -52,6 +52,10 @@ namespace Kaltura.Types
 		public LiveStreamAdminEntryBaseFilter(XmlElement node) : base(node)
 		{
 		}
+
+		public LiveStreamAdminEntryBaseFilter(IDictionary<string,object> data) : base(data)
+		{
+		}
 		#endregion
 
 		#region Methods

@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<FileAsset>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<FileAsset>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class FileAssetDeleteRequestBuilder : RequestBuilder<object>
@@ -116,6 +120,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -161,6 +169,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<FileAsset>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<FileAsset>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -214,6 +226,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<FileAsset>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<FileAsset>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class FileAssetSetContentRequestBuilder : RequestBuilder<FileAsset>
@@ -266,6 +282,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<FileAsset>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<FileAsset>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class FileAssetUpdateRequestBuilder : RequestBuilder<FileAsset>
@@ -317,6 +337,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<FileAsset>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<FileAsset>((IDictionary<string,object>)result);
 		}
 	}
 

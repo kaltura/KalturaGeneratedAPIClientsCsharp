@@ -86,6 +86,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UrlTokenizerChinaCache(IDictionary<string,object> data) : base(data)
+		{
+			    this._AlgorithmId = (ChinaCacheAlgorithmType)ParseEnum(typeof(ChinaCacheAlgorithmType), data.TryGetValueSafe<int>("algorithmId"));
+			    this._KeyId = data.TryGetValueSafe<int>("keyId");
+		}
 		#endregion
 
 		#region Methods

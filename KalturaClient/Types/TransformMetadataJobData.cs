@@ -128,6 +128,15 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public TransformMetadataJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._SrcXsl = ObjectFactory.Create<FileContainer>(data.TryGetValueSafe<IDictionary<string,object>>("srcXsl"));
+			    this._SrcVersion = data.TryGetValueSafe<int>("srcVersion");
+			    this._DestVersion = data.TryGetValueSafe<int>("destVersion");
+			    this._DestXsd = ObjectFactory.Create<FileContainer>(data.TryGetValueSafe<IDictionary<string,object>>("destXsd"));
+			    this._MetadataProfileId = data.TryGetValueSafe<int>("metadataProfileId");
+		}
 		#endregion
 
 		#region Methods

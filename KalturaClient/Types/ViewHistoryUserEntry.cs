@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ViewHistoryUserEntry(IDictionary<string,object> data) : base(data)
+		{
+			    this._PlaybackContext = data.TryGetValueSafe<string>("playbackContext");
+			    this._LastTimeReached = data.TryGetValueSafe<int>("lastTimeReached");
+			    this._LastUpdateTime = data.TryGetValueSafe<int>("lastUpdateTime");
+		}
 		#endregion
 
 		#region Methods

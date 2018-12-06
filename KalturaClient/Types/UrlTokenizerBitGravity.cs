@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public UrlTokenizerBitGravity(IDictionary<string,object> data) : base(data)
+		{
+			    this._HashPatternRegex = data.TryGetValueSafe<string>("hashPatternRegex");
+		}
 		#endregion
 
 		#region Methods

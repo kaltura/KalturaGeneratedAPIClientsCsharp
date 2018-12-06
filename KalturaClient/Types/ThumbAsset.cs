@@ -99,6 +99,14 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ThumbAsset(IDictionary<string,object> data) : base(data)
+		{
+			    this._ThumbParamsId = data.TryGetValueSafe<int>("thumbParamsId");
+			    this._Width = data.TryGetValueSafe<int>("width");
+			    this._Height = data.TryGetValueSafe<int>("height");
+			    this._Status = (ThumbAssetStatus)ParseEnum(typeof(ThumbAssetStatus), data.TryGetValueSafe<int>("status"));
+		}
 		#endregion
 
 		#region Methods

@@ -142,6 +142,16 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ESearchCaptionItemData(IDictionary<string,object> data) : base(data)
+		{
+			    this._Line = data.TryGetValueSafe<string>("line");
+			    this._StartsAt = data.TryGetValueSafe<int>("startsAt");
+			    this._EndsAt = data.TryGetValueSafe<int>("endsAt");
+			    this._Language = data.TryGetValueSafe<string>("language");
+			    this._CaptionAssetId = data.TryGetValueSafe<string>("captionAssetId");
+			    this._Label = data.TryGetValueSafe<string>("label");
+		}
 		#endregion
 
 		#region Methods

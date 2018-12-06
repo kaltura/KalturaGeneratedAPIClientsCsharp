@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DispatchEventNotificationObjectTask(IDictionary<string,object> data) : base(data)
+		{
+			    this._EventNotificationTemplateId = data.TryGetValueSafe<int>("eventNotificationTemplateId");
+		}
 		#endregion
 
 		#region Methods

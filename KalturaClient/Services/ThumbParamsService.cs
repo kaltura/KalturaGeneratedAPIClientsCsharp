@@ -76,6 +76,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ThumbParams>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ThumbParams>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ThumbParamsDeleteRequestBuilder : RequestBuilder<object>
@@ -116,6 +120,10 @@ namespace Kaltura.Services
 		}
 
 		public override object Deserialize(XmlElement result)
+		{
+			return null;
+		}
+		public override object DeserializeObject(object result)
 		{
 			return null;
 		}
@@ -162,6 +170,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ThumbParams>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ThumbParams>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ThumbParamsGetByConversionProfileIdRequestBuilder : RequestBuilder<IList<ThumbParams>>
@@ -205,6 +217,15 @@ namespace Kaltura.Services
 		{
 			IList<ThumbParams> list = new List<ThumbParams>();
 			foreach(XmlElement node in result.ChildNodes)
+			{
+				list.Add(ObjectFactory.Create<ThumbParams>(node));
+			}
+			return list;
+		}
+		public override object DeserializeObject(object result)
+		{
+			var list = new List<ThumbParams>();
+			foreach(var node in (IEnumerable<IDictionary<string,object>>)result)
 			{
 				list.Add(ObjectFactory.Create<ThumbParams>(node));
 			}
@@ -262,6 +283,10 @@ namespace Kaltura.Services
 		{
 			return ObjectFactory.Create<ListResponse<ThumbParams>>(result);
 		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ListResponse<ThumbParams>>((IDictionary<string,object>)result);
+		}
 	}
 
 	public class ThumbParamsUpdateRequestBuilder : RequestBuilder<ThumbParams>
@@ -313,6 +338,10 @@ namespace Kaltura.Services
 		public override object Deserialize(XmlElement result)
 		{
 			return ObjectFactory.Create<ThumbParams>(result);
+		}
+		public override object DeserializeObject(object result)
+		{
+			return ObjectFactory.Create<ThumbParams>((IDictionary<string,object>)result);
 		}
 	}
 

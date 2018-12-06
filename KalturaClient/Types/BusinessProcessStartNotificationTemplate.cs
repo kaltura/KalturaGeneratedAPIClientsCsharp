@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public BusinessProcessStartNotificationTemplate(IDictionary<string,object> data) : base(data)
+		{
+			    this._AbortOnDeletion = data.TryGetValueSafe<bool>("abortOnDeletion");
+		}
 		#endregion
 
 		#region Methods

@@ -100,6 +100,13 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public DailymotionDistributionProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._User = data.TryGetValueSafe<string>("user");
+			    this._Password = data.TryGetValueSafe<string>("password");
+			    this._GeoBlockingMapping = (DailymotionGeoBlockingMapping)ParseEnum(typeof(DailymotionGeoBlockingMapping), data.TryGetValueSafe<int>("geoBlockingMapping"));
+		}
 		#endregion
 
 		#region Methods

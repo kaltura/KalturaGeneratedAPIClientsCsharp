@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public MediaInfoFilter(IDictionary<string,object> data) : base(data)
+		{
+			    this._OrderBy = (MediaInfoOrderBy)StringEnum.Parse(typeof(MediaInfoOrderBy), data.TryGetValueSafe<string>("orderBy"));
+		}
 		#endregion
 
 		#region Methods

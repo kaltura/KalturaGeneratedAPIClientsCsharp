@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public ContextTypeHolder(IDictionary<string,object> data) : base(data)
+		{
+			    this._Type = (ContextType)StringEnum.Parse(typeof(ContextType), data.TryGetValueSafe<string>("type"));
+		}
 		#endregion
 
 		#region Methods

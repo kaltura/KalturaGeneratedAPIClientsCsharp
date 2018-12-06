@@ -156,6 +156,17 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public LiveToVodJobData(IDictionary<string,object> data) : base(data)
+		{
+			    this._VodEntryId = data.TryGetValueSafe<string>("vodEntryId");
+			    this._LiveEntryId = data.TryGetValueSafe<string>("liveEntryId");
+			    this._TotalVodDuration = data.TryGetValueSafe<float>("totalVodDuration");
+			    this._LastSegmentDuration = data.TryGetValueSafe<float>("lastSegmentDuration");
+			    this._AmfArray = data.TryGetValueSafe<string>("amfArray");
+			    this._LastCuePointSyncTime = data.TryGetValueSafe<int>("lastCuePointSyncTime");
+			    this._LastSegmentDrift = data.TryGetValueSafe<int>("lastSegmentDrift");
+		}
 		#endregion
 
 		#region Methods

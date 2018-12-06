@@ -72,6 +72,11 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public StorageExportObjectTask(IDictionary<string,object> data) : base(data)
+		{
+			    this._StorageId = data.TryGetValueSafe<string>("storageId");
+		}
 		#endregion
 
 		#region Methods

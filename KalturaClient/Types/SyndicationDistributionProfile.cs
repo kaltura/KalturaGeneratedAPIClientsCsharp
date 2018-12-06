@@ -81,6 +81,12 @@ namespace Kaltura.Types
 				}
 			}
 		}
+
+		public SyndicationDistributionProfile(IDictionary<string,object> data) : base(data)
+		{
+			    this._Xsl = data.TryGetValueSafe<string>("xsl");
+			    this._FeedId = data.TryGetValueSafe<string>("feedId");
+		}
 		#endregion
 
 		#region Methods

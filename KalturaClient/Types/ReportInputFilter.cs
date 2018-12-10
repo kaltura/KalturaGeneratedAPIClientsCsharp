@@ -40,16 +40,20 @@ namespace Kaltura.Types
 		public const string SEARCH_IN_TAGS = "searchInTags";
 		public const string SEARCH_IN_ADMIN_TAGS = "searchInAdminTags";
 		public const string CATEGORIES = "categories";
+		public const string CATEGORIES_IDS_IN = "categoriesIdsIn";
 		public const string CUSTOM_VAR1IN = "customVar1In";
 		public const string CUSTOM_VAR2IN = "customVar2In";
 		public const string CUSTOM_VAR3IN = "customVar3In";
 		public const string DEVICE_IN = "deviceIn";
 		public const string COUNTRY_IN = "countryIn";
 		public const string REGION_IN = "regionIn";
+		public const string CITIES_IN = "citiesIn";
 		public const string OPERATING_SYSTEM_FAMILY_IN = "operatingSystemFamilyIn";
 		public const string BROWSER_FAMILY_IN = "browserFamilyIn";
 		public const string TIME_ZONE_OFFSET = "timeZoneOffset";
 		public const string INTERVAL = "interval";
+		public const string MEDIA_TYPE_IN = "mediaTypeIn";
+		public const string SOURCE_TYPE_IN = "sourceTypeIn";
 		#endregion
 
 		#region Private Fields
@@ -57,16 +61,20 @@ namespace Kaltura.Types
 		private bool? _SearchInTags = null;
 		private bool? _SearchInAdminTags = null;
 		private string _Categories = null;
+		private string _CategoriesIdsIn = null;
 		private string _CustomVar1In = null;
 		private string _CustomVar2In = null;
 		private string _CustomVar3In = null;
 		private string _DeviceIn = null;
 		private string _CountryIn = null;
 		private string _RegionIn = null;
+		private string _CitiesIn = null;
 		private string _OperatingSystemFamilyIn = null;
 		private string _BrowserFamilyIn = null;
 		private int _TimeZoneOffset = Int32.MinValue;
 		private ReportInterval _Interval = null;
+		private string _MediaTypeIn = null;
+		private string _SourceTypeIn = null;
 		#endregion
 
 		#region Properties
@@ -104,6 +112,15 @@ namespace Kaltura.Types
 			{ 
 				_Categories = value;
 				OnPropertyChanged("Categories");
+			}
+		}
+		public string CategoriesIdsIn
+		{
+			get { return _CategoriesIdsIn; }
+			set 
+			{ 
+				_CategoriesIdsIn = value;
+				OnPropertyChanged("CategoriesIdsIn");
 			}
 		}
 		public string CustomVar1In
@@ -160,6 +177,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("RegionIn");
 			}
 		}
+		public string CitiesIn
+		{
+			get { return _CitiesIn; }
+			set 
+			{ 
+				_CitiesIn = value;
+				OnPropertyChanged("CitiesIn");
+			}
+		}
 		public string OperatingSystemFamilyIn
 		{
 			get { return _OperatingSystemFamilyIn; }
@@ -196,6 +222,24 @@ namespace Kaltura.Types
 				OnPropertyChanged("Interval");
 			}
 		}
+		public string MediaTypeIn
+		{
+			get { return _MediaTypeIn; }
+			set 
+			{ 
+				_MediaTypeIn = value;
+				OnPropertyChanged("MediaTypeIn");
+			}
+		}
+		public string SourceTypeIn
+		{
+			get { return _SourceTypeIn; }
+			set 
+			{ 
+				_SourceTypeIn = value;
+				OnPropertyChanged("SourceTypeIn");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -221,6 +265,9 @@ namespace Kaltura.Types
 					case "categories":
 						this._Categories = propertyNode.InnerText;
 						continue;
+					case "categoriesIdsIn":
+						this._CategoriesIdsIn = propertyNode.InnerText;
+						continue;
 					case "customVar1In":
 						this._CustomVar1In = propertyNode.InnerText;
 						continue;
@@ -239,6 +286,9 @@ namespace Kaltura.Types
 					case "regionIn":
 						this._RegionIn = propertyNode.InnerText;
 						continue;
+					case "citiesIn":
+						this._CitiesIn = propertyNode.InnerText;
+						continue;
 					case "operatingSystemFamilyIn":
 						this._OperatingSystemFamilyIn = propertyNode.InnerText;
 						continue;
@@ -251,6 +301,12 @@ namespace Kaltura.Types
 					case "interval":
 						this._Interval = (ReportInterval)StringEnum.Parse(typeof(ReportInterval), propertyNode.InnerText);
 						continue;
+					case "mediaTypeIn":
+						this._MediaTypeIn = propertyNode.InnerText;
+						continue;
+					case "sourceTypeIn":
+						this._SourceTypeIn = propertyNode.InnerText;
+						continue;
 				}
 			}
 		}
@@ -261,16 +317,20 @@ namespace Kaltura.Types
 			    this._SearchInTags = data.TryGetValueSafe<bool>("searchInTags");
 			    this._SearchInAdminTags = data.TryGetValueSafe<bool>("searchInAdminTags");
 			    this._Categories = data.TryGetValueSafe<string>("categories");
+			    this._CategoriesIdsIn = data.TryGetValueSafe<string>("categoriesIdsIn");
 			    this._CustomVar1In = data.TryGetValueSafe<string>("customVar1In");
 			    this._CustomVar2In = data.TryGetValueSafe<string>("customVar2In");
 			    this._CustomVar3In = data.TryGetValueSafe<string>("customVar3In");
 			    this._DeviceIn = data.TryGetValueSafe<string>("deviceIn");
 			    this._CountryIn = data.TryGetValueSafe<string>("countryIn");
 			    this._RegionIn = data.TryGetValueSafe<string>("regionIn");
+			    this._CitiesIn = data.TryGetValueSafe<string>("citiesIn");
 			    this._OperatingSystemFamilyIn = data.TryGetValueSafe<string>("operatingSystemFamilyIn");
 			    this._BrowserFamilyIn = data.TryGetValueSafe<string>("browserFamilyIn");
 			    this._TimeZoneOffset = data.TryGetValueSafe<int>("timeZoneOffset");
 			    this._Interval = (ReportInterval)StringEnum.Parse(typeof(ReportInterval), data.TryGetValueSafe<string>("interval"));
+			    this._MediaTypeIn = data.TryGetValueSafe<string>("mediaTypeIn");
+			    this._SourceTypeIn = data.TryGetValueSafe<string>("sourceTypeIn");
 		}
 		#endregion
 
@@ -284,16 +344,20 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("searchInTags", this._SearchInTags);
 			kparams.AddIfNotNull("searchInAdminTags", this._SearchInAdminTags);
 			kparams.AddIfNotNull("categories", this._Categories);
+			kparams.AddIfNotNull("categoriesIdsIn", this._CategoriesIdsIn);
 			kparams.AddIfNotNull("customVar1In", this._CustomVar1In);
 			kparams.AddIfNotNull("customVar2In", this._CustomVar2In);
 			kparams.AddIfNotNull("customVar3In", this._CustomVar3In);
 			kparams.AddIfNotNull("deviceIn", this._DeviceIn);
 			kparams.AddIfNotNull("countryIn", this._CountryIn);
 			kparams.AddIfNotNull("regionIn", this._RegionIn);
+			kparams.AddIfNotNull("citiesIn", this._CitiesIn);
 			kparams.AddIfNotNull("operatingSystemFamilyIn", this._OperatingSystemFamilyIn);
 			kparams.AddIfNotNull("browserFamilyIn", this._BrowserFamilyIn);
 			kparams.AddIfNotNull("timeZoneOffset", this._TimeZoneOffset);
 			kparams.AddIfNotNull("interval", this._Interval);
+			kparams.AddIfNotNull("mediaTypeIn", this._MediaTypeIn);
+			kparams.AddIfNotNull("sourceTypeIn", this._SourceTypeIn);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -308,6 +372,8 @@ namespace Kaltura.Types
 					return "SearchInAdminTags";
 				case CATEGORIES:
 					return "Categories";
+				case CATEGORIES_IDS_IN:
+					return "CategoriesIdsIn";
 				case CUSTOM_VAR1IN:
 					return "CustomVar1In";
 				case CUSTOM_VAR2IN:
@@ -320,6 +386,8 @@ namespace Kaltura.Types
 					return "CountryIn";
 				case REGION_IN:
 					return "RegionIn";
+				case CITIES_IN:
+					return "CitiesIn";
 				case OPERATING_SYSTEM_FAMILY_IN:
 					return "OperatingSystemFamilyIn";
 				case BROWSER_FAMILY_IN:
@@ -328,6 +396,10 @@ namespace Kaltura.Types
 					return "TimeZoneOffset";
 				case INTERVAL:
 					return "Interval";
+				case MEDIA_TYPE_IN:
+					return "MediaTypeIn";
+				case SOURCE_TYPE_IN:
+					return "SourceTypeIn";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -29,6 +29,7 @@ namespace Kaltura.Enums
 {
 	public sealed class ESearchCaptionFieldName : StringEnum
 	{
+		public static readonly ESearchCaptionFieldName CAPTION_ASSET_ID = new ESearchCaptionFieldName("caption_asset_id");
 		public static readonly ESearchCaptionFieldName CONTENT = new ESearchCaptionFieldName("content");
 		public static readonly ESearchCaptionFieldName END_TIME = new ESearchCaptionFieldName("end_time");
 		public static readonly ESearchCaptionFieldName LABEL = new ESearchCaptionFieldName("label");

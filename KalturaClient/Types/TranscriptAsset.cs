@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public float Accuracy
 		{
 			get { return _Accuracy; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Accuracy");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean HumanVerified
 		{
 			get { return _HumanVerified; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("HumanVerified");
 			}
 		}
+		[JsonProperty]
 		public Language Language
 		{
 			get { return _Language; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Language");
 			}
 		}
+		[JsonProperty]
 		public TranscriptProviderType ProviderType
 		{
 			get { return _ProviderType; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public TranscriptAsset(XmlElement node) : base(node)
+		public TranscriptAsset(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["accuracy"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "accuracy":
-						this._Accuracy = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "humanVerified":
-						this._HumanVerified = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "language":
-						this._Language = (Language)StringEnum.Parse(typeof(Language), propertyNode.InnerText);
-						continue;
-					case "providerType":
-						this._ProviderType = (TranscriptProviderType)StringEnum.Parse(typeof(TranscriptProviderType), propertyNode.InnerText);
-						continue;
-				}
+				this._Accuracy = ParseFloat(node["accuracy"].Value<string>());
 			}
-		}
-
-		public TranscriptAsset(IDictionary<string,object> data) : base(data)
-		{
-			    this._Accuracy = data.TryGetValueSafe<float>("accuracy");
-			    this._HumanVerified = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("humanVerified"));
-			    this._Language = (Language)StringEnum.Parse(typeof(Language), data.TryGetValueSafe<string>("language"));
-			    this._ProviderType = (TranscriptProviderType)StringEnum.Parse(typeof(TranscriptProviderType), data.TryGetValueSafe<string>("providerType"));
+			if(node["humanVerified"] != null)
+			{
+				this._HumanVerified = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["humanVerified"].Value<string>());
+			}
+			if(node["language"] != null)
+			{
+				this._Language = (Language)StringEnum.Parse(typeof(Language), node["language"].Value<string>());
+			}
+			if(node["providerType"] != null)
+			{
+				this._ProviderType = (TranscriptProviderType)StringEnum.Parse(typeof(TranscriptProviderType), node["providerType"].Value<string>());
+			}
 		}
 		#endregion
 

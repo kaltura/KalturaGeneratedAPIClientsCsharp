@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,6 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int ThumbParamsIdEqual
 		{
 			get { return _ThumbParamsIdEqual; }
@@ -61,6 +64,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbParamsIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string ThumbParamsIdIn
 		{
 			get { return _ThumbParamsIdIn; }
@@ -70,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbParamsIdIn");
 			}
 		}
+		[JsonProperty]
 		public ThumbAssetStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -79,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -88,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		[JsonProperty]
 		public string StatusNotIn
 		{
 			get { return _StatusNotIn; }
@@ -104,38 +111,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ThumbAssetBaseFilter(XmlElement node) : base(node)
+		public ThumbAssetBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["thumbParamsIdEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "thumbParamsIdEqual":
-						this._ThumbParamsIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "thumbParamsIdIn":
-						this._ThumbParamsIdIn = propertyNode.InnerText;
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (ThumbAssetStatus)ParseEnum(typeof(ThumbAssetStatus), propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-					case "statusNotIn":
-						this._StatusNotIn = propertyNode.InnerText;
-						continue;
-				}
+				this._ThumbParamsIdEqual = ParseInt(node["thumbParamsIdEqual"].Value<string>());
 			}
-		}
-
-		public ThumbAssetBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._ThumbParamsIdEqual = data.TryGetValueSafe<int>("thumbParamsIdEqual");
-			    this._ThumbParamsIdIn = data.TryGetValueSafe<string>("thumbParamsIdIn");
-			    this._StatusEqual = (ThumbAssetStatus)ParseEnum(typeof(ThumbAssetStatus), data.TryGetValueSafe<int>("statusEqual"));
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
-			    this._StatusNotIn = data.TryGetValueSafe<string>("statusNotIn");
+			if(node["thumbParamsIdIn"] != null)
+			{
+				this._ThumbParamsIdIn = node["thumbParamsIdIn"].Value<string>();
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (ThumbAssetStatus)ParseEnum(typeof(ThumbAssetStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
+			if(node["statusNotIn"] != null)
+			{
+				this._StatusNotIn = node["statusNotIn"].Value<string>();
+			}
 		}
 		#endregion
 

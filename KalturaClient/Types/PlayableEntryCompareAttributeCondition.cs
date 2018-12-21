@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public PlayableEntryCompareAttribute Attribute
 		{
 			get { return _Attribute; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public PlayableEntryCompareAttributeCondition(XmlElement node) : base(node)
+		public PlayableEntryCompareAttributeCondition(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["attribute"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "attribute":
-						this._Attribute = (PlayableEntryCompareAttribute)StringEnum.Parse(typeof(PlayableEntryCompareAttribute), propertyNode.InnerText);
-						continue;
-				}
+				this._Attribute = (PlayableEntryCompareAttribute)StringEnum.Parse(typeof(PlayableEntryCompareAttribute), node["attribute"].Value<string>());
 			}
-		}
-
-		public PlayableEntryCompareAttributeCondition(IDictionary<string,object> data) : base(data)
-		{
-			    this._Attribute = (PlayableEntryCompareAttribute)StringEnum.Parse(typeof(PlayableEntryCompareAttribute), data.TryGetValueSafe<string>("attribute"));
 		}
 		#endregion
 

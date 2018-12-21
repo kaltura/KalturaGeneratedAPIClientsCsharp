@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public ScheduledTaskAddOrRemoveType AddRemoveType
 		{
 			get { return _AddRemoveType; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AddRemoveType");
 			}
 		}
+		[JsonProperty]
 		public IList<IntegerValue> CategoryIds
 		{
 			get { return _CategoryIds; }
@@ -71,35 +75,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ModifyCategoriesObjectTask(XmlElement node) : base(node)
+		public ModifyCategoriesObjectTask(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["addRemoveType"] != null)
 			{
-				switch (propertyNode.Name)
+				this._AddRemoveType = (ScheduledTaskAddOrRemoveType)ParseEnum(typeof(ScheduledTaskAddOrRemoveType), node["addRemoveType"].Value<string>());
+			}
+			if(node["categoryIds"] != null)
+			{
+				this._CategoryIds = new List<IntegerValue>();
+				foreach(var arrayNode in node["categoryIds"].Children())
 				{
-					case "addRemoveType":
-						this._AddRemoveType = (ScheduledTaskAddOrRemoveType)ParseEnum(typeof(ScheduledTaskAddOrRemoveType), propertyNode.InnerText);
-						continue;
-					case "categoryIds":
-						this._CategoryIds = new List<IntegerValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._CategoryIds.Add(ObjectFactory.Create<IntegerValue>(arrayNode));
-						}
-						continue;
+					this._CategoryIds.Add(ObjectFactory.Create<IntegerValue>(arrayNode));
 				}
 			}
-		}
-
-		public ModifyCategoriesObjectTask(IDictionary<string,object> data) : base(data)
-		{
-			    this._AddRemoveType = (ScheduledTaskAddOrRemoveType)ParseEnum(typeof(ScheduledTaskAddOrRemoveType), data.TryGetValueSafe<int>("addRemoveType"));
-			    this._CategoryIds = new List<IntegerValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("categoryIds", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._CategoryIds.Add(ObjectFactory.Create<IntegerValue>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

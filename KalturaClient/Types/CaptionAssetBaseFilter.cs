@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,6 +58,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int CaptionParamsIdEqual
 		{
 			get { return _CaptionParamsIdEqual; }
@@ -65,6 +68,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CaptionParamsIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string CaptionParamsIdIn
 		{
 			get { return _CaptionParamsIdIn; }
@@ -74,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CaptionParamsIdIn");
 			}
 		}
+		[JsonProperty]
 		public CaptionType FormatEqual
 		{
 			get { return _FormatEqual; }
@@ -83,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FormatEqual");
 			}
 		}
+		[JsonProperty]
 		public string FormatIn
 		{
 			get { return _FormatIn; }
@@ -92,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FormatIn");
 			}
 		}
+		[JsonProperty]
 		public CaptionAssetStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -101,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -110,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		[JsonProperty]
 		public string StatusNotIn
 		{
 			get { return _StatusNotIn; }
@@ -126,46 +135,36 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CaptionAssetBaseFilter(XmlElement node) : base(node)
+		public CaptionAssetBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["captionParamsIdEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "captionParamsIdEqual":
-						this._CaptionParamsIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "captionParamsIdIn":
-						this._CaptionParamsIdIn = propertyNode.InnerText;
-						continue;
-					case "formatEqual":
-						this._FormatEqual = (CaptionType)StringEnum.Parse(typeof(CaptionType), propertyNode.InnerText);
-						continue;
-					case "formatIn":
-						this._FormatIn = propertyNode.InnerText;
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (CaptionAssetStatus)ParseEnum(typeof(CaptionAssetStatus), propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-					case "statusNotIn":
-						this._StatusNotIn = propertyNode.InnerText;
-						continue;
-				}
+				this._CaptionParamsIdEqual = ParseInt(node["captionParamsIdEqual"].Value<string>());
 			}
-		}
-
-		public CaptionAssetBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._CaptionParamsIdEqual = data.TryGetValueSafe<int>("captionParamsIdEqual");
-			    this._CaptionParamsIdIn = data.TryGetValueSafe<string>("captionParamsIdIn");
-			    this._FormatEqual = (CaptionType)StringEnum.Parse(typeof(CaptionType), data.TryGetValueSafe<string>("formatEqual"));
-			    this._FormatIn = data.TryGetValueSafe<string>("formatIn");
-			    this._StatusEqual = (CaptionAssetStatus)ParseEnum(typeof(CaptionAssetStatus), data.TryGetValueSafe<int>("statusEqual"));
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
-			    this._StatusNotIn = data.TryGetValueSafe<string>("statusNotIn");
+			if(node["captionParamsIdIn"] != null)
+			{
+				this._CaptionParamsIdIn = node["captionParamsIdIn"].Value<string>();
+			}
+			if(node["formatEqual"] != null)
+			{
+				this._FormatEqual = (CaptionType)StringEnum.Parse(typeof(CaptionType), node["formatEqual"].Value<string>());
+			}
+			if(node["formatIn"] != null)
+			{
+				this._FormatIn = node["formatIn"].Value<string>();
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (CaptionAssetStatus)ParseEnum(typeof(CaptionAssetStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
+			if(node["statusNotIn"] != null)
+			{
+				this._StatusNotIn = node["statusNotIn"].Value<string>();
+			}
 		}
 		#endregion
 

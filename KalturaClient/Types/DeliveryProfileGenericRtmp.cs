@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Pattern
 		{
 			get { return _Pattern; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Pattern");
 			}
 		}
+		[JsonProperty]
 		public string RendererClass
 		{
 			get { return _RendererClass; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DeliveryProfileGenericRtmp(XmlElement node) : base(node)
+		public DeliveryProfileGenericRtmp(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["pattern"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "pattern":
-						this._Pattern = propertyNode.InnerText;
-						continue;
-					case "rendererClass":
-						this._RendererClass = propertyNode.InnerText;
-						continue;
-				}
+				this._Pattern = node["pattern"].Value<string>();
 			}
-		}
-
-		public DeliveryProfileGenericRtmp(IDictionary<string,object> data) : base(data)
-		{
-			    this._Pattern = data.TryGetValueSafe<string>("pattern");
-			    this._RendererClass = data.TryGetValueSafe<string>("rendererClass");
+			if(node["rendererClass"] != null)
+			{
+				this._RendererClass = node["rendererClass"].Value<string>();
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public BusinessProcessServer Server
 		{
 			get { return _Server; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Server");
 			}
 		}
+		[JsonProperty]
 		public string CaseId
 		{
 			get { return _CaseId; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BusinessProcessNotificationDispatchJobData(XmlElement node) : base(node)
+		public BusinessProcessNotificationDispatchJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["server"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "server":
-						this._Server = ObjectFactory.Create<BusinessProcessServer>(propertyNode);
-						continue;
-					case "caseId":
-						this._CaseId = propertyNode.InnerText;
-						continue;
-				}
+				this._Server = ObjectFactory.Create<BusinessProcessServer>(node["server"]);
 			}
-		}
-
-		public BusinessProcessNotificationDispatchJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._Server = ObjectFactory.Create<BusinessProcessServer>(data.TryGetValueSafe<IDictionary<string,object>>("server"));
-			    this._CaseId = data.TryGetValueSafe<string>("caseId");
+			if(node["caseId"] != null)
+			{
+				this._CaseId = node["caseId"].Value<string>();
+			}
 		}
 		#endregion
 

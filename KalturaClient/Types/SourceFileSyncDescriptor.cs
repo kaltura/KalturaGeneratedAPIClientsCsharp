@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ActualFileSyncLocalPath
 		{
 			get { return _ActualFileSyncLocalPath; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ActualFileSyncLocalPath");
 			}
 		}
+		[JsonProperty]
 		public string AssetId
 		{
 			get { return _AssetId; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetId");
 			}
 		}
+		[JsonProperty]
 		public int AssetParamsId
 		{
 			get { return _AssetParamsId; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public SourceFileSyncDescriptor(XmlElement node) : base(node)
+		public SourceFileSyncDescriptor(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["actualFileSyncLocalPath"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "actualFileSyncLocalPath":
-						this._ActualFileSyncLocalPath = propertyNode.InnerText;
-						continue;
-					case "assetId":
-						this._AssetId = propertyNode.InnerText;
-						continue;
-					case "assetParamsId":
-						this._AssetParamsId = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._ActualFileSyncLocalPath = node["actualFileSyncLocalPath"].Value<string>();
 			}
-		}
-
-		public SourceFileSyncDescriptor(IDictionary<string,object> data) : base(data)
-		{
-			    this._ActualFileSyncLocalPath = data.TryGetValueSafe<string>("actualFileSyncLocalPath");
-			    this._AssetId = data.TryGetValueSafe<string>("assetId");
-			    this._AssetParamsId = data.TryGetValueSafe<int>("assetParamsId");
+			if(node["assetId"] != null)
+			{
+				this._AssetId = node["assetId"].Value<string>();
+			}
+			if(node["assetParamsId"] != null)
+			{
+				this._AssetParamsId = ParseInt(node["assetParamsId"].Value<string>());
+			}
 		}
 		#endregion
 

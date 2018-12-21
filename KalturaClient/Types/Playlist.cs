@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -58,6 +60,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string PlaylistContent
 		{
 			get { return _PlaylistContent; }
@@ -67,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PlaylistContent");
 			}
 		}
+		[JsonProperty]
 		public IList<MediaEntryFilterForPlaylist> Filters
 		{
 			get { return _Filters; }
@@ -76,6 +80,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Filters");
 			}
 		}
+		[JsonProperty]
 		public int TotalResults
 		{
 			get { return _TotalResults; }
@@ -85,6 +90,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TotalResults");
 			}
 		}
+		[JsonProperty]
 		public PlaylistType PlaylistType
 		{
 			get { return _PlaylistType; }
@@ -94,21 +100,45 @@ namespace Kaltura.Types
 				OnPropertyChanged("PlaylistType");
 			}
 		}
+		[JsonProperty]
 		public int Plays
 		{
 			get { return _Plays; }
+			private set 
+			{ 
+				_Plays = value;
+				OnPropertyChanged("Plays");
+			}
 		}
+		[JsonProperty]
 		public int Views
 		{
 			get { return _Views; }
+			private set 
+			{ 
+				_Views = value;
+				OnPropertyChanged("Views");
+			}
 		}
+		[JsonProperty]
 		public int Duration
 		{
 			get { return _Duration; }
+			private set 
+			{ 
+				_Duration = value;
+				OnPropertyChanged("Duration");
+			}
 		}
+		[JsonProperty]
 		public string ExecuteUrl
 		{
 			get { return _ExecuteUrl; }
+			private set 
+			{ 
+				_ExecuteUrl = value;
+				OnPropertyChanged("ExecuteUrl");
+			}
 		}
 		#endregion
 
@@ -117,59 +147,44 @@ namespace Kaltura.Types
 		{
 		}
 
-		public Playlist(XmlElement node) : base(node)
+		public Playlist(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["playlistContent"] != null)
 			{
-				switch (propertyNode.Name)
+				this._PlaylistContent = node["playlistContent"].Value<string>();
+			}
+			if(node["filters"] != null)
+			{
+				this._Filters = new List<MediaEntryFilterForPlaylist>();
+				foreach(var arrayNode in node["filters"].Children())
 				{
-					case "playlistContent":
-						this._PlaylistContent = propertyNode.InnerText;
-						continue;
-					case "filters":
-						this._Filters = new List<MediaEntryFilterForPlaylist>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Filters.Add(ObjectFactory.Create<MediaEntryFilterForPlaylist>(arrayNode));
-						}
-						continue;
-					case "totalResults":
-						this._TotalResults = ParseInt(propertyNode.InnerText);
-						continue;
-					case "playlistType":
-						this._PlaylistType = (PlaylistType)ParseEnum(typeof(PlaylistType), propertyNode.InnerText);
-						continue;
-					case "plays":
-						this._Plays = ParseInt(propertyNode.InnerText);
-						continue;
-					case "views":
-						this._Views = ParseInt(propertyNode.InnerText);
-						continue;
-					case "duration":
-						this._Duration = ParseInt(propertyNode.InnerText);
-						continue;
-					case "executeUrl":
-						this._ExecuteUrl = propertyNode.InnerText;
-						continue;
+					this._Filters.Add(ObjectFactory.Create<MediaEntryFilterForPlaylist>(arrayNode));
 				}
 			}
-		}
-
-		public Playlist(IDictionary<string,object> data) : base(data)
-		{
-			    this._PlaylistContent = data.TryGetValueSafe<string>("playlistContent");
-			    this._Filters = new List<MediaEntryFilterForPlaylist>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("filters", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Filters.Add(ObjectFactory.Create<MediaEntryFilterForPlaylist>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._TotalResults = data.TryGetValueSafe<int>("totalResults");
-			    this._PlaylistType = (PlaylistType)ParseEnum(typeof(PlaylistType), data.TryGetValueSafe<int>("playlistType"));
-			    this._Plays = data.TryGetValueSafe<int>("plays");
-			    this._Views = data.TryGetValueSafe<int>("views");
-			    this._Duration = data.TryGetValueSafe<int>("duration");
-			    this._ExecuteUrl = data.TryGetValueSafe<string>("executeUrl");
+			if(node["totalResults"] != null)
+			{
+				this._TotalResults = ParseInt(node["totalResults"].Value<string>());
+			}
+			if(node["playlistType"] != null)
+			{
+				this._PlaylistType = (PlaylistType)ParseEnum(typeof(PlaylistType), node["playlistType"].Value<string>());
+			}
+			if(node["plays"] != null)
+			{
+				this._Plays = ParseInt(node["plays"].Value<string>());
+			}
+			if(node["views"] != null)
+			{
+				this._Views = ParseInt(node["views"].Value<string>());
+			}
+			if(node["duration"] != null)
+			{
+				this._Duration = ParseInt(node["duration"].Value<string>());
+			}
+			if(node["executeUrl"] != null)
+			{
+				this._ExecuteUrl = node["executeUrl"].Value<string>();
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public Coordinate City
 		{
 			get { return _City; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("City");
 			}
 		}
+		[JsonProperty]
 		public Coordinate Country
 		{
 			get { return _Country; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public GeoTimeLiveStats(XmlElement node) : base(node)
+		public GeoTimeLiveStats(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["city"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "city":
-						this._City = ObjectFactory.Create<Coordinate>(propertyNode);
-						continue;
-					case "country":
-						this._Country = ObjectFactory.Create<Coordinate>(propertyNode);
-						continue;
-				}
+				this._City = ObjectFactory.Create<Coordinate>(node["city"]);
 			}
-		}
-
-		public GeoTimeLiveStats(IDictionary<string,object> data) : base(data)
-		{
-			    this._City = ObjectFactory.Create<Coordinate>(data.TryGetValueSafe<IDictionary<string,object>>("city"));
-			    this._Country = ObjectFactory.Create<Coordinate>(data.TryGetValueSafe<IDictionary<string,object>>("country"));
+			if(node["country"] != null)
+			{
+				this._Country = ObjectFactory.Create<Coordinate>(node["country"]);
+			}
 		}
 		#endregion
 

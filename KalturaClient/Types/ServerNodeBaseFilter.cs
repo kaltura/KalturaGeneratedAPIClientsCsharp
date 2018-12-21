@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -100,6 +102,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int IdEqual
 		{
 			get { return _IdEqual; }
@@ -109,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		[JsonProperty]
 		public string IdIn
 		{
 			get { return _IdIn; }
@@ -118,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
 			get { return _CreatedAtGreaterThanOrEqual; }
@@ -127,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
 			get { return _CreatedAtLessThanOrEqual; }
@@ -136,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
 			get { return _UpdatedAtGreaterThanOrEqual; }
@@ -145,6 +152,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
 			get { return _UpdatedAtLessThanOrEqual; }
@@ -154,6 +162,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int HeartbeatTimeGreaterThanOrEqual
 		{
 			get { return _HeartbeatTimeGreaterThanOrEqual; }
@@ -163,6 +172,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("HeartbeatTimeGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int HeartbeatTimeLessThanOrEqual
 		{
 			get { return _HeartbeatTimeLessThanOrEqual; }
@@ -172,6 +182,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("HeartbeatTimeLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public string NameEqual
 		{
 			get { return _NameEqual; }
@@ -181,6 +192,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("NameEqual");
 			}
 		}
+		[JsonProperty]
 		public string NameIn
 		{
 			get { return _NameIn; }
@@ -190,6 +202,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("NameIn");
 			}
 		}
+		[JsonProperty]
 		public string SystemNameEqual
 		{
 			get { return _SystemNameEqual; }
@@ -199,6 +212,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemNameEqual");
 			}
 		}
+		[JsonProperty]
 		public string SystemNameIn
 		{
 			get { return _SystemNameIn; }
@@ -208,6 +222,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemNameIn");
 			}
 		}
+		[JsonProperty]
 		public string HostNameLike
 		{
 			get { return _HostNameLike; }
@@ -217,6 +232,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("HostNameLike");
 			}
 		}
+		[JsonProperty]
 		public string HostNameMultiLikeOr
 		{
 			get { return _HostNameMultiLikeOr; }
@@ -226,6 +242,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("HostNameMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string HostNameMultiLikeAnd
 		{
 			get { return _HostNameMultiLikeAnd; }
@@ -235,6 +252,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("HostNameMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public ServerNodeStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -244,6 +262,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -253,6 +272,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		[JsonProperty]
 		public ServerNodeType TypeEqual
 		{
 			get { return _TypeEqual; }
@@ -262,6 +282,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string TypeIn
 		{
 			get { return _TypeIn; }
@@ -271,6 +292,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeIn");
 			}
 		}
+		[JsonProperty]
 		public string TagsLike
 		{
 			get { return _TagsLike; }
@@ -280,6 +302,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsLike");
 			}
 		}
+		[JsonProperty]
 		public string TagsMultiLikeOr
 		{
 			get { return _TagsMultiLikeOr; }
@@ -289,6 +312,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string TagsMultiLikeAnd
 		{
 			get { return _TagsMultiLikeAnd; }
@@ -298,6 +322,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public int DcEqual
 		{
 			get { return _DcEqual; }
@@ -307,6 +332,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DcEqual");
 			}
 		}
+		[JsonProperty]
 		public string DcIn
 		{
 			get { return _DcIn; }
@@ -316,6 +342,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DcIn");
 			}
 		}
+		[JsonProperty]
 		public string ParentIdLike
 		{
 			get { return _ParentIdLike; }
@@ -325,6 +352,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentIdLike");
 			}
 		}
+		[JsonProperty]
 		public string ParentIdMultiLikeOr
 		{
 			get { return _ParentIdMultiLikeOr; }
@@ -334,6 +362,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentIdMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string ParentIdMultiLikeAnd
 		{
 			get { return _ParentIdMultiLikeAnd; }
@@ -343,6 +372,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentIdMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public string EnvironmentEqual
 		{
 			get { return _EnvironmentEqual; }
@@ -352,6 +382,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EnvironmentEqual");
 			}
 		}
+		[JsonProperty]
 		public string EnvironmentIn
 		{
 			get { return _EnvironmentIn; }
@@ -368,134 +399,124 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ServerNodeBaseFilter(XmlElement node) : base(node)
+		public ServerNodeBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["idEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "idEqual":
-						this._IdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "idIn":
-						this._IdIn = propertyNode.InnerText;
-						continue;
-					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "heartbeatTimeGreaterThanOrEqual":
-						this._HeartbeatTimeGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "heartbeatTimeLessThanOrEqual":
-						this._HeartbeatTimeLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "nameEqual":
-						this._NameEqual = propertyNode.InnerText;
-						continue;
-					case "nameIn":
-						this._NameIn = propertyNode.InnerText;
-						continue;
-					case "systemNameEqual":
-						this._SystemNameEqual = propertyNode.InnerText;
-						continue;
-					case "systemNameIn":
-						this._SystemNameIn = propertyNode.InnerText;
-						continue;
-					case "hostNameLike":
-						this._HostNameLike = propertyNode.InnerText;
-						continue;
-					case "hostNameMultiLikeOr":
-						this._HostNameMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "hostNameMultiLikeAnd":
-						this._HostNameMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (ServerNodeStatus)ParseEnum(typeof(ServerNodeStatus), propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-					case "typeEqual":
-						this._TypeEqual = (ServerNodeType)StringEnum.Parse(typeof(ServerNodeType), propertyNode.InnerText);
-						continue;
-					case "typeIn":
-						this._TypeIn = propertyNode.InnerText;
-						continue;
-					case "tagsLike":
-						this._TagsLike = propertyNode.InnerText;
-						continue;
-					case "tagsMultiLikeOr":
-						this._TagsMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "tagsMultiLikeAnd":
-						this._TagsMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "dcEqual":
-						this._DcEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "dcIn":
-						this._DcIn = propertyNode.InnerText;
-						continue;
-					case "parentIdLike":
-						this._ParentIdLike = propertyNode.InnerText;
-						continue;
-					case "parentIdMultiLikeOr":
-						this._ParentIdMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "parentIdMultiLikeAnd":
-						this._ParentIdMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "environmentEqual":
-						this._EnvironmentEqual = propertyNode.InnerText;
-						continue;
-					case "environmentIn":
-						this._EnvironmentIn = propertyNode.InnerText;
-						continue;
-				}
+				this._IdEqual = ParseInt(node["idEqual"].Value<string>());
 			}
-		}
-
-		public ServerNodeBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
-			    this._IdIn = data.TryGetValueSafe<string>("idIn");
-			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
-			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
-			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
-			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
-			    this._HeartbeatTimeGreaterThanOrEqual = data.TryGetValueSafe<int>("heartbeatTimeGreaterThanOrEqual");
-			    this._HeartbeatTimeLessThanOrEqual = data.TryGetValueSafe<int>("heartbeatTimeLessThanOrEqual");
-			    this._NameEqual = data.TryGetValueSafe<string>("nameEqual");
-			    this._NameIn = data.TryGetValueSafe<string>("nameIn");
-			    this._SystemNameEqual = data.TryGetValueSafe<string>("systemNameEqual");
-			    this._SystemNameIn = data.TryGetValueSafe<string>("systemNameIn");
-			    this._HostNameLike = data.TryGetValueSafe<string>("hostNameLike");
-			    this._HostNameMultiLikeOr = data.TryGetValueSafe<string>("hostNameMultiLikeOr");
-			    this._HostNameMultiLikeAnd = data.TryGetValueSafe<string>("hostNameMultiLikeAnd");
-			    this._StatusEqual = (ServerNodeStatus)ParseEnum(typeof(ServerNodeStatus), data.TryGetValueSafe<int>("statusEqual"));
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
-			    this._TypeEqual = (ServerNodeType)StringEnum.Parse(typeof(ServerNodeType), data.TryGetValueSafe<string>("typeEqual"));
-			    this._TypeIn = data.TryGetValueSafe<string>("typeIn");
-			    this._TagsLike = data.TryGetValueSafe<string>("tagsLike");
-			    this._TagsMultiLikeOr = data.TryGetValueSafe<string>("tagsMultiLikeOr");
-			    this._TagsMultiLikeAnd = data.TryGetValueSafe<string>("tagsMultiLikeAnd");
-			    this._DcEqual = data.TryGetValueSafe<int>("dcEqual");
-			    this._DcIn = data.TryGetValueSafe<string>("dcIn");
-			    this._ParentIdLike = data.TryGetValueSafe<string>("parentIdLike");
-			    this._ParentIdMultiLikeOr = data.TryGetValueSafe<string>("parentIdMultiLikeOr");
-			    this._ParentIdMultiLikeAnd = data.TryGetValueSafe<string>("parentIdMultiLikeAnd");
-			    this._EnvironmentEqual = data.TryGetValueSafe<string>("environmentEqual");
-			    this._EnvironmentIn = data.TryGetValueSafe<string>("environmentIn");
+			if(node["idIn"] != null)
+			{
+				this._IdIn = node["idIn"].Value<string>();
+			}
+			if(node["createdAtGreaterThanOrEqual"] != null)
+			{
+				this._CreatedAtGreaterThanOrEqual = ParseInt(node["createdAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["createdAtLessThanOrEqual"] != null)
+			{
+				this._CreatedAtLessThanOrEqual = ParseInt(node["createdAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtGreaterThanOrEqual"] != null)
+			{
+				this._UpdatedAtGreaterThanOrEqual = ParseInt(node["updatedAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtLessThanOrEqual"] != null)
+			{
+				this._UpdatedAtLessThanOrEqual = ParseInt(node["updatedAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["heartbeatTimeGreaterThanOrEqual"] != null)
+			{
+				this._HeartbeatTimeGreaterThanOrEqual = ParseInt(node["heartbeatTimeGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["heartbeatTimeLessThanOrEqual"] != null)
+			{
+				this._HeartbeatTimeLessThanOrEqual = ParseInt(node["heartbeatTimeLessThanOrEqual"].Value<string>());
+			}
+			if(node["nameEqual"] != null)
+			{
+				this._NameEqual = node["nameEqual"].Value<string>();
+			}
+			if(node["nameIn"] != null)
+			{
+				this._NameIn = node["nameIn"].Value<string>();
+			}
+			if(node["systemNameEqual"] != null)
+			{
+				this._SystemNameEqual = node["systemNameEqual"].Value<string>();
+			}
+			if(node["systemNameIn"] != null)
+			{
+				this._SystemNameIn = node["systemNameIn"].Value<string>();
+			}
+			if(node["hostNameLike"] != null)
+			{
+				this._HostNameLike = node["hostNameLike"].Value<string>();
+			}
+			if(node["hostNameMultiLikeOr"] != null)
+			{
+				this._HostNameMultiLikeOr = node["hostNameMultiLikeOr"].Value<string>();
+			}
+			if(node["hostNameMultiLikeAnd"] != null)
+			{
+				this._HostNameMultiLikeAnd = node["hostNameMultiLikeAnd"].Value<string>();
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (ServerNodeStatus)ParseEnum(typeof(ServerNodeStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
+			if(node["typeEqual"] != null)
+			{
+				this._TypeEqual = (ServerNodeType)StringEnum.Parse(typeof(ServerNodeType), node["typeEqual"].Value<string>());
+			}
+			if(node["typeIn"] != null)
+			{
+				this._TypeIn = node["typeIn"].Value<string>();
+			}
+			if(node["tagsLike"] != null)
+			{
+				this._TagsLike = node["tagsLike"].Value<string>();
+			}
+			if(node["tagsMultiLikeOr"] != null)
+			{
+				this._TagsMultiLikeOr = node["tagsMultiLikeOr"].Value<string>();
+			}
+			if(node["tagsMultiLikeAnd"] != null)
+			{
+				this._TagsMultiLikeAnd = node["tagsMultiLikeAnd"].Value<string>();
+			}
+			if(node["dcEqual"] != null)
+			{
+				this._DcEqual = ParseInt(node["dcEqual"].Value<string>());
+			}
+			if(node["dcIn"] != null)
+			{
+				this._DcIn = node["dcIn"].Value<string>();
+			}
+			if(node["parentIdLike"] != null)
+			{
+				this._ParentIdLike = node["parentIdLike"].Value<string>();
+			}
+			if(node["parentIdMultiLikeOr"] != null)
+			{
+				this._ParentIdMultiLikeOr = node["parentIdMultiLikeOr"].Value<string>();
+			}
+			if(node["parentIdMultiLikeAnd"] != null)
+			{
+				this._ParentIdMultiLikeAnd = node["parentIdMultiLikeAnd"].Value<string>();
+			}
+			if(node["environmentEqual"] != null)
+			{
+				this._EnvironmentEqual = node["environmentEqual"].Value<string>();
+			}
+			if(node["environmentIn"] != null)
+			{
+				this._EnvironmentIn = node["environmentIn"].Value<string>();
+			}
 		}
 		#endregion
 

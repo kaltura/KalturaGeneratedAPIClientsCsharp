@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public PlaylistCompareAttribute Attribute
 		{
 			get { return _Attribute; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public PlaylistCompareAttributeCondition(XmlElement node) : base(node)
+		public PlaylistCompareAttributeCondition(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["attribute"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "attribute":
-						this._Attribute = (PlaylistCompareAttribute)StringEnum.Parse(typeof(PlaylistCompareAttribute), propertyNode.InnerText);
-						continue;
-				}
+				this._Attribute = (PlaylistCompareAttribute)StringEnum.Parse(typeof(PlaylistCompareAttribute), node["attribute"].Value<string>());
 			}
-		}
-
-		public PlaylistCompareAttributeCondition(IDictionary<string,object> data) : base(data)
-		{
-			    this._Attribute = (PlaylistCompareAttribute)StringEnum.Parse(typeof(PlaylistCompareAttribute), data.TryGetValueSafe<string>("attribute"));
 		}
 		#endregion
 

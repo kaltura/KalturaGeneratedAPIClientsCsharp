@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -90,10 +92,17 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -103,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -112,10 +122,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public UiConfObjType ObjType
 		{
 			get { return _ObjType; }
@@ -125,10 +142,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjType");
 			}
 		}
+		[JsonProperty]
 		public string ObjTypeAsString
 		{
 			get { return _ObjTypeAsString; }
+			private set 
+			{ 
+				_ObjTypeAsString = value;
+				OnPropertyChanged("ObjTypeAsString");
+			}
 		}
+		[JsonProperty]
 		public int Width
 		{
 			get { return _Width; }
@@ -138,6 +162,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Width");
 			}
 		}
+		[JsonProperty]
 		public int Height
 		{
 			get { return _Height; }
@@ -147,6 +172,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Height");
 			}
 		}
+		[JsonProperty]
 		public string HtmlParams
 		{
 			get { return _HtmlParams; }
@@ -156,6 +182,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("HtmlParams");
 			}
 		}
+		[JsonProperty]
 		public string SwfUrl
 		{
 			get { return _SwfUrl; }
@@ -165,10 +192,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("SwfUrl");
 			}
 		}
+		[JsonProperty]
 		public string ConfFilePath
 		{
 			get { return _ConfFilePath; }
+			private set 
+			{ 
+				_ConfFilePath = value;
+				OnPropertyChanged("ConfFilePath");
+			}
 		}
+		[JsonProperty]
 		public string ConfFile
 		{
 			get { return _ConfFile; }
@@ -178,6 +212,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConfFile");
 			}
 		}
+		[JsonProperty]
 		public string ConfFileFeatures
 		{
 			get { return _ConfFileFeatures; }
@@ -187,6 +222,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConfFileFeatures");
 			}
 		}
+		[JsonProperty]
 		public string Config
 		{
 			get { return _Config; }
@@ -196,6 +232,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Config");
 			}
 		}
+		[JsonProperty]
 		public string ConfVars
 		{
 			get { return _ConfVars; }
@@ -205,6 +242,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConfVars");
 			}
 		}
+		[JsonProperty]
 		public bool? UseCdn
 		{
 			get { return _UseCdn; }
@@ -214,6 +252,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UseCdn");
 			}
 		}
+		[JsonProperty]
 		public string Tags
 		{
 			get { return _Tags; }
@@ -223,6 +262,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
+		[JsonProperty]
 		public string SwfUrlVersion
 		{
 			get { return _SwfUrlVersion; }
@@ -232,14 +272,27 @@ namespace Kaltura.Types
 				OnPropertyChanged("SwfUrlVersion");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public UiConfCreationMode CreationMode
 		{
 			get { return _CreationMode; }
@@ -249,6 +302,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreationMode");
 			}
 		}
+		[JsonProperty]
 		public string Html5Url
 		{
 			get { return _Html5Url; }
@@ -258,10 +312,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("Html5Url");
 			}
 		}
+		[JsonProperty]
 		public string Version
 		{
 			get { return _Version; }
+			private set 
+			{ 
+				_Version = value;
+				OnPropertyChanged("Version");
+			}
 		}
+		[JsonProperty]
 		public string PartnerTags
 		{
 			get { return _PartnerTags; }
@@ -278,114 +339,104 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UiConf(XmlElement node) : base(node)
+		public UiConf(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "objType":
-						this._ObjType = (UiConfObjType)ParseEnum(typeof(UiConfObjType), propertyNode.InnerText);
-						continue;
-					case "objTypeAsString":
-						this._ObjTypeAsString = propertyNode.InnerText;
-						continue;
-					case "width":
-						this._Width = ParseInt(propertyNode.InnerText);
-						continue;
-					case "height":
-						this._Height = ParseInt(propertyNode.InnerText);
-						continue;
-					case "htmlParams":
-						this._HtmlParams = propertyNode.InnerText;
-						continue;
-					case "swfUrl":
-						this._SwfUrl = propertyNode.InnerText;
-						continue;
-					case "confFilePath":
-						this._ConfFilePath = propertyNode.InnerText;
-						continue;
-					case "confFile":
-						this._ConfFile = propertyNode.InnerText;
-						continue;
-					case "confFileFeatures":
-						this._ConfFileFeatures = propertyNode.InnerText;
-						continue;
-					case "config":
-						this._Config = propertyNode.InnerText;
-						continue;
-					case "confVars":
-						this._ConfVars = propertyNode.InnerText;
-						continue;
-					case "useCdn":
-						this._UseCdn = ParseBool(propertyNode.InnerText);
-						continue;
-					case "tags":
-						this._Tags = propertyNode.InnerText;
-						continue;
-					case "swfUrlVersion":
-						this._SwfUrlVersion = propertyNode.InnerText;
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "creationMode":
-						this._CreationMode = (UiConfCreationMode)ParseEnum(typeof(UiConfCreationMode), propertyNode.InnerText);
-						continue;
-					case "html5Url":
-						this._Html5Url = propertyNode.InnerText;
-						continue;
-					case "version":
-						this._Version = propertyNode.InnerText;
-						continue;
-					case "partnerTags":
-						this._PartnerTags = propertyNode.InnerText;
-						continue;
-				}
+				this._Id = ParseInt(node["id"].Value<string>());
 			}
-		}
-
-		public UiConf(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._Name = data.TryGetValueSafe<string>("name");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._ObjType = (UiConfObjType)ParseEnum(typeof(UiConfObjType), data.TryGetValueSafe<int>("objType"));
-			    this._ObjTypeAsString = data.TryGetValueSafe<string>("objTypeAsString");
-			    this._Width = data.TryGetValueSafe<int>("width");
-			    this._Height = data.TryGetValueSafe<int>("height");
-			    this._HtmlParams = data.TryGetValueSafe<string>("htmlParams");
-			    this._SwfUrl = data.TryGetValueSafe<string>("swfUrl");
-			    this._ConfFilePath = data.TryGetValueSafe<string>("confFilePath");
-			    this._ConfFile = data.TryGetValueSafe<string>("confFile");
-			    this._ConfFileFeatures = data.TryGetValueSafe<string>("confFileFeatures");
-			    this._Config = data.TryGetValueSafe<string>("config");
-			    this._ConfVars = data.TryGetValueSafe<string>("confVars");
-			    this._UseCdn = data.TryGetValueSafe<bool>("useCdn");
-			    this._Tags = data.TryGetValueSafe<string>("tags");
-			    this._SwfUrlVersion = data.TryGetValueSafe<string>("swfUrlVersion");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._CreationMode = (UiConfCreationMode)ParseEnum(typeof(UiConfCreationMode), data.TryGetValueSafe<int>("creationMode"));
-			    this._Html5Url = data.TryGetValueSafe<string>("html5Url");
-			    this._Version = data.TryGetValueSafe<string>("version");
-			    this._PartnerTags = data.TryGetValueSafe<string>("partnerTags");
+			if(node["name"] != null)
+			{
+				this._Name = node["name"].Value<string>();
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["objType"] != null)
+			{
+				this._ObjType = (UiConfObjType)ParseEnum(typeof(UiConfObjType), node["objType"].Value<string>());
+			}
+			if(node["objTypeAsString"] != null)
+			{
+				this._ObjTypeAsString = node["objTypeAsString"].Value<string>();
+			}
+			if(node["width"] != null)
+			{
+				this._Width = ParseInt(node["width"].Value<string>());
+			}
+			if(node["height"] != null)
+			{
+				this._Height = ParseInt(node["height"].Value<string>());
+			}
+			if(node["htmlParams"] != null)
+			{
+				this._HtmlParams = node["htmlParams"].Value<string>();
+			}
+			if(node["swfUrl"] != null)
+			{
+				this._SwfUrl = node["swfUrl"].Value<string>();
+			}
+			if(node["confFilePath"] != null)
+			{
+				this._ConfFilePath = node["confFilePath"].Value<string>();
+			}
+			if(node["confFile"] != null)
+			{
+				this._ConfFile = node["confFile"].Value<string>();
+			}
+			if(node["confFileFeatures"] != null)
+			{
+				this._ConfFileFeatures = node["confFileFeatures"].Value<string>();
+			}
+			if(node["config"] != null)
+			{
+				this._Config = node["config"].Value<string>();
+			}
+			if(node["confVars"] != null)
+			{
+				this._ConfVars = node["confVars"].Value<string>();
+			}
+			if(node["useCdn"] != null)
+			{
+				this._UseCdn = ParseBool(node["useCdn"].Value<string>());
+			}
+			if(node["tags"] != null)
+			{
+				this._Tags = node["tags"].Value<string>();
+			}
+			if(node["swfUrlVersion"] != null)
+			{
+				this._SwfUrlVersion = node["swfUrlVersion"].Value<string>();
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["creationMode"] != null)
+			{
+				this._CreationMode = (UiConfCreationMode)ParseEnum(typeof(UiConfCreationMode), node["creationMode"].Value<string>());
+			}
+			if(node["html5Url"] != null)
+			{
+				this._Html5Url = node["html5Url"].Value<string>();
+			}
+			if(node["version"] != null)
+			{
+				this._Version = node["version"].Value<string>();
+			}
+			if(node["partnerTags"] != null)
+			{
+				this._PartnerTags = node["partnerTags"].Value<string>();
+			}
 		}
 		#endregion
 

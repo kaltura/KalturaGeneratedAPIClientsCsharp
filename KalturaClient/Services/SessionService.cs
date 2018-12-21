@@ -32,10 +32,11 @@ using System.IO;
 using Kaltura.Request;
 using Kaltura.Types;
 using Kaltura.Enums;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Services
 {
-	public class SessionEndRequestBuilder : RequestBuilder<object>
+	public class SessionEndRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
 		#endregion
@@ -58,11 +59,7 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-		public override object DeserializeObject(object result)
+		public override object Deserialize(JToken result)
 		{
 			return null;
 		}
@@ -105,13 +102,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<SessionInfo>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<SessionInfo>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -206,13 +199,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
-			return result.InnerText;
-		}
-		public override object DeserializeObject(object result)
-		{
-			return (string)result;
+			return result.Value<string>();
 		}
 	}
 
@@ -280,13 +269,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<SessionInfo>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<SessionInfo>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -372,13 +357,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
-			return result.InnerText;
-		}
-		public override object DeserializeObject(object result)
-		{
-			return (string)result;
+			return result.Value<string>();
 		}
 	}
 
@@ -428,13 +409,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<StartWidgetSessionResponse>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<StartWidgetSessionResponse>((IDictionary<string,object>)result);
 		}
 	}
 

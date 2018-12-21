@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int MetadataProfileId
 		{
 			get { return _MetadataProfileId; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataProfileId");
 			}
 		}
+		[JsonProperty]
 		public MetadataObjectType MetadataObjectType
 		{
 			get { return _MetadataObjectType; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataObjectType");
 			}
 		}
+		[JsonProperty]
 		public string Xslt
 		{
 			get { return _Xslt; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ExecuteMetadataXsltObjectTask(XmlElement node) : base(node)
+		public ExecuteMetadataXsltObjectTask(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["metadataProfileId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "metadataProfileId":
-						this._MetadataProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "metadataObjectType":
-						this._MetadataObjectType = (MetadataObjectType)StringEnum.Parse(typeof(MetadataObjectType), propertyNode.InnerText);
-						continue;
-					case "xslt":
-						this._Xslt = propertyNode.InnerText;
-						continue;
-				}
+				this._MetadataProfileId = ParseInt(node["metadataProfileId"].Value<string>());
 			}
-		}
-
-		public ExecuteMetadataXsltObjectTask(IDictionary<string,object> data) : base(data)
-		{
-			    this._MetadataProfileId = data.TryGetValueSafe<int>("metadataProfileId");
-			    this._MetadataObjectType = (MetadataObjectType)StringEnum.Parse(typeof(MetadataObjectType), data.TryGetValueSafe<string>("metadataObjectType"));
-			    this._Xslt = data.TryGetValueSafe<string>("xslt");
+			if(node["metadataObjectType"] != null)
+			{
+				this._MetadataObjectType = (MetadataObjectType)StringEnum.Parse(typeof(MetadataObjectType), node["metadataObjectType"].Value<string>());
+			}
+			if(node["xslt"] != null)
+			{
+				this._Xslt = node["xslt"].Value<string>();
+			}
 		}
 		#endregion
 

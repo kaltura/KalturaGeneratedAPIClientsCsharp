@@ -32,6 +32,7 @@ using System.IO;
 using Kaltura.Request;
 using Kaltura.Types;
 using Kaltura.Enums;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Services
 {
@@ -72,13 +73,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<UserEntry>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<UserEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -119,13 +116,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
-			return int.Parse(result.InnerText);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return (int)(result);
+			return result.Value<int>();
 		}
 	}
 
@@ -166,13 +159,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<UserEntry>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<UserEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -213,13 +202,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<UserEntry>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<UserEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -269,13 +254,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<ListResponse<UserEntry>>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<ListResponse<UserEntry>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -316,17 +297,13 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<QuizUserEntry>(result);
 		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<QuizUserEntry>((IDictionary<string,object>)result);
-		}
 	}
 
-	public class UserEntryUpdateRequestBuilder : RequestBuilder<object>
+	public class UserEntryUpdateRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
 		public const string ID = "id";
@@ -372,11 +349,7 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-		public override object DeserializeObject(object result)
+		public override object Deserialize(JToken result)
 		{
 			return null;
 		}

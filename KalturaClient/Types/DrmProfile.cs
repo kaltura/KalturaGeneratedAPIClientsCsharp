@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -64,10 +66,17 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
@@ -77,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -86,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -95,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public DrmProviderType Provider
 		{
 			get { return _Provider; }
@@ -104,6 +116,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Provider");
 			}
 		}
+		[JsonProperty]
 		public DrmProfileStatus Status
 		{
 			get { return _Status; }
@@ -113,6 +126,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		[JsonProperty]
 		public string LicenseServerUrl
 		{
 			get { return _LicenseServerUrl; }
@@ -122,6 +136,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LicenseServerUrl");
 			}
 		}
+		[JsonProperty]
 		public string DefaultPolicy
 		{
 			get { return _DefaultPolicy; }
@@ -131,14 +146,27 @@ namespace Kaltura.Types
 				OnPropertyChanged("DefaultPolicy");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public string SigningKey
 		{
 			get { return _SigningKey; }
@@ -155,62 +183,52 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DrmProfile(XmlElement node) : base(node)
+		public DrmProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "provider":
-						this._Provider = (DrmProviderType)StringEnum.Parse(typeof(DrmProviderType), propertyNode.InnerText);
-						continue;
-					case "status":
-						this._Status = (DrmProfileStatus)ParseEnum(typeof(DrmProfileStatus), propertyNode.InnerText);
-						continue;
-					case "licenseServerUrl":
-						this._LicenseServerUrl = propertyNode.InnerText;
-						continue;
-					case "defaultPolicy":
-						this._DefaultPolicy = propertyNode.InnerText;
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "signingKey":
-						this._SigningKey = propertyNode.InnerText;
-						continue;
-				}
+				this._Id = ParseInt(node["id"].Value<string>());
 			}
-		}
-
-		public DrmProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._Name = data.TryGetValueSafe<string>("name");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._Provider = (DrmProviderType)StringEnum.Parse(typeof(DrmProviderType), data.TryGetValueSafe<string>("provider"));
-			    this._Status = (DrmProfileStatus)ParseEnum(typeof(DrmProfileStatus), data.TryGetValueSafe<int>("status"));
-			    this._LicenseServerUrl = data.TryGetValueSafe<string>("licenseServerUrl");
-			    this._DefaultPolicy = data.TryGetValueSafe<string>("defaultPolicy");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._SigningKey = data.TryGetValueSafe<string>("signingKey");
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["name"] != null)
+			{
+				this._Name = node["name"].Value<string>();
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["provider"] != null)
+			{
+				this._Provider = (DrmProviderType)StringEnum.Parse(typeof(DrmProviderType), node["provider"].Value<string>());
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (DrmProfileStatus)ParseEnum(typeof(DrmProfileStatus), node["status"].Value<string>());
+			}
+			if(node["licenseServerUrl"] != null)
+			{
+				this._LicenseServerUrl = node["licenseServerUrl"].Value<string>();
+			}
+			if(node["defaultPolicy"] != null)
+			{
+				this._DefaultPolicy = node["defaultPolicy"].Value<string>();
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["signingKey"] != null)
+			{
+				this._SigningKey = node["signingKey"].Value<string>();
+			}
 		}
 		#endregion
 

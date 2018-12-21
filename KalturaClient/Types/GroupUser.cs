@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,6 +58,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string UserId
 		{
 			get { return _UserId; }
@@ -65,6 +68,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserId");
 			}
 		}
+		[JsonProperty]
 		public string GroupId
 		{
 			get { return _GroupId; }
@@ -74,22 +78,47 @@ namespace Kaltura.Types
 				OnPropertyChanged("GroupId");
 			}
 		}
+		[JsonProperty]
 		public GroupUserStatus Status
 		{
 			get { return _Status; }
+			private set 
+			{ 
+				_Status = value;
+				OnPropertyChanged("Status");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public GroupUserCreationMode CreationMode
 		{
 			get { return _CreationMode; }
@@ -106,46 +135,36 @@ namespace Kaltura.Types
 		{
 		}
 
-		public GroupUser(XmlElement node) : base(node)
+		public GroupUser(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["userId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "userId":
-						this._UserId = propertyNode.InnerText;
-						continue;
-					case "groupId":
-						this._GroupId = propertyNode.InnerText;
-						continue;
-					case "status":
-						this._Status = (GroupUserStatus)ParseEnum(typeof(GroupUserStatus), propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "creationMode":
-						this._CreationMode = (GroupUserCreationMode)ParseEnum(typeof(GroupUserCreationMode), propertyNode.InnerText);
-						continue;
-				}
+				this._UserId = node["userId"].Value<string>();
 			}
-		}
-
-		public GroupUser(IDictionary<string,object> data) : base(data)
-		{
-			    this._UserId = data.TryGetValueSafe<string>("userId");
-			    this._GroupId = data.TryGetValueSafe<string>("groupId");
-			    this._Status = (GroupUserStatus)ParseEnum(typeof(GroupUserStatus), data.TryGetValueSafe<int>("status"));
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._CreationMode = (GroupUserCreationMode)ParseEnum(typeof(GroupUserCreationMode), data.TryGetValueSafe<int>("creationMode"));
+			if(node["groupId"] != null)
+			{
+				this._GroupId = node["groupId"].Value<string>();
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (GroupUserStatus)ParseEnum(typeof(GroupUserStatus), node["status"].Value<string>());
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["creationMode"] != null)
+			{
+				this._CreationMode = (GroupUserCreationMode)ParseEnum(typeof(GroupUserCreationMode), node["creationMode"].Value<string>());
+			}
 		}
 		#endregion
 

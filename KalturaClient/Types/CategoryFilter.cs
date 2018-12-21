@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -60,6 +62,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string FreeText
 		{
 			get { return _FreeText; }
@@ -69,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FreeText");
 			}
 		}
+		[JsonProperty]
 		public string MembersIn
 		{
 			get { return _MembersIn; }
@@ -78,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MembersIn");
 			}
 		}
+		[JsonProperty]
 		public string NameOrReferenceIdStartsWith
 		{
 			get { return _NameOrReferenceIdStartsWith; }
@@ -87,6 +92,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("NameOrReferenceIdStartsWith");
 			}
 		}
+		[JsonProperty]
 		public string ManagerEqual
 		{
 			get { return _ManagerEqual; }
@@ -96,6 +102,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ManagerEqual");
 			}
 		}
+		[JsonProperty]
 		public string MemberEqual
 		{
 			get { return _MemberEqual; }
@@ -105,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MemberEqual");
 			}
 		}
+		[JsonProperty]
 		public string FullNameStartsWithIn
 		{
 			get { return _FullNameStartsWithIn; }
@@ -114,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FullNameStartsWithIn");
 			}
 		}
+		[JsonProperty]
 		public string AncestorIdIn
 		{
 			get { return _AncestorIdIn; }
@@ -123,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AncestorIdIn");
 			}
 		}
+		[JsonProperty]
 		public string IdOrInheritedParentIdIn
 		{
 			get { return _IdOrInheritedParentIdIn; }
@@ -132,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdOrInheritedParentIdIn");
 			}
 		}
+		[JsonProperty]
 		public new CategoryOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -148,54 +159,44 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CategoryFilter(XmlElement node) : base(node)
+		public CategoryFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["freeText"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "freeText":
-						this._FreeText = propertyNode.InnerText;
-						continue;
-					case "membersIn":
-						this._MembersIn = propertyNode.InnerText;
-						continue;
-					case "nameOrReferenceIdStartsWith":
-						this._NameOrReferenceIdStartsWith = propertyNode.InnerText;
-						continue;
-					case "managerEqual":
-						this._ManagerEqual = propertyNode.InnerText;
-						continue;
-					case "memberEqual":
-						this._MemberEqual = propertyNode.InnerText;
-						continue;
-					case "fullNameStartsWithIn":
-						this._FullNameStartsWithIn = propertyNode.InnerText;
-						continue;
-					case "ancestorIdIn":
-						this._AncestorIdIn = propertyNode.InnerText;
-						continue;
-					case "idOrInheritedParentIdIn":
-						this._IdOrInheritedParentIdIn = propertyNode.InnerText;
-						continue;
-					case "orderBy":
-						this._OrderBy = (CategoryOrderBy)StringEnum.Parse(typeof(CategoryOrderBy), propertyNode.InnerText);
-						continue;
-				}
+				this._FreeText = node["freeText"].Value<string>();
 			}
-		}
-
-		public CategoryFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._FreeText = data.TryGetValueSafe<string>("freeText");
-			    this._MembersIn = data.TryGetValueSafe<string>("membersIn");
-			    this._NameOrReferenceIdStartsWith = data.TryGetValueSafe<string>("nameOrReferenceIdStartsWith");
-			    this._ManagerEqual = data.TryGetValueSafe<string>("managerEqual");
-			    this._MemberEqual = data.TryGetValueSafe<string>("memberEqual");
-			    this._FullNameStartsWithIn = data.TryGetValueSafe<string>("fullNameStartsWithIn");
-			    this._AncestorIdIn = data.TryGetValueSafe<string>("ancestorIdIn");
-			    this._IdOrInheritedParentIdIn = data.TryGetValueSafe<string>("idOrInheritedParentIdIn");
-			    this._OrderBy = (CategoryOrderBy)StringEnum.Parse(typeof(CategoryOrderBy), data.TryGetValueSafe<string>("orderBy"));
+			if(node["membersIn"] != null)
+			{
+				this._MembersIn = node["membersIn"].Value<string>();
+			}
+			if(node["nameOrReferenceIdStartsWith"] != null)
+			{
+				this._NameOrReferenceIdStartsWith = node["nameOrReferenceIdStartsWith"].Value<string>();
+			}
+			if(node["managerEqual"] != null)
+			{
+				this._ManagerEqual = node["managerEqual"].Value<string>();
+			}
+			if(node["memberEqual"] != null)
+			{
+				this._MemberEqual = node["memberEqual"].Value<string>();
+			}
+			if(node["fullNameStartsWithIn"] != null)
+			{
+				this._FullNameStartsWithIn = node["fullNameStartsWithIn"].Value<string>();
+			}
+			if(node["ancestorIdIn"] != null)
+			{
+				this._AncestorIdIn = node["ancestorIdIn"].Value<string>();
+			}
+			if(node["idOrInheritedParentIdIn"] != null)
+			{
+				this._IdOrInheritedParentIdIn = node["idOrInheritedParentIdIn"].Value<string>();
+			}
+			if(node["orderBy"] != null)
+			{
+				this._OrderBy = (CategoryOrderBy)StringEnum.Parse(typeof(CategoryOrderBy), node["orderBy"].Value<string>());
+			}
 		}
 		#endregion
 

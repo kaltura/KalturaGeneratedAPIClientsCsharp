@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public PlayReadyPolicy Policy
 		{
 			get { return _Policy; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Policy");
 			}
 		}
+		[JsonProperty]
 		public int BeginDate
 		{
 			get { return _BeginDate; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BeginDate");
 			}
 		}
+		[JsonProperty]
 		public int ExpirationDate
 		{
 			get { return _ExpirationDate; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExpirationDate");
 			}
 		}
+		[JsonProperty]
 		public int RemovalDate
 		{
 			get { return _RemovalDate; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public PlayReadyLicenseDetails(XmlElement node) : base(node)
+		public PlayReadyLicenseDetails(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["policy"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "policy":
-						this._Policy = ObjectFactory.Create<PlayReadyPolicy>(propertyNode);
-						continue;
-					case "beginDate":
-						this._BeginDate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "expirationDate":
-						this._ExpirationDate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "removalDate":
-						this._RemovalDate = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._Policy = ObjectFactory.Create<PlayReadyPolicy>(node["policy"]);
 			}
-		}
-
-		public PlayReadyLicenseDetails(IDictionary<string,object> data) : base(data)
-		{
-			    this._Policy = ObjectFactory.Create<PlayReadyPolicy>(data.TryGetValueSafe<IDictionary<string,object>>("policy"));
-			    this._BeginDate = data.TryGetValueSafe<int>("beginDate");
-			    this._ExpirationDate = data.TryGetValueSafe<int>("expirationDate");
-			    this._RemovalDate = data.TryGetValueSafe<int>("removalDate");
+			if(node["beginDate"] != null)
+			{
+				this._BeginDate = ParseInt(node["beginDate"].Value<string>());
+			}
+			if(node["expirationDate"] != null)
+			{
+				this._ExpirationDate = ParseInt(node["expirationDate"].Value<string>());
+			}
+			if(node["removalDate"] != null)
+			{
+				this._RemovalDate = ParseInt(node["removalDate"].Value<string>());
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -60,10 +62,17 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public DistributionProviderType Type
 		{
 			get { return _Type; }
+			private set 
+			{ 
+				_Type = value;
+				OnPropertyChanged("Type");
+			}
 		}
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -73,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		[JsonProperty]
 		public bool? ScheduleUpdateEnabled
 		{
 			get { return _ScheduleUpdateEnabled; }
@@ -82,6 +92,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ScheduleUpdateEnabled");
 			}
 		}
+		[JsonProperty]
 		public bool? AvailabilityUpdateEnabled
 		{
 			get { return _AvailabilityUpdateEnabled; }
@@ -91,6 +102,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AvailabilityUpdateEnabled");
 			}
 		}
+		[JsonProperty]
 		public bool? DeleteInsteadUpdate
 		{
 			get { return _DeleteInsteadUpdate; }
@@ -100,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeleteInsteadUpdate");
 			}
 		}
+		[JsonProperty]
 		public int IntervalBeforeSunrise
 		{
 			get { return _IntervalBeforeSunrise; }
@@ -109,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IntervalBeforeSunrise");
 			}
 		}
+		[JsonProperty]
 		public int IntervalBeforeSunset
 		{
 			get { return _IntervalBeforeSunset; }
@@ -118,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IntervalBeforeSunset");
 			}
 		}
+		[JsonProperty]
 		public string UpdateRequiredEntryFields
 		{
 			get { return _UpdateRequiredEntryFields; }
@@ -127,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdateRequiredEntryFields");
 			}
 		}
+		[JsonProperty]
 		public string UpdateRequiredMetadataXPaths
 		{
 			get { return _UpdateRequiredMetadataXPaths; }
@@ -143,54 +159,44 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DistributionProvider(XmlElement node) : base(node)
+		public DistributionProvider(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["type"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "type":
-						this._Type = (DistributionProviderType)StringEnum.Parse(typeof(DistributionProviderType), propertyNode.InnerText);
-						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-					case "scheduleUpdateEnabled":
-						this._ScheduleUpdateEnabled = ParseBool(propertyNode.InnerText);
-						continue;
-					case "availabilityUpdateEnabled":
-						this._AvailabilityUpdateEnabled = ParseBool(propertyNode.InnerText);
-						continue;
-					case "deleteInsteadUpdate":
-						this._DeleteInsteadUpdate = ParseBool(propertyNode.InnerText);
-						continue;
-					case "intervalBeforeSunrise":
-						this._IntervalBeforeSunrise = ParseInt(propertyNode.InnerText);
-						continue;
-					case "intervalBeforeSunset":
-						this._IntervalBeforeSunset = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updateRequiredEntryFields":
-						this._UpdateRequiredEntryFields = propertyNode.InnerText;
-						continue;
-					case "updateRequiredMetadataXPaths":
-						this._UpdateRequiredMetadataXPaths = propertyNode.InnerText;
-						continue;
-				}
+				this._Type = (DistributionProviderType)StringEnum.Parse(typeof(DistributionProviderType), node["type"].Value<string>());
 			}
-		}
-
-		public DistributionProvider(IDictionary<string,object> data) : base(data)
-		{
-			    this._Type = (DistributionProviderType)StringEnum.Parse(typeof(DistributionProviderType), data.TryGetValueSafe<string>("type"));
-			    this._Name = data.TryGetValueSafe<string>("name");
-			    this._ScheduleUpdateEnabled = data.TryGetValueSafe<bool>("scheduleUpdateEnabled");
-			    this._AvailabilityUpdateEnabled = data.TryGetValueSafe<bool>("availabilityUpdateEnabled");
-			    this._DeleteInsteadUpdate = data.TryGetValueSafe<bool>("deleteInsteadUpdate");
-			    this._IntervalBeforeSunrise = data.TryGetValueSafe<int>("intervalBeforeSunrise");
-			    this._IntervalBeforeSunset = data.TryGetValueSafe<int>("intervalBeforeSunset");
-			    this._UpdateRequiredEntryFields = data.TryGetValueSafe<string>("updateRequiredEntryFields");
-			    this._UpdateRequiredMetadataXPaths = data.TryGetValueSafe<string>("updateRequiredMetadataXPaths");
+			if(node["name"] != null)
+			{
+				this._Name = node["name"].Value<string>();
+			}
+			if(node["scheduleUpdateEnabled"] != null)
+			{
+				this._ScheduleUpdateEnabled = ParseBool(node["scheduleUpdateEnabled"].Value<string>());
+			}
+			if(node["availabilityUpdateEnabled"] != null)
+			{
+				this._AvailabilityUpdateEnabled = ParseBool(node["availabilityUpdateEnabled"].Value<string>());
+			}
+			if(node["deleteInsteadUpdate"] != null)
+			{
+				this._DeleteInsteadUpdate = ParseBool(node["deleteInsteadUpdate"].Value<string>());
+			}
+			if(node["intervalBeforeSunrise"] != null)
+			{
+				this._IntervalBeforeSunrise = ParseInt(node["intervalBeforeSunrise"].Value<string>());
+			}
+			if(node["intervalBeforeSunset"] != null)
+			{
+				this._IntervalBeforeSunset = ParseInt(node["intervalBeforeSunset"].Value<string>());
+			}
+			if(node["updateRequiredEntryFields"] != null)
+			{
+				this._UpdateRequiredEntryFields = node["updateRequiredEntryFields"].Value<string>();
+			}
+			if(node["updateRequiredMetadataXPaths"] != null)
+			{
+				this._UpdateRequiredMetadataXPaths = node["updateRequiredMetadataXPaths"].Value<string>();
+			}
 		}
 		#endregion
 

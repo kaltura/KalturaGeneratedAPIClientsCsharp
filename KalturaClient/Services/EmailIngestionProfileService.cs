@@ -32,6 +32,7 @@ using System.IO;
 using Kaltura.Request;
 using Kaltura.Types;
 using Kaltura.Enums;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Services
 {
@@ -72,13 +73,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<EmailIngestionProfile>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<EmailIngestionProfile>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -155,17 +152,13 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<MediaEntry>(result);
 		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<MediaEntry>((IDictionary<string,object>)result);
-		}
 	}
 
-	public class EmailIngestionProfileDeleteRequestBuilder : RequestBuilder<object>
+	public class EmailIngestionProfileDeleteRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
 		public const string ID = "id";
@@ -202,11 +195,7 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-		public override object DeserializeObject(object result)
+		public override object Deserialize(JToken result)
 		{
 			return null;
 		}
@@ -249,13 +238,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<EmailIngestionProfile>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<EmailIngestionProfile>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -296,13 +281,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<EmailIngestionProfile>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<EmailIngestionProfile>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -352,13 +333,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<EmailIngestionProfile>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<EmailIngestionProfile>((IDictionary<string,object>)result);
 		}
 	}
 

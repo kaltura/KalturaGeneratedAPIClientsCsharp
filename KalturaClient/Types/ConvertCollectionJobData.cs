@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,6 +58,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string DestDirLocalPath
 		{
 			get { return _DestDirLocalPath; }
@@ -65,6 +68,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestDirLocalPath");
 			}
 		}
+		[JsonProperty]
 		public string DestDirRemoteUrl
 		{
 			get { return _DestDirRemoteUrl; }
@@ -74,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestDirRemoteUrl");
 			}
 		}
+		[JsonProperty]
 		public string DestFileName
 		{
 			get { return _DestFileName; }
@@ -83,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestFileName");
 			}
 		}
+		[JsonProperty]
 		public string InputXmlLocalPath
 		{
 			get { return _InputXmlLocalPath; }
@@ -92,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("InputXmlLocalPath");
 			}
 		}
+		[JsonProperty]
 		public string InputXmlRemoteUrl
 		{
 			get { return _InputXmlRemoteUrl; }
@@ -101,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("InputXmlRemoteUrl");
 			}
 		}
+		[JsonProperty]
 		public string CommandLinesStr
 		{
 			get { return _CommandLinesStr; }
@@ -110,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CommandLinesStr");
 			}
 		}
+		[JsonProperty]
 		public IList<ConvertCollectionFlavorData> Flavors
 		{
 			get { return _Flavors; }
@@ -126,55 +135,40 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ConvertCollectionJobData(XmlElement node) : base(node)
+		public ConvertCollectionJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["destDirLocalPath"] != null)
 			{
-				switch (propertyNode.Name)
+				this._DestDirLocalPath = node["destDirLocalPath"].Value<string>();
+			}
+			if(node["destDirRemoteUrl"] != null)
+			{
+				this._DestDirRemoteUrl = node["destDirRemoteUrl"].Value<string>();
+			}
+			if(node["destFileName"] != null)
+			{
+				this._DestFileName = node["destFileName"].Value<string>();
+			}
+			if(node["inputXmlLocalPath"] != null)
+			{
+				this._InputXmlLocalPath = node["inputXmlLocalPath"].Value<string>();
+			}
+			if(node["inputXmlRemoteUrl"] != null)
+			{
+				this._InputXmlRemoteUrl = node["inputXmlRemoteUrl"].Value<string>();
+			}
+			if(node["commandLinesStr"] != null)
+			{
+				this._CommandLinesStr = node["commandLinesStr"].Value<string>();
+			}
+			if(node["flavors"] != null)
+			{
+				this._Flavors = new List<ConvertCollectionFlavorData>();
+				foreach(var arrayNode in node["flavors"].Children())
 				{
-					case "destDirLocalPath":
-						this._DestDirLocalPath = propertyNode.InnerText;
-						continue;
-					case "destDirRemoteUrl":
-						this._DestDirRemoteUrl = propertyNode.InnerText;
-						continue;
-					case "destFileName":
-						this._DestFileName = propertyNode.InnerText;
-						continue;
-					case "inputXmlLocalPath":
-						this._InputXmlLocalPath = propertyNode.InnerText;
-						continue;
-					case "inputXmlRemoteUrl":
-						this._InputXmlRemoteUrl = propertyNode.InnerText;
-						continue;
-					case "commandLinesStr":
-						this._CommandLinesStr = propertyNode.InnerText;
-						continue;
-					case "flavors":
-						this._Flavors = new List<ConvertCollectionFlavorData>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Flavors.Add(ObjectFactory.Create<ConvertCollectionFlavorData>(arrayNode));
-						}
-						continue;
+					this._Flavors.Add(ObjectFactory.Create<ConvertCollectionFlavorData>(arrayNode));
 				}
 			}
-		}
-
-		public ConvertCollectionJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._DestDirLocalPath = data.TryGetValueSafe<string>("destDirLocalPath");
-			    this._DestDirRemoteUrl = data.TryGetValueSafe<string>("destDirRemoteUrl");
-			    this._DestFileName = data.TryGetValueSafe<string>("destFileName");
-			    this._InputXmlLocalPath = data.TryGetValueSafe<string>("inputXmlLocalPath");
-			    this._InputXmlRemoteUrl = data.TryGetValueSafe<string>("inputXmlRemoteUrl");
-			    this._CommandLinesStr = data.TryGetValueSafe<string>("commandLinesStr");
-			    this._Flavors = new List<ConvertCollectionFlavorData>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("flavors", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Flavors.Add(ObjectFactory.Create<ConvertCollectionFlavorData>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -70,10 +72,17 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
@@ -83,6 +92,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -92,6 +102,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		[JsonProperty]
 		public string SystemName
 		{
 			get { return _SystemName; }
@@ -101,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemName");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -110,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public DrmProviderType Provider
 		{
 			get { return _Provider; }
@@ -119,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Provider");
 			}
 		}
+		[JsonProperty]
 		public DrmPolicyStatus Status
 		{
 			get { return _Status; }
@@ -128,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		[JsonProperty]
 		public DrmLicenseScenario Scenario
 		{
 			get { return _Scenario; }
@@ -137,6 +152,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Scenario");
 			}
 		}
+		[JsonProperty]
 		public DrmLicenseType LicenseType
 		{
 			get { return _LicenseType; }
@@ -146,6 +162,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LicenseType");
 			}
 		}
+		[JsonProperty]
 		public DrmLicenseExpirationPolicy LicenseExpirationPolicy
 		{
 			get { return _LicenseExpirationPolicy; }
@@ -155,6 +172,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LicenseExpirationPolicy");
 			}
 		}
+		[JsonProperty]
 		public int Duration
 		{
 			get { return _Duration; }
@@ -164,14 +182,27 @@ namespace Kaltura.Types
 				OnPropertyChanged("Duration");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public IList<KeyValue> LicenseParams
 		{
 			get { return _LicenseParams; }
@@ -188,83 +219,68 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DrmPolicy(XmlElement node) : base(node)
+		public DrmPolicy(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Id = ParseInt(node["id"].Value<string>());
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["name"] != null)
+			{
+				this._Name = node["name"].Value<string>();
+			}
+			if(node["systemName"] != null)
+			{
+				this._SystemName = node["systemName"].Value<string>();
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["provider"] != null)
+			{
+				this._Provider = (DrmProviderType)StringEnum.Parse(typeof(DrmProviderType), node["provider"].Value<string>());
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (DrmPolicyStatus)ParseEnum(typeof(DrmPolicyStatus), node["status"].Value<string>());
+			}
+			if(node["scenario"] != null)
+			{
+				this._Scenario = (DrmLicenseScenario)StringEnum.Parse(typeof(DrmLicenseScenario), node["scenario"].Value<string>());
+			}
+			if(node["licenseType"] != null)
+			{
+				this._LicenseType = (DrmLicenseType)StringEnum.Parse(typeof(DrmLicenseType), node["licenseType"].Value<string>());
+			}
+			if(node["licenseExpirationPolicy"] != null)
+			{
+				this._LicenseExpirationPolicy = (DrmLicenseExpirationPolicy)ParseEnum(typeof(DrmLicenseExpirationPolicy), node["licenseExpirationPolicy"].Value<string>());
+			}
+			if(node["duration"] != null)
+			{
+				this._Duration = ParseInt(node["duration"].Value<string>());
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["licenseParams"] != null)
+			{
+				this._LicenseParams = new List<KeyValue>();
+				foreach(var arrayNode in node["licenseParams"].Children())
 				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-					case "systemName":
-						this._SystemName = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "provider":
-						this._Provider = (DrmProviderType)StringEnum.Parse(typeof(DrmProviderType), propertyNode.InnerText);
-						continue;
-					case "status":
-						this._Status = (DrmPolicyStatus)ParseEnum(typeof(DrmPolicyStatus), propertyNode.InnerText);
-						continue;
-					case "scenario":
-						this._Scenario = (DrmLicenseScenario)StringEnum.Parse(typeof(DrmLicenseScenario), propertyNode.InnerText);
-						continue;
-					case "licenseType":
-						this._LicenseType = (DrmLicenseType)StringEnum.Parse(typeof(DrmLicenseType), propertyNode.InnerText);
-						continue;
-					case "licenseExpirationPolicy":
-						this._LicenseExpirationPolicy = (DrmLicenseExpirationPolicy)ParseEnum(typeof(DrmLicenseExpirationPolicy), propertyNode.InnerText);
-						continue;
-					case "duration":
-						this._Duration = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "licenseParams":
-						this._LicenseParams = new List<KeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._LicenseParams.Add(ObjectFactory.Create<KeyValue>(arrayNode));
-						}
-						continue;
+					this._LicenseParams.Add(ObjectFactory.Create<KeyValue>(arrayNode));
 				}
 			}
-		}
-
-		public DrmPolicy(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._Name = data.TryGetValueSafe<string>("name");
-			    this._SystemName = data.TryGetValueSafe<string>("systemName");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._Provider = (DrmProviderType)StringEnum.Parse(typeof(DrmProviderType), data.TryGetValueSafe<string>("provider"));
-			    this._Status = (DrmPolicyStatus)ParseEnum(typeof(DrmPolicyStatus), data.TryGetValueSafe<int>("status"));
-			    this._Scenario = (DrmLicenseScenario)StringEnum.Parse(typeof(DrmLicenseScenario), data.TryGetValueSafe<string>("scenario"));
-			    this._LicenseType = (DrmLicenseType)StringEnum.Parse(typeof(DrmLicenseType), data.TryGetValueSafe<string>("licenseType"));
-			    this._LicenseExpirationPolicy = (DrmLicenseExpirationPolicy)ParseEnum(typeof(DrmLicenseExpirationPolicy), data.TryGetValueSafe<int>("licenseExpirationPolicy"));
-			    this._Duration = data.TryGetValueSafe<int>("duration");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._LicenseParams = new List<KeyValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("licenseParams", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._LicenseParams.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

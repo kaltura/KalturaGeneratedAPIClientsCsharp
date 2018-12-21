@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Width
 		{
 			get { return _Width; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Width");
 			}
 		}
+		[JsonProperty]
 		public int Height
 		{
 			get { return _Height; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DistributionThumbDimensions(XmlElement node) : base(node)
+		public DistributionThumbDimensions(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["width"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "width":
-						this._Width = ParseInt(propertyNode.InnerText);
-						continue;
-					case "height":
-						this._Height = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._Width = ParseInt(node["width"].Value<string>());
 			}
-		}
-
-		public DistributionThumbDimensions(IDictionary<string,object> data) : base(data)
-		{
-			    this._Width = data.TryGetValueSafe<int>("width");
-			    this._Height = data.TryGetValueSafe<int>("height");
+			if(node["height"] != null)
+			{
+				this._Height = ParseInt(node["height"].Value<string>());
+			}
 		}
 		#endregion
 

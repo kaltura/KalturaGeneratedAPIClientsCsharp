@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public ESearchCategoryUserFieldName FieldName
 		{
 			get { return _FieldName; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FieldName");
 			}
 		}
+		[JsonProperty]
 		public CategoryUserPermissionLevel PermissionLevel
 		{
 			get { return _PermissionLevel; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PermissionLevel");
 			}
 		}
+		[JsonProperty]
 		public string PermissionName
 		{
 			get { return _PermissionName; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ESearchCategoryUserItem(XmlElement node) : base(node)
+		public ESearchCategoryUserItem(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["fieldName"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "fieldName":
-						this._FieldName = (ESearchCategoryUserFieldName)StringEnum.Parse(typeof(ESearchCategoryUserFieldName), propertyNode.InnerText);
-						continue;
-					case "permissionLevel":
-						this._PermissionLevel = (CategoryUserPermissionLevel)ParseEnum(typeof(CategoryUserPermissionLevel), propertyNode.InnerText);
-						continue;
-					case "permissionName":
-						this._PermissionName = propertyNode.InnerText;
-						continue;
-				}
+				this._FieldName = (ESearchCategoryUserFieldName)StringEnum.Parse(typeof(ESearchCategoryUserFieldName), node["fieldName"].Value<string>());
 			}
-		}
-
-		public ESearchCategoryUserItem(IDictionary<string,object> data) : base(data)
-		{
-			    this._FieldName = (ESearchCategoryUserFieldName)StringEnum.Parse(typeof(ESearchCategoryUserFieldName), data.TryGetValueSafe<string>("fieldName"));
-			    this._PermissionLevel = (CategoryUserPermissionLevel)ParseEnum(typeof(CategoryUserPermissionLevel), data.TryGetValueSafe<int>("permissionLevel"));
-			    this._PermissionName = data.TryGetValueSafe<string>("permissionName");
+			if(node["permissionLevel"] != null)
+			{
+				this._PermissionLevel = (CategoryUserPermissionLevel)ParseEnum(typeof(CategoryUserPermissionLevel), node["permissionLevel"].Value<string>());
+			}
+			if(node["permissionName"] != null)
+			{
+				this._PermissionName = node["permissionName"].Value<string>();
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -86,6 +88,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ClientVer
 		{
 			get { return _ClientVer; }
@@ -95,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ClientVer");
 			}
 		}
+		[JsonProperty]
 		public StatsEventType EventType
 		{
 			get { return _EventType; }
@@ -104,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EventType");
 			}
 		}
+		[JsonProperty]
 		public float EventTimestamp
 		{
 			get { return _EventTimestamp; }
@@ -113,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EventTimestamp");
 			}
 		}
+		[JsonProperty]
 		public string SessionId
 		{
 			get { return _SessionId; }
@@ -122,6 +128,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SessionId");
 			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
@@ -131,6 +138,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		[JsonProperty]
 		public string EntryId
 		{
 			get { return _EntryId; }
@@ -140,6 +148,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		[JsonProperty]
 		public string UniqueViewer
 		{
 			get { return _UniqueViewer; }
@@ -149,6 +158,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UniqueViewer");
 			}
 		}
+		[JsonProperty]
 		public string WidgetId
 		{
 			get { return _WidgetId; }
@@ -158,6 +168,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WidgetId");
 			}
 		}
+		[JsonProperty]
 		public int UiconfId
 		{
 			get { return _UiconfId; }
@@ -167,6 +178,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UiconfId");
 			}
 		}
+		[JsonProperty]
 		public string UserId
 		{
 			get { return _UserId; }
@@ -176,6 +188,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserId");
 			}
 		}
+		[JsonProperty]
 		public int CurrentPoint
 		{
 			get { return _CurrentPoint; }
@@ -185,6 +198,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CurrentPoint");
 			}
 		}
+		[JsonProperty]
 		public int Duration
 		{
 			get { return _Duration; }
@@ -194,10 +208,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("Duration");
 			}
 		}
+		[JsonProperty]
 		public string UserIp
 		{
 			get { return _UserIp; }
+			private set 
+			{ 
+				_UserIp = value;
+				OnPropertyChanged("UserIp");
+			}
 		}
+		[JsonProperty]
 		public int ProcessDuration
 		{
 			get { return _ProcessDuration; }
@@ -207,6 +228,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProcessDuration");
 			}
 		}
+		[JsonProperty]
 		public string ControlId
 		{
 			get { return _ControlId; }
@@ -216,6 +238,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ControlId");
 			}
 		}
+		[JsonProperty]
 		public bool? Seek
 		{
 			get { return _Seek; }
@@ -225,6 +248,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Seek");
 			}
 		}
+		[JsonProperty]
 		public int NewPoint
 		{
 			get { return _NewPoint; }
@@ -234,6 +258,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("NewPoint");
 			}
 		}
+		[JsonProperty]
 		public string Referrer
 		{
 			get { return _Referrer; }
@@ -243,6 +268,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Referrer");
 			}
 		}
+		[JsonProperty]
 		public bool? IsFirstInSession
 		{
 			get { return _IsFirstInSession; }
@@ -252,6 +278,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsFirstInSession");
 			}
 		}
+		[JsonProperty]
 		public string ApplicationId
 		{
 			get { return _ApplicationId; }
@@ -261,6 +288,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ApplicationId");
 			}
 		}
+		[JsonProperty]
 		public int ContextId
 		{
 			get { return _ContextId; }
@@ -270,6 +298,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContextId");
 			}
 		}
+		[JsonProperty]
 		public StatsFeatureType FeatureType
 		{
 			get { return _FeatureType; }
@@ -286,106 +315,96 @@ namespace Kaltura.Types
 		{
 		}
 
-		public StatsEvent(XmlElement node) : base(node)
+		public StatsEvent(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["clientVer"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "clientVer":
-						this._ClientVer = propertyNode.InnerText;
-						continue;
-					case "eventType":
-						this._EventType = (StatsEventType)ParseEnum(typeof(StatsEventType), propertyNode.InnerText);
-						continue;
-					case "eventTimestamp":
-						this._EventTimestamp = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "sessionId":
-						this._SessionId = propertyNode.InnerText;
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "entryId":
-						this._EntryId = propertyNode.InnerText;
-						continue;
-					case "uniqueViewer":
-						this._UniqueViewer = propertyNode.InnerText;
-						continue;
-					case "widgetId":
-						this._WidgetId = propertyNode.InnerText;
-						continue;
-					case "uiconfId":
-						this._UiconfId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "userId":
-						this._UserId = propertyNode.InnerText;
-						continue;
-					case "currentPoint":
-						this._CurrentPoint = ParseInt(propertyNode.InnerText);
-						continue;
-					case "duration":
-						this._Duration = ParseInt(propertyNode.InnerText);
-						continue;
-					case "userIp":
-						this._UserIp = propertyNode.InnerText;
-						continue;
-					case "processDuration":
-						this._ProcessDuration = ParseInt(propertyNode.InnerText);
-						continue;
-					case "controlId":
-						this._ControlId = propertyNode.InnerText;
-						continue;
-					case "seek":
-						this._Seek = ParseBool(propertyNode.InnerText);
-						continue;
-					case "newPoint":
-						this._NewPoint = ParseInt(propertyNode.InnerText);
-						continue;
-					case "referrer":
-						this._Referrer = propertyNode.InnerText;
-						continue;
-					case "isFirstInSession":
-						this._IsFirstInSession = ParseBool(propertyNode.InnerText);
-						continue;
-					case "applicationId":
-						this._ApplicationId = propertyNode.InnerText;
-						continue;
-					case "contextId":
-						this._ContextId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "featureType":
-						this._FeatureType = (StatsFeatureType)ParseEnum(typeof(StatsFeatureType), propertyNode.InnerText);
-						continue;
-				}
+				this._ClientVer = node["clientVer"].Value<string>();
 			}
-		}
-
-		public StatsEvent(IDictionary<string,object> data) : base(data)
-		{
-			    this._ClientVer = data.TryGetValueSafe<string>("clientVer");
-			    this._EventType = (StatsEventType)ParseEnum(typeof(StatsEventType), data.TryGetValueSafe<int>("eventType"));
-			    this._EventTimestamp = data.TryGetValueSafe<float>("eventTimestamp");
-			    this._SessionId = data.TryGetValueSafe<string>("sessionId");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._EntryId = data.TryGetValueSafe<string>("entryId");
-			    this._UniqueViewer = data.TryGetValueSafe<string>("uniqueViewer");
-			    this._WidgetId = data.TryGetValueSafe<string>("widgetId");
-			    this._UiconfId = data.TryGetValueSafe<int>("uiconfId");
-			    this._UserId = data.TryGetValueSafe<string>("userId");
-			    this._CurrentPoint = data.TryGetValueSafe<int>("currentPoint");
-			    this._Duration = data.TryGetValueSafe<int>("duration");
-			    this._UserIp = data.TryGetValueSafe<string>("userIp");
-			    this._ProcessDuration = data.TryGetValueSafe<int>("processDuration");
-			    this._ControlId = data.TryGetValueSafe<string>("controlId");
-			    this._Seek = data.TryGetValueSafe<bool>("seek");
-			    this._NewPoint = data.TryGetValueSafe<int>("newPoint");
-			    this._Referrer = data.TryGetValueSafe<string>("referrer");
-			    this._IsFirstInSession = data.TryGetValueSafe<bool>("isFirstInSession");
-			    this._ApplicationId = data.TryGetValueSafe<string>("applicationId");
-			    this._ContextId = data.TryGetValueSafe<int>("contextId");
-			    this._FeatureType = (StatsFeatureType)ParseEnum(typeof(StatsFeatureType), data.TryGetValueSafe<int>("featureType"));
+			if(node["eventType"] != null)
+			{
+				this._EventType = (StatsEventType)ParseEnum(typeof(StatsEventType), node["eventType"].Value<string>());
+			}
+			if(node["eventTimestamp"] != null)
+			{
+				this._EventTimestamp = ParseFloat(node["eventTimestamp"].Value<string>());
+			}
+			if(node["sessionId"] != null)
+			{
+				this._SessionId = node["sessionId"].Value<string>();
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["entryId"] != null)
+			{
+				this._EntryId = node["entryId"].Value<string>();
+			}
+			if(node["uniqueViewer"] != null)
+			{
+				this._UniqueViewer = node["uniqueViewer"].Value<string>();
+			}
+			if(node["widgetId"] != null)
+			{
+				this._WidgetId = node["widgetId"].Value<string>();
+			}
+			if(node["uiconfId"] != null)
+			{
+				this._UiconfId = ParseInt(node["uiconfId"].Value<string>());
+			}
+			if(node["userId"] != null)
+			{
+				this._UserId = node["userId"].Value<string>();
+			}
+			if(node["currentPoint"] != null)
+			{
+				this._CurrentPoint = ParseInt(node["currentPoint"].Value<string>());
+			}
+			if(node["duration"] != null)
+			{
+				this._Duration = ParseInt(node["duration"].Value<string>());
+			}
+			if(node["userIp"] != null)
+			{
+				this._UserIp = node["userIp"].Value<string>();
+			}
+			if(node["processDuration"] != null)
+			{
+				this._ProcessDuration = ParseInt(node["processDuration"].Value<string>());
+			}
+			if(node["controlId"] != null)
+			{
+				this._ControlId = node["controlId"].Value<string>();
+			}
+			if(node["seek"] != null)
+			{
+				this._Seek = ParseBool(node["seek"].Value<string>());
+			}
+			if(node["newPoint"] != null)
+			{
+				this._NewPoint = ParseInt(node["newPoint"].Value<string>());
+			}
+			if(node["referrer"] != null)
+			{
+				this._Referrer = node["referrer"].Value<string>();
+			}
+			if(node["isFirstInSession"] != null)
+			{
+				this._IsFirstInSession = ParseBool(node["isFirstInSession"].Value<string>());
+			}
+			if(node["applicationId"] != null)
+			{
+				this._ApplicationId = node["applicationId"].Value<string>();
+			}
+			if(node["contextId"] != null)
+			{
+				this._ContextId = ParseInt(node["contextId"].Value<string>());
+			}
+			if(node["featureType"] != null)
+			{
+				this._FeatureType = (StatsFeatureType)ParseEnum(typeof(StatsFeatureType), node["featureType"].Value<string>());
+			}
 		}
 		#endregion
 

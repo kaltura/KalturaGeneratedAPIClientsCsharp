@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -62,6 +64,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public MediaType MediaTypeEqual
 		{
 			get { return _MediaTypeEqual; }
@@ -71,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaTypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string MediaTypeIn
 		{
 			get { return _MediaTypeIn; }
@@ -80,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaTypeIn");
 			}
 		}
+		[JsonProperty]
 		public SourceType SourceTypeEqual
 		{
 			get { return _SourceTypeEqual; }
@@ -89,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceTypeEqual");
 			}
 		}
+		[JsonProperty]
 		public SourceType SourceTypeNotEqual
 		{
 			get { return _SourceTypeNotEqual; }
@@ -98,6 +104,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceTypeNotEqual");
 			}
 		}
+		[JsonProperty]
 		public string SourceTypeIn
 		{
 			get { return _SourceTypeIn; }
@@ -107,6 +114,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceTypeIn");
 			}
 		}
+		[JsonProperty]
 		public string SourceTypeNotIn
 		{
 			get { return _SourceTypeNotIn; }
@@ -116,6 +124,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceTypeNotIn");
 			}
 		}
+		[JsonProperty]
 		public int MediaDateGreaterThanOrEqual
 		{
 			get { return _MediaDateGreaterThanOrEqual; }
@@ -125,6 +134,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaDateGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int MediaDateLessThanOrEqual
 		{
 			get { return _MediaDateLessThanOrEqual; }
@@ -134,6 +144,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaDateLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public string FlavorParamsIdsMatchOr
 		{
 			get { return _FlavorParamsIdsMatchOr; }
@@ -143,6 +154,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsIdsMatchOr");
 			}
 		}
+		[JsonProperty]
 		public string FlavorParamsIdsMatchAnd
 		{
 			get { return _FlavorParamsIdsMatchAnd; }
@@ -159,58 +171,48 @@ namespace Kaltura.Types
 		{
 		}
 
-		public MediaEntryBaseFilter(XmlElement node) : base(node)
+		public MediaEntryBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["mediaTypeEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "mediaTypeEqual":
-						this._MediaTypeEqual = (MediaType)ParseEnum(typeof(MediaType), propertyNode.InnerText);
-						continue;
-					case "mediaTypeIn":
-						this._MediaTypeIn = propertyNode.InnerText;
-						continue;
-					case "sourceTypeEqual":
-						this._SourceTypeEqual = (SourceType)StringEnum.Parse(typeof(SourceType), propertyNode.InnerText);
-						continue;
-					case "sourceTypeNotEqual":
-						this._SourceTypeNotEqual = (SourceType)StringEnum.Parse(typeof(SourceType), propertyNode.InnerText);
-						continue;
-					case "sourceTypeIn":
-						this._SourceTypeIn = propertyNode.InnerText;
-						continue;
-					case "sourceTypeNotIn":
-						this._SourceTypeNotIn = propertyNode.InnerText;
-						continue;
-					case "mediaDateGreaterThanOrEqual":
-						this._MediaDateGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "mediaDateLessThanOrEqual":
-						this._MediaDateLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "flavorParamsIdsMatchOr":
-						this._FlavorParamsIdsMatchOr = propertyNode.InnerText;
-						continue;
-					case "flavorParamsIdsMatchAnd":
-						this._FlavorParamsIdsMatchAnd = propertyNode.InnerText;
-						continue;
-				}
+				this._MediaTypeEqual = (MediaType)ParseEnum(typeof(MediaType), node["mediaTypeEqual"].Value<string>());
 			}
-		}
-
-		public MediaEntryBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._MediaTypeEqual = (MediaType)ParseEnum(typeof(MediaType), data.TryGetValueSafe<int>("mediaTypeEqual"));
-			    this._MediaTypeIn = data.TryGetValueSafe<string>("mediaTypeIn");
-			    this._SourceTypeEqual = (SourceType)StringEnum.Parse(typeof(SourceType), data.TryGetValueSafe<string>("sourceTypeEqual"));
-			    this._SourceTypeNotEqual = (SourceType)StringEnum.Parse(typeof(SourceType), data.TryGetValueSafe<string>("sourceTypeNotEqual"));
-			    this._SourceTypeIn = data.TryGetValueSafe<string>("sourceTypeIn");
-			    this._SourceTypeNotIn = data.TryGetValueSafe<string>("sourceTypeNotIn");
-			    this._MediaDateGreaterThanOrEqual = data.TryGetValueSafe<int>("mediaDateGreaterThanOrEqual");
-			    this._MediaDateLessThanOrEqual = data.TryGetValueSafe<int>("mediaDateLessThanOrEqual");
-			    this._FlavorParamsIdsMatchOr = data.TryGetValueSafe<string>("flavorParamsIdsMatchOr");
-			    this._FlavorParamsIdsMatchAnd = data.TryGetValueSafe<string>("flavorParamsIdsMatchAnd");
+			if(node["mediaTypeIn"] != null)
+			{
+				this._MediaTypeIn = node["mediaTypeIn"].Value<string>();
+			}
+			if(node["sourceTypeEqual"] != null)
+			{
+				this._SourceTypeEqual = (SourceType)StringEnum.Parse(typeof(SourceType), node["sourceTypeEqual"].Value<string>());
+			}
+			if(node["sourceTypeNotEqual"] != null)
+			{
+				this._SourceTypeNotEqual = (SourceType)StringEnum.Parse(typeof(SourceType), node["sourceTypeNotEqual"].Value<string>());
+			}
+			if(node["sourceTypeIn"] != null)
+			{
+				this._SourceTypeIn = node["sourceTypeIn"].Value<string>();
+			}
+			if(node["sourceTypeNotIn"] != null)
+			{
+				this._SourceTypeNotIn = node["sourceTypeNotIn"].Value<string>();
+			}
+			if(node["mediaDateGreaterThanOrEqual"] != null)
+			{
+				this._MediaDateGreaterThanOrEqual = ParseInt(node["mediaDateGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["mediaDateLessThanOrEqual"] != null)
+			{
+				this._MediaDateLessThanOrEqual = ParseInt(node["mediaDateLessThanOrEqual"].Value<string>());
+			}
+			if(node["flavorParamsIdsMatchOr"] != null)
+			{
+				this._FlavorParamsIdsMatchOr = node["flavorParamsIdsMatchOr"].Value<string>();
+			}
+			if(node["flavorParamsIdsMatchAnd"] != null)
+			{
+				this._FlavorParamsIdsMatchAnd = node["flavorParamsIdsMatchAnd"].Value<string>();
+			}
 		}
 		#endregion
 

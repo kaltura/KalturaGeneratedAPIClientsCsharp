@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -78,6 +80,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Url
 		{
 			get { return _Url; }
@@ -87,6 +90,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Url");
 			}
 		}
+		[JsonProperty]
 		public HttpNotificationMethod Method
 		{
 			get { return _Method; }
@@ -96,6 +100,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Method");
 			}
 		}
+		[JsonProperty]
 		public HttpNotificationData Data
 		{
 			get { return _Data; }
@@ -105,6 +110,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Data");
 			}
 		}
+		[JsonProperty]
 		public int Timeout
 		{
 			get { return _Timeout; }
@@ -114,6 +120,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Timeout");
 			}
 		}
+		[JsonProperty]
 		public int ConnectTimeout
 		{
 			get { return _ConnectTimeout; }
@@ -123,6 +130,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConnectTimeout");
 			}
 		}
+		[JsonProperty]
 		public string Username
 		{
 			get { return _Username; }
@@ -132,6 +140,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Username");
 			}
 		}
+		[JsonProperty]
 		public string Password
 		{
 			get { return _Password; }
@@ -141,6 +150,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Password");
 			}
 		}
+		[JsonProperty]
 		public HttpNotificationAuthenticationMethod AuthenticationMethod
 		{
 			get { return _AuthenticationMethod; }
@@ -150,6 +160,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AuthenticationMethod");
 			}
 		}
+		[JsonProperty]
 		public HttpNotificationSslVersion SslVersion
 		{
 			get { return _SslVersion; }
@@ -159,6 +170,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SslVersion");
 			}
 		}
+		[JsonProperty]
 		public string SslCertificate
 		{
 			get { return _SslCertificate; }
@@ -168,6 +180,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SslCertificate");
 			}
 		}
+		[JsonProperty]
 		public HttpNotificationCertificateType SslCertificateType
 		{
 			get { return _SslCertificateType; }
@@ -177,6 +190,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SslCertificateType");
 			}
 		}
+		[JsonProperty]
 		public string SslCertificatePassword
 		{
 			get { return _SslCertificatePassword; }
@@ -186,6 +200,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SslCertificatePassword");
 			}
 		}
+		[JsonProperty]
 		public string SslEngine
 		{
 			get { return _SslEngine; }
@@ -195,6 +210,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SslEngine");
 			}
 		}
+		[JsonProperty]
 		public string SslEngineDefault
 		{
 			get { return _SslEngineDefault; }
@@ -204,6 +220,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SslEngineDefault");
 			}
 		}
+		[JsonProperty]
 		public HttpNotificationSslKeyType SslKeyType
 		{
 			get { return _SslKeyType; }
@@ -213,6 +230,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SslKeyType");
 			}
 		}
+		[JsonProperty]
 		public string SslKey
 		{
 			get { return _SslKey; }
@@ -222,6 +240,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SslKey");
 			}
 		}
+		[JsonProperty]
 		public string SslKeyPassword
 		{
 			get { return _SslKeyPassword; }
@@ -231,6 +250,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SslKeyPassword");
 			}
 		}
+		[JsonProperty]
 		public IList<KeyValue> CustomHeaders
 		{
 			get { return _CustomHeaders; }
@@ -247,99 +267,84 @@ namespace Kaltura.Types
 		{
 		}
 
-		public HttpNotificationTemplate(XmlElement node) : base(node)
+		public HttpNotificationTemplate(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["url"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Url = node["url"].Value<string>();
+			}
+			if(node["method"] != null)
+			{
+				this._Method = (HttpNotificationMethod)ParseEnum(typeof(HttpNotificationMethod), node["method"].Value<string>());
+			}
+			if(node["data"] != null)
+			{
+				this._Data = ObjectFactory.Create<HttpNotificationData>(node["data"]);
+			}
+			if(node["timeout"] != null)
+			{
+				this._Timeout = ParseInt(node["timeout"].Value<string>());
+			}
+			if(node["connectTimeout"] != null)
+			{
+				this._ConnectTimeout = ParseInt(node["connectTimeout"].Value<string>());
+			}
+			if(node["username"] != null)
+			{
+				this._Username = node["username"].Value<string>();
+			}
+			if(node["password"] != null)
+			{
+				this._Password = node["password"].Value<string>();
+			}
+			if(node["authenticationMethod"] != null)
+			{
+				this._AuthenticationMethod = (HttpNotificationAuthenticationMethod)ParseEnum(typeof(HttpNotificationAuthenticationMethod), node["authenticationMethod"].Value<string>());
+			}
+			if(node["sslVersion"] != null)
+			{
+				this._SslVersion = (HttpNotificationSslVersion)ParseEnum(typeof(HttpNotificationSslVersion), node["sslVersion"].Value<string>());
+			}
+			if(node["sslCertificate"] != null)
+			{
+				this._SslCertificate = node["sslCertificate"].Value<string>();
+			}
+			if(node["sslCertificateType"] != null)
+			{
+				this._SslCertificateType = (HttpNotificationCertificateType)StringEnum.Parse(typeof(HttpNotificationCertificateType), node["sslCertificateType"].Value<string>());
+			}
+			if(node["sslCertificatePassword"] != null)
+			{
+				this._SslCertificatePassword = node["sslCertificatePassword"].Value<string>();
+			}
+			if(node["sslEngine"] != null)
+			{
+				this._SslEngine = node["sslEngine"].Value<string>();
+			}
+			if(node["sslEngineDefault"] != null)
+			{
+				this._SslEngineDefault = node["sslEngineDefault"].Value<string>();
+			}
+			if(node["sslKeyType"] != null)
+			{
+				this._SslKeyType = (HttpNotificationSslKeyType)StringEnum.Parse(typeof(HttpNotificationSslKeyType), node["sslKeyType"].Value<string>());
+			}
+			if(node["sslKey"] != null)
+			{
+				this._SslKey = node["sslKey"].Value<string>();
+			}
+			if(node["sslKeyPassword"] != null)
+			{
+				this._SslKeyPassword = node["sslKeyPassword"].Value<string>();
+			}
+			if(node["customHeaders"] != null)
+			{
+				this._CustomHeaders = new List<KeyValue>();
+				foreach(var arrayNode in node["customHeaders"].Children())
 				{
-					case "url":
-						this._Url = propertyNode.InnerText;
-						continue;
-					case "method":
-						this._Method = (HttpNotificationMethod)ParseEnum(typeof(HttpNotificationMethod), propertyNode.InnerText);
-						continue;
-					case "data":
-						this._Data = ObjectFactory.Create<HttpNotificationData>(propertyNode);
-						continue;
-					case "timeout":
-						this._Timeout = ParseInt(propertyNode.InnerText);
-						continue;
-					case "connectTimeout":
-						this._ConnectTimeout = ParseInt(propertyNode.InnerText);
-						continue;
-					case "username":
-						this._Username = propertyNode.InnerText;
-						continue;
-					case "password":
-						this._Password = propertyNode.InnerText;
-						continue;
-					case "authenticationMethod":
-						this._AuthenticationMethod = (HttpNotificationAuthenticationMethod)ParseEnum(typeof(HttpNotificationAuthenticationMethod), propertyNode.InnerText);
-						continue;
-					case "sslVersion":
-						this._SslVersion = (HttpNotificationSslVersion)ParseEnum(typeof(HttpNotificationSslVersion), propertyNode.InnerText);
-						continue;
-					case "sslCertificate":
-						this._SslCertificate = propertyNode.InnerText;
-						continue;
-					case "sslCertificateType":
-						this._SslCertificateType = (HttpNotificationCertificateType)StringEnum.Parse(typeof(HttpNotificationCertificateType), propertyNode.InnerText);
-						continue;
-					case "sslCertificatePassword":
-						this._SslCertificatePassword = propertyNode.InnerText;
-						continue;
-					case "sslEngine":
-						this._SslEngine = propertyNode.InnerText;
-						continue;
-					case "sslEngineDefault":
-						this._SslEngineDefault = propertyNode.InnerText;
-						continue;
-					case "sslKeyType":
-						this._SslKeyType = (HttpNotificationSslKeyType)StringEnum.Parse(typeof(HttpNotificationSslKeyType), propertyNode.InnerText);
-						continue;
-					case "sslKey":
-						this._SslKey = propertyNode.InnerText;
-						continue;
-					case "sslKeyPassword":
-						this._SslKeyPassword = propertyNode.InnerText;
-						continue;
-					case "customHeaders":
-						this._CustomHeaders = new List<KeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._CustomHeaders.Add(ObjectFactory.Create<KeyValue>(arrayNode));
-						}
-						continue;
+					this._CustomHeaders.Add(ObjectFactory.Create<KeyValue>(arrayNode));
 				}
 			}
-		}
-
-		public HttpNotificationTemplate(IDictionary<string,object> data) : base(data)
-		{
-			    this._Url = data.TryGetValueSafe<string>("url");
-			    this._Method = (HttpNotificationMethod)ParseEnum(typeof(HttpNotificationMethod), data.TryGetValueSafe<int>("method"));
-			    this._Data = ObjectFactory.Create<HttpNotificationData>(data.TryGetValueSafe<IDictionary<string,object>>("data"));
-			    this._Timeout = data.TryGetValueSafe<int>("timeout");
-			    this._ConnectTimeout = data.TryGetValueSafe<int>("connectTimeout");
-			    this._Username = data.TryGetValueSafe<string>("username");
-			    this._Password = data.TryGetValueSafe<string>("password");
-			    this._AuthenticationMethod = (HttpNotificationAuthenticationMethod)ParseEnum(typeof(HttpNotificationAuthenticationMethod), data.TryGetValueSafe<int>("authenticationMethod"));
-			    this._SslVersion = (HttpNotificationSslVersion)ParseEnum(typeof(HttpNotificationSslVersion), data.TryGetValueSafe<int>("sslVersion"));
-			    this._SslCertificate = data.TryGetValueSafe<string>("sslCertificate");
-			    this._SslCertificateType = (HttpNotificationCertificateType)StringEnum.Parse(typeof(HttpNotificationCertificateType), data.TryGetValueSafe<string>("sslCertificateType"));
-			    this._SslCertificatePassword = data.TryGetValueSafe<string>("sslCertificatePassword");
-			    this._SslEngine = data.TryGetValueSafe<string>("sslEngine");
-			    this._SslEngineDefault = data.TryGetValueSafe<string>("sslEngineDefault");
-			    this._SslKeyType = (HttpNotificationSslKeyType)StringEnum.Parse(typeof(HttpNotificationSslKeyType), data.TryGetValueSafe<string>("sslKeyType"));
-			    this._SslKey = data.TryGetValueSafe<string>("sslKey");
-			    this._SslKeyPassword = data.TryGetValueSafe<string>("sslKeyPassword");
-			    this._CustomHeaders = new List<KeyValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("customHeaders", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._CustomHeaders.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

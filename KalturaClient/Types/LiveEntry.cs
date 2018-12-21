@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -80,6 +82,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string OfflineMessage
 		{
 			get { return _OfflineMessage; }
@@ -89,6 +92,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("OfflineMessage");
 			}
 		}
+		[JsonProperty]
 		public RecordStatus RecordStatus
 		{
 			get { return _RecordStatus; }
@@ -98,6 +102,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecordStatus");
 			}
 		}
+		[JsonProperty]
 		public DVRStatus DvrStatus
 		{
 			get { return _DvrStatus; }
@@ -107,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DvrStatus");
 			}
 		}
+		[JsonProperty]
 		public int DvrWindow
 		{
 			get { return _DvrWindow; }
@@ -116,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DvrWindow");
 			}
 		}
+		[JsonProperty]
 		public int LastElapsedRecordingTime
 		{
 			get { return _LastElapsedRecordingTime; }
@@ -125,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastElapsedRecordingTime");
 			}
 		}
+		[JsonProperty]
 		public IList<LiveStreamConfiguration> LiveStreamConfigurations
 		{
 			get { return _LiveStreamConfigurations; }
@@ -134,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LiveStreamConfigurations");
 			}
 		}
+		[JsonProperty]
 		public string RecordedEntryId
 		{
 			get { return _RecordedEntryId; }
@@ -143,6 +152,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecordedEntryId");
 			}
 		}
+		[JsonProperty]
 		public LivePublishStatus PushPublishEnabled
 		{
 			get { return _PushPublishEnabled; }
@@ -152,6 +162,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PushPublishEnabled");
 			}
 		}
+		[JsonProperty]
 		public IList<LiveStreamPushPublishConfiguration> PublishConfigurations
 		{
 			get { return _PublishConfigurations; }
@@ -161,14 +172,27 @@ namespace Kaltura.Types
 				OnPropertyChanged("PublishConfigurations");
 			}
 		}
+		[JsonProperty]
 		public int FirstBroadcast
 		{
 			get { return _FirstBroadcast; }
+			private set 
+			{ 
+				_FirstBroadcast = value;
+				OnPropertyChanged("FirstBroadcast");
+			}
 		}
+		[JsonProperty]
 		public int LastBroadcast
 		{
 			get { return _LastBroadcast; }
+			private set 
+			{ 
+				_LastBroadcast = value;
+				OnPropertyChanged("LastBroadcast");
+			}
 		}
+		[JsonProperty]
 		public float CurrentBroadcastStartTime
 		{
 			get { return _CurrentBroadcastStartTime; }
@@ -178,6 +202,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CurrentBroadcastStartTime");
 			}
 		}
+		[JsonProperty]
 		public LiveEntryRecordingOptions RecordingOptions
 		{
 			get { return _RecordingOptions; }
@@ -187,10 +212,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecordingOptions");
 			}
 		}
+		[JsonProperty]
 		public EntryServerNodeStatus LiveStatus
 		{
 			get { return _LiveStatus; }
+			private set 
+			{ 
+				_LiveStatus = value;
+				OnPropertyChanged("LiveStatus");
+			}
 		}
+		[JsonProperty]
 		public int SegmentDuration
 		{
 			get { return _SegmentDuration; }
@@ -200,6 +232,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SegmentDuration");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean ExplicitLive
 		{
 			get { return _ExplicitLive; }
@@ -209,6 +242,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExplicitLive");
 			}
 		}
+		[JsonProperty]
 		public ViewMode ViewMode
 		{
 			get { return _ViewMode; }
@@ -218,6 +252,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ViewMode");
 			}
 		}
+		[JsonProperty]
 		public RecordingStatus RecordingStatus
 		{
 			get { return _RecordingStatus; }
@@ -227,9 +262,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecordingStatus");
 			}
 		}
+		[JsonProperty]
 		public int LastBroadcastEndTime
 		{
 			get { return _LastBroadcastEndTime; }
+			private set 
+			{ 
+				_LastBroadcastEndTime = value;
+				OnPropertyChanged("LastBroadcastEndTime");
+			}
 		}
 		#endregion
 
@@ -238,112 +279,92 @@ namespace Kaltura.Types
 		{
 		}
 
-		public LiveEntry(XmlElement node) : base(node)
+		public LiveEntry(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["offlineMessage"] != null)
 			{
-				switch (propertyNode.Name)
+				this._OfflineMessage = node["offlineMessage"].Value<string>();
+			}
+			if(node["recordStatus"] != null)
+			{
+				this._RecordStatus = (RecordStatus)ParseEnum(typeof(RecordStatus), node["recordStatus"].Value<string>());
+			}
+			if(node["dvrStatus"] != null)
+			{
+				this._DvrStatus = (DVRStatus)ParseEnum(typeof(DVRStatus), node["dvrStatus"].Value<string>());
+			}
+			if(node["dvrWindow"] != null)
+			{
+				this._DvrWindow = ParseInt(node["dvrWindow"].Value<string>());
+			}
+			if(node["lastElapsedRecordingTime"] != null)
+			{
+				this._LastElapsedRecordingTime = ParseInt(node["lastElapsedRecordingTime"].Value<string>());
+			}
+			if(node["liveStreamConfigurations"] != null)
+			{
+				this._LiveStreamConfigurations = new List<LiveStreamConfiguration>();
+				foreach(var arrayNode in node["liveStreamConfigurations"].Children())
 				{
-					case "offlineMessage":
-						this._OfflineMessage = propertyNode.InnerText;
-						continue;
-					case "recordStatus":
-						this._RecordStatus = (RecordStatus)ParseEnum(typeof(RecordStatus), propertyNode.InnerText);
-						continue;
-					case "dvrStatus":
-						this._DvrStatus = (DVRStatus)ParseEnum(typeof(DVRStatus), propertyNode.InnerText);
-						continue;
-					case "dvrWindow":
-						this._DvrWindow = ParseInt(propertyNode.InnerText);
-						continue;
-					case "lastElapsedRecordingTime":
-						this._LastElapsedRecordingTime = ParseInt(propertyNode.InnerText);
-						continue;
-					case "liveStreamConfigurations":
-						this._LiveStreamConfigurations = new List<LiveStreamConfiguration>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._LiveStreamConfigurations.Add(ObjectFactory.Create<LiveStreamConfiguration>(arrayNode));
-						}
-						continue;
-					case "recordedEntryId":
-						this._RecordedEntryId = propertyNode.InnerText;
-						continue;
-					case "pushPublishEnabled":
-						this._PushPublishEnabled = (LivePublishStatus)ParseEnum(typeof(LivePublishStatus), propertyNode.InnerText);
-						continue;
-					case "publishConfigurations":
-						this._PublishConfigurations = new List<LiveStreamPushPublishConfiguration>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._PublishConfigurations.Add(ObjectFactory.Create<LiveStreamPushPublishConfiguration>(arrayNode));
-						}
-						continue;
-					case "firstBroadcast":
-						this._FirstBroadcast = ParseInt(propertyNode.InnerText);
-						continue;
-					case "lastBroadcast":
-						this._LastBroadcast = ParseInt(propertyNode.InnerText);
-						continue;
-					case "currentBroadcastStartTime":
-						this._CurrentBroadcastStartTime = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "recordingOptions":
-						this._RecordingOptions = ObjectFactory.Create<LiveEntryRecordingOptions>(propertyNode);
-						continue;
-					case "liveStatus":
-						this._LiveStatus = (EntryServerNodeStatus)ParseEnum(typeof(EntryServerNodeStatus), propertyNode.InnerText);
-						continue;
-					case "segmentDuration":
-						this._SegmentDuration = ParseInt(propertyNode.InnerText);
-						continue;
-					case "explicitLive":
-						this._ExplicitLive = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "viewMode":
-						this._ViewMode = (ViewMode)ParseEnum(typeof(ViewMode), propertyNode.InnerText);
-						continue;
-					case "recordingStatus":
-						this._RecordingStatus = (RecordingStatus)ParseEnum(typeof(RecordingStatus), propertyNode.InnerText);
-						continue;
-					case "lastBroadcastEndTime":
-						this._LastBroadcastEndTime = ParseInt(propertyNode.InnerText);
-						continue;
+					this._LiveStreamConfigurations.Add(ObjectFactory.Create<LiveStreamConfiguration>(arrayNode));
 				}
 			}
-		}
-
-		public LiveEntry(IDictionary<string,object> data) : base(data)
-		{
-			    this._OfflineMessage = data.TryGetValueSafe<string>("offlineMessage");
-			    this._RecordStatus = (RecordStatus)ParseEnum(typeof(RecordStatus), data.TryGetValueSafe<int>("recordStatus"));
-			    this._DvrStatus = (DVRStatus)ParseEnum(typeof(DVRStatus), data.TryGetValueSafe<int>("dvrStatus"));
-			    this._DvrWindow = data.TryGetValueSafe<int>("dvrWindow");
-			    this._LastElapsedRecordingTime = data.TryGetValueSafe<int>("lastElapsedRecordingTime");
-			    this._LiveStreamConfigurations = new List<LiveStreamConfiguration>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("liveStreamConfigurations", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._LiveStreamConfigurations.Add(ObjectFactory.Create<LiveStreamConfiguration>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._RecordedEntryId = data.TryGetValueSafe<string>("recordedEntryId");
-			    this._PushPublishEnabled = (LivePublishStatus)ParseEnum(typeof(LivePublishStatus), data.TryGetValueSafe<int>("pushPublishEnabled"));
-			    this._PublishConfigurations = new List<LiveStreamPushPublishConfiguration>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("publishConfigurations", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._PublishConfigurations.Add(ObjectFactory.Create<LiveStreamPushPublishConfiguration>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._FirstBroadcast = data.TryGetValueSafe<int>("firstBroadcast");
-			    this._LastBroadcast = data.TryGetValueSafe<int>("lastBroadcast");
-			    this._CurrentBroadcastStartTime = data.TryGetValueSafe<float>("currentBroadcastStartTime");
-			    this._RecordingOptions = ObjectFactory.Create<LiveEntryRecordingOptions>(data.TryGetValueSafe<IDictionary<string,object>>("recordingOptions"));
-			    this._LiveStatus = (EntryServerNodeStatus)ParseEnum(typeof(EntryServerNodeStatus), data.TryGetValueSafe<int>("liveStatus"));
-			    this._SegmentDuration = data.TryGetValueSafe<int>("segmentDuration");
-			    this._ExplicitLive = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("explicitLive"));
-			    this._ViewMode = (ViewMode)ParseEnum(typeof(ViewMode), data.TryGetValueSafe<int>("viewMode"));
-			    this._RecordingStatus = (RecordingStatus)ParseEnum(typeof(RecordingStatus), data.TryGetValueSafe<int>("recordingStatus"));
-			    this._LastBroadcastEndTime = data.TryGetValueSafe<int>("lastBroadcastEndTime");
+			if(node["recordedEntryId"] != null)
+			{
+				this._RecordedEntryId = node["recordedEntryId"].Value<string>();
+			}
+			if(node["pushPublishEnabled"] != null)
+			{
+				this._PushPublishEnabled = (LivePublishStatus)ParseEnum(typeof(LivePublishStatus), node["pushPublishEnabled"].Value<string>());
+			}
+			if(node["publishConfigurations"] != null)
+			{
+				this._PublishConfigurations = new List<LiveStreamPushPublishConfiguration>();
+				foreach(var arrayNode in node["publishConfigurations"].Children())
+				{
+					this._PublishConfigurations.Add(ObjectFactory.Create<LiveStreamPushPublishConfiguration>(arrayNode));
+				}
+			}
+			if(node["firstBroadcast"] != null)
+			{
+				this._FirstBroadcast = ParseInt(node["firstBroadcast"].Value<string>());
+			}
+			if(node["lastBroadcast"] != null)
+			{
+				this._LastBroadcast = ParseInt(node["lastBroadcast"].Value<string>());
+			}
+			if(node["currentBroadcastStartTime"] != null)
+			{
+				this._CurrentBroadcastStartTime = ParseFloat(node["currentBroadcastStartTime"].Value<string>());
+			}
+			if(node["recordingOptions"] != null)
+			{
+				this._RecordingOptions = ObjectFactory.Create<LiveEntryRecordingOptions>(node["recordingOptions"]);
+			}
+			if(node["liveStatus"] != null)
+			{
+				this._LiveStatus = (EntryServerNodeStatus)ParseEnum(typeof(EntryServerNodeStatus), node["liveStatus"].Value<string>());
+			}
+			if(node["segmentDuration"] != null)
+			{
+				this._SegmentDuration = ParseInt(node["segmentDuration"].Value<string>());
+			}
+			if(node["explicitLive"] != null)
+			{
+				this._ExplicitLive = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["explicitLive"].Value<string>());
+			}
+			if(node["viewMode"] != null)
+			{
+				this._ViewMode = (ViewMode)ParseEnum(typeof(ViewMode), node["viewMode"].Value<string>());
+			}
+			if(node["recordingStatus"] != null)
+			{
+				this._RecordingStatus = (RecordingStatus)ParseEnum(typeof(RecordingStatus), node["recordingStatus"].Value<string>());
+			}
+			if(node["lastBroadcastEndTime"] != null)
+			{
+				this._LastBroadcastEndTime = ParseInt(node["lastBroadcastEndTime"].Value<string>());
+			}
 		}
 		#endregion
 

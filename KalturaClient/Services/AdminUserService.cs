@@ -32,6 +32,7 @@ using System.IO;
 using Kaltura.Request;
 using Kaltura.Types;
 using Kaltura.Enums;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Services
 {
@@ -90,17 +91,13 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
-			return result.InnerText;
-		}
-		public override object DeserializeObject(object result)
-		{
-			return (string)result;
+			return result.Value<string>();
 		}
 	}
 
-	public class AdminUserResetPasswordRequestBuilder : RequestBuilder<object>
+	public class AdminUserResetPasswordRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
 		public const string EMAIL = "email";
@@ -137,17 +134,13 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-		public override object DeserializeObject(object result)
+		public override object Deserialize(JToken result)
 		{
 			return null;
 		}
 	}
 
-	public class AdminUserSetInitialPasswordRequestBuilder : RequestBuilder<object>
+	public class AdminUserSetInitialPasswordRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
 		public const string HASH_KEY = "hashKey";
@@ -193,11 +186,7 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-		public override object DeserializeObject(object result)
+		public override object Deserialize(JToken result)
 		{
 			return null;
 		}
@@ -267,13 +256,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<AdminUser>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<AdminUser>((IDictionary<string,object>)result);
 		}
 	}
 

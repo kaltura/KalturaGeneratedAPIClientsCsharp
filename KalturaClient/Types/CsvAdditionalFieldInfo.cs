@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string FieldName
 		{
 			get { return _FieldName; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FieldName");
 			}
 		}
+		[JsonProperty]
 		public string Xpath
 		{
 			get { return _Xpath; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CsvAdditionalFieldInfo(XmlElement node) : base(node)
+		public CsvAdditionalFieldInfo(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["fieldName"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "fieldName":
-						this._FieldName = propertyNode.InnerText;
-						continue;
-					case "xpath":
-						this._Xpath = propertyNode.InnerText;
-						continue;
-				}
+				this._FieldName = node["fieldName"].Value<string>();
 			}
-		}
-
-		public CsvAdditionalFieldInfo(IDictionary<string,object> data) : base(data)
-		{
-			    this._FieldName = data.TryGetValueSafe<string>("fieldName");
-			    this._Xpath = data.TryGetValueSafe<string>("xpath");
+			if(node["xpath"] != null)
+			{
+				this._Xpath = node["xpath"].Value<string>();
+			}
 		}
 		#endregion
 

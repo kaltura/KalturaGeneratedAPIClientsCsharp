@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string UserId
 		{
 			get { return _UserId; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserId");
 			}
 		}
+		[JsonProperty]
 		public string Password
 		{
 			get { return _Password; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Password");
 			}
 		}
+		[JsonProperty]
 		public string StreamName
 		{
 			get { return _StreamName; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StreamName");
 			}
 		}
+		[JsonProperty]
 		public string ApplicationName
 		{
 			get { return _ApplicationName; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public LiveStreamPushPublishRTMPConfiguration(XmlElement node) : base(node)
+		public LiveStreamPushPublishRTMPConfiguration(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["userId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "userId":
-						this._UserId = propertyNode.InnerText;
-						continue;
-					case "password":
-						this._Password = propertyNode.InnerText;
-						continue;
-					case "streamName":
-						this._StreamName = propertyNode.InnerText;
-						continue;
-					case "applicationName":
-						this._ApplicationName = propertyNode.InnerText;
-						continue;
-				}
+				this._UserId = node["userId"].Value<string>();
 			}
-		}
-
-		public LiveStreamPushPublishRTMPConfiguration(IDictionary<string,object> data) : base(data)
-		{
-			    this._UserId = data.TryGetValueSafe<string>("userId");
-			    this._Password = data.TryGetValueSafe<string>("password");
-			    this._StreamName = data.TryGetValueSafe<string>("streamName");
-			    this._ApplicationName = data.TryGetValueSafe<string>("applicationName");
+			if(node["password"] != null)
+			{
+				this._Password = node["password"].Value<string>();
+			}
+			if(node["streamName"] != null)
+			{
+				this._StreamName = node["streamName"].Value<string>();
+			}
+			if(node["applicationName"] != null)
+			{
+				this._ApplicationName = node["applicationName"].Value<string>();
+			}
 		}
 		#endregion
 

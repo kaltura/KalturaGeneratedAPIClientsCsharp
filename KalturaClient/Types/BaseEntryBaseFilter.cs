@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -202,6 +204,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string IdEqual
 		{
 			get { return _IdEqual; }
@@ -211,6 +214,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		[JsonProperty]
 		public string IdIn
 		{
 			get { return _IdIn; }
@@ -220,6 +224,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		[JsonProperty]
 		public string IdNotIn
 		{
 			get { return _IdNotIn; }
@@ -229,6 +234,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdNotIn");
 			}
 		}
+		[JsonProperty]
 		public string NameLike
 		{
 			get { return _NameLike; }
@@ -238,6 +244,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("NameLike");
 			}
 		}
+		[JsonProperty]
 		public string NameMultiLikeOr
 		{
 			get { return _NameMultiLikeOr; }
@@ -247,6 +254,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("NameMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string NameMultiLikeAnd
 		{
 			get { return _NameMultiLikeAnd; }
@@ -256,6 +264,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("NameMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public string NameEqual
 		{
 			get { return _NameEqual; }
@@ -265,6 +274,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("NameEqual");
 			}
 		}
+		[JsonProperty]
 		public int PartnerIdEqual
 		{
 			get { return _PartnerIdEqual; }
@@ -274,6 +284,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string PartnerIdIn
 		{
 			get { return _PartnerIdIn; }
@@ -283,6 +294,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdIn");
 			}
 		}
+		[JsonProperty]
 		public string UserIdEqual
 		{
 			get { return _UserIdEqual; }
@@ -292,6 +304,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string UserIdIn
 		{
 			get { return _UserIdIn; }
@@ -301,6 +314,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIdIn");
 			}
 		}
+		[JsonProperty]
 		public string UserIdNotIn
 		{
 			get { return _UserIdNotIn; }
@@ -310,6 +324,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIdNotIn");
 			}
 		}
+		[JsonProperty]
 		public string CreatorIdEqual
 		{
 			get { return _CreatorIdEqual; }
@@ -319,6 +334,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatorIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string TagsLike
 		{
 			get { return _TagsLike; }
@@ -328,6 +344,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsLike");
 			}
 		}
+		[JsonProperty]
 		public string TagsMultiLikeOr
 		{
 			get { return _TagsMultiLikeOr; }
@@ -337,6 +354,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string TagsMultiLikeAnd
 		{
 			get { return _TagsMultiLikeAnd; }
@@ -346,6 +364,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public string AdminTagsLike
 		{
 			get { return _AdminTagsLike; }
@@ -355,6 +374,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdminTagsLike");
 			}
 		}
+		[JsonProperty]
 		public string AdminTagsMultiLikeOr
 		{
 			get { return _AdminTagsMultiLikeOr; }
@@ -364,6 +384,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdminTagsMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string AdminTagsMultiLikeAnd
 		{
 			get { return _AdminTagsMultiLikeAnd; }
@@ -373,6 +394,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdminTagsMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public string CategoriesMatchAnd
 		{
 			get { return _CategoriesMatchAnd; }
@@ -382,6 +404,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoriesMatchAnd");
 			}
 		}
+		[JsonProperty]
 		public string CategoriesMatchOr
 		{
 			get { return _CategoriesMatchOr; }
@@ -391,6 +414,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoriesMatchOr");
 			}
 		}
+		[JsonProperty]
 		public string CategoriesNotContains
 		{
 			get { return _CategoriesNotContains; }
@@ -400,6 +424,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoriesNotContains");
 			}
 		}
+		[JsonProperty]
 		public string CategoriesIdsMatchAnd
 		{
 			get { return _CategoriesIdsMatchAnd; }
@@ -409,6 +434,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoriesIdsMatchAnd");
 			}
 		}
+		[JsonProperty]
 		public string CategoriesIdsMatchOr
 		{
 			get { return _CategoriesIdsMatchOr; }
@@ -418,6 +444,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoriesIdsMatchOr");
 			}
 		}
+		[JsonProperty]
 		public string CategoriesIdsNotContains
 		{
 			get { return _CategoriesIdsNotContains; }
@@ -427,6 +454,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoriesIdsNotContains");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean CategoriesIdsEmpty
 		{
 			get { return _CategoriesIdsEmpty; }
@@ -436,6 +464,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoriesIdsEmpty");
 			}
 		}
+		[JsonProperty]
 		public EntryStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -445,6 +474,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public EntryStatus StatusNotEqual
 		{
 			get { return _StatusNotEqual; }
@@ -454,6 +484,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusNotEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -463,6 +494,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		[JsonProperty]
 		public string StatusNotIn
 		{
 			get { return _StatusNotIn; }
@@ -472,6 +504,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusNotIn");
 			}
 		}
+		[JsonProperty]
 		public EntryModerationStatus ModerationStatusEqual
 		{
 			get { return _ModerationStatusEqual; }
@@ -481,6 +514,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ModerationStatusEqual");
 			}
 		}
+		[JsonProperty]
 		public EntryModerationStatus ModerationStatusNotEqual
 		{
 			get { return _ModerationStatusNotEqual; }
@@ -490,6 +524,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ModerationStatusNotEqual");
 			}
 		}
+		[JsonProperty]
 		public string ModerationStatusIn
 		{
 			get { return _ModerationStatusIn; }
@@ -499,6 +534,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ModerationStatusIn");
 			}
 		}
+		[JsonProperty]
 		public string ModerationStatusNotIn
 		{
 			get { return _ModerationStatusNotIn; }
@@ -508,6 +544,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ModerationStatusNotIn");
 			}
 		}
+		[JsonProperty]
 		public EntryType TypeEqual
 		{
 			get { return _TypeEqual; }
@@ -517,6 +554,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string TypeIn
 		{
 			get { return _TypeIn; }
@@ -526,6 +564,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeIn");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
 			get { return _CreatedAtGreaterThanOrEqual; }
@@ -535,6 +574,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
 			get { return _CreatedAtLessThanOrEqual; }
@@ -544,6 +584,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
 			get { return _UpdatedAtGreaterThanOrEqual; }
@@ -553,6 +594,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
 			get { return _UpdatedAtLessThanOrEqual; }
@@ -562,6 +604,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int TotalRankLessThanOrEqual
 		{
 			get { return _TotalRankLessThanOrEqual; }
@@ -571,6 +614,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TotalRankLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int TotalRankGreaterThanOrEqual
 		{
 			get { return _TotalRankGreaterThanOrEqual; }
@@ -580,6 +624,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TotalRankGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int GroupIdEqual
 		{
 			get { return _GroupIdEqual; }
@@ -589,6 +634,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("GroupIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string SearchTextMatchAnd
 		{
 			get { return _SearchTextMatchAnd; }
@@ -598,6 +644,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SearchTextMatchAnd");
 			}
 		}
+		[JsonProperty]
 		public string SearchTextMatchOr
 		{
 			get { return _SearchTextMatchOr; }
@@ -607,6 +654,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SearchTextMatchOr");
 			}
 		}
+		[JsonProperty]
 		public int AccessControlIdEqual
 		{
 			get { return _AccessControlIdEqual; }
@@ -616,6 +664,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AccessControlIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string AccessControlIdIn
 		{
 			get { return _AccessControlIdIn; }
@@ -625,6 +674,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AccessControlIdIn");
 			}
 		}
+		[JsonProperty]
 		public int StartDateGreaterThanOrEqual
 		{
 			get { return _StartDateGreaterThanOrEqual; }
@@ -634,6 +684,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartDateGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int StartDateLessThanOrEqual
 		{
 			get { return _StartDateLessThanOrEqual; }
@@ -643,6 +694,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartDateLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int StartDateGreaterThanOrEqualOrNull
 		{
 			get { return _StartDateGreaterThanOrEqualOrNull; }
@@ -652,6 +704,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartDateGreaterThanOrEqualOrNull");
 			}
 		}
+		[JsonProperty]
 		public int StartDateLessThanOrEqualOrNull
 		{
 			get { return _StartDateLessThanOrEqualOrNull; }
@@ -661,6 +714,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartDateLessThanOrEqualOrNull");
 			}
 		}
+		[JsonProperty]
 		public int EndDateGreaterThanOrEqual
 		{
 			get { return _EndDateGreaterThanOrEqual; }
@@ -670,6 +724,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndDateGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int EndDateLessThanOrEqual
 		{
 			get { return _EndDateLessThanOrEqual; }
@@ -679,6 +734,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndDateLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int EndDateGreaterThanOrEqualOrNull
 		{
 			get { return _EndDateGreaterThanOrEqualOrNull; }
@@ -688,6 +744,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndDateGreaterThanOrEqualOrNull");
 			}
 		}
+		[JsonProperty]
 		public int EndDateLessThanOrEqualOrNull
 		{
 			get { return _EndDateLessThanOrEqualOrNull; }
@@ -697,6 +754,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndDateLessThanOrEqualOrNull");
 			}
 		}
+		[JsonProperty]
 		public string ReferenceIdEqual
 		{
 			get { return _ReferenceIdEqual; }
@@ -706,6 +764,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReferenceIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string ReferenceIdIn
 		{
 			get { return _ReferenceIdIn; }
@@ -715,6 +774,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReferenceIdIn");
 			}
 		}
+		[JsonProperty]
 		public string ReplacingEntryIdEqual
 		{
 			get { return _ReplacingEntryIdEqual; }
@@ -724,6 +784,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplacingEntryIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string ReplacingEntryIdIn
 		{
 			get { return _ReplacingEntryIdIn; }
@@ -733,6 +794,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplacingEntryIdIn");
 			}
 		}
+		[JsonProperty]
 		public string ReplacedEntryIdEqual
 		{
 			get { return _ReplacedEntryIdEqual; }
@@ -742,6 +804,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplacedEntryIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string ReplacedEntryIdIn
 		{
 			get { return _ReplacedEntryIdIn; }
@@ -751,6 +814,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplacedEntryIdIn");
 			}
 		}
+		[JsonProperty]
 		public EntryReplacementStatus ReplacementStatusEqual
 		{
 			get { return _ReplacementStatusEqual; }
@@ -760,6 +824,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplacementStatusEqual");
 			}
 		}
+		[JsonProperty]
 		public string ReplacementStatusIn
 		{
 			get { return _ReplacementStatusIn; }
@@ -769,6 +834,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplacementStatusIn");
 			}
 		}
+		[JsonProperty]
 		public int PartnerSortValueGreaterThanOrEqual
 		{
 			get { return _PartnerSortValueGreaterThanOrEqual; }
@@ -778,6 +844,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerSortValueGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int PartnerSortValueLessThanOrEqual
 		{
 			get { return _PartnerSortValueLessThanOrEqual; }
@@ -787,6 +854,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerSortValueLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public string RootEntryIdEqual
 		{
 			get { return _RootEntryIdEqual; }
@@ -796,6 +864,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RootEntryIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string RootEntryIdIn
 		{
 			get { return _RootEntryIdIn; }
@@ -805,6 +874,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RootEntryIdIn");
 			}
 		}
+		[JsonProperty]
 		public string ParentEntryIdEqual
 		{
 			get { return _ParentEntryIdEqual; }
@@ -814,6 +884,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentEntryIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string EntitledUsersEditMatchAnd
 		{
 			get { return _EntitledUsersEditMatchAnd; }
@@ -823,6 +894,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntitledUsersEditMatchAnd");
 			}
 		}
+		[JsonProperty]
 		public string EntitledUsersEditMatchOr
 		{
 			get { return _EntitledUsersEditMatchOr; }
@@ -832,6 +904,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntitledUsersEditMatchOr");
 			}
 		}
+		[JsonProperty]
 		public string EntitledUsersPublishMatchAnd
 		{
 			get { return _EntitledUsersPublishMatchAnd; }
@@ -841,6 +914,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntitledUsersPublishMatchAnd");
 			}
 		}
+		[JsonProperty]
 		public string EntitledUsersPublishMatchOr
 		{
 			get { return _EntitledUsersPublishMatchOr; }
@@ -850,6 +924,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntitledUsersPublishMatchOr");
 			}
 		}
+		[JsonProperty]
 		public string EntitledUsersViewMatchAnd
 		{
 			get { return _EntitledUsersViewMatchAnd; }
@@ -859,6 +934,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntitledUsersViewMatchAnd");
 			}
 		}
+		[JsonProperty]
 		public string EntitledUsersViewMatchOr
 		{
 			get { return _EntitledUsersViewMatchOr; }
@@ -868,6 +944,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntitledUsersViewMatchOr");
 			}
 		}
+		[JsonProperty]
 		public string TagsNameMultiLikeOr
 		{
 			get { return _TagsNameMultiLikeOr; }
@@ -877,6 +954,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsNameMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string TagsAdminTagsMultiLikeOr
 		{
 			get { return _TagsAdminTagsMultiLikeOr; }
@@ -886,6 +964,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsAdminTagsMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string TagsAdminTagsNameMultiLikeOr
 		{
 			get { return _TagsAdminTagsNameMultiLikeOr; }
@@ -895,6 +974,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsAdminTagsNameMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string TagsNameMultiLikeAnd
 		{
 			get { return _TagsNameMultiLikeAnd; }
@@ -904,6 +984,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsNameMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public string TagsAdminTagsMultiLikeAnd
 		{
 			get { return _TagsAdminTagsMultiLikeAnd; }
@@ -913,6 +994,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsAdminTagsMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public string TagsAdminTagsNameMultiLikeAnd
 		{
 			get { return _TagsAdminTagsNameMultiLikeAnd; }
@@ -929,338 +1011,328 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BaseEntryBaseFilter(XmlElement node) : base(node)
+		public BaseEntryBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["idEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "idEqual":
-						this._IdEqual = propertyNode.InnerText;
-						continue;
-					case "idIn":
-						this._IdIn = propertyNode.InnerText;
-						continue;
-					case "idNotIn":
-						this._IdNotIn = propertyNode.InnerText;
-						continue;
-					case "nameLike":
-						this._NameLike = propertyNode.InnerText;
-						continue;
-					case "nameMultiLikeOr":
-						this._NameMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "nameMultiLikeAnd":
-						this._NameMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "nameEqual":
-						this._NameEqual = propertyNode.InnerText;
-						continue;
-					case "partnerIdEqual":
-						this._PartnerIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerIdIn":
-						this._PartnerIdIn = propertyNode.InnerText;
-						continue;
-					case "userIdEqual":
-						this._UserIdEqual = propertyNode.InnerText;
-						continue;
-					case "userIdIn":
-						this._UserIdIn = propertyNode.InnerText;
-						continue;
-					case "userIdNotIn":
-						this._UserIdNotIn = propertyNode.InnerText;
-						continue;
-					case "creatorIdEqual":
-						this._CreatorIdEqual = propertyNode.InnerText;
-						continue;
-					case "tagsLike":
-						this._TagsLike = propertyNode.InnerText;
-						continue;
-					case "tagsMultiLikeOr":
-						this._TagsMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "tagsMultiLikeAnd":
-						this._TagsMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "adminTagsLike":
-						this._AdminTagsLike = propertyNode.InnerText;
-						continue;
-					case "adminTagsMultiLikeOr":
-						this._AdminTagsMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "adminTagsMultiLikeAnd":
-						this._AdminTagsMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "categoriesMatchAnd":
-						this._CategoriesMatchAnd = propertyNode.InnerText;
-						continue;
-					case "categoriesMatchOr":
-						this._CategoriesMatchOr = propertyNode.InnerText;
-						continue;
-					case "categoriesNotContains":
-						this._CategoriesNotContains = propertyNode.InnerText;
-						continue;
-					case "categoriesIdsMatchAnd":
-						this._CategoriesIdsMatchAnd = propertyNode.InnerText;
-						continue;
-					case "categoriesIdsMatchOr":
-						this._CategoriesIdsMatchOr = propertyNode.InnerText;
-						continue;
-					case "categoriesIdsNotContains":
-						this._CategoriesIdsNotContains = propertyNode.InnerText;
-						continue;
-					case "categoriesIdsEmpty":
-						this._CategoriesIdsEmpty = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (EntryStatus)StringEnum.Parse(typeof(EntryStatus), propertyNode.InnerText);
-						continue;
-					case "statusNotEqual":
-						this._StatusNotEqual = (EntryStatus)StringEnum.Parse(typeof(EntryStatus), propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-					case "statusNotIn":
-						this._StatusNotIn = propertyNode.InnerText;
-						continue;
-					case "moderationStatusEqual":
-						this._ModerationStatusEqual = (EntryModerationStatus)ParseEnum(typeof(EntryModerationStatus), propertyNode.InnerText);
-						continue;
-					case "moderationStatusNotEqual":
-						this._ModerationStatusNotEqual = (EntryModerationStatus)ParseEnum(typeof(EntryModerationStatus), propertyNode.InnerText);
-						continue;
-					case "moderationStatusIn":
-						this._ModerationStatusIn = propertyNode.InnerText;
-						continue;
-					case "moderationStatusNotIn":
-						this._ModerationStatusNotIn = propertyNode.InnerText;
-						continue;
-					case "typeEqual":
-						this._TypeEqual = (EntryType)StringEnum.Parse(typeof(EntryType), propertyNode.InnerText);
-						continue;
-					case "typeIn":
-						this._TypeIn = propertyNode.InnerText;
-						continue;
-					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "totalRankLessThanOrEqual":
-						this._TotalRankLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "totalRankGreaterThanOrEqual":
-						this._TotalRankGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "groupIdEqual":
-						this._GroupIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "searchTextMatchAnd":
-						this._SearchTextMatchAnd = propertyNode.InnerText;
-						continue;
-					case "searchTextMatchOr":
-						this._SearchTextMatchOr = propertyNode.InnerText;
-						continue;
-					case "accessControlIdEqual":
-						this._AccessControlIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "accessControlIdIn":
-						this._AccessControlIdIn = propertyNode.InnerText;
-						continue;
-					case "startDateGreaterThanOrEqual":
-						this._StartDateGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "startDateLessThanOrEqual":
-						this._StartDateLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "startDateGreaterThanOrEqualOrNull":
-						this._StartDateGreaterThanOrEqualOrNull = ParseInt(propertyNode.InnerText);
-						continue;
-					case "startDateLessThanOrEqualOrNull":
-						this._StartDateLessThanOrEqualOrNull = ParseInt(propertyNode.InnerText);
-						continue;
-					case "endDateGreaterThanOrEqual":
-						this._EndDateGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "endDateLessThanOrEqual":
-						this._EndDateLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "endDateGreaterThanOrEqualOrNull":
-						this._EndDateGreaterThanOrEqualOrNull = ParseInt(propertyNode.InnerText);
-						continue;
-					case "endDateLessThanOrEqualOrNull":
-						this._EndDateLessThanOrEqualOrNull = ParseInt(propertyNode.InnerText);
-						continue;
-					case "referenceIdEqual":
-						this._ReferenceIdEqual = propertyNode.InnerText;
-						continue;
-					case "referenceIdIn":
-						this._ReferenceIdIn = propertyNode.InnerText;
-						continue;
-					case "replacingEntryIdEqual":
-						this._ReplacingEntryIdEqual = propertyNode.InnerText;
-						continue;
-					case "replacingEntryIdIn":
-						this._ReplacingEntryIdIn = propertyNode.InnerText;
-						continue;
-					case "replacedEntryIdEqual":
-						this._ReplacedEntryIdEqual = propertyNode.InnerText;
-						continue;
-					case "replacedEntryIdIn":
-						this._ReplacedEntryIdIn = propertyNode.InnerText;
-						continue;
-					case "replacementStatusEqual":
-						this._ReplacementStatusEqual = (EntryReplacementStatus)StringEnum.Parse(typeof(EntryReplacementStatus), propertyNode.InnerText);
-						continue;
-					case "replacementStatusIn":
-						this._ReplacementStatusIn = propertyNode.InnerText;
-						continue;
-					case "partnerSortValueGreaterThanOrEqual":
-						this._PartnerSortValueGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerSortValueLessThanOrEqual":
-						this._PartnerSortValueLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "rootEntryIdEqual":
-						this._RootEntryIdEqual = propertyNode.InnerText;
-						continue;
-					case "rootEntryIdIn":
-						this._RootEntryIdIn = propertyNode.InnerText;
-						continue;
-					case "parentEntryIdEqual":
-						this._ParentEntryIdEqual = propertyNode.InnerText;
-						continue;
-					case "entitledUsersEditMatchAnd":
-						this._EntitledUsersEditMatchAnd = propertyNode.InnerText;
-						continue;
-					case "entitledUsersEditMatchOr":
-						this._EntitledUsersEditMatchOr = propertyNode.InnerText;
-						continue;
-					case "entitledUsersPublishMatchAnd":
-						this._EntitledUsersPublishMatchAnd = propertyNode.InnerText;
-						continue;
-					case "entitledUsersPublishMatchOr":
-						this._EntitledUsersPublishMatchOr = propertyNode.InnerText;
-						continue;
-					case "entitledUsersViewMatchAnd":
-						this._EntitledUsersViewMatchAnd = propertyNode.InnerText;
-						continue;
-					case "entitledUsersViewMatchOr":
-						this._EntitledUsersViewMatchOr = propertyNode.InnerText;
-						continue;
-					case "tagsNameMultiLikeOr":
-						this._TagsNameMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "tagsAdminTagsMultiLikeOr":
-						this._TagsAdminTagsMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "tagsAdminTagsNameMultiLikeOr":
-						this._TagsAdminTagsNameMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "tagsNameMultiLikeAnd":
-						this._TagsNameMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "tagsAdminTagsMultiLikeAnd":
-						this._TagsAdminTagsMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "tagsAdminTagsNameMultiLikeAnd":
-						this._TagsAdminTagsNameMultiLikeAnd = propertyNode.InnerText;
-						continue;
-				}
+				this._IdEqual = node["idEqual"].Value<string>();
 			}
-		}
-
-		public BaseEntryBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._IdEqual = data.TryGetValueSafe<string>("idEqual");
-			    this._IdIn = data.TryGetValueSafe<string>("idIn");
-			    this._IdNotIn = data.TryGetValueSafe<string>("idNotIn");
-			    this._NameLike = data.TryGetValueSafe<string>("nameLike");
-			    this._NameMultiLikeOr = data.TryGetValueSafe<string>("nameMultiLikeOr");
-			    this._NameMultiLikeAnd = data.TryGetValueSafe<string>("nameMultiLikeAnd");
-			    this._NameEqual = data.TryGetValueSafe<string>("nameEqual");
-			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
-			    this._PartnerIdIn = data.TryGetValueSafe<string>("partnerIdIn");
-			    this._UserIdEqual = data.TryGetValueSafe<string>("userIdEqual");
-			    this._UserIdIn = data.TryGetValueSafe<string>("userIdIn");
-			    this._UserIdNotIn = data.TryGetValueSafe<string>("userIdNotIn");
-			    this._CreatorIdEqual = data.TryGetValueSafe<string>("creatorIdEqual");
-			    this._TagsLike = data.TryGetValueSafe<string>("tagsLike");
-			    this._TagsMultiLikeOr = data.TryGetValueSafe<string>("tagsMultiLikeOr");
-			    this._TagsMultiLikeAnd = data.TryGetValueSafe<string>("tagsMultiLikeAnd");
-			    this._AdminTagsLike = data.TryGetValueSafe<string>("adminTagsLike");
-			    this._AdminTagsMultiLikeOr = data.TryGetValueSafe<string>("adminTagsMultiLikeOr");
-			    this._AdminTagsMultiLikeAnd = data.TryGetValueSafe<string>("adminTagsMultiLikeAnd");
-			    this._CategoriesMatchAnd = data.TryGetValueSafe<string>("categoriesMatchAnd");
-			    this._CategoriesMatchOr = data.TryGetValueSafe<string>("categoriesMatchOr");
-			    this._CategoriesNotContains = data.TryGetValueSafe<string>("categoriesNotContains");
-			    this._CategoriesIdsMatchAnd = data.TryGetValueSafe<string>("categoriesIdsMatchAnd");
-			    this._CategoriesIdsMatchOr = data.TryGetValueSafe<string>("categoriesIdsMatchOr");
-			    this._CategoriesIdsNotContains = data.TryGetValueSafe<string>("categoriesIdsNotContains");
-			    this._CategoriesIdsEmpty = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("categoriesIdsEmpty"));
-			    this._StatusEqual = (EntryStatus)StringEnum.Parse(typeof(EntryStatus), data.TryGetValueSafe<string>("statusEqual"));
-			    this._StatusNotEqual = (EntryStatus)StringEnum.Parse(typeof(EntryStatus), data.TryGetValueSafe<string>("statusNotEqual"));
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
-			    this._StatusNotIn = data.TryGetValueSafe<string>("statusNotIn");
-			    this._ModerationStatusEqual = (EntryModerationStatus)ParseEnum(typeof(EntryModerationStatus), data.TryGetValueSafe<int>("moderationStatusEqual"));
-			    this._ModerationStatusNotEqual = (EntryModerationStatus)ParseEnum(typeof(EntryModerationStatus), data.TryGetValueSafe<int>("moderationStatusNotEqual"));
-			    this._ModerationStatusIn = data.TryGetValueSafe<string>("moderationStatusIn");
-			    this._ModerationStatusNotIn = data.TryGetValueSafe<string>("moderationStatusNotIn");
-			    this._TypeEqual = (EntryType)StringEnum.Parse(typeof(EntryType), data.TryGetValueSafe<string>("typeEqual"));
-			    this._TypeIn = data.TryGetValueSafe<string>("typeIn");
-			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
-			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
-			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
-			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
-			    this._TotalRankLessThanOrEqual = data.TryGetValueSafe<int>("totalRankLessThanOrEqual");
-			    this._TotalRankGreaterThanOrEqual = data.TryGetValueSafe<int>("totalRankGreaterThanOrEqual");
-			    this._GroupIdEqual = data.TryGetValueSafe<int>("groupIdEqual");
-			    this._SearchTextMatchAnd = data.TryGetValueSafe<string>("searchTextMatchAnd");
-			    this._SearchTextMatchOr = data.TryGetValueSafe<string>("searchTextMatchOr");
-			    this._AccessControlIdEqual = data.TryGetValueSafe<int>("accessControlIdEqual");
-			    this._AccessControlIdIn = data.TryGetValueSafe<string>("accessControlIdIn");
-			    this._StartDateGreaterThanOrEqual = data.TryGetValueSafe<int>("startDateGreaterThanOrEqual");
-			    this._StartDateLessThanOrEqual = data.TryGetValueSafe<int>("startDateLessThanOrEqual");
-			    this._StartDateGreaterThanOrEqualOrNull = data.TryGetValueSafe<int>("startDateGreaterThanOrEqualOrNull");
-			    this._StartDateLessThanOrEqualOrNull = data.TryGetValueSafe<int>("startDateLessThanOrEqualOrNull");
-			    this._EndDateGreaterThanOrEqual = data.TryGetValueSafe<int>("endDateGreaterThanOrEqual");
-			    this._EndDateLessThanOrEqual = data.TryGetValueSafe<int>("endDateLessThanOrEqual");
-			    this._EndDateGreaterThanOrEqualOrNull = data.TryGetValueSafe<int>("endDateGreaterThanOrEqualOrNull");
-			    this._EndDateLessThanOrEqualOrNull = data.TryGetValueSafe<int>("endDateLessThanOrEqualOrNull");
-			    this._ReferenceIdEqual = data.TryGetValueSafe<string>("referenceIdEqual");
-			    this._ReferenceIdIn = data.TryGetValueSafe<string>("referenceIdIn");
-			    this._ReplacingEntryIdEqual = data.TryGetValueSafe<string>("replacingEntryIdEqual");
-			    this._ReplacingEntryIdIn = data.TryGetValueSafe<string>("replacingEntryIdIn");
-			    this._ReplacedEntryIdEqual = data.TryGetValueSafe<string>("replacedEntryIdEqual");
-			    this._ReplacedEntryIdIn = data.TryGetValueSafe<string>("replacedEntryIdIn");
-			    this._ReplacementStatusEqual = (EntryReplacementStatus)StringEnum.Parse(typeof(EntryReplacementStatus), data.TryGetValueSafe<string>("replacementStatusEqual"));
-			    this._ReplacementStatusIn = data.TryGetValueSafe<string>("replacementStatusIn");
-			    this._PartnerSortValueGreaterThanOrEqual = data.TryGetValueSafe<int>("partnerSortValueGreaterThanOrEqual");
-			    this._PartnerSortValueLessThanOrEqual = data.TryGetValueSafe<int>("partnerSortValueLessThanOrEqual");
-			    this._RootEntryIdEqual = data.TryGetValueSafe<string>("rootEntryIdEqual");
-			    this._RootEntryIdIn = data.TryGetValueSafe<string>("rootEntryIdIn");
-			    this._ParentEntryIdEqual = data.TryGetValueSafe<string>("parentEntryIdEqual");
-			    this._EntitledUsersEditMatchAnd = data.TryGetValueSafe<string>("entitledUsersEditMatchAnd");
-			    this._EntitledUsersEditMatchOr = data.TryGetValueSafe<string>("entitledUsersEditMatchOr");
-			    this._EntitledUsersPublishMatchAnd = data.TryGetValueSafe<string>("entitledUsersPublishMatchAnd");
-			    this._EntitledUsersPublishMatchOr = data.TryGetValueSafe<string>("entitledUsersPublishMatchOr");
-			    this._EntitledUsersViewMatchAnd = data.TryGetValueSafe<string>("entitledUsersViewMatchAnd");
-			    this._EntitledUsersViewMatchOr = data.TryGetValueSafe<string>("entitledUsersViewMatchOr");
-			    this._TagsNameMultiLikeOr = data.TryGetValueSafe<string>("tagsNameMultiLikeOr");
-			    this._TagsAdminTagsMultiLikeOr = data.TryGetValueSafe<string>("tagsAdminTagsMultiLikeOr");
-			    this._TagsAdminTagsNameMultiLikeOr = data.TryGetValueSafe<string>("tagsAdminTagsNameMultiLikeOr");
-			    this._TagsNameMultiLikeAnd = data.TryGetValueSafe<string>("tagsNameMultiLikeAnd");
-			    this._TagsAdminTagsMultiLikeAnd = data.TryGetValueSafe<string>("tagsAdminTagsMultiLikeAnd");
-			    this._TagsAdminTagsNameMultiLikeAnd = data.TryGetValueSafe<string>("tagsAdminTagsNameMultiLikeAnd");
+			if(node["idIn"] != null)
+			{
+				this._IdIn = node["idIn"].Value<string>();
+			}
+			if(node["idNotIn"] != null)
+			{
+				this._IdNotIn = node["idNotIn"].Value<string>();
+			}
+			if(node["nameLike"] != null)
+			{
+				this._NameLike = node["nameLike"].Value<string>();
+			}
+			if(node["nameMultiLikeOr"] != null)
+			{
+				this._NameMultiLikeOr = node["nameMultiLikeOr"].Value<string>();
+			}
+			if(node["nameMultiLikeAnd"] != null)
+			{
+				this._NameMultiLikeAnd = node["nameMultiLikeAnd"].Value<string>();
+			}
+			if(node["nameEqual"] != null)
+			{
+				this._NameEqual = node["nameEqual"].Value<string>();
+			}
+			if(node["partnerIdEqual"] != null)
+			{
+				this._PartnerIdEqual = ParseInt(node["partnerIdEqual"].Value<string>());
+			}
+			if(node["partnerIdIn"] != null)
+			{
+				this._PartnerIdIn = node["partnerIdIn"].Value<string>();
+			}
+			if(node["userIdEqual"] != null)
+			{
+				this._UserIdEqual = node["userIdEqual"].Value<string>();
+			}
+			if(node["userIdIn"] != null)
+			{
+				this._UserIdIn = node["userIdIn"].Value<string>();
+			}
+			if(node["userIdNotIn"] != null)
+			{
+				this._UserIdNotIn = node["userIdNotIn"].Value<string>();
+			}
+			if(node["creatorIdEqual"] != null)
+			{
+				this._CreatorIdEqual = node["creatorIdEqual"].Value<string>();
+			}
+			if(node["tagsLike"] != null)
+			{
+				this._TagsLike = node["tagsLike"].Value<string>();
+			}
+			if(node["tagsMultiLikeOr"] != null)
+			{
+				this._TagsMultiLikeOr = node["tagsMultiLikeOr"].Value<string>();
+			}
+			if(node["tagsMultiLikeAnd"] != null)
+			{
+				this._TagsMultiLikeAnd = node["tagsMultiLikeAnd"].Value<string>();
+			}
+			if(node["adminTagsLike"] != null)
+			{
+				this._AdminTagsLike = node["adminTagsLike"].Value<string>();
+			}
+			if(node["adminTagsMultiLikeOr"] != null)
+			{
+				this._AdminTagsMultiLikeOr = node["adminTagsMultiLikeOr"].Value<string>();
+			}
+			if(node["adminTagsMultiLikeAnd"] != null)
+			{
+				this._AdminTagsMultiLikeAnd = node["adminTagsMultiLikeAnd"].Value<string>();
+			}
+			if(node["categoriesMatchAnd"] != null)
+			{
+				this._CategoriesMatchAnd = node["categoriesMatchAnd"].Value<string>();
+			}
+			if(node["categoriesMatchOr"] != null)
+			{
+				this._CategoriesMatchOr = node["categoriesMatchOr"].Value<string>();
+			}
+			if(node["categoriesNotContains"] != null)
+			{
+				this._CategoriesNotContains = node["categoriesNotContains"].Value<string>();
+			}
+			if(node["categoriesIdsMatchAnd"] != null)
+			{
+				this._CategoriesIdsMatchAnd = node["categoriesIdsMatchAnd"].Value<string>();
+			}
+			if(node["categoriesIdsMatchOr"] != null)
+			{
+				this._CategoriesIdsMatchOr = node["categoriesIdsMatchOr"].Value<string>();
+			}
+			if(node["categoriesIdsNotContains"] != null)
+			{
+				this._CategoriesIdsNotContains = node["categoriesIdsNotContains"].Value<string>();
+			}
+			if(node["categoriesIdsEmpty"] != null)
+			{
+				this._CategoriesIdsEmpty = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["categoriesIdsEmpty"].Value<string>());
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (EntryStatus)StringEnum.Parse(typeof(EntryStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["statusNotEqual"] != null)
+			{
+				this._StatusNotEqual = (EntryStatus)StringEnum.Parse(typeof(EntryStatus), node["statusNotEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
+			if(node["statusNotIn"] != null)
+			{
+				this._StatusNotIn = node["statusNotIn"].Value<string>();
+			}
+			if(node["moderationStatusEqual"] != null)
+			{
+				this._ModerationStatusEqual = (EntryModerationStatus)ParseEnum(typeof(EntryModerationStatus), node["moderationStatusEqual"].Value<string>());
+			}
+			if(node["moderationStatusNotEqual"] != null)
+			{
+				this._ModerationStatusNotEqual = (EntryModerationStatus)ParseEnum(typeof(EntryModerationStatus), node["moderationStatusNotEqual"].Value<string>());
+			}
+			if(node["moderationStatusIn"] != null)
+			{
+				this._ModerationStatusIn = node["moderationStatusIn"].Value<string>();
+			}
+			if(node["moderationStatusNotIn"] != null)
+			{
+				this._ModerationStatusNotIn = node["moderationStatusNotIn"].Value<string>();
+			}
+			if(node["typeEqual"] != null)
+			{
+				this._TypeEqual = (EntryType)StringEnum.Parse(typeof(EntryType), node["typeEqual"].Value<string>());
+			}
+			if(node["typeIn"] != null)
+			{
+				this._TypeIn = node["typeIn"].Value<string>();
+			}
+			if(node["createdAtGreaterThanOrEqual"] != null)
+			{
+				this._CreatedAtGreaterThanOrEqual = ParseInt(node["createdAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["createdAtLessThanOrEqual"] != null)
+			{
+				this._CreatedAtLessThanOrEqual = ParseInt(node["createdAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtGreaterThanOrEqual"] != null)
+			{
+				this._UpdatedAtGreaterThanOrEqual = ParseInt(node["updatedAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtLessThanOrEqual"] != null)
+			{
+				this._UpdatedAtLessThanOrEqual = ParseInt(node["updatedAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["totalRankLessThanOrEqual"] != null)
+			{
+				this._TotalRankLessThanOrEqual = ParseInt(node["totalRankLessThanOrEqual"].Value<string>());
+			}
+			if(node["totalRankGreaterThanOrEqual"] != null)
+			{
+				this._TotalRankGreaterThanOrEqual = ParseInt(node["totalRankGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["groupIdEqual"] != null)
+			{
+				this._GroupIdEqual = ParseInt(node["groupIdEqual"].Value<string>());
+			}
+			if(node["searchTextMatchAnd"] != null)
+			{
+				this._SearchTextMatchAnd = node["searchTextMatchAnd"].Value<string>();
+			}
+			if(node["searchTextMatchOr"] != null)
+			{
+				this._SearchTextMatchOr = node["searchTextMatchOr"].Value<string>();
+			}
+			if(node["accessControlIdEqual"] != null)
+			{
+				this._AccessControlIdEqual = ParseInt(node["accessControlIdEqual"].Value<string>());
+			}
+			if(node["accessControlIdIn"] != null)
+			{
+				this._AccessControlIdIn = node["accessControlIdIn"].Value<string>();
+			}
+			if(node["startDateGreaterThanOrEqual"] != null)
+			{
+				this._StartDateGreaterThanOrEqual = ParseInt(node["startDateGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["startDateLessThanOrEqual"] != null)
+			{
+				this._StartDateLessThanOrEqual = ParseInt(node["startDateLessThanOrEqual"].Value<string>());
+			}
+			if(node["startDateGreaterThanOrEqualOrNull"] != null)
+			{
+				this._StartDateGreaterThanOrEqualOrNull = ParseInt(node["startDateGreaterThanOrEqualOrNull"].Value<string>());
+			}
+			if(node["startDateLessThanOrEqualOrNull"] != null)
+			{
+				this._StartDateLessThanOrEqualOrNull = ParseInt(node["startDateLessThanOrEqualOrNull"].Value<string>());
+			}
+			if(node["endDateGreaterThanOrEqual"] != null)
+			{
+				this._EndDateGreaterThanOrEqual = ParseInt(node["endDateGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["endDateLessThanOrEqual"] != null)
+			{
+				this._EndDateLessThanOrEqual = ParseInt(node["endDateLessThanOrEqual"].Value<string>());
+			}
+			if(node["endDateGreaterThanOrEqualOrNull"] != null)
+			{
+				this._EndDateGreaterThanOrEqualOrNull = ParseInt(node["endDateGreaterThanOrEqualOrNull"].Value<string>());
+			}
+			if(node["endDateLessThanOrEqualOrNull"] != null)
+			{
+				this._EndDateLessThanOrEqualOrNull = ParseInt(node["endDateLessThanOrEqualOrNull"].Value<string>());
+			}
+			if(node["referenceIdEqual"] != null)
+			{
+				this._ReferenceIdEqual = node["referenceIdEqual"].Value<string>();
+			}
+			if(node["referenceIdIn"] != null)
+			{
+				this._ReferenceIdIn = node["referenceIdIn"].Value<string>();
+			}
+			if(node["replacingEntryIdEqual"] != null)
+			{
+				this._ReplacingEntryIdEqual = node["replacingEntryIdEqual"].Value<string>();
+			}
+			if(node["replacingEntryIdIn"] != null)
+			{
+				this._ReplacingEntryIdIn = node["replacingEntryIdIn"].Value<string>();
+			}
+			if(node["replacedEntryIdEqual"] != null)
+			{
+				this._ReplacedEntryIdEqual = node["replacedEntryIdEqual"].Value<string>();
+			}
+			if(node["replacedEntryIdIn"] != null)
+			{
+				this._ReplacedEntryIdIn = node["replacedEntryIdIn"].Value<string>();
+			}
+			if(node["replacementStatusEqual"] != null)
+			{
+				this._ReplacementStatusEqual = (EntryReplacementStatus)StringEnum.Parse(typeof(EntryReplacementStatus), node["replacementStatusEqual"].Value<string>());
+			}
+			if(node["replacementStatusIn"] != null)
+			{
+				this._ReplacementStatusIn = node["replacementStatusIn"].Value<string>();
+			}
+			if(node["partnerSortValueGreaterThanOrEqual"] != null)
+			{
+				this._PartnerSortValueGreaterThanOrEqual = ParseInt(node["partnerSortValueGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["partnerSortValueLessThanOrEqual"] != null)
+			{
+				this._PartnerSortValueLessThanOrEqual = ParseInt(node["partnerSortValueLessThanOrEqual"].Value<string>());
+			}
+			if(node["rootEntryIdEqual"] != null)
+			{
+				this._RootEntryIdEqual = node["rootEntryIdEqual"].Value<string>();
+			}
+			if(node["rootEntryIdIn"] != null)
+			{
+				this._RootEntryIdIn = node["rootEntryIdIn"].Value<string>();
+			}
+			if(node["parentEntryIdEqual"] != null)
+			{
+				this._ParentEntryIdEqual = node["parentEntryIdEqual"].Value<string>();
+			}
+			if(node["entitledUsersEditMatchAnd"] != null)
+			{
+				this._EntitledUsersEditMatchAnd = node["entitledUsersEditMatchAnd"].Value<string>();
+			}
+			if(node["entitledUsersEditMatchOr"] != null)
+			{
+				this._EntitledUsersEditMatchOr = node["entitledUsersEditMatchOr"].Value<string>();
+			}
+			if(node["entitledUsersPublishMatchAnd"] != null)
+			{
+				this._EntitledUsersPublishMatchAnd = node["entitledUsersPublishMatchAnd"].Value<string>();
+			}
+			if(node["entitledUsersPublishMatchOr"] != null)
+			{
+				this._EntitledUsersPublishMatchOr = node["entitledUsersPublishMatchOr"].Value<string>();
+			}
+			if(node["entitledUsersViewMatchAnd"] != null)
+			{
+				this._EntitledUsersViewMatchAnd = node["entitledUsersViewMatchAnd"].Value<string>();
+			}
+			if(node["entitledUsersViewMatchOr"] != null)
+			{
+				this._EntitledUsersViewMatchOr = node["entitledUsersViewMatchOr"].Value<string>();
+			}
+			if(node["tagsNameMultiLikeOr"] != null)
+			{
+				this._TagsNameMultiLikeOr = node["tagsNameMultiLikeOr"].Value<string>();
+			}
+			if(node["tagsAdminTagsMultiLikeOr"] != null)
+			{
+				this._TagsAdminTagsMultiLikeOr = node["tagsAdminTagsMultiLikeOr"].Value<string>();
+			}
+			if(node["tagsAdminTagsNameMultiLikeOr"] != null)
+			{
+				this._TagsAdminTagsNameMultiLikeOr = node["tagsAdminTagsNameMultiLikeOr"].Value<string>();
+			}
+			if(node["tagsNameMultiLikeAnd"] != null)
+			{
+				this._TagsNameMultiLikeAnd = node["tagsNameMultiLikeAnd"].Value<string>();
+			}
+			if(node["tagsAdminTagsMultiLikeAnd"] != null)
+			{
+				this._TagsAdminTagsMultiLikeAnd = node["tagsAdminTagsMultiLikeAnd"].Value<string>();
+			}
+			if(node["tagsAdminTagsNameMultiLikeAnd"] != null)
+			{
+				this._TagsAdminTagsNameMultiLikeAnd = node["tagsAdminTagsNameMultiLikeAnd"].Value<string>();
+			}
 		}
 		#endregion
 

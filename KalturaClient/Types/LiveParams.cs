@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string StreamSuffix
 		{
 			get { return _StreamSuffix; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public LiveParams(XmlElement node) : base(node)
+		public LiveParams(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["streamSuffix"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "streamSuffix":
-						this._StreamSuffix = propertyNode.InnerText;
-						continue;
-				}
+				this._StreamSuffix = node["streamSuffix"].Value<string>();
 			}
-		}
-
-		public LiveParams(IDictionary<string,object> data) : base(data)
-		{
-			    this._StreamSuffix = data.TryGetValueSafe<string>("streamSuffix");
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public ContainerFormat FormatEqual
 		{
 			get { return _FormatEqual; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FlavorParamsBaseFilter(XmlElement node) : base(node)
+		public FlavorParamsBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["formatEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "formatEqual":
-						this._FormatEqual = (ContainerFormat)StringEnum.Parse(typeof(ContainerFormat), propertyNode.InnerText);
-						continue;
-				}
+				this._FormatEqual = (ContainerFormat)StringEnum.Parse(typeof(ContainerFormat), node["formatEqual"].Value<string>());
 			}
-		}
-
-		public FlavorParamsBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._FormatEqual = (ContainerFormat)StringEnum.Parse(typeof(ContainerFormat), data.TryGetValueSafe<string>("formatEqual"));
 		}
 		#endregion
 

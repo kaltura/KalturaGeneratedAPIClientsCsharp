@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,6 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Version
 		{
 			get { return _Version; }
@@ -61,6 +64,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Version");
 			}
 		}
+		[JsonProperty]
 		public int ObjectSubType
 		{
 			get { return _ObjectSubType; }
@@ -70,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectSubType");
 			}
 		}
+		[JsonProperty]
 		public int Dc
 		{
 			get { return _Dc; }
@@ -79,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Dc");
 			}
 		}
+		[JsonProperty]
 		public bool? Original
 		{
 			get { return _Original; }
@@ -88,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Original");
 			}
 		}
+		[JsonProperty]
 		public AuditTrailFileSyncType FileType
 		{
 			get { return _FileType; }
@@ -104,38 +111,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AuditTrailFileSyncCreateInfo(XmlElement node) : base(node)
+		public AuditTrailFileSyncCreateInfo(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["version"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "version":
-						this._Version = propertyNode.InnerText;
-						continue;
-					case "objectSubType":
-						this._ObjectSubType = ParseInt(propertyNode.InnerText);
-						continue;
-					case "dc":
-						this._Dc = ParseInt(propertyNode.InnerText);
-						continue;
-					case "original":
-						this._Original = ParseBool(propertyNode.InnerText);
-						continue;
-					case "fileType":
-						this._FileType = (AuditTrailFileSyncType)ParseEnum(typeof(AuditTrailFileSyncType), propertyNode.InnerText);
-						continue;
-				}
+				this._Version = node["version"].Value<string>();
 			}
-		}
-
-		public AuditTrailFileSyncCreateInfo(IDictionary<string,object> data) : base(data)
-		{
-			    this._Version = data.TryGetValueSafe<string>("version");
-			    this._ObjectSubType = data.TryGetValueSafe<int>("objectSubType");
-			    this._Dc = data.TryGetValueSafe<int>("dc");
-			    this._Original = data.TryGetValueSafe<bool>("original");
-			    this._FileType = (AuditTrailFileSyncType)ParseEnum(typeof(AuditTrailFileSyncType), data.TryGetValueSafe<int>("fileType"));
+			if(node["objectSubType"] != null)
+			{
+				this._ObjectSubType = ParseInt(node["objectSubType"].Value<string>());
+			}
+			if(node["dc"] != null)
+			{
+				this._Dc = ParseInt(node["dc"].Value<string>());
+			}
+			if(node["original"] != null)
+			{
+				this._Original = ParseBool(node["original"].Value<string>());
+			}
+			if(node["fileType"] != null)
+			{
+				this._FileType = (AuditTrailFileSyncType)ParseEnum(typeof(AuditTrailFileSyncType), node["fileType"].Value<string>());
+			}
 		}
 		#endregion
 

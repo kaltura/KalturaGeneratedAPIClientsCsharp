@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public NullableBoolean IsLive
 		{
 			get { return _IsLive; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsLive");
 			}
 		}
+		[JsonProperty]
 		public new DeliveryProfileOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DeliveryProfileFilter(XmlElement node) : base(node)
+		public DeliveryProfileFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["isLive"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "isLive":
-						this._IsLive = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "orderBy":
-						this._OrderBy = (DeliveryProfileOrderBy)StringEnum.Parse(typeof(DeliveryProfileOrderBy), propertyNode.InnerText);
-						continue;
-				}
+				this._IsLive = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["isLive"].Value<string>());
 			}
-		}
-
-		public DeliveryProfileFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._IsLive = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isLive"));
-			    this._OrderBy = (DeliveryProfileOrderBy)StringEnum.Parse(typeof(DeliveryProfileOrderBy), data.TryGetValueSafe<string>("orderBy"));
+			if(node["orderBy"] != null)
+			{
+				this._OrderBy = (DeliveryProfileOrderBy)StringEnum.Parse(typeof(DeliveryProfileOrderBy), node["orderBy"].Value<string>());
+			}
 		}
 		#endregion
 

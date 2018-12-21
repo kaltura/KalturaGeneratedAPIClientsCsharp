@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string FileSyncLocalPath
 		{
 			get { return _FileSyncLocalPath; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileSyncLocalPath");
 			}
 		}
+		[JsonProperty]
 		public string FileEncryptionKey
 		{
 			get { return _FileEncryptionKey; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileEncryptionKey");
 			}
 		}
+		[JsonProperty]
 		public string FileSyncRemoteUrl
 		{
 			get { return _FileSyncRemoteUrl; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileSyncRemoteUrl");
 			}
 		}
+		[JsonProperty]
 		public int FileSyncObjectSubType
 		{
 			get { return _FileSyncObjectSubType; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FileSyncDescriptor(XmlElement node) : base(node)
+		public FileSyncDescriptor(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["fileSyncLocalPath"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "fileSyncLocalPath":
-						this._FileSyncLocalPath = propertyNode.InnerText;
-						continue;
-					case "fileEncryptionKey":
-						this._FileEncryptionKey = propertyNode.InnerText;
-						continue;
-					case "fileSyncRemoteUrl":
-						this._FileSyncRemoteUrl = propertyNode.InnerText;
-						continue;
-					case "fileSyncObjectSubType":
-						this._FileSyncObjectSubType = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._FileSyncLocalPath = node["fileSyncLocalPath"].Value<string>();
 			}
-		}
-
-		public FileSyncDescriptor(IDictionary<string,object> data) : base(data)
-		{
-			    this._FileSyncLocalPath = data.TryGetValueSafe<string>("fileSyncLocalPath");
-			    this._FileEncryptionKey = data.TryGetValueSafe<string>("fileEncryptionKey");
-			    this._FileSyncRemoteUrl = data.TryGetValueSafe<string>("fileSyncRemoteUrl");
-			    this._FileSyncObjectSubType = data.TryGetValueSafe<int>("fileSyncObjectSubType");
+			if(node["fileEncryptionKey"] != null)
+			{
+				this._FileEncryptionKey = node["fileEncryptionKey"].Value<string>();
+			}
+			if(node["fileSyncRemoteUrl"] != null)
+			{
+				this._FileSyncRemoteUrl = node["fileSyncRemoteUrl"].Value<string>();
+			}
+			if(node["fileSyncObjectSubType"] != null)
+			{
+				this._FileSyncObjectSubType = ParseInt(node["fileSyncObjectSubType"].Value<string>());
+			}
 		}
 		#endregion
 

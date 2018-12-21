@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -122,6 +124,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int IdEqual
 		{
 			get { return _IdEqual; }
@@ -131,6 +134,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		[JsonProperty]
 		public string IdIn
 		{
 			get { return _IdIn; }
@@ -140,6 +144,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		[JsonProperty]
 		public string IdNotIn
 		{
 			get { return _IdNotIn; }
@@ -149,6 +154,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdNotIn");
 			}
 		}
+		[JsonProperty]
 		public int ParentIdEqual
 		{
 			get { return _ParentIdEqual; }
@@ -158,6 +164,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string ParentIdIn
 		{
 			get { return _ParentIdIn; }
@@ -167,6 +174,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentIdIn");
 			}
 		}
+		[JsonProperty]
 		public int DepthEqual
 		{
 			get { return _DepthEqual; }
@@ -176,6 +184,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DepthEqual");
 			}
 		}
+		[JsonProperty]
 		public string FullNameEqual
 		{
 			get { return _FullNameEqual; }
@@ -185,6 +194,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FullNameEqual");
 			}
 		}
+		[JsonProperty]
 		public string FullNameStartsWith
 		{
 			get { return _FullNameStartsWith; }
@@ -194,6 +204,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FullNameStartsWith");
 			}
 		}
+		[JsonProperty]
 		public string FullNameIn
 		{
 			get { return _FullNameIn; }
@@ -203,6 +214,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FullNameIn");
 			}
 		}
+		[JsonProperty]
 		public string FullIdsEqual
 		{
 			get { return _FullIdsEqual; }
@@ -212,6 +224,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FullIdsEqual");
 			}
 		}
+		[JsonProperty]
 		public string FullIdsStartsWith
 		{
 			get { return _FullIdsStartsWith; }
@@ -221,6 +234,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FullIdsStartsWith");
 			}
 		}
+		[JsonProperty]
 		public string FullIdsMatchOr
 		{
 			get { return _FullIdsMatchOr; }
@@ -230,6 +244,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FullIdsMatchOr");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
 			get { return _CreatedAtGreaterThanOrEqual; }
@@ -239,6 +254,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
 			get { return _CreatedAtLessThanOrEqual; }
@@ -248,6 +264,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
 			get { return _UpdatedAtGreaterThanOrEqual; }
@@ -257,6 +274,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
 			get { return _UpdatedAtLessThanOrEqual; }
@@ -266,6 +284,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public string TagsLike
 		{
 			get { return _TagsLike; }
@@ -275,6 +294,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsLike");
 			}
 		}
+		[JsonProperty]
 		public string TagsMultiLikeOr
 		{
 			get { return _TagsMultiLikeOr; }
@@ -284,6 +304,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string TagsMultiLikeAnd
 		{
 			get { return _TagsMultiLikeAnd; }
@@ -293,6 +314,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public AppearInListType AppearInListEqual
 		{
 			get { return _AppearInListEqual; }
@@ -302,6 +324,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AppearInListEqual");
 			}
 		}
+		[JsonProperty]
 		public PrivacyType PrivacyEqual
 		{
 			get { return _PrivacyEqual; }
@@ -311,6 +334,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrivacyEqual");
 			}
 		}
+		[JsonProperty]
 		public string PrivacyIn
 		{
 			get { return _PrivacyIn; }
@@ -320,6 +344,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrivacyIn");
 			}
 		}
+		[JsonProperty]
 		public InheritanceType InheritanceTypeEqual
 		{
 			get { return _InheritanceTypeEqual; }
@@ -329,6 +354,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("InheritanceTypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string InheritanceTypeIn
 		{
 			get { return _InheritanceTypeIn; }
@@ -338,6 +364,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("InheritanceTypeIn");
 			}
 		}
+		[JsonProperty]
 		public string ReferenceIdEqual
 		{
 			get { return _ReferenceIdEqual; }
@@ -347,6 +374,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReferenceIdEqual");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean ReferenceIdEmpty
 		{
 			get { return _ReferenceIdEmpty; }
@@ -356,6 +384,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReferenceIdEmpty");
 			}
 		}
+		[JsonProperty]
 		public ContributionPolicyType ContributionPolicyEqual
 		{
 			get { return _ContributionPolicyEqual; }
@@ -365,6 +394,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContributionPolicyEqual");
 			}
 		}
+		[JsonProperty]
 		public int MembersCountGreaterThanOrEqual
 		{
 			get { return _MembersCountGreaterThanOrEqual; }
@@ -374,6 +404,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MembersCountGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int MembersCountLessThanOrEqual
 		{
 			get { return _MembersCountLessThanOrEqual; }
@@ -383,6 +414,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MembersCountLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int PendingMembersCountGreaterThanOrEqual
 		{
 			get { return _PendingMembersCountGreaterThanOrEqual; }
@@ -392,6 +424,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PendingMembersCountGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int PendingMembersCountLessThanOrEqual
 		{
 			get { return _PendingMembersCountLessThanOrEqual; }
@@ -401,6 +434,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PendingMembersCountLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public string PrivacyContextEqual
 		{
 			get { return _PrivacyContextEqual; }
@@ -410,6 +444,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrivacyContextEqual");
 			}
 		}
+		[JsonProperty]
 		public CategoryStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -419,6 +454,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -428,6 +464,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		[JsonProperty]
 		public int InheritedParentIdEqual
 		{
 			get { return _InheritedParentIdEqual; }
@@ -437,6 +474,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("InheritedParentIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string InheritedParentIdIn
 		{
 			get { return _InheritedParentIdIn; }
@@ -446,6 +484,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("InheritedParentIdIn");
 			}
 		}
+		[JsonProperty]
 		public int PartnerSortValueGreaterThanOrEqual
 		{
 			get { return _PartnerSortValueGreaterThanOrEqual; }
@@ -455,6 +494,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerSortValueGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int PartnerSortValueLessThanOrEqual
 		{
 			get { return _PartnerSortValueLessThanOrEqual; }
@@ -464,6 +504,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerSortValueLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public string AggregationCategoriesMultiLikeOr
 		{
 			get { return _AggregationCategoriesMultiLikeOr; }
@@ -473,6 +514,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AggregationCategoriesMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string AggregationCategoriesMultiLikeAnd
 		{
 			get { return _AggregationCategoriesMultiLikeAnd; }
@@ -489,178 +531,168 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CategoryBaseFilter(XmlElement node) : base(node)
+		public CategoryBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["idEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "idEqual":
-						this._IdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "idIn":
-						this._IdIn = propertyNode.InnerText;
-						continue;
-					case "idNotIn":
-						this._IdNotIn = propertyNode.InnerText;
-						continue;
-					case "parentIdEqual":
-						this._ParentIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "parentIdIn":
-						this._ParentIdIn = propertyNode.InnerText;
-						continue;
-					case "depthEqual":
-						this._DepthEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "fullNameEqual":
-						this._FullNameEqual = propertyNode.InnerText;
-						continue;
-					case "fullNameStartsWith":
-						this._FullNameStartsWith = propertyNode.InnerText;
-						continue;
-					case "fullNameIn":
-						this._FullNameIn = propertyNode.InnerText;
-						continue;
-					case "fullIdsEqual":
-						this._FullIdsEqual = propertyNode.InnerText;
-						continue;
-					case "fullIdsStartsWith":
-						this._FullIdsStartsWith = propertyNode.InnerText;
-						continue;
-					case "fullIdsMatchOr":
-						this._FullIdsMatchOr = propertyNode.InnerText;
-						continue;
-					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "tagsLike":
-						this._TagsLike = propertyNode.InnerText;
-						continue;
-					case "tagsMultiLikeOr":
-						this._TagsMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "tagsMultiLikeAnd":
-						this._TagsMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "appearInListEqual":
-						this._AppearInListEqual = (AppearInListType)ParseEnum(typeof(AppearInListType), propertyNode.InnerText);
-						continue;
-					case "privacyEqual":
-						this._PrivacyEqual = (PrivacyType)ParseEnum(typeof(PrivacyType), propertyNode.InnerText);
-						continue;
-					case "privacyIn":
-						this._PrivacyIn = propertyNode.InnerText;
-						continue;
-					case "inheritanceTypeEqual":
-						this._InheritanceTypeEqual = (InheritanceType)ParseEnum(typeof(InheritanceType), propertyNode.InnerText);
-						continue;
-					case "inheritanceTypeIn":
-						this._InheritanceTypeIn = propertyNode.InnerText;
-						continue;
-					case "referenceIdEqual":
-						this._ReferenceIdEqual = propertyNode.InnerText;
-						continue;
-					case "referenceIdEmpty":
-						this._ReferenceIdEmpty = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "contributionPolicyEqual":
-						this._ContributionPolicyEqual = (ContributionPolicyType)ParseEnum(typeof(ContributionPolicyType), propertyNode.InnerText);
-						continue;
-					case "membersCountGreaterThanOrEqual":
-						this._MembersCountGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "membersCountLessThanOrEqual":
-						this._MembersCountLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "pendingMembersCountGreaterThanOrEqual":
-						this._PendingMembersCountGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "pendingMembersCountLessThanOrEqual":
-						this._PendingMembersCountLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "privacyContextEqual":
-						this._PrivacyContextEqual = propertyNode.InnerText;
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (CategoryStatus)ParseEnum(typeof(CategoryStatus), propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-					case "inheritedParentIdEqual":
-						this._InheritedParentIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "inheritedParentIdIn":
-						this._InheritedParentIdIn = propertyNode.InnerText;
-						continue;
-					case "partnerSortValueGreaterThanOrEqual":
-						this._PartnerSortValueGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerSortValueLessThanOrEqual":
-						this._PartnerSortValueLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "aggregationCategoriesMultiLikeOr":
-						this._AggregationCategoriesMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "aggregationCategoriesMultiLikeAnd":
-						this._AggregationCategoriesMultiLikeAnd = propertyNode.InnerText;
-						continue;
-				}
+				this._IdEqual = ParseInt(node["idEqual"].Value<string>());
 			}
-		}
-
-		public CategoryBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
-			    this._IdIn = data.TryGetValueSafe<string>("idIn");
-			    this._IdNotIn = data.TryGetValueSafe<string>("idNotIn");
-			    this._ParentIdEqual = data.TryGetValueSafe<int>("parentIdEqual");
-			    this._ParentIdIn = data.TryGetValueSafe<string>("parentIdIn");
-			    this._DepthEqual = data.TryGetValueSafe<int>("depthEqual");
-			    this._FullNameEqual = data.TryGetValueSafe<string>("fullNameEqual");
-			    this._FullNameStartsWith = data.TryGetValueSafe<string>("fullNameStartsWith");
-			    this._FullNameIn = data.TryGetValueSafe<string>("fullNameIn");
-			    this._FullIdsEqual = data.TryGetValueSafe<string>("fullIdsEqual");
-			    this._FullIdsStartsWith = data.TryGetValueSafe<string>("fullIdsStartsWith");
-			    this._FullIdsMatchOr = data.TryGetValueSafe<string>("fullIdsMatchOr");
-			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
-			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
-			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
-			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
-			    this._TagsLike = data.TryGetValueSafe<string>("tagsLike");
-			    this._TagsMultiLikeOr = data.TryGetValueSafe<string>("tagsMultiLikeOr");
-			    this._TagsMultiLikeAnd = data.TryGetValueSafe<string>("tagsMultiLikeAnd");
-			    this._AppearInListEqual = (AppearInListType)ParseEnum(typeof(AppearInListType), data.TryGetValueSafe<int>("appearInListEqual"));
-			    this._PrivacyEqual = (PrivacyType)ParseEnum(typeof(PrivacyType), data.TryGetValueSafe<int>("privacyEqual"));
-			    this._PrivacyIn = data.TryGetValueSafe<string>("privacyIn");
-			    this._InheritanceTypeEqual = (InheritanceType)ParseEnum(typeof(InheritanceType), data.TryGetValueSafe<int>("inheritanceTypeEqual"));
-			    this._InheritanceTypeIn = data.TryGetValueSafe<string>("inheritanceTypeIn");
-			    this._ReferenceIdEqual = data.TryGetValueSafe<string>("referenceIdEqual");
-			    this._ReferenceIdEmpty = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("referenceIdEmpty"));
-			    this._ContributionPolicyEqual = (ContributionPolicyType)ParseEnum(typeof(ContributionPolicyType), data.TryGetValueSafe<int>("contributionPolicyEqual"));
-			    this._MembersCountGreaterThanOrEqual = data.TryGetValueSafe<int>("membersCountGreaterThanOrEqual");
-			    this._MembersCountLessThanOrEqual = data.TryGetValueSafe<int>("membersCountLessThanOrEqual");
-			    this._PendingMembersCountGreaterThanOrEqual = data.TryGetValueSafe<int>("pendingMembersCountGreaterThanOrEqual");
-			    this._PendingMembersCountLessThanOrEqual = data.TryGetValueSafe<int>("pendingMembersCountLessThanOrEqual");
-			    this._PrivacyContextEqual = data.TryGetValueSafe<string>("privacyContextEqual");
-			    this._StatusEqual = (CategoryStatus)ParseEnum(typeof(CategoryStatus), data.TryGetValueSafe<int>("statusEqual"));
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
-			    this._InheritedParentIdEqual = data.TryGetValueSafe<int>("inheritedParentIdEqual");
-			    this._InheritedParentIdIn = data.TryGetValueSafe<string>("inheritedParentIdIn");
-			    this._PartnerSortValueGreaterThanOrEqual = data.TryGetValueSafe<int>("partnerSortValueGreaterThanOrEqual");
-			    this._PartnerSortValueLessThanOrEqual = data.TryGetValueSafe<int>("partnerSortValueLessThanOrEqual");
-			    this._AggregationCategoriesMultiLikeOr = data.TryGetValueSafe<string>("aggregationCategoriesMultiLikeOr");
-			    this._AggregationCategoriesMultiLikeAnd = data.TryGetValueSafe<string>("aggregationCategoriesMultiLikeAnd");
+			if(node["idIn"] != null)
+			{
+				this._IdIn = node["idIn"].Value<string>();
+			}
+			if(node["idNotIn"] != null)
+			{
+				this._IdNotIn = node["idNotIn"].Value<string>();
+			}
+			if(node["parentIdEqual"] != null)
+			{
+				this._ParentIdEqual = ParseInt(node["parentIdEqual"].Value<string>());
+			}
+			if(node["parentIdIn"] != null)
+			{
+				this._ParentIdIn = node["parentIdIn"].Value<string>();
+			}
+			if(node["depthEqual"] != null)
+			{
+				this._DepthEqual = ParseInt(node["depthEqual"].Value<string>());
+			}
+			if(node["fullNameEqual"] != null)
+			{
+				this._FullNameEqual = node["fullNameEqual"].Value<string>();
+			}
+			if(node["fullNameStartsWith"] != null)
+			{
+				this._FullNameStartsWith = node["fullNameStartsWith"].Value<string>();
+			}
+			if(node["fullNameIn"] != null)
+			{
+				this._FullNameIn = node["fullNameIn"].Value<string>();
+			}
+			if(node["fullIdsEqual"] != null)
+			{
+				this._FullIdsEqual = node["fullIdsEqual"].Value<string>();
+			}
+			if(node["fullIdsStartsWith"] != null)
+			{
+				this._FullIdsStartsWith = node["fullIdsStartsWith"].Value<string>();
+			}
+			if(node["fullIdsMatchOr"] != null)
+			{
+				this._FullIdsMatchOr = node["fullIdsMatchOr"].Value<string>();
+			}
+			if(node["createdAtGreaterThanOrEqual"] != null)
+			{
+				this._CreatedAtGreaterThanOrEqual = ParseInt(node["createdAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["createdAtLessThanOrEqual"] != null)
+			{
+				this._CreatedAtLessThanOrEqual = ParseInt(node["createdAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtGreaterThanOrEqual"] != null)
+			{
+				this._UpdatedAtGreaterThanOrEqual = ParseInt(node["updatedAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtLessThanOrEqual"] != null)
+			{
+				this._UpdatedAtLessThanOrEqual = ParseInt(node["updatedAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["tagsLike"] != null)
+			{
+				this._TagsLike = node["tagsLike"].Value<string>();
+			}
+			if(node["tagsMultiLikeOr"] != null)
+			{
+				this._TagsMultiLikeOr = node["tagsMultiLikeOr"].Value<string>();
+			}
+			if(node["tagsMultiLikeAnd"] != null)
+			{
+				this._TagsMultiLikeAnd = node["tagsMultiLikeAnd"].Value<string>();
+			}
+			if(node["appearInListEqual"] != null)
+			{
+				this._AppearInListEqual = (AppearInListType)ParseEnum(typeof(AppearInListType), node["appearInListEqual"].Value<string>());
+			}
+			if(node["privacyEqual"] != null)
+			{
+				this._PrivacyEqual = (PrivacyType)ParseEnum(typeof(PrivacyType), node["privacyEqual"].Value<string>());
+			}
+			if(node["privacyIn"] != null)
+			{
+				this._PrivacyIn = node["privacyIn"].Value<string>();
+			}
+			if(node["inheritanceTypeEqual"] != null)
+			{
+				this._InheritanceTypeEqual = (InheritanceType)ParseEnum(typeof(InheritanceType), node["inheritanceTypeEqual"].Value<string>());
+			}
+			if(node["inheritanceTypeIn"] != null)
+			{
+				this._InheritanceTypeIn = node["inheritanceTypeIn"].Value<string>();
+			}
+			if(node["referenceIdEqual"] != null)
+			{
+				this._ReferenceIdEqual = node["referenceIdEqual"].Value<string>();
+			}
+			if(node["referenceIdEmpty"] != null)
+			{
+				this._ReferenceIdEmpty = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["referenceIdEmpty"].Value<string>());
+			}
+			if(node["contributionPolicyEqual"] != null)
+			{
+				this._ContributionPolicyEqual = (ContributionPolicyType)ParseEnum(typeof(ContributionPolicyType), node["contributionPolicyEqual"].Value<string>());
+			}
+			if(node["membersCountGreaterThanOrEqual"] != null)
+			{
+				this._MembersCountGreaterThanOrEqual = ParseInt(node["membersCountGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["membersCountLessThanOrEqual"] != null)
+			{
+				this._MembersCountLessThanOrEqual = ParseInt(node["membersCountLessThanOrEqual"].Value<string>());
+			}
+			if(node["pendingMembersCountGreaterThanOrEqual"] != null)
+			{
+				this._PendingMembersCountGreaterThanOrEqual = ParseInt(node["pendingMembersCountGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["pendingMembersCountLessThanOrEqual"] != null)
+			{
+				this._PendingMembersCountLessThanOrEqual = ParseInt(node["pendingMembersCountLessThanOrEqual"].Value<string>());
+			}
+			if(node["privacyContextEqual"] != null)
+			{
+				this._PrivacyContextEqual = node["privacyContextEqual"].Value<string>();
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (CategoryStatus)ParseEnum(typeof(CategoryStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
+			if(node["inheritedParentIdEqual"] != null)
+			{
+				this._InheritedParentIdEqual = ParseInt(node["inheritedParentIdEqual"].Value<string>());
+			}
+			if(node["inheritedParentIdIn"] != null)
+			{
+				this._InheritedParentIdIn = node["inheritedParentIdIn"].Value<string>();
+			}
+			if(node["partnerSortValueGreaterThanOrEqual"] != null)
+			{
+				this._PartnerSortValueGreaterThanOrEqual = ParseInt(node["partnerSortValueGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["partnerSortValueLessThanOrEqual"] != null)
+			{
+				this._PartnerSortValueLessThanOrEqual = ParseInt(node["partnerSortValueLessThanOrEqual"].Value<string>());
+			}
+			if(node["aggregationCategoriesMultiLikeOr"] != null)
+			{
+				this._AggregationCategoriesMultiLikeOr = node["aggregationCategoriesMultiLikeOr"].Value<string>();
+			}
+			if(node["aggregationCategoriesMultiLikeAnd"] != null)
+			{
+				this._AggregationCategoriesMultiLikeAnd = node["aggregationCategoriesMultiLikeAnd"].Value<string>();
+			}
 		}
 		#endregion
 

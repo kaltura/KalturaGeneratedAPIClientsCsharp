@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public bool? ShouldCopyMetadata
 		{
 			get { return _ShouldCopyMetadata; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public MetadataReplacementOptionsItem(XmlElement node) : base(node)
+		public MetadataReplacementOptionsItem(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["shouldCopyMetadata"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "shouldCopyMetadata":
-						this._ShouldCopyMetadata = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._ShouldCopyMetadata = ParseBool(node["shouldCopyMetadata"].Value<string>());
 			}
-		}
-
-		public MetadataReplacementOptionsItem(IDictionary<string,object> data) : base(data)
-		{
-			    this._ShouldCopyMetadata = data.TryGetValueSafe<bool>("shouldCopyMetadata");
 		}
 		#endregion
 

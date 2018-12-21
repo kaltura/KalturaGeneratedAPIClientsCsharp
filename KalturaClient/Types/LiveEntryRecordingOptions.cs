@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public NullableBoolean ShouldCopyEntitlement
 		{
 			get { return _ShouldCopyEntitlement; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ShouldCopyEntitlement");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean ShouldCopyScheduling
 		{
 			get { return _ShouldCopyScheduling; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ShouldCopyScheduling");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean ShouldCopyThumbnail
 		{
 			get { return _ShouldCopyThumbnail; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ShouldCopyThumbnail");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean ShouldMakeHidden
 		{
 			get { return _ShouldMakeHidden; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public LiveEntryRecordingOptions(XmlElement node) : base(node)
+		public LiveEntryRecordingOptions(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["shouldCopyEntitlement"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "shouldCopyEntitlement":
-						this._ShouldCopyEntitlement = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "shouldCopyScheduling":
-						this._ShouldCopyScheduling = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "shouldCopyThumbnail":
-						this._ShouldCopyThumbnail = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "shouldMakeHidden":
-						this._ShouldMakeHidden = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-				}
+				this._ShouldCopyEntitlement = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["shouldCopyEntitlement"].Value<string>());
 			}
-		}
-
-		public LiveEntryRecordingOptions(IDictionary<string,object> data) : base(data)
-		{
-			    this._ShouldCopyEntitlement = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("shouldCopyEntitlement"));
-			    this._ShouldCopyScheduling = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("shouldCopyScheduling"));
-			    this._ShouldCopyThumbnail = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("shouldCopyThumbnail"));
-			    this._ShouldMakeHidden = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("shouldMakeHidden"));
+			if(node["shouldCopyScheduling"] != null)
+			{
+				this._ShouldCopyScheduling = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["shouldCopyScheduling"].Value<string>());
+			}
+			if(node["shouldCopyThumbnail"] != null)
+			{
+				this._ShouldCopyThumbnail = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["shouldCopyThumbnail"].Value<string>());
+			}
+			if(node["shouldMakeHidden"] != null)
+			{
+				this._ShouldMakeHidden = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["shouldMakeHidden"].Value<string>());
+			}
 		}
 		#endregion
 

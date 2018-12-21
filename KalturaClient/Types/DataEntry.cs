@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string DataContent
 		{
 			get { return _DataContent; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DataContent");
 			}
 		}
+		[JsonProperty]
 		public bool? RetrieveDataContentByGet
 		{
 			get { return _RetrieveDataContentByGet; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DataEntry(XmlElement node) : base(node)
+		public DataEntry(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["dataContent"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "dataContent":
-						this._DataContent = propertyNode.InnerText;
-						continue;
-					case "retrieveDataContentByGet":
-						this._RetrieveDataContentByGet = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._DataContent = node["dataContent"].Value<string>();
 			}
-		}
-
-		public DataEntry(IDictionary<string,object> data) : base(data)
-		{
-			    this._DataContent = data.TryGetValueSafe<string>("dataContent");
-			    this._RetrieveDataContentByGet = data.TryGetValueSafe<bool>("retrieveDataContentByGet");
+			if(node["retrieveDataContentByGet"] != null)
+			{
+				this._RetrieveDataContentByGet = ParseBool(node["retrieveDataContentByGet"].Value<string>());
+			}
 		}
 		#endregion
 

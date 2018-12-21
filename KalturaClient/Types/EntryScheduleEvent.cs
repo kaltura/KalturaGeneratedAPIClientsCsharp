@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string TemplateEntryId
 		{
 			get { return _TemplateEntryId; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplateEntryId");
 			}
 		}
+		[JsonProperty]
 		public string EntryIds
 		{
 			get { return _EntryIds; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIds");
 			}
 		}
+		[JsonProperty]
 		public string CategoryIds
 		{
 			get { return _CategoryIds; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EntryScheduleEvent(XmlElement node) : base(node)
+		public EntryScheduleEvent(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["templateEntryId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "templateEntryId":
-						this._TemplateEntryId = propertyNode.InnerText;
-						continue;
-					case "entryIds":
-						this._EntryIds = propertyNode.InnerText;
-						continue;
-					case "categoryIds":
-						this._CategoryIds = propertyNode.InnerText;
-						continue;
-				}
+				this._TemplateEntryId = node["templateEntryId"].Value<string>();
 			}
-		}
-
-		public EntryScheduleEvent(IDictionary<string,object> data) : base(data)
-		{
-			    this._TemplateEntryId = data.TryGetValueSafe<string>("templateEntryId");
-			    this._EntryIds = data.TryGetValueSafe<string>("entryIds");
-			    this._CategoryIds = data.TryGetValueSafe<string>("categoryIds");
+			if(node["entryIds"] != null)
+			{
+				this._EntryIds = node["entryIds"].Value<string>();
+			}
+			if(node["categoryIds"] != null)
+			{
+				this._CategoryIds = node["categoryIds"].Value<string>();
+			}
 		}
 		#endregion
 

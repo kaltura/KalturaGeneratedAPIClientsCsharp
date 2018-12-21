@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -54,6 +56,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int IdEqual
 		{
 			get { return _IdEqual; }
@@ -63,6 +66,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		[JsonProperty]
 		public string IdIn
 		{
 			get { return _IdIn; }
@@ -72,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		[JsonProperty]
 		public string SystemNameEqual
 		{
 			get { return _SystemNameEqual; }
@@ -81,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemNameEqual");
 			}
 		}
+		[JsonProperty]
 		public string SystemNameIn
 		{
 			get { return _SystemNameIn; }
@@ -90,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemNameIn");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean IsSystemDefaultEqual
 		{
 			get { return _IsSystemDefaultEqual; }
@@ -99,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsSystemDefaultEqual");
 			}
 		}
+		[JsonProperty]
 		public string TagsEqual
 		{
 			get { return _TagsEqual; }
@@ -115,42 +123,32 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AssetParamsBaseFilter(XmlElement node) : base(node)
+		public AssetParamsBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["idEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "idEqual":
-						this._IdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "idIn":
-						this._IdIn = propertyNode.InnerText;
-						continue;
-					case "systemNameEqual":
-						this._SystemNameEqual = propertyNode.InnerText;
-						continue;
-					case "systemNameIn":
-						this._SystemNameIn = propertyNode.InnerText;
-						continue;
-					case "isSystemDefaultEqual":
-						this._IsSystemDefaultEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "tagsEqual":
-						this._TagsEqual = propertyNode.InnerText;
-						continue;
-				}
+				this._IdEqual = ParseInt(node["idEqual"].Value<string>());
 			}
-		}
-
-		public AssetParamsBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
-			    this._IdIn = data.TryGetValueSafe<string>("idIn");
-			    this._SystemNameEqual = data.TryGetValueSafe<string>("systemNameEqual");
-			    this._SystemNameIn = data.TryGetValueSafe<string>("systemNameIn");
-			    this._IsSystemDefaultEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isSystemDefaultEqual"));
-			    this._TagsEqual = data.TryGetValueSafe<string>("tagsEqual");
+			if(node["idIn"] != null)
+			{
+				this._IdIn = node["idIn"].Value<string>();
+			}
+			if(node["systemNameEqual"] != null)
+			{
+				this._SystemNameEqual = node["systemNameEqual"].Value<string>();
+			}
+			if(node["systemNameIn"] != null)
+			{
+				this._SystemNameIn = node["systemNameIn"].Value<string>();
+			}
+			if(node["isSystemDefaultEqual"] != null)
+			{
+				this._IsSystemDefaultEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["isSystemDefaultEqual"].Value<string>());
+			}
+			if(node["tagsEqual"] != null)
+			{
+				this._TagsEqual = node["tagsEqual"].Value<string>();
+			}
 		}
 		#endregion
 

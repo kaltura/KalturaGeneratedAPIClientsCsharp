@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -94,14 +96,27 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public ConversionProfileStatus Status
 		{
 			get { return _Status; }
@@ -111,6 +126,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		[JsonProperty]
 		public ConversionProfileType Type
 		{
 			get { return _Type; }
@@ -120,6 +136,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -129,6 +146,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		[JsonProperty]
 		public string SystemName
 		{
 			get { return _SystemName; }
@@ -138,6 +156,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemName");
 			}
 		}
+		[JsonProperty]
 		public string Tags
 		{
 			get { return _Tags; }
@@ -147,6 +166,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -156,6 +176,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public string DefaultEntryId
 		{
 			get { return _DefaultEntryId; }
@@ -165,10 +186,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("DefaultEntryId");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public string FlavorParamsIds
 		{
 			get { return _FlavorParamsIds; }
@@ -178,6 +206,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsIds");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean IsDefault
 		{
 			get { return _IsDefault; }
@@ -187,10 +216,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsDefault");
 			}
 		}
+		[JsonProperty]
 		public bool? IsPartnerDefault
 		{
 			get { return _IsPartnerDefault; }
+			private set 
+			{ 
+				_IsPartnerDefault = value;
+				OnPropertyChanged("IsPartnerDefault");
+			}
 		}
+		[JsonProperty]
 		public CropDimensions CropDimensions
 		{
 			get { return _CropDimensions; }
@@ -200,6 +236,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CropDimensions");
 			}
 		}
+		[JsonProperty]
 		public int ClipStart
 		{
 			get { return _ClipStart; }
@@ -209,6 +246,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ClipStart");
 			}
 		}
+		[JsonProperty]
 		public int ClipDuration
 		{
 			get { return _ClipDuration; }
@@ -218,6 +256,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ClipDuration");
 			}
 		}
+		[JsonProperty]
 		public string XslTransformation
 		{
 			get { return _XslTransformation; }
@@ -227,6 +266,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("XslTransformation");
 			}
 		}
+		[JsonProperty]
 		public int StorageProfileId
 		{
 			get { return _StorageProfileId; }
@@ -236,6 +276,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StorageProfileId");
 			}
 		}
+		[JsonProperty]
 		public MediaParserType MediaParserType
 		{
 			get { return _MediaParserType; }
@@ -245,6 +286,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaParserType");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean CalculateComplexity
 		{
 			get { return _CalculateComplexity; }
@@ -254,6 +296,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CalculateComplexity");
 			}
 		}
+		[JsonProperty]
 		public string CollectionTags
 		{
 			get { return _CollectionTags; }
@@ -263,6 +306,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CollectionTags");
 			}
 		}
+		[JsonProperty]
 		public string ConditionalProfiles
 		{
 			get { return _ConditionalProfiles; }
@@ -272,6 +316,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConditionalProfiles");
 			}
 		}
+		[JsonProperty]
 		public int DetectGOP
 		{
 			get { return _DetectGOP; }
@@ -281,6 +326,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DetectGOP");
 			}
 		}
+		[JsonProperty]
 		public string MediaInfoXslTransformation
 		{
 			get { return _MediaInfoXslTransformation; }
@@ -290,6 +336,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaInfoXslTransformation");
 			}
 		}
+		[JsonProperty]
 		public EntryReplacementOptions DefaultReplacementOptions
 		{
 			get { return _DefaultReplacementOptions; }
@@ -299,6 +346,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DefaultReplacementOptions");
 			}
 		}
+		[JsonProperty]
 		public Language DefaultAudioLang
 		{
 			get { return _DefaultAudioLang; }
@@ -315,122 +363,112 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ConversionProfile(XmlElement node) : base(node)
+		public ConversionProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "status":
-						this._Status = (ConversionProfileStatus)StringEnum.Parse(typeof(ConversionProfileStatus), propertyNode.InnerText);
-						continue;
-					case "type":
-						this._Type = (ConversionProfileType)StringEnum.Parse(typeof(ConversionProfileType), propertyNode.InnerText);
-						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-					case "systemName":
-						this._SystemName = propertyNode.InnerText;
-						continue;
-					case "tags":
-						this._Tags = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "defaultEntryId":
-						this._DefaultEntryId = propertyNode.InnerText;
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "flavorParamsIds":
-						this._FlavorParamsIds = propertyNode.InnerText;
-						continue;
-					case "isDefault":
-						this._IsDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "isPartnerDefault":
-						this._IsPartnerDefault = ParseBool(propertyNode.InnerText);
-						continue;
-					case "cropDimensions":
-						this._CropDimensions = ObjectFactory.Create<CropDimensions>(propertyNode);
-						continue;
-					case "clipStart":
-						this._ClipStart = ParseInt(propertyNode.InnerText);
-						continue;
-					case "clipDuration":
-						this._ClipDuration = ParseInt(propertyNode.InnerText);
-						continue;
-					case "xslTransformation":
-						this._XslTransformation = propertyNode.InnerText;
-						continue;
-					case "storageProfileId":
-						this._StorageProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "mediaParserType":
-						this._MediaParserType = (MediaParserType)StringEnum.Parse(typeof(MediaParserType), propertyNode.InnerText);
-						continue;
-					case "calculateComplexity":
-						this._CalculateComplexity = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "collectionTags":
-						this._CollectionTags = propertyNode.InnerText;
-						continue;
-					case "conditionalProfiles":
-						this._ConditionalProfiles = propertyNode.InnerText;
-						continue;
-					case "detectGOP":
-						this._DetectGOP = ParseInt(propertyNode.InnerText);
-						continue;
-					case "mediaInfoXslTransformation":
-						this._MediaInfoXslTransformation = propertyNode.InnerText;
-						continue;
-					case "defaultReplacementOptions":
-						this._DefaultReplacementOptions = ObjectFactory.Create<EntryReplacementOptions>(propertyNode);
-						continue;
-					case "defaultAudioLang":
-						this._DefaultAudioLang = (Language)StringEnum.Parse(typeof(Language), propertyNode.InnerText);
-						continue;
-				}
+				this._Id = ParseInt(node["id"].Value<string>());
 			}
-		}
-
-		public ConversionProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._Status = (ConversionProfileStatus)StringEnum.Parse(typeof(ConversionProfileStatus), data.TryGetValueSafe<string>("status"));
-			    this._Type = (ConversionProfileType)StringEnum.Parse(typeof(ConversionProfileType), data.TryGetValueSafe<string>("type"));
-			    this._Name = data.TryGetValueSafe<string>("name");
-			    this._SystemName = data.TryGetValueSafe<string>("systemName");
-			    this._Tags = data.TryGetValueSafe<string>("tags");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._DefaultEntryId = data.TryGetValueSafe<string>("defaultEntryId");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._FlavorParamsIds = data.TryGetValueSafe<string>("flavorParamsIds");
-			    this._IsDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isDefault"));
-			    this._IsPartnerDefault = data.TryGetValueSafe<bool>("isPartnerDefault");
-			    this._CropDimensions = ObjectFactory.Create<CropDimensions>(data.TryGetValueSafe<IDictionary<string,object>>("cropDimensions"));
-			    this._ClipStart = data.TryGetValueSafe<int>("clipStart");
-			    this._ClipDuration = data.TryGetValueSafe<int>("clipDuration");
-			    this._XslTransformation = data.TryGetValueSafe<string>("xslTransformation");
-			    this._StorageProfileId = data.TryGetValueSafe<int>("storageProfileId");
-			    this._MediaParserType = (MediaParserType)StringEnum.Parse(typeof(MediaParserType), data.TryGetValueSafe<string>("mediaParserType"));
-			    this._CalculateComplexity = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("calculateComplexity"));
-			    this._CollectionTags = data.TryGetValueSafe<string>("collectionTags");
-			    this._ConditionalProfiles = data.TryGetValueSafe<string>("conditionalProfiles");
-			    this._DetectGOP = data.TryGetValueSafe<int>("detectGOP");
-			    this._MediaInfoXslTransformation = data.TryGetValueSafe<string>("mediaInfoXslTransformation");
-			    this._DefaultReplacementOptions = ObjectFactory.Create<EntryReplacementOptions>(data.TryGetValueSafe<IDictionary<string,object>>("defaultReplacementOptions"));
-			    this._DefaultAudioLang = (Language)StringEnum.Parse(typeof(Language), data.TryGetValueSafe<string>("defaultAudioLang"));
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (ConversionProfileStatus)StringEnum.Parse(typeof(ConversionProfileStatus), node["status"].Value<string>());
+			}
+			if(node["type"] != null)
+			{
+				this._Type = (ConversionProfileType)StringEnum.Parse(typeof(ConversionProfileType), node["type"].Value<string>());
+			}
+			if(node["name"] != null)
+			{
+				this._Name = node["name"].Value<string>();
+			}
+			if(node["systemName"] != null)
+			{
+				this._SystemName = node["systemName"].Value<string>();
+			}
+			if(node["tags"] != null)
+			{
+				this._Tags = node["tags"].Value<string>();
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["defaultEntryId"] != null)
+			{
+				this._DefaultEntryId = node["defaultEntryId"].Value<string>();
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["flavorParamsIds"] != null)
+			{
+				this._FlavorParamsIds = node["flavorParamsIds"].Value<string>();
+			}
+			if(node["isDefault"] != null)
+			{
+				this._IsDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["isDefault"].Value<string>());
+			}
+			if(node["isPartnerDefault"] != null)
+			{
+				this._IsPartnerDefault = ParseBool(node["isPartnerDefault"].Value<string>());
+			}
+			if(node["cropDimensions"] != null)
+			{
+				this._CropDimensions = ObjectFactory.Create<CropDimensions>(node["cropDimensions"]);
+			}
+			if(node["clipStart"] != null)
+			{
+				this._ClipStart = ParseInt(node["clipStart"].Value<string>());
+			}
+			if(node["clipDuration"] != null)
+			{
+				this._ClipDuration = ParseInt(node["clipDuration"].Value<string>());
+			}
+			if(node["xslTransformation"] != null)
+			{
+				this._XslTransformation = node["xslTransformation"].Value<string>();
+			}
+			if(node["storageProfileId"] != null)
+			{
+				this._StorageProfileId = ParseInt(node["storageProfileId"].Value<string>());
+			}
+			if(node["mediaParserType"] != null)
+			{
+				this._MediaParserType = (MediaParserType)StringEnum.Parse(typeof(MediaParserType), node["mediaParserType"].Value<string>());
+			}
+			if(node["calculateComplexity"] != null)
+			{
+				this._CalculateComplexity = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["calculateComplexity"].Value<string>());
+			}
+			if(node["collectionTags"] != null)
+			{
+				this._CollectionTags = node["collectionTags"].Value<string>();
+			}
+			if(node["conditionalProfiles"] != null)
+			{
+				this._ConditionalProfiles = node["conditionalProfiles"].Value<string>();
+			}
+			if(node["detectGOP"] != null)
+			{
+				this._DetectGOP = ParseInt(node["detectGOP"].Value<string>());
+			}
+			if(node["mediaInfoXslTransformation"] != null)
+			{
+				this._MediaInfoXslTransformation = node["mediaInfoXslTransformation"].Value<string>();
+			}
+			if(node["defaultReplacementOptions"] != null)
+			{
+				this._DefaultReplacementOptions = ObjectFactory.Create<EntryReplacementOptions>(node["defaultReplacementOptions"]);
+			}
+			if(node["defaultAudioLang"] != null)
+			{
+				this._DefaultAudioLang = (Language)StringEnum.Parse(typeof(Language), node["defaultAudioLang"].Value<string>());
+			}
 		}
 		#endregion
 

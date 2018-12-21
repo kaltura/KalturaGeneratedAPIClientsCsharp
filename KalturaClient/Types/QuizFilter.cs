@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string EntryIdEqual
 		{
 			get { return _EntryIdEqual; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string EntryIdIn
 		{
 			get { return _EntryIdIn; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public QuizFilter(XmlElement node) : base(node)
+		public QuizFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["entryIdEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "entryIdEqual":
-						this._EntryIdEqual = propertyNode.InnerText;
-						continue;
-					case "entryIdIn":
-						this._EntryIdIn = propertyNode.InnerText;
-						continue;
-				}
+				this._EntryIdEqual = node["entryIdEqual"].Value<string>();
 			}
-		}
-
-		public QuizFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._EntryIdEqual = data.TryGetValueSafe<string>("entryIdEqual");
-			    this._EntryIdIn = data.TryGetValueSafe<string>("entryIdIn");
+			if(node["entryIdIn"] != null)
+			{
+				this._EntryIdIn = node["entryIdIn"].Value<string>();
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -118,6 +120,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Id
 		{
 			get { return _Id; }
@@ -127,10 +130,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public UserType Type
 		{
 			get { return _Type; }
@@ -140,6 +150,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		[JsonProperty]
 		public string ScreenName
 		{
 			get { return _ScreenName; }
@@ -149,6 +160,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ScreenName");
 			}
 		}
+		[JsonProperty]
 		public string FullName
 		{
 			get { return _FullName; }
@@ -158,6 +170,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FullName");
 			}
 		}
+		[JsonProperty]
 		public string Email
 		{
 			get { return _Email; }
@@ -167,6 +180,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Email");
 			}
 		}
+		[JsonProperty]
 		public int DateOfBirth
 		{
 			get { return _DateOfBirth; }
@@ -176,6 +190,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DateOfBirth");
 			}
 		}
+		[JsonProperty]
 		public string Country
 		{
 			get { return _Country; }
@@ -185,6 +200,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Country");
 			}
 		}
+		[JsonProperty]
 		public string State
 		{
 			get { return _State; }
@@ -194,6 +210,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("State");
 			}
 		}
+		[JsonProperty]
 		public string City
 		{
 			get { return _City; }
@@ -203,6 +220,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("City");
 			}
 		}
+		[JsonProperty]
 		public string Zip
 		{
 			get { return _Zip; }
@@ -212,6 +230,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Zip");
 			}
 		}
+		[JsonProperty]
 		public string ThumbnailUrl
 		{
 			get { return _ThumbnailUrl; }
@@ -221,6 +240,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbnailUrl");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -230,6 +250,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public string Tags
 		{
 			get { return _Tags; }
@@ -239,6 +260,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
+		[JsonProperty]
 		public string AdminTags
 		{
 			get { return _AdminTags; }
@@ -248,6 +270,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdminTags");
 			}
 		}
+		[JsonProperty]
 		public Gender Gender
 		{
 			get { return _Gender; }
@@ -257,6 +280,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Gender");
 			}
 		}
+		[JsonProperty]
 		public UserStatus Status
 		{
 			get { return _Status; }
@@ -266,14 +290,27 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public string PartnerData
 		{
 			get { return _PartnerData; }
@@ -283,6 +320,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerData");
 			}
 		}
+		[JsonProperty]
 		public int IndexedPartnerDataInt
 		{
 			get { return _IndexedPartnerDataInt; }
@@ -292,6 +330,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IndexedPartnerDataInt");
 			}
 		}
+		[JsonProperty]
 		public string IndexedPartnerDataString
 		{
 			get { return _IndexedPartnerDataString; }
@@ -301,10 +340,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("IndexedPartnerDataString");
 			}
 		}
+		[JsonProperty]
 		public int StorageSize
 		{
 			get { return _StorageSize; }
+			private set 
+			{ 
+				_StorageSize = value;
+				OnPropertyChanged("StorageSize");
+			}
 		}
+		[JsonProperty]
 		public string Password
 		{
 			set 
@@ -313,6 +359,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Password");
 			}
 		}
+		[JsonProperty]
 		public string FirstName
 		{
 			get { return _FirstName; }
@@ -322,6 +369,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FirstName");
 			}
 		}
+		[JsonProperty]
 		public string LastName
 		{
 			get { return _LastName; }
@@ -331,6 +379,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastName");
 			}
 		}
+		[JsonProperty]
 		public bool? IsAdmin
 		{
 			get { return _IsAdmin; }
@@ -340,6 +389,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsAdmin");
 			}
 		}
+		[JsonProperty]
 		public LanguageCode Language
 		{
 			get { return _Language; }
@@ -349,18 +399,37 @@ namespace Kaltura.Types
 				OnPropertyChanged("Language");
 			}
 		}
+		[JsonProperty]
 		public int LastLoginTime
 		{
 			get { return _LastLoginTime; }
+			private set 
+			{ 
+				_LastLoginTime = value;
+				OnPropertyChanged("LastLoginTime");
+			}
 		}
+		[JsonProperty]
 		public int StatusUpdatedAt
 		{
 			get { return _StatusUpdatedAt; }
+			private set 
+			{ 
+				_StatusUpdatedAt = value;
+				OnPropertyChanged("StatusUpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public int DeletedAt
 		{
 			get { return _DeletedAt; }
+			private set 
+			{ 
+				_DeletedAt = value;
+				OnPropertyChanged("DeletedAt");
+			}
 		}
+		[JsonProperty]
 		public bool? LoginEnabled
 		{
 			get { return _LoginEnabled; }
@@ -370,6 +439,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LoginEnabled");
 			}
 		}
+		[JsonProperty]
 		public string RoleIds
 		{
 			get { return _RoleIds; }
@@ -379,10 +449,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("RoleIds");
 			}
 		}
+		[JsonProperty]
 		public string RoleNames
 		{
 			get { return _RoleNames; }
+			private set 
+			{ 
+				_RoleNames = value;
+				OnPropertyChanged("RoleNames");
+			}
 		}
+		[JsonProperty]
 		public bool? IsAccountOwner
 		{
 			get { return _IsAccountOwner; }
@@ -392,6 +469,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsAccountOwner");
 			}
 		}
+		[JsonProperty]
 		public string AllowedPartnerIds
 		{
 			get { return _AllowedPartnerIds; }
@@ -401,6 +479,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowedPartnerIds");
 			}
 		}
+		[JsonProperty]
 		public string AllowedPartnerPackages
 		{
 			get { return _AllowedPartnerPackages; }
@@ -410,6 +489,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowedPartnerPackages");
 			}
 		}
+		[JsonProperty]
 		public UserMode UserMode
 		{
 			get { return _UserMode; }
@@ -426,170 +506,160 @@ namespace Kaltura.Types
 		{
 		}
 
-		public User(XmlElement node) : base(node)
+		public User(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = propertyNode.InnerText;
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "type":
-						this._Type = (UserType)ParseEnum(typeof(UserType), propertyNode.InnerText);
-						continue;
-					case "screenName":
-						this._ScreenName = propertyNode.InnerText;
-						continue;
-					case "fullName":
-						this._FullName = propertyNode.InnerText;
-						continue;
-					case "email":
-						this._Email = propertyNode.InnerText;
-						continue;
-					case "dateOfBirth":
-						this._DateOfBirth = ParseInt(propertyNode.InnerText);
-						continue;
-					case "country":
-						this._Country = propertyNode.InnerText;
-						continue;
-					case "state":
-						this._State = propertyNode.InnerText;
-						continue;
-					case "city":
-						this._City = propertyNode.InnerText;
-						continue;
-					case "zip":
-						this._Zip = propertyNode.InnerText;
-						continue;
-					case "thumbnailUrl":
-						this._ThumbnailUrl = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "tags":
-						this._Tags = propertyNode.InnerText;
-						continue;
-					case "adminTags":
-						this._AdminTags = propertyNode.InnerText;
-						continue;
-					case "gender":
-						this._Gender = (Gender)ParseEnum(typeof(Gender), propertyNode.InnerText);
-						continue;
-					case "status":
-						this._Status = (UserStatus)ParseEnum(typeof(UserStatus), propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerData":
-						this._PartnerData = propertyNode.InnerText;
-						continue;
-					case "indexedPartnerDataInt":
-						this._IndexedPartnerDataInt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "indexedPartnerDataString":
-						this._IndexedPartnerDataString = propertyNode.InnerText;
-						continue;
-					case "storageSize":
-						this._StorageSize = ParseInt(propertyNode.InnerText);
-						continue;
-					case "password":
-						this._Password = propertyNode.InnerText;
-						continue;
-					case "firstName":
-						this._FirstName = propertyNode.InnerText;
-						continue;
-					case "lastName":
-						this._LastName = propertyNode.InnerText;
-						continue;
-					case "isAdmin":
-						this._IsAdmin = ParseBool(propertyNode.InnerText);
-						continue;
-					case "language":
-						this._Language = (LanguageCode)StringEnum.Parse(typeof(LanguageCode), propertyNode.InnerText);
-						continue;
-					case "lastLoginTime":
-						this._LastLoginTime = ParseInt(propertyNode.InnerText);
-						continue;
-					case "statusUpdatedAt":
-						this._StatusUpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "deletedAt":
-						this._DeletedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "loginEnabled":
-						this._LoginEnabled = ParseBool(propertyNode.InnerText);
-						continue;
-					case "roleIds":
-						this._RoleIds = propertyNode.InnerText;
-						continue;
-					case "roleNames":
-						this._RoleNames = propertyNode.InnerText;
-						continue;
-					case "isAccountOwner":
-						this._IsAccountOwner = ParseBool(propertyNode.InnerText);
-						continue;
-					case "allowedPartnerIds":
-						this._AllowedPartnerIds = propertyNode.InnerText;
-						continue;
-					case "allowedPartnerPackages":
-						this._AllowedPartnerPackages = propertyNode.InnerText;
-						continue;
-					case "userMode":
-						this._UserMode = (UserMode)ParseEnum(typeof(UserMode), propertyNode.InnerText);
-						continue;
-				}
+				this._Id = node["id"].Value<string>();
 			}
-		}
-
-		public User(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<string>("id");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._Type = (UserType)ParseEnum(typeof(UserType), data.TryGetValueSafe<int>("type"));
-			    this._ScreenName = data.TryGetValueSafe<string>("screenName");
-			    this._FullName = data.TryGetValueSafe<string>("fullName");
-			    this._Email = data.TryGetValueSafe<string>("email");
-			    this._DateOfBirth = data.TryGetValueSafe<int>("dateOfBirth");
-			    this._Country = data.TryGetValueSafe<string>("country");
-			    this._State = data.TryGetValueSafe<string>("state");
-			    this._City = data.TryGetValueSafe<string>("city");
-			    this._Zip = data.TryGetValueSafe<string>("zip");
-			    this._ThumbnailUrl = data.TryGetValueSafe<string>("thumbnailUrl");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._Tags = data.TryGetValueSafe<string>("tags");
-			    this._AdminTags = data.TryGetValueSafe<string>("adminTags");
-			    this._Gender = (Gender)ParseEnum(typeof(Gender), data.TryGetValueSafe<int>("gender"));
-			    this._Status = (UserStatus)ParseEnum(typeof(UserStatus), data.TryGetValueSafe<int>("status"));
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._PartnerData = data.TryGetValueSafe<string>("partnerData");
-			    this._IndexedPartnerDataInt = data.TryGetValueSafe<int>("indexedPartnerDataInt");
-			    this._IndexedPartnerDataString = data.TryGetValueSafe<string>("indexedPartnerDataString");
-			    this._StorageSize = data.TryGetValueSafe<int>("storageSize");
-			    this._Password = data.TryGetValueSafe<string>("password");
-			    this._FirstName = data.TryGetValueSafe<string>("firstName");
-			    this._LastName = data.TryGetValueSafe<string>("lastName");
-			    this._IsAdmin = data.TryGetValueSafe<bool>("isAdmin");
-			    this._Language = (LanguageCode)StringEnum.Parse(typeof(LanguageCode), data.TryGetValueSafe<string>("language"));
-			    this._LastLoginTime = data.TryGetValueSafe<int>("lastLoginTime");
-			    this._StatusUpdatedAt = data.TryGetValueSafe<int>("statusUpdatedAt");
-			    this._DeletedAt = data.TryGetValueSafe<int>("deletedAt");
-			    this._LoginEnabled = data.TryGetValueSafe<bool>("loginEnabled");
-			    this._RoleIds = data.TryGetValueSafe<string>("roleIds");
-			    this._RoleNames = data.TryGetValueSafe<string>("roleNames");
-			    this._IsAccountOwner = data.TryGetValueSafe<bool>("isAccountOwner");
-			    this._AllowedPartnerIds = data.TryGetValueSafe<string>("allowedPartnerIds");
-			    this._AllowedPartnerPackages = data.TryGetValueSafe<string>("allowedPartnerPackages");
-			    this._UserMode = (UserMode)ParseEnum(typeof(UserMode), data.TryGetValueSafe<int>("userMode"));
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["type"] != null)
+			{
+				this._Type = (UserType)ParseEnum(typeof(UserType), node["type"].Value<string>());
+			}
+			if(node["screenName"] != null)
+			{
+				this._ScreenName = node["screenName"].Value<string>();
+			}
+			if(node["fullName"] != null)
+			{
+				this._FullName = node["fullName"].Value<string>();
+			}
+			if(node["email"] != null)
+			{
+				this._Email = node["email"].Value<string>();
+			}
+			if(node["dateOfBirth"] != null)
+			{
+				this._DateOfBirth = ParseInt(node["dateOfBirth"].Value<string>());
+			}
+			if(node["country"] != null)
+			{
+				this._Country = node["country"].Value<string>();
+			}
+			if(node["state"] != null)
+			{
+				this._State = node["state"].Value<string>();
+			}
+			if(node["city"] != null)
+			{
+				this._City = node["city"].Value<string>();
+			}
+			if(node["zip"] != null)
+			{
+				this._Zip = node["zip"].Value<string>();
+			}
+			if(node["thumbnailUrl"] != null)
+			{
+				this._ThumbnailUrl = node["thumbnailUrl"].Value<string>();
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["tags"] != null)
+			{
+				this._Tags = node["tags"].Value<string>();
+			}
+			if(node["adminTags"] != null)
+			{
+				this._AdminTags = node["adminTags"].Value<string>();
+			}
+			if(node["gender"] != null)
+			{
+				this._Gender = (Gender)ParseEnum(typeof(Gender), node["gender"].Value<string>());
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (UserStatus)ParseEnum(typeof(UserStatus), node["status"].Value<string>());
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["partnerData"] != null)
+			{
+				this._PartnerData = node["partnerData"].Value<string>();
+			}
+			if(node["indexedPartnerDataInt"] != null)
+			{
+				this._IndexedPartnerDataInt = ParseInt(node["indexedPartnerDataInt"].Value<string>());
+			}
+			if(node["indexedPartnerDataString"] != null)
+			{
+				this._IndexedPartnerDataString = node["indexedPartnerDataString"].Value<string>();
+			}
+			if(node["storageSize"] != null)
+			{
+				this._StorageSize = ParseInt(node["storageSize"].Value<string>());
+			}
+			if(node["password"] != null)
+			{
+				this._Password = node["password"].Value<string>();
+			}
+			if(node["firstName"] != null)
+			{
+				this._FirstName = node["firstName"].Value<string>();
+			}
+			if(node["lastName"] != null)
+			{
+				this._LastName = node["lastName"].Value<string>();
+			}
+			if(node["isAdmin"] != null)
+			{
+				this._IsAdmin = ParseBool(node["isAdmin"].Value<string>());
+			}
+			if(node["language"] != null)
+			{
+				this._Language = (LanguageCode)StringEnum.Parse(typeof(LanguageCode), node["language"].Value<string>());
+			}
+			if(node["lastLoginTime"] != null)
+			{
+				this._LastLoginTime = ParseInt(node["lastLoginTime"].Value<string>());
+			}
+			if(node["statusUpdatedAt"] != null)
+			{
+				this._StatusUpdatedAt = ParseInt(node["statusUpdatedAt"].Value<string>());
+			}
+			if(node["deletedAt"] != null)
+			{
+				this._DeletedAt = ParseInt(node["deletedAt"].Value<string>());
+			}
+			if(node["loginEnabled"] != null)
+			{
+				this._LoginEnabled = ParseBool(node["loginEnabled"].Value<string>());
+			}
+			if(node["roleIds"] != null)
+			{
+				this._RoleIds = node["roleIds"].Value<string>();
+			}
+			if(node["roleNames"] != null)
+			{
+				this._RoleNames = node["roleNames"].Value<string>();
+			}
+			if(node["isAccountOwner"] != null)
+			{
+				this._IsAccountOwner = ParseBool(node["isAccountOwner"].Value<string>());
+			}
+			if(node["allowedPartnerIds"] != null)
+			{
+				this._AllowedPartnerIds = node["allowedPartnerIds"].Value<string>();
+			}
+			if(node["allowedPartnerPackages"] != null)
+			{
+				this._AllowedPartnerPackages = node["allowedPartnerPackages"].Value<string>();
+			}
+			if(node["userMode"] != null)
+			{
+				this._UserMode = (UserMode)ParseEnum(typeof(UserMode), node["userMode"].Value<string>());
+			}
 		}
 		#endregion
 

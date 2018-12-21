@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ParamName
 		{
 			get { return _ParamName; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParamName");
 			}
 		}
+		[JsonProperty]
 		public string ExpiryName
 		{
 			get { return _ExpiryName; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExpiryName");
 			}
 		}
+		[JsonProperty]
 		public string Gen
 		{
 			get { return _Gen; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UrlTokenizerLevel3(XmlElement node) : base(node)
+		public UrlTokenizerLevel3(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["paramName"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "paramName":
-						this._ParamName = propertyNode.InnerText;
-						continue;
-					case "expiryName":
-						this._ExpiryName = propertyNode.InnerText;
-						continue;
-					case "gen":
-						this._Gen = propertyNode.InnerText;
-						continue;
-				}
+				this._ParamName = node["paramName"].Value<string>();
 			}
-		}
-
-		public UrlTokenizerLevel3(IDictionary<string,object> data) : base(data)
-		{
-			    this._ParamName = data.TryGetValueSafe<string>("paramName");
-			    this._ExpiryName = data.TryGetValueSafe<string>("expiryName");
-			    this._Gen = data.TryGetValueSafe<string>("gen");
+			if(node["expiryName"] != null)
+			{
+				this._ExpiryName = node["expiryName"].Value<string>();
+			}
+			if(node["gen"] != null)
+			{
+				this._Gen = node["gen"].Value<string>();
+			}
 		}
 		#endregion
 

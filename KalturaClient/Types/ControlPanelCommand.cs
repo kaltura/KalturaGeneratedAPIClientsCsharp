@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -76,14 +78,27 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public string CreatedBy
 		{
 			get { return _CreatedBy; }
@@ -93,10 +108,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedBy");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public string UpdatedBy
 		{
 			get { return _UpdatedBy; }
@@ -106,6 +128,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedBy");
 			}
 		}
+		[JsonProperty]
 		public int CreatedById
 		{
 			get { return _CreatedById; }
@@ -115,6 +138,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedById");
 			}
 		}
+		[JsonProperty]
 		public int SchedulerId
 		{
 			get { return _SchedulerId; }
@@ -124,6 +148,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SchedulerId");
 			}
 		}
+		[JsonProperty]
 		public int WorkerId
 		{
 			get { return _WorkerId; }
@@ -133,6 +158,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WorkerId");
 			}
 		}
+		[JsonProperty]
 		public int WorkerConfiguredId
 		{
 			get { return _WorkerConfiguredId; }
@@ -142,6 +168,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WorkerConfiguredId");
 			}
 		}
+		[JsonProperty]
 		public int WorkerName
 		{
 			get { return _WorkerName; }
@@ -151,6 +178,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WorkerName");
 			}
 		}
+		[JsonProperty]
 		public int BatchIndex
 		{
 			get { return _BatchIndex; }
@@ -160,6 +188,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BatchIndex");
 			}
 		}
+		[JsonProperty]
 		public ControlPanelCommandType Type
 		{
 			get { return _Type; }
@@ -169,6 +198,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		[JsonProperty]
 		public ControlPanelCommandTargetType TargetType
 		{
 			get { return _TargetType; }
@@ -178,6 +208,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TargetType");
 			}
 		}
+		[JsonProperty]
 		public ControlPanelCommandStatus Status
 		{
 			get { return _Status; }
@@ -187,6 +218,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		[JsonProperty]
 		public string Cause
 		{
 			get { return _Cause; }
@@ -196,6 +228,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Cause");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -205,6 +238,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public string ErrorDescription
 		{
 			get { return _ErrorDescription; }
@@ -221,86 +255,76 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ControlPanelCommand(XmlElement node) : base(node)
+		public ControlPanelCommand(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdBy":
-						this._CreatedBy = propertyNode.InnerText;
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedBy":
-						this._UpdatedBy = propertyNode.InnerText;
-						continue;
-					case "createdById":
-						this._CreatedById = ParseInt(propertyNode.InnerText);
-						continue;
-					case "schedulerId":
-						this._SchedulerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "workerId":
-						this._WorkerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "workerConfiguredId":
-						this._WorkerConfiguredId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "workerName":
-						this._WorkerName = ParseInt(propertyNode.InnerText);
-						continue;
-					case "batchIndex":
-						this._BatchIndex = ParseInt(propertyNode.InnerText);
-						continue;
-					case "type":
-						this._Type = (ControlPanelCommandType)ParseEnum(typeof(ControlPanelCommandType), propertyNode.InnerText);
-						continue;
-					case "targetType":
-						this._TargetType = (ControlPanelCommandTargetType)ParseEnum(typeof(ControlPanelCommandTargetType), propertyNode.InnerText);
-						continue;
-					case "status":
-						this._Status = (ControlPanelCommandStatus)ParseEnum(typeof(ControlPanelCommandStatus), propertyNode.InnerText);
-						continue;
-					case "cause":
-						this._Cause = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "errorDescription":
-						this._ErrorDescription = propertyNode.InnerText;
-						continue;
-				}
+				this._Id = ParseInt(node["id"].Value<string>());
 			}
-		}
-
-		public ControlPanelCommand(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._CreatedBy = data.TryGetValueSafe<string>("createdBy");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._UpdatedBy = data.TryGetValueSafe<string>("updatedBy");
-			    this._CreatedById = data.TryGetValueSafe<int>("createdById");
-			    this._SchedulerId = data.TryGetValueSafe<int>("schedulerId");
-			    this._WorkerId = data.TryGetValueSafe<int>("workerId");
-			    this._WorkerConfiguredId = data.TryGetValueSafe<int>("workerConfiguredId");
-			    this._WorkerName = data.TryGetValueSafe<int>("workerName");
-			    this._BatchIndex = data.TryGetValueSafe<int>("batchIndex");
-			    this._Type = (ControlPanelCommandType)ParseEnum(typeof(ControlPanelCommandType), data.TryGetValueSafe<int>("type"));
-			    this._TargetType = (ControlPanelCommandTargetType)ParseEnum(typeof(ControlPanelCommandTargetType), data.TryGetValueSafe<int>("targetType"));
-			    this._Status = (ControlPanelCommandStatus)ParseEnum(typeof(ControlPanelCommandStatus), data.TryGetValueSafe<int>("status"));
-			    this._Cause = data.TryGetValueSafe<string>("cause");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._ErrorDescription = data.TryGetValueSafe<string>("errorDescription");
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["createdBy"] != null)
+			{
+				this._CreatedBy = node["createdBy"].Value<string>();
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["updatedBy"] != null)
+			{
+				this._UpdatedBy = node["updatedBy"].Value<string>();
+			}
+			if(node["createdById"] != null)
+			{
+				this._CreatedById = ParseInt(node["createdById"].Value<string>());
+			}
+			if(node["schedulerId"] != null)
+			{
+				this._SchedulerId = ParseInt(node["schedulerId"].Value<string>());
+			}
+			if(node["workerId"] != null)
+			{
+				this._WorkerId = ParseInt(node["workerId"].Value<string>());
+			}
+			if(node["workerConfiguredId"] != null)
+			{
+				this._WorkerConfiguredId = ParseInt(node["workerConfiguredId"].Value<string>());
+			}
+			if(node["workerName"] != null)
+			{
+				this._WorkerName = ParseInt(node["workerName"].Value<string>());
+			}
+			if(node["batchIndex"] != null)
+			{
+				this._BatchIndex = ParseInt(node["batchIndex"].Value<string>());
+			}
+			if(node["type"] != null)
+			{
+				this._Type = (ControlPanelCommandType)ParseEnum(typeof(ControlPanelCommandType), node["type"].Value<string>());
+			}
+			if(node["targetType"] != null)
+			{
+				this._TargetType = (ControlPanelCommandTargetType)ParseEnum(typeof(ControlPanelCommandTargetType), node["targetType"].Value<string>());
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (ControlPanelCommandStatus)ParseEnum(typeof(ControlPanelCommandStatus), node["status"].Value<string>());
+			}
+			if(node["cause"] != null)
+			{
+				this._Cause = node["cause"].Value<string>();
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["errorDescription"] != null)
+			{
+				this._ErrorDescription = node["errorDescription"].Value<string>();
+			}
 		}
 		#endregion
 

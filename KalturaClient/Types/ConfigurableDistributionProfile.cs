@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public IList<DistributionFieldConfig> FieldConfigArray
 		{
 			get { return _FieldConfigArray; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FieldConfigArray");
 			}
 		}
+		[JsonProperty]
 		public IList<ExtendingItemMrssParameter> ItemXpathsToExtend
 		{
 			get { return _ItemXpathsToExtend; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemXpathsToExtend");
 			}
 		}
+		[JsonProperty]
 		public bool? UseCategoryEntries
 		{
 			get { return _UseCategoryEntries; }
@@ -82,48 +87,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ConfigurableDistributionProfile(XmlElement node) : base(node)
+		public ConfigurableDistributionProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["fieldConfigArray"] != null)
 			{
-				switch (propertyNode.Name)
+				this._FieldConfigArray = new List<DistributionFieldConfig>();
+				foreach(var arrayNode in node["fieldConfigArray"].Children())
 				{
-					case "fieldConfigArray":
-						this._FieldConfigArray = new List<DistributionFieldConfig>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._FieldConfigArray.Add(ObjectFactory.Create<DistributionFieldConfig>(arrayNode));
-						}
-						continue;
-					case "itemXpathsToExtend":
-						this._ItemXpathsToExtend = new List<ExtendingItemMrssParameter>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._ItemXpathsToExtend.Add(ObjectFactory.Create<ExtendingItemMrssParameter>(arrayNode));
-						}
-						continue;
-					case "useCategoryEntries":
-						this._UseCategoryEntries = ParseBool(propertyNode.InnerText);
-						continue;
+					this._FieldConfigArray.Add(ObjectFactory.Create<DistributionFieldConfig>(arrayNode));
 				}
 			}
-		}
-
-		public ConfigurableDistributionProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._FieldConfigArray = new List<DistributionFieldConfig>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("fieldConfigArray", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._FieldConfigArray.Add(ObjectFactory.Create<DistributionFieldConfig>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._ItemXpathsToExtend = new List<ExtendingItemMrssParameter>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("itemXpathsToExtend", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._ItemXpathsToExtend.Add(ObjectFactory.Create<ExtendingItemMrssParameter>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._UseCategoryEntries = data.TryGetValueSafe<bool>("useCategoryEntries");
+			if(node["itemXpathsToExtend"] != null)
+			{
+				this._ItemXpathsToExtend = new List<ExtendingItemMrssParameter>();
+				foreach(var arrayNode in node["itemXpathsToExtend"].Children())
+				{
+					this._ItemXpathsToExtend.Add(ObjectFactory.Create<ExtendingItemMrssParameter>(arrayNode));
+				}
+			}
+			if(node["useCategoryEntries"] != null)
+			{
+				this._UseCategoryEntries = ParseBool(node["useCategoryEntries"].Value<string>());
+			}
 		}
 		#endregion
 

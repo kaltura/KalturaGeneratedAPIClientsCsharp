@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -130,6 +132,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public YouTubeDistributionFeedSpecVersion FeedSpecVersion
 		{
 			get { return _FeedSpecVersion; }
@@ -139,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedSpecVersion");
 			}
 		}
+		[JsonProperty]
 		public string Username
 		{
 			get { return _Username; }
@@ -148,6 +152,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Username");
 			}
 		}
+		[JsonProperty]
 		public string NotificationEmail
 		{
 			get { return _NotificationEmail; }
@@ -157,6 +162,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("NotificationEmail");
 			}
 		}
+		[JsonProperty]
 		public string SftpHost
 		{
 			get { return _SftpHost; }
@@ -166,6 +172,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpHost");
 			}
 		}
+		[JsonProperty]
 		public int SftpPort
 		{
 			get { return _SftpPort; }
@@ -175,6 +182,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpPort");
 			}
 		}
+		[JsonProperty]
 		public string SftpLogin
 		{
 			get { return _SftpLogin; }
@@ -184,6 +192,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpLogin");
 			}
 		}
+		[JsonProperty]
 		public string SftpPublicKey
 		{
 			get { return _SftpPublicKey; }
@@ -193,6 +202,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpPublicKey");
 			}
 		}
+		[JsonProperty]
 		public string SftpPrivateKey
 		{
 			get { return _SftpPrivateKey; }
@@ -202,6 +212,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpPrivateKey");
 			}
 		}
+		[JsonProperty]
 		public string SftpBaseDir
 		{
 			get { return _SftpBaseDir; }
@@ -211,6 +222,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpBaseDir");
 			}
 		}
+		[JsonProperty]
 		public string OwnerName
 		{
 			get { return _OwnerName; }
@@ -220,6 +232,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("OwnerName");
 			}
 		}
+		[JsonProperty]
 		public string DefaultCategory
 		{
 			get { return _DefaultCategory; }
@@ -229,6 +242,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DefaultCategory");
 			}
 		}
+		[JsonProperty]
 		public string AllowComments
 		{
 			get { return _AllowComments; }
@@ -238,6 +252,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowComments");
 			}
 		}
+		[JsonProperty]
 		public string AllowEmbedding
 		{
 			get { return _AllowEmbedding; }
@@ -247,6 +262,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowEmbedding");
 			}
 		}
+		[JsonProperty]
 		public string AllowRatings
 		{
 			get { return _AllowRatings; }
@@ -256,6 +272,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowRatings");
 			}
 		}
+		[JsonProperty]
 		public string AllowResponses
 		{
 			get { return _AllowResponses; }
@@ -265,6 +282,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowResponses");
 			}
 		}
+		[JsonProperty]
 		public string CommercialPolicy
 		{
 			get { return _CommercialPolicy; }
@@ -274,6 +292,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CommercialPolicy");
 			}
 		}
+		[JsonProperty]
 		public string UgcPolicy
 		{
 			get { return _UgcPolicy; }
@@ -283,6 +302,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UgcPolicy");
 			}
 		}
+		[JsonProperty]
 		public string Target
 		{
 			get { return _Target; }
@@ -292,6 +312,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Target");
 			}
 		}
+		[JsonProperty]
 		public string AdServerPartnerId
 		{
 			get { return _AdServerPartnerId; }
@@ -301,6 +322,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdServerPartnerId");
 			}
 		}
+		[JsonProperty]
 		public bool? EnableAdServer
 		{
 			get { return _EnableAdServer; }
@@ -310,6 +332,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EnableAdServer");
 			}
 		}
+		[JsonProperty]
 		public bool? AllowPreRollAds
 		{
 			get { return _AllowPreRollAds; }
@@ -319,6 +342,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowPreRollAds");
 			}
 		}
+		[JsonProperty]
 		public bool? AllowPostRollAds
 		{
 			get { return _AllowPostRollAds; }
@@ -328,6 +352,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowPostRollAds");
 			}
 		}
+		[JsonProperty]
 		public string Strict
 		{
 			get { return _Strict; }
@@ -337,6 +362,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Strict");
 			}
 		}
+		[JsonProperty]
 		public string OverrideManualEdits
 		{
 			get { return _OverrideManualEdits; }
@@ -346,6 +372,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("OverrideManualEdits");
 			}
 		}
+		[JsonProperty]
 		public string UrgentReference
 		{
 			get { return _UrgentReference; }
@@ -355,6 +382,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UrgentReference");
 			}
 		}
+		[JsonProperty]
 		public string AllowSyndication
 		{
 			get { return _AllowSyndication; }
@@ -364,6 +392,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowSyndication");
 			}
 		}
+		[JsonProperty]
 		public string HideViewCount
 		{
 			get { return _HideViewCount; }
@@ -373,6 +402,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("HideViewCount");
 			}
 		}
+		[JsonProperty]
 		public string AllowAdsenseForVideo
 		{
 			get { return _AllowAdsenseForVideo; }
@@ -382,6 +412,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowAdsenseForVideo");
 			}
 		}
+		[JsonProperty]
 		public string AllowInvideo
 		{
 			get { return _AllowInvideo; }
@@ -391,6 +422,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowInvideo");
 			}
 		}
+		[JsonProperty]
 		public bool? AllowMidRollAds
 		{
 			get { return _AllowMidRollAds; }
@@ -400,6 +432,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowMidRollAds");
 			}
 		}
+		[JsonProperty]
 		public string InstreamStandard
 		{
 			get { return _InstreamStandard; }
@@ -409,6 +442,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("InstreamStandard");
 			}
 		}
+		[JsonProperty]
 		public string InstreamTrueview
 		{
 			get { return _InstreamTrueview; }
@@ -418,6 +452,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("InstreamTrueview");
 			}
 		}
+		[JsonProperty]
 		public string ClaimType
 		{
 			get { return _ClaimType; }
@@ -427,6 +462,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ClaimType");
 			}
 		}
+		[JsonProperty]
 		public string BlockOutsideOwnership
 		{
 			get { return _BlockOutsideOwnership; }
@@ -436,6 +472,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BlockOutsideOwnership");
 			}
 		}
+		[JsonProperty]
 		public string CaptionAutosync
 		{
 			get { return _CaptionAutosync; }
@@ -445,6 +482,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CaptionAutosync");
 			}
 		}
+		[JsonProperty]
 		public bool? DeleteReference
 		{
 			get { return _DeleteReference; }
@@ -454,6 +492,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeleteReference");
 			}
 		}
+		[JsonProperty]
 		public bool? ReleaseClaims
 		{
 			get { return _ReleaseClaims; }
@@ -463,6 +502,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReleaseClaims");
 			}
 		}
+		[JsonProperty]
 		public string ApiAuthorizeUrl
 		{
 			get { return _ApiAuthorizeUrl; }
@@ -472,6 +512,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ApiAuthorizeUrl");
 			}
 		}
+		[JsonProperty]
 		public string PrivacyStatus
 		{
 			get { return _PrivacyStatus; }
@@ -481,6 +522,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrivacyStatus");
 			}
 		}
+		[JsonProperty]
 		public string EnableContentId
 		{
 			get { return _EnableContentId; }
@@ -490,6 +532,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EnableContentId");
 			}
 		}
+		[JsonProperty]
 		public string ThirdPartyAds
 		{
 			get { return _ThirdPartyAds; }
@@ -499,6 +542,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThirdPartyAds");
 			}
 		}
+		[JsonProperty]
 		public string ProductListingAds
 		{
 			get { return _ProductListingAds; }
@@ -508,6 +552,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProductListingAds");
 			}
 		}
+		[JsonProperty]
 		public string DomainWhitelist
 		{
 			get { return _DomainWhitelist; }
@@ -517,6 +562,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DomainWhitelist");
 			}
 		}
+		[JsonProperty]
 		public string NotifySubscribers
 		{
 			get { return _NotifySubscribers; }
@@ -533,194 +579,184 @@ namespace Kaltura.Types
 		{
 		}
 
-		public YouTubeDistributionProfile(XmlElement node) : base(node)
+		public YouTubeDistributionProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["feedSpecVersion"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "feedSpecVersion":
-						this._FeedSpecVersion = (YouTubeDistributionFeedSpecVersion)StringEnum.Parse(typeof(YouTubeDistributionFeedSpecVersion), propertyNode.InnerText);
-						continue;
-					case "username":
-						this._Username = propertyNode.InnerText;
-						continue;
-					case "notificationEmail":
-						this._NotificationEmail = propertyNode.InnerText;
-						continue;
-					case "sftpHost":
-						this._SftpHost = propertyNode.InnerText;
-						continue;
-					case "sftpPort":
-						this._SftpPort = ParseInt(propertyNode.InnerText);
-						continue;
-					case "sftpLogin":
-						this._SftpLogin = propertyNode.InnerText;
-						continue;
-					case "sftpPublicKey":
-						this._SftpPublicKey = propertyNode.InnerText;
-						continue;
-					case "sftpPrivateKey":
-						this._SftpPrivateKey = propertyNode.InnerText;
-						continue;
-					case "sftpBaseDir":
-						this._SftpBaseDir = propertyNode.InnerText;
-						continue;
-					case "ownerName":
-						this._OwnerName = propertyNode.InnerText;
-						continue;
-					case "defaultCategory":
-						this._DefaultCategory = propertyNode.InnerText;
-						continue;
-					case "allowComments":
-						this._AllowComments = propertyNode.InnerText;
-						continue;
-					case "allowEmbedding":
-						this._AllowEmbedding = propertyNode.InnerText;
-						continue;
-					case "allowRatings":
-						this._AllowRatings = propertyNode.InnerText;
-						continue;
-					case "allowResponses":
-						this._AllowResponses = propertyNode.InnerText;
-						continue;
-					case "commercialPolicy":
-						this._CommercialPolicy = propertyNode.InnerText;
-						continue;
-					case "ugcPolicy":
-						this._UgcPolicy = propertyNode.InnerText;
-						continue;
-					case "target":
-						this._Target = propertyNode.InnerText;
-						continue;
-					case "adServerPartnerId":
-						this._AdServerPartnerId = propertyNode.InnerText;
-						continue;
-					case "enableAdServer":
-						this._EnableAdServer = ParseBool(propertyNode.InnerText);
-						continue;
-					case "allowPreRollAds":
-						this._AllowPreRollAds = ParseBool(propertyNode.InnerText);
-						continue;
-					case "allowPostRollAds":
-						this._AllowPostRollAds = ParseBool(propertyNode.InnerText);
-						continue;
-					case "strict":
-						this._Strict = propertyNode.InnerText;
-						continue;
-					case "overrideManualEdits":
-						this._OverrideManualEdits = propertyNode.InnerText;
-						continue;
-					case "urgentReference":
-						this._UrgentReference = propertyNode.InnerText;
-						continue;
-					case "allowSyndication":
-						this._AllowSyndication = propertyNode.InnerText;
-						continue;
-					case "hideViewCount":
-						this._HideViewCount = propertyNode.InnerText;
-						continue;
-					case "allowAdsenseForVideo":
-						this._AllowAdsenseForVideo = propertyNode.InnerText;
-						continue;
-					case "allowInvideo":
-						this._AllowInvideo = propertyNode.InnerText;
-						continue;
-					case "allowMidRollAds":
-						this._AllowMidRollAds = ParseBool(propertyNode.InnerText);
-						continue;
-					case "instreamStandard":
-						this._InstreamStandard = propertyNode.InnerText;
-						continue;
-					case "instreamTrueview":
-						this._InstreamTrueview = propertyNode.InnerText;
-						continue;
-					case "claimType":
-						this._ClaimType = propertyNode.InnerText;
-						continue;
-					case "blockOutsideOwnership":
-						this._BlockOutsideOwnership = propertyNode.InnerText;
-						continue;
-					case "captionAutosync":
-						this._CaptionAutosync = propertyNode.InnerText;
-						continue;
-					case "deleteReference":
-						this._DeleteReference = ParseBool(propertyNode.InnerText);
-						continue;
-					case "releaseClaims":
-						this._ReleaseClaims = ParseBool(propertyNode.InnerText);
-						continue;
-					case "apiAuthorizeUrl":
-						this._ApiAuthorizeUrl = propertyNode.InnerText;
-						continue;
-					case "privacyStatus":
-						this._PrivacyStatus = propertyNode.InnerText;
-						continue;
-					case "enableContentId":
-						this._EnableContentId = propertyNode.InnerText;
-						continue;
-					case "thirdPartyAds":
-						this._ThirdPartyAds = propertyNode.InnerText;
-						continue;
-					case "productListingAds":
-						this._ProductListingAds = propertyNode.InnerText;
-						continue;
-					case "domainWhitelist":
-						this._DomainWhitelist = propertyNode.InnerText;
-						continue;
-					case "notifySubscribers":
-						this._NotifySubscribers = propertyNode.InnerText;
-						continue;
-				}
+				this._FeedSpecVersion = (YouTubeDistributionFeedSpecVersion)StringEnum.Parse(typeof(YouTubeDistributionFeedSpecVersion), node["feedSpecVersion"].Value<string>());
 			}
-		}
-
-		public YouTubeDistributionProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._FeedSpecVersion = (YouTubeDistributionFeedSpecVersion)StringEnum.Parse(typeof(YouTubeDistributionFeedSpecVersion), data.TryGetValueSafe<string>("feedSpecVersion"));
-			    this._Username = data.TryGetValueSafe<string>("username");
-			    this._NotificationEmail = data.TryGetValueSafe<string>("notificationEmail");
-			    this._SftpHost = data.TryGetValueSafe<string>("sftpHost");
-			    this._SftpPort = data.TryGetValueSafe<int>("sftpPort");
-			    this._SftpLogin = data.TryGetValueSafe<string>("sftpLogin");
-			    this._SftpPublicKey = data.TryGetValueSafe<string>("sftpPublicKey");
-			    this._SftpPrivateKey = data.TryGetValueSafe<string>("sftpPrivateKey");
-			    this._SftpBaseDir = data.TryGetValueSafe<string>("sftpBaseDir");
-			    this._OwnerName = data.TryGetValueSafe<string>("ownerName");
-			    this._DefaultCategory = data.TryGetValueSafe<string>("defaultCategory");
-			    this._AllowComments = data.TryGetValueSafe<string>("allowComments");
-			    this._AllowEmbedding = data.TryGetValueSafe<string>("allowEmbedding");
-			    this._AllowRatings = data.TryGetValueSafe<string>("allowRatings");
-			    this._AllowResponses = data.TryGetValueSafe<string>("allowResponses");
-			    this._CommercialPolicy = data.TryGetValueSafe<string>("commercialPolicy");
-			    this._UgcPolicy = data.TryGetValueSafe<string>("ugcPolicy");
-			    this._Target = data.TryGetValueSafe<string>("target");
-			    this._AdServerPartnerId = data.TryGetValueSafe<string>("adServerPartnerId");
-			    this._EnableAdServer = data.TryGetValueSafe<bool>("enableAdServer");
-			    this._AllowPreRollAds = data.TryGetValueSafe<bool>("allowPreRollAds");
-			    this._AllowPostRollAds = data.TryGetValueSafe<bool>("allowPostRollAds");
-			    this._Strict = data.TryGetValueSafe<string>("strict");
-			    this._OverrideManualEdits = data.TryGetValueSafe<string>("overrideManualEdits");
-			    this._UrgentReference = data.TryGetValueSafe<string>("urgentReference");
-			    this._AllowSyndication = data.TryGetValueSafe<string>("allowSyndication");
-			    this._HideViewCount = data.TryGetValueSafe<string>("hideViewCount");
-			    this._AllowAdsenseForVideo = data.TryGetValueSafe<string>("allowAdsenseForVideo");
-			    this._AllowInvideo = data.TryGetValueSafe<string>("allowInvideo");
-			    this._AllowMidRollAds = data.TryGetValueSafe<bool>("allowMidRollAds");
-			    this._InstreamStandard = data.TryGetValueSafe<string>("instreamStandard");
-			    this._InstreamTrueview = data.TryGetValueSafe<string>("instreamTrueview");
-			    this._ClaimType = data.TryGetValueSafe<string>("claimType");
-			    this._BlockOutsideOwnership = data.TryGetValueSafe<string>("blockOutsideOwnership");
-			    this._CaptionAutosync = data.TryGetValueSafe<string>("captionAutosync");
-			    this._DeleteReference = data.TryGetValueSafe<bool>("deleteReference");
-			    this._ReleaseClaims = data.TryGetValueSafe<bool>("releaseClaims");
-			    this._ApiAuthorizeUrl = data.TryGetValueSafe<string>("apiAuthorizeUrl");
-			    this._PrivacyStatus = data.TryGetValueSafe<string>("privacyStatus");
-			    this._EnableContentId = data.TryGetValueSafe<string>("enableContentId");
-			    this._ThirdPartyAds = data.TryGetValueSafe<string>("thirdPartyAds");
-			    this._ProductListingAds = data.TryGetValueSafe<string>("productListingAds");
-			    this._DomainWhitelist = data.TryGetValueSafe<string>("domainWhitelist");
-			    this._NotifySubscribers = data.TryGetValueSafe<string>("notifySubscribers");
+			if(node["username"] != null)
+			{
+				this._Username = node["username"].Value<string>();
+			}
+			if(node["notificationEmail"] != null)
+			{
+				this._NotificationEmail = node["notificationEmail"].Value<string>();
+			}
+			if(node["sftpHost"] != null)
+			{
+				this._SftpHost = node["sftpHost"].Value<string>();
+			}
+			if(node["sftpPort"] != null)
+			{
+				this._SftpPort = ParseInt(node["sftpPort"].Value<string>());
+			}
+			if(node["sftpLogin"] != null)
+			{
+				this._SftpLogin = node["sftpLogin"].Value<string>();
+			}
+			if(node["sftpPublicKey"] != null)
+			{
+				this._SftpPublicKey = node["sftpPublicKey"].Value<string>();
+			}
+			if(node["sftpPrivateKey"] != null)
+			{
+				this._SftpPrivateKey = node["sftpPrivateKey"].Value<string>();
+			}
+			if(node["sftpBaseDir"] != null)
+			{
+				this._SftpBaseDir = node["sftpBaseDir"].Value<string>();
+			}
+			if(node["ownerName"] != null)
+			{
+				this._OwnerName = node["ownerName"].Value<string>();
+			}
+			if(node["defaultCategory"] != null)
+			{
+				this._DefaultCategory = node["defaultCategory"].Value<string>();
+			}
+			if(node["allowComments"] != null)
+			{
+				this._AllowComments = node["allowComments"].Value<string>();
+			}
+			if(node["allowEmbedding"] != null)
+			{
+				this._AllowEmbedding = node["allowEmbedding"].Value<string>();
+			}
+			if(node["allowRatings"] != null)
+			{
+				this._AllowRatings = node["allowRatings"].Value<string>();
+			}
+			if(node["allowResponses"] != null)
+			{
+				this._AllowResponses = node["allowResponses"].Value<string>();
+			}
+			if(node["commercialPolicy"] != null)
+			{
+				this._CommercialPolicy = node["commercialPolicy"].Value<string>();
+			}
+			if(node["ugcPolicy"] != null)
+			{
+				this._UgcPolicy = node["ugcPolicy"].Value<string>();
+			}
+			if(node["target"] != null)
+			{
+				this._Target = node["target"].Value<string>();
+			}
+			if(node["adServerPartnerId"] != null)
+			{
+				this._AdServerPartnerId = node["adServerPartnerId"].Value<string>();
+			}
+			if(node["enableAdServer"] != null)
+			{
+				this._EnableAdServer = ParseBool(node["enableAdServer"].Value<string>());
+			}
+			if(node["allowPreRollAds"] != null)
+			{
+				this._AllowPreRollAds = ParseBool(node["allowPreRollAds"].Value<string>());
+			}
+			if(node["allowPostRollAds"] != null)
+			{
+				this._AllowPostRollAds = ParseBool(node["allowPostRollAds"].Value<string>());
+			}
+			if(node["strict"] != null)
+			{
+				this._Strict = node["strict"].Value<string>();
+			}
+			if(node["overrideManualEdits"] != null)
+			{
+				this._OverrideManualEdits = node["overrideManualEdits"].Value<string>();
+			}
+			if(node["urgentReference"] != null)
+			{
+				this._UrgentReference = node["urgentReference"].Value<string>();
+			}
+			if(node["allowSyndication"] != null)
+			{
+				this._AllowSyndication = node["allowSyndication"].Value<string>();
+			}
+			if(node["hideViewCount"] != null)
+			{
+				this._HideViewCount = node["hideViewCount"].Value<string>();
+			}
+			if(node["allowAdsenseForVideo"] != null)
+			{
+				this._AllowAdsenseForVideo = node["allowAdsenseForVideo"].Value<string>();
+			}
+			if(node["allowInvideo"] != null)
+			{
+				this._AllowInvideo = node["allowInvideo"].Value<string>();
+			}
+			if(node["allowMidRollAds"] != null)
+			{
+				this._AllowMidRollAds = ParseBool(node["allowMidRollAds"].Value<string>());
+			}
+			if(node["instreamStandard"] != null)
+			{
+				this._InstreamStandard = node["instreamStandard"].Value<string>();
+			}
+			if(node["instreamTrueview"] != null)
+			{
+				this._InstreamTrueview = node["instreamTrueview"].Value<string>();
+			}
+			if(node["claimType"] != null)
+			{
+				this._ClaimType = node["claimType"].Value<string>();
+			}
+			if(node["blockOutsideOwnership"] != null)
+			{
+				this._BlockOutsideOwnership = node["blockOutsideOwnership"].Value<string>();
+			}
+			if(node["captionAutosync"] != null)
+			{
+				this._CaptionAutosync = node["captionAutosync"].Value<string>();
+			}
+			if(node["deleteReference"] != null)
+			{
+				this._DeleteReference = ParseBool(node["deleteReference"].Value<string>());
+			}
+			if(node["releaseClaims"] != null)
+			{
+				this._ReleaseClaims = ParseBool(node["releaseClaims"].Value<string>());
+			}
+			if(node["apiAuthorizeUrl"] != null)
+			{
+				this._ApiAuthorizeUrl = node["apiAuthorizeUrl"].Value<string>();
+			}
+			if(node["privacyStatus"] != null)
+			{
+				this._PrivacyStatus = node["privacyStatus"].Value<string>();
+			}
+			if(node["enableContentId"] != null)
+			{
+				this._EnableContentId = node["enableContentId"].Value<string>();
+			}
+			if(node["thirdPartyAds"] != null)
+			{
+				this._ThirdPartyAds = node["thirdPartyAds"].Value<string>();
+			}
+			if(node["productListingAds"] != null)
+			{
+				this._ProductListingAds = node["productListingAds"].Value<string>();
+			}
+			if(node["domainWhitelist"] != null)
+			{
+				this._DomainWhitelist = node["domainWhitelist"].Value<string>();
+			}
+			if(node["notifySubscribers"] != null)
+			{
+				this._NotifySubscribers = node["notifySubscribers"].Value<string>();
+			}
 		}
 		#endregion
 

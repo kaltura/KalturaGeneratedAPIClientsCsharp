@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -62,10 +64,17 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
@@ -75,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		[JsonProperty]
 		public string Browser
 		{
 			get { return _Browser; }
@@ -84,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Browser");
 			}
 		}
+		[JsonProperty]
 		public string ServerIp
 		{
 			get { return _ServerIp; }
@@ -93,6 +104,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerIp");
 			}
 		}
+		[JsonProperty]
 		public string ServerOs
 		{
 			get { return _ServerOs; }
@@ -102,6 +114,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerOs");
 			}
 		}
+		[JsonProperty]
 		public string PhpVersion
 		{
 			get { return _PhpVersion; }
@@ -111,6 +124,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PhpVersion");
 			}
 		}
+		[JsonProperty]
 		public string CeAdminEmail
 		{
 			get { return _CeAdminEmail; }
@@ -120,6 +134,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CeAdminEmail");
 			}
 		}
+		[JsonProperty]
 		public string Type
 		{
 			get { return _Type; }
@@ -129,6 +144,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -138,6 +154,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public string Data
 		{
 			get { return _Data; }
@@ -154,58 +171,48 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CEError(XmlElement node) : base(node)
+		public CEError(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = propertyNode.InnerText;
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "browser":
-						this._Browser = propertyNode.InnerText;
-						continue;
-					case "serverIp":
-						this._ServerIp = propertyNode.InnerText;
-						continue;
-					case "serverOs":
-						this._ServerOs = propertyNode.InnerText;
-						continue;
-					case "phpVersion":
-						this._PhpVersion = propertyNode.InnerText;
-						continue;
-					case "ceAdminEmail":
-						this._CeAdminEmail = propertyNode.InnerText;
-						continue;
-					case "type":
-						this._Type = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "data":
-						this._Data = propertyNode.InnerText;
-						continue;
-				}
+				this._Id = node["id"].Value<string>();
 			}
-		}
-
-		public CEError(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<string>("id");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._Browser = data.TryGetValueSafe<string>("browser");
-			    this._ServerIp = data.TryGetValueSafe<string>("serverIp");
-			    this._ServerOs = data.TryGetValueSafe<string>("serverOs");
-			    this._PhpVersion = data.TryGetValueSafe<string>("phpVersion");
-			    this._CeAdminEmail = data.TryGetValueSafe<string>("ceAdminEmail");
-			    this._Type = data.TryGetValueSafe<string>("type");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._Data = data.TryGetValueSafe<string>("data");
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["browser"] != null)
+			{
+				this._Browser = node["browser"].Value<string>();
+			}
+			if(node["serverIp"] != null)
+			{
+				this._ServerIp = node["serverIp"].Value<string>();
+			}
+			if(node["serverOs"] != null)
+			{
+				this._ServerOs = node["serverOs"].Value<string>();
+			}
+			if(node["phpVersion"] != null)
+			{
+				this._PhpVersion = node["phpVersion"].Value<string>();
+			}
+			if(node["ceAdminEmail"] != null)
+			{
+				this._CeAdminEmail = node["ceAdminEmail"].Value<string>();
+			}
+			if(node["type"] != null)
+			{
+				this._Type = node["type"].Value<string>();
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["data"] != null)
+			{
+				this._Data = node["data"].Value<string>();
+			}
 		}
 		#endregion
 

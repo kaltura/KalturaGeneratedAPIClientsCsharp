@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public ESearchUserFieldName FieldName
 		{
 			get { return _FieldName; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ESearchUserItem(XmlElement node) : base(node)
+		public ESearchUserItem(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["fieldName"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "fieldName":
-						this._FieldName = (ESearchUserFieldName)StringEnum.Parse(typeof(ESearchUserFieldName), propertyNode.InnerText);
-						continue;
-				}
+				this._FieldName = (ESearchUserFieldName)StringEnum.Parse(typeof(ESearchUserFieldName), node["fieldName"].Value<string>());
 			}
-		}
-
-		public ESearchUserItem(IDictionary<string,object> data) : base(data)
-		{
-			    this._FieldName = (ESearchUserFieldName)StringEnum.Parse(typeof(ESearchUserFieldName), data.TryGetValueSafe<string>("fieldName"));
 		}
 		#endregion
 

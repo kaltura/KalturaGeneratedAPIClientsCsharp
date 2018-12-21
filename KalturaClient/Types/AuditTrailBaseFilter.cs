@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -116,6 +118,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int IdEqual
 		{
 			get { return _IdEqual; }
@@ -125,6 +128,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
 			get { return _CreatedAtGreaterThanOrEqual; }
@@ -134,6 +138,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
 			get { return _CreatedAtLessThanOrEqual; }
@@ -143,6 +148,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int ParsedAtGreaterThanOrEqual
 		{
 			get { return _ParsedAtGreaterThanOrEqual; }
@@ -152,6 +158,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParsedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int ParsedAtLessThanOrEqual
 		{
 			get { return _ParsedAtLessThanOrEqual; }
@@ -161,6 +168,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParsedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public AuditTrailStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -170,6 +178,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -179,6 +188,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		[JsonProperty]
 		public AuditTrailObjectType AuditObjectTypeEqual
 		{
 			get { return _AuditObjectTypeEqual; }
@@ -188,6 +198,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AuditObjectTypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string AuditObjectTypeIn
 		{
 			get { return _AuditObjectTypeIn; }
@@ -197,6 +208,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AuditObjectTypeIn");
 			}
 		}
+		[JsonProperty]
 		public string ObjectIdEqual
 		{
 			get { return _ObjectIdEqual; }
@@ -206,6 +218,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string ObjectIdIn
 		{
 			get { return _ObjectIdIn; }
@@ -215,6 +228,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectIdIn");
 			}
 		}
+		[JsonProperty]
 		public string RelatedObjectIdEqual
 		{
 			get { return _RelatedObjectIdEqual; }
@@ -224,6 +238,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RelatedObjectIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string RelatedObjectIdIn
 		{
 			get { return _RelatedObjectIdIn; }
@@ -233,6 +248,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RelatedObjectIdIn");
 			}
 		}
+		[JsonProperty]
 		public AuditTrailObjectType RelatedObjectTypeEqual
 		{
 			get { return _RelatedObjectTypeEqual; }
@@ -242,6 +258,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RelatedObjectTypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string RelatedObjectTypeIn
 		{
 			get { return _RelatedObjectTypeIn; }
@@ -251,6 +268,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RelatedObjectTypeIn");
 			}
 		}
+		[JsonProperty]
 		public string EntryIdEqual
 		{
 			get { return _EntryIdEqual; }
@@ -260,6 +278,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string EntryIdIn
 		{
 			get { return _EntryIdIn; }
@@ -269,6 +288,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdIn");
 			}
 		}
+		[JsonProperty]
 		public int MasterPartnerIdEqual
 		{
 			get { return _MasterPartnerIdEqual; }
@@ -278,6 +298,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MasterPartnerIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string MasterPartnerIdIn
 		{
 			get { return _MasterPartnerIdIn; }
@@ -287,6 +308,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MasterPartnerIdIn");
 			}
 		}
+		[JsonProperty]
 		public int PartnerIdEqual
 		{
 			get { return _PartnerIdEqual; }
@@ -296,6 +318,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string PartnerIdIn
 		{
 			get { return _PartnerIdIn; }
@@ -305,6 +328,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdIn");
 			}
 		}
+		[JsonProperty]
 		public string RequestIdEqual
 		{
 			get { return _RequestIdEqual; }
@@ -314,6 +338,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RequestIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string RequestIdIn
 		{
 			get { return _RequestIdIn; }
@@ -323,6 +348,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RequestIdIn");
 			}
 		}
+		[JsonProperty]
 		public string UserIdEqual
 		{
 			get { return _UserIdEqual; }
@@ -332,6 +358,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string UserIdIn
 		{
 			get { return _UserIdIn; }
@@ -341,6 +368,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIdIn");
 			}
 		}
+		[JsonProperty]
 		public AuditTrailAction ActionEqual
 		{
 			get { return _ActionEqual; }
@@ -350,6 +378,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ActionEqual");
 			}
 		}
+		[JsonProperty]
 		public string ActionIn
 		{
 			get { return _ActionIn; }
@@ -359,6 +388,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ActionIn");
 			}
 		}
+		[JsonProperty]
 		public string KsEqual
 		{
 			get { return _KsEqual; }
@@ -368,6 +398,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("KsEqual");
 			}
 		}
+		[JsonProperty]
 		public AuditTrailContext ContextEqual
 		{
 			get { return _ContextEqual; }
@@ -377,6 +408,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContextEqual");
 			}
 		}
+		[JsonProperty]
 		public string ContextIn
 		{
 			get { return _ContextIn; }
@@ -386,6 +418,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContextIn");
 			}
 		}
+		[JsonProperty]
 		public string EntryPointEqual
 		{
 			get { return _EntryPointEqual; }
@@ -395,6 +428,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryPointEqual");
 			}
 		}
+		[JsonProperty]
 		public string EntryPointIn
 		{
 			get { return _EntryPointIn; }
@@ -404,6 +438,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryPointIn");
 			}
 		}
+		[JsonProperty]
 		public string ServerNameEqual
 		{
 			get { return _ServerNameEqual; }
@@ -413,6 +448,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerNameEqual");
 			}
 		}
+		[JsonProperty]
 		public string ServerNameIn
 		{
 			get { return _ServerNameIn; }
@@ -422,6 +458,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerNameIn");
 			}
 		}
+		[JsonProperty]
 		public string IpAddressEqual
 		{
 			get { return _IpAddressEqual; }
@@ -431,6 +468,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IpAddressEqual");
 			}
 		}
+		[JsonProperty]
 		public string IpAddressIn
 		{
 			get { return _IpAddressIn; }
@@ -440,6 +478,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IpAddressIn");
 			}
 		}
+		[JsonProperty]
 		public string ClientTagEqual
 		{
 			get { return _ClientTagEqual; }
@@ -456,166 +495,156 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AuditTrailBaseFilter(XmlElement node) : base(node)
+		public AuditTrailBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["idEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "idEqual":
-						this._IdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "parsedAtGreaterThanOrEqual":
-						this._ParsedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "parsedAtLessThanOrEqual":
-						this._ParsedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (AuditTrailStatus)ParseEnum(typeof(AuditTrailStatus), propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-					case "auditObjectTypeEqual":
-						this._AuditObjectTypeEqual = (AuditTrailObjectType)StringEnum.Parse(typeof(AuditTrailObjectType), propertyNode.InnerText);
-						continue;
-					case "auditObjectTypeIn":
-						this._AuditObjectTypeIn = propertyNode.InnerText;
-						continue;
-					case "objectIdEqual":
-						this._ObjectIdEqual = propertyNode.InnerText;
-						continue;
-					case "objectIdIn":
-						this._ObjectIdIn = propertyNode.InnerText;
-						continue;
-					case "relatedObjectIdEqual":
-						this._RelatedObjectIdEqual = propertyNode.InnerText;
-						continue;
-					case "relatedObjectIdIn":
-						this._RelatedObjectIdIn = propertyNode.InnerText;
-						continue;
-					case "relatedObjectTypeEqual":
-						this._RelatedObjectTypeEqual = (AuditTrailObjectType)StringEnum.Parse(typeof(AuditTrailObjectType), propertyNode.InnerText);
-						continue;
-					case "relatedObjectTypeIn":
-						this._RelatedObjectTypeIn = propertyNode.InnerText;
-						continue;
-					case "entryIdEqual":
-						this._EntryIdEqual = propertyNode.InnerText;
-						continue;
-					case "entryIdIn":
-						this._EntryIdIn = propertyNode.InnerText;
-						continue;
-					case "masterPartnerIdEqual":
-						this._MasterPartnerIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "masterPartnerIdIn":
-						this._MasterPartnerIdIn = propertyNode.InnerText;
-						continue;
-					case "partnerIdEqual":
-						this._PartnerIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerIdIn":
-						this._PartnerIdIn = propertyNode.InnerText;
-						continue;
-					case "requestIdEqual":
-						this._RequestIdEqual = propertyNode.InnerText;
-						continue;
-					case "requestIdIn":
-						this._RequestIdIn = propertyNode.InnerText;
-						continue;
-					case "userIdEqual":
-						this._UserIdEqual = propertyNode.InnerText;
-						continue;
-					case "userIdIn":
-						this._UserIdIn = propertyNode.InnerText;
-						continue;
-					case "actionEqual":
-						this._ActionEqual = (AuditTrailAction)StringEnum.Parse(typeof(AuditTrailAction), propertyNode.InnerText);
-						continue;
-					case "actionIn":
-						this._ActionIn = propertyNode.InnerText;
-						continue;
-					case "ksEqual":
-						this._KsEqual = propertyNode.InnerText;
-						continue;
-					case "contextEqual":
-						this._ContextEqual = (AuditTrailContext)ParseEnum(typeof(AuditTrailContext), propertyNode.InnerText);
-						continue;
-					case "contextIn":
-						this._ContextIn = propertyNode.InnerText;
-						continue;
-					case "entryPointEqual":
-						this._EntryPointEqual = propertyNode.InnerText;
-						continue;
-					case "entryPointIn":
-						this._EntryPointIn = propertyNode.InnerText;
-						continue;
-					case "serverNameEqual":
-						this._ServerNameEqual = propertyNode.InnerText;
-						continue;
-					case "serverNameIn":
-						this._ServerNameIn = propertyNode.InnerText;
-						continue;
-					case "ipAddressEqual":
-						this._IpAddressEqual = propertyNode.InnerText;
-						continue;
-					case "ipAddressIn":
-						this._IpAddressIn = propertyNode.InnerText;
-						continue;
-					case "clientTagEqual":
-						this._ClientTagEqual = propertyNode.InnerText;
-						continue;
-				}
+				this._IdEqual = ParseInt(node["idEqual"].Value<string>());
 			}
-		}
-
-		public AuditTrailBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
-			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
-			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
-			    this._ParsedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("parsedAtGreaterThanOrEqual");
-			    this._ParsedAtLessThanOrEqual = data.TryGetValueSafe<int>("parsedAtLessThanOrEqual");
-			    this._StatusEqual = (AuditTrailStatus)ParseEnum(typeof(AuditTrailStatus), data.TryGetValueSafe<int>("statusEqual"));
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
-			    this._AuditObjectTypeEqual = (AuditTrailObjectType)StringEnum.Parse(typeof(AuditTrailObjectType), data.TryGetValueSafe<string>("auditObjectTypeEqual"));
-			    this._AuditObjectTypeIn = data.TryGetValueSafe<string>("auditObjectTypeIn");
-			    this._ObjectIdEqual = data.TryGetValueSafe<string>("objectIdEqual");
-			    this._ObjectIdIn = data.TryGetValueSafe<string>("objectIdIn");
-			    this._RelatedObjectIdEqual = data.TryGetValueSafe<string>("relatedObjectIdEqual");
-			    this._RelatedObjectIdIn = data.TryGetValueSafe<string>("relatedObjectIdIn");
-			    this._RelatedObjectTypeEqual = (AuditTrailObjectType)StringEnum.Parse(typeof(AuditTrailObjectType), data.TryGetValueSafe<string>("relatedObjectTypeEqual"));
-			    this._RelatedObjectTypeIn = data.TryGetValueSafe<string>("relatedObjectTypeIn");
-			    this._EntryIdEqual = data.TryGetValueSafe<string>("entryIdEqual");
-			    this._EntryIdIn = data.TryGetValueSafe<string>("entryIdIn");
-			    this._MasterPartnerIdEqual = data.TryGetValueSafe<int>("masterPartnerIdEqual");
-			    this._MasterPartnerIdIn = data.TryGetValueSafe<string>("masterPartnerIdIn");
-			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
-			    this._PartnerIdIn = data.TryGetValueSafe<string>("partnerIdIn");
-			    this._RequestIdEqual = data.TryGetValueSafe<string>("requestIdEqual");
-			    this._RequestIdIn = data.TryGetValueSafe<string>("requestIdIn");
-			    this._UserIdEqual = data.TryGetValueSafe<string>("userIdEqual");
-			    this._UserIdIn = data.TryGetValueSafe<string>("userIdIn");
-			    this._ActionEqual = (AuditTrailAction)StringEnum.Parse(typeof(AuditTrailAction), data.TryGetValueSafe<string>("actionEqual"));
-			    this._ActionIn = data.TryGetValueSafe<string>("actionIn");
-			    this._KsEqual = data.TryGetValueSafe<string>("ksEqual");
-			    this._ContextEqual = (AuditTrailContext)ParseEnum(typeof(AuditTrailContext), data.TryGetValueSafe<int>("contextEqual"));
-			    this._ContextIn = data.TryGetValueSafe<string>("contextIn");
-			    this._EntryPointEqual = data.TryGetValueSafe<string>("entryPointEqual");
-			    this._EntryPointIn = data.TryGetValueSafe<string>("entryPointIn");
-			    this._ServerNameEqual = data.TryGetValueSafe<string>("serverNameEqual");
-			    this._ServerNameIn = data.TryGetValueSafe<string>("serverNameIn");
-			    this._IpAddressEqual = data.TryGetValueSafe<string>("ipAddressEqual");
-			    this._IpAddressIn = data.TryGetValueSafe<string>("ipAddressIn");
-			    this._ClientTagEqual = data.TryGetValueSafe<string>("clientTagEqual");
+			if(node["createdAtGreaterThanOrEqual"] != null)
+			{
+				this._CreatedAtGreaterThanOrEqual = ParseInt(node["createdAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["createdAtLessThanOrEqual"] != null)
+			{
+				this._CreatedAtLessThanOrEqual = ParseInt(node["createdAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["parsedAtGreaterThanOrEqual"] != null)
+			{
+				this._ParsedAtGreaterThanOrEqual = ParseInt(node["parsedAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["parsedAtLessThanOrEqual"] != null)
+			{
+				this._ParsedAtLessThanOrEqual = ParseInt(node["parsedAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (AuditTrailStatus)ParseEnum(typeof(AuditTrailStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
+			if(node["auditObjectTypeEqual"] != null)
+			{
+				this._AuditObjectTypeEqual = (AuditTrailObjectType)StringEnum.Parse(typeof(AuditTrailObjectType), node["auditObjectTypeEqual"].Value<string>());
+			}
+			if(node["auditObjectTypeIn"] != null)
+			{
+				this._AuditObjectTypeIn = node["auditObjectTypeIn"].Value<string>();
+			}
+			if(node["objectIdEqual"] != null)
+			{
+				this._ObjectIdEqual = node["objectIdEqual"].Value<string>();
+			}
+			if(node["objectIdIn"] != null)
+			{
+				this._ObjectIdIn = node["objectIdIn"].Value<string>();
+			}
+			if(node["relatedObjectIdEqual"] != null)
+			{
+				this._RelatedObjectIdEqual = node["relatedObjectIdEqual"].Value<string>();
+			}
+			if(node["relatedObjectIdIn"] != null)
+			{
+				this._RelatedObjectIdIn = node["relatedObjectIdIn"].Value<string>();
+			}
+			if(node["relatedObjectTypeEqual"] != null)
+			{
+				this._RelatedObjectTypeEqual = (AuditTrailObjectType)StringEnum.Parse(typeof(AuditTrailObjectType), node["relatedObjectTypeEqual"].Value<string>());
+			}
+			if(node["relatedObjectTypeIn"] != null)
+			{
+				this._RelatedObjectTypeIn = node["relatedObjectTypeIn"].Value<string>();
+			}
+			if(node["entryIdEqual"] != null)
+			{
+				this._EntryIdEqual = node["entryIdEqual"].Value<string>();
+			}
+			if(node["entryIdIn"] != null)
+			{
+				this._EntryIdIn = node["entryIdIn"].Value<string>();
+			}
+			if(node["masterPartnerIdEqual"] != null)
+			{
+				this._MasterPartnerIdEqual = ParseInt(node["masterPartnerIdEqual"].Value<string>());
+			}
+			if(node["masterPartnerIdIn"] != null)
+			{
+				this._MasterPartnerIdIn = node["masterPartnerIdIn"].Value<string>();
+			}
+			if(node["partnerIdEqual"] != null)
+			{
+				this._PartnerIdEqual = ParseInt(node["partnerIdEqual"].Value<string>());
+			}
+			if(node["partnerIdIn"] != null)
+			{
+				this._PartnerIdIn = node["partnerIdIn"].Value<string>();
+			}
+			if(node["requestIdEqual"] != null)
+			{
+				this._RequestIdEqual = node["requestIdEqual"].Value<string>();
+			}
+			if(node["requestIdIn"] != null)
+			{
+				this._RequestIdIn = node["requestIdIn"].Value<string>();
+			}
+			if(node["userIdEqual"] != null)
+			{
+				this._UserIdEqual = node["userIdEqual"].Value<string>();
+			}
+			if(node["userIdIn"] != null)
+			{
+				this._UserIdIn = node["userIdIn"].Value<string>();
+			}
+			if(node["actionEqual"] != null)
+			{
+				this._ActionEqual = (AuditTrailAction)StringEnum.Parse(typeof(AuditTrailAction), node["actionEqual"].Value<string>());
+			}
+			if(node["actionIn"] != null)
+			{
+				this._ActionIn = node["actionIn"].Value<string>();
+			}
+			if(node["ksEqual"] != null)
+			{
+				this._KsEqual = node["ksEqual"].Value<string>();
+			}
+			if(node["contextEqual"] != null)
+			{
+				this._ContextEqual = (AuditTrailContext)ParseEnum(typeof(AuditTrailContext), node["contextEqual"].Value<string>());
+			}
+			if(node["contextIn"] != null)
+			{
+				this._ContextIn = node["contextIn"].Value<string>();
+			}
+			if(node["entryPointEqual"] != null)
+			{
+				this._EntryPointEqual = node["entryPointEqual"].Value<string>();
+			}
+			if(node["entryPointIn"] != null)
+			{
+				this._EntryPointIn = node["entryPointIn"].Value<string>();
+			}
+			if(node["serverNameEqual"] != null)
+			{
+				this._ServerNameEqual = node["serverNameEqual"].Value<string>();
+			}
+			if(node["serverNameIn"] != null)
+			{
+				this._ServerNameIn = node["serverNameIn"].Value<string>();
+			}
+			if(node["ipAddressEqual"] != null)
+			{
+				this._IpAddressEqual = node["ipAddressEqual"].Value<string>();
+			}
+			if(node["ipAddressIn"] != null)
+			{
+				this._IpAddressIn = node["ipAddressIn"].Value<string>();
+			}
+			if(node["clientTagEqual"] != null)
+			{
+				this._ClientTagEqual = node["clientTagEqual"].Value<string>();
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public NullableBoolean IsQuiz
 		{
 			get { return _IsQuiz; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public QuizAdvancedFilter(XmlElement node) : base(node)
+		public QuizAdvancedFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["isQuiz"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "isQuiz":
-						this._IsQuiz = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-				}
+				this._IsQuiz = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["isQuiz"].Value<string>());
 			}
-		}
-
-		public QuizAdvancedFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._IsQuiz = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isQuiz"));
 		}
 		#endregion
 

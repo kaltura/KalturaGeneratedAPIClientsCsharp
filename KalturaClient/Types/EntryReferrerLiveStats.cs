@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Referrer
 		{
 			get { return _Referrer; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EntryReferrerLiveStats(XmlElement node) : base(node)
+		public EntryReferrerLiveStats(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["referrer"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "referrer":
-						this._Referrer = propertyNode.InnerText;
-						continue;
-				}
+				this._Referrer = node["referrer"].Value<string>();
 			}
-		}
-
-		public EntryReferrerLiveStats(IDictionary<string,object> data) : base(data)
-		{
-			    this._Referrer = data.TryGetValueSafe<string>("referrer");
 		}
 		#endregion
 

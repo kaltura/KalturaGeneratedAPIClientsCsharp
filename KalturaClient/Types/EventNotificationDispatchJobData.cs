@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int TemplateId
 		{
 			get { return _TemplateId; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplateId");
 			}
 		}
+		[JsonProperty]
 		public IList<KeyValue> ContentParameters
 		{
 			get { return _ContentParameters; }
@@ -71,35 +75,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EventNotificationDispatchJobData(XmlElement node) : base(node)
+		public EventNotificationDispatchJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["templateId"] != null)
 			{
-				switch (propertyNode.Name)
+				this._TemplateId = ParseInt(node["templateId"].Value<string>());
+			}
+			if(node["contentParameters"] != null)
+			{
+				this._ContentParameters = new List<KeyValue>();
+				foreach(var arrayNode in node["contentParameters"].Children())
 				{
-					case "templateId":
-						this._TemplateId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "contentParameters":
-						this._ContentParameters = new List<KeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._ContentParameters.Add(ObjectFactory.Create<KeyValue>(arrayNode));
-						}
-						continue;
+					this._ContentParameters.Add(ObjectFactory.Create<KeyValue>(arrayNode));
 				}
 			}
-		}
-
-		public EventNotificationDispatchJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._TemplateId = data.TryGetValueSafe<int>("templateId");
-			    this._ContentParameters = new List<KeyValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("contentParameters", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._ContentParameters.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

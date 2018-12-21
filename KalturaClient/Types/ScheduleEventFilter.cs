@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -70,6 +72,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ResourceIdsLike
 		{
 			get { return _ResourceIdsLike; }
@@ -79,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ResourceIdsLike");
 			}
 		}
+		[JsonProperty]
 		public string ResourceIdsMultiLikeOr
 		{
 			get { return _ResourceIdsMultiLikeOr; }
@@ -88,6 +92,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ResourceIdsMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string ResourceIdsMultiLikeAnd
 		{
 			get { return _ResourceIdsMultiLikeAnd; }
@@ -97,6 +102,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ResourceIdsMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public string ParentResourceIdsLike
 		{
 			get { return _ParentResourceIdsLike; }
@@ -106,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentResourceIdsLike");
 			}
 		}
+		[JsonProperty]
 		public string ParentResourceIdsMultiLikeOr
 		{
 			get { return _ParentResourceIdsMultiLikeOr; }
@@ -115,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentResourceIdsMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string ParentResourceIdsMultiLikeAnd
 		{
 			get { return _ParentResourceIdsMultiLikeAnd; }
@@ -124,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentResourceIdsMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public string TemplateEntryCategoriesIdsMultiLikeAnd
 		{
 			get { return _TemplateEntryCategoriesIdsMultiLikeAnd; }
@@ -133,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplateEntryCategoriesIdsMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public string TemplateEntryCategoriesIdsMultiLikeOr
 		{
 			get { return _TemplateEntryCategoriesIdsMultiLikeOr; }
@@ -142,6 +152,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplateEntryCategoriesIdsMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string ResourceSystemNamesMultiLikeOr
 		{
 			get { return _ResourceSystemNamesMultiLikeOr; }
@@ -151,6 +162,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ResourceSystemNamesMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string TemplateEntryCategoriesIdsLike
 		{
 			get { return _TemplateEntryCategoriesIdsLike; }
@@ -160,6 +172,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplateEntryCategoriesIdsLike");
 			}
 		}
+		[JsonProperty]
 		public string ResourceSystemNamesMultiLikeAnd
 		{
 			get { return _ResourceSystemNamesMultiLikeAnd; }
@@ -169,6 +182,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ResourceSystemNamesMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public string ResourceSystemNamesLike
 		{
 			get { return _ResourceSystemNamesLike; }
@@ -178,6 +192,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ResourceSystemNamesLike");
 			}
 		}
+		[JsonProperty]
 		public string ResourceIdEqual
 		{
 			get { return _ResourceIdEqual; }
@@ -187,6 +202,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ResourceIdEqual");
 			}
 		}
+		[JsonProperty]
 		public new ScheduleEventOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -203,74 +219,64 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ScheduleEventFilter(XmlElement node) : base(node)
+		public ScheduleEventFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["resourceIdsLike"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "resourceIdsLike":
-						this._ResourceIdsLike = propertyNode.InnerText;
-						continue;
-					case "resourceIdsMultiLikeOr":
-						this._ResourceIdsMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "resourceIdsMultiLikeAnd":
-						this._ResourceIdsMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "parentResourceIdsLike":
-						this._ParentResourceIdsLike = propertyNode.InnerText;
-						continue;
-					case "parentResourceIdsMultiLikeOr":
-						this._ParentResourceIdsMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "parentResourceIdsMultiLikeAnd":
-						this._ParentResourceIdsMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "templateEntryCategoriesIdsMultiLikeAnd":
-						this._TemplateEntryCategoriesIdsMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "templateEntryCategoriesIdsMultiLikeOr":
-						this._TemplateEntryCategoriesIdsMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "resourceSystemNamesMultiLikeOr":
-						this._ResourceSystemNamesMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "templateEntryCategoriesIdsLike":
-						this._TemplateEntryCategoriesIdsLike = propertyNode.InnerText;
-						continue;
-					case "resourceSystemNamesMultiLikeAnd":
-						this._ResourceSystemNamesMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "resourceSystemNamesLike":
-						this._ResourceSystemNamesLike = propertyNode.InnerText;
-						continue;
-					case "resourceIdEqual":
-						this._ResourceIdEqual = propertyNode.InnerText;
-						continue;
-					case "orderBy":
-						this._OrderBy = (ScheduleEventOrderBy)StringEnum.Parse(typeof(ScheduleEventOrderBy), propertyNode.InnerText);
-						continue;
-				}
+				this._ResourceIdsLike = node["resourceIdsLike"].Value<string>();
 			}
-		}
-
-		public ScheduleEventFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._ResourceIdsLike = data.TryGetValueSafe<string>("resourceIdsLike");
-			    this._ResourceIdsMultiLikeOr = data.TryGetValueSafe<string>("resourceIdsMultiLikeOr");
-			    this._ResourceIdsMultiLikeAnd = data.TryGetValueSafe<string>("resourceIdsMultiLikeAnd");
-			    this._ParentResourceIdsLike = data.TryGetValueSafe<string>("parentResourceIdsLike");
-			    this._ParentResourceIdsMultiLikeOr = data.TryGetValueSafe<string>("parentResourceIdsMultiLikeOr");
-			    this._ParentResourceIdsMultiLikeAnd = data.TryGetValueSafe<string>("parentResourceIdsMultiLikeAnd");
-			    this._TemplateEntryCategoriesIdsMultiLikeAnd = data.TryGetValueSafe<string>("templateEntryCategoriesIdsMultiLikeAnd");
-			    this._TemplateEntryCategoriesIdsMultiLikeOr = data.TryGetValueSafe<string>("templateEntryCategoriesIdsMultiLikeOr");
-			    this._ResourceSystemNamesMultiLikeOr = data.TryGetValueSafe<string>("resourceSystemNamesMultiLikeOr");
-			    this._TemplateEntryCategoriesIdsLike = data.TryGetValueSafe<string>("templateEntryCategoriesIdsLike");
-			    this._ResourceSystemNamesMultiLikeAnd = data.TryGetValueSafe<string>("resourceSystemNamesMultiLikeAnd");
-			    this._ResourceSystemNamesLike = data.TryGetValueSafe<string>("resourceSystemNamesLike");
-			    this._ResourceIdEqual = data.TryGetValueSafe<string>("resourceIdEqual");
-			    this._OrderBy = (ScheduleEventOrderBy)StringEnum.Parse(typeof(ScheduleEventOrderBy), data.TryGetValueSafe<string>("orderBy"));
+			if(node["resourceIdsMultiLikeOr"] != null)
+			{
+				this._ResourceIdsMultiLikeOr = node["resourceIdsMultiLikeOr"].Value<string>();
+			}
+			if(node["resourceIdsMultiLikeAnd"] != null)
+			{
+				this._ResourceIdsMultiLikeAnd = node["resourceIdsMultiLikeAnd"].Value<string>();
+			}
+			if(node["parentResourceIdsLike"] != null)
+			{
+				this._ParentResourceIdsLike = node["parentResourceIdsLike"].Value<string>();
+			}
+			if(node["parentResourceIdsMultiLikeOr"] != null)
+			{
+				this._ParentResourceIdsMultiLikeOr = node["parentResourceIdsMultiLikeOr"].Value<string>();
+			}
+			if(node["parentResourceIdsMultiLikeAnd"] != null)
+			{
+				this._ParentResourceIdsMultiLikeAnd = node["parentResourceIdsMultiLikeAnd"].Value<string>();
+			}
+			if(node["templateEntryCategoriesIdsMultiLikeAnd"] != null)
+			{
+				this._TemplateEntryCategoriesIdsMultiLikeAnd = node["templateEntryCategoriesIdsMultiLikeAnd"].Value<string>();
+			}
+			if(node["templateEntryCategoriesIdsMultiLikeOr"] != null)
+			{
+				this._TemplateEntryCategoriesIdsMultiLikeOr = node["templateEntryCategoriesIdsMultiLikeOr"].Value<string>();
+			}
+			if(node["resourceSystemNamesMultiLikeOr"] != null)
+			{
+				this._ResourceSystemNamesMultiLikeOr = node["resourceSystemNamesMultiLikeOr"].Value<string>();
+			}
+			if(node["templateEntryCategoriesIdsLike"] != null)
+			{
+				this._TemplateEntryCategoriesIdsLike = node["templateEntryCategoriesIdsLike"].Value<string>();
+			}
+			if(node["resourceSystemNamesMultiLikeAnd"] != null)
+			{
+				this._ResourceSystemNamesMultiLikeAnd = node["resourceSystemNamesMultiLikeAnd"].Value<string>();
+			}
+			if(node["resourceSystemNamesLike"] != null)
+			{
+				this._ResourceSystemNamesLike = node["resourceSystemNamesLike"].Value<string>();
+			}
+			if(node["resourceIdEqual"] != null)
+			{
+				this._ResourceIdEqual = node["resourceIdEqual"].Value<string>();
+			}
+			if(node["orderBy"] != null)
+			{
+				this._OrderBy = (ScheduleEventOrderBy)StringEnum.Parse(typeof(ScheduleEventOrderBy), node["orderBy"].Value<string>());
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -92,18 +94,37 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public int ParentId
 		{
 			get { return _ParentId; }
+			private set 
+			{ 
+				_ParentId = value;
+				OnPropertyChanged("ParentId");
+			}
 		}
+		[JsonProperty]
 		public string Summary
 		{
 			get { return _Summary; }
@@ -113,6 +134,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Summary");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -122,10 +144,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public ScheduleEventStatus Status
 		{
 			get { return _Status; }
+			private set 
+			{ 
+				_Status = value;
+				OnPropertyChanged("Status");
+			}
 		}
+		[JsonProperty]
 		public int StartDate
 		{
 			get { return _StartDate; }
@@ -135,6 +164,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartDate");
 			}
 		}
+		[JsonProperty]
 		public int EndDate
 		{
 			get { return _EndDate; }
@@ -144,6 +174,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndDate");
 			}
 		}
+		[JsonProperty]
 		public string ReferenceId
 		{
 			get { return _ReferenceId; }
@@ -153,6 +184,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReferenceId");
 			}
 		}
+		[JsonProperty]
 		public ScheduleEventClassificationType ClassificationType
 		{
 			get { return _ClassificationType; }
@@ -162,6 +194,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ClassificationType");
 			}
 		}
+		[JsonProperty]
 		public float GeoLatitude
 		{
 			get { return _GeoLatitude; }
@@ -171,6 +204,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("GeoLatitude");
 			}
 		}
+		[JsonProperty]
 		public float GeoLongitude
 		{
 			get { return _GeoLongitude; }
@@ -180,6 +214,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("GeoLongitude");
 			}
 		}
+		[JsonProperty]
 		public string Location
 		{
 			get { return _Location; }
@@ -189,6 +224,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Location");
 			}
 		}
+		[JsonProperty]
 		public string Organizer
 		{
 			get { return _Organizer; }
@@ -198,6 +234,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Organizer");
 			}
 		}
+		[JsonProperty]
 		public string OwnerId
 		{
 			get { return _OwnerId; }
@@ -207,6 +244,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("OwnerId");
 			}
 		}
+		[JsonProperty]
 		public int Priority
 		{
 			get { return _Priority; }
@@ -216,6 +254,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Priority");
 			}
 		}
+		[JsonProperty]
 		public int Sequence
 		{
 			get { return _Sequence; }
@@ -225,6 +264,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Sequence");
 			}
 		}
+		[JsonProperty]
 		public ScheduleEventRecurrenceType RecurrenceType
 		{
 			get { return _RecurrenceType; }
@@ -234,6 +274,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecurrenceType");
 			}
 		}
+		[JsonProperty]
 		public int Duration
 		{
 			get { return _Duration; }
@@ -243,6 +284,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Duration");
 			}
 		}
+		[JsonProperty]
 		public string Contact
 		{
 			get { return _Contact; }
@@ -252,6 +294,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Contact");
 			}
 		}
+		[JsonProperty]
 		public string Comment
 		{
 			get { return _Comment; }
@@ -261,6 +304,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Comment");
 			}
 		}
+		[JsonProperty]
 		public string Tags
 		{
 			get { return _Tags; }
@@ -270,14 +314,27 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public ScheduleEventRecurrence Recurrence
 		{
 			get { return _Recurrence; }
@@ -294,118 +351,108 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ScheduleEvent(XmlElement node) : base(node)
+		public ScheduleEvent(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "parentId":
-						this._ParentId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "summary":
-						this._Summary = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "status":
-						this._Status = (ScheduleEventStatus)ParseEnum(typeof(ScheduleEventStatus), propertyNode.InnerText);
-						continue;
-					case "startDate":
-						this._StartDate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "endDate":
-						this._EndDate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "referenceId":
-						this._ReferenceId = propertyNode.InnerText;
-						continue;
-					case "classificationType":
-						this._ClassificationType = (ScheduleEventClassificationType)ParseEnum(typeof(ScheduleEventClassificationType), propertyNode.InnerText);
-						continue;
-					case "geoLatitude":
-						this._GeoLatitude = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "geoLongitude":
-						this._GeoLongitude = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "location":
-						this._Location = propertyNode.InnerText;
-						continue;
-					case "organizer":
-						this._Organizer = propertyNode.InnerText;
-						continue;
-					case "ownerId":
-						this._OwnerId = propertyNode.InnerText;
-						continue;
-					case "priority":
-						this._Priority = ParseInt(propertyNode.InnerText);
-						continue;
-					case "sequence":
-						this._Sequence = ParseInt(propertyNode.InnerText);
-						continue;
-					case "recurrenceType":
-						this._RecurrenceType = (ScheduleEventRecurrenceType)ParseEnum(typeof(ScheduleEventRecurrenceType), propertyNode.InnerText);
-						continue;
-					case "duration":
-						this._Duration = ParseInt(propertyNode.InnerText);
-						continue;
-					case "contact":
-						this._Contact = propertyNode.InnerText;
-						continue;
-					case "comment":
-						this._Comment = propertyNode.InnerText;
-						continue;
-					case "tags":
-						this._Tags = propertyNode.InnerText;
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "recurrence":
-						this._Recurrence = ObjectFactory.Create<ScheduleEventRecurrence>(propertyNode);
-						continue;
-				}
+				this._Id = ParseInt(node["id"].Value<string>());
 			}
-		}
-
-		public ScheduleEvent(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._ParentId = data.TryGetValueSafe<int>("parentId");
-			    this._Summary = data.TryGetValueSafe<string>("summary");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._Status = (ScheduleEventStatus)ParseEnum(typeof(ScheduleEventStatus), data.TryGetValueSafe<int>("status"));
-			    this._StartDate = data.TryGetValueSafe<int>("startDate");
-			    this._EndDate = data.TryGetValueSafe<int>("endDate");
-			    this._ReferenceId = data.TryGetValueSafe<string>("referenceId");
-			    this._ClassificationType = (ScheduleEventClassificationType)ParseEnum(typeof(ScheduleEventClassificationType), data.TryGetValueSafe<int>("classificationType"));
-			    this._GeoLatitude = data.TryGetValueSafe<float>("geoLatitude");
-			    this._GeoLongitude = data.TryGetValueSafe<float>("geoLongitude");
-			    this._Location = data.TryGetValueSafe<string>("location");
-			    this._Organizer = data.TryGetValueSafe<string>("organizer");
-			    this._OwnerId = data.TryGetValueSafe<string>("ownerId");
-			    this._Priority = data.TryGetValueSafe<int>("priority");
-			    this._Sequence = data.TryGetValueSafe<int>("sequence");
-			    this._RecurrenceType = (ScheduleEventRecurrenceType)ParseEnum(typeof(ScheduleEventRecurrenceType), data.TryGetValueSafe<int>("recurrenceType"));
-			    this._Duration = data.TryGetValueSafe<int>("duration");
-			    this._Contact = data.TryGetValueSafe<string>("contact");
-			    this._Comment = data.TryGetValueSafe<string>("comment");
-			    this._Tags = data.TryGetValueSafe<string>("tags");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._Recurrence = ObjectFactory.Create<ScheduleEventRecurrence>(data.TryGetValueSafe<IDictionary<string,object>>("recurrence"));
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["parentId"] != null)
+			{
+				this._ParentId = ParseInt(node["parentId"].Value<string>());
+			}
+			if(node["summary"] != null)
+			{
+				this._Summary = node["summary"].Value<string>();
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (ScheduleEventStatus)ParseEnum(typeof(ScheduleEventStatus), node["status"].Value<string>());
+			}
+			if(node["startDate"] != null)
+			{
+				this._StartDate = ParseInt(node["startDate"].Value<string>());
+			}
+			if(node["endDate"] != null)
+			{
+				this._EndDate = ParseInt(node["endDate"].Value<string>());
+			}
+			if(node["referenceId"] != null)
+			{
+				this._ReferenceId = node["referenceId"].Value<string>();
+			}
+			if(node["classificationType"] != null)
+			{
+				this._ClassificationType = (ScheduleEventClassificationType)ParseEnum(typeof(ScheduleEventClassificationType), node["classificationType"].Value<string>());
+			}
+			if(node["geoLatitude"] != null)
+			{
+				this._GeoLatitude = ParseFloat(node["geoLatitude"].Value<string>());
+			}
+			if(node["geoLongitude"] != null)
+			{
+				this._GeoLongitude = ParseFloat(node["geoLongitude"].Value<string>());
+			}
+			if(node["location"] != null)
+			{
+				this._Location = node["location"].Value<string>();
+			}
+			if(node["organizer"] != null)
+			{
+				this._Organizer = node["organizer"].Value<string>();
+			}
+			if(node["ownerId"] != null)
+			{
+				this._OwnerId = node["ownerId"].Value<string>();
+			}
+			if(node["priority"] != null)
+			{
+				this._Priority = ParseInt(node["priority"].Value<string>());
+			}
+			if(node["sequence"] != null)
+			{
+				this._Sequence = ParseInt(node["sequence"].Value<string>());
+			}
+			if(node["recurrenceType"] != null)
+			{
+				this._RecurrenceType = (ScheduleEventRecurrenceType)ParseEnum(typeof(ScheduleEventRecurrenceType), node["recurrenceType"].Value<string>());
+			}
+			if(node["duration"] != null)
+			{
+				this._Duration = ParseInt(node["duration"].Value<string>());
+			}
+			if(node["contact"] != null)
+			{
+				this._Contact = node["contact"].Value<string>();
+			}
+			if(node["comment"] != null)
+			{
+				this._Comment = node["comment"].Value<string>();
+			}
+			if(node["tags"] != null)
+			{
+				this._Tags = node["tags"].Value<string>();
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["recurrence"] != null)
+			{
+				this._Recurrence = ObjectFactory.Create<ScheduleEventRecurrence>(node["recurrence"]);
+			}
 		}
 		#endregion
 

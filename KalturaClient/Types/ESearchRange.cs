@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int GreaterThanOrEqual
 		{
 			get { return _GreaterThanOrEqual; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("GreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int LessThanOrEqual
 		{
 			get { return _LessThanOrEqual; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int GreaterThan
 		{
 			get { return _GreaterThan; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("GreaterThan");
 			}
 		}
+		[JsonProperty]
 		public int LessThan
 		{
 			get { return _LessThan; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ESearchRange(XmlElement node) : base(node)
+		public ESearchRange(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["greaterThanOrEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "greaterThanOrEqual":
-						this._GreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "lessThanOrEqual":
-						this._LessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "greaterThan":
-						this._GreaterThan = ParseInt(propertyNode.InnerText);
-						continue;
-					case "lessThan":
-						this._LessThan = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._GreaterThanOrEqual = ParseInt(node["greaterThanOrEqual"].Value<string>());
 			}
-		}
-
-		public ESearchRange(IDictionary<string,object> data) : base(data)
-		{
-			    this._GreaterThanOrEqual = data.TryGetValueSafe<int>("greaterThanOrEqual");
-			    this._LessThanOrEqual = data.TryGetValueSafe<int>("lessThanOrEqual");
-			    this._GreaterThan = data.TryGetValueSafe<int>("greaterThan");
-			    this._LessThan = data.TryGetValueSafe<int>("lessThan");
+			if(node["lessThanOrEqual"] != null)
+			{
+				this._LessThanOrEqual = ParseInt(node["lessThanOrEqual"].Value<string>());
+			}
+			if(node["greaterThan"] != null)
+			{
+				this._GreaterThan = ParseInt(node["greaterThan"].Value<string>());
+			}
+			if(node["lessThan"] != null)
+			{
+				this._LessThan = ParseInt(node["lessThan"].Value<string>());
+			}
 		}
 		#endregion
 

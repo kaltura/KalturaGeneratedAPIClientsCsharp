@@ -32,6 +32,7 @@ using System.IO;
 using Kaltura.Request;
 using Kaltura.Types;
 using Kaltura.Enums;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Services
 {
@@ -72,17 +73,13 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<ScheduledTaskProfile>(result);
 		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<ScheduledTaskProfile>((IDictionary<string,object>)result);
-		}
 	}
 
-	public class ScheduledTaskProfileDeleteRequestBuilder : RequestBuilder<object>
+	public class ScheduledTaskProfileDeleteRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
 		public const string ID = "id";
@@ -119,11 +116,7 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-		public override object DeserializeObject(object result)
+		public override object Deserialize(JToken result)
 		{
 			return null;
 		}
@@ -166,13 +159,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<ScheduledTaskProfile>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<ScheduledTaskProfile>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -213,13 +202,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<ListResponse<ObjectBase>>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<ListResponse<ObjectBase>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -269,13 +254,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<ListResponse<ScheduledTaskProfile>>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<ListResponse<ScheduledTaskProfile>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -325,13 +306,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
-			return int.Parse(result.InnerText);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return (int)(result);
+			return result.Value<int>();
 		}
 	}
 
@@ -381,13 +358,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<ScheduledTaskProfile>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<ScheduledTaskProfile>((IDictionary<string,object>)result);
 		}
 	}
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -64,6 +66,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
@@ -73,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		[JsonProperty]
 		public string EntryId
 		{
 			get { return _EntryId; }
@@ -82,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		[JsonProperty]
 		public LiveStatsEventType EventType
 		{
 			get { return _EventType; }
@@ -91,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EventType");
 			}
 		}
+		[JsonProperty]
 		public string SessionId
 		{
 			get { return _SessionId; }
@@ -100,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SessionId");
 			}
 		}
+		[JsonProperty]
 		public int EventIndex
 		{
 			get { return _EventIndex; }
@@ -109,6 +116,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EventIndex");
 			}
 		}
+		[JsonProperty]
 		public int BufferTime
 		{
 			get { return _BufferTime; }
@@ -118,6 +126,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BufferTime");
 			}
 		}
+		[JsonProperty]
 		public int Bitrate
 		{
 			get { return _Bitrate; }
@@ -127,6 +136,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Bitrate");
 			}
 		}
+		[JsonProperty]
 		public string Referrer
 		{
 			get { return _Referrer; }
@@ -136,6 +146,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Referrer");
 			}
 		}
+		[JsonProperty]
 		public bool? IsLive
 		{
 			get { return _IsLive; }
@@ -145,6 +156,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsLive");
 			}
 		}
+		[JsonProperty]
 		public string StartTime
 		{
 			get { return _StartTime; }
@@ -154,6 +166,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartTime");
 			}
 		}
+		[JsonProperty]
 		public PlaybackProtocol DeliveryType
 		{
 			get { return _DeliveryType; }
@@ -170,62 +183,52 @@ namespace Kaltura.Types
 		{
 		}
 
-		public LiveStatsEvent(XmlElement node) : base(node)
+		public LiveStatsEvent(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["partnerId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "entryId":
-						this._EntryId = propertyNode.InnerText;
-						continue;
-					case "eventType":
-						this._EventType = (LiveStatsEventType)ParseEnum(typeof(LiveStatsEventType), propertyNode.InnerText);
-						continue;
-					case "sessionId":
-						this._SessionId = propertyNode.InnerText;
-						continue;
-					case "eventIndex":
-						this._EventIndex = ParseInt(propertyNode.InnerText);
-						continue;
-					case "bufferTime":
-						this._BufferTime = ParseInt(propertyNode.InnerText);
-						continue;
-					case "bitrate":
-						this._Bitrate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "referrer":
-						this._Referrer = propertyNode.InnerText;
-						continue;
-					case "isLive":
-						this._IsLive = ParseBool(propertyNode.InnerText);
-						continue;
-					case "startTime":
-						this._StartTime = propertyNode.InnerText;
-						continue;
-					case "deliveryType":
-						this._DeliveryType = (PlaybackProtocol)StringEnum.Parse(typeof(PlaybackProtocol), propertyNode.InnerText);
-						continue;
-				}
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
 			}
-		}
-
-		public LiveStatsEvent(IDictionary<string,object> data) : base(data)
-		{
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._EntryId = data.TryGetValueSafe<string>("entryId");
-			    this._EventType = (LiveStatsEventType)ParseEnum(typeof(LiveStatsEventType), data.TryGetValueSafe<int>("eventType"));
-			    this._SessionId = data.TryGetValueSafe<string>("sessionId");
-			    this._EventIndex = data.TryGetValueSafe<int>("eventIndex");
-			    this._BufferTime = data.TryGetValueSafe<int>("bufferTime");
-			    this._Bitrate = data.TryGetValueSafe<int>("bitrate");
-			    this._Referrer = data.TryGetValueSafe<string>("referrer");
-			    this._IsLive = data.TryGetValueSafe<bool>("isLive");
-			    this._StartTime = data.TryGetValueSafe<string>("startTime");
-			    this._DeliveryType = (PlaybackProtocol)StringEnum.Parse(typeof(PlaybackProtocol), data.TryGetValueSafe<string>("deliveryType"));
+			if(node["entryId"] != null)
+			{
+				this._EntryId = node["entryId"].Value<string>();
+			}
+			if(node["eventType"] != null)
+			{
+				this._EventType = (LiveStatsEventType)ParseEnum(typeof(LiveStatsEventType), node["eventType"].Value<string>());
+			}
+			if(node["sessionId"] != null)
+			{
+				this._SessionId = node["sessionId"].Value<string>();
+			}
+			if(node["eventIndex"] != null)
+			{
+				this._EventIndex = ParseInt(node["eventIndex"].Value<string>());
+			}
+			if(node["bufferTime"] != null)
+			{
+				this._BufferTime = ParseInt(node["bufferTime"].Value<string>());
+			}
+			if(node["bitrate"] != null)
+			{
+				this._Bitrate = ParseInt(node["bitrate"].Value<string>());
+			}
+			if(node["referrer"] != null)
+			{
+				this._Referrer = node["referrer"].Value<string>();
+			}
+			if(node["isLive"] != null)
+			{
+				this._IsLive = ParseBool(node["isLive"].Value<string>());
+			}
+			if(node["startTime"] != null)
+			{
+				this._StartTime = node["startTime"].Value<string>();
+			}
+			if(node["deliveryType"] != null)
+			{
+				this._DeliveryType = (PlaybackProtocol)StringEnum.Parse(typeof(PlaybackProtocol), node["deliveryType"].Value<string>());
+			}
 		}
 		#endregion
 

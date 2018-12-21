@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Xsl
 		{
 			get { return _Xsl; }
@@ -55,9 +58,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("Xsl");
 			}
 		}
+		[JsonProperty]
 		public string FeedId
 		{
 			get { return _FeedId; }
+			private set 
+			{ 
+				_FeedId = value;
+				OnPropertyChanged("FeedId");
+			}
 		}
 		#endregion
 
@@ -66,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public SyndicationDistributionProfile(XmlElement node) : base(node)
+		public SyndicationDistributionProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["xsl"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "xsl":
-						this._Xsl = propertyNode.InnerText;
-						continue;
-					case "feedId":
-						this._FeedId = propertyNode.InnerText;
-						continue;
-				}
+				this._Xsl = node["xsl"].Value<string>();
 			}
-		}
-
-		public SyndicationDistributionProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._Xsl = data.TryGetValueSafe<string>("xsl");
-			    this._FeedId = data.TryGetValueSafe<string>("feedId");
+			if(node["feedId"] != null)
+			{
+				this._FeedId = node["feedId"].Value<string>();
+			}
 		}
 		#endregion
 

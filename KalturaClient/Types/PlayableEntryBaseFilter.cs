@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,6 +58,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int LastPlayedAtGreaterThanOrEqual
 		{
 			get { return _LastPlayedAtGreaterThanOrEqual; }
@@ -65,6 +68,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastPlayedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int LastPlayedAtLessThanOrEqual
 		{
 			get { return _LastPlayedAtLessThanOrEqual; }
@@ -74,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastPlayedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int DurationLessThan
 		{
 			get { return _DurationLessThan; }
@@ -83,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DurationLessThan");
 			}
 		}
+		[JsonProperty]
 		public int DurationGreaterThan
 		{
 			get { return _DurationGreaterThan; }
@@ -92,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DurationGreaterThan");
 			}
 		}
+		[JsonProperty]
 		public int DurationLessThanOrEqual
 		{
 			get { return _DurationLessThanOrEqual; }
@@ -101,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DurationLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int DurationGreaterThanOrEqual
 		{
 			get { return _DurationGreaterThanOrEqual; }
@@ -110,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DurationGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public string DurationTypeMatchOr
 		{
 			get { return _DurationTypeMatchOr; }
@@ -126,46 +135,36 @@ namespace Kaltura.Types
 		{
 		}
 
-		public PlayableEntryBaseFilter(XmlElement node) : base(node)
+		public PlayableEntryBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["lastPlayedAtGreaterThanOrEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "lastPlayedAtGreaterThanOrEqual":
-						this._LastPlayedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "lastPlayedAtLessThanOrEqual":
-						this._LastPlayedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "durationLessThan":
-						this._DurationLessThan = ParseInt(propertyNode.InnerText);
-						continue;
-					case "durationGreaterThan":
-						this._DurationGreaterThan = ParseInt(propertyNode.InnerText);
-						continue;
-					case "durationLessThanOrEqual":
-						this._DurationLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "durationGreaterThanOrEqual":
-						this._DurationGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "durationTypeMatchOr":
-						this._DurationTypeMatchOr = propertyNode.InnerText;
-						continue;
-				}
+				this._LastPlayedAtGreaterThanOrEqual = ParseInt(node["lastPlayedAtGreaterThanOrEqual"].Value<string>());
 			}
-		}
-
-		public PlayableEntryBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._LastPlayedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("lastPlayedAtGreaterThanOrEqual");
-			    this._LastPlayedAtLessThanOrEqual = data.TryGetValueSafe<int>("lastPlayedAtLessThanOrEqual");
-			    this._DurationLessThan = data.TryGetValueSafe<int>("durationLessThan");
-			    this._DurationGreaterThan = data.TryGetValueSafe<int>("durationGreaterThan");
-			    this._DurationLessThanOrEqual = data.TryGetValueSafe<int>("durationLessThanOrEqual");
-			    this._DurationGreaterThanOrEqual = data.TryGetValueSafe<int>("durationGreaterThanOrEqual");
-			    this._DurationTypeMatchOr = data.TryGetValueSafe<string>("durationTypeMatchOr");
+			if(node["lastPlayedAtLessThanOrEqual"] != null)
+			{
+				this._LastPlayedAtLessThanOrEqual = ParseInt(node["lastPlayedAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["durationLessThan"] != null)
+			{
+				this._DurationLessThan = ParseInt(node["durationLessThan"].Value<string>());
+			}
+			if(node["durationGreaterThan"] != null)
+			{
+				this._DurationGreaterThan = ParseInt(node["durationGreaterThan"].Value<string>());
+			}
+			if(node["durationLessThanOrEqual"] != null)
+			{
+				this._DurationLessThanOrEqual = ParseInt(node["durationLessThanOrEqual"].Value<string>());
+			}
+			if(node["durationGreaterThanOrEqual"] != null)
+			{
+				this._DurationGreaterThanOrEqual = ParseInt(node["durationGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["durationTypeMatchOr"] != null)
+			{
+				this._DurationTypeMatchOr = node["durationTypeMatchOr"].Value<string>();
+			}
 		}
 		#endregion
 

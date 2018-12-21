@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,21 +52,45 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public string XPath
 		{
 			get { return _XPath; }
+			private set 
+			{ 
+				_XPath = value;
+				OnPropertyChanged("XPath");
+			}
 		}
+		[JsonProperty]
 		public string Key
 		{
 			get { return _Key; }
+			private set 
+			{ 
+				_Key = value;
+				OnPropertyChanged("Key");
+			}
 		}
+		[JsonProperty]
 		public string Label
 		{
 			get { return _Label; }
+			private set 
+			{ 
+				_Label = value;
+				OnPropertyChanged("Label");
+			}
 		}
 		#endregion
 
@@ -73,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public MetadataProfileField(XmlElement node) : base(node)
+		public MetadataProfileField(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "xPath":
-						this._XPath = propertyNode.InnerText;
-						continue;
-					case "key":
-						this._Key = propertyNode.InnerText;
-						continue;
-					case "label":
-						this._Label = propertyNode.InnerText;
-						continue;
-				}
+				this._Id = ParseInt(node["id"].Value<string>());
 			}
-		}
-
-		public MetadataProfileField(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._XPath = data.TryGetValueSafe<string>("xPath");
-			    this._Key = data.TryGetValueSafe<string>("key");
-			    this._Label = data.TryGetValueSafe<string>("label");
+			if(node["xPath"] != null)
+			{
+				this._XPath = node["xPath"].Value<string>();
+			}
+			if(node["key"] != null)
+			{
+				this._Key = node["key"].Value<string>();
+			}
+			if(node["label"] != null)
+			{
+				this._Label = node["label"].Value<string>();
+			}
 		}
 		#endregion
 

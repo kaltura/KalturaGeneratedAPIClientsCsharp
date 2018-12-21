@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Host
 		{
 			get { return _Host; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Host");
 			}
 		}
+		[JsonProperty]
 		public int Port
 		{
 			get { return _Port; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Port");
 			}
 		}
+		[JsonProperty]
 		public string Username
 		{
 			get { return _Username; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Username");
 			}
 		}
+		[JsonProperty]
 		public string Password
 		{
 			get { return _Password; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FtpDropFolder(XmlElement node) : base(node)
+		public FtpDropFolder(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["host"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "host":
-						this._Host = propertyNode.InnerText;
-						continue;
-					case "port":
-						this._Port = ParseInt(propertyNode.InnerText);
-						continue;
-					case "username":
-						this._Username = propertyNode.InnerText;
-						continue;
-					case "password":
-						this._Password = propertyNode.InnerText;
-						continue;
-				}
+				this._Host = node["host"].Value<string>();
 			}
-		}
-
-		public FtpDropFolder(IDictionary<string,object> data) : base(data)
-		{
-			    this._Host = data.TryGetValueSafe<string>("host");
-			    this._Port = data.TryGetValueSafe<int>("port");
-			    this._Username = data.TryGetValueSafe<string>("username");
-			    this._Password = data.TryGetValueSafe<string>("password");
+			if(node["port"] != null)
+			{
+				this._Port = ParseInt(node["port"].Value<string>());
+			}
+			if(node["username"] != null)
+			{
+				this._Username = node["username"].Value<string>();
+			}
+			if(node["password"] != null)
+			{
+				this._Password = node["password"].Value<string>();
+			}
 		}
 		#endregion
 

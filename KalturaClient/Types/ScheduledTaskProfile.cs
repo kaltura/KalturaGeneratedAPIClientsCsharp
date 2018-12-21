@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -68,14 +70,27 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -85,6 +100,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		[JsonProperty]
 		public string SystemName
 		{
 			get { return _SystemName; }
@@ -94,6 +110,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemName");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -103,6 +120,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public ScheduledTaskProfileStatus Status
 		{
 			get { return _Status; }
@@ -112,6 +130,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		[JsonProperty]
 		public ObjectFilterEngineType ObjectFilterEngineType
 		{
 			get { return _ObjectFilterEngineType; }
@@ -121,6 +140,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectFilterEngineType");
 			}
 		}
+		[JsonProperty]
 		public Filter ObjectFilter
 		{
 			get { return _ObjectFilter; }
@@ -130,6 +150,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectFilter");
 			}
 		}
+		[JsonProperty]
 		public IList<ObjectTask> ObjectTasks
 		{
 			get { return _ObjectTasks; }
@@ -139,14 +160,27 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectTasks");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public int LastExecutionStartedAt
 		{
 			get { return _LastExecutionStartedAt; }
@@ -156,6 +190,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastExecutionStartedAt");
 			}
 		}
+		[JsonProperty]
 		public int MaxTotalCountAllowed
 		{
 			get { return _MaxTotalCountAllowed; }
@@ -172,79 +207,64 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ScheduledTaskProfile(XmlElement node) : base(node)
+		public ScheduledTaskProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Id = ParseInt(node["id"].Value<string>());
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["name"] != null)
+			{
+				this._Name = node["name"].Value<string>();
+			}
+			if(node["systemName"] != null)
+			{
+				this._SystemName = node["systemName"].Value<string>();
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (ScheduledTaskProfileStatus)ParseEnum(typeof(ScheduledTaskProfileStatus), node["status"].Value<string>());
+			}
+			if(node["objectFilterEngineType"] != null)
+			{
+				this._ObjectFilterEngineType = (ObjectFilterEngineType)StringEnum.Parse(typeof(ObjectFilterEngineType), node["objectFilterEngineType"].Value<string>());
+			}
+			if(node["objectFilter"] != null)
+			{
+				this._ObjectFilter = ObjectFactory.Create<Filter>(node["objectFilter"]);
+			}
+			if(node["objectTasks"] != null)
+			{
+				this._ObjectTasks = new List<ObjectTask>();
+				foreach(var arrayNode in node["objectTasks"].Children())
 				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-					case "systemName":
-						this._SystemName = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "status":
-						this._Status = (ScheduledTaskProfileStatus)ParseEnum(typeof(ScheduledTaskProfileStatus), propertyNode.InnerText);
-						continue;
-					case "objectFilterEngineType":
-						this._ObjectFilterEngineType = (ObjectFilterEngineType)StringEnum.Parse(typeof(ObjectFilterEngineType), propertyNode.InnerText);
-						continue;
-					case "objectFilter":
-						this._ObjectFilter = ObjectFactory.Create<Filter>(propertyNode);
-						continue;
-					case "objectTasks":
-						this._ObjectTasks = new List<ObjectTask>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._ObjectTasks.Add(ObjectFactory.Create<ObjectTask>(arrayNode));
-						}
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "lastExecutionStartedAt":
-						this._LastExecutionStartedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "maxTotalCountAllowed":
-						this._MaxTotalCountAllowed = ParseInt(propertyNode.InnerText);
-						continue;
+					this._ObjectTasks.Add(ObjectFactory.Create<ObjectTask>(arrayNode));
 				}
 			}
-		}
-
-		public ScheduledTaskProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._Name = data.TryGetValueSafe<string>("name");
-			    this._SystemName = data.TryGetValueSafe<string>("systemName");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._Status = (ScheduledTaskProfileStatus)ParseEnum(typeof(ScheduledTaskProfileStatus), data.TryGetValueSafe<int>("status"));
-			    this._ObjectFilterEngineType = (ObjectFilterEngineType)StringEnum.Parse(typeof(ObjectFilterEngineType), data.TryGetValueSafe<string>("objectFilterEngineType"));
-			    this._ObjectFilter = ObjectFactory.Create<Filter>(data.TryGetValueSafe<IDictionary<string,object>>("objectFilter"));
-			    this._ObjectTasks = new List<ObjectTask>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("objectTasks", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._ObjectTasks.Add(ObjectFactory.Create<ObjectTask>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._LastExecutionStartedAt = data.TryGetValueSafe<int>("lastExecutionStartedAt");
-			    this._MaxTotalCountAllowed = data.TryGetValueSafe<int>("maxTotalCountAllowed");
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["lastExecutionStartedAt"] != null)
+			{
+				this._LastExecutionStartedAt = ParseInt(node["lastExecutionStartedAt"].Value<string>());
+			}
+			if(node["maxTotalCountAllowed"] != null)
+			{
+				this._MaxTotalCountAllowed = ParseInt(node["maxTotalCountAllowed"].Value<string>());
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -64,22 +66,47 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public string UserId
 		{
 			get { return _UserId; }
+			private set 
+			{ 
+				_UserId = value;
+				OnPropertyChanged("UserId");
+			}
 		}
+		[JsonProperty]
 		public UploadTokenStatus Status
 		{
 			get { return _Status; }
+			private set 
+			{ 
+				_Status = value;
+				OnPropertyChanged("Status");
+			}
 		}
+		[JsonProperty]
 		public string FileName
 		{
 			get { return _FileName; }
@@ -89,6 +116,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileName");
 			}
 		}
+		[JsonProperty]
 		public float FileSize
 		{
 			get { return _FileSize; }
@@ -98,22 +126,47 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileSize");
 			}
 		}
+		[JsonProperty]
 		public float UploadedFileSize
 		{
 			get { return _UploadedFileSize; }
+			private set 
+			{ 
+				_UploadedFileSize = value;
+				OnPropertyChanged("UploadedFileSize");
+			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public string UploadUrl
 		{
 			get { return _UploadUrl; }
+			private set 
+			{ 
+				_UploadUrl = value;
+				OnPropertyChanged("UploadUrl");
+			}
 		}
+		[JsonProperty]
 		public NullableBoolean AutoFinalize
 		{
 			get { return _AutoFinalize; }
@@ -130,62 +183,52 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UploadToken(XmlElement node) : base(node)
+		public UploadToken(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = propertyNode.InnerText;
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "userId":
-						this._UserId = propertyNode.InnerText;
-						continue;
-					case "status":
-						this._Status = (UploadTokenStatus)ParseEnum(typeof(UploadTokenStatus), propertyNode.InnerText);
-						continue;
-					case "fileName":
-						this._FileName = propertyNode.InnerText;
-						continue;
-					case "fileSize":
-						this._FileSize = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "uploadedFileSize":
-						this._UploadedFileSize = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "uploadUrl":
-						this._UploadUrl = propertyNode.InnerText;
-						continue;
-					case "autoFinalize":
-						this._AutoFinalize = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-				}
+				this._Id = node["id"].Value<string>();
 			}
-		}
-
-		public UploadToken(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<string>("id");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._UserId = data.TryGetValueSafe<string>("userId");
-			    this._Status = (UploadTokenStatus)ParseEnum(typeof(UploadTokenStatus), data.TryGetValueSafe<int>("status"));
-			    this._FileName = data.TryGetValueSafe<string>("fileName");
-			    this._FileSize = data.TryGetValueSafe<float>("fileSize");
-			    this._UploadedFileSize = data.TryGetValueSafe<float>("uploadedFileSize");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._UploadUrl = data.TryGetValueSafe<string>("uploadUrl");
-			    this._AutoFinalize = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("autoFinalize"));
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["userId"] != null)
+			{
+				this._UserId = node["userId"].Value<string>();
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (UploadTokenStatus)ParseEnum(typeof(UploadTokenStatus), node["status"].Value<string>());
+			}
+			if(node["fileName"] != null)
+			{
+				this._FileName = node["fileName"].Value<string>();
+			}
+			if(node["fileSize"] != null)
+			{
+				this._FileSize = ParseFloat(node["fileSize"].Value<string>());
+			}
+			if(node["uploadedFileSize"] != null)
+			{
+				this._UploadedFileSize = ParseFloat(node["uploadedFileSize"].Value<string>());
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["uploadUrl"] != null)
+			{
+				this._UploadUrl = node["uploadUrl"].Value<string>();
+			}
+			if(node["autoFinalize"] != null)
+			{
+				this._AutoFinalize = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["autoFinalize"].Value<string>());
+			}
 		}
 		#endregion
 

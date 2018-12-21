@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,6 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ApiObjectType
 		{
 			get { return _ApiObjectType; }
@@ -61,6 +64,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ApiObjectType");
 			}
 		}
+		[JsonProperty]
 		public ResponseType Format
 		{
 			get { return _Format; }
@@ -70,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Format");
 			}
 		}
+		[JsonProperty]
 		public bool? IgnoreNull
 		{
 			get { return _IgnoreNull; }
@@ -79,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IgnoreNull");
 			}
 		}
+		[JsonProperty]
 		public string Code
 		{
 			get { return _Code; }
@@ -88,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Code");
 			}
 		}
+		[JsonProperty]
 		public IList<KeyValue> DataStringReplacements
 		{
 			get { return _DataStringReplacements; }
@@ -104,47 +111,32 @@ namespace Kaltura.Types
 		{
 		}
 
-		public HttpNotificationObjectData(XmlElement node) : base(node)
+		public HttpNotificationObjectData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["apiObjectType"] != null)
 			{
-				switch (propertyNode.Name)
+				this._ApiObjectType = node["apiObjectType"].Value<string>();
+			}
+			if(node["format"] != null)
+			{
+				this._Format = (ResponseType)ParseEnum(typeof(ResponseType), node["format"].Value<string>());
+			}
+			if(node["ignoreNull"] != null)
+			{
+				this._IgnoreNull = ParseBool(node["ignoreNull"].Value<string>());
+			}
+			if(node["code"] != null)
+			{
+				this._Code = node["code"].Value<string>();
+			}
+			if(node["dataStringReplacements"] != null)
+			{
+				this._DataStringReplacements = new List<KeyValue>();
+				foreach(var arrayNode in node["dataStringReplacements"].Children())
 				{
-					case "apiObjectType":
-						this._ApiObjectType = propertyNode.InnerText;
-						continue;
-					case "format":
-						this._Format = (ResponseType)ParseEnum(typeof(ResponseType), propertyNode.InnerText);
-						continue;
-					case "ignoreNull":
-						this._IgnoreNull = ParseBool(propertyNode.InnerText);
-						continue;
-					case "code":
-						this._Code = propertyNode.InnerText;
-						continue;
-					case "dataStringReplacements":
-						this._DataStringReplacements = new List<KeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._DataStringReplacements.Add(ObjectFactory.Create<KeyValue>(arrayNode));
-						}
-						continue;
+					this._DataStringReplacements.Add(ObjectFactory.Create<KeyValue>(arrayNode));
 				}
 			}
-		}
-
-		public HttpNotificationObjectData(IDictionary<string,object> data) : base(data)
-		{
-			    this._ApiObjectType = data.TryGetValueSafe<string>("apiObjectType");
-			    this._Format = (ResponseType)ParseEnum(typeof(ResponseType), data.TryGetValueSafe<int>("format"));
-			    this._IgnoreNull = data.TryGetValueSafe<bool>("ignoreNull");
-			    this._Code = data.TryGetValueSafe<string>("code");
-			    this._DataStringReplacements = new List<KeyValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("dataStringReplacements", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._DataStringReplacements.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

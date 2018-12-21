@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -54,6 +56,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int IdEqual
 		{
 			get { return _IdEqual; }
@@ -63,6 +66,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		[JsonProperty]
 		public string IdIn
 		{
 			get { return _IdIn; }
@@ -72,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		[JsonProperty]
 		public string SystemNameEqual
 		{
 			get { return _SystemNameEqual; }
@@ -81,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemNameEqual");
 			}
 		}
+		[JsonProperty]
 		public string SystemNameIn
 		{
 			get { return _SystemNameIn; }
@@ -90,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemNameIn");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
 			get { return _CreatedAtGreaterThanOrEqual; }
@@ -99,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
 			get { return _CreatedAtLessThanOrEqual; }
@@ -115,42 +123,32 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AccessControlBaseFilter(XmlElement node) : base(node)
+		public AccessControlBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["idEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "idEqual":
-						this._IdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "idIn":
-						this._IdIn = propertyNode.InnerText;
-						continue;
-					case "systemNameEqual":
-						this._SystemNameEqual = propertyNode.InnerText;
-						continue;
-					case "systemNameIn":
-						this._SystemNameIn = propertyNode.InnerText;
-						continue;
-					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._IdEqual = ParseInt(node["idEqual"].Value<string>());
 			}
-		}
-
-		public AccessControlBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
-			    this._IdIn = data.TryGetValueSafe<string>("idIn");
-			    this._SystemNameEqual = data.TryGetValueSafe<string>("systemNameEqual");
-			    this._SystemNameIn = data.TryGetValueSafe<string>("systemNameIn");
-			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
-			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
+			if(node["idIn"] != null)
+			{
+				this._IdIn = node["idIn"].Value<string>();
+			}
+			if(node["systemNameEqual"] != null)
+			{
+				this._SystemNameEqual = node["systemNameEqual"].Value<string>();
+			}
+			if(node["systemNameIn"] != null)
+			{
+				this._SystemNameIn = node["systemNameIn"].Value<string>();
+			}
+			if(node["createdAtGreaterThanOrEqual"] != null)
+			{
+				this._CreatedAtGreaterThanOrEqual = ParseInt(node["createdAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["createdAtLessThanOrEqual"] != null)
+			{
+				this._CreatedAtLessThanOrEqual = ParseInt(node["createdAtLessThanOrEqual"].Value<string>());
+			}
 		}
 		#endregion
 

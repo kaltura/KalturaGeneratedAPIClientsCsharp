@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string HeaderData
 		{
 			get { return _HeaderData; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("HeaderData");
 			}
 		}
+		[JsonProperty]
 		public string HeaderSign
 		{
 			get { return _HeaderSign; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("HeaderSign");
 			}
 		}
+		[JsonProperty]
 		public int Timeout
 		{
 			get { return _Timeout; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Timeout");
 			}
 		}
+		[JsonProperty]
 		public string Salt
 		{
 			get { return _Salt; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UrlRecognizerAkamaiG2O(XmlElement node) : base(node)
+		public UrlRecognizerAkamaiG2O(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["headerData"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "headerData":
-						this._HeaderData = propertyNode.InnerText;
-						continue;
-					case "headerSign":
-						this._HeaderSign = propertyNode.InnerText;
-						continue;
-					case "timeout":
-						this._Timeout = ParseInt(propertyNode.InnerText);
-						continue;
-					case "salt":
-						this._Salt = propertyNode.InnerText;
-						continue;
-				}
+				this._HeaderData = node["headerData"].Value<string>();
 			}
-		}
-
-		public UrlRecognizerAkamaiG2O(IDictionary<string,object> data) : base(data)
-		{
-			    this._HeaderData = data.TryGetValueSafe<string>("headerData");
-			    this._HeaderSign = data.TryGetValueSafe<string>("headerSign");
-			    this._Timeout = data.TryGetValueSafe<int>("timeout");
-			    this._Salt = data.TryGetValueSafe<string>("salt");
+			if(node["headerSign"] != null)
+			{
+				this._HeaderSign = node["headerSign"].Value<string>();
+			}
+			if(node["timeout"] != null)
+			{
+				this._Timeout = ParseInt(node["timeout"].Value<string>());
+			}
+			if(node["salt"] != null)
+			{
+				this._Salt = node["salt"].Value<string>();
+			}
 		}
 		#endregion
 

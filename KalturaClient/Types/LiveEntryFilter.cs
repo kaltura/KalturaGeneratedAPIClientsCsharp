@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public NullableBoolean IsLive
 		{
 			get { return _IsLive; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsLive");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean IsRecordedEntryIdEmpty
 		{
 			get { return _IsRecordedEntryIdEmpty; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsRecordedEntryIdEmpty");
 			}
 		}
+		[JsonProperty]
 		public string HasMediaServerHostname
 		{
 			get { return _HasMediaServerHostname; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("HasMediaServerHostname");
 			}
 		}
+		[JsonProperty]
 		public new LiveEntryOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public LiveEntryFilter(XmlElement node) : base(node)
+		public LiveEntryFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["isLive"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "isLive":
-						this._IsLive = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "isRecordedEntryIdEmpty":
-						this._IsRecordedEntryIdEmpty = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "hasMediaServerHostname":
-						this._HasMediaServerHostname = propertyNode.InnerText;
-						continue;
-					case "orderBy":
-						this._OrderBy = (LiveEntryOrderBy)StringEnum.Parse(typeof(LiveEntryOrderBy), propertyNode.InnerText);
-						continue;
-				}
+				this._IsLive = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["isLive"].Value<string>());
 			}
-		}
-
-		public LiveEntryFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._IsLive = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isLive"));
-			    this._IsRecordedEntryIdEmpty = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isRecordedEntryIdEmpty"));
-			    this._HasMediaServerHostname = data.TryGetValueSafe<string>("hasMediaServerHostname");
-			    this._OrderBy = (LiveEntryOrderBy)StringEnum.Parse(typeof(LiveEntryOrderBy), data.TryGetValueSafe<string>("orderBy"));
+			if(node["isRecordedEntryIdEmpty"] != null)
+			{
+				this._IsRecordedEntryIdEmpty = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["isRecordedEntryIdEmpty"].Value<string>());
+			}
+			if(node["hasMediaServerHostname"] != null)
+			{
+				this._HasMediaServerHostname = node["hasMediaServerHostname"].Value<string>();
+			}
+			if(node["orderBy"] != null)
+			{
+				this._OrderBy = (LiveEntryOrderBy)StringEnum.Parse(typeof(LiveEntryOrderBy), node["orderBy"].Value<string>());
+			}
 		}
 		#endregion
 

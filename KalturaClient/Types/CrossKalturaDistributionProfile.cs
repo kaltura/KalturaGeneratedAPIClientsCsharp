@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -78,6 +80,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string TargetServiceUrl
 		{
 			get { return _TargetServiceUrl; }
@@ -87,6 +90,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TargetServiceUrl");
 			}
 		}
+		[JsonProperty]
 		public int TargetAccountId
 		{
 			get { return _TargetAccountId; }
@@ -96,6 +100,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TargetAccountId");
 			}
 		}
+		[JsonProperty]
 		public string TargetLoginId
 		{
 			get { return _TargetLoginId; }
@@ -105,6 +110,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TargetLoginId");
 			}
 		}
+		[JsonProperty]
 		public string TargetLoginPassword
 		{
 			get { return _TargetLoginPassword; }
@@ -114,6 +120,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TargetLoginPassword");
 			}
 		}
+		[JsonProperty]
 		public string MetadataXslt
 		{
 			get { return _MetadataXslt; }
@@ -123,6 +130,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataXslt");
 			}
 		}
+		[JsonProperty]
 		public IList<StringValue> MetadataXpathsTriggerUpdate
 		{
 			get { return _MetadataXpathsTriggerUpdate; }
@@ -132,6 +140,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataXpathsTriggerUpdate");
 			}
 		}
+		[JsonProperty]
 		public bool? DistributeCaptions
 		{
 			get { return _DistributeCaptions; }
@@ -141,6 +150,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributeCaptions");
 			}
 		}
+		[JsonProperty]
 		public bool? DistributeCuePoints
 		{
 			get { return _DistributeCuePoints; }
@@ -150,6 +160,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributeCuePoints");
 			}
 		}
+		[JsonProperty]
 		public bool? DistributeRemoteFlavorAssetContent
 		{
 			get { return _DistributeRemoteFlavorAssetContent; }
@@ -159,6 +170,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributeRemoteFlavorAssetContent");
 			}
 		}
+		[JsonProperty]
 		public bool? DistributeRemoteThumbAssetContent
 		{
 			get { return _DistributeRemoteThumbAssetContent; }
@@ -168,6 +180,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributeRemoteThumbAssetContent");
 			}
 		}
+		[JsonProperty]
 		public bool? DistributeRemoteCaptionAssetContent
 		{
 			get { return _DistributeRemoteCaptionAssetContent; }
@@ -177,6 +190,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributeRemoteCaptionAssetContent");
 			}
 		}
+		[JsonProperty]
 		public IList<KeyValue> MapAccessControlProfileIds
 		{
 			get { return _MapAccessControlProfileIds; }
@@ -186,6 +200,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MapAccessControlProfileIds");
 			}
 		}
+		[JsonProperty]
 		public IList<KeyValue> MapConversionProfileIds
 		{
 			get { return _MapConversionProfileIds; }
@@ -195,6 +210,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MapConversionProfileIds");
 			}
 		}
+		[JsonProperty]
 		public IList<KeyValue> MapMetadataProfileIds
 		{
 			get { return _MapMetadataProfileIds; }
@@ -204,6 +220,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MapMetadataProfileIds");
 			}
 		}
+		[JsonProperty]
 		public IList<KeyValue> MapStorageProfileIds
 		{
 			get { return _MapStorageProfileIds; }
@@ -213,6 +230,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MapStorageProfileIds");
 			}
 		}
+		[JsonProperty]
 		public IList<KeyValue> MapFlavorParamsIds
 		{
 			get { return _MapFlavorParamsIds; }
@@ -222,6 +240,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MapFlavorParamsIds");
 			}
 		}
+		[JsonProperty]
 		public IList<KeyValue> MapThumbParamsIds
 		{
 			get { return _MapThumbParamsIds; }
@@ -231,6 +250,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MapThumbParamsIds");
 			}
 		}
+		[JsonProperty]
 		public IList<KeyValue> MapCaptionParamsIds
 		{
 			get { return _MapCaptionParamsIds; }
@@ -247,162 +267,112 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CrossKalturaDistributionProfile(XmlElement node) : base(node)
+		public CrossKalturaDistributionProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["targetServiceUrl"] != null)
 			{
-				switch (propertyNode.Name)
+				this._TargetServiceUrl = node["targetServiceUrl"].Value<string>();
+			}
+			if(node["targetAccountId"] != null)
+			{
+				this._TargetAccountId = ParseInt(node["targetAccountId"].Value<string>());
+			}
+			if(node["targetLoginId"] != null)
+			{
+				this._TargetLoginId = node["targetLoginId"].Value<string>();
+			}
+			if(node["targetLoginPassword"] != null)
+			{
+				this._TargetLoginPassword = node["targetLoginPassword"].Value<string>();
+			}
+			if(node["metadataXslt"] != null)
+			{
+				this._MetadataXslt = node["metadataXslt"].Value<string>();
+			}
+			if(node["metadataXpathsTriggerUpdate"] != null)
+			{
+				this._MetadataXpathsTriggerUpdate = new List<StringValue>();
+				foreach(var arrayNode in node["metadataXpathsTriggerUpdate"].Children())
 				{
-					case "targetServiceUrl":
-						this._TargetServiceUrl = propertyNode.InnerText;
-						continue;
-					case "targetAccountId":
-						this._TargetAccountId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "targetLoginId":
-						this._TargetLoginId = propertyNode.InnerText;
-						continue;
-					case "targetLoginPassword":
-						this._TargetLoginPassword = propertyNode.InnerText;
-						continue;
-					case "metadataXslt":
-						this._MetadataXslt = propertyNode.InnerText;
-						continue;
-					case "metadataXpathsTriggerUpdate":
-						this._MetadataXpathsTriggerUpdate = new List<StringValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._MetadataXpathsTriggerUpdate.Add(ObjectFactory.Create<StringValue>(arrayNode));
-						}
-						continue;
-					case "distributeCaptions":
-						this._DistributeCaptions = ParseBool(propertyNode.InnerText);
-						continue;
-					case "distributeCuePoints":
-						this._DistributeCuePoints = ParseBool(propertyNode.InnerText);
-						continue;
-					case "distributeRemoteFlavorAssetContent":
-						this._DistributeRemoteFlavorAssetContent = ParseBool(propertyNode.InnerText);
-						continue;
-					case "distributeRemoteThumbAssetContent":
-						this._DistributeRemoteThumbAssetContent = ParseBool(propertyNode.InnerText);
-						continue;
-					case "distributeRemoteCaptionAssetContent":
-						this._DistributeRemoteCaptionAssetContent = ParseBool(propertyNode.InnerText);
-						continue;
-					case "mapAccessControlProfileIds":
-						this._MapAccessControlProfileIds = new List<KeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._MapAccessControlProfileIds.Add(ObjectFactory.Create<KeyValue>(arrayNode));
-						}
-						continue;
-					case "mapConversionProfileIds":
-						this._MapConversionProfileIds = new List<KeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._MapConversionProfileIds.Add(ObjectFactory.Create<KeyValue>(arrayNode));
-						}
-						continue;
-					case "mapMetadataProfileIds":
-						this._MapMetadataProfileIds = new List<KeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._MapMetadataProfileIds.Add(ObjectFactory.Create<KeyValue>(arrayNode));
-						}
-						continue;
-					case "mapStorageProfileIds":
-						this._MapStorageProfileIds = new List<KeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._MapStorageProfileIds.Add(ObjectFactory.Create<KeyValue>(arrayNode));
-						}
-						continue;
-					case "mapFlavorParamsIds":
-						this._MapFlavorParamsIds = new List<KeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._MapFlavorParamsIds.Add(ObjectFactory.Create<KeyValue>(arrayNode));
-						}
-						continue;
-					case "mapThumbParamsIds":
-						this._MapThumbParamsIds = new List<KeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._MapThumbParamsIds.Add(ObjectFactory.Create<KeyValue>(arrayNode));
-						}
-						continue;
-					case "mapCaptionParamsIds":
-						this._MapCaptionParamsIds = new List<KeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._MapCaptionParamsIds.Add(ObjectFactory.Create<KeyValue>(arrayNode));
-						}
-						continue;
+					this._MetadataXpathsTriggerUpdate.Add(ObjectFactory.Create<StringValue>(arrayNode));
 				}
 			}
-		}
-
-		public CrossKalturaDistributionProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._TargetServiceUrl = data.TryGetValueSafe<string>("targetServiceUrl");
-			    this._TargetAccountId = data.TryGetValueSafe<int>("targetAccountId");
-			    this._TargetLoginId = data.TryGetValueSafe<string>("targetLoginId");
-			    this._TargetLoginPassword = data.TryGetValueSafe<string>("targetLoginPassword");
-			    this._MetadataXslt = data.TryGetValueSafe<string>("metadataXslt");
-			    this._MetadataXpathsTriggerUpdate = new List<StringValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("metadataXpathsTriggerUpdate", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._MetadataXpathsTriggerUpdate.Add(ObjectFactory.Create<StringValue>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._DistributeCaptions = data.TryGetValueSafe<bool>("distributeCaptions");
-			    this._DistributeCuePoints = data.TryGetValueSafe<bool>("distributeCuePoints");
-			    this._DistributeRemoteFlavorAssetContent = data.TryGetValueSafe<bool>("distributeRemoteFlavorAssetContent");
-			    this._DistributeRemoteThumbAssetContent = data.TryGetValueSafe<bool>("distributeRemoteThumbAssetContent");
-			    this._DistributeRemoteCaptionAssetContent = data.TryGetValueSafe<bool>("distributeRemoteCaptionAssetContent");
-			    this._MapAccessControlProfileIds = new List<KeyValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("mapAccessControlProfileIds", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._MapAccessControlProfileIds.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._MapConversionProfileIds = new List<KeyValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("mapConversionProfileIds", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._MapConversionProfileIds.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._MapMetadataProfileIds = new List<KeyValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("mapMetadataProfileIds", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._MapMetadataProfileIds.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._MapStorageProfileIds = new List<KeyValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("mapStorageProfileIds", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._MapStorageProfileIds.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._MapFlavorParamsIds = new List<KeyValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("mapFlavorParamsIds", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._MapFlavorParamsIds.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._MapThumbParamsIds = new List<KeyValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("mapThumbParamsIds", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._MapThumbParamsIds.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._MapCaptionParamsIds = new List<KeyValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("mapCaptionParamsIds", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._MapCaptionParamsIds.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
-			    }
+			if(node["distributeCaptions"] != null)
+			{
+				this._DistributeCaptions = ParseBool(node["distributeCaptions"].Value<string>());
+			}
+			if(node["distributeCuePoints"] != null)
+			{
+				this._DistributeCuePoints = ParseBool(node["distributeCuePoints"].Value<string>());
+			}
+			if(node["distributeRemoteFlavorAssetContent"] != null)
+			{
+				this._DistributeRemoteFlavorAssetContent = ParseBool(node["distributeRemoteFlavorAssetContent"].Value<string>());
+			}
+			if(node["distributeRemoteThumbAssetContent"] != null)
+			{
+				this._DistributeRemoteThumbAssetContent = ParseBool(node["distributeRemoteThumbAssetContent"].Value<string>());
+			}
+			if(node["distributeRemoteCaptionAssetContent"] != null)
+			{
+				this._DistributeRemoteCaptionAssetContent = ParseBool(node["distributeRemoteCaptionAssetContent"].Value<string>());
+			}
+			if(node["mapAccessControlProfileIds"] != null)
+			{
+				this._MapAccessControlProfileIds = new List<KeyValue>();
+				foreach(var arrayNode in node["mapAccessControlProfileIds"].Children())
+				{
+					this._MapAccessControlProfileIds.Add(ObjectFactory.Create<KeyValue>(arrayNode));
+				}
+			}
+			if(node["mapConversionProfileIds"] != null)
+			{
+				this._MapConversionProfileIds = new List<KeyValue>();
+				foreach(var arrayNode in node["mapConversionProfileIds"].Children())
+				{
+					this._MapConversionProfileIds.Add(ObjectFactory.Create<KeyValue>(arrayNode));
+				}
+			}
+			if(node["mapMetadataProfileIds"] != null)
+			{
+				this._MapMetadataProfileIds = new List<KeyValue>();
+				foreach(var arrayNode in node["mapMetadataProfileIds"].Children())
+				{
+					this._MapMetadataProfileIds.Add(ObjectFactory.Create<KeyValue>(arrayNode));
+				}
+			}
+			if(node["mapStorageProfileIds"] != null)
+			{
+				this._MapStorageProfileIds = new List<KeyValue>();
+				foreach(var arrayNode in node["mapStorageProfileIds"].Children())
+				{
+					this._MapStorageProfileIds.Add(ObjectFactory.Create<KeyValue>(arrayNode));
+				}
+			}
+			if(node["mapFlavorParamsIds"] != null)
+			{
+				this._MapFlavorParamsIds = new List<KeyValue>();
+				foreach(var arrayNode in node["mapFlavorParamsIds"].Children())
+				{
+					this._MapFlavorParamsIds.Add(ObjectFactory.Create<KeyValue>(arrayNode));
+				}
+			}
+			if(node["mapThumbParamsIds"] != null)
+			{
+				this._MapThumbParamsIds = new List<KeyValue>();
+				foreach(var arrayNode in node["mapThumbParamsIds"].Children())
+				{
+					this._MapThumbParamsIds.Add(ObjectFactory.Create<KeyValue>(arrayNode));
+				}
+			}
+			if(node["mapCaptionParamsIds"] != null)
+			{
+				this._MapCaptionParamsIds = new List<KeyValue>();
+				foreach(var arrayNode in node["mapCaptionParamsIds"].Children())
+				{
+					this._MapCaptionParamsIds.Add(ObjectFactory.Create<KeyValue>(arrayNode));
+				}
+			}
 		}
 		#endregion
 

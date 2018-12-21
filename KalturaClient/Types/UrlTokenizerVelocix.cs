@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string HdsPaths
 		{
 			get { return _HdsPaths; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("HdsPaths");
 			}
 		}
+		[JsonProperty]
 		public string ParamName
 		{
 			get { return _ParamName; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParamName");
 			}
 		}
+		[JsonProperty]
 		public string AuthPrefix
 		{
 			get { return _AuthPrefix; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UrlTokenizerVelocix(XmlElement node) : base(node)
+		public UrlTokenizerVelocix(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["hdsPaths"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "hdsPaths":
-						this._HdsPaths = propertyNode.InnerText;
-						continue;
-					case "paramName":
-						this._ParamName = propertyNode.InnerText;
-						continue;
-					case "authPrefix":
-						this._AuthPrefix = propertyNode.InnerText;
-						continue;
-				}
+				this._HdsPaths = node["hdsPaths"].Value<string>();
 			}
-		}
-
-		public UrlTokenizerVelocix(IDictionary<string,object> data) : base(data)
-		{
-			    this._HdsPaths = data.TryGetValueSafe<string>("hdsPaths");
-			    this._ParamName = data.TryGetValueSafe<string>("paramName");
-			    this._AuthPrefix = data.TryGetValueSafe<string>("authPrefix");
+			if(node["paramName"] != null)
+			{
+				this._ParamName = node["paramName"].Value<string>();
+			}
+			if(node["authPrefix"] != null)
+			{
+				this._AuthPrefix = node["authPrefix"].Value<string>();
+			}
 		}
 		#endregion
 

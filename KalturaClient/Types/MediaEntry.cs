@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -66,6 +68,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public MediaType MediaType
 		{
 			get { return _MediaType; }
@@ -75,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaType");
 			}
 		}
+		[JsonProperty]
 		public string ConversionQuality
 		{
 			get { return _ConversionQuality; }
@@ -84,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionQuality");
 			}
 		}
+		[JsonProperty]
 		public SourceType SourceType
 		{
 			get { return _SourceType; }
@@ -93,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceType");
 			}
 		}
+		[JsonProperty]
 		public SearchProviderType SearchProviderType
 		{
 			get { return _SearchProviderType; }
@@ -102,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SearchProviderType");
 			}
 		}
+		[JsonProperty]
 		public string SearchProviderId
 		{
 			get { return _SearchProviderId; }
@@ -111,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SearchProviderId");
 			}
 		}
+		[JsonProperty]
 		public string CreditUserName
 		{
 			get { return _CreditUserName; }
@@ -120,6 +128,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreditUserName");
 			}
 		}
+		[JsonProperty]
 		public string CreditUrl
 		{
 			get { return _CreditUrl; }
@@ -129,22 +138,47 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreditUrl");
 			}
 		}
+		[JsonProperty]
 		public int MediaDate
 		{
 			get { return _MediaDate; }
+			private set 
+			{ 
+				_MediaDate = value;
+				OnPropertyChanged("MediaDate");
+			}
 		}
+		[JsonProperty]
 		public string DataUrl
 		{
 			get { return _DataUrl; }
+			private set 
+			{ 
+				_DataUrl = value;
+				OnPropertyChanged("DataUrl");
+			}
 		}
+		[JsonProperty]
 		public string FlavorParamsIds
 		{
 			get { return _FlavorParamsIds; }
+			private set 
+			{ 
+				_FlavorParamsIds = value;
+				OnPropertyChanged("FlavorParamsIds");
+			}
 		}
+		[JsonProperty]
 		public NullableBoolean IsTrimDisabled
 		{
 			get { return _IsTrimDisabled; }
+			private set 
+			{ 
+				_IsTrimDisabled = value;
+				OnPropertyChanged("IsTrimDisabled");
+			}
 		}
+		[JsonProperty]
 		public IList<StreamContainer> Streams
 		{
 			get { return _Streams; }
@@ -161,75 +195,60 @@ namespace Kaltura.Types
 		{
 		}
 
-		public MediaEntry(XmlElement node) : base(node)
+		public MediaEntry(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["mediaType"] != null)
 			{
-				switch (propertyNode.Name)
+				this._MediaType = (MediaType)ParseEnum(typeof(MediaType), node["mediaType"].Value<string>());
+			}
+			if(node["conversionQuality"] != null)
+			{
+				this._ConversionQuality = node["conversionQuality"].Value<string>();
+			}
+			if(node["sourceType"] != null)
+			{
+				this._SourceType = (SourceType)StringEnum.Parse(typeof(SourceType), node["sourceType"].Value<string>());
+			}
+			if(node["searchProviderType"] != null)
+			{
+				this._SearchProviderType = (SearchProviderType)ParseEnum(typeof(SearchProviderType), node["searchProviderType"].Value<string>());
+			}
+			if(node["searchProviderId"] != null)
+			{
+				this._SearchProviderId = node["searchProviderId"].Value<string>();
+			}
+			if(node["creditUserName"] != null)
+			{
+				this._CreditUserName = node["creditUserName"].Value<string>();
+			}
+			if(node["creditUrl"] != null)
+			{
+				this._CreditUrl = node["creditUrl"].Value<string>();
+			}
+			if(node["mediaDate"] != null)
+			{
+				this._MediaDate = ParseInt(node["mediaDate"].Value<string>());
+			}
+			if(node["dataUrl"] != null)
+			{
+				this._DataUrl = node["dataUrl"].Value<string>();
+			}
+			if(node["flavorParamsIds"] != null)
+			{
+				this._FlavorParamsIds = node["flavorParamsIds"].Value<string>();
+			}
+			if(node["isTrimDisabled"] != null)
+			{
+				this._IsTrimDisabled = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["isTrimDisabled"].Value<string>());
+			}
+			if(node["streams"] != null)
+			{
+				this._Streams = new List<StreamContainer>();
+				foreach(var arrayNode in node["streams"].Children())
 				{
-					case "mediaType":
-						this._MediaType = (MediaType)ParseEnum(typeof(MediaType), propertyNode.InnerText);
-						continue;
-					case "conversionQuality":
-						this._ConversionQuality = propertyNode.InnerText;
-						continue;
-					case "sourceType":
-						this._SourceType = (SourceType)StringEnum.Parse(typeof(SourceType), propertyNode.InnerText);
-						continue;
-					case "searchProviderType":
-						this._SearchProviderType = (SearchProviderType)ParseEnum(typeof(SearchProviderType), propertyNode.InnerText);
-						continue;
-					case "searchProviderId":
-						this._SearchProviderId = propertyNode.InnerText;
-						continue;
-					case "creditUserName":
-						this._CreditUserName = propertyNode.InnerText;
-						continue;
-					case "creditUrl":
-						this._CreditUrl = propertyNode.InnerText;
-						continue;
-					case "mediaDate":
-						this._MediaDate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "dataUrl":
-						this._DataUrl = propertyNode.InnerText;
-						continue;
-					case "flavorParamsIds":
-						this._FlavorParamsIds = propertyNode.InnerText;
-						continue;
-					case "isTrimDisabled":
-						this._IsTrimDisabled = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "streams":
-						this._Streams = new List<StreamContainer>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Streams.Add(ObjectFactory.Create<StreamContainer>(arrayNode));
-						}
-						continue;
+					this._Streams.Add(ObjectFactory.Create<StreamContainer>(arrayNode));
 				}
 			}
-		}
-
-		public MediaEntry(IDictionary<string,object> data) : base(data)
-		{
-			    this._MediaType = (MediaType)ParseEnum(typeof(MediaType), data.TryGetValueSafe<int>("mediaType"));
-			    this._ConversionQuality = data.TryGetValueSafe<string>("conversionQuality");
-			    this._SourceType = (SourceType)StringEnum.Parse(typeof(SourceType), data.TryGetValueSafe<string>("sourceType"));
-			    this._SearchProviderType = (SearchProviderType)ParseEnum(typeof(SearchProviderType), data.TryGetValueSafe<int>("searchProviderType"));
-			    this._SearchProviderId = data.TryGetValueSafe<string>("searchProviderId");
-			    this._CreditUserName = data.TryGetValueSafe<string>("creditUserName");
-			    this._CreditUrl = data.TryGetValueSafe<string>("creditUrl");
-			    this._MediaDate = data.TryGetValueSafe<int>("mediaDate");
-			    this._DataUrl = data.TryGetValueSafe<string>("dataUrl");
-			    this._FlavorParamsIds = data.TryGetValueSafe<string>("flavorParamsIds");
-			    this._IsTrimDisabled = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isTrimDisabled"));
-			    this._Streams = new List<StreamContainer>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("streams", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Streams.Add(ObjectFactory.Create<StreamContainer>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

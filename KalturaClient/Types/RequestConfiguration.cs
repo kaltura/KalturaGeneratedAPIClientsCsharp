@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		[JsonProperty]
 		public string Ks
 		{
 			get { return _Ks; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Ks");
 			}
 		}
+		[JsonProperty]
 		public BaseResponseProfile ResponseProfile
 		{
 			get { return _ResponseProfile; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public RequestConfiguration(XmlElement node) : base(node)
+		public RequestConfiguration(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["partnerId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "ks":
-						this._Ks = propertyNode.InnerText;
-						continue;
-					case "responseProfile":
-						this._ResponseProfile = ObjectFactory.Create<BaseResponseProfile>(propertyNode);
-						continue;
-				}
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
 			}
-		}
-
-		public RequestConfiguration(IDictionary<string,object> data) : base(data)
-		{
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._Ks = data.TryGetValueSafe<string>("ks");
-			    this._ResponseProfile = ObjectFactory.Create<BaseResponseProfile>(data.TryGetValueSafe<IDictionary<string,object>>("responseProfile"));
+			if(node["ks"] != null)
+			{
+				this._Ks = node["ks"].Value<string>();
+			}
+			if(node["responseProfile"] != null)
+			{
+				this._ResponseProfile = ObjectFactory.Create<BaseResponseProfile>(node["responseProfile"]);
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -62,6 +64,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ParentIdEqual
 		{
 			get { return _ParentIdEqual; }
@@ -71,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string ParentIdIn
 		{
 			get { return _ParentIdIn; }
@@ -80,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentIdIn");
 			}
 		}
+		[JsonProperty]
 		public string TextLike
 		{
 			get { return _TextLike; }
@@ -89,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TextLike");
 			}
 		}
+		[JsonProperty]
 		public string TextMultiLikeOr
 		{
 			get { return _TextMultiLikeOr; }
@@ -98,6 +104,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TextMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string TextMultiLikeAnd
 		{
 			get { return _TextMultiLikeAnd; }
@@ -107,6 +114,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TextMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public int EndTimeGreaterThanOrEqual
 		{
 			get { return _EndTimeGreaterThanOrEqual; }
@@ -116,6 +124,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndTimeGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int EndTimeLessThanOrEqual
 		{
 			get { return _EndTimeLessThanOrEqual; }
@@ -125,6 +134,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndTimeLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int DurationGreaterThanOrEqual
 		{
 			get { return _DurationGreaterThanOrEqual; }
@@ -134,6 +144,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DurationGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int DurationLessThanOrEqual
 		{
 			get { return _DurationLessThanOrEqual; }
@@ -143,6 +154,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DurationLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean IsPublicEqual
 		{
 			get { return _IsPublicEqual; }
@@ -159,58 +171,48 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AnnotationBaseFilter(XmlElement node) : base(node)
+		public AnnotationBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["parentIdEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "parentIdEqual":
-						this._ParentIdEqual = propertyNode.InnerText;
-						continue;
-					case "parentIdIn":
-						this._ParentIdIn = propertyNode.InnerText;
-						continue;
-					case "textLike":
-						this._TextLike = propertyNode.InnerText;
-						continue;
-					case "textMultiLikeOr":
-						this._TextMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "textMultiLikeAnd":
-						this._TextMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "endTimeGreaterThanOrEqual":
-						this._EndTimeGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "endTimeLessThanOrEqual":
-						this._EndTimeLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "durationGreaterThanOrEqual":
-						this._DurationGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "durationLessThanOrEqual":
-						this._DurationLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "isPublicEqual":
-						this._IsPublicEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-				}
+				this._ParentIdEqual = node["parentIdEqual"].Value<string>();
 			}
-		}
-
-		public AnnotationBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._ParentIdEqual = data.TryGetValueSafe<string>("parentIdEqual");
-			    this._ParentIdIn = data.TryGetValueSafe<string>("parentIdIn");
-			    this._TextLike = data.TryGetValueSafe<string>("textLike");
-			    this._TextMultiLikeOr = data.TryGetValueSafe<string>("textMultiLikeOr");
-			    this._TextMultiLikeAnd = data.TryGetValueSafe<string>("textMultiLikeAnd");
-			    this._EndTimeGreaterThanOrEqual = data.TryGetValueSafe<int>("endTimeGreaterThanOrEqual");
-			    this._EndTimeLessThanOrEqual = data.TryGetValueSafe<int>("endTimeLessThanOrEqual");
-			    this._DurationGreaterThanOrEqual = data.TryGetValueSafe<int>("durationGreaterThanOrEqual");
-			    this._DurationLessThanOrEqual = data.TryGetValueSafe<int>("durationLessThanOrEqual");
-			    this._IsPublicEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isPublicEqual"));
+			if(node["parentIdIn"] != null)
+			{
+				this._ParentIdIn = node["parentIdIn"].Value<string>();
+			}
+			if(node["textLike"] != null)
+			{
+				this._TextLike = node["textLike"].Value<string>();
+			}
+			if(node["textMultiLikeOr"] != null)
+			{
+				this._TextMultiLikeOr = node["textMultiLikeOr"].Value<string>();
+			}
+			if(node["textMultiLikeAnd"] != null)
+			{
+				this._TextMultiLikeAnd = node["textMultiLikeAnd"].Value<string>();
+			}
+			if(node["endTimeGreaterThanOrEqual"] != null)
+			{
+				this._EndTimeGreaterThanOrEqual = ParseInt(node["endTimeGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["endTimeLessThanOrEqual"] != null)
+			{
+				this._EndTimeLessThanOrEqual = ParseInt(node["endTimeLessThanOrEqual"].Value<string>());
+			}
+			if(node["durationGreaterThanOrEqual"] != null)
+			{
+				this._DurationGreaterThanOrEqual = ParseInt(node["durationGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["durationLessThanOrEqual"] != null)
+			{
+				this._DurationLessThanOrEqual = ParseInt(node["durationLessThanOrEqual"].Value<string>());
+			}
+			if(node["isPublicEqual"] != null)
+			{
+				this._IsPublicEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["isPublicEqual"].Value<string>());
+			}
 		}
 		#endregion
 

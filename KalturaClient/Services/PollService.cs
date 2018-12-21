@@ -32,6 +32,7 @@ using System.IO;
 using Kaltura.Request;
 using Kaltura.Types;
 using Kaltura.Enums;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Services
 {
@@ -72,13 +73,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
-			return result.InnerText;
-		}
-		public override object DeserializeObject(object result)
-		{
-			return (string)result;
+			return result.Value<string>();
 		}
 	}
 
@@ -128,13 +125,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
-			return result.InnerText;
-		}
-		public override object DeserializeObject(object result)
-		{
-			return (string)result;
+			return result.Value<string>();
 		}
 	}
 
@@ -184,17 +177,13 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
-			return result.InnerText;
-		}
-		public override object DeserializeObject(object result)
-		{
-			return (string)result;
+			return result.Value<string>();
 		}
 	}
 
-	public class PollResetVotesRequestBuilder : RequestBuilder<object>
+	public class PollResetVotesRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
 		public const string POLL_ID = "pollId";
@@ -231,11 +220,7 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-		public override object DeserializeObject(object result)
+		public override object Deserialize(JToken result)
 		{
 			return null;
 		}
@@ -296,13 +281,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
-			return result.InnerText;
-		}
-		public override object DeserializeObject(object result)
-		{
-			return (string)result;
+			return result.Value<string>();
 		}
 	}
 

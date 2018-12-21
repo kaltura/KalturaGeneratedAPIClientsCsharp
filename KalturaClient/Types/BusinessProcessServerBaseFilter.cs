@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -76,6 +78,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int IdEqual
 		{
 			get { return _IdEqual; }
@@ -85,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		[JsonProperty]
 		public string IdIn
 		{
 			get { return _IdIn; }
@@ -94,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		[JsonProperty]
 		public string IdNotIn
 		{
 			get { return _IdNotIn; }
@@ -103,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdNotIn");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
 			get { return _CreatedAtGreaterThanOrEqual; }
@@ -112,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
 			get { return _CreatedAtLessThanOrEqual; }
@@ -121,6 +128,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
 			get { return _UpdatedAtGreaterThanOrEqual; }
@@ -130,6 +138,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
 			get { return _UpdatedAtLessThanOrEqual; }
@@ -139,6 +148,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int PartnerIdEqual
 		{
 			get { return _PartnerIdEqual; }
@@ -148,6 +158,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string PartnerIdIn
 		{
 			get { return _PartnerIdIn; }
@@ -157,6 +168,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdIn");
 			}
 		}
+		[JsonProperty]
 		public BusinessProcessServerStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -166,6 +178,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public BusinessProcessServerStatus StatusNotEqual
 		{
 			get { return _StatusNotEqual; }
@@ -175,6 +188,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusNotEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -184,6 +198,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		[JsonProperty]
 		public string StatusNotIn
 		{
 			get { return _StatusNotIn; }
@@ -193,6 +208,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusNotIn");
 			}
 		}
+		[JsonProperty]
 		public BusinessProcessProvider TypeEqual
 		{
 			get { return _TypeEqual; }
@@ -202,6 +218,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string TypeIn
 		{
 			get { return _TypeIn; }
@@ -211,6 +228,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeIn");
 			}
 		}
+		[JsonProperty]
 		public int DcEqual
 		{
 			get { return _DcEqual; }
@@ -220,6 +238,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DcEqual");
 			}
 		}
+		[JsonProperty]
 		public int DcEqOrNull
 		{
 			get { return _DcEqOrNull; }
@@ -236,86 +255,76 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BusinessProcessServerBaseFilter(XmlElement node) : base(node)
+		public BusinessProcessServerBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["idEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "idEqual":
-						this._IdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "idIn":
-						this._IdIn = propertyNode.InnerText;
-						continue;
-					case "idNotIn":
-						this._IdNotIn = propertyNode.InnerText;
-						continue;
-					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerIdEqual":
-						this._PartnerIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerIdIn":
-						this._PartnerIdIn = propertyNode.InnerText;
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (BusinessProcessServerStatus)StringEnum.Parse(typeof(BusinessProcessServerStatus), propertyNode.InnerText);
-						continue;
-					case "statusNotEqual":
-						this._StatusNotEqual = (BusinessProcessServerStatus)StringEnum.Parse(typeof(BusinessProcessServerStatus), propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-					case "statusNotIn":
-						this._StatusNotIn = propertyNode.InnerText;
-						continue;
-					case "typeEqual":
-						this._TypeEqual = (BusinessProcessProvider)StringEnum.Parse(typeof(BusinessProcessProvider), propertyNode.InnerText);
-						continue;
-					case "typeIn":
-						this._TypeIn = propertyNode.InnerText;
-						continue;
-					case "dcEqual":
-						this._DcEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "dcEqOrNull":
-						this._DcEqOrNull = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._IdEqual = ParseInt(node["idEqual"].Value<string>());
 			}
-		}
-
-		public BusinessProcessServerBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
-			    this._IdIn = data.TryGetValueSafe<string>("idIn");
-			    this._IdNotIn = data.TryGetValueSafe<string>("idNotIn");
-			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
-			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
-			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
-			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
-			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
-			    this._PartnerIdIn = data.TryGetValueSafe<string>("partnerIdIn");
-			    this._StatusEqual = (BusinessProcessServerStatus)StringEnum.Parse(typeof(BusinessProcessServerStatus), data.TryGetValueSafe<string>("statusEqual"));
-			    this._StatusNotEqual = (BusinessProcessServerStatus)StringEnum.Parse(typeof(BusinessProcessServerStatus), data.TryGetValueSafe<string>("statusNotEqual"));
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
-			    this._StatusNotIn = data.TryGetValueSafe<string>("statusNotIn");
-			    this._TypeEqual = (BusinessProcessProvider)StringEnum.Parse(typeof(BusinessProcessProvider), data.TryGetValueSafe<string>("typeEqual"));
-			    this._TypeIn = data.TryGetValueSafe<string>("typeIn");
-			    this._DcEqual = data.TryGetValueSafe<int>("dcEqual");
-			    this._DcEqOrNull = data.TryGetValueSafe<int>("dcEqOrNull");
+			if(node["idIn"] != null)
+			{
+				this._IdIn = node["idIn"].Value<string>();
+			}
+			if(node["idNotIn"] != null)
+			{
+				this._IdNotIn = node["idNotIn"].Value<string>();
+			}
+			if(node["createdAtGreaterThanOrEqual"] != null)
+			{
+				this._CreatedAtGreaterThanOrEqual = ParseInt(node["createdAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["createdAtLessThanOrEqual"] != null)
+			{
+				this._CreatedAtLessThanOrEqual = ParseInt(node["createdAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtGreaterThanOrEqual"] != null)
+			{
+				this._UpdatedAtGreaterThanOrEqual = ParseInt(node["updatedAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtLessThanOrEqual"] != null)
+			{
+				this._UpdatedAtLessThanOrEqual = ParseInt(node["updatedAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["partnerIdEqual"] != null)
+			{
+				this._PartnerIdEqual = ParseInt(node["partnerIdEqual"].Value<string>());
+			}
+			if(node["partnerIdIn"] != null)
+			{
+				this._PartnerIdIn = node["partnerIdIn"].Value<string>();
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (BusinessProcessServerStatus)StringEnum.Parse(typeof(BusinessProcessServerStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["statusNotEqual"] != null)
+			{
+				this._StatusNotEqual = (BusinessProcessServerStatus)StringEnum.Parse(typeof(BusinessProcessServerStatus), node["statusNotEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
+			if(node["statusNotIn"] != null)
+			{
+				this._StatusNotIn = node["statusNotIn"].Value<string>();
+			}
+			if(node["typeEqual"] != null)
+			{
+				this._TypeEqual = (BusinessProcessProvider)StringEnum.Parse(typeof(BusinessProcessProvider), node["typeEqual"].Value<string>());
+			}
+			if(node["typeIn"] != null)
+			{
+				this._TypeIn = node["typeIn"].Value<string>();
+			}
+			if(node["dcEqual"] != null)
+			{
+				this._DcEqual = ParseInt(node["dcEqual"].Value<string>());
+			}
+			if(node["dcEqOrNull"] != null)
+			{
+				this._DcEqOrNull = ParseInt(node["dcEqOrNull"].Value<string>());
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,6 +58,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public IList<String> SrcFiles
 		{
 			get { return _SrcFiles; }
@@ -65,6 +68,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcFiles");
 			}
 		}
+		[JsonProperty]
 		public string DestFilePath
 		{
 			get { return _DestFilePath; }
@@ -74,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestFilePath");
 			}
 		}
+		[JsonProperty]
 		public string FlavorAssetId
 		{
 			get { return _FlavorAssetId; }
@@ -83,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetId");
 			}
 		}
+		[JsonProperty]
 		public float Offset
 		{
 			get { return _Offset; }
@@ -92,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Offset");
 			}
 		}
+		[JsonProperty]
 		public float Duration
 		{
 			get { return _Duration; }
@@ -101,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Duration");
 			}
 		}
+		[JsonProperty]
 		public float ConcatenatedDuration
 		{
 			get { return _ConcatenatedDuration; }
@@ -110,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConcatenatedDuration");
 			}
 		}
+		[JsonProperty]
 		public bool? ShouldSort
 		{
 			get { return _ShouldSort; }
@@ -126,55 +135,40 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ConcatJobData(XmlElement node) : base(node)
+		public ConcatJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["srcFiles"] != null)
 			{
-				switch (propertyNode.Name)
+				this._SrcFiles = new List<String>();
+				foreach(var arrayNode in node["srcFiles"].Children())
 				{
-					case "srcFiles":
-						this._SrcFiles = new List<String>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._SrcFiles.Add(ObjectFactory.Create<String>(arrayNode));
-						}
-						continue;
-					case "destFilePath":
-						this._DestFilePath = propertyNode.InnerText;
-						continue;
-					case "flavorAssetId":
-						this._FlavorAssetId = propertyNode.InnerText;
-						continue;
-					case "offset":
-						this._Offset = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "duration":
-						this._Duration = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "concatenatedDuration":
-						this._ConcatenatedDuration = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "shouldSort":
-						this._ShouldSort = ParseBool(propertyNode.InnerText);
-						continue;
+					this._SrcFiles.Add(ObjectFactory.Create<String>(arrayNode));
 				}
 			}
-		}
-
-		public ConcatJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._SrcFiles = new List<String>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("srcFiles", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._SrcFiles.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._DestFilePath = data.TryGetValueSafe<string>("destFilePath");
-			    this._FlavorAssetId = data.TryGetValueSafe<string>("flavorAssetId");
-			    this._Offset = data.TryGetValueSafe<float>("offset");
-			    this._Duration = data.TryGetValueSafe<float>("duration");
-			    this._ConcatenatedDuration = data.TryGetValueSafe<float>("concatenatedDuration");
-			    this._ShouldSort = data.TryGetValueSafe<bool>("shouldSort");
+			if(node["destFilePath"] != null)
+			{
+				this._DestFilePath = node["destFilePath"].Value<string>();
+			}
+			if(node["flavorAssetId"] != null)
+			{
+				this._FlavorAssetId = node["flavorAssetId"].Value<string>();
+			}
+			if(node["offset"] != null)
+			{
+				this._Offset = ParseFloat(node["offset"].Value<string>());
+			}
+			if(node["duration"] != null)
+			{
+				this._Duration = ParseFloat(node["duration"].Value<string>());
+			}
+			if(node["concatenatedDuration"] != null)
+			{
+				this._ConcatenatedDuration = ParseFloat(node["concatenatedDuration"].Value<string>());
+			}
+			if(node["shouldSort"] != null)
+			{
+				this._ShouldSort = ParseBool(node["shouldSort"].Value<string>());
+			}
 		}
 		#endregion
 

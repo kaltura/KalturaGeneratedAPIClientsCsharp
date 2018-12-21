@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -64,6 +66,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Apikey
 		{
 			get { return _Apikey; }
@@ -73,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Apikey");
 			}
 		}
+		[JsonProperty]
 		public string Email
 		{
 			get { return _Email; }
@@ -82,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Email");
 			}
 		}
+		[JsonProperty]
 		public string SftpPass
 		{
 			get { return _SftpPass; }
@@ -91,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpPass");
 			}
 		}
+		[JsonProperty]
 		public string SftpLogin
 		{
 			get { return _SftpLogin; }
@@ -100,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpLogin");
 			}
 		}
+		[JsonProperty]
 		public string ContentOwner
 		{
 			get { return _ContentOwner; }
@@ -109,6 +116,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentOwner");
 			}
 		}
+		[JsonProperty]
 		public string UpstreamVideoId
 		{
 			get { return _UpstreamVideoId; }
@@ -118,6 +126,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpstreamVideoId");
 			}
 		}
+		[JsonProperty]
 		public string UpstreamNetworkName
 		{
 			get { return _UpstreamNetworkName; }
@@ -127,6 +136,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpstreamNetworkName");
 			}
 		}
+		[JsonProperty]
 		public string UpstreamNetworkId
 		{
 			get { return _UpstreamNetworkId; }
@@ -136,6 +146,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpstreamNetworkId");
 			}
 		}
+		[JsonProperty]
 		public string CategoryId
 		{
 			get { return _CategoryId; }
@@ -145,6 +156,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryId");
 			}
 		}
+		[JsonProperty]
 		public bool? ReplaceGroup
 		{
 			get { return _ReplaceGroup; }
@@ -154,6 +166,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplaceGroup");
 			}
 		}
+		[JsonProperty]
 		public bool? ReplaceAirDates
 		{
 			get { return _ReplaceAirDates; }
@@ -170,62 +183,52 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FreewheelGenericDistributionProfile(XmlElement node) : base(node)
+		public FreewheelGenericDistributionProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["apikey"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "apikey":
-						this._Apikey = propertyNode.InnerText;
-						continue;
-					case "email":
-						this._Email = propertyNode.InnerText;
-						continue;
-					case "sftpPass":
-						this._SftpPass = propertyNode.InnerText;
-						continue;
-					case "sftpLogin":
-						this._SftpLogin = propertyNode.InnerText;
-						continue;
-					case "contentOwner":
-						this._ContentOwner = propertyNode.InnerText;
-						continue;
-					case "upstreamVideoId":
-						this._UpstreamVideoId = propertyNode.InnerText;
-						continue;
-					case "upstreamNetworkName":
-						this._UpstreamNetworkName = propertyNode.InnerText;
-						continue;
-					case "upstreamNetworkId":
-						this._UpstreamNetworkId = propertyNode.InnerText;
-						continue;
-					case "categoryId":
-						this._CategoryId = propertyNode.InnerText;
-						continue;
-					case "replaceGroup":
-						this._ReplaceGroup = ParseBool(propertyNode.InnerText);
-						continue;
-					case "replaceAirDates":
-						this._ReplaceAirDates = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._Apikey = node["apikey"].Value<string>();
 			}
-		}
-
-		public FreewheelGenericDistributionProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._Apikey = data.TryGetValueSafe<string>("apikey");
-			    this._Email = data.TryGetValueSafe<string>("email");
-			    this._SftpPass = data.TryGetValueSafe<string>("sftpPass");
-			    this._SftpLogin = data.TryGetValueSafe<string>("sftpLogin");
-			    this._ContentOwner = data.TryGetValueSafe<string>("contentOwner");
-			    this._UpstreamVideoId = data.TryGetValueSafe<string>("upstreamVideoId");
-			    this._UpstreamNetworkName = data.TryGetValueSafe<string>("upstreamNetworkName");
-			    this._UpstreamNetworkId = data.TryGetValueSafe<string>("upstreamNetworkId");
-			    this._CategoryId = data.TryGetValueSafe<string>("categoryId");
-			    this._ReplaceGroup = data.TryGetValueSafe<bool>("replaceGroup");
-			    this._ReplaceAirDates = data.TryGetValueSafe<bool>("replaceAirDates");
+			if(node["email"] != null)
+			{
+				this._Email = node["email"].Value<string>();
+			}
+			if(node["sftpPass"] != null)
+			{
+				this._SftpPass = node["sftpPass"].Value<string>();
+			}
+			if(node["sftpLogin"] != null)
+			{
+				this._SftpLogin = node["sftpLogin"].Value<string>();
+			}
+			if(node["contentOwner"] != null)
+			{
+				this._ContentOwner = node["contentOwner"].Value<string>();
+			}
+			if(node["upstreamVideoId"] != null)
+			{
+				this._UpstreamVideoId = node["upstreamVideoId"].Value<string>();
+			}
+			if(node["upstreamNetworkName"] != null)
+			{
+				this._UpstreamNetworkName = node["upstreamNetworkName"].Value<string>();
+			}
+			if(node["upstreamNetworkId"] != null)
+			{
+				this._UpstreamNetworkId = node["upstreamNetworkId"].Value<string>();
+			}
+			if(node["categoryId"] != null)
+			{
+				this._CategoryId = node["categoryId"].Value<string>();
+			}
+			if(node["replaceGroup"] != null)
+			{
+				this._ReplaceGroup = ParseBool(node["replaceGroup"].Value<string>());
+			}
+			if(node["replaceAirDates"] != null)
+			{
+				this._ReplaceAirDates = ParseBool(node["replaceAirDates"].Value<string>());
+			}
 		}
 		#endregion
 

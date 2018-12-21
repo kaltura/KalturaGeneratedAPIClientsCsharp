@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,6 +58,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Protocol
 		{
 			get { return _Protocol; }
@@ -65,6 +68,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Protocol");
 			}
 		}
+		[JsonProperty]
 		public SessionType KsType
 		{
 			get { return _KsType; }
@@ -74,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("KsType");
 			}
 		}
+		[JsonProperty]
 		public IList<IntegerValue> UserRoles
 		{
 			get { return _UserRoles; }
@@ -83,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserRoles");
 			}
 		}
+		[JsonProperty]
 		public string CachedObjectType
 		{
 			get { return _CachedObjectType; }
@@ -92,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CachedObjectType");
 			}
 		}
+		[JsonProperty]
 		public string ObjectId
 		{
 			get { return _ObjectId; }
@@ -101,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectId");
 			}
 		}
+		[JsonProperty]
 		public string StartObjectKey
 		{
 			get { return _StartObjectKey; }
@@ -110,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartObjectKey");
 			}
 		}
+		[JsonProperty]
 		public string EndObjectKey
 		{
 			get { return _EndObjectKey; }
@@ -126,55 +135,40 @@ namespace Kaltura.Types
 		{
 		}
 
-		public RecalculateResponseProfileCacheJobData(XmlElement node) : base(node)
+		public RecalculateResponseProfileCacheJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["protocol"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Protocol = node["protocol"].Value<string>();
+			}
+			if(node["ksType"] != null)
+			{
+				this._KsType = (SessionType)ParseEnum(typeof(SessionType), node["ksType"].Value<string>());
+			}
+			if(node["userRoles"] != null)
+			{
+				this._UserRoles = new List<IntegerValue>();
+				foreach(var arrayNode in node["userRoles"].Children())
 				{
-					case "protocol":
-						this._Protocol = propertyNode.InnerText;
-						continue;
-					case "ksType":
-						this._KsType = (SessionType)ParseEnum(typeof(SessionType), propertyNode.InnerText);
-						continue;
-					case "userRoles":
-						this._UserRoles = new List<IntegerValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._UserRoles.Add(ObjectFactory.Create<IntegerValue>(arrayNode));
-						}
-						continue;
-					case "cachedObjectType":
-						this._CachedObjectType = propertyNode.InnerText;
-						continue;
-					case "objectId":
-						this._ObjectId = propertyNode.InnerText;
-						continue;
-					case "startObjectKey":
-						this._StartObjectKey = propertyNode.InnerText;
-						continue;
-					case "endObjectKey":
-						this._EndObjectKey = propertyNode.InnerText;
-						continue;
+					this._UserRoles.Add(ObjectFactory.Create<IntegerValue>(arrayNode));
 				}
 			}
-		}
-
-		public RecalculateResponseProfileCacheJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._Protocol = data.TryGetValueSafe<string>("protocol");
-			    this._KsType = (SessionType)ParseEnum(typeof(SessionType), data.TryGetValueSafe<int>("ksType"));
-			    this._UserRoles = new List<IntegerValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("userRoles", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._UserRoles.Add(ObjectFactory.Create<IntegerValue>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._CachedObjectType = data.TryGetValueSafe<string>("cachedObjectType");
-			    this._ObjectId = data.TryGetValueSafe<string>("objectId");
-			    this._StartObjectKey = data.TryGetValueSafe<string>("startObjectKey");
-			    this._EndObjectKey = data.TryGetValueSafe<string>("endObjectKey");
+			if(node["cachedObjectType"] != null)
+			{
+				this._CachedObjectType = node["cachedObjectType"].Value<string>();
+			}
+			if(node["objectId"] != null)
+			{
+				this._ObjectId = node["objectId"].Value<string>();
+			}
+			if(node["startObjectKey"] != null)
+			{
+				this._StartObjectKey = node["startObjectKey"].Value<string>();
+			}
+			if(node["endObjectKey"] != null)
+			{
+				this._EndObjectKey = node["endObjectKey"].Value<string>();
+			}
 		}
 		#endregion
 

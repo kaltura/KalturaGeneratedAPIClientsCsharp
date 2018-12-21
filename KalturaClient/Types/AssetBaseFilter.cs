@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -76,6 +78,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string IdEqual
 		{
 			get { return _IdEqual; }
@@ -85,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		[JsonProperty]
 		public string IdIn
 		{
 			get { return _IdIn; }
@@ -94,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		[JsonProperty]
 		public string EntryIdEqual
 		{
 			get { return _EntryIdEqual; }
@@ -103,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string EntryIdIn
 		{
 			get { return _EntryIdIn; }
@@ -112,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdIn");
 			}
 		}
+		[JsonProperty]
 		public int PartnerIdEqual
 		{
 			get { return _PartnerIdEqual; }
@@ -121,6 +128,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string PartnerIdIn
 		{
 			get { return _PartnerIdIn; }
@@ -130,6 +138,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdIn");
 			}
 		}
+		[JsonProperty]
 		public int SizeGreaterThanOrEqual
 		{
 			get { return _SizeGreaterThanOrEqual; }
@@ -139,6 +148,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SizeGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int SizeLessThanOrEqual
 		{
 			get { return _SizeLessThanOrEqual; }
@@ -148,6 +158,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SizeLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public string TagsLike
 		{
 			get { return _TagsLike; }
@@ -157,6 +168,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsLike");
 			}
 		}
+		[JsonProperty]
 		public string TagsMultiLikeOr
 		{
 			get { return _TagsMultiLikeOr; }
@@ -166,6 +178,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string TagsMultiLikeAnd
 		{
 			get { return _TagsMultiLikeAnd; }
@@ -175,6 +188,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
 			get { return _CreatedAtGreaterThanOrEqual; }
@@ -184,6 +198,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
 			get { return _CreatedAtLessThanOrEqual; }
@@ -193,6 +208,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
 			get { return _UpdatedAtGreaterThanOrEqual; }
@@ -202,6 +218,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
 			get { return _UpdatedAtLessThanOrEqual; }
@@ -211,6 +228,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int DeletedAtGreaterThanOrEqual
 		{
 			get { return _DeletedAtGreaterThanOrEqual; }
@@ -220,6 +238,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeletedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int DeletedAtLessThanOrEqual
 		{
 			get { return _DeletedAtLessThanOrEqual; }
@@ -236,86 +255,76 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AssetBaseFilter(XmlElement node) : base(node)
+		public AssetBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["idEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "idEqual":
-						this._IdEqual = propertyNode.InnerText;
-						continue;
-					case "idIn":
-						this._IdIn = propertyNode.InnerText;
-						continue;
-					case "entryIdEqual":
-						this._EntryIdEqual = propertyNode.InnerText;
-						continue;
-					case "entryIdIn":
-						this._EntryIdIn = propertyNode.InnerText;
-						continue;
-					case "partnerIdEqual":
-						this._PartnerIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerIdIn":
-						this._PartnerIdIn = propertyNode.InnerText;
-						continue;
-					case "sizeGreaterThanOrEqual":
-						this._SizeGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "sizeLessThanOrEqual":
-						this._SizeLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "tagsLike":
-						this._TagsLike = propertyNode.InnerText;
-						continue;
-					case "tagsMultiLikeOr":
-						this._TagsMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "tagsMultiLikeAnd":
-						this._TagsMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "deletedAtGreaterThanOrEqual":
-						this._DeletedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "deletedAtLessThanOrEqual":
-						this._DeletedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._IdEqual = node["idEqual"].Value<string>();
 			}
-		}
-
-		public AssetBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._IdEqual = data.TryGetValueSafe<string>("idEqual");
-			    this._IdIn = data.TryGetValueSafe<string>("idIn");
-			    this._EntryIdEqual = data.TryGetValueSafe<string>("entryIdEqual");
-			    this._EntryIdIn = data.TryGetValueSafe<string>("entryIdIn");
-			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
-			    this._PartnerIdIn = data.TryGetValueSafe<string>("partnerIdIn");
-			    this._SizeGreaterThanOrEqual = data.TryGetValueSafe<int>("sizeGreaterThanOrEqual");
-			    this._SizeLessThanOrEqual = data.TryGetValueSafe<int>("sizeLessThanOrEqual");
-			    this._TagsLike = data.TryGetValueSafe<string>("tagsLike");
-			    this._TagsMultiLikeOr = data.TryGetValueSafe<string>("tagsMultiLikeOr");
-			    this._TagsMultiLikeAnd = data.TryGetValueSafe<string>("tagsMultiLikeAnd");
-			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
-			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
-			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
-			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
-			    this._DeletedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("deletedAtGreaterThanOrEqual");
-			    this._DeletedAtLessThanOrEqual = data.TryGetValueSafe<int>("deletedAtLessThanOrEqual");
+			if(node["idIn"] != null)
+			{
+				this._IdIn = node["idIn"].Value<string>();
+			}
+			if(node["entryIdEqual"] != null)
+			{
+				this._EntryIdEqual = node["entryIdEqual"].Value<string>();
+			}
+			if(node["entryIdIn"] != null)
+			{
+				this._EntryIdIn = node["entryIdIn"].Value<string>();
+			}
+			if(node["partnerIdEqual"] != null)
+			{
+				this._PartnerIdEqual = ParseInt(node["partnerIdEqual"].Value<string>());
+			}
+			if(node["partnerIdIn"] != null)
+			{
+				this._PartnerIdIn = node["partnerIdIn"].Value<string>();
+			}
+			if(node["sizeGreaterThanOrEqual"] != null)
+			{
+				this._SizeGreaterThanOrEqual = ParseInt(node["sizeGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["sizeLessThanOrEqual"] != null)
+			{
+				this._SizeLessThanOrEqual = ParseInt(node["sizeLessThanOrEqual"].Value<string>());
+			}
+			if(node["tagsLike"] != null)
+			{
+				this._TagsLike = node["tagsLike"].Value<string>();
+			}
+			if(node["tagsMultiLikeOr"] != null)
+			{
+				this._TagsMultiLikeOr = node["tagsMultiLikeOr"].Value<string>();
+			}
+			if(node["tagsMultiLikeAnd"] != null)
+			{
+				this._TagsMultiLikeAnd = node["tagsMultiLikeAnd"].Value<string>();
+			}
+			if(node["createdAtGreaterThanOrEqual"] != null)
+			{
+				this._CreatedAtGreaterThanOrEqual = ParseInt(node["createdAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["createdAtLessThanOrEqual"] != null)
+			{
+				this._CreatedAtLessThanOrEqual = ParseInt(node["createdAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtGreaterThanOrEqual"] != null)
+			{
+				this._UpdatedAtGreaterThanOrEqual = ParseInt(node["updatedAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtLessThanOrEqual"] != null)
+			{
+				this._UpdatedAtLessThanOrEqual = ParseInt(node["updatedAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["deletedAtGreaterThanOrEqual"] != null)
+			{
+				this._DeletedAtGreaterThanOrEqual = ParseInt(node["deletedAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["deletedAtLessThanOrEqual"] != null)
+			{
+				this._DeletedAtLessThanOrEqual = ParseInt(node["deletedAtLessThanOrEqual"].Value<string>());
+			}
 		}
 		#endregion
 

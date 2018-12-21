@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,6 +58,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ApiAuthorizeUrl
 		{
 			get { return _ApiAuthorizeUrl; }
@@ -65,6 +68,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ApiAuthorizeUrl");
 			}
 		}
+		[JsonProperty]
 		public string PageId
 		{
 			get { return _PageId; }
@@ -74,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PageId");
 			}
 		}
+		[JsonProperty]
 		public string PageAccessToken
 		{
 			get { return _PageAccessToken; }
@@ -83,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PageAccessToken");
 			}
 		}
+		[JsonProperty]
 		public string UserAccessToken
 		{
 			get { return _UserAccessToken; }
@@ -92,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserAccessToken");
 			}
 		}
+		[JsonProperty]
 		public string State
 		{
 			get { return _State; }
@@ -101,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("State");
 			}
 		}
+		[JsonProperty]
 		public string Permissions
 		{
 			get { return _Permissions; }
@@ -110,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Permissions");
 			}
 		}
+		[JsonProperty]
 		public int ReRequestPermissions
 		{
 			get { return _ReRequestPermissions; }
@@ -126,46 +135,36 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FacebookDistributionProfile(XmlElement node) : base(node)
+		public FacebookDistributionProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["apiAuthorizeUrl"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "apiAuthorizeUrl":
-						this._ApiAuthorizeUrl = propertyNode.InnerText;
-						continue;
-					case "pageId":
-						this._PageId = propertyNode.InnerText;
-						continue;
-					case "pageAccessToken":
-						this._PageAccessToken = propertyNode.InnerText;
-						continue;
-					case "userAccessToken":
-						this._UserAccessToken = propertyNode.InnerText;
-						continue;
-					case "state":
-						this._State = propertyNode.InnerText;
-						continue;
-					case "permissions":
-						this._Permissions = propertyNode.InnerText;
-						continue;
-					case "reRequestPermissions":
-						this._ReRequestPermissions = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._ApiAuthorizeUrl = node["apiAuthorizeUrl"].Value<string>();
 			}
-		}
-
-		public FacebookDistributionProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._ApiAuthorizeUrl = data.TryGetValueSafe<string>("apiAuthorizeUrl");
-			    this._PageId = data.TryGetValueSafe<string>("pageId");
-			    this._PageAccessToken = data.TryGetValueSafe<string>("pageAccessToken");
-			    this._UserAccessToken = data.TryGetValueSafe<string>("userAccessToken");
-			    this._State = data.TryGetValueSafe<string>("state");
-			    this._Permissions = data.TryGetValueSafe<string>("permissions");
-			    this._ReRequestPermissions = data.TryGetValueSafe<int>("reRequestPermissions");
+			if(node["pageId"] != null)
+			{
+				this._PageId = node["pageId"].Value<string>();
+			}
+			if(node["pageAccessToken"] != null)
+			{
+				this._PageAccessToken = node["pageAccessToken"].Value<string>();
+			}
+			if(node["userAccessToken"] != null)
+			{
+				this._UserAccessToken = node["userAccessToken"].Value<string>();
+			}
+			if(node["state"] != null)
+			{
+				this._State = node["state"].Value<string>();
+			}
+			if(node["permissions"] != null)
+			{
+				this._Permissions = node["permissions"].Value<string>();
+			}
+			if(node["reRequestPermissions"] != null)
+			{
+				this._ReRequestPermissions = ParseInt(node["reRequestPermissions"].Value<string>());
+			}
 		}
 		#endregion
 

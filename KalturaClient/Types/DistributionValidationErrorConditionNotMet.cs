@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ConditionName
 		{
 			get { return _ConditionName; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DistributionValidationErrorConditionNotMet(XmlElement node) : base(node)
+		public DistributionValidationErrorConditionNotMet(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["conditionName"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "conditionName":
-						this._ConditionName = propertyNode.InnerText;
-						continue;
-				}
+				this._ConditionName = node["conditionName"].Value<string>();
 			}
-		}
-
-		public DistributionValidationErrorConditionNotMet(IDictionary<string,object> data) : base(data)
-		{
-			    this._ConditionName = data.TryGetValueSafe<string>("conditionName");
 		}
 		#endregion
 

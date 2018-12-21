@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public SearchOperatorType Type
 		{
 			get { return _Type; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		[JsonProperty]
 		public IList<SearchItem> Items
 		{
 			get { return _Items; }
@@ -71,35 +75,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public SearchOperator(XmlElement node) : base(node)
+		public SearchOperator(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["type"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Type = (SearchOperatorType)ParseEnum(typeof(SearchOperatorType), node["type"].Value<string>());
+			}
+			if(node["items"] != null)
+			{
+				this._Items = new List<SearchItem>();
+				foreach(var arrayNode in node["items"].Children())
 				{
-					case "type":
-						this._Type = (SearchOperatorType)ParseEnum(typeof(SearchOperatorType), propertyNode.InnerText);
-						continue;
-					case "items":
-						this._Items = new List<SearchItem>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Items.Add(ObjectFactory.Create<SearchItem>(arrayNode));
-						}
-						continue;
+					this._Items.Add(ObjectFactory.Create<SearchItem>(arrayNode));
 				}
 			}
-		}
-
-		public SearchOperator(IDictionary<string,object> data) : base(data)
-		{
-			    this._Type = (SearchOperatorType)ParseEnum(typeof(SearchOperatorType), data.TryGetValueSafe<int>("type"));
-			    this._Items = new List<SearchItem>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("items", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Items.Add(ObjectFactory.Create<SearchItem>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

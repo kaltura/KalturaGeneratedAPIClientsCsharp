@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public CategoryIdentifierField Identifier
 		{
 			get { return _Identifier; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CategoryIdentifier(XmlElement node) : base(node)
+		public CategoryIdentifier(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["identifier"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "identifier":
-						this._Identifier = (CategoryIdentifierField)StringEnum.Parse(typeof(CategoryIdentifierField), propertyNode.InnerText);
-						continue;
-				}
+				this._Identifier = (CategoryIdentifierField)StringEnum.Parse(typeof(CategoryIdentifierField), node["identifier"].Value<string>());
 			}
-		}
-
-		public CategoryIdentifier(IDictionary<string,object> data) : base(data)
-		{
-			    this._Identifier = (CategoryIdentifierField)StringEnum.Parse(typeof(CategoryIdentifierField), data.TryGetValueSafe<string>("identifier"));
 		}
 		#endregion
 

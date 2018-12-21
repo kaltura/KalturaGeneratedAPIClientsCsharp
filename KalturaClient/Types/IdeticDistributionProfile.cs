@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string FtpPath
 		{
 			get { return _FtpPath; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FtpPath");
 			}
 		}
+		[JsonProperty]
 		public string Username
 		{
 			get { return _Username; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Username");
 			}
 		}
+		[JsonProperty]
 		public string Password
 		{
 			get { return _Password; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Password");
 			}
 		}
+		[JsonProperty]
 		public string Domain
 		{
 			get { return _Domain; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public IdeticDistributionProfile(XmlElement node) : base(node)
+		public IdeticDistributionProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["ftpPath"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "ftpPath":
-						this._FtpPath = propertyNode.InnerText;
-						continue;
-					case "username":
-						this._Username = propertyNode.InnerText;
-						continue;
-					case "password":
-						this._Password = propertyNode.InnerText;
-						continue;
-					case "domain":
-						this._Domain = propertyNode.InnerText;
-						continue;
-				}
+				this._FtpPath = node["ftpPath"].Value<string>();
 			}
-		}
-
-		public IdeticDistributionProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._FtpPath = data.TryGetValueSafe<string>("ftpPath");
-			    this._Username = data.TryGetValueSafe<string>("username");
-			    this._Password = data.TryGetValueSafe<string>("password");
-			    this._Domain = data.TryGetValueSafe<string>("domain");
+			if(node["username"] != null)
+			{
+				this._Username = node["username"].Value<string>();
+			}
+			if(node["password"] != null)
+			{
+				this._Password = node["password"].Value<string>();
+			}
+			if(node["domain"] != null)
+			{
+				this._Domain = node["domain"].Value<string>();
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -62,6 +64,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
 			get { return _CreatedAtGreaterThanOrEqual; }
@@ -71,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
 			get { return _CreatedAtLessThanOrEqual; }
@@ -80,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
 			get { return _UpdatedAtGreaterThanOrEqual; }
@@ -89,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
 			get { return _UpdatedAtLessThanOrEqual; }
@@ -98,6 +104,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public LiveChannelSegmentStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -107,6 +114,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -116,6 +124,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		[JsonProperty]
 		public string ChannelIdEqual
 		{
 			get { return _ChannelIdEqual; }
@@ -125,6 +134,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string ChannelIdIn
 		{
 			get { return _ChannelIdIn; }
@@ -134,6 +144,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelIdIn");
 			}
 		}
+		[JsonProperty]
 		public float StartTimeGreaterThanOrEqual
 		{
 			get { return _StartTimeGreaterThanOrEqual; }
@@ -143,6 +154,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartTimeGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public float StartTimeLessThanOrEqual
 		{
 			get { return _StartTimeLessThanOrEqual; }
@@ -159,58 +171,48 @@ namespace Kaltura.Types
 		{
 		}
 
-		public LiveChannelSegmentBaseFilter(XmlElement node) : base(node)
+		public LiveChannelSegmentBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["createdAtGreaterThanOrEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (LiveChannelSegmentStatus)StringEnum.Parse(typeof(LiveChannelSegmentStatus), propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-					case "channelIdEqual":
-						this._ChannelIdEqual = propertyNode.InnerText;
-						continue;
-					case "channelIdIn":
-						this._ChannelIdIn = propertyNode.InnerText;
-						continue;
-					case "startTimeGreaterThanOrEqual":
-						this._StartTimeGreaterThanOrEqual = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "startTimeLessThanOrEqual":
-						this._StartTimeLessThanOrEqual = ParseFloat(propertyNode.InnerText);
-						continue;
-				}
+				this._CreatedAtGreaterThanOrEqual = ParseInt(node["createdAtGreaterThanOrEqual"].Value<string>());
 			}
-		}
-
-		public LiveChannelSegmentBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
-			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
-			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
-			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
-			    this._StatusEqual = (LiveChannelSegmentStatus)StringEnum.Parse(typeof(LiveChannelSegmentStatus), data.TryGetValueSafe<string>("statusEqual"));
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
-			    this._ChannelIdEqual = data.TryGetValueSafe<string>("channelIdEqual");
-			    this._ChannelIdIn = data.TryGetValueSafe<string>("channelIdIn");
-			    this._StartTimeGreaterThanOrEqual = data.TryGetValueSafe<float>("startTimeGreaterThanOrEqual");
-			    this._StartTimeLessThanOrEqual = data.TryGetValueSafe<float>("startTimeLessThanOrEqual");
+			if(node["createdAtLessThanOrEqual"] != null)
+			{
+				this._CreatedAtLessThanOrEqual = ParseInt(node["createdAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtGreaterThanOrEqual"] != null)
+			{
+				this._UpdatedAtGreaterThanOrEqual = ParseInt(node["updatedAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtLessThanOrEqual"] != null)
+			{
+				this._UpdatedAtLessThanOrEqual = ParseInt(node["updatedAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (LiveChannelSegmentStatus)StringEnum.Parse(typeof(LiveChannelSegmentStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
+			if(node["channelIdEqual"] != null)
+			{
+				this._ChannelIdEqual = node["channelIdEqual"].Value<string>();
+			}
+			if(node["channelIdIn"] != null)
+			{
+				this._ChannelIdIn = node["channelIdIn"].Value<string>();
+			}
+			if(node["startTimeGreaterThanOrEqual"] != null)
+			{
+				this._StartTimeGreaterThanOrEqual = ParseFloat(node["startTimeGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["startTimeLessThanOrEqual"] != null)
+			{
+				this._StartTimeLessThanOrEqual = ParseFloat(node["startTimeLessThanOrEqual"].Value<string>());
+			}
 		}
 		#endregion
 

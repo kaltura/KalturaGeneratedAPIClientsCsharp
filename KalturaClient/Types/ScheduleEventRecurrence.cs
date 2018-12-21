@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -74,6 +76,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -83,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		[JsonProperty]
 		public ScheduleEventRecurrenceFrequency Frequency
 		{
 			get { return _Frequency; }
@@ -92,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Frequency");
 			}
 		}
+		[JsonProperty]
 		public int Until
 		{
 			get { return _Until; }
@@ -101,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Until");
 			}
 		}
+		[JsonProperty]
 		public string TimeZone
 		{
 			get { return _TimeZone; }
@@ -110,6 +116,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TimeZone");
 			}
 		}
+		[JsonProperty]
 		public int Count
 		{
 			get { return _Count; }
@@ -119,6 +126,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Count");
 			}
 		}
+		[JsonProperty]
 		public int Interval
 		{
 			get { return _Interval; }
@@ -128,6 +136,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Interval");
 			}
 		}
+		[JsonProperty]
 		public string BySecond
 		{
 			get { return _BySecond; }
@@ -137,6 +146,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BySecond");
 			}
 		}
+		[JsonProperty]
 		public string ByMinute
 		{
 			get { return _ByMinute; }
@@ -146,6 +156,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ByMinute");
 			}
 		}
+		[JsonProperty]
 		public string ByHour
 		{
 			get { return _ByHour; }
@@ -155,6 +166,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ByHour");
 			}
 		}
+		[JsonProperty]
 		public string ByDay
 		{
 			get { return _ByDay; }
@@ -164,6 +176,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ByDay");
 			}
 		}
+		[JsonProperty]
 		public string ByMonthDay
 		{
 			get { return _ByMonthDay; }
@@ -173,6 +186,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ByMonthDay");
 			}
 		}
+		[JsonProperty]
 		public string ByYearDay
 		{
 			get { return _ByYearDay; }
@@ -182,6 +196,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ByYearDay");
 			}
 		}
+		[JsonProperty]
 		public string ByWeekNumber
 		{
 			get { return _ByWeekNumber; }
@@ -191,6 +206,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ByWeekNumber");
 			}
 		}
+		[JsonProperty]
 		public string ByMonth
 		{
 			get { return _ByMonth; }
@@ -200,6 +216,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ByMonth");
 			}
 		}
+		[JsonProperty]
 		public string ByOffset
 		{
 			get { return _ByOffset; }
@@ -209,6 +226,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ByOffset");
 			}
 		}
+		[JsonProperty]
 		public ScheduleEventRecurrenceDay WeekStartDay
 		{
 			get { return _WeekStartDay; }
@@ -225,82 +243,72 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ScheduleEventRecurrence(XmlElement node) : base(node)
+		public ScheduleEventRecurrence(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["name"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-					case "frequency":
-						this._Frequency = (ScheduleEventRecurrenceFrequency)StringEnum.Parse(typeof(ScheduleEventRecurrenceFrequency), propertyNode.InnerText);
-						continue;
-					case "until":
-						this._Until = ParseInt(propertyNode.InnerText);
-						continue;
-					case "timeZone":
-						this._TimeZone = propertyNode.InnerText;
-						continue;
-					case "count":
-						this._Count = ParseInt(propertyNode.InnerText);
-						continue;
-					case "interval":
-						this._Interval = ParseInt(propertyNode.InnerText);
-						continue;
-					case "bySecond":
-						this._BySecond = propertyNode.InnerText;
-						continue;
-					case "byMinute":
-						this._ByMinute = propertyNode.InnerText;
-						continue;
-					case "byHour":
-						this._ByHour = propertyNode.InnerText;
-						continue;
-					case "byDay":
-						this._ByDay = propertyNode.InnerText;
-						continue;
-					case "byMonthDay":
-						this._ByMonthDay = propertyNode.InnerText;
-						continue;
-					case "byYearDay":
-						this._ByYearDay = propertyNode.InnerText;
-						continue;
-					case "byWeekNumber":
-						this._ByWeekNumber = propertyNode.InnerText;
-						continue;
-					case "byMonth":
-						this._ByMonth = propertyNode.InnerText;
-						continue;
-					case "byOffset":
-						this._ByOffset = propertyNode.InnerText;
-						continue;
-					case "weekStartDay":
-						this._WeekStartDay = (ScheduleEventRecurrenceDay)StringEnum.Parse(typeof(ScheduleEventRecurrenceDay), propertyNode.InnerText);
-						continue;
-				}
+				this._Name = node["name"].Value<string>();
 			}
-		}
-
-		public ScheduleEventRecurrence(IDictionary<string,object> data) : base(data)
-		{
-			    this._Name = data.TryGetValueSafe<string>("name");
-			    this._Frequency = (ScheduleEventRecurrenceFrequency)StringEnum.Parse(typeof(ScheduleEventRecurrenceFrequency), data.TryGetValueSafe<string>("frequency"));
-			    this._Until = data.TryGetValueSafe<int>("until");
-			    this._TimeZone = data.TryGetValueSafe<string>("timeZone");
-			    this._Count = data.TryGetValueSafe<int>("count");
-			    this._Interval = data.TryGetValueSafe<int>("interval");
-			    this._BySecond = data.TryGetValueSafe<string>("bySecond");
-			    this._ByMinute = data.TryGetValueSafe<string>("byMinute");
-			    this._ByHour = data.TryGetValueSafe<string>("byHour");
-			    this._ByDay = data.TryGetValueSafe<string>("byDay");
-			    this._ByMonthDay = data.TryGetValueSafe<string>("byMonthDay");
-			    this._ByYearDay = data.TryGetValueSafe<string>("byYearDay");
-			    this._ByWeekNumber = data.TryGetValueSafe<string>("byWeekNumber");
-			    this._ByMonth = data.TryGetValueSafe<string>("byMonth");
-			    this._ByOffset = data.TryGetValueSafe<string>("byOffset");
-			    this._WeekStartDay = (ScheduleEventRecurrenceDay)StringEnum.Parse(typeof(ScheduleEventRecurrenceDay), data.TryGetValueSafe<string>("weekStartDay"));
+			if(node["frequency"] != null)
+			{
+				this._Frequency = (ScheduleEventRecurrenceFrequency)StringEnum.Parse(typeof(ScheduleEventRecurrenceFrequency), node["frequency"].Value<string>());
+			}
+			if(node["until"] != null)
+			{
+				this._Until = ParseInt(node["until"].Value<string>());
+			}
+			if(node["timeZone"] != null)
+			{
+				this._TimeZone = node["timeZone"].Value<string>();
+			}
+			if(node["count"] != null)
+			{
+				this._Count = ParseInt(node["count"].Value<string>());
+			}
+			if(node["interval"] != null)
+			{
+				this._Interval = ParseInt(node["interval"].Value<string>());
+			}
+			if(node["bySecond"] != null)
+			{
+				this._BySecond = node["bySecond"].Value<string>();
+			}
+			if(node["byMinute"] != null)
+			{
+				this._ByMinute = node["byMinute"].Value<string>();
+			}
+			if(node["byHour"] != null)
+			{
+				this._ByHour = node["byHour"].Value<string>();
+			}
+			if(node["byDay"] != null)
+			{
+				this._ByDay = node["byDay"].Value<string>();
+			}
+			if(node["byMonthDay"] != null)
+			{
+				this._ByMonthDay = node["byMonthDay"].Value<string>();
+			}
+			if(node["byYearDay"] != null)
+			{
+				this._ByYearDay = node["byYearDay"].Value<string>();
+			}
+			if(node["byWeekNumber"] != null)
+			{
+				this._ByWeekNumber = node["byWeekNumber"].Value<string>();
+			}
+			if(node["byMonth"] != null)
+			{
+				this._ByMonth = node["byMonth"].Value<string>();
+			}
+			if(node["byOffset"] != null)
+			{
+				this._ByOffset = node["byOffset"].Value<string>();
+			}
+			if(node["weekStartDay"] != null)
+			{
+				this._WeekStartDay = (ScheduleEventRecurrenceDay)StringEnum.Parse(typeof(ScheduleEventRecurrenceDay), node["weekStartDay"].Value<string>());
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,6 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public Language Language
 		{
 			get { return _Language; }
@@ -61,6 +64,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Language");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean IsDefault
 		{
 			get { return _IsDefault; }
@@ -70,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsDefault");
 			}
 		}
+		[JsonProperty]
 		public string Label
 		{
 			get { return _Label; }
@@ -79,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Label");
 			}
 		}
+		[JsonProperty]
 		public CaptionType Format
 		{
 			get { return _Format; }
@@ -88,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Format");
 			}
 		}
+		[JsonProperty]
 		public int SourceParamsId
 		{
 			get { return _SourceParamsId; }
@@ -104,38 +111,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CaptionParams(XmlElement node) : base(node)
+		public CaptionParams(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["language"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "language":
-						this._Language = (Language)StringEnum.Parse(typeof(Language), propertyNode.InnerText);
-						continue;
-					case "isDefault":
-						this._IsDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "label":
-						this._Label = propertyNode.InnerText;
-						continue;
-					case "format":
-						this._Format = (CaptionType)StringEnum.Parse(typeof(CaptionType), propertyNode.InnerText);
-						continue;
-					case "sourceParamsId":
-						this._SourceParamsId = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._Language = (Language)StringEnum.Parse(typeof(Language), node["language"].Value<string>());
 			}
-		}
-
-		public CaptionParams(IDictionary<string,object> data) : base(data)
-		{
-			    this._Language = (Language)StringEnum.Parse(typeof(Language), data.TryGetValueSafe<string>("language"));
-			    this._IsDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isDefault"));
-			    this._Label = data.TryGetValueSafe<string>("label");
-			    this._Format = (CaptionType)StringEnum.Parse(typeof(CaptionType), data.TryGetValueSafe<string>("format"));
-			    this._SourceParamsId = data.TryGetValueSafe<int>("sourceParamsId");
+			if(node["isDefault"] != null)
+			{
+				this._IsDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["isDefault"].Value<string>());
+			}
+			if(node["label"] != null)
+			{
+				this._Label = node["label"].Value<string>();
+			}
+			if(node["format"] != null)
+			{
+				this._Format = (CaptionType)StringEnum.Parse(typeof(CaptionType), node["format"].Value<string>());
+			}
+			if(node["sourceParamsId"] != null)
+			{
+				this._SourceParamsId = ParseInt(node["sourceParamsId"].Value<string>());
+			}
 		}
 		#endregion
 

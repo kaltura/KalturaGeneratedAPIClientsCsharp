@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int CopyCount
 		{
 			get { return _CopyCount; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CopyCount");
 			}
 		}
+		[JsonProperty]
 		public IList<PlayReadyCopyEnablerHolder> CopyEnablers
 		{
 			get { return _CopyEnablers; }
@@ -71,35 +75,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public PlayReadyCopyRight(XmlElement node) : base(node)
+		public PlayReadyCopyRight(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["copyCount"] != null)
 			{
-				switch (propertyNode.Name)
+				this._CopyCount = ParseInt(node["copyCount"].Value<string>());
+			}
+			if(node["copyEnablers"] != null)
+			{
+				this._CopyEnablers = new List<PlayReadyCopyEnablerHolder>();
+				foreach(var arrayNode in node["copyEnablers"].Children())
 				{
-					case "copyCount":
-						this._CopyCount = ParseInt(propertyNode.InnerText);
-						continue;
-					case "copyEnablers":
-						this._CopyEnablers = new List<PlayReadyCopyEnablerHolder>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._CopyEnablers.Add(ObjectFactory.Create<PlayReadyCopyEnablerHolder>(arrayNode));
-						}
-						continue;
+					this._CopyEnablers.Add(ObjectFactory.Create<PlayReadyCopyEnablerHolder>(arrayNode));
 				}
 			}
-		}
-
-		public PlayReadyCopyRight(IDictionary<string,object> data) : base(data)
-		{
-			    this._CopyCount = data.TryGetValueSafe<int>("copyCount");
-			    this._CopyEnablers = new List<PlayReadyCopyEnablerHolder>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("copyEnablers", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._CopyEnablers.Add(ObjectFactory.Create<PlayReadyCopyEnablerHolder>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

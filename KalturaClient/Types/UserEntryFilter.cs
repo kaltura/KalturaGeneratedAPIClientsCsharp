@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,6 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public NullableBoolean UserIdEqualCurrent
 		{
 			get { return _UserIdEqualCurrent; }
@@ -61,6 +64,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIdEqualCurrent");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean IsAnonymous
 		{
 			get { return _IsAnonymous; }
@@ -70,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsAnonymous");
 			}
 		}
+		[JsonProperty]
 		public string PrivacyContextEqual
 		{
 			get { return _PrivacyContextEqual; }
@@ -79,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrivacyContextEqual");
 			}
 		}
+		[JsonProperty]
 		public string PrivacyContextIn
 		{
 			get { return _PrivacyContextIn; }
@@ -88,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrivacyContextIn");
 			}
 		}
+		[JsonProperty]
 		public new UserEntryOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -104,38 +111,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UserEntryFilter(XmlElement node) : base(node)
+		public UserEntryFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["userIdEqualCurrent"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "userIdEqualCurrent":
-						this._UserIdEqualCurrent = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "isAnonymous":
-						this._IsAnonymous = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "privacyContextEqual":
-						this._PrivacyContextEqual = propertyNode.InnerText;
-						continue;
-					case "privacyContextIn":
-						this._PrivacyContextIn = propertyNode.InnerText;
-						continue;
-					case "orderBy":
-						this._OrderBy = (UserEntryOrderBy)StringEnum.Parse(typeof(UserEntryOrderBy), propertyNode.InnerText);
-						continue;
-				}
+				this._UserIdEqualCurrent = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["userIdEqualCurrent"].Value<string>());
 			}
-		}
-
-		public UserEntryFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._UserIdEqualCurrent = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("userIdEqualCurrent"));
-			    this._IsAnonymous = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isAnonymous"));
-			    this._PrivacyContextEqual = data.TryGetValueSafe<string>("privacyContextEqual");
-			    this._PrivacyContextIn = data.TryGetValueSafe<string>("privacyContextIn");
-			    this._OrderBy = (UserEntryOrderBy)StringEnum.Parse(typeof(UserEntryOrderBy), data.TryGetValueSafe<string>("orderBy"));
+			if(node["isAnonymous"] != null)
+			{
+				this._IsAnonymous = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["isAnonymous"].Value<string>());
+			}
+			if(node["privacyContextEqual"] != null)
+			{
+				this._PrivacyContextEqual = node["privacyContextEqual"].Value<string>();
+			}
+			if(node["privacyContextIn"] != null)
+			{
+				this._PrivacyContextIn = node["privacyContextIn"].Value<string>();
+			}
+			if(node["orderBy"] != null)
+			{
+				this._OrderBy = (UserEntryOrderBy)StringEnum.Parse(typeof(UserEntryOrderBy), node["orderBy"].Value<string>());
+			}
 		}
 		#endregion
 

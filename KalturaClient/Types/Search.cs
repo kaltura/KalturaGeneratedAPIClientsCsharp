@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,6 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string KeyWords
 		{
 			get { return _KeyWords; }
@@ -61,6 +64,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("KeyWords");
 			}
 		}
+		[JsonProperty]
 		public SearchProviderType SearchSource
 		{
 			get { return _SearchSource; }
@@ -70,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SearchSource");
 			}
 		}
+		[JsonProperty]
 		public MediaType MediaType
 		{
 			get { return _MediaType; }
@@ -79,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaType");
 			}
 		}
+		[JsonProperty]
 		public string ExtraData
 		{
 			get { return _ExtraData; }
@@ -88,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExtraData");
 			}
 		}
+		[JsonProperty]
 		public string AuthData
 		{
 			get { return _AuthData; }
@@ -104,38 +111,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public Search(XmlElement node) : base(node)
+		public Search(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["keyWords"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "keyWords":
-						this._KeyWords = propertyNode.InnerText;
-						continue;
-					case "searchSource":
-						this._SearchSource = (SearchProviderType)ParseEnum(typeof(SearchProviderType), propertyNode.InnerText);
-						continue;
-					case "mediaType":
-						this._MediaType = (MediaType)ParseEnum(typeof(MediaType), propertyNode.InnerText);
-						continue;
-					case "extraData":
-						this._ExtraData = propertyNode.InnerText;
-						continue;
-					case "authData":
-						this._AuthData = propertyNode.InnerText;
-						continue;
-				}
+				this._KeyWords = node["keyWords"].Value<string>();
 			}
-		}
-
-		public Search(IDictionary<string,object> data) : base(data)
-		{
-			    this._KeyWords = data.TryGetValueSafe<string>("keyWords");
-			    this._SearchSource = (SearchProviderType)ParseEnum(typeof(SearchProviderType), data.TryGetValueSafe<int>("searchSource"));
-			    this._MediaType = (MediaType)ParseEnum(typeof(MediaType), data.TryGetValueSafe<int>("mediaType"));
-			    this._ExtraData = data.TryGetValueSafe<string>("extraData");
-			    this._AuthData = data.TryGetValueSafe<string>("authData");
+			if(node["searchSource"] != null)
+			{
+				this._SearchSource = (SearchProviderType)ParseEnum(typeof(SearchProviderType), node["searchSource"].Value<string>());
+			}
+			if(node["mediaType"] != null)
+			{
+				this._MediaType = (MediaType)ParseEnum(typeof(MediaType), node["mediaType"].Value<string>());
+			}
+			if(node["extraData"] != null)
+			{
+				this._ExtraData = node["extraData"].Value<string>();
+			}
+			if(node["authData"] != null)
+			{
+				this._AuthData = node["authData"].Value<string>();
+			}
 		}
 		#endregion
 

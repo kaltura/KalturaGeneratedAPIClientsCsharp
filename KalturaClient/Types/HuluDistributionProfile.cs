@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -80,6 +82,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string SftpHost
 		{
 			get { return _SftpHost; }
@@ -89,6 +92,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpHost");
 			}
 		}
+		[JsonProperty]
 		public string SftpLogin
 		{
 			get { return _SftpLogin; }
@@ -98,6 +102,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpLogin");
 			}
 		}
+		[JsonProperty]
 		public string SftpPass
 		{
 			get { return _SftpPass; }
@@ -107,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpPass");
 			}
 		}
+		[JsonProperty]
 		public string SeriesChannel
 		{
 			get { return _SeriesChannel; }
@@ -116,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SeriesChannel");
 			}
 		}
+		[JsonProperty]
 		public string SeriesPrimaryCategory
 		{
 			get { return _SeriesPrimaryCategory; }
@@ -125,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SeriesPrimaryCategory");
 			}
 		}
+		[JsonProperty]
 		public IList<String> SeriesAdditionalCategories
 		{
 			get { return _SeriesAdditionalCategories; }
@@ -134,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SeriesAdditionalCategories");
 			}
 		}
+		[JsonProperty]
 		public string SeasonNumber
 		{
 			get { return _SeasonNumber; }
@@ -143,6 +152,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SeasonNumber");
 			}
 		}
+		[JsonProperty]
 		public string SeasonSynopsis
 		{
 			get { return _SeasonSynopsis; }
@@ -152,6 +162,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SeasonSynopsis");
 			}
 		}
+		[JsonProperty]
 		public string SeasonTuneInInformation
 		{
 			get { return _SeasonTuneInInformation; }
@@ -161,6 +172,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SeasonTuneInInformation");
 			}
 		}
+		[JsonProperty]
 		public string VideoMediaType
 		{
 			get { return _VideoMediaType; }
@@ -170,6 +182,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoMediaType");
 			}
 		}
+		[JsonProperty]
 		public bool? DisableEpisodeNumberCustomValidation
 		{
 			get { return _DisableEpisodeNumberCustomValidation; }
@@ -179,6 +192,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DisableEpisodeNumberCustomValidation");
 			}
 		}
+		[JsonProperty]
 		public DistributionProtocol Protocol
 		{
 			get { return _Protocol; }
@@ -188,6 +202,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Protocol");
 			}
 		}
+		[JsonProperty]
 		public string AsperaHost
 		{
 			get { return _AsperaHost; }
@@ -197,6 +212,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AsperaHost");
 			}
 		}
+		[JsonProperty]
 		public string AsperaLogin
 		{
 			get { return _AsperaLogin; }
@@ -206,6 +222,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AsperaLogin");
 			}
 		}
+		[JsonProperty]
 		public string AsperaPass
 		{
 			get { return _AsperaPass; }
@@ -215,6 +232,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AsperaPass");
 			}
 		}
+		[JsonProperty]
 		public int Port
 		{
 			get { return _Port; }
@@ -224,6 +242,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Port");
 			}
 		}
+		[JsonProperty]
 		public string Passphrase
 		{
 			get { return _Passphrase; }
@@ -233,6 +252,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Passphrase");
 			}
 		}
+		[JsonProperty]
 		public string AsperaPublicKey
 		{
 			get { return _AsperaPublicKey; }
@@ -242,6 +262,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AsperaPublicKey");
 			}
 		}
+		[JsonProperty]
 		public string AsperaPrivateKey
 		{
 			get { return _AsperaPrivateKey; }
@@ -258,103 +279,88 @@ namespace Kaltura.Types
 		{
 		}
 
-		public HuluDistributionProfile(XmlElement node) : base(node)
+		public HuluDistributionProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["sftpHost"] != null)
 			{
-				switch (propertyNode.Name)
+				this._SftpHost = node["sftpHost"].Value<string>();
+			}
+			if(node["sftpLogin"] != null)
+			{
+				this._SftpLogin = node["sftpLogin"].Value<string>();
+			}
+			if(node["sftpPass"] != null)
+			{
+				this._SftpPass = node["sftpPass"].Value<string>();
+			}
+			if(node["seriesChannel"] != null)
+			{
+				this._SeriesChannel = node["seriesChannel"].Value<string>();
+			}
+			if(node["seriesPrimaryCategory"] != null)
+			{
+				this._SeriesPrimaryCategory = node["seriesPrimaryCategory"].Value<string>();
+			}
+			if(node["seriesAdditionalCategories"] != null)
+			{
+				this._SeriesAdditionalCategories = new List<String>();
+				foreach(var arrayNode in node["seriesAdditionalCategories"].Children())
 				{
-					case "sftpHost":
-						this._SftpHost = propertyNode.InnerText;
-						continue;
-					case "sftpLogin":
-						this._SftpLogin = propertyNode.InnerText;
-						continue;
-					case "sftpPass":
-						this._SftpPass = propertyNode.InnerText;
-						continue;
-					case "seriesChannel":
-						this._SeriesChannel = propertyNode.InnerText;
-						continue;
-					case "seriesPrimaryCategory":
-						this._SeriesPrimaryCategory = propertyNode.InnerText;
-						continue;
-					case "seriesAdditionalCategories":
-						this._SeriesAdditionalCategories = new List<String>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._SeriesAdditionalCategories.Add(ObjectFactory.Create<String>(arrayNode));
-						}
-						continue;
-					case "seasonNumber":
-						this._SeasonNumber = propertyNode.InnerText;
-						continue;
-					case "seasonSynopsis":
-						this._SeasonSynopsis = propertyNode.InnerText;
-						continue;
-					case "seasonTuneInInformation":
-						this._SeasonTuneInInformation = propertyNode.InnerText;
-						continue;
-					case "videoMediaType":
-						this._VideoMediaType = propertyNode.InnerText;
-						continue;
-					case "disableEpisodeNumberCustomValidation":
-						this._DisableEpisodeNumberCustomValidation = ParseBool(propertyNode.InnerText);
-						continue;
-					case "protocol":
-						this._Protocol = (DistributionProtocol)ParseEnum(typeof(DistributionProtocol), propertyNode.InnerText);
-						continue;
-					case "asperaHost":
-						this._AsperaHost = propertyNode.InnerText;
-						continue;
-					case "asperaLogin":
-						this._AsperaLogin = propertyNode.InnerText;
-						continue;
-					case "asperaPass":
-						this._AsperaPass = propertyNode.InnerText;
-						continue;
-					case "port":
-						this._Port = ParseInt(propertyNode.InnerText);
-						continue;
-					case "passphrase":
-						this._Passphrase = propertyNode.InnerText;
-						continue;
-					case "asperaPublicKey":
-						this._AsperaPublicKey = propertyNode.InnerText;
-						continue;
-					case "asperaPrivateKey":
-						this._AsperaPrivateKey = propertyNode.InnerText;
-						continue;
+					this._SeriesAdditionalCategories.Add(ObjectFactory.Create<String>(arrayNode));
 				}
 			}
-		}
-
-		public HuluDistributionProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._SftpHost = data.TryGetValueSafe<string>("sftpHost");
-			    this._SftpLogin = data.TryGetValueSafe<string>("sftpLogin");
-			    this._SftpPass = data.TryGetValueSafe<string>("sftpPass");
-			    this._SeriesChannel = data.TryGetValueSafe<string>("seriesChannel");
-			    this._SeriesPrimaryCategory = data.TryGetValueSafe<string>("seriesPrimaryCategory");
-			    this._SeriesAdditionalCategories = new List<String>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("seriesAdditionalCategories", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._SeriesAdditionalCategories.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._SeasonNumber = data.TryGetValueSafe<string>("seasonNumber");
-			    this._SeasonSynopsis = data.TryGetValueSafe<string>("seasonSynopsis");
-			    this._SeasonTuneInInformation = data.TryGetValueSafe<string>("seasonTuneInInformation");
-			    this._VideoMediaType = data.TryGetValueSafe<string>("videoMediaType");
-			    this._DisableEpisodeNumberCustomValidation = data.TryGetValueSafe<bool>("disableEpisodeNumberCustomValidation");
-			    this._Protocol = (DistributionProtocol)ParseEnum(typeof(DistributionProtocol), data.TryGetValueSafe<int>("protocol"));
-			    this._AsperaHost = data.TryGetValueSafe<string>("asperaHost");
-			    this._AsperaLogin = data.TryGetValueSafe<string>("asperaLogin");
-			    this._AsperaPass = data.TryGetValueSafe<string>("asperaPass");
-			    this._Port = data.TryGetValueSafe<int>("port");
-			    this._Passphrase = data.TryGetValueSafe<string>("passphrase");
-			    this._AsperaPublicKey = data.TryGetValueSafe<string>("asperaPublicKey");
-			    this._AsperaPrivateKey = data.TryGetValueSafe<string>("asperaPrivateKey");
+			if(node["seasonNumber"] != null)
+			{
+				this._SeasonNumber = node["seasonNumber"].Value<string>();
+			}
+			if(node["seasonSynopsis"] != null)
+			{
+				this._SeasonSynopsis = node["seasonSynopsis"].Value<string>();
+			}
+			if(node["seasonTuneInInformation"] != null)
+			{
+				this._SeasonTuneInInformation = node["seasonTuneInInformation"].Value<string>();
+			}
+			if(node["videoMediaType"] != null)
+			{
+				this._VideoMediaType = node["videoMediaType"].Value<string>();
+			}
+			if(node["disableEpisodeNumberCustomValidation"] != null)
+			{
+				this._DisableEpisodeNumberCustomValidation = ParseBool(node["disableEpisodeNumberCustomValidation"].Value<string>());
+			}
+			if(node["protocol"] != null)
+			{
+				this._Protocol = (DistributionProtocol)ParseEnum(typeof(DistributionProtocol), node["protocol"].Value<string>());
+			}
+			if(node["asperaHost"] != null)
+			{
+				this._AsperaHost = node["asperaHost"].Value<string>();
+			}
+			if(node["asperaLogin"] != null)
+			{
+				this._AsperaLogin = node["asperaLogin"].Value<string>();
+			}
+			if(node["asperaPass"] != null)
+			{
+				this._AsperaPass = node["asperaPass"].Value<string>();
+			}
+			if(node["port"] != null)
+			{
+				this._Port = ParseInt(node["port"].Value<string>());
+			}
+			if(node["passphrase"] != null)
+			{
+				this._Passphrase = node["passphrase"].Value<string>();
+			}
+			if(node["asperaPublicKey"] != null)
+			{
+				this._AsperaPublicKey = node["asperaPublicKey"].Value<string>();
+			}
+			if(node["asperaPrivateKey"] != null)
+			{
+				this._AsperaPrivateKey = node["asperaPrivateKey"].Value<string>();
+			}
 		}
 		#endregion
 

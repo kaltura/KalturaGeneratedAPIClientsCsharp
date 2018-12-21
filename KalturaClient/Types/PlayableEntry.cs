@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -58,30 +60,67 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Plays
 		{
 			get { return _Plays; }
+			private set 
+			{ 
+				_Plays = value;
+				OnPropertyChanged("Plays");
+			}
 		}
+		[JsonProperty]
 		public int Views
 		{
 			get { return _Views; }
+			private set 
+			{ 
+				_Views = value;
+				OnPropertyChanged("Views");
+			}
 		}
+		[JsonProperty]
 		public int LastPlayedAt
 		{
 			get { return _LastPlayedAt; }
+			private set 
+			{ 
+				_LastPlayedAt = value;
+				OnPropertyChanged("LastPlayedAt");
+			}
 		}
+		[JsonProperty]
 		public int Width
 		{
 			get { return _Width; }
+			private set 
+			{ 
+				_Width = value;
+				OnPropertyChanged("Width");
+			}
 		}
+		[JsonProperty]
 		public int Height
 		{
 			get { return _Height; }
+			private set 
+			{ 
+				_Height = value;
+				OnPropertyChanged("Height");
+			}
 		}
+		[JsonProperty]
 		public int Duration
 		{
 			get { return _Duration; }
+			private set 
+			{ 
+				_Duration = value;
+				OnPropertyChanged("Duration");
+			}
 		}
+		[JsonProperty]
 		public int MsDuration
 		{
 			get { return _MsDuration; }
@@ -91,9 +130,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("MsDuration");
 			}
 		}
+		[JsonProperty]
 		public DurationType DurationType
 		{
 			get { return _DurationType; }
+			private set 
+			{ 
+				_DurationType = value;
+				OnPropertyChanged("DurationType");
+			}
 		}
 		#endregion
 
@@ -102,50 +147,40 @@ namespace Kaltura.Types
 		{
 		}
 
-		public PlayableEntry(XmlElement node) : base(node)
+		public PlayableEntry(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["plays"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "plays":
-						this._Plays = ParseInt(propertyNode.InnerText);
-						continue;
-					case "views":
-						this._Views = ParseInt(propertyNode.InnerText);
-						continue;
-					case "lastPlayedAt":
-						this._LastPlayedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "width":
-						this._Width = ParseInt(propertyNode.InnerText);
-						continue;
-					case "height":
-						this._Height = ParseInt(propertyNode.InnerText);
-						continue;
-					case "duration":
-						this._Duration = ParseInt(propertyNode.InnerText);
-						continue;
-					case "msDuration":
-						this._MsDuration = ParseInt(propertyNode.InnerText);
-						continue;
-					case "durationType":
-						this._DurationType = (DurationType)StringEnum.Parse(typeof(DurationType), propertyNode.InnerText);
-						continue;
-				}
+				this._Plays = ParseInt(node["plays"].Value<string>());
 			}
-		}
-
-		public PlayableEntry(IDictionary<string,object> data) : base(data)
-		{
-			    this._Plays = data.TryGetValueSafe<int>("plays");
-			    this._Views = data.TryGetValueSafe<int>("views");
-			    this._LastPlayedAt = data.TryGetValueSafe<int>("lastPlayedAt");
-			    this._Width = data.TryGetValueSafe<int>("width");
-			    this._Height = data.TryGetValueSafe<int>("height");
-			    this._Duration = data.TryGetValueSafe<int>("duration");
-			    this._MsDuration = data.TryGetValueSafe<int>("msDuration");
-			    this._DurationType = (DurationType)StringEnum.Parse(typeof(DurationType), data.TryGetValueSafe<string>("durationType"));
+			if(node["views"] != null)
+			{
+				this._Views = ParseInt(node["views"].Value<string>());
+			}
+			if(node["lastPlayedAt"] != null)
+			{
+				this._LastPlayedAt = ParseInt(node["lastPlayedAt"].Value<string>());
+			}
+			if(node["width"] != null)
+			{
+				this._Width = ParseInt(node["width"].Value<string>());
+			}
+			if(node["height"] != null)
+			{
+				this._Height = ParseInt(node["height"].Value<string>());
+			}
+			if(node["duration"] != null)
+			{
+				this._Duration = ParseInt(node["duration"].Value<string>());
+			}
+			if(node["msDuration"] != null)
+			{
+				this._MsDuration = ParseInt(node["msDuration"].Value<string>());
+			}
+			if(node["durationType"] != null)
+			{
+				this._DurationType = (DurationType)StringEnum.Parse(typeof(DurationType), node["durationType"].Value<string>());
+			}
 		}
 		#endregion
 

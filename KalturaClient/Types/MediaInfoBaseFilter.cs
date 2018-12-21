@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string FlavorAssetIdEqual
 		{
 			get { return _FlavorAssetIdEqual; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public MediaInfoBaseFilter(XmlElement node) : base(node)
+		public MediaInfoBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["flavorAssetIdEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "flavorAssetIdEqual":
-						this._FlavorAssetIdEqual = propertyNode.InnerText;
-						continue;
-				}
+				this._FlavorAssetIdEqual = node["flavorAssetIdEqual"].Value<string>();
 			}
-		}
-
-		public MediaInfoBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._FlavorAssetIdEqual = data.TryGetValueSafe<string>("flavorAssetIdEqual");
 		}
 		#endregion
 

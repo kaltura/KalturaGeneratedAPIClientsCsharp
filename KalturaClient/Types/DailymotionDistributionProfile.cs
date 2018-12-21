@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string User
 		{
 			get { return _User; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("User");
 			}
 		}
+		[JsonProperty]
 		public string Password
 		{
 			get { return _Password; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Password");
 			}
 		}
+		[JsonProperty]
 		public DailymotionGeoBlockingMapping GeoBlockingMapping
 		{
 			get { return _GeoBlockingMapping; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DailymotionDistributionProfile(XmlElement node) : base(node)
+		public DailymotionDistributionProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["user"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "user":
-						this._User = propertyNode.InnerText;
-						continue;
-					case "password":
-						this._Password = propertyNode.InnerText;
-						continue;
-					case "geoBlockingMapping":
-						this._GeoBlockingMapping = (DailymotionGeoBlockingMapping)ParseEnum(typeof(DailymotionGeoBlockingMapping), propertyNode.InnerText);
-						continue;
-				}
+				this._User = node["user"].Value<string>();
 			}
-		}
-
-		public DailymotionDistributionProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._User = data.TryGetValueSafe<string>("user");
-			    this._Password = data.TryGetValueSafe<string>("password");
-			    this._GeoBlockingMapping = (DailymotionGeoBlockingMapping)ParseEnum(typeof(DailymotionGeoBlockingMapping), data.TryGetValueSafe<int>("geoBlockingMapping"));
+			if(node["password"] != null)
+			{
+				this._Password = node["password"].Value<string>();
+			}
+			if(node["geoBlockingMapping"] != null)
+			{
+				this._GeoBlockingMapping = (DailymotionGeoBlockingMapping)ParseEnum(typeof(DailymotionGeoBlockingMapping), node["geoBlockingMapping"].Value<string>());
+			}
 		}
 		#endregion
 

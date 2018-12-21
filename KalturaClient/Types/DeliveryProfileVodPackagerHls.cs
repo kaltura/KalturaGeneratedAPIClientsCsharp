@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public bool? AllowFairplayOffline
 		{
 			get { return _AllowFairplayOffline; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DeliveryProfileVodPackagerHls(XmlElement node) : base(node)
+		public DeliveryProfileVodPackagerHls(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["allowFairplayOffline"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "allowFairplayOffline":
-						this._AllowFairplayOffline = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._AllowFairplayOffline = ParseBool(node["allowFairplayOffline"].Value<string>());
 			}
-		}
-
-		public DeliveryProfileVodPackagerHls(IDictionary<string,object> data) : base(data)
-		{
-			    this._AllowFairplayOffline = data.TryGetValueSafe<bool>("allowFairplayOffline");
 		}
 		#endregion
 

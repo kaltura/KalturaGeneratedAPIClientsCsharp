@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -62,6 +64,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int CaptionParamsId
 		{
 			get { return _CaptionParamsId; }
@@ -71,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CaptionParamsId");
 			}
 		}
+		[JsonProperty]
 		public Language Language
 		{
 			get { return _Language; }
@@ -80,10 +84,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("Language");
 			}
 		}
+		[JsonProperty]
 		public LanguageCode LanguageCode
 		{
 			get { return _LanguageCode; }
+			private set 
+			{ 
+				_LanguageCode = value;
+				OnPropertyChanged("LanguageCode");
+			}
 		}
+		[JsonProperty]
 		public NullableBoolean IsDefault
 		{
 			get { return _IsDefault; }
@@ -93,6 +104,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsDefault");
 			}
 		}
+		[JsonProperty]
 		public string Label
 		{
 			get { return _Label; }
@@ -102,6 +114,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Label");
 			}
 		}
+		[JsonProperty]
 		public CaptionType Format
 		{
 			get { return _Format; }
@@ -111,10 +124,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("Format");
 			}
 		}
+		[JsonProperty]
 		public CaptionAssetStatus Status
 		{
 			get { return _Status; }
+			private set 
+			{ 
+				_Status = value;
+				OnPropertyChanged("Status");
+			}
 		}
+		[JsonProperty]
 		public string ParentId
 		{
 			get { return _ParentId; }
@@ -124,6 +144,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentId");
 			}
 		}
+		[JsonProperty]
 		public int Accuracy
 		{
 			get { return _Accuracy; }
@@ -133,6 +154,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Accuracy");
 			}
 		}
+		[JsonProperty]
 		public bool? DisplayOnPlayer
 		{
 			get { return _DisplayOnPlayer; }
@@ -149,58 +171,48 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CaptionAsset(XmlElement node) : base(node)
+		public CaptionAsset(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["captionParamsId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "captionParamsId":
-						this._CaptionParamsId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "language":
-						this._Language = (Language)StringEnum.Parse(typeof(Language), propertyNode.InnerText);
-						continue;
-					case "languageCode":
-						this._LanguageCode = (LanguageCode)StringEnum.Parse(typeof(LanguageCode), propertyNode.InnerText);
-						continue;
-					case "isDefault":
-						this._IsDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "label":
-						this._Label = propertyNode.InnerText;
-						continue;
-					case "format":
-						this._Format = (CaptionType)StringEnum.Parse(typeof(CaptionType), propertyNode.InnerText);
-						continue;
-					case "status":
-						this._Status = (CaptionAssetStatus)ParseEnum(typeof(CaptionAssetStatus), propertyNode.InnerText);
-						continue;
-					case "parentId":
-						this._ParentId = propertyNode.InnerText;
-						continue;
-					case "accuracy":
-						this._Accuracy = ParseInt(propertyNode.InnerText);
-						continue;
-					case "displayOnPlayer":
-						this._DisplayOnPlayer = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._CaptionParamsId = ParseInt(node["captionParamsId"].Value<string>());
 			}
-		}
-
-		public CaptionAsset(IDictionary<string,object> data) : base(data)
-		{
-			    this._CaptionParamsId = data.TryGetValueSafe<int>("captionParamsId");
-			    this._Language = (Language)StringEnum.Parse(typeof(Language), data.TryGetValueSafe<string>("language"));
-			    this._LanguageCode = (LanguageCode)StringEnum.Parse(typeof(LanguageCode), data.TryGetValueSafe<string>("languageCode"));
-			    this._IsDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isDefault"));
-			    this._Label = data.TryGetValueSafe<string>("label");
-			    this._Format = (CaptionType)StringEnum.Parse(typeof(CaptionType), data.TryGetValueSafe<string>("format"));
-			    this._Status = (CaptionAssetStatus)ParseEnum(typeof(CaptionAssetStatus), data.TryGetValueSafe<int>("status"));
-			    this._ParentId = data.TryGetValueSafe<string>("parentId");
-			    this._Accuracy = data.TryGetValueSafe<int>("accuracy");
-			    this._DisplayOnPlayer = data.TryGetValueSafe<bool>("displayOnPlayer");
+			if(node["language"] != null)
+			{
+				this._Language = (Language)StringEnum.Parse(typeof(Language), node["language"].Value<string>());
+			}
+			if(node["languageCode"] != null)
+			{
+				this._LanguageCode = (LanguageCode)StringEnum.Parse(typeof(LanguageCode), node["languageCode"].Value<string>());
+			}
+			if(node["isDefault"] != null)
+			{
+				this._IsDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["isDefault"].Value<string>());
+			}
+			if(node["label"] != null)
+			{
+				this._Label = node["label"].Value<string>();
+			}
+			if(node["format"] != null)
+			{
+				this._Format = (CaptionType)StringEnum.Parse(typeof(CaptionType), node["format"].Value<string>());
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (CaptionAssetStatus)ParseEnum(typeof(CaptionAssetStatus), node["status"].Value<string>());
+			}
+			if(node["parentId"] != null)
+			{
+				this._ParentId = node["parentId"].Value<string>();
+			}
+			if(node["accuracy"] != null)
+			{
+				this._Accuracy = ParseInt(node["accuracy"].Value<string>());
+			}
+			if(node["displayOnPlayer"] != null)
+			{
+				this._DisplayOnPlayer = ParseBool(node["displayOnPlayer"].Value<string>());
+			}
 		}
 		#endregion
 

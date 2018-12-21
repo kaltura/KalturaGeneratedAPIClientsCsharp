@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -74,6 +76,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string IdEqual
 		{
 			get { return _IdEqual; }
@@ -83,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		[JsonProperty]
 		public string IdIn
 		{
 			get { return _IdIn; }
@@ -92,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
 			get { return _CreatedAtGreaterThanOrEqual; }
@@ -101,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
 			get { return _CreatedAtLessThanOrEqual; }
@@ -110,6 +116,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
 			get { return _UpdatedAtGreaterThanOrEqual; }
@@ -119,6 +126,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
 			get { return _UpdatedAtLessThanOrEqual; }
@@ -128,6 +136,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int ExpiresAtGreaterThanOrEqual
 		{
 			get { return _ExpiresAtGreaterThanOrEqual; }
@@ -137,6 +146,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExpiresAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int ExpiresAtLessThanOrEqual
 		{
 			get { return _ExpiresAtLessThanOrEqual; }
@@ -146,6 +156,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExpiresAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int PartnerIdEqual
 		{
 			get { return _PartnerIdEqual; }
@@ -155,6 +166,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string PartnerIdIn
 		{
 			get { return _PartnerIdIn; }
@@ -164,6 +176,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdIn");
 			}
 		}
+		[JsonProperty]
 		public string UserIdEqual
 		{
 			get { return _UserIdEqual; }
@@ -173,6 +186,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string UserIdIn
 		{
 			get { return _UserIdIn; }
@@ -182,6 +196,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIdIn");
 			}
 		}
+		[JsonProperty]
 		public string SystemNameEqual
 		{
 			get { return _SystemNameEqual; }
@@ -191,6 +206,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemNameEqual");
 			}
 		}
+		[JsonProperty]
 		public string SystemNameIn
 		{
 			get { return _SystemNameIn; }
@@ -200,6 +216,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemNameIn");
 			}
 		}
+		[JsonProperty]
 		public ShortLinkStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -209,6 +226,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -225,82 +243,72 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ShortLinkBaseFilter(XmlElement node) : base(node)
+		public ShortLinkBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["idEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "idEqual":
-						this._IdEqual = propertyNode.InnerText;
-						continue;
-					case "idIn":
-						this._IdIn = propertyNode.InnerText;
-						continue;
-					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "expiresAtGreaterThanOrEqual":
-						this._ExpiresAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "expiresAtLessThanOrEqual":
-						this._ExpiresAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerIdEqual":
-						this._PartnerIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerIdIn":
-						this._PartnerIdIn = propertyNode.InnerText;
-						continue;
-					case "userIdEqual":
-						this._UserIdEqual = propertyNode.InnerText;
-						continue;
-					case "userIdIn":
-						this._UserIdIn = propertyNode.InnerText;
-						continue;
-					case "systemNameEqual":
-						this._SystemNameEqual = propertyNode.InnerText;
-						continue;
-					case "systemNameIn":
-						this._SystemNameIn = propertyNode.InnerText;
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (ShortLinkStatus)ParseEnum(typeof(ShortLinkStatus), propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-				}
+				this._IdEqual = node["idEqual"].Value<string>();
 			}
-		}
-
-		public ShortLinkBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._IdEqual = data.TryGetValueSafe<string>("idEqual");
-			    this._IdIn = data.TryGetValueSafe<string>("idIn");
-			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
-			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
-			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
-			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
-			    this._ExpiresAtGreaterThanOrEqual = data.TryGetValueSafe<int>("expiresAtGreaterThanOrEqual");
-			    this._ExpiresAtLessThanOrEqual = data.TryGetValueSafe<int>("expiresAtLessThanOrEqual");
-			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
-			    this._PartnerIdIn = data.TryGetValueSafe<string>("partnerIdIn");
-			    this._UserIdEqual = data.TryGetValueSafe<string>("userIdEqual");
-			    this._UserIdIn = data.TryGetValueSafe<string>("userIdIn");
-			    this._SystemNameEqual = data.TryGetValueSafe<string>("systemNameEqual");
-			    this._SystemNameIn = data.TryGetValueSafe<string>("systemNameIn");
-			    this._StatusEqual = (ShortLinkStatus)ParseEnum(typeof(ShortLinkStatus), data.TryGetValueSafe<int>("statusEqual"));
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			if(node["idIn"] != null)
+			{
+				this._IdIn = node["idIn"].Value<string>();
+			}
+			if(node["createdAtGreaterThanOrEqual"] != null)
+			{
+				this._CreatedAtGreaterThanOrEqual = ParseInt(node["createdAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["createdAtLessThanOrEqual"] != null)
+			{
+				this._CreatedAtLessThanOrEqual = ParseInt(node["createdAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtGreaterThanOrEqual"] != null)
+			{
+				this._UpdatedAtGreaterThanOrEqual = ParseInt(node["updatedAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtLessThanOrEqual"] != null)
+			{
+				this._UpdatedAtLessThanOrEqual = ParseInt(node["updatedAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["expiresAtGreaterThanOrEqual"] != null)
+			{
+				this._ExpiresAtGreaterThanOrEqual = ParseInt(node["expiresAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["expiresAtLessThanOrEqual"] != null)
+			{
+				this._ExpiresAtLessThanOrEqual = ParseInt(node["expiresAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["partnerIdEqual"] != null)
+			{
+				this._PartnerIdEqual = ParseInt(node["partnerIdEqual"].Value<string>());
+			}
+			if(node["partnerIdIn"] != null)
+			{
+				this._PartnerIdIn = node["partnerIdIn"].Value<string>();
+			}
+			if(node["userIdEqual"] != null)
+			{
+				this._UserIdEqual = node["userIdEqual"].Value<string>();
+			}
+			if(node["userIdIn"] != null)
+			{
+				this._UserIdIn = node["userIdIn"].Value<string>();
+			}
+			if(node["systemNameEqual"] != null)
+			{
+				this._SystemNameEqual = node["systemNameEqual"].Value<string>();
+			}
+			if(node["systemNameIn"] != null)
+			{
+				this._SystemNameIn = node["systemNameIn"].Value<string>();
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (ShortLinkStatus)ParseEnum(typeof(ShortLinkStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
 		}
 		#endregion
 

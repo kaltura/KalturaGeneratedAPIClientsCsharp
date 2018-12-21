@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -82,6 +84,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int IdEqual
 		{
 			get { return _IdEqual; }
@@ -91,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		[JsonProperty]
 		public string IdIn
 		{
 			get { return _IdIn; }
@@ -100,6 +104,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		[JsonProperty]
 		public string NameLike
 		{
 			get { return _NameLike; }
@@ -109,6 +114,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("NameLike");
 			}
 		}
+		[JsonProperty]
 		public int PartnerIdEqual
 		{
 			get { return _PartnerIdEqual; }
@@ -118,6 +124,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string PartnerIdIn
 		{
 			get { return _PartnerIdIn; }
@@ -127,6 +134,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdIn");
 			}
 		}
+		[JsonProperty]
 		public UiConfObjType ObjTypeEqual
 		{
 			get { return _ObjTypeEqual; }
@@ -136,6 +144,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjTypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string ObjTypeIn
 		{
 			get { return _ObjTypeIn; }
@@ -145,6 +154,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjTypeIn");
 			}
 		}
+		[JsonProperty]
 		public string TagsMultiLikeOr
 		{
 			get { return _TagsMultiLikeOr; }
@@ -154,6 +164,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string TagsMultiLikeAnd
 		{
 			get { return _TagsMultiLikeAnd; }
@@ -163,6 +174,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
 			get { return _CreatedAtGreaterThanOrEqual; }
@@ -172,6 +184,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
 			get { return _CreatedAtLessThanOrEqual; }
@@ -181,6 +194,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
 			get { return _UpdatedAtGreaterThanOrEqual; }
@@ -190,6 +204,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
 			get { return _UpdatedAtLessThanOrEqual; }
@@ -199,6 +214,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public UiConfCreationMode CreationModeEqual
 		{
 			get { return _CreationModeEqual; }
@@ -208,6 +224,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreationModeEqual");
 			}
 		}
+		[JsonProperty]
 		public string CreationModeIn
 		{
 			get { return _CreationModeIn; }
@@ -217,6 +234,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreationModeIn");
 			}
 		}
+		[JsonProperty]
 		public string VersionEqual
 		{
 			get { return _VersionEqual; }
@@ -226,6 +244,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VersionEqual");
 			}
 		}
+		[JsonProperty]
 		public string VersionMultiLikeOr
 		{
 			get { return _VersionMultiLikeOr; }
@@ -235,6 +254,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VersionMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string VersionMultiLikeAnd
 		{
 			get { return _VersionMultiLikeAnd; }
@@ -244,6 +264,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VersionMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public string PartnerTagsMultiLikeOr
 		{
 			get { return _PartnerTagsMultiLikeOr; }
@@ -253,6 +274,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerTagsMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string PartnerTagsMultiLikeAnd
 		{
 			get { return _PartnerTagsMultiLikeAnd; }
@@ -269,98 +291,88 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UiConfBaseFilter(XmlElement node) : base(node)
+		public UiConfBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["idEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "idEqual":
-						this._IdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "idIn":
-						this._IdIn = propertyNode.InnerText;
-						continue;
-					case "nameLike":
-						this._NameLike = propertyNode.InnerText;
-						continue;
-					case "partnerIdEqual":
-						this._PartnerIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerIdIn":
-						this._PartnerIdIn = propertyNode.InnerText;
-						continue;
-					case "objTypeEqual":
-						this._ObjTypeEqual = (UiConfObjType)ParseEnum(typeof(UiConfObjType), propertyNode.InnerText);
-						continue;
-					case "objTypeIn":
-						this._ObjTypeIn = propertyNode.InnerText;
-						continue;
-					case "tagsMultiLikeOr":
-						this._TagsMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "tagsMultiLikeAnd":
-						this._TagsMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "creationModeEqual":
-						this._CreationModeEqual = (UiConfCreationMode)ParseEnum(typeof(UiConfCreationMode), propertyNode.InnerText);
-						continue;
-					case "creationModeIn":
-						this._CreationModeIn = propertyNode.InnerText;
-						continue;
-					case "versionEqual":
-						this._VersionEqual = propertyNode.InnerText;
-						continue;
-					case "versionMultiLikeOr":
-						this._VersionMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "versionMultiLikeAnd":
-						this._VersionMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "partnerTagsMultiLikeOr":
-						this._PartnerTagsMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "partnerTagsMultiLikeAnd":
-						this._PartnerTagsMultiLikeAnd = propertyNode.InnerText;
-						continue;
-				}
+				this._IdEqual = ParseInt(node["idEqual"].Value<string>());
 			}
-		}
-
-		public UiConfBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
-			    this._IdIn = data.TryGetValueSafe<string>("idIn");
-			    this._NameLike = data.TryGetValueSafe<string>("nameLike");
-			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
-			    this._PartnerIdIn = data.TryGetValueSafe<string>("partnerIdIn");
-			    this._ObjTypeEqual = (UiConfObjType)ParseEnum(typeof(UiConfObjType), data.TryGetValueSafe<int>("objTypeEqual"));
-			    this._ObjTypeIn = data.TryGetValueSafe<string>("objTypeIn");
-			    this._TagsMultiLikeOr = data.TryGetValueSafe<string>("tagsMultiLikeOr");
-			    this._TagsMultiLikeAnd = data.TryGetValueSafe<string>("tagsMultiLikeAnd");
-			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
-			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
-			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
-			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
-			    this._CreationModeEqual = (UiConfCreationMode)ParseEnum(typeof(UiConfCreationMode), data.TryGetValueSafe<int>("creationModeEqual"));
-			    this._CreationModeIn = data.TryGetValueSafe<string>("creationModeIn");
-			    this._VersionEqual = data.TryGetValueSafe<string>("versionEqual");
-			    this._VersionMultiLikeOr = data.TryGetValueSafe<string>("versionMultiLikeOr");
-			    this._VersionMultiLikeAnd = data.TryGetValueSafe<string>("versionMultiLikeAnd");
-			    this._PartnerTagsMultiLikeOr = data.TryGetValueSafe<string>("partnerTagsMultiLikeOr");
-			    this._PartnerTagsMultiLikeAnd = data.TryGetValueSafe<string>("partnerTagsMultiLikeAnd");
+			if(node["idIn"] != null)
+			{
+				this._IdIn = node["idIn"].Value<string>();
+			}
+			if(node["nameLike"] != null)
+			{
+				this._NameLike = node["nameLike"].Value<string>();
+			}
+			if(node["partnerIdEqual"] != null)
+			{
+				this._PartnerIdEqual = ParseInt(node["partnerIdEqual"].Value<string>());
+			}
+			if(node["partnerIdIn"] != null)
+			{
+				this._PartnerIdIn = node["partnerIdIn"].Value<string>();
+			}
+			if(node["objTypeEqual"] != null)
+			{
+				this._ObjTypeEqual = (UiConfObjType)ParseEnum(typeof(UiConfObjType), node["objTypeEqual"].Value<string>());
+			}
+			if(node["objTypeIn"] != null)
+			{
+				this._ObjTypeIn = node["objTypeIn"].Value<string>();
+			}
+			if(node["tagsMultiLikeOr"] != null)
+			{
+				this._TagsMultiLikeOr = node["tagsMultiLikeOr"].Value<string>();
+			}
+			if(node["tagsMultiLikeAnd"] != null)
+			{
+				this._TagsMultiLikeAnd = node["tagsMultiLikeAnd"].Value<string>();
+			}
+			if(node["createdAtGreaterThanOrEqual"] != null)
+			{
+				this._CreatedAtGreaterThanOrEqual = ParseInt(node["createdAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["createdAtLessThanOrEqual"] != null)
+			{
+				this._CreatedAtLessThanOrEqual = ParseInt(node["createdAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtGreaterThanOrEqual"] != null)
+			{
+				this._UpdatedAtGreaterThanOrEqual = ParseInt(node["updatedAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtLessThanOrEqual"] != null)
+			{
+				this._UpdatedAtLessThanOrEqual = ParseInt(node["updatedAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["creationModeEqual"] != null)
+			{
+				this._CreationModeEqual = (UiConfCreationMode)ParseEnum(typeof(UiConfCreationMode), node["creationModeEqual"].Value<string>());
+			}
+			if(node["creationModeIn"] != null)
+			{
+				this._CreationModeIn = node["creationModeIn"].Value<string>();
+			}
+			if(node["versionEqual"] != null)
+			{
+				this._VersionEqual = node["versionEqual"].Value<string>();
+			}
+			if(node["versionMultiLikeOr"] != null)
+			{
+				this._VersionMultiLikeOr = node["versionMultiLikeOr"].Value<string>();
+			}
+			if(node["versionMultiLikeAnd"] != null)
+			{
+				this._VersionMultiLikeAnd = node["versionMultiLikeAnd"].Value<string>();
+			}
+			if(node["partnerTagsMultiLikeOr"] != null)
+			{
+				this._PartnerTagsMultiLikeOr = node["partnerTagsMultiLikeOr"].Value<string>();
+			}
+			if(node["partnerTagsMultiLikeAnd"] != null)
+			{
+				this._PartnerTagsMultiLikeAnd = node["partnerTagsMultiLikeAnd"].Value<string>();
+			}
 		}
 		#endregion
 

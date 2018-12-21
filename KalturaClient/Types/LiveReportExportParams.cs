@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string EntryIds
 		{
 			get { return _EntryIds; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIds");
 			}
 		}
+		[JsonProperty]
 		public string RecpientEmail
 		{
 			get { return _RecpientEmail; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecpientEmail");
 			}
 		}
+		[JsonProperty]
 		public int TimeZoneOffset
 		{
 			get { return _TimeZoneOffset; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TimeZoneOffset");
 			}
 		}
+		[JsonProperty]
 		public string ApplicationUrlTemplate
 		{
 			get { return _ApplicationUrlTemplate; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public LiveReportExportParams(XmlElement node) : base(node)
+		public LiveReportExportParams(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["entryIds"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "entryIds":
-						this._EntryIds = propertyNode.InnerText;
-						continue;
-					case "recpientEmail":
-						this._RecpientEmail = propertyNode.InnerText;
-						continue;
-					case "timeZoneOffset":
-						this._TimeZoneOffset = ParseInt(propertyNode.InnerText);
-						continue;
-					case "applicationUrlTemplate":
-						this._ApplicationUrlTemplate = propertyNode.InnerText;
-						continue;
-				}
+				this._EntryIds = node["entryIds"].Value<string>();
 			}
-		}
-
-		public LiveReportExportParams(IDictionary<string,object> data) : base(data)
-		{
-			    this._EntryIds = data.TryGetValueSafe<string>("entryIds");
-			    this._RecpientEmail = data.TryGetValueSafe<string>("recpientEmail");
-			    this._TimeZoneOffset = data.TryGetValueSafe<int>("timeZoneOffset");
-			    this._ApplicationUrlTemplate = data.TryGetValueSafe<string>("applicationUrlTemplate");
+			if(node["recpientEmail"] != null)
+			{
+				this._RecpientEmail = node["recpientEmail"].Value<string>();
+			}
+			if(node["timeZoneOffset"] != null)
+			{
+				this._TimeZoneOffset = ParseInt(node["timeZoneOffset"].Value<string>());
+			}
+			if(node["applicationUrlTemplate"] != null)
+			{
+				this._ApplicationUrlTemplate = node["applicationUrlTemplate"].Value<string>();
+			}
 		}
 		#endregion
 

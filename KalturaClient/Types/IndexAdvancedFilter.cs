@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int IndexIdGreaterThan
 		{
 			get { return _IndexIdGreaterThan; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IndexIdGreaterThan");
 			}
 		}
+		[JsonProperty]
 		public int DepthGreaterThanEqual
 		{
 			get { return _DepthGreaterThanEqual; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public IndexAdvancedFilter(XmlElement node) : base(node)
+		public IndexAdvancedFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["indexIdGreaterThan"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "indexIdGreaterThan":
-						this._IndexIdGreaterThan = ParseInt(propertyNode.InnerText);
-						continue;
-					case "depthGreaterThanEqual":
-						this._DepthGreaterThanEqual = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._IndexIdGreaterThan = ParseInt(node["indexIdGreaterThan"].Value<string>());
 			}
-		}
-
-		public IndexAdvancedFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._IndexIdGreaterThan = data.TryGetValueSafe<int>("indexIdGreaterThan");
-			    this._DepthGreaterThanEqual = data.TryGetValueSafe<int>("depthGreaterThanEqual");
+			if(node["depthGreaterThanEqual"] != null)
+			{
+				this._DepthGreaterThanEqual = ParseInt(node["depthGreaterThanEqual"].Value<string>());
+			}
 		}
 		#endregion
 

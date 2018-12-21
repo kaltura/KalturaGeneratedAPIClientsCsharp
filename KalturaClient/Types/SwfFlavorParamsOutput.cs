@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int FlashVersion
 		{
 			get { return _FlashVersion; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlashVersion");
 			}
 		}
+		[JsonProperty]
 		public bool? Poly2Bitmap
 		{
 			get { return _Poly2Bitmap; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public SwfFlavorParamsOutput(XmlElement node) : base(node)
+		public SwfFlavorParamsOutput(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["flashVersion"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "flashVersion":
-						this._FlashVersion = ParseInt(propertyNode.InnerText);
-						continue;
-					case "poly2Bitmap":
-						this._Poly2Bitmap = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._FlashVersion = ParseInt(node["flashVersion"].Value<string>());
 			}
-		}
-
-		public SwfFlavorParamsOutput(IDictionary<string,object> data) : base(data)
-		{
-			    this._FlashVersion = data.TryGetValueSafe<int>("flashVersion");
-			    this._Poly2Bitmap = data.TryGetValueSafe<bool>("poly2Bitmap");
+			if(node["poly2Bitmap"] != null)
+			{
+				this._Poly2Bitmap = ParseBool(node["poly2Bitmap"].Value<string>());
+			}
 		}
 		#endregion
 

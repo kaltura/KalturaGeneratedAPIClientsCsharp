@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public IList<AuditTrailChangeItem> ChangedItems
 		{
 			get { return _ChangedItems; }
@@ -60,31 +63,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AuditTrailChangeInfo(XmlElement node) : base(node)
+		public AuditTrailChangeInfo(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["changedItems"] != null)
 			{
-				switch (propertyNode.Name)
+				this._ChangedItems = new List<AuditTrailChangeItem>();
+				foreach(var arrayNode in node["changedItems"].Children())
 				{
-					case "changedItems":
-						this._ChangedItems = new List<AuditTrailChangeItem>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._ChangedItems.Add(ObjectFactory.Create<AuditTrailChangeItem>(arrayNode));
-						}
-						continue;
+					this._ChangedItems.Add(ObjectFactory.Create<AuditTrailChangeItem>(arrayNode));
 				}
 			}
-		}
-
-		public AuditTrailChangeInfo(IDictionary<string,object> data) : base(data)
-		{
-			    this._ChangedItems = new List<AuditTrailChangeItem>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("changedItems", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._ChangedItems.Add(ObjectFactory.Create<AuditTrailChangeItem>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

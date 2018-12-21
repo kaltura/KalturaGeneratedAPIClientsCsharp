@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -70,26 +72,57 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public string EntryId
 		{
 			get { return _EntryId; }
+			private set 
+			{ 
+				_EntryId = value;
+				OnPropertyChanged("EntryId");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public int Version
 		{
 			get { return _Version; }
+			private set 
+			{ 
+				_Version = value;
+				OnPropertyChanged("Version");
+			}
 		}
+		[JsonProperty]
 		public int Size
 		{
 			get { return _Size; }
+			private set 
+			{ 
+				_Size = value;
+				OnPropertyChanged("Size");
+			}
 		}
+		[JsonProperty]
 		public string Tags
 		{
 			get { return _Tags; }
@@ -99,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
+		[JsonProperty]
 		public string FileExt
 		{
 			get { return _FileExt; }
@@ -108,22 +142,47 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileExt");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public int DeletedAt
 		{
 			get { return _DeletedAt; }
+			private set 
+			{ 
+				_DeletedAt = value;
+				OnPropertyChanged("DeletedAt");
+			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
+			private set 
+			{ 
+				_Description = value;
+				OnPropertyChanged("Description");
+			}
 		}
+		[JsonProperty]
 		public string PartnerData
 		{
 			get { return _PartnerData; }
@@ -133,6 +192,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerData");
 			}
 		}
+		[JsonProperty]
 		public string PartnerDescription
 		{
 			get { return _PartnerDescription; }
@@ -142,6 +202,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerDescription");
 			}
 		}
+		[JsonProperty]
 		public string ActualSourceAssetParamsIds
 		{
 			get { return _ActualSourceAssetParamsIds; }
@@ -158,74 +219,64 @@ namespace Kaltura.Types
 		{
 		}
 
-		public Asset(XmlElement node) : base(node)
+		public Asset(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = propertyNode.InnerText;
-						continue;
-					case "entryId":
-						this._EntryId = propertyNode.InnerText;
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "version":
-						this._Version = ParseInt(propertyNode.InnerText);
-						continue;
-					case "size":
-						this._Size = ParseInt(propertyNode.InnerText);
-						continue;
-					case "tags":
-						this._Tags = propertyNode.InnerText;
-						continue;
-					case "fileExt":
-						this._FileExt = propertyNode.InnerText;
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "deletedAt":
-						this._DeletedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "partnerData":
-						this._PartnerData = propertyNode.InnerText;
-						continue;
-					case "partnerDescription":
-						this._PartnerDescription = propertyNode.InnerText;
-						continue;
-					case "actualSourceAssetParamsIds":
-						this._ActualSourceAssetParamsIds = propertyNode.InnerText;
-						continue;
-				}
+				this._Id = node["id"].Value<string>();
 			}
-		}
-
-		public Asset(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<string>("id");
-			    this._EntryId = data.TryGetValueSafe<string>("entryId");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._Version = data.TryGetValueSafe<int>("version");
-			    this._Size = data.TryGetValueSafe<int>("size");
-			    this._Tags = data.TryGetValueSafe<string>("tags");
-			    this._FileExt = data.TryGetValueSafe<string>("fileExt");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._DeletedAt = data.TryGetValueSafe<int>("deletedAt");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._PartnerData = data.TryGetValueSafe<string>("partnerData");
-			    this._PartnerDescription = data.TryGetValueSafe<string>("partnerDescription");
-			    this._ActualSourceAssetParamsIds = data.TryGetValueSafe<string>("actualSourceAssetParamsIds");
+			if(node["entryId"] != null)
+			{
+				this._EntryId = node["entryId"].Value<string>();
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["version"] != null)
+			{
+				this._Version = ParseInt(node["version"].Value<string>());
+			}
+			if(node["size"] != null)
+			{
+				this._Size = ParseInt(node["size"].Value<string>());
+			}
+			if(node["tags"] != null)
+			{
+				this._Tags = node["tags"].Value<string>();
+			}
+			if(node["fileExt"] != null)
+			{
+				this._FileExt = node["fileExt"].Value<string>();
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["deletedAt"] != null)
+			{
+				this._DeletedAt = ParseInt(node["deletedAt"].Value<string>());
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["partnerData"] != null)
+			{
+				this._PartnerData = node["partnerData"].Value<string>();
+			}
+			if(node["partnerDescription"] != null)
+			{
+				this._PartnerDescription = node["partnerDescription"].Value<string>();
+			}
+			if(node["actualSourceAssetParamsIds"] != null)
+			{
+				this._ActualSourceAssetParamsIds = node["actualSourceAssetParamsIds"].Value<string>();
+			}
 		}
 		#endregion
 

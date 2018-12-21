@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public EventType EventType
 		{
 			get { return _EventType; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EventCuePoint(XmlElement node) : base(node)
+		public EventCuePoint(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["eventType"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "eventType":
-						this._EventType = (EventType)StringEnum.Parse(typeof(EventType), propertyNode.InnerText);
-						continue;
-				}
+				this._EventType = (EventType)StringEnum.Parse(typeof(EventType), node["eventType"].Value<string>());
 			}
-		}
-
-		public EventCuePoint(IDictionary<string,object> data) : base(data)
-		{
-			    this._EventType = (EventType)StringEnum.Parse(typeof(EventType), data.TryGetValueSafe<string>("eventType"));
 		}
 		#endregion
 

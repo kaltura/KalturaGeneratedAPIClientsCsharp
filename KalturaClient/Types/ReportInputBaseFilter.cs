@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int FromDate
 		{
 			get { return _FromDate; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FromDate");
 			}
 		}
+		[JsonProperty]
 		public int ToDate
 		{
 			get { return _ToDate; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ToDate");
 			}
 		}
+		[JsonProperty]
 		public string FromDay
 		{
 			get { return _FromDay; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FromDay");
 			}
 		}
+		[JsonProperty]
 		public string ToDay
 		{
 			get { return _ToDay; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ReportInputBaseFilter(XmlElement node) : base(node)
+		public ReportInputBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["fromDate"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "fromDate":
-						this._FromDate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "toDate":
-						this._ToDate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "fromDay":
-						this._FromDay = propertyNode.InnerText;
-						continue;
-					case "toDay":
-						this._ToDay = propertyNode.InnerText;
-						continue;
-				}
+				this._FromDate = ParseInt(node["fromDate"].Value<string>());
 			}
-		}
-
-		public ReportInputBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._FromDate = data.TryGetValueSafe<int>("fromDate");
-			    this._ToDate = data.TryGetValueSafe<int>("toDate");
-			    this._FromDay = data.TryGetValueSafe<string>("fromDay");
-			    this._ToDay = data.TryGetValueSafe<string>("toDay");
+			if(node["toDate"] != null)
+			{
+				this._ToDate = ParseInt(node["toDate"].Value<string>());
+			}
+			if(node["fromDay"] != null)
+			{
+				this._FromDay = node["fromDay"].Value<string>();
+			}
+			if(node["toDay"] != null)
+			{
+				this._ToDay = node["toDay"].Value<string>();
+			}
 		}
 		#endregion
 

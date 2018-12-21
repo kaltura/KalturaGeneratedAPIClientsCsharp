@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string CuePointsFreeText
 		{
 			get { return _CuePointsFreeText; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CuePointsFreeText");
 			}
 		}
+		[JsonProperty]
 		public string CuePointTypeIn
 		{
 			get { return _CuePointTypeIn; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CuePointTypeIn");
 			}
 		}
+		[JsonProperty]
 		public int CuePointSubTypeEqual
 		{
 			get { return _CuePointSubTypeEqual; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EntryCuePointSearchFilter(XmlElement node) : base(node)
+		public EntryCuePointSearchFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["cuePointsFreeText"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "cuePointsFreeText":
-						this._CuePointsFreeText = propertyNode.InnerText;
-						continue;
-					case "cuePointTypeIn":
-						this._CuePointTypeIn = propertyNode.InnerText;
-						continue;
-					case "cuePointSubTypeEqual":
-						this._CuePointSubTypeEqual = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._CuePointsFreeText = node["cuePointsFreeText"].Value<string>();
 			}
-		}
-
-		public EntryCuePointSearchFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._CuePointsFreeText = data.TryGetValueSafe<string>("cuePointsFreeText");
-			    this._CuePointTypeIn = data.TryGetValueSafe<string>("cuePointTypeIn");
-			    this._CuePointSubTypeEqual = data.TryGetValueSafe<int>("cuePointSubTypeEqual");
+			if(node["cuePointTypeIn"] != null)
+			{
+				this._CuePointTypeIn = node["cuePointTypeIn"].Value<string>();
+			}
+			if(node["cuePointSubTypeEqual"] != null)
+			{
+				this._CuePointSubTypeEqual = ParseInt(node["cuePointSubTypeEqual"].Value<string>());
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public new AmazonS3StorageProfileOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AmazonS3StorageProfileFilter(XmlElement node) : base(node)
+		public AmazonS3StorageProfileFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["orderBy"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "orderBy":
-						this._OrderBy = (AmazonS3StorageProfileOrderBy)StringEnum.Parse(typeof(AmazonS3StorageProfileOrderBy), propertyNode.InnerText);
-						continue;
-				}
+				this._OrderBy = (AmazonS3StorageProfileOrderBy)StringEnum.Parse(typeof(AmazonS3StorageProfileOrderBy), node["orderBy"].Value<string>());
 			}
-		}
-
-		public AmazonS3StorageProfileFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._OrderBy = (AmazonS3StorageProfileOrderBy)StringEnum.Parse(typeof(AmazonS3StorageProfileOrderBy), data.TryGetValueSafe<string>("orderBy"));
 		}
 		#endregion
 

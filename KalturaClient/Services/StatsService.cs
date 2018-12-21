@@ -32,6 +32,7 @@ using System.IO;
 using Kaltura.Request;
 using Kaltura.Types;
 using Kaltura.Enums;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Services
 {
@@ -72,22 +73,15 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
-			if (result.InnerText.Equals("1") || result.InnerText.ToLower().Equals("true"))
-				return true;
-			return false;
-		}
-		public override object DeserializeObject(object result)
-		{
-			var resultStr = (string)result;
-			if (resultStr.Equals("1") || resultStr.ToLower().Equals("true"))
+			if (result.Value<string>().Equals("1") || result.Value<string>().ToLower().Equals("true"))
 				return true;
 			return false;
 		}
 	}
 
-	public class StatsKmcCollectRequestBuilder : RequestBuilder<object>
+	public class StatsKmcCollectRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
 		public const string KMC_EVENT = "kmcEvent";
@@ -124,17 +118,13 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-		public override object DeserializeObject(object result)
+		public override object Deserialize(JToken result)
 		{
 			return null;
 		}
 	}
 
-	public class StatsReportDeviceCapabilitiesRequestBuilder : RequestBuilder<object>
+	public class StatsReportDeviceCapabilitiesRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
 		public const string DATA = "data";
@@ -171,17 +161,13 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-		public override object DeserializeObject(object result)
+		public override object Deserialize(JToken result)
 		{
 			return null;
 		}
 	}
 
-	public class StatsReportErrorRequestBuilder : RequestBuilder<object>
+	public class StatsReportErrorRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
 		public const string ERROR_CODE = "errorCode";
@@ -227,11 +213,7 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-		public override object DeserializeObject(object result)
+		public override object Deserialize(JToken result)
 		{
 			return null;
 		}
@@ -274,13 +256,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<CEError>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<CEError>((IDictionary<string,object>)result);
 		}
 	}
 

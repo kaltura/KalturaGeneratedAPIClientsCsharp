@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public IpAddressRestrictionType IpAddressRestrictionType
 		{
 			get { return _IpAddressRestrictionType; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IpAddressRestrictionType");
 			}
 		}
+		[JsonProperty]
 		public string IpAddressList
 		{
 			get { return _IpAddressList; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public IpAddressRestriction(XmlElement node) : base(node)
+		public IpAddressRestriction(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["ipAddressRestrictionType"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "ipAddressRestrictionType":
-						this._IpAddressRestrictionType = (IpAddressRestrictionType)ParseEnum(typeof(IpAddressRestrictionType), propertyNode.InnerText);
-						continue;
-					case "ipAddressList":
-						this._IpAddressList = propertyNode.InnerText;
-						continue;
-				}
+				this._IpAddressRestrictionType = (IpAddressRestrictionType)ParseEnum(typeof(IpAddressRestrictionType), node["ipAddressRestrictionType"].Value<string>());
 			}
-		}
-
-		public IpAddressRestriction(IDictionary<string,object> data) : base(data)
-		{
-			    this._IpAddressRestrictionType = (IpAddressRestrictionType)ParseEnum(typeof(IpAddressRestrictionType), data.TryGetValueSafe<int>("ipAddressRestrictionType"));
-			    this._IpAddressList = data.TryGetValueSafe<string>("ipAddressList");
+			if(node["ipAddressList"] != null)
+			{
+				this._IpAddressList = node["ipAddressList"].Value<string>();
+			}
 		}
 		#endregion
 

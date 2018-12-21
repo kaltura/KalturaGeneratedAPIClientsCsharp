@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public UiConfObjType Type
 		{
 			get { return _Type; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		[JsonProperty]
 		public IList<String> Versions
 		{
 			get { return _Versions; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Versions");
 			}
 		}
+		[JsonProperty]
 		public string Directory
 		{
 			get { return _Directory; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Directory");
 			}
 		}
+		[JsonProperty]
 		public string Filename
 		{
 			get { return _Filename; }
@@ -93,43 +99,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UiConfTypeInfo(XmlElement node) : base(node)
+		public UiConfTypeInfo(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["type"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Type = (UiConfObjType)ParseEnum(typeof(UiConfObjType), node["type"].Value<string>());
+			}
+			if(node["versions"] != null)
+			{
+				this._Versions = new List<String>();
+				foreach(var arrayNode in node["versions"].Children())
 				{
-					case "type":
-						this._Type = (UiConfObjType)ParseEnum(typeof(UiConfObjType), propertyNode.InnerText);
-						continue;
-					case "versions":
-						this._Versions = new List<String>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Versions.Add(ObjectFactory.Create<String>(arrayNode));
-						}
-						continue;
-					case "directory":
-						this._Directory = propertyNode.InnerText;
-						continue;
-					case "filename":
-						this._Filename = propertyNode.InnerText;
-						continue;
+					this._Versions.Add(ObjectFactory.Create<String>(arrayNode));
 				}
 			}
-		}
-
-		public UiConfTypeInfo(IDictionary<string,object> data) : base(data)
-		{
-			    this._Type = (UiConfObjType)ParseEnum(typeof(UiConfObjType), data.TryGetValueSafe<int>("type"));
-			    this._Versions = new List<String>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("versions", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Versions.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._Directory = data.TryGetValueSafe<string>("directory");
-			    this._Filename = data.TryGetValueSafe<string>("filename");
+			if(node["directory"] != null)
+			{
+				this._Directory = node["directory"].Value<string>();
+			}
+			if(node["filename"] != null)
+			{
+				this._Filename = node["filename"].Value<string>();
+			}
 		}
 		#endregion
 

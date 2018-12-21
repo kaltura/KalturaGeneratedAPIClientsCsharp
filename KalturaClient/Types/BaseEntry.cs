@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -132,10 +134,17 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -145,6 +154,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -154,10 +164,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public string UserId
 		{
 			get { return _UserId; }
@@ -167,6 +184,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserId");
 			}
 		}
+		[JsonProperty]
 		public string CreatorId
 		{
 			get { return _CreatorId; }
@@ -176,6 +194,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatorId");
 			}
 		}
+		[JsonProperty]
 		public string Tags
 		{
 			get { return _Tags; }
@@ -185,6 +204,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
+		[JsonProperty]
 		public string AdminTags
 		{
 			get { return _AdminTags; }
@@ -194,6 +214,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdminTags");
 			}
 		}
+		[JsonProperty]
 		public string Categories
 		{
 			get { return _Categories; }
@@ -203,6 +224,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Categories");
 			}
 		}
+		[JsonProperty]
 		public string CategoriesIds
 		{
 			get { return _CategoriesIds; }
@@ -212,18 +234,37 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoriesIds");
 			}
 		}
+		[JsonProperty]
 		public EntryStatus Status
 		{
 			get { return _Status; }
+			private set 
+			{ 
+				_Status = value;
+				OnPropertyChanged("Status");
+			}
 		}
+		[JsonProperty]
 		public EntryModerationStatus ModerationStatus
 		{
 			get { return _ModerationStatus; }
+			private set 
+			{ 
+				_ModerationStatus = value;
+				OnPropertyChanged("ModerationStatus");
+			}
 		}
+		[JsonProperty]
 		public int ModerationCount
 		{
 			get { return _ModerationCount; }
+			private set 
+			{ 
+				_ModerationCount = value;
+				OnPropertyChanged("ModerationCount");
+			}
 		}
+		[JsonProperty]
 		public EntryType Type
 		{
 			get { return _Type; }
@@ -233,26 +274,57 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public float Rank
 		{
 			get { return _Rank; }
+			private set 
+			{ 
+				_Rank = value;
+				OnPropertyChanged("Rank");
+			}
 		}
+		[JsonProperty]
 		public int TotalRank
 		{
 			get { return _TotalRank; }
+			private set 
+			{ 
+				_TotalRank = value;
+				OnPropertyChanged("TotalRank");
+			}
 		}
+		[JsonProperty]
 		public int Votes
 		{
 			get { return _Votes; }
+			private set 
+			{ 
+				_Votes = value;
+				OnPropertyChanged("Votes");
+			}
 		}
+		[JsonProperty]
 		public int GroupId
 		{
 			get { return _GroupId; }
@@ -262,6 +334,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("GroupId");
 			}
 		}
+		[JsonProperty]
 		public string PartnerData
 		{
 			get { return _PartnerData; }
@@ -271,14 +344,27 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerData");
 			}
 		}
+		[JsonProperty]
 		public string DownloadUrl
 		{
 			get { return _DownloadUrl; }
+			private set 
+			{ 
+				_DownloadUrl = value;
+				OnPropertyChanged("DownloadUrl");
+			}
 		}
+		[JsonProperty]
 		public string SearchText
 		{
 			get { return _SearchText; }
+			private set 
+			{ 
+				_SearchText = value;
+				OnPropertyChanged("SearchText");
+			}
 		}
+		[JsonProperty]
 		public LicenseType LicenseType
 		{
 			get { return _LicenseType; }
@@ -288,14 +374,27 @@ namespace Kaltura.Types
 				OnPropertyChanged("LicenseType");
 			}
 		}
+		[JsonProperty]
 		public int Version
 		{
 			get { return _Version; }
+			private set 
+			{ 
+				_Version = value;
+				OnPropertyChanged("Version");
+			}
 		}
+		[JsonProperty]
 		public string ThumbnailUrl
 		{
 			get { return _ThumbnailUrl; }
+			private set 
+			{ 
+				_ThumbnailUrl = value;
+				OnPropertyChanged("ThumbnailUrl");
+			}
 		}
+		[JsonProperty]
 		public int AccessControlId
 		{
 			get { return _AccessControlId; }
@@ -305,6 +404,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AccessControlId");
 			}
 		}
+		[JsonProperty]
 		public int StartDate
 		{
 			get { return _StartDate; }
@@ -314,6 +414,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartDate");
 			}
 		}
+		[JsonProperty]
 		public int EndDate
 		{
 			get { return _EndDate; }
@@ -323,6 +424,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndDate");
 			}
 		}
+		[JsonProperty]
 		public string ReferenceId
 		{
 			get { return _ReferenceId; }
@@ -332,18 +434,37 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReferenceId");
 			}
 		}
+		[JsonProperty]
 		public string ReplacingEntryId
 		{
 			get { return _ReplacingEntryId; }
+			private set 
+			{ 
+				_ReplacingEntryId = value;
+				OnPropertyChanged("ReplacingEntryId");
+			}
 		}
+		[JsonProperty]
 		public string ReplacedEntryId
 		{
 			get { return _ReplacedEntryId; }
+			private set 
+			{ 
+				_ReplacedEntryId = value;
+				OnPropertyChanged("ReplacedEntryId");
+			}
 		}
+		[JsonProperty]
 		public EntryReplacementStatus ReplacementStatus
 		{
 			get { return _ReplacementStatus; }
+			private set 
+			{ 
+				_ReplacementStatus = value;
+				OnPropertyChanged("ReplacementStatus");
+			}
 		}
+		[JsonProperty]
 		public int PartnerSortValue
 		{
 			get { return _PartnerSortValue; }
@@ -353,6 +474,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerSortValue");
 			}
 		}
+		[JsonProperty]
 		public int ConversionProfileId
 		{
 			get { return _ConversionProfileId; }
@@ -362,6 +484,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionProfileId");
 			}
 		}
+		[JsonProperty]
 		public string RedirectEntryId
 		{
 			get { return _RedirectEntryId; }
@@ -371,10 +494,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("RedirectEntryId");
 			}
 		}
+		[JsonProperty]
 		public string RootEntryId
 		{
 			get { return _RootEntryId; }
+			private set 
+			{ 
+				_RootEntryId = value;
+				OnPropertyChanged("RootEntryId");
+			}
 		}
+		[JsonProperty]
 		public string ParentEntryId
 		{
 			get { return _ParentEntryId; }
@@ -384,6 +514,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentEntryId");
 			}
 		}
+		[JsonProperty]
 		public IList<OperationAttributes> OperationAttributes
 		{
 			get { return _OperationAttributes; }
@@ -393,6 +524,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("OperationAttributes");
 			}
 		}
+		[JsonProperty]
 		public string EntitledUsersEdit
 		{
 			get { return _EntitledUsersEdit; }
@@ -402,6 +534,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntitledUsersEdit");
 			}
 		}
+		[JsonProperty]
 		public string EntitledUsersPublish
 		{
 			get { return _EntitledUsersPublish; }
@@ -411,6 +544,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntitledUsersPublish");
 			}
 		}
+		[JsonProperty]
 		public string EntitledUsersView
 		{
 			get { return _EntitledUsersView; }
@@ -420,10 +554,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntitledUsersView");
 			}
 		}
+		[JsonProperty]
 		public string Capabilities
 		{
 			get { return _Capabilities; }
+			private set 
+			{ 
+				_Capabilities = value;
+				OnPropertyChanged("Capabilities");
+			}
 		}
+		[JsonProperty]
 		public string TemplateEntryId
 		{
 			get { return _TemplateEntryId; }
@@ -433,6 +574,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplateEntryId");
 			}
 		}
+		[JsonProperty]
 		public EntryDisplayInSearchType DisplayInSearch
 		{
 			get { return _DisplayInSearch; }
@@ -449,207 +591,192 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BaseEntry(XmlElement node) : base(node)
+		public BaseEntry(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Id = node["id"].Value<string>();
+			}
+			if(node["name"] != null)
+			{
+				this._Name = node["name"].Value<string>();
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["userId"] != null)
+			{
+				this._UserId = node["userId"].Value<string>();
+			}
+			if(node["creatorId"] != null)
+			{
+				this._CreatorId = node["creatorId"].Value<string>();
+			}
+			if(node["tags"] != null)
+			{
+				this._Tags = node["tags"].Value<string>();
+			}
+			if(node["adminTags"] != null)
+			{
+				this._AdminTags = node["adminTags"].Value<string>();
+			}
+			if(node["categories"] != null)
+			{
+				this._Categories = node["categories"].Value<string>();
+			}
+			if(node["categoriesIds"] != null)
+			{
+				this._CategoriesIds = node["categoriesIds"].Value<string>();
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (EntryStatus)StringEnum.Parse(typeof(EntryStatus), node["status"].Value<string>());
+			}
+			if(node["moderationStatus"] != null)
+			{
+				this._ModerationStatus = (EntryModerationStatus)ParseEnum(typeof(EntryModerationStatus), node["moderationStatus"].Value<string>());
+			}
+			if(node["moderationCount"] != null)
+			{
+				this._ModerationCount = ParseInt(node["moderationCount"].Value<string>());
+			}
+			if(node["type"] != null)
+			{
+				this._Type = (EntryType)StringEnum.Parse(typeof(EntryType), node["type"].Value<string>());
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["rank"] != null)
+			{
+				this._Rank = ParseFloat(node["rank"].Value<string>());
+			}
+			if(node["totalRank"] != null)
+			{
+				this._TotalRank = ParseInt(node["totalRank"].Value<string>());
+			}
+			if(node["votes"] != null)
+			{
+				this._Votes = ParseInt(node["votes"].Value<string>());
+			}
+			if(node["groupId"] != null)
+			{
+				this._GroupId = ParseInt(node["groupId"].Value<string>());
+			}
+			if(node["partnerData"] != null)
+			{
+				this._PartnerData = node["partnerData"].Value<string>();
+			}
+			if(node["downloadUrl"] != null)
+			{
+				this._DownloadUrl = node["downloadUrl"].Value<string>();
+			}
+			if(node["searchText"] != null)
+			{
+				this._SearchText = node["searchText"].Value<string>();
+			}
+			if(node["licenseType"] != null)
+			{
+				this._LicenseType = (LicenseType)ParseEnum(typeof(LicenseType), node["licenseType"].Value<string>());
+			}
+			if(node["version"] != null)
+			{
+				this._Version = ParseInt(node["version"].Value<string>());
+			}
+			if(node["thumbnailUrl"] != null)
+			{
+				this._ThumbnailUrl = node["thumbnailUrl"].Value<string>();
+			}
+			if(node["accessControlId"] != null)
+			{
+				this._AccessControlId = ParseInt(node["accessControlId"].Value<string>());
+			}
+			if(node["startDate"] != null)
+			{
+				this._StartDate = ParseInt(node["startDate"].Value<string>());
+			}
+			if(node["endDate"] != null)
+			{
+				this._EndDate = ParseInt(node["endDate"].Value<string>());
+			}
+			if(node["referenceId"] != null)
+			{
+				this._ReferenceId = node["referenceId"].Value<string>();
+			}
+			if(node["replacingEntryId"] != null)
+			{
+				this._ReplacingEntryId = node["replacingEntryId"].Value<string>();
+			}
+			if(node["replacedEntryId"] != null)
+			{
+				this._ReplacedEntryId = node["replacedEntryId"].Value<string>();
+			}
+			if(node["replacementStatus"] != null)
+			{
+				this._ReplacementStatus = (EntryReplacementStatus)StringEnum.Parse(typeof(EntryReplacementStatus), node["replacementStatus"].Value<string>());
+			}
+			if(node["partnerSortValue"] != null)
+			{
+				this._PartnerSortValue = ParseInt(node["partnerSortValue"].Value<string>());
+			}
+			if(node["conversionProfileId"] != null)
+			{
+				this._ConversionProfileId = ParseInt(node["conversionProfileId"].Value<string>());
+			}
+			if(node["redirectEntryId"] != null)
+			{
+				this._RedirectEntryId = node["redirectEntryId"].Value<string>();
+			}
+			if(node["rootEntryId"] != null)
+			{
+				this._RootEntryId = node["rootEntryId"].Value<string>();
+			}
+			if(node["parentEntryId"] != null)
+			{
+				this._ParentEntryId = node["parentEntryId"].Value<string>();
+			}
+			if(node["operationAttributes"] != null)
+			{
+				this._OperationAttributes = new List<OperationAttributes>();
+				foreach(var arrayNode in node["operationAttributes"].Children())
 				{
-					case "id":
-						this._Id = propertyNode.InnerText;
-						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "userId":
-						this._UserId = propertyNode.InnerText;
-						continue;
-					case "creatorId":
-						this._CreatorId = propertyNode.InnerText;
-						continue;
-					case "tags":
-						this._Tags = propertyNode.InnerText;
-						continue;
-					case "adminTags":
-						this._AdminTags = propertyNode.InnerText;
-						continue;
-					case "categories":
-						this._Categories = propertyNode.InnerText;
-						continue;
-					case "categoriesIds":
-						this._CategoriesIds = propertyNode.InnerText;
-						continue;
-					case "status":
-						this._Status = (EntryStatus)StringEnum.Parse(typeof(EntryStatus), propertyNode.InnerText);
-						continue;
-					case "moderationStatus":
-						this._ModerationStatus = (EntryModerationStatus)ParseEnum(typeof(EntryModerationStatus), propertyNode.InnerText);
-						continue;
-					case "moderationCount":
-						this._ModerationCount = ParseInt(propertyNode.InnerText);
-						continue;
-					case "type":
-						this._Type = (EntryType)StringEnum.Parse(typeof(EntryType), propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "rank":
-						this._Rank = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "totalRank":
-						this._TotalRank = ParseInt(propertyNode.InnerText);
-						continue;
-					case "votes":
-						this._Votes = ParseInt(propertyNode.InnerText);
-						continue;
-					case "groupId":
-						this._GroupId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerData":
-						this._PartnerData = propertyNode.InnerText;
-						continue;
-					case "downloadUrl":
-						this._DownloadUrl = propertyNode.InnerText;
-						continue;
-					case "searchText":
-						this._SearchText = propertyNode.InnerText;
-						continue;
-					case "licenseType":
-						this._LicenseType = (LicenseType)ParseEnum(typeof(LicenseType), propertyNode.InnerText);
-						continue;
-					case "version":
-						this._Version = ParseInt(propertyNode.InnerText);
-						continue;
-					case "thumbnailUrl":
-						this._ThumbnailUrl = propertyNode.InnerText;
-						continue;
-					case "accessControlId":
-						this._AccessControlId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "startDate":
-						this._StartDate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "endDate":
-						this._EndDate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "referenceId":
-						this._ReferenceId = propertyNode.InnerText;
-						continue;
-					case "replacingEntryId":
-						this._ReplacingEntryId = propertyNode.InnerText;
-						continue;
-					case "replacedEntryId":
-						this._ReplacedEntryId = propertyNode.InnerText;
-						continue;
-					case "replacementStatus":
-						this._ReplacementStatus = (EntryReplacementStatus)StringEnum.Parse(typeof(EntryReplacementStatus), propertyNode.InnerText);
-						continue;
-					case "partnerSortValue":
-						this._PartnerSortValue = ParseInt(propertyNode.InnerText);
-						continue;
-					case "conversionProfileId":
-						this._ConversionProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "redirectEntryId":
-						this._RedirectEntryId = propertyNode.InnerText;
-						continue;
-					case "rootEntryId":
-						this._RootEntryId = propertyNode.InnerText;
-						continue;
-					case "parentEntryId":
-						this._ParentEntryId = propertyNode.InnerText;
-						continue;
-					case "operationAttributes":
-						this._OperationAttributes = new List<OperationAttributes>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._OperationAttributes.Add(ObjectFactory.Create<OperationAttributes>(arrayNode));
-						}
-						continue;
-					case "entitledUsersEdit":
-						this._EntitledUsersEdit = propertyNode.InnerText;
-						continue;
-					case "entitledUsersPublish":
-						this._EntitledUsersPublish = propertyNode.InnerText;
-						continue;
-					case "entitledUsersView":
-						this._EntitledUsersView = propertyNode.InnerText;
-						continue;
-					case "capabilities":
-						this._Capabilities = propertyNode.InnerText;
-						continue;
-					case "templateEntryId":
-						this._TemplateEntryId = propertyNode.InnerText;
-						continue;
-					case "displayInSearch":
-						this._DisplayInSearch = (EntryDisplayInSearchType)ParseEnum(typeof(EntryDisplayInSearchType), propertyNode.InnerText);
-						continue;
+					this._OperationAttributes.Add(ObjectFactory.Create<OperationAttributes>(arrayNode));
 				}
 			}
-		}
-
-		public BaseEntry(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<string>("id");
-			    this._Name = data.TryGetValueSafe<string>("name");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._UserId = data.TryGetValueSafe<string>("userId");
-			    this._CreatorId = data.TryGetValueSafe<string>("creatorId");
-			    this._Tags = data.TryGetValueSafe<string>("tags");
-			    this._AdminTags = data.TryGetValueSafe<string>("adminTags");
-			    this._Categories = data.TryGetValueSafe<string>("categories");
-			    this._CategoriesIds = data.TryGetValueSafe<string>("categoriesIds");
-			    this._Status = (EntryStatus)StringEnum.Parse(typeof(EntryStatus), data.TryGetValueSafe<string>("status"));
-			    this._ModerationStatus = (EntryModerationStatus)ParseEnum(typeof(EntryModerationStatus), data.TryGetValueSafe<int>("moderationStatus"));
-			    this._ModerationCount = data.TryGetValueSafe<int>("moderationCount");
-			    this._Type = (EntryType)StringEnum.Parse(typeof(EntryType), data.TryGetValueSafe<string>("type"));
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._Rank = data.TryGetValueSafe<float>("rank");
-			    this._TotalRank = data.TryGetValueSafe<int>("totalRank");
-			    this._Votes = data.TryGetValueSafe<int>("votes");
-			    this._GroupId = data.TryGetValueSafe<int>("groupId");
-			    this._PartnerData = data.TryGetValueSafe<string>("partnerData");
-			    this._DownloadUrl = data.TryGetValueSafe<string>("downloadUrl");
-			    this._SearchText = data.TryGetValueSafe<string>("searchText");
-			    this._LicenseType = (LicenseType)ParseEnum(typeof(LicenseType), data.TryGetValueSafe<int>("licenseType"));
-			    this._Version = data.TryGetValueSafe<int>("version");
-			    this._ThumbnailUrl = data.TryGetValueSafe<string>("thumbnailUrl");
-			    this._AccessControlId = data.TryGetValueSafe<int>("accessControlId");
-			    this._StartDate = data.TryGetValueSafe<int>("startDate");
-			    this._EndDate = data.TryGetValueSafe<int>("endDate");
-			    this._ReferenceId = data.TryGetValueSafe<string>("referenceId");
-			    this._ReplacingEntryId = data.TryGetValueSafe<string>("replacingEntryId");
-			    this._ReplacedEntryId = data.TryGetValueSafe<string>("replacedEntryId");
-			    this._ReplacementStatus = (EntryReplacementStatus)StringEnum.Parse(typeof(EntryReplacementStatus), data.TryGetValueSafe<string>("replacementStatus"));
-			    this._PartnerSortValue = data.TryGetValueSafe<int>("partnerSortValue");
-			    this._ConversionProfileId = data.TryGetValueSafe<int>("conversionProfileId");
-			    this._RedirectEntryId = data.TryGetValueSafe<string>("redirectEntryId");
-			    this._RootEntryId = data.TryGetValueSafe<string>("rootEntryId");
-			    this._ParentEntryId = data.TryGetValueSafe<string>("parentEntryId");
-			    this._OperationAttributes = new List<OperationAttributes>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("operationAttributes", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._OperationAttributes.Add(ObjectFactory.Create<OperationAttributes>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._EntitledUsersEdit = data.TryGetValueSafe<string>("entitledUsersEdit");
-			    this._EntitledUsersPublish = data.TryGetValueSafe<string>("entitledUsersPublish");
-			    this._EntitledUsersView = data.TryGetValueSafe<string>("entitledUsersView");
-			    this._Capabilities = data.TryGetValueSafe<string>("capabilities");
-			    this._TemplateEntryId = data.TryGetValueSafe<string>("templateEntryId");
-			    this._DisplayInSearch = (EntryDisplayInSearchType)ParseEnum(typeof(EntryDisplayInSearchType), data.TryGetValueSafe<int>("displayInSearch"));
+			if(node["entitledUsersEdit"] != null)
+			{
+				this._EntitledUsersEdit = node["entitledUsersEdit"].Value<string>();
+			}
+			if(node["entitledUsersPublish"] != null)
+			{
+				this._EntitledUsersPublish = node["entitledUsersPublish"].Value<string>();
+			}
+			if(node["entitledUsersView"] != null)
+			{
+				this._EntitledUsersView = node["entitledUsersView"].Value<string>();
+			}
+			if(node["capabilities"] != null)
+			{
+				this._Capabilities = node["capabilities"].Value<string>();
+			}
+			if(node["templateEntryId"] != null)
+			{
+				this._TemplateEntryId = node["templateEntryId"].Value<string>();
+			}
+			if(node["displayInSearch"] != null)
+			{
+				this._DisplayInSearch = (EntryDisplayInSearchType)ParseEnum(typeof(EntryDisplayInSearchType), node["displayInSearch"].Value<string>());
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string FreeText
 		{
 			get { return _FreeText; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FreeText");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean UserIdEqualCurrent
 		{
 			get { return _UserIdEqualCurrent; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIdEqualCurrent");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean UserIdCurrent
 		{
 			get { return _UserIdCurrent; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIdCurrent");
 			}
 		}
+		[JsonProperty]
 		public new CuePointOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CuePointFilter(XmlElement node) : base(node)
+		public CuePointFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["freeText"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "freeText":
-						this._FreeText = propertyNode.InnerText;
-						continue;
-					case "userIdEqualCurrent":
-						this._UserIdEqualCurrent = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "userIdCurrent":
-						this._UserIdCurrent = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "orderBy":
-						this._OrderBy = (CuePointOrderBy)StringEnum.Parse(typeof(CuePointOrderBy), propertyNode.InnerText);
-						continue;
-				}
+				this._FreeText = node["freeText"].Value<string>();
 			}
-		}
-
-		public CuePointFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._FreeText = data.TryGetValueSafe<string>("freeText");
-			    this._UserIdEqualCurrent = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("userIdEqualCurrent"));
-			    this._UserIdCurrent = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("userIdCurrent"));
-			    this._OrderBy = (CuePointOrderBy)StringEnum.Parse(typeof(CuePointOrderBy), data.TryGetValueSafe<string>("orderBy"));
+			if(node["userIdEqualCurrent"] != null)
+			{
+				this._UserIdEqualCurrent = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["userIdEqualCurrent"].Value<string>());
+			}
+			if(node["userIdCurrent"] != null)
+			{
+				this._UserIdCurrent = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["userIdCurrent"].Value<string>());
+			}
+			if(node["orderBy"] != null)
+			{
+				this._OrderBy = (CuePointOrderBy)StringEnum.Parse(typeof(CuePointOrderBy), node["orderBy"].Value<string>());
+			}
 		}
 		#endregion
 

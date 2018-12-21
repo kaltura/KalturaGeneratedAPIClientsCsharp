@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -72,6 +74,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int IdEqual
 		{
 			get { return _IdEqual; }
@@ -81,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		[JsonProperty]
 		public string IdIn
 		{
 			get { return _IdIn; }
@@ -90,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		[JsonProperty]
 		public string IdNotIn
 		{
 			get { return _IdNotIn; }
@@ -99,6 +104,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdNotIn");
 			}
 		}
+		[JsonProperty]
 		public string NameLike
 		{
 			get { return _NameLike; }
@@ -108,6 +114,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("NameLike");
 			}
 		}
+		[JsonProperty]
 		public string NameMultiLikeOr
 		{
 			get { return _NameMultiLikeOr; }
@@ -117,6 +124,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("NameMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string NameMultiLikeAnd
 		{
 			get { return _NameMultiLikeAnd; }
@@ -126,6 +134,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("NameMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public string NameEqual
 		{
 			get { return _NameEqual; }
@@ -135,6 +144,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("NameEqual");
 			}
 		}
+		[JsonProperty]
 		public PartnerStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -144,6 +154,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -153,6 +164,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		[JsonProperty]
 		public int PartnerPackageEqual
 		{
 			get { return _PartnerPackageEqual; }
@@ -162,6 +174,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerPackageEqual");
 			}
 		}
+		[JsonProperty]
 		public int PartnerPackageGreaterThanOrEqual
 		{
 			get { return _PartnerPackageGreaterThanOrEqual; }
@@ -171,6 +184,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerPackageGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int PartnerPackageLessThanOrEqual
 		{
 			get { return _PartnerPackageLessThanOrEqual; }
@@ -180,6 +194,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerPackageLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public string PartnerPackageIn
 		{
 			get { return _PartnerPackageIn; }
@@ -189,6 +204,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerPackageIn");
 			}
 		}
+		[JsonProperty]
 		public PartnerGroupType PartnerGroupTypeEqual
 		{
 			get { return _PartnerGroupTypeEqual; }
@@ -198,6 +214,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerGroupTypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string PartnerNameDescriptionWebsiteAdminNameAdminEmailLike
 		{
 			get { return _PartnerNameDescriptionWebsiteAdminNameAdminEmailLike; }
@@ -214,78 +231,68 @@ namespace Kaltura.Types
 		{
 		}
 
-		public PartnerBaseFilter(XmlElement node) : base(node)
+		public PartnerBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["idEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "idEqual":
-						this._IdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "idIn":
-						this._IdIn = propertyNode.InnerText;
-						continue;
-					case "idNotIn":
-						this._IdNotIn = propertyNode.InnerText;
-						continue;
-					case "nameLike":
-						this._NameLike = propertyNode.InnerText;
-						continue;
-					case "nameMultiLikeOr":
-						this._NameMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "nameMultiLikeAnd":
-						this._NameMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "nameEqual":
-						this._NameEqual = propertyNode.InnerText;
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (PartnerStatus)ParseEnum(typeof(PartnerStatus), propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-					case "partnerPackageEqual":
-						this._PartnerPackageEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerPackageGreaterThanOrEqual":
-						this._PartnerPackageGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerPackageLessThanOrEqual":
-						this._PartnerPackageLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerPackageIn":
-						this._PartnerPackageIn = propertyNode.InnerText;
-						continue;
-					case "partnerGroupTypeEqual":
-						this._PartnerGroupTypeEqual = (PartnerGroupType)ParseEnum(typeof(PartnerGroupType), propertyNode.InnerText);
-						continue;
-					case "partnerNameDescriptionWebsiteAdminNameAdminEmailLike":
-						this._PartnerNameDescriptionWebsiteAdminNameAdminEmailLike = propertyNode.InnerText;
-						continue;
-				}
+				this._IdEqual = ParseInt(node["idEqual"].Value<string>());
 			}
-		}
-
-		public PartnerBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
-			    this._IdIn = data.TryGetValueSafe<string>("idIn");
-			    this._IdNotIn = data.TryGetValueSafe<string>("idNotIn");
-			    this._NameLike = data.TryGetValueSafe<string>("nameLike");
-			    this._NameMultiLikeOr = data.TryGetValueSafe<string>("nameMultiLikeOr");
-			    this._NameMultiLikeAnd = data.TryGetValueSafe<string>("nameMultiLikeAnd");
-			    this._NameEqual = data.TryGetValueSafe<string>("nameEqual");
-			    this._StatusEqual = (PartnerStatus)ParseEnum(typeof(PartnerStatus), data.TryGetValueSafe<int>("statusEqual"));
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
-			    this._PartnerPackageEqual = data.TryGetValueSafe<int>("partnerPackageEqual");
-			    this._PartnerPackageGreaterThanOrEqual = data.TryGetValueSafe<int>("partnerPackageGreaterThanOrEqual");
-			    this._PartnerPackageLessThanOrEqual = data.TryGetValueSafe<int>("partnerPackageLessThanOrEqual");
-			    this._PartnerPackageIn = data.TryGetValueSafe<string>("partnerPackageIn");
-			    this._PartnerGroupTypeEqual = (PartnerGroupType)ParseEnum(typeof(PartnerGroupType), data.TryGetValueSafe<int>("partnerGroupTypeEqual"));
-			    this._PartnerNameDescriptionWebsiteAdminNameAdminEmailLike = data.TryGetValueSafe<string>("partnerNameDescriptionWebsiteAdminNameAdminEmailLike");
+			if(node["idIn"] != null)
+			{
+				this._IdIn = node["idIn"].Value<string>();
+			}
+			if(node["idNotIn"] != null)
+			{
+				this._IdNotIn = node["idNotIn"].Value<string>();
+			}
+			if(node["nameLike"] != null)
+			{
+				this._NameLike = node["nameLike"].Value<string>();
+			}
+			if(node["nameMultiLikeOr"] != null)
+			{
+				this._NameMultiLikeOr = node["nameMultiLikeOr"].Value<string>();
+			}
+			if(node["nameMultiLikeAnd"] != null)
+			{
+				this._NameMultiLikeAnd = node["nameMultiLikeAnd"].Value<string>();
+			}
+			if(node["nameEqual"] != null)
+			{
+				this._NameEqual = node["nameEqual"].Value<string>();
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (PartnerStatus)ParseEnum(typeof(PartnerStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
+			if(node["partnerPackageEqual"] != null)
+			{
+				this._PartnerPackageEqual = ParseInt(node["partnerPackageEqual"].Value<string>());
+			}
+			if(node["partnerPackageGreaterThanOrEqual"] != null)
+			{
+				this._PartnerPackageGreaterThanOrEqual = ParseInt(node["partnerPackageGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["partnerPackageLessThanOrEqual"] != null)
+			{
+				this._PartnerPackageLessThanOrEqual = ParseInt(node["partnerPackageLessThanOrEqual"].Value<string>());
+			}
+			if(node["partnerPackageIn"] != null)
+			{
+				this._PartnerPackageIn = node["partnerPackageIn"].Value<string>();
+			}
+			if(node["partnerGroupTypeEqual"] != null)
+			{
+				this._PartnerGroupTypeEqual = (PartnerGroupType)ParseEnum(typeof(PartnerGroupType), node["partnerGroupTypeEqual"].Value<string>());
+			}
+			if(node["partnerNameDescriptionWebsiteAdminNameAdminEmailLike"] != null)
+			{
+				this._PartnerNameDescriptionWebsiteAdminNameAdminEmailLike = node["partnerNameDescriptionWebsiteAdminNameAdminEmailLike"].Value<string>();
+			}
 		}
 		#endregion
 

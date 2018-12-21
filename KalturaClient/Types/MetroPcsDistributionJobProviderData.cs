@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string AssetLocalPaths
 		{
 			get { return _AssetLocalPaths; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetLocalPaths");
 			}
 		}
+		[JsonProperty]
 		public string ThumbUrls
 		{
 			get { return _ThumbUrls; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public MetroPcsDistributionJobProviderData(XmlElement node) : base(node)
+		public MetroPcsDistributionJobProviderData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["assetLocalPaths"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "assetLocalPaths":
-						this._AssetLocalPaths = propertyNode.InnerText;
-						continue;
-					case "thumbUrls":
-						this._ThumbUrls = propertyNode.InnerText;
-						continue;
-				}
+				this._AssetLocalPaths = node["assetLocalPaths"].Value<string>();
 			}
-		}
-
-		public MetroPcsDistributionJobProviderData(IDictionary<string,object> data) : base(data)
-		{
-			    this._AssetLocalPaths = data.TryGetValueSafe<string>("assetLocalPaths");
-			    this._ThumbUrls = data.TryGetValueSafe<string>("thumbUrls");
+			if(node["thumbUrls"] != null)
+			{
+				this._ThumbUrls = node["thumbUrls"].Value<string>();
+			}
 		}
 		#endregion
 

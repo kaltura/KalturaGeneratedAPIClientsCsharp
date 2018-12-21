@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string HashName
 		{
 			get { return _HashName; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("HashName");
 			}
 		}
+		[JsonProperty]
 		public string HashSecret
 		{
 			get { return _HashSecret; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public HashCondition(XmlElement node) : base(node)
+		public HashCondition(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["hashName"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "hashName":
-						this._HashName = propertyNode.InnerText;
-						continue;
-					case "hashSecret":
-						this._HashSecret = propertyNode.InnerText;
-						continue;
-				}
+				this._HashName = node["hashName"].Value<string>();
 			}
-		}
-
-		public HashCondition(IDictionary<string,object> data) : base(data)
-		{
-			    this._HashName = data.TryGetValueSafe<string>("hashName");
-			    this._HashSecret = data.TryGetValueSafe<string>("hashSecret");
+			if(node["hashSecret"] != null)
+			{
+				this._HashSecret = node["hashSecret"].Value<string>();
+			}
 		}
 		#endregion
 

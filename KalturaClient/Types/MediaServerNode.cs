@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ApplicationName
 		{
 			get { return _ApplicationName; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ApplicationName");
 			}
 		}
+		[JsonProperty]
 		public IList<KeyValue> MediaServerPortConfig
 		{
 			get { return _MediaServerPortConfig; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaServerPortConfig");
 			}
 		}
+		[JsonProperty]
 		public IList<KeyValue> MediaServerPlaybackDomainConfig
 		{
 			get { return _MediaServerPlaybackDomainConfig; }
@@ -82,48 +87,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public MediaServerNode(XmlElement node) : base(node)
+		public MediaServerNode(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["applicationName"] != null)
 			{
-				switch (propertyNode.Name)
+				this._ApplicationName = node["applicationName"].Value<string>();
+			}
+			if(node["mediaServerPortConfig"] != null)
+			{
+				this._MediaServerPortConfig = new List<KeyValue>();
+				foreach(var arrayNode in node["mediaServerPortConfig"].Children())
 				{
-					case "applicationName":
-						this._ApplicationName = propertyNode.InnerText;
-						continue;
-					case "mediaServerPortConfig":
-						this._MediaServerPortConfig = new List<KeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._MediaServerPortConfig.Add(ObjectFactory.Create<KeyValue>(arrayNode));
-						}
-						continue;
-					case "mediaServerPlaybackDomainConfig":
-						this._MediaServerPlaybackDomainConfig = new List<KeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._MediaServerPlaybackDomainConfig.Add(ObjectFactory.Create<KeyValue>(arrayNode));
-						}
-						continue;
+					this._MediaServerPortConfig.Add(ObjectFactory.Create<KeyValue>(arrayNode));
 				}
 			}
-		}
-
-		public MediaServerNode(IDictionary<string,object> data) : base(data)
-		{
-			    this._ApplicationName = data.TryGetValueSafe<string>("applicationName");
-			    this._MediaServerPortConfig = new List<KeyValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("mediaServerPortConfig", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._MediaServerPortConfig.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._MediaServerPlaybackDomainConfig = new List<KeyValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("mediaServerPlaybackDomainConfig", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._MediaServerPlaybackDomainConfig.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
-			    }
+			if(node["mediaServerPlaybackDomainConfig"] != null)
+			{
+				this._MediaServerPlaybackDomainConfig = new List<KeyValue>();
+				foreach(var arrayNode in node["mediaServerPlaybackDomainConfig"].Children())
+				{
+					this._MediaServerPlaybackDomainConfig.Add(ObjectFactory.Create<KeyValue>(arrayNode));
+				}
+			}
 		}
 		#endregion
 

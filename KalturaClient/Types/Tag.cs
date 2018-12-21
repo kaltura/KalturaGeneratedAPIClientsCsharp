@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,33 +58,75 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public string TagValue
 		{
 			get { return _Tag; }
+			private set 
+			{ 
+				_Tag = value;
+				OnPropertyChanged("Tag");
+			}
 		}
+		[JsonProperty]
 		public TaggedObjectType TaggedObjectType
 		{
 			get { return _TaggedObjectType; }
+			private set 
+			{ 
+				_TaggedObjectType = value;
+				OnPropertyChanged("TaggedObjectType");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public int InstanceCount
 		{
 			get { return _InstanceCount; }
+			private set 
+			{ 
+				_InstanceCount = value;
+				OnPropertyChanged("InstanceCount");
+			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
 		#endregion
 
@@ -91,46 +135,36 @@ namespace Kaltura.Types
 		{
 		}
 
-		public Tag(XmlElement node) : base(node)
+		public Tag(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "tag":
-						this._Tag = propertyNode.InnerText;
-						continue;
-					case "taggedObjectType":
-						this._TaggedObjectType = (TaggedObjectType)StringEnum.Parse(typeof(TaggedObjectType), propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "instanceCount":
-						this._InstanceCount = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._Id = ParseInt(node["id"].Value<string>());
 			}
-		}
-
-		public Tag(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._Tag = data.TryGetValueSafe<string>("tag");
-			    this._TaggedObjectType = (TaggedObjectType)StringEnum.Parse(typeof(TaggedObjectType), data.TryGetValueSafe<string>("taggedObjectType"));
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._InstanceCount = data.TryGetValueSafe<int>("instanceCount");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			if(node["tag"] != null)
+			{
+				this._Tag = node["tag"].Value<string>();
+			}
+			if(node["taggedObjectType"] != null)
+			{
+				this._TaggedObjectType = (TaggedObjectType)StringEnum.Parse(typeof(TaggedObjectType), node["taggedObjectType"].Value<string>());
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["instanceCount"] != null)
+			{
+				this._InstanceCount = ParseInt(node["instanceCount"].Value<string>());
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
 		}
 		#endregion
 

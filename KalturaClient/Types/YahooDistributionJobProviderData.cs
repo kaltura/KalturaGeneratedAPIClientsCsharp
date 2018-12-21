@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string SmallThumbPath
 		{
 			get { return _SmallThumbPath; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SmallThumbPath");
 			}
 		}
+		[JsonProperty]
 		public string LargeThumbPath
 		{
 			get { return _LargeThumbPath; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LargeThumbPath");
 			}
 		}
+		[JsonProperty]
 		public string VideoAssetFilePath
 		{
 			get { return _VideoAssetFilePath; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public YahooDistributionJobProviderData(XmlElement node) : base(node)
+		public YahooDistributionJobProviderData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["smallThumbPath"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "smallThumbPath":
-						this._SmallThumbPath = propertyNode.InnerText;
-						continue;
-					case "largeThumbPath":
-						this._LargeThumbPath = propertyNode.InnerText;
-						continue;
-					case "videoAssetFilePath":
-						this._VideoAssetFilePath = propertyNode.InnerText;
-						continue;
-				}
+				this._SmallThumbPath = node["smallThumbPath"].Value<string>();
 			}
-		}
-
-		public YahooDistributionJobProviderData(IDictionary<string,object> data) : base(data)
-		{
-			    this._SmallThumbPath = data.TryGetValueSafe<string>("smallThumbPath");
-			    this._LargeThumbPath = data.TryGetValueSafe<string>("largeThumbPath");
-			    this._VideoAssetFilePath = data.TryGetValueSafe<string>("videoAssetFilePath");
+			if(node["largeThumbPath"] != null)
+			{
+				this._LargeThumbPath = node["largeThumbPath"].Value<string>();
+			}
+			if(node["videoAssetFilePath"] != null)
+			{
+				this._VideoAssetFilePath = node["videoAssetFilePath"].Value<string>();
+			}
 		}
 		#endregion
 

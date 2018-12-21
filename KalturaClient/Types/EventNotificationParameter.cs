@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Key
 		{
 			get { return _Key; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Key");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public StringValue Value
 		{
 			get { return _Value; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EventNotificationParameter(XmlElement node) : base(node)
+		public EventNotificationParameter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["key"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "key":
-						this._Key = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "value":
-						this._Value = ObjectFactory.Create<StringValue>(propertyNode);
-						continue;
-				}
+				this._Key = node["key"].Value<string>();
 			}
-		}
-
-		public EventNotificationParameter(IDictionary<string,object> data) : base(data)
-		{
-			    this._Key = data.TryGetValueSafe<string>("key");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._Value = ObjectFactory.Create<StringValue>(data.TryGetValueSafe<IDictionary<string,object>>("value"));
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["value"] != null)
+			{
+				this._Value = ObjectFactory.Create<StringValue>(node["value"]);
+			}
 		}
 		#endregion
 

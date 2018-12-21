@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int FromPartnerId
 		{
 			get { return _FromPartnerId; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FromPartnerId");
 			}
 		}
+		[JsonProperty]
 		public int ToPartnerId
 		{
 			get { return _ToPartnerId; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CopyPartnerJobData(XmlElement node) : base(node)
+		public CopyPartnerJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["fromPartnerId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "fromPartnerId":
-						this._FromPartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "toPartnerId":
-						this._ToPartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._FromPartnerId = ParseInt(node["fromPartnerId"].Value<string>());
 			}
-		}
-
-		public CopyPartnerJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._FromPartnerId = data.TryGetValueSafe<int>("fromPartnerId");
-			    this._ToPartnerId = data.TryGetValueSafe<int>("toPartnerId");
+			if(node["toPartnerId"] != null)
+			{
+				this._ToPartnerId = ParseInt(node["toPartnerId"].Value<string>());
+			}
 		}
 		#endregion
 

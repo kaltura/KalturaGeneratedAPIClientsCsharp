@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -58,6 +60,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string FlavorAssetId
 		{
 			get { return _FlavorAssetId; }
@@ -67,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetId");
 			}
 		}
+		[JsonProperty]
 		public string FlavorAssetEncryptionKey
 		{
 			get { return _FlavorAssetEncryptionKey; }
@@ -76,6 +80,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetEncryptionKey");
 			}
 		}
+		[JsonProperty]
 		public bool? CreateThumb
 		{
 			get { return _CreateThumb; }
@@ -85,6 +90,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreateThumb");
 			}
 		}
+		[JsonProperty]
 		public string ThumbPath
 		{
 			get { return _ThumbPath; }
@@ -94,6 +100,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbPath");
 			}
 		}
+		[JsonProperty]
 		public int ThumbOffset
 		{
 			get { return _ThumbOffset; }
@@ -103,6 +110,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbOffset");
 			}
 		}
+		[JsonProperty]
 		public int ThumbHeight
 		{
 			get { return _ThumbHeight; }
@@ -112,6 +120,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbHeight");
 			}
 		}
+		[JsonProperty]
 		public int ThumbBitrate
 		{
 			get { return _ThumbBitrate; }
@@ -121,6 +130,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbBitrate");
 			}
 		}
+		[JsonProperty]
 		public string CustomData
 		{
 			get { return _CustomData; }
@@ -137,50 +147,40 @@ namespace Kaltura.Types
 		{
 		}
 
-		public PostConvertJobData(XmlElement node) : base(node)
+		public PostConvertJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["flavorAssetId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "flavorAssetId":
-						this._FlavorAssetId = propertyNode.InnerText;
-						continue;
-					case "flavorAssetEncryptionKey":
-						this._FlavorAssetEncryptionKey = propertyNode.InnerText;
-						continue;
-					case "createThumb":
-						this._CreateThumb = ParseBool(propertyNode.InnerText);
-						continue;
-					case "thumbPath":
-						this._ThumbPath = propertyNode.InnerText;
-						continue;
-					case "thumbOffset":
-						this._ThumbOffset = ParseInt(propertyNode.InnerText);
-						continue;
-					case "thumbHeight":
-						this._ThumbHeight = ParseInt(propertyNode.InnerText);
-						continue;
-					case "thumbBitrate":
-						this._ThumbBitrate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "customData":
-						this._CustomData = propertyNode.InnerText;
-						continue;
-				}
+				this._FlavorAssetId = node["flavorAssetId"].Value<string>();
 			}
-		}
-
-		public PostConvertJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._FlavorAssetId = data.TryGetValueSafe<string>("flavorAssetId");
-			    this._FlavorAssetEncryptionKey = data.TryGetValueSafe<string>("flavorAssetEncryptionKey");
-			    this._CreateThumb = data.TryGetValueSafe<bool>("createThumb");
-			    this._ThumbPath = data.TryGetValueSafe<string>("thumbPath");
-			    this._ThumbOffset = data.TryGetValueSafe<int>("thumbOffset");
-			    this._ThumbHeight = data.TryGetValueSafe<int>("thumbHeight");
-			    this._ThumbBitrate = data.TryGetValueSafe<int>("thumbBitrate");
-			    this._CustomData = data.TryGetValueSafe<string>("customData");
+			if(node["flavorAssetEncryptionKey"] != null)
+			{
+				this._FlavorAssetEncryptionKey = node["flavorAssetEncryptionKey"].Value<string>();
+			}
+			if(node["createThumb"] != null)
+			{
+				this._CreateThumb = ParseBool(node["createThumb"].Value<string>());
+			}
+			if(node["thumbPath"] != null)
+			{
+				this._ThumbPath = node["thumbPath"].Value<string>();
+			}
+			if(node["thumbOffset"] != null)
+			{
+				this._ThumbOffset = ParseInt(node["thumbOffset"].Value<string>());
+			}
+			if(node["thumbHeight"] != null)
+			{
+				this._ThumbHeight = ParseInt(node["thumbHeight"].Value<string>());
+			}
+			if(node["thumbBitrate"] != null)
+			{
+				this._ThumbBitrate = ParseInt(node["thumbBitrate"].Value<string>());
+			}
+			if(node["customData"] != null)
+			{
+				this._CustomData = node["customData"].Value<string>();
+			}
 		}
 		#endregion
 

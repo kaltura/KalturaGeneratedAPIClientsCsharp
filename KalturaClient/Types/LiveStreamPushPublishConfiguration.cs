@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string PublishUrl
 		{
 			get { return _PublishUrl; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PublishUrl");
 			}
 		}
+		[JsonProperty]
 		public string BackupPublishUrl
 		{
 			get { return _BackupPublishUrl; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BackupPublishUrl");
 			}
 		}
+		[JsonProperty]
 		public string Port
 		{
 			get { return _Port; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public LiveStreamPushPublishConfiguration(XmlElement node) : base(node)
+		public LiveStreamPushPublishConfiguration(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["publishUrl"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "publishUrl":
-						this._PublishUrl = propertyNode.InnerText;
-						continue;
-					case "backupPublishUrl":
-						this._BackupPublishUrl = propertyNode.InnerText;
-						continue;
-					case "port":
-						this._Port = propertyNode.InnerText;
-						continue;
-				}
+				this._PublishUrl = node["publishUrl"].Value<string>();
 			}
-		}
-
-		public LiveStreamPushPublishConfiguration(IDictionary<string,object> data) : base(data)
-		{
-			    this._PublishUrl = data.TryGetValueSafe<string>("publishUrl");
-			    this._BackupPublishUrl = data.TryGetValueSafe<string>("backupPublishUrl");
-			    this._Port = data.TryGetValueSafe<string>("port");
+			if(node["backupPublishUrl"] != null)
+			{
+				this._BackupPublishUrl = node["backupPublishUrl"].Value<string>();
+			}
+			if(node["port"] != null)
+			{
+				this._Port = node["port"].Value<string>();
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string FileName
 		{
 			get { return _FileName; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileName");
 			}
 		}
+		[JsonProperty]
 		public string Referrer
 		{
 			get { return _Referrer; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FlavorAssetUrlOptions(XmlElement node) : base(node)
+		public FlavorAssetUrlOptions(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["fileName"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "fileName":
-						this._FileName = propertyNode.InnerText;
-						continue;
-					case "referrer":
-						this._Referrer = propertyNode.InnerText;
-						continue;
-				}
+				this._FileName = node["fileName"].Value<string>();
 			}
-		}
-
-		public FlavorAssetUrlOptions(IDictionary<string,object> data) : base(data)
-		{
-			    this._FileName = data.TryGetValueSafe<string>("fileName");
-			    this._Referrer = data.TryGetValueSafe<string>("referrer");
+			if(node["referrer"] != null)
+			{
+				this._Referrer = node["referrer"].Value<string>();
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Object
 		{
 			get { return _Object; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Object");
 			}
 		}
+		[JsonProperty]
 		public string Parameter
 		{
 			get { return _Parameter; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Parameter");
 			}
 		}
+		[JsonProperty]
 		public ApiParameterPermissionItemAction Action
 		{
 			get { return _Action; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ApiParameterPermissionItem(XmlElement node) : base(node)
+		public ApiParameterPermissionItem(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["object"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "object":
-						this._Object = propertyNode.InnerText;
-						continue;
-					case "parameter":
-						this._Parameter = propertyNode.InnerText;
-						continue;
-					case "action":
-						this._Action = (ApiParameterPermissionItemAction)StringEnum.Parse(typeof(ApiParameterPermissionItemAction), propertyNode.InnerText);
-						continue;
-				}
+				this._Object = node["object"].Value<string>();
 			}
-		}
-
-		public ApiParameterPermissionItem(IDictionary<string,object> data) : base(data)
-		{
-			    this._Object = data.TryGetValueSafe<string>("object");
-			    this._Parameter = data.TryGetValueSafe<string>("parameter");
-			    this._Action = (ApiParameterPermissionItemAction)StringEnum.Parse(typeof(ApiParameterPermissionItemAction), data.TryGetValueSafe<string>("action"));
+			if(node["parameter"] != null)
+			{
+				this._Parameter = node["parameter"].Value<string>();
+			}
+			if(node["action"] != null)
+			{
+				this._Action = (ApiParameterPermissionItemAction)StringEnum.Parse(typeof(ApiParameterPermissionItemAction), node["action"].Value<string>());
+			}
 		}
 		#endregion
 

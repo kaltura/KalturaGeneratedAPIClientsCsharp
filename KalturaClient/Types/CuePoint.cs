@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -78,18 +80,37 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public CuePointType CuePointType
 		{
 			get { return _CuePointType; }
+			private set 
+			{ 
+				_CuePointType = value;
+				OnPropertyChanged("CuePointType");
+			}
 		}
+		[JsonProperty]
 		public CuePointStatus Status
 		{
 			get { return _Status; }
+			private set 
+			{ 
+				_Status = value;
+				OnPropertyChanged("Status");
+			}
 		}
+		[JsonProperty]
 		public string EntryId
 		{
 			get { return _EntryId; }
@@ -99,18 +120,37 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public int TriggeredAt
 		{
 			get { return _TriggeredAt; }
@@ -120,6 +160,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TriggeredAt");
 			}
 		}
+		[JsonProperty]
 		public string Tags
 		{
 			get { return _Tags; }
@@ -129,6 +170,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
+		[JsonProperty]
 		public int StartTime
 		{
 			get { return _StartTime; }
@@ -138,10 +180,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartTime");
 			}
 		}
+		[JsonProperty]
 		public string UserId
 		{
 			get { return _UserId; }
+			private set 
+			{ 
+				_UserId = value;
+				OnPropertyChanged("UserId");
+			}
 		}
+		[JsonProperty]
 		public string PartnerData
 		{
 			get { return _PartnerData; }
@@ -151,6 +200,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerData");
 			}
 		}
+		[JsonProperty]
 		public int PartnerSortValue
 		{
 			get { return _PartnerSortValue; }
@@ -160,6 +210,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerSortValue");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean ForceStop
 		{
 			get { return _ForceStop; }
@@ -169,6 +220,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ForceStop");
 			}
 		}
+		[JsonProperty]
 		public int ThumbOffset
 		{
 			get { return _ThumbOffset; }
@@ -178,6 +230,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbOffset");
 			}
 		}
+		[JsonProperty]
 		public string SystemName
 		{
 			get { return _SystemName; }
@@ -187,13 +240,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemName");
 			}
 		}
+		[JsonProperty]
 		public bool? IsMomentary
 		{
 			get { return _IsMomentary; }
+			private set 
+			{ 
+				_IsMomentary = value;
+				OnPropertyChanged("IsMomentary");
+			}
 		}
+		[JsonProperty]
 		public string CopiedFrom
 		{
 			get { return _CopiedFrom; }
+			private set 
+			{ 
+				_CopiedFrom = value;
+				OnPropertyChanged("CopiedFrom");
+			}
 		}
 		#endregion
 
@@ -202,90 +267,80 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CuePoint(XmlElement node) : base(node)
+		public CuePoint(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = propertyNode.InnerText;
-						continue;
-					case "cuePointType":
-						this._CuePointType = (CuePointType)StringEnum.Parse(typeof(CuePointType), propertyNode.InnerText);
-						continue;
-					case "status":
-						this._Status = (CuePointStatus)ParseEnum(typeof(CuePointStatus), propertyNode.InnerText);
-						continue;
-					case "entryId":
-						this._EntryId = propertyNode.InnerText;
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "triggeredAt":
-						this._TriggeredAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "tags":
-						this._Tags = propertyNode.InnerText;
-						continue;
-					case "startTime":
-						this._StartTime = ParseInt(propertyNode.InnerText);
-						continue;
-					case "userId":
-						this._UserId = propertyNode.InnerText;
-						continue;
-					case "partnerData":
-						this._PartnerData = propertyNode.InnerText;
-						continue;
-					case "partnerSortValue":
-						this._PartnerSortValue = ParseInt(propertyNode.InnerText);
-						continue;
-					case "forceStop":
-						this._ForceStop = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "thumbOffset":
-						this._ThumbOffset = ParseInt(propertyNode.InnerText);
-						continue;
-					case "systemName":
-						this._SystemName = propertyNode.InnerText;
-						continue;
-					case "isMomentary":
-						this._IsMomentary = ParseBool(propertyNode.InnerText);
-						continue;
-					case "copiedFrom":
-						this._CopiedFrom = propertyNode.InnerText;
-						continue;
-				}
+				this._Id = node["id"].Value<string>();
 			}
-		}
-
-		public CuePoint(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<string>("id");
-			    this._CuePointType = (CuePointType)StringEnum.Parse(typeof(CuePointType), data.TryGetValueSafe<string>("cuePointType"));
-			    this._Status = (CuePointStatus)ParseEnum(typeof(CuePointStatus), data.TryGetValueSafe<int>("status"));
-			    this._EntryId = data.TryGetValueSafe<string>("entryId");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._TriggeredAt = data.TryGetValueSafe<int>("triggeredAt");
-			    this._Tags = data.TryGetValueSafe<string>("tags");
-			    this._StartTime = data.TryGetValueSafe<int>("startTime");
-			    this._UserId = data.TryGetValueSafe<string>("userId");
-			    this._PartnerData = data.TryGetValueSafe<string>("partnerData");
-			    this._PartnerSortValue = data.TryGetValueSafe<int>("partnerSortValue");
-			    this._ForceStop = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("forceStop"));
-			    this._ThumbOffset = data.TryGetValueSafe<int>("thumbOffset");
-			    this._SystemName = data.TryGetValueSafe<string>("systemName");
-			    this._IsMomentary = data.TryGetValueSafe<bool>("isMomentary");
-			    this._CopiedFrom = data.TryGetValueSafe<string>("copiedFrom");
+			if(node["cuePointType"] != null)
+			{
+				this._CuePointType = (CuePointType)StringEnum.Parse(typeof(CuePointType), node["cuePointType"].Value<string>());
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (CuePointStatus)ParseEnum(typeof(CuePointStatus), node["status"].Value<string>());
+			}
+			if(node["entryId"] != null)
+			{
+				this._EntryId = node["entryId"].Value<string>();
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["triggeredAt"] != null)
+			{
+				this._TriggeredAt = ParseInt(node["triggeredAt"].Value<string>());
+			}
+			if(node["tags"] != null)
+			{
+				this._Tags = node["tags"].Value<string>();
+			}
+			if(node["startTime"] != null)
+			{
+				this._StartTime = ParseInt(node["startTime"].Value<string>());
+			}
+			if(node["userId"] != null)
+			{
+				this._UserId = node["userId"].Value<string>();
+			}
+			if(node["partnerData"] != null)
+			{
+				this._PartnerData = node["partnerData"].Value<string>();
+			}
+			if(node["partnerSortValue"] != null)
+			{
+				this._PartnerSortValue = ParseInt(node["partnerSortValue"].Value<string>());
+			}
+			if(node["forceStop"] != null)
+			{
+				this._ForceStop = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["forceStop"].Value<string>());
+			}
+			if(node["thumbOffset"] != null)
+			{
+				this._ThumbOffset = ParseInt(node["thumbOffset"].Value<string>());
+			}
+			if(node["systemName"] != null)
+			{
+				this._SystemName = node["systemName"].Value<string>();
+			}
+			if(node["isMomentary"] != null)
+			{
+				this._IsMomentary = ParseBool(node["isMomentary"].Value<string>());
+			}
+			if(node["copiedFrom"] != null)
+			{
+				this._CopiedFrom = node["copiedFrom"].Value<string>();
+			}
 		}
 		#endregion
 

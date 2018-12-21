@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Version
 		{
 			get { return _Version; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Version");
 			}
 		}
+		[JsonProperty]
 		public string AssetId
 		{
 			get { return _AssetId; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetId");
 			}
 		}
+		[JsonProperty]
 		public string RemoteId
 		{
 			get { return _RemoteId; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DistributionRemoteMediaFile(XmlElement node) : base(node)
+		public DistributionRemoteMediaFile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["version"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "version":
-						this._Version = propertyNode.InnerText;
-						continue;
-					case "assetId":
-						this._AssetId = propertyNode.InnerText;
-						continue;
-					case "remoteId":
-						this._RemoteId = propertyNode.InnerText;
-						continue;
-				}
+				this._Version = node["version"].Value<string>();
 			}
-		}
-
-		public DistributionRemoteMediaFile(IDictionary<string,object> data) : base(data)
-		{
-			    this._Version = data.TryGetValueSafe<string>("version");
-			    this._AssetId = data.TryGetValueSafe<string>("assetId");
-			    this._RemoteId = data.TryGetValueSafe<string>("remoteId");
+			if(node["assetId"] != null)
+			{
+				this._AssetId = node["assetId"].Value<string>();
+			}
+			if(node["remoteId"] != null)
+			{
+				this._RemoteId = node["remoteId"].Value<string>();
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,6 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public AttachmentType FormatEqual
 		{
 			get { return _FormatEqual; }
@@ -61,6 +64,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FormatEqual");
 			}
 		}
+		[JsonProperty]
 		public string FormatIn
 		{
 			get { return _FormatIn; }
@@ -70,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FormatIn");
 			}
 		}
+		[JsonProperty]
 		public AttachmentAssetStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -79,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -88,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		[JsonProperty]
 		public string StatusNotIn
 		{
 			get { return _StatusNotIn; }
@@ -104,38 +111,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AttachmentAssetBaseFilter(XmlElement node) : base(node)
+		public AttachmentAssetBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["formatEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "formatEqual":
-						this._FormatEqual = (AttachmentType)StringEnum.Parse(typeof(AttachmentType), propertyNode.InnerText);
-						continue;
-					case "formatIn":
-						this._FormatIn = propertyNode.InnerText;
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (AttachmentAssetStatus)ParseEnum(typeof(AttachmentAssetStatus), propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-					case "statusNotIn":
-						this._StatusNotIn = propertyNode.InnerText;
-						continue;
-				}
+				this._FormatEqual = (AttachmentType)StringEnum.Parse(typeof(AttachmentType), node["formatEqual"].Value<string>());
 			}
-		}
-
-		public AttachmentAssetBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._FormatEqual = (AttachmentType)StringEnum.Parse(typeof(AttachmentType), data.TryGetValueSafe<string>("formatEqual"));
-			    this._FormatIn = data.TryGetValueSafe<string>("formatIn");
-			    this._StatusEqual = (AttachmentAssetStatus)ParseEnum(typeof(AttachmentAssetStatus), data.TryGetValueSafe<int>("statusEqual"));
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
-			    this._StatusNotIn = data.TryGetValueSafe<string>("statusNotIn");
+			if(node["formatIn"] != null)
+			{
+				this._FormatIn = node["formatIn"].Value<string>();
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (AttachmentAssetStatus)ParseEnum(typeof(AttachmentAssetStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
+			if(node["statusNotIn"] != null)
+			{
+				this._StatusNotIn = node["statusNotIn"].Value<string>();
+			}
 		}
 		#endregion
 

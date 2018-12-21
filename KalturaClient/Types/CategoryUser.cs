@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -62,6 +64,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int CategoryId
 		{
 			get { return _CategoryId; }
@@ -71,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryId");
 			}
 		}
+		[JsonProperty]
 		public string UserId
 		{
 			get { return _UserId; }
@@ -80,10 +84,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserId");
 			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public CategoryUserPermissionLevel PermissionLevel
 		{
 			get { return _PermissionLevel; }
@@ -93,18 +104,37 @@ namespace Kaltura.Types
 				OnPropertyChanged("PermissionLevel");
 			}
 		}
+		[JsonProperty]
 		public CategoryUserStatus Status
 		{
 			get { return _Status; }
+			private set 
+			{ 
+				_Status = value;
+				OnPropertyChanged("Status");
+			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public UpdateMethodType UpdateMethod
 		{
 			get { return _UpdateMethod; }
@@ -114,10 +144,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdateMethod");
 			}
 		}
+		[JsonProperty]
 		public string CategoryFullIds
 		{
 			get { return _CategoryFullIds; }
+			private set 
+			{ 
+				_CategoryFullIds = value;
+				OnPropertyChanged("CategoryFullIds");
+			}
 		}
+		[JsonProperty]
 		public string PermissionNames
 		{
 			get { return _PermissionNames; }
@@ -134,58 +171,48 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CategoryUser(XmlElement node) : base(node)
+		public CategoryUser(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["categoryId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "categoryId":
-						this._CategoryId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "userId":
-						this._UserId = propertyNode.InnerText;
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "permissionLevel":
-						this._PermissionLevel = (CategoryUserPermissionLevel)ParseEnum(typeof(CategoryUserPermissionLevel), propertyNode.InnerText);
-						continue;
-					case "status":
-						this._Status = (CategoryUserStatus)ParseEnum(typeof(CategoryUserStatus), propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updateMethod":
-						this._UpdateMethod = (UpdateMethodType)ParseEnum(typeof(UpdateMethodType), propertyNode.InnerText);
-						continue;
-					case "categoryFullIds":
-						this._CategoryFullIds = propertyNode.InnerText;
-						continue;
-					case "permissionNames":
-						this._PermissionNames = propertyNode.InnerText;
-						continue;
-				}
+				this._CategoryId = ParseInt(node["categoryId"].Value<string>());
 			}
-		}
-
-		public CategoryUser(IDictionary<string,object> data) : base(data)
-		{
-			    this._CategoryId = data.TryGetValueSafe<int>("categoryId");
-			    this._UserId = data.TryGetValueSafe<string>("userId");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._PermissionLevel = (CategoryUserPermissionLevel)ParseEnum(typeof(CategoryUserPermissionLevel), data.TryGetValueSafe<int>("permissionLevel"));
-			    this._Status = (CategoryUserStatus)ParseEnum(typeof(CategoryUserStatus), data.TryGetValueSafe<int>("status"));
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._UpdateMethod = (UpdateMethodType)ParseEnum(typeof(UpdateMethodType), data.TryGetValueSafe<int>("updateMethod"));
-			    this._CategoryFullIds = data.TryGetValueSafe<string>("categoryFullIds");
-			    this._PermissionNames = data.TryGetValueSafe<string>("permissionNames");
+			if(node["userId"] != null)
+			{
+				this._UserId = node["userId"].Value<string>();
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["permissionLevel"] != null)
+			{
+				this._PermissionLevel = (CategoryUserPermissionLevel)ParseEnum(typeof(CategoryUserPermissionLevel), node["permissionLevel"].Value<string>());
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (CategoryUserStatus)ParseEnum(typeof(CategoryUserStatus), node["status"].Value<string>());
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["updateMethod"] != null)
+			{
+				this._UpdateMethod = (UpdateMethodType)ParseEnum(typeof(UpdateMethodType), node["updateMethod"].Value<string>());
+			}
+			if(node["categoryFullIds"] != null)
+			{
+				this._CategoryFullIds = node["categoryFullIds"].Value<string>();
+			}
+			if(node["permissionNames"] != null)
+			{
+				this._PermissionNames = node["permissionNames"].Value<string>();
+			}
 		}
 		#endregion
 

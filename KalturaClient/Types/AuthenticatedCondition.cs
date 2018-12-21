@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public IList<StringValue> Privileges
 		{
 			get { return _Privileges; }
@@ -60,31 +63,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AuthenticatedCondition(XmlElement node) : base(node)
+		public AuthenticatedCondition(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["privileges"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Privileges = new List<StringValue>();
+				foreach(var arrayNode in node["privileges"].Children())
 				{
-					case "privileges":
-						this._Privileges = new List<StringValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Privileges.Add(ObjectFactory.Create<StringValue>(arrayNode));
-						}
-						continue;
+					this._Privileges.Add(ObjectFactory.Create<StringValue>(arrayNode));
 				}
 			}
-		}
-
-		public AuthenticatedCondition(IDictionary<string,object> data) : base(data)
-		{
-			    this._Privileges = new List<StringValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("privileges", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Privileges.Add(ObjectFactory.Create<StringValue>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

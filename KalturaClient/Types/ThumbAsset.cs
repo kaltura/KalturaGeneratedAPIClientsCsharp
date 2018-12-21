@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int ThumbParamsId
 		{
 			get { return _ThumbParamsId; }
@@ -59,17 +62,35 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbParamsId");
 			}
 		}
+		[JsonProperty]
 		public int Width
 		{
 			get { return _Width; }
+			private set 
+			{ 
+				_Width = value;
+				OnPropertyChanged("Width");
+			}
 		}
+		[JsonProperty]
 		public int Height
 		{
 			get { return _Height; }
+			private set 
+			{ 
+				_Height = value;
+				OnPropertyChanged("Height");
+			}
 		}
+		[JsonProperty]
 		public ThumbAssetStatus Status
 		{
 			get { return _Status; }
+			private set 
+			{ 
+				_Status = value;
+				OnPropertyChanged("Status");
+			}
 		}
 		#endregion
 
@@ -78,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ThumbAsset(XmlElement node) : base(node)
+		public ThumbAsset(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["thumbParamsId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "thumbParamsId":
-						this._ThumbParamsId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "width":
-						this._Width = ParseInt(propertyNode.InnerText);
-						continue;
-					case "height":
-						this._Height = ParseInt(propertyNode.InnerText);
-						continue;
-					case "status":
-						this._Status = (ThumbAssetStatus)ParseEnum(typeof(ThumbAssetStatus), propertyNode.InnerText);
-						continue;
-				}
+				this._ThumbParamsId = ParseInt(node["thumbParamsId"].Value<string>());
 			}
-		}
-
-		public ThumbAsset(IDictionary<string,object> data) : base(data)
-		{
-			    this._ThumbParamsId = data.TryGetValueSafe<int>("thumbParamsId");
-			    this._Width = data.TryGetValueSafe<int>("width");
-			    this._Height = data.TryGetValueSafe<int>("height");
-			    this._Status = (ThumbAssetStatus)ParseEnum(typeof(ThumbAssetStatus), data.TryGetValueSafe<int>("status"));
+			if(node["width"] != null)
+			{
+				this._Width = ParseInt(node["width"].Value<string>());
+			}
+			if(node["height"] != null)
+			{
+				this._Height = ParseInt(node["height"].Value<string>());
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (ThumbAssetStatus)ParseEnum(typeof(ThumbAssetStatus), node["status"].Value<string>());
+			}
 		}
 		#endregion
 

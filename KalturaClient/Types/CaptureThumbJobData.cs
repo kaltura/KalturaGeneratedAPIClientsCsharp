@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -60,6 +62,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public FileContainer FileContainer
 		{
 			get { return _FileContainer; }
@@ -69,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileContainer");
 			}
 		}
+		[JsonProperty]
 		public string ActualSrcFileSyncLocalPath
 		{
 			get { return _ActualSrcFileSyncLocalPath; }
@@ -78,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ActualSrcFileSyncLocalPath");
 			}
 		}
+		[JsonProperty]
 		public string SrcFileSyncRemoteUrl
 		{
 			get { return _SrcFileSyncRemoteUrl; }
@@ -87,6 +92,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcFileSyncRemoteUrl");
 			}
 		}
+		[JsonProperty]
 		public int ThumbParamsOutputId
 		{
 			get { return _ThumbParamsOutputId; }
@@ -96,6 +102,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbParamsOutputId");
 			}
 		}
+		[JsonProperty]
 		public string ThumbAssetId
 		{
 			get { return _ThumbAssetId; }
@@ -105,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbAssetId");
 			}
 		}
+		[JsonProperty]
 		public string SrcAssetId
 		{
 			get { return _SrcAssetId; }
@@ -114,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcAssetId");
 			}
 		}
+		[JsonProperty]
 		public string SrcAssetEncryptionKey
 		{
 			get { return _SrcAssetEncryptionKey; }
@@ -123,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcAssetEncryptionKey");
 			}
 		}
+		[JsonProperty]
 		public AssetType SrcAssetType
 		{
 			get { return _SrcAssetType; }
@@ -132,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcAssetType");
 			}
 		}
+		[JsonProperty]
 		public string ThumbPath
 		{
 			get { return _ThumbPath; }
@@ -148,54 +159,44 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CaptureThumbJobData(XmlElement node) : base(node)
+		public CaptureThumbJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["fileContainer"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "fileContainer":
-						this._FileContainer = ObjectFactory.Create<FileContainer>(propertyNode);
-						continue;
-					case "actualSrcFileSyncLocalPath":
-						this._ActualSrcFileSyncLocalPath = propertyNode.InnerText;
-						continue;
-					case "srcFileSyncRemoteUrl":
-						this._SrcFileSyncRemoteUrl = propertyNode.InnerText;
-						continue;
-					case "thumbParamsOutputId":
-						this._ThumbParamsOutputId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "thumbAssetId":
-						this._ThumbAssetId = propertyNode.InnerText;
-						continue;
-					case "srcAssetId":
-						this._SrcAssetId = propertyNode.InnerText;
-						continue;
-					case "srcAssetEncryptionKey":
-						this._SrcAssetEncryptionKey = propertyNode.InnerText;
-						continue;
-					case "srcAssetType":
-						this._SrcAssetType = (AssetType)StringEnum.Parse(typeof(AssetType), propertyNode.InnerText);
-						continue;
-					case "thumbPath":
-						this._ThumbPath = propertyNode.InnerText;
-						continue;
-				}
+				this._FileContainer = ObjectFactory.Create<FileContainer>(node["fileContainer"]);
 			}
-		}
-
-		public CaptureThumbJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._FileContainer = ObjectFactory.Create<FileContainer>(data.TryGetValueSafe<IDictionary<string,object>>("fileContainer"));
-			    this._ActualSrcFileSyncLocalPath = data.TryGetValueSafe<string>("actualSrcFileSyncLocalPath");
-			    this._SrcFileSyncRemoteUrl = data.TryGetValueSafe<string>("srcFileSyncRemoteUrl");
-			    this._ThumbParamsOutputId = data.TryGetValueSafe<int>("thumbParamsOutputId");
-			    this._ThumbAssetId = data.TryGetValueSafe<string>("thumbAssetId");
-			    this._SrcAssetId = data.TryGetValueSafe<string>("srcAssetId");
-			    this._SrcAssetEncryptionKey = data.TryGetValueSafe<string>("srcAssetEncryptionKey");
-			    this._SrcAssetType = (AssetType)StringEnum.Parse(typeof(AssetType), data.TryGetValueSafe<string>("srcAssetType"));
-			    this._ThumbPath = data.TryGetValueSafe<string>("thumbPath");
+			if(node["actualSrcFileSyncLocalPath"] != null)
+			{
+				this._ActualSrcFileSyncLocalPath = node["actualSrcFileSyncLocalPath"].Value<string>();
+			}
+			if(node["srcFileSyncRemoteUrl"] != null)
+			{
+				this._SrcFileSyncRemoteUrl = node["srcFileSyncRemoteUrl"].Value<string>();
+			}
+			if(node["thumbParamsOutputId"] != null)
+			{
+				this._ThumbParamsOutputId = ParseInt(node["thumbParamsOutputId"].Value<string>());
+			}
+			if(node["thumbAssetId"] != null)
+			{
+				this._ThumbAssetId = node["thumbAssetId"].Value<string>();
+			}
+			if(node["srcAssetId"] != null)
+			{
+				this._SrcAssetId = node["srcAssetId"].Value<string>();
+			}
+			if(node["srcAssetEncryptionKey"] != null)
+			{
+				this._SrcAssetEncryptionKey = node["srcAssetEncryptionKey"].Value<string>();
+			}
+			if(node["srcAssetType"] != null)
+			{
+				this._SrcAssetType = (AssetType)StringEnum.Parse(typeof(AssetType), node["srcAssetType"].Value<string>());
+			}
+			if(node["thumbPath"] != null)
+			{
+				this._ThumbPath = node["thumbPath"].Value<string>();
+			}
 		}
 		#endregion
 

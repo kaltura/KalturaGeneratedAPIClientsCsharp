@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string DeliveryProfileIds
 		{
 			get { return _DeliveryProfileIds; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeliveryProfileIds");
 			}
 		}
+		[JsonProperty]
 		public bool? IsBlockedList
 		{
 			get { return _IsBlockedList; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AccessControlLimitDeliveryProfilesAction(XmlElement node) : base(node)
+		public AccessControlLimitDeliveryProfilesAction(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["deliveryProfileIds"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "deliveryProfileIds":
-						this._DeliveryProfileIds = propertyNode.InnerText;
-						continue;
-					case "isBlockedList":
-						this._IsBlockedList = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._DeliveryProfileIds = node["deliveryProfileIds"].Value<string>();
 			}
-		}
-
-		public AccessControlLimitDeliveryProfilesAction(IDictionary<string,object> data) : base(data)
-		{
-			    this._DeliveryProfileIds = data.TryGetValueSafe<string>("deliveryProfileIds");
-			    this._IsBlockedList = data.TryGetValueSafe<bool>("isBlockedList");
+			if(node["isBlockedList"] != null)
+			{
+				this._IsBlockedList = ParseBool(node["isBlockedList"].Value<string>());
+			}
 		}
 		#endregion
 

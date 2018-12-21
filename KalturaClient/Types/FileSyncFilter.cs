@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public NullableBoolean CurrentDc
 		{
 			get { return _CurrentDc; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CurrentDc");
 			}
 		}
+		[JsonProperty]
 		public new FileSyncOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FileSyncFilter(XmlElement node) : base(node)
+		public FileSyncFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["currentDc"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "currentDc":
-						this._CurrentDc = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "orderBy":
-						this._OrderBy = (FileSyncOrderBy)StringEnum.Parse(typeof(FileSyncOrderBy), propertyNode.InnerText);
-						continue;
-				}
+				this._CurrentDc = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["currentDc"].Value<string>());
 			}
-		}
-
-		public FileSyncFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._CurrentDc = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("currentDc"));
-			    this._OrderBy = (FileSyncOrderBy)StringEnum.Parse(typeof(FileSyncOrderBy), data.TryGetValueSafe<string>("orderBy"));
+			if(node["orderBy"] != null)
+			{
+				this._OrderBy = (FileSyncOrderBy)StringEnum.Parse(typeof(FileSyncOrderBy), node["orderBy"].Value<string>());
+			}
 		}
 		#endregion
 

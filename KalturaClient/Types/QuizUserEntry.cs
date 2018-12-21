@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,9 +46,15 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public float Score
 		{
 			get { return _Score; }
+			private set 
+			{ 
+				_Score = value;
+				OnPropertyChanged("Score");
+			}
 		}
 		#endregion
 
@@ -55,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public QuizUserEntry(XmlElement node) : base(node)
+		public QuizUserEntry(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["score"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "score":
-						this._Score = ParseFloat(propertyNode.InnerText);
-						continue;
-				}
+				this._Score = ParseFloat(node["score"].Value<string>());
 			}
-		}
-
-		public QuizUserEntry(IDictionary<string,object> data) : base(data)
-		{
-			    this._Score = data.TryGetValueSafe<float>("score");
 		}
 		#endregion
 

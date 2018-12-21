@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int CategoryId
 		{
 			get { return _CategoryId; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryId");
 			}
 		}
+		[JsonProperty]
 		public int LastUpdatedCategoryEntryCreatedAt
 		{
 			get { return _LastUpdatedCategoryEntryCreatedAt; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastUpdatedCategoryEntryCreatedAt");
 			}
 		}
+		[JsonProperty]
 		public int LastUpdatedCategoryCreatedAt
 		{
 			get { return _LastUpdatedCategoryCreatedAt; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public SyncCategoryPrivacyContextJobData(XmlElement node) : base(node)
+		public SyncCategoryPrivacyContextJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["categoryId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "categoryId":
-						this._CategoryId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "lastUpdatedCategoryEntryCreatedAt":
-						this._LastUpdatedCategoryEntryCreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "lastUpdatedCategoryCreatedAt":
-						this._LastUpdatedCategoryCreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._CategoryId = ParseInt(node["categoryId"].Value<string>());
 			}
-		}
-
-		public SyncCategoryPrivacyContextJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._CategoryId = data.TryGetValueSafe<int>("categoryId");
-			    this._LastUpdatedCategoryEntryCreatedAt = data.TryGetValueSafe<int>("lastUpdatedCategoryEntryCreatedAt");
-			    this._LastUpdatedCategoryCreatedAt = data.TryGetValueSafe<int>("lastUpdatedCategoryCreatedAt");
+			if(node["lastUpdatedCategoryEntryCreatedAt"] != null)
+			{
+				this._LastUpdatedCategoryEntryCreatedAt = ParseInt(node["lastUpdatedCategoryEntryCreatedAt"].Value<string>());
+			}
+			if(node["lastUpdatedCategoryCreatedAt"] != null)
+			{
+				this._LastUpdatedCategoryCreatedAt = ParseInt(node["lastUpdatedCategoryCreatedAt"].Value<string>());
+			}
 		}
 		#endregion
 

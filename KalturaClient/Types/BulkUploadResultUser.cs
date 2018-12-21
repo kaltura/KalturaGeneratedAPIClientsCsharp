@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -70,6 +72,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string UserId
 		{
 			get { return _UserId; }
@@ -79,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserId");
 			}
 		}
+		[JsonProperty]
 		public string ScreenName
 		{
 			get { return _ScreenName; }
@@ -88,6 +92,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ScreenName");
 			}
 		}
+		[JsonProperty]
 		public string Email
 		{
 			get { return _Email; }
@@ -97,6 +102,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Email");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -106,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public string Tags
 		{
 			get { return _Tags; }
@@ -115,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
+		[JsonProperty]
 		public int DateOfBirth
 		{
 			get { return _DateOfBirth; }
@@ -124,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DateOfBirth");
 			}
 		}
+		[JsonProperty]
 		public string Country
 		{
 			get { return _Country; }
@@ -133,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Country");
 			}
 		}
+		[JsonProperty]
 		public string State
 		{
 			get { return _State; }
@@ -142,6 +152,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("State");
 			}
 		}
+		[JsonProperty]
 		public string City
 		{
 			get { return _City; }
@@ -151,6 +162,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("City");
 			}
 		}
+		[JsonProperty]
 		public string Zip
 		{
 			get { return _Zip; }
@@ -160,6 +172,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Zip");
 			}
 		}
+		[JsonProperty]
 		public int Gender
 		{
 			get { return _Gender; }
@@ -169,6 +182,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Gender");
 			}
 		}
+		[JsonProperty]
 		public string FirstName
 		{
 			get { return _FirstName; }
@@ -178,6 +192,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FirstName");
 			}
 		}
+		[JsonProperty]
 		public string LastName
 		{
 			get { return _LastName; }
@@ -187,6 +202,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastName");
 			}
 		}
+		[JsonProperty]
 		public string Group
 		{
 			get { return _Group; }
@@ -203,74 +219,64 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BulkUploadResultUser(XmlElement node) : base(node)
+		public BulkUploadResultUser(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["userId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "userId":
-						this._UserId = propertyNode.InnerText;
-						continue;
-					case "screenName":
-						this._ScreenName = propertyNode.InnerText;
-						continue;
-					case "email":
-						this._Email = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "tags":
-						this._Tags = propertyNode.InnerText;
-						continue;
-					case "dateOfBirth":
-						this._DateOfBirth = ParseInt(propertyNode.InnerText);
-						continue;
-					case "country":
-						this._Country = propertyNode.InnerText;
-						continue;
-					case "state":
-						this._State = propertyNode.InnerText;
-						continue;
-					case "city":
-						this._City = propertyNode.InnerText;
-						continue;
-					case "zip":
-						this._Zip = propertyNode.InnerText;
-						continue;
-					case "gender":
-						this._Gender = ParseInt(propertyNode.InnerText);
-						continue;
-					case "firstName":
-						this._FirstName = propertyNode.InnerText;
-						continue;
-					case "lastName":
-						this._LastName = propertyNode.InnerText;
-						continue;
-					case "group":
-						this._Group = propertyNode.InnerText;
-						continue;
-				}
+				this._UserId = node["userId"].Value<string>();
 			}
-		}
-
-		public BulkUploadResultUser(IDictionary<string,object> data) : base(data)
-		{
-			    this._UserId = data.TryGetValueSafe<string>("userId");
-			    this._ScreenName = data.TryGetValueSafe<string>("screenName");
-			    this._Email = data.TryGetValueSafe<string>("email");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._Tags = data.TryGetValueSafe<string>("tags");
-			    this._DateOfBirth = data.TryGetValueSafe<int>("dateOfBirth");
-			    this._Country = data.TryGetValueSafe<string>("country");
-			    this._State = data.TryGetValueSafe<string>("state");
-			    this._City = data.TryGetValueSafe<string>("city");
-			    this._Zip = data.TryGetValueSafe<string>("zip");
-			    this._Gender = data.TryGetValueSafe<int>("gender");
-			    this._FirstName = data.TryGetValueSafe<string>("firstName");
-			    this._LastName = data.TryGetValueSafe<string>("lastName");
-			    this._Group = data.TryGetValueSafe<string>("group");
+			if(node["screenName"] != null)
+			{
+				this._ScreenName = node["screenName"].Value<string>();
+			}
+			if(node["email"] != null)
+			{
+				this._Email = node["email"].Value<string>();
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["tags"] != null)
+			{
+				this._Tags = node["tags"].Value<string>();
+			}
+			if(node["dateOfBirth"] != null)
+			{
+				this._DateOfBirth = ParseInt(node["dateOfBirth"].Value<string>());
+			}
+			if(node["country"] != null)
+			{
+				this._Country = node["country"].Value<string>();
+			}
+			if(node["state"] != null)
+			{
+				this._State = node["state"].Value<string>();
+			}
+			if(node["city"] != null)
+			{
+				this._City = node["city"].Value<string>();
+			}
+			if(node["zip"] != null)
+			{
+				this._Zip = node["zip"].Value<string>();
+			}
+			if(node["gender"] != null)
+			{
+				this._Gender = ParseInt(node["gender"].Value<string>());
+			}
+			if(node["firstName"] != null)
+			{
+				this._FirstName = node["firstName"].Value<string>();
+			}
+			if(node["lastName"] != null)
+			{
+				this._LastName = node["lastName"].Value<string>();
+			}
+			if(node["group"] != null)
+			{
+				this._Group = node["group"].Value<string>();
+			}
 		}
 		#endregion
 

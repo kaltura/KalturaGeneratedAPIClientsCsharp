@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,6 +58,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string FlavorAssetId
 		{
 			get { return _FlavorAssetId; }
@@ -65,6 +68,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetId");
 			}
 		}
+		[JsonProperty]
 		public int FlavorParamsOutputId
 		{
 			get { return _FlavorParamsOutputId; }
@@ -74,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsOutputId");
 			}
 		}
+		[JsonProperty]
 		public int ReadyBehavior
 		{
 			get { return _ReadyBehavior; }
@@ -83,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReadyBehavior");
 			}
 		}
+		[JsonProperty]
 		public int VideoBitrate
 		{
 			get { return _VideoBitrate; }
@@ -92,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoBitrate");
 			}
 		}
+		[JsonProperty]
 		public int AudioBitrate
 		{
 			get { return _AudioBitrate; }
@@ -101,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AudioBitrate");
 			}
 		}
+		[JsonProperty]
 		public string DestFileSyncLocalPath
 		{
 			get { return _DestFileSyncLocalPath; }
@@ -110,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestFileSyncLocalPath");
 			}
 		}
+		[JsonProperty]
 		public string DestFileSyncRemoteUrl
 		{
 			get { return _DestFileSyncRemoteUrl; }
@@ -126,46 +135,36 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ConvertCollectionFlavorData(XmlElement node) : base(node)
+		public ConvertCollectionFlavorData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["flavorAssetId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "flavorAssetId":
-						this._FlavorAssetId = propertyNode.InnerText;
-						continue;
-					case "flavorParamsOutputId":
-						this._FlavorParamsOutputId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "readyBehavior":
-						this._ReadyBehavior = ParseInt(propertyNode.InnerText);
-						continue;
-					case "videoBitrate":
-						this._VideoBitrate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "audioBitrate":
-						this._AudioBitrate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "destFileSyncLocalPath":
-						this._DestFileSyncLocalPath = propertyNode.InnerText;
-						continue;
-					case "destFileSyncRemoteUrl":
-						this._DestFileSyncRemoteUrl = propertyNode.InnerText;
-						continue;
-				}
+				this._FlavorAssetId = node["flavorAssetId"].Value<string>();
 			}
-		}
-
-		public ConvertCollectionFlavorData(IDictionary<string,object> data) : base(data)
-		{
-			    this._FlavorAssetId = data.TryGetValueSafe<string>("flavorAssetId");
-			    this._FlavorParamsOutputId = data.TryGetValueSafe<int>("flavorParamsOutputId");
-			    this._ReadyBehavior = data.TryGetValueSafe<int>("readyBehavior");
-			    this._VideoBitrate = data.TryGetValueSafe<int>("videoBitrate");
-			    this._AudioBitrate = data.TryGetValueSafe<int>("audioBitrate");
-			    this._DestFileSyncLocalPath = data.TryGetValueSafe<string>("destFileSyncLocalPath");
-			    this._DestFileSyncRemoteUrl = data.TryGetValueSafe<string>("destFileSyncRemoteUrl");
+			if(node["flavorParamsOutputId"] != null)
+			{
+				this._FlavorParamsOutputId = ParseInt(node["flavorParamsOutputId"].Value<string>());
+			}
+			if(node["readyBehavior"] != null)
+			{
+				this._ReadyBehavior = ParseInt(node["readyBehavior"].Value<string>());
+			}
+			if(node["videoBitrate"] != null)
+			{
+				this._VideoBitrate = ParseInt(node["videoBitrate"].Value<string>());
+			}
+			if(node["audioBitrate"] != null)
+			{
+				this._AudioBitrate = ParseInt(node["audioBitrate"].Value<string>());
+			}
+			if(node["destFileSyncLocalPath"] != null)
+			{
+				this._DestFileSyncLocalPath = node["destFileSyncLocalPath"].Value<string>();
+			}
+			if(node["destFileSyncRemoteUrl"] != null)
+			{
+				this._DestFileSyncRemoteUrl = node["destFileSyncRemoteUrl"].Value<string>();
+			}
 		}
 		#endregion
 

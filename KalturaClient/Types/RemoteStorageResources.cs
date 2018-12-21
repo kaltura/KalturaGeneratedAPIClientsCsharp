@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public IList<RemoteStorageResource> Resources
 		{
 			get { return _Resources; }
@@ -60,31 +63,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public RemoteStorageResources(XmlElement node) : base(node)
+		public RemoteStorageResources(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["resources"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Resources = new List<RemoteStorageResource>();
+				foreach(var arrayNode in node["resources"].Children())
 				{
-					case "resources":
-						this._Resources = new List<RemoteStorageResource>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Resources.Add(ObjectFactory.Create<RemoteStorageResource>(arrayNode));
-						}
-						continue;
+					this._Resources.Add(ObjectFactory.Create<RemoteStorageResource>(arrayNode));
 				}
 			}
-		}
-
-		public RemoteStorageResources(IDictionary<string,object> data) : base(data)
-		{
-			    this._Resources = new List<RemoteStorageResource>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("resources", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Resources.Add(ObjectFactory.Create<RemoteStorageResource>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

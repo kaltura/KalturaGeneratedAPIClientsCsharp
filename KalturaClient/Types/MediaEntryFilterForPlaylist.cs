@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Limit
 		{
 			get { return _Limit; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Limit");
 			}
 		}
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public MediaEntryFilterForPlaylist(XmlElement node) : base(node)
+		public MediaEntryFilterForPlaylist(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["limit"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "limit":
-						this._Limit = ParseInt(propertyNode.InnerText);
-						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-				}
+				this._Limit = ParseInt(node["limit"].Value<string>());
 			}
-		}
-
-		public MediaEntryFilterForPlaylist(IDictionary<string,object> data) : base(data)
-		{
-			    this._Limit = data.TryGetValueSafe<int>("limit");
-			    this._Name = data.TryGetValueSafe<string>("name");
+			if(node["name"] != null)
+			{
+				this._Name = node["name"].Value<string>();
+			}
 		}
 		#endregion
 

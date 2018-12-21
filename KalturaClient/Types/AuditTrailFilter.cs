@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public new AuditTrailOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AuditTrailFilter(XmlElement node) : base(node)
+		public AuditTrailFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["orderBy"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "orderBy":
-						this._OrderBy = (AuditTrailOrderBy)StringEnum.Parse(typeof(AuditTrailOrderBy), propertyNode.InnerText);
-						continue;
-				}
+				this._OrderBy = (AuditTrailOrderBy)StringEnum.Parse(typeof(AuditTrailOrderBy), node["orderBy"].Value<string>());
 			}
-		}
-
-		public AuditTrailFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._OrderBy = (AuditTrailOrderBy)StringEnum.Parse(typeof(AuditTrailOrderBy), data.TryGetValueSafe<string>("orderBy"));
 		}
 		#endregion
 

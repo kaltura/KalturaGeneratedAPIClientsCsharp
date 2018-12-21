@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ThumbnailUrl
 		{
 			get { return _ThumbnailUrl; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbnailUrl");
 			}
 		}
+		[JsonProperty]
 		public string FlavorAssetUrl
 		{
 			get { return _FlavorAssetUrl; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public IdeticDistributionJobProviderData(XmlElement node) : base(node)
+		public IdeticDistributionJobProviderData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["thumbnailUrl"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "thumbnailUrl":
-						this._ThumbnailUrl = propertyNode.InnerText;
-						continue;
-					case "flavorAssetUrl":
-						this._FlavorAssetUrl = propertyNode.InnerText;
-						continue;
-				}
+				this._ThumbnailUrl = node["thumbnailUrl"].Value<string>();
 			}
-		}
-
-		public IdeticDistributionJobProviderData(IDictionary<string,object> data) : base(data)
-		{
-			    this._ThumbnailUrl = data.TryGetValueSafe<string>("thumbnailUrl");
-			    this._FlavorAssetUrl = data.TryGetValueSafe<string>("flavorAssetUrl");
+			if(node["flavorAssetUrl"] != null)
+			{
+				this._FlavorAssetUrl = node["flavorAssetUrl"].Value<string>();
+			}
 		}
 		#endregion
 

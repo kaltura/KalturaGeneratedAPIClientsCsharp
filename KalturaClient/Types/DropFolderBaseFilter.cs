@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -100,6 +102,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int IdEqual
 		{
 			get { return _IdEqual; }
@@ -109,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		[JsonProperty]
 		public string IdIn
 		{
 			get { return _IdIn; }
@@ -118,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		[JsonProperty]
 		public int PartnerIdEqual
 		{
 			get { return _PartnerIdEqual; }
@@ -127,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string PartnerIdIn
 		{
 			get { return _PartnerIdIn; }
@@ -136,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdIn");
 			}
 		}
+		[JsonProperty]
 		public string NameLike
 		{
 			get { return _NameLike; }
@@ -145,6 +152,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("NameLike");
 			}
 		}
+		[JsonProperty]
 		public DropFolderType TypeEqual
 		{
 			get { return _TypeEqual; }
@@ -154,6 +162,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string TypeIn
 		{
 			get { return _TypeIn; }
@@ -163,6 +172,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeIn");
 			}
 		}
+		[JsonProperty]
 		public DropFolderStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -172,6 +182,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -181,6 +192,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		[JsonProperty]
 		public int ConversionProfileIdEqual
 		{
 			get { return _ConversionProfileIdEqual; }
@@ -190,6 +202,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionProfileIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string ConversionProfileIdIn
 		{
 			get { return _ConversionProfileIdIn; }
@@ -199,6 +212,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionProfileIdIn");
 			}
 		}
+		[JsonProperty]
 		public int DcEqual
 		{
 			get { return _DcEqual; }
@@ -208,6 +222,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DcEqual");
 			}
 		}
+		[JsonProperty]
 		public string DcIn
 		{
 			get { return _DcIn; }
@@ -217,6 +232,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DcIn");
 			}
 		}
+		[JsonProperty]
 		public string PathEqual
 		{
 			get { return _PathEqual; }
@@ -226,6 +242,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PathEqual");
 			}
 		}
+		[JsonProperty]
 		public string PathLike
 		{
 			get { return _PathLike; }
@@ -235,6 +252,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PathLike");
 			}
 		}
+		[JsonProperty]
 		public DropFolderFileHandlerType FileHandlerTypeEqual
 		{
 			get { return _FileHandlerTypeEqual; }
@@ -244,6 +262,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileHandlerTypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string FileHandlerTypeIn
 		{
 			get { return _FileHandlerTypeIn; }
@@ -253,6 +272,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileHandlerTypeIn");
 			}
 		}
+		[JsonProperty]
 		public string FileNamePatternsLike
 		{
 			get { return _FileNamePatternsLike; }
@@ -262,6 +282,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileNamePatternsLike");
 			}
 		}
+		[JsonProperty]
 		public string FileNamePatternsMultiLikeOr
 		{
 			get { return _FileNamePatternsMultiLikeOr; }
@@ -271,6 +292,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileNamePatternsMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string FileNamePatternsMultiLikeAnd
 		{
 			get { return _FileNamePatternsMultiLikeAnd; }
@@ -280,6 +302,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileNamePatternsMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public string TagsLike
 		{
 			get { return _TagsLike; }
@@ -289,6 +312,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsLike");
 			}
 		}
+		[JsonProperty]
 		public string TagsMultiLikeOr
 		{
 			get { return _TagsMultiLikeOr; }
@@ -298,6 +322,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string TagsMultiLikeAnd
 		{
 			get { return _TagsMultiLikeAnd; }
@@ -307,6 +332,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public DropFolderErrorCode ErrorCodeEqual
 		{
 			get { return _ErrorCodeEqual; }
@@ -316,6 +342,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrorCodeEqual");
 			}
 		}
+		[JsonProperty]
 		public string ErrorCodeIn
 		{
 			get { return _ErrorCodeIn; }
@@ -325,6 +352,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrorCodeIn");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
 			get { return _CreatedAtGreaterThanOrEqual; }
@@ -334,6 +362,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
 			get { return _CreatedAtLessThanOrEqual; }
@@ -343,6 +372,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
 			get { return _UpdatedAtGreaterThanOrEqual; }
@@ -352,6 +382,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
 			get { return _UpdatedAtLessThanOrEqual; }
@@ -368,134 +399,124 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DropFolderBaseFilter(XmlElement node) : base(node)
+		public DropFolderBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["idEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "idEqual":
-						this._IdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "idIn":
-						this._IdIn = propertyNode.InnerText;
-						continue;
-					case "partnerIdEqual":
-						this._PartnerIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerIdIn":
-						this._PartnerIdIn = propertyNode.InnerText;
-						continue;
-					case "nameLike":
-						this._NameLike = propertyNode.InnerText;
-						continue;
-					case "typeEqual":
-						this._TypeEqual = (DropFolderType)StringEnum.Parse(typeof(DropFolderType), propertyNode.InnerText);
-						continue;
-					case "typeIn":
-						this._TypeIn = propertyNode.InnerText;
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (DropFolderStatus)ParseEnum(typeof(DropFolderStatus), propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-					case "conversionProfileIdEqual":
-						this._ConversionProfileIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "conversionProfileIdIn":
-						this._ConversionProfileIdIn = propertyNode.InnerText;
-						continue;
-					case "dcEqual":
-						this._DcEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "dcIn":
-						this._DcIn = propertyNode.InnerText;
-						continue;
-					case "pathEqual":
-						this._PathEqual = propertyNode.InnerText;
-						continue;
-					case "pathLike":
-						this._PathLike = propertyNode.InnerText;
-						continue;
-					case "fileHandlerTypeEqual":
-						this._FileHandlerTypeEqual = (DropFolderFileHandlerType)StringEnum.Parse(typeof(DropFolderFileHandlerType), propertyNode.InnerText);
-						continue;
-					case "fileHandlerTypeIn":
-						this._FileHandlerTypeIn = propertyNode.InnerText;
-						continue;
-					case "fileNamePatternsLike":
-						this._FileNamePatternsLike = propertyNode.InnerText;
-						continue;
-					case "fileNamePatternsMultiLikeOr":
-						this._FileNamePatternsMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "fileNamePatternsMultiLikeAnd":
-						this._FileNamePatternsMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "tagsLike":
-						this._TagsLike = propertyNode.InnerText;
-						continue;
-					case "tagsMultiLikeOr":
-						this._TagsMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "tagsMultiLikeAnd":
-						this._TagsMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "errorCodeEqual":
-						this._ErrorCodeEqual = (DropFolderErrorCode)StringEnum.Parse(typeof(DropFolderErrorCode), propertyNode.InnerText);
-						continue;
-					case "errorCodeIn":
-						this._ErrorCodeIn = propertyNode.InnerText;
-						continue;
-					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._IdEqual = ParseInt(node["idEqual"].Value<string>());
 			}
-		}
-
-		public DropFolderBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
-			    this._IdIn = data.TryGetValueSafe<string>("idIn");
-			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
-			    this._PartnerIdIn = data.TryGetValueSafe<string>("partnerIdIn");
-			    this._NameLike = data.TryGetValueSafe<string>("nameLike");
-			    this._TypeEqual = (DropFolderType)StringEnum.Parse(typeof(DropFolderType), data.TryGetValueSafe<string>("typeEqual"));
-			    this._TypeIn = data.TryGetValueSafe<string>("typeIn");
-			    this._StatusEqual = (DropFolderStatus)ParseEnum(typeof(DropFolderStatus), data.TryGetValueSafe<int>("statusEqual"));
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
-			    this._ConversionProfileIdEqual = data.TryGetValueSafe<int>("conversionProfileIdEqual");
-			    this._ConversionProfileIdIn = data.TryGetValueSafe<string>("conversionProfileIdIn");
-			    this._DcEqual = data.TryGetValueSafe<int>("dcEqual");
-			    this._DcIn = data.TryGetValueSafe<string>("dcIn");
-			    this._PathEqual = data.TryGetValueSafe<string>("pathEqual");
-			    this._PathLike = data.TryGetValueSafe<string>("pathLike");
-			    this._FileHandlerTypeEqual = (DropFolderFileHandlerType)StringEnum.Parse(typeof(DropFolderFileHandlerType), data.TryGetValueSafe<string>("fileHandlerTypeEqual"));
-			    this._FileHandlerTypeIn = data.TryGetValueSafe<string>("fileHandlerTypeIn");
-			    this._FileNamePatternsLike = data.TryGetValueSafe<string>("fileNamePatternsLike");
-			    this._FileNamePatternsMultiLikeOr = data.TryGetValueSafe<string>("fileNamePatternsMultiLikeOr");
-			    this._FileNamePatternsMultiLikeAnd = data.TryGetValueSafe<string>("fileNamePatternsMultiLikeAnd");
-			    this._TagsLike = data.TryGetValueSafe<string>("tagsLike");
-			    this._TagsMultiLikeOr = data.TryGetValueSafe<string>("tagsMultiLikeOr");
-			    this._TagsMultiLikeAnd = data.TryGetValueSafe<string>("tagsMultiLikeAnd");
-			    this._ErrorCodeEqual = (DropFolderErrorCode)StringEnum.Parse(typeof(DropFolderErrorCode), data.TryGetValueSafe<string>("errorCodeEqual"));
-			    this._ErrorCodeIn = data.TryGetValueSafe<string>("errorCodeIn");
-			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
-			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
-			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
-			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
+			if(node["idIn"] != null)
+			{
+				this._IdIn = node["idIn"].Value<string>();
+			}
+			if(node["partnerIdEqual"] != null)
+			{
+				this._PartnerIdEqual = ParseInt(node["partnerIdEqual"].Value<string>());
+			}
+			if(node["partnerIdIn"] != null)
+			{
+				this._PartnerIdIn = node["partnerIdIn"].Value<string>();
+			}
+			if(node["nameLike"] != null)
+			{
+				this._NameLike = node["nameLike"].Value<string>();
+			}
+			if(node["typeEqual"] != null)
+			{
+				this._TypeEqual = (DropFolderType)StringEnum.Parse(typeof(DropFolderType), node["typeEqual"].Value<string>());
+			}
+			if(node["typeIn"] != null)
+			{
+				this._TypeIn = node["typeIn"].Value<string>();
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (DropFolderStatus)ParseEnum(typeof(DropFolderStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
+			if(node["conversionProfileIdEqual"] != null)
+			{
+				this._ConversionProfileIdEqual = ParseInt(node["conversionProfileIdEqual"].Value<string>());
+			}
+			if(node["conversionProfileIdIn"] != null)
+			{
+				this._ConversionProfileIdIn = node["conversionProfileIdIn"].Value<string>();
+			}
+			if(node["dcEqual"] != null)
+			{
+				this._DcEqual = ParseInt(node["dcEqual"].Value<string>());
+			}
+			if(node["dcIn"] != null)
+			{
+				this._DcIn = node["dcIn"].Value<string>();
+			}
+			if(node["pathEqual"] != null)
+			{
+				this._PathEqual = node["pathEqual"].Value<string>();
+			}
+			if(node["pathLike"] != null)
+			{
+				this._PathLike = node["pathLike"].Value<string>();
+			}
+			if(node["fileHandlerTypeEqual"] != null)
+			{
+				this._FileHandlerTypeEqual = (DropFolderFileHandlerType)StringEnum.Parse(typeof(DropFolderFileHandlerType), node["fileHandlerTypeEqual"].Value<string>());
+			}
+			if(node["fileHandlerTypeIn"] != null)
+			{
+				this._FileHandlerTypeIn = node["fileHandlerTypeIn"].Value<string>();
+			}
+			if(node["fileNamePatternsLike"] != null)
+			{
+				this._FileNamePatternsLike = node["fileNamePatternsLike"].Value<string>();
+			}
+			if(node["fileNamePatternsMultiLikeOr"] != null)
+			{
+				this._FileNamePatternsMultiLikeOr = node["fileNamePatternsMultiLikeOr"].Value<string>();
+			}
+			if(node["fileNamePatternsMultiLikeAnd"] != null)
+			{
+				this._FileNamePatternsMultiLikeAnd = node["fileNamePatternsMultiLikeAnd"].Value<string>();
+			}
+			if(node["tagsLike"] != null)
+			{
+				this._TagsLike = node["tagsLike"].Value<string>();
+			}
+			if(node["tagsMultiLikeOr"] != null)
+			{
+				this._TagsMultiLikeOr = node["tagsMultiLikeOr"].Value<string>();
+			}
+			if(node["tagsMultiLikeAnd"] != null)
+			{
+				this._TagsMultiLikeAnd = node["tagsMultiLikeAnd"].Value<string>();
+			}
+			if(node["errorCodeEqual"] != null)
+			{
+				this._ErrorCodeEqual = (DropFolderErrorCode)StringEnum.Parse(typeof(DropFolderErrorCode), node["errorCodeEqual"].Value<string>());
+			}
+			if(node["errorCodeIn"] != null)
+			{
+				this._ErrorCodeIn = node["errorCodeIn"].Value<string>();
+			}
+			if(node["createdAtGreaterThanOrEqual"] != null)
+			{
+				this._CreatedAtGreaterThanOrEqual = ParseInt(node["createdAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["createdAtLessThanOrEqual"] != null)
+			{
+				this._CreatedAtLessThanOrEqual = ParseInt(node["createdAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtGreaterThanOrEqual"] != null)
+			{
+				this._UpdatedAtGreaterThanOrEqual = ParseInt(node["updatedAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtLessThanOrEqual"] != null)
+			{
+				this._UpdatedAtLessThanOrEqual = ParseInt(node["updatedAtLessThanOrEqual"].Value<string>());
+			}
 		}
 		#endregion
 

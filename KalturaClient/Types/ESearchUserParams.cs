@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public ESearchUserOperator SearchOperator
 		{
 			get { return _SearchOperator; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ESearchUserParams(XmlElement node) : base(node)
+		public ESearchUserParams(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["searchOperator"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "searchOperator":
-						this._SearchOperator = ObjectFactory.Create<ESearchUserOperator>(propertyNode);
-						continue;
-				}
+				this._SearchOperator = ObjectFactory.Create<ESearchUserOperator>(node["searchOperator"]);
 			}
-		}
-
-		public ESearchUserParams(IDictionary<string,object> data) : base(data)
-		{
-			    this._SearchOperator = ObjectFactory.Create<ESearchUserOperator>(data.TryGetValueSafe<IDictionary<string,object>>("searchOperator"));
 		}
 		#endregion
 

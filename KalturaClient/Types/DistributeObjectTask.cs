@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string DistributionProfileId
 		{
 			get { return _DistributionProfileId; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DistributeObjectTask(XmlElement node) : base(node)
+		public DistributeObjectTask(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["distributionProfileId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "distributionProfileId":
-						this._DistributionProfileId = propertyNode.InnerText;
-						continue;
-				}
+				this._DistributionProfileId = node["distributionProfileId"].Value<string>();
 			}
-		}
-
-		public DistributeObjectTask(IDictionary<string,object> data) : base(data)
-		{
-			    this._DistributionProfileId = data.TryGetValueSafe<string>("distributionProfileId");
 		}
 		#endregion
 

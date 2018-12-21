@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public new PdfFlavorParamsOutputOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public PdfFlavorParamsOutputFilter(XmlElement node) : base(node)
+		public PdfFlavorParamsOutputFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["orderBy"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "orderBy":
-						this._OrderBy = (PdfFlavorParamsOutputOrderBy)StringEnum.Parse(typeof(PdfFlavorParamsOutputOrderBy), propertyNode.InnerText);
-						continue;
-				}
+				this._OrderBy = (PdfFlavorParamsOutputOrderBy)StringEnum.Parse(typeof(PdfFlavorParamsOutputOrderBy), node["orderBy"].Value<string>());
 			}
-		}
-
-		public PdfFlavorParamsOutputFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._OrderBy = (PdfFlavorParamsOutputOrderBy)StringEnum.Parse(typeof(PdfFlavorParamsOutputOrderBy), data.TryGetValueSafe<string>("orderBy"));
 		}
 		#endregion
 

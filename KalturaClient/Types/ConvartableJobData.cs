@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -64,6 +66,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string SrcFileSyncLocalPath
 		{
 			get { return _SrcFileSyncLocalPath; }
@@ -73,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcFileSyncLocalPath");
 			}
 		}
+		[JsonProperty]
 		public string ActualSrcFileSyncLocalPath
 		{
 			get { return _ActualSrcFileSyncLocalPath; }
@@ -82,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ActualSrcFileSyncLocalPath");
 			}
 		}
+		[JsonProperty]
 		public string SrcFileSyncRemoteUrl
 		{
 			get { return _SrcFileSyncRemoteUrl; }
@@ -91,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcFileSyncRemoteUrl");
 			}
 		}
+		[JsonProperty]
 		public IList<SourceFileSyncDescriptor> SrcFileSyncs
 		{
 			get { return _SrcFileSyncs; }
@@ -100,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcFileSyncs");
 			}
 		}
+		[JsonProperty]
 		public int EngineVersion
 		{
 			get { return _EngineVersion; }
@@ -109,6 +116,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EngineVersion");
 			}
 		}
+		[JsonProperty]
 		public int FlavorParamsOutputId
 		{
 			get { return _FlavorParamsOutputId; }
@@ -118,6 +126,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsOutputId");
 			}
 		}
+		[JsonProperty]
 		public FlavorParamsOutput FlavorParamsOutput
 		{
 			get { return _FlavorParamsOutput; }
@@ -127,6 +136,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsOutput");
 			}
 		}
+		[JsonProperty]
 		public int MediaInfoId
 		{
 			get { return _MediaInfoId; }
@@ -136,6 +146,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaInfoId");
 			}
 		}
+		[JsonProperty]
 		public int CurrentOperationSet
 		{
 			get { return _CurrentOperationSet; }
@@ -145,6 +156,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CurrentOperationSet");
 			}
 		}
+		[JsonProperty]
 		public int CurrentOperationIndex
 		{
 			get { return _CurrentOperationIndex; }
@@ -154,6 +166,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CurrentOperationIndex");
 			}
 		}
+		[JsonProperty]
 		public IList<KeyValue> PluginData
 		{
 			get { return _PluginData; }
@@ -170,80 +183,60 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ConvartableJobData(XmlElement node) : base(node)
+		public ConvartableJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["srcFileSyncLocalPath"] != null)
 			{
-				switch (propertyNode.Name)
+				this._SrcFileSyncLocalPath = node["srcFileSyncLocalPath"].Value<string>();
+			}
+			if(node["actualSrcFileSyncLocalPath"] != null)
+			{
+				this._ActualSrcFileSyncLocalPath = node["actualSrcFileSyncLocalPath"].Value<string>();
+			}
+			if(node["srcFileSyncRemoteUrl"] != null)
+			{
+				this._SrcFileSyncRemoteUrl = node["srcFileSyncRemoteUrl"].Value<string>();
+			}
+			if(node["srcFileSyncs"] != null)
+			{
+				this._SrcFileSyncs = new List<SourceFileSyncDescriptor>();
+				foreach(var arrayNode in node["srcFileSyncs"].Children())
 				{
-					case "srcFileSyncLocalPath":
-						this._SrcFileSyncLocalPath = propertyNode.InnerText;
-						continue;
-					case "actualSrcFileSyncLocalPath":
-						this._ActualSrcFileSyncLocalPath = propertyNode.InnerText;
-						continue;
-					case "srcFileSyncRemoteUrl":
-						this._SrcFileSyncRemoteUrl = propertyNode.InnerText;
-						continue;
-					case "srcFileSyncs":
-						this._SrcFileSyncs = new List<SourceFileSyncDescriptor>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._SrcFileSyncs.Add(ObjectFactory.Create<SourceFileSyncDescriptor>(arrayNode));
-						}
-						continue;
-					case "engineVersion":
-						this._EngineVersion = ParseInt(propertyNode.InnerText);
-						continue;
-					case "flavorParamsOutputId":
-						this._FlavorParamsOutputId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "flavorParamsOutput":
-						this._FlavorParamsOutput = ObjectFactory.Create<FlavorParamsOutput>(propertyNode);
-						continue;
-					case "mediaInfoId":
-						this._MediaInfoId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "currentOperationSet":
-						this._CurrentOperationSet = ParseInt(propertyNode.InnerText);
-						continue;
-					case "currentOperationIndex":
-						this._CurrentOperationIndex = ParseInt(propertyNode.InnerText);
-						continue;
-					case "pluginData":
-						this._PluginData = new List<KeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._PluginData.Add(ObjectFactory.Create<KeyValue>(arrayNode));
-						}
-						continue;
+					this._SrcFileSyncs.Add(ObjectFactory.Create<SourceFileSyncDescriptor>(arrayNode));
 				}
 			}
-		}
-
-		public ConvartableJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._SrcFileSyncLocalPath = data.TryGetValueSafe<string>("srcFileSyncLocalPath");
-			    this._ActualSrcFileSyncLocalPath = data.TryGetValueSafe<string>("actualSrcFileSyncLocalPath");
-			    this._SrcFileSyncRemoteUrl = data.TryGetValueSafe<string>("srcFileSyncRemoteUrl");
-			    this._SrcFileSyncs = new List<SourceFileSyncDescriptor>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("srcFileSyncs", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._SrcFileSyncs.Add(ObjectFactory.Create<SourceFileSyncDescriptor>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._EngineVersion = data.TryGetValueSafe<int>("engineVersion");
-			    this._FlavorParamsOutputId = data.TryGetValueSafe<int>("flavorParamsOutputId");
-			    this._FlavorParamsOutput = ObjectFactory.Create<FlavorParamsOutput>(data.TryGetValueSafe<IDictionary<string,object>>("flavorParamsOutput"));
-			    this._MediaInfoId = data.TryGetValueSafe<int>("mediaInfoId");
-			    this._CurrentOperationSet = data.TryGetValueSafe<int>("currentOperationSet");
-			    this._CurrentOperationIndex = data.TryGetValueSafe<int>("currentOperationIndex");
-			    this._PluginData = new List<KeyValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("pluginData", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._PluginData.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
-			    }
+			if(node["engineVersion"] != null)
+			{
+				this._EngineVersion = ParseInt(node["engineVersion"].Value<string>());
+			}
+			if(node["flavorParamsOutputId"] != null)
+			{
+				this._FlavorParamsOutputId = ParseInt(node["flavorParamsOutputId"].Value<string>());
+			}
+			if(node["flavorParamsOutput"] != null)
+			{
+				this._FlavorParamsOutput = ObjectFactory.Create<FlavorParamsOutput>(node["flavorParamsOutput"]);
+			}
+			if(node["mediaInfoId"] != null)
+			{
+				this._MediaInfoId = ParseInt(node["mediaInfoId"].Value<string>());
+			}
+			if(node["currentOperationSet"] != null)
+			{
+				this._CurrentOperationSet = ParseInt(node["currentOperationSet"].Value<string>());
+			}
+			if(node["currentOperationIndex"] != null)
+			{
+				this._CurrentOperationIndex = ParseInt(node["currentOperationIndex"].Value<string>());
+			}
+			if(node["pluginData"] != null)
+			{
+				this._PluginData = new List<KeyValue>();
+				foreach(var arrayNode in node["pluginData"].Children())
+				{
+					this._PluginData.Add(ObjectFactory.Create<KeyValue>(arrayNode));
+				}
+			}
 		}
 		#endregion
 

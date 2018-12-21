@@ -32,6 +32,7 @@ using System.IO;
 using Kaltura.Request;
 using Kaltura.Types;
 using Kaltura.Enums;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Services
 {
@@ -72,17 +73,13 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<ConversionProfile>(result);
 		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<ConversionProfile>((IDictionary<string,object>)result);
-		}
 	}
 
-	public class ConversionProfileDeleteRequestBuilder : RequestBuilder<object>
+	public class ConversionProfileDeleteRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
 		public const string ID = "id";
@@ -119,11 +116,7 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-		public override object DeserializeObject(object result)
+		public override object Deserialize(JToken result)
 		{
 			return null;
 		}
@@ -166,13 +159,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<ConversionProfile>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<ConversionProfile>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -213,13 +202,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<ConversionProfile>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<ConversionProfile>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -269,13 +254,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<ListResponse<ConversionProfile>>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<ListResponse<ConversionProfile>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -316,13 +297,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<ConversionProfile>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<ConversionProfile>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -372,13 +349,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<ConversionProfile>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<ConversionProfile>((IDictionary<string,object>)result);
 		}
 	}
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -54,6 +56,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Language
 		{
 			get { return _Language; }
@@ -63,6 +66,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Language");
 			}
 		}
+		[JsonProperty]
 		public string Label
 		{
 			get { return _Label; }
@@ -72,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Label");
 			}
 		}
+		[JsonProperty]
 		public string FilePath
 		{
 			get { return _FilePath; }
@@ -81,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FilePath");
 			}
 		}
+		[JsonProperty]
 		public string RemoteId
 		{
 			get { return _RemoteId; }
@@ -90,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RemoteId");
 			}
 		}
+		[JsonProperty]
 		public string Version
 		{
 			get { return _Version; }
@@ -99,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Version");
 			}
 		}
+		[JsonProperty]
 		public string AssetId
 		{
 			get { return _AssetId; }
@@ -115,42 +123,32 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FacebookCaptionDistributionInfo(XmlElement node) : base(node)
+		public FacebookCaptionDistributionInfo(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["language"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "language":
-						this._Language = propertyNode.InnerText;
-						continue;
-					case "label":
-						this._Label = propertyNode.InnerText;
-						continue;
-					case "filePath":
-						this._FilePath = propertyNode.InnerText;
-						continue;
-					case "remoteId":
-						this._RemoteId = propertyNode.InnerText;
-						continue;
-					case "version":
-						this._Version = propertyNode.InnerText;
-						continue;
-					case "assetId":
-						this._AssetId = propertyNode.InnerText;
-						continue;
-				}
+				this._Language = node["language"].Value<string>();
 			}
-		}
-
-		public FacebookCaptionDistributionInfo(IDictionary<string,object> data) : base(data)
-		{
-			    this._Language = data.TryGetValueSafe<string>("language");
-			    this._Label = data.TryGetValueSafe<string>("label");
-			    this._FilePath = data.TryGetValueSafe<string>("filePath");
-			    this._RemoteId = data.TryGetValueSafe<string>("remoteId");
-			    this._Version = data.TryGetValueSafe<string>("version");
-			    this._AssetId = data.TryGetValueSafe<string>("assetId");
+			if(node["label"] != null)
+			{
+				this._Label = node["label"].Value<string>();
+			}
+			if(node["filePath"] != null)
+			{
+				this._FilePath = node["filePath"].Value<string>();
+			}
+			if(node["remoteId"] != null)
+			{
+				this._RemoteId = node["remoteId"].Value<string>();
+			}
+			if(node["version"] != null)
+			{
+				this._Version = node["version"].Value<string>();
+			}
+			if(node["assetId"] != null)
+			{
+				this._AssetId = node["assetId"].Value<string>();
+			}
 		}
 		#endregion
 

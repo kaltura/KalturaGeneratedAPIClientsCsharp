@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ObjectId
 		{
 			get { return _ObjectId; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectId");
 			}
 		}
+		[JsonProperty]
 		public EventNotificationEventObjectType ScopeObjectType
 		{
 			get { return _ScopeObjectType; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EventNotificationScope(XmlElement node) : base(node)
+		public EventNotificationScope(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["objectId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "objectId":
-						this._ObjectId = propertyNode.InnerText;
-						continue;
-					case "scopeObjectType":
-						this._ScopeObjectType = (EventNotificationEventObjectType)StringEnum.Parse(typeof(EventNotificationEventObjectType), propertyNode.InnerText);
-						continue;
-				}
+				this._ObjectId = node["objectId"].Value<string>();
 			}
-		}
-
-		public EventNotificationScope(IDictionary<string,object> data) : base(data)
-		{
-			    this._ObjectId = data.TryGetValueSafe<string>("objectId");
-			    this._ScopeObjectType = (EventNotificationEventObjectType)StringEnum.Parse(typeof(EventNotificationEventObjectType), data.TryGetValueSafe<string>("scopeObjectType"));
+			if(node["scopeObjectType"] != null)
+			{
+				this._ScopeObjectType = (EventNotificationEventObjectType)StringEnum.Parse(typeof(EventNotificationEventObjectType), node["scopeObjectType"].Value<string>());
+			}
 		}
 		#endregion
 

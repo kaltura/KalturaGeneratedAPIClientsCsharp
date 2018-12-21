@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,6 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public TaggedObjectType ObjectTypeEqual
 		{
 			get { return _ObjectTypeEqual; }
@@ -61,6 +64,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectTypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string TagEqual
 		{
 			get { return _TagEqual; }
@@ -70,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagEqual");
 			}
 		}
+		[JsonProperty]
 		public string TagStartsWith
 		{
 			get { return _TagStartsWith; }
@@ -79,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagStartsWith");
 			}
 		}
+		[JsonProperty]
 		public int InstanceCountEqual
 		{
 			get { return _InstanceCountEqual; }
@@ -88,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("InstanceCountEqual");
 			}
 		}
+		[JsonProperty]
 		public int InstanceCountIn
 		{
 			get { return _InstanceCountIn; }
@@ -104,38 +111,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public TagFilter(XmlElement node) : base(node)
+		public TagFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["objectTypeEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "objectTypeEqual":
-						this._ObjectTypeEqual = (TaggedObjectType)StringEnum.Parse(typeof(TaggedObjectType), propertyNode.InnerText);
-						continue;
-					case "tagEqual":
-						this._TagEqual = propertyNode.InnerText;
-						continue;
-					case "tagStartsWith":
-						this._TagStartsWith = propertyNode.InnerText;
-						continue;
-					case "instanceCountEqual":
-						this._InstanceCountEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "instanceCountIn":
-						this._InstanceCountIn = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._ObjectTypeEqual = (TaggedObjectType)StringEnum.Parse(typeof(TaggedObjectType), node["objectTypeEqual"].Value<string>());
 			}
-		}
-
-		public TagFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._ObjectTypeEqual = (TaggedObjectType)StringEnum.Parse(typeof(TaggedObjectType), data.TryGetValueSafe<string>("objectTypeEqual"));
-			    this._TagEqual = data.TryGetValueSafe<string>("tagEqual");
-			    this._TagStartsWith = data.TryGetValueSafe<string>("tagStartsWith");
-			    this._InstanceCountEqual = data.TryGetValueSafe<int>("instanceCountEqual");
-			    this._InstanceCountIn = data.TryGetValueSafe<int>("instanceCountIn");
+			if(node["tagEqual"] != null)
+			{
+				this._TagEqual = node["tagEqual"].Value<string>();
+			}
+			if(node["tagStartsWith"] != null)
+			{
+				this._TagStartsWith = node["tagStartsWith"].Value<string>();
+			}
+			if(node["instanceCountEqual"] != null)
+			{
+				this._InstanceCountEqual = ParseInt(node["instanceCountEqual"].Value<string>());
+			}
+			if(node["instanceCountIn"] != null)
+			{
+				this._InstanceCountIn = ParseInt(node["instanceCountIn"].Value<string>());
+			}
 		}
 		#endregion
 

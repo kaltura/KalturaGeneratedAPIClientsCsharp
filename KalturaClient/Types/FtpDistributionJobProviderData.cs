@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public IList<FtpDistributionFile> FilesForDistribution
 		{
 			get { return _FilesForDistribution; }
@@ -60,31 +63,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FtpDistributionJobProviderData(XmlElement node) : base(node)
+		public FtpDistributionJobProviderData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["filesForDistribution"] != null)
 			{
-				switch (propertyNode.Name)
+				this._FilesForDistribution = new List<FtpDistributionFile>();
+				foreach(var arrayNode in node["filesForDistribution"].Children())
 				{
-					case "filesForDistribution":
-						this._FilesForDistribution = new List<FtpDistributionFile>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._FilesForDistribution.Add(ObjectFactory.Create<FtpDistributionFile>(arrayNode));
-						}
-						continue;
+					this._FilesForDistribution.Add(ObjectFactory.Create<FtpDistributionFile>(arrayNode));
 				}
 			}
-		}
-
-		public FtpDistributionJobProviderData(IDictionary<string,object> data) : base(data)
-		{
-			    this._FilesForDistribution = new List<FtpDistributionFile>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("filesForDistribution", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._FilesForDistribution.Add(ObjectFactory.Create<FtpDistributionFile>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

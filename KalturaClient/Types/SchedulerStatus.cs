@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -58,10 +60,17 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int SchedulerConfiguredId
 		{
 			get { return _SchedulerConfiguredId; }
@@ -71,6 +80,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SchedulerConfiguredId");
 			}
 		}
+		[JsonProperty]
 		public int WorkerConfiguredId
 		{
 			get { return _WorkerConfiguredId; }
@@ -80,6 +90,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WorkerConfiguredId");
 			}
 		}
+		[JsonProperty]
 		public BatchJobType WorkerType
 		{
 			get { return _WorkerType; }
@@ -89,6 +100,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WorkerType");
 			}
 		}
+		[JsonProperty]
 		public SchedulerStatusType Type
 		{
 			get { return _Type; }
@@ -98,6 +110,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		[JsonProperty]
 		public int Value
 		{
 			get { return _Value; }
@@ -107,13 +120,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("Value");
 			}
 		}
+		[JsonProperty]
 		public int SchedulerId
 		{
 			get { return _SchedulerId; }
+			private set 
+			{ 
+				_SchedulerId = value;
+				OnPropertyChanged("SchedulerId");
+			}
 		}
+		[JsonProperty]
 		public int WorkerId
 		{
 			get { return _WorkerId; }
+			private set 
+			{ 
+				_WorkerId = value;
+				OnPropertyChanged("WorkerId");
+			}
 		}
 		#endregion
 
@@ -122,50 +147,40 @@ namespace Kaltura.Types
 		{
 		}
 
-		public SchedulerStatus(XmlElement node) : base(node)
+		public SchedulerStatus(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "schedulerConfiguredId":
-						this._SchedulerConfiguredId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "workerConfiguredId":
-						this._WorkerConfiguredId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "workerType":
-						this._WorkerType = (BatchJobType)StringEnum.Parse(typeof(BatchJobType), propertyNode.InnerText);
-						continue;
-					case "type":
-						this._Type = (SchedulerStatusType)ParseEnum(typeof(SchedulerStatusType), propertyNode.InnerText);
-						continue;
-					case "value":
-						this._Value = ParseInt(propertyNode.InnerText);
-						continue;
-					case "schedulerId":
-						this._SchedulerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "workerId":
-						this._WorkerId = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._Id = ParseInt(node["id"].Value<string>());
 			}
-		}
-
-		public SchedulerStatus(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._SchedulerConfiguredId = data.TryGetValueSafe<int>("schedulerConfiguredId");
-			    this._WorkerConfiguredId = data.TryGetValueSafe<int>("workerConfiguredId");
-			    this._WorkerType = (BatchJobType)StringEnum.Parse(typeof(BatchJobType), data.TryGetValueSafe<string>("workerType"));
-			    this._Type = (SchedulerStatusType)ParseEnum(typeof(SchedulerStatusType), data.TryGetValueSafe<int>("type"));
-			    this._Value = data.TryGetValueSafe<int>("value");
-			    this._SchedulerId = data.TryGetValueSafe<int>("schedulerId");
-			    this._WorkerId = data.TryGetValueSafe<int>("workerId");
+			if(node["schedulerConfiguredId"] != null)
+			{
+				this._SchedulerConfiguredId = ParseInt(node["schedulerConfiguredId"].Value<string>());
+			}
+			if(node["workerConfiguredId"] != null)
+			{
+				this._WorkerConfiguredId = ParseInt(node["workerConfiguredId"].Value<string>());
+			}
+			if(node["workerType"] != null)
+			{
+				this._WorkerType = (BatchJobType)StringEnum.Parse(typeof(BatchJobType), node["workerType"].Value<string>());
+			}
+			if(node["type"] != null)
+			{
+				this._Type = (SchedulerStatusType)ParseEnum(typeof(SchedulerStatusType), node["type"].Value<string>());
+			}
+			if(node["value"] != null)
+			{
+				this._Value = ParseInt(node["value"].Value<string>());
+			}
+			if(node["schedulerId"] != null)
+			{
+				this._SchedulerId = ParseInt(node["schedulerId"].Value<string>());
+			}
+			if(node["workerId"] != null)
+			{
+				this._WorkerId = ParseInt(node["workerId"].Value<string>());
+			}
 		}
 		#endregion
 

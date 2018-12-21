@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -74,6 +76,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int PartnerIdEqual
 		{
 			get { return _PartnerIdEqual; }
@@ -83,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdEqual");
 			}
 		}
+		[JsonProperty]
 		public UserType TypeEqual
 		{
 			get { return _TypeEqual; }
@@ -92,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string TypeIn
 		{
 			get { return _TypeIn; }
@@ -101,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeIn");
 			}
 		}
+		[JsonProperty]
 		public string ScreenNameLike
 		{
 			get { return _ScreenNameLike; }
@@ -110,6 +116,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ScreenNameLike");
 			}
 		}
+		[JsonProperty]
 		public string ScreenNameStartsWith
 		{
 			get { return _ScreenNameStartsWith; }
@@ -119,6 +126,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ScreenNameStartsWith");
 			}
 		}
+		[JsonProperty]
 		public string EmailLike
 		{
 			get { return _EmailLike; }
@@ -128,6 +136,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EmailLike");
 			}
 		}
+		[JsonProperty]
 		public string EmailStartsWith
 		{
 			get { return _EmailStartsWith; }
@@ -137,6 +146,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EmailStartsWith");
 			}
 		}
+		[JsonProperty]
 		public string TagsMultiLikeOr
 		{
 			get { return _TagsMultiLikeOr; }
@@ -146,6 +156,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string TagsMultiLikeAnd
 		{
 			get { return _TagsMultiLikeAnd; }
@@ -155,6 +166,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public UserStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -164,6 +176,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -173,6 +186,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
 			get { return _CreatedAtGreaterThanOrEqual; }
@@ -182,6 +196,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
 			get { return _CreatedAtLessThanOrEqual; }
@@ -191,6 +206,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public string FirstNameStartsWith
 		{
 			get { return _FirstNameStartsWith; }
@@ -200,6 +216,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FirstNameStartsWith");
 			}
 		}
+		[JsonProperty]
 		public string LastNameStartsWith
 		{
 			get { return _LastNameStartsWith; }
@@ -209,6 +226,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastNameStartsWith");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean IsAdminEqual
 		{
 			get { return _IsAdminEqual; }
@@ -225,82 +243,72 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UserBaseFilter(XmlElement node) : base(node)
+		public UserBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["partnerIdEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "partnerIdEqual":
-						this._PartnerIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "typeEqual":
-						this._TypeEqual = (UserType)ParseEnum(typeof(UserType), propertyNode.InnerText);
-						continue;
-					case "typeIn":
-						this._TypeIn = propertyNode.InnerText;
-						continue;
-					case "screenNameLike":
-						this._ScreenNameLike = propertyNode.InnerText;
-						continue;
-					case "screenNameStartsWith":
-						this._ScreenNameStartsWith = propertyNode.InnerText;
-						continue;
-					case "emailLike":
-						this._EmailLike = propertyNode.InnerText;
-						continue;
-					case "emailStartsWith":
-						this._EmailStartsWith = propertyNode.InnerText;
-						continue;
-					case "tagsMultiLikeOr":
-						this._TagsMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "tagsMultiLikeAnd":
-						this._TagsMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (UserStatus)ParseEnum(typeof(UserStatus), propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "firstNameStartsWith":
-						this._FirstNameStartsWith = propertyNode.InnerText;
-						continue;
-					case "lastNameStartsWith":
-						this._LastNameStartsWith = propertyNode.InnerText;
-						continue;
-					case "isAdminEqual":
-						this._IsAdminEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-				}
+				this._PartnerIdEqual = ParseInt(node["partnerIdEqual"].Value<string>());
 			}
-		}
-
-		public UserBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
-			    this._TypeEqual = (UserType)ParseEnum(typeof(UserType), data.TryGetValueSafe<int>("typeEqual"));
-			    this._TypeIn = data.TryGetValueSafe<string>("typeIn");
-			    this._ScreenNameLike = data.TryGetValueSafe<string>("screenNameLike");
-			    this._ScreenNameStartsWith = data.TryGetValueSafe<string>("screenNameStartsWith");
-			    this._EmailLike = data.TryGetValueSafe<string>("emailLike");
-			    this._EmailStartsWith = data.TryGetValueSafe<string>("emailStartsWith");
-			    this._TagsMultiLikeOr = data.TryGetValueSafe<string>("tagsMultiLikeOr");
-			    this._TagsMultiLikeAnd = data.TryGetValueSafe<string>("tagsMultiLikeAnd");
-			    this._StatusEqual = (UserStatus)ParseEnum(typeof(UserStatus), data.TryGetValueSafe<int>("statusEqual"));
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
-			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
-			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
-			    this._FirstNameStartsWith = data.TryGetValueSafe<string>("firstNameStartsWith");
-			    this._LastNameStartsWith = data.TryGetValueSafe<string>("lastNameStartsWith");
-			    this._IsAdminEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isAdminEqual"));
+			if(node["typeEqual"] != null)
+			{
+				this._TypeEqual = (UserType)ParseEnum(typeof(UserType), node["typeEqual"].Value<string>());
+			}
+			if(node["typeIn"] != null)
+			{
+				this._TypeIn = node["typeIn"].Value<string>();
+			}
+			if(node["screenNameLike"] != null)
+			{
+				this._ScreenNameLike = node["screenNameLike"].Value<string>();
+			}
+			if(node["screenNameStartsWith"] != null)
+			{
+				this._ScreenNameStartsWith = node["screenNameStartsWith"].Value<string>();
+			}
+			if(node["emailLike"] != null)
+			{
+				this._EmailLike = node["emailLike"].Value<string>();
+			}
+			if(node["emailStartsWith"] != null)
+			{
+				this._EmailStartsWith = node["emailStartsWith"].Value<string>();
+			}
+			if(node["tagsMultiLikeOr"] != null)
+			{
+				this._TagsMultiLikeOr = node["tagsMultiLikeOr"].Value<string>();
+			}
+			if(node["tagsMultiLikeAnd"] != null)
+			{
+				this._TagsMultiLikeAnd = node["tagsMultiLikeAnd"].Value<string>();
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (UserStatus)ParseEnum(typeof(UserStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
+			if(node["createdAtGreaterThanOrEqual"] != null)
+			{
+				this._CreatedAtGreaterThanOrEqual = ParseInt(node["createdAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["createdAtLessThanOrEqual"] != null)
+			{
+				this._CreatedAtLessThanOrEqual = ParseInt(node["createdAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["firstNameStartsWith"] != null)
+			{
+				this._FirstNameStartsWith = node["firstNameStartsWith"].Value<string>();
+			}
+			if(node["lastNameStartsWith"] != null)
+			{
+				this._LastNameStartsWith = node["lastNameStartsWith"].Value<string>();
+			}
+			if(node["isAdminEqual"] != null)
+			{
+				this._IsAdminEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["isAdminEqual"].Value<string>());
+			}
 		}
 		#endregion
 

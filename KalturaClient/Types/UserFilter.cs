@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -64,6 +66,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string IdOrScreenNameStartsWith
 		{
 			get { return _IdOrScreenNameStartsWith; }
@@ -73,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdOrScreenNameStartsWith");
 			}
 		}
+		[JsonProperty]
 		public string IdEqual
 		{
 			get { return _IdEqual; }
@@ -82,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		[JsonProperty]
 		public string IdIn
 		{
 			get { return _IdIn; }
@@ -91,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean LoginEnabledEqual
 		{
 			get { return _LoginEnabledEqual; }
@@ -100,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LoginEnabledEqual");
 			}
 		}
+		[JsonProperty]
 		public string RoleIdEqual
 		{
 			get { return _RoleIdEqual; }
@@ -109,6 +116,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RoleIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string RoleIdsEqual
 		{
 			get { return _RoleIdsEqual; }
@@ -118,6 +126,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RoleIdsEqual");
 			}
 		}
+		[JsonProperty]
 		public string RoleIdsIn
 		{
 			get { return _RoleIdsIn; }
@@ -127,6 +136,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RoleIdsIn");
 			}
 		}
+		[JsonProperty]
 		public string FirstNameOrLastNameStartsWith
 		{
 			get { return _FirstNameOrLastNameStartsWith; }
@@ -136,6 +146,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FirstNameOrLastNameStartsWith");
 			}
 		}
+		[JsonProperty]
 		public string PermissionNamesMultiLikeOr
 		{
 			get { return _PermissionNamesMultiLikeOr; }
@@ -145,6 +156,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PermissionNamesMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string PermissionNamesMultiLikeAnd
 		{
 			get { return _PermissionNamesMultiLikeAnd; }
@@ -154,6 +166,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PermissionNamesMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public new UserOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -170,62 +183,52 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UserFilter(XmlElement node) : base(node)
+		public UserFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["idOrScreenNameStartsWith"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "idOrScreenNameStartsWith":
-						this._IdOrScreenNameStartsWith = propertyNode.InnerText;
-						continue;
-					case "idEqual":
-						this._IdEqual = propertyNode.InnerText;
-						continue;
-					case "idIn":
-						this._IdIn = propertyNode.InnerText;
-						continue;
-					case "loginEnabledEqual":
-						this._LoginEnabledEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "roleIdEqual":
-						this._RoleIdEqual = propertyNode.InnerText;
-						continue;
-					case "roleIdsEqual":
-						this._RoleIdsEqual = propertyNode.InnerText;
-						continue;
-					case "roleIdsIn":
-						this._RoleIdsIn = propertyNode.InnerText;
-						continue;
-					case "firstNameOrLastNameStartsWith":
-						this._FirstNameOrLastNameStartsWith = propertyNode.InnerText;
-						continue;
-					case "permissionNamesMultiLikeOr":
-						this._PermissionNamesMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "permissionNamesMultiLikeAnd":
-						this._PermissionNamesMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "orderBy":
-						this._OrderBy = (UserOrderBy)StringEnum.Parse(typeof(UserOrderBy), propertyNode.InnerText);
-						continue;
-				}
+				this._IdOrScreenNameStartsWith = node["idOrScreenNameStartsWith"].Value<string>();
 			}
-		}
-
-		public UserFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._IdOrScreenNameStartsWith = data.TryGetValueSafe<string>("idOrScreenNameStartsWith");
-			    this._IdEqual = data.TryGetValueSafe<string>("idEqual");
-			    this._IdIn = data.TryGetValueSafe<string>("idIn");
-			    this._LoginEnabledEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("loginEnabledEqual"));
-			    this._RoleIdEqual = data.TryGetValueSafe<string>("roleIdEqual");
-			    this._RoleIdsEqual = data.TryGetValueSafe<string>("roleIdsEqual");
-			    this._RoleIdsIn = data.TryGetValueSafe<string>("roleIdsIn");
-			    this._FirstNameOrLastNameStartsWith = data.TryGetValueSafe<string>("firstNameOrLastNameStartsWith");
-			    this._PermissionNamesMultiLikeOr = data.TryGetValueSafe<string>("permissionNamesMultiLikeOr");
-			    this._PermissionNamesMultiLikeAnd = data.TryGetValueSafe<string>("permissionNamesMultiLikeAnd");
-			    this._OrderBy = (UserOrderBy)StringEnum.Parse(typeof(UserOrderBy), data.TryGetValueSafe<string>("orderBy"));
+			if(node["idEqual"] != null)
+			{
+				this._IdEqual = node["idEqual"].Value<string>();
+			}
+			if(node["idIn"] != null)
+			{
+				this._IdIn = node["idIn"].Value<string>();
+			}
+			if(node["loginEnabledEqual"] != null)
+			{
+				this._LoginEnabledEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["loginEnabledEqual"].Value<string>());
+			}
+			if(node["roleIdEqual"] != null)
+			{
+				this._RoleIdEqual = node["roleIdEqual"].Value<string>();
+			}
+			if(node["roleIdsEqual"] != null)
+			{
+				this._RoleIdsEqual = node["roleIdsEqual"].Value<string>();
+			}
+			if(node["roleIdsIn"] != null)
+			{
+				this._RoleIdsIn = node["roleIdsIn"].Value<string>();
+			}
+			if(node["firstNameOrLastNameStartsWith"] != null)
+			{
+				this._FirstNameOrLastNameStartsWith = node["firstNameOrLastNameStartsWith"].Value<string>();
+			}
+			if(node["permissionNamesMultiLikeOr"] != null)
+			{
+				this._PermissionNamesMultiLikeOr = node["permissionNamesMultiLikeOr"].Value<string>();
+			}
+			if(node["permissionNamesMultiLikeAnd"] != null)
+			{
+				this._PermissionNamesMultiLikeAnd = node["permissionNamesMultiLikeAnd"].Value<string>();
+			}
+			if(node["orderBy"] != null)
+			{
+				this._OrderBy = (UserOrderBy)StringEnum.Parse(typeof(UserOrderBy), node["orderBy"].Value<string>());
+			}
 		}
 		#endregion
 

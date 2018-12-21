@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public UserFilter Filter
 		{
 			get { return _Filter; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EmailNotificationUserRecipientJobData(XmlElement node) : base(node)
+		public EmailNotificationUserRecipientJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["filter"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "filter":
-						this._Filter = ObjectFactory.Create<UserFilter>(propertyNode);
-						continue;
-				}
+				this._Filter = ObjectFactory.Create<UserFilter>(node["filter"]);
 			}
-		}
-
-		public EmailNotificationUserRecipientJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._Filter = ObjectFactory.Create<UserFilter>(data.TryGetValueSafe<IDictionary<string,object>>("filter"));
 		}
 		#endregion
 

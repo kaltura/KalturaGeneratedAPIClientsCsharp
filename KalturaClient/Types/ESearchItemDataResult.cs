@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int TotalCount
 		{
 			get { return _TotalCount; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TotalCount");
 			}
 		}
+		[JsonProperty]
 		public IList<ESearchItemData> Items
 		{
 			get { return _Items; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Items");
 			}
 		}
+		[JsonProperty]
 		public string ItemsType
 		{
 			get { return _ItemsType; }
@@ -82,39 +87,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ESearchItemDataResult(XmlElement node) : base(node)
+		public ESearchItemDataResult(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["totalCount"] != null)
 			{
-				switch (propertyNode.Name)
+				this._TotalCount = ParseInt(node["totalCount"].Value<string>());
+			}
+			if(node["items"] != null)
+			{
+				this._Items = new List<ESearchItemData>();
+				foreach(var arrayNode in node["items"].Children())
 				{
-					case "totalCount":
-						this._TotalCount = ParseInt(propertyNode.InnerText);
-						continue;
-					case "items":
-						this._Items = new List<ESearchItemData>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Items.Add(ObjectFactory.Create<ESearchItemData>(arrayNode));
-						}
-						continue;
-					case "itemsType":
-						this._ItemsType = propertyNode.InnerText;
-						continue;
+					this._Items.Add(ObjectFactory.Create<ESearchItemData>(arrayNode));
 				}
 			}
-		}
-
-		public ESearchItemDataResult(IDictionary<string,object> data) : base(data)
-		{
-			    this._TotalCount = data.TryGetValueSafe<int>("totalCount");
-			    this._Items = new List<ESearchItemData>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("items", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Items.Add(ObjectFactory.Create<ESearchItemData>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._ItemsType = data.TryGetValueSafe<string>("itemsType");
+			if(node["itemsType"] != null)
+			{
+				this._ItemsType = node["itemsType"].Value<string>();
+			}
 		}
 		#endregion
 

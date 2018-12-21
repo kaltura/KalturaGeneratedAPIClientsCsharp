@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int DropFolderId
 		{
 			get { return _DropFolderId; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DropFolderXmlBulkUploadJobData(XmlElement node) : base(node)
+		public DropFolderXmlBulkUploadJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["dropFolderId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "dropFolderId":
-						this._DropFolderId = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._DropFolderId = ParseInt(node["dropFolderId"].Value<string>());
 			}
-		}
-
-		public DropFolderXmlBulkUploadJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._DropFolderId = data.TryGetValueSafe<int>("dropFolderId");
 		}
 		#endregion
 

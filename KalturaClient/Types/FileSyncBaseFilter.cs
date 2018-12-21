@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -100,6 +102,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int PartnerIdEqual
 		{
 			get { return _PartnerIdEqual; }
@@ -109,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdEqual");
 			}
 		}
+		[JsonProperty]
 		public FileSyncObjectType FileObjectTypeEqual
 		{
 			get { return _FileObjectTypeEqual; }
@@ -118,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileObjectTypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string FileObjectTypeIn
 		{
 			get { return _FileObjectTypeIn; }
@@ -127,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileObjectTypeIn");
 			}
 		}
+		[JsonProperty]
 		public string ObjectIdEqual
 		{
 			get { return _ObjectIdEqual; }
@@ -136,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string ObjectIdIn
 		{
 			get { return _ObjectIdIn; }
@@ -145,6 +152,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectIdIn");
 			}
 		}
+		[JsonProperty]
 		public string VersionEqual
 		{
 			get { return _VersionEqual; }
@@ -154,6 +162,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VersionEqual");
 			}
 		}
+		[JsonProperty]
 		public string VersionIn
 		{
 			get { return _VersionIn; }
@@ -163,6 +172,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VersionIn");
 			}
 		}
+		[JsonProperty]
 		public int ObjectSubTypeEqual
 		{
 			get { return _ObjectSubTypeEqual; }
@@ -172,6 +182,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectSubTypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string ObjectSubTypeIn
 		{
 			get { return _ObjectSubTypeIn; }
@@ -181,6 +192,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectSubTypeIn");
 			}
 		}
+		[JsonProperty]
 		public string DcEqual
 		{
 			get { return _DcEqual; }
@@ -190,6 +202,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DcEqual");
 			}
 		}
+		[JsonProperty]
 		public string DcIn
 		{
 			get { return _DcIn; }
@@ -199,6 +212,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DcIn");
 			}
 		}
+		[JsonProperty]
 		public int OriginalEqual
 		{
 			get { return _OriginalEqual; }
@@ -208,6 +222,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("OriginalEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
 			get { return _CreatedAtGreaterThanOrEqual; }
@@ -217,6 +232,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
 			get { return _CreatedAtLessThanOrEqual; }
@@ -226,6 +242,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
 			get { return _UpdatedAtGreaterThanOrEqual; }
@@ -235,6 +252,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
 			get { return _UpdatedAtLessThanOrEqual; }
@@ -244,6 +262,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int ReadyAtGreaterThanOrEqual
 		{
 			get { return _ReadyAtGreaterThanOrEqual; }
@@ -253,6 +272,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReadyAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int ReadyAtLessThanOrEqual
 		{
 			get { return _ReadyAtLessThanOrEqual; }
@@ -262,6 +282,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReadyAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int SyncTimeGreaterThanOrEqual
 		{
 			get { return _SyncTimeGreaterThanOrEqual; }
@@ -271,6 +292,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SyncTimeGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int SyncTimeLessThanOrEqual
 		{
 			get { return _SyncTimeLessThanOrEqual; }
@@ -280,6 +302,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SyncTimeLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public FileSyncStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -289,6 +312,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -298,6 +322,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		[JsonProperty]
 		public FileSyncType FileTypeEqual
 		{
 			get { return _FileTypeEqual; }
@@ -307,6 +332,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileTypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string FileTypeIn
 		{
 			get { return _FileTypeIn; }
@@ -316,6 +342,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileTypeIn");
 			}
 		}
+		[JsonProperty]
 		public int LinkedIdEqual
 		{
 			get { return _LinkedIdEqual; }
@@ -325,6 +352,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LinkedIdEqual");
 			}
 		}
+		[JsonProperty]
 		public int LinkCountGreaterThanOrEqual
 		{
 			get { return _LinkCountGreaterThanOrEqual; }
@@ -334,6 +362,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LinkCountGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int LinkCountLessThanOrEqual
 		{
 			get { return _LinkCountLessThanOrEqual; }
@@ -343,6 +372,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LinkCountLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public float FileSizeGreaterThanOrEqual
 		{
 			get { return _FileSizeGreaterThanOrEqual; }
@@ -352,6 +382,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileSizeGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public float FileSizeLessThanOrEqual
 		{
 			get { return _FileSizeLessThanOrEqual; }
@@ -368,134 +399,124 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FileSyncBaseFilter(XmlElement node) : base(node)
+		public FileSyncBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["partnerIdEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "partnerIdEqual":
-						this._PartnerIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "fileObjectTypeEqual":
-						this._FileObjectTypeEqual = (FileSyncObjectType)StringEnum.Parse(typeof(FileSyncObjectType), propertyNode.InnerText);
-						continue;
-					case "fileObjectTypeIn":
-						this._FileObjectTypeIn = propertyNode.InnerText;
-						continue;
-					case "objectIdEqual":
-						this._ObjectIdEqual = propertyNode.InnerText;
-						continue;
-					case "objectIdIn":
-						this._ObjectIdIn = propertyNode.InnerText;
-						continue;
-					case "versionEqual":
-						this._VersionEqual = propertyNode.InnerText;
-						continue;
-					case "versionIn":
-						this._VersionIn = propertyNode.InnerText;
-						continue;
-					case "objectSubTypeEqual":
-						this._ObjectSubTypeEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "objectSubTypeIn":
-						this._ObjectSubTypeIn = propertyNode.InnerText;
-						continue;
-					case "dcEqual":
-						this._DcEqual = propertyNode.InnerText;
-						continue;
-					case "dcIn":
-						this._DcIn = propertyNode.InnerText;
-						continue;
-					case "originalEqual":
-						this._OriginalEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "readyAtGreaterThanOrEqual":
-						this._ReadyAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "readyAtLessThanOrEqual":
-						this._ReadyAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "syncTimeGreaterThanOrEqual":
-						this._SyncTimeGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "syncTimeLessThanOrEqual":
-						this._SyncTimeLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (FileSyncStatus)ParseEnum(typeof(FileSyncStatus), propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-					case "fileTypeEqual":
-						this._FileTypeEqual = (FileSyncType)ParseEnum(typeof(FileSyncType), propertyNode.InnerText);
-						continue;
-					case "fileTypeIn":
-						this._FileTypeIn = propertyNode.InnerText;
-						continue;
-					case "linkedIdEqual":
-						this._LinkedIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "linkCountGreaterThanOrEqual":
-						this._LinkCountGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "linkCountLessThanOrEqual":
-						this._LinkCountLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "fileSizeGreaterThanOrEqual":
-						this._FileSizeGreaterThanOrEqual = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "fileSizeLessThanOrEqual":
-						this._FileSizeLessThanOrEqual = ParseFloat(propertyNode.InnerText);
-						continue;
-				}
+				this._PartnerIdEqual = ParseInt(node["partnerIdEqual"].Value<string>());
 			}
-		}
-
-		public FileSyncBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
-			    this._FileObjectTypeEqual = (FileSyncObjectType)StringEnum.Parse(typeof(FileSyncObjectType), data.TryGetValueSafe<string>("fileObjectTypeEqual"));
-			    this._FileObjectTypeIn = data.TryGetValueSafe<string>("fileObjectTypeIn");
-			    this._ObjectIdEqual = data.TryGetValueSafe<string>("objectIdEqual");
-			    this._ObjectIdIn = data.TryGetValueSafe<string>("objectIdIn");
-			    this._VersionEqual = data.TryGetValueSafe<string>("versionEqual");
-			    this._VersionIn = data.TryGetValueSafe<string>("versionIn");
-			    this._ObjectSubTypeEqual = data.TryGetValueSafe<int>("objectSubTypeEqual");
-			    this._ObjectSubTypeIn = data.TryGetValueSafe<string>("objectSubTypeIn");
-			    this._DcEqual = data.TryGetValueSafe<string>("dcEqual");
-			    this._DcIn = data.TryGetValueSafe<string>("dcIn");
-			    this._OriginalEqual = data.TryGetValueSafe<int>("originalEqual");
-			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
-			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
-			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
-			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
-			    this._ReadyAtGreaterThanOrEqual = data.TryGetValueSafe<int>("readyAtGreaterThanOrEqual");
-			    this._ReadyAtLessThanOrEqual = data.TryGetValueSafe<int>("readyAtLessThanOrEqual");
-			    this._SyncTimeGreaterThanOrEqual = data.TryGetValueSafe<int>("syncTimeGreaterThanOrEqual");
-			    this._SyncTimeLessThanOrEqual = data.TryGetValueSafe<int>("syncTimeLessThanOrEqual");
-			    this._StatusEqual = (FileSyncStatus)ParseEnum(typeof(FileSyncStatus), data.TryGetValueSafe<int>("statusEqual"));
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
-			    this._FileTypeEqual = (FileSyncType)ParseEnum(typeof(FileSyncType), data.TryGetValueSafe<int>("fileTypeEqual"));
-			    this._FileTypeIn = data.TryGetValueSafe<string>("fileTypeIn");
-			    this._LinkedIdEqual = data.TryGetValueSafe<int>("linkedIdEqual");
-			    this._LinkCountGreaterThanOrEqual = data.TryGetValueSafe<int>("linkCountGreaterThanOrEqual");
-			    this._LinkCountLessThanOrEqual = data.TryGetValueSafe<int>("linkCountLessThanOrEqual");
-			    this._FileSizeGreaterThanOrEqual = data.TryGetValueSafe<float>("fileSizeGreaterThanOrEqual");
-			    this._FileSizeLessThanOrEqual = data.TryGetValueSafe<float>("fileSizeLessThanOrEqual");
+			if(node["fileObjectTypeEqual"] != null)
+			{
+				this._FileObjectTypeEqual = (FileSyncObjectType)StringEnum.Parse(typeof(FileSyncObjectType), node["fileObjectTypeEqual"].Value<string>());
+			}
+			if(node["fileObjectTypeIn"] != null)
+			{
+				this._FileObjectTypeIn = node["fileObjectTypeIn"].Value<string>();
+			}
+			if(node["objectIdEqual"] != null)
+			{
+				this._ObjectIdEqual = node["objectIdEqual"].Value<string>();
+			}
+			if(node["objectIdIn"] != null)
+			{
+				this._ObjectIdIn = node["objectIdIn"].Value<string>();
+			}
+			if(node["versionEqual"] != null)
+			{
+				this._VersionEqual = node["versionEqual"].Value<string>();
+			}
+			if(node["versionIn"] != null)
+			{
+				this._VersionIn = node["versionIn"].Value<string>();
+			}
+			if(node["objectSubTypeEqual"] != null)
+			{
+				this._ObjectSubTypeEqual = ParseInt(node["objectSubTypeEqual"].Value<string>());
+			}
+			if(node["objectSubTypeIn"] != null)
+			{
+				this._ObjectSubTypeIn = node["objectSubTypeIn"].Value<string>();
+			}
+			if(node["dcEqual"] != null)
+			{
+				this._DcEqual = node["dcEqual"].Value<string>();
+			}
+			if(node["dcIn"] != null)
+			{
+				this._DcIn = node["dcIn"].Value<string>();
+			}
+			if(node["originalEqual"] != null)
+			{
+				this._OriginalEqual = ParseInt(node["originalEqual"].Value<string>());
+			}
+			if(node["createdAtGreaterThanOrEqual"] != null)
+			{
+				this._CreatedAtGreaterThanOrEqual = ParseInt(node["createdAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["createdAtLessThanOrEqual"] != null)
+			{
+				this._CreatedAtLessThanOrEqual = ParseInt(node["createdAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtGreaterThanOrEqual"] != null)
+			{
+				this._UpdatedAtGreaterThanOrEqual = ParseInt(node["updatedAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtLessThanOrEqual"] != null)
+			{
+				this._UpdatedAtLessThanOrEqual = ParseInt(node["updatedAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["readyAtGreaterThanOrEqual"] != null)
+			{
+				this._ReadyAtGreaterThanOrEqual = ParseInt(node["readyAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["readyAtLessThanOrEqual"] != null)
+			{
+				this._ReadyAtLessThanOrEqual = ParseInt(node["readyAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["syncTimeGreaterThanOrEqual"] != null)
+			{
+				this._SyncTimeGreaterThanOrEqual = ParseInt(node["syncTimeGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["syncTimeLessThanOrEqual"] != null)
+			{
+				this._SyncTimeLessThanOrEqual = ParseInt(node["syncTimeLessThanOrEqual"].Value<string>());
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (FileSyncStatus)ParseEnum(typeof(FileSyncStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
+			if(node["fileTypeEqual"] != null)
+			{
+				this._FileTypeEqual = (FileSyncType)ParseEnum(typeof(FileSyncType), node["fileTypeEqual"].Value<string>());
+			}
+			if(node["fileTypeIn"] != null)
+			{
+				this._FileTypeIn = node["fileTypeIn"].Value<string>();
+			}
+			if(node["linkedIdEqual"] != null)
+			{
+				this._LinkedIdEqual = ParseInt(node["linkedIdEqual"].Value<string>());
+			}
+			if(node["linkCountGreaterThanOrEqual"] != null)
+			{
+				this._LinkCountGreaterThanOrEqual = ParseInt(node["linkCountGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["linkCountLessThanOrEqual"] != null)
+			{
+				this._LinkCountLessThanOrEqual = ParseInt(node["linkCountLessThanOrEqual"].Value<string>());
+			}
+			if(node["fileSizeGreaterThanOrEqual"] != null)
+			{
+				this._FileSizeGreaterThanOrEqual = ParseFloat(node["fileSizeGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["fileSizeLessThanOrEqual"] != null)
+			{
+				this._FileSizeLessThanOrEqual = ParseFloat(node["fileSizeLessThanOrEqual"].Value<string>());
+			}
 		}
 		#endregion
 

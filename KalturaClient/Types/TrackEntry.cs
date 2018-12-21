@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -76,6 +78,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
@@ -85,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		[JsonProperty]
 		public TrackEntryEventType TrackEventType
 		{
 			get { return _TrackEventType; }
@@ -94,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TrackEventType");
 			}
 		}
+		[JsonProperty]
 		public string PsVersion
 		{
 			get { return _PsVersion; }
@@ -103,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PsVersion");
 			}
 		}
+		[JsonProperty]
 		public string Context
 		{
 			get { return _Context; }
@@ -112,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Context");
 			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
@@ -121,6 +128,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		[JsonProperty]
 		public string EntryId
 		{
 			get { return _EntryId; }
@@ -130,6 +138,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		[JsonProperty]
 		public string HostName
 		{
 			get { return _HostName; }
@@ -139,6 +148,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("HostName");
 			}
 		}
+		[JsonProperty]
 		public string UserId
 		{
 			get { return _UserId; }
@@ -148,6 +158,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserId");
 			}
 		}
+		[JsonProperty]
 		public string ChangedProperties
 		{
 			get { return _ChangedProperties; }
@@ -157,6 +168,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChangedProperties");
 			}
 		}
+		[JsonProperty]
 		public string ParamStr1
 		{
 			get { return _ParamStr1; }
@@ -166,6 +178,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParamStr1");
 			}
 		}
+		[JsonProperty]
 		public string ParamStr2
 		{
 			get { return _ParamStr2; }
@@ -175,6 +188,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParamStr2");
 			}
 		}
+		[JsonProperty]
 		public string ParamStr3
 		{
 			get { return _ParamStr3; }
@@ -184,6 +198,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParamStr3");
 			}
 		}
+		[JsonProperty]
 		public string Ks
 		{
 			get { return _Ks; }
@@ -193,6 +208,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Ks");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -202,6 +218,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
@@ -211,6 +228,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
@@ -220,6 +238,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
+		[JsonProperty]
 		public string UserIp
 		{
 			get { return _UserIp; }
@@ -236,86 +255,76 @@ namespace Kaltura.Types
 		{
 		}
 
-		public TrackEntry(XmlElement node) : base(node)
+		public TrackEntry(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "trackEventType":
-						this._TrackEventType = (TrackEntryEventType)ParseEnum(typeof(TrackEntryEventType), propertyNode.InnerText);
-						continue;
-					case "psVersion":
-						this._PsVersion = propertyNode.InnerText;
-						continue;
-					case "context":
-						this._Context = propertyNode.InnerText;
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "entryId":
-						this._EntryId = propertyNode.InnerText;
-						continue;
-					case "hostName":
-						this._HostName = propertyNode.InnerText;
-						continue;
-					case "userId":
-						this._UserId = propertyNode.InnerText;
-						continue;
-					case "changedProperties":
-						this._ChangedProperties = propertyNode.InnerText;
-						continue;
-					case "paramStr1":
-						this._ParamStr1 = propertyNode.InnerText;
-						continue;
-					case "paramStr2":
-						this._ParamStr2 = propertyNode.InnerText;
-						continue;
-					case "paramStr3":
-						this._ParamStr3 = propertyNode.InnerText;
-						continue;
-					case "ks":
-						this._Ks = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "userIp":
-						this._UserIp = propertyNode.InnerText;
-						continue;
-				}
+				this._Id = ParseInt(node["id"].Value<string>());
 			}
-		}
-
-		public TrackEntry(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._TrackEventType = (TrackEntryEventType)ParseEnum(typeof(TrackEntryEventType), data.TryGetValueSafe<int>("trackEventType"));
-			    this._PsVersion = data.TryGetValueSafe<string>("psVersion");
-			    this._Context = data.TryGetValueSafe<string>("context");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._EntryId = data.TryGetValueSafe<string>("entryId");
-			    this._HostName = data.TryGetValueSafe<string>("hostName");
-			    this._UserId = data.TryGetValueSafe<string>("userId");
-			    this._ChangedProperties = data.TryGetValueSafe<string>("changedProperties");
-			    this._ParamStr1 = data.TryGetValueSafe<string>("paramStr1");
-			    this._ParamStr2 = data.TryGetValueSafe<string>("paramStr2");
-			    this._ParamStr3 = data.TryGetValueSafe<string>("paramStr3");
-			    this._Ks = data.TryGetValueSafe<string>("ks");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._UserIp = data.TryGetValueSafe<string>("userIp");
+			if(node["trackEventType"] != null)
+			{
+				this._TrackEventType = (TrackEntryEventType)ParseEnum(typeof(TrackEntryEventType), node["trackEventType"].Value<string>());
+			}
+			if(node["psVersion"] != null)
+			{
+				this._PsVersion = node["psVersion"].Value<string>();
+			}
+			if(node["context"] != null)
+			{
+				this._Context = node["context"].Value<string>();
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["entryId"] != null)
+			{
+				this._EntryId = node["entryId"].Value<string>();
+			}
+			if(node["hostName"] != null)
+			{
+				this._HostName = node["hostName"].Value<string>();
+			}
+			if(node["userId"] != null)
+			{
+				this._UserId = node["userId"].Value<string>();
+			}
+			if(node["changedProperties"] != null)
+			{
+				this._ChangedProperties = node["changedProperties"].Value<string>();
+			}
+			if(node["paramStr1"] != null)
+			{
+				this._ParamStr1 = node["paramStr1"].Value<string>();
+			}
+			if(node["paramStr2"] != null)
+			{
+				this._ParamStr2 = node["paramStr2"].Value<string>();
+			}
+			if(node["paramStr3"] != null)
+			{
+				this._ParamStr3 = node["paramStr3"].Value<string>();
+			}
+			if(node["ks"] != null)
+			{
+				this._Ks = node["ks"].Value<string>();
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["userIp"] != null)
+			{
+				this._UserIp = node["userIp"].Value<string>();
+			}
 		}
 		#endregion
 

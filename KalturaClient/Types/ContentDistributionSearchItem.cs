@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,6 +58,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public bool? NoDistributionProfiles
 		{
 			get { return _NoDistributionProfiles; }
@@ -65,6 +68,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("NoDistributionProfiles");
 			}
 		}
+		[JsonProperty]
 		public int DistributionProfileId
 		{
 			get { return _DistributionProfileId; }
@@ -74,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributionProfileId");
 			}
 		}
+		[JsonProperty]
 		public EntryDistributionSunStatus DistributionSunStatus
 		{
 			get { return _DistributionSunStatus; }
@@ -83,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributionSunStatus");
 			}
 		}
+		[JsonProperty]
 		public EntryDistributionFlag EntryDistributionFlag
 		{
 			get { return _EntryDistributionFlag; }
@@ -92,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryDistributionFlag");
 			}
 		}
+		[JsonProperty]
 		public EntryDistributionStatus EntryDistributionStatus
 		{
 			get { return _EntryDistributionStatus; }
@@ -101,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryDistributionStatus");
 			}
 		}
+		[JsonProperty]
 		public bool? HasEntryDistributionValidationErrors
 		{
 			get { return _HasEntryDistributionValidationErrors; }
@@ -110,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("HasEntryDistributionValidationErrors");
 			}
 		}
+		[JsonProperty]
 		public string EntryDistributionValidationErrors
 		{
 			get { return _EntryDistributionValidationErrors; }
@@ -126,46 +135,36 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ContentDistributionSearchItem(XmlElement node) : base(node)
+		public ContentDistributionSearchItem(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["noDistributionProfiles"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "noDistributionProfiles":
-						this._NoDistributionProfiles = ParseBool(propertyNode.InnerText);
-						continue;
-					case "distributionProfileId":
-						this._DistributionProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "distributionSunStatus":
-						this._DistributionSunStatus = (EntryDistributionSunStatus)ParseEnum(typeof(EntryDistributionSunStatus), propertyNode.InnerText);
-						continue;
-					case "entryDistributionFlag":
-						this._EntryDistributionFlag = (EntryDistributionFlag)ParseEnum(typeof(EntryDistributionFlag), propertyNode.InnerText);
-						continue;
-					case "entryDistributionStatus":
-						this._EntryDistributionStatus = (EntryDistributionStatus)ParseEnum(typeof(EntryDistributionStatus), propertyNode.InnerText);
-						continue;
-					case "hasEntryDistributionValidationErrors":
-						this._HasEntryDistributionValidationErrors = ParseBool(propertyNode.InnerText);
-						continue;
-					case "entryDistributionValidationErrors":
-						this._EntryDistributionValidationErrors = propertyNode.InnerText;
-						continue;
-				}
+				this._NoDistributionProfiles = ParseBool(node["noDistributionProfiles"].Value<string>());
 			}
-		}
-
-		public ContentDistributionSearchItem(IDictionary<string,object> data) : base(data)
-		{
-			    this._NoDistributionProfiles = data.TryGetValueSafe<bool>("noDistributionProfiles");
-			    this._DistributionProfileId = data.TryGetValueSafe<int>("distributionProfileId");
-			    this._DistributionSunStatus = (EntryDistributionSunStatus)ParseEnum(typeof(EntryDistributionSunStatus), data.TryGetValueSafe<int>("distributionSunStatus"));
-			    this._EntryDistributionFlag = (EntryDistributionFlag)ParseEnum(typeof(EntryDistributionFlag), data.TryGetValueSafe<int>("entryDistributionFlag"));
-			    this._EntryDistributionStatus = (EntryDistributionStatus)ParseEnum(typeof(EntryDistributionStatus), data.TryGetValueSafe<int>("entryDistributionStatus"));
-			    this._HasEntryDistributionValidationErrors = data.TryGetValueSafe<bool>("hasEntryDistributionValidationErrors");
-			    this._EntryDistributionValidationErrors = data.TryGetValueSafe<string>("entryDistributionValidationErrors");
+			if(node["distributionProfileId"] != null)
+			{
+				this._DistributionProfileId = ParseInt(node["distributionProfileId"].Value<string>());
+			}
+			if(node["distributionSunStatus"] != null)
+			{
+				this._DistributionSunStatus = (EntryDistributionSunStatus)ParseEnum(typeof(EntryDistributionSunStatus), node["distributionSunStatus"].Value<string>());
+			}
+			if(node["entryDistributionFlag"] != null)
+			{
+				this._EntryDistributionFlag = (EntryDistributionFlag)ParseEnum(typeof(EntryDistributionFlag), node["entryDistributionFlag"].Value<string>());
+			}
+			if(node["entryDistributionStatus"] != null)
+			{
+				this._EntryDistributionStatus = (EntryDistributionStatus)ParseEnum(typeof(EntryDistributionStatus), node["entryDistributionStatus"].Value<string>());
+			}
+			if(node["hasEntryDistributionValidationErrors"] != null)
+			{
+				this._HasEntryDistributionValidationErrors = ParseBool(node["hasEntryDistributionValidationErrors"].Value<string>());
+			}
+			if(node["entryDistributionValidationErrors"] != null)
+			{
+				this._EntryDistributionValidationErrors = node["entryDistributionValidationErrors"].Value<string>();
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -78,6 +80,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int PartnerIdEqual
 		{
 			get { return _PartnerIdEqual; }
@@ -87,6 +90,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdEqual");
 			}
 		}
+		[JsonProperty]
 		public int MetadataProfileIdEqual
 		{
 			get { return _MetadataProfileIdEqual; }
@@ -96,6 +100,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataProfileIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string MetadataProfileIdIn
 		{
 			get { return _MetadataProfileIdIn; }
@@ -105,6 +110,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataProfileIdIn");
 			}
 		}
+		[JsonProperty]
 		public int MetadataProfileVersionEqual
 		{
 			get { return _MetadataProfileVersionEqual; }
@@ -114,6 +120,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataProfileVersionEqual");
 			}
 		}
+		[JsonProperty]
 		public int MetadataProfileVersionGreaterThanOrEqual
 		{
 			get { return _MetadataProfileVersionGreaterThanOrEqual; }
@@ -123,6 +130,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataProfileVersionGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int MetadataProfileVersionLessThanOrEqual
 		{
 			get { return _MetadataProfileVersionLessThanOrEqual; }
@@ -132,6 +140,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataProfileVersionLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public MetadataObjectType MetadataObjectTypeEqual
 		{
 			get { return _MetadataObjectTypeEqual; }
@@ -141,6 +150,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataObjectTypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string ObjectIdEqual
 		{
 			get { return _ObjectIdEqual; }
@@ -150,6 +160,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string ObjectIdIn
 		{
 			get { return _ObjectIdIn; }
@@ -159,6 +170,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectIdIn");
 			}
 		}
+		[JsonProperty]
 		public int VersionEqual
 		{
 			get { return _VersionEqual; }
@@ -168,6 +180,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VersionEqual");
 			}
 		}
+		[JsonProperty]
 		public int VersionGreaterThanOrEqual
 		{
 			get { return _VersionGreaterThanOrEqual; }
@@ -177,6 +190,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VersionGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int VersionLessThanOrEqual
 		{
 			get { return _VersionLessThanOrEqual; }
@@ -186,6 +200,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VersionLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
 			get { return _CreatedAtGreaterThanOrEqual; }
@@ -195,6 +210,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
 			get { return _CreatedAtLessThanOrEqual; }
@@ -204,6 +220,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
 			get { return _UpdatedAtGreaterThanOrEqual; }
@@ -213,6 +230,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
 			get { return _UpdatedAtLessThanOrEqual; }
@@ -222,6 +240,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public MetadataStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -231,6 +250,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -247,90 +267,80 @@ namespace Kaltura.Types
 		{
 		}
 
-		public MetadataBaseFilter(XmlElement node) : base(node)
+		public MetadataBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["partnerIdEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "partnerIdEqual":
-						this._PartnerIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "metadataProfileIdEqual":
-						this._MetadataProfileIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "metadataProfileIdIn":
-						this._MetadataProfileIdIn = propertyNode.InnerText;
-						continue;
-					case "metadataProfileVersionEqual":
-						this._MetadataProfileVersionEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "metadataProfileVersionGreaterThanOrEqual":
-						this._MetadataProfileVersionGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "metadataProfileVersionLessThanOrEqual":
-						this._MetadataProfileVersionLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "metadataObjectTypeEqual":
-						this._MetadataObjectTypeEqual = (MetadataObjectType)StringEnum.Parse(typeof(MetadataObjectType), propertyNode.InnerText);
-						continue;
-					case "objectIdEqual":
-						this._ObjectIdEqual = propertyNode.InnerText;
-						continue;
-					case "objectIdIn":
-						this._ObjectIdIn = propertyNode.InnerText;
-						continue;
-					case "versionEqual":
-						this._VersionEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "versionGreaterThanOrEqual":
-						this._VersionGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "versionLessThanOrEqual":
-						this._VersionLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (MetadataStatus)ParseEnum(typeof(MetadataStatus), propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-				}
+				this._PartnerIdEqual = ParseInt(node["partnerIdEqual"].Value<string>());
 			}
-		}
-
-		public MetadataBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
-			    this._MetadataProfileIdEqual = data.TryGetValueSafe<int>("metadataProfileIdEqual");
-			    this._MetadataProfileIdIn = data.TryGetValueSafe<string>("metadataProfileIdIn");
-			    this._MetadataProfileVersionEqual = data.TryGetValueSafe<int>("metadataProfileVersionEqual");
-			    this._MetadataProfileVersionGreaterThanOrEqual = data.TryGetValueSafe<int>("metadataProfileVersionGreaterThanOrEqual");
-			    this._MetadataProfileVersionLessThanOrEqual = data.TryGetValueSafe<int>("metadataProfileVersionLessThanOrEqual");
-			    this._MetadataObjectTypeEqual = (MetadataObjectType)StringEnum.Parse(typeof(MetadataObjectType), data.TryGetValueSafe<string>("metadataObjectTypeEqual"));
-			    this._ObjectIdEqual = data.TryGetValueSafe<string>("objectIdEqual");
-			    this._ObjectIdIn = data.TryGetValueSafe<string>("objectIdIn");
-			    this._VersionEqual = data.TryGetValueSafe<int>("versionEqual");
-			    this._VersionGreaterThanOrEqual = data.TryGetValueSafe<int>("versionGreaterThanOrEqual");
-			    this._VersionLessThanOrEqual = data.TryGetValueSafe<int>("versionLessThanOrEqual");
-			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
-			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
-			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
-			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
-			    this._StatusEqual = (MetadataStatus)ParseEnum(typeof(MetadataStatus), data.TryGetValueSafe<int>("statusEqual"));
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			if(node["metadataProfileIdEqual"] != null)
+			{
+				this._MetadataProfileIdEqual = ParseInt(node["metadataProfileIdEqual"].Value<string>());
+			}
+			if(node["metadataProfileIdIn"] != null)
+			{
+				this._MetadataProfileIdIn = node["metadataProfileIdIn"].Value<string>();
+			}
+			if(node["metadataProfileVersionEqual"] != null)
+			{
+				this._MetadataProfileVersionEqual = ParseInt(node["metadataProfileVersionEqual"].Value<string>());
+			}
+			if(node["metadataProfileVersionGreaterThanOrEqual"] != null)
+			{
+				this._MetadataProfileVersionGreaterThanOrEqual = ParseInt(node["metadataProfileVersionGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["metadataProfileVersionLessThanOrEqual"] != null)
+			{
+				this._MetadataProfileVersionLessThanOrEqual = ParseInt(node["metadataProfileVersionLessThanOrEqual"].Value<string>());
+			}
+			if(node["metadataObjectTypeEqual"] != null)
+			{
+				this._MetadataObjectTypeEqual = (MetadataObjectType)StringEnum.Parse(typeof(MetadataObjectType), node["metadataObjectTypeEqual"].Value<string>());
+			}
+			if(node["objectIdEqual"] != null)
+			{
+				this._ObjectIdEqual = node["objectIdEqual"].Value<string>();
+			}
+			if(node["objectIdIn"] != null)
+			{
+				this._ObjectIdIn = node["objectIdIn"].Value<string>();
+			}
+			if(node["versionEqual"] != null)
+			{
+				this._VersionEqual = ParseInt(node["versionEqual"].Value<string>());
+			}
+			if(node["versionGreaterThanOrEqual"] != null)
+			{
+				this._VersionGreaterThanOrEqual = ParseInt(node["versionGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["versionLessThanOrEqual"] != null)
+			{
+				this._VersionLessThanOrEqual = ParseInt(node["versionLessThanOrEqual"].Value<string>());
+			}
+			if(node["createdAtGreaterThanOrEqual"] != null)
+			{
+				this._CreatedAtGreaterThanOrEqual = ParseInt(node["createdAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["createdAtLessThanOrEqual"] != null)
+			{
+				this._CreatedAtLessThanOrEqual = ParseInt(node["createdAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtGreaterThanOrEqual"] != null)
+			{
+				this._UpdatedAtGreaterThanOrEqual = ParseInt(node["updatedAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtLessThanOrEqual"] != null)
+			{
+				this._UpdatedAtLessThanOrEqual = ParseInt(node["updatedAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (MetadataStatus)ParseEnum(typeof(MetadataStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
 		}
 		#endregion
 

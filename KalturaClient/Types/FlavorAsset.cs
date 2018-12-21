@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -68,6 +70,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int FlavorParamsId
 		{
 			get { return _FlavorParamsId; }
@@ -77,42 +80,97 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsId");
 			}
 		}
+		[JsonProperty]
 		public int Width
 		{
 			get { return _Width; }
+			private set 
+			{ 
+				_Width = value;
+				OnPropertyChanged("Width");
+			}
 		}
+		[JsonProperty]
 		public int Height
 		{
 			get { return _Height; }
+			private set 
+			{ 
+				_Height = value;
+				OnPropertyChanged("Height");
+			}
 		}
+		[JsonProperty]
 		public int Bitrate
 		{
 			get { return _Bitrate; }
+			private set 
+			{ 
+				_Bitrate = value;
+				OnPropertyChanged("Bitrate");
+			}
 		}
+		[JsonProperty]
 		public float FrameRate
 		{
 			get { return _FrameRate; }
+			private set 
+			{ 
+				_FrameRate = value;
+				OnPropertyChanged("FrameRate");
+			}
 		}
+		[JsonProperty]
 		public bool? IsOriginal
 		{
 			get { return _IsOriginal; }
+			private set 
+			{ 
+				_IsOriginal = value;
+				OnPropertyChanged("IsOriginal");
+			}
 		}
+		[JsonProperty]
 		public bool? IsWeb
 		{
 			get { return _IsWeb; }
+			private set 
+			{ 
+				_IsWeb = value;
+				OnPropertyChanged("IsWeb");
+			}
 		}
+		[JsonProperty]
 		public string ContainerFormat
 		{
 			get { return _ContainerFormat; }
+			private set 
+			{ 
+				_ContainerFormat = value;
+				OnPropertyChanged("ContainerFormat");
+			}
 		}
+		[JsonProperty]
 		public string VideoCodecId
 		{
 			get { return _VideoCodecId; }
+			private set 
+			{ 
+				_VideoCodecId = value;
+				OnPropertyChanged("VideoCodecId");
+			}
 		}
+		[JsonProperty]
 		public FlavorAssetStatus Status
 		{
 			get { return _Status; }
+			private set 
+			{ 
+				_Status = value;
+				OnPropertyChanged("Status");
+			}
 		}
+		[JsonProperty]
 		public Language Language
 		{
 			get { return _Language; }
@@ -122,6 +180,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Language");
 			}
 		}
+		[JsonProperty]
 		public string Label
 		{
 			get { return _Label; }
@@ -131,6 +190,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Label");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean IsDefault
 		{
 			get { return _IsDefault; }
@@ -147,70 +207,60 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FlavorAsset(XmlElement node) : base(node)
+		public FlavorAsset(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["flavorParamsId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "flavorParamsId":
-						this._FlavorParamsId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "width":
-						this._Width = ParseInt(propertyNode.InnerText);
-						continue;
-					case "height":
-						this._Height = ParseInt(propertyNode.InnerText);
-						continue;
-					case "bitrate":
-						this._Bitrate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "frameRate":
-						this._FrameRate = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "isOriginal":
-						this._IsOriginal = ParseBool(propertyNode.InnerText);
-						continue;
-					case "isWeb":
-						this._IsWeb = ParseBool(propertyNode.InnerText);
-						continue;
-					case "containerFormat":
-						this._ContainerFormat = propertyNode.InnerText;
-						continue;
-					case "videoCodecId":
-						this._VideoCodecId = propertyNode.InnerText;
-						continue;
-					case "status":
-						this._Status = (FlavorAssetStatus)ParseEnum(typeof(FlavorAssetStatus), propertyNode.InnerText);
-						continue;
-					case "language":
-						this._Language = (Language)StringEnum.Parse(typeof(Language), propertyNode.InnerText);
-						continue;
-					case "label":
-						this._Label = propertyNode.InnerText;
-						continue;
-					case "isDefault":
-						this._IsDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-				}
+				this._FlavorParamsId = ParseInt(node["flavorParamsId"].Value<string>());
 			}
-		}
-
-		public FlavorAsset(IDictionary<string,object> data) : base(data)
-		{
-			    this._FlavorParamsId = data.TryGetValueSafe<int>("flavorParamsId");
-			    this._Width = data.TryGetValueSafe<int>("width");
-			    this._Height = data.TryGetValueSafe<int>("height");
-			    this._Bitrate = data.TryGetValueSafe<int>("bitrate");
-			    this._FrameRate = data.TryGetValueSafe<float>("frameRate");
-			    this._IsOriginal = data.TryGetValueSafe<bool>("isOriginal");
-			    this._IsWeb = data.TryGetValueSafe<bool>("isWeb");
-			    this._ContainerFormat = data.TryGetValueSafe<string>("containerFormat");
-			    this._VideoCodecId = data.TryGetValueSafe<string>("videoCodecId");
-			    this._Status = (FlavorAssetStatus)ParseEnum(typeof(FlavorAssetStatus), data.TryGetValueSafe<int>("status"));
-			    this._Language = (Language)StringEnum.Parse(typeof(Language), data.TryGetValueSafe<string>("language"));
-			    this._Label = data.TryGetValueSafe<string>("label");
-			    this._IsDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isDefault"));
+			if(node["width"] != null)
+			{
+				this._Width = ParseInt(node["width"].Value<string>());
+			}
+			if(node["height"] != null)
+			{
+				this._Height = ParseInt(node["height"].Value<string>());
+			}
+			if(node["bitrate"] != null)
+			{
+				this._Bitrate = ParseInt(node["bitrate"].Value<string>());
+			}
+			if(node["frameRate"] != null)
+			{
+				this._FrameRate = ParseFloat(node["frameRate"].Value<string>());
+			}
+			if(node["isOriginal"] != null)
+			{
+				this._IsOriginal = ParseBool(node["isOriginal"].Value<string>());
+			}
+			if(node["isWeb"] != null)
+			{
+				this._IsWeb = ParseBool(node["isWeb"].Value<string>());
+			}
+			if(node["containerFormat"] != null)
+			{
+				this._ContainerFormat = node["containerFormat"].Value<string>();
+			}
+			if(node["videoCodecId"] != null)
+			{
+				this._VideoCodecId = node["videoCodecId"].Value<string>();
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (FlavorAssetStatus)ParseEnum(typeof(FlavorAssetStatus), node["status"].Value<string>());
+			}
+			if(node["language"] != null)
+			{
+				this._Language = (Language)StringEnum.Parse(typeof(Language), node["language"].Value<string>());
+			}
+			if(node["label"] != null)
+			{
+				this._Label = node["label"].Value<string>();
+			}
+			if(node["isDefault"] != null)
+			{
+				this._IsDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["isDefault"].Value<string>());
+			}
 		}
 		#endregion
 

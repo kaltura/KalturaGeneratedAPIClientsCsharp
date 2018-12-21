@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public bool? SupportClipping
 		{
 			get { return _SupportClipping; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DeliveryProfileAkamaiAppleHttpManifest(XmlElement node) : base(node)
+		public DeliveryProfileAkamaiAppleHttpManifest(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["supportClipping"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "supportClipping":
-						this._SupportClipping = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._SupportClipping = ParseBool(node["supportClipping"].Value<string>());
 			}
-		}
-
-		public DeliveryProfileAkamaiAppleHttpManifest(IDictionary<string,object> data) : base(data)
-		{
-			    this._SupportClipping = data.TryGetValueSafe<bool>("supportClipping");
 		}
 		#endregion
 

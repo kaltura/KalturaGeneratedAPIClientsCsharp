@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public bool? AcceptInternalIps
 		{
 			get { return _AcceptInternalIps; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AcceptInternalIps");
 			}
 		}
+		[JsonProperty]
 		public string HttpHeader
 		{
 			get { return _HttpHeader; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public IpAddressCondition(XmlElement node) : base(node)
+		public IpAddressCondition(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["acceptInternalIps"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "acceptInternalIps":
-						this._AcceptInternalIps = ParseBool(propertyNode.InnerText);
-						continue;
-					case "httpHeader":
-						this._HttpHeader = propertyNode.InnerText;
-						continue;
-				}
+				this._AcceptInternalIps = ParseBool(node["acceptInternalIps"].Value<string>());
 			}
-		}
-
-		public IpAddressCondition(IDictionary<string,object> data) : base(data)
-		{
-			    this._AcceptInternalIps = data.TryGetValueSafe<bool>("acceptInternalIps");
-			    this._HttpHeader = data.TryGetValueSafe<string>("httpHeader");
+			if(node["httpHeader"] != null)
+			{
+				this._HttpHeader = node["httpHeader"].Value<string>();
+			}
 		}
 		#endregion
 

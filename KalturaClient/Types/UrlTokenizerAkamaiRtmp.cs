@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Profile
 		{
 			get { return _Profile; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Profile");
 			}
 		}
+		[JsonProperty]
 		public string Type
 		{
 			get { return _Type; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		[JsonProperty]
 		public string Aifp
 		{
 			get { return _Aifp; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Aifp");
 			}
 		}
+		[JsonProperty]
 		public bool? UsePrefix
 		{
 			get { return _UsePrefix; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UrlTokenizerAkamaiRtmp(XmlElement node) : base(node)
+		public UrlTokenizerAkamaiRtmp(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["profile"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "profile":
-						this._Profile = propertyNode.InnerText;
-						continue;
-					case "type":
-						this._Type = propertyNode.InnerText;
-						continue;
-					case "aifp":
-						this._Aifp = propertyNode.InnerText;
-						continue;
-					case "usePrefix":
-						this._UsePrefix = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._Profile = node["profile"].Value<string>();
 			}
-		}
-
-		public UrlTokenizerAkamaiRtmp(IDictionary<string,object> data) : base(data)
-		{
-			    this._Profile = data.TryGetValueSafe<string>("profile");
-			    this._Type = data.TryGetValueSafe<string>("type");
-			    this._Aifp = data.TryGetValueSafe<string>("aifp");
-			    this._UsePrefix = data.TryGetValueSafe<bool>("usePrefix");
+			if(node["type"] != null)
+			{
+				this._Type = node["type"].Value<string>();
+			}
+			if(node["aifp"] != null)
+			{
+				this._Aifp = node["aifp"].Value<string>();
+			}
+			if(node["usePrefix"] != null)
+			{
+				this._UsePrefix = ParseBool(node["usePrefix"].Value<string>());
+			}
 		}
 		#endregion
 

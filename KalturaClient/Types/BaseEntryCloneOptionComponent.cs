@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public BaseEntryCloneOptions ItemType
 		{
 			get { return _ItemType; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemType");
 			}
 		}
+		[JsonProperty]
 		public CloneComponentSelectorType Rule
 		{
 			get { return _Rule; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BaseEntryCloneOptionComponent(XmlElement node) : base(node)
+		public BaseEntryCloneOptionComponent(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["itemType"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "itemType":
-						this._ItemType = (BaseEntryCloneOptions)StringEnum.Parse(typeof(BaseEntryCloneOptions), propertyNode.InnerText);
-						continue;
-					case "rule":
-						this._Rule = (CloneComponentSelectorType)StringEnum.Parse(typeof(CloneComponentSelectorType), propertyNode.InnerText);
-						continue;
-				}
+				this._ItemType = (BaseEntryCloneOptions)StringEnum.Parse(typeof(BaseEntryCloneOptions), node["itemType"].Value<string>());
 			}
-		}
-
-		public BaseEntryCloneOptionComponent(IDictionary<string,object> data) : base(data)
-		{
-			    this._ItemType = (BaseEntryCloneOptions)StringEnum.Parse(typeof(BaseEntryCloneOptions), data.TryGetValueSafe<string>("itemType"));
-			    this._Rule = (CloneComponentSelectorType)StringEnum.Parse(typeof(CloneComponentSelectorType), data.TryGetValueSafe<string>("rule"));
+			if(node["rule"] != null)
+			{
+				this._Rule = (CloneComponentSelectorType)StringEnum.Parse(typeof(CloneComponentSelectorType), node["rule"].Value<string>());
+			}
 		}
 		#endregion
 

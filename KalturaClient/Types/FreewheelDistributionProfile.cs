@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -54,6 +56,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Apikey
 		{
 			get { return _Apikey; }
@@ -63,6 +66,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Apikey");
 			}
 		}
+		[JsonProperty]
 		public string Email
 		{
 			get { return _Email; }
@@ -72,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Email");
 			}
 		}
+		[JsonProperty]
 		public string SftpPass
 		{
 			get { return _SftpPass; }
@@ -81,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpPass");
 			}
 		}
+		[JsonProperty]
 		public string SftpLogin
 		{
 			get { return _SftpLogin; }
@@ -90,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpLogin");
 			}
 		}
+		[JsonProperty]
 		public string AccountId
 		{
 			get { return _AccountId; }
@@ -99,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AccountId");
 			}
 		}
+		[JsonProperty]
 		public int MetadataProfileId
 		{
 			get { return _MetadataProfileId; }
@@ -115,42 +123,32 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FreewheelDistributionProfile(XmlElement node) : base(node)
+		public FreewheelDistributionProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["apikey"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "apikey":
-						this._Apikey = propertyNode.InnerText;
-						continue;
-					case "email":
-						this._Email = propertyNode.InnerText;
-						continue;
-					case "sftpPass":
-						this._SftpPass = propertyNode.InnerText;
-						continue;
-					case "sftpLogin":
-						this._SftpLogin = propertyNode.InnerText;
-						continue;
-					case "accountId":
-						this._AccountId = propertyNode.InnerText;
-						continue;
-					case "metadataProfileId":
-						this._MetadataProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._Apikey = node["apikey"].Value<string>();
 			}
-		}
-
-		public FreewheelDistributionProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._Apikey = data.TryGetValueSafe<string>("apikey");
-			    this._Email = data.TryGetValueSafe<string>("email");
-			    this._SftpPass = data.TryGetValueSafe<string>("sftpPass");
-			    this._SftpLogin = data.TryGetValueSafe<string>("sftpLogin");
-			    this._AccountId = data.TryGetValueSafe<string>("accountId");
-			    this._MetadataProfileId = data.TryGetValueSafe<int>("metadataProfileId");
+			if(node["email"] != null)
+			{
+				this._Email = node["email"].Value<string>();
+			}
+			if(node["sftpPass"] != null)
+			{
+				this._SftpPass = node["sftpPass"].Value<string>();
+			}
+			if(node["sftpLogin"] != null)
+			{
+				this._SftpLogin = node["sftpLogin"].Value<string>();
+			}
+			if(node["accountId"] != null)
+			{
+				this._AccountId = node["accountId"].Value<string>();
+			}
+			if(node["metadataProfileId"] != null)
+			{
+				this._MetadataProfileId = ParseInt(node["metadataProfileId"].Value<string>());
+			}
 		}
 		#endregion
 

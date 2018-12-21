@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,6 +58,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string IdEqual
 		{
 			get { return _IdEqual; }
@@ -65,6 +68,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		[JsonProperty]
 		public string IdIn
 		{
 			get { return _IdIn; }
@@ -74,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		[JsonProperty]
 		public string UserIdEqual
 		{
 			get { return _UserIdEqual; }
@@ -83,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIdEqual");
 			}
 		}
+		[JsonProperty]
 		public UploadTokenStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -92,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -101,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		[JsonProperty]
 		public string FileNameEqual
 		{
 			get { return _FileNameEqual; }
@@ -110,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileNameEqual");
 			}
 		}
+		[JsonProperty]
 		public float FileSizeEqual
 		{
 			get { return _FileSizeEqual; }
@@ -126,46 +135,36 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UploadTokenBaseFilter(XmlElement node) : base(node)
+		public UploadTokenBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["idEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "idEqual":
-						this._IdEqual = propertyNode.InnerText;
-						continue;
-					case "idIn":
-						this._IdIn = propertyNode.InnerText;
-						continue;
-					case "userIdEqual":
-						this._UserIdEqual = propertyNode.InnerText;
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (UploadTokenStatus)ParseEnum(typeof(UploadTokenStatus), propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-					case "fileNameEqual":
-						this._FileNameEqual = propertyNode.InnerText;
-						continue;
-					case "fileSizeEqual":
-						this._FileSizeEqual = ParseFloat(propertyNode.InnerText);
-						continue;
-				}
+				this._IdEqual = node["idEqual"].Value<string>();
 			}
-		}
-
-		public UploadTokenBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._IdEqual = data.TryGetValueSafe<string>("idEqual");
-			    this._IdIn = data.TryGetValueSafe<string>("idIn");
-			    this._UserIdEqual = data.TryGetValueSafe<string>("userIdEqual");
-			    this._StatusEqual = (UploadTokenStatus)ParseEnum(typeof(UploadTokenStatus), data.TryGetValueSafe<int>("statusEqual"));
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
-			    this._FileNameEqual = data.TryGetValueSafe<string>("fileNameEqual");
-			    this._FileSizeEqual = data.TryGetValueSafe<float>("fileSizeEqual");
+			if(node["idIn"] != null)
+			{
+				this._IdIn = node["idIn"].Value<string>();
+			}
+			if(node["userIdEqual"] != null)
+			{
+				this._UserIdEqual = node["userIdEqual"].Value<string>();
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (UploadTokenStatus)ParseEnum(typeof(UploadTokenStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
+			if(node["fileNameEqual"] != null)
+			{
+				this._FileNameEqual = node["fileNameEqual"].Value<string>();
+			}
+			if(node["fileSizeEqual"] != null)
+			{
+				this._FileSizeEqual = ParseFloat(node["fileSizeEqual"].Value<string>());
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,6 +58,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int GenericProviderId
 		{
 			get { return _GenericProviderId; }
@@ -65,6 +68,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("GenericProviderId");
 			}
 		}
+		[JsonProperty]
 		public GenericDistributionProfileAction SubmitAction
 		{
 			get { return _SubmitAction; }
@@ -74,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SubmitAction");
 			}
 		}
+		[JsonProperty]
 		public GenericDistributionProfileAction UpdateAction
 		{
 			get { return _UpdateAction; }
@@ -83,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdateAction");
 			}
 		}
+		[JsonProperty]
 		public GenericDistributionProfileAction DeleteAction
 		{
 			get { return _DeleteAction; }
@@ -92,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeleteAction");
 			}
 		}
+		[JsonProperty]
 		public GenericDistributionProfileAction FetchReportAction
 		{
 			get { return _FetchReportAction; }
@@ -101,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FetchReportAction");
 			}
 		}
+		[JsonProperty]
 		public string UpdateRequiredEntryFields
 		{
 			get { return _UpdateRequiredEntryFields; }
@@ -110,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdateRequiredEntryFields");
 			}
 		}
+		[JsonProperty]
 		public string UpdateRequiredMetadataXPaths
 		{
 			get { return _UpdateRequiredMetadataXPaths; }
@@ -126,46 +135,36 @@ namespace Kaltura.Types
 		{
 		}
 
-		public GenericDistributionProfile(XmlElement node) : base(node)
+		public GenericDistributionProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["genericProviderId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "genericProviderId":
-						this._GenericProviderId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "submitAction":
-						this._SubmitAction = ObjectFactory.Create<GenericDistributionProfileAction>(propertyNode);
-						continue;
-					case "updateAction":
-						this._UpdateAction = ObjectFactory.Create<GenericDistributionProfileAction>(propertyNode);
-						continue;
-					case "deleteAction":
-						this._DeleteAction = ObjectFactory.Create<GenericDistributionProfileAction>(propertyNode);
-						continue;
-					case "fetchReportAction":
-						this._FetchReportAction = ObjectFactory.Create<GenericDistributionProfileAction>(propertyNode);
-						continue;
-					case "updateRequiredEntryFields":
-						this._UpdateRequiredEntryFields = propertyNode.InnerText;
-						continue;
-					case "updateRequiredMetadataXPaths":
-						this._UpdateRequiredMetadataXPaths = propertyNode.InnerText;
-						continue;
-				}
+				this._GenericProviderId = ParseInt(node["genericProviderId"].Value<string>());
 			}
-		}
-
-		public GenericDistributionProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._GenericProviderId = data.TryGetValueSafe<int>("genericProviderId");
-			    this._SubmitAction = ObjectFactory.Create<GenericDistributionProfileAction>(data.TryGetValueSafe<IDictionary<string,object>>("submitAction"));
-			    this._UpdateAction = ObjectFactory.Create<GenericDistributionProfileAction>(data.TryGetValueSafe<IDictionary<string,object>>("updateAction"));
-			    this._DeleteAction = ObjectFactory.Create<GenericDistributionProfileAction>(data.TryGetValueSafe<IDictionary<string,object>>("deleteAction"));
-			    this._FetchReportAction = ObjectFactory.Create<GenericDistributionProfileAction>(data.TryGetValueSafe<IDictionary<string,object>>("fetchReportAction"));
-			    this._UpdateRequiredEntryFields = data.TryGetValueSafe<string>("updateRequiredEntryFields");
-			    this._UpdateRequiredMetadataXPaths = data.TryGetValueSafe<string>("updateRequiredMetadataXPaths");
+			if(node["submitAction"] != null)
+			{
+				this._SubmitAction = ObjectFactory.Create<GenericDistributionProfileAction>(node["submitAction"]);
+			}
+			if(node["updateAction"] != null)
+			{
+				this._UpdateAction = ObjectFactory.Create<GenericDistributionProfileAction>(node["updateAction"]);
+			}
+			if(node["deleteAction"] != null)
+			{
+				this._DeleteAction = ObjectFactory.Create<GenericDistributionProfileAction>(node["deleteAction"]);
+			}
+			if(node["fetchReportAction"] != null)
+			{
+				this._FetchReportAction = ObjectFactory.Create<GenericDistributionProfileAction>(node["fetchReportAction"]);
+			}
+			if(node["updateRequiredEntryFields"] != null)
+			{
+				this._UpdateRequiredEntryFields = node["updateRequiredEntryFields"].Value<string>();
+			}
+			if(node["updateRequiredMetadataXPaths"] != null)
+			{
+				this._UpdateRequiredMetadataXPaths = node["updateRequiredMetadataXPaths"].Value<string>();
+			}
 		}
 		#endregion
 

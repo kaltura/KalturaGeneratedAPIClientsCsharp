@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,10 +48,17 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string FeedUrl
 		{
 			get { return _FeedUrl; }
+			private set 
+			{ 
+				_FeedUrl = value;
+				OnPropertyChanged("FeedUrl");
+			}
 		}
+		[JsonProperty]
 		public string FeedTitle
 		{
 			get { return _FeedTitle; }
@@ -66,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AvnDistributionProfile(XmlElement node) : base(node)
+		public AvnDistributionProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["feedUrl"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "feedUrl":
-						this._FeedUrl = propertyNode.InnerText;
-						continue;
-					case "feedTitle":
-						this._FeedTitle = propertyNode.InnerText;
-						continue;
-				}
+				this._FeedUrl = node["feedUrl"].Value<string>();
 			}
-		}
-
-		public AvnDistributionProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._FeedUrl = data.TryGetValueSafe<string>("feedUrl");
-			    this._FeedTitle = data.TryGetValueSafe<string>("feedTitle");
+			if(node["feedTitle"] != null)
+			{
+				this._FeedTitle = node["feedTitle"].Value<string>();
+			}
 		}
 		#endregion
 

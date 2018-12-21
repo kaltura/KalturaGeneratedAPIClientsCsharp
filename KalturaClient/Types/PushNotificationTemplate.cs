@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,6 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public IList<PushEventNotificationParameter> QueueNameParameters
 		{
 			get { return _QueueNameParameters; }
@@ -61,6 +64,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("QueueNameParameters");
 			}
 		}
+		[JsonProperty]
 		public IList<PushEventNotificationParameter> QueueKeyParameters
 		{
 			get { return _QueueKeyParameters; }
@@ -70,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("QueueKeyParameters");
 			}
 		}
+		[JsonProperty]
 		public string ApiObjectType
 		{
 			get { return _ApiObjectType; }
@@ -79,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ApiObjectType");
 			}
 		}
+		[JsonProperty]
 		public ResponseType ObjectFormat
 		{
 			get { return _ObjectFormat; }
@@ -88,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectFormat");
 			}
 		}
+		[JsonProperty]
 		public int ResponseProfileId
 		{
 			get { return _ResponseProfileId; }
@@ -104,56 +111,36 @@ namespace Kaltura.Types
 		{
 		}
 
-		public PushNotificationTemplate(XmlElement node) : base(node)
+		public PushNotificationTemplate(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["queueNameParameters"] != null)
 			{
-				switch (propertyNode.Name)
+				this._QueueNameParameters = new List<PushEventNotificationParameter>();
+				foreach(var arrayNode in node["queueNameParameters"].Children())
 				{
-					case "queueNameParameters":
-						this._QueueNameParameters = new List<PushEventNotificationParameter>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._QueueNameParameters.Add(ObjectFactory.Create<PushEventNotificationParameter>(arrayNode));
-						}
-						continue;
-					case "queueKeyParameters":
-						this._QueueKeyParameters = new List<PushEventNotificationParameter>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._QueueKeyParameters.Add(ObjectFactory.Create<PushEventNotificationParameter>(arrayNode));
-						}
-						continue;
-					case "apiObjectType":
-						this._ApiObjectType = propertyNode.InnerText;
-						continue;
-					case "objectFormat":
-						this._ObjectFormat = (ResponseType)ParseEnum(typeof(ResponseType), propertyNode.InnerText);
-						continue;
-					case "responseProfileId":
-						this._ResponseProfileId = ParseInt(propertyNode.InnerText);
-						continue;
+					this._QueueNameParameters.Add(ObjectFactory.Create<PushEventNotificationParameter>(arrayNode));
 				}
 			}
-		}
-
-		public PushNotificationTemplate(IDictionary<string,object> data) : base(data)
-		{
-			    this._QueueNameParameters = new List<PushEventNotificationParameter>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("queueNameParameters", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._QueueNameParameters.Add(ObjectFactory.Create<PushEventNotificationParameter>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._QueueKeyParameters = new List<PushEventNotificationParameter>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("queueKeyParameters", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._QueueKeyParameters.Add(ObjectFactory.Create<PushEventNotificationParameter>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._ApiObjectType = data.TryGetValueSafe<string>("apiObjectType");
-			    this._ObjectFormat = (ResponseType)ParseEnum(typeof(ResponseType), data.TryGetValueSafe<int>("objectFormat"));
-			    this._ResponseProfileId = data.TryGetValueSafe<int>("responseProfileId");
+			if(node["queueKeyParameters"] != null)
+			{
+				this._QueueKeyParameters = new List<PushEventNotificationParameter>();
+				foreach(var arrayNode in node["queueKeyParameters"].Children())
+				{
+					this._QueueKeyParameters.Add(ObjectFactory.Create<PushEventNotificationParameter>(arrayNode));
+				}
+			}
+			if(node["apiObjectType"] != null)
+			{
+				this._ApiObjectType = node["apiObjectType"].Value<string>();
+			}
+			if(node["objectFormat"] != null)
+			{
+				this._ObjectFormat = (ResponseType)ParseEnum(typeof(ResponseType), node["objectFormat"].Value<string>());
+			}
+			if(node["responseProfileId"] != null)
+			{
+				this._ResponseProfileId = ParseInt(node["responseProfileId"].Value<string>());
+			}
 		}
 		#endregion
 

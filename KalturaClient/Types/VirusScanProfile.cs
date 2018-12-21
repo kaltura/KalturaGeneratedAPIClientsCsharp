@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -60,22 +62,47 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -85,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		[JsonProperty]
 		public VirusScanProfileStatus Status
 		{
 			get { return _Status; }
@@ -94,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		[JsonProperty]
 		public VirusScanEngineType EngineType
 		{
 			get { return _EngineType; }
@@ -103,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EngineType");
 			}
 		}
+		[JsonProperty]
 		public BaseEntryFilter EntryFilter
 		{
 			get { return _EntryFilter; }
@@ -112,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryFilter");
 			}
 		}
+		[JsonProperty]
 		public VirusFoundAction ActionIfInfected
 		{
 			get { return _ActionIfInfected; }
@@ -128,54 +159,44 @@ namespace Kaltura.Types
 		{
 		}
 
-		public VirusScanProfile(XmlElement node) : base(node)
+		public VirusScanProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-					case "status":
-						this._Status = (VirusScanProfileStatus)ParseEnum(typeof(VirusScanProfileStatus), propertyNode.InnerText);
-						continue;
-					case "engineType":
-						this._EngineType = (VirusScanEngineType)StringEnum.Parse(typeof(VirusScanEngineType), propertyNode.InnerText);
-						continue;
-					case "entryFilter":
-						this._EntryFilter = ObjectFactory.Create<BaseEntryFilter>(propertyNode);
-						continue;
-					case "actionIfInfected":
-						this._ActionIfInfected = (VirusFoundAction)ParseEnum(typeof(VirusFoundAction), propertyNode.InnerText);
-						continue;
-				}
+				this._Id = ParseInt(node["id"].Value<string>());
 			}
-		}
-
-		public VirusScanProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._Name = data.TryGetValueSafe<string>("name");
-			    this._Status = (VirusScanProfileStatus)ParseEnum(typeof(VirusScanProfileStatus), data.TryGetValueSafe<int>("status"));
-			    this._EngineType = (VirusScanEngineType)StringEnum.Parse(typeof(VirusScanEngineType), data.TryGetValueSafe<string>("engineType"));
-			    this._EntryFilter = ObjectFactory.Create<BaseEntryFilter>(data.TryGetValueSafe<IDictionary<string,object>>("entryFilter"));
-			    this._ActionIfInfected = (VirusFoundAction)ParseEnum(typeof(VirusFoundAction), data.TryGetValueSafe<int>("actionIfInfected"));
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["name"] != null)
+			{
+				this._Name = node["name"].Value<string>();
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (VirusScanProfileStatus)ParseEnum(typeof(VirusScanProfileStatus), node["status"].Value<string>());
+			}
+			if(node["engineType"] != null)
+			{
+				this._EngineType = (VirusScanEngineType)StringEnum.Parse(typeof(VirusScanEngineType), node["engineType"].Value<string>());
+			}
+			if(node["entryFilter"] != null)
+			{
+				this._EntryFilter = ObjectFactory.Create<BaseEntryFilter>(node["entryFilter"]);
+			}
+			if(node["actionIfInfected"] != null)
+			{
+				this._ActionIfInfected = (VirusFoundAction)ParseEnum(typeof(VirusFoundAction), node["actionIfInfected"].Value<string>());
+			}
 		}
 		#endregion
 

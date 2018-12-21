@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -54,6 +56,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string DeliveryProfileId
 		{
 			get { return _DeliveryProfileId; }
@@ -63,6 +66,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeliveryProfileId");
 			}
 		}
+		[JsonProperty]
 		public string Format
 		{
 			get { return _Format; }
@@ -72,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Format");
 			}
 		}
+		[JsonProperty]
 		public string Protocols
 		{
 			get { return _Protocols; }
@@ -81,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Protocols");
 			}
 		}
+		[JsonProperty]
 		public string FlavorIds
 		{
 			get { return _FlavorIds; }
@@ -90,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorIds");
 			}
 		}
+		[JsonProperty]
 		public string Url
 		{
 			get { return _Url; }
@@ -99,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Url");
 			}
 		}
+		[JsonProperty]
 		public IList<DrmPlaybackPluginData> Drm
 		{
 			get { return _Drm; }
@@ -115,51 +123,36 @@ namespace Kaltura.Types
 		{
 		}
 
-		public PlaybackSource(XmlElement node) : base(node)
+		public PlaybackSource(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["deliveryProfileId"] != null)
 			{
-				switch (propertyNode.Name)
+				this._DeliveryProfileId = node["deliveryProfileId"].Value<string>();
+			}
+			if(node["format"] != null)
+			{
+				this._Format = node["format"].Value<string>();
+			}
+			if(node["protocols"] != null)
+			{
+				this._Protocols = node["protocols"].Value<string>();
+			}
+			if(node["flavorIds"] != null)
+			{
+				this._FlavorIds = node["flavorIds"].Value<string>();
+			}
+			if(node["url"] != null)
+			{
+				this._Url = node["url"].Value<string>();
+			}
+			if(node["drm"] != null)
+			{
+				this._Drm = new List<DrmPlaybackPluginData>();
+				foreach(var arrayNode in node["drm"].Children())
 				{
-					case "deliveryProfileId":
-						this._DeliveryProfileId = propertyNode.InnerText;
-						continue;
-					case "format":
-						this._Format = propertyNode.InnerText;
-						continue;
-					case "protocols":
-						this._Protocols = propertyNode.InnerText;
-						continue;
-					case "flavorIds":
-						this._FlavorIds = propertyNode.InnerText;
-						continue;
-					case "url":
-						this._Url = propertyNode.InnerText;
-						continue;
-					case "drm":
-						this._Drm = new List<DrmPlaybackPluginData>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Drm.Add(ObjectFactory.Create<DrmPlaybackPluginData>(arrayNode));
-						}
-						continue;
+					this._Drm.Add(ObjectFactory.Create<DrmPlaybackPluginData>(arrayNode));
 				}
 			}
-		}
-
-		public PlaybackSource(IDictionary<string,object> data) : base(data)
-		{
-			    this._DeliveryProfileId = data.TryGetValueSafe<string>("deliveryProfileId");
-			    this._Format = data.TryGetValueSafe<string>("format");
-			    this._Protocols = data.TryGetValueSafe<string>("protocols");
-			    this._FlavorIds = data.TryGetValueSafe<string>("flavorIds");
-			    this._Url = data.TryGetValueSafe<string>("url");
-			    this._Drm = new List<DrmPlaybackPluginData>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("drm", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Drm.Add(ObjectFactory.Create<DrmPlaybackPluginData>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

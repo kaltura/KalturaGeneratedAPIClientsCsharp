@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -74,14 +76,27 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -91,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		[JsonProperty]
 		public string SystemName
 		{
 			get { return _SystemName; }
@@ -100,6 +116,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemName");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -109,6 +126,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public EventNotificationTemplateType Type
 		{
 			get { return _Type; }
@@ -118,18 +136,37 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		[JsonProperty]
 		public EventNotificationTemplateStatus Status
 		{
 			get { return _Status; }
+			private set 
+			{ 
+				_Status = value;
+				OnPropertyChanged("Status");
+			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public bool? ManualDispatchEnabled
 		{
 			get { return _ManualDispatchEnabled; }
@@ -139,6 +176,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ManualDispatchEnabled");
 			}
 		}
+		[JsonProperty]
 		public bool? AutomaticDispatchEnabled
 		{
 			get { return _AutomaticDispatchEnabled; }
@@ -148,6 +186,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AutomaticDispatchEnabled");
 			}
 		}
+		[JsonProperty]
 		public EventNotificationEventType EventType
 		{
 			get { return _EventType; }
@@ -157,6 +196,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EventType");
 			}
 		}
+		[JsonProperty]
 		public EventNotificationEventObjectType EventObjectType
 		{
 			get { return _EventObjectType; }
@@ -166,6 +206,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EventObjectType");
 			}
 		}
+		[JsonProperty]
 		public IList<Condition> EventConditions
 		{
 			get { return _EventConditions; }
@@ -175,6 +216,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EventConditions");
 			}
 		}
+		[JsonProperty]
 		public IList<EventNotificationParameter> ContentParameters
 		{
 			get { return _ContentParameters; }
@@ -184,6 +226,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentParameters");
 			}
 		}
+		[JsonProperty]
 		public IList<EventNotificationParameter> UserParameters
 		{
 			get { return _UserParameters; }
@@ -200,109 +243,84 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EventNotificationTemplate(XmlElement node) : base(node)
+		public EventNotificationTemplate(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Id = ParseInt(node["id"].Value<string>());
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["name"] != null)
+			{
+				this._Name = node["name"].Value<string>();
+			}
+			if(node["systemName"] != null)
+			{
+				this._SystemName = node["systemName"].Value<string>();
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["type"] != null)
+			{
+				this._Type = (EventNotificationTemplateType)StringEnum.Parse(typeof(EventNotificationTemplateType), node["type"].Value<string>());
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (EventNotificationTemplateStatus)ParseEnum(typeof(EventNotificationTemplateStatus), node["status"].Value<string>());
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["manualDispatchEnabled"] != null)
+			{
+				this._ManualDispatchEnabled = ParseBool(node["manualDispatchEnabled"].Value<string>());
+			}
+			if(node["automaticDispatchEnabled"] != null)
+			{
+				this._AutomaticDispatchEnabled = ParseBool(node["automaticDispatchEnabled"].Value<string>());
+			}
+			if(node["eventType"] != null)
+			{
+				this._EventType = (EventNotificationEventType)StringEnum.Parse(typeof(EventNotificationEventType), node["eventType"].Value<string>());
+			}
+			if(node["eventObjectType"] != null)
+			{
+				this._EventObjectType = (EventNotificationEventObjectType)StringEnum.Parse(typeof(EventNotificationEventObjectType), node["eventObjectType"].Value<string>());
+			}
+			if(node["eventConditions"] != null)
+			{
+				this._EventConditions = new List<Condition>();
+				foreach(var arrayNode in node["eventConditions"].Children())
 				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-					case "systemName":
-						this._SystemName = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "type":
-						this._Type = (EventNotificationTemplateType)StringEnum.Parse(typeof(EventNotificationTemplateType), propertyNode.InnerText);
-						continue;
-					case "status":
-						this._Status = (EventNotificationTemplateStatus)ParseEnum(typeof(EventNotificationTemplateStatus), propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "manualDispatchEnabled":
-						this._ManualDispatchEnabled = ParseBool(propertyNode.InnerText);
-						continue;
-					case "automaticDispatchEnabled":
-						this._AutomaticDispatchEnabled = ParseBool(propertyNode.InnerText);
-						continue;
-					case "eventType":
-						this._EventType = (EventNotificationEventType)StringEnum.Parse(typeof(EventNotificationEventType), propertyNode.InnerText);
-						continue;
-					case "eventObjectType":
-						this._EventObjectType = (EventNotificationEventObjectType)StringEnum.Parse(typeof(EventNotificationEventObjectType), propertyNode.InnerText);
-						continue;
-					case "eventConditions":
-						this._EventConditions = new List<Condition>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._EventConditions.Add(ObjectFactory.Create<Condition>(arrayNode));
-						}
-						continue;
-					case "contentParameters":
-						this._ContentParameters = new List<EventNotificationParameter>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._ContentParameters.Add(ObjectFactory.Create<EventNotificationParameter>(arrayNode));
-						}
-						continue;
-					case "userParameters":
-						this._UserParameters = new List<EventNotificationParameter>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._UserParameters.Add(ObjectFactory.Create<EventNotificationParameter>(arrayNode));
-						}
-						continue;
+					this._EventConditions.Add(ObjectFactory.Create<Condition>(arrayNode));
 				}
 			}
-		}
-
-		public EventNotificationTemplate(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._Name = data.TryGetValueSafe<string>("name");
-			    this._SystemName = data.TryGetValueSafe<string>("systemName");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._Type = (EventNotificationTemplateType)StringEnum.Parse(typeof(EventNotificationTemplateType), data.TryGetValueSafe<string>("type"));
-			    this._Status = (EventNotificationTemplateStatus)ParseEnum(typeof(EventNotificationTemplateStatus), data.TryGetValueSafe<int>("status"));
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._ManualDispatchEnabled = data.TryGetValueSafe<bool>("manualDispatchEnabled");
-			    this._AutomaticDispatchEnabled = data.TryGetValueSafe<bool>("automaticDispatchEnabled");
-			    this._EventType = (EventNotificationEventType)StringEnum.Parse(typeof(EventNotificationEventType), data.TryGetValueSafe<string>("eventType"));
-			    this._EventObjectType = (EventNotificationEventObjectType)StringEnum.Parse(typeof(EventNotificationEventObjectType), data.TryGetValueSafe<string>("eventObjectType"));
-			    this._EventConditions = new List<Condition>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("eventConditions", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._EventConditions.Add(ObjectFactory.Create<Condition>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._ContentParameters = new List<EventNotificationParameter>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("contentParameters", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._ContentParameters.Add(ObjectFactory.Create<EventNotificationParameter>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._UserParameters = new List<EventNotificationParameter>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("userParameters", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._UserParameters.Add(ObjectFactory.Create<EventNotificationParameter>((IDictionary<string,object>)dataDictionary));
-			    }
+			if(node["contentParameters"] != null)
+			{
+				this._ContentParameters = new List<EventNotificationParameter>();
+				foreach(var arrayNode in node["contentParameters"].Children())
+				{
+					this._ContentParameters.Add(ObjectFactory.Create<EventNotificationParameter>(arrayNode));
+				}
+			}
+			if(node["userParameters"] != null)
+			{
+				this._UserParameters = new List<EventNotificationParameter>();
+				foreach(var arrayNode in node["userParameters"].Children())
+				{
+					this._UserParameters.Add(ObjectFactory.Create<EventNotificationParameter>(arrayNode));
+				}
+			}
 		}
 		#endregion
 

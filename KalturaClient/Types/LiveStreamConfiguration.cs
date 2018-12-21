@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,6 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public PlaybackProtocol Protocol
 		{
 			get { return _Protocol; }
@@ -61,6 +64,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Protocol");
 			}
 		}
+		[JsonProperty]
 		public string Url
 		{
 			get { return _Url; }
@@ -70,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Url");
 			}
 		}
+		[JsonProperty]
 		public string PublishUrl
 		{
 			get { return _PublishUrl; }
@@ -79,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PublishUrl");
 			}
 		}
+		[JsonProperty]
 		public string BackupUrl
 		{
 			get { return _BackupUrl; }
@@ -88,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BackupUrl");
 			}
 		}
+		[JsonProperty]
 		public string StreamName
 		{
 			get { return _StreamName; }
@@ -104,38 +111,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public LiveStreamConfiguration(XmlElement node) : base(node)
+		public LiveStreamConfiguration(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["protocol"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "protocol":
-						this._Protocol = (PlaybackProtocol)StringEnum.Parse(typeof(PlaybackProtocol), propertyNode.InnerText);
-						continue;
-					case "url":
-						this._Url = propertyNode.InnerText;
-						continue;
-					case "publishUrl":
-						this._PublishUrl = propertyNode.InnerText;
-						continue;
-					case "backupUrl":
-						this._BackupUrl = propertyNode.InnerText;
-						continue;
-					case "streamName":
-						this._StreamName = propertyNode.InnerText;
-						continue;
-				}
+				this._Protocol = (PlaybackProtocol)StringEnum.Parse(typeof(PlaybackProtocol), node["protocol"].Value<string>());
 			}
-		}
-
-		public LiveStreamConfiguration(IDictionary<string,object> data) : base(data)
-		{
-			    this._Protocol = (PlaybackProtocol)StringEnum.Parse(typeof(PlaybackProtocol), data.TryGetValueSafe<string>("protocol"));
-			    this._Url = data.TryGetValueSafe<string>("url");
-			    this._PublishUrl = data.TryGetValueSafe<string>("publishUrl");
-			    this._BackupUrl = data.TryGetValueSafe<string>("backupUrl");
-			    this._StreamName = data.TryGetValueSafe<string>("streamName");
+			if(node["url"] != null)
+			{
+				this._Url = node["url"].Value<string>();
+			}
+			if(node["publishUrl"] != null)
+			{
+				this._PublishUrl = node["publishUrl"].Value<string>();
+			}
+			if(node["backupUrl"] != null)
+			{
+				this._BackupUrl = node["backupUrl"].Value<string>();
+			}
+			if(node["streamName"] != null)
+			{
+				this._StreamName = node["streamName"].Value<string>();
+			}
 		}
 		#endregion
 

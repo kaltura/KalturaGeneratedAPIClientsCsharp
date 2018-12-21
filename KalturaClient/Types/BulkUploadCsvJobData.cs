@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,10 +48,17 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public BulkUploadCsvVersion CsvVersion
 		{
 			get { return _CsvVersion; }
+			private set 
+			{ 
+				_CsvVersion = value;
+				OnPropertyChanged("CsvVersion");
+			}
 		}
+		[JsonProperty]
 		public IList<String> Columns
 		{
 			get { return _Columns; }
@@ -66,35 +75,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BulkUploadCsvJobData(XmlElement node) : base(node)
+		public BulkUploadCsvJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["csvVersion"] != null)
 			{
-				switch (propertyNode.Name)
+				this._CsvVersion = (BulkUploadCsvVersion)ParseEnum(typeof(BulkUploadCsvVersion), node["csvVersion"].Value<string>());
+			}
+			if(node["columns"] != null)
+			{
+				this._Columns = new List<String>();
+				foreach(var arrayNode in node["columns"].Children())
 				{
-					case "csvVersion":
-						this._CsvVersion = (BulkUploadCsvVersion)ParseEnum(typeof(BulkUploadCsvVersion), propertyNode.InnerText);
-						continue;
-					case "columns":
-						this._Columns = new List<String>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Columns.Add(ObjectFactory.Create<String>(arrayNode));
-						}
-						continue;
+					this._Columns.Add(ObjectFactory.Create<String>(arrayNode));
 				}
 			}
-		}
-
-		public BulkUploadCsvJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._CsvVersion = (BulkUploadCsvVersion)ParseEnum(typeof(BulkUploadCsvVersion), data.TryGetValueSafe<int>("csvVersion"));
-			    this._Columns = new List<String>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("columns", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Columns.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

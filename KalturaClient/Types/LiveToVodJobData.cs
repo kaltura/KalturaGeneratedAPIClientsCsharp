@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,6 +58,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string VodEntryId
 		{
 			get { return _VodEntryId; }
@@ -65,6 +68,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VodEntryId");
 			}
 		}
+		[JsonProperty]
 		public string LiveEntryId
 		{
 			get { return _LiveEntryId; }
@@ -74,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LiveEntryId");
 			}
 		}
+		[JsonProperty]
 		public float TotalVodDuration
 		{
 			get { return _TotalVodDuration; }
@@ -83,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TotalVodDuration");
 			}
 		}
+		[JsonProperty]
 		public float LastSegmentDuration
 		{
 			get { return _LastSegmentDuration; }
@@ -92,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastSegmentDuration");
 			}
 		}
+		[JsonProperty]
 		public string AmfArray
 		{
 			get { return _AmfArray; }
@@ -101,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AmfArray");
 			}
 		}
+		[JsonProperty]
 		public int LastCuePointSyncTime
 		{
 			get { return _LastCuePointSyncTime; }
@@ -110,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastCuePointSyncTime");
 			}
 		}
+		[JsonProperty]
 		public int LastSegmentDrift
 		{
 			get { return _LastSegmentDrift; }
@@ -126,46 +135,36 @@ namespace Kaltura.Types
 		{
 		}
 
-		public LiveToVodJobData(XmlElement node) : base(node)
+		public LiveToVodJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["vodEntryId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "vodEntryId":
-						this._VodEntryId = propertyNode.InnerText;
-						continue;
-					case "liveEntryId":
-						this._LiveEntryId = propertyNode.InnerText;
-						continue;
-					case "totalVodDuration":
-						this._TotalVodDuration = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "lastSegmentDuration":
-						this._LastSegmentDuration = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "amfArray":
-						this._AmfArray = propertyNode.InnerText;
-						continue;
-					case "lastCuePointSyncTime":
-						this._LastCuePointSyncTime = ParseInt(propertyNode.InnerText);
-						continue;
-					case "lastSegmentDrift":
-						this._LastSegmentDrift = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._VodEntryId = node["vodEntryId"].Value<string>();
 			}
-		}
-
-		public LiveToVodJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._VodEntryId = data.TryGetValueSafe<string>("vodEntryId");
-			    this._LiveEntryId = data.TryGetValueSafe<string>("liveEntryId");
-			    this._TotalVodDuration = data.TryGetValueSafe<float>("totalVodDuration");
-			    this._LastSegmentDuration = data.TryGetValueSafe<float>("lastSegmentDuration");
-			    this._AmfArray = data.TryGetValueSafe<string>("amfArray");
-			    this._LastCuePointSyncTime = data.TryGetValueSafe<int>("lastCuePointSyncTime");
-			    this._LastSegmentDrift = data.TryGetValueSafe<int>("lastSegmentDrift");
+			if(node["liveEntryId"] != null)
+			{
+				this._LiveEntryId = node["liveEntryId"].Value<string>();
+			}
+			if(node["totalVodDuration"] != null)
+			{
+				this._TotalVodDuration = ParseFloat(node["totalVodDuration"].Value<string>());
+			}
+			if(node["lastSegmentDuration"] != null)
+			{
+				this._LastSegmentDuration = ParseFloat(node["lastSegmentDuration"].Value<string>());
+			}
+			if(node["amfArray"] != null)
+			{
+				this._AmfArray = node["amfArray"].Value<string>();
+			}
+			if(node["lastCuePointSyncTime"] != null)
+			{
+				this._LastCuePointSyncTime = ParseInt(node["lastCuePointSyncTime"].Value<string>());
+			}
+			if(node["lastSegmentDrift"] != null)
+			{
+				this._LastSegmentDrift = ParseInt(node["lastSegmentDrift"].Value<string>());
+			}
 		}
 		#endregion
 

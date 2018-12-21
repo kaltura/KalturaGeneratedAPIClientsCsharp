@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,6 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public FileContainer SrcXsl
 		{
 			get { return _SrcXsl; }
@@ -61,6 +64,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcXsl");
 			}
 		}
+		[JsonProperty]
 		public int SrcVersion
 		{
 			get { return _SrcVersion; }
@@ -70,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcVersion");
 			}
 		}
+		[JsonProperty]
 		public int DestVersion
 		{
 			get { return _DestVersion; }
@@ -79,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestVersion");
 			}
 		}
+		[JsonProperty]
 		public FileContainer DestXsd
 		{
 			get { return _DestXsd; }
@@ -88,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestXsd");
 			}
 		}
+		[JsonProperty]
 		public int MetadataProfileId
 		{
 			get { return _MetadataProfileId; }
@@ -104,38 +111,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public TransformMetadataJobData(XmlElement node) : base(node)
+		public TransformMetadataJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["srcXsl"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "srcXsl":
-						this._SrcXsl = ObjectFactory.Create<FileContainer>(propertyNode);
-						continue;
-					case "srcVersion":
-						this._SrcVersion = ParseInt(propertyNode.InnerText);
-						continue;
-					case "destVersion":
-						this._DestVersion = ParseInt(propertyNode.InnerText);
-						continue;
-					case "destXsd":
-						this._DestXsd = ObjectFactory.Create<FileContainer>(propertyNode);
-						continue;
-					case "metadataProfileId":
-						this._MetadataProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._SrcXsl = ObjectFactory.Create<FileContainer>(node["srcXsl"]);
 			}
-		}
-
-		public TransformMetadataJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._SrcXsl = ObjectFactory.Create<FileContainer>(data.TryGetValueSafe<IDictionary<string,object>>("srcXsl"));
-			    this._SrcVersion = data.TryGetValueSafe<int>("srcVersion");
-			    this._DestVersion = data.TryGetValueSafe<int>("destVersion");
-			    this._DestXsd = ObjectFactory.Create<FileContainer>(data.TryGetValueSafe<IDictionary<string,object>>("destXsd"));
-			    this._MetadataProfileId = data.TryGetValueSafe<int>("metadataProfileId");
+			if(node["srcVersion"] != null)
+			{
+				this._SrcVersion = ParseInt(node["srcVersion"].Value<string>());
+			}
+			if(node["destVersion"] != null)
+			{
+				this._DestVersion = ParseInt(node["destVersion"].Value<string>());
+			}
+			if(node["destXsd"] != null)
+			{
+				this._DestXsd = ObjectFactory.Create<FileContainer>(node["destXsd"]);
+			}
+			if(node["metadataProfileId"] != null)
+			{
+				this._MetadataProfileId = ParseInt(node["metadataProfileId"].Value<string>());
+			}
 		}
 		#endregion
 

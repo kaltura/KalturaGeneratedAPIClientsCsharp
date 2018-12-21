@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ContentLike
 		{
 			get { return _ContentLike; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentLike");
 			}
 		}
+		[JsonProperty]
 		public string ContentMultiLikeOr
 		{
 			get { return _ContentMultiLikeOr; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string ContentMultiLikeAnd
 		{
 			get { return _ContentMultiLikeAnd; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EntryTranscriptAssetSearchItem(XmlElement node) : base(node)
+		public EntryTranscriptAssetSearchItem(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["contentLike"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "contentLike":
-						this._ContentLike = propertyNode.InnerText;
-						continue;
-					case "contentMultiLikeOr":
-						this._ContentMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "contentMultiLikeAnd":
-						this._ContentMultiLikeAnd = propertyNode.InnerText;
-						continue;
-				}
+				this._ContentLike = node["contentLike"].Value<string>();
 			}
-		}
-
-		public EntryTranscriptAssetSearchItem(IDictionary<string,object> data) : base(data)
-		{
-			    this._ContentLike = data.TryGetValueSafe<string>("contentLike");
-			    this._ContentMultiLikeOr = data.TryGetValueSafe<string>("contentMultiLikeOr");
-			    this._ContentMultiLikeAnd = data.TryGetValueSafe<string>("contentMultiLikeAnd");
+			if(node["contentMultiLikeOr"] != null)
+			{
+				this._ContentMultiLikeOr = node["contentMultiLikeOr"].Value<string>();
+			}
+			if(node["contentMultiLikeAnd"] != null)
+			{
+				this._ContentMultiLikeAnd = node["contentMultiLikeAnd"].Value<string>();
+			}
 		}
 		#endregion
 

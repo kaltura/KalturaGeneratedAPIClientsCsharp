@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -64,6 +66,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Id
 		{
 			get { return _Id; }
@@ -73,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		[JsonProperty]
 		public string Title
 		{
 			get { return _Title; }
@@ -82,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Title");
 			}
 		}
+		[JsonProperty]
 		public string ThumbUrl
 		{
 			get { return _ThumbUrl; }
@@ -91,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbUrl");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -100,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public string Tags
 		{
 			get { return _Tags; }
@@ -109,6 +116,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
+		[JsonProperty]
 		public string Url
 		{
 			get { return _Url; }
@@ -118,6 +126,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Url");
 			}
 		}
+		[JsonProperty]
 		public string SourceLink
 		{
 			get { return _SourceLink; }
@@ -127,6 +136,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceLink");
 			}
 		}
+		[JsonProperty]
 		public string Credit
 		{
 			get { return _Credit; }
@@ -136,6 +146,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Credit");
 			}
 		}
+		[JsonProperty]
 		public LicenseType LicenseType
 		{
 			get { return _LicenseType; }
@@ -145,6 +156,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LicenseType");
 			}
 		}
+		[JsonProperty]
 		public string FlashPlaybackType
 		{
 			get { return _FlashPlaybackType; }
@@ -154,6 +166,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlashPlaybackType");
 			}
 		}
+		[JsonProperty]
 		public string FileExt
 		{
 			get { return _FileExt; }
@@ -170,62 +183,52 @@ namespace Kaltura.Types
 		{
 		}
 
-		public SearchResult(XmlElement node) : base(node)
+		public SearchResult(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = propertyNode.InnerText;
-						continue;
-					case "title":
-						this._Title = propertyNode.InnerText;
-						continue;
-					case "thumbUrl":
-						this._ThumbUrl = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "tags":
-						this._Tags = propertyNode.InnerText;
-						continue;
-					case "url":
-						this._Url = propertyNode.InnerText;
-						continue;
-					case "sourceLink":
-						this._SourceLink = propertyNode.InnerText;
-						continue;
-					case "credit":
-						this._Credit = propertyNode.InnerText;
-						continue;
-					case "licenseType":
-						this._LicenseType = (LicenseType)ParseEnum(typeof(LicenseType), propertyNode.InnerText);
-						continue;
-					case "flashPlaybackType":
-						this._FlashPlaybackType = propertyNode.InnerText;
-						continue;
-					case "fileExt":
-						this._FileExt = propertyNode.InnerText;
-						continue;
-				}
+				this._Id = node["id"].Value<string>();
 			}
-		}
-
-		public SearchResult(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<string>("id");
-			    this._Title = data.TryGetValueSafe<string>("title");
-			    this._ThumbUrl = data.TryGetValueSafe<string>("thumbUrl");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._Tags = data.TryGetValueSafe<string>("tags");
-			    this._Url = data.TryGetValueSafe<string>("url");
-			    this._SourceLink = data.TryGetValueSafe<string>("sourceLink");
-			    this._Credit = data.TryGetValueSafe<string>("credit");
-			    this._LicenseType = (LicenseType)ParseEnum(typeof(LicenseType), data.TryGetValueSafe<int>("licenseType"));
-			    this._FlashPlaybackType = data.TryGetValueSafe<string>("flashPlaybackType");
-			    this._FileExt = data.TryGetValueSafe<string>("fileExt");
+			if(node["title"] != null)
+			{
+				this._Title = node["title"].Value<string>();
+			}
+			if(node["thumbUrl"] != null)
+			{
+				this._ThumbUrl = node["thumbUrl"].Value<string>();
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["tags"] != null)
+			{
+				this._Tags = node["tags"].Value<string>();
+			}
+			if(node["url"] != null)
+			{
+				this._Url = node["url"].Value<string>();
+			}
+			if(node["sourceLink"] != null)
+			{
+				this._SourceLink = node["sourceLink"].Value<string>();
+			}
+			if(node["credit"] != null)
+			{
+				this._Credit = node["credit"].Value<string>();
+			}
+			if(node["licenseType"] != null)
+			{
+				this._LicenseType = (LicenseType)ParseEnum(typeof(LicenseType), node["licenseType"].Value<string>());
+			}
+			if(node["flashPlaybackType"] != null)
+			{
+				this._FlashPlaybackType = node["flashPlaybackType"].Value<string>();
+			}
+			if(node["fileExt"] != null)
+			{
+				this._FileExt = node["fileExt"].Value<string>();
+			}
 		}
 		#endregion
 

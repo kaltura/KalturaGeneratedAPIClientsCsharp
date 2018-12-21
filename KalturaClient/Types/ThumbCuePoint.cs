@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string AssetId
 		{
 			get { return _AssetId; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetId");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public string Title
 		{
 			get { return _Title; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Title");
 			}
 		}
+		[JsonProperty]
 		public ThumbCuePointSubType SubType
 		{
 			get { return _SubType; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ThumbCuePoint(XmlElement node) : base(node)
+		public ThumbCuePoint(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["assetId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "assetId":
-						this._AssetId = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "title":
-						this._Title = propertyNode.InnerText;
-						continue;
-					case "subType":
-						this._SubType = (ThumbCuePointSubType)ParseEnum(typeof(ThumbCuePointSubType), propertyNode.InnerText);
-						continue;
-				}
+				this._AssetId = node["assetId"].Value<string>();
 			}
-		}
-
-		public ThumbCuePoint(IDictionary<string,object> data) : base(data)
-		{
-			    this._AssetId = data.TryGetValueSafe<string>("assetId");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._Title = data.TryGetValueSafe<string>("title");
-			    this._SubType = (ThumbCuePointSubType)ParseEnum(typeof(ThumbCuePointSubType), data.TryGetValueSafe<int>("subType"));
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["title"] != null)
+			{
+				this._Title = node["title"].Value<string>();
+			}
+			if(node["subType"] != null)
+			{
+				this._SubType = (ThumbCuePointSubType)ParseEnum(typeof(ThumbCuePointSubType), node["subType"].Value<string>());
+			}
 		}
 		#endregion
 

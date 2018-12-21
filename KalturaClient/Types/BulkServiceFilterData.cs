@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public Filter Filter
 		{
 			get { return _Filter; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Filter");
 			}
 		}
+		[JsonProperty]
 		public ObjectBase TemplateObject
 		{
 			get { return _TemplateObject; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BulkServiceFilterData(XmlElement node) : base(node)
+		public BulkServiceFilterData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["filter"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "filter":
-						this._Filter = ObjectFactory.Create<Filter>(propertyNode);
-						continue;
-					case "templateObject":
-						this._TemplateObject = ObjectFactory.Create<ObjectBase>(propertyNode);
-						continue;
-				}
+				this._Filter = ObjectFactory.Create<Filter>(node["filter"]);
 			}
-		}
-
-		public BulkServiceFilterData(IDictionary<string,object> data) : base(data)
-		{
-			    this._Filter = ObjectFactory.Create<Filter>(data.TryGetValueSafe<IDictionary<string,object>>("filter"));
-			    this._TemplateObject = ObjectFactory.Create<ObjectBase>(data.TryGetValueSafe<IDictionary<string,object>>("templateObject"));
+			if(node["templateObject"] != null)
+			{
+				this._TemplateObject = ObjectFactory.Create<ObjectBase>(node["templateObject"]);
+			}
 		}
 		#endregion
 

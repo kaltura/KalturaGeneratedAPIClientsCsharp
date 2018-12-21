@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string EntryId
 		{
 			get { return _EntryId; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		[JsonProperty]
 		public int PeakAudience
 		{
 			get { return _PeakAudience; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PeakAudience");
 			}
 		}
+		[JsonProperty]
 		public int PeakDvrAudience
 		{
 			get { return _PeakDvrAudience; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EntryLiveStats(XmlElement node) : base(node)
+		public EntryLiveStats(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["entryId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "entryId":
-						this._EntryId = propertyNode.InnerText;
-						continue;
-					case "peakAudience":
-						this._PeakAudience = ParseInt(propertyNode.InnerText);
-						continue;
-					case "peakDvrAudience":
-						this._PeakDvrAudience = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._EntryId = node["entryId"].Value<string>();
 			}
-		}
-
-		public EntryLiveStats(IDictionary<string,object> data) : base(data)
-		{
-			    this._EntryId = data.TryGetValueSafe<string>("entryId");
-			    this._PeakAudience = data.TryGetValueSafe<int>("peakAudience");
-			    this._PeakDvrAudience = data.TryGetValueSafe<int>("peakDvrAudience");
+			if(node["peakAudience"] != null)
+			{
+				this._PeakAudience = ParseInt(node["peakAudience"].Value<string>());
+			}
+			if(node["peakDvrAudience"] != null)
+			{
+				this._PeakDvrAudience = ParseInt(node["peakDvrAudience"].Value<string>());
+			}
 		}
 		#endregion
 

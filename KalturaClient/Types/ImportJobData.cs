@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string SrcFileUrl
 		{
 			get { return _SrcFileUrl; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcFileUrl");
 			}
 		}
+		[JsonProperty]
 		public string DestFileLocalPath
 		{
 			get { return _DestFileLocalPath; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestFileLocalPath");
 			}
 		}
+		[JsonProperty]
 		public string FlavorAssetId
 		{
 			get { return _FlavorAssetId; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetId");
 			}
 		}
+		[JsonProperty]
 		public int FileSize
 		{
 			get { return _FileSize; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ImportJobData(XmlElement node) : base(node)
+		public ImportJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["srcFileUrl"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "srcFileUrl":
-						this._SrcFileUrl = propertyNode.InnerText;
-						continue;
-					case "destFileLocalPath":
-						this._DestFileLocalPath = propertyNode.InnerText;
-						continue;
-					case "flavorAssetId":
-						this._FlavorAssetId = propertyNode.InnerText;
-						continue;
-					case "fileSize":
-						this._FileSize = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._SrcFileUrl = node["srcFileUrl"].Value<string>();
 			}
-		}
-
-		public ImportJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._SrcFileUrl = data.TryGetValueSafe<string>("srcFileUrl");
-			    this._DestFileLocalPath = data.TryGetValueSafe<string>("destFileLocalPath");
-			    this._FlavorAssetId = data.TryGetValueSafe<string>("flavorAssetId");
-			    this._FileSize = data.TryGetValueSafe<int>("fileSize");
+			if(node["destFileLocalPath"] != null)
+			{
+				this._DestFileLocalPath = node["destFileLocalPath"].Value<string>();
+			}
+			if(node["flavorAssetId"] != null)
+			{
+				this._FlavorAssetId = node["flavorAssetId"].Value<string>();
+			}
+			if(node["fileSize"] != null)
+			{
+				this._FileSize = ParseInt(node["fileSize"].Value<string>());
+			}
 		}
 		#endregion
 

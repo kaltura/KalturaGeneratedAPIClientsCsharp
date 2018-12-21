@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string CategoriesMatchOr
 		{
 			get { return _CategoriesMatchOr; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoriesMatchOr");
 			}
 		}
+		[JsonProperty]
 		public string CategoryEntryStatusIn
 		{
 			get { return _CategoryEntryStatusIn; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryEntryStatusIn");
 			}
 		}
+		[JsonProperty]
 		public CategoryEntryAdvancedOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("OrderBy");
 			}
 		}
+		[JsonProperty]
 		public int CategoryIdEqual
 		{
 			get { return _CategoryIdEqual; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CategoryEntryAdvancedFilter(XmlElement node) : base(node)
+		public CategoryEntryAdvancedFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["categoriesMatchOr"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "categoriesMatchOr":
-						this._CategoriesMatchOr = propertyNode.InnerText;
-						continue;
-					case "categoryEntryStatusIn":
-						this._CategoryEntryStatusIn = propertyNode.InnerText;
-						continue;
-					case "orderBy":
-						this._OrderBy = (CategoryEntryAdvancedOrderBy)StringEnum.Parse(typeof(CategoryEntryAdvancedOrderBy), propertyNode.InnerText);
-						continue;
-					case "categoryIdEqual":
-						this._CategoryIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._CategoriesMatchOr = node["categoriesMatchOr"].Value<string>();
 			}
-		}
-
-		public CategoryEntryAdvancedFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._CategoriesMatchOr = data.TryGetValueSafe<string>("categoriesMatchOr");
-			    this._CategoryEntryStatusIn = data.TryGetValueSafe<string>("categoryEntryStatusIn");
-			    this._OrderBy = (CategoryEntryAdvancedOrderBy)StringEnum.Parse(typeof(CategoryEntryAdvancedOrderBy), data.TryGetValueSafe<string>("orderBy"));
-			    this._CategoryIdEqual = data.TryGetValueSafe<int>("categoryIdEqual");
+			if(node["categoryEntryStatusIn"] != null)
+			{
+				this._CategoryEntryStatusIn = node["categoryEntryStatusIn"].Value<string>();
+			}
+			if(node["orderBy"] != null)
+			{
+				this._OrderBy = (CategoryEntryAdvancedOrderBy)StringEnum.Parse(typeof(CategoryEntryAdvancedOrderBy), node["orderBy"].Value<string>());
+			}
+			if(node["categoryIdEqual"] != null)
+			{
+				this._CategoryIdEqual = ParseInt(node["categoryIdEqual"].Value<string>());
+			}
 		}
 		#endregion
 

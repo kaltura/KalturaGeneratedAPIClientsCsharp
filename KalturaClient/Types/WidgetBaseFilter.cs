@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -66,6 +68,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string IdEqual
 		{
 			get { return _IdEqual; }
@@ -75,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		[JsonProperty]
 		public string IdIn
 		{
 			get { return _IdIn; }
@@ -84,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		[JsonProperty]
 		public string SourceWidgetIdEqual
 		{
 			get { return _SourceWidgetIdEqual; }
@@ -93,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceWidgetIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string RootWidgetIdEqual
 		{
 			get { return _RootWidgetIdEqual; }
@@ -102,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RootWidgetIdEqual");
 			}
 		}
+		[JsonProperty]
 		public int PartnerIdEqual
 		{
 			get { return _PartnerIdEqual; }
@@ -111,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string EntryIdEqual
 		{
 			get { return _EntryIdEqual; }
@@ -120,6 +128,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdEqual");
 			}
 		}
+		[JsonProperty]
 		public int UiConfIdEqual
 		{
 			get { return _UiConfIdEqual; }
@@ -129,6 +138,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UiConfIdEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
 			get { return _CreatedAtGreaterThanOrEqual; }
@@ -138,6 +148,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
 			get { return _CreatedAtLessThanOrEqual; }
@@ -147,6 +158,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
 			get { return _UpdatedAtGreaterThanOrEqual; }
@@ -156,6 +168,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
 			get { return _UpdatedAtLessThanOrEqual; }
@@ -165,6 +178,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public string PartnerDataLike
 		{
 			get { return _PartnerDataLike; }
@@ -181,66 +195,56 @@ namespace Kaltura.Types
 		{
 		}
 
-		public WidgetBaseFilter(XmlElement node) : base(node)
+		public WidgetBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["idEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "idEqual":
-						this._IdEqual = propertyNode.InnerText;
-						continue;
-					case "idIn":
-						this._IdIn = propertyNode.InnerText;
-						continue;
-					case "sourceWidgetIdEqual":
-						this._SourceWidgetIdEqual = propertyNode.InnerText;
-						continue;
-					case "rootWidgetIdEqual":
-						this._RootWidgetIdEqual = propertyNode.InnerText;
-						continue;
-					case "partnerIdEqual":
-						this._PartnerIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "entryIdEqual":
-						this._EntryIdEqual = propertyNode.InnerText;
-						continue;
-					case "uiConfIdEqual":
-						this._UiConfIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerDataLike":
-						this._PartnerDataLike = propertyNode.InnerText;
-						continue;
-				}
+				this._IdEqual = node["idEqual"].Value<string>();
 			}
-		}
-
-		public WidgetBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._IdEqual = data.TryGetValueSafe<string>("idEqual");
-			    this._IdIn = data.TryGetValueSafe<string>("idIn");
-			    this._SourceWidgetIdEqual = data.TryGetValueSafe<string>("sourceWidgetIdEqual");
-			    this._RootWidgetIdEqual = data.TryGetValueSafe<string>("rootWidgetIdEqual");
-			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
-			    this._EntryIdEqual = data.TryGetValueSafe<string>("entryIdEqual");
-			    this._UiConfIdEqual = data.TryGetValueSafe<int>("uiConfIdEqual");
-			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
-			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
-			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
-			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
-			    this._PartnerDataLike = data.TryGetValueSafe<string>("partnerDataLike");
+			if(node["idIn"] != null)
+			{
+				this._IdIn = node["idIn"].Value<string>();
+			}
+			if(node["sourceWidgetIdEqual"] != null)
+			{
+				this._SourceWidgetIdEqual = node["sourceWidgetIdEqual"].Value<string>();
+			}
+			if(node["rootWidgetIdEqual"] != null)
+			{
+				this._RootWidgetIdEqual = node["rootWidgetIdEqual"].Value<string>();
+			}
+			if(node["partnerIdEqual"] != null)
+			{
+				this._PartnerIdEqual = ParseInt(node["partnerIdEqual"].Value<string>());
+			}
+			if(node["entryIdEqual"] != null)
+			{
+				this._EntryIdEqual = node["entryIdEqual"].Value<string>();
+			}
+			if(node["uiConfIdEqual"] != null)
+			{
+				this._UiConfIdEqual = ParseInt(node["uiConfIdEqual"].Value<string>());
+			}
+			if(node["createdAtGreaterThanOrEqual"] != null)
+			{
+				this._CreatedAtGreaterThanOrEqual = ParseInt(node["createdAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["createdAtLessThanOrEqual"] != null)
+			{
+				this._CreatedAtLessThanOrEqual = ParseInt(node["createdAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtGreaterThanOrEqual"] != null)
+			{
+				this._UpdatedAtGreaterThanOrEqual = ParseInt(node["updatedAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtLessThanOrEqual"] != null)
+			{
+				this._UpdatedAtLessThanOrEqual = ParseInt(node["updatedAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["partnerDataLike"] != null)
+			{
+				this._PartnerDataLike = node["partnerDataLike"].Value<string>();
+			}
 		}
 		#endregion
 

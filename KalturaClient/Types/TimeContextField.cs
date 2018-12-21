@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Offset
 		{
 			get { return _Offset; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public TimeContextField(XmlElement node) : base(node)
+		public TimeContextField(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["offset"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "offset":
-						this._Offset = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._Offset = ParseInt(node["offset"].Value<string>());
 			}
-		}
-
-		public TimeContextField(IDictionary<string,object> data) : base(data)
-		{
-			    this._Offset = data.TryGetValueSafe<int>("offset");
 		}
 		#endregion
 

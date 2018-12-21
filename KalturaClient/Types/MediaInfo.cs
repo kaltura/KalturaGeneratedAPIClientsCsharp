@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -112,10 +114,17 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public string FlavorAssetId
 		{
 			get { return _FlavorAssetId; }
@@ -125,6 +134,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetId");
 			}
 		}
+		[JsonProperty]
 		public int FileSize
 		{
 			get { return _FileSize; }
@@ -134,6 +144,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileSize");
 			}
 		}
+		[JsonProperty]
 		public string ContainerFormat
 		{
 			get { return _ContainerFormat; }
@@ -143,6 +154,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContainerFormat");
 			}
 		}
+		[JsonProperty]
 		public string ContainerId
 		{
 			get { return _ContainerId; }
@@ -152,6 +164,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContainerId");
 			}
 		}
+		[JsonProperty]
 		public string ContainerProfile
 		{
 			get { return _ContainerProfile; }
@@ -161,6 +174,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContainerProfile");
 			}
 		}
+		[JsonProperty]
 		public int ContainerDuration
 		{
 			get { return _ContainerDuration; }
@@ -170,6 +184,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContainerDuration");
 			}
 		}
+		[JsonProperty]
 		public int ContainerBitRate
 		{
 			get { return _ContainerBitRate; }
@@ -179,6 +194,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContainerBitRate");
 			}
 		}
+		[JsonProperty]
 		public string VideoFormat
 		{
 			get { return _VideoFormat; }
@@ -188,6 +204,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoFormat");
 			}
 		}
+		[JsonProperty]
 		public string VideoCodecId
 		{
 			get { return _VideoCodecId; }
@@ -197,6 +214,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoCodecId");
 			}
 		}
+		[JsonProperty]
 		public int VideoDuration
 		{
 			get { return _VideoDuration; }
@@ -206,6 +224,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoDuration");
 			}
 		}
+		[JsonProperty]
 		public int VideoBitRate
 		{
 			get { return _VideoBitRate; }
@@ -215,6 +234,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoBitRate");
 			}
 		}
+		[JsonProperty]
 		public BitRateMode VideoBitRateMode
 		{
 			get { return _VideoBitRateMode; }
@@ -224,6 +244,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoBitRateMode");
 			}
 		}
+		[JsonProperty]
 		public int VideoWidth
 		{
 			get { return _VideoWidth; }
@@ -233,6 +254,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoWidth");
 			}
 		}
+		[JsonProperty]
 		public int VideoHeight
 		{
 			get { return _VideoHeight; }
@@ -242,6 +264,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoHeight");
 			}
 		}
+		[JsonProperty]
 		public float VideoFrameRate
 		{
 			get { return _VideoFrameRate; }
@@ -251,6 +274,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoFrameRate");
 			}
 		}
+		[JsonProperty]
 		public float VideoDar
 		{
 			get { return _VideoDar; }
@@ -260,6 +284,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoDar");
 			}
 		}
+		[JsonProperty]
 		public int VideoRotation
 		{
 			get { return _VideoRotation; }
@@ -269,6 +294,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoRotation");
 			}
 		}
+		[JsonProperty]
 		public string AudioFormat
 		{
 			get { return _AudioFormat; }
@@ -278,6 +304,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AudioFormat");
 			}
 		}
+		[JsonProperty]
 		public string AudioCodecId
 		{
 			get { return _AudioCodecId; }
@@ -287,6 +314,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AudioCodecId");
 			}
 		}
+		[JsonProperty]
 		public int AudioDuration
 		{
 			get { return _AudioDuration; }
@@ -296,6 +324,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AudioDuration");
 			}
 		}
+		[JsonProperty]
 		public int AudioBitRate
 		{
 			get { return _AudioBitRate; }
@@ -305,6 +334,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AudioBitRate");
 			}
 		}
+		[JsonProperty]
 		public BitRateMode AudioBitRateMode
 		{
 			get { return _AudioBitRateMode; }
@@ -314,6 +344,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AudioBitRateMode");
 			}
 		}
+		[JsonProperty]
 		public int AudioChannels
 		{
 			get { return _AudioChannels; }
@@ -323,6 +354,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AudioChannels");
 			}
 		}
+		[JsonProperty]
 		public int AudioSamplingRate
 		{
 			get { return _AudioSamplingRate; }
@@ -332,6 +364,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AudioSamplingRate");
 			}
 		}
+		[JsonProperty]
 		public int AudioResolution
 		{
 			get { return _AudioResolution; }
@@ -341,6 +374,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AudioResolution");
 			}
 		}
+		[JsonProperty]
 		public string WritingLib
 		{
 			get { return _WritingLib; }
@@ -350,6 +384,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WritingLib");
 			}
 		}
+		[JsonProperty]
 		public string RawData
 		{
 			get { return _RawData; }
@@ -359,6 +394,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RawData");
 			}
 		}
+		[JsonProperty]
 		public string MultiStreamInfo
 		{
 			get { return _MultiStreamInfo; }
@@ -368,6 +404,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MultiStreamInfo");
 			}
 		}
+		[JsonProperty]
 		public int ScanType
 		{
 			get { return _ScanType; }
@@ -377,6 +414,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ScanType");
 			}
 		}
+		[JsonProperty]
 		public string MultiStream
 		{
 			get { return _MultiStream; }
@@ -386,6 +424,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MultiStream");
 			}
 		}
+		[JsonProperty]
 		public int IsFastStart
 		{
 			get { return _IsFastStart; }
@@ -395,6 +434,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsFastStart");
 			}
 		}
+		[JsonProperty]
 		public string ContentStreams
 		{
 			get { return _ContentStreams; }
@@ -404,6 +444,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentStreams");
 			}
 		}
+		[JsonProperty]
 		public int ComplexityValue
 		{
 			get { return _ComplexityValue; }
@@ -413,6 +454,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ComplexityValue");
 			}
 		}
+		[JsonProperty]
 		public float MaxGOP
 		{
 			get { return _MaxGOP; }
@@ -429,158 +471,148 @@ namespace Kaltura.Types
 		{
 		}
 
-		public MediaInfo(XmlElement node) : base(node)
+		public MediaInfo(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "flavorAssetId":
-						this._FlavorAssetId = propertyNode.InnerText;
-						continue;
-					case "fileSize":
-						this._FileSize = ParseInt(propertyNode.InnerText);
-						continue;
-					case "containerFormat":
-						this._ContainerFormat = propertyNode.InnerText;
-						continue;
-					case "containerId":
-						this._ContainerId = propertyNode.InnerText;
-						continue;
-					case "containerProfile":
-						this._ContainerProfile = propertyNode.InnerText;
-						continue;
-					case "containerDuration":
-						this._ContainerDuration = ParseInt(propertyNode.InnerText);
-						continue;
-					case "containerBitRate":
-						this._ContainerBitRate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "videoFormat":
-						this._VideoFormat = propertyNode.InnerText;
-						continue;
-					case "videoCodecId":
-						this._VideoCodecId = propertyNode.InnerText;
-						continue;
-					case "videoDuration":
-						this._VideoDuration = ParseInt(propertyNode.InnerText);
-						continue;
-					case "videoBitRate":
-						this._VideoBitRate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "videoBitRateMode":
-						this._VideoBitRateMode = (BitRateMode)ParseEnum(typeof(BitRateMode), propertyNode.InnerText);
-						continue;
-					case "videoWidth":
-						this._VideoWidth = ParseInt(propertyNode.InnerText);
-						continue;
-					case "videoHeight":
-						this._VideoHeight = ParseInt(propertyNode.InnerText);
-						continue;
-					case "videoFrameRate":
-						this._VideoFrameRate = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "videoDar":
-						this._VideoDar = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "videoRotation":
-						this._VideoRotation = ParseInt(propertyNode.InnerText);
-						continue;
-					case "audioFormat":
-						this._AudioFormat = propertyNode.InnerText;
-						continue;
-					case "audioCodecId":
-						this._AudioCodecId = propertyNode.InnerText;
-						continue;
-					case "audioDuration":
-						this._AudioDuration = ParseInt(propertyNode.InnerText);
-						continue;
-					case "audioBitRate":
-						this._AudioBitRate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "audioBitRateMode":
-						this._AudioBitRateMode = (BitRateMode)ParseEnum(typeof(BitRateMode), propertyNode.InnerText);
-						continue;
-					case "audioChannels":
-						this._AudioChannels = ParseInt(propertyNode.InnerText);
-						continue;
-					case "audioSamplingRate":
-						this._AudioSamplingRate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "audioResolution":
-						this._AudioResolution = ParseInt(propertyNode.InnerText);
-						continue;
-					case "writingLib":
-						this._WritingLib = propertyNode.InnerText;
-						continue;
-					case "rawData":
-						this._RawData = propertyNode.InnerText;
-						continue;
-					case "multiStreamInfo":
-						this._MultiStreamInfo = propertyNode.InnerText;
-						continue;
-					case "scanType":
-						this._ScanType = ParseInt(propertyNode.InnerText);
-						continue;
-					case "multiStream":
-						this._MultiStream = propertyNode.InnerText;
-						continue;
-					case "isFastStart":
-						this._IsFastStart = ParseInt(propertyNode.InnerText);
-						continue;
-					case "contentStreams":
-						this._ContentStreams = propertyNode.InnerText;
-						continue;
-					case "complexityValue":
-						this._ComplexityValue = ParseInt(propertyNode.InnerText);
-						continue;
-					case "maxGOP":
-						this._MaxGOP = ParseFloat(propertyNode.InnerText);
-						continue;
-				}
+				this._Id = ParseInt(node["id"].Value<string>());
 			}
-		}
-
-		public MediaInfo(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._FlavorAssetId = data.TryGetValueSafe<string>("flavorAssetId");
-			    this._FileSize = data.TryGetValueSafe<int>("fileSize");
-			    this._ContainerFormat = data.TryGetValueSafe<string>("containerFormat");
-			    this._ContainerId = data.TryGetValueSafe<string>("containerId");
-			    this._ContainerProfile = data.TryGetValueSafe<string>("containerProfile");
-			    this._ContainerDuration = data.TryGetValueSafe<int>("containerDuration");
-			    this._ContainerBitRate = data.TryGetValueSafe<int>("containerBitRate");
-			    this._VideoFormat = data.TryGetValueSafe<string>("videoFormat");
-			    this._VideoCodecId = data.TryGetValueSafe<string>("videoCodecId");
-			    this._VideoDuration = data.TryGetValueSafe<int>("videoDuration");
-			    this._VideoBitRate = data.TryGetValueSafe<int>("videoBitRate");
-			    this._VideoBitRateMode = (BitRateMode)ParseEnum(typeof(BitRateMode), data.TryGetValueSafe<int>("videoBitRateMode"));
-			    this._VideoWidth = data.TryGetValueSafe<int>("videoWidth");
-			    this._VideoHeight = data.TryGetValueSafe<int>("videoHeight");
-			    this._VideoFrameRate = data.TryGetValueSafe<float>("videoFrameRate");
-			    this._VideoDar = data.TryGetValueSafe<float>("videoDar");
-			    this._VideoRotation = data.TryGetValueSafe<int>("videoRotation");
-			    this._AudioFormat = data.TryGetValueSafe<string>("audioFormat");
-			    this._AudioCodecId = data.TryGetValueSafe<string>("audioCodecId");
-			    this._AudioDuration = data.TryGetValueSafe<int>("audioDuration");
-			    this._AudioBitRate = data.TryGetValueSafe<int>("audioBitRate");
-			    this._AudioBitRateMode = (BitRateMode)ParseEnum(typeof(BitRateMode), data.TryGetValueSafe<int>("audioBitRateMode"));
-			    this._AudioChannels = data.TryGetValueSafe<int>("audioChannels");
-			    this._AudioSamplingRate = data.TryGetValueSafe<int>("audioSamplingRate");
-			    this._AudioResolution = data.TryGetValueSafe<int>("audioResolution");
-			    this._WritingLib = data.TryGetValueSafe<string>("writingLib");
-			    this._RawData = data.TryGetValueSafe<string>("rawData");
-			    this._MultiStreamInfo = data.TryGetValueSafe<string>("multiStreamInfo");
-			    this._ScanType = data.TryGetValueSafe<int>("scanType");
-			    this._MultiStream = data.TryGetValueSafe<string>("multiStream");
-			    this._IsFastStart = data.TryGetValueSafe<int>("isFastStart");
-			    this._ContentStreams = data.TryGetValueSafe<string>("contentStreams");
-			    this._ComplexityValue = data.TryGetValueSafe<int>("complexityValue");
-			    this._MaxGOP = data.TryGetValueSafe<float>("maxGOP");
+			if(node["flavorAssetId"] != null)
+			{
+				this._FlavorAssetId = node["flavorAssetId"].Value<string>();
+			}
+			if(node["fileSize"] != null)
+			{
+				this._FileSize = ParseInt(node["fileSize"].Value<string>());
+			}
+			if(node["containerFormat"] != null)
+			{
+				this._ContainerFormat = node["containerFormat"].Value<string>();
+			}
+			if(node["containerId"] != null)
+			{
+				this._ContainerId = node["containerId"].Value<string>();
+			}
+			if(node["containerProfile"] != null)
+			{
+				this._ContainerProfile = node["containerProfile"].Value<string>();
+			}
+			if(node["containerDuration"] != null)
+			{
+				this._ContainerDuration = ParseInt(node["containerDuration"].Value<string>());
+			}
+			if(node["containerBitRate"] != null)
+			{
+				this._ContainerBitRate = ParseInt(node["containerBitRate"].Value<string>());
+			}
+			if(node["videoFormat"] != null)
+			{
+				this._VideoFormat = node["videoFormat"].Value<string>();
+			}
+			if(node["videoCodecId"] != null)
+			{
+				this._VideoCodecId = node["videoCodecId"].Value<string>();
+			}
+			if(node["videoDuration"] != null)
+			{
+				this._VideoDuration = ParseInt(node["videoDuration"].Value<string>());
+			}
+			if(node["videoBitRate"] != null)
+			{
+				this._VideoBitRate = ParseInt(node["videoBitRate"].Value<string>());
+			}
+			if(node["videoBitRateMode"] != null)
+			{
+				this._VideoBitRateMode = (BitRateMode)ParseEnum(typeof(BitRateMode), node["videoBitRateMode"].Value<string>());
+			}
+			if(node["videoWidth"] != null)
+			{
+				this._VideoWidth = ParseInt(node["videoWidth"].Value<string>());
+			}
+			if(node["videoHeight"] != null)
+			{
+				this._VideoHeight = ParseInt(node["videoHeight"].Value<string>());
+			}
+			if(node["videoFrameRate"] != null)
+			{
+				this._VideoFrameRate = ParseFloat(node["videoFrameRate"].Value<string>());
+			}
+			if(node["videoDar"] != null)
+			{
+				this._VideoDar = ParseFloat(node["videoDar"].Value<string>());
+			}
+			if(node["videoRotation"] != null)
+			{
+				this._VideoRotation = ParseInt(node["videoRotation"].Value<string>());
+			}
+			if(node["audioFormat"] != null)
+			{
+				this._AudioFormat = node["audioFormat"].Value<string>();
+			}
+			if(node["audioCodecId"] != null)
+			{
+				this._AudioCodecId = node["audioCodecId"].Value<string>();
+			}
+			if(node["audioDuration"] != null)
+			{
+				this._AudioDuration = ParseInt(node["audioDuration"].Value<string>());
+			}
+			if(node["audioBitRate"] != null)
+			{
+				this._AudioBitRate = ParseInt(node["audioBitRate"].Value<string>());
+			}
+			if(node["audioBitRateMode"] != null)
+			{
+				this._AudioBitRateMode = (BitRateMode)ParseEnum(typeof(BitRateMode), node["audioBitRateMode"].Value<string>());
+			}
+			if(node["audioChannels"] != null)
+			{
+				this._AudioChannels = ParseInt(node["audioChannels"].Value<string>());
+			}
+			if(node["audioSamplingRate"] != null)
+			{
+				this._AudioSamplingRate = ParseInt(node["audioSamplingRate"].Value<string>());
+			}
+			if(node["audioResolution"] != null)
+			{
+				this._AudioResolution = ParseInt(node["audioResolution"].Value<string>());
+			}
+			if(node["writingLib"] != null)
+			{
+				this._WritingLib = node["writingLib"].Value<string>();
+			}
+			if(node["rawData"] != null)
+			{
+				this._RawData = node["rawData"].Value<string>();
+			}
+			if(node["multiStreamInfo"] != null)
+			{
+				this._MultiStreamInfo = node["multiStreamInfo"].Value<string>();
+			}
+			if(node["scanType"] != null)
+			{
+				this._ScanType = ParseInt(node["scanType"].Value<string>());
+			}
+			if(node["multiStream"] != null)
+			{
+				this._MultiStream = node["multiStream"].Value<string>();
+			}
+			if(node["isFastStart"] != null)
+			{
+				this._IsFastStart = ParseInt(node["isFastStart"].Value<string>());
+			}
+			if(node["contentStreams"] != null)
+			{
+				this._ContentStreams = node["contentStreams"].Value<string>();
+			}
+			if(node["complexityValue"] != null)
+			{
+				this._ComplexityValue = ParseInt(node["complexityValue"].Value<string>());
+			}
+			if(node["maxGOP"] != null)
+			{
+				this._MaxGOP = ParseFloat(node["maxGOP"].Value<string>());
+			}
 		}
 		#endregion
 

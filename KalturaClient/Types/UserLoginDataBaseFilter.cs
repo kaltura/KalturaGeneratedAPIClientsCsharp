@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string LoginEmailEqual
 		{
 			get { return _LoginEmailEqual; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UserLoginDataBaseFilter(XmlElement node) : base(node)
+		public UserLoginDataBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["loginEmailEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "loginEmailEqual":
-						this._LoginEmailEqual = propertyNode.InnerText;
-						continue;
-				}
+				this._LoginEmailEqual = node["loginEmailEqual"].Value<string>();
 			}
-		}
-
-		public UserLoginDataBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._LoginEmailEqual = data.TryGetValueSafe<string>("loginEmailEqual");
 		}
 		#endregion
 

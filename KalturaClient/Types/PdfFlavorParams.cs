@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public bool? Readonly
 		{
 			get { return _Readonly; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public PdfFlavorParams(XmlElement node) : base(node)
+		public PdfFlavorParams(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["readonly"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "readonly":
-						this._Readonly = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._Readonly = ParseBool(node["readonly"].Value<string>());
 			}
-		}
-
-		public PdfFlavorParams(IDictionary<string,object> data) : base(data)
-		{
-			    this._Readonly = data.TryGetValueSafe<bool>("readonly");
 		}
 		#endregion
 

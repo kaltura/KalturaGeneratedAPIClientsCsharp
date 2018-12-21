@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public IList<EmailNotificationRecipient> EmailRecipients
 		{
 			get { return _EmailRecipients; }
@@ -60,31 +63,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EmailNotificationStaticRecipientProvider(XmlElement node) : base(node)
+		public EmailNotificationStaticRecipientProvider(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["emailRecipients"] != null)
 			{
-				switch (propertyNode.Name)
+				this._EmailRecipients = new List<EmailNotificationRecipient>();
+				foreach(var arrayNode in node["emailRecipients"].Children())
 				{
-					case "emailRecipients":
-						this._EmailRecipients = new List<EmailNotificationRecipient>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._EmailRecipients.Add(ObjectFactory.Create<EmailNotificationRecipient>(arrayNode));
-						}
-						continue;
+					this._EmailRecipients.Add(ObjectFactory.Create<EmailNotificationRecipient>(arrayNode));
 				}
 			}
-		}
-
-		public EmailNotificationStaticRecipientProvider(IDictionary<string,object> data) : base(data)
-		{
-			    this._EmailRecipients = new List<EmailNotificationRecipient>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("emailRecipients", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._EmailRecipients.Add(ObjectFactory.Create<EmailNotificationRecipient>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

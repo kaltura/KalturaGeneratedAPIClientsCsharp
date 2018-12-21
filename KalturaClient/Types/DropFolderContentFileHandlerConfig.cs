@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public DropFolderContentFileHandlerMatchPolicy ContentMatchPolicy
 		{
 			get { return _ContentMatchPolicy; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentMatchPolicy");
 			}
 		}
+		[JsonProperty]
 		public string SlugRegex
 		{
 			get { return _SlugRegex; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DropFolderContentFileHandlerConfig(XmlElement node) : base(node)
+		public DropFolderContentFileHandlerConfig(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["contentMatchPolicy"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "contentMatchPolicy":
-						this._ContentMatchPolicy = (DropFolderContentFileHandlerMatchPolicy)ParseEnum(typeof(DropFolderContentFileHandlerMatchPolicy), propertyNode.InnerText);
-						continue;
-					case "slugRegex":
-						this._SlugRegex = propertyNode.InnerText;
-						continue;
-				}
+				this._ContentMatchPolicy = (DropFolderContentFileHandlerMatchPolicy)ParseEnum(typeof(DropFolderContentFileHandlerMatchPolicy), node["contentMatchPolicy"].Value<string>());
 			}
-		}
-
-		public DropFolderContentFileHandlerConfig(IDictionary<string,object> data) : base(data)
-		{
-			    this._ContentMatchPolicy = (DropFolderContentFileHandlerMatchPolicy)ParseEnum(typeof(DropFolderContentFileHandlerMatchPolicy), data.TryGetValueSafe<int>("contentMatchPolicy"));
-			    this._SlugRegex = data.TryGetValueSafe<string>("slugRegex");
+			if(node["slugRegex"] != null)
+			{
+				this._SlugRegex = node["slugRegex"].Value<string>();
+			}
 		}
 		#endregion
 

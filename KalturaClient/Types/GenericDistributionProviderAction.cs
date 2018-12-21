@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -76,18 +78,37 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public int GenericDistributionProviderId
 		{
 			get { return _GenericDistributionProviderId; }
@@ -97,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("GenericDistributionProviderId");
 			}
 		}
+		[JsonProperty]
 		public DistributionAction Action
 		{
 			get { return _Action; }
@@ -106,10 +128,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("Action");
 			}
 		}
+		[JsonProperty]
 		public GenericDistributionProviderStatus Status
 		{
 			get { return _Status; }
+			private set 
+			{ 
+				_Status = value;
+				OnPropertyChanged("Status");
+			}
 		}
+		[JsonProperty]
 		public GenericDistributionProviderParser ResultsParser
 		{
 			get { return _ResultsParser; }
@@ -119,6 +148,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ResultsParser");
 			}
 		}
+		[JsonProperty]
 		public DistributionProtocol Protocol
 		{
 			get { return _Protocol; }
@@ -128,6 +158,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Protocol");
 			}
 		}
+		[JsonProperty]
 		public string ServerAddress
 		{
 			get { return _ServerAddress; }
@@ -137,6 +168,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerAddress");
 			}
 		}
+		[JsonProperty]
 		public string RemotePath
 		{
 			get { return _RemotePath; }
@@ -146,6 +178,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RemotePath");
 			}
 		}
+		[JsonProperty]
 		public string RemoteUsername
 		{
 			get { return _RemoteUsername; }
@@ -155,6 +188,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RemoteUsername");
 			}
 		}
+		[JsonProperty]
 		public string RemotePassword
 		{
 			get { return _RemotePassword; }
@@ -164,6 +198,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RemotePassword");
 			}
 		}
+		[JsonProperty]
 		public string EditableFields
 		{
 			get { return _EditableFields; }
@@ -173,6 +208,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EditableFields");
 			}
 		}
+		[JsonProperty]
 		public string MandatoryFields
 		{
 			get { return _MandatoryFields; }
@@ -182,17 +218,35 @@ namespace Kaltura.Types
 				OnPropertyChanged("MandatoryFields");
 			}
 		}
+		[JsonProperty]
 		public string MrssTransformer
 		{
 			get { return _MrssTransformer; }
+			private set 
+			{ 
+				_MrssTransformer = value;
+				OnPropertyChanged("MrssTransformer");
+			}
 		}
+		[JsonProperty]
 		public string MrssValidator
 		{
 			get { return _MrssValidator; }
+			private set 
+			{ 
+				_MrssValidator = value;
+				OnPropertyChanged("MrssValidator");
+			}
 		}
+		[JsonProperty]
 		public string ResultsTransformer
 		{
 			get { return _ResultsTransformer; }
+			private set 
+			{ 
+				_ResultsTransformer = value;
+				OnPropertyChanged("ResultsTransformer");
+			}
 		}
 		#endregion
 
@@ -201,86 +255,76 @@ namespace Kaltura.Types
 		{
 		}
 
-		public GenericDistributionProviderAction(XmlElement node) : base(node)
+		public GenericDistributionProviderAction(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "genericDistributionProviderId":
-						this._GenericDistributionProviderId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "action":
-						this._Action = (DistributionAction)ParseEnum(typeof(DistributionAction), propertyNode.InnerText);
-						continue;
-					case "status":
-						this._Status = (GenericDistributionProviderStatus)ParseEnum(typeof(GenericDistributionProviderStatus), propertyNode.InnerText);
-						continue;
-					case "resultsParser":
-						this._ResultsParser = (GenericDistributionProviderParser)ParseEnum(typeof(GenericDistributionProviderParser), propertyNode.InnerText);
-						continue;
-					case "protocol":
-						this._Protocol = (DistributionProtocol)ParseEnum(typeof(DistributionProtocol), propertyNode.InnerText);
-						continue;
-					case "serverAddress":
-						this._ServerAddress = propertyNode.InnerText;
-						continue;
-					case "remotePath":
-						this._RemotePath = propertyNode.InnerText;
-						continue;
-					case "remoteUsername":
-						this._RemoteUsername = propertyNode.InnerText;
-						continue;
-					case "remotePassword":
-						this._RemotePassword = propertyNode.InnerText;
-						continue;
-					case "editableFields":
-						this._EditableFields = propertyNode.InnerText;
-						continue;
-					case "mandatoryFields":
-						this._MandatoryFields = propertyNode.InnerText;
-						continue;
-					case "mrssTransformer":
-						this._MrssTransformer = propertyNode.InnerText;
-						continue;
-					case "mrssValidator":
-						this._MrssValidator = propertyNode.InnerText;
-						continue;
-					case "resultsTransformer":
-						this._ResultsTransformer = propertyNode.InnerText;
-						continue;
-				}
+				this._Id = ParseInt(node["id"].Value<string>());
 			}
-		}
-
-		public GenericDistributionProviderAction(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._GenericDistributionProviderId = data.TryGetValueSafe<int>("genericDistributionProviderId");
-			    this._Action = (DistributionAction)ParseEnum(typeof(DistributionAction), data.TryGetValueSafe<int>("action"));
-			    this._Status = (GenericDistributionProviderStatus)ParseEnum(typeof(GenericDistributionProviderStatus), data.TryGetValueSafe<int>("status"));
-			    this._ResultsParser = (GenericDistributionProviderParser)ParseEnum(typeof(GenericDistributionProviderParser), data.TryGetValueSafe<int>("resultsParser"));
-			    this._Protocol = (DistributionProtocol)ParseEnum(typeof(DistributionProtocol), data.TryGetValueSafe<int>("protocol"));
-			    this._ServerAddress = data.TryGetValueSafe<string>("serverAddress");
-			    this._RemotePath = data.TryGetValueSafe<string>("remotePath");
-			    this._RemoteUsername = data.TryGetValueSafe<string>("remoteUsername");
-			    this._RemotePassword = data.TryGetValueSafe<string>("remotePassword");
-			    this._EditableFields = data.TryGetValueSafe<string>("editableFields");
-			    this._MandatoryFields = data.TryGetValueSafe<string>("mandatoryFields");
-			    this._MrssTransformer = data.TryGetValueSafe<string>("mrssTransformer");
-			    this._MrssValidator = data.TryGetValueSafe<string>("mrssValidator");
-			    this._ResultsTransformer = data.TryGetValueSafe<string>("resultsTransformer");
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["genericDistributionProviderId"] != null)
+			{
+				this._GenericDistributionProviderId = ParseInt(node["genericDistributionProviderId"].Value<string>());
+			}
+			if(node["action"] != null)
+			{
+				this._Action = (DistributionAction)ParseEnum(typeof(DistributionAction), node["action"].Value<string>());
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (GenericDistributionProviderStatus)ParseEnum(typeof(GenericDistributionProviderStatus), node["status"].Value<string>());
+			}
+			if(node["resultsParser"] != null)
+			{
+				this._ResultsParser = (GenericDistributionProviderParser)ParseEnum(typeof(GenericDistributionProviderParser), node["resultsParser"].Value<string>());
+			}
+			if(node["protocol"] != null)
+			{
+				this._Protocol = (DistributionProtocol)ParseEnum(typeof(DistributionProtocol), node["protocol"].Value<string>());
+			}
+			if(node["serverAddress"] != null)
+			{
+				this._ServerAddress = node["serverAddress"].Value<string>();
+			}
+			if(node["remotePath"] != null)
+			{
+				this._RemotePath = node["remotePath"].Value<string>();
+			}
+			if(node["remoteUsername"] != null)
+			{
+				this._RemoteUsername = node["remoteUsername"].Value<string>();
+			}
+			if(node["remotePassword"] != null)
+			{
+				this._RemotePassword = node["remotePassword"].Value<string>();
+			}
+			if(node["editableFields"] != null)
+			{
+				this._EditableFields = node["editableFields"].Value<string>();
+			}
+			if(node["mandatoryFields"] != null)
+			{
+				this._MandatoryFields = node["mandatoryFields"].Value<string>();
+			}
+			if(node["mrssTransformer"] != null)
+			{
+				this._MrssTransformer = node["mrssTransformer"].Value<string>();
+			}
+			if(node["mrssValidator"] != null)
+			{
+				this._MrssValidator = node["mrssValidator"].Value<string>();
+			}
+			if(node["resultsTransformer"] != null)
+			{
+				this._ResultsTransformer = node["resultsTransformer"].Value<string>();
+			}
 		}
 		#endregion
 

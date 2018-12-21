@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -132,6 +134,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public long IdEqual
 		{
 			get { return _IdEqual; }
@@ -141,6 +144,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		[JsonProperty]
 		public long IdGreaterThanOrEqual
 		{
 			get { return _IdGreaterThanOrEqual; }
@@ -150,6 +154,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int PartnerIdEqual
 		{
 			get { return _PartnerIdEqual; }
@@ -159,6 +164,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string PartnerIdIn
 		{
 			get { return _PartnerIdIn; }
@@ -168,6 +174,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdIn");
 			}
 		}
+		[JsonProperty]
 		public string PartnerIdNotIn
 		{
 			get { return _PartnerIdNotIn; }
@@ -177,6 +184,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdNotIn");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
 			get { return _CreatedAtGreaterThanOrEqual; }
@@ -186,6 +194,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
 			get { return _CreatedAtLessThanOrEqual; }
@@ -195,6 +204,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
 			get { return _UpdatedAtGreaterThanOrEqual; }
@@ -204,6 +214,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
 			get { return _UpdatedAtLessThanOrEqual; }
@@ -213,6 +224,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int ExecutionAttemptsGreaterThanOrEqual
 		{
 			get { return _ExecutionAttemptsGreaterThanOrEqual; }
@@ -222,6 +234,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExecutionAttemptsGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int ExecutionAttemptsLessThanOrEqual
 		{
 			get { return _ExecutionAttemptsLessThanOrEqual; }
@@ -231,6 +244,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExecutionAttemptsLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int LockVersionGreaterThanOrEqual
 		{
 			get { return _LockVersionGreaterThanOrEqual; }
@@ -240,6 +254,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LockVersionGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int LockVersionLessThanOrEqual
 		{
 			get { return _LockVersionLessThanOrEqual; }
@@ -249,6 +264,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LockVersionLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public string EntryIdEqual
 		{
 			get { return _EntryIdEqual; }
@@ -258,6 +274,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdEqual");
 			}
 		}
+		[JsonProperty]
 		public BatchJobType JobTypeEqual
 		{
 			get { return _JobTypeEqual; }
@@ -267,6 +284,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("JobTypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string JobTypeIn
 		{
 			get { return _JobTypeIn; }
@@ -276,6 +294,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("JobTypeIn");
 			}
 		}
+		[JsonProperty]
 		public string JobTypeNotIn
 		{
 			get { return _JobTypeNotIn; }
@@ -285,6 +304,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("JobTypeNotIn");
 			}
 		}
+		[JsonProperty]
 		public int JobSubTypeEqual
 		{
 			get { return _JobSubTypeEqual; }
@@ -294,6 +314,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("JobSubTypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string JobSubTypeIn
 		{
 			get { return _JobSubTypeIn; }
@@ -303,6 +324,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("JobSubTypeIn");
 			}
 		}
+		[JsonProperty]
 		public string JobSubTypeNotIn
 		{
 			get { return _JobSubTypeNotIn; }
@@ -312,6 +334,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("JobSubTypeNotIn");
 			}
 		}
+		[JsonProperty]
 		public BatchJobStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -321,6 +344,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -330,6 +354,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		[JsonProperty]
 		public string StatusNotIn
 		{
 			get { return _StatusNotIn; }
@@ -339,6 +364,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusNotIn");
 			}
 		}
+		[JsonProperty]
 		public int PriorityGreaterThanOrEqual
 		{
 			get { return _PriorityGreaterThanOrEqual; }
@@ -348,6 +374,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PriorityGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int PriorityLessThanOrEqual
 		{
 			get { return _PriorityLessThanOrEqual; }
@@ -357,6 +384,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PriorityLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int PriorityEqual
 		{
 			get { return _PriorityEqual; }
@@ -366,6 +394,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PriorityEqual");
 			}
 		}
+		[JsonProperty]
 		public string PriorityIn
 		{
 			get { return _PriorityIn; }
@@ -375,6 +404,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PriorityIn");
 			}
 		}
+		[JsonProperty]
 		public string PriorityNotIn
 		{
 			get { return _PriorityNotIn; }
@@ -384,6 +414,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PriorityNotIn");
 			}
 		}
+		[JsonProperty]
 		public int BatchVersionGreaterThanOrEqual
 		{
 			get { return _BatchVersionGreaterThanOrEqual; }
@@ -393,6 +424,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BatchVersionGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int BatchVersionLessThanOrEqual
 		{
 			get { return _BatchVersionLessThanOrEqual; }
@@ -402,6 +434,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BatchVersionLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int BatchVersionEqual
 		{
 			get { return _BatchVersionEqual; }
@@ -411,6 +444,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BatchVersionEqual");
 			}
 		}
+		[JsonProperty]
 		public int QueueTimeGreaterThanOrEqual
 		{
 			get { return _QueueTimeGreaterThanOrEqual; }
@@ -420,6 +454,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("QueueTimeGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int QueueTimeLessThanOrEqual
 		{
 			get { return _QueueTimeLessThanOrEqual; }
@@ -429,6 +464,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("QueueTimeLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int FinishTimeGreaterThanOrEqual
 		{
 			get { return _FinishTimeGreaterThanOrEqual; }
@@ -438,6 +474,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FinishTimeGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int FinishTimeLessThanOrEqual
 		{
 			get { return _FinishTimeLessThanOrEqual; }
@@ -447,6 +484,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FinishTimeLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public BatchJobErrorTypes ErrTypeEqual
 		{
 			get { return _ErrTypeEqual; }
@@ -456,6 +494,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrTypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string ErrTypeIn
 		{
 			get { return _ErrTypeIn; }
@@ -465,6 +504,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrTypeIn");
 			}
 		}
+		[JsonProperty]
 		public string ErrTypeNotIn
 		{
 			get { return _ErrTypeNotIn; }
@@ -474,6 +514,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrTypeNotIn");
 			}
 		}
+		[JsonProperty]
 		public int ErrNumberEqual
 		{
 			get { return _ErrNumberEqual; }
@@ -483,6 +524,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrNumberEqual");
 			}
 		}
+		[JsonProperty]
 		public string ErrNumberIn
 		{
 			get { return _ErrNumberIn; }
@@ -492,6 +534,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrNumberIn");
 			}
 		}
+		[JsonProperty]
 		public string ErrNumberNotIn
 		{
 			get { return _ErrNumberNotIn; }
@@ -501,6 +544,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrNumberNotIn");
 			}
 		}
+		[JsonProperty]
 		public int EstimatedEffortLessThan
 		{
 			get { return _EstimatedEffortLessThan; }
@@ -510,6 +554,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EstimatedEffortLessThan");
 			}
 		}
+		[JsonProperty]
 		public int EstimatedEffortGreaterThan
 		{
 			get { return _EstimatedEffortGreaterThan; }
@@ -519,6 +564,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EstimatedEffortGreaterThan");
 			}
 		}
+		[JsonProperty]
 		public int UrgencyLessThanOrEqual
 		{
 			get { return _UrgencyLessThanOrEqual; }
@@ -528,6 +574,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UrgencyLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UrgencyGreaterThanOrEqual
 		{
 			get { return _UrgencyGreaterThanOrEqual; }
@@ -544,198 +591,188 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BatchJobBaseFilter(XmlElement node) : base(node)
+		public BatchJobBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["idEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "idEqual":
-						this._IdEqual = ParseLong(propertyNode.InnerText);
-						continue;
-					case "idGreaterThanOrEqual":
-						this._IdGreaterThanOrEqual = ParseLong(propertyNode.InnerText);
-						continue;
-					case "partnerIdEqual":
-						this._PartnerIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerIdIn":
-						this._PartnerIdIn = propertyNode.InnerText;
-						continue;
-					case "partnerIdNotIn":
-						this._PartnerIdNotIn = propertyNode.InnerText;
-						continue;
-					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "executionAttemptsGreaterThanOrEqual":
-						this._ExecutionAttemptsGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "executionAttemptsLessThanOrEqual":
-						this._ExecutionAttemptsLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "lockVersionGreaterThanOrEqual":
-						this._LockVersionGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "lockVersionLessThanOrEqual":
-						this._LockVersionLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "entryIdEqual":
-						this._EntryIdEqual = propertyNode.InnerText;
-						continue;
-					case "jobTypeEqual":
-						this._JobTypeEqual = (BatchJobType)StringEnum.Parse(typeof(BatchJobType), propertyNode.InnerText);
-						continue;
-					case "jobTypeIn":
-						this._JobTypeIn = propertyNode.InnerText;
-						continue;
-					case "jobTypeNotIn":
-						this._JobTypeNotIn = propertyNode.InnerText;
-						continue;
-					case "jobSubTypeEqual":
-						this._JobSubTypeEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "jobSubTypeIn":
-						this._JobSubTypeIn = propertyNode.InnerText;
-						continue;
-					case "jobSubTypeNotIn":
-						this._JobSubTypeNotIn = propertyNode.InnerText;
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (BatchJobStatus)ParseEnum(typeof(BatchJobStatus), propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-					case "statusNotIn":
-						this._StatusNotIn = propertyNode.InnerText;
-						continue;
-					case "priorityGreaterThanOrEqual":
-						this._PriorityGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "priorityLessThanOrEqual":
-						this._PriorityLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "priorityEqual":
-						this._PriorityEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "priorityIn":
-						this._PriorityIn = propertyNode.InnerText;
-						continue;
-					case "priorityNotIn":
-						this._PriorityNotIn = propertyNode.InnerText;
-						continue;
-					case "batchVersionGreaterThanOrEqual":
-						this._BatchVersionGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "batchVersionLessThanOrEqual":
-						this._BatchVersionLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "batchVersionEqual":
-						this._BatchVersionEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "queueTimeGreaterThanOrEqual":
-						this._QueueTimeGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "queueTimeLessThanOrEqual":
-						this._QueueTimeLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "finishTimeGreaterThanOrEqual":
-						this._FinishTimeGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "finishTimeLessThanOrEqual":
-						this._FinishTimeLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "errTypeEqual":
-						this._ErrTypeEqual = (BatchJobErrorTypes)ParseEnum(typeof(BatchJobErrorTypes), propertyNode.InnerText);
-						continue;
-					case "errTypeIn":
-						this._ErrTypeIn = propertyNode.InnerText;
-						continue;
-					case "errTypeNotIn":
-						this._ErrTypeNotIn = propertyNode.InnerText;
-						continue;
-					case "errNumberEqual":
-						this._ErrNumberEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "errNumberIn":
-						this._ErrNumberIn = propertyNode.InnerText;
-						continue;
-					case "errNumberNotIn":
-						this._ErrNumberNotIn = propertyNode.InnerText;
-						continue;
-					case "estimatedEffortLessThan":
-						this._EstimatedEffortLessThan = ParseInt(propertyNode.InnerText);
-						continue;
-					case "estimatedEffortGreaterThan":
-						this._EstimatedEffortGreaterThan = ParseInt(propertyNode.InnerText);
-						continue;
-					case "urgencyLessThanOrEqual":
-						this._UrgencyLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "urgencyGreaterThanOrEqual":
-						this._UrgencyGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._IdEqual = ParseLong(node["idEqual"].Value<string>());
 			}
-		}
-
-		public BatchJobBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._IdEqual = data.TryGetValueSafe<long>("idEqual");
-			    this._IdGreaterThanOrEqual = data.TryGetValueSafe<long>("idGreaterThanOrEqual");
-			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
-			    this._PartnerIdIn = data.TryGetValueSafe<string>("partnerIdIn");
-			    this._PartnerIdNotIn = data.TryGetValueSafe<string>("partnerIdNotIn");
-			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
-			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
-			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
-			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
-			    this._ExecutionAttemptsGreaterThanOrEqual = data.TryGetValueSafe<int>("executionAttemptsGreaterThanOrEqual");
-			    this._ExecutionAttemptsLessThanOrEqual = data.TryGetValueSafe<int>("executionAttemptsLessThanOrEqual");
-			    this._LockVersionGreaterThanOrEqual = data.TryGetValueSafe<int>("lockVersionGreaterThanOrEqual");
-			    this._LockVersionLessThanOrEqual = data.TryGetValueSafe<int>("lockVersionLessThanOrEqual");
-			    this._EntryIdEqual = data.TryGetValueSafe<string>("entryIdEqual");
-			    this._JobTypeEqual = (BatchJobType)StringEnum.Parse(typeof(BatchJobType), data.TryGetValueSafe<string>("jobTypeEqual"));
-			    this._JobTypeIn = data.TryGetValueSafe<string>("jobTypeIn");
-			    this._JobTypeNotIn = data.TryGetValueSafe<string>("jobTypeNotIn");
-			    this._JobSubTypeEqual = data.TryGetValueSafe<int>("jobSubTypeEqual");
-			    this._JobSubTypeIn = data.TryGetValueSafe<string>("jobSubTypeIn");
-			    this._JobSubTypeNotIn = data.TryGetValueSafe<string>("jobSubTypeNotIn");
-			    this._StatusEqual = (BatchJobStatus)ParseEnum(typeof(BatchJobStatus), data.TryGetValueSafe<int>("statusEqual"));
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
-			    this._StatusNotIn = data.TryGetValueSafe<string>("statusNotIn");
-			    this._PriorityGreaterThanOrEqual = data.TryGetValueSafe<int>("priorityGreaterThanOrEqual");
-			    this._PriorityLessThanOrEqual = data.TryGetValueSafe<int>("priorityLessThanOrEqual");
-			    this._PriorityEqual = data.TryGetValueSafe<int>("priorityEqual");
-			    this._PriorityIn = data.TryGetValueSafe<string>("priorityIn");
-			    this._PriorityNotIn = data.TryGetValueSafe<string>("priorityNotIn");
-			    this._BatchVersionGreaterThanOrEqual = data.TryGetValueSafe<int>("batchVersionGreaterThanOrEqual");
-			    this._BatchVersionLessThanOrEqual = data.TryGetValueSafe<int>("batchVersionLessThanOrEqual");
-			    this._BatchVersionEqual = data.TryGetValueSafe<int>("batchVersionEqual");
-			    this._QueueTimeGreaterThanOrEqual = data.TryGetValueSafe<int>("queueTimeGreaterThanOrEqual");
-			    this._QueueTimeLessThanOrEqual = data.TryGetValueSafe<int>("queueTimeLessThanOrEqual");
-			    this._FinishTimeGreaterThanOrEqual = data.TryGetValueSafe<int>("finishTimeGreaterThanOrEqual");
-			    this._FinishTimeLessThanOrEqual = data.TryGetValueSafe<int>("finishTimeLessThanOrEqual");
-			    this._ErrTypeEqual = (BatchJobErrorTypes)ParseEnum(typeof(BatchJobErrorTypes), data.TryGetValueSafe<int>("errTypeEqual"));
-			    this._ErrTypeIn = data.TryGetValueSafe<string>("errTypeIn");
-			    this._ErrTypeNotIn = data.TryGetValueSafe<string>("errTypeNotIn");
-			    this._ErrNumberEqual = data.TryGetValueSafe<int>("errNumberEqual");
-			    this._ErrNumberIn = data.TryGetValueSafe<string>("errNumberIn");
-			    this._ErrNumberNotIn = data.TryGetValueSafe<string>("errNumberNotIn");
-			    this._EstimatedEffortLessThan = data.TryGetValueSafe<int>("estimatedEffortLessThan");
-			    this._EstimatedEffortGreaterThan = data.TryGetValueSafe<int>("estimatedEffortGreaterThan");
-			    this._UrgencyLessThanOrEqual = data.TryGetValueSafe<int>("urgencyLessThanOrEqual");
-			    this._UrgencyGreaterThanOrEqual = data.TryGetValueSafe<int>("urgencyGreaterThanOrEqual");
+			if(node["idGreaterThanOrEqual"] != null)
+			{
+				this._IdGreaterThanOrEqual = ParseLong(node["idGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["partnerIdEqual"] != null)
+			{
+				this._PartnerIdEqual = ParseInt(node["partnerIdEqual"].Value<string>());
+			}
+			if(node["partnerIdIn"] != null)
+			{
+				this._PartnerIdIn = node["partnerIdIn"].Value<string>();
+			}
+			if(node["partnerIdNotIn"] != null)
+			{
+				this._PartnerIdNotIn = node["partnerIdNotIn"].Value<string>();
+			}
+			if(node["createdAtGreaterThanOrEqual"] != null)
+			{
+				this._CreatedAtGreaterThanOrEqual = ParseInt(node["createdAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["createdAtLessThanOrEqual"] != null)
+			{
+				this._CreatedAtLessThanOrEqual = ParseInt(node["createdAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtGreaterThanOrEqual"] != null)
+			{
+				this._UpdatedAtGreaterThanOrEqual = ParseInt(node["updatedAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtLessThanOrEqual"] != null)
+			{
+				this._UpdatedAtLessThanOrEqual = ParseInt(node["updatedAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["executionAttemptsGreaterThanOrEqual"] != null)
+			{
+				this._ExecutionAttemptsGreaterThanOrEqual = ParseInt(node["executionAttemptsGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["executionAttemptsLessThanOrEqual"] != null)
+			{
+				this._ExecutionAttemptsLessThanOrEqual = ParseInt(node["executionAttemptsLessThanOrEqual"].Value<string>());
+			}
+			if(node["lockVersionGreaterThanOrEqual"] != null)
+			{
+				this._LockVersionGreaterThanOrEqual = ParseInt(node["lockVersionGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["lockVersionLessThanOrEqual"] != null)
+			{
+				this._LockVersionLessThanOrEqual = ParseInt(node["lockVersionLessThanOrEqual"].Value<string>());
+			}
+			if(node["entryIdEqual"] != null)
+			{
+				this._EntryIdEqual = node["entryIdEqual"].Value<string>();
+			}
+			if(node["jobTypeEqual"] != null)
+			{
+				this._JobTypeEqual = (BatchJobType)StringEnum.Parse(typeof(BatchJobType), node["jobTypeEqual"].Value<string>());
+			}
+			if(node["jobTypeIn"] != null)
+			{
+				this._JobTypeIn = node["jobTypeIn"].Value<string>();
+			}
+			if(node["jobTypeNotIn"] != null)
+			{
+				this._JobTypeNotIn = node["jobTypeNotIn"].Value<string>();
+			}
+			if(node["jobSubTypeEqual"] != null)
+			{
+				this._JobSubTypeEqual = ParseInt(node["jobSubTypeEqual"].Value<string>());
+			}
+			if(node["jobSubTypeIn"] != null)
+			{
+				this._JobSubTypeIn = node["jobSubTypeIn"].Value<string>();
+			}
+			if(node["jobSubTypeNotIn"] != null)
+			{
+				this._JobSubTypeNotIn = node["jobSubTypeNotIn"].Value<string>();
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (BatchJobStatus)ParseEnum(typeof(BatchJobStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
+			if(node["statusNotIn"] != null)
+			{
+				this._StatusNotIn = node["statusNotIn"].Value<string>();
+			}
+			if(node["priorityGreaterThanOrEqual"] != null)
+			{
+				this._PriorityGreaterThanOrEqual = ParseInt(node["priorityGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["priorityLessThanOrEqual"] != null)
+			{
+				this._PriorityLessThanOrEqual = ParseInt(node["priorityLessThanOrEqual"].Value<string>());
+			}
+			if(node["priorityEqual"] != null)
+			{
+				this._PriorityEqual = ParseInt(node["priorityEqual"].Value<string>());
+			}
+			if(node["priorityIn"] != null)
+			{
+				this._PriorityIn = node["priorityIn"].Value<string>();
+			}
+			if(node["priorityNotIn"] != null)
+			{
+				this._PriorityNotIn = node["priorityNotIn"].Value<string>();
+			}
+			if(node["batchVersionGreaterThanOrEqual"] != null)
+			{
+				this._BatchVersionGreaterThanOrEqual = ParseInt(node["batchVersionGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["batchVersionLessThanOrEqual"] != null)
+			{
+				this._BatchVersionLessThanOrEqual = ParseInt(node["batchVersionLessThanOrEqual"].Value<string>());
+			}
+			if(node["batchVersionEqual"] != null)
+			{
+				this._BatchVersionEqual = ParseInt(node["batchVersionEqual"].Value<string>());
+			}
+			if(node["queueTimeGreaterThanOrEqual"] != null)
+			{
+				this._QueueTimeGreaterThanOrEqual = ParseInt(node["queueTimeGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["queueTimeLessThanOrEqual"] != null)
+			{
+				this._QueueTimeLessThanOrEqual = ParseInt(node["queueTimeLessThanOrEqual"].Value<string>());
+			}
+			if(node["finishTimeGreaterThanOrEqual"] != null)
+			{
+				this._FinishTimeGreaterThanOrEqual = ParseInt(node["finishTimeGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["finishTimeLessThanOrEqual"] != null)
+			{
+				this._FinishTimeLessThanOrEqual = ParseInt(node["finishTimeLessThanOrEqual"].Value<string>());
+			}
+			if(node["errTypeEqual"] != null)
+			{
+				this._ErrTypeEqual = (BatchJobErrorTypes)ParseEnum(typeof(BatchJobErrorTypes), node["errTypeEqual"].Value<string>());
+			}
+			if(node["errTypeIn"] != null)
+			{
+				this._ErrTypeIn = node["errTypeIn"].Value<string>();
+			}
+			if(node["errTypeNotIn"] != null)
+			{
+				this._ErrTypeNotIn = node["errTypeNotIn"].Value<string>();
+			}
+			if(node["errNumberEqual"] != null)
+			{
+				this._ErrNumberEqual = ParseInt(node["errNumberEqual"].Value<string>());
+			}
+			if(node["errNumberIn"] != null)
+			{
+				this._ErrNumberIn = node["errNumberIn"].Value<string>();
+			}
+			if(node["errNumberNotIn"] != null)
+			{
+				this._ErrNumberNotIn = node["errNumberNotIn"].Value<string>();
+			}
+			if(node["estimatedEffortLessThan"] != null)
+			{
+				this._EstimatedEffortLessThan = ParseInt(node["estimatedEffortLessThan"].Value<string>());
+			}
+			if(node["estimatedEffortGreaterThan"] != null)
+			{
+				this._EstimatedEffortGreaterThan = ParseInt(node["estimatedEffortGreaterThan"].Value<string>());
+			}
+			if(node["urgencyLessThanOrEqual"] != null)
+			{
+				this._UrgencyLessThanOrEqual = ParseInt(node["urgencyLessThanOrEqual"].Value<string>());
+			}
+			if(node["urgencyGreaterThanOrEqual"] != null)
+			{
+				this._UrgencyGreaterThanOrEqual = ParseInt(node["urgencyGreaterThanOrEqual"].Value<string>());
+			}
 		}
 		#endregion
 

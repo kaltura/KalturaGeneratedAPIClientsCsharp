@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -66,6 +68,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public long IdEqual
 		{
 			get { return _IdEqual; }
@@ -75,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		[JsonProperty]
 		public string IdIn
 		{
 			get { return _IdIn; }
@@ -84,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		[JsonProperty]
 		public int PartnerIdEqual
 		{
 			get { return _PartnerIdEqual; }
@@ -93,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdEqual");
 			}
 		}
+		[JsonProperty]
 		public FileAssetObjectType FileAssetObjectTypeEqual
 		{
 			get { return _FileAssetObjectTypeEqual; }
@@ -102,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileAssetObjectTypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string ObjectIdEqual
 		{
 			get { return _ObjectIdEqual; }
@@ -111,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string ObjectIdIn
 		{
 			get { return _ObjectIdIn; }
@@ -120,6 +128,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectIdIn");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
 			get { return _CreatedAtGreaterThanOrEqual; }
@@ -129,6 +138,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
 			get { return _CreatedAtLessThanOrEqual; }
@@ -138,6 +148,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
 			get { return _UpdatedAtGreaterThanOrEqual; }
@@ -147,6 +158,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
 			get { return _UpdatedAtLessThanOrEqual; }
@@ -156,6 +168,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public FileAssetStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -165,6 +178,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -181,66 +195,56 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FileAssetBaseFilter(XmlElement node) : base(node)
+		public FileAssetBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["idEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "idEqual":
-						this._IdEqual = ParseLong(propertyNode.InnerText);
-						continue;
-					case "idIn":
-						this._IdIn = propertyNode.InnerText;
-						continue;
-					case "partnerIdEqual":
-						this._PartnerIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "fileAssetObjectTypeEqual":
-						this._FileAssetObjectTypeEqual = (FileAssetObjectType)StringEnum.Parse(typeof(FileAssetObjectType), propertyNode.InnerText);
-						continue;
-					case "objectIdEqual":
-						this._ObjectIdEqual = propertyNode.InnerText;
-						continue;
-					case "objectIdIn":
-						this._ObjectIdIn = propertyNode.InnerText;
-						continue;
-					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (FileAssetStatus)StringEnum.Parse(typeof(FileAssetStatus), propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-				}
+				this._IdEqual = ParseLong(node["idEqual"].Value<string>());
 			}
-		}
-
-		public FileAssetBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._IdEqual = data.TryGetValueSafe<long>("idEqual");
-			    this._IdIn = data.TryGetValueSafe<string>("idIn");
-			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
-			    this._FileAssetObjectTypeEqual = (FileAssetObjectType)StringEnum.Parse(typeof(FileAssetObjectType), data.TryGetValueSafe<string>("fileAssetObjectTypeEqual"));
-			    this._ObjectIdEqual = data.TryGetValueSafe<string>("objectIdEqual");
-			    this._ObjectIdIn = data.TryGetValueSafe<string>("objectIdIn");
-			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
-			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
-			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
-			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
-			    this._StatusEqual = (FileAssetStatus)StringEnum.Parse(typeof(FileAssetStatus), data.TryGetValueSafe<string>("statusEqual"));
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			if(node["idIn"] != null)
+			{
+				this._IdIn = node["idIn"].Value<string>();
+			}
+			if(node["partnerIdEqual"] != null)
+			{
+				this._PartnerIdEqual = ParseInt(node["partnerIdEqual"].Value<string>());
+			}
+			if(node["fileAssetObjectTypeEqual"] != null)
+			{
+				this._FileAssetObjectTypeEqual = (FileAssetObjectType)StringEnum.Parse(typeof(FileAssetObjectType), node["fileAssetObjectTypeEqual"].Value<string>());
+			}
+			if(node["objectIdEqual"] != null)
+			{
+				this._ObjectIdEqual = node["objectIdEqual"].Value<string>();
+			}
+			if(node["objectIdIn"] != null)
+			{
+				this._ObjectIdIn = node["objectIdIn"].Value<string>();
+			}
+			if(node["createdAtGreaterThanOrEqual"] != null)
+			{
+				this._CreatedAtGreaterThanOrEqual = ParseInt(node["createdAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["createdAtLessThanOrEqual"] != null)
+			{
+				this._CreatedAtLessThanOrEqual = ParseInt(node["createdAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtGreaterThanOrEqual"] != null)
+			{
+				this._UpdatedAtGreaterThanOrEqual = ParseInt(node["updatedAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtLessThanOrEqual"] != null)
+			{
+				this._UpdatedAtLessThanOrEqual = ParseInt(node["updatedAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (FileAssetStatus)StringEnum.Parse(typeof(FileAssetStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
 		}
 		#endregion
 

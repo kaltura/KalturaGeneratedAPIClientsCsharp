@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public DocumentType DocumentType
 		{
 			get { return _DocumentType; }
@@ -55,9 +58,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("DocumentType");
 			}
 		}
+		[JsonProperty]
 		public string AssetParamsIds
 		{
 			get { return _AssetParamsIds; }
+			private set 
+			{ 
+				_AssetParamsIds = value;
+				OnPropertyChanged("AssetParamsIds");
+			}
 		}
 		#endregion
 
@@ -66,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DocumentEntry(XmlElement node) : base(node)
+		public DocumentEntry(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["documentType"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "documentType":
-						this._DocumentType = (DocumentType)ParseEnum(typeof(DocumentType), propertyNode.InnerText);
-						continue;
-					case "assetParamsIds":
-						this._AssetParamsIds = propertyNode.InnerText;
-						continue;
-				}
+				this._DocumentType = (DocumentType)ParseEnum(typeof(DocumentType), node["documentType"].Value<string>());
 			}
-		}
-
-		public DocumentEntry(IDictionary<string,object> data) : base(data)
-		{
-			    this._DocumentType = (DocumentType)ParseEnum(typeof(DocumentType), data.TryGetValueSafe<int>("documentType"));
-			    this._AssetParamsIds = data.TryGetValueSafe<string>("assetParamsIds");
+			if(node["assetParamsIds"] != null)
+			{
+				this._AssetParamsIds = node["assetParamsIds"].Value<string>();
+			}
 		}
 		#endregion
 

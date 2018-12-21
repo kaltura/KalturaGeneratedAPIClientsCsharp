@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ParentCategoryIdsLike
 		{
 			get { return _ParentCategoryIdsLike; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentCategoryIdsLike");
 			}
 		}
+		[JsonProperty]
 		public string ParentCategoryIdsMultiLikeOr
 		{
 			get { return _ParentCategoryIdsMultiLikeOr; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentCategoryIdsMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string ParentCategoryIdsMultiLikeAnd
 		{
 			get { return _ParentCategoryIdsMultiLikeAnd; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentCategoryIdsMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public new EntryScheduleEventOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EntryScheduleEventFilter(XmlElement node) : base(node)
+		public EntryScheduleEventFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["parentCategoryIdsLike"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "parentCategoryIdsLike":
-						this._ParentCategoryIdsLike = propertyNode.InnerText;
-						continue;
-					case "parentCategoryIdsMultiLikeOr":
-						this._ParentCategoryIdsMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "parentCategoryIdsMultiLikeAnd":
-						this._ParentCategoryIdsMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "orderBy":
-						this._OrderBy = (EntryScheduleEventOrderBy)StringEnum.Parse(typeof(EntryScheduleEventOrderBy), propertyNode.InnerText);
-						continue;
-				}
+				this._ParentCategoryIdsLike = node["parentCategoryIdsLike"].Value<string>();
 			}
-		}
-
-		public EntryScheduleEventFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._ParentCategoryIdsLike = data.TryGetValueSafe<string>("parentCategoryIdsLike");
-			    this._ParentCategoryIdsMultiLikeOr = data.TryGetValueSafe<string>("parentCategoryIdsMultiLikeOr");
-			    this._ParentCategoryIdsMultiLikeAnd = data.TryGetValueSafe<string>("parentCategoryIdsMultiLikeAnd");
-			    this._OrderBy = (EntryScheduleEventOrderBy)StringEnum.Parse(typeof(EntryScheduleEventOrderBy), data.TryGetValueSafe<string>("orderBy"));
+			if(node["parentCategoryIdsMultiLikeOr"] != null)
+			{
+				this._ParentCategoryIdsMultiLikeOr = node["parentCategoryIdsMultiLikeOr"].Value<string>();
+			}
+			if(node["parentCategoryIdsMultiLikeAnd"] != null)
+			{
+				this._ParentCategoryIdsMultiLikeAnd = node["parentCategoryIdsMultiLikeAnd"].Value<string>();
+			}
+			if(node["orderBy"] != null)
+			{
+				this._OrderBy = (EntryScheduleEventOrderBy)StringEnum.Parse(typeof(EntryScheduleEventOrderBy), node["orderBy"].Value<string>());
+			}
 		}
 		#endregion
 

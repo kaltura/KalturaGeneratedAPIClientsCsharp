@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -78,6 +80,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string VideoAssetFilePath
 		{
 			get { return _VideoAssetFilePath; }
@@ -87,6 +90,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoAssetFilePath");
 			}
 		}
+		[JsonProperty]
 		public string ThumbAssetFilePath
 		{
 			get { return _ThumbAssetFilePath; }
@@ -96,6 +100,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbAssetFilePath");
 			}
 		}
+		[JsonProperty]
 		public string ThumbAssetId
 		{
 			get { return _ThumbAssetId; }
@@ -105,6 +110,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbAssetId");
 			}
 		}
+		[JsonProperty]
 		public string CaptionAssetIds
 		{
 			get { return _CaptionAssetIds; }
@@ -114,6 +120,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CaptionAssetIds");
 			}
 		}
+		[JsonProperty]
 		public string SftpDirectory
 		{
 			get { return _SftpDirectory; }
@@ -123,6 +130,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpDirectory");
 			}
 		}
+		[JsonProperty]
 		public string SftpMetadataFilename
 		{
 			get { return _SftpMetadataFilename; }
@@ -132,6 +140,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpMetadataFilename");
 			}
 		}
+		[JsonProperty]
 		public string CurrentPlaylists
 		{
 			get { return _CurrentPlaylists; }
@@ -141,6 +150,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CurrentPlaylists");
 			}
 		}
+		[JsonProperty]
 		public string NewPlaylists
 		{
 			get { return _NewPlaylists; }
@@ -150,6 +160,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("NewPlaylists");
 			}
 		}
+		[JsonProperty]
 		public string SubmitXml
 		{
 			get { return _SubmitXml; }
@@ -159,6 +170,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SubmitXml");
 			}
 		}
+		[JsonProperty]
 		public string UpdateXml
 		{
 			get { return _UpdateXml; }
@@ -168,6 +180,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdateXml");
 			}
 		}
+		[JsonProperty]
 		public string DeleteXml
 		{
 			get { return _DeleteXml; }
@@ -177,6 +190,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeleteXml");
 			}
 		}
+		[JsonProperty]
 		public string GoogleClientId
 		{
 			get { return _GoogleClientId; }
@@ -186,6 +200,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("GoogleClientId");
 			}
 		}
+		[JsonProperty]
 		public string GoogleClientSecret
 		{
 			get { return _GoogleClientSecret; }
@@ -195,6 +210,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("GoogleClientSecret");
 			}
 		}
+		[JsonProperty]
 		public string GoogleTokenData
 		{
 			get { return _GoogleTokenData; }
@@ -204,6 +220,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("GoogleTokenData");
 			}
 		}
+		[JsonProperty]
 		public string CaptionsCsvMap
 		{
 			get { return _CaptionsCsvMap; }
@@ -213,6 +230,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CaptionsCsvMap");
 			}
 		}
+		[JsonProperty]
 		public string SubmitCsvMap
 		{
 			get { return _SubmitCsvMap; }
@@ -222,6 +240,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SubmitCsvMap");
 			}
 		}
+		[JsonProperty]
 		public string UpdateCsvMap
 		{
 			get { return _UpdateCsvMap; }
@@ -231,6 +250,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdateCsvMap");
 			}
 		}
+		[JsonProperty]
 		public string DeleteVideoIds
 		{
 			get { return _DeleteVideoIds; }
@@ -247,90 +267,80 @@ namespace Kaltura.Types
 		{
 		}
 
-		public YouTubeDistributionJobProviderData(XmlElement node) : base(node)
+		public YouTubeDistributionJobProviderData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["videoAssetFilePath"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "videoAssetFilePath":
-						this._VideoAssetFilePath = propertyNode.InnerText;
-						continue;
-					case "thumbAssetFilePath":
-						this._ThumbAssetFilePath = propertyNode.InnerText;
-						continue;
-					case "thumbAssetId":
-						this._ThumbAssetId = propertyNode.InnerText;
-						continue;
-					case "captionAssetIds":
-						this._CaptionAssetIds = propertyNode.InnerText;
-						continue;
-					case "sftpDirectory":
-						this._SftpDirectory = propertyNode.InnerText;
-						continue;
-					case "sftpMetadataFilename":
-						this._SftpMetadataFilename = propertyNode.InnerText;
-						continue;
-					case "currentPlaylists":
-						this._CurrentPlaylists = propertyNode.InnerText;
-						continue;
-					case "newPlaylists":
-						this._NewPlaylists = propertyNode.InnerText;
-						continue;
-					case "submitXml":
-						this._SubmitXml = propertyNode.InnerText;
-						continue;
-					case "updateXml":
-						this._UpdateXml = propertyNode.InnerText;
-						continue;
-					case "deleteXml":
-						this._DeleteXml = propertyNode.InnerText;
-						continue;
-					case "googleClientId":
-						this._GoogleClientId = propertyNode.InnerText;
-						continue;
-					case "googleClientSecret":
-						this._GoogleClientSecret = propertyNode.InnerText;
-						continue;
-					case "googleTokenData":
-						this._GoogleTokenData = propertyNode.InnerText;
-						continue;
-					case "captionsCsvMap":
-						this._CaptionsCsvMap = propertyNode.InnerText;
-						continue;
-					case "submitCsvMap":
-						this._SubmitCsvMap = propertyNode.InnerText;
-						continue;
-					case "updateCsvMap":
-						this._UpdateCsvMap = propertyNode.InnerText;
-						continue;
-					case "deleteVideoIds":
-						this._DeleteVideoIds = propertyNode.InnerText;
-						continue;
-				}
+				this._VideoAssetFilePath = node["videoAssetFilePath"].Value<string>();
 			}
-		}
-
-		public YouTubeDistributionJobProviderData(IDictionary<string,object> data) : base(data)
-		{
-			    this._VideoAssetFilePath = data.TryGetValueSafe<string>("videoAssetFilePath");
-			    this._ThumbAssetFilePath = data.TryGetValueSafe<string>("thumbAssetFilePath");
-			    this._ThumbAssetId = data.TryGetValueSafe<string>("thumbAssetId");
-			    this._CaptionAssetIds = data.TryGetValueSafe<string>("captionAssetIds");
-			    this._SftpDirectory = data.TryGetValueSafe<string>("sftpDirectory");
-			    this._SftpMetadataFilename = data.TryGetValueSafe<string>("sftpMetadataFilename");
-			    this._CurrentPlaylists = data.TryGetValueSafe<string>("currentPlaylists");
-			    this._NewPlaylists = data.TryGetValueSafe<string>("newPlaylists");
-			    this._SubmitXml = data.TryGetValueSafe<string>("submitXml");
-			    this._UpdateXml = data.TryGetValueSafe<string>("updateXml");
-			    this._DeleteXml = data.TryGetValueSafe<string>("deleteXml");
-			    this._GoogleClientId = data.TryGetValueSafe<string>("googleClientId");
-			    this._GoogleClientSecret = data.TryGetValueSafe<string>("googleClientSecret");
-			    this._GoogleTokenData = data.TryGetValueSafe<string>("googleTokenData");
-			    this._CaptionsCsvMap = data.TryGetValueSafe<string>("captionsCsvMap");
-			    this._SubmitCsvMap = data.TryGetValueSafe<string>("submitCsvMap");
-			    this._UpdateCsvMap = data.TryGetValueSafe<string>("updateCsvMap");
-			    this._DeleteVideoIds = data.TryGetValueSafe<string>("deleteVideoIds");
+			if(node["thumbAssetFilePath"] != null)
+			{
+				this._ThumbAssetFilePath = node["thumbAssetFilePath"].Value<string>();
+			}
+			if(node["thumbAssetId"] != null)
+			{
+				this._ThumbAssetId = node["thumbAssetId"].Value<string>();
+			}
+			if(node["captionAssetIds"] != null)
+			{
+				this._CaptionAssetIds = node["captionAssetIds"].Value<string>();
+			}
+			if(node["sftpDirectory"] != null)
+			{
+				this._SftpDirectory = node["sftpDirectory"].Value<string>();
+			}
+			if(node["sftpMetadataFilename"] != null)
+			{
+				this._SftpMetadataFilename = node["sftpMetadataFilename"].Value<string>();
+			}
+			if(node["currentPlaylists"] != null)
+			{
+				this._CurrentPlaylists = node["currentPlaylists"].Value<string>();
+			}
+			if(node["newPlaylists"] != null)
+			{
+				this._NewPlaylists = node["newPlaylists"].Value<string>();
+			}
+			if(node["submitXml"] != null)
+			{
+				this._SubmitXml = node["submitXml"].Value<string>();
+			}
+			if(node["updateXml"] != null)
+			{
+				this._UpdateXml = node["updateXml"].Value<string>();
+			}
+			if(node["deleteXml"] != null)
+			{
+				this._DeleteXml = node["deleteXml"].Value<string>();
+			}
+			if(node["googleClientId"] != null)
+			{
+				this._GoogleClientId = node["googleClientId"].Value<string>();
+			}
+			if(node["googleClientSecret"] != null)
+			{
+				this._GoogleClientSecret = node["googleClientSecret"].Value<string>();
+			}
+			if(node["googleTokenData"] != null)
+			{
+				this._GoogleTokenData = node["googleTokenData"].Value<string>();
+			}
+			if(node["captionsCsvMap"] != null)
+			{
+				this._CaptionsCsvMap = node["captionsCsvMap"].Value<string>();
+			}
+			if(node["submitCsvMap"] != null)
+			{
+				this._SubmitCsvMap = node["submitCsvMap"].Value<string>();
+			}
+			if(node["updateCsvMap"] != null)
+			{
+				this._UpdateCsvMap = node["updateCsvMap"].Value<string>();
+			}
+			if(node["deleteVideoIds"] != null)
+			{
+				this._DeleteVideoIds = node["deleteVideoIds"].Value<string>();
+			}
 		}
 		#endregion
 

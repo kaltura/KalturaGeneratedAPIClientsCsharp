@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -70,6 +72,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ContentLike
 		{
 			get { return _ContentLike; }
@@ -79,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentLike");
 			}
 		}
+		[JsonProperty]
 		public string ContentMultiLikeOr
 		{
 			get { return _ContentMultiLikeOr; }
@@ -88,6 +92,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string ContentMultiLikeAnd
 		{
 			get { return _ContentMultiLikeAnd; }
@@ -97,6 +102,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public string PartnerDescriptionLike
 		{
 			get { return _PartnerDescriptionLike; }
@@ -106,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerDescriptionLike");
 			}
 		}
+		[JsonProperty]
 		public string PartnerDescriptionMultiLikeOr
 		{
 			get { return _PartnerDescriptionMultiLikeOr; }
@@ -115,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerDescriptionMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string PartnerDescriptionMultiLikeAnd
 		{
 			get { return _PartnerDescriptionMultiLikeAnd; }
@@ -124,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerDescriptionMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public Language LanguageEqual
 		{
 			get { return _LanguageEqual; }
@@ -133,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LanguageEqual");
 			}
 		}
+		[JsonProperty]
 		public string LanguageIn
 		{
 			get { return _LanguageIn; }
@@ -142,6 +152,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LanguageIn");
 			}
 		}
+		[JsonProperty]
 		public string LabelEqual
 		{
 			get { return _LabelEqual; }
@@ -151,6 +162,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LabelEqual");
 			}
 		}
+		[JsonProperty]
 		public string LabelIn
 		{
 			get { return _LabelIn; }
@@ -160,6 +172,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LabelIn");
 			}
 		}
+		[JsonProperty]
 		public int StartTimeGreaterThanOrEqual
 		{
 			get { return _StartTimeGreaterThanOrEqual; }
@@ -169,6 +182,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartTimeGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int StartTimeLessThanOrEqual
 		{
 			get { return _StartTimeLessThanOrEqual; }
@@ -178,6 +192,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartTimeLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int EndTimeGreaterThanOrEqual
 		{
 			get { return _EndTimeGreaterThanOrEqual; }
@@ -187,6 +202,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndTimeGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int EndTimeLessThanOrEqual
 		{
 			get { return _EndTimeLessThanOrEqual; }
@@ -203,74 +219,64 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CaptionAssetItemFilter(XmlElement node) : base(node)
+		public CaptionAssetItemFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["contentLike"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "contentLike":
-						this._ContentLike = propertyNode.InnerText;
-						continue;
-					case "contentMultiLikeOr":
-						this._ContentMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "contentMultiLikeAnd":
-						this._ContentMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "partnerDescriptionLike":
-						this._PartnerDescriptionLike = propertyNode.InnerText;
-						continue;
-					case "partnerDescriptionMultiLikeOr":
-						this._PartnerDescriptionMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "partnerDescriptionMultiLikeAnd":
-						this._PartnerDescriptionMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "languageEqual":
-						this._LanguageEqual = (Language)StringEnum.Parse(typeof(Language), propertyNode.InnerText);
-						continue;
-					case "languageIn":
-						this._LanguageIn = propertyNode.InnerText;
-						continue;
-					case "labelEqual":
-						this._LabelEqual = propertyNode.InnerText;
-						continue;
-					case "labelIn":
-						this._LabelIn = propertyNode.InnerText;
-						continue;
-					case "startTimeGreaterThanOrEqual":
-						this._StartTimeGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "startTimeLessThanOrEqual":
-						this._StartTimeLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "endTimeGreaterThanOrEqual":
-						this._EndTimeGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "endTimeLessThanOrEqual":
-						this._EndTimeLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._ContentLike = node["contentLike"].Value<string>();
 			}
-		}
-
-		public CaptionAssetItemFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._ContentLike = data.TryGetValueSafe<string>("contentLike");
-			    this._ContentMultiLikeOr = data.TryGetValueSafe<string>("contentMultiLikeOr");
-			    this._ContentMultiLikeAnd = data.TryGetValueSafe<string>("contentMultiLikeAnd");
-			    this._PartnerDescriptionLike = data.TryGetValueSafe<string>("partnerDescriptionLike");
-			    this._PartnerDescriptionMultiLikeOr = data.TryGetValueSafe<string>("partnerDescriptionMultiLikeOr");
-			    this._PartnerDescriptionMultiLikeAnd = data.TryGetValueSafe<string>("partnerDescriptionMultiLikeAnd");
-			    this._LanguageEqual = (Language)StringEnum.Parse(typeof(Language), data.TryGetValueSafe<string>("languageEqual"));
-			    this._LanguageIn = data.TryGetValueSafe<string>("languageIn");
-			    this._LabelEqual = data.TryGetValueSafe<string>("labelEqual");
-			    this._LabelIn = data.TryGetValueSafe<string>("labelIn");
-			    this._StartTimeGreaterThanOrEqual = data.TryGetValueSafe<int>("startTimeGreaterThanOrEqual");
-			    this._StartTimeLessThanOrEqual = data.TryGetValueSafe<int>("startTimeLessThanOrEqual");
-			    this._EndTimeGreaterThanOrEqual = data.TryGetValueSafe<int>("endTimeGreaterThanOrEqual");
-			    this._EndTimeLessThanOrEqual = data.TryGetValueSafe<int>("endTimeLessThanOrEqual");
+			if(node["contentMultiLikeOr"] != null)
+			{
+				this._ContentMultiLikeOr = node["contentMultiLikeOr"].Value<string>();
+			}
+			if(node["contentMultiLikeAnd"] != null)
+			{
+				this._ContentMultiLikeAnd = node["contentMultiLikeAnd"].Value<string>();
+			}
+			if(node["partnerDescriptionLike"] != null)
+			{
+				this._PartnerDescriptionLike = node["partnerDescriptionLike"].Value<string>();
+			}
+			if(node["partnerDescriptionMultiLikeOr"] != null)
+			{
+				this._PartnerDescriptionMultiLikeOr = node["partnerDescriptionMultiLikeOr"].Value<string>();
+			}
+			if(node["partnerDescriptionMultiLikeAnd"] != null)
+			{
+				this._PartnerDescriptionMultiLikeAnd = node["partnerDescriptionMultiLikeAnd"].Value<string>();
+			}
+			if(node["languageEqual"] != null)
+			{
+				this._LanguageEqual = (Language)StringEnum.Parse(typeof(Language), node["languageEqual"].Value<string>());
+			}
+			if(node["languageIn"] != null)
+			{
+				this._LanguageIn = node["languageIn"].Value<string>();
+			}
+			if(node["labelEqual"] != null)
+			{
+				this._LabelEqual = node["labelEqual"].Value<string>();
+			}
+			if(node["labelIn"] != null)
+			{
+				this._LabelIn = node["labelIn"].Value<string>();
+			}
+			if(node["startTimeGreaterThanOrEqual"] != null)
+			{
+				this._StartTimeGreaterThanOrEqual = ParseInt(node["startTimeGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["startTimeLessThanOrEqual"] != null)
+			{
+				this._StartTimeLessThanOrEqual = ParseInt(node["startTimeLessThanOrEqual"].Value<string>());
+			}
+			if(node["endTimeGreaterThanOrEqual"] != null)
+			{
+				this._EndTimeGreaterThanOrEqual = ParseInt(node["endTimeGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["endTimeLessThanOrEqual"] != null)
+			{
+				this._EndTimeLessThanOrEqual = ParseInt(node["endTimeLessThanOrEqual"].Value<string>());
+			}
 		}
 		#endregion
 

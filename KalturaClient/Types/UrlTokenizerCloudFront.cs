@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string KeyPairId
 		{
 			get { return _KeyPairId; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("KeyPairId");
 			}
 		}
+		[JsonProperty]
 		public string RootDir
 		{
 			get { return _RootDir; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UrlTokenizerCloudFront(XmlElement node) : base(node)
+		public UrlTokenizerCloudFront(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["keyPairId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "keyPairId":
-						this._KeyPairId = propertyNode.InnerText;
-						continue;
-					case "rootDir":
-						this._RootDir = propertyNode.InnerText;
-						continue;
-				}
+				this._KeyPairId = node["keyPairId"].Value<string>();
 			}
-		}
-
-		public UrlTokenizerCloudFront(IDictionary<string,object> data) : base(data)
-		{
-			    this._KeyPairId = data.TryGetValueSafe<string>("keyPairId");
-			    this._RootDir = data.TryGetValueSafe<string>("rootDir");
+			if(node["rootDir"] != null)
+			{
+				this._RootDir = node["rootDir"].Value<string>();
+			}
 		}
 		#endregion
 

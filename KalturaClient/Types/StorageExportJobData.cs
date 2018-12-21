@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public bool? Force
 		{
 			get { return _Force; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Force");
 			}
 		}
+		[JsonProperty]
 		public bool? CreateLink
 		{
 			get { return _CreateLink; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public StorageExportJobData(XmlElement node) : base(node)
+		public StorageExportJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["force"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "force":
-						this._Force = ParseBool(propertyNode.InnerText);
-						continue;
-					case "createLink":
-						this._CreateLink = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._Force = ParseBool(node["force"].Value<string>());
 			}
-		}
-
-		public StorageExportJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._Force = data.TryGetValueSafe<bool>("force");
-			    this._CreateLink = data.TryGetValueSafe<bool>("createLink");
+			if(node["createLink"] != null)
+			{
+				this._CreateLink = ParseBool(node["createLink"].Value<string>());
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -54,6 +56,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string AssetId
 		{
 			get { return _AssetId; }
@@ -63,6 +66,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetId");
 			}
 		}
+		[JsonProperty]
 		public string Filename
 		{
 			get { return _Filename; }
@@ -72,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Filename");
 			}
 		}
+		[JsonProperty]
 		public string Contents
 		{
 			get { return _Contents; }
@@ -81,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Contents");
 			}
 		}
+		[JsonProperty]
 		public string LocalFilePath
 		{
 			get { return _LocalFilePath; }
@@ -90,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LocalFilePath");
 			}
 		}
+		[JsonProperty]
 		public string Version
 		{
 			get { return _Version; }
@@ -99,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Version");
 			}
 		}
+		[JsonProperty]
 		public string Hash
 		{
 			get { return _Hash; }
@@ -115,42 +123,32 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FtpDistributionFile(XmlElement node) : base(node)
+		public FtpDistributionFile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["assetId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "assetId":
-						this._AssetId = propertyNode.InnerText;
-						continue;
-					case "filename":
-						this._Filename = propertyNode.InnerText;
-						continue;
-					case "contents":
-						this._Contents = propertyNode.InnerText;
-						continue;
-					case "localFilePath":
-						this._LocalFilePath = propertyNode.InnerText;
-						continue;
-					case "version":
-						this._Version = propertyNode.InnerText;
-						continue;
-					case "hash":
-						this._Hash = propertyNode.InnerText;
-						continue;
-				}
+				this._AssetId = node["assetId"].Value<string>();
 			}
-		}
-
-		public FtpDistributionFile(IDictionary<string,object> data) : base(data)
-		{
-			    this._AssetId = data.TryGetValueSafe<string>("assetId");
-			    this._Filename = data.TryGetValueSafe<string>("filename");
-			    this._Contents = data.TryGetValueSafe<string>("contents");
-			    this._LocalFilePath = data.TryGetValueSafe<string>("localFilePath");
-			    this._Version = data.TryGetValueSafe<string>("version");
-			    this._Hash = data.TryGetValueSafe<string>("hash");
+			if(node["filename"] != null)
+			{
+				this._Filename = node["filename"].Value<string>();
+			}
+			if(node["contents"] != null)
+			{
+				this._Contents = node["contents"].Value<string>();
+			}
+			if(node["localFilePath"] != null)
+			{
+				this._LocalFilePath = node["localFilePath"].Value<string>();
+			}
+			if(node["version"] != null)
+			{
+				this._Version = node["version"].Value<string>();
+			}
+			if(node["hash"] != null)
+			{
+				this._Hash = node["hash"].Value<string>();
+			}
 		}
 		#endregion
 

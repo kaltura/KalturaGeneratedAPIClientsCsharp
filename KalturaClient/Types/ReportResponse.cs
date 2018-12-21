@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Columns
 		{
 			get { return _Columns; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Columns");
 			}
 		}
+		[JsonProperty]
 		public IList<String> Results
 		{
 			get { return _Results; }
@@ -71,35 +75,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ReportResponse(XmlElement node) : base(node)
+		public ReportResponse(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["columns"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Columns = node["columns"].Value<string>();
+			}
+			if(node["results"] != null)
+			{
+				this._Results = new List<String>();
+				foreach(var arrayNode in node["results"].Children())
 				{
-					case "columns":
-						this._Columns = propertyNode.InnerText;
-						continue;
-					case "results":
-						this._Results = new List<String>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Results.Add(ObjectFactory.Create<String>(arrayNode));
-						}
-						continue;
+					this._Results.Add(ObjectFactory.Create<String>(arrayNode));
 				}
 			}
-		}
-
-		public ReportResponse(IDictionary<string,object> data) : base(data)
-		{
-			    this._Columns = data.TryGetValueSafe<string>("columns");
-			    this._Results = new List<String>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("results", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Results.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

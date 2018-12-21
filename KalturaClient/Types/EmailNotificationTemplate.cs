@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -70,6 +72,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public EmailNotificationFormat Format
 		{
 			get { return _Format; }
@@ -79,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Format");
 			}
 		}
+		[JsonProperty]
 		public string Subject
 		{
 			get { return _Subject; }
@@ -88,6 +92,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Subject");
 			}
 		}
+		[JsonProperty]
 		public string Body
 		{
 			get { return _Body; }
@@ -97,6 +102,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Body");
 			}
 		}
+		[JsonProperty]
 		public string FromEmail
 		{
 			get { return _FromEmail; }
@@ -106,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FromEmail");
 			}
 		}
+		[JsonProperty]
 		public string FromName
 		{
 			get { return _FromName; }
@@ -115,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FromName");
 			}
 		}
+		[JsonProperty]
 		public EmailNotificationRecipientProvider To
 		{
 			get { return _To; }
@@ -124,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("To");
 			}
 		}
+		[JsonProperty]
 		public EmailNotificationRecipientProvider Cc
 		{
 			get { return _Cc; }
@@ -133,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Cc");
 			}
 		}
+		[JsonProperty]
 		public EmailNotificationRecipientProvider Bcc
 		{
 			get { return _Bcc; }
@@ -142,6 +152,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Bcc");
 			}
 		}
+		[JsonProperty]
 		public EmailNotificationRecipientProvider ReplyTo
 		{
 			get { return _ReplyTo; }
@@ -151,6 +162,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplyTo");
 			}
 		}
+		[JsonProperty]
 		public EmailNotificationTemplatePriority Priority
 		{
 			get { return _Priority; }
@@ -160,6 +172,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Priority");
 			}
 		}
+		[JsonProperty]
 		public string ConfirmReadingTo
 		{
 			get { return _ConfirmReadingTo; }
@@ -169,6 +182,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConfirmReadingTo");
 			}
 		}
+		[JsonProperty]
 		public string Hostname
 		{
 			get { return _Hostname; }
@@ -178,6 +192,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Hostname");
 			}
 		}
+		[JsonProperty]
 		public string MessageID
 		{
 			get { return _MessageID; }
@@ -187,6 +202,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MessageID");
 			}
 		}
+		[JsonProperty]
 		public IList<KeyValue> CustomHeaders
 		{
 			get { return _CustomHeaders; }
@@ -203,83 +219,68 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EmailNotificationTemplate(XmlElement node) : base(node)
+		public EmailNotificationTemplate(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["format"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Format = (EmailNotificationFormat)StringEnum.Parse(typeof(EmailNotificationFormat), node["format"].Value<string>());
+			}
+			if(node["subject"] != null)
+			{
+				this._Subject = node["subject"].Value<string>();
+			}
+			if(node["body"] != null)
+			{
+				this._Body = node["body"].Value<string>();
+			}
+			if(node["fromEmail"] != null)
+			{
+				this._FromEmail = node["fromEmail"].Value<string>();
+			}
+			if(node["fromName"] != null)
+			{
+				this._FromName = node["fromName"].Value<string>();
+			}
+			if(node["to"] != null)
+			{
+				this._To = ObjectFactory.Create<EmailNotificationRecipientProvider>(node["to"]);
+			}
+			if(node["cc"] != null)
+			{
+				this._Cc = ObjectFactory.Create<EmailNotificationRecipientProvider>(node["cc"]);
+			}
+			if(node["bcc"] != null)
+			{
+				this._Bcc = ObjectFactory.Create<EmailNotificationRecipientProvider>(node["bcc"]);
+			}
+			if(node["replyTo"] != null)
+			{
+				this._ReplyTo = ObjectFactory.Create<EmailNotificationRecipientProvider>(node["replyTo"]);
+			}
+			if(node["priority"] != null)
+			{
+				this._Priority = (EmailNotificationTemplatePriority)ParseEnum(typeof(EmailNotificationTemplatePriority), node["priority"].Value<string>());
+			}
+			if(node["confirmReadingTo"] != null)
+			{
+				this._ConfirmReadingTo = node["confirmReadingTo"].Value<string>();
+			}
+			if(node["hostname"] != null)
+			{
+				this._Hostname = node["hostname"].Value<string>();
+			}
+			if(node["messageID"] != null)
+			{
+				this._MessageID = node["messageID"].Value<string>();
+			}
+			if(node["customHeaders"] != null)
+			{
+				this._CustomHeaders = new List<KeyValue>();
+				foreach(var arrayNode in node["customHeaders"].Children())
 				{
-					case "format":
-						this._Format = (EmailNotificationFormat)StringEnum.Parse(typeof(EmailNotificationFormat), propertyNode.InnerText);
-						continue;
-					case "subject":
-						this._Subject = propertyNode.InnerText;
-						continue;
-					case "body":
-						this._Body = propertyNode.InnerText;
-						continue;
-					case "fromEmail":
-						this._FromEmail = propertyNode.InnerText;
-						continue;
-					case "fromName":
-						this._FromName = propertyNode.InnerText;
-						continue;
-					case "to":
-						this._To = ObjectFactory.Create<EmailNotificationRecipientProvider>(propertyNode);
-						continue;
-					case "cc":
-						this._Cc = ObjectFactory.Create<EmailNotificationRecipientProvider>(propertyNode);
-						continue;
-					case "bcc":
-						this._Bcc = ObjectFactory.Create<EmailNotificationRecipientProvider>(propertyNode);
-						continue;
-					case "replyTo":
-						this._ReplyTo = ObjectFactory.Create<EmailNotificationRecipientProvider>(propertyNode);
-						continue;
-					case "priority":
-						this._Priority = (EmailNotificationTemplatePriority)ParseEnum(typeof(EmailNotificationTemplatePriority), propertyNode.InnerText);
-						continue;
-					case "confirmReadingTo":
-						this._ConfirmReadingTo = propertyNode.InnerText;
-						continue;
-					case "hostname":
-						this._Hostname = propertyNode.InnerText;
-						continue;
-					case "messageID":
-						this._MessageID = propertyNode.InnerText;
-						continue;
-					case "customHeaders":
-						this._CustomHeaders = new List<KeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._CustomHeaders.Add(ObjectFactory.Create<KeyValue>(arrayNode));
-						}
-						continue;
+					this._CustomHeaders.Add(ObjectFactory.Create<KeyValue>(arrayNode));
 				}
 			}
-		}
-
-		public EmailNotificationTemplate(IDictionary<string,object> data) : base(data)
-		{
-			    this._Format = (EmailNotificationFormat)StringEnum.Parse(typeof(EmailNotificationFormat), data.TryGetValueSafe<string>("format"));
-			    this._Subject = data.TryGetValueSafe<string>("subject");
-			    this._Body = data.TryGetValueSafe<string>("body");
-			    this._FromEmail = data.TryGetValueSafe<string>("fromEmail");
-			    this._FromName = data.TryGetValueSafe<string>("fromName");
-			    this._To = ObjectFactory.Create<EmailNotificationRecipientProvider>(data.TryGetValueSafe<IDictionary<string,object>>("to"));
-			    this._Cc = ObjectFactory.Create<EmailNotificationRecipientProvider>(data.TryGetValueSafe<IDictionary<string,object>>("cc"));
-			    this._Bcc = ObjectFactory.Create<EmailNotificationRecipientProvider>(data.TryGetValueSafe<IDictionary<string,object>>("bcc"));
-			    this._ReplyTo = ObjectFactory.Create<EmailNotificationRecipientProvider>(data.TryGetValueSafe<IDictionary<string,object>>("replyTo"));
-			    this._Priority = (EmailNotificationTemplatePriority)ParseEnum(typeof(EmailNotificationTemplatePriority), data.TryGetValueSafe<int>("priority"));
-			    this._ConfirmReadingTo = data.TryGetValueSafe<string>("confirmReadingTo");
-			    this._Hostname = data.TryGetValueSafe<string>("hostname");
-			    this._MessageID = data.TryGetValueSafe<string>("messageID");
-			    this._CustomHeaders = new List<KeyValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("customHeaders", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._CustomHeaders.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Window
 		{
 			get { return _Window; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Window");
 			}
 		}
+		[JsonProperty]
 		public string Key
 		{
 			get { return _Key; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Key");
 			}
 		}
+		[JsonProperty]
 		public bool? LimitIpAddress
 		{
 			get { return _LimitIpAddress; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UrlTokenizer(XmlElement node) : base(node)
+		public UrlTokenizer(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["window"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "window":
-						this._Window = ParseInt(propertyNode.InnerText);
-						continue;
-					case "key":
-						this._Key = propertyNode.InnerText;
-						continue;
-					case "limitIpAddress":
-						this._LimitIpAddress = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._Window = ParseInt(node["window"].Value<string>());
 			}
-		}
-
-		public UrlTokenizer(IDictionary<string,object> data) : base(data)
-		{
-			    this._Window = data.TryGetValueSafe<int>("window");
-			    this._Key = data.TryGetValueSafe<string>("key");
-			    this._LimitIpAddress = data.TryGetValueSafe<bool>("limitIpAddress");
+			if(node["key"] != null)
+			{
+				this._Key = node["key"].Value<string>();
+			}
+			if(node["limitIpAddress"] != null)
+			{
+				this._LimitIpAddress = ParseBool(node["limitIpAddress"].Value<string>());
+			}
 		}
 		#endregion
 

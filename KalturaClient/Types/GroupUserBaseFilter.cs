@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -62,6 +64,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string UserIdEqual
 		{
 			get { return _UserIdEqual; }
@@ -71,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string UserIdIn
 		{
 			get { return _UserIdIn; }
@@ -80,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIdIn");
 			}
 		}
+		[JsonProperty]
 		public string GroupIdEqual
 		{
 			get { return _GroupIdEqual; }
@@ -89,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("GroupIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string GroupIdIn
 		{
 			get { return _GroupIdIn; }
@@ -98,6 +104,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("GroupIdIn");
 			}
 		}
+		[JsonProperty]
 		public GroupUserStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -107,6 +114,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -116,6 +124,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
 			get { return _CreatedAtGreaterThanOrEqual; }
@@ -125,6 +134,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
 			get { return _CreatedAtLessThanOrEqual; }
@@ -134,6 +144,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
 			get { return _UpdatedAtGreaterThanOrEqual; }
@@ -143,6 +154,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
 			get { return _UpdatedAtLessThanOrEqual; }
@@ -159,58 +171,48 @@ namespace Kaltura.Types
 		{
 		}
 
-		public GroupUserBaseFilter(XmlElement node) : base(node)
+		public GroupUserBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["userIdEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "userIdEqual":
-						this._UserIdEqual = propertyNode.InnerText;
-						continue;
-					case "userIdIn":
-						this._UserIdIn = propertyNode.InnerText;
-						continue;
-					case "groupIdEqual":
-						this._GroupIdEqual = propertyNode.InnerText;
-						continue;
-					case "groupIdIn":
-						this._GroupIdIn = propertyNode.InnerText;
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (GroupUserStatus)ParseEnum(typeof(GroupUserStatus), propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._UserIdEqual = node["userIdEqual"].Value<string>();
 			}
-		}
-
-		public GroupUserBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._UserIdEqual = data.TryGetValueSafe<string>("userIdEqual");
-			    this._UserIdIn = data.TryGetValueSafe<string>("userIdIn");
-			    this._GroupIdEqual = data.TryGetValueSafe<string>("groupIdEqual");
-			    this._GroupIdIn = data.TryGetValueSafe<string>("groupIdIn");
-			    this._StatusEqual = (GroupUserStatus)ParseEnum(typeof(GroupUserStatus), data.TryGetValueSafe<int>("statusEqual"));
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
-			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
-			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
-			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
-			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
+			if(node["userIdIn"] != null)
+			{
+				this._UserIdIn = node["userIdIn"].Value<string>();
+			}
+			if(node["groupIdEqual"] != null)
+			{
+				this._GroupIdEqual = node["groupIdEqual"].Value<string>();
+			}
+			if(node["groupIdIn"] != null)
+			{
+				this._GroupIdIn = node["groupIdIn"].Value<string>();
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (GroupUserStatus)ParseEnum(typeof(GroupUserStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
+			if(node["createdAtGreaterThanOrEqual"] != null)
+			{
+				this._CreatedAtGreaterThanOrEqual = ParseInt(node["createdAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["createdAtLessThanOrEqual"] != null)
+			{
+				this._CreatedAtLessThanOrEqual = ParseInt(node["createdAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtGreaterThanOrEqual"] != null)
+			{
+				this._UpdatedAtGreaterThanOrEqual = ParseInt(node["updatedAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtLessThanOrEqual"] != null)
+			{
+				this._UpdatedAtLessThanOrEqual = ParseInt(node["updatedAtLessThanOrEqual"].Value<string>());
+			}
 		}
 		#endregion
 

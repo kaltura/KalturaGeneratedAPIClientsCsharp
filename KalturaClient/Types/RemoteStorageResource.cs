@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int StorageProfileId
 		{
 			get { return _StorageProfileId; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public RemoteStorageResource(XmlElement node) : base(node)
+		public RemoteStorageResource(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["storageProfileId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "storageProfileId":
-						this._StorageProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._StorageProfileId = ParseInt(node["storageProfileId"].Value<string>());
 			}
-		}
-
-		public RemoteStorageResource(IDictionary<string,object> data) : base(data)
-		{
-			    this._StorageProfileId = data.TryGetValueSafe<int>("storageProfileId");
 		}
 		#endregion
 

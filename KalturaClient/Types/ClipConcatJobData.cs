@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		[JsonProperty]
 		public int Priority
 		{
 			get { return _Priority; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Priority");
 			}
 		}
+		[JsonProperty]
 		public IList<ObjectBase> OperationAttributes
 		{
 			get { return _OperationAttributes; }
@@ -82,39 +87,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ClipConcatJobData(XmlElement node) : base(node)
+		public ClipConcatJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["partnerId"] != null)
 			{
-				switch (propertyNode.Name)
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["priority"] != null)
+			{
+				this._Priority = ParseInt(node["priority"].Value<string>());
+			}
+			if(node["operationAttributes"] != null)
+			{
+				this._OperationAttributes = new List<ObjectBase>();
+				foreach(var arrayNode in node["operationAttributes"].Children())
 				{
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "priority":
-						this._Priority = ParseInt(propertyNode.InnerText);
-						continue;
-					case "operationAttributes":
-						this._OperationAttributes = new List<ObjectBase>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._OperationAttributes.Add(ObjectFactory.Create<ObjectBase>(arrayNode));
-						}
-						continue;
+					this._OperationAttributes.Add(ObjectFactory.Create<ObjectBase>(arrayNode));
 				}
 			}
-		}
-
-		public ClipConcatJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._Priority = data.TryGetValueSafe<int>("priority");
-			    this._OperationAttributes = new List<ObjectBase>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("operationAttributes", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._OperationAttributes.Add(ObjectFactory.Create<ObjectBase>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

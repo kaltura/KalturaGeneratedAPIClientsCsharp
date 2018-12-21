@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string QueueKeyToken
 		{
 			get { return _QueueKeyToken; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public PushEventNotificationParameter(XmlElement node) : base(node)
+		public PushEventNotificationParameter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["queueKeyToken"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "queueKeyToken":
-						this._QueueKeyToken = propertyNode.InnerText;
-						continue;
-				}
+				this._QueueKeyToken = node["queueKeyToken"].Value<string>();
 			}
-		}
-
-		public PushEventNotificationParameter(IDictionary<string,object> data) : base(data)
-		{
-			    this._QueueKeyToken = data.TryGetValueSafe<string>("queueKeyToken");
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -86,18 +88,37 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public string FeedUrl
 		{
 			get { return _FeedUrl; }
+			private set 
+			{ 
+				_FeedUrl = value;
+				OnPropertyChanged("FeedUrl");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public string PlaylistId
 		{
 			get { return _PlaylistId; }
@@ -107,6 +128,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PlaylistId");
 			}
 		}
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -116,10 +138,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		[JsonProperty]
 		public SyndicationFeedStatus Status
 		{
 			get { return _Status; }
+			private set 
+			{ 
+				_Status = value;
+				OnPropertyChanged("Status");
+			}
 		}
+		[JsonProperty]
 		public SyndicationFeedType Type
 		{
 			get { return _Type; }
@@ -129,6 +158,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		[JsonProperty]
 		public string LandingPage
 		{
 			get { return _LandingPage; }
@@ -138,10 +168,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("LandingPage");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public bool? AllowEmbed
 		{
 			get { return _AllowEmbed; }
@@ -151,6 +188,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowEmbed");
 			}
 		}
+		[JsonProperty]
 		public int PlayerUiconfId
 		{
 			get { return _PlayerUiconfId; }
@@ -160,6 +198,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PlayerUiconfId");
 			}
 		}
+		[JsonProperty]
 		public int FlavorParamId
 		{
 			get { return _FlavorParamId; }
@@ -169,6 +208,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamId");
 			}
 		}
+		[JsonProperty]
 		public bool? TranscodeExistingContent
 		{
 			get { return _TranscodeExistingContent; }
@@ -178,6 +218,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TranscodeExistingContent");
 			}
 		}
+		[JsonProperty]
 		public bool? AddToDefaultConversionProfile
 		{
 			get { return _AddToDefaultConversionProfile; }
@@ -187,6 +228,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AddToDefaultConversionProfile");
 			}
 		}
+		[JsonProperty]
 		public string Categories
 		{
 			get { return _Categories; }
@@ -196,6 +238,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Categories");
 			}
 		}
+		[JsonProperty]
 		public int StorageId
 		{
 			get { return _StorageId; }
@@ -205,6 +248,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StorageId");
 			}
 		}
+		[JsonProperty]
 		public SyndicationFeedEntriesOrderBy EntriesOrderBy
 		{
 			get { return _EntriesOrderBy; }
@@ -214,6 +258,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntriesOrderBy");
 			}
 		}
+		[JsonProperty]
 		public bool? EnforceEntitlement
 		{
 			get { return _EnforceEntitlement; }
@@ -223,6 +268,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EnforceEntitlement");
 			}
 		}
+		[JsonProperty]
 		public string PrivacyContext
 		{
 			get { return _PrivacyContext; }
@@ -232,10 +278,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrivacyContext");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public bool? UseCategoryEntries
 		{
 			get { return _UseCategoryEntries; }
@@ -245,6 +298,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UseCategoryEntries");
 			}
 		}
+		[JsonProperty]
 		public string FeedContentTypeHeader
 		{
 			get { return _FeedContentTypeHeader; }
@@ -261,106 +315,96 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BaseSyndicationFeed(XmlElement node) : base(node)
+		public BaseSyndicationFeed(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = propertyNode.InnerText;
-						continue;
-					case "feedUrl":
-						this._FeedUrl = propertyNode.InnerText;
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "playlistId":
-						this._PlaylistId = propertyNode.InnerText;
-						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-					case "status":
-						this._Status = (SyndicationFeedStatus)ParseEnum(typeof(SyndicationFeedStatus), propertyNode.InnerText);
-						continue;
-					case "type":
-						this._Type = (SyndicationFeedType)ParseEnum(typeof(SyndicationFeedType), propertyNode.InnerText);
-						continue;
-					case "landingPage":
-						this._LandingPage = propertyNode.InnerText;
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "allowEmbed":
-						this._AllowEmbed = ParseBool(propertyNode.InnerText);
-						continue;
-					case "playerUiconfId":
-						this._PlayerUiconfId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "flavorParamId":
-						this._FlavorParamId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "transcodeExistingContent":
-						this._TranscodeExistingContent = ParseBool(propertyNode.InnerText);
-						continue;
-					case "addToDefaultConversionProfile":
-						this._AddToDefaultConversionProfile = ParseBool(propertyNode.InnerText);
-						continue;
-					case "categories":
-						this._Categories = propertyNode.InnerText;
-						continue;
-					case "storageId":
-						this._StorageId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "entriesOrderBy":
-						this._EntriesOrderBy = (SyndicationFeedEntriesOrderBy)StringEnum.Parse(typeof(SyndicationFeedEntriesOrderBy), propertyNode.InnerText);
-						continue;
-					case "enforceEntitlement":
-						this._EnforceEntitlement = ParseBool(propertyNode.InnerText);
-						continue;
-					case "privacyContext":
-						this._PrivacyContext = propertyNode.InnerText;
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "useCategoryEntries":
-						this._UseCategoryEntries = ParseBool(propertyNode.InnerText);
-						continue;
-					case "feedContentTypeHeader":
-						this._FeedContentTypeHeader = propertyNode.InnerText;
-						continue;
-				}
+				this._Id = node["id"].Value<string>();
 			}
-		}
-
-		public BaseSyndicationFeed(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<string>("id");
-			    this._FeedUrl = data.TryGetValueSafe<string>("feedUrl");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._PlaylistId = data.TryGetValueSafe<string>("playlistId");
-			    this._Name = data.TryGetValueSafe<string>("name");
-			    this._Status = (SyndicationFeedStatus)ParseEnum(typeof(SyndicationFeedStatus), data.TryGetValueSafe<int>("status"));
-			    this._Type = (SyndicationFeedType)ParseEnum(typeof(SyndicationFeedType), data.TryGetValueSafe<int>("type"));
-			    this._LandingPage = data.TryGetValueSafe<string>("landingPage");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._AllowEmbed = data.TryGetValueSafe<bool>("allowEmbed");
-			    this._PlayerUiconfId = data.TryGetValueSafe<int>("playerUiconfId");
-			    this._FlavorParamId = data.TryGetValueSafe<int>("flavorParamId");
-			    this._TranscodeExistingContent = data.TryGetValueSafe<bool>("transcodeExistingContent");
-			    this._AddToDefaultConversionProfile = data.TryGetValueSafe<bool>("addToDefaultConversionProfile");
-			    this._Categories = data.TryGetValueSafe<string>("categories");
-			    this._StorageId = data.TryGetValueSafe<int>("storageId");
-			    this._EntriesOrderBy = (SyndicationFeedEntriesOrderBy)StringEnum.Parse(typeof(SyndicationFeedEntriesOrderBy), data.TryGetValueSafe<string>("entriesOrderBy"));
-			    this._EnforceEntitlement = data.TryGetValueSafe<bool>("enforceEntitlement");
-			    this._PrivacyContext = data.TryGetValueSafe<string>("privacyContext");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._UseCategoryEntries = data.TryGetValueSafe<bool>("useCategoryEntries");
-			    this._FeedContentTypeHeader = data.TryGetValueSafe<string>("feedContentTypeHeader");
+			if(node["feedUrl"] != null)
+			{
+				this._FeedUrl = node["feedUrl"].Value<string>();
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["playlistId"] != null)
+			{
+				this._PlaylistId = node["playlistId"].Value<string>();
+			}
+			if(node["name"] != null)
+			{
+				this._Name = node["name"].Value<string>();
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (SyndicationFeedStatus)ParseEnum(typeof(SyndicationFeedStatus), node["status"].Value<string>());
+			}
+			if(node["type"] != null)
+			{
+				this._Type = (SyndicationFeedType)ParseEnum(typeof(SyndicationFeedType), node["type"].Value<string>());
+			}
+			if(node["landingPage"] != null)
+			{
+				this._LandingPage = node["landingPage"].Value<string>();
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["allowEmbed"] != null)
+			{
+				this._AllowEmbed = ParseBool(node["allowEmbed"].Value<string>());
+			}
+			if(node["playerUiconfId"] != null)
+			{
+				this._PlayerUiconfId = ParseInt(node["playerUiconfId"].Value<string>());
+			}
+			if(node["flavorParamId"] != null)
+			{
+				this._FlavorParamId = ParseInt(node["flavorParamId"].Value<string>());
+			}
+			if(node["transcodeExistingContent"] != null)
+			{
+				this._TranscodeExistingContent = ParseBool(node["transcodeExistingContent"].Value<string>());
+			}
+			if(node["addToDefaultConversionProfile"] != null)
+			{
+				this._AddToDefaultConversionProfile = ParseBool(node["addToDefaultConversionProfile"].Value<string>());
+			}
+			if(node["categories"] != null)
+			{
+				this._Categories = node["categories"].Value<string>();
+			}
+			if(node["storageId"] != null)
+			{
+				this._StorageId = ParseInt(node["storageId"].Value<string>());
+			}
+			if(node["entriesOrderBy"] != null)
+			{
+				this._EntriesOrderBy = (SyndicationFeedEntriesOrderBy)StringEnum.Parse(typeof(SyndicationFeedEntriesOrderBy), node["entriesOrderBy"].Value<string>());
+			}
+			if(node["enforceEntitlement"] != null)
+			{
+				this._EnforceEntitlement = ParseBool(node["enforceEntitlement"].Value<string>());
+			}
+			if(node["privacyContext"] != null)
+			{
+				this._PrivacyContext = node["privacyContext"].Value<string>();
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["useCategoryEntries"] != null)
+			{
+				this._UseCategoryEntries = ParseBool(node["useCategoryEntries"].Value<string>());
+			}
+			if(node["feedContentTypeHeader"] != null)
+			{
+				this._FeedContentTypeHeader = node["feedContentTypeHeader"].Value<string>();
+			}
 		}
 		#endregion
 

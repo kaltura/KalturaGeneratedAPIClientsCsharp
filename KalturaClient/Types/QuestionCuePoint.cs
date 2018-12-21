@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,6 +58,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public IList<OptionalAnswer> OptionalAnswers
 		{
 			get { return _OptionalAnswers; }
@@ -65,6 +68,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("OptionalAnswers");
 			}
 		}
+		[JsonProperty]
 		public string Hint
 		{
 			get { return _Hint; }
@@ -74,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Hint");
 			}
 		}
+		[JsonProperty]
 		public string Question
 		{
 			get { return _Question; }
@@ -83,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Question");
 			}
 		}
+		[JsonProperty]
 		public string Explanation
 		{
 			get { return _Explanation; }
@@ -92,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Explanation");
 			}
 		}
+		[JsonProperty]
 		public QuestionType QuestionType
 		{
 			get { return _QuestionType; }
@@ -101,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("QuestionType");
 			}
 		}
+		[JsonProperty]
 		public int PresentationOrder
 		{
 			get { return _PresentationOrder; }
@@ -110,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PresentationOrder");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean ExcludeFromScore
 		{
 			get { return _ExcludeFromScore; }
@@ -126,55 +135,40 @@ namespace Kaltura.Types
 		{
 		}
 
-		public QuestionCuePoint(XmlElement node) : base(node)
+		public QuestionCuePoint(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["optionalAnswers"] != null)
 			{
-				switch (propertyNode.Name)
+				this._OptionalAnswers = new List<OptionalAnswer>();
+				foreach(var arrayNode in node["optionalAnswers"].Children())
 				{
-					case "optionalAnswers":
-						this._OptionalAnswers = new List<OptionalAnswer>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._OptionalAnswers.Add(ObjectFactory.Create<OptionalAnswer>(arrayNode));
-						}
-						continue;
-					case "hint":
-						this._Hint = propertyNode.InnerText;
-						continue;
-					case "question":
-						this._Question = propertyNode.InnerText;
-						continue;
-					case "explanation":
-						this._Explanation = propertyNode.InnerText;
-						continue;
-					case "questionType":
-						this._QuestionType = (QuestionType)ParseEnum(typeof(QuestionType), propertyNode.InnerText);
-						continue;
-					case "presentationOrder":
-						this._PresentationOrder = ParseInt(propertyNode.InnerText);
-						continue;
-					case "excludeFromScore":
-						this._ExcludeFromScore = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
+					this._OptionalAnswers.Add(ObjectFactory.Create<OptionalAnswer>(arrayNode));
 				}
 			}
-		}
-
-		public QuestionCuePoint(IDictionary<string,object> data) : base(data)
-		{
-			    this._OptionalAnswers = new List<OptionalAnswer>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("optionalAnswers", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._OptionalAnswers.Add(ObjectFactory.Create<OptionalAnswer>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._Hint = data.TryGetValueSafe<string>("hint");
-			    this._Question = data.TryGetValueSafe<string>("question");
-			    this._Explanation = data.TryGetValueSafe<string>("explanation");
-			    this._QuestionType = (QuestionType)ParseEnum(typeof(QuestionType), data.TryGetValueSafe<int>("questionType"));
-			    this._PresentationOrder = data.TryGetValueSafe<int>("presentationOrder");
-			    this._ExcludeFromScore = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("excludeFromScore"));
+			if(node["hint"] != null)
+			{
+				this._Hint = node["hint"].Value<string>();
+			}
+			if(node["question"] != null)
+			{
+				this._Question = node["question"].Value<string>();
+			}
+			if(node["explanation"] != null)
+			{
+				this._Explanation = node["explanation"].Value<string>();
+			}
+			if(node["questionType"] != null)
+			{
+				this._QuestionType = (QuestionType)ParseEnum(typeof(QuestionType), node["questionType"].Value<string>());
+			}
+			if(node["presentationOrder"] != null)
+			{
+				this._PresentationOrder = ParseInt(node["presentationOrder"].Value<string>());
+			}
+			if(node["excludeFromScore"] != null)
+			{
+				this._ExcludeFromScore = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["excludeFromScore"].Value<string>());
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public new YouTubeDistributionProfileOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public YouTubeDistributionProfileFilter(XmlElement node) : base(node)
+		public YouTubeDistributionProfileFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["orderBy"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "orderBy":
-						this._OrderBy = (YouTubeDistributionProfileOrderBy)StringEnum.Parse(typeof(YouTubeDistributionProfileOrderBy), propertyNode.InnerText);
-						continue;
-				}
+				this._OrderBy = (YouTubeDistributionProfileOrderBy)StringEnum.Parse(typeof(YouTubeDistributionProfileOrderBy), node["orderBy"].Value<string>());
 			}
-		}
-
-		public YouTubeDistributionProfileFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._OrderBy = (YouTubeDistributionProfileOrderBy)StringEnum.Parse(typeof(YouTubeDistributionProfileOrderBy), data.TryGetValueSafe<string>("orderBy"));
 		}
 		#endregion
 

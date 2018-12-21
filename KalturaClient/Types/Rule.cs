@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -60,6 +62,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -69,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public string RuleData
 		{
 			get { return _RuleData; }
@@ -78,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RuleData");
 			}
 		}
+		[JsonProperty]
 		public string Message
 		{
 			get { return _Message; }
@@ -87,6 +92,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Message");
 			}
 		}
+		[JsonProperty]
 		public string Code
 		{
 			get { return _Code; }
@@ -96,6 +102,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Code");
 			}
 		}
+		[JsonProperty]
 		public IList<RuleAction> Actions
 		{
 			get { return _Actions; }
@@ -105,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Actions");
 			}
 		}
+		[JsonProperty]
 		public IList<Condition> Conditions
 		{
 			get { return _Conditions; }
@@ -114,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Conditions");
 			}
 		}
+		[JsonProperty]
 		public IList<ContextTypeHolder> Contexts
 		{
 			get { return _Contexts; }
@@ -123,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Contexts");
 			}
 		}
+		[JsonProperty]
 		public bool? StopProcessing
 		{
 			get { return _StopProcessing; }
@@ -132,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StopProcessing");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean ForceAdminValidation
 		{
 			get { return _ForceAdminValidation; }
@@ -148,81 +159,56 @@ namespace Kaltura.Types
 		{
 		}
 
-		public Rule(XmlElement node) : base(node)
+		public Rule(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["description"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["ruleData"] != null)
+			{
+				this._RuleData = node["ruleData"].Value<string>();
+			}
+			if(node["message"] != null)
+			{
+				this._Message = node["message"].Value<string>();
+			}
+			if(node["code"] != null)
+			{
+				this._Code = node["code"].Value<string>();
+			}
+			if(node["actions"] != null)
+			{
+				this._Actions = new List<RuleAction>();
+				foreach(var arrayNode in node["actions"].Children())
 				{
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "ruleData":
-						this._RuleData = propertyNode.InnerText;
-						continue;
-					case "message":
-						this._Message = propertyNode.InnerText;
-						continue;
-					case "code":
-						this._Code = propertyNode.InnerText;
-						continue;
-					case "actions":
-						this._Actions = new List<RuleAction>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Actions.Add(ObjectFactory.Create<RuleAction>(arrayNode));
-						}
-						continue;
-					case "conditions":
-						this._Conditions = new List<Condition>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Conditions.Add(ObjectFactory.Create<Condition>(arrayNode));
-						}
-						continue;
-					case "contexts":
-						this._Contexts = new List<ContextTypeHolder>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Contexts.Add(ObjectFactory.Create<ContextTypeHolder>(arrayNode));
-						}
-						continue;
-					case "stopProcessing":
-						this._StopProcessing = ParseBool(propertyNode.InnerText);
-						continue;
-					case "forceAdminValidation":
-						this._ForceAdminValidation = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
+					this._Actions.Add(ObjectFactory.Create<RuleAction>(arrayNode));
 				}
 			}
-		}
-
-		public Rule(IDictionary<string,object> data) : base(data)
-		{
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._RuleData = data.TryGetValueSafe<string>("ruleData");
-			    this._Message = data.TryGetValueSafe<string>("message");
-			    this._Code = data.TryGetValueSafe<string>("code");
-			    this._Actions = new List<RuleAction>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("actions", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Actions.Add(ObjectFactory.Create<RuleAction>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._Conditions = new List<Condition>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("conditions", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Conditions.Add(ObjectFactory.Create<Condition>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._Contexts = new List<ContextTypeHolder>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("contexts", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Contexts.Add(ObjectFactory.Create<ContextTypeHolder>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._StopProcessing = data.TryGetValueSafe<bool>("stopProcessing");
-			    this._ForceAdminValidation = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("forceAdminValidation"));
+			if(node["conditions"] != null)
+			{
+				this._Conditions = new List<Condition>();
+				foreach(var arrayNode in node["conditions"].Children())
+				{
+					this._Conditions.Add(ObjectFactory.Create<Condition>(arrayNode));
+				}
+			}
+			if(node["contexts"] != null)
+			{
+				this._Contexts = new List<ContextTypeHolder>();
+				foreach(var arrayNode in node["contexts"].Children())
+				{
+					this._Contexts.Add(ObjectFactory.Create<ContextTypeHolder>(arrayNode));
+				}
+			}
+			if(node["stopProcessing"] != null)
+			{
+				this._StopProcessing = ParseBool(node["stopProcessing"].Value<string>());
+			}
+			if(node["forceAdminValidation"] != null)
+			{
+				this._ForceAdminValidation = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["forceAdminValidation"].Value<string>());
+			}
 		}
 		#endregion
 

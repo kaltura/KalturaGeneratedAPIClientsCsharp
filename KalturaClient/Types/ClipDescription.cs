@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string SourceEntryId
 		{
 			get { return _SourceEntryId; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceEntryId");
 			}
 		}
+		[JsonProperty]
 		public int StartTime
 		{
 			get { return _StartTime; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartTime");
 			}
 		}
+		[JsonProperty]
 		public int Duration
 		{
 			get { return _Duration; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Duration");
 			}
 		}
+		[JsonProperty]
 		public int OffsetInDestination
 		{
 			get { return _OffsetInDestination; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ClipDescription(XmlElement node) : base(node)
+		public ClipDescription(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["sourceEntryId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "sourceEntryId":
-						this._SourceEntryId = propertyNode.InnerText;
-						continue;
-					case "startTime":
-						this._StartTime = ParseInt(propertyNode.InnerText);
-						continue;
-					case "duration":
-						this._Duration = ParseInt(propertyNode.InnerText);
-						continue;
-					case "offsetInDestination":
-						this._OffsetInDestination = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._SourceEntryId = node["sourceEntryId"].Value<string>();
 			}
-		}
-
-		public ClipDescription(IDictionary<string,object> data) : base(data)
-		{
-			    this._SourceEntryId = data.TryGetValueSafe<string>("sourceEntryId");
-			    this._StartTime = data.TryGetValueSafe<int>("startTime");
-			    this._Duration = data.TryGetValueSafe<int>("duration");
-			    this._OffsetInDestination = data.TryGetValueSafe<int>("offsetInDestination");
+			if(node["startTime"] != null)
+			{
+				this._StartTime = ParseInt(node["startTime"].Value<string>());
+			}
+			if(node["duration"] != null)
+			{
+				this._Duration = ParseInt(node["duration"].Value<string>());
+			}
+			if(node["offsetInDestination"] != null)
+			{
+				this._OffsetInDestination = ParseInt(node["offsetInDestination"].Value<string>());
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,6 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string FlavorAssetId
 		{
 			get { return _FlavorAssetId; }
@@ -61,6 +64,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetId");
 			}
 		}
+		[JsonProperty]
 		public bool? CalculateComplexity
 		{
 			get { return _CalculateComplexity; }
@@ -70,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CalculateComplexity");
 			}
 		}
+		[JsonProperty]
 		public bool? ExtractId3Tags
 		{
 			get { return _ExtractId3Tags; }
@@ -79,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExtractId3Tags");
 			}
 		}
+		[JsonProperty]
 		public string DestDataFilePath
 		{
 			get { return _DestDataFilePath; }
@@ -88,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestDataFilePath");
 			}
 		}
+		[JsonProperty]
 		public int DetectGOP
 		{
 			get { return _DetectGOP; }
@@ -104,38 +111,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ExtractMediaJobData(XmlElement node) : base(node)
+		public ExtractMediaJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["flavorAssetId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "flavorAssetId":
-						this._FlavorAssetId = propertyNode.InnerText;
-						continue;
-					case "calculateComplexity":
-						this._CalculateComplexity = ParseBool(propertyNode.InnerText);
-						continue;
-					case "extractId3Tags":
-						this._ExtractId3Tags = ParseBool(propertyNode.InnerText);
-						continue;
-					case "destDataFilePath":
-						this._DestDataFilePath = propertyNode.InnerText;
-						continue;
-					case "detectGOP":
-						this._DetectGOP = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._FlavorAssetId = node["flavorAssetId"].Value<string>();
 			}
-		}
-
-		public ExtractMediaJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._FlavorAssetId = data.TryGetValueSafe<string>("flavorAssetId");
-			    this._CalculateComplexity = data.TryGetValueSafe<bool>("calculateComplexity");
-			    this._ExtractId3Tags = data.TryGetValueSafe<bool>("extractId3Tags");
-			    this._DestDataFilePath = data.TryGetValueSafe<string>("destDataFilePath");
-			    this._DetectGOP = data.TryGetValueSafe<int>("detectGOP");
+			if(node["calculateComplexity"] != null)
+			{
+				this._CalculateComplexity = ParseBool(node["calculateComplexity"].Value<string>());
+			}
+			if(node["extractId3Tags"] != null)
+			{
+				this._ExtractId3Tags = ParseBool(node["extractId3Tags"].Value<string>());
+			}
+			if(node["destDataFilePath"] != null)
+			{
+				this._DestDataFilePath = node["destDataFilePath"].Value<string>();
+			}
+			if(node["detectGOP"] != null)
+			{
+				this._DetectGOP = ParseInt(node["detectGOP"].Value<string>());
+			}
 		}
 		#endregion
 

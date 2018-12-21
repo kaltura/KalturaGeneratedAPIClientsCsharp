@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -90,22 +92,47 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int ParsedAt
 		{
 			get { return _ParsedAt; }
+			private set 
+			{ 
+				_ParsedAt = value;
+				OnPropertyChanged("ParsedAt");
+			}
 		}
+		[JsonProperty]
 		public AuditTrailStatus Status
 		{
 			get { return _Status; }
+			private set 
+			{ 
+				_Status = value;
+				OnPropertyChanged("Status");
+			}
 		}
+		[JsonProperty]
 		public AuditTrailObjectType AuditObjectType
 		{
 			get { return _AuditObjectType; }
@@ -115,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AuditObjectType");
 			}
 		}
+		[JsonProperty]
 		public string ObjectId
 		{
 			get { return _ObjectId; }
@@ -124,6 +152,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectId");
 			}
 		}
+		[JsonProperty]
 		public string RelatedObjectId
 		{
 			get { return _RelatedObjectId; }
@@ -133,6 +162,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RelatedObjectId");
 			}
 		}
+		[JsonProperty]
 		public AuditTrailObjectType RelatedObjectType
 		{
 			get { return _RelatedObjectType; }
@@ -142,6 +172,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RelatedObjectType");
 			}
 		}
+		[JsonProperty]
 		public string EntryId
 		{
 			get { return _EntryId; }
@@ -151,18 +182,37 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		[JsonProperty]
 		public int MasterPartnerId
 		{
 			get { return _MasterPartnerId; }
+			private set 
+			{ 
+				_MasterPartnerId = value;
+				OnPropertyChanged("MasterPartnerId");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public string RequestId
 		{
 			get { return _RequestId; }
+			private set 
+			{ 
+				_RequestId = value;
+				OnPropertyChanged("RequestId");
+			}
 		}
+		[JsonProperty]
 		public string UserId
 		{
 			get { return _UserId; }
@@ -172,6 +222,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserId");
 			}
 		}
+		[JsonProperty]
 		public AuditTrailAction Action
 		{
 			get { return _Action; }
@@ -181,6 +232,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Action");
 			}
 		}
+		[JsonProperty]
 		public AuditTrailInfo Data
 		{
 			get { return _Data; }
@@ -190,30 +242,67 @@ namespace Kaltura.Types
 				OnPropertyChanged("Data");
 			}
 		}
+		[JsonProperty]
 		public string Ks
 		{
 			get { return _Ks; }
+			private set 
+			{ 
+				_Ks = value;
+				OnPropertyChanged("Ks");
+			}
 		}
+		[JsonProperty]
 		public AuditTrailContext Context
 		{
 			get { return _Context; }
+			private set 
+			{ 
+				_Context = value;
+				OnPropertyChanged("Context");
+			}
 		}
+		[JsonProperty]
 		public string EntryPoint
 		{
 			get { return _EntryPoint; }
+			private set 
+			{ 
+				_EntryPoint = value;
+				OnPropertyChanged("EntryPoint");
+			}
 		}
+		[JsonProperty]
 		public string ServerName
 		{
 			get { return _ServerName; }
+			private set 
+			{ 
+				_ServerName = value;
+				OnPropertyChanged("ServerName");
+			}
 		}
+		[JsonProperty]
 		public string IpAddress
 		{
 			get { return _IpAddress; }
+			private set 
+			{ 
+				_IpAddress = value;
+				OnPropertyChanged("IpAddress");
+			}
 		}
+		[JsonProperty]
 		public string UserAgent
 		{
 			get { return _UserAgent; }
+			private set 
+			{ 
+				_UserAgent = value;
+				OnPropertyChanged("UserAgent");
+			}
 		}
+		[JsonProperty]
 		public string ClientTag
 		{
 			get { return _ClientTag; }
@@ -223,6 +312,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ClientTag");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -232,9 +322,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public string ErrorDescription
 		{
 			get { return _ErrorDescription; }
+			private set 
+			{ 
+				_ErrorDescription = value;
+				OnPropertyChanged("ErrorDescription");
+			}
 		}
 		#endregion
 
@@ -243,114 +339,104 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AuditTrail(XmlElement node) : base(node)
+		public AuditTrail(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "parsedAt":
-						this._ParsedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "status":
-						this._Status = (AuditTrailStatus)ParseEnum(typeof(AuditTrailStatus), propertyNode.InnerText);
-						continue;
-					case "auditObjectType":
-						this._AuditObjectType = (AuditTrailObjectType)StringEnum.Parse(typeof(AuditTrailObjectType), propertyNode.InnerText);
-						continue;
-					case "objectId":
-						this._ObjectId = propertyNode.InnerText;
-						continue;
-					case "relatedObjectId":
-						this._RelatedObjectId = propertyNode.InnerText;
-						continue;
-					case "relatedObjectType":
-						this._RelatedObjectType = (AuditTrailObjectType)StringEnum.Parse(typeof(AuditTrailObjectType), propertyNode.InnerText);
-						continue;
-					case "entryId":
-						this._EntryId = propertyNode.InnerText;
-						continue;
-					case "masterPartnerId":
-						this._MasterPartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "requestId":
-						this._RequestId = propertyNode.InnerText;
-						continue;
-					case "userId":
-						this._UserId = propertyNode.InnerText;
-						continue;
-					case "action":
-						this._Action = (AuditTrailAction)StringEnum.Parse(typeof(AuditTrailAction), propertyNode.InnerText);
-						continue;
-					case "data":
-						this._Data = ObjectFactory.Create<AuditTrailInfo>(propertyNode);
-						continue;
-					case "ks":
-						this._Ks = propertyNode.InnerText;
-						continue;
-					case "context":
-						this._Context = (AuditTrailContext)ParseEnum(typeof(AuditTrailContext), propertyNode.InnerText);
-						continue;
-					case "entryPoint":
-						this._EntryPoint = propertyNode.InnerText;
-						continue;
-					case "serverName":
-						this._ServerName = propertyNode.InnerText;
-						continue;
-					case "ipAddress":
-						this._IpAddress = propertyNode.InnerText;
-						continue;
-					case "userAgent":
-						this._UserAgent = propertyNode.InnerText;
-						continue;
-					case "clientTag":
-						this._ClientTag = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "errorDescription":
-						this._ErrorDescription = propertyNode.InnerText;
-						continue;
-				}
+				this._Id = ParseInt(node["id"].Value<string>());
 			}
-		}
-
-		public AuditTrail(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._ParsedAt = data.TryGetValueSafe<int>("parsedAt");
-			    this._Status = (AuditTrailStatus)ParseEnum(typeof(AuditTrailStatus), data.TryGetValueSafe<int>("status"));
-			    this._AuditObjectType = (AuditTrailObjectType)StringEnum.Parse(typeof(AuditTrailObjectType), data.TryGetValueSafe<string>("auditObjectType"));
-			    this._ObjectId = data.TryGetValueSafe<string>("objectId");
-			    this._RelatedObjectId = data.TryGetValueSafe<string>("relatedObjectId");
-			    this._RelatedObjectType = (AuditTrailObjectType)StringEnum.Parse(typeof(AuditTrailObjectType), data.TryGetValueSafe<string>("relatedObjectType"));
-			    this._EntryId = data.TryGetValueSafe<string>("entryId");
-			    this._MasterPartnerId = data.TryGetValueSafe<int>("masterPartnerId");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._RequestId = data.TryGetValueSafe<string>("requestId");
-			    this._UserId = data.TryGetValueSafe<string>("userId");
-			    this._Action = (AuditTrailAction)StringEnum.Parse(typeof(AuditTrailAction), data.TryGetValueSafe<string>("action"));
-			    this._Data = ObjectFactory.Create<AuditTrailInfo>(data.TryGetValueSafe<IDictionary<string,object>>("data"));
-			    this._Ks = data.TryGetValueSafe<string>("ks");
-			    this._Context = (AuditTrailContext)ParseEnum(typeof(AuditTrailContext), data.TryGetValueSafe<int>("context"));
-			    this._EntryPoint = data.TryGetValueSafe<string>("entryPoint");
-			    this._ServerName = data.TryGetValueSafe<string>("serverName");
-			    this._IpAddress = data.TryGetValueSafe<string>("ipAddress");
-			    this._UserAgent = data.TryGetValueSafe<string>("userAgent");
-			    this._ClientTag = data.TryGetValueSafe<string>("clientTag");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._ErrorDescription = data.TryGetValueSafe<string>("errorDescription");
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["parsedAt"] != null)
+			{
+				this._ParsedAt = ParseInt(node["parsedAt"].Value<string>());
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (AuditTrailStatus)ParseEnum(typeof(AuditTrailStatus), node["status"].Value<string>());
+			}
+			if(node["auditObjectType"] != null)
+			{
+				this._AuditObjectType = (AuditTrailObjectType)StringEnum.Parse(typeof(AuditTrailObjectType), node["auditObjectType"].Value<string>());
+			}
+			if(node["objectId"] != null)
+			{
+				this._ObjectId = node["objectId"].Value<string>();
+			}
+			if(node["relatedObjectId"] != null)
+			{
+				this._RelatedObjectId = node["relatedObjectId"].Value<string>();
+			}
+			if(node["relatedObjectType"] != null)
+			{
+				this._RelatedObjectType = (AuditTrailObjectType)StringEnum.Parse(typeof(AuditTrailObjectType), node["relatedObjectType"].Value<string>());
+			}
+			if(node["entryId"] != null)
+			{
+				this._EntryId = node["entryId"].Value<string>();
+			}
+			if(node["masterPartnerId"] != null)
+			{
+				this._MasterPartnerId = ParseInt(node["masterPartnerId"].Value<string>());
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["requestId"] != null)
+			{
+				this._RequestId = node["requestId"].Value<string>();
+			}
+			if(node["userId"] != null)
+			{
+				this._UserId = node["userId"].Value<string>();
+			}
+			if(node["action"] != null)
+			{
+				this._Action = (AuditTrailAction)StringEnum.Parse(typeof(AuditTrailAction), node["action"].Value<string>());
+			}
+			if(node["data"] != null)
+			{
+				this._Data = ObjectFactory.Create<AuditTrailInfo>(node["data"]);
+			}
+			if(node["ks"] != null)
+			{
+				this._Ks = node["ks"].Value<string>();
+			}
+			if(node["context"] != null)
+			{
+				this._Context = (AuditTrailContext)ParseEnum(typeof(AuditTrailContext), node["context"].Value<string>());
+			}
+			if(node["entryPoint"] != null)
+			{
+				this._EntryPoint = node["entryPoint"].Value<string>();
+			}
+			if(node["serverName"] != null)
+			{
+				this._ServerName = node["serverName"].Value<string>();
+			}
+			if(node["ipAddress"] != null)
+			{
+				this._IpAddress = node["ipAddress"].Value<string>();
+			}
+			if(node["userAgent"] != null)
+			{
+				this._UserAgent = node["userAgent"].Value<string>();
+			}
+			if(node["clientTag"] != null)
+			{
+				this._ClientTag = node["clientTag"].Value<string>();
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["errorDescription"] != null)
+			{
+				this._ErrorDescription = node["errorDescription"].Value<string>();
+			}
 		}
 		#endregion
 

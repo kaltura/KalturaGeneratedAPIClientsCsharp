@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Policy
 		{
 			get { return _Policy; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Policy");
 			}
 		}
+		[JsonProperty]
 		public int Duration
 		{
 			get { return _Duration; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Duration");
 			}
 		}
+		[JsonProperty]
 		public int Absolute_duration
 		{
 			get { return _Absolute_duration; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Absolute_duration");
 			}
 		}
+		[JsonProperty]
 		public IList<KeyValue> LicenseParams
 		{
 			get { return _LicenseParams; }
@@ -93,43 +99,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DrmLicenseAccessDetails(XmlElement node) : base(node)
+		public DrmLicenseAccessDetails(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["policy"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Policy = node["policy"].Value<string>();
+			}
+			if(node["duration"] != null)
+			{
+				this._Duration = ParseInt(node["duration"].Value<string>());
+			}
+			if(node["absolute_duration"] != null)
+			{
+				this._Absolute_duration = ParseInt(node["absolute_duration"].Value<string>());
+			}
+			if(node["licenseParams"] != null)
+			{
+				this._LicenseParams = new List<KeyValue>();
+				foreach(var arrayNode in node["licenseParams"].Children())
 				{
-					case "policy":
-						this._Policy = propertyNode.InnerText;
-						continue;
-					case "duration":
-						this._Duration = ParseInt(propertyNode.InnerText);
-						continue;
-					case "absolute_duration":
-						this._Absolute_duration = ParseInt(propertyNode.InnerText);
-						continue;
-					case "licenseParams":
-						this._LicenseParams = new List<KeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._LicenseParams.Add(ObjectFactory.Create<KeyValue>(arrayNode));
-						}
-						continue;
+					this._LicenseParams.Add(ObjectFactory.Create<KeyValue>(arrayNode));
 				}
 			}
-		}
-
-		public DrmLicenseAccessDetails(IDictionary<string,object> data) : base(data)
-		{
-			    this._Policy = data.TryGetValueSafe<string>("policy");
-			    this._Duration = data.TryGetValueSafe<int>("duration");
-			    this._Absolute_duration = data.TryGetValueSafe<int>("absolute_duration");
-			    this._LicenseParams = new List<KeyValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("licenseParams", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._LicenseParams.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

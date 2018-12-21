@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string QuestionLike
 		{
 			get { return _QuestionLike; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("QuestionLike");
 			}
 		}
+		[JsonProperty]
 		public string QuestionMultiLikeOr
 		{
 			get { return _QuestionMultiLikeOr; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("QuestionMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string QuestionMultiLikeAnd
 		{
 			get { return _QuestionMultiLikeAnd; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public QuestionCuePointBaseFilter(XmlElement node) : base(node)
+		public QuestionCuePointBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["questionLike"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "questionLike":
-						this._QuestionLike = propertyNode.InnerText;
-						continue;
-					case "questionMultiLikeOr":
-						this._QuestionMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "questionMultiLikeAnd":
-						this._QuestionMultiLikeAnd = propertyNode.InnerText;
-						continue;
-				}
+				this._QuestionLike = node["questionLike"].Value<string>();
 			}
-		}
-
-		public QuestionCuePointBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._QuestionLike = data.TryGetValueSafe<string>("questionLike");
-			    this._QuestionMultiLikeOr = data.TryGetValueSafe<string>("questionMultiLikeOr");
-			    this._QuestionMultiLikeAnd = data.TryGetValueSafe<string>("questionMultiLikeAnd");
+			if(node["questionMultiLikeOr"] != null)
+			{
+				this._QuestionMultiLikeOr = node["questionMultiLikeOr"].Value<string>();
+			}
+			if(node["questionMultiLikeAnd"] != null)
+			{
+				this._QuestionMultiLikeAnd = node["questionMultiLikeAnd"].Value<string>();
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public EventType EventTypeEqual
 		{
 			get { return _EventTypeEqual; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EventTypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string EventTypeIn
 		{
 			get { return _EventTypeIn; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EventCuePointBaseFilter(XmlElement node) : base(node)
+		public EventCuePointBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["eventTypeEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "eventTypeEqual":
-						this._EventTypeEqual = (EventType)StringEnum.Parse(typeof(EventType), propertyNode.InnerText);
-						continue;
-					case "eventTypeIn":
-						this._EventTypeIn = propertyNode.InnerText;
-						continue;
-				}
+				this._EventTypeEqual = (EventType)StringEnum.Parse(typeof(EventType), node["eventTypeEqual"].Value<string>());
 			}
-		}
-
-		public EventCuePointBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._EventTypeEqual = (EventType)StringEnum.Parse(typeof(EventType), data.TryGetValueSafe<string>("eventTypeEqual"));
-			    this._EventTypeIn = data.TryGetValueSafe<string>("eventTypeIn");
+			if(node["eventTypeIn"] != null)
+			{
+				this._EventTypeIn = node["eventTypeIn"].Value<string>();
+			}
 		}
 		#endregion
 

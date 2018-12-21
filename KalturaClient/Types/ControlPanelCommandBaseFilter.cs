@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -64,6 +66,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int IdEqual
 		{
 			get { return _IdEqual; }
@@ -73,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		[JsonProperty]
 		public string IdIn
 		{
 			get { return _IdIn; }
@@ -82,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
 			get { return _CreatedAtGreaterThanOrEqual; }
@@ -91,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
 			get { return _CreatedAtLessThanOrEqual; }
@@ -100,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedByIdEqual
 		{
 			get { return _CreatedByIdEqual; }
@@ -109,6 +116,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedByIdEqual");
 			}
 		}
+		[JsonProperty]
 		public ControlPanelCommandType TypeEqual
 		{
 			get { return _TypeEqual; }
@@ -118,6 +126,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string TypeIn
 		{
 			get { return _TypeIn; }
@@ -127,6 +136,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeIn");
 			}
 		}
+		[JsonProperty]
 		public ControlPanelCommandTargetType TargetTypeEqual
 		{
 			get { return _TargetTypeEqual; }
@@ -136,6 +146,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TargetTypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string TargetTypeIn
 		{
 			get { return _TargetTypeIn; }
@@ -145,6 +156,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TargetTypeIn");
 			}
 		}
+		[JsonProperty]
 		public ControlPanelCommandStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -154,6 +166,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -170,62 +183,52 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ControlPanelCommandBaseFilter(XmlElement node) : base(node)
+		public ControlPanelCommandBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["idEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "idEqual":
-						this._IdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "idIn":
-						this._IdIn = propertyNode.InnerText;
-						continue;
-					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdByIdEqual":
-						this._CreatedByIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "typeEqual":
-						this._TypeEqual = (ControlPanelCommandType)ParseEnum(typeof(ControlPanelCommandType), propertyNode.InnerText);
-						continue;
-					case "typeIn":
-						this._TypeIn = propertyNode.InnerText;
-						continue;
-					case "targetTypeEqual":
-						this._TargetTypeEqual = (ControlPanelCommandTargetType)ParseEnum(typeof(ControlPanelCommandTargetType), propertyNode.InnerText);
-						continue;
-					case "targetTypeIn":
-						this._TargetTypeIn = propertyNode.InnerText;
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (ControlPanelCommandStatus)ParseEnum(typeof(ControlPanelCommandStatus), propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-				}
+				this._IdEqual = ParseInt(node["idEqual"].Value<string>());
 			}
-		}
-
-		public ControlPanelCommandBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
-			    this._IdIn = data.TryGetValueSafe<string>("idIn");
-			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
-			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
-			    this._CreatedByIdEqual = data.TryGetValueSafe<int>("createdByIdEqual");
-			    this._TypeEqual = (ControlPanelCommandType)ParseEnum(typeof(ControlPanelCommandType), data.TryGetValueSafe<int>("typeEqual"));
-			    this._TypeIn = data.TryGetValueSafe<string>("typeIn");
-			    this._TargetTypeEqual = (ControlPanelCommandTargetType)ParseEnum(typeof(ControlPanelCommandTargetType), data.TryGetValueSafe<int>("targetTypeEqual"));
-			    this._TargetTypeIn = data.TryGetValueSafe<string>("targetTypeIn");
-			    this._StatusEqual = (ControlPanelCommandStatus)ParseEnum(typeof(ControlPanelCommandStatus), data.TryGetValueSafe<int>("statusEqual"));
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			if(node["idIn"] != null)
+			{
+				this._IdIn = node["idIn"].Value<string>();
+			}
+			if(node["createdAtGreaterThanOrEqual"] != null)
+			{
+				this._CreatedAtGreaterThanOrEqual = ParseInt(node["createdAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["createdAtLessThanOrEqual"] != null)
+			{
+				this._CreatedAtLessThanOrEqual = ParseInt(node["createdAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["createdByIdEqual"] != null)
+			{
+				this._CreatedByIdEqual = ParseInt(node["createdByIdEqual"].Value<string>());
+			}
+			if(node["typeEqual"] != null)
+			{
+				this._TypeEqual = (ControlPanelCommandType)ParseEnum(typeof(ControlPanelCommandType), node["typeEqual"].Value<string>());
+			}
+			if(node["typeIn"] != null)
+			{
+				this._TypeIn = node["typeIn"].Value<string>();
+			}
+			if(node["targetTypeEqual"] != null)
+			{
+				this._TargetTypeEqual = (ControlPanelCommandTargetType)ParseEnum(typeof(ControlPanelCommandTargetType), node["targetTypeEqual"].Value<string>());
+			}
+			if(node["targetTypeIn"] != null)
+			{
+				this._TargetTypeIn = node["targetTypeIn"].Value<string>();
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (ControlPanelCommandStatus)ParseEnum(typeof(ControlPanelCommandStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
 		}
 		#endregion
 

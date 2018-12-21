@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,17 +50,35 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Header
 		{
 			get { return _Header; }
+			private set 
+			{ 
+				_Header = value;
+				OnPropertyChanged("Header");
+			}
 		}
+		[JsonProperty]
 		public string Data
 		{
 			get { return _Data; }
+			private set 
+			{ 
+				_Data = value;
+				OnPropertyChanged("Data");
+			}
 		}
+		[JsonProperty]
 		public int TotalCount
 		{
 			get { return _TotalCount; }
+			private set 
+			{ 
+				_TotalCount = value;
+				OnPropertyChanged("TotalCount");
+			}
 		}
 		#endregion
 
@@ -67,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ReportTable(XmlElement node) : base(node)
+		public ReportTable(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["header"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "header":
-						this._Header = propertyNode.InnerText;
-						continue;
-					case "data":
-						this._Data = propertyNode.InnerText;
-						continue;
-					case "totalCount":
-						this._TotalCount = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._Header = node["header"].Value<string>();
 			}
-		}
-
-		public ReportTable(IDictionary<string,object> data) : base(data)
-		{
-			    this._Header = data.TryGetValueSafe<string>("header");
-			    this._Data = data.TryGetValueSafe<string>("data");
-			    this._TotalCount = data.TryGetValueSafe<int>("totalCount");
+			if(node["data"] != null)
+			{
+				this._Data = node["data"].Value<string>();
+			}
+			if(node["totalCount"] != null)
+			{
+				this._TotalCount = ParseInt(node["totalCount"].Value<string>());
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,9 +46,15 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int TotalCount
 		{
 			get { return _TotalCount; }
+			private set 
+			{ 
+				_TotalCount = value;
+				OnPropertyChanged("TotalCount");
+			}
 		}
 		#endregion
 
@@ -55,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ESearchResponse(XmlElement node) : base(node)
+		public ESearchResponse(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["totalCount"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "totalCount":
-						this._TotalCount = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._TotalCount = ParseInt(node["totalCount"].Value<string>());
 			}
-		}
-
-		public ESearchResponse(IDictionary<string,object> data) : base(data)
-		{
-			    this._TotalCount = data.TryGetValueSafe<int>("totalCount");
 		}
 		#endregion
 

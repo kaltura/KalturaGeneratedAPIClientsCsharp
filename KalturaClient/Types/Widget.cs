@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -74,10 +76,17 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public string SourceWidgetId
 		{
 			get { return _SourceWidgetId; }
@@ -87,14 +96,27 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceWidgetId");
 			}
 		}
+		[JsonProperty]
 		public string RootWidgetId
 		{
 			get { return _RootWidgetId; }
+			private set 
+			{ 
+				_RootWidgetId = value;
+				OnPropertyChanged("RootWidgetId");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public string EntryId
 		{
 			get { return _EntryId; }
@@ -104,6 +126,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		[JsonProperty]
 		public int UiConfId
 		{
 			get { return _UiConfId; }
@@ -113,6 +136,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UiConfId");
 			}
 		}
+		[JsonProperty]
 		public WidgetSecurityType SecurityType
 		{
 			get { return _SecurityType; }
@@ -122,6 +146,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SecurityType");
 			}
 		}
+		[JsonProperty]
 		public int SecurityPolicy
 		{
 			get { return _SecurityPolicy; }
@@ -131,14 +156,27 @@ namespace Kaltura.Types
 				OnPropertyChanged("SecurityPolicy");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public string PartnerData
 		{
 			get { return _PartnerData; }
@@ -148,10 +186,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerData");
 			}
 		}
+		[JsonProperty]
 		public string WidgetHTML
 		{
 			get { return _WidgetHTML; }
+			private set 
+			{ 
+				_WidgetHTML = value;
+				OnPropertyChanged("WidgetHTML");
+			}
 		}
+		[JsonProperty]
 		public bool? EnforceEntitlement
 		{
 			get { return _EnforceEntitlement; }
@@ -161,6 +206,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EnforceEntitlement");
 			}
 		}
+		[JsonProperty]
 		public string PrivacyContext
 		{
 			get { return _PrivacyContext; }
@@ -170,6 +216,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrivacyContext");
 			}
 		}
+		[JsonProperty]
 		public bool? AddEmbedHtml5Support
 		{
 			get { return _AddEmbedHtml5Support; }
@@ -179,6 +226,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AddEmbedHtml5Support");
 			}
 		}
+		[JsonProperty]
 		public string Roles
 		{
 			get { return _Roles; }
@@ -195,82 +243,72 @@ namespace Kaltura.Types
 		{
 		}
 
-		public Widget(XmlElement node) : base(node)
+		public Widget(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = propertyNode.InnerText;
-						continue;
-					case "sourceWidgetId":
-						this._SourceWidgetId = propertyNode.InnerText;
-						continue;
-					case "rootWidgetId":
-						this._RootWidgetId = propertyNode.InnerText;
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "entryId":
-						this._EntryId = propertyNode.InnerText;
-						continue;
-					case "uiConfId":
-						this._UiConfId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "securityType":
-						this._SecurityType = (WidgetSecurityType)ParseEnum(typeof(WidgetSecurityType), propertyNode.InnerText);
-						continue;
-					case "securityPolicy":
-						this._SecurityPolicy = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerData":
-						this._PartnerData = propertyNode.InnerText;
-						continue;
-					case "widgetHTML":
-						this._WidgetHTML = propertyNode.InnerText;
-						continue;
-					case "enforceEntitlement":
-						this._EnforceEntitlement = ParseBool(propertyNode.InnerText);
-						continue;
-					case "privacyContext":
-						this._PrivacyContext = propertyNode.InnerText;
-						continue;
-					case "addEmbedHtml5Support":
-						this._AddEmbedHtml5Support = ParseBool(propertyNode.InnerText);
-						continue;
-					case "roles":
-						this._Roles = propertyNode.InnerText;
-						continue;
-				}
+				this._Id = node["id"].Value<string>();
 			}
-		}
-
-		public Widget(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<string>("id");
-			    this._SourceWidgetId = data.TryGetValueSafe<string>("sourceWidgetId");
-			    this._RootWidgetId = data.TryGetValueSafe<string>("rootWidgetId");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._EntryId = data.TryGetValueSafe<string>("entryId");
-			    this._UiConfId = data.TryGetValueSafe<int>("uiConfId");
-			    this._SecurityType = (WidgetSecurityType)ParseEnum(typeof(WidgetSecurityType), data.TryGetValueSafe<int>("securityType"));
-			    this._SecurityPolicy = data.TryGetValueSafe<int>("securityPolicy");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._PartnerData = data.TryGetValueSafe<string>("partnerData");
-			    this._WidgetHTML = data.TryGetValueSafe<string>("widgetHTML");
-			    this._EnforceEntitlement = data.TryGetValueSafe<bool>("enforceEntitlement");
-			    this._PrivacyContext = data.TryGetValueSafe<string>("privacyContext");
-			    this._AddEmbedHtml5Support = data.TryGetValueSafe<bool>("addEmbedHtml5Support");
-			    this._Roles = data.TryGetValueSafe<string>("roles");
+			if(node["sourceWidgetId"] != null)
+			{
+				this._SourceWidgetId = node["sourceWidgetId"].Value<string>();
+			}
+			if(node["rootWidgetId"] != null)
+			{
+				this._RootWidgetId = node["rootWidgetId"].Value<string>();
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["entryId"] != null)
+			{
+				this._EntryId = node["entryId"].Value<string>();
+			}
+			if(node["uiConfId"] != null)
+			{
+				this._UiConfId = ParseInt(node["uiConfId"].Value<string>());
+			}
+			if(node["securityType"] != null)
+			{
+				this._SecurityType = (WidgetSecurityType)ParseEnum(typeof(WidgetSecurityType), node["securityType"].Value<string>());
+			}
+			if(node["securityPolicy"] != null)
+			{
+				this._SecurityPolicy = ParseInt(node["securityPolicy"].Value<string>());
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["partnerData"] != null)
+			{
+				this._PartnerData = node["partnerData"].Value<string>();
+			}
+			if(node["widgetHTML"] != null)
+			{
+				this._WidgetHTML = node["widgetHTML"].Value<string>();
+			}
+			if(node["enforceEntitlement"] != null)
+			{
+				this._EnforceEntitlement = ParseBool(node["enforceEntitlement"].Value<string>());
+			}
+			if(node["privacyContext"] != null)
+			{
+				this._PrivacyContext = node["privacyContext"].Value<string>();
+			}
+			if(node["addEmbedHtml5Support"] != null)
+			{
+				this._AddEmbedHtml5Support = ParseBool(node["addEmbedHtml5Support"].Value<string>());
+			}
+			if(node["roles"] != null)
+			{
+				this._Roles = node["roles"].Value<string>();
+			}
 		}
 		#endregion
 

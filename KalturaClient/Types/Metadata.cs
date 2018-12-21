@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -64,49 +66,115 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public int MetadataProfileId
 		{
 			get { return _MetadataProfileId; }
+			private set 
+			{ 
+				_MetadataProfileId = value;
+				OnPropertyChanged("MetadataProfileId");
+			}
 		}
+		[JsonProperty]
 		public int MetadataProfileVersion
 		{
 			get { return _MetadataProfileVersion; }
+			private set 
+			{ 
+				_MetadataProfileVersion = value;
+				OnPropertyChanged("MetadataProfileVersion");
+			}
 		}
+		[JsonProperty]
 		public MetadataObjectType MetadataObjectType
 		{
 			get { return _MetadataObjectType; }
+			private set 
+			{ 
+				_MetadataObjectType = value;
+				OnPropertyChanged("MetadataObjectType");
+			}
 		}
+		[JsonProperty]
 		public string ObjectId
 		{
 			get { return _ObjectId; }
+			private set 
+			{ 
+				_ObjectId = value;
+				OnPropertyChanged("ObjectId");
+			}
 		}
+		[JsonProperty]
 		public int Version
 		{
 			get { return _Version; }
+			private set 
+			{ 
+				_Version = value;
+				OnPropertyChanged("Version");
+			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public MetadataStatus Status
 		{
 			get { return _Status; }
+			private set 
+			{ 
+				_Status = value;
+				OnPropertyChanged("Status");
+			}
 		}
+		[JsonProperty]
 		public string Xml
 		{
 			get { return _Xml; }
+			private set 
+			{ 
+				_Xml = value;
+				OnPropertyChanged("Xml");
+			}
 		}
 		#endregion
 
@@ -115,62 +183,52 @@ namespace Kaltura.Types
 		{
 		}
 
-		public Metadata(XmlElement node) : base(node)
+		public Metadata(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "metadataProfileId":
-						this._MetadataProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "metadataProfileVersion":
-						this._MetadataProfileVersion = ParseInt(propertyNode.InnerText);
-						continue;
-					case "metadataObjectType":
-						this._MetadataObjectType = (MetadataObjectType)StringEnum.Parse(typeof(MetadataObjectType), propertyNode.InnerText);
-						continue;
-					case "objectId":
-						this._ObjectId = propertyNode.InnerText;
-						continue;
-					case "version":
-						this._Version = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "status":
-						this._Status = (MetadataStatus)ParseEnum(typeof(MetadataStatus), propertyNode.InnerText);
-						continue;
-					case "xml":
-						this._Xml = propertyNode.InnerText;
-						continue;
-				}
+				this._Id = ParseInt(node["id"].Value<string>());
 			}
-		}
-
-		public Metadata(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._MetadataProfileId = data.TryGetValueSafe<int>("metadataProfileId");
-			    this._MetadataProfileVersion = data.TryGetValueSafe<int>("metadataProfileVersion");
-			    this._MetadataObjectType = (MetadataObjectType)StringEnum.Parse(typeof(MetadataObjectType), data.TryGetValueSafe<string>("metadataObjectType"));
-			    this._ObjectId = data.TryGetValueSafe<string>("objectId");
-			    this._Version = data.TryGetValueSafe<int>("version");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._Status = (MetadataStatus)ParseEnum(typeof(MetadataStatus), data.TryGetValueSafe<int>("status"));
-			    this._Xml = data.TryGetValueSafe<string>("xml");
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["metadataProfileId"] != null)
+			{
+				this._MetadataProfileId = ParseInt(node["metadataProfileId"].Value<string>());
+			}
+			if(node["metadataProfileVersion"] != null)
+			{
+				this._MetadataProfileVersion = ParseInt(node["metadataProfileVersion"].Value<string>());
+			}
+			if(node["metadataObjectType"] != null)
+			{
+				this._MetadataObjectType = (MetadataObjectType)StringEnum.Parse(typeof(MetadataObjectType), node["metadataObjectType"].Value<string>());
+			}
+			if(node["objectId"] != null)
+			{
+				this._ObjectId = node["objectId"].Value<string>();
+			}
+			if(node["version"] != null)
+			{
+				this._Version = ParseInt(node["version"].Value<string>());
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (MetadataStatus)ParseEnum(typeof(MetadataStatus), node["status"].Value<string>());
+			}
+			if(node["xml"] != null)
+			{
+				this._Xml = node["xml"].Value<string>();
+			}
 		}
 		#endregion
 

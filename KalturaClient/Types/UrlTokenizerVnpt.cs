@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int TokenizationFormat
 		{
 			get { return _TokenizationFormat; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TokenizationFormat");
 			}
 		}
+		[JsonProperty]
 		public bool? ShouldIncludeClientIp
 		{
 			get { return _ShouldIncludeClientIp; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UrlTokenizerVnpt(XmlElement node) : base(node)
+		public UrlTokenizerVnpt(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["tokenizationFormat"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "tokenizationFormat":
-						this._TokenizationFormat = ParseInt(propertyNode.InnerText);
-						continue;
-					case "shouldIncludeClientIp":
-						this._ShouldIncludeClientIp = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._TokenizationFormat = ParseInt(node["tokenizationFormat"].Value<string>());
 			}
-		}
-
-		public UrlTokenizerVnpt(IDictionary<string,object> data) : base(data)
-		{
-			    this._TokenizationFormat = data.TryGetValueSafe<int>("tokenizationFormat");
-			    this._ShouldIncludeClientIp = data.TryGetValueSafe<bool>("shouldIncludeClientIp");
+			if(node["shouldIncludeClientIp"] != null)
+			{
+				this._ShouldIncludeClientIp = ParseBool(node["shouldIncludeClientIp"].Value<string>());
+			}
 		}
 		#endregion
 

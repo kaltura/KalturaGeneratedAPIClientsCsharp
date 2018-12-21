@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ValidationError
 		{
 			get { return _ValidationError; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ValidationError");
 			}
 		}
+		[JsonProperty]
 		public IList<AssetDistributionCondition> AssetDistributionConditions
 		{
 			get { return _AssetDistributionConditions; }
@@ -71,35 +75,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AssetDistributionRule(XmlElement node) : base(node)
+		public AssetDistributionRule(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["validationError"] != null)
 			{
-				switch (propertyNode.Name)
+				this._ValidationError = node["validationError"].Value<string>();
+			}
+			if(node["assetDistributionConditions"] != null)
+			{
+				this._AssetDistributionConditions = new List<AssetDistributionCondition>();
+				foreach(var arrayNode in node["assetDistributionConditions"].Children())
 				{
-					case "validationError":
-						this._ValidationError = propertyNode.InnerText;
-						continue;
-					case "assetDistributionConditions":
-						this._AssetDistributionConditions = new List<AssetDistributionCondition>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._AssetDistributionConditions.Add(ObjectFactory.Create<AssetDistributionCondition>(arrayNode));
-						}
-						continue;
+					this._AssetDistributionConditions.Add(ObjectFactory.Create<AssetDistributionCondition>(arrayNode));
 				}
 			}
-		}
-
-		public AssetDistributionRule(IDictionary<string,object> data) : base(data)
-		{
-			    this._ValidationError = data.TryGetValueSafe<string>("validationError");
-			    this._AssetDistributionConditions = new List<AssetDistributionCondition>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("assetDistributionConditions", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._AssetDistributionConditions.Add(ObjectFactory.Create<AssetDistributionCondition>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

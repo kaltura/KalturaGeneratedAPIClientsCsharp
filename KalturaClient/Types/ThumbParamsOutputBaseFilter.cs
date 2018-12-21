@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int ThumbParamsIdEqual
 		{
 			get { return _ThumbParamsIdEqual; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbParamsIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string ThumbParamsVersionEqual
 		{
 			get { return _ThumbParamsVersionEqual; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbParamsVersionEqual");
 			}
 		}
+		[JsonProperty]
 		public string ThumbAssetIdEqual
 		{
 			get { return _ThumbAssetIdEqual; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbAssetIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string ThumbAssetVersionEqual
 		{
 			get { return _ThumbAssetVersionEqual; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ThumbParamsOutputBaseFilter(XmlElement node) : base(node)
+		public ThumbParamsOutputBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["thumbParamsIdEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "thumbParamsIdEqual":
-						this._ThumbParamsIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "thumbParamsVersionEqual":
-						this._ThumbParamsVersionEqual = propertyNode.InnerText;
-						continue;
-					case "thumbAssetIdEqual":
-						this._ThumbAssetIdEqual = propertyNode.InnerText;
-						continue;
-					case "thumbAssetVersionEqual":
-						this._ThumbAssetVersionEqual = propertyNode.InnerText;
-						continue;
-				}
+				this._ThumbParamsIdEqual = ParseInt(node["thumbParamsIdEqual"].Value<string>());
 			}
-		}
-
-		public ThumbParamsOutputBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._ThumbParamsIdEqual = data.TryGetValueSafe<int>("thumbParamsIdEqual");
-			    this._ThumbParamsVersionEqual = data.TryGetValueSafe<string>("thumbParamsVersionEqual");
-			    this._ThumbAssetIdEqual = data.TryGetValueSafe<string>("thumbAssetIdEqual");
-			    this._ThumbAssetVersionEqual = data.TryGetValueSafe<string>("thumbAssetVersionEqual");
+			if(node["thumbParamsVersionEqual"] != null)
+			{
+				this._ThumbParamsVersionEqual = node["thumbParamsVersionEqual"].Value<string>();
+			}
+			if(node["thumbAssetIdEqual"] != null)
+			{
+				this._ThumbAssetIdEqual = node["thumbAssetIdEqual"].Value<string>();
+			}
+			if(node["thumbAssetVersionEqual"] != null)
+			{
+				this._ThumbAssetVersionEqual = node["thumbAssetVersionEqual"].Value<string>();
+			}
 		}
 		#endregion
 

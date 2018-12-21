@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -54,6 +56,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string FreeText
 		{
 			get { return _FreeText; }
@@ -63,6 +66,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FreeText");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean IsRoot
 		{
 			get { return _IsRoot; }
@@ -72,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsRoot");
 			}
 		}
+		[JsonProperty]
 		public string CategoriesFullNameIn
 		{
 			get { return _CategoriesFullNameIn; }
@@ -81,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoriesFullNameIn");
 			}
 		}
+		[JsonProperty]
 		public string CategoryAncestorIdIn
 		{
 			get { return _CategoryAncestorIdIn; }
@@ -90,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryAncestorIdIn");
 			}
 		}
+		[JsonProperty]
 		public string RedirectFromEntryId
 		{
 			get { return _RedirectFromEntryId; }
@@ -99,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RedirectFromEntryId");
 			}
 		}
+		[JsonProperty]
 		public new BaseEntryOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -115,42 +123,32 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BaseEntryFilter(XmlElement node) : base(node)
+		public BaseEntryFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["freeText"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "freeText":
-						this._FreeText = propertyNode.InnerText;
-						continue;
-					case "isRoot":
-						this._IsRoot = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "categoriesFullNameIn":
-						this._CategoriesFullNameIn = propertyNode.InnerText;
-						continue;
-					case "categoryAncestorIdIn":
-						this._CategoryAncestorIdIn = propertyNode.InnerText;
-						continue;
-					case "redirectFromEntryId":
-						this._RedirectFromEntryId = propertyNode.InnerText;
-						continue;
-					case "orderBy":
-						this._OrderBy = (BaseEntryOrderBy)StringEnum.Parse(typeof(BaseEntryOrderBy), propertyNode.InnerText);
-						continue;
-				}
+				this._FreeText = node["freeText"].Value<string>();
 			}
-		}
-
-		public BaseEntryFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._FreeText = data.TryGetValueSafe<string>("freeText");
-			    this._IsRoot = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isRoot"));
-			    this._CategoriesFullNameIn = data.TryGetValueSafe<string>("categoriesFullNameIn");
-			    this._CategoryAncestorIdIn = data.TryGetValueSafe<string>("categoryAncestorIdIn");
-			    this._RedirectFromEntryId = data.TryGetValueSafe<string>("redirectFromEntryId");
-			    this._OrderBy = (BaseEntryOrderBy)StringEnum.Parse(typeof(BaseEntryOrderBy), data.TryGetValueSafe<string>("orderBy"));
+			if(node["isRoot"] != null)
+			{
+				this._IsRoot = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["isRoot"].Value<string>());
+			}
+			if(node["categoriesFullNameIn"] != null)
+			{
+				this._CategoriesFullNameIn = node["categoriesFullNameIn"].Value<string>();
+			}
+			if(node["categoryAncestorIdIn"] != null)
+			{
+				this._CategoryAncestorIdIn = node["categoryAncestorIdIn"].Value<string>();
+			}
+			if(node["redirectFromEntryId"] != null)
+			{
+				this._RedirectFromEntryId = node["redirectFromEntryId"].Value<string>();
+			}
+			if(node["orderBy"] != null)
+			{
+				this._OrderBy = (BaseEntryOrderBy)StringEnum.Parse(typeof(BaseEntryOrderBy), node["orderBy"].Value<string>());
+			}
 		}
 		#endregion
 

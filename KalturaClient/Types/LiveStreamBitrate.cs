@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Bitrate
 		{
 			get { return _Bitrate; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Bitrate");
 			}
 		}
+		[JsonProperty]
 		public int Width
 		{
 			get { return _Width; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Width");
 			}
 		}
+		[JsonProperty]
 		public int Height
 		{
 			get { return _Height; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Height");
 			}
 		}
+		[JsonProperty]
 		public string Tags
 		{
 			get { return _Tags; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public LiveStreamBitrate(XmlElement node) : base(node)
+		public LiveStreamBitrate(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["bitrate"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "bitrate":
-						this._Bitrate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "width":
-						this._Width = ParseInt(propertyNode.InnerText);
-						continue;
-					case "height":
-						this._Height = ParseInt(propertyNode.InnerText);
-						continue;
-					case "tags":
-						this._Tags = propertyNode.InnerText;
-						continue;
-				}
+				this._Bitrate = ParseInt(node["bitrate"].Value<string>());
 			}
-		}
-
-		public LiveStreamBitrate(IDictionary<string,object> data) : base(data)
-		{
-			    this._Bitrate = data.TryGetValueSafe<int>("bitrate");
-			    this._Width = data.TryGetValueSafe<int>("width");
-			    this._Height = data.TryGetValueSafe<int>("height");
-			    this._Tags = data.TryGetValueSafe<string>("tags");
+			if(node["width"] != null)
+			{
+				this._Width = ParseInt(node["width"].Value<string>());
+			}
+			if(node["height"] != null)
+			{
+				this._Height = ParseInt(node["height"].Value<string>());
+			}
+			if(node["tags"] != null)
+			{
+				this._Tags = node["tags"].Value<string>();
+			}
 		}
 		#endregion
 

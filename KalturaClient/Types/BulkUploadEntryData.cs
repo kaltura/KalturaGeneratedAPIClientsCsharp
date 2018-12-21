@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int ConversionProfileId
 		{
 			get { return _ConversionProfileId; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BulkUploadEntryData(XmlElement node) : base(node)
+		public BulkUploadEntryData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["conversionProfileId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "conversionProfileId":
-						this._ConversionProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._ConversionProfileId = ParseInt(node["conversionProfileId"].Value<string>());
 			}
-		}
-
-		public BulkUploadEntryData(IDictionary<string,object> data) : base(data)
-		{
-			    this._ConversionProfileId = data.TryGetValueSafe<int>("conversionProfileId");
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -68,14 +70,27 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public PermissionType Type
 		{
 			get { return _Type; }
+			private set 
+			{ 
+				_Type = value;
+				OnPropertyChanged("Type");
+			}
 		}
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -85,6 +100,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		[JsonProperty]
 		public string FriendlyName
 		{
 			get { return _FriendlyName; }
@@ -94,6 +110,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FriendlyName");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -103,6 +120,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public PermissionStatus Status
 		{
 			get { return _Status; }
@@ -112,10 +130,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public string DependsOnPermissionNames
 		{
 			get { return _DependsOnPermissionNames; }
@@ -125,6 +150,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DependsOnPermissionNames");
 			}
 		}
+		[JsonProperty]
 		public string Tags
 		{
 			get { return _Tags; }
@@ -134,6 +160,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
+		[JsonProperty]
 		public string PermissionItemsIds
 		{
 			get { return _PermissionItemsIds; }
@@ -143,14 +170,27 @@ namespace Kaltura.Types
 				OnPropertyChanged("PermissionItemsIds");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public string PartnerGroup
 		{
 			get { return _PartnerGroup; }
@@ -167,70 +207,60 @@ namespace Kaltura.Types
 		{
 		}
 
-		public Permission(XmlElement node) : base(node)
+		public Permission(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "type":
-						this._Type = (PermissionType)ParseEnum(typeof(PermissionType), propertyNode.InnerText);
-						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-					case "friendlyName":
-						this._FriendlyName = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "status":
-						this._Status = (PermissionStatus)ParseEnum(typeof(PermissionStatus), propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "dependsOnPermissionNames":
-						this._DependsOnPermissionNames = propertyNode.InnerText;
-						continue;
-					case "tags":
-						this._Tags = propertyNode.InnerText;
-						continue;
-					case "permissionItemsIds":
-						this._PermissionItemsIds = propertyNode.InnerText;
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerGroup":
-						this._PartnerGroup = propertyNode.InnerText;
-						continue;
-				}
+				this._Id = ParseInt(node["id"].Value<string>());
 			}
-		}
-
-		public Permission(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._Type = (PermissionType)ParseEnum(typeof(PermissionType), data.TryGetValueSafe<int>("type"));
-			    this._Name = data.TryGetValueSafe<string>("name");
-			    this._FriendlyName = data.TryGetValueSafe<string>("friendlyName");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._Status = (PermissionStatus)ParseEnum(typeof(PermissionStatus), data.TryGetValueSafe<int>("status"));
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._DependsOnPermissionNames = data.TryGetValueSafe<string>("dependsOnPermissionNames");
-			    this._Tags = data.TryGetValueSafe<string>("tags");
-			    this._PermissionItemsIds = data.TryGetValueSafe<string>("permissionItemsIds");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._PartnerGroup = data.TryGetValueSafe<string>("partnerGroup");
+			if(node["type"] != null)
+			{
+				this._Type = (PermissionType)ParseEnum(typeof(PermissionType), node["type"].Value<string>());
+			}
+			if(node["name"] != null)
+			{
+				this._Name = node["name"].Value<string>();
+			}
+			if(node["friendlyName"] != null)
+			{
+				this._FriendlyName = node["friendlyName"].Value<string>();
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (PermissionStatus)ParseEnum(typeof(PermissionStatus), node["status"].Value<string>());
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["dependsOnPermissionNames"] != null)
+			{
+				this._DependsOnPermissionNames = node["dependsOnPermissionNames"].Value<string>();
+			}
+			if(node["tags"] != null)
+			{
+				this._Tags = node["tags"].Value<string>();
+			}
+			if(node["permissionItemsIds"] != null)
+			{
+				this._PermissionItemsIds = node["permissionItemsIds"].Value<string>();
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["partnerGroup"] != null)
+			{
+				this._PartnerGroup = node["partnerGroup"].Value<string>();
+			}
 		}
 		#endregion
 

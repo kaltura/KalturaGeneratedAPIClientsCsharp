@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,9 +46,15 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public DropFolderFileHandlerType HandlerType
 		{
 			get { return _HandlerType; }
+			private set 
+			{ 
+				_HandlerType = value;
+				OnPropertyChanged("HandlerType");
+			}
 		}
 		#endregion
 
@@ -55,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DropFolderFileHandlerConfig(XmlElement node) : base(node)
+		public DropFolderFileHandlerConfig(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["handlerType"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "handlerType":
-						this._HandlerType = (DropFolderFileHandlerType)StringEnum.Parse(typeof(DropFolderFileHandlerType), propertyNode.InnerText);
-						continue;
-				}
+				this._HandlerType = (DropFolderFileHandlerType)StringEnum.Parse(typeof(DropFolderFileHandlerType), node["handlerType"].Value<string>());
 			}
-		}
-
-		public DropFolderFileHandlerConfig(IDictionary<string,object> data) : base(data)
-		{
-			    this._HandlerType = (DropFolderFileHandlerType)StringEnum.Parse(typeof(DropFolderFileHandlerType), data.TryGetValueSafe<string>("handlerType"));
 		}
 		#endregion
 

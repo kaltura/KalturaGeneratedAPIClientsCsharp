@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,6 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int FlavorParamsIdEqual
 		{
 			get { return _FlavorParamsIdEqual; }
@@ -61,6 +64,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string FlavorParamsIdIn
 		{
 			get { return _FlavorParamsIdIn; }
@@ -70,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsIdIn");
 			}
 		}
+		[JsonProperty]
 		public FlavorAssetStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -79,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -88,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		[JsonProperty]
 		public string StatusNotIn
 		{
 			get { return _StatusNotIn; }
@@ -104,38 +111,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FlavorAssetBaseFilter(XmlElement node) : base(node)
+		public FlavorAssetBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["flavorParamsIdEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "flavorParamsIdEqual":
-						this._FlavorParamsIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "flavorParamsIdIn":
-						this._FlavorParamsIdIn = propertyNode.InnerText;
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (FlavorAssetStatus)ParseEnum(typeof(FlavorAssetStatus), propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-					case "statusNotIn":
-						this._StatusNotIn = propertyNode.InnerText;
-						continue;
-				}
+				this._FlavorParamsIdEqual = ParseInt(node["flavorParamsIdEqual"].Value<string>());
 			}
-		}
-
-		public FlavorAssetBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._FlavorParamsIdEqual = data.TryGetValueSafe<int>("flavorParamsIdEqual");
-			    this._FlavorParamsIdIn = data.TryGetValueSafe<string>("flavorParamsIdIn");
-			    this._StatusEqual = (FlavorAssetStatus)ParseEnum(typeof(FlavorAssetStatus), data.TryGetValueSafe<int>("statusEqual"));
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
-			    this._StatusNotIn = data.TryGetValueSafe<string>("statusNotIn");
+			if(node["flavorParamsIdIn"] != null)
+			{
+				this._FlavorParamsIdIn = node["flavorParamsIdIn"].Value<string>();
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (FlavorAssetStatus)ParseEnum(typeof(FlavorAssetStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
+			if(node["statusNotIn"] != null)
+			{
+				this._StatusNotIn = node["statusNotIn"].Value<string>();
+			}
 		}
 		#endregion
 

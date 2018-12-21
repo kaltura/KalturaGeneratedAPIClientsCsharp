@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,6 +58,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string MailTo
 		{
 			get { return _MailTo; }
@@ -65,6 +68,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MailTo");
 			}
 		}
+		[JsonProperty]
 		public string Sender
 		{
 			get { return _Sender; }
@@ -74,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Sender");
 			}
 		}
+		[JsonProperty]
 		public string Subject
 		{
 			get { return _Subject; }
@@ -83,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Subject");
 			}
 		}
+		[JsonProperty]
 		public string Message
 		{
 			get { return _Message; }
@@ -92,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Message");
 			}
 		}
+		[JsonProperty]
 		public string Footer
 		{
 			get { return _Footer; }
@@ -101,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Footer");
 			}
 		}
+		[JsonProperty]
 		public string Link
 		{
 			get { return _Link; }
@@ -110,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Link");
 			}
 		}
+		[JsonProperty]
 		public bool? SendToUsers
 		{
 			get { return _SendToUsers; }
@@ -126,46 +135,36 @@ namespace Kaltura.Types
 		{
 		}
 
-		public MailNotificationObjectTask(XmlElement node) : base(node)
+		public MailNotificationObjectTask(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["mailTo"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "mailTo":
-						this._MailTo = propertyNode.InnerText;
-						continue;
-					case "sender":
-						this._Sender = propertyNode.InnerText;
-						continue;
-					case "subject":
-						this._Subject = propertyNode.InnerText;
-						continue;
-					case "message":
-						this._Message = propertyNode.InnerText;
-						continue;
-					case "footer":
-						this._Footer = propertyNode.InnerText;
-						continue;
-					case "link":
-						this._Link = propertyNode.InnerText;
-						continue;
-					case "sendToUsers":
-						this._SendToUsers = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._MailTo = node["mailTo"].Value<string>();
 			}
-		}
-
-		public MailNotificationObjectTask(IDictionary<string,object> data) : base(data)
-		{
-			    this._MailTo = data.TryGetValueSafe<string>("mailTo");
-			    this._Sender = data.TryGetValueSafe<string>("sender");
-			    this._Subject = data.TryGetValueSafe<string>("subject");
-			    this._Message = data.TryGetValueSafe<string>("message");
-			    this._Footer = data.TryGetValueSafe<string>("footer");
-			    this._Link = data.TryGetValueSafe<string>("link");
-			    this._SendToUsers = data.TryGetValueSafe<bool>("sendToUsers");
+			if(node["sender"] != null)
+			{
+				this._Sender = node["sender"].Value<string>();
+			}
+			if(node["subject"] != null)
+			{
+				this._Subject = node["subject"].Value<string>();
+			}
+			if(node["message"] != null)
+			{
+				this._Message = node["message"].Value<string>();
+			}
+			if(node["footer"] != null)
+			{
+				this._Footer = node["footer"].Value<string>();
+			}
+			if(node["link"] != null)
+			{
+				this._Link = node["link"].Value<string>();
+			}
+			if(node["sendToUsers"] != null)
+			{
+				this._SendToUsers = ParseBool(node["sendToUsers"].Value<string>());
+			}
 		}
 		#endregion
 

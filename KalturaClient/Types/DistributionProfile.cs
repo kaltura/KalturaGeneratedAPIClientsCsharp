@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -90,22 +92,47 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public DistributionProviderType ProviderType
 		{
 			get { return _ProviderType; }
@@ -115,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProviderType");
 			}
 		}
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -124,6 +152,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		[JsonProperty]
 		public DistributionProfileStatus Status
 		{
 			get { return _Status; }
@@ -133,6 +162,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		[JsonProperty]
 		public DistributionProfileActionStatus SubmitEnabled
 		{
 			get { return _SubmitEnabled; }
@@ -142,6 +172,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SubmitEnabled");
 			}
 		}
+		[JsonProperty]
 		public DistributionProfileActionStatus UpdateEnabled
 		{
 			get { return _UpdateEnabled; }
@@ -151,6 +182,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdateEnabled");
 			}
 		}
+		[JsonProperty]
 		public DistributionProfileActionStatus DeleteEnabled
 		{
 			get { return _DeleteEnabled; }
@@ -160,6 +192,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeleteEnabled");
 			}
 		}
+		[JsonProperty]
 		public DistributionProfileActionStatus ReportEnabled
 		{
 			get { return _ReportEnabled; }
@@ -169,6 +202,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReportEnabled");
 			}
 		}
+		[JsonProperty]
 		public string AutoCreateFlavors
 		{
 			get { return _AutoCreateFlavors; }
@@ -178,6 +212,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AutoCreateFlavors");
 			}
 		}
+		[JsonProperty]
 		public string AutoCreateThumb
 		{
 			get { return _AutoCreateThumb; }
@@ -187,6 +222,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AutoCreateThumb");
 			}
 		}
+		[JsonProperty]
 		public string OptionalFlavorParamsIds
 		{
 			get { return _OptionalFlavorParamsIds; }
@@ -196,6 +232,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("OptionalFlavorParamsIds");
 			}
 		}
+		[JsonProperty]
 		public string RequiredFlavorParamsIds
 		{
 			get { return _RequiredFlavorParamsIds; }
@@ -205,6 +242,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RequiredFlavorParamsIds");
 			}
 		}
+		[JsonProperty]
 		public IList<DistributionThumbDimensions> OptionalThumbDimensions
 		{
 			get { return _OptionalThumbDimensions; }
@@ -214,6 +252,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("OptionalThumbDimensions");
 			}
 		}
+		[JsonProperty]
 		public IList<DistributionThumbDimensions> RequiredThumbDimensions
 		{
 			get { return _RequiredThumbDimensions; }
@@ -223,6 +262,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RequiredThumbDimensions");
 			}
 		}
+		[JsonProperty]
 		public IList<AssetDistributionRule> OptionalAssetDistributionRules
 		{
 			get { return _OptionalAssetDistributionRules; }
@@ -232,6 +272,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("OptionalAssetDistributionRules");
 			}
 		}
+		[JsonProperty]
 		public IList<AssetDistributionRule> RequiredAssetDistributionRules
 		{
 			get { return _RequiredAssetDistributionRules; }
@@ -241,6 +282,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RequiredAssetDistributionRules");
 			}
 		}
+		[JsonProperty]
 		public int SunriseDefaultOffset
 		{
 			get { return _SunriseDefaultOffset; }
@@ -250,6 +292,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SunriseDefaultOffset");
 			}
 		}
+		[JsonProperty]
 		public int SunsetDefaultOffset
 		{
 			get { return _SunsetDefaultOffset; }
@@ -259,6 +302,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SunsetDefaultOffset");
 			}
 		}
+		[JsonProperty]
 		public int RecommendedStorageProfileForDownload
 		{
 			get { return _RecommendedStorageProfileForDownload; }
@@ -268,6 +312,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecommendedStorageProfileForDownload");
 			}
 		}
+		[JsonProperty]
 		public int RecommendedDcForDownload
 		{
 			get { return _RecommendedDcForDownload; }
@@ -277,6 +322,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecommendedDcForDownload");
 			}
 		}
+		[JsonProperty]
 		public int RecommendedDcForExecute
 		{
 			get { return _RecommendedDcForExecute; }
@@ -293,150 +339,120 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DistributionProfile(XmlElement node) : base(node)
+		public DistributionProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Id = ParseInt(node["id"].Value<string>());
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["providerType"] != null)
+			{
+				this._ProviderType = (DistributionProviderType)StringEnum.Parse(typeof(DistributionProviderType), node["providerType"].Value<string>());
+			}
+			if(node["name"] != null)
+			{
+				this._Name = node["name"].Value<string>();
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (DistributionProfileStatus)ParseEnum(typeof(DistributionProfileStatus), node["status"].Value<string>());
+			}
+			if(node["submitEnabled"] != null)
+			{
+				this._SubmitEnabled = (DistributionProfileActionStatus)ParseEnum(typeof(DistributionProfileActionStatus), node["submitEnabled"].Value<string>());
+			}
+			if(node["updateEnabled"] != null)
+			{
+				this._UpdateEnabled = (DistributionProfileActionStatus)ParseEnum(typeof(DistributionProfileActionStatus), node["updateEnabled"].Value<string>());
+			}
+			if(node["deleteEnabled"] != null)
+			{
+				this._DeleteEnabled = (DistributionProfileActionStatus)ParseEnum(typeof(DistributionProfileActionStatus), node["deleteEnabled"].Value<string>());
+			}
+			if(node["reportEnabled"] != null)
+			{
+				this._ReportEnabled = (DistributionProfileActionStatus)ParseEnum(typeof(DistributionProfileActionStatus), node["reportEnabled"].Value<string>());
+			}
+			if(node["autoCreateFlavors"] != null)
+			{
+				this._AutoCreateFlavors = node["autoCreateFlavors"].Value<string>();
+			}
+			if(node["autoCreateThumb"] != null)
+			{
+				this._AutoCreateThumb = node["autoCreateThumb"].Value<string>();
+			}
+			if(node["optionalFlavorParamsIds"] != null)
+			{
+				this._OptionalFlavorParamsIds = node["optionalFlavorParamsIds"].Value<string>();
+			}
+			if(node["requiredFlavorParamsIds"] != null)
+			{
+				this._RequiredFlavorParamsIds = node["requiredFlavorParamsIds"].Value<string>();
+			}
+			if(node["optionalThumbDimensions"] != null)
+			{
+				this._OptionalThumbDimensions = new List<DistributionThumbDimensions>();
+				foreach(var arrayNode in node["optionalThumbDimensions"].Children())
 				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "providerType":
-						this._ProviderType = (DistributionProviderType)StringEnum.Parse(typeof(DistributionProviderType), propertyNode.InnerText);
-						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-					case "status":
-						this._Status = (DistributionProfileStatus)ParseEnum(typeof(DistributionProfileStatus), propertyNode.InnerText);
-						continue;
-					case "submitEnabled":
-						this._SubmitEnabled = (DistributionProfileActionStatus)ParseEnum(typeof(DistributionProfileActionStatus), propertyNode.InnerText);
-						continue;
-					case "updateEnabled":
-						this._UpdateEnabled = (DistributionProfileActionStatus)ParseEnum(typeof(DistributionProfileActionStatus), propertyNode.InnerText);
-						continue;
-					case "deleteEnabled":
-						this._DeleteEnabled = (DistributionProfileActionStatus)ParseEnum(typeof(DistributionProfileActionStatus), propertyNode.InnerText);
-						continue;
-					case "reportEnabled":
-						this._ReportEnabled = (DistributionProfileActionStatus)ParseEnum(typeof(DistributionProfileActionStatus), propertyNode.InnerText);
-						continue;
-					case "autoCreateFlavors":
-						this._AutoCreateFlavors = propertyNode.InnerText;
-						continue;
-					case "autoCreateThumb":
-						this._AutoCreateThumb = propertyNode.InnerText;
-						continue;
-					case "optionalFlavorParamsIds":
-						this._OptionalFlavorParamsIds = propertyNode.InnerText;
-						continue;
-					case "requiredFlavorParamsIds":
-						this._RequiredFlavorParamsIds = propertyNode.InnerText;
-						continue;
-					case "optionalThumbDimensions":
-						this._OptionalThumbDimensions = new List<DistributionThumbDimensions>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._OptionalThumbDimensions.Add(ObjectFactory.Create<DistributionThumbDimensions>(arrayNode));
-						}
-						continue;
-					case "requiredThumbDimensions":
-						this._RequiredThumbDimensions = new List<DistributionThumbDimensions>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._RequiredThumbDimensions.Add(ObjectFactory.Create<DistributionThumbDimensions>(arrayNode));
-						}
-						continue;
-					case "optionalAssetDistributionRules":
-						this._OptionalAssetDistributionRules = new List<AssetDistributionRule>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._OptionalAssetDistributionRules.Add(ObjectFactory.Create<AssetDistributionRule>(arrayNode));
-						}
-						continue;
-					case "requiredAssetDistributionRules":
-						this._RequiredAssetDistributionRules = new List<AssetDistributionRule>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._RequiredAssetDistributionRules.Add(ObjectFactory.Create<AssetDistributionRule>(arrayNode));
-						}
-						continue;
-					case "sunriseDefaultOffset":
-						this._SunriseDefaultOffset = ParseInt(propertyNode.InnerText);
-						continue;
-					case "sunsetDefaultOffset":
-						this._SunsetDefaultOffset = ParseInt(propertyNode.InnerText);
-						continue;
-					case "recommendedStorageProfileForDownload":
-						this._RecommendedStorageProfileForDownload = ParseInt(propertyNode.InnerText);
-						continue;
-					case "recommendedDcForDownload":
-						this._RecommendedDcForDownload = ParseInt(propertyNode.InnerText);
-						continue;
-					case "recommendedDcForExecute":
-						this._RecommendedDcForExecute = ParseInt(propertyNode.InnerText);
-						continue;
+					this._OptionalThumbDimensions.Add(ObjectFactory.Create<DistributionThumbDimensions>(arrayNode));
 				}
 			}
-		}
-
-		public DistributionProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._ProviderType = (DistributionProviderType)StringEnum.Parse(typeof(DistributionProviderType), data.TryGetValueSafe<string>("providerType"));
-			    this._Name = data.TryGetValueSafe<string>("name");
-			    this._Status = (DistributionProfileStatus)ParseEnum(typeof(DistributionProfileStatus), data.TryGetValueSafe<int>("status"));
-			    this._SubmitEnabled = (DistributionProfileActionStatus)ParseEnum(typeof(DistributionProfileActionStatus), data.TryGetValueSafe<int>("submitEnabled"));
-			    this._UpdateEnabled = (DistributionProfileActionStatus)ParseEnum(typeof(DistributionProfileActionStatus), data.TryGetValueSafe<int>("updateEnabled"));
-			    this._DeleteEnabled = (DistributionProfileActionStatus)ParseEnum(typeof(DistributionProfileActionStatus), data.TryGetValueSafe<int>("deleteEnabled"));
-			    this._ReportEnabled = (DistributionProfileActionStatus)ParseEnum(typeof(DistributionProfileActionStatus), data.TryGetValueSafe<int>("reportEnabled"));
-			    this._AutoCreateFlavors = data.TryGetValueSafe<string>("autoCreateFlavors");
-			    this._AutoCreateThumb = data.TryGetValueSafe<string>("autoCreateThumb");
-			    this._OptionalFlavorParamsIds = data.TryGetValueSafe<string>("optionalFlavorParamsIds");
-			    this._RequiredFlavorParamsIds = data.TryGetValueSafe<string>("requiredFlavorParamsIds");
-			    this._OptionalThumbDimensions = new List<DistributionThumbDimensions>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("optionalThumbDimensions", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._OptionalThumbDimensions.Add(ObjectFactory.Create<DistributionThumbDimensions>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._RequiredThumbDimensions = new List<DistributionThumbDimensions>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("requiredThumbDimensions", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._RequiredThumbDimensions.Add(ObjectFactory.Create<DistributionThumbDimensions>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._OptionalAssetDistributionRules = new List<AssetDistributionRule>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("optionalAssetDistributionRules", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._OptionalAssetDistributionRules.Add(ObjectFactory.Create<AssetDistributionRule>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._RequiredAssetDistributionRules = new List<AssetDistributionRule>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("requiredAssetDistributionRules", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._RequiredAssetDistributionRules.Add(ObjectFactory.Create<AssetDistributionRule>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._SunriseDefaultOffset = data.TryGetValueSafe<int>("sunriseDefaultOffset");
-			    this._SunsetDefaultOffset = data.TryGetValueSafe<int>("sunsetDefaultOffset");
-			    this._RecommendedStorageProfileForDownload = data.TryGetValueSafe<int>("recommendedStorageProfileForDownload");
-			    this._RecommendedDcForDownload = data.TryGetValueSafe<int>("recommendedDcForDownload");
-			    this._RecommendedDcForExecute = data.TryGetValueSafe<int>("recommendedDcForExecute");
+			if(node["requiredThumbDimensions"] != null)
+			{
+				this._RequiredThumbDimensions = new List<DistributionThumbDimensions>();
+				foreach(var arrayNode in node["requiredThumbDimensions"].Children())
+				{
+					this._RequiredThumbDimensions.Add(ObjectFactory.Create<DistributionThumbDimensions>(arrayNode));
+				}
+			}
+			if(node["optionalAssetDistributionRules"] != null)
+			{
+				this._OptionalAssetDistributionRules = new List<AssetDistributionRule>();
+				foreach(var arrayNode in node["optionalAssetDistributionRules"].Children())
+				{
+					this._OptionalAssetDistributionRules.Add(ObjectFactory.Create<AssetDistributionRule>(arrayNode));
+				}
+			}
+			if(node["requiredAssetDistributionRules"] != null)
+			{
+				this._RequiredAssetDistributionRules = new List<AssetDistributionRule>();
+				foreach(var arrayNode in node["requiredAssetDistributionRules"].Children())
+				{
+					this._RequiredAssetDistributionRules.Add(ObjectFactory.Create<AssetDistributionRule>(arrayNode));
+				}
+			}
+			if(node["sunriseDefaultOffset"] != null)
+			{
+				this._SunriseDefaultOffset = ParseInt(node["sunriseDefaultOffset"].Value<string>());
+			}
+			if(node["sunsetDefaultOffset"] != null)
+			{
+				this._SunsetDefaultOffset = ParseInt(node["sunsetDefaultOffset"].Value<string>());
+			}
+			if(node["recommendedStorageProfileForDownload"] != null)
+			{
+				this._RecommendedStorageProfileForDownload = ParseInt(node["recommendedStorageProfileForDownload"].Value<string>());
+			}
+			if(node["recommendedDcForDownload"] != null)
+			{
+				this._RecommendedDcForDownload = ParseInt(node["recommendedDcForDownload"].Value<string>());
+			}
+			if(node["recommendedDcForExecute"] != null)
+			{
+				this._RecommendedDcForExecute = ParseInt(node["recommendedDcForExecute"].Value<string>());
+			}
 		}
 		#endregion
 

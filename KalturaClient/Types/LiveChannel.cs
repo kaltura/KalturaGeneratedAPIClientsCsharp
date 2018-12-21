@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string PlaylistId
 		{
 			get { return _PlaylistId; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PlaylistId");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean Repeat
 		{
 			get { return _Repeat; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public LiveChannel(XmlElement node) : base(node)
+		public LiveChannel(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["playlistId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "playlistId":
-						this._PlaylistId = propertyNode.InnerText;
-						continue;
-					case "repeat":
-						this._Repeat = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-				}
+				this._PlaylistId = node["playlistId"].Value<string>();
 			}
-		}
-
-		public LiveChannel(IDictionary<string,object> data) : base(data)
-		{
-			    this._PlaylistId = data.TryGetValueSafe<string>("playlistId");
-			    this._Repeat = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("repeat"));
+			if(node["repeat"] != null)
+			{
+				this._Repeat = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["repeat"].Value<string>());
+			}
 		}
 		#endregion
 

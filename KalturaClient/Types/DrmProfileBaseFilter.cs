@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -60,6 +62,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int IdEqual
 		{
 			get { return _IdEqual; }
@@ -69,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		[JsonProperty]
 		public string IdIn
 		{
 			get { return _IdIn; }
@@ -78,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		[JsonProperty]
 		public int PartnerIdEqual
 		{
 			get { return _PartnerIdEqual; }
@@ -87,6 +92,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string PartnerIdIn
 		{
 			get { return _PartnerIdIn; }
@@ -96,6 +102,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdIn");
 			}
 		}
+		[JsonProperty]
 		public string NameLike
 		{
 			get { return _NameLike; }
@@ -105,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("NameLike");
 			}
 		}
+		[JsonProperty]
 		public DrmProviderType ProviderEqual
 		{
 			get { return _ProviderEqual; }
@@ -114,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProviderEqual");
 			}
 		}
+		[JsonProperty]
 		public string ProviderIn
 		{
 			get { return _ProviderIn; }
@@ -123,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProviderIn");
 			}
 		}
+		[JsonProperty]
 		public DrmProfileStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -132,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -148,54 +159,44 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DrmProfileBaseFilter(XmlElement node) : base(node)
+		public DrmProfileBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["idEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "idEqual":
-						this._IdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "idIn":
-						this._IdIn = propertyNode.InnerText;
-						continue;
-					case "partnerIdEqual":
-						this._PartnerIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerIdIn":
-						this._PartnerIdIn = propertyNode.InnerText;
-						continue;
-					case "nameLike":
-						this._NameLike = propertyNode.InnerText;
-						continue;
-					case "providerEqual":
-						this._ProviderEqual = (DrmProviderType)StringEnum.Parse(typeof(DrmProviderType), propertyNode.InnerText);
-						continue;
-					case "providerIn":
-						this._ProviderIn = propertyNode.InnerText;
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (DrmProfileStatus)ParseEnum(typeof(DrmProfileStatus), propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-				}
+				this._IdEqual = ParseInt(node["idEqual"].Value<string>());
 			}
-		}
-
-		public DrmProfileBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
-			    this._IdIn = data.TryGetValueSafe<string>("idIn");
-			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
-			    this._PartnerIdIn = data.TryGetValueSafe<string>("partnerIdIn");
-			    this._NameLike = data.TryGetValueSafe<string>("nameLike");
-			    this._ProviderEqual = (DrmProviderType)StringEnum.Parse(typeof(DrmProviderType), data.TryGetValueSafe<string>("providerEqual"));
-			    this._ProviderIn = data.TryGetValueSafe<string>("providerIn");
-			    this._StatusEqual = (DrmProfileStatus)ParseEnum(typeof(DrmProfileStatus), data.TryGetValueSafe<int>("statusEqual"));
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
+			if(node["idIn"] != null)
+			{
+				this._IdIn = node["idIn"].Value<string>();
+			}
+			if(node["partnerIdEqual"] != null)
+			{
+				this._PartnerIdEqual = ParseInt(node["partnerIdEqual"].Value<string>());
+			}
+			if(node["partnerIdIn"] != null)
+			{
+				this._PartnerIdIn = node["partnerIdIn"].Value<string>();
+			}
+			if(node["nameLike"] != null)
+			{
+				this._NameLike = node["nameLike"].Value<string>();
+			}
+			if(node["providerEqual"] != null)
+			{
+				this._ProviderEqual = (DrmProviderType)StringEnum.Parse(typeof(DrmProviderType), node["providerEqual"].Value<string>());
+			}
+			if(node["providerIn"] != null)
+			{
+				this._ProviderIn = node["providerIn"].Value<string>();
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (DrmProfileStatus)ParseEnum(typeof(DrmProfileStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
 		}
 		#endregion
 

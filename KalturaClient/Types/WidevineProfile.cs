@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -54,6 +56,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Key
 		{
 			get { return _Key; }
@@ -63,6 +66,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Key");
 			}
 		}
+		[JsonProperty]
 		public string Iv
 		{
 			get { return _Iv; }
@@ -72,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Iv");
 			}
 		}
+		[JsonProperty]
 		public string Owner
 		{
 			get { return _Owner; }
@@ -81,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Owner");
 			}
 		}
+		[JsonProperty]
 		public string Portal
 		{
 			get { return _Portal; }
@@ -90,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Portal");
 			}
 		}
+		[JsonProperty]
 		public int MaxGop
 		{
 			get { return _MaxGop; }
@@ -99,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MaxGop");
 			}
 		}
+		[JsonProperty]
 		public string RegServerHost
 		{
 			get { return _RegServerHost; }
@@ -115,42 +123,32 @@ namespace Kaltura.Types
 		{
 		}
 
-		public WidevineProfile(XmlElement node) : base(node)
+		public WidevineProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["key"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "key":
-						this._Key = propertyNode.InnerText;
-						continue;
-					case "iv":
-						this._Iv = propertyNode.InnerText;
-						continue;
-					case "owner":
-						this._Owner = propertyNode.InnerText;
-						continue;
-					case "portal":
-						this._Portal = propertyNode.InnerText;
-						continue;
-					case "maxGop":
-						this._MaxGop = ParseInt(propertyNode.InnerText);
-						continue;
-					case "regServerHost":
-						this._RegServerHost = propertyNode.InnerText;
-						continue;
-				}
+				this._Key = node["key"].Value<string>();
 			}
-		}
-
-		public WidevineProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._Key = data.TryGetValueSafe<string>("key");
-			    this._Iv = data.TryGetValueSafe<string>("iv");
-			    this._Owner = data.TryGetValueSafe<string>("owner");
-			    this._Portal = data.TryGetValueSafe<string>("portal");
-			    this._MaxGop = data.TryGetValueSafe<int>("maxGop");
-			    this._RegServerHost = data.TryGetValueSafe<string>("regServerHost");
+			if(node["iv"] != null)
+			{
+				this._Iv = node["iv"].Value<string>();
+			}
+			if(node["owner"] != null)
+			{
+				this._Owner = node["owner"].Value<string>();
+			}
+			if(node["portal"] != null)
+			{
+				this._Portal = node["portal"].Value<string>();
+			}
+			if(node["maxGop"] != null)
+			{
+				this._MaxGop = ParseInt(node["maxGop"].Value<string>());
+			}
+			if(node["regServerHost"] != null)
+			{
+				this._RegServerHost = node["regServerHost"].Value<string>();
+			}
 		}
 		#endregion
 

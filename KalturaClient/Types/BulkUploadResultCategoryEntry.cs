@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int CategoryId
 		{
 			get { return _CategoryId; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryId");
 			}
 		}
+		[JsonProperty]
 		public string EntryId
 		{
 			get { return _EntryId; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BulkUploadResultCategoryEntry(XmlElement node) : base(node)
+		public BulkUploadResultCategoryEntry(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["categoryId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "categoryId":
-						this._CategoryId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "entryId":
-						this._EntryId = propertyNode.InnerText;
-						continue;
-				}
+				this._CategoryId = ParseInt(node["categoryId"].Value<string>());
 			}
-		}
-
-		public BulkUploadResultCategoryEntry(IDictionary<string,object> data) : base(data)
-		{
-			    this._CategoryId = data.TryGetValueSafe<int>("categoryId");
-			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+			if(node["entryId"] != null)
+			{
+				this._EntryId = node["entryId"].Value<string>();
+			}
 		}
 		#endregion
 

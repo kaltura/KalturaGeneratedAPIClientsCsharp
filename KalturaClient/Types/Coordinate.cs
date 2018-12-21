@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public float Latitude
 		{
 			get { return _Latitude; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Latitude");
 			}
 		}
+		[JsonProperty]
 		public float Longitude
 		{
 			get { return _Longitude; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Longitude");
 			}
 		}
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public Coordinate(XmlElement node) : base(node)
+		public Coordinate(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["latitude"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "latitude":
-						this._Latitude = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "longitude":
-						this._Longitude = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-				}
+				this._Latitude = ParseFloat(node["latitude"].Value<string>());
 			}
-		}
-
-		public Coordinate(IDictionary<string,object> data) : base(data)
-		{
-			    this._Latitude = data.TryGetValueSafe<float>("latitude");
-			    this._Longitude = data.TryGetValueSafe<float>("longitude");
-			    this._Name = data.TryGetValueSafe<string>("name");
+			if(node["longitude"] != null)
+			{
+				this._Longitude = ParseFloat(node["longitude"].Value<string>());
+			}
+			if(node["name"] != null)
+			{
+				this._Name = node["name"].Value<string>();
+			}
 		}
 		#endregion
 

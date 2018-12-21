@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,6 +58,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int InputMetadataProfileId
 		{
 			get { return _InputMetadataProfileId; }
@@ -65,6 +68,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("InputMetadataProfileId");
 			}
 		}
+		[JsonProperty]
 		public IList<KeyValue> InputMetadata
 		{
 			get { return _InputMetadata; }
@@ -74,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("InputMetadata");
 			}
 		}
+		[JsonProperty]
 		public int OutputMetadataProfileId
 		{
 			get { return _OutputMetadataProfileId; }
@@ -83,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("OutputMetadataProfileId");
 			}
 		}
+		[JsonProperty]
 		public IList<KeyValue> OutputMetadata
 		{
 			get { return _OutputMetadata; }
@@ -92,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("OutputMetadata");
 			}
 		}
+		[JsonProperty]
 		public string InputUserId
 		{
 			get { return _InputUserId; }
@@ -101,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("InputUserId");
 			}
 		}
+		[JsonProperty]
 		public string InputEntitledUsersEdit
 		{
 			get { return _InputEntitledUsersEdit; }
@@ -110,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("InputEntitledUsersEdit");
 			}
 		}
+		[JsonProperty]
 		public string InputEntitledUsersPublish
 		{
 			get { return _InputEntitledUsersPublish; }
@@ -126,64 +135,44 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ModifyEntryObjectTask(XmlElement node) : base(node)
+		public ModifyEntryObjectTask(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["inputMetadataProfileId"] != null)
 			{
-				switch (propertyNode.Name)
+				this._InputMetadataProfileId = ParseInt(node["inputMetadataProfileId"].Value<string>());
+			}
+			if(node["inputMetadata"] != null)
+			{
+				this._InputMetadata = new List<KeyValue>();
+				foreach(var arrayNode in node["inputMetadata"].Children())
 				{
-					case "inputMetadataProfileId":
-						this._InputMetadataProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "inputMetadata":
-						this._InputMetadata = new List<KeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._InputMetadata.Add(ObjectFactory.Create<KeyValue>(arrayNode));
-						}
-						continue;
-					case "outputMetadataProfileId":
-						this._OutputMetadataProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "outputMetadata":
-						this._OutputMetadata = new List<KeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._OutputMetadata.Add(ObjectFactory.Create<KeyValue>(arrayNode));
-						}
-						continue;
-					case "inputUserId":
-						this._InputUserId = propertyNode.InnerText;
-						continue;
-					case "inputEntitledUsersEdit":
-						this._InputEntitledUsersEdit = propertyNode.InnerText;
-						continue;
-					case "inputEntitledUsersPublish":
-						this._InputEntitledUsersPublish = propertyNode.InnerText;
-						continue;
+					this._InputMetadata.Add(ObjectFactory.Create<KeyValue>(arrayNode));
 				}
 			}
-		}
-
-		public ModifyEntryObjectTask(IDictionary<string,object> data) : base(data)
-		{
-			    this._InputMetadataProfileId = data.TryGetValueSafe<int>("inputMetadataProfileId");
-			    this._InputMetadata = new List<KeyValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("inputMetadata", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._InputMetadata.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._OutputMetadataProfileId = data.TryGetValueSafe<int>("outputMetadataProfileId");
-			    this._OutputMetadata = new List<KeyValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("outputMetadata", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._OutputMetadata.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._InputUserId = data.TryGetValueSafe<string>("inputUserId");
-			    this._InputEntitledUsersEdit = data.TryGetValueSafe<string>("inputEntitledUsersEdit");
-			    this._InputEntitledUsersPublish = data.TryGetValueSafe<string>("inputEntitledUsersPublish");
+			if(node["outputMetadataProfileId"] != null)
+			{
+				this._OutputMetadataProfileId = ParseInt(node["outputMetadataProfileId"].Value<string>());
+			}
+			if(node["outputMetadata"] != null)
+			{
+				this._OutputMetadata = new List<KeyValue>();
+				foreach(var arrayNode in node["outputMetadata"].Children())
+				{
+					this._OutputMetadata.Add(ObjectFactory.Create<KeyValue>(arrayNode));
+				}
+			}
+			if(node["inputUserId"] != null)
+			{
+				this._InputUserId = node["inputUserId"].Value<string>();
+			}
+			if(node["inputEntitledUsersEdit"] != null)
+			{
+				this._InputEntitledUsersEdit = node["inputEntitledUsersEdit"].Value<string>();
+			}
+			if(node["inputEntitledUsersPublish"] != null)
+			{
+				this._InputEntitledUsersPublish = node["inputEntitledUsersPublish"].Value<string>();
+			}
 		}
 		#endregion
 

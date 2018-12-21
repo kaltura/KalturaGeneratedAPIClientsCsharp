@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,17 +50,35 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public string Ks
 		{
 			get { return _Ks; }
+			private set 
+			{ 
+				_Ks = value;
+				OnPropertyChanged("Ks");
+			}
 		}
+		[JsonProperty]
 		public string UserId
 		{
 			get { return _UserId; }
+			private set 
+			{ 
+				_UserId = value;
+				OnPropertyChanged("UserId");
+			}
 		}
 		#endregion
 
@@ -67,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public StartWidgetSessionResponse(XmlElement node) : base(node)
+		public StartWidgetSessionResponse(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["partnerId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "ks":
-						this._Ks = propertyNode.InnerText;
-						continue;
-					case "userId":
-						this._UserId = propertyNode.InnerText;
-						continue;
-				}
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
 			}
-		}
-
-		public StartWidgetSessionResponse(IDictionary<string,object> data) : base(data)
-		{
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._Ks = data.TryGetValueSafe<string>("ks");
-			    this._UserId = data.TryGetValueSafe<string>("userId");
+			if(node["ks"] != null)
+			{
+				this._Ks = node["ks"].Value<string>();
+			}
+			if(node["userId"] != null)
+			{
+				this._UserId = node["userId"].Value<string>();
+			}
 		}
 		#endregion
 

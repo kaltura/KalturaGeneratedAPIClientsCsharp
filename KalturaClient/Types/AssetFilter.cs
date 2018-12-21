@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string TypeIn
 		{
 			get { return _TypeIn; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeIn");
 			}
 		}
+		[JsonProperty]
 		public new AssetOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AssetFilter(XmlElement node) : base(node)
+		public AssetFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["typeIn"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "typeIn":
-						this._TypeIn = propertyNode.InnerText;
-						continue;
-					case "orderBy":
-						this._OrderBy = (AssetOrderBy)StringEnum.Parse(typeof(AssetOrderBy), propertyNode.InnerText);
-						continue;
-				}
+				this._TypeIn = node["typeIn"].Value<string>();
 			}
-		}
-
-		public AssetFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._TypeIn = data.TryGetValueSafe<string>("typeIn");
-			    this._OrderBy = (AssetOrderBy)StringEnum.Parse(typeof(AssetOrderBy), data.TryGetValueSafe<string>("orderBy"));
+			if(node["orderBy"] != null)
+			{
+				this._OrderBy = (AssetOrderBy)StringEnum.Parse(typeof(AssetOrderBy), node["orderBy"].Value<string>());
+			}
 		}
 		#endregion
 

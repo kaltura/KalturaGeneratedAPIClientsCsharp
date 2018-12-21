@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,10 +54,17 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string CallbackNotificationUrl
 		{
 			get { return _CallbackNotificationUrl; }
+			private set 
+			{ 
+				_CallbackNotificationUrl = value;
+				OnPropertyChanged("CallbackNotificationUrl");
+			}
 		}
+		[JsonProperty]
 		public IntegrationProviderType ProviderType
 		{
 			get { return _ProviderType; }
@@ -65,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProviderType");
 			}
 		}
+		[JsonProperty]
 		public IntegrationJobProviderData ProviderData
 		{
 			get { return _ProviderData; }
@@ -74,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProviderData");
 			}
 		}
+		[JsonProperty]
 		public IntegrationTriggerType TriggerType
 		{
 			get { return _TriggerType; }
@@ -83,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TriggerType");
 			}
 		}
+		[JsonProperty]
 		public IntegrationJobTriggerData TriggerData
 		{
 			get { return _TriggerData; }
@@ -99,38 +111,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public IntegrationJobData(XmlElement node) : base(node)
+		public IntegrationJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["callbackNotificationUrl"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "callbackNotificationUrl":
-						this._CallbackNotificationUrl = propertyNode.InnerText;
-						continue;
-					case "providerType":
-						this._ProviderType = (IntegrationProviderType)StringEnum.Parse(typeof(IntegrationProviderType), propertyNode.InnerText);
-						continue;
-					case "providerData":
-						this._ProviderData = ObjectFactory.Create<IntegrationJobProviderData>(propertyNode);
-						continue;
-					case "triggerType":
-						this._TriggerType = (IntegrationTriggerType)StringEnum.Parse(typeof(IntegrationTriggerType), propertyNode.InnerText);
-						continue;
-					case "triggerData":
-						this._TriggerData = ObjectFactory.Create<IntegrationJobTriggerData>(propertyNode);
-						continue;
-				}
+				this._CallbackNotificationUrl = node["callbackNotificationUrl"].Value<string>();
 			}
-		}
-
-		public IntegrationJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._CallbackNotificationUrl = data.TryGetValueSafe<string>("callbackNotificationUrl");
-			    this._ProviderType = (IntegrationProviderType)StringEnum.Parse(typeof(IntegrationProviderType), data.TryGetValueSafe<string>("providerType"));
-			    this._ProviderData = ObjectFactory.Create<IntegrationJobProviderData>(data.TryGetValueSafe<IDictionary<string,object>>("providerData"));
-			    this._TriggerType = (IntegrationTriggerType)StringEnum.Parse(typeof(IntegrationTriggerType), data.TryGetValueSafe<string>("triggerType"));
-			    this._TriggerData = ObjectFactory.Create<IntegrationJobTriggerData>(data.TryGetValueSafe<IDictionary<string,object>>("triggerData"));
+			if(node["providerType"] != null)
+			{
+				this._ProviderType = (IntegrationProviderType)StringEnum.Parse(typeof(IntegrationProviderType), node["providerType"].Value<string>());
+			}
+			if(node["providerData"] != null)
+			{
+				this._ProviderData = ObjectFactory.Create<IntegrationJobProviderData>(node["providerData"]);
+			}
+			if(node["triggerType"] != null)
+			{
+				this._TriggerType = (IntegrationTriggerType)StringEnum.Parse(typeof(IntegrationTriggerType), node["triggerType"].Value<string>());
+			}
+			if(node["triggerData"] != null)
+			{
+				this._TriggerData = ObjectFactory.Create<IntegrationJobTriggerData>(node["triggerData"]);
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -49,11 +51,7 @@ namespace Kaltura.Types
 		{
 		}
 
-		public SshDropFolderBaseFilter(XmlElement node) : base(node)
-		{
-		}
-
-		public SshDropFolderBaseFilter(IDictionary<string,object> data) : base(data)
+		public SshDropFolderBaseFilter(JToken node) : base(node)
 		{
 		}
 		#endregion

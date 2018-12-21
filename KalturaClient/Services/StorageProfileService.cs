@@ -32,6 +32,7 @@ using System.IO;
 using Kaltura.Request;
 using Kaltura.Types;
 using Kaltura.Enums;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Services
 {
@@ -72,13 +73,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<StorageProfile>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<StorageProfile>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -119,13 +116,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<StorageProfile>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<StorageProfile>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -175,13 +168,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<ListResponse<StorageProfile>>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<ListResponse<StorageProfile>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -231,17 +220,13 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<StorageProfile>(result);
 		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<StorageProfile>((IDictionary<string,object>)result);
-		}
 	}
 
-	public class StorageProfileUpdateStatusRequestBuilder : RequestBuilder<object>
+	public class StorageProfileUpdateStatusRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
 		public const string STORAGE_ID = "storageId";
@@ -287,11 +272,7 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-		public override object DeserializeObject(object result)
+		public override object Deserialize(JToken result)
 		{
 			return null;
 		}

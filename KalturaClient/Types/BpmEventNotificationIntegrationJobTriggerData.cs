@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int TemplateId
 		{
 			get { return _TemplateId; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplateId");
 			}
 		}
+		[JsonProperty]
 		public string BusinessProcessId
 		{
 			get { return _BusinessProcessId; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BusinessProcessId");
 			}
 		}
+		[JsonProperty]
 		public string CaseId
 		{
 			get { return _CaseId; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BpmEventNotificationIntegrationJobTriggerData(XmlElement node) : base(node)
+		public BpmEventNotificationIntegrationJobTriggerData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["templateId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "templateId":
-						this._TemplateId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "businessProcessId":
-						this._BusinessProcessId = propertyNode.InnerText;
-						continue;
-					case "caseId":
-						this._CaseId = propertyNode.InnerText;
-						continue;
-				}
+				this._TemplateId = ParseInt(node["templateId"].Value<string>());
 			}
-		}
-
-		public BpmEventNotificationIntegrationJobTriggerData(IDictionary<string,object> data) : base(data)
-		{
-			    this._TemplateId = data.TryGetValueSafe<int>("templateId");
-			    this._BusinessProcessId = data.TryGetValueSafe<string>("businessProcessId");
-			    this._CaseId = data.TryGetValueSafe<string>("caseId");
+			if(node["businessProcessId"] != null)
+			{
+				this._BusinessProcessId = node["businessProcessId"].Value<string>();
+			}
+			if(node["caseId"] != null)
+			{
+				this._CaseId = node["caseId"].Value<string>();
+			}
 		}
 		#endregion
 

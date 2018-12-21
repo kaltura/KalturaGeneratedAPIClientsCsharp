@@ -32,6 +32,7 @@ using System.IO;
 using Kaltura.Request;
 using Kaltura.Types;
 using Kaltura.Enums;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Services
 {
@@ -58,13 +59,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<PlayReadyContentKey>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<PlayReadyContentKey>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -105,20 +102,12 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			IList<PlayReadyContentKey> list = new List<PlayReadyContentKey>();
-			foreach(XmlElement node in result.ChildNodes)
+			foreach(var node in result.Children())
 			{
-				list.Add(ObjectFactory.Create<PlayReadyContentKey>(node));
-			}
-			return list;
-		}
-		public override object DeserializeObject(object result)
-		{
-			var list = new List<PlayReadyContentKey>();
-			foreach(var node in (IEnumerable<IDictionary<string,object>>)result)
-			{
+				//TODO: Deserilize Array;
 				list.Add(ObjectFactory.Create<PlayReadyContentKey>(node));
 			}
 			return list;
@@ -171,13 +160,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<PlayReadyContentKey>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<PlayReadyContentKey>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -254,13 +239,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<PlayReadyLicenseDetails>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<PlayReadyLicenseDetails>((IDictionary<string,object>)result);
 		}
 	}
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -74,6 +76,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public MailType MailType
 		{
 			get { return _MailType; }
@@ -83,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MailType");
 			}
 		}
+		[JsonProperty]
 		public int MailPriority
 		{
 			get { return _MailPriority; }
@@ -92,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MailPriority");
 			}
 		}
+		[JsonProperty]
 		public MailJobStatus Status
 		{
 			get { return _Status; }
@@ -101,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		[JsonProperty]
 		public string RecipientName
 		{
 			get { return _RecipientName; }
@@ -110,6 +116,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecipientName");
 			}
 		}
+		[JsonProperty]
 		public string RecipientEmail
 		{
 			get { return _RecipientEmail; }
@@ -119,6 +126,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecipientEmail");
 			}
 		}
+		[JsonProperty]
 		public int RecipientId
 		{
 			get { return _RecipientId; }
@@ -128,6 +136,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecipientId");
 			}
 		}
+		[JsonProperty]
 		public string FromName
 		{
 			get { return _FromName; }
@@ -137,6 +146,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FromName");
 			}
 		}
+		[JsonProperty]
 		public string FromEmail
 		{
 			get { return _FromEmail; }
@@ -146,6 +156,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FromEmail");
 			}
 		}
+		[JsonProperty]
 		public string BodyParams
 		{
 			get { return _BodyParams; }
@@ -155,6 +166,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BodyParams");
 			}
 		}
+		[JsonProperty]
 		public string SubjectParams
 		{
 			get { return _SubjectParams; }
@@ -164,6 +176,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SubjectParams");
 			}
 		}
+		[JsonProperty]
 		public string TemplatePath
 		{
 			get { return _TemplatePath; }
@@ -173,6 +186,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplatePath");
 			}
 		}
+		[JsonProperty]
 		public LanguageCode Language
 		{
 			get { return _Language; }
@@ -182,6 +196,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Language");
 			}
 		}
+		[JsonProperty]
 		public int CampaignId
 		{
 			get { return _CampaignId; }
@@ -191,6 +206,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CampaignId");
 			}
 		}
+		[JsonProperty]
 		public int MinSendDate
 		{
 			get { return _MinSendDate; }
@@ -200,6 +216,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MinSendDate");
 			}
 		}
+		[JsonProperty]
 		public bool? IsHtml
 		{
 			get { return _IsHtml; }
@@ -209,6 +226,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsHtml");
 			}
 		}
+		[JsonProperty]
 		public string Separator
 		{
 			get { return _Separator; }
@@ -225,82 +243,72 @@ namespace Kaltura.Types
 		{
 		}
 
-		public MailJobData(XmlElement node) : base(node)
+		public MailJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["mailType"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "mailType":
-						this._MailType = (MailType)StringEnum.Parse(typeof(MailType), propertyNode.InnerText);
-						continue;
-					case "mailPriority":
-						this._MailPriority = ParseInt(propertyNode.InnerText);
-						continue;
-					case "status":
-						this._Status = (MailJobStatus)ParseEnum(typeof(MailJobStatus), propertyNode.InnerText);
-						continue;
-					case "recipientName":
-						this._RecipientName = propertyNode.InnerText;
-						continue;
-					case "recipientEmail":
-						this._RecipientEmail = propertyNode.InnerText;
-						continue;
-					case "recipientId":
-						this._RecipientId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "fromName":
-						this._FromName = propertyNode.InnerText;
-						continue;
-					case "fromEmail":
-						this._FromEmail = propertyNode.InnerText;
-						continue;
-					case "bodyParams":
-						this._BodyParams = propertyNode.InnerText;
-						continue;
-					case "subjectParams":
-						this._SubjectParams = propertyNode.InnerText;
-						continue;
-					case "templatePath":
-						this._TemplatePath = propertyNode.InnerText;
-						continue;
-					case "language":
-						this._Language = (LanguageCode)StringEnum.Parse(typeof(LanguageCode), propertyNode.InnerText);
-						continue;
-					case "campaignId":
-						this._CampaignId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "minSendDate":
-						this._MinSendDate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "isHtml":
-						this._IsHtml = ParseBool(propertyNode.InnerText);
-						continue;
-					case "separator":
-						this._Separator = propertyNode.InnerText;
-						continue;
-				}
+				this._MailType = (MailType)StringEnum.Parse(typeof(MailType), node["mailType"].Value<string>());
 			}
-		}
-
-		public MailJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._MailType = (MailType)StringEnum.Parse(typeof(MailType), data.TryGetValueSafe<string>("mailType"));
-			    this._MailPriority = data.TryGetValueSafe<int>("mailPriority");
-			    this._Status = (MailJobStatus)ParseEnum(typeof(MailJobStatus), data.TryGetValueSafe<int>("status"));
-			    this._RecipientName = data.TryGetValueSafe<string>("recipientName");
-			    this._RecipientEmail = data.TryGetValueSafe<string>("recipientEmail");
-			    this._RecipientId = data.TryGetValueSafe<int>("recipientId");
-			    this._FromName = data.TryGetValueSafe<string>("fromName");
-			    this._FromEmail = data.TryGetValueSafe<string>("fromEmail");
-			    this._BodyParams = data.TryGetValueSafe<string>("bodyParams");
-			    this._SubjectParams = data.TryGetValueSafe<string>("subjectParams");
-			    this._TemplatePath = data.TryGetValueSafe<string>("templatePath");
-			    this._Language = (LanguageCode)StringEnum.Parse(typeof(LanguageCode), data.TryGetValueSafe<string>("language"));
-			    this._CampaignId = data.TryGetValueSafe<int>("campaignId");
-			    this._MinSendDate = data.TryGetValueSafe<int>("minSendDate");
-			    this._IsHtml = data.TryGetValueSafe<bool>("isHtml");
-			    this._Separator = data.TryGetValueSafe<string>("separator");
+			if(node["mailPriority"] != null)
+			{
+				this._MailPriority = ParseInt(node["mailPriority"].Value<string>());
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (MailJobStatus)ParseEnum(typeof(MailJobStatus), node["status"].Value<string>());
+			}
+			if(node["recipientName"] != null)
+			{
+				this._RecipientName = node["recipientName"].Value<string>();
+			}
+			if(node["recipientEmail"] != null)
+			{
+				this._RecipientEmail = node["recipientEmail"].Value<string>();
+			}
+			if(node["recipientId"] != null)
+			{
+				this._RecipientId = ParseInt(node["recipientId"].Value<string>());
+			}
+			if(node["fromName"] != null)
+			{
+				this._FromName = node["fromName"].Value<string>();
+			}
+			if(node["fromEmail"] != null)
+			{
+				this._FromEmail = node["fromEmail"].Value<string>();
+			}
+			if(node["bodyParams"] != null)
+			{
+				this._BodyParams = node["bodyParams"].Value<string>();
+			}
+			if(node["subjectParams"] != null)
+			{
+				this._SubjectParams = node["subjectParams"].Value<string>();
+			}
+			if(node["templatePath"] != null)
+			{
+				this._TemplatePath = node["templatePath"].Value<string>();
+			}
+			if(node["language"] != null)
+			{
+				this._Language = (LanguageCode)StringEnum.Parse(typeof(LanguageCode), node["language"].Value<string>());
+			}
+			if(node["campaignId"] != null)
+			{
+				this._CampaignId = ParseInt(node["campaignId"].Value<string>());
+			}
+			if(node["minSendDate"] != null)
+			{
+				this._MinSendDate = ParseInt(node["minSendDate"].Value<string>());
+			}
+			if(node["isHtml"] != null)
+			{
+				this._IsHtml = ParseBool(node["isHtml"].Value<string>());
+			}
+			if(node["separator"] != null)
+			{
+				this._Separator = node["separator"].Value<string>();
+			}
 		}
 		#endregion
 

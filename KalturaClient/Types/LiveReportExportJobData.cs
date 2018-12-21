@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,6 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int TimeReference
 		{
 			get { return _TimeReference; }
@@ -61,6 +64,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TimeReference");
 			}
 		}
+		[JsonProperty]
 		public int TimeZoneOffset
 		{
 			get { return _TimeZoneOffset; }
@@ -70,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TimeZoneOffset");
 			}
 		}
+		[JsonProperty]
 		public string EntryIds
 		{
 			get { return _EntryIds; }
@@ -79,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIds");
 			}
 		}
+		[JsonProperty]
 		public string OutputPath
 		{
 			get { return _OutputPath; }
@@ -88,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("OutputPath");
 			}
 		}
+		[JsonProperty]
 		public string RecipientEmail
 		{
 			get { return _RecipientEmail; }
@@ -104,38 +111,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public LiveReportExportJobData(XmlElement node) : base(node)
+		public LiveReportExportJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["timeReference"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "timeReference":
-						this._TimeReference = ParseInt(propertyNode.InnerText);
-						continue;
-					case "timeZoneOffset":
-						this._TimeZoneOffset = ParseInt(propertyNode.InnerText);
-						continue;
-					case "entryIds":
-						this._EntryIds = propertyNode.InnerText;
-						continue;
-					case "outputPath":
-						this._OutputPath = propertyNode.InnerText;
-						continue;
-					case "recipientEmail":
-						this._RecipientEmail = propertyNode.InnerText;
-						continue;
-				}
+				this._TimeReference = ParseInt(node["timeReference"].Value<string>());
 			}
-		}
-
-		public LiveReportExportJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._TimeReference = data.TryGetValueSafe<int>("timeReference");
-			    this._TimeZoneOffset = data.TryGetValueSafe<int>("timeZoneOffset");
-			    this._EntryIds = data.TryGetValueSafe<string>("entryIds");
-			    this._OutputPath = data.TryGetValueSafe<string>("outputPath");
-			    this._RecipientEmail = data.TryGetValueSafe<string>("recipientEmail");
+			if(node["timeZoneOffset"] != null)
+			{
+				this._TimeZoneOffset = ParseInt(node["timeZoneOffset"].Value<string>());
+			}
+			if(node["entryIds"] != null)
+			{
+				this._EntryIds = node["entryIds"].Value<string>();
+			}
+			if(node["outputPath"] != null)
+			{
+				this._OutputPath = node["outputPath"].Value<string>();
+			}
+			if(node["recipientEmail"] != null)
+			{
+				this._RecipientEmail = node["recipientEmail"].Value<string>();
+			}
 		}
 		#endregion
 

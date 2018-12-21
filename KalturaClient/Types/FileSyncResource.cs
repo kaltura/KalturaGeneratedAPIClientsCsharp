@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int FileSyncObjectType
 		{
 			get { return _FileSyncObjectType; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileSyncObjectType");
 			}
 		}
+		[JsonProperty]
 		public int ObjectSubType
 		{
 			get { return _ObjectSubType; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectSubType");
 			}
 		}
+		[JsonProperty]
 		public string ObjectId
 		{
 			get { return _ObjectId; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectId");
 			}
 		}
+		[JsonProperty]
 		public string Version
 		{
 			get { return _Version; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FileSyncResource(XmlElement node) : base(node)
+		public FileSyncResource(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["fileSyncObjectType"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "fileSyncObjectType":
-						this._FileSyncObjectType = ParseInt(propertyNode.InnerText);
-						continue;
-					case "objectSubType":
-						this._ObjectSubType = ParseInt(propertyNode.InnerText);
-						continue;
-					case "objectId":
-						this._ObjectId = propertyNode.InnerText;
-						continue;
-					case "version":
-						this._Version = propertyNode.InnerText;
-						continue;
-				}
+				this._FileSyncObjectType = ParseInt(node["fileSyncObjectType"].Value<string>());
 			}
-		}
-
-		public FileSyncResource(IDictionary<string,object> data) : base(data)
-		{
-			    this._FileSyncObjectType = data.TryGetValueSafe<int>("fileSyncObjectType");
-			    this._ObjectSubType = data.TryGetValueSafe<int>("objectSubType");
-			    this._ObjectId = data.TryGetValueSafe<string>("objectId");
-			    this._Version = data.TryGetValueSafe<string>("version");
+			if(node["objectSubType"] != null)
+			{
+				this._ObjectSubType = ParseInt(node["objectSubType"].Value<string>());
+			}
+			if(node["objectId"] != null)
+			{
+				this._ObjectId = node["objectId"].Value<string>();
+			}
+			if(node["version"] != null)
+			{
+				this._Version = node["version"].Value<string>();
+			}
 		}
 		#endregion
 

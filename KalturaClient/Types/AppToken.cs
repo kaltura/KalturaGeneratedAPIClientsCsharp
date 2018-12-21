@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -68,30 +70,67 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public string Token
 		{
 			get { return _Token; }
+			private set 
+			{ 
+				_Token = value;
+				OnPropertyChanged("Token");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public AppTokenStatus Status
 		{
 			get { return _Status; }
+			private set 
+			{ 
+				_Status = value;
+				OnPropertyChanged("Status");
+			}
 		}
+		[JsonProperty]
 		public int Expiry
 		{
 			get { return _Expiry; }
@@ -101,6 +140,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Expiry");
 			}
 		}
+		[JsonProperty]
 		public SessionType SessionType
 		{
 			get { return _SessionType; }
@@ -110,6 +150,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SessionType");
 			}
 		}
+		[JsonProperty]
 		public string SessionUserId
 		{
 			get { return _SessionUserId; }
@@ -119,6 +160,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SessionUserId");
 			}
 		}
+		[JsonProperty]
 		public int SessionDuration
 		{
 			get { return _SessionDuration; }
@@ -128,6 +170,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SessionDuration");
 			}
 		}
+		[JsonProperty]
 		public string SessionPrivileges
 		{
 			get { return _SessionPrivileges; }
@@ -137,6 +180,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SessionPrivileges");
 			}
 		}
+		[JsonProperty]
 		public AppTokenHashType HashType
 		{
 			get { return _HashType; }
@@ -146,6 +190,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("HashType");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -162,70 +207,60 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AppToken(XmlElement node) : base(node)
+		public AppToken(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = propertyNode.InnerText;
-						continue;
-					case "token":
-						this._Token = propertyNode.InnerText;
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "status":
-						this._Status = (AppTokenStatus)ParseEnum(typeof(AppTokenStatus), propertyNode.InnerText);
-						continue;
-					case "expiry":
-						this._Expiry = ParseInt(propertyNode.InnerText);
-						continue;
-					case "sessionType":
-						this._SessionType = (SessionType)ParseEnum(typeof(SessionType), propertyNode.InnerText);
-						continue;
-					case "sessionUserId":
-						this._SessionUserId = propertyNode.InnerText;
-						continue;
-					case "sessionDuration":
-						this._SessionDuration = ParseInt(propertyNode.InnerText);
-						continue;
-					case "sessionPrivileges":
-						this._SessionPrivileges = propertyNode.InnerText;
-						continue;
-					case "hashType":
-						this._HashType = (AppTokenHashType)StringEnum.Parse(typeof(AppTokenHashType), propertyNode.InnerText);
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-				}
+				this._Id = node["id"].Value<string>();
 			}
-		}
-
-		public AppToken(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<string>("id");
-			    this._Token = data.TryGetValueSafe<string>("token");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._Status = (AppTokenStatus)ParseEnum(typeof(AppTokenStatus), data.TryGetValueSafe<int>("status"));
-			    this._Expiry = data.TryGetValueSafe<int>("expiry");
-			    this._SessionType = (SessionType)ParseEnum(typeof(SessionType), data.TryGetValueSafe<int>("sessionType"));
-			    this._SessionUserId = data.TryGetValueSafe<string>("sessionUserId");
-			    this._SessionDuration = data.TryGetValueSafe<int>("sessionDuration");
-			    this._SessionPrivileges = data.TryGetValueSafe<string>("sessionPrivileges");
-			    this._HashType = (AppTokenHashType)StringEnum.Parse(typeof(AppTokenHashType), data.TryGetValueSafe<string>("hashType"));
-			    this._Description = data.TryGetValueSafe<string>("description");
+			if(node["token"] != null)
+			{
+				this._Token = node["token"].Value<string>();
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (AppTokenStatus)ParseEnum(typeof(AppTokenStatus), node["status"].Value<string>());
+			}
+			if(node["expiry"] != null)
+			{
+				this._Expiry = ParseInt(node["expiry"].Value<string>());
+			}
+			if(node["sessionType"] != null)
+			{
+				this._SessionType = (SessionType)ParseEnum(typeof(SessionType), node["sessionType"].Value<string>());
+			}
+			if(node["sessionUserId"] != null)
+			{
+				this._SessionUserId = node["sessionUserId"].Value<string>();
+			}
+			if(node["sessionDuration"] != null)
+			{
+				this._SessionDuration = ParseInt(node["sessionDuration"].Value<string>());
+			}
+			if(node["sessionPrivileges"] != null)
+			{
+				this._SessionPrivileges = node["sessionPrivileges"].Value<string>();
+			}
+			if(node["hashType"] != null)
+			{
+				this._HashType = (AppTokenHashType)StringEnum.Parse(typeof(AppTokenHashType), node["hashType"].Value<string>());
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
 		}
 		#endregion
 

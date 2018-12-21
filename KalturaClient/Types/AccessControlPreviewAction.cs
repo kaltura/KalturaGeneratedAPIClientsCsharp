@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Limit
 		{
 			get { return _Limit; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AccessControlPreviewAction(XmlElement node) : base(node)
+		public AccessControlPreviewAction(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["limit"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "limit":
-						this._Limit = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._Limit = ParseInt(node["limit"].Value<string>());
 			}
-		}
-
-		public AccessControlPreviewAction(IDictionary<string,object> data) : base(data)
-		{
-			    this._Limit = data.TryGetValueSafe<int>("limit");
 		}
 		#endregion
 

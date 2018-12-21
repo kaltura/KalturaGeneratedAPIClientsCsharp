@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ParentProperty
 		{
 			get { return _ParentProperty; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentProperty");
 			}
 		}
+		[JsonProperty]
 		public string FilterProperty
 		{
 			get { return _FilterProperty; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FilterProperty");
 			}
 		}
+		[JsonProperty]
 		public bool? AllowNull
 		{
 			get { return _AllowNull; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ResponseProfileMapping(XmlElement node) : base(node)
+		public ResponseProfileMapping(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["parentProperty"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "parentProperty":
-						this._ParentProperty = propertyNode.InnerText;
-						continue;
-					case "filterProperty":
-						this._FilterProperty = propertyNode.InnerText;
-						continue;
-					case "allowNull":
-						this._AllowNull = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._ParentProperty = node["parentProperty"].Value<string>();
 			}
-		}
-
-		public ResponseProfileMapping(IDictionary<string,object> data) : base(data)
-		{
-			    this._ParentProperty = data.TryGetValueSafe<string>("parentProperty");
-			    this._FilterProperty = data.TryGetValueSafe<string>("filterProperty");
-			    this._AllowNull = data.TryGetValueSafe<bool>("allowNull");
+			if(node["filterProperty"] != null)
+			{
+				this._FilterProperty = node["filterProperty"].Value<string>();
+			}
+			if(node["allowNull"] != null)
+			{
+				this._AllowNull = ParseBool(node["allowNull"].Value<string>());
+			}
 		}
 		#endregion
 

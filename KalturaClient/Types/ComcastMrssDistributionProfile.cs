@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -66,6 +68,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int MetadataProfileId
 		{
 			get { return _MetadataProfileId; }
@@ -75,10 +78,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataProfileId");
 			}
 		}
+		[JsonProperty]
 		public string FeedUrl
 		{
 			get { return _FeedUrl; }
+			private set 
+			{ 
+				_FeedUrl = value;
+				OnPropertyChanged("FeedUrl");
+			}
 		}
+		[JsonProperty]
 		public string FeedTitle
 		{
 			get { return _FeedTitle; }
@@ -88,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedTitle");
 			}
 		}
+		[JsonProperty]
 		public string FeedLink
 		{
 			get { return _FeedLink; }
@@ -97,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedLink");
 			}
 		}
+		[JsonProperty]
 		public string FeedDescription
 		{
 			get { return _FeedDescription; }
@@ -106,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedDescription");
 			}
 		}
+		[JsonProperty]
 		public string FeedLastBuildDate
 		{
 			get { return _FeedLastBuildDate; }
@@ -115,6 +128,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedLastBuildDate");
 			}
 		}
+		[JsonProperty]
 		public string ItemLink
 		{
 			get { return _ItemLink; }
@@ -124,6 +138,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemLink");
 			}
 		}
+		[JsonProperty]
 		public IList<KeyValue> CPlatformTvSeries
 		{
 			get { return _CPlatformTvSeries; }
@@ -133,6 +148,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CPlatformTvSeries");
 			}
 		}
+		[JsonProperty]
 		public string CPlatformTvSeriesField
 		{
 			get { return _CPlatformTvSeriesField; }
@@ -142,6 +158,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CPlatformTvSeriesField");
 			}
 		}
+		[JsonProperty]
 		public bool? ShouldIncludeCuePoints
 		{
 			get { return _ShouldIncludeCuePoints; }
@@ -151,6 +168,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ShouldIncludeCuePoints");
 			}
 		}
+		[JsonProperty]
 		public bool? ShouldIncludeCaptions
 		{
 			get { return _ShouldIncludeCaptions; }
@@ -160,6 +178,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ShouldIncludeCaptions");
 			}
 		}
+		[JsonProperty]
 		public bool? ShouldAddThumbExtension
 		{
 			get { return _ShouldAddThumbExtension; }
@@ -176,75 +195,60 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ComcastMrssDistributionProfile(XmlElement node) : base(node)
+		public ComcastMrssDistributionProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["metadataProfileId"] != null)
 			{
-				switch (propertyNode.Name)
+				this._MetadataProfileId = ParseInt(node["metadataProfileId"].Value<string>());
+			}
+			if(node["feedUrl"] != null)
+			{
+				this._FeedUrl = node["feedUrl"].Value<string>();
+			}
+			if(node["feedTitle"] != null)
+			{
+				this._FeedTitle = node["feedTitle"].Value<string>();
+			}
+			if(node["feedLink"] != null)
+			{
+				this._FeedLink = node["feedLink"].Value<string>();
+			}
+			if(node["feedDescription"] != null)
+			{
+				this._FeedDescription = node["feedDescription"].Value<string>();
+			}
+			if(node["feedLastBuildDate"] != null)
+			{
+				this._FeedLastBuildDate = node["feedLastBuildDate"].Value<string>();
+			}
+			if(node["itemLink"] != null)
+			{
+				this._ItemLink = node["itemLink"].Value<string>();
+			}
+			if(node["cPlatformTvSeries"] != null)
+			{
+				this._CPlatformTvSeries = new List<KeyValue>();
+				foreach(var arrayNode in node["cPlatformTvSeries"].Children())
 				{
-					case "metadataProfileId":
-						this._MetadataProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "feedUrl":
-						this._FeedUrl = propertyNode.InnerText;
-						continue;
-					case "feedTitle":
-						this._FeedTitle = propertyNode.InnerText;
-						continue;
-					case "feedLink":
-						this._FeedLink = propertyNode.InnerText;
-						continue;
-					case "feedDescription":
-						this._FeedDescription = propertyNode.InnerText;
-						continue;
-					case "feedLastBuildDate":
-						this._FeedLastBuildDate = propertyNode.InnerText;
-						continue;
-					case "itemLink":
-						this._ItemLink = propertyNode.InnerText;
-						continue;
-					case "cPlatformTvSeries":
-						this._CPlatformTvSeries = new List<KeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._CPlatformTvSeries.Add(ObjectFactory.Create<KeyValue>(arrayNode));
-						}
-						continue;
-					case "cPlatformTvSeriesField":
-						this._CPlatformTvSeriesField = propertyNode.InnerText;
-						continue;
-					case "shouldIncludeCuePoints":
-						this._ShouldIncludeCuePoints = ParseBool(propertyNode.InnerText);
-						continue;
-					case "shouldIncludeCaptions":
-						this._ShouldIncludeCaptions = ParseBool(propertyNode.InnerText);
-						continue;
-					case "shouldAddThumbExtension":
-						this._ShouldAddThumbExtension = ParseBool(propertyNode.InnerText);
-						continue;
+					this._CPlatformTvSeries.Add(ObjectFactory.Create<KeyValue>(arrayNode));
 				}
 			}
-		}
-
-		public ComcastMrssDistributionProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._MetadataProfileId = data.TryGetValueSafe<int>("metadataProfileId");
-			    this._FeedUrl = data.TryGetValueSafe<string>("feedUrl");
-			    this._FeedTitle = data.TryGetValueSafe<string>("feedTitle");
-			    this._FeedLink = data.TryGetValueSafe<string>("feedLink");
-			    this._FeedDescription = data.TryGetValueSafe<string>("feedDescription");
-			    this._FeedLastBuildDate = data.TryGetValueSafe<string>("feedLastBuildDate");
-			    this._ItemLink = data.TryGetValueSafe<string>("itemLink");
-			    this._CPlatformTvSeries = new List<KeyValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("cPlatformTvSeries", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._CPlatformTvSeries.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._CPlatformTvSeriesField = data.TryGetValueSafe<string>("cPlatformTvSeriesField");
-			    this._ShouldIncludeCuePoints = data.TryGetValueSafe<bool>("shouldIncludeCuePoints");
-			    this._ShouldIncludeCaptions = data.TryGetValueSafe<bool>("shouldIncludeCaptions");
-			    this._ShouldAddThumbExtension = data.TryGetValueSafe<bool>("shouldAddThumbExtension");
+			if(node["cPlatformTvSeriesField"] != null)
+			{
+				this._CPlatformTvSeriesField = node["cPlatformTvSeriesField"].Value<string>();
+			}
+			if(node["shouldIncludeCuePoints"] != null)
+			{
+				this._ShouldIncludeCuePoints = ParseBool(node["shouldIncludeCuePoints"].Value<string>());
+			}
+			if(node["shouldIncludeCaptions"] != null)
+			{
+				this._ShouldIncludeCaptions = ParseBool(node["shouldIncludeCaptions"].Value<string>());
+			}
+			if(node["shouldAddThumbExtension"] != null)
+			{
+				this._ShouldAddThumbExtension = ParseBool(node["shouldAddThumbExtension"].Value<string>());
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string PlaybackDomainLike
 		{
 			get { return _PlaybackDomainLike; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PlaybackDomainLike");
 			}
 		}
+		[JsonProperty]
 		public string PlaybackDomainMultiLikeOr
 		{
 			get { return _PlaybackDomainMultiLikeOr; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PlaybackDomainMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string PlaybackDomainMultiLikeAnd
 		{
 			get { return _PlaybackDomainMultiLikeAnd; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EdgeServerNodeBaseFilter(XmlElement node) : base(node)
+		public EdgeServerNodeBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["playbackDomainLike"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "playbackDomainLike":
-						this._PlaybackDomainLike = propertyNode.InnerText;
-						continue;
-					case "playbackDomainMultiLikeOr":
-						this._PlaybackDomainMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "playbackDomainMultiLikeAnd":
-						this._PlaybackDomainMultiLikeAnd = propertyNode.InnerText;
-						continue;
-				}
+				this._PlaybackDomainLike = node["playbackDomainLike"].Value<string>();
 			}
-		}
-
-		public EdgeServerNodeBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._PlaybackDomainLike = data.TryGetValueSafe<string>("playbackDomainLike");
-			    this._PlaybackDomainMultiLikeOr = data.TryGetValueSafe<string>("playbackDomainMultiLikeOr");
-			    this._PlaybackDomainMultiLikeAnd = data.TryGetValueSafe<string>("playbackDomainMultiLikeAnd");
+			if(node["playbackDomainMultiLikeOr"] != null)
+			{
+				this._PlaybackDomainMultiLikeOr = node["playbackDomainMultiLikeOr"].Value<string>();
+			}
+			if(node["playbackDomainMultiLikeAnd"] != null)
+			{
+				this._PlaybackDomainMultiLikeAnd = node["playbackDomainMultiLikeAnd"].Value<string>();
+			}
 		}
 		#endregion
 

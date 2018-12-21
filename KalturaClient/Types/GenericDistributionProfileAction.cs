@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -58,6 +60,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public DistributionProtocol Protocol
 		{
 			get { return _Protocol; }
@@ -67,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Protocol");
 			}
 		}
+		[JsonProperty]
 		public string ServerUrl
 		{
 			get { return _ServerUrl; }
@@ -76,6 +80,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerUrl");
 			}
 		}
+		[JsonProperty]
 		public string ServerPath
 		{
 			get { return _ServerPath; }
@@ -85,6 +90,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerPath");
 			}
 		}
+		[JsonProperty]
 		public string Username
 		{
 			get { return _Username; }
@@ -94,6 +100,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Username");
 			}
 		}
+		[JsonProperty]
 		public string Password
 		{
 			get { return _Password; }
@@ -103,6 +110,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Password");
 			}
 		}
+		[JsonProperty]
 		public bool? FtpPassiveMode
 		{
 			get { return _FtpPassiveMode; }
@@ -112,6 +120,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FtpPassiveMode");
 			}
 		}
+		[JsonProperty]
 		public string HttpFieldName
 		{
 			get { return _HttpFieldName; }
@@ -121,6 +130,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("HttpFieldName");
 			}
 		}
+		[JsonProperty]
 		public string HttpFileName
 		{
 			get { return _HttpFileName; }
@@ -137,50 +147,40 @@ namespace Kaltura.Types
 		{
 		}
 
-		public GenericDistributionProfileAction(XmlElement node) : base(node)
+		public GenericDistributionProfileAction(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["protocol"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "protocol":
-						this._Protocol = (DistributionProtocol)ParseEnum(typeof(DistributionProtocol), propertyNode.InnerText);
-						continue;
-					case "serverUrl":
-						this._ServerUrl = propertyNode.InnerText;
-						continue;
-					case "serverPath":
-						this._ServerPath = propertyNode.InnerText;
-						continue;
-					case "username":
-						this._Username = propertyNode.InnerText;
-						continue;
-					case "password":
-						this._Password = propertyNode.InnerText;
-						continue;
-					case "ftpPassiveMode":
-						this._FtpPassiveMode = ParseBool(propertyNode.InnerText);
-						continue;
-					case "httpFieldName":
-						this._HttpFieldName = propertyNode.InnerText;
-						continue;
-					case "httpFileName":
-						this._HttpFileName = propertyNode.InnerText;
-						continue;
-				}
+				this._Protocol = (DistributionProtocol)ParseEnum(typeof(DistributionProtocol), node["protocol"].Value<string>());
 			}
-		}
-
-		public GenericDistributionProfileAction(IDictionary<string,object> data) : base(data)
-		{
-			    this._Protocol = (DistributionProtocol)ParseEnum(typeof(DistributionProtocol), data.TryGetValueSafe<int>("protocol"));
-			    this._ServerUrl = data.TryGetValueSafe<string>("serverUrl");
-			    this._ServerPath = data.TryGetValueSafe<string>("serverPath");
-			    this._Username = data.TryGetValueSafe<string>("username");
-			    this._Password = data.TryGetValueSafe<string>("password");
-			    this._FtpPassiveMode = data.TryGetValueSafe<bool>("ftpPassiveMode");
-			    this._HttpFieldName = data.TryGetValueSafe<string>("httpFieldName");
-			    this._HttpFileName = data.TryGetValueSafe<string>("httpFileName");
+			if(node["serverUrl"] != null)
+			{
+				this._ServerUrl = node["serverUrl"].Value<string>();
+			}
+			if(node["serverPath"] != null)
+			{
+				this._ServerPath = node["serverPath"].Value<string>();
+			}
+			if(node["username"] != null)
+			{
+				this._Username = node["username"].Value<string>();
+			}
+			if(node["password"] != null)
+			{
+				this._Password = node["password"].Value<string>();
+			}
+			if(node["ftpPassiveMode"] != null)
+			{
+				this._FtpPassiveMode = ParseBool(node["ftpPassiveMode"].Value<string>());
+			}
+			if(node["httpFieldName"] != null)
+			{
+				this._HttpFieldName = node["httpFieldName"].Value<string>();
+			}
+			if(node["httpFileName"] != null)
+			{
+				this._HttpFileName = node["httpFileName"].Value<string>();
+			}
 		}
 		#endregion
 

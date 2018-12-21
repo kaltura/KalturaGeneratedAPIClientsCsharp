@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,6 +58,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string FtpPath
 		{
 			get { return _FtpPath; }
@@ -65,6 +68,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FtpPath");
 			}
 		}
+		[JsonProperty]
 		public string FtpUsername
 		{
 			get { return _FtpUsername; }
@@ -74,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FtpUsername");
 			}
 		}
+		[JsonProperty]
 		public string FtpPassword
 		{
 			get { return _FtpPassword; }
@@ -83,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FtpPassword");
 			}
 		}
+		[JsonProperty]
 		public string FtpHost
 		{
 			get { return _FtpHost; }
@@ -92,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FtpHost");
 			}
 		}
+		[JsonProperty]
 		public string ContactTelephone
 		{
 			get { return _ContactTelephone; }
@@ -101,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContactTelephone");
 			}
 		}
+		[JsonProperty]
 		public string ContactEmail
 		{
 			get { return _ContactEmail; }
@@ -110,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContactEmail");
 			}
 		}
+		[JsonProperty]
 		public YahooDistributionProcessFeedActionStatus ProcessFeed
 		{
 			get { return _ProcessFeed; }
@@ -126,46 +135,36 @@ namespace Kaltura.Types
 		{
 		}
 
-		public YahooDistributionProfile(XmlElement node) : base(node)
+		public YahooDistributionProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["ftpPath"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "ftpPath":
-						this._FtpPath = propertyNode.InnerText;
-						continue;
-					case "ftpUsername":
-						this._FtpUsername = propertyNode.InnerText;
-						continue;
-					case "ftpPassword":
-						this._FtpPassword = propertyNode.InnerText;
-						continue;
-					case "ftpHost":
-						this._FtpHost = propertyNode.InnerText;
-						continue;
-					case "contactTelephone":
-						this._ContactTelephone = propertyNode.InnerText;
-						continue;
-					case "contactEmail":
-						this._ContactEmail = propertyNode.InnerText;
-						continue;
-					case "processFeed":
-						this._ProcessFeed = (YahooDistributionProcessFeedActionStatus)ParseEnum(typeof(YahooDistributionProcessFeedActionStatus), propertyNode.InnerText);
-						continue;
-				}
+				this._FtpPath = node["ftpPath"].Value<string>();
 			}
-		}
-
-		public YahooDistributionProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._FtpPath = data.TryGetValueSafe<string>("ftpPath");
-			    this._FtpUsername = data.TryGetValueSafe<string>("ftpUsername");
-			    this._FtpPassword = data.TryGetValueSafe<string>("ftpPassword");
-			    this._FtpHost = data.TryGetValueSafe<string>("ftpHost");
-			    this._ContactTelephone = data.TryGetValueSafe<string>("contactTelephone");
-			    this._ContactEmail = data.TryGetValueSafe<string>("contactEmail");
-			    this._ProcessFeed = (YahooDistributionProcessFeedActionStatus)ParseEnum(typeof(YahooDistributionProcessFeedActionStatus), data.TryGetValueSafe<int>("processFeed"));
+			if(node["ftpUsername"] != null)
+			{
+				this._FtpUsername = node["ftpUsername"].Value<string>();
+			}
+			if(node["ftpPassword"] != null)
+			{
+				this._FtpPassword = node["ftpPassword"].Value<string>();
+			}
+			if(node["ftpHost"] != null)
+			{
+				this._FtpHost = node["ftpHost"].Value<string>();
+			}
+			if(node["contactTelephone"] != null)
+			{
+				this._ContactTelephone = node["contactTelephone"].Value<string>();
+			}
+			if(node["contactEmail"] != null)
+			{
+				this._ContactEmail = node["contactEmail"].Value<string>();
+			}
+			if(node["processFeed"] != null)
+			{
+				this._ProcessFeed = (YahooDistributionProcessFeedActionStatus)ParseEnum(typeof(YahooDistributionProcessFeedActionStatus), node["processFeed"].Value<string>());
+			}
 		}
 		#endregion
 

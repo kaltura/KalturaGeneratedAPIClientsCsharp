@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public bool? Download
 		{
 			get { return _Download; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Download");
 			}
 		}
+		[JsonProperty]
 		public string Referrer
 		{
 			get { return _Referrer; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AssetServeOptions(XmlElement node) : base(node)
+		public AssetServeOptions(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["download"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "download":
-						this._Download = ParseBool(propertyNode.InnerText);
-						continue;
-					case "referrer":
-						this._Referrer = propertyNode.InnerText;
-						continue;
-				}
+				this._Download = ParseBool(node["download"].Value<string>());
 			}
-		}
-
-		public AssetServeOptions(IDictionary<string,object> data) : base(data)
-		{
-			    this._Download = data.TryGetValueSafe<bool>("download");
-			    this._Referrer = data.TryGetValueSafe<string>("referrer");
+			if(node["referrer"] != null)
+			{
+				this._Referrer = node["referrer"].Value<string>();
+			}
 		}
 		#endregion
 

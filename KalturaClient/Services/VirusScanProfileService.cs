@@ -32,6 +32,7 @@ using System.IO;
 using Kaltura.Request;
 using Kaltura.Types;
 using Kaltura.Enums;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Services
 {
@@ -72,13 +73,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<VirusScanProfile>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<VirusScanProfile>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -119,13 +116,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<VirusScanProfile>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<VirusScanProfile>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -166,13 +159,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<VirusScanProfile>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<VirusScanProfile>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -222,13 +211,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<ListResponse<VirusScanProfile>>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<ListResponse<VirusScanProfile>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -278,13 +263,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
-			return int.Parse(result.InnerText);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return (int)(result);
+			return result.Value<int>();
 		}
 	}
 
@@ -334,13 +315,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<VirusScanProfile>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<VirusScanProfile>((IDictionary<string,object>)result);
 		}
 	}
 

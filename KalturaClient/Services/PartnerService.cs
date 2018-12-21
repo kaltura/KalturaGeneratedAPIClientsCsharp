@@ -32,6 +32,7 @@ using System.IO;
 using Kaltura.Request;
 using Kaltura.Types;
 using Kaltura.Enums;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Services
 {
@@ -72,13 +73,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
-			return int.Parse(result.InnerText);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return (int)(result);
+			return result.Value<int>();
 		}
 	}
 
@@ -119,13 +116,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<Partner>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<Partner>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -152,13 +145,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<Partner>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<Partner>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -217,13 +206,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<Partner>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<Partner>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -250,13 +235,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<PartnerStatistics>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<PartnerStatistics>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -306,13 +287,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<ListResponse<Partner>>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<ListResponse<Partner>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -339,13 +316,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<ListResponse<FeatureStatus>>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<ListResponse<FeatureStatus>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -395,13 +368,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<ListResponse<Partner>>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<ListResponse<Partner>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -469,13 +438,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<Partner>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<Partner>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -525,13 +490,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<Partner>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<Partner>((IDictionary<string,object>)result);
 		}
 	}
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -60,6 +62,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int SchedulerId
 		{
 			get { return _SchedulerId; }
@@ -69,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SchedulerId");
 			}
 		}
+		[JsonProperty]
 		public int WorkerId
 		{
 			get { return _WorkerId; }
@@ -78,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WorkerId");
 			}
 		}
+		[JsonProperty]
 		public int BatchIndex
 		{
 			get { return _BatchIndex; }
@@ -87,6 +92,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BatchIndex");
 			}
 		}
+		[JsonProperty]
 		public int TimeStamp
 		{
 			get { return _TimeStamp; }
@@ -96,6 +102,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TimeStamp");
 			}
 		}
+		[JsonProperty]
 		public string Message
 		{
 			get { return _Message; }
@@ -105,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Message");
 			}
 		}
+		[JsonProperty]
 		public int ErrType
 		{
 			get { return _ErrType; }
@@ -114,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrType");
 			}
 		}
+		[JsonProperty]
 		public int ErrNumber
 		{
 			get { return _ErrNumber; }
@@ -123,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrNumber");
 			}
 		}
+		[JsonProperty]
 		public string HostName
 		{
 			get { return _HostName; }
@@ -132,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("HostName");
 			}
 		}
+		[JsonProperty]
 		public string SessionId
 		{
 			get { return _SessionId; }
@@ -148,54 +159,44 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BatchHistoryData(XmlElement node) : base(node)
+		public BatchHistoryData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["schedulerId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "schedulerId":
-						this._SchedulerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "workerId":
-						this._WorkerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "batchIndex":
-						this._BatchIndex = ParseInt(propertyNode.InnerText);
-						continue;
-					case "timeStamp":
-						this._TimeStamp = ParseInt(propertyNode.InnerText);
-						continue;
-					case "message":
-						this._Message = propertyNode.InnerText;
-						continue;
-					case "errType":
-						this._ErrType = ParseInt(propertyNode.InnerText);
-						continue;
-					case "errNumber":
-						this._ErrNumber = ParseInt(propertyNode.InnerText);
-						continue;
-					case "hostName":
-						this._HostName = propertyNode.InnerText;
-						continue;
-					case "sessionId":
-						this._SessionId = propertyNode.InnerText;
-						continue;
-				}
+				this._SchedulerId = ParseInt(node["schedulerId"].Value<string>());
 			}
-		}
-
-		public BatchHistoryData(IDictionary<string,object> data) : base(data)
-		{
-			    this._SchedulerId = data.TryGetValueSafe<int>("schedulerId");
-			    this._WorkerId = data.TryGetValueSafe<int>("workerId");
-			    this._BatchIndex = data.TryGetValueSafe<int>("batchIndex");
-			    this._TimeStamp = data.TryGetValueSafe<int>("timeStamp");
-			    this._Message = data.TryGetValueSafe<string>("message");
-			    this._ErrType = data.TryGetValueSafe<int>("errType");
-			    this._ErrNumber = data.TryGetValueSafe<int>("errNumber");
-			    this._HostName = data.TryGetValueSafe<string>("hostName");
-			    this._SessionId = data.TryGetValueSafe<string>("sessionId");
+			if(node["workerId"] != null)
+			{
+				this._WorkerId = ParseInt(node["workerId"].Value<string>());
+			}
+			if(node["batchIndex"] != null)
+			{
+				this._BatchIndex = ParseInt(node["batchIndex"].Value<string>());
+			}
+			if(node["timeStamp"] != null)
+			{
+				this._TimeStamp = ParseInt(node["timeStamp"].Value<string>());
+			}
+			if(node["message"] != null)
+			{
+				this._Message = node["message"].Value<string>();
+			}
+			if(node["errType"] != null)
+			{
+				this._ErrType = ParseInt(node["errType"].Value<string>());
+			}
+			if(node["errNumber"] != null)
+			{
+				this._ErrNumber = ParseInt(node["errNumber"].Value<string>());
+			}
+			if(node["hostName"] != null)
+			{
+				this._HostName = node["hostName"].Value<string>();
+			}
+			if(node["sessionId"] != null)
+			{
+				this._SessionId = node["sessionId"].Value<string>();
+			}
 		}
 		#endregion
 

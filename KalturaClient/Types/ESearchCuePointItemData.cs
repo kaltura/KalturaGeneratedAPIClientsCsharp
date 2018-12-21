@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -68,6 +70,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string CuePointType
 		{
 			get { return _CuePointType; }
@@ -77,6 +80,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CuePointType");
 			}
 		}
+		[JsonProperty]
 		public string Id
 		{
 			get { return _Id; }
@@ -86,6 +90,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -95,6 +100,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		[JsonProperty]
 		public string Text
 		{
 			get { return _Text; }
@@ -104,6 +110,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Text");
 			}
 		}
+		[JsonProperty]
 		public IList<String> Tags
 		{
 			get { return _Tags; }
@@ -113,6 +120,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
+		[JsonProperty]
 		public string StartTime
 		{
 			get { return _StartTime; }
@@ -122,6 +130,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartTime");
 			}
 		}
+		[JsonProperty]
 		public string EndTime
 		{
 			get { return _EndTime; }
@@ -131,6 +140,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndTime");
 			}
 		}
+		[JsonProperty]
 		public string SubType
 		{
 			get { return _SubType; }
@@ -140,6 +150,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SubType");
 			}
 		}
+		[JsonProperty]
 		public string Question
 		{
 			get { return _Question; }
@@ -149,6 +160,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Question");
 			}
 		}
+		[JsonProperty]
 		public IList<String> Answers
 		{
 			get { return _Answers; }
@@ -158,6 +170,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Answers");
 			}
 		}
+		[JsonProperty]
 		public string Hint
 		{
 			get { return _Hint; }
@@ -167,6 +180,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Hint");
 			}
 		}
+		[JsonProperty]
 		public string Explanation
 		{
 			get { return _Explanation; }
@@ -176,6 +190,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Explanation");
 			}
 		}
+		[JsonProperty]
 		public string AssetId
 		{
 			get { return _AssetId; }
@@ -192,88 +207,68 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ESearchCuePointItemData(XmlElement node) : base(node)
+		public ESearchCuePointItemData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["cuePointType"] != null)
 			{
-				switch (propertyNode.Name)
+				this._CuePointType = node["cuePointType"].Value<string>();
+			}
+			if(node["id"] != null)
+			{
+				this._Id = node["id"].Value<string>();
+			}
+			if(node["name"] != null)
+			{
+				this._Name = node["name"].Value<string>();
+			}
+			if(node["text"] != null)
+			{
+				this._Text = node["text"].Value<string>();
+			}
+			if(node["tags"] != null)
+			{
+				this._Tags = new List<String>();
+				foreach(var arrayNode in node["tags"].Children())
 				{
-					case "cuePointType":
-						this._CuePointType = propertyNode.InnerText;
-						continue;
-					case "id":
-						this._Id = propertyNode.InnerText;
-						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-					case "text":
-						this._Text = propertyNode.InnerText;
-						continue;
-					case "tags":
-						this._Tags = new List<String>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Tags.Add(ObjectFactory.Create<String>(arrayNode));
-						}
-						continue;
-					case "startTime":
-						this._StartTime = propertyNode.InnerText;
-						continue;
-					case "endTime":
-						this._EndTime = propertyNode.InnerText;
-						continue;
-					case "subType":
-						this._SubType = propertyNode.InnerText;
-						continue;
-					case "question":
-						this._Question = propertyNode.InnerText;
-						continue;
-					case "answers":
-						this._Answers = new List<String>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Answers.Add(ObjectFactory.Create<String>(arrayNode));
-						}
-						continue;
-					case "hint":
-						this._Hint = propertyNode.InnerText;
-						continue;
-					case "explanation":
-						this._Explanation = propertyNode.InnerText;
-						continue;
-					case "assetId":
-						this._AssetId = propertyNode.InnerText;
-						continue;
+					this._Tags.Add(ObjectFactory.Create<String>(arrayNode));
 				}
 			}
-		}
-
-		public ESearchCuePointItemData(IDictionary<string,object> data) : base(data)
-		{
-			    this._CuePointType = data.TryGetValueSafe<string>("cuePointType");
-			    this._Id = data.TryGetValueSafe<string>("id");
-			    this._Name = data.TryGetValueSafe<string>("name");
-			    this._Text = data.TryGetValueSafe<string>("text");
-			    this._Tags = new List<String>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("tags", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Tags.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._StartTime = data.TryGetValueSafe<string>("startTime");
-			    this._EndTime = data.TryGetValueSafe<string>("endTime");
-			    this._SubType = data.TryGetValueSafe<string>("subType");
-			    this._Question = data.TryGetValueSafe<string>("question");
-			    this._Answers = new List<String>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("answers", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Answers.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._Hint = data.TryGetValueSafe<string>("hint");
-			    this._Explanation = data.TryGetValueSafe<string>("explanation");
-			    this._AssetId = data.TryGetValueSafe<string>("assetId");
+			if(node["startTime"] != null)
+			{
+				this._StartTime = node["startTime"].Value<string>();
+			}
+			if(node["endTime"] != null)
+			{
+				this._EndTime = node["endTime"].Value<string>();
+			}
+			if(node["subType"] != null)
+			{
+				this._SubType = node["subType"].Value<string>();
+			}
+			if(node["question"] != null)
+			{
+				this._Question = node["question"].Value<string>();
+			}
+			if(node["answers"] != null)
+			{
+				this._Answers = new List<String>();
+				foreach(var arrayNode in node["answers"].Children())
+				{
+					this._Answers.Add(ObjectFactory.Create<String>(arrayNode));
+				}
+			}
+			if(node["hint"] != null)
+			{
+				this._Hint = node["hint"].Value<string>();
+			}
+			if(node["explanation"] != null)
+			{
+				this._Explanation = node["explanation"].Value<string>();
+			}
+			if(node["assetId"] != null)
+			{
+				this._AssetId = node["assetId"].Value<string>();
+			}
 		}
 		#endregion
 

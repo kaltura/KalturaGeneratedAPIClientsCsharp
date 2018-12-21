@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public IList<ESearchHighlight> Highlight
 		{
 			get { return _Highlight; }
@@ -60,31 +63,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ESearchItemData(XmlElement node) : base(node)
+		public ESearchItemData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["highlight"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Highlight = new List<ESearchHighlight>();
+				foreach(var arrayNode in node["highlight"].Children())
 				{
-					case "highlight":
-						this._Highlight = new List<ESearchHighlight>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Highlight.Add(ObjectFactory.Create<ESearchHighlight>(arrayNode));
-						}
-						continue;
+					this._Highlight.Add(ObjectFactory.Create<ESearchHighlight>(arrayNode));
 				}
 			}
-		}
-
-		public ESearchItemData(IDictionary<string,object> data) : base(data)
-		{
-			    this._Highlight = new List<ESearchHighlight>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("highlight", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Highlight.Add(ObjectFactory.Create<ESearchHighlight>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

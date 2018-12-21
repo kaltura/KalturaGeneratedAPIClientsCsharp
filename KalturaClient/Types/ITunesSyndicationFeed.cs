@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -64,6 +66,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string FeedDescription
 		{
 			get { return _FeedDescription; }
@@ -73,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedDescription");
 			}
 		}
+		[JsonProperty]
 		public string Language
 		{
 			get { return _Language; }
@@ -82,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Language");
 			}
 		}
+		[JsonProperty]
 		public string FeedLandingPage
 		{
 			get { return _FeedLandingPage; }
@@ -91,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedLandingPage");
 			}
 		}
+		[JsonProperty]
 		public string OwnerName
 		{
 			get { return _OwnerName; }
@@ -100,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("OwnerName");
 			}
 		}
+		[JsonProperty]
 		public string OwnerEmail
 		{
 			get { return _OwnerEmail; }
@@ -109,6 +116,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("OwnerEmail");
 			}
 		}
+		[JsonProperty]
 		public string FeedImageUrl
 		{
 			get { return _FeedImageUrl; }
@@ -118,10 +126,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedImageUrl");
 			}
 		}
+		[JsonProperty]
 		public ITunesSyndicationFeedCategories Category
 		{
 			get { return _Category; }
+			private set 
+			{ 
+				_Category = value;
+				OnPropertyChanged("Category");
+			}
 		}
+		[JsonProperty]
 		public ITunesSyndicationFeedAdultValues AdultContent
 		{
 			get { return _AdultContent; }
@@ -131,6 +146,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdultContent");
 			}
 		}
+		[JsonProperty]
 		public string FeedAuthor
 		{
 			get { return _FeedAuthor; }
@@ -140,6 +156,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedAuthor");
 			}
 		}
+		[JsonProperty]
 		public bool? EnforceFeedAuthor
 		{
 			get { return _EnforceFeedAuthor; }
@@ -149,6 +166,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EnforceFeedAuthor");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean EnforceOrder
 		{
 			get { return _EnforceOrder; }
@@ -165,62 +183,52 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ITunesSyndicationFeed(XmlElement node) : base(node)
+		public ITunesSyndicationFeed(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["feedDescription"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "feedDescription":
-						this._FeedDescription = propertyNode.InnerText;
-						continue;
-					case "language":
-						this._Language = propertyNode.InnerText;
-						continue;
-					case "feedLandingPage":
-						this._FeedLandingPage = propertyNode.InnerText;
-						continue;
-					case "ownerName":
-						this._OwnerName = propertyNode.InnerText;
-						continue;
-					case "ownerEmail":
-						this._OwnerEmail = propertyNode.InnerText;
-						continue;
-					case "feedImageUrl":
-						this._FeedImageUrl = propertyNode.InnerText;
-						continue;
-					case "category":
-						this._Category = (ITunesSyndicationFeedCategories)StringEnum.Parse(typeof(ITunesSyndicationFeedCategories), propertyNode.InnerText);
-						continue;
-					case "adultContent":
-						this._AdultContent = (ITunesSyndicationFeedAdultValues)StringEnum.Parse(typeof(ITunesSyndicationFeedAdultValues), propertyNode.InnerText);
-						continue;
-					case "feedAuthor":
-						this._FeedAuthor = propertyNode.InnerText;
-						continue;
-					case "enforceFeedAuthor":
-						this._EnforceFeedAuthor = ParseBool(propertyNode.InnerText);
-						continue;
-					case "enforceOrder":
-						this._EnforceOrder = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-				}
+				this._FeedDescription = node["feedDescription"].Value<string>();
 			}
-		}
-
-		public ITunesSyndicationFeed(IDictionary<string,object> data) : base(data)
-		{
-			    this._FeedDescription = data.TryGetValueSafe<string>("feedDescription");
-			    this._Language = data.TryGetValueSafe<string>("language");
-			    this._FeedLandingPage = data.TryGetValueSafe<string>("feedLandingPage");
-			    this._OwnerName = data.TryGetValueSafe<string>("ownerName");
-			    this._OwnerEmail = data.TryGetValueSafe<string>("ownerEmail");
-			    this._FeedImageUrl = data.TryGetValueSafe<string>("feedImageUrl");
-			    this._Category = (ITunesSyndicationFeedCategories)StringEnum.Parse(typeof(ITunesSyndicationFeedCategories), data.TryGetValueSafe<string>("category"));
-			    this._AdultContent = (ITunesSyndicationFeedAdultValues)StringEnum.Parse(typeof(ITunesSyndicationFeedAdultValues), data.TryGetValueSafe<string>("adultContent"));
-			    this._FeedAuthor = data.TryGetValueSafe<string>("feedAuthor");
-			    this._EnforceFeedAuthor = data.TryGetValueSafe<bool>("enforceFeedAuthor");
-			    this._EnforceOrder = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("enforceOrder"));
+			if(node["language"] != null)
+			{
+				this._Language = node["language"].Value<string>();
+			}
+			if(node["feedLandingPage"] != null)
+			{
+				this._FeedLandingPage = node["feedLandingPage"].Value<string>();
+			}
+			if(node["ownerName"] != null)
+			{
+				this._OwnerName = node["ownerName"].Value<string>();
+			}
+			if(node["ownerEmail"] != null)
+			{
+				this._OwnerEmail = node["ownerEmail"].Value<string>();
+			}
+			if(node["feedImageUrl"] != null)
+			{
+				this._FeedImageUrl = node["feedImageUrl"].Value<string>();
+			}
+			if(node["category"] != null)
+			{
+				this._Category = (ITunesSyndicationFeedCategories)StringEnum.Parse(typeof(ITunesSyndicationFeedCategories), node["category"].Value<string>());
+			}
+			if(node["adultContent"] != null)
+			{
+				this._AdultContent = (ITunesSyndicationFeedAdultValues)StringEnum.Parse(typeof(ITunesSyndicationFeedAdultValues), node["adultContent"].Value<string>());
+			}
+			if(node["feedAuthor"] != null)
+			{
+				this._FeedAuthor = node["feedAuthor"].Value<string>();
+			}
+			if(node["enforceFeedAuthor"] != null)
+			{
+				this._EnforceFeedAuthor = ParseBool(node["enforceFeedAuthor"].Value<string>());
+			}
+			if(node["enforceOrder"] != null)
+			{
+				this._EnforceOrder = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["enforceOrder"].Value<string>());
+			}
 		}
 		#endregion
 

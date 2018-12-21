@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int KeepManualThumbnails
 		{
 			get { return _KeepManualThumbnails; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("KeepManualThumbnails");
 			}
 		}
+		[JsonProperty]
 		public IList<PluginReplacementOptionsItem> PluginOptionItems
 		{
 			get { return _PluginOptionItems; }
@@ -71,35 +75,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EntryReplacementOptions(XmlElement node) : base(node)
+		public EntryReplacementOptions(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["keepManualThumbnails"] != null)
 			{
-				switch (propertyNode.Name)
+				this._KeepManualThumbnails = ParseInt(node["keepManualThumbnails"].Value<string>());
+			}
+			if(node["pluginOptionItems"] != null)
+			{
+				this._PluginOptionItems = new List<PluginReplacementOptionsItem>();
+				foreach(var arrayNode in node["pluginOptionItems"].Children())
 				{
-					case "keepManualThumbnails":
-						this._KeepManualThumbnails = ParseInt(propertyNode.InnerText);
-						continue;
-					case "pluginOptionItems":
-						this._PluginOptionItems = new List<PluginReplacementOptionsItem>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._PluginOptionItems.Add(ObjectFactory.Create<PluginReplacementOptionsItem>(arrayNode));
-						}
-						continue;
+					this._PluginOptionItems.Add(ObjectFactory.Create<PluginReplacementOptionsItem>(arrayNode));
 				}
 			}
-		}
-
-		public EntryReplacementOptions(IDictionary<string,object> data) : base(data)
-		{
-			    this._KeepManualThumbnails = data.TryGetValueSafe<int>("keepManualThumbnails");
-			    this._PluginOptionItems = new List<PluginReplacementOptionsItem>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("pluginOptionItems", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._PluginOptionItems.Add(ObjectFactory.Create<PluginReplacementOptionsItem>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

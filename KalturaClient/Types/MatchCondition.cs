@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public IList<StringValue> Values
 		{
 			get { return _Values; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Values");
 			}
 		}
+		[JsonProperty]
 		public MatchConditionType MatchType
 		{
 			get { return _MatchType; }
@@ -71,35 +75,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public MatchCondition(XmlElement node) : base(node)
+		public MatchCondition(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["values"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Values = new List<StringValue>();
+				foreach(var arrayNode in node["values"].Children())
 				{
-					case "values":
-						this._Values = new List<StringValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Values.Add(ObjectFactory.Create<StringValue>(arrayNode));
-						}
-						continue;
-					case "matchType":
-						this._MatchType = (MatchConditionType)StringEnum.Parse(typeof(MatchConditionType), propertyNode.InnerText);
-						continue;
+					this._Values.Add(ObjectFactory.Create<StringValue>(arrayNode));
 				}
 			}
-		}
-
-		public MatchCondition(IDictionary<string,object> data) : base(data)
-		{
-			    this._Values = new List<StringValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("values", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Values.Add(ObjectFactory.Create<StringValue>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._MatchType = (MatchConditionType)StringEnum.Parse(typeof(MatchConditionType), data.TryGetValueSafe<string>("matchType"));
+			if(node["matchType"] != null)
+			{
+				this._MatchType = (MatchConditionType)StringEnum.Parse(typeof(MatchConditionType), node["matchType"].Value<string>());
+			}
 		}
 		#endregion
 

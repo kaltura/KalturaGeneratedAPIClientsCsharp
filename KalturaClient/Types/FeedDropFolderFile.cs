@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Hash
 		{
 			get { return _Hash; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Hash");
 			}
 		}
+		[JsonProperty]
 		public string FeedXmlPath
 		{
 			get { return _FeedXmlPath; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FeedDropFolderFile(XmlElement node) : base(node)
+		public FeedDropFolderFile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["hash"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "hash":
-						this._Hash = propertyNode.InnerText;
-						continue;
-					case "feedXmlPath":
-						this._FeedXmlPath = propertyNode.InnerText;
-						continue;
-				}
+				this._Hash = node["hash"].Value<string>();
 			}
-		}
-
-		public FeedDropFolderFile(IDictionary<string,object> data) : base(data)
-		{
-			    this._Hash = data.TryGetValueSafe<string>("hash");
-			    this._FeedXmlPath = data.TryGetValueSafe<string>("feedXmlPath");
+			if(node["feedXmlPath"] != null)
+			{
+				this._FeedXmlPath = node["feedXmlPath"].Value<string>();
+			}
 		}
 		#endregion
 

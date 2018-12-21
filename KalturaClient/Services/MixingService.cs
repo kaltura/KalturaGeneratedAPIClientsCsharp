@@ -32,6 +32,7 @@ using System.IO;
 using Kaltura.Request;
 using Kaltura.Types;
 using Kaltura.Enums;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Services
 {
@@ -72,17 +73,13 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<MixEntry>(result);
 		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<MixEntry>((IDictionary<string,object>)result);
-		}
 	}
 
-	public class MixingAnonymousRankRequestBuilder : RequestBuilder<object>
+	public class MixingAnonymousRankRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
 		public const string ENTRY_ID = "entryId";
@@ -128,11 +125,7 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-		public override object DeserializeObject(object result)
+		public override object Deserialize(JToken result)
 		{
 			return null;
 		}
@@ -184,13 +177,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<MixEntry>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<MixEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -231,13 +220,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<MixEntry>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<MixEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -278,17 +263,13 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
-			return int.Parse(result.InnerText);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return (int)(result);
+			return result.Value<int>();
 		}
 	}
 
-	public class MixingDeleteRequestBuilder : RequestBuilder<object>
+	public class MixingDeleteRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
 		public const string ENTRY_ID = "entryId";
@@ -325,11 +306,7 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-		public override object DeserializeObject(object result)
+		public override object Deserialize(JToken result)
 		{
 			return null;
 		}
@@ -381,13 +358,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<MixEntry>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<MixEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -428,20 +401,12 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			IList<MixEntry> list = new List<MixEntry>();
-			foreach(XmlElement node in result.ChildNodes)
+			foreach(var node in result.Children())
 			{
-				list.Add(ObjectFactory.Create<MixEntry>(node));
-			}
-			return list;
-		}
-		public override object DeserializeObject(object result)
-		{
-			var list = new List<MixEntry>();
-			foreach(var node in (IEnumerable<IDictionary<string,object>>)result)
-			{
+				//TODO: Deserilize Array;
 				list.Add(ObjectFactory.Create<MixEntry>(node));
 			}
 			return list;
@@ -494,20 +459,12 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			IList<MediaEntry> list = new List<MediaEntry>();
-			foreach(XmlElement node in result.ChildNodes)
+			foreach(var node in result.Children())
 			{
-				list.Add(ObjectFactory.Create<MediaEntry>(node));
-			}
-			return list;
-		}
-		public override object DeserializeObject(object result)
-		{
-			var list = new List<MediaEntry>();
-			foreach(var node in (IEnumerable<IDictionary<string,object>>)result)
-			{
+				//TODO: Deserilize Array;
 				list.Add(ObjectFactory.Create<MediaEntry>(node));
 			}
 			return list;
@@ -560,13 +517,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<ListResponse<MixEntry>>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<ListResponse<MixEntry>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -616,13 +569,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<MixEntry>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<MixEntry>((IDictionary<string,object>)result);
 		}
 	}
 

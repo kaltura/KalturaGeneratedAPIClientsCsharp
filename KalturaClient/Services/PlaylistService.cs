@@ -32,6 +32,7 @@ using System.IO;
 using Kaltura.Request;
 using Kaltura.Types;
 using Kaltura.Enums;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Services
 {
@@ -81,13 +82,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<Playlist>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<Playlist>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -137,17 +134,13 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<Playlist>(result);
 		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<Playlist>((IDictionary<string,object>)result);
-		}
 	}
 
-	public class PlaylistDeleteRequestBuilder : RequestBuilder<object>
+	public class PlaylistDeleteRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
 		public const string ID = "id";
@@ -184,11 +177,7 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-		public override object DeserializeObject(object result)
+		public override object Deserialize(JToken result)
 		{
 			return null;
 		}
@@ -267,20 +256,12 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			IList<BaseEntry> list = new List<BaseEntry>();
-			foreach(XmlElement node in result.ChildNodes)
+			foreach(var node in result.Children())
 			{
-				list.Add(ObjectFactory.Create<BaseEntry>(node));
-			}
-			return list;
-		}
-		public override object DeserializeObject(object result)
-		{
-			var list = new List<BaseEntry>();
-			foreach(var node in (IEnumerable<IDictionary<string,object>>)result)
-			{
+				//TODO: Deserilize Array;
 				list.Add(ObjectFactory.Create<BaseEntry>(node));
 			}
 			return list;
@@ -351,20 +332,12 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			IList<BaseEntry> list = new List<BaseEntry>();
-			foreach(XmlElement node in result.ChildNodes)
+			foreach(var node in result.Children())
 			{
-				list.Add(ObjectFactory.Create<BaseEntry>(node));
-			}
-			return list;
-		}
-		public override object DeserializeObject(object result)
-		{
-			var list = new List<BaseEntry>();
-			foreach(var node in (IEnumerable<IDictionary<string,object>>)result)
-			{
+				//TODO: Deserilize Array;
 				list.Add(ObjectFactory.Create<BaseEntry>(node));
 			}
 			return list;
@@ -435,20 +408,12 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			IList<BaseEntry> list = new List<BaseEntry>();
-			foreach(XmlElement node in result.ChildNodes)
+			foreach(var node in result.Children())
 			{
-				list.Add(ObjectFactory.Create<BaseEntry>(node));
-			}
-			return list;
-		}
-		public override object DeserializeObject(object result)
-		{
-			var list = new List<BaseEntry>();
-			foreach(var node in (IEnumerable<IDictionary<string,object>>)result)
-			{
+				//TODO: Deserilize Array;
 				list.Add(ObjectFactory.Create<BaseEntry>(node));
 			}
 			return list;
@@ -501,13 +466,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<Playlist>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<Playlist>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -557,13 +518,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<Playlist>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<Playlist>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -613,13 +570,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<ListResponse<Playlist>>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<ListResponse<Playlist>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -678,13 +631,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<Playlist>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<Playlist>((IDictionary<string,object>)result);
 		}
 	}
 

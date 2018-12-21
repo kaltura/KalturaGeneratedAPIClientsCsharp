@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public ChinaCacheAlgorithmType AlgorithmId
 		{
 			get { return _AlgorithmId; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AlgorithmId");
 			}
 		}
+		[JsonProperty]
 		public int KeyId
 		{
 			get { return _KeyId; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UrlTokenizerChinaCache(XmlElement node) : base(node)
+		public UrlTokenizerChinaCache(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["algorithmId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "algorithmId":
-						this._AlgorithmId = (ChinaCacheAlgorithmType)ParseEnum(typeof(ChinaCacheAlgorithmType), propertyNode.InnerText);
-						continue;
-					case "keyId":
-						this._KeyId = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._AlgorithmId = (ChinaCacheAlgorithmType)ParseEnum(typeof(ChinaCacheAlgorithmType), node["algorithmId"].Value<string>());
 			}
-		}
-
-		public UrlTokenizerChinaCache(IDictionary<string,object> data) : base(data)
-		{
-			    this._AlgorithmId = (ChinaCacheAlgorithmType)ParseEnum(typeof(ChinaCacheAlgorithmType), data.TryGetValueSafe<int>("algorithmId"));
-			    this._KeyId = data.TryGetValueSafe<int>("keyId");
+			if(node["keyId"] != null)
+			{
+				this._KeyId = ParseInt(node["keyId"].Value<string>());
+			}
 		}
 		#endregion
 

@@ -32,10 +32,11 @@ using System.IO;
 using Kaltura.Request;
 using Kaltura.Types;
 using Kaltura.Enums;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Services
 {
-	public class CategoryEntryActivateRequestBuilder : RequestBuilder<object>
+	public class CategoryEntryActivateRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
 		public const string ENTRY_ID = "entryId";
@@ -81,11 +82,7 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-		public override object DeserializeObject(object result)
+		public override object Deserialize(JToken result)
 		{
 			return null;
 		}
@@ -128,13 +125,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<CategoryEntry>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<CategoryEntry>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -184,17 +177,13 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<BulkUpload>(result);
 		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<BulkUpload>((IDictionary<string,object>)result);
-		}
 	}
 
-	public class CategoryEntryDeleteRequestBuilder : RequestBuilder<object>
+	public class CategoryEntryDeleteRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
 		public const string ENTRY_ID = "entryId";
@@ -240,11 +229,7 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-		public override object DeserializeObject(object result)
+		public override object Deserialize(JToken result)
 		{
 			return null;
 		}
@@ -305,13 +290,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
-			return int.Parse(result.InnerText);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return (int)(result);
+			return result.Value<int>();
 		}
 	}
 
@@ -361,17 +342,13 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<ListResponse<CategoryEntry>>(result);
 		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<ListResponse<CategoryEntry>>((IDictionary<string,object>)result);
-		}
 	}
 
-	public class CategoryEntryRejectRequestBuilder : RequestBuilder<object>
+	public class CategoryEntryRejectRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
 		public const string ENTRY_ID = "entryId";
@@ -417,17 +394,13 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-		public override object DeserializeObject(object result)
+		public override object Deserialize(JToken result)
 		{
 			return null;
 		}
 	}
 
-	public class CategoryEntrySyncPrivacyContextRequestBuilder : RequestBuilder<object>
+	public class CategoryEntrySyncPrivacyContextRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
 		public const string ENTRY_ID = "entryId";
@@ -473,11 +446,7 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-		public override object DeserializeObject(object result)
+		public override object Deserialize(JToken result)
 		{
 			return null;
 		}
@@ -537,13 +506,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<BulkUpload>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<BulkUpload>((IDictionary<string,object>)result);
 		}
 	}
 

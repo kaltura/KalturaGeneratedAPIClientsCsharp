@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public DirectoryRestrictionType DirectoryRestrictionType
 		{
 			get { return _DirectoryRestrictionType; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DirectoryRestriction(XmlElement node) : base(node)
+		public DirectoryRestriction(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["directoryRestrictionType"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "directoryRestrictionType":
-						this._DirectoryRestrictionType = (DirectoryRestrictionType)ParseEnum(typeof(DirectoryRestrictionType), propertyNode.InnerText);
-						continue;
-				}
+				this._DirectoryRestrictionType = (DirectoryRestrictionType)ParseEnum(typeof(DirectoryRestrictionType), node["directoryRestrictionType"].Value<string>());
 			}
-		}
-
-		public DirectoryRestriction(IDictionary<string,object> data) : base(data)
-		{
-			    this._DirectoryRestrictionType = (DirectoryRestrictionType)ParseEnum(typeof(DirectoryRestrictionType), data.TryGetValueSafe<int>("directoryRestrictionType"));
 		}
 		#endregion
 

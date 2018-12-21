@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -66,22 +68,47 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public bool? IsDefault
 		{
 			get { return _IsDefault; }
@@ -91,10 +118,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsDefault");
 			}
 		}
+		[JsonProperty]
 		public GenericDistributionProviderStatus Status
 		{
 			get { return _Status; }
+			private set 
+			{ 
+				_Status = value;
+				OnPropertyChanged("Status");
+			}
 		}
+		[JsonProperty]
 		public string OptionalFlavorParamsIds
 		{
 			get { return _OptionalFlavorParamsIds; }
@@ -104,6 +138,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("OptionalFlavorParamsIds");
 			}
 		}
+		[JsonProperty]
 		public string RequiredFlavorParamsIds
 		{
 			get { return _RequiredFlavorParamsIds; }
@@ -113,6 +148,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RequiredFlavorParamsIds");
 			}
 		}
+		[JsonProperty]
 		public IList<DistributionThumbDimensions> OptionalThumbDimensions
 		{
 			get { return _OptionalThumbDimensions; }
@@ -122,6 +158,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("OptionalThumbDimensions");
 			}
 		}
+		[JsonProperty]
 		public IList<DistributionThumbDimensions> RequiredThumbDimensions
 		{
 			get { return _RequiredThumbDimensions; }
@@ -131,6 +168,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RequiredThumbDimensions");
 			}
 		}
+		[JsonProperty]
 		public string EditableFields
 		{
 			get { return _EditableFields; }
@@ -140,6 +178,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EditableFields");
 			}
 		}
+		[JsonProperty]
 		public string MandatoryFields
 		{
 			get { return _MandatoryFields; }
@@ -156,84 +195,64 @@ namespace Kaltura.Types
 		{
 		}
 
-		public GenericDistributionProvider(XmlElement node) : base(node)
+		public GenericDistributionProvider(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Id = ParseInt(node["id"].Value<string>());
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["isDefault"] != null)
+			{
+				this._IsDefault = ParseBool(node["isDefault"].Value<string>());
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (GenericDistributionProviderStatus)ParseEnum(typeof(GenericDistributionProviderStatus), node["status"].Value<string>());
+			}
+			if(node["optionalFlavorParamsIds"] != null)
+			{
+				this._OptionalFlavorParamsIds = node["optionalFlavorParamsIds"].Value<string>();
+			}
+			if(node["requiredFlavorParamsIds"] != null)
+			{
+				this._RequiredFlavorParamsIds = node["requiredFlavorParamsIds"].Value<string>();
+			}
+			if(node["optionalThumbDimensions"] != null)
+			{
+				this._OptionalThumbDimensions = new List<DistributionThumbDimensions>();
+				foreach(var arrayNode in node["optionalThumbDimensions"].Children())
 				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "isDefault":
-						this._IsDefault = ParseBool(propertyNode.InnerText);
-						continue;
-					case "status":
-						this._Status = (GenericDistributionProviderStatus)ParseEnum(typeof(GenericDistributionProviderStatus), propertyNode.InnerText);
-						continue;
-					case "optionalFlavorParamsIds":
-						this._OptionalFlavorParamsIds = propertyNode.InnerText;
-						continue;
-					case "requiredFlavorParamsIds":
-						this._RequiredFlavorParamsIds = propertyNode.InnerText;
-						continue;
-					case "optionalThumbDimensions":
-						this._OptionalThumbDimensions = new List<DistributionThumbDimensions>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._OptionalThumbDimensions.Add(ObjectFactory.Create<DistributionThumbDimensions>(arrayNode));
-						}
-						continue;
-					case "requiredThumbDimensions":
-						this._RequiredThumbDimensions = new List<DistributionThumbDimensions>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._RequiredThumbDimensions.Add(ObjectFactory.Create<DistributionThumbDimensions>(arrayNode));
-						}
-						continue;
-					case "editableFields":
-						this._EditableFields = propertyNode.InnerText;
-						continue;
-					case "mandatoryFields":
-						this._MandatoryFields = propertyNode.InnerText;
-						continue;
+					this._OptionalThumbDimensions.Add(ObjectFactory.Create<DistributionThumbDimensions>(arrayNode));
 				}
 			}
-		}
-
-		public GenericDistributionProvider(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._IsDefault = data.TryGetValueSafe<bool>("isDefault");
-			    this._Status = (GenericDistributionProviderStatus)ParseEnum(typeof(GenericDistributionProviderStatus), data.TryGetValueSafe<int>("status"));
-			    this._OptionalFlavorParamsIds = data.TryGetValueSafe<string>("optionalFlavorParamsIds");
-			    this._RequiredFlavorParamsIds = data.TryGetValueSafe<string>("requiredFlavorParamsIds");
-			    this._OptionalThumbDimensions = new List<DistributionThumbDimensions>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("optionalThumbDimensions", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._OptionalThumbDimensions.Add(ObjectFactory.Create<DistributionThumbDimensions>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._RequiredThumbDimensions = new List<DistributionThumbDimensions>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("requiredThumbDimensions", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._RequiredThumbDimensions.Add(ObjectFactory.Create<DistributionThumbDimensions>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._EditableFields = data.TryGetValueSafe<string>("editableFields");
-			    this._MandatoryFields = data.TryGetValueSafe<string>("mandatoryFields");
+			if(node["requiredThumbDimensions"] != null)
+			{
+				this._RequiredThumbDimensions = new List<DistributionThumbDimensions>();
+				foreach(var arrayNode in node["requiredThumbDimensions"].Children())
+				{
+					this._RequiredThumbDimensions.Add(ObjectFactory.Create<DistributionThumbDimensions>(arrayNode));
+				}
+			}
+			if(node["editableFields"] != null)
+			{
+				this._EditableFields = node["editableFields"].Value<string>();
+			}
+			if(node["mandatoryFields"] != null)
+			{
+				this._MandatoryFields = node["mandatoryFields"].Value<string>();
+			}
 		}
 		#endregion
 

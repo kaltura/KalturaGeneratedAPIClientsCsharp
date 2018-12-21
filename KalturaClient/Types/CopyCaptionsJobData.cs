@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string EntryId
 		{
 			get { return _EntryId; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		[JsonProperty]
 		public IList<ClipDescription> ClipsDescriptionArray
 		{
 			get { return _ClipsDescriptionArray; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ClipsDescriptionArray");
 			}
 		}
+		[JsonProperty]
 		public bool? FullCopy
 		{
 			get { return _FullCopy; }
@@ -82,39 +87,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CopyCaptionsJobData(XmlElement node) : base(node)
+		public CopyCaptionsJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["entryId"] != null)
 			{
-				switch (propertyNode.Name)
+				this._EntryId = node["entryId"].Value<string>();
+			}
+			if(node["clipsDescriptionArray"] != null)
+			{
+				this._ClipsDescriptionArray = new List<ClipDescription>();
+				foreach(var arrayNode in node["clipsDescriptionArray"].Children())
 				{
-					case "entryId":
-						this._EntryId = propertyNode.InnerText;
-						continue;
-					case "clipsDescriptionArray":
-						this._ClipsDescriptionArray = new List<ClipDescription>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._ClipsDescriptionArray.Add(ObjectFactory.Create<ClipDescription>(arrayNode));
-						}
-						continue;
-					case "fullCopy":
-						this._FullCopy = ParseBool(propertyNode.InnerText);
-						continue;
+					this._ClipsDescriptionArray.Add(ObjectFactory.Create<ClipDescription>(arrayNode));
 				}
 			}
-		}
-
-		public CopyCaptionsJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._EntryId = data.TryGetValueSafe<string>("entryId");
-			    this._ClipsDescriptionArray = new List<ClipDescription>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("clipsDescriptionArray", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._ClipsDescriptionArray.Add(ObjectFactory.Create<ClipDescription>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._FullCopy = data.TryGetValueSafe<bool>("fullCopy");
+			if(node["fullCopy"] != null)
+			{
+				this._FullCopy = ParseBool(node["fullCopy"].Value<string>());
+			}
 		}
 		#endregion
 

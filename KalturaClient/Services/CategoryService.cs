@@ -32,6 +32,7 @@ using System.IO;
 using Kaltura.Request;
 using Kaltura.Types;
 using Kaltura.Enums;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Services
 {
@@ -72,13 +73,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<Category>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<Category>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -136,17 +133,13 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<BulkUpload>(result);
 		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<BulkUpload>((IDictionary<string,object>)result);
-		}
 	}
 
-	public class CategoryDeleteRequestBuilder : RequestBuilder<object>
+	public class CategoryDeleteRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
 		public const string ID = "id";
@@ -192,11 +185,7 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-		public override object DeserializeObject(object result)
+		public override object Deserialize(JToken result)
 		{
 			return null;
 		}
@@ -239,13 +228,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<Category>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<Category>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -295,13 +280,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
-			return int.Parse(result.InnerText);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return (int)(result);
+			return result.Value<int>();
 		}
 	}
 
@@ -351,13 +332,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<ListResponse<Category>>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<ListResponse<Category>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -407,22 +384,15 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
-			if (result.InnerText.Equals("1") || result.InnerText.ToLower().Equals("true"))
-				return true;
-			return false;
-		}
-		public override object DeserializeObject(object result)
-		{
-			var resultStr = (string)result;
-			if (resultStr.Equals("1") || resultStr.ToLower().Equals("true"))
+			if (result.Value<string>().Equals("1") || result.Value<string>().ToLower().Equals("true"))
 				return true;
 			return false;
 		}
 	}
 
-	public class CategoryUnlockCategoriesRequestBuilder : RequestBuilder<object>
+	public class CategoryUnlockCategoriesRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
 		#endregion
@@ -445,11 +415,7 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-		public override object DeserializeObject(object result)
+		public override object Deserialize(JToken result)
 		{
 			return null;
 		}
@@ -501,13 +467,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<Category>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<Category>((IDictionary<string,object>)result);
 		}
 	}
 

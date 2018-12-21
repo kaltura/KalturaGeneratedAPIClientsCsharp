@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -60,6 +62,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string FieldName
 		{
 			get { return _FieldName; }
@@ -69,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FieldName");
 			}
 		}
+		[JsonProperty]
 		public string UserFriendlyFieldName
 		{
 			get { return _UserFriendlyFieldName; }
@@ -78,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserFriendlyFieldName");
 			}
 		}
+		[JsonProperty]
 		public string EntryMrssXslt
 		{
 			get { return _EntryMrssXslt; }
@@ -87,6 +92,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryMrssXslt");
 			}
 		}
+		[JsonProperty]
 		public DistributionFieldRequiredStatus IsRequired
 		{
 			get { return _IsRequired; }
@@ -96,6 +102,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsRequired");
 			}
 		}
+		[JsonProperty]
 		public string Type
 		{
 			get { return _Type; }
@@ -105,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		[JsonProperty]
 		public bool? UpdateOnChange
 		{
 			get { return _UpdateOnChange; }
@@ -114,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdateOnChange");
 			}
 		}
+		[JsonProperty]
 		public IList<String> UpdateParams
 		{
 			get { return _UpdateParams; }
@@ -123,10 +132,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdateParams");
 			}
 		}
+		[JsonProperty]
 		public bool? IsDefault
 		{
 			get { return _IsDefault; }
+			private set 
+			{ 
+				_IsDefault = value;
+				OnPropertyChanged("IsDefault");
+			}
 		}
+		[JsonProperty]
 		public bool? TriggerDeleteOnError
 		{
 			get { return _TriggerDeleteOnError; }
@@ -143,63 +159,48 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DistributionFieldConfig(XmlElement node) : base(node)
+		public DistributionFieldConfig(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["fieldName"] != null)
 			{
-				switch (propertyNode.Name)
+				this._FieldName = node["fieldName"].Value<string>();
+			}
+			if(node["userFriendlyFieldName"] != null)
+			{
+				this._UserFriendlyFieldName = node["userFriendlyFieldName"].Value<string>();
+			}
+			if(node["entryMrssXslt"] != null)
+			{
+				this._EntryMrssXslt = node["entryMrssXslt"].Value<string>();
+			}
+			if(node["isRequired"] != null)
+			{
+				this._IsRequired = (DistributionFieldRequiredStatus)ParseEnum(typeof(DistributionFieldRequiredStatus), node["isRequired"].Value<string>());
+			}
+			if(node["type"] != null)
+			{
+				this._Type = node["type"].Value<string>();
+			}
+			if(node["updateOnChange"] != null)
+			{
+				this._UpdateOnChange = ParseBool(node["updateOnChange"].Value<string>());
+			}
+			if(node["updateParams"] != null)
+			{
+				this._UpdateParams = new List<String>();
+				foreach(var arrayNode in node["updateParams"].Children())
 				{
-					case "fieldName":
-						this._FieldName = propertyNode.InnerText;
-						continue;
-					case "userFriendlyFieldName":
-						this._UserFriendlyFieldName = propertyNode.InnerText;
-						continue;
-					case "entryMrssXslt":
-						this._EntryMrssXslt = propertyNode.InnerText;
-						continue;
-					case "isRequired":
-						this._IsRequired = (DistributionFieldRequiredStatus)ParseEnum(typeof(DistributionFieldRequiredStatus), propertyNode.InnerText);
-						continue;
-					case "type":
-						this._Type = propertyNode.InnerText;
-						continue;
-					case "updateOnChange":
-						this._UpdateOnChange = ParseBool(propertyNode.InnerText);
-						continue;
-					case "updateParams":
-						this._UpdateParams = new List<String>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._UpdateParams.Add(ObjectFactory.Create<String>(arrayNode));
-						}
-						continue;
-					case "isDefault":
-						this._IsDefault = ParseBool(propertyNode.InnerText);
-						continue;
-					case "triggerDeleteOnError":
-						this._TriggerDeleteOnError = ParseBool(propertyNode.InnerText);
-						continue;
+					this._UpdateParams.Add(ObjectFactory.Create<String>(arrayNode));
 				}
 			}
-		}
-
-		public DistributionFieldConfig(IDictionary<string,object> data) : base(data)
-		{
-			    this._FieldName = data.TryGetValueSafe<string>("fieldName");
-			    this._UserFriendlyFieldName = data.TryGetValueSafe<string>("userFriendlyFieldName");
-			    this._EntryMrssXslt = data.TryGetValueSafe<string>("entryMrssXslt");
-			    this._IsRequired = (DistributionFieldRequiredStatus)ParseEnum(typeof(DistributionFieldRequiredStatus), data.TryGetValueSafe<int>("isRequired"));
-			    this._Type = data.TryGetValueSafe<string>("type");
-			    this._UpdateOnChange = data.TryGetValueSafe<bool>("updateOnChange");
-			    this._UpdateParams = new List<String>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("updateParams", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._UpdateParams.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._IsDefault = data.TryGetValueSafe<bool>("isDefault");
-			    this._TriggerDeleteOnError = data.TryGetValueSafe<bool>("triggerDeleteOnError");
+			if(node["isDefault"] != null)
+			{
+				this._IsDefault = ParseBool(node["isDefault"].Value<string>());
+			}
+			if(node["triggerDeleteOnError"] != null)
+			{
+				this._TriggerDeleteOnError = ParseBool(node["triggerDeleteOnError"].Value<string>());
+			}
 		}
 		#endregion
 

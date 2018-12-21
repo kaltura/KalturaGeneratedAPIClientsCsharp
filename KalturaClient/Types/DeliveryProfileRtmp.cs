@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public bool? EnforceRtmpe
 		{
 			get { return _EnforceRtmpe; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EnforceRtmpe");
 			}
 		}
+		[JsonProperty]
 		public string Prefix
 		{
 			get { return _Prefix; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DeliveryProfileRtmp(XmlElement node) : base(node)
+		public DeliveryProfileRtmp(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["enforceRtmpe"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "enforceRtmpe":
-						this._EnforceRtmpe = ParseBool(propertyNode.InnerText);
-						continue;
-					case "prefix":
-						this._Prefix = propertyNode.InnerText;
-						continue;
-				}
+				this._EnforceRtmpe = ParseBool(node["enforceRtmpe"].Value<string>());
 			}
-		}
-
-		public DeliveryProfileRtmp(IDictionary<string,object> data) : base(data)
-		{
-			    this._EnforceRtmpe = data.TryGetValueSafe<bool>("enforceRtmpe");
-			    this._Prefix = data.TryGetValueSafe<string>("prefix");
+			if(node["prefix"] != null)
+			{
+				this._Prefix = node["prefix"].Value<string>();
+			}
 		}
 		#endregion
 

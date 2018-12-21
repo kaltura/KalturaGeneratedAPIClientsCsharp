@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public IList<KeyValue> DeliveryProfileIds
 		{
 			get { return _DeliveryProfileIds; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeliveryProfileIds");
 			}
 		}
+		[JsonProperty]
 		public string Config
 		{
 			get { return _Config; }
@@ -71,35 +75,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DeliveryServerNode(XmlElement node) : base(node)
+		public DeliveryServerNode(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["deliveryProfileIds"] != null)
 			{
-				switch (propertyNode.Name)
+				this._DeliveryProfileIds = new List<KeyValue>();
+				foreach(var arrayNode in node["deliveryProfileIds"].Children())
 				{
-					case "deliveryProfileIds":
-						this._DeliveryProfileIds = new List<KeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._DeliveryProfileIds.Add(ObjectFactory.Create<KeyValue>(arrayNode));
-						}
-						continue;
-					case "config":
-						this._Config = propertyNode.InnerText;
-						continue;
+					this._DeliveryProfileIds.Add(ObjectFactory.Create<KeyValue>(arrayNode));
 				}
 			}
-		}
-
-		public DeliveryServerNode(IDictionary<string,object> data) : base(data)
-		{
-			    this._DeliveryProfileIds = new List<KeyValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("deliveryProfileIds", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._DeliveryProfileIds.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._Config = data.TryGetValueSafe<string>("config");
+			if(node["config"] != null)
+			{
+				this._Config = node["config"].Value<string>();
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,6 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Xpath
 		{
 			get { return _Xpath; }
@@ -61,6 +64,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Xpath");
 			}
 		}
+		[JsonProperty]
 		public int MetadataProfileId
 		{
 			get { return _MetadataProfileId; }
@@ -70,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataProfileId");
 			}
 		}
+		[JsonProperty]
 		public int MetadataFieldId
 		{
 			get { return _MetadataFieldId; }
@@ -79,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataFieldId");
 			}
 		}
+		[JsonProperty]
 		public string ValueText
 		{
 			get { return _ValueText; }
@@ -88,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ValueText");
 			}
 		}
+		[JsonProperty]
 		public int ValueInt
 		{
 			get { return _ValueInt; }
@@ -104,38 +111,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ESearchMetadataItemData(XmlElement node) : base(node)
+		public ESearchMetadataItemData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["xpath"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "xpath":
-						this._Xpath = propertyNode.InnerText;
-						continue;
-					case "metadataProfileId":
-						this._MetadataProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "metadataFieldId":
-						this._MetadataFieldId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "valueText":
-						this._ValueText = propertyNode.InnerText;
-						continue;
-					case "valueInt":
-						this._ValueInt = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._Xpath = node["xpath"].Value<string>();
 			}
-		}
-
-		public ESearchMetadataItemData(IDictionary<string,object> data) : base(data)
-		{
-			    this._Xpath = data.TryGetValueSafe<string>("xpath");
-			    this._MetadataProfileId = data.TryGetValueSafe<int>("metadataProfileId");
-			    this._MetadataFieldId = data.TryGetValueSafe<int>("metadataFieldId");
-			    this._ValueText = data.TryGetValueSafe<string>("valueText");
-			    this._ValueInt = data.TryGetValueSafe<int>("valueInt");
+			if(node["metadataProfileId"] != null)
+			{
+				this._MetadataProfileId = ParseInt(node["metadataProfileId"].Value<string>());
+			}
+			if(node["metadataFieldId"] != null)
+			{
+				this._MetadataFieldId = ParseInt(node["metadataFieldId"].Value<string>());
+			}
+			if(node["valueText"] != null)
+			{
+				this._ValueText = node["valueText"].Value<string>();
+			}
+			if(node["valueInt"] != null)
+			{
+				this._ValueInt = ParseInt(node["valueInt"].Value<string>());
+			}
 		}
 		#endregion
 

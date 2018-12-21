@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -98,10 +100,17 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
@@ -111,6 +120,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -120,6 +130,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -129,6 +140,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public DropFolderType Type
 		{
 			get { return _Type; }
@@ -138,6 +150,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		[JsonProperty]
 		public DropFolderStatus Status
 		{
 			get { return _Status; }
@@ -147,6 +160,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		[JsonProperty]
 		public int ConversionProfileId
 		{
 			get { return _ConversionProfileId; }
@@ -156,6 +170,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionProfileId");
 			}
 		}
+		[JsonProperty]
 		public int Dc
 		{
 			get { return _Dc; }
@@ -165,6 +180,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Dc");
 			}
 		}
+		[JsonProperty]
 		public string Path
 		{
 			get { return _Path; }
@@ -174,6 +190,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Path");
 			}
 		}
+		[JsonProperty]
 		public int FileSizeCheckInterval
 		{
 			get { return _FileSizeCheckInterval; }
@@ -183,6 +200,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileSizeCheckInterval");
 			}
 		}
+		[JsonProperty]
 		public DropFolderFileDeletePolicy FileDeletePolicy
 		{
 			get { return _FileDeletePolicy; }
@@ -192,6 +210,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileDeletePolicy");
 			}
 		}
+		[JsonProperty]
 		public int AutoFileDeleteDays
 		{
 			get { return _AutoFileDeleteDays; }
@@ -201,6 +220,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AutoFileDeleteDays");
 			}
 		}
+		[JsonProperty]
 		public DropFolderFileHandlerType FileHandlerType
 		{
 			get { return _FileHandlerType; }
@@ -210,6 +230,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileHandlerType");
 			}
 		}
+		[JsonProperty]
 		public string FileNamePatterns
 		{
 			get { return _FileNamePatterns; }
@@ -219,6 +240,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileNamePatterns");
 			}
 		}
+		[JsonProperty]
 		public DropFolderFileHandlerConfig FileHandlerConfig
 		{
 			get { return _FileHandlerConfig; }
@@ -228,6 +250,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileHandlerConfig");
 			}
 		}
+		[JsonProperty]
 		public string Tags
 		{
 			get { return _Tags; }
@@ -237,6 +260,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
+		[JsonProperty]
 		public DropFolderErrorCode ErrorCode
 		{
 			get { return _ErrorCode; }
@@ -246,6 +270,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrorCode");
 			}
 		}
+		[JsonProperty]
 		public string ErrorDescription
 		{
 			get { return _ErrorDescription; }
@@ -255,6 +280,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrorDescription");
 			}
 		}
+		[JsonProperty]
 		public string IgnoreFileNamePatterns
 		{
 			get { return _IgnoreFileNamePatterns; }
@@ -264,14 +290,27 @@ namespace Kaltura.Types
 				OnPropertyChanged("IgnoreFileNamePatterns");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public int LastAccessedAt
 		{
 			get { return _LastAccessedAt; }
@@ -281,6 +320,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastAccessedAt");
 			}
 		}
+		[JsonProperty]
 		public bool? Incremental
 		{
 			get { return _Incremental; }
@@ -290,6 +330,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Incremental");
 			}
 		}
+		[JsonProperty]
 		public int LastFileTimestamp
 		{
 			get { return _LastFileTimestamp; }
@@ -299,6 +340,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastFileTimestamp");
 			}
 		}
+		[JsonProperty]
 		public int MetadataProfileId
 		{
 			get { return _MetadataProfileId; }
@@ -308,6 +350,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataProfileId");
 			}
 		}
+		[JsonProperty]
 		public string CategoriesMetadataFieldName
 		{
 			get { return _CategoriesMetadataFieldName; }
@@ -317,6 +360,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoriesMetadataFieldName");
 			}
 		}
+		[JsonProperty]
 		public bool? EnforceEntitlement
 		{
 			get { return _EnforceEntitlement; }
@@ -326,6 +370,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EnforceEntitlement");
 			}
 		}
+		[JsonProperty]
 		public bool? ShouldValidateKS
 		{
 			get { return _ShouldValidateKS; }
@@ -342,130 +387,120 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DropFolder(XmlElement node) : base(node)
+		public DropFolder(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "type":
-						this._Type = (DropFolderType)StringEnum.Parse(typeof(DropFolderType), propertyNode.InnerText);
-						continue;
-					case "status":
-						this._Status = (DropFolderStatus)ParseEnum(typeof(DropFolderStatus), propertyNode.InnerText);
-						continue;
-					case "conversionProfileId":
-						this._ConversionProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "dc":
-						this._Dc = ParseInt(propertyNode.InnerText);
-						continue;
-					case "path":
-						this._Path = propertyNode.InnerText;
-						continue;
-					case "fileSizeCheckInterval":
-						this._FileSizeCheckInterval = ParseInt(propertyNode.InnerText);
-						continue;
-					case "fileDeletePolicy":
-						this._FileDeletePolicy = (DropFolderFileDeletePolicy)ParseEnum(typeof(DropFolderFileDeletePolicy), propertyNode.InnerText);
-						continue;
-					case "autoFileDeleteDays":
-						this._AutoFileDeleteDays = ParseInt(propertyNode.InnerText);
-						continue;
-					case "fileHandlerType":
-						this._FileHandlerType = (DropFolderFileHandlerType)StringEnum.Parse(typeof(DropFolderFileHandlerType), propertyNode.InnerText);
-						continue;
-					case "fileNamePatterns":
-						this._FileNamePatterns = propertyNode.InnerText;
-						continue;
-					case "fileHandlerConfig":
-						this._FileHandlerConfig = ObjectFactory.Create<DropFolderFileHandlerConfig>(propertyNode);
-						continue;
-					case "tags":
-						this._Tags = propertyNode.InnerText;
-						continue;
-					case "errorCode":
-						this._ErrorCode = (DropFolderErrorCode)StringEnum.Parse(typeof(DropFolderErrorCode), propertyNode.InnerText);
-						continue;
-					case "errorDescription":
-						this._ErrorDescription = propertyNode.InnerText;
-						continue;
-					case "ignoreFileNamePatterns":
-						this._IgnoreFileNamePatterns = propertyNode.InnerText;
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "lastAccessedAt":
-						this._LastAccessedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "incremental":
-						this._Incremental = ParseBool(propertyNode.InnerText);
-						continue;
-					case "lastFileTimestamp":
-						this._LastFileTimestamp = ParseInt(propertyNode.InnerText);
-						continue;
-					case "metadataProfileId":
-						this._MetadataProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "categoriesMetadataFieldName":
-						this._CategoriesMetadataFieldName = propertyNode.InnerText;
-						continue;
-					case "enforceEntitlement":
-						this._EnforceEntitlement = ParseBool(propertyNode.InnerText);
-						continue;
-					case "shouldValidateKS":
-						this._ShouldValidateKS = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._Id = ParseInt(node["id"].Value<string>());
 			}
-		}
-
-		public DropFolder(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._Name = data.TryGetValueSafe<string>("name");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._Type = (DropFolderType)StringEnum.Parse(typeof(DropFolderType), data.TryGetValueSafe<string>("type"));
-			    this._Status = (DropFolderStatus)ParseEnum(typeof(DropFolderStatus), data.TryGetValueSafe<int>("status"));
-			    this._ConversionProfileId = data.TryGetValueSafe<int>("conversionProfileId");
-			    this._Dc = data.TryGetValueSafe<int>("dc");
-			    this._Path = data.TryGetValueSafe<string>("path");
-			    this._FileSizeCheckInterval = data.TryGetValueSafe<int>("fileSizeCheckInterval");
-			    this._FileDeletePolicy = (DropFolderFileDeletePolicy)ParseEnum(typeof(DropFolderFileDeletePolicy), data.TryGetValueSafe<int>("fileDeletePolicy"));
-			    this._AutoFileDeleteDays = data.TryGetValueSafe<int>("autoFileDeleteDays");
-			    this._FileHandlerType = (DropFolderFileHandlerType)StringEnum.Parse(typeof(DropFolderFileHandlerType), data.TryGetValueSafe<string>("fileHandlerType"));
-			    this._FileNamePatterns = data.TryGetValueSafe<string>("fileNamePatterns");
-			    this._FileHandlerConfig = ObjectFactory.Create<DropFolderFileHandlerConfig>(data.TryGetValueSafe<IDictionary<string,object>>("fileHandlerConfig"));
-			    this._Tags = data.TryGetValueSafe<string>("tags");
-			    this._ErrorCode = (DropFolderErrorCode)StringEnum.Parse(typeof(DropFolderErrorCode), data.TryGetValueSafe<string>("errorCode"));
-			    this._ErrorDescription = data.TryGetValueSafe<string>("errorDescription");
-			    this._IgnoreFileNamePatterns = data.TryGetValueSafe<string>("ignoreFileNamePatterns");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._LastAccessedAt = data.TryGetValueSafe<int>("lastAccessedAt");
-			    this._Incremental = data.TryGetValueSafe<bool>("incremental");
-			    this._LastFileTimestamp = data.TryGetValueSafe<int>("lastFileTimestamp");
-			    this._MetadataProfileId = data.TryGetValueSafe<int>("metadataProfileId");
-			    this._CategoriesMetadataFieldName = data.TryGetValueSafe<string>("categoriesMetadataFieldName");
-			    this._EnforceEntitlement = data.TryGetValueSafe<bool>("enforceEntitlement");
-			    this._ShouldValidateKS = data.TryGetValueSafe<bool>("shouldValidateKS");
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["name"] != null)
+			{
+				this._Name = node["name"].Value<string>();
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["type"] != null)
+			{
+				this._Type = (DropFolderType)StringEnum.Parse(typeof(DropFolderType), node["type"].Value<string>());
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (DropFolderStatus)ParseEnum(typeof(DropFolderStatus), node["status"].Value<string>());
+			}
+			if(node["conversionProfileId"] != null)
+			{
+				this._ConversionProfileId = ParseInt(node["conversionProfileId"].Value<string>());
+			}
+			if(node["dc"] != null)
+			{
+				this._Dc = ParseInt(node["dc"].Value<string>());
+			}
+			if(node["path"] != null)
+			{
+				this._Path = node["path"].Value<string>();
+			}
+			if(node["fileSizeCheckInterval"] != null)
+			{
+				this._FileSizeCheckInterval = ParseInt(node["fileSizeCheckInterval"].Value<string>());
+			}
+			if(node["fileDeletePolicy"] != null)
+			{
+				this._FileDeletePolicy = (DropFolderFileDeletePolicy)ParseEnum(typeof(DropFolderFileDeletePolicy), node["fileDeletePolicy"].Value<string>());
+			}
+			if(node["autoFileDeleteDays"] != null)
+			{
+				this._AutoFileDeleteDays = ParseInt(node["autoFileDeleteDays"].Value<string>());
+			}
+			if(node["fileHandlerType"] != null)
+			{
+				this._FileHandlerType = (DropFolderFileHandlerType)StringEnum.Parse(typeof(DropFolderFileHandlerType), node["fileHandlerType"].Value<string>());
+			}
+			if(node["fileNamePatterns"] != null)
+			{
+				this._FileNamePatterns = node["fileNamePatterns"].Value<string>();
+			}
+			if(node["fileHandlerConfig"] != null)
+			{
+				this._FileHandlerConfig = ObjectFactory.Create<DropFolderFileHandlerConfig>(node["fileHandlerConfig"]);
+			}
+			if(node["tags"] != null)
+			{
+				this._Tags = node["tags"].Value<string>();
+			}
+			if(node["errorCode"] != null)
+			{
+				this._ErrorCode = (DropFolderErrorCode)StringEnum.Parse(typeof(DropFolderErrorCode), node["errorCode"].Value<string>());
+			}
+			if(node["errorDescription"] != null)
+			{
+				this._ErrorDescription = node["errorDescription"].Value<string>();
+			}
+			if(node["ignoreFileNamePatterns"] != null)
+			{
+				this._IgnoreFileNamePatterns = node["ignoreFileNamePatterns"].Value<string>();
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["lastAccessedAt"] != null)
+			{
+				this._LastAccessedAt = ParseInt(node["lastAccessedAt"].Value<string>());
+			}
+			if(node["incremental"] != null)
+			{
+				this._Incremental = ParseBool(node["incremental"].Value<string>());
+			}
+			if(node["lastFileTimestamp"] != null)
+			{
+				this._LastFileTimestamp = ParseInt(node["lastFileTimestamp"].Value<string>());
+			}
+			if(node["metadataProfileId"] != null)
+			{
+				this._MetadataProfileId = ParseInt(node["metadataProfileId"].Value<string>());
+			}
+			if(node["categoriesMetadataFieldName"] != null)
+			{
+				this._CategoriesMetadataFieldName = node["categoriesMetadataFieldName"].Value<string>();
+			}
+			if(node["enforceEntitlement"] != null)
+			{
+				this._EnforceEntitlement = ParseBool(node["enforceEntitlement"].Value<string>());
+			}
+			if(node["shouldValidateKS"] != null)
+			{
+				this._ShouldValidateKS = ParseBool(node["shouldValidateKS"].Value<string>());
+			}
 		}
 		#endregion
 

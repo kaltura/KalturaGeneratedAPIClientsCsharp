@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int PartnerParentIdEqual
 		{
 			get { return _PartnerParentIdEqual; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerParentIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string PartnerParentIdIn
 		{
 			get { return _PartnerParentIdIn; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public SystemPartnerFilter(XmlElement node) : base(node)
+		public SystemPartnerFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["partnerParentIdEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "partnerParentIdEqual":
-						this._PartnerParentIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerParentIdIn":
-						this._PartnerParentIdIn = propertyNode.InnerText;
-						continue;
-				}
+				this._PartnerParentIdEqual = ParseInt(node["partnerParentIdEqual"].Value<string>());
 			}
-		}
-
-		public SystemPartnerFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._PartnerParentIdEqual = data.TryGetValueSafe<int>("partnerParentIdEqual");
-			    this._PartnerParentIdIn = data.TryGetValueSafe<string>("partnerParentIdIn");
+			if(node["partnerParentIdIn"] != null)
+			{
+				this._PartnerParentIdIn = node["partnerParentIdIn"].Value<string>();
+			}
 		}
 		#endregion
 

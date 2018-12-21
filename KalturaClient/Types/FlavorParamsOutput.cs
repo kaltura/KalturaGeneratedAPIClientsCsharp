@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -54,6 +56,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int FlavorParamsId
 		{
 			get { return _FlavorParamsId; }
@@ -63,6 +66,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsId");
 			}
 		}
+		[JsonProperty]
 		public string CommandLinesStr
 		{
 			get { return _CommandLinesStr; }
@@ -72,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CommandLinesStr");
 			}
 		}
+		[JsonProperty]
 		public string FlavorParamsVersion
 		{
 			get { return _FlavorParamsVersion; }
@@ -81,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsVersion");
 			}
 		}
+		[JsonProperty]
 		public string FlavorAssetId
 		{
 			get { return _FlavorAssetId; }
@@ -90,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetId");
 			}
 		}
+		[JsonProperty]
 		public string FlavorAssetVersion
 		{
 			get { return _FlavorAssetVersion; }
@@ -99,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetVersion");
 			}
 		}
+		[JsonProperty]
 		public int ReadyBehavior
 		{
 			get { return _ReadyBehavior; }
@@ -115,42 +123,32 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FlavorParamsOutput(XmlElement node) : base(node)
+		public FlavorParamsOutput(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["flavorParamsId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "flavorParamsId":
-						this._FlavorParamsId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "commandLinesStr":
-						this._CommandLinesStr = propertyNode.InnerText;
-						continue;
-					case "flavorParamsVersion":
-						this._FlavorParamsVersion = propertyNode.InnerText;
-						continue;
-					case "flavorAssetId":
-						this._FlavorAssetId = propertyNode.InnerText;
-						continue;
-					case "flavorAssetVersion":
-						this._FlavorAssetVersion = propertyNode.InnerText;
-						continue;
-					case "readyBehavior":
-						this._ReadyBehavior = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._FlavorParamsId = ParseInt(node["flavorParamsId"].Value<string>());
 			}
-		}
-
-		public FlavorParamsOutput(IDictionary<string,object> data) : base(data)
-		{
-			    this._FlavorParamsId = data.TryGetValueSafe<int>("flavorParamsId");
-			    this._CommandLinesStr = data.TryGetValueSafe<string>("commandLinesStr");
-			    this._FlavorParamsVersion = data.TryGetValueSafe<string>("flavorParamsVersion");
-			    this._FlavorAssetId = data.TryGetValueSafe<string>("flavorAssetId");
-			    this._FlavorAssetVersion = data.TryGetValueSafe<string>("flavorAssetVersion");
-			    this._ReadyBehavior = data.TryGetValueSafe<int>("readyBehavior");
+			if(node["commandLinesStr"] != null)
+			{
+				this._CommandLinesStr = node["commandLinesStr"].Value<string>();
+			}
+			if(node["flavorParamsVersion"] != null)
+			{
+				this._FlavorParamsVersion = node["flavorParamsVersion"].Value<string>();
+			}
+			if(node["flavorAssetId"] != null)
+			{
+				this._FlavorAssetId = node["flavorAssetId"].Value<string>();
+			}
+			if(node["flavorAssetVersion"] != null)
+			{
+				this._FlavorAssetVersion = node["flavorAssetVersion"].Value<string>();
+			}
+			if(node["readyBehavior"] != null)
+			{
+				this._ReadyBehavior = ParseInt(node["readyBehavior"].Value<string>());
+			}
 		}
 		#endregion
 

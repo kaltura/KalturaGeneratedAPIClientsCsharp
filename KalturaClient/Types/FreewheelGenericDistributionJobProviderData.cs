@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public IList<String> VideoAssetFilePaths
 		{
 			get { return _VideoAssetFilePaths; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoAssetFilePaths");
 			}
 		}
+		[JsonProperty]
 		public string ThumbAssetFilePath
 		{
 			get { return _ThumbAssetFilePath; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbAssetFilePath");
 			}
 		}
+		[JsonProperty]
 		public IList<CuePoint> CuePoints
 		{
 			get { return _CuePoints; }
@@ -82,48 +87,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FreewheelGenericDistributionJobProviderData(XmlElement node) : base(node)
+		public FreewheelGenericDistributionJobProviderData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["videoAssetFilePaths"] != null)
 			{
-				switch (propertyNode.Name)
+				this._VideoAssetFilePaths = new List<String>();
+				foreach(var arrayNode in node["videoAssetFilePaths"].Children())
 				{
-					case "videoAssetFilePaths":
-						this._VideoAssetFilePaths = new List<String>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._VideoAssetFilePaths.Add(ObjectFactory.Create<String>(arrayNode));
-						}
-						continue;
-					case "thumbAssetFilePath":
-						this._ThumbAssetFilePath = propertyNode.InnerText;
-						continue;
-					case "cuePoints":
-						this._CuePoints = new List<CuePoint>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._CuePoints.Add(ObjectFactory.Create<CuePoint>(arrayNode));
-						}
-						continue;
+					this._VideoAssetFilePaths.Add(ObjectFactory.Create<String>(arrayNode));
 				}
 			}
-		}
-
-		public FreewheelGenericDistributionJobProviderData(IDictionary<string,object> data) : base(data)
-		{
-			    this._VideoAssetFilePaths = new List<String>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("videoAssetFilePaths", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._VideoAssetFilePaths.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._ThumbAssetFilePath = data.TryGetValueSafe<string>("thumbAssetFilePath");
-			    this._CuePoints = new List<CuePoint>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("cuePoints", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._CuePoints.Add(ObjectFactory.Create<CuePoint>((IDictionary<string,object>)dataDictionary));
-			    }
+			if(node["thumbAssetFilePath"] != null)
+			{
+				this._ThumbAssetFilePath = node["thumbAssetFilePath"].Value<string>();
+			}
+			if(node["cuePoints"] != null)
+			{
+				this._CuePoints = new List<CuePoint>();
+				foreach(var arrayNode in node["cuePoints"].Children())
+				{
+					this._CuePoints.Add(ObjectFactory.Create<CuePoint>(arrayNode));
+				}
+			}
 		}
 		#endregion
 

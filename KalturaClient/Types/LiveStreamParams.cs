@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -58,6 +60,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Bitrate
 		{
 			get { return _Bitrate; }
@@ -67,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Bitrate");
 			}
 		}
+		[JsonProperty]
 		public string FlavorId
 		{
 			get { return _FlavorId; }
@@ -76,6 +80,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorId");
 			}
 		}
+		[JsonProperty]
 		public int Width
 		{
 			get { return _Width; }
@@ -85,6 +90,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Width");
 			}
 		}
+		[JsonProperty]
 		public int Height
 		{
 			get { return _Height; }
@@ -94,6 +100,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Height");
 			}
 		}
+		[JsonProperty]
 		public string Codec
 		{
 			get { return _Codec; }
@@ -103,6 +110,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Codec");
 			}
 		}
+		[JsonProperty]
 		public int FrameRate
 		{
 			get { return _FrameRate; }
@@ -112,6 +120,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FrameRate");
 			}
 		}
+		[JsonProperty]
 		public float KeyFrameInterval
 		{
 			get { return _KeyFrameInterval; }
@@ -121,6 +130,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("KeyFrameInterval");
 			}
 		}
+		[JsonProperty]
 		public string Language
 		{
 			get { return _Language; }
@@ -137,50 +147,40 @@ namespace Kaltura.Types
 		{
 		}
 
-		public LiveStreamParams(XmlElement node) : base(node)
+		public LiveStreamParams(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["bitrate"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "bitrate":
-						this._Bitrate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "flavorId":
-						this._FlavorId = propertyNode.InnerText;
-						continue;
-					case "width":
-						this._Width = ParseInt(propertyNode.InnerText);
-						continue;
-					case "height":
-						this._Height = ParseInt(propertyNode.InnerText);
-						continue;
-					case "codec":
-						this._Codec = propertyNode.InnerText;
-						continue;
-					case "frameRate":
-						this._FrameRate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "keyFrameInterval":
-						this._KeyFrameInterval = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "language":
-						this._Language = propertyNode.InnerText;
-						continue;
-				}
+				this._Bitrate = ParseInt(node["bitrate"].Value<string>());
 			}
-		}
-
-		public LiveStreamParams(IDictionary<string,object> data) : base(data)
-		{
-			    this._Bitrate = data.TryGetValueSafe<int>("bitrate");
-			    this._FlavorId = data.TryGetValueSafe<string>("flavorId");
-			    this._Width = data.TryGetValueSafe<int>("width");
-			    this._Height = data.TryGetValueSafe<int>("height");
-			    this._Codec = data.TryGetValueSafe<string>("codec");
-			    this._FrameRate = data.TryGetValueSafe<int>("frameRate");
-			    this._KeyFrameInterval = data.TryGetValueSafe<float>("keyFrameInterval");
-			    this._Language = data.TryGetValueSafe<string>("language");
+			if(node["flavorId"] != null)
+			{
+				this._FlavorId = node["flavorId"].Value<string>();
+			}
+			if(node["width"] != null)
+			{
+				this._Width = ParseInt(node["width"].Value<string>());
+			}
+			if(node["height"] != null)
+			{
+				this._Height = ParseInt(node["height"].Value<string>());
+			}
+			if(node["codec"] != null)
+			{
+				this._Codec = node["codec"].Value<string>();
+			}
+			if(node["frameRate"] != null)
+			{
+				this._FrameRate = ParseInt(node["frameRate"].Value<string>());
+			}
+			if(node["keyFrameInterval"] != null)
+			{
+				this._KeyFrameInterval = ParseFloat(node["keyFrameInterval"].Value<string>());
+			}
+			if(node["language"] != null)
+			{
+				this._Language = node["language"].Value<string>();
+			}
 		}
 		#endregion
 

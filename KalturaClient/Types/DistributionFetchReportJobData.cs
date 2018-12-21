@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Plays
 		{
 			get { return _Plays; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Plays");
 			}
 		}
+		[JsonProperty]
 		public int Views
 		{
 			get { return _Views; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DistributionFetchReportJobData(XmlElement node) : base(node)
+		public DistributionFetchReportJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["plays"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "plays":
-						this._Plays = ParseInt(propertyNode.InnerText);
-						continue;
-					case "views":
-						this._Views = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._Plays = ParseInt(node["plays"].Value<string>());
 			}
-		}
-
-		public DistributionFetchReportJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._Plays = data.TryGetValueSafe<int>("plays");
-			    this._Views = data.TryGetValueSafe<int>("views");
+			if(node["views"] != null)
+			{
+				this._Views = ParseInt(node["views"].Value<string>());
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -54,6 +56,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public UserFilter Filter
 		{
 			get { return _Filter; }
@@ -63,6 +66,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Filter");
 			}
 		}
+		[JsonProperty]
 		public int MetadataProfileId
 		{
 			get { return _MetadataProfileId; }
@@ -72,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataProfileId");
 			}
 		}
+		[JsonProperty]
 		public IList<CsvAdditionalFieldInfo> AdditionalFields
 		{
 			get { return _AdditionalFields; }
@@ -81,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdditionalFields");
 			}
 		}
+		[JsonProperty]
 		public string UserName
 		{
 			get { return _UserName; }
@@ -90,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserName");
 			}
 		}
+		[JsonProperty]
 		public string UserMail
 		{
 			get { return _UserMail; }
@@ -99,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserMail");
 			}
 		}
+		[JsonProperty]
 		public string OutputPath
 		{
 			get { return _OutputPath; }
@@ -115,51 +123,36 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UsersCsvJobData(XmlElement node) : base(node)
+		public UsersCsvJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["filter"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Filter = ObjectFactory.Create<UserFilter>(node["filter"]);
+			}
+			if(node["metadataProfileId"] != null)
+			{
+				this._MetadataProfileId = ParseInt(node["metadataProfileId"].Value<string>());
+			}
+			if(node["additionalFields"] != null)
+			{
+				this._AdditionalFields = new List<CsvAdditionalFieldInfo>();
+				foreach(var arrayNode in node["additionalFields"].Children())
 				{
-					case "filter":
-						this._Filter = ObjectFactory.Create<UserFilter>(propertyNode);
-						continue;
-					case "metadataProfileId":
-						this._MetadataProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "additionalFields":
-						this._AdditionalFields = new List<CsvAdditionalFieldInfo>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._AdditionalFields.Add(ObjectFactory.Create<CsvAdditionalFieldInfo>(arrayNode));
-						}
-						continue;
-					case "userName":
-						this._UserName = propertyNode.InnerText;
-						continue;
-					case "userMail":
-						this._UserMail = propertyNode.InnerText;
-						continue;
-					case "outputPath":
-						this._OutputPath = propertyNode.InnerText;
-						continue;
+					this._AdditionalFields.Add(ObjectFactory.Create<CsvAdditionalFieldInfo>(arrayNode));
 				}
 			}
-		}
-
-		public UsersCsvJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._Filter = ObjectFactory.Create<UserFilter>(data.TryGetValueSafe<IDictionary<string,object>>("filter"));
-			    this._MetadataProfileId = data.TryGetValueSafe<int>("metadataProfileId");
-			    this._AdditionalFields = new List<CsvAdditionalFieldInfo>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("additionalFields", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._AdditionalFields.Add(ObjectFactory.Create<CsvAdditionalFieldInfo>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._UserName = data.TryGetValueSafe<string>("userName");
-			    this._UserMail = data.TryGetValueSafe<string>("userMail");
-			    this._OutputPath = data.TryGetValueSafe<string>("outputPath");
+			if(node["userName"] != null)
+			{
+				this._UserName = node["userName"].Value<string>();
+			}
+			if(node["userMail"] != null)
+			{
+				this._UserMail = node["userMail"].Value<string>();
+			}
+			if(node["outputPath"] != null)
+			{
+				this._OutputPath = node["outputPath"].Value<string>();
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,6 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ParamName
 		{
 			get { return _ParamName; }
@@ -61,6 +64,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParamName");
 			}
 		}
+		[JsonProperty]
 		public string AclPostfix
 		{
 			get { return _AclPostfix; }
@@ -70,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AclPostfix");
 			}
 		}
+		[JsonProperty]
 		public string CustomPostfixes
 		{
 			get { return _CustomPostfixes; }
@@ -79,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CustomPostfixes");
 			}
 		}
+		[JsonProperty]
 		public string UseCookieHosts
 		{
 			get { return _UseCookieHosts; }
@@ -88,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UseCookieHosts");
 			}
 		}
+		[JsonProperty]
 		public string RootDir
 		{
 			get { return _RootDir; }
@@ -104,38 +111,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UrlTokenizerAkamaiSecureHd(XmlElement node) : base(node)
+		public UrlTokenizerAkamaiSecureHd(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["paramName"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "paramName":
-						this._ParamName = propertyNode.InnerText;
-						continue;
-					case "aclPostfix":
-						this._AclPostfix = propertyNode.InnerText;
-						continue;
-					case "customPostfixes":
-						this._CustomPostfixes = propertyNode.InnerText;
-						continue;
-					case "useCookieHosts":
-						this._UseCookieHosts = propertyNode.InnerText;
-						continue;
-					case "rootDir":
-						this._RootDir = propertyNode.InnerText;
-						continue;
-				}
+				this._ParamName = node["paramName"].Value<string>();
 			}
-		}
-
-		public UrlTokenizerAkamaiSecureHd(IDictionary<string,object> data) : base(data)
-		{
-			    this._ParamName = data.TryGetValueSafe<string>("paramName");
-			    this._AclPostfix = data.TryGetValueSafe<string>("aclPostfix");
-			    this._CustomPostfixes = data.TryGetValueSafe<string>("customPostfixes");
-			    this._UseCookieHosts = data.TryGetValueSafe<string>("useCookieHosts");
-			    this._RootDir = data.TryGetValueSafe<string>("rootDir");
+			if(node["aclPostfix"] != null)
+			{
+				this._AclPostfix = node["aclPostfix"].Value<string>();
+			}
+			if(node["customPostfixes"] != null)
+			{
+				this._CustomPostfixes = node["customPostfixes"].Value<string>();
+			}
+			if(node["useCookieHosts"] != null)
+			{
+				this._UseCookieHosts = node["useCookieHosts"].Value<string>();
+			}
+			if(node["rootDir"] != null)
+			{
+				this._RootDir = node["rootDir"].Value<string>();
+			}
 		}
 		#endregion
 

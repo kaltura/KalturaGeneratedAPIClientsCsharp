@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string LocalFileSyncPath
 		{
 			get { return _LocalFileSyncPath; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DeleteFileJobData(XmlElement node) : base(node)
+		public DeleteFileJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["localFileSyncPath"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "localFileSyncPath":
-						this._LocalFileSyncPath = propertyNode.InnerText;
-						continue;
-				}
+				this._LocalFileSyncPath = node["localFileSyncPath"].Value<string>();
 			}
-		}
-
-		public DeleteFileJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._LocalFileSyncPath = data.TryGetValueSafe<string>("localFileSyncPath");
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -60,6 +62,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string DestFileSyncLocalPath
 		{
 			get { return _DestFileSyncLocalPath; }
@@ -69,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestFileSyncLocalPath");
 			}
 		}
+		[JsonProperty]
 		public string DestFileSyncRemoteUrl
 		{
 			get { return _DestFileSyncRemoteUrl; }
@@ -78,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestFileSyncRemoteUrl");
 			}
 		}
+		[JsonProperty]
 		public string LogFileSyncLocalPath
 		{
 			get { return _LogFileSyncLocalPath; }
@@ -87,6 +92,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LogFileSyncLocalPath");
 			}
 		}
+		[JsonProperty]
 		public string LogFileSyncRemoteUrl
 		{
 			get { return _LogFileSyncRemoteUrl; }
@@ -96,6 +102,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LogFileSyncRemoteUrl");
 			}
 		}
+		[JsonProperty]
 		public string FlavorAssetId
 		{
 			get { return _FlavorAssetId; }
@@ -105,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetId");
 			}
 		}
+		[JsonProperty]
 		public string RemoteMediaId
 		{
 			get { return _RemoteMediaId; }
@@ -114,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RemoteMediaId");
 			}
 		}
+		[JsonProperty]
 		public string CustomData
 		{
 			get { return _CustomData; }
@@ -123,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CustomData");
 			}
 		}
+		[JsonProperty]
 		public IList<DestFileSyncDescriptor> ExtraDestFileSyncs
 		{
 			get { return _ExtraDestFileSyncs; }
@@ -132,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExtraDestFileSyncs");
 			}
 		}
+		[JsonProperty]
 		public string EngineMessage
 		{
 			get { return _EngineMessage; }
@@ -148,63 +159,48 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ConvertJobData(XmlElement node) : base(node)
+		public ConvertJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["destFileSyncLocalPath"] != null)
 			{
-				switch (propertyNode.Name)
+				this._DestFileSyncLocalPath = node["destFileSyncLocalPath"].Value<string>();
+			}
+			if(node["destFileSyncRemoteUrl"] != null)
+			{
+				this._DestFileSyncRemoteUrl = node["destFileSyncRemoteUrl"].Value<string>();
+			}
+			if(node["logFileSyncLocalPath"] != null)
+			{
+				this._LogFileSyncLocalPath = node["logFileSyncLocalPath"].Value<string>();
+			}
+			if(node["logFileSyncRemoteUrl"] != null)
+			{
+				this._LogFileSyncRemoteUrl = node["logFileSyncRemoteUrl"].Value<string>();
+			}
+			if(node["flavorAssetId"] != null)
+			{
+				this._FlavorAssetId = node["flavorAssetId"].Value<string>();
+			}
+			if(node["remoteMediaId"] != null)
+			{
+				this._RemoteMediaId = node["remoteMediaId"].Value<string>();
+			}
+			if(node["customData"] != null)
+			{
+				this._CustomData = node["customData"].Value<string>();
+			}
+			if(node["extraDestFileSyncs"] != null)
+			{
+				this._ExtraDestFileSyncs = new List<DestFileSyncDescriptor>();
+				foreach(var arrayNode in node["extraDestFileSyncs"].Children())
 				{
-					case "destFileSyncLocalPath":
-						this._DestFileSyncLocalPath = propertyNode.InnerText;
-						continue;
-					case "destFileSyncRemoteUrl":
-						this._DestFileSyncRemoteUrl = propertyNode.InnerText;
-						continue;
-					case "logFileSyncLocalPath":
-						this._LogFileSyncLocalPath = propertyNode.InnerText;
-						continue;
-					case "logFileSyncRemoteUrl":
-						this._LogFileSyncRemoteUrl = propertyNode.InnerText;
-						continue;
-					case "flavorAssetId":
-						this._FlavorAssetId = propertyNode.InnerText;
-						continue;
-					case "remoteMediaId":
-						this._RemoteMediaId = propertyNode.InnerText;
-						continue;
-					case "customData":
-						this._CustomData = propertyNode.InnerText;
-						continue;
-					case "extraDestFileSyncs":
-						this._ExtraDestFileSyncs = new List<DestFileSyncDescriptor>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._ExtraDestFileSyncs.Add(ObjectFactory.Create<DestFileSyncDescriptor>(arrayNode));
-						}
-						continue;
-					case "engineMessage":
-						this._EngineMessage = propertyNode.InnerText;
-						continue;
+					this._ExtraDestFileSyncs.Add(ObjectFactory.Create<DestFileSyncDescriptor>(arrayNode));
 				}
 			}
-		}
-
-		public ConvertJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._DestFileSyncLocalPath = data.TryGetValueSafe<string>("destFileSyncLocalPath");
-			    this._DestFileSyncRemoteUrl = data.TryGetValueSafe<string>("destFileSyncRemoteUrl");
-			    this._LogFileSyncLocalPath = data.TryGetValueSafe<string>("logFileSyncLocalPath");
-			    this._LogFileSyncRemoteUrl = data.TryGetValueSafe<string>("logFileSyncRemoteUrl");
-			    this._FlavorAssetId = data.TryGetValueSafe<string>("flavorAssetId");
-			    this._RemoteMediaId = data.TryGetValueSafe<string>("remoteMediaId");
-			    this._CustomData = data.TryGetValueSafe<string>("customData");
-			    this._ExtraDestFileSyncs = new List<DestFileSyncDescriptor>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("extraDestFileSyncs", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._ExtraDestFileSyncs.Add(ObjectFactory.Create<DestFileSyncDescriptor>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._EngineMessage = data.TryGetValueSafe<string>("engineMessage");
+			if(node["engineMessage"] != null)
+			{
+				this._EngineMessage = node["engineMessage"].Value<string>();
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string VideoAssetFilePath
 		{
 			get { return _VideoAssetFilePath; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoAssetFilePath");
 			}
 		}
+		[JsonProperty]
 		public string ThumbAssetFilePath
 		{
 			get { return _ThumbAssetFilePath; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbAssetFilePath");
 			}
 		}
+		[JsonProperty]
 		public IList<YouTubeApiCaptionDistributionInfo> CaptionsInfo
 		{
 			get { return _CaptionsInfo; }
@@ -82,39 +87,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public YoutubeApiDistributionJobProviderData(XmlElement node) : base(node)
+		public YoutubeApiDistributionJobProviderData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["videoAssetFilePath"] != null)
 			{
-				switch (propertyNode.Name)
+				this._VideoAssetFilePath = node["videoAssetFilePath"].Value<string>();
+			}
+			if(node["thumbAssetFilePath"] != null)
+			{
+				this._ThumbAssetFilePath = node["thumbAssetFilePath"].Value<string>();
+			}
+			if(node["captionsInfo"] != null)
+			{
+				this._CaptionsInfo = new List<YouTubeApiCaptionDistributionInfo>();
+				foreach(var arrayNode in node["captionsInfo"].Children())
 				{
-					case "videoAssetFilePath":
-						this._VideoAssetFilePath = propertyNode.InnerText;
-						continue;
-					case "thumbAssetFilePath":
-						this._ThumbAssetFilePath = propertyNode.InnerText;
-						continue;
-					case "captionsInfo":
-						this._CaptionsInfo = new List<YouTubeApiCaptionDistributionInfo>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._CaptionsInfo.Add(ObjectFactory.Create<YouTubeApiCaptionDistributionInfo>(arrayNode));
-						}
-						continue;
+					this._CaptionsInfo.Add(ObjectFactory.Create<YouTubeApiCaptionDistributionInfo>(arrayNode));
 				}
 			}
-		}
-
-		public YoutubeApiDistributionJobProviderData(IDictionary<string,object> data) : base(data)
-		{
-			    this._VideoAssetFilePath = data.TryGetValueSafe<string>("videoAssetFilePath");
-			    this._ThumbAssetFilePath = data.TryGetValueSafe<string>("thumbAssetFilePath");
-			    this._CaptionsInfo = new List<YouTubeApiCaptionDistributionInfo>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("captionsInfo", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._CaptionsInfo.Add(ObjectFactory.Create<YouTubeApiCaptionDistributionInfo>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

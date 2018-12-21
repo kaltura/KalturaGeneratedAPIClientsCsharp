@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public Filter Filter
 		{
 			get { return _Filter; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Filter");
 			}
 		}
+		[JsonProperty]
 		public int LastIndexId
 		{
 			get { return _LastIndexId; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastIndexId");
 			}
 		}
+		[JsonProperty]
 		public int LastIndexDepth
 		{
 			get { return _LastIndexDepth; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastIndexDepth");
 			}
 		}
+		[JsonProperty]
 		public bool? ShouldUpdate
 		{
 			get { return _ShouldUpdate; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public IndexJobData(XmlElement node) : base(node)
+		public IndexJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["filter"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "filter":
-						this._Filter = ObjectFactory.Create<Filter>(propertyNode);
-						continue;
-					case "lastIndexId":
-						this._LastIndexId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "lastIndexDepth":
-						this._LastIndexDepth = ParseInt(propertyNode.InnerText);
-						continue;
-					case "shouldUpdate":
-						this._ShouldUpdate = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._Filter = ObjectFactory.Create<Filter>(node["filter"]);
 			}
-		}
-
-		public IndexJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._Filter = ObjectFactory.Create<Filter>(data.TryGetValueSafe<IDictionary<string,object>>("filter"));
-			    this._LastIndexId = data.TryGetValueSafe<int>("lastIndexId");
-			    this._LastIndexDepth = data.TryGetValueSafe<int>("lastIndexDepth");
-			    this._ShouldUpdate = data.TryGetValueSafe<bool>("shouldUpdate");
+			if(node["lastIndexId"] != null)
+			{
+				this._LastIndexId = ParseInt(node["lastIndexId"].Value<string>());
+			}
+			if(node["lastIndexDepth"] != null)
+			{
+				this._LastIndexDepth = ParseInt(node["lastIndexDepth"].Value<string>());
+			}
+			if(node["shouldUpdate"] != null)
+			{
+				this._ShouldUpdate = ParseBool(node["shouldUpdate"].Value<string>());
+			}
 		}
 		#endregion
 

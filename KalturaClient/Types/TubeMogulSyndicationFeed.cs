@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,9 +46,15 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public TubeMogulSyndicationFeedCategories Category
 		{
 			get { return _Category; }
+			private set 
+			{ 
+				_Category = value;
+				OnPropertyChanged("Category");
+			}
 		}
 		#endregion
 
@@ -55,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public TubeMogulSyndicationFeed(XmlElement node) : base(node)
+		public TubeMogulSyndicationFeed(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["category"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "category":
-						this._Category = (TubeMogulSyndicationFeedCategories)StringEnum.Parse(typeof(TubeMogulSyndicationFeedCategories), propertyNode.InnerText);
-						continue;
-				}
+				this._Category = (TubeMogulSyndicationFeedCategories)StringEnum.Parse(typeof(TubeMogulSyndicationFeedCategories), node["category"].Value<string>());
 			}
-		}
-
-		public TubeMogulSyndicationFeed(IDictionary<string,object> data) : base(data)
-		{
-			    this._Category = (TubeMogulSyndicationFeedCategories)StringEnum.Parse(typeof(TubeMogulSyndicationFeedCategories), data.TryGetValueSafe<string>("category"));
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public CountryRestrictionType CountryRestrictionType
 		{
 			get { return _CountryRestrictionType; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CountryRestrictionType");
 			}
 		}
+		[JsonProperty]
 		public string CountryList
 		{
 			get { return _CountryList; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CountryRestriction(XmlElement node) : base(node)
+		public CountryRestriction(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["countryRestrictionType"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "countryRestrictionType":
-						this._CountryRestrictionType = (CountryRestrictionType)ParseEnum(typeof(CountryRestrictionType), propertyNode.InnerText);
-						continue;
-					case "countryList":
-						this._CountryList = propertyNode.InnerText;
-						continue;
-				}
+				this._CountryRestrictionType = (CountryRestrictionType)ParseEnum(typeof(CountryRestrictionType), node["countryRestrictionType"].Value<string>());
 			}
-		}
-
-		public CountryRestriction(IDictionary<string,object> data) : base(data)
-		{
-			    this._CountryRestrictionType = (CountryRestrictionType)ParseEnum(typeof(CountryRestrictionType), data.TryGetValueSafe<int>("countryRestrictionType"));
-			    this._CountryList = data.TryGetValueSafe<string>("countryList");
+			if(node["countryList"] != null)
+			{
+				this._CountryList = node["countryList"].Value<string>();
+			}
 		}
 		#endregion
 

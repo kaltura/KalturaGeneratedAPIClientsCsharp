@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -70,10 +72,17 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public string CreatedBy
 		{
 			get { return _CreatedBy; }
@@ -83,6 +92,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedBy");
 			}
 		}
+		[JsonProperty]
 		public string UpdatedBy
 		{
 			get { return _UpdatedBy; }
@@ -92,6 +102,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedBy");
 			}
 		}
+		[JsonProperty]
 		public string CommandId
 		{
 			get { return _CommandId; }
@@ -101,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CommandId");
 			}
 		}
+		[JsonProperty]
 		public string CommandStatus
 		{
 			get { return _CommandStatus; }
@@ -110,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CommandStatus");
 			}
 		}
+		[JsonProperty]
 		public int SchedulerId
 		{
 			get { return _SchedulerId; }
@@ -119,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SchedulerId");
 			}
 		}
+		[JsonProperty]
 		public int SchedulerConfiguredId
 		{
 			get { return _SchedulerConfiguredId; }
@@ -128,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SchedulerConfiguredId");
 			}
 		}
+		[JsonProperty]
 		public string SchedulerName
 		{
 			get { return _SchedulerName; }
@@ -137,6 +152,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SchedulerName");
 			}
 		}
+		[JsonProperty]
 		public int WorkerId
 		{
 			get { return _WorkerId; }
@@ -146,6 +162,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WorkerId");
 			}
 		}
+		[JsonProperty]
 		public int WorkerConfiguredId
 		{
 			get { return _WorkerConfiguredId; }
@@ -155,6 +172,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WorkerConfiguredId");
 			}
 		}
+		[JsonProperty]
 		public string WorkerName
 		{
 			get { return _WorkerName; }
@@ -164,6 +182,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WorkerName");
 			}
 		}
+		[JsonProperty]
 		public string Variable
 		{
 			get { return _Variable; }
@@ -173,6 +192,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Variable");
 			}
 		}
+		[JsonProperty]
 		public string VariablePart
 		{
 			get { return _VariablePart; }
@@ -182,6 +202,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VariablePart");
 			}
 		}
+		[JsonProperty]
 		public string Value
 		{
 			get { return _Value; }
@@ -198,74 +219,64 @@ namespace Kaltura.Types
 		{
 		}
 
-		public SchedulerConfig(XmlElement node) : base(node)
+		public SchedulerConfig(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdBy":
-						this._CreatedBy = propertyNode.InnerText;
-						continue;
-					case "updatedBy":
-						this._UpdatedBy = propertyNode.InnerText;
-						continue;
-					case "commandId":
-						this._CommandId = propertyNode.InnerText;
-						continue;
-					case "commandStatus":
-						this._CommandStatus = propertyNode.InnerText;
-						continue;
-					case "schedulerId":
-						this._SchedulerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "schedulerConfiguredId":
-						this._SchedulerConfiguredId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "schedulerName":
-						this._SchedulerName = propertyNode.InnerText;
-						continue;
-					case "workerId":
-						this._WorkerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "workerConfiguredId":
-						this._WorkerConfiguredId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "workerName":
-						this._WorkerName = propertyNode.InnerText;
-						continue;
-					case "variable":
-						this._Variable = propertyNode.InnerText;
-						continue;
-					case "variablePart":
-						this._VariablePart = propertyNode.InnerText;
-						continue;
-					case "value":
-						this._Value = propertyNode.InnerText;
-						continue;
-				}
+				this._Id = ParseInt(node["id"].Value<string>());
 			}
-		}
-
-		public SchedulerConfig(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._CreatedBy = data.TryGetValueSafe<string>("createdBy");
-			    this._UpdatedBy = data.TryGetValueSafe<string>("updatedBy");
-			    this._CommandId = data.TryGetValueSafe<string>("commandId");
-			    this._CommandStatus = data.TryGetValueSafe<string>("commandStatus");
-			    this._SchedulerId = data.TryGetValueSafe<int>("schedulerId");
-			    this._SchedulerConfiguredId = data.TryGetValueSafe<int>("schedulerConfiguredId");
-			    this._SchedulerName = data.TryGetValueSafe<string>("schedulerName");
-			    this._WorkerId = data.TryGetValueSafe<int>("workerId");
-			    this._WorkerConfiguredId = data.TryGetValueSafe<int>("workerConfiguredId");
-			    this._WorkerName = data.TryGetValueSafe<string>("workerName");
-			    this._Variable = data.TryGetValueSafe<string>("variable");
-			    this._VariablePart = data.TryGetValueSafe<string>("variablePart");
-			    this._Value = data.TryGetValueSafe<string>("value");
+			if(node["createdBy"] != null)
+			{
+				this._CreatedBy = node["createdBy"].Value<string>();
+			}
+			if(node["updatedBy"] != null)
+			{
+				this._UpdatedBy = node["updatedBy"].Value<string>();
+			}
+			if(node["commandId"] != null)
+			{
+				this._CommandId = node["commandId"].Value<string>();
+			}
+			if(node["commandStatus"] != null)
+			{
+				this._CommandStatus = node["commandStatus"].Value<string>();
+			}
+			if(node["schedulerId"] != null)
+			{
+				this._SchedulerId = ParseInt(node["schedulerId"].Value<string>());
+			}
+			if(node["schedulerConfiguredId"] != null)
+			{
+				this._SchedulerConfiguredId = ParseInt(node["schedulerConfiguredId"].Value<string>());
+			}
+			if(node["schedulerName"] != null)
+			{
+				this._SchedulerName = node["schedulerName"].Value<string>();
+			}
+			if(node["workerId"] != null)
+			{
+				this._WorkerId = ParseInt(node["workerId"].Value<string>());
+			}
+			if(node["workerConfiguredId"] != null)
+			{
+				this._WorkerConfiguredId = ParseInt(node["workerConfiguredId"].Value<string>());
+			}
+			if(node["workerName"] != null)
+			{
+				this._WorkerName = node["workerName"].Value<string>();
+			}
+			if(node["variable"] != null)
+			{
+				this._Variable = node["variable"].Value<string>();
+			}
+			if(node["variablePart"] != null)
+			{
+				this._VariablePart = node["variablePart"].Value<string>();
+			}
+			if(node["value"] != null)
+			{
+				this._Value = node["value"].Value<string>();
+			}
 		}
 		#endregion
 

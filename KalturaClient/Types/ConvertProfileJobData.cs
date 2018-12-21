@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string InputFileSyncLocalPath
 		{
 			get { return _InputFileSyncLocalPath; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("InputFileSyncLocalPath");
 			}
 		}
+		[JsonProperty]
 		public int ThumbHeight
 		{
 			get { return _ThumbHeight; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbHeight");
 			}
 		}
+		[JsonProperty]
 		public int ThumbBitrate
 		{
 			get { return _ThumbBitrate; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ConvertProfileJobData(XmlElement node) : base(node)
+		public ConvertProfileJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["inputFileSyncLocalPath"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "inputFileSyncLocalPath":
-						this._InputFileSyncLocalPath = propertyNode.InnerText;
-						continue;
-					case "thumbHeight":
-						this._ThumbHeight = ParseInt(propertyNode.InnerText);
-						continue;
-					case "thumbBitrate":
-						this._ThumbBitrate = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._InputFileSyncLocalPath = node["inputFileSyncLocalPath"].Value<string>();
 			}
-		}
-
-		public ConvertProfileJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._InputFileSyncLocalPath = data.TryGetValueSafe<string>("inputFileSyncLocalPath");
-			    this._ThumbHeight = data.TryGetValueSafe<int>("thumbHeight");
-			    this._ThumbBitrate = data.TryGetValueSafe<int>("thumbBitrate");
+			if(node["thumbHeight"] != null)
+			{
+				this._ThumbHeight = ParseInt(node["thumbHeight"].Value<string>());
+			}
+			if(node["thumbBitrate"] != null)
+			{
+				this._ThumbBitrate = ParseInt(node["thumbBitrate"].Value<string>());
+			}
 		}
 		#endregion
 

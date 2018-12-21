@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public FeatureStatusType Type
 		{
 			get { return _Type; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		[JsonProperty]
 		public int Value
 		{
 			get { return _Value; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FeatureStatus(XmlElement node) : base(node)
+		public FeatureStatus(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["type"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "type":
-						this._Type = (FeatureStatusType)ParseEnum(typeof(FeatureStatusType), propertyNode.InnerText);
-						continue;
-					case "value":
-						this._Value = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._Type = (FeatureStatusType)ParseEnum(typeof(FeatureStatusType), node["type"].Value<string>());
 			}
-		}
-
-		public FeatureStatus(IDictionary<string,object> data) : base(data)
-		{
-			    this._Type = (FeatureStatusType)ParseEnum(typeof(FeatureStatusType), data.TryGetValueSafe<int>("type"));
-			    this._Value = data.TryGetValueSafe<int>("value");
+			if(node["value"] != null)
+			{
+				this._Value = ParseInt(node["value"].Value<string>());
+			}
 		}
 		#endregion
 

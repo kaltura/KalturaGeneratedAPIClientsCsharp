@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public IList<PushEventNotificationParameter> UserParams
 		{
 			get { return _UserParams; }
@@ -60,31 +63,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public PushNotificationParams(XmlElement node) : base(node)
+		public PushNotificationParams(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["userParams"] != null)
 			{
-				switch (propertyNode.Name)
+				this._UserParams = new List<PushEventNotificationParameter>();
+				foreach(var arrayNode in node["userParams"].Children())
 				{
-					case "userParams":
-						this._UserParams = new List<PushEventNotificationParameter>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._UserParams.Add(ObjectFactory.Create<PushEventNotificationParameter>(arrayNode));
-						}
-						continue;
+					this._UserParams.Add(ObjectFactory.Create<PushEventNotificationParameter>(arrayNode));
 				}
 			}
-		}
-
-		public PushNotificationParams(IDictionary<string,object> data) : base(data)
-		{
-			    this._UserParams = new List<PushEventNotificationParameter>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("userParams", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._UserParams.Add(ObjectFactory.Create<PushEventNotificationParameter>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

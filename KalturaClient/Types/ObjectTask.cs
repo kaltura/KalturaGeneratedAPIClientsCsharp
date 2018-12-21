@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,10 +48,17 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public ObjectTaskType Type
 		{
 			get { return _Type; }
+			private set 
+			{ 
+				_Type = value;
+				OnPropertyChanged("Type");
+			}
 		}
+		[JsonProperty]
 		public bool? StopProcessingOnError
 		{
 			get { return _StopProcessingOnError; }
@@ -66,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ObjectTask(XmlElement node) : base(node)
+		public ObjectTask(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["type"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "type":
-						this._Type = (ObjectTaskType)StringEnum.Parse(typeof(ObjectTaskType), propertyNode.InnerText);
-						continue;
-					case "stopProcessingOnError":
-						this._StopProcessingOnError = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._Type = (ObjectTaskType)StringEnum.Parse(typeof(ObjectTaskType), node["type"].Value<string>());
 			}
-		}
-
-		public ObjectTask(IDictionary<string,object> data) : base(data)
-		{
-			    this._Type = (ObjectTaskType)StringEnum.Parse(typeof(ObjectTaskType), data.TryGetValueSafe<string>("type"));
-			    this._StopProcessingOnError = data.TryGetValueSafe<bool>("stopProcessingOnError");
+			if(node["stopProcessingOnError"] != null)
+			{
+				this._StopProcessingOnError = ParseBool(node["stopProcessingOnError"].Value<string>());
+			}
 		}
 		#endregion
 

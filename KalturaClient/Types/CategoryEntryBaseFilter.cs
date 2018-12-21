@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -64,6 +66,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int CategoryIdEqual
 		{
 			get { return _CategoryIdEqual; }
@@ -73,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string CategoryIdIn
 		{
 			get { return _CategoryIdIn; }
@@ -82,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryIdIn");
 			}
 		}
+		[JsonProperty]
 		public string EntryIdEqual
 		{
 			get { return _EntryIdEqual; }
@@ -91,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string EntryIdIn
 		{
 			get { return _EntryIdIn; }
@@ -100,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdIn");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
 			get { return _CreatedAtGreaterThanOrEqual; }
@@ -109,6 +116,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
 			get { return _CreatedAtLessThanOrEqual; }
@@ -118,6 +126,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public string CategoryFullIdsStartsWith
 		{
 			get { return _CategoryFullIdsStartsWith; }
@@ -127,6 +136,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryFullIdsStartsWith");
 			}
 		}
+		[JsonProperty]
 		public CategoryEntryStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -136,6 +146,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -145,6 +156,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		[JsonProperty]
 		public string CreatorUserIdEqual
 		{
 			get { return _CreatorUserIdEqual; }
@@ -154,6 +166,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatorUserIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string CreatorUserIdIn
 		{
 			get { return _CreatorUserIdIn; }
@@ -170,62 +183,52 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CategoryEntryBaseFilter(XmlElement node) : base(node)
+		public CategoryEntryBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["categoryIdEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "categoryIdEqual":
-						this._CategoryIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "categoryIdIn":
-						this._CategoryIdIn = propertyNode.InnerText;
-						continue;
-					case "entryIdEqual":
-						this._EntryIdEqual = propertyNode.InnerText;
-						continue;
-					case "entryIdIn":
-						this._EntryIdIn = propertyNode.InnerText;
-						continue;
-					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "categoryFullIdsStartsWith":
-						this._CategoryFullIdsStartsWith = propertyNode.InnerText;
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (CategoryEntryStatus)ParseEnum(typeof(CategoryEntryStatus), propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-					case "creatorUserIdEqual":
-						this._CreatorUserIdEqual = propertyNode.InnerText;
-						continue;
-					case "creatorUserIdIn":
-						this._CreatorUserIdIn = propertyNode.InnerText;
-						continue;
-				}
+				this._CategoryIdEqual = ParseInt(node["categoryIdEqual"].Value<string>());
 			}
-		}
-
-		public CategoryEntryBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._CategoryIdEqual = data.TryGetValueSafe<int>("categoryIdEqual");
-			    this._CategoryIdIn = data.TryGetValueSafe<string>("categoryIdIn");
-			    this._EntryIdEqual = data.TryGetValueSafe<string>("entryIdEqual");
-			    this._EntryIdIn = data.TryGetValueSafe<string>("entryIdIn");
-			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
-			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
-			    this._CategoryFullIdsStartsWith = data.TryGetValueSafe<string>("categoryFullIdsStartsWith");
-			    this._StatusEqual = (CategoryEntryStatus)ParseEnum(typeof(CategoryEntryStatus), data.TryGetValueSafe<int>("statusEqual"));
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
-			    this._CreatorUserIdEqual = data.TryGetValueSafe<string>("creatorUserIdEqual");
-			    this._CreatorUserIdIn = data.TryGetValueSafe<string>("creatorUserIdIn");
+			if(node["categoryIdIn"] != null)
+			{
+				this._CategoryIdIn = node["categoryIdIn"].Value<string>();
+			}
+			if(node["entryIdEqual"] != null)
+			{
+				this._EntryIdEqual = node["entryIdEqual"].Value<string>();
+			}
+			if(node["entryIdIn"] != null)
+			{
+				this._EntryIdIn = node["entryIdIn"].Value<string>();
+			}
+			if(node["createdAtGreaterThanOrEqual"] != null)
+			{
+				this._CreatedAtGreaterThanOrEqual = ParseInt(node["createdAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["createdAtLessThanOrEqual"] != null)
+			{
+				this._CreatedAtLessThanOrEqual = ParseInt(node["createdAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["categoryFullIdsStartsWith"] != null)
+			{
+				this._CategoryFullIdsStartsWith = node["categoryFullIdsStartsWith"].Value<string>();
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (CategoryEntryStatus)ParseEnum(typeof(CategoryEntryStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
+			if(node["creatorUserIdEqual"] != null)
+			{
+				this._CreatorUserIdEqual = node["creatorUserIdEqual"].Value<string>();
+			}
+			if(node["creatorUserIdIn"] != null)
+			{
+				this._CreatorUserIdIn = node["creatorUserIdIn"].Value<string>();
+			}
 		}
 		#endregion
 

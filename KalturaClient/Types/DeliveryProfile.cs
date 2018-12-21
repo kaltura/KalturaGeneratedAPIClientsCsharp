@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -82,14 +84,27 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -99,6 +114,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		[JsonProperty]
 		public DeliveryProfileType Type
 		{
 			get { return _Type; }
@@ -108,6 +124,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		[JsonProperty]
 		public string SystemName
 		{
 			get { return _SystemName; }
@@ -117,6 +134,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemName");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -126,14 +144,27 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public PlaybackProtocol StreamerType
 		{
 			get { return _StreamerType; }
@@ -143,6 +174,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StreamerType");
 			}
 		}
+		[JsonProperty]
 		public string Url
 		{
 			get { return _Url; }
@@ -152,10 +184,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("Url");
 			}
 		}
+		[JsonProperty]
 		public string HostName
 		{
 			get { return _HostName; }
+			private set 
+			{ 
+				_HostName = value;
+				OnPropertyChanged("HostName");
+			}
 		}
+		[JsonProperty]
 		public DeliveryStatus Status
 		{
 			get { return _Status; }
@@ -165,6 +204,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		[JsonProperty]
 		public UrlRecognizer Recognizer
 		{
 			get { return _Recognizer; }
@@ -174,6 +214,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Recognizer");
 			}
 		}
+		[JsonProperty]
 		public UrlTokenizer Tokenizer
 		{
 			get { return _Tokenizer; }
@@ -183,14 +224,27 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tokenizer");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean IsDefault
 		{
 			get { return _IsDefault; }
+			private set 
+			{ 
+				_IsDefault = value;
+				OnPropertyChanged("IsDefault");
+			}
 		}
+		[JsonProperty]
 		public int ParentId
 		{
 			get { return _ParentId; }
+			private set 
+			{ 
+				_ParentId = value;
+				OnPropertyChanged("ParentId");
+			}
 		}
+		[JsonProperty]
 		public string MediaProtocols
 		{
 			get { return _MediaProtocols; }
@@ -200,6 +254,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaProtocols");
 			}
 		}
+		[JsonProperty]
 		public int Priority
 		{
 			get { return _Priority; }
@@ -209,6 +264,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Priority");
 			}
 		}
+		[JsonProperty]
 		public string ExtraParams
 		{
 			get { return _ExtraParams; }
@@ -218,6 +274,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExtraParams");
 			}
 		}
+		[JsonProperty]
 		public AssetFilter SupplementaryAssetsFilter
 		{
 			get { return _SupplementaryAssetsFilter; }
@@ -234,98 +291,88 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DeliveryProfile(XmlElement node) : base(node)
+		public DeliveryProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-					case "type":
-						this._Type = (DeliveryProfileType)StringEnum.Parse(typeof(DeliveryProfileType), propertyNode.InnerText);
-						continue;
-					case "systemName":
-						this._SystemName = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "streamerType":
-						this._StreamerType = (PlaybackProtocol)StringEnum.Parse(typeof(PlaybackProtocol), propertyNode.InnerText);
-						continue;
-					case "url":
-						this._Url = propertyNode.InnerText;
-						continue;
-					case "hostName":
-						this._HostName = propertyNode.InnerText;
-						continue;
-					case "status":
-						this._Status = (DeliveryStatus)ParseEnum(typeof(DeliveryStatus), propertyNode.InnerText);
-						continue;
-					case "recognizer":
-						this._Recognizer = ObjectFactory.Create<UrlRecognizer>(propertyNode);
-						continue;
-					case "tokenizer":
-						this._Tokenizer = ObjectFactory.Create<UrlTokenizer>(propertyNode);
-						continue;
-					case "isDefault":
-						this._IsDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "parentId":
-						this._ParentId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "mediaProtocols":
-						this._MediaProtocols = propertyNode.InnerText;
-						continue;
-					case "priority":
-						this._Priority = ParseInt(propertyNode.InnerText);
-						continue;
-					case "extraParams":
-						this._ExtraParams = propertyNode.InnerText;
-						continue;
-					case "supplementaryAssetsFilter":
-						this._SupplementaryAssetsFilter = ObjectFactory.Create<AssetFilter>(propertyNode);
-						continue;
-				}
+				this._Id = ParseInt(node["id"].Value<string>());
 			}
-		}
-
-		public DeliveryProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._Name = data.TryGetValueSafe<string>("name");
-			    this._Type = (DeliveryProfileType)StringEnum.Parse(typeof(DeliveryProfileType), data.TryGetValueSafe<string>("type"));
-			    this._SystemName = data.TryGetValueSafe<string>("systemName");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._StreamerType = (PlaybackProtocol)StringEnum.Parse(typeof(PlaybackProtocol), data.TryGetValueSafe<string>("streamerType"));
-			    this._Url = data.TryGetValueSafe<string>("url");
-			    this._HostName = data.TryGetValueSafe<string>("hostName");
-			    this._Status = (DeliveryStatus)ParseEnum(typeof(DeliveryStatus), data.TryGetValueSafe<int>("status"));
-			    this._Recognizer = ObjectFactory.Create<UrlRecognizer>(data.TryGetValueSafe<IDictionary<string,object>>("recognizer"));
-			    this._Tokenizer = ObjectFactory.Create<UrlTokenizer>(data.TryGetValueSafe<IDictionary<string,object>>("tokenizer"));
-			    this._IsDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isDefault"));
-			    this._ParentId = data.TryGetValueSafe<int>("parentId");
-			    this._MediaProtocols = data.TryGetValueSafe<string>("mediaProtocols");
-			    this._Priority = data.TryGetValueSafe<int>("priority");
-			    this._ExtraParams = data.TryGetValueSafe<string>("extraParams");
-			    this._SupplementaryAssetsFilter = ObjectFactory.Create<AssetFilter>(data.TryGetValueSafe<IDictionary<string,object>>("supplementaryAssetsFilter"));
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["name"] != null)
+			{
+				this._Name = node["name"].Value<string>();
+			}
+			if(node["type"] != null)
+			{
+				this._Type = (DeliveryProfileType)StringEnum.Parse(typeof(DeliveryProfileType), node["type"].Value<string>());
+			}
+			if(node["systemName"] != null)
+			{
+				this._SystemName = node["systemName"].Value<string>();
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["streamerType"] != null)
+			{
+				this._StreamerType = (PlaybackProtocol)StringEnum.Parse(typeof(PlaybackProtocol), node["streamerType"].Value<string>());
+			}
+			if(node["url"] != null)
+			{
+				this._Url = node["url"].Value<string>();
+			}
+			if(node["hostName"] != null)
+			{
+				this._HostName = node["hostName"].Value<string>();
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (DeliveryStatus)ParseEnum(typeof(DeliveryStatus), node["status"].Value<string>());
+			}
+			if(node["recognizer"] != null)
+			{
+				this._Recognizer = ObjectFactory.Create<UrlRecognizer>(node["recognizer"]);
+			}
+			if(node["tokenizer"] != null)
+			{
+				this._Tokenizer = ObjectFactory.Create<UrlTokenizer>(node["tokenizer"]);
+			}
+			if(node["isDefault"] != null)
+			{
+				this._IsDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["isDefault"].Value<string>());
+			}
+			if(node["parentId"] != null)
+			{
+				this._ParentId = ParseInt(node["parentId"].Value<string>());
+			}
+			if(node["mediaProtocols"] != null)
+			{
+				this._MediaProtocols = node["mediaProtocols"].Value<string>();
+			}
+			if(node["priority"] != null)
+			{
+				this._Priority = ParseInt(node["priority"].Value<string>());
+			}
+			if(node["extraParams"] != null)
+			{
+				this._ExtraParams = node["extraParams"].Value<string>();
+			}
+			if(node["supplementaryAssetsFilter"] != null)
+			{
+				this._SupplementaryAssetsFilter = ObjectFactory.Create<AssetFilter>(node["supplementaryAssetsFilter"]);
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int TotalEntryCount
 		{
 			get { return _TotalEntryCount; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TotalEntryCount");
 			}
 		}
+		[JsonProperty]
 		public int ActualEntryCount
 		{
 			get { return _ActualEntryCount; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ActualEntryCount");
 			}
 		}
+		[JsonProperty]
 		public int RequireTranscodingCount
 		{
 			get { return _RequireTranscodingCount; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public SyndicationFeedEntryCount(XmlElement node) : base(node)
+		public SyndicationFeedEntryCount(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["totalEntryCount"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "totalEntryCount":
-						this._TotalEntryCount = ParseInt(propertyNode.InnerText);
-						continue;
-					case "actualEntryCount":
-						this._ActualEntryCount = ParseInt(propertyNode.InnerText);
-						continue;
-					case "requireTranscodingCount":
-						this._RequireTranscodingCount = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._TotalEntryCount = ParseInt(node["totalEntryCount"].Value<string>());
 			}
-		}
-
-		public SyndicationFeedEntryCount(IDictionary<string,object> data) : base(data)
-		{
-			    this._TotalEntryCount = data.TryGetValueSafe<int>("totalEntryCount");
-			    this._ActualEntryCount = data.TryGetValueSafe<int>("actualEntryCount");
-			    this._RequireTranscodingCount = data.TryGetValueSafe<int>("requireTranscodingCount");
+			if(node["actualEntryCount"] != null)
+			{
+				this._ActualEntryCount = ParseInt(node["actualEntryCount"].Value<string>());
+			}
+			if(node["requireTranscodingCount"] != null)
+			{
+				this._RequireTranscodingCount = ParseInt(node["requireTranscodingCount"].Value<string>());
+			}
 		}
 		#endregion
 

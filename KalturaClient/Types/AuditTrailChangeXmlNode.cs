@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public AuditTrailChangeXmlNodeType Type
 		{
 			get { return _Type; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AuditTrailChangeXmlNode(XmlElement node) : base(node)
+		public AuditTrailChangeXmlNode(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["type"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "type":
-						this._Type = (AuditTrailChangeXmlNodeType)ParseEnum(typeof(AuditTrailChangeXmlNodeType), propertyNode.InnerText);
-						continue;
-				}
+				this._Type = (AuditTrailChangeXmlNodeType)ParseEnum(typeof(AuditTrailChangeXmlNodeType), node["type"].Value<string>());
 			}
-		}
-
-		public AuditTrailChangeXmlNode(IDictionary<string,object> data) : base(data)
-		{
-			    this._Type = (AuditTrailChangeXmlNodeType)ParseEnum(typeof(AuditTrailChangeXmlNodeType), data.TryGetValueSafe<int>("type"));
 		}
 		#endregion
 

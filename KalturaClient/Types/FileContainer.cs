@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string FilePath
 		{
 			get { return _FilePath; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FilePath");
 			}
 		}
+		[JsonProperty]
 		public string EncryptionKey
 		{
 			get { return _EncryptionKey; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EncryptionKey");
 			}
 		}
+		[JsonProperty]
 		public int FileSize
 		{
 			get { return _FileSize; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FileContainer(XmlElement node) : base(node)
+		public FileContainer(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["filePath"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "filePath":
-						this._FilePath = propertyNode.InnerText;
-						continue;
-					case "encryptionKey":
-						this._EncryptionKey = propertyNode.InnerText;
-						continue;
-					case "fileSize":
-						this._FileSize = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._FilePath = node["filePath"].Value<string>();
 			}
-		}
-
-		public FileContainer(IDictionary<string,object> data) : base(data)
-		{
-			    this._FilePath = data.TryGetValueSafe<string>("filePath");
-			    this._EncryptionKey = data.TryGetValueSafe<string>("encryptionKey");
-			    this._FileSize = data.TryGetValueSafe<int>("fileSize");
+			if(node["encryptionKey"] != null)
+			{
+				this._EncryptionKey = node["encryptionKey"].Value<string>();
+			}
+			if(node["fileSize"] != null)
+			{
+				this._FileSize = ParseInt(node["fileSize"].Value<string>());
+			}
 		}
 		#endregion
 

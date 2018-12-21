@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ObjectStatuses
 		{
 			get { return _ObjectStatuses; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectStatuses");
 			}
 		}
+		[JsonProperty]
 		public string ObjectId
 		{
 			get { return _ObjectId; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectId");
 			}
 		}
+		[JsonProperty]
 		public ESearchOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ESearchParams(XmlElement node) : base(node)
+		public ESearchParams(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["objectStatuses"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "objectStatuses":
-						this._ObjectStatuses = propertyNode.InnerText;
-						continue;
-					case "objectId":
-						this._ObjectId = propertyNode.InnerText;
-						continue;
-					case "orderBy":
-						this._OrderBy = ObjectFactory.Create<ESearchOrderBy>(propertyNode);
-						continue;
-				}
+				this._ObjectStatuses = node["objectStatuses"].Value<string>();
 			}
-		}
-
-		public ESearchParams(IDictionary<string,object> data) : base(data)
-		{
-			    this._ObjectStatuses = data.TryGetValueSafe<string>("objectStatuses");
-			    this._ObjectId = data.TryGetValueSafe<string>("objectId");
-			    this._OrderBy = ObjectFactory.Create<ESearchOrderBy>(data.TryGetValueSafe<IDictionary<string,object>>("orderBy"));
+			if(node["objectId"] != null)
+			{
+				this._ObjectId = node["objectId"].Value<string>();
+			}
+			if(node["orderBy"] != null)
+			{
+				this._OrderBy = ObjectFactory.Create<ESearchOrderBy>(node["orderBy"]);
+			}
 		}
 		#endregion
 

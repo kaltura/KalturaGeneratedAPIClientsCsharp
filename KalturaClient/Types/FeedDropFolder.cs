@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int ItemHandlingLimit
 		{
 			get { return _ItemHandlingLimit; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemHandlingLimit");
 			}
 		}
+		[JsonProperty]
 		public FeedItemInfo FeedItemInfo
 		{
 			get { return _FeedItemInfo; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FeedDropFolder(XmlElement node) : base(node)
+		public FeedDropFolder(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["itemHandlingLimit"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "itemHandlingLimit":
-						this._ItemHandlingLimit = ParseInt(propertyNode.InnerText);
-						continue;
-					case "feedItemInfo":
-						this._FeedItemInfo = ObjectFactory.Create<FeedItemInfo>(propertyNode);
-						continue;
-				}
+				this._ItemHandlingLimit = ParseInt(node["itemHandlingLimit"].Value<string>());
 			}
-		}
-
-		public FeedDropFolder(IDictionary<string,object> data) : base(data)
-		{
-			    this._ItemHandlingLimit = data.TryGetValueSafe<int>("itemHandlingLimit");
-			    this._FeedItemInfo = ObjectFactory.Create<FeedItemInfo>(data.TryGetValueSafe<IDictionary<string,object>>("feedItemInfo"));
+			if(node["feedItemInfo"] != null)
+			{
+				this._FeedItemInfo = ObjectFactory.Create<FeedItemInfo>(node["feedItemInfo"]);
+			}
 		}
 		#endregion
 

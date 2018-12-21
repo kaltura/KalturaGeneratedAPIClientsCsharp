@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Offset
 		{
 			get { return _Offset; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Offset");
 			}
 		}
+		[JsonProperty]
 		public int Duration
 		{
 			get { return _Duration; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Duration");
 			}
 		}
+		[JsonProperty]
 		public int GlobalOffsetInDestination
 		{
 			get { return _GlobalOffsetInDestination; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("GlobalOffsetInDestination");
 			}
 		}
+		[JsonProperty]
 		public IList<Effect> EffectArray
 		{
 			get { return _EffectArray; }
@@ -93,43 +99,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ClipAttributes(XmlElement node) : base(node)
+		public ClipAttributes(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["offset"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Offset = ParseInt(node["offset"].Value<string>());
+			}
+			if(node["duration"] != null)
+			{
+				this._Duration = ParseInt(node["duration"].Value<string>());
+			}
+			if(node["globalOffsetInDestination"] != null)
+			{
+				this._GlobalOffsetInDestination = ParseInt(node["globalOffsetInDestination"].Value<string>());
+			}
+			if(node["effectArray"] != null)
+			{
+				this._EffectArray = new List<Effect>();
+				foreach(var arrayNode in node["effectArray"].Children())
 				{
-					case "offset":
-						this._Offset = ParseInt(propertyNode.InnerText);
-						continue;
-					case "duration":
-						this._Duration = ParseInt(propertyNode.InnerText);
-						continue;
-					case "globalOffsetInDestination":
-						this._GlobalOffsetInDestination = ParseInt(propertyNode.InnerText);
-						continue;
-					case "effectArray":
-						this._EffectArray = new List<Effect>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._EffectArray.Add(ObjectFactory.Create<Effect>(arrayNode));
-						}
-						continue;
+					this._EffectArray.Add(ObjectFactory.Create<Effect>(arrayNode));
 				}
 			}
-		}
-
-		public ClipAttributes(IDictionary<string,object> data) : base(data)
-		{
-			    this._Offset = data.TryGetValueSafe<int>("offset");
-			    this._Duration = data.TryGetValueSafe<int>("duration");
-			    this._GlobalOffsetInDestination = data.TryGetValueSafe<int>("globalOffsetInDestination");
-			    this._EffectArray = new List<Effect>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("effectArray", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._EffectArray.Add(ObjectFactory.Create<Effect>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

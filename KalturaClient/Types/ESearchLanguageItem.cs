@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public ESearchLanguage ESerachLanguage
 		{
 			get { return _ESerachLanguage; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ESearchLanguageItem(XmlElement node) : base(node)
+		public ESearchLanguageItem(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["eSerachLanguage"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "eSerachLanguage":
-						this._ESerachLanguage = (ESearchLanguage)StringEnum.Parse(typeof(ESearchLanguage), propertyNode.InnerText);
-						continue;
-				}
+				this._ESerachLanguage = (ESearchLanguage)StringEnum.Parse(typeof(ESearchLanguage), node["eSerachLanguage"].Value<string>());
 			}
-		}
-
-		public ESearchLanguageItem(IDictionary<string,object> data) : base(data)
-		{
-			    this._ESerachLanguage = (ESearchLanguage)StringEnum.Parse(typeof(ESearchLanguage), data.TryGetValueSafe<string>("eSerachLanguage"));
 		}
 		#endregion
 

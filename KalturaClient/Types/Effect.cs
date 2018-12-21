@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public EffectType EffectType
 		{
 			get { return _EffectType; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EffectType");
 			}
 		}
+		[JsonProperty]
 		public string Value
 		{
 			get { return _Value; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public Effect(XmlElement node) : base(node)
+		public Effect(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["effectType"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "effectType":
-						this._EffectType = (EffectType)ParseEnum(typeof(EffectType), propertyNode.InnerText);
-						continue;
-					case "value":
-						this._Value = propertyNode.InnerText;
-						continue;
-				}
+				this._EffectType = (EffectType)ParseEnum(typeof(EffectType), node["effectType"].Value<string>());
 			}
-		}
-
-		public Effect(IDictionary<string,object> data) : base(data)
-		{
-			    this._EffectType = (EffectType)ParseEnum(typeof(EffectType), data.TryGetValueSafe<int>("effectType"));
-			    this._Value = data.TryGetValueSafe<string>("value");
+			if(node["value"] != null)
+			{
+				this._Value = node["value"].Value<string>();
+			}
 		}
 		#endregion
 

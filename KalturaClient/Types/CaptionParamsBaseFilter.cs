@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public CaptionType FormatEqual
 		{
 			get { return _FormatEqual; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FormatEqual");
 			}
 		}
+		[JsonProperty]
 		public string FormatIn
 		{
 			get { return _FormatIn; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CaptionParamsBaseFilter(XmlElement node) : base(node)
+		public CaptionParamsBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["formatEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "formatEqual":
-						this._FormatEqual = (CaptionType)StringEnum.Parse(typeof(CaptionType), propertyNode.InnerText);
-						continue;
-					case "formatIn":
-						this._FormatIn = propertyNode.InnerText;
-						continue;
-				}
+				this._FormatEqual = (CaptionType)StringEnum.Parse(typeof(CaptionType), node["formatEqual"].Value<string>());
 			}
-		}
-
-		public CaptionParamsBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._FormatEqual = (CaptionType)StringEnum.Parse(typeof(CaptionType), data.TryGetValueSafe<string>("formatEqual"));
-			    this._FormatIn = data.TryGetValueSafe<string>("formatIn");
+			if(node["formatIn"] != null)
+			{
+				this._FormatIn = node["formatIn"].Value<string>();
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string EdgeServerIds
 		{
 			get { return _EdgeServerIds; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ValidateActiveEdgeCondition(XmlElement node) : base(node)
+		public ValidateActiveEdgeCondition(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["edgeServerIds"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "edgeServerIds":
-						this._EdgeServerIds = propertyNode.InnerText;
-						continue;
-				}
+				this._EdgeServerIds = node["edgeServerIds"].Value<string>();
 			}
-		}
-
-		public ValidateActiveEdgeCondition(IDictionary<string,object> data) : base(data)
-		{
-			    this._EdgeServerIds = data.TryGetValueSafe<string>("edgeServerIds");
 		}
 		#endregion
 

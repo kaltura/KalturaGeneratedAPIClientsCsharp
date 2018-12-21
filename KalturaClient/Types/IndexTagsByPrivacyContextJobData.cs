@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int ChangedCategoryId
 		{
 			get { return _ChangedCategoryId; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChangedCategoryId");
 			}
 		}
+		[JsonProperty]
 		public string DeletedPrivacyContexts
 		{
 			get { return _DeletedPrivacyContexts; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeletedPrivacyContexts");
 			}
 		}
+		[JsonProperty]
 		public string AddedPrivacyContexts
 		{
 			get { return _AddedPrivacyContexts; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public IndexTagsByPrivacyContextJobData(XmlElement node) : base(node)
+		public IndexTagsByPrivacyContextJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["changedCategoryId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "changedCategoryId":
-						this._ChangedCategoryId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "deletedPrivacyContexts":
-						this._DeletedPrivacyContexts = propertyNode.InnerText;
-						continue;
-					case "addedPrivacyContexts":
-						this._AddedPrivacyContexts = propertyNode.InnerText;
-						continue;
-				}
+				this._ChangedCategoryId = ParseInt(node["changedCategoryId"].Value<string>());
 			}
-		}
-
-		public IndexTagsByPrivacyContextJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._ChangedCategoryId = data.TryGetValueSafe<int>("changedCategoryId");
-			    this._DeletedPrivacyContexts = data.TryGetValueSafe<string>("deletedPrivacyContexts");
-			    this._AddedPrivacyContexts = data.TryGetValueSafe<string>("addedPrivacyContexts");
+			if(node["deletedPrivacyContexts"] != null)
+			{
+				this._DeletedPrivacyContexts = node["deletedPrivacyContexts"].Value<string>();
+			}
+			if(node["addedPrivacyContexts"] != null)
+			{
+				this._AddedPrivacyContexts = node["addedPrivacyContexts"].Value<string>();
+			}
 		}
 		#endregion
 

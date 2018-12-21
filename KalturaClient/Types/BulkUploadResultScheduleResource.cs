@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -58,6 +60,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ResourceId
 		{
 			get { return _ResourceId; }
@@ -67,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ResourceId");
 			}
 		}
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -76,6 +80,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		[JsonProperty]
 		public string Type
 		{
 			get { return _Type; }
@@ -85,6 +90,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		[JsonProperty]
 		public string SystemName
 		{
 			get { return _SystemName; }
@@ -94,6 +100,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemName");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -103,6 +110,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public string Tags
 		{
 			get { return _Tags; }
@@ -112,6 +120,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
+		[JsonProperty]
 		public string ParentType
 		{
 			get { return _ParentType; }
@@ -121,6 +130,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentType");
 			}
 		}
+		[JsonProperty]
 		public string ParentSystemName
 		{
 			get { return _ParentSystemName; }
@@ -137,50 +147,40 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BulkUploadResultScheduleResource(XmlElement node) : base(node)
+		public BulkUploadResultScheduleResource(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["resourceId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "resourceId":
-						this._ResourceId = propertyNode.InnerText;
-						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-					case "type":
-						this._Type = propertyNode.InnerText;
-						continue;
-					case "systemName":
-						this._SystemName = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "tags":
-						this._Tags = propertyNode.InnerText;
-						continue;
-					case "parentType":
-						this._ParentType = propertyNode.InnerText;
-						continue;
-					case "parentSystemName":
-						this._ParentSystemName = propertyNode.InnerText;
-						continue;
-				}
+				this._ResourceId = node["resourceId"].Value<string>();
 			}
-		}
-
-		public BulkUploadResultScheduleResource(IDictionary<string,object> data) : base(data)
-		{
-			    this._ResourceId = data.TryGetValueSafe<string>("resourceId");
-			    this._Name = data.TryGetValueSafe<string>("name");
-			    this._Type = data.TryGetValueSafe<string>("type");
-			    this._SystemName = data.TryGetValueSafe<string>("systemName");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._Tags = data.TryGetValueSafe<string>("tags");
-			    this._ParentType = data.TryGetValueSafe<string>("parentType");
-			    this._ParentSystemName = data.TryGetValueSafe<string>("parentSystemName");
+			if(node["name"] != null)
+			{
+				this._Name = node["name"].Value<string>();
+			}
+			if(node["type"] != null)
+			{
+				this._Type = node["type"].Value<string>();
+			}
+			if(node["systemName"] != null)
+			{
+				this._SystemName = node["systemName"].Value<string>();
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["tags"] != null)
+			{
+				this._Tags = node["tags"].Value<string>();
+			}
+			if(node["parentType"] != null)
+			{
+				this._ParentType = node["parentType"].Value<string>();
+			}
+			if(node["parentSystemName"] != null)
+			{
+				this._ParentSystemName = node["parentSystemName"].Value<string>();
+			}
 		}
 		#endregion
 

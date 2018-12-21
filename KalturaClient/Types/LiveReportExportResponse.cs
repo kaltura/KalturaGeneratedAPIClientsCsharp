@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public long ReferenceJobId
 		{
 			get { return _ReferenceJobId; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReferenceJobId");
 			}
 		}
+		[JsonProperty]
 		public string ReportEmail
 		{
 			get { return _ReportEmail; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public LiveReportExportResponse(XmlElement node) : base(node)
+		public LiveReportExportResponse(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["referenceJobId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "referenceJobId":
-						this._ReferenceJobId = ParseLong(propertyNode.InnerText);
-						continue;
-					case "reportEmail":
-						this._ReportEmail = propertyNode.InnerText;
-						continue;
-				}
+				this._ReferenceJobId = ParseLong(node["referenceJobId"].Value<string>());
 			}
-		}
-
-		public LiveReportExportResponse(IDictionary<string,object> data) : base(data)
-		{
-			    this._ReferenceJobId = data.TryGetValueSafe<long>("referenceJobId");
-			    this._ReportEmail = data.TryGetValueSafe<string>("reportEmail");
+			if(node["reportEmail"] != null)
+			{
+				this._ReportEmail = node["reportEmail"].Value<string>();
+			}
 		}
 		#endregion
 

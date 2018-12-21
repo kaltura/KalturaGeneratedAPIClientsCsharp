@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -74,10 +76,17 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -87,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -96,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public string EmailAddress
 		{
 			get { return _EmailAddress; }
@@ -105,6 +116,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EmailAddress");
 			}
 		}
+		[JsonProperty]
 		public string MailboxId
 		{
 			get { return _MailboxId; }
@@ -114,10 +126,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("MailboxId");
 			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public int ConversionProfile2Id
 		{
 			get { return _ConversionProfile2Id; }
@@ -127,6 +146,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionProfile2Id");
 			}
 		}
+		[JsonProperty]
 		public EntryModerationStatus ModerationStatus
 		{
 			get { return _ModerationStatus; }
@@ -136,14 +156,27 @@ namespace Kaltura.Types
 				OnPropertyChanged("ModerationStatus");
 			}
 		}
+		[JsonProperty]
 		public EmailIngestionProfileStatus Status
 		{
 			get { return _Status; }
+			private set 
+			{ 
+				_Status = value;
+				OnPropertyChanged("Status");
+			}
 		}
+		[JsonProperty]
 		public string CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public string DefaultCategory
 		{
 			get { return _DefaultCategory; }
@@ -153,6 +186,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DefaultCategory");
 			}
 		}
+		[JsonProperty]
 		public string DefaultUserId
 		{
 			get { return _DefaultUserId; }
@@ -162,6 +196,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DefaultUserId");
 			}
 		}
+		[JsonProperty]
 		public string DefaultTags
 		{
 			get { return _DefaultTags; }
@@ -171,6 +206,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DefaultTags");
 			}
 		}
+		[JsonProperty]
 		public string DefaultAdminTags
 		{
 			get { return _DefaultAdminTags; }
@@ -180,6 +216,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DefaultAdminTags");
 			}
 		}
+		[JsonProperty]
 		public int MaxAttachmentSizeKbytes
 		{
 			get { return _MaxAttachmentSizeKbytes; }
@@ -189,6 +226,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MaxAttachmentSizeKbytes");
 			}
 		}
+		[JsonProperty]
 		public int MaxAttachmentsPerMail
 		{
 			get { return _MaxAttachmentsPerMail; }
@@ -205,82 +243,72 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EmailIngestionProfile(XmlElement node) : base(node)
+		public EmailIngestionProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "emailAddress":
-						this._EmailAddress = propertyNode.InnerText;
-						continue;
-					case "mailboxId":
-						this._MailboxId = propertyNode.InnerText;
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "conversionProfile2Id":
-						this._ConversionProfile2Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "moderationStatus":
-						this._ModerationStatus = (EntryModerationStatus)ParseEnum(typeof(EntryModerationStatus), propertyNode.InnerText);
-						continue;
-					case "status":
-						this._Status = (EmailIngestionProfileStatus)ParseEnum(typeof(EmailIngestionProfileStatus), propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = propertyNode.InnerText;
-						continue;
-					case "defaultCategory":
-						this._DefaultCategory = propertyNode.InnerText;
-						continue;
-					case "defaultUserId":
-						this._DefaultUserId = propertyNode.InnerText;
-						continue;
-					case "defaultTags":
-						this._DefaultTags = propertyNode.InnerText;
-						continue;
-					case "defaultAdminTags":
-						this._DefaultAdminTags = propertyNode.InnerText;
-						continue;
-					case "maxAttachmentSizeKbytes":
-						this._MaxAttachmentSizeKbytes = ParseInt(propertyNode.InnerText);
-						continue;
-					case "maxAttachmentsPerMail":
-						this._MaxAttachmentsPerMail = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._Id = ParseInt(node["id"].Value<string>());
 			}
-		}
-
-		public EmailIngestionProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._Name = data.TryGetValueSafe<string>("name");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._EmailAddress = data.TryGetValueSafe<string>("emailAddress");
-			    this._MailboxId = data.TryGetValueSafe<string>("mailboxId");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._ConversionProfile2Id = data.TryGetValueSafe<int>("conversionProfile2Id");
-			    this._ModerationStatus = (EntryModerationStatus)ParseEnum(typeof(EntryModerationStatus), data.TryGetValueSafe<int>("moderationStatus"));
-			    this._Status = (EmailIngestionProfileStatus)ParseEnum(typeof(EmailIngestionProfileStatus), data.TryGetValueSafe<int>("status"));
-			    this._CreatedAt = data.TryGetValueSafe<string>("createdAt");
-			    this._DefaultCategory = data.TryGetValueSafe<string>("defaultCategory");
-			    this._DefaultUserId = data.TryGetValueSafe<string>("defaultUserId");
-			    this._DefaultTags = data.TryGetValueSafe<string>("defaultTags");
-			    this._DefaultAdminTags = data.TryGetValueSafe<string>("defaultAdminTags");
-			    this._MaxAttachmentSizeKbytes = data.TryGetValueSafe<int>("maxAttachmentSizeKbytes");
-			    this._MaxAttachmentsPerMail = data.TryGetValueSafe<int>("maxAttachmentsPerMail");
+			if(node["name"] != null)
+			{
+				this._Name = node["name"].Value<string>();
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["emailAddress"] != null)
+			{
+				this._EmailAddress = node["emailAddress"].Value<string>();
+			}
+			if(node["mailboxId"] != null)
+			{
+				this._MailboxId = node["mailboxId"].Value<string>();
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["conversionProfile2Id"] != null)
+			{
+				this._ConversionProfile2Id = ParseInt(node["conversionProfile2Id"].Value<string>());
+			}
+			if(node["moderationStatus"] != null)
+			{
+				this._ModerationStatus = (EntryModerationStatus)ParseEnum(typeof(EntryModerationStatus), node["moderationStatus"].Value<string>());
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (EmailIngestionProfileStatus)ParseEnum(typeof(EmailIngestionProfileStatus), node["status"].Value<string>());
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = node["createdAt"].Value<string>();
+			}
+			if(node["defaultCategory"] != null)
+			{
+				this._DefaultCategory = node["defaultCategory"].Value<string>();
+			}
+			if(node["defaultUserId"] != null)
+			{
+				this._DefaultUserId = node["defaultUserId"].Value<string>();
+			}
+			if(node["defaultTags"] != null)
+			{
+				this._DefaultTags = node["defaultTags"].Value<string>();
+			}
+			if(node["defaultAdminTags"] != null)
+			{
+				this._DefaultAdminTags = node["defaultAdminTags"].Value<string>();
+			}
+			if(node["maxAttachmentSizeKbytes"] != null)
+			{
+				this._MaxAttachmentSizeKbytes = ParseInt(node["maxAttachmentSizeKbytes"].Value<string>());
+			}
+			if(node["maxAttachmentsPerMail"] != null)
+			{
+				this._MaxAttachmentsPerMail = ParseInt(node["maxAttachmentsPerMail"].Value<string>());
+			}
 		}
 		#endregion
 

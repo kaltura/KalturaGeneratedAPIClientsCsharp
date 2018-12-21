@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,6 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Id
 		{
 			get { return _Id; }
@@ -61,6 +64,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		[JsonProperty]
 		public string Label
 		{
 			get { return _Label; }
@@ -70,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Label");
 			}
 		}
+		[JsonProperty]
 		public IList<KeyValue> Flashvars
 		{
 			get { return _Flashvars; }
@@ -79,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Flashvars");
 			}
 		}
+		[JsonProperty]
 		public string MinVersion
 		{
 			get { return _MinVersion; }
@@ -88,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MinVersion");
 			}
 		}
+		[JsonProperty]
 		public bool? EnabledByDefault
 		{
 			get { return _EnabledByDefault; }
@@ -104,47 +111,32 @@ namespace Kaltura.Types
 		{
 		}
 
-		public PlayerDeliveryType(XmlElement node) : base(node)
+		public PlayerDeliveryType(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Id = node["id"].Value<string>();
+			}
+			if(node["label"] != null)
+			{
+				this._Label = node["label"].Value<string>();
+			}
+			if(node["flashvars"] != null)
+			{
+				this._Flashvars = new List<KeyValue>();
+				foreach(var arrayNode in node["flashvars"].Children())
 				{
-					case "id":
-						this._Id = propertyNode.InnerText;
-						continue;
-					case "label":
-						this._Label = propertyNode.InnerText;
-						continue;
-					case "flashvars":
-						this._Flashvars = new List<KeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Flashvars.Add(ObjectFactory.Create<KeyValue>(arrayNode));
-						}
-						continue;
-					case "minVersion":
-						this._MinVersion = propertyNode.InnerText;
-						continue;
-					case "enabledByDefault":
-						this._EnabledByDefault = ParseBool(propertyNode.InnerText);
-						continue;
+					this._Flashvars.Add(ObjectFactory.Create<KeyValue>(arrayNode));
 				}
 			}
-		}
-
-		public PlayerDeliveryType(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<string>("id");
-			    this._Label = data.TryGetValueSafe<string>("label");
-			    this._Flashvars = new List<KeyValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("flashvars", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Flashvars.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._MinVersion = data.TryGetValueSafe<string>("minVersion");
-			    this._EnabledByDefault = data.TryGetValueSafe<bool>("enabledByDefault");
+			if(node["minVersion"] != null)
+			{
+				this._MinVersion = node["minVersion"].Value<string>();
+			}
+			if(node["enabledByDefault"] != null)
+			{
+				this._EnabledByDefault = ParseBool(node["enabledByDefault"].Value<string>());
+			}
 		}
 		#endregion
 

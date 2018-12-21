@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Pattern
 		{
 			get { return _Pattern; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Pattern");
 			}
 		}
+		[JsonProperty]
 		public string Replacement
 		{
 			get { return _Replacement; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Replacement");
 			}
 		}
+		[JsonProperty]
 		public int ReplacmenServerNodeId
 		{
 			get { return _ReplacmenServerNodeId; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AccessControlModifyRequestHostRegexAction(XmlElement node) : base(node)
+		public AccessControlModifyRequestHostRegexAction(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["pattern"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "pattern":
-						this._Pattern = propertyNode.InnerText;
-						continue;
-					case "replacement":
-						this._Replacement = propertyNode.InnerText;
-						continue;
-					case "replacmenServerNodeId":
-						this._ReplacmenServerNodeId = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._Pattern = node["pattern"].Value<string>();
 			}
-		}
-
-		public AccessControlModifyRequestHostRegexAction(IDictionary<string,object> data) : base(data)
-		{
-			    this._Pattern = data.TryGetValueSafe<string>("pattern");
-			    this._Replacement = data.TryGetValueSafe<string>("replacement");
-			    this._ReplacmenServerNodeId = data.TryGetValueSafe<int>("replacmenServerNodeId");
+			if(node["replacement"] != null)
+			{
+				this._Replacement = node["replacement"].Value<string>();
+			}
+			if(node["replacmenServerNodeId"] != null)
+			{
+				this._ReplacmenServerNodeId = ParseInt(node["replacmenServerNodeId"].Value<string>());
+			}
 		}
 		#endregion
 

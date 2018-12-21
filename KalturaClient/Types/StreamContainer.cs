@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -54,6 +56,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Type
 		{
 			get { return _Type; }
@@ -63,6 +66,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		[JsonProperty]
 		public int TrackIndex
 		{
 			get { return _TrackIndex; }
@@ -72,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TrackIndex");
 			}
 		}
+		[JsonProperty]
 		public string Language
 		{
 			get { return _Language; }
@@ -81,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Language");
 			}
 		}
+		[JsonProperty]
 		public int ChannelIndex
 		{
 			get { return _ChannelIndex; }
@@ -90,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelIndex");
 			}
 		}
+		[JsonProperty]
 		public string Label
 		{
 			get { return _Label; }
@@ -99,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Label");
 			}
 		}
+		[JsonProperty]
 		public string ChannelLayout
 		{
 			get { return _ChannelLayout; }
@@ -115,42 +123,32 @@ namespace Kaltura.Types
 		{
 		}
 
-		public StreamContainer(XmlElement node) : base(node)
+		public StreamContainer(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["type"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "type":
-						this._Type = propertyNode.InnerText;
-						continue;
-					case "trackIndex":
-						this._TrackIndex = ParseInt(propertyNode.InnerText);
-						continue;
-					case "language":
-						this._Language = propertyNode.InnerText;
-						continue;
-					case "channelIndex":
-						this._ChannelIndex = ParseInt(propertyNode.InnerText);
-						continue;
-					case "label":
-						this._Label = propertyNode.InnerText;
-						continue;
-					case "channelLayout":
-						this._ChannelLayout = propertyNode.InnerText;
-						continue;
-				}
+				this._Type = node["type"].Value<string>();
 			}
-		}
-
-		public StreamContainer(IDictionary<string,object> data) : base(data)
-		{
-			    this._Type = data.TryGetValueSafe<string>("type");
-			    this._TrackIndex = data.TryGetValueSafe<int>("trackIndex");
-			    this._Language = data.TryGetValueSafe<string>("language");
-			    this._ChannelIndex = data.TryGetValueSafe<int>("channelIndex");
-			    this._Label = data.TryGetValueSafe<string>("label");
-			    this._ChannelLayout = data.TryGetValueSafe<string>("channelLayout");
+			if(node["trackIndex"] != null)
+			{
+				this._TrackIndex = ParseInt(node["trackIndex"].Value<string>());
+			}
+			if(node["language"] != null)
+			{
+				this._Language = node["language"].Value<string>();
+			}
+			if(node["channelIndex"] != null)
+			{
+				this._ChannelIndex = ParseInt(node["channelIndex"].Value<string>());
+			}
+			if(node["label"] != null)
+			{
+				this._Label = node["label"].Value<string>();
+			}
+			if(node["channelLayout"] != null)
+			{
+				this._ChannelLayout = node["channelLayout"].Value<string>();
+			}
 		}
 		#endregion
 

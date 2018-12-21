@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -70,6 +72,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string RelativePath
 		{
 			get { return _RelativePath; }
@@ -79,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RelativePath");
 			}
 		}
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -88,6 +92,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		[JsonProperty]
 		public string ReferenceId
 		{
 			get { return _ReferenceId; }
@@ -97,6 +102,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReferenceId");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -106,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public string Tags
 		{
 			get { return _Tags; }
@@ -115,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
+		[JsonProperty]
 		public int AppearInList
 		{
 			get { return _AppearInList; }
@@ -124,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AppearInList");
 			}
 		}
+		[JsonProperty]
 		public int Privacy
 		{
 			get { return _Privacy; }
@@ -133,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Privacy");
 			}
 		}
+		[JsonProperty]
 		public int InheritanceType
 		{
 			get { return _InheritanceType; }
@@ -142,6 +152,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("InheritanceType");
 			}
 		}
+		[JsonProperty]
 		public int UserJoinPolicy
 		{
 			get { return _UserJoinPolicy; }
@@ -151,6 +162,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserJoinPolicy");
 			}
 		}
+		[JsonProperty]
 		public int DefaultPermissionLevel
 		{
 			get { return _DefaultPermissionLevel; }
@@ -160,6 +172,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DefaultPermissionLevel");
 			}
 		}
+		[JsonProperty]
 		public string Owner
 		{
 			get { return _Owner; }
@@ -169,6 +182,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Owner");
 			}
 		}
+		[JsonProperty]
 		public int ContributionPolicy
 		{
 			get { return _ContributionPolicy; }
@@ -178,6 +192,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContributionPolicy");
 			}
 		}
+		[JsonProperty]
 		public int PartnerSortValue
 		{
 			get { return _PartnerSortValue; }
@@ -187,6 +202,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerSortValue");
 			}
 		}
+		[JsonProperty]
 		public bool? Moderation
 		{
 			get { return _Moderation; }
@@ -203,74 +219,64 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BulkUploadResultCategory(XmlElement node) : base(node)
+		public BulkUploadResultCategory(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["relativePath"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "relativePath":
-						this._RelativePath = propertyNode.InnerText;
-						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-					case "referenceId":
-						this._ReferenceId = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "tags":
-						this._Tags = propertyNode.InnerText;
-						continue;
-					case "appearInList":
-						this._AppearInList = ParseInt(propertyNode.InnerText);
-						continue;
-					case "privacy":
-						this._Privacy = ParseInt(propertyNode.InnerText);
-						continue;
-					case "inheritanceType":
-						this._InheritanceType = ParseInt(propertyNode.InnerText);
-						continue;
-					case "userJoinPolicy":
-						this._UserJoinPolicy = ParseInt(propertyNode.InnerText);
-						continue;
-					case "defaultPermissionLevel":
-						this._DefaultPermissionLevel = ParseInt(propertyNode.InnerText);
-						continue;
-					case "owner":
-						this._Owner = propertyNode.InnerText;
-						continue;
-					case "contributionPolicy":
-						this._ContributionPolicy = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerSortValue":
-						this._PartnerSortValue = ParseInt(propertyNode.InnerText);
-						continue;
-					case "moderation":
-						this._Moderation = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._RelativePath = node["relativePath"].Value<string>();
 			}
-		}
-
-		public BulkUploadResultCategory(IDictionary<string,object> data) : base(data)
-		{
-			    this._RelativePath = data.TryGetValueSafe<string>("relativePath");
-			    this._Name = data.TryGetValueSafe<string>("name");
-			    this._ReferenceId = data.TryGetValueSafe<string>("referenceId");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._Tags = data.TryGetValueSafe<string>("tags");
-			    this._AppearInList = data.TryGetValueSafe<int>("appearInList");
-			    this._Privacy = data.TryGetValueSafe<int>("privacy");
-			    this._InheritanceType = data.TryGetValueSafe<int>("inheritanceType");
-			    this._UserJoinPolicy = data.TryGetValueSafe<int>("userJoinPolicy");
-			    this._DefaultPermissionLevel = data.TryGetValueSafe<int>("defaultPermissionLevel");
-			    this._Owner = data.TryGetValueSafe<string>("owner");
-			    this._ContributionPolicy = data.TryGetValueSafe<int>("contributionPolicy");
-			    this._PartnerSortValue = data.TryGetValueSafe<int>("partnerSortValue");
-			    this._Moderation = data.TryGetValueSafe<bool>("moderation");
+			if(node["name"] != null)
+			{
+				this._Name = node["name"].Value<string>();
+			}
+			if(node["referenceId"] != null)
+			{
+				this._ReferenceId = node["referenceId"].Value<string>();
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["tags"] != null)
+			{
+				this._Tags = node["tags"].Value<string>();
+			}
+			if(node["appearInList"] != null)
+			{
+				this._AppearInList = ParseInt(node["appearInList"].Value<string>());
+			}
+			if(node["privacy"] != null)
+			{
+				this._Privacy = ParseInt(node["privacy"].Value<string>());
+			}
+			if(node["inheritanceType"] != null)
+			{
+				this._InheritanceType = ParseInt(node["inheritanceType"].Value<string>());
+			}
+			if(node["userJoinPolicy"] != null)
+			{
+				this._UserJoinPolicy = ParseInt(node["userJoinPolicy"].Value<string>());
+			}
+			if(node["defaultPermissionLevel"] != null)
+			{
+				this._DefaultPermissionLevel = ParseInt(node["defaultPermissionLevel"].Value<string>());
+			}
+			if(node["owner"] != null)
+			{
+				this._Owner = node["owner"].Value<string>();
+			}
+			if(node["contributionPolicy"] != null)
+			{
+				this._ContributionPolicy = ParseInt(node["contributionPolicy"].Value<string>());
+			}
+			if(node["partnerSortValue"] != null)
+			{
+				this._PartnerSortValue = ParseInt(node["partnerSortValue"].Value<string>());
+			}
+			if(node["moderation"] != null)
+			{
+				this._Moderation = ParseBool(node["moderation"].Value<string>());
+			}
 		}
 		#endregion
 

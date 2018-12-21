@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -122,6 +124,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public VideoCodec VideoCodec
 		{
 			get { return _VideoCodec; }
@@ -131,6 +134,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoCodec");
 			}
 		}
+		[JsonProperty]
 		public int VideoBitrate
 		{
 			get { return _VideoBitrate; }
@@ -140,6 +144,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoBitrate");
 			}
 		}
+		[JsonProperty]
 		public AudioCodec AudioCodec
 		{
 			get { return _AudioCodec; }
@@ -149,6 +154,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AudioCodec");
 			}
 		}
+		[JsonProperty]
 		public int AudioBitrate
 		{
 			get { return _AudioBitrate; }
@@ -158,6 +164,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AudioBitrate");
 			}
 		}
+		[JsonProperty]
 		public int AudioChannels
 		{
 			get { return _AudioChannels; }
@@ -167,6 +174,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AudioChannels");
 			}
 		}
+		[JsonProperty]
 		public int AudioSampleRate
 		{
 			get { return _AudioSampleRate; }
@@ -176,6 +184,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AudioSampleRate");
 			}
 		}
+		[JsonProperty]
 		public int Width
 		{
 			get { return _Width; }
@@ -185,6 +194,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Width");
 			}
 		}
+		[JsonProperty]
 		public int Height
 		{
 			get { return _Height; }
@@ -194,6 +204,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Height");
 			}
 		}
+		[JsonProperty]
 		public float FrameRate
 		{
 			get { return _FrameRate; }
@@ -203,6 +214,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FrameRate");
 			}
 		}
+		[JsonProperty]
 		public int GopSize
 		{
 			get { return _GopSize; }
@@ -212,6 +224,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("GopSize");
 			}
 		}
+		[JsonProperty]
 		public string ConversionEngines
 		{
 			get { return _ConversionEngines; }
@@ -221,6 +234,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionEngines");
 			}
 		}
+		[JsonProperty]
 		public string ConversionEnginesExtraParams
 		{
 			get { return _ConversionEnginesExtraParams; }
@@ -230,6 +244,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionEnginesExtraParams");
 			}
 		}
+		[JsonProperty]
 		public bool? TwoPass
 		{
 			get { return _TwoPass; }
@@ -239,6 +254,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TwoPass");
 			}
 		}
+		[JsonProperty]
 		public int Deinterlice
 		{
 			get { return _Deinterlice; }
@@ -248,6 +264,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Deinterlice");
 			}
 		}
+		[JsonProperty]
 		public int Rotate
 		{
 			get { return _Rotate; }
@@ -257,6 +274,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Rotate");
 			}
 		}
+		[JsonProperty]
 		public string Operators
 		{
 			get { return _Operators; }
@@ -266,6 +284,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Operators");
 			}
 		}
+		[JsonProperty]
 		public int EngineVersion
 		{
 			get { return _EngineVersion; }
@@ -275,6 +294,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EngineVersion");
 			}
 		}
+		[JsonProperty]
 		public ContainerFormat Format
 		{
 			get { return _Format; }
@@ -284,6 +304,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Format");
 			}
 		}
+		[JsonProperty]
 		public int AspectRatioProcessingMode
 		{
 			get { return _AspectRatioProcessingMode; }
@@ -293,6 +314,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AspectRatioProcessingMode");
 			}
 		}
+		[JsonProperty]
 		public int ForceFrameToMultiplication16
 		{
 			get { return _ForceFrameToMultiplication16; }
@@ -302,6 +324,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ForceFrameToMultiplication16");
 			}
 		}
+		[JsonProperty]
 		public int IsGopInSec
 		{
 			get { return _IsGopInSec; }
@@ -311,6 +334,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsGopInSec");
 			}
 		}
+		[JsonProperty]
 		public int IsAvoidVideoShrinkFramesizeToSource
 		{
 			get { return _IsAvoidVideoShrinkFramesizeToSource; }
@@ -320,6 +344,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsAvoidVideoShrinkFramesizeToSource");
 			}
 		}
+		[JsonProperty]
 		public int IsAvoidVideoShrinkBitrateToSource
 		{
 			get { return _IsAvoidVideoShrinkBitrateToSource; }
@@ -329,6 +354,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsAvoidVideoShrinkBitrateToSource");
 			}
 		}
+		[JsonProperty]
 		public int IsVideoFrameRateForLowBrAppleHls
 		{
 			get { return _IsVideoFrameRateForLowBrAppleHls; }
@@ -338,6 +364,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsVideoFrameRateForLowBrAppleHls");
 			}
 		}
+		[JsonProperty]
 		public string MultiStream
 		{
 			get { return _MultiStream; }
@@ -347,6 +374,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MultiStream");
 			}
 		}
+		[JsonProperty]
 		public float AnamorphicPixels
 		{
 			get { return _AnamorphicPixels; }
@@ -356,6 +384,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AnamorphicPixels");
 			}
 		}
+		[JsonProperty]
 		public int IsAvoidForcedKeyFrames
 		{
 			get { return _IsAvoidForcedKeyFrames; }
@@ -365,6 +394,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsAvoidForcedKeyFrames");
 			}
 		}
+		[JsonProperty]
 		public int ForcedKeyFramesMode
 		{
 			get { return _ForcedKeyFramesMode; }
@@ -374,6 +404,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ForcedKeyFramesMode");
 			}
 		}
+		[JsonProperty]
 		public int IsCropIMX
 		{
 			get { return _IsCropIMX; }
@@ -383,6 +414,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsCropIMX");
 			}
 		}
+		[JsonProperty]
 		public int OptimizationPolicy
 		{
 			get { return _OptimizationPolicy; }
@@ -392,6 +424,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("OptimizationPolicy");
 			}
 		}
+		[JsonProperty]
 		public int MaxFrameRate
 		{
 			get { return _MaxFrameRate; }
@@ -401,6 +434,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MaxFrameRate");
 			}
 		}
+		[JsonProperty]
 		public int VideoConstantBitrate
 		{
 			get { return _VideoConstantBitrate; }
@@ -410,6 +444,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoConstantBitrate");
 			}
 		}
+		[JsonProperty]
 		public int VideoBitrateTolerance
 		{
 			get { return _VideoBitrateTolerance; }
@@ -419,6 +454,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoBitrateTolerance");
 			}
 		}
+		[JsonProperty]
 		public string WatermarkData
 		{
 			get { return _WatermarkData; }
@@ -428,6 +464,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WatermarkData");
 			}
 		}
+		[JsonProperty]
 		public string SubtitlesData
 		{
 			get { return _SubtitlesData; }
@@ -437,6 +474,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SubtitlesData");
 			}
 		}
+		[JsonProperty]
 		public int IsEncrypted
 		{
 			get { return _IsEncrypted; }
@@ -446,6 +484,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsEncrypted");
 			}
 		}
+		[JsonProperty]
 		public float ContentAwareness
 		{
 			get { return _ContentAwareness; }
@@ -455,6 +494,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentAwareness");
 			}
 		}
+		[JsonProperty]
 		public int ChunkedEncodeMode
 		{
 			get { return _ChunkedEncodeMode; }
@@ -464,6 +504,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChunkedEncodeMode");
 			}
 		}
+		[JsonProperty]
 		public int ClipOffset
 		{
 			get { return _ClipOffset; }
@@ -473,6 +514,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ClipOffset");
 			}
 		}
+		[JsonProperty]
 		public int ClipDuration
 		{
 			get { return _ClipDuration; }
@@ -489,178 +531,168 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FlavorParams(XmlElement node) : base(node)
+		public FlavorParams(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["videoCodec"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "videoCodec":
-						this._VideoCodec = (VideoCodec)StringEnum.Parse(typeof(VideoCodec), propertyNode.InnerText);
-						continue;
-					case "videoBitrate":
-						this._VideoBitrate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "audioCodec":
-						this._AudioCodec = (AudioCodec)StringEnum.Parse(typeof(AudioCodec), propertyNode.InnerText);
-						continue;
-					case "audioBitrate":
-						this._AudioBitrate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "audioChannels":
-						this._AudioChannels = ParseInt(propertyNode.InnerText);
-						continue;
-					case "audioSampleRate":
-						this._AudioSampleRate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "width":
-						this._Width = ParseInt(propertyNode.InnerText);
-						continue;
-					case "height":
-						this._Height = ParseInt(propertyNode.InnerText);
-						continue;
-					case "frameRate":
-						this._FrameRate = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "gopSize":
-						this._GopSize = ParseInt(propertyNode.InnerText);
-						continue;
-					case "conversionEngines":
-						this._ConversionEngines = propertyNode.InnerText;
-						continue;
-					case "conversionEnginesExtraParams":
-						this._ConversionEnginesExtraParams = propertyNode.InnerText;
-						continue;
-					case "twoPass":
-						this._TwoPass = ParseBool(propertyNode.InnerText);
-						continue;
-					case "deinterlice":
-						this._Deinterlice = ParseInt(propertyNode.InnerText);
-						continue;
-					case "rotate":
-						this._Rotate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "operators":
-						this._Operators = propertyNode.InnerText;
-						continue;
-					case "engineVersion":
-						this._EngineVersion = ParseInt(propertyNode.InnerText);
-						continue;
-					case "format":
-						this._Format = (ContainerFormat)StringEnum.Parse(typeof(ContainerFormat), propertyNode.InnerText);
-						continue;
-					case "aspectRatioProcessingMode":
-						this._AspectRatioProcessingMode = ParseInt(propertyNode.InnerText);
-						continue;
-					case "forceFrameToMultiplication16":
-						this._ForceFrameToMultiplication16 = ParseInt(propertyNode.InnerText);
-						continue;
-					case "isGopInSec":
-						this._IsGopInSec = ParseInt(propertyNode.InnerText);
-						continue;
-					case "isAvoidVideoShrinkFramesizeToSource":
-						this._IsAvoidVideoShrinkFramesizeToSource = ParseInt(propertyNode.InnerText);
-						continue;
-					case "isAvoidVideoShrinkBitrateToSource":
-						this._IsAvoidVideoShrinkBitrateToSource = ParseInt(propertyNode.InnerText);
-						continue;
-					case "isVideoFrameRateForLowBrAppleHls":
-						this._IsVideoFrameRateForLowBrAppleHls = ParseInt(propertyNode.InnerText);
-						continue;
-					case "multiStream":
-						this._MultiStream = propertyNode.InnerText;
-						continue;
-					case "anamorphicPixels":
-						this._AnamorphicPixels = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "isAvoidForcedKeyFrames":
-						this._IsAvoidForcedKeyFrames = ParseInt(propertyNode.InnerText);
-						continue;
-					case "forcedKeyFramesMode":
-						this._ForcedKeyFramesMode = ParseInt(propertyNode.InnerText);
-						continue;
-					case "isCropIMX":
-						this._IsCropIMX = ParseInt(propertyNode.InnerText);
-						continue;
-					case "optimizationPolicy":
-						this._OptimizationPolicy = ParseInt(propertyNode.InnerText);
-						continue;
-					case "maxFrameRate":
-						this._MaxFrameRate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "videoConstantBitrate":
-						this._VideoConstantBitrate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "videoBitrateTolerance":
-						this._VideoBitrateTolerance = ParseInt(propertyNode.InnerText);
-						continue;
-					case "watermarkData":
-						this._WatermarkData = propertyNode.InnerText;
-						continue;
-					case "subtitlesData":
-						this._SubtitlesData = propertyNode.InnerText;
-						continue;
-					case "isEncrypted":
-						this._IsEncrypted = ParseInt(propertyNode.InnerText);
-						continue;
-					case "contentAwareness":
-						this._ContentAwareness = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "chunkedEncodeMode":
-						this._ChunkedEncodeMode = ParseInt(propertyNode.InnerText);
-						continue;
-					case "clipOffset":
-						this._ClipOffset = ParseInt(propertyNode.InnerText);
-						continue;
-					case "clipDuration":
-						this._ClipDuration = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._VideoCodec = (VideoCodec)StringEnum.Parse(typeof(VideoCodec), node["videoCodec"].Value<string>());
 			}
-		}
-
-		public FlavorParams(IDictionary<string,object> data) : base(data)
-		{
-			    this._VideoCodec = (VideoCodec)StringEnum.Parse(typeof(VideoCodec), data.TryGetValueSafe<string>("videoCodec"));
-			    this._VideoBitrate = data.TryGetValueSafe<int>("videoBitrate");
-			    this._AudioCodec = (AudioCodec)StringEnum.Parse(typeof(AudioCodec), data.TryGetValueSafe<string>("audioCodec"));
-			    this._AudioBitrate = data.TryGetValueSafe<int>("audioBitrate");
-			    this._AudioChannels = data.TryGetValueSafe<int>("audioChannels");
-			    this._AudioSampleRate = data.TryGetValueSafe<int>("audioSampleRate");
-			    this._Width = data.TryGetValueSafe<int>("width");
-			    this._Height = data.TryGetValueSafe<int>("height");
-			    this._FrameRate = data.TryGetValueSafe<float>("frameRate");
-			    this._GopSize = data.TryGetValueSafe<int>("gopSize");
-			    this._ConversionEngines = data.TryGetValueSafe<string>("conversionEngines");
-			    this._ConversionEnginesExtraParams = data.TryGetValueSafe<string>("conversionEnginesExtraParams");
-			    this._TwoPass = data.TryGetValueSafe<bool>("twoPass");
-			    this._Deinterlice = data.TryGetValueSafe<int>("deinterlice");
-			    this._Rotate = data.TryGetValueSafe<int>("rotate");
-			    this._Operators = data.TryGetValueSafe<string>("operators");
-			    this._EngineVersion = data.TryGetValueSafe<int>("engineVersion");
-			    this._Format = (ContainerFormat)StringEnum.Parse(typeof(ContainerFormat), data.TryGetValueSafe<string>("format"));
-			    this._AspectRatioProcessingMode = data.TryGetValueSafe<int>("aspectRatioProcessingMode");
-			    this._ForceFrameToMultiplication16 = data.TryGetValueSafe<int>("forceFrameToMultiplication16");
-			    this._IsGopInSec = data.TryGetValueSafe<int>("isGopInSec");
-			    this._IsAvoidVideoShrinkFramesizeToSource = data.TryGetValueSafe<int>("isAvoidVideoShrinkFramesizeToSource");
-			    this._IsAvoidVideoShrinkBitrateToSource = data.TryGetValueSafe<int>("isAvoidVideoShrinkBitrateToSource");
-			    this._IsVideoFrameRateForLowBrAppleHls = data.TryGetValueSafe<int>("isVideoFrameRateForLowBrAppleHls");
-			    this._MultiStream = data.TryGetValueSafe<string>("multiStream");
-			    this._AnamorphicPixels = data.TryGetValueSafe<float>("anamorphicPixels");
-			    this._IsAvoidForcedKeyFrames = data.TryGetValueSafe<int>("isAvoidForcedKeyFrames");
-			    this._ForcedKeyFramesMode = data.TryGetValueSafe<int>("forcedKeyFramesMode");
-			    this._IsCropIMX = data.TryGetValueSafe<int>("isCropIMX");
-			    this._OptimizationPolicy = data.TryGetValueSafe<int>("optimizationPolicy");
-			    this._MaxFrameRate = data.TryGetValueSafe<int>("maxFrameRate");
-			    this._VideoConstantBitrate = data.TryGetValueSafe<int>("videoConstantBitrate");
-			    this._VideoBitrateTolerance = data.TryGetValueSafe<int>("videoBitrateTolerance");
-			    this._WatermarkData = data.TryGetValueSafe<string>("watermarkData");
-			    this._SubtitlesData = data.TryGetValueSafe<string>("subtitlesData");
-			    this._IsEncrypted = data.TryGetValueSafe<int>("isEncrypted");
-			    this._ContentAwareness = data.TryGetValueSafe<float>("contentAwareness");
-			    this._ChunkedEncodeMode = data.TryGetValueSafe<int>("chunkedEncodeMode");
-			    this._ClipOffset = data.TryGetValueSafe<int>("clipOffset");
-			    this._ClipDuration = data.TryGetValueSafe<int>("clipDuration");
+			if(node["videoBitrate"] != null)
+			{
+				this._VideoBitrate = ParseInt(node["videoBitrate"].Value<string>());
+			}
+			if(node["audioCodec"] != null)
+			{
+				this._AudioCodec = (AudioCodec)StringEnum.Parse(typeof(AudioCodec), node["audioCodec"].Value<string>());
+			}
+			if(node["audioBitrate"] != null)
+			{
+				this._AudioBitrate = ParseInt(node["audioBitrate"].Value<string>());
+			}
+			if(node["audioChannels"] != null)
+			{
+				this._AudioChannels = ParseInt(node["audioChannels"].Value<string>());
+			}
+			if(node["audioSampleRate"] != null)
+			{
+				this._AudioSampleRate = ParseInt(node["audioSampleRate"].Value<string>());
+			}
+			if(node["width"] != null)
+			{
+				this._Width = ParseInt(node["width"].Value<string>());
+			}
+			if(node["height"] != null)
+			{
+				this._Height = ParseInt(node["height"].Value<string>());
+			}
+			if(node["frameRate"] != null)
+			{
+				this._FrameRate = ParseFloat(node["frameRate"].Value<string>());
+			}
+			if(node["gopSize"] != null)
+			{
+				this._GopSize = ParseInt(node["gopSize"].Value<string>());
+			}
+			if(node["conversionEngines"] != null)
+			{
+				this._ConversionEngines = node["conversionEngines"].Value<string>();
+			}
+			if(node["conversionEnginesExtraParams"] != null)
+			{
+				this._ConversionEnginesExtraParams = node["conversionEnginesExtraParams"].Value<string>();
+			}
+			if(node["twoPass"] != null)
+			{
+				this._TwoPass = ParseBool(node["twoPass"].Value<string>());
+			}
+			if(node["deinterlice"] != null)
+			{
+				this._Deinterlice = ParseInt(node["deinterlice"].Value<string>());
+			}
+			if(node["rotate"] != null)
+			{
+				this._Rotate = ParseInt(node["rotate"].Value<string>());
+			}
+			if(node["operators"] != null)
+			{
+				this._Operators = node["operators"].Value<string>();
+			}
+			if(node["engineVersion"] != null)
+			{
+				this._EngineVersion = ParseInt(node["engineVersion"].Value<string>());
+			}
+			if(node["format"] != null)
+			{
+				this._Format = (ContainerFormat)StringEnum.Parse(typeof(ContainerFormat), node["format"].Value<string>());
+			}
+			if(node["aspectRatioProcessingMode"] != null)
+			{
+				this._AspectRatioProcessingMode = ParseInt(node["aspectRatioProcessingMode"].Value<string>());
+			}
+			if(node["forceFrameToMultiplication16"] != null)
+			{
+				this._ForceFrameToMultiplication16 = ParseInt(node["forceFrameToMultiplication16"].Value<string>());
+			}
+			if(node["isGopInSec"] != null)
+			{
+				this._IsGopInSec = ParseInt(node["isGopInSec"].Value<string>());
+			}
+			if(node["isAvoidVideoShrinkFramesizeToSource"] != null)
+			{
+				this._IsAvoidVideoShrinkFramesizeToSource = ParseInt(node["isAvoidVideoShrinkFramesizeToSource"].Value<string>());
+			}
+			if(node["isAvoidVideoShrinkBitrateToSource"] != null)
+			{
+				this._IsAvoidVideoShrinkBitrateToSource = ParseInt(node["isAvoidVideoShrinkBitrateToSource"].Value<string>());
+			}
+			if(node["isVideoFrameRateForLowBrAppleHls"] != null)
+			{
+				this._IsVideoFrameRateForLowBrAppleHls = ParseInt(node["isVideoFrameRateForLowBrAppleHls"].Value<string>());
+			}
+			if(node["multiStream"] != null)
+			{
+				this._MultiStream = node["multiStream"].Value<string>();
+			}
+			if(node["anamorphicPixels"] != null)
+			{
+				this._AnamorphicPixels = ParseFloat(node["anamorphicPixels"].Value<string>());
+			}
+			if(node["isAvoidForcedKeyFrames"] != null)
+			{
+				this._IsAvoidForcedKeyFrames = ParseInt(node["isAvoidForcedKeyFrames"].Value<string>());
+			}
+			if(node["forcedKeyFramesMode"] != null)
+			{
+				this._ForcedKeyFramesMode = ParseInt(node["forcedKeyFramesMode"].Value<string>());
+			}
+			if(node["isCropIMX"] != null)
+			{
+				this._IsCropIMX = ParseInt(node["isCropIMX"].Value<string>());
+			}
+			if(node["optimizationPolicy"] != null)
+			{
+				this._OptimizationPolicy = ParseInt(node["optimizationPolicy"].Value<string>());
+			}
+			if(node["maxFrameRate"] != null)
+			{
+				this._MaxFrameRate = ParseInt(node["maxFrameRate"].Value<string>());
+			}
+			if(node["videoConstantBitrate"] != null)
+			{
+				this._VideoConstantBitrate = ParseInt(node["videoConstantBitrate"].Value<string>());
+			}
+			if(node["videoBitrateTolerance"] != null)
+			{
+				this._VideoBitrateTolerance = ParseInt(node["videoBitrateTolerance"].Value<string>());
+			}
+			if(node["watermarkData"] != null)
+			{
+				this._WatermarkData = node["watermarkData"].Value<string>();
+			}
+			if(node["subtitlesData"] != null)
+			{
+				this._SubtitlesData = node["subtitlesData"].Value<string>();
+			}
+			if(node["isEncrypted"] != null)
+			{
+				this._IsEncrypted = ParseInt(node["isEncrypted"].Value<string>());
+			}
+			if(node["contentAwareness"] != null)
+			{
+				this._ContentAwareness = ParseFloat(node["contentAwareness"].Value<string>());
+			}
+			if(node["chunkedEncodeMode"] != null)
+			{
+				this._ChunkedEncodeMode = ParseInt(node["chunkedEncodeMode"].Value<string>());
+			}
+			if(node["clipOffset"] != null)
+			{
+				this._ClipOffset = ParseInt(node["clipOffset"].Value<string>());
+			}
+			if(node["clipDuration"] != null)
+			{
+				this._ClipDuration = ParseInt(node["clipDuration"].Value<string>());
+			}
 		}
 		#endregion
 

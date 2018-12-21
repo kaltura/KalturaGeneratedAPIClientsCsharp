@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -60,6 +62,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string UserId
 		{
 			get { return _UserId; }
@@ -69,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserId");
 			}
 		}
+		[JsonProperty]
 		public NotificationType Type
 		{
 			get { return _Type; }
@@ -78,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		[JsonProperty]
 		public string TypeAsString
 		{
 			get { return _TypeAsString; }
@@ -87,6 +92,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeAsString");
 			}
 		}
+		[JsonProperty]
 		public string ObjectId
 		{
 			get { return _ObjectId; }
@@ -96,6 +102,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectId");
 			}
 		}
+		[JsonProperty]
 		public NotificationStatus Status
 		{
 			get { return _Status; }
@@ -105,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		[JsonProperty]
 		public string Data
 		{
 			get { return _Data; }
@@ -114,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Data");
 			}
 		}
+		[JsonProperty]
 		public int NumberOfAttempts
 		{
 			get { return _NumberOfAttempts; }
@@ -123,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("NumberOfAttempts");
 			}
 		}
+		[JsonProperty]
 		public string NotificationResult
 		{
 			get { return _NotificationResult; }
@@ -132,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("NotificationResult");
 			}
 		}
+		[JsonProperty]
 		public NotificationObjectType ObjType
 		{
 			get { return _ObjType; }
@@ -148,54 +159,44 @@ namespace Kaltura.Types
 		{
 		}
 
-		public NotificationJobData(XmlElement node) : base(node)
+		public NotificationJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["userId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "userId":
-						this._UserId = propertyNode.InnerText;
-						continue;
-					case "type":
-						this._Type = (NotificationType)ParseEnum(typeof(NotificationType), propertyNode.InnerText);
-						continue;
-					case "typeAsString":
-						this._TypeAsString = propertyNode.InnerText;
-						continue;
-					case "objectId":
-						this._ObjectId = propertyNode.InnerText;
-						continue;
-					case "status":
-						this._Status = (NotificationStatus)ParseEnum(typeof(NotificationStatus), propertyNode.InnerText);
-						continue;
-					case "data":
-						this._Data = propertyNode.InnerText;
-						continue;
-					case "numberOfAttempts":
-						this._NumberOfAttempts = ParseInt(propertyNode.InnerText);
-						continue;
-					case "notificationResult":
-						this._NotificationResult = propertyNode.InnerText;
-						continue;
-					case "objType":
-						this._ObjType = (NotificationObjectType)ParseEnum(typeof(NotificationObjectType), propertyNode.InnerText);
-						continue;
-				}
+				this._UserId = node["userId"].Value<string>();
 			}
-		}
-
-		public NotificationJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._UserId = data.TryGetValueSafe<string>("userId");
-			    this._Type = (NotificationType)ParseEnum(typeof(NotificationType), data.TryGetValueSafe<int>("type"));
-			    this._TypeAsString = data.TryGetValueSafe<string>("typeAsString");
-			    this._ObjectId = data.TryGetValueSafe<string>("objectId");
-			    this._Status = (NotificationStatus)ParseEnum(typeof(NotificationStatus), data.TryGetValueSafe<int>("status"));
-			    this._Data = data.TryGetValueSafe<string>("data");
-			    this._NumberOfAttempts = data.TryGetValueSafe<int>("numberOfAttempts");
-			    this._NotificationResult = data.TryGetValueSafe<string>("notificationResult");
-			    this._ObjType = (NotificationObjectType)ParseEnum(typeof(NotificationObjectType), data.TryGetValueSafe<int>("objType"));
+			if(node["type"] != null)
+			{
+				this._Type = (NotificationType)ParseEnum(typeof(NotificationType), node["type"].Value<string>());
+			}
+			if(node["typeAsString"] != null)
+			{
+				this._TypeAsString = node["typeAsString"].Value<string>();
+			}
+			if(node["objectId"] != null)
+			{
+				this._ObjectId = node["objectId"].Value<string>();
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (NotificationStatus)ParseEnum(typeof(NotificationStatus), node["status"].Value<string>());
+			}
+			if(node["data"] != null)
+			{
+				this._Data = node["data"].Value<string>();
+			}
+			if(node["numberOfAttempts"] != null)
+			{
+				this._NumberOfAttempts = ParseInt(node["numberOfAttempts"].Value<string>());
+			}
+			if(node["notificationResult"] != null)
+			{
+				this._NotificationResult = node["notificationResult"].Value<string>();
+			}
+			if(node["objType"] != null)
+			{
+				this._ObjType = (NotificationObjectType)ParseEnum(typeof(NotificationObjectType), node["objType"].Value<string>());
+			}
 		}
 		#endregion
 

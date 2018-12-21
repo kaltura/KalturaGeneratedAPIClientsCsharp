@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,6 +58,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public ObjectBase Object
 		{
 			get { return _Object; }
@@ -65,6 +68,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Object");
 			}
 		}
+		[JsonProperty]
 		public EventNotificationEventObjectType EventObjectType
 		{
 			get { return _EventObjectType; }
@@ -74,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EventObjectType");
 			}
 		}
+		[JsonProperty]
 		public long EventNotificationJobId
 		{
 			get { return _EventNotificationJobId; }
@@ -83,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EventNotificationJobId");
 			}
 		}
+		[JsonProperty]
 		public int TemplateId
 		{
 			get { return _TemplateId; }
@@ -92,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplateId");
 			}
 		}
+		[JsonProperty]
 		public string TemplateName
 		{
 			get { return _TemplateName; }
@@ -101,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplateName");
 			}
 		}
+		[JsonProperty]
 		public string TemplateSystemName
 		{
 			get { return _TemplateSystemName; }
@@ -110,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplateSystemName");
 			}
 		}
+		[JsonProperty]
 		public EventNotificationEventType EventType
 		{
 			get { return _EventType; }
@@ -126,46 +135,36 @@ namespace Kaltura.Types
 		{
 		}
 
-		public HttpNotification(XmlElement node) : base(node)
+		public HttpNotification(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["object"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "object":
-						this._Object = ObjectFactory.Create<ObjectBase>(propertyNode);
-						continue;
-					case "eventObjectType":
-						this._EventObjectType = (EventNotificationEventObjectType)StringEnum.Parse(typeof(EventNotificationEventObjectType), propertyNode.InnerText);
-						continue;
-					case "eventNotificationJobId":
-						this._EventNotificationJobId = ParseLong(propertyNode.InnerText);
-						continue;
-					case "templateId":
-						this._TemplateId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "templateName":
-						this._TemplateName = propertyNode.InnerText;
-						continue;
-					case "templateSystemName":
-						this._TemplateSystemName = propertyNode.InnerText;
-						continue;
-					case "eventType":
-						this._EventType = (EventNotificationEventType)StringEnum.Parse(typeof(EventNotificationEventType), propertyNode.InnerText);
-						continue;
-				}
+				this._Object = ObjectFactory.Create<ObjectBase>(node["object"]);
 			}
-		}
-
-		public HttpNotification(IDictionary<string,object> data) : base(data)
-		{
-			    this._Object = ObjectFactory.Create<ObjectBase>(data.TryGetValueSafe<IDictionary<string,object>>("object"));
-			    this._EventObjectType = (EventNotificationEventObjectType)StringEnum.Parse(typeof(EventNotificationEventObjectType), data.TryGetValueSafe<string>("eventObjectType"));
-			    this._EventNotificationJobId = data.TryGetValueSafe<long>("eventNotificationJobId");
-			    this._TemplateId = data.TryGetValueSafe<int>("templateId");
-			    this._TemplateName = data.TryGetValueSafe<string>("templateName");
-			    this._TemplateSystemName = data.TryGetValueSafe<string>("templateSystemName");
-			    this._EventType = (EventNotificationEventType)StringEnum.Parse(typeof(EventNotificationEventType), data.TryGetValueSafe<string>("eventType"));
+			if(node["eventObjectType"] != null)
+			{
+				this._EventObjectType = (EventNotificationEventObjectType)StringEnum.Parse(typeof(EventNotificationEventObjectType), node["eventObjectType"].Value<string>());
+			}
+			if(node["eventNotificationJobId"] != null)
+			{
+				this._EventNotificationJobId = ParseLong(node["eventNotificationJobId"].Value<string>());
+			}
+			if(node["templateId"] != null)
+			{
+				this._TemplateId = ParseInt(node["templateId"].Value<string>());
+			}
+			if(node["templateName"] != null)
+			{
+				this._TemplateName = node["templateName"].Value<string>();
+			}
+			if(node["templateSystemName"] != null)
+			{
+				this._TemplateSystemName = node["templateSystemName"].Value<string>();
+			}
+			if(node["eventType"] != null)
+			{
+				this._EventType = (EventNotificationEventType)StringEnum.Parse(typeof(EventNotificationEventType), node["eventType"].Value<string>());
+			}
 		}
 		#endregion
 

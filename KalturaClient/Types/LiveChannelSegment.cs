@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -72,22 +74,47 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public long Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -97,6 +124,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -106,6 +134,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public string Tags
 		{
 			get { return _Tags; }
@@ -115,6 +144,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
+		[JsonProperty]
 		public LiveChannelSegmentType Type
 		{
 			get { return _Type; }
@@ -124,10 +154,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		[JsonProperty]
 		public LiveChannelSegmentStatus Status
 		{
 			get { return _Status; }
+			private set 
+			{ 
+				_Status = value;
+				OnPropertyChanged("Status");
+			}
 		}
+		[JsonProperty]
 		public string ChannelId
 		{
 			get { return _ChannelId; }
@@ -137,6 +174,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelId");
 			}
 		}
+		[JsonProperty]
 		public string EntryId
 		{
 			get { return _EntryId; }
@@ -146,6 +184,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		[JsonProperty]
 		public LiveChannelSegmentTriggerType TriggerType
 		{
 			get { return _TriggerType; }
@@ -155,6 +194,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TriggerType");
 			}
 		}
+		[JsonProperty]
 		public long TriggerSegmentId
 		{
 			get { return _TriggerSegmentId; }
@@ -164,6 +204,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TriggerSegmentId");
 			}
 		}
+		[JsonProperty]
 		public float StartTime
 		{
 			get { return _StartTime; }
@@ -173,6 +214,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartTime");
 			}
 		}
+		[JsonProperty]
 		public float Duration
 		{
 			get { return _Duration; }
@@ -189,78 +231,68 @@ namespace Kaltura.Types
 		{
 		}
 
-		public LiveChannelSegment(XmlElement node) : base(node)
+		public LiveChannelSegment(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = ParseLong(propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "tags":
-						this._Tags = propertyNode.InnerText;
-						continue;
-					case "type":
-						this._Type = (LiveChannelSegmentType)StringEnum.Parse(typeof(LiveChannelSegmentType), propertyNode.InnerText);
-						continue;
-					case "status":
-						this._Status = (LiveChannelSegmentStatus)StringEnum.Parse(typeof(LiveChannelSegmentStatus), propertyNode.InnerText);
-						continue;
-					case "channelId":
-						this._ChannelId = propertyNode.InnerText;
-						continue;
-					case "entryId":
-						this._EntryId = propertyNode.InnerText;
-						continue;
-					case "triggerType":
-						this._TriggerType = (LiveChannelSegmentTriggerType)StringEnum.Parse(typeof(LiveChannelSegmentTriggerType), propertyNode.InnerText);
-						continue;
-					case "triggerSegmentId":
-						this._TriggerSegmentId = ParseLong(propertyNode.InnerText);
-						continue;
-					case "startTime":
-						this._StartTime = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "duration":
-						this._Duration = ParseFloat(propertyNode.InnerText);
-						continue;
-				}
+				this._Id = ParseLong(node["id"].Value<string>());
 			}
-		}
-
-		public LiveChannelSegment(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<long>("id");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._Name = data.TryGetValueSafe<string>("name");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._Tags = data.TryGetValueSafe<string>("tags");
-			    this._Type = (LiveChannelSegmentType)StringEnum.Parse(typeof(LiveChannelSegmentType), data.TryGetValueSafe<string>("type"));
-			    this._Status = (LiveChannelSegmentStatus)StringEnum.Parse(typeof(LiveChannelSegmentStatus), data.TryGetValueSafe<string>("status"));
-			    this._ChannelId = data.TryGetValueSafe<string>("channelId");
-			    this._EntryId = data.TryGetValueSafe<string>("entryId");
-			    this._TriggerType = (LiveChannelSegmentTriggerType)StringEnum.Parse(typeof(LiveChannelSegmentTriggerType), data.TryGetValueSafe<string>("triggerType"));
-			    this._TriggerSegmentId = data.TryGetValueSafe<long>("triggerSegmentId");
-			    this._StartTime = data.TryGetValueSafe<float>("startTime");
-			    this._Duration = data.TryGetValueSafe<float>("duration");
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["name"] != null)
+			{
+				this._Name = node["name"].Value<string>();
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["tags"] != null)
+			{
+				this._Tags = node["tags"].Value<string>();
+			}
+			if(node["type"] != null)
+			{
+				this._Type = (LiveChannelSegmentType)StringEnum.Parse(typeof(LiveChannelSegmentType), node["type"].Value<string>());
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (LiveChannelSegmentStatus)StringEnum.Parse(typeof(LiveChannelSegmentStatus), node["status"].Value<string>());
+			}
+			if(node["channelId"] != null)
+			{
+				this._ChannelId = node["channelId"].Value<string>();
+			}
+			if(node["entryId"] != null)
+			{
+				this._EntryId = node["entryId"].Value<string>();
+			}
+			if(node["triggerType"] != null)
+			{
+				this._TriggerType = (LiveChannelSegmentTriggerType)StringEnum.Parse(typeof(LiveChannelSegmentTriggerType), node["triggerType"].Value<string>());
+			}
+			if(node["triggerSegmentId"] != null)
+			{
+				this._TriggerSegmentId = ParseLong(node["triggerSegmentId"].Value<string>());
+			}
+			if(node["startTime"] != null)
+			{
+				this._StartTime = ParseFloat(node["startTime"].Value<string>());
+			}
+			if(node["duration"] != null)
+			{
+				this._Duration = ParseFloat(node["duration"].Value<string>());
+			}
 		}
 		#endregion
 

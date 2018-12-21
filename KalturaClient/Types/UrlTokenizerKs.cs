@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public bool? UsePath
 		{
 			get { return _UsePath; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UsePath");
 			}
 		}
+		[JsonProperty]
 		public string AdditionalUris
 		{
 			get { return _AdditionalUris; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UrlTokenizerKs(XmlElement node) : base(node)
+		public UrlTokenizerKs(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["usePath"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "usePath":
-						this._UsePath = ParseBool(propertyNode.InnerText);
-						continue;
-					case "additionalUris":
-						this._AdditionalUris = propertyNode.InnerText;
-						continue;
-				}
+				this._UsePath = ParseBool(node["usePath"].Value<string>());
 			}
-		}
-
-		public UrlTokenizerKs(IDictionary<string,object> data) : base(data)
-		{
-			    this._UsePath = data.TryGetValueSafe<bool>("usePath");
-			    this._AdditionalUris = data.TryGetValueSafe<string>("additionalUris");
+			if(node["additionalUris"] != null)
+			{
+				this._AdditionalUris = node["additionalUris"].Value<string>();
+			}
 		}
 		#endregion
 

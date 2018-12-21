@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -68,14 +70,27 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int ConversionProfileId
 		{
 			get { return _ConversionProfileId; }
+			private set 
+			{ 
+				_ConversionProfileId = value;
+				OnPropertyChanged("ConversionProfileId");
+			}
 		}
+		[JsonProperty]
 		public int AssetParamsId
 		{
 			get { return _AssetParamsId; }
+			private set 
+			{ 
+				_AssetParamsId = value;
+				OnPropertyChanged("AssetParamsId");
+			}
 		}
+		[JsonProperty]
 		public FlavorReadyBehaviorType ReadyBehavior
 		{
 			get { return _ReadyBehavior; }
@@ -85,6 +100,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReadyBehavior");
 			}
 		}
+		[JsonProperty]
 		public AssetParamsOrigin Origin
 		{
 			get { return _Origin; }
@@ -94,6 +110,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Origin");
 			}
 		}
+		[JsonProperty]
 		public string SystemName
 		{
 			get { return _SystemName; }
@@ -103,6 +120,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemName");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean ForceNoneComplied
 		{
 			get { return _ForceNoneComplied; }
@@ -112,6 +130,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ForceNoneComplied");
 			}
 		}
+		[JsonProperty]
 		public AssetParamsDeletePolicy DeletePolicy
 		{
 			get { return _DeletePolicy; }
@@ -121,6 +140,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeletePolicy");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean IsEncrypted
 		{
 			get { return _IsEncrypted; }
@@ -130,6 +150,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsEncrypted");
 			}
 		}
+		[JsonProperty]
 		public float ContentAwareness
 		{
 			get { return _ContentAwareness; }
@@ -139,6 +160,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentAwareness");
 			}
 		}
+		[JsonProperty]
 		public int ChunkedEncodeMode
 		{
 			get { return _ChunkedEncodeMode; }
@@ -148,6 +170,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChunkedEncodeMode");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean TwoPass
 		{
 			get { return _TwoPass; }
@@ -157,6 +180,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TwoPass");
 			}
 		}
+		[JsonProperty]
 		public string Tags
 		{
 			get { return _Tags; }
@@ -166,6 +190,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
+		[JsonProperty]
 		public string OverloadParams
 		{
 			get { return _OverloadParams; }
@@ -182,70 +207,60 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ConversionProfileAssetParams(XmlElement node) : base(node)
+		public ConversionProfileAssetParams(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["conversionProfileId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "conversionProfileId":
-						this._ConversionProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "assetParamsId":
-						this._AssetParamsId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "readyBehavior":
-						this._ReadyBehavior = (FlavorReadyBehaviorType)ParseEnum(typeof(FlavorReadyBehaviorType), propertyNode.InnerText);
-						continue;
-					case "origin":
-						this._Origin = (AssetParamsOrigin)ParseEnum(typeof(AssetParamsOrigin), propertyNode.InnerText);
-						continue;
-					case "systemName":
-						this._SystemName = propertyNode.InnerText;
-						continue;
-					case "forceNoneComplied":
-						this._ForceNoneComplied = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "deletePolicy":
-						this._DeletePolicy = (AssetParamsDeletePolicy)ParseEnum(typeof(AssetParamsDeletePolicy), propertyNode.InnerText);
-						continue;
-					case "isEncrypted":
-						this._IsEncrypted = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "contentAwareness":
-						this._ContentAwareness = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "chunkedEncodeMode":
-						this._ChunkedEncodeMode = ParseInt(propertyNode.InnerText);
-						continue;
-					case "twoPass":
-						this._TwoPass = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "tags":
-						this._Tags = propertyNode.InnerText;
-						continue;
-					case "overloadParams":
-						this._OverloadParams = propertyNode.InnerText;
-						continue;
-				}
+				this._ConversionProfileId = ParseInt(node["conversionProfileId"].Value<string>());
 			}
-		}
-
-		public ConversionProfileAssetParams(IDictionary<string,object> data) : base(data)
-		{
-			    this._ConversionProfileId = data.TryGetValueSafe<int>("conversionProfileId");
-			    this._AssetParamsId = data.TryGetValueSafe<int>("assetParamsId");
-			    this._ReadyBehavior = (FlavorReadyBehaviorType)ParseEnum(typeof(FlavorReadyBehaviorType), data.TryGetValueSafe<int>("readyBehavior"));
-			    this._Origin = (AssetParamsOrigin)ParseEnum(typeof(AssetParamsOrigin), data.TryGetValueSafe<int>("origin"));
-			    this._SystemName = data.TryGetValueSafe<string>("systemName");
-			    this._ForceNoneComplied = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("forceNoneComplied"));
-			    this._DeletePolicy = (AssetParamsDeletePolicy)ParseEnum(typeof(AssetParamsDeletePolicy), data.TryGetValueSafe<int>("deletePolicy"));
-			    this._IsEncrypted = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isEncrypted"));
-			    this._ContentAwareness = data.TryGetValueSafe<float>("contentAwareness");
-			    this._ChunkedEncodeMode = data.TryGetValueSafe<int>("chunkedEncodeMode");
-			    this._TwoPass = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("twoPass"));
-			    this._Tags = data.TryGetValueSafe<string>("tags");
-			    this._OverloadParams = data.TryGetValueSafe<string>("overloadParams");
+			if(node["assetParamsId"] != null)
+			{
+				this._AssetParamsId = ParseInt(node["assetParamsId"].Value<string>());
+			}
+			if(node["readyBehavior"] != null)
+			{
+				this._ReadyBehavior = (FlavorReadyBehaviorType)ParseEnum(typeof(FlavorReadyBehaviorType), node["readyBehavior"].Value<string>());
+			}
+			if(node["origin"] != null)
+			{
+				this._Origin = (AssetParamsOrigin)ParseEnum(typeof(AssetParamsOrigin), node["origin"].Value<string>());
+			}
+			if(node["systemName"] != null)
+			{
+				this._SystemName = node["systemName"].Value<string>();
+			}
+			if(node["forceNoneComplied"] != null)
+			{
+				this._ForceNoneComplied = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["forceNoneComplied"].Value<string>());
+			}
+			if(node["deletePolicy"] != null)
+			{
+				this._DeletePolicy = (AssetParamsDeletePolicy)ParseEnum(typeof(AssetParamsDeletePolicy), node["deletePolicy"].Value<string>());
+			}
+			if(node["isEncrypted"] != null)
+			{
+				this._IsEncrypted = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["isEncrypted"].Value<string>());
+			}
+			if(node["contentAwareness"] != null)
+			{
+				this._ContentAwareness = ParseFloat(node["contentAwareness"].Value<string>());
+			}
+			if(node["chunkedEncodeMode"] != null)
+			{
+				this._ChunkedEncodeMode = ParseInt(node["chunkedEncodeMode"].Value<string>());
+			}
+			if(node["twoPass"] != null)
+			{
+				this._TwoPass = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["twoPass"].Value<string>());
+			}
+			if(node["tags"] != null)
+			{
+				this._Tags = node["tags"].Value<string>();
+			}
+			if(node["overloadParams"] != null)
+			{
+				this._OverloadParams = node["overloadParams"].Value<string>();
+			}
 		}
 		#endregion
 

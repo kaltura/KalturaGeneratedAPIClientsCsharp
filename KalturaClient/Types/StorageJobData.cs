@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -64,6 +66,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ServerUrl
 		{
 			get { return _ServerUrl; }
@@ -73,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerUrl");
 			}
 		}
+		[JsonProperty]
 		public string ServerUsername
 		{
 			get { return _ServerUsername; }
@@ -82,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerUsername");
 			}
 		}
+		[JsonProperty]
 		public string ServerPassword
 		{
 			get { return _ServerPassword; }
@@ -91,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerPassword");
 			}
 		}
+		[JsonProperty]
 		public string ServerPrivateKey
 		{
 			get { return _ServerPrivateKey; }
@@ -100,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerPrivateKey");
 			}
 		}
+		[JsonProperty]
 		public string ServerPublicKey
 		{
 			get { return _ServerPublicKey; }
@@ -109,6 +116,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerPublicKey");
 			}
 		}
+		[JsonProperty]
 		public string ServerPassPhrase
 		{
 			get { return _ServerPassPhrase; }
@@ -118,6 +126,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerPassPhrase");
 			}
 		}
+		[JsonProperty]
 		public bool? FtpPassiveMode
 		{
 			get { return _FtpPassiveMode; }
@@ -127,6 +136,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FtpPassiveMode");
 			}
 		}
+		[JsonProperty]
 		public string SrcFileSyncLocalPath
 		{
 			get { return _SrcFileSyncLocalPath; }
@@ -136,6 +146,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcFileSyncLocalPath");
 			}
 		}
+		[JsonProperty]
 		public string SrcFileEncryptionKey
 		{
 			get { return _SrcFileEncryptionKey; }
@@ -145,6 +156,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcFileEncryptionKey");
 			}
 		}
+		[JsonProperty]
 		public string SrcFileSyncId
 		{
 			get { return _SrcFileSyncId; }
@@ -154,6 +166,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcFileSyncId");
 			}
 		}
+		[JsonProperty]
 		public string DestFileSyncStoredPath
 		{
 			get { return _DestFileSyncStoredPath; }
@@ -170,62 +183,52 @@ namespace Kaltura.Types
 		{
 		}
 
-		public StorageJobData(XmlElement node) : base(node)
+		public StorageJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["serverUrl"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "serverUrl":
-						this._ServerUrl = propertyNode.InnerText;
-						continue;
-					case "serverUsername":
-						this._ServerUsername = propertyNode.InnerText;
-						continue;
-					case "serverPassword":
-						this._ServerPassword = propertyNode.InnerText;
-						continue;
-					case "serverPrivateKey":
-						this._ServerPrivateKey = propertyNode.InnerText;
-						continue;
-					case "serverPublicKey":
-						this._ServerPublicKey = propertyNode.InnerText;
-						continue;
-					case "serverPassPhrase":
-						this._ServerPassPhrase = propertyNode.InnerText;
-						continue;
-					case "ftpPassiveMode":
-						this._FtpPassiveMode = ParseBool(propertyNode.InnerText);
-						continue;
-					case "srcFileSyncLocalPath":
-						this._SrcFileSyncLocalPath = propertyNode.InnerText;
-						continue;
-					case "srcFileEncryptionKey":
-						this._SrcFileEncryptionKey = propertyNode.InnerText;
-						continue;
-					case "srcFileSyncId":
-						this._SrcFileSyncId = propertyNode.InnerText;
-						continue;
-					case "destFileSyncStoredPath":
-						this._DestFileSyncStoredPath = propertyNode.InnerText;
-						continue;
-				}
+				this._ServerUrl = node["serverUrl"].Value<string>();
 			}
-		}
-
-		public StorageJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._ServerUrl = data.TryGetValueSafe<string>("serverUrl");
-			    this._ServerUsername = data.TryGetValueSafe<string>("serverUsername");
-			    this._ServerPassword = data.TryGetValueSafe<string>("serverPassword");
-			    this._ServerPrivateKey = data.TryGetValueSafe<string>("serverPrivateKey");
-			    this._ServerPublicKey = data.TryGetValueSafe<string>("serverPublicKey");
-			    this._ServerPassPhrase = data.TryGetValueSafe<string>("serverPassPhrase");
-			    this._FtpPassiveMode = data.TryGetValueSafe<bool>("ftpPassiveMode");
-			    this._SrcFileSyncLocalPath = data.TryGetValueSafe<string>("srcFileSyncLocalPath");
-			    this._SrcFileEncryptionKey = data.TryGetValueSafe<string>("srcFileEncryptionKey");
-			    this._SrcFileSyncId = data.TryGetValueSafe<string>("srcFileSyncId");
-			    this._DestFileSyncStoredPath = data.TryGetValueSafe<string>("destFileSyncStoredPath");
+			if(node["serverUsername"] != null)
+			{
+				this._ServerUsername = node["serverUsername"].Value<string>();
+			}
+			if(node["serverPassword"] != null)
+			{
+				this._ServerPassword = node["serverPassword"].Value<string>();
+			}
+			if(node["serverPrivateKey"] != null)
+			{
+				this._ServerPrivateKey = node["serverPrivateKey"].Value<string>();
+			}
+			if(node["serverPublicKey"] != null)
+			{
+				this._ServerPublicKey = node["serverPublicKey"].Value<string>();
+			}
+			if(node["serverPassPhrase"] != null)
+			{
+				this._ServerPassPhrase = node["serverPassPhrase"].Value<string>();
+			}
+			if(node["ftpPassiveMode"] != null)
+			{
+				this._FtpPassiveMode = ParseBool(node["ftpPassiveMode"].Value<string>());
+			}
+			if(node["srcFileSyncLocalPath"] != null)
+			{
+				this._SrcFileSyncLocalPath = node["srcFileSyncLocalPath"].Value<string>();
+			}
+			if(node["srcFileEncryptionKey"] != null)
+			{
+				this._SrcFileEncryptionKey = node["srcFileEncryptionKey"].Value<string>();
+			}
+			if(node["srcFileSyncId"] != null)
+			{
+				this._SrcFileSyncId = node["srcFileSyncId"].Value<string>();
+			}
+			if(node["destFileSyncStoredPath"] != null)
+			{
+				this._DestFileSyncStoredPath = node["destFileSyncStoredPath"].Value<string>();
+			}
 		}
 		#endregion
 

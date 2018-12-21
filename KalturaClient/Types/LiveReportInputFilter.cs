@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,6 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string EntryIds
 		{
 			get { return _EntryIds; }
@@ -61,6 +64,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIds");
 			}
 		}
+		[JsonProperty]
 		public int FromTime
 		{
 			get { return _FromTime; }
@@ -70,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FromTime");
 			}
 		}
+		[JsonProperty]
 		public int ToTime
 		{
 			get { return _ToTime; }
@@ -79,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ToTime");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean Live
 		{
 			get { return _Live; }
@@ -88,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Live");
 			}
 		}
+		[JsonProperty]
 		public LiveReportOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -104,38 +111,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public LiveReportInputFilter(XmlElement node) : base(node)
+		public LiveReportInputFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["entryIds"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "entryIds":
-						this._EntryIds = propertyNode.InnerText;
-						continue;
-					case "fromTime":
-						this._FromTime = ParseInt(propertyNode.InnerText);
-						continue;
-					case "toTime":
-						this._ToTime = ParseInt(propertyNode.InnerText);
-						continue;
-					case "live":
-						this._Live = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "orderBy":
-						this._OrderBy = (LiveReportOrderBy)StringEnum.Parse(typeof(LiveReportOrderBy), propertyNode.InnerText);
-						continue;
-				}
+				this._EntryIds = node["entryIds"].Value<string>();
 			}
-		}
-
-		public LiveReportInputFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._EntryIds = data.TryGetValueSafe<string>("entryIds");
-			    this._FromTime = data.TryGetValueSafe<int>("fromTime");
-			    this._ToTime = data.TryGetValueSafe<int>("toTime");
-			    this._Live = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("live"));
-			    this._OrderBy = (LiveReportOrderBy)StringEnum.Parse(typeof(LiveReportOrderBy), data.TryGetValueSafe<string>("orderBy"));
+			if(node["fromTime"] != null)
+			{
+				this._FromTime = ParseInt(node["fromTime"].Value<string>());
+			}
+			if(node["toTime"] != null)
+			{
+				this._ToTime = ParseInt(node["toTime"].Value<string>());
+			}
+			if(node["live"] != null)
+			{
+				this._Live = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["live"].Value<string>());
+			}
+			if(node["orderBy"] != null)
+			{
+				this._OrderBy = (LiveReportOrderBy)StringEnum.Parse(typeof(LiveReportOrderBy), node["orderBy"].Value<string>());
+			}
 		}
 		#endregion
 

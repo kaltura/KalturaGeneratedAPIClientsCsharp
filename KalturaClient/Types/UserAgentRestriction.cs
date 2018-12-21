@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public UserAgentRestrictionType UserAgentRestrictionType
 		{
 			get { return _UserAgentRestrictionType; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserAgentRestrictionType");
 			}
 		}
+		[JsonProperty]
 		public string UserAgentRegexList
 		{
 			get { return _UserAgentRegexList; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UserAgentRestriction(XmlElement node) : base(node)
+		public UserAgentRestriction(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["userAgentRestrictionType"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "userAgentRestrictionType":
-						this._UserAgentRestrictionType = (UserAgentRestrictionType)ParseEnum(typeof(UserAgentRestrictionType), propertyNode.InnerText);
-						continue;
-					case "userAgentRegexList":
-						this._UserAgentRegexList = propertyNode.InnerText;
-						continue;
-				}
+				this._UserAgentRestrictionType = (UserAgentRestrictionType)ParseEnum(typeof(UserAgentRestrictionType), node["userAgentRestrictionType"].Value<string>());
 			}
-		}
-
-		public UserAgentRestriction(IDictionary<string,object> data) : base(data)
-		{
-			    this._UserAgentRestrictionType = (UserAgentRestrictionType)ParseEnum(typeof(UserAgentRestrictionType), data.TryGetValueSafe<int>("userAgentRestrictionType"));
-			    this._UserAgentRegexList = data.TryGetValueSafe<string>("userAgentRegexList");
+			if(node["userAgentRegexList"] != null)
+			{
+				this._UserAgentRegexList = node["userAgentRegexList"].Value<string>();
+			}
 		}
 		#endregion
 

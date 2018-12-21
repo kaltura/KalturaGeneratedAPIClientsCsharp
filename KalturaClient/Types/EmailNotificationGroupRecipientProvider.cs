@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string GroupId
 		{
 			get { return _GroupId; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EmailNotificationGroupRecipientProvider(XmlElement node) : base(node)
+		public EmailNotificationGroupRecipientProvider(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["groupId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "groupId":
-						this._GroupId = propertyNode.InnerText;
-						continue;
-				}
+				this._GroupId = node["groupId"].Value<string>();
 			}
-		}
-
-		public EmailNotificationGroupRecipientProvider(IDictionary<string,object> data) : base(data)
-		{
-			    this._GroupId = data.TryGetValueSafe<string>("groupId");
 		}
 		#endregion
 

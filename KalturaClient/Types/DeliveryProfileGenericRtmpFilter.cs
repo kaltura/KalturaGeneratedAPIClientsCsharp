@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public new DeliveryProfileGenericRtmpOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DeliveryProfileGenericRtmpFilter(XmlElement node) : base(node)
+		public DeliveryProfileGenericRtmpFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["orderBy"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "orderBy":
-						this._OrderBy = (DeliveryProfileGenericRtmpOrderBy)StringEnum.Parse(typeof(DeliveryProfileGenericRtmpOrderBy), propertyNode.InnerText);
-						continue;
-				}
+				this._OrderBy = (DeliveryProfileGenericRtmpOrderBy)StringEnum.Parse(typeof(DeliveryProfileGenericRtmpOrderBy), node["orderBy"].Value<string>());
 			}
-		}
-
-		public DeliveryProfileGenericRtmpFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._OrderBy = (DeliveryProfileGenericRtmpOrderBy)StringEnum.Parse(typeof(DeliveryProfileGenericRtmpOrderBy), data.TryGetValueSafe<string>("orderBy"));
 		}
 		#endregion
 

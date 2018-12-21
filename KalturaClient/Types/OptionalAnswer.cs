@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Key
 		{
 			get { return _Key; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Key");
 			}
 		}
+		[JsonProperty]
 		public string Text
 		{
 			get { return _Text; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Text");
 			}
 		}
+		[JsonProperty]
 		public float Weight
 		{
 			get { return _Weight; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Weight");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean IsCorrect
 		{
 			get { return _IsCorrect; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public OptionalAnswer(XmlElement node) : base(node)
+		public OptionalAnswer(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["key"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "key":
-						this._Key = propertyNode.InnerText;
-						continue;
-					case "text":
-						this._Text = propertyNode.InnerText;
-						continue;
-					case "weight":
-						this._Weight = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "isCorrect":
-						this._IsCorrect = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-				}
+				this._Key = node["key"].Value<string>();
 			}
-		}
-
-		public OptionalAnswer(IDictionary<string,object> data) : base(data)
-		{
-			    this._Key = data.TryGetValueSafe<string>("key");
-			    this._Text = data.TryGetValueSafe<string>("text");
-			    this._Weight = data.TryGetValueSafe<float>("weight");
-			    this._IsCorrect = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isCorrect"));
+			if(node["text"] != null)
+			{
+				this._Text = node["text"].Value<string>();
+			}
+			if(node["weight"] != null)
+			{
+				this._Weight = ParseFloat(node["weight"].Value<string>());
+			}
+			if(node["isCorrect"] != null)
+			{
+				this._IsCorrect = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["isCorrect"].Value<string>());
+			}
 		}
 		#endregion
 

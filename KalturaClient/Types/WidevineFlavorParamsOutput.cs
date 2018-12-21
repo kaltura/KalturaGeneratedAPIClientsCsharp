@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int WidevineDistributionStartDate
 		{
 			get { return _WidevineDistributionStartDate; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WidevineDistributionStartDate");
 			}
 		}
+		[JsonProperty]
 		public int WidevineDistributionEndDate
 		{
 			get { return _WidevineDistributionEndDate; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public WidevineFlavorParamsOutput(XmlElement node) : base(node)
+		public WidevineFlavorParamsOutput(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["widevineDistributionStartDate"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "widevineDistributionStartDate":
-						this._WidevineDistributionStartDate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "widevineDistributionEndDate":
-						this._WidevineDistributionEndDate = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._WidevineDistributionStartDate = ParseInt(node["widevineDistributionStartDate"].Value<string>());
 			}
-		}
-
-		public WidevineFlavorParamsOutput(IDictionary<string,object> data) : base(data)
-		{
-			    this._WidevineDistributionStartDate = data.TryGetValueSafe<int>("widevineDistributionStartDate");
-			    this._WidevineDistributionEndDate = data.TryGetValueSafe<int>("widevineDistributionEndDate");
+			if(node["widevineDistributionEndDate"] != null)
+			{
+				this._WidevineDistributionEndDate = ParseInt(node["widevineDistributionEndDate"].Value<string>());
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -90,14 +92,27 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public int DropFolderId
 		{
 			get { return _DropFolderId; }
@@ -107,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DropFolderId");
 			}
 		}
+		[JsonProperty]
 		public string FileName
 		{
 			get { return _FileName; }
@@ -116,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileName");
 			}
 		}
+		[JsonProperty]
 		public float FileSize
 		{
 			get { return _FileSize; }
@@ -125,18 +142,37 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileSize");
 			}
 		}
+		[JsonProperty]
 		public int FileSizeLastSetAt
 		{
 			get { return _FileSizeLastSetAt; }
+			private set 
+			{ 
+				_FileSizeLastSetAt = value;
+				OnPropertyChanged("FileSizeLastSetAt");
+			}
 		}
+		[JsonProperty]
 		public DropFolderFileStatus Status
 		{
 			get { return _Status; }
+			private set 
+			{ 
+				_Status = value;
+				OnPropertyChanged("Status");
+			}
 		}
+		[JsonProperty]
 		public DropFolderType Type
 		{
 			get { return _Type; }
+			private set 
+			{ 
+				_Type = value;
+				OnPropertyChanged("Type");
+			}
 		}
+		[JsonProperty]
 		public string ParsedSlug
 		{
 			get { return _ParsedSlug; }
@@ -146,6 +182,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParsedSlug");
 			}
 		}
+		[JsonProperty]
 		public string ParsedFlavor
 		{
 			get { return _ParsedFlavor; }
@@ -155,6 +192,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParsedFlavor");
 			}
 		}
+		[JsonProperty]
 		public string ParsedUserId
 		{
 			get { return _ParsedUserId; }
@@ -164,6 +202,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParsedUserId");
 			}
 		}
+		[JsonProperty]
 		public int LeadDropFolderFileId
 		{
 			get { return _LeadDropFolderFileId; }
@@ -173,6 +212,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LeadDropFolderFileId");
 			}
 		}
+		[JsonProperty]
 		public int DeletedDropFolderFileId
 		{
 			get { return _DeletedDropFolderFileId; }
@@ -182,6 +222,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeletedDropFolderFileId");
 			}
 		}
+		[JsonProperty]
 		public string EntryId
 		{
 			get { return _EntryId; }
@@ -191,6 +232,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		[JsonProperty]
 		public DropFolderFileErrorCode ErrorCode
 		{
 			get { return _ErrorCode; }
@@ -200,6 +242,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrorCode");
 			}
 		}
+		[JsonProperty]
 		public string ErrorDescription
 		{
 			get { return _ErrorDescription; }
@@ -209,6 +252,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrorDescription");
 			}
 		}
+		[JsonProperty]
 		public string LastModificationTime
 		{
 			get { return _LastModificationTime; }
@@ -218,14 +262,27 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastModificationTime");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UploadStartDetectedAt
 		{
 			get { return _UploadStartDetectedAt; }
@@ -235,6 +292,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UploadStartDetectedAt");
 			}
 		}
+		[JsonProperty]
 		public int UploadEndDetectedAt
 		{
 			get { return _UploadEndDetectedAt; }
@@ -244,6 +302,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UploadEndDetectedAt");
 			}
 		}
+		[JsonProperty]
 		public int ImportStartedAt
 		{
 			get { return _ImportStartedAt; }
@@ -253,6 +312,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ImportStartedAt");
 			}
 		}
+		[JsonProperty]
 		public int ImportEndedAt
 		{
 			get { return _ImportEndedAt; }
@@ -262,9 +322,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("ImportEndedAt");
 			}
 		}
+		[JsonProperty]
 		public int BatchJobId
 		{
 			get { return _BatchJobId; }
+			private set 
+			{ 
+				_BatchJobId = value;
+				OnPropertyChanged("BatchJobId");
+			}
 		}
 		#endregion
 
@@ -273,114 +339,104 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DropFolderFile(XmlElement node) : base(node)
+		public DropFolderFile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "dropFolderId":
-						this._DropFolderId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "fileName":
-						this._FileName = propertyNode.InnerText;
-						continue;
-					case "fileSize":
-						this._FileSize = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "fileSizeLastSetAt":
-						this._FileSizeLastSetAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "status":
-						this._Status = (DropFolderFileStatus)ParseEnum(typeof(DropFolderFileStatus), propertyNode.InnerText);
-						continue;
-					case "type":
-						this._Type = (DropFolderType)StringEnum.Parse(typeof(DropFolderType), propertyNode.InnerText);
-						continue;
-					case "parsedSlug":
-						this._ParsedSlug = propertyNode.InnerText;
-						continue;
-					case "parsedFlavor":
-						this._ParsedFlavor = propertyNode.InnerText;
-						continue;
-					case "parsedUserId":
-						this._ParsedUserId = propertyNode.InnerText;
-						continue;
-					case "leadDropFolderFileId":
-						this._LeadDropFolderFileId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "deletedDropFolderFileId":
-						this._DeletedDropFolderFileId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "entryId":
-						this._EntryId = propertyNode.InnerText;
-						continue;
-					case "errorCode":
-						this._ErrorCode = (DropFolderFileErrorCode)StringEnum.Parse(typeof(DropFolderFileErrorCode), propertyNode.InnerText);
-						continue;
-					case "errorDescription":
-						this._ErrorDescription = propertyNode.InnerText;
-						continue;
-					case "lastModificationTime":
-						this._LastModificationTime = propertyNode.InnerText;
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "uploadStartDetectedAt":
-						this._UploadStartDetectedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "uploadEndDetectedAt":
-						this._UploadEndDetectedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "importStartedAt":
-						this._ImportStartedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "importEndedAt":
-						this._ImportEndedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "batchJobId":
-						this._BatchJobId = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._Id = ParseInt(node["id"].Value<string>());
 			}
-		}
-
-		public DropFolderFile(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._DropFolderId = data.TryGetValueSafe<int>("dropFolderId");
-			    this._FileName = data.TryGetValueSafe<string>("fileName");
-			    this._FileSize = data.TryGetValueSafe<float>("fileSize");
-			    this._FileSizeLastSetAt = data.TryGetValueSafe<int>("fileSizeLastSetAt");
-			    this._Status = (DropFolderFileStatus)ParseEnum(typeof(DropFolderFileStatus), data.TryGetValueSafe<int>("status"));
-			    this._Type = (DropFolderType)StringEnum.Parse(typeof(DropFolderType), data.TryGetValueSafe<string>("type"));
-			    this._ParsedSlug = data.TryGetValueSafe<string>("parsedSlug");
-			    this._ParsedFlavor = data.TryGetValueSafe<string>("parsedFlavor");
-			    this._ParsedUserId = data.TryGetValueSafe<string>("parsedUserId");
-			    this._LeadDropFolderFileId = data.TryGetValueSafe<int>("leadDropFolderFileId");
-			    this._DeletedDropFolderFileId = data.TryGetValueSafe<int>("deletedDropFolderFileId");
-			    this._EntryId = data.TryGetValueSafe<string>("entryId");
-			    this._ErrorCode = (DropFolderFileErrorCode)StringEnum.Parse(typeof(DropFolderFileErrorCode), data.TryGetValueSafe<string>("errorCode"));
-			    this._ErrorDescription = data.TryGetValueSafe<string>("errorDescription");
-			    this._LastModificationTime = data.TryGetValueSafe<string>("lastModificationTime");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._UploadStartDetectedAt = data.TryGetValueSafe<int>("uploadStartDetectedAt");
-			    this._UploadEndDetectedAt = data.TryGetValueSafe<int>("uploadEndDetectedAt");
-			    this._ImportStartedAt = data.TryGetValueSafe<int>("importStartedAt");
-			    this._ImportEndedAt = data.TryGetValueSafe<int>("importEndedAt");
-			    this._BatchJobId = data.TryGetValueSafe<int>("batchJobId");
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["dropFolderId"] != null)
+			{
+				this._DropFolderId = ParseInt(node["dropFolderId"].Value<string>());
+			}
+			if(node["fileName"] != null)
+			{
+				this._FileName = node["fileName"].Value<string>();
+			}
+			if(node["fileSize"] != null)
+			{
+				this._FileSize = ParseFloat(node["fileSize"].Value<string>());
+			}
+			if(node["fileSizeLastSetAt"] != null)
+			{
+				this._FileSizeLastSetAt = ParseInt(node["fileSizeLastSetAt"].Value<string>());
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (DropFolderFileStatus)ParseEnum(typeof(DropFolderFileStatus), node["status"].Value<string>());
+			}
+			if(node["type"] != null)
+			{
+				this._Type = (DropFolderType)StringEnum.Parse(typeof(DropFolderType), node["type"].Value<string>());
+			}
+			if(node["parsedSlug"] != null)
+			{
+				this._ParsedSlug = node["parsedSlug"].Value<string>();
+			}
+			if(node["parsedFlavor"] != null)
+			{
+				this._ParsedFlavor = node["parsedFlavor"].Value<string>();
+			}
+			if(node["parsedUserId"] != null)
+			{
+				this._ParsedUserId = node["parsedUserId"].Value<string>();
+			}
+			if(node["leadDropFolderFileId"] != null)
+			{
+				this._LeadDropFolderFileId = ParseInt(node["leadDropFolderFileId"].Value<string>());
+			}
+			if(node["deletedDropFolderFileId"] != null)
+			{
+				this._DeletedDropFolderFileId = ParseInt(node["deletedDropFolderFileId"].Value<string>());
+			}
+			if(node["entryId"] != null)
+			{
+				this._EntryId = node["entryId"].Value<string>();
+			}
+			if(node["errorCode"] != null)
+			{
+				this._ErrorCode = (DropFolderFileErrorCode)StringEnum.Parse(typeof(DropFolderFileErrorCode), node["errorCode"].Value<string>());
+			}
+			if(node["errorDescription"] != null)
+			{
+				this._ErrorDescription = node["errorDescription"].Value<string>();
+			}
+			if(node["lastModificationTime"] != null)
+			{
+				this._LastModificationTime = node["lastModificationTime"].Value<string>();
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["uploadStartDetectedAt"] != null)
+			{
+				this._UploadStartDetectedAt = ParseInt(node["uploadStartDetectedAt"].Value<string>());
+			}
+			if(node["uploadEndDetectedAt"] != null)
+			{
+				this._UploadEndDetectedAt = ParseInt(node["uploadEndDetectedAt"].Value<string>());
+			}
+			if(node["importStartedAt"] != null)
+			{
+				this._ImportStartedAt = ParseInt(node["importStartedAt"].Value<string>());
+			}
+			if(node["importEndedAt"] != null)
+			{
+				this._ImportEndedAt = ParseInt(node["importEndedAt"].Value<string>());
+			}
+			if(node["batchJobId"] != null)
+			{
+				this._BatchJobId = ParseInt(node["batchJobId"].Value<string>());
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Code
 		{
 			get { return _Code; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Code");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public int EndTime
 		{
 			get { return _EndTime; }
@@ -77,9 +82,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndTime");
 			}
 		}
+		[JsonProperty]
 		public int Duration
 		{
 			get { return _Duration; }
+			private set 
+			{ 
+				_Duration = value;
+				OnPropertyChanged("Duration");
+			}
 		}
 		#endregion
 
@@ -88,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CodeCuePoint(XmlElement node) : base(node)
+		public CodeCuePoint(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["code"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "code":
-						this._Code = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "endTime":
-						this._EndTime = ParseInt(propertyNode.InnerText);
-						continue;
-					case "duration":
-						this._Duration = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._Code = node["code"].Value<string>();
 			}
-		}
-
-		public CodeCuePoint(IDictionary<string,object> data) : base(data)
-		{
-			    this._Code = data.TryGetValueSafe<string>("code");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._EndTime = data.TryGetValueSafe<int>("endTime");
-			    this._Duration = data.TryGetValueSafe<int>("duration");
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["endTime"] != null)
+			{
+				this._EndTime = ParseInt(node["endTime"].Value<string>());
+			}
+			if(node["duration"] != null)
+			{
+				this._Duration = ParseInt(node["duration"].Value<string>());
+			}
 		}
 		#endregion
 

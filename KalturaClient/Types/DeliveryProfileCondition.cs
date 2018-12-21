@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public IList<IntegerValue> DeliveryProfileIds
 		{
 			get { return _DeliveryProfileIds; }
@@ -60,31 +63,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DeliveryProfileCondition(XmlElement node) : base(node)
+		public DeliveryProfileCondition(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["deliveryProfileIds"] != null)
 			{
-				switch (propertyNode.Name)
+				this._DeliveryProfileIds = new List<IntegerValue>();
+				foreach(var arrayNode in node["deliveryProfileIds"].Children())
 				{
-					case "deliveryProfileIds":
-						this._DeliveryProfileIds = new List<IntegerValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._DeliveryProfileIds.Add(ObjectFactory.Create<IntegerValue>(arrayNode));
-						}
-						continue;
+					this._DeliveryProfileIds.Add(ObjectFactory.Create<IntegerValue>(arrayNode));
 				}
 			}
-		}
-
-		public DeliveryProfileCondition(IDictionary<string,object> data) : base(data)
-		{
-			    this._DeliveryProfileIds = new List<IntegerValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("deliveryProfileIds", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._DeliveryProfileIds.Add(ObjectFactory.Create<IntegerValue>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

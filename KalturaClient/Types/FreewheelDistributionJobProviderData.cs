@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public IList<FreewheelDistributionAssetPath> VideoAssetFilePaths
 		{
 			get { return _VideoAssetFilePaths; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoAssetFilePaths");
 			}
 		}
+		[JsonProperty]
 		public string ThumbAssetFilePath
 		{
 			get { return _ThumbAssetFilePath; }
@@ -71,35 +75,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FreewheelDistributionJobProviderData(XmlElement node) : base(node)
+		public FreewheelDistributionJobProviderData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["videoAssetFilePaths"] != null)
 			{
-				switch (propertyNode.Name)
+				this._VideoAssetFilePaths = new List<FreewheelDistributionAssetPath>();
+				foreach(var arrayNode in node["videoAssetFilePaths"].Children())
 				{
-					case "videoAssetFilePaths":
-						this._VideoAssetFilePaths = new List<FreewheelDistributionAssetPath>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._VideoAssetFilePaths.Add(ObjectFactory.Create<FreewheelDistributionAssetPath>(arrayNode));
-						}
-						continue;
-					case "thumbAssetFilePath":
-						this._ThumbAssetFilePath = propertyNode.InnerText;
-						continue;
+					this._VideoAssetFilePaths.Add(ObjectFactory.Create<FreewheelDistributionAssetPath>(arrayNode));
 				}
 			}
-		}
-
-		public FreewheelDistributionJobProviderData(IDictionary<string,object> data) : base(data)
-		{
-			    this._VideoAssetFilePaths = new List<FreewheelDistributionAssetPath>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("videoAssetFilePaths", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._VideoAssetFilePaths.Add(ObjectFactory.Create<FreewheelDistributionAssetPath>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._ThumbAssetFilePath = data.TryGetValueSafe<string>("thumbAssetFilePath");
+			if(node["thumbAssetFilePath"] != null)
+			{
+				this._ThumbAssetFilePath = node["thumbAssetFilePath"].Value<string>();
+			}
 		}
 		#endregion
 

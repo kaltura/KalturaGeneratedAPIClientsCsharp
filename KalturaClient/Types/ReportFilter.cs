@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Dimension
 		{
 			get { return _Dimension; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Dimension");
 			}
 		}
+		[JsonProperty]
 		public string Values
 		{
 			get { return _Values; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ReportFilter(XmlElement node) : base(node)
+		public ReportFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["dimension"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "dimension":
-						this._Dimension = propertyNode.InnerText;
-						continue;
-					case "values":
-						this._Values = propertyNode.InnerText;
-						continue;
-				}
+				this._Dimension = node["dimension"].Value<string>();
 			}
-		}
-
-		public ReportFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._Dimension = data.TryGetValueSafe<string>("dimension");
-			    this._Values = data.TryGetValueSafe<string>("values");
+			if(node["values"] != null)
+			{
+				this._Values = node["values"].Value<string>();
+			}
 		}
 		#endregion
 

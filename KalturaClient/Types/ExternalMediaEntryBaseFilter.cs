@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public ExternalMediaSourceType ExternalSourceTypeEqual
 		{
 			get { return _ExternalSourceTypeEqual; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExternalSourceTypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string ExternalSourceTypeIn
 		{
 			get { return _ExternalSourceTypeIn; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExternalSourceTypeIn");
 			}
 		}
+		[JsonProperty]
 		public string AssetParamsIdsMatchOr
 		{
 			get { return _AssetParamsIdsMatchOr; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetParamsIdsMatchOr");
 			}
 		}
+		[JsonProperty]
 		public string AssetParamsIdsMatchAnd
 		{
 			get { return _AssetParamsIdsMatchAnd; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ExternalMediaEntryBaseFilter(XmlElement node) : base(node)
+		public ExternalMediaEntryBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["externalSourceTypeEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "externalSourceTypeEqual":
-						this._ExternalSourceTypeEqual = (ExternalMediaSourceType)StringEnum.Parse(typeof(ExternalMediaSourceType), propertyNode.InnerText);
-						continue;
-					case "externalSourceTypeIn":
-						this._ExternalSourceTypeIn = propertyNode.InnerText;
-						continue;
-					case "assetParamsIdsMatchOr":
-						this._AssetParamsIdsMatchOr = propertyNode.InnerText;
-						continue;
-					case "assetParamsIdsMatchAnd":
-						this._AssetParamsIdsMatchAnd = propertyNode.InnerText;
-						continue;
-				}
+				this._ExternalSourceTypeEqual = (ExternalMediaSourceType)StringEnum.Parse(typeof(ExternalMediaSourceType), node["externalSourceTypeEqual"].Value<string>());
 			}
-		}
-
-		public ExternalMediaEntryBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._ExternalSourceTypeEqual = (ExternalMediaSourceType)StringEnum.Parse(typeof(ExternalMediaSourceType), data.TryGetValueSafe<string>("externalSourceTypeEqual"));
-			    this._ExternalSourceTypeIn = data.TryGetValueSafe<string>("externalSourceTypeIn");
-			    this._AssetParamsIdsMatchOr = data.TryGetValueSafe<string>("assetParamsIdsMatchOr");
-			    this._AssetParamsIdsMatchAnd = data.TryGetValueSafe<string>("assetParamsIdsMatchAnd");
+			if(node["externalSourceTypeIn"] != null)
+			{
+				this._ExternalSourceTypeIn = node["externalSourceTypeIn"].Value<string>();
+			}
+			if(node["assetParamsIdsMatchOr"] != null)
+			{
+				this._AssetParamsIdsMatchOr = node["assetParamsIdsMatchOr"].Value<string>();
+			}
+			if(node["assetParamsIdsMatchAnd"] != null)
+			{
+				this._AssetParamsIdsMatchAnd = node["assetParamsIdsMatchAnd"].Value<string>();
+			}
 		}
 		#endregion
 

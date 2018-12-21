@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -62,6 +64,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string FtpHost
 		{
 			get { return _FtpHost; }
@@ -71,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FtpHost");
 			}
 		}
+		[JsonProperty]
 		public string FtpLogin
 		{
 			get { return _FtpLogin; }
@@ -80,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FtpLogin");
 			}
 		}
+		[JsonProperty]
 		public string FtpPass
 		{
 			get { return _FtpPass; }
@@ -89,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FtpPass");
 			}
 		}
+		[JsonProperty]
 		public string FtpPath
 		{
 			get { return _FtpPath; }
@@ -98,6 +104,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FtpPath");
 			}
 		}
+		[JsonProperty]
 		public string ProviderName
 		{
 			get { return _ProviderName; }
@@ -107,6 +114,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProviderName");
 			}
 		}
+		[JsonProperty]
 		public string ProviderId
 		{
 			get { return _ProviderId; }
@@ -116,6 +124,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProviderId");
 			}
 		}
+		[JsonProperty]
 		public string Copyright
 		{
 			get { return _Copyright; }
@@ -125,6 +134,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Copyright");
 			}
 		}
+		[JsonProperty]
 		public string Entitlements
 		{
 			get { return _Entitlements; }
@@ -134,6 +144,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Entitlements");
 			}
 		}
+		[JsonProperty]
 		public string Rating
 		{
 			get { return _Rating; }
@@ -143,6 +154,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Rating");
 			}
 		}
+		[JsonProperty]
 		public string ItemType
 		{
 			get { return _ItemType; }
@@ -159,58 +171,48 @@ namespace Kaltura.Types
 		{
 		}
 
-		public MetroPcsDistributionProfile(XmlElement node) : base(node)
+		public MetroPcsDistributionProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["ftpHost"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "ftpHost":
-						this._FtpHost = propertyNode.InnerText;
-						continue;
-					case "ftpLogin":
-						this._FtpLogin = propertyNode.InnerText;
-						continue;
-					case "ftpPass":
-						this._FtpPass = propertyNode.InnerText;
-						continue;
-					case "ftpPath":
-						this._FtpPath = propertyNode.InnerText;
-						continue;
-					case "providerName":
-						this._ProviderName = propertyNode.InnerText;
-						continue;
-					case "providerId":
-						this._ProviderId = propertyNode.InnerText;
-						continue;
-					case "copyright":
-						this._Copyright = propertyNode.InnerText;
-						continue;
-					case "entitlements":
-						this._Entitlements = propertyNode.InnerText;
-						continue;
-					case "rating":
-						this._Rating = propertyNode.InnerText;
-						continue;
-					case "itemType":
-						this._ItemType = propertyNode.InnerText;
-						continue;
-				}
+				this._FtpHost = node["ftpHost"].Value<string>();
 			}
-		}
-
-		public MetroPcsDistributionProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._FtpHost = data.TryGetValueSafe<string>("ftpHost");
-			    this._FtpLogin = data.TryGetValueSafe<string>("ftpLogin");
-			    this._FtpPass = data.TryGetValueSafe<string>("ftpPass");
-			    this._FtpPath = data.TryGetValueSafe<string>("ftpPath");
-			    this._ProviderName = data.TryGetValueSafe<string>("providerName");
-			    this._ProviderId = data.TryGetValueSafe<string>("providerId");
-			    this._Copyright = data.TryGetValueSafe<string>("copyright");
-			    this._Entitlements = data.TryGetValueSafe<string>("entitlements");
-			    this._Rating = data.TryGetValueSafe<string>("rating");
-			    this._ItemType = data.TryGetValueSafe<string>("itemType");
+			if(node["ftpLogin"] != null)
+			{
+				this._FtpLogin = node["ftpLogin"].Value<string>();
+			}
+			if(node["ftpPass"] != null)
+			{
+				this._FtpPass = node["ftpPass"].Value<string>();
+			}
+			if(node["ftpPath"] != null)
+			{
+				this._FtpPath = node["ftpPath"].Value<string>();
+			}
+			if(node["providerName"] != null)
+			{
+				this._ProviderName = node["providerName"].Value<string>();
+			}
+			if(node["providerId"] != null)
+			{
+				this._ProviderId = node["providerId"].Value<string>();
+			}
+			if(node["copyright"] != null)
+			{
+				this._Copyright = node["copyright"].Value<string>();
+			}
+			if(node["entitlements"] != null)
+			{
+				this._Entitlements = node["entitlements"].Value<string>();
+			}
+			if(node["rating"] != null)
+			{
+				this._Rating = node["rating"].Value<string>();
+			}
+			if(node["itemType"] != null)
+			{
+				this._ItemType = node["itemType"].Value<string>();
+			}
 		}
 		#endregion
 

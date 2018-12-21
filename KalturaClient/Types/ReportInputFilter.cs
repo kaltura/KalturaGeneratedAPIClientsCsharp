@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -78,6 +80,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Keywords
 		{
 			get { return _Keywords; }
@@ -87,6 +90,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Keywords");
 			}
 		}
+		[JsonProperty]
 		public bool? SearchInTags
 		{
 			get { return _SearchInTags; }
@@ -96,6 +100,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SearchInTags");
 			}
 		}
+		[JsonProperty]
 		public bool? SearchInAdminTags
 		{
 			get { return _SearchInAdminTags; }
@@ -105,6 +110,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SearchInAdminTags");
 			}
 		}
+		[JsonProperty]
 		public string Categories
 		{
 			get { return _Categories; }
@@ -114,6 +120,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Categories");
 			}
 		}
+		[JsonProperty]
 		public string CategoriesIdsIn
 		{
 			get { return _CategoriesIdsIn; }
@@ -123,6 +130,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoriesIdsIn");
 			}
 		}
+		[JsonProperty]
 		public string CustomVar1In
 		{
 			get { return _CustomVar1In; }
@@ -132,6 +140,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CustomVar1In");
 			}
 		}
+		[JsonProperty]
 		public string CustomVar2In
 		{
 			get { return _CustomVar2In; }
@@ -141,6 +150,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CustomVar2In");
 			}
 		}
+		[JsonProperty]
 		public string CustomVar3In
 		{
 			get { return _CustomVar3In; }
@@ -150,6 +160,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CustomVar3In");
 			}
 		}
+		[JsonProperty]
 		public string DeviceIn
 		{
 			get { return _DeviceIn; }
@@ -159,6 +170,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeviceIn");
 			}
 		}
+		[JsonProperty]
 		public string CountryIn
 		{
 			get { return _CountryIn; }
@@ -168,6 +180,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CountryIn");
 			}
 		}
+		[JsonProperty]
 		public string RegionIn
 		{
 			get { return _RegionIn; }
@@ -177,6 +190,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RegionIn");
 			}
 		}
+		[JsonProperty]
 		public string CitiesIn
 		{
 			get { return _CitiesIn; }
@@ -186,6 +200,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CitiesIn");
 			}
 		}
+		[JsonProperty]
 		public string OperatingSystemFamilyIn
 		{
 			get { return _OperatingSystemFamilyIn; }
@@ -195,6 +210,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("OperatingSystemFamilyIn");
 			}
 		}
+		[JsonProperty]
 		public string BrowserFamilyIn
 		{
 			get { return _BrowserFamilyIn; }
@@ -204,6 +220,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BrowserFamilyIn");
 			}
 		}
+		[JsonProperty]
 		public int TimeZoneOffset
 		{
 			get { return _TimeZoneOffset; }
@@ -213,6 +230,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TimeZoneOffset");
 			}
 		}
+		[JsonProperty]
 		public ReportInterval Interval
 		{
 			get { return _Interval; }
@@ -222,6 +240,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Interval");
 			}
 		}
+		[JsonProperty]
 		public string MediaTypeIn
 		{
 			get { return _MediaTypeIn; }
@@ -231,6 +250,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaTypeIn");
 			}
 		}
+		[JsonProperty]
 		public string SourceTypeIn
 		{
 			get { return _SourceTypeIn; }
@@ -247,90 +267,80 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ReportInputFilter(XmlElement node) : base(node)
+		public ReportInputFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["keywords"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "keywords":
-						this._Keywords = propertyNode.InnerText;
-						continue;
-					case "searchInTags":
-						this._SearchInTags = ParseBool(propertyNode.InnerText);
-						continue;
-					case "searchInAdminTags":
-						this._SearchInAdminTags = ParseBool(propertyNode.InnerText);
-						continue;
-					case "categories":
-						this._Categories = propertyNode.InnerText;
-						continue;
-					case "categoriesIdsIn":
-						this._CategoriesIdsIn = propertyNode.InnerText;
-						continue;
-					case "customVar1In":
-						this._CustomVar1In = propertyNode.InnerText;
-						continue;
-					case "customVar2In":
-						this._CustomVar2In = propertyNode.InnerText;
-						continue;
-					case "customVar3In":
-						this._CustomVar3In = propertyNode.InnerText;
-						continue;
-					case "deviceIn":
-						this._DeviceIn = propertyNode.InnerText;
-						continue;
-					case "countryIn":
-						this._CountryIn = propertyNode.InnerText;
-						continue;
-					case "regionIn":
-						this._RegionIn = propertyNode.InnerText;
-						continue;
-					case "citiesIn":
-						this._CitiesIn = propertyNode.InnerText;
-						continue;
-					case "operatingSystemFamilyIn":
-						this._OperatingSystemFamilyIn = propertyNode.InnerText;
-						continue;
-					case "browserFamilyIn":
-						this._BrowserFamilyIn = propertyNode.InnerText;
-						continue;
-					case "timeZoneOffset":
-						this._TimeZoneOffset = ParseInt(propertyNode.InnerText);
-						continue;
-					case "interval":
-						this._Interval = (ReportInterval)StringEnum.Parse(typeof(ReportInterval), propertyNode.InnerText);
-						continue;
-					case "mediaTypeIn":
-						this._MediaTypeIn = propertyNode.InnerText;
-						continue;
-					case "sourceTypeIn":
-						this._SourceTypeIn = propertyNode.InnerText;
-						continue;
-				}
+				this._Keywords = node["keywords"].Value<string>();
 			}
-		}
-
-		public ReportInputFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._Keywords = data.TryGetValueSafe<string>("keywords");
-			    this._SearchInTags = data.TryGetValueSafe<bool>("searchInTags");
-			    this._SearchInAdminTags = data.TryGetValueSafe<bool>("searchInAdminTags");
-			    this._Categories = data.TryGetValueSafe<string>("categories");
-			    this._CategoriesIdsIn = data.TryGetValueSafe<string>("categoriesIdsIn");
-			    this._CustomVar1In = data.TryGetValueSafe<string>("customVar1In");
-			    this._CustomVar2In = data.TryGetValueSafe<string>("customVar2In");
-			    this._CustomVar3In = data.TryGetValueSafe<string>("customVar3In");
-			    this._DeviceIn = data.TryGetValueSafe<string>("deviceIn");
-			    this._CountryIn = data.TryGetValueSafe<string>("countryIn");
-			    this._RegionIn = data.TryGetValueSafe<string>("regionIn");
-			    this._CitiesIn = data.TryGetValueSafe<string>("citiesIn");
-			    this._OperatingSystemFamilyIn = data.TryGetValueSafe<string>("operatingSystemFamilyIn");
-			    this._BrowserFamilyIn = data.TryGetValueSafe<string>("browserFamilyIn");
-			    this._TimeZoneOffset = data.TryGetValueSafe<int>("timeZoneOffset");
-			    this._Interval = (ReportInterval)StringEnum.Parse(typeof(ReportInterval), data.TryGetValueSafe<string>("interval"));
-			    this._MediaTypeIn = data.TryGetValueSafe<string>("mediaTypeIn");
-			    this._SourceTypeIn = data.TryGetValueSafe<string>("sourceTypeIn");
+			if(node["searchInTags"] != null)
+			{
+				this._SearchInTags = ParseBool(node["searchInTags"].Value<string>());
+			}
+			if(node["searchInAdminTags"] != null)
+			{
+				this._SearchInAdminTags = ParseBool(node["searchInAdminTags"].Value<string>());
+			}
+			if(node["categories"] != null)
+			{
+				this._Categories = node["categories"].Value<string>();
+			}
+			if(node["categoriesIdsIn"] != null)
+			{
+				this._CategoriesIdsIn = node["categoriesIdsIn"].Value<string>();
+			}
+			if(node["customVar1In"] != null)
+			{
+				this._CustomVar1In = node["customVar1In"].Value<string>();
+			}
+			if(node["customVar2In"] != null)
+			{
+				this._CustomVar2In = node["customVar2In"].Value<string>();
+			}
+			if(node["customVar3In"] != null)
+			{
+				this._CustomVar3In = node["customVar3In"].Value<string>();
+			}
+			if(node["deviceIn"] != null)
+			{
+				this._DeviceIn = node["deviceIn"].Value<string>();
+			}
+			if(node["countryIn"] != null)
+			{
+				this._CountryIn = node["countryIn"].Value<string>();
+			}
+			if(node["regionIn"] != null)
+			{
+				this._RegionIn = node["regionIn"].Value<string>();
+			}
+			if(node["citiesIn"] != null)
+			{
+				this._CitiesIn = node["citiesIn"].Value<string>();
+			}
+			if(node["operatingSystemFamilyIn"] != null)
+			{
+				this._OperatingSystemFamilyIn = node["operatingSystemFamilyIn"].Value<string>();
+			}
+			if(node["browserFamilyIn"] != null)
+			{
+				this._BrowserFamilyIn = node["browserFamilyIn"].Value<string>();
+			}
+			if(node["timeZoneOffset"] != null)
+			{
+				this._TimeZoneOffset = ParseInt(node["timeZoneOffset"].Value<string>());
+			}
+			if(node["interval"] != null)
+			{
+				this._Interval = (ReportInterval)StringEnum.Parse(typeof(ReportInterval), node["interval"].Value<string>());
+			}
+			if(node["mediaTypeIn"] != null)
+			{
+				this._MediaTypeIn = node["mediaTypeIn"].Value<string>();
+			}
+			if(node["sourceTypeIn"] != null)
+			{
+				this._SourceTypeIn = node["sourceTypeIn"].Value<string>();
+			}
 		}
 		#endregion
 

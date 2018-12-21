@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -54,6 +56,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int DropFolderId
 		{
 			get { return _DropFolderId; }
@@ -63,6 +66,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DropFolderId");
 			}
 		}
+		[JsonProperty]
 		public string DropFolderFileIds
 		{
 			get { return _DropFolderFileIds; }
@@ -72,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DropFolderFileIds");
 			}
 		}
+		[JsonProperty]
 		public string ParsedSlug
 		{
 			get { return _ParsedSlug; }
@@ -81,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParsedSlug");
 			}
 		}
+		[JsonProperty]
 		public DropFolderContentFileHandlerMatchPolicy ContentMatchPolicy
 		{
 			get { return _ContentMatchPolicy; }
@@ -90,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentMatchPolicy");
 			}
 		}
+		[JsonProperty]
 		public int ConversionProfileId
 		{
 			get { return _ConversionProfileId; }
@@ -99,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionProfileId");
 			}
 		}
+		[JsonProperty]
 		public string ParsedUserId
 		{
 			get { return _ParsedUserId; }
@@ -115,42 +123,32 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DropFolderContentProcessorJobData(XmlElement node) : base(node)
+		public DropFolderContentProcessorJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["dropFolderId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "dropFolderId":
-						this._DropFolderId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "dropFolderFileIds":
-						this._DropFolderFileIds = propertyNode.InnerText;
-						continue;
-					case "parsedSlug":
-						this._ParsedSlug = propertyNode.InnerText;
-						continue;
-					case "contentMatchPolicy":
-						this._ContentMatchPolicy = (DropFolderContentFileHandlerMatchPolicy)ParseEnum(typeof(DropFolderContentFileHandlerMatchPolicy), propertyNode.InnerText);
-						continue;
-					case "conversionProfileId":
-						this._ConversionProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "parsedUserId":
-						this._ParsedUserId = propertyNode.InnerText;
-						continue;
-				}
+				this._DropFolderId = ParseInt(node["dropFolderId"].Value<string>());
 			}
-		}
-
-		public DropFolderContentProcessorJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._DropFolderId = data.TryGetValueSafe<int>("dropFolderId");
-			    this._DropFolderFileIds = data.TryGetValueSafe<string>("dropFolderFileIds");
-			    this._ParsedSlug = data.TryGetValueSafe<string>("parsedSlug");
-			    this._ContentMatchPolicy = (DropFolderContentFileHandlerMatchPolicy)ParseEnum(typeof(DropFolderContentFileHandlerMatchPolicy), data.TryGetValueSafe<int>("contentMatchPolicy"));
-			    this._ConversionProfileId = data.TryGetValueSafe<int>("conversionProfileId");
-			    this._ParsedUserId = data.TryGetValueSafe<string>("parsedUserId");
+			if(node["dropFolderFileIds"] != null)
+			{
+				this._DropFolderFileIds = node["dropFolderFileIds"].Value<string>();
+			}
+			if(node["parsedSlug"] != null)
+			{
+				this._ParsedSlug = node["parsedSlug"].Value<string>();
+			}
+			if(node["contentMatchPolicy"] != null)
+			{
+				this._ContentMatchPolicy = (DropFolderContentFileHandlerMatchPolicy)ParseEnum(typeof(DropFolderContentFileHandlerMatchPolicy), node["contentMatchPolicy"].Value<string>());
+			}
+			if(node["conversionProfileId"] != null)
+			{
+				this._ConversionProfileId = ParseInt(node["conversionProfileId"].Value<string>());
+			}
+			if(node["parsedUserId"] != null)
+			{
+				this._ParsedUserId = node["parsedUserId"].Value<string>();
+			}
 		}
 		#endregion
 

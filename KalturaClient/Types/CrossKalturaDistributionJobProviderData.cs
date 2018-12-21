@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,6 +58,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string DistributedFlavorAssets
 		{
 			get { return _DistributedFlavorAssets; }
@@ -65,6 +68,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributedFlavorAssets");
 			}
 		}
+		[JsonProperty]
 		public string DistributedThumbAssets
 		{
 			get { return _DistributedThumbAssets; }
@@ -74,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributedThumbAssets");
 			}
 		}
+		[JsonProperty]
 		public string DistributedMetadata
 		{
 			get { return _DistributedMetadata; }
@@ -83,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributedMetadata");
 			}
 		}
+		[JsonProperty]
 		public string DistributedCaptionAssets
 		{
 			get { return _DistributedCaptionAssets; }
@@ -92,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributedCaptionAssets");
 			}
 		}
+		[JsonProperty]
 		public string DistributedCuePoints
 		{
 			get { return _DistributedCuePoints; }
@@ -101,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributedCuePoints");
 			}
 		}
+		[JsonProperty]
 		public string DistributedThumbCuePoints
 		{
 			get { return _DistributedThumbCuePoints; }
@@ -110,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributedThumbCuePoints");
 			}
 		}
+		[JsonProperty]
 		public string DistributedTimedThumbAssets
 		{
 			get { return _DistributedTimedThumbAssets; }
@@ -126,46 +135,36 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CrossKalturaDistributionJobProviderData(XmlElement node) : base(node)
+		public CrossKalturaDistributionJobProviderData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["distributedFlavorAssets"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "distributedFlavorAssets":
-						this._DistributedFlavorAssets = propertyNode.InnerText;
-						continue;
-					case "distributedThumbAssets":
-						this._DistributedThumbAssets = propertyNode.InnerText;
-						continue;
-					case "distributedMetadata":
-						this._DistributedMetadata = propertyNode.InnerText;
-						continue;
-					case "distributedCaptionAssets":
-						this._DistributedCaptionAssets = propertyNode.InnerText;
-						continue;
-					case "distributedCuePoints":
-						this._DistributedCuePoints = propertyNode.InnerText;
-						continue;
-					case "distributedThumbCuePoints":
-						this._DistributedThumbCuePoints = propertyNode.InnerText;
-						continue;
-					case "distributedTimedThumbAssets":
-						this._DistributedTimedThumbAssets = propertyNode.InnerText;
-						continue;
-				}
+				this._DistributedFlavorAssets = node["distributedFlavorAssets"].Value<string>();
 			}
-		}
-
-		public CrossKalturaDistributionJobProviderData(IDictionary<string,object> data) : base(data)
-		{
-			    this._DistributedFlavorAssets = data.TryGetValueSafe<string>("distributedFlavorAssets");
-			    this._DistributedThumbAssets = data.TryGetValueSafe<string>("distributedThumbAssets");
-			    this._DistributedMetadata = data.TryGetValueSafe<string>("distributedMetadata");
-			    this._DistributedCaptionAssets = data.TryGetValueSafe<string>("distributedCaptionAssets");
-			    this._DistributedCuePoints = data.TryGetValueSafe<string>("distributedCuePoints");
-			    this._DistributedThumbCuePoints = data.TryGetValueSafe<string>("distributedThumbCuePoints");
-			    this._DistributedTimedThumbAssets = data.TryGetValueSafe<string>("distributedTimedThumbAssets");
+			if(node["distributedThumbAssets"] != null)
+			{
+				this._DistributedThumbAssets = node["distributedThumbAssets"].Value<string>();
+			}
+			if(node["distributedMetadata"] != null)
+			{
+				this._DistributedMetadata = node["distributedMetadata"].Value<string>();
+			}
+			if(node["distributedCaptionAssets"] != null)
+			{
+				this._DistributedCaptionAssets = node["distributedCaptionAssets"].Value<string>();
+			}
+			if(node["distributedCuePoints"] != null)
+			{
+				this._DistributedCuePoints = node["distributedCuePoints"].Value<string>();
+			}
+			if(node["distributedThumbCuePoints"] != null)
+			{
+				this._DistributedThumbCuePoints = node["distributedThumbCuePoints"].Value<string>();
+			}
+			if(node["distributedTimedThumbAssets"] != null)
+			{
+				this._DistributedTimedThumbAssets = node["distributedTimedThumbAssets"].Value<string>();
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Url
 		{
 			get { return _Url; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Url");
 			}
 		}
+		[JsonProperty]
 		public bool? ForceAsyncDownload
 		{
 			get { return _ForceAsyncDownload; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UrlResource(XmlElement node) : base(node)
+		public UrlResource(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["url"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "url":
-						this._Url = propertyNode.InnerText;
-						continue;
-					case "forceAsyncDownload":
-						this._ForceAsyncDownload = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._Url = node["url"].Value<string>();
 			}
-		}
-
-		public UrlResource(IDictionary<string,object> data) : base(data)
-		{
-			    this._Url = data.TryGetValueSafe<string>("url");
-			    this._ForceAsyncDownload = data.TryGetValueSafe<bool>("forceAsyncDownload");
+			if(node["forceAsyncDownload"] != null)
+			{
+				this._ForceAsyncDownload = ParseBool(node["forceAsyncDownload"].Value<string>());
+			}
 		}
 		#endregion
 

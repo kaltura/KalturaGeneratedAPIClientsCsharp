@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,6 +58,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Language
 		{
 			get { return _Language; }
@@ -65,6 +68,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Language");
 			}
 		}
+		[JsonProperty]
 		public string FilePath
 		{
 			get { return _FilePath; }
@@ -74,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FilePath");
 			}
 		}
+		[JsonProperty]
 		public string RemoteId
 		{
 			get { return _RemoteId; }
@@ -83,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RemoteId");
 			}
 		}
+		[JsonProperty]
 		public DailymotionDistributionCaptionAction Action
 		{
 			get { return _Action; }
@@ -92,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Action");
 			}
 		}
+		[JsonProperty]
 		public string Version
 		{
 			get { return _Version; }
@@ -101,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Version");
 			}
 		}
+		[JsonProperty]
 		public string AssetId
 		{
 			get { return _AssetId; }
@@ -110,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetId");
 			}
 		}
+		[JsonProperty]
 		public DailymotionDistributionCaptionFormat Format
 		{
 			get { return _Format; }
@@ -126,46 +135,36 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DailymotionDistributionCaptionInfo(XmlElement node) : base(node)
+		public DailymotionDistributionCaptionInfo(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["language"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "language":
-						this._Language = propertyNode.InnerText;
-						continue;
-					case "filePath":
-						this._FilePath = propertyNode.InnerText;
-						continue;
-					case "remoteId":
-						this._RemoteId = propertyNode.InnerText;
-						continue;
-					case "action":
-						this._Action = (DailymotionDistributionCaptionAction)ParseEnum(typeof(DailymotionDistributionCaptionAction), propertyNode.InnerText);
-						continue;
-					case "version":
-						this._Version = propertyNode.InnerText;
-						continue;
-					case "assetId":
-						this._AssetId = propertyNode.InnerText;
-						continue;
-					case "format":
-						this._Format = (DailymotionDistributionCaptionFormat)ParseEnum(typeof(DailymotionDistributionCaptionFormat), propertyNode.InnerText);
-						continue;
-				}
+				this._Language = node["language"].Value<string>();
 			}
-		}
-
-		public DailymotionDistributionCaptionInfo(IDictionary<string,object> data) : base(data)
-		{
-			    this._Language = data.TryGetValueSafe<string>("language");
-			    this._FilePath = data.TryGetValueSafe<string>("filePath");
-			    this._RemoteId = data.TryGetValueSafe<string>("remoteId");
-			    this._Action = (DailymotionDistributionCaptionAction)ParseEnum(typeof(DailymotionDistributionCaptionAction), data.TryGetValueSafe<int>("action"));
-			    this._Version = data.TryGetValueSafe<string>("version");
-			    this._AssetId = data.TryGetValueSafe<string>("assetId");
-			    this._Format = (DailymotionDistributionCaptionFormat)ParseEnum(typeof(DailymotionDistributionCaptionFormat), data.TryGetValueSafe<int>("format"));
+			if(node["filePath"] != null)
+			{
+				this._FilePath = node["filePath"].Value<string>();
+			}
+			if(node["remoteId"] != null)
+			{
+				this._RemoteId = node["remoteId"].Value<string>();
+			}
+			if(node["action"] != null)
+			{
+				this._Action = (DailymotionDistributionCaptionAction)ParseEnum(typeof(DailymotionDistributionCaptionAction), node["action"].Value<string>());
+			}
+			if(node["version"] != null)
+			{
+				this._Version = node["version"].Value<string>();
+			}
+			if(node["assetId"] != null)
+			{
+				this._AssetId = node["assetId"].Value<string>();
+			}
+			if(node["format"] != null)
+			{
+				this._Format = (DailymotionDistributionCaptionFormat)ParseEnum(typeof(DailymotionDistributionCaptionFormat), node["format"].Value<string>());
+			}
 		}
 		#endregion
 

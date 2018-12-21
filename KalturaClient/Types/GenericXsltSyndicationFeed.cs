@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Xslt
 		{
 			get { return _Xslt; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Xslt");
 			}
 		}
+		[JsonProperty]
 		public IList<ExtendingItemMrssParameter> ItemXpathsToExtend
 		{
 			get { return _ItemXpathsToExtend; }
@@ -71,35 +75,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public GenericXsltSyndicationFeed(XmlElement node) : base(node)
+		public GenericXsltSyndicationFeed(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["xslt"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Xslt = node["xslt"].Value<string>();
+			}
+			if(node["itemXpathsToExtend"] != null)
+			{
+				this._ItemXpathsToExtend = new List<ExtendingItemMrssParameter>();
+				foreach(var arrayNode in node["itemXpathsToExtend"].Children())
 				{
-					case "xslt":
-						this._Xslt = propertyNode.InnerText;
-						continue;
-					case "itemXpathsToExtend":
-						this._ItemXpathsToExtend = new List<ExtendingItemMrssParameter>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._ItemXpathsToExtend.Add(ObjectFactory.Create<ExtendingItemMrssParameter>(arrayNode));
-						}
-						continue;
+					this._ItemXpathsToExtend.Add(ObjectFactory.Create<ExtendingItemMrssParameter>(arrayNode));
 				}
 			}
-		}
-
-		public GenericXsltSyndicationFeed(IDictionary<string,object> data) : base(data)
-		{
-			    this._Xslt = data.TryGetValueSafe<string>("xslt");
-			    this._ItemXpathsToExtend = new List<ExtendingItemMrssParameter>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("itemXpathsToExtend", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._ItemXpathsToExtend.Add(ObjectFactory.Create<ExtendingItemMrssParameter>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Service
 		{
 			get { return _Service; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Service");
 			}
 		}
+		[JsonProperty]
 		public string Action
 		{
 			get { return _Action; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ApiActionPermissionItem(XmlElement node) : base(node)
+		public ApiActionPermissionItem(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["service"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "service":
-						this._Service = propertyNode.InnerText;
-						continue;
-					case "action":
-						this._Action = propertyNode.InnerText;
-						continue;
-				}
+				this._Service = node["service"].Value<string>();
 			}
-		}
-
-		public ApiActionPermissionItem(IDictionary<string,object> data) : base(data)
-		{
-			    this._Service = data.TryGetValueSafe<string>("service");
-			    this._Action = data.TryGetValueSafe<string>("action");
+			if(node["action"] != null)
+			{
+				this._Action = node["action"].Value<string>();
+			}
 		}
 		#endregion
 

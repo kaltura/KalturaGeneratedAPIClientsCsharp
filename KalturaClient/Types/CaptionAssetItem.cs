@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,6 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public CaptionAsset Asset
 		{
 			get { return _Asset; }
@@ -61,6 +64,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Asset");
 			}
 		}
+		[JsonProperty]
 		public BaseEntry Entry
 		{
 			get { return _Entry; }
@@ -70,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Entry");
 			}
 		}
+		[JsonProperty]
 		public int StartTime
 		{
 			get { return _StartTime; }
@@ -79,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartTime");
 			}
 		}
+		[JsonProperty]
 		public int EndTime
 		{
 			get { return _EndTime; }
@@ -88,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndTime");
 			}
 		}
+		[JsonProperty]
 		public string Content
 		{
 			get { return _Content; }
@@ -104,38 +111,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CaptionAssetItem(XmlElement node) : base(node)
+		public CaptionAssetItem(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["asset"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "asset":
-						this._Asset = ObjectFactory.Create<CaptionAsset>(propertyNode);
-						continue;
-					case "entry":
-						this._Entry = ObjectFactory.Create<BaseEntry>(propertyNode);
-						continue;
-					case "startTime":
-						this._StartTime = ParseInt(propertyNode.InnerText);
-						continue;
-					case "endTime":
-						this._EndTime = ParseInt(propertyNode.InnerText);
-						continue;
-					case "content":
-						this._Content = propertyNode.InnerText;
-						continue;
-				}
+				this._Asset = ObjectFactory.Create<CaptionAsset>(node["asset"]);
 			}
-		}
-
-		public CaptionAssetItem(IDictionary<string,object> data) : base(data)
-		{
-			    this._Asset = ObjectFactory.Create<CaptionAsset>(data.TryGetValueSafe<IDictionary<string,object>>("asset"));
-			    this._Entry = ObjectFactory.Create<BaseEntry>(data.TryGetValueSafe<IDictionary<string,object>>("entry"));
-			    this._StartTime = data.TryGetValueSafe<int>("startTime");
-			    this._EndTime = data.TryGetValueSafe<int>("endTime");
-			    this._Content = data.TryGetValueSafe<string>("content");
+			if(node["entry"] != null)
+			{
+				this._Entry = ObjectFactory.Create<BaseEntry>(node["entry"]);
+			}
+			if(node["startTime"] != null)
+			{
+				this._StartTime = ParseInt(node["startTime"].Value<string>());
+			}
+			if(node["endTime"] != null)
+			{
+				this._EndTime = ParseInt(node["endTime"].Value<string>());
+			}
+			if(node["content"] != null)
+			{
+				this._Content = node["content"].Value<string>();
+			}
 		}
 		#endregion
 

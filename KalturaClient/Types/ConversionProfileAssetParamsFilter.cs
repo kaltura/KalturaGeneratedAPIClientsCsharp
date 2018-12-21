@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public ConversionProfileFilter ConversionProfileIdFilter
 		{
 			get { return _ConversionProfileIdFilter; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionProfileIdFilter");
 			}
 		}
+		[JsonProperty]
 		public AssetParamsFilter AssetParamsIdFilter
 		{
 			get { return _AssetParamsIdFilter; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetParamsIdFilter");
 			}
 		}
+		[JsonProperty]
 		public new ConversionProfileAssetParamsOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ConversionProfileAssetParamsFilter(XmlElement node) : base(node)
+		public ConversionProfileAssetParamsFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["conversionProfileIdFilter"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "conversionProfileIdFilter":
-						this._ConversionProfileIdFilter = ObjectFactory.Create<ConversionProfileFilter>(propertyNode);
-						continue;
-					case "assetParamsIdFilter":
-						this._AssetParamsIdFilter = ObjectFactory.Create<AssetParamsFilter>(propertyNode);
-						continue;
-					case "orderBy":
-						this._OrderBy = (ConversionProfileAssetParamsOrderBy)StringEnum.Parse(typeof(ConversionProfileAssetParamsOrderBy), propertyNode.InnerText);
-						continue;
-				}
+				this._ConversionProfileIdFilter = ObjectFactory.Create<ConversionProfileFilter>(node["conversionProfileIdFilter"]);
 			}
-		}
-
-		public ConversionProfileAssetParamsFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._ConversionProfileIdFilter = ObjectFactory.Create<ConversionProfileFilter>(data.TryGetValueSafe<IDictionary<string,object>>("conversionProfileIdFilter"));
-			    this._AssetParamsIdFilter = ObjectFactory.Create<AssetParamsFilter>(data.TryGetValueSafe<IDictionary<string,object>>("assetParamsIdFilter"));
-			    this._OrderBy = (ConversionProfileAssetParamsOrderBy)StringEnum.Parse(typeof(ConversionProfileAssetParamsOrderBy), data.TryGetValueSafe<string>("orderBy"));
+			if(node["assetParamsIdFilter"] != null)
+			{
+				this._AssetParamsIdFilter = ObjectFactory.Create<AssetParamsFilter>(node["assetParamsIdFilter"]);
+			}
+			if(node["orderBy"] != null)
+			{
+				this._OrderBy = (ConversionProfileAssetParamsOrderBy)StringEnum.Parse(typeof(ConversionProfileAssetParamsOrderBy), node["orderBy"].Value<string>());
+			}
 		}
 		#endregion
 

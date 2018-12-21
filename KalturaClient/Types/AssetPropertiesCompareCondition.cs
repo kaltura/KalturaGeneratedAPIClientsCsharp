@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public IList<KeyValue> Properties
 		{
 			get { return _Properties; }
@@ -60,31 +63,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AssetPropertiesCompareCondition(XmlElement node) : base(node)
+		public AssetPropertiesCompareCondition(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["properties"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Properties = new List<KeyValue>();
+				foreach(var arrayNode in node["properties"].Children())
 				{
-					case "properties":
-						this._Properties = new List<KeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Properties.Add(ObjectFactory.Create<KeyValue>(arrayNode));
-						}
-						continue;
+					this._Properties.Add(ObjectFactory.Create<KeyValue>(arrayNode));
 				}
 			}
-		}
-
-		public AssetPropertiesCompareCondition(IDictionary<string,object> data) : base(data)
-		{
-			    this._Properties = new List<KeyValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("properties", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Properties.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

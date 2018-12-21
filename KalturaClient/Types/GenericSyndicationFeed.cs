@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string FeedDescription
 		{
 			get { return _FeedDescription; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedDescription");
 			}
 		}
+		[JsonProperty]
 		public string FeedLandingPage
 		{
 			get { return _FeedLandingPage; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedLandingPage");
 			}
 		}
+		[JsonProperty]
 		public BaseEntryFilter EntryFilter
 		{
 			get { return _EntryFilter; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryFilter");
 			}
 		}
+		[JsonProperty]
 		public int PageSize
 		{
 			get { return _PageSize; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public GenericSyndicationFeed(XmlElement node) : base(node)
+		public GenericSyndicationFeed(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["feedDescription"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "feedDescription":
-						this._FeedDescription = propertyNode.InnerText;
-						continue;
-					case "feedLandingPage":
-						this._FeedLandingPage = propertyNode.InnerText;
-						continue;
-					case "entryFilter":
-						this._EntryFilter = ObjectFactory.Create<BaseEntryFilter>(propertyNode);
-						continue;
-					case "pageSize":
-						this._PageSize = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._FeedDescription = node["feedDescription"].Value<string>();
 			}
-		}
-
-		public GenericSyndicationFeed(IDictionary<string,object> data) : base(data)
-		{
-			    this._FeedDescription = data.TryGetValueSafe<string>("feedDescription");
-			    this._FeedLandingPage = data.TryGetValueSafe<string>("feedLandingPage");
-			    this._EntryFilter = ObjectFactory.Create<BaseEntryFilter>(data.TryGetValueSafe<IDictionary<string,object>>("entryFilter"));
-			    this._PageSize = data.TryGetValueSafe<int>("pageSize");
+			if(node["feedLandingPage"] != null)
+			{
+				this._FeedLandingPage = node["feedLandingPage"].Value<string>();
+			}
+			if(node["entryFilter"] != null)
+			{
+				this._EntryFilter = ObjectFactory.Create<BaseEntryFilter>(node["entryFilter"]);
+			}
+			if(node["pageSize"] != null)
+			{
+				this._PageSize = ParseInt(node["pageSize"].Value<string>());
+			}
 		}
 		#endregion
 

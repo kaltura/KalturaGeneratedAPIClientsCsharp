@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -54,6 +56,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int AssetParamsId
 		{
 			get { return _AssetParamsId; }
@@ -63,6 +66,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetParamsId");
 			}
 		}
+		[JsonProperty]
 		public string AssetParamsVersion
 		{
 			get { return _AssetParamsVersion; }
@@ -72,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetParamsVersion");
 			}
 		}
+		[JsonProperty]
 		public string AssetId
 		{
 			get { return _AssetId; }
@@ -81,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetId");
 			}
 		}
+		[JsonProperty]
 		public string AssetVersion
 		{
 			get { return _AssetVersion; }
@@ -90,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetVersion");
 			}
 		}
+		[JsonProperty]
 		public int ReadyBehavior
 		{
 			get { return _ReadyBehavior; }
@@ -99,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReadyBehavior");
 			}
 		}
+		[JsonProperty]
 		public ContainerFormat Format
 		{
 			get { return _Format; }
@@ -115,42 +123,32 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AssetParamsOutput(XmlElement node) : base(node)
+		public AssetParamsOutput(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["assetParamsId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "assetParamsId":
-						this._AssetParamsId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "assetParamsVersion":
-						this._AssetParamsVersion = propertyNode.InnerText;
-						continue;
-					case "assetId":
-						this._AssetId = propertyNode.InnerText;
-						continue;
-					case "assetVersion":
-						this._AssetVersion = propertyNode.InnerText;
-						continue;
-					case "readyBehavior":
-						this._ReadyBehavior = ParseInt(propertyNode.InnerText);
-						continue;
-					case "format":
-						this._Format = (ContainerFormat)StringEnum.Parse(typeof(ContainerFormat), propertyNode.InnerText);
-						continue;
-				}
+				this._AssetParamsId = ParseInt(node["assetParamsId"].Value<string>());
 			}
-		}
-
-		public AssetParamsOutput(IDictionary<string,object> data) : base(data)
-		{
-			    this._AssetParamsId = data.TryGetValueSafe<int>("assetParamsId");
-			    this._AssetParamsVersion = data.TryGetValueSafe<string>("assetParamsVersion");
-			    this._AssetId = data.TryGetValueSafe<string>("assetId");
-			    this._AssetVersion = data.TryGetValueSafe<string>("assetVersion");
-			    this._ReadyBehavior = data.TryGetValueSafe<int>("readyBehavior");
-			    this._Format = (ContainerFormat)StringEnum.Parse(typeof(ContainerFormat), data.TryGetValueSafe<string>("format"));
+			if(node["assetParamsVersion"] != null)
+			{
+				this._AssetParamsVersion = node["assetParamsVersion"].Value<string>();
+			}
+			if(node["assetId"] != null)
+			{
+				this._AssetId = node["assetId"].Value<string>();
+			}
+			if(node["assetVersion"] != null)
+			{
+				this._AssetVersion = node["assetVersion"].Value<string>();
+			}
+			if(node["readyBehavior"] != null)
+			{
+				this._ReadyBehavior = ParseInt(node["readyBehavior"].Value<string>());
+			}
+			if(node["format"] != null)
+			{
+				this._Format = (ContainerFormat)StringEnum.Parse(typeof(ContainerFormat), node["format"].Value<string>());
+			}
 		}
 		#endregion
 

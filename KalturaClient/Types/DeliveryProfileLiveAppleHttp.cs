@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public bool? DisableExtraAttributes
 		{
 			get { return _DisableExtraAttributes; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DisableExtraAttributes");
 			}
 		}
+		[JsonProperty]
 		public bool? ForceProxy
 		{
 			get { return _ForceProxy; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DeliveryProfileLiveAppleHttp(XmlElement node) : base(node)
+		public DeliveryProfileLiveAppleHttp(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["disableExtraAttributes"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "disableExtraAttributes":
-						this._DisableExtraAttributes = ParseBool(propertyNode.InnerText);
-						continue;
-					case "forceProxy":
-						this._ForceProxy = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._DisableExtraAttributes = ParseBool(node["disableExtraAttributes"].Value<string>());
 			}
-		}
-
-		public DeliveryProfileLiveAppleHttp(IDictionary<string,object> data) : base(data)
-		{
-			    this._DisableExtraAttributes = data.TryGetValueSafe<bool>("disableExtraAttributes");
-			    this._ForceProxy = data.TryGetValueSafe<bool>("forceProxy");
+			if(node["forceProxy"] != null)
+			{
+				this._ForceProxy = ParseBool(node["forceProxy"].Value<string>());
+			}
 		}
 		#endregion
 

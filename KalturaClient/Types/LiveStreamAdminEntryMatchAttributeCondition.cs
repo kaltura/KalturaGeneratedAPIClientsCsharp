@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public LiveStreamAdminEntryMatchAttribute Attribute
 		{
 			get { return _Attribute; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public LiveStreamAdminEntryMatchAttributeCondition(XmlElement node) : base(node)
+		public LiveStreamAdminEntryMatchAttributeCondition(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["attribute"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "attribute":
-						this._Attribute = (LiveStreamAdminEntryMatchAttribute)StringEnum.Parse(typeof(LiveStreamAdminEntryMatchAttribute), propertyNode.InnerText);
-						continue;
-				}
+				this._Attribute = (LiveStreamAdminEntryMatchAttribute)StringEnum.Parse(typeof(LiveStreamAdminEntryMatchAttribute), node["attribute"].Value<string>());
 			}
-		}
-
-		public LiveStreamAdminEntryMatchAttributeCondition(IDictionary<string,object> data) : base(data)
-		{
-			    this._Attribute = (LiveStreamAdminEntryMatchAttribute)StringEnum.Parse(typeof(LiveStreamAdminEntryMatchAttribute), data.TryGetValueSafe<string>("attribute"));
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -82,6 +84,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int IdEqual
 		{
 			get { return _IdEqual; }
@@ -91,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		[JsonProperty]
 		public string IdIn
 		{
 			get { return _IdIn; }
@@ -100,6 +104,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
 			get { return _CreatedAtGreaterThanOrEqual; }
@@ -109,6 +114,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
 			get { return _CreatedAtLessThanOrEqual; }
@@ -118,6 +124,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
 			get { return _UpdatedAtGreaterThanOrEqual; }
@@ -127,6 +134,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
 			get { return _UpdatedAtLessThanOrEqual; }
@@ -136,6 +144,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int SubmittedAtGreaterThanOrEqual
 		{
 			get { return _SubmittedAtGreaterThanOrEqual; }
@@ -145,6 +154,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SubmittedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int SubmittedAtLessThanOrEqual
 		{
 			get { return _SubmittedAtLessThanOrEqual; }
@@ -154,6 +164,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SubmittedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public string EntryIdEqual
 		{
 			get { return _EntryIdEqual; }
@@ -163,6 +174,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string EntryIdIn
 		{
 			get { return _EntryIdIn; }
@@ -172,6 +184,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdIn");
 			}
 		}
+		[JsonProperty]
 		public int DistributionProfileIdEqual
 		{
 			get { return _DistributionProfileIdEqual; }
@@ -181,6 +194,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributionProfileIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string DistributionProfileIdIn
 		{
 			get { return _DistributionProfileIdIn; }
@@ -190,6 +204,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributionProfileIdIn");
 			}
 		}
+		[JsonProperty]
 		public EntryDistributionStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -199,6 +214,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -208,6 +224,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		[JsonProperty]
 		public EntryDistributionFlag DirtyStatusEqual
 		{
 			get { return _DirtyStatusEqual; }
@@ -217,6 +234,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DirtyStatusEqual");
 			}
 		}
+		[JsonProperty]
 		public string DirtyStatusIn
 		{
 			get { return _DirtyStatusIn; }
@@ -226,6 +244,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DirtyStatusIn");
 			}
 		}
+		[JsonProperty]
 		public int SunriseGreaterThanOrEqual
 		{
 			get { return _SunriseGreaterThanOrEqual; }
@@ -235,6 +254,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SunriseGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int SunriseLessThanOrEqual
 		{
 			get { return _SunriseLessThanOrEqual; }
@@ -244,6 +264,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SunriseLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int SunsetGreaterThanOrEqual
 		{
 			get { return _SunsetGreaterThanOrEqual; }
@@ -253,6 +274,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SunsetGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int SunsetLessThanOrEqual
 		{
 			get { return _SunsetLessThanOrEqual; }
@@ -269,98 +291,88 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EntryDistributionBaseFilter(XmlElement node) : base(node)
+		public EntryDistributionBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["idEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "idEqual":
-						this._IdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "idIn":
-						this._IdIn = propertyNode.InnerText;
-						continue;
-					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "submittedAtGreaterThanOrEqual":
-						this._SubmittedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "submittedAtLessThanOrEqual":
-						this._SubmittedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "entryIdEqual":
-						this._EntryIdEqual = propertyNode.InnerText;
-						continue;
-					case "entryIdIn":
-						this._EntryIdIn = propertyNode.InnerText;
-						continue;
-					case "distributionProfileIdEqual":
-						this._DistributionProfileIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "distributionProfileIdIn":
-						this._DistributionProfileIdIn = propertyNode.InnerText;
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (EntryDistributionStatus)ParseEnum(typeof(EntryDistributionStatus), propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-					case "dirtyStatusEqual":
-						this._DirtyStatusEqual = (EntryDistributionFlag)ParseEnum(typeof(EntryDistributionFlag), propertyNode.InnerText);
-						continue;
-					case "dirtyStatusIn":
-						this._DirtyStatusIn = propertyNode.InnerText;
-						continue;
-					case "sunriseGreaterThanOrEqual":
-						this._SunriseGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "sunriseLessThanOrEqual":
-						this._SunriseLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "sunsetGreaterThanOrEqual":
-						this._SunsetGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "sunsetLessThanOrEqual":
-						this._SunsetLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._IdEqual = ParseInt(node["idEqual"].Value<string>());
 			}
-		}
-
-		public EntryDistributionBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
-			    this._IdIn = data.TryGetValueSafe<string>("idIn");
-			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
-			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
-			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
-			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
-			    this._SubmittedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("submittedAtGreaterThanOrEqual");
-			    this._SubmittedAtLessThanOrEqual = data.TryGetValueSafe<int>("submittedAtLessThanOrEqual");
-			    this._EntryIdEqual = data.TryGetValueSafe<string>("entryIdEqual");
-			    this._EntryIdIn = data.TryGetValueSafe<string>("entryIdIn");
-			    this._DistributionProfileIdEqual = data.TryGetValueSafe<int>("distributionProfileIdEqual");
-			    this._DistributionProfileIdIn = data.TryGetValueSafe<string>("distributionProfileIdIn");
-			    this._StatusEqual = (EntryDistributionStatus)ParseEnum(typeof(EntryDistributionStatus), data.TryGetValueSafe<int>("statusEqual"));
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
-			    this._DirtyStatusEqual = (EntryDistributionFlag)ParseEnum(typeof(EntryDistributionFlag), data.TryGetValueSafe<int>("dirtyStatusEqual"));
-			    this._DirtyStatusIn = data.TryGetValueSafe<string>("dirtyStatusIn");
-			    this._SunriseGreaterThanOrEqual = data.TryGetValueSafe<int>("sunriseGreaterThanOrEqual");
-			    this._SunriseLessThanOrEqual = data.TryGetValueSafe<int>("sunriseLessThanOrEqual");
-			    this._SunsetGreaterThanOrEqual = data.TryGetValueSafe<int>("sunsetGreaterThanOrEqual");
-			    this._SunsetLessThanOrEqual = data.TryGetValueSafe<int>("sunsetLessThanOrEqual");
+			if(node["idIn"] != null)
+			{
+				this._IdIn = node["idIn"].Value<string>();
+			}
+			if(node["createdAtGreaterThanOrEqual"] != null)
+			{
+				this._CreatedAtGreaterThanOrEqual = ParseInt(node["createdAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["createdAtLessThanOrEqual"] != null)
+			{
+				this._CreatedAtLessThanOrEqual = ParseInt(node["createdAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtGreaterThanOrEqual"] != null)
+			{
+				this._UpdatedAtGreaterThanOrEqual = ParseInt(node["updatedAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtLessThanOrEqual"] != null)
+			{
+				this._UpdatedAtLessThanOrEqual = ParseInt(node["updatedAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["submittedAtGreaterThanOrEqual"] != null)
+			{
+				this._SubmittedAtGreaterThanOrEqual = ParseInt(node["submittedAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["submittedAtLessThanOrEqual"] != null)
+			{
+				this._SubmittedAtLessThanOrEqual = ParseInt(node["submittedAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["entryIdEqual"] != null)
+			{
+				this._EntryIdEqual = node["entryIdEqual"].Value<string>();
+			}
+			if(node["entryIdIn"] != null)
+			{
+				this._EntryIdIn = node["entryIdIn"].Value<string>();
+			}
+			if(node["distributionProfileIdEqual"] != null)
+			{
+				this._DistributionProfileIdEqual = ParseInt(node["distributionProfileIdEqual"].Value<string>());
+			}
+			if(node["distributionProfileIdIn"] != null)
+			{
+				this._DistributionProfileIdIn = node["distributionProfileIdIn"].Value<string>();
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (EntryDistributionStatus)ParseEnum(typeof(EntryDistributionStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
+			if(node["dirtyStatusEqual"] != null)
+			{
+				this._DirtyStatusEqual = (EntryDistributionFlag)ParseEnum(typeof(EntryDistributionFlag), node["dirtyStatusEqual"].Value<string>());
+			}
+			if(node["dirtyStatusIn"] != null)
+			{
+				this._DirtyStatusIn = node["dirtyStatusIn"].Value<string>();
+			}
+			if(node["sunriseGreaterThanOrEqual"] != null)
+			{
+				this._SunriseGreaterThanOrEqual = ParseInt(node["sunriseGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["sunriseLessThanOrEqual"] != null)
+			{
+				this._SunriseLessThanOrEqual = ParseInt(node["sunriseLessThanOrEqual"].Value<string>());
+			}
+			if(node["sunsetGreaterThanOrEqual"] != null)
+			{
+				this._SunsetGreaterThanOrEqual = ParseInt(node["sunsetGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["sunsetLessThanOrEqual"] != null)
+			{
+				this._SunsetLessThanOrEqual = ParseInt(node["sunsetLessThanOrEqual"].Value<string>());
+			}
 		}
 		#endregion
 

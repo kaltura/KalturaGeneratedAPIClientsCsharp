@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -118,38 +120,87 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public long Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public int DeletedAt
 		{
 			get { return _DeletedAt; }
+			private set 
+			{ 
+				_DeletedAt = value;
+				OnPropertyChanged("DeletedAt");
+			}
 		}
+		[JsonProperty]
 		public int LockExpiration
 		{
 			get { return _LockExpiration; }
+			private set 
+			{ 
+				_LockExpiration = value;
+				OnPropertyChanged("LockExpiration");
+			}
 		}
+		[JsonProperty]
 		public int ExecutionAttempts
 		{
 			get { return _ExecutionAttempts; }
+			private set 
+			{ 
+				_ExecutionAttempts = value;
+				OnPropertyChanged("ExecutionAttempts");
+			}
 		}
+		[JsonProperty]
 		public int LockVersion
 		{
 			get { return _LockVersion; }
+			private set 
+			{ 
+				_LockVersion = value;
+				OnPropertyChanged("LockVersion");
+			}
 		}
+		[JsonProperty]
 		public string EntryId
 		{
 			get { return _EntryId; }
@@ -159,6 +210,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		[JsonProperty]
 		public string EntryName
 		{
 			get { return _EntryName; }
@@ -168,10 +220,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryName");
 			}
 		}
+		[JsonProperty]
 		public BatchJobType JobType
 		{
 			get { return _JobType; }
+			private set 
+			{ 
+				_JobType = value;
+				OnPropertyChanged("JobType");
+			}
 		}
+		[JsonProperty]
 		public int JobSubType
 		{
 			get { return _JobSubType; }
@@ -181,6 +240,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("JobSubType");
 			}
 		}
+		[JsonProperty]
 		public JobData Data
 		{
 			get { return _Data; }
@@ -190,6 +250,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Data");
 			}
 		}
+		[JsonProperty]
 		public BatchJobStatus Status
 		{
 			get { return _Status; }
@@ -199,6 +260,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		[JsonProperty]
 		public int Abort
 		{
 			get { return _Abort; }
@@ -208,6 +270,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Abort");
 			}
 		}
+		[JsonProperty]
 		public int CheckAgainTimeout
 		{
 			get { return _CheckAgainTimeout; }
@@ -217,6 +280,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CheckAgainTimeout");
 			}
 		}
+		[JsonProperty]
 		public string Message
 		{
 			get { return _Message; }
@@ -226,6 +290,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Message");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -235,6 +300,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public int Priority
 		{
 			get { return _Priority; }
@@ -244,6 +310,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Priority");
 			}
 		}
+		[JsonProperty]
 		public IList<BatchHistoryData> History
 		{
 			get { return _History; }
@@ -253,6 +320,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("History");
 			}
 		}
+		[JsonProperty]
 		public int BulkJobId
 		{
 			get { return _BulkJobId; }
@@ -262,6 +330,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BulkJobId");
 			}
 		}
+		[JsonProperty]
 		public int BatchVersion
 		{
 			get { return _BatchVersion; }
@@ -271,6 +340,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BatchVersion");
 			}
 		}
+		[JsonProperty]
 		public int ParentJobId
 		{
 			get { return _ParentJobId; }
@@ -280,6 +350,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentJobId");
 			}
 		}
+		[JsonProperty]
 		public int RootJobId
 		{
 			get { return _RootJobId; }
@@ -289,6 +360,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RootJobId");
 			}
 		}
+		[JsonProperty]
 		public int QueueTime
 		{
 			get { return _QueueTime; }
@@ -298,6 +370,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("QueueTime");
 			}
 		}
+		[JsonProperty]
 		public int FinishTime
 		{
 			get { return _FinishTime; }
@@ -307,6 +380,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FinishTime");
 			}
 		}
+		[JsonProperty]
 		public BatchJobErrorTypes ErrType
 		{
 			get { return _ErrType; }
@@ -316,6 +390,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrType");
 			}
 		}
+		[JsonProperty]
 		public int ErrNumber
 		{
 			get { return _ErrNumber; }
@@ -325,6 +400,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrNumber");
 			}
 		}
+		[JsonProperty]
 		public int EstimatedEffort
 		{
 			get { return _EstimatedEffort; }
@@ -334,6 +410,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EstimatedEffort");
 			}
 		}
+		[JsonProperty]
 		public int Urgency
 		{
 			get { return _Urgency; }
@@ -343,6 +420,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Urgency");
 			}
 		}
+		[JsonProperty]
 		public int SchedulerId
 		{
 			get { return _SchedulerId; }
@@ -352,6 +430,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SchedulerId");
 			}
 		}
+		[JsonProperty]
 		public int WorkerId
 		{
 			get { return _WorkerId; }
@@ -361,6 +440,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WorkerId");
 			}
 		}
+		[JsonProperty]
 		public int BatchIndex
 		{
 			get { return _BatchIndex; }
@@ -370,6 +450,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BatchIndex");
 			}
 		}
+		[JsonProperty]
 		public int LastSchedulerId
 		{
 			get { return _LastSchedulerId; }
@@ -379,6 +460,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastSchedulerId");
 			}
 		}
+		[JsonProperty]
 		public int LastWorkerId
 		{
 			get { return _LastWorkerId; }
@@ -388,6 +470,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastWorkerId");
 			}
 		}
+		[JsonProperty]
 		public int Dc
 		{
 			get { return _Dc; }
@@ -397,6 +480,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Dc");
 			}
 		}
+		[JsonProperty]
 		public string JobObjectId
 		{
 			get { return _JobObjectId; }
@@ -406,6 +490,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("JobObjectId");
 			}
 		}
+		[JsonProperty]
 		public int JobObjectType
 		{
 			get { return _JobObjectType; }
@@ -422,179 +507,164 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BatchJob(XmlElement node) : base(node)
+		public BatchJob(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Id = ParseLong(node["id"].Value<string>());
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["deletedAt"] != null)
+			{
+				this._DeletedAt = ParseInt(node["deletedAt"].Value<string>());
+			}
+			if(node["lockExpiration"] != null)
+			{
+				this._LockExpiration = ParseInt(node["lockExpiration"].Value<string>());
+			}
+			if(node["executionAttempts"] != null)
+			{
+				this._ExecutionAttempts = ParseInt(node["executionAttempts"].Value<string>());
+			}
+			if(node["lockVersion"] != null)
+			{
+				this._LockVersion = ParseInt(node["lockVersion"].Value<string>());
+			}
+			if(node["entryId"] != null)
+			{
+				this._EntryId = node["entryId"].Value<string>();
+			}
+			if(node["entryName"] != null)
+			{
+				this._EntryName = node["entryName"].Value<string>();
+			}
+			if(node["jobType"] != null)
+			{
+				this._JobType = (BatchJobType)StringEnum.Parse(typeof(BatchJobType), node["jobType"].Value<string>());
+			}
+			if(node["jobSubType"] != null)
+			{
+				this._JobSubType = ParseInt(node["jobSubType"].Value<string>());
+			}
+			if(node["data"] != null)
+			{
+				this._Data = ObjectFactory.Create<JobData>(node["data"]);
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (BatchJobStatus)ParseEnum(typeof(BatchJobStatus), node["status"].Value<string>());
+			}
+			if(node["abort"] != null)
+			{
+				this._Abort = ParseInt(node["abort"].Value<string>());
+			}
+			if(node["checkAgainTimeout"] != null)
+			{
+				this._CheckAgainTimeout = ParseInt(node["checkAgainTimeout"].Value<string>());
+			}
+			if(node["message"] != null)
+			{
+				this._Message = node["message"].Value<string>();
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["priority"] != null)
+			{
+				this._Priority = ParseInt(node["priority"].Value<string>());
+			}
+			if(node["history"] != null)
+			{
+				this._History = new List<BatchHistoryData>();
+				foreach(var arrayNode in node["history"].Children())
 				{
-					case "id":
-						this._Id = ParseLong(propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "deletedAt":
-						this._DeletedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "lockExpiration":
-						this._LockExpiration = ParseInt(propertyNode.InnerText);
-						continue;
-					case "executionAttempts":
-						this._ExecutionAttempts = ParseInt(propertyNode.InnerText);
-						continue;
-					case "lockVersion":
-						this._LockVersion = ParseInt(propertyNode.InnerText);
-						continue;
-					case "entryId":
-						this._EntryId = propertyNode.InnerText;
-						continue;
-					case "entryName":
-						this._EntryName = propertyNode.InnerText;
-						continue;
-					case "jobType":
-						this._JobType = (BatchJobType)StringEnum.Parse(typeof(BatchJobType), propertyNode.InnerText);
-						continue;
-					case "jobSubType":
-						this._JobSubType = ParseInt(propertyNode.InnerText);
-						continue;
-					case "data":
-						this._Data = ObjectFactory.Create<JobData>(propertyNode);
-						continue;
-					case "status":
-						this._Status = (BatchJobStatus)ParseEnum(typeof(BatchJobStatus), propertyNode.InnerText);
-						continue;
-					case "abort":
-						this._Abort = ParseInt(propertyNode.InnerText);
-						continue;
-					case "checkAgainTimeout":
-						this._CheckAgainTimeout = ParseInt(propertyNode.InnerText);
-						continue;
-					case "message":
-						this._Message = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "priority":
-						this._Priority = ParseInt(propertyNode.InnerText);
-						continue;
-					case "history":
-						this._History = new List<BatchHistoryData>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._History.Add(ObjectFactory.Create<BatchHistoryData>(arrayNode));
-						}
-						continue;
-					case "bulkJobId":
-						this._BulkJobId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "batchVersion":
-						this._BatchVersion = ParseInt(propertyNode.InnerText);
-						continue;
-					case "parentJobId":
-						this._ParentJobId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "rootJobId":
-						this._RootJobId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "queueTime":
-						this._QueueTime = ParseInt(propertyNode.InnerText);
-						continue;
-					case "finishTime":
-						this._FinishTime = ParseInt(propertyNode.InnerText);
-						continue;
-					case "errType":
-						this._ErrType = (BatchJobErrorTypes)ParseEnum(typeof(BatchJobErrorTypes), propertyNode.InnerText);
-						continue;
-					case "errNumber":
-						this._ErrNumber = ParseInt(propertyNode.InnerText);
-						continue;
-					case "estimatedEffort":
-						this._EstimatedEffort = ParseInt(propertyNode.InnerText);
-						continue;
-					case "urgency":
-						this._Urgency = ParseInt(propertyNode.InnerText);
-						continue;
-					case "schedulerId":
-						this._SchedulerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "workerId":
-						this._WorkerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "batchIndex":
-						this._BatchIndex = ParseInt(propertyNode.InnerText);
-						continue;
-					case "lastSchedulerId":
-						this._LastSchedulerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "lastWorkerId":
-						this._LastWorkerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "dc":
-						this._Dc = ParseInt(propertyNode.InnerText);
-						continue;
-					case "jobObjectId":
-						this._JobObjectId = propertyNode.InnerText;
-						continue;
-					case "jobObjectType":
-						this._JobObjectType = ParseInt(propertyNode.InnerText);
-						continue;
+					this._History.Add(ObjectFactory.Create<BatchHistoryData>(arrayNode));
 				}
 			}
-		}
-
-		public BatchJob(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<long>("id");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._DeletedAt = data.TryGetValueSafe<int>("deletedAt");
-			    this._LockExpiration = data.TryGetValueSafe<int>("lockExpiration");
-			    this._ExecutionAttempts = data.TryGetValueSafe<int>("executionAttempts");
-			    this._LockVersion = data.TryGetValueSafe<int>("lockVersion");
-			    this._EntryId = data.TryGetValueSafe<string>("entryId");
-			    this._EntryName = data.TryGetValueSafe<string>("entryName");
-			    this._JobType = (BatchJobType)StringEnum.Parse(typeof(BatchJobType), data.TryGetValueSafe<string>("jobType"));
-			    this._JobSubType = data.TryGetValueSafe<int>("jobSubType");
-			    this._Data = ObjectFactory.Create<JobData>(data.TryGetValueSafe<IDictionary<string,object>>("data"));
-			    this._Status = (BatchJobStatus)ParseEnum(typeof(BatchJobStatus), data.TryGetValueSafe<int>("status"));
-			    this._Abort = data.TryGetValueSafe<int>("abort");
-			    this._CheckAgainTimeout = data.TryGetValueSafe<int>("checkAgainTimeout");
-			    this._Message = data.TryGetValueSafe<string>("message");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._Priority = data.TryGetValueSafe<int>("priority");
-			    this._History = new List<BatchHistoryData>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("history", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._History.Add(ObjectFactory.Create<BatchHistoryData>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._BulkJobId = data.TryGetValueSafe<int>("bulkJobId");
-			    this._BatchVersion = data.TryGetValueSafe<int>("batchVersion");
-			    this._ParentJobId = data.TryGetValueSafe<int>("parentJobId");
-			    this._RootJobId = data.TryGetValueSafe<int>("rootJobId");
-			    this._QueueTime = data.TryGetValueSafe<int>("queueTime");
-			    this._FinishTime = data.TryGetValueSafe<int>("finishTime");
-			    this._ErrType = (BatchJobErrorTypes)ParseEnum(typeof(BatchJobErrorTypes), data.TryGetValueSafe<int>("errType"));
-			    this._ErrNumber = data.TryGetValueSafe<int>("errNumber");
-			    this._EstimatedEffort = data.TryGetValueSafe<int>("estimatedEffort");
-			    this._Urgency = data.TryGetValueSafe<int>("urgency");
-			    this._SchedulerId = data.TryGetValueSafe<int>("schedulerId");
-			    this._WorkerId = data.TryGetValueSafe<int>("workerId");
-			    this._BatchIndex = data.TryGetValueSafe<int>("batchIndex");
-			    this._LastSchedulerId = data.TryGetValueSafe<int>("lastSchedulerId");
-			    this._LastWorkerId = data.TryGetValueSafe<int>("lastWorkerId");
-			    this._Dc = data.TryGetValueSafe<int>("dc");
-			    this._JobObjectId = data.TryGetValueSafe<string>("jobObjectId");
-			    this._JobObjectType = data.TryGetValueSafe<int>("jobObjectType");
+			if(node["bulkJobId"] != null)
+			{
+				this._BulkJobId = ParseInt(node["bulkJobId"].Value<string>());
+			}
+			if(node["batchVersion"] != null)
+			{
+				this._BatchVersion = ParseInt(node["batchVersion"].Value<string>());
+			}
+			if(node["parentJobId"] != null)
+			{
+				this._ParentJobId = ParseInt(node["parentJobId"].Value<string>());
+			}
+			if(node["rootJobId"] != null)
+			{
+				this._RootJobId = ParseInt(node["rootJobId"].Value<string>());
+			}
+			if(node["queueTime"] != null)
+			{
+				this._QueueTime = ParseInt(node["queueTime"].Value<string>());
+			}
+			if(node["finishTime"] != null)
+			{
+				this._FinishTime = ParseInt(node["finishTime"].Value<string>());
+			}
+			if(node["errType"] != null)
+			{
+				this._ErrType = (BatchJobErrorTypes)ParseEnum(typeof(BatchJobErrorTypes), node["errType"].Value<string>());
+			}
+			if(node["errNumber"] != null)
+			{
+				this._ErrNumber = ParseInt(node["errNumber"].Value<string>());
+			}
+			if(node["estimatedEffort"] != null)
+			{
+				this._EstimatedEffort = ParseInt(node["estimatedEffort"].Value<string>());
+			}
+			if(node["urgency"] != null)
+			{
+				this._Urgency = ParseInt(node["urgency"].Value<string>());
+			}
+			if(node["schedulerId"] != null)
+			{
+				this._SchedulerId = ParseInt(node["schedulerId"].Value<string>());
+			}
+			if(node["workerId"] != null)
+			{
+				this._WorkerId = ParseInt(node["workerId"].Value<string>());
+			}
+			if(node["batchIndex"] != null)
+			{
+				this._BatchIndex = ParseInt(node["batchIndex"].Value<string>());
+			}
+			if(node["lastSchedulerId"] != null)
+			{
+				this._LastSchedulerId = ParseInt(node["lastSchedulerId"].Value<string>());
+			}
+			if(node["lastWorkerId"] != null)
+			{
+				this._LastWorkerId = ParseInt(node["lastWorkerId"].Value<string>());
+			}
+			if(node["dc"] != null)
+			{
+				this._Dc = ParseInt(node["dc"].Value<string>());
+			}
+			if(node["jobObjectId"] != null)
+			{
+				this._JobObjectId = node["jobObjectId"].Value<string>();
+			}
+			if(node["jobObjectType"] != null)
+			{
+				this._JobObjectType = ParseInt(node["jobObjectType"].Value<string>());
+			}
 		}
 		#endregion
 

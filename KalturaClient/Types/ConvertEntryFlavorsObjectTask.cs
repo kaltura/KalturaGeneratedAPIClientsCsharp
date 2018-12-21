@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string FlavorParamsIds
 		{
 			get { return _FlavorParamsIds; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsIds");
 			}
 		}
+		[JsonProperty]
 		public bool? Reconvert
 		{
 			get { return _Reconvert; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ConvertEntryFlavorsObjectTask(XmlElement node) : base(node)
+		public ConvertEntryFlavorsObjectTask(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["flavorParamsIds"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "flavorParamsIds":
-						this._FlavorParamsIds = propertyNode.InnerText;
-						continue;
-					case "reconvert":
-						this._Reconvert = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._FlavorParamsIds = node["flavorParamsIds"].Value<string>();
 			}
-		}
-
-		public ConvertEntryFlavorsObjectTask(IDictionary<string,object> data) : base(data)
-		{
-			    this._FlavorParamsIds = data.TryGetValueSafe<string>("flavorParamsIds");
-			    this._Reconvert = data.TryGetValueSafe<bool>("reconvert");
+			if(node["reconvert"] != null)
+			{
+				this._Reconvert = ParseBool(node["reconvert"].Value<string>());
+			}
 		}
 		#endregion
 

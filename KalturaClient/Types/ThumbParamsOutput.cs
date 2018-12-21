@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,6 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int ThumbParamsId
 		{
 			get { return _ThumbParamsId; }
@@ -61,6 +64,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbParamsId");
 			}
 		}
+		[JsonProperty]
 		public string ThumbParamsVersion
 		{
 			get { return _ThumbParamsVersion; }
@@ -70,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbParamsVersion");
 			}
 		}
+		[JsonProperty]
 		public string ThumbAssetId
 		{
 			get { return _ThumbAssetId; }
@@ -79,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbAssetId");
 			}
 		}
+		[JsonProperty]
 		public string ThumbAssetVersion
 		{
 			get { return _ThumbAssetVersion; }
@@ -88,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbAssetVersion");
 			}
 		}
+		[JsonProperty]
 		public int Rotate
 		{
 			get { return _Rotate; }
@@ -104,38 +111,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ThumbParamsOutput(XmlElement node) : base(node)
+		public ThumbParamsOutput(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["thumbParamsId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "thumbParamsId":
-						this._ThumbParamsId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "thumbParamsVersion":
-						this._ThumbParamsVersion = propertyNode.InnerText;
-						continue;
-					case "thumbAssetId":
-						this._ThumbAssetId = propertyNode.InnerText;
-						continue;
-					case "thumbAssetVersion":
-						this._ThumbAssetVersion = propertyNode.InnerText;
-						continue;
-					case "rotate":
-						this._Rotate = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._ThumbParamsId = ParseInt(node["thumbParamsId"].Value<string>());
 			}
-		}
-
-		public ThumbParamsOutput(IDictionary<string,object> data) : base(data)
-		{
-			    this._ThumbParamsId = data.TryGetValueSafe<int>("thumbParamsId");
-			    this._ThumbParamsVersion = data.TryGetValueSafe<string>("thumbParamsVersion");
-			    this._ThumbAssetId = data.TryGetValueSafe<string>("thumbAssetId");
-			    this._ThumbAssetVersion = data.TryGetValueSafe<string>("thumbAssetVersion");
-			    this._Rotate = data.TryGetValueSafe<int>("rotate");
+			if(node["thumbParamsVersion"] != null)
+			{
+				this._ThumbParamsVersion = node["thumbParamsVersion"].Value<string>();
+			}
+			if(node["thumbAssetId"] != null)
+			{
+				this._ThumbAssetId = node["thumbAssetId"].Value<string>();
+			}
+			if(node["thumbAssetVersion"] != null)
+			{
+				this._ThumbAssetVersion = node["thumbAssetVersion"].Value<string>();
+			}
+			if(node["rotate"] != null)
+			{
+				this._Rotate = ParseInt(node["rotate"].Value<string>());
+			}
 		}
 		#endregion
 

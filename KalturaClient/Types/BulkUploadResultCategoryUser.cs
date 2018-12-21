@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -54,6 +56,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int CategoryId
 		{
 			get { return _CategoryId; }
@@ -63,6 +66,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryId");
 			}
 		}
+		[JsonProperty]
 		public string CategoryReferenceId
 		{
 			get { return _CategoryReferenceId; }
@@ -72,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryReferenceId");
 			}
 		}
+		[JsonProperty]
 		public string UserId
 		{
 			get { return _UserId; }
@@ -81,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserId");
 			}
 		}
+		[JsonProperty]
 		public int PermissionLevel
 		{
 			get { return _PermissionLevel; }
@@ -90,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PermissionLevel");
 			}
 		}
+		[JsonProperty]
 		public int UpdateMethod
 		{
 			get { return _UpdateMethod; }
@@ -99,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdateMethod");
 			}
 		}
+		[JsonProperty]
 		public int RequiredObjectStatus
 		{
 			get { return _RequiredObjectStatus; }
@@ -115,42 +123,32 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BulkUploadResultCategoryUser(XmlElement node) : base(node)
+		public BulkUploadResultCategoryUser(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["categoryId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "categoryId":
-						this._CategoryId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "categoryReferenceId":
-						this._CategoryReferenceId = propertyNode.InnerText;
-						continue;
-					case "userId":
-						this._UserId = propertyNode.InnerText;
-						continue;
-					case "permissionLevel":
-						this._PermissionLevel = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updateMethod":
-						this._UpdateMethod = ParseInt(propertyNode.InnerText);
-						continue;
-					case "requiredObjectStatus":
-						this._RequiredObjectStatus = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._CategoryId = ParseInt(node["categoryId"].Value<string>());
 			}
-		}
-
-		public BulkUploadResultCategoryUser(IDictionary<string,object> data) : base(data)
-		{
-			    this._CategoryId = data.TryGetValueSafe<int>("categoryId");
-			    this._CategoryReferenceId = data.TryGetValueSafe<string>("categoryReferenceId");
-			    this._UserId = data.TryGetValueSafe<string>("userId");
-			    this._PermissionLevel = data.TryGetValueSafe<int>("permissionLevel");
-			    this._UpdateMethod = data.TryGetValueSafe<int>("updateMethod");
-			    this._RequiredObjectStatus = data.TryGetValueSafe<int>("requiredObjectStatus");
+			if(node["categoryReferenceId"] != null)
+			{
+				this._CategoryReferenceId = node["categoryReferenceId"].Value<string>();
+			}
+			if(node["userId"] != null)
+			{
+				this._UserId = node["userId"].Value<string>();
+			}
+			if(node["permissionLevel"] != null)
+			{
+				this._PermissionLevel = ParseInt(node["permissionLevel"].Value<string>());
+			}
+			if(node["updateMethod"] != null)
+			{
+				this._UpdateMethod = ParseInt(node["updateMethod"].Value<string>());
+			}
+			if(node["requiredObjectStatus"] != null)
+			{
+				this._RequiredObjectStatus = ParseInt(node["requiredObjectStatus"].Value<string>());
+			}
 		}
 		#endregion
 

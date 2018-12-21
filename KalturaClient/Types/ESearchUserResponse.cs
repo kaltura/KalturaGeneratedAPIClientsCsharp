@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,9 +46,15 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public IList<ESearchUserResult> Objects
 		{
 			get { return _Objects; }
+			private set 
+			{ 
+				_Objects = value;
+				OnPropertyChanged("Objects");
+			}
 		}
 		#endregion
 
@@ -55,31 +63,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ESearchUserResponse(XmlElement node) : base(node)
+		public ESearchUserResponse(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["objects"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Objects = new List<ESearchUserResult>();
+				foreach(var arrayNode in node["objects"].Children())
 				{
-					case "objects":
-						this._Objects = new List<ESearchUserResult>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Objects.Add(ObjectFactory.Create<ESearchUserResult>(arrayNode));
-						}
-						continue;
+					this._Objects.Add(ObjectFactory.Create<ESearchUserResult>(arrayNode));
 				}
 			}
-		}
-
-		public ESearchUserResponse(IDictionary<string,object> data) : base(data)
-		{
-			    this._Objects = new List<ESearchUserResult>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("objects", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Objects.Add(ObjectFactory.Create<ESearchUserResult>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

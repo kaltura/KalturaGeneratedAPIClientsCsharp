@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -60,6 +62,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public PlayReadyAnalogVideoOPL AnalogVideoOPL
 		{
 			get { return _AnalogVideoOPL; }
@@ -69,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AnalogVideoOPL");
 			}
 		}
+		[JsonProperty]
 		public IList<PlayReadyAnalogVideoOPIdHolder> AnalogVideoOutputProtectionList
 		{
 			get { return _AnalogVideoOutputProtectionList; }
@@ -78,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AnalogVideoOutputProtectionList");
 			}
 		}
+		[JsonProperty]
 		public PlayReadyDigitalAudioOPL CompressedDigitalAudioOPL
 		{
 			get { return _CompressedDigitalAudioOPL; }
@@ -87,6 +92,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CompressedDigitalAudioOPL");
 			}
 		}
+		[JsonProperty]
 		public PlayReadyCompressedDigitalVideoOPL CompressedDigitalVideoOPL
 		{
 			get { return _CompressedDigitalVideoOPL; }
@@ -96,6 +102,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CompressedDigitalVideoOPL");
 			}
 		}
+		[JsonProperty]
 		public IList<PlayReadyDigitalAudioOPIdHolder> DigitalAudioOutputProtectionList
 		{
 			get { return _DigitalAudioOutputProtectionList; }
@@ -105,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DigitalAudioOutputProtectionList");
 			}
 		}
+		[JsonProperty]
 		public PlayReadyDigitalAudioOPL UncompressedDigitalAudioOPL
 		{
 			get { return _UncompressedDigitalAudioOPL; }
@@ -114,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UncompressedDigitalAudioOPL");
 			}
 		}
+		[JsonProperty]
 		public PlayReadyUncompressedDigitalVideoOPL UncompressedDigitalVideoOPL
 		{
 			get { return _UncompressedDigitalVideoOPL; }
@@ -123,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UncompressedDigitalVideoOPL");
 			}
 		}
+		[JsonProperty]
 		public int FirstPlayExpiration
 		{
 			get { return _FirstPlayExpiration; }
@@ -132,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FirstPlayExpiration");
 			}
 		}
+		[JsonProperty]
 		public IList<PlayReadyPlayEnablerHolder> PlayEnablers
 		{
 			get { return _PlayEnablers; }
@@ -148,81 +159,56 @@ namespace Kaltura.Types
 		{
 		}
 
-		public PlayReadyPlayRight(XmlElement node) : base(node)
+		public PlayReadyPlayRight(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["analogVideoOPL"] != null)
 			{
-				switch (propertyNode.Name)
+				this._AnalogVideoOPL = (PlayReadyAnalogVideoOPL)ParseEnum(typeof(PlayReadyAnalogVideoOPL), node["analogVideoOPL"].Value<string>());
+			}
+			if(node["analogVideoOutputProtectionList"] != null)
+			{
+				this._AnalogVideoOutputProtectionList = new List<PlayReadyAnalogVideoOPIdHolder>();
+				foreach(var arrayNode in node["analogVideoOutputProtectionList"].Children())
 				{
-					case "analogVideoOPL":
-						this._AnalogVideoOPL = (PlayReadyAnalogVideoOPL)ParseEnum(typeof(PlayReadyAnalogVideoOPL), propertyNode.InnerText);
-						continue;
-					case "analogVideoOutputProtectionList":
-						this._AnalogVideoOutputProtectionList = new List<PlayReadyAnalogVideoOPIdHolder>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._AnalogVideoOutputProtectionList.Add(ObjectFactory.Create<PlayReadyAnalogVideoOPIdHolder>(arrayNode));
-						}
-						continue;
-					case "compressedDigitalAudioOPL":
-						this._CompressedDigitalAudioOPL = (PlayReadyDigitalAudioOPL)ParseEnum(typeof(PlayReadyDigitalAudioOPL), propertyNode.InnerText);
-						continue;
-					case "compressedDigitalVideoOPL":
-						this._CompressedDigitalVideoOPL = (PlayReadyCompressedDigitalVideoOPL)ParseEnum(typeof(PlayReadyCompressedDigitalVideoOPL), propertyNode.InnerText);
-						continue;
-					case "digitalAudioOutputProtectionList":
-						this._DigitalAudioOutputProtectionList = new List<PlayReadyDigitalAudioOPIdHolder>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._DigitalAudioOutputProtectionList.Add(ObjectFactory.Create<PlayReadyDigitalAudioOPIdHolder>(arrayNode));
-						}
-						continue;
-					case "uncompressedDigitalAudioOPL":
-						this._UncompressedDigitalAudioOPL = (PlayReadyDigitalAudioOPL)ParseEnum(typeof(PlayReadyDigitalAudioOPL), propertyNode.InnerText);
-						continue;
-					case "uncompressedDigitalVideoOPL":
-						this._UncompressedDigitalVideoOPL = (PlayReadyUncompressedDigitalVideoOPL)ParseEnum(typeof(PlayReadyUncompressedDigitalVideoOPL), propertyNode.InnerText);
-						continue;
-					case "firstPlayExpiration":
-						this._FirstPlayExpiration = ParseInt(propertyNode.InnerText);
-						continue;
-					case "playEnablers":
-						this._PlayEnablers = new List<PlayReadyPlayEnablerHolder>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._PlayEnablers.Add(ObjectFactory.Create<PlayReadyPlayEnablerHolder>(arrayNode));
-						}
-						continue;
+					this._AnalogVideoOutputProtectionList.Add(ObjectFactory.Create<PlayReadyAnalogVideoOPIdHolder>(arrayNode));
 				}
 			}
-		}
-
-		public PlayReadyPlayRight(IDictionary<string,object> data) : base(data)
-		{
-			    this._AnalogVideoOPL = (PlayReadyAnalogVideoOPL)ParseEnum(typeof(PlayReadyAnalogVideoOPL), data.TryGetValueSafe<int>("analogVideoOPL"));
-			    this._AnalogVideoOutputProtectionList = new List<PlayReadyAnalogVideoOPIdHolder>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("analogVideoOutputProtectionList", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._AnalogVideoOutputProtectionList.Add(ObjectFactory.Create<PlayReadyAnalogVideoOPIdHolder>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._CompressedDigitalAudioOPL = (PlayReadyDigitalAudioOPL)ParseEnum(typeof(PlayReadyDigitalAudioOPL), data.TryGetValueSafe<int>("compressedDigitalAudioOPL"));
-			    this._CompressedDigitalVideoOPL = (PlayReadyCompressedDigitalVideoOPL)ParseEnum(typeof(PlayReadyCompressedDigitalVideoOPL), data.TryGetValueSafe<int>("compressedDigitalVideoOPL"));
-			    this._DigitalAudioOutputProtectionList = new List<PlayReadyDigitalAudioOPIdHolder>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("digitalAudioOutputProtectionList", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._DigitalAudioOutputProtectionList.Add(ObjectFactory.Create<PlayReadyDigitalAudioOPIdHolder>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._UncompressedDigitalAudioOPL = (PlayReadyDigitalAudioOPL)ParseEnum(typeof(PlayReadyDigitalAudioOPL), data.TryGetValueSafe<int>("uncompressedDigitalAudioOPL"));
-			    this._UncompressedDigitalVideoOPL = (PlayReadyUncompressedDigitalVideoOPL)ParseEnum(typeof(PlayReadyUncompressedDigitalVideoOPL), data.TryGetValueSafe<int>("uncompressedDigitalVideoOPL"));
-			    this._FirstPlayExpiration = data.TryGetValueSafe<int>("firstPlayExpiration");
-			    this._PlayEnablers = new List<PlayReadyPlayEnablerHolder>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("playEnablers", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._PlayEnablers.Add(ObjectFactory.Create<PlayReadyPlayEnablerHolder>((IDictionary<string,object>)dataDictionary));
-			    }
+			if(node["compressedDigitalAudioOPL"] != null)
+			{
+				this._CompressedDigitalAudioOPL = (PlayReadyDigitalAudioOPL)ParseEnum(typeof(PlayReadyDigitalAudioOPL), node["compressedDigitalAudioOPL"].Value<string>());
+			}
+			if(node["compressedDigitalVideoOPL"] != null)
+			{
+				this._CompressedDigitalVideoOPL = (PlayReadyCompressedDigitalVideoOPL)ParseEnum(typeof(PlayReadyCompressedDigitalVideoOPL), node["compressedDigitalVideoOPL"].Value<string>());
+			}
+			if(node["digitalAudioOutputProtectionList"] != null)
+			{
+				this._DigitalAudioOutputProtectionList = new List<PlayReadyDigitalAudioOPIdHolder>();
+				foreach(var arrayNode in node["digitalAudioOutputProtectionList"].Children())
+				{
+					this._DigitalAudioOutputProtectionList.Add(ObjectFactory.Create<PlayReadyDigitalAudioOPIdHolder>(arrayNode));
+				}
+			}
+			if(node["uncompressedDigitalAudioOPL"] != null)
+			{
+				this._UncompressedDigitalAudioOPL = (PlayReadyDigitalAudioOPL)ParseEnum(typeof(PlayReadyDigitalAudioOPL), node["uncompressedDigitalAudioOPL"].Value<string>());
+			}
+			if(node["uncompressedDigitalVideoOPL"] != null)
+			{
+				this._UncompressedDigitalVideoOPL = (PlayReadyUncompressedDigitalVideoOPL)ParseEnum(typeof(PlayReadyUncompressedDigitalVideoOPL), node["uncompressedDigitalVideoOPL"].Value<string>());
+			}
+			if(node["firstPlayExpiration"] != null)
+			{
+				this._FirstPlayExpiration = ParseInt(node["firstPlayExpiration"].Value<string>());
+			}
+			if(node["playEnablers"] != null)
+			{
+				this._PlayEnablers = new List<PlayReadyPlayEnablerHolder>();
+				foreach(var arrayNode in node["playEnablers"].Children())
+				{
+					this._PlayEnablers.Add(ObjectFactory.Create<PlayReadyPlayEnablerHolder>(arrayNode));
+				}
+			}
 		}
 		#endregion
 

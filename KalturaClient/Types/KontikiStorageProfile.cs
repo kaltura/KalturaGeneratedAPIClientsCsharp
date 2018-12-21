@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ServiceToken
 		{
 			get { return _ServiceToken; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public KontikiStorageProfile(XmlElement node) : base(node)
+		public KontikiStorageProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["serviceToken"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "serviceToken":
-						this._ServiceToken = propertyNode.InnerText;
-						continue;
-				}
+				this._ServiceToken = node["serviceToken"].Value<string>();
 			}
-		}
-
-		public KontikiStorageProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._ServiceToken = data.TryGetValueSafe<string>("serviceToken");
 		}
 		#endregion
 

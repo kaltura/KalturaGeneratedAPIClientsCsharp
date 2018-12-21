@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string PropertyName
 		{
 			get { return _PropertyName; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PropertyName");
 			}
 		}
+		[JsonProperty]
 		public string PropertyValue
 		{
 			get { return _PropertyValue; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AssetDistributionPropertyCondition(XmlElement node) : base(node)
+		public AssetDistributionPropertyCondition(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["propertyName"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "propertyName":
-						this._PropertyName = propertyNode.InnerText;
-						continue;
-					case "propertyValue":
-						this._PropertyValue = propertyNode.InnerText;
-						continue;
-				}
+				this._PropertyName = node["propertyName"].Value<string>();
 			}
-		}
-
-		public AssetDistributionPropertyCondition(IDictionary<string,object> data) : base(data)
-		{
-			    this._PropertyName = data.TryGetValueSafe<string>("propertyName");
-			    this._PropertyValue = data.TryGetValueSafe<string>("propertyValue");
+			if(node["propertyValue"] != null)
+			{
+				this._PropertyValue = node["propertyValue"].Value<string>();
+			}
 		}
 		#endregion
 

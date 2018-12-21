@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -64,14 +66,27 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public long Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public FileAssetObjectType FileAssetObjectType
 		{
 			get { return _FileAssetObjectType; }
@@ -81,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileAssetObjectType");
 			}
 		}
+		[JsonProperty]
 		public string ObjectId
 		{
 			get { return _ObjectId; }
@@ -90,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectId");
 			}
 		}
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -99,6 +116,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		[JsonProperty]
 		public string SystemName
 		{
 			get { return _SystemName; }
@@ -108,6 +126,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemName");
 			}
 		}
+		[JsonProperty]
 		public string FileExt
 		{
 			get { return _FileExt; }
@@ -117,21 +136,45 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileExt");
 			}
 		}
+		[JsonProperty]
 		public int Version
 		{
 			get { return _Version; }
+			private set 
+			{ 
+				_Version = value;
+				OnPropertyChanged("Version");
+			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public FileAssetStatus Status
 		{
 			get { return _Status; }
+			private set 
+			{ 
+				_Status = value;
+				OnPropertyChanged("Status");
+			}
 		}
 		#endregion
 
@@ -140,62 +183,52 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FileAsset(XmlElement node) : base(node)
+		public FileAsset(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = ParseLong(propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "fileAssetObjectType":
-						this._FileAssetObjectType = (FileAssetObjectType)StringEnum.Parse(typeof(FileAssetObjectType), propertyNode.InnerText);
-						continue;
-					case "objectId":
-						this._ObjectId = propertyNode.InnerText;
-						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-					case "systemName":
-						this._SystemName = propertyNode.InnerText;
-						continue;
-					case "fileExt":
-						this._FileExt = propertyNode.InnerText;
-						continue;
-					case "version":
-						this._Version = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "status":
-						this._Status = (FileAssetStatus)StringEnum.Parse(typeof(FileAssetStatus), propertyNode.InnerText);
-						continue;
-				}
+				this._Id = ParseLong(node["id"].Value<string>());
 			}
-		}
-
-		public FileAsset(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<long>("id");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._FileAssetObjectType = (FileAssetObjectType)StringEnum.Parse(typeof(FileAssetObjectType), data.TryGetValueSafe<string>("fileAssetObjectType"));
-			    this._ObjectId = data.TryGetValueSafe<string>("objectId");
-			    this._Name = data.TryGetValueSafe<string>("name");
-			    this._SystemName = data.TryGetValueSafe<string>("systemName");
-			    this._FileExt = data.TryGetValueSafe<string>("fileExt");
-			    this._Version = data.TryGetValueSafe<int>("version");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._Status = (FileAssetStatus)StringEnum.Parse(typeof(FileAssetStatus), data.TryGetValueSafe<string>("status"));
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["fileAssetObjectType"] != null)
+			{
+				this._FileAssetObjectType = (FileAssetObjectType)StringEnum.Parse(typeof(FileAssetObjectType), node["fileAssetObjectType"].Value<string>());
+			}
+			if(node["objectId"] != null)
+			{
+				this._ObjectId = node["objectId"].Value<string>();
+			}
+			if(node["name"] != null)
+			{
+				this._Name = node["name"].Value<string>();
+			}
+			if(node["systemName"] != null)
+			{
+				this._SystemName = node["systemName"].Value<string>();
+			}
+			if(node["fileExt"] != null)
+			{
+				this._FileExt = node["fileExt"].Value<string>();
+			}
+			if(node["version"] != null)
+			{
+				this._Version = ParseInt(node["version"].Value<string>());
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (FileAssetStatus)StringEnum.Parse(typeof(FileAssetStatus), node["status"].Value<string>());
+			}
 		}
 		#endregion
 

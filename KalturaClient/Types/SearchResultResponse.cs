@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,13 +48,25 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public IList<SearchResult> Objects
 		{
 			get { return _Objects; }
+			private set 
+			{ 
+				_Objects = value;
+				OnPropertyChanged("Objects");
+			}
 		}
+		[JsonProperty]
 		public bool? NeedMediaInfo
 		{
 			get { return _NeedMediaInfo; }
+			private set 
+			{ 
+				_NeedMediaInfo = value;
+				OnPropertyChanged("NeedMediaInfo");
+			}
 		}
 		#endregion
 
@@ -61,35 +75,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public SearchResultResponse(XmlElement node) : base(node)
+		public SearchResultResponse(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["objects"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Objects = new List<SearchResult>();
+				foreach(var arrayNode in node["objects"].Children())
 				{
-					case "objects":
-						this._Objects = new List<SearchResult>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Objects.Add(ObjectFactory.Create<SearchResult>(arrayNode));
-						}
-						continue;
-					case "needMediaInfo":
-						this._NeedMediaInfo = ParseBool(propertyNode.InnerText);
-						continue;
+					this._Objects.Add(ObjectFactory.Create<SearchResult>(arrayNode));
 				}
 			}
-		}
-
-		public SearchResultResponse(IDictionary<string,object> data) : base(data)
-		{
-			    this._Objects = new List<SearchResult>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("objects", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Objects.Add(ObjectFactory.Create<SearchResult>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._NeedMediaInfo = data.TryGetValueSafe<bool>("needMediaInfo");
+			if(node["needMediaInfo"] != null)
+			{
+				this._NeedMediaInfo = ParseBool(node["needMediaInfo"].Value<string>());
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public DistributionThumbDimensions Dimensions
 		{
 			get { return _Dimensions; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DistributionValidationErrorMissingThumbnail(XmlElement node) : base(node)
+		public DistributionValidationErrorMissingThumbnail(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["dimensions"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "dimensions":
-						this._Dimensions = ObjectFactory.Create<DistributionThumbDimensions>(propertyNode);
-						continue;
-				}
+				this._Dimensions = ObjectFactory.Create<DistributionThumbDimensions>(node["dimensions"]);
 			}
-		}
-
-		public DistributionValidationErrorMissingThumbnail(IDictionary<string,object> data) : base(data)
-		{
-			    this._Dimensions = ObjectFactory.Create<DistributionThumbDimensions>(data.TryGetValueSafe<IDictionary<string,object>>("dimensions"));
 		}
 		#endregion
 

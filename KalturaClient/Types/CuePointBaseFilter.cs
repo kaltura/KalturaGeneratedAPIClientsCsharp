@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -98,6 +100,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string IdEqual
 		{
 			get { return _IdEqual; }
@@ -107,6 +110,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		[JsonProperty]
 		public string IdIn
 		{
 			get { return _IdIn; }
@@ -116,6 +120,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		[JsonProperty]
 		public CuePointType CuePointTypeEqual
 		{
 			get { return _CuePointTypeEqual; }
@@ -125,6 +130,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CuePointTypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string CuePointTypeIn
 		{
 			get { return _CuePointTypeIn; }
@@ -134,6 +140,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CuePointTypeIn");
 			}
 		}
+		[JsonProperty]
 		public CuePointStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -143,6 +150,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -152,6 +160,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		[JsonProperty]
 		public string EntryIdEqual
 		{
 			get { return _EntryIdEqual; }
@@ -161,6 +170,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string EntryIdIn
 		{
 			get { return _EntryIdIn; }
@@ -170,6 +180,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdIn");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
 			get { return _CreatedAtGreaterThanOrEqual; }
@@ -179,6 +190,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
 			get { return _CreatedAtLessThanOrEqual; }
@@ -188,6 +200,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
 			get { return _UpdatedAtGreaterThanOrEqual; }
@@ -197,6 +210,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
 			get { return _UpdatedAtLessThanOrEqual; }
@@ -206,6 +220,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int TriggeredAtGreaterThanOrEqual
 		{
 			get { return _TriggeredAtGreaterThanOrEqual; }
@@ -215,6 +230,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TriggeredAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int TriggeredAtLessThanOrEqual
 		{
 			get { return _TriggeredAtLessThanOrEqual; }
@@ -224,6 +240,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TriggeredAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public string TagsLike
 		{
 			get { return _TagsLike; }
@@ -233,6 +250,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsLike");
 			}
 		}
+		[JsonProperty]
 		public string TagsMultiLikeOr
 		{
 			get { return _TagsMultiLikeOr; }
@@ -242,6 +260,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string TagsMultiLikeAnd
 		{
 			get { return _TagsMultiLikeAnd; }
@@ -251,6 +270,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public int StartTimeGreaterThanOrEqual
 		{
 			get { return _StartTimeGreaterThanOrEqual; }
@@ -260,6 +280,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartTimeGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int StartTimeLessThanOrEqual
 		{
 			get { return _StartTimeLessThanOrEqual; }
@@ -269,6 +290,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartTimeLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public string UserIdEqual
 		{
 			get { return _UserIdEqual; }
@@ -278,6 +300,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string UserIdIn
 		{
 			get { return _UserIdIn; }
@@ -287,6 +310,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIdIn");
 			}
 		}
+		[JsonProperty]
 		public int PartnerSortValueEqual
 		{
 			get { return _PartnerSortValueEqual; }
@@ -296,6 +320,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerSortValueEqual");
 			}
 		}
+		[JsonProperty]
 		public string PartnerSortValueIn
 		{
 			get { return _PartnerSortValueIn; }
@@ -305,6 +330,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerSortValueIn");
 			}
 		}
+		[JsonProperty]
 		public int PartnerSortValueGreaterThanOrEqual
 		{
 			get { return _PartnerSortValueGreaterThanOrEqual; }
@@ -314,6 +340,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerSortValueGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int PartnerSortValueLessThanOrEqual
 		{
 			get { return _PartnerSortValueLessThanOrEqual; }
@@ -323,6 +350,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerSortValueLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean ForceStopEqual
 		{
 			get { return _ForceStopEqual; }
@@ -332,6 +360,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ForceStopEqual");
 			}
 		}
+		[JsonProperty]
 		public string SystemNameEqual
 		{
 			get { return _SystemNameEqual; }
@@ -341,6 +370,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemNameEqual");
 			}
 		}
+		[JsonProperty]
 		public string SystemNameIn
 		{
 			get { return _SystemNameIn; }
@@ -357,130 +387,120 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CuePointBaseFilter(XmlElement node) : base(node)
+		public CuePointBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["idEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "idEqual":
-						this._IdEqual = propertyNode.InnerText;
-						continue;
-					case "idIn":
-						this._IdIn = propertyNode.InnerText;
-						continue;
-					case "cuePointTypeEqual":
-						this._CuePointTypeEqual = (CuePointType)StringEnum.Parse(typeof(CuePointType), propertyNode.InnerText);
-						continue;
-					case "cuePointTypeIn":
-						this._CuePointTypeIn = propertyNode.InnerText;
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (CuePointStatus)ParseEnum(typeof(CuePointStatus), propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-					case "entryIdEqual":
-						this._EntryIdEqual = propertyNode.InnerText;
-						continue;
-					case "entryIdIn":
-						this._EntryIdIn = propertyNode.InnerText;
-						continue;
-					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "triggeredAtGreaterThanOrEqual":
-						this._TriggeredAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "triggeredAtLessThanOrEqual":
-						this._TriggeredAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "tagsLike":
-						this._TagsLike = propertyNode.InnerText;
-						continue;
-					case "tagsMultiLikeOr":
-						this._TagsMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "tagsMultiLikeAnd":
-						this._TagsMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "startTimeGreaterThanOrEqual":
-						this._StartTimeGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "startTimeLessThanOrEqual":
-						this._StartTimeLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "userIdEqual":
-						this._UserIdEqual = propertyNode.InnerText;
-						continue;
-					case "userIdIn":
-						this._UserIdIn = propertyNode.InnerText;
-						continue;
-					case "partnerSortValueEqual":
-						this._PartnerSortValueEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerSortValueIn":
-						this._PartnerSortValueIn = propertyNode.InnerText;
-						continue;
-					case "partnerSortValueGreaterThanOrEqual":
-						this._PartnerSortValueGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerSortValueLessThanOrEqual":
-						this._PartnerSortValueLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "forceStopEqual":
-						this._ForceStopEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "systemNameEqual":
-						this._SystemNameEqual = propertyNode.InnerText;
-						continue;
-					case "systemNameIn":
-						this._SystemNameIn = propertyNode.InnerText;
-						continue;
-				}
+				this._IdEqual = node["idEqual"].Value<string>();
 			}
-		}
-
-		public CuePointBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._IdEqual = data.TryGetValueSafe<string>("idEqual");
-			    this._IdIn = data.TryGetValueSafe<string>("idIn");
-			    this._CuePointTypeEqual = (CuePointType)StringEnum.Parse(typeof(CuePointType), data.TryGetValueSafe<string>("cuePointTypeEqual"));
-			    this._CuePointTypeIn = data.TryGetValueSafe<string>("cuePointTypeIn");
-			    this._StatusEqual = (CuePointStatus)ParseEnum(typeof(CuePointStatus), data.TryGetValueSafe<int>("statusEqual"));
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
-			    this._EntryIdEqual = data.TryGetValueSafe<string>("entryIdEqual");
-			    this._EntryIdIn = data.TryGetValueSafe<string>("entryIdIn");
-			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
-			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
-			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
-			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
-			    this._TriggeredAtGreaterThanOrEqual = data.TryGetValueSafe<int>("triggeredAtGreaterThanOrEqual");
-			    this._TriggeredAtLessThanOrEqual = data.TryGetValueSafe<int>("triggeredAtLessThanOrEqual");
-			    this._TagsLike = data.TryGetValueSafe<string>("tagsLike");
-			    this._TagsMultiLikeOr = data.TryGetValueSafe<string>("tagsMultiLikeOr");
-			    this._TagsMultiLikeAnd = data.TryGetValueSafe<string>("tagsMultiLikeAnd");
-			    this._StartTimeGreaterThanOrEqual = data.TryGetValueSafe<int>("startTimeGreaterThanOrEqual");
-			    this._StartTimeLessThanOrEqual = data.TryGetValueSafe<int>("startTimeLessThanOrEqual");
-			    this._UserIdEqual = data.TryGetValueSafe<string>("userIdEqual");
-			    this._UserIdIn = data.TryGetValueSafe<string>("userIdIn");
-			    this._PartnerSortValueEqual = data.TryGetValueSafe<int>("partnerSortValueEqual");
-			    this._PartnerSortValueIn = data.TryGetValueSafe<string>("partnerSortValueIn");
-			    this._PartnerSortValueGreaterThanOrEqual = data.TryGetValueSafe<int>("partnerSortValueGreaterThanOrEqual");
-			    this._PartnerSortValueLessThanOrEqual = data.TryGetValueSafe<int>("partnerSortValueLessThanOrEqual");
-			    this._ForceStopEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("forceStopEqual"));
-			    this._SystemNameEqual = data.TryGetValueSafe<string>("systemNameEqual");
-			    this._SystemNameIn = data.TryGetValueSafe<string>("systemNameIn");
+			if(node["idIn"] != null)
+			{
+				this._IdIn = node["idIn"].Value<string>();
+			}
+			if(node["cuePointTypeEqual"] != null)
+			{
+				this._CuePointTypeEqual = (CuePointType)StringEnum.Parse(typeof(CuePointType), node["cuePointTypeEqual"].Value<string>());
+			}
+			if(node["cuePointTypeIn"] != null)
+			{
+				this._CuePointTypeIn = node["cuePointTypeIn"].Value<string>();
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (CuePointStatus)ParseEnum(typeof(CuePointStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
+			if(node["entryIdEqual"] != null)
+			{
+				this._EntryIdEqual = node["entryIdEqual"].Value<string>();
+			}
+			if(node["entryIdIn"] != null)
+			{
+				this._EntryIdIn = node["entryIdIn"].Value<string>();
+			}
+			if(node["createdAtGreaterThanOrEqual"] != null)
+			{
+				this._CreatedAtGreaterThanOrEqual = ParseInt(node["createdAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["createdAtLessThanOrEqual"] != null)
+			{
+				this._CreatedAtLessThanOrEqual = ParseInt(node["createdAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtGreaterThanOrEqual"] != null)
+			{
+				this._UpdatedAtGreaterThanOrEqual = ParseInt(node["updatedAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtLessThanOrEqual"] != null)
+			{
+				this._UpdatedAtLessThanOrEqual = ParseInt(node["updatedAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["triggeredAtGreaterThanOrEqual"] != null)
+			{
+				this._TriggeredAtGreaterThanOrEqual = ParseInt(node["triggeredAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["triggeredAtLessThanOrEqual"] != null)
+			{
+				this._TriggeredAtLessThanOrEqual = ParseInt(node["triggeredAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["tagsLike"] != null)
+			{
+				this._TagsLike = node["tagsLike"].Value<string>();
+			}
+			if(node["tagsMultiLikeOr"] != null)
+			{
+				this._TagsMultiLikeOr = node["tagsMultiLikeOr"].Value<string>();
+			}
+			if(node["tagsMultiLikeAnd"] != null)
+			{
+				this._TagsMultiLikeAnd = node["tagsMultiLikeAnd"].Value<string>();
+			}
+			if(node["startTimeGreaterThanOrEqual"] != null)
+			{
+				this._StartTimeGreaterThanOrEqual = ParseInt(node["startTimeGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["startTimeLessThanOrEqual"] != null)
+			{
+				this._StartTimeLessThanOrEqual = ParseInt(node["startTimeLessThanOrEqual"].Value<string>());
+			}
+			if(node["userIdEqual"] != null)
+			{
+				this._UserIdEqual = node["userIdEqual"].Value<string>();
+			}
+			if(node["userIdIn"] != null)
+			{
+				this._UserIdIn = node["userIdIn"].Value<string>();
+			}
+			if(node["partnerSortValueEqual"] != null)
+			{
+				this._PartnerSortValueEqual = ParseInt(node["partnerSortValueEqual"].Value<string>());
+			}
+			if(node["partnerSortValueIn"] != null)
+			{
+				this._PartnerSortValueIn = node["partnerSortValueIn"].Value<string>();
+			}
+			if(node["partnerSortValueGreaterThanOrEqual"] != null)
+			{
+				this._PartnerSortValueGreaterThanOrEqual = ParseInt(node["partnerSortValueGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["partnerSortValueLessThanOrEqual"] != null)
+			{
+				this._PartnerSortValueLessThanOrEqual = ParseInt(node["partnerSortValueLessThanOrEqual"].Value<string>());
+			}
+			if(node["forceStopEqual"] != null)
+			{
+				this._ForceStopEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["forceStopEqual"].Value<string>());
+			}
+			if(node["systemNameEqual"] != null)
+			{
+				this._SystemNameEqual = node["systemNameEqual"].Value<string>();
+			}
+			if(node["systemNameIn"] != null)
+			{
+				this._SystemNameIn = node["systemNameIn"].Value<string>();
+			}
 		}
 		#endregion
 

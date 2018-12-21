@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -58,10 +60,17 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Version
 		{
 			get { return _Version; }
+			private set 
+			{ 
+				_Version = value;
+				OnPropertyChanged("Version");
+			}
 		}
+		[JsonProperty]
 		public IList<KeyValue> UiAttributes
 		{
 			get { return _UiAttributes; }
@@ -71,6 +80,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UiAttributes");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean ShowResultOnAnswer
 		{
 			get { return _ShowResultOnAnswer; }
@@ -80,6 +90,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ShowResultOnAnswer");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean ShowCorrectKeyOnAnswer
 		{
 			get { return _ShowCorrectKeyOnAnswer; }
@@ -89,6 +100,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ShowCorrectKeyOnAnswer");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean AllowAnswerUpdate
 		{
 			get { return _AllowAnswerUpdate; }
@@ -98,6 +110,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowAnswerUpdate");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean ShowCorrectAfterSubmission
 		{
 			get { return _ShowCorrectAfterSubmission; }
@@ -107,6 +120,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ShowCorrectAfterSubmission");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean AllowDownload
 		{
 			get { return _AllowDownload; }
@@ -116,6 +130,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowDownload");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean ShowGradeAfterSubmission
 		{
 			get { return _ShowGradeAfterSubmission; }
@@ -132,59 +147,44 @@ namespace Kaltura.Types
 		{
 		}
 
-		public Quiz(XmlElement node) : base(node)
+		public Quiz(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["version"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Version = ParseInt(node["version"].Value<string>());
+			}
+			if(node["uiAttributes"] != null)
+			{
+				this._UiAttributes = new List<KeyValue>();
+				foreach(var arrayNode in node["uiAttributes"].Children())
 				{
-					case "version":
-						this._Version = ParseInt(propertyNode.InnerText);
-						continue;
-					case "uiAttributes":
-						this._UiAttributes = new List<KeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._UiAttributes.Add(ObjectFactory.Create<KeyValue>(arrayNode));
-						}
-						continue;
-					case "showResultOnAnswer":
-						this._ShowResultOnAnswer = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "showCorrectKeyOnAnswer":
-						this._ShowCorrectKeyOnAnswer = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "allowAnswerUpdate":
-						this._AllowAnswerUpdate = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "showCorrectAfterSubmission":
-						this._ShowCorrectAfterSubmission = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "allowDownload":
-						this._AllowDownload = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "showGradeAfterSubmission":
-						this._ShowGradeAfterSubmission = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
+					this._UiAttributes.Add(ObjectFactory.Create<KeyValue>(arrayNode));
 				}
 			}
-		}
-
-		public Quiz(IDictionary<string,object> data) : base(data)
-		{
-			    this._Version = data.TryGetValueSafe<int>("version");
-			    this._UiAttributes = new List<KeyValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("uiAttributes", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._UiAttributes.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._ShowResultOnAnswer = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("showResultOnAnswer"));
-			    this._ShowCorrectKeyOnAnswer = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("showCorrectKeyOnAnswer"));
-			    this._AllowAnswerUpdate = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("allowAnswerUpdate"));
-			    this._ShowCorrectAfterSubmission = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("showCorrectAfterSubmission"));
-			    this._AllowDownload = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("allowDownload"));
-			    this._ShowGradeAfterSubmission = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("showGradeAfterSubmission"));
+			if(node["showResultOnAnswer"] != null)
+			{
+				this._ShowResultOnAnswer = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["showResultOnAnswer"].Value<string>());
+			}
+			if(node["showCorrectKeyOnAnswer"] != null)
+			{
+				this._ShowCorrectKeyOnAnswer = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["showCorrectKeyOnAnswer"].Value<string>());
+			}
+			if(node["allowAnswerUpdate"] != null)
+			{
+				this._AllowAnswerUpdate = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["allowAnswerUpdate"].Value<string>());
+			}
+			if(node["showCorrectAfterSubmission"] != null)
+			{
+				this._ShowCorrectAfterSubmission = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["showCorrectAfterSubmission"].Value<string>());
+			}
+			if(node["allowDownload"] != null)
+			{
+				this._AllowDownload = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["allowDownload"].Value<string>());
+			}
+			if(node["showGradeAfterSubmission"] != null)
+			{
+				this._ShowGradeAfterSubmission = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["showGradeAfterSubmission"].Value<string>());
+			}
 		}
 		#endregion
 

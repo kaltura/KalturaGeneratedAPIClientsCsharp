@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string LivePackagerSigningDomain
 		{
 			get { return _LivePackagerSigningDomain; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DeliveryProfileLivePackager(XmlElement node) : base(node)
+		public DeliveryProfileLivePackager(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["livePackagerSigningDomain"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "livePackagerSigningDomain":
-						this._LivePackagerSigningDomain = propertyNode.InnerText;
-						continue;
-				}
+				this._LivePackagerSigningDomain = node["livePackagerSigningDomain"].Value<string>();
 			}
-		}
-
-		public DeliveryProfileLivePackager(IDictionary<string,object> data) : base(data)
-		{
-			    this._LivePackagerSigningDomain = data.TryGetValueSafe<string>("livePackagerSigningDomain");
 		}
 		#endregion
 

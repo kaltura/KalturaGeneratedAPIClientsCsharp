@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string JobTypeAndSubTypeIn
 		{
 			get { return _JobTypeAndSubTypeIn; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BatchJobFilterExt(XmlElement node) : base(node)
+		public BatchJobFilterExt(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["jobTypeAndSubTypeIn"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "jobTypeAndSubTypeIn":
-						this._JobTypeAndSubTypeIn = propertyNode.InnerText;
-						continue;
-				}
+				this._JobTypeAndSubTypeIn = node["jobTypeAndSubTypeIn"].Value<string>();
 			}
-		}
-
-		public BatchJobFilterExt(IDictionary<string,object> data) : base(data)
-		{
-			    this._JobTypeAndSubTypeIn = data.TryGetValueSafe<string>("jobTypeAndSubTypeIn");
 		}
 		#endregion
 

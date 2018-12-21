@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -62,6 +64,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string EntryId
 		{
 			get { return _EntryId; }
@@ -71,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		[JsonProperty]
 		public string FlavorAssetId
 		{
 			get { return _FlavorAssetId; }
@@ -80,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetId");
 			}
 		}
+		[JsonProperty]
 		public string TranscriptId
 		{
 			get { return _TranscriptId; }
@@ -89,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TranscriptId");
 			}
 		}
+		[JsonProperty]
 		public string CaptionAssetFormats
 		{
 			get { return _CaptionAssetFormats; }
@@ -98,14 +104,27 @@ namespace Kaltura.Types
 				OnPropertyChanged("CaptionAssetFormats");
 			}
 		}
+		[JsonProperty]
 		public string ApiKey
 		{
 			get { return _ApiKey; }
+			private set 
+			{ 
+				_ApiKey = value;
+				OnPropertyChanged("ApiKey");
+			}
 		}
+		[JsonProperty]
 		public string ApiPassword
 		{
 			get { return _ApiPassword; }
+			private set 
+			{ 
+				_ApiPassword = value;
+				OnPropertyChanged("ApiPassword");
+			}
 		}
+		[JsonProperty]
 		public Language SpokenLanguage
 		{
 			get { return _SpokenLanguage; }
@@ -115,10 +134,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("SpokenLanguage");
 			}
 		}
+		[JsonProperty]
 		public string FileLocation
 		{
 			get { return _FileLocation; }
+			private set 
+			{ 
+				_FileLocation = value;
+				OnPropertyChanged("FileLocation");
+			}
 		}
+		[JsonProperty]
 		public bool? ReplaceMediaContent
 		{
 			get { return _ReplaceMediaContent; }
@@ -128,9 +154,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplaceMediaContent");
 			}
 		}
+		[JsonProperty]
 		public string AdditionalParameters
 		{
 			get { return _AdditionalParameters; }
+			private set 
+			{ 
+				_AdditionalParameters = value;
+				OnPropertyChanged("AdditionalParameters");
+			}
 		}
 		#endregion
 
@@ -139,58 +171,48 @@ namespace Kaltura.Types
 		{
 		}
 
-		public VoicebaseJobProviderData(XmlElement node) : base(node)
+		public VoicebaseJobProviderData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["entryId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "entryId":
-						this._EntryId = propertyNode.InnerText;
-						continue;
-					case "flavorAssetId":
-						this._FlavorAssetId = propertyNode.InnerText;
-						continue;
-					case "transcriptId":
-						this._TranscriptId = propertyNode.InnerText;
-						continue;
-					case "captionAssetFormats":
-						this._CaptionAssetFormats = propertyNode.InnerText;
-						continue;
-					case "apiKey":
-						this._ApiKey = propertyNode.InnerText;
-						continue;
-					case "apiPassword":
-						this._ApiPassword = propertyNode.InnerText;
-						continue;
-					case "spokenLanguage":
-						this._SpokenLanguage = (Language)StringEnum.Parse(typeof(Language), propertyNode.InnerText);
-						continue;
-					case "fileLocation":
-						this._FileLocation = propertyNode.InnerText;
-						continue;
-					case "replaceMediaContent":
-						this._ReplaceMediaContent = ParseBool(propertyNode.InnerText);
-						continue;
-					case "additionalParameters":
-						this._AdditionalParameters = propertyNode.InnerText;
-						continue;
-				}
+				this._EntryId = node["entryId"].Value<string>();
 			}
-		}
-
-		public VoicebaseJobProviderData(IDictionary<string,object> data) : base(data)
-		{
-			    this._EntryId = data.TryGetValueSafe<string>("entryId");
-			    this._FlavorAssetId = data.TryGetValueSafe<string>("flavorAssetId");
-			    this._TranscriptId = data.TryGetValueSafe<string>("transcriptId");
-			    this._CaptionAssetFormats = data.TryGetValueSafe<string>("captionAssetFormats");
-			    this._ApiKey = data.TryGetValueSafe<string>("apiKey");
-			    this._ApiPassword = data.TryGetValueSafe<string>("apiPassword");
-			    this._SpokenLanguage = (Language)StringEnum.Parse(typeof(Language), data.TryGetValueSafe<string>("spokenLanguage"));
-			    this._FileLocation = data.TryGetValueSafe<string>("fileLocation");
-			    this._ReplaceMediaContent = data.TryGetValueSafe<bool>("replaceMediaContent");
-			    this._AdditionalParameters = data.TryGetValueSafe<string>("additionalParameters");
+			if(node["flavorAssetId"] != null)
+			{
+				this._FlavorAssetId = node["flavorAssetId"].Value<string>();
+			}
+			if(node["transcriptId"] != null)
+			{
+				this._TranscriptId = node["transcriptId"].Value<string>();
+			}
+			if(node["captionAssetFormats"] != null)
+			{
+				this._CaptionAssetFormats = node["captionAssetFormats"].Value<string>();
+			}
+			if(node["apiKey"] != null)
+			{
+				this._ApiKey = node["apiKey"].Value<string>();
+			}
+			if(node["apiPassword"] != null)
+			{
+				this._ApiPassword = node["apiPassword"].Value<string>();
+			}
+			if(node["spokenLanguage"] != null)
+			{
+				this._SpokenLanguage = (Language)StringEnum.Parse(typeof(Language), node["spokenLanguage"].Value<string>());
+			}
+			if(node["fileLocation"] != null)
+			{
+				this._FileLocation = node["fileLocation"].Value<string>();
+			}
+			if(node["replaceMediaContent"] != null)
+			{
+				this._ReplaceMediaContent = ParseBool(node["replaceMediaContent"].Value<string>());
+			}
+			if(node["additionalParameters"] != null)
+			{
+				this._AdditionalParameters = node["additionalParameters"].Value<string>();
+			}
 		}
 		#endregion
 

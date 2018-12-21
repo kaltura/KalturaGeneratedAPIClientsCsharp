@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -54,6 +56,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ParentId
 		{
 			get { return _ParentId; }
@@ -63,6 +66,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentId");
 			}
 		}
+		[JsonProperty]
 		public string QuizUserEntryId
 		{
 			get { return _QuizUserEntryId; }
@@ -72,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("QuizUserEntryId");
 			}
 		}
+		[JsonProperty]
 		public string AnswerKey
 		{
 			get { return _AnswerKey; }
@@ -81,17 +86,35 @@ namespace Kaltura.Types
 				OnPropertyChanged("AnswerKey");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean IsCorrect
 		{
 			get { return _IsCorrect; }
+			private set 
+			{ 
+				_IsCorrect = value;
+				OnPropertyChanged("IsCorrect");
+			}
 		}
+		[JsonProperty]
 		public IList<String> CorrectAnswerKeys
 		{
 			get { return _CorrectAnswerKeys; }
+			private set 
+			{ 
+				_CorrectAnswerKeys = value;
+				OnPropertyChanged("CorrectAnswerKeys");
+			}
 		}
+		[JsonProperty]
 		public string Explanation
 		{
 			get { return _Explanation; }
+			private set 
+			{ 
+				_Explanation = value;
+				OnPropertyChanged("Explanation");
+			}
 		}
 		#endregion
 
@@ -100,51 +123,36 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AnswerCuePoint(XmlElement node) : base(node)
+		public AnswerCuePoint(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["parentId"] != null)
 			{
-				switch (propertyNode.Name)
+				this._ParentId = node["parentId"].Value<string>();
+			}
+			if(node["quizUserEntryId"] != null)
+			{
+				this._QuizUserEntryId = node["quizUserEntryId"].Value<string>();
+			}
+			if(node["answerKey"] != null)
+			{
+				this._AnswerKey = node["answerKey"].Value<string>();
+			}
+			if(node["isCorrect"] != null)
+			{
+				this._IsCorrect = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["isCorrect"].Value<string>());
+			}
+			if(node["correctAnswerKeys"] != null)
+			{
+				this._CorrectAnswerKeys = new List<String>();
+				foreach(var arrayNode in node["correctAnswerKeys"].Children())
 				{
-					case "parentId":
-						this._ParentId = propertyNode.InnerText;
-						continue;
-					case "quizUserEntryId":
-						this._QuizUserEntryId = propertyNode.InnerText;
-						continue;
-					case "answerKey":
-						this._AnswerKey = propertyNode.InnerText;
-						continue;
-					case "isCorrect":
-						this._IsCorrect = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "correctAnswerKeys":
-						this._CorrectAnswerKeys = new List<String>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._CorrectAnswerKeys.Add(ObjectFactory.Create<String>(arrayNode));
-						}
-						continue;
-					case "explanation":
-						this._Explanation = propertyNode.InnerText;
-						continue;
+					this._CorrectAnswerKeys.Add(ObjectFactory.Create<String>(arrayNode));
 				}
 			}
-		}
-
-		public AnswerCuePoint(IDictionary<string,object> data) : base(data)
-		{
-			    this._ParentId = data.TryGetValueSafe<string>("parentId");
-			    this._QuizUserEntryId = data.TryGetValueSafe<string>("quizUserEntryId");
-			    this._AnswerKey = data.TryGetValueSafe<string>("answerKey");
-			    this._IsCorrect = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isCorrect"));
-			    this._CorrectAnswerKeys = new List<String>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("correctAnswerKeys", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._CorrectAnswerKeys.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._Explanation = data.TryGetValueSafe<string>("explanation");
+			if(node["explanation"] != null)
+			{
+				this._Explanation = node["explanation"].Value<string>();
+			}
 		}
 		#endregion
 

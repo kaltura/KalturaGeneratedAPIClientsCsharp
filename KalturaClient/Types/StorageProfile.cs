@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -106,22 +108,47 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -131,6 +158,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		[JsonProperty]
 		public string SystemName
 		{
 			get { return _SystemName; }
@@ -140,6 +168,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemName");
 			}
 		}
+		[JsonProperty]
 		public string Desciption
 		{
 			get { return _Desciption; }
@@ -149,6 +178,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Desciption");
 			}
 		}
+		[JsonProperty]
 		public StorageProfileStatus Status
 		{
 			get { return _Status; }
@@ -158,6 +188,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		[JsonProperty]
 		public StorageProfileProtocol Protocol
 		{
 			get { return _Protocol; }
@@ -167,6 +198,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Protocol");
 			}
 		}
+		[JsonProperty]
 		public string StorageUrl
 		{
 			get { return _StorageUrl; }
@@ -176,6 +208,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StorageUrl");
 			}
 		}
+		[JsonProperty]
 		public string StorageBaseDir
 		{
 			get { return _StorageBaseDir; }
@@ -185,6 +218,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StorageBaseDir");
 			}
 		}
+		[JsonProperty]
 		public string StorageUsername
 		{
 			get { return _StorageUsername; }
@@ -194,6 +228,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StorageUsername");
 			}
 		}
+		[JsonProperty]
 		public string StoragePassword
 		{
 			get { return _StoragePassword; }
@@ -203,6 +238,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StoragePassword");
 			}
 		}
+		[JsonProperty]
 		public bool? StorageFtpPassiveMode
 		{
 			get { return _StorageFtpPassiveMode; }
@@ -212,6 +248,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StorageFtpPassiveMode");
 			}
 		}
+		[JsonProperty]
 		public int MinFileSize
 		{
 			get { return _MinFileSize; }
@@ -221,6 +258,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MinFileSize");
 			}
 		}
+		[JsonProperty]
 		public int MaxFileSize
 		{
 			get { return _MaxFileSize; }
@@ -230,6 +268,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MaxFileSize");
 			}
 		}
+		[JsonProperty]
 		public string FlavorParamsIds
 		{
 			get { return _FlavorParamsIds; }
@@ -239,6 +278,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsIds");
 			}
 		}
+		[JsonProperty]
 		public int MaxConcurrentConnections
 		{
 			get { return _MaxConcurrentConnections; }
@@ -248,6 +288,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MaxConcurrentConnections");
 			}
 		}
+		[JsonProperty]
 		public string PathManagerClass
 		{
 			get { return _PathManagerClass; }
@@ -257,6 +298,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PathManagerClass");
 			}
 		}
+		[JsonProperty]
 		public IList<KeyValue> PathManagerParams
 		{
 			get { return _PathManagerParams; }
@@ -266,6 +308,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PathManagerParams");
 			}
 		}
+		[JsonProperty]
 		public int Trigger
 		{
 			get { return _Trigger; }
@@ -275,6 +318,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Trigger");
 			}
 		}
+		[JsonProperty]
 		public int DeliveryPriority
 		{
 			get { return _DeliveryPriority; }
@@ -284,6 +328,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeliveryPriority");
 			}
 		}
+		[JsonProperty]
 		public StorageProfileDeliveryStatus DeliveryStatus
 		{
 			get { return _DeliveryStatus; }
@@ -293,6 +338,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeliveryStatus");
 			}
 		}
+		[JsonProperty]
 		public StorageProfileReadyBehavior ReadyBehavior
 		{
 			get { return _ReadyBehavior; }
@@ -302,6 +348,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReadyBehavior");
 			}
 		}
+		[JsonProperty]
 		public int AllowAutoDelete
 		{
 			get { return _AllowAutoDelete; }
@@ -311,6 +358,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowAutoDelete");
 			}
 		}
+		[JsonProperty]
 		public bool? CreateFileLink
 		{
 			get { return _CreateFileLink; }
@@ -320,6 +368,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreateFileLink");
 			}
 		}
+		[JsonProperty]
 		public IList<Rule> Rules
 		{
 			get { return _Rules; }
@@ -329,6 +378,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Rules");
 			}
 		}
+		[JsonProperty]
 		public IList<KeyValue> DeliveryProfileIds
 		{
 			get { return _DeliveryProfileIds; }
@@ -338,6 +388,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeliveryProfileIds");
 			}
 		}
+		[JsonProperty]
 		public string PrivateKey
 		{
 			get { return _PrivateKey; }
@@ -347,6 +398,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrivateKey");
 			}
 		}
+		[JsonProperty]
 		public string PublicKey
 		{
 			get { return _PublicKey; }
@@ -356,6 +408,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PublicKey");
 			}
 		}
+		[JsonProperty]
 		public string PassPhrase
 		{
 			get { return _PassPhrase; }
@@ -365,6 +418,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PassPhrase");
 			}
 		}
+		[JsonProperty]
 		public bool? ShouldExportThumbs
 		{
 			get { return _ShouldExportThumbs; }
@@ -381,173 +435,148 @@ namespace Kaltura.Types
 		{
 		}
 
-		public StorageProfile(XmlElement node) : base(node)
+		public StorageProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Id = ParseInt(node["id"].Value<string>());
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["name"] != null)
+			{
+				this._Name = node["name"].Value<string>();
+			}
+			if(node["systemName"] != null)
+			{
+				this._SystemName = node["systemName"].Value<string>();
+			}
+			if(node["desciption"] != null)
+			{
+				this._Desciption = node["desciption"].Value<string>();
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (StorageProfileStatus)ParseEnum(typeof(StorageProfileStatus), node["status"].Value<string>());
+			}
+			if(node["protocol"] != null)
+			{
+				this._Protocol = (StorageProfileProtocol)StringEnum.Parse(typeof(StorageProfileProtocol), node["protocol"].Value<string>());
+			}
+			if(node["storageUrl"] != null)
+			{
+				this._StorageUrl = node["storageUrl"].Value<string>();
+			}
+			if(node["storageBaseDir"] != null)
+			{
+				this._StorageBaseDir = node["storageBaseDir"].Value<string>();
+			}
+			if(node["storageUsername"] != null)
+			{
+				this._StorageUsername = node["storageUsername"].Value<string>();
+			}
+			if(node["storagePassword"] != null)
+			{
+				this._StoragePassword = node["storagePassword"].Value<string>();
+			}
+			if(node["storageFtpPassiveMode"] != null)
+			{
+				this._StorageFtpPassiveMode = ParseBool(node["storageFtpPassiveMode"].Value<string>());
+			}
+			if(node["minFileSize"] != null)
+			{
+				this._MinFileSize = ParseInt(node["minFileSize"].Value<string>());
+			}
+			if(node["maxFileSize"] != null)
+			{
+				this._MaxFileSize = ParseInt(node["maxFileSize"].Value<string>());
+			}
+			if(node["flavorParamsIds"] != null)
+			{
+				this._FlavorParamsIds = node["flavorParamsIds"].Value<string>();
+			}
+			if(node["maxConcurrentConnections"] != null)
+			{
+				this._MaxConcurrentConnections = ParseInt(node["maxConcurrentConnections"].Value<string>());
+			}
+			if(node["pathManagerClass"] != null)
+			{
+				this._PathManagerClass = node["pathManagerClass"].Value<string>();
+			}
+			if(node["pathManagerParams"] != null)
+			{
+				this._PathManagerParams = new List<KeyValue>();
+				foreach(var arrayNode in node["pathManagerParams"].Children())
 				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-					case "systemName":
-						this._SystemName = propertyNode.InnerText;
-						continue;
-					case "desciption":
-						this._Desciption = propertyNode.InnerText;
-						continue;
-					case "status":
-						this._Status = (StorageProfileStatus)ParseEnum(typeof(StorageProfileStatus), propertyNode.InnerText);
-						continue;
-					case "protocol":
-						this._Protocol = (StorageProfileProtocol)StringEnum.Parse(typeof(StorageProfileProtocol), propertyNode.InnerText);
-						continue;
-					case "storageUrl":
-						this._StorageUrl = propertyNode.InnerText;
-						continue;
-					case "storageBaseDir":
-						this._StorageBaseDir = propertyNode.InnerText;
-						continue;
-					case "storageUsername":
-						this._StorageUsername = propertyNode.InnerText;
-						continue;
-					case "storagePassword":
-						this._StoragePassword = propertyNode.InnerText;
-						continue;
-					case "storageFtpPassiveMode":
-						this._StorageFtpPassiveMode = ParseBool(propertyNode.InnerText);
-						continue;
-					case "minFileSize":
-						this._MinFileSize = ParseInt(propertyNode.InnerText);
-						continue;
-					case "maxFileSize":
-						this._MaxFileSize = ParseInt(propertyNode.InnerText);
-						continue;
-					case "flavorParamsIds":
-						this._FlavorParamsIds = propertyNode.InnerText;
-						continue;
-					case "maxConcurrentConnections":
-						this._MaxConcurrentConnections = ParseInt(propertyNode.InnerText);
-						continue;
-					case "pathManagerClass":
-						this._PathManagerClass = propertyNode.InnerText;
-						continue;
-					case "pathManagerParams":
-						this._PathManagerParams = new List<KeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._PathManagerParams.Add(ObjectFactory.Create<KeyValue>(arrayNode));
-						}
-						continue;
-					case "trigger":
-						this._Trigger = ParseInt(propertyNode.InnerText);
-						continue;
-					case "deliveryPriority":
-						this._DeliveryPriority = ParseInt(propertyNode.InnerText);
-						continue;
-					case "deliveryStatus":
-						this._DeliveryStatus = (StorageProfileDeliveryStatus)ParseEnum(typeof(StorageProfileDeliveryStatus), propertyNode.InnerText);
-						continue;
-					case "readyBehavior":
-						this._ReadyBehavior = (StorageProfileReadyBehavior)ParseEnum(typeof(StorageProfileReadyBehavior), propertyNode.InnerText);
-						continue;
-					case "allowAutoDelete":
-						this._AllowAutoDelete = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createFileLink":
-						this._CreateFileLink = ParseBool(propertyNode.InnerText);
-						continue;
-					case "rules":
-						this._Rules = new List<Rule>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Rules.Add(ObjectFactory.Create<Rule>(arrayNode));
-						}
-						continue;
-					case "deliveryProfileIds":
-						this._DeliveryProfileIds = new List<KeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._DeliveryProfileIds.Add(ObjectFactory.Create<KeyValue>(arrayNode));
-						}
-						continue;
-					case "privateKey":
-						this._PrivateKey = propertyNode.InnerText;
-						continue;
-					case "publicKey":
-						this._PublicKey = propertyNode.InnerText;
-						continue;
-					case "passPhrase":
-						this._PassPhrase = propertyNode.InnerText;
-						continue;
-					case "shouldExportThumbs":
-						this._ShouldExportThumbs = ParseBool(propertyNode.InnerText);
-						continue;
+					this._PathManagerParams.Add(ObjectFactory.Create<KeyValue>(arrayNode));
 				}
 			}
-		}
-
-		public StorageProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._Name = data.TryGetValueSafe<string>("name");
-			    this._SystemName = data.TryGetValueSafe<string>("systemName");
-			    this._Desciption = data.TryGetValueSafe<string>("desciption");
-			    this._Status = (StorageProfileStatus)ParseEnum(typeof(StorageProfileStatus), data.TryGetValueSafe<int>("status"));
-			    this._Protocol = (StorageProfileProtocol)StringEnum.Parse(typeof(StorageProfileProtocol), data.TryGetValueSafe<string>("protocol"));
-			    this._StorageUrl = data.TryGetValueSafe<string>("storageUrl");
-			    this._StorageBaseDir = data.TryGetValueSafe<string>("storageBaseDir");
-			    this._StorageUsername = data.TryGetValueSafe<string>("storageUsername");
-			    this._StoragePassword = data.TryGetValueSafe<string>("storagePassword");
-			    this._StorageFtpPassiveMode = data.TryGetValueSafe<bool>("storageFtpPassiveMode");
-			    this._MinFileSize = data.TryGetValueSafe<int>("minFileSize");
-			    this._MaxFileSize = data.TryGetValueSafe<int>("maxFileSize");
-			    this._FlavorParamsIds = data.TryGetValueSafe<string>("flavorParamsIds");
-			    this._MaxConcurrentConnections = data.TryGetValueSafe<int>("maxConcurrentConnections");
-			    this._PathManagerClass = data.TryGetValueSafe<string>("pathManagerClass");
-			    this._PathManagerParams = new List<KeyValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("pathManagerParams", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._PathManagerParams.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._Trigger = data.TryGetValueSafe<int>("trigger");
-			    this._DeliveryPriority = data.TryGetValueSafe<int>("deliveryPriority");
-			    this._DeliveryStatus = (StorageProfileDeliveryStatus)ParseEnum(typeof(StorageProfileDeliveryStatus), data.TryGetValueSafe<int>("deliveryStatus"));
-			    this._ReadyBehavior = (StorageProfileReadyBehavior)ParseEnum(typeof(StorageProfileReadyBehavior), data.TryGetValueSafe<int>("readyBehavior"));
-			    this._AllowAutoDelete = data.TryGetValueSafe<int>("allowAutoDelete");
-			    this._CreateFileLink = data.TryGetValueSafe<bool>("createFileLink");
-			    this._Rules = new List<Rule>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("rules", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Rules.Add(ObjectFactory.Create<Rule>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._DeliveryProfileIds = new List<KeyValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("deliveryProfileIds", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._DeliveryProfileIds.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._PrivateKey = data.TryGetValueSafe<string>("privateKey");
-			    this._PublicKey = data.TryGetValueSafe<string>("publicKey");
-			    this._PassPhrase = data.TryGetValueSafe<string>("passPhrase");
-			    this._ShouldExportThumbs = data.TryGetValueSafe<bool>("shouldExportThumbs");
+			if(node["trigger"] != null)
+			{
+				this._Trigger = ParseInt(node["trigger"].Value<string>());
+			}
+			if(node["deliveryPriority"] != null)
+			{
+				this._DeliveryPriority = ParseInt(node["deliveryPriority"].Value<string>());
+			}
+			if(node["deliveryStatus"] != null)
+			{
+				this._DeliveryStatus = (StorageProfileDeliveryStatus)ParseEnum(typeof(StorageProfileDeliveryStatus), node["deliveryStatus"].Value<string>());
+			}
+			if(node["readyBehavior"] != null)
+			{
+				this._ReadyBehavior = (StorageProfileReadyBehavior)ParseEnum(typeof(StorageProfileReadyBehavior), node["readyBehavior"].Value<string>());
+			}
+			if(node["allowAutoDelete"] != null)
+			{
+				this._AllowAutoDelete = ParseInt(node["allowAutoDelete"].Value<string>());
+			}
+			if(node["createFileLink"] != null)
+			{
+				this._CreateFileLink = ParseBool(node["createFileLink"].Value<string>());
+			}
+			if(node["rules"] != null)
+			{
+				this._Rules = new List<Rule>();
+				foreach(var arrayNode in node["rules"].Children())
+				{
+					this._Rules.Add(ObjectFactory.Create<Rule>(arrayNode));
+				}
+			}
+			if(node["deliveryProfileIds"] != null)
+			{
+				this._DeliveryProfileIds = new List<KeyValue>();
+				foreach(var arrayNode in node["deliveryProfileIds"].Children())
+				{
+					this._DeliveryProfileIds.Add(ObjectFactory.Create<KeyValue>(arrayNode));
+				}
+			}
+			if(node["privateKey"] != null)
+			{
+				this._PrivateKey = node["privateKey"].Value<string>();
+			}
+			if(node["publicKey"] != null)
+			{
+				this._PublicKey = node["publicKey"].Value<string>();
+			}
+			if(node["passPhrase"] != null)
+			{
+				this._PassPhrase = node["passPhrase"].Value<string>();
+			}
+			if(node["shouldExportThumbs"] != null)
+			{
+				this._ShouldExportThumbs = ParseBool(node["shouldExportThumbs"].Value<string>());
+			}
 		}
 		#endregion
 

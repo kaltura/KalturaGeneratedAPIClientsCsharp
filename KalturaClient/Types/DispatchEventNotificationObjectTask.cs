@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int EventNotificationTemplateId
 		{
 			get { return _EventNotificationTemplateId; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DispatchEventNotificationObjectTask(XmlElement node) : base(node)
+		public DispatchEventNotificationObjectTask(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["eventNotificationTemplateId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "eventNotificationTemplateId":
-						this._EventNotificationTemplateId = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._EventNotificationTemplateId = ParseInt(node["eventNotificationTemplateId"].Value<string>());
 			}
-		}
-
-		public DispatchEventNotificationObjectTask(IDictionary<string,object> data) : base(data)
-		{
-			    this._EventNotificationTemplateId = data.TryGetValueSafe<int>("eventNotificationTemplateId");
 		}
 		#endregion
 

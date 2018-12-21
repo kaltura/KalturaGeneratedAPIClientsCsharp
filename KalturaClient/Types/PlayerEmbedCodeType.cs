@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Id
 		{
 			get { return _Id; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		[JsonProperty]
 		public string Label
 		{
 			get { return _Label; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Label");
 			}
 		}
+		[JsonProperty]
 		public bool? EntryOnly
 		{
 			get { return _EntryOnly; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryOnly");
 			}
 		}
+		[JsonProperty]
 		public string MinVersion
 		{
 			get { return _MinVersion; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public PlayerEmbedCodeType(XmlElement node) : base(node)
+		public PlayerEmbedCodeType(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = propertyNode.InnerText;
-						continue;
-					case "label":
-						this._Label = propertyNode.InnerText;
-						continue;
-					case "entryOnly":
-						this._EntryOnly = ParseBool(propertyNode.InnerText);
-						continue;
-					case "minVersion":
-						this._MinVersion = propertyNode.InnerText;
-						continue;
-				}
+				this._Id = node["id"].Value<string>();
 			}
-		}
-
-		public PlayerEmbedCodeType(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<string>("id");
-			    this._Label = data.TryGetValueSafe<string>("label");
-			    this._EntryOnly = data.TryGetValueSafe<bool>("entryOnly");
-			    this._MinVersion = data.TryGetValueSafe<string>("minVersion");
+			if(node["label"] != null)
+			{
+				this._Label = node["label"].Value<string>();
+			}
+			if(node["entryOnly"] != null)
+			{
+				this._EntryOnly = ParseBool(node["entryOnly"].Value<string>());
+			}
+			if(node["minVersion"] != null)
+			{
+				this._MinVersion = node["minVersion"].Value<string>();
+			}
 		}
 		#endregion
 

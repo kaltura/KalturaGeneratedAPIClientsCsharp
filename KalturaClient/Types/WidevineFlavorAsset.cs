@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int WidevineDistributionStartDate
 		{
 			get { return _WidevineDistributionStartDate; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WidevineDistributionStartDate");
 			}
 		}
+		[JsonProperty]
 		public int WidevineDistributionEndDate
 		{
 			get { return _WidevineDistributionEndDate; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WidevineDistributionEndDate");
 			}
 		}
+		[JsonProperty]
 		public int WidevineAssetId
 		{
 			get { return _WidevineAssetId; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public WidevineFlavorAsset(XmlElement node) : base(node)
+		public WidevineFlavorAsset(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["widevineDistributionStartDate"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "widevineDistributionStartDate":
-						this._WidevineDistributionStartDate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "widevineDistributionEndDate":
-						this._WidevineDistributionEndDate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "widevineAssetId":
-						this._WidevineAssetId = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._WidevineDistributionStartDate = ParseInt(node["widevineDistributionStartDate"].Value<string>());
 			}
-		}
-
-		public WidevineFlavorAsset(IDictionary<string,object> data) : base(data)
-		{
-			    this._WidevineDistributionStartDate = data.TryGetValueSafe<int>("widevineDistributionStartDate");
-			    this._WidevineDistributionEndDate = data.TryGetValueSafe<int>("widevineDistributionEndDate");
-			    this._WidevineAssetId = data.TryGetValueSafe<int>("widevineAssetId");
+			if(node["widevineDistributionEndDate"] != null)
+			{
+				this._WidevineDistributionEndDate = ParseInt(node["widevineDistributionEndDate"].Value<string>());
+			}
+			if(node["widevineAssetId"] != null)
+			{
+				this._WidevineAssetId = ParseInt(node["widevineAssetId"].Value<string>());
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,6 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int RecordingId
 		{
 			get { return _RecordingId; }
@@ -61,6 +64,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecordingId");
 			}
 		}
+		[JsonProperty]
 		public string WebexHostId
 		{
 			get { return _WebexHostId; }
@@ -70,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebexHostId");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -79,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public string ConfId
 		{
 			get { return _ConfId; }
@@ -88,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConfId");
 			}
 		}
+		[JsonProperty]
 		public string ContentUrl
 		{
 			get { return _ContentUrl; }
@@ -104,38 +111,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public WebexDropFolderFile(XmlElement node) : base(node)
+		public WebexDropFolderFile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["recordingId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "recordingId":
-						this._RecordingId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "webexHostId":
-						this._WebexHostId = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "confId":
-						this._ConfId = propertyNode.InnerText;
-						continue;
-					case "contentUrl":
-						this._ContentUrl = propertyNode.InnerText;
-						continue;
-				}
+				this._RecordingId = ParseInt(node["recordingId"].Value<string>());
 			}
-		}
-
-		public WebexDropFolderFile(IDictionary<string,object> data) : base(data)
-		{
-			    this._RecordingId = data.TryGetValueSafe<int>("recordingId");
-			    this._WebexHostId = data.TryGetValueSafe<string>("webexHostId");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._ConfId = data.TryGetValueSafe<string>("confId");
-			    this._ContentUrl = data.TryGetValueSafe<string>("contentUrl");
+			if(node["webexHostId"] != null)
+			{
+				this._WebexHostId = node["webexHostId"].Value<string>();
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["confId"] != null)
+			{
+				this._ConfId = node["confId"].Value<string>();
+			}
+			if(node["contentUrl"] != null)
+			{
+				this._ContentUrl = node["contentUrl"].Value<string>();
+			}
 		}
 		#endregion
 

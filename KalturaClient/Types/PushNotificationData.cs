@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,17 +50,35 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string QueueName
 		{
 			get { return _QueueName; }
+			private set 
+			{ 
+				_QueueName = value;
+				OnPropertyChanged("QueueName");
+			}
 		}
+		[JsonProperty]
 		public string QueueKey
 		{
 			get { return _QueueKey; }
+			private set 
+			{ 
+				_QueueKey = value;
+				OnPropertyChanged("QueueKey");
+			}
 		}
+		[JsonProperty]
 		public string Url
 		{
 			get { return _Url; }
+			private set 
+			{ 
+				_Url = value;
+				OnPropertyChanged("Url");
+			}
 		}
 		#endregion
 
@@ -67,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public PushNotificationData(XmlElement node) : base(node)
+		public PushNotificationData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["queueName"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "queueName":
-						this._QueueName = propertyNode.InnerText;
-						continue;
-					case "queueKey":
-						this._QueueKey = propertyNode.InnerText;
-						continue;
-					case "url":
-						this._Url = propertyNode.InnerText;
-						continue;
-				}
+				this._QueueName = node["queueName"].Value<string>();
 			}
-		}
-
-		public PushNotificationData(IDictionary<string,object> data) : base(data)
-		{
-			    this._QueueName = data.TryGetValueSafe<string>("queueName");
-			    this._QueueKey = data.TryGetValueSafe<string>("queueKey");
-			    this._Url = data.TryGetValueSafe<string>("url");
+			if(node["queueKey"] != null)
+			{
+				this._QueueKey = node["queueKey"].Value<string>();
+			}
+			if(node["url"] != null)
+			{
+				this._Url = node["url"].Value<string>();
+			}
 		}
 		#endregion
 

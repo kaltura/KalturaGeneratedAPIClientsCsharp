@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string EntryIds
 		{
 			get { return _EntryIds; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIds");
 			}
 		}
+		[JsonProperty]
 		public int FlavorParamsId
 		{
 			get { return _FlavorParamsId; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsId");
 			}
 		}
+		[JsonProperty]
 		public string PuserId
 		{
 			get { return _PuserId; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BulkDownloadJobData(XmlElement node) : base(node)
+		public BulkDownloadJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["entryIds"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "entryIds":
-						this._EntryIds = propertyNode.InnerText;
-						continue;
-					case "flavorParamsId":
-						this._FlavorParamsId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "puserId":
-						this._PuserId = propertyNode.InnerText;
-						continue;
-				}
+				this._EntryIds = node["entryIds"].Value<string>();
 			}
-		}
-
-		public BulkDownloadJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._EntryIds = data.TryGetValueSafe<string>("entryIds");
-			    this._FlavorParamsId = data.TryGetValueSafe<int>("flavorParamsId");
-			    this._PuserId = data.TryGetValueSafe<string>("puserId");
+			if(node["flavorParamsId"] != null)
+			{
+				this._FlavorParamsId = ParseInt(node["flavorParamsId"].Value<string>());
+			}
+			if(node["puserId"] != null)
+			{
+				this._PuserId = node["puserId"].Value<string>();
+			}
 		}
 		#endregion
 

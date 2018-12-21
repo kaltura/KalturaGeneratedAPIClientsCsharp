@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string MulticastIP
 		{
 			get { return _MulticastIP; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MulticastIP");
 			}
 		}
+		[JsonProperty]
 		public int MulticastPort
 		{
 			get { return _MulticastPort; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public LiveAsset(XmlElement node) : base(node)
+		public LiveAsset(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["multicastIP"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "multicastIP":
-						this._MulticastIP = propertyNode.InnerText;
-						continue;
-					case "multicastPort":
-						this._MulticastPort = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._MulticastIP = node["multicastIP"].Value<string>();
 			}
-		}
-
-		public LiveAsset(IDictionary<string,object> data) : base(data)
-		{
-			    this._MulticastIP = data.TryGetValueSafe<string>("multicastIP");
-			    this._MulticastPort = data.TryGetValueSafe<int>("multicastPort");
+			if(node["multicastPort"] != null)
+			{
+				this._MulticastPort = ParseInt(node["multicastPort"].Value<string>());
+			}
 		}
 		#endregion
 

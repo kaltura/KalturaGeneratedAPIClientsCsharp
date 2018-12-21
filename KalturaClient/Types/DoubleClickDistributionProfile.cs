@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,6 +58,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ChannelTitle
 		{
 			get { return _ChannelTitle; }
@@ -65,6 +68,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelTitle");
 			}
 		}
+		[JsonProperty]
 		public string ChannelLink
 		{
 			get { return _ChannelLink; }
@@ -74,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelLink");
 			}
 		}
+		[JsonProperty]
 		public string ChannelDescription
 		{
 			get { return _ChannelDescription; }
@@ -83,10 +88,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelDescription");
 			}
 		}
+		[JsonProperty]
 		public string FeedUrl
 		{
 			get { return _FeedUrl; }
+			private set 
+			{ 
+				_FeedUrl = value;
+				OnPropertyChanged("FeedUrl");
+			}
 		}
+		[JsonProperty]
 		public string CuePointsProvider
 		{
 			get { return _CuePointsProvider; }
@@ -96,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CuePointsProvider");
 			}
 		}
+		[JsonProperty]
 		public string ItemsPerPage
 		{
 			get { return _ItemsPerPage; }
@@ -105,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemsPerPage");
 			}
 		}
+		[JsonProperty]
 		public bool? IgnoreSchedulingInFeed
 		{
 			get { return _IgnoreSchedulingInFeed; }
@@ -121,46 +135,36 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DoubleClickDistributionProfile(XmlElement node) : base(node)
+		public DoubleClickDistributionProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["channelTitle"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "channelTitle":
-						this._ChannelTitle = propertyNode.InnerText;
-						continue;
-					case "channelLink":
-						this._ChannelLink = propertyNode.InnerText;
-						continue;
-					case "channelDescription":
-						this._ChannelDescription = propertyNode.InnerText;
-						continue;
-					case "feedUrl":
-						this._FeedUrl = propertyNode.InnerText;
-						continue;
-					case "cuePointsProvider":
-						this._CuePointsProvider = propertyNode.InnerText;
-						continue;
-					case "itemsPerPage":
-						this._ItemsPerPage = propertyNode.InnerText;
-						continue;
-					case "ignoreSchedulingInFeed":
-						this._IgnoreSchedulingInFeed = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._ChannelTitle = node["channelTitle"].Value<string>();
 			}
-		}
-
-		public DoubleClickDistributionProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._ChannelTitle = data.TryGetValueSafe<string>("channelTitle");
-			    this._ChannelLink = data.TryGetValueSafe<string>("channelLink");
-			    this._ChannelDescription = data.TryGetValueSafe<string>("channelDescription");
-			    this._FeedUrl = data.TryGetValueSafe<string>("feedUrl");
-			    this._CuePointsProvider = data.TryGetValueSafe<string>("cuePointsProvider");
-			    this._ItemsPerPage = data.TryGetValueSafe<string>("itemsPerPage");
-			    this._IgnoreSchedulingInFeed = data.TryGetValueSafe<bool>("ignoreSchedulingInFeed");
+			if(node["channelLink"] != null)
+			{
+				this._ChannelLink = node["channelLink"].Value<string>();
+			}
+			if(node["channelDescription"] != null)
+			{
+				this._ChannelDescription = node["channelDescription"].Value<string>();
+			}
+			if(node["feedUrl"] != null)
+			{
+				this._FeedUrl = node["feedUrl"].Value<string>();
+			}
+			if(node["cuePointsProvider"] != null)
+			{
+				this._CuePointsProvider = node["cuePointsProvider"].Value<string>();
+			}
+			if(node["itemsPerPage"] != null)
+			{
+				this._ItemsPerPage = node["itemsPerPage"].Value<string>();
+			}
+			if(node["ignoreSchedulingInFeed"] != null)
+			{
+				this._IgnoreSchedulingInFeed = ParseBool(node["ignoreSchedulingInFeed"].Value<string>());
+			}
 		}
 		#endregion
 

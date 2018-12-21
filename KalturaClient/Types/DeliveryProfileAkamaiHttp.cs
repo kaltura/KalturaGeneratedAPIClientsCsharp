@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public bool? UseIntelliseek
 		{
 			get { return _UseIntelliseek; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DeliveryProfileAkamaiHttp(XmlElement node) : base(node)
+		public DeliveryProfileAkamaiHttp(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["useIntelliseek"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "useIntelliseek":
-						this._UseIntelliseek = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._UseIntelliseek = ParseBool(node["useIntelliseek"].Value<string>());
 			}
-		}
-
-		public DeliveryProfileAkamaiHttp(IDictionary<string,object> data) : base(data)
-		{
-			    this._UseIntelliseek = data.TryGetValueSafe<bool>("useIntelliseek");
 		}
 		#endregion
 

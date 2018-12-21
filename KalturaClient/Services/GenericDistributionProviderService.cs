@@ -32,6 +32,7 @@ using System.IO;
 using Kaltura.Request;
 using Kaltura.Types;
 using Kaltura.Enums;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Services
 {
@@ -72,17 +73,13 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<GenericDistributionProvider>(result);
 		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<GenericDistributionProvider>((IDictionary<string,object>)result);
-		}
 	}
 
-	public class GenericDistributionProviderDeleteRequestBuilder : RequestBuilder<object>
+	public class GenericDistributionProviderDeleteRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
 		public const string ID = "id";
@@ -119,11 +116,7 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-		public override object DeserializeObject(object result)
+		public override object Deserialize(JToken result)
 		{
 			return null;
 		}
@@ -166,13 +159,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<GenericDistributionProvider>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<GenericDistributionProvider>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -222,13 +211,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<ListResponse<GenericDistributionProvider>>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<ListResponse<GenericDistributionProvider>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -278,13 +263,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<GenericDistributionProvider>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<GenericDistributionProvider>((IDictionary<string,object>)result);
 		}
 	}
 

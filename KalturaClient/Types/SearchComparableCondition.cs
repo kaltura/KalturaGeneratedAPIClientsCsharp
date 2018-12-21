@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public SearchConditionComparison Comparison
 		{
 			get { return _Comparison; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public SearchComparableCondition(XmlElement node) : base(node)
+		public SearchComparableCondition(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["comparison"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "comparison":
-						this._Comparison = (SearchConditionComparison)StringEnum.Parse(typeof(SearchConditionComparison), propertyNode.InnerText);
-						continue;
-				}
+				this._Comparison = (SearchConditionComparison)StringEnum.Parse(typeof(SearchConditionComparison), node["comparison"].Value<string>());
 			}
-		}
-
-		public SearchComparableCondition(IDictionary<string,object> data) : base(data)
-		{
-			    this._Comparison = (SearchConditionComparison)StringEnum.Parse(typeof(SearchConditionComparison), data.TryGetValueSafe<string>("comparison"));
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -100,6 +102,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int IdEqual
 		{
 			get { return _IdEqual; }
@@ -109,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		[JsonProperty]
 		public string IdIn
 		{
 			get { return _IdIn; }
@@ -118,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		[JsonProperty]
 		public string IdNotIn
 		{
 			get { return _IdNotIn; }
@@ -127,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdNotIn");
 			}
 		}
+		[JsonProperty]
 		public int ParentIdEqual
 		{
 			get { return _ParentIdEqual; }
@@ -136,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string ParentIdIn
 		{
 			get { return _ParentIdIn; }
@@ -145,6 +152,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentIdIn");
 			}
 		}
+		[JsonProperty]
 		public string ParentIdNotIn
 		{
 			get { return _ParentIdNotIn; }
@@ -154,6 +162,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentIdNotIn");
 			}
 		}
+		[JsonProperty]
 		public ScheduleEventStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -163,6 +172,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -172,6 +182,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		[JsonProperty]
 		public int StartDateGreaterThanOrEqual
 		{
 			get { return _StartDateGreaterThanOrEqual; }
@@ -181,6 +192,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartDateGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int StartDateLessThanOrEqual
 		{
 			get { return _StartDateLessThanOrEqual; }
@@ -190,6 +202,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartDateLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int EndDateGreaterThanOrEqual
 		{
 			get { return _EndDateGreaterThanOrEqual; }
@@ -199,6 +212,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndDateGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int EndDateLessThanOrEqual
 		{
 			get { return _EndDateLessThanOrEqual; }
@@ -208,6 +222,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndDateLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public string ReferenceIdEqual
 		{
 			get { return _ReferenceIdEqual; }
@@ -217,6 +232,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReferenceIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string ReferenceIdIn
 		{
 			get { return _ReferenceIdIn; }
@@ -226,6 +242,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReferenceIdIn");
 			}
 		}
+		[JsonProperty]
 		public string OwnerIdEqual
 		{
 			get { return _OwnerIdEqual; }
@@ -235,6 +252,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("OwnerIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string OwnerIdIn
 		{
 			get { return _OwnerIdIn; }
@@ -244,6 +262,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("OwnerIdIn");
 			}
 		}
+		[JsonProperty]
 		public int PriorityEqual
 		{
 			get { return _PriorityEqual; }
@@ -253,6 +272,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PriorityEqual");
 			}
 		}
+		[JsonProperty]
 		public string PriorityIn
 		{
 			get { return _PriorityIn; }
@@ -262,6 +282,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PriorityIn");
 			}
 		}
+		[JsonProperty]
 		public int PriorityGreaterThanOrEqual
 		{
 			get { return _PriorityGreaterThanOrEqual; }
@@ -271,6 +292,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PriorityGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int PriorityLessThanOrEqual
 		{
 			get { return _PriorityLessThanOrEqual; }
@@ -280,6 +302,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PriorityLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public ScheduleEventRecurrenceType RecurrenceTypeEqual
 		{
 			get { return _RecurrenceTypeEqual; }
@@ -289,6 +312,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecurrenceTypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string RecurrenceTypeIn
 		{
 			get { return _RecurrenceTypeIn; }
@@ -298,6 +322,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecurrenceTypeIn");
 			}
 		}
+		[JsonProperty]
 		public string TagsLike
 		{
 			get { return _TagsLike; }
@@ -307,6 +332,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsLike");
 			}
 		}
+		[JsonProperty]
 		public string TagsMultiLikeOr
 		{
 			get { return _TagsMultiLikeOr; }
@@ -316,6 +342,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string TagsMultiLikeAnd
 		{
 			get { return _TagsMultiLikeAnd; }
@@ -325,6 +352,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
 			get { return _CreatedAtGreaterThanOrEqual; }
@@ -334,6 +362,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
 			get { return _CreatedAtLessThanOrEqual; }
@@ -343,6 +372,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
 			get { return _UpdatedAtGreaterThanOrEqual; }
@@ -352,6 +382,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
 			get { return _UpdatedAtLessThanOrEqual; }
@@ -368,134 +399,124 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ScheduleEventBaseFilter(XmlElement node) : base(node)
+		public ScheduleEventBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["idEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "idEqual":
-						this._IdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "idIn":
-						this._IdIn = propertyNode.InnerText;
-						continue;
-					case "idNotIn":
-						this._IdNotIn = propertyNode.InnerText;
-						continue;
-					case "parentIdEqual":
-						this._ParentIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "parentIdIn":
-						this._ParentIdIn = propertyNode.InnerText;
-						continue;
-					case "parentIdNotIn":
-						this._ParentIdNotIn = propertyNode.InnerText;
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (ScheduleEventStatus)ParseEnum(typeof(ScheduleEventStatus), propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-					case "startDateGreaterThanOrEqual":
-						this._StartDateGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "startDateLessThanOrEqual":
-						this._StartDateLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "endDateGreaterThanOrEqual":
-						this._EndDateGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "endDateLessThanOrEqual":
-						this._EndDateLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "referenceIdEqual":
-						this._ReferenceIdEqual = propertyNode.InnerText;
-						continue;
-					case "referenceIdIn":
-						this._ReferenceIdIn = propertyNode.InnerText;
-						continue;
-					case "ownerIdEqual":
-						this._OwnerIdEqual = propertyNode.InnerText;
-						continue;
-					case "ownerIdIn":
-						this._OwnerIdIn = propertyNode.InnerText;
-						continue;
-					case "priorityEqual":
-						this._PriorityEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "priorityIn":
-						this._PriorityIn = propertyNode.InnerText;
-						continue;
-					case "priorityGreaterThanOrEqual":
-						this._PriorityGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "priorityLessThanOrEqual":
-						this._PriorityLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "recurrenceTypeEqual":
-						this._RecurrenceTypeEqual = (ScheduleEventRecurrenceType)ParseEnum(typeof(ScheduleEventRecurrenceType), propertyNode.InnerText);
-						continue;
-					case "recurrenceTypeIn":
-						this._RecurrenceTypeIn = propertyNode.InnerText;
-						continue;
-					case "tagsLike":
-						this._TagsLike = propertyNode.InnerText;
-						continue;
-					case "tagsMultiLikeOr":
-						this._TagsMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "tagsMultiLikeAnd":
-						this._TagsMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._IdEqual = ParseInt(node["idEqual"].Value<string>());
 			}
-		}
-
-		public ScheduleEventBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
-			    this._IdIn = data.TryGetValueSafe<string>("idIn");
-			    this._IdNotIn = data.TryGetValueSafe<string>("idNotIn");
-			    this._ParentIdEqual = data.TryGetValueSafe<int>("parentIdEqual");
-			    this._ParentIdIn = data.TryGetValueSafe<string>("parentIdIn");
-			    this._ParentIdNotIn = data.TryGetValueSafe<string>("parentIdNotIn");
-			    this._StatusEqual = (ScheduleEventStatus)ParseEnum(typeof(ScheduleEventStatus), data.TryGetValueSafe<int>("statusEqual"));
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
-			    this._StartDateGreaterThanOrEqual = data.TryGetValueSafe<int>("startDateGreaterThanOrEqual");
-			    this._StartDateLessThanOrEqual = data.TryGetValueSafe<int>("startDateLessThanOrEqual");
-			    this._EndDateGreaterThanOrEqual = data.TryGetValueSafe<int>("endDateGreaterThanOrEqual");
-			    this._EndDateLessThanOrEqual = data.TryGetValueSafe<int>("endDateLessThanOrEqual");
-			    this._ReferenceIdEqual = data.TryGetValueSafe<string>("referenceIdEqual");
-			    this._ReferenceIdIn = data.TryGetValueSafe<string>("referenceIdIn");
-			    this._OwnerIdEqual = data.TryGetValueSafe<string>("ownerIdEqual");
-			    this._OwnerIdIn = data.TryGetValueSafe<string>("ownerIdIn");
-			    this._PriorityEqual = data.TryGetValueSafe<int>("priorityEqual");
-			    this._PriorityIn = data.TryGetValueSafe<string>("priorityIn");
-			    this._PriorityGreaterThanOrEqual = data.TryGetValueSafe<int>("priorityGreaterThanOrEqual");
-			    this._PriorityLessThanOrEqual = data.TryGetValueSafe<int>("priorityLessThanOrEqual");
-			    this._RecurrenceTypeEqual = (ScheduleEventRecurrenceType)ParseEnum(typeof(ScheduleEventRecurrenceType), data.TryGetValueSafe<int>("recurrenceTypeEqual"));
-			    this._RecurrenceTypeIn = data.TryGetValueSafe<string>("recurrenceTypeIn");
-			    this._TagsLike = data.TryGetValueSafe<string>("tagsLike");
-			    this._TagsMultiLikeOr = data.TryGetValueSafe<string>("tagsMultiLikeOr");
-			    this._TagsMultiLikeAnd = data.TryGetValueSafe<string>("tagsMultiLikeAnd");
-			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
-			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
-			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
-			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
+			if(node["idIn"] != null)
+			{
+				this._IdIn = node["idIn"].Value<string>();
+			}
+			if(node["idNotIn"] != null)
+			{
+				this._IdNotIn = node["idNotIn"].Value<string>();
+			}
+			if(node["parentIdEqual"] != null)
+			{
+				this._ParentIdEqual = ParseInt(node["parentIdEqual"].Value<string>());
+			}
+			if(node["parentIdIn"] != null)
+			{
+				this._ParentIdIn = node["parentIdIn"].Value<string>();
+			}
+			if(node["parentIdNotIn"] != null)
+			{
+				this._ParentIdNotIn = node["parentIdNotIn"].Value<string>();
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (ScheduleEventStatus)ParseEnum(typeof(ScheduleEventStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
+			if(node["startDateGreaterThanOrEqual"] != null)
+			{
+				this._StartDateGreaterThanOrEqual = ParseInt(node["startDateGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["startDateLessThanOrEqual"] != null)
+			{
+				this._StartDateLessThanOrEqual = ParseInt(node["startDateLessThanOrEqual"].Value<string>());
+			}
+			if(node["endDateGreaterThanOrEqual"] != null)
+			{
+				this._EndDateGreaterThanOrEqual = ParseInt(node["endDateGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["endDateLessThanOrEqual"] != null)
+			{
+				this._EndDateLessThanOrEqual = ParseInt(node["endDateLessThanOrEqual"].Value<string>());
+			}
+			if(node["referenceIdEqual"] != null)
+			{
+				this._ReferenceIdEqual = node["referenceIdEqual"].Value<string>();
+			}
+			if(node["referenceIdIn"] != null)
+			{
+				this._ReferenceIdIn = node["referenceIdIn"].Value<string>();
+			}
+			if(node["ownerIdEqual"] != null)
+			{
+				this._OwnerIdEqual = node["ownerIdEqual"].Value<string>();
+			}
+			if(node["ownerIdIn"] != null)
+			{
+				this._OwnerIdIn = node["ownerIdIn"].Value<string>();
+			}
+			if(node["priorityEqual"] != null)
+			{
+				this._PriorityEqual = ParseInt(node["priorityEqual"].Value<string>());
+			}
+			if(node["priorityIn"] != null)
+			{
+				this._PriorityIn = node["priorityIn"].Value<string>();
+			}
+			if(node["priorityGreaterThanOrEqual"] != null)
+			{
+				this._PriorityGreaterThanOrEqual = ParseInt(node["priorityGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["priorityLessThanOrEqual"] != null)
+			{
+				this._PriorityLessThanOrEqual = ParseInt(node["priorityLessThanOrEqual"].Value<string>());
+			}
+			if(node["recurrenceTypeEqual"] != null)
+			{
+				this._RecurrenceTypeEqual = (ScheduleEventRecurrenceType)ParseEnum(typeof(ScheduleEventRecurrenceType), node["recurrenceTypeEqual"].Value<string>());
+			}
+			if(node["recurrenceTypeIn"] != null)
+			{
+				this._RecurrenceTypeIn = node["recurrenceTypeIn"].Value<string>();
+			}
+			if(node["tagsLike"] != null)
+			{
+				this._TagsLike = node["tagsLike"].Value<string>();
+			}
+			if(node["tagsMultiLikeOr"] != null)
+			{
+				this._TagsMultiLikeOr = node["tagsMultiLikeOr"].Value<string>();
+			}
+			if(node["tagsMultiLikeAnd"] != null)
+			{
+				this._TagsMultiLikeAnd = node["tagsMultiLikeAnd"].Value<string>();
+			}
+			if(node["createdAtGreaterThanOrEqual"] != null)
+			{
+				this._CreatedAtGreaterThanOrEqual = ParseInt(node["createdAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["createdAtLessThanOrEqual"] != null)
+			{
+				this._CreatedAtLessThanOrEqual = ParseInt(node["createdAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtGreaterThanOrEqual"] != null)
+			{
+				this._UpdatedAtGreaterThanOrEqual = ParseInt(node["updatedAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtLessThanOrEqual"] != null)
+			{
+				this._UpdatedAtLessThanOrEqual = ParseInt(node["updatedAtLessThanOrEqual"].Value<string>());
+			}
 		}
 		#endregion
 

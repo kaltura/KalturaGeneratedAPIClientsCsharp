@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -72,6 +74,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Username
 		{
 			get { return _Username; }
@@ -81,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Username");
 			}
 		}
+		[JsonProperty]
 		public string Password
 		{
 			get { return _Password; }
@@ -90,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Password");
 			}
 		}
+		[JsonProperty]
 		public string Domain
 		{
 			get { return _Domain; }
@@ -99,6 +104,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Domain");
 			}
 		}
+		[JsonProperty]
 		public string CsId
 		{
 			get { return _CsId; }
@@ -108,6 +114,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CsId");
 			}
 		}
+		[JsonProperty]
 		public string Source
 		{
 			get { return _Source; }
@@ -117,6 +124,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Source");
 			}
 		}
+		[JsonProperty]
 		public string SourceFriendlyName
 		{
 			get { return _SourceFriendlyName; }
@@ -126,6 +134,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceFriendlyName");
 			}
 		}
+		[JsonProperty]
 		public string PageGroup
 		{
 			get { return _PageGroup; }
@@ -135,6 +144,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PageGroup");
 			}
 		}
+		[JsonProperty]
 		public int SourceFlavorParamsId
 		{
 			get { return _SourceFlavorParamsId; }
@@ -144,6 +154,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceFlavorParamsId");
 			}
 		}
+		[JsonProperty]
 		public int WmvFlavorParamsId
 		{
 			get { return _WmvFlavorParamsId; }
@@ -153,6 +164,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WmvFlavorParamsId");
 			}
 		}
+		[JsonProperty]
 		public int FlvFlavorParamsId
 		{
 			get { return _FlvFlavorParamsId; }
@@ -162,6 +174,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlvFlavorParamsId");
 			}
 		}
+		[JsonProperty]
 		public int SlFlavorParamsId
 		{
 			get { return _SlFlavorParamsId; }
@@ -171,6 +184,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SlFlavorParamsId");
 			}
 		}
+		[JsonProperty]
 		public int SlHdFlavorParamsId
 		{
 			get { return _SlHdFlavorParamsId; }
@@ -180,6 +194,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SlHdFlavorParamsId");
 			}
 		}
+		[JsonProperty]
 		public string MsnvideoCat
 		{
 			get { return _MsnvideoCat; }
@@ -189,6 +204,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MsnvideoCat");
 			}
 		}
+		[JsonProperty]
 		public string MsnvideoTop
 		{
 			get { return _MsnvideoTop; }
@@ -198,6 +214,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MsnvideoTop");
 			}
 		}
+		[JsonProperty]
 		public string MsnvideoTopCat
 		{
 			get { return _MsnvideoTopCat; }
@@ -214,78 +231,68 @@ namespace Kaltura.Types
 		{
 		}
 
-		public MsnDistributionProfile(XmlElement node) : base(node)
+		public MsnDistributionProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["username"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "username":
-						this._Username = propertyNode.InnerText;
-						continue;
-					case "password":
-						this._Password = propertyNode.InnerText;
-						continue;
-					case "domain":
-						this._Domain = propertyNode.InnerText;
-						continue;
-					case "csId":
-						this._CsId = propertyNode.InnerText;
-						continue;
-					case "source":
-						this._Source = propertyNode.InnerText;
-						continue;
-					case "sourceFriendlyName":
-						this._SourceFriendlyName = propertyNode.InnerText;
-						continue;
-					case "pageGroup":
-						this._PageGroup = propertyNode.InnerText;
-						continue;
-					case "sourceFlavorParamsId":
-						this._SourceFlavorParamsId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "wmvFlavorParamsId":
-						this._WmvFlavorParamsId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "flvFlavorParamsId":
-						this._FlvFlavorParamsId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "slFlavorParamsId":
-						this._SlFlavorParamsId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "slHdFlavorParamsId":
-						this._SlHdFlavorParamsId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "msnvideoCat":
-						this._MsnvideoCat = propertyNode.InnerText;
-						continue;
-					case "msnvideoTop":
-						this._MsnvideoTop = propertyNode.InnerText;
-						continue;
-					case "msnvideoTopCat":
-						this._MsnvideoTopCat = propertyNode.InnerText;
-						continue;
-				}
+				this._Username = node["username"].Value<string>();
 			}
-		}
-
-		public MsnDistributionProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._Username = data.TryGetValueSafe<string>("username");
-			    this._Password = data.TryGetValueSafe<string>("password");
-			    this._Domain = data.TryGetValueSafe<string>("domain");
-			    this._CsId = data.TryGetValueSafe<string>("csId");
-			    this._Source = data.TryGetValueSafe<string>("source");
-			    this._SourceFriendlyName = data.TryGetValueSafe<string>("sourceFriendlyName");
-			    this._PageGroup = data.TryGetValueSafe<string>("pageGroup");
-			    this._SourceFlavorParamsId = data.TryGetValueSafe<int>("sourceFlavorParamsId");
-			    this._WmvFlavorParamsId = data.TryGetValueSafe<int>("wmvFlavorParamsId");
-			    this._FlvFlavorParamsId = data.TryGetValueSafe<int>("flvFlavorParamsId");
-			    this._SlFlavorParamsId = data.TryGetValueSafe<int>("slFlavorParamsId");
-			    this._SlHdFlavorParamsId = data.TryGetValueSafe<int>("slHdFlavorParamsId");
-			    this._MsnvideoCat = data.TryGetValueSafe<string>("msnvideoCat");
-			    this._MsnvideoTop = data.TryGetValueSafe<string>("msnvideoTop");
-			    this._MsnvideoTopCat = data.TryGetValueSafe<string>("msnvideoTopCat");
+			if(node["password"] != null)
+			{
+				this._Password = node["password"].Value<string>();
+			}
+			if(node["domain"] != null)
+			{
+				this._Domain = node["domain"].Value<string>();
+			}
+			if(node["csId"] != null)
+			{
+				this._CsId = node["csId"].Value<string>();
+			}
+			if(node["source"] != null)
+			{
+				this._Source = node["source"].Value<string>();
+			}
+			if(node["sourceFriendlyName"] != null)
+			{
+				this._SourceFriendlyName = node["sourceFriendlyName"].Value<string>();
+			}
+			if(node["pageGroup"] != null)
+			{
+				this._PageGroup = node["pageGroup"].Value<string>();
+			}
+			if(node["sourceFlavorParamsId"] != null)
+			{
+				this._SourceFlavorParamsId = ParseInt(node["sourceFlavorParamsId"].Value<string>());
+			}
+			if(node["wmvFlavorParamsId"] != null)
+			{
+				this._WmvFlavorParamsId = ParseInt(node["wmvFlavorParamsId"].Value<string>());
+			}
+			if(node["flvFlavorParamsId"] != null)
+			{
+				this._FlvFlavorParamsId = ParseInt(node["flvFlavorParamsId"].Value<string>());
+			}
+			if(node["slFlavorParamsId"] != null)
+			{
+				this._SlFlavorParamsId = ParseInt(node["slFlavorParamsId"].Value<string>());
+			}
+			if(node["slHdFlavorParamsId"] != null)
+			{
+				this._SlHdFlavorParamsId = ParseInt(node["slHdFlavorParamsId"].Value<string>());
+			}
+			if(node["msnvideoCat"] != null)
+			{
+				this._MsnvideoCat = node["msnvideoCat"].Value<string>();
+			}
+			if(node["msnvideoTop"] != null)
+			{
+				this._MsnvideoTop = node["msnvideoTop"].Value<string>();
+			}
+			if(node["msnvideoTopCat"] != null)
+			{
+				this._MsnvideoTopCat = node["msnvideoTopCat"].Value<string>();
+			}
 		}
 		#endregion
 

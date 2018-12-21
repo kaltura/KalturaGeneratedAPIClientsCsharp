@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -98,22 +100,47 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public int SubmittedAt
 		{
 			get { return _SubmittedAt; }
+			private set 
+			{ 
+				_SubmittedAt = value;
+				OnPropertyChanged("SubmittedAt");
+			}
 		}
+		[JsonProperty]
 		public string EntryId
 		{
 			get { return _EntryId; }
@@ -123,10 +150,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public int DistributionProfileId
 		{
 			get { return _DistributionProfileId; }
@@ -136,18 +170,37 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributionProfileId");
 			}
 		}
+		[JsonProperty]
 		public EntryDistributionStatus Status
 		{
 			get { return _Status; }
+			private set 
+			{ 
+				_Status = value;
+				OnPropertyChanged("Status");
+			}
 		}
+		[JsonProperty]
 		public EntryDistributionSunStatus SunStatus
 		{
 			get { return _SunStatus; }
+			private set 
+			{ 
+				_SunStatus = value;
+				OnPropertyChanged("SunStatus");
+			}
 		}
+		[JsonProperty]
 		public EntryDistributionFlag DirtyStatus
 		{
 			get { return _DirtyStatus; }
+			private set 
+			{ 
+				_DirtyStatus = value;
+				OnPropertyChanged("DirtyStatus");
+			}
 		}
+		[JsonProperty]
 		public string ThumbAssetIds
 		{
 			get { return _ThumbAssetIds; }
@@ -157,6 +210,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbAssetIds");
 			}
 		}
+		[JsonProperty]
 		public string FlavorAssetIds
 		{
 			get { return _FlavorAssetIds; }
@@ -166,6 +220,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetIds");
 			}
 		}
+		[JsonProperty]
 		public string AssetIds
 		{
 			get { return _AssetIds; }
@@ -175,6 +230,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetIds");
 			}
 		}
+		[JsonProperty]
 		public int Sunrise
 		{
 			get { return _Sunrise; }
@@ -184,6 +240,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Sunrise");
 			}
 		}
+		[JsonProperty]
 		public int Sunset
 		{
 			get { return _Sunset; }
@@ -193,18 +250,37 @@ namespace Kaltura.Types
 				OnPropertyChanged("Sunset");
 			}
 		}
+		[JsonProperty]
 		public string RemoteId
 		{
 			get { return _RemoteId; }
+			private set 
+			{ 
+				_RemoteId = value;
+				OnPropertyChanged("RemoteId");
+			}
 		}
+		[JsonProperty]
 		public int Plays
 		{
 			get { return _Plays; }
+			private set 
+			{ 
+				_Plays = value;
+				OnPropertyChanged("Plays");
+			}
 		}
+		[JsonProperty]
 		public int Views
 		{
 			get { return _Views; }
+			private set 
+			{ 
+				_Views = value;
+				OnPropertyChanged("Views");
+			}
 		}
+		[JsonProperty]
 		public IList<DistributionValidationError> ValidationErrors
 		{
 			get { return _ValidationErrors; }
@@ -214,41 +290,95 @@ namespace Kaltura.Types
 				OnPropertyChanged("ValidationErrors");
 			}
 		}
+		[JsonProperty]
 		public BatchJobErrorTypes ErrorType
 		{
 			get { return _ErrorType; }
+			private set 
+			{ 
+				_ErrorType = value;
+				OnPropertyChanged("ErrorType");
+			}
 		}
+		[JsonProperty]
 		public int ErrorNumber
 		{
 			get { return _ErrorNumber; }
+			private set 
+			{ 
+				_ErrorNumber = value;
+				OnPropertyChanged("ErrorNumber");
+			}
 		}
+		[JsonProperty]
 		public string ErrorDescription
 		{
 			get { return _ErrorDescription; }
+			private set 
+			{ 
+				_ErrorDescription = value;
+				OnPropertyChanged("ErrorDescription");
+			}
 		}
+		[JsonProperty]
 		public NullableBoolean HasSubmitResultsLog
 		{
 			get { return _HasSubmitResultsLog; }
+			private set 
+			{ 
+				_HasSubmitResultsLog = value;
+				OnPropertyChanged("HasSubmitResultsLog");
+			}
 		}
+		[JsonProperty]
 		public NullableBoolean HasSubmitSentDataLog
 		{
 			get { return _HasSubmitSentDataLog; }
+			private set 
+			{ 
+				_HasSubmitSentDataLog = value;
+				OnPropertyChanged("HasSubmitSentDataLog");
+			}
 		}
+		[JsonProperty]
 		public NullableBoolean HasUpdateResultsLog
 		{
 			get { return _HasUpdateResultsLog; }
+			private set 
+			{ 
+				_HasUpdateResultsLog = value;
+				OnPropertyChanged("HasUpdateResultsLog");
+			}
 		}
+		[JsonProperty]
 		public NullableBoolean HasUpdateSentDataLog
 		{
 			get { return _HasUpdateSentDataLog; }
+			private set 
+			{ 
+				_HasUpdateSentDataLog = value;
+				OnPropertyChanged("HasUpdateSentDataLog");
+			}
 		}
+		[JsonProperty]
 		public NullableBoolean HasDeleteResultsLog
 		{
 			get { return _HasDeleteResultsLog; }
+			private set 
+			{ 
+				_HasDeleteResultsLog = value;
+				OnPropertyChanged("HasDeleteResultsLog");
+			}
 		}
+		[JsonProperty]
 		public NullableBoolean HasDeleteSentDataLog
 		{
 			get { return _HasDeleteSentDataLog; }
+			private set 
+			{ 
+				_HasDeleteSentDataLog = value;
+				OnPropertyChanged("HasDeleteSentDataLog");
+			}
 		}
 		#endregion
 
@@ -257,139 +387,124 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EntryDistribution(XmlElement node) : base(node)
+		public EntryDistribution(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Id = ParseInt(node["id"].Value<string>());
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["submittedAt"] != null)
+			{
+				this._SubmittedAt = ParseInt(node["submittedAt"].Value<string>());
+			}
+			if(node["entryId"] != null)
+			{
+				this._EntryId = node["entryId"].Value<string>();
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["distributionProfileId"] != null)
+			{
+				this._DistributionProfileId = ParseInt(node["distributionProfileId"].Value<string>());
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (EntryDistributionStatus)ParseEnum(typeof(EntryDistributionStatus), node["status"].Value<string>());
+			}
+			if(node["sunStatus"] != null)
+			{
+				this._SunStatus = (EntryDistributionSunStatus)ParseEnum(typeof(EntryDistributionSunStatus), node["sunStatus"].Value<string>());
+			}
+			if(node["dirtyStatus"] != null)
+			{
+				this._DirtyStatus = (EntryDistributionFlag)ParseEnum(typeof(EntryDistributionFlag), node["dirtyStatus"].Value<string>());
+			}
+			if(node["thumbAssetIds"] != null)
+			{
+				this._ThumbAssetIds = node["thumbAssetIds"].Value<string>();
+			}
+			if(node["flavorAssetIds"] != null)
+			{
+				this._FlavorAssetIds = node["flavorAssetIds"].Value<string>();
+			}
+			if(node["assetIds"] != null)
+			{
+				this._AssetIds = node["assetIds"].Value<string>();
+			}
+			if(node["sunrise"] != null)
+			{
+				this._Sunrise = ParseInt(node["sunrise"].Value<string>());
+			}
+			if(node["sunset"] != null)
+			{
+				this._Sunset = ParseInt(node["sunset"].Value<string>());
+			}
+			if(node["remoteId"] != null)
+			{
+				this._RemoteId = node["remoteId"].Value<string>();
+			}
+			if(node["plays"] != null)
+			{
+				this._Plays = ParseInt(node["plays"].Value<string>());
+			}
+			if(node["views"] != null)
+			{
+				this._Views = ParseInt(node["views"].Value<string>());
+			}
+			if(node["validationErrors"] != null)
+			{
+				this._ValidationErrors = new List<DistributionValidationError>();
+				foreach(var arrayNode in node["validationErrors"].Children())
 				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "submittedAt":
-						this._SubmittedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "entryId":
-						this._EntryId = propertyNode.InnerText;
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "distributionProfileId":
-						this._DistributionProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "status":
-						this._Status = (EntryDistributionStatus)ParseEnum(typeof(EntryDistributionStatus), propertyNode.InnerText);
-						continue;
-					case "sunStatus":
-						this._SunStatus = (EntryDistributionSunStatus)ParseEnum(typeof(EntryDistributionSunStatus), propertyNode.InnerText);
-						continue;
-					case "dirtyStatus":
-						this._DirtyStatus = (EntryDistributionFlag)ParseEnum(typeof(EntryDistributionFlag), propertyNode.InnerText);
-						continue;
-					case "thumbAssetIds":
-						this._ThumbAssetIds = propertyNode.InnerText;
-						continue;
-					case "flavorAssetIds":
-						this._FlavorAssetIds = propertyNode.InnerText;
-						continue;
-					case "assetIds":
-						this._AssetIds = propertyNode.InnerText;
-						continue;
-					case "sunrise":
-						this._Sunrise = ParseInt(propertyNode.InnerText);
-						continue;
-					case "sunset":
-						this._Sunset = ParseInt(propertyNode.InnerText);
-						continue;
-					case "remoteId":
-						this._RemoteId = propertyNode.InnerText;
-						continue;
-					case "plays":
-						this._Plays = ParseInt(propertyNode.InnerText);
-						continue;
-					case "views":
-						this._Views = ParseInt(propertyNode.InnerText);
-						continue;
-					case "validationErrors":
-						this._ValidationErrors = new List<DistributionValidationError>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._ValidationErrors.Add(ObjectFactory.Create<DistributionValidationError>(arrayNode));
-						}
-						continue;
-					case "errorType":
-						this._ErrorType = (BatchJobErrorTypes)ParseEnum(typeof(BatchJobErrorTypes), propertyNode.InnerText);
-						continue;
-					case "errorNumber":
-						this._ErrorNumber = ParseInt(propertyNode.InnerText);
-						continue;
-					case "errorDescription":
-						this._ErrorDescription = propertyNode.InnerText;
-						continue;
-					case "hasSubmitResultsLog":
-						this._HasSubmitResultsLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "hasSubmitSentDataLog":
-						this._HasSubmitSentDataLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "hasUpdateResultsLog":
-						this._HasUpdateResultsLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "hasUpdateSentDataLog":
-						this._HasUpdateSentDataLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "hasDeleteResultsLog":
-						this._HasDeleteResultsLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "hasDeleteSentDataLog":
-						this._HasDeleteSentDataLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
+					this._ValidationErrors.Add(ObjectFactory.Create<DistributionValidationError>(arrayNode));
 				}
 			}
-		}
-
-		public EntryDistribution(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._SubmittedAt = data.TryGetValueSafe<int>("submittedAt");
-			    this._EntryId = data.TryGetValueSafe<string>("entryId");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._DistributionProfileId = data.TryGetValueSafe<int>("distributionProfileId");
-			    this._Status = (EntryDistributionStatus)ParseEnum(typeof(EntryDistributionStatus), data.TryGetValueSafe<int>("status"));
-			    this._SunStatus = (EntryDistributionSunStatus)ParseEnum(typeof(EntryDistributionSunStatus), data.TryGetValueSafe<int>("sunStatus"));
-			    this._DirtyStatus = (EntryDistributionFlag)ParseEnum(typeof(EntryDistributionFlag), data.TryGetValueSafe<int>("dirtyStatus"));
-			    this._ThumbAssetIds = data.TryGetValueSafe<string>("thumbAssetIds");
-			    this._FlavorAssetIds = data.TryGetValueSafe<string>("flavorAssetIds");
-			    this._AssetIds = data.TryGetValueSafe<string>("assetIds");
-			    this._Sunrise = data.TryGetValueSafe<int>("sunrise");
-			    this._Sunset = data.TryGetValueSafe<int>("sunset");
-			    this._RemoteId = data.TryGetValueSafe<string>("remoteId");
-			    this._Plays = data.TryGetValueSafe<int>("plays");
-			    this._Views = data.TryGetValueSafe<int>("views");
-			    this._ValidationErrors = new List<DistributionValidationError>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("validationErrors", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._ValidationErrors.Add(ObjectFactory.Create<DistributionValidationError>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._ErrorType = (BatchJobErrorTypes)ParseEnum(typeof(BatchJobErrorTypes), data.TryGetValueSafe<int>("errorType"));
-			    this._ErrorNumber = data.TryGetValueSafe<int>("errorNumber");
-			    this._ErrorDescription = data.TryGetValueSafe<string>("errorDescription");
-			    this._HasSubmitResultsLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("hasSubmitResultsLog"));
-			    this._HasSubmitSentDataLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("hasSubmitSentDataLog"));
-			    this._HasUpdateResultsLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("hasUpdateResultsLog"));
-			    this._HasUpdateSentDataLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("hasUpdateSentDataLog"));
-			    this._HasDeleteResultsLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("hasDeleteResultsLog"));
-			    this._HasDeleteSentDataLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("hasDeleteSentDataLog"));
+			if(node["errorType"] != null)
+			{
+				this._ErrorType = (BatchJobErrorTypes)ParseEnum(typeof(BatchJobErrorTypes), node["errorType"].Value<string>());
+			}
+			if(node["errorNumber"] != null)
+			{
+				this._ErrorNumber = ParseInt(node["errorNumber"].Value<string>());
+			}
+			if(node["errorDescription"] != null)
+			{
+				this._ErrorDescription = node["errorDescription"].Value<string>();
+			}
+			if(node["hasSubmitResultsLog"] != null)
+			{
+				this._HasSubmitResultsLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["hasSubmitResultsLog"].Value<string>());
+			}
+			if(node["hasSubmitSentDataLog"] != null)
+			{
+				this._HasSubmitSentDataLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["hasSubmitSentDataLog"].Value<string>());
+			}
+			if(node["hasUpdateResultsLog"] != null)
+			{
+				this._HasUpdateResultsLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["hasUpdateResultsLog"].Value<string>());
+			}
+			if(node["hasUpdateSentDataLog"] != null)
+			{
+				this._HasUpdateSentDataLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["hasUpdateSentDataLog"].Value<string>());
+			}
+			if(node["hasDeleteResultsLog"] != null)
+			{
+				this._HasDeleteResultsLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["hasDeleteResultsLog"].Value<string>());
+			}
+			if(node["hasDeleteSentDataLog"] != null)
+			{
+				this._HasDeleteSentDataLog = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["hasDeleteSentDataLog"].Value<string>());
+			}
 		}
 		#endregion
 

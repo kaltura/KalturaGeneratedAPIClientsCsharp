@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -74,10 +76,17 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public long BulkUploadJobId
 		{
 			get { return _BulkUploadJobId; }
@@ -87,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BulkUploadJobId");
 			}
 		}
+		[JsonProperty]
 		public int LineIndex
 		{
 			get { return _LineIndex; }
@@ -96,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LineIndex");
 			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
@@ -105,6 +116,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		[JsonProperty]
 		public BulkUploadResultStatus Status
 		{
 			get { return _Status; }
@@ -114,6 +126,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		[JsonProperty]
 		public BulkUploadAction Action
 		{
 			get { return _Action; }
@@ -123,6 +136,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Action");
 			}
 		}
+		[JsonProperty]
 		public string ObjectId
 		{
 			get { return _ObjectId; }
@@ -132,6 +146,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectId");
 			}
 		}
+		[JsonProperty]
 		public int ObjectStatus
 		{
 			get { return _ObjectStatus; }
@@ -141,6 +156,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectStatus");
 			}
 		}
+		[JsonProperty]
 		public BulkUploadObjectType BulkUploadResultObjectType
 		{
 			get { return _BulkUploadResultObjectType; }
@@ -150,6 +166,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BulkUploadResultObjectType");
 			}
 		}
+		[JsonProperty]
 		public string RowData
 		{
 			get { return _RowData; }
@@ -159,6 +176,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RowData");
 			}
 		}
+		[JsonProperty]
 		public string PartnerData
 		{
 			get { return _PartnerData; }
@@ -168,6 +186,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerData");
 			}
 		}
+		[JsonProperty]
 		public string ObjectErrorDescription
 		{
 			get { return _ObjectErrorDescription; }
@@ -177,6 +196,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectErrorDescription");
 			}
 		}
+		[JsonProperty]
 		public IList<BulkUploadPluginData> PluginsData
 		{
 			get { return _PluginsData; }
@@ -186,6 +206,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PluginsData");
 			}
 		}
+		[JsonProperty]
 		public string ErrorDescription
 		{
 			get { return _ErrorDescription; }
@@ -195,6 +216,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrorDescription");
 			}
 		}
+		[JsonProperty]
 		public string ErrorCode
 		{
 			get { return _ErrorCode; }
@@ -204,6 +226,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrorCode");
 			}
 		}
+		[JsonProperty]
 		public int ErrorType
 		{
 			get { return _ErrorType; }
@@ -220,91 +243,76 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BulkUploadResult(XmlElement node) : base(node)
+		public BulkUploadResult(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Id = ParseInt(node["id"].Value<string>());
+			}
+			if(node["bulkUploadJobId"] != null)
+			{
+				this._BulkUploadJobId = ParseLong(node["bulkUploadJobId"].Value<string>());
+			}
+			if(node["lineIndex"] != null)
+			{
+				this._LineIndex = ParseInt(node["lineIndex"].Value<string>());
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (BulkUploadResultStatus)StringEnum.Parse(typeof(BulkUploadResultStatus), node["status"].Value<string>());
+			}
+			if(node["action"] != null)
+			{
+				this._Action = (BulkUploadAction)StringEnum.Parse(typeof(BulkUploadAction), node["action"].Value<string>());
+			}
+			if(node["objectId"] != null)
+			{
+				this._ObjectId = node["objectId"].Value<string>();
+			}
+			if(node["objectStatus"] != null)
+			{
+				this._ObjectStatus = ParseInt(node["objectStatus"].Value<string>());
+			}
+			if(node["bulkUploadResultObjectType"] != null)
+			{
+				this._BulkUploadResultObjectType = (BulkUploadObjectType)StringEnum.Parse(typeof(BulkUploadObjectType), node["bulkUploadResultObjectType"].Value<string>());
+			}
+			if(node["rowData"] != null)
+			{
+				this._RowData = node["rowData"].Value<string>();
+			}
+			if(node["partnerData"] != null)
+			{
+				this._PartnerData = node["partnerData"].Value<string>();
+			}
+			if(node["objectErrorDescription"] != null)
+			{
+				this._ObjectErrorDescription = node["objectErrorDescription"].Value<string>();
+			}
+			if(node["pluginsData"] != null)
+			{
+				this._PluginsData = new List<BulkUploadPluginData>();
+				foreach(var arrayNode in node["pluginsData"].Children())
 				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "bulkUploadJobId":
-						this._BulkUploadJobId = ParseLong(propertyNode.InnerText);
-						continue;
-					case "lineIndex":
-						this._LineIndex = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "status":
-						this._Status = (BulkUploadResultStatus)StringEnum.Parse(typeof(BulkUploadResultStatus), propertyNode.InnerText);
-						continue;
-					case "action":
-						this._Action = (BulkUploadAction)StringEnum.Parse(typeof(BulkUploadAction), propertyNode.InnerText);
-						continue;
-					case "objectId":
-						this._ObjectId = propertyNode.InnerText;
-						continue;
-					case "objectStatus":
-						this._ObjectStatus = ParseInt(propertyNode.InnerText);
-						continue;
-					case "bulkUploadResultObjectType":
-						this._BulkUploadResultObjectType = (BulkUploadObjectType)StringEnum.Parse(typeof(BulkUploadObjectType), propertyNode.InnerText);
-						continue;
-					case "rowData":
-						this._RowData = propertyNode.InnerText;
-						continue;
-					case "partnerData":
-						this._PartnerData = propertyNode.InnerText;
-						continue;
-					case "objectErrorDescription":
-						this._ObjectErrorDescription = propertyNode.InnerText;
-						continue;
-					case "pluginsData":
-						this._PluginsData = new List<BulkUploadPluginData>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._PluginsData.Add(ObjectFactory.Create<BulkUploadPluginData>(arrayNode));
-						}
-						continue;
-					case "errorDescription":
-						this._ErrorDescription = propertyNode.InnerText;
-						continue;
-					case "errorCode":
-						this._ErrorCode = propertyNode.InnerText;
-						continue;
-					case "errorType":
-						this._ErrorType = ParseInt(propertyNode.InnerText);
-						continue;
+					this._PluginsData.Add(ObjectFactory.Create<BulkUploadPluginData>(arrayNode));
 				}
 			}
-		}
-
-		public BulkUploadResult(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._BulkUploadJobId = data.TryGetValueSafe<long>("bulkUploadJobId");
-			    this._LineIndex = data.TryGetValueSafe<int>("lineIndex");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._Status = (BulkUploadResultStatus)StringEnum.Parse(typeof(BulkUploadResultStatus), data.TryGetValueSafe<string>("status"));
-			    this._Action = (BulkUploadAction)StringEnum.Parse(typeof(BulkUploadAction), data.TryGetValueSafe<string>("action"));
-			    this._ObjectId = data.TryGetValueSafe<string>("objectId");
-			    this._ObjectStatus = data.TryGetValueSafe<int>("objectStatus");
-			    this._BulkUploadResultObjectType = (BulkUploadObjectType)StringEnum.Parse(typeof(BulkUploadObjectType), data.TryGetValueSafe<string>("bulkUploadResultObjectType"));
-			    this._RowData = data.TryGetValueSafe<string>("rowData");
-			    this._PartnerData = data.TryGetValueSafe<string>("partnerData");
-			    this._ObjectErrorDescription = data.TryGetValueSafe<string>("objectErrorDescription");
-			    this._PluginsData = new List<BulkUploadPluginData>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("pluginsData", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._PluginsData.Add(ObjectFactory.Create<BulkUploadPluginData>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._ErrorDescription = data.TryGetValueSafe<string>("errorDescription");
-			    this._ErrorCode = data.TryGetValueSafe<string>("errorCode");
-			    this._ErrorType = data.TryGetValueSafe<int>("errorType");
+			if(node["errorDescription"] != null)
+			{
+				this._ErrorDescription = node["errorDescription"].Value<string>();
+			}
+			if(node["errorCode"] != null)
+			{
+				this._ErrorCode = node["errorCode"].Value<string>();
+			}
+			if(node["errorType"] != null)
+			{
+				this._ErrorType = ParseInt(node["errorType"].Value<string>());
+			}
 		}
 		#endregion
 

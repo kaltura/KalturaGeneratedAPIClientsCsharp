@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public DocumentType DocumentTypeEqual
 		{
 			get { return _DocumentTypeEqual; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DocumentTypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string DocumentTypeIn
 		{
 			get { return _DocumentTypeIn; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DocumentTypeIn");
 			}
 		}
+		[JsonProperty]
 		public string AssetParamsIdsMatchOr
 		{
 			get { return _AssetParamsIdsMatchOr; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetParamsIdsMatchOr");
 			}
 		}
+		[JsonProperty]
 		public string AssetParamsIdsMatchAnd
 		{
 			get { return _AssetParamsIdsMatchAnd; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DocumentEntryBaseFilter(XmlElement node) : base(node)
+		public DocumentEntryBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["documentTypeEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "documentTypeEqual":
-						this._DocumentTypeEqual = (DocumentType)ParseEnum(typeof(DocumentType), propertyNode.InnerText);
-						continue;
-					case "documentTypeIn":
-						this._DocumentTypeIn = propertyNode.InnerText;
-						continue;
-					case "assetParamsIdsMatchOr":
-						this._AssetParamsIdsMatchOr = propertyNode.InnerText;
-						continue;
-					case "assetParamsIdsMatchAnd":
-						this._AssetParamsIdsMatchAnd = propertyNode.InnerText;
-						continue;
-				}
+				this._DocumentTypeEqual = (DocumentType)ParseEnum(typeof(DocumentType), node["documentTypeEqual"].Value<string>());
 			}
-		}
-
-		public DocumentEntryBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._DocumentTypeEqual = (DocumentType)ParseEnum(typeof(DocumentType), data.TryGetValueSafe<int>("documentTypeEqual"));
-			    this._DocumentTypeIn = data.TryGetValueSafe<string>("documentTypeIn");
-			    this._AssetParamsIdsMatchOr = data.TryGetValueSafe<string>("assetParamsIdsMatchOr");
-			    this._AssetParamsIdsMatchAnd = data.TryGetValueSafe<string>("assetParamsIdsMatchAnd");
+			if(node["documentTypeIn"] != null)
+			{
+				this._DocumentTypeIn = node["documentTypeIn"].Value<string>();
+			}
+			if(node["assetParamsIdsMatchOr"] != null)
+			{
+				this._AssetParamsIdsMatchOr = node["assetParamsIdsMatchOr"].Value<string>();
+			}
+			if(node["assetParamsIdsMatchAnd"] != null)
+			{
+				this._AssetParamsIdsMatchAnd = node["assetParamsIdsMatchAnd"].Value<string>();
+			}
 		}
 		#endregion
 

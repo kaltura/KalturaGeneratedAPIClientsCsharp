@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -58,6 +60,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string DescriptionLike
 		{
 			get { return _DescriptionLike; }
@@ -67,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DescriptionLike");
 			}
 		}
+		[JsonProperty]
 		public string DescriptionMultiLikeOr
 		{
 			get { return _DescriptionMultiLikeOr; }
@@ -76,6 +80,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DescriptionMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string DescriptionMultiLikeAnd
 		{
 			get { return _DescriptionMultiLikeAnd; }
@@ -85,6 +90,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DescriptionMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public string TitleLike
 		{
 			get { return _TitleLike; }
@@ -94,6 +100,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TitleLike");
 			}
 		}
+		[JsonProperty]
 		public string TitleMultiLikeOr
 		{
 			get { return _TitleMultiLikeOr; }
@@ -103,6 +110,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TitleMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string TitleMultiLikeAnd
 		{
 			get { return _TitleMultiLikeAnd; }
@@ -112,6 +120,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TitleMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public ThumbCuePointSubType SubTypeEqual
 		{
 			get { return _SubTypeEqual; }
@@ -121,6 +130,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SubTypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string SubTypeIn
 		{
 			get { return _SubTypeIn; }
@@ -137,50 +147,40 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ThumbCuePointBaseFilter(XmlElement node) : base(node)
+		public ThumbCuePointBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["descriptionLike"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "descriptionLike":
-						this._DescriptionLike = propertyNode.InnerText;
-						continue;
-					case "descriptionMultiLikeOr":
-						this._DescriptionMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "descriptionMultiLikeAnd":
-						this._DescriptionMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "titleLike":
-						this._TitleLike = propertyNode.InnerText;
-						continue;
-					case "titleMultiLikeOr":
-						this._TitleMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "titleMultiLikeAnd":
-						this._TitleMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "subTypeEqual":
-						this._SubTypeEqual = (ThumbCuePointSubType)ParseEnum(typeof(ThumbCuePointSubType), propertyNode.InnerText);
-						continue;
-					case "subTypeIn":
-						this._SubTypeIn = propertyNode.InnerText;
-						continue;
-				}
+				this._DescriptionLike = node["descriptionLike"].Value<string>();
 			}
-		}
-
-		public ThumbCuePointBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._DescriptionLike = data.TryGetValueSafe<string>("descriptionLike");
-			    this._DescriptionMultiLikeOr = data.TryGetValueSafe<string>("descriptionMultiLikeOr");
-			    this._DescriptionMultiLikeAnd = data.TryGetValueSafe<string>("descriptionMultiLikeAnd");
-			    this._TitleLike = data.TryGetValueSafe<string>("titleLike");
-			    this._TitleMultiLikeOr = data.TryGetValueSafe<string>("titleMultiLikeOr");
-			    this._TitleMultiLikeAnd = data.TryGetValueSafe<string>("titleMultiLikeAnd");
-			    this._SubTypeEqual = (ThumbCuePointSubType)ParseEnum(typeof(ThumbCuePointSubType), data.TryGetValueSafe<int>("subTypeEqual"));
-			    this._SubTypeIn = data.TryGetValueSafe<string>("subTypeIn");
+			if(node["descriptionMultiLikeOr"] != null)
+			{
+				this._DescriptionMultiLikeOr = node["descriptionMultiLikeOr"].Value<string>();
+			}
+			if(node["descriptionMultiLikeAnd"] != null)
+			{
+				this._DescriptionMultiLikeAnd = node["descriptionMultiLikeAnd"].Value<string>();
+			}
+			if(node["titleLike"] != null)
+			{
+				this._TitleLike = node["titleLike"].Value<string>();
+			}
+			if(node["titleMultiLikeOr"] != null)
+			{
+				this._TitleMultiLikeOr = node["titleMultiLikeOr"].Value<string>();
+			}
+			if(node["titleMultiLikeAnd"] != null)
+			{
+				this._TitleMultiLikeAnd = node["titleMultiLikeAnd"].Value<string>();
+			}
+			if(node["subTypeEqual"] != null)
+			{
+				this._SubTypeEqual = (ThumbCuePointSubType)ParseEnum(typeof(ThumbCuePointSubType), node["subTypeEqual"].Value<string>());
+			}
+			if(node["subTypeIn"] != null)
+			{
+				this._SubTypeIn = node["subTypeIn"].Value<string>();
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public ESearchCategoryEntryFieldName FieldName
 		{
 			get { return _FieldName; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FieldName");
 			}
 		}
+		[JsonProperty]
 		public CategoryEntryStatus CategoryEntryStatus
 		{
 			get { return _CategoryEntryStatus; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ESearchCategoryEntryItem(XmlElement node) : base(node)
+		public ESearchCategoryEntryItem(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["fieldName"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "fieldName":
-						this._FieldName = (ESearchCategoryEntryFieldName)StringEnum.Parse(typeof(ESearchCategoryEntryFieldName), propertyNode.InnerText);
-						continue;
-					case "categoryEntryStatus":
-						this._CategoryEntryStatus = (CategoryEntryStatus)ParseEnum(typeof(CategoryEntryStatus), propertyNode.InnerText);
-						continue;
-				}
+				this._FieldName = (ESearchCategoryEntryFieldName)StringEnum.Parse(typeof(ESearchCategoryEntryFieldName), node["fieldName"].Value<string>());
 			}
-		}
-
-		public ESearchCategoryEntryItem(IDictionary<string,object> data) : base(data)
-		{
-			    this._FieldName = (ESearchCategoryEntryFieldName)StringEnum.Parse(typeof(ESearchCategoryEntryFieldName), data.TryGetValueSafe<string>("fieldName"));
-			    this._CategoryEntryStatus = (CategoryEntryStatus)ParseEnum(typeof(CategoryEntryStatus), data.TryGetValueSafe<int>("categoryEntryStatus"));
+			if(node["categoryEntryStatus"] != null)
+			{
+				this._CategoryEntryStatus = (CategoryEntryStatus)ParseEnum(typeof(CategoryEntryStatus), node["categoryEntryStatus"].Value<string>());
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public FlavorAsset FlavorAsset
 		{
 			get { return _FlavorAsset; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAsset");
 			}
 		}
+		[JsonProperty]
 		public FlavorParams FlavorParams
 		{
 			get { return _FlavorParams; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParams");
 			}
 		}
+		[JsonProperty]
 		public string EntryId
 		{
 			get { return _EntryId; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FlavorAssetWithParams(XmlElement node) : base(node)
+		public FlavorAssetWithParams(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["flavorAsset"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "flavorAsset":
-						this._FlavorAsset = ObjectFactory.Create<FlavorAsset>(propertyNode);
-						continue;
-					case "flavorParams":
-						this._FlavorParams = ObjectFactory.Create<FlavorParams>(propertyNode);
-						continue;
-					case "entryId":
-						this._EntryId = propertyNode.InnerText;
-						continue;
-				}
+				this._FlavorAsset = ObjectFactory.Create<FlavorAsset>(node["flavorAsset"]);
 			}
-		}
-
-		public FlavorAssetWithParams(IDictionary<string,object> data) : base(data)
-		{
-			    this._FlavorAsset = ObjectFactory.Create<FlavorAsset>(data.TryGetValueSafe<IDictionary<string,object>>("flavorAsset"));
-			    this._FlavorParams = ObjectFactory.Create<FlavorParams>(data.TryGetValueSafe<IDictionary<string,object>>("flavorParams"));
-			    this._EntryId = data.TryGetValueSafe<string>("entryId");
+			if(node["flavorParams"] != null)
+			{
+				this._FlavorParams = ObjectFactory.Create<FlavorParams>(node["flavorParams"]);
+			}
+			if(node["entryId"] != null)
+			{
+				this._EntryId = node["entryId"].Value<string>();
+			}
 		}
 		#endregion
 

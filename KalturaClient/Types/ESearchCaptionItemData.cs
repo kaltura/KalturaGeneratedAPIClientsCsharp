@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -54,6 +56,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Line
 		{
 			get { return _Line; }
@@ -63,6 +66,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Line");
 			}
 		}
+		[JsonProperty]
 		public int StartsAt
 		{
 			get { return _StartsAt; }
@@ -72,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartsAt");
 			}
 		}
+		[JsonProperty]
 		public int EndsAt
 		{
 			get { return _EndsAt; }
@@ -81,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndsAt");
 			}
 		}
+		[JsonProperty]
 		public string Language
 		{
 			get { return _Language; }
@@ -90,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Language");
 			}
 		}
+		[JsonProperty]
 		public string CaptionAssetId
 		{
 			get { return _CaptionAssetId; }
@@ -99,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CaptionAssetId");
 			}
 		}
+		[JsonProperty]
 		public string Label
 		{
 			get { return _Label; }
@@ -115,42 +123,32 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ESearchCaptionItemData(XmlElement node) : base(node)
+		public ESearchCaptionItemData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["line"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "line":
-						this._Line = propertyNode.InnerText;
-						continue;
-					case "startsAt":
-						this._StartsAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "endsAt":
-						this._EndsAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "language":
-						this._Language = propertyNode.InnerText;
-						continue;
-					case "captionAssetId":
-						this._CaptionAssetId = propertyNode.InnerText;
-						continue;
-					case "label":
-						this._Label = propertyNode.InnerText;
-						continue;
-				}
+				this._Line = node["line"].Value<string>();
 			}
-		}
-
-		public ESearchCaptionItemData(IDictionary<string,object> data) : base(data)
-		{
-			    this._Line = data.TryGetValueSafe<string>("line");
-			    this._StartsAt = data.TryGetValueSafe<int>("startsAt");
-			    this._EndsAt = data.TryGetValueSafe<int>("endsAt");
-			    this._Language = data.TryGetValueSafe<string>("language");
-			    this._CaptionAssetId = data.TryGetValueSafe<string>("captionAssetId");
-			    this._Label = data.TryGetValueSafe<string>("label");
+			if(node["startsAt"] != null)
+			{
+				this._StartsAt = ParseInt(node["startsAt"].Value<string>());
+			}
+			if(node["endsAt"] != null)
+			{
+				this._EndsAt = ParseInt(node["endsAt"].Value<string>());
+			}
+			if(node["language"] != null)
+			{
+				this._Language = node["language"].Value<string>();
+			}
+			if(node["captionAssetId"] != null)
+			{
+				this._CaptionAssetId = node["captionAssetId"].Value<string>();
+			}
+			if(node["label"] != null)
+			{
+				this._Label = node["label"].Value<string>();
+			}
 		}
 		#endregion
 

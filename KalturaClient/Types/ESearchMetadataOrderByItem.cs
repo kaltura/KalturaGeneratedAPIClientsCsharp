@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Xpath
 		{
 			get { return _Xpath; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Xpath");
 			}
 		}
+		[JsonProperty]
 		public int MetadataProfileId
 		{
 			get { return _MetadataProfileId; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ESearchMetadataOrderByItem(XmlElement node) : base(node)
+		public ESearchMetadataOrderByItem(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["xpath"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "xpath":
-						this._Xpath = propertyNode.InnerText;
-						continue;
-					case "metadataProfileId":
-						this._MetadataProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._Xpath = node["xpath"].Value<string>();
 			}
-		}
-
-		public ESearchMetadataOrderByItem(IDictionary<string,object> data) : base(data)
-		{
-			    this._Xpath = data.TryGetValueSafe<string>("xpath");
-			    this._MetadataProfileId = data.TryGetValueSafe<int>("metadataProfileId");
+			if(node["metadataProfileId"] != null)
+			{
+				this._MetadataProfileId = ParseInt(node["metadataProfileId"].Value<string>());
+			}
 		}
 		#endregion
 

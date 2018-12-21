@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -49,11 +51,7 @@ namespace Kaltura.Types
 		{
 		}
 
-		public MetroPcsDistributionProviderBaseFilter(XmlElement node) : base(node)
-		{
-		}
-
-		public MetroPcsDistributionProviderBaseFilter(IDictionary<string,object> data) : base(data)
+		public MetroPcsDistributionProviderBaseFilter(JToken node) : base(node)
 		{
 		}
 		#endregion

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string EntryId
 		{
 			get { return _EntryId; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		[JsonProperty]
 		public int FlavorParamsId
 		{
 			get { return _FlavorParamsId; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EntryResource(XmlElement node) : base(node)
+		public EntryResource(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["entryId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "entryId":
-						this._EntryId = propertyNode.InnerText;
-						continue;
-					case "flavorParamsId":
-						this._FlavorParamsId = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._EntryId = node["entryId"].Value<string>();
 			}
-		}
-
-		public EntryResource(IDictionary<string,object> data) : base(data)
-		{
-			    this._EntryId = data.TryGetValueSafe<string>("entryId");
-			    this._FlavorParamsId = data.TryGetValueSafe<int>("flavorParamsId");
+			if(node["flavorParamsId"] != null)
+			{
+				this._FlavorParamsId = ParseInt(node["flavorParamsId"].Value<string>());
+			}
 		}
 		#endregion
 

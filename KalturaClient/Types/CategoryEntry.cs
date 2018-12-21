@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -54,6 +56,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int CategoryId
 		{
 			get { return _CategoryId; }
@@ -63,6 +66,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryId");
 			}
 		}
+		[JsonProperty]
 		public string EntryId
 		{
 			get { return _EntryId; }
@@ -72,21 +76,45 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public string CategoryFullIds
 		{
 			get { return _CategoryFullIds; }
+			private set 
+			{ 
+				_CategoryFullIds = value;
+				OnPropertyChanged("CategoryFullIds");
+			}
 		}
+		[JsonProperty]
 		public CategoryEntryStatus Status
 		{
 			get { return _Status; }
+			private set 
+			{ 
+				_Status = value;
+				OnPropertyChanged("Status");
+			}
 		}
+		[JsonProperty]
 		public string CreatorUserId
 		{
 			get { return _CreatorUserId; }
+			private set 
+			{ 
+				_CreatorUserId = value;
+				OnPropertyChanged("CreatorUserId");
+			}
 		}
 		#endregion
 
@@ -95,42 +123,32 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CategoryEntry(XmlElement node) : base(node)
+		public CategoryEntry(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["categoryId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "categoryId":
-						this._CategoryId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "entryId":
-						this._EntryId = propertyNode.InnerText;
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "categoryFullIds":
-						this._CategoryFullIds = propertyNode.InnerText;
-						continue;
-					case "status":
-						this._Status = (CategoryEntryStatus)ParseEnum(typeof(CategoryEntryStatus), propertyNode.InnerText);
-						continue;
-					case "creatorUserId":
-						this._CreatorUserId = propertyNode.InnerText;
-						continue;
-				}
+				this._CategoryId = ParseInt(node["categoryId"].Value<string>());
 			}
-		}
-
-		public CategoryEntry(IDictionary<string,object> data) : base(data)
-		{
-			    this._CategoryId = data.TryGetValueSafe<int>("categoryId");
-			    this._EntryId = data.TryGetValueSafe<string>("entryId");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._CategoryFullIds = data.TryGetValueSafe<string>("categoryFullIds");
-			    this._Status = (CategoryEntryStatus)ParseEnum(typeof(CategoryEntryStatus), data.TryGetValueSafe<int>("status"));
-			    this._CreatorUserId = data.TryGetValueSafe<string>("creatorUserId");
+			if(node["entryId"] != null)
+			{
+				this._EntryId = node["entryId"].Value<string>();
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["categoryFullIds"] != null)
+			{
+				this._CategoryFullIds = node["categoryFullIds"].Value<string>();
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (CategoryEntryStatus)ParseEnum(typeof(CategoryEntryStatus), node["status"].Value<string>());
+			}
+			if(node["creatorUserId"] != null)
+			{
+				this._CreatorUserId = node["creatorUserId"].Value<string>();
+			}
 		}
 		#endregion
 

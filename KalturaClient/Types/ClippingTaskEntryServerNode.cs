@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public ClipAttributes ClipAttributes
 		{
 			get { return _ClipAttributes; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ClipAttributes");
 			}
 		}
+		[JsonProperty]
 		public string ClippedEntryId
 		{
 			get { return _ClippedEntryId; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ClippedEntryId");
 			}
 		}
+		[JsonProperty]
 		public string LiveEntryId
 		{
 			get { return _LiveEntryId; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ClippingTaskEntryServerNode(XmlElement node) : base(node)
+		public ClippingTaskEntryServerNode(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["clipAttributes"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "clipAttributes":
-						this._ClipAttributes = ObjectFactory.Create<ClipAttributes>(propertyNode);
-						continue;
-					case "clippedEntryId":
-						this._ClippedEntryId = propertyNode.InnerText;
-						continue;
-					case "liveEntryId":
-						this._LiveEntryId = propertyNode.InnerText;
-						continue;
-				}
+				this._ClipAttributes = ObjectFactory.Create<ClipAttributes>(node["clipAttributes"]);
 			}
-		}
-
-		public ClippingTaskEntryServerNode(IDictionary<string,object> data) : base(data)
-		{
-			    this._ClipAttributes = ObjectFactory.Create<ClipAttributes>(data.TryGetValueSafe<IDictionary<string,object>>("clipAttributes"));
-			    this._ClippedEntryId = data.TryGetValueSafe<string>("clippedEntryId");
-			    this._LiveEntryId = data.TryGetValueSafe<string>("liveEntryId");
+			if(node["clippedEntryId"] != null)
+			{
+				this._ClippedEntryId = node["clippedEntryId"].Value<string>();
+			}
+			if(node["liveEntryId"] != null)
+			{
+				this._LiveEntryId = node["liveEntryId"].Value<string>();
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,6 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int GracePeriod
 		{
 			get { return _GracePeriod; }
@@ -61,6 +64,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("GracePeriod");
 			}
 		}
+		[JsonProperty]
 		public PlayReadyLicenseRemovalPolicy LicenseRemovalPolicy
 		{
 			get { return _LicenseRemovalPolicy; }
@@ -70,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LicenseRemovalPolicy");
 			}
 		}
+		[JsonProperty]
 		public int LicenseRemovalDuration
 		{
 			get { return _LicenseRemovalDuration; }
@@ -79,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LicenseRemovalDuration");
 			}
 		}
+		[JsonProperty]
 		public PlayReadyMinimumLicenseSecurityLevel MinSecurityLevel
 		{
 			get { return _MinSecurityLevel; }
@@ -88,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MinSecurityLevel");
 			}
 		}
+		[JsonProperty]
 		public IList<PlayReadyRight> Rights
 		{
 			get { return _Rights; }
@@ -104,47 +111,32 @@ namespace Kaltura.Types
 		{
 		}
 
-		public PlayReadyPolicy(XmlElement node) : base(node)
+		public PlayReadyPolicy(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["gracePeriod"] != null)
 			{
-				switch (propertyNode.Name)
+				this._GracePeriod = ParseInt(node["gracePeriod"].Value<string>());
+			}
+			if(node["licenseRemovalPolicy"] != null)
+			{
+				this._LicenseRemovalPolicy = (PlayReadyLicenseRemovalPolicy)ParseEnum(typeof(PlayReadyLicenseRemovalPolicy), node["licenseRemovalPolicy"].Value<string>());
+			}
+			if(node["licenseRemovalDuration"] != null)
+			{
+				this._LicenseRemovalDuration = ParseInt(node["licenseRemovalDuration"].Value<string>());
+			}
+			if(node["minSecurityLevel"] != null)
+			{
+				this._MinSecurityLevel = (PlayReadyMinimumLicenseSecurityLevel)ParseEnum(typeof(PlayReadyMinimumLicenseSecurityLevel), node["minSecurityLevel"].Value<string>());
+			}
+			if(node["rights"] != null)
+			{
+				this._Rights = new List<PlayReadyRight>();
+				foreach(var arrayNode in node["rights"].Children())
 				{
-					case "gracePeriod":
-						this._GracePeriod = ParseInt(propertyNode.InnerText);
-						continue;
-					case "licenseRemovalPolicy":
-						this._LicenseRemovalPolicy = (PlayReadyLicenseRemovalPolicy)ParseEnum(typeof(PlayReadyLicenseRemovalPolicy), propertyNode.InnerText);
-						continue;
-					case "licenseRemovalDuration":
-						this._LicenseRemovalDuration = ParseInt(propertyNode.InnerText);
-						continue;
-					case "minSecurityLevel":
-						this._MinSecurityLevel = (PlayReadyMinimumLicenseSecurityLevel)ParseEnum(typeof(PlayReadyMinimumLicenseSecurityLevel), propertyNode.InnerText);
-						continue;
-					case "rights":
-						this._Rights = new List<PlayReadyRight>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Rights.Add(ObjectFactory.Create<PlayReadyRight>(arrayNode));
-						}
-						continue;
+					this._Rights.Add(ObjectFactory.Create<PlayReadyRight>(arrayNode));
 				}
 			}
-		}
-
-		public PlayReadyPolicy(IDictionary<string,object> data) : base(data)
-		{
-			    this._GracePeriod = data.TryGetValueSafe<int>("gracePeriod");
-			    this._LicenseRemovalPolicy = (PlayReadyLicenseRemovalPolicy)ParseEnum(typeof(PlayReadyLicenseRemovalPolicy), data.TryGetValueSafe<int>("licenseRemovalPolicy"));
-			    this._LicenseRemovalDuration = data.TryGetValueSafe<int>("licenseRemovalDuration");
-			    this._MinSecurityLevel = (PlayReadyMinimumLicenseSecurityLevel)ParseEnum(typeof(PlayReadyMinimumLicenseSecurityLevel), data.TryGetValueSafe<int>("minSecurityLevel"));
-			    this._Rights = new List<PlayReadyRight>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("rights", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Rights.Add(ObjectFactory.Create<PlayReadyRight>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

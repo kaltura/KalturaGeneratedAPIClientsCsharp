@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Path
 		{
 			get { return _Path; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FreewheelDistributionAssetPath(XmlElement node) : base(node)
+		public FreewheelDistributionAssetPath(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["path"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "path":
-						this._Path = propertyNode.InnerText;
-						continue;
-				}
+				this._Path = node["path"].Value<string>();
 			}
-		}
-
-		public FreewheelDistributionAssetPath(IDictionary<string,object> data) : base(data)
-		{
-			    this._Path = data.TryGetValueSafe<string>("path");
 		}
 		#endregion
 

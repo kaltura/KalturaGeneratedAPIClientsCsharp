@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,6 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int EventId
 		{
 			get { return _EventId; }
@@ -61,6 +64,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EventId");
 			}
 		}
+		[JsonProperty]
 		public int ResourceId
 		{
 			get { return _ResourceId; }
@@ -70,17 +74,35 @@ namespace Kaltura.Types
 				OnPropertyChanged("ResourceId");
 			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
 		#endregion
 
@@ -89,38 +111,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ScheduleEventResource(XmlElement node) : base(node)
+		public ScheduleEventResource(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["eventId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "eventId":
-						this._EventId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "resourceId":
-						this._ResourceId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._EventId = ParseInt(node["eventId"].Value<string>());
 			}
-		}
-
-		public ScheduleEventResource(IDictionary<string,object> data) : base(data)
-		{
-			    this._EventId = data.TryGetValueSafe<int>("eventId");
-			    this._ResourceId = data.TryGetValueSafe<int>("resourceId");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			if(node["resourceId"] != null)
+			{
+				this._ResourceId = ParseInt(node["resourceId"].Value<string>());
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
 		}
 		#endregion
 

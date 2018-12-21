@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -156,10 +158,17 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -169,6 +178,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		[JsonProperty]
 		public string Website
 		{
 			get { return _Website; }
@@ -178,6 +188,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Website");
 			}
 		}
+		[JsonProperty]
 		public string NotificationUrl
 		{
 			get { return _NotificationUrl; }
@@ -187,6 +198,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("NotificationUrl");
 			}
 		}
+		[JsonProperty]
 		public int AppearInSearch
 		{
 			get { return _AppearInSearch; }
@@ -196,10 +208,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("AppearInSearch");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public string AdminName
 		{
 			get { return _AdminName; }
@@ -209,6 +228,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdminName");
 			}
 		}
+		[JsonProperty]
 		public string AdminEmail
 		{
 			get { return _AdminEmail; }
@@ -218,6 +238,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdminEmail");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -227,6 +248,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public CommercialUseType CommercialUse
 		{
 			get { return _CommercialUse; }
@@ -236,6 +258,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CommercialUse");
 			}
 		}
+		[JsonProperty]
 		public string LandingPage
 		{
 			get { return _LandingPage; }
@@ -245,6 +268,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LandingPage");
 			}
 		}
+		[JsonProperty]
 		public string UserLandingPage
 		{
 			get { return _UserLandingPage; }
@@ -254,6 +278,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserLandingPage");
 			}
 		}
+		[JsonProperty]
 		public string ContentCategories
 		{
 			get { return _ContentCategories; }
@@ -263,6 +288,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentCategories");
 			}
 		}
+		[JsonProperty]
 		public PartnerType Type
 		{
 			get { return _Type; }
@@ -272,6 +298,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		[JsonProperty]
 		public string Phone
 		{
 			get { return _Phone; }
@@ -281,6 +308,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Phone");
 			}
 		}
+		[JsonProperty]
 		public string DescribeYourself
 		{
 			get { return _DescribeYourself; }
@@ -290,6 +318,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DescribeYourself");
 			}
 		}
+		[JsonProperty]
 		public bool? AdultContent
 		{
 			get { return _AdultContent; }
@@ -299,6 +328,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdultContent");
 			}
 		}
+		[JsonProperty]
 		public string DefConversionProfileType
 		{
 			get { return _DefConversionProfileType; }
@@ -308,6 +338,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DefConversionProfileType");
 			}
 		}
+		[JsonProperty]
 		public int Notify
 		{
 			get { return _Notify; }
@@ -317,10 +348,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("Notify");
 			}
 		}
+		[JsonProperty]
 		public PartnerStatus Status
 		{
 			get { return _Status; }
+			private set 
+			{ 
+				_Status = value;
+				OnPropertyChanged("Status");
+			}
 		}
+		[JsonProperty]
 		public int AllowQuickEdit
 		{
 			get { return _AllowQuickEdit; }
@@ -330,6 +368,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowQuickEdit");
 			}
 		}
+		[JsonProperty]
 		public int MergeEntryLists
 		{
 			get { return _MergeEntryLists; }
@@ -339,6 +378,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MergeEntryLists");
 			}
 		}
+		[JsonProperty]
 		public string NotificationsConfig
 		{
 			get { return _NotificationsConfig; }
@@ -348,6 +388,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("NotificationsConfig");
 			}
 		}
+		[JsonProperty]
 		public int MaxUploadSize
 		{
 			get { return _MaxUploadSize; }
@@ -357,6 +398,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MaxUploadSize");
 			}
 		}
+		[JsonProperty]
 		public int PartnerPackage
 		{
 			get { return _PartnerPackage; }
@@ -366,18 +408,37 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerPackage");
 			}
 		}
+		[JsonProperty]
 		public string Secret
 		{
 			get { return _Secret; }
+			private set 
+			{ 
+				_Secret = value;
+				OnPropertyChanged("Secret");
+			}
 		}
+		[JsonProperty]
 		public string AdminSecret
 		{
 			get { return _AdminSecret; }
+			private set 
+			{ 
+				_AdminSecret = value;
+				OnPropertyChanged("AdminSecret");
+			}
 		}
+		[JsonProperty]
 		public string CmsPassword
 		{
 			get { return _CmsPassword; }
+			private set 
+			{ 
+				_CmsPassword = value;
+				OnPropertyChanged("CmsPassword");
+			}
 		}
+		[JsonProperty]
 		public int AllowMultiNotification
 		{
 			get { return _AllowMultiNotification; }
@@ -387,10 +448,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowMultiNotification");
 			}
 		}
+		[JsonProperty]
 		public int AdminLoginUsersQuota
 		{
 			get { return _AdminLoginUsersQuota; }
+			private set 
+			{ 
+				_AdminLoginUsersQuota = value;
+				OnPropertyChanged("AdminLoginUsersQuota");
+			}
 		}
+		[JsonProperty]
 		public string AdminUserId
 		{
 			get { return _AdminUserId; }
@@ -400,6 +468,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdminUserId");
 			}
 		}
+		[JsonProperty]
 		public string FirstName
 		{
 			get { return _FirstName; }
@@ -409,6 +478,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FirstName");
 			}
 		}
+		[JsonProperty]
 		public string LastName
 		{
 			get { return _LastName; }
@@ -418,6 +488,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastName");
 			}
 		}
+		[JsonProperty]
 		public string Country
 		{
 			get { return _Country; }
@@ -427,6 +498,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Country");
 			}
 		}
+		[JsonProperty]
 		public string State
 		{
 			get { return _State; }
@@ -436,6 +508,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("State");
 			}
 		}
+		[JsonProperty]
 		public IList<KeyValue> AdditionalParams
 		{
 			get { return _AdditionalParams; }
@@ -445,58 +518,137 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdditionalParams");
 			}
 		}
+		[JsonProperty]
 		public int PublishersQuota
 		{
 			get { return _PublishersQuota; }
+			private set 
+			{ 
+				_PublishersQuota = value;
+				OnPropertyChanged("PublishersQuota");
+			}
 		}
+		[JsonProperty]
 		public PartnerGroupType PartnerGroupType
 		{
 			get { return _PartnerGroupType; }
+			private set 
+			{ 
+				_PartnerGroupType = value;
+				OnPropertyChanged("PartnerGroupType");
+			}
 		}
+		[JsonProperty]
 		public bool? DefaultEntitlementEnforcement
 		{
 			get { return _DefaultEntitlementEnforcement; }
+			private set 
+			{ 
+				_DefaultEntitlementEnforcement = value;
+				OnPropertyChanged("DefaultEntitlementEnforcement");
+			}
 		}
+		[JsonProperty]
 		public string DefaultDeliveryType
 		{
 			get { return _DefaultDeliveryType; }
+			private set 
+			{ 
+				_DefaultDeliveryType = value;
+				OnPropertyChanged("DefaultDeliveryType");
+			}
 		}
+		[JsonProperty]
 		public string DefaultEmbedCodeType
 		{
 			get { return _DefaultEmbedCodeType; }
+			private set 
+			{ 
+				_DefaultEmbedCodeType = value;
+				OnPropertyChanged("DefaultEmbedCodeType");
+			}
 		}
+		[JsonProperty]
 		public IList<PlayerDeliveryType> DeliveryTypes
 		{
 			get { return _DeliveryTypes; }
+			private set 
+			{ 
+				_DeliveryTypes = value;
+				OnPropertyChanged("DeliveryTypes");
+			}
 		}
+		[JsonProperty]
 		public IList<PlayerEmbedCodeType> EmbedCodeTypes
 		{
 			get { return _EmbedCodeTypes; }
+			private set 
+			{ 
+				_EmbedCodeTypes = value;
+				OnPropertyChanged("EmbedCodeTypes");
+			}
 		}
+		[JsonProperty]
 		public int TemplatePartnerId
 		{
 			get { return _TemplatePartnerId; }
+			private set 
+			{ 
+				_TemplatePartnerId = value;
+				OnPropertyChanged("TemplatePartnerId");
+			}
 		}
+		[JsonProperty]
 		public bool? IgnoreSeoLinks
 		{
 			get { return _IgnoreSeoLinks; }
+			private set 
+			{ 
+				_IgnoreSeoLinks = value;
+				OnPropertyChanged("IgnoreSeoLinks");
+			}
 		}
+		[JsonProperty]
 		public string Host
 		{
 			get { return _Host; }
+			private set 
+			{ 
+				_Host = value;
+				OnPropertyChanged("Host");
+			}
 		}
+		[JsonProperty]
 		public string CdnHost
 		{
 			get { return _CdnHost; }
+			private set 
+			{ 
+				_CdnHost = value;
+				OnPropertyChanged("CdnHost");
+			}
 		}
+		[JsonProperty]
 		public bool? IsFirstLogin
 		{
 			get { return _IsFirstLogin; }
+			private set 
+			{ 
+				_IsFirstLogin = value;
+				OnPropertyChanged("IsFirstLogin");
+			}
 		}
+		[JsonProperty]
 		public string LogoutUrl
 		{
 			get { return _LogoutUrl; }
+			private set 
+			{ 
+				_LogoutUrl = value;
+				OnPropertyChanged("LogoutUrl");
+			}
 		}
+		[JsonProperty]
 		public int PartnerParentId
 		{
 			get { return _PartnerParentId; }
@@ -506,10 +658,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerParentId");
 			}
 		}
+		[JsonProperty]
 		public string CrmId
 		{
 			get { return _CrmId; }
+			private set 
+			{ 
+				_CrmId = value;
+				OnPropertyChanged("CrmId");
+			}
 		}
+		[JsonProperty]
 		public string ReferenceId
 		{
 			get { return _ReferenceId; }
@@ -519,22 +678,47 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReferenceId");
 			}
 		}
+		[JsonProperty]
 		public bool? TimeAlignedRenditions
 		{
 			get { return _TimeAlignedRenditions; }
+			private set 
+			{ 
+				_TimeAlignedRenditions = value;
+				OnPropertyChanged("TimeAlignedRenditions");
+			}
 		}
+		[JsonProperty]
 		public int PublisherEnvironmentType
 		{
 			get { return _PublisherEnvironmentType; }
+			private set 
+			{ 
+				_PublisherEnvironmentType = value;
+				OnPropertyChanged("PublisherEnvironmentType");
+			}
 		}
+		[JsonProperty]
 		public string OvpEnvironmentUrl
 		{
 			get { return _OvpEnvironmentUrl; }
+			private set 
+			{ 
+				_OvpEnvironmentUrl = value;
+				OnPropertyChanged("OvpEnvironmentUrl");
+			}
 		}
+		[JsonProperty]
 		public string OttEnvironmentUrl
 		{
 			get { return _OttEnvironmentUrl; }
+			private set 
+			{ 
+				_OttEnvironmentUrl = value;
+				OnPropertyChanged("OttEnvironmentUrl");
+			}
 		}
+		[JsonProperty]
 		public IList<ESearchLanguageItem> ESearchLanguages
 		{
 			get { return _ESearchLanguages; }
@@ -551,282 +735,252 @@ namespace Kaltura.Types
 		{
 		}
 
-		public Partner(XmlElement node) : base(node)
+		public Partner(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Id = ParseInt(node["id"].Value<string>());
+			}
+			if(node["name"] != null)
+			{
+				this._Name = node["name"].Value<string>();
+			}
+			if(node["website"] != null)
+			{
+				this._Website = node["website"].Value<string>();
+			}
+			if(node["notificationUrl"] != null)
+			{
+				this._NotificationUrl = node["notificationUrl"].Value<string>();
+			}
+			if(node["appearInSearch"] != null)
+			{
+				this._AppearInSearch = ParseInt(node["appearInSearch"].Value<string>());
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["adminName"] != null)
+			{
+				this._AdminName = node["adminName"].Value<string>();
+			}
+			if(node["adminEmail"] != null)
+			{
+				this._AdminEmail = node["adminEmail"].Value<string>();
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["commercialUse"] != null)
+			{
+				this._CommercialUse = (CommercialUseType)ParseEnum(typeof(CommercialUseType), node["commercialUse"].Value<string>());
+			}
+			if(node["landingPage"] != null)
+			{
+				this._LandingPage = node["landingPage"].Value<string>();
+			}
+			if(node["userLandingPage"] != null)
+			{
+				this._UserLandingPage = node["userLandingPage"].Value<string>();
+			}
+			if(node["contentCategories"] != null)
+			{
+				this._ContentCategories = node["contentCategories"].Value<string>();
+			}
+			if(node["type"] != null)
+			{
+				this._Type = (PartnerType)ParseEnum(typeof(PartnerType), node["type"].Value<string>());
+			}
+			if(node["phone"] != null)
+			{
+				this._Phone = node["phone"].Value<string>();
+			}
+			if(node["describeYourself"] != null)
+			{
+				this._DescribeYourself = node["describeYourself"].Value<string>();
+			}
+			if(node["adultContent"] != null)
+			{
+				this._AdultContent = ParseBool(node["adultContent"].Value<string>());
+			}
+			if(node["defConversionProfileType"] != null)
+			{
+				this._DefConversionProfileType = node["defConversionProfileType"].Value<string>();
+			}
+			if(node["notify"] != null)
+			{
+				this._Notify = ParseInt(node["notify"].Value<string>());
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (PartnerStatus)ParseEnum(typeof(PartnerStatus), node["status"].Value<string>());
+			}
+			if(node["allowQuickEdit"] != null)
+			{
+				this._AllowQuickEdit = ParseInt(node["allowQuickEdit"].Value<string>());
+			}
+			if(node["mergeEntryLists"] != null)
+			{
+				this._MergeEntryLists = ParseInt(node["mergeEntryLists"].Value<string>());
+			}
+			if(node["notificationsConfig"] != null)
+			{
+				this._NotificationsConfig = node["notificationsConfig"].Value<string>();
+			}
+			if(node["maxUploadSize"] != null)
+			{
+				this._MaxUploadSize = ParseInt(node["maxUploadSize"].Value<string>());
+			}
+			if(node["partnerPackage"] != null)
+			{
+				this._PartnerPackage = ParseInt(node["partnerPackage"].Value<string>());
+			}
+			if(node["secret"] != null)
+			{
+				this._Secret = node["secret"].Value<string>();
+			}
+			if(node["adminSecret"] != null)
+			{
+				this._AdminSecret = node["adminSecret"].Value<string>();
+			}
+			if(node["cmsPassword"] != null)
+			{
+				this._CmsPassword = node["cmsPassword"].Value<string>();
+			}
+			if(node["allowMultiNotification"] != null)
+			{
+				this._AllowMultiNotification = ParseInt(node["allowMultiNotification"].Value<string>());
+			}
+			if(node["adminLoginUsersQuota"] != null)
+			{
+				this._AdminLoginUsersQuota = ParseInt(node["adminLoginUsersQuota"].Value<string>());
+			}
+			if(node["adminUserId"] != null)
+			{
+				this._AdminUserId = node["adminUserId"].Value<string>();
+			}
+			if(node["firstName"] != null)
+			{
+				this._FirstName = node["firstName"].Value<string>();
+			}
+			if(node["lastName"] != null)
+			{
+				this._LastName = node["lastName"].Value<string>();
+			}
+			if(node["country"] != null)
+			{
+				this._Country = node["country"].Value<string>();
+			}
+			if(node["state"] != null)
+			{
+				this._State = node["state"].Value<string>();
+			}
+			if(node["additionalParams"] != null)
+			{
+				this._AdditionalParams = new List<KeyValue>();
+				foreach(var arrayNode in node["additionalParams"].Children())
 				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-					case "website":
-						this._Website = propertyNode.InnerText;
-						continue;
-					case "notificationUrl":
-						this._NotificationUrl = propertyNode.InnerText;
-						continue;
-					case "appearInSearch":
-						this._AppearInSearch = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "adminName":
-						this._AdminName = propertyNode.InnerText;
-						continue;
-					case "adminEmail":
-						this._AdminEmail = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "commercialUse":
-						this._CommercialUse = (CommercialUseType)ParseEnum(typeof(CommercialUseType), propertyNode.InnerText);
-						continue;
-					case "landingPage":
-						this._LandingPage = propertyNode.InnerText;
-						continue;
-					case "userLandingPage":
-						this._UserLandingPage = propertyNode.InnerText;
-						continue;
-					case "contentCategories":
-						this._ContentCategories = propertyNode.InnerText;
-						continue;
-					case "type":
-						this._Type = (PartnerType)ParseEnum(typeof(PartnerType), propertyNode.InnerText);
-						continue;
-					case "phone":
-						this._Phone = propertyNode.InnerText;
-						continue;
-					case "describeYourself":
-						this._DescribeYourself = propertyNode.InnerText;
-						continue;
-					case "adultContent":
-						this._AdultContent = ParseBool(propertyNode.InnerText);
-						continue;
-					case "defConversionProfileType":
-						this._DefConversionProfileType = propertyNode.InnerText;
-						continue;
-					case "notify":
-						this._Notify = ParseInt(propertyNode.InnerText);
-						continue;
-					case "status":
-						this._Status = (PartnerStatus)ParseEnum(typeof(PartnerStatus), propertyNode.InnerText);
-						continue;
-					case "allowQuickEdit":
-						this._AllowQuickEdit = ParseInt(propertyNode.InnerText);
-						continue;
-					case "mergeEntryLists":
-						this._MergeEntryLists = ParseInt(propertyNode.InnerText);
-						continue;
-					case "notificationsConfig":
-						this._NotificationsConfig = propertyNode.InnerText;
-						continue;
-					case "maxUploadSize":
-						this._MaxUploadSize = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerPackage":
-						this._PartnerPackage = ParseInt(propertyNode.InnerText);
-						continue;
-					case "secret":
-						this._Secret = propertyNode.InnerText;
-						continue;
-					case "adminSecret":
-						this._AdminSecret = propertyNode.InnerText;
-						continue;
-					case "cmsPassword":
-						this._CmsPassword = propertyNode.InnerText;
-						continue;
-					case "allowMultiNotification":
-						this._AllowMultiNotification = ParseInt(propertyNode.InnerText);
-						continue;
-					case "adminLoginUsersQuota":
-						this._AdminLoginUsersQuota = ParseInt(propertyNode.InnerText);
-						continue;
-					case "adminUserId":
-						this._AdminUserId = propertyNode.InnerText;
-						continue;
-					case "firstName":
-						this._FirstName = propertyNode.InnerText;
-						continue;
-					case "lastName":
-						this._LastName = propertyNode.InnerText;
-						continue;
-					case "country":
-						this._Country = propertyNode.InnerText;
-						continue;
-					case "state":
-						this._State = propertyNode.InnerText;
-						continue;
-					case "additionalParams":
-						this._AdditionalParams = new List<KeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._AdditionalParams.Add(ObjectFactory.Create<KeyValue>(arrayNode));
-						}
-						continue;
-					case "publishersQuota":
-						this._PublishersQuota = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerGroupType":
-						this._PartnerGroupType = (PartnerGroupType)ParseEnum(typeof(PartnerGroupType), propertyNode.InnerText);
-						continue;
-					case "defaultEntitlementEnforcement":
-						this._DefaultEntitlementEnforcement = ParseBool(propertyNode.InnerText);
-						continue;
-					case "defaultDeliveryType":
-						this._DefaultDeliveryType = propertyNode.InnerText;
-						continue;
-					case "defaultEmbedCodeType":
-						this._DefaultEmbedCodeType = propertyNode.InnerText;
-						continue;
-					case "deliveryTypes":
-						this._DeliveryTypes = new List<PlayerDeliveryType>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._DeliveryTypes.Add(ObjectFactory.Create<PlayerDeliveryType>(arrayNode));
-						}
-						continue;
-					case "embedCodeTypes":
-						this._EmbedCodeTypes = new List<PlayerEmbedCodeType>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._EmbedCodeTypes.Add(ObjectFactory.Create<PlayerEmbedCodeType>(arrayNode));
-						}
-						continue;
-					case "templatePartnerId":
-						this._TemplatePartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "ignoreSeoLinks":
-						this._IgnoreSeoLinks = ParseBool(propertyNode.InnerText);
-						continue;
-					case "host":
-						this._Host = propertyNode.InnerText;
-						continue;
-					case "cdnHost":
-						this._CdnHost = propertyNode.InnerText;
-						continue;
-					case "isFirstLogin":
-						this._IsFirstLogin = ParseBool(propertyNode.InnerText);
-						continue;
-					case "logoutUrl":
-						this._LogoutUrl = propertyNode.InnerText;
-						continue;
-					case "partnerParentId":
-						this._PartnerParentId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "crmId":
-						this._CrmId = propertyNode.InnerText;
-						continue;
-					case "referenceId":
-						this._ReferenceId = propertyNode.InnerText;
-						continue;
-					case "timeAlignedRenditions":
-						this._TimeAlignedRenditions = ParseBool(propertyNode.InnerText);
-						continue;
-					case "publisherEnvironmentType":
-						this._PublisherEnvironmentType = ParseInt(propertyNode.InnerText);
-						continue;
-					case "ovpEnvironmentUrl":
-						this._OvpEnvironmentUrl = propertyNode.InnerText;
-						continue;
-					case "ottEnvironmentUrl":
-						this._OttEnvironmentUrl = propertyNode.InnerText;
-						continue;
-					case "eSearchLanguages":
-						this._ESearchLanguages = new List<ESearchLanguageItem>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._ESearchLanguages.Add(ObjectFactory.Create<ESearchLanguageItem>(arrayNode));
-						}
-						continue;
+					this._AdditionalParams.Add(ObjectFactory.Create<KeyValue>(arrayNode));
 				}
 			}
-		}
-
-		public Partner(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._Name = data.TryGetValueSafe<string>("name");
-			    this._Website = data.TryGetValueSafe<string>("website");
-			    this._NotificationUrl = data.TryGetValueSafe<string>("notificationUrl");
-			    this._AppearInSearch = data.TryGetValueSafe<int>("appearInSearch");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._AdminName = data.TryGetValueSafe<string>("adminName");
-			    this._AdminEmail = data.TryGetValueSafe<string>("adminEmail");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._CommercialUse = (CommercialUseType)ParseEnum(typeof(CommercialUseType), data.TryGetValueSafe<int>("commercialUse"));
-			    this._LandingPage = data.TryGetValueSafe<string>("landingPage");
-			    this._UserLandingPage = data.TryGetValueSafe<string>("userLandingPage");
-			    this._ContentCategories = data.TryGetValueSafe<string>("contentCategories");
-			    this._Type = (PartnerType)ParseEnum(typeof(PartnerType), data.TryGetValueSafe<int>("type"));
-			    this._Phone = data.TryGetValueSafe<string>("phone");
-			    this._DescribeYourself = data.TryGetValueSafe<string>("describeYourself");
-			    this._AdultContent = data.TryGetValueSafe<bool>("adultContent");
-			    this._DefConversionProfileType = data.TryGetValueSafe<string>("defConversionProfileType");
-			    this._Notify = data.TryGetValueSafe<int>("notify");
-			    this._Status = (PartnerStatus)ParseEnum(typeof(PartnerStatus), data.TryGetValueSafe<int>("status"));
-			    this._AllowQuickEdit = data.TryGetValueSafe<int>("allowQuickEdit");
-			    this._MergeEntryLists = data.TryGetValueSafe<int>("mergeEntryLists");
-			    this._NotificationsConfig = data.TryGetValueSafe<string>("notificationsConfig");
-			    this._MaxUploadSize = data.TryGetValueSafe<int>("maxUploadSize");
-			    this._PartnerPackage = data.TryGetValueSafe<int>("partnerPackage");
-			    this._Secret = data.TryGetValueSafe<string>("secret");
-			    this._AdminSecret = data.TryGetValueSafe<string>("adminSecret");
-			    this._CmsPassword = data.TryGetValueSafe<string>("cmsPassword");
-			    this._AllowMultiNotification = data.TryGetValueSafe<int>("allowMultiNotification");
-			    this._AdminLoginUsersQuota = data.TryGetValueSafe<int>("adminLoginUsersQuota");
-			    this._AdminUserId = data.TryGetValueSafe<string>("adminUserId");
-			    this._FirstName = data.TryGetValueSafe<string>("firstName");
-			    this._LastName = data.TryGetValueSafe<string>("lastName");
-			    this._Country = data.TryGetValueSafe<string>("country");
-			    this._State = data.TryGetValueSafe<string>("state");
-			    this._AdditionalParams = new List<KeyValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("additionalParams", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._AdditionalParams.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._PublishersQuota = data.TryGetValueSafe<int>("publishersQuota");
-			    this._PartnerGroupType = (PartnerGroupType)ParseEnum(typeof(PartnerGroupType), data.TryGetValueSafe<int>("partnerGroupType"));
-			    this._DefaultEntitlementEnforcement = data.TryGetValueSafe<bool>("defaultEntitlementEnforcement");
-			    this._DefaultDeliveryType = data.TryGetValueSafe<string>("defaultDeliveryType");
-			    this._DefaultEmbedCodeType = data.TryGetValueSafe<string>("defaultEmbedCodeType");
-			    this._DeliveryTypes = new List<PlayerDeliveryType>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("deliveryTypes", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._DeliveryTypes.Add(ObjectFactory.Create<PlayerDeliveryType>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._EmbedCodeTypes = new List<PlayerEmbedCodeType>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("embedCodeTypes", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._EmbedCodeTypes.Add(ObjectFactory.Create<PlayerEmbedCodeType>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._TemplatePartnerId = data.TryGetValueSafe<int>("templatePartnerId");
-			    this._IgnoreSeoLinks = data.TryGetValueSafe<bool>("ignoreSeoLinks");
-			    this._Host = data.TryGetValueSafe<string>("host");
-			    this._CdnHost = data.TryGetValueSafe<string>("cdnHost");
-			    this._IsFirstLogin = data.TryGetValueSafe<bool>("isFirstLogin");
-			    this._LogoutUrl = data.TryGetValueSafe<string>("logoutUrl");
-			    this._PartnerParentId = data.TryGetValueSafe<int>("partnerParentId");
-			    this._CrmId = data.TryGetValueSafe<string>("crmId");
-			    this._ReferenceId = data.TryGetValueSafe<string>("referenceId");
-			    this._TimeAlignedRenditions = data.TryGetValueSafe<bool>("timeAlignedRenditions");
-			    this._PublisherEnvironmentType = data.TryGetValueSafe<int>("publisherEnvironmentType");
-			    this._OvpEnvironmentUrl = data.TryGetValueSafe<string>("ovpEnvironmentUrl");
-			    this._OttEnvironmentUrl = data.TryGetValueSafe<string>("ottEnvironmentUrl");
-			    this._ESearchLanguages = new List<ESearchLanguageItem>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("eSearchLanguages", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._ESearchLanguages.Add(ObjectFactory.Create<ESearchLanguageItem>((IDictionary<string,object>)dataDictionary));
-			    }
+			if(node["publishersQuota"] != null)
+			{
+				this._PublishersQuota = ParseInt(node["publishersQuota"].Value<string>());
+			}
+			if(node["partnerGroupType"] != null)
+			{
+				this._PartnerGroupType = (PartnerGroupType)ParseEnum(typeof(PartnerGroupType), node["partnerGroupType"].Value<string>());
+			}
+			if(node["defaultEntitlementEnforcement"] != null)
+			{
+				this._DefaultEntitlementEnforcement = ParseBool(node["defaultEntitlementEnforcement"].Value<string>());
+			}
+			if(node["defaultDeliveryType"] != null)
+			{
+				this._DefaultDeliveryType = node["defaultDeliveryType"].Value<string>();
+			}
+			if(node["defaultEmbedCodeType"] != null)
+			{
+				this._DefaultEmbedCodeType = node["defaultEmbedCodeType"].Value<string>();
+			}
+			if(node["deliveryTypes"] != null)
+			{
+				this._DeliveryTypes = new List<PlayerDeliveryType>();
+				foreach(var arrayNode in node["deliveryTypes"].Children())
+				{
+					this._DeliveryTypes.Add(ObjectFactory.Create<PlayerDeliveryType>(arrayNode));
+				}
+			}
+			if(node["embedCodeTypes"] != null)
+			{
+				this._EmbedCodeTypes = new List<PlayerEmbedCodeType>();
+				foreach(var arrayNode in node["embedCodeTypes"].Children())
+				{
+					this._EmbedCodeTypes.Add(ObjectFactory.Create<PlayerEmbedCodeType>(arrayNode));
+				}
+			}
+			if(node["templatePartnerId"] != null)
+			{
+				this._TemplatePartnerId = ParseInt(node["templatePartnerId"].Value<string>());
+			}
+			if(node["ignoreSeoLinks"] != null)
+			{
+				this._IgnoreSeoLinks = ParseBool(node["ignoreSeoLinks"].Value<string>());
+			}
+			if(node["host"] != null)
+			{
+				this._Host = node["host"].Value<string>();
+			}
+			if(node["cdnHost"] != null)
+			{
+				this._CdnHost = node["cdnHost"].Value<string>();
+			}
+			if(node["isFirstLogin"] != null)
+			{
+				this._IsFirstLogin = ParseBool(node["isFirstLogin"].Value<string>());
+			}
+			if(node["logoutUrl"] != null)
+			{
+				this._LogoutUrl = node["logoutUrl"].Value<string>();
+			}
+			if(node["partnerParentId"] != null)
+			{
+				this._PartnerParentId = ParseInt(node["partnerParentId"].Value<string>());
+			}
+			if(node["crmId"] != null)
+			{
+				this._CrmId = node["crmId"].Value<string>();
+			}
+			if(node["referenceId"] != null)
+			{
+				this._ReferenceId = node["referenceId"].Value<string>();
+			}
+			if(node["timeAlignedRenditions"] != null)
+			{
+				this._TimeAlignedRenditions = ParseBool(node["timeAlignedRenditions"].Value<string>());
+			}
+			if(node["publisherEnvironmentType"] != null)
+			{
+				this._PublisherEnvironmentType = ParseInt(node["publisherEnvironmentType"].Value<string>());
+			}
+			if(node["ovpEnvironmentUrl"] != null)
+			{
+				this._OvpEnvironmentUrl = node["ovpEnvironmentUrl"].Value<string>();
+			}
+			if(node["ottEnvironmentUrl"] != null)
+			{
+				this._OttEnvironmentUrl = node["ottEnvironmentUrl"].Value<string>();
+			}
+			if(node["eSearchLanguages"] != null)
+			{
+				this._ESearchLanguages = new List<ESearchLanguageItem>();
+				foreach(var arrayNode in node["eSearchLanguages"].Children())
+				{
+					this._ESearchLanguages.Add(ObjectFactory.Create<ESearchLanguageItem>(arrayNode));
+				}
+			}
 		}
 		#endregion
 

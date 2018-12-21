@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -88,6 +90,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string EntryId
 		{
 			get { return _EntryId; }
@@ -97,6 +100,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		[JsonProperty]
 		public string Title
 		{
 			get { return _Title; }
@@ -106,6 +110,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Title");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -115,6 +120,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public string Tags
 		{
 			get { return _Tags; }
@@ -124,6 +130,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
+		[JsonProperty]
 		public string Url
 		{
 			get { return _Url; }
@@ -133,6 +140,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Url");
 			}
 		}
+		[JsonProperty]
 		public string ContentType
 		{
 			get { return _ContentType; }
@@ -142,6 +150,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentType");
 			}
 		}
+		[JsonProperty]
 		public int ConversionProfileId
 		{
 			get { return _ConversionProfileId; }
@@ -151,6 +160,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionProfileId");
 			}
 		}
+		[JsonProperty]
 		public int AccessControlProfileId
 		{
 			get { return _AccessControlProfileId; }
@@ -160,6 +170,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AccessControlProfileId");
 			}
 		}
+		[JsonProperty]
 		public string Category
 		{
 			get { return _Category; }
@@ -169,6 +180,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Category");
 			}
 		}
+		[JsonProperty]
 		public int ScheduleStartDate
 		{
 			get { return _ScheduleStartDate; }
@@ -178,6 +190,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ScheduleStartDate");
 			}
 		}
+		[JsonProperty]
 		public int ScheduleEndDate
 		{
 			get { return _ScheduleEndDate; }
@@ -187,6 +200,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ScheduleEndDate");
 			}
 		}
+		[JsonProperty]
 		public int EntryStatus
 		{
 			get { return _EntryStatus; }
@@ -196,6 +210,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryStatus");
 			}
 		}
+		[JsonProperty]
 		public string ThumbnailUrl
 		{
 			get { return _ThumbnailUrl; }
@@ -205,6 +220,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbnailUrl");
 			}
 		}
+		[JsonProperty]
 		public bool? ThumbnailSaved
 		{
 			get { return _ThumbnailSaved; }
@@ -214,6 +230,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbnailSaved");
 			}
 		}
+		[JsonProperty]
 		public string SshPrivateKey
 		{
 			get { return _SshPrivateKey; }
@@ -223,6 +240,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SshPrivateKey");
 			}
 		}
+		[JsonProperty]
 		public string SshPublicKey
 		{
 			get { return _SshPublicKey; }
@@ -232,6 +250,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SshPublicKey");
 			}
 		}
+		[JsonProperty]
 		public string SshKeyPassphrase
 		{
 			get { return _SshKeyPassphrase; }
@@ -241,6 +260,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SshKeyPassphrase");
 			}
 		}
+		[JsonProperty]
 		public string CreatorId
 		{
 			get { return _CreatorId; }
@@ -250,6 +270,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatorId");
 			}
 		}
+		[JsonProperty]
 		public string EntitledUsersEdit
 		{
 			get { return _EntitledUsersEdit; }
@@ -259,6 +280,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntitledUsersEdit");
 			}
 		}
+		[JsonProperty]
 		public string EntitledUsersPublish
 		{
 			get { return _EntitledUsersPublish; }
@@ -268,6 +290,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntitledUsersPublish");
 			}
 		}
+		[JsonProperty]
 		public string OwnerId
 		{
 			get { return _OwnerId; }
@@ -277,6 +300,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("OwnerId");
 			}
 		}
+		[JsonProperty]
 		public string ReferenceId
 		{
 			get { return _ReferenceId; }
@@ -286,6 +310,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReferenceId");
 			}
 		}
+		[JsonProperty]
 		public string TemplateEntryId
 		{
 			get { return _TemplateEntryId; }
@@ -302,110 +327,100 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BulkUploadResultEntry(XmlElement node) : base(node)
+		public BulkUploadResultEntry(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["entryId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "entryId":
-						this._EntryId = propertyNode.InnerText;
-						continue;
-					case "title":
-						this._Title = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "tags":
-						this._Tags = propertyNode.InnerText;
-						continue;
-					case "url":
-						this._Url = propertyNode.InnerText;
-						continue;
-					case "contentType":
-						this._ContentType = propertyNode.InnerText;
-						continue;
-					case "conversionProfileId":
-						this._ConversionProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "accessControlProfileId":
-						this._AccessControlProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "category":
-						this._Category = propertyNode.InnerText;
-						continue;
-					case "scheduleStartDate":
-						this._ScheduleStartDate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "scheduleEndDate":
-						this._ScheduleEndDate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "entryStatus":
-						this._EntryStatus = ParseInt(propertyNode.InnerText);
-						continue;
-					case "thumbnailUrl":
-						this._ThumbnailUrl = propertyNode.InnerText;
-						continue;
-					case "thumbnailSaved":
-						this._ThumbnailSaved = ParseBool(propertyNode.InnerText);
-						continue;
-					case "sshPrivateKey":
-						this._SshPrivateKey = propertyNode.InnerText;
-						continue;
-					case "sshPublicKey":
-						this._SshPublicKey = propertyNode.InnerText;
-						continue;
-					case "sshKeyPassphrase":
-						this._SshKeyPassphrase = propertyNode.InnerText;
-						continue;
-					case "creatorId":
-						this._CreatorId = propertyNode.InnerText;
-						continue;
-					case "entitledUsersEdit":
-						this._EntitledUsersEdit = propertyNode.InnerText;
-						continue;
-					case "entitledUsersPublish":
-						this._EntitledUsersPublish = propertyNode.InnerText;
-						continue;
-					case "ownerId":
-						this._OwnerId = propertyNode.InnerText;
-						continue;
-					case "referenceId":
-						this._ReferenceId = propertyNode.InnerText;
-						continue;
-					case "templateEntryId":
-						this._TemplateEntryId = propertyNode.InnerText;
-						continue;
-				}
+				this._EntryId = node["entryId"].Value<string>();
 			}
-		}
-
-		public BulkUploadResultEntry(IDictionary<string,object> data) : base(data)
-		{
-			    this._EntryId = data.TryGetValueSafe<string>("entryId");
-			    this._Title = data.TryGetValueSafe<string>("title");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._Tags = data.TryGetValueSafe<string>("tags");
-			    this._Url = data.TryGetValueSafe<string>("url");
-			    this._ContentType = data.TryGetValueSafe<string>("contentType");
-			    this._ConversionProfileId = data.TryGetValueSafe<int>("conversionProfileId");
-			    this._AccessControlProfileId = data.TryGetValueSafe<int>("accessControlProfileId");
-			    this._Category = data.TryGetValueSafe<string>("category");
-			    this._ScheduleStartDate = data.TryGetValueSafe<int>("scheduleStartDate");
-			    this._ScheduleEndDate = data.TryGetValueSafe<int>("scheduleEndDate");
-			    this._EntryStatus = data.TryGetValueSafe<int>("entryStatus");
-			    this._ThumbnailUrl = data.TryGetValueSafe<string>("thumbnailUrl");
-			    this._ThumbnailSaved = data.TryGetValueSafe<bool>("thumbnailSaved");
-			    this._SshPrivateKey = data.TryGetValueSafe<string>("sshPrivateKey");
-			    this._SshPublicKey = data.TryGetValueSafe<string>("sshPublicKey");
-			    this._SshKeyPassphrase = data.TryGetValueSafe<string>("sshKeyPassphrase");
-			    this._CreatorId = data.TryGetValueSafe<string>("creatorId");
-			    this._EntitledUsersEdit = data.TryGetValueSafe<string>("entitledUsersEdit");
-			    this._EntitledUsersPublish = data.TryGetValueSafe<string>("entitledUsersPublish");
-			    this._OwnerId = data.TryGetValueSafe<string>("ownerId");
-			    this._ReferenceId = data.TryGetValueSafe<string>("referenceId");
-			    this._TemplateEntryId = data.TryGetValueSafe<string>("templateEntryId");
+			if(node["title"] != null)
+			{
+				this._Title = node["title"].Value<string>();
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["tags"] != null)
+			{
+				this._Tags = node["tags"].Value<string>();
+			}
+			if(node["url"] != null)
+			{
+				this._Url = node["url"].Value<string>();
+			}
+			if(node["contentType"] != null)
+			{
+				this._ContentType = node["contentType"].Value<string>();
+			}
+			if(node["conversionProfileId"] != null)
+			{
+				this._ConversionProfileId = ParseInt(node["conversionProfileId"].Value<string>());
+			}
+			if(node["accessControlProfileId"] != null)
+			{
+				this._AccessControlProfileId = ParseInt(node["accessControlProfileId"].Value<string>());
+			}
+			if(node["category"] != null)
+			{
+				this._Category = node["category"].Value<string>();
+			}
+			if(node["scheduleStartDate"] != null)
+			{
+				this._ScheduleStartDate = ParseInt(node["scheduleStartDate"].Value<string>());
+			}
+			if(node["scheduleEndDate"] != null)
+			{
+				this._ScheduleEndDate = ParseInt(node["scheduleEndDate"].Value<string>());
+			}
+			if(node["entryStatus"] != null)
+			{
+				this._EntryStatus = ParseInt(node["entryStatus"].Value<string>());
+			}
+			if(node["thumbnailUrl"] != null)
+			{
+				this._ThumbnailUrl = node["thumbnailUrl"].Value<string>();
+			}
+			if(node["thumbnailSaved"] != null)
+			{
+				this._ThumbnailSaved = ParseBool(node["thumbnailSaved"].Value<string>());
+			}
+			if(node["sshPrivateKey"] != null)
+			{
+				this._SshPrivateKey = node["sshPrivateKey"].Value<string>();
+			}
+			if(node["sshPublicKey"] != null)
+			{
+				this._SshPublicKey = node["sshPublicKey"].Value<string>();
+			}
+			if(node["sshKeyPassphrase"] != null)
+			{
+				this._SshKeyPassphrase = node["sshKeyPassphrase"].Value<string>();
+			}
+			if(node["creatorId"] != null)
+			{
+				this._CreatorId = node["creatorId"].Value<string>();
+			}
+			if(node["entitledUsersEdit"] != null)
+			{
+				this._EntitledUsersEdit = node["entitledUsersEdit"].Value<string>();
+			}
+			if(node["entitledUsersPublish"] != null)
+			{
+				this._EntitledUsersPublish = node["entitledUsersPublish"].Value<string>();
+			}
+			if(node["ownerId"] != null)
+			{
+				this._OwnerId = node["ownerId"].Value<string>();
+			}
+			if(node["referenceId"] != null)
+			{
+				this._ReferenceId = node["referenceId"].Value<string>();
+			}
+			if(node["templateEntryId"] != null)
+			{
+				this._TemplateEntryId = node["templateEntryId"].Value<string>();
+			}
 		}
 		#endregion
 

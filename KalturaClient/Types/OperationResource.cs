@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public ContentResource Resource
 		{
 			get { return _Resource; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Resource");
 			}
 		}
+		[JsonProperty]
 		public IList<OperationAttributes> OperationAttributes
 		{
 			get { return _OperationAttributes; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("OperationAttributes");
 			}
 		}
+		[JsonProperty]
 		public int AssetParamsId
 		{
 			get { return _AssetParamsId; }
@@ -82,39 +87,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public OperationResource(XmlElement node) : base(node)
+		public OperationResource(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["resource"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Resource = ObjectFactory.Create<ContentResource>(node["resource"]);
+			}
+			if(node["operationAttributes"] != null)
+			{
+				this._OperationAttributes = new List<OperationAttributes>();
+				foreach(var arrayNode in node["operationAttributes"].Children())
 				{
-					case "resource":
-						this._Resource = ObjectFactory.Create<ContentResource>(propertyNode);
-						continue;
-					case "operationAttributes":
-						this._OperationAttributes = new List<OperationAttributes>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._OperationAttributes.Add(ObjectFactory.Create<OperationAttributes>(arrayNode));
-						}
-						continue;
-					case "assetParamsId":
-						this._AssetParamsId = ParseInt(propertyNode.InnerText);
-						continue;
+					this._OperationAttributes.Add(ObjectFactory.Create<OperationAttributes>(arrayNode));
 				}
 			}
-		}
-
-		public OperationResource(IDictionary<string,object> data) : base(data)
-		{
-			    this._Resource = ObjectFactory.Create<ContentResource>(data.TryGetValueSafe<IDictionary<string,object>>("resource"));
-			    this._OperationAttributes = new List<OperationAttributes>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("operationAttributes", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._OperationAttributes.Add(ObjectFactory.Create<OperationAttributes>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._AssetParamsId = data.TryGetValueSafe<int>("assetParamsId");
+			if(node["assetParamsId"] != null)
+			{
+				this._AssetParamsId = ParseInt(node["assetParamsId"].Value<string>());
+			}
 		}
 		#endregion
 

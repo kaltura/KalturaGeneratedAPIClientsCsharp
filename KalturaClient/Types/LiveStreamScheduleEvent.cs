@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int ProjectedAudience
 		{
 			get { return _ProjectedAudience; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public LiveStreamScheduleEvent(XmlElement node) : base(node)
+		public LiveStreamScheduleEvent(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["projectedAudience"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "projectedAudience":
-						this._ProjectedAudience = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._ProjectedAudience = ParseInt(node["projectedAudience"].Value<string>());
 			}
-		}
-
-		public LiveStreamScheduleEvent(IDictionary<string,object> data) : base(data)
-		{
-			    this._ProjectedAudience = data.TryGetValueSafe<int>("projectedAudience");
 		}
 		#endregion
 

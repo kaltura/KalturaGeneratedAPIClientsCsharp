@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -86,6 +88,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
@@ -95,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		[JsonProperty]
 		public string PartnerName
 		{
 			get { return _PartnerName; }
@@ -104,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerName");
 			}
 		}
+		[JsonProperty]
 		public PartnerStatus PartnerStatus
 		{
 			get { return _PartnerStatus; }
@@ -113,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerStatus");
 			}
 		}
+		[JsonProperty]
 		public int PartnerPackage
 		{
 			get { return _PartnerPackage; }
@@ -122,6 +128,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerPackage");
 			}
 		}
+		[JsonProperty]
 		public int PartnerCreatedAt
 		{
 			get { return _PartnerCreatedAt; }
@@ -131,6 +138,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerCreatedAt");
 			}
 		}
+		[JsonProperty]
 		public int Views
 		{
 			get { return _Views; }
@@ -140,6 +148,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Views");
 			}
 		}
+		[JsonProperty]
 		public int Plays
 		{
 			get { return _Plays; }
@@ -149,6 +158,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Plays");
 			}
 		}
+		[JsonProperty]
 		public int EntriesCount
 		{
 			get { return _EntriesCount; }
@@ -158,6 +168,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntriesCount");
 			}
 		}
+		[JsonProperty]
 		public int TotalEntriesCount
 		{
 			get { return _TotalEntriesCount; }
@@ -167,6 +178,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TotalEntriesCount");
 			}
 		}
+		[JsonProperty]
 		public int VideoEntriesCount
 		{
 			get { return _VideoEntriesCount; }
@@ -176,6 +188,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoEntriesCount");
 			}
 		}
+		[JsonProperty]
 		public int ImageEntriesCount
 		{
 			get { return _ImageEntriesCount; }
@@ -185,6 +198,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ImageEntriesCount");
 			}
 		}
+		[JsonProperty]
 		public int AudioEntriesCount
 		{
 			get { return _AudioEntriesCount; }
@@ -194,6 +208,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AudioEntriesCount");
 			}
 		}
+		[JsonProperty]
 		public int MixEntriesCount
 		{
 			get { return _MixEntriesCount; }
@@ -203,6 +218,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MixEntriesCount");
 			}
 		}
+		[JsonProperty]
 		public float Bandwidth
 		{
 			get { return _Bandwidth; }
@@ -212,6 +228,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Bandwidth");
 			}
 		}
+		[JsonProperty]
 		public float TotalStorage
 		{
 			get { return _TotalStorage; }
@@ -221,6 +238,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TotalStorage");
 			}
 		}
+		[JsonProperty]
 		public float Storage
 		{
 			get { return _Storage; }
@@ -230,6 +248,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Storage");
 			}
 		}
+		[JsonProperty]
 		public float DeletedStorage
 		{
 			get { return _DeletedStorage; }
@@ -239,6 +258,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeletedStorage");
 			}
 		}
+		[JsonProperty]
 		public float PeakStorage
 		{
 			get { return _PeakStorage; }
@@ -248,6 +268,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PeakStorage");
 			}
 		}
+		[JsonProperty]
 		public float AvgStorage
 		{
 			get { return _AvgStorage; }
@@ -257,6 +278,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AvgStorage");
 			}
 		}
+		[JsonProperty]
 		public float CombinedStorageBandwidth
 		{
 			get { return _CombinedStorageBandwidth; }
@@ -266,6 +288,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CombinedStorageBandwidth");
 			}
 		}
+		[JsonProperty]
 		public float TranscodingUsage
 		{
 			get { return _TranscodingUsage; }
@@ -275,6 +298,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TranscodingUsage");
 			}
 		}
+		[JsonProperty]
 		public string DateId
 		{
 			get { return _DateId; }
@@ -291,106 +315,96 @@ namespace Kaltura.Types
 		{
 		}
 
-		public VarPartnerUsageItem(XmlElement node) : base(node)
+		public VarPartnerUsageItem(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["partnerId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerName":
-						this._PartnerName = propertyNode.InnerText;
-						continue;
-					case "partnerStatus":
-						this._PartnerStatus = (PartnerStatus)ParseEnum(typeof(PartnerStatus), propertyNode.InnerText);
-						continue;
-					case "partnerPackage":
-						this._PartnerPackage = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerCreatedAt":
-						this._PartnerCreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "views":
-						this._Views = ParseInt(propertyNode.InnerText);
-						continue;
-					case "plays":
-						this._Plays = ParseInt(propertyNode.InnerText);
-						continue;
-					case "entriesCount":
-						this._EntriesCount = ParseInt(propertyNode.InnerText);
-						continue;
-					case "totalEntriesCount":
-						this._TotalEntriesCount = ParseInt(propertyNode.InnerText);
-						continue;
-					case "videoEntriesCount":
-						this._VideoEntriesCount = ParseInt(propertyNode.InnerText);
-						continue;
-					case "imageEntriesCount":
-						this._ImageEntriesCount = ParseInt(propertyNode.InnerText);
-						continue;
-					case "audioEntriesCount":
-						this._AudioEntriesCount = ParseInt(propertyNode.InnerText);
-						continue;
-					case "mixEntriesCount":
-						this._MixEntriesCount = ParseInt(propertyNode.InnerText);
-						continue;
-					case "bandwidth":
-						this._Bandwidth = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "totalStorage":
-						this._TotalStorage = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "storage":
-						this._Storage = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "deletedStorage":
-						this._DeletedStorage = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "peakStorage":
-						this._PeakStorage = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "avgStorage":
-						this._AvgStorage = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "combinedStorageBandwidth":
-						this._CombinedStorageBandwidth = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "transcodingUsage":
-						this._TranscodingUsage = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "dateId":
-						this._DateId = propertyNode.InnerText;
-						continue;
-				}
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
 			}
-		}
-
-		public VarPartnerUsageItem(IDictionary<string,object> data) : base(data)
-		{
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._PartnerName = data.TryGetValueSafe<string>("partnerName");
-			    this._PartnerStatus = (PartnerStatus)ParseEnum(typeof(PartnerStatus), data.TryGetValueSafe<int>("partnerStatus"));
-			    this._PartnerPackage = data.TryGetValueSafe<int>("partnerPackage");
-			    this._PartnerCreatedAt = data.TryGetValueSafe<int>("partnerCreatedAt");
-			    this._Views = data.TryGetValueSafe<int>("views");
-			    this._Plays = data.TryGetValueSafe<int>("plays");
-			    this._EntriesCount = data.TryGetValueSafe<int>("entriesCount");
-			    this._TotalEntriesCount = data.TryGetValueSafe<int>("totalEntriesCount");
-			    this._VideoEntriesCount = data.TryGetValueSafe<int>("videoEntriesCount");
-			    this._ImageEntriesCount = data.TryGetValueSafe<int>("imageEntriesCount");
-			    this._AudioEntriesCount = data.TryGetValueSafe<int>("audioEntriesCount");
-			    this._MixEntriesCount = data.TryGetValueSafe<int>("mixEntriesCount");
-			    this._Bandwidth = data.TryGetValueSafe<float>("bandwidth");
-			    this._TotalStorage = data.TryGetValueSafe<float>("totalStorage");
-			    this._Storage = data.TryGetValueSafe<float>("storage");
-			    this._DeletedStorage = data.TryGetValueSafe<float>("deletedStorage");
-			    this._PeakStorage = data.TryGetValueSafe<float>("peakStorage");
-			    this._AvgStorage = data.TryGetValueSafe<float>("avgStorage");
-			    this._CombinedStorageBandwidth = data.TryGetValueSafe<float>("combinedStorageBandwidth");
-			    this._TranscodingUsage = data.TryGetValueSafe<float>("transcodingUsage");
-			    this._DateId = data.TryGetValueSafe<string>("dateId");
+			if(node["partnerName"] != null)
+			{
+				this._PartnerName = node["partnerName"].Value<string>();
+			}
+			if(node["partnerStatus"] != null)
+			{
+				this._PartnerStatus = (PartnerStatus)ParseEnum(typeof(PartnerStatus), node["partnerStatus"].Value<string>());
+			}
+			if(node["partnerPackage"] != null)
+			{
+				this._PartnerPackage = ParseInt(node["partnerPackage"].Value<string>());
+			}
+			if(node["partnerCreatedAt"] != null)
+			{
+				this._PartnerCreatedAt = ParseInt(node["partnerCreatedAt"].Value<string>());
+			}
+			if(node["views"] != null)
+			{
+				this._Views = ParseInt(node["views"].Value<string>());
+			}
+			if(node["plays"] != null)
+			{
+				this._Plays = ParseInt(node["plays"].Value<string>());
+			}
+			if(node["entriesCount"] != null)
+			{
+				this._EntriesCount = ParseInt(node["entriesCount"].Value<string>());
+			}
+			if(node["totalEntriesCount"] != null)
+			{
+				this._TotalEntriesCount = ParseInt(node["totalEntriesCount"].Value<string>());
+			}
+			if(node["videoEntriesCount"] != null)
+			{
+				this._VideoEntriesCount = ParseInt(node["videoEntriesCount"].Value<string>());
+			}
+			if(node["imageEntriesCount"] != null)
+			{
+				this._ImageEntriesCount = ParseInt(node["imageEntriesCount"].Value<string>());
+			}
+			if(node["audioEntriesCount"] != null)
+			{
+				this._AudioEntriesCount = ParseInt(node["audioEntriesCount"].Value<string>());
+			}
+			if(node["mixEntriesCount"] != null)
+			{
+				this._MixEntriesCount = ParseInt(node["mixEntriesCount"].Value<string>());
+			}
+			if(node["bandwidth"] != null)
+			{
+				this._Bandwidth = ParseFloat(node["bandwidth"].Value<string>());
+			}
+			if(node["totalStorage"] != null)
+			{
+				this._TotalStorage = ParseFloat(node["totalStorage"].Value<string>());
+			}
+			if(node["storage"] != null)
+			{
+				this._Storage = ParseFloat(node["storage"].Value<string>());
+			}
+			if(node["deletedStorage"] != null)
+			{
+				this._DeletedStorage = ParseFloat(node["deletedStorage"].Value<string>());
+			}
+			if(node["peakStorage"] != null)
+			{
+				this._PeakStorage = ParseFloat(node["peakStorage"].Value<string>());
+			}
+			if(node["avgStorage"] != null)
+			{
+				this._AvgStorage = ParseFloat(node["avgStorage"].Value<string>());
+			}
+			if(node["combinedStorageBandwidth"] != null)
+			{
+				this._CombinedStorageBandwidth = ParseFloat(node["combinedStorageBandwidth"].Value<string>());
+			}
+			if(node["transcodingUsage"] != null)
+			{
+				this._TranscodingUsage = ParseFloat(node["transcodingUsage"].Value<string>());
+			}
+			if(node["dateId"] != null)
+			{
+				this._DateId = node["dateId"].Value<string>();
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -58,6 +60,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Audience
 		{
 			get { return _Audience; }
@@ -67,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Audience");
 			}
 		}
+		[JsonProperty]
 		public int DvrAudience
 		{
 			get { return _DvrAudience; }
@@ -76,6 +80,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DvrAudience");
 			}
 		}
+		[JsonProperty]
 		public float AvgBitrate
 		{
 			get { return _AvgBitrate; }
@@ -85,6 +90,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AvgBitrate");
 			}
 		}
+		[JsonProperty]
 		public int BufferTime
 		{
 			get { return _BufferTime; }
@@ -94,6 +100,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BufferTime");
 			}
 		}
+		[JsonProperty]
 		public int Plays
 		{
 			get { return _Plays; }
@@ -103,6 +110,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Plays");
 			}
 		}
+		[JsonProperty]
 		public int SecondsViewed
 		{
 			get { return _SecondsViewed; }
@@ -112,6 +120,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SecondsViewed");
 			}
 		}
+		[JsonProperty]
 		public long StartEvent
 		{
 			get { return _StartEvent; }
@@ -121,6 +130,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartEvent");
 			}
 		}
+		[JsonProperty]
 		public int Timestamp
 		{
 			get { return _Timestamp; }
@@ -137,50 +147,40 @@ namespace Kaltura.Types
 		{
 		}
 
-		public LiveStats(XmlElement node) : base(node)
+		public LiveStats(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["audience"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "audience":
-						this._Audience = ParseInt(propertyNode.InnerText);
-						continue;
-					case "dvrAudience":
-						this._DvrAudience = ParseInt(propertyNode.InnerText);
-						continue;
-					case "avgBitrate":
-						this._AvgBitrate = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "bufferTime":
-						this._BufferTime = ParseInt(propertyNode.InnerText);
-						continue;
-					case "plays":
-						this._Plays = ParseInt(propertyNode.InnerText);
-						continue;
-					case "secondsViewed":
-						this._SecondsViewed = ParseInt(propertyNode.InnerText);
-						continue;
-					case "startEvent":
-						this._StartEvent = ParseLong(propertyNode.InnerText);
-						continue;
-					case "timestamp":
-						this._Timestamp = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._Audience = ParseInt(node["audience"].Value<string>());
 			}
-		}
-
-		public LiveStats(IDictionary<string,object> data) : base(data)
-		{
-			    this._Audience = data.TryGetValueSafe<int>("audience");
-			    this._DvrAudience = data.TryGetValueSafe<int>("dvrAudience");
-			    this._AvgBitrate = data.TryGetValueSafe<float>("avgBitrate");
-			    this._BufferTime = data.TryGetValueSafe<int>("bufferTime");
-			    this._Plays = data.TryGetValueSafe<int>("plays");
-			    this._SecondsViewed = data.TryGetValueSafe<int>("secondsViewed");
-			    this._StartEvent = data.TryGetValueSafe<long>("startEvent");
-			    this._Timestamp = data.TryGetValueSafe<int>("timestamp");
+			if(node["dvrAudience"] != null)
+			{
+				this._DvrAudience = ParseInt(node["dvrAudience"].Value<string>());
+			}
+			if(node["avgBitrate"] != null)
+			{
+				this._AvgBitrate = ParseFloat(node["avgBitrate"].Value<string>());
+			}
+			if(node["bufferTime"] != null)
+			{
+				this._BufferTime = ParseInt(node["bufferTime"].Value<string>());
+			}
+			if(node["plays"] != null)
+			{
+				this._Plays = ParseInt(node["plays"].Value<string>());
+			}
+			if(node["secondsViewed"] != null)
+			{
+				this._SecondsViewed = ParseInt(node["secondsViewed"].Value<string>());
+			}
+			if(node["startEvent"] != null)
+			{
+				this._StartEvent = ParseLong(node["startEvent"].Value<string>());
+			}
+			if(node["timestamp"] != null)
+			{
+				this._Timestamp = ParseInt(node["timestamp"].Value<string>());
+			}
 		}
 		#endregion
 

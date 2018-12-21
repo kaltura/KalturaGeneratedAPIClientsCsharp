@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public GeoCoderType GeoCoderType
 		{
 			get { return _GeoCoderType; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AnonymousIPContextField(XmlElement node) : base(node)
+		public AnonymousIPContextField(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["geoCoderType"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "geoCoderType":
-						this._GeoCoderType = (GeoCoderType)StringEnum.Parse(typeof(GeoCoderType), propertyNode.InnerText);
-						continue;
-				}
+				this._GeoCoderType = (GeoCoderType)StringEnum.Parse(typeof(GeoCoderType), node["geoCoderType"].Value<string>());
 			}
-		}
-
-		public AnonymousIPContextField(IDictionary<string,object> data) : base(data)
-		{
-			    this._GeoCoderType = (GeoCoderType)StringEnum.Parse(typeof(GeoCoderType), data.TryGetValueSafe<string>("geoCoderType"));
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int EventIdOrItsParentIdEqual
 		{
 			get { return _EventIdOrItsParentIdEqual; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EventIdOrItsParentIdEqual");
 			}
 		}
+		[JsonProperty]
 		public new ScheduleEventResourceOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ScheduleEventResourceFilter(XmlElement node) : base(node)
+		public ScheduleEventResourceFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["eventIdOrItsParentIdEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "eventIdOrItsParentIdEqual":
-						this._EventIdOrItsParentIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "orderBy":
-						this._OrderBy = (ScheduleEventResourceOrderBy)StringEnum.Parse(typeof(ScheduleEventResourceOrderBy), propertyNode.InnerText);
-						continue;
-				}
+				this._EventIdOrItsParentIdEqual = ParseInt(node["eventIdOrItsParentIdEqual"].Value<string>());
 			}
-		}
-
-		public ScheduleEventResourceFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._EventIdOrItsParentIdEqual = data.TryGetValueSafe<int>("eventIdOrItsParentIdEqual");
-			    this._OrderBy = (ScheduleEventResourceOrderBy)StringEnum.Parse(typeof(ScheduleEventResourceOrderBy), data.TryGetValueSafe<string>("orderBy"));
+			if(node["orderBy"] != null)
+			{
+				this._OrderBy = (ScheduleEventResourceOrderBy)StringEnum.Parse(typeof(ScheduleEventResourceOrderBy), node["orderBy"].Value<string>());
+			}
 		}
 		#endregion
 

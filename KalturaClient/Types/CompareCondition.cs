@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public IntegerValue Value
 		{
 			get { return _Value; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Value");
 			}
 		}
+		[JsonProperty]
 		public SearchConditionComparison Comparison
 		{
 			get { return _Comparison; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CompareCondition(XmlElement node) : base(node)
+		public CompareCondition(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["value"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "value":
-						this._Value = ObjectFactory.Create<IntegerValue>(propertyNode);
-						continue;
-					case "comparison":
-						this._Comparison = (SearchConditionComparison)StringEnum.Parse(typeof(SearchConditionComparison), propertyNode.InnerText);
-						continue;
-				}
+				this._Value = ObjectFactory.Create<IntegerValue>(node["value"]);
 			}
-		}
-
-		public CompareCondition(IDictionary<string,object> data) : base(data)
-		{
-			    this._Value = ObjectFactory.Create<IntegerValue>(data.TryGetValueSafe<IDictionary<string,object>>("value"));
-			    this._Comparison = (SearchConditionComparison)StringEnum.Parse(typeof(SearchConditionComparison), data.TryGetValueSafe<string>("comparison"));
+			if(node["comparison"] != null)
+			{
+				this._Comparison = (SearchConditionComparison)StringEnum.Parse(typeof(SearchConditionComparison), node["comparison"].Value<string>());
+			}
 		}
 		#endregion
 

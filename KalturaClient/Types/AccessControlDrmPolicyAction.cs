@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int PolicyId
 		{
 			get { return _PolicyId; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AccessControlDrmPolicyAction(XmlElement node) : base(node)
+		public AccessControlDrmPolicyAction(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["policyId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "policyId":
-						this._PolicyId = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._PolicyId = ParseInt(node["policyId"].Value<string>());
 			}
-		}
-
-		public AccessControlDrmPolicyAction(IDictionary<string,object> data) : base(data)
-		{
-			    this._PolicyId = data.TryGetValueSafe<int>("policyId");
 		}
 		#endregion
 

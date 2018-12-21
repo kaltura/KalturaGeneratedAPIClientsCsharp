@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public ContentResource Resource
 		{
 			get { return _Resource; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Resource");
 			}
 		}
+		[JsonProperty]
 		public int AssetParamsId
 		{
 			get { return _AssetParamsId; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AssetParamsResourceContainer(XmlElement node) : base(node)
+		public AssetParamsResourceContainer(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["resource"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "resource":
-						this._Resource = ObjectFactory.Create<ContentResource>(propertyNode);
-						continue;
-					case "assetParamsId":
-						this._AssetParamsId = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._Resource = ObjectFactory.Create<ContentResource>(node["resource"]);
 			}
-		}
-
-		public AssetParamsResourceContainer(IDictionary<string,object> data) : base(data)
-		{
-			    this._Resource = ObjectFactory.Create<ContentResource>(data.TryGetValueSafe<IDictionary<string,object>>("resource"));
-			    this._AssetParamsId = data.TryGetValueSafe<int>("assetParamsId");
+			if(node["assetParamsId"] != null)
+			{
+				this._AssetParamsId = ParseInt(node["assetParamsId"].Value<string>());
+			}
 		}
 		#endregion
 

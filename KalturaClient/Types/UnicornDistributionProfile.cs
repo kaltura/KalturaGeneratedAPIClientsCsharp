@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -60,6 +62,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Username
 		{
 			get { return _Username; }
@@ -69,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Username");
 			}
 		}
+		[JsonProperty]
 		public string Password
 		{
 			get { return _Password; }
@@ -78,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Password");
 			}
 		}
+		[JsonProperty]
 		public string DomainName
 		{
 			get { return _DomainName; }
@@ -87,6 +92,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DomainName");
 			}
 		}
+		[JsonProperty]
 		public string ChannelGuid
 		{
 			get { return _ChannelGuid; }
@@ -96,6 +102,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelGuid");
 			}
 		}
+		[JsonProperty]
 		public string ApiHostUrl
 		{
 			get { return _ApiHostUrl; }
@@ -105,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ApiHostUrl");
 			}
 		}
+		[JsonProperty]
 		public string DomainGuid
 		{
 			get { return _DomainGuid; }
@@ -114,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DomainGuid");
 			}
 		}
+		[JsonProperty]
 		public string AdFreeApplicationGuid
 		{
 			get { return _AdFreeApplicationGuid; }
@@ -123,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdFreeApplicationGuid");
 			}
 		}
+		[JsonProperty]
 		public int RemoteAssetParamsId
 		{
 			get { return _RemoteAssetParamsId; }
@@ -132,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RemoteAssetParamsId");
 			}
 		}
+		[JsonProperty]
 		public string StorageProfileId
 		{
 			get { return _StorageProfileId; }
@@ -148,54 +159,44 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UnicornDistributionProfile(XmlElement node) : base(node)
+		public UnicornDistributionProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["username"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "username":
-						this._Username = propertyNode.InnerText;
-						continue;
-					case "password":
-						this._Password = propertyNode.InnerText;
-						continue;
-					case "domainName":
-						this._DomainName = propertyNode.InnerText;
-						continue;
-					case "channelGuid":
-						this._ChannelGuid = propertyNode.InnerText;
-						continue;
-					case "apiHostUrl":
-						this._ApiHostUrl = propertyNode.InnerText;
-						continue;
-					case "domainGuid":
-						this._DomainGuid = propertyNode.InnerText;
-						continue;
-					case "adFreeApplicationGuid":
-						this._AdFreeApplicationGuid = propertyNode.InnerText;
-						continue;
-					case "remoteAssetParamsId":
-						this._RemoteAssetParamsId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "storageProfileId":
-						this._StorageProfileId = propertyNode.InnerText;
-						continue;
-				}
+				this._Username = node["username"].Value<string>();
 			}
-		}
-
-		public UnicornDistributionProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._Username = data.TryGetValueSafe<string>("username");
-			    this._Password = data.TryGetValueSafe<string>("password");
-			    this._DomainName = data.TryGetValueSafe<string>("domainName");
-			    this._ChannelGuid = data.TryGetValueSafe<string>("channelGuid");
-			    this._ApiHostUrl = data.TryGetValueSafe<string>("apiHostUrl");
-			    this._DomainGuid = data.TryGetValueSafe<string>("domainGuid");
-			    this._AdFreeApplicationGuid = data.TryGetValueSafe<string>("adFreeApplicationGuid");
-			    this._RemoteAssetParamsId = data.TryGetValueSafe<int>("remoteAssetParamsId");
-			    this._StorageProfileId = data.TryGetValueSafe<string>("storageProfileId");
+			if(node["password"] != null)
+			{
+				this._Password = node["password"].Value<string>();
+			}
+			if(node["domainName"] != null)
+			{
+				this._DomainName = node["domainName"].Value<string>();
+			}
+			if(node["channelGuid"] != null)
+			{
+				this._ChannelGuid = node["channelGuid"].Value<string>();
+			}
+			if(node["apiHostUrl"] != null)
+			{
+				this._ApiHostUrl = node["apiHostUrl"].Value<string>();
+			}
+			if(node["domainGuid"] != null)
+			{
+				this._DomainGuid = node["domainGuid"].Value<string>();
+			}
+			if(node["adFreeApplicationGuid"] != null)
+			{
+				this._AdFreeApplicationGuid = node["adFreeApplicationGuid"].Value<string>();
+			}
+			if(node["remoteAssetParamsId"] != null)
+			{
+				this._RemoteAssetParamsId = ParseInt(node["remoteAssetParamsId"].Value<string>());
+			}
+			if(node["storageProfileId"] != null)
+			{
+				this._StorageProfileId = node["storageProfileId"].Value<string>();
+			}
 		}
 		#endregion
 

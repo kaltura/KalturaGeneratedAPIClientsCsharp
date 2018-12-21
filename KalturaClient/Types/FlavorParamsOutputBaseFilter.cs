@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int FlavorParamsIdEqual
 		{
 			get { return _FlavorParamsIdEqual; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string FlavorParamsVersionEqual
 		{
 			get { return _FlavorParamsVersionEqual; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsVersionEqual");
 			}
 		}
+		[JsonProperty]
 		public string FlavorAssetIdEqual
 		{
 			get { return _FlavorAssetIdEqual; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string FlavorAssetVersionEqual
 		{
 			get { return _FlavorAssetVersionEqual; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FlavorParamsOutputBaseFilter(XmlElement node) : base(node)
+		public FlavorParamsOutputBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["flavorParamsIdEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "flavorParamsIdEqual":
-						this._FlavorParamsIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "flavorParamsVersionEqual":
-						this._FlavorParamsVersionEqual = propertyNode.InnerText;
-						continue;
-					case "flavorAssetIdEqual":
-						this._FlavorAssetIdEqual = propertyNode.InnerText;
-						continue;
-					case "flavorAssetVersionEqual":
-						this._FlavorAssetVersionEqual = propertyNode.InnerText;
-						continue;
-				}
+				this._FlavorParamsIdEqual = ParseInt(node["flavorParamsIdEqual"].Value<string>());
 			}
-		}
-
-		public FlavorParamsOutputBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._FlavorParamsIdEqual = data.TryGetValueSafe<int>("flavorParamsIdEqual");
-			    this._FlavorParamsVersionEqual = data.TryGetValueSafe<string>("flavorParamsVersionEqual");
-			    this._FlavorAssetIdEqual = data.TryGetValueSafe<string>("flavorAssetIdEqual");
-			    this._FlavorAssetVersionEqual = data.TryGetValueSafe<string>("flavorAssetVersionEqual");
+			if(node["flavorParamsVersionEqual"] != null)
+			{
+				this._FlavorParamsVersionEqual = node["flavorParamsVersionEqual"].Value<string>();
+			}
+			if(node["flavorAssetIdEqual"] != null)
+			{
+				this._FlavorAssetIdEqual = node["flavorAssetIdEqual"].Value<string>();
+			}
+			if(node["flavorAssetVersionEqual"] != null)
+			{
+				this._FlavorAssetVersionEqual = node["flavorAssetVersionEqual"].Value<string>();
+			}
 		}
 		#endregion
 

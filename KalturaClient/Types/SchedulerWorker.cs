@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -70,10 +72,17 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int ConfiguredId
 		{
 			get { return _ConfiguredId; }
@@ -83,6 +92,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConfiguredId");
 			}
 		}
+		[JsonProperty]
 		public int SchedulerId
 		{
 			get { return _SchedulerId; }
@@ -92,6 +102,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SchedulerId");
 			}
 		}
+		[JsonProperty]
 		public int SchedulerConfiguredId
 		{
 			get { return _SchedulerConfiguredId; }
@@ -101,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SchedulerConfiguredId");
 			}
 		}
+		[JsonProperty]
 		public BatchJobType Type
 		{
 			get { return _Type; }
@@ -110,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		[JsonProperty]
 		public string TypeName
 		{
 			get { return _TypeName; }
@@ -119,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeName");
 			}
 		}
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -128,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		[JsonProperty]
 		public IList<SchedulerStatus> Statuses
 		{
 			get { return _Statuses; }
@@ -137,6 +152,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Statuses");
 			}
 		}
+		[JsonProperty]
 		public IList<SchedulerConfig> Configs
 		{
 			get { return _Configs; }
@@ -146,6 +162,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Configs");
 			}
 		}
+		[JsonProperty]
 		public IList<BatchJob> LockedJobs
 		{
 			get { return _LockedJobs; }
@@ -155,6 +172,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LockedJobs");
 			}
 		}
+		[JsonProperty]
 		public int AvgWait
 		{
 			get { return _AvgWait; }
@@ -164,6 +182,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AvgWait");
 			}
 		}
+		[JsonProperty]
 		public int AvgWork
 		{
 			get { return _AvgWork; }
@@ -173,6 +192,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AvgWork");
 			}
 		}
+		[JsonProperty]
 		public int LastStatus
 		{
 			get { return _LastStatus; }
@@ -182,6 +202,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastStatus");
 			}
 		}
+		[JsonProperty]
 		public string LastStatusStr
 		{
 			get { return _LastStatusStr; }
@@ -198,101 +219,76 @@ namespace Kaltura.Types
 		{
 		}
 
-		public SchedulerWorker(XmlElement node) : base(node)
+		public SchedulerWorker(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Id = ParseInt(node["id"].Value<string>());
+			}
+			if(node["configuredId"] != null)
+			{
+				this._ConfiguredId = ParseInt(node["configuredId"].Value<string>());
+			}
+			if(node["schedulerId"] != null)
+			{
+				this._SchedulerId = ParseInt(node["schedulerId"].Value<string>());
+			}
+			if(node["schedulerConfiguredId"] != null)
+			{
+				this._SchedulerConfiguredId = ParseInt(node["schedulerConfiguredId"].Value<string>());
+			}
+			if(node["type"] != null)
+			{
+				this._Type = (BatchJobType)StringEnum.Parse(typeof(BatchJobType), node["type"].Value<string>());
+			}
+			if(node["typeName"] != null)
+			{
+				this._TypeName = node["typeName"].Value<string>();
+			}
+			if(node["name"] != null)
+			{
+				this._Name = node["name"].Value<string>();
+			}
+			if(node["statuses"] != null)
+			{
+				this._Statuses = new List<SchedulerStatus>();
+				foreach(var arrayNode in node["statuses"].Children())
 				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "configuredId":
-						this._ConfiguredId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "schedulerId":
-						this._SchedulerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "schedulerConfiguredId":
-						this._SchedulerConfiguredId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "type":
-						this._Type = (BatchJobType)StringEnum.Parse(typeof(BatchJobType), propertyNode.InnerText);
-						continue;
-					case "typeName":
-						this._TypeName = propertyNode.InnerText;
-						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-					case "statuses":
-						this._Statuses = new List<SchedulerStatus>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Statuses.Add(ObjectFactory.Create<SchedulerStatus>(arrayNode));
-						}
-						continue;
-					case "configs":
-						this._Configs = new List<SchedulerConfig>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Configs.Add(ObjectFactory.Create<SchedulerConfig>(arrayNode));
-						}
-						continue;
-					case "lockedJobs":
-						this._LockedJobs = new List<BatchJob>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._LockedJobs.Add(ObjectFactory.Create<BatchJob>(arrayNode));
-						}
-						continue;
-					case "avgWait":
-						this._AvgWait = ParseInt(propertyNode.InnerText);
-						continue;
-					case "avgWork":
-						this._AvgWork = ParseInt(propertyNode.InnerText);
-						continue;
-					case "lastStatus":
-						this._LastStatus = ParseInt(propertyNode.InnerText);
-						continue;
-					case "lastStatusStr":
-						this._LastStatusStr = propertyNode.InnerText;
-						continue;
+					this._Statuses.Add(ObjectFactory.Create<SchedulerStatus>(arrayNode));
 				}
 			}
-		}
-
-		public SchedulerWorker(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._ConfiguredId = data.TryGetValueSafe<int>("configuredId");
-			    this._SchedulerId = data.TryGetValueSafe<int>("schedulerId");
-			    this._SchedulerConfiguredId = data.TryGetValueSafe<int>("schedulerConfiguredId");
-			    this._Type = (BatchJobType)StringEnum.Parse(typeof(BatchJobType), data.TryGetValueSafe<string>("type"));
-			    this._TypeName = data.TryGetValueSafe<string>("typeName");
-			    this._Name = data.TryGetValueSafe<string>("name");
-			    this._Statuses = new List<SchedulerStatus>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("statuses", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Statuses.Add(ObjectFactory.Create<SchedulerStatus>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._Configs = new List<SchedulerConfig>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("configs", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Configs.Add(ObjectFactory.Create<SchedulerConfig>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._LockedJobs = new List<BatchJob>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("lockedJobs", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._LockedJobs.Add(ObjectFactory.Create<BatchJob>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._AvgWait = data.TryGetValueSafe<int>("avgWait");
-			    this._AvgWork = data.TryGetValueSafe<int>("avgWork");
-			    this._LastStatus = data.TryGetValueSafe<int>("lastStatus");
-			    this._LastStatusStr = data.TryGetValueSafe<string>("lastStatusStr");
+			if(node["configs"] != null)
+			{
+				this._Configs = new List<SchedulerConfig>();
+				foreach(var arrayNode in node["configs"].Children())
+				{
+					this._Configs.Add(ObjectFactory.Create<SchedulerConfig>(arrayNode));
+				}
+			}
+			if(node["lockedJobs"] != null)
+			{
+				this._LockedJobs = new List<BatchJob>();
+				foreach(var arrayNode in node["lockedJobs"].Children())
+				{
+					this._LockedJobs.Add(ObjectFactory.Create<BatchJob>(arrayNode));
+				}
+			}
+			if(node["avgWait"] != null)
+			{
+				this._AvgWait = ParseInt(node["avgWait"].Value<string>());
+			}
+			if(node["avgWork"] != null)
+			{
+				this._AvgWork = ParseInt(node["avgWork"].Value<string>());
+			}
+			if(node["lastStatus"] != null)
+			{
+				this._LastStatus = ParseInt(node["lastStatus"].Value<string>());
+			}
+			if(node["lastStatusStr"] != null)
+			{
+				this._LastStatusStr = node["lastStatusStr"].Value<string>();
+			}
 		}
 		#endregion
 

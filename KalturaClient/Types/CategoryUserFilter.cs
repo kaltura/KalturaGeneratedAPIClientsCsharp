@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public bool? CategoryDirectMembers
 		{
 			get { return _CategoryDirectMembers; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryDirectMembers");
 			}
 		}
+		[JsonProperty]
 		public string FreeText
 		{
 			get { return _FreeText; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FreeText");
 			}
 		}
+		[JsonProperty]
 		public string RelatedGroupsByUserId
 		{
 			get { return _RelatedGroupsByUserId; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RelatedGroupsByUserId");
 			}
 		}
+		[JsonProperty]
 		public new CategoryUserOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CategoryUserFilter(XmlElement node) : base(node)
+		public CategoryUserFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["categoryDirectMembers"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "categoryDirectMembers":
-						this._CategoryDirectMembers = ParseBool(propertyNode.InnerText);
-						continue;
-					case "freeText":
-						this._FreeText = propertyNode.InnerText;
-						continue;
-					case "relatedGroupsByUserId":
-						this._RelatedGroupsByUserId = propertyNode.InnerText;
-						continue;
-					case "orderBy":
-						this._OrderBy = (CategoryUserOrderBy)StringEnum.Parse(typeof(CategoryUserOrderBy), propertyNode.InnerText);
-						continue;
-				}
+				this._CategoryDirectMembers = ParseBool(node["categoryDirectMembers"].Value<string>());
 			}
-		}
-
-		public CategoryUserFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._CategoryDirectMembers = data.TryGetValueSafe<bool>("categoryDirectMembers");
-			    this._FreeText = data.TryGetValueSafe<string>("freeText");
-			    this._RelatedGroupsByUserId = data.TryGetValueSafe<string>("relatedGroupsByUserId");
-			    this._OrderBy = (CategoryUserOrderBy)StringEnum.Parse(typeof(CategoryUserOrderBy), data.TryGetValueSafe<string>("orderBy"));
+			if(node["freeText"] != null)
+			{
+				this._FreeText = node["freeText"].Value<string>();
+			}
+			if(node["relatedGroupsByUserId"] != null)
+			{
+				this._RelatedGroupsByUserId = node["relatedGroupsByUserId"].Value<string>();
+			}
+			if(node["orderBy"] != null)
+			{
+				this._OrderBy = (CategoryUserOrderBy)StringEnum.Parse(typeof(CategoryUserOrderBy), node["orderBy"].Value<string>());
+			}
 		}
 		#endregion
 

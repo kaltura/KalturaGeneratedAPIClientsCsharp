@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,6 +58,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Referrer
 		{
 			get { return _Referrer; }
@@ -65,6 +68,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Referrer");
 			}
 		}
+		[JsonProperty]
 		public string Ip
 		{
 			get { return _Ip; }
@@ -74,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Ip");
 			}
 		}
+		[JsonProperty]
 		public string Ks
 		{
 			get { return _Ks; }
@@ -83,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Ks");
 			}
 		}
+		[JsonProperty]
 		public string UserAgent
 		{
 			get { return _UserAgent; }
@@ -92,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserAgent");
 			}
 		}
+		[JsonProperty]
 		public int Time
 		{
 			get { return _Time; }
@@ -101,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Time");
 			}
 		}
+		[JsonProperty]
 		public IList<AccessControlContextTypeHolder> Contexts
 		{
 			get { return _Contexts; }
@@ -110,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Contexts");
 			}
 		}
+		[JsonProperty]
 		public IList<KeyValue> Hashes
 		{
 			get { return _Hashes; }
@@ -126,64 +135,44 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AccessControlScope(XmlElement node) : base(node)
+		public AccessControlScope(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["referrer"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Referrer = node["referrer"].Value<string>();
+			}
+			if(node["ip"] != null)
+			{
+				this._Ip = node["ip"].Value<string>();
+			}
+			if(node["ks"] != null)
+			{
+				this._Ks = node["ks"].Value<string>();
+			}
+			if(node["userAgent"] != null)
+			{
+				this._UserAgent = node["userAgent"].Value<string>();
+			}
+			if(node["time"] != null)
+			{
+				this._Time = ParseInt(node["time"].Value<string>());
+			}
+			if(node["contexts"] != null)
+			{
+				this._Contexts = new List<AccessControlContextTypeHolder>();
+				foreach(var arrayNode in node["contexts"].Children())
 				{
-					case "referrer":
-						this._Referrer = propertyNode.InnerText;
-						continue;
-					case "ip":
-						this._Ip = propertyNode.InnerText;
-						continue;
-					case "ks":
-						this._Ks = propertyNode.InnerText;
-						continue;
-					case "userAgent":
-						this._UserAgent = propertyNode.InnerText;
-						continue;
-					case "time":
-						this._Time = ParseInt(propertyNode.InnerText);
-						continue;
-					case "contexts":
-						this._Contexts = new List<AccessControlContextTypeHolder>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Contexts.Add(ObjectFactory.Create<AccessControlContextTypeHolder>(arrayNode));
-						}
-						continue;
-					case "hashes":
-						this._Hashes = new List<KeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Hashes.Add(ObjectFactory.Create<KeyValue>(arrayNode));
-						}
-						continue;
+					this._Contexts.Add(ObjectFactory.Create<AccessControlContextTypeHolder>(arrayNode));
 				}
 			}
-		}
-
-		public AccessControlScope(IDictionary<string,object> data) : base(data)
-		{
-			    this._Referrer = data.TryGetValueSafe<string>("referrer");
-			    this._Ip = data.TryGetValueSafe<string>("ip");
-			    this._Ks = data.TryGetValueSafe<string>("ks");
-			    this._UserAgent = data.TryGetValueSafe<string>("userAgent");
-			    this._Time = data.TryGetValueSafe<int>("time");
-			    this._Contexts = new List<AccessControlContextTypeHolder>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("contexts", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Contexts.Add(ObjectFactory.Create<AccessControlContextTypeHolder>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._Hashes = new List<KeyValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("hashes", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Hashes.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
-			    }
+			if(node["hashes"] != null)
+			{
+				this._Hashes = new List<KeyValue>();
+				foreach(var arrayNode in node["hashes"].Children())
+				{
+					this._Hashes.Add(ObjectFactory.Create<KeyValue>(arrayNode));
+				}
+			}
 		}
 		#endregion
 

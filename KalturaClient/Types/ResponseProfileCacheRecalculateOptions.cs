@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,6 +58,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Limit
 		{
 			get { return _Limit; }
@@ -65,6 +68,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Limit");
 			}
 		}
+		[JsonProperty]
 		public string CachedObjectType
 		{
 			get { return _CachedObjectType; }
@@ -74,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CachedObjectType");
 			}
 		}
+		[JsonProperty]
 		public string ObjectId
 		{
 			get { return _ObjectId; }
@@ -83,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectId");
 			}
 		}
+		[JsonProperty]
 		public string StartObjectKey
 		{
 			get { return _StartObjectKey; }
@@ -92,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartObjectKey");
 			}
 		}
+		[JsonProperty]
 		public string EndObjectKey
 		{
 			get { return _EndObjectKey; }
@@ -101,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndObjectKey");
 			}
 		}
+		[JsonProperty]
 		public int JobCreatedAt
 		{
 			get { return _JobCreatedAt; }
@@ -110,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("JobCreatedAt");
 			}
 		}
+		[JsonProperty]
 		public bool? IsFirstLoop
 		{
 			get { return _IsFirstLoop; }
@@ -126,46 +135,36 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ResponseProfileCacheRecalculateOptions(XmlElement node) : base(node)
+		public ResponseProfileCacheRecalculateOptions(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["limit"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "limit":
-						this._Limit = ParseInt(propertyNode.InnerText);
-						continue;
-					case "cachedObjectType":
-						this._CachedObjectType = propertyNode.InnerText;
-						continue;
-					case "objectId":
-						this._ObjectId = propertyNode.InnerText;
-						continue;
-					case "startObjectKey":
-						this._StartObjectKey = propertyNode.InnerText;
-						continue;
-					case "endObjectKey":
-						this._EndObjectKey = propertyNode.InnerText;
-						continue;
-					case "jobCreatedAt":
-						this._JobCreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "isFirstLoop":
-						this._IsFirstLoop = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._Limit = ParseInt(node["limit"].Value<string>());
 			}
-		}
-
-		public ResponseProfileCacheRecalculateOptions(IDictionary<string,object> data) : base(data)
-		{
-			    this._Limit = data.TryGetValueSafe<int>("limit");
-			    this._CachedObjectType = data.TryGetValueSafe<string>("cachedObjectType");
-			    this._ObjectId = data.TryGetValueSafe<string>("objectId");
-			    this._StartObjectKey = data.TryGetValueSafe<string>("startObjectKey");
-			    this._EndObjectKey = data.TryGetValueSafe<string>("endObjectKey");
-			    this._JobCreatedAt = data.TryGetValueSafe<int>("jobCreatedAt");
-			    this._IsFirstLoop = data.TryGetValueSafe<bool>("isFirstLoop");
+			if(node["cachedObjectType"] != null)
+			{
+				this._CachedObjectType = node["cachedObjectType"].Value<string>();
+			}
+			if(node["objectId"] != null)
+			{
+				this._ObjectId = node["objectId"].Value<string>();
+			}
+			if(node["startObjectKey"] != null)
+			{
+				this._StartObjectKey = node["startObjectKey"].Value<string>();
+			}
+			if(node["endObjectKey"] != null)
+			{
+				this._EndObjectKey = node["endObjectKey"].Value<string>();
+			}
+			if(node["jobCreatedAt"] != null)
+			{
+				this._JobCreatedAt = ParseInt(node["jobCreatedAt"].Value<string>());
+			}
+			if(node["isFirstLoop"] != null)
+			{
+				this._IsFirstLoop = ParseBool(node["isFirstLoop"].Value<string>());
+			}
 		}
 		#endregion
 

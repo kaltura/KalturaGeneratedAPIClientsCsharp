@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string RecordedEntryId
 		{
 			get { return _RecordedEntryId; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecordedEntryId");
 			}
 		}
+		[JsonProperty]
 		public int Duration
 		{
 			get { return _Duration; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Duration");
 			}
 		}
+		[JsonProperty]
 		public EntryServerNodeRecordingStatus RecordingStatus
 		{
 			get { return _RecordingStatus; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public LiveEntryServerNodeRecordingInfo(XmlElement node) : base(node)
+		public LiveEntryServerNodeRecordingInfo(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["recordedEntryId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "recordedEntryId":
-						this._RecordedEntryId = propertyNode.InnerText;
-						continue;
-					case "duration":
-						this._Duration = ParseInt(propertyNode.InnerText);
-						continue;
-					case "recordingStatus":
-						this._RecordingStatus = (EntryServerNodeRecordingStatus)ParseEnum(typeof(EntryServerNodeRecordingStatus), propertyNode.InnerText);
-						continue;
-				}
+				this._RecordedEntryId = node["recordedEntryId"].Value<string>();
 			}
-		}
-
-		public LiveEntryServerNodeRecordingInfo(IDictionary<string,object> data) : base(data)
-		{
-			    this._RecordedEntryId = data.TryGetValueSafe<string>("recordedEntryId");
-			    this._Duration = data.TryGetValueSafe<int>("duration");
-			    this._RecordingStatus = (EntryServerNodeRecordingStatus)ParseEnum(typeof(EntryServerNodeRecordingStatus), data.TryGetValueSafe<int>("recordingStatus"));
+			if(node["duration"] != null)
+			{
+				this._Duration = ParseInt(node["duration"].Value<string>());
+			}
+			if(node["recordingStatus"] != null)
+			{
+				this._RecordingStatus = (EntryServerNodeRecordingStatus)ParseEnum(typeof(EntryServerNodeRecordingStatus), node["recordingStatus"].Value<string>());
+			}
 		}
 		#endregion
 

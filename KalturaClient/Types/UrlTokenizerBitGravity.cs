@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string HashPatternRegex
 		{
 			get { return _HashPatternRegex; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UrlTokenizerBitGravity(XmlElement node) : base(node)
+		public UrlTokenizerBitGravity(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["hashPatternRegex"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "hashPatternRegex":
-						this._HashPatternRegex = propertyNode.InnerText;
-						continue;
-				}
+				this._HashPatternRegex = node["hashPatternRegex"].Value<string>();
 			}
-		}
-
-		public UrlTokenizerBitGravity(IDictionary<string,object> data) : base(data)
-		{
-			    this._HashPatternRegex = data.TryGetValueSafe<string>("hashPatternRegex");
 		}
 		#endregion
 

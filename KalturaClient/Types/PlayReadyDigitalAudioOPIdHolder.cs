@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public PlayReadyDigitalAudioOPId Type
 		{
 			get { return _Type; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public PlayReadyDigitalAudioOPIdHolder(XmlElement node) : base(node)
+		public PlayReadyDigitalAudioOPIdHolder(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["type"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "type":
-						this._Type = (PlayReadyDigitalAudioOPId)StringEnum.Parse(typeof(PlayReadyDigitalAudioOPId), propertyNode.InnerText);
-						continue;
-				}
+				this._Type = (PlayReadyDigitalAudioOPId)StringEnum.Parse(typeof(PlayReadyDigitalAudioOPId), node["type"].Value<string>());
 			}
-		}
-
-		public PlayReadyDigitalAudioOPIdHolder(IDictionary<string,object> data) : base(data)
-		{
-			    this._Type = (PlayReadyDigitalAudioOPId)StringEnum.Parse(typeof(PlayReadyDigitalAudioOPId), data.TryGetValueSafe<string>("type"));
 		}
 		#endregion
 

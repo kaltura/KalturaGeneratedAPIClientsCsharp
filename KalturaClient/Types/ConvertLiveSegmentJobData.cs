@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -58,6 +60,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string EntryId
 		{
 			get { return _EntryId; }
@@ -67,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		[JsonProperty]
 		public string AssetId
 		{
 			get { return _AssetId; }
@@ -76,6 +80,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetId");
 			}
 		}
+		[JsonProperty]
 		public EntryServerNodeType MediaServerIndex
 		{
 			get { return _MediaServerIndex; }
@@ -85,6 +90,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaServerIndex");
 			}
 		}
+		[JsonProperty]
 		public int FileIndex
 		{
 			get { return _FileIndex; }
@@ -94,6 +100,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileIndex");
 			}
 		}
+		[JsonProperty]
 		public string SrcFilePath
 		{
 			get { return _SrcFilePath; }
@@ -103,6 +110,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcFilePath");
 			}
 		}
+		[JsonProperty]
 		public string DestFilePath
 		{
 			get { return _DestFilePath; }
@@ -112,6 +120,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestFilePath");
 			}
 		}
+		[JsonProperty]
 		public float EndTime
 		{
 			get { return _EndTime; }
@@ -121,6 +130,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndTime");
 			}
 		}
+		[JsonProperty]
 		public string DestDataFilePath
 		{
 			get { return _DestDataFilePath; }
@@ -137,50 +147,40 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ConvertLiveSegmentJobData(XmlElement node) : base(node)
+		public ConvertLiveSegmentJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["entryId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "entryId":
-						this._EntryId = propertyNode.InnerText;
-						continue;
-					case "assetId":
-						this._AssetId = propertyNode.InnerText;
-						continue;
-					case "mediaServerIndex":
-						this._MediaServerIndex = (EntryServerNodeType)StringEnum.Parse(typeof(EntryServerNodeType), propertyNode.InnerText);
-						continue;
-					case "fileIndex":
-						this._FileIndex = ParseInt(propertyNode.InnerText);
-						continue;
-					case "srcFilePath":
-						this._SrcFilePath = propertyNode.InnerText;
-						continue;
-					case "destFilePath":
-						this._DestFilePath = propertyNode.InnerText;
-						continue;
-					case "endTime":
-						this._EndTime = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "destDataFilePath":
-						this._DestDataFilePath = propertyNode.InnerText;
-						continue;
-				}
+				this._EntryId = node["entryId"].Value<string>();
 			}
-		}
-
-		public ConvertLiveSegmentJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._EntryId = data.TryGetValueSafe<string>("entryId");
-			    this._AssetId = data.TryGetValueSafe<string>("assetId");
-			    this._MediaServerIndex = (EntryServerNodeType)StringEnum.Parse(typeof(EntryServerNodeType), data.TryGetValueSafe<string>("mediaServerIndex"));
-			    this._FileIndex = data.TryGetValueSafe<int>("fileIndex");
-			    this._SrcFilePath = data.TryGetValueSafe<string>("srcFilePath");
-			    this._DestFilePath = data.TryGetValueSafe<string>("destFilePath");
-			    this._EndTime = data.TryGetValueSafe<float>("endTime");
-			    this._DestDataFilePath = data.TryGetValueSafe<string>("destDataFilePath");
+			if(node["assetId"] != null)
+			{
+				this._AssetId = node["assetId"].Value<string>();
+			}
+			if(node["mediaServerIndex"] != null)
+			{
+				this._MediaServerIndex = (EntryServerNodeType)StringEnum.Parse(typeof(EntryServerNodeType), node["mediaServerIndex"].Value<string>());
+			}
+			if(node["fileIndex"] != null)
+			{
+				this._FileIndex = ParseInt(node["fileIndex"].Value<string>());
+			}
+			if(node["srcFilePath"] != null)
+			{
+				this._SrcFilePath = node["srcFilePath"].Value<string>();
+			}
+			if(node["destFilePath"] != null)
+			{
+				this._DestFilePath = node["destFilePath"].Value<string>();
+			}
+			if(node["endTime"] != null)
+			{
+				this._EndTime = ParseFloat(node["endTime"].Value<string>());
+			}
+			if(node["destDataFilePath"] != null)
+			{
+				this._DestDataFilePath = node["destDataFilePath"].Value<string>();
+			}
 		}
 		#endregion
 

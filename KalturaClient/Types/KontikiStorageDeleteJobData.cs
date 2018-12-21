@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ContentMoid
 		{
 			get { return _ContentMoid; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentMoid");
 			}
 		}
+		[JsonProperty]
 		public string ServiceToken
 		{
 			get { return _ServiceToken; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public KontikiStorageDeleteJobData(XmlElement node) : base(node)
+		public KontikiStorageDeleteJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["contentMoid"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "contentMoid":
-						this._ContentMoid = propertyNode.InnerText;
-						continue;
-					case "serviceToken":
-						this._ServiceToken = propertyNode.InnerText;
-						continue;
-				}
+				this._ContentMoid = node["contentMoid"].Value<string>();
 			}
-		}
-
-		public KontikiStorageDeleteJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._ContentMoid = data.TryGetValueSafe<string>("contentMoid");
-			    this._ServiceToken = data.TryGetValueSafe<string>("serviceToken");
+			if(node["serviceToken"] != null)
+			{
+				this._ServiceToken = node["serviceToken"].Value<string>();
+			}
 		}
 		#endregion
 

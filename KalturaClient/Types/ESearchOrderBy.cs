@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public IList<ESearchOrderByItem> OrderItems
 		{
 			get { return _OrderItems; }
@@ -60,31 +63,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ESearchOrderBy(XmlElement node) : base(node)
+		public ESearchOrderBy(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["orderItems"] != null)
 			{
-				switch (propertyNode.Name)
+				this._OrderItems = new List<ESearchOrderByItem>();
+				foreach(var arrayNode in node["orderItems"].Children())
 				{
-					case "orderItems":
-						this._OrderItems = new List<ESearchOrderByItem>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._OrderItems.Add(ObjectFactory.Create<ESearchOrderByItem>(arrayNode));
-						}
-						continue;
+					this._OrderItems.Add(ObjectFactory.Create<ESearchOrderByItem>(arrayNode));
 				}
 			}
-		}
-
-		public ESearchOrderBy(IDictionary<string,object> data) : base(data)
-		{
-			    this._OrderItems = new List<ESearchOrderByItem>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("orderItems", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._OrderItems.Add(ObjectFactory.Create<ESearchOrderByItem>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

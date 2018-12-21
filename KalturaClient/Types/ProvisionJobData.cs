@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -68,6 +70,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string StreamID
 		{
 			get { return _StreamID; }
@@ -77,6 +80,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StreamID");
 			}
 		}
+		[JsonProperty]
 		public string BackupStreamID
 		{
 			get { return _BackupStreamID; }
@@ -86,6 +90,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BackupStreamID");
 			}
 		}
+		[JsonProperty]
 		public string Rtmp
 		{
 			get { return _Rtmp; }
@@ -95,6 +100,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Rtmp");
 			}
 		}
+		[JsonProperty]
 		public string EncoderIP
 		{
 			get { return _EncoderIP; }
@@ -104,6 +110,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EncoderIP");
 			}
 		}
+		[JsonProperty]
 		public string BackupEncoderIP
 		{
 			get { return _BackupEncoderIP; }
@@ -113,6 +120,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BackupEncoderIP");
 			}
 		}
+		[JsonProperty]
 		public string EncoderPassword
 		{
 			get { return _EncoderPassword; }
@@ -122,6 +130,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EncoderPassword");
 			}
 		}
+		[JsonProperty]
 		public string EncoderUsername
 		{
 			get { return _EncoderUsername; }
@@ -131,6 +140,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EncoderUsername");
 			}
 		}
+		[JsonProperty]
 		public int EndDate
 		{
 			get { return _EndDate; }
@@ -140,6 +150,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndDate");
 			}
 		}
+		[JsonProperty]
 		public string ReturnVal
 		{
 			get { return _ReturnVal; }
@@ -149,6 +160,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReturnVal");
 			}
 		}
+		[JsonProperty]
 		public int MediaType
 		{
 			get { return _MediaType; }
@@ -158,6 +170,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaType");
 			}
 		}
+		[JsonProperty]
 		public string PrimaryBroadcastingUrl
 		{
 			get { return _PrimaryBroadcastingUrl; }
@@ -167,6 +180,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrimaryBroadcastingUrl");
 			}
 		}
+		[JsonProperty]
 		public string SecondaryBroadcastingUrl
 		{
 			get { return _SecondaryBroadcastingUrl; }
@@ -176,6 +190,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SecondaryBroadcastingUrl");
 			}
 		}
+		[JsonProperty]
 		public string StreamName
 		{
 			get { return _StreamName; }
@@ -192,70 +207,60 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ProvisionJobData(XmlElement node) : base(node)
+		public ProvisionJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["streamID"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "streamID":
-						this._StreamID = propertyNode.InnerText;
-						continue;
-					case "backupStreamID":
-						this._BackupStreamID = propertyNode.InnerText;
-						continue;
-					case "rtmp":
-						this._Rtmp = propertyNode.InnerText;
-						continue;
-					case "encoderIP":
-						this._EncoderIP = propertyNode.InnerText;
-						continue;
-					case "backupEncoderIP":
-						this._BackupEncoderIP = propertyNode.InnerText;
-						continue;
-					case "encoderPassword":
-						this._EncoderPassword = propertyNode.InnerText;
-						continue;
-					case "encoderUsername":
-						this._EncoderUsername = propertyNode.InnerText;
-						continue;
-					case "endDate":
-						this._EndDate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "returnVal":
-						this._ReturnVal = propertyNode.InnerText;
-						continue;
-					case "mediaType":
-						this._MediaType = ParseInt(propertyNode.InnerText);
-						continue;
-					case "primaryBroadcastingUrl":
-						this._PrimaryBroadcastingUrl = propertyNode.InnerText;
-						continue;
-					case "secondaryBroadcastingUrl":
-						this._SecondaryBroadcastingUrl = propertyNode.InnerText;
-						continue;
-					case "streamName":
-						this._StreamName = propertyNode.InnerText;
-						continue;
-				}
+				this._StreamID = node["streamID"].Value<string>();
 			}
-		}
-
-		public ProvisionJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._StreamID = data.TryGetValueSafe<string>("streamID");
-			    this._BackupStreamID = data.TryGetValueSafe<string>("backupStreamID");
-			    this._Rtmp = data.TryGetValueSafe<string>("rtmp");
-			    this._EncoderIP = data.TryGetValueSafe<string>("encoderIP");
-			    this._BackupEncoderIP = data.TryGetValueSafe<string>("backupEncoderIP");
-			    this._EncoderPassword = data.TryGetValueSafe<string>("encoderPassword");
-			    this._EncoderUsername = data.TryGetValueSafe<string>("encoderUsername");
-			    this._EndDate = data.TryGetValueSafe<int>("endDate");
-			    this._ReturnVal = data.TryGetValueSafe<string>("returnVal");
-			    this._MediaType = data.TryGetValueSafe<int>("mediaType");
-			    this._PrimaryBroadcastingUrl = data.TryGetValueSafe<string>("primaryBroadcastingUrl");
-			    this._SecondaryBroadcastingUrl = data.TryGetValueSafe<string>("secondaryBroadcastingUrl");
-			    this._StreamName = data.TryGetValueSafe<string>("streamName");
+			if(node["backupStreamID"] != null)
+			{
+				this._BackupStreamID = node["backupStreamID"].Value<string>();
+			}
+			if(node["rtmp"] != null)
+			{
+				this._Rtmp = node["rtmp"].Value<string>();
+			}
+			if(node["encoderIP"] != null)
+			{
+				this._EncoderIP = node["encoderIP"].Value<string>();
+			}
+			if(node["backupEncoderIP"] != null)
+			{
+				this._BackupEncoderIP = node["backupEncoderIP"].Value<string>();
+			}
+			if(node["encoderPassword"] != null)
+			{
+				this._EncoderPassword = node["encoderPassword"].Value<string>();
+			}
+			if(node["encoderUsername"] != null)
+			{
+				this._EncoderUsername = node["encoderUsername"].Value<string>();
+			}
+			if(node["endDate"] != null)
+			{
+				this._EndDate = ParseInt(node["endDate"].Value<string>());
+			}
+			if(node["returnVal"] != null)
+			{
+				this._ReturnVal = node["returnVal"].Value<string>();
+			}
+			if(node["mediaType"] != null)
+			{
+				this._MediaType = ParseInt(node["mediaType"].Value<string>());
+			}
+			if(node["primaryBroadcastingUrl"] != null)
+			{
+				this._PrimaryBroadcastingUrl = node["primaryBroadcastingUrl"].Value<string>();
+			}
+			if(node["secondaryBroadcastingUrl"] != null)
+			{
+				this._SecondaryBroadcastingUrl = node["secondaryBroadcastingUrl"].Value<string>();
+			}
+			if(node["streamName"] != null)
+			{
+				this._StreamName = node["streamName"].Value<string>();
+			}
 		}
 		#endregion
 

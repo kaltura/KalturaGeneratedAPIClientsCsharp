@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,9 +46,15 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public EmailNotificationRecipientProviderType ProviderType
 		{
 			get { return _ProviderType; }
+			private set 
+			{ 
+				_ProviderType = value;
+				OnPropertyChanged("ProviderType");
+			}
 		}
 		#endregion
 
@@ -55,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EmailNotificationRecipientJobData(XmlElement node) : base(node)
+		public EmailNotificationRecipientJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["providerType"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "providerType":
-						this._ProviderType = (EmailNotificationRecipientProviderType)StringEnum.Parse(typeof(EmailNotificationRecipientProviderType), propertyNode.InnerText);
-						continue;
-				}
+				this._ProviderType = (EmailNotificationRecipientProviderType)StringEnum.Parse(typeof(EmailNotificationRecipientProviderType), node["providerType"].Value<string>());
 			}
-		}
-
-		public EmailNotificationRecipientJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._ProviderType = (EmailNotificationRecipientProviderType)StringEnum.Parse(typeof(EmailNotificationRecipientProviderType), data.TryGetValueSafe<string>("providerType"));
 		}
 		#endregion
 

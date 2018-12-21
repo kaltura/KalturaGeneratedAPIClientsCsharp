@@ -32,10 +32,11 @@ using System.IO;
 using Kaltura.Request;
 using Kaltura.Types;
 using Kaltura.Enums;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Services
 {
-	public class BusinessProcessCaseAbortRequestBuilder : RequestBuilder<object>
+	public class BusinessProcessCaseAbortRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
 		public const string OBJECT_TYPE = "objectType";
@@ -90,11 +91,7 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-		public override object DeserializeObject(object result)
+		public override object Deserialize(JToken result)
 		{
 			return null;
 		}
@@ -146,20 +143,12 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			IList<BusinessProcessCase> list = new List<BusinessProcessCase>();
-			foreach(XmlElement node in result.ChildNodes)
+			foreach(var node in result.Children())
 			{
-				list.Add(ObjectFactory.Create<BusinessProcessCase>(node));
-			}
-			return list;
-		}
-		public override object DeserializeObject(object result)
-		{
-			var list = new List<BusinessProcessCase>();
-			foreach(var node in (IEnumerable<IDictionary<string,object>>)result)
-			{
+				//TODO: Deserilize Array;
 				list.Add(ObjectFactory.Create<BusinessProcessCase>(node));
 			}
 			return list;

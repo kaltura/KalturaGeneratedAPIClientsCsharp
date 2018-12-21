@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -66,6 +68,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Username
 		{
 			get { return _Username; }
@@ -75,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Username");
 			}
 		}
+		[JsonProperty]
 		public int DefaultCategory
 		{
 			get { return _DefaultCategory; }
@@ -84,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DefaultCategory");
 			}
 		}
+		[JsonProperty]
 		public string AllowComments
 		{
 			get { return _AllowComments; }
@@ -93,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowComments");
 			}
 		}
+		[JsonProperty]
 		public string AllowEmbedding
 		{
 			get { return _AllowEmbedding; }
@@ -102,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowEmbedding");
 			}
 		}
+		[JsonProperty]
 		public string AllowRatings
 		{
 			get { return _AllowRatings; }
@@ -111,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowRatings");
 			}
 		}
+		[JsonProperty]
 		public string AllowResponses
 		{
 			get { return _AllowResponses; }
@@ -120,6 +128,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowResponses");
 			}
 		}
+		[JsonProperty]
 		public string ApiAuthorizeUrl
 		{
 			get { return _ApiAuthorizeUrl; }
@@ -129,6 +138,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ApiAuthorizeUrl");
 			}
 		}
+		[JsonProperty]
 		public string GoogleClientId
 		{
 			get { return _GoogleClientId; }
@@ -138,6 +148,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("GoogleClientId");
 			}
 		}
+		[JsonProperty]
 		public string GoogleClientSecret
 		{
 			get { return _GoogleClientSecret; }
@@ -147,6 +158,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("GoogleClientSecret");
 			}
 		}
+		[JsonProperty]
 		public string GoogleTokenData
 		{
 			get { return _GoogleTokenData; }
@@ -156,6 +168,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("GoogleTokenData");
 			}
 		}
+		[JsonProperty]
 		public bool? AssumeSuccess
 		{
 			get { return _AssumeSuccess; }
@@ -165,6 +178,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssumeSuccess");
 			}
 		}
+		[JsonProperty]
 		public string PrivacyStatus
 		{
 			get { return _PrivacyStatus; }
@@ -181,66 +195,56 @@ namespace Kaltura.Types
 		{
 		}
 
-		public YoutubeApiDistributionProfile(XmlElement node) : base(node)
+		public YoutubeApiDistributionProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["username"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "username":
-						this._Username = propertyNode.InnerText;
-						continue;
-					case "defaultCategory":
-						this._DefaultCategory = ParseInt(propertyNode.InnerText);
-						continue;
-					case "allowComments":
-						this._AllowComments = propertyNode.InnerText;
-						continue;
-					case "allowEmbedding":
-						this._AllowEmbedding = propertyNode.InnerText;
-						continue;
-					case "allowRatings":
-						this._AllowRatings = propertyNode.InnerText;
-						continue;
-					case "allowResponses":
-						this._AllowResponses = propertyNode.InnerText;
-						continue;
-					case "apiAuthorizeUrl":
-						this._ApiAuthorizeUrl = propertyNode.InnerText;
-						continue;
-					case "googleClientId":
-						this._GoogleClientId = propertyNode.InnerText;
-						continue;
-					case "googleClientSecret":
-						this._GoogleClientSecret = propertyNode.InnerText;
-						continue;
-					case "googleTokenData":
-						this._GoogleTokenData = propertyNode.InnerText;
-						continue;
-					case "assumeSuccess":
-						this._AssumeSuccess = ParseBool(propertyNode.InnerText);
-						continue;
-					case "privacyStatus":
-						this._PrivacyStatus = propertyNode.InnerText;
-						continue;
-				}
+				this._Username = node["username"].Value<string>();
 			}
-		}
-
-		public YoutubeApiDistributionProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._Username = data.TryGetValueSafe<string>("username");
-			    this._DefaultCategory = data.TryGetValueSafe<int>("defaultCategory");
-			    this._AllowComments = data.TryGetValueSafe<string>("allowComments");
-			    this._AllowEmbedding = data.TryGetValueSafe<string>("allowEmbedding");
-			    this._AllowRatings = data.TryGetValueSafe<string>("allowRatings");
-			    this._AllowResponses = data.TryGetValueSafe<string>("allowResponses");
-			    this._ApiAuthorizeUrl = data.TryGetValueSafe<string>("apiAuthorizeUrl");
-			    this._GoogleClientId = data.TryGetValueSafe<string>("googleClientId");
-			    this._GoogleClientSecret = data.TryGetValueSafe<string>("googleClientSecret");
-			    this._GoogleTokenData = data.TryGetValueSafe<string>("googleTokenData");
-			    this._AssumeSuccess = data.TryGetValueSafe<bool>("assumeSuccess");
-			    this._PrivacyStatus = data.TryGetValueSafe<string>("privacyStatus");
+			if(node["defaultCategory"] != null)
+			{
+				this._DefaultCategory = ParseInt(node["defaultCategory"].Value<string>());
+			}
+			if(node["allowComments"] != null)
+			{
+				this._AllowComments = node["allowComments"].Value<string>();
+			}
+			if(node["allowEmbedding"] != null)
+			{
+				this._AllowEmbedding = node["allowEmbedding"].Value<string>();
+			}
+			if(node["allowRatings"] != null)
+			{
+				this._AllowRatings = node["allowRatings"].Value<string>();
+			}
+			if(node["allowResponses"] != null)
+			{
+				this._AllowResponses = node["allowResponses"].Value<string>();
+			}
+			if(node["apiAuthorizeUrl"] != null)
+			{
+				this._ApiAuthorizeUrl = node["apiAuthorizeUrl"].Value<string>();
+			}
+			if(node["googleClientId"] != null)
+			{
+				this._GoogleClientId = node["googleClientId"].Value<string>();
+			}
+			if(node["googleClientSecret"] != null)
+			{
+				this._GoogleClientSecret = node["googleClientSecret"].Value<string>();
+			}
+			if(node["googleTokenData"] != null)
+			{
+				this._GoogleTokenData = node["googleTokenData"].Value<string>();
+			}
+			if(node["assumeSuccess"] != null)
+			{
+				this._AssumeSuccess = ParseBool(node["assumeSuccess"].Value<string>());
+			}
+			if(node["privacyStatus"] != null)
+			{
+				this._PrivacyStatus = node["privacyStatus"].Value<string>();
+			}
 		}
 		#endregion
 

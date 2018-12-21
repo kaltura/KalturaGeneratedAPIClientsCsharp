@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,6 +58,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int UploadedOnGreaterThanOrEqual
 		{
 			get { return _UploadedOnGreaterThanOrEqual; }
@@ -65,6 +68,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UploadedOnGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UploadedOnLessThanOrEqual
 		{
 			get { return _UploadedOnLessThanOrEqual; }
@@ -74,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UploadedOnLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UploadedOnEqual
 		{
 			get { return _UploadedOnEqual; }
@@ -83,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UploadedOnEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -92,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		[JsonProperty]
 		public BatchJobStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -101,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public BulkUploadObjectType BulkUploadObjectTypeEqual
 		{
 			get { return _BulkUploadObjectTypeEqual; }
@@ -110,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BulkUploadObjectTypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string BulkUploadObjectTypeIn
 		{
 			get { return _BulkUploadObjectTypeIn; }
@@ -126,46 +135,36 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BulkUploadBaseFilter(XmlElement node) : base(node)
+		public BulkUploadBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["uploadedOnGreaterThanOrEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "uploadedOnGreaterThanOrEqual":
-						this._UploadedOnGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "uploadedOnLessThanOrEqual":
-						this._UploadedOnLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "uploadedOnEqual":
-						this._UploadedOnEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (BatchJobStatus)ParseEnum(typeof(BatchJobStatus), propertyNode.InnerText);
-						continue;
-					case "bulkUploadObjectTypeEqual":
-						this._BulkUploadObjectTypeEqual = (BulkUploadObjectType)StringEnum.Parse(typeof(BulkUploadObjectType), propertyNode.InnerText);
-						continue;
-					case "bulkUploadObjectTypeIn":
-						this._BulkUploadObjectTypeIn = propertyNode.InnerText;
-						continue;
-				}
+				this._UploadedOnGreaterThanOrEqual = ParseInt(node["uploadedOnGreaterThanOrEqual"].Value<string>());
 			}
-		}
-
-		public BulkUploadBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._UploadedOnGreaterThanOrEqual = data.TryGetValueSafe<int>("uploadedOnGreaterThanOrEqual");
-			    this._UploadedOnLessThanOrEqual = data.TryGetValueSafe<int>("uploadedOnLessThanOrEqual");
-			    this._UploadedOnEqual = data.TryGetValueSafe<int>("uploadedOnEqual");
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
-			    this._StatusEqual = (BatchJobStatus)ParseEnum(typeof(BatchJobStatus), data.TryGetValueSafe<int>("statusEqual"));
-			    this._BulkUploadObjectTypeEqual = (BulkUploadObjectType)StringEnum.Parse(typeof(BulkUploadObjectType), data.TryGetValueSafe<string>("bulkUploadObjectTypeEqual"));
-			    this._BulkUploadObjectTypeIn = data.TryGetValueSafe<string>("bulkUploadObjectTypeIn");
+			if(node["uploadedOnLessThanOrEqual"] != null)
+			{
+				this._UploadedOnLessThanOrEqual = ParseInt(node["uploadedOnLessThanOrEqual"].Value<string>());
+			}
+			if(node["uploadedOnEqual"] != null)
+			{
+				this._UploadedOnEqual = ParseInt(node["uploadedOnEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (BatchJobStatus)ParseEnum(typeof(BatchJobStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["bulkUploadObjectTypeEqual"] != null)
+			{
+				this._BulkUploadObjectTypeEqual = (BulkUploadObjectType)StringEnum.Parse(typeof(BulkUploadObjectType), node["bulkUploadObjectTypeEqual"].Value<string>());
+			}
+			if(node["bulkUploadObjectTypeIn"] != null)
+			{
+				this._BulkUploadObjectTypeIn = node["bulkUploadObjectTypeIn"].Value<string>();
+			}
 		}
 		#endregion
 

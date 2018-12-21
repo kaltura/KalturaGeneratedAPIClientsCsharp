@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Host
 		{
 			get { return _Host; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Host");
 			}
 		}
+		[JsonProperty]
 		public int Cpcode
 		{
 			get { return _Cpcode; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UrlTokenizerAkamaiRtsp(XmlElement node) : base(node)
+		public UrlTokenizerAkamaiRtsp(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["host"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "host":
-						this._Host = propertyNode.InnerText;
-						continue;
-					case "cpcode":
-						this._Cpcode = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._Host = node["host"].Value<string>();
 			}
-		}
-
-		public UrlTokenizerAkamaiRtsp(IDictionary<string,object> data) : base(data)
-		{
-			    this._Host = data.TryGetValueSafe<string>("host");
-			    this._Cpcode = data.TryGetValueSafe<int>("cpcode");
+			if(node["cpcode"] != null)
+			{
+				this._Cpcode = ParseInt(node["cpcode"].Value<string>());
+			}
 		}
 		#endregion
 

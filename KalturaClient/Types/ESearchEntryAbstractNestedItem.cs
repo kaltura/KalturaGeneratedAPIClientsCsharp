@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string SearchTerm
 		{
 			get { return _SearchTerm; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SearchTerm");
 			}
 		}
+		[JsonProperty]
 		public ESearchItemType ItemType
 		{
 			get { return _ItemType; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemType");
 			}
 		}
+		[JsonProperty]
 		public ESearchRange Range
 		{
 			get { return _Range; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Range");
 			}
 		}
+		[JsonProperty]
 		public bool? AddHighlight
 		{
 			get { return _AddHighlight; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ESearchEntryAbstractNestedItem(XmlElement node) : base(node)
+		public ESearchEntryAbstractNestedItem(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["searchTerm"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "searchTerm":
-						this._SearchTerm = propertyNode.InnerText;
-						continue;
-					case "itemType":
-						this._ItemType = (ESearchItemType)ParseEnum(typeof(ESearchItemType), propertyNode.InnerText);
-						continue;
-					case "range":
-						this._Range = ObjectFactory.Create<ESearchRange>(propertyNode);
-						continue;
-					case "addHighlight":
-						this._AddHighlight = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._SearchTerm = node["searchTerm"].Value<string>();
 			}
-		}
-
-		public ESearchEntryAbstractNestedItem(IDictionary<string,object> data) : base(data)
-		{
-			    this._SearchTerm = data.TryGetValueSafe<string>("searchTerm");
-			    this._ItemType = (ESearchItemType)ParseEnum(typeof(ESearchItemType), data.TryGetValueSafe<int>("itemType"));
-			    this._Range = ObjectFactory.Create<ESearchRange>(data.TryGetValueSafe<IDictionary<string,object>>("range"));
-			    this._AddHighlight = data.TryGetValueSafe<bool>("addHighlight");
+			if(node["itemType"] != null)
+			{
+				this._ItemType = (ESearchItemType)ParseEnum(typeof(ESearchItemType), node["itemType"].Value<string>());
+			}
+			if(node["range"] != null)
+			{
+				this._Range = ObjectFactory.Create<ESearchRange>(node["range"]);
+			}
+			if(node["addHighlight"] != null)
+			{
+				this._AddHighlight = ParseBool(node["addHighlight"].Value<string>());
+			}
 		}
 		#endregion
 

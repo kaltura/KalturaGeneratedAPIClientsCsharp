@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -66,6 +68,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string CodeLike
 		{
 			get { return _CodeLike; }
@@ -75,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CodeLike");
 			}
 		}
+		[JsonProperty]
 		public string CodeMultiLikeOr
 		{
 			get { return _CodeMultiLikeOr; }
@@ -84,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CodeMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string CodeMultiLikeAnd
 		{
 			get { return _CodeMultiLikeAnd; }
@@ -93,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CodeMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public string CodeEqual
 		{
 			get { return _CodeEqual; }
@@ -102,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CodeEqual");
 			}
 		}
+		[JsonProperty]
 		public string CodeIn
 		{
 			get { return _CodeIn; }
@@ -111,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CodeIn");
 			}
 		}
+		[JsonProperty]
 		public string DescriptionLike
 		{
 			get { return _DescriptionLike; }
@@ -120,6 +128,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DescriptionLike");
 			}
 		}
+		[JsonProperty]
 		public string DescriptionMultiLikeOr
 		{
 			get { return _DescriptionMultiLikeOr; }
@@ -129,6 +138,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DescriptionMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string DescriptionMultiLikeAnd
 		{
 			get { return _DescriptionMultiLikeAnd; }
@@ -138,6 +148,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DescriptionMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public int EndTimeGreaterThanOrEqual
 		{
 			get { return _EndTimeGreaterThanOrEqual; }
@@ -147,6 +158,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndTimeGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int EndTimeLessThanOrEqual
 		{
 			get { return _EndTimeLessThanOrEqual; }
@@ -156,6 +168,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndTimeLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int DurationGreaterThanOrEqual
 		{
 			get { return _DurationGreaterThanOrEqual; }
@@ -165,6 +178,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DurationGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int DurationLessThanOrEqual
 		{
 			get { return _DurationLessThanOrEqual; }
@@ -181,66 +195,56 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CodeCuePointBaseFilter(XmlElement node) : base(node)
+		public CodeCuePointBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["codeLike"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "codeLike":
-						this._CodeLike = propertyNode.InnerText;
-						continue;
-					case "codeMultiLikeOr":
-						this._CodeMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "codeMultiLikeAnd":
-						this._CodeMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "codeEqual":
-						this._CodeEqual = propertyNode.InnerText;
-						continue;
-					case "codeIn":
-						this._CodeIn = propertyNode.InnerText;
-						continue;
-					case "descriptionLike":
-						this._DescriptionLike = propertyNode.InnerText;
-						continue;
-					case "descriptionMultiLikeOr":
-						this._DescriptionMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "descriptionMultiLikeAnd":
-						this._DescriptionMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "endTimeGreaterThanOrEqual":
-						this._EndTimeGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "endTimeLessThanOrEqual":
-						this._EndTimeLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "durationGreaterThanOrEqual":
-						this._DurationGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "durationLessThanOrEqual":
-						this._DurationLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._CodeLike = node["codeLike"].Value<string>();
 			}
-		}
-
-		public CodeCuePointBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._CodeLike = data.TryGetValueSafe<string>("codeLike");
-			    this._CodeMultiLikeOr = data.TryGetValueSafe<string>("codeMultiLikeOr");
-			    this._CodeMultiLikeAnd = data.TryGetValueSafe<string>("codeMultiLikeAnd");
-			    this._CodeEqual = data.TryGetValueSafe<string>("codeEqual");
-			    this._CodeIn = data.TryGetValueSafe<string>("codeIn");
-			    this._DescriptionLike = data.TryGetValueSafe<string>("descriptionLike");
-			    this._DescriptionMultiLikeOr = data.TryGetValueSafe<string>("descriptionMultiLikeOr");
-			    this._DescriptionMultiLikeAnd = data.TryGetValueSafe<string>("descriptionMultiLikeAnd");
-			    this._EndTimeGreaterThanOrEqual = data.TryGetValueSafe<int>("endTimeGreaterThanOrEqual");
-			    this._EndTimeLessThanOrEqual = data.TryGetValueSafe<int>("endTimeLessThanOrEqual");
-			    this._DurationGreaterThanOrEqual = data.TryGetValueSafe<int>("durationGreaterThanOrEqual");
-			    this._DurationLessThanOrEqual = data.TryGetValueSafe<int>("durationLessThanOrEqual");
+			if(node["codeMultiLikeOr"] != null)
+			{
+				this._CodeMultiLikeOr = node["codeMultiLikeOr"].Value<string>();
+			}
+			if(node["codeMultiLikeAnd"] != null)
+			{
+				this._CodeMultiLikeAnd = node["codeMultiLikeAnd"].Value<string>();
+			}
+			if(node["codeEqual"] != null)
+			{
+				this._CodeEqual = node["codeEqual"].Value<string>();
+			}
+			if(node["codeIn"] != null)
+			{
+				this._CodeIn = node["codeIn"].Value<string>();
+			}
+			if(node["descriptionLike"] != null)
+			{
+				this._DescriptionLike = node["descriptionLike"].Value<string>();
+			}
+			if(node["descriptionMultiLikeOr"] != null)
+			{
+				this._DescriptionMultiLikeOr = node["descriptionMultiLikeOr"].Value<string>();
+			}
+			if(node["descriptionMultiLikeAnd"] != null)
+			{
+				this._DescriptionMultiLikeAnd = node["descriptionMultiLikeAnd"].Value<string>();
+			}
+			if(node["endTimeGreaterThanOrEqual"] != null)
+			{
+				this._EndTimeGreaterThanOrEqual = ParseInt(node["endTimeGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["endTimeLessThanOrEqual"] != null)
+			{
+				this._EndTimeLessThanOrEqual = ParseInt(node["endTimeLessThanOrEqual"].Value<string>());
+			}
+			if(node["durationGreaterThanOrEqual"] != null)
+			{
+				this._DurationGreaterThanOrEqual = ParseInt(node["durationGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["durationLessThanOrEqual"] != null)
+			{
+				this._DurationLessThanOrEqual = ParseInt(node["durationLessThanOrEqual"].Value<string>());
+			}
 		}
 		#endregion
 

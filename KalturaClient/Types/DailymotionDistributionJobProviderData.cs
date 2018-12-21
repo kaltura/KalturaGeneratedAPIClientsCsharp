@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string VideoAssetFilePath
 		{
 			get { return _VideoAssetFilePath; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoAssetFilePath");
 			}
 		}
+		[JsonProperty]
 		public string AccessControlGeoBlockingOperation
 		{
 			get { return _AccessControlGeoBlockingOperation; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AccessControlGeoBlockingOperation");
 			}
 		}
+		[JsonProperty]
 		public string AccessControlGeoBlockingCountryList
 		{
 			get { return _AccessControlGeoBlockingCountryList; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AccessControlGeoBlockingCountryList");
 			}
 		}
+		[JsonProperty]
 		public IList<DailymotionDistributionCaptionInfo> CaptionsInfo
 		{
 			get { return _CaptionsInfo; }
@@ -93,43 +99,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DailymotionDistributionJobProviderData(XmlElement node) : base(node)
+		public DailymotionDistributionJobProviderData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["videoAssetFilePath"] != null)
 			{
-				switch (propertyNode.Name)
+				this._VideoAssetFilePath = node["videoAssetFilePath"].Value<string>();
+			}
+			if(node["accessControlGeoBlockingOperation"] != null)
+			{
+				this._AccessControlGeoBlockingOperation = node["accessControlGeoBlockingOperation"].Value<string>();
+			}
+			if(node["accessControlGeoBlockingCountryList"] != null)
+			{
+				this._AccessControlGeoBlockingCountryList = node["accessControlGeoBlockingCountryList"].Value<string>();
+			}
+			if(node["captionsInfo"] != null)
+			{
+				this._CaptionsInfo = new List<DailymotionDistributionCaptionInfo>();
+				foreach(var arrayNode in node["captionsInfo"].Children())
 				{
-					case "videoAssetFilePath":
-						this._VideoAssetFilePath = propertyNode.InnerText;
-						continue;
-					case "accessControlGeoBlockingOperation":
-						this._AccessControlGeoBlockingOperation = propertyNode.InnerText;
-						continue;
-					case "accessControlGeoBlockingCountryList":
-						this._AccessControlGeoBlockingCountryList = propertyNode.InnerText;
-						continue;
-					case "captionsInfo":
-						this._CaptionsInfo = new List<DailymotionDistributionCaptionInfo>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._CaptionsInfo.Add(ObjectFactory.Create<DailymotionDistributionCaptionInfo>(arrayNode));
-						}
-						continue;
+					this._CaptionsInfo.Add(ObjectFactory.Create<DailymotionDistributionCaptionInfo>(arrayNode));
 				}
 			}
-		}
-
-		public DailymotionDistributionJobProviderData(IDictionary<string,object> data) : base(data)
-		{
-			    this._VideoAssetFilePath = data.TryGetValueSafe<string>("videoAssetFilePath");
-			    this._AccessControlGeoBlockingOperation = data.TryGetValueSafe<string>("accessControlGeoBlockingOperation");
-			    this._AccessControlGeoBlockingCountryList = data.TryGetValueSafe<string>("accessControlGeoBlockingCountryList");
-			    this._CaptionsInfo = new List<DailymotionDistributionCaptionInfo>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("captionsInfo", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._CaptionsInfo.Add(ObjectFactory.Create<DailymotionDistributionCaptionInfo>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

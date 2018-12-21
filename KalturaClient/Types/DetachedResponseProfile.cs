@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,6 +58,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -65,6 +68,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		[JsonProperty]
 		public ResponseProfileType Type
 		{
 			get { return _Type; }
@@ -74,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		[JsonProperty]
 		public string Fields
 		{
 			get { return _Fields; }
@@ -83,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Fields");
 			}
 		}
+		[JsonProperty]
 		public RelatedFilter Filter
 		{
 			get { return _Filter; }
@@ -92,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Filter");
 			}
 		}
+		[JsonProperty]
 		public FilterPager Pager
 		{
 			get { return _Pager; }
@@ -101,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Pager");
 			}
 		}
+		[JsonProperty]
 		public IList<DetachedResponseProfile> RelatedProfiles
 		{
 			get { return _RelatedProfiles; }
@@ -110,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RelatedProfiles");
 			}
 		}
+		[JsonProperty]
 		public IList<ResponseProfileMapping> Mappings
 		{
 			get { return _Mappings; }
@@ -126,64 +135,44 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DetachedResponseProfile(XmlElement node) : base(node)
+		public DetachedResponseProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["name"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Name = node["name"].Value<string>();
+			}
+			if(node["type"] != null)
+			{
+				this._Type = (ResponseProfileType)ParseEnum(typeof(ResponseProfileType), node["type"].Value<string>());
+			}
+			if(node["fields"] != null)
+			{
+				this._Fields = node["fields"].Value<string>();
+			}
+			if(node["filter"] != null)
+			{
+				this._Filter = ObjectFactory.Create<RelatedFilter>(node["filter"]);
+			}
+			if(node["pager"] != null)
+			{
+				this._Pager = ObjectFactory.Create<FilterPager>(node["pager"]);
+			}
+			if(node["relatedProfiles"] != null)
+			{
+				this._RelatedProfiles = new List<DetachedResponseProfile>();
+				foreach(var arrayNode in node["relatedProfiles"].Children())
 				{
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-					case "type":
-						this._Type = (ResponseProfileType)ParseEnum(typeof(ResponseProfileType), propertyNode.InnerText);
-						continue;
-					case "fields":
-						this._Fields = propertyNode.InnerText;
-						continue;
-					case "filter":
-						this._Filter = ObjectFactory.Create<RelatedFilter>(propertyNode);
-						continue;
-					case "pager":
-						this._Pager = ObjectFactory.Create<FilterPager>(propertyNode);
-						continue;
-					case "relatedProfiles":
-						this._RelatedProfiles = new List<DetachedResponseProfile>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._RelatedProfiles.Add(ObjectFactory.Create<DetachedResponseProfile>(arrayNode));
-						}
-						continue;
-					case "mappings":
-						this._Mappings = new List<ResponseProfileMapping>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Mappings.Add(ObjectFactory.Create<ResponseProfileMapping>(arrayNode));
-						}
-						continue;
+					this._RelatedProfiles.Add(ObjectFactory.Create<DetachedResponseProfile>(arrayNode));
 				}
 			}
-		}
-
-		public DetachedResponseProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._Name = data.TryGetValueSafe<string>("name");
-			    this._Type = (ResponseProfileType)ParseEnum(typeof(ResponseProfileType), data.TryGetValueSafe<int>("type"));
-			    this._Fields = data.TryGetValueSafe<string>("fields");
-			    this._Filter = ObjectFactory.Create<RelatedFilter>(data.TryGetValueSafe<IDictionary<string,object>>("filter"));
-			    this._Pager = ObjectFactory.Create<FilterPager>(data.TryGetValueSafe<IDictionary<string,object>>("pager"));
-			    this._RelatedProfiles = new List<DetachedResponseProfile>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("relatedProfiles", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._RelatedProfiles.Add(ObjectFactory.Create<DetachedResponseProfile>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._Mappings = new List<ResponseProfileMapping>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("mappings", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Mappings.Add(ObjectFactory.Create<ResponseProfileMapping>((IDictionary<string,object>)dataDictionary));
-			    }
+			if(node["mappings"] != null)
+			{
+				this._Mappings = new List<ResponseProfileMapping>();
+				foreach(var arrayNode in node["mappings"].Children())
+				{
+					this._Mappings.Add(ObjectFactory.Create<ResponseProfileMapping>(arrayNode));
+				}
+			}
 		}
 		#endregion
 

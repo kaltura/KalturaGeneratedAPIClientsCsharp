@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public IList<LiveStreamParams> Streams
 		{
 			get { return _Streams; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Streams");
 			}
 		}
+		[JsonProperty]
 		public IList<LiveEntryServerNodeRecordingInfo> RecordingInfo
 		{
 			get { return _RecordingInfo; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecordingInfo");
 			}
 		}
+		[JsonProperty]
 		public bool? IsPlayableUser
 		{
 			get { return _IsPlayableUser; }
@@ -82,48 +87,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public LiveEntryServerNode(XmlElement node) : base(node)
+		public LiveEntryServerNode(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["streams"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Streams = new List<LiveStreamParams>();
+				foreach(var arrayNode in node["streams"].Children())
 				{
-					case "streams":
-						this._Streams = new List<LiveStreamParams>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Streams.Add(ObjectFactory.Create<LiveStreamParams>(arrayNode));
-						}
-						continue;
-					case "recordingInfo":
-						this._RecordingInfo = new List<LiveEntryServerNodeRecordingInfo>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._RecordingInfo.Add(ObjectFactory.Create<LiveEntryServerNodeRecordingInfo>(arrayNode));
-						}
-						continue;
-					case "isPlayableUser":
-						this._IsPlayableUser = ParseBool(propertyNode.InnerText);
-						continue;
+					this._Streams.Add(ObjectFactory.Create<LiveStreamParams>(arrayNode));
 				}
 			}
-		}
-
-		public LiveEntryServerNode(IDictionary<string,object> data) : base(data)
-		{
-			    this._Streams = new List<LiveStreamParams>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("streams", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Streams.Add(ObjectFactory.Create<LiveStreamParams>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._RecordingInfo = new List<LiveEntryServerNodeRecordingInfo>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("recordingInfo", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._RecordingInfo.Add(ObjectFactory.Create<LiveEntryServerNodeRecordingInfo>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._IsPlayableUser = data.TryGetValueSafe<bool>("isPlayableUser");
+			if(node["recordingInfo"] != null)
+			{
+				this._RecordingInfo = new List<LiveEntryServerNodeRecordingInfo>();
+				foreach(var arrayNode in node["recordingInfo"].Children())
+				{
+					this._RecordingInfo.Add(ObjectFactory.Create<LiveEntryServerNodeRecordingInfo>(arrayNode));
+				}
+			}
+			if(node["isPlayableUser"] != null)
+			{
+				this._IsPlayableUser = ParseBool(node["isPlayableUser"].Value<string>());
+			}
 		}
 		#endregion
 

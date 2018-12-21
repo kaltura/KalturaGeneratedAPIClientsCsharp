@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string LastObjectKey
 		{
 			get { return _LastObjectKey; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastObjectKey");
 			}
 		}
+		[JsonProperty]
 		public int Recalculated
 		{
 			get { return _Recalculated; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ResponseProfileCacheRecalculateResults(XmlElement node) : base(node)
+		public ResponseProfileCacheRecalculateResults(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["lastObjectKey"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "lastObjectKey":
-						this._LastObjectKey = propertyNode.InnerText;
-						continue;
-					case "recalculated":
-						this._Recalculated = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._LastObjectKey = node["lastObjectKey"].Value<string>();
 			}
-		}
-
-		public ResponseProfileCacheRecalculateResults(IDictionary<string,object> data) : base(data)
-		{
-			    this._LastObjectKey = data.TryGetValueSafe<string>("lastObjectKey");
-			    this._Recalculated = data.TryGetValueSafe<int>("recalculated");
+			if(node["recalculated"] != null)
+			{
+				this._Recalculated = ParseInt(node["recalculated"].Value<string>());
+			}
 		}
 		#endregion
 

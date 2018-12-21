@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public ESearchSortOrder SortOrder
 		{
 			get { return _SortOrder; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ESearchOrderByItem(XmlElement node) : base(node)
+		public ESearchOrderByItem(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["sortOrder"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "sortOrder":
-						this._SortOrder = (ESearchSortOrder)StringEnum.Parse(typeof(ESearchSortOrder), propertyNode.InnerText);
-						continue;
-				}
+				this._SortOrder = (ESearchSortOrder)StringEnum.Parse(typeof(ESearchSortOrder), node["sortOrder"].Value<string>());
 			}
-		}
-
-		public ESearchOrderByItem(IDictionary<string,object> data) : base(data)
-		{
-			    this._SortOrder = (ESearchSortOrder)StringEnum.Parse(typeof(ESearchSortOrder), data.TryGetValueSafe<string>("sortOrder"));
 		}
 		#endregion
 

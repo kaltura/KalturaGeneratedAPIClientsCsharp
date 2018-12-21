@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -54,6 +56,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public AmazonS3StorageProfileFilesPermissionLevel FilesPermissionInS3
 		{
 			get { return _FilesPermissionInS3; }
@@ -63,6 +66,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FilesPermissionInS3");
 			}
 		}
+		[JsonProperty]
 		public string S3Region
 		{
 			get { return _S3Region; }
@@ -72,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("S3Region");
 			}
 		}
+		[JsonProperty]
 		public string SseType
 		{
 			get { return _SseType; }
@@ -81,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SseType");
 			}
 		}
+		[JsonProperty]
 		public string SseKmsKeyId
 		{
 			get { return _SseKmsKeyId; }
@@ -90,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SseKmsKeyId");
 			}
 		}
+		[JsonProperty]
 		public string SignatureType
 		{
 			get { return _SignatureType; }
@@ -99,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SignatureType");
 			}
 		}
+		[JsonProperty]
 		public string EndPoint
 		{
 			get { return _EndPoint; }
@@ -115,42 +123,32 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AmazonS3StorageExportJobData(XmlElement node) : base(node)
+		public AmazonS3StorageExportJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["filesPermissionInS3"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "filesPermissionInS3":
-						this._FilesPermissionInS3 = (AmazonS3StorageProfileFilesPermissionLevel)StringEnum.Parse(typeof(AmazonS3StorageProfileFilesPermissionLevel), propertyNode.InnerText);
-						continue;
-					case "s3Region":
-						this._S3Region = propertyNode.InnerText;
-						continue;
-					case "sseType":
-						this._SseType = propertyNode.InnerText;
-						continue;
-					case "sseKmsKeyId":
-						this._SseKmsKeyId = propertyNode.InnerText;
-						continue;
-					case "signatureType":
-						this._SignatureType = propertyNode.InnerText;
-						continue;
-					case "endPoint":
-						this._EndPoint = propertyNode.InnerText;
-						continue;
-				}
+				this._FilesPermissionInS3 = (AmazonS3StorageProfileFilesPermissionLevel)StringEnum.Parse(typeof(AmazonS3StorageProfileFilesPermissionLevel), node["filesPermissionInS3"].Value<string>());
 			}
-		}
-
-		public AmazonS3StorageExportJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._FilesPermissionInS3 = (AmazonS3StorageProfileFilesPermissionLevel)StringEnum.Parse(typeof(AmazonS3StorageProfileFilesPermissionLevel), data.TryGetValueSafe<string>("filesPermissionInS3"));
-			    this._S3Region = data.TryGetValueSafe<string>("s3Region");
-			    this._SseType = data.TryGetValueSafe<string>("sseType");
-			    this._SseKmsKeyId = data.TryGetValueSafe<string>("sseKmsKeyId");
-			    this._SignatureType = data.TryGetValueSafe<string>("signatureType");
-			    this._EndPoint = data.TryGetValueSafe<string>("endPoint");
+			if(node["s3Region"] != null)
+			{
+				this._S3Region = node["s3Region"].Value<string>();
+			}
+			if(node["sseType"] != null)
+			{
+				this._SseType = node["sseType"].Value<string>();
+			}
+			if(node["sseKmsKeyId"] != null)
+			{
+				this._SseKmsKeyId = node["sseKmsKeyId"].Value<string>();
+			}
+			if(node["signatureType"] != null)
+			{
+				this._SignatureType = node["signatureType"].Value<string>();
+			}
+			if(node["endPoint"] != null)
+			{
+				this._EndPoint = node["endPoint"].Value<string>();
+			}
 		}
 		#endregion
 

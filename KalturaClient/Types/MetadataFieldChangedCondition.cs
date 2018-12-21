@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,6 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string XPath
 		{
 			get { return _XPath; }
@@ -61,6 +64,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("XPath");
 			}
 		}
+		[JsonProperty]
 		public int ProfileId
 		{
 			get { return _ProfileId; }
@@ -70,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProfileId");
 			}
 		}
+		[JsonProperty]
 		public string ProfileSystemName
 		{
 			get { return _ProfileSystemName; }
@@ -79,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProfileSystemName");
 			}
 		}
+		[JsonProperty]
 		public string VersionA
 		{
 			get { return _VersionA; }
@@ -88,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VersionA");
 			}
 		}
+		[JsonProperty]
 		public string VersionB
 		{
 			get { return _VersionB; }
@@ -104,38 +111,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public MetadataFieldChangedCondition(XmlElement node) : base(node)
+		public MetadataFieldChangedCondition(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["xPath"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "xPath":
-						this._XPath = propertyNode.InnerText;
-						continue;
-					case "profileId":
-						this._ProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "profileSystemName":
-						this._ProfileSystemName = propertyNode.InnerText;
-						continue;
-					case "versionA":
-						this._VersionA = propertyNode.InnerText;
-						continue;
-					case "versionB":
-						this._VersionB = propertyNode.InnerText;
-						continue;
-				}
+				this._XPath = node["xPath"].Value<string>();
 			}
-		}
-
-		public MetadataFieldChangedCondition(IDictionary<string,object> data) : base(data)
-		{
-			    this._XPath = data.TryGetValueSafe<string>("xPath");
-			    this._ProfileId = data.TryGetValueSafe<int>("profileId");
-			    this._ProfileSystemName = data.TryGetValueSafe<string>("profileSystemName");
-			    this._VersionA = data.TryGetValueSafe<string>("versionA");
-			    this._VersionB = data.TryGetValueSafe<string>("versionB");
+			if(node["profileId"] != null)
+			{
+				this._ProfileId = ParseInt(node["profileId"].Value<string>());
+			}
+			if(node["profileSystemName"] != null)
+			{
+				this._ProfileSystemName = node["profileSystemName"].Value<string>();
+			}
+			if(node["versionA"] != null)
+			{
+				this._VersionA = node["versionA"].Value<string>();
+			}
+			if(node["versionB"] != null)
+			{
+				this._VersionB = node["versionB"].Value<string>();
+			}
 		}
 		#endregion
 

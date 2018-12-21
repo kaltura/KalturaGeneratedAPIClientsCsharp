@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Hosts
 		{
 			get { return _Hosts; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Hosts");
 			}
 		}
+		[JsonProperty]
 		public string UriPrefix
 		{
 			get { return _UriPrefix; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UrlRecognizer(XmlElement node) : base(node)
+		public UrlRecognizer(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["hosts"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "hosts":
-						this._Hosts = propertyNode.InnerText;
-						continue;
-					case "uriPrefix":
-						this._UriPrefix = propertyNode.InnerText;
-						continue;
-				}
+				this._Hosts = node["hosts"].Value<string>();
 			}
-		}
-
-		public UrlRecognizer(IDictionary<string,object> data) : base(data)
-		{
-			    this._Hosts = data.TryGetValueSafe<string>("hosts");
-			    this._UriPrefix = data.TryGetValueSafe<string>("uriPrefix");
+			if(node["uriPrefix"] != null)
+			{
+				this._UriPrefix = node["uriPrefix"].Value<string>();
+			}
 		}
 		#endregion
 

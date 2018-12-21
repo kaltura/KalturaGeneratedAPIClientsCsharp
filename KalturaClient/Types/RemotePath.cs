@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,13 +48,25 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int StorageProfileId
 		{
 			get { return _StorageProfileId; }
+			private set 
+			{ 
+				_StorageProfileId = value;
+				OnPropertyChanged("StorageProfileId");
+			}
 		}
+		[JsonProperty]
 		public string Uri
 		{
 			get { return _Uri; }
+			private set 
+			{ 
+				_Uri = value;
+				OnPropertyChanged("Uri");
+			}
 		}
 		#endregion
 
@@ -61,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public RemotePath(XmlElement node) : base(node)
+		public RemotePath(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["storageProfileId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "storageProfileId":
-						this._StorageProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "uri":
-						this._Uri = propertyNode.InnerText;
-						continue;
-				}
+				this._StorageProfileId = ParseInt(node["storageProfileId"].Value<string>());
 			}
-		}
-
-		public RemotePath(IDictionary<string,object> data) : base(data)
-		{
-			    this._StorageProfileId = data.TryGetValueSafe<int>("storageProfileId");
-			    this._Uri = data.TryGetValueSafe<string>("uri");
+			if(node["uri"] != null)
+			{
+				this._Uri = node["uri"].Value<string>();
+			}
 		}
 		#endregion
 

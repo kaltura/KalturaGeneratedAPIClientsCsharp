@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -112,10 +114,17 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int ParentId
 		{
 			get { return _ParentId; }
@@ -125,14 +134,27 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentId");
 			}
 		}
+		[JsonProperty]
 		public int Depth
 		{
 			get { return _Depth; }
+			private set 
+			{ 
+				_Depth = value;
+				OnPropertyChanged("Depth");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -142,26 +164,57 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		[JsonProperty]
 		public string FullName
 		{
 			get { return _FullName; }
+			private set 
+			{ 
+				_FullName = value;
+				OnPropertyChanged("FullName");
+			}
 		}
+		[JsonProperty]
 		public string FullIds
 		{
 			get { return _FullIds; }
+			private set 
+			{ 
+				_FullIds = value;
+				OnPropertyChanged("FullIds");
+			}
 		}
+		[JsonProperty]
 		public int EntriesCount
 		{
 			get { return _EntriesCount; }
+			private set 
+			{ 
+				_EntriesCount = value;
+				OnPropertyChanged("EntriesCount");
+			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -171,6 +224,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public string Tags
 		{
 			get { return _Tags; }
@@ -180,6 +234,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
+		[JsonProperty]
 		public AppearInListType AppearInList
 		{
 			get { return _AppearInList; }
@@ -189,6 +244,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AppearInList");
 			}
 		}
+		[JsonProperty]
 		public PrivacyType Privacy
 		{
 			get { return _Privacy; }
@@ -198,6 +254,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Privacy");
 			}
 		}
+		[JsonProperty]
 		public InheritanceType InheritanceType
 		{
 			get { return _InheritanceType; }
@@ -207,10 +264,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("InheritanceType");
 			}
 		}
+		[JsonProperty]
 		public UserJoinPolicyType UserJoinPolicy
 		{
 			get { return _UserJoinPolicy; }
+			private set 
+			{ 
+				_UserJoinPolicy = value;
+				OnPropertyChanged("UserJoinPolicy");
+			}
 		}
+		[JsonProperty]
 		public CategoryUserPermissionLevel DefaultPermissionLevel
 		{
 			get { return _DefaultPermissionLevel; }
@@ -220,6 +284,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DefaultPermissionLevel");
 			}
 		}
+		[JsonProperty]
 		public string Owner
 		{
 			get { return _Owner; }
@@ -229,10 +294,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("Owner");
 			}
 		}
+		[JsonProperty]
 		public int DirectEntriesCount
 		{
 			get { return _DirectEntriesCount; }
+			private set 
+			{ 
+				_DirectEntriesCount = value;
+				OnPropertyChanged("DirectEntriesCount");
+			}
 		}
+		[JsonProperty]
 		public string ReferenceId
 		{
 			get { return _ReferenceId; }
@@ -242,6 +314,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReferenceId");
 			}
 		}
+		[JsonProperty]
 		public ContributionPolicyType ContributionPolicy
 		{
 			get { return _ContributionPolicy; }
@@ -251,14 +324,27 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContributionPolicy");
 			}
 		}
+		[JsonProperty]
 		public int MembersCount
 		{
 			get { return _MembersCount; }
+			private set 
+			{ 
+				_MembersCount = value;
+				OnPropertyChanged("MembersCount");
+			}
 		}
+		[JsonProperty]
 		public int PendingMembersCount
 		{
 			get { return _PendingMembersCount; }
+			private set 
+			{ 
+				_PendingMembersCount = value;
+				OnPropertyChanged("PendingMembersCount");
+			}
 		}
+		[JsonProperty]
 		public string PrivacyContext
 		{
 			get { return _PrivacyContext; }
@@ -268,18 +354,37 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrivacyContext");
 			}
 		}
+		[JsonProperty]
 		public string PrivacyContexts
 		{
 			get { return _PrivacyContexts; }
+			private set 
+			{ 
+				_PrivacyContexts = value;
+				OnPropertyChanged("PrivacyContexts");
+			}
 		}
+		[JsonProperty]
 		public CategoryStatus Status
 		{
 			get { return _Status; }
+			private set 
+			{ 
+				_Status = value;
+				OnPropertyChanged("Status");
+			}
 		}
+		[JsonProperty]
 		public int InheritedParentId
 		{
 			get { return _InheritedParentId; }
+			private set 
+			{ 
+				_InheritedParentId = value;
+				OnPropertyChanged("InheritedParentId");
+			}
 		}
+		[JsonProperty]
 		public int PartnerSortValue
 		{
 			get { return _PartnerSortValue; }
@@ -289,6 +394,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerSortValue");
 			}
 		}
+		[JsonProperty]
 		public string PartnerData
 		{
 			get { return _PartnerData; }
@@ -298,6 +404,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerData");
 			}
 		}
+		[JsonProperty]
 		public CategoryOrderBy DefaultOrderBy
 		{
 			get { return _DefaultOrderBy; }
@@ -307,10 +414,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("DefaultOrderBy");
 			}
 		}
+		[JsonProperty]
 		public int DirectSubCategoriesCount
 		{
 			get { return _DirectSubCategoriesCount; }
+			private set 
+			{ 
+				_DirectSubCategoriesCount = value;
+				OnPropertyChanged("DirectSubCategoriesCount");
+			}
 		}
+		[JsonProperty]
 		public NullableBoolean Moderation
 		{
 			get { return _Moderation; }
@@ -320,10 +434,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("Moderation");
 			}
 		}
+		[JsonProperty]
 		public int PendingEntriesCount
 		{
 			get { return _PendingEntriesCount; }
+			private set 
+			{ 
+				_PendingEntriesCount = value;
+				OnPropertyChanged("PendingEntriesCount");
+			}
 		}
+		[JsonProperty]
 		public NullableBoolean IsAggregationCategory
 		{
 			get { return _IsAggregationCategory; }
@@ -333,6 +454,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsAggregationCategory");
 			}
 		}
+		[JsonProperty]
 		public string AggregationCategories
 		{
 			get { return _AggregationCategories; }
@@ -349,158 +471,148 @@ namespace Kaltura.Types
 		{
 		}
 
-		public Category(XmlElement node) : base(node)
+		public Category(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "parentId":
-						this._ParentId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "depth":
-						this._Depth = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-					case "fullName":
-						this._FullName = propertyNode.InnerText;
-						continue;
-					case "fullIds":
-						this._FullIds = propertyNode.InnerText;
-						continue;
-					case "entriesCount":
-						this._EntriesCount = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "tags":
-						this._Tags = propertyNode.InnerText;
-						continue;
-					case "appearInList":
-						this._AppearInList = (AppearInListType)ParseEnum(typeof(AppearInListType), propertyNode.InnerText);
-						continue;
-					case "privacy":
-						this._Privacy = (PrivacyType)ParseEnum(typeof(PrivacyType), propertyNode.InnerText);
-						continue;
-					case "inheritanceType":
-						this._InheritanceType = (InheritanceType)ParseEnum(typeof(InheritanceType), propertyNode.InnerText);
-						continue;
-					case "userJoinPolicy":
-						this._UserJoinPolicy = (UserJoinPolicyType)ParseEnum(typeof(UserJoinPolicyType), propertyNode.InnerText);
-						continue;
-					case "defaultPermissionLevel":
-						this._DefaultPermissionLevel = (CategoryUserPermissionLevel)ParseEnum(typeof(CategoryUserPermissionLevel), propertyNode.InnerText);
-						continue;
-					case "owner":
-						this._Owner = propertyNode.InnerText;
-						continue;
-					case "directEntriesCount":
-						this._DirectEntriesCount = ParseInt(propertyNode.InnerText);
-						continue;
-					case "referenceId":
-						this._ReferenceId = propertyNode.InnerText;
-						continue;
-					case "contributionPolicy":
-						this._ContributionPolicy = (ContributionPolicyType)ParseEnum(typeof(ContributionPolicyType), propertyNode.InnerText);
-						continue;
-					case "membersCount":
-						this._MembersCount = ParseInt(propertyNode.InnerText);
-						continue;
-					case "pendingMembersCount":
-						this._PendingMembersCount = ParseInt(propertyNode.InnerText);
-						continue;
-					case "privacyContext":
-						this._PrivacyContext = propertyNode.InnerText;
-						continue;
-					case "privacyContexts":
-						this._PrivacyContexts = propertyNode.InnerText;
-						continue;
-					case "status":
-						this._Status = (CategoryStatus)ParseEnum(typeof(CategoryStatus), propertyNode.InnerText);
-						continue;
-					case "inheritedParentId":
-						this._InheritedParentId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerSortValue":
-						this._PartnerSortValue = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerData":
-						this._PartnerData = propertyNode.InnerText;
-						continue;
-					case "defaultOrderBy":
-						this._DefaultOrderBy = (CategoryOrderBy)StringEnum.Parse(typeof(CategoryOrderBy), propertyNode.InnerText);
-						continue;
-					case "directSubCategoriesCount":
-						this._DirectSubCategoriesCount = ParseInt(propertyNode.InnerText);
-						continue;
-					case "moderation":
-						this._Moderation = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "pendingEntriesCount":
-						this._PendingEntriesCount = ParseInt(propertyNode.InnerText);
-						continue;
-					case "isAggregationCategory":
-						this._IsAggregationCategory = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "aggregationCategories":
-						this._AggregationCategories = propertyNode.InnerText;
-						continue;
-				}
+				this._Id = ParseInt(node["id"].Value<string>());
 			}
-		}
-
-		public Category(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._ParentId = data.TryGetValueSafe<int>("parentId");
-			    this._Depth = data.TryGetValueSafe<int>("depth");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._Name = data.TryGetValueSafe<string>("name");
-			    this._FullName = data.TryGetValueSafe<string>("fullName");
-			    this._FullIds = data.TryGetValueSafe<string>("fullIds");
-			    this._EntriesCount = data.TryGetValueSafe<int>("entriesCount");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._Tags = data.TryGetValueSafe<string>("tags");
-			    this._AppearInList = (AppearInListType)ParseEnum(typeof(AppearInListType), data.TryGetValueSafe<int>("appearInList"));
-			    this._Privacy = (PrivacyType)ParseEnum(typeof(PrivacyType), data.TryGetValueSafe<int>("privacy"));
-			    this._InheritanceType = (InheritanceType)ParseEnum(typeof(InheritanceType), data.TryGetValueSafe<int>("inheritanceType"));
-			    this._UserJoinPolicy = (UserJoinPolicyType)ParseEnum(typeof(UserJoinPolicyType), data.TryGetValueSafe<int>("userJoinPolicy"));
-			    this._DefaultPermissionLevel = (CategoryUserPermissionLevel)ParseEnum(typeof(CategoryUserPermissionLevel), data.TryGetValueSafe<int>("defaultPermissionLevel"));
-			    this._Owner = data.TryGetValueSafe<string>("owner");
-			    this._DirectEntriesCount = data.TryGetValueSafe<int>("directEntriesCount");
-			    this._ReferenceId = data.TryGetValueSafe<string>("referenceId");
-			    this._ContributionPolicy = (ContributionPolicyType)ParseEnum(typeof(ContributionPolicyType), data.TryGetValueSafe<int>("contributionPolicy"));
-			    this._MembersCount = data.TryGetValueSafe<int>("membersCount");
-			    this._PendingMembersCount = data.TryGetValueSafe<int>("pendingMembersCount");
-			    this._PrivacyContext = data.TryGetValueSafe<string>("privacyContext");
-			    this._PrivacyContexts = data.TryGetValueSafe<string>("privacyContexts");
-			    this._Status = (CategoryStatus)ParseEnum(typeof(CategoryStatus), data.TryGetValueSafe<int>("status"));
-			    this._InheritedParentId = data.TryGetValueSafe<int>("inheritedParentId");
-			    this._PartnerSortValue = data.TryGetValueSafe<int>("partnerSortValue");
-			    this._PartnerData = data.TryGetValueSafe<string>("partnerData");
-			    this._DefaultOrderBy = (CategoryOrderBy)StringEnum.Parse(typeof(CategoryOrderBy), data.TryGetValueSafe<string>("defaultOrderBy"));
-			    this._DirectSubCategoriesCount = data.TryGetValueSafe<int>("directSubCategoriesCount");
-			    this._Moderation = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("moderation"));
-			    this._PendingEntriesCount = data.TryGetValueSafe<int>("pendingEntriesCount");
-			    this._IsAggregationCategory = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isAggregationCategory"));
-			    this._AggregationCategories = data.TryGetValueSafe<string>("aggregationCategories");
+			if(node["parentId"] != null)
+			{
+				this._ParentId = ParseInt(node["parentId"].Value<string>());
+			}
+			if(node["depth"] != null)
+			{
+				this._Depth = ParseInt(node["depth"].Value<string>());
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["name"] != null)
+			{
+				this._Name = node["name"].Value<string>();
+			}
+			if(node["fullName"] != null)
+			{
+				this._FullName = node["fullName"].Value<string>();
+			}
+			if(node["fullIds"] != null)
+			{
+				this._FullIds = node["fullIds"].Value<string>();
+			}
+			if(node["entriesCount"] != null)
+			{
+				this._EntriesCount = ParseInt(node["entriesCount"].Value<string>());
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["tags"] != null)
+			{
+				this._Tags = node["tags"].Value<string>();
+			}
+			if(node["appearInList"] != null)
+			{
+				this._AppearInList = (AppearInListType)ParseEnum(typeof(AppearInListType), node["appearInList"].Value<string>());
+			}
+			if(node["privacy"] != null)
+			{
+				this._Privacy = (PrivacyType)ParseEnum(typeof(PrivacyType), node["privacy"].Value<string>());
+			}
+			if(node["inheritanceType"] != null)
+			{
+				this._InheritanceType = (InheritanceType)ParseEnum(typeof(InheritanceType), node["inheritanceType"].Value<string>());
+			}
+			if(node["userJoinPolicy"] != null)
+			{
+				this._UserJoinPolicy = (UserJoinPolicyType)ParseEnum(typeof(UserJoinPolicyType), node["userJoinPolicy"].Value<string>());
+			}
+			if(node["defaultPermissionLevel"] != null)
+			{
+				this._DefaultPermissionLevel = (CategoryUserPermissionLevel)ParseEnum(typeof(CategoryUserPermissionLevel), node["defaultPermissionLevel"].Value<string>());
+			}
+			if(node["owner"] != null)
+			{
+				this._Owner = node["owner"].Value<string>();
+			}
+			if(node["directEntriesCount"] != null)
+			{
+				this._DirectEntriesCount = ParseInt(node["directEntriesCount"].Value<string>());
+			}
+			if(node["referenceId"] != null)
+			{
+				this._ReferenceId = node["referenceId"].Value<string>();
+			}
+			if(node["contributionPolicy"] != null)
+			{
+				this._ContributionPolicy = (ContributionPolicyType)ParseEnum(typeof(ContributionPolicyType), node["contributionPolicy"].Value<string>());
+			}
+			if(node["membersCount"] != null)
+			{
+				this._MembersCount = ParseInt(node["membersCount"].Value<string>());
+			}
+			if(node["pendingMembersCount"] != null)
+			{
+				this._PendingMembersCount = ParseInt(node["pendingMembersCount"].Value<string>());
+			}
+			if(node["privacyContext"] != null)
+			{
+				this._PrivacyContext = node["privacyContext"].Value<string>();
+			}
+			if(node["privacyContexts"] != null)
+			{
+				this._PrivacyContexts = node["privacyContexts"].Value<string>();
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (CategoryStatus)ParseEnum(typeof(CategoryStatus), node["status"].Value<string>());
+			}
+			if(node["inheritedParentId"] != null)
+			{
+				this._InheritedParentId = ParseInt(node["inheritedParentId"].Value<string>());
+			}
+			if(node["partnerSortValue"] != null)
+			{
+				this._PartnerSortValue = ParseInt(node["partnerSortValue"].Value<string>());
+			}
+			if(node["partnerData"] != null)
+			{
+				this._PartnerData = node["partnerData"].Value<string>();
+			}
+			if(node["defaultOrderBy"] != null)
+			{
+				this._DefaultOrderBy = (CategoryOrderBy)StringEnum.Parse(typeof(CategoryOrderBy), node["defaultOrderBy"].Value<string>());
+			}
+			if(node["directSubCategoriesCount"] != null)
+			{
+				this._DirectSubCategoriesCount = ParseInt(node["directSubCategoriesCount"].Value<string>());
+			}
+			if(node["moderation"] != null)
+			{
+				this._Moderation = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["moderation"].Value<string>());
+			}
+			if(node["pendingEntriesCount"] != null)
+			{
+				this._PendingEntriesCount = ParseInt(node["pendingEntriesCount"].Value<string>());
+			}
+			if(node["isAggregationCategory"] != null)
+			{
+				this._IsAggregationCategory = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["isAggregationCategory"].Value<string>());
+			}
+			if(node["aggregationCategories"] != null)
+			{
+				this._AggregationCategories = node["aggregationCategories"].Value<string>();
+			}
 		}
 		#endregion
 

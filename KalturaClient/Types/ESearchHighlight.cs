@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string FieldName
 		{
 			get { return _FieldName; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FieldName");
 			}
 		}
+		[JsonProperty]
 		public IList<String> Hits
 		{
 			get { return _Hits; }
@@ -71,35 +75,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ESearchHighlight(XmlElement node) : base(node)
+		public ESearchHighlight(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["fieldName"] != null)
 			{
-				switch (propertyNode.Name)
+				this._FieldName = node["fieldName"].Value<string>();
+			}
+			if(node["hits"] != null)
+			{
+				this._Hits = new List<String>();
+				foreach(var arrayNode in node["hits"].Children())
 				{
-					case "fieldName":
-						this._FieldName = propertyNode.InnerText;
-						continue;
-					case "hits":
-						this._Hits = new List<String>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Hits.Add(ObjectFactory.Create<String>(arrayNode));
-						}
-						continue;
+					this._Hits.Add(ObjectFactory.Create<String>(arrayNode));
 				}
 			}
-		}
-
-		public ESearchHighlight(IDictionary<string,object> data) : base(data)
-		{
-			    this._FieldName = data.TryGetValueSafe<string>("fieldName");
-			    this._Hits = new List<String>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("hits", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Hits.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

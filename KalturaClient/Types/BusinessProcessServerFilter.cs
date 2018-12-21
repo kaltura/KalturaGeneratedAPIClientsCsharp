@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public NullableBoolean CurrentDcOrExternal
 		{
 			get { return _CurrentDcOrExternal; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CurrentDcOrExternal");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean CurrentDc
 		{
 			get { return _CurrentDc; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CurrentDc");
 			}
 		}
+		[JsonProperty]
 		public new BusinessProcessServerOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BusinessProcessServerFilter(XmlElement node) : base(node)
+		public BusinessProcessServerFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["currentDcOrExternal"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "currentDcOrExternal":
-						this._CurrentDcOrExternal = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "currentDc":
-						this._CurrentDc = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "orderBy":
-						this._OrderBy = (BusinessProcessServerOrderBy)StringEnum.Parse(typeof(BusinessProcessServerOrderBy), propertyNode.InnerText);
-						continue;
-				}
+				this._CurrentDcOrExternal = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["currentDcOrExternal"].Value<string>());
 			}
-		}
-
-		public BusinessProcessServerFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._CurrentDcOrExternal = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("currentDcOrExternal"));
-			    this._CurrentDc = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("currentDc"));
-			    this._OrderBy = (BusinessProcessServerOrderBy)StringEnum.Parse(typeof(BusinessProcessServerOrderBy), data.TryGetValueSafe<string>("orderBy"));
+			if(node["currentDc"] != null)
+			{
+				this._CurrentDc = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["currentDc"].Value<string>());
+			}
+			if(node["orderBy"] != null)
+			{
+				this._OrderBy = (BusinessProcessServerOrderBy)StringEnum.Parse(typeof(BusinessProcessServerOrderBy), node["orderBy"].Value<string>());
+			}
 		}
 		#endregion
 

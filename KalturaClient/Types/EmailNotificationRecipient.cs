@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public StringValue Email
 		{
 			get { return _Email; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Email");
 			}
 		}
+		[JsonProperty]
 		public StringValue Name
 		{
 			get { return _Name; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EmailNotificationRecipient(XmlElement node) : base(node)
+		public EmailNotificationRecipient(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["email"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "email":
-						this._Email = ObjectFactory.Create<StringValue>(propertyNode);
-						continue;
-					case "name":
-						this._Name = ObjectFactory.Create<StringValue>(propertyNode);
-						continue;
-				}
+				this._Email = ObjectFactory.Create<StringValue>(node["email"]);
 			}
-		}
-
-		public EmailNotificationRecipient(IDictionary<string,object> data) : base(data)
-		{
-			    this._Email = ObjectFactory.Create<StringValue>(data.TryGetValueSafe<IDictionary<string,object>>("email"));
-			    this._Name = ObjectFactory.Create<StringValue>(data.TryGetValueSafe<IDictionary<string,object>>("name"));
+			if(node["name"] != null)
+			{
+				this._Name = ObjectFactory.Create<StringValue>(node["name"]);
+			}
 		}
 		#endregion
 

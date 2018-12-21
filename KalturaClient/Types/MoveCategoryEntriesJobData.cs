@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,6 +58,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int SrcCategoryId
 		{
 			get { return _SrcCategoryId; }
@@ -65,6 +68,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcCategoryId");
 			}
 		}
+		[JsonProperty]
 		public int DestCategoryId
 		{
 			get { return _DestCategoryId; }
@@ -74,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestCategoryId");
 			}
 		}
+		[JsonProperty]
 		public int LastMovedCategoryId
 		{
 			get { return _LastMovedCategoryId; }
@@ -83,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastMovedCategoryId");
 			}
 		}
+		[JsonProperty]
 		public int LastMovedCategoryPageIndex
 		{
 			get { return _LastMovedCategoryPageIndex; }
@@ -92,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastMovedCategoryPageIndex");
 			}
 		}
+		[JsonProperty]
 		public int LastMovedCategoryEntryPageIndex
 		{
 			get { return _LastMovedCategoryEntryPageIndex; }
@@ -101,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastMovedCategoryEntryPageIndex");
 			}
 		}
+		[JsonProperty]
 		public bool? MoveFromChildren
 		{
 			get { return _MoveFromChildren; }
@@ -110,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MoveFromChildren");
 			}
 		}
+		[JsonProperty]
 		public string DestCategoryFullIds
 		{
 			get { return _DestCategoryFullIds; }
@@ -126,46 +135,36 @@ namespace Kaltura.Types
 		{
 		}
 
-		public MoveCategoryEntriesJobData(XmlElement node) : base(node)
+		public MoveCategoryEntriesJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["srcCategoryId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "srcCategoryId":
-						this._SrcCategoryId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "destCategoryId":
-						this._DestCategoryId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "lastMovedCategoryId":
-						this._LastMovedCategoryId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "lastMovedCategoryPageIndex":
-						this._LastMovedCategoryPageIndex = ParseInt(propertyNode.InnerText);
-						continue;
-					case "lastMovedCategoryEntryPageIndex":
-						this._LastMovedCategoryEntryPageIndex = ParseInt(propertyNode.InnerText);
-						continue;
-					case "moveFromChildren":
-						this._MoveFromChildren = ParseBool(propertyNode.InnerText);
-						continue;
-					case "destCategoryFullIds":
-						this._DestCategoryFullIds = propertyNode.InnerText;
-						continue;
-				}
+				this._SrcCategoryId = ParseInt(node["srcCategoryId"].Value<string>());
 			}
-		}
-
-		public MoveCategoryEntriesJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._SrcCategoryId = data.TryGetValueSafe<int>("srcCategoryId");
-			    this._DestCategoryId = data.TryGetValueSafe<int>("destCategoryId");
-			    this._LastMovedCategoryId = data.TryGetValueSafe<int>("lastMovedCategoryId");
-			    this._LastMovedCategoryPageIndex = data.TryGetValueSafe<int>("lastMovedCategoryPageIndex");
-			    this._LastMovedCategoryEntryPageIndex = data.TryGetValueSafe<int>("lastMovedCategoryEntryPageIndex");
-			    this._MoveFromChildren = data.TryGetValueSafe<bool>("moveFromChildren");
-			    this._DestCategoryFullIds = data.TryGetValueSafe<string>("destCategoryFullIds");
+			if(node["destCategoryId"] != null)
+			{
+				this._DestCategoryId = ParseInt(node["destCategoryId"].Value<string>());
+			}
+			if(node["lastMovedCategoryId"] != null)
+			{
+				this._LastMovedCategoryId = ParseInt(node["lastMovedCategoryId"].Value<string>());
+			}
+			if(node["lastMovedCategoryPageIndex"] != null)
+			{
+				this._LastMovedCategoryPageIndex = ParseInt(node["lastMovedCategoryPageIndex"].Value<string>());
+			}
+			if(node["lastMovedCategoryEntryPageIndex"] != null)
+			{
+				this._LastMovedCategoryEntryPageIndex = ParseInt(node["lastMovedCategoryEntryPageIndex"].Value<string>());
+			}
+			if(node["moveFromChildren"] != null)
+			{
+				this._MoveFromChildren = ParseBool(node["moveFromChildren"].Value<string>());
+			}
+			if(node["destCategoryFullIds"] != null)
+			{
+				this._DestCategoryFullIds = node["destCategoryFullIds"].Value<string>();
+			}
 		}
 		#endregion
 

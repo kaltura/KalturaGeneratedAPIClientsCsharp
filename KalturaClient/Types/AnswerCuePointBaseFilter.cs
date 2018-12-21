@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ParentIdEqual
 		{
 			get { return _ParentIdEqual; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string ParentIdIn
 		{
 			get { return _ParentIdIn; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentIdIn");
 			}
 		}
+		[JsonProperty]
 		public string QuizUserEntryIdEqual
 		{
 			get { return _QuizUserEntryIdEqual; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("QuizUserEntryIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string QuizUserEntryIdIn
 		{
 			get { return _QuizUserEntryIdIn; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AnswerCuePointBaseFilter(XmlElement node) : base(node)
+		public AnswerCuePointBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["parentIdEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "parentIdEqual":
-						this._ParentIdEqual = propertyNode.InnerText;
-						continue;
-					case "parentIdIn":
-						this._ParentIdIn = propertyNode.InnerText;
-						continue;
-					case "quizUserEntryIdEqual":
-						this._QuizUserEntryIdEqual = propertyNode.InnerText;
-						continue;
-					case "quizUserEntryIdIn":
-						this._QuizUserEntryIdIn = propertyNode.InnerText;
-						continue;
-				}
+				this._ParentIdEqual = node["parentIdEqual"].Value<string>();
 			}
-		}
-
-		public AnswerCuePointBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._ParentIdEqual = data.TryGetValueSafe<string>("parentIdEqual");
-			    this._ParentIdIn = data.TryGetValueSafe<string>("parentIdIn");
-			    this._QuizUserEntryIdEqual = data.TryGetValueSafe<string>("quizUserEntryIdEqual");
-			    this._QuizUserEntryIdIn = data.TryGetValueSafe<string>("quizUserEntryIdIn");
+			if(node["parentIdIn"] != null)
+			{
+				this._ParentIdIn = node["parentIdIn"].Value<string>();
+			}
+			if(node["quizUserEntryIdEqual"] != null)
+			{
+				this._QuizUserEntryIdEqual = node["quizUserEntryIdEqual"].Value<string>();
+			}
+			if(node["quizUserEntryIdIn"] != null)
+			{
+				this._QuizUserEntryIdIn = node["quizUserEntryIdIn"].Value<string>();
+			}
 		}
 		#endregion
 

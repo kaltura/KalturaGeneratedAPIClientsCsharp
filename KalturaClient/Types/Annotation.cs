@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -60,6 +62,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ParentId
 		{
 			get { return _ParentId; }
@@ -69,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentId");
 			}
 		}
+		[JsonProperty]
 		public string Text
 		{
 			get { return _Text; }
@@ -78,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Text");
 			}
 		}
+		[JsonProperty]
 		public int EndTime
 		{
 			get { return _EndTime; }
@@ -87,22 +92,47 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndTime");
 			}
 		}
+		[JsonProperty]
 		public int Duration
 		{
 			get { return _Duration; }
+			private set 
+			{ 
+				_Duration = value;
+				OnPropertyChanged("Duration");
+			}
 		}
+		[JsonProperty]
 		public int Depth
 		{
 			get { return _Depth; }
+			private set 
+			{ 
+				_Depth = value;
+				OnPropertyChanged("Depth");
+			}
 		}
+		[JsonProperty]
 		public int ChildrenCount
 		{
 			get { return _ChildrenCount; }
+			private set 
+			{ 
+				_ChildrenCount = value;
+				OnPropertyChanged("ChildrenCount");
+			}
 		}
+		[JsonProperty]
 		public int DirectChildrenCount
 		{
 			get { return _DirectChildrenCount; }
+			private set 
+			{ 
+				_DirectChildrenCount = value;
+				OnPropertyChanged("DirectChildrenCount");
+			}
 		}
+		[JsonProperty]
 		public NullableBoolean IsPublic
 		{
 			get { return _IsPublic; }
@@ -112,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsPublic");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean SearchableOnEntry
 		{
 			get { return _SearchableOnEntry; }
@@ -128,54 +159,44 @@ namespace Kaltura.Types
 		{
 		}
 
-		public Annotation(XmlElement node) : base(node)
+		public Annotation(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["parentId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "parentId":
-						this._ParentId = propertyNode.InnerText;
-						continue;
-					case "text":
-						this._Text = propertyNode.InnerText;
-						continue;
-					case "endTime":
-						this._EndTime = ParseInt(propertyNode.InnerText);
-						continue;
-					case "duration":
-						this._Duration = ParseInt(propertyNode.InnerText);
-						continue;
-					case "depth":
-						this._Depth = ParseInt(propertyNode.InnerText);
-						continue;
-					case "childrenCount":
-						this._ChildrenCount = ParseInt(propertyNode.InnerText);
-						continue;
-					case "directChildrenCount":
-						this._DirectChildrenCount = ParseInt(propertyNode.InnerText);
-						continue;
-					case "isPublic":
-						this._IsPublic = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "searchableOnEntry":
-						this._SearchableOnEntry = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-				}
+				this._ParentId = node["parentId"].Value<string>();
 			}
-		}
-
-		public Annotation(IDictionary<string,object> data) : base(data)
-		{
-			    this._ParentId = data.TryGetValueSafe<string>("parentId");
-			    this._Text = data.TryGetValueSafe<string>("text");
-			    this._EndTime = data.TryGetValueSafe<int>("endTime");
-			    this._Duration = data.TryGetValueSafe<int>("duration");
-			    this._Depth = data.TryGetValueSafe<int>("depth");
-			    this._ChildrenCount = data.TryGetValueSafe<int>("childrenCount");
-			    this._DirectChildrenCount = data.TryGetValueSafe<int>("directChildrenCount");
-			    this._IsPublic = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isPublic"));
-			    this._SearchableOnEntry = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("searchableOnEntry"));
+			if(node["text"] != null)
+			{
+				this._Text = node["text"].Value<string>();
+			}
+			if(node["endTime"] != null)
+			{
+				this._EndTime = ParseInt(node["endTime"].Value<string>());
+			}
+			if(node["duration"] != null)
+			{
+				this._Duration = ParseInt(node["duration"].Value<string>());
+			}
+			if(node["depth"] != null)
+			{
+				this._Depth = ParseInt(node["depth"].Value<string>());
+			}
+			if(node["childrenCount"] != null)
+			{
+				this._ChildrenCount = ParseInt(node["childrenCount"].Value<string>());
+			}
+			if(node["directChildrenCount"] != null)
+			{
+				this._DirectChildrenCount = ParseInt(node["directChildrenCount"].Value<string>());
+			}
+			if(node["isPublic"] != null)
+			{
+				this._IsPublic = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["isPublic"].Value<string>());
+			}
+			if(node["searchableOnEntry"] != null)
+			{
+				this._SearchableOnEntry = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["searchableOnEntry"].Value<string>());
+			}
 		}
 		#endregion
 

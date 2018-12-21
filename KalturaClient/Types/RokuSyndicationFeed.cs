@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -49,11 +51,7 @@ namespace Kaltura.Types
 		{
 		}
 
-		public RokuSyndicationFeed(XmlElement node) : base(node)
-		{
-		}
-
-		public RokuSyndicationFeed(IDictionary<string,object> data) : base(data)
+		public RokuSyndicationFeed(JToken node) : base(node)
 		{
 		}
 		#endregion

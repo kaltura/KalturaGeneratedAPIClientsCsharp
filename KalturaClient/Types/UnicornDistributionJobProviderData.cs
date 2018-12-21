@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,6 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string CatalogGuid
 		{
 			get { return _CatalogGuid; }
@@ -61,6 +64,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CatalogGuid");
 			}
 		}
+		[JsonProperty]
 		public string Title
 		{
 			get { return _Title; }
@@ -70,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Title");
 			}
 		}
+		[JsonProperty]
 		public bool? MediaChanged
 		{
 			get { return _MediaChanged; }
@@ -79,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaChanged");
 			}
 		}
+		[JsonProperty]
 		public string FlavorAssetVersion
 		{
 			get { return _FlavorAssetVersion; }
@@ -88,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetVersion");
 			}
 		}
+		[JsonProperty]
 		public string NotificationBaseUrl
 		{
 			get { return _NotificationBaseUrl; }
@@ -104,38 +111,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UnicornDistributionJobProviderData(XmlElement node) : base(node)
+		public UnicornDistributionJobProviderData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["catalogGuid"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "catalogGuid":
-						this._CatalogGuid = propertyNode.InnerText;
-						continue;
-					case "title":
-						this._Title = propertyNode.InnerText;
-						continue;
-					case "mediaChanged":
-						this._MediaChanged = ParseBool(propertyNode.InnerText);
-						continue;
-					case "flavorAssetVersion":
-						this._FlavorAssetVersion = propertyNode.InnerText;
-						continue;
-					case "notificationBaseUrl":
-						this._NotificationBaseUrl = propertyNode.InnerText;
-						continue;
-				}
+				this._CatalogGuid = node["catalogGuid"].Value<string>();
 			}
-		}
-
-		public UnicornDistributionJobProviderData(IDictionary<string,object> data) : base(data)
-		{
-			    this._CatalogGuid = data.TryGetValueSafe<string>("catalogGuid");
-			    this._Title = data.TryGetValueSafe<string>("title");
-			    this._MediaChanged = data.TryGetValueSafe<bool>("mediaChanged");
-			    this._FlavorAssetVersion = data.TryGetValueSafe<string>("flavorAssetVersion");
-			    this._NotificationBaseUrl = data.TryGetValueSafe<string>("notificationBaseUrl");
+			if(node["title"] != null)
+			{
+				this._Title = node["title"].Value<string>();
+			}
+			if(node["mediaChanged"] != null)
+			{
+				this._MediaChanged = ParseBool(node["mediaChanged"].Value<string>());
+			}
+			if(node["flavorAssetVersion"] != null)
+			{
+				this._FlavorAssetVersion = node["flavorAssetVersion"].Value<string>();
+			}
+			if(node["notificationBaseUrl"] != null)
+			{
+				this._NotificationBaseUrl = node["notificationBaseUrl"].Value<string>();
+			}
 		}
 		#endregion
 

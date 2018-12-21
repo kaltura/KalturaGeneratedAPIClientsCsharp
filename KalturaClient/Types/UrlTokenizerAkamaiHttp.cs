@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ParamName
 		{
 			get { return _ParamName; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParamName");
 			}
 		}
+		[JsonProperty]
 		public string RootDir
 		{
 			get { return _RootDir; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UrlTokenizerAkamaiHttp(XmlElement node) : base(node)
+		public UrlTokenizerAkamaiHttp(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["paramName"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "paramName":
-						this._ParamName = propertyNode.InnerText;
-						continue;
-					case "rootDir":
-						this._RootDir = propertyNode.InnerText;
-						continue;
-				}
+				this._ParamName = node["paramName"].Value<string>();
 			}
-		}
-
-		public UrlTokenizerAkamaiHttp(IDictionary<string,object> data) : base(data)
-		{
-			    this._ParamName = data.TryGetValueSafe<string>("paramName");
-			    this._RootDir = data.TryGetValueSafe<string>("rootDir");
+			if(node["rootDir"] != null)
+			{
+				this._RootDir = node["rootDir"].Value<string>();
+			}
 		}
 		#endregion
 

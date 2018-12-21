@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Application
 		{
 			get { return _Application; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Application");
 			}
 		}
+		[JsonProperty]
 		public string UserIds
 		{
 			get { return _UserIds; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIds");
 			}
 		}
+		[JsonProperty]
 		public string PlaybackContext
 		{
 			get { return _PlaybackContext; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PlaybackContext");
 			}
 		}
+		[JsonProperty]
 		public string AncestorPlaybackContext
 		{
 			get { return _AncestorPlaybackContext; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EndUserReportInputFilter(XmlElement node) : base(node)
+		public EndUserReportInputFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["application"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "application":
-						this._Application = propertyNode.InnerText;
-						continue;
-					case "userIds":
-						this._UserIds = propertyNode.InnerText;
-						continue;
-					case "playbackContext":
-						this._PlaybackContext = propertyNode.InnerText;
-						continue;
-					case "ancestorPlaybackContext":
-						this._AncestorPlaybackContext = propertyNode.InnerText;
-						continue;
-				}
+				this._Application = node["application"].Value<string>();
 			}
-		}
-
-		public EndUserReportInputFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._Application = data.TryGetValueSafe<string>("application");
-			    this._UserIds = data.TryGetValueSafe<string>("userIds");
-			    this._PlaybackContext = data.TryGetValueSafe<string>("playbackContext");
-			    this._AncestorPlaybackContext = data.TryGetValueSafe<string>("ancestorPlaybackContext");
+			if(node["userIds"] != null)
+			{
+				this._UserIds = node["userIds"].Value<string>();
+			}
+			if(node["playbackContext"] != null)
+			{
+				this._PlaybackContext = node["playbackContext"].Value<string>();
+			}
+			if(node["ancestorPlaybackContext"] != null)
+			{
+				this._AncestorPlaybackContext = node["ancestorPlaybackContext"].Value<string>();
+			}
 		}
 		#endregion
 

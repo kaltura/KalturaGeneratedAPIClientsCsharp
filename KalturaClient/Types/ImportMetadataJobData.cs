@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string SrcFileUrl
 		{
 			get { return _SrcFileUrl; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcFileUrl");
 			}
 		}
+		[JsonProperty]
 		public string DestFileLocalPath
 		{
 			get { return _DestFileLocalPath; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestFileLocalPath");
 			}
 		}
+		[JsonProperty]
 		public int MetadataId
 		{
 			get { return _MetadataId; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ImportMetadataJobData(XmlElement node) : base(node)
+		public ImportMetadataJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["srcFileUrl"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "srcFileUrl":
-						this._SrcFileUrl = propertyNode.InnerText;
-						continue;
-					case "destFileLocalPath":
-						this._DestFileLocalPath = propertyNode.InnerText;
-						continue;
-					case "metadataId":
-						this._MetadataId = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._SrcFileUrl = node["srcFileUrl"].Value<string>();
 			}
-		}
-
-		public ImportMetadataJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._SrcFileUrl = data.TryGetValueSafe<string>("srcFileUrl");
-			    this._DestFileLocalPath = data.TryGetValueSafe<string>("destFileLocalPath");
-			    this._MetadataId = data.TryGetValueSafe<int>("metadataId");
+			if(node["destFileLocalPath"] != null)
+			{
+				this._DestFileLocalPath = node["destFileLocalPath"].Value<string>();
+			}
+			if(node["metadataId"] != null)
+			{
+				this._MetadataId = ParseInt(node["metadataId"].Value<string>());
+			}
 		}
 		#endregion
 

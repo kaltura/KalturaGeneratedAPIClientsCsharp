@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Filename
 		{
 			get { return _Filename; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Filename");
 			}
 		}
+		[JsonProperty]
 		public string Title
 		{
 			get { return _Title; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Title");
 			}
 		}
+		[JsonProperty]
 		public AttachmentType Format
 		{
 			get { return _Format; }
@@ -77,9 +82,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("Format");
 			}
 		}
+		[JsonProperty]
 		public AttachmentAssetStatus Status
 		{
 			get { return _Status; }
+			private set 
+			{ 
+				_Status = value;
+				OnPropertyChanged("Status");
+			}
 		}
 		#endregion
 
@@ -88,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AttachmentAsset(XmlElement node) : base(node)
+		public AttachmentAsset(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["filename"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "filename":
-						this._Filename = propertyNode.InnerText;
-						continue;
-					case "title":
-						this._Title = propertyNode.InnerText;
-						continue;
-					case "format":
-						this._Format = (AttachmentType)StringEnum.Parse(typeof(AttachmentType), propertyNode.InnerText);
-						continue;
-					case "status":
-						this._Status = (AttachmentAssetStatus)ParseEnum(typeof(AttachmentAssetStatus), propertyNode.InnerText);
-						continue;
-				}
+				this._Filename = node["filename"].Value<string>();
 			}
-		}
-
-		public AttachmentAsset(IDictionary<string,object> data) : base(data)
-		{
-			    this._Filename = data.TryGetValueSafe<string>("filename");
-			    this._Title = data.TryGetValueSafe<string>("title");
-			    this._Format = (AttachmentType)StringEnum.Parse(typeof(AttachmentType), data.TryGetValueSafe<string>("format"));
-			    this._Status = (AttachmentAssetStatus)ParseEnum(typeof(AttachmentAssetStatus), data.TryGetValueSafe<int>("status"));
+			if(node["title"] != null)
+			{
+				this._Title = node["title"].Value<string>();
+			}
+			if(node["format"] != null)
+			{
+				this._Format = (AttachmentType)StringEnum.Parse(typeof(AttachmentType), node["format"].Value<string>());
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (AttachmentAssetStatus)ParseEnum(typeof(AttachmentAssetStatus), node["status"].Value<string>());
+			}
 		}
 		#endregion
 

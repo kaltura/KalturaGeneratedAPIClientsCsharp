@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public IList<String> Messages
 		{
 			get { return _Messages; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Messages");
 			}
 		}
+		[JsonProperty]
 		public IList<RuleAction> Actions
 		{
 			get { return _Actions; }
@@ -71,44 +75,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ContextDataResult(XmlElement node) : base(node)
+		public ContextDataResult(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["messages"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Messages = new List<String>();
+				foreach(var arrayNode in node["messages"].Children())
 				{
-					case "messages":
-						this._Messages = new List<String>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Messages.Add(ObjectFactory.Create<String>(arrayNode));
-						}
-						continue;
-					case "actions":
-						this._Actions = new List<RuleAction>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Actions.Add(ObjectFactory.Create<RuleAction>(arrayNode));
-						}
-						continue;
+					this._Messages.Add(ObjectFactory.Create<String>(arrayNode));
 				}
 			}
-		}
-
-		public ContextDataResult(IDictionary<string,object> data) : base(data)
-		{
-			    this._Messages = new List<String>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("messages", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Messages.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._Actions = new List<RuleAction>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("actions", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Actions.Add(ObjectFactory.Create<RuleAction>((IDictionary<string,object>)dataDictionary));
-			    }
+			if(node["actions"] != null)
+			{
+				this._Actions = new List<RuleAction>();
+				foreach(var arrayNode in node["actions"].Children())
+				{
+					this._Actions.Add(ObjectFactory.Create<RuleAction>(arrayNode));
+				}
+			}
 		}
 		#endregion
 

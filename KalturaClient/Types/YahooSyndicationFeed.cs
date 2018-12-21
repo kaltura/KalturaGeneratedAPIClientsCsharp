@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,10 +52,17 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public YahooSyndicationFeedCategories Category
 		{
 			get { return _Category; }
+			private set 
+			{ 
+				_Category = value;
+				OnPropertyChanged("Category");
+			}
 		}
+		[JsonProperty]
 		public YahooSyndicationFeedAdultValues AdultContent
 		{
 			get { return _AdultContent; }
@@ -63,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdultContent");
 			}
 		}
+		[JsonProperty]
 		public string FeedDescription
 		{
 			get { return _FeedDescription; }
@@ -72,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedDescription");
 			}
 		}
+		[JsonProperty]
 		public string FeedLandingPage
 		{
 			get { return _FeedLandingPage; }
@@ -88,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public YahooSyndicationFeed(XmlElement node) : base(node)
+		public YahooSyndicationFeed(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["category"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "category":
-						this._Category = (YahooSyndicationFeedCategories)StringEnum.Parse(typeof(YahooSyndicationFeedCategories), propertyNode.InnerText);
-						continue;
-					case "adultContent":
-						this._AdultContent = (YahooSyndicationFeedAdultValues)StringEnum.Parse(typeof(YahooSyndicationFeedAdultValues), propertyNode.InnerText);
-						continue;
-					case "feedDescription":
-						this._FeedDescription = propertyNode.InnerText;
-						continue;
-					case "feedLandingPage":
-						this._FeedLandingPage = propertyNode.InnerText;
-						continue;
-				}
+				this._Category = (YahooSyndicationFeedCategories)StringEnum.Parse(typeof(YahooSyndicationFeedCategories), node["category"].Value<string>());
 			}
-		}
-
-		public YahooSyndicationFeed(IDictionary<string,object> data) : base(data)
-		{
-			    this._Category = (YahooSyndicationFeedCategories)StringEnum.Parse(typeof(YahooSyndicationFeedCategories), data.TryGetValueSafe<string>("category"));
-			    this._AdultContent = (YahooSyndicationFeedAdultValues)StringEnum.Parse(typeof(YahooSyndicationFeedAdultValues), data.TryGetValueSafe<string>("adultContent"));
-			    this._FeedDescription = data.TryGetValueSafe<string>("feedDescription");
-			    this._FeedLandingPage = data.TryGetValueSafe<string>("feedLandingPage");
+			if(node["adultContent"] != null)
+			{
+				this._AdultContent = (YahooSyndicationFeedAdultValues)StringEnum.Parse(typeof(YahooSyndicationFeedAdultValues), node["adultContent"].Value<string>());
+			}
+			if(node["feedDescription"] != null)
+			{
+				this._FeedDescription = node["feedDescription"].Value<string>();
+			}
+			if(node["feedLandingPage"] != null)
+			{
+				this._FeedLandingPage = node["feedLandingPage"].Value<string>();
+			}
 		}
 		#endregion
 

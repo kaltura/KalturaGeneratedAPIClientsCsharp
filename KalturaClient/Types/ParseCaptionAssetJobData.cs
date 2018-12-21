@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string CaptionAssetId
 		{
 			get { return _CaptionAssetId; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ParseCaptionAssetJobData(XmlElement node) : base(node)
+		public ParseCaptionAssetJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["captionAssetId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "captionAssetId":
-						this._CaptionAssetId = propertyNode.InnerText;
-						continue;
-				}
+				this._CaptionAssetId = node["captionAssetId"].Value<string>();
 			}
-		}
-
-		public ParseCaptionAssetJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._CaptionAssetId = data.TryGetValueSafe<string>("captionAssetId");
 		}
 		#endregion
 

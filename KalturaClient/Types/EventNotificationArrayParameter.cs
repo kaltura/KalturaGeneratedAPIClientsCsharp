@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public IList<String> Values
 		{
 			get { return _Values; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Values");
 			}
 		}
+		[JsonProperty]
 		public IList<StringValue> AllowedValues
 		{
 			get { return _AllowedValues; }
@@ -71,44 +75,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EventNotificationArrayParameter(XmlElement node) : base(node)
+		public EventNotificationArrayParameter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["values"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Values = new List<String>();
+				foreach(var arrayNode in node["values"].Children())
 				{
-					case "values":
-						this._Values = new List<String>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Values.Add(ObjectFactory.Create<String>(arrayNode));
-						}
-						continue;
-					case "allowedValues":
-						this._AllowedValues = new List<StringValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._AllowedValues.Add(ObjectFactory.Create<StringValue>(arrayNode));
-						}
-						continue;
+					this._Values.Add(ObjectFactory.Create<String>(arrayNode));
 				}
 			}
-		}
-
-		public EventNotificationArrayParameter(IDictionary<string,object> data) : base(data)
-		{
-			    this._Values = new List<String>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("values", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Values.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._AllowedValues = new List<StringValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("allowedValues", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._AllowedValues.Add(ObjectFactory.Create<StringValue>((IDictionary<string,object>)dataDictionary));
-			    }
+			if(node["allowedValues"] != null)
+			{
+				this._AllowedValues = new List<StringValue>();
+				foreach(var arrayNode in node["allowedValues"].Children())
+				{
+					this._AllowedValues.Add(ObjectFactory.Create<StringValue>(arrayNode));
+				}
+			}
 		}
 		#endregion
 

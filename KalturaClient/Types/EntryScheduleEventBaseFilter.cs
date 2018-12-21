@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,6 +58,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string TemplateEntryIdEqual
 		{
 			get { return _TemplateEntryIdEqual; }
@@ -65,6 +68,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplateEntryIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string EntryIdsLike
 		{
 			get { return _EntryIdsLike; }
@@ -74,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdsLike");
 			}
 		}
+		[JsonProperty]
 		public string EntryIdsMultiLikeOr
 		{
 			get { return _EntryIdsMultiLikeOr; }
@@ -83,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdsMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string EntryIdsMultiLikeAnd
 		{
 			get { return _EntryIdsMultiLikeAnd; }
@@ -92,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdsMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public string CategoryIdsLike
 		{
 			get { return _CategoryIdsLike; }
@@ -101,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryIdsLike");
 			}
 		}
+		[JsonProperty]
 		public string CategoryIdsMultiLikeOr
 		{
 			get { return _CategoryIdsMultiLikeOr; }
@@ -110,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryIdsMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string CategoryIdsMultiLikeAnd
 		{
 			get { return _CategoryIdsMultiLikeAnd; }
@@ -126,46 +135,36 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EntryScheduleEventBaseFilter(XmlElement node) : base(node)
+		public EntryScheduleEventBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["templateEntryIdEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "templateEntryIdEqual":
-						this._TemplateEntryIdEqual = propertyNode.InnerText;
-						continue;
-					case "entryIdsLike":
-						this._EntryIdsLike = propertyNode.InnerText;
-						continue;
-					case "entryIdsMultiLikeOr":
-						this._EntryIdsMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "entryIdsMultiLikeAnd":
-						this._EntryIdsMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "categoryIdsLike":
-						this._CategoryIdsLike = propertyNode.InnerText;
-						continue;
-					case "categoryIdsMultiLikeOr":
-						this._CategoryIdsMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "categoryIdsMultiLikeAnd":
-						this._CategoryIdsMultiLikeAnd = propertyNode.InnerText;
-						continue;
-				}
+				this._TemplateEntryIdEqual = node["templateEntryIdEqual"].Value<string>();
 			}
-		}
-
-		public EntryScheduleEventBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._TemplateEntryIdEqual = data.TryGetValueSafe<string>("templateEntryIdEqual");
-			    this._EntryIdsLike = data.TryGetValueSafe<string>("entryIdsLike");
-			    this._EntryIdsMultiLikeOr = data.TryGetValueSafe<string>("entryIdsMultiLikeOr");
-			    this._EntryIdsMultiLikeAnd = data.TryGetValueSafe<string>("entryIdsMultiLikeAnd");
-			    this._CategoryIdsLike = data.TryGetValueSafe<string>("categoryIdsLike");
-			    this._CategoryIdsMultiLikeOr = data.TryGetValueSafe<string>("categoryIdsMultiLikeOr");
-			    this._CategoryIdsMultiLikeAnd = data.TryGetValueSafe<string>("categoryIdsMultiLikeAnd");
+			if(node["entryIdsLike"] != null)
+			{
+				this._EntryIdsLike = node["entryIdsLike"].Value<string>();
+			}
+			if(node["entryIdsMultiLikeOr"] != null)
+			{
+				this._EntryIdsMultiLikeOr = node["entryIdsMultiLikeOr"].Value<string>();
+			}
+			if(node["entryIdsMultiLikeAnd"] != null)
+			{
+				this._EntryIdsMultiLikeAnd = node["entryIdsMultiLikeAnd"].Value<string>();
+			}
+			if(node["categoryIdsLike"] != null)
+			{
+				this._CategoryIdsLike = node["categoryIdsLike"].Value<string>();
+			}
+			if(node["categoryIdsMultiLikeOr"] != null)
+			{
+				this._CategoryIdsMultiLikeOr = node["categoryIdsMultiLikeOr"].Value<string>();
+			}
+			if(node["categoryIdsMultiLikeAnd"] != null)
+			{
+				this._CategoryIdsMultiLikeAnd = node["categoryIdsMultiLikeAnd"].Value<string>();
+			}
 		}
 		#endregion
 

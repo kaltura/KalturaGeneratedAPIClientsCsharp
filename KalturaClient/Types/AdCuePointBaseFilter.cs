@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -60,6 +62,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public AdProtocolType ProtocolTypeEqual
 		{
 			get { return _ProtocolTypeEqual; }
@@ -69,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProtocolTypeEqual");
 			}
 		}
+		[JsonProperty]
 		public string ProtocolTypeIn
 		{
 			get { return _ProtocolTypeIn; }
@@ -78,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProtocolTypeIn");
 			}
 		}
+		[JsonProperty]
 		public string TitleLike
 		{
 			get { return _TitleLike; }
@@ -87,6 +92,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TitleLike");
 			}
 		}
+		[JsonProperty]
 		public string TitleMultiLikeOr
 		{
 			get { return _TitleMultiLikeOr; }
@@ -96,6 +102,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TitleMultiLikeOr");
 			}
 		}
+		[JsonProperty]
 		public string TitleMultiLikeAnd
 		{
 			get { return _TitleMultiLikeAnd; }
@@ -105,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TitleMultiLikeAnd");
 			}
 		}
+		[JsonProperty]
 		public int EndTimeGreaterThanOrEqual
 		{
 			get { return _EndTimeGreaterThanOrEqual; }
@@ -114,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndTimeGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int EndTimeLessThanOrEqual
 		{
 			get { return _EndTimeLessThanOrEqual; }
@@ -123,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndTimeLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int DurationGreaterThanOrEqual
 		{
 			get { return _DurationGreaterThanOrEqual; }
@@ -132,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DurationGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int DurationLessThanOrEqual
 		{
 			get { return _DurationLessThanOrEqual; }
@@ -148,54 +159,44 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AdCuePointBaseFilter(XmlElement node) : base(node)
+		public AdCuePointBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["protocolTypeEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "protocolTypeEqual":
-						this._ProtocolTypeEqual = (AdProtocolType)StringEnum.Parse(typeof(AdProtocolType), propertyNode.InnerText);
-						continue;
-					case "protocolTypeIn":
-						this._ProtocolTypeIn = propertyNode.InnerText;
-						continue;
-					case "titleLike":
-						this._TitleLike = propertyNode.InnerText;
-						continue;
-					case "titleMultiLikeOr":
-						this._TitleMultiLikeOr = propertyNode.InnerText;
-						continue;
-					case "titleMultiLikeAnd":
-						this._TitleMultiLikeAnd = propertyNode.InnerText;
-						continue;
-					case "endTimeGreaterThanOrEqual":
-						this._EndTimeGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "endTimeLessThanOrEqual":
-						this._EndTimeLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "durationGreaterThanOrEqual":
-						this._DurationGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "durationLessThanOrEqual":
-						this._DurationLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._ProtocolTypeEqual = (AdProtocolType)StringEnum.Parse(typeof(AdProtocolType), node["protocolTypeEqual"].Value<string>());
 			}
-		}
-
-		public AdCuePointBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._ProtocolTypeEqual = (AdProtocolType)StringEnum.Parse(typeof(AdProtocolType), data.TryGetValueSafe<string>("protocolTypeEqual"));
-			    this._ProtocolTypeIn = data.TryGetValueSafe<string>("protocolTypeIn");
-			    this._TitleLike = data.TryGetValueSafe<string>("titleLike");
-			    this._TitleMultiLikeOr = data.TryGetValueSafe<string>("titleMultiLikeOr");
-			    this._TitleMultiLikeAnd = data.TryGetValueSafe<string>("titleMultiLikeAnd");
-			    this._EndTimeGreaterThanOrEqual = data.TryGetValueSafe<int>("endTimeGreaterThanOrEqual");
-			    this._EndTimeLessThanOrEqual = data.TryGetValueSafe<int>("endTimeLessThanOrEqual");
-			    this._DurationGreaterThanOrEqual = data.TryGetValueSafe<int>("durationGreaterThanOrEqual");
-			    this._DurationLessThanOrEqual = data.TryGetValueSafe<int>("durationLessThanOrEqual");
+			if(node["protocolTypeIn"] != null)
+			{
+				this._ProtocolTypeIn = node["protocolTypeIn"].Value<string>();
+			}
+			if(node["titleLike"] != null)
+			{
+				this._TitleLike = node["titleLike"].Value<string>();
+			}
+			if(node["titleMultiLikeOr"] != null)
+			{
+				this._TitleMultiLikeOr = node["titleMultiLikeOr"].Value<string>();
+			}
+			if(node["titleMultiLikeAnd"] != null)
+			{
+				this._TitleMultiLikeAnd = node["titleMultiLikeAnd"].Value<string>();
+			}
+			if(node["endTimeGreaterThanOrEqual"] != null)
+			{
+				this._EndTimeGreaterThanOrEqual = ParseInt(node["endTimeGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["endTimeLessThanOrEqual"] != null)
+			{
+				this._EndTimeLessThanOrEqual = ParseInt(node["endTimeLessThanOrEqual"].Value<string>());
+			}
+			if(node["durationGreaterThanOrEqual"] != null)
+			{
+				this._DurationGreaterThanOrEqual = ParseInt(node["durationGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["durationLessThanOrEqual"] != null)
+			{
+				this._DurationLessThanOrEqual = ParseInt(node["durationLessThanOrEqual"].Value<string>());
+			}
 		}
 		#endregion
 

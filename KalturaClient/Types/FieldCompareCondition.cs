@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public IntegerField Field
 		{
 			get { return _Field; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FieldCompareCondition(XmlElement node) : base(node)
+		public FieldCompareCondition(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["field"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "field":
-						this._Field = ObjectFactory.Create<IntegerField>(propertyNode);
-						continue;
-				}
+				this._Field = ObjectFactory.Create<IntegerField>(node["field"]);
 			}
-		}
-
-		public FieldCompareCondition(IDictionary<string,object> data) : base(data)
-		{
-			    this._Field = ObjectFactory.Create<IntegerField>(data.TryGetValueSafe<IDictionary<string,object>>("field"));
 		}
 		#endregion
 

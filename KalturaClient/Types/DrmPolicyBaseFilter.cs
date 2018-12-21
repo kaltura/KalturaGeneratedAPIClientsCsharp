@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -62,6 +64,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int PartnerIdEqual
 		{
 			get { return _PartnerIdEqual; }
@@ -71,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string PartnerIdIn
 		{
 			get { return _PartnerIdIn; }
@@ -80,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdIn");
 			}
 		}
+		[JsonProperty]
 		public string NameLike
 		{
 			get { return _NameLike; }
@@ -89,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("NameLike");
 			}
 		}
+		[JsonProperty]
 		public string SystemNameLike
 		{
 			get { return _SystemNameLike; }
@@ -98,6 +104,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemNameLike");
 			}
 		}
+		[JsonProperty]
 		public DrmProviderType ProviderEqual
 		{
 			get { return _ProviderEqual; }
@@ -107,6 +114,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProviderEqual");
 			}
 		}
+		[JsonProperty]
 		public string ProviderIn
 		{
 			get { return _ProviderIn; }
@@ -116,6 +124,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProviderIn");
 			}
 		}
+		[JsonProperty]
 		public DrmPolicyStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -125,6 +134,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -134,6 +144,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		[JsonProperty]
 		public DrmLicenseScenario ScenarioEqual
 		{
 			get { return _ScenarioEqual; }
@@ -143,6 +154,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ScenarioEqual");
 			}
 		}
+		[JsonProperty]
 		public string ScenarioIn
 		{
 			get { return _ScenarioIn; }
@@ -159,58 +171,48 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DrmPolicyBaseFilter(XmlElement node) : base(node)
+		public DrmPolicyBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["partnerIdEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "partnerIdEqual":
-						this._PartnerIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerIdIn":
-						this._PartnerIdIn = propertyNode.InnerText;
-						continue;
-					case "nameLike":
-						this._NameLike = propertyNode.InnerText;
-						continue;
-					case "systemNameLike":
-						this._SystemNameLike = propertyNode.InnerText;
-						continue;
-					case "providerEqual":
-						this._ProviderEqual = (DrmProviderType)StringEnum.Parse(typeof(DrmProviderType), propertyNode.InnerText);
-						continue;
-					case "providerIn":
-						this._ProviderIn = propertyNode.InnerText;
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (DrmPolicyStatus)ParseEnum(typeof(DrmPolicyStatus), propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-					case "scenarioEqual":
-						this._ScenarioEqual = (DrmLicenseScenario)StringEnum.Parse(typeof(DrmLicenseScenario), propertyNode.InnerText);
-						continue;
-					case "scenarioIn":
-						this._ScenarioIn = propertyNode.InnerText;
-						continue;
-				}
+				this._PartnerIdEqual = ParseInt(node["partnerIdEqual"].Value<string>());
 			}
-		}
-
-		public DrmPolicyBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._PartnerIdEqual = data.TryGetValueSafe<int>("partnerIdEqual");
-			    this._PartnerIdIn = data.TryGetValueSafe<string>("partnerIdIn");
-			    this._NameLike = data.TryGetValueSafe<string>("nameLike");
-			    this._SystemNameLike = data.TryGetValueSafe<string>("systemNameLike");
-			    this._ProviderEqual = (DrmProviderType)StringEnum.Parse(typeof(DrmProviderType), data.TryGetValueSafe<string>("providerEqual"));
-			    this._ProviderIn = data.TryGetValueSafe<string>("providerIn");
-			    this._StatusEqual = (DrmPolicyStatus)ParseEnum(typeof(DrmPolicyStatus), data.TryGetValueSafe<int>("statusEqual"));
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
-			    this._ScenarioEqual = (DrmLicenseScenario)StringEnum.Parse(typeof(DrmLicenseScenario), data.TryGetValueSafe<string>("scenarioEqual"));
-			    this._ScenarioIn = data.TryGetValueSafe<string>("scenarioIn");
+			if(node["partnerIdIn"] != null)
+			{
+				this._PartnerIdIn = node["partnerIdIn"].Value<string>();
+			}
+			if(node["nameLike"] != null)
+			{
+				this._NameLike = node["nameLike"].Value<string>();
+			}
+			if(node["systemNameLike"] != null)
+			{
+				this._SystemNameLike = node["systemNameLike"].Value<string>();
+			}
+			if(node["providerEqual"] != null)
+			{
+				this._ProviderEqual = (DrmProviderType)StringEnum.Parse(typeof(DrmProviderType), node["providerEqual"].Value<string>());
+			}
+			if(node["providerIn"] != null)
+			{
+				this._ProviderIn = node["providerIn"].Value<string>();
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (DrmPolicyStatus)ParseEnum(typeof(DrmPolicyStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
+			if(node["scenarioEqual"] != null)
+			{
+				this._ScenarioEqual = (DrmLicenseScenario)StringEnum.Parse(typeof(DrmLicenseScenario), node["scenarioEqual"].Value<string>());
+			}
+			if(node["scenarioIn"] != null)
+			{
+				this._ScenarioIn = node["scenarioIn"].Value<string>();
+			}
 		}
 		#endregion
 

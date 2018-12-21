@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string PrivateKey
 		{
 			get { return _PrivateKey; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrivateKey");
 			}
 		}
+		[JsonProperty]
 		public string PublicKey
 		{
 			get { return _PublicKey; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PublicKey");
 			}
 		}
+		[JsonProperty]
 		public string KeyPassphrase
 		{
 			get { return _KeyPassphrase; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public SshUrlResource(XmlElement node) : base(node)
+		public SshUrlResource(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["privateKey"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "privateKey":
-						this._PrivateKey = propertyNode.InnerText;
-						continue;
-					case "publicKey":
-						this._PublicKey = propertyNode.InnerText;
-						continue;
-					case "keyPassphrase":
-						this._KeyPassphrase = propertyNode.InnerText;
-						continue;
-				}
+				this._PrivateKey = node["privateKey"].Value<string>();
 			}
-		}
-
-		public SshUrlResource(IDictionary<string,object> data) : base(data)
-		{
-			    this._PrivateKey = data.TryGetValueSafe<string>("privateKey");
-			    this._PublicKey = data.TryGetValueSafe<string>("publicKey");
-			    this._KeyPassphrase = data.TryGetValueSafe<string>("keyPassphrase");
+			if(node["publicKey"] != null)
+			{
+				this._PublicKey = node["publicKey"].Value<string>();
+			}
+			if(node["keyPassphrase"] != null)
+			{
+				this._KeyPassphrase = node["keyPassphrase"].Value<string>();
+			}
 		}
 		#endregion
 

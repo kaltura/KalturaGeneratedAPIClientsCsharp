@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,6 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int DensityWidth
 		{
 			get { return _DensityWidth; }
@@ -61,6 +64,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DensityWidth");
 			}
 		}
+		[JsonProperty]
 		public int DensityHeight
 		{
 			get { return _DensityHeight; }
@@ -70,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DensityHeight");
 			}
 		}
+		[JsonProperty]
 		public int SizeWidth
 		{
 			get { return _SizeWidth; }
@@ -79,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SizeWidth");
 			}
 		}
+		[JsonProperty]
 		public int SizeHeight
 		{
 			get { return _SizeHeight; }
@@ -88,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SizeHeight");
 			}
 		}
+		[JsonProperty]
 		public int Depth
 		{
 			get { return _Depth; }
@@ -104,38 +111,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ImageFlavorParamsOutput(XmlElement node) : base(node)
+		public ImageFlavorParamsOutput(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["densityWidth"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "densityWidth":
-						this._DensityWidth = ParseInt(propertyNode.InnerText);
-						continue;
-					case "densityHeight":
-						this._DensityHeight = ParseInt(propertyNode.InnerText);
-						continue;
-					case "sizeWidth":
-						this._SizeWidth = ParseInt(propertyNode.InnerText);
-						continue;
-					case "sizeHeight":
-						this._SizeHeight = ParseInt(propertyNode.InnerText);
-						continue;
-					case "depth":
-						this._Depth = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._DensityWidth = ParseInt(node["densityWidth"].Value<string>());
 			}
-		}
-
-		public ImageFlavorParamsOutput(IDictionary<string,object> data) : base(data)
-		{
-			    this._DensityWidth = data.TryGetValueSafe<int>("densityWidth");
-			    this._DensityHeight = data.TryGetValueSafe<int>("densityHeight");
-			    this._SizeWidth = data.TryGetValueSafe<int>("sizeWidth");
-			    this._SizeHeight = data.TryGetValueSafe<int>("sizeHeight");
-			    this._Depth = data.TryGetValueSafe<int>("depth");
+			if(node["densityHeight"] != null)
+			{
+				this._DensityHeight = ParseInt(node["densityHeight"].Value<string>());
+			}
+			if(node["sizeWidth"] != null)
+			{
+				this._SizeWidth = ParseInt(node["sizeWidth"].Value<string>());
+			}
+			if(node["sizeHeight"] != null)
+			{
+				this._SizeHeight = ParseInt(node["sizeHeight"].Value<string>());
+			}
+			if(node["depth"] != null)
+			{
+				this._Depth = ParseInt(node["depth"].Value<string>());
+			}
 		}
 		#endregion
 

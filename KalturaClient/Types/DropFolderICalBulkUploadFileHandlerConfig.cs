@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public ScheduleEventType EventsType
 		{
 			get { return _EventsType; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DropFolderICalBulkUploadFileHandlerConfig(XmlElement node) : base(node)
+		public DropFolderICalBulkUploadFileHandlerConfig(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["eventsType"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "eventsType":
-						this._EventsType = (ScheduleEventType)ParseEnum(typeof(ScheduleEventType), propertyNode.InnerText);
-						continue;
-				}
+				this._EventsType = (ScheduleEventType)ParseEnum(typeof(ScheduleEventType), node["eventsType"].Value<string>());
 			}
-		}
-
-		public DropFolderICalBulkUploadFileHandlerConfig(IDictionary<string,object> data) : base(data)
-		{
-			    this._EventsType = (ScheduleEventType)ParseEnum(typeof(ScheduleEventType), data.TryGetValueSafe<int>("eventsType"));
 		}
 		#endregion
 

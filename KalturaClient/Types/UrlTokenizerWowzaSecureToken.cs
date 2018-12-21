@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ParamPrefix
 		{
 			get { return _ParamPrefix; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParamPrefix");
 			}
 		}
+		[JsonProperty]
 		public string HashAlgorithm
 		{
 			get { return _HashAlgorithm; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UrlTokenizerWowzaSecureToken(XmlElement node) : base(node)
+		public UrlTokenizerWowzaSecureToken(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["paramPrefix"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "paramPrefix":
-						this._ParamPrefix = propertyNode.InnerText;
-						continue;
-					case "hashAlgorithm":
-						this._HashAlgorithm = propertyNode.InnerText;
-						continue;
-				}
+				this._ParamPrefix = node["paramPrefix"].Value<string>();
 			}
-		}
-
-		public UrlTokenizerWowzaSecureToken(IDictionary<string,object> data) : base(data)
-		{
-			    this._ParamPrefix = data.TryGetValueSafe<string>("paramPrefix");
-			    this._HashAlgorithm = data.TryGetValueSafe<string>("hashAlgorithm");
+			if(node["hashAlgorithm"] != null)
+			{
+				this._HashAlgorithm = node["hashAlgorithm"].Value<string>();
+			}
 		}
 		#endregion
 

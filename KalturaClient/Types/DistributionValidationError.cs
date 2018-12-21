@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public DistributionAction Action
 		{
 			get { return _Action; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Action");
 			}
 		}
+		[JsonProperty]
 		public DistributionErrorType ErrorType
 		{
 			get { return _ErrorType; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrorType");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DistributionValidationError(XmlElement node) : base(node)
+		public DistributionValidationError(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["action"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "action":
-						this._Action = (DistributionAction)ParseEnum(typeof(DistributionAction), propertyNode.InnerText);
-						continue;
-					case "errorType":
-						this._ErrorType = (DistributionErrorType)ParseEnum(typeof(DistributionErrorType), propertyNode.InnerText);
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-				}
+				this._Action = (DistributionAction)ParseEnum(typeof(DistributionAction), node["action"].Value<string>());
 			}
-		}
-
-		public DistributionValidationError(IDictionary<string,object> data) : base(data)
-		{
-			    this._Action = (DistributionAction)ParseEnum(typeof(DistributionAction), data.TryGetValueSafe<int>("action"));
-			    this._ErrorType = (DistributionErrorType)ParseEnum(typeof(DistributionErrorType), data.TryGetValueSafe<int>("errorType"));
-			    this._Description = data.TryGetValueSafe<string>("description");
+			if(node["errorType"] != null)
+			{
+				this._ErrorType = (DistributionErrorType)ParseEnum(typeof(DistributionErrorType), node["errorType"].Value<string>());
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
 		}
 		#endregion
 

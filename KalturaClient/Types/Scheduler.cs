@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -62,10 +64,17 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int ConfiguredId
 		{
 			get { return _ConfiguredId; }
@@ -75,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConfiguredId");
 			}
 		}
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -84,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		[JsonProperty]
 		public string Host
 		{
 			get { return _Host; }
@@ -93,29 +104,65 @@ namespace Kaltura.Types
 				OnPropertyChanged("Host");
 			}
 		}
+		[JsonProperty]
 		public IList<SchedulerStatus> Statuses
 		{
 			get { return _Statuses; }
+			private set 
+			{ 
+				_Statuses = value;
+				OnPropertyChanged("Statuses");
+			}
 		}
+		[JsonProperty]
 		public IList<SchedulerConfig> Configs
 		{
 			get { return _Configs; }
+			private set 
+			{ 
+				_Configs = value;
+				OnPropertyChanged("Configs");
+			}
 		}
+		[JsonProperty]
 		public IList<SchedulerWorker> Workers
 		{
 			get { return _Workers; }
+			private set 
+			{ 
+				_Workers = value;
+				OnPropertyChanged("Workers");
+			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int LastStatus
 		{
 			get { return _LastStatus; }
+			private set 
+			{ 
+				_LastStatus = value;
+				OnPropertyChanged("LastStatus");
+			}
 		}
+		[JsonProperty]
 		public string LastStatusStr
 		{
 			get { return _LastStatusStr; }
+			private set 
+			{ 
+				_LastStatusStr = value;
+				OnPropertyChanged("LastStatusStr");
+			}
 		}
 		#endregion
 
@@ -124,85 +171,60 @@ namespace Kaltura.Types
 		{
 		}
 
-		public Scheduler(XmlElement node) : base(node)
+		public Scheduler(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Id = ParseInt(node["id"].Value<string>());
+			}
+			if(node["configuredId"] != null)
+			{
+				this._ConfiguredId = ParseInt(node["configuredId"].Value<string>());
+			}
+			if(node["name"] != null)
+			{
+				this._Name = node["name"].Value<string>();
+			}
+			if(node["host"] != null)
+			{
+				this._Host = node["host"].Value<string>();
+			}
+			if(node["statuses"] != null)
+			{
+				this._Statuses = new List<SchedulerStatus>();
+				foreach(var arrayNode in node["statuses"].Children())
 				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "configuredId":
-						this._ConfiguredId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-					case "host":
-						this._Host = propertyNode.InnerText;
-						continue;
-					case "statuses":
-						this._Statuses = new List<SchedulerStatus>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Statuses.Add(ObjectFactory.Create<SchedulerStatus>(arrayNode));
-						}
-						continue;
-					case "configs":
-						this._Configs = new List<SchedulerConfig>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Configs.Add(ObjectFactory.Create<SchedulerConfig>(arrayNode));
-						}
-						continue;
-					case "workers":
-						this._Workers = new List<SchedulerWorker>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Workers.Add(ObjectFactory.Create<SchedulerWorker>(arrayNode));
-						}
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "lastStatus":
-						this._LastStatus = ParseInt(propertyNode.InnerText);
-						continue;
-					case "lastStatusStr":
-						this._LastStatusStr = propertyNode.InnerText;
-						continue;
+					this._Statuses.Add(ObjectFactory.Create<SchedulerStatus>(arrayNode));
 				}
 			}
-		}
-
-		public Scheduler(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._ConfiguredId = data.TryGetValueSafe<int>("configuredId");
-			    this._Name = data.TryGetValueSafe<string>("name");
-			    this._Host = data.TryGetValueSafe<string>("host");
-			    this._Statuses = new List<SchedulerStatus>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("statuses", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Statuses.Add(ObjectFactory.Create<SchedulerStatus>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._Configs = new List<SchedulerConfig>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("configs", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Configs.Add(ObjectFactory.Create<SchedulerConfig>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._Workers = new List<SchedulerWorker>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("workers", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Workers.Add(ObjectFactory.Create<SchedulerWorker>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._LastStatus = data.TryGetValueSafe<int>("lastStatus");
-			    this._LastStatusStr = data.TryGetValueSafe<string>("lastStatusStr");
+			if(node["configs"] != null)
+			{
+				this._Configs = new List<SchedulerConfig>();
+				foreach(var arrayNode in node["configs"].Children())
+				{
+					this._Configs.Add(ObjectFactory.Create<SchedulerConfig>(arrayNode));
+				}
+			}
+			if(node["workers"] != null)
+			{
+				this._Workers = new List<SchedulerWorker>();
+				foreach(var arrayNode in node["workers"].Children())
+				{
+					this._Workers.Add(ObjectFactory.Create<SchedulerWorker>(arrayNode));
+				}
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["lastStatus"] != null)
+			{
+				this._LastStatus = ParseInt(node["lastStatus"].Value<string>());
+			}
+			if(node["lastStatusStr"] != null)
+			{
+				this._LastStatusStr = node["lastStatusStr"].Value<string>();
+			}
 		}
 		#endregion
 

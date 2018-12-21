@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -58,37 +60,85 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public string EntryId
 		{
 			get { return _EntryId; }
+			private set 
+			{ 
+				_EntryId = value;
+				OnPropertyChanged("EntryId");
+			}
 		}
+		[JsonProperty]
 		public int ServerNodeId
 		{
 			get { return _ServerNodeId; }
+			private set 
+			{ 
+				_ServerNodeId = value;
+				OnPropertyChanged("ServerNodeId");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public EntryServerNodeStatus Status
 		{
 			get { return _Status; }
+			private set 
+			{ 
+				_Status = value;
+				OnPropertyChanged("Status");
+			}
 		}
+		[JsonProperty]
 		public EntryServerNodeType ServerType
 		{
 			get { return _ServerType; }
+			private set 
+			{ 
+				_ServerType = value;
+				OnPropertyChanged("ServerType");
+			}
 		}
 		#endregion
 
@@ -97,50 +147,40 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EntryServerNode(XmlElement node) : base(node)
+		public EntryServerNode(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "entryId":
-						this._EntryId = propertyNode.InnerText;
-						continue;
-					case "serverNodeId":
-						this._ServerNodeId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "status":
-						this._Status = (EntryServerNodeStatus)ParseEnum(typeof(EntryServerNodeStatus), propertyNode.InnerText);
-						continue;
-					case "serverType":
-						this._ServerType = (EntryServerNodeType)StringEnum.Parse(typeof(EntryServerNodeType), propertyNode.InnerText);
-						continue;
-				}
+				this._Id = ParseInt(node["id"].Value<string>());
 			}
-		}
-
-		public EntryServerNode(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._EntryId = data.TryGetValueSafe<string>("entryId");
-			    this._ServerNodeId = data.TryGetValueSafe<int>("serverNodeId");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._Status = (EntryServerNodeStatus)ParseEnum(typeof(EntryServerNodeStatus), data.TryGetValueSafe<int>("status"));
-			    this._ServerType = (EntryServerNodeType)StringEnum.Parse(typeof(EntryServerNodeType), data.TryGetValueSafe<string>("serverType"));
+			if(node["entryId"] != null)
+			{
+				this._EntryId = node["entryId"].Value<string>();
+			}
+			if(node["serverNodeId"] != null)
+			{
+				this._ServerNodeId = ParseInt(node["serverNodeId"].Value<string>());
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (EntryServerNodeStatus)ParseEnum(typeof(EntryServerNodeStatus), node["status"].Value<string>());
+			}
+			if(node["serverType"] != null)
+			{
+				this._ServerType = (EntryServerNodeType)StringEnum.Parse(typeof(EntryServerNodeType), node["serverType"].Value<string>());
+			}
 		}
 		#endregion
 

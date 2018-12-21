@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public new DropFolderFileOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DropFolderFileFilter(XmlElement node) : base(node)
+		public DropFolderFileFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["orderBy"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "orderBy":
-						this._OrderBy = (DropFolderFileOrderBy)StringEnum.Parse(typeof(DropFolderFileOrderBy), propertyNode.InnerText);
-						continue;
-				}
+				this._OrderBy = (DropFolderFileOrderBy)StringEnum.Parse(typeof(DropFolderFileOrderBy), node["orderBy"].Value<string>());
 			}
-		}
-
-		public DropFolderFileFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._OrderBy = (DropFolderFileOrderBy)StringEnum.Parse(typeof(DropFolderFileOrderBy), data.TryGetValueSafe<string>("orderBy"));
 		}
 		#endregion
 

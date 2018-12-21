@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string FlavorAssetId
 		{
 			get { return _FlavorAssetId; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetId");
 			}
 		}
+		[JsonProperty]
 		public string FlavorTags
 		{
 			get { return _FlavorTags; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorTags");
 			}
 		}
+		[JsonProperty]
 		public string StreamerType
 		{
 			get { return _StreamerType; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StreamerType");
 			}
 		}
+		[JsonProperty]
 		public string MediaProtocol
 		{
 			get { return _MediaProtocol; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EntryContextDataParams(XmlElement node) : base(node)
+		public EntryContextDataParams(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["flavorAssetId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "flavorAssetId":
-						this._FlavorAssetId = propertyNode.InnerText;
-						continue;
-					case "flavorTags":
-						this._FlavorTags = propertyNode.InnerText;
-						continue;
-					case "streamerType":
-						this._StreamerType = propertyNode.InnerText;
-						continue;
-					case "mediaProtocol":
-						this._MediaProtocol = propertyNode.InnerText;
-						continue;
-				}
+				this._FlavorAssetId = node["flavorAssetId"].Value<string>();
 			}
-		}
-
-		public EntryContextDataParams(IDictionary<string,object> data) : base(data)
-		{
-			    this._FlavorAssetId = data.TryGetValueSafe<string>("flavorAssetId");
-			    this._FlavorTags = data.TryGetValueSafe<string>("flavorTags");
-			    this._StreamerType = data.TryGetValueSafe<string>("streamerType");
-			    this._MediaProtocol = data.TryGetValueSafe<string>("mediaProtocol");
+			if(node["flavorTags"] != null)
+			{
+				this._FlavorTags = node["flavorTags"].Value<string>();
+			}
+			if(node["streamerType"] != null)
+			{
+				this._StreamerType = node["streamerType"].Value<string>();
+			}
+			if(node["mediaProtocol"] != null)
+			{
+				this._MediaProtocol = node["mediaProtocol"].Value<string>();
+			}
 		}
 		#endregion
 

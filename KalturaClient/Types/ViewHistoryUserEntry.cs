@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string PlaybackContext
 		{
 			get { return _PlaybackContext; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PlaybackContext");
 			}
 		}
+		[JsonProperty]
 		public int LastTimeReached
 		{
 			get { return _LastTimeReached; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastTimeReached");
 			}
 		}
+		[JsonProperty]
 		public int LastUpdateTime
 		{
 			get { return _LastUpdateTime; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ViewHistoryUserEntry(XmlElement node) : base(node)
+		public ViewHistoryUserEntry(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["playbackContext"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "playbackContext":
-						this._PlaybackContext = propertyNode.InnerText;
-						continue;
-					case "lastTimeReached":
-						this._LastTimeReached = ParseInt(propertyNode.InnerText);
-						continue;
-					case "lastUpdateTime":
-						this._LastUpdateTime = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._PlaybackContext = node["playbackContext"].Value<string>();
 			}
-		}
-
-		public ViewHistoryUserEntry(IDictionary<string,object> data) : base(data)
-		{
-			    this._PlaybackContext = data.TryGetValueSafe<string>("playbackContext");
-			    this._LastTimeReached = data.TryGetValueSafe<int>("lastTimeReached");
-			    this._LastUpdateTime = data.TryGetValueSafe<int>("lastUpdateTime");
+			if(node["lastTimeReached"] != null)
+			{
+				this._LastTimeReached = ParseInt(node["lastTimeReached"].Value<string>());
+			}
+			if(node["lastUpdateTime"] != null)
+			{
+				this._LastUpdateTime = ParseInt(node["lastUpdateTime"].Value<string>());
+			}
 		}
 		#endregion
 

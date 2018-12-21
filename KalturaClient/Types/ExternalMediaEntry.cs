@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public ExternalMediaSourceType ExternalSourceType
 		{
 			get { return _ExternalSourceType; }
@@ -55,9 +58,15 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExternalSourceType");
 			}
 		}
+		[JsonProperty]
 		public string AssetParamsIds
 		{
 			get { return _AssetParamsIds; }
+			private set 
+			{ 
+				_AssetParamsIds = value;
+				OnPropertyChanged("AssetParamsIds");
+			}
 		}
 		#endregion
 
@@ -66,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ExternalMediaEntry(XmlElement node) : base(node)
+		public ExternalMediaEntry(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["externalSourceType"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "externalSourceType":
-						this._ExternalSourceType = (ExternalMediaSourceType)StringEnum.Parse(typeof(ExternalMediaSourceType), propertyNode.InnerText);
-						continue;
-					case "assetParamsIds":
-						this._AssetParamsIds = propertyNode.InnerText;
-						continue;
-				}
+				this._ExternalSourceType = (ExternalMediaSourceType)StringEnum.Parse(typeof(ExternalMediaSourceType), node["externalSourceType"].Value<string>());
 			}
-		}
-
-		public ExternalMediaEntry(IDictionary<string,object> data) : base(data)
-		{
-			    this._ExternalSourceType = (ExternalMediaSourceType)StringEnum.Parse(typeof(ExternalMediaSourceType), data.TryGetValueSafe<string>("externalSourceType"));
-			    this._AssetParamsIds = data.TryGetValueSafe<string>("assetParamsIds");
+			if(node["assetParamsIds"] != null)
+			{
+				this._AssetParamsIds = node["assetParamsIds"].Value<string>();
+			}
 		}
 		#endregion
 

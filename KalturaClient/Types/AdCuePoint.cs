@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -54,6 +56,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public AdProtocolType ProtocolType
 		{
 			get { return _ProtocolType; }
@@ -63,6 +66,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProtocolType");
 			}
 		}
+		[JsonProperty]
 		public string SourceUrl
 		{
 			get { return _SourceUrl; }
@@ -72,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceUrl");
 			}
 		}
+		[JsonProperty]
 		public AdType AdType
 		{
 			get { return _AdType; }
@@ -81,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdType");
 			}
 		}
+		[JsonProperty]
 		public string Title
 		{
 			get { return _Title; }
@@ -90,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Title");
 			}
 		}
+		[JsonProperty]
 		public int EndTime
 		{
 			get { return _EndTime; }
@@ -99,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndTime");
 			}
 		}
+		[JsonProperty]
 		public int Duration
 		{
 			get { return _Duration; }
@@ -115,42 +123,32 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AdCuePoint(XmlElement node) : base(node)
+		public AdCuePoint(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["protocolType"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "protocolType":
-						this._ProtocolType = (AdProtocolType)StringEnum.Parse(typeof(AdProtocolType), propertyNode.InnerText);
-						continue;
-					case "sourceUrl":
-						this._SourceUrl = propertyNode.InnerText;
-						continue;
-					case "adType":
-						this._AdType = (AdType)StringEnum.Parse(typeof(AdType), propertyNode.InnerText);
-						continue;
-					case "title":
-						this._Title = propertyNode.InnerText;
-						continue;
-					case "endTime":
-						this._EndTime = ParseInt(propertyNode.InnerText);
-						continue;
-					case "duration":
-						this._Duration = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._ProtocolType = (AdProtocolType)StringEnum.Parse(typeof(AdProtocolType), node["protocolType"].Value<string>());
 			}
-		}
-
-		public AdCuePoint(IDictionary<string,object> data) : base(data)
-		{
-			    this._ProtocolType = (AdProtocolType)StringEnum.Parse(typeof(AdProtocolType), data.TryGetValueSafe<string>("protocolType"));
-			    this._SourceUrl = data.TryGetValueSafe<string>("sourceUrl");
-			    this._AdType = (AdType)StringEnum.Parse(typeof(AdType), data.TryGetValueSafe<string>("adType"));
-			    this._Title = data.TryGetValueSafe<string>("title");
-			    this._EndTime = data.TryGetValueSafe<int>("endTime");
-			    this._Duration = data.TryGetValueSafe<int>("duration");
+			if(node["sourceUrl"] != null)
+			{
+				this._SourceUrl = node["sourceUrl"].Value<string>();
+			}
+			if(node["adType"] != null)
+			{
+				this._AdType = (AdType)StringEnum.Parse(typeof(AdType), node["adType"].Value<string>());
+			}
+			if(node["title"] != null)
+			{
+				this._Title = node["title"].Value<string>();
+			}
+			if(node["endTime"] != null)
+			{
+				this._EndTime = ParseInt(node["endTime"].Value<string>());
+			}
+			if(node["duration"] != null)
+			{
+				this._Duration = ParseInt(node["duration"].Value<string>());
+			}
 		}
 		#endregion
 

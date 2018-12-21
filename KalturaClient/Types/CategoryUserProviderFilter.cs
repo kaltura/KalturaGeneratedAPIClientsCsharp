@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -66,6 +68,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string UserIdEqual
 		{
 			get { return _UserIdEqual; }
@@ -75,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string UserIdIn
 		{
 			get { return _UserIdIn; }
@@ -84,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIdIn");
 			}
 		}
+		[JsonProperty]
 		public CategoryUserStatus StatusEqual
 		{
 			get { return _StatusEqual; }
@@ -93,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		[JsonProperty]
 		public string StatusIn
 		{
 			get { return _StatusIn; }
@@ -102,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
 			get { return _CreatedAtGreaterThanOrEqual; }
@@ -111,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
 			get { return _CreatedAtLessThanOrEqual; }
@@ -120,6 +128,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
 			get { return _UpdatedAtGreaterThanOrEqual; }
@@ -129,6 +138,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
 			get { return _UpdatedAtLessThanOrEqual; }
@@ -138,6 +148,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public UpdateMethodType UpdateMethodEqual
 		{
 			get { return _UpdateMethodEqual; }
@@ -147,6 +158,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdateMethodEqual");
 			}
 		}
+		[JsonProperty]
 		public string UpdateMethodIn
 		{
 			get { return _UpdateMethodIn; }
@@ -156,6 +168,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdateMethodIn");
 			}
 		}
+		[JsonProperty]
 		public string PermissionNamesMatchAnd
 		{
 			get { return _PermissionNamesMatchAnd; }
@@ -165,6 +178,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PermissionNamesMatchAnd");
 			}
 		}
+		[JsonProperty]
 		public string PermissionNamesMatchOr
 		{
 			get { return _PermissionNamesMatchOr; }
@@ -181,66 +195,56 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CategoryUserProviderFilter(XmlElement node) : base(node)
+		public CategoryUserProviderFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["userIdEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "userIdEqual":
-						this._UserIdEqual = propertyNode.InnerText;
-						continue;
-					case "userIdIn":
-						this._UserIdIn = propertyNode.InnerText;
-						continue;
-					case "statusEqual":
-						this._StatusEqual = (CategoryUserStatus)ParseEnum(typeof(CategoryUserStatus), propertyNode.InnerText);
-						continue;
-					case "statusIn":
-						this._StatusIn = propertyNode.InnerText;
-						continue;
-					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updateMethodEqual":
-						this._UpdateMethodEqual = (UpdateMethodType)ParseEnum(typeof(UpdateMethodType), propertyNode.InnerText);
-						continue;
-					case "updateMethodIn":
-						this._UpdateMethodIn = propertyNode.InnerText;
-						continue;
-					case "permissionNamesMatchAnd":
-						this._PermissionNamesMatchAnd = propertyNode.InnerText;
-						continue;
-					case "permissionNamesMatchOr":
-						this._PermissionNamesMatchOr = propertyNode.InnerText;
-						continue;
-				}
+				this._UserIdEqual = node["userIdEqual"].Value<string>();
 			}
-		}
-
-		public CategoryUserProviderFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._UserIdEqual = data.TryGetValueSafe<string>("userIdEqual");
-			    this._UserIdIn = data.TryGetValueSafe<string>("userIdIn");
-			    this._StatusEqual = (CategoryUserStatus)ParseEnum(typeof(CategoryUserStatus), data.TryGetValueSafe<int>("statusEqual"));
-			    this._StatusIn = data.TryGetValueSafe<string>("statusIn");
-			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
-			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
-			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
-			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
-			    this._UpdateMethodEqual = (UpdateMethodType)ParseEnum(typeof(UpdateMethodType), data.TryGetValueSafe<int>("updateMethodEqual"));
-			    this._UpdateMethodIn = data.TryGetValueSafe<string>("updateMethodIn");
-			    this._PermissionNamesMatchAnd = data.TryGetValueSafe<string>("permissionNamesMatchAnd");
-			    this._PermissionNamesMatchOr = data.TryGetValueSafe<string>("permissionNamesMatchOr");
+			if(node["userIdIn"] != null)
+			{
+				this._UserIdIn = node["userIdIn"].Value<string>();
+			}
+			if(node["statusEqual"] != null)
+			{
+				this._StatusEqual = (CategoryUserStatus)ParseEnum(typeof(CategoryUserStatus), node["statusEqual"].Value<string>());
+			}
+			if(node["statusIn"] != null)
+			{
+				this._StatusIn = node["statusIn"].Value<string>();
+			}
+			if(node["createdAtGreaterThanOrEqual"] != null)
+			{
+				this._CreatedAtGreaterThanOrEqual = ParseInt(node["createdAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["createdAtLessThanOrEqual"] != null)
+			{
+				this._CreatedAtLessThanOrEqual = ParseInt(node["createdAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtGreaterThanOrEqual"] != null)
+			{
+				this._UpdatedAtGreaterThanOrEqual = ParseInt(node["updatedAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtLessThanOrEqual"] != null)
+			{
+				this._UpdatedAtLessThanOrEqual = ParseInt(node["updatedAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["updateMethodEqual"] != null)
+			{
+				this._UpdateMethodEqual = (UpdateMethodType)ParseEnum(typeof(UpdateMethodType), node["updateMethodEqual"].Value<string>());
+			}
+			if(node["updateMethodIn"] != null)
+			{
+				this._UpdateMethodIn = node["updateMethodIn"].Value<string>();
+			}
+			if(node["permissionNamesMatchAnd"] != null)
+			{
+				this._PermissionNamesMatchAnd = node["permissionNamesMatchAnd"].Value<string>();
+			}
+			if(node["permissionNamesMatchOr"] != null)
+			{
+				this._PermissionNamesMatchOr = node["permissionNamesMatchOr"].Value<string>();
+			}
 		}
 		#endregion
 

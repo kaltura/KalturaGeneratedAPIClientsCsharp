@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -72,42 +74,97 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string UserId
 		{
 			get { return _UserId; }
+			private set 
+			{ 
+				_UserId = value;
+				OnPropertyChanged("UserId");
+			}
 		}
+		[JsonProperty]
 		public string UploadedBy
 		{
 			get { return _UploadedBy; }
+			private set 
+			{ 
+				_UploadedBy = value;
+				OnPropertyChanged("UploadedBy");
+			}
 		}
+		[JsonProperty]
 		public int ConversionProfileId
 		{
 			get { return _ConversionProfileId; }
+			private set 
+			{ 
+				_ConversionProfileId = value;
+				OnPropertyChanged("ConversionProfileId");
+			}
 		}
+		[JsonProperty]
 		public string ResultsFileLocalPath
 		{
 			get { return _ResultsFileLocalPath; }
+			private set 
+			{ 
+				_ResultsFileLocalPath = value;
+				OnPropertyChanged("ResultsFileLocalPath");
+			}
 		}
+		[JsonProperty]
 		public string ResultsFileUrl
 		{
 			get { return _ResultsFileUrl; }
+			private set 
+			{ 
+				_ResultsFileUrl = value;
+				OnPropertyChanged("ResultsFileUrl");
+			}
 		}
+		[JsonProperty]
 		public int NumOfEntries
 		{
 			get { return _NumOfEntries; }
+			private set 
+			{ 
+				_NumOfEntries = value;
+				OnPropertyChanged("NumOfEntries");
+			}
 		}
+		[JsonProperty]
 		public int NumOfObjects
 		{
 			get { return _NumOfObjects; }
+			private set 
+			{ 
+				_NumOfObjects = value;
+				OnPropertyChanged("NumOfObjects");
+			}
 		}
+		[JsonProperty]
 		public string FilePath
 		{
 			get { return _FilePath; }
+			private set 
+			{ 
+				_FilePath = value;
+				OnPropertyChanged("FilePath");
+			}
 		}
+		[JsonProperty]
 		public BulkUploadObjectType BulkUploadObjectType
 		{
 			get { return _BulkUploadObjectType; }
+			private set 
+			{ 
+				_BulkUploadObjectType = value;
+				OnPropertyChanged("BulkUploadObjectType");
+			}
 		}
+		[JsonProperty]
 		public string FileName
 		{
 			get { return _FileName; }
@@ -117,14 +174,27 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileName");
 			}
 		}
+		[JsonProperty]
 		public BulkUploadObjectData ObjectData
 		{
 			get { return _ObjectData; }
+			private set 
+			{ 
+				_ObjectData = value;
+				OnPropertyChanged("ObjectData");
+			}
 		}
+		[JsonProperty]
 		public BulkUploadType Type
 		{
 			get { return _Type; }
+			private set 
+			{ 
+				_Type = value;
+				OnPropertyChanged("Type");
+			}
 		}
+		[JsonProperty]
 		public string EmailRecipients
 		{
 			get { return _EmailRecipients; }
@@ -134,6 +204,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EmailRecipients");
 			}
 		}
+		[JsonProperty]
 		public int NumOfErrorObjects
 		{
 			get { return _NumOfErrorObjects; }
@@ -143,6 +214,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("NumOfErrorObjects");
 			}
 		}
+		[JsonProperty]
 		public string Privileges
 		{
 			get { return _Privileges; }
@@ -159,78 +231,68 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BulkUploadJobData(XmlElement node) : base(node)
+		public BulkUploadJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["userId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "userId":
-						this._UserId = propertyNode.InnerText;
-						continue;
-					case "uploadedBy":
-						this._UploadedBy = propertyNode.InnerText;
-						continue;
-					case "conversionProfileId":
-						this._ConversionProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "resultsFileLocalPath":
-						this._ResultsFileLocalPath = propertyNode.InnerText;
-						continue;
-					case "resultsFileUrl":
-						this._ResultsFileUrl = propertyNode.InnerText;
-						continue;
-					case "numOfEntries":
-						this._NumOfEntries = ParseInt(propertyNode.InnerText);
-						continue;
-					case "numOfObjects":
-						this._NumOfObjects = ParseInt(propertyNode.InnerText);
-						continue;
-					case "filePath":
-						this._FilePath = propertyNode.InnerText;
-						continue;
-					case "bulkUploadObjectType":
-						this._BulkUploadObjectType = (BulkUploadObjectType)StringEnum.Parse(typeof(BulkUploadObjectType), propertyNode.InnerText);
-						continue;
-					case "fileName":
-						this._FileName = propertyNode.InnerText;
-						continue;
-					case "objectData":
-						this._ObjectData = ObjectFactory.Create<BulkUploadObjectData>(propertyNode);
-						continue;
-					case "type":
-						this._Type = (BulkUploadType)StringEnum.Parse(typeof(BulkUploadType), propertyNode.InnerText);
-						continue;
-					case "emailRecipients":
-						this._EmailRecipients = propertyNode.InnerText;
-						continue;
-					case "numOfErrorObjects":
-						this._NumOfErrorObjects = ParseInt(propertyNode.InnerText);
-						continue;
-					case "privileges":
-						this._Privileges = propertyNode.InnerText;
-						continue;
-				}
+				this._UserId = node["userId"].Value<string>();
 			}
-		}
-
-		public BulkUploadJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._UserId = data.TryGetValueSafe<string>("userId");
-			    this._UploadedBy = data.TryGetValueSafe<string>("uploadedBy");
-			    this._ConversionProfileId = data.TryGetValueSafe<int>("conversionProfileId");
-			    this._ResultsFileLocalPath = data.TryGetValueSafe<string>("resultsFileLocalPath");
-			    this._ResultsFileUrl = data.TryGetValueSafe<string>("resultsFileUrl");
-			    this._NumOfEntries = data.TryGetValueSafe<int>("numOfEntries");
-			    this._NumOfObjects = data.TryGetValueSafe<int>("numOfObjects");
-			    this._FilePath = data.TryGetValueSafe<string>("filePath");
-			    this._BulkUploadObjectType = (BulkUploadObjectType)StringEnum.Parse(typeof(BulkUploadObjectType), data.TryGetValueSafe<string>("bulkUploadObjectType"));
-			    this._FileName = data.TryGetValueSafe<string>("fileName");
-			    this._ObjectData = ObjectFactory.Create<BulkUploadObjectData>(data.TryGetValueSafe<IDictionary<string,object>>("objectData"));
-			    this._Type = (BulkUploadType)StringEnum.Parse(typeof(BulkUploadType), data.TryGetValueSafe<string>("type"));
-			    this._EmailRecipients = data.TryGetValueSafe<string>("emailRecipients");
-			    this._NumOfErrorObjects = data.TryGetValueSafe<int>("numOfErrorObjects");
-			    this._Privileges = data.TryGetValueSafe<string>("privileges");
+			if(node["uploadedBy"] != null)
+			{
+				this._UploadedBy = node["uploadedBy"].Value<string>();
+			}
+			if(node["conversionProfileId"] != null)
+			{
+				this._ConversionProfileId = ParseInt(node["conversionProfileId"].Value<string>());
+			}
+			if(node["resultsFileLocalPath"] != null)
+			{
+				this._ResultsFileLocalPath = node["resultsFileLocalPath"].Value<string>();
+			}
+			if(node["resultsFileUrl"] != null)
+			{
+				this._ResultsFileUrl = node["resultsFileUrl"].Value<string>();
+			}
+			if(node["numOfEntries"] != null)
+			{
+				this._NumOfEntries = ParseInt(node["numOfEntries"].Value<string>());
+			}
+			if(node["numOfObjects"] != null)
+			{
+				this._NumOfObjects = ParseInt(node["numOfObjects"].Value<string>());
+			}
+			if(node["filePath"] != null)
+			{
+				this._FilePath = node["filePath"].Value<string>();
+			}
+			if(node["bulkUploadObjectType"] != null)
+			{
+				this._BulkUploadObjectType = (BulkUploadObjectType)StringEnum.Parse(typeof(BulkUploadObjectType), node["bulkUploadObjectType"].Value<string>());
+			}
+			if(node["fileName"] != null)
+			{
+				this._FileName = node["fileName"].Value<string>();
+			}
+			if(node["objectData"] != null)
+			{
+				this._ObjectData = ObjectFactory.Create<BulkUploadObjectData>(node["objectData"]);
+			}
+			if(node["type"] != null)
+			{
+				this._Type = (BulkUploadType)StringEnum.Parse(typeof(BulkUploadType), node["type"].Value<string>());
+			}
+			if(node["emailRecipients"] != null)
+			{
+				this._EmailRecipients = node["emailRecipients"].Value<string>();
+			}
+			if(node["numOfErrorObjects"] != null)
+			{
+				this._NumOfErrorObjects = ParseInt(node["numOfErrorObjects"].Value<string>());
+			}
+			if(node["privileges"] != null)
+			{
+				this._Privileges = node["privileges"].Value<string>();
+			}
 		}
 		#endregion
 

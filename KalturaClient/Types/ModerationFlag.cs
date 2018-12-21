@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -64,22 +66,47 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public string UserId
 		{
 			get { return _UserId; }
+			private set 
+			{ 
+				_UserId = value;
+				OnPropertyChanged("UserId");
+			}
 		}
+		[JsonProperty]
 		public ModerationObjectType ModerationObjectType
 		{
 			get { return _ModerationObjectType; }
+			private set 
+			{ 
+				_ModerationObjectType = value;
+				OnPropertyChanged("ModerationObjectType");
+			}
 		}
+		[JsonProperty]
 		public string FlaggedEntryId
 		{
 			get { return _FlaggedEntryId; }
@@ -89,6 +116,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlaggedEntryId");
 			}
 		}
+		[JsonProperty]
 		public string FlaggedUserId
 		{
 			get { return _FlaggedUserId; }
@@ -98,10 +126,17 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlaggedUserId");
 			}
 		}
+		[JsonProperty]
 		public ModerationFlagStatus Status
 		{
 			get { return _Status; }
+			private set 
+			{ 
+				_Status = value;
+				OnPropertyChanged("Status");
+			}
 		}
+		[JsonProperty]
 		public string Comments
 		{
 			get { return _Comments; }
@@ -111,6 +146,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Comments");
 			}
 		}
+		[JsonProperty]
 		public ModerationFlagType FlagType
 		{
 			get { return _FlagType; }
@@ -120,13 +156,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlagType");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
 		#endregion
 
@@ -135,62 +183,52 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ModerationFlag(XmlElement node) : base(node)
+		public ModerationFlag(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "userId":
-						this._UserId = propertyNode.InnerText;
-						continue;
-					case "moderationObjectType":
-						this._ModerationObjectType = (ModerationObjectType)StringEnum.Parse(typeof(ModerationObjectType), propertyNode.InnerText);
-						continue;
-					case "flaggedEntryId":
-						this._FlaggedEntryId = propertyNode.InnerText;
-						continue;
-					case "flaggedUserId":
-						this._FlaggedUserId = propertyNode.InnerText;
-						continue;
-					case "status":
-						this._Status = (ModerationFlagStatus)StringEnum.Parse(typeof(ModerationFlagStatus), propertyNode.InnerText);
-						continue;
-					case "comments":
-						this._Comments = propertyNode.InnerText;
-						continue;
-					case "flagType":
-						this._FlagType = (ModerationFlagType)ParseEnum(typeof(ModerationFlagType), propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._Id = ParseInt(node["id"].Value<string>());
 			}
-		}
-
-		public ModerationFlag(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._UserId = data.TryGetValueSafe<string>("userId");
-			    this._ModerationObjectType = (ModerationObjectType)StringEnum.Parse(typeof(ModerationObjectType), data.TryGetValueSafe<string>("moderationObjectType"));
-			    this._FlaggedEntryId = data.TryGetValueSafe<string>("flaggedEntryId");
-			    this._FlaggedUserId = data.TryGetValueSafe<string>("flaggedUserId");
-			    this._Status = (ModerationFlagStatus)StringEnum.Parse(typeof(ModerationFlagStatus), data.TryGetValueSafe<string>("status"));
-			    this._Comments = data.TryGetValueSafe<string>("comments");
-			    this._FlagType = (ModerationFlagType)ParseEnum(typeof(ModerationFlagType), data.TryGetValueSafe<int>("flagType"));
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["userId"] != null)
+			{
+				this._UserId = node["userId"].Value<string>();
+			}
+			if(node["moderationObjectType"] != null)
+			{
+				this._ModerationObjectType = (ModerationObjectType)StringEnum.Parse(typeof(ModerationObjectType), node["moderationObjectType"].Value<string>());
+			}
+			if(node["flaggedEntryId"] != null)
+			{
+				this._FlaggedEntryId = node["flaggedEntryId"].Value<string>();
+			}
+			if(node["flaggedUserId"] != null)
+			{
+				this._FlaggedUserId = node["flaggedUserId"].Value<string>();
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (ModerationFlagStatus)StringEnum.Parse(typeof(ModerationFlagStatus), node["status"].Value<string>());
+			}
+			if(node["comments"] != null)
+			{
+				this._Comments = node["comments"].Value<string>();
+			}
+			if(node["flagType"] != null)
+			{
+				this._FlagType = (ModerationFlagType)ParseEnum(typeof(ModerationFlagType), node["flagType"].Value<string>());
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
 		}
 		#endregion
 

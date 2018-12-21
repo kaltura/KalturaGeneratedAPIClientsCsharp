@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -49,11 +51,7 @@ namespace Kaltura.Types
 		{
 		}
 
-		public HttpNotificationTemplateBaseFilter(XmlElement node) : base(node)
-		{
-		}
-
-		public HttpNotificationTemplateBaseFilter(IDictionary<string,object> data) : base(data)
+		public HttpNotificationTemplateBaseFilter(JToken node) : base(node)
 		{
 		}
 		#endregion

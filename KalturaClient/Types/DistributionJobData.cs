@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -62,6 +64,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int DistributionProfileId
 		{
 			get { return _DistributionProfileId; }
@@ -71,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributionProfileId");
 			}
 		}
+		[JsonProperty]
 		public DistributionProfile DistributionProfile
 		{
 			get { return _DistributionProfile; }
@@ -80,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributionProfile");
 			}
 		}
+		[JsonProperty]
 		public int EntryDistributionId
 		{
 			get { return _EntryDistributionId; }
@@ -89,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryDistributionId");
 			}
 		}
+		[JsonProperty]
 		public EntryDistribution EntryDistribution
 		{
 			get { return _EntryDistribution; }
@@ -98,6 +104,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryDistribution");
 			}
 		}
+		[JsonProperty]
 		public string RemoteId
 		{
 			get { return _RemoteId; }
@@ -107,6 +114,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RemoteId");
 			}
 		}
+		[JsonProperty]
 		public DistributionProviderType ProviderType
 		{
 			get { return _ProviderType; }
@@ -116,6 +124,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProviderType");
 			}
 		}
+		[JsonProperty]
 		public DistributionJobProviderData ProviderData
 		{
 			get { return _ProviderData; }
@@ -125,6 +134,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProviderData");
 			}
 		}
+		[JsonProperty]
 		public string Results
 		{
 			get { return _Results; }
@@ -134,6 +144,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Results");
 			}
 		}
+		[JsonProperty]
 		public string SentData
 		{
 			get { return _SentData; }
@@ -143,6 +154,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SentData");
 			}
 		}
+		[JsonProperty]
 		public IList<DistributionRemoteMediaFile> MediaFiles
 		{
 			get { return _MediaFiles; }
@@ -159,67 +171,52 @@ namespace Kaltura.Types
 		{
 		}
 
-		public DistributionJobData(XmlElement node) : base(node)
+		public DistributionJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["distributionProfileId"] != null)
 			{
-				switch (propertyNode.Name)
+				this._DistributionProfileId = ParseInt(node["distributionProfileId"].Value<string>());
+			}
+			if(node["distributionProfile"] != null)
+			{
+				this._DistributionProfile = ObjectFactory.Create<DistributionProfile>(node["distributionProfile"]);
+			}
+			if(node["entryDistributionId"] != null)
+			{
+				this._EntryDistributionId = ParseInt(node["entryDistributionId"].Value<string>());
+			}
+			if(node["entryDistribution"] != null)
+			{
+				this._EntryDistribution = ObjectFactory.Create<EntryDistribution>(node["entryDistribution"]);
+			}
+			if(node["remoteId"] != null)
+			{
+				this._RemoteId = node["remoteId"].Value<string>();
+			}
+			if(node["providerType"] != null)
+			{
+				this._ProviderType = (DistributionProviderType)StringEnum.Parse(typeof(DistributionProviderType), node["providerType"].Value<string>());
+			}
+			if(node["providerData"] != null)
+			{
+				this._ProviderData = ObjectFactory.Create<DistributionJobProviderData>(node["providerData"]);
+			}
+			if(node["results"] != null)
+			{
+				this._Results = node["results"].Value<string>();
+			}
+			if(node["sentData"] != null)
+			{
+				this._SentData = node["sentData"].Value<string>();
+			}
+			if(node["mediaFiles"] != null)
+			{
+				this._MediaFiles = new List<DistributionRemoteMediaFile>();
+				foreach(var arrayNode in node["mediaFiles"].Children())
 				{
-					case "distributionProfileId":
-						this._DistributionProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "distributionProfile":
-						this._DistributionProfile = ObjectFactory.Create<DistributionProfile>(propertyNode);
-						continue;
-					case "entryDistributionId":
-						this._EntryDistributionId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "entryDistribution":
-						this._EntryDistribution = ObjectFactory.Create<EntryDistribution>(propertyNode);
-						continue;
-					case "remoteId":
-						this._RemoteId = propertyNode.InnerText;
-						continue;
-					case "providerType":
-						this._ProviderType = (DistributionProviderType)StringEnum.Parse(typeof(DistributionProviderType), propertyNode.InnerText);
-						continue;
-					case "providerData":
-						this._ProviderData = ObjectFactory.Create<DistributionJobProviderData>(propertyNode);
-						continue;
-					case "results":
-						this._Results = propertyNode.InnerText;
-						continue;
-					case "sentData":
-						this._SentData = propertyNode.InnerText;
-						continue;
-					case "mediaFiles":
-						this._MediaFiles = new List<DistributionRemoteMediaFile>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._MediaFiles.Add(ObjectFactory.Create<DistributionRemoteMediaFile>(arrayNode));
-						}
-						continue;
+					this._MediaFiles.Add(ObjectFactory.Create<DistributionRemoteMediaFile>(arrayNode));
 				}
 			}
-		}
-
-		public DistributionJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._DistributionProfileId = data.TryGetValueSafe<int>("distributionProfileId");
-			    this._DistributionProfile = ObjectFactory.Create<DistributionProfile>(data.TryGetValueSafe<IDictionary<string,object>>("distributionProfile"));
-			    this._EntryDistributionId = data.TryGetValueSafe<int>("entryDistributionId");
-			    this._EntryDistribution = ObjectFactory.Create<EntryDistribution>(data.TryGetValueSafe<IDictionary<string,object>>("entryDistribution"));
-			    this._RemoteId = data.TryGetValueSafe<string>("remoteId");
-			    this._ProviderType = (DistributionProviderType)StringEnum.Parse(typeof(DistributionProviderType), data.TryGetValueSafe<string>("providerType"));
-			    this._ProviderData = ObjectFactory.Create<DistributionJobProviderData>(data.TryGetValueSafe<IDictionary<string,object>>("providerData"));
-			    this._Results = data.TryGetValueSafe<string>("results");
-			    this._SentData = data.TryGetValueSafe<string>("sentData");
-			    this._MediaFiles = new List<DistributionRemoteMediaFile>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("mediaFiles", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._MediaFiles.Add(ObjectFactory.Create<DistributionRemoteMediaFile>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

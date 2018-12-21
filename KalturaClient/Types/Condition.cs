@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,10 +50,17 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public ConditionType Type
 		{
 			get { return _Type; }
+			private set 
+			{ 
+				_Type = value;
+				OnPropertyChanged("Type");
+			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -61,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public bool? Not
 		{
 			get { return _Not; }
@@ -77,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public Condition(XmlElement node) : base(node)
+		public Condition(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["type"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "type":
-						this._Type = (ConditionType)StringEnum.Parse(typeof(ConditionType), propertyNode.InnerText);
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "not":
-						this._Not = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._Type = (ConditionType)StringEnum.Parse(typeof(ConditionType), node["type"].Value<string>());
 			}
-		}
-
-		public Condition(IDictionary<string,object> data) : base(data)
-		{
-			    this._Type = (ConditionType)StringEnum.Parse(typeof(ConditionType), data.TryGetValueSafe<string>("type"));
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._Not = data.TryGetValueSafe<bool>("not");
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["not"] != null)
+			{
+				this._Not = ParseBool(node["not"].Value<string>());
+			}
 		}
 		#endregion
 

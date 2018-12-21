@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public StringValue Content
 		{
 			get { return _Content; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public HttpNotificationDataText(XmlElement node) : base(node)
+		public HttpNotificationDataText(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["content"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "content":
-						this._Content = ObjectFactory.Create<StringValue>(propertyNode);
-						continue;
-				}
+				this._Content = ObjectFactory.Create<StringValue>(node["content"]);
 			}
-		}
-
-		public HttpNotificationDataText(IDictionary<string,object> data) : base(data)
-		{
-			    this._Content = ObjectFactory.Create<StringValue>(data.TryGetValueSafe<IDictionary<string,object>>("content"));
 		}
 		#endregion
 

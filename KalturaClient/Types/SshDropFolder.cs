@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,6 +58,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Host
 		{
 			get { return _Host; }
@@ -65,6 +68,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Host");
 			}
 		}
+		[JsonProperty]
 		public int Port
 		{
 			get { return _Port; }
@@ -74,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Port");
 			}
 		}
+		[JsonProperty]
 		public string Username
 		{
 			get { return _Username; }
@@ -83,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Username");
 			}
 		}
+		[JsonProperty]
 		public string Password
 		{
 			get { return _Password; }
@@ -92,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Password");
 			}
 		}
+		[JsonProperty]
 		public string PrivateKey
 		{
 			get { return _PrivateKey; }
@@ -101,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrivateKey");
 			}
 		}
+		[JsonProperty]
 		public string PublicKey
 		{
 			get { return _PublicKey; }
@@ -110,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PublicKey");
 			}
 		}
+		[JsonProperty]
 		public string PassPhrase
 		{
 			get { return _PassPhrase; }
@@ -126,46 +135,36 @@ namespace Kaltura.Types
 		{
 		}
 
-		public SshDropFolder(XmlElement node) : base(node)
+		public SshDropFolder(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["host"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "host":
-						this._Host = propertyNode.InnerText;
-						continue;
-					case "port":
-						this._Port = ParseInt(propertyNode.InnerText);
-						continue;
-					case "username":
-						this._Username = propertyNode.InnerText;
-						continue;
-					case "password":
-						this._Password = propertyNode.InnerText;
-						continue;
-					case "privateKey":
-						this._PrivateKey = propertyNode.InnerText;
-						continue;
-					case "publicKey":
-						this._PublicKey = propertyNode.InnerText;
-						continue;
-					case "passPhrase":
-						this._PassPhrase = propertyNode.InnerText;
-						continue;
-				}
+				this._Host = node["host"].Value<string>();
 			}
-		}
-
-		public SshDropFolder(IDictionary<string,object> data) : base(data)
-		{
-			    this._Host = data.TryGetValueSafe<string>("host");
-			    this._Port = data.TryGetValueSafe<int>("port");
-			    this._Username = data.TryGetValueSafe<string>("username");
-			    this._Password = data.TryGetValueSafe<string>("password");
-			    this._PrivateKey = data.TryGetValueSafe<string>("privateKey");
-			    this._PublicKey = data.TryGetValueSafe<string>("publicKey");
-			    this._PassPhrase = data.TryGetValueSafe<string>("passPhrase");
+			if(node["port"] != null)
+			{
+				this._Port = ParseInt(node["port"].Value<string>());
+			}
+			if(node["username"] != null)
+			{
+				this._Username = node["username"].Value<string>();
+			}
+			if(node["password"] != null)
+			{
+				this._Password = node["password"].Value<string>();
+			}
+			if(node["privateKey"] != null)
+			{
+				this._PrivateKey = node["privateKey"].Value<string>();
+			}
+			if(node["publicKey"] != null)
+			{
+				this._PublicKey = node["publicKey"].Value<string>();
+			}
+			if(node["passPhrase"] != null)
+			{
+				this._PassPhrase = node["passPhrase"].Value<string>();
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -62,6 +64,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int IdEqual
 		{
 			get { return _IdEqual; }
@@ -71,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		[JsonProperty]
 		public string IdIn
 		{
 			get { return _IdIn; }
@@ -80,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
 			get { return _CreatedAtGreaterThanOrEqual; }
@@ -89,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
 			get { return _CreatedAtLessThanOrEqual; }
@@ -98,6 +104,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
 			get { return _UpdatedAtGreaterThanOrEqual; }
@@ -107,6 +114,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
 			get { return _UpdatedAtLessThanOrEqual; }
@@ -116,6 +124,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int GenericDistributionProviderIdEqual
 		{
 			get { return _GenericDistributionProviderIdEqual; }
@@ -125,6 +134,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("GenericDistributionProviderIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string GenericDistributionProviderIdIn
 		{
 			get { return _GenericDistributionProviderIdIn; }
@@ -134,6 +144,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("GenericDistributionProviderIdIn");
 			}
 		}
+		[JsonProperty]
 		public DistributionAction ActionEqual
 		{
 			get { return _ActionEqual; }
@@ -143,6 +154,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ActionEqual");
 			}
 		}
+		[JsonProperty]
 		public string ActionIn
 		{
 			get { return _ActionIn; }
@@ -159,58 +171,48 @@ namespace Kaltura.Types
 		{
 		}
 
-		public GenericDistributionProviderActionBaseFilter(XmlElement node) : base(node)
+		public GenericDistributionProviderActionBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["idEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "idEqual":
-						this._IdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "idIn":
-						this._IdIn = propertyNode.InnerText;
-						continue;
-					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "genericDistributionProviderIdEqual":
-						this._GenericDistributionProviderIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "genericDistributionProviderIdIn":
-						this._GenericDistributionProviderIdIn = propertyNode.InnerText;
-						continue;
-					case "actionEqual":
-						this._ActionEqual = (DistributionAction)ParseEnum(typeof(DistributionAction), propertyNode.InnerText);
-						continue;
-					case "actionIn":
-						this._ActionIn = propertyNode.InnerText;
-						continue;
-				}
+				this._IdEqual = ParseInt(node["idEqual"].Value<string>());
 			}
-		}
-
-		public GenericDistributionProviderActionBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._IdEqual = data.TryGetValueSafe<int>("idEqual");
-			    this._IdIn = data.TryGetValueSafe<string>("idIn");
-			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
-			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
-			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
-			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
-			    this._GenericDistributionProviderIdEqual = data.TryGetValueSafe<int>("genericDistributionProviderIdEqual");
-			    this._GenericDistributionProviderIdIn = data.TryGetValueSafe<string>("genericDistributionProviderIdIn");
-			    this._ActionEqual = (DistributionAction)ParseEnum(typeof(DistributionAction), data.TryGetValueSafe<int>("actionEqual"));
-			    this._ActionIn = data.TryGetValueSafe<string>("actionIn");
+			if(node["idIn"] != null)
+			{
+				this._IdIn = node["idIn"].Value<string>();
+			}
+			if(node["createdAtGreaterThanOrEqual"] != null)
+			{
+				this._CreatedAtGreaterThanOrEqual = ParseInt(node["createdAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["createdAtLessThanOrEqual"] != null)
+			{
+				this._CreatedAtLessThanOrEqual = ParseInt(node["createdAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtGreaterThanOrEqual"] != null)
+			{
+				this._UpdatedAtGreaterThanOrEqual = ParseInt(node["updatedAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtLessThanOrEqual"] != null)
+			{
+				this._UpdatedAtLessThanOrEqual = ParseInt(node["updatedAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["genericDistributionProviderIdEqual"] != null)
+			{
+				this._GenericDistributionProviderIdEqual = ParseInt(node["genericDistributionProviderIdEqual"].Value<string>());
+			}
+			if(node["genericDistributionProviderIdIn"] != null)
+			{
+				this._GenericDistributionProviderIdIn = node["genericDistributionProviderIdIn"].Value<string>();
+			}
+			if(node["actionEqual"] != null)
+			{
+				this._ActionEqual = (DistributionAction)ParseEnum(typeof(DistributionAction), node["actionEqual"].Value<string>());
+			}
+			if(node["actionIn"] != null)
+			{
+				this._ActionIn = node["actionIn"].Value<string>();
+			}
 		}
 		#endregion
 

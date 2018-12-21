@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public IList<KeyValue> ProvisioningParams
 		{
 			get { return _ProvisioningParams; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProvisioningParams");
 			}
 		}
+		[JsonProperty]
 		public string UserName
 		{
 			get { return _UserName; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserName");
 			}
 		}
+		[JsonProperty]
 		public string Password
 		{
 			get { return _Password; }
@@ -82,39 +87,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public VelocixProvisionJobData(XmlElement node) : base(node)
+		public VelocixProvisionJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["provisioningParams"] != null)
 			{
-				switch (propertyNode.Name)
+				this._ProvisioningParams = new List<KeyValue>();
+				foreach(var arrayNode in node["provisioningParams"].Children())
 				{
-					case "provisioningParams":
-						this._ProvisioningParams = new List<KeyValue>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._ProvisioningParams.Add(ObjectFactory.Create<KeyValue>(arrayNode));
-						}
-						continue;
-					case "userName":
-						this._UserName = propertyNode.InnerText;
-						continue;
-					case "password":
-						this._Password = propertyNode.InnerText;
-						continue;
+					this._ProvisioningParams.Add(ObjectFactory.Create<KeyValue>(arrayNode));
 				}
 			}
-		}
-
-		public VelocixProvisionJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._ProvisioningParams = new List<KeyValue>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("provisioningParams", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._ProvisioningParams.Add(ObjectFactory.Create<KeyValue>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._UserName = data.TryGetValueSafe<string>("userName");
-			    this._Password = data.TryGetValueSafe<string>("password");
+			if(node["userName"] != null)
+			{
+				this._UserName = node["userName"].Value<string>();
+			}
+			if(node["password"] != null)
+			{
+				this._Password = node["password"].Value<string>();
+			}
 		}
 		#endregion
 

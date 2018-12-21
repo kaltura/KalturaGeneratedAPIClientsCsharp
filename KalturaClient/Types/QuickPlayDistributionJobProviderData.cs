@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Xml
 		{
 			get { return _Xml; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Xml");
 			}
 		}
+		[JsonProperty]
 		public IList<String> VideoFilePaths
 		{
 			get { return _VideoFilePaths; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoFilePaths");
 			}
 		}
+		[JsonProperty]
 		public IList<String> ThumbnailFilePaths
 		{
 			get { return _ThumbnailFilePaths; }
@@ -82,48 +87,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public QuickPlayDistributionJobProviderData(XmlElement node) : base(node)
+		public QuickPlayDistributionJobProviderData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["xml"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Xml = node["xml"].Value<string>();
+			}
+			if(node["videoFilePaths"] != null)
+			{
+				this._VideoFilePaths = new List<String>();
+				foreach(var arrayNode in node["videoFilePaths"].Children())
 				{
-					case "xml":
-						this._Xml = propertyNode.InnerText;
-						continue;
-					case "videoFilePaths":
-						this._VideoFilePaths = new List<String>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._VideoFilePaths.Add(ObjectFactory.Create<String>(arrayNode));
-						}
-						continue;
-					case "thumbnailFilePaths":
-						this._ThumbnailFilePaths = new List<String>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._ThumbnailFilePaths.Add(ObjectFactory.Create<String>(arrayNode));
-						}
-						continue;
+					this._VideoFilePaths.Add(ObjectFactory.Create<String>(arrayNode));
 				}
 			}
-		}
-
-		public QuickPlayDistributionJobProviderData(IDictionary<string,object> data) : base(data)
-		{
-			    this._Xml = data.TryGetValueSafe<string>("xml");
-			    this._VideoFilePaths = new List<String>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("videoFilePaths", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._VideoFilePaths.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._ThumbnailFilePaths = new List<String>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("thumbnailFilePaths", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._ThumbnailFilePaths.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
-			    }
+			if(node["thumbnailFilePaths"] != null)
+			{
+				this._ThumbnailFilePaths = new List<String>();
+				foreach(var arrayNode in node["thumbnailFilePaths"].Children())
+				{
+					this._ThumbnailFilePaths.Add(ObjectFactory.Create<String>(arrayNode));
+				}
+			}
 		}
 		#endregion
 

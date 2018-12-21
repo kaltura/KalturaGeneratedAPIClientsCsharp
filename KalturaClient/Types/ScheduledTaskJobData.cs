@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,6 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int MaxResults
 		{
 			get { return _MaxResults; }
@@ -61,6 +64,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MaxResults");
 			}
 		}
+		[JsonProperty]
 		public int TotalCount
 		{
 			get { return _TotalCount; }
@@ -70,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("TotalCount");
 			}
 		}
+		[JsonProperty]
 		public DryRunFileType FileFormat
 		{
 			get { return _FileFormat; }
@@ -79,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileFormat");
 			}
 		}
+		[JsonProperty]
 		public string ResultsFilePath
 		{
 			get { return _ResultsFilePath; }
@@ -88,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ResultsFilePath");
 			}
 		}
+		[JsonProperty]
 		public int ReferenceTime
 		{
 			get { return _ReferenceTime; }
@@ -104,38 +111,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ScheduledTaskJobData(XmlElement node) : base(node)
+		public ScheduledTaskJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["maxResults"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "maxResults":
-						this._MaxResults = ParseInt(propertyNode.InnerText);
-						continue;
-					case "totalCount":
-						this._TotalCount = ParseInt(propertyNode.InnerText);
-						continue;
-					case "fileFormat":
-						this._FileFormat = (DryRunFileType)ParseEnum(typeof(DryRunFileType), propertyNode.InnerText);
-						continue;
-					case "resultsFilePath":
-						this._ResultsFilePath = propertyNode.InnerText;
-						continue;
-					case "referenceTime":
-						this._ReferenceTime = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._MaxResults = ParseInt(node["maxResults"].Value<string>());
 			}
-		}
-
-		public ScheduledTaskJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._MaxResults = data.TryGetValueSafe<int>("maxResults");
-			    this._TotalCount = data.TryGetValueSafe<int>("totalCount");
-			    this._FileFormat = (DryRunFileType)ParseEnum(typeof(DryRunFileType), data.TryGetValueSafe<int>("fileFormat"));
-			    this._ResultsFilePath = data.TryGetValueSafe<string>("resultsFilePath");
-			    this._ReferenceTime = data.TryGetValueSafe<int>("referenceTime");
+			if(node["totalCount"] != null)
+			{
+				this._TotalCount = ParseInt(node["totalCount"].Value<string>());
+			}
+			if(node["fileFormat"] != null)
+			{
+				this._FileFormat = (DryRunFileType)ParseEnum(typeof(DryRunFileType), node["fileFormat"].Value<string>());
+			}
+			if(node["resultsFilePath"] != null)
+			{
+				this._ResultsFilePath = node["resultsFilePath"].Value<string>();
+			}
+			if(node["referenceTime"] != null)
+			{
+				this._ReferenceTime = ParseInt(node["referenceTime"].Value<string>());
+			}
 		}
 		#endregion
 

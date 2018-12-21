@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string EntryId
 		{
 			get { return _EntryId; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		[JsonProperty]
 		public NullableBoolean FollowEntryRedirect
 		{
 			get { return _FollowEntryRedirect; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EntryContext(XmlElement node) : base(node)
+		public EntryContext(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["entryId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "entryId":
-						this._EntryId = propertyNode.InnerText;
-						continue;
-					case "followEntryRedirect":
-						this._FollowEntryRedirect = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-				}
+				this._EntryId = node["entryId"].Value<string>();
 			}
-		}
-
-		public EntryContext(IDictionary<string,object> data) : base(data)
-		{
-			    this._EntryId = data.TryGetValueSafe<string>("entryId");
-			    this._FollowEntryRedirect = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("followEntryRedirect"));
+			if(node["followEntryRedirect"] != null)
+			{
+				this._FollowEntryRedirect = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["followEntryRedirect"].Value<string>());
+			}
 		}
 		#endregion
 

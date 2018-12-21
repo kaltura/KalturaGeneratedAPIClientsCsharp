@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -49,11 +51,7 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FreewheelDistributionProvider(XmlElement node) : base(node)
-		{
-		}
-
-		public FreewheelDistributionProvider(IDictionary<string,object> data) : base(data)
+		public FreewheelDistributionProvider(JToken node) : base(node)
 		{
 		}
 		#endregion

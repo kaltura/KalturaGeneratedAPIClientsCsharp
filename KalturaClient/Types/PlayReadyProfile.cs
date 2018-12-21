@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string KeySeed
 		{
 			get { return _KeySeed; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public PlayReadyProfile(XmlElement node) : base(node)
+		public PlayReadyProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["keySeed"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "keySeed":
-						this._KeySeed = propertyNode.InnerText;
-						continue;
-				}
+				this._KeySeed = node["keySeed"].Value<string>();
 			}
-		}
-
-		public PlayReadyProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._KeySeed = data.TryGetValueSafe<string>("keySeed");
 		}
 		#endregion
 

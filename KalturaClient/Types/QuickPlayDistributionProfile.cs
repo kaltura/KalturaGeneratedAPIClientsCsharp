@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -76,6 +78,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string SftpHost
 		{
 			get { return _SftpHost; }
@@ -85,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpHost");
 			}
 		}
+		[JsonProperty]
 		public string SftpLogin
 		{
 			get { return _SftpLogin; }
@@ -94,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpLogin");
 			}
 		}
+		[JsonProperty]
 		public string SftpPass
 		{
 			get { return _SftpPass; }
@@ -103,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpPass");
 			}
 		}
+		[JsonProperty]
 		public string SftpBasePath
 		{
 			get { return _SftpBasePath; }
@@ -112,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpBasePath");
 			}
 		}
+		[JsonProperty]
 		public string ChannelTitle
 		{
 			get { return _ChannelTitle; }
@@ -121,6 +128,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelTitle");
 			}
 		}
+		[JsonProperty]
 		public string ChannelLink
 		{
 			get { return _ChannelLink; }
@@ -130,6 +138,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelLink");
 			}
 		}
+		[JsonProperty]
 		public string ChannelDescription
 		{
 			get { return _ChannelDescription; }
@@ -139,6 +148,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelDescription");
 			}
 		}
+		[JsonProperty]
 		public string ChannelManagingEditor
 		{
 			get { return _ChannelManagingEditor; }
@@ -148,6 +158,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelManagingEditor");
 			}
 		}
+		[JsonProperty]
 		public string ChannelLanguage
 		{
 			get { return _ChannelLanguage; }
@@ -157,6 +168,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelLanguage");
 			}
 		}
+		[JsonProperty]
 		public string ChannelImageTitle
 		{
 			get { return _ChannelImageTitle; }
@@ -166,6 +178,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelImageTitle");
 			}
 		}
+		[JsonProperty]
 		public string ChannelImageWidth
 		{
 			get { return _ChannelImageWidth; }
@@ -175,6 +188,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelImageWidth");
 			}
 		}
+		[JsonProperty]
 		public string ChannelImageHeight
 		{
 			get { return _ChannelImageHeight; }
@@ -184,6 +198,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelImageHeight");
 			}
 		}
+		[JsonProperty]
 		public string ChannelImageLink
 		{
 			get { return _ChannelImageLink; }
@@ -193,6 +208,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelImageLink");
 			}
 		}
+		[JsonProperty]
 		public string ChannelImageUrl
 		{
 			get { return _ChannelImageUrl; }
@@ -202,6 +218,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelImageUrl");
 			}
 		}
+		[JsonProperty]
 		public string ChannelCopyright
 		{
 			get { return _ChannelCopyright; }
@@ -211,6 +228,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelCopyright");
 			}
 		}
+		[JsonProperty]
 		public string ChannelGenerator
 		{
 			get { return _ChannelGenerator; }
@@ -220,6 +238,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelGenerator");
 			}
 		}
+		[JsonProperty]
 		public string ChannelRating
 		{
 			get { return _ChannelRating; }
@@ -236,86 +255,76 @@ namespace Kaltura.Types
 		{
 		}
 
-		public QuickPlayDistributionProfile(XmlElement node) : base(node)
+		public QuickPlayDistributionProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["sftpHost"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "sftpHost":
-						this._SftpHost = propertyNode.InnerText;
-						continue;
-					case "sftpLogin":
-						this._SftpLogin = propertyNode.InnerText;
-						continue;
-					case "sftpPass":
-						this._SftpPass = propertyNode.InnerText;
-						continue;
-					case "sftpBasePath":
-						this._SftpBasePath = propertyNode.InnerText;
-						continue;
-					case "channelTitle":
-						this._ChannelTitle = propertyNode.InnerText;
-						continue;
-					case "channelLink":
-						this._ChannelLink = propertyNode.InnerText;
-						continue;
-					case "channelDescription":
-						this._ChannelDescription = propertyNode.InnerText;
-						continue;
-					case "channelManagingEditor":
-						this._ChannelManagingEditor = propertyNode.InnerText;
-						continue;
-					case "channelLanguage":
-						this._ChannelLanguage = propertyNode.InnerText;
-						continue;
-					case "channelImageTitle":
-						this._ChannelImageTitle = propertyNode.InnerText;
-						continue;
-					case "channelImageWidth":
-						this._ChannelImageWidth = propertyNode.InnerText;
-						continue;
-					case "channelImageHeight":
-						this._ChannelImageHeight = propertyNode.InnerText;
-						continue;
-					case "channelImageLink":
-						this._ChannelImageLink = propertyNode.InnerText;
-						continue;
-					case "channelImageUrl":
-						this._ChannelImageUrl = propertyNode.InnerText;
-						continue;
-					case "channelCopyright":
-						this._ChannelCopyright = propertyNode.InnerText;
-						continue;
-					case "channelGenerator":
-						this._ChannelGenerator = propertyNode.InnerText;
-						continue;
-					case "channelRating":
-						this._ChannelRating = propertyNode.InnerText;
-						continue;
-				}
+				this._SftpHost = node["sftpHost"].Value<string>();
 			}
-		}
-
-		public QuickPlayDistributionProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._SftpHost = data.TryGetValueSafe<string>("sftpHost");
-			    this._SftpLogin = data.TryGetValueSafe<string>("sftpLogin");
-			    this._SftpPass = data.TryGetValueSafe<string>("sftpPass");
-			    this._SftpBasePath = data.TryGetValueSafe<string>("sftpBasePath");
-			    this._ChannelTitle = data.TryGetValueSafe<string>("channelTitle");
-			    this._ChannelLink = data.TryGetValueSafe<string>("channelLink");
-			    this._ChannelDescription = data.TryGetValueSafe<string>("channelDescription");
-			    this._ChannelManagingEditor = data.TryGetValueSafe<string>("channelManagingEditor");
-			    this._ChannelLanguage = data.TryGetValueSafe<string>("channelLanguage");
-			    this._ChannelImageTitle = data.TryGetValueSafe<string>("channelImageTitle");
-			    this._ChannelImageWidth = data.TryGetValueSafe<string>("channelImageWidth");
-			    this._ChannelImageHeight = data.TryGetValueSafe<string>("channelImageHeight");
-			    this._ChannelImageLink = data.TryGetValueSafe<string>("channelImageLink");
-			    this._ChannelImageUrl = data.TryGetValueSafe<string>("channelImageUrl");
-			    this._ChannelCopyright = data.TryGetValueSafe<string>("channelCopyright");
-			    this._ChannelGenerator = data.TryGetValueSafe<string>("channelGenerator");
-			    this._ChannelRating = data.TryGetValueSafe<string>("channelRating");
+			if(node["sftpLogin"] != null)
+			{
+				this._SftpLogin = node["sftpLogin"].Value<string>();
+			}
+			if(node["sftpPass"] != null)
+			{
+				this._SftpPass = node["sftpPass"].Value<string>();
+			}
+			if(node["sftpBasePath"] != null)
+			{
+				this._SftpBasePath = node["sftpBasePath"].Value<string>();
+			}
+			if(node["channelTitle"] != null)
+			{
+				this._ChannelTitle = node["channelTitle"].Value<string>();
+			}
+			if(node["channelLink"] != null)
+			{
+				this._ChannelLink = node["channelLink"].Value<string>();
+			}
+			if(node["channelDescription"] != null)
+			{
+				this._ChannelDescription = node["channelDescription"].Value<string>();
+			}
+			if(node["channelManagingEditor"] != null)
+			{
+				this._ChannelManagingEditor = node["channelManagingEditor"].Value<string>();
+			}
+			if(node["channelLanguage"] != null)
+			{
+				this._ChannelLanguage = node["channelLanguage"].Value<string>();
+			}
+			if(node["channelImageTitle"] != null)
+			{
+				this._ChannelImageTitle = node["channelImageTitle"].Value<string>();
+			}
+			if(node["channelImageWidth"] != null)
+			{
+				this._ChannelImageWidth = node["channelImageWidth"].Value<string>();
+			}
+			if(node["channelImageHeight"] != null)
+			{
+				this._ChannelImageHeight = node["channelImageHeight"].Value<string>();
+			}
+			if(node["channelImageLink"] != null)
+			{
+				this._ChannelImageLink = node["channelImageLink"].Value<string>();
+			}
+			if(node["channelImageUrl"] != null)
+			{
+				this._ChannelImageUrl = node["channelImageUrl"].Value<string>();
+			}
+			if(node["channelCopyright"] != null)
+			{
+				this._ChannelCopyright = node["channelCopyright"].Value<string>();
+			}
+			if(node["channelGenerator"] != null)
+			{
+				this._ChannelGenerator = node["channelGenerator"].Value<string>();
+			}
+			if(node["channelRating"] != null)
+			{
+				this._ChannelRating = node["channelRating"].Value<string>();
+			}
 		}
 		#endregion
 

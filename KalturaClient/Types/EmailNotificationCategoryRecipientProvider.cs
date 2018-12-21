@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public StringValue CategoryId
 		{
 			get { return _CategoryId; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryId");
 			}
 		}
+		[JsonProperty]
 		public StringValue CategoryIds
 		{
 			get { return _CategoryIds; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryIds");
 			}
 		}
+		[JsonProperty]
 		public CategoryUserProviderFilter CategoryUserFilter
 		{
 			get { return _CategoryUserFilter; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EmailNotificationCategoryRecipientProvider(XmlElement node) : base(node)
+		public EmailNotificationCategoryRecipientProvider(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["categoryId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "categoryId":
-						this._CategoryId = ObjectFactory.Create<StringValue>(propertyNode);
-						continue;
-					case "categoryIds":
-						this._CategoryIds = ObjectFactory.Create<StringValue>(propertyNode);
-						continue;
-					case "categoryUserFilter":
-						this._CategoryUserFilter = ObjectFactory.Create<CategoryUserProviderFilter>(propertyNode);
-						continue;
-				}
+				this._CategoryId = ObjectFactory.Create<StringValue>(node["categoryId"]);
 			}
-		}
-
-		public EmailNotificationCategoryRecipientProvider(IDictionary<string,object> data) : base(data)
-		{
-			    this._CategoryId = ObjectFactory.Create<StringValue>(data.TryGetValueSafe<IDictionary<string,object>>("categoryId"));
-			    this._CategoryIds = ObjectFactory.Create<StringValue>(data.TryGetValueSafe<IDictionary<string,object>>("categoryIds"));
-			    this._CategoryUserFilter = ObjectFactory.Create<CategoryUserProviderFilter>(data.TryGetValueSafe<IDictionary<string,object>>("categoryUserFilter"));
+			if(node["categoryIds"] != null)
+			{
+				this._CategoryIds = ObjectFactory.Create<StringValue>(node["categoryIds"]);
+			}
+			if(node["categoryUserFilter"] != null)
+			{
+				this._CategoryUserFilter = ObjectFactory.Create<CategoryUserProviderFilter>(node["categoryUserFilter"]);
+			}
 		}
 		#endregion
 

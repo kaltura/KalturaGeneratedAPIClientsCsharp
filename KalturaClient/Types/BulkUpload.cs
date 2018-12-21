@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -78,6 +80,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public long Id
 		{
 			get { return _Id; }
@@ -87,6 +90,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		[JsonProperty]
 		public string UploadedBy
 		{
 			get { return _UploadedBy; }
@@ -96,6 +100,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UploadedBy");
 			}
 		}
+		[JsonProperty]
 		public string UploadedByUserId
 		{
 			get { return _UploadedByUserId; }
@@ -105,6 +110,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UploadedByUserId");
 			}
 		}
+		[JsonProperty]
 		public int UploadedOn
 		{
 			get { return _UploadedOn; }
@@ -114,6 +120,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UploadedOn");
 			}
 		}
+		[JsonProperty]
 		public int NumOfEntries
 		{
 			get { return _NumOfEntries; }
@@ -123,6 +130,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("NumOfEntries");
 			}
 		}
+		[JsonProperty]
 		public BatchJobStatus Status
 		{
 			get { return _Status; }
@@ -132,6 +140,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		[JsonProperty]
 		public string LogFileUrl
 		{
 			get { return _LogFileUrl; }
@@ -141,6 +150,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LogFileUrl");
 			}
 		}
+		[JsonProperty]
 		public string CsvFileUrl
 		{
 			get { return _CsvFileUrl; }
@@ -150,6 +160,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CsvFileUrl");
 			}
 		}
+		[JsonProperty]
 		public string BulkFileUrl
 		{
 			get { return _BulkFileUrl; }
@@ -159,6 +170,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BulkFileUrl");
 			}
 		}
+		[JsonProperty]
 		public BulkUploadType BulkUploadType
 		{
 			get { return _BulkUploadType; }
@@ -168,6 +180,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BulkUploadType");
 			}
 		}
+		[JsonProperty]
 		public IList<BulkUploadResult> Results
 		{
 			get { return _Results; }
@@ -177,6 +190,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Results");
 			}
 		}
+		[JsonProperty]
 		public string Error
 		{
 			get { return _Error; }
@@ -186,6 +200,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Error");
 			}
 		}
+		[JsonProperty]
 		public BatchJobErrorTypes ErrorType
 		{
 			get { return _ErrorType; }
@@ -195,6 +210,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrorType");
 			}
 		}
+		[JsonProperty]
 		public int ErrorNumber
 		{
 			get { return _ErrorNumber; }
@@ -204,6 +220,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrorNumber");
 			}
 		}
+		[JsonProperty]
 		public string FileName
 		{
 			get { return _FileName; }
@@ -213,6 +230,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileName");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -222,6 +240,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public int NumOfObjects
 		{
 			get { return _NumOfObjects; }
@@ -231,6 +250,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("NumOfObjects");
 			}
 		}
+		[JsonProperty]
 		public BulkUploadObjectType BulkUploadObjectType
 		{
 			get { return _BulkUploadObjectType; }
@@ -247,99 +267,84 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BulkUpload(XmlElement node) : base(node)
+		public BulkUpload(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Id = ParseLong(node["id"].Value<string>());
+			}
+			if(node["uploadedBy"] != null)
+			{
+				this._UploadedBy = node["uploadedBy"].Value<string>();
+			}
+			if(node["uploadedByUserId"] != null)
+			{
+				this._UploadedByUserId = node["uploadedByUserId"].Value<string>();
+			}
+			if(node["uploadedOn"] != null)
+			{
+				this._UploadedOn = ParseInt(node["uploadedOn"].Value<string>());
+			}
+			if(node["numOfEntries"] != null)
+			{
+				this._NumOfEntries = ParseInt(node["numOfEntries"].Value<string>());
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (BatchJobStatus)ParseEnum(typeof(BatchJobStatus), node["status"].Value<string>());
+			}
+			if(node["logFileUrl"] != null)
+			{
+				this._LogFileUrl = node["logFileUrl"].Value<string>();
+			}
+			if(node["csvFileUrl"] != null)
+			{
+				this._CsvFileUrl = node["csvFileUrl"].Value<string>();
+			}
+			if(node["bulkFileUrl"] != null)
+			{
+				this._BulkFileUrl = node["bulkFileUrl"].Value<string>();
+			}
+			if(node["bulkUploadType"] != null)
+			{
+				this._BulkUploadType = (BulkUploadType)StringEnum.Parse(typeof(BulkUploadType), node["bulkUploadType"].Value<string>());
+			}
+			if(node["results"] != null)
+			{
+				this._Results = new List<BulkUploadResult>();
+				foreach(var arrayNode in node["results"].Children())
 				{
-					case "id":
-						this._Id = ParseLong(propertyNode.InnerText);
-						continue;
-					case "uploadedBy":
-						this._UploadedBy = propertyNode.InnerText;
-						continue;
-					case "uploadedByUserId":
-						this._UploadedByUserId = propertyNode.InnerText;
-						continue;
-					case "uploadedOn":
-						this._UploadedOn = ParseInt(propertyNode.InnerText);
-						continue;
-					case "numOfEntries":
-						this._NumOfEntries = ParseInt(propertyNode.InnerText);
-						continue;
-					case "status":
-						this._Status = (BatchJobStatus)ParseEnum(typeof(BatchJobStatus), propertyNode.InnerText);
-						continue;
-					case "logFileUrl":
-						this._LogFileUrl = propertyNode.InnerText;
-						continue;
-					case "csvFileUrl":
-						this._CsvFileUrl = propertyNode.InnerText;
-						continue;
-					case "bulkFileUrl":
-						this._BulkFileUrl = propertyNode.InnerText;
-						continue;
-					case "bulkUploadType":
-						this._BulkUploadType = (BulkUploadType)StringEnum.Parse(typeof(BulkUploadType), propertyNode.InnerText);
-						continue;
-					case "results":
-						this._Results = new List<BulkUploadResult>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Results.Add(ObjectFactory.Create<BulkUploadResult>(arrayNode));
-						}
-						continue;
-					case "error":
-						this._Error = propertyNode.InnerText;
-						continue;
-					case "errorType":
-						this._ErrorType = (BatchJobErrorTypes)ParseEnum(typeof(BatchJobErrorTypes), propertyNode.InnerText);
-						continue;
-					case "errorNumber":
-						this._ErrorNumber = ParseInt(propertyNode.InnerText);
-						continue;
-					case "fileName":
-						this._FileName = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "numOfObjects":
-						this._NumOfObjects = ParseInt(propertyNode.InnerText);
-						continue;
-					case "bulkUploadObjectType":
-						this._BulkUploadObjectType = (BulkUploadObjectType)StringEnum.Parse(typeof(BulkUploadObjectType), propertyNode.InnerText);
-						continue;
+					this._Results.Add(ObjectFactory.Create<BulkUploadResult>(arrayNode));
 				}
 			}
-		}
-
-		public BulkUpload(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<long>("id");
-			    this._UploadedBy = data.TryGetValueSafe<string>("uploadedBy");
-			    this._UploadedByUserId = data.TryGetValueSafe<string>("uploadedByUserId");
-			    this._UploadedOn = data.TryGetValueSafe<int>("uploadedOn");
-			    this._NumOfEntries = data.TryGetValueSafe<int>("numOfEntries");
-			    this._Status = (BatchJobStatus)ParseEnum(typeof(BatchJobStatus), data.TryGetValueSafe<int>("status"));
-			    this._LogFileUrl = data.TryGetValueSafe<string>("logFileUrl");
-			    this._CsvFileUrl = data.TryGetValueSafe<string>("csvFileUrl");
-			    this._BulkFileUrl = data.TryGetValueSafe<string>("bulkFileUrl");
-			    this._BulkUploadType = (BulkUploadType)StringEnum.Parse(typeof(BulkUploadType), data.TryGetValueSafe<string>("bulkUploadType"));
-			    this._Results = new List<BulkUploadResult>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("results", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Results.Add(ObjectFactory.Create<BulkUploadResult>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._Error = data.TryGetValueSafe<string>("error");
-			    this._ErrorType = (BatchJobErrorTypes)ParseEnum(typeof(BatchJobErrorTypes), data.TryGetValueSafe<int>("errorType"));
-			    this._ErrorNumber = data.TryGetValueSafe<int>("errorNumber");
-			    this._FileName = data.TryGetValueSafe<string>("fileName");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._NumOfObjects = data.TryGetValueSafe<int>("numOfObjects");
-			    this._BulkUploadObjectType = (BulkUploadObjectType)StringEnum.Parse(typeof(BulkUploadObjectType), data.TryGetValueSafe<string>("bulkUploadObjectType"));
+			if(node["error"] != null)
+			{
+				this._Error = node["error"].Value<string>();
+			}
+			if(node["errorType"] != null)
+			{
+				this._ErrorType = (BatchJobErrorTypes)ParseEnum(typeof(BatchJobErrorTypes), node["errorType"].Value<string>());
+			}
+			if(node["errorNumber"] != null)
+			{
+				this._ErrorNumber = ParseInt(node["errorNumber"].Value<string>());
+			}
+			if(node["fileName"] != null)
+			{
+				this._FileName = node["fileName"].Value<string>();
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["numOfObjects"] != null)
+			{
+				this._NumOfObjects = ParseInt(node["numOfObjects"].Value<string>());
+			}
+			if(node["bulkUploadObjectType"] != null)
+			{
+				this._BulkUploadObjectType = (BulkUploadObjectType)StringEnum.Parse(typeof(BulkUploadObjectType), node["bulkUploadObjectType"].Value<string>());
+			}
 		}
 		#endregion
 

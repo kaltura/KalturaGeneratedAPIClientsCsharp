@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public WidevineRepositorySyncMode SyncMode
 		{
 			get { return _SyncMode; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SyncMode");
 			}
 		}
+		[JsonProperty]
 		public string WvAssetIds
 		{
 			get { return _WvAssetIds; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WvAssetIds");
 			}
 		}
+		[JsonProperty]
 		public string ModifiedAttributes
 		{
 			get { return _ModifiedAttributes; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ModifiedAttributes");
 			}
 		}
+		[JsonProperty]
 		public int MonitorSyncCompletion
 		{
 			get { return _MonitorSyncCompletion; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public WidevineRepositorySyncJobData(XmlElement node) : base(node)
+		public WidevineRepositorySyncJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["syncMode"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "syncMode":
-						this._SyncMode = (WidevineRepositorySyncMode)ParseEnum(typeof(WidevineRepositorySyncMode), propertyNode.InnerText);
-						continue;
-					case "wvAssetIds":
-						this._WvAssetIds = propertyNode.InnerText;
-						continue;
-					case "modifiedAttributes":
-						this._ModifiedAttributes = propertyNode.InnerText;
-						continue;
-					case "monitorSyncCompletion":
-						this._MonitorSyncCompletion = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._SyncMode = (WidevineRepositorySyncMode)ParseEnum(typeof(WidevineRepositorySyncMode), node["syncMode"].Value<string>());
 			}
-		}
-
-		public WidevineRepositorySyncJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._SyncMode = (WidevineRepositorySyncMode)ParseEnum(typeof(WidevineRepositorySyncMode), data.TryGetValueSafe<int>("syncMode"));
-			    this._WvAssetIds = data.TryGetValueSafe<string>("wvAssetIds");
-			    this._ModifiedAttributes = data.TryGetValueSafe<string>("modifiedAttributes");
-			    this._MonitorSyncCompletion = data.TryGetValueSafe<int>("monitorSyncCompletion");
+			if(node["wvAssetIds"] != null)
+			{
+				this._WvAssetIds = node["wvAssetIds"].Value<string>();
+			}
+			if(node["modifiedAttributes"] != null)
+			{
+				this._ModifiedAttributes = node["modifiedAttributes"].Value<string>();
+			}
+			if(node["monitorSyncCompletion"] != null)
+			{
+				this._MonitorSyncCompletion = ParseInt(node["monitorSyncCompletion"].Value<string>());
+			}
 		}
 		#endregion
 

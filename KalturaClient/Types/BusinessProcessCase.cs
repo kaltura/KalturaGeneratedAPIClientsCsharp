@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -52,6 +54,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Id
 		{
 			get { return _Id; }
@@ -61,6 +64,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		[JsonProperty]
 		public string BusinessProcessId
 		{
 			get { return _BusinessProcessId; }
@@ -70,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BusinessProcessId");
 			}
 		}
+		[JsonProperty]
 		public int BusinessProcessStartNotificationTemplateId
 		{
 			get { return _BusinessProcessStartNotificationTemplateId; }
@@ -79,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BusinessProcessStartNotificationTemplateId");
 			}
 		}
+		[JsonProperty]
 		public bool? Suspended
 		{
 			get { return _Suspended; }
@@ -88,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Suspended");
 			}
 		}
+		[JsonProperty]
 		public string ActivityId
 		{
 			get { return _ActivityId; }
@@ -104,38 +111,28 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BusinessProcessCase(XmlElement node) : base(node)
+		public BusinessProcessCase(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = propertyNode.InnerText;
-						continue;
-					case "businessProcessId":
-						this._BusinessProcessId = propertyNode.InnerText;
-						continue;
-					case "businessProcessStartNotificationTemplateId":
-						this._BusinessProcessStartNotificationTemplateId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "suspended":
-						this._Suspended = ParseBool(propertyNode.InnerText);
-						continue;
-					case "activityId":
-						this._ActivityId = propertyNode.InnerText;
-						continue;
-				}
+				this._Id = node["id"].Value<string>();
 			}
-		}
-
-		public BusinessProcessCase(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<string>("id");
-			    this._BusinessProcessId = data.TryGetValueSafe<string>("businessProcessId");
-			    this._BusinessProcessStartNotificationTemplateId = data.TryGetValueSafe<int>("businessProcessStartNotificationTemplateId");
-			    this._Suspended = data.TryGetValueSafe<bool>("suspended");
-			    this._ActivityId = data.TryGetValueSafe<string>("activityId");
+			if(node["businessProcessId"] != null)
+			{
+				this._BusinessProcessId = node["businessProcessId"].Value<string>();
+			}
+			if(node["businessProcessStartNotificationTemplateId"] != null)
+			{
+				this._BusinessProcessStartNotificationTemplateId = ParseInt(node["businessProcessStartNotificationTemplateId"].Value<string>());
+			}
+			if(node["suspended"] != null)
+			{
+				this._Suspended = ParseBool(node["suspended"].Value<string>());
+			}
+			if(node["activityId"] != null)
+			{
+				this._ActivityId = node["activityId"].Value<string>();
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -76,6 +78,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public ThumbCropType CropType
 		{
 			get { return _CropType; }
@@ -85,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CropType");
 			}
 		}
+		[JsonProperty]
 		public int Quality
 		{
 			get { return _Quality; }
@@ -94,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Quality");
 			}
 		}
+		[JsonProperty]
 		public int CropX
 		{
 			get { return _CropX; }
@@ -103,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CropX");
 			}
 		}
+		[JsonProperty]
 		public int CropY
 		{
 			get { return _CropY; }
@@ -112,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CropY");
 			}
 		}
+		[JsonProperty]
 		public int CropWidth
 		{
 			get { return _CropWidth; }
@@ -121,6 +128,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CropWidth");
 			}
 		}
+		[JsonProperty]
 		public int CropHeight
 		{
 			get { return _CropHeight; }
@@ -130,6 +138,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CropHeight");
 			}
 		}
+		[JsonProperty]
 		public float VideoOffset
 		{
 			get { return _VideoOffset; }
@@ -139,6 +148,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoOffset");
 			}
 		}
+		[JsonProperty]
 		public int Width
 		{
 			get { return _Width; }
@@ -148,6 +158,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Width");
 			}
 		}
+		[JsonProperty]
 		public int Height
 		{
 			get { return _Height; }
@@ -157,6 +168,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Height");
 			}
 		}
+		[JsonProperty]
 		public float ScaleWidth
 		{
 			get { return _ScaleWidth; }
@@ -166,6 +178,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ScaleWidth");
 			}
 		}
+		[JsonProperty]
 		public float ScaleHeight
 		{
 			get { return _ScaleHeight; }
@@ -175,6 +188,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ScaleHeight");
 			}
 		}
+		[JsonProperty]
 		public string BackgroundColor
 		{
 			get { return _BackgroundColor; }
@@ -184,6 +198,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BackgroundColor");
 			}
 		}
+		[JsonProperty]
 		public int SourceParamsId
 		{
 			get { return _SourceParamsId; }
@@ -193,6 +208,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceParamsId");
 			}
 		}
+		[JsonProperty]
 		public ContainerFormat Format
 		{
 			get { return _Format; }
@@ -202,6 +218,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Format");
 			}
 		}
+		[JsonProperty]
 		public int Density
 		{
 			get { return _Density; }
@@ -211,6 +228,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Density");
 			}
 		}
+		[JsonProperty]
 		public bool? StripProfiles
 		{
 			get { return _StripProfiles; }
@@ -220,6 +238,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StripProfiles");
 			}
 		}
+		[JsonProperty]
 		public int VideoOffsetInPercentage
 		{
 			get { return _VideoOffsetInPercentage; }
@@ -236,86 +255,76 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ThumbParams(XmlElement node) : base(node)
+		public ThumbParams(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["cropType"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "cropType":
-						this._CropType = (ThumbCropType)ParseEnum(typeof(ThumbCropType), propertyNode.InnerText);
-						continue;
-					case "quality":
-						this._Quality = ParseInt(propertyNode.InnerText);
-						continue;
-					case "cropX":
-						this._CropX = ParseInt(propertyNode.InnerText);
-						continue;
-					case "cropY":
-						this._CropY = ParseInt(propertyNode.InnerText);
-						continue;
-					case "cropWidth":
-						this._CropWidth = ParseInt(propertyNode.InnerText);
-						continue;
-					case "cropHeight":
-						this._CropHeight = ParseInt(propertyNode.InnerText);
-						continue;
-					case "videoOffset":
-						this._VideoOffset = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "width":
-						this._Width = ParseInt(propertyNode.InnerText);
-						continue;
-					case "height":
-						this._Height = ParseInt(propertyNode.InnerText);
-						continue;
-					case "scaleWidth":
-						this._ScaleWidth = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "scaleHeight":
-						this._ScaleHeight = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "backgroundColor":
-						this._BackgroundColor = propertyNode.InnerText;
-						continue;
-					case "sourceParamsId":
-						this._SourceParamsId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "format":
-						this._Format = (ContainerFormat)StringEnum.Parse(typeof(ContainerFormat), propertyNode.InnerText);
-						continue;
-					case "density":
-						this._Density = ParseInt(propertyNode.InnerText);
-						continue;
-					case "stripProfiles":
-						this._StripProfiles = ParseBool(propertyNode.InnerText);
-						continue;
-					case "videoOffsetInPercentage":
-						this._VideoOffsetInPercentage = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._CropType = (ThumbCropType)ParseEnum(typeof(ThumbCropType), node["cropType"].Value<string>());
 			}
-		}
-
-		public ThumbParams(IDictionary<string,object> data) : base(data)
-		{
-			    this._CropType = (ThumbCropType)ParseEnum(typeof(ThumbCropType), data.TryGetValueSafe<int>("cropType"));
-			    this._Quality = data.TryGetValueSafe<int>("quality");
-			    this._CropX = data.TryGetValueSafe<int>("cropX");
-			    this._CropY = data.TryGetValueSafe<int>("cropY");
-			    this._CropWidth = data.TryGetValueSafe<int>("cropWidth");
-			    this._CropHeight = data.TryGetValueSafe<int>("cropHeight");
-			    this._VideoOffset = data.TryGetValueSafe<float>("videoOffset");
-			    this._Width = data.TryGetValueSafe<int>("width");
-			    this._Height = data.TryGetValueSafe<int>("height");
-			    this._ScaleWidth = data.TryGetValueSafe<float>("scaleWidth");
-			    this._ScaleHeight = data.TryGetValueSafe<float>("scaleHeight");
-			    this._BackgroundColor = data.TryGetValueSafe<string>("backgroundColor");
-			    this._SourceParamsId = data.TryGetValueSafe<int>("sourceParamsId");
-			    this._Format = (ContainerFormat)StringEnum.Parse(typeof(ContainerFormat), data.TryGetValueSafe<string>("format"));
-			    this._Density = data.TryGetValueSafe<int>("density");
-			    this._StripProfiles = data.TryGetValueSafe<bool>("stripProfiles");
-			    this._VideoOffsetInPercentage = data.TryGetValueSafe<int>("videoOffsetInPercentage");
+			if(node["quality"] != null)
+			{
+				this._Quality = ParseInt(node["quality"].Value<string>());
+			}
+			if(node["cropX"] != null)
+			{
+				this._CropX = ParseInt(node["cropX"].Value<string>());
+			}
+			if(node["cropY"] != null)
+			{
+				this._CropY = ParseInt(node["cropY"].Value<string>());
+			}
+			if(node["cropWidth"] != null)
+			{
+				this._CropWidth = ParseInt(node["cropWidth"].Value<string>());
+			}
+			if(node["cropHeight"] != null)
+			{
+				this._CropHeight = ParseInt(node["cropHeight"].Value<string>());
+			}
+			if(node["videoOffset"] != null)
+			{
+				this._VideoOffset = ParseFloat(node["videoOffset"].Value<string>());
+			}
+			if(node["width"] != null)
+			{
+				this._Width = ParseInt(node["width"].Value<string>());
+			}
+			if(node["height"] != null)
+			{
+				this._Height = ParseInt(node["height"].Value<string>());
+			}
+			if(node["scaleWidth"] != null)
+			{
+				this._ScaleWidth = ParseFloat(node["scaleWidth"].Value<string>());
+			}
+			if(node["scaleHeight"] != null)
+			{
+				this._ScaleHeight = ParseFloat(node["scaleHeight"].Value<string>());
+			}
+			if(node["backgroundColor"] != null)
+			{
+				this._BackgroundColor = node["backgroundColor"].Value<string>();
+			}
+			if(node["sourceParamsId"] != null)
+			{
+				this._SourceParamsId = ParseInt(node["sourceParamsId"].Value<string>());
+			}
+			if(node["format"] != null)
+			{
+				this._Format = (ContainerFormat)StringEnum.Parse(typeof(ContainerFormat), node["format"].Value<string>());
+			}
+			if(node["density"] != null)
+			{
+				this._Density = ParseInt(node["density"].Value<string>());
+			}
+			if(node["stripProfiles"] != null)
+			{
+				this._StripProfiles = ParseBool(node["stripProfiles"].Value<string>());
+			}
+			if(node["videoOffsetInPercentage"] != null)
+			{
+				this._VideoOffsetInPercentage = ParseInt(node["videoOffsetInPercentage"].Value<string>());
+			}
 		}
 		#endregion
 

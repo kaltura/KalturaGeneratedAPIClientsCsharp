@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,10 +50,17 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public bool? HasRealThumbnail
 		{
 			get { return _HasRealThumbnail; }
+			private set 
+			{ 
+				_HasRealThumbnail = value;
+				OnPropertyChanged("HasRealThumbnail");
+			}
 		}
+		[JsonProperty]
 		public EditorType EditorType
 		{
 			get { return _EditorType; }
@@ -61,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EditorType");
 			}
 		}
+		[JsonProperty]
 		public string DataContent
 		{
 			get { return _DataContent; }
@@ -77,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public MixEntry(XmlElement node) : base(node)
+		public MixEntry(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["hasRealThumbnail"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "hasRealThumbnail":
-						this._HasRealThumbnail = ParseBool(propertyNode.InnerText);
-						continue;
-					case "editorType":
-						this._EditorType = (EditorType)ParseEnum(typeof(EditorType), propertyNode.InnerText);
-						continue;
-					case "dataContent":
-						this._DataContent = propertyNode.InnerText;
-						continue;
-				}
+				this._HasRealThumbnail = ParseBool(node["hasRealThumbnail"].Value<string>());
 			}
-		}
-
-		public MixEntry(IDictionary<string,object> data) : base(data)
-		{
-			    this._HasRealThumbnail = data.TryGetValueSafe<bool>("hasRealThumbnail");
-			    this._EditorType = (EditorType)ParseEnum(typeof(EditorType), data.TryGetValueSafe<int>("editorType"));
-			    this._DataContent = data.TryGetValueSafe<string>("dataContent");
+			if(node["editorType"] != null)
+			{
+				this._EditorType = (EditorType)ParseEnum(typeof(EditorType), node["editorType"].Value<string>());
+			}
+			if(node["dataContent"] != null)
+			{
+				this._DataContent = node["dataContent"].Value<string>();
+			}
 		}
 		#endregion
 

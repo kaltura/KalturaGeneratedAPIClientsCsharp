@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -54,6 +56,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string AppPrefix
 		{
 			get { return _AppPrefix; }
@@ -63,6 +66,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AppPrefix");
 			}
 		}
+		[JsonProperty]
 		public string Transcoder
 		{
 			get { return _Transcoder; }
@@ -72,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Transcoder");
 			}
 		}
+		[JsonProperty]
 		public int GPUID
 		{
 			get { return _GPUID; }
@@ -81,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("GPUID");
 			}
 		}
+		[JsonProperty]
 		public int LiveServicePort
 		{
 			get { return _LiveServicePort; }
@@ -90,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LiveServicePort");
 			}
 		}
+		[JsonProperty]
 		public string LiveServiceProtocol
 		{
 			get { return _LiveServiceProtocol; }
@@ -99,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LiveServiceProtocol");
 			}
 		}
+		[JsonProperty]
 		public string LiveServiceInternalDomain
 		{
 			get { return _LiveServiceInternalDomain; }
@@ -115,42 +123,32 @@ namespace Kaltura.Types
 		{
 		}
 
-		public WowzaMediaServerNode(XmlElement node) : base(node)
+		public WowzaMediaServerNode(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["appPrefix"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "appPrefix":
-						this._AppPrefix = propertyNode.InnerText;
-						continue;
-					case "transcoder":
-						this._Transcoder = propertyNode.InnerText;
-						continue;
-					case "GPUID":
-						this._GPUID = ParseInt(propertyNode.InnerText);
-						continue;
-					case "liveServicePort":
-						this._LiveServicePort = ParseInt(propertyNode.InnerText);
-						continue;
-					case "liveServiceProtocol":
-						this._LiveServiceProtocol = propertyNode.InnerText;
-						continue;
-					case "liveServiceInternalDomain":
-						this._LiveServiceInternalDomain = propertyNode.InnerText;
-						continue;
-				}
+				this._AppPrefix = node["appPrefix"].Value<string>();
 			}
-		}
-
-		public WowzaMediaServerNode(IDictionary<string,object> data) : base(data)
-		{
-			    this._AppPrefix = data.TryGetValueSafe<string>("appPrefix");
-			    this._Transcoder = data.TryGetValueSafe<string>("transcoder");
-			    this._GPUID = data.TryGetValueSafe<int>("GPUID");
-			    this._LiveServicePort = data.TryGetValueSafe<int>("liveServicePort");
-			    this._LiveServiceProtocol = data.TryGetValueSafe<string>("liveServiceProtocol");
-			    this._LiveServiceInternalDomain = data.TryGetValueSafe<string>("liveServiceInternalDomain");
+			if(node["transcoder"] != null)
+			{
+				this._Transcoder = node["transcoder"].Value<string>();
+			}
+			if(node["GPUID"] != null)
+			{
+				this._GPUID = ParseInt(node["GPUID"].Value<string>());
+			}
+			if(node["liveServicePort"] != null)
+			{
+				this._LiveServicePort = ParseInt(node["liveServicePort"].Value<string>());
+			}
+			if(node["liveServiceProtocol"] != null)
+			{
+				this._LiveServiceProtocol = node["liveServiceProtocol"].Value<string>();
+			}
+			if(node["liveServiceInternalDomain"] != null)
+			{
+				this._LiveServiceInternalDomain = node["liveServiceInternalDomain"].Value<string>();
+			}
 		}
 		#endregion
 

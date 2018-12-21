@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Left
 		{
 			get { return _Left; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Left");
 			}
 		}
+		[JsonProperty]
 		public int Top
 		{
 			get { return _Top; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Top");
 			}
 		}
+		[JsonProperty]
 		public int Width
 		{
 			get { return _Width; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Width");
 			}
 		}
+		[JsonProperty]
 		public int Height
 		{
 			get { return _Height; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CropDimensions(XmlElement node) : base(node)
+		public CropDimensions(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["left"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "left":
-						this._Left = ParseInt(propertyNode.InnerText);
-						continue;
-					case "top":
-						this._Top = ParseInt(propertyNode.InnerText);
-						continue;
-					case "width":
-						this._Width = ParseInt(propertyNode.InnerText);
-						continue;
-					case "height":
-						this._Height = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._Left = ParseInt(node["left"].Value<string>());
 			}
-		}
-
-		public CropDimensions(IDictionary<string,object> data) : base(data)
-		{
-			    this._Left = data.TryGetValueSafe<int>("left");
-			    this._Top = data.TryGetValueSafe<int>("top");
-			    this._Width = data.TryGetValueSafe<int>("width");
-			    this._Height = data.TryGetValueSafe<int>("height");
+			if(node["top"] != null)
+			{
+				this._Top = ParseInt(node["top"].Value<string>());
+			}
+			if(node["width"] != null)
+			{
+				this._Width = ParseInt(node["width"].Value<string>());
+			}
+			if(node["height"] != null)
+			{
+				this._Height = ParseInt(node["height"].Value<string>());
+			}
 		}
 		#endregion
 

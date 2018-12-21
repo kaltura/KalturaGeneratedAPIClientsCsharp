@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string UploadTokenId
 		{
 			get { return _UploadTokenId; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UploadTokenId");
 			}
 		}
+		[JsonProperty]
 		public int FileSize
 		{
 			get { return _FileSize; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileSize");
 			}
 		}
+		[JsonProperty]
 		public UploadErrorCode ErrorCode
 		{
 			get { return _ErrorCode; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrorCode");
 			}
 		}
+		[JsonProperty]
 		public string ErrorDescription
 		{
 			get { return _ErrorDescription; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UploadResponse(XmlElement node) : base(node)
+		public UploadResponse(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["uploadTokenId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "uploadTokenId":
-						this._UploadTokenId = propertyNode.InnerText;
-						continue;
-					case "fileSize":
-						this._FileSize = ParseInt(propertyNode.InnerText);
-						continue;
-					case "errorCode":
-						this._ErrorCode = (UploadErrorCode)ParseEnum(typeof(UploadErrorCode), propertyNode.InnerText);
-						continue;
-					case "errorDescription":
-						this._ErrorDescription = propertyNode.InnerText;
-						continue;
-				}
+				this._UploadTokenId = node["uploadTokenId"].Value<string>();
 			}
-		}
-
-		public UploadResponse(IDictionary<string,object> data) : base(data)
-		{
-			    this._UploadTokenId = data.TryGetValueSafe<string>("uploadTokenId");
-			    this._FileSize = data.TryGetValueSafe<int>("fileSize");
-			    this._ErrorCode = (UploadErrorCode)ParseEnum(typeof(UploadErrorCode), data.TryGetValueSafe<int>("errorCode"));
-			    this._ErrorDescription = data.TryGetValueSafe<string>("errorDescription");
+			if(node["fileSize"] != null)
+			{
+				this._FileSize = ParseInt(node["fileSize"].Value<string>());
+			}
+			if(node["errorCode"] != null)
+			{
+				this._ErrorCode = (UploadErrorCode)ParseEnum(typeof(UploadErrorCode), node["errorCode"].Value<string>());
+			}
+			if(node["errorDescription"] != null)
+			{
+				this._ErrorDescription = node["errorDescription"].Value<string>();
+			}
 		}
 		#endregion
 

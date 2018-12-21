@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public FileContainer FileContainer
 		{
 			get { return _FileContainer; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileContainer");
 			}
 		}
+		[JsonProperty]
 		public string FlavorAssetId
 		{
 			get { return _FlavorAssetId; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetId");
 			}
 		}
+		[JsonProperty]
 		public VirusScanJobResult ScanResult
 		{
 			get { return _ScanResult; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ScanResult");
 			}
 		}
+		[JsonProperty]
 		public VirusFoundAction VirusFoundAction
 		{
 			get { return _VirusFoundAction; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public VirusScanJobData(XmlElement node) : base(node)
+		public VirusScanJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["fileContainer"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "fileContainer":
-						this._FileContainer = ObjectFactory.Create<FileContainer>(propertyNode);
-						continue;
-					case "flavorAssetId":
-						this._FlavorAssetId = propertyNode.InnerText;
-						continue;
-					case "scanResult":
-						this._ScanResult = (VirusScanJobResult)ParseEnum(typeof(VirusScanJobResult), propertyNode.InnerText);
-						continue;
-					case "virusFoundAction":
-						this._VirusFoundAction = (VirusFoundAction)ParseEnum(typeof(VirusFoundAction), propertyNode.InnerText);
-						continue;
-				}
+				this._FileContainer = ObjectFactory.Create<FileContainer>(node["fileContainer"]);
 			}
-		}
-
-		public VirusScanJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._FileContainer = ObjectFactory.Create<FileContainer>(data.TryGetValueSafe<IDictionary<string,object>>("fileContainer"));
-			    this._FlavorAssetId = data.TryGetValueSafe<string>("flavorAssetId");
-			    this._ScanResult = (VirusScanJobResult)ParseEnum(typeof(VirusScanJobResult), data.TryGetValueSafe<int>("scanResult"));
-			    this._VirusFoundAction = (VirusFoundAction)ParseEnum(typeof(VirusFoundAction), data.TryGetValueSafe<int>("virusFoundAction"));
+			if(node["flavorAssetId"] != null)
+			{
+				this._FlavorAssetId = node["flavorAssetId"].Value<string>();
+			}
+			if(node["scanResult"] != null)
+			{
+				this._ScanResult = (VirusScanJobResult)ParseEnum(typeof(VirusScanJobResult), node["scanResult"].Value<string>());
+			}
+			if(node["virusFoundAction"] != null)
+			{
+				this._VirusFoundAction = (VirusFoundAction)ParseEnum(typeof(VirusFoundAction), node["virusFoundAction"].Value<string>());
+			}
 		}
 		#endregion
 

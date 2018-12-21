@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Descriptor
 		{
 			get { return _Descriptor; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Descriptor");
 			}
 		}
+		[JsonProperty]
 		public string OldValue
 		{
 			get { return _OldValue; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("OldValue");
 			}
 		}
+		[JsonProperty]
 		public string NewValue
 		{
 			get { return _NewValue; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AuditTrailChangeItem(XmlElement node) : base(node)
+		public AuditTrailChangeItem(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["descriptor"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "descriptor":
-						this._Descriptor = propertyNode.InnerText;
-						continue;
-					case "oldValue":
-						this._OldValue = propertyNode.InnerText;
-						continue;
-					case "newValue":
-						this._NewValue = propertyNode.InnerText;
-						continue;
-				}
+				this._Descriptor = node["descriptor"].Value<string>();
 			}
-		}
-
-		public AuditTrailChangeItem(IDictionary<string,object> data) : base(data)
-		{
-			    this._Descriptor = data.TryGetValueSafe<string>("descriptor");
-			    this._OldValue = data.TryGetValueSafe<string>("oldValue");
-			    this._NewValue = data.TryGetValueSafe<string>("newValue");
+			if(node["oldValue"] != null)
+			{
+				this._OldValue = node["oldValue"].Value<string>();
+			}
+			if(node["newValue"] != null)
+			{
+				this._NewValue = node["newValue"].Value<string>();
+			}
 		}
 		#endregion
 

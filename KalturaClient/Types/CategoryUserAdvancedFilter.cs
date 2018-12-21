@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string MemberIdEq
 		{
 			get { return _MemberIdEq; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MemberIdEq");
 			}
 		}
+		[JsonProperty]
 		public string MemberIdIn
 		{
 			get { return _MemberIdIn; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MemberIdIn");
 			}
 		}
+		[JsonProperty]
 		public string MemberPermissionsMatchOr
 		{
 			get { return _MemberPermissionsMatchOr; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MemberPermissionsMatchOr");
 			}
 		}
+		[JsonProperty]
 		public string MemberPermissionsMatchAnd
 		{
 			get { return _MemberPermissionsMatchAnd; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public CategoryUserAdvancedFilter(XmlElement node) : base(node)
+		public CategoryUserAdvancedFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["memberIdEq"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "memberIdEq":
-						this._MemberIdEq = propertyNode.InnerText;
-						continue;
-					case "memberIdIn":
-						this._MemberIdIn = propertyNode.InnerText;
-						continue;
-					case "memberPermissionsMatchOr":
-						this._MemberPermissionsMatchOr = propertyNode.InnerText;
-						continue;
-					case "memberPermissionsMatchAnd":
-						this._MemberPermissionsMatchAnd = propertyNode.InnerText;
-						continue;
-				}
+				this._MemberIdEq = node["memberIdEq"].Value<string>();
 			}
-		}
-
-		public CategoryUserAdvancedFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._MemberIdEq = data.TryGetValueSafe<string>("memberIdEq");
-			    this._MemberIdIn = data.TryGetValueSafe<string>("memberIdIn");
-			    this._MemberPermissionsMatchOr = data.TryGetValueSafe<string>("memberPermissionsMatchOr");
-			    this._MemberPermissionsMatchAnd = data.TryGetValueSafe<string>("memberPermissionsMatchAnd");
+			if(node["memberIdIn"] != null)
+			{
+				this._MemberIdIn = node["memberIdIn"].Value<string>();
+			}
+			if(node["memberPermissionsMatchOr"] != null)
+			{
+				this._MemberPermissionsMatchOr = node["memberPermissionsMatchOr"].Value<string>();
+			}
+			if(node["memberPermissionsMatchAnd"] != null)
+			{
+				this._MemberPermissionsMatchAnd = node["memberPermissionsMatchAnd"].Value<string>();
+			}
 		}
 		#endregion
 

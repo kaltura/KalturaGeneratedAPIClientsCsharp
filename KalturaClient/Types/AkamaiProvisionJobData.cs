@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -54,6 +56,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string WsdlUsername
 		{
 			get { return _WsdlUsername; }
@@ -63,6 +66,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WsdlUsername");
 			}
 		}
+		[JsonProperty]
 		public string WsdlPassword
 		{
 			get { return _WsdlPassword; }
@@ -72,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WsdlPassword");
 			}
 		}
+		[JsonProperty]
 		public string Cpcode
 		{
 			get { return _Cpcode; }
@@ -81,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Cpcode");
 			}
 		}
+		[JsonProperty]
 		public string EmailId
 		{
 			get { return _EmailId; }
@@ -90,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EmailId");
 			}
 		}
+		[JsonProperty]
 		public string PrimaryContact
 		{
 			get { return _PrimaryContact; }
@@ -99,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrimaryContact");
 			}
 		}
+		[JsonProperty]
 		public string SecondaryContact
 		{
 			get { return _SecondaryContact; }
@@ -115,42 +123,32 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AkamaiProvisionJobData(XmlElement node) : base(node)
+		public AkamaiProvisionJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["wsdlUsername"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "wsdlUsername":
-						this._WsdlUsername = propertyNode.InnerText;
-						continue;
-					case "wsdlPassword":
-						this._WsdlPassword = propertyNode.InnerText;
-						continue;
-					case "cpcode":
-						this._Cpcode = propertyNode.InnerText;
-						continue;
-					case "emailId":
-						this._EmailId = propertyNode.InnerText;
-						continue;
-					case "primaryContact":
-						this._PrimaryContact = propertyNode.InnerText;
-						continue;
-					case "secondaryContact":
-						this._SecondaryContact = propertyNode.InnerText;
-						continue;
-				}
+				this._WsdlUsername = node["wsdlUsername"].Value<string>();
 			}
-		}
-
-		public AkamaiProvisionJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._WsdlUsername = data.TryGetValueSafe<string>("wsdlUsername");
-			    this._WsdlPassword = data.TryGetValueSafe<string>("wsdlPassword");
-			    this._Cpcode = data.TryGetValueSafe<string>("cpcode");
-			    this._EmailId = data.TryGetValueSafe<string>("emailId");
-			    this._PrimaryContact = data.TryGetValueSafe<string>("primaryContact");
-			    this._SecondaryContact = data.TryGetValueSafe<string>("secondaryContact");
+			if(node["wsdlPassword"] != null)
+			{
+				this._WsdlPassword = node["wsdlPassword"].Value<string>();
+			}
+			if(node["cpcode"] != null)
+			{
+				this._Cpcode = node["cpcode"].Value<string>();
+			}
+			if(node["emailId"] != null)
+			{
+				this._EmailId = node["emailId"].Value<string>();
+			}
+			if(node["primaryContact"] != null)
+			{
+				this._PrimaryContact = node["primaryContact"].Value<string>();
+			}
+			if(node["secondaryContact"] != null)
+			{
+				this._SecondaryContact = node["secondaryContact"].Value<string>();
+			}
 		}
 		#endregion
 

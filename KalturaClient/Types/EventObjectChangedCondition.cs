@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ModifiedColumns
 		{
 			get { return _ModifiedColumns; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EventObjectChangedCondition(XmlElement node) : base(node)
+		public EventObjectChangedCondition(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["modifiedColumns"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "modifiedColumns":
-						this._ModifiedColumns = propertyNode.InnerText;
-						continue;
-				}
+				this._ModifiedColumns = node["modifiedColumns"].Value<string>();
 			}
-		}
-
-		public EventObjectChangedCondition(IDictionary<string,object> data) : base(data)
-		{
-			    this._ModifiedColumns = data.TryGetValueSafe<string>("modifiedColumns");
 		}
 		#endregion
 

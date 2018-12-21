@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -62,6 +64,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string WebexUserId
 		{
 			get { return _WebexUserId; }
@@ -71,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebexUserId");
 			}
 		}
+		[JsonProperty]
 		public string WebexPassword
 		{
 			get { return _WebexPassword; }
@@ -80,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebexPassword");
 			}
 		}
+		[JsonProperty]
 		public int WebexSiteId
 		{
 			get { return _WebexSiteId; }
@@ -89,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebexSiteId");
 			}
 		}
+		[JsonProperty]
 		public string WebexPartnerId
 		{
 			get { return _WebexPartnerId; }
@@ -98,6 +104,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebexPartnerId");
 			}
 		}
+		[JsonProperty]
 		public string WebexServiceUrl
 		{
 			get { return _WebexServiceUrl; }
@@ -107,6 +114,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebexServiceUrl");
 			}
 		}
+		[JsonProperty]
 		public string WebexHostIdMetadataFieldName
 		{
 			get { return _WebexHostIdMetadataFieldName; }
@@ -116,6 +124,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebexHostIdMetadataFieldName");
 			}
 		}
+		[JsonProperty]
 		public bool? DeleteFromRecycleBin
 		{
 			get { return _DeleteFromRecycleBin; }
@@ -125,6 +134,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeleteFromRecycleBin");
 			}
 		}
+		[JsonProperty]
 		public string WebexServiceType
 		{
 			get { return _WebexServiceType; }
@@ -134,6 +144,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebexServiceType");
 			}
 		}
+		[JsonProperty]
 		public string WebexSiteName
 		{
 			get { return _WebexSiteName; }
@@ -143,6 +154,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebexSiteName");
 			}
 		}
+		[JsonProperty]
 		public int DeleteFromTimestamp
 		{
 			get { return _DeleteFromTimestamp; }
@@ -159,58 +171,48 @@ namespace Kaltura.Types
 		{
 		}
 
-		public WebexDropFolder(XmlElement node) : base(node)
+		public WebexDropFolder(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["webexUserId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "webexUserId":
-						this._WebexUserId = propertyNode.InnerText;
-						continue;
-					case "webexPassword":
-						this._WebexPassword = propertyNode.InnerText;
-						continue;
-					case "webexSiteId":
-						this._WebexSiteId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "webexPartnerId":
-						this._WebexPartnerId = propertyNode.InnerText;
-						continue;
-					case "webexServiceUrl":
-						this._WebexServiceUrl = propertyNode.InnerText;
-						continue;
-					case "webexHostIdMetadataFieldName":
-						this._WebexHostIdMetadataFieldName = propertyNode.InnerText;
-						continue;
-					case "deleteFromRecycleBin":
-						this._DeleteFromRecycleBin = ParseBool(propertyNode.InnerText);
-						continue;
-					case "webexServiceType":
-						this._WebexServiceType = propertyNode.InnerText;
-						continue;
-					case "webexSiteName":
-						this._WebexSiteName = propertyNode.InnerText;
-						continue;
-					case "deleteFromTimestamp":
-						this._DeleteFromTimestamp = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._WebexUserId = node["webexUserId"].Value<string>();
 			}
-		}
-
-		public WebexDropFolder(IDictionary<string,object> data) : base(data)
-		{
-			    this._WebexUserId = data.TryGetValueSafe<string>("webexUserId");
-			    this._WebexPassword = data.TryGetValueSafe<string>("webexPassword");
-			    this._WebexSiteId = data.TryGetValueSafe<int>("webexSiteId");
-			    this._WebexPartnerId = data.TryGetValueSafe<string>("webexPartnerId");
-			    this._WebexServiceUrl = data.TryGetValueSafe<string>("webexServiceUrl");
-			    this._WebexHostIdMetadataFieldName = data.TryGetValueSafe<string>("webexHostIdMetadataFieldName");
-			    this._DeleteFromRecycleBin = data.TryGetValueSafe<bool>("deleteFromRecycleBin");
-			    this._WebexServiceType = data.TryGetValueSafe<string>("webexServiceType");
-			    this._WebexSiteName = data.TryGetValueSafe<string>("webexSiteName");
-			    this._DeleteFromTimestamp = data.TryGetValueSafe<int>("deleteFromTimestamp");
+			if(node["webexPassword"] != null)
+			{
+				this._WebexPassword = node["webexPassword"].Value<string>();
+			}
+			if(node["webexSiteId"] != null)
+			{
+				this._WebexSiteId = ParseInt(node["webexSiteId"].Value<string>());
+			}
+			if(node["webexPartnerId"] != null)
+			{
+				this._WebexPartnerId = node["webexPartnerId"].Value<string>();
+			}
+			if(node["webexServiceUrl"] != null)
+			{
+				this._WebexServiceUrl = node["webexServiceUrl"].Value<string>();
+			}
+			if(node["webexHostIdMetadataFieldName"] != null)
+			{
+				this._WebexHostIdMetadataFieldName = node["webexHostIdMetadataFieldName"].Value<string>();
+			}
+			if(node["deleteFromRecycleBin"] != null)
+			{
+				this._DeleteFromRecycleBin = ParseBool(node["deleteFromRecycleBin"].Value<string>());
+			}
+			if(node["webexServiceType"] != null)
+			{
+				this._WebexServiceType = node["webexServiceType"].Value<string>();
+			}
+			if(node["webexSiteName"] != null)
+			{
+				this._WebexSiteName = node["webexSiteName"].Value<string>();
+			}
+			if(node["deleteFromTimestamp"] != null)
+			{
+				this._DeleteFromTimestamp = ParseInt(node["deleteFromTimestamp"].Value<string>());
+			}
 		}
 		#endregion
 

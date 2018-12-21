@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -64,6 +66,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string EntryId
 		{
 			get { return _EntryId; }
@@ -73,6 +76,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		[JsonProperty]
 		public string FlavorAssetId
 		{
 			get { return _FlavorAssetId; }
@@ -82,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetId");
 			}
 		}
+		[JsonProperty]
 		public string CaptionAssetFormats
 		{
 			get { return _CaptionAssetFormats; }
@@ -91,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CaptionAssetFormats");
 			}
 		}
+		[JsonProperty]
 		public Cielo24Priority Priority
 		{
 			get { return _Priority; }
@@ -100,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Priority");
 			}
 		}
+		[JsonProperty]
 		public Cielo24Fidelity Fidelity
 		{
 			get { return _Fidelity; }
@@ -109,18 +116,37 @@ namespace Kaltura.Types
 				OnPropertyChanged("Fidelity");
 			}
 		}
+		[JsonProperty]
 		public string Username
 		{
 			get { return _Username; }
+			private set 
+			{ 
+				_Username = value;
+				OnPropertyChanged("Username");
+			}
 		}
+		[JsonProperty]
 		public string Password
 		{
 			get { return _Password; }
+			private set 
+			{ 
+				_Password = value;
+				OnPropertyChanged("Password");
+			}
 		}
+		[JsonProperty]
 		public string BaseUrl
 		{
 			get { return _BaseUrl; }
+			private set 
+			{ 
+				_BaseUrl = value;
+				OnPropertyChanged("BaseUrl");
+			}
 		}
+		[JsonProperty]
 		public Language SpokenLanguage
 		{
 			get { return _SpokenLanguage; }
@@ -130,6 +156,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SpokenLanguage");
 			}
 		}
+		[JsonProperty]
 		public bool? ReplaceMediaContent
 		{
 			get { return _ReplaceMediaContent; }
@@ -139,6 +166,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplaceMediaContent");
 			}
 		}
+		[JsonProperty]
 		public string AdditionalParameters
 		{
 			get { return _AdditionalParameters; }
@@ -155,62 +183,52 @@ namespace Kaltura.Types
 		{
 		}
 
-		public Cielo24JobProviderData(XmlElement node) : base(node)
+		public Cielo24JobProviderData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["entryId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "entryId":
-						this._EntryId = propertyNode.InnerText;
-						continue;
-					case "flavorAssetId":
-						this._FlavorAssetId = propertyNode.InnerText;
-						continue;
-					case "captionAssetFormats":
-						this._CaptionAssetFormats = propertyNode.InnerText;
-						continue;
-					case "priority":
-						this._Priority = (Cielo24Priority)StringEnum.Parse(typeof(Cielo24Priority), propertyNode.InnerText);
-						continue;
-					case "fidelity":
-						this._Fidelity = (Cielo24Fidelity)StringEnum.Parse(typeof(Cielo24Fidelity), propertyNode.InnerText);
-						continue;
-					case "username":
-						this._Username = propertyNode.InnerText;
-						continue;
-					case "password":
-						this._Password = propertyNode.InnerText;
-						continue;
-					case "baseUrl":
-						this._BaseUrl = propertyNode.InnerText;
-						continue;
-					case "spokenLanguage":
-						this._SpokenLanguage = (Language)StringEnum.Parse(typeof(Language), propertyNode.InnerText);
-						continue;
-					case "replaceMediaContent":
-						this._ReplaceMediaContent = ParseBool(propertyNode.InnerText);
-						continue;
-					case "additionalParameters":
-						this._AdditionalParameters = propertyNode.InnerText;
-						continue;
-				}
+				this._EntryId = node["entryId"].Value<string>();
 			}
-		}
-
-		public Cielo24JobProviderData(IDictionary<string,object> data) : base(data)
-		{
-			    this._EntryId = data.TryGetValueSafe<string>("entryId");
-			    this._FlavorAssetId = data.TryGetValueSafe<string>("flavorAssetId");
-			    this._CaptionAssetFormats = data.TryGetValueSafe<string>("captionAssetFormats");
-			    this._Priority = (Cielo24Priority)StringEnum.Parse(typeof(Cielo24Priority), data.TryGetValueSafe<string>("priority"));
-			    this._Fidelity = (Cielo24Fidelity)StringEnum.Parse(typeof(Cielo24Fidelity), data.TryGetValueSafe<string>("fidelity"));
-			    this._Username = data.TryGetValueSafe<string>("username");
-			    this._Password = data.TryGetValueSafe<string>("password");
-			    this._BaseUrl = data.TryGetValueSafe<string>("baseUrl");
-			    this._SpokenLanguage = (Language)StringEnum.Parse(typeof(Language), data.TryGetValueSafe<string>("spokenLanguage"));
-			    this._ReplaceMediaContent = data.TryGetValueSafe<bool>("replaceMediaContent");
-			    this._AdditionalParameters = data.TryGetValueSafe<string>("additionalParameters");
+			if(node["flavorAssetId"] != null)
+			{
+				this._FlavorAssetId = node["flavorAssetId"].Value<string>();
+			}
+			if(node["captionAssetFormats"] != null)
+			{
+				this._CaptionAssetFormats = node["captionAssetFormats"].Value<string>();
+			}
+			if(node["priority"] != null)
+			{
+				this._Priority = (Cielo24Priority)StringEnum.Parse(typeof(Cielo24Priority), node["priority"].Value<string>());
+			}
+			if(node["fidelity"] != null)
+			{
+				this._Fidelity = (Cielo24Fidelity)StringEnum.Parse(typeof(Cielo24Fidelity), node["fidelity"].Value<string>());
+			}
+			if(node["username"] != null)
+			{
+				this._Username = node["username"].Value<string>();
+			}
+			if(node["password"] != null)
+			{
+				this._Password = node["password"].Value<string>();
+			}
+			if(node["baseUrl"] != null)
+			{
+				this._BaseUrl = node["baseUrl"].Value<string>();
+			}
+			if(node["spokenLanguage"] != null)
+			{
+				this._SpokenLanguage = (Language)StringEnum.Parse(typeof(Language), node["spokenLanguage"].Value<string>());
+			}
+			if(node["replaceMediaContent"] != null)
+			{
+				this._ReplaceMediaContent = ParseBool(node["replaceMediaContent"].Value<string>());
+			}
+			if(node["additionalParameters"] != null)
+			{
+				this._AdditionalParameters = node["additionalParameters"].Value<string>();
+			}
 		}
 		#endregion
 

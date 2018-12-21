@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Xpath
 		{
 			get { return _Xpath; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Xpath");
 			}
 		}
+		[JsonProperty]
 		public int MetadataProfileId
 		{
 			get { return _MetadataProfileId; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataProfileId");
 			}
 		}
+		[JsonProperty]
 		public int MetadataFieldId
 		{
 			get { return _MetadataFieldId; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ESearchCategoryMetadataItem(XmlElement node) : base(node)
+		public ESearchCategoryMetadataItem(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["xpath"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "xpath":
-						this._Xpath = propertyNode.InnerText;
-						continue;
-					case "metadataProfileId":
-						this._MetadataProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "metadataFieldId":
-						this._MetadataFieldId = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._Xpath = node["xpath"].Value<string>();
 			}
-		}
-
-		public ESearchCategoryMetadataItem(IDictionary<string,object> data) : base(data)
-		{
-			    this._Xpath = data.TryGetValueSafe<string>("xpath");
-			    this._MetadataProfileId = data.TryGetValueSafe<int>("metadataProfileId");
-			    this._MetadataFieldId = data.TryGetValueSafe<int>("metadataFieldId");
+			if(node["metadataProfileId"] != null)
+			{
+				this._MetadataProfileId = ParseInt(node["metadataProfileId"].Value<string>());
+			}
+			if(node["metadataFieldId"] != null)
+			{
+				this._MetadataFieldId = ParseInt(node["metadataFieldId"].Value<string>());
+			}
 		}
 		#endregion
 

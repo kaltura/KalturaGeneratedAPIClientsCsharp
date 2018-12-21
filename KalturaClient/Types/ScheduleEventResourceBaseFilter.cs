@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -58,6 +60,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int EventIdEqual
 		{
 			get { return _EventIdEqual; }
@@ -67,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EventIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string EventIdIn
 		{
 			get { return _EventIdIn; }
@@ -76,6 +80,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EventIdIn");
 			}
 		}
+		[JsonProperty]
 		public int ResourceIdEqual
 		{
 			get { return _ResourceIdEqual; }
@@ -85,6 +90,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ResourceIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string ResourceIdIn
 		{
 			get { return _ResourceIdIn; }
@@ -94,6 +100,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ResourceIdIn");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
 			get { return _CreatedAtGreaterThanOrEqual; }
@@ -103,6 +110,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
 			get { return _CreatedAtLessThanOrEqual; }
@@ -112,6 +120,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
 			get { return _UpdatedAtGreaterThanOrEqual; }
@@ -121,6 +130,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
 			get { return _UpdatedAtLessThanOrEqual; }
@@ -137,50 +147,40 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ScheduleEventResourceBaseFilter(XmlElement node) : base(node)
+		public ScheduleEventResourceBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["eventIdEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "eventIdEqual":
-						this._EventIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "eventIdIn":
-						this._EventIdIn = propertyNode.InnerText;
-						continue;
-					case "resourceIdEqual":
-						this._ResourceIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "resourceIdIn":
-						this._ResourceIdIn = propertyNode.InnerText;
-						continue;
-					case "createdAtGreaterThanOrEqual":
-						this._CreatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAtLessThanOrEqual":
-						this._CreatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtGreaterThanOrEqual":
-						this._UpdatedAtGreaterThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAtLessThanOrEqual":
-						this._UpdatedAtLessThanOrEqual = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._EventIdEqual = ParseInt(node["eventIdEqual"].Value<string>());
 			}
-		}
-
-		public ScheduleEventResourceBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._EventIdEqual = data.TryGetValueSafe<int>("eventIdEqual");
-			    this._EventIdIn = data.TryGetValueSafe<string>("eventIdIn");
-			    this._ResourceIdEqual = data.TryGetValueSafe<int>("resourceIdEqual");
-			    this._ResourceIdIn = data.TryGetValueSafe<string>("resourceIdIn");
-			    this._CreatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("createdAtGreaterThanOrEqual");
-			    this._CreatedAtLessThanOrEqual = data.TryGetValueSafe<int>("createdAtLessThanOrEqual");
-			    this._UpdatedAtGreaterThanOrEqual = data.TryGetValueSafe<int>("updatedAtGreaterThanOrEqual");
-			    this._UpdatedAtLessThanOrEqual = data.TryGetValueSafe<int>("updatedAtLessThanOrEqual");
+			if(node["eventIdIn"] != null)
+			{
+				this._EventIdIn = node["eventIdIn"].Value<string>();
+			}
+			if(node["resourceIdEqual"] != null)
+			{
+				this._ResourceIdEqual = ParseInt(node["resourceIdEqual"].Value<string>());
+			}
+			if(node["resourceIdIn"] != null)
+			{
+				this._ResourceIdIn = node["resourceIdIn"].Value<string>();
+			}
+			if(node["createdAtGreaterThanOrEqual"] != null)
+			{
+				this._CreatedAtGreaterThanOrEqual = ParseInt(node["createdAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["createdAtLessThanOrEqual"] != null)
+			{
+				this._CreatedAtLessThanOrEqual = ParseInt(node["createdAtLessThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtGreaterThanOrEqual"] != null)
+			{
+				this._UpdatedAtGreaterThanOrEqual = ParseInt(node["updatedAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["updatedAtLessThanOrEqual"] != null)
+			{
+				this._UpdatedAtLessThanOrEqual = ParseInt(node["updatedAtLessThanOrEqual"].Value<string>());
+			}
 		}
 		#endregion
 

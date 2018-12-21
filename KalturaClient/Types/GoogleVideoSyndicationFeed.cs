@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public GoogleSyndicationFeedAdultValues AdultContent
 		{
 			get { return _AdultContent; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public GoogleVideoSyndicationFeed(XmlElement node) : base(node)
+		public GoogleVideoSyndicationFeed(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["adultContent"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "adultContent":
-						this._AdultContent = (GoogleSyndicationFeedAdultValues)StringEnum.Parse(typeof(GoogleSyndicationFeedAdultValues), propertyNode.InnerText);
-						continue;
-				}
+				this._AdultContent = (GoogleSyndicationFeedAdultValues)StringEnum.Parse(typeof(GoogleSyndicationFeedAdultValues), node["adultContent"].Value<string>());
 			}
-		}
-
-		public GoogleVideoSyndicationFeed(IDictionary<string,object> data) : base(data)
-		{
-			    this._AdultContent = (GoogleSyndicationFeedAdultValues)StringEnum.Parse(typeof(GoogleSyndicationFeedAdultValues), data.TryGetValueSafe<string>("adultContent"));
 		}
 		#endregion
 

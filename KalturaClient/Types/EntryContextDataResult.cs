@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -74,6 +76,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public bool? IsSiteRestricted
 		{
 			get { return _IsSiteRestricted; }
@@ -83,6 +86,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsSiteRestricted");
 			}
 		}
+		[JsonProperty]
 		public bool? IsCountryRestricted
 		{
 			get { return _IsCountryRestricted; }
@@ -92,6 +96,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsCountryRestricted");
 			}
 		}
+		[JsonProperty]
 		public bool? IsSessionRestricted
 		{
 			get { return _IsSessionRestricted; }
@@ -101,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsSessionRestricted");
 			}
 		}
+		[JsonProperty]
 		public bool? IsIpAddressRestricted
 		{
 			get { return _IsIpAddressRestricted; }
@@ -110,6 +116,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsIpAddressRestricted");
 			}
 		}
+		[JsonProperty]
 		public bool? IsUserAgentRestricted
 		{
 			get { return _IsUserAgentRestricted; }
@@ -119,6 +126,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsUserAgentRestricted");
 			}
 		}
+		[JsonProperty]
 		public int PreviewLength
 		{
 			get { return _PreviewLength; }
@@ -128,6 +136,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PreviewLength");
 			}
 		}
+		[JsonProperty]
 		public bool? IsScheduledNow
 		{
 			get { return _IsScheduledNow; }
@@ -137,6 +146,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsScheduledNow");
 			}
 		}
+		[JsonProperty]
 		public bool? IsAdmin
 		{
 			get { return _IsAdmin; }
@@ -146,6 +156,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsAdmin");
 			}
 		}
+		[JsonProperty]
 		public string StreamerType
 		{
 			get { return _StreamerType; }
@@ -155,6 +166,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StreamerType");
 			}
 		}
+		[JsonProperty]
 		public string MediaProtocol
 		{
 			get { return _MediaProtocol; }
@@ -164,6 +176,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaProtocol");
 			}
 		}
+		[JsonProperty]
 		public string StorageProfilesXML
 		{
 			get { return _StorageProfilesXML; }
@@ -173,6 +186,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StorageProfilesXML");
 			}
 		}
+		[JsonProperty]
 		public IList<String> AccessControlMessages
 		{
 			get { return _AccessControlMessages; }
@@ -182,6 +196,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AccessControlMessages");
 			}
 		}
+		[JsonProperty]
 		public IList<RuleAction> AccessControlActions
 		{
 			get { return _AccessControlActions; }
@@ -191,6 +206,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AccessControlActions");
 			}
 		}
+		[JsonProperty]
 		public IList<FlavorAsset> FlavorAssets
 		{
 			get { return _FlavorAssets; }
@@ -200,6 +216,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssets");
 			}
 		}
+		[JsonProperty]
 		public int MsDuration
 		{
 			get { return _MsDuration; }
@@ -209,6 +226,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MsDuration");
 			}
 		}
+		[JsonProperty]
 		public IDictionary<string, PluginData> PluginData
 		{
 			get { return _PluginData; }
@@ -225,121 +243,92 @@ namespace Kaltura.Types
 		{
 		}
 
-		public EntryContextDataResult(XmlElement node) : base(node)
+		public EntryContextDataResult(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["isSiteRestricted"] != null)
 			{
-				switch (propertyNode.Name)
+				this._IsSiteRestricted = ParseBool(node["isSiteRestricted"].Value<string>());
+			}
+			if(node["isCountryRestricted"] != null)
+			{
+				this._IsCountryRestricted = ParseBool(node["isCountryRestricted"].Value<string>());
+			}
+			if(node["isSessionRestricted"] != null)
+			{
+				this._IsSessionRestricted = ParseBool(node["isSessionRestricted"].Value<string>());
+			}
+			if(node["isIpAddressRestricted"] != null)
+			{
+				this._IsIpAddressRestricted = ParseBool(node["isIpAddressRestricted"].Value<string>());
+			}
+			if(node["isUserAgentRestricted"] != null)
+			{
+				this._IsUserAgentRestricted = ParseBool(node["isUserAgentRestricted"].Value<string>());
+			}
+			if(node["previewLength"] != null)
+			{
+				this._PreviewLength = ParseInt(node["previewLength"].Value<string>());
+			}
+			if(node["isScheduledNow"] != null)
+			{
+				this._IsScheduledNow = ParseBool(node["isScheduledNow"].Value<string>());
+			}
+			if(node["isAdmin"] != null)
+			{
+				this._IsAdmin = ParseBool(node["isAdmin"].Value<string>());
+			}
+			if(node["streamerType"] != null)
+			{
+				this._StreamerType = node["streamerType"].Value<string>();
+			}
+			if(node["mediaProtocol"] != null)
+			{
+				this._MediaProtocol = node["mediaProtocol"].Value<string>();
+			}
+			if(node["storageProfilesXML"] != null)
+			{
+				this._StorageProfilesXML = node["storageProfilesXML"].Value<string>();
+			}
+			if(node["accessControlMessages"] != null)
+			{
+				this._AccessControlMessages = new List<String>();
+				foreach(var arrayNode in node["accessControlMessages"].Children())
 				{
-					case "isSiteRestricted":
-						this._IsSiteRestricted = ParseBool(propertyNode.InnerText);
-						continue;
-					case "isCountryRestricted":
-						this._IsCountryRestricted = ParseBool(propertyNode.InnerText);
-						continue;
-					case "isSessionRestricted":
-						this._IsSessionRestricted = ParseBool(propertyNode.InnerText);
-						continue;
-					case "isIpAddressRestricted":
-						this._IsIpAddressRestricted = ParseBool(propertyNode.InnerText);
-						continue;
-					case "isUserAgentRestricted":
-						this._IsUserAgentRestricted = ParseBool(propertyNode.InnerText);
-						continue;
-					case "previewLength":
-						this._PreviewLength = ParseInt(propertyNode.InnerText);
-						continue;
-					case "isScheduledNow":
-						this._IsScheduledNow = ParseBool(propertyNode.InnerText);
-						continue;
-					case "isAdmin":
-						this._IsAdmin = ParseBool(propertyNode.InnerText);
-						continue;
-					case "streamerType":
-						this._StreamerType = propertyNode.InnerText;
-						continue;
-					case "mediaProtocol":
-						this._MediaProtocol = propertyNode.InnerText;
-						continue;
-					case "storageProfilesXML":
-						this._StorageProfilesXML = propertyNode.InnerText;
-						continue;
-					case "accessControlMessages":
-						this._AccessControlMessages = new List<String>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._AccessControlMessages.Add(ObjectFactory.Create<String>(arrayNode));
-						}
-						continue;
-					case "accessControlActions":
-						this._AccessControlActions = new List<RuleAction>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._AccessControlActions.Add(ObjectFactory.Create<RuleAction>(arrayNode));
-						}
-						continue;
-					case "flavorAssets":
-						this._FlavorAssets = new List<FlavorAsset>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._FlavorAssets.Add(ObjectFactory.Create<FlavorAsset>(arrayNode));
-						}
-						continue;
-					case "msDuration":
-						this._MsDuration = ParseInt(propertyNode.InnerText);
-						continue;
-					case "pluginData":
-						{
-							string key;
-							this._PluginData = new Dictionary<string, PluginData>();
-							foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-							{
-								key = arrayNode["itemKey"].InnerText;;
-								this._PluginData[key] = ObjectFactory.Create<PluginData>(arrayNode);
-							}
-						}
-						continue;
+					this._AccessControlMessages.Add(ObjectFactory.Create<String>(arrayNode));
 				}
 			}
-		}
-
-		public EntryContextDataResult(IDictionary<string,object> data) : base(data)
-		{
-			    this._IsSiteRestricted = data.TryGetValueSafe<bool>("isSiteRestricted");
-			    this._IsCountryRestricted = data.TryGetValueSafe<bool>("isCountryRestricted");
-			    this._IsSessionRestricted = data.TryGetValueSafe<bool>("isSessionRestricted");
-			    this._IsIpAddressRestricted = data.TryGetValueSafe<bool>("isIpAddressRestricted");
-			    this._IsUserAgentRestricted = data.TryGetValueSafe<bool>("isUserAgentRestricted");
-			    this._PreviewLength = data.TryGetValueSafe<int>("previewLength");
-			    this._IsScheduledNow = data.TryGetValueSafe<bool>("isScheduledNow");
-			    this._IsAdmin = data.TryGetValueSafe<bool>("isAdmin");
-			    this._StreamerType = data.TryGetValueSafe<string>("streamerType");
-			    this._MediaProtocol = data.TryGetValueSafe<string>("mediaProtocol");
-			    this._StorageProfilesXML = data.TryGetValueSafe<string>("storageProfilesXML");
-			    this._AccessControlMessages = new List<String>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("accessControlMessages", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._AccessControlMessages.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._AccessControlActions = new List<RuleAction>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("accessControlActions", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._AccessControlActions.Add(ObjectFactory.Create<RuleAction>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._FlavorAssets = new List<FlavorAsset>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("flavorAssets", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._FlavorAssets.Add(ObjectFactory.Create<FlavorAsset>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._MsDuration = data.TryGetValueSafe<int>("msDuration");
-			    this._PluginData = new Dictionary<string, PluginData>();
-			    foreach(var keyValuePair in data.TryGetValueSafe("pluginData", new Dictionary<string, object>()))
-			    {
-			        this._PluginData[keyValuePair.Key] = ObjectFactory.Create<PluginData>((IDictionary<string,object>)keyValuePair.Value);
+			if(node["accessControlActions"] != null)
+			{
+				this._AccessControlActions = new List<RuleAction>();
+				foreach(var arrayNode in node["accessControlActions"].Children())
+				{
+					this._AccessControlActions.Add(ObjectFactory.Create<RuleAction>(arrayNode));
 				}
+			}
+			if(node["flavorAssets"] != null)
+			{
+				this._FlavorAssets = new List<FlavorAsset>();
+				foreach(var arrayNode in node["flavorAssets"].Children())
+				{
+					this._FlavorAssets.Add(ObjectFactory.Create<FlavorAsset>(arrayNode));
+				}
+			}
+			if(node["msDuration"] != null)
+			{
+				this._MsDuration = ParseInt(node["msDuration"].Value<string>());
+			}
+			if(node["pluginData"] != null)
+			{
+				{
+					string key;
+					this._PluginData = new Dictionary<string, PluginData>();
+					foreach(var arrayNode in node["pluginData"].Children<JProperty>())
+					{
+						key = arrayNode.Name;
+						this._PluginData[key] = ObjectFactory.Create<PluginData>(arrayNode.Value);
+					}
+				}
+			}
 		}
 		#endregion
 

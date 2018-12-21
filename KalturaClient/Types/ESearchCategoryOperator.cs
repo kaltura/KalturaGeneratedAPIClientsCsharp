@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public ESearchOperatorType Operator
 		{
 			get { return _Operator; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Operator");
 			}
 		}
+		[JsonProperty]
 		public IList<ESearchCategoryBaseItem> SearchItems
 		{
 			get { return _SearchItems; }
@@ -71,35 +75,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ESearchCategoryOperator(XmlElement node) : base(node)
+		public ESearchCategoryOperator(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["operator"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Operator = (ESearchOperatorType)ParseEnum(typeof(ESearchOperatorType), node["operator"].Value<string>());
+			}
+			if(node["searchItems"] != null)
+			{
+				this._SearchItems = new List<ESearchCategoryBaseItem>();
+				foreach(var arrayNode in node["searchItems"].Children())
 				{
-					case "operator":
-						this._Operator = (ESearchOperatorType)ParseEnum(typeof(ESearchOperatorType), propertyNode.InnerText);
-						continue;
-					case "searchItems":
-						this._SearchItems = new List<ESearchCategoryBaseItem>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._SearchItems.Add(ObjectFactory.Create<ESearchCategoryBaseItem>(arrayNode));
-						}
-						continue;
+					this._SearchItems.Add(ObjectFactory.Create<ESearchCategoryBaseItem>(arrayNode));
 				}
 			}
-		}
-
-		public ESearchCategoryOperator(IDictionary<string,object> data) : base(data)
-		{
-			    this._Operator = (ESearchOperatorType)ParseEnum(typeof(ESearchOperatorType), data.TryGetValueSafe<int>("operator"));
-			    this._SearchItems = new List<ESearchCategoryBaseItem>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("searchItems", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._SearchItems.Add(ObjectFactory.Create<ESearchCategoryBaseItem>((IDictionary<string,object>)dataDictionary));
-			    }
 		}
 		#endregion
 

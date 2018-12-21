@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int FromDate
 		{
 			get { return _FromDate; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FromDate");
 			}
 		}
+		[JsonProperty]
 		public int ToDate
 		{
 			get { return _ToDate; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ToDate");
 			}
 		}
+		[JsonProperty]
 		public int TimezoneOffset
 		{
 			get { return _TimezoneOffset; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public SystemPartnerUsageFilter(XmlElement node) : base(node)
+		public SystemPartnerUsageFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["fromDate"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "fromDate":
-						this._FromDate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "toDate":
-						this._ToDate = ParseInt(propertyNode.InnerText);
-						continue;
-					case "timezoneOffset":
-						this._TimezoneOffset = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._FromDate = ParseInt(node["fromDate"].Value<string>());
 			}
-		}
-
-		public SystemPartnerUsageFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._FromDate = data.TryGetValueSafe<int>("fromDate");
-			    this._ToDate = data.TryGetValueSafe<int>("toDate");
-			    this._TimezoneOffset = data.TryGetValueSafe<int>("timezoneOffset");
+			if(node["toDate"] != null)
+			{
+				this._ToDate = ParseInt(node["toDate"].Value<string>());
+			}
+			if(node["timezoneOffset"] != null)
+			{
+				this._TimezoneOffset = ParseInt(node["timezoneOffset"].Value<string>());
+			}
 		}
 		#endregion
 

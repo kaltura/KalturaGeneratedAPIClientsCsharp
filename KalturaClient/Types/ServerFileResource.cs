@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string LocalFilePath
 		{
 			get { return _LocalFilePath; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LocalFilePath");
 			}
 		}
+		[JsonProperty]
 		public bool? KeepOriginalFile
 		{
 			get { return _KeepOriginalFile; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ServerFileResource(XmlElement node) : base(node)
+		public ServerFileResource(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["localFilePath"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "localFilePath":
-						this._LocalFilePath = propertyNode.InnerText;
-						continue;
-					case "keepOriginalFile":
-						this._KeepOriginalFile = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._LocalFilePath = node["localFilePath"].Value<string>();
 			}
-		}
-
-		public ServerFileResource(IDictionary<string,object> data) : base(data)
-		{
-			    this._LocalFilePath = data.TryGetValueSafe<string>("localFilePath");
-			    this._KeepOriginalFile = data.TryGetValueSafe<bool>("keepOriginalFile");
+			if(node["keepOriginalFile"] != null)
+			{
+				this._KeepOriginalFile = ParseBool(node["keepOriginalFile"].Value<string>());
+			}
 		}
 		#endregion
 

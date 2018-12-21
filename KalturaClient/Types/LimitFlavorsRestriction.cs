@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public LimitFlavorsRestrictionType LimitFlavorsRestrictionType
 		{
 			get { return _LimitFlavorsRestrictionType; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LimitFlavorsRestrictionType");
 			}
 		}
+		[JsonProperty]
 		public string FlavorParamsIds
 		{
 			get { return _FlavorParamsIds; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public LimitFlavorsRestriction(XmlElement node) : base(node)
+		public LimitFlavorsRestriction(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["limitFlavorsRestrictionType"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "limitFlavorsRestrictionType":
-						this._LimitFlavorsRestrictionType = (LimitFlavorsRestrictionType)ParseEnum(typeof(LimitFlavorsRestrictionType), propertyNode.InnerText);
-						continue;
-					case "flavorParamsIds":
-						this._FlavorParamsIds = propertyNode.InnerText;
-						continue;
-				}
+				this._LimitFlavorsRestrictionType = (LimitFlavorsRestrictionType)ParseEnum(typeof(LimitFlavorsRestrictionType), node["limitFlavorsRestrictionType"].Value<string>());
 			}
-		}
-
-		public LimitFlavorsRestriction(IDictionary<string,object> data) : base(data)
-		{
-			    this._LimitFlavorsRestrictionType = (LimitFlavorsRestrictionType)ParseEnum(typeof(LimitFlavorsRestrictionType), data.TryGetValueSafe<int>("limitFlavorsRestrictionType"));
-			    this._FlavorParamsIds = data.TryGetValueSafe<string>("flavorParamsIds");
+			if(node["flavorParamsIds"] != null)
+			{
+				this._FlavorParamsIds = node["flavorParamsIds"].Value<string>();
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -62,6 +64,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int StreamId
 		{
 			get { return _StreamId; }
@@ -71,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StreamId");
 			}
 		}
+		[JsonProperty]
 		public string SystemUserName
 		{
 			get { return _SystemUserName; }
@@ -80,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemUserName");
 			}
 		}
+		[JsonProperty]
 		public string SystemPassword
 		{
 			get { return _SystemPassword; }
@@ -89,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemPassword");
 			}
 		}
+		[JsonProperty]
 		public string DomainName
 		{
 			get { return _DomainName; }
@@ -98,6 +104,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DomainName");
 			}
 		}
+		[JsonProperty]
 		public DVRStatus DvrEnabled
 		{
 			get { return _DvrEnabled; }
@@ -107,6 +114,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DvrEnabled");
 			}
 		}
+		[JsonProperty]
 		public int DvrWindow
 		{
 			get { return _DvrWindow; }
@@ -116,6 +124,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DvrWindow");
 			}
 		}
+		[JsonProperty]
 		public string PrimaryContact
 		{
 			get { return _PrimaryContact; }
@@ -125,6 +134,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrimaryContact");
 			}
 		}
+		[JsonProperty]
 		public string SecondaryContact
 		{
 			get { return _SecondaryContact; }
@@ -134,6 +144,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SecondaryContact");
 			}
 		}
+		[JsonProperty]
 		public AkamaiUniversalStreamType StreamType
 		{
 			get { return _StreamType; }
@@ -143,6 +154,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StreamType");
 			}
 		}
+		[JsonProperty]
 		public string NotificationEmail
 		{
 			get { return _NotificationEmail; }
@@ -159,58 +171,48 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AkamaiUniversalProvisionJobData(XmlElement node) : base(node)
+		public AkamaiUniversalProvisionJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["streamId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "streamId":
-						this._StreamId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "systemUserName":
-						this._SystemUserName = propertyNode.InnerText;
-						continue;
-					case "systemPassword":
-						this._SystemPassword = propertyNode.InnerText;
-						continue;
-					case "domainName":
-						this._DomainName = propertyNode.InnerText;
-						continue;
-					case "dvrEnabled":
-						this._DvrEnabled = (DVRStatus)ParseEnum(typeof(DVRStatus), propertyNode.InnerText);
-						continue;
-					case "dvrWindow":
-						this._DvrWindow = ParseInt(propertyNode.InnerText);
-						continue;
-					case "primaryContact":
-						this._PrimaryContact = propertyNode.InnerText;
-						continue;
-					case "secondaryContact":
-						this._SecondaryContact = propertyNode.InnerText;
-						continue;
-					case "streamType":
-						this._StreamType = (AkamaiUniversalStreamType)StringEnum.Parse(typeof(AkamaiUniversalStreamType), propertyNode.InnerText);
-						continue;
-					case "notificationEmail":
-						this._NotificationEmail = propertyNode.InnerText;
-						continue;
-				}
+				this._StreamId = ParseInt(node["streamId"].Value<string>());
 			}
-		}
-
-		public AkamaiUniversalProvisionJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._StreamId = data.TryGetValueSafe<int>("streamId");
-			    this._SystemUserName = data.TryGetValueSafe<string>("systemUserName");
-			    this._SystemPassword = data.TryGetValueSafe<string>("systemPassword");
-			    this._DomainName = data.TryGetValueSafe<string>("domainName");
-			    this._DvrEnabled = (DVRStatus)ParseEnum(typeof(DVRStatus), data.TryGetValueSafe<int>("dvrEnabled"));
-			    this._DvrWindow = data.TryGetValueSafe<int>("dvrWindow");
-			    this._PrimaryContact = data.TryGetValueSafe<string>("primaryContact");
-			    this._SecondaryContact = data.TryGetValueSafe<string>("secondaryContact");
-			    this._StreamType = (AkamaiUniversalStreamType)StringEnum.Parse(typeof(AkamaiUniversalStreamType), data.TryGetValueSafe<string>("streamType"));
-			    this._NotificationEmail = data.TryGetValueSafe<string>("notificationEmail");
+			if(node["systemUserName"] != null)
+			{
+				this._SystemUserName = node["systemUserName"].Value<string>();
+			}
+			if(node["systemPassword"] != null)
+			{
+				this._SystemPassword = node["systemPassword"].Value<string>();
+			}
+			if(node["domainName"] != null)
+			{
+				this._DomainName = node["domainName"].Value<string>();
+			}
+			if(node["dvrEnabled"] != null)
+			{
+				this._DvrEnabled = (DVRStatus)ParseEnum(typeof(DVRStatus), node["dvrEnabled"].Value<string>());
+			}
+			if(node["dvrWindow"] != null)
+			{
+				this._DvrWindow = ParseInt(node["dvrWindow"].Value<string>());
+			}
+			if(node["primaryContact"] != null)
+			{
+				this._PrimaryContact = node["primaryContact"].Value<string>();
+			}
+			if(node["secondaryContact"] != null)
+			{
+				this._SecondaryContact = node["secondaryContact"].Value<string>();
+			}
+			if(node["streamType"] != null)
+			{
+				this._StreamType = (AkamaiUniversalStreamType)StringEnum.Parse(typeof(AkamaiUniversalStreamType), node["streamType"].Value<string>());
+			}
+			if(node["notificationEmail"] != null)
+			{
+				this._NotificationEmail = node["notificationEmail"].Value<string>();
+			}
 		}
 		#endregion
 

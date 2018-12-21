@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -78,6 +80,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public DistributionProtocol Protocol
 		{
 			get { return _Protocol; }
@@ -87,6 +90,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Protocol");
 			}
 		}
+		[JsonProperty]
 		public string Host
 		{
 			get { return _Host; }
@@ -96,6 +100,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Host");
 			}
 		}
+		[JsonProperty]
 		public int Port
 		{
 			get { return _Port; }
@@ -105,6 +110,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Port");
 			}
 		}
+		[JsonProperty]
 		public string BasePath
 		{
 			get { return _BasePath; }
@@ -114,6 +120,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("BasePath");
 			}
 		}
+		[JsonProperty]
 		public string Username
 		{
 			get { return _Username; }
@@ -123,6 +130,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Username");
 			}
 		}
+		[JsonProperty]
 		public string Password
 		{
 			get { return _Password; }
@@ -132,6 +140,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Password");
 			}
 		}
+		[JsonProperty]
 		public string Passphrase
 		{
 			get { return _Passphrase; }
@@ -141,6 +150,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Passphrase");
 			}
 		}
+		[JsonProperty]
 		public string SftpPublicKey
 		{
 			get { return _SftpPublicKey; }
@@ -150,6 +160,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpPublicKey");
 			}
 		}
+		[JsonProperty]
 		public string SftpPrivateKey
 		{
 			get { return _SftpPrivateKey; }
@@ -159,6 +170,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpPrivateKey");
 			}
 		}
+		[JsonProperty]
 		public bool? DisableMetadata
 		{
 			get { return _DisableMetadata; }
@@ -168,6 +180,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("DisableMetadata");
 			}
 		}
+		[JsonProperty]
 		public string MetadataXslt
 		{
 			get { return _MetadataXslt; }
@@ -177,6 +190,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataXslt");
 			}
 		}
+		[JsonProperty]
 		public string MetadataFilenameXslt
 		{
 			get { return _MetadataFilenameXslt; }
@@ -186,6 +200,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataFilenameXslt");
 			}
 		}
+		[JsonProperty]
 		public string FlavorAssetFilenameXslt
 		{
 			get { return _FlavorAssetFilenameXslt; }
@@ -195,6 +210,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetFilenameXslt");
 			}
 		}
+		[JsonProperty]
 		public string ThumbnailAssetFilenameXslt
 		{
 			get { return _ThumbnailAssetFilenameXslt; }
@@ -204,6 +220,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbnailAssetFilenameXslt");
 			}
 		}
+		[JsonProperty]
 		public string AssetFilenameXslt
 		{
 			get { return _AssetFilenameXslt; }
@@ -213,6 +230,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetFilenameXslt");
 			}
 		}
+		[JsonProperty]
 		public string AsperaPublicKey
 		{
 			get { return _AsperaPublicKey; }
@@ -222,6 +240,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AsperaPublicKey");
 			}
 		}
+		[JsonProperty]
 		public string AsperaPrivateKey
 		{
 			get { return _AsperaPrivateKey; }
@@ -231,6 +250,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AsperaPrivateKey");
 			}
 		}
+		[JsonProperty]
 		public bool? SendMetadataAfterAssets
 		{
 			get { return _SendMetadataAfterAssets; }
@@ -247,90 +267,80 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FtpDistributionProfile(XmlElement node) : base(node)
+		public FtpDistributionProfile(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["protocol"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "protocol":
-						this._Protocol = (DistributionProtocol)ParseEnum(typeof(DistributionProtocol), propertyNode.InnerText);
-						continue;
-					case "host":
-						this._Host = propertyNode.InnerText;
-						continue;
-					case "port":
-						this._Port = ParseInt(propertyNode.InnerText);
-						continue;
-					case "basePath":
-						this._BasePath = propertyNode.InnerText;
-						continue;
-					case "username":
-						this._Username = propertyNode.InnerText;
-						continue;
-					case "password":
-						this._Password = propertyNode.InnerText;
-						continue;
-					case "passphrase":
-						this._Passphrase = propertyNode.InnerText;
-						continue;
-					case "sftpPublicKey":
-						this._SftpPublicKey = propertyNode.InnerText;
-						continue;
-					case "sftpPrivateKey":
-						this._SftpPrivateKey = propertyNode.InnerText;
-						continue;
-					case "disableMetadata":
-						this._DisableMetadata = ParseBool(propertyNode.InnerText);
-						continue;
-					case "metadataXslt":
-						this._MetadataXslt = propertyNode.InnerText;
-						continue;
-					case "metadataFilenameXslt":
-						this._MetadataFilenameXslt = propertyNode.InnerText;
-						continue;
-					case "flavorAssetFilenameXslt":
-						this._FlavorAssetFilenameXslt = propertyNode.InnerText;
-						continue;
-					case "thumbnailAssetFilenameXslt":
-						this._ThumbnailAssetFilenameXslt = propertyNode.InnerText;
-						continue;
-					case "assetFilenameXslt":
-						this._AssetFilenameXslt = propertyNode.InnerText;
-						continue;
-					case "asperaPublicKey":
-						this._AsperaPublicKey = propertyNode.InnerText;
-						continue;
-					case "asperaPrivateKey":
-						this._AsperaPrivateKey = propertyNode.InnerText;
-						continue;
-					case "sendMetadataAfterAssets":
-						this._SendMetadataAfterAssets = ParseBool(propertyNode.InnerText);
-						continue;
-				}
+				this._Protocol = (DistributionProtocol)ParseEnum(typeof(DistributionProtocol), node["protocol"].Value<string>());
 			}
-		}
-
-		public FtpDistributionProfile(IDictionary<string,object> data) : base(data)
-		{
-			    this._Protocol = (DistributionProtocol)ParseEnum(typeof(DistributionProtocol), data.TryGetValueSafe<int>("protocol"));
-			    this._Host = data.TryGetValueSafe<string>("host");
-			    this._Port = data.TryGetValueSafe<int>("port");
-			    this._BasePath = data.TryGetValueSafe<string>("basePath");
-			    this._Username = data.TryGetValueSafe<string>("username");
-			    this._Password = data.TryGetValueSafe<string>("password");
-			    this._Passphrase = data.TryGetValueSafe<string>("passphrase");
-			    this._SftpPublicKey = data.TryGetValueSafe<string>("sftpPublicKey");
-			    this._SftpPrivateKey = data.TryGetValueSafe<string>("sftpPrivateKey");
-			    this._DisableMetadata = data.TryGetValueSafe<bool>("disableMetadata");
-			    this._MetadataXslt = data.TryGetValueSafe<string>("metadataXslt");
-			    this._MetadataFilenameXslt = data.TryGetValueSafe<string>("metadataFilenameXslt");
-			    this._FlavorAssetFilenameXslt = data.TryGetValueSafe<string>("flavorAssetFilenameXslt");
-			    this._ThumbnailAssetFilenameXslt = data.TryGetValueSafe<string>("thumbnailAssetFilenameXslt");
-			    this._AssetFilenameXslt = data.TryGetValueSafe<string>("assetFilenameXslt");
-			    this._AsperaPublicKey = data.TryGetValueSafe<string>("asperaPublicKey");
-			    this._AsperaPrivateKey = data.TryGetValueSafe<string>("asperaPrivateKey");
-			    this._SendMetadataAfterAssets = data.TryGetValueSafe<bool>("sendMetadataAfterAssets");
+			if(node["host"] != null)
+			{
+				this._Host = node["host"].Value<string>();
+			}
+			if(node["port"] != null)
+			{
+				this._Port = ParseInt(node["port"].Value<string>());
+			}
+			if(node["basePath"] != null)
+			{
+				this._BasePath = node["basePath"].Value<string>();
+			}
+			if(node["username"] != null)
+			{
+				this._Username = node["username"].Value<string>();
+			}
+			if(node["password"] != null)
+			{
+				this._Password = node["password"].Value<string>();
+			}
+			if(node["passphrase"] != null)
+			{
+				this._Passphrase = node["passphrase"].Value<string>();
+			}
+			if(node["sftpPublicKey"] != null)
+			{
+				this._SftpPublicKey = node["sftpPublicKey"].Value<string>();
+			}
+			if(node["sftpPrivateKey"] != null)
+			{
+				this._SftpPrivateKey = node["sftpPrivateKey"].Value<string>();
+			}
+			if(node["disableMetadata"] != null)
+			{
+				this._DisableMetadata = ParseBool(node["disableMetadata"].Value<string>());
+			}
+			if(node["metadataXslt"] != null)
+			{
+				this._MetadataXslt = node["metadataXslt"].Value<string>();
+			}
+			if(node["metadataFilenameXslt"] != null)
+			{
+				this._MetadataFilenameXslt = node["metadataFilenameXslt"].Value<string>();
+			}
+			if(node["flavorAssetFilenameXslt"] != null)
+			{
+				this._FlavorAssetFilenameXslt = node["flavorAssetFilenameXslt"].Value<string>();
+			}
+			if(node["thumbnailAssetFilenameXslt"] != null)
+			{
+				this._ThumbnailAssetFilenameXslt = node["thumbnailAssetFilenameXslt"].Value<string>();
+			}
+			if(node["assetFilenameXslt"] != null)
+			{
+				this._AssetFilenameXslt = node["assetFilenameXslt"].Value<string>();
+			}
+			if(node["asperaPublicKey"] != null)
+			{
+				this._AsperaPublicKey = node["asperaPublicKey"].Value<string>();
+			}
+			if(node["asperaPrivateKey"] != null)
+			{
+				this._AsperaPrivateKey = node["asperaPrivateKey"].Value<string>();
+			}
+			if(node["sendMetadataAfterAssets"] != null)
+			{
+				this._SendMetadataAfterAssets = ParseBool(node["sendMetadataAfterAssets"].Value<string>());
+			}
 		}
 		#endregion
 

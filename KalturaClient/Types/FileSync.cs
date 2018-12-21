@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -92,54 +94,127 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public long Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public FileSyncObjectType FileObjectType
 		{
 			get { return _FileObjectType; }
+			private set 
+			{ 
+				_FileObjectType = value;
+				OnPropertyChanged("FileObjectType");
+			}
 		}
+		[JsonProperty]
 		public string ObjectId
 		{
 			get { return _ObjectId; }
+			private set 
+			{ 
+				_ObjectId = value;
+				OnPropertyChanged("ObjectId");
+			}
 		}
+		[JsonProperty]
 		public string Version
 		{
 			get { return _Version; }
+			private set 
+			{ 
+				_Version = value;
+				OnPropertyChanged("Version");
+			}
 		}
+		[JsonProperty]
 		public int ObjectSubType
 		{
 			get { return _ObjectSubType; }
+			private set 
+			{ 
+				_ObjectSubType = value;
+				OnPropertyChanged("ObjectSubType");
+			}
 		}
+		[JsonProperty]
 		public string Dc
 		{
 			get { return _Dc; }
+			private set 
+			{ 
+				_Dc = value;
+				OnPropertyChanged("Dc");
+			}
 		}
+		[JsonProperty]
 		public int Original
 		{
 			get { return _Original; }
+			private set 
+			{ 
+				_Original = value;
+				OnPropertyChanged("Original");
+			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public int UpdatedAt
 		{
 			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
 		}
+		[JsonProperty]
 		public int ReadyAt
 		{
 			get { return _ReadyAt; }
+			private set 
+			{ 
+				_ReadyAt = value;
+				OnPropertyChanged("ReadyAt");
+			}
 		}
+		[JsonProperty]
 		public int SyncTime
 		{
 			get { return _SyncTime; }
+			private set 
+			{ 
+				_SyncTime = value;
+				OnPropertyChanged("SyncTime");
+			}
 		}
+		[JsonProperty]
 		public FileSyncStatus Status
 		{
 			get { return _Status; }
@@ -149,18 +224,37 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		[JsonProperty]
 		public FileSyncType FileType
 		{
 			get { return _FileType; }
+			private set 
+			{ 
+				_FileType = value;
+				OnPropertyChanged("FileType");
+			}
 		}
+		[JsonProperty]
 		public int LinkedId
 		{
 			get { return _LinkedId; }
+			private set 
+			{ 
+				_LinkedId = value;
+				OnPropertyChanged("LinkedId");
+			}
 		}
+		[JsonProperty]
 		public int LinkCount
 		{
 			get { return _LinkCount; }
+			private set 
+			{ 
+				_LinkCount = value;
+				OnPropertyChanged("LinkCount");
+			}
 		}
+		[JsonProperty]
 		public string FileRoot
 		{
 			get { return _FileRoot; }
@@ -170,6 +264,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileRoot");
 			}
 		}
+		[JsonProperty]
 		public string FilePath
 		{
 			get { return _FilePath; }
@@ -179,33 +274,75 @@ namespace Kaltura.Types
 				OnPropertyChanged("FilePath");
 			}
 		}
+		[JsonProperty]
 		public float FileSize
 		{
 			get { return _FileSize; }
+			private set 
+			{ 
+				_FileSize = value;
+				OnPropertyChanged("FileSize");
+			}
 		}
+		[JsonProperty]
 		public string FileUrl
 		{
 			get { return _FileUrl; }
+			private set 
+			{ 
+				_FileUrl = value;
+				OnPropertyChanged("FileUrl");
+			}
 		}
+		[JsonProperty]
 		public string FileContent
 		{
 			get { return _FileContent; }
+			private set 
+			{ 
+				_FileContent = value;
+				OnPropertyChanged("FileContent");
+			}
 		}
+		[JsonProperty]
 		public float FileDiscSize
 		{
 			get { return _FileDiscSize; }
+			private set 
+			{ 
+				_FileDiscSize = value;
+				OnPropertyChanged("FileDiscSize");
+			}
 		}
+		[JsonProperty]
 		public bool? IsCurrentDc
 		{
 			get { return _IsCurrentDc; }
+			private set 
+			{ 
+				_IsCurrentDc = value;
+				OnPropertyChanged("IsCurrentDc");
+			}
 		}
+		[JsonProperty]
 		public bool? IsDir
 		{
 			get { return _IsDir; }
+			private set 
+			{ 
+				_IsDir = value;
+				OnPropertyChanged("IsDir");
+			}
 		}
+		[JsonProperty]
 		public int OriginalId
 		{
 			get { return _OriginalId; }
+			private set 
+			{ 
+				_OriginalId = value;
+				OnPropertyChanged("OriginalId");
+			}
 		}
 		#endregion
 
@@ -214,118 +351,108 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FileSync(XmlElement node) : base(node)
+		public FileSync(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "id":
-						this._Id = ParseLong(propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "fileObjectType":
-						this._FileObjectType = (FileSyncObjectType)StringEnum.Parse(typeof(FileSyncObjectType), propertyNode.InnerText);
-						continue;
-					case "objectId":
-						this._ObjectId = propertyNode.InnerText;
-						continue;
-					case "version":
-						this._Version = propertyNode.InnerText;
-						continue;
-					case "objectSubType":
-						this._ObjectSubType = ParseInt(propertyNode.InnerText);
-						continue;
-					case "dc":
-						this._Dc = propertyNode.InnerText;
-						continue;
-					case "original":
-						this._Original = ParseInt(propertyNode.InnerText);
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "updatedAt":
-						this._UpdatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "readyAt":
-						this._ReadyAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "syncTime":
-						this._SyncTime = ParseInt(propertyNode.InnerText);
-						continue;
-					case "status":
-						this._Status = (FileSyncStatus)ParseEnum(typeof(FileSyncStatus), propertyNode.InnerText);
-						continue;
-					case "fileType":
-						this._FileType = (FileSyncType)ParseEnum(typeof(FileSyncType), propertyNode.InnerText);
-						continue;
-					case "linkedId":
-						this._LinkedId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "linkCount":
-						this._LinkCount = ParseInt(propertyNode.InnerText);
-						continue;
-					case "fileRoot":
-						this._FileRoot = propertyNode.InnerText;
-						continue;
-					case "filePath":
-						this._FilePath = propertyNode.InnerText;
-						continue;
-					case "fileSize":
-						this._FileSize = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "fileUrl":
-						this._FileUrl = propertyNode.InnerText;
-						continue;
-					case "fileContent":
-						this._FileContent = propertyNode.InnerText;
-						continue;
-					case "fileDiscSize":
-						this._FileDiscSize = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "isCurrentDc":
-						this._IsCurrentDc = ParseBool(propertyNode.InnerText);
-						continue;
-					case "isDir":
-						this._IsDir = ParseBool(propertyNode.InnerText);
-						continue;
-					case "originalId":
-						this._OriginalId = ParseInt(propertyNode.InnerText);
-						continue;
-				}
+				this._Id = ParseLong(node["id"].Value<string>());
 			}
-		}
-
-		public FileSync(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<long>("id");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._FileObjectType = (FileSyncObjectType)StringEnum.Parse(typeof(FileSyncObjectType), data.TryGetValueSafe<string>("fileObjectType"));
-			    this._ObjectId = data.TryGetValueSafe<string>("objectId");
-			    this._Version = data.TryGetValueSafe<string>("version");
-			    this._ObjectSubType = data.TryGetValueSafe<int>("objectSubType");
-			    this._Dc = data.TryGetValueSafe<string>("dc");
-			    this._Original = data.TryGetValueSafe<int>("original");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._UpdatedAt = data.TryGetValueSafe<int>("updatedAt");
-			    this._ReadyAt = data.TryGetValueSafe<int>("readyAt");
-			    this._SyncTime = data.TryGetValueSafe<int>("syncTime");
-			    this._Status = (FileSyncStatus)ParseEnum(typeof(FileSyncStatus), data.TryGetValueSafe<int>("status"));
-			    this._FileType = (FileSyncType)ParseEnum(typeof(FileSyncType), data.TryGetValueSafe<int>("fileType"));
-			    this._LinkedId = data.TryGetValueSafe<int>("linkedId");
-			    this._LinkCount = data.TryGetValueSafe<int>("linkCount");
-			    this._FileRoot = data.TryGetValueSafe<string>("fileRoot");
-			    this._FilePath = data.TryGetValueSafe<string>("filePath");
-			    this._FileSize = data.TryGetValueSafe<float>("fileSize");
-			    this._FileUrl = data.TryGetValueSafe<string>("fileUrl");
-			    this._FileContent = data.TryGetValueSafe<string>("fileContent");
-			    this._FileDiscSize = data.TryGetValueSafe<float>("fileDiscSize");
-			    this._IsCurrentDc = data.TryGetValueSafe<bool>("isCurrentDc");
-			    this._IsDir = data.TryGetValueSafe<bool>("isDir");
-			    this._OriginalId = data.TryGetValueSafe<int>("originalId");
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["fileObjectType"] != null)
+			{
+				this._FileObjectType = (FileSyncObjectType)StringEnum.Parse(typeof(FileSyncObjectType), node["fileObjectType"].Value<string>());
+			}
+			if(node["objectId"] != null)
+			{
+				this._ObjectId = node["objectId"].Value<string>();
+			}
+			if(node["version"] != null)
+			{
+				this._Version = node["version"].Value<string>();
+			}
+			if(node["objectSubType"] != null)
+			{
+				this._ObjectSubType = ParseInt(node["objectSubType"].Value<string>());
+			}
+			if(node["dc"] != null)
+			{
+				this._Dc = node["dc"].Value<string>();
+			}
+			if(node["original"] != null)
+			{
+				this._Original = ParseInt(node["original"].Value<string>());
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
+			}
+			if(node["readyAt"] != null)
+			{
+				this._ReadyAt = ParseInt(node["readyAt"].Value<string>());
+			}
+			if(node["syncTime"] != null)
+			{
+				this._SyncTime = ParseInt(node["syncTime"].Value<string>());
+			}
+			if(node["status"] != null)
+			{
+				this._Status = (FileSyncStatus)ParseEnum(typeof(FileSyncStatus), node["status"].Value<string>());
+			}
+			if(node["fileType"] != null)
+			{
+				this._FileType = (FileSyncType)ParseEnum(typeof(FileSyncType), node["fileType"].Value<string>());
+			}
+			if(node["linkedId"] != null)
+			{
+				this._LinkedId = ParseInt(node["linkedId"].Value<string>());
+			}
+			if(node["linkCount"] != null)
+			{
+				this._LinkCount = ParseInt(node["linkCount"].Value<string>());
+			}
+			if(node["fileRoot"] != null)
+			{
+				this._FileRoot = node["fileRoot"].Value<string>();
+			}
+			if(node["filePath"] != null)
+			{
+				this._FilePath = node["filePath"].Value<string>();
+			}
+			if(node["fileSize"] != null)
+			{
+				this._FileSize = ParseFloat(node["fileSize"].Value<string>());
+			}
+			if(node["fileUrl"] != null)
+			{
+				this._FileUrl = node["fileUrl"].Value<string>();
+			}
+			if(node["fileContent"] != null)
+			{
+				this._FileContent = node["fileContent"].Value<string>();
+			}
+			if(node["fileDiscSize"] != null)
+			{
+				this._FileDiscSize = ParseFloat(node["fileDiscSize"].Value<string>());
+			}
+			if(node["isCurrentDc"] != null)
+			{
+				this._IsCurrentDc = ParseBool(node["isCurrentDc"].Value<string>());
+			}
+			if(node["isDir"] != null)
+			{
+				this._IsDir = ParseBool(node["isDir"].Value<string>());
+			}
+			if(node["originalId"] != null)
+			{
+				this._OriginalId = ParseInt(node["originalId"].Value<string>());
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -46,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public SiteRestrictionType SiteRestrictionType
 		{
 			get { return _SiteRestrictionType; }
@@ -55,6 +58,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SiteRestrictionType");
 			}
 		}
+		[JsonProperty]
 		public string SiteList
 		{
 			get { return _SiteList; }
@@ -71,26 +75,16 @@ namespace Kaltura.Types
 		{
 		}
 
-		public SiteRestriction(XmlElement node) : base(node)
+		public SiteRestriction(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["siteRestrictionType"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "siteRestrictionType":
-						this._SiteRestrictionType = (SiteRestrictionType)ParseEnum(typeof(SiteRestrictionType), propertyNode.InnerText);
-						continue;
-					case "siteList":
-						this._SiteList = propertyNode.InnerText;
-						continue;
-				}
+				this._SiteRestrictionType = (SiteRestrictionType)ParseEnum(typeof(SiteRestrictionType), node["siteRestrictionType"].Value<string>());
 			}
-		}
-
-		public SiteRestriction(IDictionary<string,object> data) : base(data)
-		{
-			    this._SiteRestrictionType = (SiteRestrictionType)ParseEnum(typeof(SiteRestrictionType), data.TryGetValueSafe<int>("siteRestrictionType"));
-			    this._SiteList = data.TryGetValueSafe<string>("siteList");
+			if(node["siteList"] != null)
+			{
+				this._SiteList = node["siteList"].Value<string>();
+			}
 		}
 		#endregion
 

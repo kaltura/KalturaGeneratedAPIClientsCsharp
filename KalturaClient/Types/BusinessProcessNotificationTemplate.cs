@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int ServerId
 		{
 			get { return _ServerId; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerId");
 			}
 		}
+		[JsonProperty]
 		public string ProcessId
 		{
 			get { return _ProcessId; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProcessId");
 			}
 		}
+		[JsonProperty]
 		public string MainObjectCode
 		{
 			get { return _MainObjectCode; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public BusinessProcessNotificationTemplate(XmlElement node) : base(node)
+		public BusinessProcessNotificationTemplate(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["serverId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "serverId":
-						this._ServerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "processId":
-						this._ProcessId = propertyNode.InnerText;
-						continue;
-					case "mainObjectCode":
-						this._MainObjectCode = propertyNode.InnerText;
-						continue;
-				}
+				this._ServerId = ParseInt(node["serverId"].Value<string>());
 			}
-		}
-
-		public BusinessProcessNotificationTemplate(IDictionary<string,object> data) : base(data)
-		{
-			    this._ServerId = data.TryGetValueSafe<int>("serverId");
-			    this._ProcessId = data.TryGetValueSafe<string>("processId");
-			    this._MainObjectCode = data.TryGetValueSafe<string>("mainObjectCode");
+			if(node["processId"] != null)
+			{
+				this._ProcessId = node["processId"].Value<string>();
+			}
+			if(node["mainObjectCode"] != null)
+			{
+				this._MainObjectCode = node["mainObjectCode"].Value<string>();
+			}
 		}
 		#endregion
 

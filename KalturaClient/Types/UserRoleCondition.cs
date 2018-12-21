@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -44,6 +46,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string RoleIds
 		{
 			get { return _RoleIds; }
@@ -60,22 +63,12 @@ namespace Kaltura.Types
 		{
 		}
 
-		public UserRoleCondition(XmlElement node) : base(node)
+		public UserRoleCondition(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["roleIds"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "roleIds":
-						this._RoleIds = propertyNode.InnerText;
-						continue;
-				}
+				this._RoleIds = node["roleIds"].Value<string>();
 			}
-		}
-
-		public UserRoleCondition(IDictionary<string,object> data) : base(data)
-		{
-			    this._RoleIds = data.TryGetValueSafe<string>("roleIds");
 		}
 		#endregion
 

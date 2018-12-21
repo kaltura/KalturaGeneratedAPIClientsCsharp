@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -68,10 +70,17 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int Id
 		{
 			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
@@ -81,6 +90,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		[JsonProperty]
 		public string Name
 		{
 			get { return _Name; }
@@ -90,6 +100,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		[JsonProperty]
 		public string SystemName
 		{
 			get { return _SystemName; }
@@ -99,6 +110,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemName");
 			}
 		}
+		[JsonProperty]
 		public string Description
 		{
 			get { return _Description; }
@@ -108,14 +120,27 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		[JsonProperty]
 		public int CreatedAt
 		{
 			get { return _CreatedAt; }
+			private set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
 		}
+		[JsonProperty]
 		public NullableBoolean IsSystemDefault
 		{
 			get { return _IsSystemDefault; }
+			private set 
+			{ 
+				_IsSystemDefault = value;
+				OnPropertyChanged("IsSystemDefault");
+			}
 		}
+		[JsonProperty]
 		public string Tags
 		{
 			get { return _Tags; }
@@ -125,6 +150,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
+		[JsonProperty]
 		public IList<String> RequiredPermissions
 		{
 			get { return _RequiredPermissions; }
@@ -134,6 +160,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RequiredPermissions");
 			}
 		}
+		[JsonProperty]
 		public int SourceRemoteStorageProfileId
 		{
 			get { return _SourceRemoteStorageProfileId; }
@@ -143,6 +170,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceRemoteStorageProfileId");
 			}
 		}
+		[JsonProperty]
 		public int RemoteStorageProfileIds
 		{
 			get { return _RemoteStorageProfileIds; }
@@ -152,6 +180,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("RemoteStorageProfileIds");
 			}
 		}
+		[JsonProperty]
 		public MediaParserType MediaParserType
 		{
 			get { return _MediaParserType; }
@@ -161,6 +190,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaParserType");
 			}
 		}
+		[JsonProperty]
 		public string SourceAssetParamsIds
 		{
 			get { return _SourceAssetParamsIds; }
@@ -177,79 +207,64 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AssetParams(XmlElement node) : base(node)
+		public AssetParams(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["id"] != null)
 			{
-				switch (propertyNode.Name)
+				this._Id = ParseInt(node["id"].Value<string>());
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["name"] != null)
+			{
+				this._Name = node["name"].Value<string>();
+			}
+			if(node["systemName"] != null)
+			{
+				this._SystemName = node["systemName"].Value<string>();
+			}
+			if(node["description"] != null)
+			{
+				this._Description = node["description"].Value<string>();
+			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
+			}
+			if(node["isSystemDefault"] != null)
+			{
+				this._IsSystemDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["isSystemDefault"].Value<string>());
+			}
+			if(node["tags"] != null)
+			{
+				this._Tags = node["tags"].Value<string>();
+			}
+			if(node["requiredPermissions"] != null)
+			{
+				this._RequiredPermissions = new List<String>();
+				foreach(var arrayNode in node["requiredPermissions"].Children())
 				{
-					case "id":
-						this._Id = ParseInt(propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "name":
-						this._Name = propertyNode.InnerText;
-						continue;
-					case "systemName":
-						this._SystemName = propertyNode.InnerText;
-						continue;
-					case "description":
-						this._Description = propertyNode.InnerText;
-						continue;
-					case "createdAt":
-						this._CreatedAt = ParseInt(propertyNode.InnerText);
-						continue;
-					case "isSystemDefault":
-						this._IsSystemDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), propertyNode.InnerText);
-						continue;
-					case "tags":
-						this._Tags = propertyNode.InnerText;
-						continue;
-					case "requiredPermissions":
-						this._RequiredPermissions = new List<String>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._RequiredPermissions.Add(ObjectFactory.Create<String>(arrayNode));
-						}
-						continue;
-					case "sourceRemoteStorageProfileId":
-						this._SourceRemoteStorageProfileId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "remoteStorageProfileIds":
-						this._RemoteStorageProfileIds = ParseInt(propertyNode.InnerText);
-						continue;
-					case "mediaParserType":
-						this._MediaParserType = (MediaParserType)StringEnum.Parse(typeof(MediaParserType), propertyNode.InnerText);
-						continue;
-					case "sourceAssetParamsIds":
-						this._SourceAssetParamsIds = propertyNode.InnerText;
-						continue;
+					this._RequiredPermissions.Add(ObjectFactory.Create<String>(arrayNode));
 				}
 			}
-		}
-
-		public AssetParams(IDictionary<string,object> data) : base(data)
-		{
-			    this._Id = data.TryGetValueSafe<int>("id");
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._Name = data.TryGetValueSafe<string>("name");
-			    this._SystemName = data.TryGetValueSafe<string>("systemName");
-			    this._Description = data.TryGetValueSafe<string>("description");
-			    this._CreatedAt = data.TryGetValueSafe<int>("createdAt");
-			    this._IsSystemDefault = (NullableBoolean)ParseEnum(typeof(NullableBoolean), data.TryGetValueSafe<int>("isSystemDefault"));
-			    this._Tags = data.TryGetValueSafe<string>("tags");
-			    this._RequiredPermissions = new List<String>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("requiredPermissions", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._RequiredPermissions.Add(ObjectFactory.Create<String>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._SourceRemoteStorageProfileId = data.TryGetValueSafe<int>("sourceRemoteStorageProfileId");
-			    this._RemoteStorageProfileIds = data.TryGetValueSafe<int>("remoteStorageProfileIds");
-			    this._MediaParserType = (MediaParserType)StringEnum.Parse(typeof(MediaParserType), data.TryGetValueSafe<string>("mediaParserType"));
-			    this._SourceAssetParamsIds = data.TryGetValueSafe<string>("sourceAssetParamsIds");
+			if(node["sourceRemoteStorageProfileId"] != null)
+			{
+				this._SourceRemoteStorageProfileId = ParseInt(node["sourceRemoteStorageProfileId"].Value<string>());
+			}
+			if(node["remoteStorageProfileIds"] != null)
+			{
+				this._RemoteStorageProfileIds = ParseInt(node["remoteStorageProfileIds"].Value<string>());
+			}
+			if(node["mediaParserType"] != null)
+			{
+				this._MediaParserType = (MediaParserType)StringEnum.Parse(typeof(MediaParserType), node["mediaParserType"].Value<string>());
+			}
+			if(node["sourceAssetParamsIds"] != null)
+			{
+				this._SourceAssetParamsIds = node["sourceAssetParamsIds"].Value<string>();
+			}
 		}
 		#endregion
 

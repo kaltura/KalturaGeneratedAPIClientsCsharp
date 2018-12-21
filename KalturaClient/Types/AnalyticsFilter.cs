@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -56,6 +58,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string From_time
 		{
 			get { return _From_time; }
@@ -65,6 +68,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("From_time");
 			}
 		}
+		[JsonProperty]
 		public string To_time
 		{
 			get { return _To_time; }
@@ -74,6 +78,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("To_time");
 			}
 		}
+		[JsonProperty]
 		public string Metrics
 		{
 			get { return _Metrics; }
@@ -83,6 +88,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Metrics");
 			}
 		}
+		[JsonProperty]
 		public float UtcOffset
 		{
 			get { return _UtcOffset; }
@@ -92,6 +98,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UtcOffset");
 			}
 		}
+		[JsonProperty]
 		public string Dimensions
 		{
 			get { return _Dimensions; }
@@ -101,6 +108,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Dimensions");
 			}
 		}
+		[JsonProperty]
 		public IList<ReportFilter> Filters
 		{
 			get { return _Filters; }
@@ -110,6 +118,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Filters");
 			}
 		}
+		[JsonProperty]
 		public string OrderBy
 		{
 			get { return _OrderBy; }
@@ -126,55 +135,40 @@ namespace Kaltura.Types
 		{
 		}
 
-		public AnalyticsFilter(XmlElement node) : base(node)
+		public AnalyticsFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["from_time"] != null)
 			{
-				switch (propertyNode.Name)
+				this._From_time = node["from_time"].Value<string>();
+			}
+			if(node["to_time"] != null)
+			{
+				this._To_time = node["to_time"].Value<string>();
+			}
+			if(node["metrics"] != null)
+			{
+				this._Metrics = node["metrics"].Value<string>();
+			}
+			if(node["utcOffset"] != null)
+			{
+				this._UtcOffset = ParseFloat(node["utcOffset"].Value<string>());
+			}
+			if(node["dimensions"] != null)
+			{
+				this._Dimensions = node["dimensions"].Value<string>();
+			}
+			if(node["filters"] != null)
+			{
+				this._Filters = new List<ReportFilter>();
+				foreach(var arrayNode in node["filters"].Children())
 				{
-					case "from_time":
-						this._From_time = propertyNode.InnerText;
-						continue;
-					case "to_time":
-						this._To_time = propertyNode.InnerText;
-						continue;
-					case "metrics":
-						this._Metrics = propertyNode.InnerText;
-						continue;
-					case "utcOffset":
-						this._UtcOffset = ParseFloat(propertyNode.InnerText);
-						continue;
-					case "dimensions":
-						this._Dimensions = propertyNode.InnerText;
-						continue;
-					case "filters":
-						this._Filters = new List<ReportFilter>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Filters.Add(ObjectFactory.Create<ReportFilter>(arrayNode));
-						}
-						continue;
-					case "orderBy":
-						this._OrderBy = propertyNode.InnerText;
-						continue;
+					this._Filters.Add(ObjectFactory.Create<ReportFilter>(arrayNode));
 				}
 			}
-		}
-
-		public AnalyticsFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._From_time = data.TryGetValueSafe<string>("from_time");
-			    this._To_time = data.TryGetValueSafe<string>("to_time");
-			    this._Metrics = data.TryGetValueSafe<string>("metrics");
-			    this._UtcOffset = data.TryGetValueSafe<float>("utcOffset");
-			    this._Dimensions = data.TryGetValueSafe<string>("dimensions");
-			    this._Filters = new List<ReportFilter>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("filters", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Filters.Add(ObjectFactory.Create<ReportFilter>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._OrderBy = data.TryGetValueSafe<string>("orderBy");
+			if(node["orderBy"] != null)
+			{
+				this._OrderBy = node["orderBy"].Value<string>();
+			}
 		}
 		#endregion
 

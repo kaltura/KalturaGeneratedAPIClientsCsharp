@@ -32,6 +32,7 @@ using System.IO;
 using Kaltura.Request;
 using Kaltura.Types;
 using Kaltura.Enums;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Services
 {
@@ -81,17 +82,13 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<CaptionAsset>(result);
 		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<CaptionAsset>((IDictionary<string,object>)result);
-		}
 	}
 
-	public class CaptionAssetDeleteRequestBuilder : RequestBuilder<object>
+	public class CaptionAssetDeleteRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
 		public const string CAPTION_ASSET_ID = "captionAssetId";
@@ -128,11 +125,7 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-		public override object DeserializeObject(object result)
+		public override object Deserialize(JToken result)
 		{
 			return null;
 		}
@@ -175,13 +168,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<CaptionAsset>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<CaptionAsset>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -222,13 +211,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<ListResponse<RemotePath>>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<ListResponse<RemotePath>>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -278,13 +263,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
-			return result.InnerText;
-		}
-		public override object DeserializeObject(object result)
-		{
-			return (string)result;
+			return result.Value<string>();
 		}
 	}
 
@@ -334,17 +315,13 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<ListResponse<CaptionAsset>>(result);
 		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<ListResponse<CaptionAsset>>((IDictionary<string,object>)result);
-		}
 	}
 
-	public class CaptionAssetSetAsDefaultRequestBuilder : RequestBuilder<object>
+	public class CaptionAssetSetAsDefaultRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
 		public const string CAPTION_ASSET_ID = "captionAssetId";
@@ -381,11 +358,7 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
-		{
-			return null;
-		}
-		public override object DeserializeObject(object result)
+		public override object Deserialize(JToken result)
 		{
 			return null;
 		}
@@ -437,13 +410,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<CaptionAsset>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<CaptionAsset>((IDictionary<string,object>)result);
 		}
 	}
 
@@ -493,13 +462,9 @@ namespace Kaltura.Services
 			return kfiles;
 		}
 
-		public override object Deserialize(XmlElement result)
+		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<CaptionAsset>(result);
-		}
-		public override object DeserializeObject(object result)
-		{
-			return ObjectFactory.Create<CaptionAsset>((IDictionary<string,object>)result);
 		}
 	}
 

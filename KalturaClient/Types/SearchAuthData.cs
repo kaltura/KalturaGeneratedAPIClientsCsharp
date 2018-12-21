@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -48,6 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string AuthData
 		{
 			get { return _AuthData; }
@@ -57,6 +60,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AuthData");
 			}
 		}
+		[JsonProperty]
 		public string LoginUrl
 		{
 			get { return _LoginUrl; }
@@ -66,6 +70,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("LoginUrl");
 			}
 		}
+		[JsonProperty]
 		public string Message
 		{
 			get { return _Message; }
@@ -82,30 +87,20 @@ namespace Kaltura.Types
 		{
 		}
 
-		public SearchAuthData(XmlElement node) : base(node)
+		public SearchAuthData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["authData"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "authData":
-						this._AuthData = propertyNode.InnerText;
-						continue;
-					case "loginUrl":
-						this._LoginUrl = propertyNode.InnerText;
-						continue;
-					case "message":
-						this._Message = propertyNode.InnerText;
-						continue;
-				}
+				this._AuthData = node["authData"].Value<string>();
 			}
-		}
-
-		public SearchAuthData(IDictionary<string,object> data) : base(data)
-		{
-			    this._AuthData = data.TryGetValueSafe<string>("authData");
-			    this._LoginUrl = data.TryGetValueSafe<string>("loginUrl");
-			    this._Message = data.TryGetValueSafe<string>("message");
+			if(node["loginUrl"] != null)
+			{
+				this._LoginUrl = node["loginUrl"].Value<string>();
+			}
+			if(node["message"] != null)
+			{
+				this._Message = node["message"].Value<string>();
+			}
 		}
 		#endregion
 

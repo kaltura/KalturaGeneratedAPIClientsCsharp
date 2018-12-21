@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -74,14 +76,27 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string StreamRemoteId
 		{
 			get { return _StreamRemoteId; }
+			private set 
+			{ 
+				_StreamRemoteId = value;
+				OnPropertyChanged("StreamRemoteId");
+			}
 		}
+		[JsonProperty]
 		public string StreamRemoteBackupId
 		{
 			get { return _StreamRemoteBackupId; }
+			private set 
+			{ 
+				_StreamRemoteBackupId = value;
+				OnPropertyChanged("StreamRemoteBackupId");
+			}
 		}
+		[JsonProperty]
 		public IList<LiveStreamBitrate> Bitrates
 		{
 			get { return _Bitrates; }
@@ -91,6 +106,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("Bitrates");
 			}
 		}
+		[JsonProperty]
 		public string PrimaryBroadcastingUrl
 		{
 			get { return _PrimaryBroadcastingUrl; }
@@ -100,6 +116,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrimaryBroadcastingUrl");
 			}
 		}
+		[JsonProperty]
 		public string SecondaryBroadcastingUrl
 		{
 			get { return _SecondaryBroadcastingUrl; }
@@ -109,6 +126,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SecondaryBroadcastingUrl");
 			}
 		}
+		[JsonProperty]
 		public string PrimaryRtspBroadcastingUrl
 		{
 			get { return _PrimaryRtspBroadcastingUrl; }
@@ -118,6 +136,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrimaryRtspBroadcastingUrl");
 			}
 		}
+		[JsonProperty]
 		public string SecondaryRtspBroadcastingUrl
 		{
 			get { return _SecondaryRtspBroadcastingUrl; }
@@ -127,6 +146,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SecondaryRtspBroadcastingUrl");
 			}
 		}
+		[JsonProperty]
 		public string StreamName
 		{
 			get { return _StreamName; }
@@ -136,6 +156,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StreamName");
 			}
 		}
+		[JsonProperty]
 		public string StreamUrl
 		{
 			get { return _StreamUrl; }
@@ -145,6 +166,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("StreamUrl");
 			}
 		}
+		[JsonProperty]
 		public string HlsStreamUrl
 		{
 			get { return _HlsStreamUrl; }
@@ -154,6 +176,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("HlsStreamUrl");
 			}
 		}
+		[JsonProperty]
 		public string UrlManager
 		{
 			get { return _UrlManager; }
@@ -163,6 +186,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("UrlManager");
 			}
 		}
+		[JsonProperty]
 		public string EncodingIP1
 		{
 			get { return _EncodingIP1; }
@@ -172,6 +196,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EncodingIP1");
 			}
 		}
+		[JsonProperty]
 		public string EncodingIP2
 		{
 			get { return _EncodingIP2; }
@@ -181,6 +206,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EncodingIP2");
 			}
 		}
+		[JsonProperty]
 		public string StreamPassword
 		{
 			get { return _StreamPassword; }
@@ -190,13 +216,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("StreamPassword");
 			}
 		}
+		[JsonProperty]
 		public string StreamUsername
 		{
 			get { return _StreamUsername; }
+			private set 
+			{ 
+				_StreamUsername = value;
+				OnPropertyChanged("StreamUsername");
+			}
 		}
+		[JsonProperty]
 		public int PrimaryServerNodeId
 		{
 			get { return _PrimaryServerNodeId; }
+			private set 
+			{ 
+				_PrimaryServerNodeId = value;
+				OnPropertyChanged("PrimaryServerNodeId");
+			}
 		}
 		#endregion
 
@@ -205,91 +243,76 @@ namespace Kaltura.Types
 		{
 		}
 
-		public LiveStreamEntry(XmlElement node) : base(node)
+		public LiveStreamEntry(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["streamRemoteId"] != null)
 			{
-				switch (propertyNode.Name)
+				this._StreamRemoteId = node["streamRemoteId"].Value<string>();
+			}
+			if(node["streamRemoteBackupId"] != null)
+			{
+				this._StreamRemoteBackupId = node["streamRemoteBackupId"].Value<string>();
+			}
+			if(node["bitrates"] != null)
+			{
+				this._Bitrates = new List<LiveStreamBitrate>();
+				foreach(var arrayNode in node["bitrates"].Children())
 				{
-					case "streamRemoteId":
-						this._StreamRemoteId = propertyNode.InnerText;
-						continue;
-					case "streamRemoteBackupId":
-						this._StreamRemoteBackupId = propertyNode.InnerText;
-						continue;
-					case "bitrates":
-						this._Bitrates = new List<LiveStreamBitrate>();
-						foreach(XmlElement arrayNode in propertyNode.ChildNodes)
-						{
-							this._Bitrates.Add(ObjectFactory.Create<LiveStreamBitrate>(arrayNode));
-						}
-						continue;
-					case "primaryBroadcastingUrl":
-						this._PrimaryBroadcastingUrl = propertyNode.InnerText;
-						continue;
-					case "secondaryBroadcastingUrl":
-						this._SecondaryBroadcastingUrl = propertyNode.InnerText;
-						continue;
-					case "primaryRtspBroadcastingUrl":
-						this._PrimaryRtspBroadcastingUrl = propertyNode.InnerText;
-						continue;
-					case "secondaryRtspBroadcastingUrl":
-						this._SecondaryRtspBroadcastingUrl = propertyNode.InnerText;
-						continue;
-					case "streamName":
-						this._StreamName = propertyNode.InnerText;
-						continue;
-					case "streamUrl":
-						this._StreamUrl = propertyNode.InnerText;
-						continue;
-					case "hlsStreamUrl":
-						this._HlsStreamUrl = propertyNode.InnerText;
-						continue;
-					case "urlManager":
-						this._UrlManager = propertyNode.InnerText;
-						continue;
-					case "encodingIP1":
-						this._EncodingIP1 = propertyNode.InnerText;
-						continue;
-					case "encodingIP2":
-						this._EncodingIP2 = propertyNode.InnerText;
-						continue;
-					case "streamPassword":
-						this._StreamPassword = propertyNode.InnerText;
-						continue;
-					case "streamUsername":
-						this._StreamUsername = propertyNode.InnerText;
-						continue;
-					case "primaryServerNodeId":
-						this._PrimaryServerNodeId = ParseInt(propertyNode.InnerText);
-						continue;
+					this._Bitrates.Add(ObjectFactory.Create<LiveStreamBitrate>(arrayNode));
 				}
 			}
-		}
-
-		public LiveStreamEntry(IDictionary<string,object> data) : base(data)
-		{
-			    this._StreamRemoteId = data.TryGetValueSafe<string>("streamRemoteId");
-			    this._StreamRemoteBackupId = data.TryGetValueSafe<string>("streamRemoteBackupId");
-			    this._Bitrates = new List<LiveStreamBitrate>();
-			    foreach(var dataDictionary in data.TryGetValueSafe<IEnumerable<object>>("bitrates", new List<object>()))
-			    {
-			        if (dataDictionary == null) { continue; }
-			        this._Bitrates.Add(ObjectFactory.Create<LiveStreamBitrate>((IDictionary<string,object>)dataDictionary));
-			    }
-			    this._PrimaryBroadcastingUrl = data.TryGetValueSafe<string>("primaryBroadcastingUrl");
-			    this._SecondaryBroadcastingUrl = data.TryGetValueSafe<string>("secondaryBroadcastingUrl");
-			    this._PrimaryRtspBroadcastingUrl = data.TryGetValueSafe<string>("primaryRtspBroadcastingUrl");
-			    this._SecondaryRtspBroadcastingUrl = data.TryGetValueSafe<string>("secondaryRtspBroadcastingUrl");
-			    this._StreamName = data.TryGetValueSafe<string>("streamName");
-			    this._StreamUrl = data.TryGetValueSafe<string>("streamUrl");
-			    this._HlsStreamUrl = data.TryGetValueSafe<string>("hlsStreamUrl");
-			    this._UrlManager = data.TryGetValueSafe<string>("urlManager");
-			    this._EncodingIP1 = data.TryGetValueSafe<string>("encodingIP1");
-			    this._EncodingIP2 = data.TryGetValueSafe<string>("encodingIP2");
-			    this._StreamPassword = data.TryGetValueSafe<string>("streamPassword");
-			    this._StreamUsername = data.TryGetValueSafe<string>("streamUsername");
-			    this._PrimaryServerNodeId = data.TryGetValueSafe<int>("primaryServerNodeId");
+			if(node["primaryBroadcastingUrl"] != null)
+			{
+				this._PrimaryBroadcastingUrl = node["primaryBroadcastingUrl"].Value<string>();
+			}
+			if(node["secondaryBroadcastingUrl"] != null)
+			{
+				this._SecondaryBroadcastingUrl = node["secondaryBroadcastingUrl"].Value<string>();
+			}
+			if(node["primaryRtspBroadcastingUrl"] != null)
+			{
+				this._PrimaryRtspBroadcastingUrl = node["primaryRtspBroadcastingUrl"].Value<string>();
+			}
+			if(node["secondaryRtspBroadcastingUrl"] != null)
+			{
+				this._SecondaryRtspBroadcastingUrl = node["secondaryRtspBroadcastingUrl"].Value<string>();
+			}
+			if(node["streamName"] != null)
+			{
+				this._StreamName = node["streamName"].Value<string>();
+			}
+			if(node["streamUrl"] != null)
+			{
+				this._StreamUrl = node["streamUrl"].Value<string>();
+			}
+			if(node["hlsStreamUrl"] != null)
+			{
+				this._HlsStreamUrl = node["hlsStreamUrl"].Value<string>();
+			}
+			if(node["urlManager"] != null)
+			{
+				this._UrlManager = node["urlManager"].Value<string>();
+			}
+			if(node["encodingIP1"] != null)
+			{
+				this._EncodingIP1 = node["encodingIP1"].Value<string>();
+			}
+			if(node["encodingIP2"] != null)
+			{
+				this._EncodingIP2 = node["encodingIP2"].Value<string>();
+			}
+			if(node["streamPassword"] != null)
+			{
+				this._StreamPassword = node["streamPassword"].Value<string>();
+			}
+			if(node["streamUsername"] != null)
+			{
+				this._StreamUsername = node["streamUsername"].Value<string>();
+			}
+			if(node["primaryServerNodeId"] != null)
+			{
+				this._PrimaryServerNodeId = ParseInt(node["primaryServerNodeId"].Value<string>());
+			}
 		}
 		#endregion
 

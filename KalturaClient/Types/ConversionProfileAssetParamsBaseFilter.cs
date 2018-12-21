@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -62,6 +64,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public int ConversionProfileIdEqual
 		{
 			get { return _ConversionProfileIdEqual; }
@@ -71,6 +74,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionProfileIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string ConversionProfileIdIn
 		{
 			get { return _ConversionProfileIdIn; }
@@ -80,6 +84,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionProfileIdIn");
 			}
 		}
+		[JsonProperty]
 		public int AssetParamsIdEqual
 		{
 			get { return _AssetParamsIdEqual; }
@@ -89,6 +94,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetParamsIdEqual");
 			}
 		}
+		[JsonProperty]
 		public string AssetParamsIdIn
 		{
 			get { return _AssetParamsIdIn; }
@@ -98,6 +104,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetParamsIdIn");
 			}
 		}
+		[JsonProperty]
 		public FlavorReadyBehaviorType ReadyBehaviorEqual
 		{
 			get { return _ReadyBehaviorEqual; }
@@ -107,6 +114,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReadyBehaviorEqual");
 			}
 		}
+		[JsonProperty]
 		public string ReadyBehaviorIn
 		{
 			get { return _ReadyBehaviorIn; }
@@ -116,6 +124,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReadyBehaviorIn");
 			}
 		}
+		[JsonProperty]
 		public AssetParamsOrigin OriginEqual
 		{
 			get { return _OriginEqual; }
@@ -125,6 +134,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("OriginEqual");
 			}
 		}
+		[JsonProperty]
 		public string OriginIn
 		{
 			get { return _OriginIn; }
@@ -134,6 +144,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("OriginIn");
 			}
 		}
+		[JsonProperty]
 		public string SystemNameEqual
 		{
 			get { return _SystemNameEqual; }
@@ -143,6 +154,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemNameEqual");
 			}
 		}
+		[JsonProperty]
 		public string SystemNameIn
 		{
 			get { return _SystemNameIn; }
@@ -159,58 +171,48 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ConversionProfileAssetParamsBaseFilter(XmlElement node) : base(node)
+		public ConversionProfileAssetParamsBaseFilter(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["conversionProfileIdEqual"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "conversionProfileIdEqual":
-						this._ConversionProfileIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "conversionProfileIdIn":
-						this._ConversionProfileIdIn = propertyNode.InnerText;
-						continue;
-					case "assetParamsIdEqual":
-						this._AssetParamsIdEqual = ParseInt(propertyNode.InnerText);
-						continue;
-					case "assetParamsIdIn":
-						this._AssetParamsIdIn = propertyNode.InnerText;
-						continue;
-					case "readyBehaviorEqual":
-						this._ReadyBehaviorEqual = (FlavorReadyBehaviorType)ParseEnum(typeof(FlavorReadyBehaviorType), propertyNode.InnerText);
-						continue;
-					case "readyBehaviorIn":
-						this._ReadyBehaviorIn = propertyNode.InnerText;
-						continue;
-					case "originEqual":
-						this._OriginEqual = (AssetParamsOrigin)ParseEnum(typeof(AssetParamsOrigin), propertyNode.InnerText);
-						continue;
-					case "originIn":
-						this._OriginIn = propertyNode.InnerText;
-						continue;
-					case "systemNameEqual":
-						this._SystemNameEqual = propertyNode.InnerText;
-						continue;
-					case "systemNameIn":
-						this._SystemNameIn = propertyNode.InnerText;
-						continue;
-				}
+				this._ConversionProfileIdEqual = ParseInt(node["conversionProfileIdEqual"].Value<string>());
 			}
-		}
-
-		public ConversionProfileAssetParamsBaseFilter(IDictionary<string,object> data) : base(data)
-		{
-			    this._ConversionProfileIdEqual = data.TryGetValueSafe<int>("conversionProfileIdEqual");
-			    this._ConversionProfileIdIn = data.TryGetValueSafe<string>("conversionProfileIdIn");
-			    this._AssetParamsIdEqual = data.TryGetValueSafe<int>("assetParamsIdEqual");
-			    this._AssetParamsIdIn = data.TryGetValueSafe<string>("assetParamsIdIn");
-			    this._ReadyBehaviorEqual = (FlavorReadyBehaviorType)ParseEnum(typeof(FlavorReadyBehaviorType), data.TryGetValueSafe<int>("readyBehaviorEqual"));
-			    this._ReadyBehaviorIn = data.TryGetValueSafe<string>("readyBehaviorIn");
-			    this._OriginEqual = (AssetParamsOrigin)ParseEnum(typeof(AssetParamsOrigin), data.TryGetValueSafe<int>("originEqual"));
-			    this._OriginIn = data.TryGetValueSafe<string>("originIn");
-			    this._SystemNameEqual = data.TryGetValueSafe<string>("systemNameEqual");
-			    this._SystemNameIn = data.TryGetValueSafe<string>("systemNameIn");
+			if(node["conversionProfileIdIn"] != null)
+			{
+				this._ConversionProfileIdIn = node["conversionProfileIdIn"].Value<string>();
+			}
+			if(node["assetParamsIdEqual"] != null)
+			{
+				this._AssetParamsIdEqual = ParseInt(node["assetParamsIdEqual"].Value<string>());
+			}
+			if(node["assetParamsIdIn"] != null)
+			{
+				this._AssetParamsIdIn = node["assetParamsIdIn"].Value<string>();
+			}
+			if(node["readyBehaviorEqual"] != null)
+			{
+				this._ReadyBehaviorEqual = (FlavorReadyBehaviorType)ParseEnum(typeof(FlavorReadyBehaviorType), node["readyBehaviorEqual"].Value<string>());
+			}
+			if(node["readyBehaviorIn"] != null)
+			{
+				this._ReadyBehaviorIn = node["readyBehaviorIn"].Value<string>();
+			}
+			if(node["originEqual"] != null)
+			{
+				this._OriginEqual = (AssetParamsOrigin)ParseEnum(typeof(AssetParamsOrigin), node["originEqual"].Value<string>());
+			}
+			if(node["originIn"] != null)
+			{
+				this._OriginIn = node["originIn"].Value<string>();
+			}
+			if(node["systemNameEqual"] != null)
+			{
+				this._SystemNameEqual = node["systemNameEqual"].Value<string>();
+			}
+			if(node["systemNameIn"] != null)
+			{
+				this._SystemNameIn = node["systemNameIn"].Value<string>();
+			}
 		}
 		#endregion
 

@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -54,29 +56,65 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string Ks
 		{
 			get { return _Ks; }
+			private set 
+			{ 
+				_Ks = value;
+				OnPropertyChanged("Ks");
+			}
 		}
+		[JsonProperty]
 		public SessionType SessionType
 		{
 			get { return _SessionType; }
+			private set 
+			{ 
+				_SessionType = value;
+				OnPropertyChanged("SessionType");
+			}
 		}
+		[JsonProperty]
 		public int PartnerId
 		{
 			get { return _PartnerId; }
+			private set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
 		}
+		[JsonProperty]
 		public string UserId
 		{
 			get { return _UserId; }
+			private set 
+			{ 
+				_UserId = value;
+				OnPropertyChanged("UserId");
+			}
 		}
+		[JsonProperty]
 		public int Expiry
 		{
 			get { return _Expiry; }
+			private set 
+			{ 
+				_Expiry = value;
+				OnPropertyChanged("Expiry");
+			}
 		}
+		[JsonProperty]
 		public string Privileges
 		{
 			get { return _Privileges; }
+			private set 
+			{ 
+				_Privileges = value;
+				OnPropertyChanged("Privileges");
+			}
 		}
 		#endregion
 
@@ -85,42 +123,32 @@ namespace Kaltura.Types
 		{
 		}
 
-		public SessionInfo(XmlElement node) : base(node)
+		public SessionInfo(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["ks"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "ks":
-						this._Ks = propertyNode.InnerText;
-						continue;
-					case "sessionType":
-						this._SessionType = (SessionType)ParseEnum(typeof(SessionType), propertyNode.InnerText);
-						continue;
-					case "partnerId":
-						this._PartnerId = ParseInt(propertyNode.InnerText);
-						continue;
-					case "userId":
-						this._UserId = propertyNode.InnerText;
-						continue;
-					case "expiry":
-						this._Expiry = ParseInt(propertyNode.InnerText);
-						continue;
-					case "privileges":
-						this._Privileges = propertyNode.InnerText;
-						continue;
-				}
+				this._Ks = node["ks"].Value<string>();
 			}
-		}
-
-		public SessionInfo(IDictionary<string,object> data) : base(data)
-		{
-			    this._Ks = data.TryGetValueSafe<string>("ks");
-			    this._SessionType = (SessionType)ParseEnum(typeof(SessionType), data.TryGetValueSafe<int>("sessionType"));
-			    this._PartnerId = data.TryGetValueSafe<int>("partnerId");
-			    this._UserId = data.TryGetValueSafe<string>("userId");
-			    this._Expiry = data.TryGetValueSafe<int>("expiry");
-			    this._Privileges = data.TryGetValueSafe<string>("privileges");
+			if(node["sessionType"] != null)
+			{
+				this._SessionType = (SessionType)ParseEnum(typeof(SessionType), node["sessionType"].Value<string>());
+			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
+			if(node["userId"] != null)
+			{
+				this._UserId = node["userId"].Value<string>();
+			}
+			if(node["expiry"] != null)
+			{
+				this._Expiry = ParseInt(node["expiry"].Value<string>());
+			}
+			if(node["privileges"] != null)
+			{
+				this._Privileges = node["privileges"].Value<string>();
+			}
 		}
 		#endregion
 

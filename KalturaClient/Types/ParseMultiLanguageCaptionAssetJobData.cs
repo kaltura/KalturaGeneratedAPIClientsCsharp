@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -50,6 +52,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string MultiLanaguageCaptionAssetId
 		{
 			get { return _MultiLanaguageCaptionAssetId; }
@@ -59,6 +62,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("MultiLanaguageCaptionAssetId");
 			}
 		}
+		[JsonProperty]
 		public string EntryId
 		{
 			get { return _EntryId; }
@@ -68,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		[JsonProperty]
 		public string FileLocation
 		{
 			get { return _FileLocation; }
@@ -77,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileLocation");
 			}
 		}
+		[JsonProperty]
 		public string FileEncryptionKey
 		{
 			get { return _FileEncryptionKey; }
@@ -93,34 +99,24 @@ namespace Kaltura.Types
 		{
 		}
 
-		public ParseMultiLanguageCaptionAssetJobData(XmlElement node) : base(node)
+		public ParseMultiLanguageCaptionAssetJobData(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["multiLanaguageCaptionAssetId"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "multiLanaguageCaptionAssetId":
-						this._MultiLanaguageCaptionAssetId = propertyNode.InnerText;
-						continue;
-					case "entryId":
-						this._EntryId = propertyNode.InnerText;
-						continue;
-					case "fileLocation":
-						this._FileLocation = propertyNode.InnerText;
-						continue;
-					case "fileEncryptionKey":
-						this._FileEncryptionKey = propertyNode.InnerText;
-						continue;
-				}
+				this._MultiLanaguageCaptionAssetId = node["multiLanaguageCaptionAssetId"].Value<string>();
 			}
-		}
-
-		public ParseMultiLanguageCaptionAssetJobData(IDictionary<string,object> data) : base(data)
-		{
-			    this._MultiLanaguageCaptionAssetId = data.TryGetValueSafe<string>("multiLanaguageCaptionAssetId");
-			    this._EntryId = data.TryGetValueSafe<string>("entryId");
-			    this._FileLocation = data.TryGetValueSafe<string>("fileLocation");
-			    this._FileEncryptionKey = data.TryGetValueSafe<string>("fileEncryptionKey");
+			if(node["entryId"] != null)
+			{
+				this._EntryId = node["entryId"].Value<string>();
+			}
+			if(node["fileLocation"] != null)
+			{
+				this._FileLocation = node["fileLocation"].Value<string>();
+			}
+			if(node["fileEncryptionKey"] != null)
+			{
+				this._FileEncryptionKey = node["fileEncryptionKey"].Value<string>();
+			}
 		}
 		#endregion
 

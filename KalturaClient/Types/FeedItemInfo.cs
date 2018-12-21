@@ -30,6 +30,8 @@ using System.Xml;
 using System.Collections.Generic;
 using Kaltura.Enums;
 using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
@@ -60,6 +62,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
 		public string ItemXPath
 		{
 			get { return _ItemXPath; }
@@ -69,6 +72,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemXPath");
 			}
 		}
+		[JsonProperty]
 		public string ItemPublishDateXPath
 		{
 			get { return _ItemPublishDateXPath; }
@@ -78,6 +82,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemPublishDateXPath");
 			}
 		}
+		[JsonProperty]
 		public string ItemUniqueIdentifierXPath
 		{
 			get { return _ItemUniqueIdentifierXPath; }
@@ -87,6 +92,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemUniqueIdentifierXPath");
 			}
 		}
+		[JsonProperty]
 		public string ItemContentFileSizeXPath
 		{
 			get { return _ItemContentFileSizeXPath; }
@@ -96,6 +102,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemContentFileSizeXPath");
 			}
 		}
+		[JsonProperty]
 		public string ItemContentUrlXPath
 		{
 			get { return _ItemContentUrlXPath; }
@@ -105,6 +112,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemContentUrlXPath");
 			}
 		}
+		[JsonProperty]
 		public string ItemContentBitrateXPath
 		{
 			get { return _ItemContentBitrateXPath; }
@@ -114,6 +122,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemContentBitrateXPath");
 			}
 		}
+		[JsonProperty]
 		public string ItemHashXPath
 		{
 			get { return _ItemHashXPath; }
@@ -123,6 +132,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemHashXPath");
 			}
 		}
+		[JsonProperty]
 		public string ItemContentXpath
 		{
 			get { return _ItemContentXpath; }
@@ -132,6 +142,7 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemContentXpath");
 			}
 		}
+		[JsonProperty]
 		public string ContentBitrateAttributeName
 		{
 			get { return _ContentBitrateAttributeName; }
@@ -148,54 +159,44 @@ namespace Kaltura.Types
 		{
 		}
 
-		public FeedItemInfo(XmlElement node) : base(node)
+		public FeedItemInfo(JToken node) : base(node)
 		{
-			foreach (XmlElement propertyNode in node.ChildNodes)
+			if(node["itemXPath"] != null)
 			{
-				switch (propertyNode.Name)
-				{
-					case "itemXPath":
-						this._ItemXPath = propertyNode.InnerText;
-						continue;
-					case "itemPublishDateXPath":
-						this._ItemPublishDateXPath = propertyNode.InnerText;
-						continue;
-					case "itemUniqueIdentifierXPath":
-						this._ItemUniqueIdentifierXPath = propertyNode.InnerText;
-						continue;
-					case "itemContentFileSizeXPath":
-						this._ItemContentFileSizeXPath = propertyNode.InnerText;
-						continue;
-					case "itemContentUrlXPath":
-						this._ItemContentUrlXPath = propertyNode.InnerText;
-						continue;
-					case "itemContentBitrateXPath":
-						this._ItemContentBitrateXPath = propertyNode.InnerText;
-						continue;
-					case "itemHashXPath":
-						this._ItemHashXPath = propertyNode.InnerText;
-						continue;
-					case "itemContentXpath":
-						this._ItemContentXpath = propertyNode.InnerText;
-						continue;
-					case "contentBitrateAttributeName":
-						this._ContentBitrateAttributeName = propertyNode.InnerText;
-						continue;
-				}
+				this._ItemXPath = node["itemXPath"].Value<string>();
 			}
-		}
-
-		public FeedItemInfo(IDictionary<string,object> data) : base(data)
-		{
-			    this._ItemXPath = data.TryGetValueSafe<string>("itemXPath");
-			    this._ItemPublishDateXPath = data.TryGetValueSafe<string>("itemPublishDateXPath");
-			    this._ItemUniqueIdentifierXPath = data.TryGetValueSafe<string>("itemUniqueIdentifierXPath");
-			    this._ItemContentFileSizeXPath = data.TryGetValueSafe<string>("itemContentFileSizeXPath");
-			    this._ItemContentUrlXPath = data.TryGetValueSafe<string>("itemContentUrlXPath");
-			    this._ItemContentBitrateXPath = data.TryGetValueSafe<string>("itemContentBitrateXPath");
-			    this._ItemHashXPath = data.TryGetValueSafe<string>("itemHashXPath");
-			    this._ItemContentXpath = data.TryGetValueSafe<string>("itemContentXpath");
-			    this._ContentBitrateAttributeName = data.TryGetValueSafe<string>("contentBitrateAttributeName");
+			if(node["itemPublishDateXPath"] != null)
+			{
+				this._ItemPublishDateXPath = node["itemPublishDateXPath"].Value<string>();
+			}
+			if(node["itemUniqueIdentifierXPath"] != null)
+			{
+				this._ItemUniqueIdentifierXPath = node["itemUniqueIdentifierXPath"].Value<string>();
+			}
+			if(node["itemContentFileSizeXPath"] != null)
+			{
+				this._ItemContentFileSizeXPath = node["itemContentFileSizeXPath"].Value<string>();
+			}
+			if(node["itemContentUrlXPath"] != null)
+			{
+				this._ItemContentUrlXPath = node["itemContentUrlXPath"].Value<string>();
+			}
+			if(node["itemContentBitrateXPath"] != null)
+			{
+				this._ItemContentBitrateXPath = node["itemContentBitrateXPath"].Value<string>();
+			}
+			if(node["itemHashXPath"] != null)
+			{
+				this._ItemHashXPath = node["itemHashXPath"].Value<string>();
+			}
+			if(node["itemContentXpath"] != null)
+			{
+				this._ItemContentXpath = node["itemContentXpath"].Value<string>();
+			}
+			if(node["contentBitrateAttributeName"] != null)
+			{
+				this._ContentBitrateAttributeName = node["contentBitrateAttributeName"].Value<string>();
+			}
 		}
 		#endregion
 

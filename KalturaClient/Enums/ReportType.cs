@@ -66,6 +66,7 @@ namespace Kaltura.Enums
 		public static readonly ReportType UNIQUE_USERS_PLAY = new ReportType("35");
 		public static readonly ReportType MAP_OVERLAY_COUNTRY = new ReportType("36");
 		public static readonly ReportType MAP_OVERLAY_REGION = new ReportType("37");
+		public static readonly ReportType TOP_CONTENT_CREATOR = new ReportType("38");
 		public static readonly ReportType PARTNER_USAGE = new ReportType("201");
 
 		private ReportType(string name) : base(name) { }

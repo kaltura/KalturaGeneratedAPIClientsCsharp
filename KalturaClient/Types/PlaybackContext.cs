@@ -39,6 +39,7 @@ namespace Kaltura.Types
 	{
 		#region Constants
 		public const string SOURCES = "sources";
+		public const string PLAYBACK_CAPTIONS = "playbackCaptions";
 		public const string FLAVOR_ASSETS = "flavorAssets";
 		public const string ACTIONS = "actions";
 		public const string MESSAGES = "messages";
@@ -46,6 +47,7 @@ namespace Kaltura.Types
 
 		#region Private Fields
 		private IList<PlaybackSource> _Sources;
+		private IList<CaptionPlaybackPluginData> _PlaybackCaptions;
 		private IList<FlavorAsset> _FlavorAssets;
 		private IList<RuleAction> _Actions;
 		private IList<AccessControlMessage> _Messages;
@@ -60,6 +62,16 @@ namespace Kaltura.Types
 			{ 
 				_Sources = value;
 				OnPropertyChanged("Sources");
+			}
+		}
+		[JsonProperty]
+		public IList<CaptionPlaybackPluginData> PlaybackCaptions
+		{
+			get { return _PlaybackCaptions; }
+			set 
+			{ 
+				_PlaybackCaptions = value;
+				OnPropertyChanged("PlaybackCaptions");
 			}
 		}
 		[JsonProperty]
@@ -109,6 +121,14 @@ namespace Kaltura.Types
 					this._Sources.Add(ObjectFactory.Create<PlaybackSource>(arrayNode));
 				}
 			}
+			if(node["playbackCaptions"] != null)
+			{
+				this._PlaybackCaptions = new List<CaptionPlaybackPluginData>();
+				foreach(var arrayNode in node["playbackCaptions"].Children())
+				{
+					this._PlaybackCaptions.Add(ObjectFactory.Create<CaptionPlaybackPluginData>(arrayNode));
+				}
+			}
 			if(node["flavorAssets"] != null)
 			{
 				this._FlavorAssets = new List<FlavorAsset>();
@@ -143,6 +163,7 @@ namespace Kaltura.Types
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaPlaybackContext");
 			kparams.AddIfNotNull("sources", this._Sources);
+			kparams.AddIfNotNull("playbackCaptions", this._PlaybackCaptions);
 			kparams.AddIfNotNull("flavorAssets", this._FlavorAssets);
 			kparams.AddIfNotNull("actions", this._Actions);
 			kparams.AddIfNotNull("messages", this._Messages);
@@ -154,6 +175,8 @@ namespace Kaltura.Types
 			{
 				case SOURCES:
 					return "Sources";
+				case PLAYBACK_CAPTIONS:
+					return "PlaybackCaptions";
 				case FLAVOR_ASSETS:
 					return "FlavorAssets";
 				case ACTIONS:

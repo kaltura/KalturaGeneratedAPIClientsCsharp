@@ -39,6 +39,7 @@ namespace Kaltura.Enums
 		public static readonly ESearchEntryFieldName END_DATE = new ESearchEntryFieldName("end_date");
 		public static readonly ESearchEntryFieldName ENTITLED_USER_EDIT = new ESearchEntryFieldName("entitled_kusers_edit");
 		public static readonly ESearchEntryFieldName ENTITLED_USER_PUBLISH = new ESearchEntryFieldName("entitled_kusers_publish");
+		public static readonly ESearchEntryFieldName ENTITLED_USER_VIEW = new ESearchEntryFieldName("entitled_kusers_view");
 		public static readonly ESearchEntryFieldName ENTRY_TYPE = new ESearchEntryFieldName("entry_type");
 		public static readonly ESearchEntryFieldName EXTERNAL_SOURCE_TYPE = new ESearchEntryFieldName("external_source_type");
 		public static readonly ESearchEntryFieldName ID = new ESearchEntryFieldName("id");

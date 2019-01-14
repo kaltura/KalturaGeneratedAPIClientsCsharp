@@ -29,6 +29,7 @@ namespace Kaltura.Enums
 {
 	public sealed class BulkUploadObjectType : StringEnum
 	{
+		public static readonly BulkUploadObjectType JOB = new BulkUploadObjectType("bulkUploadFilter.JOB");
 		public static readonly BulkUploadObjectType SCHEDULE_EVENT = new BulkUploadObjectType("scheduleBulkUpload.SCHEDULE_EVENT");
 		public static readonly BulkUploadObjectType SCHEDULE_RESOURCE = new BulkUploadObjectType("scheduleBulkUpload.SCHEDULE_RESOURCE");
 		public static readonly BulkUploadObjectType ENTRY = new BulkUploadObjectType("1");

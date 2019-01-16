@@ -265,6 +265,7 @@ namespace Kaltura.Services
 		public const string RESOURCE_IDS = "resourceIds";
 		public const string SCHEDULE_EVENT = "scheduleEvent";
 		public const string SCHEDULE_EVENT_ID_TO_IGNORE = "scheduleEventIdToIgnore";
+		public const string SCHEDULE_EVENT_CONFLICT_TYPE = "scheduleEventConflictType";
 		#endregion
 
 		public string ResourceIds
@@ -282,18 +283,24 @@ namespace Kaltura.Services
 			set;
 			get;
 		}
+		public ScheduleEventConflictType ScheduleEventConflictType
+		{
+			set;
+			get;
+		}
 
 		public ScheduleEventGetConflictsRequestBuilder()
 			: base("schedule_scheduleevent", "getConflicts")
 		{
 		}
 
-		public ScheduleEventGetConflictsRequestBuilder(string resourceIds, ScheduleEvent scheduleEvent, string scheduleEventIdToIgnore)
+		public ScheduleEventGetConflictsRequestBuilder(string resourceIds, ScheduleEvent scheduleEvent, string scheduleEventIdToIgnore, ScheduleEventConflictType scheduleEventConflictType)
 			: this()
 		{
 			this.ResourceIds = resourceIds;
 			this.ScheduleEvent = scheduleEvent;
 			this.ScheduleEventIdToIgnore = scheduleEventIdToIgnore;
+			this.ScheduleEventConflictType = scheduleEventConflictType;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -305,6 +312,8 @@ namespace Kaltura.Services
 				kparams.AddIfNotNull("scheduleEvent", ScheduleEvent);
 			if (!isMapped("scheduleEventIdToIgnore"))
 				kparams.AddIfNotNull("scheduleEventIdToIgnore", ScheduleEventIdToIgnore);
+			if (!isMapped("scheduleEventConflictType"))
+				kparams.AddIfNotNull("scheduleEventConflictType", ScheduleEventConflictType);
 			return kparams;
 		}
 
@@ -456,9 +465,9 @@ namespace Kaltura.Services
 			return new ScheduleEventGetRequestBuilder(scheduleEventId);
 		}
 
-		public static ScheduleEventGetConflictsRequestBuilder GetConflicts(string resourceIds, ScheduleEvent scheduleEvent, string scheduleEventIdToIgnore = null)
+		public static ScheduleEventGetConflictsRequestBuilder GetConflicts(string resourceIds, ScheduleEvent scheduleEvent, string scheduleEventIdToIgnore = null, ScheduleEventConflictType scheduleEventConflictType = (ScheduleEventConflictType)(1))
 		{
-			return new ScheduleEventGetConflictsRequestBuilder(resourceIds, scheduleEvent, scheduleEventIdToIgnore);
+			return new ScheduleEventGetConflictsRequestBuilder(resourceIds, scheduleEvent, scheduleEventIdToIgnore, scheduleEventConflictType);
 		}
 
 		public static ScheduleEventListRequestBuilder List(ScheduleEventFilter filter = null, FilterPager pager = null)

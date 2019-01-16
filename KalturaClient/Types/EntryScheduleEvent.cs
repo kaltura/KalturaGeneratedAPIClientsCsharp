@@ -41,12 +41,14 @@ namespace Kaltura.Types
 		public const string TEMPLATE_ENTRY_ID = "templateEntryId";
 		public const string ENTRY_IDS = "entryIds";
 		public const string CATEGORY_IDS = "categoryIds";
+		public const string BLACKOUT_CONFLICTS = "blackoutConflicts";
 		#endregion
 
 		#region Private Fields
 		private string _TemplateEntryId = null;
 		private string _EntryIds = null;
 		private string _CategoryIds = null;
+		private IList<ScheduleEvent> _BlackoutConflicts;
 		#endregion
 
 		#region Properties
@@ -80,6 +82,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryIds");
 			}
 		}
+		[JsonProperty]
+		public IList<ScheduleEvent> BlackoutConflicts
+		{
+			get { return _BlackoutConflicts; }
+			private set 
+			{ 
+				_BlackoutConflicts = value;
+				OnPropertyChanged("BlackoutConflicts");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -101,6 +113,14 @@ namespace Kaltura.Types
 			{
 				this._CategoryIds = node["categoryIds"].Value<string>();
 			}
+			if(node["blackoutConflicts"] != null)
+			{
+				this._BlackoutConflicts = new List<ScheduleEvent>();
+				foreach(var arrayNode in node["blackoutConflicts"].Children())
+				{
+					this._BlackoutConflicts.Add(ObjectFactory.Create<ScheduleEvent>(arrayNode));
+				}
+			}
 		}
 		#endregion
 
@@ -113,6 +133,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("templateEntryId", this._TemplateEntryId);
 			kparams.AddIfNotNull("entryIds", this._EntryIds);
 			kparams.AddIfNotNull("categoryIds", this._CategoryIds);
+			kparams.AddIfNotNull("blackoutConflicts", this._BlackoutConflicts);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -125,6 +146,8 @@ namespace Kaltura.Types
 					return "EntryIds";
 				case CATEGORY_IDS:
 					return "CategoryIds";
+				case BLACKOUT_CONFLICTS:
+					return "BlackoutConflicts";
 				default:
 					return base.getPropertyName(apiName);
 			}

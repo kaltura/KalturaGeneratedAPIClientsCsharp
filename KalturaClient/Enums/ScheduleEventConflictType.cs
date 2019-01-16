@@ -27,10 +27,10 @@
 // ===================================================================================================
 namespace Kaltura.Enums
 {
-	public enum ScheduleEventType
+	public enum ScheduleEventConflictType
 	{
-		RECORD = 1,
-		LIVE_STREAM = 2,
-		BLACKOUT = 3,
+		RESOURCE_CONFLICT = 1,
+		BLACKOUT_CONFLICT = 2,
+		BOTH = 3,
 	}
 }

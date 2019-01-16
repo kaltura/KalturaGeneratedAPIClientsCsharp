@@ -25,12 +25,54 @@
 //
 // @ignore
 // ===================================================================================================
-namespace Kaltura.Enums
+using System;
+using System.Xml;
+using System.Collections.Generic;
+using Kaltura.Enums;
+using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+namespace Kaltura.Types
 {
-	public enum ScheduleEventType
+	public class BlackoutScheduleEvent : ScheduleEvent
 	{
-		RECORD = 1,
-		LIVE_STREAM = 2,
-		BLACKOUT = 3,
+		#region Constants
+		#endregion
+
+		#region Private Fields
+		#endregion
+
+		#region Properties
+		#endregion
+
+		#region CTor
+		public BlackoutScheduleEvent()
+		{
+		}
+
+		public BlackoutScheduleEvent(JToken node) : base(node)
+		{
+		}
+		#endregion
+
+		#region Methods
+		public override Params ToParams(bool includeObjectType = true)
+		{
+			Params kparams = base.ToParams(includeObjectType);
+			if (includeObjectType)
+				kparams.AddReplace("objectType", "KalturaBlackoutScheduleEvent");
+			return kparams;
+		}
+		protected override string getPropertyName(string apiName)
+		{
+			switch(apiName)
+			{
+				default:
+					return base.getPropertyName(apiName);
+			}
+		}
+		#endregion
 	}
 }
+

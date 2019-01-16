@@ -188,6 +188,7 @@ namespace Kaltura.Services
 		#region Constants
 		public const string FILTER = "filter";
 		public const string PAGER = "pager";
+		public const string FILTER_BLACKOUT_CONFLICTS = "filterBlackoutConflicts";
 		#endregion
 
 		public ScheduleEventResourceFilter Filter
@@ -200,17 +201,23 @@ namespace Kaltura.Services
 			set;
 			get;
 		}
+		public bool FilterBlackoutConflicts
+		{
+			set;
+			get;
+		}
 
 		public ScheduleEventResourceListRequestBuilder()
 			: base("schedule_scheduleeventresource", "list")
 		{
 		}
 
-		public ScheduleEventResourceListRequestBuilder(ScheduleEventResourceFilter filter, FilterPager pager)
+		public ScheduleEventResourceListRequestBuilder(ScheduleEventResourceFilter filter, FilterPager pager, bool filterBlackoutConflicts)
 			: this()
 		{
 			this.Filter = filter;
 			this.Pager = pager;
+			this.FilterBlackoutConflicts = filterBlackoutConflicts;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -220,6 +227,8 @@ namespace Kaltura.Services
 				kparams.AddIfNotNull("filter", Filter);
 			if (!isMapped("pager"))
 				kparams.AddIfNotNull("pager", Pager);
+			if (!isMapped("filterBlackoutConflicts"))
+				kparams.AddIfNotNull("filterBlackoutConflicts", FilterBlackoutConflicts);
 			return kparams;
 		}
 
@@ -318,9 +327,9 @@ namespace Kaltura.Services
 			return new ScheduleEventResourceGetRequestBuilder(scheduleEventId, scheduleResourceId);
 		}
 
-		public static ScheduleEventResourceListRequestBuilder List(ScheduleEventResourceFilter filter = null, FilterPager pager = null)
+		public static ScheduleEventResourceListRequestBuilder List(ScheduleEventResourceFilter filter = null, FilterPager pager = null, bool filterBlackoutConflicts = true)
 		{
-			return new ScheduleEventResourceListRequestBuilder(filter, pager);
+			return new ScheduleEventResourceListRequestBuilder(filter, pager, filterBlackoutConflicts);
 		}
 
 		public static ScheduleEventResourceUpdateRequestBuilder Update(int scheduleEventId, int scheduleResourceId, ScheduleEventResource scheduleEventResource)

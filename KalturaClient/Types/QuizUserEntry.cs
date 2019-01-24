@@ -39,10 +39,12 @@ namespace Kaltura.Types
 	{
 		#region Constants
 		public const string SCORE = "score";
+		public const string FEEDBACK = "feedback";
 		#endregion
 
 		#region Private Fields
 		private float _Score = Single.MinValue;
+		private string _Feedback = null;
 		#endregion
 
 		#region Properties
@@ -54,6 +56,16 @@ namespace Kaltura.Types
 			{ 
 				_Score = value;
 				OnPropertyChanged("Score");
+			}
+		}
+		[JsonProperty]
+		public string Feedback
+		{
+			get { return _Feedback; }
+			set 
+			{ 
+				_Feedback = value;
+				OnPropertyChanged("Feedback");
 			}
 		}
 		#endregion
@@ -69,6 +81,10 @@ namespace Kaltura.Types
 			{
 				this._Score = ParseFloat(node["score"].Value<string>());
 			}
+			if(node["feedback"] != null)
+			{
+				this._Feedback = node["feedback"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -79,6 +95,7 @@ namespace Kaltura.Types
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaQuizUserEntry");
 			kparams.AddIfNotNull("score", this._Score);
+			kparams.AddIfNotNull("feedback", this._Feedback);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -87,6 +104,8 @@ namespace Kaltura.Types
 			{
 				case SCORE:
 					return "Score";
+				case FEEDBACK:
+					return "Feedback";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -41,6 +41,7 @@ namespace Kaltura.Types
 		public const string PARENT_ID = "parentId";
 		public const string QUIZ_USER_ENTRY_ID = "quizUserEntryId";
 		public const string ANSWER_KEY = "answerKey";
+		public const string OPEN_ANSWER = "openAnswer";
 		public const string IS_CORRECT = "isCorrect";
 		public const string CORRECT_ANSWER_KEYS = "correctAnswerKeys";
 		public const string EXPLANATION = "explanation";
@@ -50,6 +51,7 @@ namespace Kaltura.Types
 		private string _ParentId = null;
 		private string _QuizUserEntryId = null;
 		private string _AnswerKey = null;
+		private string _OpenAnswer = null;
 		private NullableBoolean _IsCorrect = (NullableBoolean)Int32.MinValue;
 		private IList<String> _CorrectAnswerKeys;
 		private string _Explanation = null;
@@ -84,6 +86,16 @@ namespace Kaltura.Types
 			{ 
 				_AnswerKey = value;
 				OnPropertyChanged("AnswerKey");
+			}
+		}
+		[JsonProperty]
+		public string OpenAnswer
+		{
+			get { return _OpenAnswer; }
+			set 
+			{ 
+				_OpenAnswer = value;
+				OnPropertyChanged("OpenAnswer");
 			}
 		}
 		[JsonProperty]
@@ -137,6 +149,10 @@ namespace Kaltura.Types
 			{
 				this._AnswerKey = node["answerKey"].Value<string>();
 			}
+			if(node["openAnswer"] != null)
+			{
+				this._OpenAnswer = node["openAnswer"].Value<string>();
+			}
 			if(node["isCorrect"] != null)
 			{
 				this._IsCorrect = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["isCorrect"].Value<string>());
@@ -165,6 +181,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("parentId", this._ParentId);
 			kparams.AddIfNotNull("quizUserEntryId", this._QuizUserEntryId);
 			kparams.AddIfNotNull("answerKey", this._AnswerKey);
+			kparams.AddIfNotNull("openAnswer", this._OpenAnswer);
 			kparams.AddIfNotNull("isCorrect", this._IsCorrect);
 			kparams.AddIfNotNull("correctAnswerKeys", this._CorrectAnswerKeys);
 			kparams.AddIfNotNull("explanation", this._Explanation);
@@ -180,6 +197,8 @@ namespace Kaltura.Types
 					return "QuizUserEntryId";
 				case ANSWER_KEY:
 					return "AnswerKey";
+				case OPEN_ANSWER:
+					return "OpenAnswer";
 				case IS_CORRECT:
 					return "IsCorrect";
 				case CORRECT_ANSWER_KEYS:

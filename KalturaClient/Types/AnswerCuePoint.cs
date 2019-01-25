@@ -45,6 +45,7 @@ namespace Kaltura.Types
 		public const string IS_CORRECT = "isCorrect";
 		public const string CORRECT_ANSWER_KEYS = "correctAnswerKeys";
 		public const string EXPLANATION = "explanation";
+		public const string FEEDBACK = "feedback";
 		#endregion
 
 		#region Private Fields
@@ -55,6 +56,7 @@ namespace Kaltura.Types
 		private NullableBoolean _IsCorrect = (NullableBoolean)Int32.MinValue;
 		private IList<String> _CorrectAnswerKeys;
 		private string _Explanation = null;
+		private string _Feedback = null;
 		#endregion
 
 		#region Properties
@@ -128,6 +130,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("Explanation");
 			}
 		}
+		[JsonProperty]
+		public string Feedback
+		{
+			get { return _Feedback; }
+			set 
+			{ 
+				_Feedback = value;
+				OnPropertyChanged("Feedback");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -169,6 +181,10 @@ namespace Kaltura.Types
 			{
 				this._Explanation = node["explanation"].Value<string>();
 			}
+			if(node["feedback"] != null)
+			{
+				this._Feedback = node["feedback"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -185,6 +201,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("isCorrect", this._IsCorrect);
 			kparams.AddIfNotNull("correctAnswerKeys", this._CorrectAnswerKeys);
 			kparams.AddIfNotNull("explanation", this._Explanation);
+			kparams.AddIfNotNull("feedback", this._Feedback);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -205,6 +222,8 @@ namespace Kaltura.Types
 					return "CorrectAnswerKeys";
 				case EXPLANATION:
 					return "Explanation";
+				case FEEDBACK:
+					return "Feedback";
 				default:
 					return base.getPropertyName(apiName);
 			}

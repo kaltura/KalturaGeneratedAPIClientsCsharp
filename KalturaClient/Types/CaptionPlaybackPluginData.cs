@@ -44,6 +44,7 @@ namespace Kaltura.Types
 		public const string WEB_VTT_URL = "webVttUrl";
 		public const string URL = "url";
 		public const string IS_DEFAULT = "isDefault";
+		public const string LANGUAGE_CODE = "languageCode";
 		#endregion
 
 		#region Private Fields
@@ -53,6 +54,7 @@ namespace Kaltura.Types
 		private string _WebVttUrl = null;
 		private string _Url = null;
 		private bool? _IsDefault = null;
+		private string _LanguageCode = null;
 		#endregion
 
 		#region Properties
@@ -116,6 +118,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsDefault");
 			}
 		}
+		[JsonProperty]
+		public string LanguageCode
+		{
+			get { return _LanguageCode; }
+			set 
+			{ 
+				_LanguageCode = value;
+				OnPropertyChanged("LanguageCode");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -149,6 +161,10 @@ namespace Kaltura.Types
 			{
 				this._IsDefault = ParseBool(node["isDefault"].Value<string>());
 			}
+			if(node["languageCode"] != null)
+			{
+				this._LanguageCode = node["languageCode"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -164,6 +180,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("webVttUrl", this._WebVttUrl);
 			kparams.AddIfNotNull("url", this._Url);
 			kparams.AddIfNotNull("isDefault", this._IsDefault);
+			kparams.AddIfNotNull("languageCode", this._LanguageCode);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -182,6 +199,8 @@ namespace Kaltura.Types
 					return "Url";
 				case IS_DEFAULT:
 					return "IsDefault";
+				case LANGUAGE_CODE:
+					return "LanguageCode";
 				default:
 					return base.getPropertyName(apiName);
 			}

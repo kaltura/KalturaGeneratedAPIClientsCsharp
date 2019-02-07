@@ -34,9 +34,15 @@ namespace Kaltura.Enums
 		public static readonly ESearchEntryOrderByFieldName LAST_PLAYED_AT = new ESearchEntryOrderByFieldName("last_played_at");
 		public static readonly ESearchEntryOrderByFieldName NAME = new ESearchEntryOrderByFieldName("name");
 		public static readonly ESearchEntryOrderByFieldName PLAYS = new ESearchEntryOrderByFieldName("plays");
+		public static readonly ESearchEntryOrderByFieldName PLAYS_LAST_1_DAY = new ESearchEntryOrderByFieldName("plays_last_1_day");
+		public static readonly ESearchEntryOrderByFieldName PLAYS_LAST_30_DAYS = new ESearchEntryOrderByFieldName("plays_last_30_days");
+		public static readonly ESearchEntryOrderByFieldName PLAYS_LAST_7_DAYS = new ESearchEntryOrderByFieldName("plays_last_7_days");
 		public static readonly ESearchEntryOrderByFieldName START_DATE = new ESearchEntryOrderByFieldName("start_date");
 		public static readonly ESearchEntryOrderByFieldName UPDATED_AT = new ESearchEntryOrderByFieldName("updated_at");
 		public static readonly ESearchEntryOrderByFieldName VIEWS = new ESearchEntryOrderByFieldName("views");
+		public static readonly ESearchEntryOrderByFieldName VIEWS_LAST_1_DAY = new ESearchEntryOrderByFieldName("views_last_1_day");
+		public static readonly ESearchEntryOrderByFieldName VIEWS_LAST_30_DAYS = new ESearchEntryOrderByFieldName("views_last_30_days");
+		public static readonly ESearchEntryOrderByFieldName VIEWS_LAST_7_DAYS = new ESearchEntryOrderByFieldName("views_last_7_days");
 		public static readonly ESearchEntryOrderByFieldName VOTES = new ESearchEntryOrderByFieldName("votes");
 
 		private ESearchEntryOrderByFieldName(string name) : base(name) { }

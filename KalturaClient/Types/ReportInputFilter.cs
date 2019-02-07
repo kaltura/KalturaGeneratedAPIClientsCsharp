@@ -56,6 +56,7 @@ namespace Kaltura.Types
 		public const string INTERVAL = "interval";
 		public const string MEDIA_TYPE_IN = "mediaTypeIn";
 		public const string SOURCE_TYPE_IN = "sourceTypeIn";
+		public const string OWNER_IDS_IN = "ownerIdsIn";
 		#endregion
 
 		#region Private Fields
@@ -77,6 +78,7 @@ namespace Kaltura.Types
 		private ReportInterval _Interval = null;
 		private string _MediaTypeIn = null;
 		private string _SourceTypeIn = null;
+		private string _OwnerIdsIn = null;
 		#endregion
 
 		#region Properties
@@ -260,6 +262,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceTypeIn");
 			}
 		}
+		[JsonProperty]
+		public string OwnerIdsIn
+		{
+			get { return _OwnerIdsIn; }
+			set 
+			{ 
+				_OwnerIdsIn = value;
+				OnPropertyChanged("OwnerIdsIn");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -341,6 +353,10 @@ namespace Kaltura.Types
 			{
 				this._SourceTypeIn = node["sourceTypeIn"].Value<string>();
 			}
+			if(node["ownerIdsIn"] != null)
+			{
+				this._OwnerIdsIn = node["ownerIdsIn"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -368,6 +384,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("interval", this._Interval);
 			kparams.AddIfNotNull("mediaTypeIn", this._MediaTypeIn);
 			kparams.AddIfNotNull("sourceTypeIn", this._SourceTypeIn);
+			kparams.AddIfNotNull("ownerIdsIn", this._OwnerIdsIn);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -410,6 +427,8 @@ namespace Kaltura.Types
 					return "MediaTypeIn";
 				case SOURCE_TYPE_IN:
 					return "SourceTypeIn";
+				case OWNER_IDS_IN:
+					return "OwnerIdsIn";
 				default:
 					return base.getPropertyName(apiName);
 			}

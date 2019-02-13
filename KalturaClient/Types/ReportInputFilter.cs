@@ -57,6 +57,7 @@ namespace Kaltura.Types
 		public const string MEDIA_TYPE_IN = "mediaTypeIn";
 		public const string SOURCE_TYPE_IN = "sourceTypeIn";
 		public const string OWNER_IDS_IN = "ownerIdsIn";
+		public const string ENTRY_OPERATOR = "entryOperator";
 		#endregion
 
 		#region Private Fields
@@ -79,6 +80,7 @@ namespace Kaltura.Types
 		private string _MediaTypeIn = null;
 		private string _SourceTypeIn = null;
 		private string _OwnerIdsIn = null;
+		private ESearchEntryOperator _EntryOperator;
 		#endregion
 
 		#region Properties
@@ -272,6 +274,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("OwnerIdsIn");
 			}
 		}
+		[JsonProperty]
+		public ESearchEntryOperator EntryOperator
+		{
+			get { return _EntryOperator; }
+			set 
+			{ 
+				_EntryOperator = value;
+				OnPropertyChanged("EntryOperator");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -357,6 +369,10 @@ namespace Kaltura.Types
 			{
 				this._OwnerIdsIn = node["ownerIdsIn"].Value<string>();
 			}
+			if(node["entryOperator"] != null)
+			{
+				this._EntryOperator = ObjectFactory.Create<ESearchEntryOperator>(node["entryOperator"]);
+			}
 		}
 		#endregion
 
@@ -385,6 +401,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("mediaTypeIn", this._MediaTypeIn);
 			kparams.AddIfNotNull("sourceTypeIn", this._SourceTypeIn);
 			kparams.AddIfNotNull("ownerIdsIn", this._OwnerIdsIn);
+			kparams.AddIfNotNull("entryOperator", this._EntryOperator);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -429,6 +446,8 @@ namespace Kaltura.Types
 					return "SourceTypeIn";
 				case OWNER_IDS_IN:
 					return "OwnerIdsIn";
+				case ENTRY_OPERATOR:
+					return "EntryOperator";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -94,6 +94,7 @@ namespace Kaltura.Services
 		public const string REPORT_TYPE = "reportType";
 		public const string REPORT_INPUT_FILTER = "reportInputFilter";
 		public const string OBJECT_IDS = "objectIds";
+		public const string RESPONSE_OPTIONS = "responseOptions";
 		#endregion
 
 		public ReportType ReportType
@@ -111,18 +112,24 @@ namespace Kaltura.Services
 			set;
 			get;
 		}
+		public ReportResponseOptions ResponseOptions
+		{
+			set;
+			get;
+		}
 
 		public ReportGetBaseTotalRequestBuilder()
 			: base("report", "getBaseTotal")
 		{
 		}
 
-		public ReportGetBaseTotalRequestBuilder(ReportType reportType, ReportInputFilter reportInputFilter, string objectIds)
+		public ReportGetBaseTotalRequestBuilder(ReportType reportType, ReportInputFilter reportInputFilter, string objectIds, ReportResponseOptions responseOptions)
 			: this()
 		{
 			this.ReportType = reportType;
 			this.ReportInputFilter = reportInputFilter;
 			this.ObjectIds = objectIds;
+			this.ResponseOptions = responseOptions;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -134,6 +141,8 @@ namespace Kaltura.Services
 				kparams.AddIfNotNull("reportInputFilter", ReportInputFilter);
 			if (!isMapped("objectIds"))
 				kparams.AddIfNotNull("objectIds", ObjectIds);
+			if (!isMapped("responseOptions"))
+				kparams.AddIfNotNull("responseOptions", ResponseOptions);
 			return kparams;
 		}
 
@@ -162,6 +171,7 @@ namespace Kaltura.Services
 		public const string REPORT_INPUT_FILTER = "reportInputFilter";
 		public const string DIMENSION = "dimension";
 		public const string OBJECT_IDS = "objectIds";
+		public const string RESPONSE_OPTIONS = "responseOptions";
 		#endregion
 
 		public ReportType ReportType
@@ -184,19 +194,25 @@ namespace Kaltura.Services
 			set;
 			get;
 		}
+		public ReportResponseOptions ResponseOptions
+		{
+			set;
+			get;
+		}
 
 		public ReportGetGraphsRequestBuilder()
 			: base("report", "getGraphs")
 		{
 		}
 
-		public ReportGetGraphsRequestBuilder(ReportType reportType, ReportInputFilter reportInputFilter, string dimension, string objectIds)
+		public ReportGetGraphsRequestBuilder(ReportType reportType, ReportInputFilter reportInputFilter, string dimension, string objectIds, ReportResponseOptions responseOptions)
 			: this()
 		{
 			this.ReportType = reportType;
 			this.ReportInputFilter = reportInputFilter;
 			this.Dimension = dimension;
 			this.ObjectIds = objectIds;
+			this.ResponseOptions = responseOptions;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -210,6 +226,8 @@ namespace Kaltura.Services
 				kparams.AddIfNotNull("dimension", Dimension);
 			if (!isMapped("objectIds"))
 				kparams.AddIfNotNull("objectIds", ObjectIds);
+			if (!isMapped("responseOptions"))
+				kparams.AddIfNotNull("responseOptions", ResponseOptions);
 			return kparams;
 		}
 
@@ -239,6 +257,7 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		public const string ORDER = "order";
 		public const string OBJECT_IDS = "objectIds";
+		public const string RESPONSE_OPTIONS = "responseOptions";
 		#endregion
 
 		public ReportType ReportType
@@ -266,13 +285,18 @@ namespace Kaltura.Services
 			set;
 			get;
 		}
+		public ReportResponseOptions ResponseOptions
+		{
+			set;
+			get;
+		}
 
 		public ReportGetTableRequestBuilder()
 			: base("report", "getTable")
 		{
 		}
 
-		public ReportGetTableRequestBuilder(ReportType reportType, ReportInputFilter reportInputFilter, FilterPager pager, string order, string objectIds)
+		public ReportGetTableRequestBuilder(ReportType reportType, ReportInputFilter reportInputFilter, FilterPager pager, string order, string objectIds, ReportResponseOptions responseOptions)
 			: this()
 		{
 			this.ReportType = reportType;
@@ -280,6 +304,7 @@ namespace Kaltura.Services
 			this.Pager = pager;
 			this.Order = order;
 			this.ObjectIds = objectIds;
+			this.ResponseOptions = responseOptions;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -295,6 +320,8 @@ namespace Kaltura.Services
 				kparams.AddIfNotNull("order", Order);
 			if (!isMapped("objectIds"))
 				kparams.AddIfNotNull("objectIds", ObjectIds);
+			if (!isMapped("responseOptions"))
+				kparams.AddIfNotNull("responseOptions", ResponseOptions);
 			return kparams;
 		}
 
@@ -316,6 +343,7 @@ namespace Kaltura.Services
 		public const string REPORT_TYPE = "reportType";
 		public const string REPORT_INPUT_FILTER = "reportInputFilter";
 		public const string OBJECT_IDS = "objectIds";
+		public const string RESPONSE_OPTIONS = "responseOptions";
 		#endregion
 
 		public ReportType ReportType
@@ -333,18 +361,24 @@ namespace Kaltura.Services
 			set;
 			get;
 		}
+		public ReportResponseOptions ResponseOptions
+		{
+			set;
+			get;
+		}
 
 		public ReportGetTotalRequestBuilder()
 			: base("report", "getTotal")
 		{
 		}
 
-		public ReportGetTotalRequestBuilder(ReportType reportType, ReportInputFilter reportInputFilter, string objectIds)
+		public ReportGetTotalRequestBuilder(ReportType reportType, ReportInputFilter reportInputFilter, string objectIds, ReportResponseOptions responseOptions)
 			: this()
 		{
 			this.ReportType = reportType;
 			this.ReportInputFilter = reportInputFilter;
 			this.ObjectIds = objectIds;
+			this.ResponseOptions = responseOptions;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -356,6 +390,8 @@ namespace Kaltura.Services
 				kparams.AddIfNotNull("reportInputFilter", ReportInputFilter);
 			if (!isMapped("objectIds"))
 				kparams.AddIfNotNull("objectIds", ObjectIds);
+			if (!isMapped("responseOptions"))
+				kparams.AddIfNotNull("responseOptions", ResponseOptions);
 			return kparams;
 		}
 
@@ -383,6 +419,7 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		public const string ORDER = "order";
 		public const string OBJECT_IDS = "objectIds";
+		public const string RESPONSE_OPTIONS = "responseOptions";
 		#endregion
 
 		public string ReportTitle
@@ -430,13 +467,18 @@ namespace Kaltura.Services
 			set;
 			get;
 		}
+		public ReportResponseOptions ResponseOptions
+		{
+			set;
+			get;
+		}
 
 		public ReportGetUrlForReportAsCsvRequestBuilder()
 			: base("report", "getUrlForReportAsCsv")
 		{
 		}
 
-		public ReportGetUrlForReportAsCsvRequestBuilder(string reportTitle, string reportText, string headers, ReportType reportType, ReportInputFilter reportInputFilter, string dimension, FilterPager pager, string order, string objectIds)
+		public ReportGetUrlForReportAsCsvRequestBuilder(string reportTitle, string reportText, string headers, ReportType reportType, ReportInputFilter reportInputFilter, string dimension, FilterPager pager, string order, string objectIds, ReportResponseOptions responseOptions)
 			: this()
 		{
 			this.ReportTitle = reportTitle;
@@ -448,6 +490,7 @@ namespace Kaltura.Services
 			this.Pager = pager;
 			this.Order = order;
 			this.ObjectIds = objectIds;
+			this.ResponseOptions = responseOptions;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -471,6 +514,8 @@ namespace Kaltura.Services
 				kparams.AddIfNotNull("order", Order);
 			if (!isMapped("objectIds"))
 				kparams.AddIfNotNull("objectIds", ObjectIds);
+			if (!isMapped("responseOptions"))
+				kparams.AddIfNotNull("responseOptions", ResponseOptions);
 			return kparams;
 		}
 
@@ -541,29 +586,29 @@ namespace Kaltura.Services
 			return new ReportExecuteRequestBuilder(id, params_);
 		}
 
-		public static ReportGetBaseTotalRequestBuilder GetBaseTotal(ReportType reportType, ReportInputFilter reportInputFilter, string objectIds = null)
+		public static ReportGetBaseTotalRequestBuilder GetBaseTotal(ReportType reportType, ReportInputFilter reportInputFilter, string objectIds = null, ReportResponseOptions responseOptions = null)
 		{
-			return new ReportGetBaseTotalRequestBuilder(reportType, reportInputFilter, objectIds);
+			return new ReportGetBaseTotalRequestBuilder(reportType, reportInputFilter, objectIds, responseOptions);
 		}
 
-		public static ReportGetGraphsRequestBuilder GetGraphs(ReportType reportType, ReportInputFilter reportInputFilter, string dimension = null, string objectIds = null)
+		public static ReportGetGraphsRequestBuilder GetGraphs(ReportType reportType, ReportInputFilter reportInputFilter, string dimension = null, string objectIds = null, ReportResponseOptions responseOptions = null)
 		{
-			return new ReportGetGraphsRequestBuilder(reportType, reportInputFilter, dimension, objectIds);
+			return new ReportGetGraphsRequestBuilder(reportType, reportInputFilter, dimension, objectIds, responseOptions);
 		}
 
-		public static ReportGetTableRequestBuilder GetTable(ReportType reportType, ReportInputFilter reportInputFilter, FilterPager pager, string order = null, string objectIds = null)
+		public static ReportGetTableRequestBuilder GetTable(ReportType reportType, ReportInputFilter reportInputFilter, FilterPager pager, string order = null, string objectIds = null, ReportResponseOptions responseOptions = null)
 		{
-			return new ReportGetTableRequestBuilder(reportType, reportInputFilter, pager, order, objectIds);
+			return new ReportGetTableRequestBuilder(reportType, reportInputFilter, pager, order, objectIds, responseOptions);
 		}
 
-		public static ReportGetTotalRequestBuilder GetTotal(ReportType reportType, ReportInputFilter reportInputFilter, string objectIds = null)
+		public static ReportGetTotalRequestBuilder GetTotal(ReportType reportType, ReportInputFilter reportInputFilter, string objectIds = null, ReportResponseOptions responseOptions = null)
 		{
-			return new ReportGetTotalRequestBuilder(reportType, reportInputFilter, objectIds);
+			return new ReportGetTotalRequestBuilder(reportType, reportInputFilter, objectIds, responseOptions);
 		}
 
-		public static ReportGetUrlForReportAsCsvRequestBuilder GetUrlForReportAsCsv(string reportTitle, string reportText, string headers, ReportType reportType, ReportInputFilter reportInputFilter, string dimension = null, FilterPager pager = null, string order = null, string objectIds = null)
+		public static ReportGetUrlForReportAsCsvRequestBuilder GetUrlForReportAsCsv(string reportTitle, string reportText, string headers, ReportType reportType, ReportInputFilter reportInputFilter, string dimension = null, FilterPager pager = null, string order = null, string objectIds = null, ReportResponseOptions responseOptions = null)
 		{
-			return new ReportGetUrlForReportAsCsvRequestBuilder(reportTitle, reportText, headers, reportType, reportInputFilter, dimension, pager, order, objectIds);
+			return new ReportGetUrlForReportAsCsvRequestBuilder(reportTitle, reportText, headers, reportType, reportInputFilter, dimension, pager, order, objectIds, responseOptions);
 		}
 
 		public static ReportServeRequestBuilder Serve(string id)

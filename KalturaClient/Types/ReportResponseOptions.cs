@@ -39,10 +39,12 @@ namespace Kaltura.Types
 	{
 		#region Constants
 		public const string DELIMITER = "delimiter";
+		public const string SKIP_EMPTY_DATES = "skipEmptyDates";
 		#endregion
 
 		#region Private Fields
 		private string _Delimiter = null;
+		private bool? _SkipEmptyDates = null;
 		#endregion
 
 		#region Properties
@@ -54,6 +56,16 @@ namespace Kaltura.Types
 			{ 
 				_Delimiter = value;
 				OnPropertyChanged("Delimiter");
+			}
+		}
+		[JsonProperty]
+		public bool? SkipEmptyDates
+		{
+			get { return _SkipEmptyDates; }
+			set 
+			{ 
+				_SkipEmptyDates = value;
+				OnPropertyChanged("SkipEmptyDates");
 			}
 		}
 		#endregion
@@ -69,6 +81,10 @@ namespace Kaltura.Types
 			{
 				this._Delimiter = node["delimiter"].Value<string>();
 			}
+			if(node["skipEmptyDates"] != null)
+			{
+				this._SkipEmptyDates = ParseBool(node["skipEmptyDates"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -79,6 +95,7 @@ namespace Kaltura.Types
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaReportResponseOptions");
 			kparams.AddIfNotNull("delimiter", this._Delimiter);
+			kparams.AddIfNotNull("skipEmptyDates", this._SkipEmptyDates);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -87,6 +104,8 @@ namespace Kaltura.Types
 			{
 				case DELIMITER:
 					return "Delimiter";
+				case SKIP_EMPTY_DATES:
+					return "SkipEmptyDates";
 				default:
 					return base.getPropertyName(apiName);
 			}

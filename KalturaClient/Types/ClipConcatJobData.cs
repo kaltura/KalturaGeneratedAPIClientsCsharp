@@ -46,7 +46,7 @@ namespace Kaltura.Types
 		#region Private Fields
 		private int _PartnerId = Int32.MinValue;
 		private int _Priority = Int32.MinValue;
-		private IList<ObjectBase> _OperationAttributes;
+		private IList<OperationAttributes> _OperationAttributes;
 		#endregion
 
 		#region Properties
@@ -71,7 +71,7 @@ namespace Kaltura.Types
 			}
 		}
 		[JsonProperty]
-		public IList<ObjectBase> OperationAttributes
+		public IList<OperationAttributes> OperationAttributes
 		{
 			get { return _OperationAttributes; }
 			set 
@@ -99,10 +99,10 @@ namespace Kaltura.Types
 			}
 			if(node["operationAttributes"] != null)
 			{
-				this._OperationAttributes = new List<ObjectBase>();
+				this._OperationAttributes = new List<OperationAttributes>();
 				foreach(var arrayNode in node["operationAttributes"].Children())
 				{
-					this._OperationAttributes.Add(ObjectFactory.Create<ObjectBase>(arrayNode));
+					this._OperationAttributes.Add(ObjectFactory.Create<OperationAttributes>(arrayNode));
 				}
 			}
 		}

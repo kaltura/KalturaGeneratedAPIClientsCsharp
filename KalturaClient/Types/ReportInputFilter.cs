@@ -58,6 +58,8 @@ namespace Kaltura.Types
 		public const string SOURCE_TYPE_IN = "sourceTypeIn";
 		public const string OWNER_IDS_IN = "ownerIdsIn";
 		public const string ENTRY_OPERATOR = "entryOperator";
+		public const string ENTRY_CREATED_AT_GREATER_THAN_OR_EQUAL = "entryCreatedAtGreaterThanOrEqual";
+		public const string ENTRY_CREATED_AT_LESS_THAN_OR_EQUAL = "entryCreatedAtLessThanOrEqual";
 		#endregion
 
 		#region Private Fields
@@ -81,6 +83,8 @@ namespace Kaltura.Types
 		private string _SourceTypeIn = null;
 		private string _OwnerIdsIn = null;
 		private ESearchEntryOperator _EntryOperator;
+		private int _EntryCreatedAtGreaterThanOrEqual = Int32.MinValue;
+		private int _EntryCreatedAtLessThanOrEqual = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -284,6 +288,26 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryOperator");
 			}
 		}
+		[JsonProperty]
+		public int EntryCreatedAtGreaterThanOrEqual
+		{
+			get { return _EntryCreatedAtGreaterThanOrEqual; }
+			set 
+			{ 
+				_EntryCreatedAtGreaterThanOrEqual = value;
+				OnPropertyChanged("EntryCreatedAtGreaterThanOrEqual");
+			}
+		}
+		[JsonProperty]
+		public int EntryCreatedAtLessThanOrEqual
+		{
+			get { return _EntryCreatedAtLessThanOrEqual; }
+			set 
+			{ 
+				_EntryCreatedAtLessThanOrEqual = value;
+				OnPropertyChanged("EntryCreatedAtLessThanOrEqual");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -373,6 +397,14 @@ namespace Kaltura.Types
 			{
 				this._EntryOperator = ObjectFactory.Create<ESearchEntryOperator>(node["entryOperator"]);
 			}
+			if(node["entryCreatedAtGreaterThanOrEqual"] != null)
+			{
+				this._EntryCreatedAtGreaterThanOrEqual = ParseInt(node["entryCreatedAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["entryCreatedAtLessThanOrEqual"] != null)
+			{
+				this._EntryCreatedAtLessThanOrEqual = ParseInt(node["entryCreatedAtLessThanOrEqual"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -402,6 +434,8 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("sourceTypeIn", this._SourceTypeIn);
 			kparams.AddIfNotNull("ownerIdsIn", this._OwnerIdsIn);
 			kparams.AddIfNotNull("entryOperator", this._EntryOperator);
+			kparams.AddIfNotNull("entryCreatedAtGreaterThanOrEqual", this._EntryCreatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("entryCreatedAtLessThanOrEqual", this._EntryCreatedAtLessThanOrEqual);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -448,6 +482,10 @@ namespace Kaltura.Types
 					return "OwnerIdsIn";
 				case ENTRY_OPERATOR:
 					return "EntryOperator";
+				case ENTRY_CREATED_AT_GREATER_THAN_OR_EQUAL:
+					return "EntryCreatedAtGreaterThanOrEqual";
+				case ENTRY_CREATED_AT_LESS_THAN_OR_EQUAL:
+					return "EntryCreatedAtLessThanOrEqual";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -303,7 +303,7 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class UserEntryUpdateRequestBuilder : RequestBuilder<VoidResponse>
+	public class UserEntryUpdateRequestBuilder : RequestBuilder<UserEntry>
 	{
 		#region Constants
 		public const string ID = "id";
@@ -351,7 +351,7 @@ namespace Kaltura.Services
 
 		public override object Deserialize(JToken result)
 		{
-			return null;
+			return ObjectFactory.Create<UserEntry>(result);
 		}
 	}
 

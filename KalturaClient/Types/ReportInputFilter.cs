@@ -60,6 +60,7 @@ namespace Kaltura.Types
 		public const string ENTRY_OPERATOR = "entryOperator";
 		public const string ENTRY_CREATED_AT_GREATER_THAN_OR_EQUAL = "entryCreatedAtGreaterThanOrEqual";
 		public const string ENTRY_CREATED_AT_LESS_THAN_OR_EQUAL = "entryCreatedAtLessThanOrEqual";
+		public const string ENTRY_ID_IN = "entryIdIn";
 		#endregion
 
 		#region Private Fields
@@ -85,6 +86,7 @@ namespace Kaltura.Types
 		private ESearchEntryOperator _EntryOperator;
 		private int _EntryCreatedAtGreaterThanOrEqual = Int32.MinValue;
 		private int _EntryCreatedAtLessThanOrEqual = Int32.MinValue;
+		private string _EntryIdIn = null;
 		#endregion
 
 		#region Properties
@@ -308,6 +310,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryCreatedAtLessThanOrEqual");
 			}
 		}
+		[JsonProperty]
+		public string EntryIdIn
+		{
+			get { return _EntryIdIn; }
+			set 
+			{ 
+				_EntryIdIn = value;
+				OnPropertyChanged("EntryIdIn");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -405,6 +417,10 @@ namespace Kaltura.Types
 			{
 				this._EntryCreatedAtLessThanOrEqual = ParseInt(node["entryCreatedAtLessThanOrEqual"].Value<string>());
 			}
+			if(node["entryIdIn"] != null)
+			{
+				this._EntryIdIn = node["entryIdIn"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -436,6 +452,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("entryOperator", this._EntryOperator);
 			kparams.AddIfNotNull("entryCreatedAtGreaterThanOrEqual", this._EntryCreatedAtGreaterThanOrEqual);
 			kparams.AddIfNotNull("entryCreatedAtLessThanOrEqual", this._EntryCreatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("entryIdIn", this._EntryIdIn);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -486,6 +503,8 @@ namespace Kaltura.Types
 					return "EntryCreatedAtGreaterThanOrEqual";
 				case ENTRY_CREATED_AT_LESS_THAN_OR_EQUAL:
 					return "EntryCreatedAtLessThanOrEqual";
+				case ENTRY_ID_IN:
+					return "EntryIdIn";
 				default:
 					return base.getPropertyName(apiName);
 			}

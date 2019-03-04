@@ -96,6 +96,8 @@ namespace Kaltura
 					return new ListResponse<BaseEntry>(jToken);
 				case "KalturaBaseSyndicationFeedListResponse":
 					return new ListResponse<BaseSyndicationFeed>(jToken);
+				case "KalturaBeaconListResponse":
+					return new ListResponse<Beacon>(jToken);
 				case "KalturaBulkUploadListResponse":
 					return new ListResponse<BulkUpload>(jToken);
 				case "KalturaBusinessProcessServerListResponse":
@@ -112,6 +114,8 @@ namespace Kaltura
 					return new ListResponse<Category>(jToken);
 				case "KalturaCategoryUserListResponse":
 					return new ListResponse<CategoryUser>(jToken);
+				case "KalturaConfMapsListResponse":
+					return new ListResponse<ConfMaps>(jToken);
 				case "KalturaControlPanelCommandListResponse":
 					return new ListResponse<ControlPanelCommand>(jToken);
 				case "KalturaConversionProfileAssetParamsListResponse":
@@ -138,6 +142,8 @@ namespace Kaltura
 					return new ListResponse<DropFolderFile>(jToken);
 				case "KalturaDropFolderListResponse":
 					return new ListResponse<DropFolder>(jToken);
+				case "KalturaESearchHistoryListResponse":
+					return new ListResponse<ESearchHistory>(jToken);
 				case "KalturaEntryDistributionListResponse":
 					return new ListResponse<EntryDistribution>(jToken);
 				case "KalturaEntryServerNodeListResponse":

@@ -32,6 +32,7 @@ namespace Kaltura.Enums
 		public static readonly ContainerFormat _3GP = new ContainerFormat("3gp");
 		public static readonly ContainerFormat APPLEHTTP = new ContainerFormat("applehttp");
 		public static readonly ContainerFormat AVI = new ContainerFormat("avi");
+		public static readonly ContainerFormat BIF = new ContainerFormat("bif");
 		public static readonly ContainerFormat BMP = new ContainerFormat("bmp");
 		public static readonly ContainerFormat COPY = new ContainerFormat("copy");
 		public static readonly ContainerFormat FLV = new ContainerFormat("flv");

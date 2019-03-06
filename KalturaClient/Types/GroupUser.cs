@@ -38,6 +38,7 @@ namespace Kaltura.Types
 	public class GroupUser : ObjectBase
 	{
 		#region Constants
+		public const string ID = "id";
 		public const string USER_ID = "userId";
 		public const string GROUP_ID = "groupId";
 		public const string STATUS = "status";
@@ -45,9 +46,11 @@ namespace Kaltura.Types
 		public const string CREATED_AT = "createdAt";
 		public const string UPDATED_AT = "updatedAt";
 		public const string CREATION_MODE = "creationMode";
+		public const string USER_ROLE = "userRole";
 		#endregion
 
 		#region Private Fields
+		private string _Id = null;
 		private string _UserId = null;
 		private string _GroupId = null;
 		private GroupUserStatus _Status = (GroupUserStatus)Int32.MinValue;
@@ -55,9 +58,20 @@ namespace Kaltura.Types
 		private int _CreatedAt = Int32.MinValue;
 		private int _UpdatedAt = Int32.MinValue;
 		private GroupUserCreationMode _CreationMode = (GroupUserCreationMode)Int32.MinValue;
+		private GroupUserRole _UserRole = (GroupUserRole)Int32.MinValue;
 		#endregion
 
 		#region Properties
+		[JsonProperty]
+		public string Id
+		{
+			get { return _Id; }
+			private set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
+		}
 		[JsonProperty]
 		public string UserId
 		{
@@ -128,6 +142,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreationMode");
 			}
 		}
+		[JsonProperty]
+		public GroupUserRole UserRole
+		{
+			get { return _UserRole; }
+			set 
+			{ 
+				_UserRole = value;
+				OnPropertyChanged("UserRole");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -137,6 +161,10 @@ namespace Kaltura.Types
 
 		public GroupUser(JToken node) : base(node)
 		{
+			if(node["id"] != null)
+			{
+				this._Id = node["id"].Value<string>();
+			}
 			if(node["userId"] != null)
 			{
 				this._UserId = node["userId"].Value<string>();
@@ -165,6 +193,10 @@ namespace Kaltura.Types
 			{
 				this._CreationMode = (GroupUserCreationMode)ParseEnum(typeof(GroupUserCreationMode), node["creationMode"].Value<string>());
 			}
+			if(node["userRole"] != null)
+			{
+				this._UserRole = (GroupUserRole)ParseEnum(typeof(GroupUserRole), node["userRole"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -174,6 +206,7 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaGroupUser");
+			kparams.AddIfNotNull("id", this._Id);
 			kparams.AddIfNotNull("userId", this._UserId);
 			kparams.AddIfNotNull("groupId", this._GroupId);
 			kparams.AddIfNotNull("status", this._Status);
@@ -181,12 +214,15 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("createdAt", this._CreatedAt);
 			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
 			kparams.AddIfNotNull("creationMode", this._CreationMode);
+			kparams.AddIfNotNull("userRole", this._UserRole);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
+				case ID:
+					return "Id";
 				case USER_ID:
 					return "UserId";
 				case GROUP_ID:
@@ -201,6 +237,8 @@ namespace Kaltura.Types
 					return "UpdatedAt";
 				case CREATION_MODE:
 					return "CreationMode";
+				case USER_ROLE:
+					return "UserRole";
 				default:
 					return base.getPropertyName(apiName);
 			}

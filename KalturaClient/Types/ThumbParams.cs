@@ -55,6 +55,7 @@ namespace Kaltura.Types
 		public const string DENSITY = "density";
 		public const string STRIP_PROFILES = "stripProfiles";
 		public const string VIDEO_OFFSET_IN_PERCENTAGE = "videoOffsetInPercentage";
+		public const string INTERVAL = "interval";
 		#endregion
 
 		#region Private Fields
@@ -75,6 +76,7 @@ namespace Kaltura.Types
 		private int _Density = Int32.MinValue;
 		private bool? _StripProfiles = null;
 		private int _VideoOffsetInPercentage = Int32.MinValue;
+		private int _Interval = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -248,6 +250,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoOffsetInPercentage");
 			}
 		}
+		[JsonProperty]
+		public int Interval
+		{
+			get { return _Interval; }
+			set 
+			{ 
+				_Interval = value;
+				OnPropertyChanged("Interval");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -325,6 +337,10 @@ namespace Kaltura.Types
 			{
 				this._VideoOffsetInPercentage = ParseInt(node["videoOffsetInPercentage"].Value<string>());
 			}
+			if(node["interval"] != null)
+			{
+				this._Interval = ParseInt(node["interval"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -351,6 +367,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("density", this._Density);
 			kparams.AddIfNotNull("stripProfiles", this._StripProfiles);
 			kparams.AddIfNotNull("videoOffsetInPercentage", this._VideoOffsetInPercentage);
+			kparams.AddIfNotNull("interval", this._Interval);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -391,6 +408,8 @@ namespace Kaltura.Types
 					return "StripProfiles";
 				case VIDEO_OFFSET_IN_PERCENTAGE:
 					return "VideoOffsetInPercentage";
+				case INTERVAL:
+					return "Interval";
 				default:
 					return base.getPropertyName(apiName);
 			}

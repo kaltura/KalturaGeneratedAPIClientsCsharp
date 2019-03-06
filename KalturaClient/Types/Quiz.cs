@@ -46,6 +46,7 @@ namespace Kaltura.Types
 		public const string SHOW_CORRECT_AFTER_SUBMISSION = "showCorrectAfterSubmission";
 		public const string ALLOW_DOWNLOAD = "allowDownload";
 		public const string SHOW_GRADE_AFTER_SUBMISSION = "showGradeAfterSubmission";
+		public const string MAX_RETAKES_ALLOWED = "maxRetakesAllowed";
 		#endregion
 
 		#region Private Fields
@@ -57,6 +58,7 @@ namespace Kaltura.Types
 		private NullableBoolean _ShowCorrectAfterSubmission = (NullableBoolean)Int32.MinValue;
 		private NullableBoolean _AllowDownload = (NullableBoolean)Int32.MinValue;
 		private NullableBoolean _ShowGradeAfterSubmission = (NullableBoolean)Int32.MinValue;
+		private int _MaxRetakesAllowed = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -140,6 +142,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("ShowGradeAfterSubmission");
 			}
 		}
+		[JsonProperty]
+		public int MaxRetakesAllowed
+		{
+			get { return _MaxRetakesAllowed; }
+			set 
+			{ 
+				_MaxRetakesAllowed = value;
+				OnPropertyChanged("MaxRetakesAllowed");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -185,6 +197,10 @@ namespace Kaltura.Types
 			{
 				this._ShowGradeAfterSubmission = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["showGradeAfterSubmission"].Value<string>());
 			}
+			if(node["maxRetakesAllowed"] != null)
+			{
+				this._MaxRetakesAllowed = ParseInt(node["maxRetakesAllowed"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -202,6 +218,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("showCorrectAfterSubmission", this._ShowCorrectAfterSubmission);
 			kparams.AddIfNotNull("allowDownload", this._AllowDownload);
 			kparams.AddIfNotNull("showGradeAfterSubmission", this._ShowGradeAfterSubmission);
+			kparams.AddIfNotNull("maxRetakesAllowed", this._MaxRetakesAllowed);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -224,6 +241,8 @@ namespace Kaltura.Types
 					return "AllowDownload";
 				case SHOW_GRADE_AFTER_SUBMISSION:
 					return "ShowGradeAfterSubmission";
+				case MAX_RETAKES_ALLOWED:
+					return "MaxRetakesAllowed";
 				default:
 					return base.getPropertyName(apiName);
 			}

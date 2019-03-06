@@ -253,6 +253,58 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class GroupUserUpdateRequestBuilder : RequestBuilder<GroupUser>
+	{
+		#region Constants
+		public const string GROUP_USER_ID = "groupUserId";
+		public const string GROUP_USER = "groupUser";
+		#endregion
+
+		public string GroupUserId
+		{
+			set;
+			get;
+		}
+		public GroupUser GroupUser
+		{
+			set;
+			get;
+		}
+
+		public GroupUserUpdateRequestBuilder()
+			: base("groupuser", "update")
+		{
+		}
+
+		public GroupUserUpdateRequestBuilder(string groupUserId, GroupUser groupUser)
+			: this()
+		{
+			this.GroupUserId = groupUserId;
+			this.GroupUser = groupUser;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("groupUserId"))
+				kparams.AddIfNotNull("groupUserId", GroupUserId);
+			if (!isMapped("groupUser"))
+				kparams.AddIfNotNull("groupUser", GroupUser);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			return ObjectFactory.Create<GroupUser>(result);
+		}
+	}
+
 
 	public class GroupUserService
 	{
@@ -278,6 +330,11 @@ namespace Kaltura.Services
 		public static GroupUserSyncRequestBuilder Sync(string userId, string groupIds, bool removeFromExistingGroups = true, bool createNewGroups = true)
 		{
 			return new GroupUserSyncRequestBuilder(userId, groupIds, removeFromExistingGroups, createNewGroups);
+		}
+
+		public static GroupUserUpdateRequestBuilder Update(string groupUserId, GroupUser groupUser)
+		{
+			return new GroupUserUpdateRequestBuilder(groupUserId, groupUser);
 		}
 	}
 }

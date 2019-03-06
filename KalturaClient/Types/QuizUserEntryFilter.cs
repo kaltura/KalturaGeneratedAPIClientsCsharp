@@ -38,14 +38,26 @@ namespace Kaltura.Types
 	public class QuizUserEntryFilter : QuizUserEntryBaseFilter
 	{
 		#region Constants
+		public const string VERSION_EQUAL = "versionEqual";
 		public new const string ORDER_BY = "orderBy";
 		#endregion
 
 		#region Private Fields
+		private int _VersionEqual = Int32.MinValue;
 		private QuizUserEntryOrderBy _OrderBy = null;
 		#endregion
 
 		#region Properties
+		[JsonProperty]
+		public int VersionEqual
+		{
+			get { return _VersionEqual; }
+			set 
+			{ 
+				_VersionEqual = value;
+				OnPropertyChanged("VersionEqual");
+			}
+		}
 		[JsonProperty]
 		public new QuizUserEntryOrderBy OrderBy
 		{
@@ -65,6 +77,10 @@ namespace Kaltura.Types
 
 		public QuizUserEntryFilter(JToken node) : base(node)
 		{
+			if(node["versionEqual"] != null)
+			{
+				this._VersionEqual = ParseInt(node["versionEqual"].Value<string>());
+			}
 			if(node["orderBy"] != null)
 			{
 				this._OrderBy = (QuizUserEntryOrderBy)StringEnum.Parse(typeof(QuizUserEntryOrderBy), node["orderBy"].Value<string>());
@@ -78,6 +94,7 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaQuizUserEntryFilter");
+			kparams.AddIfNotNull("versionEqual", this._VersionEqual);
 			kparams.AddIfNotNull("orderBy", this._OrderBy);
 			return kparams;
 		}
@@ -85,6 +102,8 @@ namespace Kaltura.Types
 		{
 			switch(apiName)
 			{
+				case VERSION_EQUAL:
+					return "VersionEqual";
 				case ORDER_BY:
 					return "OrderBy";
 				default:

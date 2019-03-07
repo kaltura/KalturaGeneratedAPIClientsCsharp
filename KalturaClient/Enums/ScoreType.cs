@@ -27,15 +27,12 @@
 // ===================================================================================================
 namespace Kaltura.Enums
 {
-	public sealed class QuizUserEntryOrderBy : StringEnum
+	public enum ScoreType
 	{
-		public static readonly QuizUserEntryOrderBy CREATED_AT_ASC = new QuizUserEntryOrderBy("+createdAt");
-		public static readonly QuizUserEntryOrderBy UPDATED_AT_ASC = new QuizUserEntryOrderBy("+updatedAt");
-		public static readonly QuizUserEntryOrderBy VERSION_ASC = new QuizUserEntryOrderBy("+version");
-		public static readonly QuizUserEntryOrderBy CREATED_AT_DESC = new QuizUserEntryOrderBy("-createdAt");
-		public static readonly QuizUserEntryOrderBy UPDATED_AT_DESC = new QuizUserEntryOrderBy("-updatedAt");
-		public static readonly QuizUserEntryOrderBy VERSION_DESC = new QuizUserEntryOrderBy("-version");
-
-		private QuizUserEntryOrderBy(string name) : base(name) { }
+		HIGHEST = 1,
+		LOWEST = 2,
+		LATEST = 3,
+		FIRST = 4,
+		AVERAGE = 5,
 	}
 }

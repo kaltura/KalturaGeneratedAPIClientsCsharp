@@ -148,6 +148,8 @@ namespace Kaltura
 					return new ListResponse<EntryDistribution>(jToken);
 				case "KalturaEntryServerNodeListResponse":
 					return new ListResponse<EntryServerNode>(jToken);
+				case "KalturaEntryVendorTaskListResponse":
+					return new ListResponse<EntryVendorTask>(jToken);
 				case "KalturaEventNotificationTemplateListResponse":
 					return new ListResponse<EventNotificationTemplate>(jToken);
 				case "KalturaExternalMediaEntryListResponse":
@@ -200,6 +202,8 @@ namespace Kaltura
 					return new ListResponse<Playlist>(jToken);
 				case "KalturaQuizListResponse":
 					return new ListResponse<Quiz>(jToken);
+				case "KalturaReachProfileListResponse":
+					return new ListResponse<ReachProfile>(jToken);
 				case "KalturaRemotePathListResponse":
 					return new ListResponse<RemotePath>(jToken);
 				case "KalturaReportListResponse":
@@ -250,6 +254,8 @@ namespace Kaltura
 					return new ListResponse<UserLoginData>(jToken);
 				case "KalturaUserRoleListResponse":
 					return new ListResponse<UserRole>(jToken);
+				case "KalturaVendorCatalogItemListResponse":
+					return new ListResponse<VendorCatalogItem>(jToken);
 				case "KalturaVirusScanProfileListResponse":
 					return new ListResponse<VirusScanProfile>(jToken);
 				case "KalturaWidgetListResponse":

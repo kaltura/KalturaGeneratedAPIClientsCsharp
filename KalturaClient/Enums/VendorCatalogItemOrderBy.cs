@@ -27,15 +27,15 @@
 // ===================================================================================================
 namespace Kaltura.Enums
 {
-	public sealed class QuizUserEntryOrderBy : StringEnum
+	public sealed class VendorCatalogItemOrderBy : StringEnum
 	{
-		public static readonly QuizUserEntryOrderBy CREATED_AT_ASC = new QuizUserEntryOrderBy("+createdAt");
-		public static readonly QuizUserEntryOrderBy UPDATED_AT_ASC = new QuizUserEntryOrderBy("+updatedAt");
-		public static readonly QuizUserEntryOrderBy VERSION_ASC = new QuizUserEntryOrderBy("+version");
-		public static readonly QuizUserEntryOrderBy CREATED_AT_DESC = new QuizUserEntryOrderBy("-createdAt");
-		public static readonly QuizUserEntryOrderBy UPDATED_AT_DESC = new QuizUserEntryOrderBy("-updatedAt");
-		public static readonly QuizUserEntryOrderBy VERSION_DESC = new QuizUserEntryOrderBy("-version");
+		public static readonly VendorCatalogItemOrderBy CREATED_AT_ASC = new VendorCatalogItemOrderBy("+createdAt");
+		public static readonly VendorCatalogItemOrderBy ID_ASC = new VendorCatalogItemOrderBy("+id");
+		public static readonly VendorCatalogItemOrderBy UPDATED_AT_ASC = new VendorCatalogItemOrderBy("+updatedAt");
+		public static readonly VendorCatalogItemOrderBy CREATED_AT_DESC = new VendorCatalogItemOrderBy("-createdAt");
+		public static readonly VendorCatalogItemOrderBy ID_DESC = new VendorCatalogItemOrderBy("-id");
+		public static readonly VendorCatalogItemOrderBy UPDATED_AT_DESC = new VendorCatalogItemOrderBy("-updatedAt");
 
-		private QuizUserEntryOrderBy(string name) : base(name) { }
+		private VendorCatalogItemOrderBy(string name) : base(name) { }
 	}
 }

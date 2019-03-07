@@ -35,87 +35,55 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class QuizUserEntry : UserEntry
+	public class EntryVendorTaskFilter : EntryVendorTaskBaseFilter
 	{
 		#region Constants
-		public const string SCORE = "score";
-		public const string CALCULATED_SCORE = "calculatedScore";
-		public const string FEEDBACK = "feedback";
-		public const string VERSION = "version";
+		public const string FREE_TEXT = "freeText";
+		public new const string ORDER_BY = "orderBy";
 		#endregion
 
 		#region Private Fields
-		private float _Score = Single.MinValue;
-		private float _CalculatedScore = Single.MinValue;
-		private string _Feedback = null;
-		private int _Version = Int32.MinValue;
+		private string _FreeText = null;
+		private EntryVendorTaskOrderBy _OrderBy = null;
 		#endregion
 
 		#region Properties
 		[JsonProperty]
-		public float Score
+		public string FreeText
 		{
-			get { return _Score; }
-			private set 
-			{ 
-				_Score = value;
-				OnPropertyChanged("Score");
-			}
-		}
-		[JsonProperty]
-		public float CalculatedScore
-		{
-			get { return _CalculatedScore; }
-			private set 
-			{ 
-				_CalculatedScore = value;
-				OnPropertyChanged("CalculatedScore");
-			}
-		}
-		[JsonProperty]
-		public string Feedback
-		{
-			get { return _Feedback; }
+			get { return _FreeText; }
 			set 
 			{ 
-				_Feedback = value;
-				OnPropertyChanged("Feedback");
+				_FreeText = value;
+				OnPropertyChanged("FreeText");
 			}
 		}
 		[JsonProperty]
-		public int Version
+		public new EntryVendorTaskOrderBy OrderBy
 		{
-			get { return _Version; }
-			private set 
+			get { return _OrderBy; }
+			set 
 			{ 
-				_Version = value;
-				OnPropertyChanged("Version");
+				_OrderBy = value;
+				OnPropertyChanged("OrderBy");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public QuizUserEntry()
+		public EntryVendorTaskFilter()
 		{
 		}
 
-		public QuizUserEntry(JToken node) : base(node)
+		public EntryVendorTaskFilter(JToken node) : base(node)
 		{
-			if(node["score"] != null)
+			if(node["freeText"] != null)
 			{
-				this._Score = ParseFloat(node["score"].Value<string>());
+				this._FreeText = node["freeText"].Value<string>();
 			}
-			if(node["calculatedScore"] != null)
+			if(node["orderBy"] != null)
 			{
-				this._CalculatedScore = ParseFloat(node["calculatedScore"].Value<string>());
-			}
-			if(node["feedback"] != null)
-			{
-				this._Feedback = node["feedback"].Value<string>();
-			}
-			if(node["version"] != null)
-			{
-				this._Version = ParseInt(node["version"].Value<string>());
+				this._OrderBy = (EntryVendorTaskOrderBy)StringEnum.Parse(typeof(EntryVendorTaskOrderBy), node["orderBy"].Value<string>());
 			}
 		}
 		#endregion
@@ -125,25 +93,19 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaQuizUserEntry");
-			kparams.AddIfNotNull("score", this._Score);
-			kparams.AddIfNotNull("calculatedScore", this._CalculatedScore);
-			kparams.AddIfNotNull("feedback", this._Feedback);
-			kparams.AddIfNotNull("version", this._Version);
+				kparams.AddReplace("objectType", "KalturaEntryVendorTaskFilter");
+			kparams.AddIfNotNull("freeText", this._FreeText);
+			kparams.AddIfNotNull("orderBy", this._OrderBy);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case SCORE:
-					return "Score";
-				case CALCULATED_SCORE:
-					return "CalculatedScore";
-				case FEEDBACK:
-					return "Feedback";
-				case VERSION:
-					return "Version";
+				case FREE_TEXT:
+					return "FreeText";
+				case ORDER_BY:
+					return "OrderBy";
 				default:
 					return base.getPropertyName(apiName);
 			}

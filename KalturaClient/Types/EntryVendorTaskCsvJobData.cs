@@ -35,87 +35,87 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class QuizUserEntry : UserEntry
+	public class EntryVendorTaskCsvJobData : JobData
 	{
 		#region Constants
-		public const string SCORE = "score";
-		public const string CALCULATED_SCORE = "calculatedScore";
-		public const string FEEDBACK = "feedback";
-		public const string VERSION = "version";
+		public const string FILTER = "filter";
+		public const string USER_NAME = "userName";
+		public const string USER_MAIL = "userMail";
+		public const string OUTPUT_PATH = "outputPath";
 		#endregion
 
 		#region Private Fields
-		private float _Score = Single.MinValue;
-		private float _CalculatedScore = Single.MinValue;
-		private string _Feedback = null;
-		private int _Version = Int32.MinValue;
+		private EntryVendorTaskFilter _Filter;
+		private string _UserName = null;
+		private string _UserMail = null;
+		private string _OutputPath = null;
 		#endregion
 
 		#region Properties
 		[JsonProperty]
-		public float Score
+		public EntryVendorTaskFilter Filter
 		{
-			get { return _Score; }
-			private set 
-			{ 
-				_Score = value;
-				OnPropertyChanged("Score");
-			}
-		}
-		[JsonProperty]
-		public float CalculatedScore
-		{
-			get { return _CalculatedScore; }
-			private set 
-			{ 
-				_CalculatedScore = value;
-				OnPropertyChanged("CalculatedScore");
-			}
-		}
-		[JsonProperty]
-		public string Feedback
-		{
-			get { return _Feedback; }
+			get { return _Filter; }
 			set 
 			{ 
-				_Feedback = value;
-				OnPropertyChanged("Feedback");
+				_Filter = value;
+				OnPropertyChanged("Filter");
 			}
 		}
 		[JsonProperty]
-		public int Version
+		public string UserName
 		{
-			get { return _Version; }
-			private set 
+			get { return _UserName; }
+			set 
 			{ 
-				_Version = value;
-				OnPropertyChanged("Version");
+				_UserName = value;
+				OnPropertyChanged("UserName");
+			}
+		}
+		[JsonProperty]
+		public string UserMail
+		{
+			get { return _UserMail; }
+			set 
+			{ 
+				_UserMail = value;
+				OnPropertyChanged("UserMail");
+			}
+		}
+		[JsonProperty]
+		public string OutputPath
+		{
+			get { return _OutputPath; }
+			set 
+			{ 
+				_OutputPath = value;
+				OnPropertyChanged("OutputPath");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public QuizUserEntry()
+		public EntryVendorTaskCsvJobData()
 		{
 		}
 
-		public QuizUserEntry(JToken node) : base(node)
+		public EntryVendorTaskCsvJobData(JToken node) : base(node)
 		{
-			if(node["score"] != null)
+			if(node["filter"] != null)
 			{
-				this._Score = ParseFloat(node["score"].Value<string>());
+				this._Filter = ObjectFactory.Create<EntryVendorTaskFilter>(node["filter"]);
 			}
-			if(node["calculatedScore"] != null)
+			if(node["userName"] != null)
 			{
-				this._CalculatedScore = ParseFloat(node["calculatedScore"].Value<string>());
+				this._UserName = node["userName"].Value<string>();
 			}
-			if(node["feedback"] != null)
+			if(node["userMail"] != null)
 			{
-				this._Feedback = node["feedback"].Value<string>();
+				this._UserMail = node["userMail"].Value<string>();
 			}
-			if(node["version"] != null)
+			if(node["outputPath"] != null)
 			{
-				this._Version = ParseInt(node["version"].Value<string>());
+				this._OutputPath = node["outputPath"].Value<string>();
 			}
 		}
 		#endregion
@@ -125,25 +125,25 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaQuizUserEntry");
-			kparams.AddIfNotNull("score", this._Score);
-			kparams.AddIfNotNull("calculatedScore", this._CalculatedScore);
-			kparams.AddIfNotNull("feedback", this._Feedback);
-			kparams.AddIfNotNull("version", this._Version);
+				kparams.AddReplace("objectType", "KalturaEntryVendorTaskCsvJobData");
+			kparams.AddIfNotNull("filter", this._Filter);
+			kparams.AddIfNotNull("userName", this._UserName);
+			kparams.AddIfNotNull("userMail", this._UserMail);
+			kparams.AddIfNotNull("outputPath", this._OutputPath);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case SCORE:
-					return "Score";
-				case CALCULATED_SCORE:
-					return "CalculatedScore";
-				case FEEDBACK:
-					return "Feedback";
-				case VERSION:
-					return "Version";
+				case FILTER:
+					return "Filter";
+				case USER_NAME:
+					return "UserName";
+				case USER_MAIL:
+					return "UserMail";
+				case OUTPUT_PATH:
+					return "OutputPath";
 				default:
 					return base.getPropertyName(apiName);
 			}

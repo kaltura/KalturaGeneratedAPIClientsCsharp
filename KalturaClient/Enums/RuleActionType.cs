@@ -30,6 +30,7 @@ namespace Kaltura.Enums
 	public sealed class RuleActionType : StringEnum
 	{
 		public static readonly RuleActionType DRM_POLICY = new RuleActionType("drm.DRM_POLICY");
+		public static readonly RuleActionType ADD_ENTRY_VENDOR_TASK = new RuleActionType("reach.ADD_ENTRY_VENDOR_TASK");
 		public static readonly RuleActionType BLOCK = new RuleActionType("1");
 		public static readonly RuleActionType PREVIEW = new RuleActionType("2");
 		public static readonly RuleActionType LIMIT_FLAVORS = new RuleActionType("3");

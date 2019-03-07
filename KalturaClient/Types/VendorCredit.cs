@@ -35,87 +35,87 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class QuizUserEntry : UserEntry
+	public class VendorCredit : BaseVendorCredit
 	{
 		#region Constants
-		public const string SCORE = "score";
-		public const string CALCULATED_SCORE = "calculatedScore";
-		public const string FEEDBACK = "feedback";
-		public const string VERSION = "version";
+		public const string CREDIT = "credit";
+		public const string FROM_DATE = "fromDate";
+		public const string OVERAGE_CREDIT = "overageCredit";
+		public const string ADD_ON = "addOn";
 		#endregion
 
 		#region Private Fields
-		private float _Score = Single.MinValue;
-		private float _CalculatedScore = Single.MinValue;
-		private string _Feedback = null;
-		private int _Version = Int32.MinValue;
+		private int _Credit = Int32.MinValue;
+		private int _FromDate = Int32.MinValue;
+		private int _OverageCredit = Int32.MinValue;
+		private int _AddOn = Int32.MinValue;
 		#endregion
 
 		#region Properties
 		[JsonProperty]
-		public float Score
+		public int Credit
 		{
-			get { return _Score; }
-			private set 
-			{ 
-				_Score = value;
-				OnPropertyChanged("Score");
-			}
-		}
-		[JsonProperty]
-		public float CalculatedScore
-		{
-			get { return _CalculatedScore; }
-			private set 
-			{ 
-				_CalculatedScore = value;
-				OnPropertyChanged("CalculatedScore");
-			}
-		}
-		[JsonProperty]
-		public string Feedback
-		{
-			get { return _Feedback; }
+			get { return _Credit; }
 			set 
 			{ 
-				_Feedback = value;
-				OnPropertyChanged("Feedback");
+				_Credit = value;
+				OnPropertyChanged("Credit");
 			}
 		}
 		[JsonProperty]
-		public int Version
+		public int FromDate
 		{
-			get { return _Version; }
-			private set 
+			get { return _FromDate; }
+			set 
 			{ 
-				_Version = value;
-				OnPropertyChanged("Version");
+				_FromDate = value;
+				OnPropertyChanged("FromDate");
+			}
+		}
+		[JsonProperty]
+		public int OverageCredit
+		{
+			get { return _OverageCredit; }
+			set 
+			{ 
+				_OverageCredit = value;
+				OnPropertyChanged("OverageCredit");
+			}
+		}
+		[JsonProperty]
+		public int AddOn
+		{
+			get { return _AddOn; }
+			set 
+			{ 
+				_AddOn = value;
+				OnPropertyChanged("AddOn");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public QuizUserEntry()
+		public VendorCredit()
 		{
 		}
 
-		public QuizUserEntry(JToken node) : base(node)
+		public VendorCredit(JToken node) : base(node)
 		{
-			if(node["score"] != null)
+			if(node["credit"] != null)
 			{
-				this._Score = ParseFloat(node["score"].Value<string>());
+				this._Credit = ParseInt(node["credit"].Value<string>());
 			}
-			if(node["calculatedScore"] != null)
+			if(node["fromDate"] != null)
 			{
-				this._CalculatedScore = ParseFloat(node["calculatedScore"].Value<string>());
+				this._FromDate = ParseInt(node["fromDate"].Value<string>());
 			}
-			if(node["feedback"] != null)
+			if(node["overageCredit"] != null)
 			{
-				this._Feedback = node["feedback"].Value<string>();
+				this._OverageCredit = ParseInt(node["overageCredit"].Value<string>());
 			}
-			if(node["version"] != null)
+			if(node["addOn"] != null)
 			{
-				this._Version = ParseInt(node["version"].Value<string>());
+				this._AddOn = ParseInt(node["addOn"].Value<string>());
 			}
 		}
 		#endregion
@@ -125,25 +125,25 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaQuizUserEntry");
-			kparams.AddIfNotNull("score", this._Score);
-			kparams.AddIfNotNull("calculatedScore", this._CalculatedScore);
-			kparams.AddIfNotNull("feedback", this._Feedback);
-			kparams.AddIfNotNull("version", this._Version);
+				kparams.AddReplace("objectType", "KalturaVendorCredit");
+			kparams.AddIfNotNull("credit", this._Credit);
+			kparams.AddIfNotNull("fromDate", this._FromDate);
+			kparams.AddIfNotNull("overageCredit", this._OverageCredit);
+			kparams.AddIfNotNull("addOn", this._AddOn);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case SCORE:
-					return "Score";
-				case CALCULATED_SCORE:
-					return "CalculatedScore";
-				case FEEDBACK:
-					return "Feedback";
-				case VERSION:
-					return "Version";
+				case CREDIT:
+					return "Credit";
+				case FROM_DATE:
+					return "FromDate";
+				case OVERAGE_CREDIT:
+					return "OverageCredit";
+				case ADD_ON:
+					return "AddOn";
 				default:
 					return base.getPropertyName(apiName);
 			}

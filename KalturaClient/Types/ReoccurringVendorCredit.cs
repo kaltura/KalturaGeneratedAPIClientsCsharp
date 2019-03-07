@@ -35,87 +35,39 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class QuizUserEntry : UserEntry
+	public class ReoccurringVendorCredit : TimeRangeVendorCredit
 	{
 		#region Constants
-		public const string SCORE = "score";
-		public const string CALCULATED_SCORE = "calculatedScore";
-		public const string FEEDBACK = "feedback";
-		public const string VERSION = "version";
+		public const string FREQUENCY = "frequency";
 		#endregion
 
 		#region Private Fields
-		private float _Score = Single.MinValue;
-		private float _CalculatedScore = Single.MinValue;
-		private string _Feedback = null;
-		private int _Version = Int32.MinValue;
+		private VendorCreditRecurrenceFrequency _Frequency = null;
 		#endregion
 
 		#region Properties
 		[JsonProperty]
-		public float Score
+		public VendorCreditRecurrenceFrequency Frequency
 		{
-			get { return _Score; }
-			private set 
-			{ 
-				_Score = value;
-				OnPropertyChanged("Score");
-			}
-		}
-		[JsonProperty]
-		public float CalculatedScore
-		{
-			get { return _CalculatedScore; }
-			private set 
-			{ 
-				_CalculatedScore = value;
-				OnPropertyChanged("CalculatedScore");
-			}
-		}
-		[JsonProperty]
-		public string Feedback
-		{
-			get { return _Feedback; }
+			get { return _Frequency; }
 			set 
 			{ 
-				_Feedback = value;
-				OnPropertyChanged("Feedback");
-			}
-		}
-		[JsonProperty]
-		public int Version
-		{
-			get { return _Version; }
-			private set 
-			{ 
-				_Version = value;
-				OnPropertyChanged("Version");
+				_Frequency = value;
+				OnPropertyChanged("Frequency");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public QuizUserEntry()
+		public ReoccurringVendorCredit()
 		{
 		}
 
-		public QuizUserEntry(JToken node) : base(node)
+		public ReoccurringVendorCredit(JToken node) : base(node)
 		{
-			if(node["score"] != null)
+			if(node["frequency"] != null)
 			{
-				this._Score = ParseFloat(node["score"].Value<string>());
-			}
-			if(node["calculatedScore"] != null)
-			{
-				this._CalculatedScore = ParseFloat(node["calculatedScore"].Value<string>());
-			}
-			if(node["feedback"] != null)
-			{
-				this._Feedback = node["feedback"].Value<string>();
-			}
-			if(node["version"] != null)
-			{
-				this._Version = ParseInt(node["version"].Value<string>());
+				this._Frequency = (VendorCreditRecurrenceFrequency)StringEnum.Parse(typeof(VendorCreditRecurrenceFrequency), node["frequency"].Value<string>());
 			}
 		}
 		#endregion
@@ -125,25 +77,16 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaQuizUserEntry");
-			kparams.AddIfNotNull("score", this._Score);
-			kparams.AddIfNotNull("calculatedScore", this._CalculatedScore);
-			kparams.AddIfNotNull("feedback", this._Feedback);
-			kparams.AddIfNotNull("version", this._Version);
+				kparams.AddReplace("objectType", "KalturaReoccurringVendorCredit");
+			kparams.AddIfNotNull("frequency", this._Frequency);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case SCORE:
-					return "Score";
-				case CALCULATED_SCORE:
-					return "CalculatedScore";
-				case FEEDBACK:
-					return "Feedback";
-				case VERSION:
-					return "Version";
+				case FREQUENCY:
+					return "Frequency";
 				default:
 					return base.getPropertyName(apiName);
 			}

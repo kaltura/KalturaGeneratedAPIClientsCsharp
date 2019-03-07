@@ -27,15 +27,15 @@
 // ===================================================================================================
 namespace Kaltura.Enums
 {
-	public sealed class QuizUserEntryOrderBy : StringEnum
+	public sealed class ReachProfileOrderBy : StringEnum
 	{
-		public static readonly QuizUserEntryOrderBy CREATED_AT_ASC = new QuizUserEntryOrderBy("+createdAt");
-		public static readonly QuizUserEntryOrderBy UPDATED_AT_ASC = new QuizUserEntryOrderBy("+updatedAt");
-		public static readonly QuizUserEntryOrderBy VERSION_ASC = new QuizUserEntryOrderBy("+version");
-		public static readonly QuizUserEntryOrderBy CREATED_AT_DESC = new QuizUserEntryOrderBy("-createdAt");
-		public static readonly QuizUserEntryOrderBy UPDATED_AT_DESC = new QuizUserEntryOrderBy("-updatedAt");
-		public static readonly QuizUserEntryOrderBy VERSION_DESC = new QuizUserEntryOrderBy("-version");
+		public static readonly ReachProfileOrderBy CREATED_AT_ASC = new ReachProfileOrderBy("+createdAt");
+		public static readonly ReachProfileOrderBy ID_ASC = new ReachProfileOrderBy("+id");
+		public static readonly ReachProfileOrderBy UPDATED_AT_ASC = new ReachProfileOrderBy("+updatedAt");
+		public static readonly ReachProfileOrderBy CREATED_AT_DESC = new ReachProfileOrderBy("-createdAt");
+		public static readonly ReachProfileOrderBy ID_DESC = new ReachProfileOrderBy("-id");
+		public static readonly ReachProfileOrderBy UPDATED_AT_DESC = new ReachProfileOrderBy("-updatedAt");
 
-		private QuizUserEntryOrderBy(string name) : base(name) { }
+		private ReachProfileOrderBy(string name) : base(name) { }
 	}
 }

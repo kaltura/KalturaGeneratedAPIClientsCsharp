@@ -34,6 +34,7 @@ namespace Kaltura.Enums
 		public static readonly ConditionType METADATA_FIELD_CHANGED = new ConditionType("metadata.FieldChanged");
 		public static readonly ConditionType METADATA_FIELD_COMPARE = new ConditionType("metadata.FieldCompare");
 		public static readonly ConditionType METADATA_FIELD_MATCH = new ConditionType("metadata.FieldMatch");
+		public static readonly ConditionType EVENT_CATEGORY_ENTRY = new ConditionType("reach.CategoryEntry");
 		public static readonly ConditionType AUTHENTICATED = new ConditionType("1");
 		public static readonly ConditionType COUNTRY = new ConditionType("2");
 		public static readonly ConditionType IP_ADDRESS = new ConditionType("3");

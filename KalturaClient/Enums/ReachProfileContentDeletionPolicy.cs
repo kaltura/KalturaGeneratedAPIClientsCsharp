@@ -27,15 +27,12 @@
 // ===================================================================================================
 namespace Kaltura.Enums
 {
-	public sealed class QuizUserEntryOrderBy : StringEnum
+	public enum ReachProfileContentDeletionPolicy
 	{
-		public static readonly QuizUserEntryOrderBy CREATED_AT_ASC = new QuizUserEntryOrderBy("+createdAt");
-		public static readonly QuizUserEntryOrderBy UPDATED_AT_ASC = new QuizUserEntryOrderBy("+updatedAt");
-		public static readonly QuizUserEntryOrderBy VERSION_ASC = new QuizUserEntryOrderBy("+version");
-		public static readonly QuizUserEntryOrderBy CREATED_AT_DESC = new QuizUserEntryOrderBy("-createdAt");
-		public static readonly QuizUserEntryOrderBy UPDATED_AT_DESC = new QuizUserEntryOrderBy("-updatedAt");
-		public static readonly QuizUserEntryOrderBy VERSION_DESC = new QuizUserEntryOrderBy("-version");
-
-		private QuizUserEntryOrderBy(string name) : base(name) { }
+		DO_NOTHING = 1,
+		DELETE_ONCE_PROCESSED = 2,
+		DELETE_AFTER_WEEK = 3,
+		DELETE_AFTER_MONTH = 4,
+		DELETE_AFTER_THREE_MONTHS = 5,
 	}
 }

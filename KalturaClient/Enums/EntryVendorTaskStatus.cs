@@ -27,15 +27,15 @@
 // ===================================================================================================
 namespace Kaltura.Enums
 {
-	public sealed class QuizUserEntryOrderBy : StringEnum
+	public enum EntryVendorTaskStatus
 	{
-		public static readonly QuizUserEntryOrderBy CREATED_AT_ASC = new QuizUserEntryOrderBy("+createdAt");
-		public static readonly QuizUserEntryOrderBy UPDATED_AT_ASC = new QuizUserEntryOrderBy("+updatedAt");
-		public static readonly QuizUserEntryOrderBy VERSION_ASC = new QuizUserEntryOrderBy("+version");
-		public static readonly QuizUserEntryOrderBy CREATED_AT_DESC = new QuizUserEntryOrderBy("-createdAt");
-		public static readonly QuizUserEntryOrderBy UPDATED_AT_DESC = new QuizUserEntryOrderBy("-updatedAt");
-		public static readonly QuizUserEntryOrderBy VERSION_DESC = new QuizUserEntryOrderBy("-version");
-
-		private QuizUserEntryOrderBy(string name) : base(name) { }
+		PENDING = 1,
+		READY = 2,
+		PROCESSING = 3,
+		PENDING_MODERATION = 4,
+		REJECTED = 5,
+		ERROR = 6,
+		ABORTED = 7,
+		PENDING_ENTRY_READY = 8,
 	}
 }

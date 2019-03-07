@@ -35,87 +35,55 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class QuizUserEntry : UserEntry
+	public class VendorCatalogItemPricing : ObjectBase
 	{
 		#region Constants
-		public const string SCORE = "score";
-		public const string CALCULATED_SCORE = "calculatedScore";
-		public const string FEEDBACK = "feedback";
-		public const string VERSION = "version";
+		public const string PRICE_PER_UNIT = "pricePerUnit";
+		public const string PRICE_FUNCTION = "priceFunction";
 		#endregion
 
 		#region Private Fields
-		private float _Score = Single.MinValue;
-		private float _CalculatedScore = Single.MinValue;
-		private string _Feedback = null;
-		private int _Version = Int32.MinValue;
+		private float _PricePerUnit = Single.MinValue;
+		private VendorCatalogItemPriceFunction _PriceFunction = null;
 		#endregion
 
 		#region Properties
 		[JsonProperty]
-		public float Score
+		public float PricePerUnit
 		{
-			get { return _Score; }
-			private set 
-			{ 
-				_Score = value;
-				OnPropertyChanged("Score");
-			}
-		}
-		[JsonProperty]
-		public float CalculatedScore
-		{
-			get { return _CalculatedScore; }
-			private set 
-			{ 
-				_CalculatedScore = value;
-				OnPropertyChanged("CalculatedScore");
-			}
-		}
-		[JsonProperty]
-		public string Feedback
-		{
-			get { return _Feedback; }
+			get { return _PricePerUnit; }
 			set 
 			{ 
-				_Feedback = value;
-				OnPropertyChanged("Feedback");
+				_PricePerUnit = value;
+				OnPropertyChanged("PricePerUnit");
 			}
 		}
 		[JsonProperty]
-		public int Version
+		public VendorCatalogItemPriceFunction PriceFunction
 		{
-			get { return _Version; }
-			private set 
+			get { return _PriceFunction; }
+			set 
 			{ 
-				_Version = value;
-				OnPropertyChanged("Version");
+				_PriceFunction = value;
+				OnPropertyChanged("PriceFunction");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public QuizUserEntry()
+		public VendorCatalogItemPricing()
 		{
 		}
 
-		public QuizUserEntry(JToken node) : base(node)
+		public VendorCatalogItemPricing(JToken node) : base(node)
 		{
-			if(node["score"] != null)
+			if(node["pricePerUnit"] != null)
 			{
-				this._Score = ParseFloat(node["score"].Value<string>());
+				this._PricePerUnit = ParseFloat(node["pricePerUnit"].Value<string>());
 			}
-			if(node["calculatedScore"] != null)
+			if(node["priceFunction"] != null)
 			{
-				this._CalculatedScore = ParseFloat(node["calculatedScore"].Value<string>());
-			}
-			if(node["feedback"] != null)
-			{
-				this._Feedback = node["feedback"].Value<string>();
-			}
-			if(node["version"] != null)
-			{
-				this._Version = ParseInt(node["version"].Value<string>());
+				this._PriceFunction = (VendorCatalogItemPriceFunction)StringEnum.Parse(typeof(VendorCatalogItemPriceFunction), node["priceFunction"].Value<string>());
 			}
 		}
 		#endregion
@@ -125,25 +93,19 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaQuizUserEntry");
-			kparams.AddIfNotNull("score", this._Score);
-			kparams.AddIfNotNull("calculatedScore", this._CalculatedScore);
-			kparams.AddIfNotNull("feedback", this._Feedback);
-			kparams.AddIfNotNull("version", this._Version);
+				kparams.AddReplace("objectType", "KalturaVendorCatalogItemPricing");
+			kparams.AddIfNotNull("pricePerUnit", this._PricePerUnit);
+			kparams.AddIfNotNull("priceFunction", this._PriceFunction);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case SCORE:
-					return "Score";
-				case CALCULATED_SCORE:
-					return "CalculatedScore";
-				case FEEDBACK:
-					return "Feedback";
-				case VERSION:
-					return "Version";
+				case PRICE_PER_UNIT:
+					return "PricePerUnit";
+				case PRICE_FUNCTION:
+					return "PriceFunction";
 				default:
 					return base.getPropertyName(apiName);
 			}

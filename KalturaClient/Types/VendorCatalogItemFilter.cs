@@ -35,87 +35,55 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class QuizUserEntry : UserEntry
+	public class VendorCatalogItemFilter : VendorCatalogItemBaseFilter
 	{
 		#region Constants
-		public const string SCORE = "score";
-		public const string CALCULATED_SCORE = "calculatedScore";
-		public const string FEEDBACK = "feedback";
-		public const string VERSION = "version";
+		public const string PARTNER_ID_EQUAL = "partnerIdEqual";
+		public new const string ORDER_BY = "orderBy";
 		#endregion
 
 		#region Private Fields
-		private float _Score = Single.MinValue;
-		private float _CalculatedScore = Single.MinValue;
-		private string _Feedback = null;
-		private int _Version = Int32.MinValue;
+		private int _PartnerIdEqual = Int32.MinValue;
+		private VendorCatalogItemOrderBy _OrderBy = null;
 		#endregion
 
 		#region Properties
 		[JsonProperty]
-		public float Score
+		public int PartnerIdEqual
 		{
-			get { return _Score; }
-			private set 
-			{ 
-				_Score = value;
-				OnPropertyChanged("Score");
-			}
-		}
-		[JsonProperty]
-		public float CalculatedScore
-		{
-			get { return _CalculatedScore; }
-			private set 
-			{ 
-				_CalculatedScore = value;
-				OnPropertyChanged("CalculatedScore");
-			}
-		}
-		[JsonProperty]
-		public string Feedback
-		{
-			get { return _Feedback; }
+			get { return _PartnerIdEqual; }
 			set 
 			{ 
-				_Feedback = value;
-				OnPropertyChanged("Feedback");
+				_PartnerIdEqual = value;
+				OnPropertyChanged("PartnerIdEqual");
 			}
 		}
 		[JsonProperty]
-		public int Version
+		public new VendorCatalogItemOrderBy OrderBy
 		{
-			get { return _Version; }
-			private set 
+			get { return _OrderBy; }
+			set 
 			{ 
-				_Version = value;
-				OnPropertyChanged("Version");
+				_OrderBy = value;
+				OnPropertyChanged("OrderBy");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public QuizUserEntry()
+		public VendorCatalogItemFilter()
 		{
 		}
 
-		public QuizUserEntry(JToken node) : base(node)
+		public VendorCatalogItemFilter(JToken node) : base(node)
 		{
-			if(node["score"] != null)
+			if(node["partnerIdEqual"] != null)
 			{
-				this._Score = ParseFloat(node["score"].Value<string>());
+				this._PartnerIdEqual = ParseInt(node["partnerIdEqual"].Value<string>());
 			}
-			if(node["calculatedScore"] != null)
+			if(node["orderBy"] != null)
 			{
-				this._CalculatedScore = ParseFloat(node["calculatedScore"].Value<string>());
-			}
-			if(node["feedback"] != null)
-			{
-				this._Feedback = node["feedback"].Value<string>();
-			}
-			if(node["version"] != null)
-			{
-				this._Version = ParseInt(node["version"].Value<string>());
+				this._OrderBy = (VendorCatalogItemOrderBy)StringEnum.Parse(typeof(VendorCatalogItemOrderBy), node["orderBy"].Value<string>());
 			}
 		}
 		#endregion
@@ -125,25 +93,19 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaQuizUserEntry");
-			kparams.AddIfNotNull("score", this._Score);
-			kparams.AddIfNotNull("calculatedScore", this._CalculatedScore);
-			kparams.AddIfNotNull("feedback", this._Feedback);
-			kparams.AddIfNotNull("version", this._Version);
+				kparams.AddReplace("objectType", "KalturaVendorCatalogItemFilter");
+			kparams.AddIfNotNull("partnerIdEqual", this._PartnerIdEqual);
+			kparams.AddIfNotNull("orderBy", this._OrderBy);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case SCORE:
-					return "Score";
-				case CALCULATED_SCORE:
-					return "CalculatedScore";
-				case FEEDBACK:
-					return "Feedback";
-				case VERSION:
-					return "Version";
+				case PARTNER_ID_EQUAL:
+					return "PartnerIdEqual";
+				case ORDER_BY:
+					return "OrderBy";
 				default:
 					return base.getPropertyName(apiName);
 			}

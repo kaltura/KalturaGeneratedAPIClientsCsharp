@@ -27,15 +27,11 @@
 // ===================================================================================================
 namespace Kaltura.Enums
 {
-	public sealed class QuizUserEntryOrderBy : StringEnum
+	public sealed class VendorCatalogItemPriceFunction : StringEnum
 	{
-		public static readonly QuizUserEntryOrderBy CREATED_AT_ASC = new QuizUserEntryOrderBy("+createdAt");
-		public static readonly QuizUserEntryOrderBy UPDATED_AT_ASC = new QuizUserEntryOrderBy("+updatedAt");
-		public static readonly QuizUserEntryOrderBy VERSION_ASC = new QuizUserEntryOrderBy("+version");
-		public static readonly QuizUserEntryOrderBy CREATED_AT_DESC = new QuizUserEntryOrderBy("-createdAt");
-		public static readonly QuizUserEntryOrderBy UPDATED_AT_DESC = new QuizUserEntryOrderBy("-updatedAt");
-		public static readonly QuizUserEntryOrderBy VERSION_DESC = new QuizUserEntryOrderBy("-version");
+		public static readonly VendorCatalogItemPriceFunction PRICE_PER_MINUTE = new VendorCatalogItemPriceFunction("kReachUtils::calcPricePerMinute");
+		public static readonly VendorCatalogItemPriceFunction PRICE_PER_SECOND = new VendorCatalogItemPriceFunction("kReachUtils::calcPricePerSecond");
 
-		private QuizUserEntryOrderBy(string name) : base(name) { }
+		private VendorCatalogItemPriceFunction(string name) : base(name) { }
 	}
 }

@@ -35,87 +35,71 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class QuizUserEntry : UserEntry
+	public class UnlimitedVendorCredit : BaseVendorCredit
 	{
 		#region Constants
-		public const string SCORE = "score";
-		public const string CALCULATED_SCORE = "calculatedScore";
-		public const string FEEDBACK = "feedback";
-		public const string VERSION = "version";
+		public const string CREDIT = "credit";
+		public const string FROM_DATE = "fromDate";
+		public const string TO_DATE = "toDate";
 		#endregion
 
 		#region Private Fields
-		private float _Score = Single.MinValue;
-		private float _CalculatedScore = Single.MinValue;
-		private string _Feedback = null;
-		private int _Version = Int32.MinValue;
+		private int _Credit = Int32.MinValue;
+		private int _FromDate = Int32.MinValue;
+		private int _ToDate = Int32.MinValue;
 		#endregion
 
 		#region Properties
 		[JsonProperty]
-		public float Score
+		public int Credit
 		{
-			get { return _Score; }
+			get { return _Credit; }
 			private set 
 			{ 
-				_Score = value;
-				OnPropertyChanged("Score");
+				_Credit = value;
+				OnPropertyChanged("Credit");
 			}
 		}
 		[JsonProperty]
-		public float CalculatedScore
+		public int FromDate
 		{
-			get { return _CalculatedScore; }
-			private set 
-			{ 
-				_CalculatedScore = value;
-				OnPropertyChanged("CalculatedScore");
-			}
-		}
-		[JsonProperty]
-		public string Feedback
-		{
-			get { return _Feedback; }
+			get { return _FromDate; }
 			set 
 			{ 
-				_Feedback = value;
-				OnPropertyChanged("Feedback");
+				_FromDate = value;
+				OnPropertyChanged("FromDate");
 			}
 		}
 		[JsonProperty]
-		public int Version
+		public int ToDate
 		{
-			get { return _Version; }
-			private set 
+			get { return _ToDate; }
+			set 
 			{ 
-				_Version = value;
-				OnPropertyChanged("Version");
+				_ToDate = value;
+				OnPropertyChanged("ToDate");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public QuizUserEntry()
+		public UnlimitedVendorCredit()
 		{
 		}
 
-		public QuizUserEntry(JToken node) : base(node)
+		public UnlimitedVendorCredit(JToken node) : base(node)
 		{
-			if(node["score"] != null)
+			if(node["credit"] != null)
 			{
-				this._Score = ParseFloat(node["score"].Value<string>());
+				this._Credit = ParseInt(node["credit"].Value<string>());
 			}
-			if(node["calculatedScore"] != null)
+			if(node["fromDate"] != null)
 			{
-				this._CalculatedScore = ParseFloat(node["calculatedScore"].Value<string>());
+				this._FromDate = ParseInt(node["fromDate"].Value<string>());
 			}
-			if(node["feedback"] != null)
+			if(node["toDate"] != null)
 			{
-				this._Feedback = node["feedback"].Value<string>();
-			}
-			if(node["version"] != null)
-			{
-				this._Version = ParseInt(node["version"].Value<string>());
+				this._ToDate = ParseInt(node["toDate"].Value<string>());
 			}
 		}
 		#endregion
@@ -125,25 +109,22 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaQuizUserEntry");
-			kparams.AddIfNotNull("score", this._Score);
-			kparams.AddIfNotNull("calculatedScore", this._CalculatedScore);
-			kparams.AddIfNotNull("feedback", this._Feedback);
-			kparams.AddIfNotNull("version", this._Version);
+				kparams.AddReplace("objectType", "KalturaUnlimitedVendorCredit");
+			kparams.AddIfNotNull("credit", this._Credit);
+			kparams.AddIfNotNull("fromDate", this._FromDate);
+			kparams.AddIfNotNull("toDate", this._ToDate);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case SCORE:
-					return "Score";
-				case CALCULATED_SCORE:
-					return "CalculatedScore";
-				case FEEDBACK:
-					return "Feedback";
-				case VERSION:
-					return "Version";
+				case CREDIT:
+					return "Credit";
+				case FROM_DATE:
+					return "FromDate";
+				case TO_DATE:
+					return "ToDate";
 				default:
 					return base.getPropertyName(apiName);
 			}

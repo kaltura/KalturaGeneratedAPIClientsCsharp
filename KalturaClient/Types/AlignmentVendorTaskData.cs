@@ -35,87 +35,71 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class QuizUserEntry : UserEntry
+	public class AlignmentVendorTaskData : VendorTaskData
 	{
 		#region Constants
-		public const string SCORE = "score";
-		public const string CALCULATED_SCORE = "calculatedScore";
-		public const string FEEDBACK = "feedback";
-		public const string VERSION = "version";
+		public const string TEXT_TRANSCRIPT_ASSET_ID = "textTranscriptAssetId";
+		public const string JSON_TRANSCRIPT_ASSET_ID = "jsonTranscriptAssetId";
+		public const string CAPTION_ASSET_ID = "captionAssetId";
 		#endregion
 
 		#region Private Fields
-		private float _Score = Single.MinValue;
-		private float _CalculatedScore = Single.MinValue;
-		private string _Feedback = null;
-		private int _Version = Int32.MinValue;
+		private string _TextTranscriptAssetId = null;
+		private string _JsonTranscriptAssetId = null;
+		private string _CaptionAssetId = null;
 		#endregion
 
 		#region Properties
 		[JsonProperty]
-		public float Score
+		public string TextTranscriptAssetId
 		{
-			get { return _Score; }
-			private set 
-			{ 
-				_Score = value;
-				OnPropertyChanged("Score");
-			}
-		}
-		[JsonProperty]
-		public float CalculatedScore
-		{
-			get { return _CalculatedScore; }
-			private set 
-			{ 
-				_CalculatedScore = value;
-				OnPropertyChanged("CalculatedScore");
-			}
-		}
-		[JsonProperty]
-		public string Feedback
-		{
-			get { return _Feedback; }
+			get { return _TextTranscriptAssetId; }
 			set 
 			{ 
-				_Feedback = value;
-				OnPropertyChanged("Feedback");
+				_TextTranscriptAssetId = value;
+				OnPropertyChanged("TextTranscriptAssetId");
 			}
 		}
 		[JsonProperty]
-		public int Version
+		public string JsonTranscriptAssetId
 		{
-			get { return _Version; }
-			private set 
+			get { return _JsonTranscriptAssetId; }
+			set 
 			{ 
-				_Version = value;
-				OnPropertyChanged("Version");
+				_JsonTranscriptAssetId = value;
+				OnPropertyChanged("JsonTranscriptAssetId");
+			}
+		}
+		[JsonProperty]
+		public string CaptionAssetId
+		{
+			get { return _CaptionAssetId; }
+			set 
+			{ 
+				_CaptionAssetId = value;
+				OnPropertyChanged("CaptionAssetId");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public QuizUserEntry()
+		public AlignmentVendorTaskData()
 		{
 		}
 
-		public QuizUserEntry(JToken node) : base(node)
+		public AlignmentVendorTaskData(JToken node) : base(node)
 		{
-			if(node["score"] != null)
+			if(node["textTranscriptAssetId"] != null)
 			{
-				this._Score = ParseFloat(node["score"].Value<string>());
+				this._TextTranscriptAssetId = node["textTranscriptAssetId"].Value<string>();
 			}
-			if(node["calculatedScore"] != null)
+			if(node["jsonTranscriptAssetId"] != null)
 			{
-				this._CalculatedScore = ParseFloat(node["calculatedScore"].Value<string>());
+				this._JsonTranscriptAssetId = node["jsonTranscriptAssetId"].Value<string>();
 			}
-			if(node["feedback"] != null)
+			if(node["captionAssetId"] != null)
 			{
-				this._Feedback = node["feedback"].Value<string>();
-			}
-			if(node["version"] != null)
-			{
-				this._Version = ParseInt(node["version"].Value<string>());
+				this._CaptionAssetId = node["captionAssetId"].Value<string>();
 			}
 		}
 		#endregion
@@ -125,25 +109,22 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaQuizUserEntry");
-			kparams.AddIfNotNull("score", this._Score);
-			kparams.AddIfNotNull("calculatedScore", this._CalculatedScore);
-			kparams.AddIfNotNull("feedback", this._Feedback);
-			kparams.AddIfNotNull("version", this._Version);
+				kparams.AddReplace("objectType", "KalturaAlignmentVendorTaskData");
+			kparams.AddIfNotNull("textTranscriptAssetId", this._TextTranscriptAssetId);
+			kparams.AddIfNotNull("jsonTranscriptAssetId", this._JsonTranscriptAssetId);
+			kparams.AddIfNotNull("captionAssetId", this._CaptionAssetId);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case SCORE:
-					return "Score";
-				case CALCULATED_SCORE:
-					return "CalculatedScore";
-				case FEEDBACK:
-					return "Feedback";
-				case VERSION:
-					return "Version";
+				case TEXT_TRANSCRIPT_ASSET_ID:
+					return "TextTranscriptAssetId";
+				case JSON_TRANSCRIPT_ASSET_ID:
+					return "JsonTranscriptAssetId";
+				case CAPTION_ASSET_ID:
+					return "CaptionAssetId";
 				default:
 					return base.getPropertyName(apiName);
 			}

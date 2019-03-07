@@ -27,15 +27,18 @@
 // ===================================================================================================
 namespace Kaltura.Enums
 {
-	public sealed class QuizUserEntryOrderBy : StringEnum
+	public enum VendorServiceTurnAroundTime
 	{
-		public static readonly QuizUserEntryOrderBy CREATED_AT_ASC = new QuizUserEntryOrderBy("+createdAt");
-		public static readonly QuizUserEntryOrderBy UPDATED_AT_ASC = new QuizUserEntryOrderBy("+updatedAt");
-		public static readonly QuizUserEntryOrderBy VERSION_ASC = new QuizUserEntryOrderBy("+version");
-		public static readonly QuizUserEntryOrderBy CREATED_AT_DESC = new QuizUserEntryOrderBy("-createdAt");
-		public static readonly QuizUserEntryOrderBy UPDATED_AT_DESC = new QuizUserEntryOrderBy("-updatedAt");
-		public static readonly QuizUserEntryOrderBy VERSION_DESC = new QuizUserEntryOrderBy("-version");
-
-		private QuizUserEntryOrderBy(string name) : base(name) { }
+		BEST_EFFORT = -1,
+		IMMEDIATE = 0,
+		THIRTY_MINUTES = 1800,
+		TWO_HOURS = 7200,
+		THREE_HOURS = 10800,
+		SIX_HOURS = 21600,
+		EIGHT_HOURS = 28800,
+		TWELVE_HOURS = 43200,
+		TWENTY_FOUR_HOURS = 86400,
+		FORTY_EIGHT_HOURS = 172800,
+		TEN_DAYS = 864000,
 	}
 }

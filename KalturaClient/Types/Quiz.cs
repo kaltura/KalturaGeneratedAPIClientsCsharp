@@ -47,6 +47,7 @@ namespace Kaltura.Types
 		public const string ALLOW_DOWNLOAD = "allowDownload";
 		public const string SHOW_GRADE_AFTER_SUBMISSION = "showGradeAfterSubmission";
 		public const string MAX_RETAKES_ALLOWED = "maxRetakesAllowed";
+		public const string SCORE_TYPE = "scoreType";
 		#endregion
 
 		#region Private Fields
@@ -59,6 +60,7 @@ namespace Kaltura.Types
 		private NullableBoolean _AllowDownload = (NullableBoolean)Int32.MinValue;
 		private NullableBoolean _ShowGradeAfterSubmission = (NullableBoolean)Int32.MinValue;
 		private int _MaxRetakesAllowed = Int32.MinValue;
+		private ScoreType _ScoreType = (ScoreType)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -152,6 +154,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("MaxRetakesAllowed");
 			}
 		}
+		[JsonProperty]
+		public ScoreType ScoreType
+		{
+			get { return _ScoreType; }
+			set 
+			{ 
+				_ScoreType = value;
+				OnPropertyChanged("ScoreType");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -201,6 +213,10 @@ namespace Kaltura.Types
 			{
 				this._MaxRetakesAllowed = ParseInt(node["maxRetakesAllowed"].Value<string>());
 			}
+			if(node["scoreType"] != null)
+			{
+				this._ScoreType = (ScoreType)ParseEnum(typeof(ScoreType), node["scoreType"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -219,6 +235,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("allowDownload", this._AllowDownload);
 			kparams.AddIfNotNull("showGradeAfterSubmission", this._ShowGradeAfterSubmission);
 			kparams.AddIfNotNull("maxRetakesAllowed", this._MaxRetakesAllowed);
+			kparams.AddIfNotNull("scoreType", this._ScoreType);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -243,6 +260,8 @@ namespace Kaltura.Types
 					return "ShowGradeAfterSubmission";
 				case MAX_RETAKES_ALLOWED:
 					return "MaxRetakesAllowed";
+				case SCORE_TYPE:
+					return "ScoreType";
 				default:
 					return base.getPropertyName(apiName);
 			}

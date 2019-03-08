@@ -46,7 +46,7 @@ namespace Kaltura.Types
 		public const string SHOW_CORRECT_AFTER_SUBMISSION = "showCorrectAfterSubmission";
 		public const string ALLOW_DOWNLOAD = "allowDownload";
 		public const string SHOW_GRADE_AFTER_SUBMISSION = "showGradeAfterSubmission";
-		public const string MAX_RETAKES_ALLOWED = "maxRetakesAllowed";
+		public const string ATTEMPTS_ALLOWED = "attemptsAllowed";
 		public const string SCORE_TYPE = "scoreType";
 		#endregion
 
@@ -59,7 +59,7 @@ namespace Kaltura.Types
 		private NullableBoolean _ShowCorrectAfterSubmission = (NullableBoolean)Int32.MinValue;
 		private NullableBoolean _AllowDownload = (NullableBoolean)Int32.MinValue;
 		private NullableBoolean _ShowGradeAfterSubmission = (NullableBoolean)Int32.MinValue;
-		private int _MaxRetakesAllowed = Int32.MinValue;
+		private int _AttemptsAllowed = Int32.MinValue;
 		private ScoreType _ScoreType = (ScoreType)Int32.MinValue;
 		#endregion
 
@@ -145,13 +145,13 @@ namespace Kaltura.Types
 			}
 		}
 		[JsonProperty]
-		public int MaxRetakesAllowed
+		public int AttemptsAllowed
 		{
-			get { return _MaxRetakesAllowed; }
+			get { return _AttemptsAllowed; }
 			set 
 			{ 
-				_MaxRetakesAllowed = value;
-				OnPropertyChanged("MaxRetakesAllowed");
+				_AttemptsAllowed = value;
+				OnPropertyChanged("AttemptsAllowed");
 			}
 		}
 		[JsonProperty]
@@ -209,9 +209,9 @@ namespace Kaltura.Types
 			{
 				this._ShowGradeAfterSubmission = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["showGradeAfterSubmission"].Value<string>());
 			}
-			if(node["maxRetakesAllowed"] != null)
+			if(node["attemptsAllowed"] != null)
 			{
-				this._MaxRetakesAllowed = ParseInt(node["maxRetakesAllowed"].Value<string>());
+				this._AttemptsAllowed = ParseInt(node["attemptsAllowed"].Value<string>());
 			}
 			if(node["scoreType"] != null)
 			{
@@ -234,7 +234,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("showCorrectAfterSubmission", this._ShowCorrectAfterSubmission);
 			kparams.AddIfNotNull("allowDownload", this._AllowDownload);
 			kparams.AddIfNotNull("showGradeAfterSubmission", this._ShowGradeAfterSubmission);
-			kparams.AddIfNotNull("maxRetakesAllowed", this._MaxRetakesAllowed);
+			kparams.AddIfNotNull("attemptsAllowed", this._AttemptsAllowed);
 			kparams.AddIfNotNull("scoreType", this._ScoreType);
 			return kparams;
 		}
@@ -258,8 +258,8 @@ namespace Kaltura.Types
 					return "AllowDownload";
 				case SHOW_GRADE_AFTER_SUBMISSION:
 					return "ShowGradeAfterSubmission";
-				case MAX_RETAKES_ALLOWED:
-					return "MaxRetakesAllowed";
+				case ATTEMPTS_ALLOWED:
+					return "AttemptsAllowed";
 				case SCORE_TYPE:
 					return "ScoreType";
 				default:

@@ -27,13 +27,14 @@
 // ===================================================================================================
 namespace Kaltura.Enums
 {
-	public sealed class ESearchUserOrderByFieldName : StringEnum
+	public sealed class ESearchGroupOrderByFieldName : StringEnum
 	{
-		public static readonly ESearchUserOrderByFieldName CREATED_AT = new ESearchUserOrderByFieldName("created_at");
-		public static readonly ESearchUserOrderByFieldName USER_ID = new ESearchUserOrderByFieldName("puser_id");
-		public static readonly ESearchUserOrderByFieldName SCREEN_NAME = new ESearchUserOrderByFieldName("screen_name");
-		public static readonly ESearchUserOrderByFieldName UPDATED_AT = new ESearchUserOrderByFieldName("updated_at");
+		public static readonly ESearchGroupOrderByFieldName CREATED_AT = new ESearchGroupOrderByFieldName("created_at");
+		public static readonly ESearchGroupOrderByFieldName MEMBERS_COUNT = new ESearchGroupOrderByFieldName("members_count");
+		public static readonly ESearchGroupOrderByFieldName USER_ID = new ESearchGroupOrderByFieldName("puser_id");
+		public static readonly ESearchGroupOrderByFieldName SCREEN_NAME = new ESearchGroupOrderByFieldName("screen_name");
+		public static readonly ESearchGroupOrderByFieldName UPDATED_AT = new ESearchGroupOrderByFieldName("updated_at");
 
-		private ESearchUserOrderByFieldName(string name) : base(name) { }
+		private ESearchGroupOrderByFieldName(string name) : base(name) { }
 	}
 }

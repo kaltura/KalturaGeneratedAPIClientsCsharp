@@ -71,7 +71,9 @@ namespace Kaltura.Enums
 		public static readonly ReportType APP_DOMAIN_UNIQUE_ACTIVE_USERS = new ReportType("40");
 		public static readonly ReportType TOP_SOURCES = new ReportType("41");
 		public static readonly ReportType VPAAS_USAGE_MULTI = new ReportType("42");
+		public static readonly ReportType PERCENTILES = new ReportType("43");
 		public static readonly ReportType CONTENT_REPORT_REASONS = new ReportType("44");
+		public static readonly ReportType PLAYER_RELATED_INTERACTIONS = new ReportType("45");
 		public static readonly ReportType PARTNER_USAGE = new ReportType("201");
 
 		private ReportType(string name) : base(name) { }

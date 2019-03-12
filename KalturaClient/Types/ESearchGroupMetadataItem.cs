@@ -25,15 +25,54 @@
 //
 // @ignore
 // ===================================================================================================
-namespace Kaltura.Enums
-{
-	public sealed class ESearchUserOrderByFieldName : StringEnum
-	{
-		public static readonly ESearchUserOrderByFieldName CREATED_AT = new ESearchUserOrderByFieldName("created_at");
-		public static readonly ESearchUserOrderByFieldName USER_ID = new ESearchUserOrderByFieldName("puser_id");
-		public static readonly ESearchUserOrderByFieldName SCREEN_NAME = new ESearchUserOrderByFieldName("screen_name");
-		public static readonly ESearchUserOrderByFieldName UPDATED_AT = new ESearchUserOrderByFieldName("updated_at");
+using System;
+using System.Xml;
+using System.Collections.Generic;
+using Kaltura.Enums;
+using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
-		private ESearchUserOrderByFieldName(string name) : base(name) { }
+namespace Kaltura.Types
+{
+	public class ESearchGroupMetadataItem : ESearchUserMetadataItem
+	{
+		#region Constants
+		#endregion
+
+		#region Private Fields
+		#endregion
+
+		#region Properties
+		#endregion
+
+		#region CTor
+		public ESearchGroupMetadataItem()
+		{
+		}
+
+		public ESearchGroupMetadataItem(JToken node) : base(node)
+		{
+		}
+		#endregion
+
+		#region Methods
+		public override Params ToParams(bool includeObjectType = true)
+		{
+			Params kparams = base.ToParams(includeObjectType);
+			if (includeObjectType)
+				kparams.AddReplace("objectType", "KalturaESearchGroupMetadataItem");
+			return kparams;
+		}
+		protected override string getPropertyName(string apiName)
+		{
+			switch(apiName)
+			{
+				default:
+					return base.getPropertyName(apiName);
+			}
+		}
+		#endregion
 	}
 }
+

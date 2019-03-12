@@ -25,15 +25,73 @@
 //
 // @ignore
 // ===================================================================================================
-namespace Kaltura.Enums
-{
-	public sealed class ESearchUserOrderByFieldName : StringEnum
-	{
-		public static readonly ESearchUserOrderByFieldName CREATED_AT = new ESearchUserOrderByFieldName("created_at");
-		public static readonly ESearchUserOrderByFieldName USER_ID = new ESearchUserOrderByFieldName("puser_id");
-		public static readonly ESearchUserOrderByFieldName SCREEN_NAME = new ESearchUserOrderByFieldName("screen_name");
-		public static readonly ESearchUserOrderByFieldName UPDATED_AT = new ESearchUserOrderByFieldName("updated_at");
+using System;
+using System.Xml;
+using System.Collections.Generic;
+using Kaltura.Enums;
+using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
-		private ESearchUserOrderByFieldName(string name) : base(name) { }
+namespace Kaltura.Types
+{
+	public class ESearchGroupResult : ESearchResult
+	{
+		#region Constants
+		public const string OBJECT = "object";
+		#endregion
+
+		#region Private Fields
+		private Group _Object;
+		#endregion
+
+		#region Properties
+		[JsonProperty]
+		public Group Object
+		{
+			get { return _Object; }
+			set 
+			{ 
+				_Object = value;
+				OnPropertyChanged("Object");
+			}
+		}
+		#endregion
+
+		#region CTor
+		public ESearchGroupResult()
+		{
+		}
+
+		public ESearchGroupResult(JToken node) : base(node)
+		{
+			if(node["object"] != null)
+			{
+				this._Object = ObjectFactory.Create<Group>(node["object"]);
+			}
+		}
+		#endregion
+
+		#region Methods
+		public override Params ToParams(bool includeObjectType = true)
+		{
+			Params kparams = base.ToParams(includeObjectType);
+			if (includeObjectType)
+				kparams.AddReplace("objectType", "KalturaESearchGroupResult");
+			kparams.AddIfNotNull("object", this._Object);
+			return kparams;
+		}
+		protected override string getPropertyName(string apiName)
+		{
+			switch(apiName)
+			{
+				case OBJECT:
+					return "Object";
+				default:
+					return base.getPropertyName(apiName);
+			}
+		}
+		#endregion
 	}
 }
+

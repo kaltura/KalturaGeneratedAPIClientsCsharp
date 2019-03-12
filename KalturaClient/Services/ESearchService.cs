@@ -140,6 +140,58 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class ESearchSearchGroupRequestBuilder : RequestBuilder<ESearchGroupResponse>
+	{
+		#region Constants
+		public const string SEARCH_PARAMS = "searchParams";
+		public const string PAGER = "pager";
+		#endregion
+
+		public ESearchGroupParams SearchParams
+		{
+			set;
+			get;
+		}
+		public Pager Pager
+		{
+			set;
+			get;
+		}
+
+		public ESearchSearchGroupRequestBuilder()
+			: base("elasticsearch_esearch", "searchGroup")
+		{
+		}
+
+		public ESearchSearchGroupRequestBuilder(ESearchGroupParams searchParams, Pager pager)
+			: this()
+		{
+			this.SearchParams = searchParams;
+			this.Pager = pager;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("searchParams"))
+				kparams.AddIfNotNull("searchParams", SearchParams);
+			if (!isMapped("pager"))
+				kparams.AddIfNotNull("pager", Pager);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			return ObjectFactory.Create<ESearchGroupResponse>(result);
+		}
+	}
+
 	public class ESearchSearchUserRequestBuilder : RequestBuilder<ESearchUserResponse>
 	{
 		#region Constants
@@ -207,6 +259,11 @@ namespace Kaltura.Services
 		public static ESearchSearchEntryRequestBuilder SearchEntry(ESearchEntryParams searchParams, Pager pager = null)
 		{
 			return new ESearchSearchEntryRequestBuilder(searchParams, pager);
+		}
+
+		public static ESearchSearchGroupRequestBuilder SearchGroup(ESearchGroupParams searchParams, Pager pager = null)
+		{
+			return new ESearchSearchGroupRequestBuilder(searchParams, pager);
 		}
 
 		public static ESearchSearchUserRequestBuilder SearchUser(ESearchUserParams searchParams, Pager pager = null)

@@ -31,10 +31,8 @@ namespace Kaltura.Enums
 	{
 		public static readonly QuizUserEntryOrderBy CREATED_AT_ASC = new QuizUserEntryOrderBy("+createdAt");
 		public static readonly QuizUserEntryOrderBy UPDATED_AT_ASC = new QuizUserEntryOrderBy("+updatedAt");
-		public static readonly QuizUserEntryOrderBy VERSION_ASC = new QuizUserEntryOrderBy("+version");
 		public static readonly QuizUserEntryOrderBy CREATED_AT_DESC = new QuizUserEntryOrderBy("-createdAt");
 		public static readonly QuizUserEntryOrderBy UPDATED_AT_DESC = new QuizUserEntryOrderBy("-updatedAt");
-		public static readonly QuizUserEntryOrderBy VERSION_DESC = new QuizUserEntryOrderBy("-version");
 
 		private QuizUserEntryOrderBy(string name) : base(name) { }
 	}

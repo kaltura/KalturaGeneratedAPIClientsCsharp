@@ -35,111 +35,37 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class User : ObjectBase
+	public class User : BaseUser
 	{
 		#region Constants
-		public const string ID = "id";
-		public const string PARTNER_ID = "partnerId";
 		public const string TYPE = "type";
-		public const string SCREEN_NAME = "screenName";
-		public const string FULL_NAME = "fullName";
-		public const string EMAIL = "email";
 		public const string DATE_OF_BIRTH = "dateOfBirth";
-		public const string COUNTRY = "country";
-		public const string STATE = "state";
-		public const string CITY = "city";
-		public const string ZIP = "zip";
-		public const string THUMBNAIL_URL = "thumbnailUrl";
-		public const string DESCRIPTION = "description";
-		public const string TAGS = "tags";
-		public const string ADMIN_TAGS = "adminTags";
 		public const string GENDER = "gender";
-		public const string STATUS = "status";
-		public const string CREATED_AT = "createdAt";
-		public const string UPDATED_AT = "updatedAt";
-		public const string PARTNER_DATA = "partnerData";
-		public const string INDEXED_PARTNER_DATA_INT = "indexedPartnerDataInt";
-		public const string INDEXED_PARTNER_DATA_STRING = "indexedPartnerDataString";
-		public const string STORAGE_SIZE = "storageSize";
-		public const string PASSWORD = "password";
-		public const string FIRST_NAME = "firstName";
-		public const string LAST_NAME = "lastName";
 		public const string IS_ADMIN = "isAdmin";
-		public const string LANGUAGE = "language";
-		public const string LAST_LOGIN_TIME = "lastLoginTime";
-		public const string STATUS_UPDATED_AT = "statusUpdatedAt";
-		public const string DELETED_AT = "deletedAt";
-		public const string LOGIN_ENABLED = "loginEnabled";
 		public const string ROLE_IDS = "roleIds";
 		public const string ROLE_NAMES = "roleNames";
 		public const string IS_ACCOUNT_OWNER = "isAccountOwner";
-		public const string ALLOWED_PARTNER_IDS = "allowedPartnerIds";
-		public const string ALLOWED_PARTNER_PACKAGES = "allowedPartnerPackages";
-		public const string USER_MODE = "userMode";
+		public const string PASSWORD = "password";
+		public const string FIRST_NAME = "firstName";
+		public const string LAST_NAME = "lastName";
+		public const string LOGIN_ENABLED = "loginEnabled";
 		#endregion
 
 		#region Private Fields
-		private string _Id = null;
-		private int _PartnerId = Int32.MinValue;
 		private UserType _Type = (UserType)Int32.MinValue;
-		private string _ScreenName = null;
-		private string _FullName = null;
-		private string _Email = null;
 		private int _DateOfBirth = Int32.MinValue;
-		private string _Country = null;
-		private string _State = null;
-		private string _City = null;
-		private string _Zip = null;
-		private string _ThumbnailUrl = null;
-		private string _Description = null;
-		private string _Tags = null;
-		private string _AdminTags = null;
 		private Gender _Gender = (Gender)Int32.MinValue;
-		private UserStatus _Status = (UserStatus)Int32.MinValue;
-		private int _CreatedAt = Int32.MinValue;
-		private int _UpdatedAt = Int32.MinValue;
-		private string _PartnerData = null;
-		private int _IndexedPartnerDataInt = Int32.MinValue;
-		private string _IndexedPartnerDataString = null;
-		private int _StorageSize = Int32.MinValue;
-		private string _Password = null;
-		private string _FirstName = null;
-		private string _LastName = null;
 		private bool? _IsAdmin = null;
-		private LanguageCode _Language = null;
-		private int _LastLoginTime = Int32.MinValue;
-		private int _StatusUpdatedAt = Int32.MinValue;
-		private int _DeletedAt = Int32.MinValue;
-		private bool? _LoginEnabled = null;
 		private string _RoleIds = null;
 		private string _RoleNames = null;
 		private bool? _IsAccountOwner = null;
-		private string _AllowedPartnerIds = null;
-		private string _AllowedPartnerPackages = null;
-		private UserMode _UserMode = (UserMode)Int32.MinValue;
+		private string _Password = null;
+		private string _FirstName = null;
+		private string _LastName = null;
+		private bool? _LoginEnabled = null;
 		#endregion
 
 		#region Properties
-		[JsonProperty]
-		public string Id
-		{
-			get { return _Id; }
-			set 
-			{ 
-				_Id = value;
-				OnPropertyChanged("Id");
-			}
-		}
-		[JsonProperty]
-		public int PartnerId
-		{
-			get { return _PartnerId; }
-			private set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
-		}
 		[JsonProperty]
 		public UserType Type
 		{
@@ -148,36 +74,6 @@ namespace Kaltura.Types
 			{ 
 				_Type = value;
 				OnPropertyChanged("Type");
-			}
-		}
-		[JsonProperty]
-		public string ScreenName
-		{
-			get { return _ScreenName; }
-			set 
-			{ 
-				_ScreenName = value;
-				OnPropertyChanged("ScreenName");
-			}
-		}
-		[JsonProperty]
-		public string FullName
-		{
-			get { return _FullName; }
-			set 
-			{ 
-				_FullName = value;
-				OnPropertyChanged("FullName");
-			}
-		}
-		[JsonProperty]
-		public string Email
-		{
-			get { return _Email; }
-			set 
-			{ 
-				_Email = value;
-				OnPropertyChanged("Email");
 			}
 		}
 		[JsonProperty]
@@ -191,86 +87,6 @@ namespace Kaltura.Types
 			}
 		}
 		[JsonProperty]
-		public string Country
-		{
-			get { return _Country; }
-			set 
-			{ 
-				_Country = value;
-				OnPropertyChanged("Country");
-			}
-		}
-		[JsonProperty]
-		public string State
-		{
-			get { return _State; }
-			set 
-			{ 
-				_State = value;
-				OnPropertyChanged("State");
-			}
-		}
-		[JsonProperty]
-		public string City
-		{
-			get { return _City; }
-			set 
-			{ 
-				_City = value;
-				OnPropertyChanged("City");
-			}
-		}
-		[JsonProperty]
-		public string Zip
-		{
-			get { return _Zip; }
-			set 
-			{ 
-				_Zip = value;
-				OnPropertyChanged("Zip");
-			}
-		}
-		[JsonProperty]
-		public string ThumbnailUrl
-		{
-			get { return _ThumbnailUrl; }
-			set 
-			{ 
-				_ThumbnailUrl = value;
-				OnPropertyChanged("ThumbnailUrl");
-			}
-		}
-		[JsonProperty]
-		public string Description
-		{
-			get { return _Description; }
-			set 
-			{ 
-				_Description = value;
-				OnPropertyChanged("Description");
-			}
-		}
-		[JsonProperty]
-		public string Tags
-		{
-			get { return _Tags; }
-			set 
-			{ 
-				_Tags = value;
-				OnPropertyChanged("Tags");
-			}
-		}
-		[JsonProperty]
-		public string AdminTags
-		{
-			get { return _AdminTags; }
-			set 
-			{ 
-				_AdminTags = value;
-				OnPropertyChanged("AdminTags");
-			}
-		}
-		[JsonProperty]
 		public Gender Gender
 		{
 			get { return _Gender; }
@@ -281,105 +97,6 @@ namespace Kaltura.Types
 			}
 		}
 		[JsonProperty]
-		public UserStatus Status
-		{
-			get { return _Status; }
-			set 
-			{ 
-				_Status = value;
-				OnPropertyChanged("Status");
-			}
-		}
-		[JsonProperty]
-		public int CreatedAt
-		{
-			get { return _CreatedAt; }
-			private set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
-		}
-		[JsonProperty]
-		public int UpdatedAt
-		{
-			get { return _UpdatedAt; }
-			private set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
-		}
-		[JsonProperty]
-		public string PartnerData
-		{
-			get { return _PartnerData; }
-			set 
-			{ 
-				_PartnerData = value;
-				OnPropertyChanged("PartnerData");
-			}
-		}
-		[JsonProperty]
-		public int IndexedPartnerDataInt
-		{
-			get { return _IndexedPartnerDataInt; }
-			set 
-			{ 
-				_IndexedPartnerDataInt = value;
-				OnPropertyChanged("IndexedPartnerDataInt");
-			}
-		}
-		[JsonProperty]
-		public string IndexedPartnerDataString
-		{
-			get { return _IndexedPartnerDataString; }
-			set 
-			{ 
-				_IndexedPartnerDataString = value;
-				OnPropertyChanged("IndexedPartnerDataString");
-			}
-		}
-		[JsonProperty]
-		public int StorageSize
-		{
-			get { return _StorageSize; }
-			private set 
-			{ 
-				_StorageSize = value;
-				OnPropertyChanged("StorageSize");
-			}
-		}
-		[JsonProperty]
-		public string Password
-		{
-			set 
-			{ 
-				_Password = value;
-				OnPropertyChanged("Password");
-			}
-		}
-		[JsonProperty]
-		public string FirstName
-		{
-			get { return _FirstName; }
-			set 
-			{ 
-				_FirstName = value;
-				OnPropertyChanged("FirstName");
-			}
-		}
-		[JsonProperty]
-		public string LastName
-		{
-			get { return _LastName; }
-			set 
-			{ 
-				_LastName = value;
-				OnPropertyChanged("LastName");
-			}
-		}
-		[JsonProperty]
 		public bool? IsAdmin
 		{
 			get { return _IsAdmin; }
@@ -387,56 +104,6 @@ namespace Kaltura.Types
 			{ 
 				_IsAdmin = value;
 				OnPropertyChanged("IsAdmin");
-			}
-		}
-		[JsonProperty]
-		public LanguageCode Language
-		{
-			get { return _Language; }
-			set 
-			{ 
-				_Language = value;
-				OnPropertyChanged("Language");
-			}
-		}
-		[JsonProperty]
-		public int LastLoginTime
-		{
-			get { return _LastLoginTime; }
-			private set 
-			{ 
-				_LastLoginTime = value;
-				OnPropertyChanged("LastLoginTime");
-			}
-		}
-		[JsonProperty]
-		public int StatusUpdatedAt
-		{
-			get { return _StatusUpdatedAt; }
-			private set 
-			{ 
-				_StatusUpdatedAt = value;
-				OnPropertyChanged("StatusUpdatedAt");
-			}
-		}
-		[JsonProperty]
-		public int DeletedAt
-		{
-			get { return _DeletedAt; }
-			private set 
-			{ 
-				_DeletedAt = value;
-				OnPropertyChanged("DeletedAt");
-			}
-		}
-		[JsonProperty]
-		public bool? LoginEnabled
-		{
-			get { return _LoginEnabled; }
-			set 
-			{ 
-				_LoginEnabled = value;
-				OnPropertyChanged("LoginEnabled");
 			}
 		}
 		[JsonProperty]
@@ -470,33 +137,42 @@ namespace Kaltura.Types
 			}
 		}
 		[JsonProperty]
-		public string AllowedPartnerIds
+		public string Password
 		{
-			get { return _AllowedPartnerIds; }
 			set 
 			{ 
-				_AllowedPartnerIds = value;
-				OnPropertyChanged("AllowedPartnerIds");
+				_Password = value;
+				OnPropertyChanged("Password");
 			}
 		}
 		[JsonProperty]
-		public string AllowedPartnerPackages
+		public string FirstName
 		{
-			get { return _AllowedPartnerPackages; }
+			get { return _FirstName; }
 			set 
 			{ 
-				_AllowedPartnerPackages = value;
-				OnPropertyChanged("AllowedPartnerPackages");
+				_FirstName = value;
+				OnPropertyChanged("FirstName");
 			}
 		}
 		[JsonProperty]
-		public UserMode UserMode
+		public string LastName
 		{
-			get { return _UserMode; }
+			get { return _LastName; }
 			set 
 			{ 
-				_UserMode = value;
-				OnPropertyChanged("UserMode");
+				_LastName = value;
+				OnPropertyChanged("LastName");
+			}
+		}
+		[JsonProperty]
+		public bool? LoginEnabled
+		{
+			get { return _LoginEnabled; }
+			set 
+			{ 
+				_LoginEnabled = value;
+				OnPropertyChanged("LoginEnabled");
 			}
 		}
 		#endregion
@@ -508,133 +184,21 @@ namespace Kaltura.Types
 
 		public User(JToken node) : base(node)
 		{
-			if(node["id"] != null)
-			{
-				this._Id = node["id"].Value<string>();
-			}
-			if(node["partnerId"] != null)
-			{
-				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
-			}
 			if(node["type"] != null)
 			{
 				this._Type = (UserType)ParseEnum(typeof(UserType), node["type"].Value<string>());
-			}
-			if(node["screenName"] != null)
-			{
-				this._ScreenName = node["screenName"].Value<string>();
-			}
-			if(node["fullName"] != null)
-			{
-				this._FullName = node["fullName"].Value<string>();
-			}
-			if(node["email"] != null)
-			{
-				this._Email = node["email"].Value<string>();
 			}
 			if(node["dateOfBirth"] != null)
 			{
 				this._DateOfBirth = ParseInt(node["dateOfBirth"].Value<string>());
 			}
-			if(node["country"] != null)
-			{
-				this._Country = node["country"].Value<string>();
-			}
-			if(node["state"] != null)
-			{
-				this._State = node["state"].Value<string>();
-			}
-			if(node["city"] != null)
-			{
-				this._City = node["city"].Value<string>();
-			}
-			if(node["zip"] != null)
-			{
-				this._Zip = node["zip"].Value<string>();
-			}
-			if(node["thumbnailUrl"] != null)
-			{
-				this._ThumbnailUrl = node["thumbnailUrl"].Value<string>();
-			}
-			if(node["description"] != null)
-			{
-				this._Description = node["description"].Value<string>();
-			}
-			if(node["tags"] != null)
-			{
-				this._Tags = node["tags"].Value<string>();
-			}
-			if(node["adminTags"] != null)
-			{
-				this._AdminTags = node["adminTags"].Value<string>();
-			}
 			if(node["gender"] != null)
 			{
 				this._Gender = (Gender)ParseEnum(typeof(Gender), node["gender"].Value<string>());
 			}
-			if(node["status"] != null)
-			{
-				this._Status = (UserStatus)ParseEnum(typeof(UserStatus), node["status"].Value<string>());
-			}
-			if(node["createdAt"] != null)
-			{
-				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
-			}
-			if(node["updatedAt"] != null)
-			{
-				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
-			}
-			if(node["partnerData"] != null)
-			{
-				this._PartnerData = node["partnerData"].Value<string>();
-			}
-			if(node["indexedPartnerDataInt"] != null)
-			{
-				this._IndexedPartnerDataInt = ParseInt(node["indexedPartnerDataInt"].Value<string>());
-			}
-			if(node["indexedPartnerDataString"] != null)
-			{
-				this._IndexedPartnerDataString = node["indexedPartnerDataString"].Value<string>();
-			}
-			if(node["storageSize"] != null)
-			{
-				this._StorageSize = ParseInt(node["storageSize"].Value<string>());
-			}
-			if(node["password"] != null)
-			{
-				this._Password = node["password"].Value<string>();
-			}
-			if(node["firstName"] != null)
-			{
-				this._FirstName = node["firstName"].Value<string>();
-			}
-			if(node["lastName"] != null)
-			{
-				this._LastName = node["lastName"].Value<string>();
-			}
 			if(node["isAdmin"] != null)
 			{
 				this._IsAdmin = ParseBool(node["isAdmin"].Value<string>());
-			}
-			if(node["language"] != null)
-			{
-				this._Language = (LanguageCode)StringEnum.Parse(typeof(LanguageCode), node["language"].Value<string>());
-			}
-			if(node["lastLoginTime"] != null)
-			{
-				this._LastLoginTime = ParseInt(node["lastLoginTime"].Value<string>());
-			}
-			if(node["statusUpdatedAt"] != null)
-			{
-				this._StatusUpdatedAt = ParseInt(node["statusUpdatedAt"].Value<string>());
-			}
-			if(node["deletedAt"] != null)
-			{
-				this._DeletedAt = ParseInt(node["deletedAt"].Value<string>());
-			}
-			if(node["loginEnabled"] != null)
-			{
-				this._LoginEnabled = ParseBool(node["loginEnabled"].Value<string>());
 			}
 			if(node["roleIds"] != null)
 			{
@@ -648,17 +212,21 @@ namespace Kaltura.Types
 			{
 				this._IsAccountOwner = ParseBool(node["isAccountOwner"].Value<string>());
 			}
-			if(node["allowedPartnerIds"] != null)
+			if(node["password"] != null)
 			{
-				this._AllowedPartnerIds = node["allowedPartnerIds"].Value<string>();
+				this._Password = node["password"].Value<string>();
 			}
-			if(node["allowedPartnerPackages"] != null)
+			if(node["firstName"] != null)
 			{
-				this._AllowedPartnerPackages = node["allowedPartnerPackages"].Value<string>();
+				this._FirstName = node["firstName"].Value<string>();
 			}
-			if(node["userMode"] != null)
+			if(node["lastName"] != null)
 			{
-				this._UserMode = (UserMode)ParseEnum(typeof(UserMode), node["userMode"].Value<string>());
+				this._LastName = node["lastName"].Value<string>();
+			}
+			if(node["loginEnabled"] != null)
+			{
+				this._LoginEnabled = ParseBool(node["loginEnabled"].Value<string>());
 			}
 		}
 		#endregion
@@ -669,126 +237,45 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaUser");
-			kparams.AddIfNotNull("id", this._Id);
-			kparams.AddIfNotNull("partnerId", this._PartnerId);
 			kparams.AddIfNotNull("type", this._Type);
-			kparams.AddIfNotNull("screenName", this._ScreenName);
-			kparams.AddIfNotNull("fullName", this._FullName);
-			kparams.AddIfNotNull("email", this._Email);
 			kparams.AddIfNotNull("dateOfBirth", this._DateOfBirth);
-			kparams.AddIfNotNull("country", this._Country);
-			kparams.AddIfNotNull("state", this._State);
-			kparams.AddIfNotNull("city", this._City);
-			kparams.AddIfNotNull("zip", this._Zip);
-			kparams.AddIfNotNull("thumbnailUrl", this._ThumbnailUrl);
-			kparams.AddIfNotNull("description", this._Description);
-			kparams.AddIfNotNull("tags", this._Tags);
-			kparams.AddIfNotNull("adminTags", this._AdminTags);
 			kparams.AddIfNotNull("gender", this._Gender);
-			kparams.AddIfNotNull("status", this._Status);
-			kparams.AddIfNotNull("createdAt", this._CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
-			kparams.AddIfNotNull("partnerData", this._PartnerData);
-			kparams.AddIfNotNull("indexedPartnerDataInt", this._IndexedPartnerDataInt);
-			kparams.AddIfNotNull("indexedPartnerDataString", this._IndexedPartnerDataString);
-			kparams.AddIfNotNull("storageSize", this._StorageSize);
-			kparams.AddIfNotNull("password", this._Password);
-			kparams.AddIfNotNull("firstName", this._FirstName);
-			kparams.AddIfNotNull("lastName", this._LastName);
 			kparams.AddIfNotNull("isAdmin", this._IsAdmin);
-			kparams.AddIfNotNull("language", this._Language);
-			kparams.AddIfNotNull("lastLoginTime", this._LastLoginTime);
-			kparams.AddIfNotNull("statusUpdatedAt", this._StatusUpdatedAt);
-			kparams.AddIfNotNull("deletedAt", this._DeletedAt);
-			kparams.AddIfNotNull("loginEnabled", this._LoginEnabled);
 			kparams.AddIfNotNull("roleIds", this._RoleIds);
 			kparams.AddIfNotNull("roleNames", this._RoleNames);
 			kparams.AddIfNotNull("isAccountOwner", this._IsAccountOwner);
-			kparams.AddIfNotNull("allowedPartnerIds", this._AllowedPartnerIds);
-			kparams.AddIfNotNull("allowedPartnerPackages", this._AllowedPartnerPackages);
-			kparams.AddIfNotNull("userMode", this._UserMode);
+			kparams.AddIfNotNull("password", this._Password);
+			kparams.AddIfNotNull("firstName", this._FirstName);
+			kparams.AddIfNotNull("lastName", this._LastName);
+			kparams.AddIfNotNull("loginEnabled", this._LoginEnabled);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case ID:
-					return "Id";
-				case PARTNER_ID:
-					return "PartnerId";
 				case TYPE:
 					return "Type";
-				case SCREEN_NAME:
-					return "ScreenName";
-				case FULL_NAME:
-					return "FullName";
-				case EMAIL:
-					return "Email";
 				case DATE_OF_BIRTH:
 					return "DateOfBirth";
-				case COUNTRY:
-					return "Country";
-				case STATE:
-					return "State";
-				case CITY:
-					return "City";
-				case ZIP:
-					return "Zip";
-				case THUMBNAIL_URL:
-					return "ThumbnailUrl";
-				case DESCRIPTION:
-					return "Description";
-				case TAGS:
-					return "Tags";
-				case ADMIN_TAGS:
-					return "AdminTags";
 				case GENDER:
 					return "Gender";
-				case STATUS:
-					return "Status";
-				case CREATED_AT:
-					return "CreatedAt";
-				case UPDATED_AT:
-					return "UpdatedAt";
-				case PARTNER_DATA:
-					return "PartnerData";
-				case INDEXED_PARTNER_DATA_INT:
-					return "IndexedPartnerDataInt";
-				case INDEXED_PARTNER_DATA_STRING:
-					return "IndexedPartnerDataString";
-				case STORAGE_SIZE:
-					return "StorageSize";
-				case PASSWORD:
-					return "Password";
-				case FIRST_NAME:
-					return "FirstName";
-				case LAST_NAME:
-					return "LastName";
 				case IS_ADMIN:
 					return "IsAdmin";
-				case LANGUAGE:
-					return "Language";
-				case LAST_LOGIN_TIME:
-					return "LastLoginTime";
-				case STATUS_UPDATED_AT:
-					return "StatusUpdatedAt";
-				case DELETED_AT:
-					return "DeletedAt";
-				case LOGIN_ENABLED:
-					return "LoginEnabled";
 				case ROLE_IDS:
 					return "RoleIds";
 				case ROLE_NAMES:
 					return "RoleNames";
 				case IS_ACCOUNT_OWNER:
 					return "IsAccountOwner";
-				case ALLOWED_PARTNER_IDS:
-					return "AllowedPartnerIds";
-				case ALLOWED_PARTNER_PACKAGES:
-					return "AllowedPartnerPackages";
-				case USER_MODE:
-					return "UserMode";
+				case PASSWORD:
+					return "Password";
+				case FIRST_NAME:
+					return "FirstName";
+				case LAST_NAME:
+					return "LastName";
+				case LOGIN_ENABLED:
+					return "LoginEnabled";
 				default:
 					return base.getPropertyName(apiName);
 			}

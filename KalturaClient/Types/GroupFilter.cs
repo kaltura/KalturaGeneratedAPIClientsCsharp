@@ -35,56 +35,24 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class Group : User
+	public class GroupFilter : UserFilter
 	{
 		#region Constants
-		public new const string TYPE = "type";
-		public const string MEMBERS_COUNT = "membersCount";
 		#endregion
 
 		#region Private Fields
-		private UserType _Type = (UserType)Int32.MinValue;
-		private int _MembersCount = Int32.MinValue;
 		#endregion
 
 		#region Properties
-		[JsonProperty]
-		public new UserType Type
-		{
-			get { return _Type; }
-			set 
-			{ 
-				_Type = value;
-				OnPropertyChanged("Type");
-			}
-		}
-		[JsonProperty]
-		public int MembersCount
-		{
-			get { return _MembersCount; }
-			private set 
-			{ 
-				_MembersCount = value;
-				OnPropertyChanged("MembersCount");
-			}
-		}
 		#endregion
 
 		#region CTor
-		public Group()
+		public GroupFilter()
 		{
 		}
 
-		public Group(JToken node) : base(node)
+		public GroupFilter(JToken node) : base(node)
 		{
-			if(node["type"] != null)
-			{
-				this._Type = (UserType)ParseEnum(typeof(UserType), node["type"].Value<string>());
-			}
-			if(node["membersCount"] != null)
-			{
-				this._MembersCount = ParseInt(node["membersCount"].Value<string>());
-			}
 		}
 		#endregion
 
@@ -93,19 +61,13 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaGroup");
-			kparams.AddIfNotNull("type", this._Type);
-			kparams.AddIfNotNull("membersCount", this._MembersCount);
+				kparams.AddReplace("objectType", "KalturaGroupFilter");
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case TYPE:
-					return "Type";
-				case MEMBERS_COUNT:
-					return "MembersCount";
 				default:
 					return base.getPropertyName(apiName);
 			}

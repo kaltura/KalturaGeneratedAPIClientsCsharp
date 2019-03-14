@@ -166,6 +166,8 @@ namespace Kaltura
 					return new ListResponse<GenericDistributionProviderAction>(jToken);
 				case "KalturaGenericDistributionProviderListResponse":
 					return new ListResponse<GenericDistributionProvider>(jToken);
+				case "KalturaGroupListResponse":
+					return new ListResponse<Group_>(jToken);
 				case "KalturaGroupUserListResponse":
 					return new ListResponse<GroupUser>(jToken);
 				case "KalturaLikeListResponse":

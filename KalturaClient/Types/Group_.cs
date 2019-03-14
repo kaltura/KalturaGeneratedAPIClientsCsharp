@@ -35,39 +35,39 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class ESearchGroupResult : ESearchResult
+	public class Group_ : BaseUser
 	{
 		#region Constants
-		public const string OBJECT = "object";
+		public const string MEMBERS_COUNT = "membersCount";
 		#endregion
 
 		#region Private Fields
-		private Group_ _Object;
+		private int _MembersCount = Int32.MinValue;
 		#endregion
 
 		#region Properties
 		[JsonProperty]
-		public Group_ Object
+		public int MembersCount
 		{
-			get { return _Object; }
-			set 
+			get { return _MembersCount; }
+			private set 
 			{ 
-				_Object = value;
-				OnPropertyChanged("Object");
+				_MembersCount = value;
+				OnPropertyChanged("MembersCount");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public ESearchGroupResult()
+		public Group_()
 		{
 		}
 
-		public ESearchGroupResult(JToken node) : base(node)
+		public Group_(JToken node) : base(node)
 		{
-			if(node["object"] != null)
+			if(node["membersCount"] != null)
 			{
-				this._Object = ObjectFactory.Create<Group_>(node["object"]);
+				this._MembersCount = ParseInt(node["membersCount"].Value<string>());
 			}
 		}
 		#endregion
@@ -77,16 +77,16 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaESearchGroupResult");
-			kparams.AddIfNotNull("object", this._Object);
+				kparams.AddReplace("objectType", "KalturaGroup");
+			kparams.AddIfNotNull("membersCount", this._MembersCount);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case OBJECT:
-					return "Object";
+				case MEMBERS_COUNT:
+					return "MembersCount";
 				default:
 					return base.getPropertyName(apiName);
 			}

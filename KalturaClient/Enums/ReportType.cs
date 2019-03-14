@@ -74,6 +74,7 @@ namespace Kaltura.Enums
 		public static readonly ReportType PERCENTILES = new ReportType("43");
 		public static readonly ReportType CONTENT_REPORT_REASONS = new ReportType("44");
 		public static readonly ReportType PLAYER_RELATED_INTERACTIONS = new ReportType("45");
+		public static readonly ReportType PLAYBACK_RATE = new ReportType("46");
 		public static readonly ReportType PARTNER_USAGE = new ReportType("201");
 
 		private ReportType(string name) : base(name) { }

@@ -35,40 +35,24 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class ESearchGroupItem : ESearchAbstractGroupItem
+	public class ESearchGroupBaseItem : ESearchBaseItem
 	{
 		#region Constants
-		public const string FIELD_NAME = "fieldName";
 		#endregion
 
 		#region Private Fields
-		private ESearchGroupFieldName _FieldName = null;
 		#endregion
 
 		#region Properties
-		[JsonProperty]
-		public ESearchGroupFieldName FieldName
-		{
-			get { return _FieldName; }
-			set 
-			{ 
-				_FieldName = value;
-				OnPropertyChanged("FieldName");
-			}
-		}
 		#endregion
 
 		#region CTor
-		public ESearchGroupItem()
+		public ESearchGroupBaseItem()
 		{
 		}
 
-		public ESearchGroupItem(JToken node) : base(node)
+		public ESearchGroupBaseItem(JToken node) : base(node)
 		{
-			if(node["fieldName"] != null)
-			{
-				this._FieldName = (ESearchGroupFieldName)StringEnum.Parse(typeof(ESearchGroupFieldName), node["fieldName"].Value<string>());
-			}
 		}
 		#endregion
 
@@ -77,16 +61,13 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaESearchGroupItem");
-			kparams.AddIfNotNull("fieldName", this._FieldName);
+				kparams.AddReplace("objectType", "KalturaESearchGroupBaseItem");
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case FIELD_NAME:
-					return "FieldName";
 				default:
 					return base.getPropertyName(apiName);
 			}

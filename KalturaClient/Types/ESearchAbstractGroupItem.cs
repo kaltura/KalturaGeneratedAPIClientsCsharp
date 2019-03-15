@@ -35,39 +35,87 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class ESearchGroupItem : ESearchAbstractGroupItem
+	public class ESearchAbstractGroupItem : ESearchGroupBaseItem
 	{
 		#region Constants
-		public const string FIELD_NAME = "fieldName";
+		public const string SEARCH_TERM = "searchTerm";
+		public const string ITEM_TYPE = "itemType";
+		public const string RANGE = "range";
+		public const string ADD_HIGHLIGHT = "addHighlight";
 		#endregion
 
 		#region Private Fields
-		private ESearchGroupFieldName _FieldName = null;
+		private string _SearchTerm = null;
+		private ESearchItemType _ItemType = (ESearchItemType)Int32.MinValue;
+		private ESearchRange _Range;
+		private bool? _AddHighlight = null;
 		#endregion
 
 		#region Properties
 		[JsonProperty]
-		public ESearchGroupFieldName FieldName
+		public string SearchTerm
 		{
-			get { return _FieldName; }
+			get { return _SearchTerm; }
 			set 
 			{ 
-				_FieldName = value;
-				OnPropertyChanged("FieldName");
+				_SearchTerm = value;
+				OnPropertyChanged("SearchTerm");
+			}
+		}
+		[JsonProperty]
+		public ESearchItemType ItemType
+		{
+			get { return _ItemType; }
+			set 
+			{ 
+				_ItemType = value;
+				OnPropertyChanged("ItemType");
+			}
+		}
+		[JsonProperty]
+		public ESearchRange Range
+		{
+			get { return _Range; }
+			set 
+			{ 
+				_Range = value;
+				OnPropertyChanged("Range");
+			}
+		}
+		[JsonProperty]
+		public bool? AddHighlight
+		{
+			get { return _AddHighlight; }
+			set 
+			{ 
+				_AddHighlight = value;
+				OnPropertyChanged("AddHighlight");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public ESearchGroupItem()
+		public ESearchAbstractGroupItem()
 		{
 		}
 
-		public ESearchGroupItem(JToken node) : base(node)
+		public ESearchAbstractGroupItem(JToken node) : base(node)
 		{
-			if(node["fieldName"] != null)
+			if(node["searchTerm"] != null)
 			{
-				this._FieldName = (ESearchGroupFieldName)StringEnum.Parse(typeof(ESearchGroupFieldName), node["fieldName"].Value<string>());
+				this._SearchTerm = node["searchTerm"].Value<string>();
+			}
+			if(node["itemType"] != null)
+			{
+				this._ItemType = (ESearchItemType)ParseEnum(typeof(ESearchItemType), node["itemType"].Value<string>());
+			}
+			if(node["range"] != null)
+			{
+				this._Range = ObjectFactory.Create<ESearchRange>(node["range"]);
+			}
+			if(node["addHighlight"] != null)
+			{
+				this._AddHighlight = ParseBool(node["addHighlight"].Value<string>());
 			}
 		}
 		#endregion
@@ -77,16 +125,25 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaESearchGroupItem");
-			kparams.AddIfNotNull("fieldName", this._FieldName);
+				kparams.AddReplace("objectType", "KalturaESearchAbstractGroupItem");
+			kparams.AddIfNotNull("searchTerm", this._SearchTerm);
+			kparams.AddIfNotNull("itemType", this._ItemType);
+			kparams.AddIfNotNull("range", this._Range);
+			kparams.AddIfNotNull("addHighlight", this._AddHighlight);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case FIELD_NAME:
-					return "FieldName";
+				case SEARCH_TERM:
+					return "SearchTerm";
+				case ITEM_TYPE:
+					return "ItemType";
+				case RANGE:
+					return "Range";
+				case ADD_HIGHLIGHT:
+					return "AddHighlight";
 				default:
 					return base.getPropertyName(apiName);
 			}

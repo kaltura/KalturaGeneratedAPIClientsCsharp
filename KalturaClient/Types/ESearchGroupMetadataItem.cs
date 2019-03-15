@@ -35,15 +35,51 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class ESearchGroupMetadataItem : ESearchUserMetadataItem
+	public class ESearchGroupMetadataItem : ESearchAbstractGroupItem
 	{
 		#region Constants
+		public const string XPATH = "xpath";
+		public const string METADATA_PROFILE_ID = "metadataProfileId";
+		public const string METADATA_FIELD_ID = "metadataFieldId";
 		#endregion
 
 		#region Private Fields
+		private string _Xpath = null;
+		private int _MetadataProfileId = Int32.MinValue;
+		private int _MetadataFieldId = Int32.MinValue;
 		#endregion
 
 		#region Properties
+		[JsonProperty]
+		public string Xpath
+		{
+			get { return _Xpath; }
+			set 
+			{ 
+				_Xpath = value;
+				OnPropertyChanged("Xpath");
+			}
+		}
+		[JsonProperty]
+		public int MetadataProfileId
+		{
+			get { return _MetadataProfileId; }
+			set 
+			{ 
+				_MetadataProfileId = value;
+				OnPropertyChanged("MetadataProfileId");
+			}
+		}
+		[JsonProperty]
+		public int MetadataFieldId
+		{
+			get { return _MetadataFieldId; }
+			set 
+			{ 
+				_MetadataFieldId = value;
+				OnPropertyChanged("MetadataFieldId");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -53,6 +89,18 @@ namespace Kaltura.Types
 
 		public ESearchGroupMetadataItem(JToken node) : base(node)
 		{
+			if(node["xpath"] != null)
+			{
+				this._Xpath = node["xpath"].Value<string>();
+			}
+			if(node["metadataProfileId"] != null)
+			{
+				this._MetadataProfileId = ParseInt(node["metadataProfileId"].Value<string>());
+			}
+			if(node["metadataFieldId"] != null)
+			{
+				this._MetadataFieldId = ParseInt(node["metadataFieldId"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -62,12 +110,21 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaESearchGroupMetadataItem");
+			kparams.AddIfNotNull("xpath", this._Xpath);
+			kparams.AddIfNotNull("metadataProfileId", this._MetadataProfileId);
+			kparams.AddIfNotNull("metadataFieldId", this._MetadataFieldId);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
+				case XPATH:
+					return "Xpath";
+				case METADATA_PROFILE_ID:
+					return "MetadataProfileId";
+				case METADATA_FIELD_ID:
+					return "MetadataFieldId";
 				default:
 					return base.getPropertyName(apiName);
 			}

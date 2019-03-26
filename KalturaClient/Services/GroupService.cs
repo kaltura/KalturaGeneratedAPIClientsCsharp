@@ -79,6 +79,58 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class GroupCloneRequestBuilder : RequestBuilder<Group_>
+	{
+		#region Constants
+		public const string ORIGINAL_GROUP_ID = "originalGroupId";
+		public const string NEW_GROUP_NAME = "newGroupName";
+		#endregion
+
+		public string OriginalGroupId
+		{
+			set;
+			get;
+		}
+		public string NewGroupName
+		{
+			set;
+			get;
+		}
+
+		public GroupCloneRequestBuilder()
+			: base("group_group", "clone")
+		{
+		}
+
+		public GroupCloneRequestBuilder(string originalGroupId, string newGroupName)
+			: this()
+		{
+			this.OriginalGroupId = originalGroupId;
+			this.NewGroupName = newGroupName;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("originalGroupId"))
+				kparams.AddIfNotNull("originalGroupId", OriginalGroupId);
+			if (!isMapped("newGroupName"))
+				kparams.AddIfNotNull("newGroupName", NewGroupName);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			return ObjectFactory.Create<Group_>(result);
+		}
+	}
+
 	public class GroupDeleteRequestBuilder : RequestBuilder<Group_>
 	{
 		#region Constants
@@ -279,6 +331,11 @@ namespace Kaltura.Services
 		public static GroupAddRequestBuilder Add(Group_ group)
 		{
 			return new GroupAddRequestBuilder(group);
+		}
+
+		public static GroupCloneRequestBuilder Clone(string originalGroupId, string newGroupName)
+		{
+			return new GroupCloneRequestBuilder(originalGroupId, newGroupName);
 		}
 
 		public static GroupDeleteRequestBuilder Delete(string groupId)

@@ -27,19 +27,9 @@
 // ===================================================================================================
 namespace Kaltura.Enums
 {
-	public enum VendorServiceTurnAroundTime
+	public enum VendorTaskProcessingRegion
 	{
-		BEST_EFFORT = -1,
-		IMMEDIATE = 0,
-		THIRTY_MINUTES = 1800,
-		TWO_HOURS = 7200,
-		THREE_HOURS = 10800,
-		SIX_HOURS = 21600,
-		EIGHT_HOURS = 28800,
-		TWELVE_HOURS = 43200,
-		TWENTY_FOUR_HOURS = 86400,
-		FORTY_EIGHT_HOURS = 172800,
-		FOUR_DAYS = 345600,
-		TEN_DAYS = 864000,
+		US = 1,
+		EU = 2,
 	}
 }

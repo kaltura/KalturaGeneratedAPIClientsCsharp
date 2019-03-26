@@ -901,6 +901,49 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class MediaExportToCsvRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		public const string DATA = "data";
+		#endregion
+
+		public MediaEsearchExportToCsvJobData Data
+		{
+			set;
+			get;
+		}
+
+		public MediaExportToCsvRequestBuilder()
+			: base("media", "exportToCsv")
+		{
+		}
+
+		public MediaExportToCsvRequestBuilder(MediaEsearchExportToCsvJobData data)
+			: this()
+		{
+			this.Data = data;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("data"))
+				kparams.AddIfNotNull("data", Data);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			return result.Value<string>();
+		}
+	}
+
 	public class MediaFlagRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
@@ -1744,6 +1787,11 @@ namespace Kaltura.Services
 		public static MediaDeleteRequestBuilder Delete(string entryId)
 		{
 			return new MediaDeleteRequestBuilder(entryId);
+		}
+
+		public static MediaExportToCsvRequestBuilder ExportToCsv(MediaEsearchExportToCsvJobData data)
+		{
+			return new MediaExportToCsvRequestBuilder(data);
 		}
 
 		public static MediaFlagRequestBuilder Flag(ModerationFlag moderationFlag)

@@ -25,21 +25,70 @@
 //
 // @ignore
 // ===================================================================================================
-namespace Kaltura.Enums
+using System;
+using System.Xml;
+using System.Collections.Generic;
+using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
+using Newtonsoft.Json.Linq;
+
+namespace Kaltura.Services
 {
-	public enum VendorServiceTurnAroundTime
+	public class ExportcsvServeCsvRequestBuilder : RequestBuilder<string>
 	{
-		BEST_EFFORT = -1,
-		IMMEDIATE = 0,
-		THIRTY_MINUTES = 1800,
-		TWO_HOURS = 7200,
-		THREE_HOURS = 10800,
-		SIX_HOURS = 21600,
-		EIGHT_HOURS = 28800,
-		TWELVE_HOURS = 43200,
-		TWENTY_FOUR_HOURS = 86400,
-		FORTY_EIGHT_HOURS = 172800,
-		FOUR_DAYS = 345600,
-		TEN_DAYS = 864000,
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id
+		{
+			set;
+			get;
+		}
+
+		public ExportcsvServeCsvRequestBuilder()
+			: base("exportcsv", "serveCsv")
+		{
+		}
+
+		public ExportcsvServeCsvRequestBuilder(string id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			return result.Value<string>();
+		}
+	}
+
+
+	public class ExportcsvService
+	{
+		private ExportcsvService()
+		{
+		}
+
+		public static ExportcsvServeCsvRequestBuilder ServeCsv(string id)
+		{
+			return new ExportcsvServeCsvRequestBuilder(id);
+		}
 	}
 }

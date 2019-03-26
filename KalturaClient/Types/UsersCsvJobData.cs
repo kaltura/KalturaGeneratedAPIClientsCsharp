@@ -35,24 +35,18 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class UsersCsvJobData : JobData
+	public class UsersCsvJobData : ExportCsvJobData
 	{
 		#region Constants
 		public const string FILTER = "filter";
 		public const string METADATA_PROFILE_ID = "metadataProfileId";
 		public const string ADDITIONAL_FIELDS = "additionalFields";
-		public const string USER_NAME = "userName";
-		public const string USER_MAIL = "userMail";
-		public const string OUTPUT_PATH = "outputPath";
 		#endregion
 
 		#region Private Fields
 		private UserFilter _Filter;
 		private int _MetadataProfileId = Int32.MinValue;
 		private IList<CsvAdditionalFieldInfo> _AdditionalFields;
-		private string _UserName = null;
-		private string _UserMail = null;
-		private string _OutputPath = null;
 		#endregion
 
 		#region Properties
@@ -86,36 +80,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdditionalFields");
 			}
 		}
-		[JsonProperty]
-		public string UserName
-		{
-			get { return _UserName; }
-			set 
-			{ 
-				_UserName = value;
-				OnPropertyChanged("UserName");
-			}
-		}
-		[JsonProperty]
-		public string UserMail
-		{
-			get { return _UserMail; }
-			set 
-			{ 
-				_UserMail = value;
-				OnPropertyChanged("UserMail");
-			}
-		}
-		[JsonProperty]
-		public string OutputPath
-		{
-			get { return _OutputPath; }
-			set 
-			{ 
-				_OutputPath = value;
-				OnPropertyChanged("OutputPath");
-			}
-		}
 		#endregion
 
 		#region CTor
@@ -141,18 +105,6 @@ namespace Kaltura.Types
 					this._AdditionalFields.Add(ObjectFactory.Create<CsvAdditionalFieldInfo>(arrayNode));
 				}
 			}
-			if(node["userName"] != null)
-			{
-				this._UserName = node["userName"].Value<string>();
-			}
-			if(node["userMail"] != null)
-			{
-				this._UserMail = node["userMail"].Value<string>();
-			}
-			if(node["outputPath"] != null)
-			{
-				this._OutputPath = node["outputPath"].Value<string>();
-			}
 		}
 		#endregion
 
@@ -165,9 +117,6 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("filter", this._Filter);
 			kparams.AddIfNotNull("metadataProfileId", this._MetadataProfileId);
 			kparams.AddIfNotNull("additionalFields", this._AdditionalFields);
-			kparams.AddIfNotNull("userName", this._UserName);
-			kparams.AddIfNotNull("userMail", this._UserMail);
-			kparams.AddIfNotNull("outputPath", this._OutputPath);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -180,12 +129,6 @@ namespace Kaltura.Types
 					return "MetadataProfileId";
 				case ADDITIONAL_FIELDS:
 					return "AdditionalFields";
-				case USER_NAME:
-					return "UserName";
-				case USER_MAIL:
-					return "UserMail";
-				case OUTPUT_PATH:
-					return "OutputPath";
 				default:
 					return base.getPropertyName(apiName);
 			}

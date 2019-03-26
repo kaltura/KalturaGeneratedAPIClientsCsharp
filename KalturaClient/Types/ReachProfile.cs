@@ -61,6 +61,7 @@ namespace Kaltura.Types
 		public const string USED_CREDIT = "usedCredit";
 		public const string DICTIONARIES = "dictionaries";
 		public const string FLAVOR_PARAMS_IDS = "flavorParamsIds";
+		public const string VENDOR_TASK_PROCESSING_REGION = "vendorTaskProcessingRegion";
 		#endregion
 
 		#region Private Fields
@@ -87,6 +88,7 @@ namespace Kaltura.Types
 		private float _UsedCredit = Single.MinValue;
 		private IList<Dictionary> _Dictionaries;
 		private string _FlavorParamsIds = null;
+		private VendorTaskProcessingRegion _VendorTaskProcessingRegion = (VendorTaskProcessingRegion)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -320,6 +322,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsIds");
 			}
 		}
+		[JsonProperty]
+		public VendorTaskProcessingRegion VendorTaskProcessingRegion
+		{
+			get { return _VendorTaskProcessingRegion; }
+			set 
+			{ 
+				_VendorTaskProcessingRegion = value;
+				OnPropertyChanged("VendorTaskProcessingRegion");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -429,6 +441,10 @@ namespace Kaltura.Types
 			{
 				this._FlavorParamsIds = node["flavorParamsIds"].Value<string>();
 			}
+			if(node["vendorTaskProcessingRegion"] != null)
+			{
+				this._VendorTaskProcessingRegion = (VendorTaskProcessingRegion)ParseEnum(typeof(VendorTaskProcessingRegion), node["vendorTaskProcessingRegion"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -461,6 +477,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("usedCredit", this._UsedCredit);
 			kparams.AddIfNotNull("dictionaries", this._Dictionaries);
 			kparams.AddIfNotNull("flavorParamsIds", this._FlavorParamsIds);
+			kparams.AddIfNotNull("vendorTaskProcessingRegion", this._VendorTaskProcessingRegion);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -513,6 +530,8 @@ namespace Kaltura.Types
 					return "Dictionaries";
 				case FLAVOR_PARAMS_IDS:
 					return "FlavorParamsIds";
+				case VENDOR_TASK_PROCESSING_REGION:
+					return "VendorTaskProcessingRegion";
 				default:
 					return base.getPropertyName(apiName);
 			}

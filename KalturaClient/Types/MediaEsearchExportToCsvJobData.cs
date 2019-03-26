@@ -35,39 +35,39 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class EntryVendorTaskCsvJobData : ExportCsvJobData
+	public class MediaEsearchExportToCsvJobData : ExportCsvJobData
 	{
 		#region Constants
-		public const string FILTER = "filter";
+		public const string SEARCH_PARAMS = "searchParams";
 		#endregion
 
 		#region Private Fields
-		private EntryVendorTaskFilter _Filter;
+		private ESearchEntryParams _SearchParams;
 		#endregion
 
 		#region Properties
 		[JsonProperty]
-		public EntryVendorTaskFilter Filter
+		public ESearchEntryParams SearchParams
 		{
-			get { return _Filter; }
+			get { return _SearchParams; }
 			set 
 			{ 
-				_Filter = value;
-				OnPropertyChanged("Filter");
+				_SearchParams = value;
+				OnPropertyChanged("SearchParams");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public EntryVendorTaskCsvJobData()
+		public MediaEsearchExportToCsvJobData()
 		{
 		}
 
-		public EntryVendorTaskCsvJobData(JToken node) : base(node)
+		public MediaEsearchExportToCsvJobData(JToken node) : base(node)
 		{
-			if(node["filter"] != null)
+			if(node["searchParams"] != null)
 			{
-				this._Filter = ObjectFactory.Create<EntryVendorTaskFilter>(node["filter"]);
+				this._SearchParams = ObjectFactory.Create<ESearchEntryParams>(node["searchParams"]);
 			}
 		}
 		#endregion
@@ -77,16 +77,16 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaEntryVendorTaskCsvJobData");
-			kparams.AddIfNotNull("filter", this._Filter);
+				kparams.AddReplace("objectType", "KalturaMediaEsearchExportToCsvJobData");
+			kparams.AddIfNotNull("searchParams", this._SearchParams);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case FILTER:
-					return "Filter";
+				case SEARCH_PARAMS:
+					return "SearchParams";
 				default:
 					return base.getPropertyName(apiName);
 			}

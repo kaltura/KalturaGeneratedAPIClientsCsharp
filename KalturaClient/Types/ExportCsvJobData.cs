@@ -35,39 +35,71 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class EntryVendorTaskCsvJobData : ExportCsvJobData
+	public class ExportCsvJobData : JobData
 	{
 		#region Constants
-		public const string FILTER = "filter";
+		public const string USER_NAME = "userName";
+		public const string USER_MAIL = "userMail";
+		public const string OUTPUT_PATH = "outputPath";
 		#endregion
 
 		#region Private Fields
-		private EntryVendorTaskFilter _Filter;
+		private string _UserName = null;
+		private string _UserMail = null;
+		private string _OutputPath = null;
 		#endregion
 
 		#region Properties
 		[JsonProperty]
-		public EntryVendorTaskFilter Filter
+		public string UserName
 		{
-			get { return _Filter; }
+			get { return _UserName; }
 			set 
 			{ 
-				_Filter = value;
-				OnPropertyChanged("Filter");
+				_UserName = value;
+				OnPropertyChanged("UserName");
+			}
+		}
+		[JsonProperty]
+		public string UserMail
+		{
+			get { return _UserMail; }
+			set 
+			{ 
+				_UserMail = value;
+				OnPropertyChanged("UserMail");
+			}
+		}
+		[JsonProperty]
+		public string OutputPath
+		{
+			get { return _OutputPath; }
+			set 
+			{ 
+				_OutputPath = value;
+				OnPropertyChanged("OutputPath");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public EntryVendorTaskCsvJobData()
+		public ExportCsvJobData()
 		{
 		}
 
-		public EntryVendorTaskCsvJobData(JToken node) : base(node)
+		public ExportCsvJobData(JToken node) : base(node)
 		{
-			if(node["filter"] != null)
+			if(node["userName"] != null)
 			{
-				this._Filter = ObjectFactory.Create<EntryVendorTaskFilter>(node["filter"]);
+				this._UserName = node["userName"].Value<string>();
+			}
+			if(node["userMail"] != null)
+			{
+				this._UserMail = node["userMail"].Value<string>();
+			}
+			if(node["outputPath"] != null)
+			{
+				this._OutputPath = node["outputPath"].Value<string>();
 			}
 		}
 		#endregion
@@ -77,16 +109,22 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaEntryVendorTaskCsvJobData");
-			kparams.AddIfNotNull("filter", this._Filter);
+				kparams.AddReplace("objectType", "KalturaExportCsvJobData");
+			kparams.AddIfNotNull("userName", this._UserName);
+			kparams.AddIfNotNull("userMail", this._UserMail);
+			kparams.AddIfNotNull("outputPath", this._OutputPath);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case FILTER:
-					return "Filter";
+				case USER_NAME:
+					return "UserName";
+				case USER_MAIL:
+					return "UserMail";
+				case OUTPUT_PATH:
+					return "OutputPath";
 				default:
 					return base.getPropertyName(apiName);
 			}

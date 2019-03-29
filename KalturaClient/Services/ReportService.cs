@@ -88,6 +88,49 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class ReportExportToCsvRequestBuilder : RequestBuilder<ReportExportResponse>
+	{
+		#region Constants
+		public const string PARAMS = "params";
+		#endregion
+
+		public ReportExportParams Params_
+		{
+			set;
+			get;
+		}
+
+		public ReportExportToCsvRequestBuilder()
+			: base("report", "exportToCsv")
+		{
+		}
+
+		public ReportExportToCsvRequestBuilder(ReportExportParams params_)
+			: this()
+		{
+			this.Params_ = params_;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("params_"))
+				kparams.AddIfNotNull("params_", Params_);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			return ObjectFactory.Create<ReportExportResponse>(result);
+		}
+	}
+
 	public class ReportGetBaseTotalRequestBuilder : RequestBuilder<IList<ReportBaseTotal>>
 	{
 		#region Constants
@@ -584,6 +627,11 @@ namespace Kaltura.Services
 		public static ReportExecuteRequestBuilder Execute(int id, IList<KeyValue> params_ = null)
 		{
 			return new ReportExecuteRequestBuilder(id, params_);
+		}
+
+		public static ReportExportToCsvRequestBuilder ExportToCsv(ReportExportParams params_)
+		{
+			return new ReportExportToCsvRequestBuilder(params_);
 		}
 
 		public static ReportGetBaseTotalRequestBuilder GetBaseTotal(ReportType reportType, ReportInputFilter reportInputFilter, string objectIds = null, ReportResponseOptions responseOptions = null)

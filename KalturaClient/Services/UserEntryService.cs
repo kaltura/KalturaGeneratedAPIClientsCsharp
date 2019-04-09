@@ -79,7 +79,7 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class UserEntryBulkDeleteRequestBuilder : RequestBuilder<int>
+	public class UserEntryBulkDeleteRequestBuilder : RequestBuilder<BulkUpload>
 	{
 		#region Constants
 		public const string FILTER = "filter";
@@ -118,7 +118,7 @@ namespace Kaltura.Services
 
 		public override object Deserialize(JToken result)
 		{
-			return result.Value<int>();
+			return ObjectFactory.Create<BulkUpload>(result);
 		}
 	}
 

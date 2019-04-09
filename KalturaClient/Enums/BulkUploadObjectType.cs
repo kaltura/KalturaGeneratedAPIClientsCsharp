@@ -37,6 +37,7 @@ namespace Kaltura.Enums
 		public static readonly BulkUploadObjectType USER = new BulkUploadObjectType("3");
 		public static readonly BulkUploadObjectType CATEGORY_USER = new BulkUploadObjectType("4");
 		public static readonly BulkUploadObjectType CATEGORY_ENTRY = new BulkUploadObjectType("5");
+		public static readonly BulkUploadObjectType USER_ENTRY = new BulkUploadObjectType("6");
 
 		private BulkUploadObjectType(string name) : base(name) { }
 	}

@@ -25,13 +25,73 @@
 //
 // @ignore
 // ===================================================================================================
-namespace Kaltura.Enums
+using System;
+using System.Xml;
+using System.Collections.Generic;
+using Kaltura.Enums;
+using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+namespace Kaltura.Types
 {
-	public enum VendorServiceFeature
+	public class BulkServiceFilterDataBase : BulkServiceData
 	{
-		CAPTIONS = 1,
-		TRANSLATION = 2,
-		ALIGNMENT = 3,
-		AUDIO_DESCRIPTION = 4,
+		#region Constants
+		public const string FILTER = "filter";
+		#endregion
+
+		#region Private Fields
+		private Filter _Filter;
+		#endregion
+
+		#region Properties
+		[JsonProperty]
+		public Filter Filter
+		{
+			get { return _Filter; }
+			set 
+			{ 
+				_Filter = value;
+				OnPropertyChanged("Filter");
+			}
+		}
+		#endregion
+
+		#region CTor
+		public BulkServiceFilterDataBase()
+		{
+		}
+
+		public BulkServiceFilterDataBase(JToken node) : base(node)
+		{
+			if(node["filter"] != null)
+			{
+				this._Filter = ObjectFactory.Create<Filter>(node["filter"]);
+			}
+		}
+		#endregion
+
+		#region Methods
+		public override Params ToParams(bool includeObjectType = true)
+		{
+			Params kparams = base.ToParams(includeObjectType);
+			if (includeObjectType)
+				kparams.AddReplace("objectType", "KalturaBulkServiceFilterDataBase");
+			kparams.AddIfNotNull("filter", this._Filter);
+			return kparams;
+		}
+		protected override string getPropertyName(string apiName)
+		{
+			switch(apiName)
+			{
+				case FILTER:
+					return "Filter";
+				default:
+					return base.getPropertyName(apiName);
+			}
+		}
+		#endregion
 	}
 }
+

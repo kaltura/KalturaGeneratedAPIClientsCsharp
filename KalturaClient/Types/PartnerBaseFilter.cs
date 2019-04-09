@@ -53,6 +53,8 @@ namespace Kaltura.Types
 		public const string PARTNER_PACKAGE_IN = "partnerPackageIn";
 		public const string PARTNER_GROUP_TYPE_EQUAL = "partnerGroupTypeEqual";
 		public const string PARTNER_NAME_DESCRIPTION_WEBSITE_ADMIN_NAME_ADMIN_EMAIL_LIKE = "partnerNameDescriptionWebsiteAdminNameAdminEmailLike";
+		public const string CREATED_AT_GREATER_THAN_OR_EQUAL = "createdAtGreaterThanOrEqual";
+		public const string ID_GREATER_THAN = "idGreaterThan";
 		#endregion
 
 		#region Private Fields
@@ -71,6 +73,8 @@ namespace Kaltura.Types
 		private string _PartnerPackageIn = null;
 		private PartnerGroupType _PartnerGroupTypeEqual = (PartnerGroupType)Int32.MinValue;
 		private string _PartnerNameDescriptionWebsiteAdminNameAdminEmailLike = null;
+		private int _CreatedAtGreaterThanOrEqual = Int32.MinValue;
+		private int _IdGreaterThan = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -224,6 +228,26 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerNameDescriptionWebsiteAdminNameAdminEmailLike");
 			}
 		}
+		[JsonProperty]
+		public int CreatedAtGreaterThanOrEqual
+		{
+			get { return _CreatedAtGreaterThanOrEqual; }
+			set 
+			{ 
+				_CreatedAtGreaterThanOrEqual = value;
+				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
+			}
+		}
+		[JsonProperty]
+		public int IdGreaterThan
+		{
+			get { return _IdGreaterThan; }
+			set 
+			{ 
+				_IdGreaterThan = value;
+				OnPropertyChanged("IdGreaterThan");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -293,6 +317,14 @@ namespace Kaltura.Types
 			{
 				this._PartnerNameDescriptionWebsiteAdminNameAdminEmailLike = node["partnerNameDescriptionWebsiteAdminNameAdminEmailLike"].Value<string>();
 			}
+			if(node["createdAtGreaterThanOrEqual"] != null)
+			{
+				this._CreatedAtGreaterThanOrEqual = ParseInt(node["createdAtGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["idGreaterThan"] != null)
+			{
+				this._IdGreaterThan = ParseInt(node["idGreaterThan"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -317,6 +349,8 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("partnerPackageIn", this._PartnerPackageIn);
 			kparams.AddIfNotNull("partnerGroupTypeEqual", this._PartnerGroupTypeEqual);
 			kparams.AddIfNotNull("partnerNameDescriptionWebsiteAdminNameAdminEmailLike", this._PartnerNameDescriptionWebsiteAdminNameAdminEmailLike);
+			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this._CreatedAtGreaterThanOrEqual);
+			kparams.AddIfNotNull("idGreaterThan", this._IdGreaterThan);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -353,6 +387,10 @@ namespace Kaltura.Types
 					return "PartnerGroupTypeEqual";
 				case PARTNER_NAME_DESCRIPTION_WEBSITE_ADMIN_NAME_ADMIN_EMAIL_LIKE:
 					return "PartnerNameDescriptionWebsiteAdminNameAdminEmailLike";
+				case CREATED_AT_GREATER_THAN_OR_EQUAL:
+					return "CreatedAtGreaterThanOrEqual";
+				case ID_GREATER_THAN:
+					return "IdGreaterThan";
 				default:
 					return base.getPropertyName(apiName);
 			}

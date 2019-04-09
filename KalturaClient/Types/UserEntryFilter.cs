@@ -42,6 +42,7 @@ namespace Kaltura.Types
 		public const string IS_ANONYMOUS = "isAnonymous";
 		public const string PRIVACY_CONTEXT_EQUAL = "privacyContextEqual";
 		public const string PRIVACY_CONTEXT_IN = "privacyContextIn";
+		public const string PARTNER_ID = "partnerId";
 		public new const string ORDER_BY = "orderBy";
 		#endregion
 
@@ -50,6 +51,7 @@ namespace Kaltura.Types
 		private NullableBoolean _IsAnonymous = (NullableBoolean)Int32.MinValue;
 		private string _PrivacyContextEqual = null;
 		private string _PrivacyContextIn = null;
+		private int _PartnerId = Int32.MinValue;
 		private UserEntryOrderBy _OrderBy = null;
 		#endregion
 
@@ -95,6 +97,16 @@ namespace Kaltura.Types
 			}
 		}
 		[JsonProperty]
+		public int PartnerId
+		{
+			get { return _PartnerId; }
+			set 
+			{ 
+				_PartnerId = value;
+				OnPropertyChanged("PartnerId");
+			}
+		}
+		[JsonProperty]
 		public new UserEntryOrderBy OrderBy
 		{
 			get { return _OrderBy; }
@@ -129,6 +141,10 @@ namespace Kaltura.Types
 			{
 				this._PrivacyContextIn = node["privacyContextIn"].Value<string>();
 			}
+			if(node["partnerId"] != null)
+			{
+				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
+			}
 			if(node["orderBy"] != null)
 			{
 				this._OrderBy = (UserEntryOrderBy)StringEnum.Parse(typeof(UserEntryOrderBy), node["orderBy"].Value<string>());
@@ -146,6 +162,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("isAnonymous", this._IsAnonymous);
 			kparams.AddIfNotNull("privacyContextEqual", this._PrivacyContextEqual);
 			kparams.AddIfNotNull("privacyContextIn", this._PrivacyContextIn);
+			kparams.AddIfNotNull("partnerId", this._PartnerId);
 			kparams.AddIfNotNull("orderBy", this._OrderBy);
 			return kparams;
 		}
@@ -161,6 +178,8 @@ namespace Kaltura.Types
 					return "PrivacyContextEqual";
 				case PRIVACY_CONTEXT_IN:
 					return "PrivacyContextIn";
+				case PARTNER_ID:
+					return "PartnerId";
 				case ORDER_BY:
 					return "OrderBy";
 				default:

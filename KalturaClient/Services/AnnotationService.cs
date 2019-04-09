@@ -121,11 +121,12 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class AnnotationCloneRequestBuilder : RequestBuilder<CuePoint>
+	public class AnnotationCloneRequestBuilder : RequestBuilder<Annotation>
 	{
 		#region Constants
 		public const string ID = "id";
 		public const string ENTRY_ID = "entryId";
+		public const string PARENT_ID = "parentId";
 		#endregion
 
 		public string Id
@@ -138,17 +139,23 @@ namespace Kaltura.Services
 			set;
 			get;
 		}
+		public string ParentId
+		{
+			set;
+			get;
+		}
 
 		public AnnotationCloneRequestBuilder()
 			: base("annotation_annotation", "clone")
 		{
 		}
 
-		public AnnotationCloneRequestBuilder(string id, string entryId)
+		public AnnotationCloneRequestBuilder(string id, string entryId, string parentId)
 			: this()
 		{
 			this.Id = id;
 			this.EntryId = entryId;
+			this.ParentId = parentId;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -158,6 +165,8 @@ namespace Kaltura.Services
 				kparams.AddIfNotNull("id", Id);
 			if (!isMapped("entryId"))
 				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("parentId"))
+				kparams.AddIfNotNull("parentId", ParentId);
 			return kparams;
 		}
 
@@ -169,7 +178,7 @@ namespace Kaltura.Services
 
 		public override object Deserialize(JToken result)
 		{
-			return ObjectFactory.Create<CuePoint>(result);
+			return ObjectFactory.Create<Annotation>(result);
 		}
 	}
 
@@ -536,9 +545,9 @@ namespace Kaltura.Services
 			return new AnnotationAddFromBulkRequestBuilder(fileData);
 		}
 
-		public static AnnotationCloneRequestBuilder Clone(string id, string entryId)
+		public static AnnotationCloneRequestBuilder Clone(string id, string entryId, string parentId = null)
 		{
-			return new AnnotationCloneRequestBuilder(id, entryId);
+			return new AnnotationCloneRequestBuilder(id, entryId, parentId);
 		}
 
 		public static AnnotationCountRequestBuilder Count(CuePointFilter filter = null)

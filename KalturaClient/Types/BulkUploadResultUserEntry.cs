@@ -35,39 +35,39 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class BulkServiceFilterData : BulkServiceFilterDataBase
+	public class BulkUploadResultUserEntry : BulkUploadResult
 	{
 		#region Constants
-		public const string TEMPLATE_OBJECT = "templateObject";
+		public const string USER_ENTRY_ID = "userEntryId";
 		#endregion
 
 		#region Private Fields
-		private ObjectBase _TemplateObject;
+		private int _UserEntryId = Int32.MinValue;
 		#endregion
 
 		#region Properties
 		[JsonProperty]
-		public ObjectBase TemplateObject
+		public int UserEntryId
 		{
-			get { return _TemplateObject; }
+			get { return _UserEntryId; }
 			set 
 			{ 
-				_TemplateObject = value;
-				OnPropertyChanged("TemplateObject");
+				_UserEntryId = value;
+				OnPropertyChanged("UserEntryId");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public BulkServiceFilterData()
+		public BulkUploadResultUserEntry()
 		{
 		}
 
-		public BulkServiceFilterData(JToken node) : base(node)
+		public BulkUploadResultUserEntry(JToken node) : base(node)
 		{
-			if(node["templateObject"] != null)
+			if(node["userEntryId"] != null)
 			{
-				this._TemplateObject = ObjectFactory.Create<ObjectBase>(node["templateObject"]);
+				this._UserEntryId = ParseInt(node["userEntryId"].Value<string>());
 			}
 		}
 		#endregion
@@ -77,16 +77,16 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaBulkServiceFilterData");
-			kparams.AddIfNotNull("templateObject", this._TemplateObject);
+				kparams.AddReplace("objectType", "KalturaBulkUploadResultUserEntry");
+			kparams.AddIfNotNull("userEntryId", this._UserEntryId);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case TEMPLATE_OBJECT:
-					return "TemplateObject";
+				case USER_ENTRY_ID:
+					return "UserEntryId";
 				default:
 					return base.getPropertyName(apiName);
 			}

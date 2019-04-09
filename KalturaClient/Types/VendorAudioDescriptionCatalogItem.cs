@@ -35,39 +35,55 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class BulkServiceFilterData : BulkServiceFilterDataBase
+	public class VendorAudioDescriptionCatalogItem : VendorCatalogItem
 	{
 		#region Constants
-		public const string TEMPLATE_OBJECT = "templateObject";
+		public const string SOURCE_LANGUAGE = "sourceLanguage";
+		public const string FLAVOR_PARAMS_ID = "flavorParamsId";
 		#endregion
 
 		#region Private Fields
-		private ObjectBase _TemplateObject;
+		private CatalogItemLanguage _SourceLanguage = null;
+		private int _FlavorParamsId = Int32.MinValue;
 		#endregion
 
 		#region Properties
 		[JsonProperty]
-		public ObjectBase TemplateObject
+		public CatalogItemLanguage SourceLanguage
 		{
-			get { return _TemplateObject; }
+			get { return _SourceLanguage; }
 			set 
 			{ 
-				_TemplateObject = value;
-				OnPropertyChanged("TemplateObject");
+				_SourceLanguage = value;
+				OnPropertyChanged("SourceLanguage");
+			}
+		}
+		[JsonProperty]
+		public int FlavorParamsId
+		{
+			get { return _FlavorParamsId; }
+			set 
+			{ 
+				_FlavorParamsId = value;
+				OnPropertyChanged("FlavorParamsId");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public BulkServiceFilterData()
+		public VendorAudioDescriptionCatalogItem()
 		{
 		}
 
-		public BulkServiceFilterData(JToken node) : base(node)
+		public VendorAudioDescriptionCatalogItem(JToken node) : base(node)
 		{
-			if(node["templateObject"] != null)
+			if(node["sourceLanguage"] != null)
 			{
-				this._TemplateObject = ObjectFactory.Create<ObjectBase>(node["templateObject"]);
+				this._SourceLanguage = (CatalogItemLanguage)StringEnum.Parse(typeof(CatalogItemLanguage), node["sourceLanguage"].Value<string>());
+			}
+			if(node["flavorParamsId"] != null)
+			{
+				this._FlavorParamsId = ParseInt(node["flavorParamsId"].Value<string>());
 			}
 		}
 		#endregion
@@ -77,16 +93,19 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaBulkServiceFilterData");
-			kparams.AddIfNotNull("templateObject", this._TemplateObject);
+				kparams.AddReplace("objectType", "KalturaVendorAudioDescriptionCatalogItem");
+			kparams.AddIfNotNull("sourceLanguage", this._SourceLanguage);
+			kparams.AddIfNotNull("flavorParamsId", this._FlavorParamsId);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case TEMPLATE_OBJECT:
-					return "TemplateObject";
+				case SOURCE_LANGUAGE:
+					return "SourceLanguage";
+				case FLAVOR_PARAMS_ID:
+					return "FlavorParamsId";
 				default:
 					return base.getPropertyName(apiName);
 			}

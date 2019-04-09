@@ -32,21 +32,26 @@ namespace Kaltura.Enums
 		public static readonly CatalogItemLanguage AR = new CatalogItemLanguage("Arabic");
 		public static readonly CatalogItemLanguage YUE = new CatalogItemLanguage("Cantonese");
 		public static readonly CatalogItemLanguage ZH = new CatalogItemLanguage("Chinese");
+		public static readonly CatalogItemLanguage DA = new CatalogItemLanguage("Danish");
 		public static readonly CatalogItemLanguage NL = new CatalogItemLanguage("Dutch");
 		public static readonly CatalogItemLanguage EN = new CatalogItemLanguage("English");
 		public static readonly CatalogItemLanguage EN_US = new CatalogItemLanguage("English (American)");
 		public static readonly CatalogItemLanguage EN_GB = new CatalogItemLanguage("English (British)");
+		public static readonly CatalogItemLanguage FI = new CatalogItemLanguage("Finnish");
 		public static readonly CatalogItemLanguage FR = new CatalogItemLanguage("French");
 		public static readonly CatalogItemLanguage DE = new CatalogItemLanguage("German");
 		public static readonly CatalogItemLanguage HE = new CatalogItemLanguage("Hebrew");
 		public static readonly CatalogItemLanguage HI = new CatalogItemLanguage("Hindi");
+		public static readonly CatalogItemLanguage IS = new CatalogItemLanguage("Icelandic");
 		public static readonly CatalogItemLanguage IT = new CatalogItemLanguage("Italian");
 		public static readonly CatalogItemLanguage JA = new CatalogItemLanguage("Japanese");
 		public static readonly CatalogItemLanguage KO = new CatalogItemLanguage("Korean");
 		public static readonly CatalogItemLanguage CMN = new CatalogItemLanguage("Mandarin Chinese");
+		public static readonly CatalogItemLanguage NO = new CatalogItemLanguage("Norwegian");
 		public static readonly CatalogItemLanguage PT = new CatalogItemLanguage("Portuguese");
 		public static readonly CatalogItemLanguage RU = new CatalogItemLanguage("Russian");
 		public static readonly CatalogItemLanguage ES = new CatalogItemLanguage("Spanish");
+		public static readonly CatalogItemLanguage SV = new CatalogItemLanguage("Swedish");
 		public static readonly CatalogItemLanguage TH = new CatalogItemLanguage("Thai");
 		public static readonly CatalogItemLanguage TR = new CatalogItemLanguage("Turkish");
 

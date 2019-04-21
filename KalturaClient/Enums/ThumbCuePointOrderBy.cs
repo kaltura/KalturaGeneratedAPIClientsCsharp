@@ -30,11 +30,13 @@ namespace Kaltura.Enums
 	public sealed class ThumbCuePointOrderBy : StringEnum
 	{
 		public static readonly ThumbCuePointOrderBy CREATED_AT_ASC = new ThumbCuePointOrderBy("+createdAt");
+		public static readonly ThumbCuePointOrderBy INT_ID_ASC = new ThumbCuePointOrderBy("+intId");
 		public static readonly ThumbCuePointOrderBy PARTNER_SORT_VALUE_ASC = new ThumbCuePointOrderBy("+partnerSortValue");
 		public static readonly ThumbCuePointOrderBy START_TIME_ASC = new ThumbCuePointOrderBy("+startTime");
 		public static readonly ThumbCuePointOrderBy TRIGGERED_AT_ASC = new ThumbCuePointOrderBy("+triggeredAt");
 		public static readonly ThumbCuePointOrderBy UPDATED_AT_ASC = new ThumbCuePointOrderBy("+updatedAt");
 		public static readonly ThumbCuePointOrderBy CREATED_AT_DESC = new ThumbCuePointOrderBy("-createdAt");
+		public static readonly ThumbCuePointOrderBy INT_ID_DESC = new ThumbCuePointOrderBy("-intId");
 		public static readonly ThumbCuePointOrderBy PARTNER_SORT_VALUE_DESC = new ThumbCuePointOrderBy("-partnerSortValue");
 		public static readonly ThumbCuePointOrderBy START_TIME_DESC = new ThumbCuePointOrderBy("-startTime");
 		public static readonly ThumbCuePointOrderBy TRIGGERED_AT_DESC = new ThumbCuePointOrderBy("-triggeredAt");

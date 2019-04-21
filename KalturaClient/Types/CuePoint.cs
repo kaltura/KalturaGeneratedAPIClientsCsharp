@@ -39,6 +39,7 @@ namespace Kaltura.Types
 	{
 		#region Constants
 		public const string ID = "id";
+		public const string INT_ID = "intId";
 		public const string CUE_POINT_TYPE = "cuePointType";
 		public const string STATUS = "status";
 		public const string ENTRY_ID = "entryId";
@@ -60,6 +61,7 @@ namespace Kaltura.Types
 
 		#region Private Fields
 		private string _Id = null;
+		private int _IntId = Int32.MinValue;
 		private CuePointType _CuePointType = null;
 		private CuePointStatus _Status = (CuePointStatus)Int32.MinValue;
 		private string _EntryId = null;
@@ -88,6 +90,16 @@ namespace Kaltura.Types
 			{ 
 				_Id = value;
 				OnPropertyChanged("Id");
+			}
+		}
+		[JsonProperty]
+		public int IntId
+		{
+			get { return _IntId; }
+			private set 
+			{ 
+				_IntId = value;
+				OnPropertyChanged("IntId");
 			}
 		}
 		[JsonProperty]
@@ -273,6 +285,10 @@ namespace Kaltura.Types
 			{
 				this._Id = node["id"].Value<string>();
 			}
+			if(node["intId"] != null)
+			{
+				this._IntId = ParseInt(node["intId"].Value<string>());
+			}
 			if(node["cuePointType"] != null)
 			{
 				this._CuePointType = (CuePointType)StringEnum.Parse(typeof(CuePointType), node["cuePointType"].Value<string>());
@@ -351,6 +367,7 @@ namespace Kaltura.Types
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaCuePoint");
 			kparams.AddIfNotNull("id", this._Id);
+			kparams.AddIfNotNull("intId", this._IntId);
 			kparams.AddIfNotNull("cuePointType", this._CuePointType);
 			kparams.AddIfNotNull("status", this._Status);
 			kparams.AddIfNotNull("entryId", this._EntryId);
@@ -376,6 +393,8 @@ namespace Kaltura.Types
 			{
 				case ID:
 					return "Id";
+				case INT_ID:
+					return "IntId";
 				case CUE_POINT_TYPE:
 					return "CuePointType";
 				case STATUS:

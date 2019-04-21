@@ -30,11 +30,13 @@ namespace Kaltura.Enums
 	public sealed class CuePointOrderBy : StringEnum
 	{
 		public static readonly CuePointOrderBy CREATED_AT_ASC = new CuePointOrderBy("+createdAt");
+		public static readonly CuePointOrderBy INT_ID_ASC = new CuePointOrderBy("+intId");
 		public static readonly CuePointOrderBy PARTNER_SORT_VALUE_ASC = new CuePointOrderBy("+partnerSortValue");
 		public static readonly CuePointOrderBy START_TIME_ASC = new CuePointOrderBy("+startTime");
 		public static readonly CuePointOrderBy TRIGGERED_AT_ASC = new CuePointOrderBy("+triggeredAt");
 		public static readonly CuePointOrderBy UPDATED_AT_ASC = new CuePointOrderBy("+updatedAt");
 		public static readonly CuePointOrderBy CREATED_AT_DESC = new CuePointOrderBy("-createdAt");
+		public static readonly CuePointOrderBy INT_ID_DESC = new CuePointOrderBy("-intId");
 		public static readonly CuePointOrderBy PARTNER_SORT_VALUE_DESC = new CuePointOrderBy("-partnerSortValue");
 		public static readonly CuePointOrderBy START_TIME_DESC = new CuePointOrderBy("-startTime");
 		public static readonly CuePointOrderBy TRIGGERED_AT_DESC = new CuePointOrderBy("-triggeredAt");

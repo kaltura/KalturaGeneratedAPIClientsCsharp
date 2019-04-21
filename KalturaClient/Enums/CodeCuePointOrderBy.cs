@@ -32,6 +32,7 @@ namespace Kaltura.Enums
 		public static readonly CodeCuePointOrderBy CREATED_AT_ASC = new CodeCuePointOrderBy("+createdAt");
 		public static readonly CodeCuePointOrderBy DURATION_ASC = new CodeCuePointOrderBy("+duration");
 		public static readonly CodeCuePointOrderBy END_TIME_ASC = new CodeCuePointOrderBy("+endTime");
+		public static readonly CodeCuePointOrderBy INT_ID_ASC = new CodeCuePointOrderBy("+intId");
 		public static readonly CodeCuePointOrderBy PARTNER_SORT_VALUE_ASC = new CodeCuePointOrderBy("+partnerSortValue");
 		public static readonly CodeCuePointOrderBy START_TIME_ASC = new CodeCuePointOrderBy("+startTime");
 		public static readonly CodeCuePointOrderBy TRIGGERED_AT_ASC = new CodeCuePointOrderBy("+triggeredAt");
@@ -39,6 +40,7 @@ namespace Kaltura.Enums
 		public static readonly CodeCuePointOrderBy CREATED_AT_DESC = new CodeCuePointOrderBy("-createdAt");
 		public static readonly CodeCuePointOrderBy DURATION_DESC = new CodeCuePointOrderBy("-duration");
 		public static readonly CodeCuePointOrderBy END_TIME_DESC = new CodeCuePointOrderBy("-endTime");
+		public static readonly CodeCuePointOrderBy INT_ID_DESC = new CodeCuePointOrderBy("-intId");
 		public static readonly CodeCuePointOrderBy PARTNER_SORT_VALUE_DESC = new CodeCuePointOrderBy("-partnerSortValue");
 		public static readonly CodeCuePointOrderBy START_TIME_DESC = new CodeCuePointOrderBy("-startTime");
 		public static readonly CodeCuePointOrderBy TRIGGERED_AT_DESC = new CodeCuePointOrderBy("-triggeredAt");

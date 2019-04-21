@@ -32,6 +32,7 @@ namespace Kaltura.Enums
 		public static readonly AnnotationOrderBy CREATED_AT_ASC = new AnnotationOrderBy("+createdAt");
 		public static readonly AnnotationOrderBy DURATION_ASC = new AnnotationOrderBy("+duration");
 		public static readonly AnnotationOrderBy END_TIME_ASC = new AnnotationOrderBy("+endTime");
+		public static readonly AnnotationOrderBy INT_ID_ASC = new AnnotationOrderBy("+intId");
 		public static readonly AnnotationOrderBy PARTNER_SORT_VALUE_ASC = new AnnotationOrderBy("+partnerSortValue");
 		public static readonly AnnotationOrderBy START_TIME_ASC = new AnnotationOrderBy("+startTime");
 		public static readonly AnnotationOrderBy TRIGGERED_AT_ASC = new AnnotationOrderBy("+triggeredAt");
@@ -39,6 +40,7 @@ namespace Kaltura.Enums
 		public static readonly AnnotationOrderBy CREATED_AT_DESC = new AnnotationOrderBy("-createdAt");
 		public static readonly AnnotationOrderBy DURATION_DESC = new AnnotationOrderBy("-duration");
 		public static readonly AnnotationOrderBy END_TIME_DESC = new AnnotationOrderBy("-endTime");
+		public static readonly AnnotationOrderBy INT_ID_DESC = new AnnotationOrderBy("-intId");
 		public static readonly AnnotationOrderBy PARTNER_SORT_VALUE_DESC = new AnnotationOrderBy("-partnerSortValue");
 		public static readonly AnnotationOrderBy START_TIME_DESC = new AnnotationOrderBy("-startTime");
 		public static readonly AnnotationOrderBy TRIGGERED_AT_DESC = new AnnotationOrderBy("-triggeredAt");

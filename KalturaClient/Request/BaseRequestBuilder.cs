@@ -193,7 +193,7 @@ namespace Kaltura.Request
             }
         }
 
-        private static HttpContent GetHttpRequestContent(Files files, string jsonBodyStr)
+        private HttpContent GetHttpRequestContent(Files files, string jsonBodyStr)
         {
             if (files.Count == 0)
             {
@@ -210,25 +210,22 @@ namespace Kaltura.Request
                 var stringContent = new StringContent(jsonBodyStr);
                 stringContent.Headers.Add("Content-Disposition", "form-data; name=\"json\"");
                 multipartContent.Add(stringContent, "json");
-
                 foreach (var fileEntry in files)
                 {
                     var fileStream = fileEntry.Value;
                     var streamContent = new StreamContent(fileStream);
-                    streamContent.Headers.Add("Content-Type", "application/octet-stream");
+                    //streamContent.Headers.Add("Content-Type", "application/octet-stream");
                     if (fileStream is FileStream)
                     {
                         var fs = (FileStream)fileStream;
-                        streamContent.Headers.Add("Content-Disposition", "form-data; name=\"" + fileEntry.Key + "\"; filename=\"" + Path.GetFileName(fs.Name) + "\"");
+                        multipartContent.Add(streamContent, fileEntry.Key, Path.GetFileName(fs.Name));
                     }
                     else if (fileStream is MemoryStream)
                     {
-                        streamContent.Headers.Add("Content-Disposition", "form-data; name=\"" + fileEntry.Key + "\"; filename=\"Memory-Stream-Upload\"");
+                        multipartContent.Add(streamContent, fileEntry.Key, "Memory-Stream-Upload");
                     }
 
-                    multipartContent.Add(streamContent, "file", "Memory-Stream-Upload");
                 }
-
                 return multipartContent;
             }
         }

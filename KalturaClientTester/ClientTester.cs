@@ -44,7 +44,7 @@ namespace Kaltura.Tester
         private const string SERVICE_URL = "@SERVICE_URL@";
         private const string USER_ID = "testUser";
 
-        private static int code = 0;
+          private static int code = 0;
         private static HashSet<string> tests = new HashSet<string>();
         
         private static string uniqueTag;
@@ -104,6 +104,7 @@ namespace Kaltura.Tester
                 fileStream.Seek(offset, SeekOrigin.Begin);
                 fileStream.Read(chunk, 0, CHUNK_SIZE);
                 chunkFile = new MemoryStream(chunk);
+                Console.WriteLine("Starting chunked upload test");
                 UploadTokenService.Upload(tokenId, chunkFile, resume, finalChunk, offset)
                     .SetCompletion(new OnCompletedHandler<UploadToken>(OnComplete))
                     .Execute(client);
@@ -143,7 +144,7 @@ namespace Kaltura.Tester
                 FileInfo f = new FileInfo(fname);
                 myToken.FileSize = f.Length;
 
-
+                Console.WriteLine("getting upload token for DemoVideo.flv");
                 UploadTokenService.Add(myToken)
                     .SetCompletion(new OnCompletedHandler<UploadToken>(OnUploadTokenAddComplete))
                     .Execute(client);

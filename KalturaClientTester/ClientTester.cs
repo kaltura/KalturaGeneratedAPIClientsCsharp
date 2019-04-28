@@ -39,14 +39,17 @@ namespace Kaltura.Tester
 {
     class ClientTester : ILogger
     {
-        private const int PARTNER_ID = @YOUR_PARTNER_ID@; //enter your partner id
-        private const string ADMIN_SECRET = "@YOUR_ADMIN_SECRET@"; //enter your admin secret
-        private const string SERVICE_URL = "@SERVICE_URL@";
+        private const int PARTNER_ID = 1931861; //enter your partner id
+
+        private const string ADMIN_SECRET = "83c3d4449a3abbe92ca5966f5f010eb4"; //enter your admin secret
+
+        private const string SERVICE_URL = "https://www.kaltura.com";
+
         private const string USER_ID = "testUser";
 
         private static int code = 0;
         private static HashSet<string> tests = new HashSet<string>();
-        
+
         private static string uniqueTag;
 
         public void Log(string msg)
@@ -1101,7 +1104,7 @@ namespace Kaltura.Tester
 
                 // Request 1
                 SessionStartRequestBuilder sessionStartRequestBuilder = SessionService.Start(ADMIN_SECRET, "", SessionType.ADMIN, PARTNER_ID, 86400, "");
-                
+
                 // Request 2
                 sessionStartRequestBuilder.Add(MediaService.List().Map(MediaListRequestBuilder.KS, sessionStartRequestBuilder.Forward()))
                     .SetCompletion(new OnCompletedHandler<List<object>>(OnMediaListMultiRequestComplete))
@@ -1225,7 +1228,7 @@ namespace Kaltura.Tester
                 done(id);
             }
         }
-        
+
         static void Main(string[] args)
         {
             uniqueTag = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 20);
@@ -1233,7 +1236,7 @@ namespace Kaltura.Tester
             Console.WriteLine("Starting C# Kaltura API Client Library");
 
             BaseTest tester;
-            if(args.Length > 0 && args[0].Equals("--with-threads"))
+            if (args.Length > 0 && args[0].Equals("--with-threads"))
             {
                 tester = new SampleThreadedChunkUploadTest();
                 tests.Add(tester.getId());
@@ -1265,7 +1268,7 @@ namespace Kaltura.Tester
                 Thread.Sleep(100);
             }
 
-            Console.WriteLine("Done. Exit code was "+code);
+            Console.WriteLine("Done. Exit code was " + code);
 
             Environment.Exit(code);
         }

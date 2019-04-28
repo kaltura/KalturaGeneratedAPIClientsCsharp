@@ -1,21 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Web;
-using System.Xml;
-using Kaltura.Types;
-using Newtonsoft.Json.Linq;
-using String = System.String;
 
 namespace Kaltura.Request
 {
@@ -29,14 +21,8 @@ namespace Kaltura.Request
         private OnErrorHandler onError;
         private Client client = null;
         private readonly string requestId;
-        private static readonly HttpClientHandler _HttpClientHandler = new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate };
-        private static readonly HttpClient _HttpClient = new HttpClient(_HttpClientHandler);
 
-        public string Boundary
-        {
-            get;
-            set;
-        }
+        public string Boundary { get; set; }
 
         public BaseRequestBuilder(string service)
         {
@@ -160,22 +146,20 @@ namespace Kaltura.Request
         {
             try
             {
-                _HttpClientHandler.Proxy = CreateProxy();
-                _HttpClient.Timeout = files.Count == 0 ? TimeSpan.FromMilliseconds(timeout) : Timeout.InfiniteTimeSpan;
-                _HttpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 var jsonBodyStr = GetRequestJsonBodyString();
 
                 HttpResponseMessage response;
                 using (var content = GetHttpRequestContent(files, jsonBodyStr))
                 {
-                    var additionalRequestHeaders = getHeaders();
-                    foreach (var key in additionalRequestHeaders.AllKeys)
-                    {
-                        content.Headers.Add(key, additionalRequestHeaders[key]);
-                    }
+                    AddAdditionalHeaders(content);
+
                     var requestHeadersStr = content.Headers.ToString().Replace("\r\n", ", ");
                     Log(string.Format("reqeust header: [{0}]", requestHeadersStr));
-                    response = await _HttpClient.PostAsync(url, content);
+
+                    var timeoutSpan = files.Count == 0 ? TimeSpan.FromMilliseconds(timeout) : Timeout.InfiniteTimeSpan;
+                    var timeoutCTS = new CancellationTokenSource();
+                    timeoutCTS.CancelAfter(timeoutSpan);
+                    response = await this.client._HttpClient.PostAsync(url, content, timeoutCTS.Token);
                 }
 
                 var responseString = await response.Content.ReadAsStringAsync();
@@ -197,6 +181,15 @@ namespace Kaltura.Request
             {
                 this.Log(string.Format("Error while getting reponse for [{0}] excpetion:{1}", url, e));
                 throw e;
+            }
+        }
+
+        private void AddAdditionalHeaders(HttpContent content)
+        {
+            var additionalRequestHeaders = getHeaders();
+            foreach (var key in additionalRequestHeaders.AllKeys)
+            {
+                content.Headers.Add(key, additionalRequestHeaders[key]);
             }
         }
 
@@ -254,25 +247,6 @@ namespace Kaltura.Request
             requestBody = json;
 
             return requestBody;
-        }
-
-        private WebProxy CreateProxy()
-        {
-            var proxyToSet = new WebProxy();
-            if (string.IsNullOrEmpty(client.Configuration.ProxyAddress))
-                return null;
-            Console.WriteLine("Create proxy");
-            if (!(string.IsNullOrEmpty(client.Configuration.ProxyUser) || string.IsNullOrEmpty(client.Configuration.ProxyPassword)))
-            {
-                ICredentials credentials = new NetworkCredential(client.Configuration.ProxyUser, client.Configuration.ProxyPassword);
-                proxyToSet = new WebProxy(client.Configuration.ProxyAddress, false, null, credentials);
-            }
-            else
-            {
-                proxyToSet = new WebProxy(client.Configuration.ProxyAddress);
-            }
-
-            return proxyToSet;
         }
 
         private string Signature(Params kparams)

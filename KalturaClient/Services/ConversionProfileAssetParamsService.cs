@@ -43,16 +43,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public ConversionProfileAssetParamsFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public ConversionProfileAssetParamsFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public ConversionProfileAssetParamsListRequestBuilder()
 			: base("conversionprofileassetparams", "list")
@@ -96,21 +88,9 @@ namespace Kaltura.Services
 		public const string CONVERSION_PROFILE_ASSET_PARAMS = "conversionProfileAssetParams";
 		#endregion
 
-		public int ConversionProfileId
-		{
-			set;
-			get;
-		}
-		public int AssetParamsId
-		{
-			set;
-			get;
-		}
-		public ConversionProfileAssetParams ConversionProfileAssetParams
-		{
-			set;
-			get;
-		}
+		public int ConversionProfileId { get; set; }
+		public int AssetParamsId { get; set; }
+		public ConversionProfileAssetParams ConversionProfileAssetParams { get; set; }
 
 		public ConversionProfileAssetParamsUpdateRequestBuilder()
 			: base("conversionprofileassetparams", "update")

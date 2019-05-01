@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string DISTRIBUTION_PROFILE = "distributionProfile";
 		#endregion
 
-		public DistributionProfile DistributionProfile
-		{
-			set;
-			get;
-		}
+		public DistributionProfile DistributionProfile { get; set; }
 
 		public DistributionProfileAddRequestBuilder()
 			: base("contentdistribution_distributionprofile", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public DistributionProfileDeleteRequestBuilder()
 			: base("contentdistribution_distributionprofile", "delete")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public DistributionProfileGetRequestBuilder()
 			: base("contentdistribution_distributionprofile", "get")
@@ -172,16 +160,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public DistributionProfileFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public DistributionProfileFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public DistributionProfileListRequestBuilder()
 			: base("contentdistribution_distributionprofile", "list")
@@ -224,16 +204,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public PartnerFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public PartnerFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public DistributionProfileListByPartnerRequestBuilder()
 			: base("contentdistribution_distributionprofile", "listByPartner")
@@ -276,16 +248,8 @@ namespace Kaltura.Services
 		public const string DISTRIBUTION_PROFILE = "distributionProfile";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public DistributionProfile DistributionProfile
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public DistributionProfile DistributionProfile { get; set; }
 
 		public DistributionProfileUpdateRequestBuilder()
 			: base("contentdistribution_distributionprofile", "update")
@@ -328,16 +292,8 @@ namespace Kaltura.Services
 		public const string STATUS = "status";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public DistributionProfileStatus Status
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public DistributionProfileStatus Status { get; set; }
 
 		public DistributionProfileUpdateStatusRequestBuilder()
 			: base("contentdistribution_distributionprofile", "updateStatus")

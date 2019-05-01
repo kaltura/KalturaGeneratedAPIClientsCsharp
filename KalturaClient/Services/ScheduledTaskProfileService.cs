@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string SCHEDULED_TASK_PROFILE = "scheduledTaskProfile";
 		#endregion
 
-		public ScheduledTaskProfile ScheduledTaskProfile
-		{
-			set;
-			get;
-		}
+		public ScheduledTaskProfile ScheduledTaskProfile { get; set; }
 
 		public ScheduledTaskProfileAddRequestBuilder()
 			: base("scheduledtask_scheduledtaskprofile", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public ScheduledTaskProfileDeleteRequestBuilder()
 			: base("scheduledtask_scheduledtaskprofile", "delete")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public ScheduledTaskProfileGetRequestBuilder()
 			: base("scheduledtask_scheduledtaskprofile", "get")
@@ -171,11 +159,7 @@ namespace Kaltura.Services
 		public const string REQUEST_ID = "requestId";
 		#endregion
 
-		public int RequestId
-		{
-			set;
-			get;
-		}
+		public int RequestId { get; set; }
 
 		public ScheduledTaskProfileGetDryRunResultsRequestBuilder()
 			: base("scheduledtask_scheduledtaskprofile", "getDryRunResults")
@@ -215,16 +199,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public ScheduledTaskProfileFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public ScheduledTaskProfileFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public ScheduledTaskProfileListRequestBuilder()
 			: base("scheduledtask_scheduledtaskprofile", "list")
@@ -267,16 +243,8 @@ namespace Kaltura.Services
 		public const string MAX_RESULTS = "maxResults";
 		#endregion
 
-		public int ScheduledTaskProfileId
-		{
-			set;
-			get;
-		}
-		public int MaxResults
-		{
-			set;
-			get;
-		}
+		public int ScheduledTaskProfileId { get; set; }
+		public int MaxResults { get; set; }
 
 		public ScheduledTaskProfileRequestDryRunRequestBuilder()
 			: base("scheduledtask_scheduledtaskprofile", "requestDryRun")
@@ -319,16 +287,8 @@ namespace Kaltura.Services
 		public const string SCHEDULED_TASK_PROFILE = "scheduledTaskProfile";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public ScheduledTaskProfile ScheduledTaskProfile
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public ScheduledTaskProfile ScheduledTaskProfile { get; set; }
 
 		public ScheduledTaskProfileUpdateRequestBuilder()
 			: base("scheduledtask_scheduledtaskprofile", "update")

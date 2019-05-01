@@ -44,21 +44,9 @@ namespace Kaltura.Services
 		public const string CAPTION_ASSET_ITEM_PAGER = "captionAssetItemPager";
 		#endregion
 
-		public string CaptionAssetId
-		{
-			set;
-			get;
-		}
-		public CaptionAssetItemFilter CaptionAssetItemFilter
-		{
-			set;
-			get;
-		}
-		public FilterPager CaptionAssetItemPager
-		{
-			set;
-			get;
-		}
+		public string CaptionAssetId { get; set; }
+		public CaptionAssetItemFilter CaptionAssetItemFilter { get; set; }
+		public FilterPager CaptionAssetItemPager { get; set; }
 
 		public CaptionAssetItemListRequestBuilder()
 			: base("captionsearch_captionassetitem", "list")
@@ -105,21 +93,9 @@ namespace Kaltura.Services
 		public const string CAPTION_ASSET_ITEM_PAGER = "captionAssetItemPager";
 		#endregion
 
-		public BaseEntryFilter EntryFilter
-		{
-			set;
-			get;
-		}
-		public CaptionAssetItemFilter CaptionAssetItemFilter
-		{
-			set;
-			get;
-		}
-		public FilterPager CaptionAssetItemPager
-		{
-			set;
-			get;
-		}
+		public BaseEntryFilter EntryFilter { get; set; }
+		public CaptionAssetItemFilter CaptionAssetItemFilter { get; set; }
+		public FilterPager CaptionAssetItemPager { get; set; }
 
 		public CaptionAssetItemSearchRequestBuilder()
 			: base("captionsearch_captionassetitem", "search")
@@ -166,21 +142,9 @@ namespace Kaltura.Services
 		public const string CAPTION_ASSET_ITEM_PAGER = "captionAssetItemPager";
 		#endregion
 
-		public BaseEntryFilter EntryFilter
-		{
-			set;
-			get;
-		}
-		public CaptionAssetItemFilter CaptionAssetItemFilter
-		{
-			set;
-			get;
-		}
-		public FilterPager CaptionAssetItemPager
-		{
-			set;
-			get;
-		}
+		public BaseEntryFilter EntryFilter { get; set; }
+		public CaptionAssetItemFilter CaptionAssetItemFilter { get; set; }
+		public FilterPager CaptionAssetItemPager { get; set; }
 
 		public CaptionAssetItemSearchEntriesRequestBuilder()
 			: base("captionsearch_captionassetitem", "searchEntries")

@@ -44,21 +44,9 @@ namespace Kaltura.Services
 		public const string VIEWS_DATA = "viewsData";
 		#endregion
 
-		public MetadataProfile MetadataProfile
-		{
-			set;
-			get;
-		}
-		public string XsdData
-		{
-			set;
-			get;
-		}
-		public string ViewsData
-		{
-			set;
-			get;
-		}
+		public MetadataProfile MetadataProfile { get; set; }
+		public string XsdData { get; set; }
+		public string ViewsData { get; set; }
 
 		public MetadataProfileAddRequestBuilder()
 			: base("metadata_metadataprofile", "add")
@@ -105,21 +93,11 @@ namespace Kaltura.Services
 		public const string VIEWS_FILE = "viewsFile";
 		#endregion
 
-		public MetadataProfile MetadataProfile
-		{
-			set;
-			get;
-		}
-		public Stream XsdFile
-		{
-			set;
-			get;
-		}
-		public Stream ViewsFile
-		{
-			set;
-			get;
-		}
+		public MetadataProfile MetadataProfile { get; set; }
+		public Stream XsdFile { get; set; }
+		public string XsdFile_FileName { get; set; }
+		public Stream ViewsFile { get; set; }
+		public string ViewsFile_FileName { get; set; }
 
 		public MetadataProfileAddFromFileRequestBuilder()
 			: base("metadata_metadataprofile", "addFromFile")
@@ -145,8 +123,8 @@ namespace Kaltura.Services
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("xsdFile", XsdFile);
-			kfiles.Add("viewsFile", ViewsFile);
+			kfiles.Add("xsdFile", new FileData(XsdFile, XsdFile_FileName));
+			kfiles.Add("viewsFile", new FileData(ViewsFile, ViewsFile_FileName));
 			return kfiles;
 		}
 
@@ -162,11 +140,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public MetadataProfileDeleteRequestBuilder()
 			: base("metadata_metadataprofile", "delete")
@@ -205,11 +179,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public MetadataProfileGetRequestBuilder()
 			: base("metadata_metadataprofile", "get")
@@ -249,16 +219,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public MetadataProfileFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public MetadataProfileFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public MetadataProfileListRequestBuilder()
 			: base("metadata_metadataprofile", "list")
@@ -300,11 +262,7 @@ namespace Kaltura.Services
 		public const string METADATA_PROFILE_ID = "metadataProfileId";
 		#endregion
 
-		public int MetadataProfileId
-		{
-			set;
-			get;
-		}
+		public int MetadataProfileId { get; set; }
 
 		public MetadataProfileListFieldsRequestBuilder()
 			: base("metadata_metadataprofile", "listFields")
@@ -344,16 +302,8 @@ namespace Kaltura.Services
 		public const string TO_VERSION = "toVersion";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public int ToVersion
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public int ToVersion { get; set; }
 
 		public MetadataProfileRevertRequestBuilder()
 			: base("metadata_metadataprofile", "revert")
@@ -398,26 +348,10 @@ namespace Kaltura.Services
 		public const string VIEWS_DATA = "viewsData";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public MetadataProfile MetadataProfile
-		{
-			set;
-			get;
-		}
-		public string XsdData
-		{
-			set;
-			get;
-		}
-		public string ViewsData
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public MetadataProfile MetadataProfile { get; set; }
+		public string XsdData { get; set; }
+		public string ViewsData { get; set; }
 
 		public MetadataProfileUpdateRequestBuilder()
 			: base("metadata_metadataprofile", "update")
@@ -466,16 +400,9 @@ namespace Kaltura.Services
 		public const string XSD_FILE = "xsdFile";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public Stream XsdFile
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public Stream XsdFile { get; set; }
+		public string XsdFile_FileName { get; set; }
 
 		public MetadataProfileUpdateDefinitionFromFileRequestBuilder()
 			: base("metadata_metadataprofile", "updateDefinitionFromFile")
@@ -500,7 +427,7 @@ namespace Kaltura.Services
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("xsdFile", XsdFile);
+			kfiles.Add("xsdFile", new FileData(XsdFile, XsdFile_FileName));
 			return kfiles;
 		}
 
@@ -517,16 +444,9 @@ namespace Kaltura.Services
 		public const string XSLT_FILE = "xsltFile";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public Stream XsltFile
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public Stream XsltFile { get; set; }
+		public string XsltFile_FileName { get; set; }
 
 		public MetadataProfileUpdateTransformationFromFileRequestBuilder()
 			: base("metadata_metadataprofile", "updateTransformationFromFile")
@@ -551,7 +471,7 @@ namespace Kaltura.Services
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("xsltFile", XsltFile);
+			kfiles.Add("xsltFile", new FileData(XsltFile, XsltFile_FileName));
 			return kfiles;
 		}
 
@@ -568,16 +488,9 @@ namespace Kaltura.Services
 		public const string VIEWS_FILE = "viewsFile";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public Stream ViewsFile
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public Stream ViewsFile { get; set; }
+		public string ViewsFile_FileName { get; set; }
 
 		public MetadataProfileUpdateViewsFromFileRequestBuilder()
 			: base("metadata_metadataprofile", "updateViewsFromFile")
@@ -602,7 +515,7 @@ namespace Kaltura.Services
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("viewsFile", ViewsFile);
+			kfiles.Add("viewsFile", new FileData(ViewsFile, ViewsFile_FileName));
 			return kfiles;
 		}
 

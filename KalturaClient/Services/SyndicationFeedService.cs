@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string SYNDICATION_FEED = "syndicationFeed";
 		#endregion
 
-		public BaseSyndicationFeed SyndicationFeed
-		{
-			set;
-			get;
-		}
+		public BaseSyndicationFeed SyndicationFeed { get; set; }
 
 		public SyndicationFeedAddRequestBuilder()
 			: base("syndicationfeed", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public SyndicationFeedDeleteRequestBuilder()
 			: base("syndicationfeed", "delete")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public SyndicationFeedGetRequestBuilder()
 			: base("syndicationfeed", "get")
@@ -171,11 +159,7 @@ namespace Kaltura.Services
 		public const string FEED_ID = "feedId";
 		#endregion
 
-		public string FeedId
-		{
-			set;
-			get;
-		}
+		public string FeedId { get; set; }
 
 		public SyndicationFeedGetEntryCountRequestBuilder()
 			: base("syndicationfeed", "getEntryCount")
@@ -215,16 +199,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public BaseSyndicationFeedFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public BaseSyndicationFeedFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public SyndicationFeedListRequestBuilder()
 			: base("syndicationfeed", "list")
@@ -266,11 +242,7 @@ namespace Kaltura.Services
 		public const string FEED_ID = "feedId";
 		#endregion
 
-		public string FeedId
-		{
-			set;
-			get;
-		}
+		public string FeedId { get; set; }
 
 		public SyndicationFeedRequestConversionRequestBuilder()
 			: base("syndicationfeed", "requestConversion")
@@ -310,16 +282,8 @@ namespace Kaltura.Services
 		public const string SYNDICATION_FEED = "syndicationFeed";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public BaseSyndicationFeed SyndicationFeed
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public BaseSyndicationFeed SyndicationFeed { get; set; }
 
 		public SyndicationFeedUpdateRequestBuilder()
 			: base("syndicationfeed", "update")

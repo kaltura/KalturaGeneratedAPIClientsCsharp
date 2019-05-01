@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string ANNOTATION = "annotation";
 		#endregion
 
-		public CuePoint Annotation
-		{
-			set;
-			get;
-		}
+		public CuePoint Annotation { get; set; }
 
 		public AnnotationAddRequestBuilder()
 			: base("annotation_annotation", "add")
@@ -85,11 +81,8 @@ namespace Kaltura.Services
 		public const string FILE_DATA = "fileData";
 		#endregion
 
-		public Stream FileData
-		{
-			set;
-			get;
-		}
+		public Stream FileData { get; set; }
+		public string FileData_FileName { get; set; }
 
 		public AnnotationAddFromBulkRequestBuilder()
 			: base("annotation_annotation", "addFromBulk")
@@ -111,7 +104,7 @@ namespace Kaltura.Services
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("fileData", FileData);
+			kfiles.Add("fileData", new FileData(FileData, FileData_FileName));
 			return kfiles;
 		}
 
@@ -129,21 +122,9 @@ namespace Kaltura.Services
 		public const string PARENT_ID = "parentId";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public string ParentId
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public string EntryId { get; set; }
+		public string ParentId { get; set; }
 
 		public AnnotationCloneRequestBuilder()
 			: base("annotation_annotation", "clone")
@@ -188,11 +169,7 @@ namespace Kaltura.Services
 		public const string FILTER = "filter";
 		#endregion
 
-		public CuePointFilter Filter
-		{
-			set;
-			get;
-		}
+		public CuePointFilter Filter { get; set; }
 
 		public AnnotationCountRequestBuilder()
 			: base("annotation_annotation", "count")
@@ -231,11 +208,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public AnnotationDeleteRequestBuilder()
 			: base("annotation_annotation", "delete")
@@ -274,11 +247,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public AnnotationGetRequestBuilder()
 			: base("annotation_annotation", "get")
@@ -318,16 +287,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public CuePointFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public CuePointFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public AnnotationListRequestBuilder()
 			: base("annotation_annotation", "list")
@@ -370,16 +331,8 @@ namespace Kaltura.Services
 		public const string ANNOTATION = "annotation";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public CuePoint Annotation
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public CuePoint Annotation { get; set; }
 
 		public AnnotationUpdateRequestBuilder()
 			: base("annotation_annotation", "update")
@@ -423,21 +376,9 @@ namespace Kaltura.Services
 		public const string END_TIME = "endTime";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public int StartTime
-		{
-			set;
-			get;
-		}
-		public int EndTime
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public int StartTime { get; set; }
+		public int EndTime { get; set; }
 
 		public AnnotationUpdateCuePointsTimesRequestBuilder()
 			: base("annotation_annotation", "updateCuePointsTimes")
@@ -483,16 +424,8 @@ namespace Kaltura.Services
 		public const string STATUS = "status";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public CuePointStatus Status
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public CuePointStatus Status { get; set; }
 
 		public AnnotationUpdateStatusRequestBuilder()
 			: base("annotation_annotation", "updateStatus")

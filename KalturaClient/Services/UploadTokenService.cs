@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string UPLOAD_TOKEN = "uploadToken";
 		#endregion
 
-		public UploadToken UploadToken
-		{
-			set;
-			get;
-		}
+		public UploadToken UploadToken { get; set; }
 
 		public UploadTokenAddRequestBuilder()
 			: base("uploadtoken", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string UPLOAD_TOKEN_ID = "uploadTokenId";
 		#endregion
 
-		public string UploadTokenId
-		{
-			set;
-			get;
-		}
+		public string UploadTokenId { get; set; }
 
 		public UploadTokenDeleteRequestBuilder()
 			: base("uploadtoken", "delete")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string UPLOAD_TOKEN_ID = "uploadTokenId";
 		#endregion
 
-		public string UploadTokenId
-		{
-			set;
-			get;
-		}
+		public string UploadTokenId { get; set; }
 
 		public UploadTokenGetRequestBuilder()
 			: base("uploadtoken", "get")
@@ -172,16 +160,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public UploadTokenFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public UploadTokenFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public UploadTokenListRequestBuilder()
 			: base("uploadtoken", "list")
@@ -227,31 +207,12 @@ namespace Kaltura.Services
 		public const string RESUME_AT = "resumeAt";
 		#endregion
 
-		public string UploadTokenId
-		{
-			set;
-			get;
-		}
-		public Stream FileData
-		{
-			set;
-			get;
-		}
-		public bool Resume
-		{
-			set;
-			get;
-		}
-		public bool FinalChunk
-		{
-			set;
-			get;
-		}
-		public float ResumeAt
-		{
-			set;
-			get;
-		}
+		public string UploadTokenId { get; set; }
+		public Stream FileData { get; set; }
+		public string FileData_FileName { get; set; }
+		public bool Resume { get; set; }
+		public bool FinalChunk { get; set; }
+		public float ResumeAt { get; set; }
 
 		public UploadTokenUploadRequestBuilder()
 			: base("uploadtoken", "upload")
@@ -285,7 +246,7 @@ namespace Kaltura.Services
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("fileData", FileData);
+			kfiles.Add("fileData", new FileData(FileData, FileData_FileName));
 			return kfiles;
 		}
 

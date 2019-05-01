@@ -43,16 +43,8 @@ namespace Kaltura.Services
 		public const string TYPE = "type";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public NotificationType Type
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public NotificationType Type { get; set; }
 
 		public NotificationGetClientNotificationRequestBuilder()
 			: base("notification", "getClientNotification")

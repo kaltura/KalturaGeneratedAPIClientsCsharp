@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public ThumbParamsOutputGetRequestBuilder()
 			: base("thumbparamsoutput", "get")
@@ -86,16 +82,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public ThumbParamsOutputFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public ThumbParamsOutputFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public ThumbParamsOutputListRequestBuilder()
 			: base("thumbparamsoutput", "list")

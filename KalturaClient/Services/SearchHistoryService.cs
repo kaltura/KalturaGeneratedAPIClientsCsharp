@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string SEARCH_TERM = "searchTerm";
 		#endregion
 
-		public string SearchTerm
-		{
-			set;
-			get;
-		}
+		public string SearchTerm { get; set; }
 
 		public SearchHistoryDeleteRequestBuilder()
 			: base("searchhistory_searchhistory", "delete")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string FILTER = "filter";
 		#endregion
 
-		public ESearchHistoryFilter Filter
-		{
-			set;
-			get;
-		}
+		public ESearchHistoryFilter Filter { get; set; }
 
 		public SearchHistoryListRequestBuilder()
 			: base("searchhistory_searchhistory", "list")

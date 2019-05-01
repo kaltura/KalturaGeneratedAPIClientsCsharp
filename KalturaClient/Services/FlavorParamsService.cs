@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string FLAVOR_PARAMS = "flavorParams";
 		#endregion
 
-		public FlavorParams FlavorParams
-		{
-			set;
-			get;
-		}
+		public FlavorParams FlavorParams { get; set; }
 
 		public FlavorParamsAddRequestBuilder()
 			: base("flavorparams", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public FlavorParamsDeleteRequestBuilder()
 			: base("flavorparams", "delete")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public FlavorParamsGetRequestBuilder()
 			: base("flavorparams", "get")
@@ -171,11 +159,7 @@ namespace Kaltura.Services
 		public const string CONVERSION_PROFILE_ID = "conversionProfileId";
 		#endregion
 
-		public int ConversionProfileId
-		{
-			set;
-			get;
-		}
+		public int ConversionProfileId { get; set; }
 
 		public FlavorParamsGetByConversionProfileIdRequestBuilder()
 			: base("flavorparams", "getByConversionProfileId")
@@ -221,16 +205,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public FlavorParamsFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public FlavorParamsFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public FlavorParamsListRequestBuilder()
 			: base("flavorparams", "list")
@@ -273,16 +249,8 @@ namespace Kaltura.Services
 		public const string FLAVOR_PARAMS = "flavorParams";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public FlavorParams FlavorParams
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public FlavorParams FlavorParams { get; set; }
 
 		public FlavorParamsUpdateRequestBuilder()
 			: base("flavorparams", "update")

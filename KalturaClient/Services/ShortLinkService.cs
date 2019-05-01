@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string SHORT_LINK = "shortLink";
 		#endregion
 
-		public ShortLink ShortLink
-		{
-			set;
-			get;
-		}
+		public ShortLink ShortLink { get; set; }
 
 		public ShortLinkAddRequestBuilder()
 			: base("shortlink_shortlink", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public ShortLinkDeleteRequestBuilder()
 			: base("shortlink_shortlink", "delete")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public ShortLinkGetRequestBuilder()
 			: base("shortlink_shortlink", "get")
@@ -172,16 +160,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public ShortLinkFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public ShortLinkFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public ShortLinkListRequestBuilder()
 			: base("shortlink_shortlink", "list")
@@ -224,16 +204,8 @@ namespace Kaltura.Services
 		public const string SHORT_LINK = "shortLink";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public ShortLink ShortLink
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public ShortLink ShortLink { get; set; }
 
 		public ShortLinkUpdateRequestBuilder()
 			: base("shortlink_shortlink", "update")

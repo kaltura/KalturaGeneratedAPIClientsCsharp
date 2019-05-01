@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string CONVERSION_PROFILE = "conversionProfile";
 		#endregion
 
-		public ConversionProfile ConversionProfile
-		{
-			set;
-			get;
-		}
+		public ConversionProfile ConversionProfile { get; set; }
 
 		public ConversionProfileAddRequestBuilder()
 			: base("conversionprofile", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public ConversionProfileDeleteRequestBuilder()
 			: base("conversionprofile", "delete")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public ConversionProfileGetRequestBuilder()
 			: base("conversionprofile", "get")
@@ -171,11 +159,7 @@ namespace Kaltura.Services
 		public const string TYPE = "type";
 		#endregion
 
-		public ConversionProfileType Type
-		{
-			set;
-			get;
-		}
+		public ConversionProfileType Type { get; set; }
 
 		public ConversionProfileGetDefaultRequestBuilder()
 			: base("conversionprofile", "getDefault")
@@ -215,16 +199,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public ConversionProfileFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public ConversionProfileFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public ConversionProfileListRequestBuilder()
 			: base("conversionprofile", "list")
@@ -266,11 +242,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public ConversionProfileSetAsDefaultRequestBuilder()
 			: base("conversionprofile", "setAsDefault")
@@ -310,16 +282,8 @@ namespace Kaltura.Services
 		public const string CONVERSION_PROFILE = "conversionProfile";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public ConversionProfile ConversionProfile
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public ConversionProfile ConversionProfile { get; set; }
 
 		public ConversionProfileUpdateRequestBuilder()
 			: base("conversionprofile", "update")

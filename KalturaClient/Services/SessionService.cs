@@ -71,11 +71,7 @@ namespace Kaltura.Services
 		public const string SESSION = "session";
 		#endregion
 
-		public string Session
-		{
-			set;
-			get;
-		}
+		public string Session { get; set; }
 
 		public SessionGetRequestBuilder()
 			: base("session", "get")
@@ -120,41 +116,13 @@ namespace Kaltura.Services
 		public const string PRIVILEGES = "privileges";
 		#endregion
 
-		public string Secret
-		{
-			set;
-			get;
-		}
-		public int ImpersonatedPartnerId
-		{
-			set;
-			get;
-		}
-		public string UserId
-		{
-			set;
-			get;
-		}
-		public SessionType Type
-		{
-			set;
-			get;
-		}
-		public new int PartnerId
-		{
-			set;
-			get;
-		}
-		public int Expiry
-		{
-			set;
-			get;
-		}
-		public string Privileges
-		{
-			set;
-			get;
-		}
+		public string Secret { get; set; }
+		public int ImpersonatedPartnerId { get; set; }
+		public string UserId { get; set; }
+		public SessionType Type { get; set; }
+		public new int PartnerId { get; set; }
+		public int Expiry { get; set; }
+		public string Privileges { get; set; }
 
 		public SessionImpersonateRequestBuilder()
 			: base("session", "impersonate")
@@ -214,26 +182,10 @@ namespace Kaltura.Services
 		public const string PRIVILEGES = "privileges";
 		#endregion
 
-		public string Session
-		{
-			set;
-			get;
-		}
-		public SessionType Type
-		{
-			set;
-			get;
-		}
-		public int Expiry
-		{
-			set;
-			get;
-		}
-		public string Privileges
-		{
-			set;
-			get;
-		}
+		public string Session { get; set; }
+		public SessionType Type { get; set; }
+		public int Expiry { get; set; }
+		public string Privileges { get; set; }
 
 		public SessionImpersonateByKsRequestBuilder()
 			: base("session", "impersonateByKs")
@@ -286,36 +238,12 @@ namespace Kaltura.Services
 		public const string PRIVILEGES = "privileges";
 		#endregion
 
-		public string Secret
-		{
-			set;
-			get;
-		}
-		public string UserId
-		{
-			set;
-			get;
-		}
-		public SessionType Type
-		{
-			set;
-			get;
-		}
-		public new int PartnerId
-		{
-			set;
-			get;
-		}
-		public int Expiry
-		{
-			set;
-			get;
-		}
-		public string Privileges
-		{
-			set;
-			get;
-		}
+		public string Secret { get; set; }
+		public string UserId { get; set; }
+		public SessionType Type { get; set; }
+		public new int PartnerId { get; set; }
+		public int Expiry { get; set; }
+		public string Privileges { get; set; }
 
 		public SessionStartRequestBuilder()
 			: base("session", "start")
@@ -370,16 +298,8 @@ namespace Kaltura.Services
 		public const string EXPIRY = "expiry";
 		#endregion
 
-		public string WidgetId
-		{
-			set;
-			get;
-		}
-		public int Expiry
-		{
-			set;
-			get;
-		}
+		public string WidgetId { get; set; }
+		public int Expiry { get; set; }
 
 		public SessionStartWidgetSessionRequestBuilder()
 			: base("session", "startWidgetSession")

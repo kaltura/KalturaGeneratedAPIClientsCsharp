@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string EVENT = "event";
 		#endregion
 
-		public StatsEvent Kevent
-		{
-			set;
-			get;
-		}
+		public StatsEvent Kevent { get; set; }
 
 		public StatsCollectRequestBuilder()
 			: base("stats", "collect")
@@ -87,11 +83,7 @@ namespace Kaltura.Services
 		public const string KMC_EVENT = "kmcEvent";
 		#endregion
 
-		public StatsKmcEvent KmcEvent
-		{
-			set;
-			get;
-		}
+		public StatsKmcEvent KmcEvent { get; set; }
 
 		public StatsKmcCollectRequestBuilder()
 			: base("stats", "kmcCollect")
@@ -130,11 +122,7 @@ namespace Kaltura.Services
 		public const string DATA = "data";
 		#endregion
 
-		public string Data
-		{
-			set;
-			get;
-		}
+		public string Data { get; set; }
 
 		public StatsReportDeviceCapabilitiesRequestBuilder()
 			: base("stats", "reportDeviceCapabilities")
@@ -174,16 +162,8 @@ namespace Kaltura.Services
 		public const string ERROR_MESSAGE = "errorMessage";
 		#endregion
 
-		public string ErrorCode
-		{
-			set;
-			get;
-		}
-		public string ErrorMessage
-		{
-			set;
-			get;
-		}
+		public string ErrorCode { get; set; }
+		public string ErrorMessage { get; set; }
 
 		public StatsReportErrorRequestBuilder()
 			: base("stats", "reportError")
@@ -225,11 +205,7 @@ namespace Kaltura.Services
 		public const string KALTURA_CE_ERROR = "kalturaCEError";
 		#endregion
 
-		public CEError KalturaCEError
-		{
-			set;
-			get;
-		}
+		public CEError KalturaCEError { get; set; }
 
 		public StatsReportKceErrorRequestBuilder()
 			: base("stats", "reportKceError")

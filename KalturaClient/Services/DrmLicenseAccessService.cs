@@ -44,21 +44,9 @@ namespace Kaltura.Services
 		public const string REFERRER = "referrer";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public string FlavorIds
-		{
-			set;
-			get;
-		}
-		public string Referrer
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public string FlavorIds { get; set; }
+		public string Referrer { get; set; }
 
 		public DrmLicenseAccessGetAccessRequestBuilder()
 			: base("drm_drmlicenseaccess", "getAccess")

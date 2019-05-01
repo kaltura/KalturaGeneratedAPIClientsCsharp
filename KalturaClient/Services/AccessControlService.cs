@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string ACCESS_CONTROL = "accessControl";
 		#endregion
 
-		public AccessControl AccessControl
-		{
-			set;
-			get;
-		}
+		public AccessControl AccessControl { get; set; }
 
 		public AccessControlAddRequestBuilder()
 			: base("accesscontrol", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public AccessControlDeleteRequestBuilder()
 			: base("accesscontrol", "delete")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public AccessControlGetRequestBuilder()
 			: base("accesscontrol", "get")
@@ -172,16 +160,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public AccessControlFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public AccessControlFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public AccessControlListRequestBuilder()
 			: base("accesscontrol", "list")
@@ -224,16 +204,8 @@ namespace Kaltura.Services
 		public const string ACCESS_CONTROL = "accessControl";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public AccessControl AccessControl
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public AccessControl AccessControl { get; set; }
 
 		public AccessControlUpdateRequestBuilder()
 			: base("accesscontrol", "update")

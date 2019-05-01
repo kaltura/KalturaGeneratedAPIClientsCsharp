@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string USER = "user";
 		#endregion
 
-		public User User
-		{
-			set;
-			get;
-		}
+		public User User { get; set; }
 
 		public UserAddRequestBuilder()
 			: base("user", "add")
@@ -87,21 +83,10 @@ namespace Kaltura.Services
 		public const string BULK_UPLOAD_USER_DATA = "bulkUploadUserData";
 		#endregion
 
-		public Stream FileData
-		{
-			set;
-			get;
-		}
-		public BulkUploadJobData BulkUploadData
-		{
-			set;
-			get;
-		}
-		public BulkUploadUserData BulkUploadUserData
-		{
-			set;
-			get;
-		}
+		public Stream FileData { get; set; }
+		public string FileData_FileName { get; set; }
+		public BulkUploadJobData BulkUploadData { get; set; }
+		public BulkUploadUserData BulkUploadUserData { get; set; }
 
 		public UserAddFromBulkUploadRequestBuilder()
 			: base("user", "addFromBulkUpload")
@@ -129,7 +114,7 @@ namespace Kaltura.Services
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("fileData", FileData);
+			kfiles.Add("fileData", new FileData(FileData, FileData_FileName));
 			return kfiles;
 		}
 
@@ -145,11 +130,7 @@ namespace Kaltura.Services
 		public const string FILTER = "filter";
 		#endregion
 
-		public UserLoginDataFilter Filter
-		{
-			set;
-			get;
-		}
+		public UserLoginDataFilter Filter { get; set; }
 
 		public UserCheckLoginDataExistsRequestBuilder()
 			: base("user", "checkLoginDataExists")
@@ -190,11 +171,7 @@ namespace Kaltura.Services
 		public const string USER_ID = "userId";
 		#endregion
 
-		public string UserId
-		{
-			set;
-			get;
-		}
+		public string UserId { get; set; }
 
 		public UserDeleteRequestBuilder()
 			: base("user", "delete")
@@ -234,16 +211,8 @@ namespace Kaltura.Services
 		public const string LOGIN_ID = "loginId";
 		#endregion
 
-		public string UserId
-		{
-			set;
-			get;
-		}
-		public string LoginId
-		{
-			set;
-			get;
-		}
+		public string UserId { get; set; }
+		public string LoginId { get; set; }
 
 		public UserDisableLoginRequestBuilder()
 			: base("user", "disableLogin")
@@ -287,21 +256,9 @@ namespace Kaltura.Services
 		public const string PASSWORD = "password";
 		#endregion
 
-		public string UserId
-		{
-			set;
-			get;
-		}
-		public string LoginId
-		{
-			set;
-			get;
-		}
-		public string Password
-		{
-			set;
-			get;
-		}
+		public string UserId { get; set; }
+		public string LoginId { get; set; }
+		public string Password { get; set; }
 
 		public UserEnableLoginRequestBuilder()
 			: base("user", "enableLogin")
@@ -348,21 +305,9 @@ namespace Kaltura.Services
 		public const string ADDITIONAL_FIELDS = "additionalFields";
 		#endregion
 
-		public UserFilter Filter
-		{
-			set;
-			get;
-		}
-		public int MetadataProfileId
-		{
-			set;
-			get;
-		}
-		public IList<CsvAdditionalFieldInfo> AdditionalFields
-		{
-			set;
-			get;
-		}
+		public UserFilter Filter { get; set; }
+		public int MetadataProfileId { get; set; }
+		public IList<CsvAdditionalFieldInfo> AdditionalFields { get; set; }
 
 		public UserExportToCsvRequestBuilder()
 			: base("user", "exportToCsv")
@@ -407,11 +352,7 @@ namespace Kaltura.Services
 		public const string USER_ID = "userId";
 		#endregion
 
-		public string UserId
-		{
-			set;
-			get;
-		}
+		public string UserId { get; set; }
 
 		public UserGetRequestBuilder()
 			: base("user", "get")
@@ -450,11 +391,7 @@ namespace Kaltura.Services
 		public const string LOGIN_ID = "loginId";
 		#endregion
 
-		public string LoginId
-		{
-			set;
-			get;
-		}
+		public string LoginId { get; set; }
 
 		public UserGetByLoginIdRequestBuilder()
 			: base("user", "getByLoginId")
@@ -494,16 +431,8 @@ namespace Kaltura.Services
 		public const string SHOULD_UPDATE = "shouldUpdate";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public bool ShouldUpdate
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public bool ShouldUpdate { get; set; }
 
 		public UserIndexRequestBuilder()
 			: base("user", "index")
@@ -546,16 +475,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public UserFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public UserFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public UserListRequestBuilder()
 			: base("user", "list")
@@ -601,31 +522,11 @@ namespace Kaltura.Services
 		public const string PRIVILEGES = "privileges";
 		#endregion
 
-		public new int PartnerId
-		{
-			set;
-			get;
-		}
-		public string UserId
-		{
-			set;
-			get;
-		}
-		public string Password
-		{
-			set;
-			get;
-		}
-		public int Expiry
-		{
-			set;
-			get;
-		}
-		public string Privileges
-		{
-			set;
-			get;
-		}
+		public new int PartnerId { get; set; }
+		public string UserId { get; set; }
+		public string Password { get; set; }
+		public int Expiry { get; set; }
+		public string Privileges { get; set; }
 
 		public UserLoginRequestBuilder()
 			: base("user", "login")
@@ -676,11 +577,7 @@ namespace Kaltura.Services
 		public const string REQUESTED_PARTNER_ID = "requestedPartnerId";
 		#endregion
 
-		public int RequestedPartnerId
-		{
-			set;
-			get;
-		}
+		public int RequestedPartnerId { get; set; }
 
 		public UserLoginByKsRequestBuilder()
 			: base("user", "loginByKs")
@@ -724,36 +621,12 @@ namespace Kaltura.Services
 		public const string OTP = "otp";
 		#endregion
 
-		public string LoginId
-		{
-			set;
-			get;
-		}
-		public string Password
-		{
-			set;
-			get;
-		}
-		public new int PartnerId
-		{
-			set;
-			get;
-		}
-		public int Expiry
-		{
-			set;
-			get;
-		}
-		public string Privileges
-		{
-			set;
-			get;
-		}
-		public string Otp
-		{
-			set;
-			get;
-		}
+		public string LoginId { get; set; }
+		public string Password { get; set; }
+		public new int PartnerId { get; set; }
+		public int Expiry { get; set; }
+		public string Privileges { get; set; }
+		public string Otp { get; set; }
 
 		public UserLoginByLoginIdRequestBuilder()
 			: base("user", "loginByLoginId")
@@ -807,11 +680,7 @@ namespace Kaltura.Services
 		public const string USER_ID = "userId";
 		#endregion
 
-		public string UserId
-		{
-			set;
-			get;
-		}
+		public string UserId { get; set; }
 
 		public UserNotifyBanRequestBuilder()
 			: base("user", "notifyBan")
@@ -850,11 +719,7 @@ namespace Kaltura.Services
 		public const string EMAIL = "email";
 		#endregion
 
-		public string Email
-		{
-			set;
-			get;
-		}
+		public string Email { get; set; }
 
 		public UserResetPasswordRequestBuilder()
 			: base("user", "resetPassword")
@@ -893,11 +758,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public UserServeCsvRequestBuilder()
 			: base("user", "serveCsv")
@@ -937,16 +798,8 @@ namespace Kaltura.Services
 		public const string NEW_PASSWORD = "newPassword";
 		#endregion
 
-		public string HashKey
-		{
-			set;
-			get;
-		}
-		public string NewPassword
-		{
-			set;
-			get;
-		}
+		public string HashKey { get; set; }
+		public string NewPassword { get; set; }
 
 		public UserSetInitialPasswordRequestBuilder()
 			: base("user", "setInitialPassword")
@@ -989,16 +842,8 @@ namespace Kaltura.Services
 		public const string USER = "user";
 		#endregion
 
-		public string UserId
-		{
-			set;
-			get;
-		}
-		public User User
-		{
-			set;
-			get;
-		}
+		public string UserId { get; set; }
+		public User User { get; set; }
 
 		public UserUpdateRequestBuilder()
 			: base("user", "update")
@@ -1045,36 +890,12 @@ namespace Kaltura.Services
 		public const string NEW_LAST_NAME = "newLastName";
 		#endregion
 
-		public string OldLoginId
-		{
-			set;
-			get;
-		}
-		public string Password
-		{
-			set;
-			get;
-		}
-		public string NewLoginId
-		{
-			set;
-			get;
-		}
-		public string NewPassword
-		{
-			set;
-			get;
-		}
-		public string NewFirstName
-		{
-			set;
-			get;
-		}
-		public string NewLastName
-		{
-			set;
-			get;
-		}
+		public string OldLoginId { get; set; }
+		public string Password { get; set; }
+		public string NewLoginId { get; set; }
+		public string NewPassword { get; set; }
+		public string NewFirstName { get; set; }
+		public string NewLastName { get; set; }
 
 		public UserUpdateLoginDataRequestBuilder()
 			: base("user", "updateLoginData")

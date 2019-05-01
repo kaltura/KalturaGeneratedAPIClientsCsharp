@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public ExportcsvServeCsvRequestBuilder()
 			: base("exportcsv", "serveCsv")

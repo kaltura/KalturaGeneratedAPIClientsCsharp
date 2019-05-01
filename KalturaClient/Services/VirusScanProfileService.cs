@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string VIRUS_SCAN_PROFILE = "virusScanProfile";
 		#endregion
 
-		public VirusScanProfile VirusScanProfile
-		{
-			set;
-			get;
-		}
+		public VirusScanProfile VirusScanProfile { get; set; }
 
 		public VirusScanProfileAddRequestBuilder()
 			: base("virusscan_virusscanprofile", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string VIRUS_SCAN_PROFILE_ID = "virusScanProfileId";
 		#endregion
 
-		public int VirusScanProfileId
-		{
-			set;
-			get;
-		}
+		public int VirusScanProfileId { get; set; }
 
 		public VirusScanProfileDeleteRequestBuilder()
 			: base("virusscan_virusscanprofile", "delete")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string VIRUS_SCAN_PROFILE_ID = "virusScanProfileId";
 		#endregion
 
-		public int VirusScanProfileId
-		{
-			set;
-			get;
-		}
+		public int VirusScanProfileId { get; set; }
 
 		public VirusScanProfileGetRequestBuilder()
 			: base("virusscan_virusscanprofile", "get")
@@ -172,16 +160,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public VirusScanProfileFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public VirusScanProfileFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public VirusScanProfileListRequestBuilder()
 			: base("virusscan_virusscanprofile", "list")
@@ -224,16 +204,8 @@ namespace Kaltura.Services
 		public const string VIRUS_SCAN_PROFILE_ID = "virusScanProfileId";
 		#endregion
 
-		public string FlavorAssetId
-		{
-			set;
-			get;
-		}
-		public int VirusScanProfileId
-		{
-			set;
-			get;
-		}
+		public string FlavorAssetId { get; set; }
+		public int VirusScanProfileId { get; set; }
 
 		public VirusScanProfileScanRequestBuilder()
 			: base("virusscan_virusscanprofile", "scan")
@@ -276,16 +248,8 @@ namespace Kaltura.Services
 		public const string VIRUS_SCAN_PROFILE = "virusScanProfile";
 		#endregion
 
-		public int VirusScanProfileId
-		{
-			set;
-			get;
-		}
-		public VirusScanProfile VirusScanProfile
-		{
-			set;
-			get;
-		}
+		public int VirusScanProfileId { get; set; }
+		public VirusScanProfile VirusScanProfile { get; set; }
 
 		public VirusScanProfileUpdateRequestBuilder()
 			: base("virusscan_virusscanprofile", "update")

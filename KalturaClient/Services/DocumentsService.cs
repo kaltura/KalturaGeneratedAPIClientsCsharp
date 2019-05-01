@@ -44,21 +44,9 @@ namespace Kaltura.Services
 		public const string SOURCE_FLAVOR_PARAMS_ID = "sourceFlavorParamsId";
 		#endregion
 
-		public string SourceEntryId
-		{
-			set;
-			get;
-		}
-		public DocumentEntry DocumentEntry
-		{
-			set;
-			get;
-		}
-		public int SourceFlavorParamsId
-		{
-			set;
-			get;
-		}
+		public string SourceEntryId { get; set; }
+		public DocumentEntry DocumentEntry { get; set; }
+		public int SourceFlavorParamsId { get; set; }
 
 		public DocumentsAddFromEntryRequestBuilder()
 			: base("document_documents", "addFromEntry")
@@ -104,16 +92,8 @@ namespace Kaltura.Services
 		public const string DOCUMENT_ENTRY = "documentEntry";
 		#endregion
 
-		public string SourceFlavorAssetId
-		{
-			set;
-			get;
-		}
-		public DocumentEntry DocumentEntry
-		{
-			set;
-			get;
-		}
+		public string SourceFlavorAssetId { get; set; }
+		public DocumentEntry DocumentEntry { get; set; }
 
 		public DocumentsAddFromFlavorAssetRequestBuilder()
 			: base("document_documents", "addFromFlavorAsset")
@@ -156,16 +136,8 @@ namespace Kaltura.Services
 		public const string UPLOAD_TOKEN_ID = "uploadTokenId";
 		#endregion
 
-		public DocumentEntry DocumentEntry
-		{
-			set;
-			get;
-		}
-		public string UploadTokenId
-		{
-			set;
-			get;
-		}
+		public DocumentEntry DocumentEntry { get; set; }
+		public string UploadTokenId { get; set; }
 
 		public DocumentsAddFromUploadedFileRequestBuilder()
 			: base("document_documents", "addFromUploadedFile")
@@ -207,11 +179,7 @@ namespace Kaltura.Services
 		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
 
 		public DocumentsApproveReplaceRequestBuilder()
 			: base("document_documents", "approveReplace")
@@ -250,11 +218,7 @@ namespace Kaltura.Services
 		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
 
 		public DocumentsCancelReplaceRequestBuilder()
 			: base("document_documents", "cancelReplace")
@@ -295,21 +259,9 @@ namespace Kaltura.Services
 		public const string DYNAMIC_CONVERSION_ATTRIBUTES = "dynamicConversionAttributes";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public int ConversionProfileId
-		{
-			set;
-			get;
-		}
-		public IList<ConversionAttribute> DynamicConversionAttributes
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public int ConversionProfileId { get; set; }
+		public IList<ConversionAttribute> DynamicConversionAttributes { get; set; }
 
 		public DocumentsConvertRequestBuilder()
 			: base("document_documents", "convert")
@@ -354,11 +306,7 @@ namespace Kaltura.Services
 		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
 
 		public DocumentsConvertPptToSwfRequestBuilder()
 			: base("document_documents", "convertPptToSwf")
@@ -397,11 +345,7 @@ namespace Kaltura.Services
 		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
 
 		public DocumentsDeleteRequestBuilder()
 			: base("document_documents", "delete")
@@ -441,16 +385,8 @@ namespace Kaltura.Services
 		public const string VERSION = "version";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public int Version
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public int Version { get; set; }
 
 		public DocumentsGetRequestBuilder()
 			: base("document_documents", "get")
@@ -493,16 +429,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public DocumentEntryFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public DocumentEntryFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public DocumentsListRequestBuilder()
 			: base("document_documents", "list")
@@ -545,16 +473,8 @@ namespace Kaltura.Services
 		public const string DOCUMENT_ENTRY = "documentEntry";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public DocumentEntry DocumentEntry
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public DocumentEntry DocumentEntry { get; set; }
 
 		public DocumentsUpdateRequestBuilder()
 			: base("document_documents", "update")
@@ -598,21 +518,9 @@ namespace Kaltura.Services
 		public const string CONVERSION_PROFILE_ID = "conversionProfileId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public Resource Resource
-		{
-			set;
-			get;
-		}
-		public int ConversionProfileId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public Resource Resource { get; set; }
+		public int ConversionProfileId { get; set; }
 
 		public DocumentsUpdateContentRequestBuilder()
 			: base("document_documents", "updateContent")
@@ -657,11 +565,8 @@ namespace Kaltura.Services
 		public const string FILE_DATA = "fileData";
 		#endregion
 
-		public Stream FileData
-		{
-			set;
-			get;
-		}
+		public Stream FileData { get; set; }
+		public string FileData_FileName { get; set; }
 
 		public DocumentsUploadRequestBuilder()
 			: base("document_documents", "upload")
@@ -683,7 +588,7 @@ namespace Kaltura.Services
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("fileData", FileData);
+			kfiles.Add("fileData", new FileData(FileData, FileData_FileName));
 			return kfiles;
 		}
 

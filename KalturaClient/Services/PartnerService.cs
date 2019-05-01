@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string FILTER = "filter";
 		#endregion
 
-		public PartnerFilter Filter
-		{
-			set;
-			get;
-		}
+		public PartnerFilter Filter { get; set; }
 
 		public PartnerCountRequestBuilder()
 			: base("partner", "count")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public PartnerGetRequestBuilder()
 			: base("partner", "get")
@@ -159,21 +151,9 @@ namespace Kaltura.Services
 		public const string CMS_PASSWORD = "cmsPassword";
 		#endregion
 
-		public new int PartnerId
-		{
-			set;
-			get;
-		}
-		public string AdminEmail
-		{
-			set;
-			get;
-		}
-		public string CmsPassword
-		{
-			set;
-			get;
-		}
+		public new int PartnerId { get; set; }
+		public string AdminEmail { get; set; }
+		public string CmsPassword { get; set; }
 
 		public PartnerGetSecretsRequestBuilder()
 			: base("partner", "getSecrets")
@@ -248,16 +228,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public PartnerFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public PartnerFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public PartnerListRequestBuilder()
 			: base("partner", "list")
@@ -329,16 +301,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public PartnerFilter PartnerFilter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public PartnerFilter PartnerFilter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public PartnerListPartnersForUserRequestBuilder()
 			: base("partner", "listPartnersForUser")
@@ -383,26 +347,10 @@ namespace Kaltura.Services
 		public const string SILENT = "silent";
 		#endregion
 
-		public Partner Partner
-		{
-			set;
-			get;
-		}
-		public string CmsPassword
-		{
-			set;
-			get;
-		}
-		public int TemplatePartnerId
-		{
-			set;
-			get;
-		}
-		public bool Silent
-		{
-			set;
-			get;
-		}
+		public Partner Partner { get; set; }
+		public string CmsPassword { get; set; }
+		public int TemplatePartnerId { get; set; }
+		public bool Silent { get; set; }
 
 		public PartnerRegisterRequestBuilder()
 			: base("partner", "register")
@@ -451,16 +399,8 @@ namespace Kaltura.Services
 		public const string ALLOW_EMPTY = "allowEmpty";
 		#endregion
 
-		public Partner Partner
-		{
-			set;
-			get;
-		}
-		public bool AllowEmpty
-		{
-			set;
-			get;
-		}
+		public Partner Partner { get; set; }
+		public bool AllowEmpty { get; set; }
 
 		public PartnerUpdateRequestBuilder()
 			: base("partner", "update")

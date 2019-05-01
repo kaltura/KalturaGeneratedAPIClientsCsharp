@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string APP_TOKEN = "appToken";
 		#endregion
 
-		public AppToken AppToken
-		{
-			set;
-			get;
-		}
+		public AppToken AppToken { get; set; }
 
 		public AppTokenAddRequestBuilder()
 			: base("apptoken", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public AppTokenDeleteRequestBuilder()
 			: base("apptoken", "delete")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public AppTokenGetRequestBuilder()
 			: base("apptoken", "get")
@@ -172,16 +160,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public AppTokenFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public AppTokenFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public AppTokenListRequestBuilder()
 			: base("apptoken", "list")
@@ -228,36 +208,12 @@ namespace Kaltura.Services
 		public const string SESSION_PRIVILEGES = "sessionPrivileges";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public string TokenHash
-		{
-			set;
-			get;
-		}
-		public string UserId
-		{
-			set;
-			get;
-		}
-		public SessionType Type
-		{
-			set;
-			get;
-		}
-		public int Expiry
-		{
-			set;
-			get;
-		}
-		public string SessionPrivileges
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public string TokenHash { get; set; }
+		public string UserId { get; set; }
+		public SessionType Type { get; set; }
+		public int Expiry { get; set; }
+		public string SessionPrivileges { get; set; }
 
 		public AppTokenStartSessionRequestBuilder()
 			: base("apptoken", "startSession")
@@ -312,16 +268,8 @@ namespace Kaltura.Services
 		public const string APP_TOKEN = "appToken";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public AppToken AppToken
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public AppToken AppToken { get; set; }
 
 		public AppTokenUpdateRequestBuilder()
 			: base("apptoken", "update")

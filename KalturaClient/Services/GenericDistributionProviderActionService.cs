@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string GENERIC_DISTRIBUTION_PROVIDER_ACTION = "genericDistributionProviderAction";
 		#endregion
 
-		public GenericDistributionProviderAction GenericDistributionProviderAction
-		{
-			set;
-			get;
-		}
+		public GenericDistributionProviderAction GenericDistributionProviderAction { get; set; }
 
 		public GenericDistributionProviderActionAddRequestBuilder()
 			: base("contentdistribution_genericdistributionprovideraction", "add")
@@ -86,16 +82,8 @@ namespace Kaltura.Services
 		public const string XSL_DATA = "xslData";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public string XslData
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public string XslData { get; set; }
 
 		public GenericDistributionProviderActionAddMrssTransformRequestBuilder()
 			: base("contentdistribution_genericdistributionprovideraction", "addMrssTransform")
@@ -138,16 +126,9 @@ namespace Kaltura.Services
 		public const string XSL_FILE = "xslFile";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public Stream XslFile
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public Stream XslFile { get; set; }
+		public string XslFile_FileName { get; set; }
 
 		public GenericDistributionProviderActionAddMrssTransformFromFileRequestBuilder()
 			: base("contentdistribution_genericdistributionprovideraction", "addMrssTransformFromFile")
@@ -172,7 +153,7 @@ namespace Kaltura.Services
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("xslFile", XslFile);
+			kfiles.Add("xslFile", new FileData(XslFile, XslFile_FileName));
 			return kfiles;
 		}
 
@@ -189,16 +170,8 @@ namespace Kaltura.Services
 		public const string XSD_DATA = "xsdData";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public string XsdData
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public string XsdData { get; set; }
 
 		public GenericDistributionProviderActionAddMrssValidateRequestBuilder()
 			: base("contentdistribution_genericdistributionprovideraction", "addMrssValidate")
@@ -241,16 +214,9 @@ namespace Kaltura.Services
 		public const string XSD_FILE = "xsdFile";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public Stream XsdFile
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public Stream XsdFile { get; set; }
+		public string XsdFile_FileName { get; set; }
 
 		public GenericDistributionProviderActionAddMrssValidateFromFileRequestBuilder()
 			: base("contentdistribution_genericdistributionprovideraction", "addMrssValidateFromFile")
@@ -275,7 +241,7 @@ namespace Kaltura.Services
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("xsdFile", XsdFile);
+			kfiles.Add("xsdFile", new FileData(XsdFile, XsdFile_FileName));
 			return kfiles;
 		}
 
@@ -292,16 +258,8 @@ namespace Kaltura.Services
 		public const string TRANSFORM_DATA = "transformData";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public string TransformData
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public string TransformData { get; set; }
 
 		public GenericDistributionProviderActionAddResultsTransformRequestBuilder()
 			: base("contentdistribution_genericdistributionprovideraction", "addResultsTransform")
@@ -344,16 +302,9 @@ namespace Kaltura.Services
 		public const string TRANSFORM_FILE = "transformFile";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public Stream TransformFile
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public Stream TransformFile { get; set; }
+		public string TransformFile_FileName { get; set; }
 
 		public GenericDistributionProviderActionAddResultsTransformFromFileRequestBuilder()
 			: base("contentdistribution_genericdistributionprovideraction", "addResultsTransformFromFile")
@@ -378,7 +329,7 @@ namespace Kaltura.Services
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("transformFile", TransformFile);
+			kfiles.Add("transformFile", new FileData(TransformFile, TransformFile_FileName));
 			return kfiles;
 		}
 
@@ -394,11 +345,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public GenericDistributionProviderActionDeleteRequestBuilder()
 			: base("contentdistribution_genericdistributionprovideraction", "delete")
@@ -438,16 +385,8 @@ namespace Kaltura.Services
 		public const string ACTION_TYPE = "actionType";
 		#endregion
 
-		public int GenericDistributionProviderId
-		{
-			set;
-			get;
-		}
-		public DistributionAction ActionType
-		{
-			set;
-			get;
-		}
+		public int GenericDistributionProviderId { get; set; }
+		public DistributionAction ActionType { get; set; }
 
 		public GenericDistributionProviderActionDeleteByProviderIdRequestBuilder()
 			: base("contentdistribution_genericdistributionprovideraction", "deleteByProviderId")
@@ -489,11 +428,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public GenericDistributionProviderActionGetRequestBuilder()
 			: base("contentdistribution_genericdistributionprovideraction", "get")
@@ -533,16 +468,8 @@ namespace Kaltura.Services
 		public const string ACTION_TYPE = "actionType";
 		#endregion
 
-		public int GenericDistributionProviderId
-		{
-			set;
-			get;
-		}
-		public DistributionAction ActionType
-		{
-			set;
-			get;
-		}
+		public int GenericDistributionProviderId { get; set; }
+		public DistributionAction ActionType { get; set; }
 
 		public GenericDistributionProviderActionGetByProviderIdRequestBuilder()
 			: base("contentdistribution_genericdistributionprovideraction", "getByProviderId")
@@ -585,16 +512,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public GenericDistributionProviderActionFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public GenericDistributionProviderActionFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public GenericDistributionProviderActionListRequestBuilder()
 			: base("contentdistribution_genericdistributionprovideraction", "list")
@@ -637,16 +556,8 @@ namespace Kaltura.Services
 		public const string GENERIC_DISTRIBUTION_PROVIDER_ACTION = "genericDistributionProviderAction";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public GenericDistributionProviderAction GenericDistributionProviderAction
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public GenericDistributionProviderAction GenericDistributionProviderAction { get; set; }
 
 		public GenericDistributionProviderActionUpdateRequestBuilder()
 			: base("contentdistribution_genericdistributionprovideraction", "update")
@@ -690,21 +601,9 @@ namespace Kaltura.Services
 		public const string GENERIC_DISTRIBUTION_PROVIDER_ACTION = "genericDistributionProviderAction";
 		#endregion
 
-		public int GenericDistributionProviderId
-		{
-			set;
-			get;
-		}
-		public DistributionAction ActionType
-		{
-			set;
-			get;
-		}
-		public GenericDistributionProviderAction GenericDistributionProviderAction
-		{
-			set;
-			get;
-		}
+		public int GenericDistributionProviderId { get; set; }
+		public DistributionAction ActionType { get; set; }
+		public GenericDistributionProviderAction GenericDistributionProviderAction { get; set; }
 
 		public GenericDistributionProviderActionUpdateByProviderIdRequestBuilder()
 			: base("contentdistribution_genericdistributionprovideraction", "updateByProviderId")

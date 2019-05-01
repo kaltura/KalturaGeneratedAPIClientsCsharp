@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string VENDOR_CATALOG_ITEM = "vendorCatalogItem";
 		#endregion
 
-		public VendorCatalogItem VendorCatalogItem
-		{
-			set;
-			get;
-		}
+		public VendorCatalogItem VendorCatalogItem { get; set; }
 
 		public VendorCatalogItemAddRequestBuilder()
 			: base("reach_vendorcatalogitem", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public VendorCatalogItemDeleteRequestBuilder()
 			: base("reach_vendorcatalogitem", "delete")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public VendorCatalogItemGetRequestBuilder()
 			: base("reach_vendorcatalogitem", "get")
@@ -172,16 +160,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public VendorCatalogItemFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public VendorCatalogItemFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public VendorCatalogItemListRequestBuilder()
 			: base("reach_vendorcatalogitem", "list")
@@ -224,16 +204,8 @@ namespace Kaltura.Services
 		public const string VENDOR_CATALOG_ITEM = "vendorCatalogItem";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public VendorCatalogItem VendorCatalogItem
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public VendorCatalogItem VendorCatalogItem { get; set; }
 
 		public VendorCatalogItemUpdateRequestBuilder()
 			: base("reach_vendorcatalogitem", "update")
@@ -276,16 +248,8 @@ namespace Kaltura.Services
 		public const string STATUS = "status";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public VendorCatalogItemStatus Status
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public VendorCatalogItemStatus Status { get; set; }
 
 		public VendorCatalogItemUpdateStatusRequestBuilder()
 			: base("reach_vendorcatalogitem", "updateStatus")

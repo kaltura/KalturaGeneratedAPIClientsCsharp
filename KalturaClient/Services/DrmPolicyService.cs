@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string DRM_POLICY = "drmPolicy";
 		#endregion
 
-		public DrmPolicy DrmPolicy
-		{
-			set;
-			get;
-		}
+		public DrmPolicy DrmPolicy { get; set; }
 
 		public DrmPolicyAddRequestBuilder()
 			: base("drm_drmpolicy", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string DRM_POLICY_ID = "drmPolicyId";
 		#endregion
 
-		public int DrmPolicyId
-		{
-			set;
-			get;
-		}
+		public int DrmPolicyId { get; set; }
 
 		public DrmPolicyDeleteRequestBuilder()
 			: base("drm_drmpolicy", "delete")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string DRM_POLICY_ID = "drmPolicyId";
 		#endregion
 
-		public int DrmPolicyId
-		{
-			set;
-			get;
-		}
+		public int DrmPolicyId { get; set; }
 
 		public DrmPolicyGetRequestBuilder()
 			: base("drm_drmpolicy", "get")
@@ -172,16 +160,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public DrmPolicyFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public DrmPolicyFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public DrmPolicyListRequestBuilder()
 			: base("drm_drmpolicy", "list")
@@ -224,16 +204,8 @@ namespace Kaltura.Services
 		public const string DRM_POLICY = "drmPolicy";
 		#endregion
 
-		public int DrmPolicyId
-		{
-			set;
-			get;
-		}
-		public DrmPolicy DrmPolicy
-		{
-			set;
-			get;
-		}
+		public int DrmPolicyId { get; set; }
+		public DrmPolicy DrmPolicy { get; set; }
 
 		public DrmPolicyUpdateRequestBuilder()
 			: base("drm_drmpolicy", "update")

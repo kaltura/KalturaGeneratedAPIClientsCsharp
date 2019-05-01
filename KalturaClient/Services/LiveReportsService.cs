@@ -43,16 +43,8 @@ namespace Kaltura.Services
 		public const string PARAMS = "params";
 		#endregion
 
-		public LiveReportExportType ReportType
-		{
-			set;
-			get;
-		}
-		public LiveReportExportParams Params_
-		{
-			set;
-			get;
-		}
+		public LiveReportExportType ReportType { get; set; }
+		public LiveReportExportParams Params_ { get; set; }
 
 		public LiveReportsExportToCsvRequestBuilder()
 			: base("livereports", "exportToCsv")
@@ -96,21 +88,9 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public LiveReportType ReportType
-		{
-			set;
-			get;
-		}
-		public LiveReportInputFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public LiveReportType ReportType { get; set; }
+		public LiveReportInputFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public LiveReportsGetEventsRequestBuilder()
 			: base("livereports", "getEvents")
@@ -161,11 +141,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public LiveReportsServeReportRequestBuilder()
 			: base("livereports", "serveReport")

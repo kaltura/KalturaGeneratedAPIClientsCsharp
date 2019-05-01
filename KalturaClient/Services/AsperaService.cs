@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string FLAVOR_ASSET_ID = "flavorAssetId";
 		#endregion
 
-		public string FlavorAssetId
-		{
-			set;
-			get;
-		}
+		public string FlavorAssetId { get; set; }
 
 		public AsperaGetFaspUrlRequestBuilder()
 			: base("aspera_aspera", "getFaspUrl")

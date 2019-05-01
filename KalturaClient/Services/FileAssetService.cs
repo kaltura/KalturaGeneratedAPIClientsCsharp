@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string FILE_ASSET = "fileAsset";
 		#endregion
 
-		public FileAsset FileAsset
-		{
-			set;
-			get;
-		}
+		public FileAsset FileAsset { get; set; }
 
 		public FileAssetAddRequestBuilder()
 			: base("fileasset", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public long Id
-		{
-			set;
-			get;
-		}
+		public long Id { get; set; }
 
 		public FileAssetDeleteRequestBuilder()
 			: base("fileasset", "delete")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public long Id
-		{
-			set;
-			get;
-		}
+		public long Id { get; set; }
 
 		public FileAssetGetRequestBuilder()
 			: base("fileasset", "get")
@@ -172,16 +160,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public FileAssetFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public FileAssetFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public FileAssetListRequestBuilder()
 			: base("fileasset", "list")
@@ -224,16 +204,8 @@ namespace Kaltura.Services
 		public const string CONTENT_RESOURCE = "contentResource";
 		#endregion
 
-		public long Id
-		{
-			set;
-			get;
-		}
-		public ContentResource ContentResource
-		{
-			set;
-			get;
-		}
+		public long Id { get; set; }
+		public ContentResource ContentResource { get; set; }
 
 		public FileAssetSetContentRequestBuilder()
 			: base("fileasset", "setContent")
@@ -276,16 +248,8 @@ namespace Kaltura.Services
 		public const string FILE_ASSET = "fileAsset";
 		#endregion
 
-		public long Id
-		{
-			set;
-			get;
-		}
-		public FileAsset FileAsset
-		{
-			set;
-			get;
-		}
+		public long Id { get; set; }
+		public FileAsset FileAsset { get; set; }
 
 		public FileAssetUpdateRequestBuilder()
 			: base("fileasset", "update")

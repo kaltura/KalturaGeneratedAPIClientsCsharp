@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public BulkAbortRequestBuilder()
 			: base("bulkupload_bulk", "abort")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public BulkGetRequestBuilder()
 			: base("bulkupload_bulk", "get")
@@ -129,16 +121,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public BulkUploadFilter BulkUploadFilter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public BulkUploadFilter BulkUploadFilter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public BulkListRequestBuilder()
 			: base("bulkupload_bulk", "list")

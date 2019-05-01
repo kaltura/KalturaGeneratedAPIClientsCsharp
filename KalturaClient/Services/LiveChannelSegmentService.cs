@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string LIVE_CHANNEL_SEGMENT = "liveChannelSegment";
 		#endregion
 
-		public LiveChannelSegment LiveChannelSegment
-		{
-			set;
-			get;
-		}
+		public LiveChannelSegment LiveChannelSegment { get; set; }
 
 		public LiveChannelSegmentAddRequestBuilder()
 			: base("livechannelsegment", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public long Id
-		{
-			set;
-			get;
-		}
+		public long Id { get; set; }
 
 		public LiveChannelSegmentDeleteRequestBuilder()
 			: base("livechannelsegment", "delete")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public long Id
-		{
-			set;
-			get;
-		}
+		public long Id { get; set; }
 
 		public LiveChannelSegmentGetRequestBuilder()
 			: base("livechannelsegment", "get")
@@ -172,16 +160,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public LiveChannelSegmentFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public LiveChannelSegmentFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public LiveChannelSegmentListRequestBuilder()
 			: base("livechannelsegment", "list")
@@ -224,16 +204,8 @@ namespace Kaltura.Services
 		public const string LIVE_CHANNEL_SEGMENT = "liveChannelSegment";
 		#endregion
 
-		public long Id
-		{
-			set;
-			get;
-		}
-		public LiveChannelSegment LiveChannelSegment
-		{
-			set;
-			get;
-		}
+		public long Id { get; set; }
+		public LiveChannelSegment LiveChannelSegment { get; set; }
 
 		public LiveChannelSegmentUpdateRequestBuilder()
 			: base("livechannelsegment", "update")

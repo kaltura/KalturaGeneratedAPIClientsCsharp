@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public EntryServerNodeGetRequestBuilder()
 			: base("entryservernode", "get")
@@ -86,16 +82,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public EntryServerNodeFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public EntryServerNodeFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public EntryServerNodeListRequestBuilder()
 			: base("entryservernode", "list")
@@ -138,16 +126,8 @@ namespace Kaltura.Services
 		public const string ENTRY_SERVER_NODE = "entryServerNode";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public EntryServerNode EntryServerNode
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public EntryServerNode EntryServerNode { get; set; }
 
 		public EntryServerNodeUpdateRequestBuilder()
 			: base("entryservernode", "update")
@@ -190,16 +170,8 @@ namespace Kaltura.Services
 		public const string STATUS = "status";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public EntryServerNodeStatus Status
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public EntryServerNodeStatus Status { get; set; }
 
 		public EntryServerNodeUpdateStatusRequestBuilder()
 			: base("entryservernode", "updateStatus")
@@ -241,11 +213,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public EntryServerNodeValidateRegisteredEntryServerNodeRequestBuilder()
 			: base("entryservernode", "validateRegisteredEntryServerNode")

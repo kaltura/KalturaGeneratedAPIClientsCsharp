@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public PartnerCatalogItemAddRequestBuilder()
 			: base("reach_partnercatalogitem", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public PartnerCatalogItemDeleteRequestBuilder()
 			: base("reach_partnercatalogitem", "delete")

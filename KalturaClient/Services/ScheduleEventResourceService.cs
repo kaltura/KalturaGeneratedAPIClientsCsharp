@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string SCHEDULE_EVENT_RESOURCE = "scheduleEventResource";
 		#endregion
 
-		public ScheduleEventResource ScheduleEventResource
-		{
-			set;
-			get;
-		}
+		public ScheduleEventResource ScheduleEventResource { get; set; }
 
 		public ScheduleEventResourceAddRequestBuilder()
 			: base("schedule_scheduleeventresource", "add")
@@ -86,16 +82,8 @@ namespace Kaltura.Services
 		public const string SCHEDULE_RESOURCE_ID = "scheduleResourceId";
 		#endregion
 
-		public int ScheduleEventId
-		{
-			set;
-			get;
-		}
-		public int ScheduleResourceId
-		{
-			set;
-			get;
-		}
+		public int ScheduleEventId { get; set; }
+		public int ScheduleResourceId { get; set; }
 
 		public ScheduleEventResourceDeleteRequestBuilder()
 			: base("schedule_scheduleeventresource", "delete")
@@ -138,16 +126,8 @@ namespace Kaltura.Services
 		public const string SCHEDULE_RESOURCE_ID = "scheduleResourceId";
 		#endregion
 
-		public int ScheduleEventId
-		{
-			set;
-			get;
-		}
-		public int ScheduleResourceId
-		{
-			set;
-			get;
-		}
+		public int ScheduleEventId { get; set; }
+		public int ScheduleResourceId { get; set; }
 
 		public ScheduleEventResourceGetRequestBuilder()
 			: base("schedule_scheduleeventresource", "get")
@@ -191,21 +171,9 @@ namespace Kaltura.Services
 		public const string FILTER_BLACKOUT_CONFLICTS = "filterBlackoutConflicts";
 		#endregion
 
-		public ScheduleEventResourceFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
-		public bool FilterBlackoutConflicts
-		{
-			set;
-			get;
-		}
+		public ScheduleEventResourceFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
+		public bool FilterBlackoutConflicts { get; set; }
 
 		public ScheduleEventResourceListRequestBuilder()
 			: base("schedule_scheduleeventresource", "list")
@@ -252,21 +220,9 @@ namespace Kaltura.Services
 		public const string SCHEDULE_EVENT_RESOURCE = "scheduleEventResource";
 		#endregion
 
-		public int ScheduleEventId
-		{
-			set;
-			get;
-		}
-		public int ScheduleResourceId
-		{
-			set;
-			get;
-		}
-		public ScheduleEventResource ScheduleEventResource
-		{
-			set;
-			get;
-		}
+		public int ScheduleEventId { get; set; }
+		public int ScheduleResourceId { get; set; }
+		public ScheduleEventResource ScheduleEventResource { get; set; }
 
 		public ScheduleEventResourceUpdateRequestBuilder()
 			: base("schedule_scheduleeventresource", "update")

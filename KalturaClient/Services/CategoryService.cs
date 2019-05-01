@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string CATEGORY = "category";
 		#endregion
 
-		public Category Category
-		{
-			set;
-			get;
-		}
+		public Category Category { get; set; }
 
 		public CategoryAddRequestBuilder()
 			: base("category", "add")
@@ -87,21 +83,10 @@ namespace Kaltura.Services
 		public const string BULK_UPLOAD_CATEGORY_DATA = "bulkUploadCategoryData";
 		#endregion
 
-		public Stream FileData
-		{
-			set;
-			get;
-		}
-		public BulkUploadJobData BulkUploadData
-		{
-			set;
-			get;
-		}
-		public BulkUploadCategoryData BulkUploadCategoryData
-		{
-			set;
-			get;
-		}
+		public Stream FileData { get; set; }
+		public string FileData_FileName { get; set; }
+		public BulkUploadJobData BulkUploadData { get; set; }
+		public BulkUploadCategoryData BulkUploadCategoryData { get; set; }
 
 		public CategoryAddFromBulkUploadRequestBuilder()
 			: base("category", "addFromBulkUpload")
@@ -129,7 +114,7 @@ namespace Kaltura.Services
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("fileData", FileData);
+			kfiles.Add("fileData", new FileData(FileData, FileData_FileName));
 			return kfiles;
 		}
 
@@ -146,16 +131,8 @@ namespace Kaltura.Services
 		public const string MOVE_ENTRIES_TO_PARENT_CATEGORY = "moveEntriesToParentCategory";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public NullableBoolean MoveEntriesToParentCategory
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public NullableBoolean MoveEntriesToParentCategory { get; set; }
 
 		public CategoryDeleteRequestBuilder()
 			: base("category", "delete")
@@ -197,11 +174,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public CategoryGetRequestBuilder()
 			: base("category", "get")
@@ -241,16 +214,8 @@ namespace Kaltura.Services
 		public const string SHOULD_UPDATE = "shouldUpdate";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public bool ShouldUpdate
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public bool ShouldUpdate { get; set; }
 
 		public CategoryIndexRequestBuilder()
 			: base("category", "index")
@@ -293,16 +258,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public CategoryFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public CategoryFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public CategoryListRequestBuilder()
 			: base("category", "list")
@@ -345,16 +302,8 @@ namespace Kaltura.Services
 		public const string TARGET_CATEGORY_PARENT_ID = "targetCategoryParentId";
 		#endregion
 
-		public string CategoryIds
-		{
-			set;
-			get;
-		}
-		public int TargetCategoryParentId
-		{
-			set;
-			get;
-		}
+		public string CategoryIds { get; set; }
+		public int TargetCategoryParentId { get; set; }
 
 		public CategoryMoveRequestBuilder()
 			: base("category", "move")
@@ -428,16 +377,8 @@ namespace Kaltura.Services
 		public const string CATEGORY = "category";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public Category Category
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public Category Category { get; set; }
 
 		public CategoryUpdateRequestBuilder()
 			: base("category", "update")

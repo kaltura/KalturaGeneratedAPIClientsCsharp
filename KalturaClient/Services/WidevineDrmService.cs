@@ -43,16 +43,8 @@ namespace Kaltura.Services
 		public const string REFERRER = "referrer";
 		#endregion
 
-		public string FlavorAssetId
-		{
-			set;
-			get;
-		}
-		public string Referrer
-		{
-			set;
-			get;
-		}
+		public string FlavorAssetId { get; set; }
+		public string Referrer { get; set; }
 
 		public WidevineDrmGetLicenseRequestBuilder()
 			: base("widevine_widevinedrm", "getLicense")

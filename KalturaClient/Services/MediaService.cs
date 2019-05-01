@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string ENTRY = "entry";
 		#endregion
 
-		public MediaEntry Entry
-		{
-			set;
-			get;
-		}
+		public MediaEntry Entry { get; set; }
 
 		public MediaAddRequestBuilder()
 			: base("media", "add")
@@ -86,16 +82,8 @@ namespace Kaltura.Services
 		public const string RESOURCE = "resource";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public Resource Resource
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public Resource Resource { get; set; }
 
 		public MediaAddContentRequestBuilder()
 			: base("media", "addContent")
@@ -139,21 +127,9 @@ namespace Kaltura.Services
 		public const string BULK_UPLOAD_ID = "bulkUploadId";
 		#endregion
 
-		public MediaEntry MediaEntry
-		{
-			set;
-			get;
-		}
-		public string Url
-		{
-			set;
-			get;
-		}
-		public int BulkUploadId
-		{
-			set;
-			get;
-		}
+		public MediaEntry MediaEntry { get; set; }
+		public string Url { get; set; }
+		public int BulkUploadId { get; set; }
 
 		public MediaAddFromBulkRequestBuilder()
 			: base("media", "addFromBulk")
@@ -200,21 +176,9 @@ namespace Kaltura.Services
 		public const string SOURCE_FLAVOR_PARAMS_ID = "sourceFlavorParamsId";
 		#endregion
 
-		public string SourceEntryId
-		{
-			set;
-			get;
-		}
-		public MediaEntry MediaEntry
-		{
-			set;
-			get;
-		}
-		public int SourceFlavorParamsId
-		{
-			set;
-			get;
-		}
+		public string SourceEntryId { get; set; }
+		public MediaEntry MediaEntry { get; set; }
+		public int SourceFlavorParamsId { get; set; }
 
 		public MediaAddFromEntryRequestBuilder()
 			: base("media", "addFromEntry")
@@ -260,16 +224,8 @@ namespace Kaltura.Services
 		public const string MEDIA_ENTRY = "mediaEntry";
 		#endregion
 
-		public string SourceFlavorAssetId
-		{
-			set;
-			get;
-		}
-		public MediaEntry MediaEntry
-		{
-			set;
-			get;
-		}
+		public string SourceFlavorAssetId { get; set; }
+		public MediaEntry MediaEntry { get; set; }
 
 		public MediaAddFromFlavorAssetRequestBuilder()
 			: base("media", "addFromFlavorAsset")
@@ -312,16 +268,8 @@ namespace Kaltura.Services
 		public const string WEBCAM_TOKEN_ID = "webcamTokenId";
 		#endregion
 
-		public MediaEntry MediaEntry
-		{
-			set;
-			get;
-		}
-		public string WebcamTokenId
-		{
-			set;
-			get;
-		}
+		public MediaEntry MediaEntry { get; set; }
+		public string WebcamTokenId { get; set; }
 
 		public MediaAddFromRecordedWebcamRequestBuilder()
 			: base("media", "addFromRecordedWebcam")
@@ -364,16 +312,8 @@ namespace Kaltura.Services
 		public const string SEARCH_RESULT = "searchResult";
 		#endregion
 
-		public MediaEntry MediaEntry
-		{
-			set;
-			get;
-		}
-		public SearchResult SearchResult
-		{
-			set;
-			get;
-		}
+		public MediaEntry MediaEntry { get; set; }
+		public SearchResult SearchResult { get; set; }
 
 		public MediaAddFromSearchResultRequestBuilder()
 			: base("media", "addFromSearchResult")
@@ -416,16 +356,8 @@ namespace Kaltura.Services
 		public const string UPLOAD_TOKEN_ID = "uploadTokenId";
 		#endregion
 
-		public MediaEntry MediaEntry
-		{
-			set;
-			get;
-		}
-		public string UploadTokenId
-		{
-			set;
-			get;
-		}
+		public MediaEntry MediaEntry { get; set; }
+		public string UploadTokenId { get; set; }
 
 		public MediaAddFromUploadedFileRequestBuilder()
 			: base("media", "addFromUploadedFile")
@@ -468,16 +400,8 @@ namespace Kaltura.Services
 		public const string URL = "url";
 		#endregion
 
-		public MediaEntry MediaEntry
-		{
-			set;
-			get;
-		}
-		public string Url
-		{
-			set;
-			get;
-		}
+		public MediaEntry MediaEntry { get; set; }
+		public string Url { get; set; }
 
 		public MediaAddFromUrlRequestBuilder()
 			: base("media", "addFromUrl")
@@ -520,16 +444,8 @@ namespace Kaltura.Services
 		public const string RANK = "rank";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public int Rank
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public int Rank { get; set; }
 
 		public MediaAnonymousRankRequestBuilder()
 			: base("media", "anonymousRank")
@@ -571,11 +487,7 @@ namespace Kaltura.Services
 		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
 
 		public MediaApproveRequestBuilder()
 			: base("media", "approve")
@@ -614,11 +526,7 @@ namespace Kaltura.Services
 		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
 
 		public MediaApproveReplaceRequestBuilder()
 			: base("media", "approveReplace")
@@ -659,21 +567,10 @@ namespace Kaltura.Services
 		public const string BULK_UPLOAD_ENTRY_DATA = "bulkUploadEntryData";
 		#endregion
 
-		public Stream FileData
-		{
-			set;
-			get;
-		}
-		public BulkUploadJobData BulkUploadData
-		{
-			set;
-			get;
-		}
-		public BulkUploadEntryData BulkUploadEntryData
-		{
-			set;
-			get;
-		}
+		public Stream FileData { get; set; }
+		public string FileData_FileName { get; set; }
+		public BulkUploadJobData BulkUploadData { get; set; }
+		public BulkUploadEntryData BulkUploadEntryData { get; set; }
 
 		public MediaBulkUploadAddRequestBuilder()
 			: base("media", "bulkUploadAdd")
@@ -701,7 +598,7 @@ namespace Kaltura.Services
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("fileData", FileData);
+			kfiles.Add("fileData", new FileData(FileData, FileData_FileName));
 			return kfiles;
 		}
 
@@ -717,11 +614,7 @@ namespace Kaltura.Services
 		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
 
 		public MediaCancelReplaceRequestBuilder()
 			: base("media", "cancelReplace")
@@ -762,21 +655,9 @@ namespace Kaltura.Services
 		public const string DYNAMIC_CONVERSION_ATTRIBUTES = "dynamicConversionAttributes";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public int ConversionProfileId
-		{
-			set;
-			get;
-		}
-		public IList<ConversionAttribute> DynamicConversionAttributes
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public int ConversionProfileId { get; set; }
+		public IList<ConversionAttribute> DynamicConversionAttributes { get; set; }
 
 		public MediaConvertRequestBuilder()
 			: base("media", "convert")
@@ -821,11 +702,7 @@ namespace Kaltura.Services
 		public const string FILTER = "filter";
 		#endregion
 
-		public MediaEntryFilter Filter
-		{
-			set;
-			get;
-		}
+		public MediaEntryFilter Filter { get; set; }
 
 		public MediaCountRequestBuilder()
 			: base("media", "count")
@@ -864,11 +741,7 @@ namespace Kaltura.Services
 		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
 
 		public MediaDeleteRequestBuilder()
 			: base("media", "delete")
@@ -907,11 +780,7 @@ namespace Kaltura.Services
 		public const string DATA = "data";
 		#endregion
 
-		public MediaEsearchExportToCsvJobData Data
-		{
-			set;
-			get;
-		}
+		public MediaEsearchExportToCsvJobData Data { get; set; }
 
 		public MediaExportToCsvRequestBuilder()
 			: base("media", "exportToCsv")
@@ -950,11 +819,7 @@ namespace Kaltura.Services
 		public const string MODERATION_FLAG = "moderationFlag";
 		#endregion
 
-		public ModerationFlag ModerationFlag
-		{
-			set;
-			get;
-		}
+		public ModerationFlag ModerationFlag { get; set; }
 
 		public MediaFlagRequestBuilder()
 			: base("media", "flag")
@@ -994,16 +859,8 @@ namespace Kaltura.Services
 		public const string VERSION = "version";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public int Version
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public int Version { get; set; }
 
 		public MediaGetRequestBuilder()
 			: base("media", "get")
@@ -1047,21 +904,9 @@ namespace Kaltura.Services
 		public const string FEATURES = "features";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public IList<ExtendingItemMrssParameter> ExtendingItemsArray
-		{
-			set;
-			get;
-		}
-		public string Features
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public IList<ExtendingItemMrssParameter> ExtendingItemsArray { get; set; }
+		public string Features { get; set; }
 
 		public MediaGetMrssRequestBuilder()
 			: base("media", "getMrss")
@@ -1107,16 +952,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public MediaEntryFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public MediaEntryFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public MediaListRequestBuilder()
 			: base("media", "list")
@@ -1159,16 +996,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public MediaListFlagsRequestBuilder()
 			: base("media", "listFlags")
@@ -1210,11 +1039,7 @@ namespace Kaltura.Services
 		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
 
 		public MediaRejectRequestBuilder()
 			: base("media", "reject")
@@ -1254,16 +1079,8 @@ namespace Kaltura.Services
 		public const string FILE_FORMAT = "fileFormat";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public string FileFormat
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public string FileFormat { get; set; }
 
 		public MediaRequestConversionRequestBuilder()
 			: base("media", "requestConversion")
@@ -1306,16 +1123,8 @@ namespace Kaltura.Services
 		public const string MEDIA_ENTRY = "mediaEntry";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public MediaEntry MediaEntry
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public MediaEntry MediaEntry { get; set; }
 
 		public MediaUpdateRequestBuilder()
 			: base("media", "update")
@@ -1360,26 +1169,10 @@ namespace Kaltura.Services
 		public const string ADVANCED_OPTIONS = "advancedOptions";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public Resource Resource
-		{
-			set;
-			get;
-		}
-		public int ConversionProfileId
-		{
-			set;
-			get;
-		}
-		public EntryReplacementOptions AdvancedOptions
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public Resource Resource { get; set; }
+		public int ConversionProfileId { get; set; }
+		public EntryReplacementOptions AdvancedOptions { get; set; }
 
 		public MediaUpdateContentRequestBuilder()
 			: base("media", "updateContent")
@@ -1429,21 +1222,9 @@ namespace Kaltura.Services
 		public const string FLAVOR_PARAMS_ID = "flavorParamsId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public int TimeOffset
-		{
-			set;
-			get;
-		}
-		public int FlavorParamsId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public int TimeOffset { get; set; }
+		public int FlavorParamsId { get; set; }
 
 		public MediaUpdateThumbnailRequestBuilder()
 			: base("media", "updateThumbnail")
@@ -1491,26 +1272,10 @@ namespace Kaltura.Services
 		public const string FLAVOR_PARAMS_ID = "flavorParamsId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public string SourceEntryId
-		{
-			set;
-			get;
-		}
-		public int TimeOffset
-		{
-			set;
-			get;
-		}
-		public int FlavorParamsId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public string SourceEntryId { get; set; }
+		public int TimeOffset { get; set; }
+		public int FlavorParamsId { get; set; }
 
 		public MediaUpdateThumbnailFromSourceEntryRequestBuilder()
 			: base("media", "updateThumbnailFromSourceEntry")
@@ -1559,16 +1324,8 @@ namespace Kaltura.Services
 		public const string URL = "url";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public string Url
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public string Url { get; set; }
 
 		public MediaUpdateThumbnailFromUrlRequestBuilder()
 			: base("media", "updateThumbnailFromUrl")
@@ -1611,16 +1368,9 @@ namespace Kaltura.Services
 		public const string FILE_DATA = "fileData";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public Stream FileData
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public Stream FileData { get; set; }
+		public string FileData_FileName { get; set; }
 
 		public MediaUpdateThumbnailJpegRequestBuilder()
 			: base("media", "updateThumbnailJpeg")
@@ -1645,7 +1395,7 @@ namespace Kaltura.Services
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("fileData", FileData);
+			kfiles.Add("fileData", new FileData(FileData, FileData_FileName));
 			return kfiles;
 		}
 
@@ -1661,11 +1411,8 @@ namespace Kaltura.Services
 		public const string FILE_DATA = "fileData";
 		#endregion
 
-		public Stream FileData
-		{
-			set;
-			get;
-		}
+		public Stream FileData { get; set; }
+		public string FileData_FileName { get; set; }
 
 		public MediaUploadRequestBuilder()
 			: base("media", "upload")
@@ -1687,7 +1434,7 @@ namespace Kaltura.Services
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("fileData", FileData);
+			kfiles.Add("fileData", new FileData(FileData, FileData_FileName));
 			return kfiles;
 		}
 

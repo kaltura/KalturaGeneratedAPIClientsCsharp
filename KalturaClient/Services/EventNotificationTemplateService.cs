@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string EVENT_NOTIFICATION_TEMPLATE = "eventNotificationTemplate";
 		#endregion
 
-		public EventNotificationTemplate EventNotificationTemplate
-		{
-			set;
-			get;
-		}
+		public EventNotificationTemplate EventNotificationTemplate { get; set; }
 
 		public EventNotificationTemplateAddRequestBuilder()
 			: base("eventnotification_eventnotificationtemplate", "add")
@@ -86,16 +82,8 @@ namespace Kaltura.Services
 		public const string EVENT_NOTIFICATION_TEMPLATE = "eventNotificationTemplate";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public EventNotificationTemplate EventNotificationTemplate
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public EventNotificationTemplate EventNotificationTemplate { get; set; }
 
 		public EventNotificationTemplateCloneRequestBuilder()
 			: base("eventnotification_eventnotificationtemplate", "clone")
@@ -137,11 +125,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public EventNotificationTemplateDeleteRequestBuilder()
 			: base("eventnotification_eventnotificationtemplate", "delete")
@@ -181,16 +165,8 @@ namespace Kaltura.Services
 		public const string SCOPE = "scope";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public EventNotificationScope Scope
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public EventNotificationScope Scope { get; set; }
 
 		public EventNotificationTemplateDispatchRequestBuilder()
 			: base("eventnotification_eventnotificationtemplate", "dispatch")
@@ -232,11 +208,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public EventNotificationTemplateGetRequestBuilder()
 			: base("eventnotification_eventnotificationtemplate", "get")
@@ -276,16 +248,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public EventNotificationTemplateFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public EventNotificationTemplateFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public EventNotificationTemplateListRequestBuilder()
 			: base("eventnotification_eventnotificationtemplate", "list")
@@ -328,16 +292,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public PartnerFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public PartnerFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public EventNotificationTemplateListByPartnerRequestBuilder()
 			: base("eventnotification_eventnotificationtemplate", "listByPartner")
@@ -380,16 +336,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public EventNotificationTemplateFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public EventNotificationTemplateFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public EventNotificationTemplateListTemplatesRequestBuilder()
 			: base("eventnotification_eventnotificationtemplate", "listTemplates")
@@ -432,16 +380,8 @@ namespace Kaltura.Services
 		public const string PUSH_NOTIFICATION_PARAMS = "pushNotificationParams";
 		#endregion
 
-		public string NotificationTemplateSystemName
-		{
-			set;
-			get;
-		}
-		public PushNotificationParams PushNotificationParams
-		{
-			set;
-			get;
-		}
+		public string NotificationTemplateSystemName { get; set; }
+		public PushNotificationParams PushNotificationParams { get; set; }
 
 		public EventNotificationTemplateRegisterRequestBuilder()
 			: base("eventnotification_eventnotificationtemplate", "register")
@@ -485,21 +425,9 @@ namespace Kaltura.Services
 		public const string COMMAND = "command";
 		#endregion
 
-		public string NotificationTemplateSystemName
-		{
-			set;
-			get;
-		}
-		public PushNotificationParams PushNotificationParams
-		{
-			set;
-			get;
-		}
-		public PushNotificationCommandType Command
-		{
-			set;
-			get;
-		}
+		public string NotificationTemplateSystemName { get; set; }
+		public PushNotificationParams PushNotificationParams { get; set; }
+		public PushNotificationCommandType Command { get; set; }
 
 		public EventNotificationTemplateSendCommandRequestBuilder()
 			: base("eventnotification_eventnotificationtemplate", "sendCommand")
@@ -545,16 +473,8 @@ namespace Kaltura.Services
 		public const string EVENT_NOTIFICATION_TEMPLATE = "eventNotificationTemplate";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public EventNotificationTemplate EventNotificationTemplate
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public EventNotificationTemplate EventNotificationTemplate { get; set; }
 
 		public EventNotificationTemplateUpdateRequestBuilder()
 			: base("eventnotification_eventnotificationtemplate", "update")
@@ -597,16 +517,8 @@ namespace Kaltura.Services
 		public const string STATUS = "status";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public EventNotificationTemplateStatus Status
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public EventNotificationTemplateStatus Status { get; set; }
 
 		public EventNotificationTemplateUpdateStatusRequestBuilder()
 			: base("eventnotification_eventnotificationtemplate", "updateStatus")

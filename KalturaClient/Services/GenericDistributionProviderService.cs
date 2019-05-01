@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string GENERIC_DISTRIBUTION_PROVIDER = "genericDistributionProvider";
 		#endregion
 
-		public GenericDistributionProvider GenericDistributionProvider
-		{
-			set;
-			get;
-		}
+		public GenericDistributionProvider GenericDistributionProvider { get; set; }
 
 		public GenericDistributionProviderAddRequestBuilder()
 			: base("contentdistribution_genericdistributionprovider", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public GenericDistributionProviderDeleteRequestBuilder()
 			: base("contentdistribution_genericdistributionprovider", "delete")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public GenericDistributionProviderGetRequestBuilder()
 			: base("contentdistribution_genericdistributionprovider", "get")
@@ -172,16 +160,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public GenericDistributionProviderFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public GenericDistributionProviderFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public GenericDistributionProviderListRequestBuilder()
 			: base("contentdistribution_genericdistributionprovider", "list")
@@ -224,16 +204,8 @@ namespace Kaltura.Services
 		public const string GENERIC_DISTRIBUTION_PROVIDER = "genericDistributionProvider";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public GenericDistributionProvider GenericDistributionProvider
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public GenericDistributionProvider GenericDistributionProvider { get; set; }
 
 		public GenericDistributionProviderUpdateRequestBuilder()
 			: base("contentdistribution_genericdistributionprovider", "update")

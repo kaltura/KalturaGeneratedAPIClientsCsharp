@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string SERVER_NODE = "serverNode";
 		#endregion
 
-		public ServerNode ServerNode
-		{
-			set;
-			get;
-		}
+		public ServerNode ServerNode { get; set; }
 
 		public ServerNodeAddRequestBuilder()
 			: base("servernode", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string SERVER_NODE_ID = "serverNodeId";
 		#endregion
 
-		public string ServerNodeId
-		{
-			set;
-			get;
-		}
+		public string ServerNodeId { get; set; }
 
 		public ServerNodeDeleteRequestBuilder()
 			: base("servernode", "delete")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string SERVER_NODE_ID = "serverNodeId";
 		#endregion
 
-		public string ServerNodeId
-		{
-			set;
-			get;
-		}
+		public string ServerNodeId { get; set; }
 
 		public ServerNodeDisableRequestBuilder()
 			: base("servernode", "disable")
@@ -171,11 +159,7 @@ namespace Kaltura.Services
 		public const string SERVER_NODE_ID = "serverNodeId";
 		#endregion
 
-		public string ServerNodeId
-		{
-			set;
-			get;
-		}
+		public string ServerNodeId { get; set; }
 
 		public ServerNodeEnableRequestBuilder()
 			: base("servernode", "enable")
@@ -214,11 +198,7 @@ namespace Kaltura.Services
 		public const string SERVER_NODE_ID = "serverNodeId";
 		#endregion
 
-		public int ServerNodeId
-		{
-			set;
-			get;
-		}
+		public int ServerNodeId { get; set; }
 
 		public ServerNodeGetRequestBuilder()
 			: base("servernode", "get")
@@ -260,26 +240,10 @@ namespace Kaltura.Services
 		public const string DELIVERY_TYPE = "deliveryType";
 		#endregion
 
-		public string HostName
-		{
-			set;
-			get;
-		}
-		public string Protocol
-		{
-			set;
-			get;
-		}
-		public string DeliveryFormat
-		{
-			set;
-			get;
-		}
-		public string DeliveryType
-		{
-			set;
-			get;
-		}
+		public string HostName { get; set; }
+		public string Protocol { get; set; }
+		public string DeliveryFormat { get; set; }
+		public string DeliveryType { get; set; }
 
 		public ServerNodeGetFullPathRequestBuilder()
 			: base("servernode", "getFullPath")
@@ -328,16 +292,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public ServerNodeFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public ServerNodeFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public ServerNodeListRequestBuilder()
 			: base("servernode", "list")
@@ -379,11 +335,7 @@ namespace Kaltura.Services
 		public const string SERVER_NODE_ID = "serverNodeId";
 		#endregion
 
-		public string ServerNodeId
-		{
-			set;
-			get;
-		}
+		public string ServerNodeId { get; set; }
 
 		public ServerNodeMarkOfflineRequestBuilder()
 			: base("servernode", "markOffline")
@@ -424,21 +376,9 @@ namespace Kaltura.Services
 		public const string SERVER_NODE_STATUS = "serverNodeStatus";
 		#endregion
 
-		public string HostName
-		{
-			set;
-			get;
-		}
-		public ServerNode ServerNode
-		{
-			set;
-			get;
-		}
-		public ServerNodeStatus ServerNodeStatus
-		{
-			set;
-			get;
-		}
+		public string HostName { get; set; }
+		public ServerNode ServerNode { get; set; }
+		public ServerNodeStatus ServerNodeStatus { get; set; }
 
 		public ServerNodeReportStatusRequestBuilder()
 			: base("servernode", "reportStatus")
@@ -484,16 +424,8 @@ namespace Kaltura.Services
 		public const string SERVER_NODE = "serverNode";
 		#endregion
 
-		public int ServerNodeId
-		{
-			set;
-			get;
-		}
-		public ServerNode ServerNode
-		{
-			set;
-			get;
-		}
+		public int ServerNodeId { get; set; }
+		public ServerNode ServerNode { get; set; }
 
 		public ServerNodeUpdateRequestBuilder()
 			: base("servernode", "update")

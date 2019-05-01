@@ -44,21 +44,9 @@ namespace Kaltura.Services
 		public new const string PARTNER_ID = "partnerId";
 		#endregion
 
-		public string Email
-		{
-			set;
-			get;
-		}
-		public string Password
-		{
-			set;
-			get;
-		}
-		public new int PartnerId
-		{
-			set;
-			get;
-		}
+		public string Email { get; set; }
+		public string Password { get; set; }
+		public new int PartnerId { get; set; }
 
 		public AdminUserLoginRequestBuilder()
 			: base("adminuser", "login")
@@ -103,11 +91,7 @@ namespace Kaltura.Services
 		public const string EMAIL = "email";
 		#endregion
 
-		public string Email
-		{
-			set;
-			get;
-		}
+		public string Email { get; set; }
 
 		public AdminUserResetPasswordRequestBuilder()
 			: base("adminuser", "resetPassword")
@@ -147,16 +131,8 @@ namespace Kaltura.Services
 		public const string NEW_PASSWORD = "newPassword";
 		#endregion
 
-		public string HashKey
-		{
-			set;
-			get;
-		}
-		public string NewPassword
-		{
-			set;
-			get;
-		}
+		public string HashKey { get; set; }
+		public string NewPassword { get; set; }
 
 		public AdminUserSetInitialPasswordRequestBuilder()
 			: base("adminuser", "setInitialPassword")
@@ -201,26 +177,10 @@ namespace Kaltura.Services
 		public const string NEW_PASSWORD = "newPassword";
 		#endregion
 
-		public string Email
-		{
-			set;
-			get;
-		}
-		public string Password
-		{
-			set;
-			get;
-		}
-		public string NewEmail
-		{
-			set;
-			get;
-		}
-		public string NewPassword
-		{
-			set;
-			get;
-		}
+		public string Email { get; set; }
+		public string Password { get; set; }
+		public string NewEmail { get; set; }
+		public string NewPassword { get; set; }
 
 		public AdminUserUpdatePasswordRequestBuilder()
 			: base("adminuser", "updatePassword")

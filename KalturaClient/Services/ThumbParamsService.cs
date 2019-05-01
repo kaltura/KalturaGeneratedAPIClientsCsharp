@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string THUMB_PARAMS = "thumbParams";
 		#endregion
 
-		public ThumbParams ThumbParams
-		{
-			set;
-			get;
-		}
+		public ThumbParams ThumbParams { get; set; }
 
 		public ThumbParamsAddRequestBuilder()
 			: base("thumbparams", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public ThumbParamsDeleteRequestBuilder()
 			: base("thumbparams", "delete")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public ThumbParamsGetRequestBuilder()
 			: base("thumbparams", "get")
@@ -171,11 +159,7 @@ namespace Kaltura.Services
 		public const string CONVERSION_PROFILE_ID = "conversionProfileId";
 		#endregion
 
-		public int ConversionProfileId
-		{
-			set;
-			get;
-		}
+		public int ConversionProfileId { get; set; }
 
 		public ThumbParamsGetByConversionProfileIdRequestBuilder()
 			: base("thumbparams", "getByConversionProfileId")
@@ -221,16 +205,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public ThumbParamsFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public ThumbParamsFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public ThumbParamsListRequestBuilder()
 			: base("thumbparams", "list")
@@ -273,16 +249,8 @@ namespace Kaltura.Services
 		public const string THUMB_PARAMS = "thumbParams";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public ThumbParams ThumbParams
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public ThumbParams ThumbParams { get; set; }
 
 		public ThumbParamsUpdateRequestBuilder()
 			: base("thumbparams", "update")

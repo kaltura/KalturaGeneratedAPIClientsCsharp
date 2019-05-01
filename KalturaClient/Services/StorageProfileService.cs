@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string STORAGE_PROFILE = "storageProfile";
 		#endregion
 
-		public StorageProfile StorageProfile
-		{
-			set;
-			get;
-		}
+		public StorageProfile StorageProfile { get; set; }
 
 		public StorageProfileAddRequestBuilder()
 			: base("storageprofile", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string STORAGE_PROFILE_ID = "storageProfileId";
 		#endregion
 
-		public int StorageProfileId
-		{
-			set;
-			get;
-		}
+		public int StorageProfileId { get; set; }
 
 		public StorageProfileGetRequestBuilder()
 			: base("storageprofile", "get")
@@ -129,16 +121,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public StorageProfileFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public StorageProfileFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public StorageProfileListRequestBuilder()
 			: base("storageprofile", "list")
@@ -181,16 +165,8 @@ namespace Kaltura.Services
 		public const string STORAGE_PROFILE = "storageProfile";
 		#endregion
 
-		public int StorageProfileId
-		{
-			set;
-			get;
-		}
-		public StorageProfile StorageProfile
-		{
-			set;
-			get;
-		}
+		public int StorageProfileId { get; set; }
+		public StorageProfile StorageProfile { get; set; }
 
 		public StorageProfileUpdateRequestBuilder()
 			: base("storageprofile", "update")
@@ -233,16 +209,8 @@ namespace Kaltura.Services
 		public const string STATUS = "status";
 		#endregion
 
-		public int StorageId
-		{
-			set;
-			get;
-		}
-		public StorageProfileStatus Status
-		{
-			set;
-			get;
-		}
+		public int StorageId { get; set; }
+		public StorageProfileStatus Status { get; set; }
 
 		public StorageProfileUpdateStatusRequestBuilder()
 			: base("storageprofile", "updateStatus")

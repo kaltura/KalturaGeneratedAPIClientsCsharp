@@ -43,16 +43,8 @@ namespace Kaltura.Services
 		public const string USER_ID = "userId";
 		#endregion
 
-		public int CategoryId
-		{
-			set;
-			get;
-		}
-		public string UserId
-		{
-			set;
-			get;
-		}
+		public int CategoryId { get; set; }
+		public string UserId { get; set; }
 
 		public CategoryUserActivateRequestBuilder()
 			: base("categoryuser", "activate")
@@ -94,11 +86,7 @@ namespace Kaltura.Services
 		public const string CATEGORY_USER = "categoryUser";
 		#endregion
 
-		public CategoryUser CategoryUser
-		{
-			set;
-			get;
-		}
+		public CategoryUser CategoryUser { get; set; }
 
 		public CategoryUserAddRequestBuilder()
 			: base("categoryuser", "add")
@@ -139,21 +127,10 @@ namespace Kaltura.Services
 		public const string BULK_UPLOAD_CATEGORY_USER_DATA = "bulkUploadCategoryUserData";
 		#endregion
 
-		public Stream FileData
-		{
-			set;
-			get;
-		}
-		public BulkUploadJobData BulkUploadData
-		{
-			set;
-			get;
-		}
-		public BulkUploadCategoryUserData BulkUploadCategoryUserData
-		{
-			set;
-			get;
-		}
+		public Stream FileData { get; set; }
+		public string FileData_FileName { get; set; }
+		public BulkUploadJobData BulkUploadData { get; set; }
+		public BulkUploadCategoryUserData BulkUploadCategoryUserData { get; set; }
 
 		public CategoryUserAddFromBulkUploadRequestBuilder()
 			: base("categoryuser", "addFromBulkUpload")
@@ -181,7 +158,7 @@ namespace Kaltura.Services
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("fileData", FileData);
+			kfiles.Add("fileData", new FileData(FileData, FileData_FileName));
 			return kfiles;
 		}
 
@@ -197,11 +174,7 @@ namespace Kaltura.Services
 		public const string CATEGORY_ID = "categoryId";
 		#endregion
 
-		public int CategoryId
-		{
-			set;
-			get;
-		}
+		public int CategoryId { get; set; }
 
 		public CategoryUserCopyFromCategoryRequestBuilder()
 			: base("categoryuser", "copyFromCategory")
@@ -241,16 +214,8 @@ namespace Kaltura.Services
 		public const string USER_ID = "userId";
 		#endregion
 
-		public int CategoryId
-		{
-			set;
-			get;
-		}
-		public string UserId
-		{
-			set;
-			get;
-		}
+		public int CategoryId { get; set; }
+		public string UserId { get; set; }
 
 		public CategoryUserDeactivateRequestBuilder()
 			: base("categoryuser", "deactivate")
@@ -293,16 +258,8 @@ namespace Kaltura.Services
 		public const string USER_ID = "userId";
 		#endregion
 
-		public int CategoryId
-		{
-			set;
-			get;
-		}
-		public string UserId
-		{
-			set;
-			get;
-		}
+		public int CategoryId { get; set; }
+		public string UserId { get; set; }
 
 		public CategoryUserDeleteRequestBuilder()
 			: base("categoryuser", "delete")
@@ -345,16 +302,8 @@ namespace Kaltura.Services
 		public const string USER_ID = "userId";
 		#endregion
 
-		public int CategoryId
-		{
-			set;
-			get;
-		}
-		public string UserId
-		{
-			set;
-			get;
-		}
+		public int CategoryId { get; set; }
+		public string UserId { get; set; }
 
 		public CategoryUserGetRequestBuilder()
 			: base("categoryuser", "get")
@@ -398,21 +347,9 @@ namespace Kaltura.Services
 		public const string SHOULD_UPDATE = "shouldUpdate";
 		#endregion
 
-		public string UserId
-		{
-			set;
-			get;
-		}
-		public int CategoryId
-		{
-			set;
-			get;
-		}
-		public bool ShouldUpdate
-		{
-			set;
-			get;
-		}
+		public string UserId { get; set; }
+		public int CategoryId { get; set; }
+		public bool ShouldUpdate { get; set; }
 
 		public CategoryUserIndexRequestBuilder()
 			: base("categoryuser", "index")
@@ -458,16 +395,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public CategoryUserFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public CategoryUserFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public CategoryUserListRequestBuilder()
 			: base("categoryuser", "list")
@@ -512,26 +441,10 @@ namespace Kaltura.Services
 		public const string OVERRIDE = "override";
 		#endregion
 
-		public int CategoryId
-		{
-			set;
-			get;
-		}
-		public string UserId
-		{
-			set;
-			get;
-		}
-		public CategoryUser CategoryUser
-		{
-			set;
-			get;
-		}
-		public bool Override_
-		{
-			set;
-			get;
-		}
+		public int CategoryId { get; set; }
+		public string UserId { get; set; }
+		public CategoryUser CategoryUser { get; set; }
+		public bool Override_ { get; set; }
 
 		public CategoryUserUpdateRequestBuilder()
 			: base("categoryuser", "update")

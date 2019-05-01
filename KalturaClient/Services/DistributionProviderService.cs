@@ -43,16 +43,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public DistributionProviderFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public DistributionProviderFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public DistributionProviderListRequestBuilder()
 			: base("contentdistribution_distributionprovider", "list")

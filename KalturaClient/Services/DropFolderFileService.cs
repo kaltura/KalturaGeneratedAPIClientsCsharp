@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string DROP_FOLDER_FILE = "dropFolderFile";
 		#endregion
 
-		public DropFolderFile DropFolderFile
-		{
-			set;
-			get;
-		}
+		public DropFolderFile DropFolderFile { get; set; }
 
 		public DropFolderFileAddRequestBuilder()
 			: base("dropfolder_dropfolderfile", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string DROP_FOLDER_FILE_ID = "dropFolderFileId";
 		#endregion
 
-		public int DropFolderFileId
-		{
-			set;
-			get;
-		}
+		public int DropFolderFileId { get; set; }
 
 		public DropFolderFileDeleteRequestBuilder()
 			: base("dropfolder_dropfolderfile", "delete")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string DROP_FOLDER_FILE_ID = "dropFolderFileId";
 		#endregion
 
-		public int DropFolderFileId
-		{
-			set;
-			get;
-		}
+		public int DropFolderFileId { get; set; }
 
 		public DropFolderFileGetRequestBuilder()
 			: base("dropfolder_dropfolderfile", "get")
@@ -171,11 +159,7 @@ namespace Kaltura.Services
 		public const string DROP_FOLDER_FILE_ID = "dropFolderFileId";
 		#endregion
 
-		public int DropFolderFileId
-		{
-			set;
-			get;
-		}
+		public int DropFolderFileId { get; set; }
 
 		public DropFolderFileIgnoreRequestBuilder()
 			: base("dropfolder_dropfolderfile", "ignore")
@@ -215,16 +199,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public DropFolderFileFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public DropFolderFileFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public DropFolderFileListRequestBuilder()
 			: base("dropfolder_dropfolderfile", "list")
@@ -267,16 +243,8 @@ namespace Kaltura.Services
 		public const string DROP_FOLDER_FILE = "dropFolderFile";
 		#endregion
 
-		public int DropFolderFileId
-		{
-			set;
-			get;
-		}
-		public DropFolderFile DropFolderFile
-		{
-			set;
-			get;
-		}
+		public int DropFolderFileId { get; set; }
+		public DropFolderFile DropFolderFile { get; set; }
 
 		public DropFolderFileUpdateRequestBuilder()
 			: base("dropfolder_dropfolderfile", "update")
@@ -319,16 +287,8 @@ namespace Kaltura.Services
 		public const string STATUS = "status";
 		#endregion
 
-		public int DropFolderFileId
-		{
-			set;
-			get;
-		}
-		public DropFolderFileStatus Status
-		{
-			set;
-			get;
-		}
+		public int DropFolderFileId { get; set; }
+		public DropFolderFileStatus Status { get; set; }
 
 		public DropFolderFileUpdateStatusRequestBuilder()
 			: base("dropfolder_dropfolderfile", "updateStatus")

@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string UI_CONF = "uiConf";
 		#endregion
 
-		public UiConf UiConf
-		{
-			set;
-			get;
-		}
+		public UiConf UiConf { get; set; }
 
 		public UiConfAddRequestBuilder()
 			: base("uiconf", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public UiConfCloneRequestBuilder()
 			: base("uiconf", "clone")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public UiConfDeleteRequestBuilder()
 			: base("uiconf", "delete")
@@ -171,11 +159,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public UiConfGetRequestBuilder()
 			: base("uiconf", "get")
@@ -250,16 +234,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public UiConfFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public UiConfFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public UiConfListRequestBuilder()
 			: base("uiconf", "list")
@@ -302,16 +278,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public UiConfFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public UiConfFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public UiConfListTemplatesRequestBuilder()
 			: base("uiconf", "listTemplates")
@@ -354,16 +322,8 @@ namespace Kaltura.Services
 		public const string UI_CONF = "uiConf";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public UiConf UiConf
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public UiConf UiConf { get; set; }
 
 		public UiConfUpdateRequestBuilder()
 			: base("uiconf", "update")

@@ -43,16 +43,8 @@ namespace Kaltura.Services
 		public const string ATTACHMENT_ASSET = "attachmentAsset";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public AttachmentAsset AttachmentAsset
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public AttachmentAsset AttachmentAsset { get; set; }
 
 		public AttachmentAssetAddRequestBuilder()
 			: base("attachment_attachmentasset", "add")
@@ -94,11 +86,7 @@ namespace Kaltura.Services
 		public const string ATTACHMENT_ASSET_ID = "attachmentAssetId";
 		#endregion
 
-		public string AttachmentAssetId
-		{
-			set;
-			get;
-		}
+		public string AttachmentAssetId { get; set; }
 
 		public AttachmentAssetDeleteRequestBuilder()
 			: base("attachment_attachmentasset", "delete")
@@ -137,11 +125,7 @@ namespace Kaltura.Services
 		public const string ATTACHMENT_ASSET_ID = "attachmentAssetId";
 		#endregion
 
-		public string AttachmentAssetId
-		{
-			set;
-			get;
-		}
+		public string AttachmentAssetId { get; set; }
 
 		public AttachmentAssetGetRequestBuilder()
 			: base("attachment_attachmentasset", "get")
@@ -180,11 +164,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public AttachmentAssetGetRemotePathsRequestBuilder()
 			: base("attachment_attachmentasset", "getRemotePaths")
@@ -224,16 +204,8 @@ namespace Kaltura.Services
 		public const string STORAGE_ID = "storageId";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public int StorageId
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public int StorageId { get; set; }
 
 		public AttachmentAssetGetUrlRequestBuilder()
 			: base("attachment_attachmentasset", "getUrl")
@@ -276,16 +248,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public AssetFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public AssetFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public AttachmentAssetListRequestBuilder()
 			: base("attachment_attachmentasset", "list")
@@ -328,16 +292,8 @@ namespace Kaltura.Services
 		public const string CONTENT_RESOURCE = "contentResource";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public ContentResource ContentResource
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public ContentResource ContentResource { get; set; }
 
 		public AttachmentAssetSetContentRequestBuilder()
 			: base("attachment_attachmentasset", "setContent")
@@ -380,16 +336,8 @@ namespace Kaltura.Services
 		public const string ATTACHMENT_ASSET = "attachmentAsset";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public AttachmentAsset AttachmentAsset
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public AttachmentAsset AttachmentAsset { get; set; }
 
 		public AttachmentAssetUpdateRequestBuilder()
 			: base("attachment_attachmentasset", "update")

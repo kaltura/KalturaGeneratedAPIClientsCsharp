@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string EVENT = "event";
 		#endregion
 
-		public LiveStatsEvent Kevent
-		{
-			set;
-			get;
-		}
+		public LiveStatsEvent Kevent { get; set; }
 
 		public LiveStatsCollectRequestBuilder()
 			: base("livestats", "collect")

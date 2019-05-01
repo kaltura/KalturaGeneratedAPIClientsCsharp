@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string AUDIT_TRAIL = "auditTrail";
 		#endregion
 
-		public AuditTrail AuditTrail
-		{
-			set;
-			get;
-		}
+		public AuditTrail AuditTrail { get; set; }
 
 		public AuditTrailAddRequestBuilder()
 			: base("audit_audittrail", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public AuditTrailGetRequestBuilder()
 			: base("audit_audittrail", "get")
@@ -129,16 +121,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public AuditTrailFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public AuditTrailFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public AuditTrailListRequestBuilder()
 			: base("audit_audittrail", "list")

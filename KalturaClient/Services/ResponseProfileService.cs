@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string ADD_RESPONSE_PROFILE = "addResponseProfile";
 		#endregion
 
-		public ResponseProfile AddResponseProfile
-		{
-			set;
-			get;
-		}
+		public ResponseProfile AddResponseProfile { get; set; }
 
 		public ResponseProfileAddRequestBuilder()
 			: base("responseprofile", "add")
@@ -86,16 +82,8 @@ namespace Kaltura.Services
 		public const string PROFILE = "profile";
 		#endregion
 
-		public long Id
-		{
-			set;
-			get;
-		}
-		public ResponseProfile Profile
-		{
-			set;
-			get;
-		}
+		public long Id { get; set; }
+		public ResponseProfile Profile { get; set; }
 
 		public ResponseProfileCloneRequestBuilder()
 			: base("responseprofile", "clone")
@@ -137,11 +125,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public long Id
-		{
-			set;
-			get;
-		}
+		public long Id { get; set; }
 
 		public ResponseProfileDeleteRequestBuilder()
 			: base("responseprofile", "delete")
@@ -180,11 +164,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public long Id
-		{
-			set;
-			get;
-		}
+		public long Id { get; set; }
 
 		public ResponseProfileGetRequestBuilder()
 			: base("responseprofile", "get")
@@ -224,16 +204,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public ResponseProfileFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public ResponseProfileFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public ResponseProfileListRequestBuilder()
 			: base("responseprofile", "list")
@@ -275,11 +247,7 @@ namespace Kaltura.Services
 		public const string OPTIONS = "options";
 		#endregion
 
-		public ResponseProfileCacheRecalculateOptions Options
-		{
-			set;
-			get;
-		}
+		public ResponseProfileCacheRecalculateOptions Options { get; set; }
 
 		public ResponseProfileRecalculateRequestBuilder()
 			: base("responseprofile", "recalculate")
@@ -319,16 +287,8 @@ namespace Kaltura.Services
 		public const string UPDATE_RESPONSE_PROFILE = "updateResponseProfile";
 		#endregion
 
-		public long Id
-		{
-			set;
-			get;
-		}
-		public ResponseProfile UpdateResponseProfile
-		{
-			set;
-			get;
-		}
+		public long Id { get; set; }
+		public ResponseProfile UpdateResponseProfile { get; set; }
 
 		public ResponseProfileUpdateRequestBuilder()
 			: base("responseprofile", "update")
@@ -371,16 +331,8 @@ namespace Kaltura.Services
 		public const string STATUS = "status";
 		#endregion
 
-		public long Id
-		{
-			set;
-			get;
-		}
-		public ResponseProfileStatus Status
-		{
-			set;
-			get;
-		}
+		public long Id { get; set; }
+		public ResponseProfileStatus Status { get; set; }
 
 		public ResponseProfileUpdateStatusRequestBuilder()
 			: base("responseprofile", "updateStatus")

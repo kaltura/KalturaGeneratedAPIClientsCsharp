@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string CUE_POINT = "cuePoint";
 		#endregion
 
-		public CuePoint CuePoint
-		{
-			set;
-			get;
-		}
+		public CuePoint CuePoint { get; set; }
 
 		public CuePointAddRequestBuilder()
 			: base("cuepoint_cuepoint", "add")
@@ -85,11 +81,8 @@ namespace Kaltura.Services
 		public const string FILE_DATA = "fileData";
 		#endregion
 
-		public Stream FileData
-		{
-			set;
-			get;
-		}
+		public Stream FileData { get; set; }
+		public string FileData_FileName { get; set; }
 
 		public CuePointAddFromBulkRequestBuilder()
 			: base("cuepoint_cuepoint", "addFromBulk")
@@ -111,7 +104,7 @@ namespace Kaltura.Services
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("fileData", FileData);
+			kfiles.Add("fileData", new FileData(FileData, FileData_FileName));
 			return kfiles;
 		}
 
@@ -128,16 +121,8 @@ namespace Kaltura.Services
 		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public string EntryId
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public string EntryId { get; set; }
 
 		public CuePointCloneRequestBuilder()
 			: base("cuepoint_cuepoint", "clone")
@@ -179,11 +164,7 @@ namespace Kaltura.Services
 		public const string FILTER = "filter";
 		#endregion
 
-		public CuePointFilter Filter
-		{
-			set;
-			get;
-		}
+		public CuePointFilter Filter { get; set; }
 
 		public CuePointCountRequestBuilder()
 			: base("cuepoint_cuepoint", "count")
@@ -222,11 +203,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public CuePointDeleteRequestBuilder()
 			: base("cuepoint_cuepoint", "delete")
@@ -265,11 +242,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public CuePointGetRequestBuilder()
 			: base("cuepoint_cuepoint", "get")
@@ -309,16 +282,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public CuePointFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public CuePointFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public CuePointListRequestBuilder()
 			: base("cuepoint_cuepoint", "list")
@@ -361,16 +326,8 @@ namespace Kaltura.Services
 		public const string CUE_POINT = "cuePoint";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public CuePoint CuePoint
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public CuePoint CuePoint { get; set; }
 
 		public CuePointUpdateRequestBuilder()
 			: base("cuepoint_cuepoint", "update")
@@ -414,21 +371,9 @@ namespace Kaltura.Services
 		public const string END_TIME = "endTime";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public int StartTime
-		{
-			set;
-			get;
-		}
-		public int EndTime
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public int StartTime { get; set; }
+		public int EndTime { get; set; }
 
 		public CuePointUpdateCuePointsTimesRequestBuilder()
 			: base("cuepoint_cuepoint", "updateCuePointsTimes")
@@ -474,16 +419,8 @@ namespace Kaltura.Services
 		public const string STATUS = "status";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public CuePointStatus Status
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public CuePointStatus Status { get; set; }
 
 		public CuePointUpdateStatusRequestBuilder()
 			: base("cuepoint_cuepoint", "updateStatus")

@@ -45,26 +45,10 @@ namespace Kaltura.Services
 		public const string XML_DATA = "xmlData";
 		#endregion
 
-		public int MetadataProfileId
-		{
-			set;
-			get;
-		}
-		public MetadataObjectType ObjectType
-		{
-			set;
-			get;
-		}
-		public string ObjectId
-		{
-			set;
-			get;
-		}
-		public string XmlData
-		{
-			set;
-			get;
-		}
+		public int MetadataProfileId { get; set; }
+		public MetadataObjectType ObjectType { get; set; }
+		public string ObjectId { get; set; }
+		public string XmlData { get; set; }
 
 		public MetadataAddRequestBuilder()
 			: base("metadata_metadata", "add")
@@ -115,26 +99,10 @@ namespace Kaltura.Services
 		public const string URL = "url";
 		#endregion
 
-		public int MetadataProfileId
-		{
-			set;
-			get;
-		}
-		public MetadataObjectType ObjectType
-		{
-			set;
-			get;
-		}
-		public string ObjectId
-		{
-			set;
-			get;
-		}
-		public string Url
-		{
-			set;
-			get;
-		}
+		public int MetadataProfileId { get; set; }
+		public MetadataObjectType ObjectType { get; set; }
+		public string ObjectId { get; set; }
+		public string Url { get; set; }
 
 		public MetadataAddFromBulkRequestBuilder()
 			: base("metadata_metadata", "addFromBulk")
@@ -185,26 +153,11 @@ namespace Kaltura.Services
 		public const string XML_FILE = "xmlFile";
 		#endregion
 
-		public int MetadataProfileId
-		{
-			set;
-			get;
-		}
-		public MetadataObjectType ObjectType
-		{
-			set;
-			get;
-		}
-		public string ObjectId
-		{
-			set;
-			get;
-		}
-		public Stream XmlFile
-		{
-			set;
-			get;
-		}
+		public int MetadataProfileId { get; set; }
+		public MetadataObjectType ObjectType { get; set; }
+		public string ObjectId { get; set; }
+		public Stream XmlFile { get; set; }
+		public string XmlFile_FileName { get; set; }
 
 		public MetadataAddFromFileRequestBuilder()
 			: base("metadata_metadata", "addFromFile")
@@ -235,7 +188,7 @@ namespace Kaltura.Services
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("xmlFile", XmlFile);
+			kfiles.Add("xmlFile", new FileData(XmlFile, XmlFile_FileName));
 			return kfiles;
 		}
 
@@ -254,26 +207,10 @@ namespace Kaltura.Services
 		public const string URL = "url";
 		#endregion
 
-		public int MetadataProfileId
-		{
-			set;
-			get;
-		}
-		public MetadataObjectType ObjectType
-		{
-			set;
-			get;
-		}
-		public string ObjectId
-		{
-			set;
-			get;
-		}
-		public string Url
-		{
-			set;
-			get;
-		}
+		public int MetadataProfileId { get; set; }
+		public MetadataObjectType ObjectType { get; set; }
+		public string ObjectId { get; set; }
+		public string Url { get; set; }
 
 		public MetadataAddFromUrlRequestBuilder()
 			: base("metadata_metadata", "addFromUrl")
@@ -321,11 +258,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public MetadataDeleteRequestBuilder()
 			: base("metadata_metadata", "delete")
@@ -364,11 +297,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public MetadataGetRequestBuilder()
 			: base("metadata_metadata", "get")
@@ -408,16 +337,8 @@ namespace Kaltura.Services
 		public const string SHOULD_UPDATE = "shouldUpdate";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public bool ShouldUpdate
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public bool ShouldUpdate { get; set; }
 
 		public MetadataIndexRequestBuilder()
 			: base("metadata_metadata", "index")
@@ -460,16 +381,8 @@ namespace Kaltura.Services
 		public const string VERSION = "version";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public int Version
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public int Version { get; set; }
 
 		public MetadataInvalidateRequestBuilder()
 			: base("metadata_metadata", "invalidate")
@@ -512,16 +425,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public MetadataFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public MetadataFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public MetadataListRequestBuilder()
 			: base("metadata_metadata", "list")
@@ -565,21 +470,9 @@ namespace Kaltura.Services
 		public const string VERSION = "version";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public string XmlData
-		{
-			set;
-			get;
-		}
-		public int Version
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public string XmlData { get; set; }
+		public int Version { get; set; }
 
 		public MetadataUpdateRequestBuilder()
 			: base("metadata_metadata", "update")
@@ -625,16 +518,9 @@ namespace Kaltura.Services
 		public const string XML_FILE = "xmlFile";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public Stream XmlFile
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public Stream XmlFile { get; set; }
+		public string XmlFile_FileName { get; set; }
 
 		public MetadataUpdateFromFileRequestBuilder()
 			: base("metadata_metadata", "updateFromFile")
@@ -659,7 +545,7 @@ namespace Kaltura.Services
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("xmlFile", XmlFile);
+			kfiles.Add("xmlFile", new FileData(XmlFile, XmlFile_FileName));
 			return kfiles;
 		}
 
@@ -676,16 +562,9 @@ namespace Kaltura.Services
 		public const string XSL_FILE = "xslFile";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public Stream XslFile
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public Stream XslFile { get; set; }
+		public string XslFile_FileName { get; set; }
 
 		public MetadataUpdateFromXSLRequestBuilder()
 			: base("metadata_metadata", "updateFromXSL")
@@ -710,7 +589,7 @@ namespace Kaltura.Services
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("xslFile", XslFile);
+			kfiles.Add("xslFile", new FileData(XslFile, XslFile_FileName));
 			return kfiles;
 		}
 

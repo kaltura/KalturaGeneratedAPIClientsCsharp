@@ -43,16 +43,8 @@ namespace Kaltura.Services
 		public const string SOURCE_TYPE = "sourceType";
 		#endregion
 
-		public LiveStreamEntry LiveStreamEntry
-		{
-			set;
-			get;
-		}
-		public SourceType SourceType
-		{
-			set;
-			get;
-		}
+		public LiveStreamEntry LiveStreamEntry { get; set; }
+		public SourceType SourceType { get; set; }
 
 		public LiveStreamAddRequestBuilder()
 			: base("livestream", "add")
@@ -97,26 +89,10 @@ namespace Kaltura.Services
 		public const string LIVE_STREAM_CONFIGURATION = "liveStreamConfiguration";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public PlaybackProtocol Protocol
-		{
-			set;
-			get;
-		}
-		public string Url
-		{
-			set;
-			get;
-		}
-		public LiveStreamConfiguration LiveStreamConfiguration
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public PlaybackProtocol Protocol { get; set; }
+		public string Url { get; set; }
+		public LiveStreamConfiguration LiveStreamConfiguration { get; set; }
 
 		public LiveStreamAddLiveStreamPushPublishConfigurationRequestBuilder()
 			: base("livestream", "addLiveStreamPushPublishConfiguration")
@@ -169,36 +145,12 @@ namespace Kaltura.Services
 		public const string IS_LAST_CHUNK = "isLastChunk";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public string AssetId
-		{
-			set;
-			get;
-		}
-		public EntryServerNodeType MediaServerIndex
-		{
-			set;
-			get;
-		}
-		public DataCenterContentResource Resource
-		{
-			set;
-			get;
-		}
-		public float Duration
-		{
-			set;
-			get;
-		}
-		public bool IsLastChunk
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public string AssetId { get; set; }
+		public EntryServerNodeType MediaServerIndex { get; set; }
+		public DataCenterContentResource Resource { get; set; }
+		public float Duration { get; set; }
+		public bool IsLastChunk { get; set; }
 
 		public LiveStreamAppendRecordingRequestBuilder()
 			: base("livestream", "appendRecording")
@@ -256,31 +208,11 @@ namespace Kaltura.Services
 		public const string APPLICATION_NAME = "applicationName";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public string Token
-		{
-			set;
-			get;
-		}
-		public string Hostname
-		{
-			set;
-			get;
-		}
-		public EntryServerNodeType MediaServerIndex
-		{
-			set;
-			get;
-		}
-		public string ApplicationName
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public string Token { get; set; }
+		public string Hostname { get; set; }
+		public EntryServerNodeType MediaServerIndex { get; set; }
+		public string ApplicationName { get; set; }
 
 		public LiveStreamAuthenticateRequestBuilder()
 			: base("livestream", "authenticate")
@@ -333,21 +265,9 @@ namespace Kaltura.Services
 		public const string DURATION = "duration";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public int Interval
-		{
-			set;
-			get;
-		}
-		public int Duration
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public int Interval { get; set; }
+		public int Duration { get; set; }
 
 		public LiveStreamCreatePeriodicSyncPointsRequestBuilder()
 			: base("livestream", "createPeriodicSyncPoints")
@@ -394,21 +314,9 @@ namespace Kaltura.Services
 		public const string LIVE_ENTRY_STATUS = "liveEntryStatus";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public EntryServerNodeType MediaServerIndex
-		{
-			set;
-			get;
-		}
-		public EntryServerNodeStatus LiveEntryStatus
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public EntryServerNodeType MediaServerIndex { get; set; }
+		public EntryServerNodeStatus LiveEntryStatus { get; set; }
 
 		public LiveStreamCreateRecordedEntryRequestBuilder()
 			: base("livestream", "createRecordedEntry")
@@ -453,11 +361,7 @@ namespace Kaltura.Services
 		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
 
 		public LiveStreamDeleteRequestBuilder()
 			: base("livestream", "delete")
@@ -497,16 +401,8 @@ namespace Kaltura.Services
 		public const string VERSION = "version";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public int Version
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public int Version { get; set; }
 
 		public LiveStreamGetRequestBuilder()
 			: base("livestream", "get")
@@ -549,16 +445,8 @@ namespace Kaltura.Services
 		public const string PROTOCOL = "protocol";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public PlaybackProtocol Protocol
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public PlaybackProtocol Protocol { get; set; }
 
 		public LiveStreamIsLiveRequestBuilder()
 			: base("livestream", "isLive")
@@ -603,16 +491,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public LiveStreamEntryFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public LiveStreamEntryFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public LiveStreamListRequestBuilder()
 			: base("livestream", "list")
@@ -654,11 +534,7 @@ namespace Kaltura.Services
 		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
 
 		public LiveStreamRegenerateStreamTokenRequestBuilder()
 			: base("livestream", "regenerateStreamToken")
@@ -702,36 +578,12 @@ namespace Kaltura.Services
 		public const string SHOULD_CREATE_RECORDED_ENTRY = "shouldCreateRecordedEntry";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public string Hostname
-		{
-			set;
-			get;
-		}
-		public EntryServerNodeType MediaServerIndex
-		{
-			set;
-			get;
-		}
-		public string ApplicationName
-		{
-			set;
-			get;
-		}
-		public EntryServerNodeStatus LiveEntryStatus
-		{
-			set;
-			get;
-		}
-		public bool ShouldCreateRecordedEntry
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public string Hostname { get; set; }
+		public EntryServerNodeType MediaServerIndex { get; set; }
+		public string ApplicationName { get; set; }
+		public EntryServerNodeStatus LiveEntryStatus { get; set; }
+		public bool ShouldCreateRecordedEntry { get; set; }
 
 		public LiveStreamRegisterMediaServerRequestBuilder()
 			: base("livestream", "registerMediaServer")
@@ -786,16 +638,8 @@ namespace Kaltura.Services
 		public const string PROTOCOL = "protocol";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public PlaybackProtocol Protocol
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public PlaybackProtocol Protocol { get; set; }
 
 		public LiveStreamRemoveLiveStreamPushPublishConfigurationRequestBuilder()
 			: base("livestream", "removeLiveStreamPushPublishConfiguration")
@@ -842,36 +686,12 @@ namespace Kaltura.Services
 		public const string FLAVOR_PARAMS_ID = "flavorParamsId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public EntryServerNodeType MediaServerIndex
-		{
-			set;
-			get;
-		}
-		public DataCenterContentResource Resource
-		{
-			set;
-			get;
-		}
-		public float Duration
-		{
-			set;
-			get;
-		}
-		public string RecordedEntryId
-		{
-			set;
-			get;
-		}
-		public int FlavorParamsId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public EntryServerNodeType MediaServerIndex { get; set; }
+		public DataCenterContentResource Resource { get; set; }
+		public float Duration { get; set; }
+		public string RecordedEntryId { get; set; }
+		public int FlavorParamsId { get; set; }
 
 		public LiveStreamSetRecordedContentRequestBuilder()
 			: base("livestream", "setRecordedContent")
@@ -927,21 +747,9 @@ namespace Kaltura.Services
 		public const string MEDIA_SERVER_INDEX = "mediaServerIndex";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public string Hostname
-		{
-			set;
-			get;
-		}
-		public EntryServerNodeType MediaServerIndex
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public string Hostname { get; set; }
+		public EntryServerNodeType MediaServerIndex { get; set; }
 
 		public LiveStreamUnregisterMediaServerRequestBuilder()
 			: base("livestream", "unregisterMediaServer")
@@ -987,16 +795,8 @@ namespace Kaltura.Services
 		public const string LIVE_STREAM_ENTRY = "liveStreamEntry";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public LiveStreamEntry LiveStreamEntry
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public LiveStreamEntry LiveStreamEntry { get; set; }
 
 		public LiveStreamUpdateRequestBuilder()
 			: base("livestream", "update")
@@ -1039,16 +839,8 @@ namespace Kaltura.Services
 		public const string URL = "url";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public string Url
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public string Url { get; set; }
 
 		public LiveStreamUpdateOfflineThumbnailFromUrlRequestBuilder()
 			: base("livestream", "updateOfflineThumbnailFromUrl")
@@ -1091,16 +883,9 @@ namespace Kaltura.Services
 		public const string FILE_DATA = "fileData";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public Stream FileData
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public Stream FileData { get; set; }
+		public string FileData_FileName { get; set; }
 
 		public LiveStreamUpdateOfflineThumbnailJpegRequestBuilder()
 			: base("livestream", "updateOfflineThumbnailJpeg")
@@ -1125,7 +910,7 @@ namespace Kaltura.Services
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("fileData", FileData);
+			kfiles.Add("fileData", new FileData(FileData, FileData_FileName));
 			return kfiles;
 		}
 
@@ -1141,11 +926,7 @@ namespace Kaltura.Services
 		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
 
 		public LiveStreamValidateRegisteredMediaServersRequestBuilder()
 			: base("livestream", "validateRegisteredMediaServers")

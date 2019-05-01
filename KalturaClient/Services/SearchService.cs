@@ -44,21 +44,9 @@ namespace Kaltura.Services
 		public const string PASSWORD = "password";
 		#endregion
 
-		public SearchProviderType SearchSource
-		{
-			set;
-			get;
-		}
-		public string UserName
-		{
-			set;
-			get;
-		}
-		public string Password
-		{
-			set;
-			get;
-		}
+		public SearchProviderType SearchSource { get; set; }
+		public string UserName { get; set; }
+		public string Password { get; set; }
 
 		public SearchExternalLoginRequestBuilder()
 			: base("search", "externalLogin")
@@ -103,11 +91,7 @@ namespace Kaltura.Services
 		public const string SEARCH_RESULT = "searchResult";
 		#endregion
 
-		public SearchResult SearchResult
-		{
-			set;
-			get;
-		}
+		public SearchResult SearchResult { get; set; }
 
 		public SearchGetMediaInfoRequestBuilder()
 			: base("search", "getMediaInfo")
@@ -147,16 +131,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public Search Search
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public Search Search { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public SearchSearchRequestBuilder()
 			: base("search", "search")
@@ -199,16 +175,8 @@ namespace Kaltura.Services
 		public const string URL = "url";
 		#endregion
 
-		public MediaType MediaType
-		{
-			set;
-			get;
-		}
-		public string Url
-		{
-			set;
-			get;
-		}
+		public MediaType MediaType { get; set; }
+		public string Url { get; set; }
 
 		public SearchSearchUrlRequestBuilder()
 			: base("search", "searchUrl")

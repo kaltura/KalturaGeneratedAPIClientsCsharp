@@ -43,16 +43,8 @@ namespace Kaltura.Services
 		public const string PARAMS = "params";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public IList<KeyValue> Params_
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public IList<KeyValue> Params_ { get; set; }
 
 		public ReportExecuteRequestBuilder()
 			: base("report", "execute")
@@ -94,11 +86,7 @@ namespace Kaltura.Services
 		public const string PARAMS = "params";
 		#endregion
 
-		public ReportExportParams Params_
-		{
-			set;
-			get;
-		}
+		public ReportExportParams Params_ { get; set; }
 
 		public ReportExportToCsvRequestBuilder()
 			: base("report", "exportToCsv")
@@ -140,26 +128,10 @@ namespace Kaltura.Services
 		public const string RESPONSE_OPTIONS = "responseOptions";
 		#endregion
 
-		public ReportType ReportType
-		{
-			set;
-			get;
-		}
-		public ReportInputFilter ReportInputFilter
-		{
-			set;
-			get;
-		}
-		public string ObjectIds
-		{
-			set;
-			get;
-		}
-		public ReportResponseOptions ResponseOptions
-		{
-			set;
-			get;
-		}
+		public ReportType ReportType { get; set; }
+		public ReportInputFilter ReportInputFilter { get; set; }
+		public string ObjectIds { get; set; }
+		public ReportResponseOptions ResponseOptions { get; set; }
 
 		public ReportGetBaseTotalRequestBuilder()
 			: base("report", "getBaseTotal")
@@ -217,31 +189,11 @@ namespace Kaltura.Services
 		public const string RESPONSE_OPTIONS = "responseOptions";
 		#endregion
 
-		public ReportType ReportType
-		{
-			set;
-			get;
-		}
-		public ReportInputFilter ReportInputFilter
-		{
-			set;
-			get;
-		}
-		public string Dimension
-		{
-			set;
-			get;
-		}
-		public string ObjectIds
-		{
-			set;
-			get;
-		}
-		public ReportResponseOptions ResponseOptions
-		{
-			set;
-			get;
-		}
+		public ReportType ReportType { get; set; }
+		public ReportInputFilter ReportInputFilter { get; set; }
+		public string Dimension { get; set; }
+		public string ObjectIds { get; set; }
+		public ReportResponseOptions ResponseOptions { get; set; }
 
 		public ReportGetGraphsRequestBuilder()
 			: base("report", "getGraphs")
@@ -303,36 +255,12 @@ namespace Kaltura.Services
 		public const string RESPONSE_OPTIONS = "responseOptions";
 		#endregion
 
-		public ReportType ReportType
-		{
-			set;
-			get;
-		}
-		public ReportInputFilter ReportInputFilter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
-		public string Order
-		{
-			set;
-			get;
-		}
-		public string ObjectIds
-		{
-			set;
-			get;
-		}
-		public ReportResponseOptions ResponseOptions
-		{
-			set;
-			get;
-		}
+		public ReportType ReportType { get; set; }
+		public ReportInputFilter ReportInputFilter { get; set; }
+		public FilterPager Pager { get; set; }
+		public string Order { get; set; }
+		public string ObjectIds { get; set; }
+		public ReportResponseOptions ResponseOptions { get; set; }
 
 		public ReportGetTableRequestBuilder()
 			: base("report", "getTable")
@@ -389,26 +317,10 @@ namespace Kaltura.Services
 		public const string RESPONSE_OPTIONS = "responseOptions";
 		#endregion
 
-		public ReportType ReportType
-		{
-			set;
-			get;
-		}
-		public ReportInputFilter ReportInputFilter
-		{
-			set;
-			get;
-		}
-		public string ObjectIds
-		{
-			set;
-			get;
-		}
-		public ReportResponseOptions ResponseOptions
-		{
-			set;
-			get;
-		}
+		public ReportType ReportType { get; set; }
+		public ReportInputFilter ReportInputFilter { get; set; }
+		public string ObjectIds { get; set; }
+		public ReportResponseOptions ResponseOptions { get; set; }
 
 		public ReportGetTotalRequestBuilder()
 			: base("report", "getTotal")
@@ -465,56 +377,16 @@ namespace Kaltura.Services
 		public const string RESPONSE_OPTIONS = "responseOptions";
 		#endregion
 
-		public string ReportTitle
-		{
-			set;
-			get;
-		}
-		public string ReportText
-		{
-			set;
-			get;
-		}
-		public string Headers
-		{
-			set;
-			get;
-		}
-		public ReportType ReportType
-		{
-			set;
-			get;
-		}
-		public ReportInputFilter ReportInputFilter
-		{
-			set;
-			get;
-		}
-		public string Dimension
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
-		public string Order
-		{
-			set;
-			get;
-		}
-		public string ObjectIds
-		{
-			set;
-			get;
-		}
-		public ReportResponseOptions ResponseOptions
-		{
-			set;
-			get;
-		}
+		public string ReportTitle { get; set; }
+		public string ReportText { get; set; }
+		public string Headers { get; set; }
+		public ReportType ReportType { get; set; }
+		public ReportInputFilter ReportInputFilter { get; set; }
+		public string Dimension { get; set; }
+		public FilterPager Pager { get; set; }
+		public string Order { get; set; }
+		public string ObjectIds { get; set; }
+		public ReportResponseOptions ResponseOptions { get; set; }
 
 		public ReportGetUrlForReportAsCsvRequestBuilder()
 			: base("report", "getUrlForReportAsCsv")
@@ -580,11 +452,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public ReportServeRequestBuilder()
 			: base("report", "serve")

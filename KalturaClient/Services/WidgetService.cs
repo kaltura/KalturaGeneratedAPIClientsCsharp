@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string WIDGET = "widget";
 		#endregion
 
-		public Widget Widget
-		{
-			set;
-			get;
-		}
+		public Widget Widget { get; set; }
 
 		public WidgetAddRequestBuilder()
 			: base("widget", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string WIDGET = "widget";
 		#endregion
 
-		public Widget Widget
-		{
-			set;
-			get;
-		}
+		public Widget Widget { get; set; }
 
 		public WidgetCloneRequestBuilder()
 			: base("widget", "clone")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public WidgetGetRequestBuilder()
 			: base("widget", "get")
@@ -172,16 +160,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public WidgetFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public WidgetFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public WidgetListRequestBuilder()
 			: base("widget", "list")
@@ -224,16 +204,8 @@ namespace Kaltura.Services
 		public const string WIDGET = "widget";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public Widget Widget
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public Widget Widget { get; set; }
 
 		public WidgetUpdateRequestBuilder()
 			: base("widget", "update")

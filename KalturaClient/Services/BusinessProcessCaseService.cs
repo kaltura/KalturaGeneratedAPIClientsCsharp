@@ -44,21 +44,9 @@ namespace Kaltura.Services
 		public const string BUSINESS_PROCESS_START_NOTIFICATION_TEMPLATE_ID = "businessProcessStartNotificationTemplateId";
 		#endregion
 
-		public EventNotificationEventObjectType ObjectType
-		{
-			set;
-			get;
-		}
-		public string ObjectId
-		{
-			set;
-			get;
-		}
-		public int BusinessProcessStartNotificationTemplateId
-		{
-			set;
-			get;
-		}
+		public EventNotificationEventObjectType ObjectType { get; set; }
+		public string ObjectId { get; set; }
+		public int BusinessProcessStartNotificationTemplateId { get; set; }
 
 		public BusinessProcessCaseAbortRequestBuilder()
 			: base("businessprocessnotification_businessprocesscase", "abort")
@@ -104,16 +92,8 @@ namespace Kaltura.Services
 		public const string OBJECT_ID = "objectId";
 		#endregion
 
-		public EventNotificationEventObjectType ObjectType
-		{
-			set;
-			get;
-		}
-		public string ObjectId
-		{
-			set;
-			get;
-		}
+		public EventNotificationEventObjectType ObjectType { get; set; }
+		public string ObjectId { get; set; }
 
 		public BusinessProcessCaseListRequestBuilder()
 			: base("businessprocessnotification_businessprocesscase", "list")

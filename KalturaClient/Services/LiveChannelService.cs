@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string LIVE_CHANNEL = "liveChannel";
 		#endregion
 
-		public LiveChannel LiveChannel
-		{
-			set;
-			get;
-		}
+		public LiveChannel LiveChannel { get; set; }
 
 		public LiveChannelAddRequestBuilder()
 			: base("livechannel", "add")
@@ -90,36 +86,12 @@ namespace Kaltura.Services
 		public const string IS_LAST_CHUNK = "isLastChunk";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public string AssetId
-		{
-			set;
-			get;
-		}
-		public EntryServerNodeType MediaServerIndex
-		{
-			set;
-			get;
-		}
-		public DataCenterContentResource Resource
-		{
-			set;
-			get;
-		}
-		public float Duration
-		{
-			set;
-			get;
-		}
-		public bool IsLastChunk
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public string AssetId { get; set; }
+		public EntryServerNodeType MediaServerIndex { get; set; }
+		public DataCenterContentResource Resource { get; set; }
+		public float Duration { get; set; }
+		public bool IsLastChunk { get; set; }
 
 		public LiveChannelAppendRecordingRequestBuilder()
 			: base("livechannel", "appendRecording")
@@ -175,21 +147,9 @@ namespace Kaltura.Services
 		public const string LIVE_ENTRY_STATUS = "liveEntryStatus";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public EntryServerNodeType MediaServerIndex
-		{
-			set;
-			get;
-		}
-		public EntryServerNodeStatus LiveEntryStatus
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public EntryServerNodeType MediaServerIndex { get; set; }
+		public EntryServerNodeStatus LiveEntryStatus { get; set; }
 
 		public LiveChannelCreateRecordedEntryRequestBuilder()
 			: base("livechannel", "createRecordedEntry")
@@ -234,11 +194,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public LiveChannelDeleteRequestBuilder()
 			: base("livechannel", "delete")
@@ -277,11 +233,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public LiveChannelGetRequestBuilder()
 			: base("livechannel", "get")
@@ -320,11 +272,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public LiveChannelIsLiveRequestBuilder()
 			: base("livechannel", "isLive")
@@ -366,16 +314,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public LiveChannelFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public LiveChannelFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public LiveChannelListRequestBuilder()
 			: base("livechannel", "list")
@@ -422,36 +362,12 @@ namespace Kaltura.Services
 		public const string SHOULD_CREATE_RECORDED_ENTRY = "shouldCreateRecordedEntry";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public string Hostname
-		{
-			set;
-			get;
-		}
-		public EntryServerNodeType MediaServerIndex
-		{
-			set;
-			get;
-		}
-		public string ApplicationName
-		{
-			set;
-			get;
-		}
-		public EntryServerNodeStatus LiveEntryStatus
-		{
-			set;
-			get;
-		}
-		public bool ShouldCreateRecordedEntry
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public string Hostname { get; set; }
+		public EntryServerNodeType MediaServerIndex { get; set; }
+		public string ApplicationName { get; set; }
+		public EntryServerNodeStatus LiveEntryStatus { get; set; }
+		public bool ShouldCreateRecordedEntry { get; set; }
 
 		public LiveChannelRegisterMediaServerRequestBuilder()
 			: base("livechannel", "registerMediaServer")
@@ -510,36 +426,12 @@ namespace Kaltura.Services
 		public const string FLAVOR_PARAMS_ID = "flavorParamsId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public EntryServerNodeType MediaServerIndex
-		{
-			set;
-			get;
-		}
-		public DataCenterContentResource Resource
-		{
-			set;
-			get;
-		}
-		public float Duration
-		{
-			set;
-			get;
-		}
-		public string RecordedEntryId
-		{
-			set;
-			get;
-		}
-		public int FlavorParamsId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public EntryServerNodeType MediaServerIndex { get; set; }
+		public DataCenterContentResource Resource { get; set; }
+		public float Duration { get; set; }
+		public string RecordedEntryId { get; set; }
+		public int FlavorParamsId { get; set; }
 
 		public LiveChannelSetRecordedContentRequestBuilder()
 			: base("livechannel", "setRecordedContent")
@@ -595,21 +487,9 @@ namespace Kaltura.Services
 		public const string MEDIA_SERVER_INDEX = "mediaServerIndex";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public string Hostname
-		{
-			set;
-			get;
-		}
-		public EntryServerNodeType MediaServerIndex
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public string Hostname { get; set; }
+		public EntryServerNodeType MediaServerIndex { get; set; }
 
 		public LiveChannelUnregisterMediaServerRequestBuilder()
 			: base("livechannel", "unregisterMediaServer")
@@ -655,16 +535,8 @@ namespace Kaltura.Services
 		public const string LIVE_CHANNEL = "liveChannel";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public LiveChannel LiveChannel
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public LiveChannel LiveChannel { get; set; }
 
 		public LiveChannelUpdateRequestBuilder()
 			: base("livechannel", "update")
@@ -706,11 +578,7 @@ namespace Kaltura.Services
 		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
 
 		public LiveChannelValidateRegisteredMediaServersRequestBuilder()
 			: base("livechannel", "validateRegisteredMediaServers")

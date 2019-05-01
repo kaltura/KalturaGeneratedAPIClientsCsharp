@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string CAPTION_PARAMS = "captionParams";
 		#endregion
 
-		public CaptionParams CaptionParams
-		{
-			set;
-			get;
-		}
+		public CaptionParams CaptionParams { get; set; }
 
 		public CaptionParamsAddRequestBuilder()
 			: base("caption_captionparams", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public CaptionParamsDeleteRequestBuilder()
 			: base("caption_captionparams", "delete")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public CaptionParamsGetRequestBuilder()
 			: base("caption_captionparams", "get")
@@ -172,16 +160,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public CaptionParamsFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public CaptionParamsFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public CaptionParamsListRequestBuilder()
 			: base("caption_captionparams", "list")
@@ -224,16 +204,8 @@ namespace Kaltura.Services
 		public const string CAPTION_PARAMS = "captionParams";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public CaptionParams CaptionParams
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public CaptionParams CaptionParams { get; set; }
 
 		public CaptionParamsUpdateRequestBuilder()
 			: base("caption_captionparams", "update")

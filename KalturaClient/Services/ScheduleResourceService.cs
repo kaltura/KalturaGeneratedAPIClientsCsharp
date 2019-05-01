@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string SCHEDULE_RESOURCE = "scheduleResource";
 		#endregion
 
-		public ScheduleResource ScheduleResource
-		{
-			set;
-			get;
-		}
+		public ScheduleResource ScheduleResource { get; set; }
 
 		public ScheduleResourceAddRequestBuilder()
 			: base("schedule_scheduleresource", "add")
@@ -86,16 +82,9 @@ namespace Kaltura.Services
 		public const string BULK_UPLOAD_DATA = "bulkUploadData";
 		#endregion
 
-		public Stream FileData
-		{
-			set;
-			get;
-		}
-		public BulkUploadCsvJobData BulkUploadData
-		{
-			set;
-			get;
-		}
+		public Stream FileData { get; set; }
+		public string FileData_FileName { get; set; }
+		public BulkUploadCsvJobData BulkUploadData { get; set; }
 
 		public ScheduleResourceAddFromBulkUploadRequestBuilder()
 			: base("schedule_scheduleresource", "addFromBulkUpload")
@@ -120,7 +109,7 @@ namespace Kaltura.Services
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("fileData", FileData);
+			kfiles.Add("fileData", new FileData(FileData, FileData_FileName));
 			return kfiles;
 		}
 
@@ -136,11 +125,7 @@ namespace Kaltura.Services
 		public const string SCHEDULE_RESOURCE_ID = "scheduleResourceId";
 		#endregion
 
-		public int ScheduleResourceId
-		{
-			set;
-			get;
-		}
+		public int ScheduleResourceId { get; set; }
 
 		public ScheduleResourceDeleteRequestBuilder()
 			: base("schedule_scheduleresource", "delete")
@@ -179,11 +164,7 @@ namespace Kaltura.Services
 		public const string SCHEDULE_RESOURCE_ID = "scheduleResourceId";
 		#endregion
 
-		public int ScheduleResourceId
-		{
-			set;
-			get;
-		}
+		public int ScheduleResourceId { get; set; }
 
 		public ScheduleResourceGetRequestBuilder()
 			: base("schedule_scheduleresource", "get")
@@ -223,16 +204,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public ScheduleResourceFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public ScheduleResourceFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public ScheduleResourceListRequestBuilder()
 			: base("schedule_scheduleresource", "list")
@@ -275,16 +248,8 @@ namespace Kaltura.Services
 		public const string SCHEDULE_RESOURCE = "scheduleResource";
 		#endregion
 
-		public int ScheduleResourceId
-		{
-			set;
-			get;
-		}
-		public ScheduleResource ScheduleResource
-		{
-			set;
-			get;
-		}
+		public int ScheduleResourceId { get; set; }
+		public ScheduleResource ScheduleResource { get; set; }
 
 		public ScheduleResourceUpdateRequestBuilder()
 			: base("schedule_scheduleresource", "update")

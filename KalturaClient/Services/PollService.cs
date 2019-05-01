@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string POLL_TYPE = "pollType";
 		#endregion
 
-		public string PollType
-		{
-			set;
-			get;
-		}
+		public string PollType { get; set; }
 
 		public PollAddRequestBuilder()
 			: base("poll_poll", "add")
@@ -86,16 +82,8 @@ namespace Kaltura.Services
 		public const string USER_ID = "userId";
 		#endregion
 
-		public string PollId
-		{
-			set;
-			get;
-		}
-		public string UserId
-		{
-			set;
-			get;
-		}
+		public string PollId { get; set; }
+		public string UserId { get; set; }
 
 		public PollGetVoteRequestBuilder()
 			: base("poll_poll", "getVote")
@@ -138,16 +126,8 @@ namespace Kaltura.Services
 		public const string ANSWER_IDS = "answerIds";
 		#endregion
 
-		public string PollId
-		{
-			set;
-			get;
-		}
-		public string AnswerIds
-		{
-			set;
-			get;
-		}
+		public string PollId { get; set; }
+		public string AnswerIds { get; set; }
 
 		public PollGetVotesRequestBuilder()
 			: base("poll_poll", "getVotes")
@@ -189,11 +169,7 @@ namespace Kaltura.Services
 		public const string POLL_ID = "pollId";
 		#endregion
 
-		public string PollId
-		{
-			set;
-			get;
-		}
+		public string PollId { get; set; }
 
 		public PollResetVotesRequestBuilder()
 			: base("poll_poll", "resetVotes")
@@ -234,21 +210,9 @@ namespace Kaltura.Services
 		public const string ANSWER_IDS = "answerIds";
 		#endregion
 
-		public string PollId
-		{
-			set;
-			get;
-		}
-		public string UserId
-		{
-			set;
-			get;
-		}
-		public string AnswerIds
-		{
-			set;
-			get;
-		}
+		public string PollId { get; set; }
+		public string UserId { get; set; }
+		public string AnswerIds { get; set; }
 
 		public PollVoteRequestBuilder()
 			: base("poll_poll", "vote")

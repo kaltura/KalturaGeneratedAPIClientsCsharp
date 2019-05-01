@@ -44,21 +44,9 @@ namespace Kaltura.Services
 		public const string OBJECT_ID = "objectId";
 		#endregion
 
-		public IntegrationJobData Data
-		{
-			set;
-			get;
-		}
-		public BatchJobObjectType ObjectType
-		{
-			set;
-			get;
-		}
-		public string ObjectId
-		{
-			set;
-			get;
-		}
+		public IntegrationJobData Data { get; set; }
+		public BatchJobObjectType ObjectType { get; set; }
+		public string ObjectId { get; set; }
 
 		public IntegrationDispatchRequestBuilder()
 			: base("integration_integration", "dispatch")
@@ -103,11 +91,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public IntegrationNotifyRequestBuilder()
 			: base("integration_integration", "notify")

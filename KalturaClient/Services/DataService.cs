@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string DATA_ENTRY = "dataEntry";
 		#endregion
 
-		public DataEntry DataEntry
-		{
-			set;
-			get;
-		}
+		public DataEntry DataEntry { get; set; }
 
 		public DataAddRequestBuilder()
 			: base("data", "add")
@@ -86,16 +82,8 @@ namespace Kaltura.Services
 		public const string RESOURCE = "resource";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public GenericDataCenterContentResource Resource
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public GenericDataCenterContentResource Resource { get; set; }
 
 		public DataAddContentRequestBuilder()
 			: base("data", "addContent")
@@ -137,11 +125,7 @@ namespace Kaltura.Services
 		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
 
 		public DataDeleteRequestBuilder()
 			: base("data", "delete")
@@ -181,16 +165,8 @@ namespace Kaltura.Services
 		public const string VERSION = "version";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public int Version
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public int Version { get; set; }
 
 		public DataGetRequestBuilder()
 			: base("data", "get")
@@ -233,16 +209,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public DataEntryFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public DataEntryFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public DataListRequestBuilder()
 			: base("data", "list")
@@ -285,16 +253,8 @@ namespace Kaltura.Services
 		public const string DOCUMENT_ENTRY = "documentEntry";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public DataEntry DocumentEntry
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public DataEntry DocumentEntry { get; set; }
 
 		public DataUpdateRequestBuilder()
 			: base("data", "update")

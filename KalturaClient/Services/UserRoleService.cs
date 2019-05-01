@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string USER_ROLE = "userRole";
 		#endregion
 
-		public UserRole UserRole
-		{
-			set;
-			get;
-		}
+		public UserRole UserRole { get; set; }
 
 		public UserRoleAddRequestBuilder()
 			: base("userrole", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string USER_ROLE_ID = "userRoleId";
 		#endregion
 
-		public int UserRoleId
-		{
-			set;
-			get;
-		}
+		public int UserRoleId { get; set; }
 
 		public UserRoleCloneRequestBuilder()
 			: base("userrole", "clone")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string USER_ROLE_ID = "userRoleId";
 		#endregion
 
-		public int UserRoleId
-		{
-			set;
-			get;
-		}
+		public int UserRoleId { get; set; }
 
 		public UserRoleDeleteRequestBuilder()
 			: base("userrole", "delete")
@@ -171,11 +159,7 @@ namespace Kaltura.Services
 		public const string USER_ROLE_ID = "userRoleId";
 		#endregion
 
-		public int UserRoleId
-		{
-			set;
-			get;
-		}
+		public int UserRoleId { get; set; }
 
 		public UserRoleGetRequestBuilder()
 			: base("userrole", "get")
@@ -215,16 +199,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public UserRoleFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public UserRoleFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public UserRoleListRequestBuilder()
 			: base("userrole", "list")
@@ -267,16 +243,8 @@ namespace Kaltura.Services
 		public const string USER_ROLE = "userRole";
 		#endregion
 
-		public int UserRoleId
-		{
-			set;
-			get;
-		}
-		public UserRole UserRole
-		{
-			set;
-			get;
-		}
+		public int UserRoleId { get; set; }
+		public UserRole UserRole { get; set; }
 
 		public UserRoleUpdateRequestBuilder()
 			: base("userrole", "update")

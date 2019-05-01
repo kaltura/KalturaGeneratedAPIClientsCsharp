@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string ENTRY = "entry";
 		#endregion
 
-		public ExternalMediaEntry Entry
-		{
-			set;
-			get;
-		}
+		public ExternalMediaEntry Entry { get; set; }
 
 		public ExternalMediaAddRequestBuilder()
 			: base("externalmedia_externalmedia", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string FILTER = "filter";
 		#endregion
 
-		public ExternalMediaEntryFilter Filter
-		{
-			set;
-			get;
-		}
+		public ExternalMediaEntryFilter Filter { get; set; }
 
 		public ExternalMediaCountRequestBuilder()
 			: base("externalmedia_externalmedia", "count")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public ExternalMediaDeleteRequestBuilder()
 			: base("externalmedia_externalmedia", "delete")
@@ -171,11 +159,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public ExternalMediaGetRequestBuilder()
 			: base("externalmedia_externalmedia", "get")
@@ -215,16 +199,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public ExternalMediaEntryFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public ExternalMediaEntryFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public ExternalMediaListRequestBuilder()
 			: base("externalmedia_externalmedia", "list")
@@ -267,16 +243,8 @@ namespace Kaltura.Services
 		public const string ENTRY = "entry";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public ExternalMediaEntry Entry
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public ExternalMediaEntry Entry { get; set; }
 
 		public ExternalMediaUpdateRequestBuilder()
 			: base("externalmedia_externalmedia", "update")

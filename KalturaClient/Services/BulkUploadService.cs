@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public long Id
-		{
-			set;
-			get;
-		}
+		public long Id { get; set; }
 
 		public BulkUploadAbortRequestBuilder()
 			: base("bulkupload", "abort")
@@ -89,31 +85,12 @@ namespace Kaltura.Services
 		public const string FILE_NAME = "fileName";
 		#endregion
 
-		public int ConversionProfileId
-		{
-			set;
-			get;
-		}
-		public Stream CsvFileData
-		{
-			set;
-			get;
-		}
-		public BulkUploadType BulkUploadType
-		{
-			set;
-			get;
-		}
-		public string UploadedBy
-		{
-			set;
-			get;
-		}
-		public string FileName
-		{
-			set;
-			get;
-		}
+		public int ConversionProfileId { get; set; }
+		public Stream CsvFileData { get; set; }
+		public string CsvFileData_FileName { get; set; }
+		public BulkUploadType BulkUploadType { get; set; }
+		public string UploadedBy { get; set; }
+		public string FileName { get; set; }
 
 		public BulkUploadAddRequestBuilder()
 			: base("bulkupload", "add")
@@ -147,7 +124,7 @@ namespace Kaltura.Services
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("csvFileData", CsvFileData);
+			kfiles.Add("csvFileData", new FileData(CsvFileData, CsvFileData_FileName));
 			return kfiles;
 		}
 
@@ -163,11 +140,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public long Id
-		{
-			set;
-			get;
-		}
+		public long Id { get; set; }
 
 		public BulkUploadGetRequestBuilder()
 			: base("bulkupload", "get")
@@ -206,11 +179,7 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public FilterPager Pager { get; set; }
 
 		public BulkUploadListRequestBuilder()
 			: base("bulkupload", "list")

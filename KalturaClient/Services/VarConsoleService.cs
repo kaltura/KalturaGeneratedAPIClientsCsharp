@@ -44,21 +44,9 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public PartnerFilter PartnerFilter
-		{
-			set;
-			get;
-		}
-		public ReportInputFilter UsageFilter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public PartnerFilter PartnerFilter { get; set; }
+		public ReportInputFilter UsageFilter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public VarConsoleGetPartnerUsageRequestBuilder()
 			: base("varconsole_varconsole", "getPartnerUsage")
@@ -104,16 +92,8 @@ namespace Kaltura.Services
 		public const string STATUS = "status";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public PartnerStatus Status
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public PartnerStatus Status { get; set; }
 
 		public VarConsoleUpdateStatusRequestBuilder()
 			: base("varconsole_varconsole", "updateStatus")

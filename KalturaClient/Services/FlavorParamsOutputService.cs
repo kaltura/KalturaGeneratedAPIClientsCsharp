@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public FlavorParamsOutputGetRequestBuilder()
 			: base("flavorparamsoutput", "get")
@@ -86,16 +82,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public FlavorParamsOutputFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public FlavorParamsOutputFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public FlavorParamsOutputListRequestBuilder()
 			: base("flavorparamsoutput", "list")

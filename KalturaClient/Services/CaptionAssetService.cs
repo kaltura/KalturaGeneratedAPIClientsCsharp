@@ -43,16 +43,8 @@ namespace Kaltura.Services
 		public const string CAPTION_ASSET = "captionAsset";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public CaptionAsset CaptionAsset
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public CaptionAsset CaptionAsset { get; set; }
 
 		public CaptionAssetAddRequestBuilder()
 			: base("caption_captionasset", "add")
@@ -94,11 +86,7 @@ namespace Kaltura.Services
 		public const string CAPTION_ASSET_ID = "captionAssetId";
 		#endregion
 
-		public string CaptionAssetId
-		{
-			set;
-			get;
-		}
+		public string CaptionAssetId { get; set; }
 
 		public CaptionAssetDeleteRequestBuilder()
 			: base("caption_captionasset", "delete")
@@ -137,11 +125,7 @@ namespace Kaltura.Services
 		public const string CAPTION_ASSET_ID = "captionAssetId";
 		#endregion
 
-		public string CaptionAssetId
-		{
-			set;
-			get;
-		}
+		public string CaptionAssetId { get; set; }
 
 		public CaptionAssetGetRequestBuilder()
 			: base("caption_captionasset", "get")
@@ -180,11 +164,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public CaptionAssetGetRemotePathsRequestBuilder()
 			: base("caption_captionasset", "getRemotePaths")
@@ -224,16 +204,8 @@ namespace Kaltura.Services
 		public const string STORAGE_ID = "storageId";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public int StorageId
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public int StorageId { get; set; }
 
 		public CaptionAssetGetUrlRequestBuilder()
 			: base("caption_captionasset", "getUrl")
@@ -276,16 +248,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public AssetFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public AssetFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public CaptionAssetListRequestBuilder()
 			: base("caption_captionasset", "list")
@@ -327,11 +291,7 @@ namespace Kaltura.Services
 		public const string CAPTION_ASSET_ID = "captionAssetId";
 		#endregion
 
-		public string CaptionAssetId
-		{
-			set;
-			get;
-		}
+		public string CaptionAssetId { get; set; }
 
 		public CaptionAssetSetAsDefaultRequestBuilder()
 			: base("caption_captionasset", "setAsDefault")
@@ -371,16 +331,8 @@ namespace Kaltura.Services
 		public const string CONTENT_RESOURCE = "contentResource";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public ContentResource ContentResource
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public ContentResource ContentResource { get; set; }
 
 		public CaptionAssetSetContentRequestBuilder()
 			: base("caption_captionasset", "setContent")
@@ -423,16 +375,8 @@ namespace Kaltura.Services
 		public const string CAPTION_ASSET = "captionAsset";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public CaptionAsset CaptionAsset
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public CaptionAsset CaptionAsset { get; set; }
 
 		public CaptionAssetUpdateRequestBuilder()
 			: base("caption_captionasset", "update")

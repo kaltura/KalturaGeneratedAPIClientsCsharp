@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string GROUP_USER = "groupUser";
 		#endregion
 
-		public GroupUser GroupUser
-		{
-			set;
-			get;
-		}
+		public GroupUser GroupUser { get; set; }
 
 		public GroupUserAddRequestBuilder()
 			: base("groupuser", "add")
@@ -86,16 +82,8 @@ namespace Kaltura.Services
 		public const string GROUP_ID = "groupId";
 		#endregion
 
-		public string UserId
-		{
-			set;
-			get;
-		}
-		public string GroupId
-		{
-			set;
-			get;
-		}
+		public string UserId { get; set; }
+		public string GroupId { get; set; }
 
 		public GroupUserDeleteRequestBuilder()
 			: base("groupuser", "delete")
@@ -138,16 +126,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public GroupUserFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public GroupUserFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public GroupUserListRequestBuilder()
 			: base("groupuser", "list")
@@ -192,26 +172,10 @@ namespace Kaltura.Services
 		public const string CREATE_NEW_GROUPS = "createNewGroups";
 		#endregion
 
-		public string UserId
-		{
-			set;
-			get;
-		}
-		public string GroupIds
-		{
-			set;
-			get;
-		}
-		public bool RemoveFromExistingGroups
-		{
-			set;
-			get;
-		}
-		public bool CreateNewGroups
-		{
-			set;
-			get;
-		}
+		public string UserId { get; set; }
+		public string GroupIds { get; set; }
+		public bool RemoveFromExistingGroups { get; set; }
+		public bool CreateNewGroups { get; set; }
 
 		public GroupUserSyncRequestBuilder()
 			: base("groupuser", "sync")
@@ -260,16 +224,8 @@ namespace Kaltura.Services
 		public const string GROUP_USER = "groupUser";
 		#endregion
 
-		public string GroupUserId
-		{
-			set;
-			get;
-		}
-		public GroupUser GroupUser
-		{
-			set;
-			get;
-		}
+		public string GroupUserId { get; set; }
+		public GroupUser GroupUser { get; set; }
 
 		public GroupUserUpdateRequestBuilder()
 			: base("groupuser", "update")

@@ -43,16 +43,8 @@ namespace Kaltura.Services
 		public const string USER_ID = "userId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public string UserId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public string UserId { get; set; }
 
 		public LikeCheckLikeExistsRequestBuilder()
 			: base("like_like", "checkLikeExists")
@@ -96,11 +88,7 @@ namespace Kaltura.Services
 		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
 
 		public LikeLikeRequestBuilder()
 			: base("like_like", "like")
@@ -142,16 +130,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public LikeFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public LikeFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public LikeListRequestBuilder()
 			: base("like_like", "list")
@@ -193,11 +173,7 @@ namespace Kaltura.Services
 		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
 
 		public LikeUnlikeRequestBuilder()
 			: base("like_like", "unlike")

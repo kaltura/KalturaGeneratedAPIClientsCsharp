@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string DRM_PROFILE = "drmProfile";
 		#endregion
 
-		public DrmProfile DrmProfile
-		{
-			set;
-			get;
-		}
+		public DrmProfile DrmProfile { get; set; }
 
 		public DrmProfileAddRequestBuilder()
 			: base("drm_drmprofile", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string DRM_PROFILE_ID = "drmProfileId";
 		#endregion
 
-		public int DrmProfileId
-		{
-			set;
-			get;
-		}
+		public int DrmProfileId { get; set; }
 
 		public DrmProfileDeleteRequestBuilder()
 			: base("drm_drmprofile", "delete")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string DRM_PROFILE_ID = "drmProfileId";
 		#endregion
 
-		public int DrmProfileId
-		{
-			set;
-			get;
-		}
+		public int DrmProfileId { get; set; }
 
 		public DrmProfileGetRequestBuilder()
 			: base("drm_drmprofile", "get")
@@ -171,11 +159,7 @@ namespace Kaltura.Services
 		public const string PROVIDER = "provider";
 		#endregion
 
-		public DrmProviderType Provider
-		{
-			set;
-			get;
-		}
+		public DrmProviderType Provider { get; set; }
 
 		public DrmProfileGetByProviderRequestBuilder()
 			: base("drm_drmprofile", "getByProvider")
@@ -215,16 +199,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public DrmProfileFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public DrmProfileFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public DrmProfileListRequestBuilder()
 			: base("drm_drmprofile", "list")
@@ -267,16 +243,8 @@ namespace Kaltura.Services
 		public const string DRM_PROFILE = "drmProfile";
 		#endregion
 
-		public int DrmProfileId
-		{
-			set;
-			get;
-		}
-		public DrmProfile DrmProfile
-		{
-			set;
-			get;
-		}
+		public int DrmProfileId { get; set; }
+		public DrmProfile DrmProfile { get; set; }
 
 		public DrmProfileUpdateRequestBuilder()
 			: base("drm_drmprofile", "update")

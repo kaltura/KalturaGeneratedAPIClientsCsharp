@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string ENTRY_DISTRIBUTION = "entryDistribution";
 		#endregion
 
-		public EntryDistribution EntryDistribution
-		{
-			set;
-			get;
-		}
+		public EntryDistribution EntryDistribution { get; set; }
 
 		public EntryDistributionAddRequestBuilder()
 			: base("contentdistribution_entrydistribution", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public EntryDistributionDeleteRequestBuilder()
 			: base("contentdistribution_entrydistribution", "delete")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public EntryDistributionGetRequestBuilder()
 			: base("contentdistribution_entrydistribution", "get")
@@ -172,16 +160,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public EntryDistributionFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public EntryDistributionFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public EntryDistributionListRequestBuilder()
 			: base("contentdistribution_entrydistribution", "list")
@@ -223,11 +203,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public EntryDistributionRetrySubmitRequestBuilder()
 			: base("contentdistribution_entrydistribution", "retrySubmit")
@@ -267,16 +243,8 @@ namespace Kaltura.Services
 		public const string SUBMIT_WHEN_READY = "submitWhenReady";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public bool SubmitWhenReady
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public bool SubmitWhenReady { get; set; }
 
 		public EntryDistributionSubmitAddRequestBuilder()
 			: base("contentdistribution_entrydistribution", "submitAdd")
@@ -318,11 +286,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public EntryDistributionSubmitDeleteRequestBuilder()
 			: base("contentdistribution_entrydistribution", "submitDelete")
@@ -361,11 +325,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public EntryDistributionSubmitFetchReportRequestBuilder()
 			: base("contentdistribution_entrydistribution", "submitFetchReport")
@@ -404,11 +364,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public EntryDistributionSubmitUpdateRequestBuilder()
 			: base("contentdistribution_entrydistribution", "submitUpdate")
@@ -448,16 +404,8 @@ namespace Kaltura.Services
 		public const string ENTRY_DISTRIBUTION = "entryDistribution";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public EntryDistribution EntryDistribution
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public EntryDistribution EntryDistribution { get; set; }
 
 		public EntryDistributionUpdateRequestBuilder()
 			: base("contentdistribution_entrydistribution", "update")
@@ -499,11 +447,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public EntryDistributionValidateRequestBuilder()
 			: base("contentdistribution_entrydistribution", "validate")

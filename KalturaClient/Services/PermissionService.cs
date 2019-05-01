@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string PERMISSION = "permission";
 		#endregion
 
-		public Permission Permission
-		{
-			set;
-			get;
-		}
+		public Permission Permission { get; set; }
 
 		public PermissionAddRequestBuilder()
 			: base("permission", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string PERMISSION_NAME = "permissionName";
 		#endregion
 
-		public string PermissionName
-		{
-			set;
-			get;
-		}
+		public string PermissionName { get; set; }
 
 		public PermissionDeleteRequestBuilder()
 			: base("permission", "delete")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string PERMISSION_NAME = "permissionName";
 		#endregion
 
-		public string PermissionName
-		{
-			set;
-			get;
-		}
+		public string PermissionName { get; set; }
 
 		public PermissionGetRequestBuilder()
 			: base("permission", "get")
@@ -201,16 +189,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public PermissionFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public PermissionFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public PermissionListRequestBuilder()
 			: base("permission", "list")
@@ -253,16 +233,8 @@ namespace Kaltura.Services
 		public const string PERMISSION = "permission";
 		#endregion
 
-		public string PermissionName
-		{
-			set;
-			get;
-		}
-		public Permission Permission
-		{
-			set;
-			get;
-		}
+		public string PermissionName { get; set; }
+		public Permission Permission { get; set; }
 
 		public PermissionUpdateRequestBuilder()
 			: base("permission", "update")

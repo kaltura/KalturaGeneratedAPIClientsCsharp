@@ -43,16 +43,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public MediaInfoFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public MediaInfoFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public MediaInfoListRequestBuilder()
 			: base("mediainfo", "list")

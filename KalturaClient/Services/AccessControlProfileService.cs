@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string ACCESS_CONTROL_PROFILE = "accessControlProfile";
 		#endregion
 
-		public AccessControlProfile AccessControlProfile
-		{
-			set;
-			get;
-		}
+		public AccessControlProfile AccessControlProfile { get; set; }
 
 		public AccessControlProfileAddRequestBuilder()
 			: base("accesscontrolprofile", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public AccessControlProfileDeleteRequestBuilder()
 			: base("accesscontrolprofile", "delete")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public AccessControlProfileGetRequestBuilder()
 			: base("accesscontrolprofile", "get")
@@ -172,16 +160,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public AccessControlProfileFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public AccessControlProfileFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public AccessControlProfileListRequestBuilder()
 			: base("accesscontrolprofile", "list")
@@ -224,16 +204,8 @@ namespace Kaltura.Services
 		public const string ACCESS_CONTROL_PROFILE = "accessControlProfile";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public AccessControlProfile AccessControlProfile
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public AccessControlProfile AccessControlProfile { get; set; }
 
 		public AccessControlProfileUpdateRequestBuilder()
 			: base("accesscontrolprofile", "update")

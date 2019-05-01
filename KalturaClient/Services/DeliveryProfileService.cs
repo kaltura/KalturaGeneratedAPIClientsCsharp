@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string DELIVERY = "delivery";
 		#endregion
 
-		public DeliveryProfile Delivery
-		{
-			set;
-			get;
-		}
+		public DeliveryProfile Delivery { get; set; }
 
 		public DeliveryProfileAddRequestBuilder()
 			: base("deliveryprofile", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string DELIVERY_ID = "deliveryId";
 		#endregion
 
-		public int DeliveryId
-		{
-			set;
-			get;
-		}
+		public int DeliveryId { get; set; }
 
 		public DeliveryProfileCloneRequestBuilder()
 			: base("deliveryprofile", "clone")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public DeliveryProfileGetRequestBuilder()
 			: base("deliveryprofile", "get")
@@ -172,16 +160,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public DeliveryProfileFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public DeliveryProfileFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public DeliveryProfileListRequestBuilder()
 			: base("deliveryprofile", "list")
@@ -224,16 +204,8 @@ namespace Kaltura.Services
 		public const string DELIVERY = "delivery";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public DeliveryProfile Delivery
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public DeliveryProfile Delivery { get; set; }
 
 		public DeliveryProfileUpdateRequestBuilder()
 			: base("deliveryprofile", "update")

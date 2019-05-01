@@ -43,16 +43,8 @@ namespace Kaltura.Services
 		public const string TYPE = "type";
 		#endregion
 
-		public BaseEntry Entry
-		{
-			set;
-			get;
-		}
-		public EntryType Type
-		{
-			set;
-			get;
-		}
+		public BaseEntry Entry { get; set; }
+		public EntryType Type { get; set; }
 
 		public BaseEntryAddRequestBuilder()
 			: base("baseentry", "add")
@@ -95,16 +87,8 @@ namespace Kaltura.Services
 		public const string RESOURCE = "resource";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public Resource Resource
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public Resource Resource { get; set; }
 
 		public BaseEntryAddContentRequestBuilder()
 			: base("baseentry", "addContent")
@@ -148,21 +132,9 @@ namespace Kaltura.Services
 		public const string TYPE = "type";
 		#endregion
 
-		public BaseEntry Entry
-		{
-			set;
-			get;
-		}
-		public string UploadTokenId
-		{
-			set;
-			get;
-		}
-		public EntryType Type
-		{
-			set;
-			get;
-		}
+		public BaseEntry Entry { get; set; }
+		public string UploadTokenId { get; set; }
+		public EntryType Type { get; set; }
 
 		public BaseEntryAddFromUploadedFileRequestBuilder()
 			: base("baseentry", "addFromUploadedFile")
@@ -208,16 +180,8 @@ namespace Kaltura.Services
 		public const string RANK = "rank";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public int Rank
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public int Rank { get; set; }
 
 		public BaseEntryAnonymousRankRequestBuilder()
 			: base("baseentry", "anonymousRank")
@@ -259,11 +223,7 @@ namespace Kaltura.Services
 		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
 
 		public BaseEntryApproveRequestBuilder()
 			: base("baseentry", "approve")
@@ -303,16 +263,8 @@ namespace Kaltura.Services
 		public const string CLONE_OPTIONS = "cloneOptions";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public IList<BaseEntryCloneOptionItem> CloneOptions
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public IList<BaseEntryCloneOptionItem> CloneOptions { get; set; }
 
 		public BaseEntryCloneRequestBuilder()
 			: base("baseentry", "clone")
@@ -354,11 +306,7 @@ namespace Kaltura.Services
 		public const string FILTER = "filter";
 		#endregion
 
-		public BaseEntryFilter Filter
-		{
-			set;
-			get;
-		}
+		public BaseEntryFilter Filter { get; set; }
 
 		public BaseEntryCountRequestBuilder()
 			: base("baseentry", "count")
@@ -397,11 +345,7 @@ namespace Kaltura.Services
 		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
 
 		public BaseEntryDeleteRequestBuilder()
 			: base("baseentry", "delete")
@@ -441,16 +385,8 @@ namespace Kaltura.Services
 		public const string STORAGE_PROFILE_ID = "storageProfileId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public int StorageProfileId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public int StorageProfileId { get; set; }
 
 		public BaseEntryExportRequestBuilder()
 			: base("baseentry", "export")
@@ -492,11 +428,7 @@ namespace Kaltura.Services
 		public const string MODERATION_FLAG = "moderationFlag";
 		#endregion
 
-		public ModerationFlag ModerationFlag
-		{
-			set;
-			get;
-		}
+		public ModerationFlag ModerationFlag { get; set; }
 
 		public BaseEntryFlagRequestBuilder()
 			: base("baseentry", "flag")
@@ -536,16 +468,8 @@ namespace Kaltura.Services
 		public const string VERSION = "version";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public int Version
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public int Version { get; set; }
 
 		public BaseEntryGetRequestBuilder()
 			: base("baseentry", "get")
@@ -587,11 +511,7 @@ namespace Kaltura.Services
 		public const string ENTRY_IDS = "entryIds";
 		#endregion
 
-		public string EntryIds
-		{
-			set;
-			get;
-		}
+		public string EntryIds { get; set; }
 
 		public BaseEntryGetByIdsRequestBuilder()
 			: base("baseentry", "getByIds")
@@ -637,16 +557,8 @@ namespace Kaltura.Services
 		public const string CONTEXT_DATA_PARAMS = "contextDataParams";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public EntryContextDataParams ContextDataParams
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public EntryContextDataParams ContextDataParams { get; set; }
 
 		public BaseEntryGetContextDataRequestBuilder()
 			: base("baseentry", "getContextData")
@@ -689,16 +601,8 @@ namespace Kaltura.Services
 		public const string CONTEXT_DATA_PARAMS = "contextDataParams";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public PlaybackContextOptions ContextDataParams
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public PlaybackContextOptions ContextDataParams { get; set; }
 
 		public BaseEntryGetPlaybackContextRequestBuilder()
 			: base("baseentry", "getPlaybackContext")
@@ -740,11 +644,7 @@ namespace Kaltura.Services
 		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
 
 		public BaseEntryGetRemotePathsRequestBuilder()
 			: base("baseentry", "getRemotePaths")
@@ -784,16 +684,8 @@ namespace Kaltura.Services
 		public const string SHOULD_UPDATE = "shouldUpdate";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public bool ShouldUpdate
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public bool ShouldUpdate { get; set; }
 
 		public BaseEntryIndexRequestBuilder()
 			: base("baseentry", "index")
@@ -836,16 +728,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public BaseEntryFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public BaseEntryFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public BaseEntryListRequestBuilder()
 			: base("baseentry", "list")
@@ -888,16 +772,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public string RefId
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public string RefId { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public BaseEntryListByReferenceIdRequestBuilder()
 			: base("baseentry", "listByReferenceId")
@@ -940,16 +816,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public BaseEntryListFlagsRequestBuilder()
 			: base("baseentry", "listFlags")
@@ -991,11 +859,7 @@ namespace Kaltura.Services
 		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
 
 		public BaseEntryRejectRequestBuilder()
 			: base("baseentry", "reject")
@@ -1035,16 +899,8 @@ namespace Kaltura.Services
 		public const string BASE_ENTRY = "baseEntry";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public BaseEntry BaseEntry
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public BaseEntry BaseEntry { get; set; }
 
 		public BaseEntryUpdateRequestBuilder()
 			: base("baseentry", "update")
@@ -1089,26 +945,10 @@ namespace Kaltura.Services
 		public const string ADVANCED_OPTIONS = "advancedOptions";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public Resource Resource
-		{
-			set;
-			get;
-		}
-		public int ConversionProfileId
-		{
-			set;
-			get;
-		}
-		public EntryReplacementOptions AdvancedOptions
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public Resource Resource { get; set; }
+		public int ConversionProfileId { get; set; }
+		public EntryReplacementOptions AdvancedOptions { get; set; }
 
 		public BaseEntryUpdateContentRequestBuilder()
 			: base("baseentry", "updateContent")
@@ -1158,21 +998,9 @@ namespace Kaltura.Services
 		public const string TIME_OFFSET = "timeOffset";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public string SourceEntryId
-		{
-			set;
-			get;
-		}
-		public int TimeOffset
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public string SourceEntryId { get; set; }
+		public int TimeOffset { get; set; }
 
 		public BaseEntryUpdateThumbnailFromSourceEntryRequestBuilder()
 			: base("baseentry", "updateThumbnailFromSourceEntry")
@@ -1218,16 +1046,8 @@ namespace Kaltura.Services
 		public const string URL = "url";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public string Url
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public string Url { get; set; }
 
 		public BaseEntryUpdateThumbnailFromUrlRequestBuilder()
 			: base("baseentry", "updateThumbnailFromUrl")
@@ -1270,16 +1090,9 @@ namespace Kaltura.Services
 		public const string FILE_DATA = "fileData";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public Stream FileData
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public Stream FileData { get; set; }
+		public string FileData_FileName { get; set; }
 
 		public BaseEntryUpdateThumbnailJpegRequestBuilder()
 			: base("baseentry", "updateThumbnailJpeg")
@@ -1304,7 +1117,7 @@ namespace Kaltura.Services
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("fileData", FileData);
+			kfiles.Add("fileData", new FileData(FileData, FileData_FileName));
 			return kfiles;
 		}
 
@@ -1320,11 +1133,8 @@ namespace Kaltura.Services
 		public const string FILE_DATA = "fileData";
 		#endregion
 
-		public Stream FileData
-		{
-			set;
-			get;
-		}
+		public Stream FileData { get; set; }
+		public string FileData_FileName { get; set; }
 
 		public BaseEntryUploadRequestBuilder()
 			: base("baseentry", "upload")
@@ -1346,7 +1156,7 @@ namespace Kaltura.Services
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("fileData", FileData);
+			kfiles.Add("fileData", new FileData(FileData, FileData_FileName));
 			return kfiles;
 		}
 

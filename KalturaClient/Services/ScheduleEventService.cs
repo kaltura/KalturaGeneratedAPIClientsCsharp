@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string SCHEDULE_EVENT = "scheduleEvent";
 		#endregion
 
-		public ScheduleEvent ScheduleEvent
-		{
-			set;
-			get;
-		}
+		public ScheduleEvent ScheduleEvent { get; set; }
 
 		public ScheduleEventAddRequestBuilder()
 			: base("schedule_scheduleevent", "add")
@@ -86,16 +82,9 @@ namespace Kaltura.Services
 		public const string BULK_UPLOAD_DATA = "bulkUploadData";
 		#endregion
 
-		public Stream FileData
-		{
-			set;
-			get;
-		}
-		public BulkUploadICalJobData BulkUploadData
-		{
-			set;
-			get;
-		}
+		public Stream FileData { get; set; }
+		public string FileData_FileName { get; set; }
+		public BulkUploadICalJobData BulkUploadData { get; set; }
 
 		public ScheduleEventAddFromBulkUploadRequestBuilder()
 			: base("schedule_scheduleevent", "addFromBulkUpload")
@@ -120,7 +109,7 @@ namespace Kaltura.Services
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("fileData", FileData);
+			kfiles.Add("fileData", new FileData(FileData, FileData_FileName));
 			return kfiles;
 		}
 
@@ -136,11 +125,7 @@ namespace Kaltura.Services
 		public const string SCHEDULE_EVENT_ID = "scheduleEventId";
 		#endregion
 
-		public int ScheduleEventId
-		{
-			set;
-			get;
-		}
+		public int ScheduleEventId { get; set; }
 
 		public ScheduleEventCancelRequestBuilder()
 			: base("schedule_scheduleevent", "cancel")
@@ -179,11 +164,7 @@ namespace Kaltura.Services
 		public const string SCHEDULE_EVENT_ID = "scheduleEventId";
 		#endregion
 
-		public int ScheduleEventId
-		{
-			set;
-			get;
-		}
+		public int ScheduleEventId { get; set; }
 
 		public ScheduleEventDeleteRequestBuilder()
 			: base("schedule_scheduleevent", "delete")
@@ -222,11 +203,7 @@ namespace Kaltura.Services
 		public const string SCHEDULE_EVENT_ID = "scheduleEventId";
 		#endregion
 
-		public int ScheduleEventId
-		{
-			set;
-			get;
-		}
+		public int ScheduleEventId { get; set; }
 
 		public ScheduleEventGetRequestBuilder()
 			: base("schedule_scheduleevent", "get")
@@ -268,26 +245,10 @@ namespace Kaltura.Services
 		public const string SCHEDULE_EVENT_CONFLICT_TYPE = "scheduleEventConflictType";
 		#endregion
 
-		public string ResourceIds
-		{
-			set;
-			get;
-		}
-		public ScheduleEvent ScheduleEvent
-		{
-			set;
-			get;
-		}
-		public string ScheduleEventIdToIgnore
-		{
-			set;
-			get;
-		}
-		public ScheduleEventConflictType ScheduleEventConflictType
-		{
-			set;
-			get;
-		}
+		public string ResourceIds { get; set; }
+		public ScheduleEvent ScheduleEvent { get; set; }
+		public string ScheduleEventIdToIgnore { get; set; }
+		public ScheduleEventConflictType ScheduleEventConflictType { get; set; }
 
 		public ScheduleEventGetConflictsRequestBuilder()
 			: base("schedule_scheduleevent", "getConflicts")
@@ -336,16 +297,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public ScheduleEventFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public ScheduleEventFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public ScheduleEventListRequestBuilder()
 			: base("schedule_scheduleevent", "list")
@@ -388,16 +341,8 @@ namespace Kaltura.Services
 		public const string SCHEDULE_EVENT = "scheduleEvent";
 		#endregion
 
-		public int ScheduleEventId
-		{
-			set;
-			get;
-		}
-		public ScheduleEvent ScheduleEvent
-		{
-			set;
-			get;
-		}
+		public int ScheduleEventId { get; set; }
+		public ScheduleEvent ScheduleEvent { get; set; }
 
 		public ScheduleEventUpdateRequestBuilder()
 			: base("schedule_scheduleevent", "update")

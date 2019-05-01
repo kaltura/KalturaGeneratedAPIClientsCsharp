@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string GROUP = "group";
 		#endregion
 
-		public Group_ Group
-		{
-			set;
-			get;
-		}
+		public Group_ Group { get; set; }
 
 		public GroupAddRequestBuilder()
 			: base("group_group", "add")
@@ -86,16 +82,8 @@ namespace Kaltura.Services
 		public const string NEW_GROUP_NAME = "newGroupName";
 		#endregion
 
-		public string OriginalGroupId
-		{
-			set;
-			get;
-		}
-		public string NewGroupName
-		{
-			set;
-			get;
-		}
+		public string OriginalGroupId { get; set; }
+		public string NewGroupName { get; set; }
 
 		public GroupCloneRequestBuilder()
 			: base("group_group", "clone")
@@ -137,11 +125,7 @@ namespace Kaltura.Services
 		public const string GROUP_ID = "groupId";
 		#endregion
 
-		public string GroupId
-		{
-			set;
-			get;
-		}
+		public string GroupId { get; set; }
 
 		public GroupDeleteRequestBuilder()
 			: base("group_group", "delete")
@@ -180,11 +164,7 @@ namespace Kaltura.Services
 		public const string GROUP_ID = "groupId";
 		#endregion
 
-		public string GroupId
-		{
-			set;
-			get;
-		}
+		public string GroupId { get; set; }
 
 		public GroupGetRequestBuilder()
 			: base("group_group", "get")
@@ -224,16 +204,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public GroupFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public GroupFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public GroupListRequestBuilder()
 			: base("group_group", "list")
@@ -276,16 +248,8 @@ namespace Kaltura.Services
 		public const string GROUP = "group";
 		#endregion
 
-		public string GroupId
-		{
-			set;
-			get;
-		}
-		public Group_ Group
-		{
-			set;
-			get;
-		}
+		public string GroupId { get; set; }
+		public Group_ Group { get; set; }
 
 		public GroupUpdateRequestBuilder()
 			: base("group_group", "update")

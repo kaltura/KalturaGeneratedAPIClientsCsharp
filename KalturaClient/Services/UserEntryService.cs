@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string USER_ENTRY = "userEntry";
 		#endregion
 
-		public UserEntry UserEntry
-		{
-			set;
-			get;
-		}
+		public UserEntry UserEntry { get; set; }
 
 		public UserEntryAddRequestBuilder()
 			: base("userentry", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string FILTER = "filter";
 		#endregion
 
-		public UserEntryFilter Filter
-		{
-			set;
-			get;
-		}
+		public UserEntryFilter Filter { get; set; }
 
 		public UserEntryBulkDeleteRequestBuilder()
 			: base("userentry", "bulkDelete")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public UserEntryDeleteRequestBuilder()
 			: base("userentry", "delete")
@@ -171,11 +159,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public UserEntryGetRequestBuilder()
 			: base("userentry", "get")
@@ -215,16 +199,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public UserEntryFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public UserEntryFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public UserEntryListRequestBuilder()
 			: base("userentry", "list")
@@ -266,11 +242,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public UserEntrySubmitQuizRequestBuilder()
 			: base("userentry", "submitQuiz")
@@ -310,16 +282,8 @@ namespace Kaltura.Services
 		public const string USER_ENTRY = "userEntry";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public UserEntry UserEntry
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public UserEntry UserEntry { get; set; }
 
 		public UserEntryUpdateRequestBuilder()
 			: base("userentry", "update")

@@ -43,16 +43,8 @@ namespace Kaltura.Services
 		public const string SHOULD_LOG = "shouldLog";
 		#endregion
 
-		public Beacon Beacon
-		{
-			set;
-			get;
-		}
-		public NullableBoolean ShouldLog
-		{
-			set;
-			get;
-		}
+		public Beacon Beacon { get; set; }
+		public NullableBoolean ShouldLog { get; set; }
 
 		public BeaconAddRequestBuilder()
 			: base("beacon_beacon", "add")
@@ -97,16 +89,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public BeaconEnhanceFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public BeaconEnhanceFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public BeaconEnhanceSearchRequestBuilder()
 			: base("beacon_beacon", "enhanceSearch")
@@ -149,16 +133,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public BeaconFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public BeaconFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public BeaconListRequestBuilder()
 			: base("beacon_beacon", "list")
@@ -201,16 +177,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public BeaconSearchParams SearchParams
-		{
-			set;
-			get;
-		}
-		public Pager Pager
-		{
-			set;
-			get;
-		}
+		public BeaconSearchParams SearchParams { get; set; }
+		public Pager Pager { get; set; }
 
 		public BeaconSearchScheduledResourceRequestBuilder()
 			: base("beacon_beacon", "searchScheduledResource")

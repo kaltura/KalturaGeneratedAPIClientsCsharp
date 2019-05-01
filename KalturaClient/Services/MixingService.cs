@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string MIX_ENTRY = "mixEntry";
 		#endregion
 
-		public MixEntry MixEntry
-		{
-			set;
-			get;
-		}
+		public MixEntry MixEntry { get; set; }
 
 		public MixingAddRequestBuilder()
 			: base("mixing", "add")
@@ -86,16 +82,8 @@ namespace Kaltura.Services
 		public const string RANK = "rank";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public int Rank
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public int Rank { get; set; }
 
 		public MixingAnonymousRankRequestBuilder()
 			: base("mixing", "anonymousRank")
@@ -138,16 +126,8 @@ namespace Kaltura.Services
 		public const string MEDIA_ENTRY_ID = "mediaEntryId";
 		#endregion
 
-		public string MixEntryId
-		{
-			set;
-			get;
-		}
-		public string MediaEntryId
-		{
-			set;
-			get;
-		}
+		public string MixEntryId { get; set; }
+		public string MediaEntryId { get; set; }
 
 		public MixingAppendMediaEntryRequestBuilder()
 			: base("mixing", "appendMediaEntry")
@@ -189,11 +169,7 @@ namespace Kaltura.Services
 		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
 
 		public MixingCloneRequestBuilder()
 			: base("mixing", "clone")
@@ -232,11 +208,7 @@ namespace Kaltura.Services
 		public const string FILTER = "filter";
 		#endregion
 
-		public MediaEntryFilter Filter
-		{
-			set;
-			get;
-		}
+		public MediaEntryFilter Filter { get; set; }
 
 		public MixingCountRequestBuilder()
 			: base("mixing", "count")
@@ -275,11 +247,7 @@ namespace Kaltura.Services
 		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
 
 		public MixingDeleteRequestBuilder()
 			: base("mixing", "delete")
@@ -319,16 +287,8 @@ namespace Kaltura.Services
 		public const string VERSION = "version";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public int Version
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public int Version { get; set; }
 
 		public MixingGetRequestBuilder()
 			: base("mixing", "get")
@@ -370,11 +330,7 @@ namespace Kaltura.Services
 		public const string MEDIA_ENTRY_ID = "mediaEntryId";
 		#endregion
 
-		public string MediaEntryId
-		{
-			set;
-			get;
-		}
+		public string MediaEntryId { get; set; }
 
 		public MixingGetMixesByMediaIdRequestBuilder()
 			: base("mixing", "getMixesByMediaId")
@@ -420,16 +376,8 @@ namespace Kaltura.Services
 		public const string VERSION = "version";
 		#endregion
 
-		public string MixId
-		{
-			set;
-			get;
-		}
-		public int Version
-		{
-			set;
-			get;
-		}
+		public string MixId { get; set; }
+		public int Version { get; set; }
 
 		public MixingGetReadyMediaEntriesRequestBuilder()
 			: base("mixing", "getReadyMediaEntries")
@@ -478,16 +426,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public MixEntryFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public MixEntryFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public MixingListRequestBuilder()
 			: base("mixing", "list")
@@ -530,16 +470,8 @@ namespace Kaltura.Services
 		public const string MIX_ENTRY = "mixEntry";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public MixEntry MixEntry
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public MixEntry MixEntry { get; set; }
 
 		public MixingUpdateRequestBuilder()
 			: base("mixing", "update")

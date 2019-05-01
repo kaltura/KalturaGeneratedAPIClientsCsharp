@@ -43,16 +43,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public ESearchCategoryParams SearchParams
-		{
-			set;
-			get;
-		}
-		public Pager Pager
-		{
-			set;
-			get;
-		}
+		public ESearchCategoryParams SearchParams { get; set; }
+		public Pager Pager { get; set; }
 
 		public ESearchSearchCategoryRequestBuilder()
 			: base("elasticsearch_esearch", "searchCategory")
@@ -95,16 +87,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public ESearchEntryParams SearchParams
-		{
-			set;
-			get;
-		}
-		public Pager Pager
-		{
-			set;
-			get;
-		}
+		public ESearchEntryParams SearchParams { get; set; }
+		public Pager Pager { get; set; }
 
 		public ESearchSearchEntryRequestBuilder()
 			: base("elasticsearch_esearch", "searchEntry")
@@ -147,16 +131,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public ESearchGroupParams SearchParams
-		{
-			set;
-			get;
-		}
-		public Pager Pager
-		{
-			set;
-			get;
-		}
+		public ESearchGroupParams SearchParams { get; set; }
+		public Pager Pager { get; set; }
 
 		public ESearchSearchGroupRequestBuilder()
 			: base("elasticsearch_esearch", "searchGroup")
@@ -199,16 +175,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public ESearchUserParams SearchParams
-		{
-			set;
-			get;
-		}
-		public Pager Pager
-		{
-			set;
-			get;
-		}
+		public ESearchUserParams SearchParams { get; set; }
+		public Pager Pager { get; set; }
 
 		public ESearchSearchUserRequestBuilder()
 			: base("elasticsearch_esearch", "searchUser")

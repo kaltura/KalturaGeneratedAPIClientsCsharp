@@ -73,21 +73,9 @@ namespace Kaltura.Services
 		public const string PC_TO_INCREMENT = "pcToIncrement";
 		#endregion
 
-		public int CategoryId
-		{
-			set;
-			get;
-		}
-		public string PcToDecrement
-		{
-			set;
-			get;
-		}
-		public string PcToIncrement
-		{
-			set;
-			get;
-		}
+		public int CategoryId { get; set; }
+		public string PcToDecrement { get; set; }
+		public string PcToIncrement { get; set; }
 
 		public TagIndexCategoryEntryTagsRequestBuilder()
 			: base("tagsearch_tag", "indexCategoryEntryTags")
@@ -133,16 +121,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public TagFilter TagFilter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public TagFilter TagFilter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public TagSearchRequestBuilder()
 			: base("tagsearch_tag", "search")

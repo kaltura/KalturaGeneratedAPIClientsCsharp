@@ -43,16 +43,8 @@ namespace Kaltura.Services
 		public const string ABORT_REASON = "abortReason";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public string AbortReason
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public string AbortReason { get; set; }
 
 		public EntryVendorTaskAbortRequestBuilder()
 			: base("reach_entryvendortask", "abort")
@@ -94,11 +86,7 @@ namespace Kaltura.Services
 		public const string ENTRY_VENDOR_TASK = "entryVendorTask";
 		#endregion
 
-		public EntryVendorTask EntryVendorTask
-		{
-			set;
-			get;
-		}
+		public EntryVendorTask EntryVendorTask { get; set; }
 
 		public EntryVendorTaskAddRequestBuilder()
 			: base("reach_entryvendortask", "add")
@@ -137,11 +125,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public EntryVendorTaskApproveRequestBuilder()
 			: base("reach_entryvendortask", "approve")
@@ -180,11 +164,7 @@ namespace Kaltura.Services
 		public const string FILTER = "filter";
 		#endregion
 
-		public EntryVendorTaskFilter Filter
-		{
-			set;
-			get;
-		}
+		public EntryVendorTaskFilter Filter { get; set; }
 
 		public EntryVendorTaskExportToCsvRequestBuilder()
 			: base("reach_entryvendortask", "exportToCsv")
@@ -223,11 +203,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public EntryVendorTaskExtendAccessKeyRequestBuilder()
 			: base("reach_entryvendortask", "extendAccessKey")
@@ -266,11 +242,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public EntryVendorTaskGetRequestBuilder()
 			: base("reach_entryvendortask", "get")
@@ -310,16 +282,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public EntryVendorTaskFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public EntryVendorTaskFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public EntryVendorTaskGetJobsRequestBuilder()
 			: base("reach_entryvendortask", "getJobs")
@@ -362,16 +326,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public EntryVendorTaskFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public EntryVendorTaskFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public EntryVendorTaskListRequestBuilder()
 			: base("reach_entryvendortask", "list")
@@ -414,16 +370,8 @@ namespace Kaltura.Services
 		public const string REJECT_REASON = "rejectReason";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public string RejectReason
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public string RejectReason { get; set; }
 
 		public EntryVendorTaskRejectRequestBuilder()
 			: base("reach_entryvendortask", "reject")
@@ -465,11 +413,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public EntryVendorTaskServeCsvRequestBuilder()
 			: base("reach_entryvendortask", "serveCsv")
@@ -509,16 +453,8 @@ namespace Kaltura.Services
 		public const string ENTRY_VENDOR_TASK = "entryVendorTask";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public EntryVendorTask EntryVendorTask
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public EntryVendorTask EntryVendorTask { get; set; }
 
 		public EntryVendorTaskUpdateRequestBuilder()
 			: base("reach_entryvendortask", "update")
@@ -561,16 +497,8 @@ namespace Kaltura.Services
 		public const string ENTRY_VENDOR_TASK = "entryVendorTask";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public EntryVendorTask EntryVendorTask
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public EntryVendorTask EntryVendorTask { get; set; }
 
 		public EntryVendorTaskUpdateJobRequestBuilder()
 			: base("reach_entryvendortask", "updateJob")

@@ -43,16 +43,8 @@ namespace Kaltura.Services
 		public const string THUMB_ASSET = "thumbAsset";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public ThumbAsset ThumbAsset
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public ThumbAsset ThumbAsset { get; set; }
 
 		public ThumbAssetAddRequestBuilder()
 			: base("thumbasset", "add")
@@ -95,16 +87,9 @@ namespace Kaltura.Services
 		public const string FILE_DATA = "fileData";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public Stream FileData
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public Stream FileData { get; set; }
+		public string FileData_FileName { get; set; }
 
 		public ThumbAssetAddFromImageRequestBuilder()
 			: base("thumbasset", "addFromImage")
@@ -129,7 +114,7 @@ namespace Kaltura.Services
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("fileData", FileData);
+			kfiles.Add("fileData", new FileData(FileData, FileData_FileName));
 			return kfiles;
 		}
 
@@ -146,16 +131,8 @@ namespace Kaltura.Services
 		public const string URL = "url";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public string Url
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public string Url { get; set; }
 
 		public ThumbAssetAddFromUrlRequestBuilder()
 			: base("thumbasset", "addFromUrl")
@@ -197,11 +174,7 @@ namespace Kaltura.Services
 		public const string THUMB_ASSET_ID = "thumbAssetId";
 		#endregion
 
-		public string ThumbAssetId
-		{
-			set;
-			get;
-		}
+		public string ThumbAssetId { get; set; }
 
 		public ThumbAssetDeleteRequestBuilder()
 			: base("thumbasset", "delete")
@@ -241,16 +214,8 @@ namespace Kaltura.Services
 		public const string STORAGE_PROFILE_ID = "storageProfileId";
 		#endregion
 
-		public string AssetId
-		{
-			set;
-			get;
-		}
-		public int StorageProfileId
-		{
-			set;
-			get;
-		}
+		public string AssetId { get; set; }
+		public int StorageProfileId { get; set; }
 
 		public ThumbAssetExportRequestBuilder()
 			: base("thumbasset", "export")
@@ -294,21 +259,9 @@ namespace Kaltura.Services
 		public const string SOURCE_ASSET_ID = "sourceAssetId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public ThumbParams ThumbParams
-		{
-			set;
-			get;
-		}
-		public string SourceAssetId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public ThumbParams ThumbParams { get; set; }
+		public string SourceAssetId { get; set; }
 
 		public ThumbAssetGenerateRequestBuilder()
 			: base("thumbasset", "generate")
@@ -354,16 +307,8 @@ namespace Kaltura.Services
 		public const string DEST_THUMB_PARAMS_ID = "destThumbParamsId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public int DestThumbParamsId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public int DestThumbParamsId { get; set; }
 
 		public ThumbAssetGenerateByEntryIdRequestBuilder()
 			: base("thumbasset", "generateByEntryId")
@@ -405,11 +350,7 @@ namespace Kaltura.Services
 		public const string THUMB_ASSET_ID = "thumbAssetId";
 		#endregion
 
-		public string ThumbAssetId
-		{
-			set;
-			get;
-		}
+		public string ThumbAssetId { get; set; }
 
 		public ThumbAssetGetRequestBuilder()
 			: base("thumbasset", "get")
@@ -448,11 +389,7 @@ namespace Kaltura.Services
 		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
 
 		public ThumbAssetGetByEntryIdRequestBuilder()
 			: base("thumbasset", "getByEntryId")
@@ -497,11 +434,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public ThumbAssetGetRemotePathsRequestBuilder()
 			: base("thumbasset", "getRemotePaths")
@@ -542,21 +475,9 @@ namespace Kaltura.Services
 		public const string THUMB_PARAMS = "thumbParams";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public int StorageId
-		{
-			set;
-			get;
-		}
-		public ThumbParams ThumbParams
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public int StorageId { get; set; }
+		public ThumbParams ThumbParams { get; set; }
 
 		public ThumbAssetGetUrlRequestBuilder()
 			: base("thumbasset", "getUrl")
@@ -602,16 +523,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public AssetFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public AssetFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public ThumbAssetListRequestBuilder()
 			: base("thumbasset", "list")
@@ -653,11 +566,7 @@ namespace Kaltura.Services
 		public const string THUMB_ASSET_ID = "thumbAssetId";
 		#endregion
 
-		public string ThumbAssetId
-		{
-			set;
-			get;
-		}
+		public string ThumbAssetId { get; set; }
 
 		public ThumbAssetRegenerateRequestBuilder()
 			: base("thumbasset", "regenerate")
@@ -696,11 +605,7 @@ namespace Kaltura.Services
 		public const string THUMB_ASSET_ID = "thumbAssetId";
 		#endregion
 
-		public string ThumbAssetId
-		{
-			set;
-			get;
-		}
+		public string ThumbAssetId { get; set; }
 
 		public ThumbAssetSetAsDefaultRequestBuilder()
 			: base("thumbasset", "setAsDefault")
@@ -740,16 +645,8 @@ namespace Kaltura.Services
 		public const string CONTENT_RESOURCE = "contentResource";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public ContentResource ContentResource
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public ContentResource ContentResource { get; set; }
 
 		public ThumbAssetSetContentRequestBuilder()
 			: base("thumbasset", "setContent")
@@ -792,16 +689,8 @@ namespace Kaltura.Services
 		public const string THUMB_ASSET = "thumbAsset";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public ThumbAsset ThumbAsset
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public ThumbAsset ThumbAsset { get; set; }
 
 		public ThumbAssetUpdateRequestBuilder()
 			: base("thumbasset", "update")

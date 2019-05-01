@@ -43,16 +43,8 @@ namespace Kaltura.Services
 		public const string QUIZ = "quiz";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public Quiz Quiz
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public Quiz Quiz { get; set; }
 
 		public QuizAddRequestBuilder()
 			: base("quiz_quiz", "add")
@@ -94,11 +86,7 @@ namespace Kaltura.Services
 		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
 
 		public QuizGetRequestBuilder()
 			: base("quiz_quiz", "get")
@@ -138,16 +126,8 @@ namespace Kaltura.Services
 		public const string QUIZ_OUTPUT_TYPE = "quizOutputType";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public QuizOutputType QuizOutputType
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public QuizOutputType QuizOutputType { get; set; }
 
 		public QuizGetUrlRequestBuilder()
 			: base("quiz_quiz", "getUrl")
@@ -190,16 +170,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public QuizFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public QuizFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public QuizListRequestBuilder()
 			: base("quiz_quiz", "list")
@@ -242,16 +214,8 @@ namespace Kaltura.Services
 		public const string QUIZ = "quiz";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public Quiz Quiz
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public Quiz Quiz { get; set; }
 
 		public QuizUpdateRequestBuilder()
 			: base("quiz_quiz", "update")

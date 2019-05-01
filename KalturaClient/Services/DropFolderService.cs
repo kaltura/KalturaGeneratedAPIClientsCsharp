@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string DROP_FOLDER = "dropFolder";
 		#endregion
 
-		public DropFolder DropFolder
-		{
-			set;
-			get;
-		}
+		public DropFolder DropFolder { get; set; }
 
 		public DropFolderAddRequestBuilder()
 			: base("dropfolder_dropfolder", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string DROP_FOLDER_ID = "dropFolderId";
 		#endregion
 
-		public int DropFolderId
-		{
-			set;
-			get;
-		}
+		public int DropFolderId { get; set; }
 
 		public DropFolderDeleteRequestBuilder()
 			: base("dropfolder_dropfolder", "delete")
@@ -130,21 +122,9 @@ namespace Kaltura.Services
 		public const string ERROR_DESCRIPTION = "errorDescription";
 		#endregion
 
-		public int DropFolderId
-		{
-			set;
-			get;
-		}
-		public string ErrorCode
-		{
-			set;
-			get;
-		}
-		public string ErrorDescription
-		{
-			set;
-			get;
-		}
+		public int DropFolderId { get; set; }
+		public string ErrorCode { get; set; }
+		public string ErrorDescription { get; set; }
 
 		public DropFolderFreeExclusiveDropFolderRequestBuilder()
 			: base("dropfolder_dropfolder", "freeExclusiveDropFolder")
@@ -189,11 +169,7 @@ namespace Kaltura.Services
 		public const string DROP_FOLDER_ID = "dropFolderId";
 		#endregion
 
-		public int DropFolderId
-		{
-			set;
-			get;
-		}
+		public int DropFolderId { get; set; }
 
 		public DropFolderGetRequestBuilder()
 			: base("dropfolder_dropfolder", "get")
@@ -233,16 +209,8 @@ namespace Kaltura.Services
 		public const string MAX_TIME = "maxTime";
 		#endregion
 
-		public string Tag
-		{
-			set;
-			get;
-		}
-		public int MaxTime
-		{
-			set;
-			get;
-		}
+		public string Tag { get; set; }
+		public int MaxTime { get; set; }
 
 		public DropFolderGetExclusiveDropFolderRequestBuilder()
 			: base("dropfolder_dropfolder", "getExclusiveDropFolder")
@@ -285,16 +253,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public DropFolderFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public DropFolderFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public DropFolderListRequestBuilder()
 			: base("dropfolder_dropfolder", "list")
@@ -337,16 +297,8 @@ namespace Kaltura.Services
 		public const string DROP_FOLDER = "dropFolder";
 		#endregion
 
-		public int DropFolderId
-		{
-			set;
-			get;
-		}
-		public DropFolder DropFolder
-		{
-			set;
-			get;
-		}
+		public int DropFolderId { get; set; }
+		public DropFolder DropFolder { get; set; }
 
 		public DropFolderUpdateRequestBuilder()
 			: base("dropfolder_dropfolder", "update")

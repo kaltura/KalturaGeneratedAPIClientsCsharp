@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string REACH_PROFILE = "reachProfile";
 		#endregion
 
-		public ReachProfile ReachProfile
-		{
-			set;
-			get;
-		}
+		public ReachProfile ReachProfile { get; set; }
 
 		public ReachProfileAddRequestBuilder()
 			: base("reach_reachprofile", "add")
@@ -85,11 +81,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public ReachProfileDeleteRequestBuilder()
 			: base("reach_reachprofile", "delete")
@@ -128,11 +120,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public ReachProfileGetRequestBuilder()
 			: base("reach_reachprofile", "get")
@@ -172,16 +160,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public ReachProfileFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public ReachProfileFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public ReachProfileListRequestBuilder()
 			: base("reach_reachprofile", "list")
@@ -223,11 +203,7 @@ namespace Kaltura.Services
 		public const string REACH_PROFILE_ID = "reachProfileId";
 		#endregion
 
-		public int ReachProfileId
-		{
-			set;
-			get;
-		}
+		public int ReachProfileId { get; set; }
 
 		public ReachProfileSyncCreditRequestBuilder()
 			: base("reach_reachprofile", "syncCredit")
@@ -267,16 +243,8 @@ namespace Kaltura.Services
 		public const string REACH_PROFILE = "reachProfile";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public ReachProfile ReachProfile
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public ReachProfile ReachProfile { get; set; }
 
 		public ReachProfileUpdateRequestBuilder()
 			: base("reach_reachprofile", "update")
@@ -319,16 +287,8 @@ namespace Kaltura.Services
 		public const string STATUS = "status";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public ReachProfileStatus Status
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public ReachProfileStatus Status { get; set; }
 
 		public ReachProfileUpdateStatusRequestBuilder()
 			: base("reach_reachprofile", "updateStatus")

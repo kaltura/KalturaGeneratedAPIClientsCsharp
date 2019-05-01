@@ -71,11 +71,7 @@ namespace Kaltura.Services
 		public const string KEY_IDS = "keyIds";
 		#endregion
 
-		public string KeyIds
-		{
-			set;
-			get;
-		}
+		public string KeyIds { get; set; }
 
 		public PlayReadyDrmGetContentKeysRequestBuilder()
 			: base("playready_playreadydrm", "getContentKeys")
@@ -121,16 +117,8 @@ namespace Kaltura.Services
 		public const string CREATE_IF_MISSING = "createIfMissing";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public bool CreateIfMissing
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public bool CreateIfMissing { get; set; }
 
 		public PlayReadyDrmGetEntryContentKeyRequestBuilder()
 			: base("playready_playreadydrm", "getEntryContentKey")
@@ -176,31 +164,11 @@ namespace Kaltura.Services
 		public const string REFERRER = "referrer";
 		#endregion
 
-		public string KeyId
-		{
-			set;
-			get;
-		}
-		public string DeviceId
-		{
-			set;
-			get;
-		}
-		public int DeviceType
-		{
-			set;
-			get;
-		}
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public string Referrer
-		{
-			set;
-			get;
-		}
+		public string KeyId { get; set; }
+		public string DeviceId { get; set; }
+		public int DeviceType { get; set; }
+		public string EntryId { get; set; }
+		public string Referrer { get; set; }
 
 		public PlayReadyDrmGetLicenseDetailsRequestBuilder()
 			: base("playready_playreadydrm", "getLicenseDetails")

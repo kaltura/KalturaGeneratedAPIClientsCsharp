@@ -42,11 +42,7 @@ namespace Kaltura.Services
 		public const string EMAIL_IP = "EmailIP";
 		#endregion
 
-		public EmailIngestionProfile EmailIP
-		{
-			set;
-			get;
-		}
+		public EmailIngestionProfile EmailIP { get; set; }
 
 		public EmailIngestionProfileAddRequestBuilder()
 			: base("emailingestionprofile", "add")
@@ -89,31 +85,11 @@ namespace Kaltura.Services
 		public const string EMAIL_MSG_ID = "emailMsgId";
 		#endregion
 
-		public MediaEntry MediaEntry
-		{
-			set;
-			get;
-		}
-		public string UploadTokenId
-		{
-			set;
-			get;
-		}
-		public int EmailProfId
-		{
-			set;
-			get;
-		}
-		public string FromAddress
-		{
-			set;
-			get;
-		}
-		public string EmailMsgId
-		{
-			set;
-			get;
-		}
+		public MediaEntry MediaEntry { get; set; }
+		public string UploadTokenId { get; set; }
+		public int EmailProfId { get; set; }
+		public string FromAddress { get; set; }
+		public string EmailMsgId { get; set; }
 
 		public EmailIngestionProfileAddMediaEntryRequestBuilder()
 			: base("emailingestionprofile", "addMediaEntry")
@@ -164,11 +140,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public EmailIngestionProfileDeleteRequestBuilder()
 			: base("emailingestionprofile", "delete")
@@ -207,11 +179,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
 
 		public EmailIngestionProfileGetRequestBuilder()
 			: base("emailingestionprofile", "get")
@@ -250,11 +218,7 @@ namespace Kaltura.Services
 		public const string EMAIL_ADDRESS = "emailAddress";
 		#endregion
 
-		public string EmailAddress
-		{
-			set;
-			get;
-		}
+		public string EmailAddress { get; set; }
 
 		public EmailIngestionProfileGetByEmailAddressRequestBuilder()
 			: base("emailingestionprofile", "getByEmailAddress")
@@ -294,16 +258,8 @@ namespace Kaltura.Services
 		public const string EMAIL_IP = "EmailIP";
 		#endregion
 
-		public int Id
-		{
-			set;
-			get;
-		}
-		public EmailIngestionProfile EmailIP
-		{
-			set;
-			get;
-		}
+		public int Id { get; set; }
+		public EmailIngestionProfile EmailIP { get; set; }
 
 		public EmailIngestionProfileUpdateRequestBuilder()
 			: base("emailingestionprofile", "update")

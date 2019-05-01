@@ -43,16 +43,8 @@ namespace Kaltura.Services
 		public const string CATEGORY_ID = "categoryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public int CategoryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public int CategoryId { get; set; }
 
 		public CategoryEntryActivateRequestBuilder()
 			: base("categoryentry", "activate")
@@ -94,11 +86,7 @@ namespace Kaltura.Services
 		public const string CATEGORY_ENTRY = "categoryEntry";
 		#endregion
 
-		public CategoryEntry CategoryEntry
-		{
-			set;
-			get;
-		}
+		public CategoryEntry CategoryEntry { get; set; }
 
 		public CategoryEntryAddRequestBuilder()
 			: base("categoryentry", "add")
@@ -138,16 +126,8 @@ namespace Kaltura.Services
 		public const string BULK_UPLOAD_CATEGORY_ENTRY_DATA = "bulkUploadCategoryEntryData";
 		#endregion
 
-		public BulkServiceData BulkUploadData
-		{
-			set;
-			get;
-		}
-		public BulkUploadCategoryEntryData BulkUploadCategoryEntryData
-		{
-			set;
-			get;
-		}
+		public BulkServiceData BulkUploadData { get; set; }
+		public BulkUploadCategoryEntryData BulkUploadCategoryEntryData { get; set; }
 
 		public CategoryEntryAddFromBulkUploadRequestBuilder()
 			: base("categoryentry", "addFromBulkUpload")
@@ -190,16 +170,8 @@ namespace Kaltura.Services
 		public const string CATEGORY_ID = "categoryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public int CategoryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public int CategoryId { get; set; }
 
 		public CategoryEntryDeleteRequestBuilder()
 			: base("categoryentry", "delete")
@@ -243,21 +215,9 @@ namespace Kaltura.Services
 		public const string SHOULD_UPDATE = "shouldUpdate";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public int CategoryId
-		{
-			set;
-			get;
-		}
-		public bool ShouldUpdate
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public int CategoryId { get; set; }
+		public bool ShouldUpdate { get; set; }
 
 		public CategoryEntryIndexRequestBuilder()
 			: base("categoryentry", "index")
@@ -303,16 +263,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public CategoryEntryFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public CategoryEntryFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public CategoryEntryListRequestBuilder()
 			: base("categoryentry", "list")
@@ -355,16 +307,8 @@ namespace Kaltura.Services
 		public const string CATEGORY_ID = "categoryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public int CategoryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public int CategoryId { get; set; }
 
 		public CategoryEntryRejectRequestBuilder()
 			: base("categoryentry", "reject")
@@ -407,16 +351,8 @@ namespace Kaltura.Services
 		public const string CATEGORY_ID = "categoryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public int CategoryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public int CategoryId { get; set; }
 
 		public CategoryEntrySyncPrivacyContextRequestBuilder()
 			: base("categoryentry", "syncPrivacyContext")
@@ -460,21 +396,10 @@ namespace Kaltura.Services
 		public const string BULK_UPLOAD_CATEGORY_ENTRY_DATA = "bulkUploadCategoryEntryData";
 		#endregion
 
-		public Stream FileData
-		{
-			set;
-			get;
-		}
-		public BulkUploadJobData BulkUploadData
-		{
-			set;
-			get;
-		}
-		public BulkUploadCategoryEntryData BulkUploadCategoryEntryData
-		{
-			set;
-			get;
-		}
+		public Stream FileData { get; set; }
+		public string FileData_FileName { get; set; }
+		public BulkUploadJobData BulkUploadData { get; set; }
+		public BulkUploadCategoryEntryData BulkUploadCategoryEntryData { get; set; }
 
 		public CategoryEntryUpdateStatusFromBulkRequestBuilder()
 			: base("categoryentry", "updateStatusFromBulk")
@@ -502,7 +427,7 @@ namespace Kaltura.Services
 		public override Files getFiles()
 		{
 			Files kfiles = base.getFiles();
-			kfiles.Add("fileData", FileData);
+			kfiles.Add("fileData", new FileData(FileData, FileData_FileName));
 			return kfiles;
 		}
 

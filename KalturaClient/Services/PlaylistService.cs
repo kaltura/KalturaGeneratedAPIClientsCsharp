@@ -43,16 +43,8 @@ namespace Kaltura.Services
 		public const string UPDATE_STATS = "updateStats";
 		#endregion
 
-		public Playlist Playlist
-		{
-			set;
-			get;
-		}
-		public bool UpdateStats
-		{
-			set;
-			get;
-		}
+		public Playlist Playlist { get; set; }
+		public bool UpdateStats { get; set; }
 
 		public PlaylistAddRequestBuilder()
 			: base("playlist", "add")
@@ -95,16 +87,8 @@ namespace Kaltura.Services
 		public const string NEW_PLAYLIST = "newPlaylist";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public Playlist NewPlaylist
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public Playlist NewPlaylist { get; set; }
 
 		public PlaylistCloneRequestBuilder()
 			: base("playlist", "clone")
@@ -146,11 +130,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public PlaylistDeleteRequestBuilder()
 			: base("playlist", "delete")
@@ -193,31 +173,11 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public string Detailed
-		{
-			set;
-			get;
-		}
-		public Context PlaylistContext
-		{
-			set;
-			get;
-		}
-		public MediaEntryFilterForPlaylist Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public string Detailed { get; set; }
+		public Context PlaylistContext { get; set; }
+		public MediaEntryFilterForPlaylist Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public PlaylistExecuteRequestBuilder()
 			: base("playlist", "execute")
@@ -277,26 +237,10 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public PlaylistType PlaylistType
-		{
-			set;
-			get;
-		}
-		public string PlaylistContent
-		{
-			set;
-			get;
-		}
-		public string Detailed
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public PlaylistType PlaylistType { get; set; }
+		public string PlaylistContent { get; set; }
+		public string Detailed { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public PlaylistExecuteFromContentRequestBuilder()
 			: base("playlist", "executeFromContent")
@@ -353,26 +297,10 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public IList<MediaEntryFilterForPlaylist> Filters
-		{
-			set;
-			get;
-		}
-		public int TotalResults
-		{
-			set;
-			get;
-		}
-		public string Detailed
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public IList<MediaEntryFilterForPlaylist> Filters { get; set; }
+		public int TotalResults { get; set; }
+		public string Detailed { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public PlaylistExecuteFromFiltersRequestBuilder()
 			: base("playlist", "executeFromFilters")
@@ -427,16 +355,8 @@ namespace Kaltura.Services
 		public const string VERSION = "version";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public int Version
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public int Version { get; set; }
 
 		public PlaylistGetRequestBuilder()
 			: base("playlist", "get")
@@ -479,16 +399,8 @@ namespace Kaltura.Services
 		public const string PLAYLIST_CONTENT = "playlistContent";
 		#endregion
 
-		public PlaylistType PlaylistType
-		{
-			set;
-			get;
-		}
-		public string PlaylistContent
-		{
-			set;
-			get;
-		}
+		public PlaylistType PlaylistType { get; set; }
+		public string PlaylistContent { get; set; }
 
 		public PlaylistGetStatsFromContentRequestBuilder()
 			: base("playlist", "getStatsFromContent")
@@ -531,16 +443,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public PlaylistFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public PlaylistFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public PlaylistListRequestBuilder()
 			: base("playlist", "list")
@@ -584,21 +488,9 @@ namespace Kaltura.Services
 		public const string UPDATE_STATS = "updateStats";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public Playlist Playlist
-		{
-			set;
-			get;
-		}
-		public bool UpdateStats
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public Playlist Playlist { get; set; }
+		public bool UpdateStats { get; set; }
 
 		public PlaylistUpdateRequestBuilder()
 			: base("playlist", "update")

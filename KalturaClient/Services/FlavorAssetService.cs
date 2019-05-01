@@ -43,16 +43,8 @@ namespace Kaltura.Services
 		public const string FLAVOR_ASSET = "flavorAsset";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public FlavorAsset FlavorAsset
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public FlavorAsset FlavorAsset { get; set; }
 
 		public FlavorAssetAddRequestBuilder()
 			: base("flavorasset", "add")
@@ -96,21 +88,9 @@ namespace Kaltura.Services
 		public const string PRIORITY = "priority";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
-		public int FlavorParamsId
-		{
-			set;
-			get;
-		}
-		public int Priority
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
+		public int FlavorParamsId { get; set; }
+		public int Priority { get; set; }
 
 		public FlavorAssetConvertRequestBuilder()
 			: base("flavorasset", "convert")
@@ -155,11 +135,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public FlavorAssetDeleteRequestBuilder()
 			: base("flavorasset", "delete")
@@ -198,11 +174,7 @@ namespace Kaltura.Services
 		public const string ASSET_ID = "assetId";
 		#endregion
 
-		public string AssetId
-		{
-			set;
-			get;
-		}
+		public string AssetId { get; set; }
 
 		public FlavorAssetDeleteLocalContentRequestBuilder()
 			: base("flavorasset", "deleteLocalContent")
@@ -242,16 +214,8 @@ namespace Kaltura.Services
 		public const string STORAGE_PROFILE_ID = "storageProfileId";
 		#endregion
 
-		public string AssetId
-		{
-			set;
-			get;
-		}
-		public int StorageProfileId
-		{
-			set;
-			get;
-		}
+		public string AssetId { get; set; }
+		public int StorageProfileId { get; set; }
 
 		public FlavorAssetExportRequestBuilder()
 			: base("flavorasset", "export")
@@ -293,11 +257,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public FlavorAssetGetRequestBuilder()
 			: base("flavorasset", "get")
@@ -336,11 +296,7 @@ namespace Kaltura.Services
 		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
 
 		public FlavorAssetGetByEntryIdRequestBuilder()
 			: base("flavorasset", "getByEntryId")
@@ -386,16 +342,8 @@ namespace Kaltura.Services
 		public const string USE_CDN = "useCdn";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public bool UseCdn
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public bool UseCdn { get; set; }
 
 		public FlavorAssetGetDownloadUrlRequestBuilder()
 			: base("flavorasset", "getDownloadUrl")
@@ -437,11 +385,7 @@ namespace Kaltura.Services
 		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
 
 		public FlavorAssetGetFlavorAssetsWithParamsRequestBuilder()
 			: base("flavorasset", "getFlavorAssetsWithParams")
@@ -486,11 +430,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public FlavorAssetGetRemotePathsRequestBuilder()
 			: base("flavorasset", "getRemotePaths")
@@ -532,26 +472,10 @@ namespace Kaltura.Services
 		public const string OPTIONS = "options";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public int StorageId
-		{
-			set;
-			get;
-		}
-		public bool ForceProxy
-		{
-			set;
-			get;
-		}
-		public FlavorAssetUrlOptions Options
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public int StorageId { get; set; }
+		public bool ForceProxy { get; set; }
+		public FlavorAssetUrlOptions Options { get; set; }
 
 		public FlavorAssetGetUrlRequestBuilder()
 			: base("flavorasset", "getUrl")
@@ -599,11 +523,7 @@ namespace Kaltura.Services
 		public const string ENTRY_ID = "entryId";
 		#endregion
 
-		public string EntryId
-		{
-			set;
-			get;
-		}
+		public string EntryId { get; set; }
 
 		public FlavorAssetGetWebPlayableByEntryIdRequestBuilder()
 			: base("flavorasset", "getWebPlayableByEntryId")
@@ -649,16 +569,8 @@ namespace Kaltura.Services
 		public const string PAGER = "pager";
 		#endregion
 
-		public AssetFilter Filter
-		{
-			set;
-			get;
-		}
-		public FilterPager Pager
-		{
-			set;
-			get;
-		}
+		public AssetFilter Filter { get; set; }
+		public FilterPager Pager { get; set; }
 
 		public FlavorAssetListRequestBuilder()
 			: base("flavorasset", "list")
@@ -700,11 +612,7 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
 
 		public FlavorAssetReconvertRequestBuilder()
 			: base("flavorasset", "reconvert")
@@ -745,21 +653,9 @@ namespace Kaltura.Services
 		public const string DURATION = "duration";
 		#endregion
 
-		public string AssetId
-		{
-			set;
-			get;
-		}
-		public string FfprobeJson
-		{
-			set;
-			get;
-		}
-		public string Duration
-		{
-			set;
-			get;
-		}
+		public string AssetId { get; set; }
+		public string FfprobeJson { get; set; }
+		public string Duration { get; set; }
 
 		public FlavorAssetServeAdStitchCmdRequestBuilder()
 			: base("flavorasset", "serveAdStitchCmd")
@@ -804,11 +700,7 @@ namespace Kaltura.Services
 		public const string ASSET_ID = "assetId";
 		#endregion
 
-		public string AssetId
-		{
-			set;
-			get;
-		}
+		public string AssetId { get; set; }
 
 		public FlavorAssetSetAsSourceRequestBuilder()
 			: base("flavorasset", "setAsSource")
@@ -848,16 +740,8 @@ namespace Kaltura.Services
 		public const string CONTENT_RESOURCE = "contentResource";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public ContentResource ContentResource
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public ContentResource ContentResource { get; set; }
 
 		public FlavorAssetSetContentRequestBuilder()
 			: base("flavorasset", "setContent")
@@ -900,16 +784,8 @@ namespace Kaltura.Services
 		public const string FLAVOR_ASSET = "flavorAsset";
 		#endregion
 
-		public string Id
-		{
-			set;
-			get;
-		}
-		public FlavorAsset FlavorAsset
-		{
-			set;
-			get;
-		}
+		public string Id { get; set; }
+		public FlavorAsset FlavorAsset { get; set; }
 
 		public FlavorAssetUpdateRequestBuilder()
 			: base("flavorasset", "update")

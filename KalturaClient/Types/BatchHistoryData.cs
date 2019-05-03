@@ -47,6 +47,7 @@ namespace Kaltura.Types
 		public const string ERR_NUMBER = "errNumber";
 		public const string HOST_NAME = "hostName";
 		public const string SESSION_ID = "sessionId";
+		public const string SCHEDULER_NAME = "schedulerName";
 		#endregion
 
 		#region Private Fields
@@ -59,6 +60,7 @@ namespace Kaltura.Types
 		private int _ErrNumber = Int32.MinValue;
 		private string _HostName = null;
 		private string _SessionId = null;
+		private string _SchedulerName = null;
 		#endregion
 
 		#region Properties
@@ -152,6 +154,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("SessionId");
 			}
 		}
+		[JsonProperty]
+		public string SchedulerName
+		{
+			get { return _SchedulerName; }
+			set 
+			{ 
+				_SchedulerName = value;
+				OnPropertyChanged("SchedulerName");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -197,6 +209,10 @@ namespace Kaltura.Types
 			{
 				this._SessionId = node["sessionId"].Value<string>();
 			}
+			if(node["schedulerName"] != null)
+			{
+				this._SchedulerName = node["schedulerName"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -215,6 +231,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("errNumber", this._ErrNumber);
 			kparams.AddIfNotNull("hostName", this._HostName);
 			kparams.AddIfNotNull("sessionId", this._SessionId);
+			kparams.AddIfNotNull("schedulerName", this._SchedulerName);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -239,6 +256,8 @@ namespace Kaltura.Types
 					return "HostName";
 				case SESSION_ID:
 					return "SessionId";
+				case SCHEDULER_NAME:
+					return "SchedulerName";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -55,6 +55,7 @@ namespace Kaltura.Types
 		public const string CREATED_AT = "createdAt";
 		public const string UPDATED_AT = "updatedAt";
 		public const string USER_IP = "userIp";
+		public const string SESSION_ID = "sessionId";
 		#endregion
 
 		#region Private Fields
@@ -75,6 +76,7 @@ namespace Kaltura.Types
 		private int _CreatedAt = Int32.MinValue;
 		private int _UpdatedAt = Int32.MinValue;
 		private string _UserIp = null;
+		private int _SessionId = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -248,6 +250,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIp");
 			}
 		}
+		[JsonProperty]
+		public int SessionId
+		{
+			get { return _SessionId; }
+			set 
+			{ 
+				_SessionId = value;
+				OnPropertyChanged("SessionId");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -325,6 +337,10 @@ namespace Kaltura.Types
 			{
 				this._UserIp = node["userIp"].Value<string>();
 			}
+			if(node["sessionId"] != null)
+			{
+				this._SessionId = ParseInt(node["sessionId"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -351,6 +367,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("createdAt", this._CreatedAt);
 			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
 			kparams.AddIfNotNull("userIp", this._UserIp);
+			kparams.AddIfNotNull("sessionId", this._SessionId);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -391,6 +408,8 @@ namespace Kaltura.Types
 					return "UpdatedAt";
 				case USER_IP:
 					return "UserIp";
+				case SESSION_ID:
+					return "SessionId";
 				default:
 					return base.getPropertyName(apiName);
 			}

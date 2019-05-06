@@ -79,10 +79,12 @@ namespace Kaltura.Services
 	{
 		#region Constants
 		public const string ORIGINAL_GROUP_ID = "originalGroupId";
+		public const string NEW_GROUP_ID = "newGroupId";
 		public const string NEW_GROUP_NAME = "newGroupName";
 		#endregion
 
 		public string OriginalGroupId { get; set; }
+		public string NewGroupId { get; set; }
 		public string NewGroupName { get; set; }
 
 		public GroupCloneRequestBuilder()
@@ -90,10 +92,11 @@ namespace Kaltura.Services
 		{
 		}
 
-		public GroupCloneRequestBuilder(string originalGroupId, string newGroupName)
+		public GroupCloneRequestBuilder(string originalGroupId, string newGroupId, string newGroupName)
 			: this()
 		{
 			this.OriginalGroupId = originalGroupId;
+			this.NewGroupId = newGroupId;
 			this.NewGroupName = newGroupName;
 		}
 
@@ -102,6 +105,8 @@ namespace Kaltura.Services
 			Params kparams = base.getParameters(includeServiceAndAction);
 			if (!isMapped("originalGroupId"))
 				kparams.AddIfNotNull("originalGroupId", OriginalGroupId);
+			if (!isMapped("newGroupId"))
+				kparams.AddIfNotNull("newGroupId", NewGroupId);
 			if (!isMapped("newGroupName"))
 				kparams.AddIfNotNull("newGroupName", NewGroupName);
 			return kparams;
@@ -297,9 +302,9 @@ namespace Kaltura.Services
 			return new GroupAddRequestBuilder(group);
 		}
 
-		public static GroupCloneRequestBuilder Clone(string originalGroupId, string newGroupName)
+		public static GroupCloneRequestBuilder Clone(string originalGroupId, string newGroupId, string newGroupName = null)
 		{
-			return new GroupCloneRequestBuilder(originalGroupId, newGroupName);
+			return new GroupCloneRequestBuilder(originalGroupId, newGroupId, newGroupName);
 		}
 
 		public static GroupDeleteRequestBuilder Delete(string groupId)

@@ -220,8 +220,8 @@ namespace Kaltura.Enums
 		public static readonly Language HNI = new Language("Hani");
 		public static readonly Language HA = new Language("Hausa");
 		public static readonly Language HAW = new Language("Hawaiian");
-		public static readonly Language HE = new Language("Hebrew");
 		public static readonly Language IW = new Language("Hebrew");
+		public static readonly Language HE = new Language("Hebrew");
 		public static readonly Language HEI = new Language("Heiltsuk");
 		public static readonly Language HID = new Language("Hidatsa");
 		public static readonly Language HIL = new Language("Hiligaynon");
@@ -328,6 +328,7 @@ namespace Kaltura.Enums
 		public static readonly Language LUN = new Language("Lunda");
 		public static readonly Language LUO = new Language("Luo (Kenya and Tanzania)");
 		public static readonly Language LUT = new Language("Lushootseed");
+		public static readonly Language LB = new Language("Luxembourgish (Letzeburgesch)");
 		public static readonly Language MK = new Language("Macedonian");
 		public static readonly Language MAD = new Language("Madurese");
 		public static readonly Language MAG = new Language("Magahi");
@@ -571,8 +572,8 @@ namespace Kaltura.Enums
 		public static readonly Language WYM = new Language("Wymysorys");
 		public static readonly Language XH = new Language("Xhosa");
 		public static readonly Language AME = new Language("Yanesha");
-		public static readonly Language YI = new Language("Yiddish");
 		public static readonly Language JI = new Language("Yiddish");
+		public static readonly Language YI = new Language("Yiddish");
 		public static readonly Language YO = new Language("Yoruba");
 		public static readonly Language ZAI = new Language("Zapotec Isthmus");
 		public static readonly Language DJE = new Language("Zarma");

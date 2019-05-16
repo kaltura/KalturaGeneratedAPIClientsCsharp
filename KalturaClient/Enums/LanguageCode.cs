@@ -100,6 +100,7 @@ namespace Kaltura.Enums
 		public static readonly LanguageCode KU = new LanguageCode("ku");
 		public static readonly LanguageCode KY = new LanguageCode("ky");
 		public static readonly LanguageCode LA = new LanguageCode("la");
+		public static readonly LanguageCode LB = new LanguageCode("lb");
 		public static readonly LanguageCode LI = new LanguageCode("li");
 		public static readonly LanguageCode LN = new LanguageCode("ln");
 		public static readonly LanguageCode LO = new LanguageCode("lo");

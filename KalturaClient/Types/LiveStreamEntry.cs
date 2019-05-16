@@ -54,6 +54,7 @@ namespace Kaltura.Types
 		public const string STREAM_PASSWORD = "streamPassword";
 		public const string STREAM_USERNAME = "streamUsername";
 		public const string PRIMARY_SERVER_NODE_ID = "primaryServerNodeId";
+		public const string SIP_TOKEN = "sipToken";
 		#endregion
 
 		#region Private Fields
@@ -73,6 +74,7 @@ namespace Kaltura.Types
 		private string _StreamPassword = null;
 		private string _StreamUsername = null;
 		private int _PrimaryServerNodeId = Int32.MinValue;
+		private string _SipToken = null;
 		#endregion
 
 		#region Properties
@@ -236,6 +238,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrimaryServerNodeId");
 			}
 		}
+		[JsonProperty]
+		public string SipToken
+		{
+			get { return _SipToken; }
+			private set 
+			{ 
+				_SipToken = value;
+				OnPropertyChanged("SipToken");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -313,6 +325,10 @@ namespace Kaltura.Types
 			{
 				this._PrimaryServerNodeId = ParseInt(node["primaryServerNodeId"].Value<string>());
 			}
+			if(node["sipToken"] != null)
+			{
+				this._SipToken = node["sipToken"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -338,6 +354,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("streamPassword", this._StreamPassword);
 			kparams.AddIfNotNull("streamUsername", this._StreamUsername);
 			kparams.AddIfNotNull("primaryServerNodeId", this._PrimaryServerNodeId);
+			kparams.AddIfNotNull("sipToken", this._SipToken);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -376,6 +393,8 @@ namespace Kaltura.Types
 					return "StreamUsername";
 				case PRIMARY_SERVER_NODE_ID:
 					return "PrimaryServerNodeId";
+				case SIP_TOKEN:
+					return "SipToken";
 				default:
 					return base.getPropertyName(apiName);
 			}

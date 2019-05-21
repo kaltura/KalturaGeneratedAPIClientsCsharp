@@ -143,6 +143,45 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class PartnerGetPublicInfoRequestBuilder : RequestBuilder<PartnerPublicInfo>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public int Id { get; set; }
+
+		public PartnerGetPublicInfoRequestBuilder()
+			: base("partner", "getPublicInfo")
+		{
+		}
+
+		public PartnerGetPublicInfoRequestBuilder(int id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			return ObjectFactory.Create<PartnerPublicInfo>(result);
+		}
+	}
+
 	public class PartnerGetSecretsRequestBuilder : RequestBuilder<Partner>
 	{
 		#region Constants
@@ -456,6 +495,11 @@ namespace Kaltura.Services
 		public static PartnerGetInfoRequestBuilder GetInfo()
 		{
 			return new PartnerGetInfoRequestBuilder();
+		}
+
+		public static PartnerGetPublicInfoRequestBuilder GetPublicInfo(int id = Int32.MinValue)
+		{
+			return new PartnerGetPublicInfoRequestBuilder(id);
 		}
 
 		public static PartnerGetSecretsRequestBuilder GetSecrets(int partnerId, string adminEmail, string cmsPassword)

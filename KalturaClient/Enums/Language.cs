@@ -353,6 +353,7 @@ namespace Kaltura.Enums
 		public static readonly Language MNI = new Language("Meitei");
 		public static readonly Language MEN = new Language("Mende (Sierra Leone)");
 		public static readonly Language MEZ = new Language("Menominee");
+		public static readonly Language CRG = new Language("Michif");
 		public static readonly Language MIC = new Language("Micmac");
 		public static readonly Language MNP = new Language("Min Bei Chinese");
 		public static readonly Language CDO = new Language("Min Dong Chinese");
@@ -572,8 +573,8 @@ namespace Kaltura.Enums
 		public static readonly Language WYM = new Language("Wymysorys");
 		public static readonly Language XH = new Language("Xhosa");
 		public static readonly Language AME = new Language("Yanesha");
-		public static readonly Language JI = new Language("Yiddish");
 		public static readonly Language YI = new Language("Yiddish");
+		public static readonly Language JI = new Language("Yiddish");
 		public static readonly Language YO = new Language("Yoruba");
 		public static readonly Language ZAI = new Language("Zapotec Isthmus");
 		public static readonly Language DJE = new Language("Zarma");

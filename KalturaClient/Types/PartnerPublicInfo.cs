@@ -40,11 +40,13 @@ namespace Kaltura.Types
 		#region Constants
 		public const string ANALYTICS_URL = "analyticsUrl";
 		public const string OTT_ENVIRONMENT_URL = "ottEnvironmentUrl";
+		public const string ANALYTICS_PERSISTENT_SESSION_ID = "analyticsPersistentSessionId";
 		#endregion
 
 		#region Private Fields
 		private string _AnalyticsUrl = null;
 		private string _OttEnvironmentUrl = null;
+		private bool? _AnalyticsPersistentSessionId = null;
 		#endregion
 
 		#region Properties
@@ -68,6 +70,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("OttEnvironmentUrl");
 			}
 		}
+		[JsonProperty]
+		public bool? AnalyticsPersistentSessionId
+		{
+			get { return _AnalyticsPersistentSessionId; }
+			set 
+			{ 
+				_AnalyticsPersistentSessionId = value;
+				OnPropertyChanged("AnalyticsPersistentSessionId");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -85,6 +97,10 @@ namespace Kaltura.Types
 			{
 				this._OttEnvironmentUrl = node["ottEnvironmentUrl"].Value<string>();
 			}
+			if(node["analyticsPersistentSessionId"] != null)
+			{
+				this._AnalyticsPersistentSessionId = ParseBool(node["analyticsPersistentSessionId"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -96,6 +112,7 @@ namespace Kaltura.Types
 				kparams.AddReplace("objectType", "KalturaPartnerPublicInfo");
 			kparams.AddIfNotNull("analyticsUrl", this._AnalyticsUrl);
 			kparams.AddIfNotNull("ottEnvironmentUrl", this._OttEnvironmentUrl);
+			kparams.AddIfNotNull("analyticsPersistentSessionId", this._AnalyticsPersistentSessionId);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -106,6 +123,8 @@ namespace Kaltura.Types
 					return "AnalyticsUrl";
 				case OTT_ENVIRONMENT_URL:
 					return "OttEnvironmentUrl";
+				case ANALYTICS_PERSISTENT_SESSION_ID:
+					return "AnalyticsPersistentSessionId";
 				default:
 					return base.getPropertyName(apiName);
 			}

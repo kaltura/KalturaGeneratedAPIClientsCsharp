@@ -31,9 +31,9 @@ namespace Kaltura.Enums
 	{
 		public static readonly EntryStatus ERROR_IMPORTING = new EntryStatus("-2");
 		public static readonly EntryStatus ERROR_CONVERTING = new EntryStatus("-1");
-		public static readonly EntryStatus SCAN_FAILURE = new EntryStatus("virusScan.ScanFailure");
 		public static readonly EntryStatus IMPORT = new EntryStatus("0");
 		public static readonly EntryStatus INFECTED = new EntryStatus("virusScan.Infected");
+		public static readonly EntryStatus SCAN_FAILURE = new EntryStatus("virusScan.ScanFailure");
 		public static readonly EntryStatus PRECONVERT = new EntryStatus("1");
 		public static readonly EntryStatus READY = new EntryStatus("2");
 		public static readonly EntryStatus DELETED = new EntryStatus("3");

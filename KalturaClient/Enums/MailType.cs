@@ -76,6 +76,7 @@ namespace Kaltura.Enums
 		public static readonly MailType MAIL_TYPE_REPORT_EXPORT_SUCCESS = new MailType("136");
 		public static readonly MailType MAIL_TYPE_REPORT_EXPORT_FAILURE = new MailType("137");
 		public static readonly MailType MAIL_TYPE_REPORT_EXPORT_ABORT = new MailType("138");
+		public static readonly MailType MAIL_TYPE_SIP_FAILURE = new MailType("139");
 
 		private MailType(string name) : base(name) { }
 	}

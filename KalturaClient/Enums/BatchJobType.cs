@@ -29,13 +29,13 @@ namespace Kaltura.Enums
 {
 	public sealed class BatchJobType : StringEnum
 	{
+		public static readonly BatchJobType CONVERT = new BatchJobType("0");
 		public static readonly BatchJobType PARSE_MULTI_LANGUAGE_CAPTION_ASSET = new BatchJobType("caption.parsemultilanguagecaptionasset");
 		public static readonly BatchJobType PARSE_CAPTION_ASSET = new BatchJobType("captionSearch.parseCaptionAsset");
 		public static readonly BatchJobType DISTRIBUTION_DELETE = new BatchJobType("contentDistribution.DistributionDelete");
 		public static readonly BatchJobType DISTRIBUTION_DISABLE = new BatchJobType("contentDistribution.DistributionDisable");
 		public static readonly BatchJobType DISTRIBUTION_ENABLE = new BatchJobType("contentDistribution.DistributionEnable");
 		public static readonly BatchJobType DISTRIBUTION_FETCH_REPORT = new BatchJobType("contentDistribution.DistributionFetchReport");
-		public static readonly BatchJobType CONVERT = new BatchJobType("0");
 		public static readonly BatchJobType DISTRIBUTION_SUBMIT = new BatchJobType("contentDistribution.DistributionSubmit");
 		public static readonly BatchJobType DISTRIBUTION_SYNC = new BatchJobType("contentDistribution.DistributionSync");
 		public static readonly BatchJobType DISTRIBUTION_UPDATE = new BatchJobType("contentDistribution.DistributionUpdate");

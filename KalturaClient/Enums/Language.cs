@@ -220,8 +220,8 @@ namespace Kaltura.Enums
 		public static readonly Language HNI = new Language("Hani");
 		public static readonly Language HA = new Language("Hausa");
 		public static readonly Language HAW = new Language("Hawaiian");
-		public static readonly Language IW = new Language("Hebrew");
 		public static readonly Language HE = new Language("Hebrew");
+		public static readonly Language IW = new Language("Hebrew");
 		public static readonly Language HEI = new Language("Heiltsuk");
 		public static readonly Language HID = new Language("Hidatsa");
 		public static readonly Language HIL = new Language("Hiligaynon");

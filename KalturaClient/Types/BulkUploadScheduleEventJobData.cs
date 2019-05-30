@@ -35,40 +35,24 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class BulkUploadICalJobData : BulkUploadScheduleEventJobData
+	public class BulkUploadScheduleEventJobData : BulkUploadJobData
 	{
 		#region Constants
-		public const string EVENTS_TYPE = "eventsType";
 		#endregion
 
 		#region Private Fields
-		private ScheduleEventType _EventsType = (ScheduleEventType)Int32.MinValue;
 		#endregion
 
 		#region Properties
-		[JsonProperty]
-		public ScheduleEventType EventsType
-		{
-			get { return _EventsType; }
-			set 
-			{ 
-				_EventsType = value;
-				OnPropertyChanged("EventsType");
-			}
-		}
 		#endregion
 
 		#region CTor
-		public BulkUploadICalJobData()
+		public BulkUploadScheduleEventJobData()
 		{
 		}
 
-		public BulkUploadICalJobData(JToken node) : base(node)
+		public BulkUploadScheduleEventJobData(JToken node) : base(node)
 		{
-			if(node["eventsType"] != null)
-			{
-				this._EventsType = (ScheduleEventType)ParseEnum(typeof(ScheduleEventType), node["eventsType"].Value<string>());
-			}
 		}
 		#endregion
 
@@ -77,16 +61,13 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaBulkUploadICalJobData");
-			kparams.AddIfNotNull("eventsType", this._EventsType);
+				kparams.AddReplace("objectType", "KalturaBulkUploadScheduleEventJobData");
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case EVENTS_TYPE:
-					return "EventsType";
 				default:
 					return base.getPropertyName(apiName);
 			}

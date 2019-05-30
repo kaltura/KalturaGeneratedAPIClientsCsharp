@@ -35,39 +35,59 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class BulkUploadICalJobData : BulkUploadScheduleEventJobData
+	public class BulkUploadScheduleEventCsvJobData : BulkUploadScheduleEventJobData
 	{
 		#region Constants
-		public const string EVENTS_TYPE = "eventsType";
+		public const string CSV_VERSION = "csvVersion";
+		public const string COLUMNS = "columns";
 		#endregion
 
 		#region Private Fields
-		private ScheduleEventType _EventsType = (ScheduleEventType)Int32.MinValue;
+		private BulkUploadCsvVersion _CsvVersion = (BulkUploadCsvVersion)Int32.MinValue;
+		private IList<String> _Columns;
 		#endregion
 
 		#region Properties
 		[JsonProperty]
-		public ScheduleEventType EventsType
+		public BulkUploadCsvVersion CsvVersion
 		{
-			get { return _EventsType; }
+			get { return _CsvVersion; }
+			private set 
+			{ 
+				_CsvVersion = value;
+				OnPropertyChanged("CsvVersion");
+			}
+		}
+		[JsonProperty]
+		public IList<String> Columns
+		{
+			get { return _Columns; }
 			set 
 			{ 
-				_EventsType = value;
-				OnPropertyChanged("EventsType");
+				_Columns = value;
+				OnPropertyChanged("Columns");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public BulkUploadICalJobData()
+		public BulkUploadScheduleEventCsvJobData()
 		{
 		}
 
-		public BulkUploadICalJobData(JToken node) : base(node)
+		public BulkUploadScheduleEventCsvJobData(JToken node) : base(node)
 		{
-			if(node["eventsType"] != null)
+			if(node["csvVersion"] != null)
 			{
-				this._EventsType = (ScheduleEventType)ParseEnum(typeof(ScheduleEventType), node["eventsType"].Value<string>());
+				this._CsvVersion = (BulkUploadCsvVersion)ParseEnum(typeof(BulkUploadCsvVersion), node["csvVersion"].Value<string>());
+			}
+			if(node["columns"] != null)
+			{
+				this._Columns = new List<String>();
+				foreach(var arrayNode in node["columns"].Children())
+				{
+					this._Columns.Add(ObjectFactory.Create<String>(arrayNode));
+				}
 			}
 		}
 		#endregion
@@ -77,16 +97,19 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaBulkUploadICalJobData");
-			kparams.AddIfNotNull("eventsType", this._EventsType);
+				kparams.AddReplace("objectType", "KalturaBulkUploadScheduleEventCsvJobData");
+			kparams.AddIfNotNull("csvVersion", this._CsvVersion);
+			kparams.AddIfNotNull("columns", this._Columns);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case EVENTS_TYPE:
-					return "EventsType";
+				case CSV_VERSION:
+					return "CsvVersion";
+				case COLUMNS:
+					return "Columns";
 				default:
 					return base.getPropertyName(apiName);
 			}

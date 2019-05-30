@@ -84,14 +84,14 @@ namespace Kaltura.Services
 
 		public Stream FileData { get; set; }
 		public string FileData_FileName { get; set; }
-		public BulkUploadICalJobData BulkUploadData { get; set; }
+		public BulkUploadScheduleEventJobData BulkUploadData { get; set; }
 
 		public ScheduleEventAddFromBulkUploadRequestBuilder()
 			: base("schedule_scheduleevent", "addFromBulkUpload")
 		{
 		}
 
-		public ScheduleEventAddFromBulkUploadRequestBuilder(Stream fileData, BulkUploadICalJobData bulkUploadData)
+		public ScheduleEventAddFromBulkUploadRequestBuilder(Stream fileData, BulkUploadScheduleEventJobData bulkUploadData)
 			: this()
 		{
 			this.FileData = fileData;
@@ -390,7 +390,7 @@ namespace Kaltura.Services
 			return new ScheduleEventAddRequestBuilder(scheduleEvent);
 		}
 
-		public static ScheduleEventAddFromBulkUploadRequestBuilder AddFromBulkUpload(Stream fileData, BulkUploadICalJobData bulkUploadData = null)
+		public static ScheduleEventAddFromBulkUploadRequestBuilder AddFromBulkUpload(Stream fileData, BulkUploadScheduleEventJobData bulkUploadData = null)
 		{
 			return new ScheduleEventAddFromBulkUploadRequestBuilder(fileData, bulkUploadData);
 		}

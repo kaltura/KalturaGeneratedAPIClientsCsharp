@@ -48,6 +48,7 @@ namespace Kaltura.Enums
 		public static readonly CatalogItemLanguage KO = new CatalogItemLanguage("Korean");
 		public static readonly CatalogItemLanguage CMN = new CatalogItemLanguage("Mandarin Chinese");
 		public static readonly CatalogItemLanguage NO = new CatalogItemLanguage("Norwegian");
+		public static readonly CatalogItemLanguage PL = new CatalogItemLanguage("Polish");
 		public static readonly CatalogItemLanguage PT = new CatalogItemLanguage("Portuguese");
 		public static readonly CatalogItemLanguage RU = new CatalogItemLanguage("Russian");
 		public static readonly CatalogItemLanguage ES = new CatalogItemLanguage("Spanish");

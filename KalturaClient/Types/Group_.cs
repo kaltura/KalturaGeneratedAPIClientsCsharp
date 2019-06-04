@@ -39,10 +39,12 @@ namespace Kaltura.Types
 	{
 		#region Constants
 		public const string MEMBERS_COUNT = "membersCount";
+		public const string PROCESS_STATUS = "processStatus";
 		#endregion
 
 		#region Private Fields
 		private int _MembersCount = Int32.MinValue;
+		private GroupProcessStatus _ProcessStatus = (GroupProcessStatus)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -54,6 +56,16 @@ namespace Kaltura.Types
 			{ 
 				_MembersCount = value;
 				OnPropertyChanged("MembersCount");
+			}
+		}
+		[JsonProperty]
+		public GroupProcessStatus ProcessStatus
+		{
+			get { return _ProcessStatus; }
+			set 
+			{ 
+				_ProcessStatus = value;
+				OnPropertyChanged("ProcessStatus");
 			}
 		}
 		#endregion
@@ -69,6 +81,10 @@ namespace Kaltura.Types
 			{
 				this._MembersCount = ParseInt(node["membersCount"].Value<string>());
 			}
+			if(node["processStatus"] != null)
+			{
+				this._ProcessStatus = (GroupProcessStatus)ParseEnum(typeof(GroupProcessStatus), node["processStatus"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -79,6 +95,7 @@ namespace Kaltura.Types
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaGroup");
 			kparams.AddIfNotNull("membersCount", this._MembersCount);
+			kparams.AddIfNotNull("processStatus", this._ProcessStatus);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -87,6 +104,8 @@ namespace Kaltura.Types
 			{
 				case MEMBERS_COUNT:
 					return "MembersCount";
+				case PROCESS_STATUS:
+					return "ProcessStatus";
 				default:
 					return base.getPropertyName(apiName);
 			}

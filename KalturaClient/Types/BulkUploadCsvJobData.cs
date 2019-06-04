@@ -40,11 +40,15 @@ namespace Kaltura.Types
 		#region Constants
 		public const string CSV_VERSION = "csvVersion";
 		public const string COLUMNS = "columns";
+		public const string PROCESS_OBJECT_ID = "processObjectId";
+		public const string PROCESS_OBJECT_TYPE = "processObjectType";
 		#endregion
 
 		#region Private Fields
 		private BulkUploadCsvVersion _CsvVersion = (BulkUploadCsvVersion)Int32.MinValue;
 		private IList<String> _Columns;
+		private string _ProcessObjectId = null;
+		private string _ProcessObjectType = null;
 		#endregion
 
 		#region Properties
@@ -68,6 +72,26 @@ namespace Kaltura.Types
 				OnPropertyChanged("Columns");
 			}
 		}
+		[JsonProperty]
+		public string ProcessObjectId
+		{
+			get { return _ProcessObjectId; }
+			set 
+			{ 
+				_ProcessObjectId = value;
+				OnPropertyChanged("ProcessObjectId");
+			}
+		}
+		[JsonProperty]
+		public string ProcessObjectType
+		{
+			get { return _ProcessObjectType; }
+			set 
+			{ 
+				_ProcessObjectType = value;
+				OnPropertyChanged("ProcessObjectType");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -89,6 +113,14 @@ namespace Kaltura.Types
 					this._Columns.Add(ObjectFactory.Create<String>(arrayNode));
 				}
 			}
+			if(node["processObjectId"] != null)
+			{
+				this._ProcessObjectId = node["processObjectId"].Value<string>();
+			}
+			if(node["processObjectType"] != null)
+			{
+				this._ProcessObjectType = node["processObjectType"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -100,6 +132,8 @@ namespace Kaltura.Types
 				kparams.AddReplace("objectType", "KalturaBulkUploadCsvJobData");
 			kparams.AddIfNotNull("csvVersion", this._CsvVersion);
 			kparams.AddIfNotNull("columns", this._Columns);
+			kparams.AddIfNotNull("processObjectId", this._ProcessObjectId);
+			kparams.AddIfNotNull("processObjectType", this._ProcessObjectType);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -110,6 +144,10 @@ namespace Kaltura.Types
 					return "CsvVersion";
 				case COLUMNS:
 					return "Columns";
+				case PROCESS_OBJECT_ID:
+					return "ProcessObjectId";
+				case PROCESS_OBJECT_TYPE:
+					return "ProcessObjectType";
 				default:
 					return base.getPropertyName(apiName);
 			}

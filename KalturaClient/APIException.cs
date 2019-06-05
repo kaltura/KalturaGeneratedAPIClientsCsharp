@@ -321,6 +321,10 @@ namespace Kaltura
 		public static string MUST_FILTER_ON_ENTRY_OR_SERVER_TYPE = "MUST_FILTER_ON_ENTRY_OR_SERVER_TYPE";
 		public static string ENTRY_SERVER_NODE_OBJECT_TYPE_ERROR = "ENTRY_SERVER_NODE_OBJECT_TYPE_ERROR";
 		public static string INVALID_OTP = "INVALID_OTP";
+		public static string MISSING_OTP = "MISSING_OTP";
+		public static string ERROR_IN_QR_GENERATION = "ERROR_IN_QR_GENERATION";
+		public static string ERROR_IN_SEED_GENERATION = "ERROR_IN_SEED_GENERATION";
+		public static string INVALID_HASH = "INVALID_HASH";
 		public static string CANNOT_CREATE_CLIP_FLAVOR_JOB = "CANNOT_CREATE_CLIP_FLAVOR_JOB";
 		public static string MISSING_MAP_NAME = "MISSING_MAP_NAME";
 		public static string CANNOT_PARSE_CONTENT = "CANNOT_PARSE_CONTENT";

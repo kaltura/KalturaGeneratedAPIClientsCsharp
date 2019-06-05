@@ -95,6 +95,7 @@ namespace Kaltura.Types
 		public const string OVP_ENVIRONMENT_URL = "ovpEnvironmentUrl";
 		public const string OTT_ENVIRONMENT_URL = "ottEnvironmentUrl";
 		public const string ESEARCH_LANGUAGES = "eSearchLanguages";
+		public const string AUTHENTICATION_TYPE = "authenticationType";
 		#endregion
 
 		#region Private Fields
@@ -155,6 +156,7 @@ namespace Kaltura.Types
 		private string _OvpEnvironmentUrl = null;
 		private string _OttEnvironmentUrl = null;
 		private IList<ESearchLanguageItem> _ESearchLanguages;
+		private bool? _AuthenticationType = null;
 		#endregion
 
 		#region Properties
@@ -728,6 +730,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("ESearchLanguages");
 			}
 		}
+		[JsonProperty]
+		public bool? AuthenticationType
+		{
+			get { return _AuthenticationType; }
+			private set 
+			{ 
+				_AuthenticationType = value;
+				OnPropertyChanged("AuthenticationType");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -981,6 +993,10 @@ namespace Kaltura.Types
 					this._ESearchLanguages.Add(ObjectFactory.Create<ESearchLanguageItem>(arrayNode));
 				}
 			}
+			if(node["authenticationType"] != null)
+			{
+				this._AuthenticationType = ParseBool(node["authenticationType"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -1047,6 +1063,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("ovpEnvironmentUrl", this._OvpEnvironmentUrl);
 			kparams.AddIfNotNull("ottEnvironmentUrl", this._OttEnvironmentUrl);
 			kparams.AddIfNotNull("eSearchLanguages", this._ESearchLanguages);
+			kparams.AddIfNotNull("authenticationType", this._AuthenticationType);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -1167,6 +1184,8 @@ namespace Kaltura.Types
 					return "OttEnvironmentUrl";
 				case ESEARCH_LANGUAGES:
 					return "ESearchLanguages";
+				case AUTHENTICATION_TYPE:
+					return "AuthenticationType";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -346,6 +346,45 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class UserGenerateQrCodeRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		public const string HASH_KEY = "hashKey";
+		#endregion
+
+		public string HashKey { get; set; }
+
+		public UserGenerateQrCodeRequestBuilder()
+			: base("user", "generateQrCode")
+		{
+		}
+
+		public UserGenerateQrCodeRequestBuilder(string hashKey)
+			: this()
+		{
+			this.HashKey = hashKey;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("hashKey"))
+				kparams.AddIfNotNull("hashKey", HashKey);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			return result.Value<string>();
+		}
+	}
+
 	public class UserGetRequestBuilder : RequestBuilder<User>
 	{
 		#region Constants
@@ -983,6 +1022,11 @@ namespace Kaltura.Services
 		public static UserExportToCsvRequestBuilder ExportToCsv(UserFilter filter = null, int metadataProfileId = Int32.MinValue, IList<CsvAdditionalFieldInfo> additionalFields = null)
 		{
 			return new UserExportToCsvRequestBuilder(filter, metadataProfileId, additionalFields);
+		}
+
+		public static UserGenerateQrCodeRequestBuilder GenerateQrCode(string hashKey)
+		{
+			return new UserGenerateQrCodeRequestBuilder(hashKey);
 		}
 
 		public static UserGetRequestBuilder Get(string userId = null)

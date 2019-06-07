@@ -156,7 +156,7 @@ namespace Kaltura.Types
 		private string _OvpEnvironmentUrl = null;
 		private string _OttEnvironmentUrl = null;
 		private IList<ESearchLanguageItem> _ESearchLanguages;
-		private bool? _AuthenticationType = null;
+		private int _AuthenticationType = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -731,7 +731,7 @@ namespace Kaltura.Types
 			}
 		}
 		[JsonProperty]
-		public bool? AuthenticationType
+		public int AuthenticationType
 		{
 			get { return _AuthenticationType; }
 			private set 
@@ -995,7 +995,7 @@ namespace Kaltura.Types
 			}
 			if(node["authenticationType"] != null)
 			{
-				this._AuthenticationType = ParseBool(node["authenticationType"].Value<string>());
+				this._AuthenticationType = ParseInt(node["authenticationType"].Value<string>());
 			}
 		}
 		#endregion

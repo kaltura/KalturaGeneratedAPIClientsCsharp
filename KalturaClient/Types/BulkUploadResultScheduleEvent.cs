@@ -60,7 +60,7 @@ namespace Kaltura.Types
 		#region Private Fields
 		private string _ReferenceId = null;
 		private string _TemplateEntryId = null;
-		private ScheduleEventType _EventType = (ScheduleEventType)Int32.MinValue;
+		private int _EventType = Int32.MinValue;
 		private string _Title = null;
 		private string _Description = null;
 		private string _Tags = null;
@@ -99,7 +99,7 @@ namespace Kaltura.Types
 			}
 		}
 		[JsonProperty]
-		public ScheduleEventType EventType
+		public int EventType
 		{
 			get { return _EventType; }
 			set 
@@ -267,7 +267,7 @@ namespace Kaltura.Types
 			}
 			if(node["eventType"] != null)
 			{
-				this._EventType = (ScheduleEventType)ParseEnum(typeof(ScheduleEventType), node["eventType"].Value<string>());
+				this._EventType = ParseInt(node["eventType"].Value<string>());
 			}
 			if(node["title"] != null)
 			{

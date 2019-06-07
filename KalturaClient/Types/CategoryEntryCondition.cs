@@ -39,12 +39,14 @@ namespace Kaltura.Types
 	{
 		#region Constants
 		public const string CATEGORY_ID = "categoryId";
+		public const string CATEGORY_IDS = "categoryIds";
 		public const string CATEGORY_USER_PERMISSION = "categoryUserPermission";
 		public const string COMPARISON = "comparison";
 		#endregion
 
 		#region Private Fields
 		private int _CategoryId = Int32.MinValue;
+		private string _CategoryIds = null;
 		private CategoryUserPermissionLevel _CategoryUserPermission = (CategoryUserPermissionLevel)Int32.MinValue;
 		private SearchConditionComparison _Comparison = null;
 		#endregion
@@ -58,6 +60,16 @@ namespace Kaltura.Types
 			{ 
 				_CategoryId = value;
 				OnPropertyChanged("CategoryId");
+			}
+		}
+		[JsonProperty]
+		public string CategoryIds
+		{
+			get { return _CategoryIds; }
+			set 
+			{ 
+				_CategoryIds = value;
+				OnPropertyChanged("CategoryIds");
 			}
 		}
 		[JsonProperty]
@@ -93,6 +105,10 @@ namespace Kaltura.Types
 			{
 				this._CategoryId = ParseInt(node["categoryId"].Value<string>());
 			}
+			if(node["categoryIds"] != null)
+			{
+				this._CategoryIds = node["categoryIds"].Value<string>();
+			}
 			if(node["categoryUserPermission"] != null)
 			{
 				this._CategoryUserPermission = (CategoryUserPermissionLevel)ParseEnum(typeof(CategoryUserPermissionLevel), node["categoryUserPermission"].Value<string>());
@@ -111,6 +127,7 @@ namespace Kaltura.Types
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaCategoryEntryCondition");
 			kparams.AddIfNotNull("categoryId", this._CategoryId);
+			kparams.AddIfNotNull("categoryIds", this._CategoryIds);
 			kparams.AddIfNotNull("categoryUserPermission", this._CategoryUserPermission);
 			kparams.AddIfNotNull("comparison", this._Comparison);
 			return kparams;
@@ -121,6 +138,8 @@ namespace Kaltura.Types
 			{
 				case CATEGORY_ID:
 					return "CategoryId";
+				case CATEGORY_IDS:
+					return "CategoryIds";
 				case CATEGORY_USER_PERMISSION:
 					return "CategoryUserPermission";
 				case COMPARISON:

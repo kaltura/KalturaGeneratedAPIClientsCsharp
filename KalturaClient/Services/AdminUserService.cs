@@ -124,7 +124,7 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class AdminUserSetInitialPasswordRequestBuilder : RequestBuilder<VoidResponse>
+	public class AdminUserSetInitialPasswordRequestBuilder : RequestBuilder<Authentication>
 	{
 		#region Constants
 		public const string HASH_KEY = "hashKey";
@@ -164,7 +164,7 @@ namespace Kaltura.Services
 
 		public override object Deserialize(JToken result)
 		{
-			return null;
+			return ObjectFactory.Create<Authentication>(result);
 		}
 	}
 

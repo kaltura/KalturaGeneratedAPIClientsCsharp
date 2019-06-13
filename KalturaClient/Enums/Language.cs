@@ -56,6 +56,7 @@ namespace Kaltura.Enums
 		public static readonly Language ALN = new Language("Albanian (Gheg)");
 		public static readonly Language ALS = new Language("Albanian (Tosk)");
 		public static readonly Language ALE = new Language("Aleut");
+		public static readonly Language ALG = new Language("Algonquian languages");
 		public static readonly Language ALQ = new Language("Algonquin");
 		public static readonly Language ALT = new Language("Altai (Southern)");
 		public static readonly Language AM = new Language("Amharic");
@@ -76,6 +77,7 @@ namespace Kaltura.Enums
 		public static readonly Language ASB = new Language("Assiniboine");
 		public static readonly Language AII = new Language("Assyrian Neo-Aramaic");
 		public static readonly Language AST = new Language("Asturian");
+		public static readonly Language ATH = new Language("Athapascan languages");
 		public static readonly Language ATJ = new Language("Atikamekw");
 		public static readonly Language AWA = new Language("Awadhi");
 		public static readonly Language AY = new Language("Aymara");
@@ -143,6 +145,7 @@ namespace Kaltura.Enums
 		public static readonly Language COO = new Language("Comox");
 		public static readonly Language COP = new Language("Coptic");
 		public static readonly Language CO = new Language("Corsican");
+		public static readonly Language CR = new Language("Cree");
 		public static readonly Language MUS = new Language("Creek");
 		public static readonly Language CRH = new Language("Crimean Tatar");
 		public static readonly Language HR = new Language("Croatian");
@@ -235,15 +238,17 @@ namespace Kaltura.Enums
 		public static readonly Language KPO = new Language("Ikposo");
 		public static readonly Language ILO = new Language("Iloko");
 		public static readonly Language SMN = new Language("Inari Sami");
-		public static readonly Language IN = new Language("Indonesian");
 		public static readonly Language ID = new Language("Indonesian");
+		public static readonly Language IN = new Language("Indonesian");
 		public static readonly Language IZH = new Language("Ingrian");
 		public static readonly Language INH = new Language("Ingush");
 		public static readonly Language IA = new Language("Interlingua");
 		public static readonly Language IE = new Language("Interlingue");
+		public static readonly Language IKT = new Language("Inuinnaqtun");
 		public static readonly Language IU = new Language("Inuktitut");
 		public static readonly Language IK = new Language("Inupiak");
 		public static readonly Language GA = new Language("Irish");
+		public static readonly Language IRO = new Language("Iroquoian languages");
 		public static readonly Language IT = new Language("Italian");
 		public static readonly Language ITL = new Language("Itelmen");
 		public static readonly Language JA = new Language("Japanese");
@@ -380,6 +385,7 @@ namespace Kaltura.Enums
 		public static readonly Language NIO = new Language("Nganasan");
 		public static readonly Language NCG = new Language("Nisgaa");
 		public static readonly Language NIU = new Language("Niuean");
+		public static readonly Language ZXX = new Language("No linguistic content");
 		public static readonly Language NOG = new Language("Nogai");
 		public static readonly Language NON = new Language("Norse Old");
 		public static readonly Language NSO = new Language("Northern Sotho Pedi Sepedi");
@@ -394,6 +400,7 @@ namespace Kaltura.Enums
 		public static readonly Language OJB = new Language("Ojibwa Northwestern");
 		public static readonly Language OJS = new Language("Ojibwa Severn");
 		public static readonly Language OJW = new Language("Ojibwa Western");
+		public static readonly Language OJ = new Language("Ojibwe, Ojibwa");
 		public static readonly Language RYU = new Language("Okinawan Central");
 		public static readonly Language ANG = new Language("Old English");
 		public static readonly Language ONE = new Language("Oneida");
@@ -444,7 +451,9 @@ namespace Kaltura.Enums
 		public static readonly Language SAH = new Language("Sakha");
 		public static readonly Language SLR = new Language("Salar");
 		public static readonly Language STR = new Language("Salish Straits");
+		public static readonly Language SAL = new Language("Salishan languages");
 		public static readonly Language SJD = new Language("Sami Kildin");
+		public static readonly Language SMI = new Language("Sami languages");
 		public static readonly Language SM = new Language("Samoan");
 		public static readonly Language SG = new Language("Sangro");
 		public static readonly Language SA = new Language("Sanskrit");
@@ -485,6 +494,7 @@ namespace Kaltura.Enums
 		public static readonly Language DSB = new Language("Sorbian Lower");
 		public static readonly Language HSB = new Language("Sorbian Upper");
 		public static readonly Language SMA = new Language("Southern Sami");
+		public static readonly Language TCE = new Language("Southern Tutchone");
 		public static readonly Language ES = new Language("Spanish");
 		public static readonly Language SRN = new Language("Sranan");
 		public static readonly Language STO = new Language("Stoney");

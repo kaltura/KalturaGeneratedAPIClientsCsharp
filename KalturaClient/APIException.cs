@@ -483,6 +483,7 @@ namespace Kaltura
 		public static string USER_EMAIL_NOT_FOUND = "USER_EMAIL_NOT_FOUND";
 		public static string FILE_CREATION_FAILED = "FILE_CREATION_FAILED";
 		public static string DRUID_QUERY_TIMED_OUT = "DRUID_QUERY_TIMED_OUT";
+		public static string NEW_LOGIN_REQUIRED = "NEW_LOGIN_REQUIRED";
 		public static string INTERNAL_SERVER_ERROR = "INTERNAL_SERVER_ERROR";
 		public static string METADATA_PROFILE_NOT_FOUND = "METADATA_PROFILE_NOT_FOUND";
 		public static string INVALID_METADATA_PROFILE = "INVALID_METADATA_PROFILE";

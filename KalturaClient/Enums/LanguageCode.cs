@@ -32,9 +32,11 @@ namespace Kaltura.Enums
 		public static readonly LanguageCode AA = new LanguageCode("aa");
 		public static readonly LanguageCode AB = new LanguageCode("ab");
 		public static readonly LanguageCode AF = new LanguageCode("af");
+		public static readonly LanguageCode ALG = new LanguageCode("alg");
 		public static readonly LanguageCode AM = new LanguageCode("am");
 		public static readonly LanguageCode AR = new LanguageCode("ar");
 		public static readonly LanguageCode AS_ = new LanguageCode("as");
+		public static readonly LanguageCode ATH = new LanguageCode("ath");
 		public static readonly LanguageCode AY = new LanguageCode("ay");
 		public static readonly LanguageCode AZ = new LanguageCode("az");
 		public static readonly LanguageCode BA = new LanguageCode("ba");
@@ -47,6 +49,8 @@ namespace Kaltura.Enums
 		public static readonly LanguageCode BR = new LanguageCode("br");
 		public static readonly LanguageCode CA = new LanguageCode("ca");
 		public static readonly LanguageCode CO = new LanguageCode("co");
+		public static readonly LanguageCode CR = new LanguageCode("cr");
+		public static readonly LanguageCode CRG = new LanguageCode("crg");
 		public static readonly LanguageCode CS = new LanguageCode("cs");
 		public static readonly LanguageCode CY = new LanguageCode("cy");
 		public static readonly LanguageCode DA = new LanguageCode("da");
@@ -82,7 +86,9 @@ namespace Kaltura.Enums
 		public static readonly LanguageCode ID = new LanguageCode("id");
 		public static readonly LanguageCode IE = new LanguageCode("ie");
 		public static readonly LanguageCode IK = new LanguageCode("ik");
+		public static readonly LanguageCode IKT = new LanguageCode("ikt");
 		public static readonly LanguageCode IN = new LanguageCode("in");
+		public static readonly LanguageCode IRO = new LanguageCode("iro");
 		public static readonly LanguageCode IS = new LanguageCode("is");
 		public static readonly LanguageCode IT = new LanguageCode("it");
 		public static readonly LanguageCode IU = new LanguageCode("iu");
@@ -108,6 +114,7 @@ namespace Kaltura.Enums
 		public static readonly LanguageCode LV = new LanguageCode("lv");
 		public static readonly LanguageCode MG = new LanguageCode("mg");
 		public static readonly LanguageCode MI = new LanguageCode("mi");
+		public static readonly LanguageCode MIC = new LanguageCode("mic");
 		public static readonly LanguageCode MK = new LanguageCode("mk");
 		public static readonly LanguageCode ML = new LanguageCode("ml");
 		public static readonly LanguageCode MN = new LanguageCode("mn");
@@ -115,13 +122,16 @@ namespace Kaltura.Enums
 		public static readonly LanguageCode MR = new LanguageCode("mr");
 		public static readonly LanguageCode MS = new LanguageCode("ms");
 		public static readonly LanguageCode MT = new LanguageCode("mt");
-		public static readonly LanguageCode MU = new LanguageCode("multilingual");
+		public static readonly LanguageCode MU = new LanguageCode("mu");
 		public static readonly LanguageCode MY = new LanguageCode("my");
 		public static readonly LanguageCode NA = new LanguageCode("na");
 		public static readonly LanguageCode NE = new LanguageCode("ne");
 		public static readonly LanguageCode NL = new LanguageCode("nl");
 		public static readonly LanguageCode NO = new LanguageCode("no");
 		public static readonly LanguageCode OC = new LanguageCode("oc");
+		public static readonly LanguageCode OJ = new LanguageCode("oj");
+		public static readonly LanguageCode OJS = new LanguageCode("ojs");
+		public static readonly LanguageCode OJW = new LanguageCode("ojw");
 		public static readonly LanguageCode OM = new LanguageCode("om");
 		public static readonly LanguageCode OR_ = new LanguageCode("or");
 		public static readonly LanguageCode PA = new LanguageCode("pa");
@@ -135,6 +145,7 @@ namespace Kaltura.Enums
 		public static readonly LanguageCode RU = new LanguageCode("ru");
 		public static readonly LanguageCode RW = new LanguageCode("rw");
 		public static readonly LanguageCode SA = new LanguageCode("sa");
+		public static readonly LanguageCode SAL = new LanguageCode("sal");
 		public static readonly LanguageCode SD = new LanguageCode("sd");
 		public static readonly LanguageCode SG = new LanguageCode("sg");
 		public static readonly LanguageCode SH = new LanguageCode("sh");
@@ -142,6 +153,7 @@ namespace Kaltura.Enums
 		public static readonly LanguageCode SK = new LanguageCode("sk");
 		public static readonly LanguageCode SL = new LanguageCode("sl");
 		public static readonly LanguageCode SM = new LanguageCode("sm");
+		public static readonly LanguageCode SMI = new LanguageCode("smi");
 		public static readonly LanguageCode SN = new LanguageCode("sn");
 		public static readonly LanguageCode SO = new LanguageCode("so");
 		public static readonly LanguageCode SQ = new LanguageCode("sq");
@@ -152,6 +164,7 @@ namespace Kaltura.Enums
 		public static readonly LanguageCode SV = new LanguageCode("sv");
 		public static readonly LanguageCode SW = new LanguageCode("sw");
 		public static readonly LanguageCode TA = new LanguageCode("ta");
+		public static readonly LanguageCode TCE = new LanguageCode("tce");
 		public static readonly LanguageCode TE = new LanguageCode("te");
 		public static readonly LanguageCode TG = new LanguageCode("tg");
 		public static readonly LanguageCode TH = new LanguageCode("th");
@@ -166,6 +179,7 @@ namespace Kaltura.Enums
 		public static readonly LanguageCode TW = new LanguageCode("tw");
 		public static readonly LanguageCode UG = new LanguageCode("ug");
 		public static readonly LanguageCode UK = new LanguageCode("uk");
+		public static readonly LanguageCode UN = new LanguageCode("un");
 		public static readonly LanguageCode UR = new LanguageCode("ur");
 		public static readonly LanguageCode UZ = new LanguageCode("uz");
 		public static readonly LanguageCode VI = new LanguageCode("vi");
@@ -176,6 +190,7 @@ namespace Kaltura.Enums
 		public static readonly LanguageCode YO = new LanguageCode("yo");
 		public static readonly LanguageCode ZH = new LanguageCode("zh");
 		public static readonly LanguageCode ZU = new LanguageCode("zu");
+		public static readonly LanguageCode ZXX = new LanguageCode("zxx");
 
 		private LanguageCode(string name) : base(name) { }
 	}

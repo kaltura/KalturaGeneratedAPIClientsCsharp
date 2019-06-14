@@ -370,6 +370,7 @@ namespace Kaltura.Enums
 		public static readonly Language MO = new Language("Moldavian");
 		public static readonly Language MNW = new Language("Mon");
 		public static readonly Language MN = new Language("Mongolian");
+		public static readonly Language MOE = new Language("Montagnais");
 		public static readonly Language MFE = new Language("Morisyen");
 		public static readonly Language MOS = new Language("Mossi");
 		public static readonly Language MXI = new Language("Mozarabic");
@@ -401,6 +402,7 @@ namespace Kaltura.Enums
 		public static readonly Language OJS = new Language("Ojibwa Severn");
 		public static readonly Language OJW = new Language("Ojibwa Western");
 		public static readonly Language OJ = new Language("Ojibwe, Ojibwa");
+		public static readonly Language OKA = new Language("Okanagan");
 		public static readonly Language RYU = new Language("Okinawan Central");
 		public static readonly Language ANG = new Language("Old English");
 		public static readonly Language ONE = new Language("Oneida");
@@ -480,6 +482,7 @@ namespace Kaltura.Enums
 		public static readonly Language SHS = new Language("Shuswap");
 		public static readonly Language SCN = new Language("Sicilian");
 		public static readonly Language SID = new Language("Sidamo");
+		public static readonly Language BLA = new Language("Siksika");
 		public static readonly Language SZL = new Language("Silesian");
 		public static readonly Language SD = new Language("Sindhi");
 		public static readonly Language SI = new Language("Sinhalese");

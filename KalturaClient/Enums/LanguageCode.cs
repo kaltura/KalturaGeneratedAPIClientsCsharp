@@ -44,6 +44,7 @@ namespace Kaltura.Enums
 		public static readonly LanguageCode BG = new LanguageCode("bg");
 		public static readonly LanguageCode BH = new LanguageCode("bh");
 		public static readonly LanguageCode BI = new LanguageCode("bi");
+		public static readonly LanguageCode BLA = new LanguageCode("bla");
 		public static readonly LanguageCode BN = new LanguageCode("bn");
 		public static readonly LanguageCode BO = new LanguageCode("bo");
 		public static readonly LanguageCode BR = new LanguageCode("br");
@@ -119,6 +120,7 @@ namespace Kaltura.Enums
 		public static readonly LanguageCode ML = new LanguageCode("ml");
 		public static readonly LanguageCode MN = new LanguageCode("mn");
 		public static readonly LanguageCode MO = new LanguageCode("mo");
+		public static readonly LanguageCode MOE = new LanguageCode("moe");
 		public static readonly LanguageCode MR = new LanguageCode("mr");
 		public static readonly LanguageCode MS = new LanguageCode("ms");
 		public static readonly LanguageCode MT = new LanguageCode("mt");
@@ -132,6 +134,7 @@ namespace Kaltura.Enums
 		public static readonly LanguageCode OJ = new LanguageCode("oj");
 		public static readonly LanguageCode OJS = new LanguageCode("ojs");
 		public static readonly LanguageCode OJW = new LanguageCode("ojw");
+		public static readonly LanguageCode OKA = new LanguageCode("oka");
 		public static readonly LanguageCode OM = new LanguageCode("om");
 		public static readonly LanguageCode OR_ = new LanguageCode("or");
 		public static readonly LanguageCode PA = new LanguageCode("pa");

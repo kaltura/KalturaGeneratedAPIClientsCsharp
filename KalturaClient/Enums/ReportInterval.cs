@@ -30,7 +30,10 @@ namespace Kaltura.Enums
 	public sealed class ReportInterval : StringEnum
 	{
 		public static readonly ReportInterval DAYS = new ReportInterval("days");
+		public static readonly ReportInterval HOURS = new ReportInterval("hours");
+		public static readonly ReportInterval MINUTES = new ReportInterval("minutes");
 		public static readonly ReportInterval MONTHS = new ReportInterval("months");
+		public static readonly ReportInterval TEN_SECONDS = new ReportInterval("ten_seconds");
 
 		private ReportInterval(string name) : base(name) { }
 	}

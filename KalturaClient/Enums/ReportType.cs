@@ -76,6 +76,18 @@ namespace Kaltura.Enums
 		public static readonly ReportType PLAYER_RELATED_INTERACTIONS = new ReportType("45");
 		public static readonly ReportType PLAYBACK_RATE = new ReportType("46");
 		public static readonly ReportType PARTNER_USAGE = new ReportType("201");
+		public static readonly ReportType MAP_OVERLAY_COUNTRY_REALTIME = new ReportType("10001");
+		public static readonly ReportType MAP_OVERLAY_REGION_REALTIME = new ReportType("10002");
+		public static readonly ReportType MAP_OVERLAY_CITY_REALTIME = new ReportType("10003");
+		public static readonly ReportType PLATFORMS_REALTIME = new ReportType("10004");
+		public static readonly ReportType USERS_OVERVIEW_REALTIME = new ReportType("10005");
+		public static readonly ReportType QOS_OVERVIEW_REALTIME = new ReportType("10006");
+		public static readonly ReportType DISCOVERY_REALTIME = new ReportType("10007");
+		public static readonly ReportType ENTRY_LEVEL_USERS_DISCOVERY_REALTIME = new ReportType("10008");
+		public static readonly ReportType ENTRY_LEVEL_USERS_STATUS_REALTIME = new ReportType("10009");
+		public static readonly ReportType PLATFORMS_DISCOVERY_REALTIME = new ReportType("10010");
+		public static readonly ReportType PLAYBACK_TYPE_REALTIME = new ReportType("10011");
+		public static readonly ReportType CONTENT_REALTIME = new ReportType("10012");
 
 		private ReportType(string name) : base(name) { }
 	}

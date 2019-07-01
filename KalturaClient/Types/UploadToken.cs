@@ -49,6 +49,7 @@ namespace Kaltura.Types
 		public const string UPDATED_AT = "updatedAt";
 		public const string UPLOAD_URL = "uploadUrl";
 		public const string AUTO_FINALIZE = "autoFinalize";
+		public const string MINIMUM_CHUNK_SIZE = "minimumChunkSize";
 		#endregion
 
 		#region Private Fields
@@ -63,6 +64,7 @@ namespace Kaltura.Types
 		private int _UpdatedAt = Int32.MinValue;
 		private string _UploadUrl = null;
 		private NullableBoolean _AutoFinalize = (NullableBoolean)Int32.MinValue;
+		private float _MinimumChunkSize = Single.MinValue;
 		#endregion
 
 		#region Properties
@@ -176,6 +178,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("AutoFinalize");
 			}
 		}
+		[JsonProperty]
+		public float MinimumChunkSize
+		{
+			get { return _MinimumChunkSize; }
+			set 
+			{ 
+				_MinimumChunkSize = value;
+				OnPropertyChanged("MinimumChunkSize");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -229,6 +241,10 @@ namespace Kaltura.Types
 			{
 				this._AutoFinalize = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["autoFinalize"].Value<string>());
 			}
+			if(node["minimumChunkSize"] != null)
+			{
+				this._MinimumChunkSize = ParseFloat(node["minimumChunkSize"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -249,6 +265,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
 			kparams.AddIfNotNull("uploadUrl", this._UploadUrl);
 			kparams.AddIfNotNull("autoFinalize", this._AutoFinalize);
+			kparams.AddIfNotNull("minimumChunkSize", this._MinimumChunkSize);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -277,6 +294,8 @@ namespace Kaltura.Types
 					return "UploadUrl";
 				case AUTO_FINALIZE:
 					return "AutoFinalize";
+				case MINIMUM_CHUNK_SIZE:
+					return "MinimumChunkSize";
 				default:
 					return base.getPropertyName(apiName);
 			}

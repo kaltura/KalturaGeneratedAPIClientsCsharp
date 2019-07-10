@@ -61,6 +61,7 @@ namespace Kaltura.Types
 		public const string ALLOW_QUICK_EDIT = "allowQuickEdit";
 		public const string MERGE_ENTRY_LISTS = "mergeEntryLists";
 		public const string NOTIFICATIONS_CONFIG = "notificationsConfig";
+		public const string ALLOWED_FROM_EMAIL_WHITE_LIST = "allowedFromEmailWhiteList";
 		public const string MAX_UPLOAD_SIZE = "maxUploadSize";
 		public const string PARTNER_PACKAGE = "partnerPackage";
 		public const string SECRET = "secret";
@@ -122,6 +123,7 @@ namespace Kaltura.Types
 		private int _AllowQuickEdit = Int32.MinValue;
 		private int _MergeEntryLists = Int32.MinValue;
 		private string _NotificationsConfig = null;
+		private string _AllowedFromEmailWhiteList = null;
 		private int _MaxUploadSize = Int32.MinValue;
 		private int _PartnerPackage = Int32.MinValue;
 		private string _Secret = null;
@@ -388,6 +390,16 @@ namespace Kaltura.Types
 			{ 
 				_NotificationsConfig = value;
 				OnPropertyChanged("NotificationsConfig");
+			}
+		}
+		[JsonProperty]
+		public string AllowedFromEmailWhiteList
+		{
+			get { return _AllowedFromEmailWhiteList; }
+			set 
+			{ 
+				_AllowedFromEmailWhiteList = value;
+				OnPropertyChanged("AllowedFromEmailWhiteList");
 			}
 		}
 		[JsonProperty]
@@ -841,6 +853,10 @@ namespace Kaltura.Types
 			{
 				this._NotificationsConfig = node["notificationsConfig"].Value<string>();
 			}
+			if(node["allowedFromEmailWhiteList"] != null)
+			{
+				this._AllowedFromEmailWhiteList = node["allowedFromEmailWhiteList"].Value<string>();
+			}
 			if(node["maxUploadSize"] != null)
 			{
 				this._MaxUploadSize = ParseInt(node["maxUploadSize"].Value<string>());
@@ -1029,6 +1045,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("allowQuickEdit", this._AllowQuickEdit);
 			kparams.AddIfNotNull("mergeEntryLists", this._MergeEntryLists);
 			kparams.AddIfNotNull("notificationsConfig", this._NotificationsConfig);
+			kparams.AddIfNotNull("allowedFromEmailWhiteList", this._AllowedFromEmailWhiteList);
 			kparams.AddIfNotNull("maxUploadSize", this._MaxUploadSize);
 			kparams.AddIfNotNull("partnerPackage", this._PartnerPackage);
 			kparams.AddIfNotNull("secret", this._Secret);
@@ -1116,6 +1133,8 @@ namespace Kaltura.Types
 					return "MergeEntryLists";
 				case NOTIFICATIONS_CONFIG:
 					return "NotificationsConfig";
+				case ALLOWED_FROM_EMAIL_WHITE_LIST:
+					return "AllowedFromEmailWhiteList";
 				case MAX_UPLOAD_SIZE:
 					return "MaxUploadSize";
 				case PARTNER_PACKAGE:

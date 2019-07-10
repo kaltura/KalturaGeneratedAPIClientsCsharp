@@ -51,6 +51,7 @@ namespace Kaltura.Enums
 		public static readonly ESearchEntryFieldName MODERATION_STATUS = new ESearchEntryFieldName("moderation_status");
 		public static readonly ESearchEntryFieldName NAME = new ESearchEntryFieldName("name");
 		public static readonly ESearchEntryFieldName PARENT_ENTRY_ID = new ESearchEntryFieldName("parent_id");
+		public static readonly ESearchEntryFieldName PARTNER_SORT_VALUE = new ESearchEntryFieldName("partner_sort_value");
 		public static readonly ESearchEntryFieldName PUSH_PUBLISH = new ESearchEntryFieldName("push_publish");
 		public static readonly ESearchEntryFieldName RECORDED_ENTRY_ID = new ESearchEntryFieldName("recorded_entry_id");
 		public static readonly ESearchEntryFieldName REDIRECT_ENTRY_ID = new ESearchEntryFieldName("redirect_entry_id");

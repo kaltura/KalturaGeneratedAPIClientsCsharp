@@ -188,23 +188,26 @@ namespace Kaltura.Services
 		public new const string PARTNER_ID = "partnerId";
 		public const string ADMIN_EMAIL = "adminEmail";
 		public const string CMS_PASSWORD = "cmsPassword";
+		public const string OTP = "otp";
 		#endregion
 
 		public new int PartnerId { get; set; }
 		public string AdminEmail { get; set; }
 		public string CmsPassword { get; set; }
+		public string Otp { get; set; }
 
 		public PartnerGetSecretsRequestBuilder()
 			: base("partner", "getSecrets")
 		{
 		}
 
-		public PartnerGetSecretsRequestBuilder(int partnerId, string adminEmail, string cmsPassword)
+		public PartnerGetSecretsRequestBuilder(int partnerId, string adminEmail, string cmsPassword, string otp)
 			: this()
 		{
 			this.PartnerId = partnerId;
 			this.AdminEmail = adminEmail;
 			this.CmsPassword = cmsPassword;
+			this.Otp = otp;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -216,6 +219,8 @@ namespace Kaltura.Services
 				kparams.AddIfNotNull("adminEmail", AdminEmail);
 			if (!isMapped("cmsPassword"))
 				kparams.AddIfNotNull("cmsPassword", CmsPassword);
+			if (!isMapped("otp"))
+				kparams.AddIfNotNull("otp", Otp);
 			return kparams;
 		}
 
@@ -502,9 +507,9 @@ namespace Kaltura.Services
 			return new PartnerGetPublicInfoRequestBuilder(id);
 		}
 
-		public static PartnerGetSecretsRequestBuilder GetSecrets(int partnerId, string adminEmail, string cmsPassword)
+		public static PartnerGetSecretsRequestBuilder GetSecrets(int partnerId, string adminEmail, string cmsPassword, string otp = null)
 		{
-			return new PartnerGetSecretsRequestBuilder(partnerId, adminEmail, cmsPassword);
+			return new PartnerGetSecretsRequestBuilder(partnerId, adminEmail, cmsPassword, otp);
 		}
 
 		public static PartnerGetStatisticsRequestBuilder GetStatistics()

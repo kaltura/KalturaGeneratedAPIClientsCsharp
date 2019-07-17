@@ -35,62 +35,74 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class ESearchEntryResponse : ESearchResponse
+	public class ESearchAggregationResponseItem : ObjectBase
 	{
 		#region Constants
-		public const string OBJECTS = "objects";
-		public const string AGGREGATIONS = "aggregations";
+		public const string NAME = "name";
+		public const string FIELD_NAME = "fieldName";
+		public const string BUCKETS = "buckets";
 		#endregion
 
 		#region Private Fields
-		private IList<ESearchEntryResult> _Objects;
-		private IList<ESearchAggregationResponseItem> _Aggregations;
+		private string _Name = null;
+		private string _FieldName = null;
+		private IList<ESearchAggregationBucket> _Buckets;
 		#endregion
 
 		#region Properties
 		[JsonProperty]
-		public IList<ESearchEntryResult> Objects
+		public string Name
 		{
-			get { return _Objects; }
-			private set 
+			get { return _Name; }
+			set 
 			{ 
-				_Objects = value;
-				OnPropertyChanged("Objects");
+				_Name = value;
+				OnPropertyChanged("Name");
 			}
 		}
 		[JsonProperty]
-		public IList<ESearchAggregationResponseItem> Aggregations
+		public string FieldName
 		{
-			get { return _Aggregations; }
-			private set 
+			get { return _FieldName; }
+			set 
 			{ 
-				_Aggregations = value;
-				OnPropertyChanged("Aggregations");
+				_FieldName = value;
+				OnPropertyChanged("FieldName");
+			}
+		}
+		[JsonProperty]
+		public IList<ESearchAggregationBucket> Buckets
+		{
+			get { return _Buckets; }
+			set 
+			{ 
+				_Buckets = value;
+				OnPropertyChanged("Buckets");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public ESearchEntryResponse()
+		public ESearchAggregationResponseItem()
 		{
 		}
 
-		public ESearchEntryResponse(JToken node) : base(node)
+		public ESearchAggregationResponseItem(JToken node) : base(node)
 		{
-			if(node["objects"] != null)
+			if(node["name"] != null)
 			{
-				this._Objects = new List<ESearchEntryResult>();
-				foreach(var arrayNode in node["objects"].Children())
-				{
-					this._Objects.Add(ObjectFactory.Create<ESearchEntryResult>(arrayNode));
-				}
+				this._Name = node["name"].Value<string>();
 			}
-			if(node["aggregations"] != null)
+			if(node["fieldName"] != null)
 			{
-				this._Aggregations = new List<ESearchAggregationResponseItem>();
-				foreach(var arrayNode in node["aggregations"].Children())
+				this._FieldName = node["fieldName"].Value<string>();
+			}
+			if(node["buckets"] != null)
+			{
+				this._Buckets = new List<ESearchAggregationBucket>();
+				foreach(var arrayNode in node["buckets"].Children())
 				{
-					this._Aggregations.Add(ObjectFactory.Create<ESearchAggregationResponseItem>(arrayNode));
+					this._Buckets.Add(ObjectFactory.Create<ESearchAggregationBucket>(arrayNode));
 				}
 			}
 		}
@@ -101,19 +113,22 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaESearchEntryResponse");
-			kparams.AddIfNotNull("objects", this._Objects);
-			kparams.AddIfNotNull("aggregations", this._Aggregations);
+				kparams.AddReplace("objectType", "KalturaESearchAggregationResponseItem");
+			kparams.AddIfNotNull("name", this._Name);
+			kparams.AddIfNotNull("fieldName", this._FieldName);
+			kparams.AddIfNotNull("buckets", this._Buckets);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case OBJECTS:
-					return "Objects";
-				case AGGREGATIONS:
-					return "Aggregations";
+				case NAME:
+					return "Name";
+				case FIELD_NAME:
+					return "FieldName";
+				case BUCKETS:
+					return "Buckets";
 				default:
 					return base.getPropertyName(apiName);
 			}

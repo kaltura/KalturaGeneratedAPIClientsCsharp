@@ -27,14 +27,9 @@
 // ===================================================================================================
 namespace Kaltura.Enums
 {
-	public sealed class CaptionType : StringEnum
+	public sealed class ESearchMetadataAggregateByFieldName : StringEnum
 	{
-		public static readonly CaptionType SRT = new CaptionType("1");
-		public static readonly CaptionType DFXP = new CaptionType("2");
-		public static readonly CaptionType WEBVTT = new CaptionType("3");
-		public static readonly CaptionType CAP = new CaptionType("4");
-		public static readonly CaptionType SCC = new CaptionType("5");
 
-		private CaptionType(string name) : base(name) { }
+		private ESearchMetadataAggregateByFieldName(string name) : base(name) { }
 	}
 }

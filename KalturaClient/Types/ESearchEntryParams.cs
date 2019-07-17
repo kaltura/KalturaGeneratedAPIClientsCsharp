@@ -39,10 +39,12 @@ namespace Kaltura.Types
 	{
 		#region Constants
 		public const string SEARCH_OPERATOR = "searchOperator";
+		public const string AGGREGATIONS = "aggregations";
 		#endregion
 
 		#region Private Fields
 		private ESearchEntryOperator _SearchOperator;
+		private ESearchAggregation _Aggregations;
 		#endregion
 
 		#region Properties
@@ -54,6 +56,16 @@ namespace Kaltura.Types
 			{ 
 				_SearchOperator = value;
 				OnPropertyChanged("SearchOperator");
+			}
+		}
+		[JsonProperty]
+		public ESearchAggregation Aggregations
+		{
+			get { return _Aggregations; }
+			set 
+			{ 
+				_Aggregations = value;
+				OnPropertyChanged("Aggregations");
 			}
 		}
 		#endregion
@@ -69,6 +81,10 @@ namespace Kaltura.Types
 			{
 				this._SearchOperator = ObjectFactory.Create<ESearchEntryOperator>(node["searchOperator"]);
 			}
+			if(node["aggregations"] != null)
+			{
+				this._Aggregations = ObjectFactory.Create<ESearchAggregation>(node["aggregations"]);
+			}
 		}
 		#endregion
 
@@ -79,6 +95,7 @@ namespace Kaltura.Types
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaESearchEntryParams");
 			kparams.AddIfNotNull("searchOperator", this._SearchOperator);
+			kparams.AddIfNotNull("aggregations", this._Aggregations);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -87,6 +104,8 @@ namespace Kaltura.Types
 			{
 				case SEARCH_OPERATOR:
 					return "SearchOperator";
+				case AGGREGATIONS:
+					return "Aggregations";
 				default:
 					return base.getPropertyName(apiName);
 			}

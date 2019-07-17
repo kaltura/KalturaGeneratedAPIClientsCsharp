@@ -35,63 +35,39 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class ESearchEntryResponse : ESearchResponse
+	public class ESearchMetadataAggregationItem : ESearchAggregationItem
 	{
 		#region Constants
-		public const string OBJECTS = "objects";
-		public const string AGGREGATIONS = "aggregations";
+		public const string FIELD_NAME = "fieldName";
 		#endregion
 
 		#region Private Fields
-		private IList<ESearchEntryResult> _Objects;
-		private IList<ESearchAggregationResponseItem> _Aggregations;
+		private ESearchMetadataAggregateByFieldName _FieldName = null;
 		#endregion
 
 		#region Properties
 		[JsonProperty]
-		public IList<ESearchEntryResult> Objects
+		public ESearchMetadataAggregateByFieldName FieldName
 		{
-			get { return _Objects; }
-			private set 
+			get { return _FieldName; }
+			set 
 			{ 
-				_Objects = value;
-				OnPropertyChanged("Objects");
-			}
-		}
-		[JsonProperty]
-		public IList<ESearchAggregationResponseItem> Aggregations
-		{
-			get { return _Aggregations; }
-			private set 
-			{ 
-				_Aggregations = value;
-				OnPropertyChanged("Aggregations");
+				_FieldName = value;
+				OnPropertyChanged("FieldName");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public ESearchEntryResponse()
+		public ESearchMetadataAggregationItem()
 		{
 		}
 
-		public ESearchEntryResponse(JToken node) : base(node)
+		public ESearchMetadataAggregationItem(JToken node) : base(node)
 		{
-			if(node["objects"] != null)
+			if(node["fieldName"] != null)
 			{
-				this._Objects = new List<ESearchEntryResult>();
-				foreach(var arrayNode in node["objects"].Children())
-				{
-					this._Objects.Add(ObjectFactory.Create<ESearchEntryResult>(arrayNode));
-				}
-			}
-			if(node["aggregations"] != null)
-			{
-				this._Aggregations = new List<ESearchAggregationResponseItem>();
-				foreach(var arrayNode in node["aggregations"].Children())
-				{
-					this._Aggregations.Add(ObjectFactory.Create<ESearchAggregationResponseItem>(arrayNode));
-				}
+				this._FieldName = (ESearchMetadataAggregateByFieldName)StringEnum.Parse(typeof(ESearchMetadataAggregateByFieldName), node["fieldName"].Value<string>());
 			}
 		}
 		#endregion
@@ -101,19 +77,16 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaESearchEntryResponse");
-			kparams.AddIfNotNull("objects", this._Objects);
-			kparams.AddIfNotNull("aggregations", this._Aggregations);
+				kparams.AddReplace("objectType", "KalturaESearchMetadataAggregationItem");
+			kparams.AddIfNotNull("fieldName", this._FieldName);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case OBJECTS:
-					return "Objects";
-				case AGGREGATIONS:
-					return "Aggregations";
+				case FIELD_NAME:
+					return "FieldName";
 				default:
 					return base.getPropertyName(apiName);
 			}

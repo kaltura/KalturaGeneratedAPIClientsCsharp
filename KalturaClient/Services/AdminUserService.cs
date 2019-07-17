@@ -175,25 +175,28 @@ namespace Kaltura.Services
 		public const string PASSWORD = "password";
 		public const string NEW_EMAIL = "newEmail";
 		public const string NEW_PASSWORD = "newPassword";
+		public const string OTP = "otp";
 		#endregion
 
 		public string Email { get; set; }
 		public string Password { get; set; }
 		public string NewEmail { get; set; }
 		public string NewPassword { get; set; }
+		public string Otp { get; set; }
 
 		public AdminUserUpdatePasswordRequestBuilder()
 			: base("adminuser", "updatePassword")
 		{
 		}
 
-		public AdminUserUpdatePasswordRequestBuilder(string email, string password, string newEmail, string newPassword)
+		public AdminUserUpdatePasswordRequestBuilder(string email, string password, string newEmail, string newPassword, string otp)
 			: this()
 		{
 			this.Email = email;
 			this.Password = password;
 			this.NewEmail = newEmail;
 			this.NewPassword = newPassword;
+			this.Otp = otp;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -207,6 +210,8 @@ namespace Kaltura.Services
 				kparams.AddIfNotNull("newEmail", NewEmail);
 			if (!isMapped("newPassword"))
 				kparams.AddIfNotNull("newPassword", NewPassword);
+			if (!isMapped("otp"))
+				kparams.AddIfNotNull("otp", Otp);
 			return kparams;
 		}
 
@@ -244,9 +249,9 @@ namespace Kaltura.Services
 			return new AdminUserSetInitialPasswordRequestBuilder(hashKey, newPassword);
 		}
 
-		public static AdminUserUpdatePasswordRequestBuilder UpdatePassword(string email, string password, string newEmail = "", string newPassword = "")
+		public static AdminUserUpdatePasswordRequestBuilder UpdatePassword(string email, string password, string newEmail = "", string newPassword = "", string otp = null)
 		{
-			return new AdminUserUpdatePasswordRequestBuilder(email, password, newEmail, newPassword);
+			return new AdminUserUpdatePasswordRequestBuilder(email, password, newEmail, newPassword, otp);
 		}
 	}
 }

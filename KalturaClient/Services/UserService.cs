@@ -927,6 +927,7 @@ namespace Kaltura.Services
 		public const string NEW_PASSWORD = "newPassword";
 		public const string NEW_FIRST_NAME = "newFirstName";
 		public const string NEW_LAST_NAME = "newLastName";
+		public const string OTP = "otp";
 		#endregion
 
 		public string OldLoginId { get; set; }
@@ -935,13 +936,14 @@ namespace Kaltura.Services
 		public string NewPassword { get; set; }
 		public string NewFirstName { get; set; }
 		public string NewLastName { get; set; }
+		public string Otp { get; set; }
 
 		public UserUpdateLoginDataRequestBuilder()
 			: base("user", "updateLoginData")
 		{
 		}
 
-		public UserUpdateLoginDataRequestBuilder(string oldLoginId, string password, string newLoginId, string newPassword, string newFirstName, string newLastName)
+		public UserUpdateLoginDataRequestBuilder(string oldLoginId, string password, string newLoginId, string newPassword, string newFirstName, string newLastName, string otp)
 			: this()
 		{
 			this.OldLoginId = oldLoginId;
@@ -950,6 +952,7 @@ namespace Kaltura.Services
 			this.NewPassword = newPassword;
 			this.NewFirstName = newFirstName;
 			this.NewLastName = newLastName;
+			this.Otp = otp;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -967,6 +970,8 @@ namespace Kaltura.Services
 				kparams.AddIfNotNull("newFirstName", NewFirstName);
 			if (!isMapped("newLastName"))
 				kparams.AddIfNotNull("newLastName", NewLastName);
+			if (!isMapped("otp"))
+				kparams.AddIfNotNull("otp", Otp);
 			return kparams;
 		}
 
@@ -1089,9 +1094,9 @@ namespace Kaltura.Services
 			return new UserUpdateRequestBuilder(userId, user);
 		}
 
-		public static UserUpdateLoginDataRequestBuilder UpdateLoginData(string oldLoginId, string password, string newLoginId = "", string newPassword = "", string newFirstName = null, string newLastName = null)
+		public static UserUpdateLoginDataRequestBuilder UpdateLoginData(string oldLoginId, string password, string newLoginId = "", string newPassword = "", string newFirstName = null, string newLastName = null, string otp = null)
 		{
-			return new UserUpdateLoginDataRequestBuilder(oldLoginId, password, newLoginId, newPassword, newFirstName, newLastName);
+			return new UserUpdateLoginDataRequestBuilder(oldLoginId, password, newLoginId, newPassword, newFirstName, newLastName, otp);
 		}
 	}
 }

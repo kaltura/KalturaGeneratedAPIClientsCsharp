@@ -62,6 +62,7 @@ namespace Kaltura.Types
 		public const string RECOMMENDED_STORAGE_PROFILE_FOR_DOWNLOAD = "recommendedStorageProfileForDownload";
 		public const string RECOMMENDED_DC_FOR_DOWNLOAD = "recommendedDcForDownload";
 		public const string RECOMMENDED_DC_FOR_EXECUTE = "recommendedDcForExecute";
+		public const string DISTRIBUTE_TRIGGER = "distributeTrigger";
 		#endregion
 
 		#region Private Fields
@@ -89,6 +90,7 @@ namespace Kaltura.Types
 		private int _RecommendedStorageProfileForDownload = Int32.MinValue;
 		private int _RecommendedDcForDownload = Int32.MinValue;
 		private int _RecommendedDcForExecute = Int32.MinValue;
+		private DistributeTrigger _DistributeTrigger = (DistributeTrigger)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -332,6 +334,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecommendedDcForExecute");
 			}
 		}
+		[JsonProperty]
+		public DistributeTrigger DistributeTrigger
+		{
+			get { return _DistributeTrigger; }
+			set 
+			{ 
+				_DistributeTrigger = value;
+				OnPropertyChanged("DistributeTrigger");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -453,6 +465,10 @@ namespace Kaltura.Types
 			{
 				this._RecommendedDcForExecute = ParseInt(node["recommendedDcForExecute"].Value<string>());
 			}
+			if(node["distributeTrigger"] != null)
+			{
+				this._DistributeTrigger = (DistributeTrigger)ParseEnum(typeof(DistributeTrigger), node["distributeTrigger"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -486,6 +502,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("recommendedStorageProfileForDownload", this._RecommendedStorageProfileForDownload);
 			kparams.AddIfNotNull("recommendedDcForDownload", this._RecommendedDcForDownload);
 			kparams.AddIfNotNull("recommendedDcForExecute", this._RecommendedDcForExecute);
+			kparams.AddIfNotNull("distributeTrigger", this._DistributeTrigger);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -540,6 +557,8 @@ namespace Kaltura.Types
 					return "RecommendedDcForDownload";
 				case RECOMMENDED_DC_FOR_EXECUTE:
 					return "RecommendedDcForExecute";
+				case DISTRIBUTE_TRIGGER:
+					return "DistributeTrigger";
 				default:
 					return base.getPropertyName(apiName);
 			}

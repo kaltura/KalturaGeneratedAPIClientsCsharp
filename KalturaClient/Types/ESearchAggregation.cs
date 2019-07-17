@@ -35,34 +35,22 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class ESearchEntryResponse : ESearchResponse
+	public class ESearchAggregation : ObjectBase
 	{
 		#region Constants
-		public const string OBJECTS = "objects";
 		public const string AGGREGATIONS = "aggregations";
 		#endregion
 
 		#region Private Fields
-		private IList<ESearchEntryResult> _Objects;
-		private IList<ESearchAggregationResponseItem> _Aggregations;
+		private IList<ESearchAggregationItem> _Aggregations;
 		#endregion
 
 		#region Properties
 		[JsonProperty]
-		public IList<ESearchEntryResult> Objects
-		{
-			get { return _Objects; }
-			private set 
-			{ 
-				_Objects = value;
-				OnPropertyChanged("Objects");
-			}
-		}
-		[JsonProperty]
-		public IList<ESearchAggregationResponseItem> Aggregations
+		public IList<ESearchAggregationItem> Aggregations
 		{
 			get { return _Aggregations; }
-			private set 
+			set 
 			{ 
 				_Aggregations = value;
 				OnPropertyChanged("Aggregations");
@@ -71,26 +59,18 @@ namespace Kaltura.Types
 		#endregion
 
 		#region CTor
-		public ESearchEntryResponse()
+		public ESearchAggregation()
 		{
 		}
 
-		public ESearchEntryResponse(JToken node) : base(node)
+		public ESearchAggregation(JToken node) : base(node)
 		{
-			if(node["objects"] != null)
-			{
-				this._Objects = new List<ESearchEntryResult>();
-				foreach(var arrayNode in node["objects"].Children())
-				{
-					this._Objects.Add(ObjectFactory.Create<ESearchEntryResult>(arrayNode));
-				}
-			}
 			if(node["aggregations"] != null)
 			{
-				this._Aggregations = new List<ESearchAggregationResponseItem>();
+				this._Aggregations = new List<ESearchAggregationItem>();
 				foreach(var arrayNode in node["aggregations"].Children())
 				{
-					this._Aggregations.Add(ObjectFactory.Create<ESearchAggregationResponseItem>(arrayNode));
+					this._Aggregations.Add(ObjectFactory.Create<ESearchAggregationItem>(arrayNode));
 				}
 			}
 		}
@@ -101,8 +81,7 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaESearchEntryResponse");
-			kparams.AddIfNotNull("objects", this._Objects);
+				kparams.AddReplace("objectType", "KalturaESearchAggregation");
 			kparams.AddIfNotNull("aggregations", this._Aggregations);
 			return kparams;
 		}
@@ -110,8 +89,6 @@ namespace Kaltura.Types
 		{
 			switch(apiName)
 			{
-				case OBJECTS:
-					return "Objects";
 				case AGGREGATIONS:
 					return "Aggregations";
 				default:

@@ -45,6 +45,10 @@ namespace Kaltura.Types
 		public const string METADATA_XSLT = "metadataXslt";
 		public const string METADATA_XPATHS_TRIGGER_UPDATE = "metadataXpathsTriggerUpdate";
 		public const string DISTRIBUTE_CAPTIONS = "distributeCaptions";
+		public const string DESIGNATED_CATEGORIES = "designatedCategories";
+		public const string DISTRIBUTE_CATEGORIES = "distributeCategories";
+		public const string COLLABORATORS_CUSTOM_METADATA_PROFILE_ID = "collaboratorsCustomMetadataProfileId";
+		public const string COLLABORATORS_FROM_CUSTOM_METADATA_PROFILE = "collaboratorsFromCustomMetadataProfile";
 		public const string DISTRIBUTE_CUE_POINTS = "distributeCuePoints";
 		public const string DISTRIBUTE_REMOTE_FLAVOR_ASSET_CONTENT = "distributeRemoteFlavorAssetContent";
 		public const string DISTRIBUTE_REMOTE_THUMB_ASSET_CONTENT = "distributeRemoteThumbAssetContent";
@@ -56,6 +60,7 @@ namespace Kaltura.Types
 		public const string MAP_FLAVOR_PARAMS_IDS = "mapFlavorParamsIds";
 		public const string MAP_THUMB_PARAMS_IDS = "mapThumbParamsIds";
 		public const string MAP_CAPTION_PARAMS_IDS = "mapCaptionParamsIds";
+		public const string MAP_ATTACHMENT_PARAMS_IDS = "mapAttachmentParamsIds";
 		#endregion
 
 		#region Private Fields
@@ -66,6 +71,10 @@ namespace Kaltura.Types
 		private string _MetadataXslt = null;
 		private IList<StringValue> _MetadataXpathsTriggerUpdate;
 		private bool? _DistributeCaptions = null;
+		private string _DesignatedCategories = null;
+		private bool? _DistributeCategories = null;
+		private string _CollaboratorsCustomMetadataProfileId = null;
+		private bool? _CollaboratorsFromCustomMetadataProfile = null;
 		private bool? _DistributeCuePoints = null;
 		private bool? _DistributeRemoteFlavorAssetContent = null;
 		private bool? _DistributeRemoteThumbAssetContent = null;
@@ -77,6 +86,7 @@ namespace Kaltura.Types
 		private IList<KeyValue> _MapFlavorParamsIds;
 		private IList<KeyValue> _MapThumbParamsIds;
 		private IList<KeyValue> _MapCaptionParamsIds;
+		private IList<KeyValue> _MapAttachmentParamsIds;
 		#endregion
 
 		#region Properties
@@ -148,6 +158,46 @@ namespace Kaltura.Types
 			{ 
 				_DistributeCaptions = value;
 				OnPropertyChanged("DistributeCaptions");
+			}
+		}
+		[JsonProperty]
+		public string DesignatedCategories
+		{
+			get { return _DesignatedCategories; }
+			set 
+			{ 
+				_DesignatedCategories = value;
+				OnPropertyChanged("DesignatedCategories");
+			}
+		}
+		[JsonProperty]
+		public bool? DistributeCategories
+		{
+			get { return _DistributeCategories; }
+			set 
+			{ 
+				_DistributeCategories = value;
+				OnPropertyChanged("DistributeCategories");
+			}
+		}
+		[JsonProperty]
+		public string CollaboratorsCustomMetadataProfileId
+		{
+			get { return _CollaboratorsCustomMetadataProfileId; }
+			set 
+			{ 
+				_CollaboratorsCustomMetadataProfileId = value;
+				OnPropertyChanged("CollaboratorsCustomMetadataProfileId");
+			}
+		}
+		[JsonProperty]
+		public bool? CollaboratorsFromCustomMetadataProfile
+		{
+			get { return _CollaboratorsFromCustomMetadataProfile; }
+			set 
+			{ 
+				_CollaboratorsFromCustomMetadataProfile = value;
+				OnPropertyChanged("CollaboratorsFromCustomMetadataProfile");
 			}
 		}
 		[JsonProperty]
@@ -260,6 +310,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("MapCaptionParamsIds");
 			}
 		}
+		[JsonProperty]
+		public IList<KeyValue> MapAttachmentParamsIds
+		{
+			get { return _MapAttachmentParamsIds; }
+			set 
+			{ 
+				_MapAttachmentParamsIds = value;
+				OnPropertyChanged("MapAttachmentParamsIds");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -300,6 +360,22 @@ namespace Kaltura.Types
 			if(node["distributeCaptions"] != null)
 			{
 				this._DistributeCaptions = ParseBool(node["distributeCaptions"].Value<string>());
+			}
+			if(node["designatedCategories"] != null)
+			{
+				this._DesignatedCategories = node["designatedCategories"].Value<string>();
+			}
+			if(node["distributeCategories"] != null)
+			{
+				this._DistributeCategories = ParseBool(node["distributeCategories"].Value<string>());
+			}
+			if(node["collaboratorsCustomMetadataProfileId"] != null)
+			{
+				this._CollaboratorsCustomMetadataProfileId = node["collaboratorsCustomMetadataProfileId"].Value<string>();
+			}
+			if(node["collaboratorsFromCustomMetadataProfile"] != null)
+			{
+				this._CollaboratorsFromCustomMetadataProfile = ParseBool(node["collaboratorsFromCustomMetadataProfile"].Value<string>());
 			}
 			if(node["distributeCuePoints"] != null)
 			{
@@ -373,6 +449,14 @@ namespace Kaltura.Types
 					this._MapCaptionParamsIds.Add(ObjectFactory.Create<KeyValue>(arrayNode));
 				}
 			}
+			if(node["mapAttachmentParamsIds"] != null)
+			{
+				this._MapAttachmentParamsIds = new List<KeyValue>();
+				foreach(var arrayNode in node["mapAttachmentParamsIds"].Children())
+				{
+					this._MapAttachmentParamsIds.Add(ObjectFactory.Create<KeyValue>(arrayNode));
+				}
+			}
 		}
 		#endregion
 
@@ -389,6 +473,10 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("metadataXslt", this._MetadataXslt);
 			kparams.AddIfNotNull("metadataXpathsTriggerUpdate", this._MetadataXpathsTriggerUpdate);
 			kparams.AddIfNotNull("distributeCaptions", this._DistributeCaptions);
+			kparams.AddIfNotNull("designatedCategories", this._DesignatedCategories);
+			kparams.AddIfNotNull("distributeCategories", this._DistributeCategories);
+			kparams.AddIfNotNull("collaboratorsCustomMetadataProfileId", this._CollaboratorsCustomMetadataProfileId);
+			kparams.AddIfNotNull("collaboratorsFromCustomMetadataProfile", this._CollaboratorsFromCustomMetadataProfile);
 			kparams.AddIfNotNull("distributeCuePoints", this._DistributeCuePoints);
 			kparams.AddIfNotNull("distributeRemoteFlavorAssetContent", this._DistributeRemoteFlavorAssetContent);
 			kparams.AddIfNotNull("distributeRemoteThumbAssetContent", this._DistributeRemoteThumbAssetContent);
@@ -400,6 +488,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("mapFlavorParamsIds", this._MapFlavorParamsIds);
 			kparams.AddIfNotNull("mapThumbParamsIds", this._MapThumbParamsIds);
 			kparams.AddIfNotNull("mapCaptionParamsIds", this._MapCaptionParamsIds);
+			kparams.AddIfNotNull("mapAttachmentParamsIds", this._MapAttachmentParamsIds);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -420,6 +509,14 @@ namespace Kaltura.Types
 					return "MetadataXpathsTriggerUpdate";
 				case DISTRIBUTE_CAPTIONS:
 					return "DistributeCaptions";
+				case DESIGNATED_CATEGORIES:
+					return "DesignatedCategories";
+				case DISTRIBUTE_CATEGORIES:
+					return "DistributeCategories";
+				case COLLABORATORS_CUSTOM_METADATA_PROFILE_ID:
+					return "CollaboratorsCustomMetadataProfileId";
+				case COLLABORATORS_FROM_CUSTOM_METADATA_PROFILE:
+					return "CollaboratorsFromCustomMetadataProfile";
 				case DISTRIBUTE_CUE_POINTS:
 					return "DistributeCuePoints";
 				case DISTRIBUTE_REMOTE_FLAVOR_ASSET_CONTENT:
@@ -442,6 +539,8 @@ namespace Kaltura.Types
 					return "MapThumbParamsIds";
 				case MAP_CAPTION_PARAMS_IDS:
 					return "MapCaptionParamsIds";
+				case MAP_ATTACHMENT_PARAMS_IDS:
+					return "MapAttachmentParamsIds";
 				default:
 					return base.getPropertyName(apiName);
 			}

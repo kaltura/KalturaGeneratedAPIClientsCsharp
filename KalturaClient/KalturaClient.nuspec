@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Kaltura.Client</id>
-    <version>15.4.0</version>
+    <version>15.5.0</version>
     <authors>Johnathan Amit-Kanarek, Arthur Vaverko, Jess Portnoy</authors>
     <owners>Johnathan Amit-Kanarek</owners>
     <projectUrl>https://github.com/kaltura/KalturaGeneratedAPIClientsCsharp</projectUrl>

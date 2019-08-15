@@ -40,11 +40,13 @@ namespace Kaltura.Types
 		#region Constants
 		public const string SOURCE_LANGUAGE = "sourceLanguage";
 		public const string FLAVOR_PARAMS_ID = "flavorParamsId";
+		public const string CLEAR_AUDIO_FLAVOR_PARAMS_ID = "clearAudioFlavorParamsId";
 		#endregion
 
 		#region Private Fields
 		private CatalogItemLanguage _SourceLanguage = null;
 		private int _FlavorParamsId = Int32.MinValue;
+		private int _ClearAudioFlavorParamsId = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -68,6 +70,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsId");
 			}
 		}
+		[JsonProperty]
+		public int ClearAudioFlavorParamsId
+		{
+			get { return _ClearAudioFlavorParamsId; }
+			set 
+			{ 
+				_ClearAudioFlavorParamsId = value;
+				OnPropertyChanged("ClearAudioFlavorParamsId");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -85,6 +97,10 @@ namespace Kaltura.Types
 			{
 				this._FlavorParamsId = ParseInt(node["flavorParamsId"].Value<string>());
 			}
+			if(node["clearAudioFlavorParamsId"] != null)
+			{
+				this._ClearAudioFlavorParamsId = ParseInt(node["clearAudioFlavorParamsId"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -96,6 +112,7 @@ namespace Kaltura.Types
 				kparams.AddReplace("objectType", "KalturaVendorAudioDescriptionCatalogItem");
 			kparams.AddIfNotNull("sourceLanguage", this._SourceLanguage);
 			kparams.AddIfNotNull("flavorParamsId", this._FlavorParamsId);
+			kparams.AddIfNotNull("clearAudioFlavorParamsId", this._ClearAudioFlavorParamsId);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -106,6 +123,8 @@ namespace Kaltura.Types
 					return "SourceLanguage";
 				case FLAVOR_PARAMS_ID:
 					return "FlavorParamsId";
+				case CLEAR_AUDIO_FLAVOR_PARAMS_ID:
+					return "ClearAudioFlavorParamsId";
 				default:
 					return base.getPropertyName(apiName);
 			}

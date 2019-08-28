@@ -88,6 +88,27 @@ namespace Kaltura.Enums
 		public static readonly ReportType PLATFORMS_DISCOVERY_REALTIME = new ReportType("10010");
 		public static readonly ReportType PLAYBACK_TYPE_REALTIME = new ReportType("10011");
 		public static readonly ReportType CONTENT_REALTIME = new ReportType("10012");
+		public static readonly ReportType CONTENT_DROPOFF_VPAAS = new ReportType("20001");
+		public static readonly ReportType TOP_SYNDICATION_VPAAS = new ReportType("20002");
+		public static readonly ReportType USER_TOP_CONTENT_VPAAS = new ReportType("20003");
+		public static readonly ReportType USER_USAGE_VPAAS = new ReportType("20004");
+		public static readonly ReportType PLATFORMS_VPAAS = new ReportType("20005");
+		public static readonly ReportType OPERATING_SYSTEM_VPAAS = new ReportType("20006");
+		public static readonly ReportType BROWSERS_VPAAS = new ReportType("20007");
+		public static readonly ReportType OPERATING_SYSTEM_FAMILIES_VPAAS = new ReportType("20008");
+		public static readonly ReportType BROWSERS_FAMILIES_VPAAS = new ReportType("20009");
+		public static readonly ReportType USER_ENGAGEMENT_TIMELINE_VPAAS = new ReportType("20010");
+		public static readonly ReportType UNIQUE_USERS_PLAY_VPAAS = new ReportType("20011");
+		public static readonly ReportType MAP_OVERLAY_COUNTRY_VPAAS = new ReportType("20012");
+		public static readonly ReportType MAP_OVERLAY_REGION_VPAAS = new ReportType("20013");
+		public static readonly ReportType MAP_OVERLAY_CITY_VPAAS = new ReportType("20014");
+		public static readonly ReportType TOP_CONTENT_CREATOR_VPAAS = new ReportType("20015");
+		public static readonly ReportType TOP_CONTENT_CONTRIBUTORS_VPAAS = new ReportType("20016");
+		public static readonly ReportType TOP_SOURCES_VPAAS = new ReportType("20017");
+		public static readonly ReportType CONTENT_REPORT_REASONS_VPAAS = new ReportType("20018");
+		public static readonly ReportType PLAYER_RELATED_INTERACTIONS_VPAAS = new ReportType("20019");
+		public static readonly ReportType PLAYBACK_RATE_VPAAS = new ReportType("20020");
+		public static readonly ReportType PARTNER_USAGE_VPAAS = new ReportType("20021");
 
 		private ReportType(string name) : base(name) { }
 	}

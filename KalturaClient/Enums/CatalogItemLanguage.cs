@@ -40,9 +40,12 @@ namespace Kaltura.Enums
 		public static readonly CatalogItemLanguage FI = new CatalogItemLanguage("Finnish");
 		public static readonly CatalogItemLanguage FR = new CatalogItemLanguage("French");
 		public static readonly CatalogItemLanguage DE = new CatalogItemLanguage("German");
+		public static readonly CatalogItemLanguage EL = new CatalogItemLanguage("Greek");
 		public static readonly CatalogItemLanguage HE = new CatalogItemLanguage("Hebrew");
 		public static readonly CatalogItemLanguage HI = new CatalogItemLanguage("Hindi");
 		public static readonly CatalogItemLanguage IS = new CatalogItemLanguage("Icelandic");
+		public static readonly CatalogItemLanguage IN = new CatalogItemLanguage("Indonesian");
+		public static readonly CatalogItemLanguage ID = new CatalogItemLanguage("Indonesian");
 		public static readonly CatalogItemLanguage IT = new CatalogItemLanguage("Italian");
 		public static readonly CatalogItemLanguage JA = new CatalogItemLanguage("Japanese");
 		public static readonly CatalogItemLanguage KO = new CatalogItemLanguage("Korean");
@@ -50,6 +53,7 @@ namespace Kaltura.Enums
 		public static readonly CatalogItemLanguage NO = new CatalogItemLanguage("Norwegian");
 		public static readonly CatalogItemLanguage PL = new CatalogItemLanguage("Polish");
 		public static readonly CatalogItemLanguage PT = new CatalogItemLanguage("Portuguese");
+		public static readonly CatalogItemLanguage RO = new CatalogItemLanguage("Romanian");
 		public static readonly CatalogItemLanguage RU = new CatalogItemLanguage("Russian");
 		public static readonly CatalogItemLanguage ES = new CatalogItemLanguage("Spanish");
 		public static readonly CatalogItemLanguage SV = new CatalogItemLanguage("Swedish");

@@ -43,9 +43,9 @@ namespace Kaltura.Enums
 		public static readonly CatalogItemLanguage EL = new CatalogItemLanguage("Greek");
 		public static readonly CatalogItemLanguage HE = new CatalogItemLanguage("Hebrew");
 		public static readonly CatalogItemLanguage HI = new CatalogItemLanguage("Hindi");
+		public static readonly CatalogItemLanguage HU = new CatalogItemLanguage("Hungarian");
 		public static readonly CatalogItemLanguage IS = new CatalogItemLanguage("Icelandic");
 		public static readonly CatalogItemLanguage IN = new CatalogItemLanguage("Indonesian");
-		public static readonly CatalogItemLanguage ID = new CatalogItemLanguage("Indonesian");
 		public static readonly CatalogItemLanguage IT = new CatalogItemLanguage("Italian");
 		public static readonly CatalogItemLanguage JA = new CatalogItemLanguage("Japanese");
 		public static readonly CatalogItemLanguage KO = new CatalogItemLanguage("Korean");

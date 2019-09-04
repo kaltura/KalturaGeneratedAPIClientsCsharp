@@ -48,6 +48,7 @@ namespace Kaltura.Types
 		public const string PARENT_ID = "parentId";
 		public const string ACCURACY = "accuracy";
 		public const string DISPLAY_ON_PLAYER = "displayOnPlayer";
+		public const string ASSOCIATED_TRANSCRIPT_IDS = "associatedTranscriptIds";
 		#endregion
 
 		#region Private Fields
@@ -61,6 +62,7 @@ namespace Kaltura.Types
 		private string _ParentId = null;
 		private int _Accuracy = Int32.MinValue;
 		private bool? _DisplayOnPlayer = null;
+		private string _AssociatedTranscriptIds = null;
 		#endregion
 
 		#region Properties
@@ -164,6 +166,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("DisplayOnPlayer");
 			}
 		}
+		[JsonProperty]
+		public string AssociatedTranscriptIds
+		{
+			get { return _AssociatedTranscriptIds; }
+			set 
+			{ 
+				_AssociatedTranscriptIds = value;
+				OnPropertyChanged("AssociatedTranscriptIds");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -213,6 +225,10 @@ namespace Kaltura.Types
 			{
 				this._DisplayOnPlayer = ParseBool(node["displayOnPlayer"].Value<string>());
 			}
+			if(node["associatedTranscriptIds"] != null)
+			{
+				this._AssociatedTranscriptIds = node["associatedTranscriptIds"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -232,6 +248,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("parentId", this._ParentId);
 			kparams.AddIfNotNull("accuracy", this._Accuracy);
 			kparams.AddIfNotNull("displayOnPlayer", this._DisplayOnPlayer);
+			kparams.AddIfNotNull("associatedTranscriptIds", this._AssociatedTranscriptIds);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -258,6 +275,8 @@ namespace Kaltura.Types
 					return "Accuracy";
 				case DISPLAY_ON_PLAYER:
 					return "DisplayOnPlayer";
+				case ASSOCIATED_TRANSCRIPT_IDS:
+					return "AssociatedTranscriptIds";
 				default:
 					return base.getPropertyName(apiName);
 			}

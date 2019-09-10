@@ -75,6 +75,8 @@ namespace Kaltura.Enums
 		public static readonly ReportType CONTENT_REPORT_REASONS = new ReportType("44");
 		public static readonly ReportType PLAYER_RELATED_INTERACTIONS = new ReportType("45");
 		public static readonly ReportType PLAYBACK_RATE = new ReportType("46");
+		public static readonly ReportType TOP_USER_CONTENT = new ReportType("47");
+		public static readonly ReportType USER_HIGHLIGHTS = new ReportType("48");
 		public static readonly ReportType PARTNER_USAGE = new ReportType("201");
 		public static readonly ReportType MAP_OVERLAY_COUNTRY_REALTIME = new ReportType("10001");
 		public static readonly ReportType MAP_OVERLAY_REGION_REALTIME = new ReportType("10002");

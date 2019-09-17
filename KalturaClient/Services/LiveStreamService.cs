@@ -134,6 +134,50 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class LiveStreamAllocateConferenceRoomRequestBuilder : RequestBuilder<RoomDetails>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string ENV = "env";
+		#endregion
+
+		public string EntryId { get; set; }
+		public string Env { get; set; }
+
+		public LiveStreamAllocateConferenceRoomRequestBuilder()
+			: base("livestream", "allocateConferenceRoom")
+		{
+		}
+
+		public LiveStreamAllocateConferenceRoomRequestBuilder(string entryId, string env)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.Env = env;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("env"))
+				kparams.AddIfNotNull("env", Env);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			return ObjectFactory.Create<RoomDetails>(result);
+		}
+	}
+
 	public class LiveStreamAppendRecordingRequestBuilder : RequestBuilder<LiveEntry>
 	{
 		#region Constants
@@ -394,6 +438,52 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class LiveStreamFinishConfRequestBuilder : RequestBuilder<bool>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		public const string SERVER_NODE_ID = "serverNodeId";
+		#endregion
+
+		public string EntryId { get; set; }
+		public int ServerNodeId { get; set; }
+
+		public LiveStreamFinishConfRequestBuilder()
+			: base("livestream", "finishConf")
+		{
+		}
+
+		public LiveStreamFinishConfRequestBuilder(string entryId, int serverNodeId)
+			: this()
+		{
+			this.EntryId = entryId;
+			this.ServerNodeId = serverNodeId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("serverNodeId"))
+				kparams.AddIfNotNull("serverNodeId", ServerNodeId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			if (result.Value<string>().Equals("1") || result.Value<string>().ToLower().Equals("true"))
+				return true;
+			return false;
+		}
+	}
+
 	public class LiveStreamGetRequestBuilder : RequestBuilder<LiveStreamEntry>
 	{
 		#region Constants
@@ -564,6 +654,47 @@ namespace Kaltura.Services
 		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<LiveEntry>(result);
+		}
+	}
+
+	public class LiveStreamRegisterConfRequestBuilder : RequestBuilder<bool>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		#endregion
+
+		public string EntryId { get; set; }
+
+		public LiveStreamRegisterConfRequestBuilder()
+			: base("livestream", "registerConf")
+		{
+		}
+
+		public LiveStreamRegisterConfRequestBuilder(string entryId)
+			: this()
+		{
+			this.EntryId = entryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			if (result.Value<string>().Equals("1") || result.Value<string>().ToLower().Equals("true"))
+				return true;
+			return false;
 		}
 	}
 
@@ -976,6 +1107,11 @@ namespace Kaltura.Services
 			return new LiveStreamAddLiveStreamPushPublishConfigurationRequestBuilder(entryId, protocol, url, liveStreamConfiguration);
 		}
 
+		public static LiveStreamAllocateConferenceRoomRequestBuilder AllocateConferenceRoom(string entryId, string env = "")
+		{
+			return new LiveStreamAllocateConferenceRoomRequestBuilder(entryId, env);
+		}
+
 		public static LiveStreamAppendRecordingRequestBuilder AppendRecording(string entryId, string assetId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, float duration, bool isLastChunk = false)
 		{
 			return new LiveStreamAppendRecordingRequestBuilder(entryId, assetId, mediaServerIndex, resource, duration, isLastChunk);
@@ -1001,6 +1137,11 @@ namespace Kaltura.Services
 			return new LiveStreamDeleteRequestBuilder(entryId);
 		}
 
+		public static LiveStreamFinishConfRequestBuilder FinishConf(string entryId, int serverNodeId = Int32.MinValue)
+		{
+			return new LiveStreamFinishConfRequestBuilder(entryId, serverNodeId);
+		}
+
 		public static LiveStreamGetRequestBuilder Get(string entryId, int version = -1)
 		{
 			return new LiveStreamGetRequestBuilder(entryId, version);
@@ -1019,6 +1160,11 @@ namespace Kaltura.Services
 		public static LiveStreamRegenerateStreamTokenRequestBuilder RegenerateStreamToken(string entryId)
 		{
 			return new LiveStreamRegenerateStreamTokenRequestBuilder(entryId);
+		}
+
+		public static LiveStreamRegisterConfRequestBuilder RegisterConf(string entryId)
+		{
+			return new LiveStreamRegisterConfRequestBuilder(entryId);
 		}
 
 		public static LiveStreamRegisterMediaServerRequestBuilder RegisterMediaServer(string entryId, string hostname, EntryServerNodeType mediaServerIndex, string applicationName = null, EntryServerNodeStatus liveEntryStatus = (EntryServerNodeStatus)(1), bool shouldCreateRecordedEntry = true)

@@ -38,12 +38,24 @@ namespace Kaltura.Types
 	public class LiveEntryServerNodeFilter : LiveEntryServerNodeBaseFilter
 	{
 		#region Constants
+		public new const string ORDER_BY = "orderBy";
 		#endregion
 
 		#region Private Fields
+		private LiveEntryServerNodeOrderBy _OrderBy = null;
 		#endregion
 
 		#region Properties
+		[JsonProperty]
+		public new LiveEntryServerNodeOrderBy OrderBy
+		{
+			get { return _OrderBy; }
+			set 
+			{ 
+				_OrderBy = value;
+				OnPropertyChanged("OrderBy");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -53,6 +65,10 @@ namespace Kaltura.Types
 
 		public LiveEntryServerNodeFilter(JToken node) : base(node)
 		{
+			if(node["orderBy"] != null)
+			{
+				this._OrderBy = (LiveEntryServerNodeOrderBy)StringEnum.Parse(typeof(LiveEntryServerNodeOrderBy), node["orderBy"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -62,12 +78,15 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaLiveEntryServerNodeFilter");
+			kparams.AddIfNotNull("orderBy", this._OrderBy);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
+				case ORDER_BY:
+					return "OrderBy";
 				default:
 					return base.getPropertyName(apiName);
 			}

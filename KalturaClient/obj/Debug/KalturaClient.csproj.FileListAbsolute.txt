@@ -1,0 +1,9 @@
+C:\Code\others\clients-generator\KalturaClient_OVP\csharp\KalturaClient\bin\Debug\KalturaClient.dll
+C:\Code\others\clients-generator\KalturaClient_OVP\csharp\KalturaClient\bin\Debug\KalturaClient.pdb
+C:\Code\others\clients-generator\KalturaClient_OVP\csharp\KalturaClient\bin\Debug\Newtonsoft.Json.dll
+C:\Code\others\clients-generator\KalturaClient_OVP\csharp\KalturaClient\bin\Debug\Newtonsoft.Json.xml
+C:\Code\others\clients-generator\KalturaClient_OVP\csharp\KalturaClient\obj\Debug\KalturaClient.csprojAssemblyReference.cache
+C:\Code\others\clients-generator\KalturaClient_OVP\csharp\KalturaClient\obj\Debug\KalturaClient.csproj.CoreCompileInputs.cache
+C:\Code\others\clients-generator\KalturaClient_OVP\csharp\KalturaClient\obj\Debug\KalturaClient.csproj.CopyComplete
+C:\Code\others\clients-generator\KalturaClient_OVP\csharp\KalturaClient\obj\Debug\KalturaClient.dll
+C:\Code\others\clients-generator\KalturaClient_OVP\csharp\KalturaClient\obj\Debug\KalturaClient.pdb

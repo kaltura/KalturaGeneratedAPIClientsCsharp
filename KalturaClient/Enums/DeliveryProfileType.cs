@@ -31,7 +31,11 @@ namespace Kaltura.Enums
 	{
 		public static readonly DeliveryProfileType EDGE_CAST_HTTP = new DeliveryProfileType("edgeCast.EDGE_CAST_HTTP");
 		public static readonly DeliveryProfileType EDGE_CAST_RTMP = new DeliveryProfileType("edgeCast.EDGE_CAST_RTMP");
+		public static readonly DeliveryProfileType FORENSIC_WATERMARK_APPLE_HTTP = new DeliveryProfileType("forensicWatermark.FORENSIC_WATERMARK_APPLE_HTTP");
+		public static readonly DeliveryProfileType FORENSIC_WATERMARK_DASH = new DeliveryProfileType("forensicWatermark.FORENSIC_WATERMARK_DASH");
 		public static readonly DeliveryProfileType KONTIKI_HTTP = new DeliveryProfileType("kontiki.KONTIKI_HTTP");
+		public static readonly DeliveryProfileType UPLYNK_HTTP = new DeliveryProfileType("uplynk.UPLYNK_HTTP");
+		public static readonly DeliveryProfileType UPLYNK_RTMP = new DeliveryProfileType("uplynk.UPLYNK_RTMP");
 		public static readonly DeliveryProfileType VELOCIX_HDS = new DeliveryProfileType("velocix.VELOCIX_HDS");
 		public static readonly DeliveryProfileType VELOCIX_HLS = new DeliveryProfileType("velocix.VELOCIX_HLS");
 		public static readonly DeliveryProfileType APPLE_HTTP = new DeliveryProfileType("1");

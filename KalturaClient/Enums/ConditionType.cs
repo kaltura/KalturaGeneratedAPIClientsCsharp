@@ -29,6 +29,7 @@ namespace Kaltura.Enums
 {
 	public sealed class ConditionType : StringEnum
 	{
+		public static readonly ConditionType ABC_WATERMARK = new ConditionType("abcScreenersWatermarkAccessControl.abcWatermark");
 		public static readonly ConditionType EVENT_NOTIFICATION_FIELD = new ConditionType("eventNotification.BooleanField");
 		public static readonly ConditionType EVENT_NOTIFICATION_OBJECT_CHANGED = new ConditionType("eventNotification.ObjectChanged");
 		public static readonly ConditionType METADATA_FIELD_CHANGED = new ConditionType("metadata.FieldChanged");

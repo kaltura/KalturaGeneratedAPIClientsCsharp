@@ -30,7 +30,9 @@ namespace Kaltura.Enums
 	public sealed class EntryType : StringEnum
 	{
 		public static readonly EntryType AUTOMATIC = new EntryType("-1");
+		public static readonly EntryType CONFERENCE_ENTRY_SERVER = new EntryType("conference.CONFERENCE_ENTRY_SERVER");
 		public static readonly EntryType EXTERNAL_MEDIA = new EntryType("externalMedia.externalMedia");
+		public static readonly EntryType SIP_ENTRY_SERVER = new EntryType("sip.SIP_ENTRY_SERVER");
 		public static readonly EntryType MEDIA_CLIP = new EntryType("1");
 		public static readonly EntryType MIX = new EntryType("2");
 		public static readonly EntryType PLAYLIST = new EntryType("5");

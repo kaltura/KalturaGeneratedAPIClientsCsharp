@@ -70,16 +70,6 @@ namespace Kaltura
 			string className = jToken["objectType"].Value<string>();
 			switch (className)
 			{
-				case "KalturaFileSyncListResponse":
-					return new ListResponse<FileSync>(jToken);
-				case "KalturaBatchJobListResponse":
-					return new ListResponse<BatchJob>(jToken);
-				case "KalturaMediaInfoListResponse":
-					return new ListResponse<MediaInfo>(jToken);
-				case "KalturaFlavorParamsOutputListResponse":
-					return new ListResponse<FlavorParamsOutput>(jToken);
-				case "KalturaThumbParamsOutputListResponse":
-					return new ListResponse<ThumbParamsOutput>(jToken);
 				case "KalturaAccessControlListResponse":
 					return new ListResponse<AccessControl>(jToken);
 				case "KalturaAccessControlProfileListResponse":
@@ -96,6 +86,8 @@ namespace Kaltura
 					return new ListResponse<BaseEntry>(jToken);
 				case "KalturaBaseSyndicationFeedListResponse":
 					return new ListResponse<BaseSyndicationFeed>(jToken);
+				case "KalturaBatchJobListResponse":
+					return new ListResponse<BatchJob>(jToken);
 				case "KalturaBeaconListResponse":
 					return new ListResponse<Beacon>(jToken);
 				case "KalturaBulkUploadListResponse":
@@ -114,8 +106,6 @@ namespace Kaltura
 					return new ListResponse<Category>(jToken);
 				case "KalturaCategoryUserListResponse":
 					return new ListResponse<CategoryUser>(jToken);
-				case "KalturaConfMapsListResponse":
-					return new ListResponse<ConfMaps>(jToken);
 				case "KalturaControlPanelCommandListResponse":
 					return new ListResponse<ControlPanelCommand>(jToken);
 				case "KalturaConversionProfileAssetParamsListResponse":
@@ -158,10 +148,14 @@ namespace Kaltura
 					return new ListResponse<FeatureStatus>(jToken);
 				case "KalturaFileAssetListResponse":
 					return new ListResponse<FileAsset>(jToken);
+				case "KalturaFileSyncListResponse":
+					return new ListResponse<FileSync>(jToken);
 				case "KalturaFlavorAssetListResponse":
 					return new ListResponse<FlavorAsset>(jToken);
 				case "KalturaFlavorParamsListResponse":
 					return new ListResponse<FlavorParams>(jToken);
+				case "KalturaFlavorParamsOutputListResponse":
+					return new ListResponse<FlavorParamsOutput>(jToken);
 				case "KalturaGenericDistributionProviderActionListResponse":
 					return new ListResponse<GenericDistributionProviderAction>(jToken);
 				case "KalturaGenericDistributionProviderListResponse":
@@ -178,6 +172,8 @@ namespace Kaltura
 					return new ListResponse<LiveChannelSegment>(jToken);
 				case "KalturaLiveStreamListResponse":
 					return new ListResponse<LiveStreamEntry>(jToken);
+				case "KalturaMediaInfoListResponse":
+					return new ListResponse<MediaInfo>(jToken);
 				case "KalturaMediaListResponse":
 					return new ListResponse<MediaEntry>(jToken);
 				case "KalturaMetadataListResponse":
@@ -228,22 +224,20 @@ namespace Kaltura
 					return new ListResponse<ServerNode>(jToken);
 				case "KalturaShortLinkListResponse":
 					return new ListResponse<ShortLink>(jToken);
+				case "KalturaSsoListResponse":
+					return new ListResponse<Sso>(jToken);
 				case "KalturaStorageProfileListResponse":
 					return new ListResponse<StorageProfile>(jToken);
-				case "KalturaSystemPartnerUsageListResponse":
-					return new ListResponse<SystemPartnerUsageItem>(jToken);
 				case "KalturaTagListResponse":
 					return new ListResponse<Tag>(jToken);
 				case "KalturaThumbAssetListResponse":
 					return new ListResponse<ThumbAsset>(jToken);
 				case "KalturaThumbParamsListResponse":
 					return new ListResponse<ThumbParams>(jToken);
-				case "KalturaTrackEntryListResponse":
-					return new ListResponse<TrackEntry>(jToken);
+				case "KalturaThumbParamsOutputListResponse":
+					return new ListResponse<ThumbParamsOutput>(jToken);
 				case "KalturaTranscriptAssetListResponse":
 					return new ListResponse<TranscriptAsset>(jToken);
-				case "KalturaUiConfAdminListResponse":
-					return new ListResponse<UiConfAdmin>(jToken);
 				case "KalturaUiConfListResponse":
 					return new ListResponse<UiConf>(jToken);
 				case "KalturaUploadTokenListResponse":

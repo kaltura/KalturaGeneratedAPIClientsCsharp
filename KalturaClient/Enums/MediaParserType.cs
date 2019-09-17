@@ -30,6 +30,7 @@ namespace Kaltura.Enums
 	public sealed class MediaParserType : StringEnum
 	{
 		public static readonly MediaParserType MEDIAINFO = new MediaParserType("0");
+		public static readonly MediaParserType REMOTE_MEDIAINFO = new MediaParserType("remoteMediaInfo.RemoteMediaInfo");
 		public static readonly MediaParserType FFMPEG = new MediaParserType("1");
 
 		private MediaParserType(string name) : base(name) { }

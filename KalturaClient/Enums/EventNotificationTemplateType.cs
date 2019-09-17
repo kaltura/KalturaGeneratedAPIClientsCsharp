@@ -29,6 +29,7 @@ namespace Kaltura.Enums
 {
 	public sealed class EventNotificationTemplateType : StringEnum
 	{
+		public static readonly EventNotificationTemplateType BOOLEAN = new EventNotificationTemplateType("booleanNotification.Boolean");
 		public static readonly EventNotificationTemplateType BPM_ABORT = new EventNotificationTemplateType("businessProcessNotification.BusinessProcessAbort");
 		public static readonly EventNotificationTemplateType BPM_SIGNAL = new EventNotificationTemplateType("businessProcessNotification.BusinessProcessSignal");
 		public static readonly EventNotificationTemplateType BPM_START = new EventNotificationTemplateType("businessProcessNotification.BusinessProcessStart");

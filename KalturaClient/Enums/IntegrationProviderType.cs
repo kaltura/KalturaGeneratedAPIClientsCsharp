@@ -30,6 +30,8 @@ namespace Kaltura.Enums
 	public sealed class IntegrationProviderType : StringEnum
 	{
 		public static readonly IntegrationProviderType CIELO24 = new IntegrationProviderType("cielo24.Cielo24");
+		public static readonly IntegrationProviderType DEXTER = new IntegrationProviderType("dexterIntegration.Dexter");
+		public static readonly IntegrationProviderType EXAMPLE = new IntegrationProviderType("exampleIntegration.Example");
 		public static readonly IntegrationProviderType VOICEBASE = new IntegrationProviderType("voicebase.Voicebase");
 
 		private IntegrationProviderType(string name) : base(name) { }

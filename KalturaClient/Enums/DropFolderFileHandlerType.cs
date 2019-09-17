@@ -29,6 +29,7 @@ namespace Kaltura.Enums
 {
 	public sealed class DropFolderFileHandlerType : StringEnum
 	{
+		public static readonly DropFolderFileHandlerType TR_RDS = new DropFolderFileHandlerType("TrRdsSyncDropFolder.TR_RDS");
 		public static readonly DropFolderFileHandlerType XML = new DropFolderFileHandlerType("dropFolderXmlBulkUpload.XML");
 		public static readonly DropFolderFileHandlerType ICAL = new DropFolderFileHandlerType("scheduleDropFolder.ICAL");
 		public static readonly DropFolderFileHandlerType CONTENT = new DropFolderFileHandlerType("1");

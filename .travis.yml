@@ -1,8 +1,7 @@
 language: csharp
 mono: none
-solution: 
-dotnet: KalturaClient.sln
-  - 2.1.502
+solution: KalturaClient.sln
+dotnet: 2.1.801
 script:
  - dotnet restore
  - dotnet build -c Release

@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\netfx.props" />
-  
+
   <PropertyGroup>
     <RootNamespace>Kaltura</RootNamespace>
     <AssemblyTitle>KalturaClient</AssemblyTitle>
@@ -18,9 +18,13 @@
   <PropertyGroup>
     <LangVersion>6</LangVersion>
   </PropertyGroup>
+  
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="6.0.1" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
+    <PackageReference Include="Newtonsoft.Json" Version="6.0.1" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">

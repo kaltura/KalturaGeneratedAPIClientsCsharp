@@ -8,7 +8,7 @@ mono:
   - 3.10.0
 script:
  - sed -e "s#@YOUR_PARTNER_ID@#$PARTNER_ID#g" -e "s#@YOUR_ADMIN_SECRET@#$ADMIN_SECRET#g" -e "s#@SERVICE_URL@#https://www.kaltura.com#g" -i KalturaClientTester/ClientTester.cs
- - dotnet build ./KalturaClientTester/KalturaClientTester.csproj -c Release -f netcoreapp2.0
- - dotnet build ./KalturaClientTester/KalturaClientTester.csproj -c Release -f net45
- - cd KalturaClientTester/bin/Release/net45 && mono KalturaClientTester.exe
- - cd ../netcoreapp2.0 && dotnet KalturaClientTester.dll
+#  - dotnet build ./KalturaClientTester/KalturaClientTester.csproj -c Release -f netcoreapp2.0
+ - dotnet build ./KalturaClientTester/KalturaClientTester.csproj -c Release -f net45 -v diag
+#  - cd KalturaClientTester/bin/Release/net45 && mono KalturaClientTester.exe
+#  - cd ../netcoreapp2.0 && dotnet KalturaClientTester.dll

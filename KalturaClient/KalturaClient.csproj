@@ -11,6 +11,8 @@
     <PackageTags>kaltura ott rest api client</PackageTags>
     <Copyright>Copyright (C) 2006-2019  Kaltura Inc.</Copyright>
     <Authors>Johnathan Amit-Kanarek, Arthur Vaverko, Jess Portnoy</Authors>
+    <ProjectUrl>https://github.com/kaltura/KalturaOttGeneratedAPIClientsCsharp</ProjectUrl>
+    <IconUrl>https://avatars2.githubusercontent.com/u/319096?s=200&amp;v=4</IconUrl>
     <Version>15.7.0</Version>
     <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
   </PropertyGroup>

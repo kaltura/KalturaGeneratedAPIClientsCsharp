@@ -40,6 +40,7 @@ namespace Kaltura.Types
 		#region Constants
 		public const string LAST_PLAYED_AT_GREATER_THAN_OR_EQUAL = "lastPlayedAtGreaterThanOrEqual";
 		public const string LAST_PLAYED_AT_LESS_THAN_OR_EQUAL = "lastPlayedAtLessThanOrEqual";
+		public const string LAST_PLAYED_AT_LESS_THAN_OR_EQUAL_OR_NULL = "lastPlayedAtLessThanOrEqualOrNull";
 		public const string DURATION_LESS_THAN = "durationLessThan";
 		public const string DURATION_GREATER_THAN = "durationGreaterThan";
 		public const string DURATION_LESS_THAN_OR_EQUAL = "durationLessThanOrEqual";
@@ -50,6 +51,7 @@ namespace Kaltura.Types
 		#region Private Fields
 		private int _LastPlayedAtGreaterThanOrEqual = Int32.MinValue;
 		private int _LastPlayedAtLessThanOrEqual = Int32.MinValue;
+		private int _LastPlayedAtLessThanOrEqualOrNull = Int32.MinValue;
 		private int _DurationLessThan = Int32.MinValue;
 		private int _DurationGreaterThan = Int32.MinValue;
 		private int _DurationLessThanOrEqual = Int32.MinValue;
@@ -76,6 +78,16 @@ namespace Kaltura.Types
 			{ 
 				_LastPlayedAtLessThanOrEqual = value;
 				OnPropertyChanged("LastPlayedAtLessThanOrEqual");
+			}
+		}
+		[JsonProperty]
+		public int LastPlayedAtLessThanOrEqualOrNull
+		{
+			get { return _LastPlayedAtLessThanOrEqualOrNull; }
+			set 
+			{ 
+				_LastPlayedAtLessThanOrEqualOrNull = value;
+				OnPropertyChanged("LastPlayedAtLessThanOrEqualOrNull");
 			}
 		}
 		[JsonProperty]
@@ -145,6 +157,10 @@ namespace Kaltura.Types
 			{
 				this._LastPlayedAtLessThanOrEqual = ParseInt(node["lastPlayedAtLessThanOrEqual"].Value<string>());
 			}
+			if(node["lastPlayedAtLessThanOrEqualOrNull"] != null)
+			{
+				this._LastPlayedAtLessThanOrEqualOrNull = ParseInt(node["lastPlayedAtLessThanOrEqualOrNull"].Value<string>());
+			}
 			if(node["durationLessThan"] != null)
 			{
 				this._DurationLessThan = ParseInt(node["durationLessThan"].Value<string>());
@@ -176,6 +192,7 @@ namespace Kaltura.Types
 				kparams.AddReplace("objectType", "KalturaPlayableEntryBaseFilter");
 			kparams.AddIfNotNull("lastPlayedAtGreaterThanOrEqual", this._LastPlayedAtGreaterThanOrEqual);
 			kparams.AddIfNotNull("lastPlayedAtLessThanOrEqual", this._LastPlayedAtLessThanOrEqual);
+			kparams.AddIfNotNull("lastPlayedAtLessThanOrEqualOrNull", this._LastPlayedAtLessThanOrEqualOrNull);
 			kparams.AddIfNotNull("durationLessThan", this._DurationLessThan);
 			kparams.AddIfNotNull("durationGreaterThan", this._DurationGreaterThan);
 			kparams.AddIfNotNull("durationLessThanOrEqual", this._DurationLessThanOrEqual);
@@ -191,6 +208,8 @@ namespace Kaltura.Types
 					return "LastPlayedAtGreaterThanOrEqual";
 				case LAST_PLAYED_AT_LESS_THAN_OR_EQUAL:
 					return "LastPlayedAtLessThanOrEqual";
+				case LAST_PLAYED_AT_LESS_THAN_OR_EQUAL_OR_NULL:
+					return "LastPlayedAtLessThanOrEqualOrNull";
 				case DURATION_LESS_THAN:
 					return "DurationLessThan";
 				case DURATION_GREATER_THAN:

@@ -63,6 +63,9 @@ namespace Kaltura.Types
 		public const string PARTNER_DATA = "partnerData";
 		public const string CREATION_MODE = "creationMode";
 		public const string TASK_JOB_DATA = "taskJobData";
+		public const string EXPECTED_FINISH_TIME = "expectedFinishTime";
+		public const string SERVICE_TYPE = "serviceType";
+		public const string SERVICE_FEATURE = "serviceFeature";
 		#endregion
 
 		#region Private Fields
@@ -91,6 +94,9 @@ namespace Kaltura.Types
 		private string _PartnerData = null;
 		private EntryVendorTaskCreationMode _CreationMode = (EntryVendorTaskCreationMode)Int32.MinValue;
 		private VendorTaskData _TaskJobData;
+		private int _ExpectedFinishTime = Int32.MinValue;
+		private VendorServiceType _ServiceType = (VendorServiceType)Int32.MinValue;
+		private VendorServiceFeature _ServiceFeature = (VendorServiceFeature)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -344,6 +350,36 @@ namespace Kaltura.Types
 				OnPropertyChanged("TaskJobData");
 			}
 		}
+		[JsonProperty]
+		public int ExpectedFinishTime
+		{
+			get { return _ExpectedFinishTime; }
+			private set 
+			{ 
+				_ExpectedFinishTime = value;
+				OnPropertyChanged("ExpectedFinishTime");
+			}
+		}
+		[JsonProperty]
+		public VendorServiceType ServiceType
+		{
+			get { return _ServiceType; }
+			private set 
+			{ 
+				_ServiceType = value;
+				OnPropertyChanged("ServiceType");
+			}
+		}
+		[JsonProperty]
+		public VendorServiceFeature ServiceFeature
+		{
+			get { return _ServiceFeature; }
+			private set 
+			{ 
+				_ServiceFeature = value;
+				OnPropertyChanged("ServiceFeature");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -453,6 +489,18 @@ namespace Kaltura.Types
 			{
 				this._TaskJobData = ObjectFactory.Create<VendorTaskData>(node["taskJobData"]);
 			}
+			if(node["expectedFinishTime"] != null)
+			{
+				this._ExpectedFinishTime = ParseInt(node["expectedFinishTime"].Value<string>());
+			}
+			if(node["serviceType"] != null)
+			{
+				this._ServiceType = (VendorServiceType)ParseEnum(typeof(VendorServiceType), node["serviceType"].Value<string>());
+			}
+			if(node["serviceFeature"] != null)
+			{
+				this._ServiceFeature = (VendorServiceFeature)ParseEnum(typeof(VendorServiceFeature), node["serviceFeature"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -487,6 +535,9 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("partnerData", this._PartnerData);
 			kparams.AddIfNotNull("creationMode", this._CreationMode);
 			kparams.AddIfNotNull("taskJobData", this._TaskJobData);
+			kparams.AddIfNotNull("expectedFinishTime", this._ExpectedFinishTime);
+			kparams.AddIfNotNull("serviceType", this._ServiceType);
+			kparams.AddIfNotNull("serviceFeature", this._ServiceFeature);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -543,6 +594,12 @@ namespace Kaltura.Types
 					return "CreationMode";
 				case TASK_JOB_DATA:
 					return "TaskJobData";
+				case EXPECTED_FINISH_TIME:
+					return "ExpectedFinishTime";
+				case SERVICE_TYPE:
+					return "ServiceType";
+				case SERVICE_FEATURE:
+					return "ServiceFeature";
 				default:
 					return base.getPropertyName(apiName);
 			}

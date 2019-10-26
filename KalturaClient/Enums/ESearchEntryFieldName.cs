@@ -31,6 +31,7 @@ namespace Kaltura.Enums
 	{
 		public static readonly ESearchEntryFieldName ACCESS_CONTROL_ID = new ESearchEntryFieldName("access_control_id");
 		public static readonly ESearchEntryFieldName ADMIN_TAGS = new ESearchEntryFieldName("admin_tags");
+		public static readonly ESearchEntryFieldName CAPTIONS_CONTENT = new ESearchEntryFieldName("captions_content");
 		public static readonly ESearchEntryFieldName CONVERSION_PROFILE_ID = new ESearchEntryFieldName("conversion_profile_id");
 		public static readonly ESearchEntryFieldName CREATED_AT = new ESearchEntryFieldName("created_at");
 		public static readonly ESearchEntryFieldName CREATOR_ID = new ESearchEntryFieldName("creator_kuser_id");

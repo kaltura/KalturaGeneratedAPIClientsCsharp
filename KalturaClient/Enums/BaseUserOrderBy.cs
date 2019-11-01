@@ -27,15 +27,15 @@
 // ===================================================================================================
 namespace Kaltura.Enums
 {
-	public sealed class UserOrderBy : StringEnum
+	public sealed class BaseUserOrderBy : StringEnum
 	{
-		public static readonly UserOrderBy CREATED_AT_ASC = new UserOrderBy("+createdAt");
-		public static readonly UserOrderBy ID_ASC = new UserOrderBy("+id");
-		public static readonly UserOrderBy UPDATED_AT_ASC = new UserOrderBy("+updatedAt");
-		public static readonly UserOrderBy CREATED_AT_DESC = new UserOrderBy("-createdAt");
-		public static readonly UserOrderBy ID_DESC = new UserOrderBy("-id");
-		public static readonly UserOrderBy UPDATED_AT_DESC = new UserOrderBy("-updatedAt");
+		public static readonly BaseUserOrderBy CREATED_AT_ASC = new BaseUserOrderBy("+createdAt");
+		public static readonly BaseUserOrderBy ID_ASC = new BaseUserOrderBy("+id");
+		public static readonly BaseUserOrderBy UPDATED_AT_ASC = new BaseUserOrderBy("+updatedAt");
+		public static readonly BaseUserOrderBy CREATED_AT_DESC = new BaseUserOrderBy("-createdAt");
+		public static readonly BaseUserOrderBy ID_DESC = new BaseUserOrderBy("-id");
+		public static readonly BaseUserOrderBy UPDATED_AT_DESC = new BaseUserOrderBy("-updatedAt");
 
-		private UserOrderBy(string name) : base(name) { }
+		private BaseUserOrderBy(string name) : base(name) { }
 	}
 }

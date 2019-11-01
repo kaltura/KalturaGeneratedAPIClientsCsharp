@@ -31,8 +31,10 @@ namespace Kaltura.Enums
 	{
 		public static readonly AdminUserOrderBy CREATED_AT_ASC = new AdminUserOrderBy("+createdAt");
 		public static readonly AdminUserOrderBy ID_ASC = new AdminUserOrderBy("+id");
+		public static readonly AdminUserOrderBy UPDATED_AT_ASC = new AdminUserOrderBy("+updatedAt");
 		public static readonly AdminUserOrderBy CREATED_AT_DESC = new AdminUserOrderBy("-createdAt");
 		public static readonly AdminUserOrderBy ID_DESC = new AdminUserOrderBy("-id");
+		public static readonly AdminUserOrderBy UPDATED_AT_DESC = new AdminUserOrderBy("-updatedAt");
 
 		private AdminUserOrderBy(string name) : base(name) { }
 	}

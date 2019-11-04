@@ -90,6 +90,7 @@ namespace Kaltura.Enums
 		public static readonly ReportType PLATFORMS_DISCOVERY_REALTIME = new ReportType("10010");
 		public static readonly ReportType PLAYBACK_TYPE_REALTIME = new ReportType("10011");
 		public static readonly ReportType CONTENT_REALTIME = new ReportType("10012");
+		public static readonly ReportType DISCOVERY_VIEW_REALTIME = new ReportType("10013");
 		public static readonly ReportType CONTENT_DROPOFF_VPAAS = new ReportType("20001");
 		public static readonly ReportType TOP_SYNDICATION_VPAAS = new ReportType("20002");
 		public static readonly ReportType USER_TOP_CONTENT_VPAAS = new ReportType("20003");

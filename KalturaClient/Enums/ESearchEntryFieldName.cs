@@ -47,12 +47,14 @@ namespace Kaltura.Enums
 		public static readonly ESearchEntryFieldName IS_LIVE = new ESearchEntryFieldName("is_live");
 		public static readonly ESearchEntryFieldName IS_QUIZ = new ESearchEntryFieldName("is_quiz");
 		public static readonly ESearchEntryFieldName USER_ID = new ESearchEntryFieldName("kuser_id");
+		public static readonly ESearchEntryFieldName LAST_PLAYED_AT = new ESearchEntryFieldName("last_played_at");
 		public static readonly ESearchEntryFieldName LENGTH_IN_MSECS = new ESearchEntryFieldName("length_in_msecs");
 		public static readonly ESearchEntryFieldName MEDIA_TYPE = new ESearchEntryFieldName("media_type");
 		public static readonly ESearchEntryFieldName MODERATION_STATUS = new ESearchEntryFieldName("moderation_status");
 		public static readonly ESearchEntryFieldName NAME = new ESearchEntryFieldName("name");
 		public static readonly ESearchEntryFieldName PARENT_ENTRY_ID = new ESearchEntryFieldName("parent_id");
 		public static readonly ESearchEntryFieldName PARTNER_SORT_VALUE = new ESearchEntryFieldName("partner_sort_value");
+		public static readonly ESearchEntryFieldName PLAYS = new ESearchEntryFieldName("plays");
 		public static readonly ESearchEntryFieldName PUSH_PUBLISH = new ESearchEntryFieldName("push_publish");
 		public static readonly ESearchEntryFieldName RECORDED_ENTRY_ID = new ESearchEntryFieldName("recorded_entry_id");
 		public static readonly ESearchEntryFieldName REDIRECT_ENTRY_ID = new ESearchEntryFieldName("redirect_entry_id");

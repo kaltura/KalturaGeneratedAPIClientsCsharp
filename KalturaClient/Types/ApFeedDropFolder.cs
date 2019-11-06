@@ -25,19 +25,73 @@
 //
 // @ignore
 // ===================================================================================================
-namespace Kaltura.Enums
-{
-	public sealed class DropFolderType : StringEnum
-	{
-		public static readonly DropFolderType AP_FEED = new DropFolderType("ApFeedDropFolder.AP_FEED");
-		public static readonly DropFolderType FEED = new DropFolderType("FeedDropFolder.FEED");
-		public static readonly DropFolderType WEBEX = new DropFolderType("WebexDropFolder.WEBEX");
-		public static readonly DropFolderType LOCAL = new DropFolderType("1");
-		public static readonly DropFolderType FTP = new DropFolderType("2");
-		public static readonly DropFolderType SCP = new DropFolderType("3");
-		public static readonly DropFolderType SFTP = new DropFolderType("4");
-		public static readonly DropFolderType S3 = new DropFolderType("6");
+using System;
+using System.Xml;
+using System.Collections.Generic;
+using Kaltura.Enums;
+using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
-		private DropFolderType(string name) : base(name) { }
+namespace Kaltura.Types
+{
+	public class ApFeedDropFolder : FeedDropFolder
+	{
+		#region Constants
+		public const string AP_API_KEY = "apApiKey";
+		#endregion
+
+		#region Private Fields
+		private string _ApApiKey = null;
+		#endregion
+
+		#region Properties
+		[JsonProperty]
+		public string ApApiKey
+		{
+			get { return _ApApiKey; }
+			set 
+			{ 
+				_ApApiKey = value;
+				OnPropertyChanged("ApApiKey");
+			}
+		}
+		#endregion
+
+		#region CTor
+		public ApFeedDropFolder()
+		{
+		}
+
+		public ApFeedDropFolder(JToken node) : base(node)
+		{
+			if(node["apApiKey"] != null)
+			{
+				this._ApApiKey = node["apApiKey"].Value<string>();
+			}
+		}
+		#endregion
+
+		#region Methods
+		public override Params ToParams(bool includeObjectType = true)
+		{
+			Params kparams = base.ToParams(includeObjectType);
+			if (includeObjectType)
+				kparams.AddReplace("objectType", "KalturaApFeedDropFolder");
+			kparams.AddIfNotNull("apApiKey", this._ApApiKey);
+			return kparams;
+		}
+		protected override string getPropertyName(string apiName)
+		{
+			switch(apiName)
+			{
+				case AP_API_KEY:
+					return "ApApiKey";
+				default:
+					return base.getPropertyName(apiName);
+			}
+		}
+		#endregion
 	}
 }
+

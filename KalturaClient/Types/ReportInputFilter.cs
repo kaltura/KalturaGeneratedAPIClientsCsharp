@@ -61,6 +61,8 @@ namespace Kaltura.Types
 		public const string ENTRY_CREATED_AT_GREATER_THAN_OR_EQUAL = "entryCreatedAtGreaterThanOrEqual";
 		public const string ENTRY_CREATED_AT_LESS_THAN_OR_EQUAL = "entryCreatedAtLessThanOrEqual";
 		public const string ENTRY_ID_IN = "entryIdIn";
+		public const string PLAYBACK_TYPE_IN = "playbackTypeIn";
+		public const string PLAYBACK_CONTEXT_IDS_IN = "playbackContextIdsIn";
 		#endregion
 
 		#region Private Fields
@@ -87,6 +89,8 @@ namespace Kaltura.Types
 		private int _EntryCreatedAtGreaterThanOrEqual = Int32.MinValue;
 		private int _EntryCreatedAtLessThanOrEqual = Int32.MinValue;
 		private string _EntryIdIn = null;
+		private string _PlaybackTypeIn = null;
+		private string _PlaybackContextIdsIn = null;
 		#endregion
 
 		#region Properties
@@ -320,6 +324,26 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdIn");
 			}
 		}
+		[JsonProperty]
+		public string PlaybackTypeIn
+		{
+			get { return _PlaybackTypeIn; }
+			set 
+			{ 
+				_PlaybackTypeIn = value;
+				OnPropertyChanged("PlaybackTypeIn");
+			}
+		}
+		[JsonProperty]
+		public string PlaybackContextIdsIn
+		{
+			get { return _PlaybackContextIdsIn; }
+			set 
+			{ 
+				_PlaybackContextIdsIn = value;
+				OnPropertyChanged("PlaybackContextIdsIn");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -421,6 +445,14 @@ namespace Kaltura.Types
 			{
 				this._EntryIdIn = node["entryIdIn"].Value<string>();
 			}
+			if(node["playbackTypeIn"] != null)
+			{
+				this._PlaybackTypeIn = node["playbackTypeIn"].Value<string>();
+			}
+			if(node["playbackContextIdsIn"] != null)
+			{
+				this._PlaybackContextIdsIn = node["playbackContextIdsIn"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -453,6 +485,8 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("entryCreatedAtGreaterThanOrEqual", this._EntryCreatedAtGreaterThanOrEqual);
 			kparams.AddIfNotNull("entryCreatedAtLessThanOrEqual", this._EntryCreatedAtLessThanOrEqual);
 			kparams.AddIfNotNull("entryIdIn", this._EntryIdIn);
+			kparams.AddIfNotNull("playbackTypeIn", this._PlaybackTypeIn);
+			kparams.AddIfNotNull("playbackContextIdsIn", this._PlaybackContextIdsIn);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -505,6 +539,10 @@ namespace Kaltura.Types
 					return "EntryCreatedAtLessThanOrEqual";
 				case ENTRY_ID_IN:
 					return "EntryIdIn";
+				case PLAYBACK_TYPE_IN:
+					return "PlaybackTypeIn";
+				case PLAYBACK_CONTEXT_IDS_IN:
+					return "PlaybackContextIdsIn";
 				default:
 					return base.getPropertyName(apiName);
 			}

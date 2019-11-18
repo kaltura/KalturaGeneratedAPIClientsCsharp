@@ -73,6 +73,12 @@ namespace Kaltura.Types
 		public const string CONTENT_STREAMS = "contentStreams";
 		public const string COMPLEXITY_VALUE = "complexityValue";
 		public const string MAX_GOP = "maxGOP";
+		public const string MATRIX_COEFFICIENTS = "matrixCoefficients";
+		public const string COLOR_TRANSFER = "colorTransfer";
+		public const string COLOR_PRIMARIES = "colorPrimaries";
+		public const string PIXEL_FORMAT = "pixelFormat";
+		public const string CHROMA_SUBSAMPLING = "chromaSubsampling";
+		public const string BITS_DEPTH = "bitsDepth";
 		#endregion
 
 		#region Private Fields
@@ -111,6 +117,12 @@ namespace Kaltura.Types
 		private string _ContentStreams = null;
 		private int _ComplexityValue = Int32.MinValue;
 		private float _MaxGOP = Single.MinValue;
+		private string _MatrixCoefficients = null;
+		private string _ColorTransfer = null;
+		private string _ColorPrimaries = null;
+		private string _PixelFormat = null;
+		private string _ChromaSubsampling = null;
+		private int _BitsDepth = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -464,6 +476,66 @@ namespace Kaltura.Types
 				OnPropertyChanged("MaxGOP");
 			}
 		}
+		[JsonProperty]
+		public string MatrixCoefficients
+		{
+			get { return _MatrixCoefficients; }
+			set 
+			{ 
+				_MatrixCoefficients = value;
+				OnPropertyChanged("MatrixCoefficients");
+			}
+		}
+		[JsonProperty]
+		public string ColorTransfer
+		{
+			get { return _ColorTransfer; }
+			set 
+			{ 
+				_ColorTransfer = value;
+				OnPropertyChanged("ColorTransfer");
+			}
+		}
+		[JsonProperty]
+		public string ColorPrimaries
+		{
+			get { return _ColorPrimaries; }
+			set 
+			{ 
+				_ColorPrimaries = value;
+				OnPropertyChanged("ColorPrimaries");
+			}
+		}
+		[JsonProperty]
+		public string PixelFormat
+		{
+			get { return _PixelFormat; }
+			set 
+			{ 
+				_PixelFormat = value;
+				OnPropertyChanged("PixelFormat");
+			}
+		}
+		[JsonProperty]
+		public string ChromaSubsampling
+		{
+			get { return _ChromaSubsampling; }
+			set 
+			{ 
+				_ChromaSubsampling = value;
+				OnPropertyChanged("ChromaSubsampling");
+			}
+		}
+		[JsonProperty]
+		public int BitsDepth
+		{
+			get { return _BitsDepth; }
+			set 
+			{ 
+				_BitsDepth = value;
+				OnPropertyChanged("BitsDepth");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -613,6 +685,30 @@ namespace Kaltura.Types
 			{
 				this._MaxGOP = ParseFloat(node["maxGOP"].Value<string>());
 			}
+			if(node["matrixCoefficients"] != null)
+			{
+				this._MatrixCoefficients = node["matrixCoefficients"].Value<string>();
+			}
+			if(node["colorTransfer"] != null)
+			{
+				this._ColorTransfer = node["colorTransfer"].Value<string>();
+			}
+			if(node["colorPrimaries"] != null)
+			{
+				this._ColorPrimaries = node["colorPrimaries"].Value<string>();
+			}
+			if(node["pixelFormat"] != null)
+			{
+				this._PixelFormat = node["pixelFormat"].Value<string>();
+			}
+			if(node["chromaSubsampling"] != null)
+			{
+				this._ChromaSubsampling = node["chromaSubsampling"].Value<string>();
+			}
+			if(node["bitsDepth"] != null)
+			{
+				this._BitsDepth = ParseInt(node["bitsDepth"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -657,6 +753,12 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("contentStreams", this._ContentStreams);
 			kparams.AddIfNotNull("complexityValue", this._ComplexityValue);
 			kparams.AddIfNotNull("maxGOP", this._MaxGOP);
+			kparams.AddIfNotNull("matrixCoefficients", this._MatrixCoefficients);
+			kparams.AddIfNotNull("colorTransfer", this._ColorTransfer);
+			kparams.AddIfNotNull("colorPrimaries", this._ColorPrimaries);
+			kparams.AddIfNotNull("pixelFormat", this._PixelFormat);
+			kparams.AddIfNotNull("chromaSubsampling", this._ChromaSubsampling);
+			kparams.AddIfNotNull("bitsDepth", this._BitsDepth);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -733,6 +835,18 @@ namespace Kaltura.Types
 					return "ComplexityValue";
 				case MAX_GOP:
 					return "MaxGOP";
+				case MATRIX_COEFFICIENTS:
+					return "MatrixCoefficients";
+				case COLOR_TRANSFER:
+					return "ColorTransfer";
+				case COLOR_PRIMARIES:
+					return "ColorPrimaries";
+				case PIXEL_FORMAT:
+					return "PixelFormat";
+				case CHROMA_SUBSAMPLING:
+					return "ChromaSubsampling";
+				case BITS_DEPTH:
+					return "BitsDepth";
 				default:
 					return base.getPropertyName(apiName);
 			}

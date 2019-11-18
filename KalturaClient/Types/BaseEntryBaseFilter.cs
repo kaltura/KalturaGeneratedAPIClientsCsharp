@@ -78,6 +78,8 @@ namespace Kaltura.Types
 		public const string CREATED_AT_LESS_THAN_OR_EQUAL = "createdAtLessThanOrEqual";
 		public const string UPDATED_AT_GREATER_THAN_OR_EQUAL = "updatedAtGreaterThanOrEqual";
 		public const string UPDATED_AT_LESS_THAN_OR_EQUAL = "updatedAtLessThanOrEqual";
+		public const string RANK_LESS_THAN_OR_EQUAL = "rankLessThanOrEqual";
+		public const string RANK_GREATER_THAN_OR_EQUAL = "rankGreaterThanOrEqual";
 		public const string TOTAL_RANK_LESS_THAN_OR_EQUAL = "totalRankLessThanOrEqual";
 		public const string TOTAL_RANK_GREATER_THAN_OR_EQUAL = "totalRankGreaterThanOrEqual";
 		public const string GROUP_ID_EQUAL = "groupIdEqual";
@@ -161,6 +163,8 @@ namespace Kaltura.Types
 		private int _CreatedAtLessThanOrEqual = Int32.MinValue;
 		private int _UpdatedAtGreaterThanOrEqual = Int32.MinValue;
 		private int _UpdatedAtLessThanOrEqual = Int32.MinValue;
+		private float _RankLessThanOrEqual = Single.MinValue;
+		private float _RankGreaterThanOrEqual = Single.MinValue;
 		private int _TotalRankLessThanOrEqual = Int32.MinValue;
 		private int _TotalRankGreaterThanOrEqual = Int32.MinValue;
 		private int _GroupIdEqual = Int32.MinValue;
@@ -602,6 +606,26 @@ namespace Kaltura.Types
 			{ 
 				_UpdatedAtLessThanOrEqual = value;
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
+			}
+		}
+		[JsonProperty]
+		public float RankLessThanOrEqual
+		{
+			get { return _RankLessThanOrEqual; }
+			set 
+			{ 
+				_RankLessThanOrEqual = value;
+				OnPropertyChanged("RankLessThanOrEqual");
+			}
+		}
+		[JsonProperty]
+		public float RankGreaterThanOrEqual
+		{
+			get { return _RankGreaterThanOrEqual; }
+			set 
+			{ 
+				_RankGreaterThanOrEqual = value;
+				OnPropertyChanged("RankGreaterThanOrEqual");
 			}
 		}
 		[JsonProperty]
@@ -1173,6 +1197,14 @@ namespace Kaltura.Types
 			{
 				this._UpdatedAtLessThanOrEqual = ParseInt(node["updatedAtLessThanOrEqual"].Value<string>());
 			}
+			if(node["rankLessThanOrEqual"] != null)
+			{
+				this._RankLessThanOrEqual = ParseFloat(node["rankLessThanOrEqual"].Value<string>());
+			}
+			if(node["rankGreaterThanOrEqual"] != null)
+			{
+				this._RankGreaterThanOrEqual = ParseFloat(node["rankGreaterThanOrEqual"].Value<string>());
+			}
 			if(node["totalRankLessThanOrEqual"] != null)
 			{
 				this._TotalRankLessThanOrEqual = ParseInt(node["totalRankLessThanOrEqual"].Value<string>());
@@ -1382,6 +1414,8 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("createdAtLessThanOrEqual", this._CreatedAtLessThanOrEqual);
 			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this._UpdatedAtGreaterThanOrEqual);
 			kparams.AddIfNotNull("updatedAtLessThanOrEqual", this._UpdatedAtLessThanOrEqual);
+			kparams.AddIfNotNull("rankLessThanOrEqual", this._RankLessThanOrEqual);
+			kparams.AddIfNotNull("rankGreaterThanOrEqual", this._RankGreaterThanOrEqual);
 			kparams.AddIfNotNull("totalRankLessThanOrEqual", this._TotalRankLessThanOrEqual);
 			kparams.AddIfNotNull("totalRankGreaterThanOrEqual", this._TotalRankGreaterThanOrEqual);
 			kparams.AddIfNotNull("groupIdEqual", this._GroupIdEqual);
@@ -1508,6 +1542,10 @@ namespace Kaltura.Types
 					return "UpdatedAtGreaterThanOrEqual";
 				case UPDATED_AT_LESS_THAN_OR_EQUAL:
 					return "UpdatedAtLessThanOrEqual";
+				case RANK_LESS_THAN_OR_EQUAL:
+					return "RankLessThanOrEqual";
+				case RANK_GREATER_THAN_OR_EQUAL:
+					return "RankGreaterThanOrEqual";
 				case TOTAL_RANK_LESS_THAN_OR_EQUAL:
 					return "TotalRankLessThanOrEqual";
 				case TOTAL_RANK_GREATER_THAN_OR_EQUAL:

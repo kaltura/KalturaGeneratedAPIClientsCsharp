@@ -37,6 +37,7 @@ namespace Kaltura.Enums
 		public static readonly ESearchEntryOrderByFieldName PLAYS_LAST_1_DAY = new ESearchEntryOrderByFieldName("plays_last_1_day");
 		public static readonly ESearchEntryOrderByFieldName PLAYS_LAST_30_DAYS = new ESearchEntryOrderByFieldName("plays_last_30_days");
 		public static readonly ESearchEntryOrderByFieldName PLAYS_LAST_7_DAYS = new ESearchEntryOrderByFieldName("plays_last_7_days");
+		public static readonly ESearchEntryOrderByFieldName RANK = new ESearchEntryOrderByFieldName("rank");
 		public static readonly ESearchEntryOrderByFieldName START_DATE = new ESearchEntryOrderByFieldName("start_date");
 		public static readonly ESearchEntryOrderByFieldName UPDATED_AT = new ESearchEntryOrderByFieldName("updated_at");
 		public static readonly ESearchEntryOrderByFieldName VIEWS = new ESearchEntryOrderByFieldName("views");

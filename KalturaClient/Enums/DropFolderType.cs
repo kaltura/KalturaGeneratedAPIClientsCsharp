@@ -29,7 +29,6 @@ namespace Kaltura.Enums
 {
 	public sealed class DropFolderType : StringEnum
 	{
-		public static readonly DropFolderType AP_FEED = new DropFolderType("ApFeedDropFolder.AP_FEED");
 		public static readonly DropFolderType FEED = new DropFolderType("FeedDropFolder.FEED");
 		public static readonly DropFolderType WEBEX = new DropFolderType("WebexDropFolder.WEBEX");
 		public static readonly DropFolderType LOCAL = new DropFolderType("1");

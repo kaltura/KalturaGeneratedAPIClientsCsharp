@@ -112,6 +112,7 @@ namespace Kaltura.Enums
 		public static readonly ReportType PLAYER_RELATED_INTERACTIONS_VPAAS = new ReportType("20019");
 		public static readonly ReportType PLAYBACK_RATE_VPAAS = new ReportType("20020");
 		public static readonly ReportType PARTNER_USAGE_VPAAS = new ReportType("20021");
+		public static readonly ReportType TOP_PLAYBACK_CONTEXT_VPAAS = new ReportType("20022");
 		public static readonly ReportType QOE_OVERVIEW = new ReportType("30001");
 		public static readonly ReportType QOE_EXPERIENCE = new ReportType("30002");
 		public static readonly ReportType QOE_EXPERIENCE_PLATFORMS = new ReportType("30003");

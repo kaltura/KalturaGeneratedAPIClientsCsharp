@@ -40,8 +40,9 @@ namespace Kaltura.Types
 		#region Constants
 		public const string NAME = "name";
 		public const string CONTENT = "content";
+		public const string RAW_DATA = "rawData";
 		public const string IS_EDITABLE = "isEditable";
-		public const string LAST_UPDATE = "lastUpdate";
+		public const string CREATED_AT = "createdAt";
 		public const string RELATED_HOST = "relatedHost";
 		public const string VERSION = "version";
 		public const string SOURCE_LOCATION = "sourceLocation";
@@ -52,8 +53,9 @@ namespace Kaltura.Types
 		#region Private Fields
 		private string _Name = null;
 		private string _Content = null;
+		private string _RawData = null;
 		private bool? _IsEditable = null;
-		private int _LastUpdate = Int32.MinValue;
+		private int _CreatedAt = Int32.MinValue;
 		private string _RelatedHost = null;
 		private int _Version = Int32.MinValue;
 		private ConfMapsSourceLocation _SourceLocation = null;
@@ -83,6 +85,16 @@ namespace Kaltura.Types
 			}
 		}
 		[JsonProperty]
+		public string RawData
+		{
+			get { return _RawData; }
+			set 
+			{ 
+				_RawData = value;
+				OnPropertyChanged("RawData");
+			}
+		}
+		[JsonProperty]
 		public bool? IsEditable
 		{
 			get { return _IsEditable; }
@@ -93,13 +105,13 @@ namespace Kaltura.Types
 			}
 		}
 		[JsonProperty]
-		public int LastUpdate
+		public int CreatedAt
 		{
-			get { return _LastUpdate; }
+			get { return _CreatedAt; }
 			private set 
 			{ 
-				_LastUpdate = value;
-				OnPropertyChanged("LastUpdate");
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
 			}
 		}
 		[JsonProperty]
@@ -169,13 +181,17 @@ namespace Kaltura.Types
 			{
 				this._Content = node["content"].Value<string>();
 			}
+			if(node["rawData"] != null)
+			{
+				this._RawData = node["rawData"].Value<string>();
+			}
 			if(node["isEditable"] != null)
 			{
 				this._IsEditable = ParseBool(node["isEditable"].Value<string>());
 			}
-			if(node["lastUpdate"] != null)
+			if(node["createdAt"] != null)
 			{
-				this._LastUpdate = ParseInt(node["lastUpdate"].Value<string>());
+				this._CreatedAt = ParseInt(node["createdAt"].Value<string>());
 			}
 			if(node["relatedHost"] != null)
 			{
@@ -208,8 +224,9 @@ namespace Kaltura.Types
 				kparams.AddReplace("objectType", "KalturaConfMaps");
 			kparams.AddIfNotNull("name", this._Name);
 			kparams.AddIfNotNull("content", this._Content);
+			kparams.AddIfNotNull("rawData", this._RawData);
 			kparams.AddIfNotNull("isEditable", this._IsEditable);
-			kparams.AddIfNotNull("lastUpdate", this._LastUpdate);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
 			kparams.AddIfNotNull("relatedHost", this._RelatedHost);
 			kparams.AddIfNotNull("version", this._Version);
 			kparams.AddIfNotNull("sourceLocation", this._SourceLocation);
@@ -225,10 +242,12 @@ namespace Kaltura.Types
 					return "Name";
 				case CONTENT:
 					return "Content";
+				case RAW_DATA:
+					return "RawData";
 				case IS_EDITABLE:
 					return "IsEditable";
-				case LAST_UPDATE:
-					return "LastUpdate";
+				case CREATED_AT:
+					return "CreatedAt";
 				case RELATED_HOST:
 					return "RelatedHost";
 				case VERSION:

@@ -40,6 +40,7 @@ namespace Kaltura.Enums
 		public static readonly MetadataObjectType USER = new MetadataObjectType("3");
 		public static readonly MetadataObjectType PARTNER = new MetadataObjectType("4");
 		public static readonly MetadataObjectType DYNAMIC_OBJECT = new MetadataObjectType("5");
+		public static readonly MetadataObjectType USER_ENTRY = new MetadataObjectType("6");
 
 		private MetadataObjectType(string name) : base(name) { }
 	}

@@ -63,6 +63,7 @@ namespace Kaltura.Types
 		public const string ENTRY_ID_IN = "entryIdIn";
 		public const string PLAYBACK_TYPE_IN = "playbackTypeIn";
 		public const string PLAYBACK_CONTEXT_IDS_IN = "playbackContextIdsIn";
+		public const string ROOT_ENTRY_ID_IN = "rootEntryIdIn";
 		#endregion
 
 		#region Private Fields
@@ -91,6 +92,7 @@ namespace Kaltura.Types
 		private string _EntryIdIn = null;
 		private string _PlaybackTypeIn = null;
 		private string _PlaybackContextIdsIn = null;
+		private string _RootEntryIdIn = null;
 		#endregion
 
 		#region Properties
@@ -344,6 +346,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("PlaybackContextIdsIn");
 			}
 		}
+		[JsonProperty]
+		public string RootEntryIdIn
+		{
+			get { return _RootEntryIdIn; }
+			set 
+			{ 
+				_RootEntryIdIn = value;
+				OnPropertyChanged("RootEntryIdIn");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -453,6 +465,10 @@ namespace Kaltura.Types
 			{
 				this._PlaybackContextIdsIn = node["playbackContextIdsIn"].Value<string>();
 			}
+			if(node["rootEntryIdIn"] != null)
+			{
+				this._RootEntryIdIn = node["rootEntryIdIn"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -487,6 +503,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("entryIdIn", this._EntryIdIn);
 			kparams.AddIfNotNull("playbackTypeIn", this._PlaybackTypeIn);
 			kparams.AddIfNotNull("playbackContextIdsIn", this._PlaybackContextIdsIn);
+			kparams.AddIfNotNull("rootEntryIdIn", this._RootEntryIdIn);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -543,6 +560,8 @@ namespace Kaltura.Types
 					return "PlaybackTypeIn";
 				case PLAYBACK_CONTEXT_IDS_IN:
 					return "PlaybackContextIdsIn";
+				case ROOT_ENTRY_ID_IN:
+					return "RootEntryIdIn";
 				default:
 					return base.getPropertyName(apiName);
 			}

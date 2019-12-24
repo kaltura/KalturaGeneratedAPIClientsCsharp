@@ -77,6 +77,8 @@ namespace Kaltura.Enums
 		public static readonly ReportType PLAYBACK_RATE = new ReportType("46");
 		public static readonly ReportType TOP_USER_CONTENT = new ReportType("47");
 		public static readonly ReportType USER_HIGHLIGHTS = new ReportType("48");
+		public static readonly ReportType USER_INTERACTIVE_VIDEO = new ReportType("49");
+		public static readonly ReportType INTERACTIVE_VIDEO_TOP_NODES = new ReportType("50");
 		public static readonly ReportType PARTNER_USAGE = new ReportType("201");
 		public static readonly ReportType MAP_OVERLAY_COUNTRY_REALTIME = new ReportType("10001");
 		public static readonly ReportType MAP_OVERLAY_REGION_REALTIME = new ReportType("10002");
@@ -159,6 +161,8 @@ namespace Kaltura.Enums
 		public static readonly ReportType QOE_ERROR_TRACKING_OPERATING_SYSTEM = new ReportType("30044");
 		public static readonly ReportType QOE_ERROR_TRACKING_PLAYER_VERSION = new ReportType("30045");
 		public static readonly ReportType QOE_ERROR_TRACKING_ENTRY = new ReportType("30046");
+		public static readonly ReportType QOE_VOD_SESSION_FLOW = new ReportType("30047");
+		public static readonly ReportType QOE_LIVE_SESSION_FLOW = new ReportType("30048");
 
 		private ReportType(string name) : base(name) { }
 	}

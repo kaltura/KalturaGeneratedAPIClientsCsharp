@@ -52,6 +52,7 @@ namespace Kaltura.Enums
 		public static readonly ConditionType ANONYMOUS_IP = new ConditionType("15");
 		public static readonly ConditionType ASSET_TYPE = new ConditionType("16");
 		public static readonly ConditionType BOOLEAN = new ConditionType("17");
+		public static readonly ConditionType HTTP_HEADER = new ConditionType("18");
 
 		private ConditionType(string name) : base(name) { }
 	}

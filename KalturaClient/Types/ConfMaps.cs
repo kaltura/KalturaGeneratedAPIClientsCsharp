@@ -41,6 +41,7 @@ namespace Kaltura.Types
 		public const string NAME = "name";
 		public const string CONTENT = "content";
 		public const string RAW_DATA = "rawData";
+		public const string USER_ID = "userId";
 		public const string IS_EDITABLE = "isEditable";
 		public const string CREATED_AT = "createdAt";
 		public const string RELATED_HOST = "relatedHost";
@@ -54,6 +55,7 @@ namespace Kaltura.Types
 		private string _Name = null;
 		private string _Content = null;
 		private string _RawData = null;
+		private string _UserId = null;
 		private bool? _IsEditable = null;
 		private int _CreatedAt = Int32.MinValue;
 		private string _RelatedHost = null;
@@ -92,6 +94,16 @@ namespace Kaltura.Types
 			{ 
 				_RawData = value;
 				OnPropertyChanged("RawData");
+			}
+		}
+		[JsonProperty]
+		public string UserId
+		{
+			get { return _UserId; }
+			set 
+			{ 
+				_UserId = value;
+				OnPropertyChanged("UserId");
 			}
 		}
 		[JsonProperty]
@@ -185,6 +197,10 @@ namespace Kaltura.Types
 			{
 				this._RawData = node["rawData"].Value<string>();
 			}
+			if(node["userId"] != null)
+			{
+				this._UserId = node["userId"].Value<string>();
+			}
 			if(node["isEditable"] != null)
 			{
 				this._IsEditable = ParseBool(node["isEditable"].Value<string>());
@@ -225,6 +241,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("name", this._Name);
 			kparams.AddIfNotNull("content", this._Content);
 			kparams.AddIfNotNull("rawData", this._RawData);
+			kparams.AddIfNotNull("userId", this._UserId);
 			kparams.AddIfNotNull("isEditable", this._IsEditable);
 			kparams.AddIfNotNull("createdAt", this._CreatedAt);
 			kparams.AddIfNotNull("relatedHost", this._RelatedHost);
@@ -244,6 +261,8 @@ namespace Kaltura.Types
 					return "Content";
 				case RAW_DATA:
 					return "RawData";
+				case USER_ID:
+					return "UserId";
 				case IS_EDITABLE:
 					return "IsEditable";
 				case CREATED_AT:

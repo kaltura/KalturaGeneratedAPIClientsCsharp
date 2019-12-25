@@ -35,59 +35,39 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class MediaEsearchExportToCsvJobData : ExportCsvJobData
+	public class ExportToCsvOptions : ObjectBase
 	{
 		#region Constants
-		public const string SEARCH_PARAMS = "searchParams";
-		public const string OPTIONS = "options";
+		public const string FORMAT = "format";
 		#endregion
 
 		#region Private Fields
-		private ESearchEntryParams _SearchParams;
-		private IList<ExportToCsvOptions> _Options;
+		private string _Format = null;
 		#endregion
 
 		#region Properties
 		[JsonProperty]
-		public ESearchEntryParams SearchParams
+		public string Format
 		{
-			get { return _SearchParams; }
+			get { return _Format; }
 			set 
 			{ 
-				_SearchParams = value;
-				OnPropertyChanged("SearchParams");
-			}
-		}
-		[JsonProperty]
-		public IList<ExportToCsvOptions> Options
-		{
-			get { return _Options; }
-			set 
-			{ 
-				_Options = value;
-				OnPropertyChanged("Options");
+				_Format = value;
+				OnPropertyChanged("Format");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public MediaEsearchExportToCsvJobData()
+		public ExportToCsvOptions()
 		{
 		}
 
-		public MediaEsearchExportToCsvJobData(JToken node) : base(node)
+		public ExportToCsvOptions(JToken node) : base(node)
 		{
-			if(node["searchParams"] != null)
+			if(node["format"] != null)
 			{
-				this._SearchParams = ObjectFactory.Create<ESearchEntryParams>(node["searchParams"]);
-			}
-			if(node["options"] != null)
-			{
-				this._Options = new List<ExportToCsvOptions>();
-				foreach(var arrayNode in node["options"].Children())
-				{
-					this._Options.Add(ObjectFactory.Create<ExportToCsvOptions>(arrayNode));
-				}
+				this._Format = node["format"].Value<string>();
 			}
 		}
 		#endregion
@@ -97,19 +77,16 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaMediaEsearchExportToCsvJobData");
-			kparams.AddIfNotNull("searchParams", this._SearchParams);
-			kparams.AddIfNotNull("options", this._Options);
+				kparams.AddReplace("objectType", "KalturaExportToCsvOptions");
+			kparams.AddIfNotNull("format", this._Format);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case SEARCH_PARAMS:
-					return "SearchParams";
-				case OPTIONS:
-					return "Options";
+				case FORMAT:
+					return "Format";
 				default:
 					return base.getPropertyName(apiName);
 			}

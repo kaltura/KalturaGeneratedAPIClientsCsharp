@@ -36,6 +36,35 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Services
 {
+	public class SystemGetHealthCheckRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		#endregion
+
+
+		public SystemGetHealthCheckRequestBuilder()
+			: base("system", "getHealthCheck")
+		{
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			return result.Value<string>();
+		}
+	}
+
 	public class SystemGetTimeRequestBuilder : RequestBuilder<int>
 	{
 		#region Constants
@@ -161,6 +190,11 @@ namespace Kaltura.Services
 	{
 		private SystemService()
 		{
+		}
+
+		public static SystemGetHealthCheckRequestBuilder GetHealthCheck()
+		{
+			return new SystemGetHealthCheckRequestBuilder();
 		}
 
 		public static SystemGetTimeRequestBuilder GetTime()

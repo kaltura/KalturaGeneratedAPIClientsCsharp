@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2019  Kaltura Inc.
+// Copyright (C) 2006-2020  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -97,6 +97,7 @@ namespace Kaltura.Enums
 		public static readonly BatchJobType COPY_CUE_POINTS = new BatchJobType("48");
 		public static readonly BatchJobType EXPORT_CSV = new BatchJobType("49");
 		public static readonly BatchJobType REPORT_EXPORT = new BatchJobType("50");
+		public static readonly BatchJobType LIVE_ENTRY_ARCHIVE = new BatchJobType("51");
 
 		private BatchJobType(string name) : base(name) { }
 	}

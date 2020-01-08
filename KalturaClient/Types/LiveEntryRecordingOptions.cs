@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2019  Kaltura Inc.
+// Copyright (C) 2006-2020  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -42,6 +42,8 @@ namespace Kaltura.Types
 		public const string SHOULD_COPY_SCHEDULING = "shouldCopyScheduling";
 		public const string SHOULD_COPY_THUMBNAIL = "shouldCopyThumbnail";
 		public const string SHOULD_MAKE_HIDDEN = "shouldMakeHidden";
+		public const string SHOULD_AUTO_ARCHIVE = "shouldAutoArchive";
+		public const string NON_DELETED_CUE_POINTS_TAGS = "nonDeletedCuePointsTags";
 		#endregion
 
 		#region Private Fields
@@ -49,6 +51,8 @@ namespace Kaltura.Types
 		private NullableBoolean _ShouldCopyScheduling = (NullableBoolean)Int32.MinValue;
 		private NullableBoolean _ShouldCopyThumbnail = (NullableBoolean)Int32.MinValue;
 		private NullableBoolean _ShouldMakeHidden = (NullableBoolean)Int32.MinValue;
+		private NullableBoolean _ShouldAutoArchive = (NullableBoolean)Int32.MinValue;
+		private string _NonDeletedCuePointsTags = null;
 		#endregion
 
 		#region Properties
@@ -92,6 +96,26 @@ namespace Kaltura.Types
 				OnPropertyChanged("ShouldMakeHidden");
 			}
 		}
+		[JsonProperty]
+		public NullableBoolean ShouldAutoArchive
+		{
+			get { return _ShouldAutoArchive; }
+			set 
+			{ 
+				_ShouldAutoArchive = value;
+				OnPropertyChanged("ShouldAutoArchive");
+			}
+		}
+		[JsonProperty]
+		public string NonDeletedCuePointsTags
+		{
+			get { return _NonDeletedCuePointsTags; }
+			set 
+			{ 
+				_NonDeletedCuePointsTags = value;
+				OnPropertyChanged("NonDeletedCuePointsTags");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -117,6 +141,14 @@ namespace Kaltura.Types
 			{
 				this._ShouldMakeHidden = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["shouldMakeHidden"].Value<string>());
 			}
+			if(node["shouldAutoArchive"] != null)
+			{
+				this._ShouldAutoArchive = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["shouldAutoArchive"].Value<string>());
+			}
+			if(node["nonDeletedCuePointsTags"] != null)
+			{
+				this._NonDeletedCuePointsTags = node["nonDeletedCuePointsTags"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -130,6 +162,8 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("shouldCopyScheduling", this._ShouldCopyScheduling);
 			kparams.AddIfNotNull("shouldCopyThumbnail", this._ShouldCopyThumbnail);
 			kparams.AddIfNotNull("shouldMakeHidden", this._ShouldMakeHidden);
+			kparams.AddIfNotNull("shouldAutoArchive", this._ShouldAutoArchive);
+			kparams.AddIfNotNull("nonDeletedCuePointsTags", this._NonDeletedCuePointsTags);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -144,6 +178,10 @@ namespace Kaltura.Types
 					return "ShouldCopyThumbnail";
 				case SHOULD_MAKE_HIDDEN:
 					return "ShouldMakeHidden";
+				case SHOULD_AUTO_ARCHIVE:
+					return "ShouldAutoArchive";
+				case NON_DELETED_CUE_POINTS_TAGS:
+					return "NonDeletedCuePointsTags";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2019  Kaltura Inc.
+// Copyright (C) 2006-2020  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -195,6 +195,47 @@ namespace Kaltura.Services
 		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<LiveEntry>(result);
+		}
+	}
+
+	public class LiveStreamArchiveRequestBuilder : RequestBuilder<bool>
+	{
+		#region Constants
+		public const string LIVE_ENTRY_ID = "liveEntryId";
+		#endregion
+
+		public string LiveEntryId { get; set; }
+
+		public LiveStreamArchiveRequestBuilder()
+			: base("livestream", "archive")
+		{
+		}
+
+		public LiveStreamArchiveRequestBuilder(string liveEntryId)
+			: this()
+		{
+			this.LiveEntryId = liveEntryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("liveEntryId"))
+				kparams.AddIfNotNull("liveEntryId", LiveEntryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			if (result.Value<string>().Equals("1") || result.Value<string>().ToLower().Equals("true"))
+				return true;
+			return false;
 		}
 	}
 
@@ -979,6 +1020,11 @@ namespace Kaltura.Services
 		public static LiveStreamAppendRecordingRequestBuilder AppendRecording(string entryId, string assetId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, float duration, bool isLastChunk = false)
 		{
 			return new LiveStreamAppendRecordingRequestBuilder(entryId, assetId, mediaServerIndex, resource, duration, isLastChunk);
+		}
+
+		public static LiveStreamArchiveRequestBuilder Archive(string liveEntryId)
+		{
+			return new LiveStreamArchiveRequestBuilder(liveEntryId);
 		}
 
 		public static LiveStreamAuthenticateRequestBuilder Authenticate(string entryId, string token, string hostname = null, EntryServerNodeType mediaServerIndex = null, string applicationName = null)

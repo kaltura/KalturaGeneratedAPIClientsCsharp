@@ -164,6 +164,22 @@ namespace Kaltura.Enums
 		public static readonly ReportType QOE_ERROR_TRACKING_ENTRY = new ReportType("30046");
 		public static readonly ReportType QOE_VOD_SESSION_FLOW = new ReportType("30047");
 		public static readonly ReportType QOE_LIVE_SESSION_FLOW = new ReportType("30048");
+		public static readonly ReportType QOE_EXPERIENCE_CUSTOM_VAR1 = new ReportType("30049");
+		public static readonly ReportType QOE_EXPERIENCE_CUSTOM_VAR2 = new ReportType("30050");
+		public static readonly ReportType QOE_EXPERIENCE_CUSTOM_VAR3 = new ReportType("30051");
+		public static readonly ReportType QOE_ENGAGEMENT_CUSTOM_VAR1 = new ReportType("30052");
+		public static readonly ReportType QOE_ENGAGEMENT_CUSTOM_VAR2 = new ReportType("30053");
+		public static readonly ReportType QOE_ENGAGEMENT_CUSTOM_VAR3 = new ReportType("30054");
+		public static readonly ReportType QOE_STREAM_QUALITY_CUSTOM_VAR1 = new ReportType("30055");
+		public static readonly ReportType QOE_STREAM_QUALITY_CUSTOM_VAR2 = new ReportType("30056");
+		public static readonly ReportType QOE_STREAM_QUALITY_CUSTOM_VAR3 = new ReportType("30057");
+		public static readonly ReportType QOE_ERROR_TRACKING_CUSTOM_VAR1 = new ReportType("30058");
+		public static readonly ReportType QOE_ERROR_TRACKING_CUSTOM_VAR2 = new ReportType("30059");
+		public static readonly ReportType QOE_ERROR_TRACKING_CUSTOM_VAR3 = new ReportType("30060");
+		public static readonly ReportType QOE_EXPERIENCE_APPLICATION_VERSION = new ReportType("30061");
+		public static readonly ReportType QOE_ENGAGEMENT_APPLICATION_VERSION = new ReportType("30062");
+		public static readonly ReportType QOE_STREAM_QUALITY_APPLICATION_VERSION = new ReportType("30063");
+		public static readonly ReportType QOE_ERROR_TRACKING_APPLICATION_VERSION = new ReportType("30064");
 
 		private ReportType(string name) : base(name) { }
 	}

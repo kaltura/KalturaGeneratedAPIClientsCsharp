@@ -51,7 +51,9 @@ namespace Kaltura.Types
 		public const string REGION_IN = "regionIn";
 		public const string CITIES_IN = "citiesIn";
 		public const string OPERATING_SYSTEM_FAMILY_IN = "operatingSystemFamilyIn";
+		public const string OPERATING_SYSTEM_IN = "operatingSystemIn";
 		public const string BROWSER_FAMILY_IN = "browserFamilyIn";
+		public const string BROWSER_IN = "browserIn";
 		public const string TIME_ZONE_OFFSET = "timeZoneOffset";
 		public const string INTERVAL = "interval";
 		public const string MEDIA_TYPE_IN = "mediaTypeIn";
@@ -64,6 +66,9 @@ namespace Kaltura.Types
 		public const string PLAYBACK_TYPE_IN = "playbackTypeIn";
 		public const string PLAYBACK_CONTEXT_IDS_IN = "playbackContextIdsIn";
 		public const string ROOT_ENTRY_ID_IN = "rootEntryIdIn";
+		public const string ERROR_CODE_IN = "errorCodeIn";
+		public const string PLAYER_VERSION_IN = "playerVersionIn";
+		public const string ISP_IN = "ispIn";
 		#endregion
 
 		#region Private Fields
@@ -80,7 +85,9 @@ namespace Kaltura.Types
 		private string _RegionIn = null;
 		private string _CitiesIn = null;
 		private string _OperatingSystemFamilyIn = null;
+		private string _OperatingSystemIn = null;
 		private string _BrowserFamilyIn = null;
+		private string _BrowserIn = null;
 		private int _TimeZoneOffset = Int32.MinValue;
 		private ReportInterval _Interval = null;
 		private string _MediaTypeIn = null;
@@ -93,6 +100,9 @@ namespace Kaltura.Types
 		private string _PlaybackTypeIn = null;
 		private string _PlaybackContextIdsIn = null;
 		private string _RootEntryIdIn = null;
+		private string _ErrorCodeIn = null;
+		private string _PlayerVersionIn = null;
+		private string _IspIn = null;
 		#endregion
 
 		#region Properties
@@ -227,6 +237,16 @@ namespace Kaltura.Types
 			}
 		}
 		[JsonProperty]
+		public string OperatingSystemIn
+		{
+			get { return _OperatingSystemIn; }
+			set 
+			{ 
+				_OperatingSystemIn = value;
+				OnPropertyChanged("OperatingSystemIn");
+			}
+		}
+		[JsonProperty]
 		public string BrowserFamilyIn
 		{
 			get { return _BrowserFamilyIn; }
@@ -234,6 +254,16 @@ namespace Kaltura.Types
 			{ 
 				_BrowserFamilyIn = value;
 				OnPropertyChanged("BrowserFamilyIn");
+			}
+		}
+		[JsonProperty]
+		public string BrowserIn
+		{
+			get { return _BrowserIn; }
+			set 
+			{ 
+				_BrowserIn = value;
+				OnPropertyChanged("BrowserIn");
 			}
 		}
 		[JsonProperty]
@@ -356,6 +386,36 @@ namespace Kaltura.Types
 				OnPropertyChanged("RootEntryIdIn");
 			}
 		}
+		[JsonProperty]
+		public string ErrorCodeIn
+		{
+			get { return _ErrorCodeIn; }
+			set 
+			{ 
+				_ErrorCodeIn = value;
+				OnPropertyChanged("ErrorCodeIn");
+			}
+		}
+		[JsonProperty]
+		public string PlayerVersionIn
+		{
+			get { return _PlayerVersionIn; }
+			set 
+			{ 
+				_PlayerVersionIn = value;
+				OnPropertyChanged("PlayerVersionIn");
+			}
+		}
+		[JsonProperty]
+		public string IspIn
+		{
+			get { return _IspIn; }
+			set 
+			{ 
+				_IspIn = value;
+				OnPropertyChanged("IspIn");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -417,9 +477,17 @@ namespace Kaltura.Types
 			{
 				this._OperatingSystemFamilyIn = node["operatingSystemFamilyIn"].Value<string>();
 			}
+			if(node["operatingSystemIn"] != null)
+			{
+				this._OperatingSystemIn = node["operatingSystemIn"].Value<string>();
+			}
 			if(node["browserFamilyIn"] != null)
 			{
 				this._BrowserFamilyIn = node["browserFamilyIn"].Value<string>();
+			}
+			if(node["browserIn"] != null)
+			{
+				this._BrowserIn = node["browserIn"].Value<string>();
 			}
 			if(node["timeZoneOffset"] != null)
 			{
@@ -469,6 +537,18 @@ namespace Kaltura.Types
 			{
 				this._RootEntryIdIn = node["rootEntryIdIn"].Value<string>();
 			}
+			if(node["errorCodeIn"] != null)
+			{
+				this._ErrorCodeIn = node["errorCodeIn"].Value<string>();
+			}
+			if(node["playerVersionIn"] != null)
+			{
+				this._PlayerVersionIn = node["playerVersionIn"].Value<string>();
+			}
+			if(node["ispIn"] != null)
+			{
+				this._IspIn = node["ispIn"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -491,7 +571,9 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("regionIn", this._RegionIn);
 			kparams.AddIfNotNull("citiesIn", this._CitiesIn);
 			kparams.AddIfNotNull("operatingSystemFamilyIn", this._OperatingSystemFamilyIn);
+			kparams.AddIfNotNull("operatingSystemIn", this._OperatingSystemIn);
 			kparams.AddIfNotNull("browserFamilyIn", this._BrowserFamilyIn);
+			kparams.AddIfNotNull("browserIn", this._BrowserIn);
 			kparams.AddIfNotNull("timeZoneOffset", this._TimeZoneOffset);
 			kparams.AddIfNotNull("interval", this._Interval);
 			kparams.AddIfNotNull("mediaTypeIn", this._MediaTypeIn);
@@ -504,6 +586,9 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("playbackTypeIn", this._PlaybackTypeIn);
 			kparams.AddIfNotNull("playbackContextIdsIn", this._PlaybackContextIdsIn);
 			kparams.AddIfNotNull("rootEntryIdIn", this._RootEntryIdIn);
+			kparams.AddIfNotNull("errorCodeIn", this._ErrorCodeIn);
+			kparams.AddIfNotNull("playerVersionIn", this._PlayerVersionIn);
+			kparams.AddIfNotNull("ispIn", this._IspIn);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -536,8 +621,12 @@ namespace Kaltura.Types
 					return "CitiesIn";
 				case OPERATING_SYSTEM_FAMILY_IN:
 					return "OperatingSystemFamilyIn";
+				case OPERATING_SYSTEM_IN:
+					return "OperatingSystemIn";
 				case BROWSER_FAMILY_IN:
 					return "BrowserFamilyIn";
+				case BROWSER_IN:
+					return "BrowserIn";
 				case TIME_ZONE_OFFSET:
 					return "TimeZoneOffset";
 				case INTERVAL:
@@ -562,6 +651,12 @@ namespace Kaltura.Types
 					return "PlaybackContextIdsIn";
 				case ROOT_ENTRY_ID_IN:
 					return "RootEntryIdIn";
+				case ERROR_CODE_IN:
+					return "ErrorCodeIn";
+				case PLAYER_VERSION_IN:
+					return "PlayerVersionIn";
+				case ISP_IN:
+					return "IspIn";
 				default:
 					return base.getPropertyName(apiName);
 			}

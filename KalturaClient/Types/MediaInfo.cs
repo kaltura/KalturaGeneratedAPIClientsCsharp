@@ -77,6 +77,7 @@ namespace Kaltura.Types
 		public const string COLOR_TRANSFER = "colorTransfer";
 		public const string COLOR_PRIMARIES = "colorPrimaries";
 		public const string PIXEL_FORMAT = "pixelFormat";
+		public const string COLOR_SPACE = "colorSpace";
 		public const string CHROMA_SUBSAMPLING = "chromaSubsampling";
 		public const string BITS_DEPTH = "bitsDepth";
 		#endregion
@@ -121,6 +122,7 @@ namespace Kaltura.Types
 		private string _ColorTransfer = null;
 		private string _ColorPrimaries = null;
 		private string _PixelFormat = null;
+		private string _ColorSpace = null;
 		private string _ChromaSubsampling = null;
 		private int _BitsDepth = Int32.MinValue;
 		#endregion
@@ -517,6 +519,16 @@ namespace Kaltura.Types
 			}
 		}
 		[JsonProperty]
+		public string ColorSpace
+		{
+			get { return _ColorSpace; }
+			set 
+			{ 
+				_ColorSpace = value;
+				OnPropertyChanged("ColorSpace");
+			}
+		}
+		[JsonProperty]
 		public string ChromaSubsampling
 		{
 			get { return _ChromaSubsampling; }
@@ -701,6 +713,10 @@ namespace Kaltura.Types
 			{
 				this._PixelFormat = node["pixelFormat"].Value<string>();
 			}
+			if(node["colorSpace"] != null)
+			{
+				this._ColorSpace = node["colorSpace"].Value<string>();
+			}
 			if(node["chromaSubsampling"] != null)
 			{
 				this._ChromaSubsampling = node["chromaSubsampling"].Value<string>();
@@ -757,6 +773,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("colorTransfer", this._ColorTransfer);
 			kparams.AddIfNotNull("colorPrimaries", this._ColorPrimaries);
 			kparams.AddIfNotNull("pixelFormat", this._PixelFormat);
+			kparams.AddIfNotNull("colorSpace", this._ColorSpace);
 			kparams.AddIfNotNull("chromaSubsampling", this._ChromaSubsampling);
 			kparams.AddIfNotNull("bitsDepth", this._BitsDepth);
 			return kparams;
@@ -843,6 +860,8 @@ namespace Kaltura.Types
 					return "ColorPrimaries";
 				case PIXEL_FORMAT:
 					return "PixelFormat";
+				case COLOR_SPACE:
+					return "ColorSpace";
 				case CHROMA_SUBSAMPLING:
 					return "ChromaSubsampling";
 				case BITS_DEPTH:

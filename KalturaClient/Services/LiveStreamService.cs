@@ -479,6 +479,45 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class LiveStreamGetDetailsRequestBuilder : RequestBuilder<LiveStreamDetails>
+	{
+		#region Constants
+		public const string ID = "id";
+		#endregion
+
+		public string Id { get; set; }
+
+		public LiveStreamGetDetailsRequestBuilder()
+			: base("livestream", "getDetails")
+		{
+		}
+
+		public LiveStreamGetDetailsRequestBuilder(string id)
+			: this()
+		{
+			this.Id = id;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("id"))
+				kparams.AddIfNotNull("id", Id);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			return ObjectFactory.Create<LiveStreamDetails>(result);
+		}
+	}
+
 	public class LiveStreamIsLiveRequestBuilder : RequestBuilder<bool>
 	{
 		#region Constants
@@ -1050,6 +1089,11 @@ namespace Kaltura.Services
 		public static LiveStreamGetRequestBuilder Get(string entryId, int version = -1)
 		{
 			return new LiveStreamGetRequestBuilder(entryId, version);
+		}
+
+		public static LiveStreamGetDetailsRequestBuilder GetDetails(string id)
+		{
+			return new LiveStreamGetDetailsRequestBuilder(id);
 		}
 
 		public static LiveStreamIsLiveRequestBuilder IsLive(string id, PlaybackProtocol protocol)

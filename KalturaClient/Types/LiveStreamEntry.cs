@@ -43,6 +43,8 @@ namespace Kaltura.Types
 		public const string BITRATES = "bitrates";
 		public const string PRIMARY_BROADCASTING_URL = "primaryBroadcastingUrl";
 		public const string SECONDARY_BROADCASTING_URL = "secondaryBroadcastingUrl";
+		public const string PRIMARY_SECURED_BROADCASTING_URL = "primarySecuredBroadcastingUrl";
+		public const string SECONDARY_SECURED_BROADCASTING_URL = "secondarySecuredBroadcastingUrl";
 		public const string PRIMARY_RTSP_BROADCASTING_URL = "primaryRtspBroadcastingUrl";
 		public const string SECONDARY_RTSP_BROADCASTING_URL = "secondaryRtspBroadcastingUrl";
 		public const string STREAM_NAME = "streamName";
@@ -63,6 +65,8 @@ namespace Kaltura.Types
 		private IList<LiveStreamBitrate> _Bitrates;
 		private string _PrimaryBroadcastingUrl = null;
 		private string _SecondaryBroadcastingUrl = null;
+		private string _PrimarySecuredBroadcastingUrl = null;
+		private string _SecondarySecuredBroadcastingUrl = null;
 		private string _PrimaryRtspBroadcastingUrl = null;
 		private string _SecondaryRtspBroadcastingUrl = null;
 		private string _StreamName = null;
@@ -126,6 +130,26 @@ namespace Kaltura.Types
 			{ 
 				_SecondaryBroadcastingUrl = value;
 				OnPropertyChanged("SecondaryBroadcastingUrl");
+			}
+		}
+		[JsonProperty]
+		public string PrimarySecuredBroadcastingUrl
+		{
+			get { return _PrimarySecuredBroadcastingUrl; }
+			set 
+			{ 
+				_PrimarySecuredBroadcastingUrl = value;
+				OnPropertyChanged("PrimarySecuredBroadcastingUrl");
+			}
+		}
+		[JsonProperty]
+		public string SecondarySecuredBroadcastingUrl
+		{
+			get { return _SecondarySecuredBroadcastingUrl; }
+			set 
+			{ 
+				_SecondarySecuredBroadcastingUrl = value;
+				OnPropertyChanged("SecondarySecuredBroadcastingUrl");
 			}
 		}
 		[JsonProperty]
@@ -281,6 +305,14 @@ namespace Kaltura.Types
 			{
 				this._SecondaryBroadcastingUrl = node["secondaryBroadcastingUrl"].Value<string>();
 			}
+			if(node["primarySecuredBroadcastingUrl"] != null)
+			{
+				this._PrimarySecuredBroadcastingUrl = node["primarySecuredBroadcastingUrl"].Value<string>();
+			}
+			if(node["secondarySecuredBroadcastingUrl"] != null)
+			{
+				this._SecondarySecuredBroadcastingUrl = node["secondarySecuredBroadcastingUrl"].Value<string>();
+			}
 			if(node["primaryRtspBroadcastingUrl"] != null)
 			{
 				this._PrimaryRtspBroadcastingUrl = node["primaryRtspBroadcastingUrl"].Value<string>();
@@ -343,6 +375,8 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("bitrates", this._Bitrates);
 			kparams.AddIfNotNull("primaryBroadcastingUrl", this._PrimaryBroadcastingUrl);
 			kparams.AddIfNotNull("secondaryBroadcastingUrl", this._SecondaryBroadcastingUrl);
+			kparams.AddIfNotNull("primarySecuredBroadcastingUrl", this._PrimarySecuredBroadcastingUrl);
+			kparams.AddIfNotNull("secondarySecuredBroadcastingUrl", this._SecondarySecuredBroadcastingUrl);
 			kparams.AddIfNotNull("primaryRtspBroadcastingUrl", this._PrimaryRtspBroadcastingUrl);
 			kparams.AddIfNotNull("secondaryRtspBroadcastingUrl", this._SecondaryRtspBroadcastingUrl);
 			kparams.AddIfNotNull("streamName", this._StreamName);
@@ -371,6 +405,10 @@ namespace Kaltura.Types
 					return "PrimaryBroadcastingUrl";
 				case SECONDARY_BROADCASTING_URL:
 					return "SecondaryBroadcastingUrl";
+				case PRIMARY_SECURED_BROADCASTING_URL:
+					return "PrimarySecuredBroadcastingUrl";
+				case SECONDARY_SECURED_BROADCASTING_URL:
+					return "SecondarySecuredBroadcastingUrl";
 				case PRIMARY_RTSP_BROADCASTING_URL:
 					return "PrimaryRtspBroadcastingUrl";
 				case SECONDARY_RTSP_BROADCASTING_URL:

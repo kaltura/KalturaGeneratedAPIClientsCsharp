@@ -40,13 +40,11 @@ namespace Kaltura.Types
 		#region Constants
 		public const string CREDIT = "credit";
 		public const string FROM_DATE = "fromDate";
-		public const string TO_DATE = "toDate";
 		#endregion
 
 		#region Private Fields
 		private int _Credit = Int32.MinValue;
 		private int _FromDate = Int32.MinValue;
-		private int _ToDate = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -70,16 +68,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FromDate");
 			}
 		}
-		[JsonProperty]
-		public int ToDate
-		{
-			get { return _ToDate; }
-			set 
-			{ 
-				_ToDate = value;
-				OnPropertyChanged("ToDate");
-			}
-		}
 		#endregion
 
 		#region CTor
@@ -97,10 +85,6 @@ namespace Kaltura.Types
 			{
 				this._FromDate = ParseInt(node["fromDate"].Value<string>());
 			}
-			if(node["toDate"] != null)
-			{
-				this._ToDate = ParseInt(node["toDate"].Value<string>());
-			}
 		}
 		#endregion
 
@@ -112,7 +96,6 @@ namespace Kaltura.Types
 				kparams.AddReplace("objectType", "KalturaUnlimitedVendorCredit");
 			kparams.AddIfNotNull("credit", this._Credit);
 			kparams.AddIfNotNull("fromDate", this._FromDate);
-			kparams.AddIfNotNull("toDate", this._ToDate);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -123,8 +106,6 @@ namespace Kaltura.Types
 					return "Credit";
 				case FROM_DATE:
 					return "FromDate";
-				case TO_DATE:
-					return "ToDate";
 				default:
 					return base.getPropertyName(apiName);
 			}

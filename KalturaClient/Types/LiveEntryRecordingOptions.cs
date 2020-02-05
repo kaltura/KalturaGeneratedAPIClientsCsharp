@@ -44,6 +44,7 @@ namespace Kaltura.Types
 		public const string SHOULD_MAKE_HIDDEN = "shouldMakeHidden";
 		public const string SHOULD_AUTO_ARCHIVE = "shouldAutoArchive";
 		public const string NON_DELETED_CUE_POINTS_TAGS = "nonDeletedCuePointsTags";
+		public const string ARCHIVE_VOD_SUFFIX_TIMEZONE = "archiveVodSuffixTimezone";
 		#endregion
 
 		#region Private Fields
@@ -53,6 +54,7 @@ namespace Kaltura.Types
 		private NullableBoolean _ShouldMakeHidden = (NullableBoolean)Int32.MinValue;
 		private NullableBoolean _ShouldAutoArchive = (NullableBoolean)Int32.MinValue;
 		private string _NonDeletedCuePointsTags = null;
+		private string _ArchiveVodSuffixTimezone = null;
 		#endregion
 
 		#region Properties
@@ -116,6 +118,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("NonDeletedCuePointsTags");
 			}
 		}
+		[JsonProperty]
+		public string ArchiveVodSuffixTimezone
+		{
+			get { return _ArchiveVodSuffixTimezone; }
+			set 
+			{ 
+				_ArchiveVodSuffixTimezone = value;
+				OnPropertyChanged("ArchiveVodSuffixTimezone");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -149,6 +161,10 @@ namespace Kaltura.Types
 			{
 				this._NonDeletedCuePointsTags = node["nonDeletedCuePointsTags"].Value<string>();
 			}
+			if(node["archiveVodSuffixTimezone"] != null)
+			{
+				this._ArchiveVodSuffixTimezone = node["archiveVodSuffixTimezone"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -164,6 +180,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("shouldMakeHidden", this._ShouldMakeHidden);
 			kparams.AddIfNotNull("shouldAutoArchive", this._ShouldAutoArchive);
 			kparams.AddIfNotNull("nonDeletedCuePointsTags", this._NonDeletedCuePointsTags);
+			kparams.AddIfNotNull("archiveVodSuffixTimezone", this._ArchiveVodSuffixTimezone);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -182,6 +199,8 @@ namespace Kaltura.Types
 					return "ShouldAutoArchive";
 				case NON_DELETED_CUE_POINTS_TAGS:
 					return "NonDeletedCuePointsTags";
+				case ARCHIVE_VOD_SUFFIX_TIMEZONE:
+					return "ArchiveVodSuffixTimezone";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -202,19 +202,22 @@ namespace Kaltura.Services
 	{
 		#region Constants
 		public const string LIVE_ENTRY_ID = "liveEntryId";
+		public const string VOD_ENTRY_ID = "vodEntryId";
 		#endregion
 
 		public string LiveEntryId { get; set; }
+		public string VodEntryId { get; set; }
 
 		public LiveStreamArchiveRequestBuilder()
 			: base("livestream", "archive")
 		{
 		}
 
-		public LiveStreamArchiveRequestBuilder(string liveEntryId)
+		public LiveStreamArchiveRequestBuilder(string liveEntryId, string vodEntryId)
 			: this()
 		{
 			this.LiveEntryId = liveEntryId;
+			this.VodEntryId = vodEntryId;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -222,6 +225,8 @@ namespace Kaltura.Services
 			Params kparams = base.getParameters(includeServiceAndAction);
 			if (!isMapped("liveEntryId"))
 				kparams.AddIfNotNull("liveEntryId", LiveEntryId);
+			if (!isMapped("vodEntryId"))
+				kparams.AddIfNotNull("vodEntryId", VodEntryId);
 			return kparams;
 		}
 
@@ -1061,9 +1066,9 @@ namespace Kaltura.Services
 			return new LiveStreamAppendRecordingRequestBuilder(entryId, assetId, mediaServerIndex, resource, duration, isLastChunk);
 		}
 
-		public static LiveStreamArchiveRequestBuilder Archive(string liveEntryId)
+		public static LiveStreamArchiveRequestBuilder Archive(string liveEntryId, string vodEntryId)
 		{
-			return new LiveStreamArchiveRequestBuilder(liveEntryId);
+			return new LiveStreamArchiveRequestBuilder(liveEntryId, vodEntryId);
 		}
 
 		public static LiveStreamAuthenticateRequestBuilder Authenticate(string entryId, string token, string hostname = null, EntryServerNodeType mediaServerIndex = null, string applicationName = null)

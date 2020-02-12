@@ -39,10 +39,12 @@ namespace Kaltura.Types
 	{
 		#region Constants
 		public const string LIVE_ENTRY_ID = "liveEntryId";
+		public const string VOD_ENTRY_ID = "vodEntryId";
 		#endregion
 
 		#region Private Fields
 		private string _LiveEntryId = null;
+		private string _VodEntryId = null;
 		#endregion
 
 		#region Properties
@@ -54,6 +56,16 @@ namespace Kaltura.Types
 			{ 
 				_LiveEntryId = value;
 				OnPropertyChanged("LiveEntryId");
+			}
+		}
+		[JsonProperty]
+		public string VodEntryId
+		{
+			get { return _VodEntryId; }
+			set 
+			{ 
+				_VodEntryId = value;
+				OnPropertyChanged("VodEntryId");
 			}
 		}
 		#endregion
@@ -69,6 +81,10 @@ namespace Kaltura.Types
 			{
 				this._LiveEntryId = node["liveEntryId"].Value<string>();
 			}
+			if(node["vodEntryId"] != null)
+			{
+				this._VodEntryId = node["vodEntryId"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -79,6 +95,7 @@ namespace Kaltura.Types
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaLiveEntryArchiveJobData");
 			kparams.AddIfNotNull("liveEntryId", this._LiveEntryId);
+			kparams.AddIfNotNull("vodEntryId", this._VodEntryId);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -87,6 +104,8 @@ namespace Kaltura.Types
 			{
 				case LIVE_ENTRY_ID:
 					return "LiveEntryId";
+				case VOD_ENTRY_ID:
+					return "VodEntryId";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -42,6 +42,7 @@ namespace Kaltura.Types
 		public const string ENTRY_ID_IN = "entryIdIn";
 		public const string SERVER_NODE_ID_EQUAL = "serverNodeIdEqual";
 		public const string SERVER_NODE_ID_IN = "serverNodeIdIn";
+		public const string SERVER_NODE_ID_NOT_IN = "serverNodeIdNotIn";
 		public const string CREATED_AT_LESS_THAN_OR_EQUAL = "createdAtLessThanOrEqual";
 		public const string CREATED_AT_GREATER_THAN_OR_EQUAL = "createdAtGreaterThanOrEqual";
 		public const string UPDATED_AT_GREATER_THAN_OR_EQUAL = "updatedAtGreaterThanOrEqual";
@@ -58,6 +59,7 @@ namespace Kaltura.Types
 		private string _EntryIdIn = null;
 		private int _ServerNodeIdEqual = Int32.MinValue;
 		private string _ServerNodeIdIn = null;
+		private string _ServerNodeIdNotIn = null;
 		private int _CreatedAtLessThanOrEqual = Int32.MinValue;
 		private int _CreatedAtGreaterThanOrEqual = Int32.MinValue;
 		private int _UpdatedAtGreaterThanOrEqual = Int32.MinValue;
@@ -108,6 +110,16 @@ namespace Kaltura.Types
 			{ 
 				_ServerNodeIdIn = value;
 				OnPropertyChanged("ServerNodeIdIn");
+			}
+		}
+		[JsonProperty]
+		public string ServerNodeIdNotIn
+		{
+			get { return _ServerNodeIdNotIn; }
+			set 
+			{ 
+				_ServerNodeIdNotIn = value;
+				OnPropertyChanged("ServerNodeIdNotIn");
 			}
 		}
 		[JsonProperty]
@@ -225,6 +237,10 @@ namespace Kaltura.Types
 			{
 				this._ServerNodeIdIn = node["serverNodeIdIn"].Value<string>();
 			}
+			if(node["serverNodeIdNotIn"] != null)
+			{
+				this._ServerNodeIdNotIn = node["serverNodeIdNotIn"].Value<string>();
+			}
 			if(node["createdAtLessThanOrEqual"] != null)
 			{
 				this._CreatedAtLessThanOrEqual = ParseInt(node["createdAtLessThanOrEqual"].Value<string>());
@@ -274,6 +290,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("entryIdIn", this._EntryIdIn);
 			kparams.AddIfNotNull("serverNodeIdEqual", this._ServerNodeIdEqual);
 			kparams.AddIfNotNull("serverNodeIdIn", this._ServerNodeIdIn);
+			kparams.AddIfNotNull("serverNodeIdNotIn", this._ServerNodeIdNotIn);
 			kparams.AddIfNotNull("createdAtLessThanOrEqual", this._CreatedAtLessThanOrEqual);
 			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this._CreatedAtGreaterThanOrEqual);
 			kparams.AddIfNotNull("updatedAtGreaterThanOrEqual", this._UpdatedAtGreaterThanOrEqual);
@@ -297,6 +314,8 @@ namespace Kaltura.Types
 					return "ServerNodeIdEqual";
 				case SERVER_NODE_ID_IN:
 					return "ServerNodeIdIn";
+				case SERVER_NODE_ID_NOT_IN:
+					return "ServerNodeIdNotIn";
 				case CREATED_AT_LESS_THAN_OR_EQUAL:
 					return "CreatedAtLessThanOrEqual";
 				case CREATED_AT_GREATER_THAN_OR_EQUAL:

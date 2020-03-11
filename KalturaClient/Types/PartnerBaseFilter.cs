@@ -55,6 +55,7 @@ namespace Kaltura.Types
 		public const string PARTNER_NAME_DESCRIPTION_WEBSITE_ADMIN_NAME_ADMIN_EMAIL_LIKE = "partnerNameDescriptionWebsiteAdminNameAdminEmailLike";
 		public const string CREATED_AT_GREATER_THAN_OR_EQUAL = "createdAtGreaterThanOrEqual";
 		public const string ID_GREATER_THAN = "idGreaterThan";
+		public const string MONITOR_USAGE_EQUAL = "monitorUsageEqual";
 		#endregion
 
 		#region Private Fields
@@ -75,6 +76,7 @@ namespace Kaltura.Types
 		private string _PartnerNameDescriptionWebsiteAdminNameAdminEmailLike = null;
 		private int _CreatedAtGreaterThanOrEqual = Int32.MinValue;
 		private int _IdGreaterThan = Int32.MinValue;
+		private int _MonitorUsageEqual = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -248,6 +250,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdGreaterThan");
 			}
 		}
+		[JsonProperty]
+		public int MonitorUsageEqual
+		{
+			get { return _MonitorUsageEqual; }
+			set 
+			{ 
+				_MonitorUsageEqual = value;
+				OnPropertyChanged("MonitorUsageEqual");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -325,6 +337,10 @@ namespace Kaltura.Types
 			{
 				this._IdGreaterThan = ParseInt(node["idGreaterThan"].Value<string>());
 			}
+			if(node["monitorUsageEqual"] != null)
+			{
+				this._MonitorUsageEqual = ParseInt(node["monitorUsageEqual"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -351,6 +367,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("partnerNameDescriptionWebsiteAdminNameAdminEmailLike", this._PartnerNameDescriptionWebsiteAdminNameAdminEmailLike);
 			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this._CreatedAtGreaterThanOrEqual);
 			kparams.AddIfNotNull("idGreaterThan", this._IdGreaterThan);
+			kparams.AddIfNotNull("monitorUsageEqual", this._MonitorUsageEqual);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -391,6 +408,8 @@ namespace Kaltura.Types
 					return "CreatedAtGreaterThanOrEqual";
 				case ID_GREATER_THAN:
 					return "IdGreaterThan";
+				case MONITOR_USAGE_EQUAL:
+					return "MonitorUsageEqual";
 				default:
 					return base.getPropertyName(apiName);
 			}

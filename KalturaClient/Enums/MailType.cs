@@ -64,6 +64,7 @@ namespace Kaltura.Enums
 		public static readonly MailType MAIL_TYPE_VIDEO_SERVICE_NOTICE_ACCOUNT_DELETED = new MailType("84");
 		public static readonly MailType MAIL_TYPE_VIDEO_SERVICE_NOTICE_UPGRADE_OFFER = new MailType("85");
 		public static readonly MailType MAIL_TYPE_ACCOUNT_REACTIVE_CONFIRM = new MailType("86");
+		public static readonly MailType MAIL_TYPE_EXTENDED_FREE_TRIAL_ENDS_WARNING = new MailType("87");
 		public static readonly MailType MAIL_TYPE_SYSTEM_USER_RESET_PASSWORD = new MailType("110");
 		public static readonly MailType MAIL_TYPE_SYSTEM_USER_RESET_PASSWORD_SUCCESS = new MailType("111");
 		public static readonly MailType MAIL_TYPE_SYSTEM_USER_NEW_PASSWORD = new MailType("112");

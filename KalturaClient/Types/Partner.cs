@@ -97,6 +97,14 @@ namespace Kaltura.Types
 		public const string OTT_ENVIRONMENT_URL = "ottEnvironmentUrl";
 		public const string ESEARCH_LANGUAGES = "eSearchLanguages";
 		public const string AUTHENTICATION_TYPE = "authenticationType";
+		public const string EXTENDED_FREE_TRAIL_EXPIRY_REASON = "extendedFreeTrailExpiryReason";
+		public const string EXTENDED_FREE_TRAIL_EXPIRY_DATE = "extendedFreeTrailExpiryDate";
+		public const string EXTENDED_FREE_TRAIL = "extendedFreeTrail";
+		public const string EXTENDED_FREE_TRAIL_ENDS_WARNING = "extendedFreeTrailEndsWarning";
+		public const string EIGHTY_PERCENT_WARNING = "eightyPercentWarning";
+		public const string USAGE_LIMIT_WARNING = "usageLimitWarning";
+		public const string LAST_FREE_TRIAL_NOTIFICATION_DAY = "lastFreeTrialNotificationDay";
+		public const string MONITOR_USAGE = "monitorUsage";
 		#endregion
 
 		#region Private Fields
@@ -159,6 +167,14 @@ namespace Kaltura.Types
 		private string _OttEnvironmentUrl = null;
 		private IList<ESearchLanguageItem> _ESearchLanguages;
 		private PartnerAuthenticationType _AuthenticationType = (PartnerAuthenticationType)Int32.MinValue;
+		private string _ExtendedFreeTrailExpiryReason = null;
+		private int _ExtendedFreeTrailExpiryDate = Int32.MinValue;
+		private int _ExtendedFreeTrail = Int32.MinValue;
+		private bool? _ExtendedFreeTrailEndsWarning = null;
+		private int _EightyPercentWarning = Int32.MinValue;
+		private int _UsageLimitWarning = Int32.MinValue;
+		private int _LastFreeTrialNotificationDay = Int32.MinValue;
+		private int _MonitorUsage = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -752,6 +768,86 @@ namespace Kaltura.Types
 				OnPropertyChanged("AuthenticationType");
 			}
 		}
+		[JsonProperty]
+		public string ExtendedFreeTrailExpiryReason
+		{
+			get { return _ExtendedFreeTrailExpiryReason; }
+			private set 
+			{ 
+				_ExtendedFreeTrailExpiryReason = value;
+				OnPropertyChanged("ExtendedFreeTrailExpiryReason");
+			}
+		}
+		[JsonProperty]
+		public int ExtendedFreeTrailExpiryDate
+		{
+			get { return _ExtendedFreeTrailExpiryDate; }
+			private set 
+			{ 
+				_ExtendedFreeTrailExpiryDate = value;
+				OnPropertyChanged("ExtendedFreeTrailExpiryDate");
+			}
+		}
+		[JsonProperty]
+		public int ExtendedFreeTrail
+		{
+			get { return _ExtendedFreeTrail; }
+			private set 
+			{ 
+				_ExtendedFreeTrail = value;
+				OnPropertyChanged("ExtendedFreeTrail");
+			}
+		}
+		[JsonProperty]
+		public bool? ExtendedFreeTrailEndsWarning
+		{
+			get { return _ExtendedFreeTrailEndsWarning; }
+			private set 
+			{ 
+				_ExtendedFreeTrailEndsWarning = value;
+				OnPropertyChanged("ExtendedFreeTrailEndsWarning");
+			}
+		}
+		[JsonProperty]
+		public int EightyPercentWarning
+		{
+			get { return _EightyPercentWarning; }
+			private set 
+			{ 
+				_EightyPercentWarning = value;
+				OnPropertyChanged("EightyPercentWarning");
+			}
+		}
+		[JsonProperty]
+		public int UsageLimitWarning
+		{
+			get { return _UsageLimitWarning; }
+			private set 
+			{ 
+				_UsageLimitWarning = value;
+				OnPropertyChanged("UsageLimitWarning");
+			}
+		}
+		[JsonProperty]
+		public int LastFreeTrialNotificationDay
+		{
+			get { return _LastFreeTrialNotificationDay; }
+			private set 
+			{ 
+				_LastFreeTrialNotificationDay = value;
+				OnPropertyChanged("LastFreeTrialNotificationDay");
+			}
+		}
+		[JsonProperty]
+		public int MonitorUsage
+		{
+			get { return _MonitorUsage; }
+			private set 
+			{ 
+				_MonitorUsage = value;
+				OnPropertyChanged("MonitorUsage");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -1013,6 +1109,38 @@ namespace Kaltura.Types
 			{
 				this._AuthenticationType = (PartnerAuthenticationType)ParseEnum(typeof(PartnerAuthenticationType), node["authenticationType"].Value<string>());
 			}
+			if(node["extendedFreeTrailExpiryReason"] != null)
+			{
+				this._ExtendedFreeTrailExpiryReason = node["extendedFreeTrailExpiryReason"].Value<string>();
+			}
+			if(node["extendedFreeTrailExpiryDate"] != null)
+			{
+				this._ExtendedFreeTrailExpiryDate = ParseInt(node["extendedFreeTrailExpiryDate"].Value<string>());
+			}
+			if(node["extendedFreeTrail"] != null)
+			{
+				this._ExtendedFreeTrail = ParseInt(node["extendedFreeTrail"].Value<string>());
+			}
+			if(node["extendedFreeTrailEndsWarning"] != null)
+			{
+				this._ExtendedFreeTrailEndsWarning = ParseBool(node["extendedFreeTrailEndsWarning"].Value<string>());
+			}
+			if(node["eightyPercentWarning"] != null)
+			{
+				this._EightyPercentWarning = ParseInt(node["eightyPercentWarning"].Value<string>());
+			}
+			if(node["usageLimitWarning"] != null)
+			{
+				this._UsageLimitWarning = ParseInt(node["usageLimitWarning"].Value<string>());
+			}
+			if(node["lastFreeTrialNotificationDay"] != null)
+			{
+				this._LastFreeTrialNotificationDay = ParseInt(node["lastFreeTrialNotificationDay"].Value<string>());
+			}
+			if(node["monitorUsage"] != null)
+			{
+				this._MonitorUsage = ParseInt(node["monitorUsage"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -1081,6 +1209,14 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("ottEnvironmentUrl", this._OttEnvironmentUrl);
 			kparams.AddIfNotNull("eSearchLanguages", this._ESearchLanguages);
 			kparams.AddIfNotNull("authenticationType", this._AuthenticationType);
+			kparams.AddIfNotNull("extendedFreeTrailExpiryReason", this._ExtendedFreeTrailExpiryReason);
+			kparams.AddIfNotNull("extendedFreeTrailExpiryDate", this._ExtendedFreeTrailExpiryDate);
+			kparams.AddIfNotNull("extendedFreeTrail", this._ExtendedFreeTrail);
+			kparams.AddIfNotNull("extendedFreeTrailEndsWarning", this._ExtendedFreeTrailEndsWarning);
+			kparams.AddIfNotNull("eightyPercentWarning", this._EightyPercentWarning);
+			kparams.AddIfNotNull("usageLimitWarning", this._UsageLimitWarning);
+			kparams.AddIfNotNull("lastFreeTrialNotificationDay", this._LastFreeTrialNotificationDay);
+			kparams.AddIfNotNull("monitorUsage", this._MonitorUsage);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -1205,6 +1341,22 @@ namespace Kaltura.Types
 					return "ESearchLanguages";
 				case AUTHENTICATION_TYPE:
 					return "AuthenticationType";
+				case EXTENDED_FREE_TRAIL_EXPIRY_REASON:
+					return "ExtendedFreeTrailExpiryReason";
+				case EXTENDED_FREE_TRAIL_EXPIRY_DATE:
+					return "ExtendedFreeTrailExpiryDate";
+				case EXTENDED_FREE_TRAIL:
+					return "ExtendedFreeTrail";
+				case EXTENDED_FREE_TRAIL_ENDS_WARNING:
+					return "ExtendedFreeTrailEndsWarning";
+				case EIGHTY_PERCENT_WARNING:
+					return "EightyPercentWarning";
+				case USAGE_LIMIT_WARNING:
+					return "UsageLimitWarning";
+				case LAST_FREE_TRIAL_NOTIFICATION_DAY:
+					return "LastFreeTrialNotificationDay";
+				case MONITOR_USAGE:
+					return "MonitorUsage";
 				default:
 					return base.getPropertyName(apiName);
 			}

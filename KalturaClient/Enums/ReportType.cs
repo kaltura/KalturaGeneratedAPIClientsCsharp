@@ -80,6 +80,7 @@ namespace Kaltura.Enums
 		public static readonly ReportType USER_INTERACTIVE_VIDEO = new ReportType("49");
 		public static readonly ReportType INTERACTIVE_VIDEO_TOP_NODES = new ReportType("50");
 		public static readonly ReportType LATEST_PLAYED_ENTRIES = new ReportType("51");
+		public static readonly ReportType CATEGORY_HIGHLIGHTS = new ReportType("52");
 		public static readonly ReportType PARTNER_USAGE = new ReportType("201");
 		public static readonly ReportType MAP_OVERLAY_COUNTRY_REALTIME = new ReportType("10001");
 		public static readonly ReportType MAP_OVERLAY_REGION_REALTIME = new ReportType("10002");

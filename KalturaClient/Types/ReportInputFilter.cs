@@ -70,6 +70,7 @@ namespace Kaltura.Types
 		public const string PLAYER_VERSION_IN = "playerVersionIn";
 		public const string ISP_IN = "ispIn";
 		public const string APPLICATION_VERSION_IN = "applicationVersionIn";
+		public const string NODE_IDS_IN = "nodeIdsIn";
 		#endregion
 
 		#region Private Fields
@@ -105,6 +106,7 @@ namespace Kaltura.Types
 		private string _PlayerVersionIn = null;
 		private string _IspIn = null;
 		private string _ApplicationVersionIn = null;
+		private string _NodeIdsIn = null;
 		#endregion
 
 		#region Properties
@@ -428,6 +430,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("ApplicationVersionIn");
 			}
 		}
+		[JsonProperty]
+		public string NodeIdsIn
+		{
+			get { return _NodeIdsIn; }
+			set 
+			{ 
+				_NodeIdsIn = value;
+				OnPropertyChanged("NodeIdsIn");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -565,6 +577,10 @@ namespace Kaltura.Types
 			{
 				this._ApplicationVersionIn = node["applicationVersionIn"].Value<string>();
 			}
+			if(node["nodeIdsIn"] != null)
+			{
+				this._NodeIdsIn = node["nodeIdsIn"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -606,6 +622,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("playerVersionIn", this._PlayerVersionIn);
 			kparams.AddIfNotNull("ispIn", this._IspIn);
 			kparams.AddIfNotNull("applicationVersionIn", this._ApplicationVersionIn);
+			kparams.AddIfNotNull("nodeIdsIn", this._NodeIdsIn);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -676,6 +693,8 @@ namespace Kaltura.Types
 					return "IspIn";
 				case APPLICATION_VERSION_IN:
 					return "ApplicationVersionIn";
+				case NODE_IDS_IN:
+					return "NodeIdsIn";
 				default:
 					return base.getPropertyName(apiName);
 			}

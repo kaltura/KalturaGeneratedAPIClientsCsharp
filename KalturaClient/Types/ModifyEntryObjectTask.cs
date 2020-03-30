@@ -45,6 +45,7 @@ namespace Kaltura.Types
 		public const string INPUT_USER_ID = "inputUserId";
 		public const string INPUT_ENTITLED_USERS_EDIT = "inputEntitledUsersEdit";
 		public const string INPUT_ENTITLED_USERS_PUBLISH = "inputEntitledUsersPublish";
+		public const string RESET_MEDIA_REPURPOSING_PROCESS = "resetMediaRepurposingProcess";
 		#endregion
 
 		#region Private Fields
@@ -55,6 +56,7 @@ namespace Kaltura.Types
 		private string _InputUserId = null;
 		private string _InputEntitledUsersEdit = null;
 		private string _InputEntitledUsersPublish = null;
+		private bool? _ResetMediaRepurposingProcess = null;
 		#endregion
 
 		#region Properties
@@ -128,6 +130,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("InputEntitledUsersPublish");
 			}
 		}
+		[JsonProperty]
+		public bool? ResetMediaRepurposingProcess
+		{
+			get { return _ResetMediaRepurposingProcess; }
+			set 
+			{ 
+				_ResetMediaRepurposingProcess = value;
+				OnPropertyChanged("ResetMediaRepurposingProcess");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -173,6 +185,10 @@ namespace Kaltura.Types
 			{
 				this._InputEntitledUsersPublish = node["inputEntitledUsersPublish"].Value<string>();
 			}
+			if(node["resetMediaRepurposingProcess"] != null)
+			{
+				this._ResetMediaRepurposingProcess = ParseBool(node["resetMediaRepurposingProcess"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -189,6 +205,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("inputUserId", this._InputUserId);
 			kparams.AddIfNotNull("inputEntitledUsersEdit", this._InputEntitledUsersEdit);
 			kparams.AddIfNotNull("inputEntitledUsersPublish", this._InputEntitledUsersPublish);
+			kparams.AddIfNotNull("resetMediaRepurposingProcess", this._ResetMediaRepurposingProcess);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -209,6 +226,8 @@ namespace Kaltura.Types
 					return "InputEntitledUsersEdit";
 				case INPUT_ENTITLED_USERS_PUBLISH:
 					return "InputEntitledUsersPublish";
+				case RESET_MEDIA_REPURPOSING_PROCESS:
+					return "ResetMediaRepurposingProcess";
 				default:
 					return base.getPropertyName(apiName);
 			}

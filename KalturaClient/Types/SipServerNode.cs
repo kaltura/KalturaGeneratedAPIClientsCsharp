@@ -25,22 +25,54 @@
 //
 // @ignore
 // ===================================================================================================
-namespace Kaltura.Enums
-{
-	public sealed class EntryType : StringEnum
-	{
-		public static readonly EntryType AUTOMATIC = new EntryType("-1");
-		public static readonly EntryType CONFERENCE_ENTRY_SERVER = new EntryType("conference.CONFERENCE_ENTRY_SERVER");
-		public static readonly EntryType EXTERNAL_MEDIA = new EntryType("externalMedia.externalMedia");
-		public static readonly EntryType SIP_ENTRY_SERVER = new EntryType("sip.SIP_ENTRY_SERVER");
-		public static readonly EntryType MEDIA_CLIP = new EntryType("1");
-		public static readonly EntryType MIX = new EntryType("2");
-		public static readonly EntryType PLAYLIST = new EntryType("5");
-		public static readonly EntryType DATA = new EntryType("6");
-		public static readonly EntryType LIVE_STREAM = new EntryType("7");
-		public static readonly EntryType LIVE_CHANNEL = new EntryType("8");
-		public static readonly EntryType DOCUMENT = new EntryType("10");
+using System;
+using System.Xml;
+using System.Collections.Generic;
+using Kaltura.Enums;
+using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
-		private EntryType(string name) : base(name) { }
+namespace Kaltura.Types
+{
+	public class SipServerNode : ServerNode
+	{
+		#region Constants
+		#endregion
+
+		#region Private Fields
+		#endregion
+
+		#region Properties
+		#endregion
+
+		#region CTor
+		public SipServerNode()
+		{
+		}
+
+		public SipServerNode(JToken node) : base(node)
+		{
+		}
+		#endregion
+
+		#region Methods
+		public override Params ToParams(bool includeObjectType = true)
+		{
+			Params kparams = base.ToParams(includeObjectType);
+			if (includeObjectType)
+				kparams.AddReplace("objectType", "KalturaSipServerNode");
+			return kparams;
+		}
+		protected override string getPropertyName(string apiName)
+		{
+			switch(apiName)
+			{
+				default:
+					return base.getPropertyName(apiName);
+			}
+		}
+		#endregion
 	}
 }
+

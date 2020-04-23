@@ -27,20 +27,15 @@
 // ===================================================================================================
 namespace Kaltura.Enums
 {
-	public sealed class EntryType : StringEnum
+	public sealed class SipServerNodeOrderBy : StringEnum
 	{
-		public static readonly EntryType AUTOMATIC = new EntryType("-1");
-		public static readonly EntryType CONFERENCE_ENTRY_SERVER = new EntryType("conference.CONFERENCE_ENTRY_SERVER");
-		public static readonly EntryType EXTERNAL_MEDIA = new EntryType("externalMedia.externalMedia");
-		public static readonly EntryType SIP_ENTRY_SERVER = new EntryType("sip.SIP_ENTRY_SERVER");
-		public static readonly EntryType MEDIA_CLIP = new EntryType("1");
-		public static readonly EntryType MIX = new EntryType("2");
-		public static readonly EntryType PLAYLIST = new EntryType("5");
-		public static readonly EntryType DATA = new EntryType("6");
-		public static readonly EntryType LIVE_STREAM = new EntryType("7");
-		public static readonly EntryType LIVE_CHANNEL = new EntryType("8");
-		public static readonly EntryType DOCUMENT = new EntryType("10");
+		public static readonly SipServerNodeOrderBy CREATED_AT_ASC = new SipServerNodeOrderBy("+createdAt");
+		public static readonly SipServerNodeOrderBy HEARTBEAT_TIME_ASC = new SipServerNodeOrderBy("+heartbeatTime");
+		public static readonly SipServerNodeOrderBy UPDATED_AT_ASC = new SipServerNodeOrderBy("+updatedAt");
+		public static readonly SipServerNodeOrderBy CREATED_AT_DESC = new SipServerNodeOrderBy("-createdAt");
+		public static readonly SipServerNodeOrderBy HEARTBEAT_TIME_DESC = new SipServerNodeOrderBy("-heartbeatTime");
+		public static readonly SipServerNodeOrderBy UPDATED_AT_DESC = new SipServerNodeOrderBy("-updatedAt");
 
-		private EntryType(string name) : base(name) { }
+		private SipServerNodeOrderBy(string name) : base(name) { }
 	}
 }

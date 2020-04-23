@@ -27,20 +27,13 @@
 // ===================================================================================================
 namespace Kaltura.Enums
 {
-	public sealed class EntryType : StringEnum
+	public sealed class PodcastDistributionProfileOrderBy : StringEnum
 	{
-		public static readonly EntryType AUTOMATIC = new EntryType("-1");
-		public static readonly EntryType CONFERENCE_ENTRY_SERVER = new EntryType("conference.CONFERENCE_ENTRY_SERVER");
-		public static readonly EntryType EXTERNAL_MEDIA = new EntryType("externalMedia.externalMedia");
-		public static readonly EntryType SIP_ENTRY_SERVER = new EntryType("sip.SIP_ENTRY_SERVER");
-		public static readonly EntryType MEDIA_CLIP = new EntryType("1");
-		public static readonly EntryType MIX = new EntryType("2");
-		public static readonly EntryType PLAYLIST = new EntryType("5");
-		public static readonly EntryType DATA = new EntryType("6");
-		public static readonly EntryType LIVE_STREAM = new EntryType("7");
-		public static readonly EntryType LIVE_CHANNEL = new EntryType("8");
-		public static readonly EntryType DOCUMENT = new EntryType("10");
+		public static readonly PodcastDistributionProfileOrderBy CREATED_AT_ASC = new PodcastDistributionProfileOrderBy("+createdAt");
+		public static readonly PodcastDistributionProfileOrderBy UPDATED_AT_ASC = new PodcastDistributionProfileOrderBy("+updatedAt");
+		public static readonly PodcastDistributionProfileOrderBy CREATED_AT_DESC = new PodcastDistributionProfileOrderBy("-createdAt");
+		public static readonly PodcastDistributionProfileOrderBy UPDATED_AT_DESC = new PodcastDistributionProfileOrderBy("-updatedAt");
 
-		private EntryType(string name) : base(name) { }
+		private PodcastDistributionProfileOrderBy(string name) : base(name) { }
 	}
 }

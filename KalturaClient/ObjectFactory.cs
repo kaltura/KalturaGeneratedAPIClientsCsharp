@@ -204,6 +204,8 @@ namespace Kaltura
 					return new ListResponse<Playlist>(jToken);
 				case "KalturaQuizListResponse":
 					return new ListResponse<Quiz>(jToken);
+				case "KalturaRatingCountListResponse":
+					return new ListResponse<RatingCount>(jToken);
 				case "KalturaReachProfileListResponse":
 					return new ListResponse<ReachProfile>(jToken);
 				case "KalturaRemotePathListResponse":
@@ -228,6 +230,8 @@ namespace Kaltura
 					return new ListResponse<ServerNode>(jToken);
 				case "KalturaShortLinkListResponse":
 					return new ListResponse<ShortLink>(jToken);
+				case "KalturaSsoListResponse":
+					return new ListResponse<Sso>(jToken);
 				case "KalturaStorageProfileListResponse":
 					return new ListResponse<StorageProfile>(jToken);
 				case "KalturaSystemPartnerUsageListResponse":

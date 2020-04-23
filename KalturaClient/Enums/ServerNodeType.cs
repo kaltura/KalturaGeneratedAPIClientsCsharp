@@ -29,6 +29,9 @@ namespace Kaltura.Enums
 {
 	public sealed class ServerNodeType : StringEnum
 	{
+		public static readonly ServerNodeType CONFERENCE_SERVER = new ServerNodeType("conference.CONFERENCE_SERVER");
+		public static readonly ServerNodeType LIVE_CLUSTER_MEDIA_SERVER = new ServerNodeType("liveCluster.LIVE_CLUSTER_MEDIA_SERVER");
+		public static readonly ServerNodeType SIP_SERVER = new ServerNodeType("sip.SIP_SERVER");
 		public static readonly ServerNodeType WOWZA_MEDIA_SERVER = new ServerNodeType("wowza.WOWZA_MEDIA_SERVER");
 		public static readonly ServerNodeType EDGE = new ServerNodeType("1");
 

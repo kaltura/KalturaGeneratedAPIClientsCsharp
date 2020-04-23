@@ -43,6 +43,7 @@ namespace Kaltura.Enums
 		public static readonly DistributionProviderType IDETIC = new DistributionProviderType("ideticDistribution.IDETIC");
 		public static readonly DistributionProviderType METRO_PCS = new DistributionProviderType("metroPcsDistribution.METRO_PCS");
 		public static readonly DistributionProviderType MSN = new DistributionProviderType("msnDistribution.MSN");
+		public static readonly DistributionProviderType PODCAST = new DistributionProviderType("podcastDistribution.PODCAST");
 		public static readonly DistributionProviderType QUICKPLAY = new DistributionProviderType("quickPlayDistribution.QUICKPLAY");
 		public static readonly DistributionProviderType UNICORN = new DistributionProviderType("unicornDistribution.UNICORN");
 		public static readonly DistributionProviderType YAHOO = new DistributionProviderType("yahooDistribution.YAHOO");

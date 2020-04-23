@@ -25,22 +25,66 @@
 //
 // @ignore
 // ===================================================================================================
-namespace Kaltura.Enums
-{
-	public sealed class EntryType : StringEnum
-	{
-		public static readonly EntryType AUTOMATIC = new EntryType("-1");
-		public static readonly EntryType CONFERENCE_ENTRY_SERVER = new EntryType("conference.CONFERENCE_ENTRY_SERVER");
-		public static readonly EntryType EXTERNAL_MEDIA = new EntryType("externalMedia.externalMedia");
-		public static readonly EntryType SIP_ENTRY_SERVER = new EntryType("sip.SIP_ENTRY_SERVER");
-		public static readonly EntryType MEDIA_CLIP = new EntryType("1");
-		public static readonly EntryType MIX = new EntryType("2");
-		public static readonly EntryType PLAYLIST = new EntryType("5");
-		public static readonly EntryType DATA = new EntryType("6");
-		public static readonly EntryType LIVE_STREAM = new EntryType("7");
-		public static readonly EntryType LIVE_CHANNEL = new EntryType("8");
-		public static readonly EntryType DOCUMENT = new EntryType("10");
+using System;
+using System.Xml;
+using System.Collections.Generic;
+using System.IO;
+using Kaltura.Request;
+using Kaltura.Types;
+using Kaltura.Enums;
+using Newtonsoft.Json.Linq;
 
-		private EntryType(string name) : base(name) { }
+namespace Kaltura.Services
+{
+	public class ThumbnailTransformRequestBuilder : RequestBuilder<VoidResponse>
+	{
+		#region Constants
+		public const string TRANSFORM_STRING = "transformString";
+		#endregion
+
+		public string TransformString { get; set; }
+
+		public ThumbnailTransformRequestBuilder()
+			: base("thumbnail_thumbnail", "transform")
+		{
+		}
+
+		public ThumbnailTransformRequestBuilder(string transformString)
+			: this()
+		{
+			this.TransformString = transformString;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("transformString"))
+				kparams.AddIfNotNull("transformString", TransformString);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			return null;
+		}
+	}
+
+
+	public class ThumbnailService
+	{
+		private ThumbnailService()
+		{
+		}
+
+		public static ThumbnailTransformRequestBuilder Transform(string transformString)
+		{
+			return new ThumbnailTransformRequestBuilder(transformString);
+		}
 	}
 }

@@ -30,6 +30,7 @@ namespace Kaltura.Enums
 	public sealed class UserEntryType : StringEnum
 	{
 		public static readonly UserEntryType QUIZ = new UserEntryType("quiz.QUIZ");
+		public static readonly UserEntryType REGISTRATION = new UserEntryType("registration.REGISTRATION");
 		public static readonly UserEntryType VIEW_HISTORY = new UserEntryType("viewHistory.VIEW_HISTORY");
 		public static readonly UserEntryType WATCH_LATER = new UserEntryType("watchLater.WATCH_LATER");
 

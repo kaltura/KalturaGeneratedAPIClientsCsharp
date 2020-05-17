@@ -66,6 +66,7 @@ namespace Kaltura.Types
 		public const string EXPECTED_FINISH_TIME = "expectedFinishTime";
 		public const string SERVICE_TYPE = "serviceType";
 		public const string SERVICE_FEATURE = "serviceFeature";
+		public const string TURN_AROUND_TIME = "turnAroundTime";
 		#endregion
 
 		#region Private Fields
@@ -97,6 +98,7 @@ namespace Kaltura.Types
 		private int _ExpectedFinishTime = Int32.MinValue;
 		private VendorServiceType _ServiceType = (VendorServiceType)Int32.MinValue;
 		private VendorServiceFeature _ServiceFeature = (VendorServiceFeature)Int32.MinValue;
+		private VendorServiceTurnAroundTime _TurnAroundTime = (VendorServiceTurnAroundTime)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -380,6 +382,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServiceFeature");
 			}
 		}
+		[JsonProperty]
+		public VendorServiceTurnAroundTime TurnAroundTime
+		{
+			get { return _TurnAroundTime; }
+			private set 
+			{ 
+				_TurnAroundTime = value;
+				OnPropertyChanged("TurnAroundTime");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -501,6 +513,10 @@ namespace Kaltura.Types
 			{
 				this._ServiceFeature = (VendorServiceFeature)ParseEnum(typeof(VendorServiceFeature), node["serviceFeature"].Value<string>());
 			}
+			if(node["turnAroundTime"] != null)
+			{
+				this._TurnAroundTime = (VendorServiceTurnAroundTime)ParseEnum(typeof(VendorServiceTurnAroundTime), node["turnAroundTime"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -538,6 +554,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("expectedFinishTime", this._ExpectedFinishTime);
 			kparams.AddIfNotNull("serviceType", this._ServiceType);
 			kparams.AddIfNotNull("serviceFeature", this._ServiceFeature);
+			kparams.AddIfNotNull("turnAroundTime", this._TurnAroundTime);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -600,6 +617,8 @@ namespace Kaltura.Types
 					return "ServiceType";
 				case SERVICE_FEATURE:
 					return "ServiceFeature";
+				case TURN_AROUND_TIME:
+					return "TurnAroundTime";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -25,21 +25,54 @@
 //
 // @ignore
 // ===================================================================================================
-namespace Kaltura.Enums
-{
-	public sealed class BulkUploadObjectType : StringEnum
-	{
-		public static readonly BulkUploadObjectType JOB = new BulkUploadObjectType("bulkUploadFilter.JOB");
-		public static readonly BulkUploadObjectType SCHEDULE_EVENT = new BulkUploadObjectType("scheduleBulkUpload.SCHEDULE_EVENT");
-		public static readonly BulkUploadObjectType SCHEDULE_RESOURCE = new BulkUploadObjectType("scheduleBulkUpload.SCHEDULE_RESOURCE");
-		public static readonly BulkUploadObjectType ENTRY = new BulkUploadObjectType("1");
-		public static readonly BulkUploadObjectType CATEGORY = new BulkUploadObjectType("2");
-		public static readonly BulkUploadObjectType USER = new BulkUploadObjectType("3");
-		public static readonly BulkUploadObjectType CATEGORY_USER = new BulkUploadObjectType("4");
-		public static readonly BulkUploadObjectType CATEGORY_ENTRY = new BulkUploadObjectType("5");
-		public static readonly BulkUploadObjectType USER_ENTRY = new BulkUploadObjectType("6");
-		public static readonly BulkUploadObjectType VENDOR_CATALOG_ITEM = new BulkUploadObjectType("7");
+using System;
+using System.Xml;
+using System.Collections.Generic;
+using Kaltura.Enums;
+using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
-		private BulkUploadObjectType(string name) : base(name) { }
+namespace Kaltura.Types
+{
+	public class BulkUploadVendorCatalogItemData : BulkUploadObjectData
+	{
+		#region Constants
+		#endregion
+
+		#region Private Fields
+		#endregion
+
+		#region Properties
+		#endregion
+
+		#region CTor
+		public BulkUploadVendorCatalogItemData()
+		{
+		}
+
+		public BulkUploadVendorCatalogItemData(JToken node) : base(node)
+		{
+		}
+		#endregion
+
+		#region Methods
+		public override Params ToParams(bool includeObjectType = true)
+		{
+			Params kparams = base.ToParams(includeObjectType);
+			if (includeObjectType)
+				kparams.AddReplace("objectType", "KalturaBulkUploadVendorCatalogItemData");
+			return kparams;
+		}
+		protected override string getPropertyName(string apiName)
+		{
+			switch(apiName)
+			{
+				default:
+					return base.getPropertyName(apiName);
+			}
+		}
+		#endregion
 	}
 }
+

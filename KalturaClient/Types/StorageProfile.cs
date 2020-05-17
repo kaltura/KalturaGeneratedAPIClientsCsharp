@@ -70,8 +70,10 @@ namespace Kaltura.Types
 		public const string PUBLIC_KEY = "publicKey";
 		public const string PASS_PHRASE = "passPhrase";
 		public const string SHOULD_EXPORT_THUMBS = "shouldExportThumbs";
-		public const string MAPPED_PACKAGER_URL = "mappedPackagerUrl";
-		public const string REGULAR_PACKAGER_URL = "regularPackagerUrl";
+		public const string PACKAGER_URL = "packagerUrl";
+		public const string EXPORT_PERIODICALLY = "exportPeriodically";
+		public const string EXCLUDED_FLAVOR_PARAMS_IDS = "excludedFlavorParamsIds";
+		public const string SHOULD_EXPORT_CAPTIONS = "shouldExportCaptions";
 		#endregion
 
 		#region Private Fields
@@ -107,8 +109,10 @@ namespace Kaltura.Types
 		private string _PublicKey = null;
 		private string _PassPhrase = null;
 		private bool? _ShouldExportThumbs = null;
-		private string _MappedPackagerUrl = null;
-		private string _RegularPackagerUrl = null;
+		private string _PackagerUrl = null;
+		private bool? _ExportPeriodically = null;
+		private string _ExcludedFlavorParamsIds = null;
+		private bool? _ShouldExportCaptions = null;
 		#endregion
 
 		#region Properties
@@ -433,23 +437,43 @@ namespace Kaltura.Types
 			}
 		}
 		[JsonProperty]
-		public string MappedPackagerUrl
+		public string PackagerUrl
 		{
-			get { return _MappedPackagerUrl; }
+			get { return _PackagerUrl; }
 			set 
 			{ 
-				_MappedPackagerUrl = value;
-				OnPropertyChanged("MappedPackagerUrl");
+				_PackagerUrl = value;
+				OnPropertyChanged("PackagerUrl");
 			}
 		}
 		[JsonProperty]
-		public string RegularPackagerUrl
+		public bool? ExportPeriodically
 		{
-			get { return _RegularPackagerUrl; }
+			get { return _ExportPeriodically; }
 			set 
 			{ 
-				_RegularPackagerUrl = value;
-				OnPropertyChanged("RegularPackagerUrl");
+				_ExportPeriodically = value;
+				OnPropertyChanged("ExportPeriodically");
+			}
+		}
+		[JsonProperty]
+		public string ExcludedFlavorParamsIds
+		{
+			get { return _ExcludedFlavorParamsIds; }
+			set 
+			{ 
+				_ExcludedFlavorParamsIds = value;
+				OnPropertyChanged("ExcludedFlavorParamsIds");
+			}
+		}
+		[JsonProperty]
+		public bool? ShouldExportCaptions
+		{
+			get { return _ShouldExportCaptions; }
+			set 
+			{ 
+				_ShouldExportCaptions = value;
+				OnPropertyChanged("ShouldExportCaptions");
 			}
 		}
 		#endregion
@@ -601,13 +625,21 @@ namespace Kaltura.Types
 			{
 				this._ShouldExportThumbs = ParseBool(node["shouldExportThumbs"].Value<string>());
 			}
-			if(node["mappedPackagerUrl"] != null)
+			if(node["packagerUrl"] != null)
 			{
-				this._MappedPackagerUrl = node["mappedPackagerUrl"].Value<string>();
+				this._PackagerUrl = node["packagerUrl"].Value<string>();
 			}
-			if(node["regularPackagerUrl"] != null)
+			if(node["exportPeriodically"] != null)
 			{
-				this._RegularPackagerUrl = node["regularPackagerUrl"].Value<string>();
+				this._ExportPeriodically = ParseBool(node["exportPeriodically"].Value<string>());
+			}
+			if(node["excludedFlavorParamsIds"] != null)
+			{
+				this._ExcludedFlavorParamsIds = node["excludedFlavorParamsIds"].Value<string>();
+			}
+			if(node["shouldExportCaptions"] != null)
+			{
+				this._ShouldExportCaptions = ParseBool(node["shouldExportCaptions"].Value<string>());
 			}
 		}
 		#endregion
@@ -650,8 +682,10 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("publicKey", this._PublicKey);
 			kparams.AddIfNotNull("passPhrase", this._PassPhrase);
 			kparams.AddIfNotNull("shouldExportThumbs", this._ShouldExportThumbs);
-			kparams.AddIfNotNull("mappedPackagerUrl", this._MappedPackagerUrl);
-			kparams.AddIfNotNull("regularPackagerUrl", this._RegularPackagerUrl);
+			kparams.AddIfNotNull("packagerUrl", this._PackagerUrl);
+			kparams.AddIfNotNull("exportPeriodically", this._ExportPeriodically);
+			kparams.AddIfNotNull("excludedFlavorParamsIds", this._ExcludedFlavorParamsIds);
+			kparams.AddIfNotNull("shouldExportCaptions", this._ShouldExportCaptions);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -722,10 +756,14 @@ namespace Kaltura.Types
 					return "PassPhrase";
 				case SHOULD_EXPORT_THUMBS:
 					return "ShouldExportThumbs";
-				case MAPPED_PACKAGER_URL:
-					return "MappedPackagerUrl";
-				case REGULAR_PACKAGER_URL:
-					return "RegularPackagerUrl";
+				case PACKAGER_URL:
+					return "PackagerUrl";
+				case EXPORT_PERIODICALLY:
+					return "ExportPeriodically";
+				case EXCLUDED_FLAVOR_PARAMS_IDS:
+					return "ExcludedFlavorParamsIds";
+				case SHOULD_EXPORT_CAPTIONS:
+					return "ShouldExportCaptions";
 				default:
 					return base.getPropertyName(apiName);
 			}

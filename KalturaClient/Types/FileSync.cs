@@ -63,6 +63,8 @@ namespace Kaltura.Types
 		public const string IS_CURRENT_DC = "isCurrentDc";
 		public const string IS_DIR = "isDir";
 		public const string ORIGINAL_ID = "originalId";
+		public const string SRC_PATH = "srcPath";
+		public const string SRC_ENC_KEY = "srcEncKey";
 		#endregion
 
 		#region Private Fields
@@ -91,6 +93,8 @@ namespace Kaltura.Types
 		private bool? _IsCurrentDc = null;
 		private bool? _IsDir = null;
 		private int _OriginalId = Int32.MinValue;
+		private string _SrcPath = null;
+		private string _SrcEncKey = null;
 		#endregion
 
 		#region Properties
@@ -344,6 +348,26 @@ namespace Kaltura.Types
 				OnPropertyChanged("OriginalId");
 			}
 		}
+		[JsonProperty]
+		public string SrcPath
+		{
+			get { return _SrcPath; }
+			set 
+			{ 
+				_SrcPath = value;
+				OnPropertyChanged("SrcPath");
+			}
+		}
+		[JsonProperty]
+		public string SrcEncKey
+		{
+			get { return _SrcEncKey; }
+			set 
+			{ 
+				_SrcEncKey = value;
+				OnPropertyChanged("SrcEncKey");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -453,6 +477,14 @@ namespace Kaltura.Types
 			{
 				this._OriginalId = ParseInt(node["originalId"].Value<string>());
 			}
+			if(node["srcPath"] != null)
+			{
+				this._SrcPath = node["srcPath"].Value<string>();
+			}
+			if(node["srcEncKey"] != null)
+			{
+				this._SrcEncKey = node["srcEncKey"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -487,6 +519,8 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("isCurrentDc", this._IsCurrentDc);
 			kparams.AddIfNotNull("isDir", this._IsDir);
 			kparams.AddIfNotNull("originalId", this._OriginalId);
+			kparams.AddIfNotNull("srcPath", this._SrcPath);
+			kparams.AddIfNotNull("srcEncKey", this._SrcEncKey);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -543,6 +577,10 @@ namespace Kaltura.Types
 					return "IsDir";
 				case ORIGINAL_ID:
 					return "OriginalId";
+				case SRC_PATH:
+					return "SrcPath";
+				case SRC_ENC_KEY:
+					return "SrcEncKey";
 				default:
 					return base.getPropertyName(apiName);
 			}

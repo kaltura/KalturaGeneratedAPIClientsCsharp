@@ -32,5 +32,6 @@ namespace Kaltura.Enums
 		STATIC_LIST = 3,
 		DYNAMIC = 10,
 		EXTERNAL = 101,
+		PATH = 102,
 	}
 }

@@ -119,6 +119,50 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class CaptionAssetExportRequestBuilder : RequestBuilder<FlavorAsset>
+	{
+		#region Constants
+		public const string ASSET_ID = "assetId";
+		public const string STORAGE_PROFILE_ID = "storageProfileId";
+		#endregion
+
+		public string AssetId { get; set; }
+		public int StorageProfileId { get; set; }
+
+		public CaptionAssetExportRequestBuilder()
+			: base("caption_captionasset", "export")
+		{
+		}
+
+		public CaptionAssetExportRequestBuilder(string assetId, int storageProfileId)
+			: this()
+		{
+			this.AssetId = assetId;
+			this.StorageProfileId = storageProfileId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("assetId"))
+				kparams.AddIfNotNull("assetId", AssetId);
+			if (!isMapped("storageProfileId"))
+				kparams.AddIfNotNull("storageProfileId", StorageProfileId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			return ObjectFactory.Create<FlavorAsset>(result);
+		}
+	}
+
 	public class CaptionAssetGetRequestBuilder : RequestBuilder<CaptionAsset>
 	{
 		#region Constants
@@ -427,6 +471,11 @@ namespace Kaltura.Services
 		public static CaptionAssetDeleteRequestBuilder Delete(string captionAssetId)
 		{
 			return new CaptionAssetDeleteRequestBuilder(captionAssetId);
+		}
+
+		public static CaptionAssetExportRequestBuilder Export(string assetId, int storageProfileId)
+		{
+			return new CaptionAssetExportRequestBuilder(assetId, storageProfileId);
 		}
 
 		public static CaptionAssetGetRequestBuilder Get(string captionAssetId)

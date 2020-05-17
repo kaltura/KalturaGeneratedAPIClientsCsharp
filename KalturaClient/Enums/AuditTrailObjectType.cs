@@ -37,6 +37,7 @@ namespace Kaltura.Enums
 		public static readonly AuditTrailObjectType METADATA_PROFILE = new AuditTrailObjectType("MetadataProfile");
 		public static readonly AuditTrailObjectType PARTNER = new AuditTrailObjectType("Partner");
 		public static readonly AuditTrailObjectType PERMISSION = new AuditTrailObjectType("Permission");
+		public static readonly AuditTrailObjectType REACH_PROFILE = new AuditTrailObjectType("ReachProfile");
 		public static readonly AuditTrailObjectType UPLOAD_TOKEN = new AuditTrailObjectType("UploadToken");
 		public static readonly AuditTrailObjectType USER_LOGIN_DATA = new AuditTrailObjectType("UserLoginData");
 		public static readonly AuditTrailObjectType USER_ROLE = new AuditTrailObjectType("UserRole");

@@ -71,6 +71,7 @@ namespace Kaltura.Types
 		public const string ISP_IN = "ispIn";
 		public const string APPLICATION_VERSION_IN = "applicationVersionIn";
 		public const string NODE_IDS_IN = "nodeIdsIn";
+		public const string CATEGORIES_ANCESTOR_ID_IN = "categoriesAncestorIdIn";
 		#endregion
 
 		#region Private Fields
@@ -107,6 +108,7 @@ namespace Kaltura.Types
 		private string _IspIn = null;
 		private string _ApplicationVersionIn = null;
 		private string _NodeIdsIn = null;
+		private string _CategoriesAncestorIdIn = null;
 		#endregion
 
 		#region Properties
@@ -440,6 +442,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("NodeIdsIn");
 			}
 		}
+		[JsonProperty]
+		public string CategoriesAncestorIdIn
+		{
+			get { return _CategoriesAncestorIdIn; }
+			set 
+			{ 
+				_CategoriesAncestorIdIn = value;
+				OnPropertyChanged("CategoriesAncestorIdIn");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -581,6 +593,10 @@ namespace Kaltura.Types
 			{
 				this._NodeIdsIn = node["nodeIdsIn"].Value<string>();
 			}
+			if(node["categoriesAncestorIdIn"] != null)
+			{
+				this._CategoriesAncestorIdIn = node["categoriesAncestorIdIn"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -623,6 +639,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("ispIn", this._IspIn);
 			kparams.AddIfNotNull("applicationVersionIn", this._ApplicationVersionIn);
 			kparams.AddIfNotNull("nodeIdsIn", this._NodeIdsIn);
+			kparams.AddIfNotNull("categoriesAncestorIdIn", this._CategoriesAncestorIdIn);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -695,6 +712,8 @@ namespace Kaltura.Types
 					return "ApplicationVersionIn";
 				case NODE_IDS_IN:
 					return "NodeIdsIn";
+				case CATEGORIES_ANCESTOR_ID_IN:
+					return "CategoriesAncestorIdIn";
 				default:
 					return base.getPropertyName(apiName);
 			}

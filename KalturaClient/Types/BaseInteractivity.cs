@@ -35,71 +35,87 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class PlaylistFilter : PlaylistBaseFilter
+	public class BaseInteractivity : ObjectBase
 	{
 		#region Constants
-		public const string PLAY_LIST_TYPE_EQUAL = "playListTypeEqual";
-		public const string PLAY_LIST_TYPE_IN = "playListTypeIn";
-		public new const string ORDER_BY = "orderBy";
+		public const string DATA = "data";
+		public const string VERSION = "version";
+		public const string ENTRY_ID = "entryId";
+		public const string UPDATED_AT = "updatedAt";
 		#endregion
 
 		#region Private Fields
-		private PlaylistType _PlayListTypeEqual = (PlaylistType)Int32.MinValue;
-		private string _PlayListTypeIn = null;
-		private PlaylistOrderBy _OrderBy = null;
+		private string _Data = null;
+		private int _Version = Int32.MinValue;
+		private string _EntryId = null;
+		private int _UpdatedAt = Int32.MinValue;
 		#endregion
 
 		#region Properties
 		[JsonProperty]
-		public PlaylistType PlayListTypeEqual
+		public string Data
 		{
-			get { return _PlayListTypeEqual; }
+			get { return _Data; }
 			set 
 			{ 
-				_PlayListTypeEqual = value;
-				OnPropertyChanged("PlayListTypeEqual");
+				_Data = value;
+				OnPropertyChanged("Data");
 			}
 		}
 		[JsonProperty]
-		public string PlayListTypeIn
+		public int Version
 		{
-			get { return _PlayListTypeIn; }
-			set 
+			get { return _Version; }
+			private set 
 			{ 
-				_PlayListTypeIn = value;
-				OnPropertyChanged("PlayListTypeIn");
+				_Version = value;
+				OnPropertyChanged("Version");
 			}
 		}
 		[JsonProperty]
-		public new PlaylistOrderBy OrderBy
+		public string EntryId
 		{
-			get { return _OrderBy; }
-			set 
+			get { return _EntryId; }
+			private set 
 			{ 
-				_OrderBy = value;
-				OnPropertyChanged("OrderBy");
+				_EntryId = value;
+				OnPropertyChanged("EntryId");
+			}
+		}
+		[JsonProperty]
+		public int UpdatedAt
+		{
+			get { return _UpdatedAt; }
+			private set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public PlaylistFilter()
+		public BaseInteractivity()
 		{
 		}
 
-		public PlaylistFilter(JToken node) : base(node)
+		public BaseInteractivity(JToken node) : base(node)
 		{
-			if(node["playListTypeEqual"] != null)
+			if(node["data"] != null)
 			{
-				this._PlayListTypeEqual = (PlaylistType)ParseEnum(typeof(PlaylistType), node["playListTypeEqual"].Value<string>());
+				this._Data = node["data"].Value<string>();
 			}
-			if(node["playListTypeIn"] != null)
+			if(node["version"] != null)
 			{
-				this._PlayListTypeIn = node["playListTypeIn"].Value<string>();
+				this._Version = ParseInt(node["version"].Value<string>());
 			}
-			if(node["orderBy"] != null)
+			if(node["entryId"] != null)
 			{
-				this._OrderBy = (PlaylistOrderBy)StringEnum.Parse(typeof(PlaylistOrderBy), node["orderBy"].Value<string>());
+				this._EntryId = node["entryId"].Value<string>();
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = ParseInt(node["updatedAt"].Value<string>());
 			}
 		}
 		#endregion
@@ -109,22 +125,25 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaPlaylistFilter");
-			kparams.AddIfNotNull("playListTypeEqual", this._PlayListTypeEqual);
-			kparams.AddIfNotNull("playListTypeIn", this._PlayListTypeIn);
-			kparams.AddIfNotNull("orderBy", this._OrderBy);
+				kparams.AddReplace("objectType", "KalturaBaseInteractivity");
+			kparams.AddIfNotNull("data", this._Data);
+			kparams.AddIfNotNull("version", this._Version);
+			kparams.AddIfNotNull("entryId", this._EntryId);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case PLAY_LIST_TYPE_EQUAL:
-					return "PlayListTypeEqual";
-				case PLAY_LIST_TYPE_IN:
-					return "PlayListTypeIn";
-				case ORDER_BY:
-					return "OrderBy";
+				case DATA:
+					return "Data";
+				case VERSION:
+					return "Version";
+				case ENTRY_ID:
+					return "EntryId";
+				case UPDATED_AT:
+					return "UpdatedAt";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -38,6 +38,7 @@ namespace Kaltura.Enums
 		public static readonly BulkUploadAction ADD_OR_UPDATE = new BulkUploadAction("6");
 		public static readonly BulkUploadAction ACTIVATE = new BulkUploadAction("7");
 		public static readonly BulkUploadAction REJECT = new BulkUploadAction("8");
+		public static readonly BulkUploadAction UPDATE_STATUS = new BulkUploadAction("9");
 
 		private BulkUploadAction(string name) : base(name) { }
 	}

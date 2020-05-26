@@ -44,6 +44,7 @@ namespace Kaltura.Types
 		public const string SSE_KMS_KEY_ID = "sseKmsKeyId";
 		public const string SIGNATURE_TYPE = "signatureType";
 		public const string END_POINT = "endPoint";
+		public const string STORAGE_CLASS = "storageClass";
 		#endregion
 
 		#region Private Fields
@@ -53,6 +54,7 @@ namespace Kaltura.Types
 		private string _SseKmsKeyId = null;
 		private string _SignatureType = null;
 		private string _EndPoint = null;
+		private string _StorageClass = null;
 		#endregion
 
 		#region Properties
@@ -116,6 +118,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndPoint");
 			}
 		}
+		[JsonProperty]
+		public string StorageClass
+		{
+			get { return _StorageClass; }
+			set 
+			{ 
+				_StorageClass = value;
+				OnPropertyChanged("StorageClass");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -149,6 +161,10 @@ namespace Kaltura.Types
 			{
 				this._EndPoint = node["endPoint"].Value<string>();
 			}
+			if(node["storageClass"] != null)
+			{
+				this._StorageClass = node["storageClass"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -164,6 +180,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("sseKmsKeyId", this._SseKmsKeyId);
 			kparams.AddIfNotNull("signatureType", this._SignatureType);
 			kparams.AddIfNotNull("endPoint", this._EndPoint);
+			kparams.AddIfNotNull("storageClass", this._StorageClass);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -182,6 +199,8 @@ namespace Kaltura.Types
 					return "SignatureType";
 				case END_POINT:
 					return "EndPoint";
+				case STORAGE_CLASS:
+					return "StorageClass";
 				default:
 					return base.getPropertyName(apiName);
 			}

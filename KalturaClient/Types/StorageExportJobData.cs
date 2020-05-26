@@ -40,11 +40,15 @@ namespace Kaltura.Types
 		#region Constants
 		public const string FORCE = "force";
 		public const string CREATE_LINK = "createLink";
+		public const string ASSET_ID = "assetId";
+		public const string EXTERNAL_URL = "externalUrl";
 		#endregion
 
 		#region Private Fields
 		private bool? _Force = null;
 		private bool? _CreateLink = null;
+		private string _AssetId = null;
+		private string _ExternalUrl = null;
 		#endregion
 
 		#region Properties
@@ -68,6 +72,26 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreateLink");
 			}
 		}
+		[JsonProperty]
+		public string AssetId
+		{
+			get { return _AssetId; }
+			set 
+			{ 
+				_AssetId = value;
+				OnPropertyChanged("AssetId");
+			}
+		}
+		[JsonProperty]
+		public string ExternalUrl
+		{
+			get { return _ExternalUrl; }
+			set 
+			{ 
+				_ExternalUrl = value;
+				OnPropertyChanged("ExternalUrl");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -85,6 +109,14 @@ namespace Kaltura.Types
 			{
 				this._CreateLink = ParseBool(node["createLink"].Value<string>());
 			}
+			if(node["assetId"] != null)
+			{
+				this._AssetId = node["assetId"].Value<string>();
+			}
+			if(node["externalUrl"] != null)
+			{
+				this._ExternalUrl = node["externalUrl"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -96,6 +128,8 @@ namespace Kaltura.Types
 				kparams.AddReplace("objectType", "KalturaStorageExportJobData");
 			kparams.AddIfNotNull("force", this._Force);
 			kparams.AddIfNotNull("createLink", this._CreateLink);
+			kparams.AddIfNotNull("assetId", this._AssetId);
+			kparams.AddIfNotNull("externalUrl", this._ExternalUrl);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -106,6 +140,10 @@ namespace Kaltura.Types
 					return "Force";
 				case CREATE_LINK:
 					return "CreateLink";
+				case ASSET_ID:
+					return "AssetId";
+				case EXTERNAL_URL:
+					return "ExternalUrl";
 				default:
 					return base.getPropertyName(apiName);
 			}

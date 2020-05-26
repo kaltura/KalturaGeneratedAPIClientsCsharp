@@ -42,6 +42,7 @@ namespace Kaltura.Types
 		public const string DISTRIBUTED_THUMB_ASSETS = "distributedThumbAssets";
 		public const string DISTRIBUTED_METADATA = "distributedMetadata";
 		public const string DISTRIBUTED_CAPTION_ASSETS = "distributedCaptionAssets";
+		public const string DISTRIBUTED_FILE_ASSETS = "distributedFileAssets";
 		public const string DISTRIBUTED_ATTACHMENT_ASSETS = "distributedAttachmentAssets";
 		public const string DISTRIBUTED_CUE_POINTS = "distributedCuePoints";
 		public const string DISTRIBUTED_THUMB_CUE_POINTS = "distributedThumbCuePoints";
@@ -53,6 +54,7 @@ namespace Kaltura.Types
 		private string _DistributedThumbAssets = null;
 		private string _DistributedMetadata = null;
 		private string _DistributedCaptionAssets = null;
+		private string _DistributedFileAssets = null;
 		private string _DistributedAttachmentAssets = null;
 		private string _DistributedCuePoints = null;
 		private string _DistributedThumbCuePoints = null;
@@ -98,6 +100,16 @@ namespace Kaltura.Types
 			{ 
 				_DistributedCaptionAssets = value;
 				OnPropertyChanged("DistributedCaptionAssets");
+			}
+		}
+		[JsonProperty]
+		public string DistributedFileAssets
+		{
+			get { return _DistributedFileAssets; }
+			set 
+			{ 
+				_DistributedFileAssets = value;
+				OnPropertyChanged("DistributedFileAssets");
 			}
 		}
 		[JsonProperty]
@@ -165,6 +177,10 @@ namespace Kaltura.Types
 			{
 				this._DistributedCaptionAssets = node["distributedCaptionAssets"].Value<string>();
 			}
+			if(node["distributedFileAssets"] != null)
+			{
+				this._DistributedFileAssets = node["distributedFileAssets"].Value<string>();
+			}
 			if(node["distributedAttachmentAssets"] != null)
 			{
 				this._DistributedAttachmentAssets = node["distributedAttachmentAssets"].Value<string>();
@@ -194,6 +210,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("distributedThumbAssets", this._DistributedThumbAssets);
 			kparams.AddIfNotNull("distributedMetadata", this._DistributedMetadata);
 			kparams.AddIfNotNull("distributedCaptionAssets", this._DistributedCaptionAssets);
+			kparams.AddIfNotNull("distributedFileAssets", this._DistributedFileAssets);
 			kparams.AddIfNotNull("distributedAttachmentAssets", this._DistributedAttachmentAssets);
 			kparams.AddIfNotNull("distributedCuePoints", this._DistributedCuePoints);
 			kparams.AddIfNotNull("distributedThumbCuePoints", this._DistributedThumbCuePoints);
@@ -212,6 +229,8 @@ namespace Kaltura.Types
 					return "DistributedMetadata";
 				case DISTRIBUTED_CAPTION_ASSETS:
 					return "DistributedCaptionAssets";
+				case DISTRIBUTED_FILE_ASSETS:
+					return "DistributedFileAssets";
 				case DISTRIBUTED_ATTACHMENT_ASSETS:
 					return "DistributedAttachmentAssets";
 				case DISTRIBUTED_CUE_POINTS:

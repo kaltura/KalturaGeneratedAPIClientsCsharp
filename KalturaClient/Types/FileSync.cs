@@ -65,6 +65,7 @@ namespace Kaltura.Types
 		public const string ORIGINAL_ID = "originalId";
 		public const string SRC_PATH = "srcPath";
 		public const string SRC_ENC_KEY = "srcEncKey";
+		public const string STORAGE_CLASS = "storageClass";
 		#endregion
 
 		#region Private Fields
@@ -95,6 +96,7 @@ namespace Kaltura.Types
 		private int _OriginalId = Int32.MinValue;
 		private string _SrcPath = null;
 		private string _SrcEncKey = null;
+		private string _StorageClass = null;
 		#endregion
 
 		#region Properties
@@ -368,6 +370,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcEncKey");
 			}
 		}
+		[JsonProperty]
+		public string StorageClass
+		{
+			get { return _StorageClass; }
+			set 
+			{ 
+				_StorageClass = value;
+				OnPropertyChanged("StorageClass");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -485,6 +497,10 @@ namespace Kaltura.Types
 			{
 				this._SrcEncKey = node["srcEncKey"].Value<string>();
 			}
+			if(node["storageClass"] != null)
+			{
+				this._StorageClass = node["storageClass"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -521,6 +537,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("originalId", this._OriginalId);
 			kparams.AddIfNotNull("srcPath", this._SrcPath);
 			kparams.AddIfNotNull("srcEncKey", this._SrcEncKey);
+			kparams.AddIfNotNull("storageClass", this._StorageClass);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -581,6 +598,8 @@ namespace Kaltura.Types
 					return "SrcPath";
 				case SRC_ENC_KEY:
 					return "SrcEncKey";
+				case STORAGE_CLASS:
+					return "StorageClass";
 				default:
 					return base.getPropertyName(apiName);
 			}

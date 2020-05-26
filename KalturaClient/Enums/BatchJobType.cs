@@ -100,6 +100,8 @@ namespace Kaltura.Enums
 		public static readonly BatchJobType LIVE_ENTRY_ARCHIVE = new BatchJobType("51");
 		public static readonly BatchJobType STORAGE_UPDATE = new BatchJobType("52");
 		public static readonly BatchJobType STORAGE_PERIODIC_EXPORT = new BatchJobType("53");
+		public static readonly BatchJobType STORAGE_PERIODIC_PURGE = new BatchJobType("54");
+		public static readonly BatchJobType STORAGE_PERIODIC_DELETE_LOCAL = new BatchJobType("55");
 
 		private BatchJobType(string name) : base(name) { }
 	}

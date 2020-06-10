@@ -35,56 +35,24 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class AlignmentVendorTaskData : VendorTaskDataCaptionAsset
+	public class TranslationVendorTaskData : VendorTaskDataCaptionAsset
 	{
 		#region Constants
-		public const string TEXT_TRANSCRIPT_ASSET_ID = "textTranscriptAssetId";
-		public const string JSON_TRANSCRIPT_ASSET_ID = "jsonTranscriptAssetId";
 		#endregion
 
 		#region Private Fields
-		private string _TextTranscriptAssetId = null;
-		private string _JsonTranscriptAssetId = null;
 		#endregion
 
 		#region Properties
-		[JsonProperty]
-		public string TextTranscriptAssetId
-		{
-			get { return _TextTranscriptAssetId; }
-			set 
-			{ 
-				_TextTranscriptAssetId = value;
-				OnPropertyChanged("TextTranscriptAssetId");
-			}
-		}
-		[JsonProperty]
-		public string JsonTranscriptAssetId
-		{
-			get { return _JsonTranscriptAssetId; }
-			set 
-			{ 
-				_JsonTranscriptAssetId = value;
-				OnPropertyChanged("JsonTranscriptAssetId");
-			}
-		}
 		#endregion
 
 		#region CTor
-		public AlignmentVendorTaskData()
+		public TranslationVendorTaskData()
 		{
 		}
 
-		public AlignmentVendorTaskData(JToken node) : base(node)
+		public TranslationVendorTaskData(JToken node) : base(node)
 		{
-			if(node["textTranscriptAssetId"] != null)
-			{
-				this._TextTranscriptAssetId = node["textTranscriptAssetId"].Value<string>();
-			}
-			if(node["jsonTranscriptAssetId"] != null)
-			{
-				this._JsonTranscriptAssetId = node["jsonTranscriptAssetId"].Value<string>();
-			}
 		}
 		#endregion
 
@@ -93,19 +61,13 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaAlignmentVendorTaskData");
-			kparams.AddIfNotNull("textTranscriptAssetId", this._TextTranscriptAssetId);
-			kparams.AddIfNotNull("jsonTranscriptAssetId", this._JsonTranscriptAssetId);
+				kparams.AddReplace("objectType", "KalturaTranslationVendorTaskData");
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case TEXT_TRANSCRIPT_ASSET_ID:
-					return "TextTranscriptAssetId";
-				case JSON_TRANSCRIPT_ASSET_ID:
-					return "JsonTranscriptAssetId";
 				default:
 					return base.getPropertyName(apiName);
 			}

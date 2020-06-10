@@ -987,6 +987,45 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class UserValidateHashKeyRequestBuilder : RequestBuilder<Authentication>
+	{
+		#region Constants
+		public const string HASH_KEY = "hashKey";
+		#endregion
+
+		public string HashKey { get; set; }
+
+		public UserValidateHashKeyRequestBuilder()
+			: base("user", "validateHashKey")
+		{
+		}
+
+		public UserValidateHashKeyRequestBuilder(string hashKey)
+			: this()
+		{
+			this.HashKey = hashKey;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("hashKey"))
+				kparams.AddIfNotNull("hashKey", HashKey);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			return ObjectFactory.Create<Authentication>(result);
+		}
+	}
+
 
 	public class UserService
 	{
@@ -1097,6 +1136,11 @@ namespace Kaltura.Services
 		public static UserUpdateLoginDataRequestBuilder UpdateLoginData(string oldLoginId, string password, string newLoginId = "", string newPassword = "", string newFirstName = null, string newLastName = null, string otp = null)
 		{
 			return new UserUpdateLoginDataRequestBuilder(oldLoginId, password, newLoginId, newPassword, newFirstName, newLastName, otp);
+		}
+
+		public static UserValidateHashKeyRequestBuilder ValidateHashKey(string hashKey)
+		{
+			return new UserValidateHashKeyRequestBuilder(hashKey);
 		}
 	}
 }

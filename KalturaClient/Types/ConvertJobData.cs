@@ -47,6 +47,7 @@ namespace Kaltura.Types
 		public const string CUSTOM_DATA = "customData";
 		public const string EXTRA_DEST_FILE_SYNCS = "extraDestFileSyncs";
 		public const string ENGINE_MESSAGE = "engineMessage";
+		public const string USER_CPU = "userCpu";
 		#endregion
 
 		#region Private Fields
@@ -59,6 +60,7 @@ namespace Kaltura.Types
 		private string _CustomData = null;
 		private IList<DestFileSyncDescriptor> _ExtraDestFileSyncs;
 		private string _EngineMessage = null;
+		private int _UserCpu = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -152,6 +154,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("EngineMessage");
 			}
 		}
+		[JsonProperty]
+		public int UserCpu
+		{
+			get { return _UserCpu; }
+			set 
+			{ 
+				_UserCpu = value;
+				OnPropertyChanged("UserCpu");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -201,6 +213,10 @@ namespace Kaltura.Types
 			{
 				this._EngineMessage = node["engineMessage"].Value<string>();
 			}
+			if(node["userCpu"] != null)
+			{
+				this._UserCpu = ParseInt(node["userCpu"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -219,6 +235,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("customData", this._CustomData);
 			kparams.AddIfNotNull("extraDestFileSyncs", this._ExtraDestFileSyncs);
 			kparams.AddIfNotNull("engineMessage", this._EngineMessage);
+			kparams.AddIfNotNull("userCpu", this._UserCpu);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -243,6 +260,8 @@ namespace Kaltura.Types
 					return "ExtraDestFileSyncs";
 				case ENGINE_MESSAGE:
 					return "EngineMessage";
+				case USER_CPU:
+					return "UserCpu";
 				default:
 					return base.getPropertyName(apiName);
 			}

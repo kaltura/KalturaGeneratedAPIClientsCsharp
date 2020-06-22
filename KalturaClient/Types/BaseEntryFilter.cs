@@ -40,6 +40,7 @@ namespace Kaltura.Types
 		#region Constants
 		public const string FREE_TEXT = "freeText";
 		public const string EXCLUDED_FREE_TEXT_GROUPS = "excludedFreeTextGroups";
+		public const string DESCRIPTION_LIKE = "descriptionLike";
 		public const string IS_ROOT = "isRoot";
 		public const string CATEGORIES_FULL_NAME_IN = "categoriesFullNameIn";
 		public const string CATEGORY_ANCESTOR_ID_IN = "categoryAncestorIdIn";
@@ -50,6 +51,7 @@ namespace Kaltura.Types
 		#region Private Fields
 		private string _FreeText = null;
 		private string _ExcludedFreeTextGroups = null;
+		private string _DescriptionLike = null;
 		private NullableBoolean _IsRoot = (NullableBoolean)Int32.MinValue;
 		private string _CategoriesFullNameIn = null;
 		private string _CategoryAncestorIdIn = null;
@@ -76,6 +78,16 @@ namespace Kaltura.Types
 			{ 
 				_ExcludedFreeTextGroups = value;
 				OnPropertyChanged("ExcludedFreeTextGroups");
+			}
+		}
+		[JsonProperty]
+		public string DescriptionLike
+		{
+			get { return _DescriptionLike; }
+			set 
+			{ 
+				_DescriptionLike = value;
+				OnPropertyChanged("DescriptionLike");
 			}
 		}
 		[JsonProperty]
@@ -145,6 +157,10 @@ namespace Kaltura.Types
 			{
 				this._ExcludedFreeTextGroups = node["excludedFreeTextGroups"].Value<string>();
 			}
+			if(node["descriptionLike"] != null)
+			{
+				this._DescriptionLike = node["descriptionLike"].Value<string>();
+			}
 			if(node["isRoot"] != null)
 			{
 				this._IsRoot = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["isRoot"].Value<string>());
@@ -176,6 +192,7 @@ namespace Kaltura.Types
 				kparams.AddReplace("objectType", "KalturaBaseEntryFilter");
 			kparams.AddIfNotNull("freeText", this._FreeText);
 			kparams.AddIfNotNull("excludedFreeTextGroups", this._ExcludedFreeTextGroups);
+			kparams.AddIfNotNull("descriptionLike", this._DescriptionLike);
 			kparams.AddIfNotNull("isRoot", this._IsRoot);
 			kparams.AddIfNotNull("categoriesFullNameIn", this._CategoriesFullNameIn);
 			kparams.AddIfNotNull("categoryAncestorIdIn", this._CategoryAncestorIdIn);
@@ -191,6 +208,8 @@ namespace Kaltura.Types
 					return "FreeText";
 				case EXCLUDED_FREE_TEXT_GROUPS:
 					return "ExcludedFreeTextGroups";
+				case DESCRIPTION_LIKE:
+					return "DescriptionLike";
 				case IS_ROOT:
 					return "IsRoot";
 				case CATEGORIES_FULL_NAME_IN:

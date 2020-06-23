@@ -84,6 +84,8 @@ namespace Kaltura.Enums
 		public static readonly ReportType SUB_CATEGORIES = new ReportType("53");
 		public static readonly ReportType INTERACTIVE_VIDEO_NODE_TOP_HOTSPOTS = new ReportType("54");
 		public static readonly ReportType INTERCATIVE_VIDEO_NODE_SWITCH_TOP_HOTSPOTS = new ReportType("55");
+		public static readonly ReportType INTERACTIVE_VIDEO_HOTSPOT_CLICKED_PERCENTILES = new ReportType("56");
+		public static readonly ReportType INTERACTIVE_VIDEO_NODE_SWITCH_HOTSPOT_CLICKED_PERCENTILES = new ReportType("57");
 		public static readonly ReportType PARTNER_USAGE = new ReportType("201");
 		public static readonly ReportType MAP_OVERLAY_COUNTRY_REALTIME = new ReportType("10001");
 		public static readonly ReportType MAP_OVERLAY_REGION_REALTIME = new ReportType("10002");
@@ -98,6 +100,8 @@ namespace Kaltura.Enums
 		public static readonly ReportType PLAYBACK_TYPE_REALTIME = new ReportType("10011");
 		public static readonly ReportType CONTENT_REALTIME = new ReportType("10012");
 		public static readonly ReportType DISCOVERY_VIEW_REALTIME = new ReportType("10013");
+		public static readonly ReportType TOP_ENDED_BROADCAST_ENTRIES = new ReportType("10014");
+		public static readonly ReportType TOP_LIVE_NOW_ENTRIES = new ReportType("10015");
 		public static readonly ReportType CONTENT_DROPOFF_VPAAS = new ReportType("20001");
 		public static readonly ReportType TOP_SYNDICATION_VPAAS = new ReportType("20002");
 		public static readonly ReportType USER_TOP_CONTENT_VPAAS = new ReportType("20003");

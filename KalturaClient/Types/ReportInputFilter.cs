@@ -72,6 +72,7 @@ namespace Kaltura.Types
 		public const string APPLICATION_VERSION_IN = "applicationVersionIn";
 		public const string NODE_IDS_IN = "nodeIdsIn";
 		public const string CATEGORIES_ANCESTOR_ID_IN = "categoriesAncestorIdIn";
+		public const string HOTSPOT_ID_IN = "hotspotIdIn";
 		#endregion
 
 		#region Private Fields
@@ -109,6 +110,7 @@ namespace Kaltura.Types
 		private string _ApplicationVersionIn = null;
 		private string _NodeIdsIn = null;
 		private string _CategoriesAncestorIdIn = null;
+		private string _HotspotIdIn = null;
 		#endregion
 
 		#region Properties
@@ -452,6 +454,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoriesAncestorIdIn");
 			}
 		}
+		[JsonProperty]
+		public string HotspotIdIn
+		{
+			get { return _HotspotIdIn; }
+			set 
+			{ 
+				_HotspotIdIn = value;
+				OnPropertyChanged("HotspotIdIn");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -597,6 +609,10 @@ namespace Kaltura.Types
 			{
 				this._CategoriesAncestorIdIn = node["categoriesAncestorIdIn"].Value<string>();
 			}
+			if(node["hotspotIdIn"] != null)
+			{
+				this._HotspotIdIn = node["hotspotIdIn"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -640,6 +656,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("applicationVersionIn", this._ApplicationVersionIn);
 			kparams.AddIfNotNull("nodeIdsIn", this._NodeIdsIn);
 			kparams.AddIfNotNull("categoriesAncestorIdIn", this._CategoriesAncestorIdIn);
+			kparams.AddIfNotNull("hotspotIdIn", this._HotspotIdIn);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -714,6 +731,8 @@ namespace Kaltura.Types
 					return "NodeIdsIn";
 				case CATEGORIES_ANCESTOR_ID_IN:
 					return "CategoriesAncestorIdIn";
+				case HOTSPOT_ID_IN:
+					return "HotspotIdIn";
 				default:
 					return base.getPropertyName(apiName);
 			}

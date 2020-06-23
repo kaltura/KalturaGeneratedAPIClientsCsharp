@@ -123,19 +123,22 @@ namespace Kaltura.Services
 	{
 		#region Constants
 		public const string ENTRY_ID = "entryId";
+		public const string DATA_FILTER = "dataFilter";
 		#endregion
 
 		public string EntryId { get; set; }
+		public InteractivityDataFilter DataFilter { get; set; }
 
 		public InteractivityGetRequestBuilder()
 			: base("interactivity_interactivity", "get")
 		{
 		}
 
-		public InteractivityGetRequestBuilder(string entryId)
+		public InteractivityGetRequestBuilder(string entryId, InteractivityDataFilter dataFilter)
 			: this()
 		{
 			this.EntryId = entryId;
+			this.DataFilter = dataFilter;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -143,6 +146,8 @@ namespace Kaltura.Services
 			Params kparams = base.getParameters(includeServiceAndAction);
 			if (!isMapped("entryId"))
 				kparams.AddIfNotNull("entryId", EntryId);
+			if (!isMapped("dataFilter"))
+				kparams.AddIfNotNull("dataFilter", DataFilter);
 			return kparams;
 		}
 
@@ -224,9 +229,9 @@ namespace Kaltura.Services
 			return new InteractivityDeleteRequestBuilder(entryId);
 		}
 
-		public static InteractivityGetRequestBuilder Get(string entryId)
+		public static InteractivityGetRequestBuilder Get(string entryId, InteractivityDataFilter dataFilter = null)
 		{
-			return new InteractivityGetRequestBuilder(entryId);
+			return new InteractivityGetRequestBuilder(entryId, dataFilter);
 		}
 
 		public static InteractivityUpdateRequestBuilder Update(string entryId, int version, Interactivity kalturaInteractivity)

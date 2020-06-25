@@ -241,7 +241,45 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class CaptionAssetGetUrlRequestBuilder : RequestBuilder<string>
+    public class CaptionAssetServeRequestBuilder : RequestBuilder<string>
+    {
+        public const string CAPTION_ASSET_ID = "captionAssetId";
+        public string CaptionAssetId { get; set; }
+
+        public CaptionAssetServeRequestBuilder()
+            : base("caption_captionasset", "serve")
+        {
+        }
+
+        public CaptionAssetServeRequestBuilder(string captionAssetId)
+            : this()
+        {
+            this.CaptionAssetId = captionAssetId;
+        }
+
+
+        public override Params getParameters(bool includeServiceAndAction)
+        {
+            Params kparams = base.getParameters(includeServiceAndAction);
+            if (!isMapped("captionAssetId"))
+                kparams.AddIfNotNull("captionAssetId", CaptionAssetId);
+            return kparams;
+        }
+
+        public override Files getFiles()
+        {
+            Files kfiles = base.getFiles();
+            return kfiles;
+        }
+
+        public override object Deserialize(JToken result)
+        {
+            return result.Value<string>();
+        }
+       
+    }
+
+    public class CaptionAssetGetUrlRequestBuilder : RequestBuilder<string>
 	{
 		#region Constants
 		public const string ID = "id";
@@ -512,5 +550,10 @@ namespace Kaltura.Services
 		{
 			return new CaptionAssetUpdateRequestBuilder(id, captionAsset);
 		}
-	}
+
+        public static CaptionAssetServeRequestBuilder Serve(string captionAssetId)
+        {
+            return new CaptionAssetServeRequestBuilder(captionAssetId);
+        }
+    }
 }

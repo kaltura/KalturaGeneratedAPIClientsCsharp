@@ -74,6 +74,7 @@ namespace Kaltura.Types
 		public const string EXPORT_PERIODICALLY = "exportPeriodically";
 		public const string EXCLUDED_FLAVOR_PARAMS_IDS = "excludedFlavorParamsIds";
 		public const string SHOULD_EXPORT_CAPTIONS = "shouldExportCaptions";
+		public const string EXCLUDED_ENTRY_TYPES = "excludedEntryTypes";
 		#endregion
 
 		#region Private Fields
@@ -113,6 +114,7 @@ namespace Kaltura.Types
 		private bool? _ExportPeriodically = null;
 		private string _ExcludedFlavorParamsIds = null;
 		private bool? _ShouldExportCaptions = null;
+		private string _ExcludedEntryTypes = null;
 		#endregion
 
 		#region Properties
@@ -476,6 +478,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("ShouldExportCaptions");
 			}
 		}
+		[JsonProperty]
+		public string ExcludedEntryTypes
+		{
+			get { return _ExcludedEntryTypes; }
+			set 
+			{ 
+				_ExcludedEntryTypes = value;
+				OnPropertyChanged("ExcludedEntryTypes");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -641,6 +653,10 @@ namespace Kaltura.Types
 			{
 				this._ShouldExportCaptions = ParseBool(node["shouldExportCaptions"].Value<string>());
 			}
+			if(node["excludedEntryTypes"] != null)
+			{
+				this._ExcludedEntryTypes = node["excludedEntryTypes"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -686,6 +702,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("exportPeriodically", this._ExportPeriodically);
 			kparams.AddIfNotNull("excludedFlavorParamsIds", this._ExcludedFlavorParamsIds);
 			kparams.AddIfNotNull("shouldExportCaptions", this._ShouldExportCaptions);
+			kparams.AddIfNotNull("excludedEntryTypes", this._ExcludedEntryTypes);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -764,6 +781,8 @@ namespace Kaltura.Types
 					return "ExcludedFlavorParamsIds";
 				case SHOULD_EXPORT_CAPTIONS:
 					return "ShouldExportCaptions";
+				case EXCLUDED_ENTRY_TYPES:
+					return "ExcludedEntryTypes";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -83,6 +83,8 @@ namespace Kaltura.Types
 		public const string CAPABILITIES = "capabilities";
 		public const string TEMPLATE_ENTRY_ID = "templateEntryId";
 		public const string DISPLAY_IN_SEARCH = "displayInSearch";
+		public const string APPLICATION = "application";
+		public const string APPLICATION_VERSION = "applicationVersion";
 		#endregion
 
 		#region Private Fields
@@ -131,6 +133,8 @@ namespace Kaltura.Types
 		private string _Capabilities = null;
 		private string _TemplateEntryId = null;
 		private EntryDisplayInSearchType _DisplayInSearch = (EntryDisplayInSearchType)Int32.MinValue;
+		private EntryApplication _Application = null;
+		private string _ApplicationVersion = null;
 		#endregion
 
 		#region Properties
@@ -584,6 +588,26 @@ namespace Kaltura.Types
 				OnPropertyChanged("DisplayInSearch");
 			}
 		}
+		[JsonProperty]
+		public EntryApplication Application
+		{
+			get { return _Application; }
+			set 
+			{ 
+				_Application = value;
+				OnPropertyChanged("Application");
+			}
+		}
+		[JsonProperty]
+		public string ApplicationVersion
+		{
+			get { return _ApplicationVersion; }
+			set 
+			{ 
+				_ApplicationVersion = value;
+				OnPropertyChanged("ApplicationVersion");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -777,6 +801,14 @@ namespace Kaltura.Types
 			{
 				this._DisplayInSearch = (EntryDisplayInSearchType)ParseEnum(typeof(EntryDisplayInSearchType), node["displayInSearch"].Value<string>());
 			}
+			if(node["application"] != null)
+			{
+				this._Application = (EntryApplication)StringEnum.Parse(typeof(EntryApplication), node["application"].Value<string>());
+			}
+			if(node["applicationVersion"] != null)
+			{
+				this._ApplicationVersion = node["applicationVersion"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -831,6 +863,8 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("capabilities", this._Capabilities);
 			kparams.AddIfNotNull("templateEntryId", this._TemplateEntryId);
 			kparams.AddIfNotNull("displayInSearch", this._DisplayInSearch);
+			kparams.AddIfNotNull("application", this._Application);
+			kparams.AddIfNotNull("applicationVersion", this._ApplicationVersion);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -927,6 +961,10 @@ namespace Kaltura.Types
 					return "TemplateEntryId";
 				case DISPLAY_IN_SEARCH:
 					return "DisplayInSearch";
+				case APPLICATION:
+					return "Application";
+				case APPLICATION_VERSION:
+					return "ApplicationVersion";
 				default:
 					return base.getPropertyName(apiName);
 			}

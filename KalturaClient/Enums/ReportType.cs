@@ -86,6 +86,8 @@ namespace Kaltura.Enums
 		public static readonly ReportType INTERCATIVE_VIDEO_NODE_SWITCH_TOP_HOTSPOTS = new ReportType("55");
 		public static readonly ReportType INTERACTIVE_VIDEO_HOTSPOT_CLICKED_PERCENTILES = new ReportType("56");
 		public static readonly ReportType INTERACTIVE_VIDEO_NODE_SWITCH_HOTSPOT_CLICKED_PERCENTILES = new ReportType("57");
+		public static readonly ReportType TOP_CUSTOM_VAR2 = new ReportType("58");
+		public static readonly ReportType TOP_CUSTOM_VAR3 = new ReportType("59");
 		public static readonly ReportType PARTNER_USAGE = new ReportType("201");
 		public static readonly ReportType MAP_OVERLAY_COUNTRY_REALTIME = new ReportType("10001");
 		public static readonly ReportType MAP_OVERLAY_REGION_REALTIME = new ReportType("10002");

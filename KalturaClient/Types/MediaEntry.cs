@@ -41,6 +41,7 @@ namespace Kaltura.Types
 		public const string MEDIA_TYPE = "mediaType";
 		public const string CONVERSION_QUALITY = "conversionQuality";
 		public const string SOURCE_TYPE = "sourceType";
+		public const string SOURCE_VERSION = "sourceVersion";
 		public const string SEARCH_PROVIDER_TYPE = "searchProviderType";
 		public const string SEARCH_PROVIDER_ID = "searchProviderId";
 		public const string CREDIT_USER_NAME = "creditUserName";
@@ -56,6 +57,7 @@ namespace Kaltura.Types
 		private MediaType _MediaType = (MediaType)Int32.MinValue;
 		private string _ConversionQuality = null;
 		private SourceType _SourceType = null;
+		private string _SourceVersion = null;
 		private SearchProviderType _SearchProviderType = (SearchProviderType)Int32.MinValue;
 		private string _SearchProviderId = null;
 		private string _CreditUserName = null;
@@ -96,6 +98,16 @@ namespace Kaltura.Types
 			{ 
 				_SourceType = value;
 				OnPropertyChanged("SourceType");
+			}
+		}
+		[JsonProperty]
+		public string SourceVersion
+		{
+			get { return _SourceVersion; }
+			set 
+			{ 
+				_SourceVersion = value;
+				OnPropertyChanged("SourceVersion");
 			}
 		}
 		[JsonProperty]
@@ -209,6 +221,10 @@ namespace Kaltura.Types
 			{
 				this._SourceType = (SourceType)StringEnum.Parse(typeof(SourceType), node["sourceType"].Value<string>());
 			}
+			if(node["sourceVersion"] != null)
+			{
+				this._SourceVersion = node["sourceVersion"].Value<string>();
+			}
 			if(node["searchProviderType"] != null)
 			{
 				this._SearchProviderType = (SearchProviderType)ParseEnum(typeof(SearchProviderType), node["searchProviderType"].Value<string>());
@@ -261,6 +277,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("mediaType", this._MediaType);
 			kparams.AddIfNotNull("conversionQuality", this._ConversionQuality);
 			kparams.AddIfNotNull("sourceType", this._SourceType);
+			kparams.AddIfNotNull("sourceVersion", this._SourceVersion);
 			kparams.AddIfNotNull("searchProviderType", this._SearchProviderType);
 			kparams.AddIfNotNull("searchProviderId", this._SearchProviderId);
 			kparams.AddIfNotNull("creditUserName", this._CreditUserName);
@@ -282,6 +299,8 @@ namespace Kaltura.Types
 					return "ConversionQuality";
 				case SOURCE_TYPE:
 					return "SourceType";
+				case SOURCE_VERSION:
+					return "SourceVersion";
 				case SEARCH_PROVIDER_TYPE:
 					return "SearchProviderType";
 				case SEARCH_PROVIDER_ID:

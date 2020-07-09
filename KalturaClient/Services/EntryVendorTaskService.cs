@@ -319,6 +319,60 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class EntryVendorTaskGetServeUrlRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		public const string FILTER_TYPE = "filterType";
+		public const string FILTER_INPUT = "filterInput";
+		public const string STATUS = "status";
+		public const string DUE_DATE = "dueDate";
+		#endregion
+
+		public string FilterType { get; set; }
+		public int FilterInput { get; set; }
+		public int Status { get; set; }
+		public string DueDate { get; set; }
+
+		public EntryVendorTaskGetServeUrlRequestBuilder()
+			: base("reach_entryvendortask", "getServeUrl")
+		{
+		}
+
+		public EntryVendorTaskGetServeUrlRequestBuilder(string filterType, int filterInput, int status, string dueDate)
+			: this()
+		{
+			this.FilterType = filterType;
+			this.FilterInput = filterInput;
+			this.Status = status;
+			this.DueDate = dueDate;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filterType"))
+				kparams.AddIfNotNull("filterType", FilterType);
+			if (!isMapped("filterInput"))
+				kparams.AddIfNotNull("filterInput", FilterInput);
+			if (!isMapped("status"))
+				kparams.AddIfNotNull("status", Status);
+			if (!isMapped("dueDate"))
+				kparams.AddIfNotNull("dueDate", DueDate);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			return result.Value<string>();
+		}
+	}
+
 	public class EntryVendorTaskListRequestBuilder : RequestBuilder<ListResponse<EntryVendorTask>>
 	{
 		#region Constants
@@ -574,6 +628,11 @@ namespace Kaltura.Services
 		public static EntryVendorTaskGetJobsRequestBuilder GetJobs(EntryVendorTaskFilter filter = null, FilterPager pager = null)
 		{
 			return new EntryVendorTaskGetJobsRequestBuilder(filter, pager);
+		}
+
+		public static EntryVendorTaskGetServeUrlRequestBuilder GetServeUrl(string filterType = null, int filterInput = Int32.MinValue, int status = Int32.MinValue, string dueDate = null)
+		{
+			return new EntryVendorTaskGetServeUrlRequestBuilder(filterType, filterInput, status, dueDate);
 		}
 
 		public static EntryVendorTaskListRequestBuilder List(EntryVendorTaskFilter filter = null, FilterPager pager = null)

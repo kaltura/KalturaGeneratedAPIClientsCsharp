@@ -40,6 +40,7 @@ namespace Kaltura.Types
 		#region Constants
 		public const string URL = "url";
 		public const string METHOD = "method";
+		public const string CONTENT_TYPE = "contentType";
 		public const string DATA = "data";
 		public const string TIMEOUT = "timeout";
 		public const string CONNECT_TIMEOUT = "connectTimeout";
@@ -62,6 +63,7 @@ namespace Kaltura.Types
 		#region Private Fields
 		private string _Url = null;
 		private HttpNotificationMethod _Method = (HttpNotificationMethod)Int32.MinValue;
+		private string _ContentType = null;
 		private string _Data = null;
 		private int _Timeout = Int32.MinValue;
 		private int _ConnectTimeout = Int32.MinValue;
@@ -100,6 +102,16 @@ namespace Kaltura.Types
 			{ 
 				_Method = value;
 				OnPropertyChanged("Method");
+			}
+		}
+		[JsonProperty]
+		public string ContentType
+		{
+			get { return _ContentType; }
+			set 
+			{ 
+				_ContentType = value;
+				OnPropertyChanged("ContentType");
 			}
 		}
 		[JsonProperty]
@@ -289,6 +301,10 @@ namespace Kaltura.Types
 			{
 				this._Method = (HttpNotificationMethod)ParseEnum(typeof(HttpNotificationMethod), node["method"].Value<string>());
 			}
+			if(node["contentType"] != null)
+			{
+				this._ContentType = node["contentType"].Value<string>();
+			}
 			if(node["data"] != null)
 			{
 				this._Data = node["data"].Value<string>();
@@ -372,6 +388,7 @@ namespace Kaltura.Types
 				kparams.AddReplace("objectType", "KalturaHttpNotificationDispatchJobData");
 			kparams.AddIfNotNull("url", this._Url);
 			kparams.AddIfNotNull("method", this._Method);
+			kparams.AddIfNotNull("contentType", this._ContentType);
 			kparams.AddIfNotNull("data", this._Data);
 			kparams.AddIfNotNull("timeout", this._Timeout);
 			kparams.AddIfNotNull("connectTimeout", this._ConnectTimeout);
@@ -399,6 +416,8 @@ namespace Kaltura.Types
 					return "Url";
 				case METHOD:
 					return "Method";
+				case CONTENT_TYPE:
+					return "ContentType";
 				case DATA:
 					return "Data";
 				case TIMEOUT:

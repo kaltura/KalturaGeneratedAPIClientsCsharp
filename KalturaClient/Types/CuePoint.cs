@@ -196,7 +196,7 @@ namespace Kaltura.Types
 		public string UserId
 		{
 			get { return _UserId; }
-			private set 
+			set 
 			{ 
 				_UserId = value;
 				OnPropertyChanged("UserId");

@@ -41,21 +41,24 @@ namespace Kaltura.Services
 		#region Constants
 		public const string ENTRY_ID = "entryId";
 		public const string REGENERATE = "regenerate";
+		public const string SOURCE_TYPE = "sourceType";
 		#endregion
 
 		public string EntryId { get; set; }
 		public bool Regenerate { get; set; }
+		public int SourceType { get; set; }
 
 		public PexipGenerateSipUrlRequestBuilder()
 			: base("sip_pexip", "generateSipUrl")
 		{
 		}
 
-		public PexipGenerateSipUrlRequestBuilder(string entryId, bool regenerate)
+		public PexipGenerateSipUrlRequestBuilder(string entryId, bool regenerate, int sourceType)
 			: this()
 		{
 			this.EntryId = entryId;
 			this.Regenerate = regenerate;
+			this.SourceType = sourceType;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -65,6 +68,8 @@ namespace Kaltura.Services
 				kparams.AddIfNotNull("entryId", EntryId);
 			if (!isMapped("regenerate"))
 				kparams.AddIfNotNull("regenerate", Regenerate);
+			if (!isMapped("sourceType"))
+				kparams.AddIfNotNull("sourceType", SourceType);
 			return kparams;
 		}
 
@@ -80,7 +85,7 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class PexipHandleIncomingCallRequestBuilder : RequestBuilder<bool>
+	public class PexipHandleIncomingCallRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
 		#endregion
@@ -105,9 +110,7 @@ namespace Kaltura.Services
 
 		public override object Deserialize(JToken result)
 		{
-			if (result.Value<string>().Equals("1") || result.Value<string>().ToLower().Equals("true"))
-				return true;
-			return false;
+			return null;
 		}
 	}
 
@@ -173,9 +176,9 @@ namespace Kaltura.Services
 		{
 		}
 
-		public static PexipGenerateSipUrlRequestBuilder GenerateSipUrl(string entryId, bool regenerate = false)
+		public static PexipGenerateSipUrlRequestBuilder GenerateSipUrl(string entryId, bool regenerate = false, int sourceType = 1)
 		{
-			return new PexipGenerateSipUrlRequestBuilder(entryId, regenerate);
+			return new PexipGenerateSipUrlRequestBuilder(entryId, regenerate, sourceType);
 		}
 
 		public static PexipHandleIncomingCallRequestBuilder HandleIncomingCall()

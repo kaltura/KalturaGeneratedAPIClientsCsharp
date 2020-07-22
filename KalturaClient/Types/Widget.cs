@@ -54,6 +54,7 @@ namespace Kaltura.Types
 		public const string PRIVACY_CONTEXT = "privacyContext";
 		public const string ADD_EMBED_HTML5SUPPORT = "addEmbedHtml5Support";
 		public const string ROLES = "roles";
+		public const string PRIVILEGES = "privileges";
 		#endregion
 
 		#region Private Fields
@@ -73,6 +74,7 @@ namespace Kaltura.Types
 		private string _PrivacyContext = null;
 		private bool? _AddEmbedHtml5Support = null;
 		private string _Roles = null;
+		private string _Privileges = null;
 		#endregion
 
 		#region Properties
@@ -236,6 +238,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("Roles");
 			}
 		}
+		[JsonProperty]
+		public string Privileges
+		{
+			get { return _Privileges; }
+			set 
+			{ 
+				_Privileges = value;
+				OnPropertyChanged("Privileges");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -309,6 +321,10 @@ namespace Kaltura.Types
 			{
 				this._Roles = node["roles"].Value<string>();
 			}
+			if(node["privileges"] != null)
+			{
+				this._Privileges = node["privileges"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -334,6 +350,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("privacyContext", this._PrivacyContext);
 			kparams.AddIfNotNull("addEmbedHtml5Support", this._AddEmbedHtml5Support);
 			kparams.AddIfNotNull("roles", this._Roles);
+			kparams.AddIfNotNull("privileges", this._Privileges);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -372,6 +389,8 @@ namespace Kaltura.Types
 					return "AddEmbedHtml5Support";
 				case ROLES:
 					return "Roles";
+				case PRIVILEGES:
+					return "Privileges";
 				default:
 					return base.getPropertyName(apiName);
 			}

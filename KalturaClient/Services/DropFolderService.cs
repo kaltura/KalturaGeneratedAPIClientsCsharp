@@ -334,6 +334,94 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class DropFolderUpdateBasicFieldsRequestBuilder : RequestBuilder<DropFolder>
+	{
+		#region Constants
+		public const string DROP_FOLDER_ID = "dropFolderId";
+		public const string DROP_FOLDER = "dropFolder";
+		#endregion
+
+		public int DropFolderId { get; set; }
+		public BasicFieldsDropFolder DropFolder { get; set; }
+
+		public DropFolderUpdateBasicFieldsRequestBuilder()
+			: base("dropfolder_dropfolder", "updateBasicFields")
+		{
+		}
+
+		public DropFolderUpdateBasicFieldsRequestBuilder(int dropFolderId, BasicFieldsDropFolder dropFolder)
+			: this()
+		{
+			this.DropFolderId = dropFolderId;
+			this.DropFolder = dropFolder;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("dropFolderId"))
+				kparams.AddIfNotNull("dropFolderId", DropFolderId);
+			if (!isMapped("dropFolder"))
+				kparams.AddIfNotNull("dropFolder", DropFolder);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			return ObjectFactory.Create<DropFolder>(result);
+		}
+	}
+
+	public class DropFolderUpdateStatusRequestBuilder : RequestBuilder<VoidResponse>
+	{
+		#region Constants
+		public const string DROP_FOLDER_ID = "dropFolderId";
+		public const string STATUS = "status";
+		#endregion
+
+		public int DropFolderId { get; set; }
+		public DropFolderStatus Status { get; set; }
+
+		public DropFolderUpdateStatusRequestBuilder()
+			: base("dropfolder_dropfolder", "updateStatus")
+		{
+		}
+
+		public DropFolderUpdateStatusRequestBuilder(int dropFolderId, DropFolderStatus status)
+			: this()
+		{
+			this.DropFolderId = dropFolderId;
+			this.Status = status;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("dropFolderId"))
+				kparams.AddIfNotNull("dropFolderId", DropFolderId);
+			if (!isMapped("status"))
+				kparams.AddIfNotNull("status", Status);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			return null;
+		}
+	}
+
 
 	public class DropFolderService
 	{
@@ -374,6 +462,16 @@ namespace Kaltura.Services
 		public static DropFolderUpdateRequestBuilder Update(int dropFolderId, DropFolder dropFolder)
 		{
 			return new DropFolderUpdateRequestBuilder(dropFolderId, dropFolder);
+		}
+
+		public static DropFolderUpdateBasicFieldsRequestBuilder UpdateBasicFields(int dropFolderId, BasicFieldsDropFolder dropFolder)
+		{
+			return new DropFolderUpdateBasicFieldsRequestBuilder(dropFolderId, dropFolder);
+		}
+
+		public static DropFolderUpdateStatusRequestBuilder UpdateStatus(int dropFolderId, DropFolderStatus status)
+		{
+			return new DropFolderUpdateStatusRequestBuilder(dropFolderId, status);
 		}
 	}
 }

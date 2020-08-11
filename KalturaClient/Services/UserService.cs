@@ -756,19 +756,22 @@ namespace Kaltura.Services
 	{
 		#region Constants
 		public const string EMAIL = "email";
+		public const string LINK_TYPE = "linkType";
 		#endregion
 
 		public string Email { get; set; }
+		public ResetPassLinkType LinkType { get; set; }
 
 		public UserResetPasswordRequestBuilder()
 			: base("user", "resetPassword")
 		{
 		}
 
-		public UserResetPasswordRequestBuilder(string email)
+		public UserResetPasswordRequestBuilder(string email, ResetPassLinkType linkType)
 			: this()
 		{
 			this.Email = email;
+			this.LinkType = linkType;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -776,6 +779,8 @@ namespace Kaltura.Services
 			Params kparams = base.getParameters(includeServiceAndAction);
 			if (!isMapped("email"))
 				kparams.AddIfNotNull("email", Email);
+			if (!isMapped("linkType"))
+				kparams.AddIfNotNull("linkType", LinkType);
 			return kparams;
 		}
 
@@ -1113,9 +1118,9 @@ namespace Kaltura.Services
 			return new UserNotifyBanRequestBuilder(userId);
 		}
 
-		public static UserResetPasswordRequestBuilder ResetPassword(string email)
+		public static UserResetPasswordRequestBuilder ResetPassword(string email, ResetPassLinkType linkType = null)
 		{
-			return new UserResetPasswordRequestBuilder(email);
+			return new UserResetPasswordRequestBuilder(email, linkType);
 		}
 
 		public static UserServeCsvRequestBuilder ServeCsv(string id)

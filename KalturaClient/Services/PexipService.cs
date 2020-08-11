@@ -46,14 +46,14 @@ namespace Kaltura.Services
 
 		public string EntryId { get; set; }
 		public bool Regenerate { get; set; }
-		public int SourceType { get; set; }
+		public SipSourceType SourceType { get; set; }
 
 		public PexipGenerateSipUrlRequestBuilder()
 			: base("sip_pexip", "generateSipUrl")
 		{
 		}
 
-		public PexipGenerateSipUrlRequestBuilder(string entryId, bool regenerate, int sourceType)
+		public PexipGenerateSipUrlRequestBuilder(string entryId, bool regenerate, SipSourceType sourceType)
 			: this()
 		{
 			this.EntryId = entryId;
@@ -176,7 +176,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public static PexipGenerateSipUrlRequestBuilder GenerateSipUrl(string entryId, bool regenerate = false, int sourceType = 1)
+		public static PexipGenerateSipUrlRequestBuilder GenerateSipUrl(string entryId, bool regenerate = false, SipSourceType sourceType = (SipSourceType)(1))
 		{
 			return new PexipGenerateSipUrlRequestBuilder(entryId, regenerate, sourceType);
 		}

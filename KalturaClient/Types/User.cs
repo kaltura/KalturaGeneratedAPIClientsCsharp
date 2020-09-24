@@ -49,6 +49,8 @@ namespace Kaltura.Types
 		public const string FIRST_NAME = "firstName";
 		public const string LAST_NAME = "lastName";
 		public const string LOGIN_ENABLED = "loginEnabled";
+		public const string REGISTRATION_INFO = "registrationInfo";
+		public const string ATTENDANCE_INFO = "attendanceInfo";
 		#endregion
 
 		#region Private Fields
@@ -63,6 +65,8 @@ namespace Kaltura.Types
 		private string _FirstName = null;
 		private string _LastName = null;
 		private bool? _LoginEnabled = null;
+		private string _RegistrationInfo = null;
+		private string _AttendanceInfo = null;
 		#endregion
 
 		#region Properties
@@ -175,6 +179,26 @@ namespace Kaltura.Types
 				OnPropertyChanged("LoginEnabled");
 			}
 		}
+		[JsonProperty]
+		public string RegistrationInfo
+		{
+			get { return _RegistrationInfo; }
+			set 
+			{ 
+				_RegistrationInfo = value;
+				OnPropertyChanged("RegistrationInfo");
+			}
+		}
+		[JsonProperty]
+		public string AttendanceInfo
+		{
+			get { return _AttendanceInfo; }
+			set 
+			{ 
+				_AttendanceInfo = value;
+				OnPropertyChanged("AttendanceInfo");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -228,6 +252,14 @@ namespace Kaltura.Types
 			{
 				this._LoginEnabled = ParseBool(node["loginEnabled"].Value<string>());
 			}
+			if(node["registrationInfo"] != null)
+			{
+				this._RegistrationInfo = node["registrationInfo"].Value<string>();
+			}
+			if(node["attendanceInfo"] != null)
+			{
+				this._AttendanceInfo = node["attendanceInfo"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -248,6 +280,8 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("firstName", this._FirstName);
 			kparams.AddIfNotNull("lastName", this._LastName);
 			kparams.AddIfNotNull("loginEnabled", this._LoginEnabled);
+			kparams.AddIfNotNull("registrationInfo", this._RegistrationInfo);
+			kparams.AddIfNotNull("attendanceInfo", this._AttendanceInfo);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -276,6 +310,10 @@ namespace Kaltura.Types
 					return "LastName";
 				case LOGIN_ENABLED:
 					return "LoginEnabled";
+				case REGISTRATION_INFO:
+					return "RegistrationInfo";
+				case ATTENDANCE_INFO:
+					return "AttendanceInfo";
 				default:
 					return base.getPropertyName(apiName);
 			}

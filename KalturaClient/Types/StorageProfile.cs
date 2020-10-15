@@ -49,6 +49,7 @@ namespace Kaltura.Types
 		public const string PROTOCOL = "protocol";
 		public const string STORAGE_URL = "storageUrl";
 		public const string STORAGE_BASE_DIR = "storageBaseDir";
+		public const string PATH_PREFIX = "pathPrefix";
 		public const string STORAGE_USERNAME = "storageUsername";
 		public const string STORAGE_PASSWORD = "storagePassword";
 		public const string STORAGE_FTP_PASSIVE_MODE = "storageFtpPassiveMode";
@@ -89,6 +90,7 @@ namespace Kaltura.Types
 		private StorageProfileProtocol _Protocol = null;
 		private string _StorageUrl = null;
 		private string _StorageBaseDir = null;
+		private string _PathPrefix = null;
 		private string _StorageUsername = null;
 		private string _StoragePassword = null;
 		private bool? _StorageFtpPassiveMode = null;
@@ -226,6 +228,16 @@ namespace Kaltura.Types
 			{ 
 				_StorageBaseDir = value;
 				OnPropertyChanged("StorageBaseDir");
+			}
+		}
+		[JsonProperty]
+		public string PathPrefix
+		{
+			get { return _PathPrefix; }
+			set 
+			{ 
+				_PathPrefix = value;
+				OnPropertyChanged("PathPrefix");
 			}
 		}
 		[JsonProperty]
@@ -541,6 +553,10 @@ namespace Kaltura.Types
 			{
 				this._StorageBaseDir = node["storageBaseDir"].Value<string>();
 			}
+			if(node["pathPrefix"] != null)
+			{
+				this._PathPrefix = node["pathPrefix"].Value<string>();
+			}
 			if(node["storageUsername"] != null)
 			{
 				this._StorageUsername = node["storageUsername"].Value<string>();
@@ -677,6 +693,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("protocol", this._Protocol);
 			kparams.AddIfNotNull("storageUrl", this._StorageUrl);
 			kparams.AddIfNotNull("storageBaseDir", this._StorageBaseDir);
+			kparams.AddIfNotNull("pathPrefix", this._PathPrefix);
 			kparams.AddIfNotNull("storageUsername", this._StorageUsername);
 			kparams.AddIfNotNull("storagePassword", this._StoragePassword);
 			kparams.AddIfNotNull("storageFtpPassiveMode", this._StorageFtpPassiveMode);
@@ -731,6 +748,8 @@ namespace Kaltura.Types
 					return "StorageUrl";
 				case STORAGE_BASE_DIR:
 					return "StorageBaseDir";
+				case PATH_PREFIX:
+					return "PathPrefix";
 				case STORAGE_USERNAME:
 					return "StorageUsername";
 				case STORAGE_PASSWORD:

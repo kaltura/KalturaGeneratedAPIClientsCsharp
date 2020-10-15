@@ -41,12 +41,14 @@ namespace Kaltura.Types
 		public const string RECIPIENT_EMAIL = "recipientEmail";
 		public const string TIME_ZONE_OFFSET = "timeZoneOffset";
 		public const string REPORT_ITEMS = "reportItems";
+		public const string REPORTS_ITEMS_GROUP = "reportsItemsGroup";
 		#endregion
 
 		#region Private Fields
 		private string _RecipientEmail = null;
 		private int _TimeZoneOffset = Int32.MinValue;
 		private IList<ReportExportItem> _ReportItems;
+		private string _ReportsItemsGroup = null;
 		#endregion
 
 		#region Properties
@@ -80,6 +82,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReportItems");
 			}
 		}
+		[JsonProperty]
+		public string ReportsItemsGroup
+		{
+			get { return _ReportsItemsGroup; }
+			set 
+			{ 
+				_ReportsItemsGroup = value;
+				OnPropertyChanged("ReportsItemsGroup");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -105,6 +117,10 @@ namespace Kaltura.Types
 					this._ReportItems.Add(ObjectFactory.Create<ReportExportItem>(arrayNode));
 				}
 			}
+			if(node["reportsItemsGroup"] != null)
+			{
+				this._ReportsItemsGroup = node["reportsItemsGroup"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -117,6 +133,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("recipientEmail", this._RecipientEmail);
 			kparams.AddIfNotNull("timeZoneOffset", this._TimeZoneOffset);
 			kparams.AddIfNotNull("reportItems", this._ReportItems);
+			kparams.AddIfNotNull("reportsItemsGroup", this._ReportsItemsGroup);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -129,6 +146,8 @@ namespace Kaltura.Types
 					return "TimeZoneOffset";
 				case REPORT_ITEMS:
 					return "ReportItems";
+				case REPORTS_ITEMS_GROUP:
+					return "ReportsItemsGroup";
 				default:
 					return base.getPropertyName(apiName);
 			}

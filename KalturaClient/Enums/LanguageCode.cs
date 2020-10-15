@@ -70,6 +70,7 @@ namespace Kaltura.Enums
 		public static readonly LanguageCode FJ = new LanguageCode("fj");
 		public static readonly LanguageCode FO = new LanguageCode("fo");
 		public static readonly LanguageCode FR = new LanguageCode("fr");
+		public static readonly LanguageCode FR_CA = new LanguageCode("fr_ca");
 		public static readonly LanguageCode FY = new LanguageCode("fy");
 		public static readonly LanguageCode GA = new LanguageCode("ga");
 		public static readonly LanguageCode GD = new LanguageCode("gd");
@@ -192,6 +193,7 @@ namespace Kaltura.Enums
 		public static readonly LanguageCode YI = new LanguageCode("yi");
 		public static readonly LanguageCode YO = new LanguageCode("yo");
 		public static readonly LanguageCode ZH = new LanguageCode("zh");
+		public static readonly LanguageCode ZH_TW = new LanguageCode("zh_tw");
 		public static readonly LanguageCode ZU = new LanguageCode("zu");
 		public static readonly LanguageCode ZXX = new LanguageCode("zxx");
 

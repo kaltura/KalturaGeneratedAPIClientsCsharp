@@ -35,71 +35,55 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class LiveStreamScheduleEvent : EntryScheduleEvent
+	public class ReportExportFile : ObjectBase
 	{
 		#region Constants
-		public const string PROJECTED_AUDIENCE = "projectedAudience";
-		public const string SOURCE_ENTRY_ID = "sourceEntryId";
-		public const string PRE_START_TIME = "preStartTime";
+		public const string FILE_ID = "fileId";
+		public const string FILE_NAME = "fileName";
 		#endregion
 
 		#region Private Fields
-		private int _ProjectedAudience = Int32.MinValue;
-		private string _SourceEntryId = null;
-		private int _PreStartTime = Int32.MinValue;
+		private string _FileId = null;
+		private string _FileName = null;
 		#endregion
 
 		#region Properties
 		[JsonProperty]
-		public int ProjectedAudience
+		public string FileId
 		{
-			get { return _ProjectedAudience; }
+			get { return _FileId; }
 			set 
 			{ 
-				_ProjectedAudience = value;
-				OnPropertyChanged("ProjectedAudience");
+				_FileId = value;
+				OnPropertyChanged("FileId");
 			}
 		}
 		[JsonProperty]
-		public string SourceEntryId
+		public string FileName
 		{
-			get { return _SourceEntryId; }
+			get { return _FileName; }
 			set 
 			{ 
-				_SourceEntryId = value;
-				OnPropertyChanged("SourceEntryId");
-			}
-		}
-		[JsonProperty]
-		public int PreStartTime
-		{
-			get { return _PreStartTime; }
-			set 
-			{ 
-				_PreStartTime = value;
-				OnPropertyChanged("PreStartTime");
+				_FileName = value;
+				OnPropertyChanged("FileName");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public LiveStreamScheduleEvent()
+		public ReportExportFile()
 		{
 		}
 
-		public LiveStreamScheduleEvent(JToken node) : base(node)
+		public ReportExportFile(JToken node) : base(node)
 		{
-			if(node["projectedAudience"] != null)
+			if(node["fileId"] != null)
 			{
-				this._ProjectedAudience = ParseInt(node["projectedAudience"].Value<string>());
+				this._FileId = node["fileId"].Value<string>();
 			}
-			if(node["sourceEntryId"] != null)
+			if(node["fileName"] != null)
 			{
-				this._SourceEntryId = node["sourceEntryId"].Value<string>();
-			}
-			if(node["preStartTime"] != null)
-			{
-				this._PreStartTime = ParseInt(node["preStartTime"].Value<string>());
+				this._FileName = node["fileName"].Value<string>();
 			}
 		}
 		#endregion
@@ -109,22 +93,19 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaLiveStreamScheduleEvent");
-			kparams.AddIfNotNull("projectedAudience", this._ProjectedAudience);
-			kparams.AddIfNotNull("sourceEntryId", this._SourceEntryId);
-			kparams.AddIfNotNull("preStartTime", this._PreStartTime);
+				kparams.AddReplace("objectType", "KalturaReportExportFile");
+			kparams.AddIfNotNull("fileId", this._FileId);
+			kparams.AddIfNotNull("fileName", this._FileName);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case PROJECTED_AUDIENCE:
-					return "ProjectedAudience";
-				case SOURCE_ENTRY_ID:
-					return "SourceEntryId";
-				case PRE_START_TIME:
-					return "PreStartTime";
+				case FILE_ID:
+					return "FileId";
+				case FILE_NAME:
+					return "FileName";
 				default:
 					return base.getPropertyName(apiName);
 			}

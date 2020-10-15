@@ -190,6 +190,17 @@ namespace Kaltura.Enums
 		public static readonly ReportType QOE_ENGAGEMENT_APPLICATION_VERSION = new ReportType("30062");
 		public static readonly ReportType QOE_STREAM_QUALITY_APPLICATION_VERSION = new ReportType("30063");
 		public static readonly ReportType QOE_ERROR_TRACKING_APPLICATION_VERSION = new ReportType("30064");
+		public static readonly ReportType HIGHLIGHTS_WEBCAST = new ReportType("40001");
+		public static readonly ReportType ENGAGEMENT_WEBCAST = new ReportType("40002");
+		public static readonly ReportType QUALITY_WEBCAST = new ReportType("40003");
+		public static readonly ReportType MAP_OVERLAY_COUNTRY_WEBCAST = new ReportType("40004");
+		public static readonly ReportType MAP_OVERLAY_REGION_WEBCAST = new ReportType("40005");
+		public static readonly ReportType MAP_OVERLAY_CITY_WEBCAST = new ReportType("40006");
+		public static readonly ReportType PLATFORMS_WEBCAST = new ReportType("40007");
+		public static readonly ReportType TOP_DOMAINS_WEBCAST = new ReportType("40008");
+		public static readonly ReportType TOP_USERS_WEBCAST = new ReportType("40009");
+		public static readonly ReportType ENGAGEMENT_BREAKDOWN_WEBCAST = new ReportType("40010");
+		public static readonly ReportType ENGAGMENT_TIMELINE_WEBCAST = new ReportType("40011");
 
 		private ReportType(string name) : base(name) { }
 	}

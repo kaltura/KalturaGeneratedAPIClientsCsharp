@@ -84,6 +84,7 @@ namespace Kaltura.Types
 		public const string EMBED_CODE_TYPES = "embedCodeTypes";
 		public const string TEMPLATE_PARTNER_ID = "templatePartnerId";
 		public const string IGNORE_SEO_LINKS = "ignoreSeoLinks";
+		public const string BLOCK_DIRECT_LOGIN = "blockDirectLogin";
 		public const string HOST = "host";
 		public const string CDN_HOST = "cdnHost";
 		public const string IS_FIRST_LOGIN = "isFirstLogin";
@@ -154,6 +155,7 @@ namespace Kaltura.Types
 		private IList<PlayerEmbedCodeType> _EmbedCodeTypes;
 		private int _TemplatePartnerId = Int32.MinValue;
 		private bool? _IgnoreSeoLinks = null;
+		private bool? _BlockDirectLogin = null;
 		private string _Host = null;
 		private string _CdnHost = null;
 		private bool? _IsFirstLogin = null;
@@ -639,6 +641,16 @@ namespace Kaltura.Types
 			}
 		}
 		[JsonProperty]
+		public bool? BlockDirectLogin
+		{
+			get { return _BlockDirectLogin; }
+			private set 
+			{ 
+				_BlockDirectLogin = value;
+				OnPropertyChanged("BlockDirectLogin");
+			}
+		}
+		[JsonProperty]
 		public string Host
 		{
 			get { return _Host; }
@@ -1053,6 +1065,10 @@ namespace Kaltura.Types
 			{
 				this._IgnoreSeoLinks = ParseBool(node["ignoreSeoLinks"].Value<string>());
 			}
+			if(node["blockDirectLogin"] != null)
+			{
+				this._BlockDirectLogin = ParseBool(node["blockDirectLogin"].Value<string>());
+			}
 			if(node["host"] != null)
 			{
 				this._Host = node["host"].Value<string>();
@@ -1196,6 +1212,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("embedCodeTypes", this._EmbedCodeTypes);
 			kparams.AddIfNotNull("templatePartnerId", this._TemplatePartnerId);
 			kparams.AddIfNotNull("ignoreSeoLinks", this._IgnoreSeoLinks);
+			kparams.AddIfNotNull("blockDirectLogin", this._BlockDirectLogin);
 			kparams.AddIfNotNull("host", this._Host);
 			kparams.AddIfNotNull("cdnHost", this._CdnHost);
 			kparams.AddIfNotNull("isFirstLogin", this._IsFirstLogin);
@@ -1315,6 +1332,8 @@ namespace Kaltura.Types
 					return "TemplatePartnerId";
 				case IGNORE_SEO_LINKS:
 					return "IgnoreSeoLinks";
+				case BLOCK_DIRECT_LOGIN:
+					return "BlockDirectLogin";
 				case HOST:
 					return "Host";
 				case CDN_HOST:

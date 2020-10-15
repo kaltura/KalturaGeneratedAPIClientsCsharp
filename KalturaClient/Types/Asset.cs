@@ -52,6 +52,7 @@ namespace Kaltura.Types
 		public const string PARTNER_DATA = "partnerData";
 		public const string PARTNER_DESCRIPTION = "partnerDescription";
 		public const string ACTUAL_SOURCE_ASSET_PARAMS_IDS = "actualSourceAssetParamsIds";
+		public const string SIZE_IN_BYTES = "sizeInBytes";
 		#endregion
 
 		#region Private Fields
@@ -69,6 +70,7 @@ namespace Kaltura.Types
 		private string _PartnerData = null;
 		private string _PartnerDescription = null;
 		private string _ActualSourceAssetParamsIds = null;
+		private int _SizeInBytes = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -212,6 +214,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("ActualSourceAssetParamsIds");
 			}
 		}
+		[JsonProperty]
+		public int SizeInBytes
+		{
+			get { return _SizeInBytes; }
+			private set 
+			{ 
+				_SizeInBytes = value;
+				OnPropertyChanged("SizeInBytes");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -277,6 +289,10 @@ namespace Kaltura.Types
 			{
 				this._ActualSourceAssetParamsIds = node["actualSourceAssetParamsIds"].Value<string>();
 			}
+			if(node["sizeInBytes"] != null)
+			{
+				this._SizeInBytes = ParseInt(node["sizeInBytes"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -300,6 +316,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("partnerData", this._PartnerData);
 			kparams.AddIfNotNull("partnerDescription", this._PartnerDescription);
 			kparams.AddIfNotNull("actualSourceAssetParamsIds", this._ActualSourceAssetParamsIds);
+			kparams.AddIfNotNull("sizeInBytes", this._SizeInBytes);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -334,6 +351,8 @@ namespace Kaltura.Types
 					return "PartnerDescription";
 				case ACTUAL_SOURCE_ASSET_PARAMS_IDS:
 					return "ActualSourceAssetParamsIds";
+				case SIZE_IN_BYTES:
+					return "SizeInBytes";
 				default:
 					return base.getPropertyName(apiName);
 			}

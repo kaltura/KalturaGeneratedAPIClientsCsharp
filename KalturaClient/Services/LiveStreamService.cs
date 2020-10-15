@@ -1242,7 +1242,7 @@ namespace Kaltura.Services
 			return new LiveStreamGetDetailsRequestBuilder(id);
 		}
 
-		public static LiveStreamIsLiveRequestBuilder IsLive(string id, PlaybackProtocol protocol)
+		public static LiveStreamIsLiveRequestBuilder IsLive(string id, PlaybackProtocol protocol = null)
 		{
 			return new LiveStreamIsLiveRequestBuilder(id, protocol);
 		}

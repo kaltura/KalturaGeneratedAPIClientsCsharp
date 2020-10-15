@@ -41,12 +41,16 @@ namespace Kaltura.Types
 		public const string RECIPIENT_EMAIL = "recipientEmail";
 		public const string REPORT_ITEMS = "reportItems";
 		public const string FILE_PATHS = "filePaths";
+		public const string REPORTS_GROUP = "reportsGroup";
+		public const string FILES = "files";
 		#endregion
 
 		#region Private Fields
 		private string _RecipientEmail = null;
 		private IList<ReportExportItem> _ReportItems;
 		private string _FilePaths = null;
+		private string _ReportsGroup = null;
+		private IList<ReportExportFile> _Files;
 		#endregion
 
 		#region Properties
@@ -80,6 +84,26 @@ namespace Kaltura.Types
 				OnPropertyChanged("FilePaths");
 			}
 		}
+		[JsonProperty]
+		public string ReportsGroup
+		{
+			get { return _ReportsGroup; }
+			set 
+			{ 
+				_ReportsGroup = value;
+				OnPropertyChanged("ReportsGroup");
+			}
+		}
+		[JsonProperty]
+		public IList<ReportExportFile> Files
+		{
+			get { return _Files; }
+			set 
+			{ 
+				_Files = value;
+				OnPropertyChanged("Files");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -105,6 +129,18 @@ namespace Kaltura.Types
 			{
 				this._FilePaths = node["filePaths"].Value<string>();
 			}
+			if(node["reportsGroup"] != null)
+			{
+				this._ReportsGroup = node["reportsGroup"].Value<string>();
+			}
+			if(node["files"] != null)
+			{
+				this._Files = new List<ReportExportFile>();
+				foreach(var arrayNode in node["files"].Children())
+				{
+					this._Files.Add(ObjectFactory.Create<ReportExportFile>(arrayNode));
+				}
+			}
 		}
 		#endregion
 
@@ -117,6 +153,8 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("recipientEmail", this._RecipientEmail);
 			kparams.AddIfNotNull("reportItems", this._ReportItems);
 			kparams.AddIfNotNull("filePaths", this._FilePaths);
+			kparams.AddIfNotNull("reportsGroup", this._ReportsGroup);
+			kparams.AddIfNotNull("files", this._Files);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -129,6 +167,10 @@ namespace Kaltura.Types
 					return "ReportItems";
 				case FILE_PATHS:
 					return "FilePaths";
+				case REPORTS_GROUP:
+					return "ReportsGroup";
+				case FILES:
+					return "Files";
 				default:
 					return base.getPropertyName(apiName);
 			}

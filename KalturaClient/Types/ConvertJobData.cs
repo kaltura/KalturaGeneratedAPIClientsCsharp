@@ -47,6 +47,7 @@ namespace Kaltura.Types
 		public const string CUSTOM_DATA = "customData";
 		public const string EXTRA_DEST_FILE_SYNCS = "extraDestFileSyncs";
 		public const string ENGINE_MESSAGE = "engineMessage";
+		public const string DEST_FILE_SYNC_SHARED_PATH = "destFileSyncSharedPath";
 		public const string USER_CPU = "userCpu";
 		#endregion
 
@@ -60,6 +61,7 @@ namespace Kaltura.Types
 		private string _CustomData = null;
 		private IList<DestFileSyncDescriptor> _ExtraDestFileSyncs;
 		private string _EngineMessage = null;
+		private string _DestFileSyncSharedPath = null;
 		private int _UserCpu = Int32.MinValue;
 		#endregion
 
@@ -155,6 +157,16 @@ namespace Kaltura.Types
 			}
 		}
 		[JsonProperty]
+		public string DestFileSyncSharedPath
+		{
+			get { return _DestFileSyncSharedPath; }
+			set 
+			{ 
+				_DestFileSyncSharedPath = value;
+				OnPropertyChanged("DestFileSyncSharedPath");
+			}
+		}
+		[JsonProperty]
 		public int UserCpu
 		{
 			get { return _UserCpu; }
@@ -213,6 +225,10 @@ namespace Kaltura.Types
 			{
 				this._EngineMessage = node["engineMessage"].Value<string>();
 			}
+			if(node["destFileSyncSharedPath"] != null)
+			{
+				this._DestFileSyncSharedPath = node["destFileSyncSharedPath"].Value<string>();
+			}
 			if(node["userCpu"] != null)
 			{
 				this._UserCpu = ParseInt(node["userCpu"].Value<string>());
@@ -235,6 +251,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("customData", this._CustomData);
 			kparams.AddIfNotNull("extraDestFileSyncs", this._ExtraDestFileSyncs);
 			kparams.AddIfNotNull("engineMessage", this._EngineMessage);
+			kparams.AddIfNotNull("destFileSyncSharedPath", this._DestFileSyncSharedPath);
 			kparams.AddIfNotNull("userCpu", this._UserCpu);
 			return kparams;
 		}
@@ -260,6 +277,8 @@ namespace Kaltura.Types
 					return "ExtraDestFileSyncs";
 				case ENGINE_MESSAGE:
 					return "EngineMessage";
+				case DEST_FILE_SYNC_SHARED_PATH:
+					return "DestFileSyncSharedPath";
 				case USER_CPU:
 					return "UserCpu";
 				default:

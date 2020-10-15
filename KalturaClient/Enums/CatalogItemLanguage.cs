@@ -39,6 +39,7 @@ namespace Kaltura.Enums
 		public static readonly CatalogItemLanguage EN_GB = new CatalogItemLanguage("English (British)");
 		public static readonly CatalogItemLanguage FI = new CatalogItemLanguage("Finnish");
 		public static readonly CatalogItemLanguage FR = new CatalogItemLanguage("French");
+		public static readonly CatalogItemLanguage FR_CA = new CatalogItemLanguage("French (Canada)");
 		public static readonly CatalogItemLanguage DE = new CatalogItemLanguage("German");
 		public static readonly CatalogItemLanguage EL = new CatalogItemLanguage("Greek");
 		public static readonly CatalogItemLanguage HE = new CatalogItemLanguage("Hebrew");
@@ -46,9 +47,11 @@ namespace Kaltura.Enums
 		public static readonly CatalogItemLanguage HU = new CatalogItemLanguage("Hungarian");
 		public static readonly CatalogItemLanguage IS = new CatalogItemLanguage("Icelandic");
 		public static readonly CatalogItemLanguage IN = new CatalogItemLanguage("Indonesian");
+		public static readonly CatalogItemLanguage GA = new CatalogItemLanguage("Irish");
 		public static readonly CatalogItemLanguage IT = new CatalogItemLanguage("Italian");
 		public static readonly CatalogItemLanguage JA = new CatalogItemLanguage("Japanese");
 		public static readonly CatalogItemLanguage KO = new CatalogItemLanguage("Korean");
+		public static readonly CatalogItemLanguage ML = new CatalogItemLanguage("Malayalam");
 		public static readonly CatalogItemLanguage CMN = new CatalogItemLanguage("Mandarin Chinese");
 		public static readonly CatalogItemLanguage NO = new CatalogItemLanguage("Norwegian");
 		public static readonly CatalogItemLanguage PL = new CatalogItemLanguage("Polish");
@@ -57,8 +60,15 @@ namespace Kaltura.Enums
 		public static readonly CatalogItemLanguage RU = new CatalogItemLanguage("Russian");
 		public static readonly CatalogItemLanguage ES = new CatalogItemLanguage("Spanish");
 		public static readonly CatalogItemLanguage SV = new CatalogItemLanguage("Swedish");
+		public static readonly CatalogItemLanguage ZH_TW = new CatalogItemLanguage("Taiwanese Mandarin");
+		public static readonly CatalogItemLanguage TA = new CatalogItemLanguage("Tamil");
 		public static readonly CatalogItemLanguage TH = new CatalogItemLanguage("Thai");
 		public static readonly CatalogItemLanguage TR = new CatalogItemLanguage("Turkish");
+		public static readonly CatalogItemLanguage UK = new CatalogItemLanguage("Ukrainian");
+		public static readonly CatalogItemLanguage UR = new CatalogItemLanguage("Urdu");
+		public static readonly CatalogItemLanguage VI = new CatalogItemLanguage("Vietnamese");
+		public static readonly CatalogItemLanguage CY = new CatalogItemLanguage("Welsh");
+		public static readonly CatalogItemLanguage ZU = new CatalogItemLanguage("Zulu");
 
 		private CatalogItemLanguage(string name) : base(name) { }
 	}

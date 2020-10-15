@@ -190,6 +190,7 @@ namespace Kaltura.Enums
 		public static readonly Language FRP = new Language("Franco-Prove");
 		public static readonly Language FRK = new Language("Frankish");
 		public static readonly Language FR = new Language("French");
+		public static readonly Language FR_CA = new Language("French (Canada)");
 		public static readonly Language FY = new Language("Frisian");
 		public static readonly Language FRR = new Language("Frisian Northern");
 		public static readonly Language FUR = new Language("Friulian");
@@ -223,8 +224,8 @@ namespace Kaltura.Enums
 		public static readonly Language HNI = new Language("Hani");
 		public static readonly Language HA = new Language("Hausa");
 		public static readonly Language HAW = new Language("Hawaiian");
-		public static readonly Language HE = new Language("Hebrew");
 		public static readonly Language IW = new Language("Hebrew");
+		public static readonly Language HE = new Language("Hebrew");
 		public static readonly Language HEI = new Language("Heiltsuk");
 		public static readonly Language HID = new Language("Hidatsa");
 		public static readonly Language HIL = new Language("Hiligaynon");
@@ -238,8 +239,8 @@ namespace Kaltura.Enums
 		public static readonly Language KPO = new Language("Ikposo");
 		public static readonly Language ILO = new Language("Iloko");
 		public static readonly Language SMN = new Language("Inari Sami");
-		public static readonly Language ID = new Language("Indonesian");
 		public static readonly Language IN = new Language("Indonesian");
+		public static readonly Language ID = new Language("Indonesian");
 		public static readonly Language IZH = new Language("Ingrian");
 		public static readonly Language INH = new Language("Ingush");
 		public static readonly Language IA = new Language("Interlingua");
@@ -519,6 +520,7 @@ namespace Kaltura.Enums
 		public static readonly Language TGX = new Language("Tagish");
 		public static readonly Language THT = new Language("Tahltan");
 		public static readonly Language TDD = new Language("Tai Na");
+		public static readonly Language ZH_TW = new Language("Taiwanese Mandarin");
 		public static readonly Language TG = new Language("Tajik");
 		public static readonly Language TLY = new Language("Talysh");
 		public static readonly Language TTQ = new Language("Tamajaq Tawallammat");

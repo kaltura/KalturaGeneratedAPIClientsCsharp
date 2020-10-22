@@ -187,6 +187,7 @@ namespace Kaltura
 		public static string FILE_SIZE_EXCEEDED = "FILE_SIZE_EXCEEDED";
 		public static string SCHEDULER_HOST_CONFLICT = "SCHEDULER_HOST_CONFLICT";
 		public static string SCHEDULER_NOT_FOUND = "SCHEDULER_NOT_FOUND";
+		public static string MAX_CONFIGURED_ID_NOT_FOUND = "MAX_CONFIGURED_ID_NOT_FOUND";
 		public static string WORKER_NOT_FOUND = "WORKER_NOT_FOUND";
 		public static string COMMAND_NOT_FOUND = "COMMAND_NOT_FOUND";
 		public static string COMMAND_ALREADY_PENDING = "COMMAND_ALREADY_PENDING";

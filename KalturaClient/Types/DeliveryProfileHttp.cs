@@ -35,39 +35,39 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class DeliveryProfileGenericHttp : DeliveryProfileHttp
+	public class DeliveryProfileHttp : DeliveryProfile
 	{
 		#region Constants
-		public const string PATTERN = "pattern";
+		public const string MAX_SIZE = "maxSize";
 		#endregion
 
 		#region Private Fields
-		private string _Pattern = null;
+		private int _MaxSize = Int32.MinValue;
 		#endregion
 
 		#region Properties
 		[JsonProperty]
-		public string Pattern
+		public int MaxSize
 		{
-			get { return _Pattern; }
+			get { return _MaxSize; }
 			set 
 			{ 
-				_Pattern = value;
-				OnPropertyChanged("Pattern");
+				_MaxSize = value;
+				OnPropertyChanged("MaxSize");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public DeliveryProfileGenericHttp()
+		public DeliveryProfileHttp()
 		{
 		}
 
-		public DeliveryProfileGenericHttp(JToken node) : base(node)
+		public DeliveryProfileHttp(JToken node) : base(node)
 		{
-			if(node["pattern"] != null)
+			if(node["maxSize"] != null)
 			{
-				this._Pattern = node["pattern"].Value<string>();
+				this._MaxSize = ParseInt(node["maxSize"].Value<string>());
 			}
 		}
 		#endregion
@@ -77,16 +77,16 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaDeliveryProfileGenericHttp");
-			kparams.AddIfNotNull("pattern", this._Pattern);
+				kparams.AddReplace("objectType", "KalturaDeliveryProfileHttp");
+			kparams.AddIfNotNull("maxSize", this._MaxSize);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case PATTERN:
-					return "Pattern";
+				case MAX_SIZE:
+					return "MaxSize";
 				default:
 					return base.getPropertyName(apiName);
 			}

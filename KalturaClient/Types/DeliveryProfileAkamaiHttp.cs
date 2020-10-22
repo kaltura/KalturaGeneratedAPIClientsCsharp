@@ -35,7 +35,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class DeliveryProfileAkamaiHttp : DeliveryProfile
+	public class DeliveryProfileAkamaiHttp : DeliveryProfileHttp
 	{
 		#region Constants
 		public const string USE_INTELLISEEK = "useIntelliseek";

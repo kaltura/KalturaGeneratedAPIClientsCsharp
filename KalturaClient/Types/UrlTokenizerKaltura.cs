@@ -35,40 +35,24 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class DeliveryProfileGenericHttp : DeliveryProfileHttp
+	public class UrlTokenizerKaltura : UrlTokenizer
 	{
 		#region Constants
-		public const string PATTERN = "pattern";
 		#endregion
 
 		#region Private Fields
-		private string _Pattern = null;
 		#endregion
 
 		#region Properties
-		[JsonProperty]
-		public string Pattern
-		{
-			get { return _Pattern; }
-			set 
-			{ 
-				_Pattern = value;
-				OnPropertyChanged("Pattern");
-			}
-		}
 		#endregion
 
 		#region CTor
-		public DeliveryProfileGenericHttp()
+		public UrlTokenizerKaltura()
 		{
 		}
 
-		public DeliveryProfileGenericHttp(JToken node) : base(node)
+		public UrlTokenizerKaltura(JToken node) : base(node)
 		{
-			if(node["pattern"] != null)
-			{
-				this._Pattern = node["pattern"].Value<string>();
-			}
 		}
 		#endregion
 
@@ -77,16 +61,13 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaDeliveryProfileGenericHttp");
-			kparams.AddIfNotNull("pattern", this._Pattern);
+				kparams.AddReplace("objectType", "KalturaUrlTokenizerKaltura");
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case PATTERN:
-					return "Pattern";
 				default:
 					return base.getPropertyName(apiName);
 			}

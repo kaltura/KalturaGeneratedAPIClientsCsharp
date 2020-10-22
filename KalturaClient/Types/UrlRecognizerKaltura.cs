@@ -35,39 +35,39 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class DeliveryProfileGenericHttp : DeliveryProfileHttp
+	public class UrlRecognizerKaltura : UrlRecognizer
 	{
 		#region Constants
-		public const string PATTERN = "pattern";
+		public const string KEY = "key";
 		#endregion
 
 		#region Private Fields
-		private string _Pattern = null;
+		private string _Key = null;
 		#endregion
 
 		#region Properties
 		[JsonProperty]
-		public string Pattern
+		public string Key
 		{
-			get { return _Pattern; }
+			get { return _Key; }
 			set 
 			{ 
-				_Pattern = value;
-				OnPropertyChanged("Pattern");
+				_Key = value;
+				OnPropertyChanged("Key");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public DeliveryProfileGenericHttp()
+		public UrlRecognizerKaltura()
 		{
 		}
 
-		public DeliveryProfileGenericHttp(JToken node) : base(node)
+		public UrlRecognizerKaltura(JToken node) : base(node)
 		{
-			if(node["pattern"] != null)
+			if(node["key"] != null)
 			{
-				this._Pattern = node["pattern"].Value<string>();
+				this._Key = node["key"].Value<string>();
 			}
 		}
 		#endregion
@@ -77,16 +77,16 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaDeliveryProfileGenericHttp");
-			kparams.AddIfNotNull("pattern", this._Pattern);
+				kparams.AddReplace("objectType", "KalturaUrlRecognizerKaltura");
+			kparams.AddIfNotNull("key", this._Key);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case PATTERN:
-					return "Pattern";
+				case KEY:
+					return "Key";
 				default:
 					return base.getPropertyName(apiName);
 			}

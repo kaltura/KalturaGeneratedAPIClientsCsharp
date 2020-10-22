@@ -41,12 +41,14 @@ namespace Kaltura.Types
 		public const string PROJECTED_AUDIENCE = "projectedAudience";
 		public const string SOURCE_ENTRY_ID = "sourceEntryId";
 		public const string PRE_START_TIME = "preStartTime";
+		public const string POST_END_TIME = "postEndTime";
 		#endregion
 
 		#region Private Fields
 		private int _ProjectedAudience = Int32.MinValue;
 		private string _SourceEntryId = null;
 		private int _PreStartTime = Int32.MinValue;
+		private int _PostEndTime = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -80,6 +82,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("PreStartTime");
 			}
 		}
+		[JsonProperty]
+		public int PostEndTime
+		{
+			get { return _PostEndTime; }
+			set 
+			{ 
+				_PostEndTime = value;
+				OnPropertyChanged("PostEndTime");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -101,6 +113,10 @@ namespace Kaltura.Types
 			{
 				this._PreStartTime = ParseInt(node["preStartTime"].Value<string>());
 			}
+			if(node["postEndTime"] != null)
+			{
+				this._PostEndTime = ParseInt(node["postEndTime"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -113,6 +129,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("projectedAudience", this._ProjectedAudience);
 			kparams.AddIfNotNull("sourceEntryId", this._SourceEntryId);
 			kparams.AddIfNotNull("preStartTime", this._PreStartTime);
+			kparams.AddIfNotNull("postEndTime", this._PostEndTime);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -125,6 +142,8 @@ namespace Kaltura.Types
 					return "SourceEntryId";
 				case PRE_START_TIME:
 					return "PreStartTime";
+				case POST_END_TIME:
+					return "PostEndTime";
 				default:
 					return base.getPropertyName(apiName);
 			}

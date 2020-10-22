@@ -32,6 +32,7 @@ namespace Kaltura.Enums
 		public static readonly PlaybackProtocol APPLE_HTTP = new PlaybackProtocol("applehttp");
 		public static readonly PlaybackProtocol APPLE_HTTP_TO_MC = new PlaybackProtocol("applehttp_to_mc");
 		public static readonly PlaybackProtocol AUTO = new PlaybackProtocol("auto");
+		public static readonly PlaybackProtocol DOWNLOAD = new PlaybackProtocol("download");
 		public static readonly PlaybackProtocol AKAMAI_HD = new PlaybackProtocol("hdnetwork");
 		public static readonly PlaybackProtocol AKAMAI_HDS = new PlaybackProtocol("hdnetworkmanifest");
 		public static readonly PlaybackProtocol HDS = new PlaybackProtocol("hds");

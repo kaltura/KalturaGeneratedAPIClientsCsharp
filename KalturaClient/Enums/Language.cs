@@ -428,6 +428,7 @@ namespace Kaltura.Enums
 		public static readonly Language PL = new Language("Polish");
 		public static readonly Language PNT = new Language("Pontic");
 		public static readonly Language PT = new Language("Portuguese");
+		public static readonly Language PT_BR = new Language("Portuguese (Brazil)");
 		public static readonly Language POT = new Language("Potawatomi");
 		public static readonly Language PRG = new Language("Prussian");
 		public static readonly Language FUC = new Language("Pulaar");
@@ -500,6 +501,7 @@ namespace Kaltura.Enums
 		public static readonly Language SMA = new Language("Southern Sami");
 		public static readonly Language TCE = new Language("Southern Tutchone");
 		public static readonly Language ES = new Language("Spanish");
+		public static readonly Language ES_XL = new Language("Spanish (Latin America)");
 		public static readonly Language SRN = new Language("Sranan");
 		public static readonly Language STO = new Language("Stoney");
 		public static readonly Language XSV = new Language("Sudovian");
@@ -588,8 +590,8 @@ namespace Kaltura.Enums
 		public static readonly Language WYM = new Language("Wymysorys");
 		public static readonly Language XH = new Language("Xhosa");
 		public static readonly Language AME = new Language("Yanesha");
-		public static readonly Language YI = new Language("Yiddish");
 		public static readonly Language JI = new Language("Yiddish");
+		public static readonly Language YI = new Language("Yiddish");
 		public static readonly Language YO = new Language("Yoruba");
 		public static readonly Language ZAI = new Language("Zapotec Isthmus");
 		public static readonly Language DJE = new Language("Zarma");

@@ -38,12 +38,24 @@ namespace Kaltura.Types
 	public class VendorTaskData : ObjectBase
 	{
 		#region Constants
+		public const string ENTRY_DURATION = "entryDuration";
 		#endregion
 
 		#region Private Fields
+		private int _EntryDuration = Int32.MinValue;
 		#endregion
 
 		#region Properties
+		[JsonProperty]
+		public int EntryDuration
+		{
+			get { return _EntryDuration; }
+			private set 
+			{ 
+				_EntryDuration = value;
+				OnPropertyChanged("EntryDuration");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -53,6 +65,10 @@ namespace Kaltura.Types
 
 		public VendorTaskData(JToken node) : base(node)
 		{
+			if(node["entryDuration"] != null)
+			{
+				this._EntryDuration = ParseInt(node["entryDuration"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -62,12 +78,15 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaVendorTaskData");
+			kparams.AddIfNotNull("entryDuration", this._EntryDuration);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
+				case ENTRY_DURATION:
+					return "EntryDuration";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -49,6 +49,7 @@ namespace Kaltura.Types
 		public const string SERVICE_FEATURE = "serviceFeature";
 		public const string TURN_AROUND_TIME = "turnAroundTime";
 		public const string PRICING = "pricing";
+		public const string ALLOW_RESUBMISSION = "allowResubmission";
 		#endregion
 
 		#region Private Fields
@@ -63,6 +64,7 @@ namespace Kaltura.Types
 		private VendorServiceFeature _ServiceFeature = (VendorServiceFeature)Int32.MinValue;
 		private VendorServiceTurnAroundTime _TurnAroundTime = (VendorServiceTurnAroundTime)Int32.MinValue;
 		private VendorCatalogItemPricing _Pricing;
+		private bool? _AllowResubmission = null;
 		#endregion
 
 		#region Properties
@@ -176,6 +178,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("Pricing");
 			}
 		}
+		[JsonProperty]
+		public bool? AllowResubmission
+		{
+			get { return _AllowResubmission; }
+			set 
+			{ 
+				_AllowResubmission = value;
+				OnPropertyChanged("AllowResubmission");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -229,6 +241,10 @@ namespace Kaltura.Types
 			{
 				this._Pricing = ObjectFactory.Create<VendorCatalogItemPricing>(node["pricing"]);
 			}
+			if(node["allowResubmission"] != null)
+			{
+				this._AllowResubmission = ParseBool(node["allowResubmission"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -249,6 +265,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("serviceFeature", this._ServiceFeature);
 			kparams.AddIfNotNull("turnAroundTime", this._TurnAroundTime);
 			kparams.AddIfNotNull("pricing", this._Pricing);
+			kparams.AddIfNotNull("allowResubmission", this._AllowResubmission);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -277,6 +294,8 @@ namespace Kaltura.Types
 					return "TurnAroundTime";
 				case PRICING:
 					return "Pricing";
+				case ALLOW_RESUBMISSION:
+					return "AllowResubmission";
 				default:
 					return base.getPropertyName(apiName);
 			}

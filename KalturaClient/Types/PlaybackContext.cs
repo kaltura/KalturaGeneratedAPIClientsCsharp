@@ -43,6 +43,7 @@ namespace Kaltura.Types
 		public const string FLAVOR_ASSETS = "flavorAssets";
 		public const string ACTIONS = "actions";
 		public const string MESSAGES = "messages";
+		public const string BUMPER_DATA = "bumperData";
 		#endregion
 
 		#region Private Fields
@@ -51,6 +52,7 @@ namespace Kaltura.Types
 		private IList<FlavorAsset> _FlavorAssets;
 		private IList<RuleAction> _Actions;
 		private IList<AccessControlMessage> _Messages;
+		private TypedArray _BumperData;
 		#endregion
 
 		#region Properties
@@ -104,6 +106,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("Messages");
 			}
 		}
+		[JsonProperty]
+		public TypedArray BumperData
+		{
+			get { return _BumperData; }
+			set 
+			{ 
+				_BumperData = value;
+				OnPropertyChanged("BumperData");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -153,6 +165,10 @@ namespace Kaltura.Types
 					this._Messages.Add(ObjectFactory.Create<AccessControlMessage>(arrayNode));
 				}
 			}
+			if(node["bumperData"] != null)
+			{
+				this._BumperData = ObjectFactory.Create<TypedArray>(node["bumperData"]);
+			}
 		}
 		#endregion
 
@@ -167,6 +183,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("flavorAssets", this._FlavorAssets);
 			kparams.AddIfNotNull("actions", this._Actions);
 			kparams.AddIfNotNull("messages", this._Messages);
+			kparams.AddIfNotNull("bumperData", this._BumperData);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -183,6 +200,8 @@ namespace Kaltura.Types
 					return "Actions";
 				case MESSAGES:
 					return "Messages";
+				case BUMPER_DATA:
+					return "BumperData";
 				default:
 					return base.getPropertyName(apiName);
 			}

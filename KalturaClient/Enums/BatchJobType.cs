@@ -44,13 +44,10 @@ namespace Kaltura.Enums
 		public static readonly BatchJobType DROP_FOLDER_WATCHER = new BatchJobType("dropFolder.DropFolderWatcher");
 		public static readonly BatchJobType EVENT_NOTIFICATION_HANDLER = new BatchJobType("eventNotification.EventNotificationHandler");
 		public static readonly BatchJobType INTEGRATION = new BatchJobType("integration.Integration");
-		public static readonly BatchJobType ENTRY_VENDOR_TASK_CSV = new BatchJobType("reach.EntryVendorTasksCsv");
-		public static readonly BatchJobType SYNC_REACH_CREDIT_TASK = new BatchJobType("reach.SyncReachCreditTask");
 		public static readonly BatchJobType SCHEDULED_TASK = new BatchJobType("scheduledTask.ScheduledTask");
 		public static readonly BatchJobType INDEX_TAGS = new BatchJobType("tagSearch.IndexTagsByPrivacyContext");
 		public static readonly BatchJobType TAG_RESOLVE = new BatchJobType("tagSearch.TagResolve");
 		public static readonly BatchJobType VIRUS_SCAN = new BatchJobType("virusScan.VirusScan");
-		public static readonly BatchJobType WIDEVINE_REPOSITORY_SYNC = new BatchJobType("widevine.WidevineRepositorySync");
 		public static readonly BatchJobType IMPORT = new BatchJobType("1");
 		public static readonly BatchJobType DELETE = new BatchJobType("2");
 		public static readonly BatchJobType FLATTEN = new BatchJobType("3");

@@ -109,6 +109,45 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class ZoomVendorGetRequestBuilder : RequestBuilder<ZoomIntegrationSetting>
+	{
+		#region Constants
+		public new const string PARTNER_ID = "partnerId";
+		#endregion
+
+		public new int PartnerId { get; set; }
+
+		public ZoomVendorGetRequestBuilder()
+			: base("vendor_zoomvendor", "get")
+		{
+		}
+
+		public ZoomVendorGetRequestBuilder(int partnerId)
+			: this()
+		{
+			this.PartnerId = partnerId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("partnerId"))
+				kparams.AddIfNotNull("partnerId", PartnerId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			return ObjectFactory.Create<ZoomIntegrationSetting>(result);
+		}
+	}
+
 	public class ZoomVendorOauthValidationRequestBuilder : RequestBuilder<string>
 	{
 		#region Constants
@@ -226,6 +265,11 @@ namespace Kaltura.Services
 		public static ZoomVendorFetchRegistrationPageRequestBuilder FetchRegistrationPage(string tokensData, string iv)
 		{
 			return new ZoomVendorFetchRegistrationPageRequestBuilder(tokensData, iv);
+		}
+
+		public static ZoomVendorGetRequestBuilder Get(int partnerId)
+		{
+			return new ZoomVendorGetRequestBuilder(partnerId);
 		}
 
 		public static ZoomVendorOauthValidationRequestBuilder OauthValidation()

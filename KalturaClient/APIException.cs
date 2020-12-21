@@ -228,6 +228,7 @@ namespace Kaltura
 		public static string PERMISSION_ITEM_NOT_FOUND = "PERMISSION_ITEM_NOT_FOUND";
 		public static string PROPERTY_DEPRECTAED = "PROPERTY_DEPRECTAED";
 		public static string PROPERTY_IS_NOT_DEFINED = "PROPERTY_IS_NOT_DEFINED";
+		public static string GROUPS_CANNOT_CO_EXIST = "GROUPS_CANNOT_CO_EXIST";
 		public static string INVALID_XSLT = "INVALID_XSLT";
 		public static string INVALID_XSLT_MISSING_TEMPLATE_RSS = "INVALID_XSLT_MISSING_TEMPLATE_RSS";
 		public static string INVALID_XSLT_MISSING_TEMPLATE_ITEM = "INVALID_XSLT_MISSING_TEMPLATE_ITEM";
@@ -384,6 +385,7 @@ namespace Kaltura
 		public static string KSHOW_CLONE_FAILED = "KSHOW_CLONE_FAILED";
 		public static string CANNOT_DELETE_ENTRY = "CANNOT_DELETE_ENTRY";
 		public static string INVALID_FILE_NAME = "INVALID_FILE_NAME";
+		public static string INVALID_FILE_TYPE = "INVALID_FILE_TYPE";
 		public static string ADMIN_KUSER_NOT_FOUND = "ADMIN_KUSER_NOT_FOUND";
 		public static string INVALID_UI_CONF_ID = "INVALID_UI_CONF_ID";
 		public static string UI_CONF_CLONE_FAILED = "UI_CONF_CLONE_FAILED";

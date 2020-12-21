@@ -43,11 +43,12 @@ namespace Kaltura.Types
 		public const string ACCOUNT_ID = "accountId";
 		public const string ENABLE_RECORDING_UPLOAD = "enableRecordingUpload";
 		public const string CREATE_USER_IF_NOT_EXIST = "createUserIfNotExist";
-		public const string HANDLE_PARTICIPANT_MODE = "handleParticipantMode";
+		public const string HANDLE_PARTICIPANTS_MODE = "handleParticipantsMode";
 		public const string ZOOM_USER_MATCHING_MODE = "zoomUserMatchingMode";
 		public const string ZOOM_USER_POSTFIX = "zoomUserPostfix";
 		public const string ZOOM_WEBINAR_CATEGORY = "zoomWebinarCategory";
 		public const string ENABLE_WEBINAR_UPLOADS = "enableWebinarUploads";
+		public const string CONVERSION_PROFILE_ID = "conversionProfileId";
 		#endregion
 
 		#region Private Fields
@@ -56,11 +57,12 @@ namespace Kaltura.Types
 		private string _AccountId = null;
 		private NullableBoolean _EnableRecordingUpload = (NullableBoolean)Int32.MinValue;
 		private NullableBoolean _CreateUserIfNotExist = (NullableBoolean)Int32.MinValue;
-		private HandleParticipantsMode _HandleParticipantMode = (HandleParticipantsMode)Int32.MinValue;
+		private HandleParticipantsMode _HandleParticipantsMode = (HandleParticipantsMode)Int32.MinValue;
 		private ZoomUsersMatching _ZoomUserMatchingMode = (ZoomUsersMatching)Int32.MinValue;
 		private string _ZoomUserPostfix = null;
 		private string _ZoomWebinarCategory = null;
 		private NullableBoolean _EnableWebinarUploads = (NullableBoolean)Int32.MinValue;
+		private int _ConversionProfileId = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -88,7 +90,7 @@ namespace Kaltura.Types
 		public string AccountId
 		{
 			get { return _AccountId; }
-			set 
+			private set 
 			{ 
 				_AccountId = value;
 				OnPropertyChanged("AccountId");
@@ -115,13 +117,13 @@ namespace Kaltura.Types
 			}
 		}
 		[JsonProperty]
-		public HandleParticipantsMode HandleParticipantMode
+		public HandleParticipantsMode HandleParticipantsMode
 		{
-			get { return _HandleParticipantMode; }
+			get { return _HandleParticipantsMode; }
 			set 
 			{ 
-				_HandleParticipantMode = value;
-				OnPropertyChanged("HandleParticipantMode");
+				_HandleParticipantsMode = value;
+				OnPropertyChanged("HandleParticipantsMode");
 			}
 		}
 		[JsonProperty]
@@ -164,6 +166,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("EnableWebinarUploads");
 			}
 		}
+		[JsonProperty]
+		public int ConversionProfileId
+		{
+			get { return _ConversionProfileId; }
+			set 
+			{ 
+				_ConversionProfileId = value;
+				OnPropertyChanged("ConversionProfileId");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -193,9 +205,9 @@ namespace Kaltura.Types
 			{
 				this._CreateUserIfNotExist = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["createUserIfNotExist"].Value<string>());
 			}
-			if(node["handleParticipantMode"] != null)
+			if(node["handleParticipantsMode"] != null)
 			{
-				this._HandleParticipantMode = (HandleParticipantsMode)ParseEnum(typeof(HandleParticipantsMode), node["handleParticipantMode"].Value<string>());
+				this._HandleParticipantsMode = (HandleParticipantsMode)ParseEnum(typeof(HandleParticipantsMode), node["handleParticipantsMode"].Value<string>());
 			}
 			if(node["zoomUserMatchingMode"] != null)
 			{
@@ -213,6 +225,10 @@ namespace Kaltura.Types
 			{
 				this._EnableWebinarUploads = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["enableWebinarUploads"].Value<string>());
 			}
+			if(node["conversionProfileId"] != null)
+			{
+				this._ConversionProfileId = ParseInt(node["conversionProfileId"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -227,11 +243,12 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("accountId", this._AccountId);
 			kparams.AddIfNotNull("enableRecordingUpload", this._EnableRecordingUpload);
 			kparams.AddIfNotNull("createUserIfNotExist", this._CreateUserIfNotExist);
-			kparams.AddIfNotNull("handleParticipantMode", this._HandleParticipantMode);
+			kparams.AddIfNotNull("handleParticipantsMode", this._HandleParticipantsMode);
 			kparams.AddIfNotNull("zoomUserMatchingMode", this._ZoomUserMatchingMode);
 			kparams.AddIfNotNull("zoomUserPostfix", this._ZoomUserPostfix);
 			kparams.AddIfNotNull("zoomWebinarCategory", this._ZoomWebinarCategory);
 			kparams.AddIfNotNull("enableWebinarUploads", this._EnableWebinarUploads);
+			kparams.AddIfNotNull("conversionProfileId", this._ConversionProfileId);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -248,8 +265,8 @@ namespace Kaltura.Types
 					return "EnableRecordingUpload";
 				case CREATE_USER_IF_NOT_EXIST:
 					return "CreateUserIfNotExist";
-				case HANDLE_PARTICIPANT_MODE:
-					return "HandleParticipantMode";
+				case HANDLE_PARTICIPANTS_MODE:
+					return "HandleParticipantsMode";
 				case ZOOM_USER_MATCHING_MODE:
 					return "ZoomUserMatchingMode";
 				case ZOOM_USER_POSTFIX:
@@ -258,6 +275,8 @@ namespace Kaltura.Types
 					return "ZoomWebinarCategory";
 				case ENABLE_WEBINAR_UPLOADS:
 					return "EnableWebinarUploads";
+				case CONVERSION_PROFILE_ID:
+					return "ConversionProfileId";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2020  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -41,12 +41,14 @@ namespace Kaltura.Types
 		public const string USER_NAME = "userName";
 		public const string USER_MAIL = "userMail";
 		public const string OUTPUT_PATH = "outputPath";
+		public const string SHARED_OUTPUT_PATH = "sharedOutputPath";
 		#endregion
 
 		#region Private Fields
 		private string _UserName = null;
 		private string _UserMail = null;
 		private string _OutputPath = null;
+		private string _SharedOutputPath = null;
 		#endregion
 
 		#region Properties
@@ -80,6 +82,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("OutputPath");
 			}
 		}
+		[JsonProperty]
+		public string SharedOutputPath
+		{
+			get { return _SharedOutputPath; }
+			set 
+			{ 
+				_SharedOutputPath = value;
+				OnPropertyChanged("SharedOutputPath");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -101,6 +113,10 @@ namespace Kaltura.Types
 			{
 				this._OutputPath = node["outputPath"].Value<string>();
 			}
+			if(node["sharedOutputPath"] != null)
+			{
+				this._SharedOutputPath = node["sharedOutputPath"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -113,6 +129,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("userName", this._UserName);
 			kparams.AddIfNotNull("userMail", this._UserMail);
 			kparams.AddIfNotNull("outputPath", this._OutputPath);
+			kparams.AddIfNotNull("sharedOutputPath", this._SharedOutputPath);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -125,6 +142,8 @@ namespace Kaltura.Types
 					return "UserMail";
 				case OUTPUT_PATH:
 					return "OutputPath";
+				case SHARED_OUTPUT_PATH:
+					return "SharedOutputPath";
 				default:
 					return base.getPropertyName(apiName);
 			}

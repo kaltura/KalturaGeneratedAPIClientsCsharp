@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2020  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -55,6 +55,8 @@ namespace Kaltura.Types
 		public const string ENABLE_AUDIO_TAGS = "enableAudioTags";
 		public const string ENABLE_PROFANITY_REMOVAL = "enableProfanityRemoval";
 		public const string MAX_CHARACTERS_PER_CAPTION_LINE = "maxCharactersPerCaptionLine";
+		public const string LABEL_ADDITION_FOR_MACHINE_SERVICE_TYPE = "labelAdditionForMachineServiceType";
+		public const string LABEL_ADDITION_FOR_HUMAN_SERVICE_TYPE = "labelAdditionForHumanServiceType";
 		public const string CONTENT_DELETION_POLICY = "contentDeletionPolicy";
 		public const string RULES = "rules";
 		public const string CREDIT = "credit";
@@ -82,6 +84,8 @@ namespace Kaltura.Types
 		private NullableBoolean _EnableAudioTags = (NullableBoolean)Int32.MinValue;
 		private NullableBoolean _EnableProfanityRemoval = (NullableBoolean)Int32.MinValue;
 		private int _MaxCharactersPerCaptionLine = Int32.MinValue;
+		private string _LabelAdditionForMachineServiceType = null;
+		private string _LabelAdditionForHumanServiceType = null;
 		private ReachProfileContentDeletionPolicy _ContentDeletionPolicy = (ReachProfileContentDeletionPolicy)Int32.MinValue;
 		private IList<Rule> _Rules;
 		private BaseVendorCredit _Credit;
@@ -263,6 +267,26 @@ namespace Kaltura.Types
 			}
 		}
 		[JsonProperty]
+		public string LabelAdditionForMachineServiceType
+		{
+			get { return _LabelAdditionForMachineServiceType; }
+			set 
+			{ 
+				_LabelAdditionForMachineServiceType = value;
+				OnPropertyChanged("LabelAdditionForMachineServiceType");
+			}
+		}
+		[JsonProperty]
+		public string LabelAdditionForHumanServiceType
+		{
+			get { return _LabelAdditionForHumanServiceType; }
+			set 
+			{ 
+				_LabelAdditionForHumanServiceType = value;
+				OnPropertyChanged("LabelAdditionForHumanServiceType");
+			}
+		}
+		[JsonProperty]
 		public ReachProfileContentDeletionPolicy ContentDeletionPolicy
 		{
 			get { return _ContentDeletionPolicy; }
@@ -409,6 +433,14 @@ namespace Kaltura.Types
 			{
 				this._MaxCharactersPerCaptionLine = ParseInt(node["maxCharactersPerCaptionLine"].Value<string>());
 			}
+			if(node["labelAdditionForMachineServiceType"] != null)
+			{
+				this._LabelAdditionForMachineServiceType = node["labelAdditionForMachineServiceType"].Value<string>();
+			}
+			if(node["labelAdditionForHumanServiceType"] != null)
+			{
+				this._LabelAdditionForHumanServiceType = node["labelAdditionForHumanServiceType"].Value<string>();
+			}
 			if(node["contentDeletionPolicy"] != null)
 			{
 				this._ContentDeletionPolicy = (ReachProfileContentDeletionPolicy)ParseEnum(typeof(ReachProfileContentDeletionPolicy), node["contentDeletionPolicy"].Value<string>());
@@ -471,6 +503,8 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("enableAudioTags", this._EnableAudioTags);
 			kparams.AddIfNotNull("enableProfanityRemoval", this._EnableProfanityRemoval);
 			kparams.AddIfNotNull("maxCharactersPerCaptionLine", this._MaxCharactersPerCaptionLine);
+			kparams.AddIfNotNull("labelAdditionForMachineServiceType", this._LabelAdditionForMachineServiceType);
+			kparams.AddIfNotNull("labelAdditionForHumanServiceType", this._LabelAdditionForHumanServiceType);
 			kparams.AddIfNotNull("contentDeletionPolicy", this._ContentDeletionPolicy);
 			kparams.AddIfNotNull("rules", this._Rules);
 			kparams.AddIfNotNull("credit", this._Credit);
@@ -518,6 +552,10 @@ namespace Kaltura.Types
 					return "EnableProfanityRemoval";
 				case MAX_CHARACTERS_PER_CAPTION_LINE:
 					return "MaxCharactersPerCaptionLine";
+				case LABEL_ADDITION_FOR_MACHINE_SERVICE_TYPE:
+					return "LabelAdditionForMachineServiceType";
+				case LABEL_ADDITION_FOR_HUMAN_SERVICE_TYPE:
+					return "LabelAdditionForHumanServiceType";
 				case CONTENT_DELETION_POLICY:
 					return "ContentDeletionPolicy";
 				case RULES:

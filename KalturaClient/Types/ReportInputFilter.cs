@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2020  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -73,6 +73,7 @@ namespace Kaltura.Types
 		public const string NODE_IDS_IN = "nodeIdsIn";
 		public const string CATEGORIES_ANCESTOR_ID_IN = "categoriesAncestorIdIn";
 		public const string HOTSPOT_ID_IN = "hotspotIdIn";
+		public const string CRM_ID_IN = "crmIdIn";
 		#endregion
 
 		#region Private Fields
@@ -111,6 +112,7 @@ namespace Kaltura.Types
 		private string _NodeIdsIn = null;
 		private string _CategoriesAncestorIdIn = null;
 		private string _HotspotIdIn = null;
+		private string _CrmIdIn = null;
 		#endregion
 
 		#region Properties
@@ -464,6 +466,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("HotspotIdIn");
 			}
 		}
+		[JsonProperty]
+		public string CrmIdIn
+		{
+			get { return _CrmIdIn; }
+			set 
+			{ 
+				_CrmIdIn = value;
+				OnPropertyChanged("CrmIdIn");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -613,6 +625,10 @@ namespace Kaltura.Types
 			{
 				this._HotspotIdIn = node["hotspotIdIn"].Value<string>();
 			}
+			if(node["crmIdIn"] != null)
+			{
+				this._CrmIdIn = node["crmIdIn"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -657,6 +673,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("nodeIdsIn", this._NodeIdsIn);
 			kparams.AddIfNotNull("categoriesAncestorIdIn", this._CategoriesAncestorIdIn);
 			kparams.AddIfNotNull("hotspotIdIn", this._HotspotIdIn);
+			kparams.AddIfNotNull("crmIdIn", this._CrmIdIn);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -733,6 +750,8 @@ namespace Kaltura.Types
 					return "CategoriesAncestorIdIn";
 				case HOTSPOT_ID_IN:
 					return "HotspotIdIn";
+				case CRM_ID_IN:
+					return "CrmIdIn";
 				default:
 					return base.getPropertyName(apiName);
 			}

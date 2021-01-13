@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2020  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -153,7 +153,7 @@ namespace Kaltura
 		public static string THUMB_ASSET_DOWNLOAD_FAILED = "THUMB_ASSET_DOWNLOAD_FAILED";
 		public static string THUMB_ASSET_IS_DEFAULT = "THUMB_ASSET_IS_DEFAULT";
 		public static string THUMB_ASSET_IS_NOT_OF_TYPE_TIMED_THUMB = "THUMB_ASSET_IS_NOT_OF_TYPE_TIMED_THUMB";
-		public static string IMAGE_CONTENT_NOT_SECURE = "IMAGE_CONTENT_NOT_SECURE";
+		public static string FILE_CONTENT_NOT_SECURE = "FILE_CONTENT_NOT_SECURE";
 		public static string CATEGORY_NOT_FOUND = "CATEGORY_NOT_FOUND";
 		public static string CATEGORY_NOT_PERMITTED = "CATEGORY_NOT_PERMITTED";
 		public static string PARENT_CATEGORY_NOT_FOUND = "PARENT_CATEGORY_NOT_FOUND";

@@ -42,6 +42,7 @@ namespace Kaltura.Types
 		public const string DEST_FILE_LOCAL_PATH = "destFileLocalPath";
 		public const string FLAVOR_ASSET_ID = "flavorAssetId";
 		public const string FILE_SIZE = "fileSize";
+		public const string DEST_FILE_SHARED_PATH = "destFileSharedPath";
 		#endregion
 
 		#region Private Fields
@@ -49,6 +50,7 @@ namespace Kaltura.Types
 		private string _DestFileLocalPath = null;
 		private string _FlavorAssetId = null;
 		private int _FileSize = Int32.MinValue;
+		private string _DestFileSharedPath = null;
 		#endregion
 
 		#region Properties
@@ -92,6 +94,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileSize");
 			}
 		}
+		[JsonProperty]
+		public string DestFileSharedPath
+		{
+			get { return _DestFileSharedPath; }
+			set 
+			{ 
+				_DestFileSharedPath = value;
+				OnPropertyChanged("DestFileSharedPath");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -117,6 +129,10 @@ namespace Kaltura.Types
 			{
 				this._FileSize = ParseInt(node["fileSize"].Value<string>());
 			}
+			if(node["destFileSharedPath"] != null)
+			{
+				this._DestFileSharedPath = node["destFileSharedPath"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -130,6 +146,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("destFileLocalPath", this._DestFileLocalPath);
 			kparams.AddIfNotNull("flavorAssetId", this._FlavorAssetId);
 			kparams.AddIfNotNull("fileSize", this._FileSize);
+			kparams.AddIfNotNull("destFileSharedPath", this._DestFileSharedPath);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -144,6 +161,8 @@ namespace Kaltura.Types
 					return "FlavorAssetId";
 				case FILE_SIZE:
 					return "FileSize";
+				case DEST_FILE_SHARED_PATH:
+					return "DestFileSharedPath";
 				default:
 					return base.getPropertyName(apiName);
 			}

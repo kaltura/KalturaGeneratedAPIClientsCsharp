@@ -74,6 +74,7 @@ namespace Kaltura.Types
 		public const string CATEGORIES_ANCESTOR_ID_IN = "categoriesAncestorIdIn";
 		public const string HOTSPOT_ID_IN = "hotspotIdIn";
 		public const string CRM_ID_IN = "crmIdIn";
+		public const string PLAYLIST_ID_IN = "playlistIdIn";
 		#endregion
 
 		#region Private Fields
@@ -113,6 +114,7 @@ namespace Kaltura.Types
 		private string _CategoriesAncestorIdIn = null;
 		private string _HotspotIdIn = null;
 		private string _CrmIdIn = null;
+		private string _PlaylistIdIn = null;
 		#endregion
 
 		#region Properties
@@ -476,6 +478,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("CrmIdIn");
 			}
 		}
+		[JsonProperty]
+		public string PlaylistIdIn
+		{
+			get { return _PlaylistIdIn; }
+			set 
+			{ 
+				_PlaylistIdIn = value;
+				OnPropertyChanged("PlaylistIdIn");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -629,6 +641,10 @@ namespace Kaltura.Types
 			{
 				this._CrmIdIn = node["crmIdIn"].Value<string>();
 			}
+			if(node["playlistIdIn"] != null)
+			{
+				this._PlaylistIdIn = node["playlistIdIn"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -674,6 +690,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("categoriesAncestorIdIn", this._CategoriesAncestorIdIn);
 			kparams.AddIfNotNull("hotspotIdIn", this._HotspotIdIn);
 			kparams.AddIfNotNull("crmIdIn", this._CrmIdIn);
+			kparams.AddIfNotNull("playlistIdIn", this._PlaylistIdIn);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -752,6 +769,8 @@ namespace Kaltura.Types
 					return "HotspotIdIn";
 				case CRM_ID_IN:
 					return "CrmIdIn";
+				case PLAYLIST_ID_IN:
+					return "PlaylistIdIn";
 				default:
 					return base.getPropertyName(apiName);
 			}

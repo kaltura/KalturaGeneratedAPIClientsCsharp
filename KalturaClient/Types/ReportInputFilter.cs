@@ -75,6 +75,8 @@ namespace Kaltura.Types
 		public const string HOTSPOT_ID_IN = "hotspotIdIn";
 		public const string CRM_ID_IN = "crmIdIn";
 		public const string PLAYLIST_ID_IN = "playlistIdIn";
+		public const string DOMAIN_IN = "domainIn";
+		public const string CANONICAL_URL_IN = "canonicalUrlIn";
 		#endregion
 
 		#region Private Fields
@@ -115,6 +117,8 @@ namespace Kaltura.Types
 		private string _HotspotIdIn = null;
 		private string _CrmIdIn = null;
 		private string _PlaylistIdIn = null;
+		private string _DomainIn = null;
+		private string _CanonicalUrlIn = null;
 		#endregion
 
 		#region Properties
@@ -488,6 +492,26 @@ namespace Kaltura.Types
 				OnPropertyChanged("PlaylistIdIn");
 			}
 		}
+		[JsonProperty]
+		public string DomainIn
+		{
+			get { return _DomainIn; }
+			set 
+			{ 
+				_DomainIn = value;
+				OnPropertyChanged("DomainIn");
+			}
+		}
+		[JsonProperty]
+		public string CanonicalUrlIn
+		{
+			get { return _CanonicalUrlIn; }
+			set 
+			{ 
+				_CanonicalUrlIn = value;
+				OnPropertyChanged("CanonicalUrlIn");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -645,6 +669,14 @@ namespace Kaltura.Types
 			{
 				this._PlaylistIdIn = node["playlistIdIn"].Value<string>();
 			}
+			if(node["domainIn"] != null)
+			{
+				this._DomainIn = node["domainIn"].Value<string>();
+			}
+			if(node["canonicalUrlIn"] != null)
+			{
+				this._CanonicalUrlIn = node["canonicalUrlIn"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -691,6 +723,8 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("hotspotIdIn", this._HotspotIdIn);
 			kparams.AddIfNotNull("crmIdIn", this._CrmIdIn);
 			kparams.AddIfNotNull("playlistIdIn", this._PlaylistIdIn);
+			kparams.AddIfNotNull("domainIn", this._DomainIn);
+			kparams.AddIfNotNull("canonicalUrlIn", this._CanonicalUrlIn);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -771,6 +805,10 @@ namespace Kaltura.Types
 					return "CrmIdIn";
 				case PLAYLIST_ID_IN:
 					return "PlaylistIdIn";
+				case DOMAIN_IN:
+					return "DomainIn";
+				case CANONICAL_URL_IN:
+					return "CanonicalUrlIn";
 				default:
 					return base.getPropertyName(apiName);
 			}

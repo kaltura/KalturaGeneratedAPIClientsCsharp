@@ -41,12 +41,14 @@ namespace Kaltura.Types
 		public const string STREAMS = "streams";
 		public const string RECORDING_INFO = "recordingInfo";
 		public const string IS_PLAYABLE_USER = "isPlayableUser";
+		public const string VIEW_MODE = "viewMode";
 		#endregion
 
 		#region Private Fields
 		private IList<LiveStreamParams> _Streams;
 		private IList<LiveEntryServerNodeRecordingInfo> _RecordingInfo;
 		private bool? _IsPlayableUser = null;
+		private ViewMode _ViewMode = (ViewMode)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -80,6 +82,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsPlayableUser");
 			}
 		}
+		[JsonProperty]
+		public ViewMode ViewMode
+		{
+			get { return _ViewMode; }
+			set 
+			{ 
+				_ViewMode = value;
+				OnPropertyChanged("ViewMode");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -109,6 +121,10 @@ namespace Kaltura.Types
 			{
 				this._IsPlayableUser = ParseBool(node["isPlayableUser"].Value<string>());
 			}
+			if(node["viewMode"] != null)
+			{
+				this._ViewMode = (ViewMode)ParseEnum(typeof(ViewMode), node["viewMode"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -121,6 +137,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("streams", this._Streams);
 			kparams.AddIfNotNull("recordingInfo", this._RecordingInfo);
 			kparams.AddIfNotNull("isPlayableUser", this._IsPlayableUser);
+			kparams.AddIfNotNull("viewMode", this._ViewMode);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -133,6 +150,8 @@ namespace Kaltura.Types
 					return "RecordingInfo";
 				case IS_PLAYABLE_USER:
 					return "IsPlayableUser";
+				case VIEW_MODE:
+					return "ViewMode";
 				default:
 					return base.getPropertyName(apiName);
 			}

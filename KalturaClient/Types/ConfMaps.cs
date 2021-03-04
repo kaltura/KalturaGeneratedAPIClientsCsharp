@@ -49,6 +49,7 @@ namespace Kaltura.Types
 		public const string SOURCE_LOCATION = "sourceLocation";
 		public const string REMARKS = "remarks";
 		public const string STATUS = "status";
+		public const string CHANGE_DESCRIPTION = "changeDescription";
 		#endregion
 
 		#region Private Fields
@@ -63,6 +64,7 @@ namespace Kaltura.Types
 		private ConfMapsSourceLocation _SourceLocation = null;
 		private string _Remarks = null;
 		private ConfMapsStatus _Status = (ConfMapsStatus)Int32.MinValue;
+		private string _ChangeDescription = null;
 		#endregion
 
 		#region Properties
@@ -176,6 +178,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		[JsonProperty]
+		public string ChangeDescription
+		{
+			get { return _ChangeDescription; }
+			set 
+			{ 
+				_ChangeDescription = value;
+				OnPropertyChanged("ChangeDescription");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -229,6 +241,10 @@ namespace Kaltura.Types
 			{
 				this._Status = (ConfMapsStatus)ParseEnum(typeof(ConfMapsStatus), node["status"].Value<string>());
 			}
+			if(node["changeDescription"] != null)
+			{
+				this._ChangeDescription = node["changeDescription"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -249,6 +265,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("sourceLocation", this._SourceLocation);
 			kparams.AddIfNotNull("remarks", this._Remarks);
 			kparams.AddIfNotNull("status", this._Status);
+			kparams.AddIfNotNull("changeDescription", this._ChangeDescription);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -277,6 +294,8 @@ namespace Kaltura.Types
 					return "Remarks";
 				case STATUS:
 					return "Status";
+				case CHANGE_DESCRIPTION:
+					return "ChangeDescription";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -73,6 +73,7 @@ namespace Kaltura.Types
 		public const string PENDING_ENTRIES_COUNT = "pendingEntriesCount";
 		public const string IS_AGGREGATION_CATEGORY = "isAggregationCategory";
 		public const string AGGREGATION_CATEGORIES = "aggregationCategories";
+		public const string ADMIN_TAGS = "adminTags";
 		#endregion
 
 		#region Private Fields
@@ -111,6 +112,7 @@ namespace Kaltura.Types
 		private int _PendingEntriesCount = Int32.MinValue;
 		private NullableBoolean _IsAggregationCategory = (NullableBoolean)Int32.MinValue;
 		private string _AggregationCategories = null;
+		private string _AdminTags = null;
 		#endregion
 
 		#region Properties
@@ -464,6 +466,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("AggregationCategories");
 			}
 		}
+		[JsonProperty]
+		public string AdminTags
+		{
+			get { return _AdminTags; }
+			set 
+			{ 
+				_AdminTags = value;
+				OnPropertyChanged("AdminTags");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -613,6 +625,10 @@ namespace Kaltura.Types
 			{
 				this._AggregationCategories = node["aggregationCategories"].Value<string>();
 			}
+			if(node["adminTags"] != null)
+			{
+				this._AdminTags = node["adminTags"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -657,6 +673,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("pendingEntriesCount", this._PendingEntriesCount);
 			kparams.AddIfNotNull("isAggregationCategory", this._IsAggregationCategory);
 			kparams.AddIfNotNull("aggregationCategories", this._AggregationCategories);
+			kparams.AddIfNotNull("adminTags", this._AdminTags);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -733,6 +750,8 @@ namespace Kaltura.Types
 					return "IsAggregationCategory";
 				case AGGREGATION_CATEGORIES:
 					return "AggregationCategories";
+				case ADMIN_TAGS:
+					return "AdminTags";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -51,6 +51,9 @@ namespace Kaltura.Types
 		public const string LOGIN_ENABLED = "loginEnabled";
 		public const string REGISTRATION_INFO = "registrationInfo";
 		public const string ATTENDANCE_INFO = "attendanceInfo";
+		public const string TITLE = "title";
+		public const string COMPANY = "company";
+		public const string KS_PRIVILEGES = "ksPrivileges";
 		#endregion
 
 		#region Private Fields
@@ -67,6 +70,9 @@ namespace Kaltura.Types
 		private bool? _LoginEnabled = null;
 		private string _RegistrationInfo = null;
 		private string _AttendanceInfo = null;
+		private string _Title = null;
+		private string _Company = null;
+		private string _KsPrivileges = null;
 		#endregion
 
 		#region Properties
@@ -199,6 +205,36 @@ namespace Kaltura.Types
 				OnPropertyChanged("AttendanceInfo");
 			}
 		}
+		[JsonProperty]
+		public string Title
+		{
+			get { return _Title; }
+			set 
+			{ 
+				_Title = value;
+				OnPropertyChanged("Title");
+			}
+		}
+		[JsonProperty]
+		public string Company
+		{
+			get { return _Company; }
+			set 
+			{ 
+				_Company = value;
+				OnPropertyChanged("Company");
+			}
+		}
+		[JsonProperty]
+		public string KsPrivileges
+		{
+			get { return _KsPrivileges; }
+			set 
+			{ 
+				_KsPrivileges = value;
+				OnPropertyChanged("KsPrivileges");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -260,6 +296,18 @@ namespace Kaltura.Types
 			{
 				this._AttendanceInfo = node["attendanceInfo"].Value<string>();
 			}
+			if(node["title"] != null)
+			{
+				this._Title = node["title"].Value<string>();
+			}
+			if(node["company"] != null)
+			{
+				this._Company = node["company"].Value<string>();
+			}
+			if(node["ksPrivileges"] != null)
+			{
+				this._KsPrivileges = node["ksPrivileges"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -282,6 +330,9 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("loginEnabled", this._LoginEnabled);
 			kparams.AddIfNotNull("registrationInfo", this._RegistrationInfo);
 			kparams.AddIfNotNull("attendanceInfo", this._AttendanceInfo);
+			kparams.AddIfNotNull("title", this._Title);
+			kparams.AddIfNotNull("company", this._Company);
+			kparams.AddIfNotNull("ksPrivileges", this._KsPrivileges);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -314,6 +365,12 @@ namespace Kaltura.Types
 					return "RegistrationInfo";
 				case ATTENDANCE_INFO:
 					return "AttendanceInfo";
+				case TITLE:
+					return "Title";
+				case COMPANY:
+					return "Company";
+				case KS_PRIVILEGES:
+					return "KsPrivileges";
 				default:
 					return base.getPropertyName(apiName);
 			}

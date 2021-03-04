@@ -283,7 +283,7 @@ namespace Kaltura.Services
 			return new GroupUserListRequestBuilder(filter, pager);
 		}
 
-		public static GroupUserSyncRequestBuilder Sync(string userId, string groupIds, bool removeFromExistingGroups = true, bool createNewGroups = true)
+		public static GroupUserSyncRequestBuilder Sync(string userId, string groupIds = null, bool removeFromExistingGroups = true, bool createNewGroups = true)
 		{
 			return new GroupUserSyncRequestBuilder(userId, groupIds, removeFromExistingGroups, createNewGroups);
 		}

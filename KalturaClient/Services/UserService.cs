@@ -303,23 +303,26 @@ namespace Kaltura.Services
 		public const string FILTER = "filter";
 		public const string METADATA_PROFILE_ID = "metadataProfileId";
 		public const string ADDITIONAL_FIELDS = "additionalFields";
+		public const string MAPPED_FIELDS = "mappedFields";
 		#endregion
 
 		public UserFilter Filter { get; set; }
 		public int MetadataProfileId { get; set; }
 		public IList<CsvAdditionalFieldInfo> AdditionalFields { get; set; }
+		public IList<KeyValue> MappedFields { get; set; }
 
 		public UserExportToCsvRequestBuilder()
 			: base("user", "exportToCsv")
 		{
 		}
 
-		public UserExportToCsvRequestBuilder(UserFilter filter, int metadataProfileId, IList<CsvAdditionalFieldInfo> additionalFields)
+		public UserExportToCsvRequestBuilder(UserFilter filter, int metadataProfileId, IList<CsvAdditionalFieldInfo> additionalFields, IList<KeyValue> mappedFields)
 			: this()
 		{
 			this.Filter = filter;
 			this.MetadataProfileId = metadataProfileId;
 			this.AdditionalFields = additionalFields;
+			this.MappedFields = mappedFields;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -331,6 +334,8 @@ namespace Kaltura.Services
 				kparams.AddIfNotNull("metadataProfileId", MetadataProfileId);
 			if (!isMapped("additionalFields"))
 				kparams.AddIfNotNull("additionalFields", AdditionalFields);
+			if (!isMapped("mappedFields"))
+				kparams.AddIfNotNull("mappedFields", MappedFields);
 			return kparams;
 		}
 
@@ -1068,9 +1073,9 @@ namespace Kaltura.Services
 			return new UserEnableLoginRequestBuilder(userId, loginId, password);
 		}
 
-		public static UserExportToCsvRequestBuilder ExportToCsv(UserFilter filter = null, int metadataProfileId = Int32.MinValue, IList<CsvAdditionalFieldInfo> additionalFields = null)
+		public static UserExportToCsvRequestBuilder ExportToCsv(UserFilter filter = null, int metadataProfileId = Int32.MinValue, IList<CsvAdditionalFieldInfo> additionalFields = null, IList<KeyValue> mappedFields = null)
 		{
-			return new UserExportToCsvRequestBuilder(filter, metadataProfileId, additionalFields);
+			return new UserExportToCsvRequestBuilder(filter, metadataProfileId, additionalFields, mappedFields);
 		}
 
 		public static UserGenerateQrCodeRequestBuilder GenerateQrCode(string hashKey)

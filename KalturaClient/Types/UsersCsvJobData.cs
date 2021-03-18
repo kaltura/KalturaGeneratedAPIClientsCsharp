@@ -41,12 +41,14 @@ namespace Kaltura.Types
 		public const string FILTER = "filter";
 		public const string METADATA_PROFILE_ID = "metadataProfileId";
 		public const string ADDITIONAL_FIELDS = "additionalFields";
+		public const string MAPPED_FIELDS = "mappedFields";
 		#endregion
 
 		#region Private Fields
 		private UserFilter _Filter;
 		private int _MetadataProfileId = Int32.MinValue;
 		private IList<CsvAdditionalFieldInfo> _AdditionalFields;
+		private IList<KeyValue> _MappedFields;
 		#endregion
 
 		#region Properties
@@ -80,6 +82,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdditionalFields");
 			}
 		}
+		[JsonProperty]
+		public IList<KeyValue> MappedFields
+		{
+			get { return _MappedFields; }
+			set 
+			{ 
+				_MappedFields = value;
+				OnPropertyChanged("MappedFields");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -105,6 +117,14 @@ namespace Kaltura.Types
 					this._AdditionalFields.Add(ObjectFactory.Create<CsvAdditionalFieldInfo>(arrayNode));
 				}
 			}
+			if(node["mappedFields"] != null)
+			{
+				this._MappedFields = new List<KeyValue>();
+				foreach(var arrayNode in node["mappedFields"].Children())
+				{
+					this._MappedFields.Add(ObjectFactory.Create<KeyValue>(arrayNode));
+				}
+			}
 		}
 		#endregion
 
@@ -117,6 +137,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("filter", this._Filter);
 			kparams.AddIfNotNull("metadataProfileId", this._MetadataProfileId);
 			kparams.AddIfNotNull("additionalFields", this._AdditionalFields);
+			kparams.AddIfNotNull("mappedFields", this._MappedFields);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -129,6 +150,8 @@ namespace Kaltura.Types
 					return "MetadataProfileId";
 				case ADDITIONAL_FIELDS:
 					return "AdditionalFields";
+				case MAPPED_FIELDS:
+					return "MappedFields";
 				default:
 					return base.getPropertyName(apiName);
 			}

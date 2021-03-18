@@ -38,6 +38,7 @@ namespace Kaltura.Types
 	public class StreamContainer : ObjectBase
 	{
 		#region Constants
+		public const string ID = "id";
 		public const string TYPE = "type";
 		public const string TRACK_INDEX = "trackIndex";
 		public const string LANGUAGE = "language";
@@ -47,6 +48,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Private Fields
+		private string _Id = null;
 		private string _Type = null;
 		private int _TrackIndex = Int32.MinValue;
 		private string _Language = null;
@@ -56,6 +58,16 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		[JsonProperty]
+		public string Id
+		{
+			get { return _Id; }
+			set 
+			{ 
+				_Id = value;
+				OnPropertyChanged("Id");
+			}
+		}
 		[JsonProperty]
 		public string Type
 		{
@@ -125,6 +137,10 @@ namespace Kaltura.Types
 
 		public StreamContainer(JToken node) : base(node)
 		{
+			if(node["id"] != null)
+			{
+				this._Id = node["id"].Value<string>();
+			}
 			if(node["type"] != null)
 			{
 				this._Type = node["type"].Value<string>();
@@ -158,6 +174,7 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaStreamContainer");
+			kparams.AddIfNotNull("id", this._Id);
 			kparams.AddIfNotNull("type", this._Type);
 			kparams.AddIfNotNull("trackIndex", this._TrackIndex);
 			kparams.AddIfNotNull("language", this._Language);
@@ -170,6 +187,8 @@ namespace Kaltura.Types
 		{
 			switch(apiName)
 			{
+				case ID:
+					return "Id";
 				case TYPE:
 					return "Type";
 				case TRACK_INDEX:

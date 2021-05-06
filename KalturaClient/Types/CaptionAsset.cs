@@ -5,7 +5,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -44,6 +44,7 @@ namespace Kaltura.Types
 		public const string IS_DEFAULT = "isDefault";
 		public const string LABEL = "label";
 		public const string FORMAT = "format";
+		public const string SOURCE = "source";
 		public const string STATUS = "status";
 		public const string PARENT_ID = "parentId";
 		public const string ACCURACY = "accuracy";
@@ -58,6 +59,7 @@ namespace Kaltura.Types
 		private NullableBoolean _IsDefault = (NullableBoolean)Int32.MinValue;
 		private string _Label = null;
 		private CaptionType _Format = null;
+		private CaptionSource _Source = null;
 		private CaptionAssetStatus _Status = (CaptionAssetStatus)Int32.MinValue;
 		private string _ParentId = null;
 		private int _Accuracy = Int32.MinValue;
@@ -124,6 +126,16 @@ namespace Kaltura.Types
 			{ 
 				_Format = value;
 				OnPropertyChanged("Format");
+			}
+		}
+		[JsonProperty]
+		public CaptionSource Source
+		{
+			get { return _Source; }
+			set 
+			{ 
+				_Source = value;
+				OnPropertyChanged("Source");
 			}
 		}
 		[JsonProperty]
@@ -209,6 +221,10 @@ namespace Kaltura.Types
 			{
 				this._Format = (CaptionType)StringEnum.Parse(typeof(CaptionType), node["format"].Value<string>());
 			}
+			if(node["source"] != null)
+			{
+				this._Source = (CaptionSource)StringEnum.Parse(typeof(CaptionSource), node["source"].Value<string>());
+			}
 			if(node["status"] != null)
 			{
 				this._Status = (CaptionAssetStatus)ParseEnum(typeof(CaptionAssetStatus), node["status"].Value<string>());
@@ -244,6 +260,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("isDefault", this._IsDefault);
 			kparams.AddIfNotNull("label", this._Label);
 			kparams.AddIfNotNull("format", this._Format);
+			kparams.AddIfNotNull("source", this._Source);
 			kparams.AddIfNotNull("status", this._Status);
 			kparams.AddIfNotNull("parentId", this._ParentId);
 			kparams.AddIfNotNull("accuracy", this._Accuracy);
@@ -267,6 +284,8 @@ namespace Kaltura.Types
 					return "Label";
 				case FORMAT:
 					return "Format";
+				case SOURCE:
+					return "Source";
 				case STATUS:
 					return "Status";
 				case PARENT_ID:

@@ -5,7 +5,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -52,7 +52,7 @@ namespace Kaltura.Types
 		private IList<FlavorAsset> _FlavorAssets;
 		private IList<RuleAction> _Actions;
 		private IList<AccessControlMessage> _Messages;
-		private TypedArray _BumperData;
+		private IList<ObjectBase> _BumperData;
 		#endregion
 
 		#region Properties
@@ -107,7 +107,7 @@ namespace Kaltura.Types
 			}
 		}
 		[JsonProperty]
-		public TypedArray BumperData
+		public IList<ObjectBase> BumperData
 		{
 			get { return _BumperData; }
 			set 
@@ -167,7 +167,11 @@ namespace Kaltura.Types
 			}
 			if(node["bumperData"] != null)
 			{
-				this._BumperData = ObjectFactory.Create<TypedArray>(node["bumperData"]);
+				this._BumperData = new List<ObjectBase>();
+				foreach(var arrayNode in node["bumperData"].Children())
+				{
+					this._BumperData.Add(ObjectFactory.Create<ObjectBase>(arrayNode));
+				}
 			}
 		}
 		#endregion

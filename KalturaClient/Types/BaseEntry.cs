@@ -5,7 +5,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -85,6 +85,7 @@ namespace Kaltura.Types
 		public const string DISPLAY_IN_SEARCH = "displayInSearch";
 		public const string APPLICATION = "application";
 		public const string APPLICATION_VERSION = "applicationVersion";
+		public const string BLOCK_AUTO_TRANSCRIPT = "blockAutoTranscript";
 		#endregion
 
 		#region Private Fields
@@ -135,6 +136,7 @@ namespace Kaltura.Types
 		private EntryDisplayInSearchType _DisplayInSearch = (EntryDisplayInSearchType)Int32.MinValue;
 		private EntryApplication _Application = null;
 		private string _ApplicationVersion = null;
+		private bool? _BlockAutoTranscript = null;
 		#endregion
 
 		#region Properties
@@ -608,6 +610,16 @@ namespace Kaltura.Types
 				OnPropertyChanged("ApplicationVersion");
 			}
 		}
+		[JsonProperty]
+		public bool? BlockAutoTranscript
+		{
+			get { return _BlockAutoTranscript; }
+			set 
+			{ 
+				_BlockAutoTranscript = value;
+				OnPropertyChanged("BlockAutoTranscript");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -809,6 +821,10 @@ namespace Kaltura.Types
 			{
 				this._ApplicationVersion = node["applicationVersion"].Value<string>();
 			}
+			if(node["blockAutoTranscript"] != null)
+			{
+				this._BlockAutoTranscript = ParseBool(node["blockAutoTranscript"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -865,6 +881,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("displayInSearch", this._DisplayInSearch);
 			kparams.AddIfNotNull("application", this._Application);
 			kparams.AddIfNotNull("applicationVersion", this._ApplicationVersion);
+			kparams.AddIfNotNull("blockAutoTranscript", this._BlockAutoTranscript);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -965,6 +982,8 @@ namespace Kaltura.Types
 					return "Application";
 				case APPLICATION_VERSION:
 					return "ApplicationVersion";
+				case BLOCK_AUTO_TRANSCRIPT:
+					return "BlockAutoTranscript";
 				default:
 					return base.getPropertyName(apiName);
 			}

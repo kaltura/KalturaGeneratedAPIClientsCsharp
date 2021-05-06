@@ -5,7 +5,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -49,6 +49,10 @@ namespace Kaltura.Types
 		public const string ZOOM_WEBINAR_CATEGORY = "zoomWebinarCategory";
 		public const string ENABLE_WEBINAR_UPLOADS = "enableWebinarUploads";
 		public const string CONVERSION_PROFILE_ID = "conversionProfileId";
+		public const string JWT_TOKEN = "jwtToken";
+		public const string DELETION_POLICY = "deletionPolicy";
+		public const string ENABLE_ZOOM_TRANSCRIPTION = "enableZoomTranscription";
+		public const string ZOOM_ACCOUNT_DESCRIPTION = "zoomAccountDescription";
 		#endregion
 
 		#region Private Fields
@@ -63,6 +67,10 @@ namespace Kaltura.Types
 		private string _ZoomWebinarCategory = null;
 		private NullableBoolean _EnableWebinarUploads = (NullableBoolean)Int32.MinValue;
 		private int _ConversionProfileId = Int32.MinValue;
+		private string _JwtToken = null;
+		private NullableBoolean _DeletionPolicy = (NullableBoolean)Int32.MinValue;
+		private NullableBoolean _EnableZoomTranscription = (NullableBoolean)Int32.MinValue;
+		private string _ZoomAccountDescription = null;
 		#endregion
 
 		#region Properties
@@ -176,6 +184,46 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionProfileId");
 			}
 		}
+		[JsonProperty]
+		public string JwtToken
+		{
+			get { return _JwtToken; }
+			set 
+			{ 
+				_JwtToken = value;
+				OnPropertyChanged("JwtToken");
+			}
+		}
+		[JsonProperty]
+		public NullableBoolean DeletionPolicy
+		{
+			get { return _DeletionPolicy; }
+			set 
+			{ 
+				_DeletionPolicy = value;
+				OnPropertyChanged("DeletionPolicy");
+			}
+		}
+		[JsonProperty]
+		public NullableBoolean EnableZoomTranscription
+		{
+			get { return _EnableZoomTranscription; }
+			set 
+			{ 
+				_EnableZoomTranscription = value;
+				OnPropertyChanged("EnableZoomTranscription");
+			}
+		}
+		[JsonProperty]
+		public string ZoomAccountDescription
+		{
+			get { return _ZoomAccountDescription; }
+			set 
+			{ 
+				_ZoomAccountDescription = value;
+				OnPropertyChanged("ZoomAccountDescription");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -229,6 +277,22 @@ namespace Kaltura.Types
 			{
 				this._ConversionProfileId = ParseInt(node["conversionProfileId"].Value<string>());
 			}
+			if(node["jwtToken"] != null)
+			{
+				this._JwtToken = node["jwtToken"].Value<string>();
+			}
+			if(node["deletionPolicy"] != null)
+			{
+				this._DeletionPolicy = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["deletionPolicy"].Value<string>());
+			}
+			if(node["enableZoomTranscription"] != null)
+			{
+				this._EnableZoomTranscription = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["enableZoomTranscription"].Value<string>());
+			}
+			if(node["zoomAccountDescription"] != null)
+			{
+				this._ZoomAccountDescription = node["zoomAccountDescription"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -249,6 +313,10 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("zoomWebinarCategory", this._ZoomWebinarCategory);
 			kparams.AddIfNotNull("enableWebinarUploads", this._EnableWebinarUploads);
 			kparams.AddIfNotNull("conversionProfileId", this._ConversionProfileId);
+			kparams.AddIfNotNull("jwtToken", this._JwtToken);
+			kparams.AddIfNotNull("deletionPolicy", this._DeletionPolicy);
+			kparams.AddIfNotNull("enableZoomTranscription", this._EnableZoomTranscription);
+			kparams.AddIfNotNull("zoomAccountDescription", this._ZoomAccountDescription);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -277,6 +345,14 @@ namespace Kaltura.Types
 					return "EnableWebinarUploads";
 				case CONVERSION_PROFILE_ID:
 					return "ConversionProfileId";
+				case JWT_TOKEN:
+					return "JwtToken";
+				case DELETION_POLICY:
+					return "DeletionPolicy";
+				case ENABLE_ZOOM_TRANSCRIPTION:
+					return "EnableZoomTranscription";
+				case ZOOM_ACCOUNT_DESCRIPTION:
+					return "ZoomAccountDescription";
 				default:
 					return base.getPropertyName(apiName);
 			}

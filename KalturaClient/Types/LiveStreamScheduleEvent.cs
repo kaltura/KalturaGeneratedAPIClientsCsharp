@@ -5,7 +5,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -35,33 +35,23 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class LiveStreamScheduleEvent : EntryScheduleEvent
+	public class LiveStreamScheduleEvent : BaseLiveScheduleEvent
 	{
 		#region Constants
-		public const string PROJECTED_AUDIENCE = "projectedAudience";
 		public const string SOURCE_ENTRY_ID = "sourceEntryId";
+		public const string PROJECTED_AUDIENCE = "projectedAudience";
 		public const string PRE_START_TIME = "preStartTime";
 		public const string POST_END_TIME = "postEndTime";
 		#endregion
 
 		#region Private Fields
-		private int _ProjectedAudience = Int32.MinValue;
 		private string _SourceEntryId = null;
+		private int _ProjectedAudience = Int32.MinValue;
 		private int _PreStartTime = Int32.MinValue;
 		private int _PostEndTime = Int32.MinValue;
 		#endregion
 
 		#region Properties
-		[JsonProperty]
-		public int ProjectedAudience
-		{
-			get { return _ProjectedAudience; }
-			set 
-			{ 
-				_ProjectedAudience = value;
-				OnPropertyChanged("ProjectedAudience");
-			}
-		}
 		[JsonProperty]
 		public string SourceEntryId
 		{
@@ -70,6 +60,16 @@ namespace Kaltura.Types
 			{ 
 				_SourceEntryId = value;
 				OnPropertyChanged("SourceEntryId");
+			}
+		}
+		[JsonProperty]
+		public int ProjectedAudience
+		{
+			get { return _ProjectedAudience; }
+			set 
+			{ 
+				_ProjectedAudience = value;
+				OnPropertyChanged("ProjectedAudience");
 			}
 		}
 		[JsonProperty]
@@ -101,13 +101,13 @@ namespace Kaltura.Types
 
 		public LiveStreamScheduleEvent(JToken node) : base(node)
 		{
-			if(node["projectedAudience"] != null)
-			{
-				this._ProjectedAudience = ParseInt(node["projectedAudience"].Value<string>());
-			}
 			if(node["sourceEntryId"] != null)
 			{
 				this._SourceEntryId = node["sourceEntryId"].Value<string>();
+			}
+			if(node["projectedAudience"] != null)
+			{
+				this._ProjectedAudience = ParseInt(node["projectedAudience"].Value<string>());
 			}
 			if(node["preStartTime"] != null)
 			{
@@ -126,8 +126,8 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaLiveStreamScheduleEvent");
-			kparams.AddIfNotNull("projectedAudience", this._ProjectedAudience);
 			kparams.AddIfNotNull("sourceEntryId", this._SourceEntryId);
+			kparams.AddIfNotNull("projectedAudience", this._ProjectedAudience);
 			kparams.AddIfNotNull("preStartTime", this._PreStartTime);
 			kparams.AddIfNotNull("postEndTime", this._PostEndTime);
 			return kparams;
@@ -136,10 +136,10 @@ namespace Kaltura.Types
 		{
 			switch(apiName)
 			{
-				case PROJECTED_AUDIENCE:
-					return "ProjectedAudience";
 				case SOURCE_ENTRY_ID:
 					return "SourceEntryId";
+				case PROJECTED_AUDIENCE:
+					return "ProjectedAudience";
 				case PRE_START_TIME:
 					return "PreStartTime";
 				case POST_END_TIME:

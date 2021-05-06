@@ -5,7 +5,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -419,6 +419,60 @@ namespace Kaltura.Services
 		public override object Deserialize(JToken result)
 		{
 			return ObjectFactory.Create<BaseEntry>(result);
+		}
+	}
+
+	public class BaseEntryExportToCsvRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string METADATA_PROFILE_ID = "metadataProfileId";
+		public const string ADDITIONAL_FIELDS = "additionalFields";
+		public const string MAPPED_FIELDS = "mappedFields";
+		#endregion
+
+		public BaseEntryFilter Filter { get; set; }
+		public int MetadataProfileId { get; set; }
+		public IList<CsvAdditionalFieldInfo> AdditionalFields { get; set; }
+		public IList<KeyValue> MappedFields { get; set; }
+
+		public BaseEntryExportToCsvRequestBuilder()
+			: base("baseentry", "exportToCsv")
+		{
+		}
+
+		public BaseEntryExportToCsvRequestBuilder(BaseEntryFilter filter, int metadataProfileId, IList<CsvAdditionalFieldInfo> additionalFields, IList<KeyValue> mappedFields)
+			: this()
+		{
+			this.Filter = filter;
+			this.MetadataProfileId = metadataProfileId;
+			this.AdditionalFields = additionalFields;
+			this.MappedFields = mappedFields;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("metadataProfileId"))
+				kparams.AddIfNotNull("metadataProfileId", MetadataProfileId);
+			if (!isMapped("additionalFields"))
+				kparams.AddIfNotNull("additionalFields", AdditionalFields);
+			if (!isMapped("mappedFields"))
+				kparams.AddIfNotNull("mappedFields", MappedFields);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			return result.Value<string>();
 		}
 	}
 
@@ -1216,6 +1270,11 @@ namespace Kaltura.Services
 		public static BaseEntryExportRequestBuilder Export(string entryId, int storageProfileId)
 		{
 			return new BaseEntryExportRequestBuilder(entryId, storageProfileId);
+		}
+
+		public static BaseEntryExportToCsvRequestBuilder ExportToCsv(BaseEntryFilter filter = null, int metadataProfileId = Int32.MinValue, IList<CsvAdditionalFieldInfo> additionalFields = null, IList<KeyValue> mappedFields = null)
+		{
+			return new BaseEntryExportToCsvRequestBuilder(filter, metadataProfileId, additionalFields, mappedFields);
 		}
 
 		public static BaseEntryFlagRequestBuilder Flag(ModerationFlag moderationFlag)

@@ -5,7 +5,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -201,6 +201,8 @@ namespace Kaltura.Enums
 		public static readonly ReportType TOP_USERS_WEBCAST = new ReportType("40009");
 		public static readonly ReportType ENGAGEMENT_BREAKDOWN_WEBCAST = new ReportType("40010");
 		public static readonly ReportType ENGAGMENT_TIMELINE_WEBCAST = new ReportType("40011");
+		public static readonly ReportType ENGAGEMENT_TOOLS_WEBCAST = new ReportType("40012");
+		public static readonly ReportType REACTIONS_BREAKDOWN_WEBCAST = new ReportType("40013");
 
 		private ReportType(string name) : base(name) { }
 	}

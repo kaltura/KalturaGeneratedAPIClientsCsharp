@@ -5,7 +5,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -35,40 +35,24 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class TypedArray : ObjectBase
+	public class LiveRedirectScheduleEventFilter : EntryScheduleEventFilter
 	{
 		#region Constants
-		public const string COUNT = "count";
 		#endregion
 
 		#region Private Fields
-		private int _Count = Int32.MinValue;
 		#endregion
 
 		#region Properties
-		[JsonProperty]
-		public int Count
-		{
-			get { return _Count; }
-			set 
-			{ 
-				_Count = value;
-				OnPropertyChanged("Count");
-			}
-		}
 		#endregion
 
 		#region CTor
-		public TypedArray()
+		public LiveRedirectScheduleEventFilter()
 		{
 		}
 
-		public TypedArray(JToken node) : base(node)
+		public LiveRedirectScheduleEventFilter(JToken node) : base(node)
 		{
-			if(node["count"] != null)
-			{
-				this._Count = ParseInt(node["count"].Value<string>());
-			}
 		}
 		#endregion
 
@@ -77,16 +61,13 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaTypedArray");
-			kparams.AddIfNotNull("count", this._Count);
+				kparams.AddReplace("objectType", "KalturaLiveRedirectScheduleEventFilter");
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case COUNT:
-					return "Count";
 				default:
 					return base.getPropertyName(apiName);
 			}

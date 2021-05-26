@@ -226,7 +226,7 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class ZoomVendorOauthValidationRequestBuilder : RequestBuilder<string>
+	public class ZoomVendorOauthValidationRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
 		#endregion
@@ -251,11 +251,11 @@ namespace Kaltura.Services
 
 		public override object Deserialize(JToken result)
 		{
-			return result.Value<string>();
+			return null;
 		}
 	}
 
-	public class ZoomVendorPreOauthValidationRequestBuilder : RequestBuilder<VoidResponse>
+	public class ZoomVendorPreOauthValidationRequestBuilder : RequestBuilder<string>
 	{
 		#region Constants
 		#endregion
@@ -280,7 +280,7 @@ namespace Kaltura.Services
 
 		public override object Deserialize(JToken result)
 		{
-			return null;
+			return result.Value<string>();
 		}
 	}
 

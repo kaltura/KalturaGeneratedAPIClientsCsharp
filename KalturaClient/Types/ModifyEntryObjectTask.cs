@@ -45,6 +45,7 @@ namespace Kaltura.Types
 		public const string INPUT_USER_ID = "inputUserId";
 		public const string INPUT_ENTITLED_USERS_EDIT = "inputEntitledUsersEdit";
 		public const string INPUT_ENTITLED_USERS_PUBLISH = "inputEntitledUsersPublish";
+		public const string INPUT_ENTITLED_USERS_VIEW = "inputEntitledUsersView";
 		public const string RESET_MEDIA_REPURPOSING_PROCESS = "resetMediaRepurposingProcess";
 		#endregion
 
@@ -56,6 +57,7 @@ namespace Kaltura.Types
 		private string _InputUserId = null;
 		private string _InputEntitledUsersEdit = null;
 		private string _InputEntitledUsersPublish = null;
+		private string _InputEntitledUsersView = null;
 		private bool? _ResetMediaRepurposingProcess = null;
 		#endregion
 
@@ -131,6 +133,16 @@ namespace Kaltura.Types
 			}
 		}
 		[JsonProperty]
+		public string InputEntitledUsersView
+		{
+			get { return _InputEntitledUsersView; }
+			set 
+			{ 
+				_InputEntitledUsersView = value;
+				OnPropertyChanged("InputEntitledUsersView");
+			}
+		}
+		[JsonProperty]
 		public bool? ResetMediaRepurposingProcess
 		{
 			get { return _ResetMediaRepurposingProcess; }
@@ -185,6 +197,10 @@ namespace Kaltura.Types
 			{
 				this._InputEntitledUsersPublish = node["inputEntitledUsersPublish"].Value<string>();
 			}
+			if(node["inputEntitledUsersView"] != null)
+			{
+				this._InputEntitledUsersView = node["inputEntitledUsersView"].Value<string>();
+			}
 			if(node["resetMediaRepurposingProcess"] != null)
 			{
 				this._ResetMediaRepurposingProcess = ParseBool(node["resetMediaRepurposingProcess"].Value<string>());
@@ -205,6 +221,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("inputUserId", this._InputUserId);
 			kparams.AddIfNotNull("inputEntitledUsersEdit", this._InputEntitledUsersEdit);
 			kparams.AddIfNotNull("inputEntitledUsersPublish", this._InputEntitledUsersPublish);
+			kparams.AddIfNotNull("inputEntitledUsersView", this._InputEntitledUsersView);
 			kparams.AddIfNotNull("resetMediaRepurposingProcess", this._ResetMediaRepurposingProcess);
 			return kparams;
 		}
@@ -226,6 +243,8 @@ namespace Kaltura.Types
 					return "InputEntitledUsersEdit";
 				case INPUT_ENTITLED_USERS_PUBLISH:
 					return "InputEntitledUsersPublish";
+				case INPUT_ENTITLED_USERS_VIEW:
+					return "InputEntitledUsersView";
 				case RESET_MEDIA_REPURPOSING_PROCESS:
 					return "ResetMediaRepurposingProcess";
 				default:

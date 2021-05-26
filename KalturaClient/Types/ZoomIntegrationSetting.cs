@@ -53,6 +53,9 @@ namespace Kaltura.Types
 		public const string DELETION_POLICY = "deletionPolicy";
 		public const string ENABLE_ZOOM_TRANSCRIPTION = "enableZoomTranscription";
 		public const string ZOOM_ACCOUNT_DESCRIPTION = "zoomAccountDescription";
+		public const string CREATED_AT = "createdAt";
+		public const string UPDATED_AT = "updatedAt";
+		public const string ENABLE_MEETING_UPLOAD = "enableMeetingUpload";
 		#endregion
 
 		#region Private Fields
@@ -71,6 +74,9 @@ namespace Kaltura.Types
 		private NullableBoolean _DeletionPolicy = (NullableBoolean)Int32.MinValue;
 		private NullableBoolean _EnableZoomTranscription = (NullableBoolean)Int32.MinValue;
 		private string _ZoomAccountDescription = null;
+		private string _CreatedAt = null;
+		private string _UpdatedAt = null;
+		private NullableBoolean _EnableMeetingUpload = (NullableBoolean)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -224,6 +230,36 @@ namespace Kaltura.Types
 				OnPropertyChanged("ZoomAccountDescription");
 			}
 		}
+		[JsonProperty]
+		public string CreatedAt
+		{
+			get { return _CreatedAt; }
+			set 
+			{ 
+				_CreatedAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
+		}
+		[JsonProperty]
+		public string UpdatedAt
+		{
+			get { return _UpdatedAt; }
+			set 
+			{ 
+				_UpdatedAt = value;
+				OnPropertyChanged("UpdatedAt");
+			}
+		}
+		[JsonProperty]
+		public NullableBoolean EnableMeetingUpload
+		{
+			get { return _EnableMeetingUpload; }
+			set 
+			{ 
+				_EnableMeetingUpload = value;
+				OnPropertyChanged("EnableMeetingUpload");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -293,6 +329,18 @@ namespace Kaltura.Types
 			{
 				this._ZoomAccountDescription = node["zoomAccountDescription"].Value<string>();
 			}
+			if(node["createdAt"] != null)
+			{
+				this._CreatedAt = node["createdAt"].Value<string>();
+			}
+			if(node["updatedAt"] != null)
+			{
+				this._UpdatedAt = node["updatedAt"].Value<string>();
+			}
+			if(node["enableMeetingUpload"] != null)
+			{
+				this._EnableMeetingUpload = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["enableMeetingUpload"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -317,6 +365,9 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("deletionPolicy", this._DeletionPolicy);
 			kparams.AddIfNotNull("enableZoomTranscription", this._EnableZoomTranscription);
 			kparams.AddIfNotNull("zoomAccountDescription", this._ZoomAccountDescription);
+			kparams.AddIfNotNull("createdAt", this._CreatedAt);
+			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
+			kparams.AddIfNotNull("enableMeetingUpload", this._EnableMeetingUpload);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -353,6 +404,12 @@ namespace Kaltura.Types
 					return "EnableZoomTranscription";
 				case ZOOM_ACCOUNT_DESCRIPTION:
 					return "ZoomAccountDescription";
+				case CREATED_AT:
+					return "CreatedAt";
+				case UPDATED_AT:
+					return "UpdatedAt";
+				case ENABLE_MEETING_UPLOAD:
+					return "EnableMeetingUpload";
 				default:
 					return base.getPropertyName(apiName);
 			}

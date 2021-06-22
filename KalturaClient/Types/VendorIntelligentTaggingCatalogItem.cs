@@ -35,40 +35,24 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class VendorAlignmentCatalogItem : VendorCatalogItem
+	public class VendorIntelligentTaggingCatalogItem : VendorCatalogItem
 	{
 		#region Constants
-		public const string OUTPUT_FORMAT = "outputFormat";
 		#endregion
 
 		#region Private Fields
-		private VendorCatalogItemOutputFormat _OutputFormat = (VendorCatalogItemOutputFormat)Int32.MinValue;
 		#endregion
 
 		#region Properties
-		[JsonProperty]
-		public VendorCatalogItemOutputFormat OutputFormat
-		{
-			get { return _OutputFormat; }
-			set 
-			{ 
-				_OutputFormat = value;
-				OnPropertyChanged("OutputFormat");
-			}
-		}
 		#endregion
 
 		#region CTor
-		public VendorAlignmentCatalogItem()
+		public VendorIntelligentTaggingCatalogItem()
 		{
 		}
 
-		public VendorAlignmentCatalogItem(JToken node) : base(node)
+		public VendorIntelligentTaggingCatalogItem(JToken node) : base(node)
 		{
-			if(node["outputFormat"] != null)
-			{
-				this._OutputFormat = (VendorCatalogItemOutputFormat)ParseEnum(typeof(VendorCatalogItemOutputFormat), node["outputFormat"].Value<string>());
-			}
 		}
 		#endregion
 
@@ -77,16 +61,13 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaVendorAlignmentCatalogItem");
-			kparams.AddIfNotNull("outputFormat", this._OutputFormat);
+				kparams.AddReplace("objectType", "KalturaVendorIntelligentTaggingCatalogItem");
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case OUTPUT_FORMAT:
-					return "OutputFormat";
 				default:
 					return base.getPropertyName(apiName);
 			}

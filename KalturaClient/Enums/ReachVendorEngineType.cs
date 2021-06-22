@@ -27,13 +27,9 @@
 // ===================================================================================================
 namespace Kaltura.Enums
 {
-	public enum VendorServiceFeature
+	public sealed class ReachVendorEngineType : StringEnum
 	{
-		CAPTIONS = 1,
-		TRANSLATION = 2,
-		ALIGNMENT = 3,
-		AUDIO_DESCRIPTION = 4,
-		CHAPTERING = 5,
-		INTELLIGENT_TAGGING = 6,
+
+		private ReachVendorEngineType(string name) : base(name) { }
 	}
 }

@@ -436,6 +436,62 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class PartnerRegistrationValidationRequestBuilder : RequestBuilder<bool>
+	{
+		#region Constants
+		public const string PARTNER = "partner";
+		public const string CMS_PASSWORD = "cmsPassword";
+		public const string TEMPLATE_PARTNER_ID = "templatePartnerId";
+		public const string SILENT = "silent";
+		#endregion
+
+		public Partner Partner { get; set; }
+		public string CmsPassword { get; set; }
+		public int TemplatePartnerId { get; set; }
+		public bool Silent { get; set; }
+
+		public PartnerRegistrationValidationRequestBuilder()
+			: base("partner", "registrationValidation")
+		{
+		}
+
+		public PartnerRegistrationValidationRequestBuilder(Partner partner, string cmsPassword, int templatePartnerId, bool silent)
+			: this()
+		{
+			this.Partner = partner;
+			this.CmsPassword = cmsPassword;
+			this.TemplatePartnerId = templatePartnerId;
+			this.Silent = silent;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("partner"))
+				kparams.AddIfNotNull("partner", Partner);
+			if (!isMapped("cmsPassword"))
+				kparams.AddIfNotNull("cmsPassword", CmsPassword);
+			if (!isMapped("templatePartnerId"))
+				kparams.AddIfNotNull("templatePartnerId", TemplatePartnerId);
+			if (!isMapped("silent"))
+				kparams.AddIfNotNull("silent", Silent);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			if (result.Value<string>().Equals("1") || result.Value<string>().ToLower().Equals("true"))
+				return true;
+			return false;
+		}
+	}
+
 	public class PartnerUpdateRequestBuilder : RequestBuilder<Partner>
 	{
 		#region Constants
@@ -535,6 +591,11 @@ namespace Kaltura.Services
 		public static PartnerRegisterRequestBuilder Register(Partner partner, string cmsPassword = "", int templatePartnerId = Int32.MinValue, bool silent = false)
 		{
 			return new PartnerRegisterRequestBuilder(partner, cmsPassword, templatePartnerId, silent);
+		}
+
+		public static PartnerRegistrationValidationRequestBuilder RegistrationValidation(Partner partner, string cmsPassword = "", int templatePartnerId = Int32.MinValue, bool silent = false)
+		{
+			return new PartnerRegistrationValidationRequestBuilder(partner, cmsPassword, templatePartnerId, silent);
 		}
 
 		public static PartnerUpdateRequestBuilder Update(Partner partner, bool allowEmpty = false)

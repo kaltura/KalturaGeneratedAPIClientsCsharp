@@ -49,6 +49,8 @@ namespace Kaltura.Types
 		public const string SERVICE_FEATURE = "serviceFeature";
 		public const string TURN_AROUND_TIME = "turnAroundTime";
 		public const string PRICING = "pricing";
+		public const string ENGINE_TYPE = "engineType";
+		public const string SOURCE_LANGUAGE = "sourceLanguage";
 		public const string ALLOW_RESUBMISSION = "allowResubmission";
 		#endregion
 
@@ -64,6 +66,8 @@ namespace Kaltura.Types
 		private VendorServiceFeature _ServiceFeature = (VendorServiceFeature)Int32.MinValue;
 		private VendorServiceTurnAroundTime _TurnAroundTime = (VendorServiceTurnAroundTime)Int32.MinValue;
 		private VendorCatalogItemPricing _Pricing;
+		private ReachVendorEngineType _EngineType = null;
+		private CatalogItemLanguage _SourceLanguage = null;
 		private bool? _AllowResubmission = null;
 		#endregion
 
@@ -179,6 +183,26 @@ namespace Kaltura.Types
 			}
 		}
 		[JsonProperty]
+		public ReachVendorEngineType EngineType
+		{
+			get { return _EngineType; }
+			set 
+			{ 
+				_EngineType = value;
+				OnPropertyChanged("EngineType");
+			}
+		}
+		[JsonProperty]
+		public CatalogItemLanguage SourceLanguage
+		{
+			get { return _SourceLanguage; }
+			set 
+			{ 
+				_SourceLanguage = value;
+				OnPropertyChanged("SourceLanguage");
+			}
+		}
+		[JsonProperty]
 		public bool? AllowResubmission
 		{
 			get { return _AllowResubmission; }
@@ -241,6 +265,14 @@ namespace Kaltura.Types
 			{
 				this._Pricing = ObjectFactory.Create<VendorCatalogItemPricing>(node["pricing"]);
 			}
+			if(node["engineType"] != null)
+			{
+				this._EngineType = (ReachVendorEngineType)StringEnum.Parse(typeof(ReachVendorEngineType), node["engineType"].Value<string>());
+			}
+			if(node["sourceLanguage"] != null)
+			{
+				this._SourceLanguage = (CatalogItemLanguage)StringEnum.Parse(typeof(CatalogItemLanguage), node["sourceLanguage"].Value<string>());
+			}
 			if(node["allowResubmission"] != null)
 			{
 				this._AllowResubmission = ParseBool(node["allowResubmission"].Value<string>());
@@ -265,6 +297,8 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("serviceFeature", this._ServiceFeature);
 			kparams.AddIfNotNull("turnAroundTime", this._TurnAroundTime);
 			kparams.AddIfNotNull("pricing", this._Pricing);
+			kparams.AddIfNotNull("engineType", this._EngineType);
+			kparams.AddIfNotNull("sourceLanguage", this._SourceLanguage);
 			kparams.AddIfNotNull("allowResubmission", this._AllowResubmission);
 			return kparams;
 		}
@@ -294,6 +328,10 @@ namespace Kaltura.Types
 					return "TurnAroundTime";
 				case PRICING:
 					return "Pricing";
+				case ENGINE_TYPE:
+					return "EngineType";
+				case SOURCE_LANGUAGE:
+					return "SourceLanguage";
 				case ALLOW_RESUBMISSION:
 					return "AllowResubmission";
 				default:

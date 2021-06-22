@@ -35,71 +35,39 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class VendorCaptionsCatalogItem : VendorCatalogItem
+	public class IntelligentTaggingVendorTaskData : VendorTaskData
 	{
 		#region Constants
-		public const string OUTPUT_FORMAT = "outputFormat";
-		public const string ENABLE_SPEAKER_ID = "enableSpeakerId";
-		public const string FIXED_PRICE_ADDONS = "fixedPriceAddons";
+		public const string ASSET_ID = "assetId";
 		#endregion
 
 		#region Private Fields
-		private VendorCatalogItemOutputFormat _OutputFormat = (VendorCatalogItemOutputFormat)Int32.MinValue;
-		private NullableBoolean _EnableSpeakerId = (NullableBoolean)Int32.MinValue;
-		private int _FixedPriceAddons = Int32.MinValue;
+		private string _AssetId = null;
 		#endregion
 
 		#region Properties
 		[JsonProperty]
-		public VendorCatalogItemOutputFormat OutputFormat
+		public string AssetId
 		{
-			get { return _OutputFormat; }
+			get { return _AssetId; }
 			set 
 			{ 
-				_OutputFormat = value;
-				OnPropertyChanged("OutputFormat");
-			}
-		}
-		[JsonProperty]
-		public NullableBoolean EnableSpeakerId
-		{
-			get { return _EnableSpeakerId; }
-			set 
-			{ 
-				_EnableSpeakerId = value;
-				OnPropertyChanged("EnableSpeakerId");
-			}
-		}
-		[JsonProperty]
-		public int FixedPriceAddons
-		{
-			get { return _FixedPriceAddons; }
-			set 
-			{ 
-				_FixedPriceAddons = value;
-				OnPropertyChanged("FixedPriceAddons");
+				_AssetId = value;
+				OnPropertyChanged("AssetId");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public VendorCaptionsCatalogItem()
+		public IntelligentTaggingVendorTaskData()
 		{
 		}
 
-		public VendorCaptionsCatalogItem(JToken node) : base(node)
+		public IntelligentTaggingVendorTaskData(JToken node) : base(node)
 		{
-			if(node["outputFormat"] != null)
+			if(node["assetId"] != null)
 			{
-				this._OutputFormat = (VendorCatalogItemOutputFormat)ParseEnum(typeof(VendorCatalogItemOutputFormat), node["outputFormat"].Value<string>());
-			}
-			if(node["enableSpeakerId"] != null)
-			{
-				this._EnableSpeakerId = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["enableSpeakerId"].Value<string>());
-			}
-			if(node["fixedPriceAddons"] != null)
-			{
-				this._FixedPriceAddons = ParseInt(node["fixedPriceAddons"].Value<string>());
+				this._AssetId = node["assetId"].Value<string>();
 			}
 		}
 		#endregion
@@ -109,22 +77,16 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaVendorCaptionsCatalogItem");
-			kparams.AddIfNotNull("outputFormat", this._OutputFormat);
-			kparams.AddIfNotNull("enableSpeakerId", this._EnableSpeakerId);
-			kparams.AddIfNotNull("fixedPriceAddons", this._FixedPriceAddons);
+				kparams.AddReplace("objectType", "KalturaIntelligentTaggingVendorTaskData");
+			kparams.AddIfNotNull("assetId", this._AssetId);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case OUTPUT_FORMAT:
-					return "OutputFormat";
-				case ENABLE_SPEAKER_ID:
-					return "EnableSpeakerId";
-				case FIXED_PRICE_ADDONS:
-					return "FixedPriceAddons";
+				case ASSET_ID:
+					return "AssetId";
 				default:
 					return base.getPropertyName(apiName);
 			}

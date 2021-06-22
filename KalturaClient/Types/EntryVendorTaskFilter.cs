@@ -39,8 +39,8 @@ namespace Kaltura.Types
 	{
 		#region Constants
 		public const string FREE_TEXT = "freeText";
-		public const string EXPECTED_FINISH_TIME_GREATER_THAN_OR_EQUAL = "expectedFinishTimeGreaterThanOrEqual";
-		public const string EXPECTED_FINISH_TIME_LESS_THAN_OR_EQUAL = "expectedFinishTimeLessThanOrEqual";
+		public new const string EXPECTED_FINISH_TIME_GREATER_THAN_OR_EQUAL = "expectedFinishTimeGreaterThanOrEqual";
+		public new const string EXPECTED_FINISH_TIME_LESS_THAN_OR_EQUAL = "expectedFinishTimeLessThanOrEqual";
 		public new const string ORDER_BY = "orderBy";
 		#endregion
 
@@ -63,7 +63,7 @@ namespace Kaltura.Types
 			}
 		}
 		[JsonProperty]
-		public int ExpectedFinishTimeGreaterThanOrEqual
+		public new int ExpectedFinishTimeGreaterThanOrEqual
 		{
 			get { return _ExpectedFinishTimeGreaterThanOrEqual; }
 			set 
@@ -73,7 +73,7 @@ namespace Kaltura.Types
 			}
 		}
 		[JsonProperty]
-		public int ExpectedFinishTimeLessThanOrEqual
+		public new int ExpectedFinishTimeLessThanOrEqual
 		{
 			get { return _ExpectedFinishTimeLessThanOrEqual; }
 			set 

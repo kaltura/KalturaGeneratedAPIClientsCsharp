@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use HdsPathsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string HdsPaths
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("HdsPaths");
 			}
 		}
+		/// <summary>
+		/// Use ParamNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ParamName
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParamName");
 			}
 		}
+		/// <summary>
+		/// Use AuthPrefixAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AuthPrefix
 		{

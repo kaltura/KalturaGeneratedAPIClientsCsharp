@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use EntryDurationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int EntryDuration
 		{

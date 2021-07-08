@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use WidevineDistributionStartDateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int WidevineDistributionStartDate
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("WidevineDistributionStartDate");
 			}
 		}
+		/// <summary>
+		/// Use WidevineDistributionEndDateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int WidevineDistributionEndDate
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("WidevineDistributionEndDate");
 			}
 		}
+		/// <summary>
+		/// Use WidevineAssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int WidevineAssetId
 		{

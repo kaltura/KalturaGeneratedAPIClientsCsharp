@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use HashNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string HashName
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("HashName");
 			}
 		}
+		/// <summary>
+		/// Use HashSecretAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string HashSecret
 		{

@@ -66,6 +66,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FromEmailAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FromEmail
 		{
@@ -76,6 +79,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FromEmail");
 			}
 		}
+		/// <summary>
+		/// Use FromNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FromName
 		{
@@ -86,6 +92,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FromName");
 			}
 		}
+		/// <summary>
+		/// Use ToAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EmailNotificationRecipientJobData To
 		{
@@ -96,6 +105,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("To");
 			}
 		}
+		/// <summary>
+		/// Use CcAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EmailNotificationRecipientJobData Cc
 		{
@@ -106,6 +118,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Cc");
 			}
 		}
+		/// <summary>
+		/// Use BccAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EmailNotificationRecipientJobData Bcc
 		{
@@ -116,6 +131,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Bcc");
 			}
 		}
+		/// <summary>
+		/// Use ReplyToAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EmailNotificationRecipientJobData ReplyTo
 		{
@@ -126,6 +144,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplyTo");
 			}
 		}
+		/// <summary>
+		/// Use PriorityAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EmailNotificationTemplatePriority Priority
 		{
@@ -136,6 +157,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Priority");
 			}
 		}
+		/// <summary>
+		/// Use ConfirmReadingToAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ConfirmReadingTo
 		{
@@ -146,6 +170,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConfirmReadingTo");
 			}
 		}
+		/// <summary>
+		/// Use HostnameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Hostname
 		{
@@ -156,6 +183,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Hostname");
 			}
 		}
+		/// <summary>
+		/// Use MessageIDAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string MessageID
 		{
@@ -166,6 +196,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MessageID");
 			}
 		}
+		/// <summary>
+		/// Use CustomHeadersAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> CustomHeaders
 		{

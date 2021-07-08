@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FilterAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public Filter Filter
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Filter");
 			}
 		}
+		/// <summary>
+		/// Use TemplateObjectAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ObjectBase TemplateObject
 		{

@@ -80,6 +80,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use VideoAssetFilePathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string VideoAssetFilePath
 		{
@@ -90,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoAssetFilePath");
 			}
 		}
+		/// <summary>
+		/// Use ThumbAssetFilePathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ThumbAssetFilePath
 		{
@@ -100,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbAssetFilePath");
 			}
 		}
+		/// <summary>
+		/// Use ThumbAssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ThumbAssetId
 		{
@@ -110,6 +119,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbAssetId");
 			}
 		}
+		/// <summary>
+		/// Use CaptionAssetIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CaptionAssetIds
 		{
@@ -120,6 +132,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CaptionAssetIds");
 			}
 		}
+		/// <summary>
+		/// Use SftpDirectoryAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SftpDirectory
 		{
@@ -130,6 +145,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpDirectory");
 			}
 		}
+		/// <summary>
+		/// Use SftpMetadataFilenameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SftpMetadataFilename
 		{
@@ -140,6 +158,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpMetadataFilename");
 			}
 		}
+		/// <summary>
+		/// Use CurrentPlaylistsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CurrentPlaylists
 		{
@@ -150,6 +171,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CurrentPlaylists");
 			}
 		}
+		/// <summary>
+		/// Use NewPlaylistsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string NewPlaylists
 		{
@@ -160,6 +184,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("NewPlaylists");
 			}
 		}
+		/// <summary>
+		/// Use SubmitXmlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SubmitXml
 		{
@@ -170,6 +197,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SubmitXml");
 			}
 		}
+		/// <summary>
+		/// Use UpdateXmlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UpdateXml
 		{
@@ -180,6 +210,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdateXml");
 			}
 		}
+		/// <summary>
+		/// Use DeleteXmlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DeleteXml
 		{
@@ -190,6 +223,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeleteXml");
 			}
 		}
+		/// <summary>
+		/// Use GoogleClientIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string GoogleClientId
 		{
@@ -200,6 +236,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("GoogleClientId");
 			}
 		}
+		/// <summary>
+		/// Use GoogleClientSecretAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string GoogleClientSecret
 		{
@@ -210,6 +249,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("GoogleClientSecret");
 			}
 		}
+		/// <summary>
+		/// Use GoogleTokenDataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string GoogleTokenData
 		{
@@ -220,6 +262,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("GoogleTokenData");
 			}
 		}
+		/// <summary>
+		/// Use CaptionsCsvMapAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CaptionsCsvMap
 		{
@@ -230,6 +275,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CaptionsCsvMap");
 			}
 		}
+		/// <summary>
+		/// Use SubmitCsvMapAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SubmitCsvMap
 		{
@@ -240,6 +288,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SubmitCsvMap");
 			}
 		}
+		/// <summary>
+		/// Use UpdateCsvMapAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UpdateCsvMap
 		{
@@ -250,6 +301,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdateCsvMap");
 			}
 		}
+		/// <summary>
+		/// Use DeleteVideoIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DeleteVideoIds
 		{

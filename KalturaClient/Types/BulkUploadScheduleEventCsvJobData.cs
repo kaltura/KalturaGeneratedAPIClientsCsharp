@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use CsvVersionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public BulkUploadCsvVersion CsvVersion
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CsvVersion");
 			}
 		}
+		/// <summary>
+		/// Use ColumnsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<String> Columns
 		{

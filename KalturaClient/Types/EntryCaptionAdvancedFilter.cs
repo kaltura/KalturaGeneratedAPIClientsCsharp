@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use HasCaptionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean HasCaption
 		{

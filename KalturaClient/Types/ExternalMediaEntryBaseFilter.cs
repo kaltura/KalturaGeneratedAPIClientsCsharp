@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ExternalSourceTypeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ExternalMediaSourceType ExternalSourceTypeEqual
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExternalSourceTypeEqual");
 			}
 		}
+		/// <summary>
+		/// Use ExternalSourceTypeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ExternalSourceTypeIn
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExternalSourceTypeIn");
 			}
 		}
+		/// <summary>
+		/// Use AssetParamsIdsMatchOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AssetParamsIdsMatchOr
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetParamsIdsMatchOr");
 			}
 		}
+		/// <summary>
+		/// Use AssetParamsIdsMatchAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AssetParamsIdsMatchAnd
 		{

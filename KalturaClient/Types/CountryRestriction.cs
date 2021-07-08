@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use CountryRestrictionTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public CountryRestrictionType CountryRestrictionType
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CountryRestrictionType");
 			}
 		}
+		/// <summary>
+		/// Use CountryListAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CountryList
 		{

@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use PropertiesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> Properties
 		{

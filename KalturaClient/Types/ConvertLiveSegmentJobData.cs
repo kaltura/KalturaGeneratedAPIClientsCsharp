@@ -55,11 +55,14 @@ namespace Kaltura.Types
 		private int _FileIndex = Int32.MinValue;
 		private string _SrcFilePath = null;
 		private string _DestFilePath = null;
-		private float _EndTime = Single.MinValue;
+		private double _EndTime = Double.MinValue;
 		private string _DestDataFilePath = null;
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use EntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntryId
 		{
@@ -70,6 +73,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		/// <summary>
+		/// Use AssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AssetId
 		{
@@ -80,6 +86,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetId");
 			}
 		}
+		/// <summary>
+		/// Use MediaServerIndexAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EntryServerNodeType MediaServerIndex
 		{
@@ -90,6 +99,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaServerIndex");
 			}
 		}
+		/// <summary>
+		/// Use FileIndexAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int FileIndex
 		{
@@ -100,6 +112,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileIndex");
 			}
 		}
+		/// <summary>
+		/// Use SrcFilePathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SrcFilePath
 		{
@@ -110,6 +125,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcFilePath");
 			}
 		}
+		/// <summary>
+		/// Use DestFilePathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DestFilePath
 		{
@@ -120,8 +138,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestFilePath");
 			}
 		}
+		/// <summary>
+		/// Use EndTimeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use EndTimeAsDouble property instead")]
 		public float EndTime
+		{
+			get { return (float)_EndTime; }
+			set 
+			{ 
+				_EndTime = value;
+				OnPropertyChanged("EndTime");
+			}
+		}
+		///<summary>
+		///Use this property EndTimeAsDouble instead of the float EndTime property version
+		///</summary>
+		[JsonProperty]
+		public double EndTimeAsDouble
 		{
 			get { return _EndTime; }
 			set 
@@ -130,6 +165,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndTime");
 			}
 		}
+		/// <summary>
+		/// Use DestDataFilePathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DestDataFilePath
 		{
@@ -175,7 +213,7 @@ namespace Kaltura.Types
 			}
 			if(node["endTime"] != null)
 			{
-				this._EndTime = ParseFloat(node["endTime"].Value<string>());
+				this._EndTime = ParseDouble(node["endTime"].Value<string>());
 			}
 			if(node["destDataFilePath"] != null)
 			{

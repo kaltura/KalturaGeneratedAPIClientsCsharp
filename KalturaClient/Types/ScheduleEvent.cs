@@ -76,8 +76,8 @@ namespace Kaltura.Types
 		private int _EndDate = Int32.MinValue;
 		private string _ReferenceId = null;
 		private ScheduleEventClassificationType _ClassificationType = (ScheduleEventClassificationType)Int32.MinValue;
-		private float _GeoLatitude = Single.MinValue;
-		private float _GeoLongitude = Single.MinValue;
+		private double _GeoLatitude = Double.MinValue;
+		private double _GeoLongitude = Double.MinValue;
 		private string _Location = null;
 		private string _Organizer = null;
 		private string _OwnerId = null;
@@ -94,6 +94,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Id
 		{
@@ -104,6 +107,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		/// <summary>
+		/// Use PartnerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -114,6 +120,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		/// <summary>
+		/// Use ParentIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ParentId
 		{
@@ -124,6 +133,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentId");
 			}
 		}
+		/// <summary>
+		/// Use SummaryAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Summary
 		{
@@ -134,6 +146,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Summary");
 			}
 		}
+		/// <summary>
+		/// Use DescriptionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Description
 		{
@@ -144,6 +159,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		/// <summary>
+		/// Use StatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ScheduleEventStatus Status
 		{
@@ -154,6 +172,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		/// <summary>
+		/// Use StartDateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int StartDate
 		{
@@ -164,6 +185,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartDate");
 			}
 		}
+		/// <summary>
+		/// Use EndDateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int EndDate
 		{
@@ -174,6 +198,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndDate");
 			}
 		}
+		/// <summary>
+		/// Use ReferenceIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ReferenceId
 		{
@@ -184,6 +211,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReferenceId");
 			}
 		}
+		/// <summary>
+		/// Use ClassificationTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ScheduleEventClassificationType ClassificationType
 		{
@@ -194,8 +224,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("ClassificationType");
 			}
 		}
+		/// <summary>
+		/// Use GeoLatitudeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use GeoLatitudeAsDouble property instead")]
 		public float GeoLatitude
+		{
+			get { return (float)_GeoLatitude; }
+			set 
+			{ 
+				_GeoLatitude = value;
+				OnPropertyChanged("GeoLatitude");
+			}
+		}
+		///<summary>
+		///Use this property GeoLatitudeAsDouble instead of the float GeoLatitude property version
+		///</summary>
+		[JsonProperty]
+		public double GeoLatitudeAsDouble
 		{
 			get { return _GeoLatitude; }
 			set 
@@ -204,8 +251,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("GeoLatitude");
 			}
 		}
+		/// <summary>
+		/// Use GeoLongitudeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use GeoLongitudeAsDouble property instead")]
 		public float GeoLongitude
+		{
+			get { return (float)_GeoLongitude; }
+			set 
+			{ 
+				_GeoLongitude = value;
+				OnPropertyChanged("GeoLongitude");
+			}
+		}
+		///<summary>
+		///Use this property GeoLongitudeAsDouble instead of the float GeoLongitude property version
+		///</summary>
+		[JsonProperty]
+		public double GeoLongitudeAsDouble
 		{
 			get { return _GeoLongitude; }
 			set 
@@ -214,6 +278,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("GeoLongitude");
 			}
 		}
+		/// <summary>
+		/// Use LocationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Location
 		{
@@ -224,6 +291,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Location");
 			}
 		}
+		/// <summary>
+		/// Use OrganizerAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Organizer
 		{
@@ -234,6 +304,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Organizer");
 			}
 		}
+		/// <summary>
+		/// Use OwnerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string OwnerId
 		{
@@ -244,6 +317,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OwnerId");
 			}
 		}
+		/// <summary>
+		/// Use PriorityAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Priority
 		{
@@ -254,6 +330,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Priority");
 			}
 		}
+		/// <summary>
+		/// Use SequenceAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Sequence
 		{
@@ -264,6 +343,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Sequence");
 			}
 		}
+		/// <summary>
+		/// Use RecurrenceTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ScheduleEventRecurrenceType RecurrenceType
 		{
@@ -274,6 +356,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecurrenceType");
 			}
 		}
+		/// <summary>
+		/// Use DurationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Duration
 		{
@@ -284,6 +369,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Duration");
 			}
 		}
+		/// <summary>
+		/// Use ContactAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Contact
 		{
@@ -294,6 +382,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Contact");
 			}
 		}
+		/// <summary>
+		/// Use CommentAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Comment
 		{
@@ -304,6 +395,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Comment");
 			}
 		}
+		/// <summary>
+		/// Use TagsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Tags
 		{
@@ -314,6 +408,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -324,6 +421,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -334,6 +434,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
+		/// <summary>
+		/// Use RecurrenceAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ScheduleEventRecurrence Recurrence
 		{
@@ -395,11 +498,11 @@ namespace Kaltura.Types
 			}
 			if(node["geoLatitude"] != null)
 			{
-				this._GeoLatitude = ParseFloat(node["geoLatitude"].Value<string>());
+				this._GeoLatitude = ParseDouble(node["geoLatitude"].Value<string>());
 			}
 			if(node["geoLongitude"] != null)
 			{
-				this._GeoLongitude = ParseFloat(node["geoLongitude"].Value<string>());
+				this._GeoLongitude = ParseDouble(node["geoLongitude"].Value<string>());
 			}
 			if(node["location"] != null)
 			{

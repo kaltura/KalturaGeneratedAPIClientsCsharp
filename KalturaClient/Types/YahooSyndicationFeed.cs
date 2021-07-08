@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use CategoryAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public YahooSyndicationFeedCategories Category
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Category");
 			}
 		}
+		/// <summary>
+		/// Use AdultContentAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public YahooSyndicationFeedAdultValues AdultContent
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdultContent");
 			}
 		}
+		/// <summary>
+		/// Use FeedDescriptionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FeedDescription
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedDescription");
 			}
 		}
+		/// <summary>
+		/// Use FeedLandingPageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FeedLandingPage
 		{

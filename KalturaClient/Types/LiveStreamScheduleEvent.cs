@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use SourceEntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SourceEntryId
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceEntryId");
 			}
 		}
+		/// <summary>
+		/// Use ProjectedAudienceAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ProjectedAudience
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProjectedAudience");
 			}
 		}
+		/// <summary>
+		/// Use PreStartTimeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PreStartTime
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PreStartTime");
 			}
 		}
+		/// <summary>
+		/// Use PostEndTimeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PostEndTime
 		{

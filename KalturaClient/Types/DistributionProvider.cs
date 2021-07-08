@@ -62,6 +62,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use TypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DistributionProviderType Type
 		{
@@ -72,6 +75,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		/// <summary>
+		/// Use NameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -82,6 +88,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		/// <summary>
+		/// Use ScheduleUpdateEnabledAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? ScheduleUpdateEnabled
 		{
@@ -92,6 +101,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ScheduleUpdateEnabled");
 			}
 		}
+		/// <summary>
+		/// Use AvailabilityUpdateEnabledAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? AvailabilityUpdateEnabled
 		{
@@ -102,6 +114,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AvailabilityUpdateEnabled");
 			}
 		}
+		/// <summary>
+		/// Use DeleteInsteadUpdateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? DeleteInsteadUpdate
 		{
@@ -112,6 +127,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeleteInsteadUpdate");
 			}
 		}
+		/// <summary>
+		/// Use IntervalBeforeSunriseAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int IntervalBeforeSunrise
 		{
@@ -122,6 +140,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IntervalBeforeSunrise");
 			}
 		}
+		/// <summary>
+		/// Use IntervalBeforeSunsetAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int IntervalBeforeSunset
 		{
@@ -132,6 +153,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IntervalBeforeSunset");
 			}
 		}
+		/// <summary>
+		/// Use UpdateRequiredEntryFieldsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UpdateRequiredEntryFields
 		{
@@ -142,6 +166,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdateRequiredEntryFields");
 			}
 		}
+		/// <summary>
+		/// Use UpdateRequiredMetadataXPathsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UpdateRequiredMetadataXPaths
 		{

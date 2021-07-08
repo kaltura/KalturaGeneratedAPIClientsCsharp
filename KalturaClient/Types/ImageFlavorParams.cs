@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use DensityWidthAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int DensityWidth
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DensityWidth");
 			}
 		}
+		/// <summary>
+		/// Use DensityHeightAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int DensityHeight
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DensityHeight");
 			}
 		}
+		/// <summary>
+		/// Use SizeWidthAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int SizeWidth
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SizeWidth");
 			}
 		}
+		/// <summary>
+		/// Use SizeHeightAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int SizeHeight
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SizeHeight");
 			}
 		}
+		/// <summary>
+		/// Use DepthAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Depth
 		{

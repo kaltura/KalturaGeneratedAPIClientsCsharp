@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use DelimiterAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Delimiter
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Delimiter");
 			}
 		}
+		/// <summary>
+		/// Use SkipEmptyDatesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? SkipEmptyDates
 		{

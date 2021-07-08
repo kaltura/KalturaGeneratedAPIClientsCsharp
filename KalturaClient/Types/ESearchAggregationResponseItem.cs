@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use NameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		/// <summary>
+		/// Use FieldNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FieldName
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FieldName");
 			}
 		}
+		/// <summary>
+		/// Use BucketsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<ESearchAggregationBucket> Buckets
 		{

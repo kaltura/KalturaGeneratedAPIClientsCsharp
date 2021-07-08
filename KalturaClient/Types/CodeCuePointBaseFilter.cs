@@ -68,6 +68,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use CodeLikeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CodeLike
 		{
@@ -78,6 +81,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CodeLike");
 			}
 		}
+		/// <summary>
+		/// Use CodeMultiLikeOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CodeMultiLikeOr
 		{
@@ -88,6 +94,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CodeMultiLikeOr");
 			}
 		}
+		/// <summary>
+		/// Use CodeMultiLikeAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CodeMultiLikeAnd
 		{
@@ -98,6 +107,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CodeMultiLikeAnd");
 			}
 		}
+		/// <summary>
+		/// Use CodeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CodeEqual
 		{
@@ -108,6 +120,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CodeEqual");
 			}
 		}
+		/// <summary>
+		/// Use CodeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CodeIn
 		{
@@ -118,6 +133,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CodeIn");
 			}
 		}
+		/// <summary>
+		/// Use DescriptionLikeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DescriptionLike
 		{
@@ -128,6 +146,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DescriptionLike");
 			}
 		}
+		/// <summary>
+		/// Use DescriptionMultiLikeOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DescriptionMultiLikeOr
 		{
@@ -138,6 +159,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DescriptionMultiLikeOr");
 			}
 		}
+		/// <summary>
+		/// Use DescriptionMultiLikeAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DescriptionMultiLikeAnd
 		{
@@ -148,6 +172,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DescriptionMultiLikeAnd");
 			}
 		}
+		/// <summary>
+		/// Use EndTimeGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int EndTimeGreaterThanOrEqual
 		{
@@ -158,6 +185,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndTimeGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use EndTimeLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int EndTimeLessThanOrEqual
 		{
@@ -168,6 +198,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndTimeLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use DurationGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int DurationGreaterThanOrEqual
 		{
@@ -178,6 +211,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DurationGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use DurationLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int DurationLessThanOrEqual
 		{

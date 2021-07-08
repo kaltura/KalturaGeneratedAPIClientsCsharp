@@ -58,6 +58,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use TemplateEntryIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TemplateEntryIdEqual
 		{
@@ -68,6 +71,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplateEntryIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use EntryIdsLikeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntryIdsLike
 		{
@@ -78,6 +84,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdsLike");
 			}
 		}
+		/// <summary>
+		/// Use EntryIdsMultiLikeOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntryIdsMultiLikeOr
 		{
@@ -88,6 +97,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdsMultiLikeOr");
 			}
 		}
+		/// <summary>
+		/// Use EntryIdsMultiLikeAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntryIdsMultiLikeAnd
 		{
@@ -98,6 +110,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdsMultiLikeAnd");
 			}
 		}
+		/// <summary>
+		/// Use CategoryIdsLikeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CategoryIdsLike
 		{
@@ -108,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryIdsLike");
 			}
 		}
+		/// <summary>
+		/// Use CategoryIdsMultiLikeOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CategoryIdsMultiLikeOr
 		{
@@ -118,6 +136,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryIdsMultiLikeOr");
 			}
 		}
+		/// <summary>
+		/// Use CategoryIdsMultiLikeAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CategoryIdsMultiLikeAnd
 		{

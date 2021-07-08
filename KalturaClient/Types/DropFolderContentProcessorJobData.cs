@@ -56,6 +56,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use DropFolderIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int DropFolderId
 		{
@@ -66,6 +69,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DropFolderId");
 			}
 		}
+		/// <summary>
+		/// Use DropFolderFileIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DropFolderFileIds
 		{
@@ -76,6 +82,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DropFolderFileIds");
 			}
 		}
+		/// <summary>
+		/// Use ParsedSlugAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ParsedSlug
 		{
@@ -86,6 +95,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParsedSlug");
 			}
 		}
+		/// <summary>
+		/// Use ContentMatchPolicyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DropFolderContentFileHandlerMatchPolicy ContentMatchPolicy
 		{
@@ -96,6 +108,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentMatchPolicy");
 			}
 		}
+		/// <summary>
+		/// Use ConversionProfileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ConversionProfileId
 		{
@@ -106,6 +121,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionProfileId");
 			}
 		}
+		/// <summary>
+		/// Use ParsedUserIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ParsedUserId
 		{

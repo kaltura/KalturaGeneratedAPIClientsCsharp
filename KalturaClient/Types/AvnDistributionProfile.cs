@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FeedUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FeedUrl
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedUrl");
 			}
 		}
+		/// <summary>
+		/// Use FeedTitleAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FeedTitle
 		{

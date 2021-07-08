@@ -60,6 +60,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ParentIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ParentId
 		{
@@ -70,6 +73,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentId");
 			}
 		}
+		/// <summary>
+		/// Use QuizUserEntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string QuizUserEntryId
 		{
@@ -80,6 +86,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("QuizUserEntryId");
 			}
 		}
+		/// <summary>
+		/// Use AnswerKeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AnswerKey
 		{
@@ -90,6 +99,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AnswerKey");
 			}
 		}
+		/// <summary>
+		/// Use OpenAnswerAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string OpenAnswer
 		{
@@ -100,6 +112,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OpenAnswer");
 			}
 		}
+		/// <summary>
+		/// Use IsCorrectAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean IsCorrect
 		{
@@ -110,6 +125,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsCorrect");
 			}
 		}
+		/// <summary>
+		/// Use CorrectAnswerKeysAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<String> CorrectAnswerKeys
 		{
@@ -120,6 +138,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CorrectAnswerKeys");
 			}
 		}
+		/// <summary>
+		/// Use ExplanationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Explanation
 		{
@@ -130,6 +151,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Explanation");
 			}
 		}
+		/// <summary>
+		/// Use FeedbackAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Feedback
 		{

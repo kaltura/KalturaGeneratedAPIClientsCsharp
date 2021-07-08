@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use UserAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string User
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("User");
 			}
 		}
+		/// <summary>
+		/// Use PasswordAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Password
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Password");
 			}
 		}
+		/// <summary>
+		/// Use GeoBlockingMappingAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DailymotionGeoBlockingMapping GeoBlockingMapping
 		{

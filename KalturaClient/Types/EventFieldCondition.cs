@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FieldAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public BooleanField Field
 		{

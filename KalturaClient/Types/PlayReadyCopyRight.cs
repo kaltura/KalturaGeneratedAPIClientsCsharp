@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use CopyCountAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CopyCount
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CopyCount");
 			}
 		}
+		/// <summary>
+		/// Use CopyEnablersAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<PlayReadyCopyEnablerHolder> CopyEnablers
 		{

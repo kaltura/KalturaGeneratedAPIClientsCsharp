@@ -58,6 +58,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use OptionalAnswersAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<OptionalAnswer> OptionalAnswers
 		{
@@ -68,6 +71,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OptionalAnswers");
 			}
 		}
+		/// <summary>
+		/// Use HintAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Hint
 		{
@@ -78,6 +84,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Hint");
 			}
 		}
+		/// <summary>
+		/// Use QuestionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Question
 		{
@@ -88,6 +97,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Question");
 			}
 		}
+		/// <summary>
+		/// Use ExplanationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Explanation
 		{
@@ -98,6 +110,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Explanation");
 			}
 		}
+		/// <summary>
+		/// Use QuestionTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public QuestionType QuestionType
 		{
@@ -108,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("QuestionType");
 			}
 		}
+		/// <summary>
+		/// Use PresentationOrderAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PresentationOrder
 		{
@@ -118,6 +136,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PresentationOrder");
 			}
 		}
+		/// <summary>
+		/// Use ExcludeFromScoreAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean ExcludeFromScore
 		{

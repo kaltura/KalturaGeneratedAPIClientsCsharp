@@ -68,6 +68,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use CaptionParamsIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CaptionParamsId
 		{
@@ -78,6 +81,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CaptionParamsId");
 			}
 		}
+		/// <summary>
+		/// Use LanguageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public Language Language
 		{
@@ -88,6 +94,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Language");
 			}
 		}
+		/// <summary>
+		/// Use LanguageCodeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public LanguageCode LanguageCode
 		{
@@ -98,6 +107,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LanguageCode");
 			}
 		}
+		/// <summary>
+		/// Use IsDefaultAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean IsDefault
 		{
@@ -108,6 +120,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsDefault");
 			}
 		}
+		/// <summary>
+		/// Use LabelAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Label
 		{
@@ -118,6 +133,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Label");
 			}
 		}
+		/// <summary>
+		/// Use FormatAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public CaptionType Format
 		{
@@ -128,6 +146,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Format");
 			}
 		}
+		/// <summary>
+		/// Use SourceAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public CaptionSource Source
 		{
@@ -138,6 +159,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Source");
 			}
 		}
+		/// <summary>
+		/// Use StatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public CaptionAssetStatus Status
 		{
@@ -148,6 +172,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		/// <summary>
+		/// Use ParentIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ParentId
 		{
@@ -158,6 +185,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentId");
 			}
 		}
+		/// <summary>
+		/// Use AccuracyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Accuracy
 		{
@@ -168,6 +198,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Accuracy");
 			}
 		}
+		/// <summary>
+		/// Use DisplayOnPlayerAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? DisplayOnPlayer
 		{
@@ -178,6 +211,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DisplayOnPlayer");
 			}
 		}
+		/// <summary>
+		/// Use AssociatedTranscriptIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AssociatedTranscriptIds
 		{

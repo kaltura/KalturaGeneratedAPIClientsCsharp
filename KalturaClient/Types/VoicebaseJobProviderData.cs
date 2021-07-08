@@ -64,6 +64,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use EntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntryId
 		{
@@ -74,6 +77,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		/// <summary>
+		/// Use FlavorAssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlavorAssetId
 		{
@@ -84,6 +90,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetId");
 			}
 		}
+		/// <summary>
+		/// Use TranscriptIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TranscriptId
 		{
@@ -94,6 +103,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TranscriptId");
 			}
 		}
+		/// <summary>
+		/// Use CaptionAssetFormatsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CaptionAssetFormats
 		{
@@ -104,6 +116,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CaptionAssetFormats");
 			}
 		}
+		/// <summary>
+		/// Use ApiKeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ApiKey
 		{
@@ -114,6 +129,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ApiKey");
 			}
 		}
+		/// <summary>
+		/// Use ApiPasswordAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ApiPassword
 		{
@@ -124,6 +142,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ApiPassword");
 			}
 		}
+		/// <summary>
+		/// Use SpokenLanguageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public Language SpokenLanguage
 		{
@@ -134,6 +155,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SpokenLanguage");
 			}
 		}
+		/// <summary>
+		/// Use FileLocationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FileLocation
 		{
@@ -144,6 +168,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileLocation");
 			}
 		}
+		/// <summary>
+		/// Use ReplaceMediaContentAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? ReplaceMediaContent
 		{
@@ -154,6 +181,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplaceMediaContent");
 			}
 		}
+		/// <summary>
+		/// Use AdditionalParametersAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AdditionalParameters
 		{

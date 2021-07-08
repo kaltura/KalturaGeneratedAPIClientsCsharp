@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ResourceAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ContentResource Resource
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Resource");
 			}
 		}
+		/// <summary>
+		/// Use OperationAttributesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<OperationAttributes> OperationAttributes
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OperationAttributes");
 			}
 		}
+		/// <summary>
+		/// Use AssetParamsIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int AssetParamsId
 		{

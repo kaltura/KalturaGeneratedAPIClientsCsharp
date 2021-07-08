@@ -72,7 +72,7 @@ namespace Kaltura.Types
 		private IList<LiveStreamPushPublishConfiguration> _PublishConfigurations;
 		private int _FirstBroadcast = Int32.MinValue;
 		private int _LastBroadcast = Int32.MinValue;
-		private float _CurrentBroadcastStartTime = Single.MinValue;
+		private double _CurrentBroadcastStartTime = Double.MinValue;
 		private LiveEntryRecordingOptions _RecordingOptions;
 		private EntryServerNodeStatus _LiveStatus = (EntryServerNodeStatus)Int32.MinValue;
 		private int _SegmentDuration = Int32.MinValue;
@@ -84,6 +84,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use OfflineMessageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string OfflineMessage
 		{
@@ -94,6 +97,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OfflineMessage");
 			}
 		}
+		/// <summary>
+		/// Use RecordStatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public RecordStatus RecordStatus
 		{
@@ -104,6 +110,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecordStatus");
 			}
 		}
+		/// <summary>
+		/// Use DvrStatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DVRStatus DvrStatus
 		{
@@ -114,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DvrStatus");
 			}
 		}
+		/// <summary>
+		/// Use DvrWindowAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int DvrWindow
 		{
@@ -124,6 +136,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DvrWindow");
 			}
 		}
+		/// <summary>
+		/// Use LastElapsedRecordingTimeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LastElapsedRecordingTime
 		{
@@ -134,6 +149,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastElapsedRecordingTime");
 			}
 		}
+		/// <summary>
+		/// Use LiveStreamConfigurationsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<LiveStreamConfiguration> LiveStreamConfigurations
 		{
@@ -144,6 +162,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LiveStreamConfigurations");
 			}
 		}
+		/// <summary>
+		/// Use RecordedEntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RecordedEntryId
 		{
@@ -154,6 +175,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecordedEntryId");
 			}
 		}
+		/// <summary>
+		/// Use PushPublishEnabledAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public LivePublishStatus PushPublishEnabled
 		{
@@ -164,6 +188,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PushPublishEnabled");
 			}
 		}
+		/// <summary>
+		/// Use PublishConfigurationsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<LiveStreamPushPublishConfiguration> PublishConfigurations
 		{
@@ -174,6 +201,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PublishConfigurations");
 			}
 		}
+		/// <summary>
+		/// Use FirstBroadcastAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int FirstBroadcast
 		{
@@ -184,6 +214,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FirstBroadcast");
 			}
 		}
+		/// <summary>
+		/// Use LastBroadcastAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LastBroadcast
 		{
@@ -194,8 +227,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastBroadcast");
 			}
 		}
+		/// <summary>
+		/// Use CurrentBroadcastStartTimeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use CurrentBroadcastStartTimeAsDouble property instead")]
 		public float CurrentBroadcastStartTime
+		{
+			get { return (float)_CurrentBroadcastStartTime; }
+			set 
+			{ 
+				_CurrentBroadcastStartTime = value;
+				OnPropertyChanged("CurrentBroadcastStartTime");
+			}
+		}
+		///<summary>
+		///Use this property CurrentBroadcastStartTimeAsDouble instead of the float CurrentBroadcastStartTime property version
+		///</summary>
+		[JsonProperty]
+		public double CurrentBroadcastStartTimeAsDouble
 		{
 			get { return _CurrentBroadcastStartTime; }
 			set 
@@ -204,6 +254,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CurrentBroadcastStartTime");
 			}
 		}
+		/// <summary>
+		/// Use RecordingOptionsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public LiveEntryRecordingOptions RecordingOptions
 		{
@@ -214,6 +267,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecordingOptions");
 			}
 		}
+		/// <summary>
+		/// Use LiveStatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EntryServerNodeStatus LiveStatus
 		{
@@ -224,6 +280,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LiveStatus");
 			}
 		}
+		/// <summary>
+		/// Use SegmentDurationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int SegmentDuration
 		{
@@ -234,6 +293,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SegmentDuration");
 			}
 		}
+		/// <summary>
+		/// Use ExplicitLiveAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean ExplicitLive
 		{
@@ -244,6 +306,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExplicitLive");
 			}
 		}
+		/// <summary>
+		/// Use ViewModeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ViewMode ViewMode
 		{
@@ -254,6 +319,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ViewMode");
 			}
 		}
+		/// <summary>
+		/// Use RecordingStatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public RecordingStatus RecordingStatus
 		{
@@ -264,6 +332,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecordingStatus");
 			}
 		}
+		/// <summary>
+		/// Use LastBroadcastEndTimeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LastBroadcastEndTime
 		{
@@ -274,6 +345,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastBroadcastEndTime");
 			}
 		}
+		/// <summary>
+		/// Use BroadcastTimeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int BroadcastTime
 		{
@@ -347,7 +421,7 @@ namespace Kaltura.Types
 			}
 			if(node["currentBroadcastStartTime"] != null)
 			{
-				this._CurrentBroadcastStartTime = ParseFloat(node["currentBroadcastStartTime"].Value<string>());
+				this._CurrentBroadcastStartTime = ParseDouble(node["currentBroadcastStartTime"].Value<string>());
 			}
 			if(node["recordingOptions"] != null)
 			{

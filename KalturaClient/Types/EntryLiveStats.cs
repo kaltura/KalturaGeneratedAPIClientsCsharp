@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use EntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntryId
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		/// <summary>
+		/// Use PeakAudienceAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PeakAudience
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PeakAudience");
 			}
 		}
+		/// <summary>
+		/// Use PeakDvrAudienceAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PeakDvrAudience
 		{

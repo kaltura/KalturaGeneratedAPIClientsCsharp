@@ -84,6 +84,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use StreamRemoteIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StreamRemoteId
 		{
@@ -94,6 +97,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StreamRemoteId");
 			}
 		}
+		/// <summary>
+		/// Use StreamRemoteBackupIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StreamRemoteBackupId
 		{
@@ -104,6 +110,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StreamRemoteBackupId");
 			}
 		}
+		/// <summary>
+		/// Use BitratesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<LiveStreamBitrate> Bitrates
 		{
@@ -114,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Bitrates");
 			}
 		}
+		/// <summary>
+		/// Use PrimaryBroadcastingUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PrimaryBroadcastingUrl
 		{
@@ -124,6 +136,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrimaryBroadcastingUrl");
 			}
 		}
+		/// <summary>
+		/// Use SecondaryBroadcastingUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SecondaryBroadcastingUrl
 		{
@@ -134,6 +149,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SecondaryBroadcastingUrl");
 			}
 		}
+		/// <summary>
+		/// Use PrimarySecuredBroadcastingUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PrimarySecuredBroadcastingUrl
 		{
@@ -144,6 +162,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrimarySecuredBroadcastingUrl");
 			}
 		}
+		/// <summary>
+		/// Use SecondarySecuredBroadcastingUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SecondarySecuredBroadcastingUrl
 		{
@@ -154,6 +175,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SecondarySecuredBroadcastingUrl");
 			}
 		}
+		/// <summary>
+		/// Use PrimaryRtspBroadcastingUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PrimaryRtspBroadcastingUrl
 		{
@@ -164,6 +188,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrimaryRtspBroadcastingUrl");
 			}
 		}
+		/// <summary>
+		/// Use SecondaryRtspBroadcastingUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SecondaryRtspBroadcastingUrl
 		{
@@ -174,6 +201,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SecondaryRtspBroadcastingUrl");
 			}
 		}
+		/// <summary>
+		/// Use StreamNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StreamName
 		{
@@ -184,6 +214,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StreamName");
 			}
 		}
+		/// <summary>
+		/// Use StreamUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StreamUrl
 		{
@@ -194,6 +227,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StreamUrl");
 			}
 		}
+		/// <summary>
+		/// Use HlsStreamUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string HlsStreamUrl
 		{
@@ -204,6 +240,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("HlsStreamUrl");
 			}
 		}
+		/// <summary>
+		/// Use UrlManagerAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UrlManager
 		{
@@ -214,6 +253,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UrlManager");
 			}
 		}
+		/// <summary>
+		/// Use EncodingIP1AsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EncodingIP1
 		{
@@ -224,6 +266,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EncodingIP1");
 			}
 		}
+		/// <summary>
+		/// Use EncodingIP2AsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EncodingIP2
 		{
@@ -234,6 +279,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EncodingIP2");
 			}
 		}
+		/// <summary>
+		/// Use StreamPasswordAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StreamPassword
 		{
@@ -244,6 +292,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StreamPassword");
 			}
 		}
+		/// <summary>
+		/// Use StreamUsernameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StreamUsername
 		{
@@ -254,6 +305,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StreamUsername");
 			}
 		}
+		/// <summary>
+		/// Use PrimaryServerNodeIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PrimaryServerNodeId
 		{
@@ -264,6 +318,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrimaryServerNodeId");
 			}
 		}
+		/// <summary>
+		/// Use SipTokenAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SipToken
 		{
@@ -274,6 +331,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SipToken");
 			}
 		}
+		/// <summary>
+		/// Use SipSourceTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public SipSourceType SipSourceType
 		{

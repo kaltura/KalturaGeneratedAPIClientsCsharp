@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ItemTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public BaseEntryCloneOptions ItemType
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemType");
 			}
 		}
+		/// <summary>
+		/// Use RuleAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public CloneComponentSelectorType Rule
 		{

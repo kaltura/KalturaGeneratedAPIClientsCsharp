@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ExternalSourceTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ExternalMediaSourceType ExternalSourceType
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExternalSourceType");
 			}
 		}
+		/// <summary>
+		/// Use AssetParamsIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AssetParamsIds
 		{

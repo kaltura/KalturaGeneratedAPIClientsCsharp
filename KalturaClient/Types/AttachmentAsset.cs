@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FilenameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Filename
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Filename");
 			}
 		}
+		/// <summary>
+		/// Use TitleAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Title
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Title");
 			}
 		}
+		/// <summary>
+		/// Use FormatAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public AttachmentType Format
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Format");
 			}
 		}
+		/// <summary>
+		/// Use StatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public AttachmentAssetStatus Status
 		{

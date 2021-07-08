@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use GracePeriodAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int GracePeriod
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("GracePeriod");
 			}
 		}
+		/// <summary>
+		/// Use LicenseRemovalPolicyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public PlayReadyLicenseRemovalPolicy LicenseRemovalPolicy
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LicenseRemovalPolicy");
 			}
 		}
+		/// <summary>
+		/// Use LicenseRemovalDurationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LicenseRemovalDuration
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LicenseRemovalDuration");
 			}
 		}
+		/// <summary>
+		/// Use MinSecurityLevelAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public PlayReadyMinimumLicenseSecurityLevel MinSecurityLevel
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MinSecurityLevel");
 			}
 		}
+		/// <summary>
+		/// Use RightsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<PlayReadyRight> Rights
 		{

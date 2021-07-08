@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use CategoryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CategoryId
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryId");
 			}
 		}
+		/// <summary>
+		/// Use CategoryIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CategoryIds
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryIds");
 			}
 		}
+		/// <summary>
+		/// Use CategoryUserPermissionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public CategoryUserPermissionLevel CategoryUserPermission
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryUserPermission");
 			}
 		}
+		/// <summary>
+		/// Use ComparisonAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public SearchConditionComparison Comparison
 		{

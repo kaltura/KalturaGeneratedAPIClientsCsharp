@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FileSyncObjectTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int FileSyncObjectType
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileSyncObjectType");
 			}
 		}
+		/// <summary>
+		/// Use ObjectSubTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ObjectSubType
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectSubType");
 			}
 		}
+		/// <summary>
+		/// Use ObjectIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ObjectId
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectId");
 			}
 		}
+		/// <summary>
+		/// Use VersionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Version
 		{

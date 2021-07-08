@@ -66,6 +66,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ServerUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ServerUrl
 		{
@@ -76,6 +79,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerUrl");
 			}
 		}
+		/// <summary>
+		/// Use ServerUsernameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ServerUsername
 		{
@@ -86,6 +92,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerUsername");
 			}
 		}
+		/// <summary>
+		/// Use ServerPasswordAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ServerPassword
 		{
@@ -96,6 +105,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerPassword");
 			}
 		}
+		/// <summary>
+		/// Use ServerPrivateKeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ServerPrivateKey
 		{
@@ -106,6 +118,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerPrivateKey");
 			}
 		}
+		/// <summary>
+		/// Use ServerPublicKeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ServerPublicKey
 		{
@@ -116,6 +131,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerPublicKey");
 			}
 		}
+		/// <summary>
+		/// Use ServerPassPhraseAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ServerPassPhrase
 		{
@@ -126,6 +144,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerPassPhrase");
 			}
 		}
+		/// <summary>
+		/// Use FtpPassiveModeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? FtpPassiveMode
 		{
@@ -136,6 +157,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FtpPassiveMode");
 			}
 		}
+		/// <summary>
+		/// Use SrcFileSyncLocalPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SrcFileSyncLocalPath
 		{
@@ -146,6 +170,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcFileSyncLocalPath");
 			}
 		}
+		/// <summary>
+		/// Use SrcFileEncryptionKeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SrcFileEncryptionKey
 		{
@@ -156,6 +183,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcFileEncryptionKey");
 			}
 		}
+		/// <summary>
+		/// Use SrcFileSyncIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SrcFileSyncId
 		{
@@ -166,6 +196,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcFileSyncId");
 			}
 		}
+		/// <summary>
+		/// Use DestFileSyncStoredPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DestFileSyncStoredPath
 		{

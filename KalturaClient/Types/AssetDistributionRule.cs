@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ValidationErrorAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ValidationError
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ValidationError");
 			}
 		}
+		/// <summary>
+		/// Use AssetDistributionConditionsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<AssetDistributionCondition> AssetDistributionConditions
 		{

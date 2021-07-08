@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FreeTextAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FreeText
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FreeText");
 			}
 		}
+		/// <summary>
+		/// Use UserIdEqualCurrentAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean UserIdEqualCurrent
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIdEqualCurrent");
 			}
 		}
+		/// <summary>
+		/// Use UserIdCurrentAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean UserIdCurrent
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIdCurrent");
 			}
 		}
+		/// <summary>
+		/// Use OrderByAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public new CuePointOrderBy OrderBy
 		{

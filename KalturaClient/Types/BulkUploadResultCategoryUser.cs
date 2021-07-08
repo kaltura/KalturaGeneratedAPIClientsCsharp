@@ -56,6 +56,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use CategoryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CategoryId
 		{
@@ -66,6 +69,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryId");
 			}
 		}
+		/// <summary>
+		/// Use CategoryReferenceIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CategoryReferenceId
 		{
@@ -76,6 +82,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryReferenceId");
 			}
 		}
+		/// <summary>
+		/// Use UserIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UserId
 		{
@@ -86,6 +95,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserId");
 			}
 		}
+		/// <summary>
+		/// Use PermissionLevelAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PermissionLevel
 		{
@@ -96,6 +108,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PermissionLevel");
 			}
 		}
+		/// <summary>
+		/// Use UpdateMethodAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdateMethod
 		{
@@ -106,6 +121,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdateMethod");
 			}
 		}
+		/// <summary>
+		/// Use RequiredObjectStatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int RequiredObjectStatus
 		{

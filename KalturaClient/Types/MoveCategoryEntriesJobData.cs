@@ -58,6 +58,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use SrcCategoryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int SrcCategoryId
 		{
@@ -68,6 +71,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcCategoryId");
 			}
 		}
+		/// <summary>
+		/// Use DestCategoryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int DestCategoryId
 		{
@@ -78,6 +84,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestCategoryId");
 			}
 		}
+		/// <summary>
+		/// Use LastMovedCategoryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LastMovedCategoryId
 		{
@@ -88,6 +97,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastMovedCategoryId");
 			}
 		}
+		/// <summary>
+		/// Use LastMovedCategoryPageIndexAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LastMovedCategoryPageIndex
 		{
@@ -98,6 +110,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastMovedCategoryPageIndex");
 			}
 		}
+		/// <summary>
+		/// Use LastMovedCategoryEntryPageIndexAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LastMovedCategoryEntryPageIndex
 		{
@@ -108,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastMovedCategoryEntryPageIndex");
 			}
 		}
+		/// <summary>
+		/// Use MoveFromChildrenAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? MoveFromChildren
 		{
@@ -118,6 +136,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MoveFromChildren");
 			}
 		}
+		/// <summary>
+		/// Use DestCategoryFullIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DestCategoryFullIds
 		{

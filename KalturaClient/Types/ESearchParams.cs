@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ObjectStatusesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ObjectStatuses
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectStatuses");
 			}
 		}
+		/// <summary>
+		/// Use ObjectIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ObjectId
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectId");
 			}
 		}
+		/// <summary>
+		/// Use OrderByAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ESearchOrderBy OrderBy
 		{

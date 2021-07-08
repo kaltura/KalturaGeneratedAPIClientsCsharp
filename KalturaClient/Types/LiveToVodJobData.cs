@@ -50,14 +50,17 @@ namespace Kaltura.Types
 		#region Private Fields
 		private string _VodEntryId = null;
 		private string _LiveEntryId = null;
-		private float _TotalVodDuration = Single.MinValue;
-		private float _LastSegmentDuration = Single.MinValue;
+		private double _TotalVodDuration = Double.MinValue;
+		private double _LastSegmentDuration = Double.MinValue;
 		private string _AmfArray = null;
 		private int _LastCuePointSyncTime = Int32.MinValue;
 		private int _LastSegmentDrift = Int32.MinValue;
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use VodEntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string VodEntryId
 		{
@@ -68,6 +71,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VodEntryId");
 			}
 		}
+		/// <summary>
+		/// Use LiveEntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string LiveEntryId
 		{
@@ -78,8 +84,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("LiveEntryId");
 			}
 		}
+		/// <summary>
+		/// Use TotalVodDurationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use TotalVodDurationAsDouble property instead")]
 		public float TotalVodDuration
+		{
+			get { return (float)_TotalVodDuration; }
+			set 
+			{ 
+				_TotalVodDuration = value;
+				OnPropertyChanged("TotalVodDuration");
+			}
+		}
+		///<summary>
+		///Use this property TotalVodDurationAsDouble instead of the float TotalVodDuration property version
+		///</summary>
+		[JsonProperty]
+		public double TotalVodDurationAsDouble
 		{
 			get { return _TotalVodDuration; }
 			set 
@@ -88,8 +111,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("TotalVodDuration");
 			}
 		}
+		/// <summary>
+		/// Use LastSegmentDurationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use LastSegmentDurationAsDouble property instead")]
 		public float LastSegmentDuration
+		{
+			get { return (float)_LastSegmentDuration; }
+			set 
+			{ 
+				_LastSegmentDuration = value;
+				OnPropertyChanged("LastSegmentDuration");
+			}
+		}
+		///<summary>
+		///Use this property LastSegmentDurationAsDouble instead of the float LastSegmentDuration property version
+		///</summary>
+		[JsonProperty]
+		public double LastSegmentDurationAsDouble
 		{
 			get { return _LastSegmentDuration; }
 			set 
@@ -98,6 +138,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastSegmentDuration");
 			}
 		}
+		/// <summary>
+		/// Use AmfArrayAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AmfArray
 		{
@@ -108,6 +151,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AmfArray");
 			}
 		}
+		/// <summary>
+		/// Use LastCuePointSyncTimeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LastCuePointSyncTime
 		{
@@ -118,6 +164,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastCuePointSyncTime");
 			}
 		}
+		/// <summary>
+		/// Use LastSegmentDriftAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LastSegmentDrift
 		{
@@ -147,11 +196,11 @@ namespace Kaltura.Types
 			}
 			if(node["totalVodDuration"] != null)
 			{
-				this._TotalVodDuration = ParseFloat(node["totalVodDuration"].Value<string>());
+				this._TotalVodDuration = ParseDouble(node["totalVodDuration"].Value<string>());
 			}
 			if(node["lastSegmentDuration"] != null)
 			{
-				this._LastSegmentDuration = ParseFloat(node["lastSegmentDuration"].Value<string>());
+				this._LastSegmentDuration = ParseDouble(node["lastSegmentDuration"].Value<string>());
 			}
 			if(node["amfArray"] != null)
 			{

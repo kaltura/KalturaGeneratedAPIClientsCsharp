@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ResourcesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<AssetParamsResourceContainer> Resources
 		{

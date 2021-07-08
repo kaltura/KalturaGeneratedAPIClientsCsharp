@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use OrderItemsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<BeaconSearchScheduledResourceOrderByItem> OrderItems
 		{

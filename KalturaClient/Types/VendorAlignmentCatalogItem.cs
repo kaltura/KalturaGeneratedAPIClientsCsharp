@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use OutputFormatAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VendorCatalogItemOutputFormat OutputFormat
 		{

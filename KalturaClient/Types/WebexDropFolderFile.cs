@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use RecordingIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int RecordingId
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecordingId");
 			}
 		}
+		/// <summary>
+		/// Use WebexHostIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string WebexHostId
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebexHostId");
 			}
 		}
+		/// <summary>
+		/// Use DescriptionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Description
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		/// <summary>
+		/// Use ConfIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ConfId
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConfId");
 			}
 		}
+		/// <summary>
+		/// Use ContentUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ContentUrl
 		{

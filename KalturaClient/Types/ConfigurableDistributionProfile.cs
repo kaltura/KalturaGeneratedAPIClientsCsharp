@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FieldConfigArrayAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<DistributionFieldConfig> FieldConfigArray
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FieldConfigArray");
 			}
 		}
+		/// <summary>
+		/// Use ItemXpathsToExtendAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<ExtendingItemMrssParameter> ItemXpathsToExtend
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemXpathsToExtend");
 			}
 		}
+		/// <summary>
+		/// Use UseCategoryEntriesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? UseCategoryEntries
 		{

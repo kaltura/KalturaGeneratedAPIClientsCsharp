@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use LimitFlavorsRestrictionTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public LimitFlavorsRestrictionType LimitFlavorsRestrictionType
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LimitFlavorsRestrictionType");
 			}
 		}
+		/// <summary>
+		/// Use FlavorParamsIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlavorParamsIds
 		{

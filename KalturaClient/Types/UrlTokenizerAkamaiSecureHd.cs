@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ParamNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ParamName
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParamName");
 			}
 		}
+		/// <summary>
+		/// Use AclPostfixAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AclPostfix
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AclPostfix");
 			}
 		}
+		/// <summary>
+		/// Use CustomPostfixesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CustomPostfixes
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CustomPostfixes");
 			}
 		}
+		/// <summary>
+		/// Use UseCookieHostsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UseCookieHosts
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UseCookieHosts");
 			}
 		}
+		/// <summary>
+		/// Use RootDirAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RootDir
 		{

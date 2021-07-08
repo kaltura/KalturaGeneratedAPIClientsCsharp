@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use SiteRestrictionTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public SiteRestrictionType SiteRestrictionType
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SiteRestrictionType");
 			}
 		}
+		/// <summary>
+		/// Use SiteListAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SiteList
 		{

@@ -57,8 +57,8 @@ namespace Kaltura.Types
 		private string _UserId = null;
 		private UploadTokenStatus _Status = (UploadTokenStatus)Int32.MinValue;
 		private string _FileName = null;
-		private float _FileSize = Single.MinValue;
-		private float _UploadedFileSize = Single.MinValue;
+		private double _FileSize = Double.MinValue;
+		private double _UploadedFileSize = Double.MinValue;
 		private int _CreatedAt = Int32.MinValue;
 		private int _UpdatedAt = Int32.MinValue;
 		private string _UploadUrl = null;
@@ -66,6 +66,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Id
 		{
@@ -76,6 +79,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		/// <summary>
+		/// Use PartnerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -86,6 +92,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		/// <summary>
+		/// Use UserIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UserId
 		{
@@ -96,6 +105,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserId");
 			}
 		}
+		/// <summary>
+		/// Use StatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public UploadTokenStatus Status
 		{
@@ -106,6 +118,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		/// <summary>
+		/// Use FileNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FileName
 		{
@@ -116,8 +131,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileName");
 			}
 		}
+		/// <summary>
+		/// Use FileSizeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use FileSizeAsDouble property instead")]
 		public float FileSize
+		{
+			get { return (float)_FileSize; }
+			set 
+			{ 
+				_FileSize = value;
+				OnPropertyChanged("FileSize");
+			}
+		}
+		///<summary>
+		///Use this property FileSizeAsDouble instead of the float FileSize property version
+		///</summary>
+		[JsonProperty]
+		public double FileSizeAsDouble
 		{
 			get { return _FileSize; }
 			set 
@@ -126,8 +158,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileSize");
 			}
 		}
+		/// <summary>
+		/// Use UploadedFileSizeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use UploadedFileSizeAsDouble property instead")]
 		public float UploadedFileSize
+		{
+			get { return (float)_UploadedFileSize; }
+			private set 
+			{ 
+				_UploadedFileSize = value;
+				OnPropertyChanged("UploadedFileSize");
+			}
+		}
+		///<summary>
+		///Use this property UploadedFileSizeAsDouble instead of the float UploadedFileSize property version
+		///</summary>
+		[JsonProperty]
+		public double UploadedFileSizeAsDouble
 		{
 			get { return _UploadedFileSize; }
 			private set 
@@ -136,6 +185,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UploadedFileSize");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -146,6 +198,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -156,6 +211,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
+		/// <summary>
+		/// Use UploadUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UploadUrl
 		{
@@ -166,6 +224,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UploadUrl");
 			}
 		}
+		/// <summary>
+		/// Use AutoFinalizeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean AutoFinalize
 		{
@@ -207,11 +268,11 @@ namespace Kaltura.Types
 			}
 			if(node["fileSize"] != null)
 			{
-				this._FileSize = ParseFloat(node["fileSize"].Value<string>());
+				this._FileSize = ParseDouble(node["fileSize"].Value<string>());
 			}
 			if(node["uploadedFileSize"] != null)
 			{
-				this._UploadedFileSize = ParseFloat(node["uploadedFileSize"].Value<string>());
+				this._UploadedFileSize = ParseDouble(node["uploadedFileSize"].Value<string>());
 			}
 			if(node["createdAt"] != null)
 			{

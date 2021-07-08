@@ -76,6 +76,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use NameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -86,6 +89,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		/// <summary>
+		/// Use FrequencyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ScheduleEventRecurrenceFrequency Frequency
 		{
@@ -96,6 +102,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Frequency");
 			}
 		}
+		/// <summary>
+		/// Use UntilAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Until
 		{
@@ -106,6 +115,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Until");
 			}
 		}
+		/// <summary>
+		/// Use TimeZoneAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TimeZone
 		{
@@ -116,6 +128,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TimeZone");
 			}
 		}
+		/// <summary>
+		/// Use CountAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Count
 		{
@@ -126,6 +141,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Count");
 			}
 		}
+		/// <summary>
+		/// Use IntervalAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Interval
 		{
@@ -136,6 +154,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Interval");
 			}
 		}
+		/// <summary>
+		/// Use BySecondAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string BySecond
 		{
@@ -146,6 +167,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("BySecond");
 			}
 		}
+		/// <summary>
+		/// Use ByMinuteAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ByMinute
 		{
@@ -156,6 +180,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ByMinute");
 			}
 		}
+		/// <summary>
+		/// Use ByHourAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ByHour
 		{
@@ -166,6 +193,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ByHour");
 			}
 		}
+		/// <summary>
+		/// Use ByDayAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ByDay
 		{
@@ -176,6 +206,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ByDay");
 			}
 		}
+		/// <summary>
+		/// Use ByMonthDayAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ByMonthDay
 		{
@@ -186,6 +219,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ByMonthDay");
 			}
 		}
+		/// <summary>
+		/// Use ByYearDayAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ByYearDay
 		{
@@ -196,6 +232,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ByYearDay");
 			}
 		}
+		/// <summary>
+		/// Use ByWeekNumberAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ByWeekNumber
 		{
@@ -206,6 +245,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ByWeekNumber");
 			}
 		}
+		/// <summary>
+		/// Use ByMonthAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ByMonth
 		{
@@ -216,6 +258,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ByMonth");
 			}
 		}
+		/// <summary>
+		/// Use ByOffsetAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ByOffset
 		{
@@ -226,6 +271,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ByOffset");
 			}
 		}
+		/// <summary>
+		/// Use WeekStartDayAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ScheduleEventRecurrenceDay WeekStartDay
 		{

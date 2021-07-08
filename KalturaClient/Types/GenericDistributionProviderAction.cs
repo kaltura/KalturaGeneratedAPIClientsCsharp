@@ -78,6 +78,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Id
 		{
@@ -88,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -98,6 +104,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -108,6 +117,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
+		/// <summary>
+		/// Use GenericDistributionProviderIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int GenericDistributionProviderId
 		{
@@ -118,6 +130,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("GenericDistributionProviderId");
 			}
 		}
+		/// <summary>
+		/// Use ActionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DistributionAction Action
 		{
@@ -128,6 +143,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Action");
 			}
 		}
+		/// <summary>
+		/// Use StatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public GenericDistributionProviderStatus Status
 		{
@@ -138,6 +156,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		/// <summary>
+		/// Use ResultsParserAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public GenericDistributionProviderParser ResultsParser
 		{
@@ -148,6 +169,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ResultsParser");
 			}
 		}
+		/// <summary>
+		/// Use ProtocolAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DistributionProtocol Protocol
 		{
@@ -158,6 +182,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Protocol");
 			}
 		}
+		/// <summary>
+		/// Use ServerAddressAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ServerAddress
 		{
@@ -168,6 +195,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerAddress");
 			}
 		}
+		/// <summary>
+		/// Use RemotePathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RemotePath
 		{
@@ -178,6 +208,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RemotePath");
 			}
 		}
+		/// <summary>
+		/// Use RemoteUsernameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RemoteUsername
 		{
@@ -188,6 +221,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RemoteUsername");
 			}
 		}
+		/// <summary>
+		/// Use RemotePasswordAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RemotePassword
 		{
@@ -198,6 +234,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RemotePassword");
 			}
 		}
+		/// <summary>
+		/// Use EditableFieldsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EditableFields
 		{
@@ -208,6 +247,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EditableFields");
 			}
 		}
+		/// <summary>
+		/// Use MandatoryFieldsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string MandatoryFields
 		{
@@ -218,6 +260,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MandatoryFields");
 			}
 		}
+		/// <summary>
+		/// Use MrssTransformerAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string MrssTransformer
 		{
@@ -228,6 +273,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MrssTransformer");
 			}
 		}
+		/// <summary>
+		/// Use MrssValidatorAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string MrssValidator
 		{
@@ -238,6 +286,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MrssValidator");
 			}
 		}
+		/// <summary>
+		/// Use ResultsTransformerAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ResultsTransformer
 		{

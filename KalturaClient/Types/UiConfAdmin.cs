@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IsPublicAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? IsPublic
 		{

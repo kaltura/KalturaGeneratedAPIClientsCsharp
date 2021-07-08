@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use CityAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public Coordinate City
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("City");
 			}
 		}
+		/// <summary>
+		/// Use CountryAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public Coordinate Country
 		{

@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use RecipientEmailAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RecipientEmail
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecipientEmail");
 			}
 		}
+		/// <summary>
+		/// Use ReportItemsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<ReportExportItem> ReportItems
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReportItems");
 			}
 		}
+		/// <summary>
+		/// Use FilePathsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FilePaths
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FilePaths");
 			}
 		}
+		/// <summary>
+		/// Use ReportsGroupAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ReportsGroup
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReportsGroup");
 			}
 		}
+		/// <summary>
+		/// Use FilesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<ReportExportFile> Files
 		{

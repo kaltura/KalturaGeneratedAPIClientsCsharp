@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use XpathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Xpath
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Xpath");
 			}
 		}
+		/// <summary>
+		/// Use IdentifierAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ObjectIdentifier Identifier
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Identifier");
 			}
 		}
+		/// <summary>
+		/// Use ExtensionModeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public MrssExtensionMode ExtensionMode
 		{

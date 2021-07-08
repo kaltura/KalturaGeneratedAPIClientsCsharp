@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use DimensionsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DistributionThumbDimensions Dimensions
 		{

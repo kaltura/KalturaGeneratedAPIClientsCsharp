@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FlavorAssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlavorAssetId
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetId");
 			}
 		}
+		/// <summary>
+		/// Use ContentMoidAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ContentMoid
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentMoid");
 			}
 		}
+		/// <summary>
+		/// Use ServiceTokenAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ServiceToken
 		{

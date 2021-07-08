@@ -62,6 +62,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ItemXPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ItemXPath
 		{
@@ -72,6 +75,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemXPath");
 			}
 		}
+		/// <summary>
+		/// Use ItemPublishDateXPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ItemPublishDateXPath
 		{
@@ -82,6 +88,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemPublishDateXPath");
 			}
 		}
+		/// <summary>
+		/// Use ItemUniqueIdentifierXPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ItemUniqueIdentifierXPath
 		{
@@ -92,6 +101,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemUniqueIdentifierXPath");
 			}
 		}
+		/// <summary>
+		/// Use ItemContentFileSizeXPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ItemContentFileSizeXPath
 		{
@@ -102,6 +114,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemContentFileSizeXPath");
 			}
 		}
+		/// <summary>
+		/// Use ItemContentUrlXPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ItemContentUrlXPath
 		{
@@ -112,6 +127,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemContentUrlXPath");
 			}
 		}
+		/// <summary>
+		/// Use ItemContentBitrateXPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ItemContentBitrateXPath
 		{
@@ -122,6 +140,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemContentBitrateXPath");
 			}
 		}
+		/// <summary>
+		/// Use ItemHashXPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ItemHashXPath
 		{
@@ -132,6 +153,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemHashXPath");
 			}
 		}
+		/// <summary>
+		/// Use ItemContentXpathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ItemContentXpath
 		{
@@ -142,6 +166,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemContentXpath");
 			}
 		}
+		/// <summary>
+		/// Use ContentBitrateAttributeNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ContentBitrateAttributeName
 		{

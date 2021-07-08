@@ -58,6 +58,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ChannelTitleAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ChannelTitle
 		{
@@ -68,6 +71,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelTitle");
 			}
 		}
+		/// <summary>
+		/// Use ChannelLinkAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ChannelLink
 		{
@@ -78,6 +84,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelLink");
 			}
 		}
+		/// <summary>
+		/// Use ChannelDescriptionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ChannelDescription
 		{
@@ -88,6 +97,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelDescription");
 			}
 		}
+		/// <summary>
+		/// Use FeedUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FeedUrl
 		{
@@ -98,6 +110,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedUrl");
 			}
 		}
+		/// <summary>
+		/// Use CuePointsProviderAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CuePointsProvider
 		{
@@ -108,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CuePointsProvider");
 			}
 		}
+		/// <summary>
+		/// Use ItemsPerPageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ItemsPerPage
 		{
@@ -118,6 +136,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemsPerPage");
 			}
 		}
+		/// <summary>
+		/// Use IgnoreSchedulingInFeedAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? IgnoreSchedulingInFeed
 		{

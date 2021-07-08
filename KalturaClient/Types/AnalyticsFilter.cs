@@ -51,13 +51,16 @@ namespace Kaltura.Types
 		private string _From_time = null;
 		private string _To_time = null;
 		private string _Metrics = null;
-		private float _UtcOffset = Single.MinValue;
+		private double _UtcOffset = Double.MinValue;
 		private string _Dimensions = null;
 		private IList<ReportFilter> _Filters;
 		private string _OrderBy = null;
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use From_timeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string From_time
 		{
@@ -68,6 +71,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("From_time");
 			}
 		}
+		/// <summary>
+		/// Use To_timeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string To_time
 		{
@@ -78,6 +84,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("To_time");
 			}
 		}
+		/// <summary>
+		/// Use MetricsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Metrics
 		{
@@ -88,8 +97,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("Metrics");
 			}
 		}
+		/// <summary>
+		/// Use UtcOffsetAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use UtcOffsetAsDouble property instead")]
 		public float UtcOffset
+		{
+			get { return (float)_UtcOffset; }
+			set 
+			{ 
+				_UtcOffset = value;
+				OnPropertyChanged("UtcOffset");
+			}
+		}
+		///<summary>
+		///Use this property UtcOffsetAsDouble instead of the float UtcOffset property version
+		///</summary>
+		[JsonProperty]
+		public double UtcOffsetAsDouble
 		{
 			get { return _UtcOffset; }
 			set 
@@ -98,6 +124,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UtcOffset");
 			}
 		}
+		/// <summary>
+		/// Use DimensionsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Dimensions
 		{
@@ -108,6 +137,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Dimensions");
 			}
 		}
+		/// <summary>
+		/// Use FiltersAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<ReportFilter> Filters
 		{
@@ -118,6 +150,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Filters");
 			}
 		}
+		/// <summary>
+		/// Use OrderByAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string OrderBy
 		{
@@ -151,7 +186,7 @@ namespace Kaltura.Types
 			}
 			if(node["utcOffset"] != null)
 			{
-				this._UtcOffset = ParseFloat(node["utcOffset"].Value<string>());
+				this._UtcOffset = ParseDouble(node["utcOffset"].Value<string>());
 			}
 			if(node["dimensions"] != null)
 			{

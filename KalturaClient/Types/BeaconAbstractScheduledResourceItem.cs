@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use SearchTermAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SearchTerm
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SearchTerm");
 			}
 		}
+		/// <summary>
+		/// Use ItemTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ESearchItemType ItemType
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemType");
 			}
 		}
+		/// <summary>
+		/// Use RangeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ESearchRange Range
 		{

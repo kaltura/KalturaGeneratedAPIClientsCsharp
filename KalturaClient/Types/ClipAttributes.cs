@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use OffsetAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Offset
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Offset");
 			}
 		}
+		/// <summary>
+		/// Use DurationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Duration
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Duration");
 			}
 		}
+		/// <summary>
+		/// Use GlobalOffsetInDestinationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int GlobalOffsetInDestination
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("GlobalOffsetInDestination");
 			}
 		}
+		/// <summary>
+		/// Use EffectArrayAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<Effect> EffectArray
 		{

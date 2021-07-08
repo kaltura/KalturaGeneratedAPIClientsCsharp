@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ClientTagAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ClientTag
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ClientTag");
 			}
 		}
+		/// <summary>
+		/// Use ApiVersionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ApiVersion
 		{

@@ -47,11 +47,14 @@ namespace Kaltura.Types
 		#region Private Fields
 		private string _Key = null;
 		private string _Text = null;
-		private float _Weight = Single.MinValue;
+		private double _Weight = Double.MinValue;
 		private NullableBoolean _IsCorrect = (NullableBoolean)Int32.MinValue;
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use KeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Key
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Key");
 			}
 		}
+		/// <summary>
+		/// Use TextAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Text
 		{
@@ -72,8 +78,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("Text");
 			}
 		}
+		/// <summary>
+		/// Use WeightAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use WeightAsDouble property instead")]
 		public float Weight
+		{
+			get { return (float)_Weight; }
+			set 
+			{ 
+				_Weight = value;
+				OnPropertyChanged("Weight");
+			}
+		}
+		///<summary>
+		///Use this property WeightAsDouble instead of the float Weight property version
+		///</summary>
+		[JsonProperty]
+		public double WeightAsDouble
 		{
 			get { return _Weight; }
 			set 
@@ -82,6 +105,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Weight");
 			}
 		}
+		/// <summary>
+		/// Use IsCorrectAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean IsCorrect
 		{
@@ -111,7 +137,7 @@ namespace Kaltura.Types
 			}
 			if(node["weight"] != null)
 			{
-				this._Weight = ParseFloat(node["weight"].Value<string>());
+				this._Weight = ParseDouble(node["weight"].Value<string>());
 			}
 			if(node["isCorrect"] != null)
 			{

@@ -62,6 +62,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FieldNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FieldName
 		{
@@ -72,6 +75,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FieldName");
 			}
 		}
+		/// <summary>
+		/// Use UserFriendlyFieldNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UserFriendlyFieldName
 		{
@@ -82,6 +88,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserFriendlyFieldName");
 			}
 		}
+		/// <summary>
+		/// Use EntryMrssXsltAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntryMrssXslt
 		{
@@ -92,6 +101,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryMrssXslt");
 			}
 		}
+		/// <summary>
+		/// Use IsRequiredAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DistributionFieldRequiredStatus IsRequired
 		{
@@ -102,6 +114,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsRequired");
 			}
 		}
+		/// <summary>
+		/// Use TypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Type
 		{
@@ -112,6 +127,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		/// <summary>
+		/// Use UpdateOnChangeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? UpdateOnChange
 		{
@@ -122,6 +140,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdateOnChange");
 			}
 		}
+		/// <summary>
+		/// Use UpdateParamsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<String> UpdateParams
 		{
@@ -132,6 +153,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdateParams");
 			}
 		}
+		/// <summary>
+		/// Use IsDefaultAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? IsDefault
 		{
@@ -142,6 +166,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsDefault");
 			}
 		}
+		/// <summary>
+		/// Use TriggerDeleteOnErrorAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? TriggerDeleteOnError
 		{

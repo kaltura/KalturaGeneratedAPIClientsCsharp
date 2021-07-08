@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use DropFolderIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int DropFolderId
 		{

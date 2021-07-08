@@ -54,10 +54,13 @@ namespace Kaltura.Types
 		private UploadTokenStatus _StatusEqual = (UploadTokenStatus)Int32.MinValue;
 		private string _StatusIn = null;
 		private string _FileNameEqual = null;
-		private float _FileSizeEqual = Single.MinValue;
+		private double _FileSizeEqual = Double.MinValue;
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string IdEqual
 		{
@@ -68,6 +71,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		/// <summary>
+		/// Use IdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string IdIn
 		{
@@ -78,6 +84,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		/// <summary>
+		/// Use UserIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UserIdEqual
 		{
@@ -88,6 +97,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use StatusEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public UploadTokenStatus StatusEqual
 		{
@@ -98,6 +110,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		/// <summary>
+		/// Use StatusInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StatusIn
 		{
@@ -108,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		/// <summary>
+		/// Use FileNameEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FileNameEqual
 		{
@@ -118,8 +136,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileNameEqual");
 			}
 		}
+		/// <summary>
+		/// Use FileSizeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use FileSizeEqualAsDouble property instead")]
 		public float FileSizeEqual
+		{
+			get { return (float)_FileSizeEqual; }
+			set 
+			{ 
+				_FileSizeEqual = value;
+				OnPropertyChanged("FileSizeEqual");
+			}
+		}
+		///<summary>
+		///Use this property FileSizeEqualAsDouble instead of the float FileSizeEqual property version
+		///</summary>
+		[JsonProperty]
+		public double FileSizeEqualAsDouble
 		{
 			get { return _FileSizeEqual; }
 			set 
@@ -163,7 +198,7 @@ namespace Kaltura.Types
 			}
 			if(node["fileSizeEqual"] != null)
 			{
-				this._FileSizeEqual = ParseFloat(node["fileSizeEqual"].Value<string>());
+				this._FileSizeEqual = ParseDouble(node["fileSizeEqual"].Value<string>());
 			}
 		}
 		#endregion

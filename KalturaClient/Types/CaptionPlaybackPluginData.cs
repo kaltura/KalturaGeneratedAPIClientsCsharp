@@ -58,6 +58,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use LabelAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Label
 		{
@@ -68,6 +71,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Label");
 			}
 		}
+		/// <summary>
+		/// Use FormatAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Format
 		{
@@ -78,6 +84,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Format");
 			}
 		}
+		/// <summary>
+		/// Use LanguageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Language
 		{
@@ -88,6 +97,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Language");
 			}
 		}
+		/// <summary>
+		/// Use WebVttUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string WebVttUrl
 		{
@@ -98,6 +110,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebVttUrl");
 			}
 		}
+		/// <summary>
+		/// Use UrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Url
 		{
@@ -108,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Url");
 			}
 		}
+		/// <summary>
+		/// Use IsDefaultAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? IsDefault
 		{
@@ -118,6 +136,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsDefault");
 			}
 		}
+		/// <summary>
+		/// Use LanguageCodeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string LanguageCode
 		{

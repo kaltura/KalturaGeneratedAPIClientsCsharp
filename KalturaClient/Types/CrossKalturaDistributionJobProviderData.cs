@@ -62,6 +62,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use DistributedFlavorAssetsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DistributedFlavorAssets
 		{
@@ -72,6 +75,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributedFlavorAssets");
 			}
 		}
+		/// <summary>
+		/// Use DistributedThumbAssetsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DistributedThumbAssets
 		{
@@ -82,6 +88,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributedThumbAssets");
 			}
 		}
+		/// <summary>
+		/// Use DistributedMetadataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DistributedMetadata
 		{
@@ -92,6 +101,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributedMetadata");
 			}
 		}
+		/// <summary>
+		/// Use DistributedCaptionAssetsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DistributedCaptionAssets
 		{
@@ -102,6 +114,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributedCaptionAssets");
 			}
 		}
+		/// <summary>
+		/// Use DistributedFileAssetsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DistributedFileAssets
 		{
@@ -112,6 +127,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributedFileAssets");
 			}
 		}
+		/// <summary>
+		/// Use DistributedAttachmentAssetsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DistributedAttachmentAssets
 		{
@@ -122,6 +140,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributedAttachmentAssets");
 			}
 		}
+		/// <summary>
+		/// Use DistributedCuePointsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DistributedCuePoints
 		{
@@ -132,6 +153,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributedCuePoints");
 			}
 		}
+		/// <summary>
+		/// Use DistributedThumbCuePointsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DistributedThumbCuePoints
 		{
@@ -142,6 +166,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributedThumbCuePoints");
 			}
 		}
+		/// <summary>
+		/// Use DistributedTimedThumbAssetsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DistributedTimedThumbAssets
 		{

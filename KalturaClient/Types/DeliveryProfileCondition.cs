@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use DeliveryProfileIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<IntegerValue> DeliveryProfileIds
 		{

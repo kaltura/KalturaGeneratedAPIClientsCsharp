@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use EmailRecipientsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<EmailNotificationRecipient> EmailRecipients
 		{

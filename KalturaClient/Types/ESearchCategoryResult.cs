@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ObjectAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public Category Object
 		{

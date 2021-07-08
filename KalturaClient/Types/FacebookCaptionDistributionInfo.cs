@@ -56,6 +56,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use LanguageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Language
 		{
@@ -66,6 +69,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Language");
 			}
 		}
+		/// <summary>
+		/// Use LabelAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Label
 		{
@@ -76,6 +82,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Label");
 			}
 		}
+		/// <summary>
+		/// Use FilePathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FilePath
 		{
@@ -86,6 +95,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FilePath");
 			}
 		}
+		/// <summary>
+		/// Use RemoteIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RemoteId
 		{
@@ -96,6 +108,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RemoteId");
 			}
 		}
+		/// <summary>
+		/// Use VersionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Version
 		{
@@ -106,6 +121,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Version");
 			}
 		}
+		/// <summary>
+		/// Use AssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AssetId
 		{

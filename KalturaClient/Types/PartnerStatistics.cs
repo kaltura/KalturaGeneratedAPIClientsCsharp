@@ -48,14 +48,17 @@ namespace Kaltura.Types
 
 		#region Private Fields
 		private int _PackageBandwidthAndStorage = Int32.MinValue;
-		private float _Hosting = Single.MinValue;
-		private float _Bandwidth = Single.MinValue;
+		private double _Hosting = Double.MinValue;
+		private double _Bandwidth = Double.MinValue;
 		private int _Usage = Int32.MinValue;
-		private float _UsagePercent = Single.MinValue;
+		private double _UsagePercent = Double.MinValue;
 		private int _ReachedLimitDate = Int32.MinValue;
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use PackageBandwidthAndStorageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PackageBandwidthAndStorage
 		{
@@ -66,8 +69,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("PackageBandwidthAndStorage");
 			}
 		}
+		/// <summary>
+		/// Use HostingAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use HostingAsDouble property instead")]
 		public float Hosting
+		{
+			get { return (float)_Hosting; }
+			private set 
+			{ 
+				_Hosting = value;
+				OnPropertyChanged("Hosting");
+			}
+		}
+		///<summary>
+		///Use this property HostingAsDouble instead of the float Hosting property version
+		///</summary>
+		[JsonProperty]
+		public double HostingAsDouble
 		{
 			get { return _Hosting; }
 			private set 
@@ -76,8 +96,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("Hosting");
 			}
 		}
+		/// <summary>
+		/// Use BandwidthAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use BandwidthAsDouble property instead")]
 		public float Bandwidth
+		{
+			get { return (float)_Bandwidth; }
+			private set 
+			{ 
+				_Bandwidth = value;
+				OnPropertyChanged("Bandwidth");
+			}
+		}
+		///<summary>
+		///Use this property BandwidthAsDouble instead of the float Bandwidth property version
+		///</summary>
+		[JsonProperty]
+		public double BandwidthAsDouble
 		{
 			get { return _Bandwidth; }
 			private set 
@@ -86,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Bandwidth");
 			}
 		}
+		/// <summary>
+		/// Use UsageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Usage
 		{
@@ -96,8 +136,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("Usage");
 			}
 		}
+		/// <summary>
+		/// Use UsagePercentAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use UsagePercentAsDouble property instead")]
 		public float UsagePercent
+		{
+			get { return (float)_UsagePercent; }
+			private set 
+			{ 
+				_UsagePercent = value;
+				OnPropertyChanged("UsagePercent");
+			}
+		}
+		///<summary>
+		///Use this property UsagePercentAsDouble instead of the float UsagePercent property version
+		///</summary>
+		[JsonProperty]
+		public double UsagePercentAsDouble
 		{
 			get { return _UsagePercent; }
 			private set 
@@ -106,6 +163,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UsagePercent");
 			}
 		}
+		/// <summary>
+		/// Use ReachedLimitDateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ReachedLimitDate
 		{
@@ -131,11 +191,11 @@ namespace Kaltura.Types
 			}
 			if(node["hosting"] != null)
 			{
-				this._Hosting = ParseFloat(node["hosting"].Value<string>());
+				this._Hosting = ParseDouble(node["hosting"].Value<string>());
 			}
 			if(node["bandwidth"] != null)
 			{
-				this._Bandwidth = ParseFloat(node["bandwidth"].Value<string>());
+				this._Bandwidth = ParseDouble(node["bandwidth"].Value<string>());
 			}
 			if(node["usage"] != null)
 			{
@@ -143,7 +203,7 @@ namespace Kaltura.Types
 			}
 			if(node["usagePercent"] != null)
 			{
-				this._UsagePercent = ParseFloat(node["usagePercent"].Value<string>());
+				this._UsagePercent = ParseDouble(node["usagePercent"].Value<string>());
 			}
 			if(node["reachedLimitDate"] != null)
 			{

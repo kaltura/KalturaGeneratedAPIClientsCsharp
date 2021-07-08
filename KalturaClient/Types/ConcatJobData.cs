@@ -51,13 +51,16 @@ namespace Kaltura.Types
 		private IList<String> _SrcFiles;
 		private string _DestFilePath = null;
 		private string _FlavorAssetId = null;
-		private float _Offset = Single.MinValue;
-		private float _Duration = Single.MinValue;
-		private float _ConcatenatedDuration = Single.MinValue;
+		private double _Offset = Double.MinValue;
+		private double _Duration = Double.MinValue;
+		private double _ConcatenatedDuration = Double.MinValue;
 		private bool? _ShouldSort = null;
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use SrcFilesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<String> SrcFiles
 		{
@@ -68,6 +71,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcFiles");
 			}
 		}
+		/// <summary>
+		/// Use DestFilePathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DestFilePath
 		{
@@ -78,6 +84,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestFilePath");
 			}
 		}
+		/// <summary>
+		/// Use FlavorAssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlavorAssetId
 		{
@@ -88,8 +97,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetId");
 			}
 		}
+		/// <summary>
+		/// Use OffsetAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use OffsetAsDouble property instead")]
 		public float Offset
+		{
+			get { return (float)_Offset; }
+			set 
+			{ 
+				_Offset = value;
+				OnPropertyChanged("Offset");
+			}
+		}
+		///<summary>
+		///Use this property OffsetAsDouble instead of the float Offset property version
+		///</summary>
+		[JsonProperty]
+		public double OffsetAsDouble
 		{
 			get { return _Offset; }
 			set 
@@ -98,8 +124,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("Offset");
 			}
 		}
+		/// <summary>
+		/// Use DurationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use DurationAsDouble property instead")]
 		public float Duration
+		{
+			get { return (float)_Duration; }
+			set 
+			{ 
+				_Duration = value;
+				OnPropertyChanged("Duration");
+			}
+		}
+		///<summary>
+		///Use this property DurationAsDouble instead of the float Duration property version
+		///</summary>
+		[JsonProperty]
+		public double DurationAsDouble
 		{
 			get { return _Duration; }
 			set 
@@ -108,8 +151,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("Duration");
 			}
 		}
+		/// <summary>
+		/// Use ConcatenatedDurationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use ConcatenatedDurationAsDouble property instead")]
 		public float ConcatenatedDuration
+		{
+			get { return (float)_ConcatenatedDuration; }
+			set 
+			{ 
+				_ConcatenatedDuration = value;
+				OnPropertyChanged("ConcatenatedDuration");
+			}
+		}
+		///<summary>
+		///Use this property ConcatenatedDurationAsDouble instead of the float ConcatenatedDuration property version
+		///</summary>
+		[JsonProperty]
+		public double ConcatenatedDurationAsDouble
 		{
 			get { return _ConcatenatedDuration; }
 			set 
@@ -118,6 +178,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConcatenatedDuration");
 			}
 		}
+		/// <summary>
+		/// Use ShouldSortAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? ShouldSort
 		{
@@ -155,15 +218,15 @@ namespace Kaltura.Types
 			}
 			if(node["offset"] != null)
 			{
-				this._Offset = ParseFloat(node["offset"].Value<string>());
+				this._Offset = ParseDouble(node["offset"].Value<string>());
 			}
 			if(node["duration"] != null)
 			{
-				this._Duration = ParseFloat(node["duration"].Value<string>());
+				this._Duration = ParseDouble(node["duration"].Value<string>());
 			}
 			if(node["concatenatedDuration"] != null)
 			{
-				this._ConcatenatedDuration = ParseFloat(node["concatenatedDuration"].Value<string>());
+				this._ConcatenatedDuration = ParseDouble(node["concatenatedDuration"].Value<string>());
 			}
 			if(node["shouldSort"] != null)
 			{

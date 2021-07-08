@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use TypeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DistributionProviderType TypeEqual
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeEqual");
 			}
 		}
+		/// <summary>
+		/// Use TypeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TypeIn
 		{

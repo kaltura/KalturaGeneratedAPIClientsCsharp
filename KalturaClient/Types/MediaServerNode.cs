@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ApplicationNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ApplicationName
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ApplicationName");
 			}
 		}
+		/// <summary>
+		/// Use MediaServerPortConfigAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> MediaServerPortConfig
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaServerPortConfig");
 			}
 		}
+		/// <summary>
+		/// Use MediaServerPlaybackDomainConfigAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> MediaServerPlaybackDomainConfig
 		{

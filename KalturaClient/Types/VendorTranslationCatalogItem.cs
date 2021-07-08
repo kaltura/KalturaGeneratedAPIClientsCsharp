@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use TargetLanguageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public CatalogItemLanguage TargetLanguage
 		{

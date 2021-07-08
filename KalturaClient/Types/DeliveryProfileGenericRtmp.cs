@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use PatternAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Pattern
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Pattern");
 			}
 		}
+		/// <summary>
+		/// Use RendererClassAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RendererClass
 		{

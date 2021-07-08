@@ -60,6 +60,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FlavorAssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlavorAssetId
 		{
@@ -70,6 +73,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetId");
 			}
 		}
+		/// <summary>
+		/// Use FlavorAssetEncryptionKeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlavorAssetEncryptionKey
 		{
@@ -80,6 +86,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetEncryptionKey");
 			}
 		}
+		/// <summary>
+		/// Use CreateThumbAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? CreateThumb
 		{
@@ -90,6 +99,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreateThumb");
 			}
 		}
+		/// <summary>
+		/// Use ThumbPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ThumbPath
 		{
@@ -100,6 +112,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbPath");
 			}
 		}
+		/// <summary>
+		/// Use ThumbOffsetAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ThumbOffset
 		{
@@ -110,6 +125,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbOffset");
 			}
 		}
+		/// <summary>
+		/// Use ThumbHeightAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ThumbHeight
 		{
@@ -120,6 +138,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbHeight");
 			}
 		}
+		/// <summary>
+		/// Use ThumbBitrateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ThumbBitrate
 		{
@@ -130,6 +151,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbBitrate");
 			}
 		}
+		/// <summary>
+		/// Use CustomDataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CustomData
 		{

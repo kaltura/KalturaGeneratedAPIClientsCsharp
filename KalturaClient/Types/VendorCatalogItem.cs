@@ -72,6 +72,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Id
 		{
@@ -82,6 +85,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		/// <summary>
+		/// Use VendorPartnerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int VendorPartnerId
 		{
@@ -92,6 +98,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VendorPartnerId");
 			}
 		}
+		/// <summary>
+		/// Use NameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -102,6 +111,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		/// <summary>
+		/// Use SystemNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SystemName
 		{
@@ -112,6 +124,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemName");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -122,6 +137,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -132,6 +150,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
+		/// <summary>
+		/// Use StatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VendorCatalogItemStatus Status
 		{
@@ -142,6 +163,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		/// <summary>
+		/// Use ServiceTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VendorServiceType ServiceType
 		{
@@ -152,6 +176,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServiceType");
 			}
 		}
+		/// <summary>
+		/// Use ServiceFeatureAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VendorServiceFeature ServiceFeature
 		{
@@ -162,6 +189,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServiceFeature");
 			}
 		}
+		/// <summary>
+		/// Use TurnAroundTimeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VendorServiceTurnAroundTime TurnAroundTime
 		{
@@ -172,6 +202,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TurnAroundTime");
 			}
 		}
+		/// <summary>
+		/// Use PricingAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VendorCatalogItemPricing Pricing
 		{
@@ -182,6 +215,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Pricing");
 			}
 		}
+		/// <summary>
+		/// Use EngineTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ReachVendorEngineType EngineType
 		{
@@ -192,6 +228,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EngineType");
 			}
 		}
+		/// <summary>
+		/// Use SourceLanguageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public CatalogItemLanguage SourceLanguage
 		{
@@ -202,6 +241,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceLanguage");
 			}
 		}
+		/// <summary>
+		/// Use AllowResubmissionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? AllowResubmission
 		{

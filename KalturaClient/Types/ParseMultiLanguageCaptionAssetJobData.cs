@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use MultiLanaguageCaptionAssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string MultiLanaguageCaptionAssetId
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MultiLanaguageCaptionAssetId");
 			}
 		}
+		/// <summary>
+		/// Use EntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntryId
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		/// <summary>
+		/// Use FileLocationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FileLocation
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileLocation");
 			}
 		}
+		/// <summary>
+		/// Use FileEncryptionKeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FileEncryptionKey
 		{

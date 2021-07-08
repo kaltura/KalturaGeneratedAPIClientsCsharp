@@ -56,6 +56,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use UpdatedAtGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
@@ -66,6 +69,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
@@ -76,6 +82,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use RelatedObjectTypeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RelatedObjectTypeIn
 		{
@@ -86,6 +95,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RelatedObjectTypeIn");
 			}
 		}
+		/// <summary>
+		/// Use RelatedObjectTypeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public BeaconObjectTypes RelatedObjectTypeEqual
 		{
@@ -96,6 +108,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RelatedObjectTypeEqual");
 			}
 		}
+		/// <summary>
+		/// Use EventTypeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EventTypeIn
 		{
@@ -106,6 +121,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EventTypeIn");
 			}
 		}
+		/// <summary>
+		/// Use ObjectIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ObjectIdIn
 		{

@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Id
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		/// <summary>
+		/// Use BusinessProcessIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string BusinessProcessId
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("BusinessProcessId");
 			}
 		}
+		/// <summary>
+		/// Use BusinessProcessStartNotificationTemplateIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int BusinessProcessStartNotificationTemplateId
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("BusinessProcessStartNotificationTemplateId");
 			}
 		}
+		/// <summary>
+		/// Use SuspendedAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? Suspended
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Suspended");
 			}
 		}
+		/// <summary>
+		/// Use ActivityIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ActivityId
 		{

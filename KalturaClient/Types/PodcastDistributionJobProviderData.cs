@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use XmlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Xml
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Xml");
 			}
 		}
+		/// <summary>
+		/// Use MetadataProfileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MetadataProfileId
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataProfileId");
 			}
 		}
+		/// <summary>
+		/// Use DistributionProfileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int DistributionProfileId
 		{

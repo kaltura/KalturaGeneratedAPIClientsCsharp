@@ -66,6 +66,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int IdEqual
 		{
@@ -76,6 +79,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		/// <summary>
+		/// Use IdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string IdIn
 		{
@@ -86,6 +92,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
@@ -96,6 +105,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
@@ -106,6 +118,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use CreatedByIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedByIdEqual
 		{
@@ -116,6 +131,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedByIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use TypeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ControlPanelCommandType TypeEqual
 		{
@@ -126,6 +144,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeEqual");
 			}
 		}
+		/// <summary>
+		/// Use TypeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TypeIn
 		{
@@ -136,6 +157,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeIn");
 			}
 		}
+		/// <summary>
+		/// Use TargetTypeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ControlPanelCommandTargetType TargetTypeEqual
 		{
@@ -146,6 +170,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TargetTypeEqual");
 			}
 		}
+		/// <summary>
+		/// Use TargetTypeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TargetTypeIn
 		{
@@ -156,6 +183,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TargetTypeIn");
 			}
 		}
+		/// <summary>
+		/// Use StatusEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ControlPanelCommandStatus StatusEqual
 		{
@@ -166,6 +196,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		/// <summary>
+		/// Use StatusInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StatusIn
 		{

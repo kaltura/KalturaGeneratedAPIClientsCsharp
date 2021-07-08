@@ -66,6 +66,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use SrcFileSyncLocalPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SrcFileSyncLocalPath
 		{
@@ -76,6 +79,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcFileSyncLocalPath");
 			}
 		}
+		/// <summary>
+		/// Use ActualSrcFileSyncLocalPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ActualSrcFileSyncLocalPath
 		{
@@ -86,6 +92,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ActualSrcFileSyncLocalPath");
 			}
 		}
+		/// <summary>
+		/// Use SrcFileSyncRemoteUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SrcFileSyncRemoteUrl
 		{
@@ -96,6 +105,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcFileSyncRemoteUrl");
 			}
 		}
+		/// <summary>
+		/// Use SrcFileSyncsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<SourceFileSyncDescriptor> SrcFileSyncs
 		{
@@ -106,6 +118,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcFileSyncs");
 			}
 		}
+		/// <summary>
+		/// Use EngineVersionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int EngineVersion
 		{
@@ -116,6 +131,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EngineVersion");
 			}
 		}
+		/// <summary>
+		/// Use FlavorParamsOutputIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int FlavorParamsOutputId
 		{
@@ -126,6 +144,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsOutputId");
 			}
 		}
+		/// <summary>
+		/// Use FlavorParamsOutputAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public FlavorParamsOutput FlavorParamsOutput
 		{
@@ -136,6 +157,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsOutput");
 			}
 		}
+		/// <summary>
+		/// Use MediaInfoIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MediaInfoId
 		{
@@ -146,6 +170,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaInfoId");
 			}
 		}
+		/// <summary>
+		/// Use CurrentOperationSetAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CurrentOperationSet
 		{
@@ -156,6 +183,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CurrentOperationSet");
 			}
 		}
+		/// <summary>
+		/// Use CurrentOperationIndexAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CurrentOperationIndex
 		{
@@ -166,6 +196,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CurrentOperationIndex");
 			}
 		}
+		/// <summary>
+		/// Use PluginDataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> PluginData
 		{

@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use DownloadAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? Download
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Download");
 			}
 		}
+		/// <summary>
+		/// Use ReferrerAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Referrer
 		{

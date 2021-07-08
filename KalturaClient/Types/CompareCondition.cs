@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ValueAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IntegerValue Value
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Value");
 			}
 		}
+		/// <summary>
+		/// Use ComparisonAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public SearchConditionComparison Comparison
 		{

@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use XpathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Xpath
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Xpath");
 			}
 		}
+		/// <summary>
+		/// Use MetadataProfileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MetadataProfileId
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataProfileId");
 			}
 		}
+		/// <summary>
+		/// Use MetadataFieldIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MetadataFieldId
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataFieldId");
 			}
 		}
+		/// <summary>
+		/// Use ValueTextAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ValueText
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ValueText");
 			}
 		}
+		/// <summary>
+		/// Use ValueIntAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ValueInt
 		{

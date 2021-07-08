@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ContentMatchPolicyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DropFolderContentFileHandlerMatchPolicy ContentMatchPolicy
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentMatchPolicy");
 			}
 		}
+		/// <summary>
+		/// Use SlugRegexAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SlugRegex
 		{

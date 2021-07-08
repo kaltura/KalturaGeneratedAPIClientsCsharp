@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use XslAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Xsl
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Xsl");
 			}
 		}
+		/// <summary>
+		/// Use FeedIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FeedId
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedId");
 			}
 		}
+		/// <summary>
+		/// Use MetadataProfileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MetadataProfileId
 		{

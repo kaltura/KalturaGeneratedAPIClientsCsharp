@@ -82,6 +82,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use CategoryIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CategoryIdEqual
 		{
@@ -92,6 +95,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use CategoryIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CategoryIdIn
 		{
@@ -102,6 +108,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryIdIn");
 			}
 		}
+		/// <summary>
+		/// Use UserIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UserIdEqual
 		{
@@ -112,6 +121,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use UserIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UserIdIn
 		{
@@ -122,6 +134,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIdIn");
 			}
 		}
+		/// <summary>
+		/// Use PermissionLevelEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public CategoryUserPermissionLevel PermissionLevelEqual
 		{
@@ -132,6 +147,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PermissionLevelEqual");
 			}
 		}
+		/// <summary>
+		/// Use PermissionLevelInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PermissionLevelIn
 		{
@@ -142,6 +160,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PermissionLevelIn");
 			}
 		}
+		/// <summary>
+		/// Use StatusEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public CategoryUserStatus StatusEqual
 		{
@@ -152,6 +173,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		/// <summary>
+		/// Use StatusInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StatusIn
 		{
@@ -162,6 +186,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
@@ -172,6 +199,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
@@ -182,6 +212,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
@@ -192,6 +225,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
@@ -202,6 +238,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use UpdateMethodEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public UpdateMethodType UpdateMethodEqual
 		{
@@ -212,6 +251,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdateMethodEqual");
 			}
 		}
+		/// <summary>
+		/// Use UpdateMethodInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UpdateMethodIn
 		{
@@ -222,6 +264,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdateMethodIn");
 			}
 		}
+		/// <summary>
+		/// Use CategoryFullIdsStartsWithAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CategoryFullIdsStartsWith
 		{
@@ -232,6 +277,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryFullIdsStartsWith");
 			}
 		}
+		/// <summary>
+		/// Use CategoryFullIdsEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CategoryFullIdsEqual
 		{
@@ -242,6 +290,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryFullIdsEqual");
 			}
 		}
+		/// <summary>
+		/// Use PermissionNamesMatchAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PermissionNamesMatchAnd
 		{
@@ -252,6 +303,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PermissionNamesMatchAnd");
 			}
 		}
+		/// <summary>
+		/// Use PermissionNamesMatchOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PermissionNamesMatchOr
 		{
@@ -262,6 +316,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PermissionNamesMatchOr");
 			}
 		}
+		/// <summary>
+		/// Use PermissionNamesNotContainsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PermissionNamesNotContains
 		{

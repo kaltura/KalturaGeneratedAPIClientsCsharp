@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use DisableExtraAttributesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? DisableExtraAttributes
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DisableExtraAttributes");
 			}
 		}
+		/// <summary>
+		/// Use ForceProxyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? ForceProxy
 		{

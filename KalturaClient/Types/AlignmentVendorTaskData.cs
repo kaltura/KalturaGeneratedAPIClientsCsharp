@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use TextTranscriptAssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TextTranscriptAssetId
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TextTranscriptAssetId");
 			}
 		}
+		/// <summary>
+		/// Use JsonTranscriptAssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string JsonTranscriptAssetId
 		{

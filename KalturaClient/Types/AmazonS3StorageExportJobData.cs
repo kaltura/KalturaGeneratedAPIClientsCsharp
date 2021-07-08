@@ -58,6 +58,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FilesPermissionInS3AsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public AmazonS3StorageProfileFilesPermissionLevel FilesPermissionInS3
 		{
@@ -68,6 +71,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FilesPermissionInS3");
 			}
 		}
+		/// <summary>
+		/// Use S3RegionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string S3Region
 		{
@@ -78,6 +84,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("S3Region");
 			}
 		}
+		/// <summary>
+		/// Use SseTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SseType
 		{
@@ -88,6 +97,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SseType");
 			}
 		}
+		/// <summary>
+		/// Use SseKmsKeyIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SseKmsKeyId
 		{
@@ -98,6 +110,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SseKmsKeyId");
 			}
 		}
+		/// <summary>
+		/// Use SignatureTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SignatureType
 		{
@@ -108,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SignatureType");
 			}
 		}
+		/// <summary>
+		/// Use EndPointAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EndPoint
 		{
@@ -118,6 +136,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndPoint");
 			}
 		}
+		/// <summary>
+		/// Use StorageClassAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StorageClass
 		{

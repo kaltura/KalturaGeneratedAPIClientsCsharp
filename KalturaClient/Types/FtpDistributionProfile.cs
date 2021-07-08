@@ -80,6 +80,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ProtocolAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DistributionProtocol Protocol
 		{
@@ -90,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Protocol");
 			}
 		}
+		/// <summary>
+		/// Use HostAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Host
 		{
@@ -100,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Host");
 			}
 		}
+		/// <summary>
+		/// Use PortAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Port
 		{
@@ -110,6 +119,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Port");
 			}
 		}
+		/// <summary>
+		/// Use BasePathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string BasePath
 		{
@@ -120,6 +132,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("BasePath");
 			}
 		}
+		/// <summary>
+		/// Use UsernameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Username
 		{
@@ -130,6 +145,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Username");
 			}
 		}
+		/// <summary>
+		/// Use PasswordAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Password
 		{
@@ -140,6 +158,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Password");
 			}
 		}
+		/// <summary>
+		/// Use PassphraseAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Passphrase
 		{
@@ -150,6 +171,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Passphrase");
 			}
 		}
+		/// <summary>
+		/// Use SftpPublicKeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SftpPublicKey
 		{
@@ -160,6 +184,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpPublicKey");
 			}
 		}
+		/// <summary>
+		/// Use SftpPrivateKeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SftpPrivateKey
 		{
@@ -170,6 +197,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpPrivateKey");
 			}
 		}
+		/// <summary>
+		/// Use DisableMetadataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? DisableMetadata
 		{
@@ -180,6 +210,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DisableMetadata");
 			}
 		}
+		/// <summary>
+		/// Use MetadataXsltAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string MetadataXslt
 		{
@@ -190,6 +223,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataXslt");
 			}
 		}
+		/// <summary>
+		/// Use MetadataFilenameXsltAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string MetadataFilenameXslt
 		{
@@ -200,6 +236,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataFilenameXslt");
 			}
 		}
+		/// <summary>
+		/// Use FlavorAssetFilenameXsltAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlavorAssetFilenameXslt
 		{
@@ -210,6 +249,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetFilenameXslt");
 			}
 		}
+		/// <summary>
+		/// Use ThumbnailAssetFilenameXsltAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ThumbnailAssetFilenameXslt
 		{
@@ -220,6 +262,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbnailAssetFilenameXslt");
 			}
 		}
+		/// <summary>
+		/// Use AssetFilenameXsltAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AssetFilenameXslt
 		{
@@ -230,6 +275,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetFilenameXslt");
 			}
 		}
+		/// <summary>
+		/// Use AsperaPublicKeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AsperaPublicKey
 		{
@@ -240,6 +288,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AsperaPublicKey");
 			}
 		}
+		/// <summary>
+		/// Use AsperaPrivateKeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AsperaPrivateKey
 		{
@@ -250,6 +301,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AsperaPrivateKey");
 			}
 		}
+		/// <summary>
+		/// Use SendMetadataAfterAssetsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? SendMetadataAfterAssets
 		{

@@ -56,6 +56,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int IdEqual
 		{
@@ -66,6 +69,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		/// <summary>
+		/// Use IdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string IdIn
 		{
@@ -76,6 +82,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		/// <summary>
+		/// Use PartnerIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerIdEqual
 		{
@@ -86,6 +95,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use PartnerIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PartnerIdIn
 		{
@@ -96,6 +108,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdIn");
 			}
 		}
+		/// <summary>
+		/// Use SystemNameEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SystemNameEqual
 		{
@@ -106,6 +121,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemNameEqual");
 			}
 		}
+		/// <summary>
+		/// Use SystemNameInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SystemNameIn
 		{

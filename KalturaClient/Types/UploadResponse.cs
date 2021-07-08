@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use UploadTokenIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UploadTokenId
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UploadTokenId");
 			}
 		}
+		/// <summary>
+		/// Use FileSizeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int FileSize
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileSize");
 			}
 		}
+		/// <summary>
+		/// Use ErrorCodeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public UploadErrorCode ErrorCode
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrorCode");
 			}
 		}
+		/// <summary>
+		/// Use ErrorDescriptionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ErrorDescription
 		{

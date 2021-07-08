@@ -62,6 +62,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use UsernameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Username
 		{
@@ -72,6 +75,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Username");
 			}
 		}
+		/// <summary>
+		/// Use PasswordAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Password
 		{
@@ -82,6 +88,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Password");
 			}
 		}
+		/// <summary>
+		/// Use DomainNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DomainName
 		{
@@ -92,6 +101,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DomainName");
 			}
 		}
+		/// <summary>
+		/// Use ChannelGuidAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ChannelGuid
 		{
@@ -102,6 +114,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelGuid");
 			}
 		}
+		/// <summary>
+		/// Use ApiHostUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ApiHostUrl
 		{
@@ -112,6 +127,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ApiHostUrl");
 			}
 		}
+		/// <summary>
+		/// Use DomainGuidAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DomainGuid
 		{
@@ -122,6 +140,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DomainGuid");
 			}
 		}
+		/// <summary>
+		/// Use AdFreeApplicationGuidAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AdFreeApplicationGuid
 		{
@@ -132,6 +153,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdFreeApplicationGuid");
 			}
 		}
+		/// <summary>
+		/// Use RemoteAssetParamsIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int RemoteAssetParamsId
 		{
@@ -142,6 +166,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RemoteAssetParamsId");
 			}
 		}
+		/// <summary>
+		/// Use StorageProfileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StorageProfileId
 		{

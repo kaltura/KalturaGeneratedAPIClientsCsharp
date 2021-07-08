@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use VideoAssetFilePathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string VideoAssetFilePath
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoAssetFilePath");
 			}
 		}
+		/// <summary>
+		/// Use ThumbAssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ThumbAssetId
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbAssetId");
 			}
 		}
+		/// <summary>
+		/// Use CaptionsInfoAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<FacebookCaptionDistributionInfo> CaptionsInfo
 		{

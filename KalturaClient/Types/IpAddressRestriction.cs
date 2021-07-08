@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IpAddressRestrictionTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IpAddressRestrictionType IpAddressRestrictionType
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IpAddressRestrictionType");
 			}
 		}
+		/// <summary>
+		/// Use IpAddressListAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string IpAddressList
 		{

@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use AggregationsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<ESearchAggregationItem> Aggregations
 		{

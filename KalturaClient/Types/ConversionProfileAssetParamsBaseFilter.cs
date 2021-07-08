@@ -64,6 +64,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ConversionProfileIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ConversionProfileIdEqual
 		{
@@ -74,6 +77,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionProfileIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use ConversionProfileIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ConversionProfileIdIn
 		{
@@ -84,6 +90,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionProfileIdIn");
 			}
 		}
+		/// <summary>
+		/// Use AssetParamsIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int AssetParamsIdEqual
 		{
@@ -94,6 +103,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetParamsIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use AssetParamsIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AssetParamsIdIn
 		{
@@ -104,6 +116,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetParamsIdIn");
 			}
 		}
+		/// <summary>
+		/// Use ReadyBehaviorEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public FlavorReadyBehaviorType ReadyBehaviorEqual
 		{
@@ -114,6 +129,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReadyBehaviorEqual");
 			}
 		}
+		/// <summary>
+		/// Use ReadyBehaviorInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ReadyBehaviorIn
 		{
@@ -124,6 +142,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReadyBehaviorIn");
 			}
 		}
+		/// <summary>
+		/// Use OriginEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public AssetParamsOrigin OriginEqual
 		{
@@ -134,6 +155,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OriginEqual");
 			}
 		}
+		/// <summary>
+		/// Use OriginInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string OriginIn
 		{
@@ -144,6 +168,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OriginIn");
 			}
 		}
+		/// <summary>
+		/// Use SystemNameEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SystemNameEqual
 		{
@@ -154,6 +181,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemNameEqual");
 			}
 		}
+		/// <summary>
+		/// Use SystemNameInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SystemNameIn
 		{

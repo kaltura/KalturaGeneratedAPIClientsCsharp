@@ -64,6 +64,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use CategoryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CategoryId
 		{
@@ -74,6 +77,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryId");
 			}
 		}
+		/// <summary>
+		/// Use UserIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UserId
 		{
@@ -84,6 +90,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserId");
 			}
 		}
+		/// <summary>
+		/// Use PartnerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -94,6 +103,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		/// <summary>
+		/// Use PermissionLevelAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public CategoryUserPermissionLevel PermissionLevel
 		{
@@ -104,6 +116,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PermissionLevel");
 			}
 		}
+		/// <summary>
+		/// Use StatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public CategoryUserStatus Status
 		{
@@ -114,6 +129,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -124,6 +142,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -134,6 +155,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
+		/// <summary>
+		/// Use UpdateMethodAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public UpdateMethodType UpdateMethod
 		{
@@ -144,6 +168,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdateMethod");
 			}
 		}
+		/// <summary>
+		/// Use CategoryFullIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CategoryFullIds
 		{
@@ -154,6 +181,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryFullIds");
 			}
 		}
+		/// <summary>
+		/// Use PermissionNamesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PermissionNames
 		{

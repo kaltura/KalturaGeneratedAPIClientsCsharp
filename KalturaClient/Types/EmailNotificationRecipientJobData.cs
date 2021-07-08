@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ProviderTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EmailNotificationRecipientProviderType ProviderType
 		{

@@ -97,11 +97,14 @@ namespace Kaltura.Types
 		private int _LinkedIdEqual = Int32.MinValue;
 		private int _LinkCountGreaterThanOrEqual = Int32.MinValue;
 		private int _LinkCountLessThanOrEqual = Int32.MinValue;
-		private float _FileSizeGreaterThanOrEqual = Single.MinValue;
-		private float _FileSizeLessThanOrEqual = Single.MinValue;
+		private double _FileSizeGreaterThanOrEqual = Double.MinValue;
+		private double _FileSizeLessThanOrEqual = Double.MinValue;
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use PartnerIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerIdEqual
 		{
@@ -112,6 +115,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use FileObjectTypeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public FileSyncObjectType FileObjectTypeEqual
 		{
@@ -122,6 +128,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileObjectTypeEqual");
 			}
 		}
+		/// <summary>
+		/// Use FileObjectTypeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FileObjectTypeIn
 		{
@@ -132,6 +141,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileObjectTypeIn");
 			}
 		}
+		/// <summary>
+		/// Use ObjectIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ObjectIdEqual
 		{
@@ -142,6 +154,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use ObjectIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ObjectIdIn
 		{
@@ -152,6 +167,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectIdIn");
 			}
 		}
+		/// <summary>
+		/// Use VersionEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string VersionEqual
 		{
@@ -162,6 +180,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VersionEqual");
 			}
 		}
+		/// <summary>
+		/// Use VersionInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string VersionIn
 		{
@@ -172,6 +193,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VersionIn");
 			}
 		}
+		/// <summary>
+		/// Use ObjectSubTypeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ObjectSubTypeEqual
 		{
@@ -182,6 +206,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectSubTypeEqual");
 			}
 		}
+		/// <summary>
+		/// Use ObjectSubTypeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ObjectSubTypeIn
 		{
@@ -192,6 +219,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectSubTypeIn");
 			}
 		}
+		/// <summary>
+		/// Use DcEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DcEqual
 		{
@@ -202,6 +232,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DcEqual");
 			}
 		}
+		/// <summary>
+		/// Use DcInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DcIn
 		{
@@ -212,6 +245,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DcIn");
 			}
 		}
+		/// <summary>
+		/// Use OriginalEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int OriginalEqual
 		{
@@ -222,6 +258,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OriginalEqual");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
@@ -232,6 +271,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
@@ -242,6 +284,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
@@ -252,6 +297,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
@@ -262,6 +310,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use ReadyAtGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ReadyAtGreaterThanOrEqual
 		{
@@ -272,6 +323,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReadyAtGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use ReadyAtLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ReadyAtLessThanOrEqual
 		{
@@ -282,6 +336,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReadyAtLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use SyncTimeGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int SyncTimeGreaterThanOrEqual
 		{
@@ -292,6 +349,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SyncTimeGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use SyncTimeLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int SyncTimeLessThanOrEqual
 		{
@@ -302,6 +362,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SyncTimeLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use StatusEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public FileSyncStatus StatusEqual
 		{
@@ -312,6 +375,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		/// <summary>
+		/// Use StatusInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StatusIn
 		{
@@ -322,6 +388,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		/// <summary>
+		/// Use FileTypeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public FileSyncType FileTypeEqual
 		{
@@ -332,6 +401,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileTypeEqual");
 			}
 		}
+		/// <summary>
+		/// Use FileTypeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FileTypeIn
 		{
@@ -342,6 +414,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileTypeIn");
 			}
 		}
+		/// <summary>
+		/// Use LinkedIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LinkedIdEqual
 		{
@@ -352,6 +427,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LinkedIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use LinkCountGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LinkCountGreaterThanOrEqual
 		{
@@ -362,6 +440,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LinkCountGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use LinkCountLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LinkCountLessThanOrEqual
 		{
@@ -372,8 +453,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("LinkCountLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use FileSizeGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use FileSizeGreaterThanOrEqualAsDouble property instead")]
 		public float FileSizeGreaterThanOrEqual
+		{
+			get { return (float)_FileSizeGreaterThanOrEqual; }
+			set 
+			{ 
+				_FileSizeGreaterThanOrEqual = value;
+				OnPropertyChanged("FileSizeGreaterThanOrEqual");
+			}
+		}
+		///<summary>
+		///Use this property FileSizeGreaterThanOrEqualAsDouble instead of the float FileSizeGreaterThanOrEqual property version
+		///</summary>
+		[JsonProperty]
+		public double FileSizeGreaterThanOrEqualAsDouble
 		{
 			get { return _FileSizeGreaterThanOrEqual; }
 			set 
@@ -382,8 +480,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileSizeGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use FileSizeLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use FileSizeLessThanOrEqualAsDouble property instead")]
 		public float FileSizeLessThanOrEqual
+		{
+			get { return (float)_FileSizeLessThanOrEqual; }
+			set 
+			{ 
+				_FileSizeLessThanOrEqual = value;
+				OnPropertyChanged("FileSizeLessThanOrEqual");
+			}
+		}
+		///<summary>
+		///Use this property FileSizeLessThanOrEqualAsDouble instead of the float FileSizeLessThanOrEqual property version
+		///</summary>
+		[JsonProperty]
+		public double FileSizeLessThanOrEqualAsDouble
 		{
 			get { return _FileSizeLessThanOrEqual; }
 			set 
@@ -511,11 +626,11 @@ namespace Kaltura.Types
 			}
 			if(node["fileSizeGreaterThanOrEqual"] != null)
 			{
-				this._FileSizeGreaterThanOrEqual = ParseFloat(node["fileSizeGreaterThanOrEqual"].Value<string>());
+				this._FileSizeGreaterThanOrEqual = ParseDouble(node["fileSizeGreaterThanOrEqual"].Value<string>());
 			}
 			if(node["fileSizeLessThanOrEqual"] != null)
 			{
-				this._FileSizeLessThanOrEqual = ParseFloat(node["fileSizeLessThanOrEqual"].Value<string>());
+				this._FileSizeLessThanOrEqual = ParseDouble(node["fileSizeLessThanOrEqual"].Value<string>());
 			}
 		}
 		#endregion

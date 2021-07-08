@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use LiveEntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string LiveEntryId
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LiveEntryId");
 			}
 		}
+		/// <summary>
+		/// Use VodEntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string VodEntryId
 		{

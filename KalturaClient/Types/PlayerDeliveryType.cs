@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Id
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		/// <summary>
+		/// Use LabelAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Label
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Label");
 			}
 		}
+		/// <summary>
+		/// Use FlashvarsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> Flashvars
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Flashvars");
 			}
 		}
+		/// <summary>
+		/// Use MinVersionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string MinVersion
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MinVersion");
 			}
 		}
+		/// <summary>
+		/// Use EnabledByDefaultAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? EnabledByDefault
 		{

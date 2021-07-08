@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use SearchOperatorAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ESearchEntryOperator SearchOperator
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SearchOperator");
 			}
 		}
+		/// <summary>
+		/// Use AggregationsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ESearchAggregation Aggregations
 		{

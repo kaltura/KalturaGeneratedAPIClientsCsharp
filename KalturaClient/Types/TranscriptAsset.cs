@@ -45,15 +45,32 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Private Fields
-		private float _Accuracy = Single.MinValue;
+		private double _Accuracy = Double.MinValue;
 		private NullableBoolean _HumanVerified = (NullableBoolean)Int32.MinValue;
 		private Language _Language = null;
 		private TranscriptProviderType _ProviderType = null;
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use AccuracyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use AccuracyAsDouble property instead")]
 		public float Accuracy
+		{
+			get { return (float)_Accuracy; }
+			set 
+			{ 
+				_Accuracy = value;
+				OnPropertyChanged("Accuracy");
+			}
+		}
+		///<summary>
+		///Use this property AccuracyAsDouble instead of the float Accuracy property version
+		///</summary>
+		[JsonProperty]
+		public double AccuracyAsDouble
 		{
 			get { return _Accuracy; }
 			set 
@@ -62,6 +79,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Accuracy");
 			}
 		}
+		/// <summary>
+		/// Use HumanVerifiedAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean HumanVerified
 		{
@@ -72,6 +92,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("HumanVerified");
 			}
 		}
+		/// <summary>
+		/// Use LanguageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public Language Language
 		{
@@ -82,6 +105,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Language");
 			}
 		}
+		/// <summary>
+		/// Use ProviderTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public TranscriptProviderType ProviderType
 		{
@@ -103,7 +129,7 @@ namespace Kaltura.Types
 		{
 			if(node["accuracy"] != null)
 			{
-				this._Accuracy = ParseFloat(node["accuracy"].Value<string>());
+				this._Accuracy = ParseDouble(node["accuracy"].Value<string>());
 			}
 			if(node["humanVerified"] != null)
 			{

@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use HashAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Hash
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Hash");
 			}
 		}
+		/// <summary>
+		/// Use FeedXmlPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FeedXmlPath
 		{

@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use XmlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Xml
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Xml");
 			}
 		}
+		/// <summary>
+		/// Use ResultParseDataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ResultParseData
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ResultParseData");
 			}
 		}
+		/// <summary>
+		/// Use ResultParserTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public GenericDistributionProviderParser ResultParserType
 		{

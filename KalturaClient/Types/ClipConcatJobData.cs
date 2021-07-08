@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use PartnerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		/// <summary>
+		/// Use PriorityAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Priority
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Priority");
 			}
 		}
+		/// <summary>
+		/// Use OperationAttributesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<OperationAttributes> OperationAttributes
 		{

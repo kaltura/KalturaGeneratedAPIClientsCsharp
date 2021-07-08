@@ -66,6 +66,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdOrScreenNameStartsWithAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string IdOrScreenNameStartsWith
 		{
@@ -76,6 +79,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdOrScreenNameStartsWith");
 			}
 		}
+		/// <summary>
+		/// Use IdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string IdEqual
 		{
@@ -86,6 +92,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		/// <summary>
+		/// Use IdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string IdIn
 		{
@@ -96,6 +105,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		/// <summary>
+		/// Use LoginEnabledEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean LoginEnabledEqual
 		{
@@ -106,6 +118,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LoginEnabledEqual");
 			}
 		}
+		/// <summary>
+		/// Use RoleIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RoleIdEqual
 		{
@@ -116,6 +131,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RoleIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use RoleIdsEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RoleIdsEqual
 		{
@@ -126,6 +144,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RoleIdsEqual");
 			}
 		}
+		/// <summary>
+		/// Use RoleIdsInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RoleIdsIn
 		{
@@ -136,6 +157,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RoleIdsIn");
 			}
 		}
+		/// <summary>
+		/// Use FirstNameOrLastNameStartsWithAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FirstNameOrLastNameStartsWith
 		{
@@ -146,6 +170,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FirstNameOrLastNameStartsWith");
 			}
 		}
+		/// <summary>
+		/// Use PermissionNamesMultiLikeOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PermissionNamesMultiLikeOr
 		{
@@ -156,6 +183,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PermissionNamesMultiLikeOr");
 			}
 		}
+		/// <summary>
+		/// Use PermissionNamesMultiLikeAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PermissionNamesMultiLikeAnd
 		{
@@ -166,6 +196,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PermissionNamesMultiLikeAnd");
 			}
 		}
+		/// <summary>
+		/// Use OrderByAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public new UserOrderBy OrderBy
 		{

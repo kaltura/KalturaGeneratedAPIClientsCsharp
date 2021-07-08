@@ -64,6 +64,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ParentIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ParentIdEqual
 		{
@@ -74,6 +77,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use ParentIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ParentIdIn
 		{
@@ -84,6 +90,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentIdIn");
 			}
 		}
+		/// <summary>
+		/// Use TextLikeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TextLike
 		{
@@ -94,6 +103,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TextLike");
 			}
 		}
+		/// <summary>
+		/// Use TextMultiLikeOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TextMultiLikeOr
 		{
@@ -104,6 +116,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TextMultiLikeOr");
 			}
 		}
+		/// <summary>
+		/// Use TextMultiLikeAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TextMultiLikeAnd
 		{
@@ -114,6 +129,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TextMultiLikeAnd");
 			}
 		}
+		/// <summary>
+		/// Use EndTimeGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int EndTimeGreaterThanOrEqual
 		{
@@ -124,6 +142,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndTimeGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use EndTimeLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int EndTimeLessThanOrEqual
 		{
@@ -134,6 +155,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndTimeLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use DurationGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int DurationGreaterThanOrEqual
 		{
@@ -144,6 +168,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DurationGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use DurationLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int DurationLessThanOrEqual
 		{
@@ -154,6 +181,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DurationLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use IsPublicEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean IsPublicEqual
 		{

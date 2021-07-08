@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use DimensionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Dimension
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Dimension");
 			}
 		}
+		/// <summary>
+		/// Use ValuesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Values
 		{

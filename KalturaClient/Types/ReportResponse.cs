@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ColumnsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Columns
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Columns");
 			}
 		}
+		/// <summary>
+		/// Use ResultsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<String> Results
 		{

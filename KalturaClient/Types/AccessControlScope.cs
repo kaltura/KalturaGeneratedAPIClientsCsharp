@@ -58,6 +58,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ReferrerAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Referrer
 		{
@@ -68,6 +71,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Referrer");
 			}
 		}
+		/// <summary>
+		/// Use IpAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Ip
 		{
@@ -78,6 +84,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Ip");
 			}
 		}
+		/// <summary>
+		/// Use KsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Ks
 		{
@@ -88,6 +97,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Ks");
 			}
 		}
+		/// <summary>
+		/// Use UserAgentAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UserAgent
 		{
@@ -98,6 +110,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserAgent");
 			}
 		}
+		/// <summary>
+		/// Use TimeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Time
 		{
@@ -108,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Time");
 			}
 		}
+		/// <summary>
+		/// Use ContextsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<AccessControlContextTypeHolder> Contexts
 		{
@@ -118,6 +136,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Contexts");
 			}
 		}
+		/// <summary>
+		/// Use HashesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> Hashes
 		{

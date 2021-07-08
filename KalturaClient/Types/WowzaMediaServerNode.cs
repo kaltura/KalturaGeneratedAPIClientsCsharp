@@ -56,6 +56,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use AppPrefixAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AppPrefix
 		{
@@ -66,6 +69,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AppPrefix");
 			}
 		}
+		/// <summary>
+		/// Use TranscoderAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Transcoder
 		{
@@ -76,6 +82,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Transcoder");
 			}
 		}
+		/// <summary>
+		/// Use GPUIDAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int GPUID
 		{
@@ -86,6 +95,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("GPUID");
 			}
 		}
+		/// <summary>
+		/// Use LiveServicePortAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LiveServicePort
 		{
@@ -96,6 +108,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LiveServicePort");
 			}
 		}
+		/// <summary>
+		/// Use LiveServiceProtocolAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string LiveServiceProtocol
 		{
@@ -106,6 +121,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LiveServiceProtocol");
 			}
 		}
+		/// <summary>
+		/// Use LiveServiceInternalDomainAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string LiveServiceInternalDomain
 		{

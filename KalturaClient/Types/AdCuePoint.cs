@@ -56,6 +56,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ProtocolTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public AdProtocolType ProtocolType
 		{
@@ -66,6 +69,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProtocolType");
 			}
 		}
+		/// <summary>
+		/// Use SourceUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SourceUrl
 		{
@@ -76,6 +82,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceUrl");
 			}
 		}
+		/// <summary>
+		/// Use AdTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public AdType AdType
 		{
@@ -86,6 +95,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdType");
 			}
 		}
+		/// <summary>
+		/// Use TitleAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Title
 		{
@@ -96,6 +108,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Title");
 			}
 		}
+		/// <summary>
+		/// Use EndTimeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int EndTime
 		{
@@ -106,6 +121,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndTime");
 			}
 		}
+		/// <summary>
+		/// Use DurationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Duration
 		{

@@ -76,6 +76,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use TypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public UserType Type
 		{
@@ -86,6 +89,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		/// <summary>
+		/// Use DateOfBirthAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int DateOfBirth
 		{
@@ -96,6 +102,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DateOfBirth");
 			}
 		}
+		/// <summary>
+		/// Use GenderAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public Gender Gender
 		{
@@ -106,6 +115,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Gender");
 			}
 		}
+		/// <summary>
+		/// Use IsAdminAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? IsAdmin
 		{
@@ -116,6 +128,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsAdmin");
 			}
 		}
+		/// <summary>
+		/// Use RoleIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RoleIds
 		{
@@ -126,6 +141,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RoleIds");
 			}
 		}
+		/// <summary>
+		/// Use RoleNamesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RoleNames
 		{
@@ -136,6 +154,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RoleNames");
 			}
 		}
+		/// <summary>
+		/// Use IsAccountOwnerAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? IsAccountOwner
 		{
@@ -146,6 +167,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsAccountOwner");
 			}
 		}
+		/// <summary>
+		/// Use PasswordAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Password
 		{
@@ -155,6 +179,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Password");
 			}
 		}
+		/// <summary>
+		/// Use FirstNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FirstName
 		{
@@ -165,6 +192,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FirstName");
 			}
 		}
+		/// <summary>
+		/// Use LastNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string LastName
 		{
@@ -175,6 +205,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastName");
 			}
 		}
+		/// <summary>
+		/// Use LoginEnabledAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? LoginEnabled
 		{
@@ -185,6 +218,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LoginEnabled");
 			}
 		}
+		/// <summary>
+		/// Use RegistrationInfoAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RegistrationInfo
 		{
@@ -195,6 +231,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RegistrationInfo");
 			}
 		}
+		/// <summary>
+		/// Use AttendanceInfoAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AttendanceInfo
 		{
@@ -205,6 +244,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AttendanceInfo");
 			}
 		}
+		/// <summary>
+		/// Use TitleAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Title
 		{
@@ -215,6 +257,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Title");
 			}
 		}
+		/// <summary>
+		/// Use CompanyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Company
 		{
@@ -225,6 +270,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Company");
 			}
 		}
+		/// <summary>
+		/// Use KsPrivilegesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string KsPrivileges
 		{

@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use CategoryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CategoryId
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryId");
 			}
 		}
+		/// <summary>
+		/// Use LastUpdatedCategoryEntryCreatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LastUpdatedCategoryEntryCreatedAt
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastUpdatedCategoryEntryCreatedAt");
 			}
 		}
+		/// <summary>
+		/// Use LastUpdatedCategoryCreatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LastUpdatedCategoryCreatedAt
 		{

@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ApplicationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Application
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Application");
 			}
 		}
+		/// <summary>
+		/// Use UserIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UserIds
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIds");
 			}
 		}
+		/// <summary>
+		/// Use PlaybackContextAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PlaybackContext
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PlaybackContext");
 			}
 		}
+		/// <summary>
+		/// Use AncestorPlaybackContextAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AncestorPlaybackContext
 		{

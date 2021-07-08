@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use OutputFormatAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VendorCatalogItemOutputFormat OutputFormat
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OutputFormat");
 			}
 		}
+		/// <summary>
+		/// Use EnableSpeakerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean EnableSpeakerId
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EnableSpeakerId");
 			}
 		}
+		/// <summary>
+		/// Use FixedPriceAddonsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int FixedPriceAddons
 		{

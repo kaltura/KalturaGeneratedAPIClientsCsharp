@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use SyncModeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public WidevineRepositorySyncMode SyncMode
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SyncMode");
 			}
 		}
+		/// <summary>
+		/// Use WvAssetIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string WvAssetIds
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("WvAssetIds");
 			}
 		}
+		/// <summary>
+		/// Use ModifiedAttributesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ModifiedAttributes
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ModifiedAttributes");
 			}
 		}
+		/// <summary>
+		/// Use MonitorSyncCompletionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MonitorSyncCompletion
 		{

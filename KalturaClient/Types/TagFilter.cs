@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ObjectTypeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public TaggedObjectType ObjectTypeEqual
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectTypeEqual");
 			}
 		}
+		/// <summary>
+		/// Use TagEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TagEqual
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagEqual");
 			}
 		}
+		/// <summary>
+		/// Use TagStartsWithAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TagStartsWith
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagStartsWith");
 			}
 		}
+		/// <summary>
+		/// Use InstanceCountEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int InstanceCountEqual
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("InstanceCountEqual");
 			}
 		}
+		/// <summary>
+		/// Use InstanceCountInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int InstanceCountIn
 		{

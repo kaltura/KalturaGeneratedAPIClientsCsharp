@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FieldNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ESearchCategoryUserFieldName FieldName
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FieldName");
 			}
 		}
+		/// <summary>
+		/// Use PermissionLevelAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public CategoryUserPermissionLevel PermissionLevel
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PermissionLevel");
 			}
 		}
+		/// <summary>
+		/// Use PermissionNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PermissionName
 		{

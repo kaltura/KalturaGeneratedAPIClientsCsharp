@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use HostAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Host
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Host");
 			}
 		}
+		/// <summary>
+		/// Use CpcodeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Cpcode
 		{

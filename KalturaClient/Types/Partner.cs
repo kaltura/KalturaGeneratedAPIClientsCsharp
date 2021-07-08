@@ -106,6 +106,12 @@ namespace Kaltura.Types
 		public const string USAGE_LIMIT_WARNING = "usageLimitWarning";
 		public const string LAST_FREE_TRIAL_NOTIFICATION_DAY = "lastFreeTrialNotificationDay";
 		public const string MONITOR_USAGE = "monitorUsage";
+		public const string PASSWORD_STRUCTURE_VALIDATIONS = "passwordStructureValidations";
+		public const string PASSWORD_STRUCTURE_VALIDATIONS_DESCRIPTION = "passwordStructureValidationsDescription";
+		public const string PASS_REPLACE_FREQ = "passReplaceFreq";
+		public const string MAX_LOGIN_ATTEMPTS = "maxLoginAttempts";
+		public const string LOGIN_BLOCK_PERIOD = "loginBlockPeriod";
+		public const string NUM_PREV_PASS_TO_KEEP = "numPrevPassToKeep";
 		#endregion
 
 		#region Private Fields
@@ -177,9 +183,18 @@ namespace Kaltura.Types
 		private int _UsageLimitWarning = Int32.MinValue;
 		private int _LastFreeTrialNotificationDay = Int32.MinValue;
 		private int _MonitorUsage = Int32.MinValue;
+		private string _PasswordStructureValidations = null;
+		private string _PasswordStructureValidationsDescription = null;
+		private int _PassReplaceFreq = Int32.MinValue;
+		private int _MaxLoginAttempts = Int32.MinValue;
+		private int _LoginBlockPeriod = Int32.MinValue;
+		private int _NumPrevPassToKeep = Int32.MinValue;
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Id
 		{
@@ -190,6 +205,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		/// <summary>
+		/// Use NameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -200,6 +218,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		/// <summary>
+		/// Use WebsiteAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Website
 		{
@@ -210,6 +231,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Website");
 			}
 		}
+		/// <summary>
+		/// Use NotificationUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string NotificationUrl
 		{
@@ -220,6 +244,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("NotificationUrl");
 			}
 		}
+		/// <summary>
+		/// Use AppearInSearchAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int AppearInSearch
 		{
@@ -230,6 +257,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AppearInSearch");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -240,6 +270,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
+		/// <summary>
+		/// Use AdminNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AdminName
 		{
@@ -250,6 +283,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdminName");
 			}
 		}
+		/// <summary>
+		/// Use AdminEmailAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AdminEmail
 		{
@@ -260,6 +296,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdminEmail");
 			}
 		}
+		/// <summary>
+		/// Use DescriptionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Description
 		{
@@ -270,6 +309,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		/// <summary>
+		/// Use CommercialUseAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public CommercialUseType CommercialUse
 		{
@@ -280,6 +322,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CommercialUse");
 			}
 		}
+		/// <summary>
+		/// Use LandingPageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string LandingPage
 		{
@@ -290,6 +335,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LandingPage");
 			}
 		}
+		/// <summary>
+		/// Use UserLandingPageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UserLandingPage
 		{
@@ -300,6 +348,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserLandingPage");
 			}
 		}
+		/// <summary>
+		/// Use ContentCategoriesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ContentCategories
 		{
@@ -310,6 +361,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentCategories");
 			}
 		}
+		/// <summary>
+		/// Use TypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public PartnerType Type
 		{
@@ -320,6 +374,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		/// <summary>
+		/// Use PhoneAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Phone
 		{
@@ -330,6 +387,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Phone");
 			}
 		}
+		/// <summary>
+		/// Use DescribeYourselfAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DescribeYourself
 		{
@@ -340,6 +400,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DescribeYourself");
 			}
 		}
+		/// <summary>
+		/// Use AdultContentAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? AdultContent
 		{
@@ -350,6 +413,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdultContent");
 			}
 		}
+		/// <summary>
+		/// Use DefConversionProfileTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DefConversionProfileType
 		{
@@ -360,6 +426,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DefConversionProfileType");
 			}
 		}
+		/// <summary>
+		/// Use NotifyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Notify
 		{
@@ -370,6 +439,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Notify");
 			}
 		}
+		/// <summary>
+		/// Use StatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public PartnerStatus Status
 		{
@@ -380,6 +452,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		/// <summary>
+		/// Use AllowQuickEditAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int AllowQuickEdit
 		{
@@ -390,6 +465,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowQuickEdit");
 			}
 		}
+		/// <summary>
+		/// Use MergeEntryListsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MergeEntryLists
 		{
@@ -400,6 +478,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MergeEntryLists");
 			}
 		}
+		/// <summary>
+		/// Use NotificationsConfigAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string NotificationsConfig
 		{
@@ -410,6 +491,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("NotificationsConfig");
 			}
 		}
+		/// <summary>
+		/// Use AllowedFromEmailWhiteListAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AllowedFromEmailWhiteList
 		{
@@ -420,6 +504,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowedFromEmailWhiteList");
 			}
 		}
+		/// <summary>
+		/// Use MaxUploadSizeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MaxUploadSize
 		{
@@ -430,6 +517,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MaxUploadSize");
 			}
 		}
+		/// <summary>
+		/// Use PartnerPackageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerPackage
 		{
@@ -440,6 +530,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerPackage");
 			}
 		}
+		/// <summary>
+		/// Use SecretAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Secret
 		{
@@ -450,6 +543,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Secret");
 			}
 		}
+		/// <summary>
+		/// Use AdminSecretAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AdminSecret
 		{
@@ -460,6 +556,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdminSecret");
 			}
 		}
+		/// <summary>
+		/// Use CmsPasswordAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CmsPassword
 		{
@@ -470,6 +569,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CmsPassword");
 			}
 		}
+		/// <summary>
+		/// Use AllowMultiNotificationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int AllowMultiNotification
 		{
@@ -480,6 +582,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowMultiNotification");
 			}
 		}
+		/// <summary>
+		/// Use AdminLoginUsersQuotaAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int AdminLoginUsersQuota
 		{
@@ -490,6 +595,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdminLoginUsersQuota");
 			}
 		}
+		/// <summary>
+		/// Use AdminUserIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AdminUserId
 		{
@@ -500,6 +608,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdminUserId");
 			}
 		}
+		/// <summary>
+		/// Use FirstNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FirstName
 		{
@@ -510,6 +621,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FirstName");
 			}
 		}
+		/// <summary>
+		/// Use LastNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string LastName
 		{
@@ -520,6 +634,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastName");
 			}
 		}
+		/// <summary>
+		/// Use CountryAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Country
 		{
@@ -530,6 +647,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Country");
 			}
 		}
+		/// <summary>
+		/// Use StateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string State
 		{
@@ -540,6 +660,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("State");
 			}
 		}
+		/// <summary>
+		/// Use AdditionalParamsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> AdditionalParams
 		{
@@ -550,6 +673,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdditionalParams");
 			}
 		}
+		/// <summary>
+		/// Use PublishersQuotaAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PublishersQuota
 		{
@@ -560,6 +686,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PublishersQuota");
 			}
 		}
+		/// <summary>
+		/// Use PartnerGroupTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public PartnerGroupType PartnerGroupType
 		{
@@ -570,6 +699,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerGroupType");
 			}
 		}
+		/// <summary>
+		/// Use DefaultEntitlementEnforcementAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? DefaultEntitlementEnforcement
 		{
@@ -580,6 +712,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DefaultEntitlementEnforcement");
 			}
 		}
+		/// <summary>
+		/// Use DefaultDeliveryTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DefaultDeliveryType
 		{
@@ -590,6 +725,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DefaultDeliveryType");
 			}
 		}
+		/// <summary>
+		/// Use DefaultEmbedCodeTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DefaultEmbedCodeType
 		{
@@ -600,6 +738,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DefaultEmbedCodeType");
 			}
 		}
+		/// <summary>
+		/// Use DeliveryTypesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<PlayerDeliveryType> DeliveryTypes
 		{
@@ -610,6 +751,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeliveryTypes");
 			}
 		}
+		/// <summary>
+		/// Use EmbedCodeTypesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<PlayerEmbedCodeType> EmbedCodeTypes
 		{
@@ -620,6 +764,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EmbedCodeTypes");
 			}
 		}
+		/// <summary>
+		/// Use TemplatePartnerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int TemplatePartnerId
 		{
@@ -630,6 +777,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplatePartnerId");
 			}
 		}
+		/// <summary>
+		/// Use IgnoreSeoLinksAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? IgnoreSeoLinks
 		{
@@ -640,6 +790,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IgnoreSeoLinks");
 			}
 		}
+		/// <summary>
+		/// Use BlockDirectLoginAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? BlockDirectLogin
 		{
@@ -650,6 +803,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("BlockDirectLogin");
 			}
 		}
+		/// <summary>
+		/// Use HostAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Host
 		{
@@ -660,6 +816,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Host");
 			}
 		}
+		/// <summary>
+		/// Use CdnHostAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CdnHost
 		{
@@ -670,6 +829,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CdnHost");
 			}
 		}
+		/// <summary>
+		/// Use IsFirstLoginAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? IsFirstLogin
 		{
@@ -680,6 +842,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsFirstLogin");
 			}
 		}
+		/// <summary>
+		/// Use LogoutUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string LogoutUrl
 		{
@@ -690,6 +855,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LogoutUrl");
 			}
 		}
+		/// <summary>
+		/// Use PartnerParentIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerParentId
 		{
@@ -700,6 +868,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerParentId");
 			}
 		}
+		/// <summary>
+		/// Use CrmIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CrmId
 		{
@@ -710,6 +881,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CrmId");
 			}
 		}
+		/// <summary>
+		/// Use ReferenceIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ReferenceId
 		{
@@ -720,6 +894,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReferenceId");
 			}
 		}
+		/// <summary>
+		/// Use TimeAlignedRenditionsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? TimeAlignedRenditions
 		{
@@ -730,6 +907,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TimeAlignedRenditions");
 			}
 		}
+		/// <summary>
+		/// Use PublisherEnvironmentTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PublisherEnvironmentType
 		{
@@ -740,6 +920,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PublisherEnvironmentType");
 			}
 		}
+		/// <summary>
+		/// Use OvpEnvironmentUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string OvpEnvironmentUrl
 		{
@@ -750,6 +933,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OvpEnvironmentUrl");
 			}
 		}
+		/// <summary>
+		/// Use OttEnvironmentUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string OttEnvironmentUrl
 		{
@@ -760,6 +946,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OttEnvironmentUrl");
 			}
 		}
+		/// <summary>
+		/// Use ESearchLanguagesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<ESearchLanguageItem> ESearchLanguages
 		{
@@ -770,6 +959,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ESearchLanguages");
 			}
 		}
+		/// <summary>
+		/// Use AuthenticationTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public PartnerAuthenticationType AuthenticationType
 		{
@@ -780,6 +972,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AuthenticationType");
 			}
 		}
+		/// <summary>
+		/// Use ExtendedFreeTrailExpiryReasonAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ExtendedFreeTrailExpiryReason
 		{
@@ -790,6 +985,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExtendedFreeTrailExpiryReason");
 			}
 		}
+		/// <summary>
+		/// Use ExtendedFreeTrailExpiryDateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ExtendedFreeTrailExpiryDate
 		{
@@ -800,6 +998,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExtendedFreeTrailExpiryDate");
 			}
 		}
+		/// <summary>
+		/// Use ExtendedFreeTrailAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ExtendedFreeTrail
 		{
@@ -810,6 +1011,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExtendedFreeTrail");
 			}
 		}
+		/// <summary>
+		/// Use ExtendedFreeTrailEndsWarningAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? ExtendedFreeTrailEndsWarning
 		{
@@ -820,6 +1024,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExtendedFreeTrailEndsWarning");
 			}
 		}
+		/// <summary>
+		/// Use EightyPercentWarningAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int EightyPercentWarning
 		{
@@ -830,6 +1037,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EightyPercentWarning");
 			}
 		}
+		/// <summary>
+		/// Use UsageLimitWarningAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UsageLimitWarning
 		{
@@ -840,6 +1050,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UsageLimitWarning");
 			}
 		}
+		/// <summary>
+		/// Use LastFreeTrialNotificationDayAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LastFreeTrialNotificationDay
 		{
@@ -850,6 +1063,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastFreeTrialNotificationDay");
 			}
 		}
+		/// <summary>
+		/// Use MonitorUsageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MonitorUsage
 		{
@@ -858,6 +1074,84 @@ namespace Kaltura.Types
 			{ 
 				_MonitorUsage = value;
 				OnPropertyChanged("MonitorUsage");
+			}
+		}
+		/// <summary>
+		/// Use PasswordStructureValidationsAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public string PasswordStructureValidations
+		{
+			get { return _PasswordStructureValidations; }
+			set 
+			{ 
+				_PasswordStructureValidations = value;
+				OnPropertyChanged("PasswordStructureValidations");
+			}
+		}
+		/// <summary>
+		/// Use PasswordStructureValidationsDescriptionAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public string PasswordStructureValidationsDescription
+		{
+			get { return _PasswordStructureValidationsDescription; }
+			set 
+			{ 
+				_PasswordStructureValidationsDescription = value;
+				OnPropertyChanged("PasswordStructureValidationsDescription");
+			}
+		}
+		/// <summary>
+		/// Use PassReplaceFreqAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public int PassReplaceFreq
+		{
+			get { return _PassReplaceFreq; }
+			set 
+			{ 
+				_PassReplaceFreq = value;
+				OnPropertyChanged("PassReplaceFreq");
+			}
+		}
+		/// <summary>
+		/// Use MaxLoginAttemptsAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public int MaxLoginAttempts
+		{
+			get { return _MaxLoginAttempts; }
+			set 
+			{ 
+				_MaxLoginAttempts = value;
+				OnPropertyChanged("MaxLoginAttempts");
+			}
+		}
+		/// <summary>
+		/// Use LoginBlockPeriodAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public int LoginBlockPeriod
+		{
+			get { return _LoginBlockPeriod; }
+			set 
+			{ 
+				_LoginBlockPeriod = value;
+				OnPropertyChanged("LoginBlockPeriod");
+			}
+		}
+		/// <summary>
+		/// Use NumPrevPassToKeepAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public int NumPrevPassToKeep
+		{
+			get { return _NumPrevPassToKeep; }
+			set 
+			{ 
+				_NumPrevPassToKeep = value;
+				OnPropertyChanged("NumPrevPassToKeep");
 			}
 		}
 		#endregion
@@ -1157,6 +1451,30 @@ namespace Kaltura.Types
 			{
 				this._MonitorUsage = ParseInt(node["monitorUsage"].Value<string>());
 			}
+			if(node["passwordStructureValidations"] != null)
+			{
+				this._PasswordStructureValidations = node["passwordStructureValidations"].Value<string>();
+			}
+			if(node["passwordStructureValidationsDescription"] != null)
+			{
+				this._PasswordStructureValidationsDescription = node["passwordStructureValidationsDescription"].Value<string>();
+			}
+			if(node["passReplaceFreq"] != null)
+			{
+				this._PassReplaceFreq = ParseInt(node["passReplaceFreq"].Value<string>());
+			}
+			if(node["maxLoginAttempts"] != null)
+			{
+				this._MaxLoginAttempts = ParseInt(node["maxLoginAttempts"].Value<string>());
+			}
+			if(node["loginBlockPeriod"] != null)
+			{
+				this._LoginBlockPeriod = ParseInt(node["loginBlockPeriod"].Value<string>());
+			}
+			if(node["numPrevPassToKeep"] != null)
+			{
+				this._NumPrevPassToKeep = ParseInt(node["numPrevPassToKeep"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -1234,6 +1552,12 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("usageLimitWarning", this._UsageLimitWarning);
 			kparams.AddIfNotNull("lastFreeTrialNotificationDay", this._LastFreeTrialNotificationDay);
 			kparams.AddIfNotNull("monitorUsage", this._MonitorUsage);
+			kparams.AddIfNotNull("passwordStructureValidations", this._PasswordStructureValidations);
+			kparams.AddIfNotNull("passwordStructureValidationsDescription", this._PasswordStructureValidationsDescription);
+			kparams.AddIfNotNull("passReplaceFreq", this._PassReplaceFreq);
+			kparams.AddIfNotNull("maxLoginAttempts", this._MaxLoginAttempts);
+			kparams.AddIfNotNull("loginBlockPeriod", this._LoginBlockPeriod);
+			kparams.AddIfNotNull("numPrevPassToKeep", this._NumPrevPassToKeep);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -1376,6 +1700,18 @@ namespace Kaltura.Types
 					return "LastFreeTrialNotificationDay";
 				case MONITOR_USAGE:
 					return "MonitorUsage";
+				case PASSWORD_STRUCTURE_VALIDATIONS:
+					return "PasswordStructureValidations";
+				case PASSWORD_STRUCTURE_VALIDATIONS_DESCRIPTION:
+					return "PasswordStructureValidationsDescription";
+				case PASS_REPLACE_FREQ:
+					return "PassReplaceFreq";
+				case MAX_LOGIN_ATTEMPTS:
+					return "MaxLoginAttempts";
+				case LOGIN_BLOCK_PERIOD:
+					return "LoginBlockPeriod";
+				case NUM_PREV_PASS_TO_KEEP:
+					return "NumPrevPassToKeep";
 				default:
 					return base.getPropertyName(apiName);
 			}

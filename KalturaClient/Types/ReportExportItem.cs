@@ -58,6 +58,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ReportTitleAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ReportTitle
 		{
@@ -68,6 +71,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReportTitle");
 			}
 		}
+		/// <summary>
+		/// Use ActionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ReportExportItemType Action
 		{
@@ -78,6 +84,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Action");
 			}
 		}
+		/// <summary>
+		/// Use ReportTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ReportType ReportType
 		{
@@ -88,6 +97,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReportType");
 			}
 		}
+		/// <summary>
+		/// Use FilterAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ReportInputFilter Filter
 		{
@@ -98,6 +110,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Filter");
 			}
 		}
+		/// <summary>
+		/// Use OrderAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Order
 		{
@@ -108,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Order");
 			}
 		}
+		/// <summary>
+		/// Use ObjectIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ObjectIds
 		{
@@ -118,6 +136,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectIds");
 			}
 		}
+		/// <summary>
+		/// Use ResponseOptionsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ReportResponseOptions ResponseOptions
 		{

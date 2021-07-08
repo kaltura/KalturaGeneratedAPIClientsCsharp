@@ -122,6 +122,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use KeywordsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Keywords
 		{
@@ -132,6 +135,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Keywords");
 			}
 		}
+		/// <summary>
+		/// Use SearchInTagsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? SearchInTags
 		{
@@ -142,6 +148,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SearchInTags");
 			}
 		}
+		/// <summary>
+		/// Use SearchInAdminTagsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? SearchInAdminTags
 		{
@@ -152,6 +161,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SearchInAdminTags");
 			}
 		}
+		/// <summary>
+		/// Use CategoriesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Categories
 		{
@@ -162,6 +174,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Categories");
 			}
 		}
+		/// <summary>
+		/// Use CategoriesIdsInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CategoriesIdsIn
 		{
@@ -172,6 +187,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoriesIdsIn");
 			}
 		}
+		/// <summary>
+		/// Use CustomVar1InAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CustomVar1In
 		{
@@ -182,6 +200,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CustomVar1In");
 			}
 		}
+		/// <summary>
+		/// Use CustomVar2InAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CustomVar2In
 		{
@@ -192,6 +213,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CustomVar2In");
 			}
 		}
+		/// <summary>
+		/// Use CustomVar3InAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CustomVar3In
 		{
@@ -202,6 +226,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CustomVar3In");
 			}
 		}
+		/// <summary>
+		/// Use DeviceInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DeviceIn
 		{
@@ -212,6 +239,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeviceIn");
 			}
 		}
+		/// <summary>
+		/// Use CountryInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CountryIn
 		{
@@ -222,6 +252,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CountryIn");
 			}
 		}
+		/// <summary>
+		/// Use RegionInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RegionIn
 		{
@@ -232,6 +265,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RegionIn");
 			}
 		}
+		/// <summary>
+		/// Use CitiesInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CitiesIn
 		{
@@ -242,6 +278,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CitiesIn");
 			}
 		}
+		/// <summary>
+		/// Use OperatingSystemFamilyInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string OperatingSystemFamilyIn
 		{
@@ -252,6 +291,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OperatingSystemFamilyIn");
 			}
 		}
+		/// <summary>
+		/// Use OperatingSystemInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string OperatingSystemIn
 		{
@@ -262,6 +304,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OperatingSystemIn");
 			}
 		}
+		/// <summary>
+		/// Use BrowserFamilyInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string BrowserFamilyIn
 		{
@@ -272,6 +317,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("BrowserFamilyIn");
 			}
 		}
+		/// <summary>
+		/// Use BrowserInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string BrowserIn
 		{
@@ -282,6 +330,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("BrowserIn");
 			}
 		}
+		/// <summary>
+		/// Use TimeZoneOffsetAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int TimeZoneOffset
 		{
@@ -292,6 +343,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TimeZoneOffset");
 			}
 		}
+		/// <summary>
+		/// Use IntervalAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ReportInterval Interval
 		{
@@ -302,6 +356,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Interval");
 			}
 		}
+		/// <summary>
+		/// Use MediaTypeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string MediaTypeIn
 		{
@@ -312,6 +369,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaTypeIn");
 			}
 		}
+		/// <summary>
+		/// Use SourceTypeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SourceTypeIn
 		{
@@ -322,6 +382,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceTypeIn");
 			}
 		}
+		/// <summary>
+		/// Use OwnerIdsInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string OwnerIdsIn
 		{
@@ -332,6 +395,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OwnerIdsIn");
 			}
 		}
+		/// <summary>
+		/// Use EntryOperatorAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ESearchEntryOperator EntryOperator
 		{
@@ -342,6 +408,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryOperator");
 			}
 		}
+		/// <summary>
+		/// Use EntryCreatedAtGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int EntryCreatedAtGreaterThanOrEqual
 		{
@@ -352,6 +421,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryCreatedAtGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use EntryCreatedAtLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int EntryCreatedAtLessThanOrEqual
 		{
@@ -362,6 +434,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryCreatedAtLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use EntryIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntryIdIn
 		{
@@ -372,6 +447,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdIn");
 			}
 		}
+		/// <summary>
+		/// Use PlaybackTypeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PlaybackTypeIn
 		{
@@ -382,6 +460,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PlaybackTypeIn");
 			}
 		}
+		/// <summary>
+		/// Use PlaybackContextIdsInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PlaybackContextIdsIn
 		{
@@ -392,6 +473,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PlaybackContextIdsIn");
 			}
 		}
+		/// <summary>
+		/// Use RootEntryIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RootEntryIdIn
 		{
@@ -402,6 +486,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RootEntryIdIn");
 			}
 		}
+		/// <summary>
+		/// Use ErrorCodeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ErrorCodeIn
 		{
@@ -412,6 +499,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrorCodeIn");
 			}
 		}
+		/// <summary>
+		/// Use PlayerVersionInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PlayerVersionIn
 		{
@@ -422,6 +512,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PlayerVersionIn");
 			}
 		}
+		/// <summary>
+		/// Use IspInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string IspIn
 		{
@@ -432,6 +525,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IspIn");
 			}
 		}
+		/// <summary>
+		/// Use ApplicationVersionInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ApplicationVersionIn
 		{
@@ -442,6 +538,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ApplicationVersionIn");
 			}
 		}
+		/// <summary>
+		/// Use NodeIdsInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string NodeIdsIn
 		{
@@ -452,6 +551,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("NodeIdsIn");
 			}
 		}
+		/// <summary>
+		/// Use CategoriesAncestorIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CategoriesAncestorIdIn
 		{
@@ -462,6 +564,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoriesAncestorIdIn");
 			}
 		}
+		/// <summary>
+		/// Use HotspotIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string HotspotIdIn
 		{
@@ -472,6 +577,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("HotspotIdIn");
 			}
 		}
+		/// <summary>
+		/// Use CrmIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CrmIdIn
 		{
@@ -482,6 +590,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CrmIdIn");
 			}
 		}
+		/// <summary>
+		/// Use PlaylistIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PlaylistIdIn
 		{
@@ -492,6 +603,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PlaylistIdIn");
 			}
 		}
+		/// <summary>
+		/// Use DomainInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DomainIn
 		{
@@ -502,6 +616,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DomainIn");
 			}
 		}
+		/// <summary>
+		/// Use CanonicalUrlInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CanonicalUrlIn
 		{

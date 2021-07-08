@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use AnalyticsUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AnalyticsUrl
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AnalyticsUrl");
 			}
 		}
+		/// <summary>
+		/// Use OttEnvironmentUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string OttEnvironmentUrl
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OttEnvironmentUrl");
 			}
 		}
+		/// <summary>
+		/// Use AnalyticsPersistentSessionIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? AnalyticsPersistentSessionId
 		{

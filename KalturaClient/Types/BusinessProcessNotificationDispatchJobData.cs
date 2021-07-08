@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ServerAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public BusinessProcessServer Server
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Server");
 			}
 		}
+		/// <summary>
+		/// Use CaseIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CaseId
 		{

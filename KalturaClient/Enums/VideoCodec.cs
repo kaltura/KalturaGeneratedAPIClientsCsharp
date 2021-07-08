@@ -30,6 +30,7 @@ namespace Kaltura.Enums
 	public sealed class VideoCodec : StringEnum
 	{
 		public static readonly VideoCodec NONE = new VideoCodec("");
+		public static readonly VideoCodec AV1 = new VideoCodec("AV1");
 		public static readonly VideoCodec APCH = new VideoCodec("apch");
 		public static readonly VideoCodec APCN = new VideoCodec("apcn");
 		public static readonly VideoCodec APCO = new VideoCodec("apco");

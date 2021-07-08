@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use TemplateIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int TemplateId
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplateId");
 			}
 		}
+		/// <summary>
+		/// Use ContentParametersAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> ContentParameters
 		{

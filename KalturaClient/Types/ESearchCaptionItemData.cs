@@ -56,6 +56,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use LineAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Line
 		{
@@ -66,6 +69,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Line");
 			}
 		}
+		/// <summary>
+		/// Use StartsAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int StartsAt
 		{
@@ -76,6 +82,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartsAt");
 			}
 		}
+		/// <summary>
+		/// Use EndsAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int EndsAt
 		{
@@ -86,6 +95,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndsAt");
 			}
 		}
+		/// <summary>
+		/// Use LanguageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Language
 		{
@@ -96,6 +108,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Language");
 			}
 		}
+		/// <summary>
+		/// Use CaptionAssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CaptionAssetId
 		{
@@ -106,6 +121,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CaptionAssetId");
 			}
 		}
+		/// <summary>
+		/// Use LabelAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Label
 		{

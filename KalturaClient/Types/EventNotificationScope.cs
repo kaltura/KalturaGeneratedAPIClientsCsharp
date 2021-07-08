@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ObjectIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ObjectId
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectId");
 			}
 		}
+		/// <summary>
+		/// Use ScopeObjectTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EventNotificationEventObjectType ScopeObjectType
 		{

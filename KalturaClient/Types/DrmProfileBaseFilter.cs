@@ -62,6 +62,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int IdEqual
 		{
@@ -72,6 +75,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		/// <summary>
+		/// Use IdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string IdIn
 		{
@@ -82,6 +88,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		/// <summary>
+		/// Use PartnerIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerIdEqual
 		{
@@ -92,6 +101,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use PartnerIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PartnerIdIn
 		{
@@ -102,6 +114,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdIn");
 			}
 		}
+		/// <summary>
+		/// Use NameLikeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string NameLike
 		{
@@ -112,6 +127,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("NameLike");
 			}
 		}
+		/// <summary>
+		/// Use ProviderEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DrmProviderType ProviderEqual
 		{
@@ -122,6 +140,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProviderEqual");
 			}
 		}
+		/// <summary>
+		/// Use ProviderInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ProviderIn
 		{
@@ -132,6 +153,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProviderIn");
 			}
 		}
+		/// <summary>
+		/// Use StatusEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DrmProfileStatus StatusEqual
 		{
@@ -142,6 +166,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		/// <summary>
+		/// Use StatusInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StatusIn
 		{

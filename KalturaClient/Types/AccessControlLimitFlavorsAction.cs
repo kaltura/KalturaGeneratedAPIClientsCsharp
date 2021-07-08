@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FlavorParamsIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlavorParamsIds
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsIds");
 			}
 		}
+		/// <summary>
+		/// Use IsBlockedListAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? IsBlockedList
 		{

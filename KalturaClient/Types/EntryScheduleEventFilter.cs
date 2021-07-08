@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ParentCategoryIdsLikeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ParentCategoryIdsLike
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentCategoryIdsLike");
 			}
 		}
+		/// <summary>
+		/// Use ParentCategoryIdsMultiLikeOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ParentCategoryIdsMultiLikeOr
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentCategoryIdsMultiLikeOr");
 			}
 		}
+		/// <summary>
+		/// Use ParentCategoryIdsMultiLikeAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ParentCategoryIdsMultiLikeAnd
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentCategoryIdsMultiLikeAnd");
 			}
 		}
+		/// <summary>
+		/// Use OrderByAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public new EntryScheduleEventOrderBy OrderBy
 		{

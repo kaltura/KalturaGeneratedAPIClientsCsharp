@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use EntryIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntryIds
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIds");
 			}
 		}
+		/// <summary>
+		/// Use FlavorParamsIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int FlavorParamsId
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsId");
 			}
 		}
+		/// <summary>
+		/// Use PuserIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PuserId
 		{

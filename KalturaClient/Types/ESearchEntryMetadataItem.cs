@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use XpathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Xpath
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Xpath");
 			}
 		}
+		/// <summary>
+		/// Use MetadataProfileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MetadataProfileId
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataProfileId");
 			}
 		}
+		/// <summary>
+		/// Use MetadataFieldIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MetadataFieldId
 		{

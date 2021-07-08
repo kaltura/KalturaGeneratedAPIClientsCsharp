@@ -60,6 +60,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ServiceTypeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VendorServiceType ServiceTypeEqual
 		{
@@ -70,6 +73,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServiceTypeEqual");
 			}
 		}
+		/// <summary>
+		/// Use ServiceTypeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ServiceTypeIn
 		{
@@ -80,6 +86,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServiceTypeIn");
 			}
 		}
+		/// <summary>
+		/// Use ServiceFeatureEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VendorServiceFeature ServiceFeatureEqual
 		{
@@ -90,6 +99,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServiceFeatureEqual");
 			}
 		}
+		/// <summary>
+		/// Use ServiceFeatureInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ServiceFeatureIn
 		{
@@ -100,6 +112,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServiceFeatureIn");
 			}
 		}
+		/// <summary>
+		/// Use TurnAroundTimeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VendorServiceTurnAroundTime TurnAroundTimeEqual
 		{
@@ -110,6 +125,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TurnAroundTimeEqual");
 			}
 		}
+		/// <summary>
+		/// Use TurnAroundTimeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TurnAroundTimeIn
 		{
@@ -120,6 +138,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TurnAroundTimeIn");
 			}
 		}
+		/// <summary>
+		/// Use SourceLanguageEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public CatalogItemLanguage SourceLanguageEqual
 		{
@@ -130,6 +151,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceLanguageEqual");
 			}
 		}
+		/// <summary>
+		/// Use TargetLanguageEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public CatalogItemLanguage TargetLanguageEqual
 		{

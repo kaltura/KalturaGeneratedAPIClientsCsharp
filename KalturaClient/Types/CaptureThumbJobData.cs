@@ -62,6 +62,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FileContainerAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public FileContainer FileContainer
 		{
@@ -72,6 +75,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileContainer");
 			}
 		}
+		/// <summary>
+		/// Use ActualSrcFileSyncLocalPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ActualSrcFileSyncLocalPath
 		{
@@ -82,6 +88,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ActualSrcFileSyncLocalPath");
 			}
 		}
+		/// <summary>
+		/// Use SrcFileSyncRemoteUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SrcFileSyncRemoteUrl
 		{
@@ -92,6 +101,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcFileSyncRemoteUrl");
 			}
 		}
+		/// <summary>
+		/// Use ThumbParamsOutputIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ThumbParamsOutputId
 		{
@@ -102,6 +114,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbParamsOutputId");
 			}
 		}
+		/// <summary>
+		/// Use ThumbAssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ThumbAssetId
 		{
@@ -112,6 +127,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbAssetId");
 			}
 		}
+		/// <summary>
+		/// Use SrcAssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SrcAssetId
 		{
@@ -122,6 +140,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcAssetId");
 			}
 		}
+		/// <summary>
+		/// Use SrcAssetEncryptionKeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SrcAssetEncryptionKey
 		{
@@ -132,6 +153,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcAssetEncryptionKey");
 			}
 		}
+		/// <summary>
+		/// Use SrcAssetTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public AssetType SrcAssetType
 		{
@@ -142,6 +166,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcAssetType");
 			}
 		}
+		/// <summary>
+		/// Use ThumbPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ThumbPath
 		{

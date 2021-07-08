@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use EdgeServerIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EdgeServerIds
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EdgeServerIds");
 			}
 		}
+		/// <summary>
+		/// Use SeamlessFallbackEnabledAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean SeamlessFallbackEnabled
 		{

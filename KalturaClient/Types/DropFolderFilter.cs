@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use CurrentDcAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean CurrentDc
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CurrentDc");
 			}
 		}
+		/// <summary>
+		/// Use OrderByAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public new DropFolderOrderBy OrderBy
 		{

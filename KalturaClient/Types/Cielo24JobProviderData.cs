@@ -66,6 +66,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use EntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntryId
 		{
@@ -76,6 +79,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		/// <summary>
+		/// Use FlavorAssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlavorAssetId
 		{
@@ -86,6 +92,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetId");
 			}
 		}
+		/// <summary>
+		/// Use CaptionAssetFormatsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CaptionAssetFormats
 		{
@@ -96,6 +105,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CaptionAssetFormats");
 			}
 		}
+		/// <summary>
+		/// Use PriorityAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public Cielo24Priority Priority
 		{
@@ -106,6 +118,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Priority");
 			}
 		}
+		/// <summary>
+		/// Use FidelityAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public Cielo24Fidelity Fidelity
 		{
@@ -116,6 +131,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Fidelity");
 			}
 		}
+		/// <summary>
+		/// Use UsernameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Username
 		{
@@ -126,6 +144,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Username");
 			}
 		}
+		/// <summary>
+		/// Use PasswordAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Password
 		{
@@ -136,6 +157,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Password");
 			}
 		}
+		/// <summary>
+		/// Use BaseUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string BaseUrl
 		{
@@ -146,6 +170,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("BaseUrl");
 			}
 		}
+		/// <summary>
+		/// Use SpokenLanguageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public Language SpokenLanguage
 		{
@@ -156,6 +183,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SpokenLanguage");
 			}
 		}
+		/// <summary>
+		/// Use ReplaceMediaContentAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? ReplaceMediaContent
 		{
@@ -166,6 +196,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplaceMediaContent");
 			}
 		}
+		/// <summary>
+		/// Use AdditionalParametersAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AdditionalParameters
 		{

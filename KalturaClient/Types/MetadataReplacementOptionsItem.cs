@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ShouldCopyMetadataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? ShouldCopyMetadata
 		{

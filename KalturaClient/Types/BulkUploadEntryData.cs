@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ConversionProfileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ConversionProfileId
 		{

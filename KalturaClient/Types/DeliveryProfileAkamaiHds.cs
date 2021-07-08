@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use SupportClippingAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? SupportClipping
 		{

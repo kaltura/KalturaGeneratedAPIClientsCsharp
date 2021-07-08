@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use DescriptorAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Descriptor
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Descriptor");
 			}
 		}
+		/// <summary>
+		/// Use OldValueAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string OldValue
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OldValue");
 			}
 		}
+		/// <summary>
+		/// Use NewValueAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string NewValue
 		{

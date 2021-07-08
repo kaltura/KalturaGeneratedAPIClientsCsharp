@@ -70,6 +70,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Id
 		{
@@ -80,6 +83,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		/// <summary>
+		/// Use PartnerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -90,6 +96,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		/// <summary>
+		/// Use NameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -100,6 +109,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		/// <summary>
+		/// Use SystemNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SystemName
 		{
@@ -110,6 +122,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemName");
 			}
 		}
+		/// <summary>
+		/// Use DescriptionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Description
 		{
@@ -120,6 +135,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -130,6 +148,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
+		/// <summary>
+		/// Use IsSystemDefaultAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean IsSystemDefault
 		{
@@ -140,6 +161,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsSystemDefault");
 			}
 		}
+		/// <summary>
+		/// Use TagsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Tags
 		{
@@ -150,6 +174,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
+		/// <summary>
+		/// Use RequiredPermissionsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<String> RequiredPermissions
 		{
@@ -160,6 +187,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RequiredPermissions");
 			}
 		}
+		/// <summary>
+		/// Use SourceRemoteStorageProfileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int SourceRemoteStorageProfileId
 		{
@@ -170,6 +200,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceRemoteStorageProfileId");
 			}
 		}
+		/// <summary>
+		/// Use RemoteStorageProfileIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int RemoteStorageProfileIds
 		{
@@ -180,6 +213,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RemoteStorageProfileIds");
 			}
 		}
+		/// <summary>
+		/// Use MediaParserTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public MediaParserType MediaParserType
 		{
@@ -190,6 +226,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaParserType");
 			}
 		}
+		/// <summary>
+		/// Use SourceAssetParamsIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SourceAssetParamsIds
 		{

@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use AuthDataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AuthData
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AuthData");
 			}
 		}
+		/// <summary>
+		/// Use LoginUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string LoginUrl
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LoginUrl");
 			}
 		}
+		/// <summary>
+		/// Use MessageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Message
 		{

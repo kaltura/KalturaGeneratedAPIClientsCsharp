@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use CreditAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Credit
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Credit");
 			}
 		}
+		/// <summary>
+		/// Use FromDateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int FromDate
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FromDate");
 			}
 		}
+		/// <summary>
+		/// Use OverageCreditAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int OverageCredit
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OverageCredit");
 			}
 		}
+		/// <summary>
+		/// Use AddOnAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int AddOn
 		{

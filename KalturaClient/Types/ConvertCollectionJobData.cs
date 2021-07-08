@@ -58,6 +58,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use DestDirLocalPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DestDirLocalPath
 		{
@@ -68,6 +71,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestDirLocalPath");
 			}
 		}
+		/// <summary>
+		/// Use DestDirRemoteUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DestDirRemoteUrl
 		{
@@ -78,6 +84,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestDirRemoteUrl");
 			}
 		}
+		/// <summary>
+		/// Use DestFileNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DestFileName
 		{
@@ -88,6 +97,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestFileName");
 			}
 		}
+		/// <summary>
+		/// Use InputXmlLocalPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string InputXmlLocalPath
 		{
@@ -98,6 +110,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("InputXmlLocalPath");
 			}
 		}
+		/// <summary>
+		/// Use InputXmlRemoteUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string InputXmlRemoteUrl
 		{
@@ -108,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("InputXmlRemoteUrl");
 			}
 		}
+		/// <summary>
+		/// Use CommandLinesStrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CommandLinesStr
 		{
@@ -118,6 +136,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CommandLinesStr");
 			}
 		}
+		/// <summary>
+		/// Use FlavorsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<ConvertCollectionFlavorData> Flavors
 		{

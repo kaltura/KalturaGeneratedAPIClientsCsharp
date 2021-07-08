@@ -70,6 +70,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use MediaTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public MediaType MediaType
 		{
@@ -80,6 +83,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaType");
 			}
 		}
+		/// <summary>
+		/// Use ConversionQualityAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ConversionQuality
 		{
@@ -90,6 +96,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionQuality");
 			}
 		}
+		/// <summary>
+		/// Use SourceTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public SourceType SourceType
 		{
@@ -100,6 +109,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceType");
 			}
 		}
+		/// <summary>
+		/// Use SourceVersionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SourceVersion
 		{
@@ -110,6 +122,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceVersion");
 			}
 		}
+		/// <summary>
+		/// Use SearchProviderTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public SearchProviderType SearchProviderType
 		{
@@ -120,6 +135,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SearchProviderType");
 			}
 		}
+		/// <summary>
+		/// Use SearchProviderIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SearchProviderId
 		{
@@ -130,6 +148,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SearchProviderId");
 			}
 		}
+		/// <summary>
+		/// Use CreditUserNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CreditUserName
 		{
@@ -140,6 +161,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreditUserName");
 			}
 		}
+		/// <summary>
+		/// Use CreditUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CreditUrl
 		{
@@ -150,6 +174,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreditUrl");
 			}
 		}
+		/// <summary>
+		/// Use MediaDateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MediaDate
 		{
@@ -160,6 +187,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaDate");
 			}
 		}
+		/// <summary>
+		/// Use DataUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DataUrl
 		{
@@ -170,6 +200,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DataUrl");
 			}
 		}
+		/// <summary>
+		/// Use FlavorParamsIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlavorParamsIds
 		{
@@ -180,6 +213,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsIds");
 			}
 		}
+		/// <summary>
+		/// Use IsTrimDisabledAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean IsTrimDisabled
 		{
@@ -190,6 +226,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsTrimDisabled");
 			}
 		}
+		/// <summary>
+		/// Use StreamsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<StreamContainer> Streams
 		{

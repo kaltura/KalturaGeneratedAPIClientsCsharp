@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use OrderByAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string OrderBy
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OrderBy");
 			}
 		}
+		/// <summary>
+		/// Use AdvancedSearchAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public SearchItem AdvancedSearch
 		{

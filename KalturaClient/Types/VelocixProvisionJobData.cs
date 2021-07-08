@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ProvisioningParamsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> ProvisioningParams
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProvisioningParams");
 			}
 		}
+		/// <summary>
+		/// Use UserNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UserName
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserName");
 			}
 		}
+		/// <summary>
+		/// Use PasswordAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Password
 		{

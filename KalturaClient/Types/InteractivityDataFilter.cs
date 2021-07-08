@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use RootFilterAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public InteractivityRootFilter RootFilter
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RootFilter");
 			}
 		}
+		/// <summary>
+		/// Use NodeFilterAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public InteractivityNodeFilter NodeFilter
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("NodeFilter");
 			}
 		}
+		/// <summary>
+		/// Use InteractionFilterAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public InteractivityInteractionFilter InteractionFilter
 		{

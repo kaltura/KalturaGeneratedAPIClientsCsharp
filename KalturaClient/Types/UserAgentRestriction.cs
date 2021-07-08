@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use UserAgentRestrictionTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public UserAgentRestrictionType UserAgentRestrictionType
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserAgentRestrictionType");
 			}
 		}
+		/// <summary>
+		/// Use UserAgentRegexListAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UserAgentRegexList
 		{

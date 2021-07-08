@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ContentLikeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ContentLike
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentLike");
 			}
 		}
+		/// <summary>
+		/// Use ContentMultiLikeOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ContentMultiLikeOr
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentMultiLikeOr");
 			}
 		}
+		/// <summary>
+		/// Use ContentMultiLikeAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ContentMultiLikeAnd
 		{

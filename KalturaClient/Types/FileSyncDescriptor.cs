@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FileSyncLocalPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FileSyncLocalPath
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileSyncLocalPath");
 			}
 		}
+		/// <summary>
+		/// Use FileEncryptionKeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FileEncryptionKey
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileEncryptionKey");
 			}
 		}
+		/// <summary>
+		/// Use FileSyncRemoteUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FileSyncRemoteUrl
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileSyncRemoteUrl");
 			}
 		}
+		/// <summary>
+		/// Use FileSyncObjectSubTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int FileSyncObjectSubType
 		{

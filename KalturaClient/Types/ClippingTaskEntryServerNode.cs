@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ClipAttributesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ClipAttributes ClipAttributes
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ClipAttributes");
 			}
 		}
+		/// <summary>
+		/// Use ClippedEntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ClippedEntryId
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ClippedEntryId");
 			}
 		}
+		/// <summary>
+		/// Use LiveEntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string LiveEntryId
 		{

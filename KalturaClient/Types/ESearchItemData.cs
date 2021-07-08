@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use HighlightAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<ESearchHighlight> Highlight
 		{

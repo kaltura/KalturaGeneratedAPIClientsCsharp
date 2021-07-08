@@ -58,6 +58,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use HostAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Host
 		{
@@ -68,6 +71,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Host");
 			}
 		}
+		/// <summary>
+		/// Use PortAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Port
 		{
@@ -78,6 +84,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Port");
 			}
 		}
+		/// <summary>
+		/// Use UsernameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Username
 		{
@@ -88,6 +97,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Username");
 			}
 		}
+		/// <summary>
+		/// Use PasswordAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Password
 		{
@@ -98,6 +110,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Password");
 			}
 		}
+		/// <summary>
+		/// Use PrivateKeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PrivateKey
 		{
@@ -108,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrivateKey");
 			}
 		}
+		/// <summary>
+		/// Use PublicKeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PublicKey
 		{
@@ -118,6 +136,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PublicKey");
 			}
 		}
+		/// <summary>
+		/// Use PassPhraseAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PassPhrase
 		{

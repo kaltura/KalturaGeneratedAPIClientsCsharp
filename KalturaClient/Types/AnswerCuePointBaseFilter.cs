@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ParentIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ParentIdEqual
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use ParentIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ParentIdIn
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentIdIn");
 			}
 		}
+		/// <summary>
+		/// Use QuizUserEntryIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string QuizUserEntryIdEqual
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("QuizUserEntryIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use QuizUserEntryIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string QuizUserEntryIdIn
 		{

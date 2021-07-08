@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use CatalogGuidAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CatalogGuid
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CatalogGuid");
 			}
 		}
+		/// <summary>
+		/// Use TitleAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Title
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Title");
 			}
 		}
+		/// <summary>
+		/// Use MediaChangedAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? MediaChanged
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaChanged");
 			}
 		}
+		/// <summary>
+		/// Use FlavorAssetVersionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlavorAssetVersion
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetVersion");
 			}
 		}
+		/// <summary>
+		/// Use NotificationBaseUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string NotificationBaseUrl
 		{

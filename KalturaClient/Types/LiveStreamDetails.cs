@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use PrimaryStreamStatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EntryServerNodeStatus PrimaryStreamStatus
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrimaryStreamStatus");
 			}
 		}
+		/// <summary>
+		/// Use SecondaryStreamStatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EntryServerNodeStatus SecondaryStreamStatus
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SecondaryStreamStatus");
 			}
 		}
+		/// <summary>
+		/// Use ViewModeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ViewMode ViewMode
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ViewMode");
 			}
 		}
+		/// <summary>
+		/// Use WasBroadcastAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? WasBroadcast
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("WasBroadcast");
 			}
 		}
+		/// <summary>
+		/// Use BroadcastStatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public LiveStreamBroadcastStatus BroadcastStatus
 		{

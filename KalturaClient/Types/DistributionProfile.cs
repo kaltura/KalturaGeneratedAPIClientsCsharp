@@ -94,6 +94,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Id
 		{
@@ -104,6 +107,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -114,6 +120,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -124,6 +133,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
+		/// <summary>
+		/// Use PartnerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -134,6 +146,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		/// <summary>
+		/// Use ProviderTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DistributionProviderType ProviderType
 		{
@@ -144,6 +159,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProviderType");
 			}
 		}
+		/// <summary>
+		/// Use NameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -154,6 +172,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		/// <summary>
+		/// Use StatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DistributionProfileStatus Status
 		{
@@ -164,6 +185,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		/// <summary>
+		/// Use SubmitEnabledAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DistributionProfileActionStatus SubmitEnabled
 		{
@@ -174,6 +198,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SubmitEnabled");
 			}
 		}
+		/// <summary>
+		/// Use UpdateEnabledAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DistributionProfileActionStatus UpdateEnabled
 		{
@@ -184,6 +211,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdateEnabled");
 			}
 		}
+		/// <summary>
+		/// Use DeleteEnabledAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DistributionProfileActionStatus DeleteEnabled
 		{
@@ -194,6 +224,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeleteEnabled");
 			}
 		}
+		/// <summary>
+		/// Use ReportEnabledAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DistributionProfileActionStatus ReportEnabled
 		{
@@ -204,6 +237,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReportEnabled");
 			}
 		}
+		/// <summary>
+		/// Use AutoCreateFlavorsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AutoCreateFlavors
 		{
@@ -214,6 +250,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AutoCreateFlavors");
 			}
 		}
+		/// <summary>
+		/// Use AutoCreateThumbAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AutoCreateThumb
 		{
@@ -224,6 +263,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AutoCreateThumb");
 			}
 		}
+		/// <summary>
+		/// Use OptionalFlavorParamsIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string OptionalFlavorParamsIds
 		{
@@ -234,6 +276,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OptionalFlavorParamsIds");
 			}
 		}
+		/// <summary>
+		/// Use RequiredFlavorParamsIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RequiredFlavorParamsIds
 		{
@@ -244,6 +289,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RequiredFlavorParamsIds");
 			}
 		}
+		/// <summary>
+		/// Use OptionalThumbDimensionsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<DistributionThumbDimensions> OptionalThumbDimensions
 		{
@@ -254,6 +302,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OptionalThumbDimensions");
 			}
 		}
+		/// <summary>
+		/// Use RequiredThumbDimensionsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<DistributionThumbDimensions> RequiredThumbDimensions
 		{
@@ -264,6 +315,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RequiredThumbDimensions");
 			}
 		}
+		/// <summary>
+		/// Use OptionalAssetDistributionRulesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<AssetDistributionRule> OptionalAssetDistributionRules
 		{
@@ -274,6 +328,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OptionalAssetDistributionRules");
 			}
 		}
+		/// <summary>
+		/// Use RequiredAssetDistributionRulesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<AssetDistributionRule> RequiredAssetDistributionRules
 		{
@@ -284,6 +341,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RequiredAssetDistributionRules");
 			}
 		}
+		/// <summary>
+		/// Use SunriseDefaultOffsetAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int SunriseDefaultOffset
 		{
@@ -294,6 +354,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SunriseDefaultOffset");
 			}
 		}
+		/// <summary>
+		/// Use SunsetDefaultOffsetAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int SunsetDefaultOffset
 		{
@@ -304,6 +367,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SunsetDefaultOffset");
 			}
 		}
+		/// <summary>
+		/// Use RecommendedStorageProfileForDownloadAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int RecommendedStorageProfileForDownload
 		{
@@ -314,6 +380,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecommendedStorageProfileForDownload");
 			}
 		}
+		/// <summary>
+		/// Use RecommendedDcForDownloadAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int RecommendedDcForDownload
 		{
@@ -324,6 +393,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecommendedDcForDownload");
 			}
 		}
+		/// <summary>
+		/// Use RecommendedDcForExecuteAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int RecommendedDcForExecute
 		{
@@ -334,6 +406,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecommendedDcForExecute");
 			}
 		}
+		/// <summary>
+		/// Use DistributeTriggerAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DistributeTrigger DistributeTrigger
 		{

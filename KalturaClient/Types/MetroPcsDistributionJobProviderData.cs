@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use AssetLocalPathsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AssetLocalPaths
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetLocalPaths");
 			}
 		}
+		/// <summary>
+		/// Use ThumbUrlsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ThumbUrls
 		{

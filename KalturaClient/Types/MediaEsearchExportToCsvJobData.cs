@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use SearchParamsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ESearchEntryParams SearchParams
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SearchParams");
 			}
 		}
+		/// <summary>
+		/// Use OptionsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<ExportToCsvOptions> Options
 		{

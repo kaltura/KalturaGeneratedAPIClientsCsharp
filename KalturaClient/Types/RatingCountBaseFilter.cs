@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use EntryIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntryIdEqual
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use RankInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RankIn
 		{

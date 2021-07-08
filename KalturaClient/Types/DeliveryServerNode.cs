@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use DeliveryProfileIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> DeliveryProfileIds
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeliveryProfileIds");
 			}
 		}
+		/// <summary>
+		/// Use ConfigAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Config
 		{

@@ -60,6 +60,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Id
 		{
@@ -70,6 +73,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		/// <summary>
+		/// Use SchedulerConfiguredIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int SchedulerConfiguredId
 		{
@@ -80,6 +86,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SchedulerConfiguredId");
 			}
 		}
+		/// <summary>
+		/// Use WorkerConfiguredIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int WorkerConfiguredId
 		{
@@ -90,6 +99,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("WorkerConfiguredId");
 			}
 		}
+		/// <summary>
+		/// Use WorkerTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public BatchJobType WorkerType
 		{
@@ -100,6 +112,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("WorkerType");
 			}
 		}
+		/// <summary>
+		/// Use TypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public SchedulerStatusType Type
 		{
@@ -110,6 +125,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		/// <summary>
+		/// Use ValueAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Value
 		{
@@ -120,6 +138,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Value");
 			}
 		}
+		/// <summary>
+		/// Use SchedulerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int SchedulerId
 		{
@@ -130,6 +151,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SchedulerId");
 			}
 		}
+		/// <summary>
+		/// Use WorkerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int WorkerId
 		{

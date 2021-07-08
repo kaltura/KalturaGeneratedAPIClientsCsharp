@@ -74,6 +74,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Id
 		{
@@ -84,6 +87,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		/// <summary>
+		/// Use PartnerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -94,6 +100,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		/// <summary>
+		/// Use MetadataObjectTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public MetadataObjectType MetadataObjectType
 		{
@@ -104,6 +113,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataObjectType");
 			}
 		}
+		/// <summary>
+		/// Use VersionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Version
 		{
@@ -114,6 +126,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Version");
 			}
 		}
+		/// <summary>
+		/// Use NameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -124,6 +139,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		/// <summary>
+		/// Use SystemNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SystemName
 		{
@@ -134,6 +152,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemName");
 			}
 		}
+		/// <summary>
+		/// Use DescriptionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Description
 		{
@@ -144,6 +165,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -154,6 +178,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -164,6 +191,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
+		/// <summary>
+		/// Use StatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public MetadataProfileStatus Status
 		{
@@ -174,6 +204,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		/// <summary>
+		/// Use XsdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Xsd
 		{
@@ -184,6 +217,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Xsd");
 			}
 		}
+		/// <summary>
+		/// Use ViewsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Views
 		{
@@ -194,6 +230,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Views");
 			}
 		}
+		/// <summary>
+		/// Use XsltAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Xslt
 		{
@@ -204,6 +243,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Xslt");
 			}
 		}
+		/// <summary>
+		/// Use CreateModeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public MetadataProfileCreateMode CreateMode
 		{
@@ -214,6 +256,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreateMode");
 			}
 		}
+		/// <summary>
+		/// Use DisableReIndexingAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? DisableReIndexing
 		{

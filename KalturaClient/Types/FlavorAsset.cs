@@ -58,7 +58,7 @@ namespace Kaltura.Types
 		private int _Width = Int32.MinValue;
 		private int _Height = Int32.MinValue;
 		private int _Bitrate = Int32.MinValue;
-		private float _FrameRate = Single.MinValue;
+		private double _FrameRate = Double.MinValue;
 		private bool? _IsOriginal = null;
 		private bool? _IsWeb = null;
 		private string _ContainerFormat = null;
@@ -70,6 +70,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FlavorParamsIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int FlavorParamsId
 		{
@@ -80,6 +83,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsId");
 			}
 		}
+		/// <summary>
+		/// Use WidthAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Width
 		{
@@ -90,6 +96,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Width");
 			}
 		}
+		/// <summary>
+		/// Use HeightAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Height
 		{
@@ -100,6 +109,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Height");
 			}
 		}
+		/// <summary>
+		/// Use BitrateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Bitrate
 		{
@@ -110,8 +122,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("Bitrate");
 			}
 		}
+		/// <summary>
+		/// Use FrameRateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use FrameRateAsDouble property instead")]
 		public float FrameRate
+		{
+			get { return (float)_FrameRate; }
+			private set 
+			{ 
+				_FrameRate = value;
+				OnPropertyChanged("FrameRate");
+			}
+		}
+		///<summary>
+		///Use this property FrameRateAsDouble instead of the float FrameRate property version
+		///</summary>
+		[JsonProperty]
+		public double FrameRateAsDouble
 		{
 			get { return _FrameRate; }
 			private set 
@@ -120,6 +149,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FrameRate");
 			}
 		}
+		/// <summary>
+		/// Use IsOriginalAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? IsOriginal
 		{
@@ -130,6 +162,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsOriginal");
 			}
 		}
+		/// <summary>
+		/// Use IsWebAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? IsWeb
 		{
@@ -140,6 +175,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsWeb");
 			}
 		}
+		/// <summary>
+		/// Use ContainerFormatAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ContainerFormat
 		{
@@ -150,6 +188,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContainerFormat");
 			}
 		}
+		/// <summary>
+		/// Use VideoCodecIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string VideoCodecId
 		{
@@ -160,6 +201,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoCodecId");
 			}
 		}
+		/// <summary>
+		/// Use StatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public FlavorAssetStatus Status
 		{
@@ -170,6 +214,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		/// <summary>
+		/// Use LanguageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public Language Language
 		{
@@ -180,6 +227,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Language");
 			}
 		}
+		/// <summary>
+		/// Use LabelAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Label
 		{
@@ -190,6 +240,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Label");
 			}
 		}
+		/// <summary>
+		/// Use IsDefaultAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean IsDefault
 		{
@@ -227,7 +280,7 @@ namespace Kaltura.Types
 			}
 			if(node["frameRate"] != null)
 			{
-				this._FrameRate = ParseFloat(node["frameRate"].Value<string>());
+				this._FrameRate = ParseDouble(node["frameRate"].Value<string>());
 			}
 			if(node["isOriginal"] != null)
 			{

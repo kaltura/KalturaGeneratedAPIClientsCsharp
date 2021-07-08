@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use SearchOperatorAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ESearchCategoryOperator SearchOperator
 		{

@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FieldNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FieldName
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FieldName");
 			}
 		}
+		/// <summary>
+		/// Use ValidationErrorTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DistributionValidationErrorType ValidationErrorType
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ValidationErrorType");
 			}
 		}
+		/// <summary>
+		/// Use ValidationErrorParamAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ValidationErrorParam
 		{

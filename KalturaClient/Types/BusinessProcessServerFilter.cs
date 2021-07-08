@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use CurrentDcOrExternalAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean CurrentDcOrExternal
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CurrentDcOrExternal");
 			}
 		}
+		/// <summary>
+		/// Use CurrentDcAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean CurrentDc
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CurrentDc");
 			}
 		}
+		/// <summary>
+		/// Use OrderByAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public new BusinessProcessServerOrderBy OrderBy
 		{

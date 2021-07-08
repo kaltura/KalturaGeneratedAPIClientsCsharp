@@ -78,6 +78,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int IdEqual
 		{
@@ -88,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		/// <summary>
+		/// Use IdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string IdIn
 		{
@@ -98,6 +104,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		/// <summary>
+		/// Use IdNotInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string IdNotIn
 		{
@@ -108,6 +117,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdNotIn");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
@@ -118,6 +130,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
@@ -128,6 +143,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
@@ -138,6 +156,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
@@ -148,6 +169,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use PartnerIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerIdEqual
 		{
@@ -158,6 +182,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use PartnerIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PartnerIdIn
 		{
@@ -168,6 +195,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdIn");
 			}
 		}
+		/// <summary>
+		/// Use StatusEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public BusinessProcessServerStatus StatusEqual
 		{
@@ -178,6 +208,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		/// <summary>
+		/// Use StatusNotEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public BusinessProcessServerStatus StatusNotEqual
 		{
@@ -188,6 +221,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusNotEqual");
 			}
 		}
+		/// <summary>
+		/// Use StatusInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StatusIn
 		{
@@ -198,6 +234,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		/// <summary>
+		/// Use StatusNotInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StatusNotIn
 		{
@@ -208,6 +247,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusNotIn");
 			}
 		}
+		/// <summary>
+		/// Use TypeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public BusinessProcessProvider TypeEqual
 		{
@@ -218,6 +260,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeEqual");
 			}
 		}
+		/// <summary>
+		/// Use TypeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TypeIn
 		{
@@ -228,6 +273,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeIn");
 			}
 		}
+		/// <summary>
+		/// Use DcEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int DcEqual
 		{
@@ -238,6 +286,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DcEqual");
 			}
 		}
+		/// <summary>
+		/// Use DcEqOrNullAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int DcEqOrNull
 		{

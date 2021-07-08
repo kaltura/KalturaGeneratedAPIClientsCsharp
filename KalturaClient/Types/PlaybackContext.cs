@@ -56,6 +56,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use SourcesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<PlaybackSource> Sources
 		{
@@ -66,6 +69,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Sources");
 			}
 		}
+		/// <summary>
+		/// Use PlaybackCaptionsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<CaptionPlaybackPluginData> PlaybackCaptions
 		{
@@ -76,6 +82,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PlaybackCaptions");
 			}
 		}
+		/// <summary>
+		/// Use FlavorAssetsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<FlavorAsset> FlavorAssets
 		{
@@ -86,6 +95,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssets");
 			}
 		}
+		/// <summary>
+		/// Use ActionsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<RuleAction> Actions
 		{
@@ -96,6 +108,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Actions");
 			}
 		}
+		/// <summary>
+		/// Use MessagesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<AccessControlMessage> Messages
 		{
@@ -106,6 +121,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Messages");
 			}
 		}
+		/// <summary>
+		/// Use BumperDataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<ObjectBase> BumperData
 		{

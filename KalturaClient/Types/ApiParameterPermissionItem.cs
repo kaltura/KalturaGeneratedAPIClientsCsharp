@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ObjectAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Object
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Object");
 			}
 		}
+		/// <summary>
+		/// Use ParameterAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Parameter
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Parameter");
 			}
 		}
+		/// <summary>
+		/// Use ActionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ApiParameterPermissionItemAction Action
 		{

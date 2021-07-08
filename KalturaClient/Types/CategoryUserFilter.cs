@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use CategoryDirectMembersAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? CategoryDirectMembers
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryDirectMembers");
 			}
 		}
+		/// <summary>
+		/// Use FreeTextAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FreeText
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FreeText");
 			}
 		}
+		/// <summary>
+		/// Use RelatedGroupsByUserIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RelatedGroupsByUserId
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RelatedGroupsByUserId");
 			}
 		}
+		/// <summary>
+		/// Use OrderByAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public new CategoryUserOrderBy OrderBy
 		{

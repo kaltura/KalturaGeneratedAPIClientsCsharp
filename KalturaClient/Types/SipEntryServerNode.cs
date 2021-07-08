@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use SipRoomIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SipRoomId
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SipRoomId");
 			}
 		}
+		/// <summary>
+		/// Use SipPrimaryAdpIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SipPrimaryAdpId
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SipPrimaryAdpId");
 			}
 		}
+		/// <summary>
+		/// Use SipSecondaryAdpIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SipSecondaryAdpId
 		{

@@ -56,6 +56,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use WsdlUsernameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string WsdlUsername
 		{
@@ -66,6 +69,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("WsdlUsername");
 			}
 		}
+		/// <summary>
+		/// Use WsdlPasswordAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string WsdlPassword
 		{
@@ -76,6 +82,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("WsdlPassword");
 			}
 		}
+		/// <summary>
+		/// Use CpcodeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Cpcode
 		{
@@ -86,6 +95,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Cpcode");
 			}
 		}
+		/// <summary>
+		/// Use EmailIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EmailId
 		{
@@ -96,6 +108,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EmailId");
 			}
 		}
+		/// <summary>
+		/// Use PrimaryContactAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PrimaryContact
 		{
@@ -106,6 +121,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrimaryContact");
 			}
 		}
+		/// <summary>
+		/// Use SecondaryContactAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SecondaryContact
 		{

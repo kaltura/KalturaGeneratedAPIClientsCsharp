@@ -66,6 +66,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use CategoryIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CategoryIdEqual
 		{
@@ -76,6 +79,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use CategoryIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CategoryIdIn
 		{
@@ -86,6 +92,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryIdIn");
 			}
 		}
+		/// <summary>
+		/// Use EntryIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntryIdEqual
 		{
@@ -96,6 +105,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use EntryIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntryIdIn
 		{
@@ -106,6 +118,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdIn");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
@@ -116,6 +131,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
@@ -126,6 +144,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use CategoryFullIdsStartsWithAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CategoryFullIdsStartsWith
 		{
@@ -136,6 +157,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryFullIdsStartsWith");
 			}
 		}
+		/// <summary>
+		/// Use StatusEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public CategoryEntryStatus StatusEqual
 		{
@@ -146,6 +170,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		/// <summary>
+		/// Use StatusInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StatusIn
 		{
@@ -156,6 +183,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		/// <summary>
+		/// Use CreatorUserIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CreatorUserIdEqual
 		{
@@ -166,6 +196,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatorUserIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use CreatorUserIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CreatorUserIdIn
 		{

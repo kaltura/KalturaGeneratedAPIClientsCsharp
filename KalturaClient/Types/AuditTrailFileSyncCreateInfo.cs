@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use VersionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Version
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Version");
 			}
 		}
+		/// <summary>
+		/// Use ObjectSubTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ObjectSubType
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectSubType");
 			}
 		}
+		/// <summary>
+		/// Use DcAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Dc
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Dc");
 			}
 		}
+		/// <summary>
+		/// Use OriginalAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? Original
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Original");
 			}
 		}
+		/// <summary>
+		/// Use FileTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public AuditTrailFileSyncType FileType
 		{

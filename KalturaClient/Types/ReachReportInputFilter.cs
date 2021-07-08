@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ServiceTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VendorServiceType ServiceType
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServiceType");
 			}
 		}
+		/// <summary>
+		/// Use ServiceFeatureAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VendorServiceFeature ServiceFeature
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServiceFeature");
 			}
 		}
+		/// <summary>
+		/// Use TurnAroundTimeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VendorServiceTurnAroundTime TurnAroundTime
 		{

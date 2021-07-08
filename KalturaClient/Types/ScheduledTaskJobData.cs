@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use MaxResultsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MaxResults
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MaxResults");
 			}
 		}
+		/// <summary>
+		/// Use TotalCountAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int TotalCount
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TotalCount");
 			}
 		}
+		/// <summary>
+		/// Use FileFormatAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DryRunFileType FileFormat
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileFormat");
 			}
 		}
+		/// <summary>
+		/// Use ResultsFilePathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ResultsFilePath
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ResultsFilePath");
 			}
 		}
+		/// <summary>
+		/// Use ReferenceTimeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ReferenceTime
 		{

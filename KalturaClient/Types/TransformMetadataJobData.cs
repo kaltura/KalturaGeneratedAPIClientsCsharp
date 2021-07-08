@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use SrcXslAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public FileContainer SrcXsl
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcXsl");
 			}
 		}
+		/// <summary>
+		/// Use SrcVersionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int SrcVersion
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcVersion");
 			}
 		}
+		/// <summary>
+		/// Use DestVersionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int DestVersion
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestVersion");
 			}
 		}
+		/// <summary>
+		/// Use DestXsdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public FileContainer DestXsd
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestXsd");
 			}
 		}
+		/// <summary>
+		/// Use MetadataProfileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MetadataProfileId
 		{

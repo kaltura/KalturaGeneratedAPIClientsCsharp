@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use SourceLanguageEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public CatalogItemLanguage SourceLanguageEqual
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceLanguageEqual");
 			}
 		}
+		/// <summary>
+		/// Use SourceLanguageInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SourceLanguageIn
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceLanguageIn");
 			}
 		}
+		/// <summary>
+		/// Use OutputFormatEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VendorCatalogItemOutputFormat OutputFormatEqual
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OutputFormatEqual");
 			}
 		}
+		/// <summary>
+		/// Use OutputFormatInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string OutputFormatIn
 		{

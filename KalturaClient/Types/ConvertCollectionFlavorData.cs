@@ -58,6 +58,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FlavorAssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlavorAssetId
 		{
@@ -68,6 +71,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetId");
 			}
 		}
+		/// <summary>
+		/// Use FlavorParamsOutputIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int FlavorParamsOutputId
 		{
@@ -78,6 +84,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsOutputId");
 			}
 		}
+		/// <summary>
+		/// Use ReadyBehaviorAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ReadyBehavior
 		{
@@ -88,6 +97,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReadyBehavior");
 			}
 		}
+		/// <summary>
+		/// Use VideoBitrateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int VideoBitrate
 		{
@@ -98,6 +110,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoBitrate");
 			}
 		}
+		/// <summary>
+		/// Use AudioBitrateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int AudioBitrate
 		{
@@ -108,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AudioBitrate");
 			}
 		}
+		/// <summary>
+		/// Use DestFileSyncLocalPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DestFileSyncLocalPath
 		{
@@ -118,6 +136,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestFileSyncLocalPath");
 			}
 		}
+		/// <summary>
+		/// Use DestFileSyncRemoteUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DestFileSyncRemoteUrl
 		{

@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use HighlightAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<ESearchHighlight> Highlight
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Highlight");
 			}
 		}
+		/// <summary>
+		/// Use ItemsDataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<ESearchItemDataResult> ItemsData
 		{

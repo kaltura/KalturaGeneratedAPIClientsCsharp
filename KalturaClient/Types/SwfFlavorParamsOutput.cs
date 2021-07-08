@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FlashVersionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int FlashVersion
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlashVersion");
 			}
 		}
+		/// <summary>
+		/// Use Poly2BitmapAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? Poly2Bitmap
 		{

@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ValueAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Value
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Value");
 			}
 		}
+		/// <summary>
+		/// Use CountAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Count
 		{

@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use PlayListTypeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public PlaylistType PlayListTypeEqual
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PlayListTypeEqual");
 			}
 		}
+		/// <summary>
+		/// Use PlayListTypeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PlayListTypeIn
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PlayListTypeIn");
 			}
 		}
+		/// <summary>
+		/// Use OrderByAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public new PlaylistOrderBy OrderBy
 		{

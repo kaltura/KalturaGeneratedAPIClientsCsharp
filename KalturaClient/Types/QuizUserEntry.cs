@@ -45,15 +45,32 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Private Fields
-		private float _Score = Single.MinValue;
-		private float _CalculatedScore = Single.MinValue;
+		private double _Score = Double.MinValue;
+		private double _CalculatedScore = Double.MinValue;
 		private string _Feedback = null;
 		private int _Version = Int32.MinValue;
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ScoreAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use ScoreAsDouble property instead")]
 		public float Score
+		{
+			get { return (float)_Score; }
+			private set 
+			{ 
+				_Score = value;
+				OnPropertyChanged("Score");
+			}
+		}
+		///<summary>
+		///Use this property ScoreAsDouble instead of the float Score property version
+		///</summary>
+		[JsonProperty]
+		public double ScoreAsDouble
 		{
 			get { return _Score; }
 			private set 
@@ -62,8 +79,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("Score");
 			}
 		}
+		/// <summary>
+		/// Use CalculatedScoreAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use CalculatedScoreAsDouble property instead")]
 		public float CalculatedScore
+		{
+			get { return (float)_CalculatedScore; }
+			private set 
+			{ 
+				_CalculatedScore = value;
+				OnPropertyChanged("CalculatedScore");
+			}
+		}
+		///<summary>
+		///Use this property CalculatedScoreAsDouble instead of the float CalculatedScore property version
+		///</summary>
+		[JsonProperty]
+		public double CalculatedScoreAsDouble
 		{
 			get { return _CalculatedScore; }
 			private set 
@@ -72,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CalculatedScore");
 			}
 		}
+		/// <summary>
+		/// Use FeedbackAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Feedback
 		{
@@ -82,6 +119,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Feedback");
 			}
 		}
+		/// <summary>
+		/// Use VersionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Version
 		{
@@ -103,11 +143,11 @@ namespace Kaltura.Types
 		{
 			if(node["score"] != null)
 			{
-				this._Score = ParseFloat(node["score"].Value<string>());
+				this._Score = ParseDouble(node["score"].Value<string>());
 			}
 			if(node["calculatedScore"] != null)
 			{
-				this._CalculatedScore = ParseFloat(node["calculatedScore"].Value<string>());
+				this._CalculatedScore = ParseDouble(node["calculatedScore"].Value<string>());
 			}
 			if(node["feedback"] != null)
 			{

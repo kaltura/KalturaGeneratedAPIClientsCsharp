@@ -64,6 +64,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use WebexUserIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string WebexUserId
 		{
@@ -74,6 +77,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebexUserId");
 			}
 		}
+		/// <summary>
+		/// Use WebexPasswordAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string WebexPassword
 		{
@@ -84,6 +90,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebexPassword");
 			}
 		}
+		/// <summary>
+		/// Use WebexSiteIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int WebexSiteId
 		{
@@ -94,6 +103,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebexSiteId");
 			}
 		}
+		/// <summary>
+		/// Use WebexPartnerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string WebexPartnerId
 		{
@@ -104,6 +116,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebexPartnerId");
 			}
 		}
+		/// <summary>
+		/// Use WebexServiceUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string WebexServiceUrl
 		{
@@ -114,6 +129,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebexServiceUrl");
 			}
 		}
+		/// <summary>
+		/// Use WebexHostIdMetadataFieldNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string WebexHostIdMetadataFieldName
 		{
@@ -124,6 +142,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebexHostIdMetadataFieldName");
 			}
 		}
+		/// <summary>
+		/// Use DeleteFromRecycleBinAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? DeleteFromRecycleBin
 		{
@@ -134,6 +155,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeleteFromRecycleBin");
 			}
 		}
+		/// <summary>
+		/// Use WebexServiceTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string WebexServiceType
 		{
@@ -144,6 +168,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebexServiceType");
 			}
 		}
+		/// <summary>
+		/// Use WebexSiteNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string WebexSiteName
 		{
@@ -154,6 +181,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebexSiteName");
 			}
 		}
+		/// <summary>
+		/// Use DeleteFromTimestampAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int DeleteFromTimestamp
 		{

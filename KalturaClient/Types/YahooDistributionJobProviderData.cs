@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use SmallThumbPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SmallThumbPath
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SmallThumbPath");
 			}
 		}
+		/// <summary>
+		/// Use LargeThumbPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string LargeThumbPath
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LargeThumbPath");
 			}
 		}
+		/// <summary>
+		/// Use VideoAssetFilePathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string VideoAssetFilePath
 		{

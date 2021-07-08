@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IsQuizAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean IsQuiz
 		{

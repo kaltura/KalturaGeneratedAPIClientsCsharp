@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FormatEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ContainerFormat FormatEqual
 		{

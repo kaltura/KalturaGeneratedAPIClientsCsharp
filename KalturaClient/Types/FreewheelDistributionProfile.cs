@@ -56,6 +56,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ApikeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Apikey
 		{
@@ -66,6 +69,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Apikey");
 			}
 		}
+		/// <summary>
+		/// Use EmailAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Email
 		{
@@ -76,6 +82,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Email");
 			}
 		}
+		/// <summary>
+		/// Use SftpPassAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SftpPass
 		{
@@ -86,6 +95,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpPass");
 			}
 		}
+		/// <summary>
+		/// Use SftpLoginAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SftpLogin
 		{
@@ -96,6 +108,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpLogin");
 			}
 		}
+		/// <summary>
+		/// Use AccountIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AccountId
 		{
@@ -106,6 +121,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AccountId");
 			}
 		}
+		/// <summary>
+		/// Use MetadataProfileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MetadataProfileId
 		{

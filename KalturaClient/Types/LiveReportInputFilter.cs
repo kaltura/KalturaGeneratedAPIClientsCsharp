@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use EntryIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntryIds
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIds");
 			}
 		}
+		/// <summary>
+		/// Use FromTimeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int FromTime
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FromTime");
 			}
 		}
+		/// <summary>
+		/// Use ToTimeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ToTime
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ToTime");
 			}
 		}
+		/// <summary>
+		/// Use LiveAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean Live
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Live");
 			}
 		}
+		/// <summary>
+		/// Use OrderByAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public LiveReportOrderBy OrderBy
 		{

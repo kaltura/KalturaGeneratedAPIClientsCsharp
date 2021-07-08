@@ -76,6 +76,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use MailTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public MailType MailType
 		{
@@ -86,6 +89,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MailType");
 			}
 		}
+		/// <summary>
+		/// Use MailPriorityAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MailPriority
 		{
@@ -96,6 +102,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MailPriority");
 			}
 		}
+		/// <summary>
+		/// Use StatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public MailJobStatus Status
 		{
@@ -106,6 +115,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		/// <summary>
+		/// Use RecipientNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RecipientName
 		{
@@ -116,6 +128,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecipientName");
 			}
 		}
+		/// <summary>
+		/// Use RecipientEmailAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RecipientEmail
 		{
@@ -126,6 +141,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecipientEmail");
 			}
 		}
+		/// <summary>
+		/// Use RecipientIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int RecipientId
 		{
@@ -136,6 +154,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecipientId");
 			}
 		}
+		/// <summary>
+		/// Use FromNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FromName
 		{
@@ -146,6 +167,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FromName");
 			}
 		}
+		/// <summary>
+		/// Use FromEmailAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FromEmail
 		{
@@ -156,6 +180,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FromEmail");
 			}
 		}
+		/// <summary>
+		/// Use BodyParamsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string BodyParams
 		{
@@ -166,6 +193,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("BodyParams");
 			}
 		}
+		/// <summary>
+		/// Use SubjectParamsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SubjectParams
 		{
@@ -176,6 +206,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SubjectParams");
 			}
 		}
+		/// <summary>
+		/// Use TemplatePathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TemplatePath
 		{
@@ -186,6 +219,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplatePath");
 			}
 		}
+		/// <summary>
+		/// Use LanguageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public LanguageCode Language
 		{
@@ -196,6 +232,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Language");
 			}
 		}
+		/// <summary>
+		/// Use CampaignIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CampaignId
 		{
@@ -206,6 +245,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CampaignId");
 			}
 		}
+		/// <summary>
+		/// Use MinSendDateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MinSendDate
 		{
@@ -216,6 +258,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MinSendDate");
 			}
 		}
+		/// <summary>
+		/// Use IsHtmlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? IsHtml
 		{
@@ -226,6 +271,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsHtml");
 			}
 		}
+		/// <summary>
+		/// Use SeparatorAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Separator
 		{

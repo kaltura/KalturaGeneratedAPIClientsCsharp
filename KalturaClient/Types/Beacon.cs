@@ -60,6 +60,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Id
 		{
@@ -70,6 +73,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		/// <summary>
+		/// Use IndexTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string IndexType
 		{
@@ -80,6 +86,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IndexType");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -90,6 +99,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
+		/// <summary>
+		/// Use RelatedObjectTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public BeaconObjectTypes RelatedObjectType
 		{
@@ -100,6 +112,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RelatedObjectType");
 			}
 		}
+		/// <summary>
+		/// Use EventTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EventType
 		{
@@ -110,6 +125,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EventType");
 			}
 		}
+		/// <summary>
+		/// Use ObjectIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ObjectId
 		{
@@ -120,6 +138,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectId");
 			}
 		}
+		/// <summary>
+		/// Use PrivateDataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PrivateData
 		{
@@ -130,6 +151,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrivateData");
 			}
 		}
+		/// <summary>
+		/// Use RawDataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RawData
 		{

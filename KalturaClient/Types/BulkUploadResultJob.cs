@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use JobObjectIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int JobObjectId
 		{

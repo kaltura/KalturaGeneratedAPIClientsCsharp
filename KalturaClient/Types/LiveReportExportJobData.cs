@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use TimeReferenceAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int TimeReference
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TimeReference");
 			}
 		}
+		/// <summary>
+		/// Use TimeZoneOffsetAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int TimeZoneOffset
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TimeZoneOffset");
 			}
 		}
+		/// <summary>
+		/// Use EntryIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntryIds
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIds");
 			}
 		}
+		/// <summary>
+		/// Use OutputPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string OutputPath
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OutputPath");
 			}
 		}
+		/// <summary>
+		/// Use RecipientEmailAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RecipientEmail
 		{

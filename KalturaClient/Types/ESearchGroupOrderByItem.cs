@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use SortFieldAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ESearchGroupOrderByFieldName SortField
 		{

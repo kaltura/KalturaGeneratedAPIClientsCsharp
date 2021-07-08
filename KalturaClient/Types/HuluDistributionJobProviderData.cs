@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use VideoAssetFilePathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string VideoAssetFilePath
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoAssetFilePath");
 			}
 		}
+		/// <summary>
+		/// Use ThumbAssetFilePathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ThumbAssetFilePath
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbAssetFilePath");
 			}
 		}
+		/// <summary>
+		/// Use CuePointsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<CuePoint> CuePoints
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CuePoints");
 			}
 		}
+		/// <summary>
+		/// Use FileBaseNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FileBaseName
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileBaseName");
 			}
 		}
+		/// <summary>
+		/// Use CaptionLocalPathsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<String> CaptionLocalPaths
 		{

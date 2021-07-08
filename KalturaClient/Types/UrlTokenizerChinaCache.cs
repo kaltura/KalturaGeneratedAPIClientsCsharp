@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use AlgorithmIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ChinaCacheAlgorithmType AlgorithmId
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AlgorithmId");
 			}
 		}
+		/// <summary>
+		/// Use KeyIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int KeyId
 		{

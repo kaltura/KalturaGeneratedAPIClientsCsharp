@@ -72,6 +72,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use UserIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UserId
 		{
@@ -82,6 +85,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserId");
 			}
 		}
+		/// <summary>
+		/// Use ScreenNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ScreenName
 		{
@@ -92,6 +98,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ScreenName");
 			}
 		}
+		/// <summary>
+		/// Use EmailAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Email
 		{
@@ -102,6 +111,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Email");
 			}
 		}
+		/// <summary>
+		/// Use DescriptionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Description
 		{
@@ -112,6 +124,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		/// <summary>
+		/// Use TagsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Tags
 		{
@@ -122,6 +137,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
+		/// <summary>
+		/// Use DateOfBirthAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int DateOfBirth
 		{
@@ -132,6 +150,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DateOfBirth");
 			}
 		}
+		/// <summary>
+		/// Use CountryAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Country
 		{
@@ -142,6 +163,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Country");
 			}
 		}
+		/// <summary>
+		/// Use StateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string State
 		{
@@ -152,6 +176,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("State");
 			}
 		}
+		/// <summary>
+		/// Use CityAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string City
 		{
@@ -162,6 +189,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("City");
 			}
 		}
+		/// <summary>
+		/// Use ZipAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Zip
 		{
@@ -172,6 +202,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Zip");
 			}
 		}
+		/// <summary>
+		/// Use GenderAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Gender
 		{
@@ -182,6 +215,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Gender");
 			}
 		}
+		/// <summary>
+		/// Use FirstNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FirstName
 		{
@@ -192,6 +228,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FirstName");
 			}
 		}
+		/// <summary>
+		/// Use LastNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string LastName
 		{
@@ -202,6 +241,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastName");
 			}
 		}
+		/// <summary>
+		/// Use GroupAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Group
 		{

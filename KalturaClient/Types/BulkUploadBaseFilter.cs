@@ -58,6 +58,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use UploadedOnGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UploadedOnGreaterThanOrEqual
 		{
@@ -68,6 +71,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UploadedOnGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use UploadedOnLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UploadedOnLessThanOrEqual
 		{
@@ -78,6 +84,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UploadedOnLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use UploadedOnEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UploadedOnEqual
 		{
@@ -88,6 +97,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UploadedOnEqual");
 			}
 		}
+		/// <summary>
+		/// Use StatusInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StatusIn
 		{
@@ -98,6 +110,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		/// <summary>
+		/// Use StatusEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public BatchJobStatus StatusEqual
 		{
@@ -108,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		/// <summary>
+		/// Use BulkUploadObjectTypeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public BulkUploadObjectType BulkUploadObjectTypeEqual
 		{
@@ -118,6 +136,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("BulkUploadObjectTypeEqual");
 			}
 		}
+		/// <summary>
+		/// Use BulkUploadObjectTypeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string BulkUploadObjectTypeIn
 		{

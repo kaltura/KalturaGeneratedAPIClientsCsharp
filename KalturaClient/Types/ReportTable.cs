@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use HeaderAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Header
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Header");
 			}
 		}
+		/// <summary>
+		/// Use DataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Data
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Data");
 			}
 		}
+		/// <summary>
+		/// Use TotalCountAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int TotalCount
 		{

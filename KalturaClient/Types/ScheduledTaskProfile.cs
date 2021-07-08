@@ -70,6 +70,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Id
 		{
@@ -80,6 +83,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		/// <summary>
+		/// Use PartnerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -90,6 +96,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		/// <summary>
+		/// Use NameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -100,6 +109,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		/// <summary>
+		/// Use SystemNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SystemName
 		{
@@ -110,6 +122,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemName");
 			}
 		}
+		/// <summary>
+		/// Use DescriptionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Description
 		{
@@ -120,6 +135,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		/// <summary>
+		/// Use StatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ScheduledTaskProfileStatus Status
 		{
@@ -130,6 +148,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		/// <summary>
+		/// Use ObjectFilterEngineTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ObjectFilterEngineType ObjectFilterEngineType
 		{
@@ -140,6 +161,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectFilterEngineType");
 			}
 		}
+		/// <summary>
+		/// Use ObjectFilterAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public Filter ObjectFilter
 		{
@@ -150,6 +174,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectFilter");
 			}
 		}
+		/// <summary>
+		/// Use ObjectTasksAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<ObjectTask> ObjectTasks
 		{
@@ -160,6 +187,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectTasks");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -170,6 +200,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -180,6 +213,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
+		/// <summary>
+		/// Use LastExecutionStartedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LastExecutionStartedAt
 		{
@@ -190,6 +226,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastExecutionStartedAt");
 			}
 		}
+		/// <summary>
+		/// Use MaxTotalCountAllowedAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MaxTotalCountAllowed
 		{

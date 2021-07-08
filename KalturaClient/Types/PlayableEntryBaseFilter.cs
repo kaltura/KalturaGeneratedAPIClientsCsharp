@@ -60,6 +60,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use LastPlayedAtGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LastPlayedAtGreaterThanOrEqual
 		{
@@ -70,6 +73,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastPlayedAtGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use LastPlayedAtLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LastPlayedAtLessThanOrEqual
 		{
@@ -80,6 +86,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastPlayedAtLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use LastPlayedAtLessThanOrEqualOrNullAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LastPlayedAtLessThanOrEqualOrNull
 		{
@@ -90,6 +99,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastPlayedAtLessThanOrEqualOrNull");
 			}
 		}
+		/// <summary>
+		/// Use DurationLessThanAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int DurationLessThan
 		{
@@ -100,6 +112,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DurationLessThan");
 			}
 		}
+		/// <summary>
+		/// Use DurationGreaterThanAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int DurationGreaterThan
 		{
@@ -110,6 +125,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DurationGreaterThan");
 			}
 		}
+		/// <summary>
+		/// Use DurationLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int DurationLessThanOrEqual
 		{
@@ -120,6 +138,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DurationLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use DurationGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int DurationGreaterThanOrEqual
 		{
@@ -130,6 +151,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DurationGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use DurationTypeMatchOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DurationTypeMatchOr
 		{

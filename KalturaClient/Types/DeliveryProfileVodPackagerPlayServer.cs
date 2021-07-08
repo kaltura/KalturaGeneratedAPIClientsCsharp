@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use AdStitchingEnabledAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? AdStitchingEnabled
 		{

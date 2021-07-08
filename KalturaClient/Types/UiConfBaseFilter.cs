@@ -84,6 +84,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int IdEqual
 		{
@@ -94,6 +97,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		/// <summary>
+		/// Use IdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string IdIn
 		{
@@ -104,6 +110,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		/// <summary>
+		/// Use NameLikeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string NameLike
 		{
@@ -114,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("NameLike");
 			}
 		}
+		/// <summary>
+		/// Use PartnerIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerIdEqual
 		{
@@ -124,6 +136,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use PartnerIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PartnerIdIn
 		{
@@ -134,6 +149,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdIn");
 			}
 		}
+		/// <summary>
+		/// Use ObjTypeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public UiConfObjType ObjTypeEqual
 		{
@@ -144,6 +162,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjTypeEqual");
 			}
 		}
+		/// <summary>
+		/// Use ObjTypeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ObjTypeIn
 		{
@@ -154,6 +175,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjTypeIn");
 			}
 		}
+		/// <summary>
+		/// Use TagsMultiLikeOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TagsMultiLikeOr
 		{
@@ -164,6 +188,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsMultiLikeOr");
 			}
 		}
+		/// <summary>
+		/// Use TagsMultiLikeAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TagsMultiLikeAnd
 		{
@@ -174,6 +201,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsMultiLikeAnd");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
@@ -184,6 +214,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
@@ -194,6 +227,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
@@ -204,6 +240,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
@@ -214,6 +253,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use CreationModeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public UiConfCreationMode CreationModeEqual
 		{
@@ -224,6 +266,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreationModeEqual");
 			}
 		}
+		/// <summary>
+		/// Use CreationModeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CreationModeIn
 		{
@@ -234,6 +279,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreationModeIn");
 			}
 		}
+		/// <summary>
+		/// Use VersionEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string VersionEqual
 		{
@@ -244,6 +292,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VersionEqual");
 			}
 		}
+		/// <summary>
+		/// Use VersionMultiLikeOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string VersionMultiLikeOr
 		{
@@ -254,6 +305,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VersionMultiLikeOr");
 			}
 		}
+		/// <summary>
+		/// Use VersionMultiLikeAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string VersionMultiLikeAnd
 		{
@@ -264,6 +318,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VersionMultiLikeAnd");
 			}
 		}
+		/// <summary>
+		/// Use PartnerTagsMultiLikeOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PartnerTagsMultiLikeOr
 		{
@@ -274,6 +331,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerTagsMultiLikeOr");
 			}
 		}
+		/// <summary>
+		/// Use PartnerTagsMultiLikeAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PartnerTagsMultiLikeAnd
 		{

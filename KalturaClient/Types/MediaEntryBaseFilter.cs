@@ -64,6 +64,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use MediaTypeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public MediaType MediaTypeEqual
 		{
@@ -74,6 +77,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaTypeEqual");
 			}
 		}
+		/// <summary>
+		/// Use MediaTypeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string MediaTypeIn
 		{
@@ -84,6 +90,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaTypeIn");
 			}
 		}
+		/// <summary>
+		/// Use SourceTypeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public SourceType SourceTypeEqual
 		{
@@ -94,6 +103,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceTypeEqual");
 			}
 		}
+		/// <summary>
+		/// Use SourceTypeNotEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public SourceType SourceTypeNotEqual
 		{
@@ -104,6 +116,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceTypeNotEqual");
 			}
 		}
+		/// <summary>
+		/// Use SourceTypeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SourceTypeIn
 		{
@@ -114,6 +129,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceTypeIn");
 			}
 		}
+		/// <summary>
+		/// Use SourceTypeNotInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SourceTypeNotIn
 		{
@@ -124,6 +142,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceTypeNotIn");
 			}
 		}
+		/// <summary>
+		/// Use MediaDateGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MediaDateGreaterThanOrEqual
 		{
@@ -134,6 +155,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaDateGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use MediaDateLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MediaDateLessThanOrEqual
 		{
@@ -144,6 +168,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaDateLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use FlavorParamsIdsMatchOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlavorParamsIdsMatchOr
 		{
@@ -154,6 +181,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsIdsMatchOr");
 			}
 		}
+		/// <summary>
+		/// Use FlavorParamsIdsMatchAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlavorParamsIdsMatchAnd
 		{

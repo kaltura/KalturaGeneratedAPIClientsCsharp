@@ -69,7 +69,7 @@ namespace Kaltura.Types
 		private int _PartnerId = Int32.MinValue;
 		private int _DropFolderId = Int32.MinValue;
 		private string _FileName = null;
-		private float _FileSize = Single.MinValue;
+		private double _FileSize = Double.MinValue;
 		private int _FileSizeLastSetAt = Int32.MinValue;
 		private DropFolderFileStatus _Status = (DropFolderFileStatus)Int32.MinValue;
 		private DropFolderType _Type = null;
@@ -92,6 +92,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Id
 		{
@@ -102,6 +105,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		/// <summary>
+		/// Use PartnerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -112,6 +118,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		/// <summary>
+		/// Use DropFolderIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int DropFolderId
 		{
@@ -122,6 +131,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DropFolderId");
 			}
 		}
+		/// <summary>
+		/// Use FileNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FileName
 		{
@@ -132,8 +144,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileName");
 			}
 		}
+		/// <summary>
+		/// Use FileSizeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use FileSizeAsDouble property instead")]
 		public float FileSize
+		{
+			get { return (float)_FileSize; }
+			set 
+			{ 
+				_FileSize = value;
+				OnPropertyChanged("FileSize");
+			}
+		}
+		///<summary>
+		///Use this property FileSizeAsDouble instead of the float FileSize property version
+		///</summary>
+		[JsonProperty]
+		public double FileSizeAsDouble
 		{
 			get { return _FileSize; }
 			set 
@@ -142,6 +171,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileSize");
 			}
 		}
+		/// <summary>
+		/// Use FileSizeLastSetAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int FileSizeLastSetAt
 		{
@@ -152,6 +184,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileSizeLastSetAt");
 			}
 		}
+		/// <summary>
+		/// Use StatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DropFolderFileStatus Status
 		{
@@ -162,6 +197,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		/// <summary>
+		/// Use TypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DropFolderType Type
 		{
@@ -172,6 +210,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		/// <summary>
+		/// Use ParsedSlugAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ParsedSlug
 		{
@@ -182,6 +223,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParsedSlug");
 			}
 		}
+		/// <summary>
+		/// Use ParsedFlavorAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ParsedFlavor
 		{
@@ -192,6 +236,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParsedFlavor");
 			}
 		}
+		/// <summary>
+		/// Use ParsedUserIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ParsedUserId
 		{
@@ -202,6 +249,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParsedUserId");
 			}
 		}
+		/// <summary>
+		/// Use LeadDropFolderFileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LeadDropFolderFileId
 		{
@@ -212,6 +262,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LeadDropFolderFileId");
 			}
 		}
+		/// <summary>
+		/// Use DeletedDropFolderFileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int DeletedDropFolderFileId
 		{
@@ -222,6 +275,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeletedDropFolderFileId");
 			}
 		}
+		/// <summary>
+		/// Use EntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntryId
 		{
@@ -232,6 +288,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		/// <summary>
+		/// Use ErrorCodeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DropFolderFileErrorCode ErrorCode
 		{
@@ -242,6 +301,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrorCode");
 			}
 		}
+		/// <summary>
+		/// Use ErrorDescriptionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ErrorDescription
 		{
@@ -252,6 +314,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrorDescription");
 			}
 		}
+		/// <summary>
+		/// Use LastModificationTimeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string LastModificationTime
 		{
@@ -262,6 +327,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastModificationTime");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -272,6 +340,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -282,6 +353,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
+		/// <summary>
+		/// Use UploadStartDetectedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UploadStartDetectedAt
 		{
@@ -292,6 +366,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UploadStartDetectedAt");
 			}
 		}
+		/// <summary>
+		/// Use UploadEndDetectedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UploadEndDetectedAt
 		{
@@ -302,6 +379,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UploadEndDetectedAt");
 			}
 		}
+		/// <summary>
+		/// Use ImportStartedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ImportStartedAt
 		{
@@ -312,6 +392,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ImportStartedAt");
 			}
 		}
+		/// <summary>
+		/// Use ImportEndedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ImportEndedAt
 		{
@@ -322,6 +405,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ImportEndedAt");
 			}
 		}
+		/// <summary>
+		/// Use BatchJobIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int BatchJobId
 		{
@@ -359,7 +445,7 @@ namespace Kaltura.Types
 			}
 			if(node["fileSize"] != null)
 			{
-				this._FileSize = ParseFloat(node["fileSize"].Value<string>());
+				this._FileSize = ParseDouble(node["fileSize"].Value<string>());
 			}
 			if(node["fileSizeLastSetAt"] != null)
 			{

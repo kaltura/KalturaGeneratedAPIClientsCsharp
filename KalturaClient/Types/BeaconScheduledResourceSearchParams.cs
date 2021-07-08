@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use SearchOperatorAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public BeaconScheduledResourceOperator SearchOperator
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SearchOperator");
 			}
 		}
+		/// <summary>
+		/// Use OrderByAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public BeaconSearchScheduledResourceOrderBy OrderBy
 		{

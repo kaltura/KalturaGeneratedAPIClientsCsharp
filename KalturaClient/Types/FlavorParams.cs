@@ -89,7 +89,7 @@ namespace Kaltura.Types
 		private int _AudioSampleRate = Int32.MinValue;
 		private int _Width = Int32.MinValue;
 		private int _Height = Int32.MinValue;
-		private float _FrameRate = Single.MinValue;
+		private double _FrameRate = Double.MinValue;
 		private int _GopSize = Int32.MinValue;
 		private string _ConversionEngines = null;
 		private string _ConversionEnginesExtraParams = null;
@@ -106,7 +106,7 @@ namespace Kaltura.Types
 		private int _IsAvoidVideoShrinkBitrateToSource = Int32.MinValue;
 		private int _IsVideoFrameRateForLowBrAppleHls = Int32.MinValue;
 		private string _MultiStream = null;
-		private float _AnamorphicPixels = Single.MinValue;
+		private double _AnamorphicPixels = Double.MinValue;
 		private int _IsAvoidForcedKeyFrames = Int32.MinValue;
 		private int _ForcedKeyFramesMode = Int32.MinValue;
 		private int _IsCropIMX = Int32.MinValue;
@@ -117,13 +117,16 @@ namespace Kaltura.Types
 		private string _WatermarkData = null;
 		private string _SubtitlesData = null;
 		private int _IsEncrypted = Int32.MinValue;
-		private float _ContentAwareness = Single.MinValue;
+		private double _ContentAwareness = Double.MinValue;
 		private int _ChunkedEncodeMode = Int32.MinValue;
 		private int _ClipOffset = Int32.MinValue;
 		private int _ClipDuration = Int32.MinValue;
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use VideoCodecAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VideoCodec VideoCodec
 		{
@@ -134,6 +137,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoCodec");
 			}
 		}
+		/// <summary>
+		/// Use VideoBitrateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int VideoBitrate
 		{
@@ -144,6 +150,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoBitrate");
 			}
 		}
+		/// <summary>
+		/// Use AudioCodecAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public AudioCodec AudioCodec
 		{
@@ -154,6 +163,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AudioCodec");
 			}
 		}
+		/// <summary>
+		/// Use AudioBitrateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int AudioBitrate
 		{
@@ -164,6 +176,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AudioBitrate");
 			}
 		}
+		/// <summary>
+		/// Use AudioChannelsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int AudioChannels
 		{
@@ -174,6 +189,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AudioChannels");
 			}
 		}
+		/// <summary>
+		/// Use AudioSampleRateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int AudioSampleRate
 		{
@@ -184,6 +202,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AudioSampleRate");
 			}
 		}
+		/// <summary>
+		/// Use WidthAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Width
 		{
@@ -194,6 +215,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Width");
 			}
 		}
+		/// <summary>
+		/// Use HeightAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Height
 		{
@@ -204,8 +228,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("Height");
 			}
 		}
+		/// <summary>
+		/// Use FrameRateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use FrameRateAsDouble property instead")]
 		public float FrameRate
+		{
+			get { return (float)_FrameRate; }
+			set 
+			{ 
+				_FrameRate = value;
+				OnPropertyChanged("FrameRate");
+			}
+		}
+		///<summary>
+		///Use this property FrameRateAsDouble instead of the float FrameRate property version
+		///</summary>
+		[JsonProperty]
+		public double FrameRateAsDouble
 		{
 			get { return _FrameRate; }
 			set 
@@ -214,6 +255,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FrameRate");
 			}
 		}
+		/// <summary>
+		/// Use GopSizeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int GopSize
 		{
@@ -224,6 +268,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("GopSize");
 			}
 		}
+		/// <summary>
+		/// Use ConversionEnginesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ConversionEngines
 		{
@@ -234,6 +281,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionEngines");
 			}
 		}
+		/// <summary>
+		/// Use ConversionEnginesExtraParamsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ConversionEnginesExtraParams
 		{
@@ -244,6 +294,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionEnginesExtraParams");
 			}
 		}
+		/// <summary>
+		/// Use TwoPassAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? TwoPass
 		{
@@ -254,6 +307,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TwoPass");
 			}
 		}
+		/// <summary>
+		/// Use DeinterliceAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Deinterlice
 		{
@@ -264,6 +320,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Deinterlice");
 			}
 		}
+		/// <summary>
+		/// Use RotateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Rotate
 		{
@@ -274,6 +333,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Rotate");
 			}
 		}
+		/// <summary>
+		/// Use OperatorsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Operators
 		{
@@ -284,6 +346,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Operators");
 			}
 		}
+		/// <summary>
+		/// Use EngineVersionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int EngineVersion
 		{
@@ -294,6 +359,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EngineVersion");
 			}
 		}
+		/// <summary>
+		/// Use FormatAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ContainerFormat Format
 		{
@@ -304,6 +372,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Format");
 			}
 		}
+		/// <summary>
+		/// Use AspectRatioProcessingModeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int AspectRatioProcessingMode
 		{
@@ -314,6 +385,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AspectRatioProcessingMode");
 			}
 		}
+		/// <summary>
+		/// Use ForceFrameToMultiplication16AsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ForceFrameToMultiplication16
 		{
@@ -324,6 +398,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ForceFrameToMultiplication16");
 			}
 		}
+		/// <summary>
+		/// Use IsGopInSecAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int IsGopInSec
 		{
@@ -334,6 +411,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsGopInSec");
 			}
 		}
+		/// <summary>
+		/// Use IsAvoidVideoShrinkFramesizeToSourceAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int IsAvoidVideoShrinkFramesizeToSource
 		{
@@ -344,6 +424,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsAvoidVideoShrinkFramesizeToSource");
 			}
 		}
+		/// <summary>
+		/// Use IsAvoidVideoShrinkBitrateToSourceAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int IsAvoidVideoShrinkBitrateToSource
 		{
@@ -354,6 +437,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsAvoidVideoShrinkBitrateToSource");
 			}
 		}
+		/// <summary>
+		/// Use IsVideoFrameRateForLowBrAppleHlsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int IsVideoFrameRateForLowBrAppleHls
 		{
@@ -364,6 +450,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsVideoFrameRateForLowBrAppleHls");
 			}
 		}
+		/// <summary>
+		/// Use MultiStreamAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string MultiStream
 		{
@@ -374,8 +463,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("MultiStream");
 			}
 		}
+		/// <summary>
+		/// Use AnamorphicPixelsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use AnamorphicPixelsAsDouble property instead")]
 		public float AnamorphicPixels
+		{
+			get { return (float)_AnamorphicPixels; }
+			set 
+			{ 
+				_AnamorphicPixels = value;
+				OnPropertyChanged("AnamorphicPixels");
+			}
+		}
+		///<summary>
+		///Use this property AnamorphicPixelsAsDouble instead of the float AnamorphicPixels property version
+		///</summary>
+		[JsonProperty]
+		public double AnamorphicPixelsAsDouble
 		{
 			get { return _AnamorphicPixels; }
 			set 
@@ -384,6 +490,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AnamorphicPixels");
 			}
 		}
+		/// <summary>
+		/// Use IsAvoidForcedKeyFramesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int IsAvoidForcedKeyFrames
 		{
@@ -394,6 +503,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsAvoidForcedKeyFrames");
 			}
 		}
+		/// <summary>
+		/// Use ForcedKeyFramesModeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ForcedKeyFramesMode
 		{
@@ -404,6 +516,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ForcedKeyFramesMode");
 			}
 		}
+		/// <summary>
+		/// Use IsCropIMXAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int IsCropIMX
 		{
@@ -414,6 +529,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsCropIMX");
 			}
 		}
+		/// <summary>
+		/// Use OptimizationPolicyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int OptimizationPolicy
 		{
@@ -424,6 +542,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OptimizationPolicy");
 			}
 		}
+		/// <summary>
+		/// Use MaxFrameRateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MaxFrameRate
 		{
@@ -434,6 +555,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MaxFrameRate");
 			}
 		}
+		/// <summary>
+		/// Use VideoConstantBitrateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int VideoConstantBitrate
 		{
@@ -444,6 +568,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoConstantBitrate");
 			}
 		}
+		/// <summary>
+		/// Use VideoBitrateToleranceAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int VideoBitrateTolerance
 		{
@@ -454,6 +581,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoBitrateTolerance");
 			}
 		}
+		/// <summary>
+		/// Use WatermarkDataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string WatermarkData
 		{
@@ -464,6 +594,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("WatermarkData");
 			}
 		}
+		/// <summary>
+		/// Use SubtitlesDataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SubtitlesData
 		{
@@ -474,6 +607,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SubtitlesData");
 			}
 		}
+		/// <summary>
+		/// Use IsEncryptedAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int IsEncrypted
 		{
@@ -484,8 +620,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsEncrypted");
 			}
 		}
+		/// <summary>
+		/// Use ContentAwarenessAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use ContentAwarenessAsDouble property instead")]
 		public float ContentAwareness
+		{
+			get { return (float)_ContentAwareness; }
+			set 
+			{ 
+				_ContentAwareness = value;
+				OnPropertyChanged("ContentAwareness");
+			}
+		}
+		///<summary>
+		///Use this property ContentAwarenessAsDouble instead of the float ContentAwareness property version
+		///</summary>
+		[JsonProperty]
+		public double ContentAwarenessAsDouble
 		{
 			get { return _ContentAwareness; }
 			set 
@@ -494,6 +647,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentAwareness");
 			}
 		}
+		/// <summary>
+		/// Use ChunkedEncodeModeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ChunkedEncodeMode
 		{
@@ -504,6 +660,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChunkedEncodeMode");
 			}
 		}
+		/// <summary>
+		/// Use ClipOffsetAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ClipOffset
 		{
@@ -514,6 +673,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ClipOffset");
 			}
 		}
+		/// <summary>
+		/// Use ClipDurationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ClipDuration
 		{
@@ -567,7 +729,7 @@ namespace Kaltura.Types
 			}
 			if(node["frameRate"] != null)
 			{
-				this._FrameRate = ParseFloat(node["frameRate"].Value<string>());
+				this._FrameRate = ParseDouble(node["frameRate"].Value<string>());
 			}
 			if(node["gopSize"] != null)
 			{
@@ -635,7 +797,7 @@ namespace Kaltura.Types
 			}
 			if(node["anamorphicPixels"] != null)
 			{
-				this._AnamorphicPixels = ParseFloat(node["anamorphicPixels"].Value<string>());
+				this._AnamorphicPixels = ParseDouble(node["anamorphicPixels"].Value<string>());
 			}
 			if(node["isAvoidForcedKeyFrames"] != null)
 			{
@@ -679,7 +841,7 @@ namespace Kaltura.Types
 			}
 			if(node["contentAwareness"] != null)
 			{
-				this._ContentAwareness = ParseFloat(node["contentAwareness"].Value<string>());
+				this._ContentAwareness = ParseDouble(node["contentAwareness"].Value<string>());
 			}
 			if(node["chunkedEncodeMode"] != null)
 			{

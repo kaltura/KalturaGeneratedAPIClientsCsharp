@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ConditionsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<Condition> Conditions
 		{

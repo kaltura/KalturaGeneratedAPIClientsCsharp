@@ -58,6 +58,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use GenericProviderIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int GenericProviderId
 		{
@@ -68,6 +71,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("GenericProviderId");
 			}
 		}
+		/// <summary>
+		/// Use SubmitActionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public GenericDistributionProfileAction SubmitAction
 		{
@@ -78,6 +84,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SubmitAction");
 			}
 		}
+		/// <summary>
+		/// Use UpdateActionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public GenericDistributionProfileAction UpdateAction
 		{
@@ -88,6 +97,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdateAction");
 			}
 		}
+		/// <summary>
+		/// Use DeleteActionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public GenericDistributionProfileAction DeleteAction
 		{
@@ -98,6 +110,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeleteAction");
 			}
 		}
+		/// <summary>
+		/// Use FetchReportActionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public GenericDistributionProfileAction FetchReportAction
 		{
@@ -108,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FetchReportAction");
 			}
 		}
+		/// <summary>
+		/// Use UpdateRequiredEntryFieldsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UpdateRequiredEntryFields
 		{
@@ -118,6 +136,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdateRequiredEntryFields");
 			}
 		}
+		/// <summary>
+		/// Use UpdateRequiredMetadataXPathsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UpdateRequiredMetadataXPaths
 		{

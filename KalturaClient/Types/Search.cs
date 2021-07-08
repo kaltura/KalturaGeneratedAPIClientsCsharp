@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use KeyWordsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string KeyWords
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("KeyWords");
 			}
 		}
+		/// <summary>
+		/// Use SearchSourceAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public SearchProviderType SearchSource
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SearchSource");
 			}
 		}
+		/// <summary>
+		/// Use MediaTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public MediaType MediaType
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaType");
 			}
 		}
+		/// <summary>
+		/// Use ExtraDataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ExtraData
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExtraData");
 			}
 		}
+		/// <summary>
+		/// Use AuthDataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AuthData
 		{

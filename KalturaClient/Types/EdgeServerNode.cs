@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use PlaybackDomainAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PlaybackDomain
 		{

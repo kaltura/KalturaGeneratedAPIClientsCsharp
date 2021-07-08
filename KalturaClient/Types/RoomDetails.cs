@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ServerUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ServerUrl
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerUrl");
 			}
 		}
+		/// <summary>
+		/// Use EntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntryId
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		/// <summary>
+		/// Use TokenAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Token
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Token");
 			}
 		}
+		/// <summary>
+		/// Use ExpiryAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Expiry
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Expiry");
 			}
 		}
+		/// <summary>
+		/// Use ServerNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ServerName
 		{

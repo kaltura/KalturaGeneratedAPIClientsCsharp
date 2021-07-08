@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FlavorAssetAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public FlavorAsset FlavorAsset
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAsset");
 			}
 		}
+		/// <summary>
+		/// Use FlavorParamsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public FlavorParams FlavorParams
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParams");
 			}
 		}
+		/// <summary>
+		/// Use EntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntryId
 		{

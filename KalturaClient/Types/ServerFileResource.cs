@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use LocalFilePathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string LocalFilePath
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LocalFilePath");
 			}
 		}
+		/// <summary>
+		/// Use KeepOriginalFileAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? KeepOriginalFile
 		{

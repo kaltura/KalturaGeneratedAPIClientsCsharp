@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FormatEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public AttachmentType FormatEqual
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FormatEqual");
 			}
 		}
+		/// <summary>
+		/// Use FormatInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FormatIn
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FormatIn");
 			}
 		}
+		/// <summary>
+		/// Use StatusEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public AttachmentAssetStatus StatusEqual
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		/// <summary>
+		/// Use StatusInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StatusIn
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		/// <summary>
+		/// Use StatusNotInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StatusNotIn
 		{

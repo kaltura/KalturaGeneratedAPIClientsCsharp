@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use XmlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Xml
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Xml");
 			}
 		}
+		/// <summary>
+		/// Use VideoFilePathsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<String> VideoFilePaths
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoFilePaths");
 			}
 		}
+		/// <summary>
+		/// Use ThumbnailFilePathsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<String> ThumbnailFilePaths
 		{

@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ExternalElasticQueryObjectAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ExternalElasticQueryObject
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExternalElasticQueryObject");
 			}
 		}
+		/// <summary>
+		/// Use IndexTypeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public BeaconIndexType IndexTypeEqual
 		{

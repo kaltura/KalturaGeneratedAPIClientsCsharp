@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ChangedItemsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<AuditTrailChangeItem> ChangedItems
 		{

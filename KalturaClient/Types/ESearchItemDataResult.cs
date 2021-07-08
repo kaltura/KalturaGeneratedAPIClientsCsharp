@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use TotalCountAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int TotalCount
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TotalCount");
 			}
 		}
+		/// <summary>
+		/// Use ItemsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<ESearchItemData> Items
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Items");
 			}
 		}
+		/// <summary>
+		/// Use ItemsTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ItemsType
 		{

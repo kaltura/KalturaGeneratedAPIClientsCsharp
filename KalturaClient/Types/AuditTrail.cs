@@ -92,6 +92,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Id
 		{
@@ -102,6 +105,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -112,6 +118,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
+		/// <summary>
+		/// Use ParsedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ParsedAt
 		{
@@ -122,6 +131,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParsedAt");
 			}
 		}
+		/// <summary>
+		/// Use StatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public AuditTrailStatus Status
 		{
@@ -132,6 +144,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		/// <summary>
+		/// Use AuditObjectTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public AuditTrailObjectType AuditObjectType
 		{
@@ -142,6 +157,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AuditObjectType");
 			}
 		}
+		/// <summary>
+		/// Use ObjectIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ObjectId
 		{
@@ -152,6 +170,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectId");
 			}
 		}
+		/// <summary>
+		/// Use RelatedObjectIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RelatedObjectId
 		{
@@ -162,6 +183,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RelatedObjectId");
 			}
 		}
+		/// <summary>
+		/// Use RelatedObjectTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public AuditTrailObjectType RelatedObjectType
 		{
@@ -172,6 +196,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RelatedObjectType");
 			}
 		}
+		/// <summary>
+		/// Use EntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntryId
 		{
@@ -182,6 +209,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		/// <summary>
+		/// Use MasterPartnerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MasterPartnerId
 		{
@@ -192,6 +222,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MasterPartnerId");
 			}
 		}
+		/// <summary>
+		/// Use PartnerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -202,6 +235,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		/// <summary>
+		/// Use RequestIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RequestId
 		{
@@ -212,6 +248,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RequestId");
 			}
 		}
+		/// <summary>
+		/// Use UserIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UserId
 		{
@@ -222,6 +261,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserId");
 			}
 		}
+		/// <summary>
+		/// Use ActionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public AuditTrailAction Action
 		{
@@ -232,6 +274,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Action");
 			}
 		}
+		/// <summary>
+		/// Use DataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public AuditTrailInfo Data
 		{
@@ -242,6 +287,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Data");
 			}
 		}
+		/// <summary>
+		/// Use KsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Ks
 		{
@@ -252,6 +300,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Ks");
 			}
 		}
+		/// <summary>
+		/// Use ContextAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public AuditTrailContext Context
 		{
@@ -262,6 +313,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Context");
 			}
 		}
+		/// <summary>
+		/// Use EntryPointAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntryPoint
 		{
@@ -272,6 +326,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryPoint");
 			}
 		}
+		/// <summary>
+		/// Use ServerNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ServerName
 		{
@@ -282,6 +339,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerName");
 			}
 		}
+		/// <summary>
+		/// Use IpAddressAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string IpAddress
 		{
@@ -292,6 +352,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IpAddress");
 			}
 		}
+		/// <summary>
+		/// Use UserAgentAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UserAgent
 		{
@@ -302,6 +365,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserAgent");
 			}
 		}
+		/// <summary>
+		/// Use ClientTagAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ClientTag
 		{
@@ -312,6 +378,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ClientTag");
 			}
 		}
+		/// <summary>
+		/// Use DescriptionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Description
 		{
@@ -322,6 +391,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		/// <summary>
+		/// Use ErrorDescriptionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ErrorDescription
 		{

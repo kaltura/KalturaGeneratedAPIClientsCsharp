@@ -56,6 +56,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FlavorParamsIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int FlavorParamsId
 		{
@@ -66,6 +69,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsId");
 			}
 		}
+		/// <summary>
+		/// Use CommandLinesStrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CommandLinesStr
 		{
@@ -76,6 +82,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CommandLinesStr");
 			}
 		}
+		/// <summary>
+		/// Use FlavorParamsVersionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlavorParamsVersion
 		{
@@ -86,6 +95,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsVersion");
 			}
 		}
+		/// <summary>
+		/// Use FlavorAssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlavorAssetId
 		{
@@ -96,6 +108,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetId");
 			}
 		}
+		/// <summary>
+		/// Use FlavorAssetVersionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlavorAssetVersion
 		{
@@ -106,6 +121,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetVersion");
 			}
 		}
+		/// <summary>
+		/// Use ReadyBehaviorAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ReadyBehavior
 		{

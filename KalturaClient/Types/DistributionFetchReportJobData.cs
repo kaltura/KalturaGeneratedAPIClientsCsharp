@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use PlaysAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Plays
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Plays");
 			}
 		}
+		/// <summary>
+		/// Use ViewsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Views
 		{

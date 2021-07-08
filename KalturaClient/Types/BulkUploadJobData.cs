@@ -74,6 +74,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use UserIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UserId
 		{
@@ -84,6 +87,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserId");
 			}
 		}
+		/// <summary>
+		/// Use UploadedByAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UploadedBy
 		{
@@ -94,6 +100,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UploadedBy");
 			}
 		}
+		/// <summary>
+		/// Use ConversionProfileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ConversionProfileId
 		{
@@ -104,6 +113,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionProfileId");
 			}
 		}
+		/// <summary>
+		/// Use ResultsFileLocalPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ResultsFileLocalPath
 		{
@@ -114,6 +126,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ResultsFileLocalPath");
 			}
 		}
+		/// <summary>
+		/// Use ResultsFileUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ResultsFileUrl
 		{
@@ -124,6 +139,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ResultsFileUrl");
 			}
 		}
+		/// <summary>
+		/// Use NumOfEntriesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int NumOfEntries
 		{
@@ -134,6 +152,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("NumOfEntries");
 			}
 		}
+		/// <summary>
+		/// Use NumOfObjectsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int NumOfObjects
 		{
@@ -144,6 +165,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("NumOfObjects");
 			}
 		}
+		/// <summary>
+		/// Use FilePathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FilePath
 		{
@@ -154,6 +178,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FilePath");
 			}
 		}
+		/// <summary>
+		/// Use BulkUploadObjectTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public BulkUploadObjectType BulkUploadObjectType
 		{
@@ -164,6 +191,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("BulkUploadObjectType");
 			}
 		}
+		/// <summary>
+		/// Use FileNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FileName
 		{
@@ -174,6 +204,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileName");
 			}
 		}
+		/// <summary>
+		/// Use ObjectDataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public BulkUploadObjectData ObjectData
 		{
@@ -184,6 +217,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectData");
 			}
 		}
+		/// <summary>
+		/// Use TypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public BulkUploadType Type
 		{
@@ -194,6 +230,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		/// <summary>
+		/// Use EmailRecipientsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EmailRecipients
 		{
@@ -204,6 +243,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EmailRecipients");
 			}
 		}
+		/// <summary>
+		/// Use NumOfErrorObjectsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int NumOfErrorObjects
 		{
@@ -214,6 +256,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("NumOfErrorObjects");
 			}
 		}
+		/// <summary>
+		/// Use PrivilegesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Privileges
 		{

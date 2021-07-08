@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use SrcFileUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SrcFileUrl
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcFileUrl");
 			}
 		}
+		/// <summary>
+		/// Use DestFileLocalPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DestFileLocalPath
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestFileLocalPath");
 			}
 		}
+		/// <summary>
+		/// Use FlavorAssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlavorAssetId
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetId");
 			}
 		}
+		/// <summary>
+		/// Use FileSizeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int FileSize
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileSize");
 			}
 		}
+		/// <summary>
+		/// Use DestFileSharedPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DestFileSharedPath
 		{

@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use XPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string XPath
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("XPath");
 			}
 		}
+		/// <summary>
+		/// Use ProfileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ProfileId
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProfileId");
 			}
 		}
+		/// <summary>
+		/// Use ProfileSystemNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ProfileSystemName
 		{

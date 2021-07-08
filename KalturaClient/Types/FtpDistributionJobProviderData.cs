@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FilesForDistributionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<FtpDistributionFile> FilesForDistribution
 		{

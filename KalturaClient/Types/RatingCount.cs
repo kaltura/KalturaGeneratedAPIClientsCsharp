@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use EntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntryId
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		/// <summary>
+		/// Use RankAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Rank
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Rank");
 			}
 		}
+		/// <summary>
+		/// Use CountAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Count
 		{

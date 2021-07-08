@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use SearchTermAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SearchTerm
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SearchTerm");
 			}
 		}
+		/// <summary>
+		/// Use SearchedObjectAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SearchedObject
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SearchedObject");
 			}
 		}
+		/// <summary>
+		/// Use TimestampAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Timestamp
 		{

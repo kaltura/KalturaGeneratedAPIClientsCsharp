@@ -66,6 +66,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Id
 		{
@@ -76,6 +79,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		/// <summary>
+		/// Use TitleAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Title
 		{
@@ -86,6 +92,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Title");
 			}
 		}
+		/// <summary>
+		/// Use ThumbUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ThumbUrl
 		{
@@ -96,6 +105,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbUrl");
 			}
 		}
+		/// <summary>
+		/// Use DescriptionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Description
 		{
@@ -106,6 +118,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		/// <summary>
+		/// Use TagsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Tags
 		{
@@ -116,6 +131,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
+		/// <summary>
+		/// Use UrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Url
 		{
@@ -126,6 +144,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Url");
 			}
 		}
+		/// <summary>
+		/// Use SourceLinkAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SourceLink
 		{
@@ -136,6 +157,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceLink");
 			}
 		}
+		/// <summary>
+		/// Use CreditAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Credit
 		{
@@ -146,6 +170,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Credit");
 			}
 		}
+		/// <summary>
+		/// Use LicenseTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public LicenseType LicenseType
 		{
@@ -156,6 +183,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LicenseType");
 			}
 		}
+		/// <summary>
+		/// Use FlashPlaybackTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlashPlaybackType
 		{
@@ -166,6 +196,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlashPlaybackType");
 			}
 		}
+		/// <summary>
+		/// Use FileExtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FileExt
 		{

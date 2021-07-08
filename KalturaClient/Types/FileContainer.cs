@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FilePathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FilePath
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FilePath");
 			}
 		}
+		/// <summary>
+		/// Use EncryptionKeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EncryptionKey
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EncryptionKey");
 			}
 		}
+		/// <summary>
+		/// Use FileSizeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int FileSize
 		{

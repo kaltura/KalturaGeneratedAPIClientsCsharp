@@ -72,6 +72,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Id
 		{
@@ -82,6 +85,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		/// <summary>
+		/// Use PartnerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -92,6 +98,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		/// <summary>
+		/// Use NameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -102,6 +111,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		/// <summary>
+		/// Use SystemNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SystemName
 		{
@@ -112,6 +124,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemName");
 			}
 		}
+		/// <summary>
+		/// Use DescriptionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Description
 		{
@@ -122,6 +137,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		/// <summary>
+		/// Use ProviderAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DrmProviderType Provider
 		{
@@ -132,6 +150,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Provider");
 			}
 		}
+		/// <summary>
+		/// Use StatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DrmPolicyStatus Status
 		{
@@ -142,6 +163,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		/// <summary>
+		/// Use ScenarioAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DrmLicenseScenario Scenario
 		{
@@ -152,6 +176,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Scenario");
 			}
 		}
+		/// <summary>
+		/// Use LicenseTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DrmLicenseType LicenseType
 		{
@@ -162,6 +189,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LicenseType");
 			}
 		}
+		/// <summary>
+		/// Use LicenseExpirationPolicyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DrmLicenseExpirationPolicy LicenseExpirationPolicy
 		{
@@ -172,6 +202,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LicenseExpirationPolicy");
 			}
 		}
+		/// <summary>
+		/// Use DurationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Duration
 		{
@@ -182,6 +215,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Duration");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -192,6 +228,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -202,6 +241,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
+		/// <summary>
+		/// Use LicenseParamsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> LicenseParams
 		{

@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use MetadataProfileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MetadataProfileId
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataProfileId");
 			}
 		}
+		/// <summary>
+		/// Use AdditionalFieldsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<CsvAdditionalFieldInfo> AdditionalFields
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdditionalFields");
 			}
 		}
+		/// <summary>
+		/// Use MappedFieldsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> MappedFields
 		{

@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ResourceAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DataCenterContentResource Resource
 		{

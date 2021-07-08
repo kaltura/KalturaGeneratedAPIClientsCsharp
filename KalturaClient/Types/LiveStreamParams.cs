@@ -55,11 +55,14 @@ namespace Kaltura.Types
 		private int _Height = Int32.MinValue;
 		private string _Codec = null;
 		private int _FrameRate = Int32.MinValue;
-		private float _KeyFrameInterval = Single.MinValue;
+		private double _KeyFrameInterval = Double.MinValue;
 		private string _Language = null;
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use BitrateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Bitrate
 		{
@@ -70,6 +73,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Bitrate");
 			}
 		}
+		/// <summary>
+		/// Use FlavorIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlavorId
 		{
@@ -80,6 +86,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorId");
 			}
 		}
+		/// <summary>
+		/// Use WidthAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Width
 		{
@@ -90,6 +99,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Width");
 			}
 		}
+		/// <summary>
+		/// Use HeightAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Height
 		{
@@ -100,6 +112,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Height");
 			}
 		}
+		/// <summary>
+		/// Use CodecAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Codec
 		{
@@ -110,6 +125,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Codec");
 			}
 		}
+		/// <summary>
+		/// Use FrameRateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int FrameRate
 		{
@@ -120,8 +138,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("FrameRate");
 			}
 		}
+		/// <summary>
+		/// Use KeyFrameIntervalAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use KeyFrameIntervalAsDouble property instead")]
 		public float KeyFrameInterval
+		{
+			get { return (float)_KeyFrameInterval; }
+			set 
+			{ 
+				_KeyFrameInterval = value;
+				OnPropertyChanged("KeyFrameInterval");
+			}
+		}
+		///<summary>
+		///Use this property KeyFrameIntervalAsDouble instead of the float KeyFrameInterval property version
+		///</summary>
+		[JsonProperty]
+		public double KeyFrameIntervalAsDouble
 		{
 			get { return _KeyFrameInterval; }
 			set 
@@ -130,6 +165,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("KeyFrameInterval");
 			}
 		}
+		/// <summary>
+		/// Use LanguageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Language
 		{
@@ -175,7 +213,7 @@ namespace Kaltura.Types
 			}
 			if(node["keyFrameInterval"] != null)
 			{
-				this._KeyFrameInterval = ParseFloat(node["keyFrameInterval"].Value<string>());
+				this._KeyFrameInterval = ParseDouble(node["keyFrameInterval"].Value<string>());
 			}
 			if(node["language"] != null)
 			{

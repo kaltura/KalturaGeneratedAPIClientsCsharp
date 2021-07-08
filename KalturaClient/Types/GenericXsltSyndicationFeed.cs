@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use XsltAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Xslt
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Xslt");
 			}
 		}
+		/// <summary>
+		/// Use ItemXpathsToExtendAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<ExtendingItemMrssParameter> ItemXpathsToExtend
 		{

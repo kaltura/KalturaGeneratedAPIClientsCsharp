@@ -74,6 +74,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use VendorCatalogItemIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int VendorCatalogItemId
 		{
@@ -84,6 +87,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VendorCatalogItemId");
 			}
 		}
+		/// <summary>
+		/// Use VendorPartnerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int VendorPartnerId
 		{
@@ -94,6 +100,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VendorPartnerId");
 			}
 		}
+		/// <summary>
+		/// Use NameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -104,6 +113,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		/// <summary>
+		/// Use SystemNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SystemName
 		{
@@ -114,6 +126,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemName");
 			}
 		}
+		/// <summary>
+		/// Use ServiceFeatureAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VendorServiceFeature ServiceFeature
 		{
@@ -124,6 +139,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServiceFeature");
 			}
 		}
+		/// <summary>
+		/// Use ServiceTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VendorServiceType ServiceType
 		{
@@ -134,6 +152,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServiceType");
 			}
 		}
+		/// <summary>
+		/// Use TurnAroundTimeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VendorServiceTurnAroundTime TurnAroundTime
 		{
@@ -144,6 +165,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TurnAroundTime");
 			}
 		}
+		/// <summary>
+		/// Use SourceLanguageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public CatalogItemLanguage SourceLanguage
 		{
@@ -154,6 +178,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceLanguage");
 			}
 		}
+		/// <summary>
+		/// Use TargetLanguageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public CatalogItemLanguage TargetLanguage
 		{
@@ -164,6 +191,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TargetLanguage");
 			}
 		}
+		/// <summary>
+		/// Use OutputFormatAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VendorCatalogItemOutputFormat OutputFormat
 		{
@@ -174,6 +204,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OutputFormat");
 			}
 		}
+		/// <summary>
+		/// Use EnableSpeakerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean EnableSpeakerId
 		{
@@ -184,6 +217,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EnableSpeakerId");
 			}
 		}
+		/// <summary>
+		/// Use FixedPriceAddonsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int FixedPriceAddons
 		{
@@ -194,6 +230,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FixedPriceAddons");
 			}
 		}
+		/// <summary>
+		/// Use PricingAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VendorCatalogItemPricing Pricing
 		{
@@ -204,6 +243,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Pricing");
 			}
 		}
+		/// <summary>
+		/// Use FlavorParamsIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int FlavorParamsId
 		{
@@ -214,6 +256,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsId");
 			}
 		}
+		/// <summary>
+		/// Use ClearAudioFlavorParamsIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ClearAudioFlavorParamsId
 		{

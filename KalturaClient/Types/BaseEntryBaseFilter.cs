@@ -163,8 +163,8 @@ namespace Kaltura.Types
 		private int _CreatedAtLessThanOrEqual = Int32.MinValue;
 		private int _UpdatedAtGreaterThanOrEqual = Int32.MinValue;
 		private int _UpdatedAtLessThanOrEqual = Int32.MinValue;
-		private float _RankLessThanOrEqual = Single.MinValue;
-		private float _RankGreaterThanOrEqual = Single.MinValue;
+		private double _RankLessThanOrEqual = Double.MinValue;
+		private double _RankGreaterThanOrEqual = Double.MinValue;
 		private int _TotalRankLessThanOrEqual = Int32.MinValue;
 		private int _TotalRankGreaterThanOrEqual = Int32.MinValue;
 		private int _GroupIdEqual = Int32.MinValue;
@@ -208,6 +208,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string IdEqual
 		{
@@ -218,6 +221,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		/// <summary>
+		/// Use IdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string IdIn
 		{
@@ -228,6 +234,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		/// <summary>
+		/// Use IdNotInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string IdNotIn
 		{
@@ -238,6 +247,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdNotIn");
 			}
 		}
+		/// <summary>
+		/// Use NameLikeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string NameLike
 		{
@@ -248,6 +260,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("NameLike");
 			}
 		}
+		/// <summary>
+		/// Use NameMultiLikeOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string NameMultiLikeOr
 		{
@@ -258,6 +273,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("NameMultiLikeOr");
 			}
 		}
+		/// <summary>
+		/// Use NameMultiLikeAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string NameMultiLikeAnd
 		{
@@ -268,6 +286,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("NameMultiLikeAnd");
 			}
 		}
+		/// <summary>
+		/// Use NameEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string NameEqual
 		{
@@ -278,6 +299,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("NameEqual");
 			}
 		}
+		/// <summary>
+		/// Use PartnerIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerIdEqual
 		{
@@ -288,6 +312,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use PartnerIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PartnerIdIn
 		{
@@ -298,6 +325,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdIn");
 			}
 		}
+		/// <summary>
+		/// Use UserIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UserIdEqual
 		{
@@ -308,6 +338,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use UserIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UserIdIn
 		{
@@ -318,6 +351,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIdIn");
 			}
 		}
+		/// <summary>
+		/// Use UserIdNotInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UserIdNotIn
 		{
@@ -328,6 +364,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIdNotIn");
 			}
 		}
+		/// <summary>
+		/// Use CreatorIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CreatorIdEqual
 		{
@@ -338,6 +377,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatorIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use TagsLikeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TagsLike
 		{
@@ -348,6 +390,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsLike");
 			}
 		}
+		/// <summary>
+		/// Use TagsMultiLikeOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TagsMultiLikeOr
 		{
@@ -358,6 +403,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsMultiLikeOr");
 			}
 		}
+		/// <summary>
+		/// Use TagsMultiLikeAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TagsMultiLikeAnd
 		{
@@ -368,6 +416,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsMultiLikeAnd");
 			}
 		}
+		/// <summary>
+		/// Use AdminTagsLikeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AdminTagsLike
 		{
@@ -378,6 +429,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdminTagsLike");
 			}
 		}
+		/// <summary>
+		/// Use AdminTagsMultiLikeOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AdminTagsMultiLikeOr
 		{
@@ -388,6 +442,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdminTagsMultiLikeOr");
 			}
 		}
+		/// <summary>
+		/// Use AdminTagsMultiLikeAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AdminTagsMultiLikeAnd
 		{
@@ -398,6 +455,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdminTagsMultiLikeAnd");
 			}
 		}
+		/// <summary>
+		/// Use CategoriesMatchAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CategoriesMatchAnd
 		{
@@ -408,6 +468,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoriesMatchAnd");
 			}
 		}
+		/// <summary>
+		/// Use CategoriesMatchOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CategoriesMatchOr
 		{
@@ -418,6 +481,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoriesMatchOr");
 			}
 		}
+		/// <summary>
+		/// Use CategoriesNotContainsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CategoriesNotContains
 		{
@@ -428,6 +494,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoriesNotContains");
 			}
 		}
+		/// <summary>
+		/// Use CategoriesIdsMatchAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CategoriesIdsMatchAnd
 		{
@@ -438,6 +507,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoriesIdsMatchAnd");
 			}
 		}
+		/// <summary>
+		/// Use CategoriesIdsMatchOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CategoriesIdsMatchOr
 		{
@@ -448,6 +520,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoriesIdsMatchOr");
 			}
 		}
+		/// <summary>
+		/// Use CategoriesIdsNotContainsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CategoriesIdsNotContains
 		{
@@ -458,6 +533,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoriesIdsNotContains");
 			}
 		}
+		/// <summary>
+		/// Use CategoriesIdsEmptyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean CategoriesIdsEmpty
 		{
@@ -468,6 +546,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoriesIdsEmpty");
 			}
 		}
+		/// <summary>
+		/// Use StatusEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EntryStatus StatusEqual
 		{
@@ -478,6 +559,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		/// <summary>
+		/// Use StatusNotEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EntryStatus StatusNotEqual
 		{
@@ -488,6 +572,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusNotEqual");
 			}
 		}
+		/// <summary>
+		/// Use StatusInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StatusIn
 		{
@@ -498,6 +585,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		/// <summary>
+		/// Use StatusNotInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StatusNotIn
 		{
@@ -508,6 +598,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusNotIn");
 			}
 		}
+		/// <summary>
+		/// Use ModerationStatusEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EntryModerationStatus ModerationStatusEqual
 		{
@@ -518,6 +611,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ModerationStatusEqual");
 			}
 		}
+		/// <summary>
+		/// Use ModerationStatusNotEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EntryModerationStatus ModerationStatusNotEqual
 		{
@@ -528,6 +624,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ModerationStatusNotEqual");
 			}
 		}
+		/// <summary>
+		/// Use ModerationStatusInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ModerationStatusIn
 		{
@@ -538,6 +637,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ModerationStatusIn");
 			}
 		}
+		/// <summary>
+		/// Use ModerationStatusNotInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ModerationStatusNotIn
 		{
@@ -548,6 +650,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ModerationStatusNotIn");
 			}
 		}
+		/// <summary>
+		/// Use TypeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EntryType TypeEqual
 		{
@@ -558,6 +663,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeEqual");
 			}
 		}
+		/// <summary>
+		/// Use TypeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TypeIn
 		{
@@ -568,6 +676,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeIn");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
@@ -578,6 +689,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
@@ -588,6 +702,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
@@ -598,6 +715,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
@@ -608,8 +728,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use RankLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use RankLessThanOrEqualAsDouble property instead")]
 		public float RankLessThanOrEqual
+		{
+			get { return (float)_RankLessThanOrEqual; }
+			set 
+			{ 
+				_RankLessThanOrEqual = value;
+				OnPropertyChanged("RankLessThanOrEqual");
+			}
+		}
+		///<summary>
+		///Use this property RankLessThanOrEqualAsDouble instead of the float RankLessThanOrEqual property version
+		///</summary>
+		[JsonProperty]
+		public double RankLessThanOrEqualAsDouble
 		{
 			get { return _RankLessThanOrEqual; }
 			set 
@@ -618,8 +755,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("RankLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use RankGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use RankGreaterThanOrEqualAsDouble property instead")]
 		public float RankGreaterThanOrEqual
+		{
+			get { return (float)_RankGreaterThanOrEqual; }
+			set 
+			{ 
+				_RankGreaterThanOrEqual = value;
+				OnPropertyChanged("RankGreaterThanOrEqual");
+			}
+		}
+		///<summary>
+		///Use this property RankGreaterThanOrEqualAsDouble instead of the float RankGreaterThanOrEqual property version
+		///</summary>
+		[JsonProperty]
+		public double RankGreaterThanOrEqualAsDouble
 		{
 			get { return _RankGreaterThanOrEqual; }
 			set 
@@ -628,6 +782,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RankGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use TotalRankLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int TotalRankLessThanOrEqual
 		{
@@ -638,6 +795,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TotalRankLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use TotalRankGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int TotalRankGreaterThanOrEqual
 		{
@@ -648,6 +808,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TotalRankGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use GroupIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int GroupIdEqual
 		{
@@ -658,6 +821,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("GroupIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use SearchTextMatchAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SearchTextMatchAnd
 		{
@@ -668,6 +834,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SearchTextMatchAnd");
 			}
 		}
+		/// <summary>
+		/// Use SearchTextMatchOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SearchTextMatchOr
 		{
@@ -678,6 +847,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SearchTextMatchOr");
 			}
 		}
+		/// <summary>
+		/// Use AccessControlIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int AccessControlIdEqual
 		{
@@ -688,6 +860,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AccessControlIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use AccessControlIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AccessControlIdIn
 		{
@@ -698,6 +873,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AccessControlIdIn");
 			}
 		}
+		/// <summary>
+		/// Use StartDateGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int StartDateGreaterThanOrEqual
 		{
@@ -708,6 +886,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartDateGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use StartDateLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int StartDateLessThanOrEqual
 		{
@@ -718,6 +899,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartDateLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use StartDateGreaterThanOrEqualOrNullAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int StartDateGreaterThanOrEqualOrNull
 		{
@@ -728,6 +912,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartDateGreaterThanOrEqualOrNull");
 			}
 		}
+		/// <summary>
+		/// Use StartDateLessThanOrEqualOrNullAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int StartDateLessThanOrEqualOrNull
 		{
@@ -738,6 +925,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartDateLessThanOrEqualOrNull");
 			}
 		}
+		/// <summary>
+		/// Use EndDateGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int EndDateGreaterThanOrEqual
 		{
@@ -748,6 +938,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndDateGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use EndDateLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int EndDateLessThanOrEqual
 		{
@@ -758,6 +951,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndDateLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use EndDateGreaterThanOrEqualOrNullAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int EndDateGreaterThanOrEqualOrNull
 		{
@@ -768,6 +964,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndDateGreaterThanOrEqualOrNull");
 			}
 		}
+		/// <summary>
+		/// Use EndDateLessThanOrEqualOrNullAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int EndDateLessThanOrEqualOrNull
 		{
@@ -778,6 +977,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndDateLessThanOrEqualOrNull");
 			}
 		}
+		/// <summary>
+		/// Use ReferenceIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ReferenceIdEqual
 		{
@@ -788,6 +990,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReferenceIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use ReferenceIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ReferenceIdIn
 		{
@@ -798,6 +1003,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReferenceIdIn");
 			}
 		}
+		/// <summary>
+		/// Use ReplacingEntryIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ReplacingEntryIdEqual
 		{
@@ -808,6 +1016,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplacingEntryIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use ReplacingEntryIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ReplacingEntryIdIn
 		{
@@ -818,6 +1029,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplacingEntryIdIn");
 			}
 		}
+		/// <summary>
+		/// Use ReplacedEntryIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ReplacedEntryIdEqual
 		{
@@ -828,6 +1042,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplacedEntryIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use ReplacedEntryIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ReplacedEntryIdIn
 		{
@@ -838,6 +1055,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplacedEntryIdIn");
 			}
 		}
+		/// <summary>
+		/// Use ReplacementStatusEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EntryReplacementStatus ReplacementStatusEqual
 		{
@@ -848,6 +1068,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplacementStatusEqual");
 			}
 		}
+		/// <summary>
+		/// Use ReplacementStatusInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ReplacementStatusIn
 		{
@@ -858,6 +1081,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplacementStatusIn");
 			}
 		}
+		/// <summary>
+		/// Use PartnerSortValueGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerSortValueGreaterThanOrEqual
 		{
@@ -868,6 +1094,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerSortValueGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use PartnerSortValueLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerSortValueLessThanOrEqual
 		{
@@ -878,6 +1107,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerSortValueLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use RootEntryIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RootEntryIdEqual
 		{
@@ -888,6 +1120,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RootEntryIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use RootEntryIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RootEntryIdIn
 		{
@@ -898,6 +1133,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RootEntryIdIn");
 			}
 		}
+		/// <summary>
+		/// Use ParentEntryIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ParentEntryIdEqual
 		{
@@ -908,6 +1146,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentEntryIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use EntitledUsersEditMatchAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntitledUsersEditMatchAnd
 		{
@@ -918,6 +1159,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntitledUsersEditMatchAnd");
 			}
 		}
+		/// <summary>
+		/// Use EntitledUsersEditMatchOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntitledUsersEditMatchOr
 		{
@@ -928,6 +1172,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntitledUsersEditMatchOr");
 			}
 		}
+		/// <summary>
+		/// Use EntitledUsersPublishMatchAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntitledUsersPublishMatchAnd
 		{
@@ -938,6 +1185,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntitledUsersPublishMatchAnd");
 			}
 		}
+		/// <summary>
+		/// Use EntitledUsersPublishMatchOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntitledUsersPublishMatchOr
 		{
@@ -948,6 +1198,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntitledUsersPublishMatchOr");
 			}
 		}
+		/// <summary>
+		/// Use EntitledUsersViewMatchAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntitledUsersViewMatchAnd
 		{
@@ -958,6 +1211,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntitledUsersViewMatchAnd");
 			}
 		}
+		/// <summary>
+		/// Use EntitledUsersViewMatchOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntitledUsersViewMatchOr
 		{
@@ -968,6 +1224,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntitledUsersViewMatchOr");
 			}
 		}
+		/// <summary>
+		/// Use TagsNameMultiLikeOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TagsNameMultiLikeOr
 		{
@@ -978,6 +1237,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsNameMultiLikeOr");
 			}
 		}
+		/// <summary>
+		/// Use TagsAdminTagsMultiLikeOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TagsAdminTagsMultiLikeOr
 		{
@@ -988,6 +1250,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsAdminTagsMultiLikeOr");
 			}
 		}
+		/// <summary>
+		/// Use TagsAdminTagsNameMultiLikeOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TagsAdminTagsNameMultiLikeOr
 		{
@@ -998,6 +1263,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsAdminTagsNameMultiLikeOr");
 			}
 		}
+		/// <summary>
+		/// Use TagsNameMultiLikeAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TagsNameMultiLikeAnd
 		{
@@ -1008,6 +1276,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsNameMultiLikeAnd");
 			}
 		}
+		/// <summary>
+		/// Use TagsAdminTagsMultiLikeAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TagsAdminTagsMultiLikeAnd
 		{
@@ -1018,6 +1289,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsAdminTagsMultiLikeAnd");
 			}
 		}
+		/// <summary>
+		/// Use TagsAdminTagsNameMultiLikeAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TagsAdminTagsNameMultiLikeAnd
 		{
@@ -1199,11 +1473,11 @@ namespace Kaltura.Types
 			}
 			if(node["rankLessThanOrEqual"] != null)
 			{
-				this._RankLessThanOrEqual = ParseFloat(node["rankLessThanOrEqual"].Value<string>());
+				this._RankLessThanOrEqual = ParseDouble(node["rankLessThanOrEqual"].Value<string>());
 			}
 			if(node["rankGreaterThanOrEqual"] != null)
 			{
-				this._RankGreaterThanOrEqual = ParseFloat(node["rankGreaterThanOrEqual"].Value<string>());
+				this._RankGreaterThanOrEqual = ParseDouble(node["rankGreaterThanOrEqual"].Value<string>());
 			}
 			if(node["totalRankLessThanOrEqual"] != null)
 			{

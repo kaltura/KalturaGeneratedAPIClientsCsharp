@@ -58,6 +58,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ObjectAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ObjectBase Object
 		{
@@ -68,6 +71,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Object");
 			}
 		}
+		/// <summary>
+		/// Use EventObjectTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EventNotificationEventObjectType EventObjectType
 		{
@@ -78,6 +84,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EventObjectType");
 			}
 		}
+		/// <summary>
+		/// Use EventNotificationJobIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public long EventNotificationJobId
 		{
@@ -88,6 +97,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EventNotificationJobId");
 			}
 		}
+		/// <summary>
+		/// Use TemplateIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int TemplateId
 		{
@@ -98,6 +110,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplateId");
 			}
 		}
+		/// <summary>
+		/// Use TemplateNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TemplateName
 		{
@@ -108,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplateName");
 			}
 		}
+		/// <summary>
+		/// Use TemplateSystemNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TemplateSystemName
 		{
@@ -118,6 +136,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplateSystemName");
 			}
 		}
+		/// <summary>
+		/// Use EventTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EventNotificationEventType EventType
 		{

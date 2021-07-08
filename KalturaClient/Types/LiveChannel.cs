@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use PlaylistIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PlaylistId
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PlaylistId");
 			}
 		}
+		/// <summary>
+		/// Use RepeatAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean Repeat
 		{

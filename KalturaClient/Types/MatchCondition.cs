@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ValuesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<StringValue> Values
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Values");
 			}
 		}
+		/// <summary>
+		/// Use MatchTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public MatchConditionType MatchType
 		{

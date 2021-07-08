@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ParamPrefixAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ParamPrefix
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParamPrefix");
 			}
 		}
+		/// <summary>
+		/// Use HashAlgorithmAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string HashAlgorithm
 		{

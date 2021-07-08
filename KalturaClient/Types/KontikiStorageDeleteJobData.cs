@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ContentMoidAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ContentMoid
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentMoid");
 			}
 		}
+		/// <summary>
+		/// Use ServiceTokenAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ServiceToken
 		{

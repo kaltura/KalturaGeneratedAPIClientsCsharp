@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use HeaderDataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string HeaderData
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("HeaderData");
 			}
 		}
+		/// <summary>
+		/// Use HeaderSignAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string HeaderSign
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("HeaderSign");
 			}
 		}
+		/// <summary>
+		/// Use TimeoutAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Timeout
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Timeout");
 			}
 		}
+		/// <summary>
+		/// Use SaltAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Salt
 		{

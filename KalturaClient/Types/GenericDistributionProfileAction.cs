@@ -60,6 +60,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ProtocolAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DistributionProtocol Protocol
 		{
@@ -70,6 +73,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Protocol");
 			}
 		}
+		/// <summary>
+		/// Use ServerUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ServerUrl
 		{
@@ -80,6 +86,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerUrl");
 			}
 		}
+		/// <summary>
+		/// Use ServerPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ServerPath
 		{
@@ -90,6 +99,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerPath");
 			}
 		}
+		/// <summary>
+		/// Use UsernameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Username
 		{
@@ -100,6 +112,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Username");
 			}
 		}
+		/// <summary>
+		/// Use PasswordAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Password
 		{
@@ -110,6 +125,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Password");
 			}
 		}
+		/// <summary>
+		/// Use FtpPassiveModeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? FtpPassiveMode
 		{
@@ -120,6 +138,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FtpPassiveMode");
 			}
 		}
+		/// <summary>
+		/// Use HttpFieldNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string HttpFieldName
 		{
@@ -130,6 +151,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("HttpFieldName");
 			}
 		}
+		/// <summary>
+		/// Use HttpFileNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string HttpFileName
 		{

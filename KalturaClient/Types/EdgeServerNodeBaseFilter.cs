@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use PlaybackDomainLikeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PlaybackDomainLike
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PlaybackDomainLike");
 			}
 		}
+		/// <summary>
+		/// Use PlaybackDomainMultiLikeOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PlaybackDomainMultiLikeOr
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PlaybackDomainMultiLikeOr");
 			}
 		}
+		/// <summary>
+		/// Use PlaybackDomainMultiLikeAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PlaybackDomainMultiLikeAnd
 		{

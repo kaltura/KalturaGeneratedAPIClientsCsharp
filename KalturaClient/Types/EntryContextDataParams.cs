@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FlavorAssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlavorAssetId
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetId");
 			}
 		}
+		/// <summary>
+		/// Use FlavorTagsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlavorTags
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorTags");
 			}
 		}
+		/// <summary>
+		/// Use StreamerTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StreamerType
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StreamerType");
 			}
 		}
+		/// <summary>
+		/// Use MediaProtocolAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string MediaProtocol
 		{

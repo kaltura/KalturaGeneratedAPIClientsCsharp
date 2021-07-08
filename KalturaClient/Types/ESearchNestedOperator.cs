@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use OperatorAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ESearchOperatorType Operator
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Operator");
 			}
 		}
+		/// <summary>
+		/// Use SearchItemsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<ESearchEntryNestedBaseItem> SearchItems
 		{

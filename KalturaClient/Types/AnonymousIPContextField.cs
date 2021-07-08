@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use GeoCoderTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public GeoCoderType GeoCoderType
 		{

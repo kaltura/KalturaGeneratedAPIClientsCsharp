@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use PartnerParentIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerParentIdEqual
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerParentIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use PartnerParentIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PartnerParentIdIn
 		{

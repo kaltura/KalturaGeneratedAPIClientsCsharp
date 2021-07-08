@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use AcceptInternalIpsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? AcceptInternalIps
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AcceptInternalIps");
 			}
 		}
+		/// <summary>
+		/// Use HttpHeaderAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string HttpHeader
 		{

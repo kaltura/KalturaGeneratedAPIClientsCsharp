@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use DocumentTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DocumentType DocumentType
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DocumentType");
 			}
 		}
+		/// <summary>
+		/// Use AssetParamsIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AssetParamsIds
 		{

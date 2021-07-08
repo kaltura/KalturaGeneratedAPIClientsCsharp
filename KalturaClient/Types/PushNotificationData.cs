@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use QueueNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string QueueName
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("QueueName");
 			}
 		}
+		/// <summary>
+		/// Use QueueKeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string QueueKey
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("QueueKey");
 			}
 		}
+		/// <summary>
+		/// Use UrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Url
 		{

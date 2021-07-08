@@ -90,6 +90,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use EntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntryId
 		{
@@ -100,6 +103,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		/// <summary>
+		/// Use TitleAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Title
 		{
@@ -110,6 +116,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Title");
 			}
 		}
+		/// <summary>
+		/// Use DescriptionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Description
 		{
@@ -120,6 +129,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		/// <summary>
+		/// Use TagsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Tags
 		{
@@ -130,6 +142,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
+		/// <summary>
+		/// Use UrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Url
 		{
@@ -140,6 +155,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Url");
 			}
 		}
+		/// <summary>
+		/// Use ContentTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ContentType
 		{
@@ -150,6 +168,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentType");
 			}
 		}
+		/// <summary>
+		/// Use ConversionProfileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ConversionProfileId
 		{
@@ -160,6 +181,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionProfileId");
 			}
 		}
+		/// <summary>
+		/// Use AccessControlProfileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int AccessControlProfileId
 		{
@@ -170,6 +194,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AccessControlProfileId");
 			}
 		}
+		/// <summary>
+		/// Use CategoryAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Category
 		{
@@ -180,6 +207,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Category");
 			}
 		}
+		/// <summary>
+		/// Use ScheduleStartDateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ScheduleStartDate
 		{
@@ -190,6 +220,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ScheduleStartDate");
 			}
 		}
+		/// <summary>
+		/// Use ScheduleEndDateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ScheduleEndDate
 		{
@@ -200,6 +233,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ScheduleEndDate");
 			}
 		}
+		/// <summary>
+		/// Use EntryStatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int EntryStatus
 		{
@@ -210,6 +246,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryStatus");
 			}
 		}
+		/// <summary>
+		/// Use ThumbnailUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ThumbnailUrl
 		{
@@ -220,6 +259,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbnailUrl");
 			}
 		}
+		/// <summary>
+		/// Use ThumbnailSavedAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? ThumbnailSaved
 		{
@@ -230,6 +272,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbnailSaved");
 			}
 		}
+		/// <summary>
+		/// Use SshPrivateKeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SshPrivateKey
 		{
@@ -240,6 +285,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SshPrivateKey");
 			}
 		}
+		/// <summary>
+		/// Use SshPublicKeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SshPublicKey
 		{
@@ -250,6 +298,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SshPublicKey");
 			}
 		}
+		/// <summary>
+		/// Use SshKeyPassphraseAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SshKeyPassphrase
 		{
@@ -260,6 +311,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SshKeyPassphrase");
 			}
 		}
+		/// <summary>
+		/// Use CreatorIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CreatorId
 		{
@@ -270,6 +324,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatorId");
 			}
 		}
+		/// <summary>
+		/// Use EntitledUsersEditAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntitledUsersEdit
 		{
@@ -280,6 +337,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntitledUsersEdit");
 			}
 		}
+		/// <summary>
+		/// Use EntitledUsersPublishAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntitledUsersPublish
 		{
@@ -290,6 +350,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntitledUsersPublish");
 			}
 		}
+		/// <summary>
+		/// Use OwnerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string OwnerId
 		{
@@ -300,6 +363,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OwnerId");
 			}
 		}
+		/// <summary>
+		/// Use ReferenceIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ReferenceId
 		{
@@ -310,6 +376,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReferenceId");
 			}
 		}
+		/// <summary>
+		/// Use TemplateEntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TemplateEntryId
 		{

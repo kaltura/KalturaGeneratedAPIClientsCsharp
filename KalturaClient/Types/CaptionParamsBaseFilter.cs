@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FormatEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public CaptionType FormatEqual
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FormatEqual");
 			}
 		}
+		/// <summary>
+		/// Use FormatInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FormatIn
 		{

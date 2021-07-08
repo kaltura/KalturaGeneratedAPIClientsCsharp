@@ -64,6 +64,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use DistributionProfileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int DistributionProfileId
 		{
@@ -74,6 +77,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributionProfileId");
 			}
 		}
+		/// <summary>
+		/// Use DistributionProfileAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DistributionProfile DistributionProfile
 		{
@@ -84,6 +90,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributionProfile");
 			}
 		}
+		/// <summary>
+		/// Use EntryDistributionIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int EntryDistributionId
 		{
@@ -94,6 +103,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryDistributionId");
 			}
 		}
+		/// <summary>
+		/// Use EntryDistributionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EntryDistribution EntryDistribution
 		{
@@ -104,6 +116,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryDistribution");
 			}
 		}
+		/// <summary>
+		/// Use RemoteIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RemoteId
 		{
@@ -114,6 +129,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RemoteId");
 			}
 		}
+		/// <summary>
+		/// Use ProviderTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DistributionProviderType ProviderType
 		{
@@ -124,6 +142,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProviderType");
 			}
 		}
+		/// <summary>
+		/// Use ProviderDataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DistributionJobProviderData ProviderData
 		{
@@ -134,6 +155,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProviderData");
 			}
 		}
+		/// <summary>
+		/// Use ResultsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Results
 		{
@@ -144,6 +168,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Results");
 			}
 		}
+		/// <summary>
+		/// Use SentDataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SentData
 		{
@@ -154,6 +181,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SentData");
 			}
 		}
+		/// <summary>
+		/// Use MediaFilesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<DistributionRemoteMediaFile> MediaFiles
 		{

@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use WindowAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Window
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Window");
 			}
 		}
+		/// <summary>
+		/// Use KeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Key
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Key");
 			}
 		}
+		/// <summary>
+		/// Use LimitIpAddressAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? LimitIpAddress
 		{

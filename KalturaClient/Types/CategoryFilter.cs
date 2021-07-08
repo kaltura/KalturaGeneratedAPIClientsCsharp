@@ -62,6 +62,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FreeTextAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FreeText
 		{
@@ -72,6 +75,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FreeText");
 			}
 		}
+		/// <summary>
+		/// Use MembersInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string MembersIn
 		{
@@ -82,6 +88,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MembersIn");
 			}
 		}
+		/// <summary>
+		/// Use NameOrReferenceIdStartsWithAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string NameOrReferenceIdStartsWith
 		{
@@ -92,6 +101,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("NameOrReferenceIdStartsWith");
 			}
 		}
+		/// <summary>
+		/// Use ManagerEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ManagerEqual
 		{
@@ -102,6 +114,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ManagerEqual");
 			}
 		}
+		/// <summary>
+		/// Use MemberEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string MemberEqual
 		{
@@ -112,6 +127,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MemberEqual");
 			}
 		}
+		/// <summary>
+		/// Use FullNameStartsWithInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FullNameStartsWithIn
 		{
@@ -122,6 +140,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FullNameStartsWithIn");
 			}
 		}
+		/// <summary>
+		/// Use AncestorIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AncestorIdIn
 		{
@@ -132,6 +153,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AncestorIdIn");
 			}
 		}
+		/// <summary>
+		/// Use IdOrInheritedParentIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string IdOrInheritedParentIdIn
 		{
@@ -142,6 +166,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdOrInheritedParentIdIn");
 			}
 		}
+		/// <summary>
+		/// Use OrderByAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public new CategoryOrderBy OrderBy
 		{

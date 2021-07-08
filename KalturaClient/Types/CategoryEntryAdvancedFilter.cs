@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use CategoriesMatchOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CategoriesMatchOr
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoriesMatchOr");
 			}
 		}
+		/// <summary>
+		/// Use CategoryEntryStatusInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CategoryEntryStatusIn
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryEntryStatusIn");
 			}
 		}
+		/// <summary>
+		/// Use OrderByAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public CategoryEntryAdvancedOrderBy OrderBy
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OrderBy");
 			}
 		}
+		/// <summary>
+		/// Use CategoryIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CategoryIdEqual
 		{

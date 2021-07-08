@@ -56,6 +56,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use KeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Key
 		{
@@ -66,6 +69,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Key");
 			}
 		}
+		/// <summary>
+		/// Use IvAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Iv
 		{
@@ -76,6 +82,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Iv");
 			}
 		}
+		/// <summary>
+		/// Use OwnerAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Owner
 		{
@@ -86,6 +95,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Owner");
 			}
 		}
+		/// <summary>
+		/// Use PortalAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Portal
 		{
@@ -96,6 +108,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Portal");
 			}
 		}
+		/// <summary>
+		/// Use MaxGopAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MaxGop
 		{
@@ -106,6 +121,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MaxGop");
 			}
 		}
+		/// <summary>
+		/// Use RegServerHostAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RegServerHost
 		{

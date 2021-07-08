@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use PublishUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PublishUrl
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PublishUrl");
 			}
 		}
+		/// <summary>
+		/// Use BackupPublishUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string BackupPublishUrl
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("BackupPublishUrl");
 			}
 		}
+		/// <summary>
+		/// Use PortAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Port
 		{

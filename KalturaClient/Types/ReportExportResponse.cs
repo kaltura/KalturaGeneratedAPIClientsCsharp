@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ReferenceJobIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public long ReferenceJobId
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReferenceJobId");
 			}
 		}
+		/// <summary>
+		/// Use ReportEmailAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ReportEmail
 		{

@@ -64,6 +64,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Id
 		{
@@ -74,6 +77,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		/// <summary>
+		/// Use PartnerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -84,6 +90,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		/// <summary>
+		/// Use BrowserAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Browser
 		{
@@ -94,6 +103,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Browser");
 			}
 		}
+		/// <summary>
+		/// Use ServerIpAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ServerIp
 		{
@@ -104,6 +116,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerIp");
 			}
 		}
+		/// <summary>
+		/// Use ServerOsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ServerOs
 		{
@@ -114,6 +129,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerOs");
 			}
 		}
+		/// <summary>
+		/// Use PhpVersionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PhpVersion
 		{
@@ -124,6 +142,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PhpVersion");
 			}
 		}
+		/// <summary>
+		/// Use CeAdminEmailAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CeAdminEmail
 		{
@@ -134,6 +155,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CeAdminEmail");
 			}
 		}
+		/// <summary>
+		/// Use TypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Type
 		{
@@ -144,6 +168,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		/// <summary>
+		/// Use DescriptionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Description
 		{
@@ -154,6 +181,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		/// <summary>
+		/// Use DataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Data
 		{

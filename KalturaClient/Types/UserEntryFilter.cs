@@ -56,6 +56,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use UserIdEqualCurrentAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean UserIdEqualCurrent
 		{
@@ -66,6 +69,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIdEqualCurrent");
 			}
 		}
+		/// <summary>
+		/// Use IsAnonymousAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean IsAnonymous
 		{
@@ -76,6 +82,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsAnonymous");
 			}
 		}
+		/// <summary>
+		/// Use PrivacyContextEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PrivacyContextEqual
 		{
@@ -86,6 +95,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrivacyContextEqual");
 			}
 		}
+		/// <summary>
+		/// Use PrivacyContextInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PrivacyContextIn
 		{
@@ -96,6 +108,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrivacyContextIn");
 			}
 		}
+		/// <summary>
+		/// Use PartnerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -106,6 +121,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		/// <summary>
+		/// Use OrderByAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public new UserEntryOrderBy OrderBy
 		{

@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FilterAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public Filter Filter
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Filter");
 			}
 		}
+		/// <summary>
+		/// Use LastIndexIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LastIndexId
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastIndexId");
 			}
 		}
+		/// <summary>
+		/// Use LastIndexDepthAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LastIndexDepth
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastIndexDepth");
 			}
 		}
+		/// <summary>
+		/// Use ShouldUpdateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? ShouldUpdate
 		{

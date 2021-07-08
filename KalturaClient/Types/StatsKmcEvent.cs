@@ -55,7 +55,7 @@ namespace Kaltura.Types
 		private string _ClientVer = null;
 		private string _KmcEventActionPath = null;
 		private StatsKmcEventType _KmcEventType = (StatsKmcEventType)Int32.MinValue;
-		private float _EventTimestamp = Single.MinValue;
+		private double _EventTimestamp = Double.MinValue;
 		private string _SessionId = null;
 		private int _PartnerId = Int32.MinValue;
 		private string _EntryId = null;
@@ -66,6 +66,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ClientVerAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ClientVer
 		{
@@ -76,6 +79,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ClientVer");
 			}
 		}
+		/// <summary>
+		/// Use KmcEventActionPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string KmcEventActionPath
 		{
@@ -86,6 +92,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("KmcEventActionPath");
 			}
 		}
+		/// <summary>
+		/// Use KmcEventTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public StatsKmcEventType KmcEventType
 		{
@@ -96,8 +105,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("KmcEventType");
 			}
 		}
+		/// <summary>
+		/// Use EventTimestampAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use EventTimestampAsDouble property instead")]
 		public float EventTimestamp
+		{
+			get { return (float)_EventTimestamp; }
+			set 
+			{ 
+				_EventTimestamp = value;
+				OnPropertyChanged("EventTimestamp");
+			}
+		}
+		///<summary>
+		///Use this property EventTimestampAsDouble instead of the float EventTimestamp property version
+		///</summary>
+		[JsonProperty]
+		public double EventTimestampAsDouble
 		{
 			get { return _EventTimestamp; }
 			set 
@@ -106,6 +132,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EventTimestamp");
 			}
 		}
+		/// <summary>
+		/// Use SessionIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SessionId
 		{
@@ -116,6 +145,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SessionId");
 			}
 		}
+		/// <summary>
+		/// Use PartnerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -126,6 +158,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		/// <summary>
+		/// Use EntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntryId
 		{
@@ -136,6 +171,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
+		/// <summary>
+		/// Use WidgetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string WidgetId
 		{
@@ -146,6 +184,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("WidgetId");
 			}
 		}
+		/// <summary>
+		/// Use UiconfIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UiconfId
 		{
@@ -156,6 +197,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UiconfId");
 			}
 		}
+		/// <summary>
+		/// Use UserIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UserId
 		{
@@ -166,6 +210,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserId");
 			}
 		}
+		/// <summary>
+		/// Use UserIpAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UserIp
 		{
@@ -199,7 +246,7 @@ namespace Kaltura.Types
 			}
 			if(node["eventTimestamp"] != null)
 			{
-				this._EventTimestamp = ParseFloat(node["eventTimestamp"].Value<string>());
+				this._EventTimestamp = ParseDouble(node["eventTimestamp"].Value<string>());
 			}
 			if(node["sessionId"] != null)
 			{

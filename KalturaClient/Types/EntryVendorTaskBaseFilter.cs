@@ -92,6 +92,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public long IdEqual
 		{
@@ -102,6 +105,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		/// <summary>
+		/// Use IdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string IdIn
 		{
@@ -112,6 +118,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		/// <summary>
+		/// Use IdNotInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string IdNotIn
 		{
@@ -122,6 +131,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdNotIn");
 			}
 		}
+		/// <summary>
+		/// Use VendorPartnerIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int VendorPartnerIdEqual
 		{
@@ -132,6 +144,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VendorPartnerIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use VendorPartnerIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string VendorPartnerIdIn
 		{
@@ -142,6 +157,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VendorPartnerIdIn");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
@@ -152,6 +170,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
@@ -162,6 +183,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
@@ -172,6 +196,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
@@ -182,6 +209,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use QueueTimeGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int QueueTimeGreaterThanOrEqual
 		{
@@ -192,6 +222,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("QueueTimeGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use QueueTimeLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int QueueTimeLessThanOrEqual
 		{
@@ -202,6 +235,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("QueueTimeLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use FinishTimeGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int FinishTimeGreaterThanOrEqual
 		{
@@ -212,6 +248,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FinishTimeGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use FinishTimeLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int FinishTimeLessThanOrEqual
 		{
@@ -222,6 +261,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FinishTimeLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use EntryIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntryIdEqual
 		{
@@ -232,6 +274,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use StatusEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EntryVendorTaskStatus StatusEqual
 		{
@@ -242,6 +287,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		/// <summary>
+		/// Use StatusInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StatusIn
 		{
@@ -252,6 +300,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		/// <summary>
+		/// Use ReachProfileIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ReachProfileIdEqual
 		{
@@ -262,6 +313,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReachProfileIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use ReachProfileIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ReachProfileIdIn
 		{
@@ -272,6 +326,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReachProfileIdIn");
 			}
 		}
+		/// <summary>
+		/// Use CatalogItemIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CatalogItemIdEqual
 		{
@@ -282,6 +339,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CatalogItemIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use CatalogItemIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CatalogItemIdIn
 		{
@@ -292,6 +352,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CatalogItemIdIn");
 			}
 		}
+		/// <summary>
+		/// Use UserIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UserIdEqual
 		{
@@ -302,6 +365,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use ContextEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ContextEqual
 		{
@@ -312,6 +378,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContextEqual");
 			}
 		}
+		/// <summary>
+		/// Use ExpectedFinishTimeGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ExpectedFinishTimeGreaterThanOrEqual
 		{
@@ -322,6 +391,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExpectedFinishTimeGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use ExpectedFinishTimeLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ExpectedFinishTimeLessThanOrEqual
 		{

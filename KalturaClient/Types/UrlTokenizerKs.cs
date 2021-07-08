@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use UsePathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? UsePath
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UsePath");
 			}
 		}
+		/// <summary>
+		/// Use AdditionalUrisAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AdditionalUris
 		{

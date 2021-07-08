@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use KeepDistributionItemAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? KeepDistributionItem
 		{

@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use StorageProfileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int StorageProfileId
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StorageProfileId");
 			}
 		}
+		/// <summary>
+		/// Use UriAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Uri
 		{

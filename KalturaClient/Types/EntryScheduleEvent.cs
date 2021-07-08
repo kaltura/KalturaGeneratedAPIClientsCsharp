@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use TemplateEntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TemplateEntryId
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplateEntryId");
 			}
 		}
+		/// <summary>
+		/// Use EntryIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntryIds
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIds");
 			}
 		}
+		/// <summary>
+		/// Use CategoryIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CategoryIds
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryIds");
 			}
 		}
+		/// <summary>
+		/// Use BlackoutConflictsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<ScheduleEvent> BlackoutConflicts
 		{

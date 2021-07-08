@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use PolicyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public PlayReadyPolicy Policy
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Policy");
 			}
 		}
+		/// <summary>
+		/// Use BeginDateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int BeginDate
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("BeginDate");
 			}
 		}
+		/// <summary>
+		/// Use ExpirationDateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ExpirationDate
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExpirationDate");
 			}
 		}
+		/// <summary>
+		/// Use RemovalDateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int RemovalDate
 		{

@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use PrivateKeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PrivateKey
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrivateKey");
 			}
 		}
+		/// <summary>
+		/// Use PublicKeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PublicKey
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PublicKey");
 			}
 		}
+		/// <summary>
+		/// Use PassPhraseAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PassPhrase
 		{

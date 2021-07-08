@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ItemHandlingLimitAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ItemHandlingLimit
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemHandlingLimit");
 			}
 		}
+		/// <summary>
+		/// Use FeedItemInfoAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public FeedItemInfo FeedItemInfo
 		{

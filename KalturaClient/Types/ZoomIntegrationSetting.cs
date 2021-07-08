@@ -80,6 +80,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use DefaultUserIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DefaultUserId
 		{
@@ -90,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DefaultUserId");
 			}
 		}
+		/// <summary>
+		/// Use ZoomCategoryAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ZoomCategory
 		{
@@ -100,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ZoomCategory");
 			}
 		}
+		/// <summary>
+		/// Use AccountIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AccountId
 		{
@@ -110,6 +119,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AccountId");
 			}
 		}
+		/// <summary>
+		/// Use EnableRecordingUploadAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean EnableRecordingUpload
 		{
@@ -120,6 +132,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EnableRecordingUpload");
 			}
 		}
+		/// <summary>
+		/// Use CreateUserIfNotExistAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean CreateUserIfNotExist
 		{
@@ -130,6 +145,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreateUserIfNotExist");
 			}
 		}
+		/// <summary>
+		/// Use HandleParticipantsModeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public HandleParticipantsMode HandleParticipantsMode
 		{
@@ -140,6 +158,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("HandleParticipantsMode");
 			}
 		}
+		/// <summary>
+		/// Use ZoomUserMatchingModeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ZoomUsersMatching ZoomUserMatchingMode
 		{
@@ -150,6 +171,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ZoomUserMatchingMode");
 			}
 		}
+		/// <summary>
+		/// Use ZoomUserPostfixAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ZoomUserPostfix
 		{
@@ -160,6 +184,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ZoomUserPostfix");
 			}
 		}
+		/// <summary>
+		/// Use ZoomWebinarCategoryAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ZoomWebinarCategory
 		{
@@ -170,6 +197,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ZoomWebinarCategory");
 			}
 		}
+		/// <summary>
+		/// Use EnableWebinarUploadsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean EnableWebinarUploads
 		{
@@ -180,6 +210,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EnableWebinarUploads");
 			}
 		}
+		/// <summary>
+		/// Use ConversionProfileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ConversionProfileId
 		{
@@ -190,6 +223,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionProfileId");
 			}
 		}
+		/// <summary>
+		/// Use JwtTokenAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string JwtToken
 		{
@@ -200,6 +236,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("JwtToken");
 			}
 		}
+		/// <summary>
+		/// Use DeletionPolicyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean DeletionPolicy
 		{
@@ -210,6 +249,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeletionPolicy");
 			}
 		}
+		/// <summary>
+		/// Use EnableZoomTranscriptionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean EnableZoomTranscription
 		{
@@ -220,6 +262,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EnableZoomTranscription");
 			}
 		}
+		/// <summary>
+		/// Use ZoomAccountDescriptionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ZoomAccountDescription
 		{
@@ -230,6 +275,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ZoomAccountDescription");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CreatedAt
 		{
@@ -240,6 +288,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UpdatedAt
 		{
@@ -250,6 +301,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
+		/// <summary>
+		/// Use EnableMeetingUploadAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean EnableMeetingUpload
 		{

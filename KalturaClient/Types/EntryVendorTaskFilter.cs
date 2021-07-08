@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FreeTextAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FreeText
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FreeText");
 			}
 		}
+		/// <summary>
+		/// Use ExpectedFinishTimeGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public new int ExpectedFinishTimeGreaterThanOrEqual
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExpectedFinishTimeGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use ExpectedFinishTimeLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public new int ExpectedFinishTimeLessThanOrEqual
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExpectedFinishTimeLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use OrderByAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public new EntryVendorTaskOrderBy OrderBy
 		{

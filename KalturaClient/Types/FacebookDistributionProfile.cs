@@ -58,6 +58,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ApiAuthorizeUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ApiAuthorizeUrl
 		{
@@ -68,6 +71,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ApiAuthorizeUrl");
 			}
 		}
+		/// <summary>
+		/// Use PageIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PageId
 		{
@@ -78,6 +84,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PageId");
 			}
 		}
+		/// <summary>
+		/// Use PageAccessTokenAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PageAccessToken
 		{
@@ -88,6 +97,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PageAccessToken");
 			}
 		}
+		/// <summary>
+		/// Use UserAccessTokenAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UserAccessToken
 		{
@@ -98,6 +110,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserAccessToken");
 			}
 		}
+		/// <summary>
+		/// Use StateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string State
 		{
@@ -108,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("State");
 			}
 		}
+		/// <summary>
+		/// Use PermissionsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Permissions
 		{
@@ -118,6 +136,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Permissions");
 			}
 		}
+		/// <summary>
+		/// Use ReRequestPermissionsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ReRequestPermissions
 		{

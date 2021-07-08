@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use VideoAssetFilePathsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<FreewheelDistributionAssetPath> VideoAssetFilePaths
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoAssetFilePaths");
 			}
 		}
+		/// <summary>
+		/// Use ThumbAssetFilePathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ThumbAssetFilePath
 		{

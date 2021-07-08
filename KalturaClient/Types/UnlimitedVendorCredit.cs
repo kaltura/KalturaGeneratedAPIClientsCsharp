@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use CreditAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Credit
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Credit");
 			}
 		}
+		/// <summary>
+		/// Use FromDateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int FromDate
 		{

@@ -58,6 +58,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use NoDistributionProfilesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? NoDistributionProfiles
 		{
@@ -68,6 +71,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("NoDistributionProfiles");
 			}
 		}
+		/// <summary>
+		/// Use DistributionProfileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int DistributionProfileId
 		{
@@ -78,6 +84,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributionProfileId");
 			}
 		}
+		/// <summary>
+		/// Use DistributionSunStatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EntryDistributionSunStatus DistributionSunStatus
 		{
@@ -88,6 +97,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributionSunStatus");
 			}
 		}
+		/// <summary>
+		/// Use EntryDistributionFlagAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EntryDistributionFlag EntryDistributionFlag
 		{
@@ -98,6 +110,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryDistributionFlag");
 			}
 		}
+		/// <summary>
+		/// Use EntryDistributionStatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EntryDistributionStatus EntryDistributionStatus
 		{
@@ -108,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryDistributionStatus");
 			}
 		}
+		/// <summary>
+		/// Use HasEntryDistributionValidationErrorsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? HasEntryDistributionValidationErrors
 		{
@@ -118,6 +136,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("HasEntryDistributionValidationErrors");
 			}
 		}
+		/// <summary>
+		/// Use EntryDistributionValidationErrorsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntryDistributionValidationErrors
 		{

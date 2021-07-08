@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use StreamsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<LiveStreamParams> Streams
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Streams");
 			}
 		}
+		/// <summary>
+		/// Use RecordingInfoAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<LiveEntryServerNodeRecordingInfo> RecordingInfo
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecordingInfo");
 			}
 		}
+		/// <summary>
+		/// Use IsPlayableUserAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? IsPlayableUser
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsPlayableUser");
 			}
 		}
+		/// <summary>
+		/// Use ViewModeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ViewMode ViewMode
 		{

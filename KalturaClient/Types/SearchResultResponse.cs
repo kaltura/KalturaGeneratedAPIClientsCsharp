@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ObjectsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<SearchResult> Objects
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Objects");
 			}
 		}
+		/// <summary>
+		/// Use NeedMediaInfoAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? NeedMediaInfo
 		{

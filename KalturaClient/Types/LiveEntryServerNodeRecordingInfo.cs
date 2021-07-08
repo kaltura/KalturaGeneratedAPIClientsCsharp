@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use RecordedEntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RecordedEntryId
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecordedEntryId");
 			}
 		}
+		/// <summary>
+		/// Use DurationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Duration
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Duration");
 			}
 		}
+		/// <summary>
+		/// Use RecordingStatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EntryServerNodeRecordingStatus RecordingStatus
 		{

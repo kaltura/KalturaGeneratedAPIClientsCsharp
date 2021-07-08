@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use AttributeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public LiveEntryMatchAttribute Attribute
 		{

@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use CallbackNotificationUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CallbackNotificationUrl
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CallbackNotificationUrl");
 			}
 		}
+		/// <summary>
+		/// Use ProviderTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IntegrationProviderType ProviderType
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProviderType");
 			}
 		}
+		/// <summary>
+		/// Use ProviderDataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IntegrationJobProviderData ProviderData
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProviderData");
 			}
 		}
+		/// <summary>
+		/// Use TriggerTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IntegrationTriggerType TriggerType
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TriggerType");
 			}
 		}
+		/// <summary>
+		/// Use TriggerDataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IntegrationJobTriggerData TriggerData
 		{

@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ProtocolAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public PlaybackProtocol Protocol
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Protocol");
 			}
 		}
+		/// <summary>
+		/// Use UrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Url
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Url");
 			}
 		}
+		/// <summary>
+		/// Use PublishUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PublishUrl
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PublishUrl");
 			}
 		}
+		/// <summary>
+		/// Use BackupUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string BackupUrl
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("BackupUrl");
 			}
 		}
+		/// <summary>
+		/// Use StreamNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StreamName
 		{

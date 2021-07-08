@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use LastObjectKeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string LastObjectKey
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastObjectKey");
 			}
 		}
+		/// <summary>
+		/// Use RecalculatedAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Recalculated
 		{

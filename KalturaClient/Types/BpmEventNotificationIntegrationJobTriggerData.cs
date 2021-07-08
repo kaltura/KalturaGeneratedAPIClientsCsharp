@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use TemplateIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int TemplateId
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplateId");
 			}
 		}
+		/// <summary>
+		/// Use BusinessProcessIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string BusinessProcessId
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("BusinessProcessId");
 			}
 		}
+		/// <summary>
+		/// Use CaseIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CaseId
 		{

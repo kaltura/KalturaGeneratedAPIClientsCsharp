@@ -58,6 +58,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FtpPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FtpPath
 		{
@@ -68,6 +71,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FtpPath");
 			}
 		}
+		/// <summary>
+		/// Use FtpUsernameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FtpUsername
 		{
@@ -78,6 +84,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FtpUsername");
 			}
 		}
+		/// <summary>
+		/// Use FtpPasswordAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FtpPassword
 		{
@@ -88,6 +97,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FtpPassword");
 			}
 		}
+		/// <summary>
+		/// Use FtpHostAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FtpHost
 		{
@@ -98,6 +110,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FtpHost");
 			}
 		}
+		/// <summary>
+		/// Use ContactTelephoneAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ContactTelephone
 		{
@@ -108,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContactTelephone");
 			}
 		}
+		/// <summary>
+		/// Use ContactEmailAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ContactEmail
 		{
@@ -118,6 +136,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContactEmail");
 			}
 		}
+		/// <summary>
+		/// Use ProcessFeedAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public YahooDistributionProcessFeedActionStatus ProcessFeed
 		{

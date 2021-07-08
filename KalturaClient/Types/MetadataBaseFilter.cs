@@ -80,6 +80,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use PartnerIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerIdEqual
 		{
@@ -90,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use MetadataProfileIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MetadataProfileIdEqual
 		{
@@ -100,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataProfileIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use MetadataProfileIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string MetadataProfileIdIn
 		{
@@ -110,6 +119,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataProfileIdIn");
 			}
 		}
+		/// <summary>
+		/// Use MetadataProfileVersionEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MetadataProfileVersionEqual
 		{
@@ -120,6 +132,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataProfileVersionEqual");
 			}
 		}
+		/// <summary>
+		/// Use MetadataProfileVersionGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MetadataProfileVersionGreaterThanOrEqual
 		{
@@ -130,6 +145,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataProfileVersionGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use MetadataProfileVersionLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MetadataProfileVersionLessThanOrEqual
 		{
@@ -140,6 +158,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataProfileVersionLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use MetadataObjectTypeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public MetadataObjectType MetadataObjectTypeEqual
 		{
@@ -150,6 +171,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataObjectTypeEqual");
 			}
 		}
+		/// <summary>
+		/// Use ObjectIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ObjectIdEqual
 		{
@@ -160,6 +184,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use ObjectIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ObjectIdIn
 		{
@@ -170,6 +197,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectIdIn");
 			}
 		}
+		/// <summary>
+		/// Use VersionEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int VersionEqual
 		{
@@ -180,6 +210,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VersionEqual");
 			}
 		}
+		/// <summary>
+		/// Use VersionGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int VersionGreaterThanOrEqual
 		{
@@ -190,6 +223,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VersionGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use VersionLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int VersionLessThanOrEqual
 		{
@@ -200,6 +236,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VersionLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
@@ -210,6 +249,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
@@ -220,6 +262,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
@@ -230,6 +275,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
@@ -240,6 +288,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use StatusEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public MetadataStatus StatusEqual
 		{
@@ -250,6 +301,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		/// <summary>
+		/// Use StatusInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StatusIn
 		{

@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use LoginEmailEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string LoginEmailEqual
 		{

@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FieldNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ESearchCategoryEntryFieldName FieldName
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FieldName");
 			}
 		}
+		/// <summary>
+		/// Use CategoryEntryStatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public CategoryEntryStatus CategoryEntryStatus
 		{

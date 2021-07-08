@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use MembersCountAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MembersCount
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MembersCount");
 			}
 		}
+		/// <summary>
+		/// Use ProcessStatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public GroupProcessStatus ProcessStatus
 		{

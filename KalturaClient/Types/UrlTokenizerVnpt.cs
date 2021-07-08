@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use TokenizationFormatAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int TokenizationFormat
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TokenizationFormat");
 			}
 		}
+		/// <summary>
+		/// Use ShouldIncludeClientIpAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? ShouldIncludeClientIp
 		{

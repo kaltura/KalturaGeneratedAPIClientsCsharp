@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IsLiveAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean IsLive
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsLive");
 			}
 		}
+		/// <summary>
+		/// Use IsRecordedEntryIdEmptyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean IsRecordedEntryIdEmpty
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsRecordedEntryIdEmpty");
 			}
 		}
+		/// <summary>
+		/// Use HasMediaServerHostnameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string HasMediaServerHostname
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("HasMediaServerHostname");
 			}
 		}
+		/// <summary>
+		/// Use OrderByAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public new LiveEntryOrderBy OrderBy
 		{

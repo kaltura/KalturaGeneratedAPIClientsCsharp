@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IsLiveAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean IsLive
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsLive");
 			}
 		}
+		/// <summary>
+		/// Use OrderByAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public new DeliveryProfileOrderBy OrderBy
 		{

@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use TypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public UiConfObjType Type
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		/// <summary>
+		/// Use VersionsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<String> Versions
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Versions");
 			}
 		}
+		/// <summary>
+		/// Use DirectoryAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Directory
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Directory");
 			}
 		}
+		/// <summary>
+		/// Use FilenameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Filename
 		{

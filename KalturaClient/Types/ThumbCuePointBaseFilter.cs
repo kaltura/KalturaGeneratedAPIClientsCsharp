@@ -60,6 +60,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use DescriptionLikeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DescriptionLike
 		{
@@ -70,6 +73,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DescriptionLike");
 			}
 		}
+		/// <summary>
+		/// Use DescriptionMultiLikeOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DescriptionMultiLikeOr
 		{
@@ -80,6 +86,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DescriptionMultiLikeOr");
 			}
 		}
+		/// <summary>
+		/// Use DescriptionMultiLikeAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DescriptionMultiLikeAnd
 		{
@@ -90,6 +99,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DescriptionMultiLikeAnd");
 			}
 		}
+		/// <summary>
+		/// Use TitleLikeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TitleLike
 		{
@@ -100,6 +112,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TitleLike");
 			}
 		}
+		/// <summary>
+		/// Use TitleMultiLikeOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TitleMultiLikeOr
 		{
@@ -110,6 +125,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TitleMultiLikeOr");
 			}
 		}
+		/// <summary>
+		/// Use TitleMultiLikeAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TitleMultiLikeAnd
 		{
@@ -120,6 +138,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TitleMultiLikeAnd");
 			}
 		}
+		/// <summary>
+		/// Use SubTypeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ThumbCuePointSubType SubTypeEqual
 		{
@@ -130,6 +151,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SubTypeEqual");
 			}
 		}
+		/// <summary>
+		/// Use SubTypeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SubTypeIn
 		{

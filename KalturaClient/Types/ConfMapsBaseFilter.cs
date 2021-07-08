@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use NameEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string NameEqual
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("NameEqual");
 			}
 		}
+		/// <summary>
+		/// Use RelatedHostEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RelatedHostEqual
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RelatedHostEqual");
 			}
 		}
+		/// <summary>
+		/// Use VersionEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int VersionEqual
 		{

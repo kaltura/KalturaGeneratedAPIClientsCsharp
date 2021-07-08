@@ -72,6 +72,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Id
 		{
@@ -82,6 +85,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		/// <summary>
+		/// Use ConfiguredIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ConfiguredId
 		{
@@ -92,6 +98,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConfiguredId");
 			}
 		}
+		/// <summary>
+		/// Use SchedulerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int SchedulerId
 		{
@@ -102,6 +111,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SchedulerId");
 			}
 		}
+		/// <summary>
+		/// Use SchedulerConfiguredIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int SchedulerConfiguredId
 		{
@@ -112,6 +124,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SchedulerConfiguredId");
 			}
 		}
+		/// <summary>
+		/// Use TypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public BatchJobType Type
 		{
@@ -122,6 +137,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		/// <summary>
+		/// Use TypeNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TypeName
 		{
@@ -132,6 +150,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeName");
 			}
 		}
+		/// <summary>
+		/// Use NameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -142,6 +163,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		/// <summary>
+		/// Use StatusesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<SchedulerStatus> Statuses
 		{
@@ -152,6 +176,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Statuses");
 			}
 		}
+		/// <summary>
+		/// Use ConfigsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<SchedulerConfig> Configs
 		{
@@ -162,6 +189,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Configs");
 			}
 		}
+		/// <summary>
+		/// Use LockedJobsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<BatchJob> LockedJobs
 		{
@@ -172,6 +202,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LockedJobs");
 			}
 		}
+		/// <summary>
+		/// Use AvgWaitAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int AvgWait
 		{
@@ -182,6 +215,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AvgWait");
 			}
 		}
+		/// <summary>
+		/// Use AvgWorkAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int AvgWork
 		{
@@ -192,6 +228,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AvgWork");
 			}
 		}
+		/// <summary>
+		/// Use LastStatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LastStatus
 		{
@@ -202,6 +241,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastStatus");
 			}
 		}
+		/// <summary>
+		/// Use LastStatusStrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string LastStatusStr
 		{

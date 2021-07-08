@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ServerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ServerId
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServerId");
 			}
 		}
+		/// <summary>
+		/// Use ProcessIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ProcessId
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProcessId");
 			}
 		}
+		/// <summary>
+		/// Use MainObjectCodeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string MainObjectCode
 		{

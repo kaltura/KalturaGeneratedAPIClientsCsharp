@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use EventIdOrItsParentIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int EventIdOrItsParentIdEqual
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EventIdOrItsParentIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use OrderByAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public new ScheduleEventResourceOrderBy OrderBy
 		{

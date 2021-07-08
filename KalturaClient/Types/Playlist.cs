@@ -60,6 +60,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use PlaylistContentAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PlaylistContent
 		{
@@ -70,6 +73,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PlaylistContent");
 			}
 		}
+		/// <summary>
+		/// Use FiltersAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<MediaEntryFilterForPlaylist> Filters
 		{
@@ -80,6 +86,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Filters");
 			}
 		}
+		/// <summary>
+		/// Use TotalResultsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int TotalResults
 		{
@@ -90,6 +99,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TotalResults");
 			}
 		}
+		/// <summary>
+		/// Use PlaylistTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public PlaylistType PlaylistType
 		{
@@ -100,6 +112,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PlaylistType");
 			}
 		}
+		/// <summary>
+		/// Use PlaysAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Plays
 		{
@@ -110,6 +125,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Plays");
 			}
 		}
+		/// <summary>
+		/// Use ViewsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Views
 		{
@@ -120,6 +138,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Views");
 			}
 		}
+		/// <summary>
+		/// Use DurationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Duration
 		{
@@ -130,6 +151,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Duration");
 			}
 		}
+		/// <summary>
+		/// Use ExecuteUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ExecuteUrl
 		{

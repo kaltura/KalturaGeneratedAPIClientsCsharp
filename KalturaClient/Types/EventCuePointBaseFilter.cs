@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use EventTypeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EventType EventTypeEqual
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EventTypeEqual");
 			}
 		}
+		/// <summary>
+		/// Use EventTypeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EventTypeIn
 		{

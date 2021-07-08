@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use GreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int GreaterThanOrEqual
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("GreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use LessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LessThanOrEqual
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use GreaterThanAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int GreaterThan
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("GreaterThan");
 			}
 		}
+		/// <summary>
+		/// Use LessThanAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LessThan
 		{

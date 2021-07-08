@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use KeepManualThumbnailsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int KeepManualThumbnails
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("KeepManualThumbnails");
 			}
 		}
+		/// <summary>
+		/// Use PluginOptionItemsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<PluginReplacementOptionsItem> PluginOptionItems
 		{

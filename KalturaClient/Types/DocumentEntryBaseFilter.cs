@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use DocumentTypeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DocumentType DocumentTypeEqual
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DocumentTypeEqual");
 			}
 		}
+		/// <summary>
+		/// Use DocumentTypeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DocumentTypeIn
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DocumentTypeIn");
 			}
 		}
+		/// <summary>
+		/// Use AssetParamsIdsMatchOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AssetParamsIdsMatchOr
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetParamsIdsMatchOr");
 			}
 		}
+		/// <summary>
+		/// Use AssetParamsIdsMatchAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AssetParamsIdsMatchAnd
 		{

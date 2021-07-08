@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ThumbParamsIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ThumbParamsIdEqual
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbParamsIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use ThumbParamsIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ThumbParamsIdIn
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbParamsIdIn");
 			}
 		}
+		/// <summary>
+		/// Use StatusEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ThumbAssetStatus StatusEqual
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		/// <summary>
+		/// Use StatusInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StatusIn
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		/// <summary>
+		/// Use StatusNotInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StatusNotIn
 		{

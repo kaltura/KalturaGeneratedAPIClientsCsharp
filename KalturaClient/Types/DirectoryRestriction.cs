@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use DirectoryRestrictionTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DirectoryRestrictionType DirectoryRestrictionType
 		{

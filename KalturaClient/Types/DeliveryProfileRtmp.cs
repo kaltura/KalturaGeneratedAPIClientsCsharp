@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use EnforceRtmpeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? EnforceRtmpe
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EnforceRtmpe");
 			}
 		}
+		/// <summary>
+		/// Use PrefixAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Prefix
 		{

@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ThumbParamsIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ThumbParamsId
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbParamsId");
 			}
 		}
+		/// <summary>
+		/// Use ThumbParamsVersionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ThumbParamsVersion
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbParamsVersion");
 			}
 		}
+		/// <summary>
+		/// Use ThumbAssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ThumbAssetId
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbAssetId");
 			}
 		}
+		/// <summary>
+		/// Use ThumbAssetVersionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ThumbAssetVersion
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbAssetVersion");
 			}
 		}
+		/// <summary>
+		/// Use RotateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Rotate
 		{

@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use SearchTermStartsWithAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SearchTermStartsWith
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SearchTermStartsWith");
 			}
 		}
+		/// <summary>
+		/// Use SearchedObjectInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SearchedObjectIn
 		{

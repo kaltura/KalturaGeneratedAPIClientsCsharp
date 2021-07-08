@@ -49,6 +49,7 @@ namespace Kaltura.Types
 		public const string PATH = "path";
 		public const string FILE_SIZE_CHECK_INTERVAL = "fileSizeCheckInterval";
 		public const string FILE_DELETE_POLICY = "fileDeletePolicy";
+		public const string FILE_DELETE_REGEX = "fileDeleteRegex";
 		public const string AUTO_FILE_DELETE_DAYS = "autoFileDeleteDays";
 		public const string FILE_HANDLER_TYPE = "fileHandlerType";
 		public const string FILE_NAME_PATTERNS = "fileNamePatterns";
@@ -80,6 +81,7 @@ namespace Kaltura.Types
 		private string _Path = null;
 		private int _FileSizeCheckInterval = Int32.MinValue;
 		private DropFolderFileDeletePolicy _FileDeletePolicy = (DropFolderFileDeletePolicy)Int32.MinValue;
+		private string _FileDeleteRegex = null;
 		private int _AutoFileDeleteDays = Int32.MinValue;
 		private DropFolderFileHandlerType _FileHandlerType = null;
 		private string _FileNamePatterns = null;
@@ -100,6 +102,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Id
 		{
@@ -110,6 +115,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		/// <summary>
+		/// Use PartnerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -120,6 +128,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		/// <summary>
+		/// Use NameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -130,6 +141,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		/// <summary>
+		/// Use DescriptionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Description
 		{
@@ -140,6 +154,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		/// <summary>
+		/// Use TypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DropFolderType Type
 		{
@@ -150,6 +167,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		/// <summary>
+		/// Use StatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DropFolderStatus Status
 		{
@@ -160,6 +180,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		/// <summary>
+		/// Use ConversionProfileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ConversionProfileId
 		{
@@ -170,6 +193,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionProfileId");
 			}
 		}
+		/// <summary>
+		/// Use DcAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Dc
 		{
@@ -180,6 +206,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Dc");
 			}
 		}
+		/// <summary>
+		/// Use PathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Path
 		{
@@ -190,6 +219,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Path");
 			}
 		}
+		/// <summary>
+		/// Use FileSizeCheckIntervalAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int FileSizeCheckInterval
 		{
@@ -200,6 +232,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileSizeCheckInterval");
 			}
 		}
+		/// <summary>
+		/// Use FileDeletePolicyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DropFolderFileDeletePolicy FileDeletePolicy
 		{
@@ -210,6 +245,22 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileDeletePolicy");
 			}
 		}
+		/// <summary>
+		/// Use FileDeleteRegexAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public string FileDeleteRegex
+		{
+			get { return _FileDeleteRegex; }
+			set 
+			{ 
+				_FileDeleteRegex = value;
+				OnPropertyChanged("FileDeleteRegex");
+			}
+		}
+		/// <summary>
+		/// Use AutoFileDeleteDaysAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int AutoFileDeleteDays
 		{
@@ -220,6 +271,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AutoFileDeleteDays");
 			}
 		}
+		/// <summary>
+		/// Use FileHandlerTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DropFolderFileHandlerType FileHandlerType
 		{
@@ -230,6 +284,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileHandlerType");
 			}
 		}
+		/// <summary>
+		/// Use FileNamePatternsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FileNamePatterns
 		{
@@ -240,6 +297,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileNamePatterns");
 			}
 		}
+		/// <summary>
+		/// Use FileHandlerConfigAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DropFolderFileHandlerConfig FileHandlerConfig
 		{
@@ -250,6 +310,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileHandlerConfig");
 			}
 		}
+		/// <summary>
+		/// Use TagsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Tags
 		{
@@ -260,6 +323,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
+		/// <summary>
+		/// Use ErrorCodeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public DropFolderErrorCode ErrorCode
 		{
@@ -270,6 +336,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrorCode");
 			}
 		}
+		/// <summary>
+		/// Use ErrorDescriptionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ErrorDescription
 		{
@@ -280,6 +349,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrorDescription");
 			}
 		}
+		/// <summary>
+		/// Use IgnoreFileNamePatternsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string IgnoreFileNamePatterns
 		{
@@ -290,6 +362,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IgnoreFileNamePatterns");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -300,6 +375,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -310,6 +388,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
+		/// <summary>
+		/// Use LastAccessedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LastAccessedAt
 		{
@@ -320,6 +401,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastAccessedAt");
 			}
 		}
+		/// <summary>
+		/// Use IncrementalAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? Incremental
 		{
@@ -330,6 +414,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Incremental");
 			}
 		}
+		/// <summary>
+		/// Use LastFileTimestampAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LastFileTimestamp
 		{
@@ -340,6 +427,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastFileTimestamp");
 			}
 		}
+		/// <summary>
+		/// Use MetadataProfileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MetadataProfileId
 		{
@@ -350,6 +440,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataProfileId");
 			}
 		}
+		/// <summary>
+		/// Use CategoriesMetadataFieldNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CategoriesMetadataFieldName
 		{
@@ -360,6 +453,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoriesMetadataFieldName");
 			}
 		}
+		/// <summary>
+		/// Use EnforceEntitlementAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? EnforceEntitlement
 		{
@@ -370,6 +466,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EnforceEntitlement");
 			}
 		}
+		/// <summary>
+		/// Use ShouldValidateKSAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? ShouldValidateKS
 		{
@@ -432,6 +531,10 @@ namespace Kaltura.Types
 			if(node["fileDeletePolicy"] != null)
 			{
 				this._FileDeletePolicy = (DropFolderFileDeletePolicy)ParseEnum(typeof(DropFolderFileDeletePolicy), node["fileDeletePolicy"].Value<string>());
+			}
+			if(node["fileDeleteRegex"] != null)
+			{
+				this._FileDeleteRegex = node["fileDeleteRegex"].Value<string>();
 			}
 			if(node["autoFileDeleteDays"] != null)
 			{
@@ -521,6 +624,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("path", this._Path);
 			kparams.AddIfNotNull("fileSizeCheckInterval", this._FileSizeCheckInterval);
 			kparams.AddIfNotNull("fileDeletePolicy", this._FileDeletePolicy);
+			kparams.AddIfNotNull("fileDeleteRegex", this._FileDeleteRegex);
 			kparams.AddIfNotNull("autoFileDeleteDays", this._AutoFileDeleteDays);
 			kparams.AddIfNotNull("fileHandlerType", this._FileHandlerType);
 			kparams.AddIfNotNull("fileNamePatterns", this._FileNamePatterns);
@@ -566,6 +670,8 @@ namespace Kaltura.Types
 					return "FileSizeCheckInterval";
 				case FILE_DELETE_POLICY:
 					return "FileDeletePolicy";
+				case FILE_DELETE_REGEX:
+					return "FileDeleteRegex";
 				case AUTO_FILE_DELETE_DAYS:
 					return "AutoFileDeleteDays";
 				case FILE_HANDLER_TYPE:

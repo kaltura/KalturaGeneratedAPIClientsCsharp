@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use SrcFileUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SrcFileUrl
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcFileUrl");
 			}
 		}
+		/// <summary>
+		/// Use DestFileLocalPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DestFileLocalPath
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestFileLocalPath");
 			}
 		}
+		/// <summary>
+		/// Use MetadataIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MetadataId
 		{

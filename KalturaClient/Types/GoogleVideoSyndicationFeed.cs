@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use AdultContentAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public GoogleSyndicationFeedAdultValues AdultContent
 		{

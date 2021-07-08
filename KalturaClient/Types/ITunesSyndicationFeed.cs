@@ -66,6 +66,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FeedDescriptionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FeedDescription
 		{
@@ -76,6 +79,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedDescription");
 			}
 		}
+		/// <summary>
+		/// Use LanguageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Language
 		{
@@ -86,6 +92,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Language");
 			}
 		}
+		/// <summary>
+		/// Use FeedLandingPageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FeedLandingPage
 		{
@@ -96,6 +105,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedLandingPage");
 			}
 		}
+		/// <summary>
+		/// Use OwnerNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string OwnerName
 		{
@@ -106,6 +118,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OwnerName");
 			}
 		}
+		/// <summary>
+		/// Use OwnerEmailAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string OwnerEmail
 		{
@@ -116,6 +131,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OwnerEmail");
 			}
 		}
+		/// <summary>
+		/// Use FeedImageUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FeedImageUrl
 		{
@@ -126,6 +144,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedImageUrl");
 			}
 		}
+		/// <summary>
+		/// Use CategoryAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ITunesSyndicationFeedCategories Category
 		{
@@ -136,6 +157,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Category");
 			}
 		}
+		/// <summary>
+		/// Use AdultContentAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ITunesSyndicationFeedAdultValues AdultContent
 		{
@@ -146,6 +170,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdultContent");
 			}
 		}
+		/// <summary>
+		/// Use FeedAuthorAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FeedAuthor
 		{
@@ -156,6 +183,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedAuthor");
 			}
 		}
+		/// <summary>
+		/// Use EnforceFeedAuthorAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? EnforceFeedAuthor
 		{
@@ -166,6 +196,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EnforceFeedAuthor");
 			}
 		}
+		/// <summary>
+		/// Use EnforceOrderAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean EnforceOrder
 		{

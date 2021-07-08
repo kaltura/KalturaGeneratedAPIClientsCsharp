@@ -58,6 +58,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use CaptionParamsIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CaptionParamsIdEqual
 		{
@@ -68,6 +71,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CaptionParamsIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use CaptionParamsIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CaptionParamsIdIn
 		{
@@ -78,6 +84,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CaptionParamsIdIn");
 			}
 		}
+		/// <summary>
+		/// Use FormatEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public CaptionType FormatEqual
 		{
@@ -88,6 +97,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FormatEqual");
 			}
 		}
+		/// <summary>
+		/// Use FormatInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FormatIn
 		{
@@ -98,6 +110,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FormatIn");
 			}
 		}
+		/// <summary>
+		/// Use StatusEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public CaptionAssetStatus StatusEqual
 		{
@@ -108,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		/// <summary>
+		/// Use StatusInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StatusIn
 		{
@@ -118,6 +136,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		/// <summary>
+		/// Use StatusNotInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StatusNotIn
 		{

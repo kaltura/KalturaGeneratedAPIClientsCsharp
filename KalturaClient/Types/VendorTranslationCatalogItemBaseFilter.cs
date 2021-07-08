@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use TargetLanguageEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public CatalogItemLanguage TargetLanguageEqual
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TargetLanguageEqual");
 			}
 		}
+		/// <summary>
+		/// Use TargetLanguageInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TargetLanguageIn
 		{

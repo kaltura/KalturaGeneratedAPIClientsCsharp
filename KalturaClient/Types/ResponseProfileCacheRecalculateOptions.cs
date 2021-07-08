@@ -58,6 +58,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use LimitAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Limit
 		{
@@ -68,6 +71,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Limit");
 			}
 		}
+		/// <summary>
+		/// Use CachedObjectTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CachedObjectType
 		{
@@ -78,6 +84,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CachedObjectType");
 			}
 		}
+		/// <summary>
+		/// Use ObjectIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ObjectId
 		{
@@ -88,6 +97,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectId");
 			}
 		}
+		/// <summary>
+		/// Use StartObjectKeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StartObjectKey
 		{
@@ -98,6 +110,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartObjectKey");
 			}
 		}
+		/// <summary>
+		/// Use EndObjectKeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EndObjectKey
 		{
@@ -108,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndObjectKey");
 			}
 		}
+		/// <summary>
+		/// Use JobCreatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int JobCreatedAt
 		{
@@ -118,6 +136,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("JobCreatedAt");
 			}
 		}
+		/// <summary>
+		/// Use IsFirstLoopAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? IsFirstLoop
 		{

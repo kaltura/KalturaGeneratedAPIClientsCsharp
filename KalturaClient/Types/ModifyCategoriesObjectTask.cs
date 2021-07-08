@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use AddRemoveTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ScheduledTaskAddOrRemoveType AddRemoveType
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AddRemoveType");
 			}
 		}
+		/// <summary>
+		/// Use CategoryIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<IntegerValue> CategoryIds
 		{

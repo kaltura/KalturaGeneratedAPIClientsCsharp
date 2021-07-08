@@ -58,6 +58,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ProtocolAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Protocol
 		{
@@ -68,6 +71,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Protocol");
 			}
 		}
+		/// <summary>
+		/// Use KsTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public SessionType KsType
 		{
@@ -78,6 +84,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("KsType");
 			}
 		}
+		/// <summary>
+		/// Use UserRolesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<IntegerValue> UserRoles
 		{
@@ -88,6 +97,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserRoles");
 			}
 		}
+		/// <summary>
+		/// Use CachedObjectTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CachedObjectType
 		{
@@ -98,6 +110,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CachedObjectType");
 			}
 		}
+		/// <summary>
+		/// Use ObjectIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ObjectId
 		{
@@ -108,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectId");
 			}
 		}
+		/// <summary>
+		/// Use StartObjectKeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StartObjectKey
 		{
@@ -118,6 +136,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartObjectKey");
 			}
 		}
+		/// <summary>
+		/// Use EndObjectKeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EndObjectKey
 		{

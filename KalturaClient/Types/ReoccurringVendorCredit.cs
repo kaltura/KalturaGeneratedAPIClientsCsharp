@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FrequencyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VendorCreditRecurrenceFrequency Frequency
 		{

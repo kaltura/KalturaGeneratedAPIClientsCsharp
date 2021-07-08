@@ -62,6 +62,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use DescriptionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Description
 		{
@@ -72,6 +75,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		/// <summary>
+		/// Use RuleDataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RuleData
 		{
@@ -82,6 +88,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RuleData");
 			}
 		}
+		/// <summary>
+		/// Use MessageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Message
 		{
@@ -92,6 +101,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Message");
 			}
 		}
+		/// <summary>
+		/// Use CodeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Code
 		{
@@ -102,6 +114,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Code");
 			}
 		}
+		/// <summary>
+		/// Use ActionsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<RuleAction> Actions
 		{
@@ -112,6 +127,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Actions");
 			}
 		}
+		/// <summary>
+		/// Use ConditionsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<Condition> Conditions
 		{
@@ -122,6 +140,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Conditions");
 			}
 		}
+		/// <summary>
+		/// Use ContextsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<ContextTypeHolder> Contexts
 		{
@@ -132,6 +153,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Contexts");
 			}
 		}
+		/// <summary>
+		/// Use StopProcessingAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? StopProcessing
 		{
@@ -142,6 +166,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StopProcessing");
 			}
 		}
+		/// <summary>
+		/// Use ForceAdminValidationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean ForceAdminValidation
 		{

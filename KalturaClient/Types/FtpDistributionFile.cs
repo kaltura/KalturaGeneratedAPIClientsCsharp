@@ -56,6 +56,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use AssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AssetId
 		{
@@ -66,6 +69,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetId");
 			}
 		}
+		/// <summary>
+		/// Use FilenameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Filename
 		{
@@ -76,6 +82,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Filename");
 			}
 		}
+		/// <summary>
+		/// Use ContentsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Contents
 		{
@@ -86,6 +95,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Contents");
 			}
 		}
+		/// <summary>
+		/// Use LocalFilePathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string LocalFilePath
 		{
@@ -96,6 +108,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LocalFilePath");
 			}
 		}
+		/// <summary>
+		/// Use VersionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Version
 		{
@@ -106,6 +121,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Version");
 			}
 		}
+		/// <summary>
+		/// Use HashAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Hash
 		{

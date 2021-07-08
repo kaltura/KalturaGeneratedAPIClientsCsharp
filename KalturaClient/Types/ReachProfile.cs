@@ -89,13 +89,16 @@ namespace Kaltura.Types
 		private ReachProfileContentDeletionPolicy _ContentDeletionPolicy = (ReachProfileContentDeletionPolicy)Int32.MinValue;
 		private IList<Rule> _Rules;
 		private BaseVendorCredit _Credit;
-		private float _UsedCredit = Single.MinValue;
+		private double _UsedCredit = Double.MinValue;
 		private IList<Dictionary> _Dictionaries;
 		private string _FlavorParamsIds = null;
 		private VendorTaskProcessingRegion _VendorTaskProcessingRegion = (VendorTaskProcessingRegion)Int32.MinValue;
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Id
 		{
@@ -106,6 +109,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		/// <summary>
+		/// Use NameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -116,6 +122,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		/// <summary>
+		/// Use PartnerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -126,6 +135,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -136,6 +148,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -146,6 +161,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
+		/// <summary>
+		/// Use StatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ReachProfileStatus Status
 		{
@@ -156,6 +174,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		/// <summary>
+		/// Use ProfileTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ReachProfileType ProfileType
 		{
@@ -166,6 +187,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProfileType");
 			}
 		}
+		/// <summary>
+		/// Use DefaultOutputFormatAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VendorCatalogItemOutputFormat DefaultOutputFormat
 		{
@@ -176,6 +200,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DefaultOutputFormat");
 			}
 		}
+		/// <summary>
+		/// Use EnableMachineModerationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean EnableMachineModeration
 		{
@@ -186,6 +213,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EnableMachineModeration");
 			}
 		}
+		/// <summary>
+		/// Use EnableHumanModerationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean EnableHumanModeration
 		{
@@ -196,6 +226,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EnableHumanModeration");
 			}
 		}
+		/// <summary>
+		/// Use AutoDisplayMachineCaptionsOnPlayerAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean AutoDisplayMachineCaptionsOnPlayer
 		{
@@ -206,6 +239,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AutoDisplayMachineCaptionsOnPlayer");
 			}
 		}
+		/// <summary>
+		/// Use AutoDisplayHumanCaptionsOnPlayerAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean AutoDisplayHumanCaptionsOnPlayer
 		{
@@ -216,6 +252,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AutoDisplayHumanCaptionsOnPlayer");
 			}
 		}
+		/// <summary>
+		/// Use EnableMetadataExtractionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean EnableMetadataExtraction
 		{
@@ -226,6 +265,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EnableMetadataExtraction");
 			}
 		}
+		/// <summary>
+		/// Use EnableSpeakerChangeIndicationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean EnableSpeakerChangeIndication
 		{
@@ -236,6 +278,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EnableSpeakerChangeIndication");
 			}
 		}
+		/// <summary>
+		/// Use EnableAudioTagsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean EnableAudioTags
 		{
@@ -246,6 +291,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EnableAudioTags");
 			}
 		}
+		/// <summary>
+		/// Use EnableProfanityRemovalAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean EnableProfanityRemoval
 		{
@@ -256,6 +304,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EnableProfanityRemoval");
 			}
 		}
+		/// <summary>
+		/// Use MaxCharactersPerCaptionLineAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MaxCharactersPerCaptionLine
 		{
@@ -266,6 +317,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MaxCharactersPerCaptionLine");
 			}
 		}
+		/// <summary>
+		/// Use LabelAdditionForMachineServiceTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string LabelAdditionForMachineServiceType
 		{
@@ -276,6 +330,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LabelAdditionForMachineServiceType");
 			}
 		}
+		/// <summary>
+		/// Use LabelAdditionForHumanServiceTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string LabelAdditionForHumanServiceType
 		{
@@ -286,6 +343,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LabelAdditionForHumanServiceType");
 			}
 		}
+		/// <summary>
+		/// Use ContentDeletionPolicyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ReachProfileContentDeletionPolicy ContentDeletionPolicy
 		{
@@ -296,6 +356,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentDeletionPolicy");
 			}
 		}
+		/// <summary>
+		/// Use RulesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<Rule> Rules
 		{
@@ -306,6 +369,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Rules");
 			}
 		}
+		/// <summary>
+		/// Use CreditAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public BaseVendorCredit Credit
 		{
@@ -316,8 +382,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("Credit");
 			}
 		}
+		/// <summary>
+		/// Use UsedCreditAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use UsedCreditAsDouble property instead")]
 		public float UsedCredit
+		{
+			get { return (float)_UsedCredit; }
+			private set 
+			{ 
+				_UsedCredit = value;
+				OnPropertyChanged("UsedCredit");
+			}
+		}
+		///<summary>
+		///Use this property UsedCreditAsDouble instead of the float UsedCredit property version
+		///</summary>
+		[JsonProperty]
+		public double UsedCreditAsDouble
 		{
 			get { return _UsedCredit; }
 			private set 
@@ -326,6 +409,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UsedCredit");
 			}
 		}
+		/// <summary>
+		/// Use DictionariesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<Dictionary> Dictionaries
 		{
@@ -336,6 +422,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Dictionaries");
 			}
 		}
+		/// <summary>
+		/// Use FlavorParamsIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlavorParamsIds
 		{
@@ -346,6 +435,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsIds");
 			}
 		}
+		/// <summary>
+		/// Use VendorTaskProcessingRegionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VendorTaskProcessingRegion VendorTaskProcessingRegion
 		{
@@ -459,7 +551,7 @@ namespace Kaltura.Types
 			}
 			if(node["usedCredit"] != null)
 			{
-				this._UsedCredit = ParseFloat(node["usedCredit"].Value<string>());
+				this._UsedCredit = ParseDouble(node["usedCredit"].Value<string>());
 			}
 			if(node["dictionaries"] != null)
 			{

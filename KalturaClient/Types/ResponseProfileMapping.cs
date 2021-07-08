@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ParentPropertyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ParentProperty
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentProperty");
 			}
 		}
+		/// <summary>
+		/// Use FilterPropertyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FilterProperty
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FilterProperty");
 			}
 		}
+		/// <summary>
+		/// Use AllowNullAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? AllowNull
 		{

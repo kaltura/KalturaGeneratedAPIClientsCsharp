@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ValuesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<String> Values
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Values");
 			}
 		}
+		/// <summary>
+		/// Use AllowedValuesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<StringValue> AllowedValues
 		{

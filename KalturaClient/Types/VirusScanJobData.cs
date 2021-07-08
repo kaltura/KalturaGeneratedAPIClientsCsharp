@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FileContainerAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public FileContainer FileContainer
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileContainer");
 			}
 		}
+		/// <summary>
+		/// Use FlavorAssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlavorAssetId
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetId");
 			}
 		}
+		/// <summary>
+		/// Use ScanResultAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VirusScanJobResult ScanResult
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ScanResult");
 			}
 		}
+		/// <summary>
+		/// Use VirusFoundActionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VirusFoundAction VirusFoundAction
 		{

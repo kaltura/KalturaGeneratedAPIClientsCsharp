@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use PublicCertificateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PublicCertificate
 		{

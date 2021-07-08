@@ -84,6 +84,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use UrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Url
 		{
@@ -94,6 +97,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Url");
 			}
 		}
+		/// <summary>
+		/// Use MethodAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public HttpNotificationMethod Method
 		{
@@ -104,6 +110,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Method");
 			}
 		}
+		/// <summary>
+		/// Use ContentTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ContentType
 		{
@@ -114,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentType");
 			}
 		}
+		/// <summary>
+		/// Use DataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Data
 		{
@@ -124,6 +136,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Data");
 			}
 		}
+		/// <summary>
+		/// Use TimeoutAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Timeout
 		{
@@ -134,6 +149,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Timeout");
 			}
 		}
+		/// <summary>
+		/// Use ConnectTimeoutAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ConnectTimeout
 		{
@@ -144,6 +162,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConnectTimeout");
 			}
 		}
+		/// <summary>
+		/// Use UsernameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Username
 		{
@@ -154,6 +175,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Username");
 			}
 		}
+		/// <summary>
+		/// Use PasswordAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Password
 		{
@@ -164,6 +188,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Password");
 			}
 		}
+		/// <summary>
+		/// Use AuthenticationMethodAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public HttpNotificationAuthenticationMethod AuthenticationMethod
 		{
@@ -174,6 +201,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AuthenticationMethod");
 			}
 		}
+		/// <summary>
+		/// Use SslVersionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public HttpNotificationSslVersion SslVersion
 		{
@@ -184,6 +214,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SslVersion");
 			}
 		}
+		/// <summary>
+		/// Use SslCertificateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SslCertificate
 		{
@@ -194,6 +227,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SslCertificate");
 			}
 		}
+		/// <summary>
+		/// Use SslCertificateTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public HttpNotificationCertificateType SslCertificateType
 		{
@@ -204,6 +240,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SslCertificateType");
 			}
 		}
+		/// <summary>
+		/// Use SslCertificatePasswordAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SslCertificatePassword
 		{
@@ -214,6 +253,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SslCertificatePassword");
 			}
 		}
+		/// <summary>
+		/// Use SslEngineAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SslEngine
 		{
@@ -224,6 +266,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SslEngine");
 			}
 		}
+		/// <summary>
+		/// Use SslEngineDefaultAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SslEngineDefault
 		{
@@ -234,6 +279,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SslEngineDefault");
 			}
 		}
+		/// <summary>
+		/// Use SslKeyTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public HttpNotificationSslKeyType SslKeyType
 		{
@@ -244,6 +292,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SslKeyType");
 			}
 		}
+		/// <summary>
+		/// Use SslKeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SslKey
 		{
@@ -254,6 +305,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SslKey");
 			}
 		}
+		/// <summary>
+		/// Use SslKeyPasswordAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SslKeyPassword
 		{
@@ -264,6 +318,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SslKeyPassword");
 			}
 		}
+		/// <summary>
+		/// Use CustomHeadersAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> CustomHeaders
 		{
@@ -274,6 +331,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CustomHeaders");
 			}
 		}
+		/// <summary>
+		/// Use SignSecretAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SignSecret
 		{

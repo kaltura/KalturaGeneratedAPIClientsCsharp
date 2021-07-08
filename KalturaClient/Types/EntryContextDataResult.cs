@@ -76,6 +76,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IsSiteRestrictedAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? IsSiteRestricted
 		{
@@ -86,6 +89,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsSiteRestricted");
 			}
 		}
+		/// <summary>
+		/// Use IsCountryRestrictedAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? IsCountryRestricted
 		{
@@ -96,6 +102,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsCountryRestricted");
 			}
 		}
+		/// <summary>
+		/// Use IsSessionRestrictedAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? IsSessionRestricted
 		{
@@ -106,6 +115,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsSessionRestricted");
 			}
 		}
+		/// <summary>
+		/// Use IsIpAddressRestrictedAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? IsIpAddressRestricted
 		{
@@ -116,6 +128,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsIpAddressRestricted");
 			}
 		}
+		/// <summary>
+		/// Use IsUserAgentRestrictedAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? IsUserAgentRestricted
 		{
@@ -126,6 +141,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsUserAgentRestricted");
 			}
 		}
+		/// <summary>
+		/// Use PreviewLengthAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PreviewLength
 		{
@@ -136,6 +154,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PreviewLength");
 			}
 		}
+		/// <summary>
+		/// Use IsScheduledNowAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? IsScheduledNow
 		{
@@ -146,6 +167,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsScheduledNow");
 			}
 		}
+		/// <summary>
+		/// Use IsAdminAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? IsAdmin
 		{
@@ -156,6 +180,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsAdmin");
 			}
 		}
+		/// <summary>
+		/// Use StreamerTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StreamerType
 		{
@@ -166,6 +193,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StreamerType");
 			}
 		}
+		/// <summary>
+		/// Use MediaProtocolAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string MediaProtocol
 		{
@@ -176,6 +206,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaProtocol");
 			}
 		}
+		/// <summary>
+		/// Use StorageProfilesXMLAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StorageProfilesXML
 		{
@@ -186,6 +219,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StorageProfilesXML");
 			}
 		}
+		/// <summary>
+		/// Use AccessControlMessagesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<String> AccessControlMessages
 		{
@@ -196,6 +232,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AccessControlMessages");
 			}
 		}
+		/// <summary>
+		/// Use AccessControlActionsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<RuleAction> AccessControlActions
 		{
@@ -206,6 +245,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AccessControlActions");
 			}
 		}
+		/// <summary>
+		/// Use FlavorAssetsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<FlavorAsset> FlavorAssets
 		{
@@ -216,6 +258,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssets");
 			}
 		}
+		/// <summary>
+		/// Use MsDurationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MsDuration
 		{
@@ -226,6 +271,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MsDuration");
 			}
 		}
+		/// <summary>
+		/// Use PluginDataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IDictionary<string, PluginData> PluginData
 		{

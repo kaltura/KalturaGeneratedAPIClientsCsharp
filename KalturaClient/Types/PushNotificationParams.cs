@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use UserParamsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<PushEventNotificationParameter> UserParams
 		{

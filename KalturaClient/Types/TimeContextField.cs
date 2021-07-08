@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use OffsetAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Offset
 		{

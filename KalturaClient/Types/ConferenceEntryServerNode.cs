@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ConfRoomStatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ConferenceRoomStatus ConfRoomStatus
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConfRoomStatus");
 			}
 		}
+		/// <summary>
+		/// Use RegisteredAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Registered
 		{

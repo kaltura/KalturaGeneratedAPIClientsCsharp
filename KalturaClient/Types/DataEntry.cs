@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use DataContentAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DataContent
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DataContent");
 			}
 		}
+		/// <summary>
+		/// Use RetrieveDataContentByGetAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? RetrieveDataContentByGet
 		{

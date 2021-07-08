@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ApiObjectTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ApiObjectType
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ApiObjectType");
 			}
 		}
+		/// <summary>
+		/// Use FormatAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ResponseType Format
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Format");
 			}
 		}
+		/// <summary>
+		/// Use IgnoreNullAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? IgnoreNull
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IgnoreNull");
 			}
 		}
+		/// <summary>
+		/// Use CodeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Code
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Code");
 			}
 		}
+		/// <summary>
+		/// Use DataStringReplacementsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> DataStringReplacements
 		{

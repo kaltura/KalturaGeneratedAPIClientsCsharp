@@ -87,10 +87,10 @@ namespace Kaltura.Types
 		private int _LinkCount = Int32.MinValue;
 		private string _FileRoot = null;
 		private string _FilePath = null;
-		private float _FileSize = Single.MinValue;
+		private double _FileSize = Double.MinValue;
 		private string _FileUrl = null;
 		private string _FileContent = null;
-		private float _FileDiscSize = Single.MinValue;
+		private double _FileDiscSize = Double.MinValue;
 		private bool? _IsCurrentDc = null;
 		private bool? _IsDir = null;
 		private int _OriginalId = Int32.MinValue;
@@ -100,6 +100,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public long Id
 		{
@@ -110,6 +113,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		/// <summary>
+		/// Use PartnerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -120,6 +126,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		/// <summary>
+		/// Use FileObjectTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public FileSyncObjectType FileObjectType
 		{
@@ -130,6 +139,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileObjectType");
 			}
 		}
+		/// <summary>
+		/// Use ObjectIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ObjectId
 		{
@@ -140,6 +152,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectId");
 			}
 		}
+		/// <summary>
+		/// Use VersionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Version
 		{
@@ -150,6 +165,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Version");
 			}
 		}
+		/// <summary>
+		/// Use ObjectSubTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ObjectSubType
 		{
@@ -160,6 +178,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectSubType");
 			}
 		}
+		/// <summary>
+		/// Use DcAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Dc
 		{
@@ -170,6 +191,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Dc");
 			}
 		}
+		/// <summary>
+		/// Use OriginalAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Original
 		{
@@ -180,6 +204,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Original");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -190,6 +217,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -200,6 +230,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
+		/// <summary>
+		/// Use ReadyAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ReadyAt
 		{
@@ -210,6 +243,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReadyAt");
 			}
 		}
+		/// <summary>
+		/// Use SyncTimeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int SyncTime
 		{
@@ -220,6 +256,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SyncTime");
 			}
 		}
+		/// <summary>
+		/// Use StatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public FileSyncStatus Status
 		{
@@ -230,6 +269,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		/// <summary>
+		/// Use FileTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public FileSyncType FileType
 		{
@@ -240,6 +282,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileType");
 			}
 		}
+		/// <summary>
+		/// Use LinkedIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LinkedId
 		{
@@ -250,6 +295,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LinkedId");
 			}
 		}
+		/// <summary>
+		/// Use LinkCountAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LinkCount
 		{
@@ -260,6 +308,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LinkCount");
 			}
 		}
+		/// <summary>
+		/// Use FileRootAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FileRoot
 		{
@@ -270,6 +321,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileRoot");
 			}
 		}
+		/// <summary>
+		/// Use FilePathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FilePath
 		{
@@ -280,8 +334,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("FilePath");
 			}
 		}
+		/// <summary>
+		/// Use FileSizeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use FileSizeAsDouble property instead")]
 		public float FileSize
+		{
+			get { return (float)_FileSize; }
+			private set 
+			{ 
+				_FileSize = value;
+				OnPropertyChanged("FileSize");
+			}
+		}
+		///<summary>
+		///Use this property FileSizeAsDouble instead of the float FileSize property version
+		///</summary>
+		[JsonProperty]
+		public double FileSizeAsDouble
 		{
 			get { return _FileSize; }
 			private set 
@@ -290,6 +361,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileSize");
 			}
 		}
+		/// <summary>
+		/// Use FileUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FileUrl
 		{
@@ -300,6 +374,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileUrl");
 			}
 		}
+		/// <summary>
+		/// Use FileContentAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FileContent
 		{
@@ -310,8 +387,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileContent");
 			}
 		}
+		/// <summary>
+		/// Use FileDiscSizeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use FileDiscSizeAsDouble property instead")]
 		public float FileDiscSize
+		{
+			get { return (float)_FileDiscSize; }
+			private set 
+			{ 
+				_FileDiscSize = value;
+				OnPropertyChanged("FileDiscSize");
+			}
+		}
+		///<summary>
+		///Use this property FileDiscSizeAsDouble instead of the float FileDiscSize property version
+		///</summary>
+		[JsonProperty]
+		public double FileDiscSizeAsDouble
 		{
 			get { return _FileDiscSize; }
 			private set 
@@ -320,6 +414,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileDiscSize");
 			}
 		}
+		/// <summary>
+		/// Use IsCurrentDcAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? IsCurrentDc
 		{
@@ -330,6 +427,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsCurrentDc");
 			}
 		}
+		/// <summary>
+		/// Use IsDirAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? IsDir
 		{
@@ -340,6 +440,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsDir");
 			}
 		}
+		/// <summary>
+		/// Use OriginalIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int OriginalId
 		{
@@ -350,6 +453,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OriginalId");
 			}
 		}
+		/// <summary>
+		/// Use SrcPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SrcPath
 		{
@@ -360,6 +466,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcPath");
 			}
 		}
+		/// <summary>
+		/// Use SrcEncKeyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SrcEncKey
 		{
@@ -370,6 +479,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcEncKey");
 			}
 		}
+		/// <summary>
+		/// Use StorageClassAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StorageClass
 		{
@@ -463,7 +575,7 @@ namespace Kaltura.Types
 			}
 			if(node["fileSize"] != null)
 			{
-				this._FileSize = ParseFloat(node["fileSize"].Value<string>());
+				this._FileSize = ParseDouble(node["fileSize"].Value<string>());
 			}
 			if(node["fileUrl"] != null)
 			{
@@ -475,7 +587,7 @@ namespace Kaltura.Types
 			}
 			if(node["fileDiscSize"] != null)
 			{
-				this._FileDiscSize = ParseFloat(node["fileDiscSize"].Value<string>());
+				this._FileDiscSize = ParseDouble(node["fileDiscSize"].Value<string>());
 			}
 			if(node["isCurrentDc"] != null)
 			{

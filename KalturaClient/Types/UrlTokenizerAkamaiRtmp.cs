@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ProfileAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Profile
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Profile");
 			}
 		}
+		/// <summary>
+		/// Use TypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Type
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		/// <summary>
+		/// Use AifpAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Aifp
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Aifp");
 			}
 		}
+		/// <summary>
+		/// Use UsePrefixAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? UsePrefix
 		{

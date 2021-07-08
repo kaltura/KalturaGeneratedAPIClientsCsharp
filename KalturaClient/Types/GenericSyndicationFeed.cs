@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FeedDescriptionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FeedDescription
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedDescription");
 			}
 		}
+		/// <summary>
+		/// Use FeedLandingPageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FeedLandingPage
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedLandingPage");
 			}
 		}
+		/// <summary>
+		/// Use EntryFilterAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public BaseEntryFilter EntryFilter
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryFilter");
 			}
 		}
+		/// <summary>
+		/// Use PageSizeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PageSize
 		{

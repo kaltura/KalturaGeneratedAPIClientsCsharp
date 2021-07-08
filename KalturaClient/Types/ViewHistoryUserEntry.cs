@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use PlaybackContextAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PlaybackContext
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PlaybackContext");
 			}
 		}
+		/// <summary>
+		/// Use LastTimeReachedAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LastTimeReached
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastTimeReached");
 			}
 		}
+		/// <summary>
+		/// Use LastUpdateTimeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LastUpdateTime
 		{

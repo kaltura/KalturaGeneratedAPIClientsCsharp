@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FromPartnerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int FromPartnerId
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FromPartnerId");
 			}
 		}
+		/// <summary>
+		/// Use ToPartnerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ToPartnerId
 		{

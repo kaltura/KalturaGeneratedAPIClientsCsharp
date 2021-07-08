@@ -43,13 +43,30 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Private Fields
-		private float _PricePerUnit = Single.MinValue;
+		private double _PricePerUnit = Double.MinValue;
 		private VendorCatalogItemPriceFunction _PriceFunction = null;
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use PricePerUnitAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use PricePerUnitAsDouble property instead")]
 		public float PricePerUnit
+		{
+			get { return (float)_PricePerUnit; }
+			set 
+			{ 
+				_PricePerUnit = value;
+				OnPropertyChanged("PricePerUnit");
+			}
+		}
+		///<summary>
+		///Use this property PricePerUnitAsDouble instead of the float PricePerUnit property version
+		///</summary>
+		[JsonProperty]
+		public double PricePerUnitAsDouble
 		{
 			get { return _PricePerUnit; }
 			set 
@@ -58,6 +75,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PricePerUnit");
 			}
 		}
+		/// <summary>
+		/// Use PriceFunctionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VendorCatalogItemPriceFunction PriceFunction
 		{
@@ -79,7 +99,7 @@ namespace Kaltura.Types
 		{
 			if(node["pricePerUnit"] != null)
 			{
-				this._PricePerUnit = ParseFloat(node["pricePerUnit"].Value<string>());
+				this._PricePerUnit = ParseDouble(node["pricePerUnit"].Value<string>());
 			}
 			if(node["priceFunction"] != null)
 			{

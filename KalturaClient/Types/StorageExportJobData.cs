@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ForceAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? Force
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Force");
 			}
 		}
+		/// <summary>
+		/// Use CreateLinkAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? CreateLink
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreateLink");
 			}
 		}
+		/// <summary>
+		/// Use AssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AssetId
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetId");
 			}
 		}
+		/// <summary>
+		/// Use ExternalUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ExternalUrl
 		{

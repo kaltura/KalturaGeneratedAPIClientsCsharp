@@ -66,6 +66,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use DestFileSyncLocalPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DestFileSyncLocalPath
 		{
@@ -76,6 +79,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestFileSyncLocalPath");
 			}
 		}
+		/// <summary>
+		/// Use DestFileSyncRemoteUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DestFileSyncRemoteUrl
 		{
@@ -86,6 +92,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestFileSyncRemoteUrl");
 			}
 		}
+		/// <summary>
+		/// Use LogFileSyncLocalPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string LogFileSyncLocalPath
 		{
@@ -96,6 +105,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LogFileSyncLocalPath");
 			}
 		}
+		/// <summary>
+		/// Use LogFileSyncRemoteUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string LogFileSyncRemoteUrl
 		{
@@ -106,6 +118,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LogFileSyncRemoteUrl");
 			}
 		}
+		/// <summary>
+		/// Use FlavorAssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlavorAssetId
 		{
@@ -116,6 +131,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetId");
 			}
 		}
+		/// <summary>
+		/// Use RemoteMediaIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RemoteMediaId
 		{
@@ -126,6 +144,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RemoteMediaId");
 			}
 		}
+		/// <summary>
+		/// Use CustomDataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CustomData
 		{
@@ -136,6 +157,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CustomData");
 			}
 		}
+		/// <summary>
+		/// Use ExtraDestFileSyncsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<DestFileSyncDescriptor> ExtraDestFileSyncs
 		{
@@ -146,6 +170,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExtraDestFileSyncs");
 			}
 		}
+		/// <summary>
+		/// Use EngineMessageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EngineMessage
 		{
@@ -156,6 +183,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EngineMessage");
 			}
 		}
+		/// <summary>
+		/// Use DestFileSyncSharedPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DestFileSyncSharedPath
 		{
@@ -166,6 +196,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestFileSyncSharedPath");
 			}
 		}
+		/// <summary>
+		/// Use UserCpuAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UserCpu
 		{

@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use VideoAssetFilePathsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<String> VideoAssetFilePaths
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoAssetFilePaths");
 			}
 		}
+		/// <summary>
+		/// Use ThumbAssetFilePathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ThumbAssetFilePath
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbAssetFilePath");
 			}
 		}
+		/// <summary>
+		/// Use CuePointsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<CuePoint> CuePoints
 		{

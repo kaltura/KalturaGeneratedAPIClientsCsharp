@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IndexIdGreaterThanAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int IndexIdGreaterThan
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IndexIdGreaterThan");
 			}
 		}
+		/// <summary>
+		/// Use DepthGreaterThanEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int DepthGreaterThanEqual
 		{

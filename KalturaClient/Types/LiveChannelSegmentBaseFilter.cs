@@ -59,11 +59,14 @@ namespace Kaltura.Types
 		private string _StatusIn = null;
 		private string _ChannelIdEqual = null;
 		private string _ChannelIdIn = null;
-		private float _StartTimeGreaterThanOrEqual = Single.MinValue;
-		private float _StartTimeLessThanOrEqual = Single.MinValue;
+		private double _StartTimeGreaterThanOrEqual = Double.MinValue;
+		private double _StartTimeLessThanOrEqual = Double.MinValue;
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use CreatedAtGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
@@ -74,6 +77,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
@@ -84,6 +90,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
@@ -94,6 +103,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
@@ -104,6 +116,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use StatusEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public LiveChannelSegmentStatus StatusEqual
 		{
@@ -114,6 +129,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		/// <summary>
+		/// Use StatusInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StatusIn
 		{
@@ -124,6 +142,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		/// <summary>
+		/// Use ChannelIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ChannelIdEqual
 		{
@@ -134,6 +155,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use ChannelIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ChannelIdIn
 		{
@@ -144,8 +168,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelIdIn");
 			}
 		}
+		/// <summary>
+		/// Use StartTimeGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use StartTimeGreaterThanOrEqualAsDouble property instead")]
 		public float StartTimeGreaterThanOrEqual
+		{
+			get { return (float)_StartTimeGreaterThanOrEqual; }
+			set 
+			{ 
+				_StartTimeGreaterThanOrEqual = value;
+				OnPropertyChanged("StartTimeGreaterThanOrEqual");
+			}
+		}
+		///<summary>
+		///Use this property StartTimeGreaterThanOrEqualAsDouble instead of the float StartTimeGreaterThanOrEqual property version
+		///</summary>
+		[JsonProperty]
+		public double StartTimeGreaterThanOrEqualAsDouble
 		{
 			get { return _StartTimeGreaterThanOrEqual; }
 			set 
@@ -154,8 +195,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartTimeGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use StartTimeLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use StartTimeLessThanOrEqualAsDouble property instead")]
 		public float StartTimeLessThanOrEqual
+		{
+			get { return (float)_StartTimeLessThanOrEqual; }
+			set 
+			{ 
+				_StartTimeLessThanOrEqual = value;
+				OnPropertyChanged("StartTimeLessThanOrEqual");
+			}
+		}
+		///<summary>
+		///Use this property StartTimeLessThanOrEqualAsDouble instead of the float StartTimeLessThanOrEqual property version
+		///</summary>
+		[JsonProperty]
+		public double StartTimeLessThanOrEqualAsDouble
 		{
 			get { return _StartTimeLessThanOrEqual; }
 			set 
@@ -207,11 +265,11 @@ namespace Kaltura.Types
 			}
 			if(node["startTimeGreaterThanOrEqual"] != null)
 			{
-				this._StartTimeGreaterThanOrEqual = ParseFloat(node["startTimeGreaterThanOrEqual"].Value<string>());
+				this._StartTimeGreaterThanOrEqual = ParseDouble(node["startTimeGreaterThanOrEqual"].Value<string>());
 			}
 			if(node["startTimeLessThanOrEqual"] != null)
 			{
-				this._StartTimeLessThanOrEqual = ParseFloat(node["startTimeLessThanOrEqual"].Value<string>());
+				this._StartTimeLessThanOrEqual = ParseDouble(node["startTimeLessThanOrEqual"].Value<string>());
 			}
 		}
 		#endregion

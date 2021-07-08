@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ConversionProfileIdFilterAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ConversionProfileFilter ConversionProfileIdFilter
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionProfileIdFilter");
 			}
 		}
+		/// <summary>
+		/// Use AssetParamsIdFilterAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public AssetParamsFilter AssetParamsIdFilter
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetParamsIdFilter");
 			}
 		}
+		/// <summary>
+		/// Use OrderByAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public new ConversionProfileAssetParamsOrderBy OrderBy
 		{

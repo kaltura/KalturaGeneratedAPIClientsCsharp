@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FromDateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int FromDate
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FromDate");
 			}
 		}
+		/// <summary>
+		/// Use ToDateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ToDate
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ToDate");
 			}
 		}
+		/// <summary>
+		/// Use FromDayAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FromDay
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FromDay");
 			}
 		}
+		/// <summary>
+		/// Use ToDayAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ToDay
 		{

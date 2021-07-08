@@ -60,6 +60,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FreeTextAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FreeText
 		{
@@ -70,6 +73,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FreeText");
 			}
 		}
+		/// <summary>
+		/// Use ExcludedFreeTextGroupsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ExcludedFreeTextGroups
 		{
@@ -80,6 +86,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExcludedFreeTextGroups");
 			}
 		}
+		/// <summary>
+		/// Use DescriptionLikeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DescriptionLike
 		{
@@ -90,6 +99,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DescriptionLike");
 			}
 		}
+		/// <summary>
+		/// Use IsRootAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean IsRoot
 		{
@@ -100,6 +112,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsRoot");
 			}
 		}
+		/// <summary>
+		/// Use CategoriesFullNameInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CategoriesFullNameIn
 		{
@@ -110,6 +125,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoriesFullNameIn");
 			}
 		}
+		/// <summary>
+		/// Use CategoryAncestorIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CategoryAncestorIdIn
 		{
@@ -120,6 +138,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryAncestorIdIn");
 			}
 		}
+		/// <summary>
+		/// Use RedirectFromEntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RedirectFromEntryId
 		{
@@ -130,6 +151,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RedirectFromEntryId");
 			}
 		}
+		/// <summary>
+		/// Use OrderByAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public new BaseEntryOrderBy OrderBy
 		{

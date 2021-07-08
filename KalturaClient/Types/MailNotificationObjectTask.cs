@@ -58,6 +58,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use MailToAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string MailTo
 		{
@@ -68,6 +71,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MailTo");
 			}
 		}
+		/// <summary>
+		/// Use SenderAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Sender
 		{
@@ -78,6 +84,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Sender");
 			}
 		}
+		/// <summary>
+		/// Use SubjectAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Subject
 		{
@@ -88,6 +97,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Subject");
 			}
 		}
+		/// <summary>
+		/// Use MessageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Message
 		{
@@ -98,6 +110,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Message");
 			}
 		}
+		/// <summary>
+		/// Use FooterAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Footer
 		{
@@ -108,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Footer");
 			}
 		}
+		/// <summary>
+		/// Use LinkAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Link
 		{
@@ -118,6 +136,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Link");
 			}
 		}
+		/// <summary>
+		/// Use SendToUsersAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? SendToUsers
 		{

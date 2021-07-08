@@ -62,6 +62,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ParentIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ParentId
 		{
@@ -72,6 +75,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentId");
 			}
 		}
+		/// <summary>
+		/// Use TextAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Text
 		{
@@ -82,6 +88,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Text");
 			}
 		}
+		/// <summary>
+		/// Use EndTimeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int EndTime
 		{
@@ -92,6 +101,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndTime");
 			}
 		}
+		/// <summary>
+		/// Use DurationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Duration
 		{
@@ -102,6 +114,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Duration");
 			}
 		}
+		/// <summary>
+		/// Use DepthAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Depth
 		{
@@ -112,6 +127,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Depth");
 			}
 		}
+		/// <summary>
+		/// Use ChildrenCountAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ChildrenCount
 		{
@@ -122,6 +140,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChildrenCount");
 			}
 		}
+		/// <summary>
+		/// Use DirectChildrenCountAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int DirectChildrenCount
 		{
@@ -132,6 +153,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DirectChildrenCount");
 			}
 		}
+		/// <summary>
+		/// Use IsPublicAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean IsPublic
 		{
@@ -142,6 +166,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsPublic");
 			}
 		}
+		/// <summary>
+		/// Use SearchableOnEntryAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean SearchableOnEntry
 		{

@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use SortOrderAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ESearchSortOrder SortOrder
 		{

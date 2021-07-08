@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ChangedCategoryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ChangedCategoryId
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChangedCategoryId");
 			}
 		}
+		/// <summary>
+		/// Use DeletedPrivacyContextsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DeletedPrivacyContexts
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeletedPrivacyContexts");
 			}
 		}
+		/// <summary>
+		/// Use AddedPrivacyContextsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AddedPrivacyContexts
 		{

@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FieldsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Fields
 		{

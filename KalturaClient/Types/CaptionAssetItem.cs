@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use AssetAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public CaptionAsset Asset
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Asset");
 			}
 		}
+		/// <summary>
+		/// Use EntryAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public BaseEntry Entry
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Entry");
 			}
 		}
+		/// <summary>
+		/// Use StartTimeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int StartTime
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartTime");
 			}
 		}
+		/// <summary>
+		/// Use EndTimeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int EndTime
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndTime");
 			}
 		}
+		/// <summary>
+		/// Use ContentAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Content
 		{

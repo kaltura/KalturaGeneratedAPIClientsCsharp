@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FileNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FileName
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileName");
 			}
 		}
+		/// <summary>
+		/// Use ReferrerAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Referrer
 		{

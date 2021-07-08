@@ -64,6 +64,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use SchedulerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int SchedulerId
 		{
@@ -74,6 +77,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SchedulerId");
 			}
 		}
+		/// <summary>
+		/// Use WorkerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int WorkerId
 		{
@@ -84,6 +90,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("WorkerId");
 			}
 		}
+		/// <summary>
+		/// Use BatchIndexAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int BatchIndex
 		{
@@ -94,6 +103,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("BatchIndex");
 			}
 		}
+		/// <summary>
+		/// Use TimeStampAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int TimeStamp
 		{
@@ -104,6 +116,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TimeStamp");
 			}
 		}
+		/// <summary>
+		/// Use MessageAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Message
 		{
@@ -114,6 +129,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Message");
 			}
 		}
+		/// <summary>
+		/// Use ErrTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ErrType
 		{
@@ -124,6 +142,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrType");
 			}
 		}
+		/// <summary>
+		/// Use ErrNumberAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ErrNumber
 		{
@@ -134,6 +155,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrNumber");
 			}
 		}
+		/// <summary>
+		/// Use HostNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string HostName
 		{
@@ -144,6 +168,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("HostName");
 			}
 		}
+		/// <summary>
+		/// Use SessionIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SessionId
 		{
@@ -154,6 +181,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SessionId");
 			}
 		}
+		/// <summary>
+		/// Use SchedulerNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SchedulerName
 		{

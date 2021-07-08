@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FlavorAssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlavorAssetId
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetId");
 			}
 		}
+		/// <summary>
+		/// Use CalculateComplexityAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? CalculateComplexity
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CalculateComplexity");
 			}
 		}
+		/// <summary>
+		/// Use ExtractId3TagsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? ExtractId3Tags
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExtractId3Tags");
 			}
 		}
+		/// <summary>
+		/// Use DestDataFilePathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DestDataFilePath
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestDataFilePath");
 			}
 		}
+		/// <summary>
+		/// Use DetectGOPAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int DetectGOP
 		{

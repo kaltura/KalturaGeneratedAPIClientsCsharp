@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use UserNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UserName
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserName");
 			}
 		}
+		/// <summary>
+		/// Use UserMailAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UserMail
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserMail");
 			}
 		}
+		/// <summary>
+		/// Use OutputPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string OutputPath
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OutputPath");
 			}
 		}
+		/// <summary>
+		/// Use SharedOutputPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SharedOutputPath
 		{

@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use CuePointsFreeTextAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CuePointsFreeText
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CuePointsFreeText");
 			}
 		}
+		/// <summary>
+		/// Use CuePointTypeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CuePointTypeIn
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CuePointTypeIn");
 			}
 		}
+		/// <summary>
+		/// Use CuePointSubTypeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CuePointSubTypeEqual
 		{

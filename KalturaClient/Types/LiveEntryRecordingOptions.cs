@@ -58,6 +58,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ShouldCopyEntitlementAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean ShouldCopyEntitlement
 		{
@@ -68,6 +71,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ShouldCopyEntitlement");
 			}
 		}
+		/// <summary>
+		/// Use ShouldCopySchedulingAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean ShouldCopyScheduling
 		{
@@ -78,6 +84,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ShouldCopyScheduling");
 			}
 		}
+		/// <summary>
+		/// Use ShouldCopyThumbnailAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean ShouldCopyThumbnail
 		{
@@ -88,6 +97,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ShouldCopyThumbnail");
 			}
 		}
+		/// <summary>
+		/// Use ShouldMakeHiddenAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean ShouldMakeHidden
 		{
@@ -98,6 +110,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ShouldMakeHidden");
 			}
 		}
+		/// <summary>
+		/// Use ShouldAutoArchiveAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean ShouldAutoArchive
 		{
@@ -108,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ShouldAutoArchive");
 			}
 		}
+		/// <summary>
+		/// Use NonDeletedCuePointsTagsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string NonDeletedCuePointsTags
 		{
@@ -118,6 +136,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("NonDeletedCuePointsTags");
 			}
 		}
+		/// <summary>
+		/// Use ArchiveVodSuffixTimezoneAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ArchiveVodSuffixTimezone
 		{

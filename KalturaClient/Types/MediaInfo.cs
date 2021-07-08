@@ -98,8 +98,8 @@ namespace Kaltura.Types
 		private BitRateMode _VideoBitRateMode = (BitRateMode)Int32.MinValue;
 		private int _VideoWidth = Int32.MinValue;
 		private int _VideoHeight = Int32.MinValue;
-		private float _VideoFrameRate = Single.MinValue;
-		private float _VideoDar = Single.MinValue;
+		private double _VideoFrameRate = Double.MinValue;
+		private double _VideoDar = Double.MinValue;
 		private int _VideoRotation = Int32.MinValue;
 		private string _AudioFormat = null;
 		private string _AudioCodecId = null;
@@ -117,7 +117,7 @@ namespace Kaltura.Types
 		private int _IsFastStart = Int32.MinValue;
 		private string _ContentStreams = null;
 		private int _ComplexityValue = Int32.MinValue;
-		private float _MaxGOP = Single.MinValue;
+		private double _MaxGOP = Double.MinValue;
 		private string _MatrixCoefficients = null;
 		private string _ColorTransfer = null;
 		private string _ColorPrimaries = null;
@@ -128,6 +128,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Id
 		{
@@ -138,6 +141,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		/// <summary>
+		/// Use FlavorAssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlavorAssetId
 		{
@@ -148,6 +154,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetId");
 			}
 		}
+		/// <summary>
+		/// Use FileSizeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int FileSize
 		{
@@ -158,6 +167,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileSize");
 			}
 		}
+		/// <summary>
+		/// Use ContainerFormatAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ContainerFormat
 		{
@@ -168,6 +180,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContainerFormat");
 			}
 		}
+		/// <summary>
+		/// Use ContainerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ContainerId
 		{
@@ -178,6 +193,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContainerId");
 			}
 		}
+		/// <summary>
+		/// Use ContainerProfileAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ContainerProfile
 		{
@@ -188,6 +206,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContainerProfile");
 			}
 		}
+		/// <summary>
+		/// Use ContainerDurationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ContainerDuration
 		{
@@ -198,6 +219,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContainerDuration");
 			}
 		}
+		/// <summary>
+		/// Use ContainerBitRateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ContainerBitRate
 		{
@@ -208,6 +232,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContainerBitRate");
 			}
 		}
+		/// <summary>
+		/// Use VideoFormatAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string VideoFormat
 		{
@@ -218,6 +245,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoFormat");
 			}
 		}
+		/// <summary>
+		/// Use VideoCodecIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string VideoCodecId
 		{
@@ -228,6 +258,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoCodecId");
 			}
 		}
+		/// <summary>
+		/// Use VideoDurationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int VideoDuration
 		{
@@ -238,6 +271,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoDuration");
 			}
 		}
+		/// <summary>
+		/// Use VideoBitRateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int VideoBitRate
 		{
@@ -248,6 +284,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoBitRate");
 			}
 		}
+		/// <summary>
+		/// Use VideoBitRateModeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public BitRateMode VideoBitRateMode
 		{
@@ -258,6 +297,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoBitRateMode");
 			}
 		}
+		/// <summary>
+		/// Use VideoWidthAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int VideoWidth
 		{
@@ -268,6 +310,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoWidth");
 			}
 		}
+		/// <summary>
+		/// Use VideoHeightAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int VideoHeight
 		{
@@ -278,8 +323,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoHeight");
 			}
 		}
+		/// <summary>
+		/// Use VideoFrameRateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use VideoFrameRateAsDouble property instead")]
 		public float VideoFrameRate
+		{
+			get { return (float)_VideoFrameRate; }
+			set 
+			{ 
+				_VideoFrameRate = value;
+				OnPropertyChanged("VideoFrameRate");
+			}
+		}
+		///<summary>
+		///Use this property VideoFrameRateAsDouble instead of the float VideoFrameRate property version
+		///</summary>
+		[JsonProperty]
+		public double VideoFrameRateAsDouble
 		{
 			get { return _VideoFrameRate; }
 			set 
@@ -288,8 +350,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoFrameRate");
 			}
 		}
+		/// <summary>
+		/// Use VideoDarAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use VideoDarAsDouble property instead")]
 		public float VideoDar
+		{
+			get { return (float)_VideoDar; }
+			set 
+			{ 
+				_VideoDar = value;
+				OnPropertyChanged("VideoDar");
+			}
+		}
+		///<summary>
+		///Use this property VideoDarAsDouble instead of the float VideoDar property version
+		///</summary>
+		[JsonProperty]
+		public double VideoDarAsDouble
 		{
 			get { return _VideoDar; }
 			set 
@@ -298,6 +377,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoDar");
 			}
 		}
+		/// <summary>
+		/// Use VideoRotationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int VideoRotation
 		{
@@ -308,6 +390,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoRotation");
 			}
 		}
+		/// <summary>
+		/// Use AudioFormatAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AudioFormat
 		{
@@ -318,6 +403,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AudioFormat");
 			}
 		}
+		/// <summary>
+		/// Use AudioCodecIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AudioCodecId
 		{
@@ -328,6 +416,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AudioCodecId");
 			}
 		}
+		/// <summary>
+		/// Use AudioDurationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int AudioDuration
 		{
@@ -338,6 +429,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AudioDuration");
 			}
 		}
+		/// <summary>
+		/// Use AudioBitRateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int AudioBitRate
 		{
@@ -348,6 +442,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AudioBitRate");
 			}
 		}
+		/// <summary>
+		/// Use AudioBitRateModeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public BitRateMode AudioBitRateMode
 		{
@@ -358,6 +455,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AudioBitRateMode");
 			}
 		}
+		/// <summary>
+		/// Use AudioChannelsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int AudioChannels
 		{
@@ -368,6 +468,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AudioChannels");
 			}
 		}
+		/// <summary>
+		/// Use AudioSamplingRateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int AudioSamplingRate
 		{
@@ -378,6 +481,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AudioSamplingRate");
 			}
 		}
+		/// <summary>
+		/// Use AudioResolutionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int AudioResolution
 		{
@@ -388,6 +494,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AudioResolution");
 			}
 		}
+		/// <summary>
+		/// Use WritingLibAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string WritingLib
 		{
@@ -398,6 +507,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("WritingLib");
 			}
 		}
+		/// <summary>
+		/// Use RawDataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RawData
 		{
@@ -408,6 +520,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RawData");
 			}
 		}
+		/// <summary>
+		/// Use MultiStreamInfoAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string MultiStreamInfo
 		{
@@ -418,6 +533,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MultiStreamInfo");
 			}
 		}
+		/// <summary>
+		/// Use ScanTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ScanType
 		{
@@ -428,6 +546,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ScanType");
 			}
 		}
+		/// <summary>
+		/// Use MultiStreamAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string MultiStream
 		{
@@ -438,6 +559,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MultiStream");
 			}
 		}
+		/// <summary>
+		/// Use IsFastStartAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int IsFastStart
 		{
@@ -448,6 +572,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsFastStart");
 			}
 		}
+		/// <summary>
+		/// Use ContentStreamsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ContentStreams
 		{
@@ -458,6 +585,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentStreams");
 			}
 		}
+		/// <summary>
+		/// Use ComplexityValueAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ComplexityValue
 		{
@@ -468,8 +598,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("ComplexityValue");
 			}
 		}
+		/// <summary>
+		/// Use MaxGOPAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use MaxGOPAsDouble property instead")]
 		public float MaxGOP
+		{
+			get { return (float)_MaxGOP; }
+			set 
+			{ 
+				_MaxGOP = value;
+				OnPropertyChanged("MaxGOP");
+			}
+		}
+		///<summary>
+		///Use this property MaxGOPAsDouble instead of the float MaxGOP property version
+		///</summary>
+		[JsonProperty]
+		public double MaxGOPAsDouble
 		{
 			get { return _MaxGOP; }
 			set 
@@ -478,6 +625,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MaxGOP");
 			}
 		}
+		/// <summary>
+		/// Use MatrixCoefficientsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string MatrixCoefficients
 		{
@@ -488,6 +638,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MatrixCoefficients");
 			}
 		}
+		/// <summary>
+		/// Use ColorTransferAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ColorTransfer
 		{
@@ -498,6 +651,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ColorTransfer");
 			}
 		}
+		/// <summary>
+		/// Use ColorPrimariesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ColorPrimaries
 		{
@@ -508,6 +664,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ColorPrimaries");
 			}
 		}
+		/// <summary>
+		/// Use PixelFormatAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PixelFormat
 		{
@@ -518,6 +677,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PixelFormat");
 			}
 		}
+		/// <summary>
+		/// Use ColorSpaceAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ColorSpace
 		{
@@ -528,6 +690,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ColorSpace");
 			}
 		}
+		/// <summary>
+		/// Use ChromaSubsamplingAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ChromaSubsampling
 		{
@@ -538,6 +703,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChromaSubsampling");
 			}
 		}
+		/// <summary>
+		/// Use BitsDepthAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int BitsDepth
 		{
@@ -619,11 +787,11 @@ namespace Kaltura.Types
 			}
 			if(node["videoFrameRate"] != null)
 			{
-				this._VideoFrameRate = ParseFloat(node["videoFrameRate"].Value<string>());
+				this._VideoFrameRate = ParseDouble(node["videoFrameRate"].Value<string>());
 			}
 			if(node["videoDar"] != null)
 			{
-				this._VideoDar = ParseFloat(node["videoDar"].Value<string>());
+				this._VideoDar = ParseDouble(node["videoDar"].Value<string>());
 			}
 			if(node["videoRotation"] != null)
 			{
@@ -695,7 +863,7 @@ namespace Kaltura.Types
 			}
 			if(node["maxGOP"] != null)
 			{
-				this._MaxGOP = ParseFloat(node["maxGOP"].Value<string>());
+				this._MaxGOP = ParseDouble(node["maxGOP"].Value<string>());
 			}
 			if(node["matrixCoefficients"] != null)
 			{

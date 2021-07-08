@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use TotalEntryCountAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int TotalEntryCount
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TotalEntryCount");
 			}
 		}
+		/// <summary>
+		/// Use ActualEntryCountAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ActualEntryCount
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ActualEntryCount");
 			}
 		}
+		/// <summary>
+		/// Use RequireTranscodingCountAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int RequireTranscodingCount
 		{

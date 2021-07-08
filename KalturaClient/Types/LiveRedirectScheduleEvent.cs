@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use RedirectEntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RedirectEntryId
 		{

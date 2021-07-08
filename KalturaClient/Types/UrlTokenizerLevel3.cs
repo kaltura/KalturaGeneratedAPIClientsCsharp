@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ParamNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ParamName
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParamName");
 			}
 		}
+		/// <summary>
+		/// Use ExpiryNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ExpiryName
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExpiryName");
 			}
 		}
+		/// <summary>
+		/// Use GenAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Gen
 		{

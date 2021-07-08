@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ActualFileSyncLocalPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ActualFileSyncLocalPath
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ActualFileSyncLocalPath");
 			}
 		}
+		/// <summary>
+		/// Use AssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AssetId
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetId");
 			}
 		}
+		/// <summary>
+		/// Use AssetParamsIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int AssetParamsId
 		{

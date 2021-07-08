@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use HasRealThumbnailAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? HasRealThumbnail
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("HasRealThumbnail");
 			}
 		}
+		/// <summary>
+		/// Use EditorTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EditorType EditorType
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EditorType");
 			}
 		}
+		/// <summary>
+		/// Use DataContentAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DataContent
 		{

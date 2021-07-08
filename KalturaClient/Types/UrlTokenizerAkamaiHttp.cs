@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ParamNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ParamName
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParamName");
 			}
 		}
+		/// <summary>
+		/// Use RootDirAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RootDir
 		{

@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ObjectsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<ESearchEntryResult> Objects
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Objects");
 			}
 		}
+		/// <summary>
+		/// Use AggregationsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<ESearchAggregationResponseItem> Aggregations
 		{

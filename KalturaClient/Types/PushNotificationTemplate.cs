@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use QueueNameParametersAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<PushEventNotificationParameter> QueueNameParameters
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("QueueNameParameters");
 			}
 		}
+		/// <summary>
+		/// Use QueueKeyParametersAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<PushEventNotificationParameter> QueueKeyParameters
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("QueueKeyParameters");
 			}
 		}
+		/// <summary>
+		/// Use ApiObjectTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ApiObjectType
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ApiObjectType");
 			}
 		}
+		/// <summary>
+		/// Use ObjectFormatAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ResponseType ObjectFormat
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectFormat");
 			}
 		}
+		/// <summary>
+		/// Use ResponseProfileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ResponseProfileId
 		{

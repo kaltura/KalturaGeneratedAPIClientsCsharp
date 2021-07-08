@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use PatternAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Pattern
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Pattern");
 			}
 		}
+		/// <summary>
+		/// Use ReplacementAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Replacement
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Replacement");
 			}
 		}
+		/// <summary>
+		/// Use ReplacmenServerNodeIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ReplacmenServerNodeId
 		{

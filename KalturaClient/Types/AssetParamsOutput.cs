@@ -56,6 +56,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use AssetParamsIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int AssetParamsId
 		{
@@ -66,6 +69,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetParamsId");
 			}
 		}
+		/// <summary>
+		/// Use AssetParamsVersionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AssetParamsVersion
 		{
@@ -76,6 +82,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetParamsVersion");
 			}
 		}
+		/// <summary>
+		/// Use AssetIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AssetId
 		{
@@ -86,6 +95,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetId");
 			}
 		}
+		/// <summary>
+		/// Use AssetVersionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AssetVersion
 		{
@@ -96,6 +108,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetVersion");
 			}
 		}
+		/// <summary>
+		/// Use ReadyBehaviorAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ReadyBehavior
 		{
@@ -106,6 +121,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReadyBehavior");
 			}
 		}
+		/// <summary>
+		/// Use FormatAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ContainerFormat Format
 		{

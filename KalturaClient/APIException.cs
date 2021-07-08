@@ -453,6 +453,7 @@ namespace Kaltura
 		public static string INVALID_FILE_SYNC_ID = "INVALID_FILE_SYNC_ID";
 		public static string INVALID_SEARCH_TEXT = "INVALID_SEARCH_TEXT";
 		public static string PASSWORD_STRUCTURE_INVALID = "PASSWORD_STRUCTURE_INVALID";
+		public static string COMMON_PASSWORD = "COMMON_PASSWORD";
 		public static string PASSWORD_ALREADY_USED = "PASSWORD_ALREADY_USED";
 		public static string PASSWORD_EXPIRED = "PASSWORD_EXPIRED";
 		public static string LOGIN_BLOCKED = "LOGIN_BLOCKED";

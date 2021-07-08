@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use CsvVersionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public BulkUploadCsvVersion CsvVersion
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CsvVersion");
 			}
 		}
+		/// <summary>
+		/// Use ColumnsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<String> Columns
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Columns");
 			}
 		}
+		/// <summary>
+		/// Use ProcessObjectIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ProcessObjectId
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProcessObjectId");
 			}
 		}
+		/// <summary>
+		/// Use ProcessObjectTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ProcessObjectType
 		{

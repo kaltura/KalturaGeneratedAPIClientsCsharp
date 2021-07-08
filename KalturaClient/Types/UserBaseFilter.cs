@@ -54,6 +54,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use TypeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public UserType TypeEqual
 		{
@@ -64,6 +67,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeEqual");
 			}
 		}
+		/// <summary>
+		/// Use TypeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TypeIn
 		{
@@ -74,6 +80,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeIn");
 			}
 		}
+		/// <summary>
+		/// Use IsAdminEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public NullableBoolean IsAdminEqual
 		{
@@ -84,6 +93,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsAdminEqual");
 			}
 		}
+		/// <summary>
+		/// Use FirstNameStartsWithAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FirstNameStartsWith
 		{
@@ -94,6 +106,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FirstNameStartsWith");
 			}
 		}
+		/// <summary>
+		/// Use LastNameStartsWithAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string LastNameStartsWith
 		{

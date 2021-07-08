@@ -46,6 +46,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ComparisonAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public SearchConditionComparison Comparison
 		{

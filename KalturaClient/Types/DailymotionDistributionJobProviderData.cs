@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use VideoAssetFilePathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string VideoAssetFilePath
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoAssetFilePath");
 			}
 		}
+		/// <summary>
+		/// Use AccessControlGeoBlockingOperationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AccessControlGeoBlockingOperation
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AccessControlGeoBlockingOperation");
 			}
 		}
+		/// <summary>
+		/// Use AccessControlGeoBlockingCountryListAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AccessControlGeoBlockingCountryList
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AccessControlGeoBlockingCountryList");
 			}
 		}
+		/// <summary>
+		/// Use CaptionsInfoAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<DailymotionDistributionCaptionInfo> CaptionsInfo
 		{

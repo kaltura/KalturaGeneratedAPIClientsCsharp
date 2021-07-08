@@ -105,7 +105,7 @@ namespace Kaltura.Types
 		private EntryType _Type = null;
 		private int _CreatedAt = Int32.MinValue;
 		private int _UpdatedAt = Int32.MinValue;
-		private float _Rank = Single.MinValue;
+		private double _Rank = Double.MinValue;
 		private int _TotalRank = Int32.MinValue;
 		private int _Votes = Int32.MinValue;
 		private int _GroupId = Int32.MinValue;
@@ -140,6 +140,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Id
 		{
@@ -150,6 +153,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		/// <summary>
+		/// Use NameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -160,6 +166,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		/// <summary>
+		/// Use DescriptionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Description
 		{
@@ -170,6 +179,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
+		/// <summary>
+		/// Use PartnerIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -180,6 +192,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		/// <summary>
+		/// Use UserIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string UserId
 		{
@@ -190,6 +205,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserId");
 			}
 		}
+		/// <summary>
+		/// Use CreatorIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CreatorId
 		{
@@ -200,6 +218,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatorId");
 			}
 		}
+		/// <summary>
+		/// Use TagsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Tags
 		{
@@ -210,6 +231,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
+		/// <summary>
+		/// Use AdminTagsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string AdminTags
 		{
@@ -220,6 +244,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdminTags");
 			}
 		}
+		/// <summary>
+		/// Use CategoriesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Categories
 		{
@@ -230,6 +257,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Categories");
 			}
 		}
+		/// <summary>
+		/// Use CategoriesIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CategoriesIds
 		{
@@ -240,6 +270,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoriesIds");
 			}
 		}
+		/// <summary>
+		/// Use StatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EntryStatus Status
 		{
@@ -250,6 +283,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
+		/// <summary>
+		/// Use ModerationStatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EntryModerationStatus ModerationStatus
 		{
@@ -260,6 +296,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ModerationStatus");
 			}
 		}
+		/// <summary>
+		/// Use ModerationCountAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ModerationCount
 		{
@@ -270,6 +309,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ModerationCount");
 			}
 		}
+		/// <summary>
+		/// Use TypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EntryType Type
 		{
@@ -280,6 +322,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -290,6 +335,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -300,8 +348,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
+		/// <summary>
+		/// Use RankAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use RankAsDouble property instead")]
 		public float Rank
+		{
+			get { return (float)_Rank; }
+			private set 
+			{ 
+				_Rank = value;
+				OnPropertyChanged("Rank");
+			}
+		}
+		///<summary>
+		///Use this property RankAsDouble instead of the float Rank property version
+		///</summary>
+		[JsonProperty]
+		public double RankAsDouble
 		{
 			get { return _Rank; }
 			private set 
@@ -310,6 +375,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Rank");
 			}
 		}
+		/// <summary>
+		/// Use TotalRankAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int TotalRank
 		{
@@ -320,6 +388,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TotalRank");
 			}
 		}
+		/// <summary>
+		/// Use VotesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Votes
 		{
@@ -330,6 +401,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Votes");
 			}
 		}
+		/// <summary>
+		/// Use GroupIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int GroupId
 		{
@@ -340,6 +414,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("GroupId");
 			}
 		}
+		/// <summary>
+		/// Use PartnerDataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string PartnerData
 		{
@@ -350,6 +427,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerData");
 			}
 		}
+		/// <summary>
+		/// Use DownloadUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DownloadUrl
 		{
@@ -360,6 +440,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DownloadUrl");
 			}
 		}
+		/// <summary>
+		/// Use SearchTextAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string SearchText
 		{
@@ -370,6 +453,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("SearchText");
 			}
 		}
+		/// <summary>
+		/// Use LicenseTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public LicenseType LicenseType
 		{
@@ -380,6 +466,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LicenseType");
 			}
 		}
+		/// <summary>
+		/// Use VersionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Version
 		{
@@ -390,6 +479,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Version");
 			}
 		}
+		/// <summary>
+		/// Use ThumbnailUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ThumbnailUrl
 		{
@@ -400,6 +492,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbnailUrl");
 			}
 		}
+		/// <summary>
+		/// Use AccessControlIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int AccessControlId
 		{
@@ -410,6 +505,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("AccessControlId");
 			}
 		}
+		/// <summary>
+		/// Use StartDateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int StartDate
 		{
@@ -420,6 +518,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartDate");
 			}
 		}
+		/// <summary>
+		/// Use EndDateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int EndDate
 		{
@@ -430,6 +531,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndDate");
 			}
 		}
+		/// <summary>
+		/// Use ReferenceIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ReferenceId
 		{
@@ -440,6 +544,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReferenceId");
 			}
 		}
+		/// <summary>
+		/// Use ReplacingEntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ReplacingEntryId
 		{
@@ -450,6 +557,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplacingEntryId");
 			}
 		}
+		/// <summary>
+		/// Use ReplacedEntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ReplacedEntryId
 		{
@@ -460,6 +570,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplacedEntryId");
 			}
 		}
+		/// <summary>
+		/// Use ReplacementStatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EntryReplacementStatus ReplacementStatus
 		{
@@ -470,6 +583,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplacementStatus");
 			}
 		}
+		/// <summary>
+		/// Use PartnerSortValueAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int PartnerSortValue
 		{
@@ -480,6 +596,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerSortValue");
 			}
 		}
+		/// <summary>
+		/// Use ConversionProfileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ConversionProfileId
 		{
@@ -490,6 +609,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionProfileId");
 			}
 		}
+		/// <summary>
+		/// Use RedirectEntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RedirectEntryId
 		{
@@ -500,6 +622,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RedirectEntryId");
 			}
 		}
+		/// <summary>
+		/// Use RootEntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string RootEntryId
 		{
@@ -510,6 +635,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RootEntryId");
 			}
 		}
+		/// <summary>
+		/// Use ParentEntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ParentEntryId
 		{
@@ -520,6 +648,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentEntryId");
 			}
 		}
+		/// <summary>
+		/// Use OperationAttributesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<OperationAttributes> OperationAttributes
 		{
@@ -530,6 +661,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OperationAttributes");
 			}
 		}
+		/// <summary>
+		/// Use EntitledUsersEditAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntitledUsersEdit
 		{
@@ -540,6 +674,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntitledUsersEdit");
 			}
 		}
+		/// <summary>
+		/// Use EntitledUsersPublishAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntitledUsersPublish
 		{
@@ -550,6 +687,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntitledUsersPublish");
 			}
 		}
+		/// <summary>
+		/// Use EntitledUsersViewAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string EntitledUsersView
 		{
@@ -560,6 +700,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntitledUsersView");
 			}
 		}
+		/// <summary>
+		/// Use CapabilitiesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Capabilities
 		{
@@ -570,6 +713,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Capabilities");
 			}
 		}
+		/// <summary>
+		/// Use TemplateEntryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TemplateEntryId
 		{
@@ -580,6 +726,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplateEntryId");
 			}
 		}
+		/// <summary>
+		/// Use DisplayInSearchAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EntryDisplayInSearchType DisplayInSearch
 		{
@@ -590,6 +739,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DisplayInSearch");
 			}
 		}
+		/// <summary>
+		/// Use ApplicationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public EntryApplication Application
 		{
@@ -600,6 +752,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Application");
 			}
 		}
+		/// <summary>
+		/// Use ApplicationVersionAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ApplicationVersion
 		{
@@ -610,6 +765,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ApplicationVersion");
 			}
 		}
+		/// <summary>
+		/// Use BlockAutoTranscriptAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? BlockAutoTranscript
 		{
@@ -695,7 +853,7 @@ namespace Kaltura.Types
 			}
 			if(node["rank"] != null)
 			{
-				this._Rank = ParseFloat(node["rank"].Value<string>());
+				this._Rank = ParseDouble(node["rank"].Value<string>());
 			}
 			if(node["totalRank"] != null)
 			{

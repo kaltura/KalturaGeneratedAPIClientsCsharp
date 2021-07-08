@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use MemberIdEqAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string MemberIdEq
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MemberIdEq");
 			}
 		}
+		/// <summary>
+		/// Use MemberIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string MemberIdIn
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MemberIdIn");
 			}
 		}
+		/// <summary>
+		/// Use MemberPermissionsMatchOrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string MemberPermissionsMatchOr
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MemberPermissionsMatchOr");
 			}
 		}
+		/// <summary>
+		/// Use MemberPermissionsMatchAndAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string MemberPermissionsMatchAnd
 		{

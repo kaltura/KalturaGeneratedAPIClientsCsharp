@@ -64,6 +64,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use FtpHostAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FtpHost
 		{
@@ -74,6 +77,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FtpHost");
 			}
 		}
+		/// <summary>
+		/// Use FtpLoginAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FtpLogin
 		{
@@ -84,6 +90,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FtpLogin");
 			}
 		}
+		/// <summary>
+		/// Use FtpPassAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FtpPass
 		{
@@ -94,6 +103,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FtpPass");
 			}
 		}
+		/// <summary>
+		/// Use FtpPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FtpPath
 		{
@@ -104,6 +116,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FtpPath");
 			}
 		}
+		/// <summary>
+		/// Use ProviderNameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ProviderName
 		{
@@ -114,6 +129,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProviderName");
 			}
 		}
+		/// <summary>
+		/// Use ProviderIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ProviderId
 		{
@@ -124,6 +142,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProviderId");
 			}
 		}
+		/// <summary>
+		/// Use CopyrightAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Copyright
 		{
@@ -134,6 +155,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Copyright");
 			}
 		}
+		/// <summary>
+		/// Use EntitlementsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Entitlements
 		{
@@ -144,6 +168,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Entitlements");
 			}
 		}
+		/// <summary>
+		/// Use RatingAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Rating
 		{
@@ -154,6 +181,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Rating");
 			}
 		}
+		/// <summary>
+		/// Use ItemTypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ItemType
 		{

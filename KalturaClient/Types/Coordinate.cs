@@ -44,14 +44,31 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Private Fields
-		private float _Latitude = Single.MinValue;
-		private float _Longitude = Single.MinValue;
+		private double _Latitude = Double.MinValue;
+		private double _Longitude = Double.MinValue;
 		private string _Name = null;
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use LatitudeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use LatitudeAsDouble property instead")]
 		public float Latitude
+		{
+			get { return (float)_Latitude; }
+			set 
+			{ 
+				_Latitude = value;
+				OnPropertyChanged("Latitude");
+			}
+		}
+		///<summary>
+		///Use this property LatitudeAsDouble instead of the float Latitude property version
+		///</summary>
+		[JsonProperty]
+		public double LatitudeAsDouble
 		{
 			get { return _Latitude; }
 			set 
@@ -60,8 +77,25 @@ namespace Kaltura.Types
 				OnPropertyChanged("Latitude");
 			}
 		}
+		/// <summary>
+		/// Use LongitudeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
+		[Obsolete("Use LongitudeAsDouble property instead")]
 		public float Longitude
+		{
+			get { return (float)_Longitude; }
+			set 
+			{ 
+				_Longitude = value;
+				OnPropertyChanged("Longitude");
+			}
+		}
+		///<summary>
+		///Use this property LongitudeAsDouble instead of the float Longitude property version
+		///</summary>
+		[JsonProperty]
+		public double LongitudeAsDouble
 		{
 			get { return _Longitude; }
 			set 
@@ -70,6 +104,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Longitude");
 			}
 		}
+		/// <summary>
+		/// Use NameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -91,11 +128,11 @@ namespace Kaltura.Types
 		{
 			if(node["latitude"] != null)
 			{
-				this._Latitude = ParseFloat(node["latitude"].Value<string>());
+				this._Latitude = ParseDouble(node["latitude"].Value<string>());
 			}
 			if(node["longitude"] != null)
 			{
-				this._Longitude = ParseFloat(node["longitude"].Value<string>());
+				this._Longitude = ParseDouble(node["longitude"].Value<string>());
 			}
 			if(node["name"] != null)
 			{

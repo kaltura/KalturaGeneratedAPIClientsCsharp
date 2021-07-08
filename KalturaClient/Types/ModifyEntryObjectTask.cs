@@ -62,6 +62,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use InputMetadataProfileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int InputMetadataProfileId
 		{
@@ -72,6 +75,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("InputMetadataProfileId");
 			}
 		}
+		/// <summary>
+		/// Use InputMetadataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> InputMetadata
 		{
@@ -82,6 +88,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("InputMetadata");
 			}
 		}
+		/// <summary>
+		/// Use OutputMetadataProfileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int OutputMetadataProfileId
 		{
@@ -92,6 +101,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OutputMetadataProfileId");
 			}
 		}
+		/// <summary>
+		/// Use OutputMetadataAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> OutputMetadata
 		{
@@ -102,6 +114,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("OutputMetadata");
 			}
 		}
+		/// <summary>
+		/// Use InputUserIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string InputUserId
 		{
@@ -112,6 +127,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("InputUserId");
 			}
 		}
+		/// <summary>
+		/// Use InputEntitledUsersEditAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string InputEntitledUsersEdit
 		{
@@ -122,6 +140,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("InputEntitledUsersEdit");
 			}
 		}
+		/// <summary>
+		/// Use InputEntitledUsersPublishAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string InputEntitledUsersPublish
 		{
@@ -132,6 +153,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("InputEntitledUsersPublish");
 			}
 		}
+		/// <summary>
+		/// Use InputEntitledUsersViewAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string InputEntitledUsersView
 		{
@@ -142,6 +166,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("InputEntitledUsersView");
 			}
 		}
+		/// <summary>
+		/// Use ResetMediaRepurposingProcessAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? ResetMediaRepurposingProcess
 		{

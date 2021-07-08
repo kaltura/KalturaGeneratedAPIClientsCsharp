@@ -64,6 +64,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Id
 		{
@@ -74,6 +77,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
+		/// <summary>
+		/// Use ConfiguredIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ConfiguredId
 		{
@@ -84,6 +90,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConfiguredId");
 			}
 		}
+		/// <summary>
+		/// Use NameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -94,6 +103,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		/// <summary>
+		/// Use HostAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Host
 		{
@@ -104,6 +116,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Host");
 			}
 		}
+		/// <summary>
+		/// Use StatusesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<SchedulerStatus> Statuses
 		{
@@ -114,6 +129,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Statuses");
 			}
 		}
+		/// <summary>
+		/// Use ConfigsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<SchedulerConfig> Configs
 		{
@@ -124,6 +142,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Configs");
 			}
 		}
+		/// <summary>
+		/// Use WorkersAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<SchedulerWorker> Workers
 		{
@@ -134,6 +155,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Workers");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -144,6 +168,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
+		/// <summary>
+		/// Use LastStatusAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int LastStatus
 		{
@@ -154,6 +181,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastStatus");
 			}
 		}
+		/// <summary>
+		/// Use LastStatusStrAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string LastStatusStr
 		{

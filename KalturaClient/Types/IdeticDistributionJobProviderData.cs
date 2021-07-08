@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use ThumbnailUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ThumbnailUrl
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbnailUrl");
 			}
 		}
+		/// <summary>
+		/// Use FlavorAssetUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlavorAssetUrl
 		{

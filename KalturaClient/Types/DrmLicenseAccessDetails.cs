@@ -52,6 +52,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use PolicyAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Policy
 		{
@@ -62,6 +65,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Policy");
 			}
 		}
+		/// <summary>
+		/// Use DurationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Duration
 		{
@@ -72,6 +78,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Duration");
 			}
 		}
+		/// <summary>
+		/// Use Absolute_durationAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int Absolute_duration
 		{
@@ -82,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Absolute_duration");
 			}
 		}
+		/// <summary>
+		/// Use LicenseParamsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> LicenseParams
 		{

@@ -58,6 +58,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use NameAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -68,6 +71,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
+		/// <summary>
+		/// Use TypeAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public ResponseProfileType Type
 		{
@@ -78,6 +84,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
+		/// <summary>
+		/// Use FieldsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Fields
 		{
@@ -88,6 +97,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Fields");
 			}
 		}
+		/// <summary>
+		/// Use FilterAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public RelatedFilter Filter
 		{
@@ -98,6 +110,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Filter");
 			}
 		}
+		/// <summary>
+		/// Use PagerAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public FilterPager Pager
 		{
@@ -108,6 +123,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Pager");
 			}
 		}
+		/// <summary>
+		/// Use RelatedProfilesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<DetachedResponseProfile> RelatedProfiles
 		{
@@ -118,6 +136,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("RelatedProfiles");
 			}
 		}
+		/// <summary>
+		/// Use MappingsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<ResponseProfileMapping> Mappings
 		{

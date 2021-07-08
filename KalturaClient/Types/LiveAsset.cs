@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use MulticastIPAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string MulticastIP
 		{
@@ -58,6 +61,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MulticastIP");
 			}
 		}
+		/// <summary>
+		/// Use MulticastPortAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int MulticastPort
 		{

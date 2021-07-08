@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use CategoryIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public StringValue CategoryId
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryId");
 			}
 		}
+		/// <summary>
+		/// Use CategoryIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public StringValue CategoryIds
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryIds");
 			}
 		}
+		/// <summary>
+		/// Use CategoryUserFilterAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public CategoryUserProviderFilter CategoryUserFilter
 		{

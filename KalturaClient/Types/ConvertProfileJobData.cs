@@ -50,6 +50,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use InputFileSyncLocalPathAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string InputFileSyncLocalPath
 		{
@@ -60,6 +63,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("InputFileSyncLocalPath");
 			}
 		}
+		/// <summary>
+		/// Use ThumbHeightAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ThumbHeight
 		{
@@ -70,6 +76,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbHeight");
 			}
 		}
+		/// <summary>
+		/// Use ThumbBitrateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int ThumbBitrate
 		{

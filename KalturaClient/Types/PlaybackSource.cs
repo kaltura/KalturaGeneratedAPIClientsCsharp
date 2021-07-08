@@ -56,6 +56,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use DeliveryProfileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DeliveryProfileId
 		{
@@ -66,6 +69,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeliveryProfileId");
 			}
 		}
+		/// <summary>
+		/// Use FormatAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Format
 		{
@@ -76,6 +82,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Format");
 			}
 		}
+		/// <summary>
+		/// Use ProtocolsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Protocols
 		{
@@ -86,6 +95,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Protocols");
 			}
 		}
+		/// <summary>
+		/// Use FlavorIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string FlavorIds
 		{
@@ -96,6 +108,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorIds");
 			}
 		}
+		/// <summary>
+		/// Use UrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string Url
 		{
@@ -106,6 +121,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("Url");
 			}
 		}
+		/// <summary>
+		/// Use DrmAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<DrmPlaybackPluginData> Drm
 		{

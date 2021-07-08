@@ -90,6 +90,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use TargetServiceUrlAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TargetServiceUrl
 		{
@@ -100,6 +103,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TargetServiceUrl");
 			}
 		}
+		/// <summary>
+		/// Use TargetAccountIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int TargetAccountId
 		{
@@ -110,6 +116,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TargetAccountId");
 			}
 		}
+		/// <summary>
+		/// Use TargetLoginIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TargetLoginId
 		{
@@ -120,6 +129,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TargetLoginId");
 			}
 		}
+		/// <summary>
+		/// Use TargetLoginPasswordAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TargetLoginPassword
 		{
@@ -130,6 +142,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TargetLoginPassword");
 			}
 		}
+		/// <summary>
+		/// Use MetadataXsltAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string MetadataXslt
 		{
@@ -140,6 +155,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataXslt");
 			}
 		}
+		/// <summary>
+		/// Use MetadataXpathsTriggerUpdateAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<StringValue> MetadataXpathsTriggerUpdate
 		{
@@ -150,6 +168,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataXpathsTriggerUpdate");
 			}
 		}
+		/// <summary>
+		/// Use DistributeCaptionsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? DistributeCaptions
 		{
@@ -160,6 +181,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributeCaptions");
 			}
 		}
+		/// <summary>
+		/// Use DesignatedCategoriesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string DesignatedCategories
 		{
@@ -170,6 +194,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DesignatedCategories");
 			}
 		}
+		/// <summary>
+		/// Use DistributeCategoriesAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? DistributeCategories
 		{
@@ -180,6 +207,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributeCategories");
 			}
 		}
+		/// <summary>
+		/// Use CollaboratorsCustomMetadataProfileIdAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string CollaboratorsCustomMetadataProfileId
 		{
@@ -190,6 +220,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CollaboratorsCustomMetadataProfileId");
 			}
 		}
+		/// <summary>
+		/// Use CollaboratorsFromCustomMetadataProfileAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? CollaboratorsFromCustomMetadataProfile
 		{
@@ -200,6 +233,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CollaboratorsFromCustomMetadataProfile");
 			}
 		}
+		/// <summary>
+		/// Use DistributeCuePointsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? DistributeCuePoints
 		{
@@ -210,6 +246,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributeCuePoints");
 			}
 		}
+		/// <summary>
+		/// Use DistributeRemoteFlavorAssetContentAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? DistributeRemoteFlavorAssetContent
 		{
@@ -220,6 +259,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributeRemoteFlavorAssetContent");
 			}
 		}
+		/// <summary>
+		/// Use DistributeRemoteThumbAssetContentAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? DistributeRemoteThumbAssetContent
 		{
@@ -230,6 +272,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributeRemoteThumbAssetContent");
 			}
 		}
+		/// <summary>
+		/// Use DistributeRemoteCaptionAssetContentAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public bool? DistributeRemoteCaptionAssetContent
 		{
@@ -240,6 +285,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributeRemoteCaptionAssetContent");
 			}
 		}
+		/// <summary>
+		/// Use MapAccessControlProfileIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> MapAccessControlProfileIds
 		{
@@ -250,6 +298,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MapAccessControlProfileIds");
 			}
 		}
+		/// <summary>
+		/// Use MapConversionProfileIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> MapConversionProfileIds
 		{
@@ -260,6 +311,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MapConversionProfileIds");
 			}
 		}
+		/// <summary>
+		/// Use MapMetadataProfileIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> MapMetadataProfileIds
 		{
@@ -270,6 +324,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MapMetadataProfileIds");
 			}
 		}
+		/// <summary>
+		/// Use MapStorageProfileIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> MapStorageProfileIds
 		{
@@ -280,6 +337,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MapStorageProfileIds");
 			}
 		}
+		/// <summary>
+		/// Use MapFlavorParamsIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> MapFlavorParamsIds
 		{
@@ -290,6 +350,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MapFlavorParamsIds");
 			}
 		}
+		/// <summary>
+		/// Use MapThumbParamsIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> MapThumbParamsIds
 		{
@@ -300,6 +363,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MapThumbParamsIds");
 			}
 		}
+		/// <summary>
+		/// Use MapCaptionParamsIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> MapCaptionParamsIds
 		{
@@ -310,6 +376,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("MapCaptionParamsIds");
 			}
 		}
+		/// <summary>
+		/// Use MapAttachmentParamsIdsAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> MapAttachmentParamsIds
 		{

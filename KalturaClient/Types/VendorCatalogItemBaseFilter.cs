@@ -78,6 +78,9 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Use IdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int IdEqual
 		{
@@ -88,6 +91,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
+		/// <summary>
+		/// Use IdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string IdIn
 		{
@@ -98,6 +104,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
+		/// <summary>
+		/// Use IdNotInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string IdNotIn
 		{
@@ -108,6 +117,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdNotIn");
 			}
 		}
+		/// <summary>
+		/// Use VendorPartnerIdEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int VendorPartnerIdEqual
 		{
@@ -118,6 +130,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VendorPartnerIdEqual");
 			}
 		}
+		/// <summary>
+		/// Use VendorPartnerIdInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string VendorPartnerIdIn
 		{
@@ -128,6 +143,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("VendorPartnerIdIn");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
@@ -138,6 +156,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use CreatedAtLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
@@ -148,6 +169,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtGreaterThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
@@ -158,6 +182,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use UpdatedAtLessThanOrEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
@@ -168,6 +195,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
+		/// <summary>
+		/// Use StatusEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VendorCatalogItemStatus StatusEqual
 		{
@@ -178,6 +208,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
+		/// <summary>
+		/// Use StatusInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string StatusIn
 		{
@@ -188,6 +221,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
+		/// <summary>
+		/// Use ServiceTypeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VendorServiceType ServiceTypeEqual
 		{
@@ -198,6 +234,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServiceTypeEqual");
 			}
 		}
+		/// <summary>
+		/// Use ServiceTypeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ServiceTypeIn
 		{
@@ -208,6 +247,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServiceTypeIn");
 			}
 		}
+		/// <summary>
+		/// Use ServiceFeatureEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VendorServiceFeature ServiceFeatureEqual
 		{
@@ -218,6 +260,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServiceFeatureEqual");
 			}
 		}
+		/// <summary>
+		/// Use ServiceFeatureInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string ServiceFeatureIn
 		{
@@ -228,6 +273,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServiceFeatureIn");
 			}
 		}
+		/// <summary>
+		/// Use TurnAroundTimeEqualAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public VendorServiceTurnAroundTime TurnAroundTimeEqual
 		{
@@ -238,6 +286,9 @@ namespace Kaltura.Types
 				OnPropertyChanged("TurnAroundTimeEqual");
 			}
 		}
+		/// <summary>
+		/// Use TurnAroundTimeInAsDouble property instead
+		/// </summary>
 		[JsonProperty]
 		public string TurnAroundTimeIn
 		{

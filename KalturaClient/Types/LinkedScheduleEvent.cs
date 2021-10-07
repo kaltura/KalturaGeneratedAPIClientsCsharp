@@ -35,42 +35,61 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class DeliveryProfileVodPackagerPlayServer : DeliveryProfileVod
+	public class LinkedScheduleEvent : ObjectBase
 	{
 		#region Constants
-		public const string AD_STITCHING_ENABLED = "adStitchingEnabled";
+		public const string OFFSET = "offset";
+		public const string EVENT_ID = "eventId";
 		#endregion
 
 		#region Private Fields
-		private bool? _AdStitchingEnabled = null;
+		private int _Offset = Int32.MinValue;
+		private int _EventId = Int32.MinValue;
 		#endregion
 
 		#region Properties
 		/// <summary>
-		/// Use AdStitchingEnabledAsDouble property instead
+		/// Use OffsetAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		public bool? AdStitchingEnabled
+		public int Offset
 		{
-			get { return _AdStitchingEnabled; }
+			get { return _Offset; }
 			set 
 			{ 
-				_AdStitchingEnabled = value;
-				OnPropertyChanged("AdStitchingEnabled");
+				_Offset = value;
+				OnPropertyChanged("Offset");
+			}
+		}
+		/// <summary>
+		/// Use EventIdAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public int EventId
+		{
+			get { return _EventId; }
+			set 
+			{ 
+				_EventId = value;
+				OnPropertyChanged("EventId");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public DeliveryProfileVodPackagerPlayServer()
+		public LinkedScheduleEvent()
 		{
 		}
 
-		public DeliveryProfileVodPackagerPlayServer(JToken node) : base(node)
+		public LinkedScheduleEvent(JToken node) : base(node)
 		{
-			if(node["adStitchingEnabled"] != null)
+			if(node["offset"] != null)
 			{
-				this._AdStitchingEnabled = ParseBool(node["adStitchingEnabled"].Value<string>());
+				this._Offset = ParseInt(node["offset"].Value<string>());
+			}
+			if(node["eventId"] != null)
+			{
+				this._EventId = ParseInt(node["eventId"].Value<string>());
 			}
 		}
 		#endregion
@@ -80,16 +99,19 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaDeliveryProfileVodPackagerPlayServer");
-			kparams.AddIfNotNull("adStitchingEnabled", this._AdStitchingEnabled);
+				kparams.AddReplace("objectType", "KalturaLinkedScheduleEvent");
+			kparams.AddIfNotNull("offset", this._Offset);
+			kparams.AddIfNotNull("eventId", this._EventId);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case AD_STITCHING_ENABLED:
-					return "AdStitchingEnabled";
+				case OFFSET:
+					return "Offset";
+				case EVENT_ID:
+					return "EventId";
 				default:
 					return base.getPropertyName(apiName);
 			}

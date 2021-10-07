@@ -47,6 +47,8 @@ namespace Kaltura.Types
 		public const string START_DATE = "startDate";
 		public const string END_DATE = "endDate";
 		public const string REFERENCE_ID = "referenceId";
+		public const string LINKED_TO = "linkedTo";
+		public const string LINKED_BY = "linkedBy";
 		public const string CLASSIFICATION_TYPE = "classificationType";
 		public const string GEO_LATITUDE = "geoLatitude";
 		public const string GEO_LONGITUDE = "geoLongitude";
@@ -75,6 +77,8 @@ namespace Kaltura.Types
 		private int _StartDate = Int32.MinValue;
 		private int _EndDate = Int32.MinValue;
 		private string _ReferenceId = null;
+		private LinkedScheduleEvent _LinkedTo;
+		private string _LinkedBy = null;
 		private ScheduleEventClassificationType _ClassificationType = (ScheduleEventClassificationType)Int32.MinValue;
 		private double _GeoLatitude = Double.MinValue;
 		private double _GeoLongitude = Double.MinValue;
@@ -209,6 +213,32 @@ namespace Kaltura.Types
 			{ 
 				_ReferenceId = value;
 				OnPropertyChanged("ReferenceId");
+			}
+		}
+		/// <summary>
+		/// Use LinkedToAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public LinkedScheduleEvent LinkedTo
+		{
+			get { return _LinkedTo; }
+			set 
+			{ 
+				_LinkedTo = value;
+				OnPropertyChanged("LinkedTo");
+			}
+		}
+		/// <summary>
+		/// Use LinkedByAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public string LinkedBy
+		{
+			get { return _LinkedBy; }
+			set 
+			{ 
+				_LinkedBy = value;
+				OnPropertyChanged("LinkedBy");
 			}
 		}
 		/// <summary>
@@ -492,6 +522,14 @@ namespace Kaltura.Types
 			{
 				this._ReferenceId = node["referenceId"].Value<string>();
 			}
+			if(node["linkedTo"] != null)
+			{
+				this._LinkedTo = ObjectFactory.Create<LinkedScheduleEvent>(node["linkedTo"]);
+			}
+			if(node["linkedBy"] != null)
+			{
+				this._LinkedBy = node["linkedBy"].Value<string>();
+			}
 			if(node["classificationType"] != null)
 			{
 				this._ClassificationType = (ScheduleEventClassificationType)ParseEnum(typeof(ScheduleEventClassificationType), node["classificationType"].Value<string>());
@@ -574,6 +612,8 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("startDate", this._StartDate);
 			kparams.AddIfNotNull("endDate", this._EndDate);
 			kparams.AddIfNotNull("referenceId", this._ReferenceId);
+			kparams.AddIfNotNull("linkedTo", this._LinkedTo);
+			kparams.AddIfNotNull("linkedBy", this._LinkedBy);
 			kparams.AddIfNotNull("classificationType", this._ClassificationType);
 			kparams.AddIfNotNull("geoLatitude", this._GeoLatitude);
 			kparams.AddIfNotNull("geoLongitude", this._GeoLongitude);
@@ -614,6 +654,10 @@ namespace Kaltura.Types
 					return "EndDate";
 				case REFERENCE_ID:
 					return "ReferenceId";
+				case LINKED_TO:
+					return "LinkedTo";
+				case LINKED_BY:
+					return "LinkedBy";
 				case CLASSIFICATION_TYPE:
 					return "ClassificationType";
 				case GEO_LATITUDE:

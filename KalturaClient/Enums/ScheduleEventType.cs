@@ -34,5 +34,6 @@ namespace Kaltura.Enums
 		BLACKOUT = 3,
 		MEETING = 4,
 		LIVE_REDIRECT = 5,
+		VOD = 6,
 	}
 }

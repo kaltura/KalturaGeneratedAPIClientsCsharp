@@ -70,7 +70,7 @@ namespace Kaltura.Types
 		private string _PartnerData = null;
 		private string _PartnerDescription = null;
 		private string _ActualSourceAssetParamsIds = null;
-		private int _SizeInBytes = Int32.MinValue;
+		private long _SizeInBytes = long.MinValue;
 		#endregion
 
 		#region Properties
@@ -260,7 +260,7 @@ namespace Kaltura.Types
 		/// Use SizeInBytesAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		public int SizeInBytes
+		public long SizeInBytes
 		{
 			get { return _SizeInBytes; }
 			private set 
@@ -336,7 +336,7 @@ namespace Kaltura.Types
 			}
 			if(node["sizeInBytes"] != null)
 			{
-				this._SizeInBytes = ParseInt(node["sizeInBytes"].Value<string>());
+				this._SizeInBytes = ParseLong(node["sizeInBytes"].Value<string>());
 			}
 		}
 		#endregion

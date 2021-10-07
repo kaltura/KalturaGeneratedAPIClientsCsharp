@@ -35,64 +35,35 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class ZoomIntegrationSetting : ObjectBase
+	public class ZoomIntegrationSetting : IntegrationSetting
 	{
 		#region Constants
-		public const string DEFAULT_USER_ID = "defaultUserId";
 		public const string ZOOM_CATEGORY = "zoomCategory";
-		public const string ACCOUNT_ID = "accountId";
 		public const string ENABLE_RECORDING_UPLOAD = "enableRecordingUpload";
-		public const string CREATE_USER_IF_NOT_EXIST = "createUserIfNotExist";
-		public const string HANDLE_PARTICIPANTS_MODE = "handleParticipantsMode";
 		public const string ZOOM_USER_MATCHING_MODE = "zoomUserMatchingMode";
 		public const string ZOOM_USER_POSTFIX = "zoomUserPostfix";
 		public const string ZOOM_WEBINAR_CATEGORY = "zoomWebinarCategory";
 		public const string ENABLE_WEBINAR_UPLOADS = "enableWebinarUploads";
-		public const string CONVERSION_PROFILE_ID = "conversionProfileId";
 		public const string JWT_TOKEN = "jwtToken";
-		public const string DELETION_POLICY = "deletionPolicy";
 		public const string ENABLE_ZOOM_TRANSCRIPTION = "enableZoomTranscription";
 		public const string ZOOM_ACCOUNT_DESCRIPTION = "zoomAccountDescription";
-		public const string CREATED_AT = "createdAt";
-		public const string UPDATED_AT = "updatedAt";
 		public const string ENABLE_MEETING_UPLOAD = "enableMeetingUpload";
 		#endregion
 
 		#region Private Fields
-		private string _DefaultUserId = null;
 		private string _ZoomCategory = null;
-		private string _AccountId = null;
 		private NullableBoolean _EnableRecordingUpload = (NullableBoolean)Int32.MinValue;
-		private NullableBoolean _CreateUserIfNotExist = (NullableBoolean)Int32.MinValue;
-		private HandleParticipantsMode _HandleParticipantsMode = (HandleParticipantsMode)Int32.MinValue;
 		private ZoomUsersMatching _ZoomUserMatchingMode = (ZoomUsersMatching)Int32.MinValue;
 		private string _ZoomUserPostfix = null;
 		private string _ZoomWebinarCategory = null;
 		private NullableBoolean _EnableWebinarUploads = (NullableBoolean)Int32.MinValue;
-		private int _ConversionProfileId = Int32.MinValue;
 		private string _JwtToken = null;
-		private NullableBoolean _DeletionPolicy = (NullableBoolean)Int32.MinValue;
 		private NullableBoolean _EnableZoomTranscription = (NullableBoolean)Int32.MinValue;
 		private string _ZoomAccountDescription = null;
-		private string _CreatedAt = null;
-		private string _UpdatedAt = null;
 		private NullableBoolean _EnableMeetingUpload = (NullableBoolean)Int32.MinValue;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use DefaultUserIdAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string DefaultUserId
-		{
-			get { return _DefaultUserId; }
-			set 
-			{ 
-				_DefaultUserId = value;
-				OnPropertyChanged("DefaultUserId");
-			}
-		}
 		/// <summary>
 		/// Use ZoomCategoryAsDouble property instead
 		/// </summary>
@@ -107,19 +78,6 @@ namespace Kaltura.Types
 			}
 		}
 		/// <summary>
-		/// Use AccountIdAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string AccountId
-		{
-			get { return _AccountId; }
-			private set 
-			{ 
-				_AccountId = value;
-				OnPropertyChanged("AccountId");
-			}
-		}
-		/// <summary>
 		/// Use EnableRecordingUploadAsDouble property instead
 		/// </summary>
 		[JsonProperty]
@@ -130,32 +88,6 @@ namespace Kaltura.Types
 			{ 
 				_EnableRecordingUpload = value;
 				OnPropertyChanged("EnableRecordingUpload");
-			}
-		}
-		/// <summary>
-		/// Use CreateUserIfNotExistAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public NullableBoolean CreateUserIfNotExist
-		{
-			get { return _CreateUserIfNotExist; }
-			set 
-			{ 
-				_CreateUserIfNotExist = value;
-				OnPropertyChanged("CreateUserIfNotExist");
-			}
-		}
-		/// <summary>
-		/// Use HandleParticipantsModeAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public HandleParticipantsMode HandleParticipantsMode
-		{
-			get { return _HandleParticipantsMode; }
-			set 
-			{ 
-				_HandleParticipantsMode = value;
-				OnPropertyChanged("HandleParticipantsMode");
 			}
 		}
 		/// <summary>
@@ -211,19 +143,6 @@ namespace Kaltura.Types
 			}
 		}
 		/// <summary>
-		/// Use ConversionProfileIdAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public int ConversionProfileId
-		{
-			get { return _ConversionProfileId; }
-			set 
-			{ 
-				_ConversionProfileId = value;
-				OnPropertyChanged("ConversionProfileId");
-			}
-		}
-		/// <summary>
 		/// Use JwtTokenAsDouble property instead
 		/// </summary>
 		[JsonProperty]
@@ -234,19 +153,6 @@ namespace Kaltura.Types
 			{ 
 				_JwtToken = value;
 				OnPropertyChanged("JwtToken");
-			}
-		}
-		/// <summary>
-		/// Use DeletionPolicyAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public NullableBoolean DeletionPolicy
-		{
-			get { return _DeletionPolicy; }
-			set 
-			{ 
-				_DeletionPolicy = value;
-				OnPropertyChanged("DeletionPolicy");
 			}
 		}
 		/// <summary>
@@ -276,32 +182,6 @@ namespace Kaltura.Types
 			}
 		}
 		/// <summary>
-		/// Use CreatedAtAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string CreatedAt
-		{
-			get { return _CreatedAt; }
-			set 
-			{ 
-				_CreatedAt = value;
-				OnPropertyChanged("CreatedAt");
-			}
-		}
-		/// <summary>
-		/// Use UpdatedAtAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string UpdatedAt
-		{
-			get { return _UpdatedAt; }
-			set 
-			{ 
-				_UpdatedAt = value;
-				OnPropertyChanged("UpdatedAt");
-			}
-		}
-		/// <summary>
 		/// Use EnableMeetingUploadAsDouble property instead
 		/// </summary>
 		[JsonProperty]
@@ -323,29 +203,13 @@ namespace Kaltura.Types
 
 		public ZoomIntegrationSetting(JToken node) : base(node)
 		{
-			if(node["defaultUserId"] != null)
-			{
-				this._DefaultUserId = node["defaultUserId"].Value<string>();
-			}
 			if(node["zoomCategory"] != null)
 			{
 				this._ZoomCategory = node["zoomCategory"].Value<string>();
 			}
-			if(node["accountId"] != null)
-			{
-				this._AccountId = node["accountId"].Value<string>();
-			}
 			if(node["enableRecordingUpload"] != null)
 			{
 				this._EnableRecordingUpload = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["enableRecordingUpload"].Value<string>());
-			}
-			if(node["createUserIfNotExist"] != null)
-			{
-				this._CreateUserIfNotExist = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["createUserIfNotExist"].Value<string>());
-			}
-			if(node["handleParticipantsMode"] != null)
-			{
-				this._HandleParticipantsMode = (HandleParticipantsMode)ParseEnum(typeof(HandleParticipantsMode), node["handleParticipantsMode"].Value<string>());
 			}
 			if(node["zoomUserMatchingMode"] != null)
 			{
@@ -363,17 +227,9 @@ namespace Kaltura.Types
 			{
 				this._EnableWebinarUploads = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["enableWebinarUploads"].Value<string>());
 			}
-			if(node["conversionProfileId"] != null)
-			{
-				this._ConversionProfileId = ParseInt(node["conversionProfileId"].Value<string>());
-			}
 			if(node["jwtToken"] != null)
 			{
 				this._JwtToken = node["jwtToken"].Value<string>();
-			}
-			if(node["deletionPolicy"] != null)
-			{
-				this._DeletionPolicy = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["deletionPolicy"].Value<string>());
 			}
 			if(node["enableZoomTranscription"] != null)
 			{
@@ -382,14 +238,6 @@ namespace Kaltura.Types
 			if(node["zoomAccountDescription"] != null)
 			{
 				this._ZoomAccountDescription = node["zoomAccountDescription"].Value<string>();
-			}
-			if(node["createdAt"] != null)
-			{
-				this._CreatedAt = node["createdAt"].Value<string>();
-			}
-			if(node["updatedAt"] != null)
-			{
-				this._UpdatedAt = node["updatedAt"].Value<string>();
 			}
 			if(node["enableMeetingUpload"] != null)
 			{
@@ -404,23 +252,15 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaZoomIntegrationSetting");
-			kparams.AddIfNotNull("defaultUserId", this._DefaultUserId);
 			kparams.AddIfNotNull("zoomCategory", this._ZoomCategory);
-			kparams.AddIfNotNull("accountId", this._AccountId);
 			kparams.AddIfNotNull("enableRecordingUpload", this._EnableRecordingUpload);
-			kparams.AddIfNotNull("createUserIfNotExist", this._CreateUserIfNotExist);
-			kparams.AddIfNotNull("handleParticipantsMode", this._HandleParticipantsMode);
 			kparams.AddIfNotNull("zoomUserMatchingMode", this._ZoomUserMatchingMode);
 			kparams.AddIfNotNull("zoomUserPostfix", this._ZoomUserPostfix);
 			kparams.AddIfNotNull("zoomWebinarCategory", this._ZoomWebinarCategory);
 			kparams.AddIfNotNull("enableWebinarUploads", this._EnableWebinarUploads);
-			kparams.AddIfNotNull("conversionProfileId", this._ConversionProfileId);
 			kparams.AddIfNotNull("jwtToken", this._JwtToken);
-			kparams.AddIfNotNull("deletionPolicy", this._DeletionPolicy);
 			kparams.AddIfNotNull("enableZoomTranscription", this._EnableZoomTranscription);
 			kparams.AddIfNotNull("zoomAccountDescription", this._ZoomAccountDescription);
-			kparams.AddIfNotNull("createdAt", this._CreatedAt);
-			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
 			kparams.AddIfNotNull("enableMeetingUpload", this._EnableMeetingUpload);
 			return kparams;
 		}
@@ -428,18 +268,10 @@ namespace Kaltura.Types
 		{
 			switch(apiName)
 			{
-				case DEFAULT_USER_ID:
-					return "DefaultUserId";
 				case ZOOM_CATEGORY:
 					return "ZoomCategory";
-				case ACCOUNT_ID:
-					return "AccountId";
 				case ENABLE_RECORDING_UPLOAD:
 					return "EnableRecordingUpload";
-				case CREATE_USER_IF_NOT_EXIST:
-					return "CreateUserIfNotExist";
-				case HANDLE_PARTICIPANTS_MODE:
-					return "HandleParticipantsMode";
 				case ZOOM_USER_MATCHING_MODE:
 					return "ZoomUserMatchingMode";
 				case ZOOM_USER_POSTFIX:
@@ -448,20 +280,12 @@ namespace Kaltura.Types
 					return "ZoomWebinarCategory";
 				case ENABLE_WEBINAR_UPLOADS:
 					return "EnableWebinarUploads";
-				case CONVERSION_PROFILE_ID:
-					return "ConversionProfileId";
 				case JWT_TOKEN:
 					return "JwtToken";
-				case DELETION_POLICY:
-					return "DeletionPolicy";
 				case ENABLE_ZOOM_TRANSCRIPTION:
 					return "EnableZoomTranscription";
 				case ZOOM_ACCOUNT_DESCRIPTION:
 					return "ZoomAccountDescription";
-				case CREATED_AT:
-					return "CreatedAt";
-				case UPDATED_AT:
-					return "UpdatedAt";
 				case ENABLE_MEETING_UPLOAD:
 					return "EnableMeetingUpload";
 				default:

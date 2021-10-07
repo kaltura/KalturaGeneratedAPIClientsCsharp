@@ -35,42 +35,42 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class DeliveryProfileVodPackagerPlayServer : DeliveryProfileVod
+	public class DeliveryProfileVod : DeliveryProfile
 	{
 		#region Constants
-		public const string AD_STITCHING_ENABLED = "adStitchingEnabled";
+		public const string SIMULIVE_SUPPORT = "simuliveSupport";
 		#endregion
 
 		#region Private Fields
-		private bool? _AdStitchingEnabled = null;
+		private bool? _SimuliveSupport = null;
 		#endregion
 
 		#region Properties
 		/// <summary>
-		/// Use AdStitchingEnabledAsDouble property instead
+		/// Use SimuliveSupportAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		public bool? AdStitchingEnabled
+		public bool? SimuliveSupport
 		{
-			get { return _AdStitchingEnabled; }
+			get { return _SimuliveSupport; }
 			set 
 			{ 
-				_AdStitchingEnabled = value;
-				OnPropertyChanged("AdStitchingEnabled");
+				_SimuliveSupport = value;
+				OnPropertyChanged("SimuliveSupport");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public DeliveryProfileVodPackagerPlayServer()
+		public DeliveryProfileVod()
 		{
 		}
 
-		public DeliveryProfileVodPackagerPlayServer(JToken node) : base(node)
+		public DeliveryProfileVod(JToken node) : base(node)
 		{
-			if(node["adStitchingEnabled"] != null)
+			if(node["simuliveSupport"] != null)
 			{
-				this._AdStitchingEnabled = ParseBool(node["adStitchingEnabled"].Value<string>());
+				this._SimuliveSupport = ParseBool(node["simuliveSupport"].Value<string>());
 			}
 		}
 		#endregion
@@ -80,16 +80,16 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaDeliveryProfileVodPackagerPlayServer");
-			kparams.AddIfNotNull("adStitchingEnabled", this._AdStitchingEnabled);
+				kparams.AddReplace("objectType", "KalturaDeliveryProfileVod");
+			kparams.AddIfNotNull("simuliveSupport", this._SimuliveSupport);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case AD_STITCHING_ENABLED:
-					return "AdStitchingEnabled";
+				case SIMULIVE_SUPPORT:
+					return "SimuliveSupport";
 				default:
 					return base.getPropertyName(apiName);
 			}

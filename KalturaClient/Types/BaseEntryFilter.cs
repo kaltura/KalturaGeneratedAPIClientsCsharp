@@ -45,6 +45,7 @@ namespace Kaltura.Types
 		public const string CATEGORIES_FULL_NAME_IN = "categoriesFullNameIn";
 		public const string CATEGORY_ANCESTOR_ID_IN = "categoryAncestorIdIn";
 		public const string REDIRECT_FROM_ENTRY_ID = "redirectFromEntryId";
+		public const string CONVERSION_PROFILE_ID_EQUAL = "conversionProfileIdEqual";
 		public new const string ORDER_BY = "orderBy";
 		#endregion
 
@@ -56,6 +57,7 @@ namespace Kaltura.Types
 		private string _CategoriesFullNameIn = null;
 		private string _CategoryAncestorIdIn = null;
 		private string _RedirectFromEntryId = null;
+		private int _ConversionProfileIdEqual = Int32.MinValue;
 		private BaseEntryOrderBy _OrderBy = null;
 		#endregion
 
@@ -152,6 +154,19 @@ namespace Kaltura.Types
 			}
 		}
 		/// <summary>
+		/// Use ConversionProfileIdEqualAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public int ConversionProfileIdEqual
+		{
+			get { return _ConversionProfileIdEqual; }
+			set 
+			{ 
+				_ConversionProfileIdEqual = value;
+				OnPropertyChanged("ConversionProfileIdEqual");
+			}
+		}
+		/// <summary>
 		/// Use OrderByAsDouble property instead
 		/// </summary>
 		[JsonProperty]
@@ -201,6 +216,10 @@ namespace Kaltura.Types
 			{
 				this._RedirectFromEntryId = node["redirectFromEntryId"].Value<string>();
 			}
+			if(node["conversionProfileIdEqual"] != null)
+			{
+				this._ConversionProfileIdEqual = ParseInt(node["conversionProfileIdEqual"].Value<string>());
+			}
 			if(node["orderBy"] != null)
 			{
 				this._OrderBy = (BaseEntryOrderBy)StringEnum.Parse(typeof(BaseEntryOrderBy), node["orderBy"].Value<string>());
@@ -221,6 +240,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("categoriesFullNameIn", this._CategoriesFullNameIn);
 			kparams.AddIfNotNull("categoryAncestorIdIn", this._CategoryAncestorIdIn);
 			kparams.AddIfNotNull("redirectFromEntryId", this._RedirectFromEntryId);
+			kparams.AddIfNotNull("conversionProfileIdEqual", this._ConversionProfileIdEqual);
 			kparams.AddIfNotNull("orderBy", this._OrderBy);
 			return kparams;
 		}
@@ -242,6 +262,8 @@ namespace Kaltura.Types
 					return "CategoryAncestorIdIn";
 				case REDIRECT_FROM_ENTRY_ID:
 					return "RedirectFromEntryId";
+				case CONVERSION_PROFILE_ID_EQUAL:
+					return "ConversionProfileIdEqual";
 				case ORDER_BY:
 					return "OrderBy";
 				default:

@@ -27,14 +27,10 @@
 // ===================================================================================================
 namespace Kaltura.Enums
 {
-	public sealed class DrmLicenseScenario : StringEnum
+	public enum VendorIntegrationStatus
 	{
-		public static readonly DrmLicenseScenario NONE = new DrmLicenseScenario("0");
-		public static readonly DrmLicenseScenario PROTECTION = new DrmLicenseScenario("playReady.PROTECTION");
-		public static readonly DrmLicenseScenario PURCHASE = new DrmLicenseScenario("playReady.PURCHASE");
-		public static readonly DrmLicenseScenario RENTAL = new DrmLicenseScenario("playReady.RENTAL");
-		public static readonly DrmLicenseScenario SUBSCRIPTION = new DrmLicenseScenario("playReady.SUBSCRIPTION");
-
-		private DrmLicenseScenario(string name) : base(name) { }
+		DISABLED = 1,
+		ACTIVE = 2,
+		DELETED = 3,
 	}
 }

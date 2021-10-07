@@ -88,6 +88,7 @@ namespace Kaltura.Enums
 		public static readonly ReportType INTERACTIVE_VIDEO_NODE_SWITCH_HOTSPOT_CLICKED_PERCENTILES = new ReportType("57");
 		public static readonly ReportType TOP_CUSTOM_VAR2 = new ReportType("58");
 		public static readonly ReportType TOP_CUSTOM_VAR3 = new ReportType("59");
+		public static readonly ReportType SELF_SERVE_USAGE = new ReportType("60");
 		public static readonly ReportType PARTNER_USAGE = new ReportType("201");
 		public static readonly ReportType MAP_OVERLAY_COUNTRY_REALTIME = new ReportType("10001");
 		public static readonly ReportType MAP_OVERLAY_REGION_REALTIME = new ReportType("10002");
@@ -126,6 +127,7 @@ namespace Kaltura.Enums
 		public static readonly ReportType PLAYBACK_RATE_VPAAS = new ReportType("20020");
 		public static readonly ReportType PARTNER_USAGE_VPAAS = new ReportType("20021");
 		public static readonly ReportType TOP_PLAYBACK_CONTEXT_VPAAS = new ReportType("20022");
+		public static readonly ReportType SELF_SERVE_USAGE_VPAAS = new ReportType("20023");
 		public static readonly ReportType QOE_OVERVIEW = new ReportType("30001");
 		public static readonly ReportType QOE_EXPERIENCE = new ReportType("30002");
 		public static readonly ReportType QOE_EXPERIENCE_PLATFORMS = new ReportType("30003");

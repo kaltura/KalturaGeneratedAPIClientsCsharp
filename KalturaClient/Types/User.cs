@@ -54,6 +54,7 @@ namespace Kaltura.Types
 		public const string TITLE = "title";
 		public const string COMPANY = "company";
 		public const string KS_PRIVILEGES = "ksPrivileges";
+		public const string ENCRYPTED_SEED = "encryptedSeed";
 		#endregion
 
 		#region Private Fields
@@ -73,6 +74,7 @@ namespace Kaltura.Types
 		private string _Title = null;
 		private string _Company = null;
 		private string _KsPrivileges = null;
+		private string _EncryptedSeed = null;
 		#endregion
 
 		#region Properties
@@ -283,6 +285,19 @@ namespace Kaltura.Types
 				OnPropertyChanged("KsPrivileges");
 			}
 		}
+		/// <summary>
+		/// Use EncryptedSeedAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public string EncryptedSeed
+		{
+			get { return _EncryptedSeed; }
+			private set 
+			{ 
+				_EncryptedSeed = value;
+				OnPropertyChanged("EncryptedSeed");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -356,6 +371,10 @@ namespace Kaltura.Types
 			{
 				this._KsPrivileges = node["ksPrivileges"].Value<string>();
 			}
+			if(node["encryptedSeed"] != null)
+			{
+				this._EncryptedSeed = node["encryptedSeed"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -381,6 +400,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("title", this._Title);
 			kparams.AddIfNotNull("company", this._Company);
 			kparams.AddIfNotNull("ksPrivileges", this._KsPrivileges);
+			kparams.AddIfNotNull("encryptedSeed", this._EncryptedSeed);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -419,6 +439,8 @@ namespace Kaltura.Types
 					return "Company";
 				case KS_PRIVILEGES:
 					return "KsPrivileges";
+				case ENCRYPTED_SEED:
+					return "EncryptedSeed";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -124,6 +124,55 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class CategoryCloneRequestBuilder : RequestBuilder<Category>
+	{
+		#region Constants
+		public const string CATEGORY_ID = "categoryId";
+		public const string FROM_PARTNER_ID = "fromPartnerId";
+		public const string PARENT_CATEGORY_ID = "parentCategoryId";
+		#endregion
+
+		public int CategoryId { get; set; }
+		public int FromPartnerId { get; set; }
+		public int ParentCategoryId { get; set; }
+
+		public CategoryCloneRequestBuilder()
+			: base("category", "clone")
+		{
+		}
+
+		public CategoryCloneRequestBuilder(int categoryId, int fromPartnerId, int parentCategoryId)
+			: this()
+		{
+			this.CategoryId = categoryId;
+			this.FromPartnerId = fromPartnerId;
+			this.ParentCategoryId = parentCategoryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("categoryId"))
+				kparams.AddIfNotNull("categoryId", CategoryId);
+			if (!isMapped("fromPartnerId"))
+				kparams.AddIfNotNull("fromPartnerId", FromPartnerId);
+			if (!isMapped("parentCategoryId"))
+				kparams.AddIfNotNull("parentCategoryId", ParentCategoryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			return ObjectFactory.Create<Category>(result);
+		}
+	}
+
 	public class CategoryDeleteRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
@@ -429,6 +478,11 @@ namespace Kaltura.Services
 		public static CategoryAddFromBulkUploadRequestBuilder AddFromBulkUpload(Stream fileData, BulkUploadJobData bulkUploadData = null, BulkUploadCategoryData bulkUploadCategoryData = null)
 		{
 			return new CategoryAddFromBulkUploadRequestBuilder(fileData, bulkUploadData, bulkUploadCategoryData);
+		}
+
+		public static CategoryCloneRequestBuilder Clone(int categoryId, int fromPartnerId, int parentCategoryId = Int32.MinValue)
+		{
+			return new CategoryCloneRequestBuilder(categoryId, fromPartnerId, parentCategoryId);
 		}
 
 		public static CategoryDeleteRequestBuilder Delete(int id, NullableBoolean moveEntriesToParentCategory = (NullableBoolean)(1))

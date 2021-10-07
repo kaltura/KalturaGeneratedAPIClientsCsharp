@@ -31,6 +31,7 @@ namespace Kaltura.Enums
 	{
 		public static readonly CatalogItemLanguage AR = new CatalogItemLanguage("Arabic");
 		public static readonly CatalogItemLanguage YUE = new CatalogItemLanguage("Cantonese");
+		public static readonly CatalogItemLanguage CA = new CatalogItemLanguage("Catalan");
 		public static readonly CatalogItemLanguage ZH = new CatalogItemLanguage("Chinese");
 		public static readonly CatalogItemLanguage DA = new CatalogItemLanguage("Danish");
 		public static readonly CatalogItemLanguage NL = new CatalogItemLanguage("Dutch");

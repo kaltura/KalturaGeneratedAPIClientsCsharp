@@ -43,6 +43,7 @@ namespace Kaltura.Types
 		public const string FILE_PATHS = "filePaths";
 		public const string REPORTS_GROUP = "reportsGroup";
 		public const string FILES = "files";
+		public const string BASE_URL = "baseUrl";
 		#endregion
 
 		#region Private Fields
@@ -51,6 +52,7 @@ namespace Kaltura.Types
 		private string _FilePaths = null;
 		private string _ReportsGroup = null;
 		private IList<ReportExportFile> _Files;
+		private string _BaseUrl = null;
 		#endregion
 
 		#region Properties
@@ -119,6 +121,19 @@ namespace Kaltura.Types
 				OnPropertyChanged("Files");
 			}
 		}
+		/// <summary>
+		/// Use BaseUrlAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public string BaseUrl
+		{
+			get { return _BaseUrl; }
+			set 
+			{ 
+				_BaseUrl = value;
+				OnPropertyChanged("BaseUrl");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -156,6 +171,10 @@ namespace Kaltura.Types
 					this._Files.Add(ObjectFactory.Create<ReportExportFile>(arrayNode));
 				}
 			}
+			if(node["baseUrl"] != null)
+			{
+				this._BaseUrl = node["baseUrl"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -170,6 +189,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("filePaths", this._FilePaths);
 			kparams.AddIfNotNull("reportsGroup", this._ReportsGroup);
 			kparams.AddIfNotNull("files", this._Files);
+			kparams.AddIfNotNull("baseUrl", this._BaseUrl);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -186,6 +206,8 @@ namespace Kaltura.Types
 					return "ReportsGroup";
 				case FILES:
 					return "Files";
+				case BASE_URL:
+					return "BaseUrl";
 				default:
 					return base.getPropertyName(apiName);
 			}

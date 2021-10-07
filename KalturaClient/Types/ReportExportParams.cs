@@ -42,6 +42,7 @@ namespace Kaltura.Types
 		public const string TIME_ZONE_OFFSET = "timeZoneOffset";
 		public const string REPORT_ITEMS = "reportItems";
 		public const string REPORTS_ITEMS_GROUP = "reportsItemsGroup";
+		public const string BASE_URL = "baseUrl";
 		#endregion
 
 		#region Private Fields
@@ -49,6 +50,7 @@ namespace Kaltura.Types
 		private int _TimeZoneOffset = Int32.MinValue;
 		private IList<ReportExportItem> _ReportItems;
 		private string _ReportsItemsGroup = null;
+		private string _BaseUrl = null;
 		#endregion
 
 		#region Properties
@@ -104,6 +106,19 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReportsItemsGroup");
 			}
 		}
+		/// <summary>
+		/// Use BaseUrlAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public string BaseUrl
+		{
+			get { return _BaseUrl; }
+			set 
+			{ 
+				_BaseUrl = value;
+				OnPropertyChanged("BaseUrl");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -133,6 +148,10 @@ namespace Kaltura.Types
 			{
 				this._ReportsItemsGroup = node["reportsItemsGroup"].Value<string>();
 			}
+			if(node["baseUrl"] != null)
+			{
+				this._BaseUrl = node["baseUrl"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -146,6 +165,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("timeZoneOffset", this._TimeZoneOffset);
 			kparams.AddIfNotNull("reportItems", this._ReportItems);
 			kparams.AddIfNotNull("reportsItemsGroup", this._ReportsItemsGroup);
+			kparams.AddIfNotNull("baseUrl", this._BaseUrl);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -160,6 +180,8 @@ namespace Kaltura.Types
 					return "ReportItems";
 				case REPORTS_ITEMS_GROUP:
 					return "ReportsItemsGroup";
+				case BASE_URL:
+					return "BaseUrl";
 				default:
 					return base.getPropertyName(apiName);
 			}

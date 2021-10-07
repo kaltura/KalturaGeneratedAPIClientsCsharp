@@ -27,14 +27,10 @@
 // ===================================================================================================
 namespace Kaltura.Enums
 {
-	public sealed class DrmLicenseScenario : StringEnum
+	public enum TwoFactorAuthenticationMode
 	{
-		public static readonly DrmLicenseScenario NONE = new DrmLicenseScenario("0");
-		public static readonly DrmLicenseScenario PROTECTION = new DrmLicenseScenario("playReady.PROTECTION");
-		public static readonly DrmLicenseScenario PURCHASE = new DrmLicenseScenario("playReady.PURCHASE");
-		public static readonly DrmLicenseScenario RENTAL = new DrmLicenseScenario("playReady.RENTAL");
-		public static readonly DrmLicenseScenario SUBSCRIPTION = new DrmLicenseScenario("playReady.SUBSCRIPTION");
-
-		private DrmLicenseScenario(string name) : base(name) { }
+		ALL = 0,
+		ADMIN_USERS_ONLY = 1,
+		NON_ADMIN_USERS_ONLY = 2,
 	}
 }

@@ -63,6 +63,7 @@ namespace Kaltura.Types
 		public const string RECOMMENDED_DC_FOR_DOWNLOAD = "recommendedDcForDownload";
 		public const string RECOMMENDED_DC_FOR_EXECUTE = "recommendedDcForExecute";
 		public const string DISTRIBUTE_TRIGGER = "distributeTrigger";
+		public const string SUPPORT_IMAGE_ENTRY = "supportImageEntry";
 		#endregion
 
 		#region Private Fields
@@ -91,6 +92,7 @@ namespace Kaltura.Types
 		private int _RecommendedDcForDownload = Int32.MinValue;
 		private int _RecommendedDcForExecute = Int32.MinValue;
 		private DistributeTrigger _DistributeTrigger = (DistributeTrigger)Int32.MinValue;
+		private bool? _SupportImageEntry = null;
 		#endregion
 
 		#region Properties
@@ -419,6 +421,19 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributeTrigger");
 			}
 		}
+		/// <summary>
+		/// Use SupportImageEntryAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public bool? SupportImageEntry
+		{
+			get { return _SupportImageEntry; }
+			private set 
+			{ 
+				_SupportImageEntry = value;
+				OnPropertyChanged("SupportImageEntry");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -544,6 +559,10 @@ namespace Kaltura.Types
 			{
 				this._DistributeTrigger = (DistributeTrigger)ParseEnum(typeof(DistributeTrigger), node["distributeTrigger"].Value<string>());
 			}
+			if(node["supportImageEntry"] != null)
+			{
+				this._SupportImageEntry = ParseBool(node["supportImageEntry"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -578,6 +597,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("recommendedDcForDownload", this._RecommendedDcForDownload);
 			kparams.AddIfNotNull("recommendedDcForExecute", this._RecommendedDcForExecute);
 			kparams.AddIfNotNull("distributeTrigger", this._DistributeTrigger);
+			kparams.AddIfNotNull("supportImageEntry", this._SupportImageEntry);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -634,6 +654,8 @@ namespace Kaltura.Types
 					return "RecommendedDcForExecute";
 				case DISTRIBUTE_TRIGGER:
 					return "DistributeTrigger";
+				case SUPPORT_IMAGE_ENTRY:
+					return "SupportImageEntry";
 				default:
 					return base.getPropertyName(apiName);
 			}

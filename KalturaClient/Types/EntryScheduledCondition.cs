@@ -25,16 +25,54 @@
 //
 // @ignore
 // ===================================================================================================
-namespace Kaltura.Enums
-{
-	public sealed class DrmLicenseScenario : StringEnum
-	{
-		public static readonly DrmLicenseScenario NONE = new DrmLicenseScenario("0");
-		public static readonly DrmLicenseScenario PROTECTION = new DrmLicenseScenario("playReady.PROTECTION");
-		public static readonly DrmLicenseScenario PURCHASE = new DrmLicenseScenario("playReady.PURCHASE");
-		public static readonly DrmLicenseScenario RENTAL = new DrmLicenseScenario("playReady.RENTAL");
-		public static readonly DrmLicenseScenario SUBSCRIPTION = new DrmLicenseScenario("playReady.SUBSCRIPTION");
+using System;
+using System.Xml;
+using System.Collections.Generic;
+using Kaltura.Enums;
+using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
-		private DrmLicenseScenario(string name) : base(name) { }
+namespace Kaltura.Types
+{
+	public class EntryScheduledCondition : Condition
+	{
+		#region Constants
+		#endregion
+
+		#region Private Fields
+		#endregion
+
+		#region Properties
+		#endregion
+
+		#region CTor
+		public EntryScheduledCondition()
+		{
+		}
+
+		public EntryScheduledCondition(JToken node) : base(node)
+		{
+		}
+		#endregion
+
+		#region Methods
+		public override Params ToParams(bool includeObjectType = true)
+		{
+			Params kparams = base.ToParams(includeObjectType);
+			if (includeObjectType)
+				kparams.AddReplace("objectType", "KalturaEntryScheduledCondition");
+			return kparams;
+		}
+		protected override string getPropertyName(string apiName)
+		{
+			switch(apiName)
+			{
+				default:
+					return base.getPropertyName(apiName);
+			}
+		}
+		#endregion
 	}
 }
+

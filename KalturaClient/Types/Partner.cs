@@ -112,6 +112,7 @@ namespace Kaltura.Types
 		public const string MAX_LOGIN_ATTEMPTS = "maxLoginAttempts";
 		public const string LOGIN_BLOCK_PERIOD = "loginBlockPeriod";
 		public const string NUM_PREV_PASS_TO_KEEP = "numPrevPassToKeep";
+		public const string TWO_FACTOR_AUTHENTICATION_MODE = "twoFactorAuthenticationMode";
 		#endregion
 
 		#region Private Fields
@@ -189,6 +190,7 @@ namespace Kaltura.Types
 		private int _MaxLoginAttempts = Int32.MinValue;
 		private int _LoginBlockPeriod = Int32.MinValue;
 		private int _NumPrevPassToKeep = Int32.MinValue;
+		private TwoFactorAuthenticationMode _TwoFactorAuthenticationMode = (TwoFactorAuthenticationMode)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -1154,6 +1156,19 @@ namespace Kaltura.Types
 				OnPropertyChanged("NumPrevPassToKeep");
 			}
 		}
+		/// <summary>
+		/// Use TwoFactorAuthenticationModeAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public TwoFactorAuthenticationMode TwoFactorAuthenticationMode
+		{
+			get { return _TwoFactorAuthenticationMode; }
+			private set 
+			{ 
+				_TwoFactorAuthenticationMode = value;
+				OnPropertyChanged("TwoFactorAuthenticationMode");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -1475,6 +1490,10 @@ namespace Kaltura.Types
 			{
 				this._NumPrevPassToKeep = ParseInt(node["numPrevPassToKeep"].Value<string>());
 			}
+			if(node["twoFactorAuthenticationMode"] != null)
+			{
+				this._TwoFactorAuthenticationMode = (TwoFactorAuthenticationMode)ParseEnum(typeof(TwoFactorAuthenticationMode), node["twoFactorAuthenticationMode"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -1558,6 +1577,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("maxLoginAttempts", this._MaxLoginAttempts);
 			kparams.AddIfNotNull("loginBlockPeriod", this._LoginBlockPeriod);
 			kparams.AddIfNotNull("numPrevPassToKeep", this._NumPrevPassToKeep);
+			kparams.AddIfNotNull("twoFactorAuthenticationMode", this._TwoFactorAuthenticationMode);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -1712,6 +1732,8 @@ namespace Kaltura.Types
 					return "LoginBlockPeriod";
 				case NUM_PREV_PASS_TO_KEEP:
 					return "NumPrevPassToKeep";
+				case TWO_FACTOR_AUTHENTICATION_MODE:
+					return "TwoFactorAuthenticationMode";
 				default:
 					return base.getPropertyName(apiName);
 			}

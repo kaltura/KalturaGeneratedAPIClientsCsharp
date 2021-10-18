@@ -41,12 +41,14 @@ namespace Kaltura.Types
 		public const string PLAYBACK_CONTEXT = "playbackContext";
 		public const string LAST_TIME_REACHED = "lastTimeReached";
 		public const string LAST_UPDATE_TIME = "lastUpdateTime";
+		public const string PLAYLIST_LAST_ENTRY_ID = "playlistLastEntryId";
 		#endregion
 
 		#region Private Fields
 		private string _PlaybackContext = null;
 		private int _LastTimeReached = Int32.MinValue;
 		private int _LastUpdateTime = Int32.MinValue;
+		private string _PlaylistLastEntryId = null;
 		#endregion
 
 		#region Properties
@@ -89,6 +91,19 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastUpdateTime");
 			}
 		}
+		/// <summary>
+		/// Use PlaylistLastEntryIdAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public string PlaylistLastEntryId
+		{
+			get { return _PlaylistLastEntryId; }
+			set 
+			{ 
+				_PlaylistLastEntryId = value;
+				OnPropertyChanged("PlaylistLastEntryId");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -110,6 +125,10 @@ namespace Kaltura.Types
 			{
 				this._LastUpdateTime = ParseInt(node["lastUpdateTime"].Value<string>());
 			}
+			if(node["playlistLastEntryId"] != null)
+			{
+				this._PlaylistLastEntryId = node["playlistLastEntryId"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -122,6 +141,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("playbackContext", this._PlaybackContext);
 			kparams.AddIfNotNull("lastTimeReached", this._LastTimeReached);
 			kparams.AddIfNotNull("lastUpdateTime", this._LastUpdateTime);
+			kparams.AddIfNotNull("playlistLastEntryId", this._PlaylistLastEntryId);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -134,6 +154,8 @@ namespace Kaltura.Types
 					return "LastTimeReached";
 				case LAST_UPDATE_TIME:
 					return "LastUpdateTime";
+				case PLAYLIST_LAST_ENTRY_ID:
+					return "PlaylistLastEntryId";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -101,21 +101,7 @@ namespace Kaltura.Types
 		/// Use UtcOffsetAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use UtcOffsetAsDouble property instead")]
-		public float UtcOffset
-		{
-			get { return (float)_UtcOffset; }
-			set 
-			{ 
-				_UtcOffset = value;
-				OnPropertyChanged("UtcOffset");
-			}
-		}
-		///<summary>
-		///Use this property UtcOffsetAsDouble instead of the float UtcOffset property version
-		///</summary>
-		[JsonProperty]
-		public double UtcOffsetAsDouble
+		public double UtcOffset
 		{
 			get { return _UtcOffset; }
 			set 

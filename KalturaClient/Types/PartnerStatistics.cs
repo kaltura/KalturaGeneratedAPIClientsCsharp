@@ -73,21 +73,7 @@ namespace Kaltura.Types
 		/// Use HostingAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use HostingAsDouble property instead")]
-		public float Hosting
-		{
-			get { return (float)_Hosting; }
-			private set 
-			{ 
-				_Hosting = value;
-				OnPropertyChanged("Hosting");
-			}
-		}
-		///<summary>
-		///Use this property HostingAsDouble instead of the float Hosting property version
-		///</summary>
-		[JsonProperty]
-		public double HostingAsDouble
+		public double Hosting
 		{
 			get { return _Hosting; }
 			private set 
@@ -100,21 +86,7 @@ namespace Kaltura.Types
 		/// Use BandwidthAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use BandwidthAsDouble property instead")]
-		public float Bandwidth
-		{
-			get { return (float)_Bandwidth; }
-			private set 
-			{ 
-				_Bandwidth = value;
-				OnPropertyChanged("Bandwidth");
-			}
-		}
-		///<summary>
-		///Use this property BandwidthAsDouble instead of the float Bandwidth property version
-		///</summary>
-		[JsonProperty]
-		public double BandwidthAsDouble
+		public double Bandwidth
 		{
 			get { return _Bandwidth; }
 			private set 
@@ -140,21 +112,7 @@ namespace Kaltura.Types
 		/// Use UsagePercentAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use UsagePercentAsDouble property instead")]
-		public float UsagePercent
-		{
-			get { return (float)_UsagePercent; }
-			private set 
-			{ 
-				_UsagePercent = value;
-				OnPropertyChanged("UsagePercent");
-			}
-		}
-		///<summary>
-		///Use this property UsagePercentAsDouble instead of the float UsagePercent property version
-		///</summary>
-		[JsonProperty]
-		public double UsagePercentAsDouble
+		public double UsagePercent
 		{
 			get { return _UsagePercent; }
 			private set 

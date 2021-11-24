@@ -247,21 +247,7 @@ namespace Kaltura.Types
 		/// Use StartTimeAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use StartTimeAsDouble property instead")]
-		public float StartTime
-		{
-			get { return (float)_StartTime; }
-			set 
-			{ 
-				_StartTime = value;
-				OnPropertyChanged("StartTime");
-			}
-		}
-		///<summary>
-		///Use this property StartTimeAsDouble instead of the float StartTime property version
-		///</summary>
-		[JsonProperty]
-		public double StartTimeAsDouble
+		public double StartTime
 		{
 			get { return _StartTime; }
 			set 
@@ -274,21 +260,7 @@ namespace Kaltura.Types
 		/// Use DurationAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use DurationAsDouble property instead")]
-		public float Duration
-		{
-			get { return (float)_Duration; }
-			set 
-			{ 
-				_Duration = value;
-				OnPropertyChanged("Duration");
-			}
-		}
-		///<summary>
-		///Use this property DurationAsDouble instead of the float Duration property version
-		///</summary>
-		[JsonProperty]
-		public double DurationAsDouble
+		public double Duration
 		{
 			get { return _Duration; }
 			set 

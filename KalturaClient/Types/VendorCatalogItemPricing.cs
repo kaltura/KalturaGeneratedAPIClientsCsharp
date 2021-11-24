@@ -52,21 +52,7 @@ namespace Kaltura.Types
 		/// Use PricePerUnitAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use PricePerUnitAsDouble property instead")]
-		public float PricePerUnit
-		{
-			get { return (float)_PricePerUnit; }
-			set 
-			{ 
-				_PricePerUnit = value;
-				OnPropertyChanged("PricePerUnit");
-			}
-		}
-		///<summary>
-		///Use this property PricePerUnitAsDouble instead of the float PricePerUnit property version
-		///</summary>
-		[JsonProperty]
-		public double PricePerUnitAsDouble
+		public double PricePerUnit
 		{
 			get { return _PricePerUnit; }
 			set 

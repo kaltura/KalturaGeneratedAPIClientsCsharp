@@ -172,21 +172,7 @@ namespace Kaltura.Types
 		/// Use StartTimeGreaterThanOrEqualAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use StartTimeGreaterThanOrEqualAsDouble property instead")]
-		public float StartTimeGreaterThanOrEqual
-		{
-			get { return (float)_StartTimeGreaterThanOrEqual; }
-			set 
-			{ 
-				_StartTimeGreaterThanOrEqual = value;
-				OnPropertyChanged("StartTimeGreaterThanOrEqual");
-			}
-		}
-		///<summary>
-		///Use this property StartTimeGreaterThanOrEqualAsDouble instead of the float StartTimeGreaterThanOrEqual property version
-		///</summary>
-		[JsonProperty]
-		public double StartTimeGreaterThanOrEqualAsDouble
+		public double StartTimeGreaterThanOrEqual
 		{
 			get { return _StartTimeGreaterThanOrEqual; }
 			set 
@@ -199,21 +185,7 @@ namespace Kaltura.Types
 		/// Use StartTimeLessThanOrEqualAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use StartTimeLessThanOrEqualAsDouble property instead")]
-		public float StartTimeLessThanOrEqual
-		{
-			get { return (float)_StartTimeLessThanOrEqual; }
-			set 
-			{ 
-				_StartTimeLessThanOrEqual = value;
-				OnPropertyChanged("StartTimeLessThanOrEqual");
-			}
-		}
-		///<summary>
-		///Use this property StartTimeLessThanOrEqualAsDouble instead of the float StartTimeLessThanOrEqual property version
-		///</summary>
-		[JsonProperty]
-		public double StartTimeLessThanOrEqualAsDouble
+		public double StartTimeLessThanOrEqual
 		{
 			get { return _StartTimeLessThanOrEqual; }
 			set 

@@ -258,21 +258,7 @@ namespace Kaltura.Types
 		/// Use GeoLatitudeAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use GeoLatitudeAsDouble property instead")]
-		public float GeoLatitude
-		{
-			get { return (float)_GeoLatitude; }
-			set 
-			{ 
-				_GeoLatitude = value;
-				OnPropertyChanged("GeoLatitude");
-			}
-		}
-		///<summary>
-		///Use this property GeoLatitudeAsDouble instead of the float GeoLatitude property version
-		///</summary>
-		[JsonProperty]
-		public double GeoLatitudeAsDouble
+		public double GeoLatitude
 		{
 			get { return _GeoLatitude; }
 			set 
@@ -285,21 +271,7 @@ namespace Kaltura.Types
 		/// Use GeoLongitudeAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use GeoLongitudeAsDouble property instead")]
-		public float GeoLongitude
-		{
-			get { return (float)_GeoLongitude; }
-			set 
-			{ 
-				_GeoLongitude = value;
-				OnPropertyChanged("GeoLongitude");
-			}
-		}
-		///<summary>
-		///Use this property GeoLongitudeAsDouble instead of the float GeoLongitude property version
-		///</summary>
-		[JsonProperty]
-		public double GeoLongitudeAsDouble
+		public double GeoLongitude
 		{
 			get { return _GeoLongitude; }
 			set 

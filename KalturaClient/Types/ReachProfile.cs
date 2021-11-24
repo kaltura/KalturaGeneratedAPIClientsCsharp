@@ -386,21 +386,7 @@ namespace Kaltura.Types
 		/// Use UsedCreditAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use UsedCreditAsDouble property instead")]
-		public float UsedCredit
-		{
-			get { return (float)_UsedCredit; }
-			private set 
-			{ 
-				_UsedCredit = value;
-				OnPropertyChanged("UsedCredit");
-			}
-		}
-		///<summary>
-		///Use this property UsedCreditAsDouble instead of the float UsedCredit property version
-		///</summary>
-		[JsonProperty]
-		public double UsedCreditAsDouble
+		public double UsedCredit
 		{
 			get { return _UsedCredit; }
 			private set 

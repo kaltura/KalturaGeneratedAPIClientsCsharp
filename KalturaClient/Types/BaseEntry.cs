@@ -352,21 +352,7 @@ namespace Kaltura.Types
 		/// Use RankAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use RankAsDouble property instead")]
-		public float Rank
-		{
-			get { return (float)_Rank; }
-			private set 
-			{ 
-				_Rank = value;
-				OnPropertyChanged("Rank");
-			}
-		}
-		///<summary>
-		///Use this property RankAsDouble instead of the float Rank property version
-		///</summary>
-		[JsonProperty]
-		public double RankAsDouble
+		public double Rank
 		{
 			get { return _Rank; }
 			private set 

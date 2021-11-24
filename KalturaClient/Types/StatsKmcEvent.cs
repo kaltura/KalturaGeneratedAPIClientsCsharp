@@ -109,21 +109,7 @@ namespace Kaltura.Types
 		/// Use EventTimestampAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use EventTimestampAsDouble property instead")]
-		public float EventTimestamp
-		{
-			get { return (float)_EventTimestamp; }
-			set 
-			{ 
-				_EventTimestamp = value;
-				OnPropertyChanged("EventTimestamp");
-			}
-		}
-		///<summary>
-		///Use this property EventTimestampAsDouble instead of the float EventTimestamp property version
-		///</summary>
-		[JsonProperty]
-		public double EventTimestampAsDouble
+		public double EventTimestamp
 		{
 			get { return _EventTimestamp; }
 			set 

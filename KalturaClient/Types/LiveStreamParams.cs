@@ -142,21 +142,7 @@ namespace Kaltura.Types
 		/// Use KeyFrameIntervalAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use KeyFrameIntervalAsDouble property instead")]
-		public float KeyFrameInterval
-		{
-			get { return (float)_KeyFrameInterval; }
-			set 
-			{ 
-				_KeyFrameInterval = value;
-				OnPropertyChanged("KeyFrameInterval");
-			}
-		}
-		///<summary>
-		///Use this property KeyFrameIntervalAsDouble instead of the float KeyFrameInterval property version
-		///</summary>
-		[JsonProperty]
-		public double KeyFrameIntervalAsDouble
+		public double KeyFrameInterval
 		{
 			get { return _KeyFrameInterval; }
 			set 

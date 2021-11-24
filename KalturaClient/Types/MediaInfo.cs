@@ -327,21 +327,7 @@ namespace Kaltura.Types
 		/// Use VideoFrameRateAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use VideoFrameRateAsDouble property instead")]
-		public float VideoFrameRate
-		{
-			get { return (float)_VideoFrameRate; }
-			set 
-			{ 
-				_VideoFrameRate = value;
-				OnPropertyChanged("VideoFrameRate");
-			}
-		}
-		///<summary>
-		///Use this property VideoFrameRateAsDouble instead of the float VideoFrameRate property version
-		///</summary>
-		[JsonProperty]
-		public double VideoFrameRateAsDouble
+		public double VideoFrameRate
 		{
 			get { return _VideoFrameRate; }
 			set 
@@ -354,21 +340,7 @@ namespace Kaltura.Types
 		/// Use VideoDarAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use VideoDarAsDouble property instead")]
-		public float VideoDar
-		{
-			get { return (float)_VideoDar; }
-			set 
-			{ 
-				_VideoDar = value;
-				OnPropertyChanged("VideoDar");
-			}
-		}
-		///<summary>
-		///Use this property VideoDarAsDouble instead of the float VideoDar property version
-		///</summary>
-		[JsonProperty]
-		public double VideoDarAsDouble
+		public double VideoDar
 		{
 			get { return _VideoDar; }
 			set 
@@ -602,21 +574,7 @@ namespace Kaltura.Types
 		/// Use MaxGOPAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use MaxGOPAsDouble property instead")]
-		public float MaxGOP
-		{
-			get { return (float)_MaxGOP; }
-			set 
-			{ 
-				_MaxGOP = value;
-				OnPropertyChanged("MaxGOP");
-			}
-		}
-		///<summary>
-		///Use this property MaxGOPAsDouble instead of the float MaxGOP property version
-		///</summary>
-		[JsonProperty]
-		public double MaxGOPAsDouble
+		public double MaxGOP
 		{
 			get { return _MaxGOP; }
 			set 

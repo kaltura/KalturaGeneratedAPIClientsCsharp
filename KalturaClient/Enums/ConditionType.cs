@@ -54,6 +54,8 @@ namespace Kaltura.Enums
 		public static readonly ConditionType BOOLEAN = new ConditionType("17");
 		public static readonly ConditionType HTTP_HEADER = new ConditionType("18");
 		public static readonly ConditionType ENTRY_SCHEDULED = new ConditionType("19");
+		public static readonly ConditionType ACTION_NAME = new ConditionType("20");
+		public static readonly ConditionType URL_AUTH_PARAMS = new ConditionType("21");
 
 		private ConditionType(string name) : base(name) { }
 	}

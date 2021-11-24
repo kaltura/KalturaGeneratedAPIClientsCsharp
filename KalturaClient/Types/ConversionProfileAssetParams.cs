@@ -178,21 +178,7 @@ namespace Kaltura.Types
 		/// Use ContentAwarenessAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use ContentAwarenessAsDouble property instead")]
-		public float ContentAwareness
-		{
-			get { return (float)_ContentAwareness; }
-			set 
-			{ 
-				_ContentAwareness = value;
-				OnPropertyChanged("ContentAwareness");
-			}
-		}
-		///<summary>
-		///Use this property ContentAwarenessAsDouble instead of the float ContentAwareness property version
-		///</summary>
-		[JsonProperty]
-		public double ContentAwarenessAsDouble
+		public double ContentAwareness
 		{
 			get { return _ContentAwareness; }
 			set 

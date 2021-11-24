@@ -259,21 +259,7 @@ namespace Kaltura.Types
 		/// Use BandwidthAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use BandwidthAsDouble property instead")]
-		public float Bandwidth
-		{
-			get { return (float)_Bandwidth; }
-			set 
-			{ 
-				_Bandwidth = value;
-				OnPropertyChanged("Bandwidth");
-			}
-		}
-		///<summary>
-		///Use this property BandwidthAsDouble instead of the float Bandwidth property version
-		///</summary>
-		[JsonProperty]
-		public double BandwidthAsDouble
+		public double Bandwidth
 		{
 			get { return _Bandwidth; }
 			set 
@@ -286,21 +272,7 @@ namespace Kaltura.Types
 		/// Use TotalStorageAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use TotalStorageAsDouble property instead")]
-		public float TotalStorage
-		{
-			get { return (float)_TotalStorage; }
-			set 
-			{ 
-				_TotalStorage = value;
-				OnPropertyChanged("TotalStorage");
-			}
-		}
-		///<summary>
-		///Use this property TotalStorageAsDouble instead of the float TotalStorage property version
-		///</summary>
-		[JsonProperty]
-		public double TotalStorageAsDouble
+		public double TotalStorage
 		{
 			get { return _TotalStorage; }
 			set 
@@ -313,21 +285,7 @@ namespace Kaltura.Types
 		/// Use StorageAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use StorageAsDouble property instead")]
-		public float Storage
-		{
-			get { return (float)_Storage; }
-			set 
-			{ 
-				_Storage = value;
-				OnPropertyChanged("Storage");
-			}
-		}
-		///<summary>
-		///Use this property StorageAsDouble instead of the float Storage property version
-		///</summary>
-		[JsonProperty]
-		public double StorageAsDouble
+		public double Storage
 		{
 			get { return _Storage; }
 			set 
@@ -340,21 +298,7 @@ namespace Kaltura.Types
 		/// Use PeakStorageAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use PeakStorageAsDouble property instead")]
-		public float PeakStorage
-		{
-			get { return (float)_PeakStorage; }
-			set 
-			{ 
-				_PeakStorage = value;
-				OnPropertyChanged("PeakStorage");
-			}
-		}
-		///<summary>
-		///Use this property PeakStorageAsDouble instead of the float PeakStorage property version
-		///</summary>
-		[JsonProperty]
-		public double PeakStorageAsDouble
+		public double PeakStorage
 		{
 			get { return _PeakStorage; }
 			set 
@@ -367,21 +311,7 @@ namespace Kaltura.Types
 		/// Use AvgStorageAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use AvgStorageAsDouble property instead")]
-		public float AvgStorage
-		{
-			get { return (float)_AvgStorage; }
-			set 
-			{ 
-				_AvgStorage = value;
-				OnPropertyChanged("AvgStorage");
-			}
-		}
-		///<summary>
-		///Use this property AvgStorageAsDouble instead of the float AvgStorage property version
-		///</summary>
-		[JsonProperty]
-		public double AvgStorageAsDouble
+		public double AvgStorage
 		{
 			get { return _AvgStorage; }
 			set 
@@ -394,21 +324,7 @@ namespace Kaltura.Types
 		/// Use CombinedBandwidthStorageAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use CombinedBandwidthStorageAsDouble property instead")]
-		public float CombinedBandwidthStorage
-		{
-			get { return (float)_CombinedBandwidthStorage; }
-			set 
-			{ 
-				_CombinedBandwidthStorage = value;
-				OnPropertyChanged("CombinedBandwidthStorage");
-			}
-		}
-		///<summary>
-		///Use this property CombinedBandwidthStorageAsDouble instead of the float CombinedBandwidthStorage property version
-		///</summary>
-		[JsonProperty]
-		public double CombinedBandwidthStorageAsDouble
+		public double CombinedBandwidthStorage
 		{
 			get { return _CombinedBandwidthStorage; }
 			set 
@@ -421,21 +337,7 @@ namespace Kaltura.Types
 		/// Use DeletedStorageAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use DeletedStorageAsDouble property instead")]
-		public float DeletedStorage
-		{
-			get { return (float)_DeletedStorage; }
-			set 
-			{ 
-				_DeletedStorage = value;
-				OnPropertyChanged("DeletedStorage");
-			}
-		}
-		///<summary>
-		///Use this property DeletedStorageAsDouble instead of the float DeletedStorage property version
-		///</summary>
-		[JsonProperty]
-		public double DeletedStorageAsDouble
+		public double DeletedStorage
 		{
 			get { return _DeletedStorage; }
 			set 
@@ -448,21 +350,7 @@ namespace Kaltura.Types
 		/// Use TranscodingUsageAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use TranscodingUsageAsDouble property instead")]
-		public float TranscodingUsage
-		{
-			get { return (float)_TranscodingUsage; }
-			set 
-			{ 
-				_TranscodingUsage = value;
-				OnPropertyChanged("TranscodingUsage");
-			}
-		}
-		///<summary>
-		///Use this property TranscodingUsageAsDouble instead of the float TranscodingUsage property version
-		///</summary>
-		[JsonProperty]
-		public double TranscodingUsageAsDouble
+		public double TranscodingUsage
 		{
 			get { return _TranscodingUsage; }
 			set 

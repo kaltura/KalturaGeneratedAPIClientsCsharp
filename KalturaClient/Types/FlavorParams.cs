@@ -232,21 +232,7 @@ namespace Kaltura.Types
 		/// Use FrameRateAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use FrameRateAsDouble property instead")]
-		public float FrameRate
-		{
-			get { return (float)_FrameRate; }
-			set 
-			{ 
-				_FrameRate = value;
-				OnPropertyChanged("FrameRate");
-			}
-		}
-		///<summary>
-		///Use this property FrameRateAsDouble instead of the float FrameRate property version
-		///</summary>
-		[JsonProperty]
-		public double FrameRateAsDouble
+		public double FrameRate
 		{
 			get { return _FrameRate; }
 			set 
@@ -467,21 +453,7 @@ namespace Kaltura.Types
 		/// Use AnamorphicPixelsAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use AnamorphicPixelsAsDouble property instead")]
-		public float AnamorphicPixels
-		{
-			get { return (float)_AnamorphicPixels; }
-			set 
-			{ 
-				_AnamorphicPixels = value;
-				OnPropertyChanged("AnamorphicPixels");
-			}
-		}
-		///<summary>
-		///Use this property AnamorphicPixelsAsDouble instead of the float AnamorphicPixels property version
-		///</summary>
-		[JsonProperty]
-		public double AnamorphicPixelsAsDouble
+		public double AnamorphicPixels
 		{
 			get { return _AnamorphicPixels; }
 			set 
@@ -624,21 +596,7 @@ namespace Kaltura.Types
 		/// Use ContentAwarenessAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use ContentAwarenessAsDouble property instead")]
-		public float ContentAwareness
-		{
-			get { return (float)_ContentAwareness; }
-			set 
-			{ 
-				_ContentAwareness = value;
-				OnPropertyChanged("ContentAwareness");
-			}
-		}
-		///<summary>
-		///Use this property ContentAwarenessAsDouble instead of the float ContentAwareness property version
-		///</summary>
-		[JsonProperty]
-		public double ContentAwarenessAsDouble
+		public double ContentAwareness
 		{
 			get { return _ContentAwareness; }
 			set 

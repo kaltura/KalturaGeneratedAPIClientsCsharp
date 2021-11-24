@@ -338,21 +338,7 @@ namespace Kaltura.Types
 		/// Use FileSizeAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use FileSizeAsDouble property instead")]
-		public float FileSize
-		{
-			get { return (float)_FileSize; }
-			private set 
-			{ 
-				_FileSize = value;
-				OnPropertyChanged("FileSize");
-			}
-		}
-		///<summary>
-		///Use this property FileSizeAsDouble instead of the float FileSize property version
-		///</summary>
-		[JsonProperty]
-		public double FileSizeAsDouble
+		public double FileSize
 		{
 			get { return _FileSize; }
 			private set 
@@ -391,21 +377,7 @@ namespace Kaltura.Types
 		/// Use FileDiscSizeAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use FileDiscSizeAsDouble property instead")]
-		public float FileDiscSize
-		{
-			get { return (float)_FileDiscSize; }
-			private set 
-			{ 
-				_FileDiscSize = value;
-				OnPropertyChanged("FileDiscSize");
-			}
-		}
-		///<summary>
-		///Use this property FileDiscSizeAsDouble instead of the float FileDiscSize property version
-		///</summary>
-		[JsonProperty]
-		public double FileDiscSizeAsDouble
+		public double FileDiscSize
 		{
 			get { return _FileDiscSize; }
 			private set 

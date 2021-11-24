@@ -35,81 +35,24 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class Coordinate : ObjectBase
+	public class ActionNameCondition : RegexCondition
 	{
 		#region Constants
-		public const string LATITUDE = "latitude";
-		public const string LONGITUDE = "longitude";
-		public const string NAME = "name";
 		#endregion
 
 		#region Private Fields
-		private double _Latitude = Double.MinValue;
-		private double _Longitude = Double.MinValue;
-		private string _Name = null;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use LatitudeAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public double Latitude
-		{
-			get { return _Latitude; }
-			set 
-			{ 
-				_Latitude = value;
-				OnPropertyChanged("Latitude");
-			}
-		}
-		/// <summary>
-		/// Use LongitudeAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public double Longitude
-		{
-			get { return _Longitude; }
-			set 
-			{ 
-				_Longitude = value;
-				OnPropertyChanged("Longitude");
-			}
-		}
-		/// <summary>
-		/// Use NameAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string Name
-		{
-			get { return _Name; }
-			set 
-			{ 
-				_Name = value;
-				OnPropertyChanged("Name");
-			}
-		}
 		#endregion
 
 		#region CTor
-		public Coordinate()
+		public ActionNameCondition()
 		{
 		}
 
-		public Coordinate(JToken node) : base(node)
+		public ActionNameCondition(JToken node) : base(node)
 		{
-			if(node["latitude"] != null)
-			{
-				this._Latitude = ParseDouble(node["latitude"].Value<string>());
-			}
-			if(node["longitude"] != null)
-			{
-				this._Longitude = ParseDouble(node["longitude"].Value<string>());
-			}
-			if(node["name"] != null)
-			{
-				this._Name = node["name"].Value<string>();
-			}
 		}
 		#endregion
 
@@ -118,22 +61,13 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaCoordinate");
-			kparams.AddIfNotNull("latitude", this._Latitude);
-			kparams.AddIfNotNull("longitude", this._Longitude);
-			kparams.AddIfNotNull("name", this._Name);
+				kparams.AddReplace("objectType", "KalturaActionNameCondition");
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case LATITUDE:
-					return "Latitude";
-				case LONGITUDE:
-					return "Longitude";
-				case NAME:
-					return "Name";
 				default:
 					return base.getPropertyName(apiName);
 			}

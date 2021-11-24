@@ -126,21 +126,7 @@ namespace Kaltura.Types
 		/// Use FrameRateAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use FrameRateAsDouble property instead")]
-		public float FrameRate
-		{
-			get { return (float)_FrameRate; }
-			private set 
-			{ 
-				_FrameRate = value;
-				OnPropertyChanged("FrameRate");
-			}
-		}
-		///<summary>
-		///Use this property FrameRateAsDouble instead of the float FrameRate property version
-		///</summary>
-		[JsonProperty]
-		public double FrameRateAsDouble
+		public double FrameRate
 		{
 			get { return _FrameRate; }
 			private set 

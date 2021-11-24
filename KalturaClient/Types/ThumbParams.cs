@@ -162,21 +162,7 @@ namespace Kaltura.Types
 		/// Use VideoOffsetAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use VideoOffsetAsDouble property instead")]
-		public float VideoOffset
-		{
-			get { return (float)_VideoOffset; }
-			set 
-			{ 
-				_VideoOffset = value;
-				OnPropertyChanged("VideoOffset");
-			}
-		}
-		///<summary>
-		///Use this property VideoOffsetAsDouble instead of the float VideoOffset property version
-		///</summary>
-		[JsonProperty]
-		public double VideoOffsetAsDouble
+		public double VideoOffset
 		{
 			get { return _VideoOffset; }
 			set 
@@ -215,21 +201,7 @@ namespace Kaltura.Types
 		/// Use ScaleWidthAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use ScaleWidthAsDouble property instead")]
-		public float ScaleWidth
-		{
-			get { return (float)_ScaleWidth; }
-			set 
-			{ 
-				_ScaleWidth = value;
-				OnPropertyChanged("ScaleWidth");
-			}
-		}
-		///<summary>
-		///Use this property ScaleWidthAsDouble instead of the float ScaleWidth property version
-		///</summary>
-		[JsonProperty]
-		public double ScaleWidthAsDouble
+		public double ScaleWidth
 		{
 			get { return _ScaleWidth; }
 			set 
@@ -242,21 +214,7 @@ namespace Kaltura.Types
 		/// Use ScaleHeightAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use ScaleHeightAsDouble property instead")]
-		public float ScaleHeight
-		{
-			get { return (float)_ScaleHeight; }
-			set 
-			{ 
-				_ScaleHeight = value;
-				OnPropertyChanged("ScaleHeight");
-			}
-		}
-		///<summary>
-		///Use this property ScaleHeightAsDouble instead of the float ScaleHeight property version
-		///</summary>
-		[JsonProperty]
-		public double ScaleHeightAsDouble
+		public double ScaleHeight
 		{
 			get { return _ScaleHeight; }
 			set 

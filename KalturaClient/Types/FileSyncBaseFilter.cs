@@ -457,21 +457,7 @@ namespace Kaltura.Types
 		/// Use FileSizeGreaterThanOrEqualAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use FileSizeGreaterThanOrEqualAsDouble property instead")]
-		public float FileSizeGreaterThanOrEqual
-		{
-			get { return (float)_FileSizeGreaterThanOrEqual; }
-			set 
-			{ 
-				_FileSizeGreaterThanOrEqual = value;
-				OnPropertyChanged("FileSizeGreaterThanOrEqual");
-			}
-		}
-		///<summary>
-		///Use this property FileSizeGreaterThanOrEqualAsDouble instead of the float FileSizeGreaterThanOrEqual property version
-		///</summary>
-		[JsonProperty]
-		public double FileSizeGreaterThanOrEqualAsDouble
+		public double FileSizeGreaterThanOrEqual
 		{
 			get { return _FileSizeGreaterThanOrEqual; }
 			set 
@@ -484,21 +470,7 @@ namespace Kaltura.Types
 		/// Use FileSizeLessThanOrEqualAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use FileSizeLessThanOrEqualAsDouble property instead")]
-		public float FileSizeLessThanOrEqual
-		{
-			get { return (float)_FileSizeLessThanOrEqual; }
-			set 
-			{ 
-				_FileSizeLessThanOrEqual = value;
-				OnPropertyChanged("FileSizeLessThanOrEqual");
-			}
-		}
-		///<summary>
-		///Use this property FileSizeLessThanOrEqualAsDouble instead of the float FileSizeLessThanOrEqual property version
-		///</summary>
-		[JsonProperty]
-		public double FileSizeLessThanOrEqualAsDouble
+		public double FileSizeLessThanOrEqual
 		{
 			get { return _FileSizeLessThanOrEqual; }
 			set 

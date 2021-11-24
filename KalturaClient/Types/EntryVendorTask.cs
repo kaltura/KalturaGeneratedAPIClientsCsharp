@@ -249,21 +249,7 @@ namespace Kaltura.Types
 		/// Use PriceAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use PriceAsDouble property instead")]
-		public float Price
-		{
-			get { return (float)_Price; }
-			private set 
-			{ 
-				_Price = value;
-				OnPropertyChanged("Price");
-			}
-		}
-		///<summary>
-		///Use this property PriceAsDouble instead of the float Price property version
-		///</summary>
-		[JsonProperty]
-		public double PriceAsDouble
+		public double Price
 		{
 			get { return _Price; }
 			private set 

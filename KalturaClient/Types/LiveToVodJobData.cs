@@ -88,21 +88,7 @@ namespace Kaltura.Types
 		/// Use TotalVodDurationAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use TotalVodDurationAsDouble property instead")]
-		public float TotalVodDuration
-		{
-			get { return (float)_TotalVodDuration; }
-			set 
-			{ 
-				_TotalVodDuration = value;
-				OnPropertyChanged("TotalVodDuration");
-			}
-		}
-		///<summary>
-		///Use this property TotalVodDurationAsDouble instead of the float TotalVodDuration property version
-		///</summary>
-		[JsonProperty]
-		public double TotalVodDurationAsDouble
+		public double TotalVodDuration
 		{
 			get { return _TotalVodDuration; }
 			set 
@@ -115,21 +101,7 @@ namespace Kaltura.Types
 		/// Use LastSegmentDurationAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use LastSegmentDurationAsDouble property instead")]
-		public float LastSegmentDuration
-		{
-			get { return (float)_LastSegmentDuration; }
-			set 
-			{ 
-				_LastSegmentDuration = value;
-				OnPropertyChanged("LastSegmentDuration");
-			}
-		}
-		///<summary>
-		///Use this property LastSegmentDurationAsDouble instead of the float LastSegmentDuration property version
-		///</summary>
-		[JsonProperty]
-		public double LastSegmentDurationAsDouble
+		public double LastSegmentDuration
 		{
 			get { return _LastSegmentDuration; }
 			set 

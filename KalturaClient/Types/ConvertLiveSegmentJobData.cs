@@ -142,21 +142,7 @@ namespace Kaltura.Types
 		/// Use EndTimeAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use EndTimeAsDouble property instead")]
-		public float EndTime
-		{
-			get { return (float)_EndTime; }
-			set 
-			{ 
-				_EndTime = value;
-				OnPropertyChanged("EndTime");
-			}
-		}
-		///<summary>
-		///Use this property EndTimeAsDouble instead of the float EndTime property version
-		///</summary>
-		[JsonProperty]
-		public double EndTimeAsDouble
+		public double EndTime
 		{
 			get { return _EndTime; }
 			set 

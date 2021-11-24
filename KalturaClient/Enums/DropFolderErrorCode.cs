@@ -35,6 +35,7 @@ namespace Kaltura.Enums
 		public static readonly DropFolderErrorCode ERROR_GET_DB_FILE_LIST = new DropFolderErrorCode("4");
 		public static readonly DropFolderErrorCode DROP_FOLDER_APP_ERROR = new DropFolderErrorCode("5");
 		public static readonly DropFolderErrorCode CONTENT_MATCH_POLICY_UNDEFINED = new DropFolderErrorCode("6");
+		public static readonly DropFolderErrorCode MISSING_CONFIG = new DropFolderErrorCode("7");
 
 		private DropFolderErrorCode(string name) : base(name) { }
 	}

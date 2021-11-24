@@ -35,80 +35,42 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class Coordinate : ObjectBase
+	public class RegexItem : ObjectBase
 	{
 		#region Constants
-		public const string LATITUDE = "latitude";
-		public const string LONGITUDE = "longitude";
-		public const string NAME = "name";
+		public const string REGEX = "regex";
 		#endregion
 
 		#region Private Fields
-		private double _Latitude = Double.MinValue;
-		private double _Longitude = Double.MinValue;
-		private string _Name = null;
+		private string _Regex = null;
 		#endregion
 
 		#region Properties
 		/// <summary>
-		/// Use LatitudeAsDouble property instead
+		/// Use RegexAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		public double Latitude
+		public string Regex
 		{
-			get { return _Latitude; }
+			get { return _Regex; }
 			set 
 			{ 
-				_Latitude = value;
-				OnPropertyChanged("Latitude");
-			}
-		}
-		/// <summary>
-		/// Use LongitudeAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public double Longitude
-		{
-			get { return _Longitude; }
-			set 
-			{ 
-				_Longitude = value;
-				OnPropertyChanged("Longitude");
-			}
-		}
-		/// <summary>
-		/// Use NameAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string Name
-		{
-			get { return _Name; }
-			set 
-			{ 
-				_Name = value;
-				OnPropertyChanged("Name");
+				_Regex = value;
+				OnPropertyChanged("Regex");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public Coordinate()
+		public RegexItem()
 		{
 		}
 
-		public Coordinate(JToken node) : base(node)
+		public RegexItem(JToken node) : base(node)
 		{
-			if(node["latitude"] != null)
+			if(node["regex"] != null)
 			{
-				this._Latitude = ParseDouble(node["latitude"].Value<string>());
-			}
-			if(node["longitude"] != null)
-			{
-				this._Longitude = ParseDouble(node["longitude"].Value<string>());
-			}
-			if(node["name"] != null)
-			{
-				this._Name = node["name"].Value<string>();
+				this._Regex = node["regex"].Value<string>();
 			}
 		}
 		#endregion
@@ -118,22 +80,16 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaCoordinate");
-			kparams.AddIfNotNull("latitude", this._Latitude);
-			kparams.AddIfNotNull("longitude", this._Longitude);
-			kparams.AddIfNotNull("name", this._Name);
+				kparams.AddReplace("objectType", "KalturaRegexItem");
+			kparams.AddIfNotNull("regex", this._Regex);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case LATITUDE:
-					return "Latitude";
-				case LONGITUDE:
-					return "Longitude";
-				case NAME:
-					return "Name";
+				case REGEX:
+					return "Regex";
 				default:
 					return base.getPropertyName(apiName);
 			}

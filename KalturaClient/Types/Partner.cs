@@ -113,6 +113,7 @@ namespace Kaltura.Types
 		public const string LOGIN_BLOCK_PERIOD = "loginBlockPeriod";
 		public const string NUM_PREV_PASS_TO_KEEP = "numPrevPassToKeep";
 		public const string TWO_FACTOR_AUTHENTICATION_MODE = "twoFactorAuthenticationMode";
+		public const string IS_SELF_SERVE = "isSelfServe";
 		#endregion
 
 		#region Private Fields
@@ -184,13 +185,14 @@ namespace Kaltura.Types
 		private int _UsageLimitWarning = Int32.MinValue;
 		private int _LastFreeTrialNotificationDay = Int32.MinValue;
 		private int _MonitorUsage = Int32.MinValue;
-		private string _PasswordStructureValidations = null;
+		private IList<RegexItem> _PasswordStructureValidations;
 		private string _PasswordStructureValidationsDescription = null;
 		private int _PassReplaceFreq = Int32.MinValue;
 		private int _MaxLoginAttempts = Int32.MinValue;
 		private int _LoginBlockPeriod = Int32.MinValue;
 		private int _NumPrevPassToKeep = Int32.MinValue;
 		private TwoFactorAuthenticationMode _TwoFactorAuthenticationMode = (TwoFactorAuthenticationMode)Int32.MinValue;
+		private bool? _IsSelfServe = null;
 		#endregion
 
 		#region Properties
@@ -1082,7 +1084,7 @@ namespace Kaltura.Types
 		/// Use PasswordStructureValidationsAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		public string PasswordStructureValidations
+		public IList<RegexItem> PasswordStructureValidations
 		{
 			get { return _PasswordStructureValidations; }
 			set 
@@ -1167,6 +1169,19 @@ namespace Kaltura.Types
 			{ 
 				_TwoFactorAuthenticationMode = value;
 				OnPropertyChanged("TwoFactorAuthenticationMode");
+			}
+		}
+		/// <summary>
+		/// Use IsSelfServeAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public bool? IsSelfServe
+		{
+			get { return _IsSelfServe; }
+			set 
+			{ 
+				_IsSelfServe = value;
+				OnPropertyChanged("IsSelfServe");
 			}
 		}
 		#endregion
@@ -1468,7 +1483,11 @@ namespace Kaltura.Types
 			}
 			if(node["passwordStructureValidations"] != null)
 			{
-				this._PasswordStructureValidations = node["passwordStructureValidations"].Value<string>();
+				this._PasswordStructureValidations = new List<RegexItem>();
+				foreach(var arrayNode in node["passwordStructureValidations"].Children())
+				{
+					this._PasswordStructureValidations.Add(ObjectFactory.Create<RegexItem>(arrayNode));
+				}
 			}
 			if(node["passwordStructureValidationsDescription"] != null)
 			{
@@ -1493,6 +1512,10 @@ namespace Kaltura.Types
 			if(node["twoFactorAuthenticationMode"] != null)
 			{
 				this._TwoFactorAuthenticationMode = (TwoFactorAuthenticationMode)ParseEnum(typeof(TwoFactorAuthenticationMode), node["twoFactorAuthenticationMode"].Value<string>());
+			}
+			if(node["isSelfServe"] != null)
+			{
+				this._IsSelfServe = ParseBool(node["isSelfServe"].Value<string>());
 			}
 		}
 		#endregion
@@ -1578,6 +1601,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("loginBlockPeriod", this._LoginBlockPeriod);
 			kparams.AddIfNotNull("numPrevPassToKeep", this._NumPrevPassToKeep);
 			kparams.AddIfNotNull("twoFactorAuthenticationMode", this._TwoFactorAuthenticationMode);
+			kparams.AddIfNotNull("isSelfServe", this._IsSelfServe);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -1734,6 +1758,8 @@ namespace Kaltura.Types
 					return "NumPrevPassToKeep";
 				case TWO_FACTOR_AUTHENTICATION_MODE:
 					return "TwoFactorAuthenticationMode";
+				case IS_SELF_SERVE:
+					return "IsSelfServe";
 				default:
 					return base.getPropertyName(apiName);
 			}

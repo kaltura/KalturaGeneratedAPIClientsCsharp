@@ -732,21 +732,7 @@ namespace Kaltura.Types
 		/// Use RankLessThanOrEqualAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use RankLessThanOrEqualAsDouble property instead")]
-		public float RankLessThanOrEqual
-		{
-			get { return (float)_RankLessThanOrEqual; }
-			set 
-			{ 
-				_RankLessThanOrEqual = value;
-				OnPropertyChanged("RankLessThanOrEqual");
-			}
-		}
-		///<summary>
-		///Use this property RankLessThanOrEqualAsDouble instead of the float RankLessThanOrEqual property version
-		///</summary>
-		[JsonProperty]
-		public double RankLessThanOrEqualAsDouble
+		public double RankLessThanOrEqual
 		{
 			get { return _RankLessThanOrEqual; }
 			set 
@@ -759,21 +745,7 @@ namespace Kaltura.Types
 		/// Use RankGreaterThanOrEqualAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use RankGreaterThanOrEqualAsDouble property instead")]
-		public float RankGreaterThanOrEqual
-		{
-			get { return (float)_RankGreaterThanOrEqual; }
-			set 
-			{ 
-				_RankGreaterThanOrEqual = value;
-				OnPropertyChanged("RankGreaterThanOrEqual");
-			}
-		}
-		///<summary>
-		///Use this property RankGreaterThanOrEqualAsDouble instead of the float RankGreaterThanOrEqual property version
-		///</summary>
-		[JsonProperty]
-		public double RankGreaterThanOrEqualAsDouble
+		public double RankGreaterThanOrEqual
 		{
 			get { return _RankGreaterThanOrEqual; }
 			set 

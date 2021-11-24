@@ -56,21 +56,7 @@ namespace Kaltura.Types
 		/// Use ScoreAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use ScoreAsDouble property instead")]
-		public float Score
-		{
-			get { return (float)_Score; }
-			private set 
-			{ 
-				_Score = value;
-				OnPropertyChanged("Score");
-			}
-		}
-		///<summary>
-		///Use this property ScoreAsDouble instead of the float Score property version
-		///</summary>
-		[JsonProperty]
-		public double ScoreAsDouble
+		public double Score
 		{
 			get { return _Score; }
 			private set 
@@ -83,21 +69,7 @@ namespace Kaltura.Types
 		/// Use CalculatedScoreAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use CalculatedScoreAsDouble property instead")]
-		public float CalculatedScore
-		{
-			get { return (float)_CalculatedScore; }
-			private set 
-			{ 
-				_CalculatedScore = value;
-				OnPropertyChanged("CalculatedScore");
-			}
-		}
-		///<summary>
-		///Use this property CalculatedScoreAsDouble instead of the float CalculatedScore property version
-		///</summary>
-		[JsonProperty]
-		public double CalculatedScoreAsDouble
+		public double CalculatedScore
 		{
 			get { return _CalculatedScore; }
 			private set 

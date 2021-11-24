@@ -212,14 +212,14 @@ namespace Kaltura.Services
 		public string FileData_FileName { get; set; }
 		public bool Resume { get; set; }
 		public bool FinalChunk { get; set; }
-		public float ResumeAt { get; set; }
+		public double ResumeAt { get; set; }
 
 		public UploadTokenUploadRequestBuilder()
 			: base("uploadtoken", "upload")
 		{
 		}
 
-		public UploadTokenUploadRequestBuilder(string uploadTokenId, Stream fileData, bool resume, bool finalChunk, float resumeAt)
+		public UploadTokenUploadRequestBuilder(string uploadTokenId, Stream fileData, bool resume, bool finalChunk, double resumeAt)
 			: this()
 		{
 			this.UploadTokenId = uploadTokenId;
@@ -283,7 +283,7 @@ namespace Kaltura.Services
 			return new UploadTokenListRequestBuilder(filter, pager);
 		}
 
-		public static UploadTokenUploadRequestBuilder Upload(string uploadTokenId, Stream fileData, bool resume = false, bool finalChunk = true, float resumeAt = -1)
+		public static UploadTokenUploadRequestBuilder Upload(string uploadTokenId, Stream fileData, bool resume = false, bool finalChunk = true, double resumeAt = -1)
 		{
 			return new UploadTokenUploadRequestBuilder(uploadTokenId, fileData, resume, finalChunk, resumeAt);
 		}

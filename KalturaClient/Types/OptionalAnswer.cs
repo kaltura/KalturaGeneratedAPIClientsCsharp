@@ -82,21 +82,7 @@ namespace Kaltura.Types
 		/// Use WeightAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use WeightAsDouble property instead")]
-		public float Weight
-		{
-			get { return (float)_Weight; }
-			set 
-			{ 
-				_Weight = value;
-				OnPropertyChanged("Weight");
-			}
-		}
-		///<summary>
-		///Use this property WeightAsDouble instead of the float Weight property version
-		///</summary>
-		[JsonProperty]
-		public double WeightAsDouble
+		public double Weight
 		{
 			get { return _Weight; }
 			set 

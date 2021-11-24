@@ -90,21 +90,7 @@ namespace Kaltura.Types
 		/// Use AvgBitrateAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use AvgBitrateAsDouble property instead")]
-		public float AvgBitrate
-		{
-			get { return (float)_AvgBitrate; }
-			set 
-			{ 
-				_AvgBitrate = value;
-				OnPropertyChanged("AvgBitrate");
-			}
-		}
-		///<summary>
-		///Use this property AvgBitrateAsDouble instead of the float AvgBitrate property version
-		///</summary>
-		[JsonProperty]
-		public double AvgBitrateAsDouble
+		public double AvgBitrate
 		{
 			get { return _AvgBitrate; }
 			set 

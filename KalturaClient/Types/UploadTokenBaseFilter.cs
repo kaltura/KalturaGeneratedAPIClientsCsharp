@@ -140,21 +140,7 @@ namespace Kaltura.Types
 		/// Use FileSizeEqualAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use FileSizeEqualAsDouble property instead")]
-		public float FileSizeEqual
-		{
-			get { return (float)_FileSizeEqual; }
-			set 
-			{ 
-				_FileSizeEqual = value;
-				OnPropertyChanged("FileSizeEqual");
-			}
-		}
-		///<summary>
-		///Use this property FileSizeEqualAsDouble instead of the float FileSizeEqual property version
-		///</summary>
-		[JsonProperty]
-		public double FileSizeEqualAsDouble
+		public double FileSizeEqual
 		{
 			get { return _FileSizeEqual; }
 			set 

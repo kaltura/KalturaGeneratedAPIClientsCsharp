@@ -101,21 +101,7 @@ namespace Kaltura.Types
 		/// Use OffsetAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use OffsetAsDouble property instead")]
-		public float Offset
-		{
-			get { return (float)_Offset; }
-			set 
-			{ 
-				_Offset = value;
-				OnPropertyChanged("Offset");
-			}
-		}
-		///<summary>
-		///Use this property OffsetAsDouble instead of the float Offset property version
-		///</summary>
-		[JsonProperty]
-		public double OffsetAsDouble
+		public double Offset
 		{
 			get { return _Offset; }
 			set 
@@ -128,21 +114,7 @@ namespace Kaltura.Types
 		/// Use DurationAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use DurationAsDouble property instead")]
-		public float Duration
-		{
-			get { return (float)_Duration; }
-			set 
-			{ 
-				_Duration = value;
-				OnPropertyChanged("Duration");
-			}
-		}
-		///<summary>
-		///Use this property DurationAsDouble instead of the float Duration property version
-		///</summary>
-		[JsonProperty]
-		public double DurationAsDouble
+		public double Duration
 		{
 			get { return _Duration; }
 			set 
@@ -155,21 +127,7 @@ namespace Kaltura.Types
 		/// Use ConcatenatedDurationAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use ConcatenatedDurationAsDouble property instead")]
-		public float ConcatenatedDuration
-		{
-			get { return (float)_ConcatenatedDuration; }
-			set 
-			{ 
-				_ConcatenatedDuration = value;
-				OnPropertyChanged("ConcatenatedDuration");
-			}
-		}
-		///<summary>
-		///Use this property ConcatenatedDurationAsDouble instead of the float ConcatenatedDuration property version
-		///</summary>
-		[JsonProperty]
-		public double ConcatenatedDurationAsDouble
+		public double ConcatenatedDuration
 		{
 			get { return _ConcatenatedDuration; }
 			set 

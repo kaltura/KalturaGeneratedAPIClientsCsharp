@@ -231,21 +231,7 @@ namespace Kaltura.Types
 		/// Use CurrentBroadcastStartTimeAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use CurrentBroadcastStartTimeAsDouble property instead")]
-		public float CurrentBroadcastStartTime
-		{
-			get { return (float)_CurrentBroadcastStartTime; }
-			set 
-			{ 
-				_CurrentBroadcastStartTime = value;
-				OnPropertyChanged("CurrentBroadcastStartTime");
-			}
-		}
-		///<summary>
-		///Use this property CurrentBroadcastStartTimeAsDouble instead of the float CurrentBroadcastStartTime property version
-		///</summary>
-		[JsonProperty]
-		public double CurrentBroadcastStartTimeAsDouble
+		public double CurrentBroadcastStartTime
 		{
 			get { return _CurrentBroadcastStartTime; }
 			set 

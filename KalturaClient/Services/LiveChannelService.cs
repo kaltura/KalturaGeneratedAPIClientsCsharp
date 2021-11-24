@@ -90,7 +90,7 @@ namespace Kaltura.Services
 		public string AssetId { get; set; }
 		public EntryServerNodeType MediaServerIndex { get; set; }
 		public DataCenterContentResource Resource { get; set; }
-		public float Duration { get; set; }
+		public double Duration { get; set; }
 		public bool IsLastChunk { get; set; }
 
 		public LiveChannelAppendRecordingRequestBuilder()
@@ -98,7 +98,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public LiveChannelAppendRecordingRequestBuilder(string entryId, string assetId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, float duration, bool isLastChunk)
+		public LiveChannelAppendRecordingRequestBuilder(string entryId, string assetId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, double duration, bool isLastChunk)
 			: this()
 		{
 			this.EntryId = entryId;
@@ -429,7 +429,7 @@ namespace Kaltura.Services
 		public string EntryId { get; set; }
 		public EntryServerNodeType MediaServerIndex { get; set; }
 		public DataCenterContentResource Resource { get; set; }
-		public float Duration { get; set; }
+		public double Duration { get; set; }
 		public string RecordedEntryId { get; set; }
 		public int FlavorParamsId { get; set; }
 
@@ -438,7 +438,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public LiveChannelSetRecordedContentRequestBuilder(string entryId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, float duration, string recordedEntryId, int flavorParamsId)
+		public LiveChannelSetRecordedContentRequestBuilder(string entryId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, double duration, string recordedEntryId, int flavorParamsId)
 			: this()
 		{
 			this.EntryId = entryId;
@@ -623,7 +623,7 @@ namespace Kaltura.Services
 			return new LiveChannelAddRequestBuilder(liveChannel);
 		}
 
-		public static LiveChannelAppendRecordingRequestBuilder AppendRecording(string entryId, string assetId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, float duration, bool isLastChunk = false)
+		public static LiveChannelAppendRecordingRequestBuilder AppendRecording(string entryId, string assetId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, double duration, bool isLastChunk = false)
 		{
 			return new LiveChannelAppendRecordingRequestBuilder(entryId, assetId, mediaServerIndex, resource, duration, isLastChunk);
 		}
@@ -658,7 +658,7 @@ namespace Kaltura.Services
 			return new LiveChannelRegisterMediaServerRequestBuilder(entryId, hostname, mediaServerIndex, applicationName, liveEntryStatus, shouldCreateRecordedEntry);
 		}
 
-		public static LiveChannelSetRecordedContentRequestBuilder SetRecordedContent(string entryId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, float duration, string recordedEntryId = null, int flavorParamsId = Int32.MinValue)
+		public static LiveChannelSetRecordedContentRequestBuilder SetRecordedContent(string entryId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, double duration, string recordedEntryId = null, int flavorParamsId = Int32.MinValue)
 		{
 			return new LiveChannelSetRecordedContentRequestBuilder(entryId, mediaServerIndex, resource, duration, recordedEntryId, flavorParamsId);
 		}

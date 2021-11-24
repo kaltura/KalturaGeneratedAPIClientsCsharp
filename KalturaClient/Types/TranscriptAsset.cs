@@ -56,21 +56,7 @@ namespace Kaltura.Types
 		/// Use AccuracyAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		[Obsolete("Use AccuracyAsDouble property instead")]
-		public float Accuracy
-		{
-			get { return (float)_Accuracy; }
-			set 
-			{ 
-				_Accuracy = value;
-				OnPropertyChanged("Accuracy");
-			}
-		}
-		///<summary>
-		///Use this property AccuracyAsDouble instead of the float Accuracy property version
-		///</summary>
-		[JsonProperty]
-		public double AccuracyAsDouble
+		public double Accuracy
 		{
 			get { return _Accuracy; }
 			set 

@@ -35,6 +35,7 @@ namespace Kaltura.Enums
 		public static readonly ReportInterval MONTHS = new ReportInterval("months");
 		public static readonly ReportInterval TEN_MINUTES = new ReportInterval("ten_minutes");
 		public static readonly ReportInterval TEN_SECONDS = new ReportInterval("ten_seconds");
+		public static readonly ReportInterval YEARS = new ReportInterval("years");
 
 		private ReportInterval(string name) : base(name) { }
 	}

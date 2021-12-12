@@ -48,6 +48,7 @@ namespace Kaltura.Types
 		public const string FROM_EMAIL = "fromEmail";
 		public const string BODY_PARAMS = "bodyParams";
 		public const string SUBJECT_PARAMS = "subjectParams";
+		public const string DYNAMIC_EMAIL_CONTENTS = "dynamicEmailContents";
 		public const string TEMPLATE_PATH = "templatePath";
 		public const string LANGUAGE = "language";
 		public const string CAMPAIGN_ID = "campaignId";
@@ -67,6 +68,7 @@ namespace Kaltura.Types
 		private string _FromEmail = null;
 		private string _BodyParams = null;
 		private string _SubjectParams = null;
+		private DynamicEmailContents _DynamicEmailContents;
 		private string _TemplatePath = null;
 		private LanguageCode _Language = null;
 		private int _CampaignId = Int32.MinValue;
@@ -207,6 +209,19 @@ namespace Kaltura.Types
 			}
 		}
 		/// <summary>
+		/// Use DynamicEmailContentsAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public DynamicEmailContents DynamicEmailContents
+		{
+			get { return _DynamicEmailContents; }
+			set 
+			{ 
+				_DynamicEmailContents = value;
+				OnPropertyChanged("DynamicEmailContents");
+			}
+		}
+		/// <summary>
 		/// Use TemplatePathAsDouble property instead
 		/// </summary>
 		[JsonProperty]
@@ -333,6 +348,10 @@ namespace Kaltura.Types
 			{
 				this._SubjectParams = node["subjectParams"].Value<string>();
 			}
+			if(node["dynamicEmailContents"] != null)
+			{
+				this._DynamicEmailContents = ObjectFactory.Create<DynamicEmailContents>(node["dynamicEmailContents"]);
+			}
 			if(node["templatePath"] != null)
 			{
 				this._TemplatePath = node["templatePath"].Value<string>();
@@ -376,6 +395,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("fromEmail", this._FromEmail);
 			kparams.AddIfNotNull("bodyParams", this._BodyParams);
 			kparams.AddIfNotNull("subjectParams", this._SubjectParams);
+			kparams.AddIfNotNull("dynamicEmailContents", this._DynamicEmailContents);
 			kparams.AddIfNotNull("templatePath", this._TemplatePath);
 			kparams.AddIfNotNull("language", this._Language);
 			kparams.AddIfNotNull("campaignId", this._CampaignId);
@@ -408,6 +428,8 @@ namespace Kaltura.Types
 					return "BodyParams";
 				case SUBJECT_PARAMS:
 					return "SubjectParams";
+				case DYNAMIC_EMAIL_CONTENTS:
+					return "DynamicEmailContents";
 				case TEMPLATE_PATH:
 					return "TemplatePath";
 				case LANGUAGE:

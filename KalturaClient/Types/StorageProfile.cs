@@ -70,6 +70,7 @@ namespace Kaltura.Types
 		public const string PRIVATE_KEY = "privateKey";
 		public const string PUBLIC_KEY = "publicKey";
 		public const string PASS_PHRASE = "passPhrase";
+		public const string PORT = "port";
 		public const string SHOULD_EXPORT_THUMBS = "shouldExportThumbs";
 		public const string PACKAGER_URL = "packagerUrl";
 		public const string EXPORT_PERIODICALLY = "exportPeriodically";
@@ -111,6 +112,7 @@ namespace Kaltura.Types
 		private string _PrivateKey = null;
 		private string _PublicKey = null;
 		private string _PassPhrase = null;
+		private int _Port = Int32.MinValue;
 		private bool? _ShouldExportThumbs = null;
 		private string _PackagerUrl = null;
 		private bool? _ExportPeriodically = null;
@@ -537,6 +539,19 @@ namespace Kaltura.Types
 			}
 		}
 		/// <summary>
+		/// Use PortAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public int Port
+		{
+			get { return _Port; }
+			set 
+			{ 
+				_Port = value;
+				OnPropertyChanged("Port");
+			}
+		}
+		/// <summary>
 		/// Use ShouldExportThumbsAsDouble property instead
 		/// </summary>
 		[JsonProperty]
@@ -763,6 +778,10 @@ namespace Kaltura.Types
 			{
 				this._PassPhrase = node["passPhrase"].Value<string>();
 			}
+			if(node["port"] != null)
+			{
+				this._Port = ParseInt(node["port"].Value<string>());
+			}
 			if(node["shouldExportThumbs"] != null)
 			{
 				this._ShouldExportThumbs = ParseBool(node["shouldExportThumbs"].Value<string>());
@@ -828,6 +847,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("privateKey", this._PrivateKey);
 			kparams.AddIfNotNull("publicKey", this._PublicKey);
 			kparams.AddIfNotNull("passPhrase", this._PassPhrase);
+			kparams.AddIfNotNull("port", this._Port);
 			kparams.AddIfNotNull("shouldExportThumbs", this._ShouldExportThumbs);
 			kparams.AddIfNotNull("packagerUrl", this._PackagerUrl);
 			kparams.AddIfNotNull("exportPeriodically", this._ExportPeriodically);
@@ -904,6 +924,8 @@ namespace Kaltura.Types
 					return "PublicKey";
 				case PASS_PHRASE:
 					return "PassPhrase";
+				case PORT:
+					return "Port";
 				case SHOULD_EXPORT_THUMBS:
 					return "ShouldExportThumbs";
 				case PACKAGER_URL:

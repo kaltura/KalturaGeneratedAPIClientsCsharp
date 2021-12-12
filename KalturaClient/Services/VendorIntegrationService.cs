@@ -210,14 +210,14 @@ namespace Kaltura.Services
 		#endregion
 
 		public int Id { get; set; }
-		public IntegrationSetting Status { get; set; }
+		public VendorIntegrationStatus Status { get; set; }
 
 		public VendorIntegrationUpdateStatusRequestBuilder()
 			: base("vendor_vendorintegration", "updateStatus")
 		{
 		}
 
-		public VendorIntegrationUpdateStatusRequestBuilder(int id, IntegrationSetting status)
+		public VendorIntegrationUpdateStatusRequestBuilder(int id, VendorIntegrationStatus status)
 			: this()
 		{
 			this.Id = id;
@@ -273,7 +273,7 @@ namespace Kaltura.Services
 			return new VendorIntegrationUpdateRequestBuilder(id, integrationSetting);
 		}
 
-		public static VendorIntegrationUpdateStatusRequestBuilder UpdateStatus(int id, IntegrationSetting status)
+		public static VendorIntegrationUpdateStatusRequestBuilder UpdateStatus(int id, VendorIntegrationStatus status)
 		{
 			return new VendorIntegrationUpdateStatusRequestBuilder(id, status);
 		}

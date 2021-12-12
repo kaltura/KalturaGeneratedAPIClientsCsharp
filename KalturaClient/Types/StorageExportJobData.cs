@@ -42,6 +42,7 @@ namespace Kaltura.Types
 		public const string CREATE_LINK = "createLink";
 		public const string ASSET_ID = "assetId";
 		public const string EXTERNAL_URL = "externalUrl";
+		public const string PORT = "port";
 		#endregion
 
 		#region Private Fields
@@ -49,6 +50,7 @@ namespace Kaltura.Types
 		private bool? _CreateLink = null;
 		private string _AssetId = null;
 		private string _ExternalUrl = null;
+		private int _Port = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -104,6 +106,19 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExternalUrl");
 			}
 		}
+		/// <summary>
+		/// Use PortAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public int Port
+		{
+			get { return _Port; }
+			set 
+			{ 
+				_Port = value;
+				OnPropertyChanged("Port");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -129,6 +144,10 @@ namespace Kaltura.Types
 			{
 				this._ExternalUrl = node["externalUrl"].Value<string>();
 			}
+			if(node["port"] != null)
+			{
+				this._Port = ParseInt(node["port"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -142,6 +161,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("createLink", this._CreateLink);
 			kparams.AddIfNotNull("assetId", this._AssetId);
 			kparams.AddIfNotNull("externalUrl", this._ExternalUrl);
+			kparams.AddIfNotNull("port", this._Port);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -156,6 +176,8 @@ namespace Kaltura.Types
 					return "AssetId";
 				case EXTERNAL_URL:
 					return "ExternalUrl";
+				case PORT:
+					return "Port";
 				default:
 					return base.getPropertyName(apiName);
 			}

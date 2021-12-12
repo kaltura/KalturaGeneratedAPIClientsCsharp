@@ -470,6 +470,7 @@ namespace Kaltura
 		public static string USER_ALREADY_EXISTS = "USER_ALREADY_EXISTS";
 		public static string CANNOT_UPDATE_LOGIN_DATA = "CANNOT_UPDATE_LOGIN_DATA";
 		public static string LOGIN_ID_ALREADY_USED = "LOGIN_ID_ALREADY_USED";
+		public static string USER_DATA_ERROR = "USER_DATA_ERROR";
 		public static string CANNOT_DELETE_OR_BLOCK_ROOT_ADMIN_USER = "CANNOT_DELETE_OR_BLOCK_ROOT_ADMIN_USER";
 		public static string ROLE_ID_MISSING = "ROLE_ID_MISSING";
 		public static string UNKNOWN_ROLE_ID = "UNKNOWN_ROLE_ID";

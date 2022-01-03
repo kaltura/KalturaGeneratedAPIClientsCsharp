@@ -49,6 +49,7 @@ namespace Kaltura.Types
 		public const string ENGINE_MESSAGE = "engineMessage";
 		public const string DEST_FILE_SYNC_SHARED_PATH = "destFileSyncSharedPath";
 		public const string USER_CPU = "userCpu";
+		public const string ESTIMATED_EFFORT = "estimatedEffort";
 		#endregion
 
 		#region Private Fields
@@ -63,6 +64,7 @@ namespace Kaltura.Types
 		private string _EngineMessage = null;
 		private string _DestFileSyncSharedPath = null;
 		private int _UserCpu = Int32.MinValue;
+		private int _EstimatedEffort = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -209,6 +211,19 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserCpu");
 			}
 		}
+		/// <summary>
+		/// Use EstimatedEffortAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public int EstimatedEffort
+		{
+			get { return _EstimatedEffort; }
+			set 
+			{ 
+				_EstimatedEffort = value;
+				OnPropertyChanged("EstimatedEffort");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -266,6 +281,10 @@ namespace Kaltura.Types
 			{
 				this._UserCpu = ParseInt(node["userCpu"].Value<string>());
 			}
+			if(node["estimatedEffort"] != null)
+			{
+				this._EstimatedEffort = ParseInt(node["estimatedEffort"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -286,6 +305,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("engineMessage", this._EngineMessage);
 			kparams.AddIfNotNull("destFileSyncSharedPath", this._DestFileSyncSharedPath);
 			kparams.AddIfNotNull("userCpu", this._UserCpu);
+			kparams.AddIfNotNull("estimatedEffort", this._EstimatedEffort);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -314,6 +334,8 @@ namespace Kaltura.Types
 					return "DestFileSyncSharedPath";
 				case USER_CPU:
 					return "UserCpu";
+				case ESTIMATED_EFFORT:
+					return "EstimatedEffort";
 				default:
 					return base.getPropertyName(apiName);
 			}

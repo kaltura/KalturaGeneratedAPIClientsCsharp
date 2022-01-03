@@ -77,6 +77,7 @@ namespace Kaltura.Types
 		public const string PLAYLIST_ID_IN = "playlistIdIn";
 		public const string DOMAIN_IN = "domainIn";
 		public const string CANONICAL_URL_IN = "canonicalUrlIn";
+		public const string VIRTUAL_EVENT_ID_IN = "virtualEventIdIn";
 		#endregion
 
 		#region Private Fields
@@ -119,6 +120,7 @@ namespace Kaltura.Types
 		private string _PlaylistIdIn = null;
 		private string _DomainIn = null;
 		private string _CanonicalUrlIn = null;
+		private string _VirtualEventIdIn = null;
 		#endregion
 
 		#region Properties
@@ -629,6 +631,19 @@ namespace Kaltura.Types
 				OnPropertyChanged("CanonicalUrlIn");
 			}
 		}
+		/// <summary>
+		/// Use VirtualEventIdInAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public string VirtualEventIdIn
+		{
+			get { return _VirtualEventIdIn; }
+			set 
+			{ 
+				_VirtualEventIdIn = value;
+				OnPropertyChanged("VirtualEventIdIn");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -794,6 +809,10 @@ namespace Kaltura.Types
 			{
 				this._CanonicalUrlIn = node["canonicalUrlIn"].Value<string>();
 			}
+			if(node["virtualEventIdIn"] != null)
+			{
+				this._VirtualEventIdIn = node["virtualEventIdIn"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -842,6 +861,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("playlistIdIn", this._PlaylistIdIn);
 			kparams.AddIfNotNull("domainIn", this._DomainIn);
 			kparams.AddIfNotNull("canonicalUrlIn", this._CanonicalUrlIn);
+			kparams.AddIfNotNull("virtualEventIdIn", this._VirtualEventIdIn);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -926,6 +946,8 @@ namespace Kaltura.Types
 					return "DomainIn";
 				case CANONICAL_URL_IN:
 					return "CanonicalUrlIn";
+				case VIRTUAL_EVENT_ID_IN:
+					return "VirtualEventIdIn";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -718,6 +718,50 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class UserLoginDataResetPasswordRequestBuilder : RequestBuilder<VoidResponse>
+	{
+		#region Constants
+		public const string LOGIN_DATA_ID = "loginDataId";
+		public const string NEW_PASSWORD = "newPassword";
+		#endregion
+
+		public string LoginDataId { get; set; }
+		public string NewPassword { get; set; }
+
+		public UserLoginDataResetPasswordRequestBuilder()
+			: base("user", "loginDataResetPassword")
+		{
+		}
+
+		public UserLoginDataResetPasswordRequestBuilder(string loginDataId, string newPassword)
+			: this()
+		{
+			this.LoginDataId = loginDataId;
+			this.NewPassword = newPassword;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("loginDataId"))
+				kparams.AddIfNotNull("loginDataId", LoginDataId);
+			if (!isMapped("newPassword"))
+				kparams.AddIfNotNull("newPassword", NewPassword);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			return null;
+		}
+	}
+
 	public class UserNotifyBanRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
@@ -1116,6 +1160,11 @@ namespace Kaltura.Services
 		public static UserLoginByLoginIdRequestBuilder LoginByLoginId(string loginId, string password, int partnerId = Int32.MinValue, int expiry = 86400, string privileges = "*", string otp = null)
 		{
 			return new UserLoginByLoginIdRequestBuilder(loginId, password, partnerId, expiry, privileges, otp);
+		}
+
+		public static UserLoginDataResetPasswordRequestBuilder LoginDataResetPassword(string loginDataId, string newPassword)
+		{
+			return new UserLoginDataResetPasswordRequestBuilder(loginDataId, newPassword);
 		}
 
 		public static UserNotifyBanRequestBuilder NotifyBan(string userId)

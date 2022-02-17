@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2021  Kaltura Inc.
+// Copyright (C) 2006-2022  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -205,6 +205,11 @@ namespace Kaltura.Enums
 		public static readonly ReportType ENGAGMENT_TIMELINE_WEBCAST = new ReportType("40011");
 		public static readonly ReportType ENGAGEMENT_TOOLS_WEBCAST = new ReportType("40012");
 		public static readonly ReportType REACTIONS_BREAKDOWN_WEBCAST = new ReportType("40013");
+		public static readonly ReportType VE_HIGHLIGHTS = new ReportType("50000");
+		public static readonly ReportType VE_REGISTERED_PLATFORMS = new ReportType("50001");
+		public static readonly ReportType VE_REGISTERED_INDUSTRY = new ReportType("50002");
+		public static readonly ReportType VE_REGISTERED_ROLES = new ReportType("50003");
+		public static readonly ReportType VE_REGISTERED_COUNTRIES = new ReportType("50004");
 
 		private ReportType(string name) : base(name) { }
 	}

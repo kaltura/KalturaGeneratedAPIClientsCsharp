@@ -44,6 +44,7 @@ namespace Kaltura.Types
 		public const string POST_END_TIME = "postEndTime";
 		public const string PRE_START_ENTRY_ID = "preStartEntryId";
 		public const string POST_END_ENTRY_ID = "postEndEntryId";
+		public const string IS_CONTENT_INTERRUPTIBLE = "isContentInterruptible";
 		#endregion
 
 		#region Private Fields
@@ -53,6 +54,7 @@ namespace Kaltura.Types
 		private int _PostEndTime = Int32.MinValue;
 		private string _PreStartEntryId = null;
 		private string _PostEndEntryId = null;
+		private bool? _IsContentInterruptible = null;
 		#endregion
 
 		#region Properties
@@ -134,6 +136,19 @@ namespace Kaltura.Types
 				OnPropertyChanged("PostEndEntryId");
 			}
 		}
+		/// <summary>
+		/// Use IsContentInterruptibleAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public bool? IsContentInterruptible
+		{
+			get { return _IsContentInterruptible; }
+			set 
+			{ 
+				_IsContentInterruptible = value;
+				OnPropertyChanged("IsContentInterruptible");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -167,6 +182,10 @@ namespace Kaltura.Types
 			{
 				this._PostEndEntryId = node["postEndEntryId"].Value<string>();
 			}
+			if(node["isContentInterruptible"] != null)
+			{
+				this._IsContentInterruptible = ParseBool(node["isContentInterruptible"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -182,6 +201,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("postEndTime", this._PostEndTime);
 			kparams.AddIfNotNull("preStartEntryId", this._PreStartEntryId);
 			kparams.AddIfNotNull("postEndEntryId", this._PostEndEntryId);
+			kparams.AddIfNotNull("isContentInterruptible", this._IsContentInterruptible);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -200,6 +220,8 @@ namespace Kaltura.Types
 					return "PreStartEntryId";
 				case POST_END_ENTRY_ID:
 					return "PostEndEntryId";
+				case IS_CONTENT_INTERRUPTIBLE:
+					return "IsContentInterruptible";
 				default:
 					return base.getPropertyName(apiName);
 			}

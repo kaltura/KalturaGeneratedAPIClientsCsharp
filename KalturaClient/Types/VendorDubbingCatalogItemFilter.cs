@@ -25,16 +25,54 @@
 //
 // @ignore
 // ===================================================================================================
-namespace Kaltura.Enums
+using System;
+using System.Xml;
+using System.Collections.Generic;
+using Kaltura.Enums;
+using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+namespace Kaltura.Types
 {
-	public enum VendorServiceFeature
+	public class VendorDubbingCatalogItemFilter : VendorDubbingCatalogItemBaseFilter
 	{
-		CAPTIONS = 1,
-		TRANSLATION = 2,
-		ALIGNMENT = 3,
-		AUDIO_DESCRIPTION = 4,
-		CHAPTERING = 5,
-		INTELLIGENT_TAGGING = 6,
-		DUBBING = 7,
+		#region Constants
+		#endregion
+
+		#region Private Fields
+		#endregion
+
+		#region Properties
+		#endregion
+
+		#region CTor
+		public VendorDubbingCatalogItemFilter()
+		{
+		}
+
+		public VendorDubbingCatalogItemFilter(JToken node) : base(node)
+		{
+		}
+		#endregion
+
+		#region Methods
+		public override Params ToParams(bool includeObjectType = true)
+		{
+			Params kparams = base.ToParams(includeObjectType);
+			if (includeObjectType)
+				kparams.AddReplace("objectType", "KalturaVendorDubbingCatalogItemFilter");
+			return kparams;
+		}
+		protected override string getPropertyName(string apiName)
+		{
+			switch(apiName)
+			{
+				default:
+					return base.getPropertyName(apiName);
+			}
+		}
+		#endregion
 	}
 }
+

@@ -78,6 +78,7 @@ namespace Kaltura.Types
 		public const string DOMAIN_IN = "domainIn";
 		public const string CANONICAL_URL_IN = "canonicalUrlIn";
 		public const string VIRTUAL_EVENT_ID_IN = "virtualEventIdIn";
+		public const string ORIGIN_IN = "originIn";
 		#endregion
 
 		#region Private Fields
@@ -121,6 +122,7 @@ namespace Kaltura.Types
 		private string _DomainIn = null;
 		private string _CanonicalUrlIn = null;
 		private string _VirtualEventIdIn = null;
+		private string _OriginIn = null;
 		#endregion
 
 		#region Properties
@@ -644,6 +646,19 @@ namespace Kaltura.Types
 				OnPropertyChanged("VirtualEventIdIn");
 			}
 		}
+		/// <summary>
+		/// Use OriginInAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public string OriginIn
+		{
+			get { return _OriginIn; }
+			set 
+			{ 
+				_OriginIn = value;
+				OnPropertyChanged("OriginIn");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -813,6 +828,10 @@ namespace Kaltura.Types
 			{
 				this._VirtualEventIdIn = node["virtualEventIdIn"].Value<string>();
 			}
+			if(node["originIn"] != null)
+			{
+				this._OriginIn = node["originIn"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -862,6 +881,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("domainIn", this._DomainIn);
 			kparams.AddIfNotNull("canonicalUrlIn", this._CanonicalUrlIn);
 			kparams.AddIfNotNull("virtualEventIdIn", this._VirtualEventIdIn);
+			kparams.AddIfNotNull("originIn", this._OriginIn);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -948,6 +968,8 @@ namespace Kaltura.Types
 					return "CanonicalUrlIn";
 				case VIRTUAL_EVENT_ID_IN:
 					return "VirtualEventIdIn";
+				case ORIGIN_IN:
+					return "OriginIn";
 				default:
 					return base.getPropertyName(apiName);
 			}

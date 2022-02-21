@@ -210,6 +210,7 @@ namespace Kaltura.Enums
 		public static readonly ReportType VE_REGISTERED_INDUSTRY = new ReportType("50002");
 		public static readonly ReportType VE_REGISTERED_ROLES = new ReportType("50003");
 		public static readonly ReportType VE_REGISTERED_COUNTRIES = new ReportType("50004");
+		public static readonly ReportType VE_REGISTERED_WORLD_REGIONS = new ReportType("50005");
 
 		private ReportType(string name) : base(name) { }
 	}

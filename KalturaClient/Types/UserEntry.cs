@@ -50,7 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Private Fields
-		private int _Id = Int32.MinValue;
+		private long _Id = long.MinValue;
 		private string _EntryId = null;
 		private string _UserId = null;
 		private int _PartnerId = Int32.MinValue;
@@ -66,7 +66,7 @@ namespace Kaltura.Types
 		/// Use IdAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		public int Id
+		public long Id
 		{
 			get { return _Id; }
 			private set 
@@ -190,7 +190,7 @@ namespace Kaltura.Types
 		{
 			if(node["id"] != null)
 			{
-				this._Id = ParseInt(node["id"].Value<string>());
+				this._Id = ParseLong(node["id"].Value<string>());
 			}
 			if(node["entryId"] != null)
 			{

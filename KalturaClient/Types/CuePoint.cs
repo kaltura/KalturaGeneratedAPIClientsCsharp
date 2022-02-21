@@ -61,7 +61,7 @@ namespace Kaltura.Types
 
 		#region Private Fields
 		private string _Id = null;
-		private int _IntId = Int32.MinValue;
+		private long _IntId = long.MinValue;
 		private CuePointType _CuePointType = null;
 		private CuePointStatus _Status = (CuePointStatus)Int32.MinValue;
 		private string _EntryId = null;
@@ -99,7 +99,7 @@ namespace Kaltura.Types
 		/// Use IntIdAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		public int IntId
+		public long IntId
 		{
 			get { return _IntId; }
 			private set 
@@ -344,7 +344,7 @@ namespace Kaltura.Types
 			}
 			if(node["intId"] != null)
 			{
-				this._IntId = ParseInt(node["intId"].Value<string>());
+				this._IntId = ParseLong(node["intId"].Value<string>());
 			}
 			if(node["cuePointType"] != null)
 			{

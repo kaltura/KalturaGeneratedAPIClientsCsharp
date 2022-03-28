@@ -114,6 +114,8 @@ namespace Kaltura.Types
 		public const string NUM_PREV_PASS_TO_KEEP = "numPrevPassToKeep";
 		public const string TWO_FACTOR_AUTHENTICATION_MODE = "twoFactorAuthenticationMode";
 		public const string IS_SELF_SERVE = "isSelfServe";
+		public const string ALLOWED_DOMAINS = "allowedDomains";
+		public const string EXCLUDED_ADMIN_ROLE_NAME = "excludedAdminRoleName";
 		#endregion
 
 		#region Private Fields
@@ -193,6 +195,8 @@ namespace Kaltura.Types
 		private int _NumPrevPassToKeep = Int32.MinValue;
 		private TwoFactorAuthenticationMode _TwoFactorAuthenticationMode = (TwoFactorAuthenticationMode)Int32.MinValue;
 		private bool? _IsSelfServe = null;
+		private string _AllowedDomains = null;
+		private string _ExcludedAdminRoleName = null;
 		#endregion
 
 		#region Properties
@@ -1184,6 +1188,32 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsSelfServe");
 			}
 		}
+		/// <summary>
+		/// Use AllowedDomainsAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public string AllowedDomains
+		{
+			get { return _AllowedDomains; }
+			private set 
+			{ 
+				_AllowedDomains = value;
+				OnPropertyChanged("AllowedDomains");
+			}
+		}
+		/// <summary>
+		/// Use ExcludedAdminRoleNameAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public string ExcludedAdminRoleName
+		{
+			get { return _ExcludedAdminRoleName; }
+			private set 
+			{ 
+				_ExcludedAdminRoleName = value;
+				OnPropertyChanged("ExcludedAdminRoleName");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -1517,6 +1547,14 @@ namespace Kaltura.Types
 			{
 				this._IsSelfServe = ParseBool(node["isSelfServe"].Value<string>());
 			}
+			if(node["allowedDomains"] != null)
+			{
+				this._AllowedDomains = node["allowedDomains"].Value<string>();
+			}
+			if(node["excludedAdminRoleName"] != null)
+			{
+				this._ExcludedAdminRoleName = node["excludedAdminRoleName"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -1602,6 +1640,8 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("numPrevPassToKeep", this._NumPrevPassToKeep);
 			kparams.AddIfNotNull("twoFactorAuthenticationMode", this._TwoFactorAuthenticationMode);
 			kparams.AddIfNotNull("isSelfServe", this._IsSelfServe);
+			kparams.AddIfNotNull("allowedDomains", this._AllowedDomains);
+			kparams.AddIfNotNull("excludedAdminRoleName", this._ExcludedAdminRoleName);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -1760,6 +1800,10 @@ namespace Kaltura.Types
 					return "TwoFactorAuthenticationMode";
 				case IS_SELF_SERVE:
 					return "IsSelfServe";
+				case ALLOWED_DOMAINS:
+					return "AllowedDomains";
+				case EXCLUDED_ADMIN_ROLE_NAME:
+					return "ExcludedAdminRoleName";
 				default:
 					return base.getPropertyName(apiName);
 			}

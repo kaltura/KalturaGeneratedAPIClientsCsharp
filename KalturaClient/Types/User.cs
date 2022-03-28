@@ -55,6 +55,7 @@ namespace Kaltura.Types
 		public const string COMPANY = "company";
 		public const string KS_PRIVILEGES = "ksPrivileges";
 		public const string ENCRYPTED_SEED = "encryptedSeed";
+		public const string IS_SSO_EXCLUDED = "isSsoExcluded";
 		#endregion
 
 		#region Private Fields
@@ -75,6 +76,7 @@ namespace Kaltura.Types
 		private string _Company = null;
 		private string _KsPrivileges = null;
 		private string _EncryptedSeed = null;
+		private bool? _IsSsoExcluded = null;
 		#endregion
 
 		#region Properties
@@ -298,6 +300,19 @@ namespace Kaltura.Types
 				OnPropertyChanged("EncryptedSeed");
 			}
 		}
+		/// <summary>
+		/// Use IsSsoExcludedAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public bool? IsSsoExcluded
+		{
+			get { return _IsSsoExcluded; }
+			set 
+			{ 
+				_IsSsoExcluded = value;
+				OnPropertyChanged("IsSsoExcluded");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -375,6 +390,10 @@ namespace Kaltura.Types
 			{
 				this._EncryptedSeed = node["encryptedSeed"].Value<string>();
 			}
+			if(node["isSsoExcluded"] != null)
+			{
+				this._IsSsoExcluded = ParseBool(node["isSsoExcluded"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -401,6 +420,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("company", this._Company);
 			kparams.AddIfNotNull("ksPrivileges", this._KsPrivileges);
 			kparams.AddIfNotNull("encryptedSeed", this._EncryptedSeed);
+			kparams.AddIfNotNull("isSsoExcluded", this._IsSsoExcluded);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -441,6 +461,8 @@ namespace Kaltura.Types
 					return "KsPrivileges";
 				case ENCRYPTED_SEED:
 					return "EncryptedSeed";
+				case IS_SSO_EXCLUDED:
+					return "IsSsoExcluded";
 				default:
 					return base.getPropertyName(apiName);
 			}

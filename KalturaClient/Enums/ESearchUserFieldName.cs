@@ -29,6 +29,7 @@ namespace Kaltura.Enums
 {
 	public sealed class ESearchUserFieldName : StringEnum
 	{
+		public static readonly ESearchUserFieldName COMPANY = new ESearchUserFieldName("company");
 		public static readonly ESearchUserFieldName CREATED_AT = new ESearchUserFieldName("created_at");
 		public static readonly ESearchUserFieldName EMAIL = new ESearchUserFieldName("email");
 		public static readonly ESearchUserFieldName FIRST_NAME = new ESearchUserFieldName("first_name");
@@ -38,6 +39,7 @@ namespace Kaltura.Enums
 		public static readonly ESearchUserFieldName ROLE_IDS = new ESearchUserFieldName("role_ids");
 		public static readonly ESearchUserFieldName SCREEN_NAME = new ESearchUserFieldName("screen_name");
 		public static readonly ESearchUserFieldName TAGS = new ESearchUserFieldName("tags");
+		public static readonly ESearchUserFieldName TITLE = new ESearchUserFieldName("title");
 		public static readonly ESearchUserFieldName UPDATED_AT = new ESearchUserFieldName("updated_at");
 		public static readonly ESearchUserFieldName USER_ID = new ESearchUserFieldName("user_id");
 		public static readonly ESearchUserFieldName TYPE = new ESearchUserFieldName("user_type");

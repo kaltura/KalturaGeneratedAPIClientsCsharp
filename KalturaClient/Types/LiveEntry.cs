@@ -72,7 +72,7 @@ namespace Kaltura.Types
 		private IList<LiveStreamPushPublishConfiguration> _PublishConfigurations;
 		private int _FirstBroadcast = Int32.MinValue;
 		private int _LastBroadcast = Int32.MinValue;
-		private double _CurrentBroadcastStartTime = Double.MinValue;
+		private int _CurrentBroadcastStartTime = Int32.MinValue;
 		private LiveEntryRecordingOptions _RecordingOptions;
 		private EntryServerNodeStatus _LiveStatus = (EntryServerNodeStatus)Int32.MinValue;
 		private int _SegmentDuration = Int32.MinValue;
@@ -231,7 +231,7 @@ namespace Kaltura.Types
 		/// Use CurrentBroadcastStartTimeAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		public double CurrentBroadcastStartTime
+		public int CurrentBroadcastStartTime
 		{
 			get { return _CurrentBroadcastStartTime; }
 			set 
@@ -407,7 +407,7 @@ namespace Kaltura.Types
 			}
 			if(node["currentBroadcastStartTime"] != null)
 			{
-				this._CurrentBroadcastStartTime = ParseDouble(node["currentBroadcastStartTime"].Value<string>());
+				this._CurrentBroadcastStartTime = ParseInt(node["currentBroadcastStartTime"].Value<string>());
 			}
 			if(node["recordingOptions"] != null)
 			{

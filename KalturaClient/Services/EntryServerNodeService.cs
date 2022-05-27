@@ -126,7 +126,7 @@ namespace Kaltura.Services
 		public const string ENTRY_SERVER_NODE = "entryServerNode";
 		#endregion
 
-		public int Id { get; set; }
+		public long Id { get; set; }
 		public EntryServerNode EntryServerNode { get; set; }
 
 		public EntryServerNodeUpdateRequestBuilder()
@@ -134,7 +134,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public EntryServerNodeUpdateRequestBuilder(int id, EntryServerNode entryServerNode)
+		public EntryServerNodeUpdateRequestBuilder(long id, EntryServerNode entryServerNode)
 			: this()
 		{
 			this.Id = id;
@@ -213,14 +213,14 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id { get; set; }
+		public long Id { get; set; }
 
 		public EntryServerNodeValidateRegisteredEntryServerNodeRequestBuilder()
 			: base("entryservernode", "validateRegisteredEntryServerNode")
 		{
 		}
 
-		public EntryServerNodeValidateRegisteredEntryServerNodeRequestBuilder(int id)
+		public EntryServerNodeValidateRegisteredEntryServerNodeRequestBuilder(long id)
 			: this()
 		{
 			this.Id = id;
@@ -263,7 +263,7 @@ namespace Kaltura.Services
 			return new EntryServerNodeListRequestBuilder(filter, pager);
 		}
 
-		public static EntryServerNodeUpdateRequestBuilder Update(int id, EntryServerNode entryServerNode)
+		public static EntryServerNodeUpdateRequestBuilder Update(long id, EntryServerNode entryServerNode)
 		{
 			return new EntryServerNodeUpdateRequestBuilder(id, entryServerNode);
 		}
@@ -273,7 +273,7 @@ namespace Kaltura.Services
 			return new EntryServerNodeUpdateStatusRequestBuilder(id, status);
 		}
 
-		public static EntryServerNodeValidateRegisteredEntryServerNodeRequestBuilder ValidateRegisteredEntryServerNode(int id)
+		public static EntryServerNodeValidateRegisteredEntryServerNodeRequestBuilder ValidateRegisteredEntryServerNode(long id)
 		{
 			return new EntryServerNodeValidateRegisteredEntryServerNodeRequestBuilder(id);
 		}

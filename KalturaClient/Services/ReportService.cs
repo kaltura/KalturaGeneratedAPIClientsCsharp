@@ -43,7 +43,7 @@ namespace Kaltura.Services
 		public const string PARAMS = "params";
 		#endregion
 
-		public int Id { get; set; }
+		public long Id { get; set; }
 		public IList<KeyValue> Params_ { get; set; }
 
 		public ReportExecuteRequestBuilder()
@@ -51,7 +51,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public ReportExecuteRequestBuilder(int id, IList<KeyValue> params_)
+		public ReportExecuteRequestBuilder(long id, IList<KeyValue> params_)
 			: this()
 		{
 			this.Id = id;
@@ -492,7 +492,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public static ReportExecuteRequestBuilder Execute(int id, IList<KeyValue> params_ = null)
+		public static ReportExecuteRequestBuilder Execute(long id, IList<KeyValue> params_ = null)
 		{
 			return new ReportExecuteRequestBuilder(id, params_);
 		}

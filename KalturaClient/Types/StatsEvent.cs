@@ -65,7 +65,7 @@ namespace Kaltura.Types
 		#region Private Fields
 		private string _ClientVer = null;
 		private StatsEventType _EventType = (StatsEventType)Int32.MinValue;
-		private int _EventTimestamp = Int32.MinValue;
+		private double _EventTimestamp = Double.MinValue;
 		private string _SessionId = null;
 		private int _PartnerId = Int32.MinValue;
 		private string _EntryId = null;
@@ -118,7 +118,7 @@ namespace Kaltura.Types
 		/// Use EventTimestampAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		public int EventTimestamp
+		public double EventTimestamp
 		{
 			get { return _EventTimestamp; }
 			set 
@@ -393,7 +393,7 @@ namespace Kaltura.Types
 			}
 			if(node["eventTimestamp"] != null)
 			{
-				this._EventTimestamp = ParseInt(node["eventTimestamp"].Value<string>());
+				this._EventTimestamp = ParseDouble(node["eventTimestamp"].Value<string>());
 			}
 			if(node["sessionId"] != null)
 			{

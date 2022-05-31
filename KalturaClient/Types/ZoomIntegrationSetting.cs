@@ -48,6 +48,9 @@ namespace Kaltura.Types
 		public const string ENABLE_ZOOM_TRANSCRIPTION = "enableZoomTranscription";
 		public const string ZOOM_ACCOUNT_DESCRIPTION = "zoomAccountDescription";
 		public const string ENABLE_MEETING_UPLOAD = "enableMeetingUpload";
+		public const string OPT_OUT_GROUP_NAMES = "optOutGroupNames";
+		public const string OPT_IN_GROUP_NAMES = "optInGroupNames";
+		public const string GROUP_PARTICIPATION_TYPE = "groupParticipationType";
 		#endregion
 
 		#region Private Fields
@@ -61,6 +64,9 @@ namespace Kaltura.Types
 		private NullableBoolean _EnableZoomTranscription = (NullableBoolean)Int32.MinValue;
 		private string _ZoomAccountDescription = null;
 		private NullableBoolean _EnableMeetingUpload = (NullableBoolean)Int32.MinValue;
+		private string _OptOutGroupNames = null;
+		private string _OptInGroupNames = null;
+		private ZoomGroupParticipationType _GroupParticipationType = (ZoomGroupParticipationType)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -194,6 +200,45 @@ namespace Kaltura.Types
 				OnPropertyChanged("EnableMeetingUpload");
 			}
 		}
+		/// <summary>
+		/// Use OptOutGroupNamesAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public string OptOutGroupNames
+		{
+			get { return _OptOutGroupNames; }
+			set 
+			{ 
+				_OptOutGroupNames = value;
+				OnPropertyChanged("OptOutGroupNames");
+			}
+		}
+		/// <summary>
+		/// Use OptInGroupNamesAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public string OptInGroupNames
+		{
+			get { return _OptInGroupNames; }
+			set 
+			{ 
+				_OptInGroupNames = value;
+				OnPropertyChanged("OptInGroupNames");
+			}
+		}
+		/// <summary>
+		/// Use GroupParticipationTypeAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public ZoomGroupParticipationType GroupParticipationType
+		{
+			get { return _GroupParticipationType; }
+			set 
+			{ 
+				_GroupParticipationType = value;
+				OnPropertyChanged("GroupParticipationType");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -243,6 +288,18 @@ namespace Kaltura.Types
 			{
 				this._EnableMeetingUpload = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["enableMeetingUpload"].Value<string>());
 			}
+			if(node["optOutGroupNames"] != null)
+			{
+				this._OptOutGroupNames = node["optOutGroupNames"].Value<string>();
+			}
+			if(node["optInGroupNames"] != null)
+			{
+				this._OptInGroupNames = node["optInGroupNames"].Value<string>();
+			}
+			if(node["groupParticipationType"] != null)
+			{
+				this._GroupParticipationType = (ZoomGroupParticipationType)ParseEnum(typeof(ZoomGroupParticipationType), node["groupParticipationType"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -262,6 +319,9 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("enableZoomTranscription", this._EnableZoomTranscription);
 			kparams.AddIfNotNull("zoomAccountDescription", this._ZoomAccountDescription);
 			kparams.AddIfNotNull("enableMeetingUpload", this._EnableMeetingUpload);
+			kparams.AddIfNotNull("optOutGroupNames", this._OptOutGroupNames);
+			kparams.AddIfNotNull("optInGroupNames", this._OptInGroupNames);
+			kparams.AddIfNotNull("groupParticipationType", this._GroupParticipationType);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -288,6 +348,12 @@ namespace Kaltura.Types
 					return "ZoomAccountDescription";
 				case ENABLE_MEETING_UPLOAD:
 					return "EnableMeetingUpload";
+				case OPT_OUT_GROUP_NAMES:
+					return "OptOutGroupNames";
+				case OPT_IN_GROUP_NAMES:
+					return "OptInGroupNames";
+				case GROUP_PARTICIPATION_TYPE:
+					return "GroupParticipationType";
 				default:
 					return base.getPropertyName(apiName);
 			}

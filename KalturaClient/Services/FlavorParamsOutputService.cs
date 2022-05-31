@@ -42,14 +42,14 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public long Id { get; set; }
+		public int Id { get; set; }
 
 		public FlavorParamsOutputGetRequestBuilder()
 			: base("flavorparamsoutput", "get")
 		{
 		}
 
-		public FlavorParamsOutputGetRequestBuilder(long id)
+		public FlavorParamsOutputGetRequestBuilder(int id)
 			: this()
 		{
 			this.Id = id;
@@ -126,7 +126,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public static FlavorParamsOutputGetRequestBuilder Get(long id)
+		public static FlavorParamsOutputGetRequestBuilder Get(int id)
 		{
 			return new FlavorParamsOutputGetRequestBuilder(id);
 		}

@@ -81,14 +81,14 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public long Id { get; set; }
+		public int Id { get; set; }
 
 		public PartnerGetRequestBuilder()
 			: base("partner", "get")
 		{
 		}
 
-		public PartnerGetRequestBuilder(long id)
+		public PartnerGetRequestBuilder(int id)
 			: this()
 		{
 			this.Id = id;
@@ -149,14 +149,14 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public long Id { get; set; }
+		public int Id { get; set; }
 
 		public PartnerGetPublicInfoRequestBuilder()
 			: base("partner", "getPublicInfo")
 		{
 		}
 
-		public PartnerGetPublicInfoRequestBuilder(long id)
+		public PartnerGetPublicInfoRequestBuilder(int id)
 			: this()
 		{
 			this.Id = id;
@@ -548,7 +548,7 @@ namespace Kaltura.Services
 			return new PartnerCountRequestBuilder(filter);
 		}
 
-		public static PartnerGetRequestBuilder Get(long id = long.MinValue)
+		public static PartnerGetRequestBuilder Get(int id = Int32.MinValue)
 		{
 			return new PartnerGetRequestBuilder(id);
 		}
@@ -558,7 +558,7 @@ namespace Kaltura.Services
 			return new PartnerGetInfoRequestBuilder();
 		}
 
-		public static PartnerGetPublicInfoRequestBuilder GetPublicInfo(long id = long.MinValue)
+		public static PartnerGetPublicInfoRequestBuilder GetPublicInfo(int id = Int32.MinValue)
 		{
 			return new PartnerGetPublicInfoRequestBuilder(id);
 		}

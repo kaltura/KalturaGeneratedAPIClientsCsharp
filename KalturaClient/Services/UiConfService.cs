@@ -81,14 +81,14 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public long Id { get; set; }
+		public int Id { get; set; }
 
 		public UiConfCloneRequestBuilder()
 			: base("uiconf", "clone")
 		{
 		}
 
-		public UiConfCloneRequestBuilder(long id)
+		public UiConfCloneRequestBuilder(int id)
 			: this()
 		{
 			this.Id = id;
@@ -120,14 +120,14 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public long Id { get; set; }
+		public int Id { get; set; }
 
 		public UiConfDeleteRequestBuilder()
 			: base("uiconf", "delete")
 		{
 		}
 
-		public UiConfDeleteRequestBuilder(long id)
+		public UiConfDeleteRequestBuilder(int id)
 			: this()
 		{
 			this.Id = id;
@@ -159,14 +159,14 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public long Id { get; set; }
+		public int Id { get; set; }
 
 		public UiConfGetRequestBuilder()
 			: base("uiconf", "get")
 		{
 		}
 
-		public UiConfGetRequestBuilder(long id)
+		public UiConfGetRequestBuilder(int id)
 			: this()
 		{
 			this.Id = id;
@@ -322,7 +322,7 @@ namespace Kaltura.Services
 		public const string UI_CONF = "uiConf";
 		#endregion
 
-		public long Id { get; set; }
+		public int Id { get; set; }
 		public UiConf UiConf { get; set; }
 
 		public UiConfUpdateRequestBuilder()
@@ -330,7 +330,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public UiConfUpdateRequestBuilder(long id, UiConf uiConf)
+		public UiConfUpdateRequestBuilder(int id, UiConf uiConf)
 			: this()
 		{
 			this.Id = id;
@@ -371,17 +371,17 @@ namespace Kaltura.Services
 			return new UiConfAddRequestBuilder(uiConf);
 		}
 
-		public static UiConfCloneRequestBuilder Clone(long id)
+		public static UiConfCloneRequestBuilder Clone(int id)
 		{
 			return new UiConfCloneRequestBuilder(id);
 		}
 
-		public static UiConfDeleteRequestBuilder Delete(long id)
+		public static UiConfDeleteRequestBuilder Delete(int id)
 		{
 			return new UiConfDeleteRequestBuilder(id);
 		}
 
-		public static UiConfGetRequestBuilder Get(long id)
+		public static UiConfGetRequestBuilder Get(int id)
 		{
 			return new UiConfGetRequestBuilder(id);
 		}
@@ -401,7 +401,7 @@ namespace Kaltura.Services
 			return new UiConfListTemplatesRequestBuilder(filter, pager);
 		}
 
-		public static UiConfUpdateRequestBuilder Update(long id, UiConf uiConf)
+		public static UiConfUpdateRequestBuilder Update(int id, UiConf uiConf)
 		{
 			return new UiConfUpdateRequestBuilder(id, uiConf);
 		}

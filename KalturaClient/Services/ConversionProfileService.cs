@@ -81,14 +81,14 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public long Id { get; set; }
+		public int Id { get; set; }
 
 		public ConversionProfileDeleteRequestBuilder()
 			: base("conversionprofile", "delete")
 		{
 		}
 
-		public ConversionProfileDeleteRequestBuilder(long id)
+		public ConversionProfileDeleteRequestBuilder(int id)
 			: this()
 		{
 			this.Id = id;
@@ -120,14 +120,14 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public long Id { get; set; }
+		public int Id { get; set; }
 
 		public ConversionProfileGetRequestBuilder()
 			: base("conversionprofile", "get")
 		{
 		}
 
-		public ConversionProfileGetRequestBuilder(long id)
+		public ConversionProfileGetRequestBuilder(int id)
 			: this()
 		{
 			this.Id = id;
@@ -242,14 +242,14 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public long Id { get; set; }
+		public int Id { get; set; }
 
 		public ConversionProfileSetAsDefaultRequestBuilder()
 			: base("conversionprofile", "setAsDefault")
 		{
 		}
 
-		public ConversionProfileSetAsDefaultRequestBuilder(long id)
+		public ConversionProfileSetAsDefaultRequestBuilder(int id)
 			: this()
 		{
 			this.Id = id;
@@ -282,7 +282,7 @@ namespace Kaltura.Services
 		public const string CONVERSION_PROFILE = "conversionProfile";
 		#endregion
 
-		public long Id { get; set; }
+		public int Id { get; set; }
 		public ConversionProfile ConversionProfile { get; set; }
 
 		public ConversionProfileUpdateRequestBuilder()
@@ -290,7 +290,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public ConversionProfileUpdateRequestBuilder(long id, ConversionProfile conversionProfile)
+		public ConversionProfileUpdateRequestBuilder(int id, ConversionProfile conversionProfile)
 			: this()
 		{
 			this.Id = id;
@@ -331,12 +331,12 @@ namespace Kaltura.Services
 			return new ConversionProfileAddRequestBuilder(conversionProfile);
 		}
 
-		public static ConversionProfileDeleteRequestBuilder Delete(long id)
+		public static ConversionProfileDeleteRequestBuilder Delete(int id)
 		{
 			return new ConversionProfileDeleteRequestBuilder(id);
 		}
 
-		public static ConversionProfileGetRequestBuilder Get(long id)
+		public static ConversionProfileGetRequestBuilder Get(int id)
 		{
 			return new ConversionProfileGetRequestBuilder(id);
 		}
@@ -351,12 +351,12 @@ namespace Kaltura.Services
 			return new ConversionProfileListRequestBuilder(filter, pager);
 		}
 
-		public static ConversionProfileSetAsDefaultRequestBuilder SetAsDefault(long id)
+		public static ConversionProfileSetAsDefaultRequestBuilder SetAsDefault(int id)
 		{
 			return new ConversionProfileSetAsDefaultRequestBuilder(id);
 		}
 
-		public static ConversionProfileUpdateRequestBuilder Update(long id, ConversionProfile conversionProfile)
+		public static ConversionProfileUpdateRequestBuilder Update(int id, ConversionProfile conversionProfile)
 		{
 			return new ConversionProfileUpdateRequestBuilder(id, conversionProfile);
 		}

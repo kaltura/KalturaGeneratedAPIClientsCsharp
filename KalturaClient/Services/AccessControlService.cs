@@ -81,14 +81,14 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id { get; set; }
+		public long Id { get; set; }
 
 		public AccessControlDeleteRequestBuilder()
 			: base("accesscontrol", "delete")
 		{
 		}
 
-		public AccessControlDeleteRequestBuilder(int id)
+		public AccessControlDeleteRequestBuilder(long id)
 			: this()
 		{
 			this.Id = id;
@@ -120,14 +120,14 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id { get; set; }
+		public long Id { get; set; }
 
 		public AccessControlGetRequestBuilder()
 			: base("accesscontrol", "get")
 		{
 		}
 
-		public AccessControlGetRequestBuilder(int id)
+		public AccessControlGetRequestBuilder(long id)
 			: this()
 		{
 			this.Id = id;
@@ -204,7 +204,7 @@ namespace Kaltura.Services
 		public const string ACCESS_CONTROL = "accessControl";
 		#endregion
 
-		public int Id { get; set; }
+		public long Id { get; set; }
 		public AccessControl AccessControl { get; set; }
 
 		public AccessControlUpdateRequestBuilder()
@@ -212,7 +212,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public AccessControlUpdateRequestBuilder(int id, AccessControl accessControl)
+		public AccessControlUpdateRequestBuilder(long id, AccessControl accessControl)
 			: this()
 		{
 			this.Id = id;
@@ -253,12 +253,12 @@ namespace Kaltura.Services
 			return new AccessControlAddRequestBuilder(accessControl);
 		}
 
-		public static AccessControlDeleteRequestBuilder Delete(int id)
+		public static AccessControlDeleteRequestBuilder Delete(long id)
 		{
 			return new AccessControlDeleteRequestBuilder(id);
 		}
 
-		public static AccessControlGetRequestBuilder Get(int id)
+		public static AccessControlGetRequestBuilder Get(long id)
 		{
 			return new AccessControlGetRequestBuilder(id);
 		}
@@ -268,7 +268,7 @@ namespace Kaltura.Services
 			return new AccessControlListRequestBuilder(filter, pager);
 		}
 
-		public static AccessControlUpdateRequestBuilder Update(int id, AccessControl accessControl)
+		public static AccessControlUpdateRequestBuilder Update(long id, AccessControl accessControl)
 		{
 			return new AccessControlUpdateRequestBuilder(id, accessControl);
 		}

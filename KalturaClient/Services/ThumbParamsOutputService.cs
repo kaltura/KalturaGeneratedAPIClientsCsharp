@@ -42,14 +42,14 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id { get; set; }
+		public long Id { get; set; }
 
 		public ThumbParamsOutputGetRequestBuilder()
 			: base("thumbparamsoutput", "get")
 		{
 		}
 
-		public ThumbParamsOutputGetRequestBuilder(int id)
+		public ThumbParamsOutputGetRequestBuilder(long id)
 			: this()
 		{
 			this.Id = id;
@@ -126,7 +126,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public static ThumbParamsOutputGetRequestBuilder Get(int id)
+		public static ThumbParamsOutputGetRequestBuilder Get(long id)
 		{
 			return new ThumbParamsOutputGetRequestBuilder(id);
 		}

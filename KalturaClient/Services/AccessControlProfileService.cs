@@ -81,14 +81,14 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id { get; set; }
+		public long Id { get; set; }
 
 		public AccessControlProfileDeleteRequestBuilder()
 			: base("accesscontrolprofile", "delete")
 		{
 		}
 
-		public AccessControlProfileDeleteRequestBuilder(int id)
+		public AccessControlProfileDeleteRequestBuilder(long id)
 			: this()
 		{
 			this.Id = id;
@@ -120,14 +120,14 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id { get; set; }
+		public long Id { get; set; }
 
 		public AccessControlProfileGetRequestBuilder()
 			: base("accesscontrolprofile", "get")
 		{
 		}
 
-		public AccessControlProfileGetRequestBuilder(int id)
+		public AccessControlProfileGetRequestBuilder(long id)
 			: this()
 		{
 			this.Id = id;
@@ -204,7 +204,7 @@ namespace Kaltura.Services
 		public const string ACCESS_CONTROL_PROFILE = "accessControlProfile";
 		#endregion
 
-		public int Id { get; set; }
+		public long Id { get; set; }
 		public AccessControlProfile AccessControlProfile { get; set; }
 
 		public AccessControlProfileUpdateRequestBuilder()
@@ -212,7 +212,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public AccessControlProfileUpdateRequestBuilder(int id, AccessControlProfile accessControlProfile)
+		public AccessControlProfileUpdateRequestBuilder(long id, AccessControlProfile accessControlProfile)
 			: this()
 		{
 			this.Id = id;
@@ -253,12 +253,12 @@ namespace Kaltura.Services
 			return new AccessControlProfileAddRequestBuilder(accessControlProfile);
 		}
 
-		public static AccessControlProfileDeleteRequestBuilder Delete(int id)
+		public static AccessControlProfileDeleteRequestBuilder Delete(long id)
 		{
 			return new AccessControlProfileDeleteRequestBuilder(id);
 		}
 
-		public static AccessControlProfileGetRequestBuilder Get(int id)
+		public static AccessControlProfileGetRequestBuilder Get(long id)
 		{
 			return new AccessControlProfileGetRequestBuilder(id);
 		}
@@ -268,7 +268,7 @@ namespace Kaltura.Services
 			return new AccessControlProfileListRequestBuilder(filter, pager);
 		}
 
-		public static AccessControlProfileUpdateRequestBuilder Update(int id, AccessControlProfile accessControlProfile)
+		public static AccessControlProfileUpdateRequestBuilder Update(long id, AccessControlProfile accessControlProfile)
 		{
 			return new AccessControlProfileUpdateRequestBuilder(id, accessControlProfile);
 		}

@@ -30,6 +30,7 @@ namespace Kaltura.Enums
 	public sealed class ESearchGroupFieldName : StringEnum
 	{
 		public static readonly ESearchGroupFieldName COMPANY = new ESearchGroupFieldName("company");
+		public static readonly ESearchGroupFieldName COUNTRY = new ESearchGroupFieldName("country");
 		public static readonly ESearchGroupFieldName CREATED_AT = new ESearchGroupFieldName("created_at");
 		public static readonly ESearchGroupFieldName EMAIL = new ESearchGroupFieldName("email");
 		public static readonly ESearchGroupFieldName FIRST_NAME = new ESearchGroupFieldName("first_name");

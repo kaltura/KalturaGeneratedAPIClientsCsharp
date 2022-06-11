@@ -81,14 +81,14 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id { get; set; }
+		public long Id { get; set; }
 
 		public FlavorParamsDeleteRequestBuilder()
 			: base("flavorparams", "delete")
 		{
 		}
 
-		public FlavorParamsDeleteRequestBuilder(int id)
+		public FlavorParamsDeleteRequestBuilder(long id)
 			: this()
 		{
 			this.Id = id;
@@ -120,14 +120,14 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id { get; set; }
+		public long Id { get; set; }
 
 		public FlavorParamsGetRequestBuilder()
 			: base("flavorparams", "get")
 		{
 		}
 
-		public FlavorParamsGetRequestBuilder(int id)
+		public FlavorParamsGetRequestBuilder(long id)
 			: this()
 		{
 			this.Id = id;
@@ -249,7 +249,7 @@ namespace Kaltura.Services
 		public const string FLAVOR_PARAMS = "flavorParams";
 		#endregion
 
-		public int Id { get; set; }
+		public long Id { get; set; }
 		public FlavorParams FlavorParams { get; set; }
 
 		public FlavorParamsUpdateRequestBuilder()
@@ -257,7 +257,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public FlavorParamsUpdateRequestBuilder(int id, FlavorParams flavorParams)
+		public FlavorParamsUpdateRequestBuilder(long id, FlavorParams flavorParams)
 			: this()
 		{
 			this.Id = id;
@@ -298,12 +298,12 @@ namespace Kaltura.Services
 			return new FlavorParamsAddRequestBuilder(flavorParams);
 		}
 
-		public static FlavorParamsDeleteRequestBuilder Delete(int id)
+		public static FlavorParamsDeleteRequestBuilder Delete(long id)
 		{
 			return new FlavorParamsDeleteRequestBuilder(id);
 		}
 
-		public static FlavorParamsGetRequestBuilder Get(int id)
+		public static FlavorParamsGetRequestBuilder Get(long id)
 		{
 			return new FlavorParamsGetRequestBuilder(id);
 		}
@@ -318,7 +318,7 @@ namespace Kaltura.Services
 			return new FlavorParamsListRequestBuilder(filter, pager);
 		}
 
-		public static FlavorParamsUpdateRequestBuilder Update(int id, FlavorParams flavorParams)
+		public static FlavorParamsUpdateRequestBuilder Update(long id, FlavorParams flavorParams)
 		{
 			return new FlavorParamsUpdateRequestBuilder(id, flavorParams);
 		}

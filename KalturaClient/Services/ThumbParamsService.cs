@@ -81,14 +81,14 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id { get; set; }
+		public long Id { get; set; }
 
 		public ThumbParamsDeleteRequestBuilder()
 			: base("thumbparams", "delete")
 		{
 		}
 
-		public ThumbParamsDeleteRequestBuilder(int id)
+		public ThumbParamsDeleteRequestBuilder(long id)
 			: this()
 		{
 			this.Id = id;
@@ -120,14 +120,14 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id { get; set; }
+		public long Id { get; set; }
 
 		public ThumbParamsGetRequestBuilder()
 			: base("thumbparams", "get")
 		{
 		}
 
-		public ThumbParamsGetRequestBuilder(int id)
+		public ThumbParamsGetRequestBuilder(long id)
 			: this()
 		{
 			this.Id = id;
@@ -249,7 +249,7 @@ namespace Kaltura.Services
 		public const string THUMB_PARAMS = "thumbParams";
 		#endregion
 
-		public int Id { get; set; }
+		public long Id { get; set; }
 		public ThumbParams ThumbParams { get; set; }
 
 		public ThumbParamsUpdateRequestBuilder()
@@ -257,7 +257,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public ThumbParamsUpdateRequestBuilder(int id, ThumbParams thumbParams)
+		public ThumbParamsUpdateRequestBuilder(long id, ThumbParams thumbParams)
 			: this()
 		{
 			this.Id = id;
@@ -298,12 +298,12 @@ namespace Kaltura.Services
 			return new ThumbParamsAddRequestBuilder(thumbParams);
 		}
 
-		public static ThumbParamsDeleteRequestBuilder Delete(int id)
+		public static ThumbParamsDeleteRequestBuilder Delete(long id)
 		{
 			return new ThumbParamsDeleteRequestBuilder(id);
 		}
 
-		public static ThumbParamsGetRequestBuilder Get(int id)
+		public static ThumbParamsGetRequestBuilder Get(long id)
 		{
 			return new ThumbParamsGetRequestBuilder(id);
 		}
@@ -318,7 +318,7 @@ namespace Kaltura.Services
 			return new ThumbParamsListRequestBuilder(filter, pager);
 		}
 
-		public static ThumbParamsUpdateRequestBuilder Update(int id, ThumbParams thumbParams)
+		public static ThumbParamsUpdateRequestBuilder Update(long id, ThumbParams thumbParams)
 		{
 			return new ThumbParamsUpdateRequestBuilder(id, thumbParams);
 		}

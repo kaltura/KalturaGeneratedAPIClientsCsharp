@@ -180,7 +180,7 @@ namespace Kaltura.Services
 		public const string MOVE_ENTRIES_TO_PARENT_CATEGORY = "moveEntriesToParentCategory";
 		#endregion
 
-		public int Id { get; set; }
+		public long Id { get; set; }
 		public NullableBoolean MoveEntriesToParentCategory { get; set; }
 
 		public CategoryDeleteRequestBuilder()
@@ -188,7 +188,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public CategoryDeleteRequestBuilder(int id, NullableBoolean moveEntriesToParentCategory)
+		public CategoryDeleteRequestBuilder(long id, NullableBoolean moveEntriesToParentCategory)
 			: this()
 		{
 			this.Id = id;
@@ -223,14 +223,14 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public int Id { get; set; }
+		public long Id { get; set; }
 
 		public CategoryGetRequestBuilder()
 			: base("category", "get")
 		{
 		}
 
-		public CategoryGetRequestBuilder(int id)
+		public CategoryGetRequestBuilder(long id)
 			: this()
 		{
 			this.Id = id;
@@ -263,7 +263,7 @@ namespace Kaltura.Services
 		public const string SHOULD_UPDATE = "shouldUpdate";
 		#endregion
 
-		public int Id { get; set; }
+		public long Id { get; set; }
 		public bool ShouldUpdate { get; set; }
 
 		public CategoryIndexRequestBuilder()
@@ -271,7 +271,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public CategoryIndexRequestBuilder(int id, bool shouldUpdate)
+		public CategoryIndexRequestBuilder(long id, bool shouldUpdate)
 			: this()
 		{
 			this.Id = id;
@@ -426,7 +426,7 @@ namespace Kaltura.Services
 		public const string CATEGORY = "category";
 		#endregion
 
-		public int Id { get; set; }
+		public long Id { get; set; }
 		public Category Category { get; set; }
 
 		public CategoryUpdateRequestBuilder()
@@ -434,7 +434,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public CategoryUpdateRequestBuilder(int id, Category category)
+		public CategoryUpdateRequestBuilder(long id, Category category)
 			: this()
 		{
 			this.Id = id;
@@ -485,17 +485,17 @@ namespace Kaltura.Services
 			return new CategoryCloneRequestBuilder(categoryId, fromPartnerId, parentCategoryId);
 		}
 
-		public static CategoryDeleteRequestBuilder Delete(int id, NullableBoolean moveEntriesToParentCategory = (NullableBoolean)(1))
+		public static CategoryDeleteRequestBuilder Delete(long id, NullableBoolean moveEntriesToParentCategory = (NullableBoolean)(1))
 		{
 			return new CategoryDeleteRequestBuilder(id, moveEntriesToParentCategory);
 		}
 
-		public static CategoryGetRequestBuilder Get(int id)
+		public static CategoryGetRequestBuilder Get(long id)
 		{
 			return new CategoryGetRequestBuilder(id);
 		}
 
-		public static CategoryIndexRequestBuilder Index(int id, bool shouldUpdate = true)
+		public static CategoryIndexRequestBuilder Index(long id, bool shouldUpdate = true)
 		{
 			return new CategoryIndexRequestBuilder(id, shouldUpdate);
 		}
@@ -515,7 +515,7 @@ namespace Kaltura.Services
 			return new CategoryUnlockCategoriesRequestBuilder();
 		}
 
-		public static CategoryUpdateRequestBuilder Update(int id, Category category)
+		public static CategoryUpdateRequestBuilder Update(long id, Category category)
 		{
 			return new CategoryUpdateRequestBuilder(id, category);
 		}

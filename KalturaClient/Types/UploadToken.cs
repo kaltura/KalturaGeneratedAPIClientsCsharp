@@ -49,6 +49,8 @@ namespace Kaltura.Types
 		public const string UPDATED_AT = "updatedAt";
 		public const string UPLOAD_URL = "uploadUrl";
 		public const string AUTO_FINALIZE = "autoFinalize";
+		public const string ATTACHED_OBJECT_TYPE = "attachedObjectType";
+		public const string ATTACHED_OBJECT_ID = "attachedObjectId";
 		#endregion
 
 		#region Private Fields
@@ -63,6 +65,8 @@ namespace Kaltura.Types
 		private int _UpdatedAt = Int32.MinValue;
 		private string _UploadUrl = null;
 		private NullableBoolean _AutoFinalize = (NullableBoolean)Int32.MinValue;
+		private string _AttachedObjectType = null;
+		private string _AttachedObjectId = null;
 		#endregion
 
 		#region Properties
@@ -209,6 +213,32 @@ namespace Kaltura.Types
 				OnPropertyChanged("AutoFinalize");
 			}
 		}
+		/// <summary>
+		/// Use AttachedObjectTypeAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public string AttachedObjectType
+		{
+			get { return _AttachedObjectType; }
+			private set 
+			{ 
+				_AttachedObjectType = value;
+				OnPropertyChanged("AttachedObjectType");
+			}
+		}
+		/// <summary>
+		/// Use AttachedObjectIdAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public string AttachedObjectId
+		{
+			get { return _AttachedObjectId; }
+			private set 
+			{ 
+				_AttachedObjectId = value;
+				OnPropertyChanged("AttachedObjectId");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -262,6 +292,14 @@ namespace Kaltura.Types
 			{
 				this._AutoFinalize = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["autoFinalize"].Value<string>());
 			}
+			if(node["attachedObjectType"] != null)
+			{
+				this._AttachedObjectType = node["attachedObjectType"].Value<string>();
+			}
+			if(node["attachedObjectId"] != null)
+			{
+				this._AttachedObjectId = node["attachedObjectId"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -282,6 +320,8 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
 			kparams.AddIfNotNull("uploadUrl", this._UploadUrl);
 			kparams.AddIfNotNull("autoFinalize", this._AutoFinalize);
+			kparams.AddIfNotNull("attachedObjectType", this._AttachedObjectType);
+			kparams.AddIfNotNull("attachedObjectId", this._AttachedObjectId);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -310,6 +350,10 @@ namespace Kaltura.Types
 					return "UploadUrl";
 				case AUTO_FINALIZE:
 					return "AutoFinalize";
+				case ATTACHED_OBJECT_TYPE:
+					return "AttachedObjectType";
+				case ATTACHED_OBJECT_ID:
+					return "AttachedObjectId";
 				default:
 					return base.getPropertyName(apiName);
 			}

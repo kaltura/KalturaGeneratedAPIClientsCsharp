@@ -41,12 +41,14 @@ namespace Kaltura.Types
 		public const string METADATA_PROFILE_ID = "metadataProfileId";
 		public const string ADDITIONAL_FIELDS = "additionalFields";
 		public const string MAPPED_FIELDS = "mappedFields";
+		public const string OPTIONS = "options";
 		#endregion
 
 		#region Private Fields
 		private int _MetadataProfileId = Int32.MinValue;
 		private IList<CsvAdditionalFieldInfo> _AdditionalFields;
 		private IList<KeyValue> _MappedFields;
+		private ExportToCsvOptions _Options;
 		#endregion
 
 		#region Properties
@@ -89,6 +91,19 @@ namespace Kaltura.Types
 				OnPropertyChanged("MappedFields");
 			}
 		}
+		/// <summary>
+		/// Use OptionsAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public ExportToCsvOptions Options
+		{
+			get { return _Options; }
+			set 
+			{ 
+				_Options = value;
+				OnPropertyChanged("Options");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -118,6 +133,10 @@ namespace Kaltura.Types
 					this._MappedFields.Add(ObjectFactory.Create<KeyValue>(arrayNode));
 				}
 			}
+			if(node["options"] != null)
+			{
+				this._Options = ObjectFactory.Create<ExportToCsvOptions>(node["options"]);
+			}
 		}
 		#endregion
 
@@ -130,6 +149,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("metadataProfileId", this._MetadataProfileId);
 			kparams.AddIfNotNull("additionalFields", this._AdditionalFields);
 			kparams.AddIfNotNull("mappedFields", this._MappedFields);
+			kparams.AddIfNotNull("options", this._Options);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -142,6 +162,8 @@ namespace Kaltura.Types
 					return "AdditionalFields";
 				case MAPPED_FIELDS:
 					return "MappedFields";
+				case OPTIONS:
+					return "Options";
 				default:
 					return base.getPropertyName(apiName);
 			}

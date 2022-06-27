@@ -35,80 +35,99 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class ExportToCsvOptions : ObjectBase
+	public class LiveCaptionFeature : LiveFeature
 	{
 		#region Constants
-		public const string FORMAT = "format";
-		public const string TYPE_EQUAL = "typeEqual";
-		public const string DEFAULT_HEADER = "defaultHeader";
+		public const string MEDIA_URL = "mediaUrl";
+		public const string MEDIA_KEY = "mediaKey";
+		public const string CAPTION_URL = "captionUrl";
+		public const string CAPTION_TOKEN = "captionToken";
 		#endregion
 
 		#region Private Fields
-		private string _Format = null;
-		private EntryType _TypeEqual = null;
-		private NullableBoolean _DefaultHeader = (NullableBoolean)Int32.MinValue;
+		private string _MediaUrl = null;
+		private string _MediaKey = null;
+		private string _CaptionUrl = null;
+		private string _CaptionToken = null;
 		#endregion
 
 		#region Properties
 		/// <summary>
-		/// Use FormatAsDouble property instead
+		/// Use MediaUrlAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		public string Format
+		public string MediaUrl
 		{
-			get { return _Format; }
+			get { return _MediaUrl; }
 			set 
 			{ 
-				_Format = value;
-				OnPropertyChanged("Format");
+				_MediaUrl = value;
+				OnPropertyChanged("MediaUrl");
 			}
 		}
 		/// <summary>
-		/// Use TypeEqualAsDouble property instead
+		/// Use MediaKeyAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		public EntryType TypeEqual
+		public string MediaKey
 		{
-			get { return _TypeEqual; }
+			get { return _MediaKey; }
 			set 
 			{ 
-				_TypeEqual = value;
-				OnPropertyChanged("TypeEqual");
+				_MediaKey = value;
+				OnPropertyChanged("MediaKey");
 			}
 		}
 		/// <summary>
-		/// Use DefaultHeaderAsDouble property instead
+		/// Use CaptionUrlAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		public NullableBoolean DefaultHeader
+		public string CaptionUrl
 		{
-			get { return _DefaultHeader; }
+			get { return _CaptionUrl; }
 			set 
 			{ 
-				_DefaultHeader = value;
-				OnPropertyChanged("DefaultHeader");
+				_CaptionUrl = value;
+				OnPropertyChanged("CaptionUrl");
+			}
+		}
+		/// <summary>
+		/// Use CaptionTokenAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public string CaptionToken
+		{
+			get { return _CaptionToken; }
+			set 
+			{ 
+				_CaptionToken = value;
+				OnPropertyChanged("CaptionToken");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public ExportToCsvOptions()
+		public LiveCaptionFeature()
 		{
 		}
 
-		public ExportToCsvOptions(JToken node) : base(node)
+		public LiveCaptionFeature(JToken node) : base(node)
 		{
-			if(node["format"] != null)
+			if(node["mediaUrl"] != null)
 			{
-				this._Format = node["format"].Value<string>();
+				this._MediaUrl = node["mediaUrl"].Value<string>();
 			}
-			if(node["typeEqual"] != null)
+			if(node["mediaKey"] != null)
 			{
-				this._TypeEqual = (EntryType)StringEnum.Parse(typeof(EntryType), node["typeEqual"].Value<string>());
+				this._MediaKey = node["mediaKey"].Value<string>();
 			}
-			if(node["defaultHeader"] != null)
+			if(node["captionUrl"] != null)
 			{
-				this._DefaultHeader = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["defaultHeader"].Value<string>());
+				this._CaptionUrl = node["captionUrl"].Value<string>();
+			}
+			if(node["captionToken"] != null)
+			{
+				this._CaptionToken = node["captionToken"].Value<string>();
 			}
 		}
 		#endregion
@@ -118,22 +137,25 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaExportToCsvOptions");
-			kparams.AddIfNotNull("format", this._Format);
-			kparams.AddIfNotNull("typeEqual", this._TypeEqual);
-			kparams.AddIfNotNull("defaultHeader", this._DefaultHeader);
+				kparams.AddReplace("objectType", "KalturaLiveCaptionFeature");
+			kparams.AddIfNotNull("mediaUrl", this._MediaUrl);
+			kparams.AddIfNotNull("mediaKey", this._MediaKey);
+			kparams.AddIfNotNull("captionUrl", this._CaptionUrl);
+			kparams.AddIfNotNull("captionToken", this._CaptionToken);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case FORMAT:
-					return "Format";
-				case TYPE_EQUAL:
-					return "TypeEqual";
-				case DEFAULT_HEADER:
-					return "DefaultHeader";
+				case MEDIA_URL:
+					return "MediaUrl";
+				case MEDIA_KEY:
+					return "MediaKey";
+				case CAPTION_URL:
+					return "CaptionUrl";
+				case CAPTION_TOKEN:
+					return "CaptionToken";
 				default:
 					return base.getPropertyName(apiName);
 			}

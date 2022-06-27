@@ -67,6 +67,7 @@ namespace Kaltura.Types
 		public const string SERVICE_TYPE = "serviceType";
 		public const string SERVICE_FEATURE = "serviceFeature";
 		public const string TURN_AROUND_TIME = "turnAroundTime";
+		public const string EXTERNAL_TASK_ID = "externalTaskId";
 		#endregion
 
 		#region Private Fields
@@ -99,6 +100,7 @@ namespace Kaltura.Types
 		private VendorServiceType _ServiceType = (VendorServiceType)Int32.MinValue;
 		private VendorServiceFeature _ServiceFeature = (VendorServiceFeature)Int32.MinValue;
 		private VendorServiceTurnAroundTime _TurnAroundTime = (VendorServiceTurnAroundTime)Int32.MinValue;
+		private string _ExternalTaskId = null;
 		#endregion
 
 		#region Properties
@@ -479,6 +481,19 @@ namespace Kaltura.Types
 				OnPropertyChanged("TurnAroundTime");
 			}
 		}
+		/// <summary>
+		/// Use ExternalTaskIdAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public string ExternalTaskId
+		{
+			get { return _ExternalTaskId; }
+			set 
+			{ 
+				_ExternalTaskId = value;
+				OnPropertyChanged("ExternalTaskId");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -604,6 +619,10 @@ namespace Kaltura.Types
 			{
 				this._TurnAroundTime = (VendorServiceTurnAroundTime)ParseEnum(typeof(VendorServiceTurnAroundTime), node["turnAroundTime"].Value<string>());
 			}
+			if(node["externalTaskId"] != null)
+			{
+				this._ExternalTaskId = node["externalTaskId"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -642,6 +661,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("serviceType", this._ServiceType);
 			kparams.AddIfNotNull("serviceFeature", this._ServiceFeature);
 			kparams.AddIfNotNull("turnAroundTime", this._TurnAroundTime);
+			kparams.AddIfNotNull("externalTaskId", this._ExternalTaskId);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -706,6 +726,8 @@ namespace Kaltura.Types
 					return "ServiceFeature";
 				case TURN_AROUND_TIME:
 					return "TurnAroundTime";
+				case EXTERNAL_TASK_ID:
+					return "ExternalTaskId";
 				default:
 					return base.getPropertyName(apiName);
 			}

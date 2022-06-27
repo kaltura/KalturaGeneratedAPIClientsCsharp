@@ -35,80 +35,80 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class ExportToCsvOptions : ObjectBase
+	public class LiveFeature : ObjectBase
 	{
 		#region Constants
-		public const string FORMAT = "format";
-		public const string TYPE_EQUAL = "typeEqual";
-		public const string DEFAULT_HEADER = "defaultHeader";
+		public const string SYSTEM_NAME = "systemName";
+		public const string PRE_START_TIME = "preStartTime";
+		public const string POST_END_TIME = "postEndTime";
 		#endregion
 
 		#region Private Fields
-		private string _Format = null;
-		private EntryType _TypeEqual = null;
-		private NullableBoolean _DefaultHeader = (NullableBoolean)Int32.MinValue;
+		private string _SystemName = null;
+		private int _PreStartTime = Int32.MinValue;
+		private int _PostEndTime = Int32.MinValue;
 		#endregion
 
 		#region Properties
 		/// <summary>
-		/// Use FormatAsDouble property instead
+		/// Use SystemNameAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		public string Format
+		public string SystemName
 		{
-			get { return _Format; }
+			get { return _SystemName; }
 			set 
 			{ 
-				_Format = value;
-				OnPropertyChanged("Format");
+				_SystemName = value;
+				OnPropertyChanged("SystemName");
 			}
 		}
 		/// <summary>
-		/// Use TypeEqualAsDouble property instead
+		/// Use PreStartTimeAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		public EntryType TypeEqual
+		public int PreStartTime
 		{
-			get { return _TypeEqual; }
+			get { return _PreStartTime; }
 			set 
 			{ 
-				_TypeEqual = value;
-				OnPropertyChanged("TypeEqual");
+				_PreStartTime = value;
+				OnPropertyChanged("PreStartTime");
 			}
 		}
 		/// <summary>
-		/// Use DefaultHeaderAsDouble property instead
+		/// Use PostEndTimeAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		public NullableBoolean DefaultHeader
+		public int PostEndTime
 		{
-			get { return _DefaultHeader; }
+			get { return _PostEndTime; }
 			set 
 			{ 
-				_DefaultHeader = value;
-				OnPropertyChanged("DefaultHeader");
+				_PostEndTime = value;
+				OnPropertyChanged("PostEndTime");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public ExportToCsvOptions()
+		public LiveFeature()
 		{
 		}
 
-		public ExportToCsvOptions(JToken node) : base(node)
+		public LiveFeature(JToken node) : base(node)
 		{
-			if(node["format"] != null)
+			if(node["systemName"] != null)
 			{
-				this._Format = node["format"].Value<string>();
+				this._SystemName = node["systemName"].Value<string>();
 			}
-			if(node["typeEqual"] != null)
+			if(node["preStartTime"] != null)
 			{
-				this._TypeEqual = (EntryType)StringEnum.Parse(typeof(EntryType), node["typeEqual"].Value<string>());
+				this._PreStartTime = ParseInt(node["preStartTime"].Value<string>());
 			}
-			if(node["defaultHeader"] != null)
+			if(node["postEndTime"] != null)
 			{
-				this._DefaultHeader = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["defaultHeader"].Value<string>());
+				this._PostEndTime = ParseInt(node["postEndTime"].Value<string>());
 			}
 		}
 		#endregion
@@ -118,22 +118,22 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaExportToCsvOptions");
-			kparams.AddIfNotNull("format", this._Format);
-			kparams.AddIfNotNull("typeEqual", this._TypeEqual);
-			kparams.AddIfNotNull("defaultHeader", this._DefaultHeader);
+				kparams.AddReplace("objectType", "KalturaLiveFeature");
+			kparams.AddIfNotNull("systemName", this._SystemName);
+			kparams.AddIfNotNull("preStartTime", this._PreStartTime);
+			kparams.AddIfNotNull("postEndTime", this._PostEndTime);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case FORMAT:
-					return "Format";
-				case TYPE_EQUAL:
-					return "TypeEqual";
-				case DEFAULT_HEADER:
-					return "DefaultHeader";
+				case SYSTEM_NAME:
+					return "SystemName";
+				case PRE_START_TIME:
+					return "PreStartTime";
+				case POST_END_TIME:
+					return "PostEndTime";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -45,6 +45,7 @@ namespace Kaltura.Types
 		public const string PRE_START_ENTRY_ID = "preStartEntryId";
 		public const string POST_END_ENTRY_ID = "postEndEntryId";
 		public const string IS_CONTENT_INTERRUPTIBLE = "isContentInterruptible";
+		public const string LIVE_FEATURES = "liveFeatures";
 		#endregion
 
 		#region Private Fields
@@ -55,6 +56,7 @@ namespace Kaltura.Types
 		private string _PreStartEntryId = null;
 		private string _PostEndEntryId = null;
 		private bool? _IsContentInterruptible = null;
+		private IList<LiveFeature> _LiveFeatures;
 		#endregion
 
 		#region Properties
@@ -149,6 +151,19 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsContentInterruptible");
 			}
 		}
+		/// <summary>
+		/// Use LiveFeaturesAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public IList<LiveFeature> LiveFeatures
+		{
+			get { return _LiveFeatures; }
+			set 
+			{ 
+				_LiveFeatures = value;
+				OnPropertyChanged("LiveFeatures");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -186,6 +201,14 @@ namespace Kaltura.Types
 			{
 				this._IsContentInterruptible = ParseBool(node["isContentInterruptible"].Value<string>());
 			}
+			if(node["liveFeatures"] != null)
+			{
+				this._LiveFeatures = new List<LiveFeature>();
+				foreach(var arrayNode in node["liveFeatures"].Children())
+				{
+					this._LiveFeatures.Add(ObjectFactory.Create<LiveFeature>(arrayNode));
+				}
+			}
 		}
 		#endregion
 
@@ -202,6 +225,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("preStartEntryId", this._PreStartEntryId);
 			kparams.AddIfNotNull("postEndEntryId", this._PostEndEntryId);
 			kparams.AddIfNotNull("isContentInterruptible", this._IsContentInterruptible);
+			kparams.AddIfNotNull("liveFeatures", this._LiveFeatures);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -222,6 +246,8 @@ namespace Kaltura.Types
 					return "PostEndEntryId";
 				case IS_CONTENT_INTERRUPTIBLE:
 					return "IsContentInterruptible";
+				case LIVE_FEATURES:
+					return "LiveFeatures";
 				default:
 					return base.getPropertyName(apiName);
 			}

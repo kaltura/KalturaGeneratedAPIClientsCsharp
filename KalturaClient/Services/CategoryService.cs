@@ -217,6 +217,65 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class CategoryExportToCsvRequestBuilder : RequestBuilder<string>
+	{
+		#region Constants
+		public const string FILTER = "filter";
+		public const string METADATA_PROFILE_ID = "metadataProfileId";
+		public const string ADDITIONAL_FIELDS = "additionalFields";
+		public const string MAPPED_FIELDS = "mappedFields";
+		public const string OPTIONS = "options";
+		#endregion
+
+		public CategoryFilter Filter { get; set; }
+		public int MetadataProfileId { get; set; }
+		public IList<CsvAdditionalFieldInfo> AdditionalFields { get; set; }
+		public IList<KeyValue> MappedFields { get; set; }
+		public ExportToCsvOptions Options { get; set; }
+
+		public CategoryExportToCsvRequestBuilder()
+			: base("category", "exportToCsv")
+		{
+		}
+
+		public CategoryExportToCsvRequestBuilder(CategoryFilter filter, int metadataProfileId, IList<CsvAdditionalFieldInfo> additionalFields, IList<KeyValue> mappedFields, ExportToCsvOptions options)
+			: this()
+		{
+			this.Filter = filter;
+			this.MetadataProfileId = metadataProfileId;
+			this.AdditionalFields = additionalFields;
+			this.MappedFields = mappedFields;
+			this.Options = options;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("filter"))
+				kparams.AddIfNotNull("filter", Filter);
+			if (!isMapped("metadataProfileId"))
+				kparams.AddIfNotNull("metadataProfileId", MetadataProfileId);
+			if (!isMapped("additionalFields"))
+				kparams.AddIfNotNull("additionalFields", AdditionalFields);
+			if (!isMapped("mappedFields"))
+				kparams.AddIfNotNull("mappedFields", MappedFields);
+			if (!isMapped("options"))
+				kparams.AddIfNotNull("options", Options);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			return result.Value<string>();
+		}
+	}
+
 	public class CategoryGetRequestBuilder : RequestBuilder<Category>
 	{
 		#region Constants
@@ -488,6 +547,11 @@ namespace Kaltura.Services
 		public static CategoryDeleteRequestBuilder Delete(long id, NullableBoolean moveEntriesToParentCategory = (NullableBoolean)(1))
 		{
 			return new CategoryDeleteRequestBuilder(id, moveEntriesToParentCategory);
+		}
+
+		public static CategoryExportToCsvRequestBuilder ExportToCsv(CategoryFilter filter = null, int metadataProfileId = Int32.MinValue, IList<CsvAdditionalFieldInfo> additionalFields = null, IList<KeyValue> mappedFields = null, ExportToCsvOptions options = null)
+		{
+			return new CategoryExportToCsvRequestBuilder(filter, metadataProfileId, additionalFields, mappedFields, options);
 		}
 
 		public static CategoryGetRequestBuilder Get(long id)

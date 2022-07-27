@@ -79,6 +79,7 @@ namespace Kaltura.Types
 		public const string CANONICAL_URL_IN = "canonicalUrlIn";
 		public const string VIRTUAL_EVENT_ID_IN = "virtualEventIdIn";
 		public const string ORIGIN_IN = "originIn";
+		public const string UI_CONF_ID_IN = "uiConfIdIn";
 		#endregion
 
 		#region Private Fields
@@ -123,6 +124,7 @@ namespace Kaltura.Types
 		private string _CanonicalUrlIn = null;
 		private string _VirtualEventIdIn = null;
 		private string _OriginIn = null;
+		private string _UiConfIdIn = null;
 		#endregion
 
 		#region Properties
@@ -659,6 +661,19 @@ namespace Kaltura.Types
 				OnPropertyChanged("OriginIn");
 			}
 		}
+		/// <summary>
+		/// Use UiConfIdInAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public string UiConfIdIn
+		{
+			get { return _UiConfIdIn; }
+			set 
+			{ 
+				_UiConfIdIn = value;
+				OnPropertyChanged("UiConfIdIn");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -832,6 +847,10 @@ namespace Kaltura.Types
 			{
 				this._OriginIn = node["originIn"].Value<string>();
 			}
+			if(node["uiConfIdIn"] != null)
+			{
+				this._UiConfIdIn = node["uiConfIdIn"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -882,6 +901,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("canonicalUrlIn", this._CanonicalUrlIn);
 			kparams.AddIfNotNull("virtualEventIdIn", this._VirtualEventIdIn);
 			kparams.AddIfNotNull("originIn", this._OriginIn);
+			kparams.AddIfNotNull("uiConfIdIn", this._UiConfIdIn);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -970,6 +990,8 @@ namespace Kaltura.Types
 					return "VirtualEventIdIn";
 				case ORIGIN_IN:
 					return "OriginIn";
+				case UI_CONF_ID_IN:
+					return "UiConfIdIn";
 				default:
 					return base.getPropertyName(apiName);
 			}

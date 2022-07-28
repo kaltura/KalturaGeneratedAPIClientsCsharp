@@ -25,18 +25,54 @@
 //
 // @ignore
 // ===================================================================================================
-namespace Kaltura.Enums
+using System;
+using System.Xml;
+using System.Collections.Generic;
+using Kaltura.Enums;
+using Kaltura.Request;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+namespace Kaltura.Types
 {
-	public enum EntryVendorTaskStatus
+	public class VendorLiveCaptionCatalogItemFilter : VendorCaptionsCatalogItemBaseFilter
 	{
-		PENDING = 1,
-		READY = 2,
-		PROCESSING = 3,
-		PENDING_MODERATION = 4,
-		REJECTED = 5,
-		ERROR = 6,
-		ABORTED = 7,
-		PENDING_ENTRY_READY = 8,
-		SCHEDULED = 9,
+		#region Constants
+		#endregion
+
+		#region Private Fields
+		#endregion
+
+		#region Properties
+		#endregion
+
+		#region CTor
+		public VendorLiveCaptionCatalogItemFilter()
+		{
+		}
+
+		public VendorLiveCaptionCatalogItemFilter(JToken node) : base(node)
+		{
+		}
+		#endregion
+
+		#region Methods
+		public override Params ToParams(bool includeObjectType = true)
+		{
+			Params kparams = base.ToParams(includeObjectType);
+			if (includeObjectType)
+				kparams.AddReplace("objectType", "KalturaVendorLiveCaptionCatalogItemFilter");
+			return kparams;
+		}
+		protected override string getPropertyName(string apiName)
+		{
+			switch(apiName)
+			{
+				default:
+					return base.getPropertyName(apiName);
+			}
+		}
+		#endregion
 	}
 }
+

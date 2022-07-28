@@ -36,5 +36,6 @@ namespace Kaltura.Enums
 		CHAPTERING = 5,
 		INTELLIGENT_TAGGING = 6,
 		DUBBING = 7,
+		LIVE_CAPTION = 8,
 	}
 }

@@ -378,6 +378,55 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class ScheduleEventUpdateLiveFeatureRequestBuilder : RequestBuilder<LiveStreamScheduleEvent>
+	{
+		#region Constants
+		public const string SCHEDULED_EVENT_ID = "scheduledEventId";
+		public const string FEATURE_NAME = "featureName";
+		public const string LIVE_FEATURE = "liveFeature";
+		#endregion
+
+		public int ScheduledEventId { get; set; }
+		public string FeatureName { get; set; }
+		public LiveFeature LiveFeature { get; set; }
+
+		public ScheduleEventUpdateLiveFeatureRequestBuilder()
+			: base("schedule_scheduleevent", "updateLiveFeature")
+		{
+		}
+
+		public ScheduleEventUpdateLiveFeatureRequestBuilder(int scheduledEventId, string featureName, LiveFeature liveFeature)
+			: this()
+		{
+			this.ScheduledEventId = scheduledEventId;
+			this.FeatureName = featureName;
+			this.LiveFeature = liveFeature;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("scheduledEventId"))
+				kparams.AddIfNotNull("scheduledEventId", ScheduledEventId);
+			if (!isMapped("featureName"))
+				kparams.AddIfNotNull("featureName", FeatureName);
+			if (!isMapped("liveFeature"))
+				kparams.AddIfNotNull("liveFeature", LiveFeature);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			return ObjectFactory.Create<LiveStreamScheduleEvent>(result);
+		}
+	}
+
 
 	public class ScheduleEventService
 	{
@@ -423,6 +472,11 @@ namespace Kaltura.Services
 		public static ScheduleEventUpdateRequestBuilder Update(int scheduleEventId, ScheduleEvent scheduleEvent)
 		{
 			return new ScheduleEventUpdateRequestBuilder(scheduleEventId, scheduleEvent);
+		}
+
+		public static ScheduleEventUpdateLiveFeatureRequestBuilder UpdateLiveFeature(int scheduledEventId, string featureName, LiveFeature liveFeature)
+		{
+			return new ScheduleEventUpdateLiveFeatureRequestBuilder(scheduledEventId, featureName, liveFeature);
 		}
 	}
 }

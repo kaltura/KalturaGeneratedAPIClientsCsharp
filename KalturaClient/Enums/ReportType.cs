@@ -91,6 +91,10 @@ namespace Kaltura.Enums
 		public static readonly ReportType SELF_SERVE_USAGE = new ReportType("60");
 		public static readonly ReportType FLAVOR_PARAMS_TRANSCODING_USAGE = new ReportType("61");
 		public static readonly ReportType PLAYER_HIGHLIGHTS = new ReportType("62");
+		public static readonly ReportType PARTNER_USAGE_HIGHLIGHTS = new ReportType("63");
+		public static readonly ReportType CDN_BANDWIDTH_USAGE = new ReportType("64");
+		public static readonly ReportType REACH_CATALOG_USAGE = new ReportType("65");
+		public static readonly ReportType REACH_PROFILE_USAGE = new ReportType("66");
 		public static readonly ReportType PARTNER_USAGE = new ReportType("201");
 		public static readonly ReportType MAP_OVERLAY_COUNTRY_REALTIME = new ReportType("10001");
 		public static readonly ReportType MAP_OVERLAY_REGION_REALTIME = new ReportType("10002");

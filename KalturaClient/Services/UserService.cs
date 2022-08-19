@@ -723,7 +723,7 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class UserLoginDataResetPasswordRequestBuilder : RequestBuilder<VoidResponse>
+	public class UserLoginDataResetPasswordRequestBuilder : RequestBuilder<User>
 	{
 		#region Constants
 		public const string LOGIN_DATA_ID = "loginDataId";
@@ -763,7 +763,7 @@ namespace Kaltura.Services
 
 		public override object Deserialize(JToken result)
 		{
-			return null;
+			return ObjectFactory.Create<User>(result);
 		}
 	}
 

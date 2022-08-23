@@ -30,8 +30,12 @@ namespace Kaltura.Enums
 	public sealed class UiConfOrderBy : StringEnum
 	{
 		public static readonly UiConfOrderBy CREATED_AT_ASC = new UiConfOrderBy("+createdAt");
+		public static readonly UiConfOrderBy ID_ASC = new UiConfOrderBy("+id");
+		public static readonly UiConfOrderBy NAME_ASC = new UiConfOrderBy("+name");
 		public static readonly UiConfOrderBy UPDATED_AT_ASC = new UiConfOrderBy("+updatedAt");
 		public static readonly UiConfOrderBy CREATED_AT_DESC = new UiConfOrderBy("-createdAt");
+		public static readonly UiConfOrderBy ID_DESC = new UiConfOrderBy("-id");
+		public static readonly UiConfOrderBy NAME_DESC = new UiConfOrderBy("-name");
 		public static readonly UiConfOrderBy UPDATED_AT_DESC = new UiConfOrderBy("-updatedAt");
 
 		private UiConfOrderBy(string name) : base(name) { }

@@ -31,5 +31,6 @@ namespace Kaltura.Enums
 	{
 		WIZARD = 2,
 		ADVANCED = 3,
+		SYSTEM = 4,
 	}
 }

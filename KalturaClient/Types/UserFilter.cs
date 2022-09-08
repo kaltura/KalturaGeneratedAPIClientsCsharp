@@ -39,8 +39,6 @@ namespace Kaltura.Types
 	{
 		#region Constants
 		public const string ID_OR_SCREEN_NAME_STARTS_WITH = "idOrScreenNameStartsWith";
-		public const string ID_EQUAL = "idEqual";
-		public const string ID_IN = "idIn";
 		public const string LOGIN_ENABLED_EQUAL = "loginEnabledEqual";
 		public const string ROLE_ID_EQUAL = "roleIdEqual";
 		public const string ROLE_IDS_EQUAL = "roleIdsEqual";
@@ -53,8 +51,6 @@ namespace Kaltura.Types
 
 		#region Private Fields
 		private string _IdOrScreenNameStartsWith = null;
-		private string _IdEqual = null;
-		private string _IdIn = null;
 		private NullableBoolean _LoginEnabledEqual = (NullableBoolean)Int32.MinValue;
 		private string _RoleIdEqual = null;
 		private string _RoleIdsEqual = null;
@@ -77,32 +73,6 @@ namespace Kaltura.Types
 			{ 
 				_IdOrScreenNameStartsWith = value;
 				OnPropertyChanged("IdOrScreenNameStartsWith");
-			}
-		}
-		/// <summary>
-		/// Use IdEqualAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string IdEqual
-		{
-			get { return _IdEqual; }
-			set 
-			{ 
-				_IdEqual = value;
-				OnPropertyChanged("IdEqual");
-			}
-		}
-		/// <summary>
-		/// Use IdInAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string IdIn
-		{
-			get { return _IdIn; }
-			set 
-			{ 
-				_IdIn = value;
-				OnPropertyChanged("IdIn");
 			}
 		}
 		/// <summary>
@@ -222,14 +192,6 @@ namespace Kaltura.Types
 			{
 				this._IdOrScreenNameStartsWith = node["idOrScreenNameStartsWith"].Value<string>();
 			}
-			if(node["idEqual"] != null)
-			{
-				this._IdEqual = node["idEqual"].Value<string>();
-			}
-			if(node["idIn"] != null)
-			{
-				this._IdIn = node["idIn"].Value<string>();
-			}
 			if(node["loginEnabledEqual"] != null)
 			{
 				this._LoginEnabledEqual = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["loginEnabledEqual"].Value<string>());
@@ -272,8 +234,6 @@ namespace Kaltura.Types
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaUserFilter");
 			kparams.AddIfNotNull("idOrScreenNameStartsWith", this._IdOrScreenNameStartsWith);
-			kparams.AddIfNotNull("idEqual", this._IdEqual);
-			kparams.AddIfNotNull("idIn", this._IdIn);
 			kparams.AddIfNotNull("loginEnabledEqual", this._LoginEnabledEqual);
 			kparams.AddIfNotNull("roleIdEqual", this._RoleIdEqual);
 			kparams.AddIfNotNull("roleIdsEqual", this._RoleIdsEqual);
@@ -290,10 +250,6 @@ namespace Kaltura.Types
 			{
 				case ID_OR_SCREEN_NAME_STARTS_WITH:
 					return "IdOrScreenNameStartsWith";
-				case ID_EQUAL:
-					return "IdEqual";
-				case ID_IN:
-					return "IdIn";
 				case LOGIN_ENABLED_EQUAL:
 					return "LoginEnabledEqual";
 				case ROLE_ID_EQUAL:

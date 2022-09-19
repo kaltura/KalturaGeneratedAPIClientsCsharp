@@ -41,12 +41,14 @@ namespace Kaltura.Types
 		public const string PATTERN = "pattern";
 		public const string REPLACEMENT = "replacement";
 		public const string REPLACMEN_SERVER_NODE_ID = "replacmenServerNodeId";
+		public const string CHECK_ALIVE_TIMEOUT_MS = "checkAliveTimeoutMs";
 		#endregion
 
 		#region Private Fields
 		private string _Pattern = null;
 		private string _Replacement = null;
 		private int _ReplacmenServerNodeId = Int32.MinValue;
+		private int _CheckAliveTimeoutMs = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -89,6 +91,19 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplacmenServerNodeId");
 			}
 		}
+		/// <summary>
+		/// Use CheckAliveTimeoutMsAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public int CheckAliveTimeoutMs
+		{
+			get { return _CheckAliveTimeoutMs; }
+			set 
+			{ 
+				_CheckAliveTimeoutMs = value;
+				OnPropertyChanged("CheckAliveTimeoutMs");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -110,6 +125,10 @@ namespace Kaltura.Types
 			{
 				this._ReplacmenServerNodeId = ParseInt(node["replacmenServerNodeId"].Value<string>());
 			}
+			if(node["checkAliveTimeoutMs"] != null)
+			{
+				this._CheckAliveTimeoutMs = ParseInt(node["checkAliveTimeoutMs"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -122,6 +141,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("pattern", this._Pattern);
 			kparams.AddIfNotNull("replacement", this._Replacement);
 			kparams.AddIfNotNull("replacmenServerNodeId", this._ReplacmenServerNodeId);
+			kparams.AddIfNotNull("checkAliveTimeoutMs", this._CheckAliveTimeoutMs);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -134,6 +154,8 @@ namespace Kaltura.Types
 					return "Replacement";
 				case REPLACMEN_SERVER_NODE_ID:
 					return "ReplacmenServerNodeId";
+				case CHECK_ALIVE_TIMEOUT_MS:
+					return "CheckAliveTimeoutMs";
 				default:
 					return base.getPropertyName(apiName);
 			}

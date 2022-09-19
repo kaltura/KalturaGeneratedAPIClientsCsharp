@@ -116,6 +116,7 @@ namespace Kaltura.Types
 		public const string IS_SELF_SERVE = "isSelfServe";
 		public const string ALLOWED_DOMAINS = "allowedDomains";
 		public const string EXCLUDED_ADMIN_ROLE_NAME = "excludedAdminRoleName";
+		public const string EVENT_PLATFORM_ALLOWED_TEMPLATES = "eventPlatformAllowedTemplates";
 		#endregion
 
 		#region Private Fields
@@ -197,6 +198,7 @@ namespace Kaltura.Types
 		private bool? _IsSelfServe = null;
 		private string _AllowedDomains = null;
 		private string _ExcludedAdminRoleName = null;
+		private string _EventPlatformAllowedTemplates = null;
 		#endregion
 
 		#region Properties
@@ -1214,6 +1216,19 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExcludedAdminRoleName");
 			}
 		}
+		/// <summary>
+		/// Use EventPlatformAllowedTemplatesAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public string EventPlatformAllowedTemplates
+		{
+			get { return _EventPlatformAllowedTemplates; }
+			set 
+			{ 
+				_EventPlatformAllowedTemplates = value;
+				OnPropertyChanged("EventPlatformAllowedTemplates");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -1555,6 +1570,10 @@ namespace Kaltura.Types
 			{
 				this._ExcludedAdminRoleName = node["excludedAdminRoleName"].Value<string>();
 			}
+			if(node["eventPlatformAllowedTemplates"] != null)
+			{
+				this._EventPlatformAllowedTemplates = node["eventPlatformAllowedTemplates"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -1642,6 +1661,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("isSelfServe", this._IsSelfServe);
 			kparams.AddIfNotNull("allowedDomains", this._AllowedDomains);
 			kparams.AddIfNotNull("excludedAdminRoleName", this._ExcludedAdminRoleName);
+			kparams.AddIfNotNull("eventPlatformAllowedTemplates", this._EventPlatformAllowedTemplates);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -1804,6 +1824,8 @@ namespace Kaltura.Types
 					return "AllowedDomains";
 				case EXCLUDED_ADMIN_ROLE_NAME:
 					return "ExcludedAdminRoleName";
+				case EVENT_PLATFORM_ALLOWED_TEMPLATES:
+					return "EventPlatformAllowedTemplates";
 				default:
 					return base.getPropertyName(apiName);
 			}

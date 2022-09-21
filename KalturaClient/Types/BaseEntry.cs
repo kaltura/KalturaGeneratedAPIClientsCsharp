@@ -40,11 +40,14 @@ namespace Kaltura.Types
 		#region Constants
 		public const string ID = "id";
 		public const string NAME = "name";
+		public const string MULTI_LINGUAL_NAME = "multiLingual_name";
 		public const string DESCRIPTION = "description";
+		public const string MULTI_LINGUAL_DESCRIPTION = "multiLingual_description";
 		public const string PARTNER_ID = "partnerId";
 		public const string USER_ID = "userId";
 		public const string CREATOR_ID = "creatorId";
 		public const string TAGS = "tags";
+		public const string MULTI_LINGUAL_TAGS = "multiLingual_tags";
 		public const string ADMIN_TAGS = "adminTags";
 		public const string CATEGORIES = "categories";
 		public const string CATEGORIES_IDS = "categoriesIds";
@@ -91,11 +94,14 @@ namespace Kaltura.Types
 		#region Private Fields
 		private string _Id = null;
 		private string _Name = null;
+		private IList<MultiLingualString> _MultiLingual_name;
 		private string _Description = null;
+		private IList<MultiLingualString> _MultiLingual_description;
 		private int _PartnerId = Int32.MinValue;
 		private string _UserId = null;
 		private string _CreatorId = null;
 		private string _Tags = null;
+		private IList<MultiLingualString> _MultiLingual_tags;
 		private string _AdminTags = null;
 		private string _Categories = null;
 		private string _CategoriesIds = null;
@@ -167,6 +173,19 @@ namespace Kaltura.Types
 			}
 		}
 		/// <summary>
+		/// Use MultiLingual_nameAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public IList<MultiLingualString> MultiLingual_name
+		{
+			get { return _MultiLingual_name; }
+			set 
+			{ 
+				_MultiLingual_name = value;
+				OnPropertyChanged("MultiLingual_name");
+			}
+		}
+		/// <summary>
 		/// Use DescriptionAsDouble property instead
 		/// </summary>
 		[JsonProperty]
@@ -177,6 +196,19 @@ namespace Kaltura.Types
 			{ 
 				_Description = value;
 				OnPropertyChanged("Description");
+			}
+		}
+		/// <summary>
+		/// Use MultiLingual_descriptionAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public IList<MultiLingualString> MultiLingual_description
+		{
+			get { return _MultiLingual_description; }
+			set 
+			{ 
+				_MultiLingual_description = value;
+				OnPropertyChanged("MultiLingual_description");
 			}
 		}
 		/// <summary>
@@ -229,6 +261,19 @@ namespace Kaltura.Types
 			{ 
 				_Tags = value;
 				OnPropertyChanged("Tags");
+			}
+		}
+		/// <summary>
+		/// Use MultiLingual_tagsAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public IList<MultiLingualString> MultiLingual_tags
+		{
+			get { return _MultiLingual_tags; }
+			set 
+			{ 
+				_MultiLingual_tags = value;
+				OnPropertyChanged("MultiLingual_tags");
 			}
 		}
 		/// <summary>
@@ -781,9 +826,25 @@ namespace Kaltura.Types
 			{
 				this._Name = node["name"].Value<string>();
 			}
+			if(node["multiLingual_name"] != null)
+			{
+				this._MultiLingual_name = new List<MultiLingualString>();
+				foreach(var arrayNode in node["multiLingual_name"].Children())
+				{
+					this._MultiLingual_name.Add(ObjectFactory.Create<MultiLingualString>(arrayNode));
+				}
+			}
 			if(node["description"] != null)
 			{
 				this._Description = node["description"].Value<string>();
+			}
+			if(node["multiLingual_description"] != null)
+			{
+				this._MultiLingual_description = new List<MultiLingualString>();
+				foreach(var arrayNode in node["multiLingual_description"].Children())
+				{
+					this._MultiLingual_description.Add(ObjectFactory.Create<MultiLingualString>(arrayNode));
+				}
 			}
 			if(node["partnerId"] != null)
 			{
@@ -800,6 +861,14 @@ namespace Kaltura.Types
 			if(node["tags"] != null)
 			{
 				this._Tags = node["tags"].Value<string>();
+			}
+			if(node["multiLingual_tags"] != null)
+			{
+				this._MultiLingual_tags = new List<MultiLingualString>();
+				foreach(var arrayNode in node["multiLingual_tags"].Children())
+				{
+					this._MultiLingual_tags.Add(ObjectFactory.Create<MultiLingualString>(arrayNode));
+				}
 			}
 			if(node["adminTags"] != null)
 			{
@@ -980,11 +1049,14 @@ namespace Kaltura.Types
 				kparams.AddReplace("objectType", "KalturaBaseEntry");
 			kparams.AddIfNotNull("id", this._Id);
 			kparams.AddIfNotNull("name", this._Name);
+			kparams.AddIfNotNull("multiLingual_name", this._MultiLingual_name);
 			kparams.AddIfNotNull("description", this._Description);
+			kparams.AddIfNotNull("multiLingual_description", this._MultiLingual_description);
 			kparams.AddIfNotNull("partnerId", this._PartnerId);
 			kparams.AddIfNotNull("userId", this._UserId);
 			kparams.AddIfNotNull("creatorId", this._CreatorId);
 			kparams.AddIfNotNull("tags", this._Tags);
+			kparams.AddIfNotNull("multiLingual_tags", this._MultiLingual_tags);
 			kparams.AddIfNotNull("adminTags", this._AdminTags);
 			kparams.AddIfNotNull("categories", this._Categories);
 			kparams.AddIfNotNull("categoriesIds", this._CategoriesIds);
@@ -1036,8 +1108,12 @@ namespace Kaltura.Types
 					return "Id";
 				case NAME:
 					return "Name";
+				case MULTI_LINGUAL_NAME:
+					return "MultiLingual_name";
 				case DESCRIPTION:
 					return "Description";
+				case MULTI_LINGUAL_DESCRIPTION:
+					return "MultiLingual_description";
 				case PARTNER_ID:
 					return "PartnerId";
 				case USER_ID:
@@ -1046,6 +1122,8 @@ namespace Kaltura.Types
 					return "CreatorId";
 				case TAGS:
 					return "Tags";
+				case MULTI_LINGUAL_TAGS:
+					return "MultiLingual_tags";
 				case ADMIN_TAGS:
 					return "AdminTags";
 				case CATEGORIES:

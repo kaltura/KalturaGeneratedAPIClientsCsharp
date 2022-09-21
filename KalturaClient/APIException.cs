@@ -43,6 +43,8 @@ namespace Kaltura
 		public static string ACTION_BLOCKED = "ACTION_BLOCKED";
 		public static string ACTION_DOES_NOT_EXISTS = "ACTION_DOES_NOT_EXISTS";
 		public static string ACTION_FORBIDDEN = "ACTION_FORBIDDEN";
+		public static string INVALID_LANGUAGE_CODE = "INVALID_LANGUAGE_CODE";
+		public static string WRONG_REQUEST_LANGUAGE = "WRONG_REQUEST_LANGUAGE";
 		public static string MISSING_MANDATORY_PARAMETER = "MISSING_MANDATORY_PARAMETER";
 		public static string INVALID_OBJECT_TYPE = "INVALID_OBJECT_TYPE";
 		public static string INVALID_ENUM_VALUE = "INVALID_ENUM_VALUE";

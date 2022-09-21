@@ -50,6 +50,14 @@ namespace Kaltura.Request
 			return requestBuilder;
 		}
 		/// <summary>
+		/// language
+		/// </summary>
+		public static BaseRequestBuilder<T> WithLanguage<T>(this BaseRequestBuilder<T> requestBuilder, string value)
+		{
+			requestBuilder.Language = value;
+			return requestBuilder;
+		}
+		/// <summary>
 		/// Response profile - this attribute will be automatically unset after every API call.
 		/// </summary>
 		public static BaseRequestBuilder<T> WithResponseProfile<T>(this BaseRequestBuilder<T> requestBuilder, BaseResponseProfile value)

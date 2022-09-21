@@ -35,49 +35,19 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class RequestConfiguration : ObjectBase
+	public class MultiLingualString : ObjectBase
 	{
 		#region Constants
-		public const string PARTNER_ID = "partnerId";
-		public const string KS = "ks";
 		public const string LANGUAGE = "language";
-		public const string RESPONSE_PROFILE = "responseProfile";
+		public const string VALUE = "value";
 		#endregion
 
 		#region Private Fields
-		private int _PartnerId = Int32.MinValue;
-		private string _Ks = null;
 		private string _Language = null;
-		private BaseResponseProfile _ResponseProfile;
+		private string _Value = null;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use PartnerIdAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public int PartnerId
-		{
-			get { return _PartnerId; }
-			set 
-			{ 
-				_PartnerId = value;
-				OnPropertyChanged("PartnerId");
-			}
-		}
-		/// <summary>
-		/// Use KsAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string Ks
-		{
-			get { return _Ks; }
-			set 
-			{ 
-				_Ks = value;
-				OnPropertyChanged("Ks");
-			}
-		}
 		/// <summary>
 		/// Use LanguageAsDouble property instead
 		/// </summary>
@@ -92,42 +62,34 @@ namespace Kaltura.Types
 			}
 		}
 		/// <summary>
-		/// Use ResponseProfileAsDouble property instead
+		/// Use ValueAsDouble property instead
 		/// </summary>
 		[JsonProperty]
-		public BaseResponseProfile ResponseProfile
+		public string Value
 		{
-			get { return _ResponseProfile; }
+			get { return _Value; }
 			set 
 			{ 
-				_ResponseProfile = value;
-				OnPropertyChanged("ResponseProfile");
+				_Value = value;
+				OnPropertyChanged("Value");
 			}
 		}
 		#endregion
 
 		#region CTor
-		public RequestConfiguration()
+		public MultiLingualString()
 		{
 		}
 
-		public RequestConfiguration(JToken node) : base(node)
+		public MultiLingualString(JToken node) : base(node)
 		{
-			if(node["partnerId"] != null)
-			{
-				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
-			}
-			if(node["ks"] != null)
-			{
-				this._Ks = node["ks"].Value<string>();
-			}
 			if(node["language"] != null)
 			{
 				this._Language = node["language"].Value<string>();
 			}
-			if(node["responseProfile"] != null)
+			if(node["value"] != null)
 			{
-				this._ResponseProfile = ObjectFactory.Create<BaseResponseProfile>(node["responseProfile"]);
+				this._Value = node["value"].Value<string>();
 			}
 		}
 		#endregion
@@ -137,25 +99,19 @@ namespace Kaltura.Types
 		{
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
-				kparams.AddReplace("objectType", "KalturaRequestConfiguration");
-			kparams.AddIfNotNull("partnerId", this._PartnerId);
-			kparams.AddIfNotNull("ks", this._Ks);
+				kparams.AddReplace("objectType", "KalturaMultiLingualString");
 			kparams.AddIfNotNull("language", this._Language);
-			kparams.AddIfNotNull("responseProfile", this._ResponseProfile);
+			kparams.AddIfNotNull("value", this._Value);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case PARTNER_ID:
-					return "PartnerId";
-				case KS:
-					return "Ks";
 				case LANGUAGE:
 					return "Language";
-				case RESPONSE_PROFILE:
-					return "ResponseProfile";
+				case VALUE:
+					return "Value";
 				default:
 					return base.getPropertyName(apiName);
 			}

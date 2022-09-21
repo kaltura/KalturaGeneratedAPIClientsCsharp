@@ -35,8 +35,8 @@ namespace Kaltura
 	{
 		public Client(Configuration config) : base(config)
 		{
-				ApiVersion = "18.14.0";
-				ClientTag = "dotnet:22-09-20";
+				ApiVersion = "18.15.0";
+				ClientTag = "dotnet:22-09-21";
 		}
 	
 		#region Properties
@@ -149,6 +149,28 @@ namespace Kaltura
  		public string getSessionId()
  		{
  			return SessionId;
+ 		}
+			
+ 		public string Language
+ 		{
+ 			get
+ 			{
+ 				return requestConfiguration.Language;
+ 			}
+ 			set
+ 			{
+ 				requestConfiguration.Language = value;
+ 			}
+ 		}
+			
+ 		public void setLanguage(string value)
+ 		{
+ 			Language = value;
+ 		}
+			
+ 		public string getLanguage()
+ 		{
+ 			return Language;
  		}
 		#endregion
 	}

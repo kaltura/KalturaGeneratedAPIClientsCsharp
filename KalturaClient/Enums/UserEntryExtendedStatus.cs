@@ -29,6 +29,8 @@ namespace Kaltura.Enums
 {
 	public sealed class UserEntryExtendedStatus : StringEnum
 	{
+		public static readonly UserEntryExtendedStatus SYNC_STATUS_ERROR = new UserEntryExtendedStatus("quiz.SYNC_STATUS_ERROR");
+		public static readonly UserEntryExtendedStatus SYNC_STATUS_SUCCESS = new UserEntryExtendedStatus("quiz.SYNC_STATUS_SUCCESS");
 		public static readonly UserEntryExtendedStatus PLAYBACK_COMPLETE = new UserEntryExtendedStatus("viewHistory.PLAYBACK_COMPLETE");
 		public static readonly UserEntryExtendedStatus PLAYBACK_STARTED = new UserEntryExtendedStatus("viewHistory.PLAYBACK_STARTED");
 		public static readonly UserEntryExtendedStatus VIEWED = new UserEntryExtendedStatus("viewHistory.VIEWED");

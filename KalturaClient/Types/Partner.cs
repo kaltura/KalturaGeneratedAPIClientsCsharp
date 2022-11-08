@@ -112,11 +112,13 @@ namespace Kaltura.Types
 		public const string MAX_LOGIN_ATTEMPTS = "maxLoginAttempts";
 		public const string LOGIN_BLOCK_PERIOD = "loginBlockPeriod";
 		public const string NUM_PREV_PASS_TO_KEEP = "numPrevPassToKeep";
+		public const string ALLOW_DEFAULT_PASSWORD_RESTRICTIONS = "allowDefaultPasswordRestrictions";
 		public const string TWO_FACTOR_AUTHENTICATION_MODE = "twoFactorAuthenticationMode";
 		public const string IS_SELF_SERVE = "isSelfServe";
 		public const string ALLOWED_DOMAINS = "allowedDomains";
 		public const string EXCLUDED_ADMIN_ROLE_NAME = "excludedAdminRoleName";
 		public const string EVENT_PLATFORM_ALLOWED_TEMPLATES = "eventPlatformAllowedTemplates";
+		public const string VERTICAL_CLASSIFICATION_ID = "verticalClassificationId";
 		#endregion
 
 		#region Private Fields
@@ -194,11 +196,13 @@ namespace Kaltura.Types
 		private int _MaxLoginAttempts = Int32.MinValue;
 		private int _LoginBlockPeriod = Int32.MinValue;
 		private int _NumPrevPassToKeep = Int32.MinValue;
+		private bool? _AllowDefaultPasswordRestrictions = null;
 		private TwoFactorAuthenticationMode _TwoFactorAuthenticationMode = (TwoFactorAuthenticationMode)Int32.MinValue;
 		private bool? _IsSelfServe = null;
 		private string _AllowedDomains = null;
 		private string _ExcludedAdminRoleName = null;
 		private string _EventPlatformAllowedTemplates = null;
+		private int _VerticalClassificationId = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -1165,6 +1169,19 @@ namespace Kaltura.Types
 			}
 		}
 		/// <summary>
+		/// Use AllowDefaultPasswordRestrictionsAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public bool? AllowDefaultPasswordRestrictions
+		{
+			get { return _AllowDefaultPasswordRestrictions; }
+			private set 
+			{ 
+				_AllowDefaultPasswordRestrictions = value;
+				OnPropertyChanged("AllowDefaultPasswordRestrictions");
+			}
+		}
+		/// <summary>
 		/// Use TwoFactorAuthenticationModeAsDouble property instead
 		/// </summary>
 		[JsonProperty]
@@ -1227,6 +1244,19 @@ namespace Kaltura.Types
 			{ 
 				_EventPlatformAllowedTemplates = value;
 				OnPropertyChanged("EventPlatformAllowedTemplates");
+			}
+		}
+		/// <summary>
+		/// Use VerticalClassificationIdAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public int VerticalClassificationId
+		{
+			get { return _VerticalClassificationId; }
+			private set 
+			{ 
+				_VerticalClassificationId = value;
+				OnPropertyChanged("VerticalClassificationId");
 			}
 		}
 		#endregion
@@ -1554,6 +1584,10 @@ namespace Kaltura.Types
 			{
 				this._NumPrevPassToKeep = ParseInt(node["numPrevPassToKeep"].Value<string>());
 			}
+			if(node["allowDefaultPasswordRestrictions"] != null)
+			{
+				this._AllowDefaultPasswordRestrictions = ParseBool(node["allowDefaultPasswordRestrictions"].Value<string>());
+			}
 			if(node["twoFactorAuthenticationMode"] != null)
 			{
 				this._TwoFactorAuthenticationMode = (TwoFactorAuthenticationMode)ParseEnum(typeof(TwoFactorAuthenticationMode), node["twoFactorAuthenticationMode"].Value<string>());
@@ -1573,6 +1607,10 @@ namespace Kaltura.Types
 			if(node["eventPlatformAllowedTemplates"] != null)
 			{
 				this._EventPlatformAllowedTemplates = node["eventPlatformAllowedTemplates"].Value<string>();
+			}
+			if(node["verticalClassificationId"] != null)
+			{
+				this._VerticalClassificationId = ParseInt(node["verticalClassificationId"].Value<string>());
 			}
 		}
 		#endregion
@@ -1657,11 +1695,13 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("maxLoginAttempts", this._MaxLoginAttempts);
 			kparams.AddIfNotNull("loginBlockPeriod", this._LoginBlockPeriod);
 			kparams.AddIfNotNull("numPrevPassToKeep", this._NumPrevPassToKeep);
+			kparams.AddIfNotNull("allowDefaultPasswordRestrictions", this._AllowDefaultPasswordRestrictions);
 			kparams.AddIfNotNull("twoFactorAuthenticationMode", this._TwoFactorAuthenticationMode);
 			kparams.AddIfNotNull("isSelfServe", this._IsSelfServe);
 			kparams.AddIfNotNull("allowedDomains", this._AllowedDomains);
 			kparams.AddIfNotNull("excludedAdminRoleName", this._ExcludedAdminRoleName);
 			kparams.AddIfNotNull("eventPlatformAllowedTemplates", this._EventPlatformAllowedTemplates);
+			kparams.AddIfNotNull("verticalClassificationId", this._VerticalClassificationId);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -1816,6 +1856,8 @@ namespace Kaltura.Types
 					return "LoginBlockPeriod";
 				case NUM_PREV_PASS_TO_KEEP:
 					return "NumPrevPassToKeep";
+				case ALLOW_DEFAULT_PASSWORD_RESTRICTIONS:
+					return "AllowDefaultPasswordRestrictions";
 				case TWO_FACTOR_AUTHENTICATION_MODE:
 					return "TwoFactorAuthenticationMode";
 				case IS_SELF_SERVE:
@@ -1826,6 +1868,8 @@ namespace Kaltura.Types
 					return "ExcludedAdminRoleName";
 				case EVENT_PLATFORM_ALLOWED_TEMPLATES:
 					return "EventPlatformAllowedTemplates";
+				case VERTICAL_CLASSIFICATION_ID:
+					return "VerticalClassificationId";
 				default:
 					return base.getPropertyName(apiName);
 			}

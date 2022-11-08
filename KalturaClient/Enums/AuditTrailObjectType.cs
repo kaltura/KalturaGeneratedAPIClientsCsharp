@@ -43,6 +43,7 @@ namespace Kaltura.Enums
 		public static readonly AuditTrailObjectType USER_ROLE = new AuditTrailObjectType("UserRole");
 		public static readonly AuditTrailObjectType ACCESS_CONTROL = new AuditTrailObjectType("accessControl");
 		public static readonly AuditTrailObjectType CATEGORY = new AuditTrailObjectType("category");
+		public static readonly AuditTrailObjectType CATEGORY_ENTRY = new AuditTrailObjectType("categoryEntry");
 		public static readonly AuditTrailObjectType CONVERSION_PROFILE_2 = new AuditTrailObjectType("conversionProfile2");
 		public static readonly AuditTrailObjectType ENTRY = new AuditTrailObjectType("entry");
 		public static readonly AuditTrailObjectType FLAVOR_ASSET = new AuditTrailObjectType("flavorAsset");

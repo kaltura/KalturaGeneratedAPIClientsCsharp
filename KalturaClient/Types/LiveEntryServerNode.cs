@@ -42,6 +42,7 @@ namespace Kaltura.Types
 		public const string RECORDING_INFO = "recordingInfo";
 		public const string IS_PLAYABLE_USER = "isPlayableUser";
 		public const string VIEW_MODE = "viewMode";
+		public const string FEATURES_UPDATED_AT = "featuresUpdatedAt";
 		#endregion
 
 		#region Private Fields
@@ -49,6 +50,7 @@ namespace Kaltura.Types
 		private IList<LiveEntryServerNodeRecordingInfo> _RecordingInfo;
 		private bool? _IsPlayableUser = null;
 		private ViewMode _ViewMode = (ViewMode)Int32.MinValue;
+		private int _FeaturesUpdatedAt = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -104,6 +106,19 @@ namespace Kaltura.Types
 				OnPropertyChanged("ViewMode");
 			}
 		}
+		/// <summary>
+		/// Use FeaturesUpdatedAtAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public int FeaturesUpdatedAt
+		{
+			get { return _FeaturesUpdatedAt; }
+			set 
+			{ 
+				_FeaturesUpdatedAt = value;
+				OnPropertyChanged("FeaturesUpdatedAt");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -137,6 +152,10 @@ namespace Kaltura.Types
 			{
 				this._ViewMode = (ViewMode)ParseEnum(typeof(ViewMode), node["viewMode"].Value<string>());
 			}
+			if(node["featuresUpdatedAt"] != null)
+			{
+				this._FeaturesUpdatedAt = ParseInt(node["featuresUpdatedAt"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -150,6 +169,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("recordingInfo", this._RecordingInfo);
 			kparams.AddIfNotNull("isPlayableUser", this._IsPlayableUser);
 			kparams.AddIfNotNull("viewMode", this._ViewMode);
+			kparams.AddIfNotNull("featuresUpdatedAt", this._FeaturesUpdatedAt);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -164,6 +184,8 @@ namespace Kaltura.Types
 					return "IsPlayableUser";
 				case VIEW_MODE:
 					return "ViewMode";
+				case FEATURES_UPDATED_AT:
+					return "FeaturesUpdatedAt";
 				default:
 					return base.getPropertyName(apiName);
 			}

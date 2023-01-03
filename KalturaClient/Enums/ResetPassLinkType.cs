@@ -31,6 +31,7 @@ namespace Kaltura.Enums
 	{
 		public static readonly ResetPassLinkType KMC = new ResetPassLinkType("1");
 		public static readonly ResetPassLinkType KMS = new ResetPassLinkType("2");
+		public static readonly ResetPassLinkType KME = new ResetPassLinkType("3");
 
 		private ResetPassLinkType(string name) : base(name) { }
 	}

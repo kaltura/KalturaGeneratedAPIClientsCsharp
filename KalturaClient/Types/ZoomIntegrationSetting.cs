@@ -47,7 +47,6 @@ namespace Kaltura.Types
 		public const string JWT_TOKEN = "jwtToken";
 		public const string ENABLE_ZOOM_TRANSCRIPTION = "enableZoomTranscription";
 		public const string ZOOM_ACCOUNT_DESCRIPTION = "zoomAccountDescription";
-		public const string ENABLE_MEETING_UPLOAD = "enableMeetingUpload";
 		public const string OPT_OUT_GROUP_NAMES = "optOutGroupNames";
 		public const string OPT_IN_GROUP_NAMES = "optInGroupNames";
 		public const string GROUP_PARTICIPATION_TYPE = "groupParticipationType";
@@ -63,7 +62,6 @@ namespace Kaltura.Types
 		private string _JwtToken = null;
 		private NullableBoolean _EnableZoomTranscription = (NullableBoolean)Int32.MinValue;
 		private string _ZoomAccountDescription = null;
-		private NullableBoolean _EnableMeetingUpload = (NullableBoolean)Int32.MinValue;
 		private string _OptOutGroupNames = null;
 		private string _OptInGroupNames = null;
 		private ZoomGroupParticipationType _GroupParticipationType = (ZoomGroupParticipationType)Int32.MinValue;
@@ -188,19 +186,6 @@ namespace Kaltura.Types
 			}
 		}
 		/// <summary>
-		/// Use EnableMeetingUploadAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public NullableBoolean EnableMeetingUpload
-		{
-			get { return _EnableMeetingUpload; }
-			set 
-			{ 
-				_EnableMeetingUpload = value;
-				OnPropertyChanged("EnableMeetingUpload");
-			}
-		}
-		/// <summary>
 		/// Use OptOutGroupNamesAsDouble property instead
 		/// </summary>
 		[JsonProperty]
@@ -284,10 +269,6 @@ namespace Kaltura.Types
 			{
 				this._ZoomAccountDescription = node["zoomAccountDescription"].Value<string>();
 			}
-			if(node["enableMeetingUpload"] != null)
-			{
-				this._EnableMeetingUpload = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["enableMeetingUpload"].Value<string>());
-			}
 			if(node["optOutGroupNames"] != null)
 			{
 				this._OptOutGroupNames = node["optOutGroupNames"].Value<string>();
@@ -318,7 +299,6 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("jwtToken", this._JwtToken);
 			kparams.AddIfNotNull("enableZoomTranscription", this._EnableZoomTranscription);
 			kparams.AddIfNotNull("zoomAccountDescription", this._ZoomAccountDescription);
-			kparams.AddIfNotNull("enableMeetingUpload", this._EnableMeetingUpload);
 			kparams.AddIfNotNull("optOutGroupNames", this._OptOutGroupNames);
 			kparams.AddIfNotNull("optInGroupNames", this._OptInGroupNames);
 			kparams.AddIfNotNull("groupParticipationType", this._GroupParticipationType);
@@ -346,8 +326,6 @@ namespace Kaltura.Types
 					return "EnableZoomTranscription";
 				case ZOOM_ACCOUNT_DESCRIPTION:
 					return "ZoomAccountDescription";
-				case ENABLE_MEETING_UPLOAD:
-					return "EnableMeetingUpload";
 				case OPT_OUT_GROUP_NAMES:
 					return "OptOutGroupNames";
 				case OPT_IN_GROUP_NAMES:

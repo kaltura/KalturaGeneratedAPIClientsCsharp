@@ -42,6 +42,7 @@ namespace Kaltura.Types
 		public const string DATE_OF_BIRTH = "dateOfBirth";
 		public const string GENDER = "gender";
 		public const string IS_ADMIN = "isAdmin";
+		public const string IS_GUEST = "isGuest";
 		public const string ROLE_IDS = "roleIds";
 		public const string ROLE_NAMES = "roleNames";
 		public const string IS_ACCOUNT_OWNER = "isAccountOwner";
@@ -56,6 +57,7 @@ namespace Kaltura.Types
 		public const string KS_PRIVILEGES = "ksPrivileges";
 		public const string ENCRYPTED_SEED = "encryptedSeed";
 		public const string IS_SSO_EXCLUDED = "isSsoExcluded";
+		public const string EXTERNAL_ID = "externalId";
 		#endregion
 
 		#region Private Fields
@@ -63,6 +65,7 @@ namespace Kaltura.Types
 		private int _DateOfBirth = Int32.MinValue;
 		private Gender _Gender = (Gender)Int32.MinValue;
 		private bool? _IsAdmin = null;
+		private bool? _IsGuest = null;
 		private string _RoleIds = null;
 		private string _RoleNames = null;
 		private bool? _IsAccountOwner = null;
@@ -77,6 +80,7 @@ namespace Kaltura.Types
 		private string _KsPrivileges = null;
 		private string _EncryptedSeed = null;
 		private bool? _IsSsoExcluded = null;
+		private string _ExternalId = null;
 		#endregion
 
 		#region Properties
@@ -130,6 +134,19 @@ namespace Kaltura.Types
 			{ 
 				_IsAdmin = value;
 				OnPropertyChanged("IsAdmin");
+			}
+		}
+		/// <summary>
+		/// Use IsGuestAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public bool? IsGuest
+		{
+			get { return _IsGuest; }
+			set 
+			{ 
+				_IsGuest = value;
+				OnPropertyChanged("IsGuest");
 			}
 		}
 		/// <summary>
@@ -313,6 +330,19 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsSsoExcluded");
 			}
 		}
+		/// <summary>
+		/// Use ExternalIdAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public string ExternalId
+		{
+			get { return _ExternalId; }
+			set 
+			{ 
+				_ExternalId = value;
+				OnPropertyChanged("ExternalId");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -337,6 +367,10 @@ namespace Kaltura.Types
 			if(node["isAdmin"] != null)
 			{
 				this._IsAdmin = ParseBool(node["isAdmin"].Value<string>());
+			}
+			if(node["isGuest"] != null)
+			{
+				this._IsGuest = ParseBool(node["isGuest"].Value<string>());
 			}
 			if(node["roleIds"] != null)
 			{
@@ -394,6 +428,10 @@ namespace Kaltura.Types
 			{
 				this._IsSsoExcluded = ParseBool(node["isSsoExcluded"].Value<string>());
 			}
+			if(node["externalId"] != null)
+			{
+				this._ExternalId = node["externalId"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -407,6 +445,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("dateOfBirth", this._DateOfBirth);
 			kparams.AddIfNotNull("gender", this._Gender);
 			kparams.AddIfNotNull("isAdmin", this._IsAdmin);
+			kparams.AddIfNotNull("isGuest", this._IsGuest);
 			kparams.AddIfNotNull("roleIds", this._RoleIds);
 			kparams.AddIfNotNull("roleNames", this._RoleNames);
 			kparams.AddIfNotNull("isAccountOwner", this._IsAccountOwner);
@@ -421,6 +460,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("ksPrivileges", this._KsPrivileges);
 			kparams.AddIfNotNull("encryptedSeed", this._EncryptedSeed);
 			kparams.AddIfNotNull("isSsoExcluded", this._IsSsoExcluded);
+			kparams.AddIfNotNull("externalId", this._ExternalId);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -435,6 +475,8 @@ namespace Kaltura.Types
 					return "Gender";
 				case IS_ADMIN:
 					return "IsAdmin";
+				case IS_GUEST:
+					return "IsGuest";
 				case ROLE_IDS:
 					return "RoleIds";
 				case ROLE_NAMES:
@@ -463,6 +505,8 @@ namespace Kaltura.Types
 					return "EncryptedSeed";
 				case IS_SSO_EXCLUDED:
 					return "IsSsoExcluded";
+				case EXTERNAL_ID:
+					return "ExternalId";
 				default:
 					return base.getPropertyName(apiName);
 			}

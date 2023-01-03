@@ -42,6 +42,7 @@ namespace Kaltura.Types
 		public const string MEDIA_KEY = "mediaKey";
 		public const string CAPTION_URL = "captionUrl";
 		public const string CAPTION_TOKEN = "captionToken";
+		public const string INPUT_DELAY = "inputDelay";
 		#endregion
 
 		#region Private Fields
@@ -49,6 +50,7 @@ namespace Kaltura.Types
 		private string _MediaKey = null;
 		private string _CaptionUrl = null;
 		private string _CaptionToken = null;
+		private int _InputDelay = Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -104,6 +106,19 @@ namespace Kaltura.Types
 				OnPropertyChanged("CaptionToken");
 			}
 		}
+		/// <summary>
+		/// Use InputDelayAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public int InputDelay
+		{
+			get { return _InputDelay; }
+			set 
+			{ 
+				_InputDelay = value;
+				OnPropertyChanged("InputDelay");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -129,6 +144,10 @@ namespace Kaltura.Types
 			{
 				this._CaptionToken = node["captionToken"].Value<string>();
 			}
+			if(node["inputDelay"] != null)
+			{
+				this._InputDelay = ParseInt(node["inputDelay"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -142,6 +161,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("mediaKey", this._MediaKey);
 			kparams.AddIfNotNull("captionUrl", this._CaptionUrl);
 			kparams.AddIfNotNull("captionToken", this._CaptionToken);
+			kparams.AddIfNotNull("inputDelay", this._InputDelay);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -156,6 +176,8 @@ namespace Kaltura.Types
 					return "CaptionUrl";
 				case CAPTION_TOKEN:
 					return "CaptionToken";
+				case INPUT_DELAY:
+					return "InputDelay";
 				default:
 					return base.getPropertyName(apiName);
 			}

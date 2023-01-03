@@ -95,6 +95,7 @@ namespace Kaltura.Enums
 		public static readonly ReportType CDN_BANDWIDTH_USAGE = new ReportType("64");
 		public static readonly ReportType REACH_CATALOG_USAGE = new ReportType("65");
 		public static readonly ReportType REACH_PROFILE_USAGE = new ReportType("66");
+		public static readonly ReportType SELF_SERVE_BANDWIDTH = new ReportType("67");
 		public static readonly ReportType PARTNER_USAGE = new ReportType("201");
 		public static readonly ReportType MAP_OVERLAY_COUNTRY_REALTIME = new ReportType("10001");
 		public static readonly ReportType MAP_OVERLAY_REGION_REALTIME = new ReportType("10002");

@@ -33,9 +33,13 @@ namespace Kaltura.Enums
 		public static readonly ESearchGroupFieldName COUNTRY = new ESearchGroupFieldName("country");
 		public static readonly ESearchGroupFieldName CREATED_AT = new ESearchGroupFieldName("created_at");
 		public static readonly ESearchGroupFieldName EMAIL = new ESearchGroupFieldName("email");
+		public static readonly ESearchGroupFieldName EXTERNAL_ID = new ESearchGroupFieldName("external_id");
 		public static readonly ESearchGroupFieldName FIRST_NAME = new ESearchGroupFieldName("first_name");
 		public static readonly ESearchGroupFieldName GROUP_IDS = new ESearchGroupFieldName("group_ids");
+		public static readonly ESearchGroupFieldName IS_ADMIN = new ESearchGroupFieldName("is_admin");
+		public static readonly ESearchGroupFieldName IS_HASHED = new ESearchGroupFieldName("is_hashed");
 		public static readonly ESearchGroupFieldName LAST_NAME = new ESearchGroupFieldName("last_name");
+		public static readonly ESearchGroupFieldName LOGIN_ENABLED = new ESearchGroupFieldName("login_enabled");
 		public static readonly ESearchGroupFieldName PERMISSION_NAMES = new ESearchGroupFieldName("permission_names");
 		public static readonly ESearchGroupFieldName ROLE_IDS = new ESearchGroupFieldName("role_ids");
 		public static readonly ESearchGroupFieldName SCREEN_NAME = new ESearchGroupFieldName("screen_name");

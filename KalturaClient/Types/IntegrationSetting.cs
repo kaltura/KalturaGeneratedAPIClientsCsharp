@@ -49,6 +49,7 @@ namespace Kaltura.Types
 		public const string CREATED_AT = "createdAt";
 		public const string UPDATED_AT = "updatedAt";
 		public const string PARTNER_ID = "partnerId";
+		public const string ENABLE_MEETING_UPLOAD = "enableMeetingUpload";
 		#endregion
 
 		#region Private Fields
@@ -63,6 +64,7 @@ namespace Kaltura.Types
 		private string _CreatedAt = null;
 		private string _UpdatedAt = null;
 		private int _PartnerId = Int32.MinValue;
+		private NullableBoolean _EnableMeetingUpload = (NullableBoolean)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -209,6 +211,19 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
+		/// <summary>
+		/// Use EnableMeetingUploadAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public NullableBoolean EnableMeetingUpload
+		{
+			get { return _EnableMeetingUpload; }
+			set 
+			{ 
+				_EnableMeetingUpload = value;
+				OnPropertyChanged("EnableMeetingUpload");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -262,6 +277,10 @@ namespace Kaltura.Types
 			{
 				this._PartnerId = ParseInt(node["partnerId"].Value<string>());
 			}
+			if(node["enableMeetingUpload"] != null)
+			{
+				this._EnableMeetingUpload = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["enableMeetingUpload"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -282,6 +301,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("createdAt", this._CreatedAt);
 			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
 			kparams.AddIfNotNull("partnerId", this._PartnerId);
+			kparams.AddIfNotNull("enableMeetingUpload", this._EnableMeetingUpload);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -310,6 +330,8 @@ namespace Kaltura.Types
 					return "UpdatedAt";
 				case PARTNER_ID:
 					return "PartnerId";
+				case ENABLE_MEETING_UPLOAD:
+					return "EnableMeetingUpload";
 				default:
 					return base.getPropertyName(apiName);
 			}

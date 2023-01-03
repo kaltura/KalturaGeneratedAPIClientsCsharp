@@ -52,6 +52,7 @@ namespace Kaltura.Types
 		public const string FIRST_NAME = "firstName";
 		public const string LAST_NAME = "lastName";
 		public const string GROUP = "group";
+		public const string EXTERNAL_ID = "externalId";
 		#endregion
 
 		#region Private Fields
@@ -69,6 +70,7 @@ namespace Kaltura.Types
 		private string _FirstName = null;
 		private string _LastName = null;
 		private string _Group = null;
+		private string _ExternalId = null;
 		#endregion
 
 		#region Properties
@@ -254,6 +256,19 @@ namespace Kaltura.Types
 				OnPropertyChanged("Group");
 			}
 		}
+		/// <summary>
+		/// Use ExternalIdAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public string ExternalId
+		{
+			get { return _ExternalId; }
+			set 
+			{ 
+				_ExternalId = value;
+				OnPropertyChanged("ExternalId");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -319,6 +334,10 @@ namespace Kaltura.Types
 			{
 				this._Group = node["group"].Value<string>();
 			}
+			if(node["externalId"] != null)
+			{
+				this._ExternalId = node["externalId"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -342,6 +361,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("firstName", this._FirstName);
 			kparams.AddIfNotNull("lastName", this._LastName);
 			kparams.AddIfNotNull("group", this._Group);
+			kparams.AddIfNotNull("externalId", this._ExternalId);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -376,6 +396,8 @@ namespace Kaltura.Types
 					return "LastName";
 				case GROUP:
 					return "Group";
+				case EXTERNAL_ID:
+					return "ExternalId";
 				default:
 					return base.getPropertyName(apiName);
 			}

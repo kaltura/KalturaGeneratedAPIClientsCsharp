@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2022  Kaltura Inc.
+// Copyright (C) 2006-2023  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -50,6 +50,7 @@ namespace Kaltura.Types
 		public const string UPDATED_AT = "updatedAt";
 		public const string PARTNER_ID = "partnerId";
 		public const string ENABLE_MEETING_UPLOAD = "enableMeetingUpload";
+		public const string ENABLE_MEETING_CHAT = "enableMeetingChat";
 		#endregion
 
 		#region Private Fields
@@ -65,6 +66,7 @@ namespace Kaltura.Types
 		private string _UpdatedAt = null;
 		private int _PartnerId = Int32.MinValue;
 		private NullableBoolean _EnableMeetingUpload = (NullableBoolean)Int32.MinValue;
+		private NullableBoolean _EnableMeetingChat = (NullableBoolean)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -224,6 +226,19 @@ namespace Kaltura.Types
 				OnPropertyChanged("EnableMeetingUpload");
 			}
 		}
+		/// <summary>
+		/// Use EnableMeetingChatAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public NullableBoolean EnableMeetingChat
+		{
+			get { return _EnableMeetingChat; }
+			set 
+			{ 
+				_EnableMeetingChat = value;
+				OnPropertyChanged("EnableMeetingChat");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -281,6 +296,10 @@ namespace Kaltura.Types
 			{
 				this._EnableMeetingUpload = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["enableMeetingUpload"].Value<string>());
 			}
+			if(node["enableMeetingChat"] != null)
+			{
+				this._EnableMeetingChat = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["enableMeetingChat"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -302,6 +321,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
 			kparams.AddIfNotNull("partnerId", this._PartnerId);
 			kparams.AddIfNotNull("enableMeetingUpload", this._EnableMeetingUpload);
+			kparams.AddIfNotNull("enableMeetingChat", this._EnableMeetingChat);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -332,6 +352,8 @@ namespace Kaltura.Types
 					return "PartnerId";
 				case ENABLE_MEETING_UPLOAD:
 					return "EnableMeetingUpload";
+				case ENABLE_MEETING_CHAT:
+					return "EnableMeetingChat";
 				default:
 					return base.getPropertyName(apiName);
 			}

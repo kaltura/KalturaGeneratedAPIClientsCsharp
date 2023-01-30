@@ -40,11 +40,13 @@ namespace Kaltura.Types
 		#region Constants
 		public const string PARTNER_PARENT_ID_EQUAL = "partnerParentIdEqual";
 		public const string PARTNER_PARENT_ID_IN = "partnerParentIdIn";
+		public const string ADMIN_EMAIL_EQUAL = "adminEmailEqual";
 		#endregion
 
 		#region Private Fields
 		private int _PartnerParentIdEqual = Int32.MinValue;
 		private string _PartnerParentIdIn = null;
+		private string _AdminEmailEqual = null;
 		#endregion
 
 		#region Properties
@@ -74,6 +76,19 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerParentIdIn");
 			}
 		}
+		/// <summary>
+		/// Use AdminEmailEqualAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public string AdminEmailEqual
+		{
+			get { return _AdminEmailEqual; }
+			set 
+			{ 
+				_AdminEmailEqual = value;
+				OnPropertyChanged("AdminEmailEqual");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -91,6 +106,10 @@ namespace Kaltura.Types
 			{
 				this._PartnerParentIdIn = node["partnerParentIdIn"].Value<string>();
 			}
+			if(node["adminEmailEqual"] != null)
+			{
+				this._AdminEmailEqual = node["adminEmailEqual"].Value<string>();
+			}
 		}
 		#endregion
 
@@ -102,6 +121,7 @@ namespace Kaltura.Types
 				kparams.AddReplace("objectType", "KalturaSystemPartnerFilter");
 			kparams.AddIfNotNull("partnerParentIdEqual", this._PartnerParentIdEqual);
 			kparams.AddIfNotNull("partnerParentIdIn", this._PartnerParentIdIn);
+			kparams.AddIfNotNull("adminEmailEqual", this._AdminEmailEqual);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -112,6 +132,8 @@ namespace Kaltura.Types
 					return "PartnerParentIdEqual";
 				case PARTNER_PARENT_ID_IN:
 					return "PartnerParentIdIn";
+				case ADMIN_EMAIL_EQUAL:
+					return "AdminEmailEqual";
 				default:
 					return base.getPropertyName(apiName);
 			}

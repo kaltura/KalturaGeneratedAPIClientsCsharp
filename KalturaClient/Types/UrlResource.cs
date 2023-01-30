@@ -40,11 +40,13 @@ namespace Kaltura.Types
 		#region Constants
 		public const string URL = "url";
 		public const string FORCE_ASYNC_DOWNLOAD = "forceAsyncDownload";
+		public const string URL_HEADERS = "urlHeaders";
 		#endregion
 
 		#region Private Fields
 		private string _Url = null;
 		private bool? _ForceAsyncDownload = null;
+		private IList<String> _UrlHeaders;
 		#endregion
 
 		#region Properties
@@ -74,6 +76,19 @@ namespace Kaltura.Types
 				OnPropertyChanged("ForceAsyncDownload");
 			}
 		}
+		/// <summary>
+		/// Use UrlHeadersAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public IList<String> UrlHeaders
+		{
+			get { return _UrlHeaders; }
+			set 
+			{ 
+				_UrlHeaders = value;
+				OnPropertyChanged("UrlHeaders");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -91,6 +106,14 @@ namespace Kaltura.Types
 			{
 				this._ForceAsyncDownload = ParseBool(node["forceAsyncDownload"].Value<string>());
 			}
+			if(node["urlHeaders"] != null)
+			{
+				this._UrlHeaders = new List<String>();
+				foreach(var arrayNode in node["urlHeaders"].Children())
+				{
+					this._UrlHeaders.Add(ObjectFactory.Create<String>(arrayNode));
+				}
+			}
 		}
 		#endregion
 
@@ -102,6 +125,7 @@ namespace Kaltura.Types
 				kparams.AddReplace("objectType", "KalturaUrlResource");
 			kparams.AddIfNotNull("url", this._Url);
 			kparams.AddIfNotNull("forceAsyncDownload", this._ForceAsyncDownload);
+			kparams.AddIfNotNull("urlHeaders", this._UrlHeaders);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -112,6 +136,8 @@ namespace Kaltura.Types
 					return "Url";
 				case FORCE_ASYNC_DOWNLOAD:
 					return "ForceAsyncDownload";
+				case URL_HEADERS:
+					return "UrlHeaders";
 				default:
 					return base.getPropertyName(apiName);
 			}

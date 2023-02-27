@@ -31,5 +31,6 @@ namespace Kaltura.Enums
 	{
 		SRT = 1,
 		DFXP = 2,
+		VTT = 3,
 	}
 }

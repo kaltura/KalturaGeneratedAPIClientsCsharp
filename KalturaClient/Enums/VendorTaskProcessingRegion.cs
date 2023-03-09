@@ -31,5 +31,6 @@ namespace Kaltura.Enums
 	{
 		US = 1,
 		EU = 2,
+		CA = 3,
 	}
 }

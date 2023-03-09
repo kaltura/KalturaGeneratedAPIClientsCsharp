@@ -37,6 +37,7 @@ namespace Kaltura.Enums
 		public static readonly ESearchEntryFieldName CREATOR_ID = new ESearchEntryFieldName("creator_kuser_id");
 		public static readonly ESearchEntryFieldName CREDIT = new ESearchEntryFieldName("credit");
 		public static readonly ESearchEntryFieldName DESCRIPTION = new ESearchEntryFieldName("description");
+		public static readonly ESearchEntryFieldName DISPLAY_IN_SEARCH = new ESearchEntryFieldName("display_in_search");
 		public static readonly ESearchEntryFieldName END_DATE = new ESearchEntryFieldName("end_date");
 		public static readonly ESearchEntryFieldName ENTITLED_USER_EDIT = new ESearchEntryFieldName("entitled_kusers_edit");
 		public static readonly ESearchEntryFieldName ENTITLED_USER_PUBLISH = new ESearchEntryFieldName("entitled_kusers_publish");

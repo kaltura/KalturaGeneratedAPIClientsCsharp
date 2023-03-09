@@ -912,6 +912,45 @@ namespace Kaltura.Services
 		}
 	}
 
+	public class BaseEntryRecycleRequestBuilder : RequestBuilder<BaseEntry>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		#endregion
+
+		public string EntryId { get; set; }
+
+		public BaseEntryRecycleRequestBuilder()
+			: base("baseentry", "recycle")
+		{
+		}
+
+		public BaseEntryRecycleRequestBuilder(string entryId)
+			: this()
+		{
+			this.EntryId = entryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			return ObjectFactory.Create<BaseEntry>(result);
+		}
+	}
+
 	public class BaseEntryRejectRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
@@ -948,6 +987,45 @@ namespace Kaltura.Services
 		public override object Deserialize(JToken result)
 		{
 			return null;
+		}
+	}
+
+	public class BaseEntryRestoreRecycledRequestBuilder : RequestBuilder<BaseEntry>
+	{
+		#region Constants
+		public const string ENTRY_ID = "entryId";
+		#endregion
+
+		public string EntryId { get; set; }
+
+		public BaseEntryRestoreRecycledRequestBuilder()
+			: base("baseentry", "restoreRecycled")
+		{
+		}
+
+		public BaseEntryRestoreRecycledRequestBuilder(string entryId)
+			: this()
+		{
+			this.EntryId = entryId;
+		}
+
+		public override Params getParameters(bool includeServiceAndAction)
+		{
+			Params kparams = base.getParameters(includeServiceAndAction);
+			if (!isMapped("entryId"))
+				kparams.AddIfNotNull("entryId", EntryId);
+			return kparams;
+		}
+
+		public override Files getFiles()
+		{
+			Files kfiles = base.getFiles();
+			return kfiles;
+		}
+
+		public override object Deserialize(JToken result)
+		{
+			return ObjectFactory.Create<BaseEntry>(result);
 		}
 	}
 
@@ -1332,9 +1410,19 @@ namespace Kaltura.Services
 			return new BaseEntryListFlagsRequestBuilder(entryId, pager);
 		}
 
+		public static BaseEntryRecycleRequestBuilder Recycle(string entryId)
+		{
+			return new BaseEntryRecycleRequestBuilder(entryId);
+		}
+
 		public static BaseEntryRejectRequestBuilder Reject(string entryId)
 		{
 			return new BaseEntryRejectRequestBuilder(entryId);
+		}
+
+		public static BaseEntryRestoreRecycledRequestBuilder RestoreRecycled(string entryId)
+		{
+			return new BaseEntryRestoreRecycledRequestBuilder(entryId);
 		}
 
 		public static BaseEntryUpdateRequestBuilder Update(string entryId, BaseEntry baseEntry)

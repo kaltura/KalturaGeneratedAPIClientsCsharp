@@ -29,6 +29,7 @@ namespace Kaltura.Enums
 {
 	public enum EntryDisplayInSearchType
 	{
+		RECYCLED = -2,
 		SYSTEM = -1,
 		NONE = 0,
 		PARTNER_ONLY = 1,

@@ -37,6 +37,7 @@ namespace Kaltura.Enums
 		public static readonly EntryApplication WEBCAST_APP = new EntryApplication("5");
 		public static readonly EntryApplication PERSONAL_CAPTURE = new EntryApplication("6");
 		public static readonly EntryApplication KALTURA_MEETING = new EntryApplication("7");
+		public static readonly EntryApplication EP = new EntryApplication("8");
 
 		private EntryApplication(string name) : base(name) { }
 	}

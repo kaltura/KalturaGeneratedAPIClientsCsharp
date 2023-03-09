@@ -120,6 +120,7 @@ namespace Kaltura.Types
 		public const string TAGS_NAME_MULTI_LIKE_AND = "tagsNameMultiLikeAnd";
 		public const string TAGS_ADMIN_TAGS_MULTI_LIKE_AND = "tagsAdminTagsMultiLikeAnd";
 		public const string TAGS_ADMIN_TAGS_NAME_MULTI_LIKE_AND = "tagsAdminTagsNameMultiLikeAnd";
+		public const string DISPLAY_IN_SEARCH_EQUAL = "displayInSearchEqual";
 		#endregion
 
 		#region Private Fields
@@ -205,6 +206,7 @@ namespace Kaltura.Types
 		private string _TagsNameMultiLikeAnd = null;
 		private string _TagsAdminTagsMultiLikeAnd = null;
 		private string _TagsAdminTagsNameMultiLikeAnd = null;
+		private EntryDisplayInSearchType _DisplayInSearchEqual = (EntryDisplayInSearchType)Int32.MinValue;
 		#endregion
 
 		#region Properties
@@ -1274,6 +1276,19 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsAdminTagsNameMultiLikeAnd");
 			}
 		}
+		/// <summary>
+		/// Use DisplayInSearchEqualAsDouble property instead
+		/// </summary>
+		[JsonProperty]
+		public EntryDisplayInSearchType DisplayInSearchEqual
+		{
+			get { return _DisplayInSearchEqual; }
+			set 
+			{ 
+				_DisplayInSearchEqual = value;
+				OnPropertyChanged("DisplayInSearchEqual");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -1611,6 +1626,10 @@ namespace Kaltura.Types
 			{
 				this._TagsAdminTagsNameMultiLikeAnd = node["tagsAdminTagsNameMultiLikeAnd"].Value<string>();
 			}
+			if(node["displayInSearchEqual"] != null)
+			{
+				this._DisplayInSearchEqual = (EntryDisplayInSearchType)ParseEnum(typeof(EntryDisplayInSearchType), node["displayInSearchEqual"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -1702,6 +1721,7 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("tagsNameMultiLikeAnd", this._TagsNameMultiLikeAnd);
 			kparams.AddIfNotNull("tagsAdminTagsMultiLikeAnd", this._TagsAdminTagsMultiLikeAnd);
 			kparams.AddIfNotNull("tagsAdminTagsNameMultiLikeAnd", this._TagsAdminTagsNameMultiLikeAnd);
+			kparams.AddIfNotNull("displayInSearchEqual", this._DisplayInSearchEqual);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -1872,6 +1892,8 @@ namespace Kaltura.Types
 					return "TagsAdminTagsMultiLikeAnd";
 				case TAGS_ADMIN_TAGS_NAME_MULTI_LIKE_AND:
 					return "TagsAdminTagsNameMultiLikeAnd";
+				case DISPLAY_IN_SEARCH_EQUAL:
+					return "DisplayInSearchEqual";
 				default:
 					return base.getPropertyName(apiName);
 			}

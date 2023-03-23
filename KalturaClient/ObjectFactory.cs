@@ -262,6 +262,8 @@ namespace Kaltura
 					return new ListResponse<UserRole>(jToken);
 				case "KalturaVendorCatalogItemListResponse":
 					return new ListResponse<VendorCatalogItem>(jToken);
+				case "KalturaVirtualEventListResponse":
+					return new ListResponse<VirtualEvent>(jToken);
 				case "KalturaVirusScanProfileListResponse":
 					return new ListResponse<VirusScanProfile>(jToken);
 				case "KalturaWidgetListResponse":

@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -100,9 +100,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use IdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Id
 		{
@@ -113,9 +110,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
-		/// <summary>
-		/// Use CreatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -126,9 +120,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
-		/// <summary>
-		/// Use UpdatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -139,9 +130,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
-		/// <summary>
-		/// Use SubmittedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int SubmittedAt
 		{
@@ -152,9 +140,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SubmittedAt");
 			}
 		}
-		/// <summary>
-		/// Use EntryIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EntryId
 		{
@@ -165,9 +150,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
-		/// <summary>
-		/// Use PartnerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -178,9 +160,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
-		/// <summary>
-		/// Use DistributionProfileIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int DistributionProfileId
 		{
@@ -191,9 +170,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributionProfileId");
 			}
 		}
-		/// <summary>
-		/// Use StatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public EntryDistributionStatus Status
 		{
@@ -204,9 +180,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
-		/// <summary>
-		/// Use SunStatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public EntryDistributionSunStatus SunStatus
 		{
@@ -217,9 +190,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SunStatus");
 			}
 		}
-		/// <summary>
-		/// Use DirtyStatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public EntryDistributionFlag DirtyStatus
 		{
@@ -230,9 +200,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DirtyStatus");
 			}
 		}
-		/// <summary>
-		/// Use ThumbAssetIdsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ThumbAssetIds
 		{
@@ -243,9 +210,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbAssetIds");
 			}
 		}
-		/// <summary>
-		/// Use FlavorAssetIdsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FlavorAssetIds
 		{
@@ -256,9 +220,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetIds");
 			}
 		}
-		/// <summary>
-		/// Use AssetIdsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string AssetIds
 		{
@@ -269,9 +230,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetIds");
 			}
 		}
-		/// <summary>
-		/// Use SunriseAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Sunrise
 		{
@@ -282,9 +240,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Sunrise");
 			}
 		}
-		/// <summary>
-		/// Use SunsetAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Sunset
 		{
@@ -295,9 +250,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Sunset");
 			}
 		}
-		/// <summary>
-		/// Use RemoteIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string RemoteId
 		{
@@ -308,9 +260,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("RemoteId");
 			}
 		}
-		/// <summary>
-		/// Use PlaysAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Plays
 		{
@@ -321,9 +270,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Plays");
 			}
 		}
-		/// <summary>
-		/// Use ViewsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Views
 		{
@@ -334,9 +280,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Views");
 			}
 		}
-		/// <summary>
-		/// Use ValidationErrorsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<DistributionValidationError> ValidationErrors
 		{
@@ -347,9 +290,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ValidationErrors");
 			}
 		}
-		/// <summary>
-		/// Use ErrorTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public BatchJobErrorTypes ErrorType
 		{
@@ -360,9 +300,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrorType");
 			}
 		}
-		/// <summary>
-		/// Use ErrorNumberAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ErrorNumber
 		{
@@ -373,9 +310,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrorNumber");
 			}
 		}
-		/// <summary>
-		/// Use ErrorDescriptionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ErrorDescription
 		{
@@ -386,9 +320,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrorDescription");
 			}
 		}
-		/// <summary>
-		/// Use HasSubmitResultsLogAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public NullableBoolean HasSubmitResultsLog
 		{
@@ -399,9 +330,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("HasSubmitResultsLog");
 			}
 		}
-		/// <summary>
-		/// Use HasSubmitSentDataLogAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public NullableBoolean HasSubmitSentDataLog
 		{
@@ -412,9 +340,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("HasSubmitSentDataLog");
 			}
 		}
-		/// <summary>
-		/// Use HasUpdateResultsLogAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public NullableBoolean HasUpdateResultsLog
 		{
@@ -425,9 +350,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("HasUpdateResultsLog");
 			}
 		}
-		/// <summary>
-		/// Use HasUpdateSentDataLogAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public NullableBoolean HasUpdateSentDataLog
 		{
@@ -438,9 +360,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("HasUpdateSentDataLog");
 			}
 		}
-		/// <summary>
-		/// Use HasDeleteResultsLogAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public NullableBoolean HasDeleteResultsLog
 		{
@@ -451,9 +370,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("HasDeleteResultsLog");
 			}
 		}
-		/// <summary>
-		/// Use HasDeleteSentDataLogAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public NullableBoolean HasDeleteSentDataLog
 		{

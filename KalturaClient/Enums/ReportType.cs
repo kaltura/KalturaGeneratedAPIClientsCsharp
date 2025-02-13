@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -88,14 +88,6 @@ namespace Kaltura.Enums
 		public static readonly ReportType INTERACTIVE_VIDEO_NODE_SWITCH_HOTSPOT_CLICKED_PERCENTILES = new ReportType("57");
 		public static readonly ReportType TOP_CUSTOM_VAR2 = new ReportType("58");
 		public static readonly ReportType TOP_CUSTOM_VAR3 = new ReportType("59");
-		public static readonly ReportType SELF_SERVE_USAGE = new ReportType("60");
-		public static readonly ReportType FLAVOR_PARAMS_TRANSCODING_USAGE = new ReportType("61");
-		public static readonly ReportType PLAYER_HIGHLIGHTS = new ReportType("62");
-		public static readonly ReportType PARTNER_USAGE_HIGHLIGHTS = new ReportType("63");
-		public static readonly ReportType CDN_BANDWIDTH_USAGE = new ReportType("64");
-		public static readonly ReportType REACH_CATALOG_USAGE = new ReportType("65");
-		public static readonly ReportType REACH_PROFILE_USAGE = new ReportType("66");
-		public static readonly ReportType SELF_SERVE_BANDWIDTH = new ReportType("67");
 		public static readonly ReportType PARTNER_USAGE = new ReportType("201");
 		public static readonly ReportType MAP_OVERLAY_COUNTRY_REALTIME = new ReportType("10001");
 		public static readonly ReportType MAP_OVERLAY_REGION_REALTIME = new ReportType("10002");
@@ -134,7 +126,6 @@ namespace Kaltura.Enums
 		public static readonly ReportType PLAYBACK_RATE_VPAAS = new ReportType("20020");
 		public static readonly ReportType PARTNER_USAGE_VPAAS = new ReportType("20021");
 		public static readonly ReportType TOP_PLAYBACK_CONTEXT_VPAAS = new ReportType("20022");
-		public static readonly ReportType SELF_SERVE_USAGE_VPAAS = new ReportType("20023");
 		public static readonly ReportType QOE_OVERVIEW = new ReportType("30001");
 		public static readonly ReportType QOE_EXPERIENCE = new ReportType("30002");
 		public static readonly ReportType QOE_EXPERIENCE_PLATFORMS = new ReportType("30003");
@@ -210,14 +201,6 @@ namespace Kaltura.Enums
 		public static readonly ReportType TOP_USERS_WEBCAST = new ReportType("40009");
 		public static readonly ReportType ENGAGEMENT_BREAKDOWN_WEBCAST = new ReportType("40010");
 		public static readonly ReportType ENGAGMENT_TIMELINE_WEBCAST = new ReportType("40011");
-		public static readonly ReportType ENGAGEMENT_TOOLS_WEBCAST = new ReportType("40012");
-		public static readonly ReportType REACTIONS_BREAKDOWN_WEBCAST = new ReportType("40013");
-		public static readonly ReportType VE_HIGHLIGHTS = new ReportType("50000");
-		public static readonly ReportType VE_REGISTERED_PLATFORMS = new ReportType("50001");
-		public static readonly ReportType VE_REGISTERED_INDUSTRY = new ReportType("50002");
-		public static readonly ReportType VE_REGISTERED_ROLES = new ReportType("50003");
-		public static readonly ReportType VE_REGISTERED_COUNTRIES = new ReportType("50004");
-		public static readonly ReportType VE_REGISTERED_WORLD_REGIONS = new ReportType("50005");
 
 		private ReportType(string name) : base(name) { }
 	}

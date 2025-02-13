@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -38,19 +38,28 @@ namespace Kaltura.Types
 	public class VendorAudioDescriptionCatalogItem : VendorCatalogItem
 	{
 		#region Constants
+		public const string SOURCE_LANGUAGE = "sourceLanguage";
 		public const string FLAVOR_PARAMS_ID = "flavorParamsId";
 		public const string CLEAR_AUDIO_FLAVOR_PARAMS_ID = "clearAudioFlavorParamsId";
 		#endregion
 
 		#region Private Fields
+		private CatalogItemLanguage _SourceLanguage = null;
 		private int _FlavorParamsId = Int32.MinValue;
 		private int _ClearAudioFlavorParamsId = Int32.MinValue;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use FlavorParamsIdAsDouble property instead
-		/// </summary>
+		[JsonProperty]
+		public CatalogItemLanguage SourceLanguage
+		{
+			get { return _SourceLanguage; }
+			set 
+			{ 
+				_SourceLanguage = value;
+				OnPropertyChanged("SourceLanguage");
+			}
+		}
 		[JsonProperty]
 		public int FlavorParamsId
 		{
@@ -61,9 +70,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsId");
 			}
 		}
-		/// <summary>
-		/// Use ClearAudioFlavorParamsIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ClearAudioFlavorParamsId
 		{
@@ -83,6 +89,10 @@ namespace Kaltura.Types
 
 		public VendorAudioDescriptionCatalogItem(JToken node) : base(node)
 		{
+			if(node["sourceLanguage"] != null)
+			{
+				this._SourceLanguage = (CatalogItemLanguage)StringEnum.Parse(typeof(CatalogItemLanguage), node["sourceLanguage"].Value<string>());
+			}
 			if(node["flavorParamsId"] != null)
 			{
 				this._FlavorParamsId = ParseInt(node["flavorParamsId"].Value<string>());
@@ -100,6 +110,7 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaVendorAudioDescriptionCatalogItem");
+			kparams.AddIfNotNull("sourceLanguage", this._SourceLanguage);
 			kparams.AddIfNotNull("flavorParamsId", this._FlavorParamsId);
 			kparams.AddIfNotNull("clearAudioFlavorParamsId", this._ClearAudioFlavorParamsId);
 			return kparams;
@@ -108,6 +119,8 @@ namespace Kaltura.Types
 		{
 			switch(apiName)
 			{
+				case SOURCE_LANGUAGE:
+					return "SourceLanguage";
 				case FLAVOR_PARAMS_ID:
 					return "FlavorParamsId";
 				case CLEAR_AUDIO_FLAVOR_PARAMS_ID:

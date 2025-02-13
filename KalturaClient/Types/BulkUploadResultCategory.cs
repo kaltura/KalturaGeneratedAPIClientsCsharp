@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -72,9 +72,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use RelativePathAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string RelativePath
 		{
@@ -85,9 +82,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("RelativePath");
 			}
 		}
-		/// <summary>
-		/// Use NameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -98,9 +92,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
-		/// <summary>
-		/// Use ReferenceIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ReferenceId
 		{
@@ -111,9 +102,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReferenceId");
 			}
 		}
-		/// <summary>
-		/// Use DescriptionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Description
 		{
@@ -124,9 +112,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
-		/// <summary>
-		/// Use TagsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Tags
 		{
@@ -137,9 +122,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
-		/// <summary>
-		/// Use AppearInListAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int AppearInList
 		{
@@ -150,9 +132,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AppearInList");
 			}
 		}
-		/// <summary>
-		/// Use PrivacyAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Privacy
 		{
@@ -163,9 +142,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Privacy");
 			}
 		}
-		/// <summary>
-		/// Use InheritanceTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int InheritanceType
 		{
@@ -176,9 +152,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("InheritanceType");
 			}
 		}
-		/// <summary>
-		/// Use UserJoinPolicyAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int UserJoinPolicy
 		{
@@ -189,9 +162,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserJoinPolicy");
 			}
 		}
-		/// <summary>
-		/// Use DefaultPermissionLevelAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int DefaultPermissionLevel
 		{
@@ -202,9 +172,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DefaultPermissionLevel");
 			}
 		}
-		/// <summary>
-		/// Use OwnerAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Owner
 		{
@@ -215,9 +182,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Owner");
 			}
 		}
-		/// <summary>
-		/// Use ContributionPolicyAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ContributionPolicy
 		{
@@ -228,9 +192,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContributionPolicy");
 			}
 		}
-		/// <summary>
-		/// Use PartnerSortValueAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PartnerSortValue
 		{
@@ -241,9 +202,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerSortValue");
 			}
 		}
-		/// <summary>
-		/// Use ModerationAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? Moderation
 		{

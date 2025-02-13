@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -304,28 +304,25 @@ namespace Kaltura.Services
 		public const string METADATA_PROFILE_ID = "metadataProfileId";
 		public const string ADDITIONAL_FIELDS = "additionalFields";
 		public const string MAPPED_FIELDS = "mappedFields";
-		public const string OPTIONS = "options";
 		#endregion
 
 		public UserFilter Filter { get; set; }
 		public int MetadataProfileId { get; set; }
 		public IList<CsvAdditionalFieldInfo> AdditionalFields { get; set; }
 		public IList<KeyValue> MappedFields { get; set; }
-		public ExportToCsvOptions Options { get; set; }
 
 		public UserExportToCsvRequestBuilder()
 			: base("user", "exportToCsv")
 		{
 		}
 
-		public UserExportToCsvRequestBuilder(UserFilter filter, int metadataProfileId, IList<CsvAdditionalFieldInfo> additionalFields, IList<KeyValue> mappedFields, ExportToCsvOptions options)
+		public UserExportToCsvRequestBuilder(UserFilter filter, int metadataProfileId, IList<CsvAdditionalFieldInfo> additionalFields, IList<KeyValue> mappedFields)
 			: this()
 		{
 			this.Filter = filter;
 			this.MetadataProfileId = metadataProfileId;
 			this.AdditionalFields = additionalFields;
 			this.MappedFields = mappedFields;
-			this.Options = options;
 		}
 
 		public override Params getParameters(bool includeServiceAndAction)
@@ -339,8 +336,6 @@ namespace Kaltura.Services
 				kparams.AddIfNotNull("additionalFields", AdditionalFields);
 			if (!isMapped("mappedFields"))
 				kparams.AddIfNotNull("mappedFields", MappedFields);
-			if (!isMapped("options"))
-				kparams.AddIfNotNull("options", Options);
 			return kparams;
 		}
 
@@ -723,50 +718,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class UserLoginDataResetPasswordRequestBuilder : RequestBuilder<User>
-	{
-		#region Constants
-		public const string LOGIN_DATA_ID = "loginDataId";
-		public const string NEW_PASSWORD = "newPassword";
-		#endregion
-
-		public string LoginDataId { get; set; }
-		public string NewPassword { get; set; }
-
-		public UserLoginDataResetPasswordRequestBuilder()
-			: base("user", "loginDataResetPassword")
-		{
-		}
-
-		public UserLoginDataResetPasswordRequestBuilder(string loginDataId, string newPassword)
-			: this()
-		{
-			this.LoginDataId = loginDataId;
-			this.NewPassword = newPassword;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("loginDataId"))
-				kparams.AddIfNotNull("loginDataId", LoginDataId);
-			if (!isMapped("newPassword"))
-				kparams.AddIfNotNull("newPassword", NewPassword);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(JToken result)
-		{
-			return ObjectFactory.Create<User>(result);
-		}
-	}
-
 	public class UserNotifyBanRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
@@ -1122,9 +1073,9 @@ namespace Kaltura.Services
 			return new UserEnableLoginRequestBuilder(userId, loginId, password);
 		}
 
-		public static UserExportToCsvRequestBuilder ExportToCsv(UserFilter filter = null, int metadataProfileId = Int32.MinValue, IList<CsvAdditionalFieldInfo> additionalFields = null, IList<KeyValue> mappedFields = null, ExportToCsvOptions options = null)
+		public static UserExportToCsvRequestBuilder ExportToCsv(UserFilter filter = null, int metadataProfileId = Int32.MinValue, IList<CsvAdditionalFieldInfo> additionalFields = null, IList<KeyValue> mappedFields = null)
 		{
-			return new UserExportToCsvRequestBuilder(filter, metadataProfileId, additionalFields, mappedFields, options);
+			return new UserExportToCsvRequestBuilder(filter, metadataProfileId, additionalFields, mappedFields);
 		}
 
 		public static UserGenerateQrCodeRequestBuilder GenerateQrCode(string hashKey)
@@ -1165,11 +1116,6 @@ namespace Kaltura.Services
 		public static UserLoginByLoginIdRequestBuilder LoginByLoginId(string loginId, string password, int partnerId = Int32.MinValue, int expiry = 86400, string privileges = "*", string otp = null)
 		{
 			return new UserLoginByLoginIdRequestBuilder(loginId, password, partnerId, expiry, privileges, otp);
-		}
-
-		public static UserLoginDataResetPasswordRequestBuilder LoginDataResetPassword(string loginDataId, string newPassword)
-		{
-			return new UserLoginDataResetPasswordRequestBuilder(loginDataId, newPassword);
 		}
 
 		public static UserNotifyBanRequestBuilder NotifyBan(string userId)

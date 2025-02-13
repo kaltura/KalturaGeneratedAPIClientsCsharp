@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -58,9 +58,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use OptionalAnswersAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<OptionalAnswer> OptionalAnswers
 		{
@@ -71,9 +68,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("OptionalAnswers");
 			}
 		}
-		/// <summary>
-		/// Use HintAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Hint
 		{
@@ -84,9 +78,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Hint");
 			}
 		}
-		/// <summary>
-		/// Use QuestionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Question
 		{
@@ -97,9 +88,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Question");
 			}
 		}
-		/// <summary>
-		/// Use ExplanationAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Explanation
 		{
@@ -110,9 +98,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Explanation");
 			}
 		}
-		/// <summary>
-		/// Use QuestionTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public QuestionType QuestionType
 		{
@@ -123,9 +108,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("QuestionType");
 			}
 		}
-		/// <summary>
-		/// Use PresentationOrderAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PresentationOrder
 		{
@@ -136,9 +118,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PresentationOrder");
 			}
 		}
-		/// <summary>
-		/// Use ExcludeFromScoreAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public NullableBoolean ExcludeFromScore
 		{

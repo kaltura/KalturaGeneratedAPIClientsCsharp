@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -29,7 +29,9 @@ namespace Kaltura.Enums
 {
 	public sealed class DropFolderType : StringEnum
 	{
+		public static readonly DropFolderType AP_FEED = new DropFolderType("ApFeedDropFolder.AP_FEED");
 		public static readonly DropFolderType FEED = new DropFolderType("FeedDropFolder.FEED");
+		public static readonly DropFolderType S3DROPFOLDER = new DropFolderType("S3DropFolder.S3DROPFOLDER");
 		public static readonly DropFolderType WEBEX = new DropFolderType("WebexDropFolder.WEBEX");
 		public static readonly DropFolderType LOCAL = new DropFolderType("1");
 		public static readonly DropFolderType FTP = new DropFolderType("2");

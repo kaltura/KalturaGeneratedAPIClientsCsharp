@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -78,9 +78,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use SftpHostAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SftpHost
 		{
@@ -91,9 +88,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpHost");
 			}
 		}
-		/// <summary>
-		/// Use SftpLoginAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SftpLogin
 		{
@@ -104,9 +98,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpLogin");
 			}
 		}
-		/// <summary>
-		/// Use SftpPassAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SftpPass
 		{
@@ -117,9 +108,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpPass");
 			}
 		}
-		/// <summary>
-		/// Use SftpBasePathAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SftpBasePath
 		{
@@ -130,9 +118,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpBasePath");
 			}
 		}
-		/// <summary>
-		/// Use ChannelTitleAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ChannelTitle
 		{
@@ -143,9 +128,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelTitle");
 			}
 		}
-		/// <summary>
-		/// Use ChannelLinkAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ChannelLink
 		{
@@ -156,9 +138,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelLink");
 			}
 		}
-		/// <summary>
-		/// Use ChannelDescriptionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ChannelDescription
 		{
@@ -169,9 +148,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelDescription");
 			}
 		}
-		/// <summary>
-		/// Use ChannelManagingEditorAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ChannelManagingEditor
 		{
@@ -182,9 +158,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelManagingEditor");
 			}
 		}
-		/// <summary>
-		/// Use ChannelLanguageAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ChannelLanguage
 		{
@@ -195,9 +168,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelLanguage");
 			}
 		}
-		/// <summary>
-		/// Use ChannelImageTitleAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ChannelImageTitle
 		{
@@ -208,9 +178,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelImageTitle");
 			}
 		}
-		/// <summary>
-		/// Use ChannelImageWidthAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ChannelImageWidth
 		{
@@ -221,9 +188,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelImageWidth");
 			}
 		}
-		/// <summary>
-		/// Use ChannelImageHeightAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ChannelImageHeight
 		{
@@ -234,9 +198,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelImageHeight");
 			}
 		}
-		/// <summary>
-		/// Use ChannelImageLinkAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ChannelImageLink
 		{
@@ -247,9 +208,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelImageLink");
 			}
 		}
-		/// <summary>
-		/// Use ChannelImageUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ChannelImageUrl
 		{
@@ -260,9 +218,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelImageUrl");
 			}
 		}
-		/// <summary>
-		/// Use ChannelCopyrightAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ChannelCopyright
 		{
@@ -273,9 +228,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelCopyright");
 			}
 		}
-		/// <summary>
-		/// Use ChannelGeneratorAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ChannelGenerator
 		{
@@ -286,9 +238,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelGenerator");
 			}
 		}
-		/// <summary>
-		/// Use ChannelRatingAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ChannelRating
 		{

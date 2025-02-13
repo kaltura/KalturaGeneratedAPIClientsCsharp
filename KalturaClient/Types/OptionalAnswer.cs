@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -47,14 +47,11 @@ namespace Kaltura.Types
 		#region Private Fields
 		private string _Key = null;
 		private string _Text = null;
-		private double _Weight = Double.MinValue;
+		private float _Weight = Single.MinValue;
 		private NullableBoolean _IsCorrect = (NullableBoolean)Int32.MinValue;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use KeyAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Key
 		{
@@ -65,9 +62,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Key");
 			}
 		}
-		/// <summary>
-		/// Use TextAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Text
 		{
@@ -78,11 +72,8 @@ namespace Kaltura.Types
 				OnPropertyChanged("Text");
 			}
 		}
-		/// <summary>
-		/// Use WeightAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public double Weight
+		public float Weight
 		{
 			get { return _Weight; }
 			set 
@@ -91,9 +82,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Weight");
 			}
 		}
-		/// <summary>
-		/// Use IsCorrectAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public NullableBoolean IsCorrect
 		{
@@ -123,7 +111,7 @@ namespace Kaltura.Types
 			}
 			if(node["weight"] != null)
 			{
-				this._Weight = ParseDouble(node["weight"].Value<string>());
+				this._Weight = ParseFloat(node["weight"].Value<string>());
 			}
 			if(node["isCorrect"] != null)
 			{

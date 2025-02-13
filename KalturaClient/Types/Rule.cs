@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -62,9 +62,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use DescriptionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Description
 		{
@@ -75,9 +72,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
-		/// <summary>
-		/// Use RuleDataAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string RuleData
 		{
@@ -88,9 +82,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("RuleData");
 			}
 		}
-		/// <summary>
-		/// Use MessageAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Message
 		{
@@ -101,9 +92,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Message");
 			}
 		}
-		/// <summary>
-		/// Use CodeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Code
 		{
@@ -114,9 +102,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Code");
 			}
 		}
-		/// <summary>
-		/// Use ActionsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<RuleAction> Actions
 		{
@@ -127,9 +112,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Actions");
 			}
 		}
-		/// <summary>
-		/// Use ConditionsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<Condition> Conditions
 		{
@@ -140,9 +122,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Conditions");
 			}
 		}
-		/// <summary>
-		/// Use ContextsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<ContextTypeHolder> Contexts
 		{
@@ -153,9 +132,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Contexts");
 			}
 		}
-		/// <summary>
-		/// Use StopProcessingAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? StopProcessing
 		{
@@ -166,9 +142,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StopProcessing");
 			}
 		}
-		/// <summary>
-		/// Use ForceAdminValidationAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public NullableBoolean ForceAdminValidation
 		{

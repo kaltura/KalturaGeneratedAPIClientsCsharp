@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -124,55 +124,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class CategoryCloneRequestBuilder : RequestBuilder<Category>
-	{
-		#region Constants
-		public const string CATEGORY_ID = "categoryId";
-		public const string FROM_PARTNER_ID = "fromPartnerId";
-		public const string PARENT_CATEGORY_ID = "parentCategoryId";
-		#endregion
-
-		public int CategoryId { get; set; }
-		public int FromPartnerId { get; set; }
-		public int ParentCategoryId { get; set; }
-
-		public CategoryCloneRequestBuilder()
-			: base("category", "clone")
-		{
-		}
-
-		public CategoryCloneRequestBuilder(int categoryId, int fromPartnerId, int parentCategoryId)
-			: this()
-		{
-			this.CategoryId = categoryId;
-			this.FromPartnerId = fromPartnerId;
-			this.ParentCategoryId = parentCategoryId;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("categoryId"))
-				kparams.AddIfNotNull("categoryId", CategoryId);
-			if (!isMapped("fromPartnerId"))
-				kparams.AddIfNotNull("fromPartnerId", FromPartnerId);
-			if (!isMapped("parentCategoryId"))
-				kparams.AddIfNotNull("parentCategoryId", ParentCategoryId);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(JToken result)
-		{
-			return ObjectFactory.Create<Category>(result);
-		}
-	}
-
 	public class CategoryDeleteRequestBuilder : RequestBuilder<VoidResponse>
 	{
 		#region Constants
@@ -180,7 +131,7 @@ namespace Kaltura.Services
 		public const string MOVE_ENTRIES_TO_PARENT_CATEGORY = "moveEntriesToParentCategory";
 		#endregion
 
-		public long Id { get; set; }
+		public int Id { get; set; }
 		public NullableBoolean MoveEntriesToParentCategory { get; set; }
 
 		public CategoryDeleteRequestBuilder()
@@ -188,7 +139,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public CategoryDeleteRequestBuilder(long id, NullableBoolean moveEntriesToParentCategory)
+		public CategoryDeleteRequestBuilder(int id, NullableBoolean moveEntriesToParentCategory)
 			: this()
 		{
 			this.Id = id;
@@ -217,79 +168,20 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class CategoryExportToCsvRequestBuilder : RequestBuilder<string>
-	{
-		#region Constants
-		public const string FILTER = "filter";
-		public const string METADATA_PROFILE_ID = "metadataProfileId";
-		public const string ADDITIONAL_FIELDS = "additionalFields";
-		public const string MAPPED_FIELDS = "mappedFields";
-		public const string OPTIONS = "options";
-		#endregion
-
-		public CategoryFilter Filter { get; set; }
-		public int MetadataProfileId { get; set; }
-		public IList<CsvAdditionalFieldInfo> AdditionalFields { get; set; }
-		public IList<KeyValue> MappedFields { get; set; }
-		public ExportToCsvOptions Options { get; set; }
-
-		public CategoryExportToCsvRequestBuilder()
-			: base("category", "exportToCsv")
-		{
-		}
-
-		public CategoryExportToCsvRequestBuilder(CategoryFilter filter, int metadataProfileId, IList<CsvAdditionalFieldInfo> additionalFields, IList<KeyValue> mappedFields, ExportToCsvOptions options)
-			: this()
-		{
-			this.Filter = filter;
-			this.MetadataProfileId = metadataProfileId;
-			this.AdditionalFields = additionalFields;
-			this.MappedFields = mappedFields;
-			this.Options = options;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("filter"))
-				kparams.AddIfNotNull("filter", Filter);
-			if (!isMapped("metadataProfileId"))
-				kparams.AddIfNotNull("metadataProfileId", MetadataProfileId);
-			if (!isMapped("additionalFields"))
-				kparams.AddIfNotNull("additionalFields", AdditionalFields);
-			if (!isMapped("mappedFields"))
-				kparams.AddIfNotNull("mappedFields", MappedFields);
-			if (!isMapped("options"))
-				kparams.AddIfNotNull("options", Options);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(JToken result)
-		{
-			return result.Value<string>();
-		}
-	}
-
 	public class CategoryGetRequestBuilder : RequestBuilder<Category>
 	{
 		#region Constants
 		public const string ID = "id";
 		#endregion
 
-		public long Id { get; set; }
+		public int Id { get; set; }
 
 		public CategoryGetRequestBuilder()
 			: base("category", "get")
 		{
 		}
 
-		public CategoryGetRequestBuilder(long id)
+		public CategoryGetRequestBuilder(int id)
 			: this()
 		{
 			this.Id = id;
@@ -322,7 +214,7 @@ namespace Kaltura.Services
 		public const string SHOULD_UPDATE = "shouldUpdate";
 		#endregion
 
-		public long Id { get; set; }
+		public int Id { get; set; }
 		public bool ShouldUpdate { get; set; }
 
 		public CategoryIndexRequestBuilder()
@@ -330,7 +222,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public CategoryIndexRequestBuilder(long id, bool shouldUpdate)
+		public CategoryIndexRequestBuilder(int id, bool shouldUpdate)
 			: this()
 		{
 			this.Id = id;
@@ -485,7 +377,7 @@ namespace Kaltura.Services
 		public const string CATEGORY = "category";
 		#endregion
 
-		public long Id { get; set; }
+		public int Id { get; set; }
 		public Category Category { get; set; }
 
 		public CategoryUpdateRequestBuilder()
@@ -493,7 +385,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public CategoryUpdateRequestBuilder(long id, Category category)
+		public CategoryUpdateRequestBuilder(int id, Category category)
 			: this()
 		{
 			this.Id = id;
@@ -539,27 +431,17 @@ namespace Kaltura.Services
 			return new CategoryAddFromBulkUploadRequestBuilder(fileData, bulkUploadData, bulkUploadCategoryData);
 		}
 
-		public static CategoryCloneRequestBuilder Clone(int categoryId, int fromPartnerId, int parentCategoryId = Int32.MinValue)
-		{
-			return new CategoryCloneRequestBuilder(categoryId, fromPartnerId, parentCategoryId);
-		}
-
-		public static CategoryDeleteRequestBuilder Delete(long id, NullableBoolean moveEntriesToParentCategory = (NullableBoolean)(1))
+		public static CategoryDeleteRequestBuilder Delete(int id, NullableBoolean moveEntriesToParentCategory = (NullableBoolean)(1))
 		{
 			return new CategoryDeleteRequestBuilder(id, moveEntriesToParentCategory);
 		}
 
-		public static CategoryExportToCsvRequestBuilder ExportToCsv(CategoryFilter filter = null, int metadataProfileId = Int32.MinValue, IList<CsvAdditionalFieldInfo> additionalFields = null, IList<KeyValue> mappedFields = null, ExportToCsvOptions options = null)
-		{
-			return new CategoryExportToCsvRequestBuilder(filter, metadataProfileId, additionalFields, mappedFields, options);
-		}
-
-		public static CategoryGetRequestBuilder Get(long id)
+		public static CategoryGetRequestBuilder Get(int id)
 		{
 			return new CategoryGetRequestBuilder(id);
 		}
 
-		public static CategoryIndexRequestBuilder Index(long id, bool shouldUpdate = true)
+		public static CategoryIndexRequestBuilder Index(int id, bool shouldUpdate = true)
 		{
 			return new CategoryIndexRequestBuilder(id, shouldUpdate);
 		}
@@ -579,7 +461,7 @@ namespace Kaltura.Services
 			return new CategoryUnlockCategoriesRequestBuilder();
 		}
 
-		public static CategoryUpdateRequestBuilder Update(long id, Category category)
+		public static CategoryUpdateRequestBuilder Update(int id, Category category)
 		{
 			return new CategoryUpdateRequestBuilder(id, category);
 		}

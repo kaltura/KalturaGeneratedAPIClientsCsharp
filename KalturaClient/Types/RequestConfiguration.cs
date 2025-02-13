@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -40,21 +40,16 @@ namespace Kaltura.Types
 		#region Constants
 		public const string PARTNER_ID = "partnerId";
 		public const string KS = "ks";
-		public const string LANGUAGE = "language";
 		public const string RESPONSE_PROFILE = "responseProfile";
 		#endregion
 
 		#region Private Fields
 		private int _PartnerId = Int32.MinValue;
 		private string _Ks = null;
-		private string _Language = null;
 		private BaseResponseProfile _ResponseProfile;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use PartnerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -65,9 +60,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
-		/// <summary>
-		/// Use KsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Ks
 		{
@@ -78,22 +70,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Ks");
 			}
 		}
-		/// <summary>
-		/// Use LanguageAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string Language
-		{
-			get { return _Language; }
-			set 
-			{ 
-				_Language = value;
-				OnPropertyChanged("Language");
-			}
-		}
-		/// <summary>
-		/// Use ResponseProfileAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public BaseResponseProfile ResponseProfile
 		{
@@ -121,10 +97,6 @@ namespace Kaltura.Types
 			{
 				this._Ks = node["ks"].Value<string>();
 			}
-			if(node["language"] != null)
-			{
-				this._Language = node["language"].Value<string>();
-			}
 			if(node["responseProfile"] != null)
 			{
 				this._ResponseProfile = ObjectFactory.Create<BaseResponseProfile>(node["responseProfile"]);
@@ -140,7 +112,6 @@ namespace Kaltura.Types
 				kparams.AddReplace("objectType", "KalturaRequestConfiguration");
 			kparams.AddIfNotNull("partnerId", this._PartnerId);
 			kparams.AddIfNotNull("ks", this._Ks);
-			kparams.AddIfNotNull("language", this._Language);
 			kparams.AddIfNotNull("responseProfile", this._ResponseProfile);
 			return kparams;
 		}
@@ -152,8 +123,6 @@ namespace Kaltura.Types
 					return "PartnerId";
 				case KS:
 					return "Ks";
-				case LANGUAGE:
-					return "Language";
 				case RESPONSE_PROFILE:
 					return "ResponseProfile";
 				default:

@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -62,9 +62,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use FieldNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FieldName
 		{
@@ -75,9 +72,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FieldName");
 			}
 		}
-		/// <summary>
-		/// Use UserFriendlyFieldNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string UserFriendlyFieldName
 		{
@@ -88,9 +82,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserFriendlyFieldName");
 			}
 		}
-		/// <summary>
-		/// Use EntryMrssXsltAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EntryMrssXslt
 		{
@@ -101,9 +92,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryMrssXslt");
 			}
 		}
-		/// <summary>
-		/// Use IsRequiredAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public DistributionFieldRequiredStatus IsRequired
 		{
@@ -114,9 +102,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsRequired");
 			}
 		}
-		/// <summary>
-		/// Use TypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Type
 		{
@@ -127,9 +112,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
-		/// <summary>
-		/// Use UpdateOnChangeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? UpdateOnChange
 		{
@@ -140,9 +122,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdateOnChange");
 			}
 		}
-		/// <summary>
-		/// Use UpdateParamsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<String> UpdateParams
 		{
@@ -153,9 +132,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdateParams");
 			}
 		}
-		/// <summary>
-		/// Use IsDefaultAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? IsDefault
 		{
@@ -166,9 +142,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsDefault");
 			}
 		}
-		/// <summary>
-		/// Use TriggerDeleteOnErrorAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? TriggerDeleteOnError
 		{

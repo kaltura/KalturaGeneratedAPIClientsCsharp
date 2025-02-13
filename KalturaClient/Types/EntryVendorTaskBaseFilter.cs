@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -40,7 +40,6 @@ namespace Kaltura.Types
 		#region Constants
 		public const string ID_EQUAL = "idEqual";
 		public const string ID_IN = "idIn";
-		public const string ID_NOT_IN = "idNotIn";
 		public const string VENDOR_PARTNER_ID_EQUAL = "vendorPartnerIdEqual";
 		public const string VENDOR_PARTNER_ID_IN = "vendorPartnerIdIn";
 		public const string CREATED_AT_GREATER_THAN_OR_EQUAL = "createdAtGreaterThanOrEqual";
@@ -60,14 +59,11 @@ namespace Kaltura.Types
 		public const string CATALOG_ITEM_ID_IN = "catalogItemIdIn";
 		public const string USER_ID_EQUAL = "userIdEqual";
 		public const string CONTEXT_EQUAL = "contextEqual";
-		public const string EXPECTED_FINISH_TIME_GREATER_THAN_OR_EQUAL = "expectedFinishTimeGreaterThanOrEqual";
-		public const string EXPECTED_FINISH_TIME_LESS_THAN_OR_EQUAL = "expectedFinishTimeLessThanOrEqual";
 		#endregion
 
 		#region Private Fields
 		private long _IdEqual = long.MinValue;
 		private string _IdIn = null;
-		private string _IdNotIn = null;
 		private int _VendorPartnerIdEqual = Int32.MinValue;
 		private string _VendorPartnerIdIn = null;
 		private int _CreatedAtGreaterThanOrEqual = Int32.MinValue;
@@ -87,14 +83,9 @@ namespace Kaltura.Types
 		private string _CatalogItemIdIn = null;
 		private string _UserIdEqual = null;
 		private string _ContextEqual = null;
-		private int _ExpectedFinishTimeGreaterThanOrEqual = Int32.MinValue;
-		private int _ExpectedFinishTimeLessThanOrEqual = Int32.MinValue;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use IdEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public long IdEqual
 		{
@@ -105,9 +96,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
-		/// <summary>
-		/// Use IdInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string IdIn
 		{
@@ -118,22 +106,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
-		/// <summary>
-		/// Use IdNotInAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string IdNotIn
-		{
-			get { return _IdNotIn; }
-			set 
-			{ 
-				_IdNotIn = value;
-				OnPropertyChanged("IdNotIn");
-			}
-		}
-		/// <summary>
-		/// Use VendorPartnerIdEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int VendorPartnerIdEqual
 		{
@@ -144,9 +116,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("VendorPartnerIdEqual");
 			}
 		}
-		/// <summary>
-		/// Use VendorPartnerIdInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string VendorPartnerIdIn
 		{
@@ -157,9 +126,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("VendorPartnerIdIn");
 			}
 		}
-		/// <summary>
-		/// Use CreatedAtGreaterThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
@@ -170,9 +136,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use CreatedAtLessThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
@@ -183,9 +146,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use UpdatedAtGreaterThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
@@ -196,9 +156,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use UpdatedAtLessThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
@@ -209,9 +166,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use QueueTimeGreaterThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int QueueTimeGreaterThanOrEqual
 		{
@@ -222,9 +176,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("QueueTimeGreaterThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use QueueTimeLessThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int QueueTimeLessThanOrEqual
 		{
@@ -235,9 +186,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("QueueTimeLessThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use FinishTimeGreaterThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int FinishTimeGreaterThanOrEqual
 		{
@@ -248,9 +196,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FinishTimeGreaterThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use FinishTimeLessThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int FinishTimeLessThanOrEqual
 		{
@@ -261,9 +206,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FinishTimeLessThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use EntryIdEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EntryIdEqual
 		{
@@ -274,9 +216,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdEqual");
 			}
 		}
-		/// <summary>
-		/// Use StatusEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public EntryVendorTaskStatus StatusEqual
 		{
@@ -287,9 +226,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
-		/// <summary>
-		/// Use StatusInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string StatusIn
 		{
@@ -300,9 +236,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
-		/// <summary>
-		/// Use ReachProfileIdEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ReachProfileIdEqual
 		{
@@ -313,9 +246,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReachProfileIdEqual");
 			}
 		}
-		/// <summary>
-		/// Use ReachProfileIdInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ReachProfileIdIn
 		{
@@ -326,9 +256,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReachProfileIdIn");
 			}
 		}
-		/// <summary>
-		/// Use CatalogItemIdEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CatalogItemIdEqual
 		{
@@ -339,9 +266,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CatalogItemIdEqual");
 			}
 		}
-		/// <summary>
-		/// Use CatalogItemIdInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CatalogItemIdIn
 		{
@@ -352,9 +276,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CatalogItemIdIn");
 			}
 		}
-		/// <summary>
-		/// Use UserIdEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string UserIdEqual
 		{
@@ -365,9 +286,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserIdEqual");
 			}
 		}
-		/// <summary>
-		/// Use ContextEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ContextEqual
 		{
@@ -376,32 +294,6 @@ namespace Kaltura.Types
 			{ 
 				_ContextEqual = value;
 				OnPropertyChanged("ContextEqual");
-			}
-		}
-		/// <summary>
-		/// Use ExpectedFinishTimeGreaterThanOrEqualAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public int ExpectedFinishTimeGreaterThanOrEqual
-		{
-			get { return _ExpectedFinishTimeGreaterThanOrEqual; }
-			set 
-			{ 
-				_ExpectedFinishTimeGreaterThanOrEqual = value;
-				OnPropertyChanged("ExpectedFinishTimeGreaterThanOrEqual");
-			}
-		}
-		/// <summary>
-		/// Use ExpectedFinishTimeLessThanOrEqualAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public int ExpectedFinishTimeLessThanOrEqual
-		{
-			get { return _ExpectedFinishTimeLessThanOrEqual; }
-			set 
-			{ 
-				_ExpectedFinishTimeLessThanOrEqual = value;
-				OnPropertyChanged("ExpectedFinishTimeLessThanOrEqual");
 			}
 		}
 		#endregion
@@ -420,10 +312,6 @@ namespace Kaltura.Types
 			if(node["idIn"] != null)
 			{
 				this._IdIn = node["idIn"].Value<string>();
-			}
-			if(node["idNotIn"] != null)
-			{
-				this._IdNotIn = node["idNotIn"].Value<string>();
 			}
 			if(node["vendorPartnerIdEqual"] != null)
 			{
@@ -501,14 +389,6 @@ namespace Kaltura.Types
 			{
 				this._ContextEqual = node["contextEqual"].Value<string>();
 			}
-			if(node["expectedFinishTimeGreaterThanOrEqual"] != null)
-			{
-				this._ExpectedFinishTimeGreaterThanOrEqual = ParseInt(node["expectedFinishTimeGreaterThanOrEqual"].Value<string>());
-			}
-			if(node["expectedFinishTimeLessThanOrEqual"] != null)
-			{
-				this._ExpectedFinishTimeLessThanOrEqual = ParseInt(node["expectedFinishTimeLessThanOrEqual"].Value<string>());
-			}
 		}
 		#endregion
 
@@ -520,7 +400,6 @@ namespace Kaltura.Types
 				kparams.AddReplace("objectType", "KalturaEntryVendorTaskBaseFilter");
 			kparams.AddIfNotNull("idEqual", this._IdEqual);
 			kparams.AddIfNotNull("idIn", this._IdIn);
-			kparams.AddIfNotNull("idNotIn", this._IdNotIn);
 			kparams.AddIfNotNull("vendorPartnerIdEqual", this._VendorPartnerIdEqual);
 			kparams.AddIfNotNull("vendorPartnerIdIn", this._VendorPartnerIdIn);
 			kparams.AddIfNotNull("createdAtGreaterThanOrEqual", this._CreatedAtGreaterThanOrEqual);
@@ -540,8 +419,6 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("catalogItemIdIn", this._CatalogItemIdIn);
 			kparams.AddIfNotNull("userIdEqual", this._UserIdEqual);
 			kparams.AddIfNotNull("contextEqual", this._ContextEqual);
-			kparams.AddIfNotNull("expectedFinishTimeGreaterThanOrEqual", this._ExpectedFinishTimeGreaterThanOrEqual);
-			kparams.AddIfNotNull("expectedFinishTimeLessThanOrEqual", this._ExpectedFinishTimeLessThanOrEqual);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -552,8 +429,6 @@ namespace Kaltura.Types
 					return "IdEqual";
 				case ID_IN:
 					return "IdIn";
-				case ID_NOT_IN:
-					return "IdNotIn";
 				case VENDOR_PARTNER_ID_EQUAL:
 					return "VendorPartnerIdEqual";
 				case VENDOR_PARTNER_ID_IN:
@@ -592,10 +467,6 @@ namespace Kaltura.Types
 					return "UserIdEqual";
 				case CONTEXT_EQUAL:
 					return "ContextEqual";
-				case EXPECTED_FINISH_TIME_GREATER_THAN_OR_EQUAL:
-					return "ExpectedFinishTimeGreaterThanOrEqual";
-				case EXPECTED_FINISH_TIME_LESS_THAN_OR_EQUAL:
-					return "ExpectedFinishTimeLessThanOrEqual";
 				default:
 					return base.getPropertyName(apiName);
 			}

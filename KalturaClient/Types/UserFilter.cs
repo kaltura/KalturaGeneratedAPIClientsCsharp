@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -39,6 +39,8 @@ namespace Kaltura.Types
 	{
 		#region Constants
 		public const string ID_OR_SCREEN_NAME_STARTS_WITH = "idOrScreenNameStartsWith";
+		public const string ID_EQUAL = "idEqual";
+		public const string ID_IN = "idIn";
 		public const string LOGIN_ENABLED_EQUAL = "loginEnabledEqual";
 		public const string ROLE_ID_EQUAL = "roleIdEqual";
 		public const string ROLE_IDS_EQUAL = "roleIdsEqual";
@@ -51,6 +53,8 @@ namespace Kaltura.Types
 
 		#region Private Fields
 		private string _IdOrScreenNameStartsWith = null;
+		private string _IdEqual = null;
+		private string _IdIn = null;
 		private NullableBoolean _LoginEnabledEqual = (NullableBoolean)Int32.MinValue;
 		private string _RoleIdEqual = null;
 		private string _RoleIdsEqual = null;
@@ -62,9 +66,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use IdOrScreenNameStartsWithAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string IdOrScreenNameStartsWith
 		{
@@ -75,9 +76,26 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdOrScreenNameStartsWith");
 			}
 		}
-		/// <summary>
-		/// Use LoginEnabledEqualAsDouble property instead
-		/// </summary>
+		[JsonProperty]
+		public string IdEqual
+		{
+			get { return _IdEqual; }
+			set 
+			{ 
+				_IdEqual = value;
+				OnPropertyChanged("IdEqual");
+			}
+		}
+		[JsonProperty]
+		public string IdIn
+		{
+			get { return _IdIn; }
+			set 
+			{ 
+				_IdIn = value;
+				OnPropertyChanged("IdIn");
+			}
+		}
 		[JsonProperty]
 		public NullableBoolean LoginEnabledEqual
 		{
@@ -88,9 +106,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("LoginEnabledEqual");
 			}
 		}
-		/// <summary>
-		/// Use RoleIdEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string RoleIdEqual
 		{
@@ -101,9 +116,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("RoleIdEqual");
 			}
 		}
-		/// <summary>
-		/// Use RoleIdsEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string RoleIdsEqual
 		{
@@ -114,9 +126,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("RoleIdsEqual");
 			}
 		}
-		/// <summary>
-		/// Use RoleIdsInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string RoleIdsIn
 		{
@@ -127,9 +136,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("RoleIdsIn");
 			}
 		}
-		/// <summary>
-		/// Use FirstNameOrLastNameStartsWithAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FirstNameOrLastNameStartsWith
 		{
@@ -140,9 +146,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FirstNameOrLastNameStartsWith");
 			}
 		}
-		/// <summary>
-		/// Use PermissionNamesMultiLikeOrAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PermissionNamesMultiLikeOr
 		{
@@ -153,9 +156,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PermissionNamesMultiLikeOr");
 			}
 		}
-		/// <summary>
-		/// Use PermissionNamesMultiLikeAndAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PermissionNamesMultiLikeAnd
 		{
@@ -166,9 +166,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PermissionNamesMultiLikeAnd");
 			}
 		}
-		/// <summary>
-		/// Use OrderByAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public new UserOrderBy OrderBy
 		{
@@ -191,6 +188,14 @@ namespace Kaltura.Types
 			if(node["idOrScreenNameStartsWith"] != null)
 			{
 				this._IdOrScreenNameStartsWith = node["idOrScreenNameStartsWith"].Value<string>();
+			}
+			if(node["idEqual"] != null)
+			{
+				this._IdEqual = node["idEqual"].Value<string>();
+			}
+			if(node["idIn"] != null)
+			{
+				this._IdIn = node["idIn"].Value<string>();
 			}
 			if(node["loginEnabledEqual"] != null)
 			{
@@ -234,6 +239,8 @@ namespace Kaltura.Types
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaUserFilter");
 			kparams.AddIfNotNull("idOrScreenNameStartsWith", this._IdOrScreenNameStartsWith);
+			kparams.AddIfNotNull("idEqual", this._IdEqual);
+			kparams.AddIfNotNull("idIn", this._IdIn);
 			kparams.AddIfNotNull("loginEnabledEqual", this._LoginEnabledEqual);
 			kparams.AddIfNotNull("roleIdEqual", this._RoleIdEqual);
 			kparams.AddIfNotNull("roleIdsEqual", this._RoleIdsEqual);
@@ -250,6 +257,10 @@ namespace Kaltura.Types
 			{
 				case ID_OR_SCREEN_NAME_STARTS_WITH:
 					return "IdOrScreenNameStartsWith";
+				case ID_EQUAL:
+					return "IdEqual";
+				case ID_IN:
+					return "IdIn";
 				case LOGIN_ENABLED_EQUAL:
 					return "LoginEnabledEqual";
 				case ROLE_ID_EQUAL:

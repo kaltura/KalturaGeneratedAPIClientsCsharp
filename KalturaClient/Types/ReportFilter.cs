@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -35,43 +35,25 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class ReportFilter : ObjectBase
+	public class ReportFilter : ReportBaseFilter
 	{
 		#region Constants
-		public const string DIMENSION = "dimension";
-		public const string VALUES = "values";
+		public new const string ORDER_BY = "orderBy";
 		#endregion
 
 		#region Private Fields
-		private string _Dimension = null;
-		private string _Values = null;
+		private ReportOrderBy _OrderBy = null;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use DimensionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public string Dimension
+		public new ReportOrderBy OrderBy
 		{
-			get { return _Dimension; }
+			get { return _OrderBy; }
 			set 
 			{ 
-				_Dimension = value;
-				OnPropertyChanged("Dimension");
-			}
-		}
-		/// <summary>
-		/// Use ValuesAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string Values
-		{
-			get { return _Values; }
-			set 
-			{ 
-				_Values = value;
-				OnPropertyChanged("Values");
+				_OrderBy = value;
+				OnPropertyChanged("OrderBy");
 			}
 		}
 		#endregion
@@ -83,13 +65,9 @@ namespace Kaltura.Types
 
 		public ReportFilter(JToken node) : base(node)
 		{
-			if(node["dimension"] != null)
+			if(node["orderBy"] != null)
 			{
-				this._Dimension = node["dimension"].Value<string>();
-			}
-			if(node["values"] != null)
-			{
-				this._Values = node["values"].Value<string>();
+				this._OrderBy = (ReportOrderBy)StringEnum.Parse(typeof(ReportOrderBy), node["orderBy"].Value<string>());
 			}
 		}
 		#endregion
@@ -100,18 +78,15 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaReportFilter");
-			kparams.AddIfNotNull("dimension", this._Dimension);
-			kparams.AddIfNotNull("values", this._Values);
+			kparams.AddIfNotNull("orderBy", this._OrderBy);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
-				case DIMENSION:
-					return "Dimension";
-				case VALUES:
-					return "Values";
+				case ORDER_BY:
+					return "OrderBy";
 				default:
 					return base.getPropertyName(apiName);
 			}

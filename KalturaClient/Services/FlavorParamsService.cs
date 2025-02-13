@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -81,14 +81,14 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public long Id { get; set; }
+		public int Id { get; set; }
 
 		public FlavorParamsDeleteRequestBuilder()
 			: base("flavorparams", "delete")
 		{
 		}
 
-		public FlavorParamsDeleteRequestBuilder(long id)
+		public FlavorParamsDeleteRequestBuilder(int id)
 			: this()
 		{
 			this.Id = id;
@@ -120,14 +120,14 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public long Id { get; set; }
+		public int Id { get; set; }
 
 		public FlavorParamsGetRequestBuilder()
 			: base("flavorparams", "get")
 		{
 		}
 
-		public FlavorParamsGetRequestBuilder(long id)
+		public FlavorParamsGetRequestBuilder(int id)
 			: this()
 		{
 			this.Id = id;
@@ -249,7 +249,7 @@ namespace Kaltura.Services
 		public const string FLAVOR_PARAMS = "flavorParams";
 		#endregion
 
-		public long Id { get; set; }
+		public int Id { get; set; }
 		public FlavorParams FlavorParams { get; set; }
 
 		public FlavorParamsUpdateRequestBuilder()
@@ -257,7 +257,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public FlavorParamsUpdateRequestBuilder(long id, FlavorParams flavorParams)
+		public FlavorParamsUpdateRequestBuilder(int id, FlavorParams flavorParams)
 			: this()
 		{
 			this.Id = id;
@@ -298,12 +298,12 @@ namespace Kaltura.Services
 			return new FlavorParamsAddRequestBuilder(flavorParams);
 		}
 
-		public static FlavorParamsDeleteRequestBuilder Delete(long id)
+		public static FlavorParamsDeleteRequestBuilder Delete(int id)
 		{
 			return new FlavorParamsDeleteRequestBuilder(id);
 		}
 
-		public static FlavorParamsGetRequestBuilder Get(long id)
+		public static FlavorParamsGetRequestBuilder Get(int id)
 		{
 			return new FlavorParamsGetRequestBuilder(id);
 		}
@@ -318,7 +318,7 @@ namespace Kaltura.Services
 			return new FlavorParamsListRequestBuilder(filter, pager);
 		}
 
-		public static FlavorParamsUpdateRequestBuilder Update(long id, FlavorParams flavorParams)
+		public static FlavorParamsUpdateRequestBuilder Update(int id, FlavorParams flavorParams)
 		{
 			return new FlavorParamsUpdateRequestBuilder(id, flavorParams);
 		}

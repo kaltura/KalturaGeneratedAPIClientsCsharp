@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -64,9 +64,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use WebexUserIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string WebexUserId
 		{
@@ -77,9 +74,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebexUserId");
 			}
 		}
-		/// <summary>
-		/// Use WebexPasswordAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string WebexPassword
 		{
@@ -90,9 +84,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebexPassword");
 			}
 		}
-		/// <summary>
-		/// Use WebexSiteIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int WebexSiteId
 		{
@@ -103,9 +94,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebexSiteId");
 			}
 		}
-		/// <summary>
-		/// Use WebexPartnerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string WebexPartnerId
 		{
@@ -116,9 +104,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebexPartnerId");
 			}
 		}
-		/// <summary>
-		/// Use WebexServiceUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string WebexServiceUrl
 		{
@@ -129,9 +114,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebexServiceUrl");
 			}
 		}
-		/// <summary>
-		/// Use WebexHostIdMetadataFieldNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string WebexHostIdMetadataFieldName
 		{
@@ -142,9 +124,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebexHostIdMetadataFieldName");
 			}
 		}
-		/// <summary>
-		/// Use DeleteFromRecycleBinAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? DeleteFromRecycleBin
 		{
@@ -155,9 +134,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeleteFromRecycleBin");
 			}
 		}
-		/// <summary>
-		/// Use WebexServiceTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string WebexServiceType
 		{
@@ -168,9 +144,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebexServiceType");
 			}
 		}
-		/// <summary>
-		/// Use WebexSiteNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string WebexSiteName
 		{
@@ -181,9 +154,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("WebexSiteName");
 			}
 		}
-		/// <summary>
-		/// Use DeleteFromTimestampAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int DeleteFromTimestamp
 		{

@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -120,14 +120,14 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public long Id { get; set; }
+		public int Id { get; set; }
 
 		public UserEntryDeleteRequestBuilder()
 			: base("userentry", "delete")
 		{
 		}
 
-		public UserEntryDeleteRequestBuilder(long id)
+		public UserEntryDeleteRequestBuilder(int id)
 			: this()
 		{
 			this.Id = id;
@@ -282,7 +282,7 @@ namespace Kaltura.Services
 		public const string USER_ENTRY = "userEntry";
 		#endregion
 
-		public long Id { get; set; }
+		public int Id { get; set; }
 		public UserEntry UserEntry { get; set; }
 
 		public UserEntryUpdateRequestBuilder()
@@ -290,7 +290,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public UserEntryUpdateRequestBuilder(long id, UserEntry userEntry)
+		public UserEntryUpdateRequestBuilder(int id, UserEntry userEntry)
 			: this()
 		{
 			this.Id = id;
@@ -336,7 +336,7 @@ namespace Kaltura.Services
 			return new UserEntryBulkDeleteRequestBuilder(filter);
 		}
 
-		public static UserEntryDeleteRequestBuilder Delete(long id)
+		public static UserEntryDeleteRequestBuilder Delete(int id)
 		{
 			return new UserEntryDeleteRequestBuilder(id);
 		}
@@ -356,7 +356,7 @@ namespace Kaltura.Services
 			return new UserEntrySubmitQuizRequestBuilder(id);
 		}
 
-		public static UserEntryUpdateRequestBuilder Update(long id, UserEntry userEntry)
+		public static UserEntryUpdateRequestBuilder Update(int id, UserEntry userEntry)
 		{
 			return new UserEntryUpdateRequestBuilder(id, userEntry);
 		}

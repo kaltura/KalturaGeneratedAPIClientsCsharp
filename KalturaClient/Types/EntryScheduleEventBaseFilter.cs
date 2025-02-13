@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -58,9 +58,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use TemplateEntryIdEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string TemplateEntryIdEqual
 		{
@@ -71,9 +68,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplateEntryIdEqual");
 			}
 		}
-		/// <summary>
-		/// Use EntryIdsLikeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EntryIdsLike
 		{
@@ -84,9 +78,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdsLike");
 			}
 		}
-		/// <summary>
-		/// Use EntryIdsMultiLikeOrAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EntryIdsMultiLikeOr
 		{
@@ -97,9 +88,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdsMultiLikeOr");
 			}
 		}
-		/// <summary>
-		/// Use EntryIdsMultiLikeAndAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EntryIdsMultiLikeAnd
 		{
@@ -110,9 +98,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdsMultiLikeAnd");
 			}
 		}
-		/// <summary>
-		/// Use CategoryIdsLikeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CategoryIdsLike
 		{
@@ -123,9 +108,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryIdsLike");
 			}
 		}
-		/// <summary>
-		/// Use CategoryIdsMultiLikeOrAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CategoryIdsMultiLikeOr
 		{
@@ -136,9 +118,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryIdsMultiLikeOr");
 			}
 		}
-		/// <summary>
-		/// Use CategoryIdsMultiLikeAndAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CategoryIdsMultiLikeAnd
 		{

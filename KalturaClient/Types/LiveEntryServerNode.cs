@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -42,7 +42,6 @@ namespace Kaltura.Types
 		public const string RECORDING_INFO = "recordingInfo";
 		public const string IS_PLAYABLE_USER = "isPlayableUser";
 		public const string VIEW_MODE = "viewMode";
-		public const string FEATURES_UPDATED_AT = "featuresUpdatedAt";
 		#endregion
 
 		#region Private Fields
@@ -50,13 +49,9 @@ namespace Kaltura.Types
 		private IList<LiveEntryServerNodeRecordingInfo> _RecordingInfo;
 		private bool? _IsPlayableUser = null;
 		private ViewMode _ViewMode = (ViewMode)Int32.MinValue;
-		private int _FeaturesUpdatedAt = Int32.MinValue;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use StreamsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<LiveStreamParams> Streams
 		{
@@ -67,9 +62,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Streams");
 			}
 		}
-		/// <summary>
-		/// Use RecordingInfoAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<LiveEntryServerNodeRecordingInfo> RecordingInfo
 		{
@@ -80,9 +72,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecordingInfo");
 			}
 		}
-		/// <summary>
-		/// Use IsPlayableUserAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? IsPlayableUser
 		{
@@ -93,9 +82,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsPlayableUser");
 			}
 		}
-		/// <summary>
-		/// Use ViewModeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public ViewMode ViewMode
 		{
@@ -104,19 +90,6 @@ namespace Kaltura.Types
 			{ 
 				_ViewMode = value;
 				OnPropertyChanged("ViewMode");
-			}
-		}
-		/// <summary>
-		/// Use FeaturesUpdatedAtAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public int FeaturesUpdatedAt
-		{
-			get { return _FeaturesUpdatedAt; }
-			set 
-			{ 
-				_FeaturesUpdatedAt = value;
-				OnPropertyChanged("FeaturesUpdatedAt");
 			}
 		}
 		#endregion
@@ -152,10 +125,6 @@ namespace Kaltura.Types
 			{
 				this._ViewMode = (ViewMode)ParseEnum(typeof(ViewMode), node["viewMode"].Value<string>());
 			}
-			if(node["featuresUpdatedAt"] != null)
-			{
-				this._FeaturesUpdatedAt = ParseInt(node["featuresUpdatedAt"].Value<string>());
-			}
 		}
 		#endregion
 
@@ -169,7 +138,6 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("recordingInfo", this._RecordingInfo);
 			kparams.AddIfNotNull("isPlayableUser", this._IsPlayableUser);
 			kparams.AddIfNotNull("viewMode", this._ViewMode);
-			kparams.AddIfNotNull("featuresUpdatedAt", this._FeaturesUpdatedAt);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -184,8 +152,6 @@ namespace Kaltura.Types
 					return "IsPlayableUser";
 				case VIEW_MODE:
 					return "ViewMode";
-				case FEATURES_UPDATED_AT:
-					return "FeaturesUpdatedAt";
 				default:
 					return base.getPropertyName(apiName);
 			}

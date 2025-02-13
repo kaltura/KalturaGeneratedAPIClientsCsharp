@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -72,9 +72,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use ResourceIdsLikeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ResourceIdsLike
 		{
@@ -85,9 +82,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ResourceIdsLike");
 			}
 		}
-		/// <summary>
-		/// Use ResourceIdsMultiLikeOrAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ResourceIdsMultiLikeOr
 		{
@@ -98,9 +92,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ResourceIdsMultiLikeOr");
 			}
 		}
-		/// <summary>
-		/// Use ResourceIdsMultiLikeAndAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ResourceIdsMultiLikeAnd
 		{
@@ -111,9 +102,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ResourceIdsMultiLikeAnd");
 			}
 		}
-		/// <summary>
-		/// Use ParentResourceIdsLikeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ParentResourceIdsLike
 		{
@@ -124,9 +112,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentResourceIdsLike");
 			}
 		}
-		/// <summary>
-		/// Use ParentResourceIdsMultiLikeOrAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ParentResourceIdsMultiLikeOr
 		{
@@ -137,9 +122,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentResourceIdsMultiLikeOr");
 			}
 		}
-		/// <summary>
-		/// Use ParentResourceIdsMultiLikeAndAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ParentResourceIdsMultiLikeAnd
 		{
@@ -150,9 +132,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentResourceIdsMultiLikeAnd");
 			}
 		}
-		/// <summary>
-		/// Use TemplateEntryCategoriesIdsMultiLikeAndAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string TemplateEntryCategoriesIdsMultiLikeAnd
 		{
@@ -163,9 +142,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplateEntryCategoriesIdsMultiLikeAnd");
 			}
 		}
-		/// <summary>
-		/// Use TemplateEntryCategoriesIdsMultiLikeOrAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string TemplateEntryCategoriesIdsMultiLikeOr
 		{
@@ -176,9 +152,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplateEntryCategoriesIdsMultiLikeOr");
 			}
 		}
-		/// <summary>
-		/// Use ResourceSystemNamesMultiLikeOrAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ResourceSystemNamesMultiLikeOr
 		{
@@ -189,9 +162,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ResourceSystemNamesMultiLikeOr");
 			}
 		}
-		/// <summary>
-		/// Use TemplateEntryCategoriesIdsLikeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string TemplateEntryCategoriesIdsLike
 		{
@@ -202,9 +172,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplateEntryCategoriesIdsLike");
 			}
 		}
-		/// <summary>
-		/// Use ResourceSystemNamesMultiLikeAndAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ResourceSystemNamesMultiLikeAnd
 		{
@@ -215,9 +182,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ResourceSystemNamesMultiLikeAnd");
 			}
 		}
-		/// <summary>
-		/// Use ResourceSystemNamesLikeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ResourceSystemNamesLike
 		{
@@ -228,9 +192,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ResourceSystemNamesLike");
 			}
 		}
-		/// <summary>
-		/// Use ResourceIdEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ResourceIdEqual
 		{
@@ -241,9 +202,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ResourceIdEqual");
 			}
 		}
-		/// <summary>
-		/// Use OrderByAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public new ScheduleEventOrderBy OrderBy
 		{

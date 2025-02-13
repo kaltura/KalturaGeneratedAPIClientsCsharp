@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -64,9 +64,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use MediaTypeEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public MediaType MediaTypeEqual
 		{
@@ -77,9 +74,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaTypeEqual");
 			}
 		}
-		/// <summary>
-		/// Use MediaTypeInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string MediaTypeIn
 		{
@@ -90,9 +84,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaTypeIn");
 			}
 		}
-		/// <summary>
-		/// Use SourceTypeEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public SourceType SourceTypeEqual
 		{
@@ -103,9 +94,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceTypeEqual");
 			}
 		}
-		/// <summary>
-		/// Use SourceTypeNotEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public SourceType SourceTypeNotEqual
 		{
@@ -116,9 +104,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceTypeNotEqual");
 			}
 		}
-		/// <summary>
-		/// Use SourceTypeInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SourceTypeIn
 		{
@@ -129,9 +114,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceTypeIn");
 			}
 		}
-		/// <summary>
-		/// Use SourceTypeNotInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SourceTypeNotIn
 		{
@@ -142,9 +124,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceTypeNotIn");
 			}
 		}
-		/// <summary>
-		/// Use MediaDateGreaterThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int MediaDateGreaterThanOrEqual
 		{
@@ -155,9 +134,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaDateGreaterThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use MediaDateLessThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int MediaDateLessThanOrEqual
 		{
@@ -168,9 +144,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaDateLessThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use FlavorParamsIdsMatchOrAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FlavorParamsIdsMatchOr
 		{
@@ -181,9 +154,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsIdsMatchOr");
 			}
 		}
-		/// <summary>
-		/// Use FlavorParamsIdsMatchAndAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FlavorParamsIdsMatchAnd
 		{

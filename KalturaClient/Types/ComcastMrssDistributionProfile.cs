@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -68,9 +68,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use MetadataProfileIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int MetadataProfileId
 		{
@@ -81,9 +78,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("MetadataProfileId");
 			}
 		}
-		/// <summary>
-		/// Use FeedUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FeedUrl
 		{
@@ -94,9 +88,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedUrl");
 			}
 		}
-		/// <summary>
-		/// Use FeedTitleAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FeedTitle
 		{
@@ -107,9 +98,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedTitle");
 			}
 		}
-		/// <summary>
-		/// Use FeedLinkAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FeedLink
 		{
@@ -120,9 +108,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedLink");
 			}
 		}
-		/// <summary>
-		/// Use FeedDescriptionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FeedDescription
 		{
@@ -133,9 +118,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedDescription");
 			}
 		}
-		/// <summary>
-		/// Use FeedLastBuildDateAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FeedLastBuildDate
 		{
@@ -146,9 +128,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedLastBuildDate");
 			}
 		}
-		/// <summary>
-		/// Use ItemLinkAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ItemLink
 		{
@@ -159,9 +138,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemLink");
 			}
 		}
-		/// <summary>
-		/// Use CPlatformTvSeriesAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> CPlatformTvSeries
 		{
@@ -172,9 +148,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CPlatformTvSeries");
 			}
 		}
-		/// <summary>
-		/// Use CPlatformTvSeriesFieldAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CPlatformTvSeriesField
 		{
@@ -185,9 +158,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CPlatformTvSeriesField");
 			}
 		}
-		/// <summary>
-		/// Use ShouldIncludeCuePointsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? ShouldIncludeCuePoints
 		{
@@ -198,9 +168,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ShouldIncludeCuePoints");
 			}
 		}
-		/// <summary>
-		/// Use ShouldIncludeCaptionsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? ShouldIncludeCaptions
 		{
@@ -211,9 +178,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ShouldIncludeCaptions");
 			}
 		}
-		/// <summary>
-		/// Use ShouldAddThumbExtensionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? ShouldAddThumbExtension
 		{

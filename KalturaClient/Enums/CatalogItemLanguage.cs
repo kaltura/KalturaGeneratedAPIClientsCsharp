@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -31,9 +31,7 @@ namespace Kaltura.Enums
 	{
 		public static readonly CatalogItemLanguage AR = new CatalogItemLanguage("Arabic");
 		public static readonly CatalogItemLanguage YUE = new CatalogItemLanguage("Cantonese");
-		public static readonly CatalogItemLanguage CA = new CatalogItemLanguage("Catalan");
 		public static readonly CatalogItemLanguage ZH = new CatalogItemLanguage("Chinese");
-		public static readonly CatalogItemLanguage CS = new CatalogItemLanguage("Czech");
 		public static readonly CatalogItemLanguage DA = new CatalogItemLanguage("Danish");
 		public static readonly CatalogItemLanguage NL = new CatalogItemLanguage("Dutch");
 		public static readonly CatalogItemLanguage EN = new CatalogItemLanguage("English");

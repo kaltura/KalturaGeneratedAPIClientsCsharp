@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -81,14 +81,14 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public long Id { get; set; }
+		public int Id { get; set; }
 
 		public AccessControlDeleteRequestBuilder()
 			: base("accesscontrol", "delete")
 		{
 		}
 
-		public AccessControlDeleteRequestBuilder(long id)
+		public AccessControlDeleteRequestBuilder(int id)
 			: this()
 		{
 			this.Id = id;
@@ -120,14 +120,14 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public long Id { get; set; }
+		public int Id { get; set; }
 
 		public AccessControlGetRequestBuilder()
 			: base("accesscontrol", "get")
 		{
 		}
 
-		public AccessControlGetRequestBuilder(long id)
+		public AccessControlGetRequestBuilder(int id)
 			: this()
 		{
 			this.Id = id;
@@ -204,7 +204,7 @@ namespace Kaltura.Services
 		public const string ACCESS_CONTROL = "accessControl";
 		#endregion
 
-		public long Id { get; set; }
+		public int Id { get; set; }
 		public AccessControl AccessControl { get; set; }
 
 		public AccessControlUpdateRequestBuilder()
@@ -212,7 +212,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public AccessControlUpdateRequestBuilder(long id, AccessControl accessControl)
+		public AccessControlUpdateRequestBuilder(int id, AccessControl accessControl)
 			: this()
 		{
 			this.Id = id;
@@ -253,12 +253,12 @@ namespace Kaltura.Services
 			return new AccessControlAddRequestBuilder(accessControl);
 		}
 
-		public static AccessControlDeleteRequestBuilder Delete(long id)
+		public static AccessControlDeleteRequestBuilder Delete(int id)
 		{
 			return new AccessControlDeleteRequestBuilder(id);
 		}
 
-		public static AccessControlGetRequestBuilder Get(long id)
+		public static AccessControlGetRequestBuilder Get(int id)
 		{
 			return new AccessControlGetRequestBuilder(id);
 		}
@@ -268,7 +268,7 @@ namespace Kaltura.Services
 			return new AccessControlListRequestBuilder(filter, pager);
 		}
 
-		public static AccessControlUpdateRequestBuilder Update(long id, AccessControl accessControl)
+		public static AccessControlUpdateRequestBuilder Update(int id, AccessControl accessControl)
 		{
 			return new AccessControlUpdateRequestBuilder(id, accessControl);
 		}

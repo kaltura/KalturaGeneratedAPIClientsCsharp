@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -45,7 +45,6 @@ namespace Kaltura.Types
 		public const string INPUT_USER_ID = "inputUserId";
 		public const string INPUT_ENTITLED_USERS_EDIT = "inputEntitledUsersEdit";
 		public const string INPUT_ENTITLED_USERS_PUBLISH = "inputEntitledUsersPublish";
-		public const string INPUT_ENTITLED_USERS_VIEW = "inputEntitledUsersView";
 		public const string RESET_MEDIA_REPURPOSING_PROCESS = "resetMediaRepurposingProcess";
 		#endregion
 
@@ -57,14 +56,10 @@ namespace Kaltura.Types
 		private string _InputUserId = null;
 		private string _InputEntitledUsersEdit = null;
 		private string _InputEntitledUsersPublish = null;
-		private string _InputEntitledUsersView = null;
 		private bool? _ResetMediaRepurposingProcess = null;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use InputMetadataProfileIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int InputMetadataProfileId
 		{
@@ -75,9 +70,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("InputMetadataProfileId");
 			}
 		}
-		/// <summary>
-		/// Use InputMetadataAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> InputMetadata
 		{
@@ -88,9 +80,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("InputMetadata");
 			}
 		}
-		/// <summary>
-		/// Use OutputMetadataProfileIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int OutputMetadataProfileId
 		{
@@ -101,9 +90,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("OutputMetadataProfileId");
 			}
 		}
-		/// <summary>
-		/// Use OutputMetadataAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> OutputMetadata
 		{
@@ -114,9 +100,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("OutputMetadata");
 			}
 		}
-		/// <summary>
-		/// Use InputUserIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string InputUserId
 		{
@@ -127,9 +110,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("InputUserId");
 			}
 		}
-		/// <summary>
-		/// Use InputEntitledUsersEditAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string InputEntitledUsersEdit
 		{
@@ -140,9 +120,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("InputEntitledUsersEdit");
 			}
 		}
-		/// <summary>
-		/// Use InputEntitledUsersPublishAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string InputEntitledUsersPublish
 		{
@@ -153,22 +130,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("InputEntitledUsersPublish");
 			}
 		}
-		/// <summary>
-		/// Use InputEntitledUsersViewAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string InputEntitledUsersView
-		{
-			get { return _InputEntitledUsersView; }
-			set 
-			{ 
-				_InputEntitledUsersView = value;
-				OnPropertyChanged("InputEntitledUsersView");
-			}
-		}
-		/// <summary>
-		/// Use ResetMediaRepurposingProcessAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? ResetMediaRepurposingProcess
 		{
@@ -224,10 +185,6 @@ namespace Kaltura.Types
 			{
 				this._InputEntitledUsersPublish = node["inputEntitledUsersPublish"].Value<string>();
 			}
-			if(node["inputEntitledUsersView"] != null)
-			{
-				this._InputEntitledUsersView = node["inputEntitledUsersView"].Value<string>();
-			}
 			if(node["resetMediaRepurposingProcess"] != null)
 			{
 				this._ResetMediaRepurposingProcess = ParseBool(node["resetMediaRepurposingProcess"].Value<string>());
@@ -248,7 +205,6 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("inputUserId", this._InputUserId);
 			kparams.AddIfNotNull("inputEntitledUsersEdit", this._InputEntitledUsersEdit);
 			kparams.AddIfNotNull("inputEntitledUsersPublish", this._InputEntitledUsersPublish);
-			kparams.AddIfNotNull("inputEntitledUsersView", this._InputEntitledUsersView);
 			kparams.AddIfNotNull("resetMediaRepurposingProcess", this._ResetMediaRepurposingProcess);
 			return kparams;
 		}
@@ -270,8 +226,6 @@ namespace Kaltura.Types
 					return "InputEntitledUsersEdit";
 				case INPUT_ENTITLED_USERS_PUBLISH:
 					return "InputEntitledUsersPublish";
-				case INPUT_ENTITLED_USERS_VIEW:
-					return "InputEntitledUsersView";
 				case RESET_MEDIA_REPURPOSING_PROCESS:
 					return "ResetMediaRepurposingProcess";
 				default:

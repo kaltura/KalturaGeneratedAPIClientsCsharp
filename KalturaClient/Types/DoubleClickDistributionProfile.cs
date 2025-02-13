@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -58,9 +58,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use ChannelTitleAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ChannelTitle
 		{
@@ -71,9 +68,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelTitle");
 			}
 		}
-		/// <summary>
-		/// Use ChannelLinkAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ChannelLink
 		{
@@ -84,9 +78,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelLink");
 			}
 		}
-		/// <summary>
-		/// Use ChannelDescriptionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ChannelDescription
 		{
@@ -97,9 +88,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelDescription");
 			}
 		}
-		/// <summary>
-		/// Use FeedUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FeedUrl
 		{
@@ -110,9 +98,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedUrl");
 			}
 		}
-		/// <summary>
-		/// Use CuePointsProviderAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CuePointsProvider
 		{
@@ -123,9 +108,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CuePointsProvider");
 			}
 		}
-		/// <summary>
-		/// Use ItemsPerPageAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ItemsPerPage
 		{
@@ -136,9 +118,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ItemsPerPage");
 			}
 		}
-		/// <summary>
-		/// Use IgnoreSchedulingInFeedAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? IgnoreSchedulingInFeed
 		{

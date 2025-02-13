@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -62,9 +62,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use ParentIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ParentId
 		{
@@ -75,9 +72,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentId");
 			}
 		}
-		/// <summary>
-		/// Use TextAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Text
 		{
@@ -88,9 +82,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Text");
 			}
 		}
-		/// <summary>
-		/// Use EndTimeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int EndTime
 		{
@@ -101,9 +92,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndTime");
 			}
 		}
-		/// <summary>
-		/// Use DurationAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Duration
 		{
@@ -114,9 +102,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Duration");
 			}
 		}
-		/// <summary>
-		/// Use DepthAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Depth
 		{
@@ -127,9 +112,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Depth");
 			}
 		}
-		/// <summary>
-		/// Use ChildrenCountAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ChildrenCount
 		{
@@ -140,9 +122,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChildrenCount");
 			}
 		}
-		/// <summary>
-		/// Use DirectChildrenCountAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int DirectChildrenCount
 		{
@@ -153,9 +132,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DirectChildrenCount");
 			}
 		}
-		/// <summary>
-		/// Use IsPublicAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public NullableBoolean IsPublic
 		{
@@ -166,9 +142,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsPublic");
 			}
 		}
-		/// <summary>
-		/// Use SearchableOnEntryAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public NullableBoolean SearchableOnEntry
 		{

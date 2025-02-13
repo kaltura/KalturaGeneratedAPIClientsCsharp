@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -47,10 +47,6 @@ namespace Kaltura.Types
 		public const string SECONDARY_SECURED_BROADCASTING_URL = "secondarySecuredBroadcastingUrl";
 		public const string PRIMARY_RTSP_BROADCASTING_URL = "primaryRtspBroadcastingUrl";
 		public const string SECONDARY_RTSP_BROADCASTING_URL = "secondaryRtspBroadcastingUrl";
-		public const string PRIMARY_SRT_BROADCASTING_URL = "primarySrtBroadcastingUrl";
-		public const string PRIMARY_SRT_STREAM_ID = "primarySrtStreamId";
-		public const string SECONDARY_SRT_BROADCASTING_URL = "secondarySrtBroadcastingUrl";
-		public const string SECONDARY_SRT_STREAM_ID = "secondarySrtStreamId";
 		public const string STREAM_NAME = "streamName";
 		public const string STREAM_URL = "streamUrl";
 		public const string HLS_STREAM_URL = "hlsStreamUrl";
@@ -59,7 +55,6 @@ namespace Kaltura.Types
 		public const string ENCODING_IP2 = "encodingIP2";
 		public const string STREAM_PASSWORD = "streamPassword";
 		public const string STREAM_USERNAME = "streamUsername";
-		public const string SRT_PASS = "srtPass";
 		public const string PRIMARY_SERVER_NODE_ID = "primaryServerNodeId";
 		public const string SIP_TOKEN = "sipToken";
 		public const string SIP_SOURCE_TYPE = "sipSourceType";
@@ -75,10 +70,6 @@ namespace Kaltura.Types
 		private string _SecondarySecuredBroadcastingUrl = null;
 		private string _PrimaryRtspBroadcastingUrl = null;
 		private string _SecondaryRtspBroadcastingUrl = null;
-		private string _PrimarySrtBroadcastingUrl = null;
-		private string _PrimarySrtStreamId = null;
-		private string _SecondarySrtBroadcastingUrl = null;
-		private string _SecondarySrtStreamId = null;
 		private string _StreamName = null;
 		private string _StreamUrl = null;
 		private string _HlsStreamUrl = null;
@@ -87,16 +78,12 @@ namespace Kaltura.Types
 		private string _EncodingIP2 = null;
 		private string _StreamPassword = null;
 		private string _StreamUsername = null;
-		private string _SrtPass = null;
 		private int _PrimaryServerNodeId = Int32.MinValue;
 		private string _SipToken = null;
 		private SipSourceType _SipSourceType = (SipSourceType)Int32.MinValue;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use StreamRemoteIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string StreamRemoteId
 		{
@@ -107,9 +94,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StreamRemoteId");
 			}
 		}
-		/// <summary>
-		/// Use StreamRemoteBackupIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string StreamRemoteBackupId
 		{
@@ -120,9 +104,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StreamRemoteBackupId");
 			}
 		}
-		/// <summary>
-		/// Use BitratesAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<LiveStreamBitrate> Bitrates
 		{
@@ -133,9 +114,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Bitrates");
 			}
 		}
-		/// <summary>
-		/// Use PrimaryBroadcastingUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PrimaryBroadcastingUrl
 		{
@@ -146,9 +124,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrimaryBroadcastingUrl");
 			}
 		}
-		/// <summary>
-		/// Use SecondaryBroadcastingUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SecondaryBroadcastingUrl
 		{
@@ -159,9 +134,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SecondaryBroadcastingUrl");
 			}
 		}
-		/// <summary>
-		/// Use PrimarySecuredBroadcastingUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PrimarySecuredBroadcastingUrl
 		{
@@ -172,9 +144,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrimarySecuredBroadcastingUrl");
 			}
 		}
-		/// <summary>
-		/// Use SecondarySecuredBroadcastingUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SecondarySecuredBroadcastingUrl
 		{
@@ -185,9 +154,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SecondarySecuredBroadcastingUrl");
 			}
 		}
-		/// <summary>
-		/// Use PrimaryRtspBroadcastingUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PrimaryRtspBroadcastingUrl
 		{
@@ -198,9 +164,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrimaryRtspBroadcastingUrl");
 			}
 		}
-		/// <summary>
-		/// Use SecondaryRtspBroadcastingUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SecondaryRtspBroadcastingUrl
 		{
@@ -211,61 +174,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SecondaryRtspBroadcastingUrl");
 			}
 		}
-		/// <summary>
-		/// Use PrimarySrtBroadcastingUrlAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string PrimarySrtBroadcastingUrl
-		{
-			get { return _PrimarySrtBroadcastingUrl; }
-			set 
-			{ 
-				_PrimarySrtBroadcastingUrl = value;
-				OnPropertyChanged("PrimarySrtBroadcastingUrl");
-			}
-		}
-		/// <summary>
-		/// Use PrimarySrtStreamIdAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string PrimarySrtStreamId
-		{
-			get { return _PrimarySrtStreamId; }
-			set 
-			{ 
-				_PrimarySrtStreamId = value;
-				OnPropertyChanged("PrimarySrtStreamId");
-			}
-		}
-		/// <summary>
-		/// Use SecondarySrtBroadcastingUrlAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string SecondarySrtBroadcastingUrl
-		{
-			get { return _SecondarySrtBroadcastingUrl; }
-			set 
-			{ 
-				_SecondarySrtBroadcastingUrl = value;
-				OnPropertyChanged("SecondarySrtBroadcastingUrl");
-			}
-		}
-		/// <summary>
-		/// Use SecondarySrtStreamIdAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string SecondarySrtStreamId
-		{
-			get { return _SecondarySrtStreamId; }
-			set 
-			{ 
-				_SecondarySrtStreamId = value;
-				OnPropertyChanged("SecondarySrtStreamId");
-			}
-		}
-		/// <summary>
-		/// Use StreamNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string StreamName
 		{
@@ -276,9 +184,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StreamName");
 			}
 		}
-		/// <summary>
-		/// Use StreamUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string StreamUrl
 		{
@@ -289,9 +194,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StreamUrl");
 			}
 		}
-		/// <summary>
-		/// Use HlsStreamUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string HlsStreamUrl
 		{
@@ -302,9 +204,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("HlsStreamUrl");
 			}
 		}
-		/// <summary>
-		/// Use UrlManagerAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string UrlManager
 		{
@@ -315,9 +214,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UrlManager");
 			}
 		}
-		/// <summary>
-		/// Use EncodingIP1AsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EncodingIP1
 		{
@@ -328,9 +224,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EncodingIP1");
 			}
 		}
-		/// <summary>
-		/// Use EncodingIP2AsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EncodingIP2
 		{
@@ -341,9 +234,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EncodingIP2");
 			}
 		}
-		/// <summary>
-		/// Use StreamPasswordAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string StreamPassword
 		{
@@ -354,9 +244,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StreamPassword");
 			}
 		}
-		/// <summary>
-		/// Use StreamUsernameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string StreamUsername
 		{
@@ -367,22 +254,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StreamUsername");
 			}
 		}
-		/// <summary>
-		/// Use SrtPassAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string SrtPass
-		{
-			get { return _SrtPass; }
-			set 
-			{ 
-				_SrtPass = value;
-				OnPropertyChanged("SrtPass");
-			}
-		}
-		/// <summary>
-		/// Use PrimaryServerNodeIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PrimaryServerNodeId
 		{
@@ -393,9 +264,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrimaryServerNodeId");
 			}
 		}
-		/// <summary>
-		/// Use SipTokenAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SipToken
 		{
@@ -406,9 +274,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SipToken");
 			}
 		}
-		/// <summary>
-		/// Use SipSourceTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public SipSourceType SipSourceType
 		{
@@ -468,22 +333,6 @@ namespace Kaltura.Types
 			{
 				this._SecondaryRtspBroadcastingUrl = node["secondaryRtspBroadcastingUrl"].Value<string>();
 			}
-			if(node["primarySrtBroadcastingUrl"] != null)
-			{
-				this._PrimarySrtBroadcastingUrl = node["primarySrtBroadcastingUrl"].Value<string>();
-			}
-			if(node["primarySrtStreamId"] != null)
-			{
-				this._PrimarySrtStreamId = node["primarySrtStreamId"].Value<string>();
-			}
-			if(node["secondarySrtBroadcastingUrl"] != null)
-			{
-				this._SecondarySrtBroadcastingUrl = node["secondarySrtBroadcastingUrl"].Value<string>();
-			}
-			if(node["secondarySrtStreamId"] != null)
-			{
-				this._SecondarySrtStreamId = node["secondarySrtStreamId"].Value<string>();
-			}
 			if(node["streamName"] != null)
 			{
 				this._StreamName = node["streamName"].Value<string>();
@@ -516,10 +365,6 @@ namespace Kaltura.Types
 			{
 				this._StreamUsername = node["streamUsername"].Value<string>();
 			}
-			if(node["srtPass"] != null)
-			{
-				this._SrtPass = node["srtPass"].Value<string>();
-			}
 			if(node["primaryServerNodeId"] != null)
 			{
 				this._PrimaryServerNodeId = ParseInt(node["primaryServerNodeId"].Value<string>());
@@ -550,10 +395,6 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("secondarySecuredBroadcastingUrl", this._SecondarySecuredBroadcastingUrl);
 			kparams.AddIfNotNull("primaryRtspBroadcastingUrl", this._PrimaryRtspBroadcastingUrl);
 			kparams.AddIfNotNull("secondaryRtspBroadcastingUrl", this._SecondaryRtspBroadcastingUrl);
-			kparams.AddIfNotNull("primarySrtBroadcastingUrl", this._PrimarySrtBroadcastingUrl);
-			kparams.AddIfNotNull("primarySrtStreamId", this._PrimarySrtStreamId);
-			kparams.AddIfNotNull("secondarySrtBroadcastingUrl", this._SecondarySrtBroadcastingUrl);
-			kparams.AddIfNotNull("secondarySrtStreamId", this._SecondarySrtStreamId);
 			kparams.AddIfNotNull("streamName", this._StreamName);
 			kparams.AddIfNotNull("streamUrl", this._StreamUrl);
 			kparams.AddIfNotNull("hlsStreamUrl", this._HlsStreamUrl);
@@ -562,7 +403,6 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("encodingIP2", this._EncodingIP2);
 			kparams.AddIfNotNull("streamPassword", this._StreamPassword);
 			kparams.AddIfNotNull("streamUsername", this._StreamUsername);
-			kparams.AddIfNotNull("srtPass", this._SrtPass);
 			kparams.AddIfNotNull("primaryServerNodeId", this._PrimaryServerNodeId);
 			kparams.AddIfNotNull("sipToken", this._SipToken);
 			kparams.AddIfNotNull("sipSourceType", this._SipSourceType);
@@ -590,14 +430,6 @@ namespace Kaltura.Types
 					return "PrimaryRtspBroadcastingUrl";
 				case SECONDARY_RTSP_BROADCASTING_URL:
 					return "SecondaryRtspBroadcastingUrl";
-				case PRIMARY_SRT_BROADCASTING_URL:
-					return "PrimarySrtBroadcastingUrl";
-				case PRIMARY_SRT_STREAM_ID:
-					return "PrimarySrtStreamId";
-				case SECONDARY_SRT_BROADCASTING_URL:
-					return "SecondarySrtBroadcastingUrl";
-				case SECONDARY_SRT_STREAM_ID:
-					return "SecondarySrtStreamId";
 				case STREAM_NAME:
 					return "StreamName";
 				case STREAM_URL:
@@ -614,8 +446,6 @@ namespace Kaltura.Types
 					return "StreamPassword";
 				case STREAM_USERNAME:
 					return "StreamUsername";
-				case SRT_PASS:
-					return "SrtPass";
 				case PRIMARY_SERVER_NODE_ID:
 					return "PrimaryServerNodeId";
 				case SIP_TOKEN:

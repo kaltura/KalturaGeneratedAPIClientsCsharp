@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -39,20 +39,13 @@ namespace Kaltura.Types
 	{
 		#region Constants
 		public const string FORMAT = "format";
-		public const string TYPE_EQUAL = "typeEqual";
-		public const string DEFAULT_HEADER = "defaultHeader";
 		#endregion
 
 		#region Private Fields
 		private string _Format = null;
-		private EntryType _TypeEqual = null;
-		private NullableBoolean _DefaultHeader = (NullableBoolean)Int32.MinValue;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use FormatAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Format
 		{
@@ -61,32 +54,6 @@ namespace Kaltura.Types
 			{ 
 				_Format = value;
 				OnPropertyChanged("Format");
-			}
-		}
-		/// <summary>
-		/// Use TypeEqualAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public EntryType TypeEqual
-		{
-			get { return _TypeEqual; }
-			set 
-			{ 
-				_TypeEqual = value;
-				OnPropertyChanged("TypeEqual");
-			}
-		}
-		/// <summary>
-		/// Use DefaultHeaderAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public NullableBoolean DefaultHeader
-		{
-			get { return _DefaultHeader; }
-			set 
-			{ 
-				_DefaultHeader = value;
-				OnPropertyChanged("DefaultHeader");
 			}
 		}
 		#endregion
@@ -102,14 +69,6 @@ namespace Kaltura.Types
 			{
 				this._Format = node["format"].Value<string>();
 			}
-			if(node["typeEqual"] != null)
-			{
-				this._TypeEqual = (EntryType)StringEnum.Parse(typeof(EntryType), node["typeEqual"].Value<string>());
-			}
-			if(node["defaultHeader"] != null)
-			{
-				this._DefaultHeader = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["defaultHeader"].Value<string>());
-			}
 		}
 		#endregion
 
@@ -120,8 +79,6 @@ namespace Kaltura.Types
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaExportToCsvOptions");
 			kparams.AddIfNotNull("format", this._Format);
-			kparams.AddIfNotNull("typeEqual", this._TypeEqual);
-			kparams.AddIfNotNull("defaultHeader", this._DefaultHeader);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -130,10 +87,6 @@ namespace Kaltura.Types
 			{
 				case FORMAT:
 					return "Format";
-				case TYPE_EQUAL:
-					return "TypeEqual";
-				case DEFAULT_HEADER:
-					return "DefaultHeader";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -64,9 +64,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use DistributionProfileIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int DistributionProfileId
 		{
@@ -77,9 +74,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributionProfileId");
 			}
 		}
-		/// <summary>
-		/// Use DistributionProfileAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public DistributionProfile DistributionProfile
 		{
@@ -90,9 +84,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributionProfile");
 			}
 		}
-		/// <summary>
-		/// Use EntryDistributionIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int EntryDistributionId
 		{
@@ -103,9 +94,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryDistributionId");
 			}
 		}
-		/// <summary>
-		/// Use EntryDistributionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public EntryDistribution EntryDistribution
 		{
@@ -116,9 +104,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryDistribution");
 			}
 		}
-		/// <summary>
-		/// Use RemoteIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string RemoteId
 		{
@@ -129,9 +114,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("RemoteId");
 			}
 		}
-		/// <summary>
-		/// Use ProviderTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public DistributionProviderType ProviderType
 		{
@@ -142,9 +124,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProviderType");
 			}
 		}
-		/// <summary>
-		/// Use ProviderDataAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public DistributionJobProviderData ProviderData
 		{
@@ -155,9 +134,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProviderData");
 			}
 		}
-		/// <summary>
-		/// Use ResultsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Results
 		{
@@ -168,9 +144,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Results");
 			}
 		}
-		/// <summary>
-		/// Use SentDataAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SentData
 		{
@@ -181,9 +154,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SentData");
 			}
 		}
-		/// <summary>
-		/// Use MediaFilesAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<DistributionRemoteMediaFile> MediaFiles
 		{

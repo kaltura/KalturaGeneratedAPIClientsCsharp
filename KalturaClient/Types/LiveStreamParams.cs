@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -55,14 +55,11 @@ namespace Kaltura.Types
 		private int _Height = Int32.MinValue;
 		private string _Codec = null;
 		private int _FrameRate = Int32.MinValue;
-		private double _KeyFrameInterval = Double.MinValue;
+		private float _KeyFrameInterval = Single.MinValue;
 		private string _Language = null;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use BitrateAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Bitrate
 		{
@@ -73,9 +70,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Bitrate");
 			}
 		}
-		/// <summary>
-		/// Use FlavorIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FlavorId
 		{
@@ -86,9 +80,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorId");
 			}
 		}
-		/// <summary>
-		/// Use WidthAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Width
 		{
@@ -99,9 +90,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Width");
 			}
 		}
-		/// <summary>
-		/// Use HeightAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Height
 		{
@@ -112,9 +100,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Height");
 			}
 		}
-		/// <summary>
-		/// Use CodecAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Codec
 		{
@@ -125,9 +110,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Codec");
 			}
 		}
-		/// <summary>
-		/// Use FrameRateAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int FrameRate
 		{
@@ -138,11 +120,8 @@ namespace Kaltura.Types
 				OnPropertyChanged("FrameRate");
 			}
 		}
-		/// <summary>
-		/// Use KeyFrameIntervalAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public double KeyFrameInterval
+		public float KeyFrameInterval
 		{
 			get { return _KeyFrameInterval; }
 			set 
@@ -151,9 +130,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("KeyFrameInterval");
 			}
 		}
-		/// <summary>
-		/// Use LanguageAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Language
 		{
@@ -199,7 +175,7 @@ namespace Kaltura.Types
 			}
 			if(node["keyFrameInterval"] != null)
 			{
-				this._KeyFrameInterval = ParseDouble(node["keyFrameInterval"].Value<string>());
+				this._KeyFrameInterval = ParseFloat(node["keyFrameInterval"].Value<string>());
 			}
 			if(node["language"] != null)
 			{

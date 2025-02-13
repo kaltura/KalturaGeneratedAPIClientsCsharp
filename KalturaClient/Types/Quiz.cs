@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -64,9 +64,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use VersionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Version
 		{
@@ -77,9 +74,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Version");
 			}
 		}
-		/// <summary>
-		/// Use UiAttributesAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> UiAttributes
 		{
@@ -90,9 +84,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UiAttributes");
 			}
 		}
-		/// <summary>
-		/// Use ShowResultOnAnswerAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public NullableBoolean ShowResultOnAnswer
 		{
@@ -103,9 +94,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ShowResultOnAnswer");
 			}
 		}
-		/// <summary>
-		/// Use ShowCorrectKeyOnAnswerAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public NullableBoolean ShowCorrectKeyOnAnswer
 		{
@@ -116,9 +104,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ShowCorrectKeyOnAnswer");
 			}
 		}
-		/// <summary>
-		/// Use AllowAnswerUpdateAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public NullableBoolean AllowAnswerUpdate
 		{
@@ -129,9 +114,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowAnswerUpdate");
 			}
 		}
-		/// <summary>
-		/// Use ShowCorrectAfterSubmissionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public NullableBoolean ShowCorrectAfterSubmission
 		{
@@ -142,9 +124,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ShowCorrectAfterSubmission");
 			}
 		}
-		/// <summary>
-		/// Use AllowDownloadAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public NullableBoolean AllowDownload
 		{
@@ -155,9 +134,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowDownload");
 			}
 		}
-		/// <summary>
-		/// Use ShowGradeAfterSubmissionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public NullableBoolean ShowGradeAfterSubmission
 		{
@@ -168,9 +144,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ShowGradeAfterSubmission");
 			}
 		}
-		/// <summary>
-		/// Use AttemptsAllowedAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int AttemptsAllowed
 		{
@@ -181,9 +154,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AttemptsAllowed");
 			}
 		}
-		/// <summary>
-		/// Use ScoreTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public ScoreType ScoreType
 		{

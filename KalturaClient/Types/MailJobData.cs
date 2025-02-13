@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -48,7 +48,6 @@ namespace Kaltura.Types
 		public const string FROM_EMAIL = "fromEmail";
 		public const string BODY_PARAMS = "bodyParams";
 		public const string SUBJECT_PARAMS = "subjectParams";
-		public const string DYNAMIC_EMAIL_CONTENTS = "dynamicEmailContents";
 		public const string TEMPLATE_PATH = "templatePath";
 		public const string LANGUAGE = "language";
 		public const string CAMPAIGN_ID = "campaignId";
@@ -68,7 +67,6 @@ namespace Kaltura.Types
 		private string _FromEmail = null;
 		private string _BodyParams = null;
 		private string _SubjectParams = null;
-		private DynamicEmailContents _DynamicEmailContents;
 		private string _TemplatePath = null;
 		private LanguageCode _Language = null;
 		private int _CampaignId = Int32.MinValue;
@@ -78,9 +76,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use MailTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public MailType MailType
 		{
@@ -91,9 +86,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("MailType");
 			}
 		}
-		/// <summary>
-		/// Use MailPriorityAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int MailPriority
 		{
@@ -104,9 +96,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("MailPriority");
 			}
 		}
-		/// <summary>
-		/// Use StatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public MailJobStatus Status
 		{
@@ -117,9 +106,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
-		/// <summary>
-		/// Use RecipientNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string RecipientName
 		{
@@ -130,9 +116,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecipientName");
 			}
 		}
-		/// <summary>
-		/// Use RecipientEmailAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string RecipientEmail
 		{
@@ -143,9 +126,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecipientEmail");
 			}
 		}
-		/// <summary>
-		/// Use RecipientIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int RecipientId
 		{
@@ -156,9 +136,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecipientId");
 			}
 		}
-		/// <summary>
-		/// Use FromNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FromName
 		{
@@ -169,9 +146,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FromName");
 			}
 		}
-		/// <summary>
-		/// Use FromEmailAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FromEmail
 		{
@@ -182,9 +156,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FromEmail");
 			}
 		}
-		/// <summary>
-		/// Use BodyParamsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string BodyParams
 		{
@@ -195,9 +166,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("BodyParams");
 			}
 		}
-		/// <summary>
-		/// Use SubjectParamsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SubjectParams
 		{
@@ -208,22 +176,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SubjectParams");
 			}
 		}
-		/// <summary>
-		/// Use DynamicEmailContentsAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public DynamicEmailContents DynamicEmailContents
-		{
-			get { return _DynamicEmailContents; }
-			set 
-			{ 
-				_DynamicEmailContents = value;
-				OnPropertyChanged("DynamicEmailContents");
-			}
-		}
-		/// <summary>
-		/// Use TemplatePathAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string TemplatePath
 		{
@@ -234,9 +186,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplatePath");
 			}
 		}
-		/// <summary>
-		/// Use LanguageAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public LanguageCode Language
 		{
@@ -247,9 +196,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Language");
 			}
 		}
-		/// <summary>
-		/// Use CampaignIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CampaignId
 		{
@@ -260,9 +206,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CampaignId");
 			}
 		}
-		/// <summary>
-		/// Use MinSendDateAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int MinSendDate
 		{
@@ -273,9 +216,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("MinSendDate");
 			}
 		}
-		/// <summary>
-		/// Use IsHtmlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? IsHtml
 		{
@@ -286,9 +226,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsHtml");
 			}
 		}
-		/// <summary>
-		/// Use SeparatorAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Separator
 		{
@@ -348,10 +285,6 @@ namespace Kaltura.Types
 			{
 				this._SubjectParams = node["subjectParams"].Value<string>();
 			}
-			if(node["dynamicEmailContents"] != null)
-			{
-				this._DynamicEmailContents = ObjectFactory.Create<DynamicEmailContents>(node["dynamicEmailContents"]);
-			}
 			if(node["templatePath"] != null)
 			{
 				this._TemplatePath = node["templatePath"].Value<string>();
@@ -395,7 +328,6 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("fromEmail", this._FromEmail);
 			kparams.AddIfNotNull("bodyParams", this._BodyParams);
 			kparams.AddIfNotNull("subjectParams", this._SubjectParams);
-			kparams.AddIfNotNull("dynamicEmailContents", this._DynamicEmailContents);
 			kparams.AddIfNotNull("templatePath", this._TemplatePath);
 			kparams.AddIfNotNull("language", this._Language);
 			kparams.AddIfNotNull("campaignId", this._CampaignId);
@@ -428,8 +360,6 @@ namespace Kaltura.Types
 					return "BodyParams";
 				case SUBJECT_PARAMS:
 					return "SubjectParams";
-				case DYNAMIC_EMAIL_CONTENTS:
-					return "DynamicEmailContents";
 				case TEMPLATE_PATH:
 					return "TemplatePath";
 				case LANGUAGE:

@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -102,9 +102,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use IdEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int IdEqual
 		{
@@ -115,9 +112,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
-		/// <summary>
-		/// Use IdInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string IdIn
 		{
@@ -128,9 +122,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
-		/// <summary>
-		/// Use PartnerIdEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PartnerIdEqual
 		{
@@ -141,9 +132,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdEqual");
 			}
 		}
-		/// <summary>
-		/// Use PartnerIdInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PartnerIdIn
 		{
@@ -154,9 +142,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdIn");
 			}
 		}
-		/// <summary>
-		/// Use NameLikeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string NameLike
 		{
@@ -167,9 +152,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("NameLike");
 			}
 		}
-		/// <summary>
-		/// Use TypeEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public DropFolderType TypeEqual
 		{
@@ -180,9 +162,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeEqual");
 			}
 		}
-		/// <summary>
-		/// Use TypeInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string TypeIn
 		{
@@ -193,9 +172,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeIn");
 			}
 		}
-		/// <summary>
-		/// Use StatusEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public DropFolderStatus StatusEqual
 		{
@@ -206,9 +182,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
-		/// <summary>
-		/// Use StatusInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string StatusIn
 		{
@@ -219,9 +192,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
-		/// <summary>
-		/// Use ConversionProfileIdEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ConversionProfileIdEqual
 		{
@@ -232,9 +202,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionProfileIdEqual");
 			}
 		}
-		/// <summary>
-		/// Use ConversionProfileIdInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ConversionProfileIdIn
 		{
@@ -245,9 +212,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionProfileIdIn");
 			}
 		}
-		/// <summary>
-		/// Use DcEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int DcEqual
 		{
@@ -258,9 +222,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DcEqual");
 			}
 		}
-		/// <summary>
-		/// Use DcInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string DcIn
 		{
@@ -271,9 +232,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DcIn");
 			}
 		}
-		/// <summary>
-		/// Use PathEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PathEqual
 		{
@@ -284,9 +242,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PathEqual");
 			}
 		}
-		/// <summary>
-		/// Use PathLikeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PathLike
 		{
@@ -297,9 +252,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PathLike");
 			}
 		}
-		/// <summary>
-		/// Use FileHandlerTypeEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public DropFolderFileHandlerType FileHandlerTypeEqual
 		{
@@ -310,9 +262,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileHandlerTypeEqual");
 			}
 		}
-		/// <summary>
-		/// Use FileHandlerTypeInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FileHandlerTypeIn
 		{
@@ -323,9 +272,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileHandlerTypeIn");
 			}
 		}
-		/// <summary>
-		/// Use FileNamePatternsLikeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FileNamePatternsLike
 		{
@@ -336,9 +282,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileNamePatternsLike");
 			}
 		}
-		/// <summary>
-		/// Use FileNamePatternsMultiLikeOrAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FileNamePatternsMultiLikeOr
 		{
@@ -349,9 +292,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileNamePatternsMultiLikeOr");
 			}
 		}
-		/// <summary>
-		/// Use FileNamePatternsMultiLikeAndAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FileNamePatternsMultiLikeAnd
 		{
@@ -362,9 +302,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileNamePatternsMultiLikeAnd");
 			}
 		}
-		/// <summary>
-		/// Use TagsLikeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string TagsLike
 		{
@@ -375,9 +312,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsLike");
 			}
 		}
-		/// <summary>
-		/// Use TagsMultiLikeOrAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string TagsMultiLikeOr
 		{
@@ -388,9 +322,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsMultiLikeOr");
 			}
 		}
-		/// <summary>
-		/// Use TagsMultiLikeAndAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string TagsMultiLikeAnd
 		{
@@ -401,9 +332,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsMultiLikeAnd");
 			}
 		}
-		/// <summary>
-		/// Use ErrorCodeEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public DropFolderErrorCode ErrorCodeEqual
 		{
@@ -414,9 +342,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrorCodeEqual");
 			}
 		}
-		/// <summary>
-		/// Use ErrorCodeInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ErrorCodeIn
 		{
@@ -427,9 +352,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrorCodeIn");
 			}
 		}
-		/// <summary>
-		/// Use CreatedAtGreaterThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
@@ -440,9 +362,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use CreatedAtLessThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
@@ -453,9 +372,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use UpdatedAtGreaterThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
@@ -466,9 +382,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use UpdatedAtLessThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{

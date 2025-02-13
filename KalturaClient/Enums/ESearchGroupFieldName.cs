@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -29,22 +29,15 @@ namespace Kaltura.Enums
 {
 	public sealed class ESearchGroupFieldName : StringEnum
 	{
-		public static readonly ESearchGroupFieldName COMPANY = new ESearchGroupFieldName("company");
-		public static readonly ESearchGroupFieldName COUNTRY = new ESearchGroupFieldName("country");
 		public static readonly ESearchGroupFieldName CREATED_AT = new ESearchGroupFieldName("created_at");
 		public static readonly ESearchGroupFieldName EMAIL = new ESearchGroupFieldName("email");
-		public static readonly ESearchGroupFieldName EXTERNAL_ID = new ESearchGroupFieldName("external_id");
 		public static readonly ESearchGroupFieldName FIRST_NAME = new ESearchGroupFieldName("first_name");
 		public static readonly ESearchGroupFieldName GROUP_IDS = new ESearchGroupFieldName("group_ids");
-		public static readonly ESearchGroupFieldName IS_ADMIN = new ESearchGroupFieldName("is_admin");
-		public static readonly ESearchGroupFieldName IS_HASHED = new ESearchGroupFieldName("is_hashed");
 		public static readonly ESearchGroupFieldName LAST_NAME = new ESearchGroupFieldName("last_name");
-		public static readonly ESearchGroupFieldName LOGIN_ENABLED = new ESearchGroupFieldName("login_enabled");
 		public static readonly ESearchGroupFieldName PERMISSION_NAMES = new ESearchGroupFieldName("permission_names");
 		public static readonly ESearchGroupFieldName ROLE_IDS = new ESearchGroupFieldName("role_ids");
 		public static readonly ESearchGroupFieldName SCREEN_NAME = new ESearchGroupFieldName("screen_name");
 		public static readonly ESearchGroupFieldName TAGS = new ESearchGroupFieldName("tags");
-		public static readonly ESearchGroupFieldName TITLE = new ESearchGroupFieldName("title");
 		public static readonly ESearchGroupFieldName UPDATED_AT = new ESearchGroupFieldName("updated_at");
 		public static readonly ESearchGroupFieldName USER_ID = new ESearchGroupFieldName("user_id");
 

@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -53,9 +53,6 @@ namespace Kaltura.Enums
 		public static readonly ConditionType ASSET_TYPE = new ConditionType("16");
 		public static readonly ConditionType BOOLEAN = new ConditionType("17");
 		public static readonly ConditionType HTTP_HEADER = new ConditionType("18");
-		public static readonly ConditionType ENTRY_SCHEDULED = new ConditionType("19");
-		public static readonly ConditionType ACTION_NAME = new ConditionType("20");
-		public static readonly ConditionType URL_AUTH_PARAMS = new ConditionType("21");
 
 		private ConditionType(string name) : base(name) { }
 	}

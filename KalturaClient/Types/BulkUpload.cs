@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -80,9 +80,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use IdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public long Id
 		{
@@ -93,9 +90,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
-		/// <summary>
-		/// Use UploadedByAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string UploadedBy
 		{
@@ -106,9 +100,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UploadedBy");
 			}
 		}
-		/// <summary>
-		/// Use UploadedByUserIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string UploadedByUserId
 		{
@@ -119,9 +110,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UploadedByUserId");
 			}
 		}
-		/// <summary>
-		/// Use UploadedOnAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int UploadedOn
 		{
@@ -132,9 +120,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UploadedOn");
 			}
 		}
-		/// <summary>
-		/// Use NumOfEntriesAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int NumOfEntries
 		{
@@ -145,9 +130,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("NumOfEntries");
 			}
 		}
-		/// <summary>
-		/// Use StatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public BatchJobStatus Status
 		{
@@ -158,9 +140,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
-		/// <summary>
-		/// Use LogFileUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string LogFileUrl
 		{
@@ -171,9 +150,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("LogFileUrl");
 			}
 		}
-		/// <summary>
-		/// Use CsvFileUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CsvFileUrl
 		{
@@ -184,9 +160,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CsvFileUrl");
 			}
 		}
-		/// <summary>
-		/// Use BulkFileUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string BulkFileUrl
 		{
@@ -197,9 +170,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("BulkFileUrl");
 			}
 		}
-		/// <summary>
-		/// Use BulkUploadTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public BulkUploadType BulkUploadType
 		{
@@ -210,9 +180,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("BulkUploadType");
 			}
 		}
-		/// <summary>
-		/// Use ResultsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<BulkUploadResult> Results
 		{
@@ -223,9 +190,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Results");
 			}
 		}
-		/// <summary>
-		/// Use ErrorAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Error
 		{
@@ -236,9 +200,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Error");
 			}
 		}
-		/// <summary>
-		/// Use ErrorTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public BatchJobErrorTypes ErrorType
 		{
@@ -249,9 +210,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrorType");
 			}
 		}
-		/// <summary>
-		/// Use ErrorNumberAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ErrorNumber
 		{
@@ -262,9 +220,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrorNumber");
 			}
 		}
-		/// <summary>
-		/// Use FileNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FileName
 		{
@@ -275,9 +230,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileName");
 			}
 		}
-		/// <summary>
-		/// Use DescriptionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Description
 		{
@@ -288,9 +240,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
-		/// <summary>
-		/// Use NumOfObjectsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int NumOfObjects
 		{
@@ -301,9 +250,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("NumOfObjects");
 			}
 		}
-		/// <summary>
-		/// Use BulkUploadObjectTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public BulkUploadObjectType BulkUploadObjectType
 		{

@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -41,20 +41,15 @@ namespace Kaltura.Types
 		public const string PATTERN = "pattern";
 		public const string REPLACEMENT = "replacement";
 		public const string REPLACMEN_SERVER_NODE_ID = "replacmenServerNodeId";
-		public const string CHECK_ALIVE_TIMEOUT_MS = "checkAliveTimeoutMs";
 		#endregion
 
 		#region Private Fields
 		private string _Pattern = null;
 		private string _Replacement = null;
 		private int _ReplacmenServerNodeId = Int32.MinValue;
-		private int _CheckAliveTimeoutMs = Int32.MinValue;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use PatternAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Pattern
 		{
@@ -65,9 +60,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Pattern");
 			}
 		}
-		/// <summary>
-		/// Use ReplacementAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Replacement
 		{
@@ -78,9 +70,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Replacement");
 			}
 		}
-		/// <summary>
-		/// Use ReplacmenServerNodeIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ReplacmenServerNodeId
 		{
@@ -89,19 +78,6 @@ namespace Kaltura.Types
 			{ 
 				_ReplacmenServerNodeId = value;
 				OnPropertyChanged("ReplacmenServerNodeId");
-			}
-		}
-		/// <summary>
-		/// Use CheckAliveTimeoutMsAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public int CheckAliveTimeoutMs
-		{
-			get { return _CheckAliveTimeoutMs; }
-			set 
-			{ 
-				_CheckAliveTimeoutMs = value;
-				OnPropertyChanged("CheckAliveTimeoutMs");
 			}
 		}
 		#endregion
@@ -125,10 +101,6 @@ namespace Kaltura.Types
 			{
 				this._ReplacmenServerNodeId = ParseInt(node["replacmenServerNodeId"].Value<string>());
 			}
-			if(node["checkAliveTimeoutMs"] != null)
-			{
-				this._CheckAliveTimeoutMs = ParseInt(node["checkAliveTimeoutMs"].Value<string>());
-			}
 		}
 		#endregion
 
@@ -141,7 +113,6 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("pattern", this._Pattern);
 			kparams.AddIfNotNull("replacement", this._Replacement);
 			kparams.AddIfNotNull("replacmenServerNodeId", this._ReplacmenServerNodeId);
-			kparams.AddIfNotNull("checkAliveTimeoutMs", this._CheckAliveTimeoutMs);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -154,8 +125,6 @@ namespace Kaltura.Types
 					return "Replacement";
 				case REPLACMEN_SERVER_NODE_ID:
 					return "ReplacmenServerNodeId";
-				case CHECK_ALIVE_TIMEOUT_MS:
-					return "CheckAliveTimeoutMs";
 				default:
 					return base.getPropertyName(apiName);
 			}

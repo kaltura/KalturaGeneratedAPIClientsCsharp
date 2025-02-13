@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -43,7 +43,6 @@ namespace Kaltura.Types
 		public const string FILE_PATHS = "filePaths";
 		public const string REPORTS_GROUP = "reportsGroup";
 		public const string FILES = "files";
-		public const string BASE_URL = "baseUrl";
 		#endregion
 
 		#region Private Fields
@@ -52,13 +51,9 @@ namespace Kaltura.Types
 		private string _FilePaths = null;
 		private string _ReportsGroup = null;
 		private IList<ReportExportFile> _Files;
-		private string _BaseUrl = null;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use RecipientEmailAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string RecipientEmail
 		{
@@ -69,9 +64,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecipientEmail");
 			}
 		}
-		/// <summary>
-		/// Use ReportItemsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<ReportExportItem> ReportItems
 		{
@@ -82,9 +74,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReportItems");
 			}
 		}
-		/// <summary>
-		/// Use FilePathsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FilePaths
 		{
@@ -95,9 +84,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FilePaths");
 			}
 		}
-		/// <summary>
-		/// Use ReportsGroupAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ReportsGroup
 		{
@@ -108,9 +94,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReportsGroup");
 			}
 		}
-		/// <summary>
-		/// Use FilesAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<ReportExportFile> Files
 		{
@@ -119,19 +102,6 @@ namespace Kaltura.Types
 			{ 
 				_Files = value;
 				OnPropertyChanged("Files");
-			}
-		}
-		/// <summary>
-		/// Use BaseUrlAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string BaseUrl
-		{
-			get { return _BaseUrl; }
-			set 
-			{ 
-				_BaseUrl = value;
-				OnPropertyChanged("BaseUrl");
 			}
 		}
 		#endregion
@@ -171,10 +141,6 @@ namespace Kaltura.Types
 					this._Files.Add(ObjectFactory.Create<ReportExportFile>(arrayNode));
 				}
 			}
-			if(node["baseUrl"] != null)
-			{
-				this._BaseUrl = node["baseUrl"].Value<string>();
-			}
 		}
 		#endregion
 
@@ -189,7 +155,6 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("filePaths", this._FilePaths);
 			kparams.AddIfNotNull("reportsGroup", this._ReportsGroup);
 			kparams.AddIfNotNull("files", this._Files);
-			kparams.AddIfNotNull("baseUrl", this._BaseUrl);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -206,8 +171,6 @@ namespace Kaltura.Types
 					return "ReportsGroup";
 				case FILES:
 					return "Files";
-				case BASE_URL:
-					return "BaseUrl";
 				default:
 					return base.getPropertyName(apiName);
 			}

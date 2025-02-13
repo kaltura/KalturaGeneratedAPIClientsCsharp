@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -54,9 +54,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use ThumbParamsIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ThumbParamsId
 		{
@@ -67,9 +64,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbParamsId");
 			}
 		}
-		/// <summary>
-		/// Use ThumbParamsVersionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ThumbParamsVersion
 		{
@@ -80,9 +74,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbParamsVersion");
 			}
 		}
-		/// <summary>
-		/// Use ThumbAssetIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ThumbAssetId
 		{
@@ -93,9 +84,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbAssetId");
 			}
 		}
-		/// <summary>
-		/// Use ThumbAssetVersionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ThumbAssetVersion
 		{
@@ -106,9 +94,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbAssetVersion");
 			}
 		}
-		/// <summary>
-		/// Use RotateAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Rotate
 		{

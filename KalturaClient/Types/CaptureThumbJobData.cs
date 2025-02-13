@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -62,9 +62,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use FileContainerAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public FileContainer FileContainer
 		{
@@ -75,9 +72,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileContainer");
 			}
 		}
-		/// <summary>
-		/// Use ActualSrcFileSyncLocalPathAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ActualSrcFileSyncLocalPath
 		{
@@ -88,9 +82,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ActualSrcFileSyncLocalPath");
 			}
 		}
-		/// <summary>
-		/// Use SrcFileSyncRemoteUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SrcFileSyncRemoteUrl
 		{
@@ -101,9 +92,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcFileSyncRemoteUrl");
 			}
 		}
-		/// <summary>
-		/// Use ThumbParamsOutputIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ThumbParamsOutputId
 		{
@@ -114,9 +102,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbParamsOutputId");
 			}
 		}
-		/// <summary>
-		/// Use ThumbAssetIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ThumbAssetId
 		{
@@ -127,9 +112,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbAssetId");
 			}
 		}
-		/// <summary>
-		/// Use SrcAssetIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SrcAssetId
 		{
@@ -140,9 +122,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcAssetId");
 			}
 		}
-		/// <summary>
-		/// Use SrcAssetEncryptionKeyAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SrcAssetEncryptionKey
 		{
@@ -153,9 +132,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcAssetEncryptionKey");
 			}
 		}
-		/// <summary>
-		/// Use SrcAssetTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public AssetType SrcAssetType
 		{
@@ -166,9 +142,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SrcAssetType");
 			}
 		}
-		/// <summary>
-		/// Use ThumbPathAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ThumbPath
 		{

@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -68,9 +68,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use UsernameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Username
 		{
@@ -81,9 +78,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Username");
 			}
 		}
-		/// <summary>
-		/// Use DefaultCategoryAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int DefaultCategory
 		{
@@ -94,9 +88,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DefaultCategory");
 			}
 		}
-		/// <summary>
-		/// Use AllowCommentsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string AllowComments
 		{
@@ -107,9 +98,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowComments");
 			}
 		}
-		/// <summary>
-		/// Use AllowEmbeddingAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string AllowEmbedding
 		{
@@ -120,9 +108,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowEmbedding");
 			}
 		}
-		/// <summary>
-		/// Use AllowRatingsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string AllowRatings
 		{
@@ -133,9 +118,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowRatings");
 			}
 		}
-		/// <summary>
-		/// Use AllowResponsesAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string AllowResponses
 		{
@@ -146,9 +128,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowResponses");
 			}
 		}
-		/// <summary>
-		/// Use ApiAuthorizeUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ApiAuthorizeUrl
 		{
@@ -159,9 +138,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ApiAuthorizeUrl");
 			}
 		}
-		/// <summary>
-		/// Use GoogleClientIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string GoogleClientId
 		{
@@ -172,9 +148,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("GoogleClientId");
 			}
 		}
-		/// <summary>
-		/// Use GoogleClientSecretAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string GoogleClientSecret
 		{
@@ -185,9 +158,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("GoogleClientSecret");
 			}
 		}
-		/// <summary>
-		/// Use GoogleTokenDataAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string GoogleTokenData
 		{
@@ -198,9 +168,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("GoogleTokenData");
 			}
 		}
-		/// <summary>
-		/// Use AssumeSuccessAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? AssumeSuccess
 		{
@@ -211,9 +178,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssumeSuccess");
 			}
 		}
-		/// <summary>
-		/// Use PrivacyStatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PrivacyStatus
 		{

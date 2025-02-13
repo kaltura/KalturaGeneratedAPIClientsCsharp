@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -120,9 +120,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use IdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public long Id
 		{
@@ -133,9 +130,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
-		/// <summary>
-		/// Use PartnerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -146,9 +140,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
-		/// <summary>
-		/// Use CreatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -159,9 +150,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
-		/// <summary>
-		/// Use UpdatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -172,9 +160,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
-		/// <summary>
-		/// Use DeletedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int DeletedAt
 		{
@@ -185,9 +170,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeletedAt");
 			}
 		}
-		/// <summary>
-		/// Use LockExpirationAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int LockExpiration
 		{
@@ -198,9 +180,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("LockExpiration");
 			}
 		}
-		/// <summary>
-		/// Use ExecutionAttemptsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ExecutionAttempts
 		{
@@ -211,9 +190,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExecutionAttempts");
 			}
 		}
-		/// <summary>
-		/// Use LockVersionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int LockVersion
 		{
@@ -224,9 +200,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("LockVersion");
 			}
 		}
-		/// <summary>
-		/// Use EntryIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EntryId
 		{
@@ -237,9 +210,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
-		/// <summary>
-		/// Use EntryNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EntryName
 		{
@@ -250,9 +220,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryName");
 			}
 		}
-		/// <summary>
-		/// Use JobTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public BatchJobType JobType
 		{
@@ -263,9 +230,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("JobType");
 			}
 		}
-		/// <summary>
-		/// Use JobSubTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int JobSubType
 		{
@@ -276,9 +240,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("JobSubType");
 			}
 		}
-		/// <summary>
-		/// Use DataAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public JobData Data
 		{
@@ -289,9 +250,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Data");
 			}
 		}
-		/// <summary>
-		/// Use StatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public BatchJobStatus Status
 		{
@@ -302,9 +260,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
-		/// <summary>
-		/// Use AbortAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Abort
 		{
@@ -315,9 +270,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Abort");
 			}
 		}
-		/// <summary>
-		/// Use CheckAgainTimeoutAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CheckAgainTimeout
 		{
@@ -328,9 +280,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CheckAgainTimeout");
 			}
 		}
-		/// <summary>
-		/// Use MessageAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Message
 		{
@@ -341,9 +290,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Message");
 			}
 		}
-		/// <summary>
-		/// Use DescriptionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Description
 		{
@@ -354,9 +300,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
-		/// <summary>
-		/// Use PriorityAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Priority
 		{
@@ -367,9 +310,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Priority");
 			}
 		}
-		/// <summary>
-		/// Use HistoryAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<BatchHistoryData> History
 		{
@@ -380,9 +320,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("History");
 			}
 		}
-		/// <summary>
-		/// Use BulkJobIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int BulkJobId
 		{
@@ -393,9 +330,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("BulkJobId");
 			}
 		}
-		/// <summary>
-		/// Use BatchVersionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int BatchVersion
 		{
@@ -406,9 +340,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("BatchVersion");
 			}
 		}
-		/// <summary>
-		/// Use ParentJobIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ParentJobId
 		{
@@ -419,9 +350,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentJobId");
 			}
 		}
-		/// <summary>
-		/// Use RootJobIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int RootJobId
 		{
@@ -432,9 +360,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("RootJobId");
 			}
 		}
-		/// <summary>
-		/// Use QueueTimeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int QueueTime
 		{
@@ -445,9 +370,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("QueueTime");
 			}
 		}
-		/// <summary>
-		/// Use FinishTimeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int FinishTime
 		{
@@ -458,9 +380,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FinishTime");
 			}
 		}
-		/// <summary>
-		/// Use ErrTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public BatchJobErrorTypes ErrType
 		{
@@ -471,9 +390,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrType");
 			}
 		}
-		/// <summary>
-		/// Use ErrNumberAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ErrNumber
 		{
@@ -484,9 +400,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrNumber");
 			}
 		}
-		/// <summary>
-		/// Use EstimatedEffortAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int EstimatedEffort
 		{
@@ -497,9 +410,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EstimatedEffort");
 			}
 		}
-		/// <summary>
-		/// Use UrgencyAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Urgency
 		{
@@ -510,9 +420,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Urgency");
 			}
 		}
-		/// <summary>
-		/// Use SchedulerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int SchedulerId
 		{
@@ -523,9 +430,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SchedulerId");
 			}
 		}
-		/// <summary>
-		/// Use WorkerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int WorkerId
 		{
@@ -536,9 +440,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("WorkerId");
 			}
 		}
-		/// <summary>
-		/// Use BatchIndexAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int BatchIndex
 		{
@@ -549,9 +450,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("BatchIndex");
 			}
 		}
-		/// <summary>
-		/// Use LastSchedulerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int LastSchedulerId
 		{
@@ -562,9 +460,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastSchedulerId");
 			}
 		}
-		/// <summary>
-		/// Use LastWorkerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int LastWorkerId
 		{
@@ -575,9 +470,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastWorkerId");
 			}
 		}
-		/// <summary>
-		/// Use DcAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Dc
 		{
@@ -588,9 +480,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Dc");
 			}
 		}
-		/// <summary>
-		/// Use JobObjectIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string JobObjectId
 		{
@@ -601,9 +490,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("JobObjectId");
 			}
 		}
-		/// <summary>
-		/// Use JobObjectTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int JobObjectType
 		{

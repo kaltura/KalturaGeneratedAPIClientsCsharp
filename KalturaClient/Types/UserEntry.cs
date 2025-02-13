@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -50,7 +50,7 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Private Fields
-		private long _Id = long.MinValue;
+		private int _Id = Int32.MinValue;
 		private string _EntryId = null;
 		private string _UserId = null;
 		private int _PartnerId = Int32.MinValue;
@@ -62,11 +62,8 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use IdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public long Id
+		public int Id
 		{
 			get { return _Id; }
 			private set 
@@ -75,9 +72,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
-		/// <summary>
-		/// Use EntryIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EntryId
 		{
@@ -88,9 +82,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
-		/// <summary>
-		/// Use UserIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string UserId
 		{
@@ -101,9 +92,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserId");
 			}
 		}
-		/// <summary>
-		/// Use PartnerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -114,9 +102,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
-		/// <summary>
-		/// Use StatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public UserEntryStatus Status
 		{
@@ -127,9 +112,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
-		/// <summary>
-		/// Use CreatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -140,9 +122,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
-		/// <summary>
-		/// Use UpdatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -153,9 +132,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
-		/// <summary>
-		/// Use TypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public UserEntryType Type
 		{
@@ -166,9 +142,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
-		/// <summary>
-		/// Use ExtendedStatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public UserEntryExtendedStatus ExtendedStatus
 		{
@@ -190,7 +163,7 @@ namespace Kaltura.Types
 		{
 			if(node["id"] != null)
 			{
-				this._Id = ParseLong(node["id"].Value<string>());
+				this._Id = ParseInt(node["id"].Value<string>());
 			}
 			if(node["entryId"] != null)
 			{

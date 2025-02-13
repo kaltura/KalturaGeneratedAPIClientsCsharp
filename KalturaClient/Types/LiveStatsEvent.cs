@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -66,9 +66,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use PartnerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -79,9 +76,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
-		/// <summary>
-		/// Use EntryIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EntryId
 		{
@@ -92,9 +86,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
-		/// <summary>
-		/// Use EventTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public LiveStatsEventType EventType
 		{
@@ -105,9 +96,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EventType");
 			}
 		}
-		/// <summary>
-		/// Use SessionIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SessionId
 		{
@@ -118,9 +106,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SessionId");
 			}
 		}
-		/// <summary>
-		/// Use EventIndexAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int EventIndex
 		{
@@ -131,9 +116,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EventIndex");
 			}
 		}
-		/// <summary>
-		/// Use BufferTimeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int BufferTime
 		{
@@ -144,9 +126,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("BufferTime");
 			}
 		}
-		/// <summary>
-		/// Use BitrateAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Bitrate
 		{
@@ -157,9 +136,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Bitrate");
 			}
 		}
-		/// <summary>
-		/// Use ReferrerAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Referrer
 		{
@@ -170,9 +146,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Referrer");
 			}
 		}
-		/// <summary>
-		/// Use IsLiveAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? IsLive
 		{
@@ -183,9 +156,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsLive");
 			}
 		}
-		/// <summary>
-		/// Use StartTimeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string StartTime
 		{
@@ -196,9 +166,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartTime");
 			}
 		}
-		/// <summary>
-		/// Use DeliveryTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public PlaybackProtocol DeliveryType
 		{

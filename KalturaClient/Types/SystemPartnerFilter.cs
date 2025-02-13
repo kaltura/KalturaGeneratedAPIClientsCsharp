@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -40,19 +40,14 @@ namespace Kaltura.Types
 		#region Constants
 		public const string PARTNER_PARENT_ID_EQUAL = "partnerParentIdEqual";
 		public const string PARTNER_PARENT_ID_IN = "partnerParentIdIn";
-		public const string ADMIN_EMAIL_EQUAL = "adminEmailEqual";
 		#endregion
 
 		#region Private Fields
 		private int _PartnerParentIdEqual = Int32.MinValue;
 		private string _PartnerParentIdIn = null;
-		private string _AdminEmailEqual = null;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use PartnerParentIdEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PartnerParentIdEqual
 		{
@@ -63,9 +58,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerParentIdEqual");
 			}
 		}
-		/// <summary>
-		/// Use PartnerParentIdInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PartnerParentIdIn
 		{
@@ -74,19 +66,6 @@ namespace Kaltura.Types
 			{ 
 				_PartnerParentIdIn = value;
 				OnPropertyChanged("PartnerParentIdIn");
-			}
-		}
-		/// <summary>
-		/// Use AdminEmailEqualAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string AdminEmailEqual
-		{
-			get { return _AdminEmailEqual; }
-			set 
-			{ 
-				_AdminEmailEqual = value;
-				OnPropertyChanged("AdminEmailEqual");
 			}
 		}
 		#endregion
@@ -106,10 +85,6 @@ namespace Kaltura.Types
 			{
 				this._PartnerParentIdIn = node["partnerParentIdIn"].Value<string>();
 			}
-			if(node["adminEmailEqual"] != null)
-			{
-				this._AdminEmailEqual = node["adminEmailEqual"].Value<string>();
-			}
 		}
 		#endregion
 
@@ -121,7 +96,6 @@ namespace Kaltura.Types
 				kparams.AddReplace("objectType", "KalturaSystemPartnerFilter");
 			kparams.AddIfNotNull("partnerParentIdEqual", this._PartnerParentIdEqual);
 			kparams.AddIfNotNull("partnerParentIdIn", this._PartnerParentIdIn);
-			kparams.AddIfNotNull("adminEmailEqual", this._AdminEmailEqual);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -132,8 +106,6 @@ namespace Kaltura.Types
 					return "PartnerParentIdEqual";
 				case PARTNER_PARENT_ID_IN:
 					return "PartnerParentIdIn";
-				case ADMIN_EMAIL_EQUAL:
-					return "AdminEmailEqual";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -76,9 +76,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use IdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Id
 		{
@@ -89,9 +86,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
-		/// <summary>
-		/// Use BulkUploadJobIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public long BulkUploadJobId
 		{
@@ -102,9 +96,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("BulkUploadJobId");
 			}
 		}
-		/// <summary>
-		/// Use LineIndexAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int LineIndex
 		{
@@ -115,9 +106,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("LineIndex");
 			}
 		}
-		/// <summary>
-		/// Use PartnerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -128,9 +116,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
-		/// <summary>
-		/// Use StatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public BulkUploadResultStatus Status
 		{
@@ -141,9 +126,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
-		/// <summary>
-		/// Use ActionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public BulkUploadAction Action
 		{
@@ -154,9 +136,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Action");
 			}
 		}
-		/// <summary>
-		/// Use ObjectIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ObjectId
 		{
@@ -167,9 +146,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectId");
 			}
 		}
-		/// <summary>
-		/// Use ObjectStatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ObjectStatus
 		{
@@ -180,9 +156,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectStatus");
 			}
 		}
-		/// <summary>
-		/// Use BulkUploadResultObjectTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public BulkUploadObjectType BulkUploadResultObjectType
 		{
@@ -193,9 +166,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("BulkUploadResultObjectType");
 			}
 		}
-		/// <summary>
-		/// Use RowDataAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string RowData
 		{
@@ -206,9 +176,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("RowData");
 			}
 		}
-		/// <summary>
-		/// Use PartnerDataAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PartnerData
 		{
@@ -219,9 +186,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerData");
 			}
 		}
-		/// <summary>
-		/// Use ObjectErrorDescriptionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ObjectErrorDescription
 		{
@@ -232,9 +196,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectErrorDescription");
 			}
 		}
-		/// <summary>
-		/// Use PluginsDataAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<BulkUploadPluginData> PluginsData
 		{
@@ -245,9 +206,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PluginsData");
 			}
 		}
-		/// <summary>
-		/// Use ErrorDescriptionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ErrorDescription
 		{
@@ -258,9 +216,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrorDescription");
 			}
 		}
-		/// <summary>
-		/// Use ErrorCodeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ErrorCode
 		{
@@ -271,9 +226,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrorCode");
 			}
 		}
-		/// <summary>
-		/// Use ErrorTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ErrorType
 		{

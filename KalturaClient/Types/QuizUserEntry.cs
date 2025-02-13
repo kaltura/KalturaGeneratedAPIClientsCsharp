@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -45,18 +45,15 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Private Fields
-		private double _Score = Double.MinValue;
-		private double _CalculatedScore = Double.MinValue;
+		private float _Score = Single.MinValue;
+		private float _CalculatedScore = Single.MinValue;
 		private string _Feedback = null;
 		private int _Version = Int32.MinValue;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use ScoreAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public double Score
+		public float Score
 		{
 			get { return _Score; }
 			private set 
@@ -65,11 +62,8 @@ namespace Kaltura.Types
 				OnPropertyChanged("Score");
 			}
 		}
-		/// <summary>
-		/// Use CalculatedScoreAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public double CalculatedScore
+		public float CalculatedScore
 		{
 			get { return _CalculatedScore; }
 			private set 
@@ -78,9 +72,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CalculatedScore");
 			}
 		}
-		/// <summary>
-		/// Use FeedbackAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Feedback
 		{
@@ -91,9 +82,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Feedback");
 			}
 		}
-		/// <summary>
-		/// Use VersionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Version
 		{
@@ -115,11 +103,11 @@ namespace Kaltura.Types
 		{
 			if(node["score"] != null)
 			{
-				this._Score = ParseDouble(node["score"].Value<string>());
+				this._Score = ParseFloat(node["score"].Value<string>());
 			}
 			if(node["calculatedScore"] != null)
 			{
-				this._CalculatedScore = ParseDouble(node["calculatedScore"].Value<string>());
+				this._CalculatedScore = ParseFloat(node["calculatedScore"].Value<string>());
 			}
 			if(node["feedback"] != null)
 			{

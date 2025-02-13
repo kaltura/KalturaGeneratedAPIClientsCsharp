@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -66,9 +66,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use ApikeyAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Apikey
 		{
@@ -79,9 +76,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Apikey");
 			}
 		}
-		/// <summary>
-		/// Use EmailAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Email
 		{
@@ -92,9 +86,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Email");
 			}
 		}
-		/// <summary>
-		/// Use SftpPassAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SftpPass
 		{
@@ -105,9 +96,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpPass");
 			}
 		}
-		/// <summary>
-		/// Use SftpLoginAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SftpLogin
 		{
@@ -118,9 +106,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpLogin");
 			}
 		}
-		/// <summary>
-		/// Use ContentOwnerAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ContentOwner
 		{
@@ -131,9 +116,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentOwner");
 			}
 		}
-		/// <summary>
-		/// Use UpstreamVideoIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string UpstreamVideoId
 		{
@@ -144,9 +126,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpstreamVideoId");
 			}
 		}
-		/// <summary>
-		/// Use UpstreamNetworkNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string UpstreamNetworkName
 		{
@@ -157,9 +136,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpstreamNetworkName");
 			}
 		}
-		/// <summary>
-		/// Use UpstreamNetworkIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string UpstreamNetworkId
 		{
@@ -170,9 +146,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpstreamNetworkId");
 			}
 		}
-		/// <summary>
-		/// Use CategoryIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CategoryId
 		{
@@ -183,9 +156,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryId");
 			}
 		}
-		/// <summary>
-		/// Use ReplaceGroupAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? ReplaceGroup
 		{
@@ -196,9 +166,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplaceGroup");
 			}
 		}
-		/// <summary>
-		/// Use ReplaceAirDatesAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? ReplaceAirDates
 		{

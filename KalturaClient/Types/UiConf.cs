@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -92,9 +92,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use IdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Id
 		{
@@ -105,9 +102,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
-		/// <summary>
-		/// Use NameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -118,9 +112,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
-		/// <summary>
-		/// Use DescriptionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Description
 		{
@@ -131,9 +122,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
-		/// <summary>
-		/// Use PartnerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -144,9 +132,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
-		/// <summary>
-		/// Use ObjTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public UiConfObjType ObjType
 		{
@@ -157,9 +142,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjType");
 			}
 		}
-		/// <summary>
-		/// Use ObjTypeAsStringAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ObjTypeAsString
 		{
@@ -170,9 +152,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjTypeAsString");
 			}
 		}
-		/// <summary>
-		/// Use WidthAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Width
 		{
@@ -183,9 +162,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Width");
 			}
 		}
-		/// <summary>
-		/// Use HeightAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Height
 		{
@@ -196,9 +172,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Height");
 			}
 		}
-		/// <summary>
-		/// Use HtmlParamsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string HtmlParams
 		{
@@ -209,9 +182,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("HtmlParams");
 			}
 		}
-		/// <summary>
-		/// Use SwfUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SwfUrl
 		{
@@ -222,9 +192,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SwfUrl");
 			}
 		}
-		/// <summary>
-		/// Use ConfFilePathAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ConfFilePath
 		{
@@ -235,9 +202,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConfFilePath");
 			}
 		}
-		/// <summary>
-		/// Use ConfFileAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ConfFile
 		{
@@ -248,9 +212,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConfFile");
 			}
 		}
-		/// <summary>
-		/// Use ConfFileFeaturesAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ConfFileFeatures
 		{
@@ -261,9 +222,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConfFileFeatures");
 			}
 		}
-		/// <summary>
-		/// Use ConfigAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Config
 		{
@@ -274,9 +232,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Config");
 			}
 		}
-		/// <summary>
-		/// Use ConfVarsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ConfVars
 		{
@@ -287,9 +242,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConfVars");
 			}
 		}
-		/// <summary>
-		/// Use UseCdnAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? UseCdn
 		{
@@ -300,9 +252,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UseCdn");
 			}
 		}
-		/// <summary>
-		/// Use TagsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Tags
 		{
@@ -313,9 +262,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
-		/// <summary>
-		/// Use SwfUrlVersionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SwfUrlVersion
 		{
@@ -326,9 +272,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SwfUrlVersion");
 			}
 		}
-		/// <summary>
-		/// Use CreatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -339,9 +282,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
-		/// <summary>
-		/// Use UpdatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -352,9 +292,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
-		/// <summary>
-		/// Use CreationModeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public UiConfCreationMode CreationMode
 		{
@@ -365,9 +302,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreationMode");
 			}
 		}
-		/// <summary>
-		/// Use Html5UrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Html5Url
 		{
@@ -378,9 +312,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Html5Url");
 			}
 		}
-		/// <summary>
-		/// Use VersionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Version
 		{
@@ -391,9 +322,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Version");
 			}
 		}
-		/// <summary>
-		/// Use PartnerTagsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PartnerTags
 		{

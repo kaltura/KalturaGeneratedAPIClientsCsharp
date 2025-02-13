@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -49,8 +49,6 @@ namespace Kaltura.Types
 		public const string SERVICE_FEATURE = "serviceFeature";
 		public const string TURN_AROUND_TIME = "turnAroundTime";
 		public const string PRICING = "pricing";
-		public const string ENGINE_TYPE = "engineType";
-		public const string SOURCE_LANGUAGE = "sourceLanguage";
 		public const string ALLOW_RESUBMISSION = "allowResubmission";
 		#endregion
 
@@ -66,15 +64,10 @@ namespace Kaltura.Types
 		private VendorServiceFeature _ServiceFeature = (VendorServiceFeature)Int32.MinValue;
 		private VendorServiceTurnAroundTime _TurnAroundTime = (VendorServiceTurnAroundTime)Int32.MinValue;
 		private VendorCatalogItemPricing _Pricing;
-		private ReachVendorEngineType _EngineType = null;
-		private CatalogItemLanguage _SourceLanguage = null;
 		private bool? _AllowResubmission = null;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use IdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Id
 		{
@@ -85,9 +78,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
-		/// <summary>
-		/// Use VendorPartnerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int VendorPartnerId
 		{
@@ -98,9 +88,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("VendorPartnerId");
 			}
 		}
-		/// <summary>
-		/// Use NameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -111,9 +98,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
-		/// <summary>
-		/// Use SystemNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SystemName
 		{
@@ -124,9 +108,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemName");
 			}
 		}
-		/// <summary>
-		/// Use CreatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -137,9 +118,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
-		/// <summary>
-		/// Use UpdatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -150,9 +128,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
-		/// <summary>
-		/// Use StatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public VendorCatalogItemStatus Status
 		{
@@ -163,9 +138,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
-		/// <summary>
-		/// Use ServiceTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public VendorServiceType ServiceType
 		{
@@ -176,9 +148,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServiceType");
 			}
 		}
-		/// <summary>
-		/// Use ServiceFeatureAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public VendorServiceFeature ServiceFeature
 		{
@@ -189,9 +158,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServiceFeature");
 			}
 		}
-		/// <summary>
-		/// Use TurnAroundTimeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public VendorServiceTurnAroundTime TurnAroundTime
 		{
@@ -202,9 +168,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TurnAroundTime");
 			}
 		}
-		/// <summary>
-		/// Use PricingAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public VendorCatalogItemPricing Pricing
 		{
@@ -215,35 +178,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Pricing");
 			}
 		}
-		/// <summary>
-		/// Use EngineTypeAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public ReachVendorEngineType EngineType
-		{
-			get { return _EngineType; }
-			set 
-			{ 
-				_EngineType = value;
-				OnPropertyChanged("EngineType");
-			}
-		}
-		/// <summary>
-		/// Use SourceLanguageAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public CatalogItemLanguage SourceLanguage
-		{
-			get { return _SourceLanguage; }
-			set 
-			{ 
-				_SourceLanguage = value;
-				OnPropertyChanged("SourceLanguage");
-			}
-		}
-		/// <summary>
-		/// Use AllowResubmissionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? AllowResubmission
 		{
@@ -307,14 +241,6 @@ namespace Kaltura.Types
 			{
 				this._Pricing = ObjectFactory.Create<VendorCatalogItemPricing>(node["pricing"]);
 			}
-			if(node["engineType"] != null)
-			{
-				this._EngineType = (ReachVendorEngineType)StringEnum.Parse(typeof(ReachVendorEngineType), node["engineType"].Value<string>());
-			}
-			if(node["sourceLanguage"] != null)
-			{
-				this._SourceLanguage = (CatalogItemLanguage)StringEnum.Parse(typeof(CatalogItemLanguage), node["sourceLanguage"].Value<string>());
-			}
 			if(node["allowResubmission"] != null)
 			{
 				this._AllowResubmission = ParseBool(node["allowResubmission"].Value<string>());
@@ -339,8 +265,6 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("serviceFeature", this._ServiceFeature);
 			kparams.AddIfNotNull("turnAroundTime", this._TurnAroundTime);
 			kparams.AddIfNotNull("pricing", this._Pricing);
-			kparams.AddIfNotNull("engineType", this._EngineType);
-			kparams.AddIfNotNull("sourceLanguage", this._SourceLanguage);
 			kparams.AddIfNotNull("allowResubmission", this._AllowResubmission);
 			return kparams;
 		}
@@ -370,10 +294,6 @@ namespace Kaltura.Types
 					return "TurnAroundTime";
 				case PRICING:
 					return "Pricing";
-				case ENGINE_TYPE:
-					return "EngineType";
-				case SOURCE_LANGUAGE:
-					return "SourceLanguage";
 				case ALLOW_RESUBMISSION:
 					return "AllowResubmission";
 				default:

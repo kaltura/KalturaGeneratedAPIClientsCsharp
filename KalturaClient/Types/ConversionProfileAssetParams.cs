@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -62,7 +62,7 @@ namespace Kaltura.Types
 		private NullableBoolean _ForceNoneComplied = (NullableBoolean)Int32.MinValue;
 		private AssetParamsDeletePolicy _DeletePolicy = (AssetParamsDeletePolicy)Int32.MinValue;
 		private NullableBoolean _IsEncrypted = (NullableBoolean)Int32.MinValue;
-		private double _ContentAwareness = Double.MinValue;
+		private float _ContentAwareness = Single.MinValue;
 		private int _ChunkedEncodeMode = Int32.MinValue;
 		private NullableBoolean _TwoPass = (NullableBoolean)Int32.MinValue;
 		private string _Tags = null;
@@ -70,9 +70,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use ConversionProfileIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ConversionProfileId
 		{
@@ -83,9 +80,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionProfileId");
 			}
 		}
-		/// <summary>
-		/// Use AssetParamsIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int AssetParamsId
 		{
@@ -96,9 +90,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AssetParamsId");
 			}
 		}
-		/// <summary>
-		/// Use ReadyBehaviorAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public FlavorReadyBehaviorType ReadyBehavior
 		{
@@ -109,9 +100,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReadyBehavior");
 			}
 		}
-		/// <summary>
-		/// Use OriginAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public AssetParamsOrigin Origin
 		{
@@ -122,9 +110,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Origin");
 			}
 		}
-		/// <summary>
-		/// Use SystemNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SystemName
 		{
@@ -135,9 +120,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemName");
 			}
 		}
-		/// <summary>
-		/// Use ForceNoneCompliedAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public NullableBoolean ForceNoneComplied
 		{
@@ -148,9 +130,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ForceNoneComplied");
 			}
 		}
-		/// <summary>
-		/// Use DeletePolicyAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public AssetParamsDeletePolicy DeletePolicy
 		{
@@ -161,9 +140,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeletePolicy");
 			}
 		}
-		/// <summary>
-		/// Use IsEncryptedAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public NullableBoolean IsEncrypted
 		{
@@ -174,11 +150,8 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsEncrypted");
 			}
 		}
-		/// <summary>
-		/// Use ContentAwarenessAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public double ContentAwareness
+		public float ContentAwareness
 		{
 			get { return _ContentAwareness; }
 			set 
@@ -187,9 +160,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentAwareness");
 			}
 		}
-		/// <summary>
-		/// Use ChunkedEncodeModeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ChunkedEncodeMode
 		{
@@ -200,9 +170,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChunkedEncodeMode");
 			}
 		}
-		/// <summary>
-		/// Use TwoPassAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public NullableBoolean TwoPass
 		{
@@ -213,9 +180,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TwoPass");
 			}
 		}
-		/// <summary>
-		/// Use TagsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Tags
 		{
@@ -226,9 +190,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
-		/// <summary>
-		/// Use OverloadParamsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string OverloadParams
 		{
@@ -282,7 +243,7 @@ namespace Kaltura.Types
 			}
 			if(node["contentAwareness"] != null)
 			{
-				this._ContentAwareness = ParseDouble(node["contentAwareness"].Value<string>());
+				this._ContentAwareness = ParseFloat(node["contentAwareness"].Value<string>());
 			}
 			if(node["chunkedEncodeMode"] != null)
 			{

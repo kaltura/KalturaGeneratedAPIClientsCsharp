@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -193,7 +193,7 @@ namespace Kaltura.Services
 		public string AssetId { get; set; }
 		public EntryServerNodeType MediaServerIndex { get; set; }
 		public DataCenterContentResource Resource { get; set; }
-		public double Duration { get; set; }
+		public float Duration { get; set; }
 		public bool IsLastChunk { get; set; }
 
 		public LiveStreamAppendRecordingRequestBuilder()
@@ -201,7 +201,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public LiveStreamAppendRecordingRequestBuilder(string entryId, string assetId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, double duration, bool isLastChunk)
+		public LiveStreamAppendRecordingRequestBuilder(string entryId, string assetId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, float duration, bool isLastChunk)
 			: this()
 		{
 			this.EntryId = entryId;
@@ -905,7 +905,7 @@ namespace Kaltura.Services
 		public string EntryId { get; set; }
 		public EntryServerNodeType MediaServerIndex { get; set; }
 		public DataCenterContentResource Resource { get; set; }
-		public double Duration { get; set; }
+		public float Duration { get; set; }
 		public string RecordedEntryId { get; set; }
 		public int FlavorParamsId { get; set; }
 
@@ -914,7 +914,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public LiveStreamSetRecordedContentRequestBuilder(string entryId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, double duration, string recordedEntryId, int flavorParamsId)
+		public LiveStreamSetRecordedContentRequestBuilder(string entryId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, float duration, string recordedEntryId, int flavorParamsId)
 			: this()
 		{
 			this.EntryId = entryId;
@@ -1197,7 +1197,7 @@ namespace Kaltura.Services
 			return new LiveStreamAllocateConferenceRoomRequestBuilder(entryId, env);
 		}
 
-		public static LiveStreamAppendRecordingRequestBuilder AppendRecording(string entryId, string assetId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, double duration, bool isLastChunk = false)
+		public static LiveStreamAppendRecordingRequestBuilder AppendRecording(string entryId, string assetId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, float duration, bool isLastChunk = false)
 		{
 			return new LiveStreamAppendRecordingRequestBuilder(entryId, assetId, mediaServerIndex, resource, duration, isLastChunk);
 		}
@@ -1272,7 +1272,7 @@ namespace Kaltura.Services
 			return new LiveStreamRemoveLiveStreamPushPublishConfigurationRequestBuilder(entryId, protocol);
 		}
 
-		public static LiveStreamSetRecordedContentRequestBuilder SetRecordedContent(string entryId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, double duration, string recordedEntryId = null, int flavorParamsId = Int32.MinValue)
+		public static LiveStreamSetRecordedContentRequestBuilder SetRecordedContent(string entryId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, float duration, string recordedEntryId = null, int flavorParamsId = Int32.MinValue)
 		{
 			return new LiveStreamSetRecordedContentRequestBuilder(entryId, mediaServerIndex, resource, duration, recordedEntryId, flavorParamsId);
 		}

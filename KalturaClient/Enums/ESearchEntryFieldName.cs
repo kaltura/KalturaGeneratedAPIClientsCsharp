@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -37,7 +37,6 @@ namespace Kaltura.Enums
 		public static readonly ESearchEntryFieldName CREATOR_ID = new ESearchEntryFieldName("creator_kuser_id");
 		public static readonly ESearchEntryFieldName CREDIT = new ESearchEntryFieldName("credit");
 		public static readonly ESearchEntryFieldName DESCRIPTION = new ESearchEntryFieldName("description");
-		public static readonly ESearchEntryFieldName DISPLAY_IN_SEARCH = new ESearchEntryFieldName("display_in_search");
 		public static readonly ESearchEntryFieldName END_DATE = new ESearchEntryFieldName("end_date");
 		public static readonly ESearchEntryFieldName ENTITLED_USER_EDIT = new ESearchEntryFieldName("entitled_kusers_edit");
 		public static readonly ESearchEntryFieldName ENTITLED_USER_PUBLISH = new ESearchEntryFieldName("entitled_kusers_publish");

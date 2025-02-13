@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -58,7 +58,7 @@ namespace Kaltura.Types
 		private int _Width = Int32.MinValue;
 		private int _Height = Int32.MinValue;
 		private int _Bitrate = Int32.MinValue;
-		private double _FrameRate = Double.MinValue;
+		private float _FrameRate = Single.MinValue;
 		private bool? _IsOriginal = null;
 		private bool? _IsWeb = null;
 		private string _ContainerFormat = null;
@@ -70,9 +70,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use FlavorParamsIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int FlavorParamsId
 		{
@@ -83,9 +80,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsId");
 			}
 		}
-		/// <summary>
-		/// Use WidthAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Width
 		{
@@ -96,9 +90,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Width");
 			}
 		}
-		/// <summary>
-		/// Use HeightAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Height
 		{
@@ -109,9 +100,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Height");
 			}
 		}
-		/// <summary>
-		/// Use BitrateAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Bitrate
 		{
@@ -122,11 +110,8 @@ namespace Kaltura.Types
 				OnPropertyChanged("Bitrate");
 			}
 		}
-		/// <summary>
-		/// Use FrameRateAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public double FrameRate
+		public float FrameRate
 		{
 			get { return _FrameRate; }
 			private set 
@@ -135,9 +120,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FrameRate");
 			}
 		}
-		/// <summary>
-		/// Use IsOriginalAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? IsOriginal
 		{
@@ -148,9 +130,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsOriginal");
 			}
 		}
-		/// <summary>
-		/// Use IsWebAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? IsWeb
 		{
@@ -161,9 +140,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsWeb");
 			}
 		}
-		/// <summary>
-		/// Use ContainerFormatAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ContainerFormat
 		{
@@ -174,9 +150,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContainerFormat");
 			}
 		}
-		/// <summary>
-		/// Use VideoCodecIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string VideoCodecId
 		{
@@ -187,9 +160,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoCodecId");
 			}
 		}
-		/// <summary>
-		/// Use StatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public FlavorAssetStatus Status
 		{
@@ -200,9 +170,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
-		/// <summary>
-		/// Use LanguageAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public Language Language
 		{
@@ -213,9 +180,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Language");
 			}
 		}
-		/// <summary>
-		/// Use LabelAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Label
 		{
@@ -226,9 +190,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Label");
 			}
 		}
-		/// <summary>
-		/// Use IsDefaultAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public NullableBoolean IsDefault
 		{
@@ -266,7 +227,7 @@ namespace Kaltura.Types
 			}
 			if(node["frameRate"] != null)
 			{
-				this._FrameRate = ParseDouble(node["frameRate"].Value<string>());
+				this._FrameRate = ParseFloat(node["frameRate"].Value<string>());
 			}
 			if(node["isOriginal"] != null)
 			{

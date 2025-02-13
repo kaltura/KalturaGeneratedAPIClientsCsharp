@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -39,18 +39,19 @@ namespace Kaltura.Types
 	{
 		#region Constants
 		public const string FREE_TEXT = "freeText";
+		public const string EXPECTED_FINISH_TIME_GREATER_THAN_OR_EQUAL = "expectedFinishTimeGreaterThanOrEqual";
+		public const string EXPECTED_FINISH_TIME_LESS_THAN_OR_EQUAL = "expectedFinishTimeLessThanOrEqual";
 		public new const string ORDER_BY = "orderBy";
 		#endregion
 
 		#region Private Fields
 		private string _FreeText = null;
+		private int _ExpectedFinishTimeGreaterThanOrEqual = Int32.MinValue;
+		private int _ExpectedFinishTimeLessThanOrEqual = Int32.MinValue;
 		private EntryVendorTaskOrderBy _OrderBy = null;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use FreeTextAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FreeText
 		{
@@ -61,9 +62,26 @@ namespace Kaltura.Types
 				OnPropertyChanged("FreeText");
 			}
 		}
-		/// <summary>
-		/// Use OrderByAsDouble property instead
-		/// </summary>
+		[JsonProperty]
+		public int ExpectedFinishTimeGreaterThanOrEqual
+		{
+			get { return _ExpectedFinishTimeGreaterThanOrEqual; }
+			set 
+			{ 
+				_ExpectedFinishTimeGreaterThanOrEqual = value;
+				OnPropertyChanged("ExpectedFinishTimeGreaterThanOrEqual");
+			}
+		}
+		[JsonProperty]
+		public int ExpectedFinishTimeLessThanOrEqual
+		{
+			get { return _ExpectedFinishTimeLessThanOrEqual; }
+			set 
+			{ 
+				_ExpectedFinishTimeLessThanOrEqual = value;
+				OnPropertyChanged("ExpectedFinishTimeLessThanOrEqual");
+			}
+		}
 		[JsonProperty]
 		public new EntryVendorTaskOrderBy OrderBy
 		{
@@ -87,6 +105,14 @@ namespace Kaltura.Types
 			{
 				this._FreeText = node["freeText"].Value<string>();
 			}
+			if(node["expectedFinishTimeGreaterThanOrEqual"] != null)
+			{
+				this._ExpectedFinishTimeGreaterThanOrEqual = ParseInt(node["expectedFinishTimeGreaterThanOrEqual"].Value<string>());
+			}
+			if(node["expectedFinishTimeLessThanOrEqual"] != null)
+			{
+				this._ExpectedFinishTimeLessThanOrEqual = ParseInt(node["expectedFinishTimeLessThanOrEqual"].Value<string>());
+			}
 			if(node["orderBy"] != null)
 			{
 				this._OrderBy = (EntryVendorTaskOrderBy)StringEnum.Parse(typeof(EntryVendorTaskOrderBy), node["orderBy"].Value<string>());
@@ -101,6 +127,8 @@ namespace Kaltura.Types
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaEntryVendorTaskFilter");
 			kparams.AddIfNotNull("freeText", this._FreeText);
+			kparams.AddIfNotNull("expectedFinishTimeGreaterThanOrEqual", this._ExpectedFinishTimeGreaterThanOrEqual);
+			kparams.AddIfNotNull("expectedFinishTimeLessThanOrEqual", this._ExpectedFinishTimeLessThanOrEqual);
 			kparams.AddIfNotNull("orderBy", this._OrderBy);
 			return kparams;
 		}
@@ -110,6 +138,10 @@ namespace Kaltura.Types
 			{
 				case FREE_TEXT:
 					return "FreeText";
+				case EXPECTED_FINISH_TIME_GREATER_THAN_OR_EQUAL:
+					return "ExpectedFinishTimeGreaterThanOrEqual";
+				case EXPECTED_FINISH_TIME_LESS_THAN_OR_EQUAL:
+					return "ExpectedFinishTimeLessThanOrEqual";
 				case ORDER_BY:
 					return "OrderBy";
 				default:

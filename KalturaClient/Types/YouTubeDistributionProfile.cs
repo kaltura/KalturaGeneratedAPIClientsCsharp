@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -132,9 +132,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use FeedSpecVersionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public YouTubeDistributionFeedSpecVersion FeedSpecVersion
 		{
@@ -145,9 +142,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedSpecVersion");
 			}
 		}
-		/// <summary>
-		/// Use UsernameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Username
 		{
@@ -158,9 +152,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Username");
 			}
 		}
-		/// <summary>
-		/// Use NotificationEmailAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string NotificationEmail
 		{
@@ -171,9 +162,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("NotificationEmail");
 			}
 		}
-		/// <summary>
-		/// Use SftpHostAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SftpHost
 		{
@@ -184,9 +172,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpHost");
 			}
 		}
-		/// <summary>
-		/// Use SftpPortAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int SftpPort
 		{
@@ -197,9 +182,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpPort");
 			}
 		}
-		/// <summary>
-		/// Use SftpLoginAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SftpLogin
 		{
@@ -210,9 +192,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpLogin");
 			}
 		}
-		/// <summary>
-		/// Use SftpPublicKeyAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SftpPublicKey
 		{
@@ -223,9 +202,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpPublicKey");
 			}
 		}
-		/// <summary>
-		/// Use SftpPrivateKeyAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SftpPrivateKey
 		{
@@ -236,9 +212,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpPrivateKey");
 			}
 		}
-		/// <summary>
-		/// Use SftpBaseDirAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SftpBaseDir
 		{
@@ -249,9 +222,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpBaseDir");
 			}
 		}
-		/// <summary>
-		/// Use OwnerNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string OwnerName
 		{
@@ -262,9 +232,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("OwnerName");
 			}
 		}
-		/// <summary>
-		/// Use DefaultCategoryAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string DefaultCategory
 		{
@@ -275,9 +242,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DefaultCategory");
 			}
 		}
-		/// <summary>
-		/// Use AllowCommentsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string AllowComments
 		{
@@ -288,9 +252,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowComments");
 			}
 		}
-		/// <summary>
-		/// Use AllowEmbeddingAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string AllowEmbedding
 		{
@@ -301,9 +262,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowEmbedding");
 			}
 		}
-		/// <summary>
-		/// Use AllowRatingsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string AllowRatings
 		{
@@ -314,9 +272,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowRatings");
 			}
 		}
-		/// <summary>
-		/// Use AllowResponsesAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string AllowResponses
 		{
@@ -327,9 +282,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowResponses");
 			}
 		}
-		/// <summary>
-		/// Use CommercialPolicyAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CommercialPolicy
 		{
@@ -340,9 +292,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CommercialPolicy");
 			}
 		}
-		/// <summary>
-		/// Use UgcPolicyAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string UgcPolicy
 		{
@@ -353,9 +302,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UgcPolicy");
 			}
 		}
-		/// <summary>
-		/// Use TargetAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Target
 		{
@@ -366,9 +312,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Target");
 			}
 		}
-		/// <summary>
-		/// Use AdServerPartnerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string AdServerPartnerId
 		{
@@ -379,9 +322,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdServerPartnerId");
 			}
 		}
-		/// <summary>
-		/// Use EnableAdServerAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? EnableAdServer
 		{
@@ -392,9 +332,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EnableAdServer");
 			}
 		}
-		/// <summary>
-		/// Use AllowPreRollAdsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? AllowPreRollAds
 		{
@@ -405,9 +342,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowPreRollAds");
 			}
 		}
-		/// <summary>
-		/// Use AllowPostRollAdsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? AllowPostRollAds
 		{
@@ -418,9 +352,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowPostRollAds");
 			}
 		}
-		/// <summary>
-		/// Use StrictAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Strict
 		{
@@ -431,9 +362,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Strict");
 			}
 		}
-		/// <summary>
-		/// Use OverrideManualEditsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string OverrideManualEdits
 		{
@@ -444,9 +372,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("OverrideManualEdits");
 			}
 		}
-		/// <summary>
-		/// Use UrgentReferenceAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string UrgentReference
 		{
@@ -457,9 +382,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UrgentReference");
 			}
 		}
-		/// <summary>
-		/// Use AllowSyndicationAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string AllowSyndication
 		{
@@ -470,9 +392,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowSyndication");
 			}
 		}
-		/// <summary>
-		/// Use HideViewCountAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string HideViewCount
 		{
@@ -483,9 +402,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("HideViewCount");
 			}
 		}
-		/// <summary>
-		/// Use AllowAdsenseForVideoAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string AllowAdsenseForVideo
 		{
@@ -496,9 +412,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowAdsenseForVideo");
 			}
 		}
-		/// <summary>
-		/// Use AllowInvideoAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string AllowInvideo
 		{
@@ -509,9 +422,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowInvideo");
 			}
 		}
-		/// <summary>
-		/// Use AllowMidRollAdsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? AllowMidRollAds
 		{
@@ -522,9 +432,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowMidRollAds");
 			}
 		}
-		/// <summary>
-		/// Use InstreamStandardAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string InstreamStandard
 		{
@@ -535,9 +442,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("InstreamStandard");
 			}
 		}
-		/// <summary>
-		/// Use InstreamTrueviewAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string InstreamTrueview
 		{
@@ -548,9 +452,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("InstreamTrueview");
 			}
 		}
-		/// <summary>
-		/// Use ClaimTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ClaimType
 		{
@@ -561,9 +462,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ClaimType");
 			}
 		}
-		/// <summary>
-		/// Use BlockOutsideOwnershipAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string BlockOutsideOwnership
 		{
@@ -574,9 +472,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("BlockOutsideOwnership");
 			}
 		}
-		/// <summary>
-		/// Use CaptionAutosyncAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CaptionAutosync
 		{
@@ -587,9 +482,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CaptionAutosync");
 			}
 		}
-		/// <summary>
-		/// Use DeleteReferenceAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? DeleteReference
 		{
@@ -600,9 +492,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeleteReference");
 			}
 		}
-		/// <summary>
-		/// Use ReleaseClaimsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? ReleaseClaims
 		{
@@ -613,9 +502,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReleaseClaims");
 			}
 		}
-		/// <summary>
-		/// Use ApiAuthorizeUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ApiAuthorizeUrl
 		{
@@ -626,9 +512,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ApiAuthorizeUrl");
 			}
 		}
-		/// <summary>
-		/// Use PrivacyStatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PrivacyStatus
 		{
@@ -639,9 +522,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrivacyStatus");
 			}
 		}
-		/// <summary>
-		/// Use EnableContentIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EnableContentId
 		{
@@ -652,9 +532,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EnableContentId");
 			}
 		}
-		/// <summary>
-		/// Use ThirdPartyAdsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ThirdPartyAds
 		{
@@ -665,9 +542,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThirdPartyAds");
 			}
 		}
-		/// <summary>
-		/// Use ProductListingAdsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ProductListingAds
 		{
@@ -678,9 +552,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ProductListingAds");
 			}
 		}
-		/// <summary>
-		/// Use DomainWhitelistAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string DomainWhitelist
 		{
@@ -691,9 +562,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DomainWhitelist");
 			}
 		}
-		/// <summary>
-		/// Use NotifySubscribersAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string NotifySubscribers
 		{

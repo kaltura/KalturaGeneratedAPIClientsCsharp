@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -126,7 +126,7 @@ namespace Kaltura.Services
 		public const string ENTRY_SERVER_NODE = "entryServerNode";
 		#endregion
 
-		public long Id { get; set; }
+		public int Id { get; set; }
 		public EntryServerNode EntryServerNode { get; set; }
 
 		public EntryServerNodeUpdateRequestBuilder()
@@ -134,7 +134,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public EntryServerNodeUpdateRequestBuilder(long id, EntryServerNode entryServerNode)
+		public EntryServerNodeUpdateRequestBuilder(int id, EntryServerNode entryServerNode)
 			: this()
 		{
 			this.Id = id;
@@ -213,14 +213,14 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public long Id { get; set; }
+		public int Id { get; set; }
 
 		public EntryServerNodeValidateRegisteredEntryServerNodeRequestBuilder()
 			: base("entryservernode", "validateRegisteredEntryServerNode")
 		{
 		}
 
-		public EntryServerNodeValidateRegisteredEntryServerNodeRequestBuilder(long id)
+		public EntryServerNodeValidateRegisteredEntryServerNodeRequestBuilder(int id)
 			: this()
 		{
 			this.Id = id;
@@ -263,7 +263,7 @@ namespace Kaltura.Services
 			return new EntryServerNodeListRequestBuilder(filter, pager);
 		}
 
-		public static EntryServerNodeUpdateRequestBuilder Update(long id, EntryServerNode entryServerNode)
+		public static EntryServerNodeUpdateRequestBuilder Update(int id, EntryServerNode entryServerNode)
 		{
 			return new EntryServerNodeUpdateRequestBuilder(id, entryServerNode);
 		}
@@ -273,7 +273,7 @@ namespace Kaltura.Services
 			return new EntryServerNodeUpdateStatusRequestBuilder(id, status);
 		}
 
-		public static EntryServerNodeValidateRegisteredEntryServerNodeRequestBuilder ValidateRegisteredEntryServerNode(long id)
+		public static EntryServerNodeValidateRegisteredEntryServerNodeRequestBuilder ValidateRegisteredEntryServerNode(int id)
 		{
 			return new EntryServerNodeValidateRegisteredEntryServerNodeRequestBuilder(id);
 		}

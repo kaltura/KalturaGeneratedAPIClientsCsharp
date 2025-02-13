@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -43,16 +43,13 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Private Fields
-		private double _PricePerUnit = Double.MinValue;
+		private float _PricePerUnit = Single.MinValue;
 		private VendorCatalogItemPriceFunction _PriceFunction = null;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use PricePerUnitAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public double PricePerUnit
+		public float PricePerUnit
 		{
 			get { return _PricePerUnit; }
 			set 
@@ -61,9 +58,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PricePerUnit");
 			}
 		}
-		/// <summary>
-		/// Use PriceFunctionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public VendorCatalogItemPriceFunction PriceFunction
 		{
@@ -85,7 +79,7 @@ namespace Kaltura.Types
 		{
 			if(node["pricePerUnit"] != null)
 			{
-				this._PricePerUnit = ParseDouble(node["pricePerUnit"].Value<string>());
+				this._PricePerUnit = ParseFloat(node["pricePerUnit"].Value<string>());
 			}
 			if(node["priceFunction"] != null)
 			{

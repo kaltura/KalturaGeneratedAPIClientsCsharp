@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -29,8 +29,6 @@ namespace Kaltura.Enums
 {
 	public sealed class UserEntryExtendedStatus : StringEnum
 	{
-		public static readonly UserEntryExtendedStatus SYNC_STATUS_ERROR = new UserEntryExtendedStatus("quiz.SYNC_STATUS_ERROR");
-		public static readonly UserEntryExtendedStatus SYNC_STATUS_SUCCESS = new UserEntryExtendedStatus("quiz.SYNC_STATUS_SUCCESS");
 		public static readonly UserEntryExtendedStatus PLAYBACK_COMPLETE = new UserEntryExtendedStatus("viewHistory.PLAYBACK_COMPLETE");
 		public static readonly UserEntryExtendedStatus PLAYBACK_STARTED = new UserEntryExtendedStatus("viewHistory.PLAYBACK_STARTED");
 		public static readonly UserEntryExtendedStatus VIEWED = new UserEntryExtendedStatus("viewHistory.VIEWED");

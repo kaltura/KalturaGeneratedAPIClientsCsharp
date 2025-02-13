@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -52,7 +52,6 @@ namespace Kaltura.Types
 		public const string FIRST_NAME = "firstName";
 		public const string LAST_NAME = "lastName";
 		public const string GROUP = "group";
-		public const string EXTERNAL_ID = "externalId";
 		#endregion
 
 		#region Private Fields
@@ -70,13 +69,9 @@ namespace Kaltura.Types
 		private string _FirstName = null;
 		private string _LastName = null;
 		private string _Group = null;
-		private string _ExternalId = null;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use UserIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string UserId
 		{
@@ -87,9 +82,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserId");
 			}
 		}
-		/// <summary>
-		/// Use ScreenNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ScreenName
 		{
@@ -100,9 +92,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ScreenName");
 			}
 		}
-		/// <summary>
-		/// Use EmailAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Email
 		{
@@ -113,9 +102,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Email");
 			}
 		}
-		/// <summary>
-		/// Use DescriptionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Description
 		{
@@ -126,9 +112,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
-		/// <summary>
-		/// Use TagsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Tags
 		{
@@ -139,9 +122,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
-		/// <summary>
-		/// Use DateOfBirthAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int DateOfBirth
 		{
@@ -152,9 +132,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DateOfBirth");
 			}
 		}
-		/// <summary>
-		/// Use CountryAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Country
 		{
@@ -165,9 +142,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Country");
 			}
 		}
-		/// <summary>
-		/// Use StateAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string State
 		{
@@ -178,9 +152,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("State");
 			}
 		}
-		/// <summary>
-		/// Use CityAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string City
 		{
@@ -191,9 +162,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("City");
 			}
 		}
-		/// <summary>
-		/// Use ZipAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Zip
 		{
@@ -204,9 +172,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Zip");
 			}
 		}
-		/// <summary>
-		/// Use GenderAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Gender
 		{
@@ -217,9 +182,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Gender");
 			}
 		}
-		/// <summary>
-		/// Use FirstNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FirstName
 		{
@@ -230,9 +192,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FirstName");
 			}
 		}
-		/// <summary>
-		/// Use LastNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string LastName
 		{
@@ -243,9 +202,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("LastName");
 			}
 		}
-		/// <summary>
-		/// Use GroupAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Group
 		{
@@ -254,19 +210,6 @@ namespace Kaltura.Types
 			{ 
 				_Group = value;
 				OnPropertyChanged("Group");
-			}
-		}
-		/// <summary>
-		/// Use ExternalIdAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string ExternalId
-		{
-			get { return _ExternalId; }
-			set 
-			{ 
-				_ExternalId = value;
-				OnPropertyChanged("ExternalId");
 			}
 		}
 		#endregion
@@ -334,10 +277,6 @@ namespace Kaltura.Types
 			{
 				this._Group = node["group"].Value<string>();
 			}
-			if(node["externalId"] != null)
-			{
-				this._ExternalId = node["externalId"].Value<string>();
-			}
 		}
 		#endregion
 
@@ -361,7 +300,6 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("firstName", this._FirstName);
 			kparams.AddIfNotNull("lastName", this._LastName);
 			kparams.AddIfNotNull("group", this._Group);
-			kparams.AddIfNotNull("externalId", this._ExternalId);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -396,8 +334,6 @@ namespace Kaltura.Types
 					return "LastName";
 				case GROUP:
 					return "Group";
-				case EXTERNAL_ID:
-					return "ExternalId";
 				default:
 					return base.getPropertyName(apiName);
 			}

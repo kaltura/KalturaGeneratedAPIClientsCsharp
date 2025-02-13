@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -140,14 +140,14 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public long Id { get; set; }
+		public int Id { get; set; }
 
 		public EmailIngestionProfileDeleteRequestBuilder()
 			: base("emailingestionprofile", "delete")
 		{
 		}
 
-		public EmailIngestionProfileDeleteRequestBuilder(long id)
+		public EmailIngestionProfileDeleteRequestBuilder(int id)
 			: this()
 		{
 			this.Id = id;
@@ -179,14 +179,14 @@ namespace Kaltura.Services
 		public const string ID = "id";
 		#endregion
 
-		public long Id { get; set; }
+		public int Id { get; set; }
 
 		public EmailIngestionProfileGetRequestBuilder()
 			: base("emailingestionprofile", "get")
 		{
 		}
 
-		public EmailIngestionProfileGetRequestBuilder(long id)
+		public EmailIngestionProfileGetRequestBuilder(int id)
 			: this()
 		{
 			this.Id = id;
@@ -258,7 +258,7 @@ namespace Kaltura.Services
 		public const string EMAIL_IP = "EmailIP";
 		#endregion
 
-		public long Id { get; set; }
+		public int Id { get; set; }
 		public EmailIngestionProfile EmailIP { get; set; }
 
 		public EmailIngestionProfileUpdateRequestBuilder()
@@ -266,7 +266,7 @@ namespace Kaltura.Services
 		{
 		}
 
-		public EmailIngestionProfileUpdateRequestBuilder(long id, EmailIngestionProfile EmailIP)
+		public EmailIngestionProfileUpdateRequestBuilder(int id, EmailIngestionProfile EmailIP)
 			: this()
 		{
 			this.Id = id;
@@ -312,12 +312,12 @@ namespace Kaltura.Services
 			return new EmailIngestionProfileAddMediaEntryRequestBuilder(mediaEntry, uploadTokenId, emailProfId, fromAddress, emailMsgId);
 		}
 
-		public static EmailIngestionProfileDeleteRequestBuilder Delete(long id)
+		public static EmailIngestionProfileDeleteRequestBuilder Delete(int id)
 		{
 			return new EmailIngestionProfileDeleteRequestBuilder(id);
 		}
 
-		public static EmailIngestionProfileGetRequestBuilder Get(long id)
+		public static EmailIngestionProfileGetRequestBuilder Get(int id)
 		{
 			return new EmailIngestionProfileGetRequestBuilder(id);
 		}
@@ -327,7 +327,7 @@ namespace Kaltura.Services
 			return new EmailIngestionProfileGetByEmailAddressRequestBuilder(emailAddress);
 		}
 
-		public static EmailIngestionProfileUpdateRequestBuilder Update(long id, EmailIngestionProfile EmailIP)
+		public static EmailIngestionProfileUpdateRequestBuilder Update(int id, EmailIngestionProfile EmailIP)
 		{
 			return new EmailIngestionProfileUpdateRequestBuilder(id, EmailIP);
 		}

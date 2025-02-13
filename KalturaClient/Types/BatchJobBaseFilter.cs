@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -134,9 +134,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use IdEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public long IdEqual
 		{
@@ -147,9 +144,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
-		/// <summary>
-		/// Use IdGreaterThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public long IdGreaterThanOrEqual
 		{
@@ -160,9 +154,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdGreaterThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use PartnerIdEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PartnerIdEqual
 		{
@@ -173,9 +164,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdEqual");
 			}
 		}
-		/// <summary>
-		/// Use PartnerIdInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PartnerIdIn
 		{
@@ -186,9 +174,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdIn");
 			}
 		}
-		/// <summary>
-		/// Use PartnerIdNotInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PartnerIdNotIn
 		{
@@ -199,9 +184,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerIdNotIn");
 			}
 		}
-		/// <summary>
-		/// Use CreatedAtGreaterThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CreatedAtGreaterThanOrEqual
 		{
@@ -212,9 +194,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtGreaterThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use CreatedAtLessThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CreatedAtLessThanOrEqual
 		{
@@ -225,9 +204,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAtLessThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use UpdatedAtGreaterThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int UpdatedAtGreaterThanOrEqual
 		{
@@ -238,9 +214,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtGreaterThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use UpdatedAtLessThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int UpdatedAtLessThanOrEqual
 		{
@@ -251,9 +224,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAtLessThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use ExecutionAttemptsGreaterThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ExecutionAttemptsGreaterThanOrEqual
 		{
@@ -264,9 +234,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExecutionAttemptsGreaterThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use ExecutionAttemptsLessThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ExecutionAttemptsLessThanOrEqual
 		{
@@ -277,9 +244,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExecutionAttemptsLessThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use LockVersionGreaterThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int LockVersionGreaterThanOrEqual
 		{
@@ -290,9 +254,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("LockVersionGreaterThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use LockVersionLessThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int LockVersionLessThanOrEqual
 		{
@@ -303,9 +264,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("LockVersionLessThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use EntryIdEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EntryIdEqual
 		{
@@ -316,9 +274,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryIdEqual");
 			}
 		}
-		/// <summary>
-		/// Use JobTypeEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public BatchJobType JobTypeEqual
 		{
@@ -329,9 +284,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("JobTypeEqual");
 			}
 		}
-		/// <summary>
-		/// Use JobTypeInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string JobTypeIn
 		{
@@ -342,9 +294,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("JobTypeIn");
 			}
 		}
-		/// <summary>
-		/// Use JobTypeNotInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string JobTypeNotIn
 		{
@@ -355,9 +304,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("JobTypeNotIn");
 			}
 		}
-		/// <summary>
-		/// Use JobSubTypeEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int JobSubTypeEqual
 		{
@@ -368,9 +314,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("JobSubTypeEqual");
 			}
 		}
-		/// <summary>
-		/// Use JobSubTypeInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string JobSubTypeIn
 		{
@@ -381,9 +324,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("JobSubTypeIn");
 			}
 		}
-		/// <summary>
-		/// Use JobSubTypeNotInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string JobSubTypeNotIn
 		{
@@ -394,9 +334,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("JobSubTypeNotIn");
 			}
 		}
-		/// <summary>
-		/// Use StatusEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public BatchJobStatus StatusEqual
 		{
@@ -407,9 +344,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
-		/// <summary>
-		/// Use StatusInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string StatusIn
 		{
@@ -420,9 +354,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
-		/// <summary>
-		/// Use StatusNotInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string StatusNotIn
 		{
@@ -433,9 +364,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusNotIn");
 			}
 		}
-		/// <summary>
-		/// Use PriorityGreaterThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PriorityGreaterThanOrEqual
 		{
@@ -446,9 +374,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PriorityGreaterThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use PriorityLessThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PriorityLessThanOrEqual
 		{
@@ -459,9 +384,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PriorityLessThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use PriorityEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PriorityEqual
 		{
@@ -472,9 +394,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PriorityEqual");
 			}
 		}
-		/// <summary>
-		/// Use PriorityInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PriorityIn
 		{
@@ -485,9 +404,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PriorityIn");
 			}
 		}
-		/// <summary>
-		/// Use PriorityNotInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PriorityNotIn
 		{
@@ -498,9 +414,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PriorityNotIn");
 			}
 		}
-		/// <summary>
-		/// Use BatchVersionGreaterThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int BatchVersionGreaterThanOrEqual
 		{
@@ -511,9 +424,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("BatchVersionGreaterThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use BatchVersionLessThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int BatchVersionLessThanOrEqual
 		{
@@ -524,9 +434,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("BatchVersionLessThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use BatchVersionEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int BatchVersionEqual
 		{
@@ -537,9 +444,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("BatchVersionEqual");
 			}
 		}
-		/// <summary>
-		/// Use QueueTimeGreaterThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int QueueTimeGreaterThanOrEqual
 		{
@@ -550,9 +454,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("QueueTimeGreaterThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use QueueTimeLessThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int QueueTimeLessThanOrEqual
 		{
@@ -563,9 +464,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("QueueTimeLessThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use FinishTimeGreaterThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int FinishTimeGreaterThanOrEqual
 		{
@@ -576,9 +474,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FinishTimeGreaterThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use FinishTimeLessThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int FinishTimeLessThanOrEqual
 		{
@@ -589,9 +484,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FinishTimeLessThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use ErrTypeEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public BatchJobErrorTypes ErrTypeEqual
 		{
@@ -602,9 +494,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrTypeEqual");
 			}
 		}
-		/// <summary>
-		/// Use ErrTypeInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ErrTypeIn
 		{
@@ -615,9 +504,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrTypeIn");
 			}
 		}
-		/// <summary>
-		/// Use ErrTypeNotInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ErrTypeNotIn
 		{
@@ -628,9 +514,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrTypeNotIn");
 			}
 		}
-		/// <summary>
-		/// Use ErrNumberEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ErrNumberEqual
 		{
@@ -641,9 +524,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrNumberEqual");
 			}
 		}
-		/// <summary>
-		/// Use ErrNumberInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ErrNumberIn
 		{
@@ -654,9 +534,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrNumberIn");
 			}
 		}
-		/// <summary>
-		/// Use ErrNumberNotInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ErrNumberNotIn
 		{
@@ -667,9 +544,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrNumberNotIn");
 			}
 		}
-		/// <summary>
-		/// Use EstimatedEffortLessThanAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int EstimatedEffortLessThan
 		{
@@ -680,9 +554,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EstimatedEffortLessThan");
 			}
 		}
-		/// <summary>
-		/// Use EstimatedEffortGreaterThanAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int EstimatedEffortGreaterThan
 		{
@@ -693,9 +564,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EstimatedEffortGreaterThan");
 			}
 		}
-		/// <summary>
-		/// Use UrgencyLessThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int UrgencyLessThanOrEqual
 		{
@@ -706,9 +574,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UrgencyLessThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use UrgencyGreaterThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int UrgencyGreaterThanOrEqual
 		{

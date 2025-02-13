@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -148,85 +148,7 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class ZoomVendorListRequestBuilder : RequestBuilder<ListResponse<ZoomIntegrationSetting>>
-	{
-		#region Constants
-		public const string PAGER = "pager";
-		#endregion
-
-		public FilterPager Pager { get; set; }
-
-		public ZoomVendorListRequestBuilder()
-			: base("vendor_zoomvendor", "list")
-		{
-		}
-
-		public ZoomVendorListRequestBuilder(FilterPager pager)
-			: this()
-		{
-			this.Pager = pager;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("pager"))
-				kparams.AddIfNotNull("pager", Pager);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(JToken result)
-		{
-			return ObjectFactory.Create<ListResponse<ZoomIntegrationSetting>>(result);
-		}
-	}
-
-	public class ZoomVendorLocalRegistrationPageRequestBuilder : RequestBuilder<VoidResponse>
-	{
-		#region Constants
-		public const string JWT = "jwt";
-		#endregion
-
-		public string Jwt { get; set; }
-
-		public ZoomVendorLocalRegistrationPageRequestBuilder()
-			: base("vendor_zoomvendor", "localRegistrationPage")
-		{
-		}
-
-		public ZoomVendorLocalRegistrationPageRequestBuilder(string jwt)
-			: this()
-		{
-			this.Jwt = jwt;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("jwt"))
-				kparams.AddIfNotNull("jwt", Jwt);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(JToken result)
-		{
-			return null;
-		}
-	}
-
-	public class ZoomVendorOauthValidationRequestBuilder : RequestBuilder<VoidResponse>
+	public class ZoomVendorOauthValidationRequestBuilder : RequestBuilder<string>
 	{
 		#region Constants
 		#endregion
@@ -234,35 +156,6 @@ namespace Kaltura.Services
 
 		public ZoomVendorOauthValidationRequestBuilder()
 			: base("vendor_zoomvendor", "oauthValidation")
-		{
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(JToken result)
-		{
-			return null;
-		}
-	}
-
-	public class ZoomVendorPreOauthValidationRequestBuilder : RequestBuilder<string>
-	{
-		#region Constants
-		#endregion
-
-
-		public ZoomVendorPreOauthValidationRequestBuilder()
-			: base("vendor_zoomvendor", "preOauthValidation")
 		{
 		}
 
@@ -379,24 +272,9 @@ namespace Kaltura.Services
 			return new ZoomVendorGetRequestBuilder(partnerId);
 		}
 
-		public static ZoomVendorListRequestBuilder List(FilterPager pager = null)
-		{
-			return new ZoomVendorListRequestBuilder(pager);
-		}
-
-		public static ZoomVendorLocalRegistrationPageRequestBuilder LocalRegistrationPage(string jwt)
-		{
-			return new ZoomVendorLocalRegistrationPageRequestBuilder(jwt);
-		}
-
 		public static ZoomVendorOauthValidationRequestBuilder OauthValidation()
 		{
 			return new ZoomVendorOauthValidationRequestBuilder();
-		}
-
-		public static ZoomVendorPreOauthValidationRequestBuilder PreOauthValidation()
-		{
-			return new ZoomVendorPreOauthValidationRequestBuilder();
 		}
 
 		public static ZoomVendorRecordingCompleteRequestBuilder RecordingComplete()

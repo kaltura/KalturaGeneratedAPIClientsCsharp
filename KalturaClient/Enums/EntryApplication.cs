@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -37,7 +37,6 @@ namespace Kaltura.Enums
 		public static readonly EntryApplication WEBCAST_APP = new EntryApplication("5");
 		public static readonly EntryApplication PERSONAL_CAPTURE = new EntryApplication("6");
 		public static readonly EntryApplication KALTURA_MEETING = new EntryApplication("7");
-		public static readonly EntryApplication EP = new EntryApplication("8");
 
 		private EntryApplication(string name) : base(name) { }
 	}

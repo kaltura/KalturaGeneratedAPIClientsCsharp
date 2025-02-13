@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -40,14 +40,11 @@ namespace Kaltura.Types
 		#region Constants
 		public const string ID = "id";
 		public const string NAME = "name";
-		public const string MULTI_LINGUAL_NAME = "multiLingual_name";
 		public const string DESCRIPTION = "description";
-		public const string MULTI_LINGUAL_DESCRIPTION = "multiLingual_description";
 		public const string PARTNER_ID = "partnerId";
 		public const string USER_ID = "userId";
 		public const string CREATOR_ID = "creatorId";
 		public const string TAGS = "tags";
-		public const string MULTI_LINGUAL_TAGS = "multiLingual_tags";
 		public const string ADMIN_TAGS = "adminTags";
 		public const string CATEGORIES = "categories";
 		public const string CATEGORIES_IDS = "categoriesIds";
@@ -88,20 +85,16 @@ namespace Kaltura.Types
 		public const string DISPLAY_IN_SEARCH = "displayInSearch";
 		public const string APPLICATION = "application";
 		public const string APPLICATION_VERSION = "applicationVersion";
-		public const string BLOCK_AUTO_TRANSCRIPT = "blockAutoTranscript";
 		#endregion
 
 		#region Private Fields
 		private string _Id = null;
 		private string _Name = null;
-		private IList<MultiLingualString> _MultiLingual_name;
 		private string _Description = null;
-		private IList<MultiLingualString> _MultiLingual_description;
 		private int _PartnerId = Int32.MinValue;
 		private string _UserId = null;
 		private string _CreatorId = null;
 		private string _Tags = null;
-		private IList<MultiLingualString> _MultiLingual_tags;
 		private string _AdminTags = null;
 		private string _Categories = null;
 		private string _CategoriesIds = null;
@@ -111,7 +104,7 @@ namespace Kaltura.Types
 		private EntryType _Type = null;
 		private int _CreatedAt = Int32.MinValue;
 		private int _UpdatedAt = Int32.MinValue;
-		private double _Rank = Double.MinValue;
+		private float _Rank = Single.MinValue;
 		private int _TotalRank = Int32.MinValue;
 		private int _Votes = Int32.MinValue;
 		private int _GroupId = Int32.MinValue;
@@ -142,13 +135,9 @@ namespace Kaltura.Types
 		private EntryDisplayInSearchType _DisplayInSearch = (EntryDisplayInSearchType)Int32.MinValue;
 		private EntryApplication _Application = null;
 		private string _ApplicationVersion = null;
-		private bool? _BlockAutoTranscript = null;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use IdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Id
 		{
@@ -159,9 +148,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
-		/// <summary>
-		/// Use NameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -172,22 +158,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
-		/// <summary>
-		/// Use MultiLingual_nameAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public IList<MultiLingualString> MultiLingual_name
-		{
-			get { return _MultiLingual_name; }
-			set 
-			{ 
-				_MultiLingual_name = value;
-				OnPropertyChanged("MultiLingual_name");
-			}
-		}
-		/// <summary>
-		/// Use DescriptionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Description
 		{
@@ -198,22 +168,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
-		/// <summary>
-		/// Use MultiLingual_descriptionAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public IList<MultiLingualString> MultiLingual_description
-		{
-			get { return _MultiLingual_description; }
-			set 
-			{ 
-				_MultiLingual_description = value;
-				OnPropertyChanged("MultiLingual_description");
-			}
-		}
-		/// <summary>
-		/// Use PartnerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -224,9 +178,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
-		/// <summary>
-		/// Use UserIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string UserId
 		{
@@ -237,9 +188,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserId");
 			}
 		}
-		/// <summary>
-		/// Use CreatorIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CreatorId
 		{
@@ -250,9 +198,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatorId");
 			}
 		}
-		/// <summary>
-		/// Use TagsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Tags
 		{
@@ -263,22 +208,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
-		/// <summary>
-		/// Use MultiLingual_tagsAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public IList<MultiLingualString> MultiLingual_tags
-		{
-			get { return _MultiLingual_tags; }
-			set 
-			{ 
-				_MultiLingual_tags = value;
-				OnPropertyChanged("MultiLingual_tags");
-			}
-		}
-		/// <summary>
-		/// Use AdminTagsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string AdminTags
 		{
@@ -289,9 +218,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AdminTags");
 			}
 		}
-		/// <summary>
-		/// Use CategoriesAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Categories
 		{
@@ -302,9 +228,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Categories");
 			}
 		}
-		/// <summary>
-		/// Use CategoriesIdsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CategoriesIds
 		{
@@ -315,9 +238,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoriesIds");
 			}
 		}
-		/// <summary>
-		/// Use StatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public EntryStatus Status
 		{
@@ -328,9 +248,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
-		/// <summary>
-		/// Use ModerationStatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public EntryModerationStatus ModerationStatus
 		{
@@ -341,9 +258,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ModerationStatus");
 			}
 		}
-		/// <summary>
-		/// Use ModerationCountAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ModerationCount
 		{
@@ -354,9 +268,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ModerationCount");
 			}
 		}
-		/// <summary>
-		/// Use TypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public EntryType Type
 		{
@@ -367,9 +278,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
-		/// <summary>
-		/// Use CreatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -380,9 +288,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
-		/// <summary>
-		/// Use UpdatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -393,11 +298,8 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
-		/// <summary>
-		/// Use RankAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public double Rank
+		public float Rank
 		{
 			get { return _Rank; }
 			private set 
@@ -406,9 +308,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Rank");
 			}
 		}
-		/// <summary>
-		/// Use TotalRankAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int TotalRank
 		{
@@ -419,9 +318,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TotalRank");
 			}
 		}
-		/// <summary>
-		/// Use VotesAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Votes
 		{
@@ -432,9 +328,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Votes");
 			}
 		}
-		/// <summary>
-		/// Use GroupIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int GroupId
 		{
@@ -445,9 +338,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("GroupId");
 			}
 		}
-		/// <summary>
-		/// Use PartnerDataAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PartnerData
 		{
@@ -458,9 +348,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerData");
 			}
 		}
-		/// <summary>
-		/// Use DownloadUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string DownloadUrl
 		{
@@ -471,9 +358,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DownloadUrl");
 			}
 		}
-		/// <summary>
-		/// Use SearchTextAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SearchText
 		{
@@ -484,9 +368,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SearchText");
 			}
 		}
-		/// <summary>
-		/// Use LicenseTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public LicenseType LicenseType
 		{
@@ -497,9 +378,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("LicenseType");
 			}
 		}
-		/// <summary>
-		/// Use VersionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Version
 		{
@@ -510,9 +388,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Version");
 			}
 		}
-		/// <summary>
-		/// Use ThumbnailUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ThumbnailUrl
 		{
@@ -523,9 +398,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbnailUrl");
 			}
 		}
-		/// <summary>
-		/// Use AccessControlIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int AccessControlId
 		{
@@ -536,9 +408,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AccessControlId");
 			}
 		}
-		/// <summary>
-		/// Use StartDateAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int StartDate
 		{
@@ -549,9 +418,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartDate");
 			}
 		}
-		/// <summary>
-		/// Use EndDateAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int EndDate
 		{
@@ -562,9 +428,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndDate");
 			}
 		}
-		/// <summary>
-		/// Use ReferenceIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ReferenceId
 		{
@@ -575,9 +438,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReferenceId");
 			}
 		}
-		/// <summary>
-		/// Use ReplacingEntryIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ReplacingEntryId
 		{
@@ -588,9 +448,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplacingEntryId");
 			}
 		}
-		/// <summary>
-		/// Use ReplacedEntryIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ReplacedEntryId
 		{
@@ -601,9 +458,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplacedEntryId");
 			}
 		}
-		/// <summary>
-		/// Use ReplacementStatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public EntryReplacementStatus ReplacementStatus
 		{
@@ -614,9 +468,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplacementStatus");
 			}
 		}
-		/// <summary>
-		/// Use PartnerSortValueAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PartnerSortValue
 		{
@@ -627,9 +478,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerSortValue");
 			}
 		}
-		/// <summary>
-		/// Use ConversionProfileIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ConversionProfileId
 		{
@@ -640,9 +488,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionProfileId");
 			}
 		}
-		/// <summary>
-		/// Use RedirectEntryIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string RedirectEntryId
 		{
@@ -653,9 +498,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("RedirectEntryId");
 			}
 		}
-		/// <summary>
-		/// Use RootEntryIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string RootEntryId
 		{
@@ -666,9 +508,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("RootEntryId");
 			}
 		}
-		/// <summary>
-		/// Use ParentEntryIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ParentEntryId
 		{
@@ -679,9 +518,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentEntryId");
 			}
 		}
-		/// <summary>
-		/// Use OperationAttributesAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<OperationAttributes> OperationAttributes
 		{
@@ -692,9 +528,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("OperationAttributes");
 			}
 		}
-		/// <summary>
-		/// Use EntitledUsersEditAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EntitledUsersEdit
 		{
@@ -705,9 +538,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntitledUsersEdit");
 			}
 		}
-		/// <summary>
-		/// Use EntitledUsersPublishAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EntitledUsersPublish
 		{
@@ -718,9 +548,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntitledUsersPublish");
 			}
 		}
-		/// <summary>
-		/// Use EntitledUsersViewAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EntitledUsersView
 		{
@@ -731,9 +558,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntitledUsersView");
 			}
 		}
-		/// <summary>
-		/// Use CapabilitiesAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Capabilities
 		{
@@ -744,9 +568,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Capabilities");
 			}
 		}
-		/// <summary>
-		/// Use TemplateEntryIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string TemplateEntryId
 		{
@@ -757,9 +578,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplateEntryId");
 			}
 		}
-		/// <summary>
-		/// Use DisplayInSearchAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public EntryDisplayInSearchType DisplayInSearch
 		{
@@ -770,9 +588,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DisplayInSearch");
 			}
 		}
-		/// <summary>
-		/// Use ApplicationAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public EntryApplication Application
 		{
@@ -783,9 +598,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Application");
 			}
 		}
-		/// <summary>
-		/// Use ApplicationVersionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ApplicationVersion
 		{
@@ -794,19 +606,6 @@ namespace Kaltura.Types
 			{ 
 				_ApplicationVersion = value;
 				OnPropertyChanged("ApplicationVersion");
-			}
-		}
-		/// <summary>
-		/// Use BlockAutoTranscriptAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public bool? BlockAutoTranscript
-		{
-			get { return _BlockAutoTranscript; }
-			set 
-			{ 
-				_BlockAutoTranscript = value;
-				OnPropertyChanged("BlockAutoTranscript");
 			}
 		}
 		#endregion
@@ -826,25 +625,9 @@ namespace Kaltura.Types
 			{
 				this._Name = node["name"].Value<string>();
 			}
-			if(node["multiLingual_name"] != null)
-			{
-				this._MultiLingual_name = new List<MultiLingualString>();
-				foreach(var arrayNode in node["multiLingual_name"].Children())
-				{
-					this._MultiLingual_name.Add(ObjectFactory.Create<MultiLingualString>(arrayNode));
-				}
-			}
 			if(node["description"] != null)
 			{
 				this._Description = node["description"].Value<string>();
-			}
-			if(node["multiLingual_description"] != null)
-			{
-				this._MultiLingual_description = new List<MultiLingualString>();
-				foreach(var arrayNode in node["multiLingual_description"].Children())
-				{
-					this._MultiLingual_description.Add(ObjectFactory.Create<MultiLingualString>(arrayNode));
-				}
 			}
 			if(node["partnerId"] != null)
 			{
@@ -861,14 +644,6 @@ namespace Kaltura.Types
 			if(node["tags"] != null)
 			{
 				this._Tags = node["tags"].Value<string>();
-			}
-			if(node["multiLingual_tags"] != null)
-			{
-				this._MultiLingual_tags = new List<MultiLingualString>();
-				foreach(var arrayNode in node["multiLingual_tags"].Children())
-				{
-					this._MultiLingual_tags.Add(ObjectFactory.Create<MultiLingualString>(arrayNode));
-				}
 			}
 			if(node["adminTags"] != null)
 			{
@@ -908,7 +683,7 @@ namespace Kaltura.Types
 			}
 			if(node["rank"] != null)
 			{
-				this._Rank = ParseDouble(node["rank"].Value<string>());
+				this._Rank = ParseFloat(node["rank"].Value<string>());
 			}
 			if(node["totalRank"] != null)
 			{
@@ -1034,10 +809,6 @@ namespace Kaltura.Types
 			{
 				this._ApplicationVersion = node["applicationVersion"].Value<string>();
 			}
-			if(node["blockAutoTranscript"] != null)
-			{
-				this._BlockAutoTranscript = ParseBool(node["blockAutoTranscript"].Value<string>());
-			}
 		}
 		#endregion
 
@@ -1049,14 +820,11 @@ namespace Kaltura.Types
 				kparams.AddReplace("objectType", "KalturaBaseEntry");
 			kparams.AddIfNotNull("id", this._Id);
 			kparams.AddIfNotNull("name", this._Name);
-			kparams.AddIfNotNull("multiLingual_name", this._MultiLingual_name);
 			kparams.AddIfNotNull("description", this._Description);
-			kparams.AddIfNotNull("multiLingual_description", this._MultiLingual_description);
 			kparams.AddIfNotNull("partnerId", this._PartnerId);
 			kparams.AddIfNotNull("userId", this._UserId);
 			kparams.AddIfNotNull("creatorId", this._CreatorId);
 			kparams.AddIfNotNull("tags", this._Tags);
-			kparams.AddIfNotNull("multiLingual_tags", this._MultiLingual_tags);
 			kparams.AddIfNotNull("adminTags", this._AdminTags);
 			kparams.AddIfNotNull("categories", this._Categories);
 			kparams.AddIfNotNull("categoriesIds", this._CategoriesIds);
@@ -1097,7 +865,6 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("displayInSearch", this._DisplayInSearch);
 			kparams.AddIfNotNull("application", this._Application);
 			kparams.AddIfNotNull("applicationVersion", this._ApplicationVersion);
-			kparams.AddIfNotNull("blockAutoTranscript", this._BlockAutoTranscript);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -1108,12 +875,8 @@ namespace Kaltura.Types
 					return "Id";
 				case NAME:
 					return "Name";
-				case MULTI_LINGUAL_NAME:
-					return "MultiLingual_name";
 				case DESCRIPTION:
 					return "Description";
-				case MULTI_LINGUAL_DESCRIPTION:
-					return "MultiLingual_description";
 				case PARTNER_ID:
 					return "PartnerId";
 				case USER_ID:
@@ -1122,8 +885,6 @@ namespace Kaltura.Types
 					return "CreatorId";
 				case TAGS:
 					return "Tags";
-				case MULTI_LINGUAL_TAGS:
-					return "MultiLingual_tags";
 				case ADMIN_TAGS:
 					return "AdminTags";
 				case CATEGORIES:
@@ -1204,8 +965,6 @@ namespace Kaltura.Types
 					return "Application";
 				case APPLICATION_VERSION:
 					return "ApplicationVersion";
-				case BLOCK_AUTO_TRANSCRIPT:
-					return "BlockAutoTranscript";
 				default:
 					return base.getPropertyName(apiName);
 			}

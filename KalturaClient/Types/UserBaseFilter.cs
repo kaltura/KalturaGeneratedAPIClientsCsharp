@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -38,8 +38,6 @@ namespace Kaltura.Types
 	public class UserBaseFilter : BaseUserFilter
 	{
 		#region Constants
-		public const string ID_EQUAL = "idEqual";
-		public const string ID_IN = "idIn";
 		public const string TYPE_EQUAL = "typeEqual";
 		public const string TYPE_IN = "typeIn";
 		public const string IS_ADMIN_EQUAL = "isAdminEqual";
@@ -48,8 +46,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Private Fields
-		private string _IdEqual = null;
-		private string _IdIn = null;
 		private UserType _TypeEqual = (UserType)Int32.MinValue;
 		private string _TypeIn = null;
 		private NullableBoolean _IsAdminEqual = (NullableBoolean)Int32.MinValue;
@@ -58,35 +54,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use IdEqualAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string IdEqual
-		{
-			get { return _IdEqual; }
-			set 
-			{ 
-				_IdEqual = value;
-				OnPropertyChanged("IdEqual");
-			}
-		}
-		/// <summary>
-		/// Use IdInAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string IdIn
-		{
-			get { return _IdIn; }
-			set 
-			{ 
-				_IdIn = value;
-				OnPropertyChanged("IdIn");
-			}
-		}
-		/// <summary>
-		/// Use TypeEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public UserType TypeEqual
 		{
@@ -97,9 +64,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeEqual");
 			}
 		}
-		/// <summary>
-		/// Use TypeInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string TypeIn
 		{
@@ -110,9 +74,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeIn");
 			}
 		}
-		/// <summary>
-		/// Use IsAdminEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public NullableBoolean IsAdminEqual
 		{
@@ -123,9 +84,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsAdminEqual");
 			}
 		}
-		/// <summary>
-		/// Use FirstNameStartsWithAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FirstNameStartsWith
 		{
@@ -136,9 +94,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FirstNameStartsWith");
 			}
 		}
-		/// <summary>
-		/// Use LastNameStartsWithAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string LastNameStartsWith
 		{
@@ -158,14 +113,6 @@ namespace Kaltura.Types
 
 		public UserBaseFilter(JToken node) : base(node)
 		{
-			if(node["idEqual"] != null)
-			{
-				this._IdEqual = node["idEqual"].Value<string>();
-			}
-			if(node["idIn"] != null)
-			{
-				this._IdIn = node["idIn"].Value<string>();
-			}
 			if(node["typeEqual"] != null)
 			{
 				this._TypeEqual = (UserType)ParseEnum(typeof(UserType), node["typeEqual"].Value<string>());
@@ -195,8 +142,6 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaUserBaseFilter");
-			kparams.AddIfNotNull("idEqual", this._IdEqual);
-			kparams.AddIfNotNull("idIn", this._IdIn);
 			kparams.AddIfNotNull("typeEqual", this._TypeEqual);
 			kparams.AddIfNotNull("typeIn", this._TypeIn);
 			kparams.AddIfNotNull("isAdminEqual", this._IsAdminEqual);
@@ -208,10 +153,6 @@ namespace Kaltura.Types
 		{
 			switch(apiName)
 			{
-				case ID_EQUAL:
-					return "IdEqual";
-				case ID_IN:
-					return "IdIn";
 				case TYPE_EQUAL:
 					return "TypeEqual";
 				case TYPE_IN:

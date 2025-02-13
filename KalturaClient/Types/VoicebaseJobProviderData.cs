@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -64,9 +64,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use EntryIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EntryId
 		{
@@ -77,9 +74,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
-		/// <summary>
-		/// Use FlavorAssetIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FlavorAssetId
 		{
@@ -90,9 +84,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetId");
 			}
 		}
-		/// <summary>
-		/// Use TranscriptIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string TranscriptId
 		{
@@ -103,9 +94,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TranscriptId");
 			}
 		}
-		/// <summary>
-		/// Use CaptionAssetFormatsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CaptionAssetFormats
 		{
@@ -116,9 +104,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CaptionAssetFormats");
 			}
 		}
-		/// <summary>
-		/// Use ApiKeyAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ApiKey
 		{
@@ -129,9 +114,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ApiKey");
 			}
 		}
-		/// <summary>
-		/// Use ApiPasswordAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ApiPassword
 		{
@@ -142,9 +124,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ApiPassword");
 			}
 		}
-		/// <summary>
-		/// Use SpokenLanguageAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public Language SpokenLanguage
 		{
@@ -155,9 +134,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SpokenLanguage");
 			}
 		}
-		/// <summary>
-		/// Use FileLocationAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FileLocation
 		{
@@ -168,9 +144,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileLocation");
 			}
 		}
-		/// <summary>
-		/// Use ReplaceMediaContentAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? ReplaceMediaContent
 		{
@@ -181,9 +154,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReplaceMediaContent");
 			}
 		}
-		/// <summary>
-		/// Use AdditionalParametersAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string AdditionalParameters
 		{

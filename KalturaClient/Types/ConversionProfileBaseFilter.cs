@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -70,9 +70,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use IdEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int IdEqual
 		{
@@ -83,9 +80,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdEqual");
 			}
 		}
-		/// <summary>
-		/// Use IdInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string IdIn
 		{
@@ -96,9 +90,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("IdIn");
 			}
 		}
-		/// <summary>
-		/// Use StatusEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public ConversionProfileStatus StatusEqual
 		{
@@ -109,9 +100,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusEqual");
 			}
 		}
-		/// <summary>
-		/// Use StatusInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string StatusIn
 		{
@@ -122,9 +110,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StatusIn");
 			}
 		}
-		/// <summary>
-		/// Use TypeEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public ConversionProfileType TypeEqual
 		{
@@ -135,9 +120,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeEqual");
 			}
 		}
-		/// <summary>
-		/// Use TypeInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string TypeIn
 		{
@@ -148,9 +130,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TypeIn");
 			}
 		}
-		/// <summary>
-		/// Use NameEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string NameEqual
 		{
@@ -161,9 +140,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("NameEqual");
 			}
 		}
-		/// <summary>
-		/// Use SystemNameEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SystemNameEqual
 		{
@@ -174,9 +150,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemNameEqual");
 			}
 		}
-		/// <summary>
-		/// Use SystemNameInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SystemNameIn
 		{
@@ -187,9 +160,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemNameIn");
 			}
 		}
-		/// <summary>
-		/// Use TagsMultiLikeOrAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string TagsMultiLikeOr
 		{
@@ -200,9 +170,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsMultiLikeOr");
 			}
 		}
-		/// <summary>
-		/// Use TagsMultiLikeAndAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string TagsMultiLikeAnd
 		{
@@ -213,9 +180,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TagsMultiLikeAnd");
 			}
 		}
-		/// <summary>
-		/// Use DefaultEntryIdEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string DefaultEntryIdEqual
 		{
@@ -226,9 +190,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DefaultEntryIdEqual");
 			}
 		}
-		/// <summary>
-		/// Use DefaultEntryIdInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string DefaultEntryIdIn
 		{

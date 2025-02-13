@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -42,8 +42,6 @@ namespace Kaltura.Types
 		public const string DISTRIBUTED_THUMB_ASSETS = "distributedThumbAssets";
 		public const string DISTRIBUTED_METADATA = "distributedMetadata";
 		public const string DISTRIBUTED_CAPTION_ASSETS = "distributedCaptionAssets";
-		public const string DISTRIBUTED_FILE_ASSETS = "distributedFileAssets";
-		public const string DISTRIBUTED_ATTACHMENT_ASSETS = "distributedAttachmentAssets";
 		public const string DISTRIBUTED_CUE_POINTS = "distributedCuePoints";
 		public const string DISTRIBUTED_THUMB_CUE_POINTS = "distributedThumbCuePoints";
 		public const string DISTRIBUTED_TIMED_THUMB_ASSETS = "distributedTimedThumbAssets";
@@ -54,17 +52,12 @@ namespace Kaltura.Types
 		private string _DistributedThumbAssets = null;
 		private string _DistributedMetadata = null;
 		private string _DistributedCaptionAssets = null;
-		private string _DistributedFileAssets = null;
-		private string _DistributedAttachmentAssets = null;
 		private string _DistributedCuePoints = null;
 		private string _DistributedThumbCuePoints = null;
 		private string _DistributedTimedThumbAssets = null;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use DistributedFlavorAssetsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string DistributedFlavorAssets
 		{
@@ -75,9 +68,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributedFlavorAssets");
 			}
 		}
-		/// <summary>
-		/// Use DistributedThumbAssetsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string DistributedThumbAssets
 		{
@@ -88,9 +78,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributedThumbAssets");
 			}
 		}
-		/// <summary>
-		/// Use DistributedMetadataAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string DistributedMetadata
 		{
@@ -101,9 +88,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributedMetadata");
 			}
 		}
-		/// <summary>
-		/// Use DistributedCaptionAssetsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string DistributedCaptionAssets
 		{
@@ -114,35 +98,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributedCaptionAssets");
 			}
 		}
-		/// <summary>
-		/// Use DistributedFileAssetsAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string DistributedFileAssets
-		{
-			get { return _DistributedFileAssets; }
-			set 
-			{ 
-				_DistributedFileAssets = value;
-				OnPropertyChanged("DistributedFileAssets");
-			}
-		}
-		/// <summary>
-		/// Use DistributedAttachmentAssetsAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string DistributedAttachmentAssets
-		{
-			get { return _DistributedAttachmentAssets; }
-			set 
-			{ 
-				_DistributedAttachmentAssets = value;
-				OnPropertyChanged("DistributedAttachmentAssets");
-			}
-		}
-		/// <summary>
-		/// Use DistributedCuePointsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string DistributedCuePoints
 		{
@@ -153,9 +108,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributedCuePoints");
 			}
 		}
-		/// <summary>
-		/// Use DistributedThumbCuePointsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string DistributedThumbCuePoints
 		{
@@ -166,9 +118,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributedThumbCuePoints");
 			}
 		}
-		/// <summary>
-		/// Use DistributedTimedThumbAssetsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string DistributedTimedThumbAssets
 		{
@@ -204,14 +153,6 @@ namespace Kaltura.Types
 			{
 				this._DistributedCaptionAssets = node["distributedCaptionAssets"].Value<string>();
 			}
-			if(node["distributedFileAssets"] != null)
-			{
-				this._DistributedFileAssets = node["distributedFileAssets"].Value<string>();
-			}
-			if(node["distributedAttachmentAssets"] != null)
-			{
-				this._DistributedAttachmentAssets = node["distributedAttachmentAssets"].Value<string>();
-			}
 			if(node["distributedCuePoints"] != null)
 			{
 				this._DistributedCuePoints = node["distributedCuePoints"].Value<string>();
@@ -237,8 +178,6 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("distributedThumbAssets", this._DistributedThumbAssets);
 			kparams.AddIfNotNull("distributedMetadata", this._DistributedMetadata);
 			kparams.AddIfNotNull("distributedCaptionAssets", this._DistributedCaptionAssets);
-			kparams.AddIfNotNull("distributedFileAssets", this._DistributedFileAssets);
-			kparams.AddIfNotNull("distributedAttachmentAssets", this._DistributedAttachmentAssets);
 			kparams.AddIfNotNull("distributedCuePoints", this._DistributedCuePoints);
 			kparams.AddIfNotNull("distributedThumbCuePoints", this._DistributedThumbCuePoints);
 			kparams.AddIfNotNull("distributedTimedThumbAssets", this._DistributedTimedThumbAssets);
@@ -256,10 +195,6 @@ namespace Kaltura.Types
 					return "DistributedMetadata";
 				case DISTRIBUTED_CAPTION_ASSETS:
 					return "DistributedCaptionAssets";
-				case DISTRIBUTED_FILE_ASSETS:
-					return "DistributedFileAssets";
-				case DISTRIBUTED_ATTACHMENT_ASSETS:
-					return "DistributedAttachmentAssets";
 				case DISTRIBUTED_CUE_POINTS:
 					return "DistributedCuePoints";
 				case DISTRIBUTED_THUMB_CUE_POINTS:

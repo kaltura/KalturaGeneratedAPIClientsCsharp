@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -70,9 +70,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use IdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Id
 		{
@@ -83,9 +80,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
-		/// <summary>
-		/// Use TokenAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Token
 		{
@@ -96,9 +90,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Token");
 			}
 		}
-		/// <summary>
-		/// Use PartnerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -109,9 +100,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
-		/// <summary>
-		/// Use CreatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -122,9 +110,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
-		/// <summary>
-		/// Use UpdatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -135,9 +120,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
-		/// <summary>
-		/// Use StatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public AppTokenStatus Status
 		{
@@ -148,9 +130,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
-		/// <summary>
-		/// Use ExpiryAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Expiry
 		{
@@ -161,9 +140,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Expiry");
 			}
 		}
-		/// <summary>
-		/// Use SessionTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public SessionType SessionType
 		{
@@ -174,9 +150,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SessionType");
 			}
 		}
-		/// <summary>
-		/// Use SessionUserIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SessionUserId
 		{
@@ -187,9 +160,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SessionUserId");
 			}
 		}
-		/// <summary>
-		/// Use SessionDurationAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int SessionDuration
 		{
@@ -200,9 +170,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SessionDuration");
 			}
 		}
-		/// <summary>
-		/// Use SessionPrivilegesAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SessionPrivileges
 		{
@@ -213,9 +180,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SessionPrivileges");
 			}
 		}
-		/// <summary>
-		/// Use HashTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public AppTokenHashType HashType
 		{
@@ -226,9 +190,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("HashType");
 			}
 		}
-		/// <summary>
-		/// Use DescriptionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Description
 		{

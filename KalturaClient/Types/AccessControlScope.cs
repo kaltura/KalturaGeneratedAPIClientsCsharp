@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -58,9 +58,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use ReferrerAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Referrer
 		{
@@ -71,9 +68,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Referrer");
 			}
 		}
-		/// <summary>
-		/// Use IpAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Ip
 		{
@@ -84,9 +78,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Ip");
 			}
 		}
-		/// <summary>
-		/// Use KsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Ks
 		{
@@ -97,9 +88,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Ks");
 			}
 		}
-		/// <summary>
-		/// Use UserAgentAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string UserAgent
 		{
@@ -110,9 +98,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserAgent");
 			}
 		}
-		/// <summary>
-		/// Use TimeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Time
 		{
@@ -123,9 +108,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Time");
 			}
 		}
-		/// <summary>
-		/// Use ContextsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<AccessControlContextTypeHolder> Contexts
 		{
@@ -136,9 +118,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Contexts");
 			}
 		}
-		/// <summary>
-		/// Use HashesAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> Hashes
 		{

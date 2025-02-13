@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -64,9 +64,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use StreamIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int StreamId
 		{
@@ -77,9 +74,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StreamId");
 			}
 		}
-		/// <summary>
-		/// Use SystemUserNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SystemUserName
 		{
@@ -90,9 +84,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemUserName");
 			}
 		}
-		/// <summary>
-		/// Use SystemPasswordAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SystemPassword
 		{
@@ -103,9 +94,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemPassword");
 			}
 		}
-		/// <summary>
-		/// Use DomainNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string DomainName
 		{
@@ -116,9 +104,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DomainName");
 			}
 		}
-		/// <summary>
-		/// Use DvrEnabledAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public DVRStatus DvrEnabled
 		{
@@ -129,9 +114,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DvrEnabled");
 			}
 		}
-		/// <summary>
-		/// Use DvrWindowAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int DvrWindow
 		{
@@ -142,9 +124,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DvrWindow");
 			}
 		}
-		/// <summary>
-		/// Use PrimaryContactAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PrimaryContact
 		{
@@ -155,9 +134,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrimaryContact");
 			}
 		}
-		/// <summary>
-		/// Use SecondaryContactAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SecondaryContact
 		{
@@ -168,9 +144,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SecondaryContact");
 			}
 		}
-		/// <summary>
-		/// Use StreamTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public AkamaiUniversalStreamType StreamType
 		{
@@ -181,9 +154,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StreamType");
 			}
 		}
-		/// <summary>
-		/// Use NotificationEmailAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string NotificationEmail
 		{

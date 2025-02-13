@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -43,7 +43,6 @@ namespace Kaltura.Enums
 		public static readonly AuditTrailObjectType USER_ROLE = new AuditTrailObjectType("UserRole");
 		public static readonly AuditTrailObjectType ACCESS_CONTROL = new AuditTrailObjectType("accessControl");
 		public static readonly AuditTrailObjectType CATEGORY = new AuditTrailObjectType("category");
-		public static readonly AuditTrailObjectType CATEGORY_ENTRY = new AuditTrailObjectType("categoryEntry");
 		public static readonly AuditTrailObjectType CONVERSION_PROFILE_2 = new AuditTrailObjectType("conversionProfile2");
 		public static readonly AuditTrailObjectType ENTRY = new AuditTrailObjectType("entry");
 		public static readonly AuditTrailObjectType FLAVOR_ASSET = new AuditTrailObjectType("flavorAsset");

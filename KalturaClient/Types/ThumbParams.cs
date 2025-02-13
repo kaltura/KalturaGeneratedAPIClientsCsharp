@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -65,11 +65,11 @@ namespace Kaltura.Types
 		private int _CropY = Int32.MinValue;
 		private int _CropWidth = Int32.MinValue;
 		private int _CropHeight = Int32.MinValue;
-		private double _VideoOffset = Double.MinValue;
+		private float _VideoOffset = Single.MinValue;
 		private int _Width = Int32.MinValue;
 		private int _Height = Int32.MinValue;
-		private double _ScaleWidth = Double.MinValue;
-		private double _ScaleHeight = Double.MinValue;
+		private float _ScaleWidth = Single.MinValue;
+		private float _ScaleHeight = Single.MinValue;
 		private string _BackgroundColor = null;
 		private int _SourceParamsId = Int32.MinValue;
 		private ContainerFormat _Format = null;
@@ -80,9 +80,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use CropTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public ThumbCropType CropType
 		{
@@ -93,9 +90,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CropType");
 			}
 		}
-		/// <summary>
-		/// Use QualityAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Quality
 		{
@@ -106,9 +100,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Quality");
 			}
 		}
-		/// <summary>
-		/// Use CropXAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CropX
 		{
@@ -119,9 +110,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CropX");
 			}
 		}
-		/// <summary>
-		/// Use CropYAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CropY
 		{
@@ -132,9 +120,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CropY");
 			}
 		}
-		/// <summary>
-		/// Use CropWidthAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CropWidth
 		{
@@ -145,9 +130,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CropWidth");
 			}
 		}
-		/// <summary>
-		/// Use CropHeightAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CropHeight
 		{
@@ -158,11 +140,8 @@ namespace Kaltura.Types
 				OnPropertyChanged("CropHeight");
 			}
 		}
-		/// <summary>
-		/// Use VideoOffsetAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public double VideoOffset
+		public float VideoOffset
 		{
 			get { return _VideoOffset; }
 			set 
@@ -171,9 +150,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoOffset");
 			}
 		}
-		/// <summary>
-		/// Use WidthAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Width
 		{
@@ -184,9 +160,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Width");
 			}
 		}
-		/// <summary>
-		/// Use HeightAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Height
 		{
@@ -197,11 +170,8 @@ namespace Kaltura.Types
 				OnPropertyChanged("Height");
 			}
 		}
-		/// <summary>
-		/// Use ScaleWidthAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public double ScaleWidth
+		public float ScaleWidth
 		{
 			get { return _ScaleWidth; }
 			set 
@@ -210,11 +180,8 @@ namespace Kaltura.Types
 				OnPropertyChanged("ScaleWidth");
 			}
 		}
-		/// <summary>
-		/// Use ScaleHeightAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public double ScaleHeight
+		public float ScaleHeight
 		{
 			get { return _ScaleHeight; }
 			set 
@@ -223,9 +190,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ScaleHeight");
 			}
 		}
-		/// <summary>
-		/// Use BackgroundColorAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string BackgroundColor
 		{
@@ -236,9 +200,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("BackgroundColor");
 			}
 		}
-		/// <summary>
-		/// Use SourceParamsIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int SourceParamsId
 		{
@@ -249,9 +210,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceParamsId");
 			}
 		}
-		/// <summary>
-		/// Use FormatAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public ContainerFormat Format
 		{
@@ -262,9 +220,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Format");
 			}
 		}
-		/// <summary>
-		/// Use DensityAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Density
 		{
@@ -275,9 +230,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Density");
 			}
 		}
-		/// <summary>
-		/// Use StripProfilesAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? StripProfiles
 		{
@@ -288,9 +240,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StripProfiles");
 			}
 		}
-		/// <summary>
-		/// Use VideoOffsetInPercentageAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int VideoOffsetInPercentage
 		{
@@ -301,9 +250,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoOffsetInPercentage");
 			}
 		}
-		/// <summary>
-		/// Use IntervalAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Interval
 		{
@@ -349,7 +295,7 @@ namespace Kaltura.Types
 			}
 			if(node["videoOffset"] != null)
 			{
-				this._VideoOffset = ParseDouble(node["videoOffset"].Value<string>());
+				this._VideoOffset = ParseFloat(node["videoOffset"].Value<string>());
 			}
 			if(node["width"] != null)
 			{
@@ -361,11 +307,11 @@ namespace Kaltura.Types
 			}
 			if(node["scaleWidth"] != null)
 			{
-				this._ScaleWidth = ParseDouble(node["scaleWidth"].Value<string>());
+				this._ScaleWidth = ParseFloat(node["scaleWidth"].Value<string>());
 			}
 			if(node["scaleHeight"] != null)
 			{
-				this._ScaleHeight = ParseDouble(node["scaleHeight"].Value<string>());
+				this._ScaleHeight = ParseFloat(node["scaleHeight"].Value<string>());
 			}
 			if(node["backgroundColor"] != null)
 			{

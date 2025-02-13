@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -212,14 +212,14 @@ namespace Kaltura.Services
 		public string FileData_FileName { get; set; }
 		public bool Resume { get; set; }
 		public bool FinalChunk { get; set; }
-		public double ResumeAt { get; set; }
+		public float ResumeAt { get; set; }
 
 		public UploadTokenUploadRequestBuilder()
 			: base("uploadtoken", "upload")
 		{
 		}
 
-		public UploadTokenUploadRequestBuilder(string uploadTokenId, Stream fileData, bool resume, bool finalChunk, double resumeAt)
+		public UploadTokenUploadRequestBuilder(string uploadTokenId, Stream fileData, bool resume, bool finalChunk, float resumeAt)
 			: this()
 		{
 			this.UploadTokenId = uploadTokenId;
@@ -283,7 +283,7 @@ namespace Kaltura.Services
 			return new UploadTokenListRequestBuilder(filter, pager);
 		}
 
-		public static UploadTokenUploadRequestBuilder Upload(string uploadTokenId, Stream fileData, bool resume = false, bool finalChunk = true, double resumeAt = -1)
+		public static UploadTokenUploadRequestBuilder Upload(string uploadTokenId, Stream fileData, bool resume = false, bool finalChunk = true, float resumeAt = -1)
 		{
 			return new UploadTokenUploadRequestBuilder(uploadTokenId, fileData, resume, finalChunk, resumeAt);
 		}

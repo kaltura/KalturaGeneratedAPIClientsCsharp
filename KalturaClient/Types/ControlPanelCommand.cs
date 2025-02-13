@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -78,9 +78,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use IdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Id
 		{
@@ -91,9 +88,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
-		/// <summary>
-		/// Use CreatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -104,9 +98,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
-		/// <summary>
-		/// Use CreatedByAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CreatedBy
 		{
@@ -117,9 +108,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedBy");
 			}
 		}
-		/// <summary>
-		/// Use UpdatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -130,9 +118,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
-		/// <summary>
-		/// Use UpdatedByAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string UpdatedBy
 		{
@@ -143,9 +128,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedBy");
 			}
 		}
-		/// <summary>
-		/// Use CreatedByIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CreatedById
 		{
@@ -156,9 +138,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedById");
 			}
 		}
-		/// <summary>
-		/// Use SchedulerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int SchedulerId
 		{
@@ -169,9 +148,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SchedulerId");
 			}
 		}
-		/// <summary>
-		/// Use WorkerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int WorkerId
 		{
@@ -182,9 +158,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("WorkerId");
 			}
 		}
-		/// <summary>
-		/// Use WorkerConfiguredIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int WorkerConfiguredId
 		{
@@ -195,9 +168,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("WorkerConfiguredId");
 			}
 		}
-		/// <summary>
-		/// Use WorkerNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int WorkerName
 		{
@@ -208,9 +178,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("WorkerName");
 			}
 		}
-		/// <summary>
-		/// Use BatchIndexAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int BatchIndex
 		{
@@ -221,9 +188,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("BatchIndex");
 			}
 		}
-		/// <summary>
-		/// Use TypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public ControlPanelCommandType Type
 		{
@@ -234,9 +198,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
-		/// <summary>
-		/// Use TargetTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public ControlPanelCommandTargetType TargetType
 		{
@@ -247,9 +208,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TargetType");
 			}
 		}
-		/// <summary>
-		/// Use StatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public ControlPanelCommandStatus Status
 		{
@@ -260,9 +218,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
-		/// <summary>
-		/// Use CauseAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Cause
 		{
@@ -273,9 +228,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Cause");
 			}
 		}
-		/// <summary>
-		/// Use DescriptionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Description
 		{
@@ -286,9 +238,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
-		/// <summary>
-		/// Use ErrorDescriptionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ErrorDescription
 		{

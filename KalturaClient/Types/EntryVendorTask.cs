@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -67,7 +67,6 @@ namespace Kaltura.Types
 		public const string SERVICE_TYPE = "serviceType";
 		public const string SERVICE_FEATURE = "serviceFeature";
 		public const string TURN_AROUND_TIME = "turnAroundTime";
-		public const string EXTERNAL_TASK_ID = "externalTaskId";
 		#endregion
 
 		#region Private Fields
@@ -82,7 +81,7 @@ namespace Kaltura.Types
 		private EntryVendorTaskStatus _Status = (EntryVendorTaskStatus)Int32.MinValue;
 		private int _ReachProfileId = Int32.MinValue;
 		private int _CatalogItemId = Int32.MinValue;
-		private double _Price = Double.MinValue;
+		private float _Price = Single.MinValue;
 		private string _UserId = null;
 		private string _ModeratingUser = null;
 		private string _ErrDescription = null;
@@ -100,13 +99,9 @@ namespace Kaltura.Types
 		private VendorServiceType _ServiceType = (VendorServiceType)Int32.MinValue;
 		private VendorServiceFeature _ServiceFeature = (VendorServiceFeature)Int32.MinValue;
 		private VendorServiceTurnAroundTime _TurnAroundTime = (VendorServiceTurnAroundTime)Int32.MinValue;
-		private string _ExternalTaskId = null;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use IdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public long Id
 		{
@@ -117,9 +112,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
-		/// <summary>
-		/// Use PartnerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -130,9 +122,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
-		/// <summary>
-		/// Use VendorPartnerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int VendorPartnerId
 		{
@@ -143,9 +132,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("VendorPartnerId");
 			}
 		}
-		/// <summary>
-		/// Use CreatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -156,9 +142,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
-		/// <summary>
-		/// Use UpdatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -169,9 +152,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
-		/// <summary>
-		/// Use QueueTimeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int QueueTime
 		{
@@ -182,9 +162,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("QueueTime");
 			}
 		}
-		/// <summary>
-		/// Use FinishTimeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int FinishTime
 		{
@@ -195,9 +172,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FinishTime");
 			}
 		}
-		/// <summary>
-		/// Use EntryIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EntryId
 		{
@@ -208,9 +182,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
-		/// <summary>
-		/// Use StatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public EntryVendorTaskStatus Status
 		{
@@ -221,9 +192,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
-		/// <summary>
-		/// Use ReachProfileIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ReachProfileId
 		{
@@ -234,9 +202,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReachProfileId");
 			}
 		}
-		/// <summary>
-		/// Use CatalogItemIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CatalogItemId
 		{
@@ -247,11 +212,8 @@ namespace Kaltura.Types
 				OnPropertyChanged("CatalogItemId");
 			}
 		}
-		/// <summary>
-		/// Use PriceAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public double Price
+		public float Price
 		{
 			get { return _Price; }
 			private set 
@@ -260,9 +222,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Price");
 			}
 		}
-		/// <summary>
-		/// Use UserIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string UserId
 		{
@@ -273,9 +232,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserId");
 			}
 		}
-		/// <summary>
-		/// Use ModeratingUserAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ModeratingUser
 		{
@@ -286,9 +242,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ModeratingUser");
 			}
 		}
-		/// <summary>
-		/// Use ErrDescriptionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ErrDescription
 		{
@@ -299,9 +252,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrDescription");
 			}
 		}
-		/// <summary>
-		/// Use AccessKeyAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string AccessKey
 		{
@@ -312,9 +262,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AccessKey");
 			}
 		}
-		/// <summary>
-		/// Use VersionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Version
 		{
@@ -325,9 +272,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Version");
 			}
 		}
-		/// <summary>
-		/// Use NotesAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Notes
 		{
@@ -338,9 +282,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Notes");
 			}
 		}
-		/// <summary>
-		/// Use DictionaryAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Dictionary
 		{
@@ -351,9 +292,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Dictionary");
 			}
 		}
-		/// <summary>
-		/// Use ContextAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Context
 		{
@@ -364,9 +302,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Context");
 			}
 		}
-		/// <summary>
-		/// Use AccuracyAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Accuracy
 		{
@@ -377,9 +312,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Accuracy");
 			}
 		}
-		/// <summary>
-		/// Use OutputObjectIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string OutputObjectId
 		{
@@ -390,9 +322,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("OutputObjectId");
 			}
 		}
-		/// <summary>
-		/// Use PartnerDataAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PartnerData
 		{
@@ -403,9 +332,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerData");
 			}
 		}
-		/// <summary>
-		/// Use CreationModeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public EntryVendorTaskCreationMode CreationMode
 		{
@@ -416,9 +342,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreationMode");
 			}
 		}
-		/// <summary>
-		/// Use TaskJobDataAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public VendorTaskData TaskJobData
 		{
@@ -429,9 +352,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TaskJobData");
 			}
 		}
-		/// <summary>
-		/// Use ExpectedFinishTimeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ExpectedFinishTime
 		{
@@ -442,9 +362,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExpectedFinishTime");
 			}
 		}
-		/// <summary>
-		/// Use ServiceTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public VendorServiceType ServiceType
 		{
@@ -455,9 +372,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServiceType");
 			}
 		}
-		/// <summary>
-		/// Use ServiceFeatureAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public VendorServiceFeature ServiceFeature
 		{
@@ -468,9 +382,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ServiceFeature");
 			}
 		}
-		/// <summary>
-		/// Use TurnAroundTimeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public VendorServiceTurnAroundTime TurnAroundTime
 		{
@@ -479,19 +390,6 @@ namespace Kaltura.Types
 			{ 
 				_TurnAroundTime = value;
 				OnPropertyChanged("TurnAroundTime");
-			}
-		}
-		/// <summary>
-		/// Use ExternalTaskIdAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string ExternalTaskId
-		{
-			get { return _ExternalTaskId; }
-			set 
-			{ 
-				_ExternalTaskId = value;
-				OnPropertyChanged("ExternalTaskId");
 			}
 		}
 		#endregion
@@ -549,7 +447,7 @@ namespace Kaltura.Types
 			}
 			if(node["price"] != null)
 			{
-				this._Price = ParseDouble(node["price"].Value<string>());
+				this._Price = ParseFloat(node["price"].Value<string>());
 			}
 			if(node["userId"] != null)
 			{
@@ -619,10 +517,6 @@ namespace Kaltura.Types
 			{
 				this._TurnAroundTime = (VendorServiceTurnAroundTime)ParseEnum(typeof(VendorServiceTurnAroundTime), node["turnAroundTime"].Value<string>());
 			}
-			if(node["externalTaskId"] != null)
-			{
-				this._ExternalTaskId = node["externalTaskId"].Value<string>();
-			}
 		}
 		#endregion
 
@@ -661,7 +555,6 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("serviceType", this._ServiceType);
 			kparams.AddIfNotNull("serviceFeature", this._ServiceFeature);
 			kparams.AddIfNotNull("turnAroundTime", this._TurnAroundTime);
-			kparams.AddIfNotNull("externalTaskId", this._ExternalTaskId);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -726,8 +619,6 @@ namespace Kaltura.Types
 					return "ServiceFeature";
 				case TURN_AROUND_TIME:
 					return "TurnAroundTime";
-				case EXTERNAL_TASK_ID:
-					return "ExternalTaskId";
 				default:
 					return base.getPropertyName(apiName);
 			}

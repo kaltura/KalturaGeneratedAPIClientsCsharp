@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -70,7 +70,6 @@ namespace Kaltura.Types
 		public const string PRIVATE_KEY = "privateKey";
 		public const string PUBLIC_KEY = "publicKey";
 		public const string PASS_PHRASE = "passPhrase";
-		public const string PORT = "port";
 		public const string SHOULD_EXPORT_THUMBS = "shouldExportThumbs";
 		public const string PACKAGER_URL = "packagerUrl";
 		public const string EXPORT_PERIODICALLY = "exportPeriodically";
@@ -112,7 +111,6 @@ namespace Kaltura.Types
 		private string _PrivateKey = null;
 		private string _PublicKey = null;
 		private string _PassPhrase = null;
-		private int _Port = Int32.MinValue;
 		private bool? _ShouldExportThumbs = null;
 		private string _PackagerUrl = null;
 		private bool? _ExportPeriodically = null;
@@ -122,9 +120,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use IdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Id
 		{
@@ -135,9 +130,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
-		/// <summary>
-		/// Use CreatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -148,9 +140,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
-		/// <summary>
-		/// Use UpdatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -161,9 +150,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
-		/// <summary>
-		/// Use PartnerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -174,9 +160,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
-		/// <summary>
-		/// Use NameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -187,9 +170,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
-		/// <summary>
-		/// Use SystemNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SystemName
 		{
@@ -200,9 +180,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemName");
 			}
 		}
-		/// <summary>
-		/// Use DesciptionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Desciption
 		{
@@ -213,9 +190,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Desciption");
 			}
 		}
-		/// <summary>
-		/// Use StatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public StorageProfileStatus Status
 		{
@@ -226,9 +200,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
-		/// <summary>
-		/// Use ProtocolAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public StorageProfileProtocol Protocol
 		{
@@ -239,9 +210,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Protocol");
 			}
 		}
-		/// <summary>
-		/// Use StorageUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string StorageUrl
 		{
@@ -252,9 +220,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StorageUrl");
 			}
 		}
-		/// <summary>
-		/// Use StorageBaseDirAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string StorageBaseDir
 		{
@@ -265,9 +230,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StorageBaseDir");
 			}
 		}
-		/// <summary>
-		/// Use PathPrefixAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PathPrefix
 		{
@@ -278,9 +240,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PathPrefix");
 			}
 		}
-		/// <summary>
-		/// Use StorageUsernameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string StorageUsername
 		{
@@ -291,9 +250,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StorageUsername");
 			}
 		}
-		/// <summary>
-		/// Use StoragePasswordAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string StoragePassword
 		{
@@ -304,9 +260,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StoragePassword");
 			}
 		}
-		/// <summary>
-		/// Use StorageFtpPassiveModeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? StorageFtpPassiveMode
 		{
@@ -317,9 +270,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StorageFtpPassiveMode");
 			}
 		}
-		/// <summary>
-		/// Use MinFileSizeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int MinFileSize
 		{
@@ -330,9 +280,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("MinFileSize");
 			}
 		}
-		/// <summary>
-		/// Use MaxFileSizeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int MaxFileSize
 		{
@@ -343,9 +290,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("MaxFileSize");
 			}
 		}
-		/// <summary>
-		/// Use FlavorParamsIdsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FlavorParamsIds
 		{
@@ -356,9 +300,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamsIds");
 			}
 		}
-		/// <summary>
-		/// Use MaxConcurrentConnectionsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int MaxConcurrentConnections
 		{
@@ -369,9 +310,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("MaxConcurrentConnections");
 			}
 		}
-		/// <summary>
-		/// Use PathManagerClassAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PathManagerClass
 		{
@@ -382,9 +320,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PathManagerClass");
 			}
 		}
-		/// <summary>
-		/// Use PathManagerParamsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> PathManagerParams
 		{
@@ -395,9 +330,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PathManagerParams");
 			}
 		}
-		/// <summary>
-		/// Use TriggerAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Trigger
 		{
@@ -408,9 +340,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Trigger");
 			}
 		}
-		/// <summary>
-		/// Use DeliveryPriorityAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int DeliveryPriority
 		{
@@ -421,9 +350,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeliveryPriority");
 			}
 		}
-		/// <summary>
-		/// Use DeliveryStatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public StorageProfileDeliveryStatus DeliveryStatus
 		{
@@ -434,9 +360,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeliveryStatus");
 			}
 		}
-		/// <summary>
-		/// Use ReadyBehaviorAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public StorageProfileReadyBehavior ReadyBehavior
 		{
@@ -447,9 +370,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReadyBehavior");
 			}
 		}
-		/// <summary>
-		/// Use AllowAutoDeleteAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int AllowAutoDelete
 		{
@@ -460,9 +380,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowAutoDelete");
 			}
 		}
-		/// <summary>
-		/// Use CreateFileLinkAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? CreateFileLink
 		{
@@ -473,9 +390,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreateFileLink");
 			}
 		}
-		/// <summary>
-		/// Use RulesAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<Rule> Rules
 		{
@@ -486,9 +400,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Rules");
 			}
 		}
-		/// <summary>
-		/// Use DeliveryProfileIdsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<KeyValue> DeliveryProfileIds
 		{
@@ -499,9 +410,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeliveryProfileIds");
 			}
 		}
-		/// <summary>
-		/// Use PrivateKeyAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PrivateKey
 		{
@@ -512,9 +420,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrivateKey");
 			}
 		}
-		/// <summary>
-		/// Use PublicKeyAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PublicKey
 		{
@@ -525,9 +430,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PublicKey");
 			}
 		}
-		/// <summary>
-		/// Use PassPhraseAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PassPhrase
 		{
@@ -538,22 +440,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PassPhrase");
 			}
 		}
-		/// <summary>
-		/// Use PortAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public int Port
-		{
-			get { return _Port; }
-			set 
-			{ 
-				_Port = value;
-				OnPropertyChanged("Port");
-			}
-		}
-		/// <summary>
-		/// Use ShouldExportThumbsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? ShouldExportThumbs
 		{
@@ -564,9 +450,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ShouldExportThumbs");
 			}
 		}
-		/// <summary>
-		/// Use PackagerUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PackagerUrl
 		{
@@ -577,9 +460,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PackagerUrl");
 			}
 		}
-		/// <summary>
-		/// Use ExportPeriodicallyAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? ExportPeriodically
 		{
@@ -590,9 +470,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExportPeriodically");
 			}
 		}
-		/// <summary>
-		/// Use ExcludedFlavorParamsIdsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ExcludedFlavorParamsIds
 		{
@@ -603,9 +480,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExcludedFlavorParamsIds");
 			}
 		}
-		/// <summary>
-		/// Use ShouldExportCaptionsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? ShouldExportCaptions
 		{
@@ -616,9 +490,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ShouldExportCaptions");
 			}
 		}
-		/// <summary>
-		/// Use ExcludedEntryTypesAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ExcludedEntryTypes
 		{
@@ -778,10 +649,6 @@ namespace Kaltura.Types
 			{
 				this._PassPhrase = node["passPhrase"].Value<string>();
 			}
-			if(node["port"] != null)
-			{
-				this._Port = ParseInt(node["port"].Value<string>());
-			}
 			if(node["shouldExportThumbs"] != null)
 			{
 				this._ShouldExportThumbs = ParseBool(node["shouldExportThumbs"].Value<string>());
@@ -847,7 +714,6 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("privateKey", this._PrivateKey);
 			kparams.AddIfNotNull("publicKey", this._PublicKey);
 			kparams.AddIfNotNull("passPhrase", this._PassPhrase);
-			kparams.AddIfNotNull("port", this._Port);
 			kparams.AddIfNotNull("shouldExportThumbs", this._ShouldExportThumbs);
 			kparams.AddIfNotNull("packagerUrl", this._PackagerUrl);
 			kparams.AddIfNotNull("exportPeriodically", this._ExportPeriodically);
@@ -924,8 +790,6 @@ namespace Kaltura.Types
 					return "PublicKey";
 				case PASS_PHRASE:
 					return "PassPhrase";
-				case PORT:
-					return "Port";
 				case SHOULD_EXPORT_THUMBS:
 					return "ShouldExportThumbs";
 				case PACKAGER_URL:

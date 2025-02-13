@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -70,9 +70,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use CuePointTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CuePointType
 		{
@@ -83,9 +80,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CuePointType");
 			}
 		}
-		/// <summary>
-		/// Use IdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Id
 		{
@@ -96,9 +90,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
-		/// <summary>
-		/// Use NameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -109,9 +100,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
-		/// <summary>
-		/// Use TextAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Text
 		{
@@ -122,9 +110,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Text");
 			}
 		}
-		/// <summary>
-		/// Use TagsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<String> Tags
 		{
@@ -135,9 +120,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
-		/// <summary>
-		/// Use StartTimeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string StartTime
 		{
@@ -148,9 +130,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartTime");
 			}
 		}
-		/// <summary>
-		/// Use EndTimeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EndTime
 		{
@@ -161,9 +140,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndTime");
 			}
 		}
-		/// <summary>
-		/// Use SubTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SubType
 		{
@@ -174,9 +150,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SubType");
 			}
 		}
-		/// <summary>
-		/// Use QuestionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Question
 		{
@@ -187,9 +160,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Question");
 			}
 		}
-		/// <summary>
-		/// Use AnswersAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<String> Answers
 		{
@@ -200,9 +170,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Answers");
 			}
 		}
-		/// <summary>
-		/// Use HintAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Hint
 		{
@@ -213,9 +180,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Hint");
 			}
 		}
-		/// <summary>
-		/// Use ExplanationAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Explanation
 		{
@@ -226,9 +190,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Explanation");
 			}
 		}
-		/// <summary>
-		/// Use AssetIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string AssetId
 		{

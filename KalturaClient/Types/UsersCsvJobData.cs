@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -35,20 +35,23 @@ using Newtonsoft.Json.Linq;
 
 namespace Kaltura.Types
 {
-	public class UsersCsvJobData : MappedObjectsCsvJobData
+	public class UsersCsvJobData : ExportCsvJobData
 	{
 		#region Constants
 		public const string FILTER = "filter";
+		public const string METADATA_PROFILE_ID = "metadataProfileId";
+		public const string ADDITIONAL_FIELDS = "additionalFields";
+		public const string MAPPED_FIELDS = "mappedFields";
 		#endregion
 
 		#region Private Fields
 		private UserFilter _Filter;
+		private int _MetadataProfileId = Int32.MinValue;
+		private IList<CsvAdditionalFieldInfo> _AdditionalFields;
+		private IList<KeyValue> _MappedFields;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use FilterAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public UserFilter Filter
 		{
@@ -57,6 +60,36 @@ namespace Kaltura.Types
 			{ 
 				_Filter = value;
 				OnPropertyChanged("Filter");
+			}
+		}
+		[JsonProperty]
+		public int MetadataProfileId
+		{
+			get { return _MetadataProfileId; }
+			set 
+			{ 
+				_MetadataProfileId = value;
+				OnPropertyChanged("MetadataProfileId");
+			}
+		}
+		[JsonProperty]
+		public IList<CsvAdditionalFieldInfo> AdditionalFields
+		{
+			get { return _AdditionalFields; }
+			set 
+			{ 
+				_AdditionalFields = value;
+				OnPropertyChanged("AdditionalFields");
+			}
+		}
+		[JsonProperty]
+		public IList<KeyValue> MappedFields
+		{
+			get { return _MappedFields; }
+			set 
+			{ 
+				_MappedFields = value;
+				OnPropertyChanged("MappedFields");
 			}
 		}
 		#endregion
@@ -72,6 +105,26 @@ namespace Kaltura.Types
 			{
 				this._Filter = ObjectFactory.Create<UserFilter>(node["filter"]);
 			}
+			if(node["metadataProfileId"] != null)
+			{
+				this._MetadataProfileId = ParseInt(node["metadataProfileId"].Value<string>());
+			}
+			if(node["additionalFields"] != null)
+			{
+				this._AdditionalFields = new List<CsvAdditionalFieldInfo>();
+				foreach(var arrayNode in node["additionalFields"].Children())
+				{
+					this._AdditionalFields.Add(ObjectFactory.Create<CsvAdditionalFieldInfo>(arrayNode));
+				}
+			}
+			if(node["mappedFields"] != null)
+			{
+				this._MappedFields = new List<KeyValue>();
+				foreach(var arrayNode in node["mappedFields"].Children())
+				{
+					this._MappedFields.Add(ObjectFactory.Create<KeyValue>(arrayNode));
+				}
+			}
 		}
 		#endregion
 
@@ -82,6 +135,9 @@ namespace Kaltura.Types
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaUsersCsvJobData");
 			kparams.AddIfNotNull("filter", this._Filter);
+			kparams.AddIfNotNull("metadataProfileId", this._MetadataProfileId);
+			kparams.AddIfNotNull("additionalFields", this._AdditionalFields);
+			kparams.AddIfNotNull("mappedFields", this._MappedFields);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -90,6 +146,12 @@ namespace Kaltura.Types
 			{
 				case FILTER:
 					return "Filter";
+				case METADATA_PROFILE_ID:
+					return "MetadataProfileId";
+				case ADDITIONAL_FIELDS:
+					return "AdditionalFields";
+				case MAPPED_FIELDS:
+					return "MappedFields";
 				default:
 					return base.getPropertyName(apiName);
 			}

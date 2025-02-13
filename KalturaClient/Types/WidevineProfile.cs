@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -56,9 +56,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use KeyAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Key
 		{
@@ -69,9 +66,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Key");
 			}
 		}
-		/// <summary>
-		/// Use IvAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Iv
 		{
@@ -82,9 +76,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Iv");
 			}
 		}
-		/// <summary>
-		/// Use OwnerAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Owner
 		{
@@ -95,9 +86,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Owner");
 			}
 		}
-		/// <summary>
-		/// Use PortalAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Portal
 		{
@@ -108,9 +96,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Portal");
 			}
 		}
-		/// <summary>
-		/// Use MaxGopAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int MaxGop
 		{
@@ -121,9 +106,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("MaxGop");
 			}
 		}
-		/// <summary>
-		/// Use RegServerHostAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string RegServerHost
 		{

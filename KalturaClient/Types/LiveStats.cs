@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -51,7 +51,7 @@ namespace Kaltura.Types
 		#region Private Fields
 		private int _Audience = Int32.MinValue;
 		private int _DvrAudience = Int32.MinValue;
-		private double _AvgBitrate = Double.MinValue;
+		private float _AvgBitrate = Single.MinValue;
 		private int _BufferTime = Int32.MinValue;
 		private int _Plays = Int32.MinValue;
 		private int _SecondsViewed = Int32.MinValue;
@@ -60,9 +60,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use AudienceAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Audience
 		{
@@ -73,9 +70,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Audience");
 			}
 		}
-		/// <summary>
-		/// Use DvrAudienceAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int DvrAudience
 		{
@@ -86,11 +80,8 @@ namespace Kaltura.Types
 				OnPropertyChanged("DvrAudience");
 			}
 		}
-		/// <summary>
-		/// Use AvgBitrateAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public double AvgBitrate
+		public float AvgBitrate
 		{
 			get { return _AvgBitrate; }
 			set 
@@ -99,9 +90,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AvgBitrate");
 			}
 		}
-		/// <summary>
-		/// Use BufferTimeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int BufferTime
 		{
@@ -112,9 +100,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("BufferTime");
 			}
 		}
-		/// <summary>
-		/// Use PlaysAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Plays
 		{
@@ -125,9 +110,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Plays");
 			}
 		}
-		/// <summary>
-		/// Use SecondsViewedAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int SecondsViewed
 		{
@@ -138,9 +120,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SecondsViewed");
 			}
 		}
-		/// <summary>
-		/// Use StartEventAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public long StartEvent
 		{
@@ -151,9 +130,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartEvent");
 			}
 		}
-		/// <summary>
-		/// Use TimestampAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Timestamp
 		{
@@ -183,7 +159,7 @@ namespace Kaltura.Types
 			}
 			if(node["avgBitrate"] != null)
 			{
-				this._AvgBitrate = ParseDouble(node["avgBitrate"].Value<string>());
+				this._AvgBitrate = ParseFloat(node["avgBitrate"].Value<string>());
 			}
 			if(node["bufferTime"] != null)
 			{

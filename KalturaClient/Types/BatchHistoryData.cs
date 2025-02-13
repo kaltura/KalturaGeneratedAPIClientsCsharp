@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -64,9 +64,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use SchedulerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int SchedulerId
 		{
@@ -77,9 +74,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SchedulerId");
 			}
 		}
-		/// <summary>
-		/// Use WorkerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int WorkerId
 		{
@@ -90,9 +84,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("WorkerId");
 			}
 		}
-		/// <summary>
-		/// Use BatchIndexAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int BatchIndex
 		{
@@ -103,9 +94,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("BatchIndex");
 			}
 		}
-		/// <summary>
-		/// Use TimeStampAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int TimeStamp
 		{
@@ -116,9 +104,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TimeStamp");
 			}
 		}
-		/// <summary>
-		/// Use MessageAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Message
 		{
@@ -129,9 +114,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Message");
 			}
 		}
-		/// <summary>
-		/// Use ErrTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ErrType
 		{
@@ -142,9 +124,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrType");
 			}
 		}
-		/// <summary>
-		/// Use ErrNumberAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ErrNumber
 		{
@@ -155,9 +134,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ErrNumber");
 			}
 		}
-		/// <summary>
-		/// Use HostNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string HostName
 		{
@@ -168,9 +144,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("HostName");
 			}
 		}
-		/// <summary>
-		/// Use SessionIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SessionId
 		{
@@ -181,9 +154,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SessionId");
 			}
 		}
-		/// <summary>
-		/// Use SchedulerNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SchedulerName
 		{

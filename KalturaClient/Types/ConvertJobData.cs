@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -49,7 +49,6 @@ namespace Kaltura.Types
 		public const string ENGINE_MESSAGE = "engineMessage";
 		public const string DEST_FILE_SYNC_SHARED_PATH = "destFileSyncSharedPath";
 		public const string USER_CPU = "userCpu";
-		public const string ESTIMATED_EFFORT = "estimatedEffort";
 		#endregion
 
 		#region Private Fields
@@ -64,13 +63,9 @@ namespace Kaltura.Types
 		private string _EngineMessage = null;
 		private string _DestFileSyncSharedPath = null;
 		private int _UserCpu = Int32.MinValue;
-		private int _EstimatedEffort = Int32.MinValue;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use DestFileSyncLocalPathAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string DestFileSyncLocalPath
 		{
@@ -81,9 +76,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestFileSyncLocalPath");
 			}
 		}
-		/// <summary>
-		/// Use DestFileSyncRemoteUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string DestFileSyncRemoteUrl
 		{
@@ -94,9 +86,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestFileSyncRemoteUrl");
 			}
 		}
-		/// <summary>
-		/// Use LogFileSyncLocalPathAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string LogFileSyncLocalPath
 		{
@@ -107,9 +96,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("LogFileSyncLocalPath");
 			}
 		}
-		/// <summary>
-		/// Use LogFileSyncRemoteUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string LogFileSyncRemoteUrl
 		{
@@ -120,9 +106,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("LogFileSyncRemoteUrl");
 			}
 		}
-		/// <summary>
-		/// Use FlavorAssetIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FlavorAssetId
 		{
@@ -133,9 +116,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetId");
 			}
 		}
-		/// <summary>
-		/// Use RemoteMediaIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string RemoteMediaId
 		{
@@ -146,9 +126,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("RemoteMediaId");
 			}
 		}
-		/// <summary>
-		/// Use CustomDataAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CustomData
 		{
@@ -159,9 +136,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CustomData");
 			}
 		}
-		/// <summary>
-		/// Use ExtraDestFileSyncsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<DestFileSyncDescriptor> ExtraDestFileSyncs
 		{
@@ -172,9 +146,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExtraDestFileSyncs");
 			}
 		}
-		/// <summary>
-		/// Use EngineMessageAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EngineMessage
 		{
@@ -185,9 +156,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EngineMessage");
 			}
 		}
-		/// <summary>
-		/// Use DestFileSyncSharedPathAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string DestFileSyncSharedPath
 		{
@@ -198,9 +166,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DestFileSyncSharedPath");
 			}
 		}
-		/// <summary>
-		/// Use UserCpuAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int UserCpu
 		{
@@ -209,19 +174,6 @@ namespace Kaltura.Types
 			{ 
 				_UserCpu = value;
 				OnPropertyChanged("UserCpu");
-			}
-		}
-		/// <summary>
-		/// Use EstimatedEffortAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public int EstimatedEffort
-		{
-			get { return _EstimatedEffort; }
-			set 
-			{ 
-				_EstimatedEffort = value;
-				OnPropertyChanged("EstimatedEffort");
 			}
 		}
 		#endregion
@@ -281,10 +233,6 @@ namespace Kaltura.Types
 			{
 				this._UserCpu = ParseInt(node["userCpu"].Value<string>());
 			}
-			if(node["estimatedEffort"] != null)
-			{
-				this._EstimatedEffort = ParseInt(node["estimatedEffort"].Value<string>());
-			}
 		}
 		#endregion
 
@@ -305,7 +253,6 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("engineMessage", this._EngineMessage);
 			kparams.AddIfNotNull("destFileSyncSharedPath", this._DestFileSyncSharedPath);
 			kparams.AddIfNotNull("userCpu", this._UserCpu);
-			kparams.AddIfNotNull("estimatedEffort", this._EstimatedEffort);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -334,8 +281,6 @@ namespace Kaltura.Types
 					return "DestFileSyncSharedPath";
 				case USER_CPU:
 					return "UserCpu";
-				case ESTIMATED_EFFORT:
-					return "EstimatedEffort";
 				default:
 					return base.getPropertyName(apiName);
 			}

@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -58,9 +58,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use NoDistributionProfilesAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? NoDistributionProfiles
 		{
@@ -71,9 +68,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("NoDistributionProfiles");
 			}
 		}
-		/// <summary>
-		/// Use DistributionProfileIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int DistributionProfileId
 		{
@@ -84,9 +78,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributionProfileId");
 			}
 		}
-		/// <summary>
-		/// Use DistributionSunStatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public EntryDistributionSunStatus DistributionSunStatus
 		{
@@ -97,9 +88,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DistributionSunStatus");
 			}
 		}
-		/// <summary>
-		/// Use EntryDistributionFlagAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public EntryDistributionFlag EntryDistributionFlag
 		{
@@ -110,9 +98,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryDistributionFlag");
 			}
 		}
-		/// <summary>
-		/// Use EntryDistributionStatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public EntryDistributionStatus EntryDistributionStatus
 		{
@@ -123,9 +108,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryDistributionStatus");
 			}
 		}
-		/// <summary>
-		/// Use HasEntryDistributionValidationErrorsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? HasEntryDistributionValidationErrors
 		{
@@ -136,9 +118,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("HasEntryDistributionValidationErrors");
 			}
 		}
-		/// <summary>
-		/// Use EntryDistributionValidationErrorsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EntryDistributionValidationErrors
 		{

@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -88,9 +88,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use IdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Id
 		{
@@ -101,9 +98,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
-		/// <summary>
-		/// Use FeedUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FeedUrl
 		{
@@ -114,9 +108,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FeedUrl");
 			}
 		}
-		/// <summary>
-		/// Use PartnerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -127,9 +118,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
-		/// <summary>
-		/// Use PlaylistIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PlaylistId
 		{
@@ -140,9 +128,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PlaylistId");
 			}
 		}
-		/// <summary>
-		/// Use NameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -153,9 +138,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
-		/// <summary>
-		/// Use StatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public SyndicationFeedStatus Status
 		{
@@ -166,9 +148,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
-		/// <summary>
-		/// Use TypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public SyndicationFeedType Type
 		{
@@ -179,9 +158,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
-		/// <summary>
-		/// Use LandingPageAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string LandingPage
 		{
@@ -192,9 +168,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("LandingPage");
 			}
 		}
-		/// <summary>
-		/// Use CreatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -205,9 +178,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
-		/// <summary>
-		/// Use AllowEmbedAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? AllowEmbed
 		{
@@ -218,9 +188,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AllowEmbed");
 			}
 		}
-		/// <summary>
-		/// Use PlayerUiconfIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PlayerUiconfId
 		{
@@ -231,9 +198,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PlayerUiconfId");
 			}
 		}
-		/// <summary>
-		/// Use FlavorParamIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int FlavorParamId
 		{
@@ -244,9 +208,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorParamId");
 			}
 		}
-		/// <summary>
-		/// Use TranscodeExistingContentAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? TranscodeExistingContent
 		{
@@ -257,9 +218,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TranscodeExistingContent");
 			}
 		}
-		/// <summary>
-		/// Use AddToDefaultConversionProfileAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? AddToDefaultConversionProfile
 		{
@@ -270,9 +228,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AddToDefaultConversionProfile");
 			}
 		}
-		/// <summary>
-		/// Use CategoriesAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Categories
 		{
@@ -283,9 +238,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Categories");
 			}
 		}
-		/// <summary>
-		/// Use StorageIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int StorageId
 		{
@@ -296,9 +248,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StorageId");
 			}
 		}
-		/// <summary>
-		/// Use EntriesOrderByAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public SyndicationFeedEntriesOrderBy EntriesOrderBy
 		{
@@ -309,9 +258,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntriesOrderBy");
 			}
 		}
-		/// <summary>
-		/// Use EnforceEntitlementAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? EnforceEntitlement
 		{
@@ -322,9 +268,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EnforceEntitlement");
 			}
 		}
-		/// <summary>
-		/// Use PrivacyContextAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PrivacyContext
 		{
@@ -335,9 +278,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrivacyContext");
 			}
 		}
-		/// <summary>
-		/// Use UpdatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -348,9 +288,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
-		/// <summary>
-		/// Use UseCategoryEntriesAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? UseCategoryEntries
 		{
@@ -361,9 +298,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UseCategoryEntries");
 			}
 		}
-		/// <summary>
-		/// Use FeedContentTypeHeaderAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FeedContentTypeHeader
 		{

@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -39,18 +39,13 @@ namespace Kaltura.Types
 	{
 		#region Constants
 		public const string LIVE_PACKAGER_SIGNING_DOMAIN = "livePackagerSigningDomain";
-		public const string SHOULD_REDIRECT = "shouldRedirect";
 		#endregion
 
 		#region Private Fields
 		private string _LivePackagerSigningDomain = null;
-		private bool? _ShouldRedirect = null;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use LivePackagerSigningDomainAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string LivePackagerSigningDomain
 		{
@@ -59,19 +54,6 @@ namespace Kaltura.Types
 			{ 
 				_LivePackagerSigningDomain = value;
 				OnPropertyChanged("LivePackagerSigningDomain");
-			}
-		}
-		/// <summary>
-		/// Use ShouldRedirectAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public bool? ShouldRedirect
-		{
-			get { return _ShouldRedirect; }
-			set 
-			{ 
-				_ShouldRedirect = value;
-				OnPropertyChanged("ShouldRedirect");
 			}
 		}
 		#endregion
@@ -87,10 +69,6 @@ namespace Kaltura.Types
 			{
 				this._LivePackagerSigningDomain = node["livePackagerSigningDomain"].Value<string>();
 			}
-			if(node["shouldRedirect"] != null)
-			{
-				this._ShouldRedirect = ParseBool(node["shouldRedirect"].Value<string>());
-			}
 		}
 		#endregion
 
@@ -101,7 +79,6 @@ namespace Kaltura.Types
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaDeliveryProfileLivePackager");
 			kparams.AddIfNotNull("livePackagerSigningDomain", this._LivePackagerSigningDomain);
-			kparams.AddIfNotNull("shouldRedirect", this._ShouldRedirect);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -110,8 +87,6 @@ namespace Kaltura.Types
 			{
 				case LIVE_PACKAGER_SIGNING_DOMAIN:
 					return "LivePackagerSigningDomain";
-				case SHOULD_REDIRECT:
-					return "ShouldRedirect";
 				default:
 					return base.getPropertyName(apiName);
 			}

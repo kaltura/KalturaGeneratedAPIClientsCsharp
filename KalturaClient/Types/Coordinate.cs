@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -44,17 +44,14 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Private Fields
-		private double _Latitude = Double.MinValue;
-		private double _Longitude = Double.MinValue;
+		private float _Latitude = Single.MinValue;
+		private float _Longitude = Single.MinValue;
 		private string _Name = null;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use LatitudeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public double Latitude
+		public float Latitude
 		{
 			get { return _Latitude; }
 			set 
@@ -63,11 +60,8 @@ namespace Kaltura.Types
 				OnPropertyChanged("Latitude");
 			}
 		}
-		/// <summary>
-		/// Use LongitudeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public double Longitude
+		public float Longitude
 		{
 			get { return _Longitude; }
 			set 
@@ -76,9 +70,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Longitude");
 			}
 		}
-		/// <summary>
-		/// Use NameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -100,11 +91,11 @@ namespace Kaltura.Types
 		{
 			if(node["latitude"] != null)
 			{
-				this._Latitude = ParseDouble(node["latitude"].Value<string>());
+				this._Latitude = ParseFloat(node["latitude"].Value<string>());
 			}
 			if(node["longitude"] != null)
 			{
-				this._Longitude = ParseDouble(node["longitude"].Value<string>());
+				this._Longitude = ParseFloat(node["longitude"].Value<string>());
 			}
 			if(node["name"] != null)
 			{

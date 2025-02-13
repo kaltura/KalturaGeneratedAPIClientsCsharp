@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -82,9 +82,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use SftpHostAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SftpHost
 		{
@@ -95,9 +92,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpHost");
 			}
 		}
-		/// <summary>
-		/// Use SftpLoginAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SftpLogin
 		{
@@ -108,9 +102,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpLogin");
 			}
 		}
-		/// <summary>
-		/// Use SftpPassAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SftpPass
 		{
@@ -121,9 +112,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SftpPass");
 			}
 		}
-		/// <summary>
-		/// Use SeriesChannelAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SeriesChannel
 		{
@@ -134,9 +122,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SeriesChannel");
 			}
 		}
-		/// <summary>
-		/// Use SeriesPrimaryCategoryAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SeriesPrimaryCategory
 		{
@@ -147,9 +132,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SeriesPrimaryCategory");
 			}
 		}
-		/// <summary>
-		/// Use SeriesAdditionalCategoriesAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<String> SeriesAdditionalCategories
 		{
@@ -160,9 +142,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SeriesAdditionalCategories");
 			}
 		}
-		/// <summary>
-		/// Use SeasonNumberAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SeasonNumber
 		{
@@ -173,9 +152,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SeasonNumber");
 			}
 		}
-		/// <summary>
-		/// Use SeasonSynopsisAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SeasonSynopsis
 		{
@@ -186,9 +162,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SeasonSynopsis");
 			}
 		}
-		/// <summary>
-		/// Use SeasonTuneInInformationAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SeasonTuneInInformation
 		{
@@ -199,9 +172,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SeasonTuneInInformation");
 			}
 		}
-		/// <summary>
-		/// Use VideoMediaTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string VideoMediaType
 		{
@@ -212,9 +182,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoMediaType");
 			}
 		}
-		/// <summary>
-		/// Use DisableEpisodeNumberCustomValidationAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? DisableEpisodeNumberCustomValidation
 		{
@@ -225,9 +192,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DisableEpisodeNumberCustomValidation");
 			}
 		}
-		/// <summary>
-		/// Use ProtocolAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public DistributionProtocol Protocol
 		{
@@ -238,9 +202,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Protocol");
 			}
 		}
-		/// <summary>
-		/// Use AsperaHostAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string AsperaHost
 		{
@@ -251,9 +212,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AsperaHost");
 			}
 		}
-		/// <summary>
-		/// Use AsperaLoginAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string AsperaLogin
 		{
@@ -264,9 +222,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AsperaLogin");
 			}
 		}
-		/// <summary>
-		/// Use AsperaPassAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string AsperaPass
 		{
@@ -277,9 +232,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AsperaPass");
 			}
 		}
-		/// <summary>
-		/// Use PortAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Port
 		{
@@ -290,9 +242,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Port");
 			}
 		}
-		/// <summary>
-		/// Use PassphraseAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Passphrase
 		{
@@ -303,9 +252,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Passphrase");
 			}
 		}
-		/// <summary>
-		/// Use AsperaPublicKeyAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string AsperaPublicKey
 		{
@@ -316,9 +262,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AsperaPublicKey");
 			}
 		}
-		/// <summary>
-		/// Use AsperaPrivateKeyAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string AsperaPrivateKey
 		{

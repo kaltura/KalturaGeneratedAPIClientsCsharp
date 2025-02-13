@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -61,7 +61,7 @@ namespace Kaltura.Types
 
 		#region Private Fields
 		private string _Id = null;
-		private long _IntId = long.MinValue;
+		private int _IntId = Int32.MinValue;
 		private CuePointType _CuePointType = null;
 		private CuePointStatus _Status = (CuePointStatus)Int32.MinValue;
 		private string _EntryId = null;
@@ -82,9 +82,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use IdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Id
 		{
@@ -95,11 +92,8 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
-		/// <summary>
-		/// Use IntIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public long IntId
+		public int IntId
 		{
 			get { return _IntId; }
 			private set 
@@ -108,9 +102,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("IntId");
 			}
 		}
-		/// <summary>
-		/// Use CuePointTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public CuePointType CuePointType
 		{
@@ -121,9 +112,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CuePointType");
 			}
 		}
-		/// <summary>
-		/// Use StatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public CuePointStatus Status
 		{
@@ -134,9 +122,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
-		/// <summary>
-		/// Use EntryIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EntryId
 		{
@@ -147,9 +132,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
-		/// <summary>
-		/// Use PartnerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -160,9 +142,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
-		/// <summary>
-		/// Use CreatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -173,9 +152,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
-		/// <summary>
-		/// Use UpdatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -186,9 +162,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
-		/// <summary>
-		/// Use TriggeredAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int TriggeredAt
 		{
@@ -199,9 +172,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TriggeredAt");
 			}
 		}
-		/// <summary>
-		/// Use TagsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Tags
 		{
@@ -212,9 +182,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
-		/// <summary>
-		/// Use StartTimeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int StartTime
 		{
@@ -225,9 +192,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartTime");
 			}
 		}
-		/// <summary>
-		/// Use UserIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string UserId
 		{
@@ -238,9 +202,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserId");
 			}
 		}
-		/// <summary>
-		/// Use PartnerDataAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PartnerData
 		{
@@ -251,9 +212,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerData");
 			}
 		}
-		/// <summary>
-		/// Use PartnerSortValueAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PartnerSortValue
 		{
@@ -264,9 +222,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerSortValue");
 			}
 		}
-		/// <summary>
-		/// Use ForceStopAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public NullableBoolean ForceStop
 		{
@@ -277,9 +232,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ForceStop");
 			}
 		}
-		/// <summary>
-		/// Use ThumbOffsetAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ThumbOffset
 		{
@@ -290,9 +242,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbOffset");
 			}
 		}
-		/// <summary>
-		/// Use SystemNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SystemName
 		{
@@ -303,9 +252,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemName");
 			}
 		}
-		/// <summary>
-		/// Use IsMomentaryAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? IsMomentary
 		{
@@ -316,9 +262,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsMomentary");
 			}
 		}
-		/// <summary>
-		/// Use CopiedFromAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CopiedFrom
 		{
@@ -344,7 +287,7 @@ namespace Kaltura.Types
 			}
 			if(node["intId"] != null)
 			{
-				this._IntId = ParseLong(node["intId"].Value<string>());
+				this._IntId = ParseInt(node["intId"].Value<string>());
 			}
 			if(node["cuePointType"] != null)
 			{

@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -378,55 +378,6 @@ namespace Kaltura.Services
 		}
 	}
 
-	public class ScheduleEventUpdateLiveFeatureRequestBuilder : RequestBuilder<LiveStreamScheduleEvent>
-	{
-		#region Constants
-		public const string SCHEDULED_EVENT_ID = "scheduledEventId";
-		public const string FEATURE_NAME = "featureName";
-		public const string LIVE_FEATURE = "liveFeature";
-		#endregion
-
-		public int ScheduledEventId { get; set; }
-		public string FeatureName { get; set; }
-		public LiveFeature LiveFeature { get; set; }
-
-		public ScheduleEventUpdateLiveFeatureRequestBuilder()
-			: base("schedule_scheduleevent", "updateLiveFeature")
-		{
-		}
-
-		public ScheduleEventUpdateLiveFeatureRequestBuilder(int scheduledEventId, string featureName, LiveFeature liveFeature)
-			: this()
-		{
-			this.ScheduledEventId = scheduledEventId;
-			this.FeatureName = featureName;
-			this.LiveFeature = liveFeature;
-		}
-
-		public override Params getParameters(bool includeServiceAndAction)
-		{
-			Params kparams = base.getParameters(includeServiceAndAction);
-			if (!isMapped("scheduledEventId"))
-				kparams.AddIfNotNull("scheduledEventId", ScheduledEventId);
-			if (!isMapped("featureName"))
-				kparams.AddIfNotNull("featureName", FeatureName);
-			if (!isMapped("liveFeature"))
-				kparams.AddIfNotNull("liveFeature", LiveFeature);
-			return kparams;
-		}
-
-		public override Files getFiles()
-		{
-			Files kfiles = base.getFiles();
-			return kfiles;
-		}
-
-		public override object Deserialize(JToken result)
-		{
-			return ObjectFactory.Create<LiveStreamScheduleEvent>(result);
-		}
-	}
-
 
 	public class ScheduleEventService
 	{
@@ -472,11 +423,6 @@ namespace Kaltura.Services
 		public static ScheduleEventUpdateRequestBuilder Update(int scheduleEventId, ScheduleEvent scheduleEvent)
 		{
 			return new ScheduleEventUpdateRequestBuilder(scheduleEventId, scheduleEvent);
-		}
-
-		public static ScheduleEventUpdateLiveFeatureRequestBuilder UpdateLiveFeature(int scheduledEventId, string featureName, LiveFeature liveFeature)
-		{
-			return new ScheduleEventUpdateLiveFeatureRequestBuilder(scheduledEventId, featureName, liveFeature);
 		}
 	}
 }

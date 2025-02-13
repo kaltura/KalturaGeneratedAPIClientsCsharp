@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -74,9 +74,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use UsernameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Username
 		{
@@ -87,9 +84,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Username");
 			}
 		}
-		/// <summary>
-		/// Use PasswordAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Password
 		{
@@ -100,9 +94,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Password");
 			}
 		}
-		/// <summary>
-		/// Use DomainAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Domain
 		{
@@ -113,9 +104,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Domain");
 			}
 		}
-		/// <summary>
-		/// Use CsIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CsId
 		{
@@ -126,9 +114,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CsId");
 			}
 		}
-		/// <summary>
-		/// Use SourceAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Source
 		{
@@ -139,9 +124,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Source");
 			}
 		}
-		/// <summary>
-		/// Use SourceFriendlyNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SourceFriendlyName
 		{
@@ -152,9 +134,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceFriendlyName");
 			}
 		}
-		/// <summary>
-		/// Use PageGroupAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PageGroup
 		{
@@ -165,9 +144,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PageGroup");
 			}
 		}
-		/// <summary>
-		/// Use SourceFlavorParamsIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int SourceFlavorParamsId
 		{
@@ -178,9 +154,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SourceFlavorParamsId");
 			}
 		}
-		/// <summary>
-		/// Use WmvFlavorParamsIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int WmvFlavorParamsId
 		{
@@ -191,9 +164,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("WmvFlavorParamsId");
 			}
 		}
-		/// <summary>
-		/// Use FlvFlavorParamsIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int FlvFlavorParamsId
 		{
@@ -204,9 +174,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlvFlavorParamsId");
 			}
 		}
-		/// <summary>
-		/// Use SlFlavorParamsIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int SlFlavorParamsId
 		{
@@ -217,9 +184,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SlFlavorParamsId");
 			}
 		}
-		/// <summary>
-		/// Use SlHdFlavorParamsIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int SlHdFlavorParamsId
 		{
@@ -230,9 +194,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SlHdFlavorParamsId");
 			}
 		}
-		/// <summary>
-		/// Use MsnvideoCatAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string MsnvideoCat
 		{
@@ -243,9 +204,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("MsnvideoCat");
 			}
 		}
-		/// <summary>
-		/// Use MsnvideoTopAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string MsnvideoTop
 		{
@@ -256,9 +214,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("MsnvideoTop");
 			}
 		}
-		/// <summary>
-		/// Use MsnvideoTopCatAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string MsnvideoTopCat
 		{

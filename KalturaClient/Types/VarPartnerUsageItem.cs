@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -76,21 +76,18 @@ namespace Kaltura.Types
 		private int _ImageEntriesCount = Int32.MinValue;
 		private int _AudioEntriesCount = Int32.MinValue;
 		private int _MixEntriesCount = Int32.MinValue;
-		private double _Bandwidth = Double.MinValue;
-		private double _TotalStorage = Double.MinValue;
-		private double _Storage = Double.MinValue;
-		private double _DeletedStorage = Double.MinValue;
-		private double _PeakStorage = Double.MinValue;
-		private double _AvgStorage = Double.MinValue;
-		private double _CombinedStorageBandwidth = Double.MinValue;
-		private double _TranscodingUsage = Double.MinValue;
+		private float _Bandwidth = Single.MinValue;
+		private float _TotalStorage = Single.MinValue;
+		private float _Storage = Single.MinValue;
+		private float _DeletedStorage = Single.MinValue;
+		private float _PeakStorage = Single.MinValue;
+		private float _AvgStorage = Single.MinValue;
+		private float _CombinedStorageBandwidth = Single.MinValue;
+		private float _TranscodingUsage = Single.MinValue;
 		private string _DateId = null;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use PartnerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -101,9 +98,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
-		/// <summary>
-		/// Use PartnerNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PartnerName
 		{
@@ -114,9 +108,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerName");
 			}
 		}
-		/// <summary>
-		/// Use PartnerStatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public PartnerStatus PartnerStatus
 		{
@@ -127,9 +118,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerStatus");
 			}
 		}
-		/// <summary>
-		/// Use PartnerPackageAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PartnerPackage
 		{
@@ -140,9 +128,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerPackage");
 			}
 		}
-		/// <summary>
-		/// Use PartnerCreatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PartnerCreatedAt
 		{
@@ -153,9 +138,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerCreatedAt");
 			}
 		}
-		/// <summary>
-		/// Use ViewsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Views
 		{
@@ -166,9 +148,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Views");
 			}
 		}
-		/// <summary>
-		/// Use PlaysAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Plays
 		{
@@ -179,9 +158,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Plays");
 			}
 		}
-		/// <summary>
-		/// Use EntriesCountAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int EntriesCount
 		{
@@ -192,9 +168,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntriesCount");
 			}
 		}
-		/// <summary>
-		/// Use TotalEntriesCountAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int TotalEntriesCount
 		{
@@ -205,9 +178,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TotalEntriesCount");
 			}
 		}
-		/// <summary>
-		/// Use VideoEntriesCountAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int VideoEntriesCount
 		{
@@ -218,9 +188,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("VideoEntriesCount");
 			}
 		}
-		/// <summary>
-		/// Use ImageEntriesCountAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ImageEntriesCount
 		{
@@ -231,9 +198,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ImageEntriesCount");
 			}
 		}
-		/// <summary>
-		/// Use AudioEntriesCountAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int AudioEntriesCount
 		{
@@ -244,9 +208,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("AudioEntriesCount");
 			}
 		}
-		/// <summary>
-		/// Use MixEntriesCountAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int MixEntriesCount
 		{
@@ -257,11 +218,8 @@ namespace Kaltura.Types
 				OnPropertyChanged("MixEntriesCount");
 			}
 		}
-		/// <summary>
-		/// Use BandwidthAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public double Bandwidth
+		public float Bandwidth
 		{
 			get { return _Bandwidth; }
 			set 
@@ -270,11 +228,8 @@ namespace Kaltura.Types
 				OnPropertyChanged("Bandwidth");
 			}
 		}
-		/// <summary>
-		/// Use TotalStorageAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public double TotalStorage
+		public float TotalStorage
 		{
 			get { return _TotalStorage; }
 			set 
@@ -283,11 +238,8 @@ namespace Kaltura.Types
 				OnPropertyChanged("TotalStorage");
 			}
 		}
-		/// <summary>
-		/// Use StorageAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public double Storage
+		public float Storage
 		{
 			get { return _Storage; }
 			set 
@@ -296,11 +248,8 @@ namespace Kaltura.Types
 				OnPropertyChanged("Storage");
 			}
 		}
-		/// <summary>
-		/// Use DeletedStorageAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public double DeletedStorage
+		public float DeletedStorage
 		{
 			get { return _DeletedStorage; }
 			set 
@@ -309,11 +258,8 @@ namespace Kaltura.Types
 				OnPropertyChanged("DeletedStorage");
 			}
 		}
-		/// <summary>
-		/// Use PeakStorageAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public double PeakStorage
+		public float PeakStorage
 		{
 			get { return _PeakStorage; }
 			set 
@@ -322,11 +268,8 @@ namespace Kaltura.Types
 				OnPropertyChanged("PeakStorage");
 			}
 		}
-		/// <summary>
-		/// Use AvgStorageAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public double AvgStorage
+		public float AvgStorage
 		{
 			get { return _AvgStorage; }
 			set 
@@ -335,11 +278,8 @@ namespace Kaltura.Types
 				OnPropertyChanged("AvgStorage");
 			}
 		}
-		/// <summary>
-		/// Use CombinedStorageBandwidthAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public double CombinedStorageBandwidth
+		public float CombinedStorageBandwidth
 		{
 			get { return _CombinedStorageBandwidth; }
 			set 
@@ -348,11 +288,8 @@ namespace Kaltura.Types
 				OnPropertyChanged("CombinedStorageBandwidth");
 			}
 		}
-		/// <summary>
-		/// Use TranscodingUsageAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public double TranscodingUsage
+		public float TranscodingUsage
 		{
 			get { return _TranscodingUsage; }
 			set 
@@ -361,9 +298,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TranscodingUsage");
 			}
 		}
-		/// <summary>
-		/// Use DateIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string DateId
 		{
@@ -437,35 +371,35 @@ namespace Kaltura.Types
 			}
 			if(node["bandwidth"] != null)
 			{
-				this._Bandwidth = ParseDouble(node["bandwidth"].Value<string>());
+				this._Bandwidth = ParseFloat(node["bandwidth"].Value<string>());
 			}
 			if(node["totalStorage"] != null)
 			{
-				this._TotalStorage = ParseDouble(node["totalStorage"].Value<string>());
+				this._TotalStorage = ParseFloat(node["totalStorage"].Value<string>());
 			}
 			if(node["storage"] != null)
 			{
-				this._Storage = ParseDouble(node["storage"].Value<string>());
+				this._Storage = ParseFloat(node["storage"].Value<string>());
 			}
 			if(node["deletedStorage"] != null)
 			{
-				this._DeletedStorage = ParseDouble(node["deletedStorage"].Value<string>());
+				this._DeletedStorage = ParseFloat(node["deletedStorage"].Value<string>());
 			}
 			if(node["peakStorage"] != null)
 			{
-				this._PeakStorage = ParseDouble(node["peakStorage"].Value<string>());
+				this._PeakStorage = ParseFloat(node["peakStorage"].Value<string>());
 			}
 			if(node["avgStorage"] != null)
 			{
-				this._AvgStorage = ParseDouble(node["avgStorage"].Value<string>());
+				this._AvgStorage = ParseFloat(node["avgStorage"].Value<string>());
 			}
 			if(node["combinedStorageBandwidth"] != null)
 			{
-				this._CombinedStorageBandwidth = ParseDouble(node["combinedStorageBandwidth"].Value<string>());
+				this._CombinedStorageBandwidth = ParseFloat(node["combinedStorageBandwidth"].Value<string>());
 			}
 			if(node["transcodingUsage"] != null)
 			{
-				this._TranscodingUsage = ParseDouble(node["transcodingUsage"].Value<string>());
+				this._TranscodingUsage = ParseFloat(node["transcodingUsage"].Value<string>());
 			}
 			if(node["dateId"] != null)
 			{

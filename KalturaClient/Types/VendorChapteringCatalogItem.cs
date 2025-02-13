@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -38,12 +38,24 @@ namespace Kaltura.Types
 	public class VendorChapteringCatalogItem : VendorCatalogItem
 	{
 		#region Constants
+		public const string SOURCE_LANGUAGE = "sourceLanguage";
 		#endregion
 
 		#region Private Fields
+		private CatalogItemLanguage _SourceLanguage = null;
 		#endregion
 
 		#region Properties
+		[JsonProperty]
+		public CatalogItemLanguage SourceLanguage
+		{
+			get { return _SourceLanguage; }
+			set 
+			{ 
+				_SourceLanguage = value;
+				OnPropertyChanged("SourceLanguage");
+			}
+		}
 		#endregion
 
 		#region CTor
@@ -53,6 +65,10 @@ namespace Kaltura.Types
 
 		public VendorChapteringCatalogItem(JToken node) : base(node)
 		{
+			if(node["sourceLanguage"] != null)
+			{
+				this._SourceLanguage = (CatalogItemLanguage)StringEnum.Parse(typeof(CatalogItemLanguage), node["sourceLanguage"].Value<string>());
+			}
 		}
 		#endregion
 
@@ -62,12 +78,15 @@ namespace Kaltura.Types
 			Params kparams = base.ToParams(includeObjectType);
 			if (includeObjectType)
 				kparams.AddReplace("objectType", "KalturaVendorChapteringCatalogItem");
+			kparams.AddIfNotNull("sourceLanguage", this._SourceLanguage);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
 		{
 			switch(apiName)
 			{
+				case SOURCE_LANGUAGE:
+					return "SourceLanguage";
 				default:
 					return base.getPropertyName(apiName);
 			}

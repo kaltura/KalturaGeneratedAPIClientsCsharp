@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -42,7 +42,6 @@ namespace Kaltura.Types
 		public const string TIME_ZONE_OFFSET = "timeZoneOffset";
 		public const string REPORT_ITEMS = "reportItems";
 		public const string REPORTS_ITEMS_GROUP = "reportsItemsGroup";
-		public const string BASE_URL = "baseUrl";
 		#endregion
 
 		#region Private Fields
@@ -50,13 +49,9 @@ namespace Kaltura.Types
 		private int _TimeZoneOffset = Int32.MinValue;
 		private IList<ReportExportItem> _ReportItems;
 		private string _ReportsItemsGroup = null;
-		private string _BaseUrl = null;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use RecipientEmailAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string RecipientEmail
 		{
@@ -67,9 +62,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("RecipientEmail");
 			}
 		}
-		/// <summary>
-		/// Use TimeZoneOffsetAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int TimeZoneOffset
 		{
@@ -80,9 +72,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TimeZoneOffset");
 			}
 		}
-		/// <summary>
-		/// Use ReportItemsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<ReportExportItem> ReportItems
 		{
@@ -93,9 +82,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReportItems");
 			}
 		}
-		/// <summary>
-		/// Use ReportsItemsGroupAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ReportsItemsGroup
 		{
@@ -104,19 +90,6 @@ namespace Kaltura.Types
 			{ 
 				_ReportsItemsGroup = value;
 				OnPropertyChanged("ReportsItemsGroup");
-			}
-		}
-		/// <summary>
-		/// Use BaseUrlAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string BaseUrl
-		{
-			get { return _BaseUrl; }
-			set 
-			{ 
-				_BaseUrl = value;
-				OnPropertyChanged("BaseUrl");
 			}
 		}
 		#endregion
@@ -148,10 +121,6 @@ namespace Kaltura.Types
 			{
 				this._ReportsItemsGroup = node["reportsItemsGroup"].Value<string>();
 			}
-			if(node["baseUrl"] != null)
-			{
-				this._BaseUrl = node["baseUrl"].Value<string>();
-			}
 		}
 		#endregion
 
@@ -165,7 +134,6 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("timeZoneOffset", this._TimeZoneOffset);
 			kparams.AddIfNotNull("reportItems", this._ReportItems);
 			kparams.AddIfNotNull("reportsItemsGroup", this._ReportsItemsGroup);
-			kparams.AddIfNotNull("baseUrl", this._BaseUrl);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -180,8 +148,6 @@ namespace Kaltura.Types
 					return "ReportItems";
 				case REPORTS_ITEMS_GROUP:
 					return "ReportsItemsGroup";
-				case BASE_URL:
-					return "BaseUrl";
 				default:
 					return base.getPropertyName(apiName);
 			}

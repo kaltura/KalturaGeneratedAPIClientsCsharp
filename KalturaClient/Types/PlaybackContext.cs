@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -52,13 +52,10 @@ namespace Kaltura.Types
 		private IList<FlavorAsset> _FlavorAssets;
 		private IList<RuleAction> _Actions;
 		private IList<AccessControlMessage> _Messages;
-		private IList<ObjectBase> _BumperData;
+		private TypedArray _BumperData;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use SourcesAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<PlaybackSource> Sources
 		{
@@ -69,9 +66,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Sources");
 			}
 		}
-		/// <summary>
-		/// Use PlaybackCaptionsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<CaptionPlaybackPluginData> PlaybackCaptions
 		{
@@ -82,9 +76,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PlaybackCaptions");
 			}
 		}
-		/// <summary>
-		/// Use FlavorAssetsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<FlavorAsset> FlavorAssets
 		{
@@ -95,9 +86,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssets");
 			}
 		}
-		/// <summary>
-		/// Use ActionsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<RuleAction> Actions
 		{
@@ -108,9 +96,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Actions");
 			}
 		}
-		/// <summary>
-		/// Use MessagesAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public IList<AccessControlMessage> Messages
 		{
@@ -121,11 +106,8 @@ namespace Kaltura.Types
 				OnPropertyChanged("Messages");
 			}
 		}
-		/// <summary>
-		/// Use BumperDataAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public IList<ObjectBase> BumperData
+		public TypedArray BumperData
 		{
 			get { return _BumperData; }
 			set 
@@ -185,11 +167,7 @@ namespace Kaltura.Types
 			}
 			if(node["bumperData"] != null)
 			{
-				this._BumperData = new List<ObjectBase>();
-				foreach(var arrayNode in node["bumperData"].Children())
-				{
-					this._BumperData.Add(ObjectFactory.Create<ObjectBase>(arrayNode));
-				}
+				this._BumperData = ObjectFactory.Create<TypedArray>(node["bumperData"]);
 			}
 		}
 		#endregion

@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -49,8 +49,6 @@ namespace Kaltura.Types
 		public const string UPDATED_AT = "updatedAt";
 		public const string UPLOAD_URL = "uploadUrl";
 		public const string AUTO_FINALIZE = "autoFinalize";
-		public const string ATTACHED_OBJECT_TYPE = "attachedObjectType";
-		public const string ATTACHED_OBJECT_ID = "attachedObjectId";
 		#endregion
 
 		#region Private Fields
@@ -59,20 +57,15 @@ namespace Kaltura.Types
 		private string _UserId = null;
 		private UploadTokenStatus _Status = (UploadTokenStatus)Int32.MinValue;
 		private string _FileName = null;
-		private double _FileSize = Double.MinValue;
-		private double _UploadedFileSize = Double.MinValue;
+		private float _FileSize = Single.MinValue;
+		private float _UploadedFileSize = Single.MinValue;
 		private int _CreatedAt = Int32.MinValue;
 		private int _UpdatedAt = Int32.MinValue;
 		private string _UploadUrl = null;
 		private NullableBoolean _AutoFinalize = (NullableBoolean)Int32.MinValue;
-		private string _AttachedObjectType = null;
-		private string _AttachedObjectId = null;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use IdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Id
 		{
@@ -83,9 +76,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
-		/// <summary>
-		/// Use PartnerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -96,9 +86,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
-		/// <summary>
-		/// Use UserIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string UserId
 		{
@@ -109,9 +96,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UserId");
 			}
 		}
-		/// <summary>
-		/// Use StatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public UploadTokenStatus Status
 		{
@@ -122,9 +106,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
-		/// <summary>
-		/// Use FileNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FileName
 		{
@@ -135,11 +116,8 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileName");
 			}
 		}
-		/// <summary>
-		/// Use FileSizeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public double FileSize
+		public float FileSize
 		{
 			get { return _FileSize; }
 			set 
@@ -148,11 +126,8 @@ namespace Kaltura.Types
 				OnPropertyChanged("FileSize");
 			}
 		}
-		/// <summary>
-		/// Use UploadedFileSizeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public double UploadedFileSize
+		public float UploadedFileSize
 		{
 			get { return _UploadedFileSize; }
 			private set 
@@ -161,9 +136,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UploadedFileSize");
 			}
 		}
-		/// <summary>
-		/// Use CreatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -174,9 +146,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
-		/// <summary>
-		/// Use UpdatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -187,9 +156,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
-		/// <summary>
-		/// Use UploadUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string UploadUrl
 		{
@@ -200,9 +166,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UploadUrl");
 			}
 		}
-		/// <summary>
-		/// Use AutoFinalizeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public NullableBoolean AutoFinalize
 		{
@@ -211,32 +174,6 @@ namespace Kaltura.Types
 			{ 
 				_AutoFinalize = value;
 				OnPropertyChanged("AutoFinalize");
-			}
-		}
-		/// <summary>
-		/// Use AttachedObjectTypeAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string AttachedObjectType
-		{
-			get { return _AttachedObjectType; }
-			private set 
-			{ 
-				_AttachedObjectType = value;
-				OnPropertyChanged("AttachedObjectType");
-			}
-		}
-		/// <summary>
-		/// Use AttachedObjectIdAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public string AttachedObjectId
-		{
-			get { return _AttachedObjectId; }
-			private set 
-			{ 
-				_AttachedObjectId = value;
-				OnPropertyChanged("AttachedObjectId");
 			}
 		}
 		#endregion
@@ -270,11 +207,11 @@ namespace Kaltura.Types
 			}
 			if(node["fileSize"] != null)
 			{
-				this._FileSize = ParseDouble(node["fileSize"].Value<string>());
+				this._FileSize = ParseFloat(node["fileSize"].Value<string>());
 			}
 			if(node["uploadedFileSize"] != null)
 			{
-				this._UploadedFileSize = ParseDouble(node["uploadedFileSize"].Value<string>());
+				this._UploadedFileSize = ParseFloat(node["uploadedFileSize"].Value<string>());
 			}
 			if(node["createdAt"] != null)
 			{
@@ -291,14 +228,6 @@ namespace Kaltura.Types
 			if(node["autoFinalize"] != null)
 			{
 				this._AutoFinalize = (NullableBoolean)ParseEnum(typeof(NullableBoolean), node["autoFinalize"].Value<string>());
-			}
-			if(node["attachedObjectType"] != null)
-			{
-				this._AttachedObjectType = node["attachedObjectType"].Value<string>();
-			}
-			if(node["attachedObjectId"] != null)
-			{
-				this._AttachedObjectId = node["attachedObjectId"].Value<string>();
 			}
 		}
 		#endregion
@@ -320,8 +249,6 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("updatedAt", this._UpdatedAt);
 			kparams.AddIfNotNull("uploadUrl", this._UploadUrl);
 			kparams.AddIfNotNull("autoFinalize", this._AutoFinalize);
-			kparams.AddIfNotNull("attachedObjectType", this._AttachedObjectType);
-			kparams.AddIfNotNull("attachedObjectId", this._AttachedObjectId);
 			return kparams;
 		}
 		protected override string getPropertyName(string apiName)
@@ -350,10 +277,6 @@ namespace Kaltura.Types
 					return "UploadUrl";
 				case AUTO_FINALIZE:
 					return "AutoFinalize";
-				case ATTACHED_OBJECT_TYPE:
-					return "AttachedObjectType";
-				case ATTACHED_OBJECT_ID:
-					return "AttachedObjectId";
 				default:
 					return base.getPropertyName(apiName);
 			}

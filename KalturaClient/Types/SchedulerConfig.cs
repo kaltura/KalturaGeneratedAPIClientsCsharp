@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -72,9 +72,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use IdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Id
 		{
@@ -85,9 +82,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
-		/// <summary>
-		/// Use CreatedByAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CreatedBy
 		{
@@ -98,9 +92,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedBy");
 			}
 		}
-		/// <summary>
-		/// Use UpdatedByAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string UpdatedBy
 		{
@@ -111,9 +102,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedBy");
 			}
 		}
-		/// <summary>
-		/// Use CommandIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CommandId
 		{
@@ -124,9 +112,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CommandId");
 			}
 		}
-		/// <summary>
-		/// Use CommandStatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CommandStatus
 		{
@@ -137,9 +122,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CommandStatus");
 			}
 		}
-		/// <summary>
-		/// Use SchedulerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int SchedulerId
 		{
@@ -150,9 +132,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SchedulerId");
 			}
 		}
-		/// <summary>
-		/// Use SchedulerConfiguredIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int SchedulerConfiguredId
 		{
@@ -163,9 +142,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SchedulerConfiguredId");
 			}
 		}
-		/// <summary>
-		/// Use SchedulerNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SchedulerName
 		{
@@ -176,9 +152,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SchedulerName");
 			}
 		}
-		/// <summary>
-		/// Use WorkerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int WorkerId
 		{
@@ -189,9 +162,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("WorkerId");
 			}
 		}
-		/// <summary>
-		/// Use WorkerConfiguredIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int WorkerConfiguredId
 		{
@@ -202,9 +172,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("WorkerConfiguredId");
 			}
 		}
-		/// <summary>
-		/// Use WorkerNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string WorkerName
 		{
@@ -215,9 +182,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("WorkerName");
 			}
 		}
-		/// <summary>
-		/// Use VariableAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Variable
 		{
@@ -228,9 +192,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Variable");
 			}
 		}
-		/// <summary>
-		/// Use VariablePartAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string VariablePart
 		{
@@ -241,9 +202,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("VariablePart");
 			}
 		}
-		/// <summary>
-		/// Use ValueAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Value
 		{

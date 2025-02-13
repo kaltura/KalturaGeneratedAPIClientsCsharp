@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -70,9 +70,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use StreamIDAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string StreamID
 		{
@@ -83,9 +80,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StreamID");
 			}
 		}
-		/// <summary>
-		/// Use BackupStreamIDAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string BackupStreamID
 		{
@@ -96,9 +90,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("BackupStreamID");
 			}
 		}
-		/// <summary>
-		/// Use RtmpAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Rtmp
 		{
@@ -109,9 +100,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Rtmp");
 			}
 		}
-		/// <summary>
-		/// Use EncoderIPAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EncoderIP
 		{
@@ -122,9 +110,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EncoderIP");
 			}
 		}
-		/// <summary>
-		/// Use BackupEncoderIPAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string BackupEncoderIP
 		{
@@ -135,9 +120,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("BackupEncoderIP");
 			}
 		}
-		/// <summary>
-		/// Use EncoderPasswordAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EncoderPassword
 		{
@@ -148,9 +130,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EncoderPassword");
 			}
 		}
-		/// <summary>
-		/// Use EncoderUsernameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EncoderUsername
 		{
@@ -161,9 +140,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EncoderUsername");
 			}
 		}
-		/// <summary>
-		/// Use EndDateAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int EndDate
 		{
@@ -174,9 +150,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndDate");
 			}
 		}
-		/// <summary>
-		/// Use ReturnValAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ReturnVal
 		{
@@ -187,9 +160,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReturnVal");
 			}
 		}
-		/// <summary>
-		/// Use MediaTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int MediaType
 		{
@@ -200,9 +170,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaType");
 			}
 		}
-		/// <summary>
-		/// Use PrimaryBroadcastingUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string PrimaryBroadcastingUrl
 		{
@@ -213,9 +180,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PrimaryBroadcastingUrl");
 			}
 		}
-		/// <summary>
-		/// Use SecondaryBroadcastingUrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SecondaryBroadcastingUrl
 		{
@@ -226,9 +190,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SecondaryBroadcastingUrl");
 			}
 		}
-		/// <summary>
-		/// Use StreamNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string StreamName
 		{

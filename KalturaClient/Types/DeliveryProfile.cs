@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -84,9 +84,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use IdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Id
 		{
@@ -97,9 +94,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
-		/// <summary>
-		/// Use PartnerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -110,9 +104,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
-		/// <summary>
-		/// Use NameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -123,9 +114,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
-		/// <summary>
-		/// Use TypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public DeliveryProfileType Type
 		{
@@ -136,9 +124,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
-		/// <summary>
-		/// Use SystemNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SystemName
 		{
@@ -149,9 +134,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SystemName");
 			}
 		}
-		/// <summary>
-		/// Use DescriptionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Description
 		{
@@ -162,9 +144,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
-		/// <summary>
-		/// Use CreatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -175,9 +154,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
-		/// <summary>
-		/// Use UpdatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -188,9 +164,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
-		/// <summary>
-		/// Use StreamerTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public PlaybackProtocol StreamerType
 		{
@@ -201,9 +174,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StreamerType");
 			}
 		}
-		/// <summary>
-		/// Use UrlAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Url
 		{
@@ -214,9 +184,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Url");
 			}
 		}
-		/// <summary>
-		/// Use HostNameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string HostName
 		{
@@ -227,9 +194,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("HostName");
 			}
 		}
-		/// <summary>
-		/// Use StatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public DeliveryStatus Status
 		{
@@ -240,9 +204,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
-		/// <summary>
-		/// Use RecognizerAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public UrlRecognizer Recognizer
 		{
@@ -253,9 +214,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Recognizer");
 			}
 		}
-		/// <summary>
-		/// Use TokenizerAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public UrlTokenizer Tokenizer
 		{
@@ -266,9 +224,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tokenizer");
 			}
 		}
-		/// <summary>
-		/// Use IsDefaultAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public NullableBoolean IsDefault
 		{
@@ -279,9 +234,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsDefault");
 			}
 		}
-		/// <summary>
-		/// Use ParentIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ParentId
 		{
@@ -292,9 +244,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentId");
 			}
 		}
-		/// <summary>
-		/// Use MediaProtocolsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string MediaProtocols
 		{
@@ -305,9 +254,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("MediaProtocols");
 			}
 		}
-		/// <summary>
-		/// Use PriorityAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Priority
 		{
@@ -318,9 +264,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Priority");
 			}
 		}
-		/// <summary>
-		/// Use ExtraParamsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ExtraParams
 		{
@@ -331,9 +274,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExtraParams");
 			}
 		}
-		/// <summary>
-		/// Use SupplementaryAssetsFilterAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public AssetFilter SupplementaryAssetsFilter
 		{

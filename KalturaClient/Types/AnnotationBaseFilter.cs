@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -64,9 +64,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use ParentIdEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ParentIdEqual
 		{
@@ -77,9 +74,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentIdEqual");
 			}
 		}
-		/// <summary>
-		/// Use ParentIdInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ParentIdIn
 		{
@@ -90,9 +84,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ParentIdIn");
 			}
 		}
-		/// <summary>
-		/// Use TextLikeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string TextLike
 		{
@@ -103,9 +94,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TextLike");
 			}
 		}
-		/// <summary>
-		/// Use TextMultiLikeOrAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string TextMultiLikeOr
 		{
@@ -116,9 +104,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TextMultiLikeOr");
 			}
 		}
-		/// <summary>
-		/// Use TextMultiLikeAndAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string TextMultiLikeAnd
 		{
@@ -129,9 +114,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TextMultiLikeAnd");
 			}
 		}
-		/// <summary>
-		/// Use EndTimeGreaterThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int EndTimeGreaterThanOrEqual
 		{
@@ -142,9 +124,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndTimeGreaterThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use EndTimeLessThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int EndTimeLessThanOrEqual
 		{
@@ -155,9 +134,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndTimeLessThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use DurationGreaterThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int DurationGreaterThanOrEqual
 		{
@@ -168,9 +144,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DurationGreaterThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use DurationLessThanOrEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int DurationLessThanOrEqual
 		{
@@ -181,9 +154,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DurationLessThanOrEqual");
 			}
 		}
-		/// <summary>
-		/// Use IsPublicEqualAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public NullableBoolean IsPublicEqual
 		{

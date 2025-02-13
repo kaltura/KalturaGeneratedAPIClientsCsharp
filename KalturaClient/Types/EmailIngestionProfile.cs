@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -76,9 +76,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use IdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Id
 		{
@@ -89,9 +86,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
-		/// <summary>
-		/// Use NameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -102,9 +96,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
-		/// <summary>
-		/// Use DescriptionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Description
 		{
@@ -115,9 +106,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
-		/// <summary>
-		/// Use EmailAddressAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EmailAddress
 		{
@@ -128,9 +116,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EmailAddress");
 			}
 		}
-		/// <summary>
-		/// Use MailboxIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string MailboxId
 		{
@@ -141,9 +126,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("MailboxId");
 			}
 		}
-		/// <summary>
-		/// Use PartnerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -154,9 +136,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
-		/// <summary>
-		/// Use ConversionProfile2IdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ConversionProfile2Id
 		{
@@ -167,9 +146,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ConversionProfile2Id");
 			}
 		}
-		/// <summary>
-		/// Use ModerationStatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public EntryModerationStatus ModerationStatus
 		{
@@ -180,9 +156,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ModerationStatus");
 			}
 		}
-		/// <summary>
-		/// Use StatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public EmailIngestionProfileStatus Status
 		{
@@ -193,9 +166,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
-		/// <summary>
-		/// Use CreatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CreatedAt
 		{
@@ -206,9 +176,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
-		/// <summary>
-		/// Use DefaultCategoryAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string DefaultCategory
 		{
@@ -219,9 +186,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DefaultCategory");
 			}
 		}
-		/// <summary>
-		/// Use DefaultUserIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string DefaultUserId
 		{
@@ -232,9 +196,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DefaultUserId");
 			}
 		}
-		/// <summary>
-		/// Use DefaultTagsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string DefaultTags
 		{
@@ -245,9 +206,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DefaultTags");
 			}
 		}
-		/// <summary>
-		/// Use DefaultAdminTagsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string DefaultAdminTags
 		{
@@ -258,9 +216,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DefaultAdminTags");
 			}
 		}
-		/// <summary>
-		/// Use MaxAttachmentSizeKbytesAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int MaxAttachmentSizeKbytes
 		{
@@ -271,9 +226,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("MaxAttachmentSizeKbytes");
 			}
 		}
-		/// <summary>
-		/// Use MaxAttachmentsPerMailAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int MaxAttachmentsPerMail
 		{

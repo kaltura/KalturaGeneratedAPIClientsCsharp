@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -35,7 +35,6 @@ namespace Kaltura.Enums
 		public static readonly DropFolderErrorCode ERROR_GET_DB_FILE_LIST = new DropFolderErrorCode("4");
 		public static readonly DropFolderErrorCode DROP_FOLDER_APP_ERROR = new DropFolderErrorCode("5");
 		public static readonly DropFolderErrorCode CONTENT_MATCH_POLICY_UNDEFINED = new DropFolderErrorCode("6");
-		public static readonly DropFolderErrorCode MISSING_CONFIG = new DropFolderErrorCode("7");
 
 		private DropFolderErrorCode(string name) : base(name) { }
 	}

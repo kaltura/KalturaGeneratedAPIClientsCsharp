@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -60,9 +60,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use FlavorAssetIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FlavorAssetId
 		{
@@ -73,9 +70,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetId");
 			}
 		}
-		/// <summary>
-		/// Use FlavorAssetEncryptionKeyAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FlavorAssetEncryptionKey
 		{
@@ -86,9 +80,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FlavorAssetEncryptionKey");
 			}
 		}
-		/// <summary>
-		/// Use CreateThumbAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? CreateThumb
 		{
@@ -99,9 +90,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreateThumb");
 			}
 		}
-		/// <summary>
-		/// Use ThumbPathAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ThumbPath
 		{
@@ -112,9 +100,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbPath");
 			}
 		}
-		/// <summary>
-		/// Use ThumbOffsetAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ThumbOffset
 		{
@@ -125,9 +110,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbOffset");
 			}
 		}
-		/// <summary>
-		/// Use ThumbHeightAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ThumbHeight
 		{
@@ -138,9 +120,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbHeight");
 			}
 		}
-		/// <summary>
-		/// Use ThumbBitrateAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int ThumbBitrate
 		{
@@ -151,9 +130,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ThumbBitrate");
 			}
 		}
-		/// <summary>
-		/// Use CustomDataAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CustomData
 		{

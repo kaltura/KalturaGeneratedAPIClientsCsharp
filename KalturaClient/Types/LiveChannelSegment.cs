@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -69,14 +69,11 @@ namespace Kaltura.Types
 		private string _EntryId = null;
 		private LiveChannelSegmentTriggerType _TriggerType = null;
 		private long _TriggerSegmentId = long.MinValue;
-		private double _StartTime = Double.MinValue;
-		private double _Duration = Double.MinValue;
+		private float _StartTime = Single.MinValue;
+		private float _Duration = Single.MinValue;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use IdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public long Id
 		{
@@ -87,9 +84,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Id");
 			}
 		}
-		/// <summary>
-		/// Use PartnerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int PartnerId
 		{
@@ -100,9 +94,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("PartnerId");
 			}
 		}
-		/// <summary>
-		/// Use CreatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int CreatedAt
 		{
@@ -113,9 +104,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CreatedAt");
 			}
 		}
-		/// <summary>
-		/// Use UpdatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int UpdatedAt
 		{
@@ -126,9 +114,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("UpdatedAt");
 			}
 		}
-		/// <summary>
-		/// Use NameAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Name
 		{
@@ -139,9 +124,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Name");
 			}
 		}
-		/// <summary>
-		/// Use DescriptionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Description
 		{
@@ -152,9 +134,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
-		/// <summary>
-		/// Use TagsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Tags
 		{
@@ -165,9 +144,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
-		/// <summary>
-		/// Use TypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public LiveChannelSegmentType Type
 		{
@@ -178,9 +154,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Type");
 			}
 		}
-		/// <summary>
-		/// Use StatusAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public LiveChannelSegmentStatus Status
 		{
@@ -191,9 +164,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Status");
 			}
 		}
-		/// <summary>
-		/// Use ChannelIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ChannelId
 		{
@@ -204,9 +174,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ChannelId");
 			}
 		}
-		/// <summary>
-		/// Use EntryIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EntryId
 		{
@@ -217,9 +184,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EntryId");
 			}
 		}
-		/// <summary>
-		/// Use TriggerTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public LiveChannelSegmentTriggerType TriggerType
 		{
@@ -230,9 +194,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TriggerType");
 			}
 		}
-		/// <summary>
-		/// Use TriggerSegmentIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public long TriggerSegmentId
 		{
@@ -243,11 +204,8 @@ namespace Kaltura.Types
 				OnPropertyChanged("TriggerSegmentId");
 			}
 		}
-		/// <summary>
-		/// Use StartTimeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public double StartTime
+		public float StartTime
 		{
 			get { return _StartTime; }
 			set 
@@ -256,11 +214,8 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartTime");
 			}
 		}
-		/// <summary>
-		/// Use DurationAsDouble property instead
-		/// </summary>
 		[JsonProperty]
-		public double Duration
+		public float Duration
 		{
 			get { return _Duration; }
 			set 
@@ -332,11 +287,11 @@ namespace Kaltura.Types
 			}
 			if(node["startTime"] != null)
 			{
-				this._StartTime = ParseDouble(node["startTime"].Value<string>());
+				this._StartTime = ParseFloat(node["startTime"].Value<string>());
 			}
 			if(node["duration"] != null)
 			{
-				this._Duration = ParseDouble(node["duration"].Value<string>());
+				this._Duration = ParseFloat(node["duration"].Value<string>());
 			}
 		}
 		#endregion

@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -70,16 +70,6 @@ namespace Kaltura
 			string className = jToken["objectType"].Value<string>();
 			switch (className)
 			{
-				case "KalturaFileSyncListResponse":
-					return new ListResponse<FileSync>(jToken);
-				case "KalturaBatchJobListResponse":
-					return new ListResponse<BatchJob>(jToken);
-				case "KalturaMediaInfoListResponse":
-					return new ListResponse<MediaInfo>(jToken);
-				case "KalturaFlavorParamsOutputListResponse":
-					return new ListResponse<FlavorParamsOutput>(jToken);
-				case "KalturaThumbParamsOutputListResponse":
-					return new ListResponse<ThumbParamsOutput>(jToken);
 				case "KalturaAccessControlListResponse":
 					return new ListResponse<AccessControl>(jToken);
 				case "KalturaAccessControlProfileListResponse":
@@ -96,6 +86,8 @@ namespace Kaltura
 					return new ListResponse<BaseEntry>(jToken);
 				case "KalturaBaseSyndicationFeedListResponse":
 					return new ListResponse<BaseSyndicationFeed>(jToken);
+				case "KalturaBatchJobListResponse":
+					return new ListResponse<BatchJob>(jToken);
 				case "KalturaBeaconListResponse":
 					return new ListResponse<Beacon>(jToken);
 				case "KalturaBulkUploadListResponse":
@@ -158,10 +150,14 @@ namespace Kaltura
 					return new ListResponse<FeatureStatus>(jToken);
 				case "KalturaFileAssetListResponse":
 					return new ListResponse<FileAsset>(jToken);
+				case "KalturaFileSyncListResponse":
+					return new ListResponse<FileSync>(jToken);
 				case "KalturaFlavorAssetListResponse":
 					return new ListResponse<FlavorAsset>(jToken);
 				case "KalturaFlavorParamsListResponse":
 					return new ListResponse<FlavorParams>(jToken);
+				case "KalturaFlavorParamsOutputListResponse":
+					return new ListResponse<FlavorParamsOutput>(jToken);
 				case "KalturaGenericDistributionProviderActionListResponse":
 					return new ListResponse<GenericDistributionProviderAction>(jToken);
 				case "KalturaGenericDistributionProviderListResponse":
@@ -178,6 +174,8 @@ namespace Kaltura
 					return new ListResponse<LiveChannelSegment>(jToken);
 				case "KalturaLiveStreamListResponse":
 					return new ListResponse<LiveStreamEntry>(jToken);
+				case "KalturaMediaInfoListResponse":
+					return new ListResponse<MediaInfo>(jToken);
 				case "KalturaMediaListResponse":
 					return new ListResponse<MediaEntry>(jToken);
 				case "KalturaMetadataListResponse":
@@ -242,12 +240,10 @@ namespace Kaltura
 					return new ListResponse<ThumbAsset>(jToken);
 				case "KalturaThumbParamsListResponse":
 					return new ListResponse<ThumbParams>(jToken);
-				case "KalturaTrackEntryListResponse":
-					return new ListResponse<TrackEntry>(jToken);
+				case "KalturaThumbParamsOutputListResponse":
+					return new ListResponse<ThumbParamsOutput>(jToken);
 				case "KalturaTranscriptAssetListResponse":
 					return new ListResponse<TranscriptAsset>(jToken);
-				case "KalturaUiConfAdminListResponse":
-					return new ListResponse<UiConfAdmin>(jToken);
 				case "KalturaUiConfListResponse":
 					return new ListResponse<UiConf>(jToken);
 				case "KalturaUploadTokenListResponse":
@@ -262,14 +258,10 @@ namespace Kaltura
 					return new ListResponse<UserRole>(jToken);
 				case "KalturaVendorCatalogItemListResponse":
 					return new ListResponse<VendorCatalogItem>(jToken);
-				case "KalturaVirtualEventListResponse":
-					return new ListResponse<VirtualEvent>(jToken);
 				case "KalturaVirusScanProfileListResponse":
 					return new ListResponse<VirusScanProfile>(jToken);
 				case "KalturaWidgetListResponse":
 					return new ListResponse<Widget>(jToken);
-				case "KalturaZoomIntegrationSettingResponse":
-					return new ListResponse<ZoomIntegrationSetting>(jToken);
 			}
 		
 			return null;

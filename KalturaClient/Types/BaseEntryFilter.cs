@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -45,7 +45,6 @@ namespace Kaltura.Types
 		public const string CATEGORIES_FULL_NAME_IN = "categoriesFullNameIn";
 		public const string CATEGORY_ANCESTOR_ID_IN = "categoryAncestorIdIn";
 		public const string REDIRECT_FROM_ENTRY_ID = "redirectFromEntryId";
-		public const string CONVERSION_PROFILE_ID_EQUAL = "conversionProfileIdEqual";
 		public new const string ORDER_BY = "orderBy";
 		#endregion
 
@@ -57,14 +56,10 @@ namespace Kaltura.Types
 		private string _CategoriesFullNameIn = null;
 		private string _CategoryAncestorIdIn = null;
 		private string _RedirectFromEntryId = null;
-		private int _ConversionProfileIdEqual = Int32.MinValue;
 		private BaseEntryOrderBy _OrderBy = null;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use FreeTextAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string FreeText
 		{
@@ -75,9 +70,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FreeText");
 			}
 		}
-		/// <summary>
-		/// Use ExcludedFreeTextGroupsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ExcludedFreeTextGroups
 		{
@@ -88,9 +80,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ExcludedFreeTextGroups");
 			}
 		}
-		/// <summary>
-		/// Use DescriptionLikeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string DescriptionLike
 		{
@@ -101,9 +90,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("DescriptionLike");
 			}
 		}
-		/// <summary>
-		/// Use IsRootAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public NullableBoolean IsRoot
 		{
@@ -114,9 +100,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("IsRoot");
 			}
 		}
-		/// <summary>
-		/// Use CategoriesFullNameInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CategoriesFullNameIn
 		{
@@ -127,9 +110,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoriesFullNameIn");
 			}
 		}
-		/// <summary>
-		/// Use CategoryAncestorIdInAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CategoryAncestorIdIn
 		{
@@ -140,9 +120,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryAncestorIdIn");
 			}
 		}
-		/// <summary>
-		/// Use RedirectFromEntryIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string RedirectFromEntryId
 		{
@@ -153,22 +130,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("RedirectFromEntryId");
 			}
 		}
-		/// <summary>
-		/// Use ConversionProfileIdEqualAsDouble property instead
-		/// </summary>
-		[JsonProperty]
-		public int ConversionProfileIdEqual
-		{
-			get { return _ConversionProfileIdEqual; }
-			set 
-			{ 
-				_ConversionProfileIdEqual = value;
-				OnPropertyChanged("ConversionProfileIdEqual");
-			}
-		}
-		/// <summary>
-		/// Use OrderByAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public new BaseEntryOrderBy OrderBy
 		{
@@ -216,10 +177,6 @@ namespace Kaltura.Types
 			{
 				this._RedirectFromEntryId = node["redirectFromEntryId"].Value<string>();
 			}
-			if(node["conversionProfileIdEqual"] != null)
-			{
-				this._ConversionProfileIdEqual = ParseInt(node["conversionProfileIdEqual"].Value<string>());
-			}
 			if(node["orderBy"] != null)
 			{
 				this._OrderBy = (BaseEntryOrderBy)StringEnum.Parse(typeof(BaseEntryOrderBy), node["orderBy"].Value<string>());
@@ -240,7 +197,6 @@ namespace Kaltura.Types
 			kparams.AddIfNotNull("categoriesFullNameIn", this._CategoriesFullNameIn);
 			kparams.AddIfNotNull("categoryAncestorIdIn", this._CategoryAncestorIdIn);
 			kparams.AddIfNotNull("redirectFromEntryId", this._RedirectFromEntryId);
-			kparams.AddIfNotNull("conversionProfileIdEqual", this._ConversionProfileIdEqual);
 			kparams.AddIfNotNull("orderBy", this._OrderBy);
 			return kparams;
 		}
@@ -262,8 +218,6 @@ namespace Kaltura.Types
 					return "CategoryAncestorIdIn";
 				case REDIRECT_FROM_ENTRY_ID:
 					return "RedirectFromEntryId";
-				case CONVERSION_PROFILE_ID_EQUAL:
-					return "ConversionProfileIdEqual";
 				case ORDER_BY:
 					return "OrderBy";
 				default:

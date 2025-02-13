@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -58,9 +58,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use LimitAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Limit
 		{
@@ -71,9 +68,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Limit");
 			}
 		}
-		/// <summary>
-		/// Use CachedObjectTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CachedObjectType
 		{
@@ -84,9 +78,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CachedObjectType");
 			}
 		}
-		/// <summary>
-		/// Use ObjectIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ObjectId
 		{
@@ -97,9 +88,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ObjectId");
 			}
 		}
-		/// <summary>
-		/// Use StartObjectKeyAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string StartObjectKey
 		{
@@ -110,9 +98,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartObjectKey");
 			}
 		}
-		/// <summary>
-		/// Use EndObjectKeyAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EndObjectKey
 		{
@@ -123,9 +108,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndObjectKey");
 			}
 		}
-		/// <summary>
-		/// Use JobCreatedAtAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int JobCreatedAt
 		{
@@ -136,9 +118,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("JobCreatedAt");
 			}
 		}
-		/// <summary>
-		/// Use IsFirstLoopAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public bool? IsFirstLoop
 		{

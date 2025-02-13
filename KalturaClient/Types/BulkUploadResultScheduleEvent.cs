@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -78,9 +78,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use ReferenceIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ReferenceId
 		{
@@ -91,9 +88,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ReferenceId");
 			}
 		}
-		/// <summary>
-		/// Use TemplateEntryIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string TemplateEntryId
 		{
@@ -104,9 +98,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("TemplateEntryId");
 			}
 		}
-		/// <summary>
-		/// Use EventTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int EventType
 		{
@@ -117,9 +108,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EventType");
 			}
 		}
-		/// <summary>
-		/// Use TitleAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Title
 		{
@@ -130,9 +118,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Title");
 			}
 		}
-		/// <summary>
-		/// Use DescriptionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Description
 		{
@@ -143,9 +128,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Description");
 			}
 		}
-		/// <summary>
-		/// Use TagsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Tags
 		{
@@ -156,9 +138,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Tags");
 			}
 		}
-		/// <summary>
-		/// Use CategoryIdsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CategoryIds
 		{
@@ -169,9 +148,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CategoryIds");
 			}
 		}
-		/// <summary>
-		/// Use ResourceIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ResourceId
 		{
@@ -182,9 +158,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ResourceId");
 			}
 		}
-		/// <summary>
-		/// Use StartTimeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int StartTime
 		{
@@ -195,9 +168,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("StartTime");
 			}
 		}
-		/// <summary>
-		/// Use DurationAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int Duration
 		{
@@ -208,9 +178,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Duration");
 			}
 		}
-		/// <summary>
-		/// Use EndTimeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public int EndTime
 		{
@@ -221,9 +188,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EndTime");
 			}
 		}
-		/// <summary>
-		/// Use RecurrenceAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string Recurrence
 		{
@@ -234,9 +198,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("Recurrence");
 			}
 		}
-		/// <summary>
-		/// Use CoEditorsAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CoEditors
 		{
@@ -247,9 +208,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CoEditors");
 			}
 		}
-		/// <summary>
-		/// Use CoPublishersAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string CoPublishers
 		{
@@ -260,9 +218,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("CoPublishers");
 			}
 		}
-		/// <summary>
-		/// Use EventOrganizerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EventOrganizerId
 		{
@@ -273,9 +228,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("EventOrganizerId");
 			}
 		}
-		/// <summary>
-		/// Use ContentOwnerIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string ContentOwnerId
 		{
@@ -286,9 +238,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("ContentOwnerId");
 			}
 		}
-		/// <summary>
-		/// Use TemplateEntryTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string TemplateEntryType
 		{

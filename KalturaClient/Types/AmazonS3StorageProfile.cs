@@ -5,10 +5,10 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platforms allow them to do with
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2023  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -56,9 +56,6 @@ namespace Kaltura.Types
 		#endregion
 
 		#region Properties
-		/// <summary>
-		/// Use FilesPermissionInS3AsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public AmazonS3StorageProfileFilesPermissionLevel FilesPermissionInS3
 		{
@@ -69,9 +66,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("FilesPermissionInS3");
 			}
 		}
-		/// <summary>
-		/// Use S3RegionAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string S3Region
 		{
@@ -82,9 +76,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("S3Region");
 			}
 		}
-		/// <summary>
-		/// Use SseTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SseType
 		{
@@ -95,9 +86,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SseType");
 			}
 		}
-		/// <summary>
-		/// Use SseKmsKeyIdAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SseKmsKeyId
 		{
@@ -108,9 +96,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SseKmsKeyId");
 			}
 		}
-		/// <summary>
-		/// Use SignatureTypeAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string SignatureType
 		{
@@ -121,9 +106,6 @@ namespace Kaltura.Types
 				OnPropertyChanged("SignatureType");
 			}
 		}
-		/// <summary>
-		/// Use EndPointAsDouble property instead
-		/// </summary>
 		[JsonProperty]
 		public string EndPoint
 		{
